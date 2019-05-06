@@ -154,7 +154,7 @@ class ACLListView(SingleObjectListView):
             'title': _('Access control lists for: %s' % self.content_object),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return AccessControlList.objects.filter(
             content_type=self.object_content_type,
             object_id=self.content_object.pk

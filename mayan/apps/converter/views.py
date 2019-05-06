@@ -232,5 +232,5 @@ class TransformationListView(SingleObjectListView):
             'title': _('Transformations for: %s') % self.content_object,
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return Transformation.objects.get_for_object(obj=self.content_object)

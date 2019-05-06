@@ -31,7 +31,7 @@ class ResultsView(SearchModelMixin, SingleObjectListView):
 
         return context
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         self.search_model = self.get_search_model()
 
         if self.request.GET:

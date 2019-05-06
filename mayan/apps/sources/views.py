@@ -70,7 +70,7 @@ class SourceLogListView(SingleObjectListView):
             'title': _('Log entries for source: %s') % self.get_source(),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_source().logs.all()
 
     def get_source(self):
@@ -592,7 +592,7 @@ class SetupSourceEditView(SingleObjectEditView):
 
 
 class SetupSourceListView(SingleObjectListView):
-    queryset = Source.objects.select_subclasses()
+    source_queryset = Source.objects.select_subclasses()
     view_permission = permission_sources_setup_view
 
     def get_extra_context(self):

@@ -7,11 +7,11 @@ from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.generics import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
     SingleObjectListView
 )
+from mayan.apps.common.mixins import ExternalObjectMixin
 
 from ..forms import DocumentTypeFilenameForm_create
 from ..icons import (
@@ -133,22 +133,14 @@ class DocumentTypeEditView(SingleObjectEditView):
         }
 
 
-class DocumentTypeFilenameCreateView(SingleObjectCreateView):
+class DocumentTypeFilenameCreateView(ExternalObjectMixin, SingleObjectCreateView):
+    external_object_class = DocumentType
+    external_object_permission = permission_document_type_edit
+    external_object_pk_url_kwarg = 'pk'
     form_class = DocumentTypeFilenameForm_create
 
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_document_type(),
-            permissions=(permission_document_type_edit,),
-            user=request.user
-        )
-
-        return super(DocumentTypeFilenameCreateView, self).dispatch(
-            request, *args, **kwargs
-        )
-
     def get_document_type(self):
-        return get_object_or_404(klass=DocumentType, pk=self.kwargs['pk'])
+        return self.get_external_object()
 
     def get_extra_context(self):
         return {
@@ -163,10 +155,37 @@ class DocumentTypeFilenameCreateView(SingleObjectCreateView):
         return {'document_type': self.get_document_type()}
 
 
+class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
+    model = DocumentTypeFilename
+    object_permission = permission_document_type_edit
+    pk_url_kwarg = 'pk'
+
+    def get_extra_context(self):
+        return {
+            'document_type': self.get_object().document_type,
+            'filename': self.get_object(),
+            'navigation_object_list': ('document_type', 'filename',),
+            'title': _(
+                'Delete the quick label: %(label)s, from document type '
+                '"%(document_type)s"?'
+            ) % {
+                'document_type': self.get_object().document_type,
+                'label': self.get_object()
+            },
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='documents:document_type_filename_list',
+            kwargs={'pk': self.get_object().document_type.pk}
+        )
+
+
 class DocumentTypeFilenameEditView(SingleObjectEditView):
     fields = ('enabled', 'filename',)
     model = DocumentTypeFilename
     object_permission = permission_document_type_edit
+    pk_url_kwarg = 'pk'
 
     def get_extra_context(self):
         document_type_filename = self.get_object()
@@ -186,42 +205,18 @@ class DocumentTypeFilenameEditView(SingleObjectEditView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'documents:document_type_filename_list',
-            args=(self.get_object().document_type.pk,)
+            viewname='documents:document_type_filename_list',
+            kwargs={'pk': self.get_object().document_type.pk}
         )
 
 
-class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
-    model = DocumentTypeFilename
-    object_permission = permission_document_type_edit
-
-    def get_extra_context(self):
-        return {
-            'document_type': self.get_object().document_type,
-            'filename': self.get_object(),
-            'navigation_object_list': ('document_type', 'filename',),
-            'title': _(
-                'Delete the quick label: %(label)s, from document type '
-                '"%(document_type)s"?'
-            ) % {
-                'document_type': self.get_object().document_type,
-                'label': self.get_object()
-            },
-        }
-
-    def get_post_action_redirect(self):
-        return reverse(
-            'documents:document_type_filename_list',
-            args=(self.get_object().document_type.pk,)
-        )
-
-
-class DocumentTypeFilenameListView(SingleObjectListView):
-    access_object_retrieve_method = 'get_document_type'
-    object_permission = permission_document_type_view
+class DocumentTypeFilenameListView(ExternalObjectMixin, SingleObjectListView):
+    external_object_class = DocumentType
+    external_object_permission = permission_document_type_view
+    external_object_pk_url_kwarg = 'pk'
 
     def get_document_type(self):
-        return get_object_or_404(klass=DocumentType, pk=self.kwargs['pk'])
+        return self.get_external_object()
 
     def get_extra_context(self):
         return {
@@ -251,5 +246,5 @@ class DocumentTypeFilenameListView(SingleObjectListView):
             ) % self.get_document_type(),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_document_type().filenames.all()

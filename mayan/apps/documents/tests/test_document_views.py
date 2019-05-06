@@ -34,7 +34,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
     def test_document_view_no_permissions(self):
         response = self._request_document_properties_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_view_with_permissions(self):
         self.grant_access(
@@ -84,7 +84,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         response = self._request_document_type_edit(
             document_type=document_type_2
         )
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
             Document.objects.get(pk=self.test_document.pk).document_type,
@@ -138,7 +138,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         response = self._request_multiple_document_type_edit(
             document_type=document_type_2
         )
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
             Document.objects.first().document_type, self.test_document_type
@@ -327,7 +327,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(self.test_document.pages.count(), 0)
 
         response = self._request_document_update_page_count_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(self.test_document.pages.count(), 0)
 
@@ -356,7 +356,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(self.test_document.pages.count(), 0)
 
         response = self._request_document_multiple_update_page_count_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(self.test_document.pages.count(), 0)
 
@@ -397,7 +397,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
         response = self._request_document_clear_transformations_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertQuerysetEqual(
             Transformation.objects.get_for_object(obj=document_page),
@@ -454,7 +454,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.grant_permission(permission=permission_document_view)
 
         response = self._request_document_multiple_clear_transformations()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
         self.assertQuerysetEqual(
             Transformation.objects.get_for_object(obj=document_page),
             (repr(transformation),)
@@ -578,7 +578,7 @@ class DocumentsQuickLabelViewsTestCase(DocumentTypeQuickLabelTestMixin, GenericD
         self._create_test_quick_label()
 
         response = self._request_document_quick_label_edit_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_quick_label_with_access(self):
         self._create_test_quick_label()

@@ -6,7 +6,7 @@ from django.contrib.auth.models import Group
 from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.documents.tests import GenericDocumentViewTestCase
 from mayan.apps.metadata.models import MetadataType
-from mayan.apps.metadata.permissions import permission_metadata_document_edit
+from mayan.apps.metadata.permissions import permission_document_metadata_edit
 from mayan.apps.metadata.tests.literals import (
     TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_NAME,
 )
@@ -48,7 +48,7 @@ class GroupViewsTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin, Gene
         group_count = Group.objects.count()
 
         response = self._request_test_group_delete_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Group.objects.count(), group_count)
 
@@ -71,7 +71,7 @@ class GroupViewsTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin, Gene
         group_name = self.test_group.name
 
         response = self._request_test_group_edit_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.test_group.refresh_from_db()
         self.assertEqual(self.test_group.name, group_name)
@@ -173,7 +173,7 @@ class SuperUserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCas
             obj=self.test_superuser, permission=permission_user_delete
         )
         response = self._request_test_superuser_delete_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
         self.assertEqual(
             get_user_model().objects.filter(is_superuser=True).count(),
             superuser_count
@@ -228,7 +228,7 @@ class UserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCase):
         user_count = get_user_model().objects.count()
 
         response = self._request_test_user_delete_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(get_user_model().objects.count(), user_count)
 
@@ -250,7 +250,7 @@ class UserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCase):
         user_count = get_user_model().objects.count()
 
         response = self._request_test_user_delete_multiple_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(get_user_model().objects.count(), user_count)
 
@@ -274,7 +274,7 @@ class UserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCase):
         response = self._request_test_user_password_set_view(
             password=TEST_USER_PASSWORD_EDITED
         )
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.test_user.refresh_from_db()
         self.assertEqual(self.test_user.password, password_hash)
@@ -300,7 +300,7 @@ class UserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCase):
         response = self._request_test_user_password_set_multiple_view(
             password=TEST_USER_PASSWORD_EDITED
         )
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.test_user.refresh_from_db()
         self.assertEqual(self.test_user.password, password_hash)
@@ -388,7 +388,7 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
         self.metadata_type.save()
         self.document.metadata.create(metadata_type=self.metadata_type)
         self.grant_access(
-            obj=self.document, permission=permission_metadata_document_edit
+            obj=self.document, permission=permission_document_metadata_edit
         )
 
         response = self.get(
@@ -407,7 +407,7 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
         self.metadata_type.save()
         self.document.metadata.create(metadata_type=self.metadata_type)
         self.grant_access(
-            obj=self.document, permission=permission_metadata_document_edit
+            obj=self.document, permission=permission_document_metadata_edit
         )
 
         response = self.get(

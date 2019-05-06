@@ -66,7 +66,7 @@ class DocumentEventsTestCase(GenericDocumentViewTestCase):
         Action.objects.all().delete()
 
         response = self._request_test_document_preview_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(list(Action.objects.any(obj=self.test_document)), [])
 

@@ -79,7 +79,7 @@ class SignaturesViewTestCase(SignaturesTestMixin, GenericDocumentViewTestCase):
         self._create_test_detached_signature()
 
         response = self._request_document_version_signature_details_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_signature_detail_view_with_access(self):
         self._create_test_key()
@@ -186,7 +186,7 @@ class SignaturesViewTestCase(SignaturesTestMixin, GenericDocumentViewTestCase):
         )
 
         response = self._request_document_version_signature_delete_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
     def test_signature_delete_view_with_access(self):

@@ -3,20 +3,19 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib import messages
 from django.core.files.base import ContentFile
 from django.db import transaction
-from django.db.utils import IntegrityError
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.generics import (
     AddRemoveView, ConfirmView, FormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectDetailView,
     SingleObjectDynamicFormCreateView, SingleObjectDynamicFormEditView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_edit
@@ -366,7 +365,7 @@ class SetupWorkflowStateActionListView(SingleObjectListView):
     def get_form_schema(self):
         return {'fields': self.get_class().fields}
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_workflow_state().actions.all()
 
     def get_workflow_state(self):
@@ -403,7 +402,10 @@ class SetupWorkflowStateActionSelectionView(FormView):
 # Workflow states
 
 
-class SetupWorkflowStateCreateView(SingleObjectCreateView):
+class SetupWorkflowStateCreateView(ExternalObjectMixin, SingleObjectCreateView):
+    external_object_class = Workflow
+    external_object_permission = permission_workflow_edit
+    external_object_pk_url_kwarg = 'pk'
     form_class = WorkflowStateForm
 
     def get_extra_context(self):
@@ -414,34 +416,26 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
             ) % self.get_workflow()
         }
 
-    def get_object_list(self):
+    def get_instance_extra_data(self):
+        return {'workflow': self.get_workflow()}
+
+    def get_source_queryset(self):
         return self.get_workflow().states.all()
 
     def get_success_url(self):
         return reverse(
-            viewname='document_states:setup_workflow_state_list', kwargs={
-                'pk': self.kwargs['pk']
-            }
+            viewname='document_states:setup_workflow_state_list',
+            kwargs={'pk': self.kwargs['pk']}
         )
 
     def get_workflow(self):
-        workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
-        AccessControlList.objects.check_access(
-            obj=workflow, permissions=(permission_workflow_edit,),
-            user=self.request.user
-        )
-        return workflow
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.workflow = self.get_workflow()
-        self.object.save()
-        return super(SetupWorkflowStateCreateView, self).form_valid(form)
+        return self.get_external_object()
 
 
 class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
     model = WorkflowState
     object_permission = permission_workflow_edit
+    pk_url_kwarg = 'pk'
 
     def get_extra_context(self):
         return {
@@ -450,28 +444,18 @@ class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
             'workflow_instance': self.get_object().workflow,
         }
 
-    def get_object_list(self):
-        return self.get_workflow().states.all()
-
     def get_success_url(self):
         return reverse(
             viewname='document_states:setup_workflow_state_list',
             kwargs={'pk': self.get_object().workflow.pk}
         )
-
-    def get_workflow(self):
-        workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
-        AccessControlList.objects.check_access(
-            obj=workflow, permissions=(permission_workflow_edit,),
-            user=self.request.user
-        )
-        return workflow
 
 
 class SetupWorkflowStateEditView(SingleObjectEditView):
     form_class = WorkflowStateForm
     model = WorkflowState
     object_permission = permission_workflow_edit
+    pk_url_kwarg = 'pk'
 
     def get_extra_context(self):
         return {
@@ -487,27 +471,19 @@ class SetupWorkflowStateEditView(SingleObjectEditView):
         )
 
 
-class SetupWorkflowStateListView(SingleObjectListView):
+class SetupWorkflowStateListView(ExternalObjectMixin, SingleObjectListView):
+    external_object_class = Workflow
+    external_object_permission = permission_workflow_view
+    external_object_pk_url_kwarg = 'pk'
     object_permission = permission_workflow_view
-
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_workflow(), permissions=(permission_workflow_view,),
-            user=request.user
-        )
-
-        return super(
-            SetupWorkflowStateListView, self
-        ).dispatch(request, *args, **kwargs)
 
     def get_extra_context(self):
         return {
-            'hide_link': True,
             'hide_object': True,
             'no_results_icon': icon_workflow_state,
             'no_results_main_link': link_setup_workflow_state_create.resolve(
                 context=RequestContext(
-                    request=self.request, dict_={'object': self.get_workflow()}
+                    self.request, {'object': self.get_workflow()}
                 )
             ),
             'no_results_text': _(
@@ -520,34 +496,21 @@ class SetupWorkflowStateListView(SingleObjectListView):
             'title': _('States of workflow: %s') % self.get_workflow()
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_workflow().states.all()
 
     def get_workflow(self):
-        return get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
+        return self.get_external_object()
 
 
 # Transitions
 
 
-class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
+class SetupWorkflowTransitionCreateView(ExternalObjectMixin, SingleObjectCreateView):
+    external_object_class = Workflow
+    external_object_permission = permission_workflow_edit
+    external_object_pk_url_kwarg = 'pk'
     form_class = WorkflowTransitionForm
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.workflow = self.get_workflow()
-        try:
-            self.object.save()
-        except IntegrityError:
-            messages.error(
-                message=_('Unable to save transition; integrity error.'),
-                request=self.request
-            )
-            return super(
-                SetupWorkflowTransitionCreateView, self
-            ).form_invalid(form)
-        else:
-            return HttpResponseRedirect(self.get_success_url())
 
     def get_extra_context(self):
         return {
@@ -564,7 +527,10 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
         kwargs['workflow'] = self.get_workflow()
         return kwargs
 
-    def get_object_list(self):
+    def get_instance_extra_data(self):
+        return {'workflow': self.get_workflow()}
+
+    def get_source_queryset(self):
         return self.get_workflow().transitions.all()
 
     def get_success_url(self):
@@ -574,17 +540,13 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
         )
 
     def get_workflow(self):
-        workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
-        AccessControlList.objects.check_access(
-            obj=workflow, permissions=(permission_workflow_edit,),
-            user=self.request.user
-        )
-        return workflow
+        return self.get_external_object()
 
 
 class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
     model = WorkflowTransition
     object_permission = permission_workflow_edit
+    pk_url_kwarg = 'pk'
 
     def get_extra_context(self):
         return {
@@ -604,6 +566,7 @@ class SetupWorkflowTransitionEditView(SingleObjectEditView):
     form_class = WorkflowTransitionForm
     model = WorkflowTransition
     object_permission = permission_workflow_edit
+    pk_url_kwarg = 'pk'
 
     def get_extra_context(self):
         return {
@@ -626,17 +589,19 @@ class SetupWorkflowTransitionEditView(SingleObjectEditView):
         )
 
 
-class SetupWorkflowTransitionListView(SingleObjectListView):
+class SetupWorkflowTransitionListView(ExternalObjectMixin, SingleObjectListView):
+    external_object_class = Workflow
+    external_object_permission = permission_workflow_view
+    external_object_pk_url_kwarg = 'pk'
     object_permission = permission_workflow_view
 
     def get_extra_context(self):
         return {
-            'hide_link': True,
             'hide_object': True,
             'no_results_icon': icon_workflow_transition,
             'no_results_main_link': link_setup_workflow_transition_create.resolve(
                 context=RequestContext(
-                    request=self.request, dict_={'object': self.get_workflow()}
+                    self.request, {'object': self.get_workflow()}
                 )
             ),
             'no_results_text': _(
@@ -652,24 +617,20 @@ class SetupWorkflowTransitionListView(SingleObjectListView):
             ) % self.get_workflow()
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_workflow().transitions.all()
 
     def get_workflow(self):
-        return get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
+        return self.get_external_object()
 
 
-class SetupWorkflowTransitionTriggerEventListView(FormView):
+class SetupWorkflowTransitionTriggerEventListView(ExternalObjectMixin, FormView):
+    external_object_class = WorkflowTransition
+    external_object_permission = permission_workflow_edit
+    external_object_pk_url_kwarg = 'pk'
     form_class = WorkflowTransitionTriggerEventRelationshipFormSet
-    submodel = StoredEventType
 
     def dispatch(self, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_object().workflow,
-            permissions=(permission_workflow_edit,),
-            user=self.request.user
-        )
-
         EventType.refresh()
         return super(
             SetupWorkflowTransitionTriggerEventListView, self
@@ -684,6 +645,7 @@ class SetupWorkflowTransitionTriggerEventListView(FormView):
                 message=_(
                     'Error updating workflow transition trigger events; %s'
                 ) % exception, request=self.request
+
             )
         else:
             messages.success(
@@ -697,7 +659,7 @@ class SetupWorkflowTransitionTriggerEventListView(FormView):
         ).form_valid(form=form)
 
     def get_object(self):
-        return get_object_or_404(klass=WorkflowTransition, pk=self.kwargs['pk'])
+        return self.get_external_object()
 
     def get_extra_context(self):
         return {

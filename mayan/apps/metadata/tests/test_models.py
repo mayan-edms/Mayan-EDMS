@@ -21,12 +21,12 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
     def setUp(self):
         super(MetadataTestCase, self).setUp()
         self.test_document_type.metadata.create(
-            metadata_type=self.metadata_type
+            metadata_type=self.test_metadata_type
         )
 
     def test_no_default(self):
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.metadata_type
+            document=self.test_document, metadata_type=self.test_metadata_type
         )
 
         document_metadata.full_clean()
@@ -35,11 +35,11 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         self.assertEqual(self.test_document.metadata_value_of.test, None)
 
     def test_default(self):
-        self.metadata_type.default = TEST_DEFAULT_VALUE
-        self.metadata_type.save()
+        self.test_metadata_type.default = TEST_DEFAULT_VALUE
+        self.test_metadata_type.save()
 
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.metadata_type
+            document=self.test_document, metadata_type=self.test_metadata_type
         )
 
         document_metadata.full_clean()
@@ -50,11 +50,11 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         )
 
     def test_lookup_with_incorrect_value(self):
-        self.metadata_type.lookup = TEST_LOOKUP_TEMPLATE
-        self.metadata_type.save()
+        self.test_metadata_type.lookup = TEST_LOOKUP_TEMPLATE
+        self.test_metadata_type.save()
 
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.metadata_type,
+            document=self.test_document, metadata_type=self.test_metadata_type,
             value=TEST_INCORRECT_LOOKUP_VALUE
         )
 
@@ -64,11 +64,11 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
             document_metadata.save()
 
     def test_lookup_with_correct_value(self):
-        self.metadata_type.lookup = TEST_LOOKUP_TEMPLATE
-        self.metadata_type.save()
+        self.test_metadata_type.lookup = TEST_LOOKUP_TEMPLATE
+        self.test_metadata_type.save()
 
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.metadata_type,
+            document=self.test_document, metadata_type=self.test_metadata_type,
             value=TEST_CORRECT_LOOKUP_VALUE
         )
 
@@ -84,21 +84,21 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         Checks for GitLab issue #250
         Empty optional lookup metadata trigger validation error
         """
-        self.metadata_type.lookup = TEST_LOOKUP_TEMPLATE
-        self.metadata_type.save()
+        self.test_metadata_type.lookup = TEST_LOOKUP_TEMPLATE
+        self.test_metadata_type.save()
 
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.metadata_type
+            document=self.test_document, metadata_type=self.test_metadata_type
         )
 
         document_metadata.full_clean()
         document_metadata.save()
 
     def test_validation(self):
-        self.metadata_type.validation = TEST_DATE_VALIDATOR
+        self.test_metadata_type.validation = TEST_DATE_VALIDATOR
 
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.metadata_type,
+            document=self.test_document, metadata_type=self.test_metadata_type,
             value=TEST_INVALID_DATE
         )
 
@@ -115,10 +115,10 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         self.assertEqual(self.test_document.metadata_value_of.test, TEST_VALID_DATE)
 
     def test_parsing(self):
-        self.metadata_type.parser = TEST_DATE_PARSER
+        self.test_metadata_type.parser = TEST_DATE_PARSER
 
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.metadata_type,
+            document=self.test_document, metadata_type=self.test_metadata_type,
             value=TEST_INVALID_DATE
         )
 
@@ -140,53 +140,53 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         self.test_document_type.metadata.all().delete()
 
         self.assertFalse(
-            self.metadata_type.get_required_for(self.test_document_type)
+            self.test_metadata_type.get_required_for(self.test_document_type)
         )
 
         self.test_document_type.metadata.create(
-            metadata_type=self.metadata_type, required=False
+            metadata_type=self.test_metadata_type, required=False
         )
 
         self.assertFalse(
-            self.metadata_type.get_required_for(self.test_document_type)
+            self.test_metadata_type.get_required_for(self.test_document_type)
         )
 
         self.test_document_type.metadata.all().delete()
 
         self.test_document_type.metadata.create(
-            metadata_type=self.metadata_type, required=True
+            metadata_type=self.test_metadata_type, required=True
         )
 
         self.assertTrue(
-            self.metadata_type.get_required_for(self.test_document_type)
+            self.test_metadata_type.get_required_for(self.test_document_type)
         )
 
     def test_unicode_lookup(self):
         # Should NOT return a ValidationError, otherwise test fails
-        self.metadata_type.lookup = '测试1,测试2,test1,test2'
-        self.metadata_type.save()
-        self.metadata_type.validate_value(document_type=None, value='测试1')
+        self.test_metadata_type.lookup = '测试1,测试2,test1,test2'
+        self.test_metadata_type.save()
+        self.test_metadata_type.validate_value(document_type=None, value='测试1')
 
     def test_non_unicode_lookup(self):
         # Should NOT return a ValidationError, otherwise test fails
-        self.metadata_type.lookup = 'test1,test2'
-        self.metadata_type.save()
-        self.metadata_type.validate_value(document_type=None, value='test1')
+        self.test_metadata_type.lookup = 'test1,test2'
+        self.test_metadata_type.save()
+        self.test_metadata_type.validate_value(document_type=None, value='test1')
 
     def test_add_new_metadata_type_on_document_type_change(self):
         """
         When switching document types, add the required metadata of the new
         document type, the value to the default of the metadata type.
         """
-        self.metadata_type.default = TEST_DEFAULT_VALUE
-        self.metadata_type.save()
+        self.test_metadata_type.default = TEST_DEFAULT_VALUE
+        self.test_metadata_type.save()
 
         self.test_document_type_2 = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
         self.test_document_type_2.metadata.create(
-            metadata_type=self.metadata_type, required=True
+            metadata_type=self.test_metadata_type, required=True
         )
 
         self.test_document.set_document_type(document_type=self.test_document_type_2)
@@ -202,7 +202,7 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         old and new document types
         """
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.metadata_type,
+            document=self.test_document, metadata_type=self.test_metadata_type,
             value=TEST_DEFAULT_VALUE
         )
 
@@ -213,7 +213,7 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        self.test_document_type_2.metadata.create(metadata_type=self.metadata_type)
+        self.test_document_type_2.metadata.create(metadata_type=self.test_metadata_type)
 
         self.test_document.set_document_type(document_type=self.test_document_type_2)
 
@@ -222,7 +222,7 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
             self.test_document.metadata.first().value, TEST_DEFAULT_VALUE
         )
         self.assertEqual(
-            self.test_document.metadata.first().metadata_type, self.metadata_type
+            self.test_document.metadata.first().metadata_type, self.test_metadata_type
         )
 
     def test_delete_metadata_value_on_document_type_change(self):
@@ -231,7 +231,7 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         new document type
         """
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.metadata_type,
+            document=self.test_document, metadata_type=self.test_metadata_type,
             value=TEST_DEFAULT_VALUE
         )
 
@@ -252,7 +252,7 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         new document type
         """
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.metadata_type,
+            document=self.test_document, metadata_type=self.test_metadata_type,
             value=TEST_DEFAULT_VALUE
         )
 
@@ -264,7 +264,7 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         )
 
         self.test_document_type_2.metadata.create(
-            metadata_type=self.metadata_type, required=True
+            metadata_type=self.test_metadata_type, required=True
         )
 
         self.test_document.set_document_type(document_type=self.test_document_type_2)
@@ -274,5 +274,5 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
             self.test_document.metadata.first().value, TEST_DEFAULT_VALUE
         )
         self.assertEqual(
-            self.test_document.metadata.first().metadata_type, self.metadata_type
+            self.test_document.metadata.first().metadata_type, self.test_metadata_type
         )

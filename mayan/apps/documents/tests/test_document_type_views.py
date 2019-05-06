@@ -56,7 +56,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
 
     def test_document_type_delete_view_no_permission(self):
         response = self._request_document_type_delete()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(DocumentType.objects.count(), 1)
 
@@ -84,7 +84,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
     def test_document_type_edit_view_no_permission(self):
         response = self._request_document_type_edit()
 
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
         self.test_document_type.refresh_from_db()
 
         self.assertEqual(
@@ -123,7 +123,7 @@ class DocumentTypeQuickLabelViewsTestCase(DocumentTypeQuickLabelTestMixin, Gener
         )
 
         response = self._request_quick_label_create()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(self.test_document_type.filenames.count(), 0)
 
@@ -146,7 +146,7 @@ class DocumentTypeQuickLabelViewsTestCase(DocumentTypeQuickLabelTestMixin, Gener
     def test_document_type_quick_label_delete_no_access(self):
         self._create_test_quick_label()
         response = self._request_quick_label_delete()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
             self.test_document_type.filenames.count(), 1
@@ -178,7 +178,7 @@ class DocumentTypeQuickLabelViewsTestCase(DocumentTypeQuickLabelTestMixin, Gener
         self._create_test_quick_label()
 
         response = self._request_quick_label_edit()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.test_document_type_filename.refresh_from_db()
         self.assertEqual(
@@ -212,7 +212,7 @@ class DocumentTypeQuickLabelViewsTestCase(DocumentTypeQuickLabelTestMixin, Gener
         self._create_test_quick_label()
 
         response = self._request_quick_label_list_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_type_quick_label_list_with_access(self):
         self._create_test_quick_label()

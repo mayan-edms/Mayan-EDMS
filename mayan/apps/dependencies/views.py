@@ -49,7 +49,7 @@ class DependencyGroupEntryListView(SingleObjectListView):
             'title': _('Entries for dependency group: %s') % self.get_object(),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_object().get_entries()
 
     def get_object(self):
@@ -75,7 +75,7 @@ class DependencyGroupListView(SingleObjectListView):
             'title': _('Dependency groups'),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return DependencyGroup.get_all()
 
 
@@ -121,7 +121,7 @@ class DependencyGroupEntryDetailView(SingleObjectListView):
                 ]
             )
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_dependency_group_entry().get_dependencies()
 
 

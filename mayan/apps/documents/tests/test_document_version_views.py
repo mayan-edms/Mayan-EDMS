@@ -20,7 +20,7 @@ class DocumentVersionTestCase(DocumentVersionTestMixin, GenericDocumentViewTestC
         self._upload_new_version()
 
         response = self._request_document_version_list_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_version_list_with_access(self):
         self._upload_new_version()
@@ -46,7 +46,7 @@ class DocumentVersionTestCase(DocumentVersionTestMixin, GenericDocumentViewTestC
         response = self._request_document_version_revert_view(
             document_version=first_version
         )
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(self.document.versions.count(), 2)
 

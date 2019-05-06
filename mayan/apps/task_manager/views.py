@@ -16,7 +16,7 @@ class QueueListView(SingleObjectListView):
     }
     view_permission = permission_task_view
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return CeleryQueue.all()
 
 
@@ -33,7 +33,7 @@ class QueueActiveTaskListView(SingleObjectListView):
     def get_object(self):
         return CeleryQueue.get(queue_name=self.kwargs['queue_name'])
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         try:
             return self.get_task_list()
         except Exception as exception:

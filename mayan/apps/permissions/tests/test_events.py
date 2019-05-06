@@ -36,7 +36,7 @@ class RoleEventsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
         Action.objects.all().delete()
 
         response = self._request_test_role_edit_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
         self.assertEqual(Action.objects.count(), 0)
 
     def test_role_edited_event_with_access(self):

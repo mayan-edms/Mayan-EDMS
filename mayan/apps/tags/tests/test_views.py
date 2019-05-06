@@ -38,7 +38,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
         tag_count = Tag.objects.count()
 
         response = self._request_test_tag_delete_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Tag.objects.count(), tag_count)
 
@@ -60,7 +60,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
         tag_count = Tag.objects.count()
 
         response = self._request_test_tag_delete_multiple_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Tag.objects.count(), tag_count)
 
@@ -82,7 +82,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
         tag_label = self.test_tag.label
 
         response = self._request_test_tag_edit_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.test_tag.refresh_from_db()
         self.assertEqual(self.test_tag.label, tag_label)
@@ -131,9 +131,7 @@ class TagDocumentViewTestCase(TagTestMixin, TagViewTestMixin, GenericDocumentVie
         self._create_test_tag()
 
         response = self._request_test_document_tag_attach_view()
-        # Show same view with a warning message that ID XX is not one of the
-        # available choices.
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
@@ -143,7 +141,7 @@ class TagDocumentViewTestCase(TagTestMixin, TagViewTestMixin, GenericDocumentVie
         self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
 
         response = self._request_test_document_tag_attach_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
@@ -172,7 +170,7 @@ class TagDocumentViewTestCase(TagTestMixin, TagViewTestMixin, GenericDocumentVie
         self._create_test_tag()
 
         response = self._request_test_document_multiple_tag_multiple_attach_view()
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
@@ -182,7 +180,7 @@ class TagDocumentViewTestCase(TagTestMixin, TagViewTestMixin, GenericDocumentVie
         self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
 
         response = self._request_test_document_multiple_tag_multiple_attach_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
@@ -212,7 +210,7 @@ class TagDocumentViewTestCase(TagTestMixin, TagViewTestMixin, GenericDocumentVie
         self.test_document.tags.add(self.test_tag)
 
         response = self._request_test_document_tag_multiple_remove_view()
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
@@ -223,7 +221,7 @@ class TagDocumentViewTestCase(TagTestMixin, TagViewTestMixin, GenericDocumentVie
         self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
 
         response = self._request_test_document_tag_multiple_remove_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
@@ -255,7 +253,7 @@ class TagDocumentViewTestCase(TagTestMixin, TagViewTestMixin, GenericDocumentVie
         self.test_document.tags.add(self.test_tag)
 
         response = self._request_test_document_multiple_tag_remove_view()
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
@@ -266,7 +264,7 @@ class TagDocumentViewTestCase(TagTestMixin, TagViewTestMixin, GenericDocumentVie
         self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
 
         response = self._request_test_document_multiple_tag_remove_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 

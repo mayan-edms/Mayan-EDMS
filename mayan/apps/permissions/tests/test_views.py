@@ -31,13 +31,13 @@ class RoleViewsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(Role.objects.count(), role_count + 1)
 
-    def test_role_delete_view_no_access(self):
+    def test_role_delete_view_no_permission(self):
         self._create_test_role()
 
         role_count = Role.objects.count()
 
         response = self._request_test_role_delete_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Role.objects.count(), role_count)
 
@@ -52,13 +52,13 @@ class RoleViewsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(Role.objects.count(), role_count - 1)
 
-    def test_role_edit_view_no_access(self):
+    def test_role_edit_view_no_permission(self):
         self._create_test_role()
         role_label = self.test_role.label
 
         response = self._request_test_role_edit_view()
 
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.test_role.refresh_from_db()
         self.assertEqual(self.test_role.label, role_label)
@@ -75,7 +75,7 @@ class RoleViewsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
         self.test_role.refresh_from_db()
         self.assertNotEqual(self.test_role.label, role_label)
 
-    def test_role_list_view_no_access(self):
+    def test_role_list_view_no_permission(self):
         self._create_test_role()
 
         response = self._request_test_role_list_view()
@@ -93,7 +93,7 @@ class RoleViewsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
             response=response, text=self.test_role.label, status_code=200
         )
 
-    def test_role_permissions_view_no_access(self):
+    def test_role_permissions_view_no_permission(self):
         self._create_test_role()
 
         response = self._request_test_role_permissions_view()
@@ -108,7 +108,7 @@ class RoleViewsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
         response = self._request_test_role_permissions_view()
         self.assertEqual(response.status_code, 200)
 
-    def test_role_groups_view_no_access(self):
+    def test_role_groups_view_no_permission(self):
         self._create_test_role()
 
         response = self._request_test_role_groups_view()
@@ -123,7 +123,7 @@ class RoleViewsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
 
 
 class GroupRoleViewTestCase(GroupTestMixin, GroupRoleViewTestMixin, RoleTestMixin, GenericViewTestCase):
-    def test_group_roles_view_no_access(self):
+    def test_group_roles_view_no_permission(self):
         self._create_test_group()
 
         response = self._request_test_group_roles_view()

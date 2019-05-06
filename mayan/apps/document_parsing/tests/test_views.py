@@ -30,7 +30,7 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
 
     def test_document_content_view_no_permissions(self):
         response = self._request_document_content_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_content_view_with_access(self):
         self.grant_access(
@@ -51,7 +51,7 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
 
     def test_document_page_content_view_no_permissions(self):
         response = self._request_document_page_content_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_page_content_view_with_access(self):
         self.grant_access(
@@ -96,7 +96,7 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
 
     def test_document_type_parsing_settings_view_no_permission(self):
         response = self._request_test_document_type_parsing_settings()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_type_parsing_settings_view_with_access(self):
         self.grant_access(

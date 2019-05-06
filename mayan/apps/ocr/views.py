@@ -10,6 +10,7 @@ from mayan.apps.common.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectDetailView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
 from mayan.apps.documents.models import Document, DocumentPage, DocumentType
 
@@ -126,21 +127,23 @@ class DocumentTypeSubmitView(FormView):
         return reverse(viewname='common:tools_list')
 
 
-class DocumentTypeSettingsEditView(SingleObjectEditView):
+class DocumentTypeSettingsEditView(ExternalObjectMixin, SingleObjectEditView):
+    external_object_class = DocumentType
+    external_object_permission = permission_document_type_ocr_setup
+    external_object_pk_url_kwarg = 'pk'
     fields = ('auto_ocr',)
-    object_permission = permission_document_type_ocr_setup
     post_action_redirect = reverse_lazy(
         viewname='documents:document_type_list'
     )
 
     def get_document_type(self):
-        return get_object_or_404(klass=DocumentType, pk=self.kwargs['pk'])
+        return self.external_object
 
     def get_extra_context(self):
         return {
             'object': self.get_document_type(),
             'title': _(
-                'Edit OCR settings for document type: %s'
+                'Edit OCR settings for document type: %s.'
             ) % self.get_document_type()
         }
 
@@ -155,7 +158,7 @@ class EntryListView(SingleObjectListView):
     }
     view_permission = permission_document_type_ocr_setup
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return DocumentVersionOCRError.objects.all()
 
 
@@ -172,7 +175,7 @@ class DocumentOCRErrorsListView(SingleObjectListView):
             'title': _('OCR errors for document: %s') % self.get_document(),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_document().latest_version.ocr_errors.all()
 
 

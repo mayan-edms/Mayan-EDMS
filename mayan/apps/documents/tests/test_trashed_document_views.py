@@ -10,24 +10,25 @@ from .base import GenericDocumentViewTestCase
 
 
 class TrashedDocumentTestCase(GenericDocumentViewTestCase):
-    def _request_document_restore_view(self):
-        return self.post(
+    def _request_document_restore_get_view(self):
+        return self.get(
             viewname='documents:document_restore', kwargs={
                 'pk': self.test_document.pk
             }
         )
 
-    def test_document_restore_view_no_permission(self):
+    def test_document_restore_get_view_no_permission(self):
         self.test_document.delete()
         self.assertEqual(Document.objects.count(), 0)
 
-        response = self._request_document_restore_view()
-        self.assertEqual(response.status_code, 302)
+        document_count = Document.objects.count()
 
-        self.assertEqual(DeletedDocument.objects.count(), 1)
-        self.assertEqual(Document.objects.count(), 0)
+        response = self._request_document_restore_get_view()
+        self.assertEqual(response.status_code, 404)
 
-    def test_document_restore_view_with_access(self):
+        self.assertEqual(Document.objects.count(), document_count)
+
+    def test_document_restore_get_view_with_access(self):
         self.test_document.delete()
         self.assertEqual(Document.objects.count(), 0)
 
@@ -35,56 +36,118 @@ class TrashedDocumentTestCase(GenericDocumentViewTestCase):
             obj=self.test_document, permission=permission_document_restore
         )
 
-        response = self._request_document_restore_view()
+        document_count = Document.objects.count()
+
+        response = self._request_document_restore_get_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(Document.objects.count(), document_count)
+
+    def _request_document_restore_post_view(self):
+        return self.post(
+            viewname='documents:document_restore', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def test_document_restore_post_view_no_permission(self):
+        self.test_document.delete()
+        self.assertEqual(Document.objects.count(), 0)
+
+        response = self._request_document_restore_post_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(Document.objects.count(), 0)
+
+    def test_document_restore_post_view_with_access(self):
+        self.test_document.delete()
+        self.assertEqual(Document.objects.count(), 0)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_restore
+        )
+
+        response = self._request_document_restore_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 1)
 
-    def _request_document_trash_view(self):
+    def _request_document_trash_get_view(self):
+        return self.get(
+            viewname='documents:document_trash', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def test_document_trash_get_view_no_permissions(self):
+        document_count = Document.objects.count()
+
+        response = self._request_document_trash_get_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(Document.objects.count(), document_count)
+
+    def test_document_trash_get_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_trash
+        )
+
+        document_count = Document.objects.count()
+
+        response = self._request_document_trash_get_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(Document.objects.count(), document_count)
+
+    def _request_document_trash_post_view(self):
         return self.post(
             viewname='documents:document_trash', kwargs={
                 'pk': self.test_document.pk
             }
         )
 
-    def test_document_trash_no_permissions(self):
-        response = self._request_document_trash_view()
-        self.assertEqual(response.status_code, 302)
+    def test_document_trash_post_view_no_permissions(self):
+        response = self._request_document_trash_post_view()
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 1)
 
-    def test_document_trash_with_access(self):
+    def test_document_trash_post_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_trash
         )
 
-        response = self._request_document_trash_view()
+        response = self._request_document_trash_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(DeletedDocument.objects.count(), 1)
         self.assertEqual(Document.objects.count(), 0)
 
-    def _request_document_delete_view(self):
-        return self.post(
+    def _request_document_delete_get_view(self):
+        return self.get(
             viewname='documents:document_delete', kwargs={
                 'pk': self.test_document.pk
             }
         )
 
-    def test_document_delete_no_permissions(self):
+    def test_document_delete_get_view_no_permissions(self):
         self.test_document.delete()
         self.assertEqual(Document.objects.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 1)
 
-        response = self._request_document_delete_view()
-        self.assertEqual(response.status_code, 302)
+        trashed_document_count = DeletedDocument.objects.count()
 
-        self.assertEqual(Document.objects.count(), 0)
-        self.assertEqual(DeletedDocument.objects.count(), 1)
+        response = self._request_document_delete_get_view()
+        self.assertEqual(response.status_code, 404)
 
-    def test_document_delete_with_access(self):
+        self.assertEqual(
+            DeletedDocument.objects.count(), trashed_document_count
+        )
+
+    def test_document_delete_get_view_with_access(self):
         self.test_document.delete()
         self.assertEqual(Document.objects.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 1)
@@ -93,7 +156,43 @@ class TrashedDocumentTestCase(GenericDocumentViewTestCase):
             obj=self.test_document, permission=permission_document_delete
         )
 
-        response = self._request_document_delete_view()
+        trashed_document_count = DeletedDocument.objects.count()
+
+        response = self._request_document_delete_get_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(
+            DeletedDocument.objects.count(), trashed_document_count
+        )
+
+    def _request_document_delete_post_view(self):
+        return self.post(
+            viewname='documents:document_delete', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def test_document_delete_post_view_no_permissions(self):
+        self.test_document.delete()
+        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+
+        response = self._request_document_delete_post_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+
+    def test_document_delete_post_view_with_access(self):
+        self.test_document.delete()
+        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_delete
+        )
+
+        response = self._request_document_delete_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(DeletedDocument.objects.count(), 0)

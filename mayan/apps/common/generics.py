@@ -1,7 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.core.exceptions import ImproperlyConfigured
+from django.core.exceptions import ImproperlyConfigured, ValidationError
 from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -36,7 +36,7 @@ from .literals import (
 from .mixins import (
     DeleteExtraDataMixin, DynamicFormViewMixin, ExternalObjectMixin,
     ExtraContextMixin, FormExtraKwargsMixin, MultipleObjectMixin,
-    ObjectActionMixin, ObjectListPermissionFilterMixin, ObjectNameMixin,
+    ObjectActionMixin, ObjectNameMixin,
     ObjectPermissionCheckMixin, RedirectionMixin, RestrictedQuerysetMixin,
     ViewPermissionCheckMixin
 )
@@ -138,7 +138,10 @@ class MultiFormView(DjangoFormView):
             return self.forms_invalid(forms=self.forms)
 
 
-class AddRemoveView(ExternalObjectMixin, ExtraContextMixin, ViewPermissionCheckMixin, RestrictedQuerysetMixin, MultiFormView):
+class AddRemoveView(
+    ExternalObjectMixin, ExtraContextMixin, ViewPermissionCheckMixin,
+    RestrictedQuerysetMixin, MultiFormView
+):
     form_classes = {'form_available': ChoiceForm, 'form_added': ChoiceForm}
     list_added_help_text = _(
         'Select entries to be removed. Hold Control to select multiple '
@@ -384,15 +387,21 @@ class AddRemoveView(ExternalObjectMixin, ExtraContextMixin, ViewPermissionCheckM
         )
 
 
-class ConfirmView(ObjectListPermissionFilterMixin, ObjectPermissionCheckMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
+class ConfirmView(
+    RestrictedQuerysetMixin, ViewPermissionCheckMixin, ExtraContextMixin,
+    RedirectionMixin, TemplateView
+):
     template_name = 'appearance/generic_confirm.html'
 
     def post(self, request, *args, **kwargs):
         self.view_action()
-        return HttpResponseRedirect(self.get_success_url())
+        return HttpResponseRedirect(redirect_to=self.get_success_url())
 
 
-class FormView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, FormExtraKwargsMixin, DjangoFormView):
+class FormView(
+    ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin,
+    FormExtraKwargsMixin, DjangoFormView
+):
     template_name = 'appearance/generic_form.html'
 
 
@@ -400,7 +409,11 @@ class DynamicFormView(DynamicFormViewMixin, FormView):
     pass
 
 
-class MultipleObjectFormActionView(ObjectActionMixin, MultipleObjectMixin, FormExtraKwargsMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
+class MultipleObjectFormActionView(
+    ExtraContextMixin, ObjectActionMixin, ViewPermissionCheckMixin,
+    RestrictedQuerysetMixin, MultipleObjectMixin, FormExtraKwargsMixin,
+    RedirectionMixin, DjangoFormView
+):
     """
     This view will present a form and upon receiving a POST request will
     perform an action on an object or queryset
@@ -413,7 +426,7 @@ class MultipleObjectFormActionView(ObjectActionMixin, MultipleObjectMixin, FormE
         if self.__class__.mro()[0].get_queryset != MultipleObjectFormActionView.get_queryset:
             raise ImproperlyConfigured(
                 '%(cls)s is overloading the get_queryset method. Subclasses '
-                'should implement the get_object_list method instead. ' % {
+                'should implement the get_source_queryset method instead. ' % {
                     'cls': self.__class__.__name__
                 }
             )
@@ -428,23 +441,50 @@ class MultipleObjectFormActionView(ObjectActionMixin, MultipleObjectMixin, FormE
         try:
             return super(MultipleObjectFormActionView, self).get_queryset()
         except ImproperlyConfigured:
-            self.queryset = self.get_object_list()
+            self.queryset = self.get_source_queryset()
             return super(MultipleObjectFormActionView, self).get_queryset()
 
 
-class MultipleObjectConfirmActionView(ObjectActionMixin, MultipleObjectMixin, ObjectListPermissionFilterMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
+class MultipleObjectConfirmActionView(
+    ExtraContextMixin, ObjectActionMixin, ViewPermissionCheckMixin,
+    RestrictedQuerysetMixin, MultipleObjectMixin, RedirectionMixin, TemplateView
+):
     template_name = 'appearance/generic_confirm.html'
+
+    def __init__(self, *args, **kwargs):
+        result = super(MultipleObjectConfirmActionView, self).__init__(*args, **kwargs)
+
+        if self.__class__.mro()[0].get_queryset != MultipleObjectConfirmActionView.get_queryset:
+            raise ImproperlyConfigured(
+                '%(cls)s is overloading the get_queryset method. Subclasses '
+                'should implement the get_source_queryset method instead. ' % {
+                    'cls': self.__class__.__name__
+                }
+            )
+
+        return result
+
+    def get_queryset(self):
+        try:
+            return super(MultipleObjectConfirmActionView, self).get_queryset()
+        except ImproperlyConfigured:
+            self.queryset = self.get_source_queryset()
+            return super(MultipleObjectConfirmActionView, self).get_queryset()
 
     def post(self, request, *args, **kwargs):
         self.view_action()
-        return HttpResponseRedirect(self.get_success_url())
+        return HttpResponseRedirect(redirect_to=self.get_success_url())
 
 
 class SimpleView(ViewPermissionCheckMixin, ExtraContextMixin, TemplateView):
     pass
 
 
-class SingleObjectCreateView(ObjectNameMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, FormExtraKwargsMixin, CreateView):
+class SingleObjectCreateView(
+    ObjectNameMixin, ViewPermissionCheckMixin, ExtraContextMixin,
+    RedirectionMixin, FormExtraKwargsMixin, CreateView
+):
+    error_message_duplicate = None
     template_name = 'appearance/generic_form.html'
 
     def form_valid(self, form):
@@ -462,41 +502,77 @@ class SingleObjectCreateView(ObjectNameMixin, ViewPermissionCheckMixin, ExtraCon
             save_extra_data = {}
 
         try:
+            self.object.validate_unique()
+        except ValidationError as exception:
+            context = self.get_context_data()
+
+            error_message = self.get_error_message_duplicate() or _(
+                'Duplicate data error: %(error)s'
+            ) % {
+                'error': '\n'.join(exception.messages)
+            }
+
+            messages.error(
+                message=error_message, request=self.request
+            )
+            return super(
+                SingleObjectCreateView, self
+            ).form_invalid(form=form)
+
+        try:
             self.object.save(**save_extra_data)
         except Exception as exception:
             context = self.get_context_data()
 
             messages.error(
-                self.request,
-                _('%(object)s not created, error: %(error)s') % {
+                message=_('%(object)s not created, error: %(error)s') % {
                     'object': self.get_object_name(context=context),
                     'error': exception
-                }
+                }, request=self.request
             )
+            return super(
+                SingleObjectCreateView, self
+            ).form_invalid(form=form)
         else:
             context = self.get_context_data()
 
             messages.success(
-                self.request,
-                _(
+                message=_(
                     '%(object)s created successfully.'
-                ) % {'object': self.get_object_name(context=context)}
+                ) % {'object': self.get_object_name(context=context)},
+                request=self.request
             )
 
-        return HttpResponseRedirect(self.get_success_url())
+        return HttpResponseRedirect(redirect_to=self.get_success_url())
+
+    def get_error_message_duplicate(self):
+        return self.error_message_duplicate
 
 
-class SingleObjectDynamicFormCreateView(DynamicFormViewMixin, SingleObjectCreateView):
+class SingleObjectDynamicFormCreateView(
+    DynamicFormViewMixin, SingleObjectCreateView
+):
     pass
 
 
-class SingleObjectDeleteView(ObjectNameMixin, DeleteExtraDataMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
+class SingleObjectDeleteView(
+    ObjectNameMixin, DeleteExtraDataMixin, ViewPermissionCheckMixin,
+    RestrictedQuerysetMixin, ExtraContextMixin, RedirectionMixin, DeleteView
+):
     template_name = 'appearance/generic_confirm.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(SingleObjectDeleteView, self).get_context_data(**kwargs)
-        context.update({'delete_view': True})
-        return context
+    def __init__(self, *args, **kwargs):
+        result = super(SingleObjectDeleteView, self).__init__(*args, **kwargs)
+
+        if self.__class__.mro()[0].get_queryset != SingleObjectDeleteView.get_queryset:
+            raise ImproperlyConfigured(
+                '%(cls)s is overloading the get_queryset method. Subclasses '
+                'should implement the get_source_queryset method instead. ' % {
+                    'cls': self.__class__.__name__
+                }
+            )
+
+        return result
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -507,32 +583,66 @@ class SingleObjectDeleteView(ObjectNameMixin, DeleteExtraDataMixin, ViewPermissi
             result = super(SingleObjectDeleteView, self).delete(request, *args, **kwargs)
         except Exception as exception:
             messages.error(
-                self.request,
-                _('%(object)s not deleted, error: %(error)s.') % {
+                message=_('%(object)s not deleted, error: %(error)s.') % {
                     'object': object_name,
                     'error': exception
-                }
+                }, request=self.request
             )
 
             raise exception
         else:
             messages.success(
-                self.request,
-                _(
+                message=_(
                     '%(object)s deleted successfully.'
-                ) % {'object': object_name}
+                ) % {'object': object_name},
+                request=self.request
             )
 
             return result
 
+    def get_context_data(self, **kwargs):
+        context = super(SingleObjectDeleteView, self).get_context_data(**kwargs)
+        context.update({'delete_view': True})
+        return context
 
-class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, FormExtraKwargsMixin, ExtraContextMixin, ModelFormMixin, DetailView):
+    def get_queryset(self):
+        try:
+            return super(SingleObjectDeleteView, self).get_queryset()
+        except ImproperlyConfigured:
+            self.queryset = self.get_source_queryset()
+            return super(SingleObjectDeleteView, self).get_queryset()
+
+
+class SingleObjectDetailView(
+    ViewPermissionCheckMixin, RestrictedQuerysetMixin, FormExtraKwargsMixin,
+    ExtraContextMixin, ModelFormMixin, DetailView
+):
     template_name = 'appearance/generic_form.html'
+
+    def __init__(self, *args, **kwargs):
+        result = super(SingleObjectDetailView, self).__init__(*args, **kwargs)
+
+        if self.__class__.mro()[0].get_queryset != SingleObjectDetailView.get_queryset:
+            raise ImproperlyConfigured(
+                '%(cls)s is overloading the get_queryset method. Subclasses '
+                'should implement the get_source_queryset method instead. ' % {
+                    'cls': self.__class__.__name__
+                }
+            )
+
+        return result
 
     def get_context_data(self, **kwargs):
         context = super(SingleObjectDetailView, self).get_context_data(**kwargs)
         context.update({'read_only': True, 'form': self.get_form()})
         return context
+
+    def get_queryset(self):
+        try:
+            return super(SingleObjectDetailView, self).get_queryset()
+        except ImproperlyConfigured:
+            self.queryset = self.get_source_queryset()
+            return super(SingleObjectDetailView, self).get_queryset()
 
 
 class SingleObjectDownloadView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, VirtualDownloadView, SingleObjectMixin):
@@ -540,7 +650,10 @@ class SingleObjectDownloadView(ViewPermissionCheckMixin, ObjectPermissionCheckMi
     VirtualFile = VirtualFile
 
 
-class SingleObjectEditView(ObjectNameMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, FormExtraKwargsMixin, RedirectionMixin, UpdateView):
+class SingleObjectEditView(
+    ObjectNameMixin, ViewPermissionCheckMixin, RestrictedQuerysetMixin,
+    ExtraContextMixin, FormExtraKwargsMixin, RedirectionMixin, UpdateView
+):
     template_name = 'appearance/generic_form.html'
 
     def form_valid(self, form):
@@ -564,23 +677,22 @@ class SingleObjectEditView(ObjectNameMixin, ViewPermissionCheckMixin, ObjectPerm
             self.object.save(**save_extra_data)
         except Exception as exception:
             messages.error(
-                self.request,
-                _('%(object)s not updated, error: %(error)s.') % {
+                message=_('%(object)s not updated, error: %(error)s.') % {
                     'object': object_name,
                     'error': exception
-                }
+                }, request=self.request
             )
-
-            raise exception
+            return super(
+                SingleObjectEditView, self
+            ).form_invalid(form=form)
         else:
             messages.success(
-                self.request,
-                _(
+                message=_(
                     '%(object)s updated successfully.'
-                ) % {'object': object_name}
+                ) % {'object': object_name}, request=self.request
             )
 
-        return HttpResponseRedirect(self.get_success_url())
+        return HttpResponseRedirect(redirect_to=self.get_success_url())
 
     def get_object(self, queryset=None):
         obj = super(SingleObjectEditView, self).get_object(queryset=queryset)
@@ -592,11 +704,16 @@ class SingleObjectEditView(ObjectNameMixin, ViewPermissionCheckMixin, ObjectPerm
         return obj
 
 
-class SingleObjectDynamicFormEditView(DynamicFormViewMixin, SingleObjectEditView):
+class SingleObjectDynamicFormEditView(
+    DynamicFormViewMixin, SingleObjectEditView
+):
     pass
 
 
-class SingleObjectListView(PaginationMixin, ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):
+class SingleObjectListView(
+    PaginationMixin, ViewPermissionCheckMixin, RestrictedQuerysetMixin,
+    ExtraContextMixin, RedirectionMixin, ListView
+):
     template_name = 'appearance/generic_list.html'
 
     def __init__(self, *args, **kwargs):
@@ -605,7 +722,7 @@ class SingleObjectListView(PaginationMixin, ViewPermissionCheckMixin, ObjectList
         if self.__class__.mro()[0].get_queryset != SingleObjectListView.get_queryset:
             raise ImproperlyConfigured(
                 '%(cls)s is overloading the get_queryset method. Subclasses '
-                'should implement the get_object_list method instead. ' % {
+                'should implement the get_source_queryset method instead. ' % {
                     'cls': self.__class__.__name__
                 }
             )
@@ -631,7 +748,7 @@ class SingleObjectListView(PaginationMixin, ViewPermissionCheckMixin, ObjectList
         try:
             queryset = super(SingleObjectListView, self).get_queryset()
         except ImproperlyConfigured:
-            self.queryset = self.get_object_list()
+            self.queryset = self.get_source_queryset()
             queryset = super(SingleObjectListView, self).get_queryset()
 
         self.field_name = self.get_sort_field()

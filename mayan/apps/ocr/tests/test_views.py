@@ -27,7 +27,7 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
         self.test_document.submit_for_ocr()
 
         response = self._request_document_content_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_content_view_with_access(self):
         self.test_document.submit_for_ocr()
@@ -51,7 +51,7 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
         self.test_document.submit_for_ocr()
 
         response = self._request_document_page_content_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_page_content_view_with_access(self):
         self.test_document.submit_for_ocr()
@@ -73,7 +73,7 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
 
     def test_document_submit_view_no_permission(self):
         response = self._request_document_submit_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
             ''.join(self.test_document.latest_version.ocr_content()), ''
@@ -102,7 +102,7 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
 
     def test_multiple_document_submit_view_no_permission(self):
         response = self._request_multiple_document_submit_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
             ''.join(self.test_document.latest_version.ocr_content()), ''
@@ -159,7 +159,7 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
 
     def test_document_type_ocr_settings_view_no_permission(self):
         response = self._request_document_type_ocr_settings_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_type_ocr_settings_view_with_access(self):
         self.grant_access(

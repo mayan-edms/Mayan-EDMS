@@ -173,7 +173,7 @@ class UserCreateView(SingleObjectCreateView):
 
 class UserDeleteView(MultipleObjectConfirmActionView):
     object_permission = permission_user_delete
-    queryset = get_user_queryset()
+    source_queryset = get_user_queryset()
     success_message = _('User delete request performed on %(count)d user')
     success_message_plural = _(
         'User delete request performed on %(count)d users'
@@ -232,7 +232,7 @@ class UserDetailsView(SingleObjectDetailView):
     )
     object_permission = permission_user_view
     pk_url_kwarg = 'pk'
-    queryset = get_user_queryset()
+    source_queryset = get_user_queryset()
 
     def get_extra_context(self, **kwargs):
         return {
@@ -247,7 +247,7 @@ class UserEditView(SingleObjectEditView):
     post_action_redirect = reverse_lazy(
         viewname='user_management:user_list'
     )
-    queryset = get_user_queryset()
+    source_queryset = get_user_queryset()
 
     def get_extra_context(self):
         return {
@@ -306,7 +306,7 @@ class UserListView(SingleObjectListView):
             'title': _('Users'),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return get_user_queryset()
 
 

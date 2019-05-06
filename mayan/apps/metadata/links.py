@@ -6,8 +6,8 @@ from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.navigation.classes import Link
 
 from .permissions import (
-    permission_metadata_document_add, permission_metadata_document_edit,
-    permission_metadata_document_remove, permission_metadata_document_view,
+    permission_document_metadata_add, permission_document_metadata_edit,
+    permission_document_metadata_remove, permission_document_metadata_view,
     permission_metadata_type_create, permission_metadata_type_delete,
     permission_metadata_type_edit, permission_metadata_type_view
 )
@@ -15,13 +15,13 @@ from .permissions import (
 link_metadata_add = Link(
     args='object.pk',
     icon_class_path='mayan.apps.metadata.icons.icon_document_metadata_add',
-    permissions=(permission_metadata_document_add,), text=_('Add metadata'),
+    permissions=(permission_document_metadata_add,), text=_('Add metadata'),
     view='metadata:metadata_add',
 )
 link_metadata_edit = Link(
     args='object.pk',
     icon_class_path='mayan.apps.metadata.icons.icon_document_metadata_edit',
-    permissions=(permission_metadata_document_edit,),
+    permissions=(permission_document_metadata_edit,),
     text=_('Edit metadata'), view='metadata:metadata_edit'
 )
 link_metadata_multiple_add = Link(
@@ -39,13 +39,13 @@ link_metadata_multiple_remove = Link(
 link_metadata_remove = Link(
     args='object.pk',
     icon_class_path='mayan.apps.metadata.icons.icon_document_metadata_remove',
-    permissions=(permission_metadata_document_remove,),
+    permissions=(permission_document_metadata_remove,),
     text=_('Remove metadata'), view='metadata:metadata_remove',
 )
 link_metadata_view = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.metadata.icons.icon_document_metadata_view',
-    permissions=(permission_metadata_document_view,), text=_('Metadata'),
+    permissions=(permission_document_metadata_view,), text=_('Metadata'),
     view='metadata:metadata_view',
 )
 link_setup_document_type_metadata_types = Link(

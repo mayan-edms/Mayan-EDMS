@@ -3,27 +3,23 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import ImproperlyConfigured, PermissionDenied
-from django.db.models.query import QuerySet
-from django.http import HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, resolve_url
 from django.utils.translation import ungettext, ugettext_lazy as _
+from django.views.generic.detail import SingleObjectMixin
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.permissions import Permission
 
 from .exceptions import ActionError
 from .forms import DynamicForm
-
-__all__ = (
-    'DeleteExtraDataMixin', 'DynamicFormViewMixin', 'ExtraContextMixin',
-    'FormExtraKwargsMixin', 'MultipleObjectMixin', 'ObjectActionMixin',
-    'ObjectListPermissionFilterMixin', 'ObjectNameMixin',
-    'ObjectPermissionCheckMixin', 'RedirectionMixin',
-    'ViewPermissionCheckMixin'
-)
+from .literals import PK_LIST_SEPARATOR
 
 
 class DeleteExtraDataMixin(object):
+    """
+    Mixin to populate the extra data needed for delete views
+    """
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
         success_url = self.get_success_url()
@@ -44,7 +40,28 @@ class DynamicFormViewMixin(object):
         return data
 
 
+class ExtraContextMixin(object):
+    """
+    Mixin that allows views to pass extra context to the template much easier
+    than overloading .get_context_data().
+    """
+    extra_context = {}
+
+    def get_extra_context(self):
+        return self.extra_context
+
+    def get_context_data(self, **kwargs):
+        context = super(ExtraContextMixin, self).get_context_data(**kwargs)
+        context.update(self.get_extra_context())
+        return context
+
+
 class ExternalObjectMixin(object):
+    """
+    Mixin to allow views to load an object with minimal code but with all
+    the filtering and configurability possible. This object is often use as
+    the main or master object in multi object views.
+    """
     external_object_class = None
     external_object_permission = None
     external_object_pk_url_kwarg = 'pk'
@@ -100,21 +117,6 @@ class ExternalObjectMixin(object):
         return queryset
 
 
-class ExtraContextMixin(object):
-    """
-    Mixin that allows views to pass extra context to the template
-    """
-    extra_context = {}
-
-    def get_extra_context(self):
-        return self.extra_context
-
-    def get_context_data(self, **kwargs):
-        context = super(ExtraContextMixin, self).get_context_data(**kwargs)
-        context.update(self.get_extra_context())
-        return context
-
-
 class FormExtraKwargsMixin(object):
     """
     Mixin that allows a view to pass extra keyword arguments to forms
@@ -130,62 +132,103 @@ class FormExtraKwargsMixin(object):
         return result
 
 
-class MultipleInstanceActionMixin(object):
-    # TODO: Deprecated, replace views using this with
-    # MultipleObjectFormActionView or MultipleObjectConfirmActionView
-
-    model = None
-    success_message = _('Operation performed on %(count)d object')
-    success_message_plural = _('Operation performed on %(count)d objects')
-
-    def get_pk_list(self):
-        return self.request.GET.get(
-            'id_list', self.request.POST.get('id_list', '')
-        ).split(',')
-
-    def get_queryset(self):
-        return self.model.objects.filter(pk__in=self.get_pk_list())
-
-    def get_success_message(self, count):
-        return ungettext(
-            self.success_message,
-            self.success_message_plural,
-            count
-        ) % {
-            'count': count,
-        }
-
-    def post(self, request, *args, **kwargs):
-        count = 0
-        for instance in self.get_queryset():
-            try:
-                self.object_action(instance=instance)
-            except PermissionDenied:
-                pass
-            else:
-                count += 1
-
-        messages.success(
-            self.request,
-            self.get_success_message(count=count)
-        )
-
-        return HttpResponseRedirect(self.get_success_url())
-
-
-class MultipleObjectMixin(object):
+class MultipleObjectMixin(SingleObjectMixin):
     """
-    Mixin that allows a view to work on a single or multiple objects
+    Mixin that allows a view to work on a single or multiple objects. It can
+    receive a pk, a slug or a list of IDs via an id_list query.
+    The pk, slug, and ID list parameter name can be changed using the
+    attributes: pk_url_kwargs, slug_url_kwarg, and pk_list_key.
     """
-    model = None
-    object_permission = None
     pk_list_key = 'id_list'
-    pk_list_separator = ','
-    pk_url_kwarg = 'pk'
-    queryset = None
-    slug_url_kwarg = 'slug'
+    pk_list_separator = PK_LIST_SEPARATOR
+
+    def dispatch(self, request, *args, **kwargs):
+        self.object_list = self.get_object_list()
+        if self.view_mode_single:
+            self.object = self.object_list.first()
+
+        return super(MultipleObjectMixin, self).dispatch(request=request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        """
+        Override BaseDetailView.get()
+        """
+        return super(SingleObjectMixin, self).get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        """
+        Override SingleObjectMixin.get_context_data()
+        """
+        return super(SingleObjectMixin, self).get_context_data(**kwargs)
+
+    def get_object(self):
+        """
+        Remove this method from the subclass
+        """
+        raise AttributeError
+
+    def get_object_list(self, queryset=None):
+        """
+        Returns the list of objects the view is displaying.
+
+        By default this requires `self.queryset` and a `pk`, `slug` ro
+        `pk_list' argument in the URLconf, but subclasses can override this
+        to return any object.
+        """
+        self.view_mode_single = False
+        self.view_mode_multiple = False
+
+        # Use a custom queryset if provided; this is required for subclasses
+        # like DateDetailView
+        if queryset is None:
+            queryset = self.get_queryset()
+
+        # Next, try looking up by primary key.
+        pk = self.kwargs.get(self.pk_url_kwarg)
+        slug = self.kwargs.get(self.slug_url_kwarg)
+        pk_list = self.get_pk_list()
+
+        if pk is not None:
+            queryset = queryset.filter(pk=pk)
+            self.view_mode_single = True
+
+        # Next, try looking up by slug.
+        if slug is not None and (pk is None or self.query_pk_and_slug):
+            slug_field = self.get_slug_field()
+            queryset = queryset.filter(**{slug_field: slug})
+            self.view_mode_single = True
+
+        if pk_list is not None:
+            queryset = queryset.filter(pk__in=self.get_pk_list())
+            self.view_mode_multiple = True
+
+        # If none of those are defined, it's an error.
+        if pk is None and slug is None and pk_list is None:
+            raise AttributeError(
+                'View %s must be called with '
+                'either an object pk, a slug or an pk list.'
+                % self.__class__.__name__
+            )
+
+        try:
+            # Get the single item from the filtered queryset
+            queryset.get()
+        except queryset.model.MultipleObjectsReturned:
+            # Queryset has more than one item, this is good.
+            return queryset
+        except queryset.model.DoesNotExist:
+            raise Http404(
+                _('No %(verbose_name)s found matching the query') %
+                {'verbose_name': queryset.model._meta.verbose_name}
+            )
+        else:
+            # Queryset has one item, this is good.
+            return queryset
 
     def get_pk_list(self):
+        # Accept pk_list even on POST request to allowing direct requests
+        # to the view bypassing the initial GET request to submit the form.
+        # Example: when the view is called from a test or a custom UI
         result = self.request.GET.get(
             self.pk_list_key, self.request.POST.get(self.pk_list_key)
         )
@@ -194,43 +237,6 @@ class MultipleObjectMixin(object):
             return result.split(self.pk_list_separator)
         else:
             return None
-
-    def get_queryset(self):
-        if self.queryset is not None:
-            queryset = self.queryset
-            if isinstance(queryset, QuerySet):
-                queryset = queryset.all()
-        elif self.model is not None:
-            queryset = self.model._default_manager.all()
-
-        pk = self.kwargs.get(self.pk_url_kwarg)
-        slug = self.kwargs.get(self.slug_url_kwarg)
-        pk_list = self.get_pk_list()
-
-        if pk is not None:
-            queryset = queryset.filter(pk=pk)
-
-        # Next, try looking up by slug.
-        if slug is not None and (pk is None or self.query_pk_and_slug):
-            slug_field = self.get_slug_field()
-            queryset = queryset.filter(**{slug_field: slug})
-
-        if pk_list is not None:
-            queryset = queryset.filter(pk__in=self.get_pk_list())
-
-        if pk is None and slug is None and pk_list is None:
-            raise AttributeError(
-                'Generic detail view %s must be called with '
-                'either an object pk, a slug or an id list.'
-                % self.__class__.__name__
-            )
-
-        if self.object_permission:
-            return AccessControlList.objects.filter_by_access(
-                self.object_permission, self.request.user, queryset=queryset
-            )
-        else:
-            return queryset
 
 
 class ObjectActionMixin(object):
@@ -275,34 +281,6 @@ class ObjectActionMixin(object):
         )
 
 
-class ObjectListPermissionFilterMixin(object):
-    """
-    access_object_retrieve_method is have the entire view check against
-    an object permission and not the individual secondary items.
-    """
-    access_object_retrieve_method = None
-    object_permission = None
-
-    def dispatch(self, request, *args, **kwargs):
-        if self.access_object_retrieve_method and self.object_permission:
-            AccessControlList.objects.check_access(
-                obj=getattr(self, self.access_object_retrieve_method)(),
-                permissions=(self.object_permission,), user=request.user
-            )
-        return super(ObjectListPermissionFilterMixin, self).dispatch(request, *args, **kwargs)
-
-    def get_queryset(self):
-        queryset = super(ObjectListPermissionFilterMixin, self).get_queryset()
-
-        if not self.access_object_retrieve_method and self.object_permission:
-            return AccessControlList.objects.filter_by_access(
-                queryset=queryset, permission=self.object_permission,
-                user=self.request.user
-            )
-        else:
-            return queryset
-
-
 class ObjectNameMixin(object):
     def get_object_name(self, context=None):
         if not context:
@@ -319,6 +297,7 @@ class ObjectNameMixin(object):
         return object_name
 
 
+# TODO: Remove this mixin and replace with restricted queryset
 class ObjectPermissionCheckMixin(object):
     object_permission = None
 
@@ -425,6 +404,12 @@ class RestrictedQuerysetMixin(object):
 
 
 class ViewPermissionCheckMixin(object):
+    """
+    Restrict access to the view based on the user's direct permissions from
+    roles. This mixing is used for views whose objects don't support ACLs or
+    for views that perform actions that are not related to a specify object or
+    object's permission like maintenance views.
+    """
     view_permission = None
 
     def dispatch(self, request, *args, **kwargs):

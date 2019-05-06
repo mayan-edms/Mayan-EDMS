@@ -47,7 +47,7 @@ class DocumentDriverListView(ExternalObjectMixin, SingleObjectListView):
             ) % self.external_object,
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.external_object.latest_version.file_metadata_drivers.all()
 
 
@@ -69,7 +69,7 @@ class DocumentVersionDriverEntryFileMetadataListView(ExternalObjectMixin, Single
             },
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.external_object.entries.all()
 
 

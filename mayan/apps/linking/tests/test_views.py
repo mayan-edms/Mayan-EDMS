@@ -39,7 +39,7 @@ class SmartLinkViewTestCase(SmartLinkTestMixin, SmartLinkViewTestMixin, GenericV
         self._create_test_smart_link()
 
         response = self._request_test_smart_link_delete_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(SmartLink.objects.count(), 1)
 
@@ -58,7 +58,7 @@ class SmartLinkViewTestCase(SmartLinkTestMixin, SmartLinkViewTestMixin, GenericV
         self._create_test_smart_link()
 
         response = self._request_test_smart_link_edit_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.test_smart_link.refresh_from_db()
         self.assertEqual(self.test_smart_link.label, TEST_SMART_LINK_LABEL)

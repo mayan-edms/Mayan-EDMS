@@ -13,6 +13,7 @@ from mayan.apps.common.generics import (
     MultipleObjectFormActionView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.views import DocumentListView
@@ -45,37 +46,24 @@ class CabinetCreateView(SingleObjectCreateView):
         }
 
 
-class CabinetChildAddView(SingleObjectCreateView):
+class CabinetChildAddView(ExternalObjectMixin, SingleObjectCreateView):
     fields = ('label',)
-    model = Cabinet
-
-    def form_valid(self, form):
-        """
-        If the form is valid, save the associated model.
-        """
-        self.object = form.save(commit=False)
-        self.object.parent = self.get_object()
-        self.object.save()
-
-        return super(CabinetChildAddView, self).form_valid(form=form)
-
-    def get_object(self, *args, **kwargs):
-        cabinet = super(CabinetChildAddView, self).get_object(*args, **kwargs)
-
-        AccessControlList.objects.check_access(
-            obj=cabinet.get_root(), permissions=(permission_cabinet_edit,),
-            user=self.request.user
-        )
-
-        return cabinet
+    external_object_class = Cabinet
+    external_object_permission = permission_cabinet_edit
 
     def get_extra_context(self):
         return {
             'title': _(
                 'Add new level to: %s'
-            ) % self.get_object().get_full_path(),
-            'object': self.get_object()
+            ) % self.external_object.get_full_path(),
+            'object': self.external_object
         }
+
+    def get_queryset(self):
+        return self.external_object.get_descendants()
+
+    def get_save_extra_data(self):
+        return {'parent': self.external_object}
 
 
 class CabinetDeleteView(SingleObjectDeleteView):
@@ -90,34 +78,34 @@ class CabinetDeleteView(SingleObjectDeleteView):
         }
 
 
-class CabinetDetailView(DocumentListView):
+class CabinetDetailView(ExternalObjectMixin, DocumentListView):
+    external_object_class = Cabinet
+    external_object_permission = permission_cabinet_view
     template_name = 'cabinets/cabinet_details.html'
 
     def get_document_queryset(self):
-        queryset = AccessControlList.objects.filter_by_access(
-            permission=permission_document_view,
-            queryset=self.get_object().documents.all(), user=self.request.user
-        )
-
-        return queryset
+        return self.external_object.documents.all()
 
     def get_context_data(self, **kwargs):
         context = super(CabinetDetailView, self).get_context_data(**kwargs)
-
-        cabinet = self.get_object()
 
         context.update(
             {
                 'column_class': 'col-xs-12 col-sm-6 col-md-4 col-lg-3',
                 'hide_links': True,
                 'jstree_data': '\n'.join(
-                    jstree_data(node=cabinet.get_root(), selected_node=cabinet)
+                    jstree_data(
+                        node=self.external_object.get_root(),
+                        selected_node=self.external_object
+                    )
                 ),
                 'list_as_items': True,
                 'no_results_icon': icon_cabinet,
                 'no_results_main_link': link_cabinet_child_add.resolve(
                     context=RequestContext(
-                        request=self.request, dict_={'object': cabinet}
+                        request=self.request, dict_={
+                            'object': self.external_object
+                        }
                     )
                 ),
                 'no_results_text': _(
@@ -126,27 +114,14 @@ class CabinetDetailView(DocumentListView):
                     'select the cabinet view of a document view.'
                 ),
                 'no_results_title': _('This cabinet level is empty'),
-                'object': cabinet,
-                'title': _('Details of cabinet: %s') % cabinet.get_full_path(),
+                'object': self.external_object,
+                'title': _(
+                    'Details of cabinet: %s'
+                ) % self.external_object.get_full_path(),
             }
         )
 
         return context
-
-    def get_object(self):
-        cabinet = get_object_or_404(klass=Cabinet, pk=self.kwargs['pk'])
-
-        if cabinet.is_root_node():
-            permission_object = cabinet
-        else:
-            permission_object = cabinet.get_root()
-
-        AccessControlList.objects.check_access(
-            obj=permission_object, permissions=(permission_cabinet_view,),
-            user=self.request.user
-        )
-
-        return cabinet
 
 
 class CabinetEditView(SingleObjectEditView):
@@ -182,7 +157,7 @@ class CabinetListView(SingleObjectListView):
             'no_results_title': _('No cabinets available'),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         # Add explicit ordering of root nodes since the queryset returned
         # is not affected by the model's order Meta option.
         return Cabinet.objects.root_nodes().order_by('label')
@@ -220,7 +195,7 @@ class DocumentCabinetListView(CabinetListView):
             'title': _('Cabinets containing document: %s') % self.document,
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.document.document_cabinets()
 
 

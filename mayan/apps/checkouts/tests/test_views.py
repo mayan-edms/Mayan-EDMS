@@ -119,14 +119,11 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
 
     def test_checkout_detail_view_no_permission(self):
         self._check_out_test_document()
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_check_out
-        )
 
         response = self._request_check_out_detail_view()
+
         self.assertNotContains(
-            response, text=STATE_LABELS[STATE_CHECKED_OUT], status_code=403
+            response, text=STATE_LABELS[STATE_CHECKED_OUT], status_code=404
         )
 
     def test_checkout_detail_view_with_access(self):

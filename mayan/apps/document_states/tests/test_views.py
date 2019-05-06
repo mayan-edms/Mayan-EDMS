@@ -54,7 +54,7 @@ class WorkflowViewTestCase(WorkflowTestMixin, GenericViewTestCase):
         self._create_test_workflow()
 
         response = self._request_workflow_delete_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEquals(response.status_code, 404)
 
         self.assertTrue(self.test_workflow in Workflow.objects.all())
 
@@ -84,7 +84,7 @@ class WorkflowViewTestCase(WorkflowTestMixin, GenericViewTestCase):
         self._create_test_workflow()
 
         response = self._request_workflow_edit_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEquals(response.status_code, 404)
 
         self.test_workflow.refresh_from_db()
         self.assertEqual(self.test_workflow.label, TEST_WORKFLOW_LABEL)
@@ -137,7 +137,7 @@ class WorkflowViewTestCase(WorkflowTestMixin, GenericViewTestCase):
         self._create_test_workflow()
 
         response = self._request_workflow_preview_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEquals(response.status_code, 404)
 
         self.assertTrue(self.test_workflow in Workflow.objects.all())
 
@@ -169,7 +169,7 @@ class WorkflowStateViewTestCase(WorkflowTestMixin, GenericViewTestCase):
         self._create_test_workflow()
 
         response = self._request_workflow_state_create_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEquals(response.status_code, 404)
 
         self.assertEquals(WorkflowState.objects.count(), 0)
 
@@ -223,7 +223,7 @@ class WorkflowStateViewTestCase(WorkflowTestMixin, GenericViewTestCase):
         self._create_test_workflow_states()
 
         response = self._request_workflow_state_delete_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEquals(response.status_code, 404)
 
         self.assertEquals(WorkflowState.objects.count(), 2)
 
@@ -254,7 +254,7 @@ class WorkflowStateViewTestCase(WorkflowTestMixin, GenericViewTestCase):
         workflow_state_label = self.test_workflow_state_1.label
 
         response = self._request_workflow_state_edit_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEquals(response.status_code, 404)
 
         self.test_workflow_state_1.refresh_from_db()
         self.assertEquals(
@@ -290,7 +290,7 @@ class WorkflowStateViewTestCase(WorkflowTestMixin, GenericViewTestCase):
         self._create_test_workflow_states()
 
         response = self._request_workflow_state_list_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEquals(response.status_code, 404)
 
     def test_workflow_state_list_with_access(self):
         self._create_test_workflow()
@@ -357,7 +357,7 @@ class WorkflowTransitionViewTestCase(WorkflowTestMixin, GenericDocumentViewTestC
         self._create_test_workflow_states()
 
         response = self._request_workflow_transition_create_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEquals(response.status_code, 404)
 
         self.assertEquals(WorkflowTransition.objects.count(), 0)
 
@@ -392,13 +392,13 @@ class WorkflowTransitionViewTestCase(WorkflowTestMixin, GenericDocumentViewTestC
             kwargs={'pk': self.test_workflow_transition.pk}
         )
 
-    def test_delete_workflow_transition_no_access(self):
+    def test_delete_workflow_transition_no_permissions(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
 
         response = self._request_workflow_transition_delete_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEquals(response.status_code, 404)
 
         self.assertTrue(
             self.test_workflow_transition in WorkflowTransition.objects.all()
@@ -434,7 +434,7 @@ class WorkflowTransitionViewTestCase(WorkflowTestMixin, GenericDocumentViewTestC
         self._create_test_workflow_transition()
 
         response = self._request_workflow_transition_edit_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEquals(response.status_code, 404)
 
         self.test_workflow_transition.refresh_from_db()
         self.assertEqual(
@@ -471,9 +471,10 @@ class WorkflowTransitionViewTestCase(WorkflowTestMixin, GenericDocumentViewTestC
         self._create_test_workflow_transition()
 
         response = self._request_workflow_transition_list_view()
-
-        self.assertEquals(response.status_code, 200)
-        self.assertNotContains(response, text=self.test_workflow_transition.label)
+        self.assertNotContains(
+            response=response, text=self.test_workflow_transition.label,
+            status_code=404
+        )
 
     def test_workflow_transition_list_with_access(self):
         self._create_test_workflow()
@@ -485,8 +486,10 @@ class WorkflowTransitionViewTestCase(WorkflowTestMixin, GenericDocumentViewTestC
         )
 
         response = self._request_workflow_transition_list_view()
-        self.assertEquals(response.status_code, 200)
-        self.assertContains(response, text=self.test_workflow_transition.label)
+        self.assertContains(
+            response=response, text=self.test_workflow_transition.label,
+            status_code=200
+        )
 
     def _request_workflow_transition(self):
         return self.post(
@@ -510,6 +513,7 @@ class WorkflowTransitionViewTestCase(WorkflowTestMixin, GenericDocumentViewTestC
 
         response = self._request_workflow_transition()
         self.assertEqual(response.status_code, 200)
+
         # Workflow should remain in the same initial state
         self.assertEqual(
             self.test_workflow_instance.get_current_state(),
@@ -574,7 +578,7 @@ class WorkflowTransitionEventViewTestCase(WorkflowTestMixin, GenericDocumentView
         self._create_test_workflow_transition()
 
         response = self._request_workflow_transition_event_list_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEquals(response.status_code, 404)
 
     def test_workflow_transition_event_list_with_access(self):
         self._create_test_workflow()

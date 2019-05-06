@@ -96,6 +96,13 @@ class DocumentIndexingApp(MayanAppConfig):
                 permission_document_indexing_view,
             )
         )
+        ModelPermission.register_inheritance(
+            model=IndexTemplateNode, related='index'
+        )
+
+        ModelPermission.register_inheritance(
+            model=IndexInstanceNode, related='index_template_node__index'
+        )
 
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,

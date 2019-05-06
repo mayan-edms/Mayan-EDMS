@@ -36,7 +36,7 @@ class IndexViewTestCase(IndexTestMixin, IndexViewTestMixin, GenericDocumentViewT
         self._create_test_index()
 
         response = self._request_test_index_delete_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Index.objects.count(), 1)
 
@@ -54,7 +54,7 @@ class IndexViewTestCase(IndexTestMixin, IndexViewTestMixin, GenericDocumentViewT
         self._create_test_index()
 
         response = self._request_test_index_edit_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.test_index.refresh_from_db()
         self.assertEqual(self.test_index.label, TEST_INDEX_LABEL)

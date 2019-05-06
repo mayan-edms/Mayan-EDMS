@@ -118,7 +118,7 @@ class DocumentCommentListView(SingleObjectListView):
             'title': _('Comments for document: %s') % self.get_document(),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         AccessControlList.objects.check_access(
             obj=self.get_document(), permissions=(permission_comment_view,),
             user=self.request.user

@@ -44,7 +44,7 @@ class TagEventsTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
         action_count = Action.objects.count()
 
         response = self._request_test_tag_edit_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Action.objects.count(), action_count)
 

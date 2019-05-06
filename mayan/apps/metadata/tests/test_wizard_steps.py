@@ -31,12 +31,12 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         )
 
         self.test_document_type.metadata.create(
-            metadata_type=self.metadata_type, required=True
+            metadata_type=self.test_metadata_type, required=True
         )
 
     def test_upload_interactive_with_unicode_metadata(self):
         url = furl(reverse('sources:upload_interactive'))
-        url.args['metadata0_id'] = self.metadata_type.pk
+        url.args['metadata0_id'] = self.test_metadata_type.pk
         url.args['metadata0_value'] = TEST_METADATA_VALUE_UNICODE
 
         self.grant_access(
@@ -61,7 +61,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
 
     def test_upload_interactive_with_ampersand_metadata(self):
         url = furl(reverse('sources:upload_interactive'))
-        url.args['metadata0_id'] = self.metadata_type.pk
+        url.args['metadata0_id'] = self.test_metadata_type.pk
         url.args['metadata0_value'] = TEST_METADATA_VALUE_WITH_AMPERSAND
 
         self.grant_access(

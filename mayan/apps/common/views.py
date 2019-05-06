@@ -174,7 +174,7 @@ class ObjectErrorLogEntryListView(SingleObjectListView):
             klass=content_type.model_class(), pk=self.kwargs['object_id']
         )
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_object().error_logs.all()
 
 

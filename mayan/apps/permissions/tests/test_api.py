@@ -30,10 +30,9 @@ class PermissionAPIViewTestCase(PermissionAPIViewTestMixin, BaseAPITestCase):
 
 class RoleAPIViewTestCase(GroupTestMixin, PermissionTestMixin, RoleAPIViewTestMixin, RoleTestMixin, BaseAPITestCase):
     def test_role_create_api_view_no_permission(self):
-        response = self._request_test_role_create_api_view()
-
         role_count = Role.objects.count()
 
+        response = self._request_test_role_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.assertEqual(Role.objects.count(), role_count)

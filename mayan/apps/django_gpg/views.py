@@ -112,7 +112,7 @@ class KeyQueryResultView(SingleObjectListView):
             'title': _('Key query results'),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         term = self.request.GET.get('term')
         if term:
             return Key.objects.search(query=term)
@@ -156,7 +156,7 @@ class KeyUploadView(SingleObjectCreateView):
 
 class PrivateKeyListView(SingleObjectListView):
     object_permission = permission_key_view
-    queryset = Key.objects.private_keys()
+    source_queryset = Key.objects.private_keys()
 
     def get_extra_context(self):
         return {
@@ -179,7 +179,7 @@ class PrivateKeyListView(SingleObjectListView):
 
 class PublicKeyListView(SingleObjectListView):
     object_permission = permission_key_view
-    queryset = Key.objects.public_keys()
+    source_queryset = Key.objects.public_keys()
 
     def get_extra_context(self):
         return {

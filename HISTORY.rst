@@ -235,6 +235,11 @@
   workflow proxy instance menu list.
 * Fix translation of the source upload forms
   using dropzone.js
+* Rename get_object_list to get_source_queryset.
+* Add uniqueness validation to SingleObjectCreateView.
+* Remove MultipleInstanceActionMixin.
+* Backport MultipleObjectMixin improvements.
+* Remove ObjectListPermissionFilterMixin.
 
 3.1.11 (2019-04-XX)
 ===================

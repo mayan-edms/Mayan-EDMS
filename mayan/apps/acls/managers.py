@@ -9,7 +9,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
 from django.db import models
-from django.db.models import CharField, Value as V, Q
+from django.db.models import CharField, Value, Q
 from django.db.models.functions import Concat
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext
@@ -60,14 +60,15 @@ class AccessControlListManager(models.Manager):
                 # id combinations
                 content_type_object_id_queryset = queryset.annotate(
                     ct_fk_combination=Concat(
-                        related_field.ct_field, V('-'), related_field.fk_field,
-                        output_field=CharField()
+                        related_field.ct_field, Value('-'),
+                        related_field.fk_field, output_field=CharField()
                     )
                 ).values('ct_fk_combination')
 
                 acl_filter = self.annotate(
                     ct_fk_combination=Concat(
-                        'content_type', V('-'), 'object_id', output_field=CharField()
+                        'content_type', Value('-'), 'object_id',
+                        output_field=CharField()
                     )
                 ).filter(
                     permissions=stored_permission, role__groups__user=user,

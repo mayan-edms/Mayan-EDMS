@@ -37,8 +37,8 @@ from .links import (
 )
 from .models import DocumentMetadata, MetadataType
 from .permissions import (
-    permission_metadata_document_add, permission_metadata_document_edit,
-    permission_metadata_document_remove, permission_metadata_document_view,
+    permission_document_metadata_add, permission_document_metadata_edit,
+    permission_document_metadata_remove, permission_document_metadata_view,
     permission_metadata_type_create, permission_metadata_type_delete,
     permission_metadata_type_edit, permission_metadata_type_view
 )
@@ -47,7 +47,7 @@ from .permissions import (
 class DocumentMetadataAddView(MultipleObjectFormActionView):
     form_class = DocumentAddMetadataForm
     model = Document
-    object_permission = permission_metadata_document_add
+    object_permission = permission_document_metadata_add
     success_message = _('Metadata add request performed on %(count)d document')
     success_message_plural = _(
         'Metadata add request performed on %(count)d documents'
@@ -213,7 +213,7 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
 class DocumentMetadataEditView(MultipleObjectFormActionView):
     form_class = DocumentMetadataFormSet
     model = Document
-    object_permission = permission_metadata_document_edit
+    object_permission = permission_document_metadata_edit
     success_message = _(
         'Metadata edit request performed on %(count)d document'
     )
@@ -398,7 +398,7 @@ class DocumentMetadataListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
             obj=self.get_document(),
-            permissions=(permission_metadata_document_view,),
+            permissions=(permission_document_metadata_view,),
             user=self.request.user
         )
 
@@ -431,14 +431,14 @@ class DocumentMetadataListView(SingleObjectListView):
             'title': _('Metadata for document: %s') % document,
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_document().metadata.all()
 
 
 class DocumentMetadataRemoveView(MultipleObjectFormActionView):
     form_class = DocumentMetadataRemoveFormSet
     model = Document
-    object_permission = permission_metadata_document_remove
+    object_permission = permission_document_metadata_remove
     success_message = _(
         'Metadata remove request performed on %(count)d document'
     )
@@ -657,7 +657,7 @@ class MetadataTypeListView(SingleObjectListView):
             'title': _('Metadata types'),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return MetadataType.objects.all()
 
 

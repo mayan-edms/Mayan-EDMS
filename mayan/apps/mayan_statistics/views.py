@@ -20,7 +20,7 @@ class NamespaceListView(SingleObjectListView):
     template_name = 'appearance/generic_list.html'
     view_permission = permission_statistics_view
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return StatisticNamespace.get_all()
 
 
@@ -37,7 +37,7 @@ class NamespaceDetailView(SingleObjectListView):
     def get_namespace(self):
         return StatisticNamespace.get(slug=self.kwargs['slug'])
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_namespace().statistics
 
 

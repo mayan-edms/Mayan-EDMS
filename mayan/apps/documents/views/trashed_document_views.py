@@ -41,11 +41,11 @@ class DocumentTrashView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.get_queryset()
 
         result = {
             'title': ungettext(
-                single='Move the selected document to the trash?',
+                singular='Move the selected document to the trash?',
                 plural='Move the selected documents to the trash?',
                 number=queryset.count()
             )
@@ -72,7 +72,9 @@ class EmptyTrashCanView(ConfirmView):
                 kwargs={'trashed_document_id': deleted_document.pk}
             )
 
-        messages.success(self.request, _('Trash emptied successfully'))
+        messages.success(
+            message=_('Trash emptied successfully'), request=self.request
+        )
 
 
 class TrashedDocumentDeleteView(MultipleObjectConfirmActionView):
@@ -87,11 +89,11 @@ class TrashedDocumentDeleteView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.get_queryset()
 
         result = {
             'title': ungettext(
-                single='Delete the selected trashed document?',
+                singular='Delete the selected trashed document?',
                 plural='Delete the selected trashed documents?',
                 number=queryset.count()
             )
@@ -147,11 +149,11 @@ class TrashedDocumentRestoreView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.get_queryset()
 
         result = {
             'title': ungettext(
-                single='Restore the selected trashed document?',
+                singular='Restore the selected trashed document?',
                 plural='Restore the selected trashed documents?',
                 number=queryset.count()
             )

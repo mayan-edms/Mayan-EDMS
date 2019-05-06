@@ -28,7 +28,8 @@ class GroupEventsViewTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin,
         )
         Action.objects.all().delete()
 
-        self._request_test_group_create_view()
+        response = self._request_test_group_create_view()
+        self.assertEqual(response.status_code, 302)
 
         action = Action.objects.last()
 
@@ -43,7 +44,8 @@ class GroupEventsViewTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin,
         )
         Action.objects.all().delete()
 
-        self._request_test_group_edit_view()
+        response = self._request_test_group_edit_view()
+        self.assertEqual(response.status_code, 302)
 
         action = Action.objects.last()
 
@@ -58,7 +60,8 @@ class GroupEventsAPITestCase(GroupAPITestMixin, GroupTestMixin, GroupViewTestMix
         )
         Action.objects.all().delete()
 
-        self._request_test_group_create_api_view()
+        response = self._request_test_group_create_api_view()
+        self.assertEqual(response.status_code, 201)
 
         action = Action.objects.last()
 
@@ -76,7 +79,8 @@ class GroupEventsAPITestCase(GroupAPITestMixin, GroupTestMixin, GroupViewTestMix
         )
         Action.objects.all().delete()
 
-        self._request_test_group_edit_patch_api_view()
+        response = self._request_test_group_edit_patch_api_view()
+        self.assertEqual(response.status_code, 200)
 
         action = Action.objects.last()
 
@@ -133,7 +137,8 @@ class UserEventsViewTestCase(UserAPITestMixin, UserTestMixin, UserViewTestMixin,
         )
         Action.objects.all().delete()
 
-        self._request_test_user_create_view()
+        response = self._request_test_user_create_view()
+        self.assertEqual(response.status_code, 302)
 
         action = Action.objects.last()
 
@@ -149,7 +154,8 @@ class UserEventsViewTestCase(UserAPITestMixin, UserTestMixin, UserViewTestMixin,
         )
         Action.objects.all().delete()
 
-        self._request_test_user_edit_view()
+        response = self._request_test_user_edit_view()
+        self.assertEqual(response.status_code, 302)
 
         action = Action.objects.last()
 
@@ -165,7 +171,8 @@ class UserEventsAPITestCase(UserAPITestMixin, UserTestMixin, UserViewTestMixin, 
         )
         Action.objects.all().delete()
 
-        self._request_test_user_create_api_view()
+        response = self._request_test_user_create_api_view()
+        self.assertEqual(response.status_code, 201)
 
         action = Action.objects.last()
 
@@ -182,7 +189,8 @@ class UserEventsAPITestCase(UserAPITestMixin, UserTestMixin, UserViewTestMixin, 
         )
         Action.objects.all().delete()
 
-        self._request_test_user_edit_patch_api_view()
+        response = self._request_test_user_edit_patch_api_view()
+        self.assertEqual(response.status_code, 200)
 
         action = Action.objects.last()
 

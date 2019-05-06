@@ -191,7 +191,7 @@ class SetupIndexTreeTemplateListView(SingleObjectListView):
     def get_index(self):
         return get_object_or_404(klass=Index, pk=self.kwargs['pk'])
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_index().template_root.get_descendants(
             include_self=True
         )
@@ -231,7 +231,6 @@ class TemplateNodeCreateView(SingleObjectCreateView):
 class TemplateNodeDeleteView(SingleObjectDeleteView):
     model = IndexTemplateNode
     object_permission = permission_document_indexing_edit
-    object_permission_related = 'index'
 
     def get_extra_context(self):
         return {
@@ -255,7 +254,6 @@ class TemplateNodeEditView(SingleObjectEditView):
     form_class = IndexTemplateNodeForm
     model = IndexTemplateNode
     object_permission = permission_document_indexing_edit
-    object_permission_related = 'index'
 
     def get_extra_context(self):
         return {
@@ -294,7 +292,7 @@ class IndexListView(SingleObjectListView):
             'title': _('Indexes'),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         queryset = IndexInstance.objects.filter(enabled=True)
         return queryset.filter(
             node_templates__index_instance_nodes__isnull=False
@@ -355,10 +353,10 @@ class IndexInstanceNodeView(DocumentListView):
 
         return context
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         if self.index_instance_node:
             if self.index_instance_node.index_template_node.link_documents:
-                return super(IndexInstanceNodeView, self).get_object_list()
+                return super(IndexInstanceNodeView, self).get_source_queryset()
             else:
                 self.object_permission = None
                 return self.index_instance_node.get_children().order_by(
@@ -374,7 +372,6 @@ class DocumentIndexNodeListView(SingleObjectListView):
     Show a list of indexes where the current document can be found
     """
     object_permission = permission_document_indexing_instance_view
-    object_permission_related = 'index'
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
@@ -407,7 +404,7 @@ class DocumentIndexNodeListView(SingleObjectListView):
             ) % self.get_document(),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return DocumentIndexInstanceNode.objects.get_for(
             document=self.get_document()
         )

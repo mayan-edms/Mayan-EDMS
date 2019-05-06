@@ -5,10 +5,13 @@ from django.utils.translation import ugettext_lazy as _
 DEFAULT_COMMON_HOME_VIEW = 'common:home'
 DELETE_STALE_UPLOADS_INTERVAL = 60 * 10  # 10 minutes
 DJANGO_SQLITE_BACKEND = 'django.db.backends.sqlite3'
+
 MESSAGE_SQLITE_WARNING = _(
     'Your database backend is set to use SQLite. SQLite should only be used '
     'for development and testing, not for production.'
 )
+
+PK_LIST_SEPARATOR = ','
 
 TEXT_SORT_FIELD_PARAMETER = '_sort_field'
 TEXT_SORT_FIELD_VARIABLE_NAME = 'sort_field'

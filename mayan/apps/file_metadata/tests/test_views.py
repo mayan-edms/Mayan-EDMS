@@ -72,7 +72,7 @@ class FileMetadataViewsTestCase(GenericDocumentViewTestCase):
         self.document.latest_version.file_metadata_drivers.all().delete()
 
         response = self._request_document_submit_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
             self.document.latest_version.file_metadata_drivers.count(), 0
@@ -103,7 +103,7 @@ class FileMetadataViewsTestCase(GenericDocumentViewTestCase):
         self.document.latest_version.file_metadata_drivers.all().delete()
 
         response = self._request_multiple_document_submit_view()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
             self.document.latest_version.file_metadata_drivers.count(), 0

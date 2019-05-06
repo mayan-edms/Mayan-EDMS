@@ -232,7 +232,6 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
 class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):
     model = DetachedSignature
     object_permission = permission_document_version_signature_delete
-    object_permission_related = 'document_version.document'
 
     def get_extra_context(self):
         return {
@@ -251,7 +250,6 @@ class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):
 class DocumentVersionSignatureDetailView(SingleObjectDetailView):
     form_class = DocumentVersionSignatureDetailForm
     object_permission = permission_document_version_signature_view
-    object_permission_related = 'document_version.document'
 
     def get_extra_context(self):
         return {
@@ -263,14 +261,13 @@ class DocumentVersionSignatureDetailView(SingleObjectDetailView):
             ) % self.get_object(),
         }
 
-    def get_queryset(self):
+    def get_source_queryset(self):
         return SignatureBaseModel.objects.select_subclasses()
 
 
 class DocumentVersionSignatureDownloadView(SingleObjectDownloadView):
     model = DetachedSignature
     object_permission = permission_document_version_signature_download
-    object_permission_related = 'document_version.document'
 
     def get_file(self):
         signature = self.get_object()
@@ -335,7 +332,7 @@ class DocumentVersionSignatureListView(SingleObjectListView):
             ) % self.get_document_version(),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_document_version().signatures.all()
 
 

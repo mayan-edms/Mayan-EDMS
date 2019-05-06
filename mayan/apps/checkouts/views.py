@@ -24,6 +24,64 @@ from .permissions import (
 )
 
 
+class DocumentCheckinView(ConfirmView):
+    def get_extra_context(self):
+        document = self.get_object()
+
+        context = {
+            'object': document,
+        }
+
+        if document.get_check_out_info().user != self.request.user:
+            context['title'] = _(
+                'You didn\'t originally checked out this document. '
+                'Forcefully check in the document: %s?'
+            ) % document
+        else:
+            context['title'] = _('Check in the document: %s?') % document
+
+        return context
+
+    def get_object(self):
+        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='checkouts:check_out_info', kwargs={
+                'pk': self.get_object().pk
+            }
+        )
+
+    def view_action(self):
+        document = self.get_object()
+
+        if document.get_check_out_info().user == self.request.user:
+            AccessControlList.objects.check_access(
+                obj=document, permissions=(permission_document_check_in,),
+                user=self.request.user
+            )
+        else:
+            AccessControlList.objects.check_access(
+                obj=document,
+                permissions=(permission_document_check_in_override,),
+                user=self.request.user
+            )
+
+        try:
+            document.check_in(user=self.request.user)
+        except DocumentNotCheckedOut:
+            messages.error(
+                message=_('Document has not been checked out.'),
+                request=self.request
+            )
+        else:
+            messages.success(
+                message=_(
+                    'Document "%s" checked in successfully.'
+                ) % document, request=self.request
+            )
+
+
 class CheckoutDocumentView(SingleObjectCreateView):
     form_class = DocumentCheckoutForm
 
@@ -125,69 +183,8 @@ class CheckoutDetailView(SingleObjectDetailView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
+            'object': self.object,
             'title': _(
                 'Check out details for document: %s'
-            ) % self.get_object()
+            ) % self.object
         }
-
-    def get_object(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
-
-
-class DocumentCheckinView(ConfirmView):
-    def get_extra_context(self):
-        document = self.get_object()
-
-        context = {
-            'object': document,
-        }
-
-        if document.get_check_out_info().user != self.request.user:
-            context['title'] = _(
-                'You didn\'t originally checked out this document. '
-                'Forcefully check in the document: %s?'
-            ) % document
-        else:
-            context['title'] = _('Check in the document: %s?') % document
-
-        return context
-
-    def get_object(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
-
-    def get_post_action_redirect(self):
-        return reverse(
-            viewname='checkouts:check_out_info', kwargs={
-                'pk': self.get_object().pk
-            }
-        )
-
-    def view_action(self):
-        document = self.get_object()
-
-        if document.get_check_out_info().user == self.request.user:
-            AccessControlList.objects.check_access(
-                obj=document, permissions=(permission_document_check_in,),
-                user=self.request.user
-            )
-        else:
-            AccessControlList.objects.check_access(
-                obj=document,
-                permissions=(permission_document_check_in_override,),
-                user=self.request.user
-            )
-
-        try:
-            document.check_in(user=self.request.user)
-        except DocumentNotCheckedOut:
-            messages.error(
-                message=_('Document has not been checked out.'),
-                request=self.request
-            )
-        else:
-            messages.success(
-                message=_(
-                    'Document "%s" checked in successfully.'
-                ) % document, request=self.request
-            )

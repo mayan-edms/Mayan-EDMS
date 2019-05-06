@@ -75,7 +75,7 @@ class WorkflowListView(SingleObjectListView):
             'title': _('Workflows'),
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return WorkflowRuntimeProxy.objects.all()
 
 
@@ -148,7 +148,7 @@ class WorkflowStateListView(SingleObjectListView):
             'title': _('States of workflow: %s') % self.get_workflow()
         }
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return WorkflowStateRuntimeProxy.objects.filter(
             workflow=self.get_workflow()
         )

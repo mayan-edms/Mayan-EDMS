@@ -34,7 +34,7 @@ class NamespaceDetailView(SingleObjectListView):
                 _('Namespace: %s, not found') % self.kwargs['namespace_name']
             )
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return self.get_namespace().settings
 
 
@@ -45,7 +45,7 @@ class NamespaceListView(SingleObjectListView):
     }
     view_permission = permission_settings_view
 
-    def get_object_list(self):
+    def get_source_queryset(self):
         return Namespace.get_all()
 
 
