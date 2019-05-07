@@ -2,9 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.conf import settings
 from django.contrib import messages
-from django.shortcuts import get_object_or_404, resolve_url
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.utils.http import urlencode
 from django.utils.six.moves.urllib.parse import parse_qs, urlparse
@@ -13,6 +12,7 @@ from django.views.generic import RedirectView
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.generics import SimpleView, SingleObjectListView
+from mayan.apps.common.settings import setting_home_view
 from mayan.apps.common.utils import resolve
 from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 
@@ -79,9 +79,7 @@ class DocumentPageNavigationBase(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         parse_result = urlparse(
             self.request.META.get(
-                'HTTP_REFERER', resolve_url(
-                    settings.LOGIN_REDIRECT_URL
-                )
+                'HTTP_REFERER', reverse(setting_home_view.value)
             )
         )
 

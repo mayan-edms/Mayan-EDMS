@@ -6,9 +6,9 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, resolve_url
+from django.shortcuts import get_object_or_404
 from django.template import RequestContext
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.utils import timezone, translation
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
@@ -235,7 +235,7 @@ def multi_object_action_view(request):
     next = request.POST.get(
         'next', request.GET.get(
             'next', request.META.get(
-                'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
+                'HTTP_REFERER', reverse(setting_home_view.value)
             )
         )
     )
@@ -254,7 +254,7 @@ def multi_object_action_view(request):
         )
         return HttpResponseRedirect(
             redirect_to=request.META.get(
-                'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
+                'HTTP_REFERER', reverse(setting_home_view.value)
             )
         )
 
@@ -265,7 +265,7 @@ def multi_object_action_view(request):
         )
         return HttpResponseRedirect(
             redirect_to=request.META.get(
-                'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
+                'HTTP_REFERER', reverse(setting_home_view.value)
             )
         )
 

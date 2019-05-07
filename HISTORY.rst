@@ -245,6 +245,8 @@
 * Remove the related attribute of check_access.
 * Remove filter_by_access. Replaced by restrict_queryset.
 * Move the user set password views to the authentication app.
+* All views redirect to common's home view instead of the 
+  REDIRECT_URL setting.
 
 3.1.11 (2019-04-XX)
 ===================

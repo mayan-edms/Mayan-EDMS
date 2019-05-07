@@ -1,10 +1,10 @@
 from __future__ import unicode_literals
 
-from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import ImproperlyConfigured, PermissionDenied
 from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, resolve_url
+from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.utils.translation import ungettext, ugettext_lazy as _
 from django.views.generic.detail import SingleObjectMixin
 
@@ -14,6 +14,7 @@ from mayan.apps.permissions import Permission
 from .exceptions import ActionError
 from .forms import DynamicForm
 from .literals import PK_LIST_SEPARATOR
+from .settings import setting_home_view
 
 
 class DeleteExtraDataMixin(object):
@@ -318,31 +319,10 @@ class ObjectPermissionCheckMixin(object):
 
 
 class RedirectionMixin(object):
-    post_action_redirect = None
     action_cancel_redirect = None
-
-    def dispatch(self, request, *args, **kwargs):
-        post_action_redirect = self.get_post_action_redirect()
-        action_cancel_redirect = self.get_action_cancel_redirect()
-
-        self.next_url = self.request.POST.get(
-            'next', self.request.GET.get(
-                'next', post_action_redirect if post_action_redirect else self.request.META.get(
-                    'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
-                )
-            )
-        )
-        self.previous_url = self.request.POST.get(
-            'previous', self.request.GET.get(
-                'previous', action_cancel_redirect if action_cancel_redirect else self.request.META.get(
-                    'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
-                )
-            )
-        )
-
-        return super(
-            RedirectionMixin, self
-        ).dispatch(request, *args, **kwargs)
+    next_url = None
+    previous_url = None
+    post_action_redirect = None
 
     def get_action_cancel_redirect(self):
         return self.action_cancel_redirect
@@ -351,8 +331,8 @@ class RedirectionMixin(object):
         context = super(RedirectionMixin, self).get_context_data(**kwargs)
         context.update(
             {
-                'next': self.next_url,
-                'previous': self.previous_url
+                'next': self.get_next_url(),
+                'previous': self.get_previous_url()
             }
         )
 
@@ -361,8 +341,36 @@ class RedirectionMixin(object):
     def get_post_action_redirect(self):
         return self.post_action_redirect
 
+    def get_next_url(self):
+        if self.next_url:
+            return self.next_url
+        else:
+            post_action_redirect = self.get_post_action_redirect()
+
+            return self.request.POST.get(
+                'next', self.request.GET.get(
+                    'next', post_action_redirect if post_action_redirect else self.request.META.get(
+                        'HTTP_REFERER', reverse(setting_home_view.value)
+                    )
+                )
+            )
+
+    def get_previous_url(self):
+        if self.previous_url:
+            return self.previous_url
+        else:
+            action_cancel_redirect = self.get_action_cancel_redirect()
+
+            return self.request.POST.get(
+                'previous', self.request.GET.get(
+                    'previous', action_cancel_redirect if action_cancel_redirect else self.request.META.get(
+                        'HTTP_REFERER', reverse(setting_home_view.value)
+                    )
+                )
+            )
+
     def get_success_url(self):
-        return self.next_url or self.previous_url
+        return self.get_next_url() or self.get_previous_url()
 
 
 class RestrictedQuerysetMixin(object):
