@@ -23,7 +23,9 @@ class OCRAPITestCase(DocumentTestMixin, BaseAPITestCase):
         response = self._request_document_ocr_submit_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-        self.assertFalse(hasattr(self.test_document.pages.first(), 'ocr_content'))
+        self.assertFalse(
+            hasattr(self.test_document.pages.first(), 'ocr_content')
+        )
 
     def test_submit_document_with_access(self):
         self.grant_access(
@@ -32,19 +34,25 @@ class OCRAPITestCase(DocumentTestMixin, BaseAPITestCase):
         response = self._request_document_ocr_submit_view()
         self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
 
-        self.assertTrue(hasattr(self.test_document.pages.first(), 'ocr_content'))
+        self.assertTrue(
+            hasattr(self.test_document.pages.first(), 'ocr_content')
+        )
 
     def _request_document_version_ocr_submit_view(self):
         return self.post(
-            viewname='rest_api:document-version-ocr-submit-view',
-            args=(self.test_document.pk, self.test_document.latest_version.pk,)
+            viewname='rest_api:document-version-ocr-submit-view', kwargs={
+                'document_pk': self.test_document.pk,
+                'version_pk': self.test_document.latest_version.pk
+            }
         )
 
     def test_submit_document_version_no_access(self):
         response = self._request_document_version_ocr_submit_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-        self.assertFalse(hasattr(self.test_document.pages.first(), 'ocr_content'))
+        self.assertFalse(
+            hasattr(self.test_document.pages.first(), 'ocr_content')
+        )
 
     def test_submit_document_version_with_access(self):
         self.grant_access(
@@ -53,15 +61,17 @@ class OCRAPITestCase(DocumentTestMixin, BaseAPITestCase):
         response = self._request_document_version_ocr_submit_view()
         self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
 
-        self.assertTrue(hasattr(self.test_document.pages.first(), 'ocr_content'))
+        self.assertTrue(
+            hasattr(self.test_document.pages.first(), 'ocr_content')
+        )
 
     def _request_document_page_content_view(self):
         return self.get(
-            viewname='rest_api:document-page-ocr-content-view',
-            args=(
-                self.test_document.pk, self.test_document.latest_version.pk,
-                self.test_document.latest_version.pages.first().pk,
-            )
+            viewname='rest_api:document-page-ocr-content-view', kwargs={
+                'document_pk': self.test_document.pk,
+                'version_pk': self.test_document.latest_version.pk,
+                'page_pk': self.test_document.latest_version.pages.first().pk,
+            }
         )
 
     def test_get_document_version_page_content_no_access(self):

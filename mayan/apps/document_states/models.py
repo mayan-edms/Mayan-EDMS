@@ -383,7 +383,9 @@ class WorkflowInstance(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            'document_states:workflow_instance_detail', args=(str(self.pk),)
+            viewname='document_states:workflow_instance_detail', kwargs={
+                'pk': self.pk
+            }
         )
 
     def get_context(self):
