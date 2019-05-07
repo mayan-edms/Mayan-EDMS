@@ -16,7 +16,7 @@ class OCRIndexingTestCase(DocumentTestMixin, BaseTestCase):
     def test_ocr_indexing(self):
         index = Index.objects.create(label=TEST_INDEX_LABEL)
 
-        index.document_types.add(self.document_type)
+        index.document_types.add(self.test_document_type)
 
         root = index.template_root
         index.node_templates.create(

@@ -22,10 +22,10 @@ class DocumentTestMixin(object):
     test_document_path = None
 
     def _create_document_type(self):
-        self.document_type = DocumentType.objects.create(
+        self.test_document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
-        self.test_document_type = self.document_type
+        self.test_document_type = self.test_document_type
 
     def upload_document(self, label=None):
         self._calculate_test_document_path()
@@ -34,13 +34,12 @@ class DocumentTestMixin(object):
             label = self.test_document_filename
 
         with open(self.test_document_path, mode='rb') as file_object:
-            document = self.document_type.new_document(
+            document = self.test_document_type.new_document(
                 file_object=file_object, label=label
             )
 
         self.test_document = document
         self.test_documents.append(document)
-        return document
 
     def _calculate_test_document_path(self):
         if not self.test_document_path:
@@ -57,7 +56,7 @@ class DocumentTestMixin(object):
             self._create_document_type()
 
             if self.auto_upload_document:
-                self.document = self.upload_document()
+                self.upload_document()
 
     def tearDown(self):
         for document_type in DocumentType.objects.all():

@@ -62,7 +62,8 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
 
     def test_document_type_delete_view_with_access(self):
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_type_delete
+            obj=self.test_document_type,
+            permission=permission_document_type_delete
         )
 
         response = self._request_document_type_delete()
@@ -106,7 +107,9 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         )
 
 
-class DocumentTypeQuickLabelViewsTestCase(DocumentTypeQuickLabelTestMixin, GenericDocumentViewTestCase):
+class DocumentTypeQuickLabelViewsTestCase(
+    DocumentTypeQuickLabelTestMixin, GenericDocumentViewTestCase
+):
     def _request_quick_label_create(self):
         return self.post(
             viewname='documents:document_type_filename_create',
@@ -129,7 +132,8 @@ class DocumentTypeQuickLabelViewsTestCase(DocumentTypeQuickLabelTestMixin, Gener
 
     def test_document_type_quick_label_create_with_access(self):
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_type_edit
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
         )
 
         response = self._request_quick_label_create()
@@ -154,7 +158,8 @@ class DocumentTypeQuickLabelViewsTestCase(DocumentTypeQuickLabelTestMixin, Gener
 
     def test_document_type_quick_label_delete_with_access(self):
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_type_edit
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
         )
         self._create_test_quick_label()
 

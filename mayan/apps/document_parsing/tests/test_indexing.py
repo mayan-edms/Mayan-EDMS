@@ -23,7 +23,7 @@ class ParsingIndexingTestCase(DocumentTestMixin, BaseTestCase):
             link_documents=True
         )
 
-        self.test_document = self.upload_document()
+        self.upload_document()
         self.test_document.submit_for_parsing()
 
         self.assertTrue(

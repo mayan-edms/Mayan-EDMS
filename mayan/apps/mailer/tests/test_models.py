@@ -35,17 +35,17 @@ class ModelTestCase(MailerTestMixin, GenericDocumentTestCase):
     def test_send_attachment(self):
         self._create_test_user_mailer()
         self.test_user_mailer.send_document(
-            to=TEST_EMAIL_ADDRESS, document=self.document, as_attachment=True
+            to=TEST_EMAIL_ADDRESS, document=self.test_document, as_attachment=True
         )
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
-        with self.document.open() as file_object:
+        with self.test_document.open() as file_object:
             self.assertEqual(
                 mail.outbox[0].attachments[0], (
-                    self.document.label, file_object.read(),
-                    self.document.file_mimetype
+                    self.test_document.label, file_object.read(),
+                    self.test_document.file_mimetype
                 )
             )
 

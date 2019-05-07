@@ -60,36 +60,36 @@ class DocumentSearchTestCase(DocumentTestMixin, BaseTestCase):
     def test_simple_or_search(self):
         self.upload_document(label='first_doc')
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self.test_documents[0], permission=permission_document_view
         )
-        self.test_document_2 = self.upload_document(label='second_doc')
+        self.upload_document(label='second_doc')
         self.grant_access(
-            obj=self.test_document_2, permission=permission_document_view
+            obj=self.test_documents[1], permission=permission_document_view
         )
         queryset = document_search.search(
             {'q': 'first OR second'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
-        self.assertTrue(self.test_document in queryset)
-        self.assertTrue(self.test_document_2 in queryset)
+        self.assertTrue(self.test_documents[0] in queryset)
+        self.assertTrue(self.test_documents[1] in queryset)
 
     def test_advanced_or_search(self):
         self.upload_document(label='first_doc')
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self.test_documents[0], permission=permission_document_view
         )
 
-        self.test_document_2 = self.upload_document(label='second_doc')
+        self.upload_document(label='second_doc')
         self.grant_access(
-            obj=self.test_document_2, permission=permission_document_view
+            obj=self.test_documents[1], permission=permission_document_view
         )
 
         queryset = document_search.search(
             {'label': 'first OR second'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
-        self.assertTrue(self.test_document in queryset)
-        self.assertTrue(self.test_document_2 in queryset)
+        self.assertTrue(self.test_documents[0] in queryset)
+        self.assertTrue(self.test_documents[1] in queryset)
 
     def test_simple_and_search(self):
         self.upload_document(label='second_doc')
@@ -109,10 +109,10 @@ class DocumentSearchTestCase(DocumentTestMixin, BaseTestCase):
         self.assertEqual(queryset.count(), 0)
 
     def test_simple_negated_search(self):
-        self.test_document_2 = self.upload_document(label='second_doc')
+        self.upload_document(label='second_doc')
 
         self.grant_access(
-            obj=self.test_document_2, permission=permission_document_view
+            obj=self.test_document, permission=permission_document_view
         )
 
         queryset = document_search.search(

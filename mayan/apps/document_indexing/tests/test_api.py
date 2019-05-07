@@ -22,7 +22,7 @@ class DocumentIndexingAPITestCase(IndexTestMixin, DocumentTestMixin, BaseAPITest
         return self.post(
             viewname='rest_api:index-list', data={
                 'label': TEST_INDEX_LABEL, 'slug': TEST_INDEX_SLUG,
-                'document_types': self.document_type.pk
+                'document_types': self.test_document_type.pk
             }
         )
 

@@ -196,7 +196,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self._create_test_document_metadata()
 
         self.grant_access(
-            obj=self.document, permission=permission_document_metadata_remove,
+            obj=self.test_document, permission=permission_document_metadata_remove,
         )
 
         # Silence unrelated logging

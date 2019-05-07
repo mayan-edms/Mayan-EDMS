@@ -15,35 +15,35 @@ class ACLActionTestCase(ActionTestCase):
                 'content_type': ContentType.objects.get_for_model(
                     model=self.test_document
                 ).pk,
-                'object_id': self.document.pk,
+                'object_id': self.test_document.pk,
                 'roles': [self._test_case_role.pk],
                 'permissions': [permission_document_view.pk],
             }
         )
         action.execute(context={'entry_log': self.entry_log})
 
-        self.assertEqual(self.document.acls.count(), 1)
+        self.assertEqual(self.test_document.acls.count(), 1)
         self.assertEqual(
-            list(self.document.acls.first().permissions.all()),
+            list(self.test_document.acls.first().permissions.all()),
             [permission_document_view.stored_permission]
         )
-        self.assertEqual(self.document.acls.first().role, self._test_case_role)
+        self.assertEqual(self.test_document.acls.first().role, self._test_case_role)
 
     def test_revoke_access_action(self):
         self.grant_access(
-            obj=self.document, permission=permission_document_view
+            obj=self.test_document, permission=permission_document_view
         )
 
         action = RevokeAccessAction(
             form_data={
                 'content_type': ContentType.objects.get_for_model(
-                    model=self.document
+                    model=self.test_document
                 ).pk,
-                'object_id': self.document.pk,
+                'object_id': self.test_document.pk,
                 'roles': [self._test_case_role.pk],
                 'permissions': [permission_document_view.pk],
             }
         )
         action.execute(context={'entry_log': self.entry_log})
 
-        self.assertEqual(self.document.acls.count(), 0)
+        self.assertEqual(self.test_document.acls.count(), 0)

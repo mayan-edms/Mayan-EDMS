@@ -29,12 +29,12 @@ class IndexFilesystemTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
             link_documents=True
         )
 
-        document = self.upload_document()
+        self.upload_document()
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         self.assertEqual(
             index_filesystem.access(
-                '/{}/{}'.format(TEST_NODE_EXPRESSION, document.label)
+                '/{}/{}'.format(TEST_NODE_EXPRESSION, self.test_document.label)
             ), None
         )
 
@@ -46,12 +46,12 @@ class IndexFilesystemTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
             link_documents=True
         )
 
-        document = self.upload_document()
+        self.upload_document()
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         with self.assertRaises(FuseOSError):
             index_filesystem.access(
-                '/{}/{}_non_valid'.format(TEST_NODE_EXPRESSION, document.label)
+                '/{}/{}_non_valid'.format(TEST_NODE_EXPRESSION, self.test_document.label)
             )
 
     def test_document_open(self):
@@ -62,20 +62,22 @@ class IndexFilesystemTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
             link_documents=True
         )
 
-        document = self.upload_document()
+        self.upload_document()
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         file_handle = index_filesystem.open(
-            '/{}/{}'.format(TEST_NODE_EXPRESSION, document.label), 'rb'
+            '/{}/{}'.format(TEST_NODE_EXPRESSION, self.test_document.label),
+            'rb'
         )
 
         self.assertEqual(
             hashlib.sha256(
                 index_filesystem.read(
-                    path=None, size=document.size, offset=0, fh=file_handle
+                    fh=file_handle, offset=0, path=None,
+                    size=self.test_document.size
                 )
             ).hexdigest(),
-            document.checksum
+            self.test_document.checksum
         )
 
     def test_multiline_indexes(self):
@@ -139,8 +141,8 @@ class IndexFilesystemTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
             link_documents=True
         )
 
-        self.document = Document.objects.create(
-            document_type=self.document_type, label='document_stub'
+        self.test_document = Document.objects.create(
+            document_type=self.test_document_type, label='document_stub'
         )
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
         self.test_index.rebuild()

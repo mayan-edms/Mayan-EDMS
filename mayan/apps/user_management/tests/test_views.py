@@ -381,19 +381,19 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
             name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
         )
 
-        self.document_type.metadata.create(metadata_type=self.metadata_type)
+        self.test_document_type.metadata.create(metadata_type=self.metadata_type)
 
     def test_user_list_lookup_render(self):
         self.metadata_type.lookup = '{{ users }}'
         self.metadata_type.save()
-        self.document.metadata.create(metadata_type=self.metadata_type)
+        self.test_document.metadata.create(metadata_type=self.metadata_type)
         self.grant_access(
-            obj=self.document, permission=permission_document_metadata_edit
+            obj=self.test_document, permission=permission_document_metadata_edit
         )
 
         response = self.get(
             viewname='metadata:metadata_edit', kwargs={
-                'pk': self.document.pk
+                'pk': self.test_document.pk
             }
         )
         self.assertContains(
@@ -405,13 +405,13 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
     def test_group_list_lookup_render(self):
         self.metadata_type.lookup = '{{ groups }}'
         self.metadata_type.save()
-        self.document.metadata.create(metadata_type=self.metadata_type)
+        self.test_document.metadata.create(metadata_type=self.metadata_type)
         self.grant_access(
-            obj=self.document, permission=permission_document_metadata_edit
+            obj=self.test_document, permission=permission_document_metadata_edit
         )
 
         response = self.get(
-            viewname='metadata:metadata_edit', kwargs={'pk': self.document.pk}
+            viewname='metadata:metadata_edit', kwargs={'pk': self.test_document.pk}
         )
 
         self.assertContains(

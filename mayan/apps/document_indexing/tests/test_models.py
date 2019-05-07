@@ -33,19 +33,19 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
             link_documents=True
         )
 
-        self.document.description = TEST_DOCUMENT_DESCRIPTION
-        self.document.save()
+        self.test_document.description = TEST_DOCUMENT_DESCRIPTION
+        self.test_document.save()
 
         self.test_index.rebuild()
 
         self.assertEqual(
-            IndexInstanceNode.objects.last().value, self.document.description
+            IndexInstanceNode.objects.last().value, self.test_document.description
         )
-        self.document.description = TEST_DOCUMENT_DESCRIPTION_EDITED
-        self.document.save()
+        self.test_document.description = TEST_DOCUMENT_DESCRIPTION_EDITED
+        self.test_document.save()
 
         self.assertEqual(
-            IndexInstanceNode.objects.last().value, self.document.description
+            IndexInstanceNode.objects.last().value, self.test_document.description
         )
 
     def test_document_label_index(self):
@@ -60,13 +60,13 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         self.test_index.rebuild()
 
         self.assertEqual(
-            IndexInstanceNode.objects.last().value, self.document.label
+            IndexInstanceNode.objects.last().value, self.test_document.label
         )
-        self.document.label = TEST_DOCUMENT_LABEL_EDITED
-        self.document.save()
+        self.test_document.label = TEST_DOCUMENT_LABEL_EDITED
+        self.test_document.save()
 
         self.assertEqual(
-            IndexInstanceNode.objects.last().value, self.document.label
+            IndexInstanceNode.objects.last().value, self.test_document.label
         )
 
     def test_date_based_index(self):
@@ -86,21 +86,21 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         # Index the document created by default
         Index.objects.rebuild()
 
-        self.document.delete()
+        self.test_document.delete()
 
         # Uploading a new should not trigger an error
-        document = self.upload_document()
+        self.upload_document()
 
         self.assertEqual(
             list(IndexInstanceNode.objects.values_list('value', flat=True)),
             [
-                '', force_text(document.date_added.year),
-                '{:02}'.format(document.date_added.month)
+                '', force_text(self.test_document.date_added.year),
+                '{:02}'.format(self.test_document.date_added.month)
             ]
         )
 
         self.assertTrue(
-            document in IndexInstanceNode.objects.last().documents.all()
+            self.test_document in IndexInstanceNode.objects.last().documents.all()
         )
 
     def test_dual_level_dual_document_index(self):
@@ -110,7 +110,7 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         children of each of the first levels. GitLab issue #391
         """
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.document_2 = self.document_type.new_document(
+            self.test_document_2 = self.test_document_type.new_document(
                 file_object=file_object
             )
 
@@ -135,8 +135,8 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
             set(IndexInstanceNode.objects.values_list('value', flat=True)),
             set(
                 [
-                    '', force_text(self.document_2.uuid), self.document_2.label,
-                    force_text(self.document.uuid), self.document.label
+                    '', force_text(self.test_document_2.uuid), self.test_document_2.label,
+                    force_text(self.test_document.uuid), self.test_document.label
                 ]
             )
         )
@@ -146,7 +146,7 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
             name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
         )
         DocumentTypeMetadataType.objects.create(
-            document_type=self.document_type, metadata_type=metadata_type
+            document_type=self.test_document_type, metadata_type=metadata_type
         )
 
         self._create_test_index()
@@ -159,7 +159,7 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         )
 
         # Add document metadata value to trigger index node instance creation
-        self.document.metadata.create(
+        self.test_document.metadata.create(
             metadata_type=metadata_type, value='0001'
         )
         self.assertEqual(
@@ -171,11 +171,11 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         # Check that document is in instance node
         instance_node = IndexInstanceNode.objects.get(value='0001')
         self.assertQuerysetEqual(
-            instance_node.documents.all(), [repr(self.document)]
+            instance_node.documents.all(), [repr(self.test_document)]
         )
 
         # Change document metadata value to trigger index node instance update
-        document_metadata = self.document.metadata.get(
+        document_metadata = self.test_document.metadata.get(
             metadata_type=metadata_type
         )
         document_metadata.value = '0002'
@@ -189,11 +189,11 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         # Check that document is in new instance node
         instance_node = IndexInstanceNode.objects.get(value='0002')
         self.assertQuerysetEqual(
-            instance_node.documents.all(), [repr(self.document)]
+            instance_node.documents.all(), [repr(self.test_document)]
         )
 
         # Check node instance is destoyed when no metadata is available
-        self.document.metadata.get(metadata_type=metadata_type).delete()
+        self.test_document.metadata.get(metadata_type=metadata_type).delete()
         self.assertEqual(
             list(
                 IndexInstanceNode.objects.values_list('value', flat=True)
@@ -202,7 +202,7 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
 
         # Add document metadata value again to trigger index node instance
         # creation
-        self.document.metadata.create(
+        self.test_document.metadata.create(
             metadata_type=metadata_type, value='0003'
         )
         self.assertEqual(
@@ -212,7 +212,7 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         )
 
         # Check node instance is destroyed when no documents are contained
-        self.document.delete()
+        self.test_document.delete()
 
         # Document is in trash, index structure should remain unchanged
         self.assertEqual(
@@ -222,7 +222,7 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         )
 
         # Document deleted, index structure should update
-        self.document.delete()
+        self.test_document.delete()
         self.assertEqual(
             list(
                 IndexInstanceNode.objects.values_list('value', flat=True)
@@ -253,11 +253,11 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         # Add metadata type and connect to document type
         metadata_type = MetadataType.objects.create(name='test', label='test')
         DocumentTypeMetadataType.objects.create(
-            document_type=self.document_type, metadata_type=metadata_type
+            document_type=self.test_document_type, metadata_type=metadata_type
         )
 
         # Add document metadata value
-        self.document.metadata.create(
+        self.test_document.metadata.create(
             metadata_type=metadata_type, value='0001'
         )
 
@@ -284,5 +284,5 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         # Check that document is in instance node
         instance_node = IndexInstanceNode.objects.get(value='0001')
         self.assertQuerysetEqual(
-            instance_node.documents.all(), [repr(self.document)]
+            instance_node.documents.all(), [repr(self.test_document)]
         )

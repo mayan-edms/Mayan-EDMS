@@ -43,7 +43,7 @@ class TaggedDocumentUploadTestCase(TagTestMixin, GenericDocumentViewTestCase):
         self._create_test_tag()
 
         self.grant_access(
-            obj=self.document_type, permission=permission_document_create
+            obj=self.test_document_type, permission=permission_document_create
         )
         response = self._request_upload_interactive_document_create_view()
         self.assertEqual(response.status_code, 302)

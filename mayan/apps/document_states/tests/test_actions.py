@@ -8,7 +8,7 @@ class ActionTestCase(GenericDocumentTestCase):
         super(ActionTestCase, self).setUp()
 
         class MockWorkflowInstance(object):
-            document = self.document
+            document = self.test_document
 
         class MockEntryLog(object):
             workflow_instance = MockWorkflowInstance()

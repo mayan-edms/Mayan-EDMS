@@ -77,7 +77,8 @@ class DocumentTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
         self.grant_access(
-            permission=permission_document_type_edit, obj=self.test_document_type
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
         )
 
         response = self._request_document_type_put()
@@ -106,7 +107,8 @@ class DocumentTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
         self.grant_access(
-            permission=permission_document_type_edit, obj=self.test_document_type
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
         )
 
         response = self._request_document_type_put()
@@ -138,7 +140,8 @@ class DocumentTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
         self.grant_access(
-            permission=permission_document_type_delete, obj=self.test_document_type
+            obj=self.test_document_type,
+            permission=permission_document_type_delete
         )
 
         response = self._request_document_type_delete()
@@ -165,7 +168,7 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
     def test_document_upload_with_access(self):
         self.grant_access(
-            permission=permission_document_create, obj=self.test_document_type
+            obj=self.test_document_type, permission=permission_document_create
         )
 
         response = self._request_document_upload()
@@ -223,7 +226,7 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def test_document_new_version_upload_with_access(self):
         self.upload_document()
         self.grant_access(
-            permission=permission_document_new_version, obj=self.test_document
+            obj=self.test_document, permission=permission_document_new_version
         )
 
         response = self._request_document_new_version_upload()
@@ -298,7 +301,7 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.upload_document()
         self._create_new_version()
         self.grant_access(
-            permission=permission_document_version_view, obj=self.test_document
+            obj=self.test_document, permission=permission_document_version_view
         )
         response = self._request_document_version_list()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -324,7 +327,7 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def test_document_download_with_access(self):
         self.upload_document()
         self.grant_access(
-            permission=permission_document_download, obj=self.test_document
+            obj=self.test_document, permission=permission_document_download
         )
 
         response = self._request_document_download()
@@ -411,7 +414,7 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def test_document_version_edit_via_patch_with_access(self):
         self.upload_document()
         self.grant_access(
-            permission=permission_document_edit, obj=self.test_document
+            obj=self.test_document, permission=permission_document_edit
         )
         response = self._request_document_version_edit_via_patch()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -439,7 +442,7 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def test_document_version_edit_via_put_with_access(self):
         self.upload_document()
         self.grant_access(
-            permission=permission_document_edit, obj=self.test_document
+            obj=self.test_document, permission=permission_document_edit
         )
 
         response = self._request_document_version_edit_via_put()
@@ -497,7 +500,8 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def test_document_description_edit_via_put_with_access(self):
         self.upload_document()
         self.grant_access(
-            permission=permission_document_properties_edit, obj=self.test_document
+            obj=self.test_document,
+            permission=permission_document_properties_edit
         )
 
         response = self._request_document_description_edit_via_put()
@@ -526,7 +530,7 @@ class DocumentPageAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
     def test_document_page_image_view_with_access(self):
         self.grant_access(
-            permission=permission_document_view, obj=self.test_document
+            obj=self.test_document, permission=permission_document_view
         )
 
         response = self._request_document_page_image()
@@ -554,7 +558,7 @@ class TrashedDocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
         self.upload_document()
         self.grant_access(
-            permission=permission_document_trash, obj=self.test_document
+            obj=self.test_document, permission=permission_document_trash
         )
 
         response = self._request_document_move_to_trash()
@@ -613,11 +617,15 @@ class TrashedDocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def test_trashed_document_detail_view_with_access(self):
         self.upload_document()
         self.test_document.delete()
-        self.grant_access(permission=permission_document_view, obj=self.test_document)
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
 
         response = self._request_trashed_document_detail_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['uuid'], force_text(self.test_document.uuid))
+        self.assertEqual(
+            response.data['uuid'], force_text(self.test_document.uuid)
+        )
 
     def _request_trashed_document_list_view(self):
         return self.get(
@@ -636,7 +644,7 @@ class TrashedDocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.upload_document()
         self.test_document.delete()
         self.grant_access(
-            permission=permission_document_view, obj=self.test_document
+            obj=self.test_document, permission=permission_document_view
         )
 
         response = self._request_trashed_document_list_view()

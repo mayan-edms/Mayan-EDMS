@@ -44,7 +44,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
                     'source_id': self.source.pk
                 }, data={
                     'source-file': file_object,
-                    'document_type_id': self.document_type.pk,
+                    'document_type_id': self.test_document_type.pk,
                 }
             )
 
@@ -53,7 +53,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         self.source.save()
 
         self.grant_access(
-            obj=self.document_type, permission=permission_document_create
+            obj=self.test_document_type, permission=permission_document_create
         )
 
         response = self._request_upload_wizard_view(
@@ -98,7 +98,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         # Create an access control entry giving the role the document
         # create permission for the selected document type.
         self.grant_access(
-            obj=self.document_type, permission=permission_document_create
+            obj=self.test_document_type, permission=permission_document_create
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
@@ -107,7 +107,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
                     'source_id': self.source.pk
                 }, data={
                     'source-file': file_object,
-                    'document_type_id': self.document_type.pk,
+                    'document_type_id': self.test_document_type.pk,
                 }
             )
         self.assertEqual(response.status_code, 302)
@@ -117,7 +117,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
     def _request_upload_interactive_view(self):
         return self.get(
             viewname='sources:upload_interactive', data={
-                'document_type_id': self.document_type.pk,
+                'document_type_id': self.test_document_type.pk,
             }
         )
 
@@ -127,7 +127,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
 
     def test_upload_interactive_view_with_access(self):
         self.grant_access(
-            permission=permission_document_create, obj=self.document_type
+            permission=permission_document_create, obj=self.test_document_type
         )
         response = self._request_upload_interactive_view()
         self.assertContains(
@@ -204,7 +204,7 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
 
         response = self.post(
             viewname='sources:upload_version', kwargs={
-                'document_pk': self.document.pk
+                'document_pk': self.test_document.pk
             }, follow=True
         )
 
@@ -215,7 +215,7 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
 
         response = self.get(
             viewname='documents:document_version_list', kwargs={
-                'pk': self.document.pk
+                'pk': self.test_document.pk
             }, follow=True
         )
 

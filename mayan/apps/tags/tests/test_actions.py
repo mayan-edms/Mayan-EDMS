@@ -17,15 +17,15 @@ class TagActionTestCase(ActionTestCase):
 
     def test_tag_attach_action(self):
         action = AttachTagAction(form_data={'tags': Tag.objects.all()})
-        action.execute(context={'document': self.document})
+        action.execute(context={'document': self.test_document})
 
         self.assertEqual(self.tag.documents.count(), 1)
-        self.assertEqual(list(self.tag.documents.all()), [self.document])
+        self.assertEqual(list(self.tag.documents.all()), [self.test_document])
 
     def test_tag_remove_action(self):
-        self.tag.attach_to(document=self.document)
+        self.tag.attach_to(document=self.test_document)
 
         action = RemoveTagAction(form_data={'tags': Tag.objects.all()})
-        action.execute(context={'document': self.document})
+        action.execute(context={'document': self.test_document})
 
         self.assertEqual(self.tag.documents.count(), 0)

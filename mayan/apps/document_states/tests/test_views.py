@@ -407,8 +407,8 @@ class WorkflowTransitionViewTestCase(
         self.test_workflow.document_types.add(self.test_document_type)
         self._create_test_workflow_states()
         self._create_test_workflow_transitions()
-        self.test_document_2 = self.upload_document()
-        self.test_workflow_instance = self.test_document_2.workflows.first()
+        self.upload_document()
+        self.test_workflow_instance = self.test_document.workflows.first()
 
         response = self._request_test_workflow_transition()
         self.assertEqual(response.status_code, 200)
@@ -428,8 +428,8 @@ class WorkflowTransitionViewTestCase(
         self.test_workflow.document_types.add(self.test_document_type)
         self._create_test_workflow_states()
         self._create_test_workflow_transitions()
-        self.test_document_2 = self.upload_document()
-        self.test_workflow_instance = self.test_document_2.workflows.first()
+        self.upload_document()
+        self.test_workflow_instance = self.test_document.workflows.first()
 
         self.grant_permission(permission=permission_workflow_transition)
 
@@ -450,8 +450,8 @@ class WorkflowTransitionViewTestCase(
         self.test_workflow.document_types.add(self.test_document_type)
         self._create_test_workflow_states()
         self._create_test_workflow_transitions()
-        self.test_document_2 = self.upload_document()
-        self.test_workflow_instance = self.test_document_2.workflows.first()
+        self.upload_document()
+        self.test_workflow_instance = self.test_document.workflows.first()
 
         self.grant_permission(permission=permission_workflow_transition)
 

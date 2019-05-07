@@ -18,7 +18,7 @@ class TransformationViewsTestCase(GenericDocumentViewTestCase):
         return self.post(
             viewname='converter:transformation_create', kwargs={
                 'app_label': 'documents', 'model': 'document',
-                'object_id': self.document.pk
+                'object_id': self.test_document.pk
             }, data={
                 'name': TEST_TRANSFORMATION_NAME,
                 'arguments': TEST_TRANSFORMATION_ARGUMENT
@@ -53,10 +53,10 @@ class TransformationViewsTestCase(GenericDocumentViewTestCase):
         )
 
     def _create_test_transformation(self):
-        content_type = ContentType.objects.get_for_model(model=self.document)
+        content_type = ContentType.objects.get_for_model(model=self.test_document)
 
         self.test_transformation = Transformation.objects.create(
-            content_type=content_type, object_id=self.document.pk,
+            content_type=content_type, object_id=self.test_document.pk,
             name=TEST_TRANSFORMATION_NAME,
             arguments=TEST_TRANSFORMATION_ARGUMENT
         )
@@ -91,7 +91,7 @@ class TransformationViewsTestCase(GenericDocumentViewTestCase):
         return self.get(
             viewname='converter:transformation_list', kwargs={
                 'app_label': 'documents', 'model': 'document',
-                'object_id': self.document.pk
+                'object_id': self.test_document.pk
             }
         )
 
@@ -101,10 +101,10 @@ class TransformationViewsTestCase(GenericDocumentViewTestCase):
 
     def test_transformation_list_view_with_permissions(self):
         self.grant_access(
-            obj=self.document, permission=permission_transformation_view
+            obj=self.test_document, permission=permission_transformation_view
         )
 
         response = self._transformation_list_view()
         self.assertContains(
-            response=response, text=self.document.label, status_code=200
+            response=response, text=self.test_document.label, status_code=200
         )

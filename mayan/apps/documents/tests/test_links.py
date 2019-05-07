@@ -21,11 +21,11 @@ from .literals import TEST_SMALL_DOCUMENT_PATH
 class DocumentsLinksTestCase(GenericDocumentViewTestCase):
     def test_document_version_revert_link_no_permission(self):
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.document.new_version(file_object=file_object)
+            self.test_document.new_version(file_object=file_object)
 
-        self.assertTrue(self.document.versions.count(), 2)
+        self.assertTrue(self.test_document.versions.count(), 2)
 
-        self.add_test_view(test_object=self.document.versions.first())
+        self.add_test_view(test_object=self.test_document.versions.first())
         context = self.get_test_view()
         resolved_link = link_document_version_revert.resolve(context=context)
 
@@ -37,16 +37,16 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         time.sleep(1.01)
 
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.document.new_version(file_object=file_object)
+            self.test_document.new_version(file_object=file_object)
 
-        self.assertTrue(self.document.versions.count(), 2)
+        self.assertTrue(self.test_document.versions.count(), 2)
 
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_version_revert
         )
 
-        self.add_test_view(test_object=self.document.versions.first())
+        self.add_test_view(test_object=self.test_document.versions.first())
         context = self.get_test_view()
         resolved_link = link_document_version_revert.resolve(context=context)
 
@@ -55,12 +55,12 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
             resolved_link.url,
             reverse(
                 viewname=link_document_version_revert.view,
-                args=(self.document.versions.first().pk,)
+                args=(self.test_document.versions.first().pk,)
             )
         )
 
     def test_document_version_download_link_no_permission(self):
-        self.add_test_view(test_object=self.document.latest_version)
+        self.add_test_view(test_object=self.test_document.latest_version)
         context = self.get_test_view()
         resolved_link = link_document_version_download.resolve(context=context)
 
@@ -72,7 +72,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
             permission=permission_document_download
         )
 
-        self.add_test_view(test_object=self.document.latest_version)
+        self.add_test_view(test_object=self.test_document.latest_version)
         context = self.get_test_view()
         resolved_link = link_document_version_download.resolve(context=context)
 
@@ -81,7 +81,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
             resolved_link.url,
             reverse(
                 viewname=link_document_version_download.view,
-                args=(self.document.latest_version.pk,)
+                args=(self.test_document.latest_version.pk,)
             )
         )
 
@@ -90,9 +90,9 @@ class DeletedDocumentsLinksTestCase(GenericDocumentViewTestCase):
     def setUp(self):
         super(DeletedDocumentsLinksTestCase, self).setUp()
         self.login_user()
-        self.document.delete()
+        self.test_document.delete()
         self.test_deleted_document = DeletedDocument.objects.get(
-            pk=self.document.pk
+            pk=self.test_document.pk
         )
         self.add_test_view(test_object=self.test_deleted_document)
         self.context = self.get_test_view()
@@ -103,7 +103,7 @@ class DeletedDocumentsLinksTestCase(GenericDocumentViewTestCase):
 
     def test_deleted_document_restore_link_with_permission(self):
         self.grant_access(
-            obj=self.document, permission=permission_document_restore
+            obj=self.test_document, permission=permission_document_restore
         )
         resolved_link = link_document_restore.resolve(context=self.context)
         self.assertNotEqual(resolved_link, None)

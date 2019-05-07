@@ -45,7 +45,7 @@ class CabinetDocumentUploadTestCase(CabinetTestMixin, GenericDocumentViewTestCas
     def test_upload_interactive_view_with_access(self):
         self._create_test_cabinet()
         self.grant_access(
-            obj=self.document_type, permission=permission_document_create
+            obj=self.test_document_type, permission=permission_document_create
         )
         response = self._request_upload_interactive_document_create_view()
 
@@ -63,7 +63,7 @@ class CabinetDocumentUploadTestCase(CabinetTestMixin, GenericDocumentViewTestCas
 
         self._create_test_cabinet()
         self.grant_access(
-            permission=permission_document_create, obj=self.document_type
+            permission=permission_document_create, obj=self.test_document_type
 
         )
 

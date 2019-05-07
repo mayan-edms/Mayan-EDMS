@@ -13,7 +13,7 @@ class DocumentVersionTestCase(DocumentVersionTestMixin, GenericDocumentViewTestC
     def _request_document_version_list_view(self):
         return self.get(
             viewname='documents:document_version_list',
-            kwargs={'pk': self.document.pk}
+            kwargs={'pk': self.test_document.pk}
         )
 
     def test_document_version_list_no_permission(self):
@@ -25,7 +25,7 @@ class DocumentVersionTestCase(DocumentVersionTestMixin, GenericDocumentViewTestC
     def test_document_version_list_with_access(self):
         self._upload_new_version()
         self.grant_access(
-            obj=self.document, permission=permission_document_version_view
+            obj=self.test_document, permission=permission_document_version_view
         )
 
         response = self._request_document_version_list_view()
@@ -40,7 +40,7 @@ class DocumentVersionTestCase(DocumentVersionTestMixin, GenericDocumentViewTestC
         )
 
     def test_document_version_revert_no_permission(self):
-        first_version = self.document.latest_version
+        first_version = self.test_document.latest_version
         self._upload_new_version()
 
         response = self._request_document_version_revert_view(
@@ -48,14 +48,14 @@ class DocumentVersionTestCase(DocumentVersionTestMixin, GenericDocumentViewTestC
         )
         self.assertEqual(response.status_code, 404)
 
-        self.assertEqual(self.document.versions.count(), 2)
+        self.assertEqual(self.test_document.versions.count(), 2)
 
     def test_document_version_revert_with_access(self):
-        first_version = self.document.latest_version
+        first_version = self.test_document.latest_version
         self._upload_new_version()
 
         self.grant_access(
-            obj=self.document, permission=permission_document_version_revert
+            obj=self.test_document, permission=permission_document_version_revert
         )
 
         response = self._request_document_version_revert_view(
@@ -63,4 +63,4 @@ class DocumentVersionTestCase(DocumentVersionTestMixin, GenericDocumentViewTestC
         )
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.document.versions.count(), 1)
+        self.assertEqual(self.test_document.versions.count(), 1)

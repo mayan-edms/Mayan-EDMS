@@ -10,21 +10,20 @@ class Issue46TestCase(DocumentTestMixin, GenericViewTestCase):
     """
     Functional tests to make sure issue 46 is fixed
     """
+    auto_upload_document = False
+
     def setUp(self):
         super(Issue46TestCase, self).setUp()
         self.test_document_count = 4
-        self.uploaded_documents = []
 
         # Upload many instances of the same test document
         for i in range(self.test_document_count):
-            self.uploaded_documents.append(
-                self.upload_document()
-            )
+            self.upload_document()
 
     def test_advanced_search_past_first_page(self):
-        test_document_label = self.uploaded_documents[0].label
+        test_document_label = self.test_documents[0].label
 
-        for document in self.uploaded_documents:
+        for document in self.test_documents:
             self.grant_access(
                 obj=document, permission=permission_document_view
             )
