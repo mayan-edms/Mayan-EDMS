@@ -31,20 +31,20 @@ urlpatterns = [
 
 api_urls = [
     url(
-        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_pk>\d+)/acls/$',
+        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/acls/$',
         view=APIObjectACLListView.as_view(), name='accesscontrollist-list'
     ),
     url(
-        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_pk>\d+)/acls/(?P<pk>\d+)/$',
+        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/acls/(?P<pk>\d+)/$',
         view=APIObjectACLView.as_view(), name='accesscontrollist-detail'
     ),
     url(
-        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_pk>\d+)/acls/(?P<pk>\d+)/permissions/$',
+        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/acls/(?P<pk>\d+)/permissions/$',
         view=APIObjectACLPermissionListView.as_view(),
         name='accesscontrollist-permission-list'
     ),
     url(
-        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_pk>\d+)/acls/(?P<pk>\d+)/permissions/(?P<permission_pk>\d+)/$',
+        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/acls/(?P<pk>\d+)/permissions/(?P<permission_pk>\d+)/$',
         view=APIObjectACLPermissionView.as_view(),
         name='accesscontrollist-permission-detail'
     ),

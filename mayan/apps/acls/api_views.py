@@ -26,7 +26,7 @@ class APIObjectACLListView(generics.ListCreateAPIView):
         )
 
         content_object = get_object_or_404(
-            klass=content_type.model_class(), pk=self.kwargs['object_pk']
+            klass=content_type.model_class(), pk=self.kwargs['object_id']
         )
 
         if self.request.method == 'GET':
@@ -90,7 +90,7 @@ class APIObjectACLView(generics.RetrieveDestroyAPIView):
         )
 
         content_object = get_object_or_404(
-            klass=content_type.model_class(), pk=self.kwargs['object_pk']
+            klass=content_type.model_class(), pk=self.kwargs['object_id']
         )
 
         AccessControlList.objects.check_access(
@@ -121,7 +121,7 @@ class APIObjectACLPermissionListView(generics.ListCreateAPIView):
         )
 
         content_object = get_object_or_404(
-            klass=content_type.model_class(), pk=self.kwargs['object_pk']
+            klass=content_type.model_class(), pk=self.kwargs['object_id']
         )
 
         if self.request.method == 'GET':
@@ -183,7 +183,7 @@ class APIObjectACLPermissionView(generics.RetrieveDestroyAPIView):
         )
 
         content_object = get_object_or_404(
-            klass=content_type.model_class(), pk=self.kwargs['object_pk']
+            klass=content_type.model_class(), pk=self.kwargs['object_id']
         )
 
         if self.request.method == 'GET':
