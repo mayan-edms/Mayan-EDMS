@@ -111,14 +111,14 @@ class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_queryset()
+        queryset = self.get_object_list()
 
         result = {
             'submit_label': _('Change'),
             'title': ungettext(
-                'Change the type of the selected document',
-                'Change the type of the selected documents',
-                queryset.count()
+                singular='Change the type of the selected document',
+                plurals='Change the type of the selected documents',
+                number=queryset.count()
             )
         }
 
@@ -439,13 +439,13 @@ class DocumentUpdatePageCountView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_queryset()
+        queryset = self.get_object_list()
 
         result = {
             'title': ungettext(
-                'Recalculate the page count of the selected document?',
-                'Recalculate the page count of the selected documents?',
-                queryset.count()
+                singular='Recalculate the page count of the selected document?',
+                plural='Recalculate the page count of the selected documents?',
+                number=queryset.count()
             )
         }
 
@@ -490,13 +490,13 @@ class DocumentTransformationsClearView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_queryset()
+        queryset = self.get_object_list()
 
         result = {
             'title': ungettext(
-                'Clear all the page transformations for the selected document?',
-                'Clear all the page transformations for the selected document?',
-                queryset.count()
+                singular='Clear all the page transformations for the selected document?',
+                plural='Clear all the page transformations for the selected document?',
+                number=queryset.count()
             )
         }
 

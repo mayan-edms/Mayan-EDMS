@@ -41,7 +41,7 @@ class DocumentTrashView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_queryset()
+        queryset = self.get_object_list()
 
         result = {
             'title': ungettext(
@@ -89,7 +89,7 @@ class TrashedDocumentDeleteView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_queryset()
+        queryset = self.get_object_list()
 
         result = {
             'title': ungettext(
@@ -149,7 +149,7 @@ class TrashedDocumentRestoreView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_queryset()
+        queryset = self.get_object_list()
 
         result = {
             'title': ungettext(

@@ -55,15 +55,15 @@ class MailDocumentView(MultipleObjectFormActionView):
     title_document = 'Email document: %s'
 
     def get_extra_context(self):
-        queryset = self.get_queryset()
+        queryset = self.get_object_list()
 
         result = {
             'submit_icon_class': icon_mail_document_submit,
             'submit_label': _('Send'),
             'title': ungettext(
-                self.title,
-                self.title_plural,
-                queryset.count()
+                singular=self.title,
+                plural=self.title_plural,
+                number=queryset.count()
             )
         }
 
