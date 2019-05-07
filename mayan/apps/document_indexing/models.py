@@ -405,7 +405,7 @@ class IndexInstanceNode(MPTTModel):
         return self.get_descendants().count()
 
     def get_descendants_document_count(self, user):
-        return AccessControlList.objects.filter_by_access(
+        return AccessControlList.objects.restrict_queryset(
             permission=permission_document_view,
             queryset=Document.objects.filter(
                 index_instance_nodes__in=self.get_descendants(
@@ -426,7 +426,7 @@ class IndexInstanceNode(MPTTModel):
 
     def get_item_count(self, user):
         if self.index_template_node.link_documents:
-            queryset = AccessControlList.objects.filter_by_access(
+            queryset = AccessControlList.objects.restrict_queryset(
                 permission=permission_document_view, queryset=self.documents,
                 user=user
             )

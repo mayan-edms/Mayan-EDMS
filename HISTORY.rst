@@ -242,6 +242,8 @@
 * Remove ObjectListPermissionFilterMixin.
 * Add deprecation warning to convertdb 
 * Add the preparestatic command.
+* Remove the related attribute of check_access.
+* Remove filter_by_access. Replaced by restrict_queryset.
 
 3.1.11 (2019-04-XX)
 ===================

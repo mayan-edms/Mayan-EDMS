@@ -276,6 +276,18 @@ Other changes
 * Add deprecation warning to convertdb 
 * Add the preparestatic command.
 
+* Remove filter_by_access. Replaced by restrict_queryset.
+
+* Remove the related attribute of check_access
+-                'Passing the argument `related` to check_access() is '
+-                'deprecated. Use the ModelPermission\'s class '
+-                '.register_inheritance() class method to register the access '
+-                'relationship between two models. The registered relationship '
+-                'will be automatically used by check_access().',
+-                InterfaceWarning
+
+
+
 
 Removals
 --------

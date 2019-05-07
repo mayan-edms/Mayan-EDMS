@@ -71,8 +71,9 @@ class Cabinet(MPTTModel):
         Provide a queryset of the documents in a cabinet. The queryset is
         filtered by access.
         """
-        return AccessControlList.objects.filter_by_access(
-            permission_document_view, user, queryset=self.documents
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_document_view, queryset=self.documents,
+            user=user
         )
 
     def get_full_path(self):

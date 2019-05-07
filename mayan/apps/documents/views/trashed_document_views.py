@@ -111,7 +111,7 @@ class TrashedDocumentListView(DocumentListView):
     object_permission = None
 
     def get_document_queryset(self):
-        return AccessControlList.objects.filter_by_access(
+        return AccessControlList.objects.restrict_queryset(
             permission=permission_document_view,
             queryset=DeletedDocument.trash.all(),
             user=self.request.user

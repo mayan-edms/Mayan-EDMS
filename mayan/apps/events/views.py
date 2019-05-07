@@ -177,7 +177,7 @@ class ObjectEventListView(EventListView):
             model=self.kwargs['model']
         )
 
-        queryset = AccessControlList.objects.filter_by_access(
+        queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_events_view,
             queryset=content_type.model_class().objects.all(),
             user=self.request.user

@@ -70,7 +70,7 @@ def new_documents_this_month(user=None):
     queryset = Document.objects.all()
 
     if user:
-        queryset = AccessControlList.objects.filter_by_access(
+        queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_document_view, user=user,
             queryset=queryset
         )
@@ -112,7 +112,7 @@ def new_document_pages_this_month(user=None):
     queryset = DocumentPage.objects.all()
 
     if user:
-        queryset = AccessControlList.objects.filter_by_access(
+        queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_document_view, user=user,
             queryset=queryset
         )

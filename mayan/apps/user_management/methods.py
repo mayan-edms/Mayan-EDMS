@@ -40,7 +40,7 @@ def method_group_get_users(self, user, permission=permission_user_view):
         app_label='acls', model_name='AccessControlList'
     )
 
-    return AccessControlList.objects.filter_by_access(
+    return AccessControlList.objects.restrict_queryset(
         permission=permission, queryset=get_user_queryset().filter(
             id__in=self.user_set.all()
         ), user=user
@@ -82,7 +82,7 @@ def method_user_get_groups(self, user, permission=permission_group_view):
         app_label='acls', model_name='AccessControlList'
     )
 
-    return AccessControlList.objects.filter_by_access(
+    return AccessControlList.objects.restrict_queryset(
         permission=permission, queryset=self.groups.all(), user=user
     )
 

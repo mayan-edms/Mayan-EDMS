@@ -133,7 +133,7 @@ class CheckoutDocumentView(SingleObjectCreateView):
 
 class CheckoutListView(DocumentListView):
     def get_document_queryset(self):
-        return AccessControlList.objects.filter_by_access(
+        return AccessControlList.objects.restrict_queryset(
             permission=permission_document_check_out_detail_view,
             queryset=DocumentCheckout.objects.checked_out_documents(),
             user=self.request.user

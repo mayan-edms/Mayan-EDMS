@@ -26,7 +26,7 @@ def condition_check_document_creation_acls(context):
         app_label='documents', model_name='DocumentType'
     )
 
-    queryset = AccessControlList.objects.filter_by_access(
+    queryset = AccessControlList.objects.restrict_queryset(
         permission=permission_document_create,
         queryset=DocumentType.objects.all(), user=context['user']
     )

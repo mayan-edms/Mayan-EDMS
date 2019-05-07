@@ -44,7 +44,7 @@ class DocumentMailForm(forms.Form):
                 'project_website': setting_project_url.value
             }
 
-        queryset = AccessControlList.objects.filter_by_access(
+        queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_user_mailer_use, user=user,
             queryset=UserMailer.objects.filter(enabled=True)
         )

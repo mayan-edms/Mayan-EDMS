@@ -35,7 +35,7 @@ def get_cascade_condition(app_label, model_name, object_permission, view_permiss
             else:
                 return True
 
-        queryset = AccessControlList.objects.filter_by_access(
+        queryset = AccessControlList.objects.restrict_queryset(
             permission=object_permission, user=context.request.user,
             queryset=Model.objects.all()
         )

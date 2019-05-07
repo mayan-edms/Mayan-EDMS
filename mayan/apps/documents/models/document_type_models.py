@@ -85,7 +85,7 @@ class DocumentType(models.Model):
         )
 
     def get_document_count(self, user):
-        queryset = AccessControlList.objects.filter_by_access(
+        queryset = AccessControlList.objects.restrict_queryset(
             permission_document_view, user, queryset=self.documents
         )
 

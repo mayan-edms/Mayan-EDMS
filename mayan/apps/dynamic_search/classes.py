@@ -166,7 +166,7 @@ class SearchModel(object):
         queryset = self.model.objects.filter(search_query.query).distinct()
 
         if self.permission:
-            queryset = AccessControlList.objects.filter_by_access(
+            queryset = AccessControlList.objects.restrict_queryset(
                 permission=self.permission, queryset=queryset, user=user
             )
 

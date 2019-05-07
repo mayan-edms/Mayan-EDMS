@@ -736,7 +736,7 @@ class SetupDocumentTypeMetadataTypes(FormView):
 
     def get_queryset(self):
         queryset = self.submodel.objects.all()
-        return AccessControlList.objects.filter_by_access(
+        return AccessControlList.objects.restrict_queryset(
             permission=permission_document_type_edit,
             user=self.request.user, queryset=queryset
         )

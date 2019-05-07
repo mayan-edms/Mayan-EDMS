@@ -135,9 +135,9 @@ class APIUserGroupList(generics.ListCreateAPIView):
     def get_queryset(self):
         user = self.get_user()
 
-        return AccessControlList.objects.filter_by_access(
-            permission_group_view, self.request.user,
-            queryset=user.groups.order_by('id')
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_group_view,
+            queryset=user.groups.order_by('id'), user=self.request.user
         )
 
     def get_user(self):

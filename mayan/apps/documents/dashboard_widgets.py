@@ -34,7 +34,7 @@ class DashboardWidgetDocumentPagesTotal(DashboardWidgetNumeric):
         DocumentPage = apps.get_model(
             app_label='documents', model_name='DocumentPage'
         )
-        self.count = AccessControlList.objects.filter_by_access(
+        self.count = AccessControlList.objects.restrict_queryset(
             permission=permission_document_view, user=request.user,
             queryset=DocumentPage.objects.all()
         ).count()
@@ -53,7 +53,7 @@ class DashboardWidgetDocumentsTotal(DashboardWidgetNumeric):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
-        self.count = AccessControlList.objects.filter_by_access(
+        self.count = AccessControlList.objects.restrict_queryset(
             permission=permission_document_view, user=request.user,
             queryset=Document.objects.all()
         ).count()
@@ -72,7 +72,7 @@ class DashboardWidgetDocumentsInTrash(DashboardWidgetNumeric):
         DeletedDocument = apps.get_model(
             app_label='documents', model_name='DeletedDocument'
         )
-        self.count = AccessControlList.objects.filter_by_access(
+        self.count = AccessControlList.objects.restrict_queryset(
             permission=permission_document_view, user=request.user,
             queryset=DeletedDocument.objects.all()
         ).count()
@@ -91,7 +91,7 @@ class DashboardWidgetDocumentsTypesTotal(DashboardWidgetNumeric):
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
         )
-        self.count = AccessControlList.objects.filter_by_access(
+        self.count = AccessControlList.objects.restrict_queryset(
             permission=permission_document_type_view, user=request.user,
             queryset=DocumentType.objects.all()
         ).count()

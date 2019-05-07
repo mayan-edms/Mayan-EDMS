@@ -34,7 +34,7 @@ class DocumentTypeFilteredSelectForm(forms.Form):
 
         queryset = DocumentType.objects.all()
         if permission:
-            queryset = AccessControlList.objects.filter_by_access(
+            queryset = AccessControlList.objects.restrict_queryset(
                 permission=permission, queryset=queryset, user=user
             )
 

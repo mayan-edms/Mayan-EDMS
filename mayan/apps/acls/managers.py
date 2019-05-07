@@ -190,20 +190,7 @@ class AccessControlListManager(models.Manager):
 
         return result
 
-    def check_access(self, obj, permissions, user, related=None):
-        """
-        The `related` argument is ignored.
-        """
-        if related:
-            warnings.warn(
-                'Passing the argument `related` to check_access() is '
-                'deprecated. Use the ModelPermission\'s class '
-                '.register_inheritance() class method to register the access '
-                'relationship between two models. The registered relationship '
-                'will be automatically used by check_access().',
-                InterfaceWarning
-            )
-
+    def check_access(self, obj, permissions, user):
         meta = getattr(obj, '_meta', None)
 
         if not meta:
@@ -233,11 +220,6 @@ class AccessControlListManager(models.Manager):
                     s=obj
                 )
             )
-
-    def filter_by_access(self, permission, user, queryset):
-        return self.restrict_queryset(
-            permission=permission, queryset=queryset, user=user
-        )
 
     def restrict_queryset(self, permission, queryset, user):
         # Check directly granted permission via a role

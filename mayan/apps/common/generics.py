@@ -369,7 +369,7 @@ class AddRemoveView(
             queryset = self.secondary_object_model._meta.default_manager.all()
 
         if self.secondary_object_permission:
-            return AccessControlList.objects.filter_by_access(
+            return AccessControlList.objects.restrict_queryset(
                 permission=self.secondary_object_permission, queryset=queryset,
                 user=self.request.user
             )

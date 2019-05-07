@@ -23,12 +23,12 @@ class DashboardWidgetTotalCheckouts(DashboardWidgetNumeric):
         DocumentCheckout = apps.get_model(
             app_label='checkouts', model_name='DocumentCheckout'
         )
-        queryset = AccessControlList.objects.filter_by_access(
+        queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_document_check_out_detail_view,
             queryset=DocumentCheckout.objects.checked_out_documents(),
             user=request.user
         )
-        queryset = AccessControlList.objects.filter_by_access(
+        queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_document_view, queryset=queryset,
             user=request.user
         )

@@ -28,7 +28,7 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
         self._setup_test_object()
 
         self.assertEqual(
-            AccessControlList.objects.filter_by_access(
+            AccessControlList.objects.restrict_queryset(
                 permission=self.test_permission,
                 queryset=self.test_object._meta.model._default_manager.all(),
                 user=self._test_case_user
@@ -58,7 +58,7 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
         )
 
         self.assertTrue(
-            self.test_object in AccessControlList.objects.filter_by_access(
+            self.test_object in AccessControlList.objects.restrict_queryset(
                 permission=self.test_permission,
                 queryset=self.test_object._meta.model._default_manager.all(),
                 user=self._test_case_user
@@ -136,7 +136,7 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
             obj=self.test_object_parent, permission=self.test_permission
         )
 
-        result = AccessControlList.objects.filter_by_access(
+        result = AccessControlList.objects.restrict_queryset(
             permission=self.test_permission,
             queryset=self.test_object_child._meta.model._default_manager.all(),
             user=self._test_case_user
@@ -154,7 +154,7 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
             obj=self.test_object_child, permission=self.test_permission
         )
 
-        result = AccessControlList.objects.filter_by_access(
+        result = AccessControlList.objects.restrict_queryset(
             permission=self.test_permission,
             queryset=self.test_object_child._meta.model._default_manager.all(),
             user=self._test_case_user,

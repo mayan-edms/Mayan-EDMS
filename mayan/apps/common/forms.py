@@ -255,7 +255,7 @@ class FilteredSelectionForm(forms.Form):
             widget_class = opts.widget_class
 
         if opts.permission:
-            queryset = AccessControlList.objects.filter_by_access(
+            queryset = AccessControlList.objects.restrict_queryset(
                 permission=opts.permission, queryset=queryset,
                 user=opts.user
             )

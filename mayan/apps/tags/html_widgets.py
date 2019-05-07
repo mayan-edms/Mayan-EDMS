@@ -14,8 +14,9 @@ def widget_document_tags(document, user):
         app_label='acls', model_name='AccessControlList'
     )
 
-    tags = AccessControlList.objects.filter_by_access(
-        permission_tag_view, user, queryset=document.attached_tags().all()
+    tags = AccessControlList.objects.restrict_queryset(
+        permission=permission_tag_view, queryset=document.attached_tags().all(),
+        user=user
     )
 
     return render_to_string(

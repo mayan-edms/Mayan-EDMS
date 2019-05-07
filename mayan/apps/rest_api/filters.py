@@ -15,8 +15,9 @@ class MayanObjectPermissionsFilter(BaseFilterBackend):
         ).get(request.method, None)
 
         if required_permissions:
-            return AccessControlList.objects.filter_by_access(
-                required_permissions[0], request.user, queryset=queryset
+            return AccessControlList.objects.restrict_queryset(
+                queryset=queryset, permission=required_permissions[0],
+                user=request.user
             )
         else:
             return queryset

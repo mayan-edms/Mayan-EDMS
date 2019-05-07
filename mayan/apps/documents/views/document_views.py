@@ -230,9 +230,9 @@ class DocumentDownloadFormView(FormView):
         return kwargs
 
     def get_queryset(self):
-        return AccessControlList.objects.filter_by_access(
-            permission_document_download, self.request.user,
-            queryset=self.get_document_queryset()
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_document_download,
+            queryset=self.get_document_queryset(), user=self.request.user
         )
 
 
@@ -269,8 +269,9 @@ class DocumentDownloadView(SingleObjectDownloadView):
 
         queryset = self.model.objects.filter(pk__in=id_list.split(','))
 
-        return AccessControlList.objects.filter_by_access(
-            permission_document_download, self.request.user, queryset
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_document_download, queryset=queryset,
+            user=self.request.user
         )
 
     def get_file(self):
