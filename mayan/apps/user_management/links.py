@@ -85,22 +85,11 @@ link_user_multiple_delete = Link(
     permissions=(permission_user_delete,), tags='dangerous', text=_('Delete'),
     view='user_management:user_multiple_delete'
 )
-link_user_multiple_set_password = Link(
-    icon_class_path='mayan.apps.user_management.icons.icon_user_set_password',
-    permissions=(permission_user_edit,), text=_('Set password'),
-    view='user_management:user_multiple_set_password'
-)
 link_user_set_options = Link(
     args='object.id',
     icon_class_path='mayan.apps.user_management.icons.icon_user_set_options',
     permissions=(permission_user_edit,),
     text=_('User options'), view='user_management:user_options',
-)
-link_user_set_password = Link(
-    args='object.id',
-    icon_class_path='mayan.apps.user_management.icons.icon_user_set_password',
-    permissions=(permission_user_edit,),
-    text=_('Set password'), view='user_management:user_set_password',
 )
 link_user_setup = Link(
     icon_class_path='mayan.apps.user_management.icons.icon_user_setup',

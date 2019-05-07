@@ -17,7 +17,6 @@ from ..permissions import (
     permission_user_edit, permission_user_view
 )
 
-from .literals import TEST_USER_PASSWORD_EDITED
 from .mixins import (
     GroupTestMixin, GroupViewTestMixin, UserTestMixin, UserViewTestMixin
 )
@@ -265,59 +264,6 @@ class UserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCase):
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(get_user_model().objects.count(), user_count - 1)
-
-    def test_user_set_password_view_no_access(self):
-        self._create_test_user()
-
-        password_hash = self.test_user.password
-
-        response = self._request_test_user_password_set_view(
-            password=TEST_USER_PASSWORD_EDITED
-        )
-        self.assertEqual(response.status_code, 404)
-
-        self.test_user.refresh_from_db()
-        self.assertEqual(self.test_user.password, password_hash)
-
-    def test_user_set_password_view_with_access(self):
-        self._create_test_user()
-        self.grant_access(obj=self.test_user, permission=permission_user_edit)
-
-        password_hash = self.test_user.password
-
-        response = self._request_test_user_password_set_view(
-            password=TEST_USER_PASSWORD_EDITED
-        )
-        self.assertEqual(response.status_code, 302)
-
-        self.test_user.refresh_from_db()
-        self.assertNotEqual(self.test_user.password, password_hash)
-
-    def test_user_multiple_set_password_view_no_access(self):
-        self._create_test_user()
-        password_hash = self.test_user.password
-
-        response = self._request_test_user_password_set_multiple_view(
-            password=TEST_USER_PASSWORD_EDITED
-        )
-        self.assertEqual(response.status_code, 404)
-
-        self.test_user.refresh_from_db()
-        self.assertEqual(self.test_user.password, password_hash)
-
-    def test_user_multiple_set_password_view_with_access(self):
-        self._create_test_user()
-        self.grant_access(obj=self.test_user, permission=permission_user_edit)
-
-        password_hash = self.test_user.password
-
-        response = self._request_test_user_password_set_multiple_view(
-            password=TEST_USER_PASSWORD_EDITED
-        )
-        self.assertEqual(response.status_code, 302)
-
-        self.test_user.refresh_from_db()
-        self.assertNotEqual(self.test_user.password, password_hash)
 
 
 class UserGroupViewTestCase(GroupTestMixin, UserTestMixin, UserViewTestMixin, GenericViewTestCase):

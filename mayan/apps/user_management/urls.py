@@ -10,7 +10,7 @@ from .views import (
     CurrentUserDetailsView, CurrentUserEditView, GroupCreateView,
     GroupDeleteView, GroupEditView, GroupListView, GroupUsersView,
     UserCreateView, UserDeleteView, UserDetailsView, UserEditView,
-    UserGroupsView, UserListView, UserOptionsEditView, UserSetPasswordView
+    UserGroupsView, UserListView, UserOptionsEditView
 )
 
 urlpatterns_current_user = [
@@ -71,14 +71,6 @@ urlpatterns_users = [
     url(
         regex=r'^users/(?P<pk>\d+)/groups/$', view=UserGroupsView.as_view(),
         name='user_groups'
-    ),
-    url(
-        regex=r'^users/(?P<pk>\d+)/set_password/$',
-        view=UserSetPasswordView.as_view(), name='user_set_password'
-    ),
-    url(
-        regex=r'^users/multiple/set_password/$',
-        view=UserSetPasswordView.as_view(), name='user_multiple_set_password'
     ),
     url(
         regex=r'^users/(?P<pk>\d+)/options/$',

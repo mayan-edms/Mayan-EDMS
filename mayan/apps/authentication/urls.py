@@ -6,7 +6,7 @@ from .views import (
     MayanLoginView, MayanLogoutView, MayanPasswordChangeDoneView,
     MayanPasswordChangeView, MayanPasswordResetCompleteView,
     MayanPasswordResetConfirmView, MayanPasswordResetDoneView,
-    MayanPasswordResetView
+    MayanPasswordResetView, UserSetPasswordView
 )
 
 
@@ -34,11 +34,20 @@ urlpatterns = [
         name='password_reset_confirm_view'
     ),
     url(
-        regex=r'^password/reset/done/$', view=MayanPasswordResetDoneView.as_view(),
+        regex=r'^password/reset/done/$',
+        view=MayanPasswordResetDoneView.as_view(),
         name='password_reset_done_view'
     ),
     url(
         regex=r'^password/reset/$', view=MayanPasswordResetView.as_view(),
         name='password_reset_view'
-    )
+    ),
+    url(
+        regex=r'^users/(?P<pk>\d+)/set_password/$',
+        view=UserSetPasswordView.as_view(), name='user_set_password'
+    ),
+    url(
+        regex=r'^users/multiple/set_password/$',
+        view=UserSetPasswordView.as_view(), name='user_multiple_set_password'
+    ),
 ]

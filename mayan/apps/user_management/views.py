@@ -1,10 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.models import Group
-from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
@@ -13,9 +10,8 @@ from django.utils.translation import ungettext, ugettext_lazy as _
 
 from mayan.apps.common.generics import (
     AddRemoveView, MultipleObjectConfirmActionView,
-    MultipleObjectFormActionView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectEditView,
-    SingleObjectListView
+    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
+    SingleObjectEditView, SingleObjectListView
 )
 
 from .forms import UserForm
@@ -162,7 +158,7 @@ class UserCreateView(SingleObjectCreateView):
         super(UserCreateView, self).form_valid(form=form)
         return HttpResponseRedirect(
             reverse(
-                viewname='user_management:user_set_password',
+                viewname='authentication:user_set_password',
                 kwargs={'pk': self.object.pk}
             )
         )
@@ -180,13 +176,13 @@ class UserDeleteView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_queryset()
+        queryset = self.get_object_list()
 
         result = {
             'title': ungettext(
-                'Delete user',
-                'Delete users',
-                queryset.count()
+                singular='Delete user',
+                plural='Delete users',
+                number=queryset.count()
             )
         }
 
@@ -332,71 +328,3 @@ class UserOptionsEditView(SingleObjectEditView):
         return get_object_or_404(
             klass=get_user_queryset(), pk=self.kwargs['pk']
         )
-
-
-class UserSetPasswordView(MultipleObjectFormActionView):
-    form_class = SetPasswordForm
-    model = get_user_model()
-    object_permission = permission_user_edit
-    success_message = _('Password change request performed on %(count)d user')
-    success_message_plural = _(
-        'Password change request performed on %(count)d users'
-    )
-
-    def get_extra_context(self):
-        queryset = self.get_queryset()
-
-        result = {
-            'submit_label': _('Submit'),
-            'title': ungettext(
-                'Change user password',
-                'Change users passwords',
-                queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result.update(
-                {
-                    'object': queryset.first(),
-                    'title': _('Change password for user: %s') % queryset.first()
-                }
-            )
-
-        return result
-
-    def get_form_extra_kwargs(self):
-        queryset = self.get_queryset()
-        result = {}
-        if queryset:
-            result['user'] = queryset.first()
-            return result
-        else:
-            raise PermissionDenied
-
-    def object_action(self, form, instance):
-        try:
-            if instance.is_superuser or instance.is_staff:
-                messages.error(
-                    message=_(
-                        'Super user and staff user password '
-                        'reseting is not allowed, use the admin '
-                        'interface for these cases.'
-                    ), request=self.request
-                )
-            else:
-                instance.set_password(form.cleaned_data['new_password1'])
-                instance.save()
-                messages.success(
-                    message=_(
-                        'Successful password reset for user: %s.'
-                    ) % instance, request=self.request
-                )
-        except Exception as exception:
-            messages.error(
-                message=_(
-                    'Error reseting password for user "%(user)s": %(error)s'
-                ) % {
-                    'user': instance, 'error': exception
-                }, request=self.request
-            )

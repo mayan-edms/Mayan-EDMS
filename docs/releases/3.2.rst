@@ -285,6 +285,7 @@ Other changes
 -                'relationship between two models. The registered relationship '
 -                'will be automatically used by check_access().',
 -                InterfaceWarning
+* Move the user set password views to the authentication app.
 
 
 

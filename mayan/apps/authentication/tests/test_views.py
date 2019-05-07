@@ -13,10 +13,14 @@ from django.utils.http import urlunquote_plus
 
 from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.user_management.permissions import permission_user_edit
+from mayan.apps.user_management.tests.mixins import UserTestMixin
+from mayan.apps.user_management.tests.literals import TEST_USER_PASSWORD_EDITED
 
 from ..settings import setting_maximum_session_length
 
 from .literals import TEST_EMAIL_AUTHENTICATION_BACKEND
+from .mixins import UserPasswordViewTestMixin
 
 
 class CurrentUserViewTestCase(GenericViewTestCase):
@@ -256,3 +260,58 @@ class UserLoginTestCase(GenericViewTestCase):
         )
 
         self.assertEqual(response.redirect_chain, [(TEST_REDIRECT_URL, 302)])
+
+
+class UserViewTestCase(UserTestMixin, UserPasswordViewTestMixin, GenericViewTestCase):
+    def test_user_set_password_view_no_access(self):
+        self._create_test_user()
+
+        password_hash = self.test_user.password
+
+        response = self._request_test_user_password_set_view(
+            password=TEST_USER_PASSWORD_EDITED
+        )
+        self.assertEqual(response.status_code, 404)
+
+        self.test_user.refresh_from_db()
+        self.assertEqual(self.test_user.password, password_hash)
+
+    def test_user_set_password_view_with_access(self):
+        self._create_test_user()
+        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+
+        password_hash = self.test_user.password
+
+        response = self._request_test_user_password_set_view(
+            password=TEST_USER_PASSWORD_EDITED
+        )
+        self.assertEqual(response.status_code, 302)
+
+        self.test_user.refresh_from_db()
+        self.assertNotEqual(self.test_user.password, password_hash)
+
+    def test_user_multiple_set_password_view_no_access(self):
+        self._create_test_user()
+        password_hash = self.test_user.password
+
+        response = self._request_test_user_password_set_multiple_view(
+            password=TEST_USER_PASSWORD_EDITED
+        )
+        self.assertEqual(response.status_code, 404)
+
+        self.test_user.refresh_from_db()
+        self.assertEqual(self.test_user.password, password_hash)
+
+    def test_user_multiple_set_password_view_with_access(self):
+        self._create_test_user()
+        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+
+        password_hash = self.test_user.password
+
+        response = self._request_test_user_password_set_multiple_view(
+            password=TEST_USER_PASSWORD_EDITED
+        )
+        self.assertEqual(response.status_code, 302)
+
+        self.test_user.refresh_from_db()
+        self.assertNotEqual(self.test_user.password, password_hash)

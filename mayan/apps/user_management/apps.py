@@ -38,8 +38,7 @@ from .links import (
     link_group_delete, link_group_edit, link_group_list, link_group_user_list,
     link_group_setup, link_user_create, link_user_delete, link_user_edit,
     link_user_group_list, link_user_list, link_user_multiple_delete,
-    link_user_multiple_set_password, link_user_set_options,
-    link_user_set_password, link_user_setup, separator_user_label,
+    link_user_set_options, link_user_setup, separator_user_label,
     text_user_label
 )
 from .methods import (
@@ -222,7 +221,7 @@ class UserManagementApp(MayanAppConfig):
             ), sources=(User,)
         )
         menu_multi_item.bind_links(
-            links=(link_user_multiple_set_password, link_user_multiple_delete),
+            links=(link_user_multiple_delete,),
             sources=('user_management:user_list',)
         )
         menu_object.bind_links(
@@ -234,9 +233,7 @@ class UserManagementApp(MayanAppConfig):
             sources=(Group,)
         )
         menu_object.bind_links(
-            links=(
-                link_user_delete, link_user_edit, link_user_set_password
-            ), sources=(User,)
+            links=(link_user_delete, link_user_edit,), sources=(User,)
         )
         menu_secondary.bind_links(
             links=(link_group_list, link_group_create), sources=(
@@ -247,7 +244,7 @@ class UserManagementApp(MayanAppConfig):
         )
         menu_secondary.bind_links(
             links=(link_user_list, link_user_create), sources=(
-                User, 'user_management:user_multiple_set_password',
+                User, 'authentication:user_multiple_set_password',
                 'user_management:user_multiple_delete',
                 'user_management:user_list', 'user_management:user_create'
             )

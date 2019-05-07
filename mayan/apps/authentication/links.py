@@ -3,8 +3,7 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
-
-from .icons import icon_logout, icon_password_change
+from mayan.apps.user_management.permissions import permission_user_edit
 
 
 def has_usable_password_and_can_change_password(context):
@@ -18,11 +17,24 @@ def has_usable_password_and_can_change_password(context):
 
 
 link_logout = Link(
-    html_extra_classes='non-ajax', icon_class=icon_logout,
+    html_extra_classes='non-ajax',
+    icon_class_path='mayan.apps.authentication.icons.icon_logout',
     text=_('Logout'), view='authentication:logout_view'
 )
 link_password_change = Link(
     condition=has_usable_password_and_can_change_password,
-    icon_class=icon_password_change, text=_('Change password'),
+    icon_class_path='mayan.apps.authentication.icons.icon_password_change',
+    text=_('Change password'),
     view='authentication:password_change_view'
+)
+link_user_multiple_set_password = Link(
+    icon_class_path='mayan.apps.authentication.icons.icon_password_change',
+    permissions=(permission_user_edit,), text=_('Set password'),
+    view='authentication:user_multiple_set_password'
+)
+link_user_set_password = Link(
+    args='object.id',
+    icon_class_path='mayan.apps.authentication.icons.icon_password_change',
+    permissions=(permission_user_edit,),
+    text=_('Set password'), view='authentication:user_set_password',
 )
