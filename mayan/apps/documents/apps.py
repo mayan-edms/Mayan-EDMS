@@ -270,17 +270,19 @@ class DocumentsApp(MayanAppConfig):
 
         # DocumentPage
         SourceColumn(
+            attribute='get_label', is_identifier=True,
+            is_object_absolute_url=True, source=DocumentPage
+        )
+        SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             ), label=_('Thumbnail'), source=DocumentPage
         )
-
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             ), label=_('Thumbnail'), source=DocumentPageResult
         )
-
         SourceColumn(
             attribute='document_version.document.document_type',
             label=_('Type'), source=DocumentPageResult

@@ -54,13 +54,7 @@ class DocumentPage(models.Model):
         verbose_name_plural = _('Document pages')
 
     def __str__(self):
-        return _(
-            'Page %(page_num)d out of %(total_pages)d of %(document)s'
-        ) % {
-            'document': force_text(self.document),
-            'page_num': self.page_number,
-            'total_pages': self.document_version.pages.count()
-        }
+        return self.get_label()
 
     @property
     def cache_filename(self):
@@ -111,7 +105,9 @@ class DocumentPage(models.Model):
         return cache_filename
 
     def get_absolute_url(self):
-        return reverse('documents:document_page_view', args=(self.pk,))
+        return reverse(
+            viewname='documents:document_page_view', kwargs={'pk': self.pk}
+        )
 
     def get_api_image_url(self, *args, **kwargs):
         """
@@ -239,6 +235,16 @@ class DocumentPage(models.Model):
     @property
     def is_in_trash(self):
         return self.document.is_in_trash
+
+    def get_label(self):
+        return _(
+            'Page %(page_num)d out of %(total_pages)d of %(document)s'
+        ) % {
+            'document': force_text(self.document),
+            'page_num': self.page_number,
+            'total_pages': self.document_version.pages.count()
+        }
+    get_label.short_description = _('Label')
 
     def natural_key(self):
         return (self.page_number, self.document_version.natural_key())

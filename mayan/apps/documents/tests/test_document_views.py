@@ -510,32 +510,6 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 0)
 
-    def _request_document_page_view(self, document_page):
-        return self.get(
-            viewname='documents:document_page_view', kwargs={
-                'pk': document_page.pk,
-            }
-        )
-
-    def test_document_page_view_no_permissions(self):
-        response = self._request_document_page_view(
-            document_page=self.test_document.pages.first()
-        )
-        self.assertEqual(response.status_code, 403)
-
-    def test_document_page_view_with_access(self):
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_view
-        )
-
-        response = self._request_document_page_view(
-            document_page=self.test_document.pages.first()
-        )
-        self.assertContains(
-            response=response, text=force_text(self.test_document.pages.first()),
-            status_code=200
-        )
-
     def _request_document_print_view(self):
         return self.get(
             viewname='documents:document_print', kwargs={
