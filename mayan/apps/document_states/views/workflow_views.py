@@ -141,6 +141,7 @@ class SetupWorkflowListView(SingleObjectListView):
 
 
 class SetupWorkflowCreateView(SingleObjectCreateView):
+    extra_context = {'title': _('Create workflow')}
     form_class = WorkflowForm
     model = Workflow
     post_action_redirect = reverse_lazy(
@@ -148,8 +149,16 @@ class SetupWorkflowCreateView(SingleObjectCreateView):
     )
     view_permission = permission_workflow_create
 
-    def get_actions_extra_kwargs(self):
+    def get_save_extra_data(self):
         return {'_user': self.request.user}
+
+
+class SetupWorkflowDeleteView(SingleObjectDeleteView):
+    model = Workflow
+    object_permission = permission_workflow_delete
+    post_action_redirect = reverse_lazy(
+        viewname='document_states:setup_workflow_list'
+    )
 
 
 class SetupWorkflowEditView(SingleObjectEditView):
@@ -160,16 +169,8 @@ class SetupWorkflowEditView(SingleObjectEditView):
         viewname='document_states:setup_workflow_list'
     )
 
-    def get_actions_extra_kwargs(self):
+    def get_save_extra_data(self):
         return {'_user': self.request.user}
-
-
-class SetupWorkflowDeleteView(SingleObjectDeleteView):
-    model = Workflow
-    object_permission = permission_workflow_delete
-    post_action_redirect = reverse_lazy(
-        viewname='document_states:setup_workflow_list'
-    )
 
 
 class SetupWorkflowDocumentTypesView(AddRemoveView):

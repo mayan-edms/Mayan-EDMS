@@ -137,18 +137,17 @@ class Workflow(models.Model):
 
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)
+        created = not self.pk
 
         with transaction.atomic():
-            is_new = not self.pk
-            super(Workflow, self).save(*args, **kwargs)
-            if is_new:
-                event_workflow_created.commit(
-                    actor=_user, target=self
-                )
+            result = super(Workflow, self).save(*args, **kwargs)
+
+            if created:
+                event_workflow_created.commit(actor=_user, target=self)
             else:
-                event_workflow_edited.commit(
-                    actor=_user, target=self
-                )
+                event_workflow_edited.commit(actor=_user, target=self)
+
+            return result
 
 
 @python_2_unicode_compatible

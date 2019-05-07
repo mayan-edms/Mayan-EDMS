@@ -27,15 +27,20 @@ from .mixins import WorkflowTestMixin
 class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase):
     auto_upload_document = False
 
-    def _request_workflow_create_view(self):
+    def _request_test_workflow_create_api_view(self, extra_data=None):
+        data = {
+            'label': TEST_WORKFLOW_LABEL
+        }
+
+        if extra_data:
+            data.update(extra_data)
+
         return self.post(
-            viewname='rest_api:workflow-list', data={
-                'label': TEST_WORKFLOW_LABEL
-            }
+            viewname='rest_api:workflow-list', data=data
         )
 
     def test_workflow_create_view_no_permission(self):
-        response = self._request_workflow_create_view()
+        response = self._request_test_workflow_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.assertEqual(Workflow.objects.count(), 0)
@@ -43,7 +48,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
     def test_workflow_create_view_with_permission(self):
         self.grant_permission(permission=permission_workflow_create)
 
-        response = self._request_workflow_create_view()
+        response = self._request_test_workflow_create_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(
@@ -52,16 +57,14 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
 
         self.assertEqual(Workflow.objects.count(), 1)
 
-    def _request_workflow_create_view_with_document_type(self):
-        return self.post(
-            viewname='rest_api:workflow-list', data={
-                'label': TEST_WORKFLOW_LABEL,
-                'document_types_pk_list': '{}'.format(self.test_document_type.pk)
+    def test_workflow_create_with_document_type_view_no_permission(self):
+        response = self._request_test_workflow_create_api_view(
+            extra_data={
+                'document_types_pk_list': '{}'.format(
+                    self.test_document_type.pk
+                )
             }
         )
-
-    def test_workflow_create_with_document_type_view_no_permission(self):
-        response = self._request_workflow_create_view_with_document_type()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.assertEqual(Workflow.objects.count(), 0)
@@ -69,7 +72,13 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
     def test_workflow_create_with_document_type_view_with_permission(self):
         self.grant_permission(permission=permission_workflow_create)
 
-        response = self._request_workflow_create_view_with_document_type()
+        response = self._request_test_workflow_create_api_view(
+            extra_data={
+                'document_types_pk_list': '{}'.format(
+                    self.test_document_type.pk
+                )
+            }
+        )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertEqual(Workflow.objects.count(), 1)
@@ -79,7 +88,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
         )
         self.assertEqual(response.data['id'], workflow.pk)
 
-    def _request_workflow_delete_view(self):
+    def _request_test_workflow_delete_api_view(self):
         return self.delete(
             viewname='rest_api:workflow-detail', kwargs={
                 'pk': self.test_workflow.pk
@@ -88,7 +97,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
 
     def test_workflow_delete_view_no_permission(self):
         self._create_test_workflow()
-        response = self._request_workflow_delete_view()
+        response = self._request_test_workflow_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(Workflow.objects.count(), 1)
 
@@ -97,19 +106,21 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_delete
         )
-        response = self._request_workflow_delete_view()
+        response = self._request_test_workflow_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Workflow.objects.count(), 0)
 
-    def _request_workflow_detail_view(self):
+    def _request_test_workflow_detail_api_view(self):
         return self.get(
-            viewname='rest_api:workflow-detail', args=(self.test_workflow.pk,)
+            viewname='rest_api:workflow-detail', kwargs={
+                'pk': self.test_workflow.pk
+            }
         )
 
     def test_workflow_detail_view_no_access(self):
         self._create_test_workflow()
 
-        response = self._request_workflow_detail_view()
+        response = self._request_test_workflow_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertFalse('label' in response.data)
 
@@ -120,11 +131,11 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
             obj=self.test_workflow, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_detail_view()
+        response = self._request_test_workflow_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['label'], self.test_workflow.label)
 
-    def _request_workflow_document_type_list_create_view(self):
+    def _request_test_workflow_document_type_list_create_api_view(self):
         return self.post(
             viewname='rest_api:workflow-document-type-list',
             kwargs={'pk': self.test_workflow.pk}, data={
@@ -135,7 +146,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
     def test_workflow_document_type_create_view_no_access(self):
         self._create_test_workflow(add_document_type=False)
 
-        response = self._request_workflow_document_type_list_create_view()
+        response = self._request_test_workflow_document_type_list_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(self.test_workflow.document_types.count(), 0)
 
@@ -144,7 +155,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
 
         self.grant_access(permission=permission_workflow_edit, obj=self.test_workflow)
 
-        response = self._request_workflow_document_type_list_create_view()
+        response = self._request_test_workflow_document_type_list_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertQuerysetEqual(
@@ -152,7 +163,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
             (repr(self.test_document_type),)
         )
 
-    def _request_workflow_document_type_delete_view(self):
+    def _request_test_workflow_document_type_delete_api_view(self):
         return self.delete(
             viewname='rest_api:workflow-document-type-detail',
             kwargs={
@@ -164,7 +175,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
     def test_workflow_document_type_delete_view_no_access(self):
         self._create_test_workflow(add_document_type=True)
 
-        response = self._request_workflow_document_type_delete_view()
+        response = self._request_test_workflow_document_type_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.test_workflow.refresh_from_db()
@@ -175,13 +186,13 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
 
         self.grant_access(permission=permission_workflow_edit, obj=self.test_workflow)
 
-        response = self._request_workflow_document_type_delete_view()
+        response = self._request_test_workflow_document_type_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.test_workflow.refresh_from_db()
         self.assertEqual(self.test_workflow.document_types.count(), 0)
 
-    def _request_workflow_document_type_detail_view(self):
+    def _request_test_workflow_document_type_detail_api_view(self):
         return self.get(
             viewname='rest_api:workflow-document-type-detail',
             kwargs={
@@ -193,7 +204,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
     def test_workflow_document_type_detail_view_no_access(self):
         self._create_test_workflow(add_document_type=True)
 
-        response = self._request_workflow_document_type_detail_view()
+        response = self._request_test_workflow_document_type_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('label' in response.data)
 
@@ -204,7 +215,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
             obj=self.test_workflow, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_document_type_detail_view()
+        response = self._request_test_workflow_document_type_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertFalse('label' in response.data)
 
@@ -216,7 +227,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
             permission=permission_document_type_view
         )
 
-        response = self._request_workflow_document_type_detail_view()
+        response = self._request_test_workflow_document_type_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('label' in response.data)
 
@@ -231,11 +242,11 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
             obj=self.test_workflow, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_document_type_detail_view()
+        response = self._request_test_workflow_document_type_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['label'], self.test_document_type.label)
 
-    def _request_workflow_document_type_list_view(self):
+    def _request_test_workflow_document_type_list_api_view(self):
         return self.get(
             viewname='rest_api:workflow-document-type-list', kwargs={
                 'pk': self.test_workflow.pk
@@ -245,7 +256,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
     def test_workflow_document_type_list_view_no_access(self):
         self._create_test_workflow(add_document_type=True)
 
-        response = self._request_workflow_document_type_list_view()
+        response = self._request_test_workflow_document_type_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_workflow_document_type_list_view_with_workflow_access(self):
@@ -255,7 +266,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
             obj=self.test_workflow, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_document_type_list_view()
+        response = self._request_test_workflow_document_type_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
@@ -267,7 +278,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
             permission=permission_document_type_view
         )
 
-        response = self._request_workflow_document_type_list_view()
+        response = self._request_test_workflow_document_type_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_workflow_document_type_list_view_with_access(self):
@@ -281,19 +292,19 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
             obj=self.test_workflow, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_document_type_list_view()
+        response = self._request_test_workflow_document_type_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['label'], self.test_document_type.label
         )
 
-    def _request_workflow_list_view(self):
+    def _request_test_workflow_list_api_view(self):
         return self.get(viewname='rest_api:workflow-list')
 
     def test_workflow_list_view_no_access(self):
         self._create_test_workflow()
 
-        response = self._request_workflow_list_view()
+        response = self._request_test_workflow_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
@@ -304,13 +315,13 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
             obj=self.test_workflow, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_list_view()
+        response = self._request_test_workflow_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['label'], self.test_workflow.label
         )
 
-    def _request_workflow_edit_view_via_patch(self):
+    def _request_test_workflow_edit_patch_view(self):
         return self.patch(
             viewname='rest_api:workflow-detail', kwargs={
                 'pk': self.test_workflow.pk
@@ -320,7 +331,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
     def test_workflow_patch_view_no_access(self):
         self._create_test_workflow()
 
-        response = self._request_workflow_edit_view_via_patch()
+        response = self._request_test_workflow_edit_patch_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_workflow.refresh_from_db()
@@ -331,13 +342,13 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
 
         self.grant_access(permission=permission_workflow_edit, obj=self.test_workflow)
 
-        response = self._request_workflow_edit_view_via_patch()
+        response = self._request_test_workflow_edit_patch_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_workflow.refresh_from_db()
         self.assertEqual(self.test_workflow.label, TEST_WORKFLOW_LABEL_EDITED)
 
-    def _request_workflow_edit_view_via_put(self):
+    def _request_test_workflow_edit_put_view(self):
         return self.put(
             viewname='rest_api:workflow-detail', kwargs={
                 'pk': self.test_workflow.pk
@@ -347,7 +358,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
     def test_workflow_put_view_no_access(self):
         self._create_test_workflow()
 
-        response = self._request_workflow_edit_view_via_put()
+        response = self._request_test_workflow_edit_put_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_workflow.refresh_from_db()
@@ -360,13 +371,13 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
             obj=self.test_workflow, permission=permission_workflow_edit
         )
 
-        response = self._request_workflow_edit_view_via_put()
+        response = self._request_test_workflow_edit_put_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_workflow.refresh_from_db()
         self.assertEqual(self.test_workflow.label, TEST_WORKFLOW_LABEL_EDITED)
 
-    def _request_document_type_workflow_list_view(self):
+    def _request_test_document_type_workflow_list_api_view(self):
         return self.get(
             viewname='rest_api:documenttype-workflow-list',
             kwargs={'pk': self.test_document_type.pk}
@@ -375,7 +386,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
     def test_document_type_workflow_list_no_access(self):
         self._create_test_workflow(add_document_type=True)
 
-        response = self._request_document_type_workflow_list_view()
+        response = self._request_test_document_type_workflow_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('results' in response.data)
 
@@ -386,7 +397,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
             obj=self.test_workflow, permission=permission_workflow_view
         )
 
-        response = self._request_document_type_workflow_list_view()
+        response = self._request_test_document_type_workflow_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('results' in response.data)
 
@@ -398,7 +409,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
             permission=permission_document_type_view
         )
 
-        response = self._request_document_type_workflow_list_view()
+        response = self._request_test_document_type_workflow_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
@@ -412,7 +423,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
             obj=self.test_document_type,
             permission=permission_document_type_view
         )
-        response = self._request_document_type_workflow_list_view()
+        response = self._request_test_document_type_workflow_list_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
@@ -423,7 +434,7 @@ class WorkflowAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase)
 class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase):
     auto_upload_document = False
 
-    def _request_workflow_state_create_view(self):
+    def _request_test_workflow_state_create_api_view(self):
         return self.post(
             viewname='rest_api:workflowstate-list',
             kwargs={'pk': self.test_workflow.pk}, data={
@@ -435,7 +446,7 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
     def test_workflow_state_create_view_no_access(self):
         self._create_test_workflow()
 
-        response = self._request_workflow_state_create_view()
+        response = self._request_test_workflow_state_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.test_workflow.refresh_from_db()
@@ -446,7 +457,7 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
 
         self.grant_access(permission=permission_workflow_edit, obj=self.test_workflow)
 
-        response = self._request_workflow_state_create_view()
+        response = self._request_test_workflow_state_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.test_workflow.refresh_from_db()
@@ -454,7 +465,7 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
             self.test_workflow.states.first().label, TEST_WORKFLOW_STATE_LABEL
         )
 
-    def _request_workflow_state_delete_view(self):
+    def _request_test_workflow_state_delete_api_view(self):
         return self.delete(
             viewname='rest_api:workflowstate-detail',
             kwargs={
@@ -467,7 +478,7 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
         self._create_test_workflow()
         self._create_test_workflow_state()
 
-        response = self._request_workflow_state_delete_view()
+        response = self._request_test_workflow_state_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.test_workflow.refresh_from_db()
@@ -481,13 +492,13 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
             obj=self.test_workflow, permission=permission_workflow_edit
         )
 
-        response = self._request_workflow_state_delete_view()
+        response = self._request_test_workflow_state_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.test_workflow.refresh_from_db()
         self.assertEqual(self.test_workflow.states.count(), 0)
 
-    def _request_workflow_state_detail_view(self):
+    def _request_test_workflow_state_detail_api_view(self):
         return self.get(
             viewname='rest_api:workflowstate-detail',
             kwargs={
@@ -500,7 +511,7 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
         self._create_test_workflow()
         self._create_test_workflow_state()
 
-        response = self._request_workflow_state_detail_view()
+        response = self._request_test_workflow_state_detail_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('label' in response.data)
@@ -513,13 +524,13 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
             obj=self.test_workflow, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_state_detail_view()
+        response = self._request_test_workflow_state_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['label'], TEST_WORKFLOW_STATE_LABEL
         )
 
-    def _request_workflow_state_list_view(self):
+    def _request_test_workflow_state_list_api_view(self):
         return self.get(
             viewname='rest_api:workflowstate-list', kwargs={
                 'pk': self.test_workflow.pk
@@ -530,7 +541,7 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
         self._create_test_workflow()
         self._create_test_workflow_state()
 
-        response = self._request_workflow_state_list_view()
+        response = self._request_test_workflow_state_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('label' in response.data)
 
@@ -540,13 +551,13 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
 
         self.grant_access(permission=permission_workflow_view, obj=self.test_workflow)
 
-        response = self._request_workflow_state_list_view()
+        response = self._request_test_workflow_state_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['label'], TEST_WORKFLOW_STATE_LABEL
         )
 
-    def _request_workflow_state_edit_view_via_patch(self):
+    def _request_test_workflow_state_edit_patch_api_view(self):
         return self.patch(
             viewname='rest_api:workflowstate-detail',
             kwargs={
@@ -561,7 +572,7 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
         self._create_test_workflow()
         self._create_test_workflow_state()
 
-        response = self._request_workflow_state_edit_view_via_patch()
+        response = self._request_test_workflow_state_edit_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.test_workflow_state.refresh_from_db()
@@ -575,7 +586,7 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
 
         self.grant_access(permission=permission_workflow_edit, obj=self.test_workflow)
 
-        response = self._request_workflow_state_edit_view_via_patch()
+        response = self._request_test_workflow_state_edit_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_workflow_state.refresh_from_db()
@@ -583,7 +594,7 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
             self.test_workflow_state.label, TEST_WORKFLOW_STATE_LABEL_EDITED
         )
 
-    def _request_workflow_state_edit_view_via_put(self):
+    def _request_test_workflow_state_edit_put_api_view(self):
         return self.put(
             viewname='rest_api:workflowstate-detail',
             kwargs={
@@ -598,7 +609,7 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
         self._create_test_workflow()
         self._create_test_workflow_state()
 
-        response = self._request_workflow_state_edit_view_via_put()
+        response = self._request_test_workflow_state_edit_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.test_workflow_state.refresh_from_db()
@@ -612,7 +623,7 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
 
         self.grant_access(permission=permission_workflow_edit, obj=self.test_workflow)
 
-        response = self._request_workflow_state_edit_view_via_put()
+        response = self._request_test_workflow_state_edit_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_workflow_state.refresh_from_db()
@@ -624,7 +635,7 @@ class WorkflowStatesAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITes
 class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase):
     auto_upload_document = False
 
-    def _request_workflow_transition_create_view(self):
+    def _request_test_workflow_transition_create_api_view(self):
         return self.post(
             viewname='rest_api:workflowtransition-list',
             kwargs={'pk': self.test_workflow.pk}, data={
@@ -638,7 +649,7 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
         self._create_test_workflow()
         self._create_test_workflow_states()
 
-        response = self._request_workflow_transition_create_view()
+        response = self._request_test_workflow_transition_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.test_workflow.refresh_from_db()
@@ -652,7 +663,7 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
             obj=self.test_workflow, permission=permission_workflow_edit
         )
 
-        response = self._request_workflow_transition_create_view()
+        response = self._request_test_workflow_transition_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.test_workflow.refresh_from_db()
@@ -661,7 +672,7 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
             TEST_WORKFLOW_TRANSITION_LABEL
         )
 
-    def _request_workflow_transition_delete_view(self):
+    def _request_test_workflow_transition_delete_api_view(self):
         return self.delete(
             viewname='rest_api:workflowtransition-detail',
             kwargs={
@@ -675,7 +686,7 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
 
-        response = self._request_workflow_transition_delete_view()
+        response = self._request_test_workflow_transition_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.test_workflow.refresh_from_db()
@@ -690,13 +701,13 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
             obj=self.test_workflow, permission=permission_workflow_edit
         )
 
-        response = self._request_workflow_transition_delete_view()
+        response = self._request_test_workflow_transition_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.test_workflow.refresh_from_db()
         self.assertEqual(self.test_workflow.transitions.count(), 0)
 
-    def _request_workflow_transition_detail_view(self):
+    def _request_test_workflow_transition_detail_api_view(self):
         return self.get(
             viewname='rest_api:workflowtransition-detail',
             args=(self.test_workflow.pk, self.test_workflow_transition.pk)
@@ -707,7 +718,7 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
 
-        response = self._request_workflow_transition_detail_view()
+        response = self._request_test_workflow_transition_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('label' in response.data)
 
@@ -720,13 +731,13 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
             obj=self.test_workflow, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_transition_detail_view()
+        response = self._request_test_workflow_transition_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['label'], TEST_WORKFLOW_TRANSITION_LABEL
         )
 
-    def _request_workflow_transition_list_view(self):
+    def _request_test_workflow_transition_list_api_view(self):
         return self.get(
             viewname='rest_api:workflowtransition-list',
             kwargs={'pk': self.test_workflow.pk}
@@ -737,7 +748,7 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
 
-        response = self._request_workflow_transition_list_view()
+        response = self._request_test_workflow_transition_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('results' in response.data)
 
@@ -750,14 +761,14 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
             obj=self.test_workflow, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_transition_list_view()
+        response = self._request_test_workflow_transition_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['label'],
             TEST_WORKFLOW_TRANSITION_LABEL
         )
 
-    def _request_workflow_transition_edit_view_via_patch(self):
+    def _request_test_workflow_transition_edit_patch_api_view(self):
         return self.patch(
             viewname='rest_api:workflowtransition-detail',
             kwargs={
@@ -775,7 +786,7 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
 
-        response = self._request_workflow_transition_edit_view_via_patch()
+        response = self._request_test_workflow_transition_edit_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.test_workflow_transition.refresh_from_db()
@@ -801,7 +812,7 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
             obj=self.test_workflow, permission=permission_workflow_edit
         )
 
-        response = self._request_workflow_transition_edit_view_via_patch()
+        response = self._request_test_workflow_transition_edit_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_workflow_transition.refresh_from_db()
@@ -818,7 +829,7 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
             self.test_workflow_state_1
         )
 
-    def _request_workflow_transition_edit_view_via_put(self):
+    def _request_test_workflow_transition_edit_put_api_view_via(self):
         return self.put(
             viewname='rest_api:workflowtransition-detail',
             kwargs={
@@ -836,7 +847,7 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
 
-        response = self._request_workflow_transition_edit_view_via_put()
+        response = self._request_test_workflow_transition_edit_put_api_view_via()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.test_workflow_transition.refresh_from_db()
@@ -862,7 +873,7 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
             obj=self.test_workflow, permission=permission_workflow_edit
         )
 
-        response = self._request_workflow_transition_edit_view_via_put()
+        response = self._request_test_workflow_transition_edit_put_api_view_via()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.test_workflow_transition.refresh_from_db()
         self.assertEqual(
@@ -879,10 +890,12 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
         )
 
 
-class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase):
+class DocumentWorkflowsAPITestCase(
+    DocumentTestMixin, WorkflowTestMixin, BaseAPITestCase
+):
     auto_upload_document = False
 
-    def _request_workflow_instance_detail_view(self):
+    def _request_test_workflow_instance_detail_api_view(self):
         return self.get(
             viewname='rest_api:workflowinstance-detail', kwargs={
                 'pk': self.test_document.pk,
@@ -896,7 +909,7 @@ class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPI
         self._create_test_workflow_transition()
         self.upload_document()
 
-        response = self._request_workflow_instance_detail_view()
+        response = self._request_test_workflow_instance_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('workflow' in response.data)
 
@@ -910,7 +923,7 @@ class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPI
             obj=self.test_workflow, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_instance_detail_view()
+        response = self._request_test_workflow_instance_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('workflow' in response.data)
 
@@ -924,7 +937,7 @@ class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPI
             obj=self.test_document, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_instance_detail_view()
+        response = self._request_test_workflow_instance_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertFalse('workflow' in response.data)
 
@@ -941,14 +954,14 @@ class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPI
             obj=self.test_document, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_instance_detail_view()
+        response = self._request_test_workflow_instance_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['workflow']['label'],
             TEST_WORKFLOW_LABEL
         )
 
-    def _request_workflow_instance_list_view(self):
+    def _request_test_workflow_instance_list_api_view(self):
         return self.get(
             viewname='rest_api:workflowinstance-list',
             kwargs={'pk': self.test_document.pk}
@@ -960,7 +973,7 @@ class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPI
         self._create_test_workflow_transition()
         self.upload_document()
 
-        response = self._request_workflow_instance_list_view()
+        response = self._request_test_workflow_instance_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('result' in response.data)
 
@@ -974,7 +987,7 @@ class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPI
             obj=self.test_document, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_instance_list_view()
+        response = self._request_test_workflow_instance_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
@@ -988,7 +1001,7 @@ class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPI
             obj=self.test_workflow, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_instance_list_view()
+        response = self._request_test_workflow_instance_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('result' in response.data)
 
@@ -1005,14 +1018,14 @@ class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPI
             obj=self.test_document, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_instance_list_view()
+        response = self._request_test_workflow_instance_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['workflow']['label'],
             TEST_WORKFLOW_LABEL
         )
 
-    def _request_workflow_instance_log_entry_create_view(self, workflow_instance):
+    def _request_test_workflow_instance_log_entry_create_api_view(self, workflow_instance):
         return self.post(
             viewname='rest_api:workflowinstancelogentry-list', kwargs={
                 'pk': self.test_document.pk,
@@ -1027,7 +1040,7 @@ class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPI
         self.upload_document()
 
         workflow_instance = self.test_document.workflows.first()
-        response = self._request_workflow_instance_log_entry_create_view(
+        response = self._request_test_workflow_instance_log_entry_create_api_view(
             workflow_instance=workflow_instance
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
@@ -1047,7 +1060,7 @@ class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPI
         )
         workflow_instance = self.test_document.workflows.first()
 
-        response = self._request_workflow_instance_log_entry_create_view(
+        response = self._request_test_workflow_instance_log_entry_create_api_view(
             workflow_instance=workflow_instance
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -1058,7 +1071,7 @@ class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPI
             TEST_WORKFLOW_TRANSITION_LABEL
         )
 
-    def _request_workflow_instance_log_entry_list_view(self):
+    def _request_test_workflow_instance_log_entry_list_api_view(self):
         return self.get(
             viewname='rest_api:workflowinstancelogentry-list', kwargs={
                 'pk': self.test_document.pk,
@@ -1073,7 +1086,7 @@ class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPI
         self.upload_document()
         self._create_test_workflow_instance_log_entry()
 
-        response = self._request_workflow_instance_log_entry_list_view()
+        response = self._request_test_workflow_instance_log_entry_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('results' in response.data)
 
@@ -1088,7 +1101,7 @@ class DocumentWorkflowsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseAPI
             obj=self.test_document, permission=permission_workflow_view
         )
 
-        response = self._request_workflow_instance_log_entry_list_view()
+        response = self._request_test_workflow_instance_log_entry_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['transition']['label'],
