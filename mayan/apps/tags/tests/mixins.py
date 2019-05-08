@@ -110,8 +110,13 @@ class TagViewTestMixin(object):
             }
         )
 
+    def _request_test_tag_list_view(self):
+        return self.get(viewname='tags:tag_list')
+
     def _request_test_tag_document_list_view(self):
-        return self.get(viewname='documents:document_list')
+        return self.get(
+            viewname='tags:tag_document_list', kwargs={'pk': self.test_tag.pk}
+        )
 
     def _request_test_document_tag_attach_view(self):
         return self.post(
@@ -144,5 +149,12 @@ class TagViewTestMixin(object):
             data={
                 'id_list': self.test_document.pk,
                 'tags': self.test_tag.pk,
+            }
+        )
+
+    def _request_test_document_tag_list_view(self):
+        return self.get(
+            viewname='tags:document_tag_list', kwargs={
+                'pk': self.test_document.pk
             }
         )

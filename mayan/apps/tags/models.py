@@ -64,10 +64,20 @@ class Tag(models.Model):
         The count if filtered by access.
         """
         queryset = AccessControlList.objects.restrict_queryset(
-            permission_document_view, user, queryset=self.documents
+            permission=permission_document_view, queryset=self.documents,
+            user=user
         )
 
         return queryset.count()
+
+    def get_documents(self, user):
+        """
+        Return a filtered queryset documents that have this tag attached.
+        """
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_document_view, queryset=self.documents.all(),
+            user=user
+        )
 
     def get_preview_widget(self):
         return widget_single_tag(tag=self)

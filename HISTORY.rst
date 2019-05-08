@@ -247,6 +247,8 @@
 * Move the user set password views to the authentication app.
 * All views redirect to common's home view instead of the 
   REDIRECT_URL setting.
+* Update tag document list and the document tag list
+  views to require the view permissions for both objects.
 
 3.1.11 (2019-04-XX)
 ===================

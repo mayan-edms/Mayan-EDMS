@@ -13,6 +13,7 @@ from mayan.apps.common.generics import (
     MultipleObjectFormActionView, MultipleObjectConfirmActionView,
     SingleObjectCreateView, SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.views import DocumentListView
 from mayan.apps.documents.permissions import permission_document_view
@@ -96,7 +97,9 @@ class TagAttachActionView(MultipleObjectFormActionView):
             return super(TagAttachActionView, self).get_post_action_redirect()
 
     def object_action(self, form, instance):
-        attached_tags = instance.attached_tags()
+        attached_tags = instance.get_tags(
+            permission=permission_tag_attach, user=self.request.user
+        )
 
         for tag in form.cleaned_data['tags']:
             AccessControlList.objects.check_access(
@@ -227,12 +230,13 @@ class TagListView(SingleObjectListView):
         return Tag.objects.all()
 
 
-class TagDocumentListView(DocumentListView):
-    def get_tag(self):
-        return get_object_or_404(klass=Tag, pk=self.kwargs['pk'])
+class TagDocumentListView(ExternalObjectMixin, DocumentListView):
+    external_object_class = Tag
+    external_object_permission = permission_tag_view
+    external_object_pk_url_kwarg = 'pk'
 
     def get_document_queryset(self):
-        return self.get_tag().documents.all()
+        return self.get_tag().get_documents(user=self.request.user).all()
 
     def get_extra_context(self):
         context = super(TagDocumentListView, self).get_extra_context()
@@ -244,39 +248,38 @@ class TagDocumentListView(DocumentListView):
         )
         return context
 
+    def get_tag(self):
+        return self.get_external_object()
 
-class DocumentTagListView(TagListView):
-    def dispatch(self, request, *args, **kwargs):
-        self.document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
-        AccessControlList.objects.check_access(
-            obj=self.document, permissions=(permission_document_view,),
-            user=request.user,
-        )
-
-        return super(DocumentTagListView, self).dispatch(
-            request, *args, **kwargs
-        )
+class DocumentTagListView(ExternalObjectMixin, TagListView):
+    external_object_class = Document
+    external_object_permission = permission_tag_view
+    external_object_pk_url_kwarg = 'pk'
 
     def get_extra_context(self):
         context = super(DocumentTagListView, self).get_extra_context()
         context.update(
             {
                 'hide_link': True,
-                'no_results_title': _('Document has no tags attached'),
                 'no_results_main_link': link_document_tag_multiple_attach.resolve(
                     context=RequestContext(
-                        request=self.request, dict_={'object': self.document}
+                        self.request, {'object': self.get_external_object()}
                     )
                 ),
-                'object': self.document,
-                'title': _('Tags for document: %s') % self.document,
+                'no_results_title': _('Document has no tags attached'),
+                'object': self.get_external_object(),
+                'title': _(
+                    'Tags for document: %s'
+                ) % self.get_external_object(),
             }
         )
         return context
 
-    def get_tag_queryset(self):
-        return self.document.attached_tags().all()
+    def get_source_queryset(self):
+        return self.get_external_object().get_tags(
+            permission=permission_tag_view, user=self.request.user
+        ).all()
 
 
 class TagRemoveActionView(MultipleObjectFormActionView):
@@ -343,7 +346,9 @@ class TagRemoveActionView(MultipleObjectFormActionView):
             return super(TagRemoveActionView, self).get_post_action_redirect()
 
     def object_action(self, form, instance):
-        attached_tags = instance.attached_tags()
+        attached_tags = instance.get_tags(
+            permission=permission_tag_remove, user=self.request.user
+        )
 
         for tag in form.cleaned_data['tags']:
             AccessControlList.objects.check_access(

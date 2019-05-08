@@ -68,9 +68,7 @@ class TagsApp(MayanAppConfig):
         DocumentTag = self.get_model(model_name='DocumentTag')
         Tag = self.get_model(model_name='Tag')
 
-        Document.add_to_class(
-            name='attached_tags', value=method_document_get_tags
-        )
+        Document.add_to_class(name='get_tags', value=method_document_get_tags)
 
         ModelEventType.register(
             model=Tag, event_types=(
