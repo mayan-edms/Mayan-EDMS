@@ -6,13 +6,11 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_about, menu_list_facet, menu_secondary, menu_tools
 )
-from mayan.apps.common.signals import post_initial_setup, post_upgrade
 from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import Dependency, DependencyGroup, DependencyGroupEntry
 from .dependencies import *  # NOQA
-from .handlers import handler_install_javascript
 from .links import (
     link_check_version, link_dependency_group_entry_detail,
     link_dependency_group_entry_list, link_dependency_group_list,
@@ -105,12 +103,3 @@ class DependenciesApp(MayanAppConfig):
         )
 
         menu_tools.bind_links(links=(link_dependency_tool,))
-
-        post_initial_setup.connect(
-            dispatch_uid='dependendies_handler_install_javascript',
-            receiver=handler_install_javascript
-        )
-        post_upgrade.connect(
-            dispatch_uid='dependendies_handler_install_javascript',
-            receiver=handler_install_javascript
-        )
