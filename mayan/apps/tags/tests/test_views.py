@@ -162,9 +162,11 @@ class TagDocumentViewTestCase(TagTestMixin, TagViewTestMixin, GenericDocumentVie
 
         self.test_tag.documents.add(self.test_document)
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
         self.grant_access(
             obj=self.test_document, permission=permission_tag_view
+        )
+        self.grant_access(
+            obj=self.test_tag, permission=permission_tag_view
         )
 
         response = self._request_test_document_tag_list_view()
