@@ -1,7 +1,10 @@
 from __future__ import unicode_literals
 
+import os
+
 from ..models import DocumentType
 from ..permissions import (
+    permission_document_properties_edit,
     permission_document_type_create, permission_document_type_delete,
     permission_document_type_edit, permission_document_type_view,
 )
@@ -197,4 +200,79 @@ class DocumentTypeQuickLabelViewsTestCase(
         response = self._request_quick_label_list_view()
         self.assertContains(
             response, text=self.test_document_type_filename, status_code=200
+        )
+
+
+class DocumentsQuickLabelViewsTestCase(DocumentTypeQuickLabelTestMixin, GenericDocumentViewTestCase):
+    def _request_document_quick_label_edit_view(self, extra_data=None):
+        data = {
+            'document_type_available_filenames': self.test_document_type_filename.pk,
+            'label': ''
+            # View needs at least an empty label for quick
+            # label to work. Cause is unknown.
+        }
+        data.update(extra_data or {})
+
+        return self.post(
+            viewname='documents:document_edit', kwargs={
+                'pk': self.test_document.pk
+            }, data=data
+        )
+
+    def test_document_quick_label_no_permission(self):
+        self._create_test_quick_label()
+
+        response = self._request_document_quick_label_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_quick_label_with_access(self):
+        self._create_test_quick_label()
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_properties_edit
+        )
+
+        response = self._request_document_quick_label_edit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.label, self.test_document_type_filename.filename
+        )
+
+    def test_document_quick_label_preserve_extension_with_access(self):
+        self._create_test_quick_label()
+        self.grant_access(
+            permission=permission_document_properties_edit, obj=self.test_document
+        )
+        filename, extension = os.path.splitext(self.test_document.label)
+
+        response = self._request_document_quick_label_edit_view(
+            extra_data={'preserve_extension': True}
+        )
+        self.assertEqual(response.status_code, 302)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.label, '{}{}'.format(
+                self.test_document_type_filename.filename, extension
+            )
+        )
+
+    def test_document_quick_label_no_preserve_extension_with_access(self):
+        self._create_test_quick_label()
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_properties_edit
+        )
+        filename, extension = os.path.splitext(self.test_document.label)
+
+        response = self._request_document_quick_label_edit_view(
+            extra_data={'preserve_extension': False}
+        )
+        self.assertEqual(response.status_code, 302)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.label, self.test_document_type_filename.filename
         )

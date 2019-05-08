@@ -4,6 +4,7 @@ import os
 
 from django.conf import settings
 
+from ..literals import PAGE_RANGE_ALL
 from ..models import DocumentType
 
 from .literals import (
@@ -141,3 +142,94 @@ class DocumentVersionTestMixin(object):
             self.test_document.new_version(
                 comment=TEST_VERSION_COMMENT, file_object=file_object
             )
+
+
+class DocumentViewTestMixin(object):
+    def _request_document_properties_view(self):
+        return self.get(
+            viewname='documents:document_properties',
+            kwargs={'pk': self.test_document.pk}
+        )
+
+    def _request_test_document_list_view(self):
+        return self.get(viewname='documents:document_list')
+
+    def _request_test_document_type_edit_view(self, document_type):
+        return self.post(
+            viewname='documents:document_document_type_edit',
+            kwargs={'pk': self.test_document.pk},
+            data={'document_type': document_type.pk}
+        )
+
+    def _request_multiple_document_type_edit(self, document_type):
+        return self.post(
+            viewname='documents:document_multiple_document_type_edit',
+            data={
+                'id_list': self.test_document.pk,
+                'document_type': document_type.pk
+            }
+        )
+
+    def _request_document_download_form_view(self):
+        return self.get(
+            viewname='documents:document_download_form', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_document_download_view(self):
+        return self.get(
+            viewname='documents:document_download', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_document_multiple_download_view(self):
+        return self.get(
+            viewname='documents:document_multiple_download',
+            data={'id_list': self.test_document.pk}
+        )
+
+    def _request_document_version_download(self, data=None):
+        data = data or {}
+        return self.get(
+            viewname='documents:document_version_download', kwargs={
+                'pk': self.test_document.latest_version.pk
+            }, data=data
+        )
+
+    def _request_document_update_page_count_view(self):
+        return self.post(
+            viewname='documents:document_update_page_count',
+            kwargs={'pk': self.test_document.pk}
+        )
+
+    def _request_document_multiple_update_page_count_view(self):
+        return self.post(
+            viewname='documents:document_multiple_update_page_count',
+            data={'id_list': self.test_document.pk}
+        )
+
+    def _request_document_clear_transformations_view(self):
+        return self.post(
+            viewname='documents:document_clear_transformations',
+            kwargs={'pk': self.test_document.pk}
+        )
+
+    def _request_document_multiple_clear_transformations(self):
+        return self.post(
+            viewname='documents:document_multiple_clear_transformations',
+            data={'id_list': self.test_document.pk}
+        )
+
+    def _request_empty_trash_view(self):
+        return self.post(viewname='documents:trash_can_empty')
+
+    def _request_document_print_view(self):
+        return self.get(
+            viewname='documents:document_print', kwargs={
+                'pk': self.test_document.pk,
+            }, data={
+                'page_group': PAGE_RANGE_ALL
+            }
+        )
