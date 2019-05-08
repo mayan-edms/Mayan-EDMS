@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.utils.encoding import force_text
 
 from mayan.apps.common.tests import GenericViewTestCase
-from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
 from ..models import Tag
@@ -122,32 +121,6 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
 
 
 class TagDocumentViewTestCase(TagTestMixin, TagViewTestMixin, GenericDocumentViewTestCase):
-    """
-    def test_document_tags_widget_no_permissions(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
-
-        response = self._request_test_tag_document_list_view()
-        self.assertNotContains(
-            response=response, text=self.test_tag.label, status_code=200
-        )
-
-    def test_document_tags_widget_with_tag_access(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
-
-        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_view
-        )
-
-        response = self._request_test_tag_document_list_view()
-        self.assertContains(
-            response=response, text=self.test_tag.label, status_code=200
-        )
-    """
     def test_document_tags_list_no_permissions(self):
         self._create_test_tag()
 
@@ -198,7 +171,6 @@ class TagDocumentViewTestCase(TagTestMixin, TagViewTestMixin, GenericDocumentVie
         self.assertContains(
             response=response, text=force_text(self.test_tag), status_code=200
         )
-
 
     def test_document_attach_tag_view_no_permission(self):
         self._create_test_tag()

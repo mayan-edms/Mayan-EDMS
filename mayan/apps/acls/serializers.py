@@ -12,7 +12,9 @@ from rest_framework.reverse import reverse
 from mayan.apps.common.serializers import ContentTypeSerializer
 from mayan.apps.permissions import Permission
 from mayan.apps.permissions.models import Role, StoredPermission
-from mayan.apps.permissions.serializers import PermissionSerializer, RoleSerializer
+from mayan.apps.permissions.serializers import (
+    PermissionSerializer, RoleSerializer
+)
 
 from .models import AccessControlList
 
@@ -81,7 +83,9 @@ class AccessControlListPermissionSerializer(PermissionSerializer):
         )
 
 
-class WritableAccessControlListPermissionSerializer(AccessControlListPermissionSerializer):
+class WritableAccessControlListPermissionSerializer(
+    AccessControlListPermissionSerializer
+):
     permission_pk = serializers.CharField(
         help_text=_(
             'Primary key of the new permission to grant to the access control '

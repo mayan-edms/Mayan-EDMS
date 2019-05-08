@@ -176,7 +176,8 @@ class ACLPermissionsView(AddRemoveView):
 
         # Sort permissions by their translatable label
         object_list = sorted(
-            queryset, key=lambda permission: permission.volatile_permission.label
+            queryset,
+            key=lambda permission: permission.volatile_permission.label
         )
 
         # Group permissions by namespace
@@ -185,7 +186,9 @@ class ACLPermissionsView(AddRemoveView):
                 permission.volatile_permission.namespace.label,
                 []
             )
-            namespaces_dictionary[permission.volatile_permission.namespace.label].append(
+            namespaces_dictionary[
+                permission.volatile_permission.namespace.label
+            ].append(
                 (permission.pk, force_text(permission))
             )
 

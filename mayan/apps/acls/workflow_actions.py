@@ -98,7 +98,9 @@ class GrantAccessAction(WorkflowAction):
 
     def get_form_schema(self, *args, **kwargs):
         self.fields['content_type']['kwargs']['queryset'] = ModelPermission.get_classes(as_content_type=True)
-        self.fields['permissions']['kwargs']['choices'] = Permission.all(as_choices=True)
+        self.fields['permissions']['kwargs']['choices'] = Permission.all(
+            as_choices=True
+        )
         return super(GrantAccessAction, self).get_form_schema(*args, **kwargs)
 
     def get_execute_data(self):
@@ -113,7 +115,11 @@ class GrantAccessAction(WorkflowAction):
             pk=self.form_data['object_id']
         )
         self.roles = Role.objects.filter(pk__in=self.form_data['roles'])
-        self.permissions = [Permission.get(pk=permission, proxy_only=True) for permission in self.form_data['permissions']]
+        self.permissions = [
+            Permission.get(
+                pk=permission, proxy_only=True
+            ) for permission in self.form_data['permissions']
+        ]
 
     def execute(self, context):
         self.get_execute_data()

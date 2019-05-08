@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib import messages
-from django.shortcuts import get_object_or_404, reverse
+from django.shortcuts import reverse
 from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -16,7 +16,6 @@ from mayan.apps.common.generics import (
 from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.views import DocumentListView
-from mayan.apps.documents.permissions import permission_document_view
 
 from .forms import TagMultipleSelectionForm
 from .icons import (

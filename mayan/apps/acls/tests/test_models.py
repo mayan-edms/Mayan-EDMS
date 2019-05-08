@@ -105,7 +105,8 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
 
         try:
             AccessControlList.objects.check_access(
-                obj=self.test_object_child, permissions=(self.test_permission,),
+                obj=self.test_object_child,
+                permissions=(self.test_permission,),
                 user=self._test_case_user
             )
         except PermissionDenied:
@@ -123,7 +124,8 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
 
         try:
             AccessControlList.objects.check_access(
-                obj=self.test_object_child, permissions=(self.test_permission,),
+                obj=self.test_object_child,
+                permissions=(self.test_permission,),
                 user=self._test_case_user
             )
         except PermissionDenied:
@@ -233,7 +235,9 @@ class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
 
         self.assertTrue(self.test_permission.stored_permission in queryset)
 
-    def test_retrieve_inherited_related_grandparent_parent_child_permission(self):
+    def test_retrieve_inherited_related_grandparent_parent_child_permission(
+        self
+    ):
         self._create_test_permission()
 
         self._create_test_model(model_name='TestModelGrandParent')

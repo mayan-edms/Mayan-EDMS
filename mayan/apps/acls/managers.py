@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 from functools import reduce
 import logging
 import operator
-import warnings
 
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
@@ -17,7 +16,6 @@ from django.utils.translation import ugettext
 from mayan.apps.common.utils import (
     get_related_field, resolve_attribute, return_related
 )
-from mayan.apps.common.warnings import InterfaceWarning
 from mayan.apps.permissions import Permission
 from mayan.apps.permissions.models import StoredPermission
 
@@ -32,7 +30,9 @@ class AccessControlListManager(models.Manager):
     Implement a 3 tier permission system, involving a permissions, an actor
     and an object
     """
-    def _get_acl_filters(self, queryset, stored_permission, user, related_field_name=None):
+    def _get_acl_filters(
+        self, queryset, stored_permission, user, related_field_name=None
+    ):
         """
         This method does the bulk of the work. It generates filters for the
         AccessControlList model to determine if there are ACL entries for the
@@ -113,17 +113,25 @@ class AccessControlListManager(models.Manager):
                     for related_field_model_related_field_name in related_field_model_related_fields:
                         related_field_name = '{}__{}'.format(related_field_name, related_field_model_related_field_name)
                         related_field_inherited_acl_queries = self._get_acl_filters(
-                            queryset=queryset, stored_permission=stored_permission,
-                            user=user, related_field_name=related_field_name
+                            queryset=queryset,
+                            stored_permission=stored_permission, user=user,
+                            related_field_name=related_field_name
                         )
                         if related_field_inherited_acl_queries:
-                            relation_result.append(reduce(operator.and_, related_field_inherited_acl_queries))
+                            relation_result.append(
+                                reduce(
+                                    operator.and_,
+                                    related_field_inherited_acl_queries
+                                )
+                            )
 
                     if relation_result:
                         result.append(reduce(operator.or_, relation_result))
         else:
             # Case 1: Original model, single ContentType, multiple object id
-            content_type = ContentType.objects.get_for_model(model=queryset.model)
+            content_type = ContentType.objects.get_for_model(
+                model=queryset.model
+            )
             field_lookup = 'id__in'
             acl_filter = self.filter(
                 content_type=content_type, permissions=stored_permission,
@@ -149,7 +157,9 @@ class AccessControlListManager(models.Manager):
                         related_field_name=related_field_name, user=user
                     )
                     if inherited_acl_queries:
-                        relation_result.append(reduce(operator.and_, inherited_acl_queries))
+                        relation_result.append(
+                            reduce(operator.and_, inherited_acl_queries)
+                        )
 
                 if relation_result:
                     result.append(reduce(operator.or_, relation_result))
@@ -285,7 +295,9 @@ class AccessControlListManager(models.Manager):
                 parent_object = return_related(
                     instance=obj, related_field=related_field
                 )
-            content_type = ContentType.objects.get_for_model(model=parent_object)
+            content_type = ContentType.objects.get_for_model(
+                model=parent_object
+            )
             try:
                 queryset = queryset | self.get(
                     content_type=content_type, object_id=parent_object.pk,
