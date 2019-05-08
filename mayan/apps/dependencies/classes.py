@@ -597,6 +597,8 @@ class PythonDependency(Dependency):
             ) is not None
         except pkg_resources.DistributionNotFound:
             return False
+        except pkg_resources.VersionConflict:
+            return False
 
     def get_copyright(self):
         if self.copyright_attribute:
