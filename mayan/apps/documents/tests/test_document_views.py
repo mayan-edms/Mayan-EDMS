@@ -65,7 +65,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             response=response, text=self.test_document.label, status_code=200
         )
 
-    def _request_document_type_edit(self, document_type):
+    def _request_test_document_type_edit_view(self, document_type):
         return self.post(
             viewname='documents:document_document_type_edit',
             kwargs={'pk': self.test_document.pk},
@@ -81,7 +81,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        response = self._request_document_type_edit(
+        response = self._request_test_document_type_edit_view(
             document_type=document_type_2
         )
         self.assertEqual(response.status_code, 404)
@@ -107,7 +107,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             obj=document_type_2, permission=permission_document_create
         )
 
-        response = self._request_document_type_edit(
+        response = self._request_test_document_type_edit_view(
             document_type=document_type_2
         )
         self.assertEqual(response.status_code, 302)

@@ -33,7 +33,7 @@ class DocumentTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
     auto_upload_document = False
     auto_create_document_type = False
 
-    def _request_document_type_create(self):
+    def _request_test_document_type_create_view(self):
         return self.post(
             viewname='rest_api:documenttype-list', data={
                 'label': TEST_DOCUMENT_TYPE_LABEL
@@ -41,7 +41,7 @@ class DocumentTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
         )
 
     def test_document_type_create_no_permission(self):
-        response = self._request_document_type_create()
+        response = self._request_test_document_type_create_view()
 
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(DocumentType.objects.all().count(), 0)
@@ -49,7 +49,7 @@ class DocumentTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def test_document_type_create_with_permission(self):
         self.grant_permission(permission=permission_document_type_create)
 
-        response = self._request_document_type_create()
+        response = self._request_test_document_type_create_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertEqual(DocumentType.objects.all().count(), 1)
@@ -119,7 +119,7 @@ class DocumentTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
             self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL_EDITED
         )
 
-    def _request_document_type_delete(self):
+    def _request_test_document_type_delete_view(self):
         return self.delete(
             viewname='rest_api:documenttype-detail', kwargs={
                 'pk': self.test_document_type.pk,
@@ -131,7 +131,7 @@ class DocumentTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        response = self._request_document_type_delete()
+        response = self._request_test_document_type_delete_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_document_type_delete_with_access(self):
@@ -144,7 +144,7 @@ class DocumentTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
             permission=permission_document_type_delete
         )
 
-        response = self._request_document_type_delete()
+        response = self._request_test_document_type_delete_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertEqual(DocumentType.objects.all().count(), 0)

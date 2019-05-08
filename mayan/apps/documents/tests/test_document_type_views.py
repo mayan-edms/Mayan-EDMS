@@ -1,8 +1,5 @@
 from __future__ import unicode_literals
 
-from ..literals import (
-    DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
-)
 from ..models import DocumentType
 from ..permissions import (
     permission_document_type_create, permission_document_type_delete,
@@ -14,24 +11,21 @@ from .literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_LABEL_EDITED,
     TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED
 )
-from .mixins import DocumentTypeQuickLabelTestMixin
+from .mixins import (
+    DocumentTypeQuickLabelTestMixin, DocumentTypeQuickLabelViewTestMixin,
+    DocumentTypeViewTestMixin
+)
 
 
-class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
-    def _request_document_type_create(self):
-        return self.post(
-            viewname='documents:document_type_create',
-            data={
-                'label': TEST_DOCUMENT_TYPE_LABEL,
-                'delete_time_period': DEFAULT_DELETE_PERIOD,
-                'delete_time_unit': DEFAULT_DELETE_TIME_UNIT
-            }
-        )
+class DocumentTypeViewsTestCase(
+    DocumentTypeViewTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_document = False
 
     def test_document_type_create_view_no_permission(self):
         self.test_document_type.delete()
 
-        response = self._request_document_type_create()
+        response = self._request_test_document_type_create_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(DocumentType.objects.count(), 0)
@@ -40,7 +34,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         self.test_document_type.delete()
         self.grant_permission(permission=permission_document_type_create)
 
-        response = self._request_document_type_create()
+        response = self._request_test_document_type_create_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(DocumentType.objects.count(), 1)
@@ -48,14 +42,8 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
             DocumentType.objects.first().label, TEST_DOCUMENT_TYPE_LABEL
         )
 
-    def _request_document_type_delete(self):
-        return self.post(
-            viewname='documents:document_type_delete',
-            kwargs={'pk': self.test_document_type.pk}
-        )
-
     def test_document_type_delete_view_no_permission(self):
-        response = self._request_document_type_delete()
+        response = self._request_test_document_type_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(DocumentType.objects.count(), 1)
@@ -66,24 +54,13 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
             permission=permission_document_type_delete
         )
 
-        response = self._request_document_type_delete()
+        response = self._request_test_document_type_delete_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(DocumentType.objects.count(), 0)
 
-    def _request_document_type_edit(self):
-        return self.post(
-            viewname='documents:document_type_edit',
-            kwargs={'pk': self.test_document_type.pk},
-            data={
-                'label': TEST_DOCUMENT_TYPE_LABEL_EDITED,
-                'delete_time_period': DEFAULT_DELETE_PERIOD,
-                'delete_time_unit': DEFAULT_DELETE_TIME_UNIT
-            }
-        )
-
     def test_document_type_edit_view_no_permission(self):
-        response = self._request_document_type_edit()
+        response = self._request_test_document_type_edit_view()
 
         self.assertEqual(response.status_code, 404)
         self.test_document_type.refresh_from_db()
@@ -98,7 +75,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
             permission=permission_document_type_edit
         )
 
-        response = self._request_document_type_edit()
+        response = self._request_test_document_type_edit_view()
         self.assertEqual(response.status_code, 302)
 
         self.test_document_type.refresh_from_db()
@@ -106,18 +83,29 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
             self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL_EDITED
         )
 
+    def test_document_type_list_view_no_permission(self):
+        response = self._request_test_document_type_list_view()
+        self.assertNotContains(
+            response=response, text=self.test_document_type, status_code=200
+        )
+
+    def test_document_type_list_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_view
+        )
+
+        response = self._request_test_document_type_list_view()
+        self.assertContains(
+            response=response, text=self.test_document_type, status_code=200
+        )
+
 
 class DocumentTypeQuickLabelViewsTestCase(
-    DocumentTypeQuickLabelTestMixin, GenericDocumentViewTestCase
+    DocumentTypeQuickLabelTestMixin, DocumentTypeQuickLabelViewTestMixin,
+    GenericDocumentViewTestCase
 ):
-    def _request_quick_label_create(self):
-        return self.post(
-            viewname='documents:document_type_filename_create',
-            kwargs={'pk': self.test_document_type.pk},
-            data={
-                'filename': TEST_DOCUMENT_TYPE_QUICK_LABEL,
-            }
-        )
+    auto_upload_document = False
 
     def test_document_type_quick_label_create_no_access(self):
         self.grant_access(
@@ -141,12 +129,6 @@ class DocumentTypeQuickLabelViewsTestCase(
 
         self.assertEqual(self.test_document_type.filenames.count(), 1)
 
-    def _request_quick_label_delete(self):
-        return self.post(
-            viewname='documents:document_type_filename_delete',
-            kwargs={'pk': self.test_document_type_filename.pk}
-        )
-
     def test_document_type_quick_label_delete_no_access(self):
         self._create_test_quick_label()
         response = self._request_quick_label_delete()
@@ -168,15 +150,6 @@ class DocumentTypeQuickLabelViewsTestCase(
 
         self.assertEqual(
             self.test_document_type.filenames.count(), 0
-        )
-
-    def _request_quick_label_edit(self):
-        return self.post(
-            viewname='documents:document_type_filename_edit',
-            kwargs={'pk': self.test_document_type_filename.pk},
-            data={
-                'filename': TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED,
-            }
         )
 
     def test_document_type_quick_label_edit_no_access(self):
@@ -205,12 +178,6 @@ class DocumentTypeQuickLabelViewsTestCase(
         self.assertEqual(
             self.test_document_type_filename.filename,
             TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED
-        )
-
-    def _request_quick_label_list_view(self):
-        return self.get(
-            viewname='documents:document_type_filename_list',
-            kwargs={'pk': self.test_document_type.pk}
         )
 
     def test_document_type_quick_label_list_no_access(self):

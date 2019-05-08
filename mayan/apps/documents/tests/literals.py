@@ -5,6 +5,8 @@ import os
 
 from django.conf import settings
 
+from mayan.apps.common.literals import TIME_DELTA_UNIT_DAYS
+
 __all__ = (
     'TEST_COMPRESSED_DOCUMENTS_FILENAME', 'TEST_COMPRESSED_DOCUMENT_PATH',
     'TEST_DEU_DOCUMENT_FILENAME', 'TEST_DEU_DOCUMENT_PATH',
@@ -27,6 +29,8 @@ TEST_DEU_DOCUMENT_FILENAME = 'deu_website.png'
 TEST_DOCUMENT_DESCRIPTION = 'test description'
 TEST_DOCUMENT_DESCRIPTION_EDITED = 'test document description edited'
 TEST_DOCUMENT_LABEL_EDITED = 'test document label edited'
+TEST_DOCUMENT_TYPE_DELETE_PERIOD = 30
+TEST_DOCUMENT_TYPE_DELETE_TIME_UNIT = TIME_DELTA_UNIT_DAYS
 TEST_DOCUMENT_TYPE_LABEL = 'test_document_type'
 TEST_DOCUMENT_TYPE_2_LABEL = 'test document type 2'
 TEST_DOCUMENT_TYPE_LABEL_EDITED = 'test document type edited label'
