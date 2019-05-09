@@ -557,6 +557,9 @@ Other changes
 * Fix multiple tag selection wizard step.
 * Update tag document list and the document tag list
   views to require the view permissions for both objects.
+* Install and server static content to and from the image.
+  Remove installation of static content from the setup
+  and upgrade stages.
 
 
 

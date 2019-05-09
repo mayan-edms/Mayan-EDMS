@@ -21,6 +21,7 @@ export MAYAN_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE:-mayan.settings.production}
 export MAYAN_GUNICORN_BIN=${MAYAN_PYTHON_BIN_DIR}gunicorn
 export MAYAN_GUNICORN_WORKERS=${MAYAN_GUNICORN_WORKERS:-2}
 export MAYAN_PIP_BIN=${MAYAN_PYTHON_BIN_DIR}pip
+export MAYAN_STATIC_ROOT=${MAYAN_INSTALL_DIR}/static
 
 MAYAN_WORKER_FAST_CONCURRENCY=${MAYAN_WORKER_FAST_CONCURRENCY:-1}
 MAYAN_WORKER_MEDIUM_CONCURRENCY=${MAYAN_WORKER_MEDIUM_CONCURRENCY:-1}
@@ -54,14 +55,12 @@ chown mayan:mayan /var/lib/mayan -R
 
 initialize() {
     echo "mayan: initialize()"
-    su mayan -c "${MAYAN_BIN} initialsetup --force"
-    su mayan -c "${MAYAN_BIN} collectstatic --noinput --clear"
+    su mayan -c "${MAYAN_BIN} initialsetup --force --no-javascript"
 }
 
 upgrade() {
     echo "mayan: upgrade()"
-    su mayan -c "${MAYAN_BIN} performupgrade"
-    su mayan -c "${MAYAN_BIN} collectstatic --noinput --clear"
+    su mayan -c "${MAYAN_BIN} performupgrade --no-javascript"
 }
 
 start() {

@@ -132,7 +132,10 @@ RUN chown -R mayan:mayan $PROJECT_INSTALL_DIR
 
 # Install build Mayan EDMS
 RUN sudo -u mayan $PYTHON_PIP install --no-cache-dir --no-use-pep517 *.whl && \
-rm *.whl
+rm *.whl && \
+mayan-edms.py installjavascript && \
+MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}/static mayan-edms.py preparestatic --link --noinput
+
 
 # Install Python clients for librabbitmq, MySQL, PostgreSQL, REDIS
 RUN sudo -u mayan $PYTHON_PIP install --no-cache-dir --no-use-pep517 librabbitmq==1.6.1 mysql-python==1.2.5 psycopg2==2.7.3.2 redis==2.10.6

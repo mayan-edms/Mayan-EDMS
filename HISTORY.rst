@@ -249,6 +249,7 @@
   REDIRECT_URL setting.
 * Update tag document list and the document tag list
   views to require the view permissions for both objects.
+* Install and server static content to and from the image.
 
 3.1.11 (2019-04-XX)
 ===================
