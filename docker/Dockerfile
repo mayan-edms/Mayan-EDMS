@@ -103,7 +103,7 @@ ENV LC_ALL C.UTF-8
 
 RUN touch docker/Makefile
 
-RUN make wheel
+RUN make python-wheel
 
 RUN chmod 777 dist -R
 
