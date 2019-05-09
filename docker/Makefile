@@ -1,5 +1,5 @@
 APT_PROXY ?= `/sbin/ip route|awk '/docker0/ { print $$9 }'`:3142
-IMAGE_VERSION ?= `cat docker/version`
+IMAGE_VERSION ?= `cat docker/rootfs/version`
 CONSOLE_COLUMNS ?= `echo $$(tput cols)`
 CONSOLE_LINES ?= `echo $$(tput lines)`
 
