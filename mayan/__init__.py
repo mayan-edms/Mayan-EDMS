@@ -1,9 +1,9 @@
 from __future__ import unicode_literals
 
 __title__ = 'Mayan EDMS'
-__version__ = '3.1.10'
-__build__ = 0x030110
-__build_string__ = 'v3.1.10-1-g51ea493a26_Thu Apr 4 22:03:19 2019 -0400'
+__version__ = '3.2b1'
+__build__ = 0x030200
+__build_string__ = 'v3.1.10-351-g72cdfe58c5_Thu May 9 20:30:48 2019 +0000'
 __django_version__ = '1.11'
 __author__ = 'Roberto Rosario'
 __author_email__ = 'roberto.rosario@mayan-edms.com'

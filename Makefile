@@ -125,7 +125,7 @@ increase-version: ## Increase the version number of the entire project's files.
 	BUILD=`echo $$VERSION|awk '{split($$VERSION,a,"."); printf("0x%02d%02d%02d\n", a[1],a[2], a[3])}'`; \
 	sed -i -e "s/__build__ = 0x[0-9]*/__build__ = $${BUILD}/g" mayan/__init__.py; \
 	sed -i -e "s/__version__ = '[0-9\.]*'/__version__ = '$${VERSION}'/g" mayan/__init__.py; \
-	echo $$VERSION > docker/version
+	echo $$VERSION > docker/rootfs/version
 	make generate-setup
 
 python-test-release: ## Package (sdist and wheel) and upload to the PyPI test server.
