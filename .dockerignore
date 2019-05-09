@@ -4,8 +4,7 @@ HISTORY.md
 mayan/media
 db.sqlite*
 docker
-!docker/etc
-!docker/entrypoint.sh
-!docker/version
+!docker/rootfs
 ./.*
 docs
+

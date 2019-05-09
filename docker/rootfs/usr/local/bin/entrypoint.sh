@@ -4,7 +4,6 @@ set -e
 echo "mayan: starting entrypoint.sh"
 INSTALL_FLAG=/var/lib/mayan/system/SECRET_KEY
 CONCURRENCY_ARGUMENT=--concurrency=
-export DOCKER_ROOT=/opt/mayan-edms
 
 export MAYAN_DEFAULT_BROKER_URL=redis://127.0.0.1:6379/0
 export MAYAN_DEFAULT_CELERY_RESULT_BACKEND=redis://127.0.0.1:6379/0
@@ -53,14 +52,30 @@ export PYTHONPATH=$PYTHONPATH:$MAYAN_MEDIA_ROOT
 
 chown mayan:mayan /var/lib/mayan -R
 
+apt_get_install() {
+    apt-get -q update
+    apt-get install -y --force-yes --no-install-recommends --auto-remove "$@"
+    apt-get -q clean
+    rm -rf /var/lib/apt/lists/*
+}
+
 initialize() {
     echo "mayan: initialize()"
     su mayan -c "${MAYAN_BIN} initialsetup --force --no-javascript"
 }
 
-upgrade() {
-    echo "mayan: upgrade()"
-    su mayan -c "${MAYAN_BIN} performupgrade --no-javascript"
+os_package_installs() {
+    echo "mayan: os_package_installs()"
+    if [ "${MAYAN_APT_INSTALLS}" ]; then
+        DEBIAN_FRONTEND=noninteractive apt_get_install $MAYAN_APT_INSTALLS
+    fi
+}
+
+pip_installs() {
+    echo "mayan: pip_installs()"
+    if [ "${MAYAN_PIP_INSTALLS}" ]; then
+        su mayan -c "${MAYAN_PIP_BIN} install $MAYAN_PIP_INSTALLS"
+    fi
 }
 
 start() {
@@ -69,18 +84,9 @@ start() {
     exec /usr/bin/supervisord -nc /etc/supervisor/supervisord.conf
 }
 
-os_package_installs() {
-    echo "mayan: os_package_installs()"
-    if [ "${MAYAN_APT_INSTALLS}" ]; then
-        apt-get-install $MAYAN_APT_INSTALLS
-    fi
-}
-
-pip_installs() {
-    echo "mayan: pip_installs()"
-    if [ "${MAYAN_PIP_INSTALLS}" ]; then
-        $MAYAN_PIP_BIN install $MAYAN_PIP_INSTALLS
-    fi
+upgrade() {
+    echo "mayan: upgrade()"
+    su mayan -c "${MAYAN_BIN} performupgrade --no-javascript"
 }
 
 os_package_installs || true
@@ -105,7 +111,7 @@ run-tests) # Check if this is a new install, otherwise try to upgrade the existi
            else
                upgrade
            fi
-           $DOCKER_ROOT/run-tests.sh
+           run-tests.sh
            ;;
 
 *) su mayan -c "$@";
