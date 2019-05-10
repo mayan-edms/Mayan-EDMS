@@ -269,9 +269,11 @@ class Dependency(object):
             else:
                 self._install()
                 print(_('Complete.'))
+                sys.stdout.flush()
         else:
             self._install()
             print(_('Complete.'))
+            sys.stdout.flush()
 
     def _install(self):
         raise NotImplementedError
@@ -404,8 +406,14 @@ class JavaScriptDependency(Dependency):
 
     def _install(self, include_dependencies=False):
         self.get_metadata()
+        print(_('Downloading... '), end='')
+        sys.stdout.flush()
         self.download()
+        print(_('Verifying... '), end='')
+        sys.stdout.flush()
         self.verify()
+        print(_('Extracting... '), end='')
+        sys.stdout.flush()
         self.extract()
 
         if include_dependencies:
