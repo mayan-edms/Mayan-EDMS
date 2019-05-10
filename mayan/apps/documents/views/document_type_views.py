@@ -140,7 +140,7 @@ class DocumentTypeFilenameCreateView(ExternalObjectMixin, SingleObjectCreateView
     form_class = DocumentTypeFilenameForm_create
 
     def get_document_type(self):
-        return self.get_external_object()
+        return self.external_object
 
     def get_extra_context(self):
         return {
@@ -216,7 +216,7 @@ class DocumentTypeFilenameListView(ExternalObjectMixin, SingleObjectListView):
     external_object_pk_url_kwarg = 'pk'
 
     def get_document_type(self):
-        return self.get_external_object()
+        return self.external_object
 
     def get_extra_context(self):
         return {

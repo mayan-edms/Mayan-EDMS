@@ -430,7 +430,7 @@ class SetupWorkflowStateCreateView(ExternalObjectMixin, SingleObjectCreateView):
         )
 
     def get_workflow(self):
-        return self.get_external_object()
+        return self.external_object
 
 
 class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
@@ -501,7 +501,7 @@ class SetupWorkflowStateListView(ExternalObjectMixin, SingleObjectListView):
         return self.get_workflow().states.all()
 
     def get_workflow(self):
-        return self.get_external_object()
+        return self.external_object
 
 
 # Transitions
@@ -541,7 +541,7 @@ class SetupWorkflowTransitionCreateView(ExternalObjectMixin, SingleObjectCreateV
         )
 
     def get_workflow(self):
-        return self.get_external_object()
+        return self.external_object
 
 
 class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
@@ -622,7 +622,7 @@ class SetupWorkflowTransitionListView(ExternalObjectMixin, SingleObjectListView)
         return self.get_workflow().transitions.all()
 
     def get_workflow(self):
-        return self.get_external_object()
+        return self.external_object
 
 
 class SetupWorkflowTransitionTriggerEventListView(ExternalObjectMixin, FormView):
@@ -660,7 +660,7 @@ class SetupWorkflowTransitionTriggerEventListView(ExternalObjectMixin, FormView)
         ).form_valid(form=form)
 
     def get_object(self):
-        return self.get_external_object()
+        return self.external_object
 
     def get_extra_context(self):
         return {

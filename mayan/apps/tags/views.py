@@ -248,7 +248,7 @@ class TagDocumentListView(ExternalObjectMixin, DocumentListView):
         return context
 
     def get_tag(self):
-        return self.get_external_object()
+        return self.external_object
 
 
 class DocumentTagListView(ExternalObjectMixin, TagListView):
@@ -263,20 +263,20 @@ class DocumentTagListView(ExternalObjectMixin, TagListView):
                 'hide_link': True,
                 'no_results_main_link': link_document_tag_multiple_attach.resolve(
                     context=RequestContext(
-                        self.request, {'object': self.get_external_object()}
+                        self.request, {'object': self.external_object}
                     )
                 ),
                 'no_results_title': _('Document has no tags attached'),
-                'object': self.get_external_object(),
+                'object': self.external_object,
                 'title': _(
                     'Tags for document: %s'
-                ) % self.get_external_object(),
+                ) % self.external_object,
             }
         )
         return context
 
     def get_source_queryset(self):
-        return self.get_external_object().get_tags(
+        return self.external_object.get_tags(
             permission=permission_tag_view, user=self.request.user
         ).all()
 

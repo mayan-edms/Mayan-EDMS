@@ -58,7 +58,7 @@ class DocumentPageNavigationBase(ExternalObjectMixin, RedirectView):
     external_object_pk_url_kwarg = 'pk'
 
     def get_object(self):
-        return self.get_external_object()
+        return self.external_object
 
     def get_redirect_url(self, *args, **kwargs):
         """
@@ -180,7 +180,7 @@ class DocumentPageView(ExternalObjectMixin, SimpleView):
         }
 
     def get_object(self):
-        return self.get_external_object()
+        return self.external_object
 
 
 class DocumentPageViewResetView(RedirectView):
@@ -193,7 +193,7 @@ class DocumentPageInteractiveTransformation(ExternalObjectMixin, RedirectView):
     external_object_pk_url_kwarg = 'pk'
 
     def get_object(self):
-        return self.get_external_object()
+        return self.external_object
 
     def get_redirect_url(self, *args, **kwargs):
         query_dict = {

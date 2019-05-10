@@ -93,7 +93,7 @@ class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):
     external_object_pk_url_kwarg = 'pk'
 
     def get_document(self):
-        document = self.get_external_object()
+        document = self.external_object
         document.add_as_recent_document_for_user(user=self.request.user)
         return document
 
@@ -125,7 +125,7 @@ class DocumentVersionRevertView(ExternalObjectMixin, ConfirmView):
         }
 
     def get_object(self):
-        return self.get_external_object()
+        return self.external_object
 
     def view_action(self):
         try:
