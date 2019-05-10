@@ -30,10 +30,10 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
     def setUp(self):
         super(DocumentMetadataTestCase, self).setUp()
 
-        self.test_metadata_type = MetadataType.objects.create(
-            name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
-        )
-
+        #self.test_metadata_type = MetadataType.objects.create(
+        #    name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
+        #)
+        self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type
         )
@@ -330,6 +330,63 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.assertEqual(
             self.test_documents[1].metadata.first().value, TEST_METADATA_VALUE_EDITED
         )
+
+
+
+class DocumentMetadataRequiredTestCase(
+    MetadataTestMixin, MetadataTypeTestMixin, GenericDocumentViewTestCase
+):
+    def setUp(self):
+        super(DocumentMetadataRequiredTestCase, self).setUp()
+        self._create_test_metadata_type()
+        self._create_test_metadata_type()
+        self.test_document_type.metadata.create(
+            metadata_type=self.test_metadata_types[0]
+        )
+        self.test_document_type.metadata.create(
+            metadata_type=self.test_metadata_types[1], required=True
+        )
+
+    def _create_test_document_metadata(self):
+        self.test_document_metadatas = []
+        self.test_document_metadatas.append(
+            self.test_document.metadata.get_or_create(
+                metadata_type=self.test_metadata_types[0], #defaults={'value': 'a'}
+            )
+        )
+        self.test_document_metadatas.append(
+            self.test_document.metadata.get_or_create(
+                metadata_type=self.test_metadata_types[1], #defaults={'value': 'b'}
+            )
+        )
+
+    def _request_document_metadata_remove_post_view(self):
+        return self.post(
+            viewname='metadata:metadata_remove',
+            kwargs={'pk': self.test_document.pk}, data={
+                'form-0-id': self.test_metadata_types[0].pk,
+                'form-0-update': True,
+                'form-TOTAL_FORMS': '1',
+                'form-INITIAL_FORMS': '0',
+                'form-MAX_NUM_FORMS': '',
+            }
+        )
+
+    def test_document_metadata_remove_post_view_with_access(self):
+        self._create_test_document_metadata()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_remove
+        )
+        response = self._request_document_metadata_remove_post_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(
+            self.test_document_metadata not in self.test_document.metadata.all()
+        )
+
+
 
 
 class MetadataTypeViewTestCase(
