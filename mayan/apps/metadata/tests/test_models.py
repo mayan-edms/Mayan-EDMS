@@ -20,6 +20,7 @@ from .mixins import MetadataTypeTestMixin
 class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
     def setUp(self):
         super(MetadataTestCase, self).setUp()
+        self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type
         )
@@ -32,7 +33,12 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         document_metadata.full_clean()
         document_metadata.save()
 
-        self.assertEqual(self.test_document.metadata_value_of.test, None)
+        self.assertEqual(
+            getattr(
+                self.test_document.metadata_value_of,
+                self.test_metadata_type.name
+            ), None
+        )
 
     def test_default(self):
         self.test_metadata_type.default = TEST_DEFAULT_VALUE
@@ -46,7 +52,10 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         document_metadata.save()
 
         self.assertEqual(
-            self.test_document.metadata_value_of.test, TEST_DEFAULT_VALUE
+            getattr(
+                self.test_document.metadata_value_of,
+                self.test_metadata_type.name
+            ), TEST_DEFAULT_VALUE
         )
 
     def test_lookup_with_incorrect_value(self):
@@ -76,7 +85,10 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         document_metadata.save()
 
         self.assertEqual(
-            self.test_document.metadata_value_of.test, TEST_CORRECT_LOOKUP_VALUE
+            getattr(
+                self.test_document.metadata_value_of,
+                self.test_metadata_type.name
+            ), TEST_CORRECT_LOOKUP_VALUE
         )
 
     def test_empty_optional_lookup(self):
@@ -112,7 +124,12 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         document_metadata.full_clean()
         document_metadata.save()
 
-        self.assertEqual(self.test_document.metadata_value_of.test, TEST_VALID_DATE)
+        self.assertEqual(
+            getattr(
+                self.test_document.metadata_value_of,
+                self.test_metadata_type.name
+            ), TEST_VALID_DATE
+        )
 
     def test_parsing(self):
         self.test_metadata_type.parser = TEST_DATE_PARSER
@@ -133,7 +150,10 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         document_metadata.save()
 
         self.assertEqual(
-            self.test_document.metadata_value_of.test, TEST_PARSED_VALID_DATE
+            getattr(
+                self.test_document.metadata_value_of,
+                self.test_metadata_type.name
+            ), TEST_PARSED_VALID_DATE
         )
 
     def test_required_metadata(self):

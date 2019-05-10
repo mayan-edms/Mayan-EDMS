@@ -9,6 +9,10 @@ TEST_DEFAULT_VALUE = 'test'
 TEST_INCORRECT_LOOKUP_VALUE = '0'
 TEST_INVALID_DATE = '___________'
 TEST_LOOKUP_TEMPLATE = '1,2,3'
+TEST_METADATA_TYPES_FIXTURES = [
+    {'name': 'test_metadata_type_1', 'label': 'test metadata type 1'},
+    {'name': 'test_metadata_type_2', 'label': 'test metadata type 2'},
+]
 TEST_METADATA_TYPE_LABEL = 'test metadata type'
 TEST_METADATA_TYPE_LABEL_2 = 'test metadata type label 2'
 TEST_METADATA_TYPE_LABEL_EDITED = 'test metadata type label edited'

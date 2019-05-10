@@ -29,7 +29,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
             enabled=True, label=TEST_SOURCE_LABEL,
             uncompress=TEST_SOURCE_UNCOMPRESS_N
         )
-
+        self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type, required=True
         )

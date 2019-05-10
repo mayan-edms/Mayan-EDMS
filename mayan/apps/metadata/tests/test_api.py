@@ -18,17 +18,13 @@ from ..permissions import (
 
 from .literals import (
     TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_LABEL_2,
-    TEST_METADATA_TYPE_NAME, TEST_METADATA_TYPE_NAME_2, TEST_METADATA_VALUE,
-    TEST_METADATA_VALUE_EDITED
+    TEST_METADATA_TYPE_NAME, TEST_METADATA_TYPE_NAME_2,
+    TEST_METADATA_VALUE, TEST_METADATA_VALUE_EDITED
 )
+from .mixins import MetadataTypeTestMixin
 
 
-class MetadataTypeAPITestCase(BaseAPITestCase):
-    def _create_test_metadata_type(self):
-        self.test_metadata_type = MetadataType.objects.create(
-            label=TEST_METADATA_TYPE_LABEL, name=TEST_METADATA_TYPE_NAME
-        )
-
+class MetadataTypeAPITestCase(MetadataTypeTestMixin, BaseAPITestCase):
     def _request_test_metadata_type_create_view(self):
         return self.post(
             viewname='rest_api:metadatatype-list', data={
@@ -101,7 +97,7 @@ class MetadataTypeAPITestCase(BaseAPITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
-            response.data['label'], TEST_METADATA_TYPE_LABEL
+            response.data['label'], self.test_metadata_type.label
         )
 
     def _request_test_metadata_type_edit_view_via_patch(self):
@@ -115,16 +111,25 @@ class MetadataTypeAPITestCase(BaseAPITestCase):
 
     def test_metadata_type_patch_view_no_access(self):
         self._create_test_metadata_type()
+        metadata_type_values = self._model_instance_to_dictionary(
+            instance=self.test_metadata_type
+        )
 
         response = self._request_test_metadata_type_edit_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.test_metadata_type.refresh_from_db()
-        self.assertEqual(self.test_metadata_type.label, TEST_METADATA_TYPE_LABEL)
-        self.assertEqual(self.test_metadata_type.name, TEST_METADATA_TYPE_NAME)
+        self.assertEqual(
+            self._model_instance_to_dictionary(
+                instance=self.test_metadata_type
+            ), metadata_type_values
+        )
 
     def test_metadata_type_patch_view_with_access(self):
         self._create_test_metadata_type()
+        metadata_type_values = self._model_instance_to_dictionary(
+            instance=self.test_metadata_type
+        )
         self.grant_access(
             obj=self.test_metadata_type, permission=permission_metadata_type_edit
         )
@@ -133,8 +138,11 @@ class MetadataTypeAPITestCase(BaseAPITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_metadata_type.refresh_from_db()
-        self.assertEqual(self.test_metadata_type.label, TEST_METADATA_TYPE_LABEL_2)
-        self.assertEqual(self.test_metadata_type.name, TEST_METADATA_TYPE_NAME_2)
+        self.assertNotEqual(
+            self._model_instance_to_dictionary(
+                instance=self.test_metadata_type
+            ), metadata_type_values
+        )
 
     def _request_test_metadata_type_edit_view_via_put(self):
         return self.put(
@@ -147,25 +155,39 @@ class MetadataTypeAPITestCase(BaseAPITestCase):
 
     def test_metadata_type_put_view_no_access(self):
         self._create_test_metadata_type()
+        metadata_type_values = self._model_instance_to_dictionary(
+            instance=self.test_metadata_type
+        )
+
         response = self._request_test_metadata_type_edit_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.test_metadata_type.refresh_from_db()
-        self.assertEqual(self.test_metadata_type.label, TEST_METADATA_TYPE_LABEL)
-        self.assertEqual(self.test_metadata_type.name, TEST_METADATA_TYPE_NAME)
+        self.assertEqual(
+            self._model_instance_to_dictionary(
+                instance=self.test_metadata_type
+            ), metadata_type_values
+        )
 
     def test_metadata_type_put_view_with_access(self):
         self._create_test_metadata_type()
+        metadata_type_values = self._model_instance_to_dictionary(
+            instance=self.test_metadata_type
+        )
         self.grant_access(
-            obj=self.test_metadata_type, permission=permission_metadata_type_edit
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
         )
 
         response = self._request_test_metadata_type_edit_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_metadata_type.refresh_from_db()
-        self.assertEqual(self.test_metadata_type.label, TEST_METADATA_TYPE_LABEL_2)
-        self.assertEqual(self.test_metadata_type.name, TEST_METADATA_TYPE_NAME_2)
+        self.assertNotEqual(
+            self._model_instance_to_dictionary(
+                instance=self.test_metadata_type
+            ), metadata_type_values
+        )
 
     def _request_metadata_type_list_view(self):
         return self.get(viewname='rest_api:metadatatype-list')
@@ -180,13 +202,15 @@ class MetadataTypeAPITestCase(BaseAPITestCase):
     def test_metadata_type_list_view_with_access(self):
         self._create_test_metadata_type()
         self.grant_access(
-            obj=self.test_metadata_type, permission=permission_metadata_type_view
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_view
         )
 
         response = self._request_metadata_type_list_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['results'][0]['label'], TEST_METADATA_TYPE_LABEL
+            response.data['results'][0]['label'],
+            self.test_metadata_type.label
         )
 
 

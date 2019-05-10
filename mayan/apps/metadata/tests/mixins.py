@@ -1,33 +1,42 @@
 from __future__ import unicode_literals
 
+import copy
+
 from ..models import MetadataType
 
 from .literals import (
-    TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_LABEL_EDITED,
-    TEST_METADATA_TYPE_NAME, TEST_METADATA_TYPE_NAME_EDITED
+    TEST_METADATA_TYPE_LABEL_EDITED, TEST_METADATA_TYPE_NAME_EDITED,
+    TEST_METADATA_TYPES_FIXTURES
 )
 
 
 class MetadataTypeTestMixin(object):
+    test_metadata_types = []
+
     def setUp(self):
         super(MetadataTypeTestMixin, self).setUp()
-        self.test_metadata_type = MetadataType.objects.create(
-            name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
+        self.test_metadata_types_fixtures = copy.copy(
+            TEST_METADATA_TYPES_FIXTURES
         )
 
-
-class MetadataTestsMixin(object):
     def _create_test_metadata_type(self):
         self.test_metadata_type = MetadataType.objects.create(
-            label=TEST_METADATA_TYPE_LABEL,
-            name=TEST_METADATA_TYPE_NAME
+            **self.test_metadata_types_fixtures.pop()
+        )
+        self.test_metadata_types.append(self.test_metadata_type)
+
+
+class MetadataTestMixin(object):
+    def setUp(self):
+        super(MetadataTestMixin, self).setUp()
+        self.test_metadata_types_fixtures = copy.copy(
+            TEST_METADATA_TYPES_FIXTURES
         )
 
     def _request_test_metadata_type_create_view(self):
         return self.post(
             viewname='metadata:setup_metadata_type_create', data={
-                'label': TEST_METADATA_TYPE_LABEL,
-                'name': TEST_METADATA_TYPE_NAME
+                **self.test_metadata_types_fixtures.pop()
             }
         )
 

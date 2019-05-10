@@ -20,11 +20,10 @@ from ..permissions import (
 
 from .literals import (
     TEST_DOCUMENT_METADATA_VALUE_2, TEST_METADATA_TYPE_LABEL,
-    TEST_METADATA_TYPE_LABEL_2, TEST_METADATA_TYPE_LABEL_EDITED,
-    TEST_METADATA_TYPE_NAME, TEST_METADATA_TYPE_NAME_2,
-    TEST_METADATA_TYPE_NAME_EDITED, TEST_METADATA_VALUE_EDITED
+    TEST_METADATA_TYPE_LABEL_2, TEST_METADATA_TYPE_NAME,
+    TEST_METADATA_TYPE_NAME_2, TEST_METADATA_VALUE_EDITED
 )
-from .mixins import MetadataTestsMixin
+from .mixins import MetadataTypeTestMixin, MetadataTestMixin
 
 
 class DocumentMetadataTestCase(GenericDocumentViewTestCase):
@@ -333,44 +332,43 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         )
 
 
-class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericViewTestCase):
+class MetadataTypeViewTestCase(
+    DocumentTestMixin, MetadataTestMixin, MetadataTypeTestMixin,
+    GenericViewTestCase
+):
     auto_create_document_type = False
     auto_upload_document = False
 
     def test_metadata_type_create_view_no_permission(self):
+        metadata_type_count = MetadataType.objects.count()
+
         response = self._request_test_metadata_type_create_view()
         self.assertEqual(response.status_code, 403)
 
+        self.assertEqual(
+            MetadataType.objects.count(), metadata_type_count
+        )
+
     def test_metadata_type_create_view_with_access(self):
         self.grant_permission(permission=permission_metadata_type_create)
+        metadata_type_count = MetadataType.objects.count()
 
         response = self._request_test_metadata_type_create_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertQuerysetEqual(
-            qs=MetadataType.objects.values('label', 'name'),
-            values=[
-                {
-                    'label': TEST_METADATA_TYPE_LABEL,
-                    'name': TEST_METADATA_TYPE_NAME
-                }
-            ], transform=dict
+        self.assertEqual(
+            MetadataType.objects.count(), metadata_type_count + 1
         )
 
     def test_metadata_type_delete_view_no_permission(self):
         self._create_test_metadata_type()
+        metadata_type_count = MetadataType.objects.count()
 
         response = self._request_test_metadata_type_delete_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertQuerysetEqual(
-            qs=MetadataType.objects.values('label', 'name'),
-            values=[
-                {
-                    'label': TEST_METADATA_TYPE_LABEL,
-                    'name': TEST_METADATA_TYPE_NAME
-                }
-            ], transform=dict
+        self.assertEqual(
+            MetadataType.objects.count(), metadata_type_count
         )
 
     def test_metadata_type_delete_view_with_access(self):
@@ -380,26 +378,29 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
             obj=self.test_metadata_type,
             permission=permission_metadata_type_delete
         )
+        metadata_type_count = MetadataType.objects.count()
 
         response = self._request_test_metadata_type_delete_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(MetadataType.objects.count(), 0)
+        self.assertEqual(
+            MetadataType.objects.count(), metadata_type_count - 1
+        )
 
     def test_metadata_type_edit_view_no_permission(self):
         self._create_test_metadata_type()
+        metadata_type_values = self._model_instance_to_dictionary(
+            instance=self.test_metadata_type
+        )
 
         response = self._request_test_metadata_type_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertQuerysetEqual(
-            qs=MetadataType.objects.values('label', 'name'),
-            values=[
-                {
-                    'label': TEST_METADATA_TYPE_LABEL,
-                    'name': TEST_METADATA_TYPE_NAME
-                }
-            ], transform=dict
+        self.test_metadata_type.refresh_from_db()
+        self.assertEqual(
+            self._model_instance_to_dictionary(
+                instance=self.test_metadata_type
+            ), metadata_type_values
         )
 
     def test_metadata_type_edit_view_with_access(self):
@@ -409,18 +410,18 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
             obj=self.test_metadata_type,
             permission=permission_metadata_type_edit
         )
+        metadata_type_values = self._model_instance_to_dictionary(
+            instance=self.test_metadata_type
+        )
 
         response = self._request_test_metadata_type_edit_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertQuerysetEqual(
-            qs=MetadataType.objects.values('label', 'name'),
-            values=[
-                {
-                    'label': TEST_METADATA_TYPE_LABEL_EDITED,
-                    'name': TEST_METADATA_TYPE_NAME_EDITED
-                }
-            ], transform=dict
+        self.test_metadata_type.refresh_from_db()
+        self.assertNotEqual(
+            self._model_instance_to_dictionary(
+                instance=self.test_metadata_type
+            ), metadata_type_values
         )
 
     def test_metadata_type_list_view_no_permission(self):
