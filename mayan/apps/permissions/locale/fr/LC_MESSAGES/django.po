@@ -5,6 +5,7 @@
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014
+# Frédéric Sheedy <sheedf@gmail.com>, 2019
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 # Yves Dubois <ydubois@gmail.com>, 2018
@@ -13,8 +14,8 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-04 21:40-0400\n"
-"PO-Revision-Date: 2019-04-27 22:54+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2019-05-09 13:40+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,11 +33,11 @@ msgstr "Droits insuffisants"
 
 #: events.py:12
 msgid "Role created"
-msgstr ""
+msgstr "Rôle créé"
 
 #: events.py:15
 msgid "Role edited"
-msgstr ""
+msgstr "Rôle modifié"
 
 #: links.py:16 links.py:40 models.py:113 views.py:164
 msgid "Roles"
@@ -147,7 +148,7 @@ msgstr "Groupes ayant le rôle : %s"
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr ""
+msgstr "Ajoutez des groupes à faire partie d'un rôle. Ils hériteront des autorisations et des contrôles d'accès du rôle."
 
 #: views.py:104
 msgid "Available permissions"
@@ -160,7 +161,7 @@ msgstr "Autorisations accordées"
 #: views.py:137
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr ""
+msgstr "Les autorisations accordées ici s'appliqueront à l'ensemble du système et à tous les objets."
 
 #: views.py:140
 #, python-format
@@ -173,8 +174,8 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr ""
+msgstr "Les rôles sont des unités d'autorisation. Ils contiennent des groupes d'utilisateurs qui héritent des autorisations de rôle pour l'ensemble du système. Les rôles peuvent également faire partie des listes de contrôles d'accès. Une liste des contrôles d'accès correspond aux autorisations accordées à un rôle pour des objets spécifiques dont les membres du groupe héritent."
 
 #: views.py:163
 msgid "There are no roles"
-msgstr ""
+msgstr "Il n'y a pas de rôles"

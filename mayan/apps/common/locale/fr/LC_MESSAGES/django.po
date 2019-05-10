@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-04 21:37-0400\n"
-"PO-Revision-Date: 2019-05-05 04:08+0000\n"
+"PO-Revision-Date: 2019-05-09 17:23+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -40,19 +40,19 @@ msgstr "Champs disponibles: \n"
 
 #: dependencies.py:395
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Utilisé pour permettre la traduction hors ligne des chaînes de texte du code."
 
 #: dependencies.py:400
 msgid "Provides style checking."
-msgstr ""
+msgstr "Fournit une vérification de style."
 
 #: dependencies.py:405
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Environnement de ligne de commande avec autocomplétion."
 
 #: dependencies.py:410
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Vérifie le formatage du fichier README."
 
 #: forms.py:27
 msgid "Selection"
@@ -78,7 +78,7 @@ msgstr ""
 
 #: generics.py:282
 msgid "Add all"
-msgstr ""
+msgstr "Ajouter tout"
 
 #: generics.py:291
 msgid "Add"
@@ -86,7 +86,7 @@ msgstr "Ajouter"
 
 #: generics.py:301
 msgid "Remove all"
-msgstr ""
+msgstr "Retirer tout"
 
 #: generics.py:310
 msgid "Remove"
@@ -225,7 +225,7 @@ msgstr "Actions"
 
 #: menus.py:17
 msgid "Secondary"
-msgstr ""
+msgstr "Secondaire"
 
 #: menus.py:21 models.py:93
 msgid "User"
@@ -347,7 +347,7 @@ msgstr "Nom qui sera affiché dans le menu principal."
 
 #: settings.py:68
 msgid "URL of the installation or homepage of the project."
-msgstr ""
+msgstr "URL de l'installation ou de la page d'accueil du projet."
 
 #: settings.py:74
 msgid "A storage backend that all workers can use to share files."
@@ -355,7 +355,7 @@ msgstr "Un espace de stockage que tous les agents pourront utiliser pour partage
 
 #: settings.py:83
 msgid "Django"
-msgstr ""
+msgstr "Django"
 
 #: settings.py:88
 msgid ""
@@ -435,7 +435,7 @@ msgstr ""
 
 #: settings.py:187
 msgid "Default: 'localhost'. The host to use for sending email."
-msgstr ""
+msgstr "Par défaut: 'localhost'. L'hôte à utiliser pour l'envoi de courriel."
 
 #: settings.py:194
 msgid ""
@@ -584,7 +584,7 @@ msgstr ""
 
 #: settings.py:394
 msgid "Celery"
-msgstr ""
+msgstr "Celery"
 
 #: settings.py:399
 msgid ""
@@ -609,7 +609,7 @@ msgstr "Confirmer la suppression"
 #: templatetags/common_tags.py:36
 #, python-format
 msgid "Edit %s"
-msgstr ""
+msgstr "Modifié %s"
 
 #: templatetags/common_tags.py:39
 msgid "Confirm"
@@ -671,13 +671,13 @@ msgstr "Entrées du journal des erreurs pour : %s"
 
 #: views.py:196
 msgid "No setup options available."
-msgstr ""
+msgstr "Aucune option d'installation disponible."
 
 #: views.py:198
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
+msgstr "Aucun résultat ici signifie que vous ne disposez pas des autorisations requises pour effectuer des tâches administratives."
 
 #: views.py:202
 msgid "Setup items"

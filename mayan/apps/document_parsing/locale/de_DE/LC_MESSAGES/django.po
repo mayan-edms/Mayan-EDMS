@@ -40,6 +40,8 @@ msgstr "Inhalt"
 msgid ""
 "Utility from the poppler-utils package used to text content from PDF files."
 msgstr ""
+"Programm aus dem poppler-utils Paket für die Extraktion von Text aus PDF-"
+"Dateien."
 
 #: events.py:12
 msgid "Document version submitted for parsing"
@@ -214,9 +216,9 @@ msgstr "Parsing-Einstellungen bearbeiten für Dokumenttyp: %s"
 
 #: views.py:161
 msgid "Submit all documents of a type for parsing."
-msgstr ""
+msgstr "Alle Dokumente eines Typs zum Parsen einreichen."
 
 #: views.py:182
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
-msgstr ""
+msgstr "%(count)d Dokumente zur Parsing-Warteschlange hinzugefügt."

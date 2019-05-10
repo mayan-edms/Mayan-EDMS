@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-04 21:37-0400\n"
-"PO-Revision-Date: 2019-05-05 01:43+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2019-05-08 22:15+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,19 +39,19 @@ msgstr "Verfügbare Felder:\n"
 
 #: dependencies.py:395
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Ermöglicht die Offline Übersetzung von Zeichenketten im Code."
 
 #: dependencies.py:400
 msgid "Provides style checking."
-msgstr ""
+msgstr "Ermöglicht Stilüberprüfung."
 
 #: dependencies.py:405
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Kommandozeilenumgebung mit Autovervollständigung."
 
 #: dependencies.py:410
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Überprüft die korrekte Formatierung der README-Datei."
 
 #: forms.py:27
 msgid "Selection"
@@ -66,18 +66,18 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Wählen Sie Einträge aus, die entfernt werden sollen. Mit der Steuerungstaste können mehrere Einträge ausgewählt werden. Wenn die Auswahl vollständig ist, klicken Sie den folgenden Button oder doppelklicken Sie auf die Liste um die Aktion durchzuführen."
 
 #: generics.py:149
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Wählen Sie Einträge aus, die hinzugefügt werden sollen. Mit der Steuerungstaste können mehrere Einträge ausgewählt werden. Wenn die Auswahl vollständig ist, klicken Sie den folgenden Button oder doppelklicken Sie auf die Liste um die Aktion durchzuführen."
 
 #: generics.py:282
 msgid "Add all"
-msgstr ""
+msgstr "Alle hinzufügen"
 
 #: generics.py:291
 msgid "Add"
@@ -85,7 +85,7 @@ msgstr "Hinzufügen"
 
 #: generics.py:301
 msgid "Remove all"
-msgstr ""
+msgstr "Alle entfernen"
 
 #: generics.py:310
 msgid "Remove"
@@ -216,7 +216,7 @@ msgstr "System"
 
 #: menus.py:12 menus.py:13
 msgid "Facet"
-msgstr ""
+msgstr "Facet"
 
 #: menus.py:16
 msgid "Actions"
@@ -224,7 +224,7 @@ msgstr "Aktionen"
 
 #: menus.py:17
 msgid "Secondary"
-msgstr ""
+msgstr "Sekundär"
 
 #: menus.py:21 models.py:93
 msgid "User"
@@ -326,7 +326,7 @@ msgstr "Zeit für die Verzögerung von Hintergrundaufgaben, die für ihre Fortse
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Name des Formulars, das mit dem Markenanker im Hauptmenü verknüpft ist. Zu diesem Formular werden die Benutzer auch nach dem Anmeldevorgang weitergeleitet."
 
 #: settings.py:41
 msgid "An integer specifying how many objects should be displayed per page."
@@ -350,7 +350,7 @@ msgstr "Die URL der Installation oder Webseite des Projekts."
 
 #: settings.py:74
 msgid "A storage backend that all workers can use to share files."
-msgstr "Datenbackend, das alle Worker benutzen können, um Dateien zu teilen"
+msgstr "Datenbackend, das alle Worker benutzen können, um Dateien zu teilen."
 
 #: settings.py:83
 msgid "Django"
@@ -385,7 +385,7 @@ msgstr "Falls \"Wahr\" (true), wird eine Umleitung (HTTP Redirect) auf die berei
 msgid ""
 "The list of validators that are used to check the strength of user's "
 "passwords."
-msgstr ""
+msgstr "Liste der Validatoren, die für die Überprüfung der Passwortstärke von Benutzerpasswörtern verwendet werden."
 
 #: settings.py:126
 msgid ""
@@ -416,7 +416,7 @@ msgid ""
 "Default: 'webmaster@localhost' Default email address to use for various "
 "automated correspondence from the site manager(s). This doesn't include "
 "error messages sent to ADMINS and MANAGERS; for that, see SERVER_EMAIL."
-msgstr ""
+msgstr "Standard: 'webmaster@localhost' Standard-E-Mailadresse, die für verschiedene automatische Korrespondenz durch die Sitemanager verwendet wird. Dies gilt nicht für Fehlerbenachrichtigungen an ADMINS and MANAGERS, für diese siehe SERVER_EMAIL."
 
 #: settings.py:168
 msgid ""
@@ -519,7 +519,7 @@ msgid ""
 "setting also accepts named URL patterns which can be used to reduce "
 "configuration duplication since you don't have to define the URL in two "
 "places (settings and URLconf)."
-msgstr ""
+msgstr "Standard: None. Die URL zu der Benutzer nach der Nutzung von LogoutView weitergeleitet werden (wenn das Formular kein Argument für nächste Seite enthält). Mit None wird keine Weiterleitung durchgeführt und das Logout-Formular dargestellt. Diese Einstellung akzeptiert auch 'named URL patterns', die benutzt werden können um die URL nur an einer Stelle zu definieren (anstatt Einstellungen und URLconf)."
 
 #: settings.py:316
 msgid ""
@@ -527,7 +527,7 @@ msgid ""
 "processor to add some variables to the template context. Can use the "
 "admindocs bookmarklets even if not logged in as a staff user. Are marked as "
 "\"internal\" (as opposed to \"EXTERNAL\") in AdminEmailHandler emails."
-msgstr ""
+msgstr "Eine Liste von IP-Adressen (als Zeichenketten). Ermöglicht dem debug() context processor einige Variablen zum Vorlagenkontext hinzuzufügen. Kann admindocs bookmarklets benutzen, auch wenn nicht als Benutzer angemeldet. Werden in AdminEmailHandler E-Mails als \"internal\" (im Gegensatz zu \"EXTERNAL\") markiert."
 
 #: settings.py:327
 msgid ""
@@ -536,7 +536,7 @@ msgid ""
 "specifies which languages are available for language selection. Generally, "
 "the default value should suffice. Only set this setting if you want to "
 "restrict language selection to a subset of the Django-provided languages. "
-msgstr ""
+msgstr "Liste von verfügbaren Sprachen. Die Liste setzt sich zusammen aus Zweier-Tupeln mit dem Format (Sprachencode, Sprachenname), z.B. ('ja', 'Japanese'). Diese Eintellung bestimmt die für die Auswahl verfügbaren Sprachen. Üblicherweise sollte die Einstellung des Standardwerts ausreichen. Benutzen Sie diese Einstellung nur, wenn Sie die Auswahl auf eine Untermenge der von Django zur Verfügung gestellten Sprachen einstellen wollen."
 
 #: settings.py:340
 msgid ""
@@ -548,7 +548,7 @@ msgid ""
 "language can't be determined or is not supported by the website. It also "
 "provides the fallback translation when a translation for a given literal "
 "doesn't exist for the user's preferred language."
-msgstr ""
+msgstr "Eine Zeichenkette, die den Sprachencode für diese Installation festlegt. Das Format sollte das Standardsprachenformat für IDs sein, z.B. \"en-us\" für U.S. English. Die Einstellung dient zwei Zwecken: Wenn die Lokalisierungs-Middleware nicht in Gebrauch ist, bestimmt sie die Übersetzung für alle Benutzer. Wenn die Lokalisierungs-Middleware in Gebrauch ist, bestimmt sie die Rückfallsprache, wenn die bevorzugte Sprache des Benutzers nicht ermittelt werden kann oder von der Website nicht unterstützt wird. Außerdem dient sie als Rückfallübersetzung, wenn eine Übersetzung in der vom Benutzer eingestellten Sprache nicht existiert."
 
 #: settings.py:355
 msgid ""
@@ -556,7 +556,7 @@ msgid ""
 "\"/static/\" or \"http://static.example.com/\" If not None, this will be "
 "used as the base path for asset definitions (the Media class) and the "
 "staticfiles app.It must end in a slash if set to a non-empty value."
-msgstr ""
+msgstr "URL für statische Dateien in STATIC_ROOT. Beispiel: \"/static/\" oder \"http://static.example.com/\" Wenn nicht None dient diese URL als Basispfad für Medien (die Medienklasse) und die staticfiles App. Sie muss mit einem Schrägstrich enden."
 
 #: settings.py:366
 msgid ""
@@ -564,14 +564,14 @@ msgid ""
 "collectstatic management command. A ready-to-use instance of the storage "
 "backend defined in this setting can be found at "
 "django.contrib.staticfiles.storage.staticfiles_storage."
-msgstr ""
+msgstr "Das Backend für die Speicherung von statischen Dateien mit dem collectstatic Management-Kommando. Eine betriebsfertige Instanz des Speicherungsbackends kann in django.contrib.staticfiles.storage.staticfiles_storage gefunden werden."
 
 #: settings.py:376
 msgid ""
 "A string representing the time zone for this installation. Note that this "
 "isn't necessarily the time zone of the server. For example, one server may "
 "serve multiple Django-powered sites, each with a separate time zone setting."
-msgstr ""
+msgstr "Eine Zeichenkette für die Zeitzone dieser Installation. Die muss nicht unbedingt die Zeitzone des Servers sein. Zum Beispiel kann ein Server mehrere Django-Sites bedienen, jede mit einer eigenen Zeitzoneneinstellung."
 
 #: settings.py:386
 msgid ""
@@ -579,7 +579,7 @@ msgid ""
 "servers (e.g. runserver) will use. The django-admin startproject management "
 "command will create a simple wsgi.py file with an application callable in "
 "it, and point this setting to that application."
-msgstr ""
+msgstr "Der volle Pythonpfad für die WSGI application, das Django's built-in servers (e.g. runserver) benutzen wird. Das django-admin startproject Management-Kommando erstellt eine einfache wsgi.py Datei mit einem application callable, auf das diese Einstellung zeigt."
 
 #: settings.py:394
 msgid "Celery"
@@ -608,7 +608,7 @@ msgstr "Löschen bestätigen"
 #: templatetags/common_tags.py:36
 #, python-format
 msgid "Edit %s"
-msgstr ""
+msgstr "%s bearbeiten"
 
 #: templatetags/common_tags.py:39
 msgid "Confirm"
@@ -632,7 +632,7 @@ msgstr "Erstellen"
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr "Bitte geben Sie einen gültigen 'Internen Namen' an, bestehend aus Buchstaben, Zahlen und einem Unterstrich. "
+msgstr "Bitte geben Sie einen gültigen 'Internen Namen' an, bestehend aus Buchstaben, Zahlen und einem Unterstrich."
 
 #: views.py:32
 msgid "About"
@@ -684,11 +684,11 @@ msgstr "Einrichtungsdetails"
 
 #: views.py:204
 msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgstr "Hier können sämtliche Aspekte des Systems konfiguriert werden."
 
 #: views.py:225
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "Diese Module werden für die Wartung des Systems verwendet."
 
 #: views.py:253
 msgid "No action selected."

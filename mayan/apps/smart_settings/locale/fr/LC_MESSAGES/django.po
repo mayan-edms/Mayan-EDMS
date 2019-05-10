@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-04 21:40-0400\n"
-"PO-Revision-Date: 2019-05-05 03:55+0000\n"
+"PO-Revision-Date: 2019-05-09 13:46+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +86,7 @@ msgstr "Afficher les paramètres"
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
-msgstr ""
+msgstr "Les paramètres hérités d'une variable d'environnement ont préséance et ne peuvent pas être modifiés dans cette vue."
 
 #: views.py:26
 #, python-format

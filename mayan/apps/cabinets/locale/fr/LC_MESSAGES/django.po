@@ -170,7 +170,7 @@ msgstr ""
 
 #: views.py:128
 msgid "This cabinet level is empty"
-msgstr "Ce niveau de classeur est vide"
+msgstr "Ce classeur est vide"
 
 #: views.py:130
 #, python-format
@@ -187,9 +187,9 @@ msgid ""
 "Cabinets are a multi-level method to organize documents. Each cabinet can "
 "contain documents as well as other sub level cabinets."
 msgstr ""
-"Les classeurs sont une méthode multi-niveaux pour organiser vos documents. "
-"Chaque classeur peut contenir autant des documents que d'autres sous-niveaux"
-" de classeurs."
+"L'utilisation des classeurs est une méthode multi-niveaux pour organiser vos"
+" documents. Chaque classeur peut contenir autant des documents que d'autres "
+"sous-niveaux de classeurs."
 
 #: views.py:182
 msgid "No cabinets available"

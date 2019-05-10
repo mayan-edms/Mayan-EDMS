@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-04 21:37-0400\n"
-"PO-Revision-Date: 2019-05-05 01:43+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2019-05-08 08:07+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,19 +33,19 @@ msgstr "Câmpuri disponibile:\n"
 
 #: dependencies.py:395
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Folosit pentru a permite traducerea offline a șirurilor de text cod."
 
 #: dependencies.py:400
 msgid "Provides style checking."
-msgstr ""
+msgstr "Oferă verificarea stilului."
 
 #: dependencies.py:405
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Mediul liniei de comandă cu autocompletare."
 
 #: dependencies.py:410
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Verifică formatarea corectă a fișierului README."
 
 #: forms.py:27
 msgid "Selection"
@@ -320,7 +320,7 @@ msgstr "Timpul de întârziere pentru sarcini de fundal care depind de propagare
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Numele afișării atașate ancorei de marcă din meniul principal. Aceasta este și perspectiva la care utilizatorii vor fi redirecționați după conectare."
 
 #: settings.py:41
 msgid "An integer specifying how many objects should be displayed per page."

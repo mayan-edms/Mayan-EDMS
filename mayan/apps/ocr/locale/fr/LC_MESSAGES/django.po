@@ -6,6 +6,7 @@
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017-2018
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
+# Frédéric Sheedy <sheedf@gmail.com>, 2019
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 # Yves Dubois <ydubois@gmail.com>, 2018
@@ -14,8 +15,8 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-04 21:40-0400\n"
-"PO-Revision-Date: 2019-05-03 05:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2019-05-09 13:20+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +27,7 @@ msgstr ""
 #: apps.py:54 apps.py:133 apps.py:137 events.py:7 links.py:15 links.py:21
 #: permissions.py:7 queues.py:7 settings.py:7
 msgid "OCR"
-msgstr "ROC - Reconnaissance de caractères"
+msgstr "ORC - Reconnaissance de caractères"
 
 #: apps.py:113
 msgid "Date and time"
@@ -38,25 +39,25 @@ msgstr "Résultat"
 
 #: backends/tesseract.py:95
 msgid "Tesseract OCR not found."
-msgstr ""
+msgstr "Tesseract OCR non trouvé."
 
 #: dependencies.py:25
 msgid "Free Open Source OCR Engine"
-msgstr ""
+msgstr "Moteur OCR libre et gratuit"
 
 #: dependencies.py:36
 msgid ""
 "PyOCR is a Python library simplifying the use of OCR tools like Tesseract or"
 " Cuneiform."
-msgstr ""
+msgstr "PyOCR est une bibliothèque Python simplifiant l'utilisation d'outils de reconnaissance optique de caractères tels que Tesseract ou Cuneiform."
 
 #: events.py:10
 msgid "Document version submitted for OCR"
-msgstr "Version du document soumise pour ROC"
+msgstr "Version du document soumise pour l'OCR"
 
 #: events.py:14
 msgid "Document version OCR finished"
-msgstr "ROC de la version du document terminée"
+msgstr "OCR de la version du document terminée"
 
 #: forms.py:16 forms.py:47
 msgid "Contents"
@@ -69,11 +70,11 @@ msgstr "Page %(page_number)d"
 
 #: links.py:27 links.py:32
 msgid "Submit for OCR"
-msgstr "Ajouter à la file d'attente ROC"
+msgstr "Ajouter à la file d'attente OCR"
 
 #: links.py:37
 msgid "Setup OCR"
-msgstr "Paramétrage de la ROC"
+msgstr "Paramétrage de l'OCR"
 
 #: links.py:42
 msgid "OCR documents per type"
@@ -81,11 +82,11 @@ msgstr "ROC des documents par type"
 
 #: links.py:47 links.py:53 views.py:154
 msgid "OCR errors"
-msgstr "Erreurs ROC"
+msgstr "Erreurs OCR"
 
 #: links.py:59
 msgid "Download OCR text"
-msgstr "Télécharger le texte de la ROC"
+msgstr "Télécharger le texte de l'OCR"
 
 #: models.py:20
 msgid "Document type"
@@ -93,7 +94,7 @@ msgstr "Type de document"
 
 #: models.py:24
 msgid "Automatically queue newly created documents for OCR."
-msgstr "Ajouter automatiquement les nouveaux documents créés à la file d'attente ROC."
+msgstr "Ajouter automatiquement les nouveaux documents créés à la file d'attente OCR."
 
 #: models.py:30
 msgid "Document type settings"
@@ -109,7 +110,7 @@ msgstr "Page du document"
 
 #: models.py:49
 msgid "The actual text content extracted by the OCR backend."
-msgstr ""
+msgstr "Le contenu du texte extrait par le backend OCR."
 
 #: models.py:50
 msgid "Content"
@@ -117,11 +118,11 @@ msgstr "Contenu"
 
 #: models.py:56
 msgid "Document page OCR content"
-msgstr "Contenu ROC de page du document"
+msgstr "Contenu OCR de page du document"
 
 #: models.py:57
 msgid "Document pages OCR contents"
-msgstr "Contenus ROC des pages du document"
+msgstr "Contenus OCR des pages du document"
 
 #: models.py:71
 msgid "Document version"
@@ -133,15 +134,15 @@ msgstr "Date et heure de soumission"
 
 #: models.py:80
 msgid "Document version OCR error"
-msgstr "Erreur ROC sur la version du document"
+msgstr "Erreur OCR sur la version du document"
 
 #: models.py:81
 msgid "Document version OCR errors"
-msgstr "Erreurs ROC sur la version du document"
+msgstr "Erreurs OCR sur la version du document"
 
 #: permissions.py:10
 msgid "Submit documents for OCR"
-msgstr "Ajouter les documents à la liste d'attente ROC"
+msgstr "Ajouter les documents à la liste d'attente OCR"
 
 #: permissions.py:13
 msgid "View the transcribed text from document"
@@ -149,51 +150,51 @@ msgstr "Afficher la transcription du texte depuis le document"
 
 #: permissions.py:17
 msgid "Change document type OCR settings"
-msgstr "Modifier les paramétrages ROC du type de document"
+msgstr "Modifier les paramétrages OCR du type de document"
 
 #: queues.py:9
 msgid "Document version OCR"
-msgstr "ROC de la version du document"
+msgstr "OCR de la version du document"
 
 #: settings.py:12
 msgid "Full path to the backend to be used to do OCR."
-msgstr "Chemin complet pour l'interface utilisée pour faire de la ROC."
+msgstr "Chemin complet du logiciel OCR utilisé."
 
 #: settings.py:21
 msgid "Set new document types to perform OCR automatically by default."
-msgstr "Traiter automatiquement les nouveaux types de document par la ROC."
+msgstr "Traiter automatiquement les nouveaux types de document par l'OCR."
 
 #: views.py:42
 #, python-format
 msgid "OCR result for document: %s"
-msgstr "Résultats de la ROC pour le document : %s"
+msgstr "Résultats OCR pour le document : %s"
 
 #: views.py:64
 #, python-format
 msgid "OCR result for document page: %s"
-msgstr ""
+msgstr "Résultat de l'OCR pour la page de document: %s"
 
 #: views.py:79
 msgid "Submit the selected document to the OCR queue?"
 msgid_plural "Submit the selected documents to the OCR queue?"
 msgstr[0] "Soumettre le document sélectionné à la file d'attente du ROC?"
-msgstr[1] "Soumettre les documents sélectionnés à la file d'attente du ROC?"
+msgstr[1] "Soumettre les documents sélectionnés à la file d'attente de l'OCR?"
 
 #: views.py:96
 msgid "Submit all documents of a type for OCR"
-msgstr "Soumettre tous les documents d'un type à la ROC"
+msgstr "Soumettre tous les documents d'un type à l'OCR"
 
 #: views.py:110
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
-msgstr ""
+msgstr "%(count)d documents ajoutés à la file d'attente de l'OCR."
 
 #: views.py:143
 #, python-format
 msgid "Edit OCR settings for document type: %s"
-msgstr "Modifier les paramètres ROC pour le type de document : %s"
+msgstr "Modifier les paramètres OCR pour le type de document : %s"
 
 #: views.py:172
 #, python-format
 msgid "OCR errors for document: %s"
-msgstr "Erreurs ROC pour le document : %s"
+msgstr "Erreurs OCR pour le document : %s"

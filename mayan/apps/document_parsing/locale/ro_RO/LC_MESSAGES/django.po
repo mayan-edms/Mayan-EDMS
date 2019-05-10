@@ -40,6 +40,8 @@ msgstr "Conținut"
 msgid ""
 "Utility from the poppler-utils package used to text content from PDF files."
 msgstr ""
+"Utilitar din pachetul poppler-utils utilizat pentru aextrage textul conținut"
+" din fișiere PDF."
 
 #: events.py:12
 msgid "Document version submitted for parsing"

@@ -9,6 +9,7 @@
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2019
 # Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2019
 # Yves Dubois <ydubois@gmail.com>, 2019
+# Frédéric Sheedy <sheedf@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
@@ -17,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-04 21:39-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
-"Last-Translator: Yves Dubois <ydubois@gmail.com>, 2019\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2019\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,11 +33,11 @@ msgstr "Libellé"
 #: apps.py:56 events.py:8 links.py:18 permissions.py:7 queue.py:8
 #: settings.py:9
 msgid "File metadata"
-msgstr ""
+msgstr "Métadonnées du fichier"
 
 #: apps.py:101
 msgid "Return the value of a specific file metadata."
-msgstr ""
+msgstr "Renvoie la valeur des métadonnées  pour un fichier spécifique."
 
 #: apps.py:113 apps.py:117 apps.py:170 apps.py:179
 msgid "File metadata key"
@@ -44,7 +45,7 @@ msgstr ""
 
 #: apps.py:174 apps.py:183
 msgid "File metadata value"
-msgstr ""
+msgstr "Valeur des métadonnées du fichier"
 
 #: dependencies.py:14
 msgid ""
@@ -53,7 +54,7 @@ msgstr ""
 
 #: drivers/exiftool.py:26
 msgid "EXIF Tool"
-msgstr ""
+msgstr "Outil EXIF"
 
 #: events.py:12
 msgid "Document version submitted for file metadata processing"
@@ -65,7 +66,7 @@ msgstr ""
 
 #: links.py:24
 msgid "Attributes"
-msgstr ""
+msgstr "Attributs"
 
 #: links.py:31 links.py:34
 msgid "Submit for file metadata"
@@ -73,7 +74,7 @@ msgstr ""
 
 #: links.py:41
 msgid "Setup file metadata"
-msgstr ""
+msgstr "Métadonnées du fichier d'installation"
 
 #: links.py:46
 msgid "File metadata processing per type"
@@ -101,11 +102,11 @@ msgstr "Nom interne"
 
 #: models.py:30 models.py:74
 msgid "Driver"
-msgstr ""
+msgstr "Pilote"
 
 #: models.py:31
 msgid "Drivers"
-msgstr ""
+msgstr "Pilotes"
 
 #: models.py:51
 msgid "Document type"

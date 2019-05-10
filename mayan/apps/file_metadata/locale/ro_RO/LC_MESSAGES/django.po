@@ -34,7 +34,7 @@ msgstr "Metadatele fișierului"
 
 #: apps.py:101
 msgid "Return the value of a specific file metadata."
-msgstr ""
+msgstr "Returnați valoarea unei metadate de fișier specifice."
 
 #: apps.py:113 apps.py:117 apps.py:170 apps.py:179
 msgid "File metadata key"
@@ -48,6 +48,8 @@ msgstr "Valoarea metadatelor fișierului"
 msgid ""
 "Library and program to read and write meta information in multimedia files."
 msgstr ""
+"Bibliotecă și program pentru citirea și scrierea informațiilor meta în "
+"fișierele multimedia."
 
 #: drivers/exiftool.py:26
 msgid "EXIF Tool"

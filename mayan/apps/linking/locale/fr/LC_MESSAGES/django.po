@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
+# Frédéric Sheedy <sheedf@gmail.com>, 2019
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 # Yves Dubois <ydubois@gmail.com>, 2018
@@ -12,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-04 21:39-0400\n"
-"PO-Revision-Date: 2019-05-03 05:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2019-05-09 17:25+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,15 +37,15 @@ msgstr "Liens intelligents"
 
 #: events.py:12
 msgid "Smart link created"
-msgstr ""
+msgstr "Lien intelligent créé"
 
 #: events.py:15
 msgid "Smart link edited"
-msgstr ""
+msgstr "Lien intelligent modifié"
 
 #: forms.py:36
 msgid "Foreign document field"
-msgstr ""
+msgstr "Champ document étranger"
 
 #: links.py:26
 msgid "Create condition"
@@ -208,7 +209,7 @@ msgstr "ne pas"
 
 #: models.py:215
 msgid "Full label"
-msgstr ""
+msgstr "Étiquette complète"
 
 #: permissions.py:10
 msgid "Create new smart links"
@@ -239,11 +240,11 @@ msgstr "Aucun type de document de ce type : %s"
 
 #: views.py:46
 msgid "Available smart links"
-msgstr ""
+msgstr "Liens intelligents disponibles"
 
 #: views.py:47
 msgid "Smart links enabled"
-msgstr ""
+msgstr "Liens intelligents activés"
 
 #: views.py:79
 #, python-format
@@ -287,7 +288,7 @@ msgstr ""
 
 #: views.py:195
 msgid "There are no smart links"
-msgstr ""
+msgstr "Il n'y a pas de liens intelligents"
 
 #: views.py:227
 msgid ""
@@ -297,7 +298,7 @@ msgstr ""
 
 #: views.py:232
 msgid "There are no smart links for this document"
-msgstr ""
+msgstr "Il n'y a pas de liens intelligents pour ce document"
 
 #: views.py:235
 #, python-format
@@ -322,7 +323,7 @@ msgstr ""
 
 #: views.py:306
 msgid "There are no conditions for this smart link"
-msgstr ""
+msgstr "Il n'y a pas de condition pour ce lien intelligent"
 
 #: views.py:310
 #, python-format
