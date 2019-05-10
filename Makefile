@@ -14,7 +14,6 @@ clean-build: ## Remove build artifacts.
 	rm -fr *.egg-info
 
 clean-pyc: ## Remove Python artifacts.
-
 	find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
@@ -22,10 +21,12 @@ clean-pyc: ## Remove Python artifacts.
 
 # Testing
 
+test: clean-pyc
 test: ## MODULE=<python module name> - Run tests for a single app, module or test class.
 	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --nomigrations $(ARGUMENTS)
 
 test-all: ## Run all tests.
+test-all: clean-pyc
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --nomigrations $(ARGUMENTS)
 
 test-launch-postgres:
