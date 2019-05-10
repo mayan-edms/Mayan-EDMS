@@ -11,20 +11,22 @@ from mayan.apps.common.menus import (
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.events.links import (
-    link_events_for_object,
+    link_events_for_object, link_object_event_types_user_subcriptions_list
 )
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
-    event_document_comment_created, event_document_comment_deleted
+    event_document_comment_created, event_document_comment_deleted,
+    event_document_comment_edited
 )
 from .links import (
-    link_comment_add, link_comment_delete, link_comments_for_document
+    link_comment_add, link_comment_delete, link_comment_edit,
+    link_comments_for_document
 )
 from .permissions import (
     permission_document_comment_create, permission_document_comment_delete,
-    permission_document_comment_view
+    permission_document_comment_edit, permission_document_comment_view
 )
 
 
@@ -47,8 +49,14 @@ class DocumentCommentsApp(MayanAppConfig):
         Comment = self.get_model(model_name='Comment')
 
         ModelEventType.register(
+            model=Comment, event_types=(
+                event_document_comment_edited,
+            )
+        )
+        ModelEventType.register(
             model=Document, event_types=(
-                event_document_comment_created, event_document_comment_deleted
+                event_document_comment_created, event_document_comment_deleted,
+                event_document_comment_edited
             )
         )
 
@@ -60,7 +68,9 @@ class DocumentCommentsApp(MayanAppConfig):
         )
         ModelPermission.register(
             model=Document, permissions=(
-                permission_document_comment_create, permission_document_comment_delete,
+                permission_document_comment_create,
+                permission_document_comment_delete,
+                permission_document_comment_edit,
                 permission_document_comment_view
             )
         )
@@ -88,6 +98,7 @@ class DocumentCommentsApp(MayanAppConfig):
         menu_list_facet.bind_links(
             links=(
                 link_events_for_object,
+                link_object_event_types_user_subcriptions_list
             ), sources=(Comment,)
         )
 
@@ -95,12 +106,13 @@ class DocumentCommentsApp(MayanAppConfig):
             links=(link_comment_add,),
             sources=(
                 'comments:comments_for_document', 'comments:comment_add',
-                'comments:comment_delete', 'comments:comment_multiple_delete'
+                'comments:comment_delete', 'comments:comment_details',
+                'comments:comment_edit', 'comments:comment_multiple_delete'
             )
         )
 
         menu_object.bind_links(
-            links=(link_comment_delete,), sources=(Comment,)
+            links=(link_comment_delete, link_comment_edit), sources=(Comment,)
         )
 
         registry.register(Comment)

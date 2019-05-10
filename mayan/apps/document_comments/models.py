@@ -4,13 +4,15 @@ import logging
 
 from django.conf import settings
 from django.db import models, transaction
+from django.urls import reverse
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import Document
 
 from .events import (
-    event_document_comment_created, event_document_comment_deleted
+    event_document_comment_created, event_document_comment_deleted,
+    event_document_comment_edited
 )
 
 logger = logging.getLogger(__name__)
@@ -53,6 +55,11 @@ class Comment(models.Model):
                 actor=_user, target=self.document
             )
 
+    def get_absolute_url(self):
+        return reverse(
+            viewname='comments:comment_details', kwargs={'pk': self.pk}
+        )
+
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None) or self.user
         created = not self.pk
@@ -61,5 +68,9 @@ class Comment(models.Model):
             super(Comment, self).save(*args, **kwargs)
             if created:
                 event_document_comment_created.commit(
-                    action_object=self, actor=_user, target=self.document,
+                    action_object=self.document, actor=_user, target=self,
+                )
+            else:
+                event_document_comment_edited.commit(
+                    action_object=self.document, actor=_user, target=self,
                 )

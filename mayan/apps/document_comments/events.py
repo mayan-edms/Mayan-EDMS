@@ -14,3 +14,6 @@ event_document_comment_created = namespace.add_event_type(
 event_document_comment_deleted = namespace.add_event_type(
     label=_('Document comment deleted'), name='delete'
 )
+event_document_comment_edited = namespace.add_event_type(
+    label=_('Document comment edited'), name='edited'
+)

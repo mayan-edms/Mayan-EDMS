@@ -9,7 +9,7 @@ from mayan.apps.documents.models import Document
 
 from .permissions import (
     permission_document_comment_create, permission_document_comment_delete,
-    permission_document_comment_view
+    permission_document_comment_edit, permission_document_comment_view
 )
 from .serializers import CommentSerializer, WritableCommentSerializer
 
@@ -66,7 +66,7 @@ class APICommentListView(generics.ListCreateAPIView):
         return context
 
 
-class APICommentView(generics.RetrieveDestroyAPIView):
+class APICommentView(generics.RetrieveUpdateDestroyAPIView):
     """
     delete: Delete the selected document comment.
     get: Returns the details of the selected document comment.
@@ -75,10 +75,12 @@ class APICommentView(generics.RetrieveDestroyAPIView):
     serializer_class = CommentSerializer
 
     def get_document(self):
-        if self.request.method == 'GET':
-            permission_required = permission_document_comment_view
-        else:
+        if self.request.method == 'DELETE':
             permission_required = permission_document_comment_delete
+        elif self.request.method in ('PATCH', 'PUT'):
+            permission_required = permission_document_comment_edit
+        else:
+            permission_required = permission_document_comment_view
 
         document = get_object_or_404(
             klass=Document, pk=self.kwargs['document_pk']

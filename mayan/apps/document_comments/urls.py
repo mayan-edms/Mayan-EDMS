@@ -5,17 +5,26 @@ from django.conf.urls import url
 from .api_views import APICommentListView, APICommentView
 from .views import (
     DocumentCommentCreateView, DocumentCommentDeleteView,
+    DocumentCommentDetailView, DocumentCommentEditView,
     DocumentCommentListView
 )
 
 urlpatterns = [
     url(
+        regex=r'^(?P<pk>\d+)/comment/add/$',
+        view=DocumentCommentCreateView.as_view(), name='comment_add'
+    ),
+    url(
         regex=r'^comment/(?P<pk>\d+)/delete/$',
         view=DocumentCommentDeleteView.as_view(), name='comment_delete'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/comment/add/$',
-        view=DocumentCommentCreateView.as_view(), name='comment_add'
+        regex=r'^comment/(?P<pk>\d+)/$',
+        view=DocumentCommentDetailView.as_view(), name='comment_details'
+    ),
+    url(
+        regex=r'^comment/(?P<pk>\d+)/edit/$',
+        view=DocumentCommentEditView.as_view(), name='comment_edit'
     ),
     url(
         regex=r'^(?P<pk>\d+)/comment/list/$',

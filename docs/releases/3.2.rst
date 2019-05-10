@@ -560,7 +560,7 @@ Other changes
 * Install and server static content to and from the image.
   Remove installation of static content from the setup
   and upgrade stages.
-
+* Add support for editing document comments.
 
 
 Removals

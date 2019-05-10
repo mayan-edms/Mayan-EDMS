@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from .literals import TEST_COMMENT_TEXT
+from .literals import TEST_COMMENT_TEXT, TEST_COMMENT_TEXT_EDITED
 
 
 class DocumentCommentTestMixin(object):
@@ -23,4 +23,20 @@ class DocumentCommentViewTestMixin(object):
             viewname='comments:comment_delete', kwargs={
                 'pk': self.test_document_comment.pk
             },
+        )
+
+    def _request_test_comment_edit_view(self):
+        return self.post(
+            viewname='comments:comment_edit', kwargs={
+                'pk': self.test_document_comment.pk,
+            }, data={
+                'comment': TEST_COMMENT_TEXT_EDITED
+            }
+        )
+
+    def _request_test_comment_list_view(self):
+        return self.get(
+            viewname='comments:comments_for_document', kwargs={
+                'pk': self.test_document.pk,
+            }
         )

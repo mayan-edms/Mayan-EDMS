@@ -250,6 +250,7 @@
 * Update tag document list and the document tag list
   views to require the view permissions for both objects.
 * Install and server static content to and from the image.
+* Add support for editing document comments.
 
 3.1.11 (2019-04-XX)
 ===================

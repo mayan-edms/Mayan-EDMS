@@ -12,6 +12,9 @@ permission_document_comment_create = namespace.add_permission(
 permission_document_comment_delete = namespace.add_permission(
     label=_('Delete comments'), name='comment_delete'
 )
+permission_document_comment_edit = namespace.add_permission(
+    label=_('Edit comments'), name='comment_edit'
+)
 permission_document_comment_view = namespace.add_permission(
     label=_('View comments'), name='comment_view'
 )
