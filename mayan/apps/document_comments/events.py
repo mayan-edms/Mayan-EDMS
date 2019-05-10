@@ -8,9 +8,9 @@ namespace = EventTypeNamespace(
     label=_('Document comments'), name='document_comments'
 )
 
-event_document_comment_create = namespace.add_event_type(
+event_document_comment_created = namespace.add_event_type(
     label=_('Document comment created'), name='create'
 )
-event_document_comment_delete = namespace.add_event_type(
+event_document_comment_deleted = namespace.add_event_type(
     label=_('Document comment deleted'), name='delete'
 )

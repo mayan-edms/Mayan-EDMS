@@ -5,20 +5,26 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_facet, menu_object, menu_secondary
+from mayan.apps.common.menus import (
+    menu_facet, menu_list_facet, menu_object, menu_secondary
+)
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.links import (
+    link_events_for_object,
+)
+from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
-    event_document_comment_create, event_document_comment_delete
+    event_document_comment_created, event_document_comment_deleted
 )
 from .links import (
     link_comment_add, link_comment_delete, link_comments_for_document
 )
 from .permissions import (
-    permission_comment_create, permission_comment_delete,
-    permission_comment_view
+    permission_document_comment_create, permission_document_comment_delete,
+    permission_document_comment_view
 )
 
 
@@ -32,6 +38,7 @@ class DocumentCommentsApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentCommentsApp, self).ready()
+        from actstream import registry
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -41,14 +48,20 @@ class DocumentCommentsApp(MayanAppConfig):
 
         ModelEventType.register(
             model=Document, event_types=(
-                event_document_comment_create, event_document_comment_delete
+                event_document_comment_created, event_document_comment_deleted
             )
         )
 
         ModelPermission.register(
+            model=Comment, permissions=(permission_events_view,)
+        )
+        ModelPermission.register_inheritance(
+            model=Comment, related='document',
+        )
+        ModelPermission.register(
             model=Document, permissions=(
-                permission_comment_create, permission_comment_delete,
-                permission_comment_view
+                permission_document_comment_create, permission_document_comment_delete,
+                permission_document_comment_view
             )
         )
 
@@ -68,6 +81,16 @@ class DocumentCommentsApp(MayanAppConfig):
             label=_('Comments')
         )
 
+        menu_facet.bind_links(
+            links=(link_comments_for_document,), sources=(Document,)
+        )
+
+        menu_list_facet.bind_links(
+            links=(
+                link_events_for_object,
+            ), sources=(Comment,)
+        )
+
         menu_secondary.bind_links(
             links=(link_comment_add,),
             sources=(
@@ -75,9 +98,9 @@ class DocumentCommentsApp(MayanAppConfig):
                 'comments:comment_delete', 'comments:comment_multiple_delete'
             )
         )
+
         menu_object.bind_links(
             links=(link_comment_delete,), sources=(Comment,)
         )
-        menu_facet.bind_links(
-            links=(link_comments_for_document,), sources=(Document,)
-        )
+
+        registry.register(Comment)

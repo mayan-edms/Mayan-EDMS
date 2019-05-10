@@ -3,14 +3,14 @@ from __future__ import unicode_literals
 import logging
 
 from django.conf import settings
-from django.db import models
+from django.db import models, transaction
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import Document
 
 from .events import (
-    event_document_comment_create, event_document_comment_delete
+    event_document_comment_created, event_document_comment_deleted
 )
 
 logger = logging.getLogger(__name__)
@@ -46,31 +46,20 @@ class Comment(models.Model):
         return self.comment
 
     def delete(self, *args, **kwargs):
-        user = kwargs.pop('_user', None)
-        super(Comment, self).delete(*args, **kwargs)
-        if user:
-            event_document_comment_delete.commit(
-                actor=user, target=self.document
+        _user = kwargs.pop('_user', None)
+        with transaction.atomic():
+            super(Comment, self).delete(*args, **kwargs)
+            event_document_comment_deleted.commit(
+                actor=_user, target=self.document
             )
-        else:
-            event_document_comment_delete.commit(target=self.document)
 
     def save(self, *args, **kwargs):
-        user = kwargs.pop('_user', None) or self.user
-        is_new = not self.pk
-        super(Comment, self).save(*args, **kwargs)
-        if is_new:
-            if user:
-                event_document_comment_create.commit(
-                    actor=user, target=self.document
-                )
-                logger.info(
-                    'Comment "%s" added to document "%s" by user "%s"',
-                    self.comment, self.document, user
-                )
-            else:
-                event_document_comment_create.commit(target=self.document)
-                logger.info(
-                    'Comment "%s" added to document "%s"', self.comment,
-                    self.document
+        _user = kwargs.pop('_user', None) or self.user
+        created = not self.pk
+
+        with transaction.atomic():
+            super(Comment, self).save(*args, **kwargs)
+            if created:
+                event_document_comment_created.commit(
+                    action_object=self, actor=_user, target=self.document,
                 )

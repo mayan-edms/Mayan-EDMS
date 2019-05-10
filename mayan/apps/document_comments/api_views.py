@@ -8,8 +8,8 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 
 from .permissions import (
-    permission_comment_create, permission_comment_delete,
-    permission_comment_view
+    permission_document_comment_create, permission_document_comment_delete,
+    permission_document_comment_view
 )
 from .serializers import CommentSerializer, WritableCommentSerializer
 
@@ -21,9 +21,9 @@ class APICommentListView(generics.ListCreateAPIView):
     """
     def get_document(self):
         if self.request.method == 'GET':
-            permission_required = permission_comment_view
+            permission_required = permission_document_comment_view
         else:
-            permission_required = permission_comment_create
+            permission_required = permission_document_comment_create
 
         document = get_object_or_404(
             klass=Document, pk=self.kwargs['document_pk']
@@ -76,9 +76,9 @@ class APICommentView(generics.RetrieveDestroyAPIView):
 
     def get_document(self):
         if self.request.method == 'GET':
-            permission_required = permission_comment_view
+            permission_required = permission_document_comment_view
         else:
-            permission_required = permission_comment_delete
+            permission_required = permission_document_comment_delete
 
         document = get_object_or_404(
             klass=Document, pk=self.kwargs['document_pk']

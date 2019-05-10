@@ -7,19 +7,17 @@ from mayan.apps.rest_api.tests import BaseAPITestCase
 
 from ..models import Comment
 from ..permissions import (
-    permission_comment_create, permission_comment_delete,
-    permission_comment_view
+    permission_document_comment_create, permission_document_comment_delete,
+    permission_document_comment_view
 )
 
 from .literals import TEST_COMMENT_TEXT
+from .mixins import DocumentCommentTestMixin
 
 
-class CommentAPITestCase(DocumentTestMixin, BaseAPITestCase):
-    def _create_test_comment(self):
-        return self.test_document.comments.create(
-            comment=TEST_COMMENT_TEXT, user=self._test_case_user
-        )
-
+class CommentAPITestCase(
+    DocumentCommentTestMixin, DocumentTestMixin, BaseAPITestCase
+):
     def _request_comment_create_view(self):
         return self.post(
             viewname='rest_api:comment-list', kwargs={
@@ -37,7 +35,7 @@ class CommentAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
     def test_comment_create_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_comment_create
+            obj=self.test_document, permission=permission_document_comment_create
         )
 
         response = self._request_comment_create_view()
@@ -51,53 +49,53 @@ class CommentAPITestCase(DocumentTestMixin, BaseAPITestCase):
         return self.delete(
             viewname='rest_api:comment-detail', kwargs={
                 'document_pk': self.test_document.pk,
-                'comment_pk': self.test_comment.pk,
+                'comment_pk': self.test_document_comment.pk,
             }
         )
 
     def test_comment_delete_view_no_access(self):
-        self.test_comment = self._create_test_comment()
+        self._create_test_comment()
 
         response = self._request_comment_delete_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-        self.assertTrue(self.test_comment in Comment.objects.all())
+        self.assertTrue(self.test_document_comment in Comment.objects.all())
 
     def test_comment_delete_view_with_access(self):
-        self.test_comment = self._create_test_comment()
+        self._create_test_comment()
         self.grant_access(
-            obj=self.test_document, permission=permission_comment_delete
+            obj=self.test_document, permission=permission_document_comment_delete
         )
 
         response = self._request_comment_delete_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-        self.assertFalse(self.test_comment in Comment.objects.all())
+        self.assertFalse(self.test_document_comment in Comment.objects.all())
 
     def _request_comment_view(self):
         return self.get(
             viewname='rest_api:comment-detail', kwargs={
                 'document_pk': self.test_document.pk,
-                'comment_pk': self.test_comment.pk
+                'comment_pk': self.test_document_comment.pk
             }
         )
 
     def test_comment_detail_view_no_access(self):
-        self.test_comment = self._create_test_comment()
+        self._create_test_comment()
 
         response = self._request_comment_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_comment_detail_view_with_access(self):
-        self.test_comment = self._create_test_comment()
+        self._create_test_comment()
         self.grant_access(
-            obj=self.test_document, permission=permission_comment_view
+            obj=self.test_document, permission=permission_document_comment_view
         )
 
         response = self._request_comment_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(response.data['comment'], self.test_comment.comment)
+        self.assertEqual(response.data['comment'], self.test_document_comment.comment)
 
     def _request_comment_list_view(self):
         return self.get(
@@ -107,19 +105,19 @@ class CommentAPITestCase(DocumentTestMixin, BaseAPITestCase):
         )
 
     def test_comment_list_view_no_access(self):
-        self.test_comment = self._create_test_comment()
+        self._create_test_comment()
 
         response = self._request_comment_list_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_comment_list_view_with_access(self):
-        self.test_comment = self._create_test_comment()
+        self._create_test_comment()
         self.grant_access(
-            obj=self.test_document, permission=permission_comment_view
+            obj=self.test_document, permission=permission_document_comment_view
         )
 
         response = self._request_comment_list_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['results'][0]['comment'], self.test_comment.comment
+            response.data['results'][0]['comment'], self.test_document_comment.comment
         )
