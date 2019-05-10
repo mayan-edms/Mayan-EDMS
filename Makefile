@@ -1,7 +1,8 @@
 .PHONY: clean-pyc clean-build
 
 help:
-	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make <target>\n"} /^[a-zA-Z_-]+:.*?## / { printf "  * %-40s -%s\n", $$1, $$2 }' $(MAKEFILE_LIST)|sort
+	@echo "Usage: make <target>\n"
+	@awk 'BEGIN {FS = ":.*##"} /^[a-zA-Z_-]+:.*?## / { printf "  * %-40s -%s\n", $$1, $$2 }' $(MAKEFILE_LIST)|sort
 
 # Cleaning
 
