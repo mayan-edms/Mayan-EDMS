@@ -561,6 +561,7 @@ Other changes
   Remove installation of static content from the setup
   and upgrade stages.
 * Add support for editing document comments.
+* Remove Internet Explorer specific markup.
 
 
 Removals

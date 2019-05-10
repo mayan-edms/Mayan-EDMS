@@ -251,6 +251,7 @@
   views to require the view permissions for both objects.
 * Install and server static content to and from the image.
 * Add support for editing document comments.
+* Remove Internet Explorer specific markup.
 
 3.1.11 (2019-04-XX)
 ===================
