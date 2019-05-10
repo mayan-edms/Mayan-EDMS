@@ -306,7 +306,7 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
 
     def test_document_clear_transformations_view_no_permission(self):
         document_page = self.test_document.pages.first()
-        content_type = ContentType.objects.get_for_model(document_page)
+        content_type = ContentType.objects.get_for_model(model=document_page)
         transformation = Transformation.objects.create(
             content_type=content_type, object_id=document_page.pk,
             name=TEST_TRANSFORMATION_NAME,
@@ -332,7 +332,7 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
 
     def test_document_clear_transformations_view_with_access(self):
         document_page = self.test_document.pages.first()
-        content_type = ContentType.objects.get_for_model(document_page)
+        content_type = ContentType.objects.get_for_model(model=document_page)
         transformation = Transformation.objects.create(
             content_type=content_type, object_id=document_page.pk,
             name=TEST_TRANSFORMATION_NAME,
@@ -359,7 +359,7 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
 
     def test_document_multiple_clear_transformations_view_no_permission(self):
         document_page = self.test_document.pages.first()
-        content_type = ContentType.objects.get_for_model(document_page)
+        content_type = ContentType.objects.get_for_model(model=document_page)
         transformation = Transformation.objects.create(
             content_type=content_type, object_id=document_page.pk,
             name=TEST_TRANSFORMATION_NAME,
@@ -382,7 +382,7 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
 
     def test_document_multiple_clear_transformations_view_with_access(self):
         document_page = self.test_document.pages.first()
-        content_type = ContentType.objects.get_for_model(document_page)
+        content_type = ContentType.objects.get_for_model(model=document_page)
         transformation = Transformation.objects.create(
             content_type=content_type, object_id=document_page.pk,
             name=TEST_TRANSFORMATION_NAME,

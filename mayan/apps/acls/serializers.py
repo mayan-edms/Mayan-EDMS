@@ -171,7 +171,7 @@ class WritableAccessControlListSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         attrs['content_type'] = ContentType.objects.get_for_model(
-            self.context['content_object']
+            model=self.context['content_object']
         )
         attrs['object_id'] = self.context['content_object'].pk
 

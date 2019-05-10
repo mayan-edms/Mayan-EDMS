@@ -21,7 +21,7 @@ def get_kwargs_factory(variable_name):
         )
 
         content_type = ContentType.objects.get_for_model(
-            context[variable_name]
+            model=context[variable_name]
         )
         return {
             'app_label': '"{}"'.format(content_type.app_label),

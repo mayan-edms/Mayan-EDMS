@@ -15,7 +15,7 @@ class EventsViewTestCase(GenericDocumentViewTestCase):
         super(EventsViewTestCase, self).setUp()
         self.test_object = self.test_document_type
 
-        content_type = ContentType.objects.get_for_model(self.test_object)
+        content_type = ContentType.objects.get_for_model(model=self.test_object)
 
         self.view_arguments = {
             'app_label': content_type.app_label,

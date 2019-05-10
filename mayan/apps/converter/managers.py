@@ -45,7 +45,7 @@ class TransformationManager(models.Manager):
             lambda entry: {
                 'content_type': entry[0], 'object_id': entry[1]
             }, zip(
-                ContentType.objects.get_for_models(*targets).values(),
+                ContentType.objects.get_for_models(models=targets).values(),
                 targets.values_list('pk', flat=True)
             )
         )
@@ -72,7 +72,7 @@ class TransformationManager(models.Manager):
         as_classes == True returns the transformation classes from .classes
         ready to be feed to the converter class
         """
-        content_type = ContentType.objects.get_for_model(obj)
+        content_type = ContentType.objects.get_for_model(model=obj)
 
         transformations = self.filter(
             content_type=content_type, object_id=obj.pk
