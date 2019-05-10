@@ -113,6 +113,13 @@ class DatabaseConversionMixin(object):
         )
 
 
+class ModelTestCaseMixin(object):
+    def _model_instance_to_dictionary(self, instance):
+        return instance._meta.model._default_manager.filter(
+            pk=instance.pk
+        ).values()[0]
+
+
 class OpenFileCheckTestCaseMixin(object):
     def _get_descriptor_count(self):
         process = psutil.Process()

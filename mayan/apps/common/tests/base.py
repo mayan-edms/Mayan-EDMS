@@ -10,13 +10,19 @@ from mayan.apps.smart_settings.classes import Namespace
 
 from .mixins import (
     ClientMethodsTestCaseMixin, ContentTypeCheckTestCaseMixin,
-    DatabaseConversionMixin, OpenFileCheckTestCaseMixin,
-    RandomPrimaryKeyModelMonkeyPatchMixin, SilenceLoggerTestCaseMixin,
-    TempfileCheckTestCasekMixin, TestViewTestCaseMixin
+    DatabaseConversionMixin, ModelTestCaseMixin,
+    OpenFileCheckTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin,
+    SilenceLoggerTestCaseMixin, TempfileCheckTestCasekMixin,
+    TestViewTestCaseMixin
 )
 
 
-class BaseTestCase(SilenceLoggerTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin, DatabaseConversionMixin, ACLTestCaseMixin, OpenFileCheckTestCaseMixin, TempfileCheckTestCasekMixin, TestCase):
+class BaseTestCase(
+    SilenceLoggerTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin,
+    DatabaseConversionMixin, ACLTestCaseMixin,
+    ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
+    TempfileCheckTestCasekMixin, TestCase
+):
     """
     This is the most basic test case class any test in the project should use.
     """
@@ -28,7 +34,10 @@ class BaseTestCase(SilenceLoggerTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchM
         Permission.invalidate_cache()
 
 
-class GenericViewTestCase(ClientMethodsTestCaseMixin, ContentTypeCheckTestCaseMixin, TestViewTestCaseMixin, BaseTestCase):
+class GenericViewTestCase(
+    ClientMethodsTestCaseMixin, ContentTypeCheckTestCaseMixin,
+    TestViewTestCaseMixin, BaseTestCase
+):
     """
     A generic view test case built on top of the base test case providing
     a single, user customizable view to test object resolution and shorthand
