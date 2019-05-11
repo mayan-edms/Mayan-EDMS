@@ -252,7 +252,9 @@
 * Install and server static content to and from the image.
 * Add support for editing document comments.
 * Remove Internet Explorer specific markup.
-
+* Fix optional metadata remove when mixed with required
+  metadata.
+  
 3.1.11 (2019-04-XX)
 ===================
 * Fix multiple tag selection wizard step.

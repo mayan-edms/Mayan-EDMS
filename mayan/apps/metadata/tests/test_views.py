@@ -7,7 +7,7 @@ from mayan.apps.documents.permissions import (
     permission_document_view
 )
 from mayan.apps.documents.tests import (
-    DocumentTestMixin, GenericDocumentViewTestCase, TEST_DOCUMENT_TYPE_2_LABEL
+    GenericDocumentViewTestCase, TEST_DOCUMENT_TYPE_2_LABEL
 )
 
 from ..models import MetadataType
@@ -19,30 +19,24 @@ from ..permissions import (
 )
 
 from .literals import (
-    TEST_DOCUMENT_METADATA_VALUE_2, TEST_METADATA_TYPE_LABEL,
-    TEST_METADATA_TYPE_LABEL_2, TEST_METADATA_TYPE_NAME,
+    TEST_DOCUMENT_METADATA_VALUE_2, TEST_METADATA_TYPE_LABEL_2,
     TEST_METADATA_TYPE_NAME_2, TEST_METADATA_VALUE_EDITED
 )
-from .mixins import MetadataTypeTestMixin, MetadataTestMixin
+from .mixins import (
+    DocumentMetadataViewTestMixin, MetadataTypeTestMixin,
+    MetadataTypeViewTestMixin
+)
 
 
-class DocumentMetadataTestCase(GenericDocumentViewTestCase):
+class DocumentMetadataTestCase(
+    DocumentMetadataViewTestMixin, MetadataTypeTestMixin,
+    GenericDocumentViewTestCase
+):
     def setUp(self):
         super(DocumentMetadataTestCase, self).setUp()
-
-        #self.test_metadata_type = MetadataType.objects.create(
-        #    name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
-        #)
         self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type
-        )
-
-    def _request_test_document_metadata_add_post_view(self):
-        return self.post(
-            viewname='metadata:metadata_add', kwargs={
-                'pk': self.test_document.pk
-            }, data={'metadata_type': self.test_metadata_type.pk}
         )
 
     def test_document_metadata_add_post_view_no_permission(self):
@@ -60,16 +54,6 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(self.test_document.metadata.count(), 1)
-
-    def _request_test_document_multiple_metadata_add_post_view(self):
-        return self.post(
-            viewname='metadata:metadata_multiple_add', data={
-                'id_list': '{},{}'.format(
-                    self.test_documents[0].pk, self.test_documents[1].pk
-                ),
-                'metadata_type': self.test_metadata_type.pk
-            }
-        )
 
     def test_document_multiple_metadata_add_post_view_with_document_access(self):
         self.upload_document()
@@ -89,35 +73,23 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.assertEqual(self.test_documents[0].metadata.count(), 1)
         self.assertEqual(self.test_documents[1].metadata.count(), 1)
 
-    def test_single_document_multiple_metadata_add_view(self):
+    def test_document_metadata_multiple_add_post_view_with_full_access(self):
+        self._create_test_metadata_type()
+        self.test_document_type.metadata.create(
+            metadata_type=self.test_metadata_types[1]
+        )
+
         self.grant_permission(permission=permission_document_view)
         self.grant_permission(permission=permission_document_metadata_add)
         self.grant_permission(permission=permission_document_metadata_edit)
 
-        metadata_type_2 = MetadataType.objects.create(
-            name=TEST_METADATA_TYPE_NAME_2, label=TEST_METADATA_TYPE_LABEL_2
-        )
+        response = self._request_test_document_metadata_multiple_add_post_view()
+        self.assertEqual(response.status_code, 302)
 
-        self.test_document_type.metadata.create(
-            metadata_type=metadata_type_2
-        )
-
-        self.post(
-            viewname='metadata:metadata_add', kwargs={
-                'pk': self.test_document.pk
-            }, data={
-                'metadata_type': [self.test_metadata_type.pk, metadata_type_2.pk],
-            }
-        )
-
-        document_metadata_types = self.test_document.metadata.values_list(
-            'metadata_type', flat=True
-        )
-        self.assertTrue(
-            self.test_metadata_type.pk in document_metadata_types
-        )
-        self.assertTrue(
-            metadata_type_2.pk in document_metadata_types
+        self.assertEqual(
+            self.test_document.metadata.filter(
+                metadata_type__in=self._get_test_metadata_type_queryset()
+            ).count(), self._get_test_metadata_type_queryset().count()
         )
 
     def test_metadata_edit_after_document_type_change(self):
@@ -209,22 +181,10 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
             self.test_document_metadata in self.test_document.metadata.all()
         )
 
-    def _request_document_metadata_remove_post_view(self):
-        return self.post(
-            viewname='metadata:metadata_remove',
-            kwargs={'pk': self.test_document.pk}, data={
-                'form-0-id': self.test_document_metadata.metadata_type.pk,
-                'form-0-update': True,
-                'form-TOTAL_FORMS': '1',
-                'form-INITIAL_FORMS': '0',
-                'form-MAX_NUM_FORMS': '',
-            }
-        )
-
     def test_document_metadata_remove_post_view_no_permission(self):
         self._create_test_document_metadata()
 
-        response = self._request_document_metadata_remove_post_view()
+        response = self._request_test_document_metadata_remove_post_view()
         self.assertNotContains(
             response=response, text=self.test_metadata_type.label, status_code=404
         )
@@ -240,7 +200,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
             obj=self.test_document,
             permission=permission_document_metadata_remove
         )
-        response = self._request_document_metadata_remove_post_view()
+        response = self._request_test_document_metadata_remove_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(
@@ -332,9 +292,8 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         )
 
 
-
 class DocumentMetadataRequiredTestCase(
-    MetadataTestMixin, MetadataTypeTestMixin, GenericDocumentViewTestCase
+    DocumentMetadataViewTestMixin, MetadataTypeTestMixin, GenericDocumentViewTestCase
 ):
     def setUp(self):
         super(DocumentMetadataRequiredTestCase, self).setUp()
@@ -348,53 +307,67 @@ class DocumentMetadataRequiredTestCase(
         )
 
     def _create_test_document_metadata(self):
-        self.test_document_metadatas = []
-        self.test_document_metadatas.append(
-            self.test_document.metadata.get_or_create(
-                metadata_type=self.test_metadata_types[0], #defaults={'value': 'a'}
-            )
+        self.test_document_metadata = self.test_document.metadata.get_or_create(
+            metadata_type=self.test_metadata_types[0]
         )
-        self.test_document_metadatas.append(
-            self.test_document.metadata.get_or_create(
-                metadata_type=self.test_metadata_types[1], #defaults={'value': 'b'}
-            )
+        self.test_document.metadata.get_or_create(
+            metadata_type=self.test_metadata_types[1]
         )
 
-    def _request_document_metadata_remove_post_view(self):
-        return self.post(
-            viewname='metadata:metadata_remove',
-            kwargs={'pk': self.test_document.pk}, data={
-                'form-0-id': self.test_metadata_types[0].pk,
-                'form-0-update': True,
-                'form-TOTAL_FORMS': '1',
-                'form-INITIAL_FORMS': '0',
-                'form-MAX_NUM_FORMS': '',
-            }
-        )
-
-    def test_document_metadata_remove_post_view_with_access(self):
+    def test_document_metadata_remove_post_view_with_access_non_required_from_dual(self):
+        # Adds two metadata types to the document type: one required and
+        # one optional. Add both to a document. Attempts to remove the optional
+        # one.
         self._create_test_document_metadata()
 
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_metadata_remove
         )
-        response = self._request_document_metadata_remove_post_view()
+
+        response = self._request_test_document_metadata_remove_post_view(index=0)
+        self.assertEqual(response.status_code, 302)
+
+        self.assertFalse(
+            self.test_document.metadata.filter(
+                metadata_type=self.test_metadata_types[0]
+            ).exists()
+        )
+        self.assertTrue(
+            self.test_document.metadata.filter(
+                metadata_type=self.test_metadata_types[1]
+            ).exists()
+        )
+
+    def test_document_metadata_remove_post_view_with_access_required_from_dual(self):
+        # Adds two metadata types to the document type: one required and
+        # one optional. Add both to a document. Attempts to remove the required
+        # one.
+        self._create_test_document_metadata()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_remove
+        )
+
+        response = self._request_test_document_metadata_remove_post_view(index=1)
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(
-            self.test_document_metadata not in self.test_document.metadata.all()
+            self.test_document.metadata.filter(
+                metadata_type=self.test_metadata_types[0]
+            ).exists()
+        )
+        self.assertTrue(
+            self.test_document.metadata.filter(
+                metadata_type=self.test_metadata_types[1]
+            ).exists()
         )
 
 
-
-
 class MetadataTypeViewTestCase(
-    DocumentTestMixin, MetadataTestMixin, MetadataTypeTestMixin,
-    GenericViewTestCase
+    MetadataTypeViewTestMixin, MetadataTypeTestMixin, GenericViewTestCase
 ):
-    auto_create_document_type = False
-    auto_upload_document = False
 
     def test_metadata_type_create_view_no_permission(self):
         metadata_type_count = MetadataType.objects.count()
@@ -502,9 +475,15 @@ class MetadataTypeViewTestCase(
             response=response, text=self.test_metadata_type, status_code=200
         )
 
+
+class MetadataTypeDocumentTypeViewTestCase(
+    MetadataTypeViewTestMixin, MetadataTypeTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_upload_document = False
+
     def test_metadata_type_relationship_view_no_permission(self):
         self._create_test_metadata_type()
-        self._create_document_type()
         self.upload_document()
 
         response = self._request_test_metadata_type_relationship_edit_view()
@@ -515,7 +494,6 @@ class MetadataTypeViewTestCase(
 
     def test_metadata_type_relationship_view_with_document_type_access(self):
         self._create_test_metadata_type()
-        self._create_document_type()
         self.upload_document()
 
         self.grant_access(
@@ -531,7 +509,6 @@ class MetadataTypeViewTestCase(
 
     def test_metadata_type_relationship_view_with_metadata_type_access(self):
         self._create_test_metadata_type()
-        self._create_document_type()
         self.upload_document()
 
         self.grant_access(
@@ -546,7 +523,6 @@ class MetadataTypeViewTestCase(
 
     def test_metadata_type_relationship_view_with_metadata_type_and_document_type_access(self):
         self._create_test_metadata_type()
-        self._create_document_type()
         self.upload_document()
 
         self.grant_access(

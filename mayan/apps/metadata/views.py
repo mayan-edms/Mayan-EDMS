@@ -23,7 +23,7 @@ from mayan.apps.documents.permissions import (
 
 from .api import save_metadata_list
 from .forms import (
-    DocumentAddMetadataForm, DocumentMetadataFormSet,
+    DocumentMetadataAddForm, DocumentMetadataFormSet,
     DocumentMetadataRemoveFormSet,
     DocumentTypeMetadataTypeRelationshipFormSet, MetadataTypeForm
 )
@@ -45,7 +45,7 @@ from .permissions import (
 
 
 class DocumentMetadataAddView(MultipleObjectFormActionView):
-    form_class = DocumentAddMetadataForm
+    form_class = DocumentMetadataAddForm
     model = Document
     object_permission = permission_document_metadata_add
     success_message = _('Metadata add request performed on %(count)d document')
@@ -451,7 +451,7 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
             DocumentMetadataRemoveView, self
         ).dispatch(request, *args, **kwargs)
 
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         for document in queryset:
             document.add_as_recent_document_for_user(request.user)
@@ -468,7 +468,6 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
 
     def form_valid(self, form):
         result = super(DocumentMetadataRemoveView, self).form_valid(form=form)
-
         queryset = self.get_object_list()
 
         if self.action_count == 1:
@@ -525,7 +524,7 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
         return result
 
     def get_initial(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         metadata = {}
         for document in queryset:
@@ -571,7 +570,7 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
                             'document': instance
                         }, request=self.request
                     )
-                except Exception as exception:
+                except ValidationError as exception:
                     messages.error(
                         message=_(
                             'Error removing metadata type "%(metadata_type)s" from document: %(document)s; %(exception)s'

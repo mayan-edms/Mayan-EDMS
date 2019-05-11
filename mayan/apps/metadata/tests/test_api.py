@@ -16,23 +16,13 @@ from ..permissions import (
     permission_metadata_type_edit, permission_metadata_type_view
 )
 
-from .literals import (
-    TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_LABEL_2,
-    TEST_METADATA_TYPE_NAME, TEST_METADATA_TYPE_NAME_2,
-    TEST_METADATA_VALUE, TEST_METADATA_VALUE_EDITED
-)
-from .mixins import MetadataTypeTestMixin
+from .literals import TEST_METADATA_VALUE, TEST_METADATA_VALUE_EDITED
+from .mixins import MetadataTypeAPIViewTestMixin, MetadataTypeTestMixin
 
 
-class MetadataTypeAPITestCase(MetadataTypeTestMixin, BaseAPITestCase):
-    def _request_test_metadata_type_create_view(self):
-        return self.post(
-            viewname='rest_api:metadatatype-list', data={
-                'label': TEST_METADATA_TYPE_LABEL,
-                'name': TEST_METADATA_TYPE_NAME
-            }
-        )
-
+class MetadataTypeAPITestCase(
+    MetadataTypeAPIViewTestMixin, MetadataTypeTestMixin, BaseAPITestCase
+):
     def test_metadata_type_create_no_permission(self):
         response = self._request_test_metadata_type_create_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -45,11 +35,6 @@ class MetadataTypeAPITestCase(MetadataTypeTestMixin, BaseAPITestCase):
 
         metadata_type = MetadataType.objects.first()
         self.assertEqual(response.data['id'], metadata_type.pk)
-        self.assertEqual(response.data['label'], TEST_METADATA_TYPE_LABEL)
-        self.assertEqual(response.data['name'], TEST_METADATA_TYPE_NAME)
-
-        self.assertEqual(metadata_type.label, TEST_METADATA_TYPE_LABEL)
-        self.assertEqual(metadata_type.name, TEST_METADATA_TYPE_NAME)
 
     def _request_test_metadata_type_delete_view(self):
         return self.delete(
@@ -104,8 +89,8 @@ class MetadataTypeAPITestCase(MetadataTypeTestMixin, BaseAPITestCase):
         return self.patch(
             viewname='rest_api:metadatatype-detail',
             kwargs={'metadata_type_pk': self.test_metadata_type.pk}, data={
-                'label': TEST_METADATA_TYPE_LABEL_2,
-                'name': TEST_METADATA_TYPE_NAME_2
+                'label': '{} edited'.format(self.test_metadata_type.label),
+                'name': '{}_edited'.format(self.test_metadata_type.name),
             }
         )
 
@@ -148,8 +133,8 @@ class MetadataTypeAPITestCase(MetadataTypeTestMixin, BaseAPITestCase):
         return self.put(
             viewname='rest_api:metadatatype-detail',
             kwargs={'metadata_type_pk': self.test_metadata_type.pk}, data={
-                'label': TEST_METADATA_TYPE_LABEL_2,
-                'name': TEST_METADATA_TYPE_NAME_2
+                'label': '{} edited'.format(self.test_metadata_type.label),
+                'name': '{}_edited'.format(self.test_metadata_type.name),
             }
         )
 
@@ -214,14 +199,14 @@ class MetadataTypeAPITestCase(MetadataTypeTestMixin, BaseAPITestCase):
         )
 
 
-class DocumentTypeMetadataTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
+class DocumentTypeMetadataTypeAPITestCase(
+    DocumentTestMixin, MetadataTypeTestMixin, BaseAPITestCase
+):
     auto_upload_document = False
 
     def setUp(self):
         super(DocumentTypeMetadataTypeAPITestCase, self).setUp()
-        self.test_metadata_type = MetadataType.objects.create(
-            label=TEST_METADATA_TYPE_LABEL, name=TEST_METADATA_TYPE_NAME
-        )
+        self._create_test_metadata_type()
 
     def _create_document_type_metadata_type(self):
         self.test_document_type_metadata_type = self.test_document_type.metadata.create(
@@ -384,12 +369,12 @@ class DocumentTypeMetadataTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.assertEqual(document_type_metadata_type.required, True)
 
 
-class DocumentMetadataAPITestCase(DocumentTestMixin, BaseAPITestCase):
+class DocumentMetadataAPITestCase(
+    DocumentTestMixin, MetadataTypeTestMixin, BaseAPITestCase
+):
     def setUp(self):
         super(DocumentMetadataAPITestCase, self).setUp()
-        self.test_metadata_type = MetadataType.objects.create(
-            label=TEST_METADATA_TYPE_LABEL, name=TEST_METADATA_TYPE_NAME
-        )
+        self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type, required=False
         )

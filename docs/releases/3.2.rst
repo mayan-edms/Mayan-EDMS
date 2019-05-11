@@ -562,6 +562,8 @@ Other changes
   and upgrade stages.
 * Add support for editing document comments.
 * Remove Internet Explorer specific markup.
+* Fix optional metadata remove when mixed with required
+  metadata.
 
 
 Removals

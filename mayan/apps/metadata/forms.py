@@ -117,7 +117,7 @@ class DocumentMetadataForm(forms.Form):
 DocumentMetadataFormSet = formset_factory(DocumentMetadataForm, extra=0)
 
 
-class DocumentAddMetadataForm(forms.Form):
+class DocumentMetadataAddForm(forms.Form):
     metadata_type = forms.ModelMultipleChoiceField(
         help_text=_('Metadata types to be added to the selected documents.'),
         label=_('Metadata type'), queryset=MetadataType.objects.all(),
@@ -138,9 +138,27 @@ class DocumentAddMetadataForm(forms.Form):
         else:
             queryset = MetadataType.objects.none()
 
-        super(DocumentAddMetadataForm, self).__init__(*args, **kwargs)
+        super(DocumentMetadataAddForm, self).__init__(*args, **kwargs)
 
         self.fields['metadata_type'].queryset = queryset
+
+
+class DocumentMetadataRemoveForm(DocumentMetadataForm):
+    update = forms.BooleanField(
+        initial=False, label=_('Remove'), required=False
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(DocumentMetadataRemoveForm, self).__init__(*args, **kwargs)
+        self.fields.pop('value')
+
+    def clean(self):
+        return super(forms.Form, self).clean()
+
+
+DocumentMetadataRemoveFormSet = formset_factory(
+    DocumentMetadataRemoveForm, extra=0
+)
 
 
 class MetadataTypeForm(forms.ModelForm):
@@ -155,21 +173,6 @@ class MetadataTypeForm(forms.ModelForm):
     class Meta:
         fields = ('name', 'label', 'default', 'lookup', 'validation', 'parser')
         model = MetadataType
-
-
-class DocumentMetadataRemoveForm(DocumentMetadataForm):
-    update = forms.BooleanField(
-        initial=False, label=_('Remove'), required=False
-    )
-
-    def __init__(self, *args, **kwargs):
-        super(DocumentMetadataRemoveForm, self).__init__(*args, **kwargs)
-        self.fields.pop('value')
-
-
-DocumentMetadataRemoveFormSet = formset_factory(
-    DocumentMetadataRemoveForm, extra=0
-)
 
 
 class DocumentTypeMetadataTypeRelationshipForm(forms.Form):

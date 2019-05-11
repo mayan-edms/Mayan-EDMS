@@ -12,11 +12,11 @@ from ..permissions import (
     permission_metadata_type_create, permission_metadata_type_edit
 )
 
-from .mixins import MetadataTestMixin, MetadataTypeTestMixin
+from .mixins import MetadataTypeTestMixin, MetadataTypeViewTestMixin
 
 
 class MetadataTypeEventsTestCase(
-    MetadataTestMixin, MetadataTypeTestMixin, GenericViewTestCase
+    MetadataTypeTestMixin, MetadataTypeViewTestMixin, GenericViewTestCase
 ):
     def test_metadata_type_create_event_no_permissions(self):
         Action.objects.all().delete()

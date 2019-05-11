@@ -234,7 +234,7 @@ class DocumentMetadata(models.Model):
         It used set to False when deleting document metadata on document
         type change.
         """
-        if enforce_required and self.metadata_type.pk in self.document.document_type.metadata.filter(required=True).values_list('metadata_type', flat=True):
+        if enforce_required and self.document.document_type.metadata.filter(required=True).filter(metadata_type=self.metadata_type).exists():
             raise ValidationError(
                 _('Metadata type is required for this document type.')
             )
