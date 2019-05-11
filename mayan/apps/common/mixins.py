@@ -264,7 +264,7 @@ class ObjectActionMixin(object):
     def view_action(self, form=None):
         self.action_count = 0
 
-        for instance in self.get_queryset():
+        for instance in self.object_list:
             try:
                 self.object_action(form=form, instance=instance)
             except PermissionDenied:
