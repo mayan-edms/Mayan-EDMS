@@ -7,6 +7,7 @@ import shutil
 import uuid
 
 from django.apps import apps
+from django.core.files.base import ContentFile
 from django.db import models, transaction
 from django.template import Template, Context
 from django.urls import reverse
@@ -176,6 +177,11 @@ class DocumentVersion(models.Model):
             try:
                 converter = get_converter_class()(file_object=self.open())
                 pdf_file_object = converter.to_pdf()
+
+                # Since open "wb+" doesn't create files, check if the file
+                # exists, if not then create it
+                if not storage_documentimagecache.exists(cache_filename):
+                    storage_documentimagecache.save(name=cache_filename, content=ContentFile(content=''))
 
                 with storage_documentimagecache.open(cache_filename, mode='wb+') as file_object:
                     for chunk in pdf_file_object:

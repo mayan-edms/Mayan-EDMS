@@ -254,6 +254,8 @@
 * Remove Internet Explorer specific markup.
 * Fix optional metadata remove when mixed with required
   metadata.
+* Create intermedia file cache folder. Fixes preview errors
+  when the first document uploaded is an office file.
   
 3.1.11 (2019-04-XX)
 ===================
