@@ -34,11 +34,11 @@ class TaskManagerApp(MayanAppConfig):
             source=CeleryQueue, label=_('Name'), attribute='name'
         )
         SourceColumn(
-            attribute='is_default_queue', label=_('Default queue?'),
+            attribute='default_queue', label=_('Default queue?'),
             source=CeleryQueue, widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='is_transient', label=_('Is transient?'),
+            attribute='transient', label=_('Is transient?'),
             source=CeleryQueue, widget=TwoStateWidget
         )
         SourceColumn(

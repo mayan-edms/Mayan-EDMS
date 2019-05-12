@@ -318,7 +318,7 @@ class SourcesTestCase(GenericDocumentViewTestCase):
 
     def _request_setup_source_create_view(self):
         return self.post(
-            kwargs={'pk': SOURCE_CHOICE_WEB_FORM},
+            kwargs={'source_type': SOURCE_CHOICE_WEB_FORM},
             viewname='sources:setup_source_create', data={
                 'enabled': True, 'label': TEST_SOURCE_LABEL,
                 'uncompress': TEST_SOURCE_UNCOMPRESS_N
