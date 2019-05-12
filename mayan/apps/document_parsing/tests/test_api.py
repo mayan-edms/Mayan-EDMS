@@ -18,11 +18,11 @@ class DocumentParsingAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
     def _request_document_page_content_view(self):
         return self.get(
-            viewname='rest_api:document-page-content-view',
-            args=(
-                self.test_document.pk, self.test_document.latest_version.pk,
-                self.test_document.latest_version.pages.first().pk,
-            )
+            viewname='rest_api:document-page-content-view', kwargs={
+                'document_pk': self.test_document.pk,
+                'version_pk': self.test_document.latest_version.pk,
+                'page_pk': self.test_document.latest_version.pages.first().pk
+            }
         )
 
     def test_get_document_version_page_content_no_access(self):

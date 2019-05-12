@@ -237,7 +237,7 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
                     'Selected documents must be of the same type.'
                 ), request=request
             )
-            return HttpResponseRedirect(self.previous_url)
+            return HttpResponseRedirect(redirect_to=self.previous_url)
 
         return result
 
@@ -462,7 +462,7 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
                     'Selected documents must be of the same type.'
                 ), request=request
             )
-            return HttpResponseRedirect(self.previous_url)
+            return HttpResponseRedirect(redirect_to=self.previous_url)
 
         return result
 

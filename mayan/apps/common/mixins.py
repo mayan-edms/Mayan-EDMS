@@ -29,7 +29,7 @@ class DeleteExtraDataMixin(object):
         else:
             self.object.delete()
 
-        return HttpResponseRedirect(success_url)
+        return HttpResponseRedirect(redirect_to=success_url)
 
 
 class DynamicFormViewMixin(object):

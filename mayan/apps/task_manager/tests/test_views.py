@@ -18,7 +18,7 @@ class TaskManagerViewTestCase(GenericViewTestCase):
     def _request_active_task_list(self):
         return self.get(
             viewname='task_manager:queue_active_task_list',
-            args=(self.test_queue.name,), follow=True
+            kwargs={'queue_name': self.test_queue.name}, follow=True
         )
 
     def _request_queue_list(self):
@@ -29,13 +29,13 @@ class TaskManagerViewTestCase(GenericViewTestCase):
     def _request_reserved_task_list(self):
         return self.get(
             viewname='task_manager:queue_reserved_task_list',
-            args=(self.test_queue.name,), follow=True
+            kwargs={'queue_name': self.test_queue.name}, follow=True
         )
 
     def _request_scheduled_task_list(self):
         return self.get(
             viewname='task_manager:queue_scheduled_task_list',
-            args=(self.test_queue.name,), follow=True
+            kwargs={'queue_name': self.test_queue.name}, follow=True
         )
 
     def test_queue_list_view_no_permissions(self):

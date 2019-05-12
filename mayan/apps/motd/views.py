@@ -36,7 +36,7 @@ class MessageCreateView(SingleObjectCreateView):
 class MessageDeleteView(SingleObjectDeleteView):
     model = Message
     object_permission = permission_message_delete
-    post_action_redirect = reverse_lazy('motd:message_list')
+    post_action_redirect = reverse_lazy(viewname='motd:message_list')
 
     def get_extra_context(self):
         return {
@@ -50,7 +50,7 @@ class MessageEditView(SingleObjectEditView):
     fields = ('label', 'message', 'enabled', 'start_datetime', 'end_datetime')
     model = Message
     object_permission = permission_message_edit
-    post_action_redirect = reverse_lazy('motd:message_list')
+    post_action_redirect = reverse_lazy(viewname='motd:message_list')
 
     def get_extra_context(self):
         return {

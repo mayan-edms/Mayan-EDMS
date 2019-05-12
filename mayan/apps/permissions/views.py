@@ -47,7 +47,7 @@ class RoleCreateView(SingleObjectCreateView):
     fields = ('label',)
     model = Role
     view_permission = permission_role_create
-    post_action_redirect = reverse_lazy('permissions:role_list')
+    post_action_redirect = reverse_lazy(viewname='permissions:role_list')
 
     def get_save_extra_data(self):
         return {'_user': self.request.user}
@@ -56,7 +56,7 @@ class RoleCreateView(SingleObjectCreateView):
 class RoleDeleteView(SingleObjectDeleteView):
     model = Role
     object_permission = permission_role_delete
-    post_action_redirect = reverse_lazy('permissions:role_list')
+    post_action_redirect = reverse_lazy(viewname='permissions:role_list')
 
 
 class RoleEditView(SingleObjectEditView):

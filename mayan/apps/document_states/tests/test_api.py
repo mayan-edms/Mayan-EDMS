@@ -710,7 +710,10 @@ class WorkflowTransitionsAPITestCase(DocumentTestMixin, WorkflowTestMixin, BaseA
     def _request_test_workflow_transition_detail_api_view(self):
         return self.get(
             viewname='rest_api:workflowtransition-detail',
-            args=(self.test_workflow.pk, self.test_workflow_transition.pk)
+            kwargs={
+                'pk': self.test_workflow.pk,
+                'transition_pk': self.test_workflow_transition.pk
+            }
         )
 
     def test_workflow_transition_detail_view_no_access(self):

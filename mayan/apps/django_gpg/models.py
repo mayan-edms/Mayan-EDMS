@@ -77,7 +77,7 @@ class Key(models.Model):
             raise ValidationError(_('Key already exists.'))
 
     def get_absolute_url(self):
-        return reverse('django_gpg:key_detail', args=(self.pk,))
+        return reverse(viewname='django_gpg:key_detail', kwargs={'pk': self.pk})
 
     @property
     def key_id(self):

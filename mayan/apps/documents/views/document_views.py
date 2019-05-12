@@ -182,10 +182,14 @@ class DocumentDownloadFormView(FormView):
             url = reverse(self.multiple_download_view)
         else:
             url = reverse(
-                self.single_download_view, args=(self.queryset.first().pk,)
+                viewname=self.single_download_view, kwargs={
+                    'pk': self.queryset.first().pk
+                }
             )
 
-        return HttpResponseRedirect('{}?{}'.format(url, querystring))
+        return HttpResponseRedirect(
+            redirect_to='{}?{}'.format(url, querystring)
+        )
 
     def get_document_queryset(self):
         id_list = self.request.GET.get(
@@ -382,7 +386,9 @@ class DocumentEditView(SingleObjectEditView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'documents:document_properties', args=(self.get_object().pk,)
+            viewname='documents:document_properties', kwargs={
+                'pk': self.get_object().pk
+            }
         )
 
 
@@ -641,7 +647,7 @@ class DocumentPrint(FormView):
 
         context = {
             'form_action': reverse(
-                'documents:document_print', args=(instance.pk,)
+                viewname='documents:document_print', kwargs={'pk': instance.pk}
             ),
             'object': instance,
             'submit_label': _('Submit'),

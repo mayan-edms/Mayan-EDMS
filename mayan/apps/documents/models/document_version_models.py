@@ -151,7 +151,11 @@ class DocumentVersion(models.Model):
                 )
 
     def get_absolute_url(self):
-        return reverse('documents:document_version_view', args=(self.pk,))
+        return reverse(
+            viewname='documents:document_version_view', kwargs={
+                'pk': self.pk
+            }
+        )
 
     def get_api_image_url(self, *args, **kwargs):
         first_page = self.pages.first()

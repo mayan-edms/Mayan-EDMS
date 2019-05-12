@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-import hashlib
 import logging
 import uuid
 
@@ -8,7 +7,7 @@ from django.apps import apps
 from django.core.files import File
 from django.db import models
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
@@ -22,17 +21,8 @@ from ..signals import post_document_type_change
 
 from .document_type_models import DocumentType
 
-__all__ = ('Document', 'UUID_FUNCTION')
+__all__ = ('Document',)
 logger = logging.getLogger(__name__)
-
-
-# document image cache name hash function
-def hash_function():
-    return hashlib.sha256()
-
-
-def UUID_FUNCTION(*args, **kwargs):
-    return force_text(uuid.uuid4())
 
 
 @python_2_unicode_compatible
@@ -137,7 +127,9 @@ class Document(models.Model):
             return False
 
     def get_absolute_url(self):
-        return reverse('documents:document_preview', args=(self.pk,))
+        return reverse(
+            viewname='documents:document_preview', kwargs={'pk': self.pk}
+        )
 
     def get_api_image_url(self, *args, **kwargs):
         latest_version = self.latest_version

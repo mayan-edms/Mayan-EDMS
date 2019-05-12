@@ -210,9 +210,9 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
         with open(TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
             return self.post(
-                viewname='rest_api:document-version-list', args=(
-                    self.test_document.pk,
-                ), data={
+                viewname='rest_api:document-version-list', kwargs={
+                    'pk': self.test_document.pk,
+                }, data={
                     'comment': '', 'file': file_descriptor,
                 }
             )

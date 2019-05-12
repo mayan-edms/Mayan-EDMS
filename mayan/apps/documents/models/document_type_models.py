@@ -81,7 +81,9 @@ class DocumentType(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            'documents:document_type_document_list', args=(self.pk,)
+            viewname='documents:document_type_document_list', kwargs={
+                'pk': self.pk
+            }
         )
 
     def get_document_count(self, user):

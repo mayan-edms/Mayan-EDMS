@@ -38,7 +38,7 @@ class Issue46TestCase(DocumentTestMixin, GenericViewTestCase):
             # Functional test for the first page of advanced results
             response = self.get(
                 viewname='search:results',
-                args=(document_search.get_full_name(),),
+                kwargs={'search_model': document_search.get_full_name()},
                 data={'label': test_document_label}
             )
 
@@ -58,7 +58,7 @@ class Issue46TestCase(DocumentTestMixin, GenericViewTestCase):
             # Functional test for the second page of advanced results
             response = self.get(
                 viewname='search:results',
-                args=(document_search.get_full_name(),),
+                kwargs={'search_model': document_search.get_full_name()},
                 data={'label': test_document_label, 'page': 2}
             )
 

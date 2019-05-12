@@ -31,7 +31,7 @@ class TagAPIViewTestMixin(object):
             data.update(extra_data)
 
         return getattr(self, verb)(
-            viewname='rest_api:tag-detail', args=(self.test_tag.pk,),
+            viewname='rest_api:tag-detail', kwargs={'pk': self.test_tag.pk},
             data=data
         )
 

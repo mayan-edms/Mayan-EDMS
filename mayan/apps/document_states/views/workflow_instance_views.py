@@ -98,7 +98,7 @@ class WorkflowInstanceTransitionView(FormView):
                 'Document "%s" transitioned successfully'
             ) % self.get_workflow_instance().document
         )
-        return HttpResponseRedirect(self.get_success_url())
+        return HttpResponseRedirect(redirect_to=self.get_success_url())
 
     def get_extra_context(self):
         return {

@@ -85,7 +85,7 @@ class DocumentTypeCreateView(SingleObjectCreateView):
         'delete_time_unit'
     )
     model = DocumentType
-    post_action_redirect = reverse_lazy('documents:document_type_list')
+    post_action_redirect = reverse_lazy(viewname='documents:document_type_list')
     view_permission = permission_document_type_create
 
     def get_extra_context(self):
@@ -102,7 +102,7 @@ class DocumentTypeCreateView(SingleObjectCreateView):
 class DocumentTypeDeleteView(SingleObjectDeleteView):
     model = DocumentType
     object_permission = permission_document_type_delete
-    post_action_redirect = reverse_lazy('documents:document_type_list')
+    post_action_redirect = reverse_lazy(viewname='documents:document_type_list')
 
     def get_extra_context(self):
         return {
@@ -119,7 +119,7 @@ class DocumentTypeEditView(SingleObjectEditView):
     )
     model = DocumentType
     object_permission = permission_document_type_edit
-    post_action_redirect = reverse_lazy('documents:document_type_list')
+    post_action_redirect = reverse_lazy(viewname='documents:document_type_list')
 
     def get_extra_context(self):
         return {

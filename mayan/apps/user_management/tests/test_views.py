@@ -5,7 +5,6 @@ from django.contrib.auth.models import Group
 
 from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.documents.tests import GenericDocumentViewTestCase
-from mayan.apps.metadata.models import MetadataType
 from mayan.apps.metadata.permissions import permission_document_metadata_edit
 from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin
 

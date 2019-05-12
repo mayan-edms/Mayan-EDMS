@@ -134,7 +134,7 @@ class UserMailerBackendSelectionView(FormView):
 
 class UserMailingCreateView(SingleObjectDynamicFormCreateView):
     form_class = UserMailerDynamicForm
-    post_action_redirect = reverse_lazy('mailer:user_mailer_list')
+    post_action_redirect = reverse_lazy(viewname='mailer:user_mailer_list')
     view_permission = permission_user_mailer_create
 
     def get_backend(self):

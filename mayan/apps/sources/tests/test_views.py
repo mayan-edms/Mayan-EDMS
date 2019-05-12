@@ -174,7 +174,8 @@ class DocumentUploadIssueTestCase(GenericDocumentViewTestCase):
 
         # Test for issue 25 during editing
         self.post(
-            viewname='documents:document_edit', args=(document.pk,), data={
+            viewname='documents:document_edit', kwargs={'pk': document.pk},
+            data={
                 'description': TEST_DOCUMENT_DESCRIPTION,
                 'language': document.language, 'label': document.label
             }
@@ -317,7 +318,7 @@ class SourcesTestCase(GenericDocumentViewTestCase):
 
     def _request_setup_source_create_view(self):
         return self.post(
-            args=(SOURCE_CHOICE_WEB_FORM,),
+            kwargs={'pk': SOURCE_CHOICE_WEB_FORM},
             viewname='sources:setup_source_create', data={
                 'enabled': True, 'label': TEST_SOURCE_LABEL,
                 'uncompress': TEST_SOURCE_UNCOMPRESS_N

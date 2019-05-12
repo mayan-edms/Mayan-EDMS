@@ -63,7 +63,7 @@ class KeyDownloadView(SingleObjectDownloadView):
 
 
 class KeyReceive(ConfirmView):
-    post_action_redirect = reverse_lazy('django_gpg:key_public_list')
+    post_action_redirect = reverse_lazy(viewname='django_gpg:key_public_list')
     view_permission = permission_key_receive
 
     def get_extra_context(self):
@@ -127,7 +127,7 @@ class KeyQueryView(SimpleView):
     def get_extra_context(self):
         return {
             'form': self.get_form(),
-            'form_action': reverse('django_gpg:key_query_results'),
+            'form_action': reverse(viewname='django_gpg:key_query_results'),
             'submit_icon_class': icon_keyserver_search,
             'submit_label': _('Search'),
             'submit_method': 'GET',
@@ -145,7 +145,7 @@ class KeyQueryView(SimpleView):
 class KeyUploadView(SingleObjectCreateView):
     fields = ('key_data',)
     model = Key
-    post_action_redirect = reverse_lazy('django_gpg:key_public_list')
+    post_action_redirect = reverse_lazy(viewname='django_gpg:key_public_list')
     view_permission = permission_key_upload
 
     def get_extra_context(self):

@@ -127,9 +127,10 @@ class DocumentPage(models.Model):
         final_url = furl()
         final_url.args = kwargs
         final_url.path = reverse(
-            'rest_api:documentpage-image', args=(
-                self.document.pk, self.document_version.pk, self.pk
-            )
+            viewname='rest_api:documentpage-image', kwargs={
+                'pk': self.document.pk, 'version_pk': self.document_version.pk,
+                'page_pk': self.pk
+            }
         )
         final_url.args['_hash'] = transformations_hash
 
