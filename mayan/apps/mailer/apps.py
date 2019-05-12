@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from kombu import Exchange, Queue
-
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
@@ -19,7 +17,6 @@ from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
 from mayan.apps.navigation.classes import SourceColumn
-from mayan.celery import app
 
 from .classes import MailerBackend
 from .events import event_email_sent
@@ -35,7 +32,6 @@ from .permissions import (
     permission_user_mailer_delete, permission_user_mailer_edit,
     permission_user_mailer_use, permission_user_mailer_view,
 )
-from .queues import *  # NOQA
 
 
 class MailerApp(MayanAppConfig):
@@ -96,18 +92,6 @@ class MailerApp(MayanAppConfig):
                 permission_user_mailer_delete, permission_user_mailer_edit,
                 permission_user_mailer_view, permission_user_mailer_use
             )
-        )
-
-        app.conf.CELERY_QUEUES.append(
-            Queue('mailing', Exchange('mailing'), routing_key='mailing'),
-        )
-
-        app.conf.CELERY_ROUTES.update(
-            {
-                'mayan.apps.mailer.tasks.task_send_document': {
-                    'queue': 'mailing'
-                },
-            }
         )
 
         menu_list_facet.bind_links(

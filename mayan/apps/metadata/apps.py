@@ -2,8 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from kombu import Exchange, Queue
-
 from django.apps import apps
 from django.db.models.signals import post_delete, post_save
 from django.utils.translation import ugettext_lazy as _
@@ -25,7 +23,6 @@ from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
 )
 from mayan.apps.events.permissions import permission_events_view
-from mayan.celery import app
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import DocumentMetadataHelper
@@ -55,7 +52,6 @@ from .permissions import (
     permission_metadata_type_view
 )
 
-from .queues import *  # NOQA
 from .search import metadata_type_search  # NOQA
 from .widgets import get_metadata_string
 
@@ -183,21 +179,6 @@ class MetadataApp(MayanAppConfig):
             source=MetadataType
         )
         SourceColumn(attribute='name', is_sortable=True, source=MetadataType)
-
-        app.conf.CELERY_QUEUES.append(
-            Queue('metadata', Exchange('metadata'), routing_key='metadata'),
-        )
-
-        app.conf.CELERY_ROUTES.update(
-            {
-                'mayan.apps.metadata.tasks.task_remove_metadata_type': {
-                    'queue': 'metadata'
-                },
-                'mayan.apps.metadata.tasks.task_add_required_metadata_type': {
-                    'queue': 'metadata'
-                },
-            }
-        )
 
         document_search.add_model_field(
             field='metadata__metadata_type__name', label=_('Metadata type')

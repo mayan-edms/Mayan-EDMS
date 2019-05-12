@@ -1,13 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 
-from datetime import timedelta
 import logging
 import os
 import sys
 import traceback
 import warnings
-
-from kombu import Exchange, Queue
 
 from django import apps
 from django.conf import settings
@@ -16,8 +13,6 @@ from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
-
-from mayan.celery import app
 
 from .classes import Template
 from .dependencies import *  # NOQA
@@ -30,11 +25,10 @@ from .links import (
     link_object_error_list_clear, link_setup, link_tools
 )
 
-from .literals import DELETE_STALE_UPLOADS_INTERVAL, MESSAGE_SQLITE_WARNING
+from .literals import MESSAGE_SQLITE_WARNING
 from .menus import (
     menu_about, menu_main, menu_secondary, menu_user
 )
-from .queues import *  # NOQA - Force queues registration
 from .settings import (
     setting_auto_logging, setting_production_error_log_path,
     setting_production_error_logging
@@ -100,37 +94,6 @@ class CommonApp(MayanAppConfig):
             name='menu_main', template_name='appearance/main_menu.html'
         )
 
-        app.conf.CELERYBEAT_SCHEDULE.update(
-            {
-                'task_delete_stale_uploads': {
-                    'task': 'mayan.apps.common.tasks.task_delete_stale_uploads',
-                    'schedule': timedelta(
-                        seconds=DELETE_STALE_UPLOADS_INTERVAL
-                    ),
-                },
-            }
-        )
-
-        app.conf.CELERY_QUEUES.extend(
-            (
-                Queue('default', Exchange('default'), routing_key='default'),
-                Queue('tools', Exchange('tools'), routing_key='tools'),
-                Queue(
-                    'common_periodic', Exchange('common_periodic'),
-                    routing_key='common_periodic', delivery_mode=1
-                ),
-            )
-        )
-
-        app.conf.CELERY_DEFAULT_QUEUE = 'default'
-
-        app.conf.CELERY_ROUTES.update(
-            {
-                'mayan.apps.common.tasks.task_delete_stale_uploads': {
-                    'queue': 'common_periodic'
-                },
-            }
-        )
         menu_user.bind_links(
             links=(
                 link_current_user_locale_profile_edit,

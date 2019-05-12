@@ -1,9 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from datetime import timedelta
-
-from kombu import Exchange, Queue
-
 from django.apps import apps
 from django.db.models.signals import pre_save
 from django.utils.translation import ugettext_lazy as _
@@ -13,7 +9,6 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_facet, menu_main, menu_secondary
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.events.classes import ModelEventType
-from mayan.celery import app
 
 from .dashboard_widgets import DashboardWidgetTotalCheckouts
 from .events import (
@@ -25,7 +20,6 @@ from .links import (
     link_check_in_document, link_check_out_document, link_check_out_info,
     link_check_out_list
 )
-from .literals import CHECK_EXPIRED_CHECK_OUTS_INTERVAL
 from .methods import (
     method_check_in, method_get_check_out_info, method_get_check_out_state,
     method_is_checked_out
@@ -34,7 +28,6 @@ from .permissions import (
     permission_document_check_in, permission_document_check_in_override,
     permission_document_check_out, permission_document_check_out_detail_view
 )
-from .queues import *  # NOQA
 from .tasks import task_check_expired_check_outs  # NOQA
 # This import is required so that celerybeat can find the task
 
@@ -82,32 +75,6 @@ class CheckoutsApp(MayanAppConfig):
                 permission_document_check_in_override,
                 permission_document_check_out_detail_view
             )
-        )
-
-        app.conf.CELERYBEAT_SCHEDULE.update(
-            {
-                'task_check_expired_check_outs': {
-                    'task': 'mayan.apps.checkouts.tasks.task_check_expired_check_outs',
-                    'schedule': timedelta(
-                        seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL
-                    ),
-                },
-            }
-        )
-
-        app.conf.CELERY_QUEUES.append(
-            Queue(
-                'checkouts_periodic', Exchange('checkouts_periodic'),
-                routing_key='checkouts_periodic', delivery_mode=1
-            ),
-        )
-
-        app.conf.CELERY_ROUTES.update(
-            {
-                'mayan.apps.checkouts.tasks.task_check_expired_check_outs': {
-                    'queue': 'checkouts_periodic'
-                },
-            }
         )
 
         dashboard_main.add_widget(

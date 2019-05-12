@@ -1,13 +1,10 @@
 from __future__ import unicode_literals
 
-from kombu import Exchange, Queue
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_object, menu_secondary, menu_tools
 from mayan.apps.navigation.classes import SourceColumn
-from mayan.celery import app
 
 from .classes import StatisticLineChart, StatisticNamespace
 from .dependencies import *  # NOQA
@@ -15,7 +12,6 @@ from .links import (
     link_execute, link_namespace_details, link_namespace_list,
     link_statistics, link_view
 )
-from .queues import *  # NOQA
 from .tasks import task_execute_statistic  # NOQA - Force registration of task
 
 
@@ -35,23 +31,6 @@ class StatisticsApp(MayanAppConfig):
             # which the statistic will be updated
             label=_('Schedule'),
             attribute='schedule',
-        )
-
-        app.conf.CELERY_QUEUES.extend(
-            (
-                Queue(
-                    'statistics', Exchange('statistics'),
-                    routing_key='statistics', delivery_mode=1
-                ),
-            )
-        )
-
-        app.conf.CELERY_ROUTES.update(
-            {
-                'mayan.apps.mayan_statistics.tasks.task_execute_statistic': {
-                    'queue': 'statistics'
-                },
-            }
         )
 
         menu_object.bind_links(

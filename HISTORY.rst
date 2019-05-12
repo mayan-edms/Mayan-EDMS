@@ -256,6 +256,9 @@
   metadata.
 * Create intermedia file cache folder. Fixes preview errors
   when the first document uploaded is an office file.
+* Move queue and task registration to the CeleryQueue class.
+  The .queues.py module is now loaded automatically.
+
   
 3.1.11 (2019-04-XX)
 ===================

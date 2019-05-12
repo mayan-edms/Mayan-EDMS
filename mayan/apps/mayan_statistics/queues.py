@@ -10,5 +10,5 @@ queue_statistics = CeleryQueue(
 
 queue_statistics.add_task_type(
     label=_('Execute statistic'),
-    name='mayan.apps.mayan_statistics.tasks.task_execute_statistic'
+    dotted_path='mayan.apps.mayan_statistics.tasks.task_execute_statistic'
 )

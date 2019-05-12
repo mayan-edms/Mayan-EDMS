@@ -6,5 +6,6 @@ from mayan.apps.task_manager.classes import CeleryQueue
 
 queue_ocr = CeleryQueue(name='ocr', label=_('OCR'))
 queue_ocr.add_task_type(
-    name='mayan.apps.ocr.tasks.task_do_ocr', label=_('Document version OCR')
+    dotted_path='mayan.apps.ocr.tasks.task_do_ocr',
+    label=_('Document version OCR')
 )

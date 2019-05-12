@@ -4,8 +4,6 @@ from django.apps import apps
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
-from kombu import Exchange, Queue
-
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.common.apps import MayanAppConfig
@@ -22,7 +20,6 @@ from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
 from mayan.apps.navigation.classes import SourceColumn
-from mayan.celery import app
 
 from .classes import DocumentStateHelper, WorkflowAction
 from .events import event_workflow_created, event_workflow_edited
@@ -53,7 +50,6 @@ from .permissions import (
     permission_workflow_delete, permission_workflow_edit,
     permission_workflow_transition, permission_workflow_view
 )
-from .queues import *  # NOQA
 from .widgets import widget_transition_events
 
 
@@ -258,23 +254,6 @@ class DocumentStatesApp(MayanAppConfig):
             func=lambda context: widget_transition_events(
                 transition=context['object']
             )
-        )
-
-        app.conf.CELERY_QUEUES.extend(
-            (
-                Queue(
-                    'document_states', Exchange('document_states'),
-                    routing_key='document_states'
-                ),
-            )
-        )
-
-        app.conf.CELERY_ROUTES.update(
-            {
-                'mayan.apps.document_states.tasks.task_launch_all_workflows': {
-                    'queue': 'document_states'
-                },
-            }
         )
 
         menu_facet.bind_links(

@@ -1,7 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from kombu import Exchange, Queue
-
 from django.apps import apps
 from django.db.models.signals import post_delete, post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
@@ -21,7 +19,6 @@ from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
 from mayan.apps.navigation.classes import SourceColumn
-from mayan.celery import app
 
 from .events import event_index_template_created, event_index_template_edited
 from .handlers import (
@@ -47,7 +44,6 @@ from .permissions import (
     permission_document_indexing_instance_view,
     permission_document_indexing_rebuild, permission_document_indexing_view
 )
-from .queues import *  # NOQA
 
 
 class DocumentIndexingApp(MayanAppConfig):
@@ -176,27 +172,6 @@ class DocumentIndexingApp(MayanAppConfig):
             ].get_descendants_document_count(
                 user=context['request'].user
             ), label=_('Documents'), source=DocumentIndexInstanceNode
-        )
-
-        app.conf.CELERY_QUEUES.append(
-            Queue('indexing', Exchange('indexing'), routing_key='indexing'),
-        )
-
-        app.conf.CELERY_ROUTES.update(
-            {
-                'mayan.apps.document_indexing.tasks.task_delete_empty': {
-                    'queue': 'indexing'
-                },
-                'mayan.apps.document_indexing.tasks.task_remove_document': {
-                    'queue': 'indexing'
-                },
-                'mayan.apps.document_indexing.tasks.task_index_document': {
-                    'queue': 'indexing'
-                },
-                'mayan.apps.document_indexing.tasks.task_rebuild_index': {
-                    'queue': 'tools'
-                },
-            }
         )
 
         menu_facet.bind_links(

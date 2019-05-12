@@ -8,27 +8,15 @@ from mayan.apps.converter.permissions import (
 from mayan.apps.navigation.classes import Link
 
 from .icons import (
-    icon_clear_image_cache,
-
-    icon_document_list_recent_access,
-    icon_recent_added_document_list,
-    icon_document_page_navigation_first,
-    icon_document_page_navigation_last,
-    icon_document_page_navigation_next,
-    icon_document_page_navigation_previous,
-    icon_document_page_return,
-    icon_document_page_rotate_left,
-    icon_document_page_rotate_right,
-    icon_document_page_zoom_in,
-    icon_document_page_zoom_out,
-
-    icon_document_type_create,
-    icon_document_type_delete,
-    icon_document_type_edit,
-    icon_document_type_setup,
-
-    icon_duplicated_document_list,
-    icon_duplicated_document_scan
+    icon_clear_image_cache, icon_document_list_recent_access,
+    icon_recent_added_document_list, icon_document_page_navigation_first,
+    icon_document_page_navigation_last, icon_document_page_navigation_next,
+    icon_document_page_navigation_previous, icon_document_page_return,
+    icon_document_page_rotate_left, icon_document_page_rotate_right,
+    icon_document_page_zoom_in, icon_document_page_zoom_out,
+    icon_document_type_create, icon_document_type_delete,
+    icon_document_type_edit, icon_document_type_setup,
+    icon_duplicated_document_list, icon_duplicated_document_scan
 )
 from .permissions import (
     permission_document_delete, permission_document_download,

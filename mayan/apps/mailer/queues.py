@@ -7,5 +7,5 @@ from mayan.apps.task_manager.classes import CeleryQueue
 queue_mailing = CeleryQueue(label=_('Mailing'), name='mailing')
 queue_mailing.add_task_type(
     label=_('Send document'),
-    name='mayan.apps.mailer.tasks.task_send_document'
+    dotted_path='mayan.apps.mailer.tasks.task_send_document'
 )

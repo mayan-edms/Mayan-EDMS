@@ -1,13 +1,21 @@
 from __future__ import absolute_import, unicode_literals
 
+from datetime import timedelta
+
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.task_manager.classes import CeleryQueue
+
+from .literals import CHECK_EXPIRED_CHECK_OUTS_INTERVAL
 
 queue_checkouts_periodic = CeleryQueue(
     label=_('Checkouts periodic'), name='checkouts_periodic', transient=True
 )
 queue_checkouts_periodic.add_task_type(
     label=_('Check expired checkouts'),
-    name='mayan.apps.task_check_expired_check_outs'
+    name='task_check_expired_check_outs',
+    dotted_path='mayan.apps.task_check_expired_check_outs',
+    schedule=timedelta(
+        seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL
+    ),
 )

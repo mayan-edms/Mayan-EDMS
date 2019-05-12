@@ -2,8 +2,6 @@ from __future__ import unicode_literals
 
 import logging
 
-from kombu import Exchange, Queue
-
 from django.apps import apps
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
@@ -17,7 +15,6 @@ from mayan.apps.common.menus import (
 from mayan.apps.documents.search import document_search, document_page_search
 from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.navigation.classes import SourceColumn
-from mayan.celery import app
 
 from .dependencies import *  # NOQA
 from .handlers import (
@@ -38,7 +35,6 @@ from .permissions import (
     permission_document_type_ocr_setup, permission_ocr_document,
     permission_ocr_content_view
 )
-from .queues import *  # NOQA
 from .signals import post_document_version_ocr
 from .utils import get_document_ocr_content
 
@@ -115,18 +111,6 @@ class OCRApp(MayanAppConfig):
         SourceColumn(
             source=DocumentVersionOCRError, label=_('Result'),
             attribute='result'
-        )
-
-        app.conf.CELERY_QUEUES.append(
-            Queue('ocr', Exchange('ocr'), routing_key='ocr'),
-        )
-
-        app.conf.CELERY_ROUTES.update(
-            {
-                'mayan.apps.ocr.tasks.task_do_ocr': {
-                    'queue': 'ocr'
-                },
-            }
         )
 
         document_search.add_model_field(

@@ -1,9 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from datetime import timedelta
-
-from kombu import Exchange, Queue
-
 from django.db.models.signals import post_delete
 from django.utils.translation import ugettext_lazy as _
 
@@ -32,7 +28,6 @@ from mayan.apps.events.links import (
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.rest_api.fields import DynamicSerializerField
-from mayan.celery import app
 
 from .dashboard_widgets import (
     DashboardWidgetDocumentPagesTotal, DashboardWidgetDocumentsInTrash,
@@ -83,10 +78,6 @@ from .links import (
     link_document_version_view, link_duplicated_document_list,
     link_duplicated_document_scan, link_trash_can_empty
 )
-from .literals import (
-    CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL,
-    DELETE_STALE_STUBS_INTERVAL
-)
 from .menus import menu_documents
 from .permissions import (
     permission_document_create, permission_document_delete,
@@ -98,7 +89,6 @@ from .permissions import (
     permission_document_version_revert, permission_document_version_view,
     permission_document_view
 )
-from .queues import *  # NOQA
 # Just import to initialize the search models
 from .search import document_search, document_page_search  # NOQA
 from .signals import post_version_upload
@@ -354,80 +344,6 @@ class DocumentsApp(MayanAppConfig):
         Template(
             name='invalid_document',
             template_name='documents/invalid_document.html'
-        )
-
-        app.conf.CELERYBEAT_SCHEDULE.update(
-            {
-                'task_check_delete_periods': {
-                    'task': 'mayan.apps.documents.tasks.task_check_delete_periods',
-                    'schedule': timedelta(
-                        seconds=CHECK_DELETE_PERIOD_INTERVAL
-                    ),
-                },
-                'task_check_trash_periods': {
-                    'task': 'mayan.apps.documents.tasks.task_check_trash_periods',
-                    'schedule': timedelta(seconds=CHECK_TRASH_PERIOD_INTERVAL),
-                },
-                'task_delete_stubs': {
-                    'task': 'mayan.apps.documents.tasks.task_delete_stubs',
-                    'schedule': timedelta(seconds=DELETE_STALE_STUBS_INTERVAL),
-                },
-            }
-        )
-
-        app.conf.CELERY_QUEUES.extend(
-            (
-                Queue(
-                    'converter', Exchange('converter'),
-                    routing_key='converter', delivery_mode=1
-                ),
-                Queue(
-                    'documents_periodic', Exchange('documents_periodic'),
-                    routing_key='documents_periodic', delivery_mode=1
-                ),
-                Queue('uploads', Exchange('uploads'), routing_key='uploads'),
-                Queue(
-                    'documents', Exchange('documents'), routing_key='documents'
-                ),
-            )
-        )
-
-        app.conf.CELERY_ROUTES.update(
-            {
-                'mayan.apps.documents.tasks.task_check_delete_periods': {
-                    'queue': 'documents_periodic'
-                },
-                'mayan.apps.documents.tasks.task_check_trash_periods': {
-                    'queue': 'documents_periodic'
-                },
-                'mayan.apps.documents.tasks.task_clean_empty_duplicate_lists': {
-                    'queue': 'documents'
-                },
-                'mayan.apps.documents.tasks.task_clear_image_cache': {
-                    'queue': 'tools'
-                },
-                'mayan.apps.documents.tasks.task_delete_document': {
-                    'queue': 'documents'
-                },
-                'mayan.apps.documents.tasks.task_delete_stubs': {
-                    'queue': 'documents_periodic'
-                },
-                'mayan.apps.documents.tasks.task_generate_document_page_image': {
-                    'queue': 'converter'
-                },
-                'mayan.apps.documents.tasks.task_scan_duplicates_all': {
-                    'queue': 'tools'
-                },
-                'mayan.apps.documents.tasks.task_scan_duplicates_for': {
-                    'queue': 'uploads'
-                },
-                'mayan.apps.documents.tasks.task_update_page_count': {
-                    'queue': 'uploads'
-                },
-                'mayan.apps.documents.tasks.task_upload_new_version': {
-                    'queue': 'uploads'
-                },
-            }
         )
 
         dashboard_main.add_widget(

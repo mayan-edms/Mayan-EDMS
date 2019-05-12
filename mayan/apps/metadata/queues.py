@@ -9,9 +9,9 @@ queue_metadata = CeleryQueue(
 )
 queue_metadata.add_task_type(
     label=_('Remove metadata type'),
-    name='mayan.apps.metadata.tasks.task_remove_metadata_type'
+    dotted_path='mayan.apps.metadata.tasks.task_remove_metadata_type'
 )
 queue_metadata.add_task_type(
     label=_('Add required metadata type'),
-    name='mayan.apps.metadata.tasks.task_add_required_metadata_type'
+    dotted_path='mayan.apps.metadata.tasks.task_add_required_metadata_type'
 )

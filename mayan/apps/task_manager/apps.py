@@ -25,6 +25,8 @@ class TaskManagerApp(MayanAppConfig):
     def ready(self):
         super(TaskManagerApp, self).ready()
 
+        CeleryQueue.initialize()
+
         SourceColumn(
             source=CeleryQueue, label=_('Label'), attribute='label'
         )

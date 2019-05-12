@@ -2,8 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from kombu import Exchange, Queue
-
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import MissingItem
 from mayan.apps.common.html_widgets import TwoStateWidget
@@ -15,7 +13,6 @@ from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.documents.menus import menu_documents
 from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.navigation.classes import SourceColumn
-from mayan.celery import app
 
 from .classes import StagingFile
 from .dependencies import *  # NOQA
@@ -32,7 +29,6 @@ from .links import (
     link_setup_source_edit, link_setup_source_logs, link_staging_file_delete,
     link_document_version_upload
 )
-from .queues import *  # NOQA
 from .widgets import StagingFileThumbnailWidget
 
 
@@ -105,38 +101,6 @@ class SourcesApp(MayanAppConfig):
             func=lambda context: context['object'].message
         )
 
-        app.conf.CELERY_QUEUES.extend(
-            (
-                Queue(
-                    'sources', Exchange('sources'), routing_key='sources'
-                ),
-                Queue(
-                    'sources_fast', Exchange('sources_fast'),
-                    routing_key='sources_fast', delivery_mode=1
-                ),
-                Queue(
-                    'sources_periodic', Exchange('sources_periodic'),
-                    routing_key='sources_periodic', delivery_mode=1
-                ),
-            )
-        )
-
-        app.conf.CELERY_ROUTES.update(
-            {
-                'mayan.apps.sources.tasks.task_check_interval_source': {
-                    'queue': 'sources_periodic'
-                },
-                'mayan.apps.sources.tasks.task_generate_staging_file_image': {
-                    'queue': 'sources_fast'
-                },
-                'mayan.apps.sources.tasks.task_source_handle_upload': {
-                    'queue': 'sources'
-                },
-                'mayan.apps.sources.tasks.task_upload_document': {
-                    'queue': 'sources'
-                },
-            }
-        )
         menu_documents.bind_links(links=(link_document_create_multiple,))
 
         menu_list_facet.bind_links(

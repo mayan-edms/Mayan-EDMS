@@ -2,8 +2,6 @@ from __future__ import unicode_literals
 
 import logging
 
-from kombu import Exchange, Queue
-
 from django.apps import apps
 from django.db.models.signals import post_save, post_delete
 from django.utils.translation import ugettext_lazy as _
@@ -14,7 +12,6 @@ from mayan.apps.common.menus import (
     menu_facet, menu_object, menu_secondary, menu_tools
 )
 from mayan.apps.navigation.classes import SourceColumn
-from mayan.celery import app
 
 from .handlers import (
     handler_unverify_key_signatures, handler_verify_key_signatures
@@ -38,7 +35,6 @@ from .permissions import (
     permission_document_version_signature_upload,
     permission_document_version_signature_view,
 )
-from .queues import *  # NOQA
 
 logger = logging.getLogger(__name__)
 
@@ -110,29 +106,6 @@ class DocumentSignaturesApp(MayanAppConfig):
             func=lambda context: SignatureBaseModel.objects.get_subclass(
                 pk=context['object'].pk
             ).get_signature_type_display()
-        )
-
-        app.conf.CELERY_QUEUES.append(
-            Queue(
-                'signatures', Exchange('signatures'), routing_key='signatures'
-            ),
-        )
-
-        app.conf.CELERY_ROUTES.update(
-            {
-                'mayan.apps.document_signatures.tasks.task_handler_verify_key_signatures': {
-                    'queue': 'signatures'
-                },
-                'mayan.apps.document_signatures.tasks.task_handler_unhandler_verify_key_signatures': {
-                    'queue': 'signatures'
-                },
-                'mayan.apps.document_signatures.tasks.task_verify_document_version': {
-                    'queue': 'signatures'
-                },
-                'mayan.apps.document_signatures.tasks.task_verify_missing_embedded_signature': {
-                    'queue': 'tools'
-                },
-            }
         )
 
         menu_facet.bind_links(

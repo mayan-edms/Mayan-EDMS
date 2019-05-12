@@ -2,8 +2,6 @@ from __future__ import unicode_literals
 
 import logging
 
-from kombu import Exchange, Queue
-
 from django.apps import apps
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
@@ -17,7 +15,6 @@ from mayan.apps.common.menus import (
 from mayan.apps.documents.search import document_search, document_page_search
 from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.navigation.classes import SourceColumn
-from mayan.celery import app
 
 from .dependencies import *  # NOQA
 from .handlers import (
@@ -118,18 +115,6 @@ class DocumentParsingApp(MayanAppConfig):
         SourceColumn(
             source=DocumentVersionParseError, label=_('Result'),
             attribute='result'
-        )
-
-        app.conf.CELERY_QUEUES.append(
-            Queue('parsing', Exchange('parsing'), routing_key='parsing'),
-        )
-
-        app.conf.CELERY_ROUTES.update(
-            {
-                'mayan.apps.document_parsing.tasks.task_parse_document_version': {
-                    'queue': 'parsing'
-                },
-            }
         )
 
         document_search.add_model_field(
