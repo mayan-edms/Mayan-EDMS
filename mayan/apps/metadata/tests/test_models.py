@@ -5,7 +5,9 @@ from django.core.exceptions import ValidationError
 
 from mayan.apps.common.tests import BaseTestCase
 from mayan.apps.documents.models import DocumentType
-from mayan.apps.documents.tests import DocumentTestMixin, TEST_DOCUMENT_TYPE_2_LABEL
+from mayan.apps.documents.tests import (
+    DocumentTestMixin, TEST_DOCUMENT_TYPE_2_LABEL
+)
 
 from ..models import DocumentMetadata
 

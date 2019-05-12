@@ -7,9 +7,7 @@ from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.documents.tests import GenericDocumentViewTestCase
 from mayan.apps.metadata.models import MetadataType
 from mayan.apps.metadata.permissions import permission_document_metadata_edit
-from mayan.apps.metadata.tests.literals import (
-    TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_NAME,
-)
+from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin
 
 from ..permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
@@ -320,19 +318,22 @@ class UserGroupViewTestCase(GroupTestMixin, UserTestMixin, UserViewTestMixin, Ge
         )
 
 
-class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
+class MetadataLookupIntegrationTestCase(
+    MetadataTypeTestMixin, GenericDocumentViewTestCase
+):
     def setUp(self):
         super(MetadataLookupIntegrationTestCase, self).setUp()
-        self.metadata_type = MetadataType.objects.create(
-            name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
+        self._create_test_metadata_type()
+        self.test_document_type.metadata.create(
+            metadata_type=self.test_metadata_type
         )
 
-        self.test_document_type.metadata.create(metadata_type=self.metadata_type)
-
     def test_user_list_lookup_render(self):
-        self.metadata_type.lookup = '{{ users }}'
-        self.metadata_type.save()
-        self.test_document.metadata.create(metadata_type=self.metadata_type)
+        self.test_metadata_type.lookup = '{{ users }}'
+        self.test_metadata_type.save()
+        self.test_document.metadata.create(
+            metadata_type=self.test_metadata_type
+        )
         self.grant_access(
             obj=self.test_document, permission=permission_document_metadata_edit
         )
@@ -349,15 +350,19 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
         )
 
     def test_group_list_lookup_render(self):
-        self.metadata_type.lookup = '{{ groups }}'
-        self.metadata_type.save()
-        self.test_document.metadata.create(metadata_type=self.metadata_type)
+        self.test_metadata_type.lookup = '{{ groups }}'
+        self.test_metadata_type.save()
+        self.test_document.metadata.create(
+            metadata_type=self.test_metadata_type
+        )
         self.grant_access(
             obj=self.test_document, permission=permission_document_metadata_edit
         )
 
         response = self.get(
-            viewname='metadata:metadata_edit', kwargs={'pk': self.test_document.pk}
+            viewname='metadata:metadata_edit', kwargs={
+                'pk': self.test_document.pk
+            }
         )
 
         self.assertContains(
