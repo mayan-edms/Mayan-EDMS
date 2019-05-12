@@ -10,17 +10,15 @@ from mayan.apps.smart_settings.classes import Namespace
 
 from .mixins import (
     ClientMethodsTestCaseMixin, ContentTypeCheckTestCaseMixin,
-    DatabaseConversionMixin, ModelTestCaseMixin,
-    OpenFileCheckTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin,
-    SilenceLoggerTestCaseMixin, TempfileCheckTestCasekMixin,
-    TestViewTestCaseMixin
+    ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
+    RandomPrimaryKeyModelMonkeyPatchMixin, SilenceLoggerTestCaseMixin,
+    TempfileCheckTestCasekMixin, TestViewTestCaseMixin
 )
 
 
 class BaseTestCase(
     SilenceLoggerTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin,
-    DatabaseConversionMixin, ACLTestCaseMixin,
-    ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
+    ACLTestCaseMixin, ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
     TempfileCheckTestCasekMixin, TestCase
 ):
     """

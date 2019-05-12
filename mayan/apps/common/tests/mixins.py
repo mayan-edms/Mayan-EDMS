@@ -106,13 +106,6 @@ class ContentTypeCheckTestCaseMixin(object):
         self.client = CustomClient()
 
 
-class DatabaseConversionMixin(object):
-    def _test_database_conversion(self, *app_labels):
-        management.call_command(
-            'convertdb', *app_labels, force=True
-        )
-
-
 class ModelTestCaseMixin(object):
     def _model_instance_to_dictionary(self, instance):
         return instance._meta.model._default_manager.filter(

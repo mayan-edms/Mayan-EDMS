@@ -211,7 +211,7 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         result = {
             'submit_label': _('Add'),
@@ -237,7 +237,7 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
         return result
 
     def get_form_extra_kwargs(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
         result = {
             'help_text': _(
                 'Cabinets to which the selected documents will be added.'
@@ -301,7 +301,7 @@ class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         result = {
             'submit_label': _('Remove'),
@@ -327,7 +327,7 @@ class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
         return result
 
     def get_form_extra_kwargs(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
         result = {
             'help_text': _(
                 'Cabinets from which the selected documents will be removed.'

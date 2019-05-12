@@ -73,7 +73,7 @@ class DocumentSubmitView(MultipleObjectConfirmActionView):
     success_message_plural = '%(count)d documents submitted to the OCR queue.'
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         result = {
             'title': ungettext(

@@ -22,10 +22,6 @@ from .mixins import DocumentTestMixin
 
 
 class DocumentTestCase(DocumentTestMixin, BaseTestCase):
-    def test_natural_keys(self):
-        self.test_document.pages.first().generate_image()
-        self._test_database_conversion('documents')
-
     def test_document_creation(self):
         self.assertEqual(self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL)
 

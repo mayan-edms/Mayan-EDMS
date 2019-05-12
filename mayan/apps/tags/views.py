@@ -41,7 +41,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         result = {
             'submit_label': _('Attach'),
@@ -65,7 +65,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
         return result
 
     def get_form_extra_kwargs(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
         result = {
             'help_text': _('Tags to be attached.'),
             'permission': permission_tag_attach,
@@ -85,7 +85,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
         return result
 
     def get_post_action_redirect(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
         if queryset.count() == 1:
             return reverse(
                 viewname='tags:document_tag_list', kwargs={
@@ -148,7 +148,7 @@ class TagDeleteActionView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         result = {
             'message': _('Will be removed from all documents.'),
@@ -291,7 +291,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         result = {
             'submit_icon_class': icon_document_tag_remove_submit,
@@ -316,7 +316,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
         return result
 
     def get_form_extra_kwargs(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
         result = {
             'help_text': _('Tags to be removed.'),
             'permission': permission_tag_remove,
@@ -334,7 +334,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
         return result
 
     def get_post_action_redirect(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
         if queryset.count() == 1:
             return reverse(
                 viewname='tags:document_tag_list', kwargs={

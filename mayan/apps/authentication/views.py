@@ -148,7 +148,7 @@ class UserSetPasswordView(MultipleObjectFormActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         result = {
             'submit_label': _('Submit'),
@@ -170,7 +170,7 @@ class UserSetPasswordView(MultipleObjectFormActionView):
         return result
 
     def get_form_extra_kwargs(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
         result = {}
         if queryset:
             result['user'] = queryset.first()

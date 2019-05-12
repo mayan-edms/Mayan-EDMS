@@ -58,7 +58,7 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
             DocumentMetadataAddView, self
         ).dispatch(request, *args, **kwargs)
 
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         for document in queryset:
             document.add_as_recent_document_for_user(request.user)
@@ -76,7 +76,7 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
     def form_valid(self, form):
         result = super(DocumentMetadataAddView, self).form_valid(form=form)
 
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         if self.action_count == 1:
             return HttpResponseRedirect(
@@ -106,7 +106,7 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
         return result
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         result = {
             'submit_icon_class': icon_document_metadata_add,
@@ -131,7 +131,7 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
         return result
 
     def get_form_extra_kwargs(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         result = {}
 
@@ -226,7 +226,7 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
             DocumentMetadataEditView, self
         ).dispatch(request, *args, **kwargs)
 
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         for document in queryset:
             document.add_as_recent_document_for_user(request.user)
@@ -244,7 +244,7 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
     def form_valid(self, form):
         result = super(DocumentMetadataEditView, self).form_valid(form=form)
 
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         if self.action_count == 1:
             return HttpResponseRedirect(
@@ -275,7 +275,7 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
         return result
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         id_list = ','.join(
             map(
@@ -329,7 +329,7 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
         return result
 
     def get_initial(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         metadata_dict = {}
         initial = []
@@ -468,7 +468,7 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
 
     def form_valid(self, form):
         result = super(DocumentMetadataRemoveView, self).form_valid(form=form)
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         if self.action_count == 1:
             return HttpResponseRedirect(
@@ -498,7 +498,7 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
         return result
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         result = {
             'form_display_mode_table': True,

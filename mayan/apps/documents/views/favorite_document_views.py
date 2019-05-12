@@ -51,7 +51,7 @@ class FavoriteAddView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         return {
             'submit_label': _('Add'),
@@ -81,7 +81,7 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
+        queryset = self.object_list
 
         return {
             'submit_label': _('Remove'),
