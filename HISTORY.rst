@@ -258,7 +258,7 @@
   when the first document uploaded is an office file.
 * Move queue and task registration to the CeleryQueue class.
   The .queues.py module is now loaded automatically.
-
+* Allow setting the Docker user UID and GUID.
   
 3.1.11 (2019-04-XX)
 ===================
