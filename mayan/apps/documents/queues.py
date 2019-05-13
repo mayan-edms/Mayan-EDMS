@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.queues import queue_tools
 from mayan.apps.task_manager.classes import CeleryQueue
+from mayan.apps.task_manager.workers import worker_fast, worker_medium
 
 from .literals import (
     CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL,
@@ -13,16 +14,16 @@ from .literals import (
 )
 
 queue_converter = CeleryQueue(
-    name='converter', label=_('Converter'), transient=True
+    name='converter', label=_('Converter'), transient=True, worker=worker_fast
 )
 queue_documents_periodic = CeleryQueue(
-    name='documents_periodic', label=_('Documents periodic'), transient=True
+    name='documents_periodic', label=_('Documents periodic'), transient=True, worker=worker_medium
 )
 queue_uploads = CeleryQueue(
-    name='uploads', label=_('Uploads')
+    name='uploads', label=_('Uploads'), worker=worker_medium
 )
 queue_documents = CeleryQueue(
-    name='documents', label=_('Documents')
+    name='documents', label=_('Documents'), worker=worker_medium
 )
 
 queue_converter.add_task_type(

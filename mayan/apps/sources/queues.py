@@ -3,15 +3,18 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.task_manager.classes import CeleryQueue
+from mayan.apps.task_manager.workers import worker_fast, worker_medium
 
 queue_sources = CeleryQueue(
-    label=_('Sources'), name='sources'
+    label=_('Sources'), name='sources', worker=worker_medium
 )
 queue_sources_periodic = CeleryQueue(
-    label=_('Sources periodic'), name='sources_periodic', transient=True
+    label=_('Sources periodic'), name='sources_periodic', transient=True,
+    worker=worker_medium
 )
 queue_sources_fast = CeleryQueue(
-    label=_('Sources fast'), name='sources_fast', transient=True
+    label=_('Sources fast'), name='sources_fast', transient=True,
+    worker=worker_fast
 )
 
 queue_sources_fast.add_task_type(

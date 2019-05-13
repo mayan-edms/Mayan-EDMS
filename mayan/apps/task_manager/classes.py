@@ -93,13 +93,14 @@ class CeleryQueue(object):
         for instance in cls.all():
             instance._update_celery()
 
-    def __init__(self, name, label, default_queue=False, transient=False):
+    def __init__(self, name, label, worker, default_queue=False, transient=False):
         self.name = name
         self.label = label
         self.default_queue = default_queue
         self.transient = transient
         self.task_types = []
         self.__class__._registry[name] = self
+        worker.queues.append(self)
 
     def __str__(self):
         return force_text(self.label)
@@ -164,3 +165,18 @@ class CeleryQueue(object):
                         },
                     }
                 )
+
+
+class Worker(object):
+    _registry = {}
+
+    @classmethod
+    def all(cls):
+        return cls._registry.values()
+
+    def __init__(self, name, label=None, nice_level=0):
+        self.name = name
+        self.label = label
+        self.nice_level = nice_level
+        self.queues = []
+        self.__class__._registry[name] = self

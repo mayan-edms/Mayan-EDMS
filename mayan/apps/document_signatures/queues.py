@@ -4,8 +4,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.queues import queue_tools
 from mayan.apps.task_manager.classes import CeleryQueue
+from mayan.apps.task_manager.workers import worker_medium
 
-queue_signatures = CeleryQueue(label=_('Signatures'), name='signatures')
+queue_signatures = CeleryQueue(label=_('Signatures'), name='signatures', worker=worker_medium)
 
 queue_signatures.add_task_type(
     label=_('Verify key signatures'),
