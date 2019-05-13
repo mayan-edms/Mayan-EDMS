@@ -142,7 +142,8 @@ ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 8000
 CMD ["mayan"]
 
-RUN apt-get clean autoclean \
+RUN ${PROJECT_INSTALL_DIR}/bin/mayan-edms.py platformtemplate supervisord_docker > /etc/supervisor/conf.d/mayan.conf \
+&& apt-get clean autoclean \
 && apt-get autoremove --purge -y \
 && rm -rf /var/lib/apt/lists/* \
 && rm -f /var/cache/apt/archives/*.deb \

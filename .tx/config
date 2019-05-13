@@ -169,6 +169,12 @@ source_lang = en
 source_file = mayan/apps/permissions/locale/en/LC_MESSAGES/django.po
 type = PO
 
+[mayan-edms.platform-2-0]
+file_filter = mayan/apps/platform/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/platform/locale/en/LC_MESSAGES/django.po
+type = PO
+
 [mayan-edms.rest_api-2-0]
 file_filter = mayan/apps/rest_api/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en

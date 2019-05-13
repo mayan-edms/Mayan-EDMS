@@ -1,0 +1,44 @@
+[supervisord]
+environment=
+    MAYAN_ALLOWED_HOSTS='["*"]',  # Allow access to other network hosts other than localhost
+    MAYAN_CELERY_RESULT_BACKEND="{{ result_backend }}",
+    MAYAN_BROKER_URL="{{ broker_url }}",
+    PYTHONPATH={{ installation_path }}/lib/python2.7/site-packages:{{ media_root }}/mayan_settings,
+    MAYAN_MEDIA_ROOT={{ media_root }},
+    MAYAN_DATABASE_ENGINE={{ database_engine }},
+    MAYAN_DATABASE_HOST={{ database_host }},
+    MAYAN_DATABASE_NAME={{ database_name }},
+    MAYAN_DATABASE_PASSWORD={{ database_password }},
+    MAYAN_DATABASE_USER={{ database_user }},
+    MAYAN_DATABASE_CONN_MAX_AGE={{ database_conn_max_age }},
+    DJANGO_SETTINGS_MODULE=mayan.settings.production
+
+[program:mayan-gunicorn]
+autorestart = true
+autostart = true
+command = {{ installation_path }}/bin/gunicorn -w {{ gunicorn_workers }} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
+user = mayan
+
+{% for worker in workers %}
+[program:mayan-worker-{{ worker.name }}]
+autorestart = true
+autostart = true
+command = nice -n {{ worker.nice_level }} {{ installation_path }}/bin/mayan-edms.py celery worker -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} -n mayan-worker-{{ worker.name }}.%%h --concurrency=1
+killasgroup = true
+numprocs = 1
+priority = 998
+startsecs = 10
+stopwaitsecs = 1
+user = mayan
+{% endfor %}
+
+[program:mayan-celery-beat]
+autorestart = true
+autostart = true
+command = nice -n 1 {{ installation_path }}/bin/mayan-edms.py celery beat -l ERROR
+killasgroup = true
+numprocs = 1
+priority = 998
+startsecs = 10
+stopwaitsecs = 1
+user = mayan

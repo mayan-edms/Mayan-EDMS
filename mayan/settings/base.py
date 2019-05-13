@@ -101,8 +101,13 @@ INSTALLED_APPS = (
     'mayan.apps.mimetype',
     'mayan.apps.navigation',
     'mayan.apps.permissions',
+    'mayan.apps.platform',
+    'mayan.apps.rest_api',
     'mayan.apps.smart_settings',
+    'mayan.apps.task_manager',
     'mayan.apps.user_management',
+    # Project apps
+    'mayan.apps.motd',
     # Document apps
     'mayan.apps.cabinets',
     'mayan.apps.checkouts',
@@ -118,13 +123,10 @@ INSTALLED_APPS = (
     'mayan.apps.mayan_statistics',
     'mayan.apps.metadata',
     'mayan.apps.mirroring',
-    'mayan.apps.motd',
     'mayan.apps.ocr',
-    'mayan.apps.rest_api',
     'mayan.apps.sources',
     'mayan.apps.storage',
     'mayan.apps.tags',
-    'mayan.apps.task_manager',
     # Placed after rest_api to allow template overriding
     'drf_yasg',
 )

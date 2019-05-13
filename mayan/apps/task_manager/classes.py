@@ -10,7 +10,6 @@ from celery.five import monotonic
 from celery.task.control import inspect
 
 from django.apps import apps
-
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.timezone import now
 
