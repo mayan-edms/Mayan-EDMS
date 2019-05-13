@@ -76,7 +76,6 @@ COPY --chown=mayan:mayan \
     README.md \
     README.rst \
     setup.py \
-    Makefile \
     /src/
 
 COPY --chown=mayan:mayan mayan /src/mayan
@@ -90,14 +89,11 @@ apt-get install -y --no-install-recommends \
     libpng-dev \
     libpq-dev \
     libtiff-dev \
-    make \
-    python-wheel \
     zlib1g-dev \
     libssl-dev \
     g++ \
     gcc \
     python-dev \
-    python-setuptools \
     python-virtualenv \
 && mkdir -p "${PROJECT_INSTALL_DIR}" \
 && chown -R mayan:mayan "${PROJECT_INSTALL_DIR}" \
@@ -114,9 +110,9 @@ RUN python -m virtualenv "${PROJECT_INSTALL_DIR}" \
 # Install the Python packages needed to build Mayan EDMS
 && pip install --no-cache-dir --no-use-pep517 -r /src/requirements/build.txt \
 # Build Mayan EDMS
-&& make python-wheel \
+&& python setup.py sdist \
 # Install the built Mayan EDMS package
-&& pip install --no-cache-dir --no-use-pep517 dist/*.whl \
+&& pip install --no-cache-dir --no-use-pep517 dist/mayan* \
 # Install the static content
 && mayan-edms.py installjavascript \
 && MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}/static mayan-edms.py preparestatic --link --noinput
@@ -147,5 +143,7 @@ RUN ${PROJECT_INSTALL_DIR}/bin/mayan-edms.py platformtemplate supervisord_docker
 && apt-get autoremove --purge -y \
 && rm -rf /var/lib/apt/lists/* \
 && rm -f /var/cache/apt/archives/*.deb \
+# Remove temporary files owned by root from the platformtemplate step
+&& rm /tmp/* \
 # Keep displaying log messages to stdout
 && find /var/log -type f | while read f; do echo -ne '' > $f; done;
