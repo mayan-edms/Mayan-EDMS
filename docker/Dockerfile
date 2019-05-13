@@ -38,6 +38,9 @@ apt-get update \
     sudo \
     supervisor \
     tesseract-ocr \
+# Remove make and build dependencies
+&& apt-get remove make libproxy-tools libreoffice-avmedia-backend-vlc libvlc-bin libvlc5 libvlccore9 adwaita-icon-theme gsettings-desktop-schemas libgstreamer-plugins-base1.0-0 -y \
+&& apt-get autoremove -y --purge \
 # Add mayan user
 && adduser mayan --disabled-password --disabled-login --no-create-home --gecos "" \
 # Pillow can't find zlib or libjpeg on aarch64 (ODROID C2)
