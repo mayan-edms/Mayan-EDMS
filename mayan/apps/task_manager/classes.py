@@ -128,7 +128,9 @@ class CeleryQueue(object):
         return result
 
     def add_task_type(self, *args, **kwargs):
-        self.task_types.append(TaskType(*args, **kwargs))
+        task_type = TaskType(*args, **kwargs)
+        self.task_types.append(task_type)
+        return task_type
 
     def get_active_tasks(self):
         return self._process_task_dictionary(
