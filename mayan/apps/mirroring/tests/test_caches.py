@@ -29,7 +29,7 @@ class IndexFilesystemCacheTestCase(BaseTestCase):
 
     def test_set_path_document(self):
         self.cache.set_path(path=TEST_PATH, document=self.test_document)
-        self.assertEquals(
+        self.assertEqual(
             {'document_pk': TEST_DOCUMENT_PK},
             self.cache.get_path(path=TEST_PATH)
         )
@@ -38,11 +38,11 @@ class IndexFilesystemCacheTestCase(BaseTestCase):
         self.cache.set_path(path=TEST_PATH, document=self.test_document)
         self.cache.clear_document(document=self.test_document)
 
-        self.assertEquals(None, self.cache.get_path(path=TEST_PATH))
+        self.assertEqual(None, self.cache.get_path(path=TEST_PATH))
 
     def test_set_path_node(self):
         self.cache.set_path(path=TEST_PATH, node=self.node)
-        self.assertEquals(
+        self.assertEqual(
             {'node_pk': TEST_NODE_PK},
             self.cache.get_path(path=TEST_PATH)
         )
@@ -51,7 +51,7 @@ class IndexFilesystemCacheTestCase(BaseTestCase):
         self.cache.set_path(path=TEST_PATH, node=self.node)
         self.cache.clear_node(node=self.node)
 
-        self.assertEquals(None, self.cache.get_path(path=TEST_PATH))
+        self.assertEqual(None, self.cache.get_path(path=TEST_PATH))
 
     def test_valid_cache_key_characters(self):
         with warnings.catch_warnings(record=True) as warning_list:

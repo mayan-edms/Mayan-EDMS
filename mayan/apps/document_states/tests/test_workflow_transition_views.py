@@ -26,9 +26,9 @@ class WorkflowTransitionViewTestCase(
         self._create_test_workflow_states()
 
         response = self._request_test_workflow_transition_create_view()
-        self.assertEquals(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
-        self.assertEquals(WorkflowTransition.objects.count(), 0)
+        self.assertEqual(WorkflowTransition.objects.count(), 0)
 
     def test_create_test_workflow_transition_with_access(self):
         self._create_test_workflow()
@@ -39,18 +39,18 @@ class WorkflowTransitionViewTestCase(
         )
 
         response = self._request_test_workflow_transition_create_view()
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
-        self.assertEquals(WorkflowTransition.objects.count(), 1)
-        self.assertEquals(
+        self.assertEqual(WorkflowTransition.objects.count(), 1)
+        self.assertEqual(
             WorkflowTransition.objects.all()[0].label,
             TEST_WORKFLOW_TRANSITION_LABEL
         )
-        self.assertEquals(
+        self.assertEqual(
             WorkflowTransition.objects.all()[0].origin_state,
             self.test_workflow_state_1
         )
-        self.assertEquals(
+        self.assertEqual(
             WorkflowTransition.objects.all()[0].destination_state,
             self.test_workflow_state_2
         )
@@ -61,7 +61,7 @@ class WorkflowTransitionViewTestCase(
         self._create_test_workflow_transition()
 
         response = self._request_test_workflow_transition_delete_view()
-        self.assertEquals(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
             self.test_workflow_transition in WorkflowTransition.objects.all()
@@ -75,7 +75,7 @@ class WorkflowTransitionViewTestCase(
         self.grant_access(permission=permission_workflow_edit, obj=self.test_workflow)
 
         response = self._request_test_workflow_transition_delete_view()
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
         self.assertFalse(
             self.test_workflow_transition in WorkflowTransition.objects.all()
@@ -87,7 +87,7 @@ class WorkflowTransitionViewTestCase(
         self._create_test_workflow_transition()
 
         response = self._request_test_workflow_transition_edit_view()
-        self.assertEquals(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
         self.test_workflow_transition.refresh_from_db()
         self.assertEqual(
@@ -104,7 +104,7 @@ class WorkflowTransitionViewTestCase(
         )
 
         response = self._request_test_workflow_transition_edit_view()
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
         self.test_workflow_transition.refresh_from_db()
         self.assertEqual(
@@ -219,7 +219,7 @@ class WorkflowTransitionEventViewTestCase(
         self._create_test_workflow_transition()
 
         response = self._request_test_workflow_transition_event_list_view()
-        self.assertEquals(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
     def test_workflow_transition_event_list_with_access(self):
         self._create_test_workflow()
@@ -231,4 +231,4 @@ class WorkflowTransitionEventViewTestCase(
         )
 
         response = self._request_test_workflow_transition_event_list_view()
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)

@@ -58,7 +58,7 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
         self._check_out_test_document()
 
         response = self._request_document_check_in_post_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEqual(response.status_code, 403)
 
         self.assertTrue(self.test_document.is_checked_out())
 
@@ -70,7 +70,7 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
         )
 
         response = self._request_document_check_in_post_view()
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
         self.assertFalse(self.test_document.is_checked_out())
         self.assertFalse(
@@ -92,7 +92,7 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
 
     def test_check_out_document_view_no_permission(self):
         response = self._request_document_checkout_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEqual(response.status_code, 403)
 
         self.assertFalse(self.test_document.is_checked_out())
 
@@ -106,7 +106,7 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
         )
 
         response = self._request_document_checkout_view()
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
         self.assertTrue(self.test_document.is_checked_out())
 

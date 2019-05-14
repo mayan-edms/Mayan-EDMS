@@ -338,7 +338,7 @@ class SourcesTestCase(GenericDocumentViewTestCase):
         self.grant_permission(permission=permission_sources_setup_view)
 
         response = self._request_setup_source_create_view()
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
         webform_source = WebFormSource.objects.first()
         self.assertEqual(webform_source.label, TEST_SOURCE_LABEL)

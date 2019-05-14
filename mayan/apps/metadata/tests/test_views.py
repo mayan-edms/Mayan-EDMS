@@ -225,7 +225,7 @@ class DocumentMetadataTestCase(
                 )
             }
         )
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
         # Test post to metadata removal view
         response = self.post(

@@ -20,7 +20,7 @@ from .mixins import SmartLinkTestMixin, SmartLinkViewTestMixin
 class SmartLinkViewTestCase(SmartLinkTestMixin, SmartLinkViewTestMixin, GenericViewTestCase):
     def test_smart_link_create_view_no_permission(self):
         response = self._request_test_smart_link_create_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEqual(response.status_code, 403)
 
         self.assertEqual(SmartLink.objects.count(), 0)
 

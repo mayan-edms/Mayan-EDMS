@@ -19,24 +19,24 @@ class WorkflowViewTestCase(
 ):
     def test_workflow_create_view_no_permission(self):
         response = self._request_test_workflow_create_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEqual(response.status_code, 403)
 
-        self.assertEquals(Workflow.objects.count(), 0)
+        self.assertEqual(Workflow.objects.count(), 0)
 
     def test_workflow_create_view_with_permission(self):
         self.grant_permission(permission=permission_workflow_create)
 
         response = self._request_test_workflow_create_view()
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
-        self.assertEquals(Workflow.objects.count(), 1)
-        self.assertEquals(Workflow.objects.all()[0].label, TEST_WORKFLOW_LABEL)
+        self.assertEqual(Workflow.objects.count(), 1)
+        self.assertEqual(Workflow.objects.all()[0].label, TEST_WORKFLOW_LABEL)
 
     def test_workflow_delete_view_no_access(self):
         self._create_test_workflow()
 
         response = self._request_test_workflow_delete_view()
-        self.assertEquals(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(self.test_workflow in Workflow.objects.all())
 
@@ -48,7 +48,7 @@ class WorkflowViewTestCase(
         )
 
         response = self._request_test_workflow_delete_view()
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
         self.assertFalse(self.test_workflow in Workflow.objects.all())
 
@@ -56,7 +56,7 @@ class WorkflowViewTestCase(
         self._create_test_workflow()
 
         response = self._request_test_workflow_edit_view()
-        self.assertEquals(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
         self.test_workflow.refresh_from_db()
         self.assertEqual(self.test_workflow.label, TEST_WORKFLOW_LABEL)
@@ -69,7 +69,7 @@ class WorkflowViewTestCase(
         )
 
         response = self._request_test_workflow_edit_view()
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
         self.test_workflow.refresh_from_db()
         self.assertEqual(self.test_workflow.label, TEST_WORKFLOW_LABEL_EDITED)
@@ -79,7 +79,7 @@ class WorkflowViewTestCase(
 
         response = self._request_test_workflow_list_view()
 
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, text=self.test_workflow.label)
 
     def test_workflow_list_view_with_access(self):
@@ -90,14 +90,14 @@ class WorkflowViewTestCase(
         )
 
         response = self._request_test_workflow_list_view()
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         self.assertContains(response, text=self.test_workflow.label)
 
     def test_workflow_preview_view_no_access(self):
         self._create_test_workflow()
 
         response = self._request_test_workflow_preview_view()
-        self.assertEquals(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(self.test_workflow in Workflow.objects.all())
 
@@ -108,7 +108,7 @@ class WorkflowViewTestCase(
             obj=self.test_workflow, permission=permission_workflow_view
         )
         response = self._request_test_workflow_preview_view()
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
 
 class WorkflowToolViewTestCase(WorkflowTestMixin, GenericDocumentViewTestCase):

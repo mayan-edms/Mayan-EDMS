@@ -23,7 +23,7 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
         acl_count = AccessControlList.objects.count()
 
         response = self._request_test_acl_create_get_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEqual(response.status_code, 403)
 
         self.assertEqual(AccessControlList.objects.count(), acl_count)
 
@@ -36,7 +36,7 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
         acl_count = AccessControlList.objects.count()
 
         response = self._request_test_acl_create_get_view()
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
         self.assertEqual(AccessControlList.objects.count(), acl_count)
 
@@ -54,7 +54,7 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
         acl_count = AccessControlList.objects.count()
 
         response = self._request_test_acl_create_post_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEqual(response.status_code, 403)
 
         self.assertEqual(AccessControlList.objects.count(), acl_count)
 
@@ -68,7 +68,7 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
         acl_count = AccessControlList.objects.count()
 
         response = self._request_test_acl_create_post_view()
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(AccessControlList.objects.count(), acl_count + 1)
 

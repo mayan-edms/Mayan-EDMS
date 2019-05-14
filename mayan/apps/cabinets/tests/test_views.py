@@ -17,7 +17,7 @@ from .mixins import CabinetTestMixin, CabinetViewTestMixin
 class CabinetViewTestCase(CabinetTestMixin, CabinetViewTestMixin, GenericViewTestCase):
     def test_cabinet_create_view_no_permission(self):
         response = self._request_test_cabinet_create_view()
-        self.assertEquals(response.status_code, 403)
+        self.assertEqual(response.status_code, 403)
 
         self.assertEqual(Cabinet.objects.count(), 0)
 

@@ -18,9 +18,9 @@ class WorkflowStateViewTestCase(
         self._create_test_workflow()
 
         response = self._request_test_workflow_state_create_view()
-        self.assertEquals(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
-        self.assertEquals(WorkflowState.objects.count(), 0)
+        self.assertEqual(WorkflowState.objects.count(), 0)
 
     def test_create_workflow_state_with_access(self):
         self._create_test_workflow()
@@ -30,13 +30,13 @@ class WorkflowStateViewTestCase(
         )
 
         response = self._request_test_workflow_state_create_view()
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
-        self.assertEquals(WorkflowState.objects.count(), 1)
-        self.assertEquals(
+        self.assertEqual(WorkflowState.objects.count(), 1)
+        self.assertEqual(
             WorkflowState.objects.all()[0].label, TEST_WORKFLOW_STATE_LABEL
         )
-        self.assertEquals(
+        self.assertEqual(
             WorkflowState.objects.all()[0].completion,
             TEST_WORKFLOW_STATE_COMPLETION
         )
@@ -51,13 +51,13 @@ class WorkflowStateViewTestCase(
         response = self._request_test_workflow_state_create_view(
             extra_data={'completion': ''}
         )
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
-        self.assertEquals(WorkflowState.objects.count(), 1)
-        self.assertEquals(
+        self.assertEqual(WorkflowState.objects.count(), 1)
+        self.assertEqual(
             WorkflowState.objects.all()[0].label, TEST_WORKFLOW_STATE_LABEL
         )
-        self.assertEquals(
+        self.assertEqual(
             WorkflowState.objects.all()[0].completion, 0
         )
 
@@ -66,9 +66,9 @@ class WorkflowStateViewTestCase(
         self._create_test_workflow_states()
 
         response = self._request_test_workflow_state_delete_view()
-        self.assertEquals(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
-        self.assertEquals(WorkflowState.objects.count(), 2)
+        self.assertEqual(WorkflowState.objects.count(), 2)
 
     def test_delete_workflow_state_with_access(self):
         self._create_test_workflow()
@@ -79,8 +79,8 @@ class WorkflowStateViewTestCase(
         )
 
         response = self._request_test_workflow_state_delete_view()
-        self.assertEquals(response.status_code, 302)
-        self.assertEquals(WorkflowState.objects.count(), 1)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(WorkflowState.objects.count(), 1)
 
     def test_edit_workflow_state_no_access(self):
         self._create_test_workflow()
@@ -89,10 +89,10 @@ class WorkflowStateViewTestCase(
         workflow_state_label = self.test_workflow_state_1.label
 
         response = self._request_test_workflow_state_edit_view()
-        self.assertEquals(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
         self.test_workflow_state_1.refresh_from_db()
-        self.assertEquals(
+        self.assertEqual(
             self.test_workflow_state_1.label, workflow_state_label
         )
 
@@ -107,7 +107,7 @@ class WorkflowStateViewTestCase(
         workflow_state_label = self.test_workflow_state_1.label
 
         response = self._request_test_workflow_state_edit_view()
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
         self.test_workflow_state_1.refresh_from_db()
         self.assertNotEquals(
@@ -119,7 +119,7 @@ class WorkflowStateViewTestCase(
         self._create_test_workflow_states()
 
         response = self._request_test_workflow_state_list_view()
-        self.assertEquals(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
     def test_workflow_state_list_with_access(self):
         self._create_test_workflow()
@@ -130,5 +130,5 @@ class WorkflowStateViewTestCase(
         )
 
         response = self._request_test_workflow_state_list_view()
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         self.assertContains(response, text=self.test_workflow_state_1.label)
