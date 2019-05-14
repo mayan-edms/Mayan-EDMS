@@ -329,8 +329,8 @@ class DocumentVersion(models.Model):
         Save a copy of the document from the document storage backend
         to the local filesystem
         """
-        input_file_object = self.open()
-        shutil.copyfileobj(fsrc=input_file_object, fdst=file_object)
+        with self.open() as input_file_object:
+            shutil.copyfileobj(fsrc=input_file_object, fdst=file_object)
 
     @property
     def size(self):
