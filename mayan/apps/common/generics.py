@@ -25,7 +25,8 @@ from mayan.apps.acls.models import AccessControlList
 
 from .forms import ChoiceForm
 from .icons import (
-    icon_add_all, icon_remove_all, icon_assign_remove_add,
+    icon_add_all, icon_confirm_form_cancel, icon_confirm_form_submit,
+    icon_remove_all, icon_assign_remove_add,
     icon_assign_remove_remove, icon_sort_down, icon_sort_up
 )
 from .literals import (
@@ -392,6 +393,14 @@ class ConfirmView(
     RedirectionMixin, TemplateView
 ):
     template_name = 'appearance/generic_confirm.html'
+
+    def get_context_data(self, **kwargs):
+        context = {
+            'submit_icon_class': icon_confirm_form_submit,
+            'cancel_icon_class': icon_confirm_form_cancel
+        }
+        context.update(super(ConfirmView, self).get_context_data(**kwargs))
+        return context
 
     def post(self, request, *args, **kwargs):
         self.view_action()

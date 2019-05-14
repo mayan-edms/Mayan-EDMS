@@ -30,18 +30,12 @@
                     {% endif %}
 
                     <button type="submit" class="btn btn-danger" data-dismiss="modal">
-                        {% if submit_icon_class %}
-                            {{ submit_icon_class.render }}
-                        {% elif submit_icon %}
-                            <i class="{{ submit_icon }}"></i>
-                        {% else %}
-                            <i class="fa fa-check"></i>
-                        {% endif %}
+                        {{ submit_icon_class.render }}
                         {% if submit_label %}{{ submit_label }}{% else %}{% trans 'Yes' %}{% endif %}
                     </button>
 
                     {% if previous %}
-                        <a class="btn btn-primary" onclick='history.back();'>{% trans 'No' %}</a>
+                        <a class="btn btn-primary" onclick='history.back();'>{{ cancel_icon_class.render }} {% trans 'No' %}</a>
                     {% endif %}
 
                 </form>
