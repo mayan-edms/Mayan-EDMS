@@ -11,6 +11,7 @@ from celery.task.control import inspect
 
 from django.apps import apps
 from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.module_loading import import_string
 from django.utils.timezone import now
 
 from mayan.celery import app as celery_app
@@ -36,9 +37,20 @@ class TaskType(object):
         self.dotted_path = dotted_path
         self.schedule = schedule
         self.__class__._registry[name] = self
+        self.validate()
 
     def __str__(self):
         return force_text(self.label)
+
+    def validate(self):
+        try:
+            import_string(dotted_path=self.dotted_path)
+        except Exception as exception:
+            logger.critical(
+                'Exception validating task %s; %s', self.label, exception,
+                exc_info=True
+            )
+            raise
 
 
 @python_2_unicode_compatible
@@ -74,6 +86,7 @@ class CeleryQueue(object):
                         'Error importing %s queues.py file; %s', app.name,
                         exception
                     )
+                    raise
 
         CeleryQueue.update_celery()
 

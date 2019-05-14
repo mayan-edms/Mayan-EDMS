@@ -16,7 +16,7 @@ queue_checkouts_periodic = CeleryQueue(
 queue_checkouts_periodic.add_task_type(
     label=_('Check expired checkouts'),
     name='task_check_expired_check_outs',
-    dotted_path='mayan.apps.task_check_expired_check_outs',
+    dotted_path='mayan.apps.checkouts.tasks.task_check_expired_check_outs',
     schedule=timedelta(
         seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL
     ),
