@@ -191,29 +191,45 @@ class DocumentPage(models.Model):
 
         if not setting_disable_base_image_cache.value and storage_documentimagecache.exists(cache_filename):
             logger.debug('Page cache file "%s" found', cache_filename)
-            converter = get_converter_class()(
-                file_object=storage_documentimagecache.open(cache_filename)
-            )
 
-            converter.seek_page(page_number=0)
+            with storage_documentimagecache.open(cache_filename) as file_object:
+                converter = get_converter_class()(
+                    file_object=file_object
+                )
+
+                converter.seek_page(page_number=0)
+
+                # This code is also repeated below to allow using a context
+                # manager with storage_documentimagecache.open and close it
+                # automatically.
+                for transformation in transformations:
+                    converter.transform(transformation=transformation)
+
+                return converter.get_page()
         else:
             logger.debug('Page cache file "%s" not found', cache_filename)
 
             try:
-                converter = get_converter_class()(
-                    file_object=self.document_version.get_intermediate_file()
-                )
-                converter.seek_page(page_number=self.page_number - 1)
+                with self.document_version.get_intermediate_file() as file_object:
+                    converter = get_converter_class()(
+                        file_object=file_object
+                    )
+                    converter.seek_page(page_number=self.page_number - 1)
 
-                page_image = converter.get_page()
+                    page_image = converter.get_page()
 
-                # Since open "wb+" doesn't create files, check if the file
-                # exists, if not then create it
-                if not storage_documentimagecache.exists(cache_filename):
-                    storage_documentimagecache.save(name=cache_filename, content=ContentFile(content=''))
+                    # Since open "wb+" doesn't create files, check if the file
+                    # exists, if not then create it
+                    if not storage_documentimagecache.exists(cache_filename):
+                        storage_documentimagecache.save(name=cache_filename, content=ContentFile(content=''))
 
-                with storage_documentimagecache.open(cache_filename, 'wb+') as file_object:
-                    file_object.write(page_image.getvalue())
+                    with storage_documentimagecache.open(cache_filename, 'wb+') as file_object:
+                        file_object.write(page_image.getvalue())
+
+                    for transformation in transformations:
+                        converter.transform(transformation=transformation)
+
+                    return page_image
             except Exception as exception:
                 # Cleanup in case of error
                 logger.error(
@@ -223,10 +239,6 @@ class DocumentPage(models.Model):
                 storage_documentimagecache.delete(cache_filename)
                 raise
 
-        for transformation in transformations:
-            converter.transform(transformation=transformation)
-
-        return converter.get_page()
 
     def invalidate_cache(self):
         storage_documentimagecache.delete(self.cache_filename)
