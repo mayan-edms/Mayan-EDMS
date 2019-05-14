@@ -39,7 +39,7 @@ user = mayan
 [program:mayan-celery-beat]
 autorestart = false
 autostart = true
-command = nice -n 1 /bin/bash -c "${MAYAN_BIN} celery --settings=${MAYAN_SETTINGS_MODULE} beat -l ERROR"
+command = nice -n 1 /bin/bash -c "${MAYAN_BIN} celery --settings=${MAYAN_SETTINGS_MODULE} beat --pidfile= -l ERROR"
 killasgroup = true
 numprocs = 1
 priority = 998

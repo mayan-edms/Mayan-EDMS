@@ -35,7 +35,7 @@ user = mayan
 [program:mayan-celery-beat]
 autorestart = true
 autostart = true
-command = nice -n 1 {{ installation_path }}/bin/mayan-edms.py celery beat -l ERROR
+command = nice -n 1 {{ installation_path }}/bin/mayan-edms.py celery beat --pidfile= -l ERROR
 killasgroup = true
 numprocs = 1
 priority = 998
