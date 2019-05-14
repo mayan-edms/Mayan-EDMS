@@ -175,22 +175,23 @@ class DocumentVersion(models.Model):
             logger.debug('Intermidiate file "%s" not found.', cache_filename)
 
             try:
-                converter = get_converter_class()(file_object=self.open())
-                with converter.to_pdf() as pdf_file_object:
+                with self.open() as version_file_object:
+                    converter = get_converter_class()(file_object=version_file_object)
+                    with converter.to_pdf() as pdf_file_object:
 
-                    # Since open "wb+" doesn't create files, check if the file
-                    # exists, if not then create it
-                    if not storage_documentimagecache.exists(cache_filename):
-                        storage_documentimagecache.save(
-                            name=cache_filename, content=ContentFile(content='')
-                        )
+                        # Since open "wb+" doesn't create files, check if the file
+                        # exists, if not then create it
+                        if not storage_documentimagecache.exists(cache_filename):
+                            storage_documentimagecache.save(
+                                name=cache_filename, content=ContentFile(content='')
+                            )
 
-                    with storage_documentimagecache.open(cache_filename, mode='wb+') as file_object:
-                        shutil.copyfileobj(
-                            fsrc=pdf_file_object, fdst=file_object
-                        )
+                        with storage_documentimagecache.open(cache_filename, mode='wb+') as file_object:
+                            shutil.copyfileobj(
+                                fsrc=pdf_file_object, fdst=file_object
+                            )
 
-                return storage_documentimagecache.open(cache_filename)
+                    return storage_documentimagecache.open(cache_filename)
             except InvalidOfficeFormat:
                 return self.open()
             except Exception as exception:
