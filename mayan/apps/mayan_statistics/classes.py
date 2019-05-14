@@ -47,6 +47,17 @@ class Statistic(object):
     renderer = None
 
     @staticmethod
+    def evaluate(data):
+        try:
+            for key, value in data.items():
+                return {key: Statistic.evaluate(data=value)}
+        except AttributeError:
+            if type(data) == map:
+                data = list(data)
+
+        return data
+
+    @staticmethod
     def purge_schedules():
         PeriodicTask = apps.get_model(
             app_label='djcelery', model_name='PeriodicTask'
@@ -119,7 +130,12 @@ class Statistic(object):
         return force_text(self.label)
 
     def execute(self):
-        self.store_results(results=self.func())
+        results=self.func()
+        # Force evaluation of results to be able to store it serialized
+        # Needed for Python 3
+        # PY3
+        results = Statistic.evaluate(data=results)
+        self.store_results(results=results)
 
     def get_chart_data(self):
         return self.renderer(data=self.get_results()).get_chart_data()
