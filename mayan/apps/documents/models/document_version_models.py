@@ -163,7 +163,7 @@ class DocumentVersion(models.Model):
         if first_page:
             return first_page.get_api_image_url(*args, **kwargs)
 
-    def get_intermidiate_file(self):
+    def get_intermediate_file(self):
         cache_filename = self.cache_filename
         logger.debug('Intermidiate filename: %s', cache_filename)
 

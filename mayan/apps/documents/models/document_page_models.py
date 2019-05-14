@@ -195,15 +195,15 @@ class DocumentPage(models.Model):
                 file_object=storage_documentimagecache.open(cache_filename)
             )
 
-            converter.seek(0)
+            converter.seek_page(page_number=0)
         else:
             logger.debug('Page cache file "%s" not found', cache_filename)
 
             try:
                 converter = get_converter_class()(
-                    file_object=self.document_version.get_intermidiate_file()
+                    file_object=self.document_version.get_intermediate_file()
                 )
-                converter.seek(page_number=self.page_number - 1)
+                converter.seek_page(page_number=self.page_number - 1)
 
                 page_image = converter.get_page()
 

@@ -77,7 +77,7 @@ class Parser(object):
             document_page.page_number, document_page.document_version
         )
 
-        file_object = document_page.document_version.get_intermidiate_file()
+        file_object = document_page.document_version.get_intermediate_file()
 
         try:
             document_page_content, created = DocumentPageContent.objects.get_or_create(

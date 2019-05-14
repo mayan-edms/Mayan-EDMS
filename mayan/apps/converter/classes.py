@@ -104,13 +104,49 @@ class ConverterBase(object):
         self.soffice_file = None
         Image.init()
 
-    def to_pdf(self):
-        if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
-            return self.soffice()
-        else:
-            raise InvalidOfficeFormat(_('Not an office file format.'))
+    def convert(self, page_number=DEFAULT_PAGE_NUMBER):
+        self.page_number = page_number
 
-    def seek(self, page_number):
+    def detect_orientation(self, page_number):
+        # Must be overrided by subclass
+        pass
+
+    def get_page(self, output_format=None):
+        output_format = output_format or yaml.load(
+            stream=setting_graphics_backend_config.value, Loader=SafeLoader
+        ).get(
+            'pillow_format', DEFAULT_PILLOW_FORMAT
+        )
+
+        if not self.image:
+            self.seek_page(page_number=0)
+
+        image_buffer = BytesIO()
+        new_mode = self.image.mode
+
+        if output_format.upper() == 'JPEG':
+            # JPEG doesn't support transparency channel, convert the image to
+            # RGB. Removes modes: P and RGBA
+            new_mode = 'RGB'
+
+        self.image.convert(new_mode).save(image_buffer, format=output_format)
+
+        image_buffer.seek(0)
+
+        return image_buffer
+
+    def get_page_count(self):
+        try:
+            self.soffice_file = self.to_pdf()
+        except InvalidOfficeFormat as exception:
+            logger.debug('Is not an office format document; %s', exception)
+
+    def seek_page(self, page_number):
+        """
+        Seek the specified page number from the source file object.
+        If the file is a paged image get the page if not convert it to a
+        paged image format and return the specified page as an image.
+        """
         # Starting with #0
         self.file_object.seek(0)
 
@@ -193,52 +229,21 @@ class ConverterBase(object):
         new_file_object.close()
         fs_cleanup(converted_output)
 
-    def get_page(self, output_format=None):
-        output_format = output_format or yaml.load(
-            stream=setting_graphics_backend_config.value, Loader=SafeLoader
-        ).get(
-            'pillow_format', DEFAULT_PILLOW_FORMAT
-        )
-
-        if not self.image:
-            self.seek(0)
-
-        image_buffer = BytesIO()
-        new_mode = self.image.mode
-
-        if output_format.upper() == 'JPEG':
-            # JPEG doesn't support transparency channel, convert the image to
-            # RGB. Removes modes: P and RGBA
-            new_mode = 'RGB'
-
-        self.image.convert(new_mode).save(image_buffer, format=output_format)
-
-        image_buffer.seek(0)
-
-        return image_buffer
-
-    def convert(self, page_number=DEFAULT_PAGE_NUMBER):
-        self.page_number = page_number
+    def to_pdf(self):
+        if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
+            return self.soffice()
+        else:
+            raise InvalidOfficeFormat(_('Not an office file format.'))
 
     def transform(self, transformation):
         if not self.image:
-            self.seek(0)
+            self.seek_page(page_number=0)
 
         self.image = transformation.execute_on(image=self.image)
 
     def transform_many(self, transformations):
         if not self.image:
-            self.seek(0)
+            self.seek_page(page_number=0)
 
         for transformation in transformations:
             self.image = transformation.execute_on(image=self.image)
-
-    def get_page_count(self):
-        try:
-            self.soffice_file = self.to_pdf()
-        except InvalidOfficeFormat as exception:
-            logger.debug('Is not an office format document; %s', exception)
-
-    def detect_orientation(self, page_number):
-        # Must be overrided by subclass
-        pass
