@@ -141,6 +141,7 @@ class ConverterBase(object):
 
             kwargs = {'_env': {'HOME': libreoffice_home_directory}}
 
+<<<<<<< HEAD
             if self.mime_type == 'text/plain':
                 kwargs.update(
                     {'infilter': 'Text (encoded):UTF8,LF,,,'}
@@ -194,6 +195,8 @@ class ConverterBase(object):
         temporary_converted_file_object.seek(0)
         return temporary_converted_file_object
 
+=======
+>>>>>>> 60c0c131ae5aa2d4614e2f1bab0b78c67cb1a484
     def to_pdf(self):
         if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
             return self.soffice()
