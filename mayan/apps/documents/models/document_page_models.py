@@ -201,7 +201,7 @@ class DocumentPage(models.Model):
 
             try:
                 converter = get_converter_class()(
-                    file_object=self.document_version.get_intermidiate_file()
+                    file_object=self.document_version.get_intermediate_file()
                 )
                 converter.seek(page_number=self.page_number - 1)
 
