@@ -12,6 +12,7 @@ from django.conf.urls import include, url
 from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
 from django.utils.encoding import force_text
+from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import Template
@@ -47,7 +48,7 @@ class MayanAppConfig(apps.AppConfig):
 
     def ready(self):
         logger.debug('Initializing app: %s', self.name)
-        from mayan.urls import urlpatterns
+        from mayan.urls import urlpatterns as mayan_urlpatterns
 
         if self.app_url:
             top_url = '{}/'.format(self.app_url)
@@ -57,12 +58,9 @@ class MayanAppConfig(apps.AppConfig):
             top_url = '{}/'.format(self.name)
 
         try:
-            urlpatterns += url(
-                regex=r'^{}'.format(top_url),
-                view=include(
-                    '{}.urls'.format(self.name), namespace=self.app_namespace or self.name
-                )
-            ),
+            app_urlpatterns = import_string(
+                dotted_path='{}.urls.urlpatterns'.format(self.name)
+            )
         except ImportError as exception:
             if force_text(exception) not in ('No module named urls', 'No module named \'{}.urls\''.format(self.name)):
                 logger.exception(
@@ -72,6 +70,14 @@ class MayanAppConfig(apps.AppConfig):
                 exc_info = sys.exc_info()
                 traceback.print_exception(*exc_info)
                 raise exception
+        else:
+            mayan_urlpatterns += (
+                url(
+                    regex=r'^{}'.format(top_url), view=include(
+                        (app_urlpatterns, self.app_namespace or self.name)
+                    )
+                ),
+            )
 
 
 class CommonApp(MayanAppConfig):
