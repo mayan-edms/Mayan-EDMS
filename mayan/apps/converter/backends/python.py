@@ -70,16 +70,6 @@ except sh.CommandNotFound:
 logger = logging.getLogger(__name__)
 
 
-class IteratorIO(object):
-    def __init__(self, iterator):
-        self.file_buffer = io.BytesIO()
-
-        for chunk in iterator:
-            self.file_buffer.write(chunk)
-
-        self.file_buffer.seek(0)
-
-
 class Python(ConverterBase):
     def convert(self, *args, **kwargs):
         super(Python, self).convert(*args, **kwargs)
@@ -142,7 +132,7 @@ class Python(ConverterBase):
 
         if self.mime_type == 'application/pdf' or self.soffice_file:
             if self.soffice_file:
-                file_object = IteratorIO(self.soffice_file).file_buffer
+                file_object = self.soffice_file
             else:
                 file_object = self.file_object
 

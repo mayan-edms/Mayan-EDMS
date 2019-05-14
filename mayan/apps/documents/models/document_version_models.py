@@ -176,16 +176,19 @@ class DocumentVersion(models.Model):
 
             try:
                 converter = get_converter_class()(file_object=self.open())
-                pdf_file_object = converter.to_pdf()
+                with converter.to_pdf() as pdf_file_object:
 
-                # Since open "wb+" doesn't create files, check if the file
-                # exists, if not then create it
-                if not storage_documentimagecache.exists(cache_filename):
-                    storage_documentimagecache.save(name=cache_filename, content=ContentFile(content=''))
+                    # Since open "wb+" doesn't create files, check if the file
+                    # exists, if not then create it
+                    if not storage_documentimagecache.exists(cache_filename):
+                        storage_documentimagecache.save(
+                            name=cache_filename, content=ContentFile(content='')
+                        )
 
-                with storage_documentimagecache.open(cache_filename, mode='wb+') as file_object:
-                    for chunk in pdf_file_object:
-                        file_object.write(chunk)
+                    with storage_documentimagecache.open(cache_filename, mode='wb+') as file_object:
+                        shutil.copyfileobj(
+                            fsrc=pdf_file_object, fdst=file_object
+                        )
 
                 return storage_documentimagecache.open(cache_filename)
             except InvalidOfficeFormat:

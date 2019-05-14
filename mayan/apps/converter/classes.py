@@ -168,66 +168,81 @@ class ConverterBase(object):
                 _('LibreOffice not installed or not found.')
             )
 
-        new_file_object = NamedTemporaryFile()
-        input_filepath = new_file_object.name
-        self.file_object.seek(0)
-        shutil.copyfileobj(fsrc=self.file_object, fdst=new_file_object)
-        self.file_object.seek(0)
-        new_file_object.seek(0)
-
-        libreoffice_filter = None
-        if self.mime_type == 'text/plain':
-            libreoffice_filter = 'Text (encoded):UTF8,LF,,,'
-
-        libreoffice_home_directory = mkdtemp()
-        args = (
-            input_filepath, '--outdir', setting_temporary_directory.value,
-            '-env:UserInstallation=file://{}'.format(
-                os.path.join(
-                    libreoffice_home_directory, 'LibreOffice_Conversion'
-                )
-            ),
-        )
-
-        kwargs = {'_env': {'HOME': libreoffice_home_directory}}
-
-        if libreoffice_filter:
-            kwargs.update({'infilter': libreoffice_filter})
-
-        try:
-            LIBREOFFICE(*args, **kwargs)
-        except sh.ErrorReturnCode as exception:
-            new_file_object.close()
-            raise OfficeConversionError(exception)
-        except Exception as exception:
-            new_file_object.close()
-            logger.error('Exception launching Libre Office; %s', exception)
-            raise
-        finally:
-            fs_cleanup(libreoffice_home_directory)
-
-        filename, extension = os.path.splitext(
-            os.path.basename(input_filepath)
-        )
-        logger.debug('filename: %s', filename)
-        logger.debug('extension: %s', extension)
-
-        converted_output = os.path.join(
-            setting_temporary_directory.value, os.path.extsep.join(
-                (filename, 'pdf')
+        with NamedTemporaryFile() as temporary_file_object:
+            # Copy the source file object of the converter instance to a
+            # named temporary file to be able to pass it to the LibreOffice
+            # execution.
+            self.file_object.seek(0)
+            shutil.copyfileobj(
+                fsrc=self.file_object, fdst=temporary_file_object
             )
-        )
-        logger.debug('converted_output: %s', converted_output)
+            self.file_object.seek(0)
+            temporary_file_object.seek(0)
 
-        with open(converted_output, mode='rb') as converted_file_object:
-            while True:
-                data = converted_file_object.read(CHUNK_SIZE)
-                if not data:
-                    break
-                yield data
+            libreoffice_home_directory = mkdtemp()
+            args = (
+                temporary_file_object.name, '--outdir', setting_temporary_directory.value,
+                '-env:UserInstallation=file://{}'.format(
+                    os.path.join(
+                        libreoffice_home_directory, 'LibreOffice_Conversion'
+                    )
+                ),
+            )
 
-        new_file_object.close()
-        fs_cleanup(converted_output)
+            kwargs = {'_env': {'HOME': libreoffice_home_directory}}
+
+            if self.mime_type == 'text/plain':
+                kwargs.update(
+                    {'infilter': 'Text (encoded):UTF8,LF,,,'}
+                )
+
+            try:
+                LIBREOFFICE(*args, **kwargs)
+            except sh.ErrorReturnCode as exception:
+                temporary_file_object.close()
+                raise OfficeConversionError(exception)
+            except Exception as exception:
+                temporary_file_object.close()
+                logger.error('Exception launching Libre Office; %s', exception)
+                raise
+            finally:
+                fs_cleanup(libreoffice_home_directory)
+
+            # LibreOffice return a PDF file with the same name as the input
+            # provided but with the .pdf extension.
+
+            # Get the converted output file path out of the temporary file
+            # name plus the temporary directory
+
+            filename, extension = os.path.splitext(
+                os.path.basename(temporary_file_object.name)
+            )
+
+            logger.debug('filename: %s', filename)
+            logger.debug('extension: %s', extension)
+
+            converted_file_path = os.path.join(
+                setting_temporary_directory.value, os.path.extsep.join(
+                    (filename, 'pdf')
+                )
+            )
+            logger.debug('converted_file_path: %s', converted_file_path)
+
+        # Don't use context manager with the NamedTemporaryFile on purpose
+        # so that it is deleted when the caller closes the file and not
+        # before.
+
+        temporary_converted_file_object = NamedTemporaryFile()
+
+        # Copy the LibreOffice output file to a new named temporary file
+        # and delete the converted file
+        with open(converted_file_path, mode='rb') as converted_file_object:
+            shutil.copyfileobj(
+                fsrc=converted_file_object, fdst=temporary_converted_file_object
+            )
+        fs_cleanup(converted_file_path)
+        temporary_converted_file_object.seek(0)
+        return temporary_converted_file_object
 
     def to_pdf(self):
         if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
