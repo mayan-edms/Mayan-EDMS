@@ -70,12 +70,12 @@ class DocumentTypeSettings(models.Model):
 @python_2_unicode_compatible
 class DocumentVersionDriverEntry(models.Model):
     driver = models.ForeignKey(
-        related_name='driver_entries', to=StoredDriver,
-        verbose_name=_('Driver')
+        on_delete=models.CASCADE, related_name='driver_entries',
+        to=StoredDriver, verbose_name=_('Driver')
     )
     document_version = models.ForeignKey(
-        related_name='file_metadata_drivers', to=DocumentVersion,
-        verbose_name=_('Document version')
+        on_delete=models.CASCADE, related_name='file_metadata_drivers',
+        to=DocumentVersion, verbose_name=_('Document version')
     )
 
     class Meta:
@@ -95,7 +95,8 @@ class DocumentVersionDriverEntry(models.Model):
 @python_2_unicode_compatible
 class FileMetadataEntry(models.Model):
     document_version_driver_entry = models.ForeignKey(
-        related_name='entries', to=DocumentVersionDriverEntry,
+        on_delete=models.CASCADE, related_name='entries',
+        to=DocumentVersionDriverEntry,
         verbose_name=_('Document version driver entry')
     )
 
