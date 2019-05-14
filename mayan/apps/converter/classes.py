@@ -24,73 +24,17 @@ from mayan.apps.storage.utils import (
 
 from .exceptions import InvalidOfficeFormat, OfficeConversionError
 from .literals import (
-    DEFAULT_LIBREOFFICE_PATH, DEFAULT_PAGE_NUMBER, DEFAULT_PILLOW_FORMAT
+    CONVERTER_OFFICE_FILE_MIMETYPES, DEFAULT_LIBREOFFICE_PATH,
+    DEFAULT_PAGE_NUMBER, DEFAULT_PILLOW_FORMAT
 )
 from .settings import setting_graphics_backend_config
 
-CHUNK_SIZE = 1024
 logger = logging.getLogger(__name__)
-
-
-libreoffice_path = yaml.load(
+BACKEND_CONFIG = yaml.load(
     stream=setting_graphics_backend_config.value, Loader=SafeLoader
-).get(
-    'libreoffice_path', DEFAULT_LIBREOFFICE_PATH
 )
-
-try:
-    LIBREOFFICE = sh.Command(libreoffice_path).bake(
-        '--headless', '--convert-to', 'pdf:writer_pdf_Export'
-    )
-except sh.CommandNotFound:
-    LIBREOFFICE = None
-
-
-CONVERTER_OFFICE_FILE_MIMETYPES = (
-    'application/msword',
-    'application/mswrite',
-    'application/mspowerpoint',
-    'application/msexcel',
-    'application/pgp-keys',
-    'application/vnd.ms-excel',
-    'application/vnd.ms-excel.addin.macroEnabled.12',
-    'application/vnd.ms-excel.sheet.binary.macroEnabled.12',
-    'application/vnd.ms-powerpoint',
-    'application/vnd.oasis.opendocument.chart',
-    'application/vnd.oasis.opendocument.chart-template',
-    'application/vnd.oasis.opendocument.formula',
-    'application/vnd.oasis.opendocument.formula-template',
-    'application/vnd.oasis.opendocument.graphics',
-    'application/vnd.oasis.opendocument.graphics-template',
-    'application/vnd.oasis.opendocument.image',
-    'application/vnd.oasis.opendocument.image-template',
-    'application/vnd.oasis.opendocument.presentation',
-    'application/vnd.oasis.opendocument.presentation-template',
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.template',
-    'application/vnd.openxmlformats-officedocument.presentationml.template',
-    'application/vnd.openxmlformats-officedocument.presentationml.slideshow',
-    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-    'application/vnd.openxmlformats-officedocument.presentationml.slide',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.template',
-    'application/vnd.oasis.opendocument.spreadsheet',
-    'application/vnd.oasis.opendocument.spreadsheet-template',
-    'application/vnd.oasis.opendocument.text',
-    'application/vnd.oasis.opendocument.text-master',
-    'application/vnd.oasis.opendocument.text-template',
-    'application/vnd.oasis.opendocument.text-web',
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    'application/vnd.ms-office',
-    'application/xml',
-    'text/x-c',
-    'text/x-c++',
-    'text/x-pascal',
-    'text/x-msdos-batch',
-    'text/x-python',
-    'text/x-shellscript',
-    'text/plain',
-    'text/rtf',
+libreoffice_path = BACKEND_CONFIG.get(
+    'libreoffice_path', DEFAULT_LIBREOFFICE_PATH
 )
 
 
@@ -103,6 +47,12 @@ class ConverterBase(object):
         )[0]
         self.soffice_file = None
         Image.init()
+        try:
+            self.command_libreoffice = sh.Command(libreoffice_path).bake(
+                '--headless', '--convert-to', 'pdf:writer_pdf_Export'
+            )
+        except sh.CommandNotFound:
+            self.command_libreoffice = None
 
     def convert(self, page_number=DEFAULT_PAGE_NUMBER):
         self.page_number = page_number
@@ -163,7 +113,7 @@ class ConverterBase(object):
         """
         Executes LibreOffice as a subprocess
         """
-        if not LIBREOFFICE:
+        if not self.command_libreoffice:
             raise OfficeConversionError(
                 _('LibreOffice not installed or not found.')
             )
@@ -197,7 +147,7 @@ class ConverterBase(object):
                 )
 
             try:
-                LIBREOFFICE(*args, **kwargs)
+                self.command_libreoffice(*args, **kwargs)
             except sh.ErrorReturnCode as exception:
                 temporary_file_object.close()
                 raise OfficeConversionError(exception)
