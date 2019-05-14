@@ -84,6 +84,8 @@ class Statistic(object):
         return [task.get_task_name() for task in cls.get_all()]
 
     def __init__(self, slug, label, func, minute='*', hour='*', day_of_week='*', day_of_month='*', month_of_year='*'):
+        from .queues import queue_statistics, task_execute_statistic
+
         self.slug = slug
         self.label = label
         self.func = func
@@ -96,7 +98,7 @@ class Statistic(object):
         app.conf.CELERYBEAT_SCHEDULE.update(
             {
                 self.get_task_name(): {
-                    'task': 'mayan_statistics.tasks.task_execute_statistic',
+                    'task': task_execute_statistic.dotted_path,
                     'schedule': self.schedule,
                     'args': (self.slug,)
                 },
@@ -106,7 +108,7 @@ class Statistic(object):
         app.conf.CELERY_ROUTES.update(
             {
                 self.get_task_name(): {
-                    'queue': 'statistics'
+                    'queue': queue_statistics.name
                 },
             }
         )
