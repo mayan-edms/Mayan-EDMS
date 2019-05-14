@@ -260,7 +260,7 @@
   The .queues.py module is now loaded automatically.
 * Allow setting the Docker user UID and GUID.
 * Add task path validation.
-
+* Increase dropzone upload file size limit to 2GB.
 
 3.1.11 (2019-04-XX)
 ===================
