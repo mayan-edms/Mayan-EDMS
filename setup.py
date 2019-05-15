@@ -56,8 +56,9 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-Django==1.11.20
+django==1.11.20
 Pillow==6.0.0
+PyPDF2==1.26.0
 PyYAML==5.1
 celery==3.1.24
 django-activity-stream==0.7.0
@@ -67,10 +68,10 @@ django-cors-headers==2.5.2
 django-downloadview==1.9
 django-environ==0.4.5
 django-formtools==2.1
-django-pure-pagination==0.3.0
 django-mathfilters==0.4.0
 django-model-utils==3.1.2
 django-mptt==0.9.1
+django-pure-pagination==0.3.0
 django-qsstats-magic==1.0.0
 django-solo==1.1.3
 django-stronghold==0.3.0
@@ -89,11 +90,10 @@ mock==2.0.0
 node-semver==0.6.1
 pathlib2==2.3.3
 pycountry==18.12.8
-PyPDF2==1.26.0
 pyocr==0.6
 python-dateutil==2.8.0
-python-gnupg==0.3.9
 python-magic==0.4.15
+python_gnupg==0.3.9
 pytz==2019.1
 requests==2.21.0
 sh==1.12.14
@@ -121,6 +121,11 @@ setup(
         'Natural Language :: English',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: WSGI :: Application',
         'Topic :: Communications :: File Sharing',
@@ -133,6 +138,7 @@ setup(
     name=PACKAGE_NAME,
     packages=find_packages(PACKAGE_DIR),
     platforms=['any'],
+    python_requires = '>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
     scripts=['mayan/bin/mayan-edms.py'],
     url='https://gitlab.com/mayan-edms/mayan-edms',
     version=mayan.__version__,

@@ -1,2 +1,1 @@
-Django==1.11.20
--r base.txt
+django==1.11.20

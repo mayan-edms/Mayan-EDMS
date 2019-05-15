@@ -1,19 +1,9 @@
-# requirements/development.txt
 Werkzeug==0.15.2
-
 django-debug-toolbar==1.11
 django-extensions==2.1.6
 django-rosetta==0.9.2
-
 flake8==3.7.7
-
 ipython==5.5.0
-
 readme==0.7.1
-
 safety==1.8.5
-
 transifex-client==0.13.6
-
--r build.txt
--r testing-base.txt
