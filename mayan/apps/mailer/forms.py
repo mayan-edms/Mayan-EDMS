@@ -94,8 +94,9 @@ class UserMailerDynamicForm(DynamicModelForm):
     def __init__(self, *args, **kwargs):
         result = super(UserMailerDynamicForm, self).__init__(*args, **kwargs)
         if self.instance.backend_data:
-            for key, value in json.loads(self.instance.backend_data).items():
-                self.fields[key].initial = value
+            backend_data = json.loads(self.instance.backend_data)
+            for key in self.instance.get_backend().fields:
+                self.fields[key].initial = backend_data[key]
 
         return result
 
