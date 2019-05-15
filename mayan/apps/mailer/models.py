@@ -3,13 +3,16 @@ from __future__ import unicode_literals
 import json
 import logging
 
-from django.contrib.sites.models import Site
+from furl import furl
+
 from django.core import mail
 from django.db import models, transaction
 from django.template import Context, Template
 from django.utils.html import strip_tags
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
+
+from mayan.apps.common.settings import setting_project_url
 
 from .classes import NullBackend
 from .events import event_email_sent
@@ -174,10 +177,9 @@ class UserMailer(models.Model):
         Send a document using this user mailing profile.
         """
         context_dictionary = {
-            'link': 'http://%s%s' % (
-                Site.objects.get_current().domain,
+            'link': furl(setting_project_url.value).join(
                 document.get_absolute_url()
-            ),
+            ).tostr(),
             'document': document
         }
 

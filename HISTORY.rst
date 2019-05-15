@@ -265,6 +265,9 @@
 * Show a null mailer backend if there is backend with an
   invalid path. Due to the app full path change, existing
   mailer setups need to be recreated. 
+* The document link URL when mailed is now composed of the
+  COMMON_PROJECT_URL + document URL instead of the Site
+  domain.
 
 3.1.11 (2019-04-XX)
 ===================
