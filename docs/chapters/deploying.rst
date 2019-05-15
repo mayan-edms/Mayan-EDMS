@@ -89,70 +89,11 @@ Create the supervisor file at ``/etc/supervisor/conf.d/mayan.conf``:
 --------------------------------------------------------------------
 ::
 
-    [supervisord]
-    environment=
-        MAYAN_ALLOWED_HOSTS='["*"]',  # Allow access to other network hosts other than localhost
-        MAYAN_CELERY_RESULT_BACKEND="redis://127.0.0.1:6379/0",
-        MAYAN_BROKER_URL="redis://127.0.0.1:6379/0",
-        PYTHONPATH=/opt/mayan-edms/lib/python2.7/site-packages:/opt/mayan-edms/data,
-        MAYAN_MEDIA_ROOT=/opt/mayan-edms/media,
-        MAYAN_DATABASE_ENGINE=django.db.backends.postgresql,
-        MAYAN_DATABASE_HOST=127.0.0.1,
-        MAYAN_DATABASE_NAME=mayan,
-        MAYAN_DATABASE_PASSWORD=mayanuserpass,
-        MAYAN_DATABASE_USER=mayan,
-        MAYAN_DATABASE_CONN_MAX_AGE=60,
-        DJANGO_SETTINGS_MODULE=mayan.settings.production
+    MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+    MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+    MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
+    /opt/mayan-edms/bin/mayan-edms.py platformtemplate supervisord > /etc/supervisor/conf.d/mayan.conf
 
-    [program:mayan-gunicorn]
-    autorestart = true
-    autostart = true
-    command = /opt/mayan-edms/bin/gunicorn -w 2 mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
-    user = mayan
-
-    [program:mayan-worker-fast]
-    autorestart = true
-    autostart = true
-    command = nice -n 1 /opt/mayan-edms/bin/mayan-edms.py celery worker -Ofair -l ERROR -Q converter,sources_fast -n mayan-worker-fast.%%h --concurrency=1
-    killasgroup = true
-    numprocs = 1
-    priority = 998
-    startsecs = 10
-    stopwaitsecs = 1
-    user = mayan
-
-    [program:mayan-worker-medium]
-    autorestart = true
-    autostart = true
-    command = nice -n 18 /opt/mayan-edms/bin/mayan-edms.py celery worker -Ofair -l ERROR -Q checkouts_periodic,documents_periodic,indexing,metadata,sources,sources_periodic,uploads,documents -n mayan-worker-medium.%%h --concurrency=1
-    killasgroup = true
-    numprocs = 1
-    priority = 998
-    startsecs = 10
-    stopwaitsecs = 1
-    user = mayan
-
-    [program:mayan-worker-slow]
-    autorestart = true
-    autostart = true
-    command = nice -n 19 /opt/mayan-edms/bin/mayan-edms.py celery worker -Ofair -l ERROR -Q mailing,tools,statistics,parsing,ocr -n mayan-worker-slow.%%h --concurrency=1
-    killasgroup = true
-    numprocs = 1
-    priority = 998
-    startsecs = 10
-    stopwaitsecs = 1
-    user = mayan
-
-    [program:mayan-celery-beat]
-    autorestart = true
-    autostart = true
-    command = nice -n 1 /opt/mayan-edms/bin/mayan-edms.py celery beat --pidfile= -l ERROR
-    killasgroup = true
-    numprocs = 1
-    priority = 998
-    startsecs = 10
-    stopwaitsecs = 1
-    user = mayan
 
 Configure Redis to discard data when it runs out of memory, not save its database and only keep 1 database:
 -----------------------------------------------------------------------------------------------------------
@@ -176,11 +117,11 @@ Enable and restart the services [1_]:
 Advanced deployment
 ===================
 
-This variation uses RabbitMQ as the message broker and removes the fast worker
-concurrency restriction. RabbitMQ consumes more memory but scales to thousands
-of messages. RabbitMQ messages are also persistent, this means that pending
-tasks are not lost in the case of a restart. The database connection lifetime
-is increased to 10 minutes. The Gunicorn workers are increased to 3.
+This variation uses RabbitMQ as the message broker. RabbitMQ consumes more
+memory but scales to thousands of messages. RabbitMQ messages are also
+persistent, this means that pending tasks are not lost in the case of a
+restart. The database connection lifetime is increased to 10 minutes.
+The Gunicorn workers are increased to 3.
 
 Binary dependencies
 -------------------
@@ -260,74 +201,21 @@ Create the RabbitMQ user and vhost:
     sudo rabbitmqctl add_vhost mayan
     sudo rabbitmqctl set_permissions -p mayan mayan ".*" ".*" ".*"
 
+
 Create the supervisor file at ``/etc/supervisor/conf.d/mayan.conf``:
 --------------------------------------------------------------------
 ::
 
-    [supervisord]
-    environment=
-        MAYAN_ALLOWED_HOSTS='["*"]',  # Allow access to other network hosts other than localhost
-        MAYAN_CELERY_RESULT_BACKEND="redis://127.0.0.1:6379/0",
-        MAYAN_BROKER_URL="amqp://mayan:mayanrabbitmqpassword@localhost:5672/mayan",
-        PYTHONPATH=/opt/mayan-edms/lib/python2.7/site-packages:/opt/mayan-edms/data,
-        MAYAN_MEDIA_ROOT=/opt/mayan-edms/media,
-        MAYAN_DATABASE_ENGINE=django.db.backends.postgresql,
-        MAYAN_DATABASE_HOST=127.0.0.1,
-        MAYAN_DATABASE_NAME=mayan,
-        MAYAN_DATABASE_PASSWORD=mayanuserpass,
-        MAYAN_DATABASE_USER=mayan,
-        MAYAN_DATABASE_CONN_MAX_AGE=360,
-        DJANGO_SETTINGS_MODULE=mayan.settings.production
-
-    [program:mayan-gunicorn]
-    autorestart = true
-    autostart = true
-    command = /opt/mayan-edms/bin/gunicorn -w 3 mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
-    user = mayan
-
-    [program:mayan-worker-fast]
-    autorestart = true
-    autostart = true
-    command = nice -n 1 /opt/mayan-edms/bin/mayan-edms.py celery worker -Ofair -l ERROR -Q converter,sources_fast -n mayan-worker-fast.%%h
-    killasgroup = true
-    numprocs = 1
-    priority = 998
-    startsecs = 10
-    stopwaitsecs = 1
-    user = mayan
-
-    [program:mayan-worker-medium]
-    autorestart = true
-    autostart = true
-    command = nice -n 18 /opt/mayan-edms/bin/mayan-edms.py celery worker -Ofair -l ERROR -Q checkouts_periodic,documents_periodic,indexing,metadata,sources,sources_periodic,uploads,documents -n mayan-worker-medium.%%h --concurrency=1
-    killasgroup = true
-    numprocs = 1
-    priority = 998
-    startsecs = 10
-    stopwaitsecs = 1
-    user = mayan
-
-    [program:mayan-worker-slow]
-    autorestart = true
-    autostart = true
-    command = nice -n 19 /opt/mayan-edms/bin/mayan-edms.py celery worker -Ofair -l ERROR -Q mailing,tools,statistics,parsing,ocr -n mayan-worker-slow.%%h --concurrency=1
-    killasgroup = true
-    numprocs = 1
-    priority = 998
-    startsecs = 10
-    stopwaitsecs = 1
-    user = mayan
-
-    [program:mayan-celery-beat]
-    autorestart = true
-    autostart = true
-    command = nice -n 1 /opt/mayan-edms/bin/mayan-edms.py celery beat --pidfile= -l ERROR
-    killasgroup = true
-    numprocs = 1
-    priority = 998
-    startsecs = 10
-    stopwaitsecs = 1
-    user = mayan
+    MAYAN_DATABASE_ENGINE=django.db.backends.postgresql \
+    MAYAN_DATABASE_NAME=mayan \
+    MAYAN_DATABASE_PASSWORD=mayanuserpass \
+    MAYAN_DATABASE_USER=mayan \
+    MAYAN_DATABASE_HOST=127.0.0.1 \
+    MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
+    MAYAN_BROKER_URL=amqp://mayan:mayanrabbitmqpassword@localhost:5672/mayan \
+    MAYAN_DATABASE_CONN_MAX_AGE=360 \
+    MAYAN_GUNICORN_WORKERS=3 \
+    /opt/mayan-edms/bin/mayan-edms.py platformtemplate supervisord > /etc/supervisor/conf.d/mayan.conf
 
 Configure Redis to discard data when it runs out of memory, not save its database and only keep 1 database:
 -----------------------------------------------------------------------------------------------------------
