@@ -301,6 +301,6 @@ check-missing-migrations: ## Make sure all models have proper migrations.
 	./manage.py makemigrations --dry-run --noinput --check
 
 setup-dev-environment:
-	pip install -r requirements.txt -r requirements/development.txt -r requirements/testing.txt -r requirements/documentation.txt
+	pip install -r requirements.txt -r requirements/development.txt -r requirements/testing-base.txt -r requirements/documentation.txt -r requirements/build.txt
 
 -include docker/Makefile
