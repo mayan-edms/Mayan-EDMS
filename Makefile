@@ -115,11 +115,6 @@ translations-push: ## Upload all translation files to Transifex.
 translations-pull: ## Download all translation files from Transifex.
 	tx pull -f
 
-
-generate-setup: ## Create and update the setup.py file.
-	@./generate_setup.py
-	@echo "Complete."
-
 # Releases
 
 increase-version: ## Increase the version number of the entire project's files.
@@ -224,6 +219,18 @@ python-wheel-test-suit: wheel
 	_virtualenv/bin/mayan-edms.py test --mayan-apps \
 	'
 
+generate-setup: ## Create and update the setup.py file.
+generate-setup: generate-requirements
+	@./generate_setup.py
+	@echo "Complete."
+
+generate-requirements: ## Generate all requirements files from the project depedency declarations.
+	@./manage.py generaterequirements build > requirements/build.txt
+	@./manage.py generaterequirements development > requirements/development.txt
+	@./manage.py generaterequirements testing > requirements/testing-base.txt
+	@./manage.py generaterequirements production --exclude=django > requirements/base.txt
+	@./manage.py generaterequirements production --only=django > requirements/common.txt
+
 # Dev server
 
 runserver: ## Run the development server.
@@ -300,7 +307,7 @@ check-readme: ## Checks validity of the README.rst file for PyPI publication.
 check-missing-migrations: ## Make sure all models have proper migrations.
 	./manage.py makemigrations --dry-run --noinput --check
 
-setup-dev-environment:
+setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
 	pip install -r requirements.txt -r requirements/development.txt -r requirements/testing-base.txt -r requirements/documentation.txt -r requirements/build.txt
 
 -include docker/Makefile

@@ -579,6 +579,8 @@ Other changes
   COMMON_PROJECT_URL + document URL instead of the Site
   domain.
 * Add the checkdependencies command.
+* Add comment and make file target to generate all requirement
+  files.
 
 
 Removals

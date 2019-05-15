@@ -269,6 +269,8 @@
   COMMON_PROJECT_URL + document URL instead of the Site
   domain.
 * Add the checkdependencies command.
+* Add comment and make file target to generate all requirement
+  files.
 
 3.1.11 (2019-04-XX)
 ===================
