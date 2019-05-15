@@ -667,10 +667,16 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
+* :gitlab-issue:`475` Finish converting all views to class based views.
 * :gitlab-issue:`498` Can't scan subdirectories
 * :gitlab-issue:`522` Office 365 SMTP
 * :gitlab-issue:`539` Setting for default email sender is missing
+* :gitlab-issue:`543` Docker: Support PGID/PUID Usage
+* :gitlab-issue:`549` Clean docker installation does not create documents_cache folder
+* :gitlab-issue:`550` Document content does not appear for non-PDF files
+* :gitlab-issue:`553` Python 3
 * :gitlab-issue:`563` Recursive Watch Folder
 * :gitlab-issue:`579` Untranslated items
+* :gitlab-issue:`589` Document {{ link }} send via Email contains example.com as domain
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
