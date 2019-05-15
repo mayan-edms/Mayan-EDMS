@@ -55,17 +55,24 @@ class DependencyEnvironment(object):
         return force_text(self.label)
 
 
-environment_production = DependencyEnvironment(
+environment_build = DependencyEnvironment(
     help_text=_(
-        'Normal environment for end users. A missing depedencies under this '
-        'environment will result issues and error during normal use.'
-    ), label=_('Production'), name='production'
+        'Environment used for building distributable packages of the '
+        'software. End users can ignore missing depedencies under this '
+        'environment.'
+    ), label=_('Build'), name='build'
 )
 environment_development = DependencyEnvironment(
     help_text=_(
         'Environment used for developers to make code changes. End users '
         'can ignore missing depedencies under this environment.'
     ), label=_('Development'), name='development'
+)
+environment_production = DependencyEnvironment(
+    help_text=_(
+        'Normal environment for end users. A missing depedencies under this '
+        'environment will result issues and error during normal use.'
+    ), label=_('Production'), name='production'
 )
 environment_testing = DependencyEnvironment(
     help_text=_(
@@ -191,10 +198,10 @@ class Dependency(object):
         return Dependency.return_sorted(dependencies=dependencies)
 
     @classmethod
-    def get_for_attribute(cls, attribute_name, attribute_value):
+    def get_for_attribute(cls, attribute_name, attribute_value, **kwargs):
         result = []
 
-        for dependency in cls.get_all():
+        for dependency in cls.get_all(**kwargs):
             if resolve_attribute(attribute=attribute_name, obj=dependency) == attribute_value:
                 result.append(dependency)
 

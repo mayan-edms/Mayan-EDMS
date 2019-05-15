@@ -3,7 +3,8 @@ from __future__ import absolute_import, unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.dependencies.classes import (
-    environment_development, environment_testing, PythonDependency
+    environment_build, environment_development, environment_testing,
+    PythonDependency
 )
 
 PythonDependency(
@@ -443,4 +444,13 @@ PythonDependency(
 PythonDependency(
     environment=environment_testing, module=__name__, name='psutil',
     version_string='==5.6.1'
+)
+
+PythonDependency(
+    environment=environment_build, module=__name__, name='twine',
+    version_string='==1.9.1'
+)
+PythonDependency(
+    environment=environment_build, module=__name__, name='wheel',
+    version_string='==0.30.0'
 )
