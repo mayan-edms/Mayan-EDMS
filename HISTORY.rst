@@ -262,6 +262,9 @@
 * Add task path validation.
 * Increase dropzone upload file size limit to 2GB.
 * Add cabinet created and edited events.
+* Show a null mailer backend if there is backend with an
+  invalid path. Due to the app full path change, existing
+  mailer setups need to be recreated. 
 
 3.1.11 (2019-04-XX)
 ===================

@@ -6,6 +6,7 @@ import logging
 from django.apps import apps
 from django.utils import six
 from django.utils.encoding import force_text
+from django.utils.translation import ugettext_lazy as _
 
 logger = logging.getLogger(__name__)
 
@@ -74,3 +75,7 @@ class MailerBackend(six.with_metaclass(MailerBackendMetaclass, MailerBackendBase
                         'Error importing %s mailers.py file; %s', app.name,
                         exception
                     )
+
+
+class NullBackend(MailerBackend):
+    label = _('Null backend')

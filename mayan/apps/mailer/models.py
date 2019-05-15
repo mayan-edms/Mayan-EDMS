@@ -11,6 +11,7 @@ from django.utils.html import strip_tags
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
+from .classes import NullBackend
 from .events import event_email_sent
 from .managers import UserMailerManager
 from .utils import split_recipient_list
@@ -99,7 +100,10 @@ class UserMailer(models.Model):
         """
         Retrieves the backend by importing the module and the class
         """
-        return import_string(self.backend_path)
+        try:
+            return import_string(self.backend_path)
+        except ImportError:
+            return NullBackend
 
     def get_connection(self):
         """
