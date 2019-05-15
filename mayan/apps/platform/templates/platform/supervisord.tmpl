@@ -1,29 +1,29 @@
 [supervisord]
 environment=
     MAYAN_ALLOWED_HOSTS='["*"]',  # Allow access to other network hosts other than localhost
-    MAYAN_CELERY_RESULT_BACKEND="{{ result_backend }}",
-    MAYAN_BROKER_URL="{{ broker_url }}",
-    PYTHONPATH={{ installation_path }}/lib/python2.7/site-packages:{{ media_root }}/mayan_settings,
-    MAYAN_MEDIA_ROOT={{ media_root }},
-    MAYAN_DATABASE_ENGINE={{ database_engine }},
-    MAYAN_DATABASE_HOST={{ database_host }},
-    MAYAN_DATABASE_NAME={{ database_name }},
-    MAYAN_DATABASE_PASSWORD={{ database_password }},
-    MAYAN_DATABASE_USER={{ database_user }},
-    MAYAN_DATABASE_CONN_MAX_AGE={{ database_conn_max_age }},
+    MAYAN_CELERY_RESULT_BACKEND="{{ CELERY_RESULT_BACKEND }}",
+    MAYAN_BROKER_URL="{{ BROKER_URL }}",
+    PYTHONPATH={{ INSTALLATION_PATH }}/lib/python2.7/site-packages:{{ MEDIA_ROOT }}/mayan_settings,
+    MAYAN_MEDIA_ROOT={{ MEDIA_ROOT }},
+    MAYAN_DATABASE_ENGINE={{ DATABASE_ENGINE }},
+    MAYAN_DATABASE_HOST={{ DATABASE_HOST }},
+    MAYAN_DATABASE_NAME={{ DATABASE_NAME }},
+    MAYAN_DATABASE_PASSWORD={{ DATABASE_PASSWORD }},
+    MAYAN_DATABASE_USER={{ DATABASE_USER }},
+    MAYAN_DATABASE_CONN_MAX_AGE={{ DATABASE_CONN_MAX_AGE }},
     DJANGO_SETTINGS_MODULE=mayan.settings.production
 
 [program:mayan-gunicorn]
 autorestart = true
 autostart = true
-command = {{ installation_path }}/bin/gunicorn -w {{ gunicorn_workers }} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
+command = {{ INSTALLATION_PATH }}/bin/gunicorn -w {{ GUNICORN_WORKERS }} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
 user = mayan
 
 {% for worker in workers %}
 [program:mayan-worker-{{ worker.name }}]
 autorestart = true
 autostart = true
-command = nice -n {{ worker.nice_level }} {{ installation_path }}/bin/mayan-edms.py celery worker -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} -n mayan-worker-{{ worker.name }}.%%h --concurrency=1
+command = nice -n {{ worker.nice_level }} {{ INSTALLATION_PATH }}/bin/mayan-edms.py celery worker -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} -n mayan-worker-{{ worker.name }}.%%h --concurrency=1
 killasgroup = true
 numprocs = 1
 priority = 998
@@ -35,7 +35,7 @@ user = mayan
 [program:mayan-celery-beat]
 autorestart = true
 autostart = true
-command = nice -n 1 {{ installation_path }}/bin/mayan-edms.py celery beat --pidfile= -l ERROR
+command = nice -n 1 {{ INSTALLATION_PATH }}/bin/mayan-edms.py celery beat --pidfile= -l ERROR
 killasgroup = true
 numprocs = 1
 priority = 998
