@@ -34,7 +34,7 @@ test-launch-postgres:
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
 	docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data healthcheck/postgres
-	sudo apt-get install -qq libpq-dev
+	sudo apt-get install -q libpq-dev
 	pip install psycopg2
 	while ! docker inspect --format='{{json .State.Health}}' test-postgres|grep 'Status":"healthy"'; do sleep 1; done
 
@@ -54,8 +54,8 @@ test-launch-mysql:
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
 	docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan -v test-mysql:/var/lib/mysql healthcheck/mysql
-	sudo apt-get install -qq libmysqlclient-dev mysql-client
-	pip install mysql-python
+	sudo apt-get install -q libmysqlclient-dev mysql-client
+	pip install mysqlclient
 	while ! docker inspect --format='{{json .State.Health}}' test-mysql|grep 'Status":"healthy"'; do sleep 1; done
 	mysql -h 127.0.0.1 -P 3306 -uroot  -e "set global character_set_server=utf8mb4;"
 
