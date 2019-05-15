@@ -152,7 +152,7 @@ job_push_python:
     - locale-gen en_US.UTF-8
     - update-locale LANG=en_US.UTF-8
     - export LC_ALL=en_US.UTF-8
-    - apt-get install -qq curl exiftool gcc ghostscript gpgv gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils libreoffice poppler-utils python-dev python-pip tesseract-ocr tesseract-ocr-deu
+    - apt-get install -qq curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils libreoffice poppler-utils python-dev python-pip tesseract-ocr tesseract-ocr-deu
     - pip install -r requirements/testing.txt
   only:
     - releases/all
