@@ -261,6 +261,7 @@
 * Allow setting the Docker user UID and GUID.
 * Add task path validation.
 * Increase dropzone upload file size limit to 2GB.
+* Add cabinet created and edited events.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -13,7 +13,10 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
 
-from .events import event_cabinets_add_document, event_cabinets_remove_document
+from .events import (
+    event_cabinet_created, event_cabinet_edited, event_cabinet_add_document,
+    event_cabinet_remove_document
+)
 from .search import cabinet_search  # NOQA
 
 
@@ -52,7 +55,7 @@ class Cabinet(MPTTModel):
         method but this method provides the event commit already coded.
         """
         self.documents.add(document)
-        event_cabinets_add_document.commit(
+        event_cabinet_add_document.commit(
             action_object=self, actor=user, target=document
         )
 
@@ -93,9 +96,24 @@ class Cabinet(MPTTModel):
         corresponding event commit.
         """
         self.documents.remove(document)
-        event_cabinets_remove_document.commit(
+        event_cabinet_remove_document.commit(
             action_object=self, actor=user, target=document
         )
+
+    def save(self, *args, **kwargs):
+        _user = kwargs.pop('_user', None)
+
+        with transaction.atomic():
+            is_new = not self.pk
+            super(Cabinet, self).save(*args, **kwargs)
+            if is_new:
+                event_cabinet_created.commit(
+                    actor=_user, target=self
+                )
+            else:
+                event_cabinet_edited.commit(
+                    actor=_user, target=self
+                )
 
     def validate_unique(self, exclude=None):
         """

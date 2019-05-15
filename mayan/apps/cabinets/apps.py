@@ -10,10 +10,19 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
     menu_secondary
 )
+from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list,
+)
+from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.navigation.classes import SourceColumn
 
 from .dependencies import *  # NOQA
+from .events import (
+    event_cabinet_edited, event_cabinet_add_document,
+    event_cabinet_remove_document
+)
 from .links import (
     link_cabinet_list, link_document_cabinet_list,
     link_document_cabinet_remove, link_document_cabinet_add,
@@ -58,10 +67,18 @@ class CabinetsApp(MayanAppConfig):
             name='document_cabinets', value=method_get_document_cabinets
         )
 
+        ModelEventType.register(
+            model=Cabinet, event_types=(
+                event_cabinet_edited, event_cabinet_add_document,
+                event_cabinet_remove_document
+            )
+        )
+
         ModelPermission.register(
             model=Document, permissions=(
                 permission_cabinet_add_document,
-                permission_cabinet_remove_document
+                permission_cabinet_remove_document,
+                permission_events_view
             )
         )
 
@@ -115,7 +132,11 @@ class CabinetsApp(MayanAppConfig):
             )
         )
         menu_list_facet.bind_links(
-            links=(link_cabinet_view, link_custom_acl_list),
+            links=(
+                link_cabinet_view, link_custom_acl_list,
+                link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
+            ),
             sources=(Cabinet,)
         )
 

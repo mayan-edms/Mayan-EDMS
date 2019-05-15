@@ -45,6 +45,9 @@ class CabinetCreateView(SingleObjectCreateView):
             'title': _('Create cabinet'),
         }
 
+    def get_save_extra_data(self):
+        return {'_user': self.request.user}
+
 
 class CabinetChildAddView(ExternalObjectMixin, SingleObjectCreateView):
     fields = ('label',)
@@ -63,7 +66,10 @@ class CabinetChildAddView(ExternalObjectMixin, SingleObjectCreateView):
         return self.external_object.get_descendants()
 
     def get_save_extra_data(self):
-        return {'parent': self.external_object}
+        return {
+            'parent': self.external_object,
+            '_user': self.request.user
+        }
 
 
 class CabinetDeleteView(SingleObjectDeleteView):
@@ -123,6 +129,9 @@ class CabinetDetailView(ExternalObjectMixin, DocumentListView):
 
         return context
 
+    def get_save_extra_data(self):
+        return {'_user': self.request.user}
+
 
 class CabinetEditView(SingleObjectEditView):
     fields = ('label',)
@@ -135,6 +144,9 @@ class CabinetEditView(SingleObjectEditView):
             'object': self.get_object(),
             'title': _('Edit cabinet: %s') % self.get_object(),
         }
+
+    def get_save_extra_data(self):
+        return {'_user': self.request.user}
 
 
 class CabinetListView(SingleObjectListView):
