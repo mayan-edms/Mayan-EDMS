@@ -49,15 +49,27 @@ class Cabinet(MPTTModel):
     def __str__(self):
         return self.get_full_path()
 
-    def add_document(self, document, user=None):
+    def document_add(self, document, _user=None):
         """
         Add a document to a container. This can be done without using this
         method but this method provides the event commit already coded.
         """
-        self.documents.add(document)
-        event_cabinet_add_document.commit(
-            action_object=self, actor=user, target=document
-        )
+        with transaction.atomic():
+            self.documents.add(document)
+            event_cabinet_add_document.commit(
+                action_object=self, actor=_user, target=document
+            )
+
+    def document_remove(self, document, _user=None):
+        """
+        Remove a document from a cabinet. This method provides the
+        corresponding event commit.
+        """
+        with transaction.atomic():
+            self.documents.remove(document)
+            event_cabinet_remove_document.commit(
+                action_object=self, actor=_user, target=document
+            )
 
     def get_absolute_url(self):
         return reverse(viewname='cabinets:cabinet_view', kwargs={'pk': self.pk})
@@ -89,16 +101,6 @@ class Cabinet(MPTTModel):
             result.append(node.label)
 
         return ' / '.join(result)
-
-    def remove_document(self, document, user=None):
-        """
-        Remove a document from a cabinet. This method provides the
-        corresponding event commit.
-        """
-        self.documents.remove(document)
-        event_cabinet_remove_document.commit(
-            action_object=self, actor=user, target=document
-        )
 
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)

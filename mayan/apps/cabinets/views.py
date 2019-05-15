@@ -288,8 +288,8 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
                     }, request=self.request
                 )
             else:
-                cabinet.add_document(
-                    document=instance, user=self.request.user
+                cabinet.document_add(
+                    document=instance, _user=self.request.user
                 )
                 messages.success(
                     message=_(
@@ -377,8 +377,8 @@ class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
                     }, request=self.request
                 )
             else:
-                cabinet.remove_document(
-                    document=instance, user=self.request.user
+                cabinet.document_remove(
+                    document=instance, _user=self.request.user
                 )
                 messages.success(
                     message=_(

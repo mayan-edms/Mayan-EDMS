@@ -82,7 +82,7 @@ class CabinetDocumentsEventsTestCase(
         self._create_test_cabinet()
 
         Action.objects.all().delete()
-        self.test_cabinet.add_document(document=self.test_document)
+        self.test_cabinet.document_add(document=self.test_document)
 
         self.assertEqual(Action.objects.last().target, self.test_document)
         self.assertEqual(
@@ -93,9 +93,9 @@ class CabinetDocumentsEventsTestCase(
     def test_document_cabinet_remove_event(self):
         self._create_test_cabinet()
 
-        self.test_cabinet.add_document(document=self.test_document)
+        self.test_cabinet.document_add(document=self.test_document)
         Action.objects.all().delete()
-        self.test_cabinet.remove_document(document=self.test_document)
+        self.test_cabinet.document_remove(document=self.test_document)
 
         self.assertEqual(Action.objects.first().target, self.test_document)
         self.assertEqual(
