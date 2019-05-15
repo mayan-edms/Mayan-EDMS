@@ -268,6 +268,7 @@
 * The document link URL when mailed is now composed of the
   COMMON_PROJECT_URL + document URL instead of the Site
   domain.
+* Add the checkdependencies command.
 
 3.1.11 (2019-04-XX)
 ===================

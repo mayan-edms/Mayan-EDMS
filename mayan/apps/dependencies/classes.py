@@ -18,7 +18,7 @@ from django.utils.encoding import (
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.six import PY3
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ugettext
 
 from mayan.apps.common.compat import FileNotFoundErrorException
 from mayan.apps.common.utils import resolve_attribute
@@ -149,6 +149,34 @@ class Dependency(object):
     @staticmethod
     def return_sorted(dependencies):
         return sorted(dependencies, key=lambda x: x.get_label())
+
+    @classmethod
+    def check_all(cls):
+        template = '{:<35}{:<10} {:<15} {:<20} {:<15} {:<30} {:<10}'
+
+        print('\n  ', end='')
+        print(
+            template.format(
+                ugettext('Name'), ugettext('Type'), ugettext('Version'),
+                ugettext('App'), ugettext('Environment'),
+                ugettext('Other data'), ugettext('Check')
+            )
+        )
+        print('-' * 140)
+
+        for dependency in cls.get_all():
+            print('* ', end='')
+            print(template.format(
+                    dependency.name,
+                    force_text(dependency.class_name_verbose_name),
+                    force_text(dependency.get_version_string()),
+                    force_text(dependency.app_label_verbose_name()),
+                    force_text(dependency.get_environment_verbose_name()),
+                    force_text(dependency.get_other_data()),
+                    force_text(dependency.check()),
+                )
+            )
+            sys.stdout.flush()
 
     @classmethod
     def get(cls, pk):
