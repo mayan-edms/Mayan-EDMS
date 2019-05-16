@@ -119,7 +119,7 @@ job_build_python:
     - update-locale LANG=en_US.UTF-8
     - export LC_ALL=en_US.UTF-8
     - pip install -r requirements/build.txt
-    - make wheel
+    - make python-wheel
   only:
     - releases/all
     - releases/python
