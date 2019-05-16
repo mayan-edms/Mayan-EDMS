@@ -284,6 +284,13 @@ class TempfileCheckTestCasekMixin(object):
 
 class TestModelTestMixin(object):
     def _create_test_model(self, fields=None, model_name='TestModel', options=None):
+
+        if connection.vendor == 'mysql':
+            self.skipTest(
+                reason='MySQL doesn\t support schema changes inside an '
+                'atomic block.'
+            )
+
         # Obtain the app_config and app_label from the test's module path
         app_config = apps.get_containing_app_config(
             object_name=self.__class__.__module__
