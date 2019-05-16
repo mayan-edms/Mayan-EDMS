@@ -7,10 +7,11 @@ How to use this image
 
 .. _docker_install:
 
-Start a Mayan EDMS image
-------------------------
+Start a Mayan EDMS Docker image
+-------------------------------
 
-With Docker properly installed, proceed to download the Mayan EDMS image using the command::
+With Docker properly installed, proceed to download the Mayan EDMS image using
+the command::
 
     docker pull mayanedms/mayanedms:<version>
 
@@ -37,7 +38,7 @@ expose its internal 5432 port (PostgreSQL's default port) via the host's
 ``/docker-volumes/mayan-edms/postgres`` folder.
 
 Finally create and run a Mayan EDMS container. Change <version> with the
-latest version in numeric form (example: 2.7.3) or use the ``latest``
+latest version in numeric form (example: 3.2) or use the ``latest``
 identifier::
 
     docker run -d \
@@ -252,6 +253,17 @@ category. Default is 1. Use 0 to disable hardcoded concurrency and allow the
 Celery worker to launch its default number of child processes (equal to the
 number of CPUs detected).
 
+``MAYAN_USER_UID``
+
+Optional. Changes the UID of the ``mayan`` user internal to the Docker
+container. Defaults to 1000.
+
+``MAYAN_USER_GUID``
+
+Optional. Changes the GUID of the ``mayan`` user internal to the Docker
+container. Defaults to 1000.
+
+
 Accessing outside data
 ======================
 
@@ -297,12 +309,14 @@ too need to be backed up using their respective procedures. A simple solution
 is to copy the entire database container volume after the container has
 been stopped.
 
+
 Restoring from a backup
 =======================
 
 Uncompress the backup archive in the original docker volume using::
 
     sudo tar -xvzf backup.tar.gz -C /
+
 
 Upgrading
 =========
@@ -333,6 +347,7 @@ Start the container again with the new image version::
 
     docker run -d --name mayan-edms --restart=always -p 80:8000 -v /docker-volumes/mayan:/var/lib/mayan mayanedms/mayanedms:latest
 
+
 Building the image
 ==================
 
@@ -354,6 +369,7 @@ Or using an apt cacher to speed up the build::
 
 Replace the IP address `172.17.0.1` with the IP address of the computer
 running the APT proxy and caching service.
+
 
 Customizing the image
 =====================
@@ -378,6 +394,7 @@ and Spanish add the following in your ``docker start`` command line::
 Specifies a list of Python packages to be installed via ``pip``. Packages will
 be downloaded from the Python Package Index (https://pypi.python.org) by
 default.
+
 
 Using Docker compose
 ====================

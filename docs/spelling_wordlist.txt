@@ -1,3 +1,5 @@
+Archlinux
+archlinux
 adf
 ajax
 ajaxForm
@@ -173,3 +175,15 @@ YaN
 yasg
 YbN
 YrcN
+metacopy
+overlayfs
+sys
+supervisord
+Monkeypatch
+Bootswatch
+sortable
+Odroid
+callables
+ModelPermission
+mixins
+kwargs

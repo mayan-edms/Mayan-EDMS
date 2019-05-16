@@ -4,24 +4,24 @@ Version 3.2
 Released: May XX, 2019
 
 Work on version 4.0 continues along. Version 4.0 brings so many changes that it
-missed it release schedule. Therefore we decided to release an iterim version,
-this one. This version includes bugfixes and backports many improvements
+missed it release schedule. Therefore we decided to release an interim version,
+this one. This version includes bug fixes and back-ports many improvements
 already in the 4.0 development version. It also helps bridge the gap between
 the internal code and interfaces between the 3.x and 4.x code branches. The
-minior increment means that user facing backward incompatible changes are
+minor increment means that user facing backward incompatible changes are
 minimal. Most the changes are internal and of notice for developers.
 
 That doesn't mean there are not changes important to users. This release brings
 about 1/3 of the user interface changes that have already landed in the 4.0
 development version.
 
-Beside the usual template and style tweaks, this version
-add a new contextual navigation bar. This bar is a hibrid between a list menu
+Beside the usual template and style tweaks, this version add a new contextual
+navigation bar. This bar is a hybrid between a list menu
 bar and a sidebar menu. Icons in this menu object will show in the object list
 view and when the object is the main object in the template. This reduces
-substancial mouse travel and click as the most views of an object now remain
-"open" in the sidebar instead of being hidden inside the "Actions" dropdown.
-The "Actions" dropdown will now split the available actions links depending on
+substantial mouse travel and click as the most views of an object now remain
+"open" in the sidebar instead of being hidden inside the "Actions" drop down.
+The "Actions" drop down will now split the available actions links depending on
 the menu that defines them ("action", "secondary") and the object that they
 act upon. This is useful on views that can display more than one object at a
 time such as the setup view. During the workflow setup view now the action
@@ -52,9 +52,6 @@ as backwards compatible with version 3.1.10 as possible.
 Changes
 -------
 
-* Add the preparestatic command.
-
-
 
 API
 ^^^
@@ -62,8 +59,6 @@ API
 The API documentation generation code was moved from the root module where it
 was out of place to the REST API app. The published URLs however remain the
 same and compatible.
-
-
 
 
 Apps
@@ -87,21 +82,27 @@ With the exception of the jQuery.ScrollView library there are no JavaScript
 libraries of packages in the git repository of the code anymore. All JavaScript
 are now downloaded at install time.
 
-The dependencies app also has the ability to instrospect packages and extract
+The dependencies app also has the ability to introspect packages and extract
 copyright and license information. This removes the need to include such texts
-explictly in the code for all packages.
+explicitly in the code for all packages.
 
-Dashoard app: All the code to defined and generate the dashboard was moved from the common
-app into its own app called "dashboards". The funcionality remains the same
-but along with formalized internface the move will allow future planned
+Dashboard app: All the code to defined and generate the dashboard was moved from the common
+app into its own app called "dashboards". The functionality remains the same
+but along with formalized interface the move will allow future planned
 improvements to the dashboard functionality to be rolled out. While only one
 dashboard will still be displayed the it is possible to define in code more
 than one dashboard using the Dashboard class.
 
 Autoadmin app: The autoadmin app which is in charge of creating the
-intial admin user after installation has been included in the core. This app
+initial admin user after installation has been included in the core. This app
 is made by the same author of Mayan EDMS and at one time in the past was in
 already part of the core apps.
+
+File metadata: Allows extracting file information. The app includes a driver by
+default to extract EXIF field information (https://en.wikipedia.org/wiki/Exif).
+This is mostly multimedia information but the default driver can also extract
+information from authorship from PDF and office files. The information extracted
+by this app can be used to search or index documents.
 
 
 Deprecations
@@ -110,7 +111,7 @@ Deprecations
 Internally many interfaces and calls have been deprecated in other to move the
 code closer to 4.0's standard. The only feature deprecated on the user facing
 side is the convertdb management command. This command was added to allow
-exising installation using SQLite as the database manager to convert their
+existing installation using SQLite as the database manager to convert their
 database to one of the recommended database managers.
 
 After many reports the consensus was reached that this functionality is not
@@ -123,6 +124,17 @@ professional and no Mayan's end users. For these reason the database conversion
 command has been deprecated and will be removed in the next major version.
 
 
+Docker image
+^^^^^^^^^^^^
+
+The size of the Docker image was reduced from 1.25 GB to 1.09 GB.
+
+Support was added for setting the Docker container user's UID and GUID.
+
+The Docker image now includes all static media like JavaScript libraries and
+themes. This make the initial startup of the image faster as only the database
+migration is execute and the restart of the image almost instant.
+
 
 Events
 ^^^^^^
@@ -132,13 +144,13 @@ events. Some new events recorded are:
 
 - Document link mailing.
 - Users creation, modification, log in and log out.
-- Groups creation, modifitation.
-- Roles creation, modifitation.
-- Indexes creation, modifitation.
-- ACLs creation, modifitation.
-- Workflows creation, modifitation.
-- Smart links creation, modifitation.
-- Smart links creation, modifitation.
+- Groups creation, modification.
+- Roles creation, modification.
+- Indexes creation, modification.
+- ACLs creation, modification.
+- Workflows creation, modification.
+- Smart links creation, modification.
+- Smart links creation, modification.
 
 A new link was added under the User menu to show all the events of the
 currently logged user.
@@ -149,6 +161,35 @@ Incompatible changes
 
 Existing config.yml files need to be updated manually and 'mayan.apps'
 prepended to any reference to an app.
+
+All the Internet Explorer specific HTML markup was removed from the templates.
+
+
+Installation
+^^^^^^^^^^^^
+
+Installation seems to be the most error prone stage of the process in getting
+to use Mayan EDMS. Just like configuration, installation and dependency
+management are other areas where the underlying framework and language
+don't provide tools and it is up to the project to come up with alternative
+to bridge the functionality gap.
+
+This version includes a new dependency manager that is able to track the
+dependencies of each app. The dependency manager supports JavaScript, Python,
+and binary dependencies. This allows the dependency manager to also provide
+users with a centralized view to diagnose their installations for missing
+dependencies that may be affecting the functionality.
+
+The dependency manager also includes improvements that will allow reusing
+downloaded JavaScript packages and can perform hash verification faster.
+
+Besides the dependency check view in the Tools menu, a management command was
+added to show the same information from the command line. This command is called
+``checkdependencies``.
+
+Developers can also use the new ``generaterequirements`` command to generate the
+Python requirement files from the dependencies declared in the apps of the
+project, keeping all dependency files synchronized with ease.
 
 
 Internals
@@ -176,150 +217,185 @@ Other modules that were split were:
 - Trashed document views.
 - Favorite document views.
 
-- URLs: Remove development URLs from main URL file
+Development URL definitions were removed from the main URL definition file.
+Instead the top level ``urls.py`` file was converter into a module folder holding
+several URL pattern definition files. Each URL pattern definition file can be
+specified independently by changing the value of the ``ROOT_URLCONF`` setting.
 
-Move the development URL definitions for Rosetta and Debug toolbar
-to a separate URL file. Convert the single urls.py to a module to
-allow multiple URL files to be used. These are located under /urls/.
+Instead of inserting the path of the apps into the Python path, the apps are
+now referenced by their full import path. For example: Instead of referencing
+the Documents app using the string ``documents``, the full dotted path must be
+used, ``mayan.apps.documents``. This change namespaces all apps under a module
+folder and solves name clashes with external or native Python libraries. Once
+example of such name clash: The statistics app was called "statistics" and
+it clashed with Python's new statistics library of the same name. The solution
+at the time was to rename Mayan's to "mayan_statistics". With this change
+solutions like this won't be necessary.
 
-Full app paths: Instead of inserting the path of the apps into the Python app,
-the apps are now referenced by their full import path.
+This means that any reference to an app, either in the code or from a
+configuration file must now be prepended with ``mayan.apps``. Existing
+``config.yml`` files need to be updated manually.
 
-This solves name clashes with external or native Python libraries.
+For developers a new test mixin was added called ``SilenceLoggerTestCaseMixin``.
+It allows lowering the level of loggers during tests. To use this mixin call
+``self._silence_logger()`` and provide the dotted path to the module whose message
+level will be lowered. By default the new level will be set to critical.
 
-Example: Mayan statistics app was called "statistics" and it clashed with
-Python new statistics library with the same name. The solution at the time was
-to rename Mayan's to "mayan_statistics". With this change solutions like this
-won't be necesary.
+Support was added for link icon path imports. Instead of importing all icons,
+a link can reference the dotted path of the icon. The link argument for this is
+called ``icon_class_path``.
 
-- Every app reference is now prepended with 'mayan.apps'.
+Support for link icon strings was removed. Only icon classes are allowed now.
+This keeps all icon definitions encapsulated in the ``icons.py`` modules.
 
-Existing config.yml files need to be updated manually and 'mayan.apps'
-prepended to any reference to an app.
-
-- A SilenceLoggerTestCaseMixin was added to lower level of loggers during tests.
-Calling _silence_logger and provide the dotted path to the module will lower
-the logging message reporting to critical level.
-
-
-- Support was added for link icon path imports. Instead of importing all icons,
-a link can reference the dotted path of the icon.
-
-- Support for link icon strings was removed. Only icon classes are allowed now.
-This keeps all icon defitions encapsulated in the icons.py modules.
-
-- Middleware were updated to support both, Django's old and new style
+Middleware were updated to support both, Django's old and new style
 middleware.
 
-- A new class named FormOptions to reduce the boilerplate code needed to add
-Meta options to custom Form classes.
+A new class named ``FormOptions`` was added to reduce the boilerplate code needed
+to add Meta options to custom Form classes. This class is used to create a new
+reusable form that will filter a selection field based on a permission. This
+reusable form is called ``FilteredSelectionForm``. This class is used to simplify
+and unify the ``TagMultipleSelectionForm``, ``CabinetListForm``, ``ACLCreateForm``,
+``IndexTemplateFilteredForm``, and ``DocumentVersionSignatureCreateForm``
+subclasses.
 
-- Add support for help text on extra fields to the DetailForm.
+Support was added for help text on extra fields of the ``DetailForm``.
 
-- A new general class called FilteredSelectionForm was added. This class is
-to provide a single field with a select2 widget and present a filtered list
-of instances. The TagMultipleSelectionForm, CabinetListForm, ACLCreateForm,
-IndexTemplateFilteredForm, DocumentVersionSignatureCreateForm
-forms were updated to work as FilteredSelectionForm subclasses.
+Language choices generation was moved to ``documents.utils``.
 
-- Language choices generation was moved to documents.utils.
+The ``TwoStateWidget`` class was converted to work as a template widget. It is
+also now compatible with ``SourceColumn`` and don't need to be evaluated using
+lambdas.
 
-- The TwoStateWidget was converted to work as a template widget. It is also now
-  compatible with SourceColumn.
+The ``SourceColumn`` class received many updates to make is more versatile and
+reduce the boilerplate code to define model columns. It now supports related
+attributes using a double underscore separator. This eliminates the need of
+functions or lambdas for related fields. Also added was support displaying a
+placeholder text for empty attribute values. This eliminates the need to
+create a model or class method to capture empty or None values and display a
+translatable text. Support was added to enable an instance's absolute URL for a
+column removing the need to add and define a single use link for a clickable
+column. The ``SourceColumn`` class now supports keyword arguments via
+``kwargs`` to pass to the column function.
 
-- SourceColumn now to support related attributes using a double underscore
-separator.
+The star import was removed from the ACL and Common app's ``__init__.py``
+module. All ``acls.classes.ModelPermission``, ``common.generics``, and
+``common.mixins`` imports have to done explicitly.
 
-- Update SourceColumn to support display for placeholder text for empty
-attribute values.
+The authentication function views were updated to use Django's new class
+based authentication views.
 
+The current user views were moved from the common app to the user management
+app. And vice versa the user and current user password change views were moved
+to the authentication app from the user management app. Now everything related
+to accounts resides in the user management app and anything relating to passwords
+and authentication resides exclusively in the authentication app.
 
-- Add support to enable an instance's absolute URL for a SourceColum.
+The custom email form widget provided by ``common.widget`` was removed as Django
+now includes one.
 
-- The star import was remove from the ACL and Common apps. All
-acls.classes.ModelPermission, common.generics and common.mixins import have to
-done explicitly.
+All file related utilities were moved from the ``common.utils.py`` module to the
+to the storage app's ``utils.py`` module.
 
-- The authentication function views were updates to use Django's new class
-  based authentication views.
+The navigation and authentication templates were moved to their respective
+apps. They are no longer found in the appearance app's templates folder.
 
-- The current user views were moved from the common app to the user
-  management app. Likewise the user and current user password change views
-  were moved to the authentication app.
-
-- The custom email form widget provided by common.widget was removed as Django
-no includes one.
-
-- All file related utilities were moved from the common.utils module to the
-to the storage app's utils module.
-
-- The navigation and authentication templates were moved to their respective
-apps. They are no longer found in the appearance app.
-
-- The SourceColumn class now supports kwargs to pass to the column function.
-
-- General queryset slicing of the Document list view was removed and added to
+General queryset slicing of the Document list view was removed and added to
 the only subclass view that uses it which is the Recently Added Document view.
 
-- A new view called AddRemove was added which replaces AssignRemove. All
-views were updated and AssignRemove removed from the code.
+A new view called ``AddRemove`` was added which replaces ``AssignRemove``. All
+views were updated and ``AssignRemove`` removed from the code. This class
+offers a much cleaner design and more functionality like adding or removing
+multiple items from a single post request. This is achieve by passing a
+queryset of the selection instead of calling the add or remove methods for
+each item of the selection.
 
-- A new test case mixin was added to provide ephimeral test models. These are
+A new test case mixin was added to provide ephemeral test models. These are
 memory only model classes that allow tests to be performed much faster while
 testing all aspects as if it were any other statically defined model. Several
 test views that used documents models were converted for speed increases of
-several order of magnitude. Along with ephimeral models, ephimeral test
+several order of magnitude. Along with ephemeral models, ephemeral test
 permissions were added removing the need to use static permission for generic
 permission compliance tests.
 
-* Move the purge permission logic to the StorePermission
-  manager.
-* Move stub filtering to the Document model manager.
-* Update the role permission view to use the new AddRemoveView.
-* Rename transformation manager method add_for_model to
-  add_to_object.
-* Rename transformation manager method get_for_model to
-  get_for_object.
-* Convert title calculation form to a template tag.
-* Improve inherited permission computation.
-* Update the role group list view to use the new AddRemoveView.
-* Rename get_object_list to get_source_queryset.
-* Add uniqueness validation to SingleObjectCreateView.
-* Remove MultipleInstanceActionMixin.
-* Backport MultipleObjectMixin improvements.
-* Remove ObjectListPermissionFilterMixin.
-* Update index document types view to use the new AddRemoveView
-  class.
-- license.py module removed, now at dependencies.py
-* Remove model permission proxy models.
-* Remove related access control argument. This is
-  now handled by the related field registration.
-* Allow nested access control checking.
-* check_access's permissions argument must now be
-  an interable.
-* Remove permissions_related from links.
-* Remove mayan_permission_attribute_check from
-  API permission.
-* Use the 'handler' prefix for all the signal handler functions.
-* Remove filter_by_access. Replaced by restrict_queryset.
-* Allow overloading the action_add and action_remove methods
-  from the AddRemoveView.
-* Remove the related attribute of check_access
--                'Passing the argument `related` to check_access() is '
--                'deprecated. Use the ModelPermission\'s class '
--                '.register_inheritance() class method to register the access '
--                'relationship between two models. The registered relationship '
--                'will be automatically used by check_access().',
--                InterfaceWarning
-* Move the user set password views to the authentication app.
-* Rename form template 'form_class' to 'form_css_classes'.
-* All views redirect to common's home view instead of the
-  REDIRECT_URL setting.
-* Update PyYAML to version 5.1. Update use of safe_load and
-  safe_dump to load and dump using the CSafeLoader and SafeLoader as fallback.
-* Replace DocumentTypeSelectioForm with an improved
-  version that does filtering.
-* Add docstrings to most models.
+Move stub filtering to the Document model manager. All subclasses of the
+``DocumentListView`` class were updated to simplify their document queryset
+generation.
+
+The transformation manager methods were renamed from ``add_for_model`` to
+``add_to_object``, and ``get_for_model`` to ``get_for_object``, to reflect the
+fact that they can only operate only models.
+
+The title calculation was converted from a template markup to a template tag.
+
+The permission inherited computation was improved and now operates mostly at the
+database layer instead of being mostly a Python computation. A similar
+improvement was done to the ACL calculation system. The ACL calculation now
+operates mostly on the database layer freeing many resources and scaling better.
+The access checking method was updated to be a wrapper for the new ACL queryset
+calculation, reducing the amount of code and benefiting from the ACL queryset
+calculation improvements.
+
+Related to the ACL calculation updates is the fact that views will now operate
+of a filtered queryset as returned by ``restrict_queryset`` instead of directly
+checking the access of the action being performed by the view. The update
+process of the views to this new methodology was started and will be completed
+in the next versions. Eventually the ``.check_access`` method will be either
+removed of used for special cases.
+
+A small change with big repercussions is the rename of ``get_object_list`` to
+``get_source_queryset``. This change represents a shift in the way views will
+filter their queryset in the entire project. Since Django doesn't provide hooks
+for transforming a queryset before usage by the view, instead of being passed
+a model or a queryset directly, views will be passed a source queryset via
+``get_source_queryset`` which will be filtered by ``restrict_queryset`` and this
+final queryset will be passed to the view as if from its normal ``get_queryset``
+method. This allows using views as they are normally provided by Django and add
+Mayan's access control with minimal changes.
+
+Uniqueness validation was added ``SingleObjectCreateView``.
+
+``MultipleInstanceActionMixin`` was removed, ``MultipleObjectFormActionView``
+or ``MultipleObjectConfirmActionView`` must be used instead. These two classes
+provide action handling for single (using ``pk``) or multiple model instances (
+using ``id_list``) from the single view definition.
+
+``MultipleObjectMixin`` improvements were back ported. Selections are passed
+using ``get_object_list`` or ``self.object_list``.
+
+``ObjectListPermissionFilterMixin`` was removed.
+
+The ``license.py`` module in apps was removed, licenses are now defined in
+``dependencies.py`` for the ones that the dependency app can't introspect
+automatically.
+
+Model permission proxy models support were removed. The permission system can now
+detect inherited permission from multiple levels. Related to this change the
+``related`` access control argument to ``check_access``, links, API views
+``mayan_permission_attribute_check`` was removed. This is all now handled by the
+related field registration.
+
+The permissions system now supports nested access control checking. Self
+referencing models like ``Cabinets``, must provide a custom function to filter
+their permission checking.
+
+An optimization was added which removed the exception catch for the
+``permissions`` argument of the ``check_access`` method. ``permissions``
+argument must now be an iterable.
+
+Signal handlers must now be prepended with ``handler``.
+
+Remove ``.filter_by_access``. Replaced by ``.restrict_queryset``.
+
+Rename the form template ``form_class`` to ``form_css_classes`` to
+differentiate it from Python form classes.
+
+All views now redirect to the ``common`` app's home view instead of the
+``REDIRECT_URL`` setting.
+
+The project was updated to PyYAML version 5.1. The use of ``safe_load`` and
+``safe_dump`` was changed to ``load`` and ``dump`` using the ``CSafeLoader``
+and ``SafeLoader`` as fallback. This makes YAML handling faster and safer.
 
 
 Mailing
@@ -328,6 +404,16 @@ Mailing
 Mailing profiles were updated to allow specifying the email sender address.
 This change closes GitLab issue #522.
 
+If an existing mailer profile specified a backend that is now invalid instead
+of showing an error it will be replaced by a new ``NullMailer`` class.
+
+Due to the change of using the entire dotted path of apps, the backend
+of existing mailing profiles will be invalid and must be re-created.
+
+The document link URL when mailed is now composed of the ``COMMON_PROJECT_URL``
+setting plus the document's URL instead of Django ``Site`` domain. This was
+the only use of Django's ``Site`` model and was removed to an easier to configure
+setup.
 
 
 MERCs
@@ -340,12 +426,12 @@ MERC 5 now requires all callables to use explicit keyword arguments. This MERC
 is effect makes positional arguments obsolete. These are only retained for
 Python modules and callables that don't support named or keyword arguments.
 
-MERC 6 intoduces a security and privacy policy. This policy is a preemtive
+MERC 6 introduces a security and privacy policy. This policy is a preemptive
 information disclosure reduction. This means that code and views in general
 will disclose less information than they used to when the user doesn't have
 the required access for an object, view, or action. Instead of displaying
 an "Access denied" or "Forbidden" error, a "Not found" or 404 error will be
-raised. This way the user will not have any information about the existance
+raised. This way the user will not have any information about the existence
 of a resource for which access has not been granted. To keep the API compatible
 for this minor release, MERC 6 was put into place for the views only.
 
@@ -356,109 +442,139 @@ to expect a 404 and not a 403 error.
 Memory usage
 ^^^^^^^^^^^^
 
-* Block reading for document hash.
-* Temporary file for mime type.
+The code audit performed during the development of version 4.0 revealed many
+areas where optimizations were possible. All the backward compatible
+optimizations were back ported to this version. These are:
 
+- Block reading for document hash instead of loading the entire document's file
+  into memory.
+- A temporary file is used for mime type detection instead of reading the entire
+  file into memory or just reading the first bytes of the file.
+- Converter class is now initialization only when needed this allow more
+  effective garbage collection.
+- Use of file like objects instead of buffers.
+- The change to file like objects allowed the use of Python's ``copyfileobj`` in
+  several places.
+- Only one language is loaded in the document properties form.
+- Improved ACL system which moves computation of the access control to the
+  database instead of doing the filtering in Python code.
+- The language list was converted into a function instead of being used as a
+  list in all instances.
+- Use of context manager for all creation of file like objects.
+- Extensive use of temporary files for office document conversion instead of
+  relying on easier to use but more wasteful memory buffers.
 
-* Move Pillow initialization from the module to the backend
-  class initialization.
-* Use copyfileobj in the document parsers.
-* Load the converter class on demand.
-* Load only one language in the document properties form.
-* Improved ACL computation
-* Convert language choices into a function.
-* Use copyfileobj to save documents to files
+As a result the memory footprint and CPU usage was lowered substantially.
+Memory usage was lowered to 700MB of RAM under full load. This is great news
+for all user but of special importance for restricted environments like low tier
+virtual hosts, container deployments, and single board computers like the Odroid
+or Raspberry Pi.
 
 
 OCR
 ^^^
 
-* Add new and default Tesseract OCR backend to avoid
-  Tesseract bug 1670
-  (https://github.com/tesseract-ocr/tesseract/issues/1670)
-* Add workaround for Tesseract bug 1670
-  https://github.com/tesseract-ocr/tesseract/issues/1670
-  https://github.com/tesseract-ocr/tesseract/commit/3292484f67af8bdda23aa5e510918d0115785291
-  https://gitlab.gnome.org/World/OpenPaperwork/pyocr/issues/104
-* Update OCR links activation.
-* Update document parsing link activation.
-
+Add new and default Tesseract OCR backend was added to avoid Tesseract bug 1670
+(https://github.com/tesseract-ocr/tesseract/issues/1670,
+https://gitlab.gnome.org/World/OpenPaperwork/pyocr/issues/104). This bug make it
+impossible to use Tesseract via PyOCR under Python 3.
 
 
 Permissions
 ^^^^^^^^^^^
+
 The role permission grant and revoke permissions were removed. Instead only the
 role edit permission is required to grant or revoke permissions to a role.
 
 
-* Require dual permissions when add or removing users to and
-  from group. Same with group to users.
+Dual permissions are now required for some objects. For example when add or
+removing users to and from group, the edit permission must be granted to the
+user and the group. These permission changes are minimal for this version but
+will rolled out to be the norm on the entire system.
 
 
 Python 3
 ^^^^^^^^
 
-Beta support
+Long awaited Python 3 support is here. To ensure a smooth transition only the
+Python package will be release supporting Python 2.7 and 3. For the next release
+the Docker image will be converted to work on Python 3. And finally on the
+release of the next major version, version 4.0, Python 3 will be the only Python
+version support. This version of Mayan EDMS as well as future versions of the same
+series (3.x) will be the last version supporting python 2.7.
+
+To recap:
+
+- Version 3.2 = Python 2.7 & Python 3, Docker with Python 2.7.
+- Version 3.3 = Python 2.7 & Python 3, Docker with Python 3.
+- Future versions 3.x = Python 2.7 & Python 3, Docker with Python 3.
+- Version 4.0 = Python 3 only, Docker with Python 3.
+
+If important security issues are found subsequent series 3.x releases
+will be done for users that can't for some reason upgrade to a version
+using only Python 3.
 
 
 Reliability
 ^^^^^^^^^^^
-* Add transaction handling in more places: Checkouts, documents,
-  metadata, tags.
+
+Database transaction handling was added in many more places to ensure data
+integrity even in extreme situations.
 
 
 Removals
 ^^^^^^^^
-* Remove Django suit from requirements.
-* Remove support for generating documents images in base 64
-  format.
 
+For each version we identify functionality or requirements that can be removed.
+For this version Django suit was removed from requirements as well as support
+for generating documents images in base 64 format.
 
 
 Settings
 ^^^^^^^^
 
-The HOME_VIEW setting was defined without a namespace and as a top level
+The ``HOME_VIEW`` setting was defined without a namespace and as a top level
 setting. This configuration is reserved for native Django setting and the
-HOME_VIEW setting is now namespaced to the COMMON app where it is defined.
-The setting global name therefore changes from HOME_VIEW to COMMON_HOME_VIEW.
+``HOME_VIEW`` setting is now namespaced to the COMMON app where it is defined.
+The setting global name therefore changes from ``HOME_VIEW`` to
+``COMMON_HOME_VIEW``.
 
 More Django settings were exposed and can now be modified:
 
-- AUTH_PASSWORD_VALIDATORS
-- DEFAULT_FROM_EMAIL
-- EMAIL_TIMEOUT
-- INTERNAL_IPS
-- LANGUAGES
-- LANGUAGE_CODE
-- LOGOUT_REDIRECT_URL
-- STATIC_URL
-- STATICFILES_STORAGE
-- TIME_ZONE
-- WSGI_APPLICATION
+- ``AUTH_PASSWORD_VALIDATORS``
+- ``DEFAULT_FROM_EMAIL``
+- ``EMAIL_TIMEOUT``
+- ``INTERNAL_IPS``
+- ``LANGUAGES``
+- ``LANGUAGE_CODE``
+- ``LOGOUT_REDIRECT_URL``
+- ``STATIC_URL``
+- ``STATICFILES_STORAGE``
+- ``TIME_ZONE``
+- ``WSGI_APPLICATION``
 
 
-New default value of 65535 for the DOCUMENTS_HASH_BLOCK_SIZE setting. This
+New default value of 65535 for the ``DOCUMENTS_HASH_BLOCK_SIZE`` setting. This
 means that new documents will be read and process in blocks of 65K to determine
 their SHA256 hash instead of being read entirely in memory.
 
-Removal of the MIMETYPE_FILE_READ_SIZE setting. A new method was implemented
-to reduce memory usage of the MIME type inspection code. Instead of limiting
-the number of bytes read as specified by the MIMETYPE_FILE_READ_SIZE setting,
-now the entire file is saved to a temporary file and the MIME type library
+Removal of the ``MIMETYPE_FILE_READ_SIZE`` setting. A new method was implemented
+to reduce memory usage of the ``MIME`` type inspection code. Instead of limiting
+the number of bytes read as specified by the ``MIMETYPE_FILE_READ_SIZE`` setting,
+now the entire file is saved to a temporary file and the ``MIME`` type library
 called with the temporary file reference. This approach while minimally slower
-provides the benefits of lower memory usage without sacrificing MIME type
-detection accurary which was a downside of the MIMETYPE_FILE_READ_SIZE setting
+provides the benefits of lower memory usage without sacrificing ``MIME`` type
+detection accuracy which was a downside of the ``MIMETYPE_FILE_READ_SIZE`` setting
 approach.
 
-Several improvements were backported to the search app. One of this allows
+Several improvements were back ported to the search app. One of this allows
 returning the search result as a queryset. Queryset are "lazy" and not
 evaluated until accessed. This means a queryset can represent a vast number
-of documents with consumming the entire memory that would be required to hold
+of documents with consuming the entire memory that would be required to hold
 all the documents instances as a list would. This change make the memory
-limiting setting SEARCH_LIMIT obsolete and was removed.
+limiting setting ``SEARCH_LIMIT`` obsolete and was removed.
 
-Addionally the search time elapsed calculation was removed. This code stopped
+Additionally the search time elapsed calculation was removed. This code stopped
 being used from the code several version ago.
 
 The default value for the recently added, recently accessed, and favorite
@@ -466,52 +582,68 @@ documents settings was increased from 40 to 400. Using the default pagination
 size of 40 documents per page than means a total of 10 pages of documents
 for each of one of these views instead of just one page.
 
-* Move setting COMMON_TEMPORARY_DIRECTORY to the storage app.
-  The setting is now STORAGE_TEMPORARY_DIRECTORY.
-* Add view to link document type and indexes from the document
-  type side.
+The setting ``COMMON_TEMPORARY_DIRECTORY`` was moved to the storage app.
+The setting is now called ``STORAGE_TEMPORARY_DIRECTORY``.
 
 
 User interface
 ^^^^^^^^^^^^^^
-* Add new icons classes and templates.
-* Add support for icon composition.
 
-* Backport sidebar code.
-* Add sortable columns to all apps.
+Many user interface updates were back ported some very noticeable others less
+so but still have a big impact on usability and navigation.
 
-Usage of select2 in more places (FilteredSelectionForm).
-Cabinets, Tags, Rebuild index.
+New icons classes and templates were added which allow many icon manipulations
+like icon composition. This allow for a more unified visual language.
 
-* Add server side invalid document template.
-* Remove sidebar menu instance. The secondary menu and the
-  previour sidebar menu now perform the same function.
-* Backport source column identifiable and sortable
-  improvements.
-* Update the way the no-result template is shown.
-* Add view to setup workflows per document type
-  from the document type side.
-* Add support for submitting forms by pressing the
-  Enter key or by double clicking.
-* Fix smart link ACL support.
-* Remove the full name from the user list.
-* Add the first name and last name to the user list.
-* Sort users by lastname, firstname.
-* Show completion and intial state in the
-  workflow proxy instance menu list.
-* Fix translation of the source upload forms
-  using dropzone.js
-* Update Bootstrap and Bootswatch to version 3.4.1.
-* Add support for adding form button aside from the
-  default submit and cancel.
-* CSS updates to maximize usable width.
-* Improve partial navigation error messages and display.
-* Improve styling of the template debug view.
-- Remove permission list display from the ACL list view. Reduces clutter and
-unpredictable column size.
-* Show the full title as a hover title even when truncated.
-* Increase default title truncation length to 120 characters.
+The right side menu, called the "sidebar" is now a separate unit in both markup
+and code. This new side bar is implemented independently of the main view. This
+change allows for independent scrolling and more usable screen area.
 
+Support was added for sortable columns. These allow sorting the results of a
+list by clicking on the column heading label. Clicking on the label again
+reverses the sorting order.
+
+select2 widget is used in more places reducing data entry and providing quick
+search capabilities.
+
+The markup for the invalid document image was converted into a server side
+template for easier customization and reuse.
+
+The ``sidebar`` menu instance was removed. The ``secondary`` menu now perform
+the same function.
+
+For every function that involved two types of objects, two views were added.
+For example: Associating a workflow to a document type can now be done
+from the workflow edit view or from the document type edit view. This eliminates
+jump over from the view of one object type to the other.
+
+Form can be submitted by pressing the Enter key or by double clicking.
+
+The full name field was removed from the user list. Instead the first name and
+last name fields are shows which are sortable.
+
+Completion level and initial workflow state are now shown in the workflow proxy
+instance menu.
+
+Fix translation of the source upload forms using the drag and drop dropzone.js
+widget.
+
+Bootstrap and Bootswatch were updated to version 3.4.1.
+
+Support was added for attaching form button aside from the default submit and
+cancel. The new add and remove views use this allow adding all or removing all
+with a single click.
+
+CSS updates were added to maximize usable width of the screen.
+
+Navigation error messages display was improved for easier debugging.
+
+The permission list was removed from the ACL list view. This reduces clutter and
+unpredictable column size. The permission list can be accesses by pressing the
+"Permissions" button.
+
+The default title truncation length was increased to 120 characters. Even when
+truncated, hovering over the title will now show the entire title as a pop over.
 
 
 Widgets
@@ -522,8 +654,8 @@ The .widgets.py module is now reserved for form widgets and HTML widgets will
 be found in a new module called html_widgets for each app.
 
 The interface for Mayan's HTML widget has been formalized and these can be used
-with the SourceColumn class without having to use a lambda. The widget argument
-was added to the SourceColumn was for this purpose.
+with the ``SourceColumn`` class without having to use a lambda. The widget argument
+was added to the ``SourceColumn`` was for this purpose.
 
 The tag selection form widget uses some specialize JavaScript to support
 rendering the tag during selection. This code used to live in the main template
@@ -535,58 +667,41 @@ work as before.
 
 Other changes
 ^^^^^^^^^^^^^
-* Convert the document tags widget to use HTML templates.
-* Update group members view permission. The group edit and
-  user edit permission are now required.
-* Update ChoiceForm to be full height.
-* Commit user edit event when an user is added or removed
+
+- Convert the document tags widget to use HTML templates.
+- Update ``ChoiceForm`` to be full height.
+- Commit user edit event when an user is added or removed
   from a group.
-* Commit the group edit event when a group is added or remove
+- Commit the group edit event when a group is added or remove
   from an user.
-* Commit the group event in conjunction with the role event
+- Commit the group event in conjunction with the role event
   when a group is added or remove from role.
-* Monkeypatch group and user models to make their fields
+- Monkeypatch group and user models to make their fields
   translatable.
-* Add view to enable smart links for documents types
-  from the document type side.
-* Enable list link icons.
-* Add outline links CSS for facets.
-* Add a bottom margin to list links.
-* Convert the workflow document types view to use
-  the new AddRemove view.
-* Fix multiple tag selection wizard step.
-* Update tag document list and the document tag list
+- Add outline links CSS for facets.
+- Add a bottom margin to list links.
+- Fix multiple tag selection wizard step.
+- Update tag document list and the document tag list
   views to require the view permissions for both objects.
-* Install and server static content to and from the image.
+- Install and server static content to and from the image.
   Remove installation of static content from the setup
   and upgrade stages.
-* Add support for editing document comments.
-* Remove Internet Explorer specific markup.
-* Fix optional metadata remove when mixed with required
+- Add support for editing document comments.
+- Fix optional metadata remove when mixed with required
   metadata.
-* Create intermedia file cache folder. Fixes preview errors
+- Create intermediate file cache folder. Fixes preview errors
   when the first document uploaded is an office file.
-* Move queue and task registration to the CeleryQueue class.
-  The .queues.py module is now loaded automatically.
-* Allow setting the Docker user UID and GUID.
-* Add task path validation.
-* Increase dropzone upload file size limit to 2GB
-* Add cabinet created and edited events.
-* Show a null mailer backend if there is backend with an
-  invalid path. Due to the app full path change, existing
-  mailer setups need to be recreated. 
-* The document link URL when mailed is now composed of the
-  COMMON_PROJECT_URL + document URL instead of the Site
-  domain.
-* Add the checkdependencies command.
-* Add comment and make file target to generate all requirement
-  files.
+- Move queue and task registration to the ``CeleryQueue`` class.
+  The ``.queues.py`` module is now loaded automatically.
+- Add task dotted path validation.
+- Increase dropzone upload file size limit to 2GB
+- Add cabinet created and edited events.
 
 
 Removals
 --------
 
-* Django suit third party app.
+- Django suit third party app.
 
 
 Upgrading from a previous version
@@ -664,22 +779,26 @@ The upgrade procedure is now complete.
 Backward incompatible changes
 -----------------------------
 
-* None
+- Due to the change of using the entire dotted path of apps, the backend
+  of existing mailing profiles will be invalid and must be re-created.
+
+- Paths to apps must be updated in existing ``config.yml`` files. Preprend
+  ``mayan.apps.`` to any app reference.
 
 
 Bugs fixed or issues closed
 ---------------------------
 
-* :gitlab-issue:`475` Finish converting all views to class based views.
-* :gitlab-issue:`498` Can't scan subdirectories
-* :gitlab-issue:`522` Office 365 SMTP
-* :gitlab-issue:`539` Setting for default email sender is missing
-* :gitlab-issue:`543` Docker: Support PGID/PUID Usage
-* :gitlab-issue:`549` Clean docker installation does not create documents_cache folder
-* :gitlab-issue:`550` Document content does not appear for non-PDF files
-* :gitlab-issue:`553` Python 3
-* :gitlab-issue:`563` Recursive Watch Folder
-* :gitlab-issue:`579` Untranslated items
-* :gitlab-issue:`589` Document {{ link }} send via Email contains example.com as domain
+- :gitlab-issue:`475` Finish converting all views to class based views.
+- :gitlab-issue:`498` Can't scan sub directories
+- :gitlab-issue:`522` Office 365 SMTP
+- :gitlab-issue:`539` Setting for default email sender is missing
+- :gitlab-issue:`543` Docker: Support PGID/PUID Usage
+- :gitlab-issue:`549` Clean docker installation does not create documents_cache folder
+- :gitlab-issue:`550` Document content does not appear for non-PDF files
+- :gitlab-issue:`553` Python 3
+- :gitlab-issue:`563` Recursive Watch Folder
+- :gitlab-issue:`579` Untranslated items
+- :gitlab-issue:`589` Document {{ link }} send via Email contains example.com as domain
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
