@@ -4,49 +4,50 @@ Version 3.2
 Released: May XX, 2019
 
 Work on version 4.0 continues along. Version 4.0 brings so many changes that it
-missed it release schedule. Therefore we decided to release an interim version,
+missed its release schedule. Therefore we decided to release an interim version,
 this one. This version includes bug fixes and back-ports many improvements
 already in the 4.0 development version. It also helps bridge the gap between
 the internal code and interfaces between the 3.x and 4.x code branches. The
-minor increment means that user facing backward incompatible changes are
-minimal. Most the changes are internal and of notice for developers.
+minor increment means that user-facing backward incompatible changes are
+minimal. Most of the changes are internal and of notice for developers.
 
-That doesn't mean there are not changes important to users. This release brings
-about 1/3 of the user interface changes that have already landed in the 4.0
-development version.
+That doesn't mean there are no changes important to users. This release brings
+about one third (1/3) of the user interface changes that have already landed
+in the 4.0 version.
 
-Beside the usual template and style tweaks, this version add a new contextual
-navigation bar. This bar is a hybrid between a list menu
-bar and a sidebar menu. Icons in this menu object will show in the object list
-view and when the object is the main object in the template. This reduces
-substantial mouse travel and click as the most views of an object now remain
-"open" in the sidebar instead of being hidden inside the "Actions" drop down.
-The "Actions" drop down will now split the available actions links depending on
+Besides the usual template and style tweaks, this version adds a new contextual
+navigation bar. This bar is a hybrid between a list menu bar and a sidebar
+menu. Icons in this menu object will show in the object list view and when
+the object is the main object in the template. This reduces substantial mouse
+travel and clicks, as most views of the object now remain "open" in the sidebar
+instead of being hidden inside the "Actions" drop down.
+
+The "Actions" drop-down will now divide the available actions links depending on
 the menu that defines them ("action", "secondary") and the object that they
 act upon. This is useful on views that can display more than one object at a
-time such as the setup view. During the workflow setup view now the action
-item links will be split between action links for the workflow, for the state
-and for the transition making setup navigation much faster and require less
-mental effort as the user no longer need to remember which link affect which
+time such as the setup views. During the workflow setup view, now the action
+links will be split between action for the workflow, for the state, and for
+the transition making setup navigation much faster and requiring less
+mental effort as the user no longer need to remember which link affects which
 view object.
 
 Another big user interface change that landed on this version is the ability
-to sort list of object by fields. Sortable fields will have their column
-heading displayed as links. Clicking on a column heading link will sort the
-list by the values of the column. Clicking the heading again will invert the
-sort other. A small arrow icon will show the sort direction.
+to sort lists of objects by column fields. Sortable fields will have their
+column heading displayed as an HTML link. Clicking on a column heading link
+will sort the list by the values of the column. Clicking the heading again
+will invert the sort order. A small arrow icon will show the sort order.
 
-A new app was added to the core. The app is name "File metadata" and allows
+A new app was added to the core. The app is named "File metadata" and allows
 extracting file information. The app includes a driver by default to extract
-EXIF field information. This file field include camera information for photos,
+EXIF field information. This file field includes camera information for photos,
 authors for office documents and PDFs and other information that can now be
-used to search or index documents. This app was previously a separate called
+used to search or index documents. This app was previously a separate app called
 Mayan-EXIF (https://gitlab.com/mayan-edms/exif). The app was generalized and
 is now part of the core group of apps.
 
 This is a "minor" release only in version number scheme since it includes a
-big number of changes. The minor number increase means that it will be
-as backwards compatible with version 3.1.10 as possible.
+big number of code changes. The minor number increase means that it will be
+as backward compatible with version 3.1.10 as possible.
 
 
 Changes
@@ -58,24 +59,25 @@ API
 
 The API documentation generation code was moved from the root module where it
 was out of place to the REST API app. The published URLs however remain the
-same and compatible.
+same and backwards compatible.
 
 
 Apps
 ^^^^
 
-Dependencies app: A new app was added to handle all dependencies handling.
-Previously code to handle JavaScript dependencies and license text collation
-was handed by the common app. This new app, called "dependencies" now handles
-both task. In addition, it also provides checks for binary dependencies.
-This view will allow users to know which dependencies are not being recognize
-and help debug installation issues faster and easier. The app support Python,
-JavaScript, and binary dependencies.
+Dependencies app: A new app was added to handle all dependencies. Previously,
+the code to handle JavaScript dependencies and license text collection, was
+contianed in the common app. This new app, called "dependencies" now handles
+both tasks. In addition, it provides checks for binary dependencies.
+This app's main view will allow users to know which dependencies are not being
+recognized and help debug installation issues faster and easier. The app
+supports Python, JavaScript, and binary dependencies.
 
 The JavaScript library download and installation code was updated to provide
 faster hash verification using block hashing. During tests the this change
-cut verification time to just 28%. Additionally the JavaScript downloader can
-now detect existing installations of JavaScript libraries and skip them for
+cut verification time to just 28% of the previous time. Additionally, the
+JavaScript downloader can now detect existing installations of JavaScript
+libraries and skip them for
 even faster upgrade or startup times.
 
 With the exception of the jQuery.ScrollView library there are no JavaScript
@@ -86,17 +88,17 @@ The dependencies app also has the ability to introspect packages and extract
 copyright and license information. This removes the need to include such texts
 explicitly in the code for all packages.
 
-Dashboard app: All the code to defined and generate the dashboard was moved from the common
-app into its own app called "dashboards". The functionality remains the same
-but along with formalized interface the move will allow future planned
-improvements to the dashboard functionality to be rolled out. While only one
-dashboard will still be displayed the it is possible to define in code more
-than one dashboard using the Dashboard class.
+Dashboard app: All the code to defined and generate the dashboard was moved
+from the common app into its own app called "dashboards". The functionality
+remains the same but along with the formalized interface, the move will allow
+future planned improvements to the dashboard functionality to be rolled out.
+While only one dashboard will still be displayed, it is possible to define in
+code more than one dashboard using the Dashboard class.
 
 Autoadmin app: The autoadmin app which is in charge of creating the
-initial admin user after installation has been included in the core. This app
-is made by the same author of Mayan EDMS and at one time in the past was in
-already part of the core apps.
+initial admin user after the installation, has been included in the core. This
+app is made by the same author of Mayan EDMS and at one time in the past was
+part of the core apps.
 
 File metadata: Allows extracting file information. The app includes a driver by
 default to extract EXIF field information (https://en.wikipedia.org/wiki/Exif).
@@ -126,6 +128,8 @@ command has been deprecated and will be removed in the next major version.
 
 Docker image
 ^^^^^^^^^^^^
+
+Docker image updated to use Debian 9.8.
 
 The size of the Docker image was reduced from 1.25 GB to 1.09 GB.
 
@@ -168,10 +172,10 @@ All the Internet Explorer specific HTML markup was removed from the templates.
 Installation
 ^^^^^^^^^^^^
 
-Installation seems to be the most error prone stage of the process in getting
-to use Mayan EDMS. Just like configuration, installation and dependency
+Installation seems to be the most error-prone stage of the process in getting
+to use Mayan EDMS. Just like configuration, installation, and dependency
 management are other areas where the underlying framework and language
-don't provide tools and it is up to the project to come up with alternative
+don't provide tools and it is up to the project to come up with an alternative
 to bridge the functionality gap.
 
 This version includes a new dependency manager that is able to track the
@@ -218,7 +222,7 @@ Other modules that were split were:
 - Favorite document views.
 
 Development URL definitions were removed from the main URL definition file.
-Instead the top level ``urls.py`` file was converter into a module folder holding
+Instead, the top level ``urls.py`` file was converted into a module folder holding
 several URL pattern definition files. Each URL pattern definition file can be
 specified independently by changing the value of the ``ROOT_URLCONF`` setting.
 
@@ -236,7 +240,7 @@ This means that any reference to an app, either in the code or from a
 configuration file must now be prepended with ``mayan.apps``. Existing
 ``config.yml`` files need to be updated manually.
 
-For developers a new test mixin was added called ``SilenceLoggerTestCaseMixin``.
+For developers, a new test mixin was added called ``SilenceLoggerTestCaseMixin``.
 It allows lowering the level of loggers during tests. To use this mixin call
 ``self._silence_logger()`` and provide the dotted path to the module whose message
 level will be lowered. By default the new level will be set to critical.
@@ -444,31 +448,31 @@ Memory usage
 
 The code audit performed during the development of version 4.0 revealed many
 areas where optimizations were possible. All the backward compatible
-optimizations were back ported to this version. These are:
+optimizations were backported to this version. These are:
 
 - Block reading for document hash instead of loading the entire document's file
   into memory.
 - A temporary file is used for mime type detection instead of reading the entire
   file into memory or just reading the first bytes of the file.
-- Converter class is now initialization only when needed this allow more
+- Converter class is now initialization only when needed this allows more
   effective garbage collection.
-- Use of file like objects instead of buffers.
-- The change to file like objects allowed the use of Python's ``copyfileobj`` in
+- Use of file-like objects instead of buffers.
+- The change to file-like objects allowed the use of Python's ``copyfileobj`` in
   several places.
 - Only one language is loaded in the document properties form.
 - Improved ACL system which moves computation of the access control to the
   database instead of doing the filtering in Python code.
 - The language list was converted into a function instead of being used as a
   list in all instances.
-- Use of context manager for all creation of file like objects.
+- Use of context manager for all creation of file-like objects.
 - Extensive use of temporary files for office document conversion instead of
   relying on easier to use but more wasteful memory buffers.
 
-As a result the memory footprint and CPU usage was lowered substantially.
+As a result, the memory footprint and CPU usage were lowered substantially.
 Memory usage was lowered to 700MB of RAM under full load. This is great news
 for all user but of special importance for restricted environments like low tier
 virtual hosts, container deployments, and single board computers like the Odroid
-or Raspberry Pi.
+or the Raspberry Pi.
 
 
 OCR
@@ -487,21 +491,22 @@ The role permission grant and revoke permissions were removed. Instead only the
 role edit permission is required to grant or revoke permissions to a role.
 
 
-Dual permissions are now required for some objects. For example when add or
-removing users to and from group, the edit permission must be granted to the
+Dual permissions are now required for some objects. For example, when adding or
+removing users to and from a group, the edit permission must be granted to the
 user and the group. These permission changes are minimal for this version but
-will rolled out to be the norm on the entire system.
+will be rolled out to be the norm on the entire system.
 
 
 Python 3
 ^^^^^^^^
 
 Long awaited Python 3 support is here. To ensure a smooth transition only the
-Python package will be release supporting Python 2.7 and 3. For the next release
-the Docker image will be converted to work on Python 3. And finally on the
-release of the next major version, version 4.0, Python 3 will be the only Python
-version support. This version of Mayan EDMS as well as future versions of the same
-series (3.x) will be the last version supporting python 2.7.
+Python package will be release supporting Python 2.7 and 3. For the next
+release, the Docker image will be converted to work on Python 3. And finally,
+on the release of the next major version, version 4.0, Python 3 will be the
+only Python version support. This version of Mayan EDMS, as well as future
+versions of the same series (3.x) will be the last version supporting
+python 2.7.
 
 To recap:
 
@@ -525,8 +530,8 @@ integrity even in extreme situations.
 Removals
 ^^^^^^^^
 
-For each version we identify functionality or requirements that can be removed.
-For this version Django suit was removed from requirements as well as support
+For each version, we identify functionality or requirements that can be removed.
+For this version, Django suit was removed from requirements as well as support
 for generating documents images in base 64 format.
 
 
