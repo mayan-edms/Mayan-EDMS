@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.apps import apps
 from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.translation import ugettext_lazy as _
 
 from celery.schedules import crontab
 
@@ -138,16 +139,32 @@ class Statistic(object):
         self.store_results(results=results)
 
     def get_chart_data(self):
-        return self.renderer(data=self.get_results()).get_chart_data()
+        return self.renderer(data=self.get_results_data()).get_chart_data()
 
-    def get_results(self):
+    def get_last_update(self):
+        results = self.get_results()
+
+        if results:
+            return results.datetime
+        else:
+            return _('Never')
+
+    def get_results(self, only=None):
         StatisticResult = apps.get_model(
             app_label='mayan_statistics', model_name='StatisticResult'
         )
 
         try:
-            return StatisticResult.objects.get(slug=self.slug).get_data()
+            return StatisticResult.objects.get(slug=self.slug)
         except StatisticResult.DoesNotExist:
+            return StatisticResult.objects.none()
+
+    def get_results_data(self):
+        results = self.get_results()
+
+        if results:
+            return results.get_data()
+        else:
             return {'series': {}}
 
     def get_task_name(self):

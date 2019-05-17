@@ -51,7 +51,7 @@ class StatisticDetailView(SimpleView):
             'chart_data': obj.get_chart_data(),
             'namespace': obj.namespace,
             'navigation_object_list': ('namespace', 'object'),
-            'no_data': not obj.get_results()['series'],
+            'no_data': not obj.get_results_data()['series'],
             'object': obj,
             'title': _('Results for: %s') % obj,
         }
@@ -87,13 +87,6 @@ class StatisticQueueView(ConfirmView):
             return Statistic.get(slug=self.kwargs['slug'])
         except KeyError:
             raise Http404(_('Statistic "%s" not found.') % self.kwargs['slug'])
-
-    def get_post_action_redirect(self):
-        return reverse(
-            viewname='statistics:statistic_detail', kwargs={
-                'slug': self.get_object().slug
-            }
-        )
 
     def view_action(self):
         task_execute_statistic.delay(slug=self.get_object().slug)

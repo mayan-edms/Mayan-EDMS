@@ -696,6 +696,9 @@ Other changes
 - Add task dotted path validation.
 - Increase dropzone upload file size limit to 2GB
 - Add cabinet created and edited events.
+- Chart updates: Show last update date and time in list view and details view.
+  Change color scheme to match rest of project. Increase size of data points.
+  Improve responsive settings. Redirect to the current view after queueing.
 
 
 Removals
