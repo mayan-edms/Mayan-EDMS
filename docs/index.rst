@@ -21,12 +21,14 @@ repository for electronic documents.
     topics/installation
     releases/index
     topics/getting_started
+    topics/adding_documents
     topics/access_control
     topics/categorization
     topics/collaboration
     topics/settings
     topics/storage
     topics/integration
+    topics/docker
     topics/advanced
     topics/administration
     topics/troubleshooting

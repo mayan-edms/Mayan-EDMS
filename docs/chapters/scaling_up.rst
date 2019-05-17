@@ -6,15 +6,19 @@ The default installation method fits most use cases. If you use case requires
 more speed or capacity here are some suggestion that can help you improve the
 performance of your installation.
 
+
 Change the database manager
 ===========================
+
 Use PostgreSQL or MySQL as the database manager.
 Tweak the memory setting of the database manager to increase memory allocation.
 More PostgreSQL specific examples are available in their wiki page:
 https://wiki.postgresql.org/wiki/Performance_Optimization
 
+
 Increase the number of Gunicorn workers
 =======================================
+
 The Gunicorn workers process HTTP requests and affect the speed at which the
 website responds.
 
@@ -33,6 +37,7 @@ And increase the value of the ``-w 2`` argument. This line is found in the
 
 Background task processing
 ==========================
+
 The Celery workers are system processes that take care of the background
 tasks requested by the frontend interactions like document image rendering
 and periodic tasks like OCR. There are several dozen tasks defined in the code.
@@ -76,6 +81,7 @@ The slow worker handles the queues:
 * statistics: Recalculates statistics and charts
 * parsing: Parses documents to extract actual text content
 * ocr: Performs OCR to transcribe page images to text
+
 
 Optimizations
 -------------
@@ -130,8 +136,10 @@ container. You can launch a separate Docker Redis container and tell the Mayan
 EDMS container to use this via the MAYAN_CELERY_RESULT_BACKEND environment
 variable. The format of this variable is explained here: http://docs.celeryproject.org/en/3.1/configuration.html#celery-result-backend
 
+
 Deployment type
 ===============
+
 Docker provides a faster deployment and the overhead is not high on modern
 systems. It is however memory and CPU limited by default and you need to
 increase this limits. The settings to change the container resource limits
@@ -140,8 +148,10 @@ are here: https://docs.docker.com/config/containers/resource_constraints/#limit-
 For the best performance possible use the advanced deployment method on a
 host dedicated to serving only Mayan EDMS.
 
+
 Storage
 =======
+
 For best input and output speed use a block based local filesystem on an
 SSD drive for the ``/media`` sub folder. The location of the ``/media`` folder
 will be specified by the ``MEDIA_ROOT`` setting.
@@ -149,8 +159,10 @@ will be specified by the ``MEDIA_ROOT`` setting.
 If capacity is your bottom line, switch to an
 :doc:`object storage <../chapters/object_storage>` system.
 
+
 Use additional hosts
 ====================
+
 When one host is not enough you can use multiple hosts and share the load.
 Make sure that all hosts share the ``/media`` folder as specified by the
 ``MEDIA_ROOT`` setting, also the database, the broker, and the result storage.

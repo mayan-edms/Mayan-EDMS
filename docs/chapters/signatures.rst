@@ -11,6 +11,7 @@ signatures sections of a document.
 .. blockdiag::
 
    blockdiag {
+
       orientation = portrait
       span_width = 240;
 

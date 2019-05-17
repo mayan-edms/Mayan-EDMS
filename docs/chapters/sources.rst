@@ -55,3 +55,8 @@ Document source can be configure to allow document bundles to uploaded as
 compressed files which are decompressed and their content uploaded as separate
 documents. This feature is useful when migrating from another document
 manager system.
+
+.. note::
+
+    If you deployed a Mayan EDMS Docker container and want to use watched folders
+    or staging folder, refer to the Docker chapter :ref:`docker-accessing-outside-data`.

@@ -15,6 +15,12 @@ the command::
 
     docker pull mayanedms/mayanedms:<version>
 
+Instead of a specific version tag you may use then generic ``:latest`` tag
+to the get latest version available automatically. If you use the ``:latest``
+tag here, remember to do so in the next steps also.::
+
+    docker pull mayanedms/mayanedms:latest
+
 Then download version 9.6 of the Docker PostgreSQL image::
 
     docker pull postgres:9.6
@@ -37,9 +43,7 @@ expose its internal 5432 port (PostgreSQL's default port) via the host's
 5432 port. The data of this container will reside on the host's
 ``/docker-volumes/mayan-edms/postgres`` folder.
 
-Finally create and run a Mayan EDMS container. Change <version> with the
-latest version in numeric form (example: 3.2) or use the ``latest``
-identifier::
+Finally create and run a Mayan EDMS container.
 
     docker run -d \
     --name mayan-edms \
@@ -73,6 +77,7 @@ If another web server is running on port 80 use a different port in the
 
 Using a dedicated Docker network
 --------------------------------
+
 Use this method to avoid having to expose PostreSQL port to the host's network
 or if you have other PostgreSQL instances but still want to use the default
 port of 5432 for this installation.
@@ -112,6 +117,7 @@ instead of the IP address of the Docker host (``172.17.0.1``)::
     -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
     mayanedms/mayanedms:<version>
 
+
 Stopping and starting the container
 -----------------------------------
 
@@ -126,6 +132,7 @@ To start the container again::
 
 
 .. _docker_environment_variables:
+
 
 Environment Variables
 ---------------------
@@ -267,6 +274,8 @@ container. Defaults to 1000.
 Optional. Changes the GUID of the ``mayan`` user internal to the Docker
 container. Defaults to 1000.
 
+
+.. _docker-accessing-outside-data:
 
 Accessing outside data
 ======================
