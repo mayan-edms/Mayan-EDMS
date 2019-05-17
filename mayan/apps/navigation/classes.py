@@ -11,7 +11,7 @@ from django.core.exceptions import (
     FieldDoesNotExist, ImproperlyConfigured, PermissionDenied
 )
 from django.db.models.constants import LOOKUP_SEP
-from django.template import VariableDoesNotExist, Variable
+from django.template import RequestContext, VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
 from django.urls import resolve, reverse
 from django.utils.encoding import force_str, force_text
@@ -87,17 +87,28 @@ class Link(object):
         if name:
             self.__class__._registry[name] = self
 
-    def resolve(self, context, resolved_object=None):
+
+    def resolve(self, context=None, request=None, resolved_object=None):
+        if not context and not request:
+            raise ImproperlyConfigured(
+                'Must provide a context or a request in order to resolve the '
+                'link.'
+            )
+
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
 
-        # Try to get the request object the faster way and fallback to the
-        # slower method.
-        try:
-            request = context.request
-        except AttributeError:
-            request = Variable('request').resolve(context)
+        if not context:
+            context = RequestContext(request=request)
+
+        if not request:
+            # Try to get the request object the faster way and fallback to the
+            # slower method.
+            try:
+                request = context.request
+            except AttributeError:
+                request = Variable('request').resolve(context)
 
         current_path = request.META['PATH_INFO']
         current_view_name = resolve(current_path).view_name
@@ -319,24 +330,34 @@ class Menu(object):
         else:
             return item.label
 
-    def resolve(self, context, source=None, sort_results=False):
+    def resolve(self, context=None, request=None, source=None, sort_results=False):
+        if not context and not request:
+            raise ImproperlyConfigured(
+                'Must provide a context or a request in order to resolve the '
+                'menu.'
+            )
+
+        if not context:
+            context = RequestContext(request=request)
+
         if not self.check_condition(context=context):
             return []
 
         result = []
 
-        try:
-            request = context.request
-        except AttributeError:
-            # Simple request extraction failed. Might not be a view context.
-            # Try alternate method.
+        if not request:
             try:
-                request = Variable('request').resolve(context)
-            except VariableDoesNotExist:
-                # There is no request variable, most probable a 500 in a test
-                # view. Don't return any resolved links then.
-                logger.warning('No request variable, aborting menu resolution')
-                return ()
+                request = context.request
+            except AttributeError:
+                # Simple request extraction failed. Might not be a view context.
+                # Try alternate method.
+                try:
+                    request = Variable('request').resolve(context)
+                except VariableDoesNotExist:
+                    # There is no request variable, most probable a 500 in a test
+                    # view. Don't return any resolved links then.
+                    logger.warning('No request variable, aborting menu resolution')
+                    return ()
 
         current_view_name = get_current_view_name(request=request)
         if not current_view_name:
