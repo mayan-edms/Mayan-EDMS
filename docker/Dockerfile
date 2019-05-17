@@ -110,6 +110,11 @@ RUN python -m virtualenv "${PROJECT_INSTALL_DIR}" \
     mysql-python==1.2.5 \
     psycopg2==2.7.3.2 \
     redis==2.10.6 \
+# psutil is needed by ARM builds otherwise gevent and gunicorn fail to start
+&& UNAME=`uname -m` && if [ "${UNAME#*arm}" != $UNAME ]; then \
+    pip install --no-cache-dir --no-use-pep517 \
+    psutil==5.6.2 \
+; fi \
 # Install the Python packages needed to build Mayan EDMS
 && pip install --no-cache-dir --no-use-pep517 -r /src/requirements/build.txt \
 # Build Mayan EDMS
