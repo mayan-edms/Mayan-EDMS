@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:39-0400\n"
-"PO-Revision-Date: 2018-04-10 08:25+0000\n"
+"POT-Creation-Date: 2019-05-17 01:47-0400\n"
+"PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -19,29 +19,37 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:27 links.py:29 permissions.py:7 queues.py:8
+#: apps.py:23 links.py:33 permissions.py:7 queues.py:9
 msgid "Statistics"
 msgstr "Statystyki"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:32
 msgid "Schedule"
 msgstr "Harmonogram"
+
+#: apps.py:37
+msgid "Last update"
+msgstr ""
+
+#: classes.py:150
+msgid "Never"
+msgstr "Nigdy"
 
 #: links.py:12
 msgid "Queue"
 msgstr "Dodaj do kolejki"
 
-#: links.py:16
+#: links.py:17
 msgid "View"
 msgstr "Pokaż statystykę"
 
-#: links.py:20
+#: links.py:22
 msgid "Namespace details"
 msgstr "Szczegóły przestrzeni nazw"
 
-#: links.py:24
+#: links.py:27
 msgid "Namespace list"
 msgstr "Lista przestrzeni nazw"
 
@@ -71,13 +79,18 @@ msgstr "Wyniki statystyk"
 msgid "View statistics"
 msgstr "Przegląd statystyk"
 
-#: queues.py:12
+#: queues.py:13
 msgid "Execute statistic"
 msgstr "Wykonaj statystykę"
 
 #: templates/statistics/renderers/chartjs/line.html:14
-msgid "No data available yet"
-msgstr "Brak danych"
+msgid "No data available."
+msgstr ""
+
+#: templates/statistics/renderers/chartjs/line.html:16
+#, python-format
+msgid "Last update: %(datetime)s"
+msgstr ""
 
 #: views.py:18
 msgid "Statistics namespaces"
@@ -103,7 +116,7 @@ msgstr "Nie znaleziono statystyki \"%s\"."
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "Dodać statystykę \"%s\" do kolejki w celu aktualizacji?"
 
-#: views.py:102
+#: views.py:95
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr ""

@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:38-0400\n"
-"PO-Revision-Date: 2019-05-08 01:20+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
+"POT-Creation-Date: 2019-05-17 01:46-0400\n"
+"PO-Revision-Date: 2019-05-17 05:50+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,69 +21,69 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:66 events.py:8 links.py:17 links.py:46 links.py:149 links.py:176
-#: models.py:61 views/workflow_proxy_views.py:75 views/workflow_views.py:140
+#: apps.py:62 events.py:8 links.py:17 links.py:46 links.py:149 links.py:176
+#: models.py:61 views/workflow_proxy_views.py:75 views/workflow_views.py:139
 msgid "Workflows"
 msgstr "Flux de travail"
 
-#: apps.py:108 apps.py:115
+#: apps.py:104 apps.py:111
 msgid "Current state of a workflow"
 msgstr "État actuel d'un flux de travail"
 
-#: apps.py:109
+#: apps.py:105
 msgid "Return the current state of the selected workflow"
 msgstr "Fournir l'état actuel du flux de travail sélectionné"
 
-#: apps.py:116
+#: apps.py:112
 msgid ""
 "Return the completion value of the current state of the selected workflow"
 msgstr "Renvoyer la valeur d'achèvement de l'état actuel du flux de travail sélectionné"
 
-#: apps.py:171 apps.py:182 apps.py:192 apps.py:198
+#: apps.py:167 apps.py:178 apps.py:188 apps.py:194
 msgid "None"
 msgstr "Aucun"
 
-#: apps.py:176
+#: apps.py:172
 msgid "Current state"
 msgstr "État actuel"
 
-#: apps.py:180 apps.py:207 models.py:483
+#: apps.py:176 apps.py:203 models.py:484
 msgid "User"
 msgstr "Utilisateur"
 
-#: apps.py:186
+#: apps.py:182
 msgid "Last transition"
 msgstr "Dernière transition"
 
-#: apps.py:190 apps.py:203
+#: apps.py:186 apps.py:199
 msgid "Date and time"
 msgstr "Date et heure"
 
-#: apps.py:196 models.py:182
+#: apps.py:192 models.py:181
 msgid "Completion"
 msgstr "Finalisation"
 
-#: apps.py:210 forms.py:173 links.py:161 models.py:340 models.py:479
+#: apps.py:206 forms.py:173 links.py:161 models.py:339 models.py:480
 msgid "Transition"
 msgstr "Transition"
 
-#: apps.py:214 forms.py:176 models.py:485
+#: apps.py:210 forms.py:176 models.py:486
 msgid "Comment"
 msgstr "Commentaire"
 
-#: apps.py:237
+#: apps.py:233
 msgid "When?"
 msgstr "Quand ?"
 
-#: apps.py:241
+#: apps.py:237
 msgid "Action type"
 msgstr "Type d'action"
 
-#: apps.py:257
+#: apps.py:253
 msgid "Triggers"
 msgstr "Déclencheurs"
 
-#: error_logs.py:8 models.py:273
+#: error_logs.py:8 models.py:272
 msgid "Workflow state actions"
 msgstr "Actions d'état du flux de travail"
 
@@ -99,12 +99,12 @@ msgstr "Flux de travail modifié"
 msgid "Action"
 msgstr "Action"
 
-#: forms.py:117 models.py:48 models.py:170 models.py:251 models.py:314
+#: forms.py:117 models.py:48 models.py:169 models.py:250 models.py:313
 #: workflow_actions.py:22
 msgid "Label"
 msgstr "Libellé"
 
-#: forms.py:121 models.py:253
+#: forms.py:121 models.py:252
 msgid "Enabled"
 msgstr "Activé"
 
@@ -121,7 +121,7 @@ msgstr "Oui"
 msgid "Event trigger: %s"
 msgstr "Déclencheur d'action : %s"
 
-#: links.py:23
+#: links.py:23 views/workflow_views.py:144
 msgid "Create workflow"
 msgstr "Créer un flux de travail"
 
@@ -169,7 +169,7 @@ msgstr "Déclencheurs de transition"
 msgid "Preview"
 msgstr "Prévisualiser"
 
-#: links.py:141 queues.py:12
+#: links.py:141 queues.py:13
 msgid "Launch all workflows"
 msgstr "Lancer tous les flux de travail"
 
@@ -203,7 +203,7 @@ msgstr "Cette valeur sera utilisée par d'autres applications pour faire référ
 msgid "Internal name"
 msgstr "Nom interne"
 
-#: models.py:60 models.py:168 models.py:312 models.py:359
+#: models.py:60 models.py:167 models.py:311 models.py:358
 msgid "Workflow"
 msgstr "Flux de travail"
 
@@ -211,127 +211,127 @@ msgstr "Flux de travail"
 msgid "Initial state"
 msgstr "État initial"
 
-#: models.py:174
+#: models.py:173
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
 msgstr "Sélectionnez si vous voulez que cet état soit celui par lequel le flux de travail débute. Un seul état peut être à l'état initial."
 
-#: models.py:176
+#: models.py:175
 msgid "Initial"
 msgstr "Initial"
 
-#: models.py:180
+#: models.py:179
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
 msgstr "Spécifiez le pourcentage de finalisation que cet état représente au sein du flux de travail. Saisissez un nombre sans le signe de pourcentage."
 
-#: models.py:188 models.py:247
+#: models.py:187 models.py:246
 msgid "Workflow state"
 msgstr "État du flux de travail"
 
-#: models.py:189
+#: models.py:188
 msgid "Workflow states"
 msgstr "États du flux de travail"
 
-#: models.py:250
+#: models.py:249
 msgid "A simple identifier for this action."
 msgstr "Un identifiant simple pour cette action."
 
-#: models.py:257
+#: models.py:256
 msgid "At which moment of the state this action will execute"
 msgstr "A quel stade de l'état cette action sera exécutée"
 
-#: models.py:258
+#: models.py:257
 msgid "When"
 msgstr "Quand"
 
-#: models.py:262
+#: models.py:261
 msgid "The dotted Python path to the workflow action class to execute."
 msgstr "Le chemin Python séparé par des points vers la classe d'action de flux de travail à exécuter."
 
-#: models.py:263
+#: models.py:262
 msgid "Entry action path"
 msgstr "Chemin d'action d'entrée"
 
-#: models.py:266
+#: models.py:265
 msgid "Entry action data"
 msgstr "Données d'action d'entrée"
 
-#: models.py:272
+#: models.py:271
 msgid "Workflow state action"
 msgstr "Action d'état du flux de travail"
 
-#: models.py:317
+#: models.py:316
 msgid "Origin state"
 msgstr "État d'origine"
 
-#: models.py:321
+#: models.py:320
 msgid "Destination state"
 msgstr "État de destination"
 
-#: models.py:329
+#: models.py:328
 msgid "Workflow transition"
 msgstr "Transition du flux de travail"
 
-#: models.py:330
+#: models.py:329
 msgid "Workflow transitions"
 msgstr "Transitions du flux de travail"
 
-#: models.py:344
+#: models.py:343
 msgid "Event type"
 msgstr "Type d'évènement"
 
-#: models.py:348
+#: models.py:347
 msgid "Workflow transition trigger event"
 msgstr "Événement déclencheur de transition du flux de travail"
 
-#: models.py:349
+#: models.py:348
 msgid "Workflow transitions trigger events"
 msgstr "Événements déclencheurs de transitions du flux de travail"
 
-#: models.py:363
+#: models.py:362
 msgid "Document"
 msgstr "Document"
 
-#: models.py:369 models.py:472
+#: models.py:368 models.py:473
 msgid "Workflow instance"
 msgstr "Instance du flux de travail"
 
-#: models.py:370
+#: models.py:369
 msgid "Workflow instances"
 msgstr "Instances du flux de travail"
 
-#: models.py:475
+#: models.py:476
 msgid "Datetime"
 msgstr "Date et heure"
 
-#: models.py:489
+#: models.py:490
 msgid "Workflow instance log entry"
 msgstr "Entrée de la journalisation de l'instance du flux de travail"
 
-#: models.py:490
+#: models.py:491
 msgid "Workflow instance log entries"
 msgstr "Entrées de la journalisation du flux de travail"
 
-#: models.py:497
+#: models.py:498
 msgid "Not a valid transition choice."
 msgstr "Choix de transition invalide."
 
-#: models.py:530
+#: models.py:531
 msgid "Workflow runtime proxy"
 msgstr "Proxy d'exécution du flux de travail"
 
-#: models.py:531
+#: models.py:532
 msgid "Workflow runtime proxies"
 msgstr "Proxies d'exécution du flux de travail"
 
-#: models.py:537
+#: models.py:538
 msgid "Workflow state runtime proxy"
 msgstr "Protocole d'exécution de l'état du flux de travail"
 
-#: models.py:538
+#: models.py:539
 msgid "Workflow state runtime proxies"
 msgstr "Proxies d'exécution de l'état du flux de travail"
 
@@ -363,7 +363,7 @@ msgstr "Transition des flux de travails"
 msgid "Execute workflow tools"
 msgstr "Exécuter des outils de flux de travail"
 
-#: queues.py:8
+#: queues.py:9
 msgid "Document states"
 msgstr "États de document"
 
@@ -473,7 +473,7 @@ msgstr "Il y a des documents dans cet état de flux de travail"
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Les documents dans le flux de travail \"%s\", état \"%s\""
 
-#: views/workflow_proxy_views.py:142 views/workflow_views.py:514
+#: views/workflow_proxy_views.py:142 views/workflow_views.py:491
 msgid "Create states and link them using transitions."
 msgstr ""
 
@@ -481,37 +481,37 @@ msgstr ""
 msgid "This workflow doesn't have any state"
 msgstr "Ce flux de travail n'a pas d'état"
 
-#: views/workflow_proxy_views.py:148 views/workflow_views.py:520
+#: views/workflow_proxy_views.py:148 views/workflow_views.py:497
 #, python-format
 msgid "States of workflow: %s"
 msgstr "États du flux de travail : %s"
 
-#: views/workflow_views.py:73
+#: views/workflow_views.py:72
 msgid "Available workflows"
 msgstr "Flux de travail disponibles"
 
-#: views/workflow_views.py:74
+#: views/workflow_views.py:73
 msgid "Workflows assigned this document type"
 msgstr "Flux de travail affectés à ce type de document"
 
-#: views/workflow_views.py:84
+#: views/workflow_views.py:83
 msgid ""
 "Removing a workflow from a document type will also remove all running "
 "instances of that workflow."
 msgstr ""
 
-#: views/workflow_views.py:88
+#: views/workflow_views.py:87
 #, python-format
 msgid "Workflows assigned the document type: %s"
 msgstr ""
 
-#: views/workflow_views.py:133
+#: views/workflow_views.py:132
 msgid ""
 "Workflows store a series of states and keep track of the current state of a "
 "document. Transitions are used to change the current state to a new one."
 msgstr ""
 
-#: views/workflow_views.py:138
+#: views/workflow_views.py:137
 msgid "No workflows have been defined"
 msgstr "Aucun flux de travail n'a été défini"
 
@@ -568,73 +568,69 @@ msgstr "Actions pour l'état de flux de travail : %s"
 msgid "New workflow state action selection"
 msgstr "Sélection d'une nouvelle action d'état de flux de travail"
 
-#: views/workflow_views.py:413
+#: views/workflow_views.py:416
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr "Créer des états pour le flux de travail : %s"
 
-#: views/workflow_views.py:517
+#: views/workflow_views.py:494
 msgid "This workflow doesn't have any states"
 msgstr ""
 
-#: views/workflow_views.py:543
-msgid "Unable to save transition; integrity error."
-msgstr "Impossible de sauvegarder la transition ; erreur d'intégrité."
-
-#: views/workflow_views.py:556
+#: views/workflow_views.py:520
 #, python-format
 msgid "Create transitions for workflow: %s"
 msgstr "Créer des transitions du flux de travail : %s"
 
-#: views/workflow_views.py:643
+#: views/workflow_views.py:609
 msgid ""
 "Create a transition and use it to move a workflow from  one state to "
 "another."
 msgstr ""
 
-#: views/workflow_views.py:647
+#: views/workflow_views.py:613
 msgid "This workflow doesn't have any transitions"
 msgstr ""
 
-#: views/workflow_views.py:651
+#: views/workflow_views.py:617
 #, python-format
 msgid "Transitions of workflow: %s"
 msgstr "Transitions du flux de travail : %s "
 
-#: views/workflow_views.py:685
+#: views/workflow_views.py:647
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
 msgstr "Erreur de mise-à-jour des événements déclencheurs de transition du flux de travail ; %s "
 
-#: views/workflow_views.py:691
+#: views/workflow_views.py:654
 msgid "Workflow transition trigger events updated successfully"
 msgstr "Événements déclencheurs de transition du flux de travail mis à jour avec succès"
 
-#: views/workflow_views.py:708
+#: views/workflow_views.py:671
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
 msgstr ""
 
-#: views/workflow_views.py:712
+#: views/workflow_views.py:675
 #, python-format
 msgid "Workflow transition trigger events for: %s"
 msgstr "Événements déclencheurs de transition du flux de travail : %s"
 
-#: views/workflow_views.py:743
+#: views/workflow_views.py:706
 msgid "Launch all workflows?"
 msgstr "Lancer tous les flux de travail ?"
 
-#: views/workflow_views.py:745
+#: views/workflow_views.py:708
 msgid ""
 "This will launch all workflows created after documents have already been "
 "uploaded."
 msgstr ""
 
-#: views/workflow_views.py:754
+#: views/workflow_views.py:717
 msgid "Workflow launch queued successfully."
 msgstr "Le lancement du flux de travail a été mis en file d'attente avec succès."
 
-#: views/workflow_views.py:780
+#: views/workflow_views.py:743
 #, python-format
 msgid "Preview of: %s"
 msgstr "Prévisualisation de : %s"

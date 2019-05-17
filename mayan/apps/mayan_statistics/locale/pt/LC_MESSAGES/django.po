@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:39-0400\n"
-"PO-Revision-Date: 2018-04-10 08:25+0000\n"
+"POT-Creation-Date: 2019-05-17 01:47-0400\n"
+"PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -18,29 +18,37 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 links.py:29 permissions.py:7 queues.py:8
+#: apps.py:23 links.py:33 permissions.py:7 queues.py:9
 msgid "Statistics"
 msgstr "Estatísticas"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:32
 msgid "Schedule"
 msgstr "Agenda"
+
+#: apps.py:37
+msgid "Last update"
+msgstr ""
+
+#: classes.py:150
+msgid "Never"
+msgstr "Nunca"
 
 #: links.py:12
 msgid "Queue"
 msgstr "Fila"
 
-#: links.py:16
+#: links.py:17
 msgid "View"
 msgstr "Ver"
 
-#: links.py:20
+#: links.py:22
 msgid "Namespace details"
 msgstr ""
 
-#: links.py:24
+#: links.py:27
 msgid "Namespace list"
 msgstr ""
 
@@ -70,13 +78,18 @@ msgstr "Resultados da estatística"
 msgid "View statistics"
 msgstr "Ver estatísticas"
 
-#: queues.py:12
+#: queues.py:13
 msgid "Execute statistic"
 msgstr ""
 
 #: templates/statistics/renderers/chartjs/line.html:14
-msgid "No data available yet"
-msgstr "Ainda sem dados disponíveis"
+msgid "No data available."
+msgstr ""
+
+#: templates/statistics/renderers/chartjs/line.html:16
+#, python-format
+msgid "Last update: %(datetime)s"
+msgstr ""
 
 #: views.py:18
 msgid "Statistics namespaces"
@@ -102,7 +115,7 @@ msgstr "Estatística \"%s\" não encontrada."
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr ""
 
-#: views.py:102
+#: views.py:95
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr ""

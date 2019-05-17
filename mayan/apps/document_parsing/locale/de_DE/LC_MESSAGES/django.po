@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:38-0400\n"
+"POT-Creation-Date: 2019-05-17 01:46-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2019\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -24,15 +24,15 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:53 events.py:8 permissions.py:8 settings.py:7
+#: apps.py:50 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr "Dokument parsen"
 
-#: apps.py:119 models.py:78
+#: apps.py:116 models.py:78
 msgid "Result"
 msgstr "Ergebnis"
 
-#: apps.py:136 apps.py:140 links.py:16 links.py:22 models.py:27
+#: apps.py:121 apps.py:125 links.py:16 links.py:22 models.py:27
 msgid "Content"
 msgstr "Inhalt"
 
@@ -60,7 +60,7 @@ msgstr "Seite %(page_number)d"
 msgid "Contents"
 msgstr "Inhalte"
 
-#: links.py:28 links.py:66 views.py:194
+#: links.py:28 links.py:66 views.py:197
 msgid "Parsing errors"
 msgstr "Fehler beim Parsen"
 
@@ -150,11 +150,11 @@ msgstr "Parser-Einstellungen des Dokumententyps ändern"
 msgid "Parse the content of a document"
 msgstr "Inhalt eines Dokuments parsen"
 
-#: queues.py:7
+#: queues.py:8
 msgid "Parsing"
 msgstr "Parsing"
 
-#: queues.py:10
+#: queues.py:11
 msgid "Document version parsing"
 msgstr "Parsen der Dokumentenversion"
 
@@ -172,53 +172,53 @@ msgstr ""
 "Pfad zum \"pdftotext\"-Programm (bereitgestellt von poppler), das benutzt "
 "wird, um Text aus PDF-Dateien zu extrahieren."
 
-#: views.py:42
+#: views.py:43
 #, python-format
 msgid "Content for document: %s"
 msgstr "Inhalt von Dokument: %s"
 
-#: views.py:77
+#: views.py:78
 #, python-format
 msgid "Content for document page: %s"
 msgstr "Inhalt von Dokument Seite: %s"
 
-#: views.py:92
+#: views.py:93
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "Parsing Fehler für Dokument: %s"
 
-#: views.py:104
+#: views.py:105
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)d Dokument zur Parsing-Warteschlange hinzugefügt"
 
-#: views.py:107
+#: views.py:108
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d Dokumente zur Parsing-Warteschlange hinzugefügt"
 
-#: views.py:115
+#: views.py:116
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
 msgstr[0] "%(count)d-Dokument an die Parsing-Warteschlange senden?"
 msgstr[1] "%(count)d Dokumente in die Parsing-Warteschlange einreihen"
 
-#: views.py:128
+#: views.py:129
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "Dokument \"%s\" in die Parsing-Warteschlange einreihen"
 
-#: views.py:151
+#: views.py:154
 #, python-format
-msgid "Edit parsing settings for document type: %s"
-msgstr "Parsing-Einstellungen bearbeiten für Dokumenttyp: %s"
+msgid "Edit parsing settings for document type: %s."
+msgstr ""
 
-#: views.py:161
+#: views.py:164
 msgid "Submit all documents of a type for parsing."
 msgstr "Alle Dokumente eines Typs zum Parsen einreichen."
 
-#: views.py:182
+#: views.py:185
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d Dokumente zur Parsing-Warteschlange hinzugefügt."

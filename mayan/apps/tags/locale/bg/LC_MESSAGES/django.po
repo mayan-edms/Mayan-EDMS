@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:41-0400\n"
-"PO-Revision-Date: 2019-04-27 22:54+0000\n"
+"POT-Creation-Date: 2019-05-17 01:49-0400\n"
+"PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -18,13 +18,13 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:52 apps.py:110 apps.py:117 apps.py:139 apps.py:141 events.py:7
+#: apps.py:52 apps.py:108 apps.py:115 apps.py:137 apps.py:139 events.py:7
 #: forms.py:17 links.py:25 menus.py:16 models.py:42 permissions.py:7
-#: views.py:220 workflow_actions.py:19 workflow_actions.py:62
+#: views.py:222 workflow_actions.py:19 workflow_actions.py:62
 msgid "Tags"
 msgstr "Етикети"
 
-#: apps.py:132 models.py:36
+#: apps.py:130 models.py:36
 msgid "Documents"
 msgstr "Документи"
 
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Create new tag"
 msgstr ""
 
-#: links.py:50 links.py:67 views.py:154
+#: links.py:50 links.py:67 views.py:156
 msgid "Delete"
 msgstr ""
 
@@ -72,8 +72,12 @@ msgstr "Редактиране"
 msgid "All"
 msgstr ""
 
-#: methods.py:14
+#: methods.py:20
 msgid "Return a the tags attached to the document."
+msgstr ""
+
+#: methods.py:22
+msgid "get_tags()"
 msgstr ""
 
 #: models.py:28
@@ -96,15 +100,15 @@ msgstr "Цвят"
 msgid "Tag"
 msgstr ""
 
-#: models.py:74
+#: models.py:84
 msgid "Preview"
 msgstr ""
 
-#: models.py:103
+#: models.py:113
 msgid "Document tag"
 msgstr ""
 
-#: models.py:104
+#: models.py:114
 msgid "Document tags"
 msgstr ""
 
@@ -178,120 +182,120 @@ msgstr ""
 msgid "Tags to be attached."
 msgstr ""
 
-#: views.py:110
+#: views.py:112
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
 msgstr ""
 
-#: views.py:120
+#: views.py:122
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
 msgstr ""
 
-#: views.py:129
+#: views.py:131
 msgid "Create tag"
-msgstr ""
-
-#: views.py:143
-#, python-format
-msgid "Tag delete request performed on %(count)d tag"
 msgstr ""
 
 #: views.py:145
 #, python-format
+msgid "Tag delete request performed on %(count)d tag"
+msgstr ""
+
+#: views.py:147
+#, python-format
 msgid "Tag delete request performed on %(count)d tags"
 msgstr ""
 
-#: views.py:152
+#: views.py:154
 msgid "Will be removed from all documents."
 msgstr "Ще бъде премахнат от всички документи."
 
-#: views.py:156
+#: views.py:158
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:166
+#: views.py:168
 #, python-format
 msgid "Delete tag: %s"
 msgstr ""
 
-#: views.py:177
+#: views.py:179
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "Етикет \"%s\" е изтрит успешно."
 
-#: views.py:182
+#: views.py:184
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "Грешка при изтриване на етикет \"%(tag)s\": %(error)s"
 
-#: views.py:197
+#: views.py:199
 #, python-format
 msgid "Edit tag: %s"
 msgstr ""
 
-#: views.py:216
+#: views.py:218
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
 msgstr ""
 
-#: views.py:219
+#: views.py:221
 msgid "No tags available"
 msgstr ""
 
-#: views.py:242
+#: views.py:245
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr ""
 
-#: views.py:266
+#: views.py:269
 msgid "Document has no tags attached"
 msgstr ""
 
-#: views.py:273
+#: views.py:272
 #, python-format
 msgid "Tags for document: %s"
 msgstr ""
 
-#: views.py:286
+#: views.py:288
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr ""
 
-#: views.py:288
+#: views.py:290
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:296
+#: views.py:298
 msgid "Remove"
 msgstr "Премахнете"
 
-#: views.py:298
+#: views.py:300
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:310
+#: views.py:312
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr ""
 
-#: views.py:319
+#: views.py:321
 msgid "Tags to be removed."
 msgstr ""
 
-#: views.py:357
+#: views.py:361
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr ""
 
-#: views.py:366
+#: views.py:370
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr ""

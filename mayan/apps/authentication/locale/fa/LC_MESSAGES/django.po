@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
+"PO-Revision-Date: 2019-05-17 05:50+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:21 settings.py:9
+#: apps.py:25 settings.py:9
 msgid "Authentication"
 msgstr "احراز هویت"
 
@@ -49,9 +49,13 @@ msgstr "این حساب کاربری غیرفعال است."
 msgid "Logout"
 msgstr "خروج"
 
-#: links.py:26
+#: links.py:27
 msgid "Change password"
 msgstr "تغییر کلمه عبور"
+
+#: links.py:32 links.py:39
+msgid "Set password"
+msgstr "قراردادن رمز عبور"
 
 #: settings.py:13
 msgid ""
@@ -96,7 +100,7 @@ msgid "Login page"
 msgstr "صفحه ورود"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29
+#: templates/authentication/password_reset_form.html:29 views.py:154
 msgid "Submit"
 msgstr "ارسال"
 
@@ -104,14 +108,51 @@ msgstr "ارسال"
 msgid "Password reset email sent!"
 msgstr "ایمیل فرستادن تنظیم مجدد"
 
-#: views.py:69
+#: views.py:74
 msgid "Your password has been successfully changed."
 msgstr "کلمه عبور شما با موفقیت عوض شد."
 
-#: views.py:76
+#: views.py:81
 msgid "Current user password change"
 msgstr "تغییر کلمه عبور کاربر جاری"
 
-#: views.py:84
+#: views.py:89
 msgid "Changing the password is not allowed for this account."
 msgstr ""
+
+#: views.py:145
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr "درخواست تغییر رمز عبور بر روی کاربر %(count)d انجام می شود"
+
+#: views.py:147
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr "درخواست تغییر رمز عبور بر روی کاربران %(count)d انجام شد"
+
+#: views.py:156
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:166
+#, python-format
+msgid "Change password for user: %s"
+msgstr "تغییر رمز عبور برای کاربر: %s"
+
+#: views.py:186
+msgid ""
+"Super user and staff user password reseting is not allowed, use the admin "
+"interface for these cases."
+msgstr "بازپروری کاربر با کاربر و کارکنان فوق العاده مجاز نیست، از رابط کاربری مدیریت برای این موارد استفاده کنید."
+
+#: views.py:196
+#, python-format
+msgid "Successful password reset for user: %s."
+msgstr ""
+
+#: views.py:202
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "خطای بازنشانی گذرواژه کاربر «%(user)s»: %(error)s"

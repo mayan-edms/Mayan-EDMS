@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2019
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2019
+# Roberto Rosario, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:38-0400\n"
+"POT-Creation-Date: 2019-05-17 01:45-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2019\n"
+"Last-Translator: Roberto Rosario, 2019\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,171 +22,201 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:29 links.py:43 permissions.py:7
+#: apps.py:27 links.py:43 permissions.py:7
 msgid "Dependencies"
 msgstr ""
 
-#: apps.py:35 apps.py:70 apps.py:78
+#: apps.py:33 apps.py:68 apps.py:76
 msgid "Label"
 msgstr "برچسب"
 
-#: apps.py:38
+#: apps.py:36
 msgid "Internal name"
 msgstr "نام داخلی"
 
-#: apps.py:41 apps.py:73 apps.py:82
+#: apps.py:39 apps.py:71 apps.py:80
 msgid "Description"
 msgstr "توضیحات"
 
-#: apps.py:45
+#: apps.py:43 classes.py:167
 msgid "Type"
 msgstr "نوع"
 
-#: apps.py:49
+#: apps.py:47 classes.py:169
 msgid "Other data"
 msgstr ""
 
-#: apps.py:53
+#: apps.py:51
 msgid "Declared by"
 msgstr ""
 
-#: apps.py:57
+#: apps.py:55 classes.py:167
 msgid "Version"
 msgstr "نسخه"
 
-#: apps.py:61 classes.py:622
+#: apps.py:59 classes.py:168 classes.py:672
 msgid "Environment"
 msgstr ""
 
-#: apps.py:65
+#: apps.py:63 classes.py:169
 msgid "Check"
 msgstr ""
 
 #: classes.py:60
 msgid ""
-"Normal environment for end users. A missing depedencies under this "
-"environment will result issues and error during normal use."
+"Environment used for building distributable packages of the software. End "
+"users can ignore missing depedencies under this environment."
 msgstr ""
 
-#: classes.py:62
-msgid "Production"
+#: classes.py:63
+msgid "Build"
 msgstr ""
 
-#: classes.py:66
+#: classes.py:67
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing depedencies under this environment."
 msgstr ""
 
-#: classes.py:68
+#: classes.py:69
 msgid "Development"
 msgstr ""
 
-#: classes.py:72
+#: classes.py:73
+msgid ""
+"Normal environment for end users. A missing depedencies under this "
+"environment will result issues and error during normal use."
+msgstr ""
+
+#: classes.py:75
+msgid "Production"
+msgstr ""
+
+#: classes.py:79
 msgid ""
 "Environment used running the test suit to verify the functionality of the "
 "code. Dependencies in this environment are not needed for normal production "
 "usage."
 msgstr ""
 
-#: classes.py:75
+#: classes.py:82
 msgid "Testing"
 msgstr ""
 
-#: classes.py:232
+#: classes.py:167
+msgid "Name"
+msgstr "نام"
+
+#: classes.py:168
+msgid "App"
+msgstr ""
+
+#: classes.py:267
 msgid "Need to specify at least one: app_label or module."
 msgstr ""
 
-#: classes.py:237
+#: classes.py:272
 #, python-format
 msgid "Dependency \"%s\" already registered."
 msgstr ""
 
-#: classes.py:263
+#: classes.py:298
 #, python-format
 msgid "Installing package: %s... "
 msgstr ""
 
-#: classes.py:268
+#: classes.py:303
 msgid "Already installed."
 msgstr ""
 
-#: classes.py:271 classes.py:274
+#: classes.py:306 classes.py:310
 msgid "Complete."
 msgstr ""
 
-#: classes.py:296
+#: classes.py:333
 msgid "Installed and correct version"
 msgstr ""
 
-#: classes.py:298
+#: classes.py:335
 msgid "Missing or incorrect version"
 msgstr ""
 
-#: classes.py:327
+#: classes.py:364
 msgid "None"
 msgstr "هیچ یک"
 
-#: classes.py:336
+#: classes.py:373
 msgid "Not specified"
 msgstr ""
 
-#: classes.py:351
+#: classes.py:388
 msgid "Executables that are called directly by the code."
 msgstr ""
 
-#: classes.py:353
+#: classes.py:390
 msgid "Binary"
 msgstr ""
 
-#: classes.py:370
+#: classes.py:407
 msgid ""
 "Javascript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
 msgstr ""
 
-#: classes.py:373
+#: classes.py:410
 msgid "Javascript"
 msgstr ""
 
-#: classes.py:579
+#: classes.py:444
+msgid "Downloading... "
+msgstr ""
+
+#: classes.py:447
+msgid "Verifying... "
+msgstr ""
+
+#: classes.py:450
+msgid "Extracting... "
+msgstr ""
+
+#: classes.py:627
 msgid "Python packages downloaded from PyPI."
 msgstr ""
 
-#: classes.py:581
+#: classes.py:629
 msgid "Python"
 msgstr ""
 
-#: classes.py:604
+#: classes.py:654
 msgid "Declared in app"
 msgstr ""
 
-#: classes.py:605
+#: classes.py:655
 msgid "Show depedencies by the app that declared them."
 msgstr ""
 
-#: classes.py:609
+#: classes.py:659
 msgid "Class"
 msgstr "کلاس"
 
-#: classes.py:610
+#: classes.py:660
 msgid ""
 "Show the different classes of depedencies. Classes are usually divided by "
 "language or the file types of the depedency."
 msgstr ""
 
-#: classes.py:615
+#: classes.py:665
 msgid "State"
 msgstr ""
 
-#: classes.py:616
+#: classes.py:666
 msgid ""
 "Show the different states of the depedencies. True means that the "
 "depedencies is installed and is of a correct version. False means the "
 "depedencies is missing or an incorrect version is present."
 msgstr ""
 
-#: classes.py:623
+#: classes.py:673
 msgid ""
 "Depedencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
@@ -210,6 +240,17 @@ msgstr "جزئیات"
 
 #: links.py:38
 msgid "Dependencies licenses"
+msgstr ""
+
+#: management/commands/generaterequirements.py:16
+msgid ""
+"Comma separated names of dependencies to exclude from the list generated."
+msgstr ""
+
+#: management/commands/generaterequirements.py:22
+msgid ""
+"Comma separated names of dependencies to show in the list while excluding "
+"every other one."
 msgstr ""
 
 #: management/commands/installjavascript.py:15

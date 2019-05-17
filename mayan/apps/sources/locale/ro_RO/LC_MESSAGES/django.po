@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-05 02:10-0400\n"
+"POT-Creation-Date: 2019-05-17 01:48-0400\n"
 "PO-Revision-Date: 2019-05-08 07:32+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -20,39 +20,39 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:45 links.py:54 models/base.py:39 queues.py:8 settings.py:10
+#: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
 #: views.py:630
 msgid "Sources"
 msgstr "Surse"
 
-#: apps.py:60
+#: apps.py:56
 msgid "Create a document source"
 msgstr "Creați o sursă de documente"
 
-#: apps.py:62
+#: apps.py:58
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr "Sursele de documente sunt modul în care documente noi alimentează Mayan EDMS, creează cel puțin o sursă de formă web pentru a putea încărca documente dintr-un browser."
 
-#: apps.py:75
+#: apps.py:71
 msgid "Type"
 msgstr "Tip"
 
-#: apps.py:84
+#: apps.py:80
 msgid "Created"
 msgstr "Creat"
 
-#: apps.py:91
+#: apps.py:87
 msgid "Thumbnail"
 msgstr "Iconiță"
 
-#: apps.py:99 models/base.py:248
+#: apps.py:95 models/base.py:248
 msgid "Date time"
 msgstr "Data și ora"
 
-#: apps.py:104 models/base.py:251
+#: apps.py:100 models/base.py:251
 msgid "Message"
 msgstr "Mesaj"
 
@@ -528,27 +528,27 @@ msgstr "Vezi sursele existente de documente"
 msgid "Delete staging files"
 msgstr "Ștergeți fișierele în așteptare"
 
-#: queues.py:11
+#: queues.py:12
 msgid "Sources periodic"
 msgstr "Surse periodice"
 
-#: queues.py:14
+#: queues.py:16
 msgid "Sources fast"
 msgstr "Surse rapide"
 
-#: queues.py:18
+#: queues.py:21
 msgid "Generate staging file image"
 msgstr "Generați imaginea fișierului în așteptare"
 
-#: queues.py:22
+#: queues.py:25
 msgid "Check interval source"
 msgstr "Interval de verificare a sursei"
 
-#: queues.py:26
+#: queues.py:29
 msgid "Handle upload"
 msgstr "Manipulați încărcarea"
 
-#: queues.py:30
+#: queues.py:33
 msgid "Upload document"
 msgstr "Încărcați documentul"
 

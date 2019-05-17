@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,18 +18,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:41 apps.py:94 apps.py:102 apps.py:105 events.py:7 forms.py:16
-#: links.py:24 menus.py:16 models.py:44 permissions.py:7 views.py:172
+#: apps.py:50 apps.py:111 apps.py:119 apps.py:122 events.py:7 forms.py:16
+#: links.py:24 menus.py:16 models.py:47 permissions.py:7 views.py:159
 msgid "Cabinets"
 msgstr "Cabinets"
 
-#: events.py:10
+#: events.py:11
+#, fuzzy
+#| msgid "Cabinet"
+msgid "Cabinet created"
+msgstr "Cabinet"
+
+#: events.py:14
+#, fuzzy
+#| msgid "Cabinet"
+msgid "Cabinet edited"
+msgstr "Cabinet"
+
+#: events.py:17
 #, fuzzy
 #| msgid "Document cabinet"
 msgid "Document added to cabinet"
 msgstr "Document cabinet"
 
-#: events.py:13
+#: events.py:20
 #, fuzzy
 #| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
@@ -47,7 +59,7 @@ msgstr "Add to cabinets"
 msgid "Add new level"
 msgstr "Add new level"
 
-#: links.py:69 views.py:44
+#: links.py:69 views.py:45
 msgid "Create cabinet"
 msgstr "Create cabinet"
 
@@ -79,32 +91,32 @@ msgstr "Cabinets containing document: %s"
 msgid "get_cabinets()"
 msgstr "Create cabinets"
 
-#: models.py:32 search.py:16
+#: models.py:35 search.py:16
 msgid "Label"
 msgstr "Label"
 
-#: models.py:35
+#: models.py:38
 msgid "Documents"
 msgstr "Documents"
 
-#: models.py:43 models.py:114 serializers.py:138
+#: models.py:46 models.py:135 serializers.py:138
 msgid "Cabinet"
 msgstr "Cabinet"
 
-#: models.py:115 serializers.py:139
+#: models.py:136 serializers.py:139
 msgid "Parent and Label"
 msgstr "Parent and Label"
 
-#: models.py:122 serializers.py:145
+#: models.py:143 serializers.py:145
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr "%(model_name)s with this %(field_labels)s already exists."
 
-#: models.py:139
+#: models.py:160
 msgid "Document cabinet"
 msgstr "Document cabinet"
 
-#: models.py:140
+#: models.py:161
 msgid "Document cabinets"
 msgstr "Document cabinets"
 
@@ -165,17 +177,17 @@ msgstr ""
 msgid "Navigation:"
 msgstr "Navigation:"
 
-#: views.py:75
+#: views.py:60
 #, python-format
 msgid "Add new level to: %s"
 msgstr "Add new level to: %s"
 
-#: views.py:89
+#: views.py:83
 #, python-format
 msgid "Delete the cabinet: %s?"
 msgstr "Delete the cabinet: %s?"
 
-#: views.py:124
+#: views.py:118
 msgid ""
 "Cabinet levels can contain documents or other cabinet sub levels. To add "
 "documents to a cabinet, select the cabinet view of a document view."
@@ -183,21 +195,21 @@ msgstr ""
 "Cabinet levels can contain documents or other cabinet sub levels. To add "
 "documents to a cabinet, select the cabinet view of a document view."
 
-#: views.py:128
+#: views.py:122
 msgid "This cabinet level is empty"
 msgstr "This cabinet level is empty"
 
-#: views.py:130
+#: views.py:125
 #, python-format
 msgid "Details of cabinet: %s"
 msgstr "Details of cabinet: %s"
 
-#: views.py:161
+#: views.py:145
 #, python-format
 msgid "Edit cabinet: %s"
 msgstr "Edit cabinet: %s"
 
-#: views.py:178
+#: views.py:165
 msgid ""
 "Cabinets are a multi-level method to organize documents. Each cabinet can "
 "contain documents as well as other sub level cabinets."
@@ -205,38 +217,38 @@ msgstr ""
 "Cabinets are a multi-level method to organize documents. Each cabinet can "
 "contain documents as well as other sub level cabinets."
 
-#: views.py:182
+#: views.py:169
 msgid "No cabinets available"
 msgstr "No cabinets available"
 
-#: views.py:214
+#: views.py:201
 msgid "Documents can be added to many cabinets."
 msgstr "Documents can be added to many cabinets."
 
-#: views.py:217
+#: views.py:204
 msgid "This document is not in any cabinet"
 msgstr "This document is not in any cabinet"
 
-#: views.py:220
+#: views.py:207
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr "Cabinets containing document: %s"
 
-#: views.py:232
+#: views.py:219
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document"
 msgstr "Add to cabinet request performed on %(count)d document"
 
-#: views.py:235
+#: views.py:222
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents"
 msgstr "Add to cabinet request performed on %(count)d documents"
 
-#: views.py:242
+#: views.py:229
 msgid "Add"
 msgstr "Add"
 
-#: views.py:244
+#: views.py:231
 #, fuzzy, python-format
 #| msgid "Add document to cabinets"
 #| msgid_plural "Add documents to cabinets"
@@ -245,40 +257,40 @@ msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Add document to cabinets"
 msgstr[1] "Add documents to cabinets"
 
-#: views.py:257
+#: views.py:244
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr "Add document \"%s\" to cabinets"
 
-#: views.py:268
+#: views.py:255
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Cabinets to which the selected documents will be added."
 
-#: views.py:297
+#: views.py:284
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr "Document: %(document)s is already in cabinet: %(cabinet)s."
 
-#: views.py:309
+#: views.py:296
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 
-#: views.py:322
+#: views.py:309
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document"
 msgstr "Remove from cabinet request performed on %(count)d document"
 
-#: views.py:325
+#: views.py:312
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents"
 msgstr "Remove from cabinet request performed on %(count)d documents"
 
-#: views.py:332
+#: views.py:319
 msgid "Remove"
 msgstr "Remove"
 
-#: views.py:334
+#: views.py:321
 #, fuzzy, python-format
 #| msgid "Remove document from cabinets"
 #| msgid_plural "Remove documents from cabinets"
@@ -287,22 +299,22 @@ msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Remove document from cabinets"
 msgstr[1] "Remove documents from cabinets"
 
-#: views.py:347
+#: views.py:334
 #, fuzzy, python-format
 #| msgid "Remove document \"%s\" to cabinets"
 msgid "Remove document \"%s\" from cabinets"
 msgstr "Remove document \"%s\" to cabinets"
 
-#: views.py:358
+#: views.py:345
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Cabinets from which the selected documents will be removed."
 
-#: views.py:386
+#: views.py:373
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr "Document: %(document)s is not in cabinet: %(cabinet)s."
 
-#: views.py:398
+#: views.py:385
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Document: %(document)s removed from cabinet: %(cabinet)s."

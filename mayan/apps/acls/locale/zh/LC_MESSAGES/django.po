@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:36-0400\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
 "PO-Revision-Date: 2019-05-05 01:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
@@ -50,12 +50,12 @@ msgstr "删除"
 msgid "Permissions"
 msgstr "权限"
 
-#: managers.py:211
+#: managers.py:209
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
 msgstr ""
 
-#: managers.py:231
+#: managers.py:229
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr "访问权限不足：%s"
@@ -81,33 +81,33 @@ msgstr "编辑访问控制列表"
 msgid "View ACLs"
 msgstr "查看访问控制列表"
 
-#: serializers.py:24 serializers.py:132
+#: serializers.py:26 serializers.py:136
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
 msgstr "API URL指向此访问控制列表的权限列表。"
 
-#: serializers.py:57
+#: serializers.py:59
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
 msgstr "API URL指向与其附加的访问控制列表相关的权限。此URL与规范工作流URL不同。"
 
-#: serializers.py:87
+#: serializers.py:91
 msgid "Primary key of the new permission to grant to the access control list."
 msgstr "授予访问控制列表的新权限的主键。"
 
-#: serializers.py:111 serializers.py:187
+#: serializers.py:115 serializers.py:191
 #, python-format
 msgid "No such permission: %s"
 msgstr "没有这样的权限：%s"
 
-#: serializers.py:126
+#: serializers.py:130
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
 msgstr "逗号分隔的权限主键列表，用于授予此访问控制列表。"
 
-#: serializers.py:138
+#: serializers.py:142
 msgid "Primary keys of the role to which this access control list binds to."
 msgstr "此访问控制列表绑定到的角色的主键。"
 
@@ -144,12 +144,12 @@ msgstr "授予的权限"
 msgid "Available permissions"
 msgstr "可用权限"
 
-#: views.py:212
+#: views.py:215
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr ""
 
-#: views.py:221
+#: views.py:224
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -191,6 +191,6 @@ msgstr "授予/撤销给上述选定对象角色的权限。"
 msgid "Grant access"
 msgstr "授予访问权限"
 
-#: workflow_actions.py:129
+#: workflow_actions.py:135
 msgid "Revoke access"
 msgstr "撤消访问权限"

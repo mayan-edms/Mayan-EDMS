@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:39-0400\n"
-"PO-Revision-Date: 2019-01-24 05:56+0000\n"
+"POT-Creation-Date: 2019-05-17 01:47-0400\n"
+"PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: yulin Gong <540538248@qq.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -18,29 +18,37 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:27 links.py:29 permissions.py:7 queues.py:8
+#: apps.py:23 links.py:33 permissions.py:7 queues.py:9
 msgid "Statistics"
 msgstr "统计"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:32
 msgid "Schedule"
 msgstr "安排"
+
+#: apps.py:37
+msgid "Last update"
+msgstr ""
+
+#: classes.py:150
+msgid "Never"
+msgstr "从不"
 
 #: links.py:12
 msgid "Queue"
 msgstr "队列"
 
-#: links.py:16
+#: links.py:17
 msgid "View"
 msgstr "视图"
 
-#: links.py:20
+#: links.py:22
 msgid "Namespace details"
 msgstr "命名空间详细信息"
 
-#: links.py:24
+#: links.py:27
 msgid "Namespace list"
 msgstr "命名空间列表"
 
@@ -70,13 +78,18 @@ msgstr "统计结果"
 msgid "View statistics"
 msgstr "查看统计信息"
 
-#: queues.py:12
+#: queues.py:13
 msgid "Execute statistic"
 msgstr "执行统计"
 
 #: templates/statistics/renderers/chartjs/line.html:14
-msgid "No data available yet"
-msgstr "暂无数据"
+msgid "No data available."
+msgstr ""
+
+#: templates/statistics/renderers/chartjs/line.html:16
+#, python-format
+msgid "Last update: %(datetime)s"
+msgstr ""
 
 #: views.py:18
 msgid "Statistics namespaces"
@@ -102,7 +115,7 @@ msgstr "统计“%s”未找到。"
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "队列统计“%s”有待更新？"
 
-#: views.py:102
+#: views.py:95
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr "统计“%s”已成功排队等待更新。"

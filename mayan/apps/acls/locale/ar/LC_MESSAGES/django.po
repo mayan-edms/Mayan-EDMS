@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:36-0400\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
 "PO-Revision-Date: 2019-05-05 01:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
@@ -49,12 +49,12 @@ msgstr "حذف"
 msgid "Permissions"
 msgstr "الصلاحيات"
 
-#: managers.py:211
+#: managers.py:209
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
 msgstr ""
 
-#: managers.py:231
+#: managers.py:229
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr ""
@@ -80,33 +80,33 @@ msgstr "Edit ACLs"
 msgid "View ACLs"
 msgstr "View ACLs"
 
-#: serializers.py:24 serializers.py:132
+#: serializers.py:26 serializers.py:136
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
 msgstr ""
 
-#: serializers.py:57
+#: serializers.py:59
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
 msgstr ""
 
-#: serializers.py:87
+#: serializers.py:91
 msgid "Primary key of the new permission to grant to the access control list."
 msgstr ""
 
-#: serializers.py:111 serializers.py:187
+#: serializers.py:115 serializers.py:191
 #, python-format
 msgid "No such permission: %s"
 msgstr ""
 
-#: serializers.py:126
+#: serializers.py:130
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
 msgstr ""
 
-#: serializers.py:138
+#: serializers.py:142
 msgid "Primary keys of the role to which this access control list binds to."
 msgstr ""
 
@@ -143,12 +143,12 @@ msgstr ""
 msgid "Available permissions"
 msgstr ""
 
-#: views.py:212
+#: views.py:215
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr ""
 
-#: views.py:221
+#: views.py:224
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -190,6 +190,6 @@ msgstr ""
 msgid "Grant access"
 msgstr ""
 
-#: workflow_actions.py:129
+#: workflow_actions.py:135
 msgid "Revoke access"
 msgstr ""

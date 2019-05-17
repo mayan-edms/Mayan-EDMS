@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -21,8 +21,8 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:41 apps.py:94 apps.py:102 apps.py:105 events.py:7 forms.py:16
-#: links.py:24 menus.py:16 models.py:44 permissions.py:7 views.py:172
+#: apps.py:50 apps.py:111 apps.py:119 apps.py:122 events.py:7 forms.py:16
+#: links.py:24 menus.py:16 models.py:47 permissions.py:7 views.py:159
 msgid "Cabinets"
 msgstr "Archivadores"
 
@@ -38,7 +38,7 @@ msgstr "Agregar a archivadores"
 msgid "Add new level"
 msgstr "Agregar un nuevo nivel"
 
-#: links.py:69 views.py:44
+#: links.py:69 views.py:45
 msgid "Create cabinet"
 msgstr "Crear archivador"
 
@@ -58,32 +58,32 @@ msgstr "Todos"
 msgid "Details"
 msgstr "Detalles"
 
-#: models.py:32 search.py:16
+#: models.py:35 search.py:16
 msgid "Label"
 msgstr "Etiqueta"
 
-#: models.py:35
+#: models.py:38
 msgid "Documents"
 msgstr "Documentos"
 
-#: models.py:43 models.py:114 serializers.py:138
+#: models.py:46 models.py:135 serializers.py:138
 msgid "Cabinet"
 msgstr "Archivador"
 
-#: models.py:115 serializers.py:139
+#: models.py:136 serializers.py:139
 msgid "Parent and Label"
 msgstr "Padre y etiqueta"
 
-#: models.py:122 serializers.py:145
+#: models.py:143 serializers.py:145
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr "%(model_name)s con este %(field_labels)s ya existe."
 
-#: models.py:139
+#: models.py:160
 msgid "Document cabinet"
 msgstr "Archivador de documento"
 
-#: models.py:140
+#: models.py:161
 msgid "Document cabinets"
 msgstr "Archivadores de documento"
 
@@ -150,17 +150,17 @@ msgstr ""
 msgid "Navigation:"
 msgstr "Navegación:"
 
-#: views.py:75
+#: views.py:60
 #, python-format
 msgid "Add new level to: %s"
 msgstr "Agregar un nuevo nivel a: %s"
 
-#: views.py:89
+#: views.py:83
 #, python-format
 msgid "Delete the cabinet: %s?"
 msgstr "¿Borrar archivador: %s?"
 
-#: views.py:124
+#: views.py:118
 msgid ""
 "Cabinet levels can contain documents or other cabinet sub levels. To add "
 "documents to a cabinet, select the cabinet view of a document view."
@@ -169,21 +169,21 @@ msgstr ""
 "gabinete. Para agregar documentos a un gabinete, seleccione la vista de "
 "gabinete de una vista de documento."
 
-#: views.py:128
+#: views.py:122
 msgid "This cabinet level is empty"
 msgstr "Este nivel de gabinete está vacío"
 
-#: views.py:130
+#: views.py:125
 #, python-format
 msgid "Details of cabinet: %s"
 msgstr "Detalles de archivador: %s"
 
-#: views.py:161
+#: views.py:145
 #, python-format
 msgid "Edit cabinet: %s"
 msgstr "Editar archivador: %s"
 
-#: views.py:178
+#: views.py:165
 msgid ""
 "Cabinets are a multi-level method to organize documents. Each cabinet can "
 "contain documents as well as other sub level cabinets."
@@ -192,81 +192,81 @@ msgstr ""
 "Cada gabinete puede contener documentos, así como otros gabinetes de nivel "
 "inferior."
 
-#: views.py:182
+#: views.py:169
 msgid "No cabinets available"
 msgstr "No hay gabinetes disponibles"
 
-#: views.py:214
+#: views.py:201
 msgid "Documents can be added to many cabinets."
 msgstr "Los documentos se pueden agregar a muchos gabinetes."
 
-#: views.py:217
+#: views.py:204
 msgid "This document is not in any cabinet"
 msgstr "Este documento no está en ningún gabinete"
 
-#: views.py:220
+#: views.py:207
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr "Archivadores que contienen el documento: %s"
 
-#: views.py:232
+#: views.py:219
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document"
 msgstr "Solicitud de añadir a gabinete realizada en %(count)d documento"
 
-#: views.py:235
+#: views.py:222
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents"
 msgstr "Solicitud de añadir a gabinete realizada en %(count)d documentos"
 
-#: views.py:242
+#: views.py:229
 msgid "Add"
 msgstr "Agregar"
 
-#: views.py:257
+#: views.py:244
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr "Agregar documento \"%s\" a archivadores"
 
-#: views.py:268
+#: views.py:255
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Archivador a los cuales el documento seleccionado va a ser agregado."
 
-#: views.py:297
+#: views.py:284
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s ya está en gabinete: %(cabinet)s."
 
-#: views.py:309
+#: views.py:296
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr ""
 "Documento: %(document)s añadido al gabinete: %(cabinet)s correctamente."
 
-#: views.py:322
+#: views.py:309
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document"
 msgstr "Solicitud de retirar del gabinete realizada en el documento %(count)d"
 
-#: views.py:325
+#: views.py:312
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents"
 msgstr "Solicitud de retirar del gabinete realizada en el documento %(count)d"
 
-#: views.py:332
+#: views.py:319
 msgid "Remove"
 msgstr "Eliminar"
 
-#: views.py:358
+#: views.py:345
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Gabinetes de los que se eliminarán los documentos seleccionados."
 
-#: views.py:386
+#: views.py:373
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s no está en el gabinete: %(cabinet)s."
 
-#: views.py:398
+#: views.py:385
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s retirado del gabinete: %(cabinet)s."

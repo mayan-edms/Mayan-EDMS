@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:39-0400\n"
-"PO-Revision-Date: 2019-05-02 05:19+0000\n"
-"Last-Translator: Harald Ersch\n"
+"POT-Creation-Date: 2019-05-17 01:47-0400\n"
+"PO-Revision-Date: 2019-05-17 05:51+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,19 +18,23 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:46
+#: apps.py:42
 msgid "Mailer"
 msgstr "Poștă electronică"
 
-#: apps.py:66
+#: apps.py:62
 msgid "Date and time"
 msgstr "Data și ora"
 
-#: apps.py:69 models.py:26 models.py:222
+#: apps.py:65 models.py:30 models.py:228
 msgid "Message"
 msgstr "Mesaj"
 
-#: events.py:7 permissions.py:7 queues.py:7 settings.py:11
+#: classes.py:81
+msgid "Null backend"
+msgstr ""
+
+#: events.py:7 permissions.py:7 queues.py:8 settings.py:11
 msgid "Mailing"
 msgstr "Corespondență electonică"
 
@@ -38,13 +42,13 @@ msgstr "Corespondență electonică"
 msgid "Email sent"
 msgstr "Email trimis"
 
-#: forms.py:60 forms.py:121
+#: forms.py:60 forms.py:122
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
 msgstr "Adresa de e-mail a destinatarului. Pot fi mai multe adrese separate prin virgulă sau punct și virgulă."
 
-#: forms.py:62 forms.py:123
+#: forms.py:62 forms.py:124
 msgid "Email address"
 msgstr "Adresa de email"
 
@@ -209,69 +213,69 @@ msgstr "Calea fișierului"
 msgid "Django file based backend"
 msgstr "Backend Django pe bază de fișiere"
 
-#: models.py:23 models.py:219
+#: models.py:27 models.py:225
 msgid "Date time"
 msgstr "Data și ora"
 
-#: models.py:32
+#: models.py:36
 msgid "Log entry"
 msgstr "Intrare în jurnal"
 
-#: models.py:33
+#: models.py:37
 msgid "Log entries"
 msgstr "Intrările de jurnal"
 
-#: models.py:44
+#: models.py:48
 msgid "Label"
 msgstr "Etichetă"
 
-#: models.py:48
+#: models.py:52
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr "Dacă este implicit, acest profil de poștă electronică va fi pre-selectat pe formularul de trimitere a documentelor."
 
-#: models.py:50
+#: models.py:54
 msgid "Default"
 msgstr "Iniţial"
 
-#: models.py:52
+#: models.py:56
 msgid "Enabled"
 msgstr "Activat"
 
-#: models.py:55
+#: models.py:59
 msgid "The dotted Python path to the backend class."
 msgstr "Calea Python punctată la clasa backend."
 
-#: models.py:56
+#: models.py:60
 msgid "Backend path"
 msgstr "Calea de backend"
 
-#: models.py:59
+#: models.py:63
 msgid "Backend data"
 msgstr "Date backend"
 
-#: models.py:66 models.py:216
+#: models.py:70 models.py:222
 msgid "User mailer"
 msgstr "Mailer utilizator"
 
-#: models.py:67
+#: models.py:71
 msgid "User mailers"
 msgstr "Mailer-e utilizator"
 
-#: models.py:80
+#: models.py:84
 msgid "Backend label"
 msgstr "Etichetă de backend"
 
-#: models.py:210
+#: models.py:216
 msgid "Test email from Mayan EDMS"
 msgstr "E-mail de încercare de la Mayan EDMS"
 
-#: models.py:228
+#: models.py:234
 msgid "User mailer log entry"
 msgstr "Intrarea în jurnalul mailer-ului utilizator"
 
-#: models.py:229
+#: models.py:235
 msgid "User mailer log entries"
 msgstr "Intrări în jurnalul mailer-ului utilizator"
 
@@ -307,7 +311,7 @@ msgstr "Vizualizați un profil de corespondență"
 msgid "Use a mailing profile"
 msgstr "Utilizați un profil de corespondență"
 
-#: queues.py:9
+#: queues.py:10
 msgid "Send document"
 msgstr "Trimiteți un document"
 

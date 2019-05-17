@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-05 02:10-0400\n"
+"POT-Creation-Date: 2019-05-17 01:48-0400\n"
 "PO-Revision-Date: 2019-05-09 15:18+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -23,39 +23,39 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:45 links.py:54 models/base.py:39 queues.py:8 settings.py:10
+#: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
 #: views.py:630
 msgid "Sources"
 msgstr "Sources"
 
-#: apps.py:60
+#: apps.py:56
 msgid "Create a document source"
 msgstr "Créer une source de documents"
 
-#: apps.py:62
+#: apps.py:58
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr "Les sources de documents sont les manières par lesquelles les nouveaux documents seront intégrés dans Mayan EDMS ; créez au moins un formulaire web pour pouvoir télécharger des documents depuis le navigateur."
 
-#: apps.py:75
+#: apps.py:71
 msgid "Type"
 msgstr "Type"
 
-#: apps.py:84
+#: apps.py:80
 msgid "Created"
 msgstr "Créée"
 
-#: apps.py:91
+#: apps.py:87
 msgid "Thumbnail"
 msgstr "Vignette"
 
-#: apps.py:99 models/base.py:248
+#: apps.py:95 models/base.py:248
 msgid "Date time"
 msgstr "Date et heure"
 
-#: apps.py:104 models/base.py:251
+#: apps.py:100 models/base.py:251
 msgid "Message"
 msgstr "Message"
 
@@ -531,27 +531,27 @@ msgstr "Afficher les sources de documents"
 msgid "Delete staging files"
 msgstr "Supprimer les fichiers en pré-validation"
 
-#: queues.py:11
+#: queues.py:12
 msgid "Sources periodic"
 msgstr "Sources périodiques"
 
-#: queues.py:14
+#: queues.py:16
 msgid "Sources fast"
 msgstr ""
 
-#: queues.py:18
+#: queues.py:21
 msgid "Generate staging file image"
 msgstr ""
 
-#: queues.py:22
+#: queues.py:25
 msgid "Check interval source"
 msgstr "Intervalle de vérification de la source"
 
-#: queues.py:26
+#: queues.py:29
 msgid "Handle upload"
 msgstr "Moteur de téléchargement"
 
-#: queues.py:30
+#: queues.py:33
 msgid "Upload document"
 msgstr "Transférer le document"
 

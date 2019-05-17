@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:38-0400\n"
+"POT-Creation-Date: 2019-05-17 01:45-0400\n"
 "PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -28,27 +28,27 @@ msgstr "Brak"
 msgid "Document types"
 msgstr "Typy dokumentów"
 
-#: apps.py:59 events.py:8
+#: apps.py:55 events.py:8
 msgid "Document indexing"
 msgstr "Indeksowanie dokumentu"
 
-#: apps.py:115
+#: apps.py:118
 msgid "Total levels"
 msgstr "Razem poziomy"
 
-#: apps.py:123
+#: apps.py:126
 msgid "Total documents"
 msgstr "Razem dokumenty"
 
-#: apps.py:128 apps.py:140 apps.py:159
+#: apps.py:131 apps.py:143 apps.py:162
 msgid "Level"
 msgstr "Poziom"
 
-#: apps.py:145 apps.py:164
+#: apps.py:148 apps.py:167
 msgid "Levels"
 msgstr "Poziomy"
 
-#: apps.py:153 apps.py:171 models.py:358
+#: apps.py:156 apps.py:174 models.py:358
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -73,7 +73,7 @@ msgid "Creation date"
 msgstr "Data utworzenia"
 
 #: links.py:24 links.py:39 links.py:59 links.py:63 models.py:60 views.py:149
-#: views.py:294
+#: views.py:292
 msgid "Indexes"
 msgstr "Indeksy"
 
@@ -81,7 +81,7 @@ msgstr "Indeksy"
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Usuwa i tworzy od podstaw wszystkie indeksy dokumentów."
 
-#: links.py:50 views.py:418
+#: links.py:50 views.py:415
 msgid "Rebuild indexes"
 msgstr "Przebudowa indeksów"
 
@@ -205,7 +205,7 @@ msgstr "Instancja węzła indeksu dokumentu"
 msgid "Document indexes node instances"
 msgstr "Instancje węzła indeksów dokumentu"
 
-#: permissions.py:7 queues.py:8
+#: permissions.py:7 queues.py:9
 msgid "Indexing"
 msgstr "Indeksowanie"
 
@@ -233,19 +233,19 @@ msgstr "Zobacz indeksy dokumentów"
 msgid "Rebuild document indexes"
 msgstr "Odbuduj indeksy dokumentów"
 
-#: queues.py:11
+#: queues.py:12
 msgid "Delete empty index nodes"
 msgstr "Usuń puste węzły indeksów"
 
-#: queues.py:15
+#: queues.py:16
 msgid "Remove document"
 msgstr "Usuń dokument"
 
-#: queues.py:19
+#: queues.py:20
 msgid "Index document"
 msgstr "Indeksuj dokument"
 
-#: queues.py:23
+#: queues.py:24
 msgid "Rebuild index"
 msgstr "Przebuduj indeks"
 
@@ -320,52 +320,52 @@ msgstr "Węzły szablonu drzewa dla indeksu: %s"
 msgid "Create child node of: %s"
 msgstr "Utwórz potomny węzeł: %s"
 
-#: views.py:242
+#: views.py:241
 #, python-format
 msgid "Delete the index template node: %s?"
 msgstr "Usunąć węzeł szablonu indeksu: %s?"
 
-#: views.py:266
+#: views.py:264
 #, python-format
 msgid "Edit the index template node: %s?"
 msgstr "Edytować węzeł szablonu indeksu: %s?"
 
-#: views.py:289
+#: views.py:287
 msgid ""
 "This could mean that no index templates have been created or that there "
 "index templates but they are no properly defined."
 msgstr ""
 
-#: views.py:293
+#: views.py:291
 msgid "There are no index instances available."
 msgstr ""
 
-#: views.py:338
+#: views.py:336
 #, python-format
 msgid "Navigation: %s"
 msgstr "Nawigacja: %s"
 
-#: views.py:343
+#: views.py:341
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Zawartość indeksu: %s"
 
-#: views.py:397
+#: views.py:394
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
 msgstr ""
 
-#: views.py:402
+#: views.py:399
 msgid "This document is not in any index"
 msgstr ""
 
-#: views.py:406
+#: views.py:403
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "Węzły indeksów zawierające dokument: %s"
 
-#: views.py:432
+#: views.py:429
 #, python-format
 msgid "%(count)d index queued for rebuild."
 msgid_plural "%(count)d indexes queued for rebuild."

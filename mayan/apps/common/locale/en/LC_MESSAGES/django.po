@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
+"POT-Creation-Date: 2019-05-17 01:45-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,19 +29,19 @@ msgstr ""
 msgid "Available fields: \n"
 msgstr ""
 
-#: dependencies.py:395
+#: dependencies.py:396
 msgid "Used to allow offline translation of the code text strings."
 msgstr ""
 
-#: dependencies.py:400
+#: dependencies.py:401
 msgid "Provides style checking."
 msgstr ""
 
-#: dependencies.py:405
+#: dependencies.py:406
 msgid "Command line environment with autocompletion."
 msgstr ""
 
-#: dependencies.py:410
+#: dependencies.py:411
 msgid "Checks proper formatting of the README file."
 msgstr ""
 
@@ -53,62 +53,67 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: generics.py:144
+#: generics.py:148
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:149
+#: generics.py:153
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:282
+#: generics.py:286
 msgid "Add all"
 msgstr ""
 
-#: generics.py:291
+#: generics.py:295
 msgid "Add"
 msgstr ""
 
-#: generics.py:301
+#: generics.py:305
 msgid "Remove all"
 msgstr ""
 
-#: generics.py:310
+#: generics.py:314
 msgid "Remove"
 msgstr ""
 
-#: generics.py:471
+#: generics.py:519
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr ""
+
+#: generics.py:537
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr ""
 
-#: generics.py:482
+#: generics.py:550
 #, python-format
 msgid "%(object)s created successfully."
 msgstr ""
 
-#: generics.py:511
+#: generics.py:595
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr ""
 
-#: generics.py:522
+#: generics.py:605
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr ""
 
-#: generics.py:568
+#: generics.py:689
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr ""
 
-#: generics.py:579
+#: generics.py:700
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr ""
@@ -157,46 +162,51 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: links.py:87 queues.py:10 views.py:223
+#: links.py:87 queues.py:15 views.py:223
 msgid "Tools"
 msgstr ""
 
-#: literals.py:9
+#: literals.py:10
+msgid ""
+"This feature has been deprecated and will be removed in a future version."
+msgstr ""
+
+#: literals.py:13
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr ""
 
-#: literals.py:25
+#: literals.py:31
 msgid "Days"
 msgstr ""
 
-#: literals.py:26
+#: literals.py:32
 msgid "Hours"
 msgstr ""
 
-#: literals.py:27
+#: literals.py:33
 msgid "Minutes"
 msgstr ""
 
-#: management/commands/convertdb.py:28
+#: management/commands/convertdb.py:40
 msgid ""
 "Restricts dumped data to the specified app_label or app_label.ModelName."
 msgstr ""
 
-#: management/commands/convertdb.py:35
+#: management/commands/convertdb.py:47
 msgid ""
 "The database from which data will be exported. If omitted the database named "
 "\"default\" will be used."
 msgstr ""
 
-#: management/commands/convertdb.py:42
+#: management/commands/convertdb.py:54
 msgid ""
 "The database to which data will be imported. If omitted the database named "
 "\"default\" will be used."
 msgstr ""
 
-#: management/commands/convertdb.py:49
+#: management/commands/convertdb.py:61
 msgid ""
 "Force the conversion of the database even if the receiving database is not "
 "empty."
@@ -222,17 +232,12 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: mixins.py:138
+#: mixins.py:222
 #, python-format
-msgid "Operation performed on %(count)d object"
+msgid "No %(verbose_name)s found matching the query"
 msgstr ""
 
-#: mixins.py:139
-#, python-format
-msgid "Operation performed on %(count)d objects"
-msgstr ""
-
-#: mixins.py:317
+#: mixins.py:296
 msgid "Object"
 msgstr ""
 
@@ -292,15 +297,15 @@ msgstr ""
 msgid "View error log"
 msgstr ""
 
-#: queues.py:8
+#: queues.py:13
 msgid "Default"
 msgstr ""
 
-#: queues.py:12
+#: queues.py:17
 msgid "Common periodic"
 msgstr ""
 
-#: queues.py:15
+#: queues.py:22
 msgid "Delete stale uploads"
 msgstr ""
 

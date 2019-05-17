@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:38-0400\n"
+"POT-Creation-Date: 2019-05-17 01:46-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
@@ -18,27 +18,27 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:51 permissions.py:8 settings.py:10
+#: apps.py:47 permissions.py:8 settings.py:10
 msgid "Document signatures"
 msgstr "文档签名"
 
-#: apps.py:98
+#: apps.py:94
 msgid "Date"
 msgstr "日期"
 
-#: apps.py:101 models.py:46
+#: apps.py:97 models.py:46
 msgid "Key ID"
 msgstr "密钥ID"
 
-#: apps.py:105 forms.py:64 models.py:50
+#: apps.py:101 forms.py:64 models.py:50
 msgid "Signature ID"
 msgstr "签名ID"
 
-#: apps.py:106 forms.py:76
+#: apps.py:102 forms.py:76
 msgid "None"
 msgstr "没有"
 
-#: apps.py:109
+#: apps.py:105
 msgid "Type"
 msgstr "类型"
 
@@ -108,7 +108,7 @@ msgstr "密钥类型"
 msgid "Verify all documents"
 msgstr "验证所有文档"
 
-#: links.py:39 links.py:58 queues.py:8
+#: links.py:39 links.py:58 queues.py:9
 msgid "Signatures"
 msgstr "签名"
 
@@ -216,19 +216,19 @@ msgstr "验证文档签名"
 msgid "View details of document signatures"
 msgstr "查看文档签名的详情"
 
-#: queues.py:11
+#: queues.py:12
 msgid "Verify key signatures"
 msgstr "验证密钥签名"
 
-#: queues.py:15
+#: queues.py:16
 msgid "Unverify key signatures"
 msgstr "取消验证密钥签名"
 
-#: queues.py:19
+#: queues.py:20
 msgid "Verify document version"
 msgstr "验证文档版本"
 
-#: queues.py:24
+#: queues.py:25
 msgid "Verify missing embedded signature"
 msgstr "验证缺少的嵌入签名"
 
@@ -262,45 +262,45 @@ msgstr "以分离签名签署文档版本“%s”"
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr "以嵌入签名签署文档版本“%s”"
 
-#: views.py:241
+#: views.py:240
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "删除分离签名：%s"
 
-#: views.py:262
+#: views.py:260
 #, python-format
 msgid "Details for signature: %s"
 msgstr "签名详情：%s"
 
-#: views.py:303
+#: views.py:300
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr "签名有助于提供作者证据和篡改检测。它们非常安全且难以伪造。签名可以作为文档本身的一部分嵌入，也可以作为单独的文件上传。"
 
-#: views.py:331
+#: views.py:328
 msgid "There are no signatures for this document."
 msgstr "此文档没有签名。"
 
-#: views.py:334
+#: views.py:331
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "文档版本%s的签名"
 
-#: views.py:364
+#: views.py:361
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "上传文档版本%s的分离签名"
 
-#: views.py:381
+#: views.py:378
 msgid "On large databases this operation may take some time to execute."
 msgstr "在大型数据库上，此操作可能需要一些时间才能执行。"
 
-#: views.py:382
+#: views.py:379
 msgid "Verify all document for signatures?"
 msgstr "验证签名的所有文档？"
 
-#: views.py:392
+#: views.py:389
 msgid "Signature verification queued successfully."
 msgstr "签名验证成功排队。"

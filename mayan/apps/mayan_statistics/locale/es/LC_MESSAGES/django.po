@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:39-0400\n"
-"PO-Revision-Date: 2019-04-28 01:42+0000\n"
+"POT-Creation-Date: 2019-05-17 01:47-0400\n"
+"PO-Revision-Date: 2019-05-17 06:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -20,29 +20,37 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 links.py:29 permissions.py:7 queues.py:8
+#: apps.py:23 links.py:33 permissions.py:7 queues.py:9
 msgid "Statistics"
 msgstr "Estadísticas"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:32
 msgid "Schedule"
 msgstr "Horario"
+
+#: apps.py:37
+msgid "Last update"
+msgstr "Última actualización"
+
+#: classes.py:150
+msgid "Never"
+msgstr "Nunca"
 
 #: links.py:12
 msgid "Queue"
 msgstr "Someter"
 
-#: links.py:16
+#: links.py:17
 msgid "View"
 msgstr "Ver"
 
-#: links.py:20
+#: links.py:22
 msgid "Namespace details"
 msgstr "Detalles de group"
 
-#: links.py:24
+#: links.py:27
 msgid "Namespace list"
 msgstr "Lista de grupos"
 
@@ -72,13 +80,18 @@ msgstr "Resultados de estadísticas"
 msgid "View statistics"
 msgstr "Ver estadísticas"
 
-#: queues.py:12
+#: queues.py:13
 msgid "Execute statistic"
 msgstr "Ejecutar estadística"
 
 #: templates/statistics/renderers/chartjs/line.html:14
-msgid "No data available yet"
-msgstr "No hay datos disponibles aún."
+msgid "No data available."
+msgstr "No hay datos disponibles."
+
+#: templates/statistics/renderers/chartjs/line.html:16
+#, python-format
+msgid "Last update: %(datetime)s"
+msgstr "Última actualización: %(datetime)s"
 
 #: views.py:18
 msgid "Statistics namespaces"
@@ -104,7 +117,7 @@ msgstr "No se encontró estadística \"%s\"."
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "¿Someter estadística \"%s\" para ser actualizada?"
 
-#: views.py:102
+#: views.py:95
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr "La estadística \"%s\" fue sometida para la actualización."

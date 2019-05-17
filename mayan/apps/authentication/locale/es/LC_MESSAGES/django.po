@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
-"PO-Revision-Date: 2019-05-03 05:42+0000\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
+"PO-Revision-Date: 2019-05-17 06:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:21 settings.py:9
+#: apps.py:25 settings.py:9
 msgid "Authentication"
 msgstr "Autenticación  "
 
@@ -48,9 +48,13 @@ msgstr "Esta cuenta está inactiva."
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: links.py:26
+#: links.py:27
 msgid "Change password"
 msgstr "Cambiar contraseña"
+
+#: links.py:32 links.py:39
+msgid "Set password"
+msgstr "Asignar contraseña"
 
 #: settings.py:13
 msgid ""
@@ -95,7 +99,7 @@ msgid "Login page"
 msgstr "Página de inicio de sesión"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29
+#: templates/authentication/password_reset_form.html:29 views.py:154
 msgid "Submit"
 msgstr "Enviar"
 
@@ -103,14 +107,51 @@ msgstr "Enviar"
 msgid "Password reset email sent!"
 msgstr "Correo electrónico de restablecimiento de contraseña enviado!"
 
-#: views.py:69
+#: views.py:74
 msgid "Your password has been successfully changed."
 msgstr "Su contraseña ha sido actualizada con éxito."
 
-#: views.py:76
+#: views.py:81
 msgid "Current user password change"
 msgstr "Cambio de contraseña de usuario actual"
 
-#: views.py:84
+#: views.py:89
 msgid "Changing the password is not allowed for this account."
 msgstr "No se permite cambiar la contraseña para esta cuenta."
+
+#: views.py:145
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr "Solicitud de cambio de contraseña realizada para %(count)d usuario"
+
+#: views.py:147
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr "Solicitud de cambio de contraseña realizada para %(count)d usuarios"
+
+#: views.py:156
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] "Cambiar contraseña de usuario"
+msgstr[1] "Cambiar las contraseñas de los usuarios"
+
+#: views.py:166
+#, python-format
+msgid "Change password for user: %s"
+msgstr "Cambiar contraseñas para el usuario: %s"
+
+#: views.py:186
+msgid ""
+"Super user and staff user password reseting is not allowed, use the admin "
+"interface for these cases."
+msgstr "No se permite cambiar la contraseña del super usuario y del usuario de personal. Use la interfaz de administración para estos casos."
+
+#: views.py:196
+#, python-format
+msgid "Successful password reset for user: %s."
+msgstr "Restablecimiento de contraseña exitoso para el usuario: %s."
+
+#: views.py:202
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "Error restaurando la contraseña para el usuario \"%(user)s\": %(error)s "

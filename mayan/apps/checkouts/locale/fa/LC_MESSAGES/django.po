@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:48 events.py:7 links.py:34
+#: apps.py:41 events.py:7 links.py:34
 msgid "Checkouts"
 msgstr "خروج Checkout"
 
@@ -42,7 +42,7 @@ msgstr "سند خارج شد."
 msgid "Document forcefully checked in"
 msgstr "سند طبق دستور وارد شد."
 
-#: exceptions.py:27 views.py:50
+#: exceptions.py:27 views.py:108
 msgid "Document already checked out."
 msgstr "سند در حال حاضر خارج و یا checked out شده است."
 
@@ -50,7 +50,7 @@ msgstr "سند در حال حاضر خارج و یا checked out شده است."
 msgid "Document status"
 msgstr "وضعیت سند"
 
-#: forms.py:39 models.py:41 views.py:90
+#: forms.py:39 models.py:41 views.py:148
 msgid "User"
 msgstr "کاربر"
 
@@ -154,11 +154,11 @@ msgstr "خروج اسناد"
 msgid "Check out details view"
 msgstr "مشخصات دقیق را مشاهده کنید"
 
-#: queues.py:8
+#: queues.py:13
 msgid "Checkouts periodic"
 msgstr "دوره های آموزشی"
 
-#: queues.py:11
+#: queues.py:17
 msgid "Check expired checkouts"
 msgstr "بررسی پرداخت های منقضی شده را بررسی کنید"
 
@@ -166,63 +166,63 @@ msgstr "بررسی پرداخت های منقضی شده را بررسی کنی�
 msgid "Primary key of the document to be checked out."
 msgstr ""
 
-#: views.py:56
-#, python-format
-msgid "Document \"%s\" checked out successfully."
-msgstr "سند \"%s\" بالاجبار خارج ویا checked out شد."
-
-#: views.py:65
-#, python-format
-msgid "Check out document: %s"
-msgstr "خروج و یا check out سند: %s"
-
-#: views.py:96
-msgid "Checkout time and date"
-msgstr "زمان و تاریخ خروج"
-
-#: views.py:102
-msgid "Checkout expiration"
-msgstr "زمان پایان خارج بودن Checkout"
-
-#: views.py:110
-msgid ""
-"Checking out a document blocks certain document operations for a "
-"predetermined amount of time."
-msgstr ""
-
-#: views.py:114
-msgid "No documents have been checked out"
-msgstr ""
-
-#: views.py:115
-msgid "Documents checked out"
-msgstr "اسناد خارج شده check out"
-
-#: views.py:130
-#, python-format
-msgid "Check out details for document: %s"
-msgstr "جزئیات خروج و یا Checkout سند: %s"
-
-#: views.py:148
+#: views.py:37
 #, python-format
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
 msgstr "ابتدا این سند را بررسی نکردید نیرویی در سند چک کنید: %s"
 
-#: views.py:152
+#: views.py:41
 #, python-format
 msgid "Check in the document: %s?"
 msgstr "در سند چک کنید: %s"
 
-#: views.py:185
+#: views.py:74
 msgid "Document has not been checked out."
 msgstr "سند خارج و یا checked out نشده است."
 
-#: views.py:191
+#: views.py:80
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "سند \"%s\" با موفقیت وارد و یا  checked in شد."
+
+#: views.py:114
+#, python-format
+msgid "Document \"%s\" checked out successfully."
+msgstr "سند \"%s\" بالاجبار خارج ویا checked out شد."
+
+#: views.py:123
+#, python-format
+msgid "Check out document: %s"
+msgstr "خروج و یا check out سند: %s"
+
+#: views.py:154
+msgid "Checkout time and date"
+msgstr "زمان و تاریخ خروج"
+
+#: views.py:160
+msgid "Checkout expiration"
+msgstr "زمان پایان خارج بودن Checkout"
+
+#: views.py:168
+msgid ""
+"Checking out a document blocks certain document operations for a "
+"predetermined amount of time."
+msgstr ""
+
+#: views.py:172
+msgid "No documents have been checked out"
+msgstr ""
+
+#: views.py:173
+msgid "Documents checked out"
+msgstr "اسناد خارج شده check out"
+
+#: views.py:188
+#, python-format
+msgid "Check out details for document: %s"
+msgstr "جزئیات خروج و یا Checkout سند: %s"
 
 #: widgets.py:22
 msgid "Period"

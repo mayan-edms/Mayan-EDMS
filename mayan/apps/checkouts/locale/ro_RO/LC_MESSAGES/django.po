@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
 "PO-Revision-Date: 2019-05-02 05:01+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:48 events.py:7 links.py:34
+#: apps.py:41 events.py:7 links.py:34
 msgid "Checkouts"
 msgstr "Consemnări intări/ieșiri"
 
@@ -42,7 +42,7 @@ msgstr "Documentul consemnat ca ieșit"
 msgid "Document forcefully checked in"
 msgstr "Document consemnat forţat ca intrat"
 
-#: exceptions.py:27 views.py:50
+#: exceptions.py:27 views.py:108
 msgid "Document already checked out."
 msgstr "Document deja consemnat ca ieșit."
 
@@ -50,7 +50,7 @@ msgstr "Document deja consemnat ca ieșit."
 msgid "Document status"
 msgstr "Starea documentului"
 
-#: forms.py:39 models.py:41 views.py:90
+#: forms.py:39 models.py:41 views.py:148
 msgid "User"
 msgstr "Utilizator"
 
@@ -154,11 +154,11 @@ msgstr "Consemnări de ieșire de documente"
 msgid "Check out details view"
 msgstr "Vizualizarea detaliilor consemnărilor de ieșire"
 
-#: queues.py:8
+#: queues.py:13
 msgid "Checkouts periodic"
 msgstr "Consemnări de ieșire periodice"
 
-#: queues.py:11
+#: queues.py:17
 msgid "Check expired checkouts"
 msgstr "Consemnați drept intrate documentele cu consemnarea de ieșire expirată"
 
@@ -166,63 +166,63 @@ msgstr "Consemnați drept intrate documentele cu consemnarea de ieșire expirat�
 msgid "Primary key of the document to be checked out."
 msgstr "Cheia primară a documentului care urmează să fie consemnat ca ieșit."
 
-#: views.py:56
-#, python-format
-msgid "Document \"%s\" checked out successfully."
-msgstr "Documentul \"%s\" a fost consemnat ca ieșit cu succes."
-
-#: views.py:65
-#, python-format
-msgid "Check out document: %s"
-msgstr "Consemează ca ieșit documentul: %s"
-
-#: views.py:96
-msgid "Checkout time and date"
-msgstr "Data și ora expirării consemnării ieșirii"
-
-#: views.py:102
-msgid "Checkout expiration"
-msgstr "Expirarea consemnării ca ieșit"
-
-#: views.py:110
-msgid ""
-"Checking out a document blocks certain document operations for a "
-"predetermined amount of time."
-msgstr "Consemnarea ca ieșit blochează unele operații asupra documentului pentru o perioadă de timp prestabilită."
-
-#: views.py:114
-msgid "No documents have been checked out"
-msgstr "Nu sunt documente consemnate ca ieșite"
-
-#: views.py:115
-msgid "Documents checked out"
-msgstr "Documente consemnate ca ieșite"
-
-#: views.py:130
-#, python-format
-msgid "Check out details for document: %s"
-msgstr "Verificat detaliile documentului:% s"
-
-#: views.py:148
+#: views.py:37
 #, python-format
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
 msgstr "Nu ați inițiat consemnarea ca ieșit a acestui document. Consemnați forțat intrarea documentului: %s?"
 
-#: views.py:152
+#: views.py:41
 #, python-format
 msgid "Check in the document: %s?"
 msgstr "Consemnați ca intrat documentul: %s ?"
 
-#: views.py:185
+#: views.py:74
 msgid "Document has not been checked out."
 msgstr "Documentul nu a fost consemnat ca ieșit."
 
-#: views.py:191
+#: views.py:80
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "Documentul  \"%s\" aprobat cu succes."
+
+#: views.py:114
+#, python-format
+msgid "Document \"%s\" checked out successfully."
+msgstr "Documentul \"%s\" a fost consemnat ca ieșit cu succes."
+
+#: views.py:123
+#, python-format
+msgid "Check out document: %s"
+msgstr "Consemează ca ieșit documentul: %s"
+
+#: views.py:154
+msgid "Checkout time and date"
+msgstr "Data și ora expirării consemnării ieșirii"
+
+#: views.py:160
+msgid "Checkout expiration"
+msgstr "Expirarea consemnării ca ieșit"
+
+#: views.py:168
+msgid ""
+"Checking out a document blocks certain document operations for a "
+"predetermined amount of time."
+msgstr "Consemnarea ca ieșit blochează unele operații asupra documentului pentru o perioadă de timp prestabilită."
+
+#: views.py:172
+msgid "No documents have been checked out"
+msgstr "Nu sunt documente consemnate ca ieșite"
+
+#: views.py:173
+msgid "Documents checked out"
+msgstr "Documente consemnate ca ieșite"
+
+#: views.py:188
+#, python-format
+msgid "Check out details for document: %s"
+msgstr "Verificat detaliile documentului:% s"
 
 #: widgets.py:22
 msgid "Period"

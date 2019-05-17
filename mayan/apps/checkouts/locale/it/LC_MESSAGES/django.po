@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:48 events.py:7 links.py:34
+#: apps.py:41 events.py:7 links.py:34
 msgid "Checkouts"
 msgstr "Uscite"
 
@@ -42,7 +42,7 @@ msgstr "Documento in uscita"
 msgid "Document forcefully checked in"
 msgstr "Forza documento in entrata"
 
-#: exceptions.py:27 views.py:50
+#: exceptions.py:27 views.py:108
 msgid "Document already checked out."
 msgstr "Documento già uscito"
 
@@ -50,7 +50,7 @@ msgstr "Documento già uscito"
 msgid "Document status"
 msgstr "Stato documento"
 
-#: forms.py:39 models.py:41 views.py:90
+#: forms.py:39 models.py:41 views.py:148
 msgid "User"
 msgstr "Utente"
 
@@ -154,11 +154,11 @@ msgstr "Check out dei documenti"
 msgid "Check out details view"
 msgstr "Visualizzazione in dettaglio dell'uscita"
 
-#: queues.py:8
+#: queues.py:13
 msgid "Checkouts periodic"
 msgstr ""
 
-#: queues.py:11
+#: queues.py:17
 msgid "Check expired checkouts"
 msgstr ""
 
@@ -166,63 +166,63 @@ msgstr ""
 msgid "Primary key of the document to be checked out."
 msgstr ""
 
-#: views.py:56
-#, python-format
-msgid "Document \"%s\" checked out successfully."
-msgstr "Il documento\"%s\" è uscito con successo"
-
-#: views.py:65
-#, python-format
-msgid "Check out document: %s"
-msgstr "Check out documento: %s"
-
-#: views.py:96
-msgid "Checkout time and date"
-msgstr "Ora e data checkout "
-
-#: views.py:102
-msgid "Checkout expiration"
-msgstr "Scadenza checkout "
-
-#: views.py:110
-msgid ""
-"Checking out a document blocks certain document operations for a "
-"predetermined amount of time."
-msgstr ""
-
-#: views.py:114
-msgid "No documents have been checked out"
-msgstr ""
-
-#: views.py:115
-msgid "Documents checked out"
-msgstr "Documenti estratti"
-
-#: views.py:130
-#, python-format
-msgid "Check out details for document: %s"
-msgstr "Dettaglio del check out per il documento: %s"
-
-#: views.py:148
+#: views.py:37
 #, python-format
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
 msgstr "Non hai originariamente fatto il checkout di questo documento. Forzare nel documento: %s?"
 
-#: views.py:152
+#: views.py:41
 #, python-format
 msgid "Check in the document: %s?"
 msgstr "Accetti il documento: %s?"
 
-#: views.py:185
+#: views.py:74
 msgid "Document has not been checked out."
 msgstr "Il documento non è stato fatto uscire"
 
-#: views.py:191
+#: views.py:80
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "Il documento \"%s\" è entrato con successo"
+
+#: views.py:114
+#, python-format
+msgid "Document \"%s\" checked out successfully."
+msgstr "Il documento\"%s\" è uscito con successo"
+
+#: views.py:123
+#, python-format
+msgid "Check out document: %s"
+msgstr "Check out documento: %s"
+
+#: views.py:154
+msgid "Checkout time and date"
+msgstr "Ora e data checkout "
+
+#: views.py:160
+msgid "Checkout expiration"
+msgstr "Scadenza checkout "
+
+#: views.py:168
+msgid ""
+"Checking out a document blocks certain document operations for a "
+"predetermined amount of time."
+msgstr ""
+
+#: views.py:172
+msgid "No documents have been checked out"
+msgstr ""
+
+#: views.py:173
+msgid "Documents checked out"
+msgstr "Documenti estratti"
+
+#: views.py:188
+#, python-format
+msgid "Check out details for document: %s"
+msgstr "Dettaglio del check out per il documento: %s"
 
 #: widgets.py:22
 msgid "Period"

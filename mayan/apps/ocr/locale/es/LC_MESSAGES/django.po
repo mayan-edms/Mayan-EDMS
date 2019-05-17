@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:40-0400\n"
-"PO-Revision-Date: 2019-05-03 05:34+0000\n"
+"POT-Creation-Date: 2019-05-17 01:48-0400\n"
+"PO-Revision-Date: 2019-05-17 06:35+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -20,16 +20,16 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:54 apps.py:133 apps.py:137 events.py:7 links.py:15 links.py:21
-#: permissions.py:7 queues.py:7 settings.py:7
+#: apps.py:50 apps.py:117 apps.py:121 events.py:7 links.py:15 links.py:21
+#: permissions.py:7 queues.py:8 settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:113
+#: apps.py:109
 msgid "Date and time"
 msgstr "Fecha y hora"
 
-#: apps.py:116 models.py:76
+#: apps.py:112 models.py:76
 msgid "Result"
 msgstr "Resultado"
 
@@ -76,7 +76,7 @@ msgstr "Configurar OCR"
 msgid "OCR documents per type"
 msgstr "Realizar OCR por tipo de documento"
 
-#: links.py:47 links.py:53 views.py:154
+#: links.py:47 links.py:53 views.py:157
 msgid "OCR errors"
 msgstr "Errores de OCR"
 
@@ -148,7 +148,7 @@ msgstr "Ver el texto transcrito de los documentos"
 msgid "Change document type OCR settings"
 msgstr "Cambiar opciones OCR por tipo de documento"
 
-#: queues.py:9
+#: queues.py:11
 msgid "Document version OCR"
 msgstr "OCR de versión de documento"
 
@@ -160,37 +160,37 @@ msgstr "Ruta completa a la aplicación que se usará para OCR."
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Realizar OCR a nuevo tipos de documentos por defecto."
 
-#: views.py:42
+#: views.py:43
 #, python-format
 msgid "OCR result for document: %s"
 msgstr "Resultados del OCR para documento: %s"
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "OCR result for document page: %s"
 msgstr "Resultado de OCR para la página del documento: %s"
 
-#: views.py:79
+#: views.py:80
 msgid "Submit the selected document to the OCR queue?"
 msgid_plural "Submit the selected documents to the OCR queue?"
 msgstr[0] "¿Presentar el documento seleccionado en la cola de OCR?"
 msgstr[1] "¿Envía los documentos seleccionados a la cola de OCR?"
 
-#: views.py:96
+#: views.py:97
 msgid "Submit all documents of a type for OCR"
 msgstr "Enviar todos los documentos de un tipo para OCR"
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr "%(count)d documentos agregados a la lista de OCR."
 
-#: views.py:143
+#: views.py:146
 #, python-format
-msgid "Edit OCR settings for document type: %s"
-msgstr "Editar opciones OCR para el tipo de documento: %s"
+msgid "Edit OCR settings for document type: %s."
+msgstr "Editar la configuración de OCR para el tipo de documento: %s."
 
-#: views.py:172
+#: views.py:175
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr "Errores OCR para documento: %s"

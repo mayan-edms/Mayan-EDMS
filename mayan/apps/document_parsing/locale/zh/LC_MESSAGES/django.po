@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:38-0400\n"
+"POT-Creation-Date: 2019-05-17 01:46-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: yulin Gong <540538248@qq.com>, 2019\n"
 "Language-Team: Chinese (https://www.transifex.com/rosarior/teams/13584/zh/)\n"
@@ -21,15 +21,15 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:53 events.py:8 permissions.py:8 settings.py:7
+#: apps.py:50 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr "文档解析"
 
-#: apps.py:119 models.py:78
+#: apps.py:116 models.py:78
 msgid "Result"
 msgstr "结果"
 
-#: apps.py:136 apps.py:140 links.py:16 links.py:22 models.py:27
+#: apps.py:121 apps.py:125 links.py:16 links.py:22 models.py:27
 msgid "Content"
 msgstr "内容"
 
@@ -55,7 +55,7 @@ msgstr "第%(page_number)d页"
 msgid "Contents"
 msgstr "内容"
 
-#: links.py:28 links.py:66 views.py:194
+#: links.py:28 links.py:66 views.py:197
 msgid "Parsing errors"
 msgstr "解析错误"
 
@@ -145,11 +145,11 @@ msgstr "更改文档类型解析设置"
 msgid "Parse the content of a document"
 msgstr "解析文档的内容"
 
-#: queues.py:7
+#: queues.py:8
 msgid "Parsing"
 msgstr "解析"
 
-#: queues.py:10
+#: queues.py:11
 msgid "Document version parsing"
 msgstr "文档版本解析"
 
@@ -163,52 +163,52 @@ msgid ""
 "files."
 msgstr "poppler的pdftotext程序的文件路径，用于从PDF文件中提取文本。"
 
-#: views.py:42
+#: views.py:43
 #, python-format
 msgid "Content for document: %s"
 msgstr "文件内容：%s"
 
-#: views.py:77
+#: views.py:78
 #, python-format
 msgid "Content for document page: %s"
 msgstr "文档页面的内容：%s"
 
-#: views.py:92
+#: views.py:93
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "解析文档错误：%s"
 
-#: views.py:104
+#: views.py:105
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)d文档已添加到解析队列中"
 
-#: views.py:107
+#: views.py:108
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d文档已添加到解析队列中"
 
-#: views.py:115
+#: views.py:116
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
 msgstr[0] "将%(count)d文档提交到解析队列"
 
-#: views.py:128
+#: views.py:129
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "将文档“%s”提交到解析队列"
 
-#: views.py:151
+#: views.py:154
 #, python-format
-msgid "Edit parsing settings for document type: %s"
-msgstr "编辑文档类型的解析设置：%s"
+msgid "Edit parsing settings for document type: %s."
+msgstr ""
 
-#: views.py:161
+#: views.py:164
 msgid "Submit all documents of a type for parsing."
 msgstr ""
 
-#: views.py:182
+#: views.py:185
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr ""

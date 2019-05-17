@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:40-0400\n"
-"PO-Revision-Date: 2019-05-03 05:21+0000\n"
+"POT-Creation-Date: 2019-05-17 01:48-0400\n"
+"PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:54 apps.py:133 apps.py:137 events.py:7 links.py:15 links.py:21
-#: permissions.py:7 queues.py:7 settings.py:7
+#: apps.py:50 apps.py:117 apps.py:121 events.py:7 links.py:15 links.py:21
+#: permissions.py:7 queues.py:8 settings.py:7
 msgid "OCR"
 msgstr "Οπτική Αναγνώριση Χαρακτήρων"
 
-#: apps.py:113
+#: apps.py:109
 msgid "Date and time"
 msgstr "Ημερομηνία και ώρα"
 
-#: apps.py:116 models.py:76
+#: apps.py:112 models.py:76
 msgid "Result"
 msgstr "Αποτέλεσμα"
 
@@ -73,7 +73,7 @@ msgstr "Ρύθμιση οπτικής αναγνώρισης"
 msgid "OCR documents per type"
 msgstr "Έγγραφα OCR ανά τύπο"
 
-#: links.py:47 links.py:53 views.py:154
+#: links.py:47 links.py:53 views.py:157
 msgid "OCR errors"
 msgstr "Σφάλματα οπτικής αναγνώρισης"
 
@@ -145,7 +145,7 @@ msgstr "Εμφάνιση του οπτικά αναγνωρισμένου κει
 msgid "Change document type OCR settings"
 msgstr "Τροποποίηση ρυθμίσεων τύπου εγγράφου OCR"
 
-#: queues.py:9
+#: queues.py:11
 msgid "Document version OCR"
 msgstr "Οπτική αναγνώριση έκδοσης εγγράφου"
 
@@ -157,37 +157,37 @@ msgstr "Πλήρης διαδρομή του προγράμματος που θ�
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Ορισμός νέων τύπων εγγράφου στους οποίους θα πραγματοποιείται αυτόματα οπτική αναγνώριση."
 
-#: views.py:42
+#: views.py:43
 #, python-format
 msgid "OCR result for document: %s"
 msgstr "Αποτελέσματα οπτικής αναγνώρισης του εγγράφου: %s"
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "OCR result for document page: %s"
 msgstr ""
 
-#: views.py:79
+#: views.py:80
 msgid "Submit the selected document to the OCR queue?"
 msgid_plural "Submit the selected documents to the OCR queue?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:96
+#: views.py:97
 msgid "Submit all documents of a type for OCR"
 msgstr "Υποβολή όλων των εγγράφων ενός τύπου προς οπτικήαναγνώριση"
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr ""
 
-#: views.py:143
+#: views.py:146
 #, python-format
-msgid "Edit OCR settings for document type: %s"
-msgstr "Τροποποίηση ρυθμίσεων οπτικής αναγνώρισης για τον τύπο εγγράφων: %s"
+msgid "Edit OCR settings for document type: %s."
+msgstr ""
 
-#: views.py:172
+#: views.py:175
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr "Σφάλματα οπτικής αναγνώρισης του εγγράφου: %s"

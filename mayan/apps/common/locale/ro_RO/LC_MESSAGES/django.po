@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
-"PO-Revision-Date: 2019-05-08 08:07+0000\n"
-"Last-Translator: Harald Ersch\n"
+"POT-Creation-Date: 2019-05-17 01:45-0400\n"
+"PO-Revision-Date: 2019-05-17 05:50+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,19 +31,19 @@ msgstr "Atributele disponibile:\n"
 msgid "Available fields: \n"
 msgstr "Câmpuri disponibile:\n"
 
-#: dependencies.py:395
+#: dependencies.py:396
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Folosit pentru a permite traducerea offline a șirurilor de text cod."
 
-#: dependencies.py:400
+#: dependencies.py:401
 msgid "Provides style checking."
 msgstr "Oferă verificarea stilului."
 
-#: dependencies.py:405
+#: dependencies.py:406
 msgid "Command line environment with autocompletion."
 msgstr "Mediul liniei de comandă cu autocompletare."
 
-#: dependencies.py:410
+#: dependencies.py:411
 msgid "Checks proper formatting of the README file."
 msgstr "Verifică formatarea corectă a fișierului README."
 
@@ -55,62 +55,67 @@ msgstr "Selecţie"
 msgid "None"
 msgstr "Nici unul"
 
-#: generics.py:144
+#: generics.py:148
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "Selectați intrările pentru a fi eliminate. Țineți Control pentru a selecta mai multe intrări. După finalizarea selecției, faceți clic pe butonul de mai jos sau faceți dublu clic pe listă pentru a activa acțiunea."
 
-#: generics.py:149
+#: generics.py:153
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "Selectați intrările pentru a fi adăugate. Țineți Control pentru a selecta mai multe intrări. După finalizarea selecției, faceți clic pe butonul de mai jos sau faceți dublu clic pe listă pentru a activa acțiunea."
 
-#: generics.py:282
+#: generics.py:286
 msgid "Add all"
 msgstr "Adaugă tot setul"
 
-#: generics.py:291
+#: generics.py:295
 msgid "Add"
 msgstr "Adăugți"
 
-#: generics.py:301
+#: generics.py:305
 msgid "Remove all"
 msgstr "Elimină tot setul"
 
-#: generics.py:310
+#: generics.py:314
 msgid "Remove"
 msgstr "Eliminați"
 
-#: generics.py:471
+#: generics.py:519
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr ""
+
+#: generics.py:537
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "Obiectul tip %(object)s nu a fost creat, eroare: %(error)s"
 
-#: generics.py:482
+#: generics.py:550
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "Obiectul tip %(object)s a fost creat cu succes."
 
-#: generics.py:511
+#: generics.py:595
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "Obiectul tip %(object)s nu a fost șters, eroare: %(error)s."
 
-#: generics.py:522
+#: generics.py:605
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "Obiectul tip %(object)s a fost șters cu succes."
 
-#: generics.py:568
+#: generics.py:689
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "Obiectul tip %(object)s nu a fost actualizat, eroare: %(error)s."
 
-#: generics.py:579
+#: generics.py:700
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "Obiectul tip %(object)s a fost actualizat cu succes."
@@ -159,46 +164,51 @@ msgstr "Cod sursă"
 msgid "Support"
 msgstr "Suport tehnic"
 
-#: links.py:87 queues.py:10 views.py:223
+#: links.py:87 queues.py:15 views.py:223
 msgid "Tools"
 msgstr "Unelte"
 
-#: literals.py:9
+#: literals.py:10
+msgid ""
+"This feature has been deprecated and will be removed in a future version."
+msgstr ""
+
+#: literals.py:13
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "Backendul bazei de date este setat să utilizeze SQLite. SQLite ar trebui folosit numai pentru dezvoltare și testare, nu pentru producție."
 
-#: literals.py:25
+#: literals.py:31
 msgid "Days"
 msgstr "Zile"
 
-#: literals.py:26
+#: literals.py:32
 msgid "Hours"
 msgstr "Ore"
 
-#: literals.py:27
+#: literals.py:33
 msgid "Minutes"
 msgstr "Minute"
 
-#: management/commands/convertdb.py:28
+#: management/commands/convertdb.py:40
 msgid ""
 "Restricts dumped data to the specified app_label or app_label.ModelName."
 msgstr "Restricționează datele care fac obiectul unui dumping la etichetele app_label sau app_label.ModelName specificate."
 
-#: management/commands/convertdb.py:35
+#: management/commands/convertdb.py:47
 msgid ""
 "The database from which data will be exported. If omitted the database named"
 " \"default\" will be used."
 msgstr "Baza de date din care vor fi exportate datele. Dacă este omisă, va fi utilizată baza de date numită \"default\" ."
 
-#: management/commands/convertdb.py:42
+#: management/commands/convertdb.py:54
 msgid ""
 "The database to which data will be imported. If omitted the database named "
 "\"default\" will be used."
 msgstr "Baza de date în care vor fi importate datele. Dacă este omisă, va fi utilizată baza de date numită \"default\"."
 
-#: management/commands/convertdb.py:49
+#: management/commands/convertdb.py:61
 msgid ""
 "Force the conversion of the database even if the receiving database is not "
 "empty."
@@ -224,17 +234,12 @@ msgstr "Secundar"
 msgid "User"
 msgstr "Utilizator"
 
-#: mixins.py:138
+#: mixins.py:222
 #, python-format
-msgid "Operation performed on %(count)d object"
-msgstr "Operațiune efectuată pe obiectul %(count)d"
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
 
-#: mixins.py:139
-#, python-format
-msgid "Operation performed on %(count)d objects"
-msgstr "Operațiune efectuată pe %(count)dobiecte  "
-
-#: mixins.py:317
+#: mixins.py:296
 msgid "Object"
 msgstr "Obiect"
 
@@ -294,15 +299,15 @@ msgstr "Profile de localizare pentru utilizatori"
 msgid "View error log"
 msgstr "Vizualizați jurnalul de erori"
 
-#: queues.py:8
+#: queues.py:13
 msgid "Default"
 msgstr "Implicit"
 
-#: queues.py:12
+#: queues.py:17
 msgid "Common periodic"
 msgstr "Obșnuite periodice"
 
-#: queues.py:15
+#: queues.py:22
 msgid "Delete stale uploads"
 msgstr "Ștergeți încărcările învechite"
 

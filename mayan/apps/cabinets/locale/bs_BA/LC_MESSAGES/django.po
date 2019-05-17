@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>, 2018\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (https://www.transifex.com/rosarior/teams/13584/bs_BA/)\n"
@@ -23,8 +23,8 @@ msgstr ""
 "Language: bs_BA\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:41 apps.py:94 apps.py:102 apps.py:105 events.py:7 forms.py:16
-#: links.py:24 menus.py:16 models.py:44 permissions.py:7 views.py:172
+#: apps.py:50 apps.py:111 apps.py:119 apps.py:122 events.py:7 forms.py:16
+#: links.py:24 menus.py:16 models.py:47 permissions.py:7 views.py:159
 msgid "Cabinets"
 msgstr "Ormarić"
 
@@ -40,7 +40,7 @@ msgstr "Dodajte u ormarić"
 msgid "Add new level"
 msgstr "Dodajte novi nivel"
 
-#: links.py:69 views.py:44
+#: links.py:69 views.py:45
 msgid "Create cabinet"
 msgstr "Kreiraj ormarić"
 
@@ -60,32 +60,32 @@ msgstr "Sve"
 msgid "Details"
 msgstr "Detalji"
 
-#: models.py:32 search.py:16
+#: models.py:35 search.py:16
 msgid "Label"
 msgstr "Labela"
 
-#: models.py:35
+#: models.py:38
 msgid "Documents"
 msgstr "Dokumenti"
 
-#: models.py:43 models.py:114 serializers.py:138
+#: models.py:46 models.py:135 serializers.py:138
 msgid "Cabinet"
 msgstr "Ormarić"
 
-#: models.py:115 serializers.py:139
+#: models.py:136 serializers.py:139
 msgid "Parent and Label"
 msgstr "Roditelj i etiketa"
 
-#: models.py:122 serializers.py:145
+#: models.py:143 serializers.py:145
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr "%(model_name)s sa ovim%(field_labels)s već postoji"
 
-#: models.py:139
+#: models.py:160
 msgid "Document cabinet"
 msgstr "Kabinet za dokumente"
 
-#: models.py:140
+#: models.py:161
 msgid "Document cabinets"
 msgstr "Kabineti za dokumente"
 
@@ -149,116 +149,116 @@ msgstr ""
 msgid "Navigation:"
 msgstr "Navigacija:"
 
-#: views.py:75
+#: views.py:60
 #, python-format
 msgid "Add new level to: %s"
 msgstr "Dodaj novi nivel u:%s"
 
-#: views.py:89
+#: views.py:83
 #, python-format
 msgid "Delete the cabinet: %s?"
 msgstr "Izbriši kabinet:%s?"
 
-#: views.py:124
+#: views.py:118
 msgid ""
 "Cabinet levels can contain documents or other cabinet sub levels. To add "
 "documents to a cabinet, select the cabinet view of a document view."
 msgstr ""
 
-#: views.py:128
+#: views.py:122
 msgid "This cabinet level is empty"
 msgstr ""
 
-#: views.py:130
+#: views.py:125
 #, python-format
 msgid "Details of cabinet: %s"
 msgstr "Detalji kabineta:%s"
 
-#: views.py:161
+#: views.py:145
 #, python-format
 msgid "Edit cabinet: %s"
 msgstr "Uredi kabinet:%s"
 
-#: views.py:178
+#: views.py:165
 msgid ""
 "Cabinets are a multi-level method to organize documents. Each cabinet can "
 "contain documents as well as other sub level cabinets."
 msgstr ""
 
-#: views.py:182
+#: views.py:169
 msgid "No cabinets available"
 msgstr ""
 
-#: views.py:214
+#: views.py:201
 msgid "Documents can be added to many cabinets."
 msgstr ""
 
-#: views.py:217
+#: views.py:204
 msgid "This document is not in any cabinet"
 msgstr ""
 
-#: views.py:220
+#: views.py:207
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr "Ormari koji sadrže dokument:%s"
 
-#: views.py:232
+#: views.py:219
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document"
 msgstr "Dodajte zahtevu u kabinu na %(count)d dokumentu"
 
-#: views.py:235
+#: views.py:222
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents"
 msgstr "Dodajte zahtevu u kabinu na %(count)d dokumentima"
 
-#: views.py:242
+#: views.py:229
 msgid "Add"
 msgstr "Dodati"
 
-#: views.py:257
+#: views.py:244
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr "Dodaj dokument \"%s\" u kabinetima"
 
-#: views.py:268
+#: views.py:255
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Ormari na koje će se dodati odabrani dokumenti."
 
-#: views.py:297
+#: views.py:284
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr "Dokument:%(document)s je već u kabinetu:%(cabinet)s."
 
-#: views.py:309
+#: views.py:296
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr "Dokument:%(document)s je dodat u kabinetu:%(cabinet)s uspješno."
 
-#: views.py:322
+#: views.py:309
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document"
 msgstr "Uklonite sa zahteva u kabini izvršenom na %(count)d dokumenat."
 
-#: views.py:325
+#: views.py:312
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents"
 msgstr "Uklonite sa zahteva u kabini izvršenom na %(count)d dokumenata"
 
-#: views.py:332
+#: views.py:319
 msgid "Remove"
 msgstr "Ukloniti"
 
-#: views.py:358
+#: views.py:345
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Ormari iz kojih će izabrani dokumenti biti uklonjeni."
 
-#: views.py:386
+#: views.py:373
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr "Dokument:%(document)s ne nalazi se u kabinetu:%(cabinet)s."
 
-#: views.py:398
+#: views.py:385
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Dokument:%(document)s je izbrisan sa kabineta:%(cabinet)s."

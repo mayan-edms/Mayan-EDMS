@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:39-0400\n"
+"POT-Creation-Date: 2019-05-17 01:46-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Rosario, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:56 events.py:8 links.py:18 permissions.py:7 queue.py:8
+#: apps.py:56 events.py:8 links.py:18 permissions.py:7 queues.py:9
 #: settings.py:9
 msgid "File metadata"
 msgstr "Metadatos de archivo"
@@ -135,7 +135,7 @@ msgstr "Configuraciones de tipos de documento"
 msgid "Document version"
 msgstr "Versión del documento"
 
-#: models.py:84 models.py:99
+#: models.py:84 models.py:100
 msgid "Document version driver entry"
 msgstr "Entrada de controlador de versión de documento"
 
@@ -147,27 +147,27 @@ msgstr "Entradas de controlador de versión de documento"
 msgid "Attribute count"
 msgstr "Conteo de atributos"
 
-#: models.py:103
+#: models.py:104
 msgid "Name of the file metadata entry."
 msgstr "Nombre de la entrada de metadatos del archivo."
 
-#: models.py:104
+#: models.py:105
 msgid "Key"
 msgstr "Llave"
 
-#: models.py:107
+#: models.py:108
 msgid "Value of the file metadata entry."
 msgstr "Valor de la entrada de metadatos del archivo."
 
-#: models.py:108
+#: models.py:109
 msgid "Value"
 msgstr "Valor"
 
-#: models.py:113
+#: models.py:114
 msgid "File metadata entry"
 msgstr "Entrada de metadatos del archivo."
 
-#: models.py:114
+#: models.py:115
 msgid "File metadata entries"
 msgstr "Entradas de metadato de archivos"
 
@@ -184,7 +184,7 @@ msgstr "Enviar documento para el procesamiento de metadatos de archivos."
 msgid "View file metadata"
 msgstr "Ver metadatos de archivo"
 
-#: queue.py:11
+#: queues.py:12
 msgid "Process document version"
 msgstr "Procesar la versión del documento"
 

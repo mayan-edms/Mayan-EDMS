@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-05 02:10-0400\n"
-"PO-Revision-Date: 2019-05-05 06:26+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-05-17 01:48-0400\n"
+"PO-Revision-Date: 2019-05-12 17:43+0000\n"
+"Last-Translator: Adek Lanin\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,39 +18,39 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:45 links.py:54 models/base.py:39 queues.py:8 settings.py:10
+#: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
 #: views.py:630
 msgid "Sources"
 msgstr ""
 
-#: apps.py:60
+#: apps.py:56
 msgid "Create a document source"
 msgstr ""
 
-#: apps.py:62
+#: apps.py:58
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr ""
 
-#: apps.py:75
+#: apps.py:71
 msgid "Type"
-msgstr ""
+msgstr "Tipe"
 
-#: apps.py:84
+#: apps.py:80
 msgid "Created"
 msgstr ""
 
-#: apps.py:91
+#: apps.py:87
 msgid "Thumbnail"
 msgstr ""
 
-#: apps.py:99 models/base.py:248
+#: apps.py:95 models/base.py:248
 msgid "Date time"
 msgstr "tanggal waktu"
 
-#: apps.py:104 models/base.py:251
+#: apps.py:100 models/base.py:251
 msgid "Message"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgstr "File"
 
 #: handlers.py:30
 msgid "Default"
-msgstr ""
+msgstr "Bawaan"
 
 #: links.py:49
 msgid "New document"
@@ -114,11 +114,11 @@ msgstr ""
 
 #: links.py:97 links.py:114
 msgid "Delete"
-msgstr ""
+msgstr "Hapus"
 
 #: links.py:102
 msgid "Edit"
-msgstr ""
+msgstr "Sunting"
 
 #: links.py:107
 msgid "Document sources"
@@ -202,7 +202,7 @@ msgstr ""
 
 #: models/base.py:30
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #: models/base.py:32
 msgid "Enabled"
@@ -526,27 +526,27 @@ msgstr "Lihat sumber-sumber dokumen yang telah ada"
 msgid "Delete staging files"
 msgstr ""
 
-#: queues.py:11
+#: queues.py:12
 msgid "Sources periodic"
 msgstr ""
 
-#: queues.py:14
+#: queues.py:16
 msgid "Sources fast"
 msgstr ""
 
-#: queues.py:18
+#: queues.py:21
 msgid "Generate staging file image"
 msgstr ""
 
-#: queues.py:22
+#: queues.py:25
 msgid "Check interval source"
 msgstr ""
 
-#: queues.py:26
+#: queues.py:29
 msgid "Handle upload"
 msgstr ""
 
-#: queues.py:30
+#: queues.py:33
 msgid "Upload document"
 msgstr ""
 

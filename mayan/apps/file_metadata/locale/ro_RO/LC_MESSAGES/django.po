@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:39-0400\n"
+"POT-Creation-Date: 2019-05-17 01:46-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Label"
 msgstr "Conținut etichetă"
 
-#: apps.py:56 events.py:8 links.py:18 permissions.py:7 queue.py:8
+#: apps.py:56 events.py:8 links.py:18 permissions.py:7 queues.py:9
 #: settings.py:9
 msgid "File metadata"
 msgstr "Metadatele fișierului"
@@ -132,7 +132,7 @@ msgstr "Setările pentru tipurile de documente"
 msgid "Document version"
 msgstr "Versiune document"
 
-#: models.py:84 models.py:99
+#: models.py:84 models.py:100
 msgid "Document version driver entry"
 msgstr "Înregistrare driver de versiune de document"
 
@@ -144,27 +144,27 @@ msgstr "Înregistrări driver de versiune de document"
 msgid "Attribute count"
 msgstr "Număr de atribute"
 
-#: models.py:103
+#: models.py:104
 msgid "Name of the file metadata entry."
 msgstr "Numele înregistrării metadatelor fișierului."
 
-#: models.py:104
+#: models.py:105
 msgid "Key"
 msgstr "Cheie"
 
-#: models.py:107
+#: models.py:108
 msgid "Value of the file metadata entry."
 msgstr "Valoarea intrării de metadate a fișierului."
 
-#: models.py:108
+#: models.py:109
 msgid "Value"
 msgstr "Valoare"
 
-#: models.py:113
+#: models.py:114
 msgid "File metadata entry"
 msgstr "Înregistrare metadate fișier"
 
-#: models.py:114
+#: models.py:115
 msgid "File metadata entries"
 msgstr "Înregistrări de metadate în fișier"
 
@@ -180,7 +180,7 @@ msgstr "Trimiteți documentul pentru procesarea metadatelor de fișiere"
 msgid "View file metadata"
 msgstr "Vizualizați metadatele fișierelor"
 
-#: queue.py:11
+#: queues.py:12
 msgid "Process document version"
 msgstr "Procesează versiunea documentului"
 

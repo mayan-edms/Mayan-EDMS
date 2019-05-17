@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:40-0400\n"
+"POT-Creation-Date: 2019-05-17 01:47-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -21,28 +21,28 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:71 apps.py:157 apps.py:162 events.py:7 links.py:48 permissions.py:7
-#: queues.py:8 settings.py:10
+#: apps.py:67 apps.py:153 apps.py:158 events.py:7 links.py:48 permissions.py:7
+#: queues.py:9 settings.py:10
 msgid "Metadata"
 msgstr "Metadane"
 
-#: apps.py:103
+#: apps.py:99
 msgid "Return the value of a specific document metadata"
 msgstr "Zwróć wartość metadanej konkretnego dokumentu"
 
-#: apps.py:109
+#: apps.py:105
 msgid "Metadata type name"
 msgstr "Nazwa typu metadanych"
 
-#: apps.py:113
+#: apps.py:109
 msgid "Metadata type value"
 msgstr "Wartość typu metadanych"
 
-#: apps.py:203 apps.py:211 forms.py:123 models.py:93 models.py:304
+#: apps.py:184 apps.py:192 forms.py:123 models.py:93 models.py:304
 msgid "Metadata type"
 msgstr "Typ metadanych"
 
-#: apps.py:206 apps.py:215
+#: apps.py:187 apps.py:196
 msgid "Metadata value"
 msgstr "Wartość metadanych"
 
@@ -86,7 +86,7 @@ msgstr "Wartość"
 msgid "Update"
 msgstr "Aktualizacja"
 
-#: forms.py:46 forms.py:182 models.py:306
+#: forms.py:46 forms.py:185 models.py:306
 msgid "Required"
 msgstr "Wymagane"
 
@@ -109,27 +109,27 @@ msgstr "\"%s\" jest wymagane dla tego typu dokumentu."
 msgid "Metadata types to be added to the selected documents."
 msgstr "Typy metadanych przeznaczone do dodania do wybranych dokumentów."
 
-#: forms.py:151
-msgid " Available template context variables: "
-msgstr "Dostępne zmienne kontekstowe szablonu:"
-
-#: forms.py:162 views.py:507
+#: forms.py:148 views.py:506
 msgid "Remove"
 msgstr "Usuń"
 
-#: forms.py:180
+#: forms.py:169
+msgid " Available template context variables: "
+msgstr "Dostępne zmienne kontekstowe szablonu:"
+
+#: forms.py:183
 msgid "None"
 msgstr "Brak"
 
-#: forms.py:181
+#: forms.py:184
 msgid "Optional"
 msgstr "Opcjonalny"
 
-#: forms.py:186 models.py:55 search.py:19
+#: forms.py:189 models.py:55 search.py:19
 msgid "Label"
 msgstr "Etykieta"
 
-#: forms.py:190
+#: forms.py:193
 msgid "Relationship"
 msgstr "Związek"
 
@@ -145,7 +145,7 @@ msgstr "Edytuj metadane"
 msgid "Remove metadata"
 msgstr "Usuń metadane"
 
-#: links.py:55 links.py:83 models.py:94 views.py:657
+#: links.py:55 links.py:83 models.py:94 views.py:656
 msgid "Metadata types"
 msgstr "Typy metadanych"
 
@@ -253,12 +253,12 @@ msgid "Document type metadata types options"
 msgstr "Opcje typów metadanych dla typu dokumentów"
 
 #: permissions.py:10
-msgid "Edit a document's metadata"
-msgstr "Edytuj metadane dokumentu"
-
-#: permissions.py:13
 msgid "Add metadata to a document"
 msgstr "Dodaj metadane do dokumentu"
+
+#: permissions.py:13
+msgid "Edit a document's metadata"
+msgstr "Edytuj metadane dokumentu"
 
 #: permissions.py:16
 msgid "Remove metadata from a document"
@@ -288,11 +288,11 @@ msgstr "Usuń typy metadanych"
 msgid "View metadata types"
 msgstr "Przeglądaj typy metadanych"
 
-#: queues.py:11
+#: queues.py:12
 msgid "Remove metadata type"
 msgstr "Usuń typ metadanych"
 
-#: queues.py:15
+#: queues.py:16
 msgid "Add required metadata type"
 msgstr "Dodaj wymagany typ metadanych"
 
@@ -424,7 +424,7 @@ msgstr ""
 msgid "Metadata remove request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:509
+#: views.py:508
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] "Usuń typy metadanych z dokumentu"
@@ -432,40 +432,40 @@ msgstr[1] "Usuń typy metadanych z dokumentu"
 msgstr[2] "Usuń typy metadanych z dokumentu"
 msgstr[3] "Usuń typy metadanych z dokumentów"
 
-#: views.py:520
+#: views.py:519
 #, python-format
 msgid "Remove metadata types from the document: %s"
 msgstr "Usuń typy metadanych z dokumentu: %s"
 
-#: views.py:568
+#: views.py:567
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
 msgstr ""
 
-#: views.py:577
+#: views.py:576
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
 msgstr ""
 
-#: views.py:588
+#: views.py:587
 msgid "Create metadata type"
 msgstr "Utwórz typ metadanych"
 
-#: views.py:613
+#: views.py:612
 #, python-format
 msgid "Delete the metadata type: %s?"
 msgstr "Usunąć typ metadanych: %s?"
 
-#: views.py:628
+#: views.py:627
 #, python-format
 msgid "Edit metadata type: %s"
 msgstr "Edytuj typ metadanych: %s"
 
-#: views.py:649
+#: views.py:648
 msgid ""
 "Metadata types are users defined properties that can be assigned values. "
 "Once created they must be associated to document types, either as optional "
@@ -474,34 +474,34 @@ msgid ""
 "is provided."
 msgstr ""
 
-#: views.py:656
+#: views.py:655
 msgid "There are no metadata types"
 msgstr ""
 
-#: views.py:677
+#: views.py:676
 #, python-format
 msgid "Error updating relationship; %s"
 msgstr "Błąd uaktualnienia relacji; %s"
 
-#: views.py:682
+#: views.py:681
 msgid "Relationships updated successfully"
 msgstr "Relację uaktualniono pomyślnie"
 
-#: views.py:698
+#: views.py:697
 msgid ""
 "Create metadata types to be able to associate them to this document type."
 msgstr ""
 
-#: views.py:701
+#: views.py:700
 msgid "There are no metadata types available"
 msgstr ""
 
-#: views.py:704
+#: views.py:703
 #, python-format
 msgid "Metadata types for document type: %s"
 msgstr "Typy metadanych dla typu dokumentu: %s"
 
-#: views.py:755
+#: views.py:754
 #, python-format
 msgid "Document types for metadata type: %s"
 msgstr "Typy dokumentów dla typu metadanych: %s"

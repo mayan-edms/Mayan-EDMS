@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:41-0400\n"
-"PO-Revision-Date: 2019-05-08 07:12+0000\n"
-"Last-Translator: Harald Ersch\n"
+"POT-Creation-Date: 2019-05-17 01:49-0400\n"
+"PO-Revision-Date: 2019-05-17 05:51+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,59 +20,59 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:79 events.py:8 permissions.py:8
+#: apps.py:78 events.py:8 permissions.py:8
 msgid "User management"
 msgstr "Management utilizatori"
 
-#: apps.py:97
+#: apps.py:96
 msgid "Group"
 msgstr "Grup"
 
-#: apps.py:98 links.py:41 links.py:52 links.py:75 search.py:25 views.py:124
+#: apps.py:97 links.py:41 links.py:52 links.py:75 search.py:25 views.py:120
 msgid "Groups"
 msgstr "Grupuri"
 
-#: apps.py:99 search.py:41
+#: apps.py:98 search.py:41
 msgid "Name"
 msgstr "Nume"
 
-#: apps.py:105 models.py:18
+#: apps.py:104 models.py:18
 msgid "User"
 msgstr "utilizator"
 
-#: apps.py:106 apps.py:171 links.py:47 links.py:80 links.py:107 views.py:306
+#: apps.py:105 apps.py:170 links.py:47 links.py:80 links.py:96 views.py:302
 msgid "Users"
 msgstr "Utilizatorii"
 
-#: apps.py:109
+#: apps.py:108
 msgid "Username"
 msgstr "Nume de utilizator"
 
-#: apps.py:110 search.py:19
+#: apps.py:109 search.py:19
 msgid "First name"
 msgstr "Prenume"
 
-#: apps.py:111 search.py:28
+#: apps.py:110 search.py:28
 msgid "Last name"
 msgstr "Numele de familie"
 
-#: apps.py:112 search.py:22
+#: apps.py:111 search.py:22
 msgid "Email"
 msgstr "email"
 
-#: apps.py:113
+#: apps.py:112
 msgid "Is active?"
 msgstr "Este activ?"
 
-#: apps.py:116 apps.py:120
+#: apps.py:115 apps.py:119
 msgid "Has usable password?"
 msgstr "Are parola utilizabilă?"
 
-#: apps.py:135
+#: apps.py:134
 msgid "All the groups."
 msgstr "Toate grupurile."
 
-#: apps.py:139
+#: apps.py:138
 msgid "All the users."
 msgstr "Toți utilizatorii."
 
@@ -108,7 +108,7 @@ msgstr "Detalii utilizator"
 msgid "Edit details"
 msgstr "Editează detaliile"
 
-#: links.py:24 views.py:60
+#: links.py:24 views.py:56
 msgid "Create new group"
 msgstr "Creați un grup nou"
 
@@ -120,15 +120,11 @@ msgstr "Șterge"
 msgid "Edit"
 msgstr "Editează"
 
-#: links.py:57 views.py:156
+#: links.py:57 views.py:152
 msgid "Create new user"
 msgstr "Creați un utilizator nou"
 
-#: links.py:90 links.py:103
-msgid "Set password"
-msgstr "Seteaza parola"
-
-#: links.py:97
+#: links.py:92
 msgid "User options"
 msgstr "Opțiuni utilizator"
 
@@ -192,164 +188,122 @@ msgstr "Listă de chei primare de grup la care se adaugă utilizatorul."
 msgid "Anonymous"
 msgstr "Anonim"
 
-#: views.py:41
+#: views.py:37
 msgid "Current user details"
 msgstr "Detaliile utilizatorului actual"
 
-#: views.py:49
+#: views.py:45
 msgid "Edit current user details"
 msgstr "Editați detaliile utilizatorului curent"
 
-#: views.py:82
+#: views.py:78
 #, python-format
 msgid "Delete the group: %s?"
 msgstr "Ștergeți grupul: %s?"
 
-#: views.py:97
+#: views.py:93
 #, python-format
 msgid "Edit group: %s"
 msgstr "Modificați grupul: %s"
 
-#: views.py:117
+#: views.py:113
 msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
 msgstr "Grupurile de utilizatori sunt unități organizaționale. Ele ar trebui să reflecte unitățile organizaționale ale organizației dvs. Grupurile nu pot fi utilizate pentru controlul accesului. Utilizați roluri pentru permisiuni și control acces, adăugați grupuri la ele."
 
-#: views.py:123
+#: views.py:119
 msgid "There are no user groups"
 msgstr "Nu există grupuri de utilizatori"
 
-#: views.py:136
+#: views.py:132
 msgid "Available users"
 msgstr "Utilizatori disponibili"
 
-#: views.py:137
+#: views.py:133
 msgid "Group users"
 msgstr "Utilizatori din grup"
 
-#: views.py:145
+#: views.py:141
 #, python-format
 msgid "Users of group: %s"
 msgstr "Utilizatorii din grupul: %s"
 
-#: views.py:177
+#: views.py:173
 #, python-format
 msgid "User delete request performed on %(count)d user"
 msgstr "Solicitarea de ștergere a utilizatorilor efectuată pe %(count)dutilizator "
 
-#: views.py:179
+#: views.py:175
 #, python-format
 msgid "User delete request performed on %(count)d users"
 msgstr "Solicitarea de ștergere a utilizatorilor efectuată pe %(count)d utilizatori"
 
-#: views.py:187
+#: views.py:183
 msgid "Delete user"
 msgid_plural "Delete users"
 msgstr[0] "Ștergeți utilizatorul"
 msgstr[1] "Ștergeți utilizatorii"
 msgstr[2] "Ștergeți utilizatori"
 
-#: views.py:197
+#: views.py:193
 #, python-format
 msgid "Delete user: %s"
 msgstr "Ștergeți utilizatorul: %s"
 
-#: views.py:208
+#: views.py:204
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
 msgstr "Super-utilizator și personalul ștergerea utilizator nu este permisă, utilizați interfata de administrare pentru aceste cazuri."
 
-#: views.py:216
+#: views.py:212
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Utilizatorul  \"%s\" a fost șters cu succes."
 
-#: views.py:222
+#: views.py:218
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Eroare la ștergerea utilizator  \"%(user)s\": %(error)s"
 
-#: views.py:240
+#: views.py:236
 #, python-format
 msgid "Details of user: %s"
 msgstr "Detalii despre utilizatorul: %s"
 
-#: views.py:255
+#: views.py:251
 #, python-format
 msgid "Edit user: %s"
 msgstr "Modificați utilizatorul: %s"
 
-#: views.py:270
+#: views.py:266
 msgid "Available groups"
 msgstr "Grupuri disponibile"
 
 #. Translators: "User groups" here refer to the group list of a specific
 #. user.
-#: views.py:273
+#: views.py:269
 msgid "User groups"
 msgstr "Apartenența la grupuri"
 
-#: views.py:281
+#: views.py:277
 #, python-format
 msgid "Groups of user: %s"
 msgstr "Grupurile utilizatorului: %s"
 
-#: views.py:302
+#: views.py:298
 msgid ""
 "User accounts can be create from this view. After creating an user account "
 "you will prompted to set a password for it. "
 msgstr "Conturile de utilizator pot fi create din această vizualizare. După crearea unui cont de utilizator, vi se va solicita să setați o parolă pentru acesta."
 
-#: views.py:305
+#: views.py:301
 msgid "There are no user accounts"
 msgstr "Nu există conturi de utilizator"
 
-#: views.py:320
+#: views.py:316
 #, python-format
 msgid "Edit options for user: %s"
 msgstr "Modificați opțiunile pentru utilizatorul: %s"
-
-#: views.py:341
-#, python-format
-msgid "Password change request performed on %(count)d user"
-msgstr "Solicitarea de schimbare a parolei efectuată pe %(count)dutilizator "
-
-#: views.py:343
-#, python-format
-msgid "Password change request performed on %(count)d users"
-msgstr "Solicitarea de modificare a parolei efectuată pe %(count)dutilizatori "
-
-#: views.py:350
-msgid "Submit"
-msgstr "Trimiteţi"
-
-#: views.py:352
-msgid "Change user password"
-msgid_plural "Change users passwords"
-msgstr[0] "Schimbați parola de utilizator"
-msgstr[1] "Schimbați parolele utilizatorilor"
-msgstr[2] "Schimbați parolele utilizatorilor"
-
-#: views.py:362
-#, python-format
-msgid "Change password for user: %s"
-msgstr "Schimbați parola pentru utilizatorul: %s"
-
-#: views.py:382
-msgid ""
-"Super user and staff user password reseting is not allowed, use the admin "
-"interface for these cases."
-msgstr "Super utilizator și parola de utilizator personalul resetarea nu este permisă, utilizați interfata de administrare pentru aceste cazuri."
-
-#: views.py:392
-#, python-format
-msgid "Successful password reset for user: %s."
-msgstr "Resetarea reușită a parolei pentru utilizatorul: %s."
-
-#: views.py:398
-#, python-format
-msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "Eroare resetarea parola pentru utilizatorul %(user)s\": %(error)s"

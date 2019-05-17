@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
 "PO-Revision-Date: 2019-05-02 03:31+0000\n"
 "Last-Translator: Philip Hai <nxhrnchn@gmail.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:48 events.py:7 links.py:34
+#: apps.py:41 events.py:7 links.py:34
 msgid "Checkouts"
 msgstr "签出"
 
@@ -42,7 +42,7 @@ msgstr "签出的文档"
 msgid "Document forcefully checked in"
 msgstr "强制签入文档"
 
-#: exceptions.py:27 views.py:50
+#: exceptions.py:27 views.py:108
 msgid "Document already checked out."
 msgstr "文档已经签出。"
 
@@ -50,7 +50,7 @@ msgstr "文档已经签出。"
 msgid "Document status"
 msgstr "文档状态"
 
-#: forms.py:39 models.py:41 views.py:90
+#: forms.py:39 models.py:41 views.py:148
 msgid "User"
 msgstr "用户"
 
@@ -154,11 +154,11 @@ msgstr "签出的文档"
 msgid "Check out details view"
 msgstr "签出详细信息"
 
-#: queues.py:8
+#: queues.py:13
 msgid "Checkouts periodic"
 msgstr "签出到期时间"
 
-#: queues.py:11
+#: queues.py:17
 msgid "Check expired checkouts"
 msgstr "检查过期的签出"
 
@@ -166,63 +166,63 @@ msgstr "检查过期的签出"
 msgid "Primary key of the document to be checked out."
 msgstr "要检出的文件的主键。"
 
-#: views.py:56
-#, python-format
-msgid "Document \"%s\" checked out successfully."
-msgstr "文档： \"%s\" 签出成功。"
-
-#: views.py:65
-#, python-format
-msgid "Check out document: %s"
-msgstr "签出文档: %s"
-
-#: views.py:96
-msgid "Checkout time and date"
-msgstr "签出时间和日期"
-
-#: views.py:102
-msgid "Checkout expiration"
-msgstr "签出到期时间"
-
-#: views.py:110
-msgid ""
-"Checking out a document blocks certain document operations for a "
-"predetermined amount of time."
-msgstr "签出文档会在预定的时间内阻塞关联文档操作。"
-
-#: views.py:114
-msgid "No documents have been checked out"
-msgstr "文档未被签出"
-
-#: views.py:115
-msgid "Documents checked out"
-msgstr "签出的文件"
-
-#: views.py:130
-#, python-format
-msgid "Check out details for document: %s"
-msgstr "%s 签出详情"
-
-#: views.py:148
+#: views.py:37
 #, python-format
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
 msgstr "该文档已被签出，强制签出:%s 吗?"
 
-#: views.py:152
+#: views.py:41
 #, python-format
 msgid "Check in the document: %s?"
 msgstr "签入文档：%s？"
 
-#: views.py:185
+#: views.py:74
 msgid "Document has not been checked out."
 msgstr "文档尚未签出。"
 
-#: views.py:191
+#: views.py:80
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "文档“%s”已成功签入。"
+
+#: views.py:114
+#, python-format
+msgid "Document \"%s\" checked out successfully."
+msgstr "文档： \"%s\" 签出成功。"
+
+#: views.py:123
+#, python-format
+msgid "Check out document: %s"
+msgstr "签出文档: %s"
+
+#: views.py:154
+msgid "Checkout time and date"
+msgstr "签出时间和日期"
+
+#: views.py:160
+msgid "Checkout expiration"
+msgstr "签出到期时间"
+
+#: views.py:168
+msgid ""
+"Checking out a document blocks certain document operations for a "
+"predetermined amount of time."
+msgstr "签出文档会在预定的时间内阻塞关联文档操作。"
+
+#: views.py:172
+msgid "No documents have been checked out"
+msgstr "文档未被签出"
+
+#: views.py:173
+msgid "Documents checked out"
+msgstr "签出的文件"
+
+#: views.py:188
+#, python-format
+msgid "Check out details for document: %s"
+msgstr "%s 签出详情"
 
 #: widgets.py:22
 msgid "Period"

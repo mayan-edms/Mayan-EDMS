@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
 "PO-Revision-Date: 2019-05-03 05:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
@@ -86,7 +86,7 @@ msgstr "Oldal nem található"
 msgid "Sorry, but the requested page could not be found."
 msgstr ""
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:53
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:52
 msgid "Server error"
 msgstr ""
 
@@ -196,11 +196,11 @@ msgstr ""
 msgid "Are you sure?"
 msgstr ""
 
-#: templates/appearance/generic_confirm.html:40
+#: templates/appearance/generic_confirm.html:34
 msgid "Yes"
 msgstr "Igen"
 
-#: templates/appearance/generic_confirm.html:44
+#: templates/appearance/generic_confirm.html:38
 msgid "No"
 msgstr "Nem"
 
@@ -284,15 +284,15 @@ msgstr ""
 msgid "No results"
 msgstr ""
 
-#: templates/appearance/root.html:58
+#: templates/appearance/root.html:57
 msgid "Close"
 msgstr ""
 
-#: templates/appearance/root.html:66
+#: templates/appearance/root.html:65
 msgid "Server communication error"
 msgstr ""
 
-#: templates/appearance/root.html:68
+#: templates/appearance/root.html:67
 msgid "Check you network connection and try again in a few moments."
 msgstr ""
 

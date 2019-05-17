@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Sehat <sehat75@yahoo.com>, 2019
+# Adek Lanin, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:39-0400\n"
+"POT-Creation-Date: 2019-05-17 01:46-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
-"Last-Translator: Sehat <sehat75@yahoo.com>, 2019\n"
+"Last-Translator: Adek Lanin, 2019\n"
 "Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,9 +24,9 @@ msgstr ""
 
 #: admin.py:15
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
-#: apps.py:56 events.py:8 links.py:18 permissions.py:7 queue.py:8
+#: apps.py:56 events.py:8 links.py:18 permissions.py:7 queues.py:9
 #: settings.py:9
 msgid "File metadata"
 msgstr ""
@@ -93,7 +94,7 @@ msgstr ""
 
 #: models.py:25
 msgid "Internal name"
-msgstr ""
+msgstr "Nama internal"
 
 #: models.py:30 models.py:74
 msgid "Driver"
@@ -121,9 +122,9 @@ msgstr ""
 
 #: models.py:78
 msgid "Document version"
-msgstr ""
+msgstr "Versi dokumen"
 
-#: models.py:84 models.py:99
+#: models.py:84 models.py:100
 msgid "Document version driver entry"
 msgstr ""
 
@@ -135,27 +136,27 @@ msgstr ""
 msgid "Attribute count"
 msgstr ""
 
-#: models.py:103
+#: models.py:104
 msgid "Name of the file metadata entry."
 msgstr ""
 
-#: models.py:104
+#: models.py:105
 msgid "Key"
 msgstr ""
 
-#: models.py:107
+#: models.py:108
 msgid "Value of the file metadata entry."
 msgstr ""
 
-#: models.py:108
+#: models.py:109
 msgid "Value"
 msgstr ""
 
-#: models.py:113
+#: models.py:114
 msgid "File metadata entry"
 msgstr ""
 
-#: models.py:114
+#: models.py:115
 msgid "File metadata entries"
 msgstr ""
 
@@ -171,7 +172,7 @@ msgstr ""
 msgid "View file metadata"
 msgstr ""
 
-#: queue.py:11
+#: queues.py:12
 msgid "Process document version"
 msgstr ""
 

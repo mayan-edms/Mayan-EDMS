@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:39-0400\n"
-"PO-Revision-Date: 2019-04-27 22:54+0000\n"
+"POT-Creation-Date: 2019-05-17 01:47-0400\n"
+"PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -18,19 +18,23 @@ msgstr ""
 "Language: bs_BA\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:46
+#: apps.py:42
 msgid "Mailer"
 msgstr "Mailer"
 
-#: apps.py:66
+#: apps.py:62
 msgid "Date and time"
 msgstr "Datum i vreme"
 
-#: apps.py:69 models.py:26 models.py:222
+#: apps.py:65 models.py:30 models.py:228
 msgid "Message"
 msgstr "Poruke"
 
-#: events.py:7 permissions.py:7 queues.py:7 settings.py:11
+#: classes.py:81
+msgid "Null backend"
+msgstr ""
+
+#: events.py:7 permissions.py:7 queues.py:8 settings.py:11
 msgid "Mailing"
 msgstr "Mailing"
 
@@ -38,13 +42,13 @@ msgstr "Mailing"
 msgid "Email sent"
 msgstr ""
 
-#: forms.py:60 forms.py:121
+#: forms.py:60 forms.py:122
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
 msgstr "E-mail adresa primaoca. Mogu biti višestruke adrese razdvojene zarezom ili tačka-točka."
 
-#: forms.py:62 forms.py:123
+#: forms.py:62 forms.py:124
 msgid "Email address"
 msgstr "E-mail adresa"
 
@@ -209,69 +213,69 @@ msgstr "Putanja fajla"
 msgid "Django file based backend"
 msgstr "Django bazirani fajl"
 
-#: models.py:23 models.py:219
+#: models.py:27 models.py:225
 msgid "Date time"
 msgstr "Datum vreme"
 
-#: models.py:32
+#: models.py:36
 msgid "Log entry"
 msgstr "Ulazni tragovi"
 
-#: models.py:33
+#: models.py:37
 msgid "Log entries"
 msgstr "Stavke tragova"
 
-#: models.py:44
+#: models.py:48
 msgid "Label"
 msgstr "Labela"
 
-#: models.py:48
+#: models.py:52
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr "Ako je podrazumevano, ovaj mailing profil će biti unapred izabran na obrazcu za dostavljanje dokumenata."
 
-#: models.py:50
+#: models.py:54
 msgid "Default"
 msgstr "default"
 
-#: models.py:52
+#: models.py:56
 msgid "Enabled"
 msgstr "Omogućeno"
 
-#: models.py:55
+#: models.py:59
 msgid "The dotted Python path to the backend class."
 msgstr "Podešena Python staza do backend klase."
 
-#: models.py:56
+#: models.py:60
 msgid "Backend path"
 msgstr "Backend putanja"
 
-#: models.py:59
+#: models.py:63
 msgid "Backend data"
 msgstr "Backend podaci"
 
-#: models.py:66 models.py:216
+#: models.py:70 models.py:222
 msgid "User mailer"
 msgstr "Korisnički poštar"
 
-#: models.py:67
+#: models.py:71
 msgid "User mailers"
 msgstr "Korisnički poštar"
 
-#: models.py:80
+#: models.py:84
 msgid "Backend label"
 msgstr ""
 
-#: models.py:210
+#: models.py:216
 msgid "Test email from Mayan EDMS"
 msgstr "Testirajte email od Mayan EDMS"
 
-#: models.py:228
+#: models.py:234
 msgid "User mailer log entry"
 msgstr "Unos dnevnika korisnika mailera"
 
-#: models.py:229
+#: models.py:235
 msgid "User mailer log entries"
 msgstr "Stavke evidencije korisnika mailera"
 
@@ -307,7 +311,7 @@ msgstr "Pregledajte mailing listu"
 msgid "Use a mailing profile"
 msgstr "Koristite mailing listu"
 
-#: queues.py:9
+#: queues.py:10
 msgid "Send document"
 msgstr "Pošaljite dokument"
 

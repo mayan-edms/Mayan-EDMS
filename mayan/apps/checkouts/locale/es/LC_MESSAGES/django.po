@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
 "PO-Revision-Date: 2019-04-30 16:35+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:48 events.py:7 links.py:34
+#: apps.py:41 events.py:7 links.py:34
 msgid "Checkouts"
 msgstr "Reservaciones"
 
@@ -42,7 +42,7 @@ msgstr "Documento reservado"
 msgid "Document forcefully checked in"
 msgstr "Documento devuelto forzosamente"
 
-#: exceptions.py:27 views.py:50
+#: exceptions.py:27 views.py:108
 msgid "Document already checked out."
 msgstr "El documento ya está reservado."
 
@@ -50,7 +50,7 @@ msgstr "El documento ya está reservado."
 msgid "Document status"
 msgstr "Estatus del documento"
 
-#: forms.py:39 models.py:41 views.py:90
+#: forms.py:39 models.py:41 views.py:148
 msgid "User"
 msgstr "Usuario"
 
@@ -154,11 +154,11 @@ msgstr "Reservar documentos"
 msgid "Check out details view"
 msgstr "Detalles de la reserva"
 
-#: queues.py:8
+#: queues.py:13
 msgid "Checkouts periodic"
 msgstr "Reservas periódicas"
 
-#: queues.py:11
+#: queues.py:17
 msgid "Check expired checkouts"
 msgstr "Comprobar reservaciones caducadas"
 
@@ -166,63 +166,63 @@ msgstr "Comprobar reservaciones caducadas"
 msgid "Primary key of the document to be checked out."
 msgstr "Llave primaria del documento que se va a reservar."
 
-#: views.py:56
-#, python-format
-msgid "Document \"%s\" checked out successfully."
-msgstr "Document \"%s\" reservado con éxito."
-
-#: views.py:65
-#, python-format
-msgid "Check out document: %s"
-msgstr "Reservar el documento: %s"
-
-#: views.py:96
-msgid "Checkout time and date"
-msgstr "Fecha y hora de reservación"
-
-#: views.py:102
-msgid "Checkout expiration"
-msgstr "Expiración de la reservación"
-
-#: views.py:110
-msgid ""
-"Checking out a document blocks certain document operations for a "
-"predetermined amount of time."
-msgstr "Reservar un documento bloquea ciertas operaciones del documento durante un período de tiempo predeterminado."
-
-#: views.py:114
-msgid "No documents have been checked out"
-msgstr "No se han reservado documentos"
-
-#: views.py:115
-msgid "Documents checked out"
-msgstr "Documentos reservados"
-
-#: views.py:130
-#, python-format
-msgid "Check out details for document: %s"
-msgstr "Detalles de la reserva para el documento: %s"
-
-#: views.py:148
+#: views.py:37
 #, python-format
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
 msgstr "Usted no reservó inicialmente este documento. ¿Devolver forzosamente el documento: %s?"
 
-#: views.py:152
+#: views.py:41
 #, python-format
 msgid "Check in the document: %s?"
 msgstr "¿Devolver el documento: %s?"
 
-#: views.py:185
+#: views.py:74
 msgid "Document has not been checked out."
 msgstr "El documento no ha sido reservado."
 
-#: views.py:191
+#: views.py:80
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "Documento \"%s\" devuelto con éxito."
+
+#: views.py:114
+#, python-format
+msgid "Document \"%s\" checked out successfully."
+msgstr "Document \"%s\" reservado con éxito."
+
+#: views.py:123
+#, python-format
+msgid "Check out document: %s"
+msgstr "Reservar el documento: %s"
+
+#: views.py:154
+msgid "Checkout time and date"
+msgstr "Fecha y hora de reservación"
+
+#: views.py:160
+msgid "Checkout expiration"
+msgstr "Expiración de la reservación"
+
+#: views.py:168
+msgid ""
+"Checking out a document blocks certain document operations for a "
+"predetermined amount of time."
+msgstr "Reservar un documento bloquea ciertas operaciones del documento durante un período de tiempo predeterminado."
+
+#: views.py:172
+msgid "No documents have been checked out"
+msgstr "No se han reservado documentos"
+
+#: views.py:173
+msgid "Documents checked out"
+msgstr "Documentos reservados"
+
+#: views.py:188
+#, python-format
+msgid "Check out details for document: %s"
+msgstr "Detalles de la reserva para el documento: %s"
 
 #: widgets.py:22
 msgid "Period"

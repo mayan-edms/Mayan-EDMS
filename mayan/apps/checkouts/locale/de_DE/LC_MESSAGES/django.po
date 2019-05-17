@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:37-0400\n"
+"POT-Creation-Date: 2019-05-17 01:44-0400\n"
 "PO-Revision-Date: 2019-04-28 21:17+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:48 events.py:7 links.py:34
+#: apps.py:41 events.py:7 links.py:34
 msgid "Checkouts"
 msgstr "Ausbuchungen"
 
@@ -45,7 +45,7 @@ msgstr "Dokument ausgebucht"
 msgid "Document forcefully checked in"
 msgstr "Dokument zwingend eingebucht"
 
-#: exceptions.py:27 views.py:50
+#: exceptions.py:27 views.py:108
 msgid "Document already checked out."
 msgstr "Dokument bereits ausgebucht."
 
@@ -53,7 +53,7 @@ msgstr "Dokument bereits ausgebucht."
 msgid "Document status"
 msgstr "Dokumentenstatus"
 
-#: forms.py:39 models.py:41 views.py:90
+#: forms.py:39 models.py:41 views.py:148
 msgid "User"
 msgstr "Benutzer"
 
@@ -157,11 +157,11 @@ msgstr "Dokumente ausbuchen"
 msgid "Check out details view"
 msgstr "Ansicht der Ausbuchungsdetails"
 
-#: queues.py:8
+#: queues.py:13
 msgid "Checkouts periodic"
 msgstr "Ausbuchungen regelmäßig"
 
-#: queues.py:11
+#: queues.py:17
 msgid "Check expired checkouts"
 msgstr "Prüfe abgelaufene Ausbuchungen"
 
@@ -169,63 +169,63 @@ msgstr "Prüfe abgelaufene Ausbuchungen"
 msgid "Primary key of the document to be checked out."
 msgstr "Primärschlüssel des auszubuchenden Dokuments."
 
-#: views.py:56
-#, python-format
-msgid "Document \"%s\" checked out successfully."
-msgstr "Dokument \"%s\" erfolgreich ausgebucht."
-
-#: views.py:65
-#, python-format
-msgid "Check out document: %s"
-msgstr "Dokument %s ausbuchen"
-
-#: views.py:96
-msgid "Checkout time and date"
-msgstr "Ausbuchungszeit"
-
-#: views.py:102
-msgid "Checkout expiration"
-msgstr "Ausbuchungsende"
-
-#: views.py:110
-msgid ""
-"Checking out a document blocks certain document operations for a "
-"predetermined amount of time."
-msgstr "Das Ausbuchen eines Dokuments verhindert für eine bestimmte Zeit gewisse Operationen."
-
-#: views.py:114
-msgid "No documents have been checked out"
-msgstr "Keine Dokumente ausgebucht"
-
-#: views.py:115
-msgid "Documents checked out"
-msgstr "Ausgebuchte Dokumente"
-
-#: views.py:130
-#, python-format
-msgid "Check out details for document: %s"
-msgstr "Ausbuchungsdetails für Dokument %s"
-
-#: views.py:148
+#: views.py:37
 #, python-format
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
 msgstr "Sie haben dieses Dokument ursprünglich nicht ausgebucht. Soll Dokument %s trotzdem zwingend eingebucht werden?"
 
-#: views.py:152
+#: views.py:41
 #, python-format
 msgid "Check in the document: %s?"
 msgstr "Dokument %s einbuchen?"
 
-#: views.py:185
+#: views.py:74
 msgid "Document has not been checked out."
 msgstr "Dokument wurde nicht ausgebucht."
 
-#: views.py:191
+#: views.py:80
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "Dokument \"%s\" erfolgreich eingebucht."
+
+#: views.py:114
+#, python-format
+msgid "Document \"%s\" checked out successfully."
+msgstr "Dokument \"%s\" erfolgreich ausgebucht."
+
+#: views.py:123
+#, python-format
+msgid "Check out document: %s"
+msgstr "Dokument %s ausbuchen"
+
+#: views.py:154
+msgid "Checkout time and date"
+msgstr "Ausbuchungszeit"
+
+#: views.py:160
+msgid "Checkout expiration"
+msgstr "Ausbuchungsende"
+
+#: views.py:168
+msgid ""
+"Checking out a document blocks certain document operations for a "
+"predetermined amount of time."
+msgstr "Das Ausbuchen eines Dokuments verhindert für eine bestimmte Zeit gewisse Operationen."
+
+#: views.py:172
+msgid "No documents have been checked out"
+msgstr "Keine Dokumente ausgebucht"
+
+#: views.py:173
+msgid "Documents checked out"
+msgstr "Ausgebuchte Dokumente"
+
+#: views.py:188
+#, python-format
+msgid "Check out details for document: %s"
+msgstr "Ausbuchungsdetails für Dokument %s"
 
 #: widgets.py:22
 msgid "Period"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:38-0400\n"
+"POT-Creation-Date: 2019-05-17 01:46-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>, 2018\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (https://www.transifex.com/rosarior/teams/13584/bs_BA/)\n"
@@ -23,15 +23,15 @@ msgstr ""
 "Language: bs_BA\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:53 events.py:8 permissions.py:8 settings.py:7
+#: apps.py:50 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr "Gramatička analiza dokumenta"
 
-#: apps.py:119 models.py:78
+#: apps.py:116 models.py:78
 msgid "Result"
 msgstr "Rezultat"
 
-#: apps.py:136 apps.py:140 links.py:16 links.py:22 models.py:27
+#: apps.py:121 apps.py:125 links.py:16 links.py:22 models.py:27
 msgid "Content"
 msgstr "Sadržaj"
 
@@ -57,7 +57,7 @@ msgstr "Strana %(page_number)d"
 msgid "Contents"
 msgstr "Sadržaj"
 
-#: links.py:28 links.py:66 views.py:194
+#: links.py:28 links.py:66 views.py:197
 msgid "Parsing errors"
 msgstr "Greške u anlazi"
 
@@ -147,11 +147,11 @@ msgstr "Promenite postavke za analizu tipa dokumenta"
 msgid "Parse the content of a document"
 msgstr "Aniliziraj sadržaj u dokumentu"
 
-#: queues.py:7
+#: queues.py:8
 msgid "Parsing"
 msgstr "Gramatička analiza"
 
-#: queues.py:10
+#: queues.py:11
 msgid "Document version parsing"
 msgstr "Analiza verzije dokumenta"
 
@@ -168,32 +168,32 @@ msgid ""
 msgstr ""
 "Staza do popplerovog programa pdftotext za vađenje teksta iz PDF datoteka."
 
-#: views.py:42
+#: views.py:43
 #, python-format
 msgid "Content for document: %s"
 msgstr "Sadržaj za dokument: %s"
 
-#: views.py:77
+#: views.py:78
 #, python-format
 msgid "Content for document page: %s"
 msgstr ""
 
-#: views.py:92
+#: views.py:93
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "Greške analize u dokumentu: %s"
 
-#: views.py:104
+#: views.py:105
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)ddokument dodan u red liste "
 
-#: views.py:107
+#: views.py:108
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d dokumente dodati u red liste"
 
-#: views.py:115
+#: views.py:116
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
@@ -201,21 +201,21 @@ msgstr[0] "Pošaljite dokument %(count)d u red liste?"
 msgstr[1] "Pošaljite dokumente %(count)d u red liste"
 msgstr[2] "Pošaljite dokumente %(count)d u red liste"
 
-#: views.py:128
+#: views.py:129
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "Pošaljite dokument \"%s\" u red liste"
 
-#: views.py:151
+#: views.py:154
 #, python-format
-msgid "Edit parsing settings for document type: %s"
-msgstr "Izmeni postavke prozora za tip dokumenta: %s"
+msgid "Edit parsing settings for document type: %s."
+msgstr ""
 
-#: views.py:161
+#: views.py:164
 msgid "Submit all documents of a type for parsing."
 msgstr ""
 
-#: views.py:182
+#: views.py:185
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr ""

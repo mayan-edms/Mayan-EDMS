@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:39-0400\n"
+"POT-Creation-Date: 2019-05-17 01:46-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Rasmus Kierudsen <tebrasso@gmail.com>, 2019\n"
 "Language-Team: Danish (Denmark) (https://www.transifex.com/rosarior/teams/13584/da_DK/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Label"
 msgstr "Etiket"
 
-#: apps.py:56 events.py:8 links.py:18 permissions.py:7 queue.py:8
+#: apps.py:56 events.py:8 links.py:18 permissions.py:7 queues.py:9
 #: settings.py:9
 msgid "File metadata"
 msgstr ""
@@ -123,7 +123,7 @@ msgstr "Indstillinger for dokumenttyper"
 msgid "Document version"
 msgstr "Dokumentversion"
 
-#: models.py:84 models.py:99
+#: models.py:84 models.py:100
 msgid "Document version driver entry"
 msgstr ""
 
@@ -135,27 +135,27 @@ msgstr ""
 msgid "Attribute count"
 msgstr ""
 
-#: models.py:103
+#: models.py:104
 msgid "Name of the file metadata entry."
 msgstr ""
 
-#: models.py:104
+#: models.py:105
 msgid "Key"
 msgstr ""
 
-#: models.py:107
+#: models.py:108
 msgid "Value of the file metadata entry."
 msgstr ""
 
-#: models.py:108
+#: models.py:109
 msgid "Value"
 msgstr "Værdi"
 
-#: models.py:113
+#: models.py:114
 msgid "File metadata entry"
 msgstr ""
 
-#: models.py:114
+#: models.py:115
 msgid "File metadata entries"
 msgstr ""
 
@@ -171,7 +171,7 @@ msgstr ""
 msgid "View file metadata"
 msgstr ""
 
-#: queue.py:11
+#: queues.py:12
 msgid "Process document version"
 msgstr ""
 
