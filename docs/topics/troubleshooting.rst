@@ -72,6 +72,8 @@ References:
 Passwords
 *********
 
+.. _troubleshooting-admin-password:
+
 Admin password reset
 ====================
 
@@ -101,6 +103,8 @@ And then execute the command::
 
     /opt/mayan-edms/bin/mayan-edms.py changepassword admin
 
+
+.. _troubleshooting-autoadmin-account:
 
 Missing automatic admin account after installation
 ==================================================
