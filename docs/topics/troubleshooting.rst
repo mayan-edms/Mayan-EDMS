@@ -72,15 +72,63 @@ References:
 Passwords
 *********
 
-Missing initial credentials or admin password reset
-===================================================
+Admin password reset
+====================
 
-First you need to know the name of the Docker container running Mayan EDMS
-on your setup with::
+To reset the password of the admin account use the following command::
+
+    MAYAN_MEDIA_ROOT=<your Mayan media root setting> <installation directory>/bin/mayan-edms.py changepassword admin
+
+If you followed the deploying instructions from the documentation your
+``MAYAN_MEDIA_ROOT`` will be ``/opt/mayan-edms/media``.
+
+If using a Docker image, execute the command inside the container. First you
+need to know the name of the Docker container running Mayan EDMS on your setup
+with::
 
     docker ps
 
 Then execute the password reset command inside the Docker container::
 
+    docker exec -ti <your docker container name> /opt/mayan-edms/bin/mayan-edms.py changepassword admin
+
+Another way to do this is to execute a shell inside the container to get a
+command prompt::
+
     docker exec -ti <your docker container name> /bin/bash
+
+And then execute the command::
+
     /opt/mayan-edms/bin/mayan-edms.py changepassword admin
+
+
+Missing automatic admin account after installation
+==================================================
+
+This is caused when the ``initialsetup`` command is interrupted as the admin
+user is created outside of the database migrations.
+
+To create an admin super user account manually use the command::
+
+    MAYAN_MEDIA_ROOT=<your Mayan media root setting> <installation directory>/bin/mayan-edms.py createsuperuser
+
+If you followed the deploying instructions from the documentation your
+``MAYAN_MEDIA_ROOT`` will be ``/opt/mayan-edms/media``.
+
+If using a Docker image, execute the command inside the container. First
+find you container name with::
+
+    docker ps
+
+Then execute the command inside the container::
+
+    docker exec -ti <your docker container name> /opt/mayan-edms/bin/mayan-edms.py createsuperuser
+
+Another way to do this is to execute a shell inside the container to get a
+command prompt::
+
+    docker exec -ti <your docker container name> /bin/bash
+
+And then execute the command::
+
+    /opt/mayan-edms/bin/mayan-edms.py createsuperuser
