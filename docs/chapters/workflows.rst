@@ -5,7 +5,7 @@ Workflows
 Introduction
 ============
 
-Workflows provide a structure method for storing a sequence of states over
+Workflows provide a structured method for storing a sequence of states over
 which the a document will progress. Workflows keep track how a document has
 been processed so far.
 
@@ -19,6 +19,36 @@ provide and order for the sequence of possible states changes.
 
 Transitions can be executed manually by users if they have the required access
 level as configure by the system administrator.
+
+.. blockdiag::
+   :caption: Example workflow. Circles represent states, rectangles represent transitions.
+
+      span_width = 30;
+
+      submitted [shape = circle, width = 60, height = 60];
+      approved [shape = circle, width = 60, height = 60];
+      rejected [shape = circle, width = 60, height = 60];
+      archived [shape = circle, width = 60, height = 60];
+
+      approve [label = approve];
+      reject [label = reject];
+      reopen [label = "re-open"];
+
+
+      submitted -> approve -> approved;
+      approved -> archived;
+      submitted -> reject -> rejected;
+      rejected -> archived;
+      archived -> reopen -> submitted;
+
+
+
+Workflows in Mayan EDMS are implemented as finite state machines
+(https://en.wikipedia.org/wiki/Finite-state_machine).
+
+Workflows are mainly used to represent business processes. But they can also be
+used an automation system to customized Mayan EDMS and have it perform some
+tasks automatically.
 
 
 Automation
@@ -84,8 +114,3 @@ double border represent the initial state of the workflow.
 
 To view the graphical representations of workflow use **Preview** button of
 the workflow in the setup view.
-
-
-
-We are working now on workflow transition trigger filters to have
-the trigger move the state of the workflow on certain conditions. For example: Attach a tag if there is a specific word found in the OCR text.
