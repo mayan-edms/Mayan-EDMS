@@ -27,6 +27,6 @@ services:
       MAYAN_DATABASE_NAME: mayan
       MAYAN_DATABASE_PASSWORD: mayan-password
       MAYAN_DATABASE_USER: mayan
-      MAYAN_DATABASE_CONN_MAX_AGE: 60
+      MAYAN_DATABASE_CONN_MAX_AGE: 0
     volumes:
       - app:/var/lib/mayan

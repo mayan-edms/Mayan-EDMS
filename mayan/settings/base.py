@@ -330,7 +330,7 @@ CELERY_RESULT_BACKEND = os.environ.get('MAYAN_CELERY_RESULT_BACKEND')
 environment_database_engine = os.environ.get('MAYAN_DATABASE_ENGINE')
 
 if environment_database_engine:
-    environment_database_conn_max_age = os.environ.get('MAYAN_DATABASE_CONN_MAX_AGE', None)
+    environment_database_conn_max_age = os.environ.get('MAYAN_DATABASE_CONN_MAX_AGE', 0)
     if environment_database_conn_max_age:
         environment_database_conn_max_age = int(environment_database_conn_max_age)
 

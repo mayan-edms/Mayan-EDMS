@@ -50,7 +50,7 @@ identifier::
     -e MAYAN_DATABASE_NAME=mayan \
     -e MAYAN_DATABASE_PASSWORD=mayanuserpass \
     -e MAYAN_DATABASE_USER=mayan \
-    -e MAYAN_DATABASE_CONN_MAX_AGE=60 \
+    -e MAYAN_DATABASE_CONN_MAX_AGE=0 \
     -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
     mayanedms/mayanedms:<version>
 
@@ -108,7 +108,7 @@ instead of the IP address of the Docker host (``172.17.0.1``)::
     -e MAYAN_DATABASE_NAME=mayan \
     -e MAYAN_DATABASE_PASSWORD=mayanuserpass \
     -e MAYAN_DATABASE_USER=mayan \
-    -e MAYAN_DATABASE_CONN_MAX_AGE=60 \
+    -e MAYAN_DATABASE_CONN_MAX_AGE=0 \
     -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
     mayanedms/mayanedms:<version>
 
@@ -221,6 +221,10 @@ Optional. Allows loading an alternate settings file.
 Amount in seconds to keep a database connection alive. Allow reuse of database
 connections. For more information read the pertinent Django documentation
 page: :django-docs:`Settings, CONN_MAX_AGE <ref/settings/#conn-max-age>`
+According to new information Gunicorn's microthreads don't share connections
+and will exhaust the available Postgres connections available if a number
+other than 0 is used. Reference: https://serverfault.com/questions/635100/django-conn-max-age-persists-connections-but-doesnt-reuse-them-with-postgresq
+and https://github.com/benoitc/gunicorn/issues/996
 
 ``MAYAN_GUNICORN_WORKERS``
 

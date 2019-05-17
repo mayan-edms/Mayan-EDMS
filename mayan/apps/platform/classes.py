@@ -122,7 +122,7 @@ class PlatformTemplateSupervisord(PlatformTemplate):
             environment_name='MAYAN_GUNICORN_WORKERS'
         ),
         Variable(
-            name='DATABASE_CONN_MAX_AGE', default=60,
+            name='DATABASE_CONN_MAX_AGE', default=0,
             environment_name='MAYAN_DATABASE_CONN_MAX_AGE'
         ),
         Variable(

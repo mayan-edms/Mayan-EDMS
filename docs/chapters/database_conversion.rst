@@ -99,5 +99,5 @@ Direct install
         MAYAN_DATABASE_NAME=mayan,
         MAYAN_DATABASE_PASSWORD=mayanuserpass,
         MAYAN_DATABASE_USER=mayan,
-        MAYAN_DATABASE_CONN_MAX_AGE=360,
+        MAYAN_DATABASE_CONN_MAX_AGE=0,
         <...>
