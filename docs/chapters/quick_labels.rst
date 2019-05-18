@@ -21,6 +21,13 @@ For example if a document file is named "file0001.pdf" and the quick label
 Creating quick labels
 =====================
 
+.. admonition:: Permissions required
+    :class: warning
+
+    The "Edit document types" permission is required for this action, either
+    globally or via an ACL for a document type.
+
+
 Since quick labels are associated with document types, creating quick labels
 must be done from the document type view.
 
@@ -46,6 +53,13 @@ Using quick labels during upload
 
 Using quick labels for existing documents
 =========================================
+
+.. admonition:: Permissions required
+    :class: warning
+
+    The "Edit document properties" permission is required for this action, either
+    globally or via an ACL for a document or document type.
+
 
 #. Navigate to the document preview view of the document to rename. Make sure
    quick labels for the document type of the document select have been created.

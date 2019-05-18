@@ -46,3 +46,35 @@ There is no limit to the number of versions a document can have.
 
 By default, the last version will be showed when working with the document
 but any of the versions can be inspected and viewed.
+
+
+View a document version list
+============================
+
+.. admonition:: Permissions required
+    :class: warning
+
+    The "View documents' versions list" permission is required for this action,
+    either globally or via an ACL for a document or document type.
+
+
+#. Navigate to the select document's preview view.
+#. Click on the sibebar's :guilabel:`Versions` button.
+
+
+Uploading a new document version
+================================
+
+.. admonition:: Permissions required
+    :class: warning
+
+    The "Create new document versions" permission is required for this action,
+    either globally or via an ACL for a document or document type.
+
+
+#. Navigate to the select document's versions list view.
+#. From the :guilabel:`Actions` dropdown select :guilabel:`Upload new version`.
+#. Optionally type a comment explaining the changes in the new version.
+#. Press the :guilabel:`Browse` button and select a new file.
+#. Press :guilabel:`Save` upload the new verision.
+

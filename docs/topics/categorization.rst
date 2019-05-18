@@ -7,10 +7,12 @@ allows showing users different views of document groups. These are divided
 into ones requiring manual maintenance and others that are updated
 automatically.
 
+
 **************
 Manual methods
 **************
 
+.. include:: ../chapters/document_types.rst
 .. include:: ../chapters/cabinets.rst
 .. include:: ../chapters/tags.rst
 

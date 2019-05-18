@@ -68,5 +68,21 @@ type at a given moment, but if needed, the type of a document can be changed.
 Upon changing its type, the document will lose its previous settings and
 attributes, and will inherit the settings and attributes of its new type.
 
-Document types are create in the
-:menuselection:`System --> Setup --> Document types` menu.
+
+Creating document types
+=======================
+
+.. admonition:: Permissions required
+    :class: warning
+
+    The "Create document types" permission is required for this action.
+
+
+#. Go to the :menuselection:`System --> Setup --> Document types` menu.
+#. From the :guilabel:`Actions` dropdown select :guilabel:`Create document type`.
+#. Enter a label to be shown to users when using this document type.
+#. Optional: Enter a period of time after which documents of this type will be moved to the trash.
+#. Optional: Select the unit of time for the period after which the document will be moved to the trash.
+#. Optional: Enter a period of time after which documents moved to the trash will be permanently deleted.
+#. Optional: Select the unit of time for the period of time after which the documents moved to the trash will be permanently deleted
+#. Press :guilabel:`Submit`.

@@ -56,9 +56,24 @@ compressed files which are decompressed and their content uploaded as separate
 documents. This feature is useful when migrating from another document
 manager system.
 
-Sources are create in the :menuselection:`System --> Setup --> Sources` menu.
 
 .. note::
 
     If you deployed a Mayan EDMS Docker container and want to use watched folders
     or staging folder, refer to the Docker chapter :ref:`docker-accessing-outside-data`.
+
+
+Creating new sources
+====================
+
+.. admonition:: Permissions required
+    :class: warning
+
+    The "Create new document sources" permission is required for this action.
+
+
+#. Go to the :menuselection:`System --> Setup --> Sources` menu.
+#. From the :guilabel:`Actions` dropdown select the new type of source to create.
+#. Each source type will have different fields to customize its behaviour. Enter
+   the required information in each field based on the help text provided.
+#. Press :guilabel:`Save`.

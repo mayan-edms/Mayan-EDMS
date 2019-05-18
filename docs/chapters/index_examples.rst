@@ -5,6 +5,16 @@ Index examples
 Index of document types
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+.. admonition:: Permissions required
+    :class: warning
+
+    - The "Create new document indexes" permission is required for this action.
+    - The "Edit document indexes" permission is required for this action, globally
+      of via an ACL for a document index.
+    - The "Edit document types" permission is required for this action, globally
+      of via an ACL for a document type.
+
+
 This index will create one level for each document type in the system and place
 links to the document of each respective type.
 
