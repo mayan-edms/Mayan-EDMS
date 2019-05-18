@@ -249,3 +249,6 @@ extlinks = {
         'https://gitlab.com/mayan-edms/mayan-edms/issues/%s', 'GitLab issue #'
     )
 }
+
+def setup(app):
+    app.add_stylesheet('css/custom.css')
