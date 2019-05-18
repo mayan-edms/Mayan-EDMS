@@ -8,3 +8,4 @@ Advanced topics
 .. include:: ../chapters/metadata.rst
 .. include:: ../chapters/transformations.rst
 .. include:: ../chapters/versioning.rst
+.. include:: ../chapters/quick_labels.rst
