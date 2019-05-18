@@ -54,6 +54,7 @@ For another setup that offers more performance and scalability refer to the
    ``/opt/`` is a good choice as it is meant is for "software and add-on packages
    that are not part of the default installation". (https://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html)
    ::
+
        sudo mkdir /opt
 
 
