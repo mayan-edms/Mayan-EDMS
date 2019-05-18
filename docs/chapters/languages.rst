@@ -6,7 +6,7 @@ The list of languages choices in the language dropdown used for documents is
 based on the current ISO 639 list. This list can be quite extensive. To reduce
 the number of languages available use the setting ``DOCUMENTS_LANGUAGE_CODES``,
 and set it to a nested list of abbreviations. This setting can be found in the
-:menuselection:`System --> Setup -> Settings -> Common` menu.
+:menuselection:`System --> Setup --> Settings --> Common` menu.
 
 For example, to reduce the list to just English and Spanish use
 ::

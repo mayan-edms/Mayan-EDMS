@@ -51,10 +51,12 @@ The current document sources supported are:
         web -> manual;
     }
 
-Document source can be configure to allow document bundles to uploaded as
+Document sources can be configure to allow document bundles to uploaded as
 compressed files which are decompressed and their content uploaded as separate
 documents. This feature is useful when migrating from another document
 manager system.
+
+Sources are create in the :menuselection:`System --> Setup --> Sources` menu.
 
 .. note::
 

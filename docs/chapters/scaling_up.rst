@@ -50,37 +50,8 @@ low volume, medium duration tasks. It is not advisable to have the same
 worker processing OCR to process image rendering too. If the worker is
 processing several OCR tasks it will not be able to provide fast images
 when an user is browsing the user interface. This is why by default the
-queues are split into 3 workers: fast, medium, and slow.
-
-The fast worker handles the queues:
-
-* converter: Handles document page rendering
-* sources_fast: Does staging file image rendering
-
-The medium worker handles the queues:
-
-* checkouts_periodic: Scheduled tasks that check if a document's checkout
-  period has expired
-* documents_periodic:
-* indexing: Does reindexing of documents in the background when their
-  properties change
-* metadata:
-* sources:
-* sources_periodic: Checking email accounts and watch folders for new
-  documents.
-* uploads: Processes files to turn the into Mayan documents. Processing
-  encompasses MIME type detection, page count detection.
-* documents:
-
-The slow worker handles the queues:
-
-* mailing: Does the actual sending of documents via email as requested by
-  users via the mailing profiles
-* tools: Executes in the background maintenance requests from the options
-  in the tools menu
-* statistics: Recalculates statistics and charts
-* parsing: Parses documents to extract actual text content
-* ocr: Performs OCR to transcribe page images to text
+queues are split into 3 workers: fast, medium, and slow. Each worker will handle
+queues based on the latency required by each queue group.
 
 
 Optimizations
@@ -94,14 +65,15 @@ Optimizations
 * By default each worker process uses 1 thread. You can increase the thread
   count of each worker process with the Docker environment options:
 
-  * MAYAN_WORKER_FAST_CONCURRENCY
-  * MAYAN_WORKER_MEDIUM_CONCURRENCY
-  * MAYAN_WORKER_SLOW_CONCURRENCY
+  * ``MAYAN_WORKER_FAST_CONCURRENCY``
+  * ``MAYAN_WORKER_MEDIUM_CONCURRENCY``
+  * ``MAYAN_WORKER_SLOW_CONCURRENCY``
 
-* If using direct deployment, increase the value of the --concurrency=1
+* If using direct deployment, increase the value of the ``--concurrency=1``
   argument of each worker in the supervisor file. You can also remove this
   argument and let the Celery algorithm choose the number of threads to
   launch. Usually this defaults to the number of CPU cores + 1.
+
 
 Change the message broker
 =========================
@@ -133,7 +105,7 @@ calculation, these are stored for a while so that whoever requested the
 background task, is able retrieve the result. These results are stored in the
 result storage. By default a Redis server is launched inside the Mayan EDMS
 container. You can launch a separate Docker Redis container and tell the Mayan
-EDMS container to use this via the MAYAN_CELERY_RESULT_BACKEND environment
+EDMS container to use this via the ``MAYAN_CELERY_RESULT_BACKEND`` environment
 variable. The format of this variable is explained here: http://docs.celeryproject.org/en/3.1/configuration.html#celery-result-backend
 
 

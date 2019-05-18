@@ -9,18 +9,18 @@ This index will create one level for each document type in the system and place
 links to the document of each respective type.
 
 #. Go to the :menuselection:`System --> Setup --> Indexes` menu.
-#. Create a new index using :menuselection:`Actions --> Create new`.
+#. Create a new index using :guilabel:`Actions` > :guilabel:`Create new`.
 #. Give it a label to describe it, and an internal name. The internal name is
    used when referencing this index in other parts of the system.
-#. Press the :menuselection:`Template` link of the newly created index.
-#. Select :menuselection:`New child node` to create a new level in which the
+#. Press the :guilabel:`Template` link of the newly created index.
+#. Select :guilabel:`New child node` to create a new level in which the
    following template code will be entered.
    ::
 
        {{ document.document_type }}
 
 #. Save the template.
-#. Go to :menuselection:`Document types` and associate this index with
+#. Click on :guilabel:`Document types` and associate this index with
    existing document types in the system.
 #. Finally go to :menuselection:`Tools --> Rebuild indexes` to execute the
    index template. The rebuild process is only necessary when changes are
