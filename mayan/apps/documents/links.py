@@ -368,7 +368,7 @@ link_document_type_policies = Link(
     args='resolved_object.id',
     icon_class_path='mayan.apps.documents.icons.icon_document_type_policies',
     permissions=(permission_document_type_edit,),
-    text=_('Policies'), view='documents:document_type_policies',
+    text=_('Deletion policies'), view='documents:document_type_policies',
 )
 link_document_type_edit = Link(
     args='resolved_object.id', icon_class=icon_document_type_edit,
