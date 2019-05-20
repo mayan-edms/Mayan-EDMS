@@ -149,6 +149,7 @@ icon_document_type_filename = Icon(
 icon_document_type_filename_create = Icon(
     driver_name='fontawesome', symbol='plus'
 )
+icon_document_type_policies = Icon(driver_name='fontawesome', symbol='times')
 icon_document_type_setup = icon_document_type
 
 
