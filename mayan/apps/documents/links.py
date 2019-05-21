@@ -364,6 +364,12 @@ link_document_type_delete = Link(
     permissions=(permission_document_type_delete,), tags='dangerous',
     text=_('Delete'), view='documents:document_type_delete',
 )
+link_document_type_policies = Link(
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_type_policies',
+    permissions=(permission_document_type_edit,),
+    text=_('Deletion policies'), view='documents:document_type_policies',
+)
 link_document_type_edit = Link(
     args='resolved_object.id', icon_class=icon_document_type_edit,
     permissions=(permission_document_type_edit,), text=_('Edit'),

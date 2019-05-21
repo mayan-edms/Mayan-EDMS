@@ -32,6 +32,7 @@ from .views import (
     RecentAccessDocumentListView, RecentAddedDocumentListView,
     ScanDuplicatedDocuments
 )
+from .views.document_type_views import DocumentTypeDeletionPoliciesEditView
 from .views.favorite_document_views import (
     FavoriteAddView, FavoriteDocumentListView, FavoriteRemoveView
 )
@@ -40,6 +41,54 @@ from .views.trashed_document_views import (
     TrashedDocumentListView, TrashedDocumentRestoreView
 )
 
+urlpatterns_document_types = [
+    url(
+        regex=r'^type/list/$', view=DocumentTypeListView.as_view(),
+        name='document_type_list'
+    ),
+    url(
+        regex=r'^type/create/$', view=DocumentTypeCreateView.as_view(),
+        name='document_type_create'
+    ),
+    url(
+        regex=r'^type/(?P<pk>\d+)/edit/$', view=DocumentTypeEditView.as_view(),
+        name='document_type_edit'
+    ),
+    url(
+        regex=r'^type/(?P<pk>\d+)/delete/$',
+        view=DocumentTypeDeleteView.as_view(), name='document_type_delete'
+    ),
+    url(
+        regex=r'^type/(?P<pk>\d+)/documents/$',
+        view=DocumentTypeDocumentListView.as_view(),
+        name='document_type_document_list'
+    ),
+    url(
+        regex=r'^type/(?P<pk>\d+)/filename/list/$',
+        view=DocumentTypeFilenameListView.as_view(),
+        name='document_type_filename_list'
+    ),
+    url(
+        regex=r'^type/filename/(?P<pk>\d+)/edit/$',
+        view=DocumentTypeFilenameEditView.as_view(),
+        name='document_type_filename_edit'
+    ),
+    url(
+        regex=r'^type/filename/(?P<pk>\d+)/delete/$',
+        view=DocumentTypeFilenameDeleteView.as_view(),
+        name='document_type_filename_delete'
+    ),
+    url(
+        regex=r'^type/(?P<pk>\d+)/filename/create/$',
+        view=DocumentTypeFilenameCreateView.as_view(),
+        name='document_type_filename_create'
+    ),
+    url(
+        regex=r'^type/(?P<pk>\d+)/deletion_policies/$',
+        view=DocumentTypeDeletionPoliciesEditView.as_view(),
+        name='document_type_policies'
+    ),
+]
 
 urlpatterns_favorite_documents = [
     url(
@@ -275,49 +324,6 @@ urlpatterns = [
         name='document_page_view_reset'
     ),
 
-    # Admin views
-    url(
-        regex=r'^type/list/$', view=DocumentTypeListView.as_view(),
-        name='document_type_list'
-    ),
-    url(
-        regex=r'^type/create/$', view=DocumentTypeCreateView.as_view(),
-        name='document_type_create'
-    ),
-    url(
-        regex=r'^type/(?P<pk>\d+)/edit/$', view=DocumentTypeEditView.as_view(),
-        name='document_type_edit'
-    ),
-    url(
-        regex=r'^type/(?P<pk>\d+)/delete/$',
-        view=DocumentTypeDeleteView.as_view(), name='document_type_delete'
-    ),
-    url(
-        regex=r'^type/(?P<pk>\d+)/documents/$',
-        view=DocumentTypeDocumentListView.as_view(),
-        name='document_type_document_list'
-    ),
-    url(
-        regex=r'^type/(?P<pk>\d+)/filename/list/$',
-        view=DocumentTypeFilenameListView.as_view(),
-        name='document_type_filename_list'
-    ),
-    url(
-        regex=r'^type/filename/(?P<pk>\d+)/edit/$',
-        view=DocumentTypeFilenameEditView.as_view(),
-        name='document_type_filename_edit'
-    ),
-    url(
-        regex=r'^type/filename/(?P<pk>\d+)/delete/$',
-        view=DocumentTypeFilenameDeleteView.as_view(),
-        name='document_type_filename_delete'
-    ),
-    url(
-        regex=r'^type/(?P<pk>\d+)/filename/create/$',
-        view=DocumentTypeFilenameCreateView.as_view(),
-        name='document_type_filename_create'
-    ),
-
     # Tools
 
     url(
@@ -326,6 +332,7 @@ urlpatterns = [
         name='duplicated_document_scan'
     ),
 ]
+urlpatterns.extend(urlpatterns_document_types)
 urlpatterns.extend(urlpatterns_favorite_documents)
 urlpatterns.extend(urlpatterns_trashed_documents)
 

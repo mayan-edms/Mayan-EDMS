@@ -55,9 +55,10 @@ Assigning a metadata type to a document type
 .. admonition:: Permissions required
     :class: warning
 
-    The "Edit metadata types" permission is required for this action, globally or
-    via an ACL for a metadata type. Also the "Edit document type" permission
-    is required, globally or via an ACL for a document type.
+    - The "Edit metadata types" permission is required for this action, globally or
+      via an ACL for a metadata type.
+    - Also the "Edit document type" permission
+      is required, globally or via an ACL for a document type.
 
 
 This action can be performed in two ways.

@@ -657,6 +657,7 @@
 - Chart updates: Show last update date and time in list view and details view.
   Change color scheme to match rest of project. Increase size of data points.
   Improve responsive settings. Redirect to the current view after queueing.
+- Split document type retention policies into it own view.
 
 3.0.3 (2018-08-17)
 ==================
