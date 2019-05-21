@@ -231,8 +231,8 @@ class UserMailerListView(SingleObjectListView):
             ),
             'no_results_text': _(
                 'Mailing profiles are email configurations. '
-                'Mailing profiles are used to send documents '
-                'via email.'
+                'Mailing profiles allow sending documents as attachments or as '
+                'links via email.'
             ),
             'no_results_title': _('No mailing profiles available'),
             'title': _('Mailing profile'),
