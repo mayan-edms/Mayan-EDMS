@@ -142,7 +142,7 @@ For another setup that offers more performance and scalability refer to the
     ::
 
         sudo -u mayan MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
-        /opt/mayan-edms/bin/mayan-edms.py collectstatic --noinput
+        /opt/mayan-edms/bin/mayan-edms.py preparestatic --noinput
 
 
 11. Create the supervisor file at ``/etc/supervisor/conf.d/mayan.conf``:
