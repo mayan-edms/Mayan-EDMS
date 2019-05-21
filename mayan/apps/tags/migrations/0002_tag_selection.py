@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import migrations
@@ -31,8 +30,8 @@ RGB_VALUES = {
 }
 
 
-def convert_color_names_to_rgb(apps, schema_editor):
-    Tag = apps.get_model('tags', 'Tag')
+def operation_convert_color_names_to_rgb(apps, schema_editor):
+    Tag = apps.get_model(app_label='tags', model_name='Tag')
 
     for tag in Tag.objects.using(schema_editor.connection.alias).all():
         tag.selection = RGB_VALUES[tag.color]
@@ -52,5 +51,5 @@ class Migration(migrations.Migration):
             field=colorful.fields.RGBColorField(default='#FFFFFF'),
             preserve_default=False,
         ),
-        migrations.RunPython(convert_color_names_to_rgb),
+        migrations.RunPython(code=operation_convert_color_names_to_rgb),
     ]

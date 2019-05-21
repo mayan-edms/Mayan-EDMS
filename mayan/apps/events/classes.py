@@ -176,7 +176,9 @@ class EventType(object):
 
     def get_stored_event_type(self):
         if not self.stored_event_type:
-            StoredEventType = apps.get_model('events', 'StoredEventType')
+            StoredEventType = apps.get_model(
+                app_label='events', model_name='StoredEventType'
+            )
 
             self.stored_event_type, created = StoredEventType.objects.get_or_create(
                 name=self.id

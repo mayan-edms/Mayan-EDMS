@@ -1,13 +1,10 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import uuid 
+import uuid
 
 from django.db import models, migrations
 from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import force_text
-
-import mayan.apps.documents.models
 
 
 class Migration(migrations.Migration):

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 import pycountry
@@ -6,8 +5,8 @@ import pycountry
 from django.db import migrations
 
 
-def change_bibliographic_to_terminology(apps, schema_editor):
-    Document = apps.get_model('documents', 'Document')
+def operation_change_bibliographic_to_terminology(apps, schema_editor):
+    Document = apps.get_model(app_label='documents', model_name='Document')
 
     for document in Document.objects.using(schema_editor.connection.alias).all():
         try:
@@ -31,5 +30,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(change_bibliographic_to_terminology),
+        migrations.RunPython(code=operation_change_bibliographic_to_terminology),
     ]

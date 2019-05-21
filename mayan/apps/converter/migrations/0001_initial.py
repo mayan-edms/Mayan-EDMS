@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import models, migrations
@@ -41,7 +40,9 @@ class Migration(migrations.Migration):
                 (
                     'arguments', models.TextField(
                         blank=True, null=True, verbose_name='Arguments',
-                        validators=[mayan.apps.converter.validators.YAMLValidator]
+                        validators=[
+                            mayan.apps.converter.validators.YAMLValidator
+                        ]
                     )
                 ),
                 (

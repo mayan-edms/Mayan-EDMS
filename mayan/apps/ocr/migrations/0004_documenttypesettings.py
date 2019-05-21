@@ -1,12 +1,15 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import models, migrations
 
 
-def create_ocr_setting_for_existing_document_types(apps, schema_editor):
-    DocumentType = apps.get_model('documents', 'DocumentType')
-    DocumentTypeSettings = apps.get_model('ocr', 'DocumentTypeSettings')
+def operation_create_ocr_setting_for_existing_document_types(apps, schema_editor):
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+    DocumentTypeSettings = apps.get_model(
+        app_label='ocr', model_name='DocumentTypeSettings'
+    )
 
     for document_type in DocumentType.objects.using(schema_editor.connection.alias).all():
         try:
@@ -55,5 +58,7 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
-        migrations.RunPython(create_ocr_setting_for_existing_document_types),
+        migrations.RunPython(
+            code=operation_create_ocr_setting_for_existing_document_types
+        ),
     ]

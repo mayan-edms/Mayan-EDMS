@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import models, migrations
 
 
-def make_existing_documents_not_stubs(apps, schema_editor):
-    Document = apps.get_model('documents', 'Document')
+def operation_make_existing_documents_not_stubs(apps, schema_editor):
+    Document = apps.get_model(app_label='documents', model_name='Document')
 
     for document in Document.objects.using(schema_editor.connection.alias).all():
         document.is_stub = False
@@ -27,5 +26,5 @@ class Migration(migrations.Migration):
             ),
             preserve_default=True,
         ),
-        migrations.RunPython(make_existing_documents_not_stubs),
+        migrations.RunPython(code=operation_make_existing_documents_not_stubs),
     ]

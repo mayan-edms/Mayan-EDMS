@@ -87,7 +87,6 @@ class Link(object):
         if name:
             self.__class__._registry[name] = self
 
-
     def resolve(self, context=None, request=None, resolved_object=None):
         if not context and not request:
             raise ImproperlyConfigured(

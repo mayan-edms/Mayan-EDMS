@@ -1,12 +1,11 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import migrations
 from django.template.defaultfilters import slugify
 
 
-def assign_slugs(apps, schema_editor):
-    Index = apps.get_model('document_indexing', 'Index')
+def operation_assign_slugs(apps, schema_editor):
+    Index = apps.get_model(app_label='document_indexing', model_name='Index')
 
     for index in Index.objects.using(schema_editor.connection.alias).all():
         index.slug = slugify(index.label)
@@ -20,5 +19,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(assign_slugs),
+        migrations.RunPython(code=operation_assign_slugs),
     ]

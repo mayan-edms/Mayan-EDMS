@@ -6,8 +6,6 @@ import django.core.files.storage
 from django.db import migrations, models
 from django.utils.encoding import force_text
 
-import mayan.apps.documents.models
-
 
 class Migration(migrations.Migration):
 
@@ -19,7 +17,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='documentversion',
             name='encoding',
-            field=models.CharField(blank=True, editable=False, max_length=64, null=True, verbose_name='Encoding'),
+            field=models.CharField(
+                blank=True, editable=False, max_length=64, null=True,
+                verbose_name='Encoding'
+            ),
         ),
         migrations.AlterField(
             model_name='documentversion',
@@ -33,6 +34,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='documentversion',
             name='mimetype',
-            field=models.CharField(blank=True, editable=False, max_length=255, null=True, verbose_name='MIME type'),
+            field=models.CharField(
+                blank=True, editable=False, max_length=255, null=True,
+                verbose_name='MIME type'
+            ),
         ),
     ]

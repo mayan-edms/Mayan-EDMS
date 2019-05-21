@@ -1,12 +1,15 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import migrations
 
 
-def move_content_from_documents_to_ocr_app(apps, schema_editor):
-    DocumentPage = apps.get_model('documents', 'DocumentPage')
-    DocumentPageContent = apps.get_model('ocr', 'DocumentPageContent')
+def operation_move_content_from_documents_to_ocr_app(apps, schema_editor):
+    DocumentPage = apps.get_model(
+        app_label='documents', model_name='DocumentPage'
+    )
+    DocumentPageContent = apps.get_model(
+        app_label='ocr', model_name='DocumentPageContent'
+    )
 
     for document_page in DocumentPage.objects.using(schema_editor.connection.alias).all():
         DocumentPageContent.objects.using(schema_editor.connection.alias).create(
@@ -22,5 +25,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(move_content_from_documents_to_ocr_app),
+        migrations.RunPython(
+            code=operation_move_content_from_documents_to_ocr_app
+        ),
     ]

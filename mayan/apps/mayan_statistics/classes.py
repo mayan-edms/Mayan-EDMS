@@ -131,7 +131,7 @@ class Statistic(object):
         return force_text(self.label)
 
     def execute(self):
-        results=self.func()
+        results = self.func()
         # Force evaluation of results to be able to store it serialized
         # Needed for Python 3
         # PY3

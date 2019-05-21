@@ -173,7 +173,8 @@ class Dependency(object):
 
         for dependency in cls.get_all():
             print('* ', end='')
-            print(template.format(
+            print(
+                template.format(
                     dependency.name,
                     force_text(dependency.class_name_verbose_name),
                     force_text(dependency.get_version_string()),

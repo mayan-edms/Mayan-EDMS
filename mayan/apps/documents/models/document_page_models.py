@@ -239,7 +239,6 @@ class DocumentPage(models.Model):
                 storage_documentimagecache.delete(cache_filename)
                 raise
 
-
     def invalidate_cache(self):
         storage_documentimagecache.delete(self.cache_filename)
         for cached_image in self.cached_images.all():

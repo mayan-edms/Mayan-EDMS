@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 import uuid
@@ -6,7 +5,7 @@ import uuid
 from django.db import connection, migrations, models
 
 
-def forwards(apps, schema_editor):
+def operation_forwards(apps, schema_editor):
     if not schema_editor.connection.vendor == 'oracle':
         # Skip this migration for Oracle
         # GitHub issue #251
@@ -23,7 +22,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(forwards)
+        migrations.RunPython(code=operation_forwards)
     ]
 
     def __init__(self, *args, **kwargs):

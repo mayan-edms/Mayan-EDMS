@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.core import management
 from django.utils.translation import ugettext_lazy as _
 
-from ...classes import PythonDependency, DependencyGroup
+from ...classes import PythonDependency
 
 
 class Command(management.BaseCommand):

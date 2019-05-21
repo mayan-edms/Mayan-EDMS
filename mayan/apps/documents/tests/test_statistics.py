@@ -15,4 +15,3 @@ class DocumentStatisticsTestCase(BaseTestCase):
                     'Error executing: {};  {}'.format(statistic, exception)
                 )
                 raise
-

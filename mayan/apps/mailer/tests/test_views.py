@@ -22,7 +22,6 @@ from .mailers import TestBackend
 from .mixins import MailerTestMixin, MailerViewTestMixin
 
 
-
 class MailerViewsTestCase(MailerTestMixin, MailerViewTestMixin, GenericViewTestCase):
     def test_user_mailer_create_view_no_permissions(self):
         self.grant_permission(permission=permission_user_mailer_view)

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import migrations, models
@@ -14,6 +13,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='documentcheckout',
             name='document',
-            field=models.OneToOneField(verbose_name='Document', to='documents.Document'),
+            field=models.OneToOneField(
+                verbose_name='Document', to='documents.Document'
+            ),
         ),
     ]

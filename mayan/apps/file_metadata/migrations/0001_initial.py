@@ -37,9 +37,26 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DocumentTypeSettings',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('auto_process', models.BooleanField(default=True, verbose_name='Automatically queue newly created documents for processing.')),
-                ('document_type', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='file_metadata_settings', to='documents.DocumentType', verbose_name='Document type')),
+                (
+                    'id', models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
+                (
+                    'auto_process', models.BooleanField(
+                        default=True, verbose_name='Automatically queue newly '
+                        'created documents for processing.'
+                    )
+                ),
+                (
+                    'document_type', models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='file_metadata_settings',
+                        to='documents.DocumentType',
+                        verbose_name='Document type'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'Document type settings',
@@ -49,8 +66,20 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DocumentVersionDriverEntry',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('document_version', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='file_metadata_drivers', to='documents.DocumentVersion', verbose_name='Document version')),
+                (
+                    'id', models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
+                (
+                    'document_version', models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='file_metadata_drivers',
+                        to='documents.DocumentVersion',
+                        verbose_name='Document version'
+                    )
+                ),
             ],
             options={
                 'ordering': ('document_version', 'driver'),
@@ -61,10 +90,32 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='FileMetadataEntry',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('key', models.CharField(db_index=True, help_text='Name of the file metadata entry.', max_length=255, verbose_name='Key')),
-                ('value', models.CharField(db_index=True, help_text='Value of the file metadata entry.', max_length=255, verbose_name='Value')),
-                ('document_version_driver_entry', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='entries', to='file_metadata.DocumentVersionDriverEntry', verbose_name='Document version driver entry')),
+                (
+                    'id', models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
+                (
+                    'key', models.CharField(
+                        db_index=True, help_text='Name of the file metadata '
+                        'entry.', max_length=255, verbose_name='Key'
+                    )
+                ),
+                (
+                    'value', models.CharField(
+                        db_index=True, help_text='Value of the file metadata '
+                        'entry.', max_length=255, verbose_name='Value'
+                    )
+                ),
+                (
+                    'document_version_driver_entry', models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='entries',
+                        to='file_metadata.DocumentVersionDriverEntry',
+                        verbose_name='Document version driver entry'
+                    )
+                ),
             ],
             options={
                 'ordering': ('key', 'value'),
@@ -75,9 +126,23 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='StoredDriver',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('driver_path', models.CharField(max_length=255, verbose_name='Driver path')),
-                ('internal_name', models.CharField(db_index=True, max_length=128, verbose_name='Internal name')),
+                (
+                    'id', models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
+                (
+                    'driver_path', models.CharField(
+                        max_length=255, verbose_name='Driver path'
+                    )
+                ),
+                (
+                    'internal_name', models.CharField(
+                        db_index=True, max_length=128,
+                        verbose_name='Internal name'
+                    )
+                ),
             ],
             options={
                 'ordering': ('internal_name',),
@@ -88,7 +153,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='documentversiondriverentry',
             name='driver',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='driver_entries', to='file_metadata.StoredDriver', verbose_name='Driver'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='driver_entries',
+                to='file_metadata.StoredDriver', verbose_name='Driver'
+            ),
         ),
         migrations.AlterUniqueTogether(
             name='documentversiondriverentry',
