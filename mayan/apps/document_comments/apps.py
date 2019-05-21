@@ -76,10 +76,7 @@ class DocumentCommentsApp(MayanAppConfig):
         )
 
         SourceColumn(attribute='submit_date', source=Comment)
-        SourceColumn(
-            func=lambda context: context['object'].user.get_full_name() if context['object'].user.get_full_name() else context['object'].user,
-            source=Comment
-        )
+        SourceColumn(attribute='get_user_label', source=Comment)
         SourceColumn(attribute='comment', source=Comment)
 
         document_page_search.add_model_field(
