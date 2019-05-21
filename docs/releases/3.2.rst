@@ -792,7 +792,42 @@ Backward incompatible changes
   of existing mailing profiles will be invalid and must be re-created.
 
 - Paths to apps must be updated in existing ``config.yml`` files. Preprend
-  ``mayan.apps.`` to any app reference.
+  ``mayan.apps.`` to any app reference. Some instances:
+
+  .. code-block::
+
+    LOCK_MANAGER_BACKEND: lock_manager.backends.file_lock.FileLock
+
+  to
+
+  .. code-block::
+
+    LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.file_lock.FileLock
+
+  .. code-block::
+
+    OCR_BACKEND: ocr.backends.pyocr.PyOCR
+
+  to
+
+  .. code-block::
+
+    OCR_BACKEND: mayan.apps.ocr.backends.pyocr.PyOCR
+
+  .. code-block::
+
+    CONVERTER_GRAPHICS_BACKEND: converter.backends.python.Python
+
+  to
+
+  .. code-block::
+
+    CONVERTER_GRAPHICS_BACKEND: mayan.apps.converter.backends.python.Python
+
+  Check the supervisord logs at ``/var/log/supervisor`` for additional errors
+  in the form::
+
+    ImportError: No module named ocr.backends.pyocr
 
 
 Bugs fixed or issues closed
