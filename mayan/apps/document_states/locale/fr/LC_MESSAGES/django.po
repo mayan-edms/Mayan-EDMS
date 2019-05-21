@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:46-0400\n"
-"PO-Revision-Date: 2019-05-17 05:50+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-05-21 00:59-0400\n"
+"PO-Revision-Date: 2019-05-17 13:34+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -475,7 +475,7 @@ msgstr "Les documents dans le flux de travail \"%s\", état \"%s\""
 
 #: views/workflow_proxy_views.py:142 views/workflow_views.py:491
 msgid "Create states and link them using transitions."
-msgstr ""
+msgstr "Créez des états et reliez-les à l'aide de transitions."
 
 #: views/workflow_proxy_views.py:145
 msgid "This workflow doesn't have any state"
@@ -503,7 +503,7 @@ msgstr ""
 #: views/workflow_views.py:87
 #, python-format
 msgid "Workflows assigned the document type: %s"
-msgstr ""
+msgstr "Les flux de travail affecté à ce type de document: %s"
 
 #: views/workflow_views.py:132
 msgid ""
@@ -557,7 +557,7 @@ msgstr ""
 
 #: views/workflow_views.py:357
 msgid "There are no actions for this workflow state"
-msgstr ""
+msgstr "Aucune action pour cet état de flux de travail"
 
 #: views/workflow_views.py:361
 #, python-format
@@ -575,7 +575,7 @@ msgstr "Créer des états pour le flux de travail : %s"
 
 #: views/workflow_views.py:494
 msgid "This workflow doesn't have any states"
-msgstr ""
+msgstr "Ce flux de travail n'a pas d'état"
 
 #: views/workflow_views.py:520
 #, python-format
@@ -586,11 +586,11 @@ msgstr "Créer des transitions du flux de travail : %s"
 msgid ""
 "Create a transition and use it to move a workflow from  one state to "
 "another."
-msgstr ""
+msgstr "Créez une transition et utilisez-la pour déplacer un flux de travail d'un état à un autre."
 
 #: views/workflow_views.py:613
 msgid "This workflow doesn't have any transitions"
-msgstr ""
+msgstr "Ce flux de travail n'a pas de transitions"
 
 #: views/workflow_views.py:617
 #, python-format
@@ -609,7 +609,7 @@ msgstr "Événements déclencheurs de transition du flux de travail mis à jour 
 #: views/workflow_views.py:671
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
-msgstr ""
+msgstr "Les déclencheurs sont des événements qui entraînent l'exécution automatique de cette transition."
 
 #: views/workflow_views.py:675
 #, python-format
@@ -624,7 +624,7 @@ msgstr "Lancer tous les flux de travail ?"
 msgid ""
 "This will launch all workflows created after documents have already been "
 "uploaded."
-msgstr ""
+msgstr "Ceci lancera tous les flux de travail créés après que les documents ont déjà été téléversés."
 
 #: views/workflow_views.py:717
 msgid "Workflow launch queued successfully."
@@ -638,7 +638,7 @@ msgstr "Prévisualisation de : %s"
 #: workflow_actions.py:25
 msgid ""
 "The new label to be assigned to the document. Can be a string or a template."
-msgstr ""
+msgstr "La nouvelle étiquette à attribuer au document. Peut être une chaîne ou un modèle."
 
 #: workflow_actions.py:30
 msgid "Description"
@@ -648,7 +648,7 @@ msgstr "Description"
 msgid ""
 "The new description to be assigned to the document. Can be a string or a "
 "template."
-msgstr ""
+msgstr "La nouvelle description à attribuer au document. Peut être une chaîne ou un modèle."
 
 #: workflow_actions.py:40
 msgid "Modify the properties of the document"

@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:46-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
+"POT-Creation-Date: 2019-05-21 00:59-0400\n"
+"PO-Revision-Date: 2019-05-21 05:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -24,51 +24,51 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:108 apps.py:290 events.py:7 menus.py:10
+#: apps.py:109 apps.py:291 events.py:7 menus.py:10
 #: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:14
 #: statistics.py:233
 msgid "Documents"
 msgstr "Dokumente"
 
-#: apps.py:129
+#: apps.py:130
 msgid "Create a document type"
 msgstr "Dokumententyp erstellen"
 
-#: apps.py:131
+#: apps.py:132
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr "Jedes hochgeladene Dokument muss einen Dokumententyp zugewiesen bekommen, da Mayan EDMS Dokumente auf der Grundlage von Dokumententypen kategorisiert."
 
-#: apps.py:150
+#: apps.py:151
 msgid "Versions comment"
 msgstr "Versionskommentar"
 
-#: apps.py:154
+#: apps.py:155
 msgid "Versions encoding"
 msgstr "Versionskodierung"
 
-#: apps.py:158
+#: apps.py:159
 msgid "Versions mime type"
 msgstr "Versions-MIME-Typ"
 
-#: apps.py:162
+#: apps.py:163
 msgid "Versions timestamp"
 msgstr "Versionszeitstempel"
 
-#: apps.py:240 apps.py:269 apps.py:274 apps.py:310 apps.py:327
+#: apps.py:241 apps.py:270 apps.py:275 apps.py:311 apps.py:328
 msgid "Thumbnail"
 msgstr "Miniaturbild"
 
-#: apps.py:248 apps.py:332 forms/document_forms.py:182 links.py:83
+#: apps.py:249 apps.py:333 forms/document_forms.py:182 links.py:83
 msgid "Pages"
 msgstr "Seiten"
 
-#: apps.py:257 links.py:414
+#: apps.py:258 links.py:420
 msgid "Duplicates"
 msgstr "Duplikate"
 
-#: apps.py:278
+#: apps.py:279
 msgid "Type"
 msgstr "Typ"
 
@@ -84,7 +84,7 @@ msgstr "Alle Dokumente"
 msgid "Documents in trash"
 msgstr "Dokumente im Papierkorb"
 
-#: dashboard_widgets.py:85 links.py:400 links.py:405 permissions.py:55
+#: dashboard_widgets.py:85 links.py:406 links.py:411 permissions.py:55
 #: views/document_type_views.py:78
 msgid "Document types"
 msgstr "Dokumententypen"
@@ -192,7 +192,7 @@ msgstr "Keine"
 msgid "File encoding"
 msgstr "Dateikodierung"
 
-#: forms/document_forms.py:171 models/document_page_models.py:291
+#: forms/document_forms.py:171 models/document_page_models.py:290
 msgid "File size"
 msgstr "Dateigröße"
 
@@ -252,7 +252,7 @@ msgstr "Transformationen löschen"
 msgid "Clone transformations"
 msgstr "Transformationen übernehmen"
 
-#: links.py:106 links.py:189 links.py:365 links.py:383
+#: links.py:106 links.py:189 links.py:365 links.py:389
 msgid "Delete"
 msgstr "Löschen"
 
@@ -388,28 +388,32 @@ msgstr "Ansicht verkleinern"
 msgid "Revert"
 msgstr "Wiederherstellen"
 
-#: links.py:360 views/document_type_views.py:93
+#: links.py:360 views/document_type_views.py:90
 msgid "Create document type"
 msgstr "Dokumententypen erstellen"
 
-#: links.py:369 links.py:390
+#: links.py:371
+msgid "Deletion policies"
+msgstr ""
+
+#: links.py:375 links.py:396
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:376
+#: links.py:382
 msgid "Add quick label to document type"
 msgstr "Schnellbezeichner zu Dokumententyp hinzufügen"
 
-#: links.py:396 models/document_type_models.py:157
+#: links.py:402 models/document_type_models.py:157
 msgid "Quick labels"
 msgstr "Schnellbezeichner"
 
-#: links.py:409 models/misc_models.py:38 models/misc_models.py:48
+#: links.py:415 models/misc_models.py:38 models/misc_models.py:48
 #: views/document_views.py:690
 msgid "Duplicated documents"
 msgstr "Duplikate"
 
-#: links.py:420 queues.py:70
+#: links.py:426 queues.py:70
 msgid "Duplicated document scan"
 msgstr "Duplikatsuche"
 
@@ -431,7 +435,7 @@ msgstr "UUID des Dokuments. Eine eindeutige Identifikation für jedes Dokument."
 msgid "The name of the document."
 msgstr "Name des Dokuments."
 
-#: models/document_models.py:49 models/document_page_models.py:260
+#: models/document_models.py:49 models/document_page_models.py:259
 #: models/document_type_models.py:32 models/document_type_models.py:149
 #: search.py:21 search.py:42
 msgid "Label"
@@ -500,33 +504,33 @@ msgstr "Dokumentenversion"
 msgid "Page number"
 msgstr "Seitennummer"
 
-#: models/document_page_models.py:53 models/document_page_models.py:284
-#: models/document_page_models.py:317
+#: models/document_page_models.py:53 models/document_page_models.py:283
+#: models/document_page_models.py:316
 msgid "Document page"
 msgstr "Dokumentenseite"
 
-#: models/document_page_models.py:54 models/document_page_models.py:318
+#: models/document_page_models.py:54 models/document_page_models.py:317
 msgid "Document pages"
 msgstr "Dokumentenseiten"
 
-#: models/document_page_models.py:254
+#: models/document_page_models.py:253
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Seite %(page_num)d von %(total_pages)d des Dokuments %(document)s"
 
-#: models/document_page_models.py:287
+#: models/document_page_models.py:286
 msgid "Date time"
 msgstr "Datum & Zeit"
 
-#: models/document_page_models.py:289
+#: models/document_page_models.py:288
 msgid "Filename"
 msgstr "Dateiname"
 
-#: models/document_page_models.py:297
+#: models/document_page_models.py:296
 msgid "Document page cached image"
 msgstr "Zwischengespeichertes Bild für Dokumentenseite"
 
-#: models/document_page_models.py:298
+#: models/document_page_models.py:297
 msgid "Document page cached images"
 msgstr "Zwischengespeicherte Bilder für Dokumentenseite"
 
@@ -995,48 +999,53 @@ msgstr "Dokumententypen sind grundlegensten Elemente der Konfiguration. Alle wei
 msgid "No document types available"
 msgstr "Keine Dokumententypen verfügbar"
 
-#: views/document_type_views.py:109
+#: views/document_type_views.py:106
 msgid "All documents of this type will be deleted too."
 msgstr "Alle Dokumente dieses Typs werden auch gelöscht."
 
-#: views/document_type_views.py:111
+#: views/document_type_views.py:108
 #, python-format
 msgid "Delete the document type: %s?"
 msgstr "Dokumententyp %s löschen?"
 
-#: views/document_type_views.py:127
+#: views/document_type_views.py:125
+#, python-format
+msgid "Deletion policies for document type: %s"
+msgstr ""
+
+#: views/document_type_views.py:144
 #, python-format
 msgid "Edit document type: %s"
 msgstr "Dokumententyp %s bearbeiten"
 
-#: views/document_type_views.py:150
+#: views/document_type_views.py:167
 #, python-format
 msgid "Create quick label for document type: %s"
 msgstr "Schnellbezeichner erstellen für Dokumentenyp %s"
 
-#: views/document_type_views.py:169
+#: views/document_type_views.py:186
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
 msgstr "Schnellbezeichner %(label)s von Dokumententyp \"%(document_type)s\" löschen?"
 
-#: views/document_type_views.py:198
+#: views/document_type_views.py:215
 #, python-format
 msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr "Schnellbezeichner \"%(filename)s\" von Dokumententyp \"%(document_type)s\" bearbeiten"
 
-#: views/document_type_views.py:236
+#: views/document_type_views.py:253
 msgid ""
 "Quick labels are predetermined filenames that allow the quick renaming of "
 "documents as they are uploaded by selecting them from a list. Quick labels "
 "can also be used after the documents have been uploaded."
 msgstr "Schnellbezeichner sind voreingestellte Dateinamen, die eine schnelle Umbenennung von Dokumenten beim Hochladen ermöglichen, indem man sie von einer Liste auswählt. Schnellbezeichner können auch nach dem Hochladen von Dokumenten angewendet werden."
 
-#: views/document_type_views.py:242
+#: views/document_type_views.py:259
 msgid "There are no quick labels for this document type"
 msgstr "Keine Schnellbezeichner für diesen Dokumententyp vorhanden"
 
-#: views/document_type_views.py:245
+#: views/document_type_views.py:262
 #, python-format
 msgid "Quick labels for document type: %s"
 msgstr "Schnellbezeichner für Dokumententyp %s"

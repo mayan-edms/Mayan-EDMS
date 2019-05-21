@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:49-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-05-21 01:02-0400\n"
+"PO-Revision-Date: 2019-05-17 18:50+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -81,7 +81,7 @@ msgstr "Returnează etichetele atașate la document."
 
 #: methods.py:22
 msgid "get_tags()"
-msgstr ""
+msgstr "get_tags ()"
 
 #: models.py:28
 msgid "A short text used as the tag name."

@@ -6,15 +6,16 @@
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
+# Frédéric Sheedy <sheedf@gmail.com>, 2019
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # Yves Dubois <ydubois@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:46-0400\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-05-21 00:59-0400\n"
+"PO-Revision-Date: 2019-05-17 12:04+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,7 +55,7 @@ msgstr "Clé"
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
-msgstr ""
+msgstr "La phrase secrète permettant de déverrouiller la clé pour pouvoir signer la version du document."
 
 #: forms.py:26
 msgid "Passphrase"
@@ -62,7 +63,7 @@ msgstr "Phrase secrète"
 
 #: forms.py:35
 msgid "Private key that will be used to sign this document version."
-msgstr ""
+msgstr "Clé privée qui sera utilisée pour signer cette version du document."
 
 #: forms.py:46
 msgid "Signature is embedded?"
@@ -238,11 +239,11 @@ msgstr "Vérifier la signature intégrée manquante"
 
 #: settings.py:15
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr ""
+msgstr "Emplacement de la sous-classe de stockage à utiliser lors du stockage des signatures détachées."
 
 #: settings.py:24
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
-msgstr ""
+msgstr "Arguments à transmettre à SIGNATURE_STORAGE_BACKEND."
 
 #: views.py:68 views.py:159
 msgid "Passphrase is needed to unlock this key."
@@ -281,11 +282,11 @@ msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr ""
+msgstr "Les signatures aident à fournir des preuves d’auteur et la détection d’altération. Ils sont très sécurisés et difficiles à copier. Une signature peut être incorporée dans le document lui-même ou dans un fichier séparé."
 
 #: views.py:328
 msgid "There are no signatures for this document."
-msgstr ""
+msgstr "Il n'y a pas de signatures pour ce document."
 
 #: views.py:331
 #, python-format

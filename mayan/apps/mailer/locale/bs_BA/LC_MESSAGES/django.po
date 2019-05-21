@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:47-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
+"POT-Creation-Date: 2019-05-21 01:00-0400\n"
+"PO-Revision-Date: 2019-05-21 05:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -85,8 +85,8 @@ msgid "System mailer error log"
 msgstr "Dnevnik grešaka sistemskog mailera"
 
 #: links.py:42
-msgid "User mailer create"
-msgstr "Kreirajte korisnički mailer"
+msgid "Create mailing profile "
+msgstr ""
 
 #: links.py:48
 msgid "Delete"
@@ -398,8 +398,8 @@ msgstr "%s error tragovi"
 
 #: views.py:233
 msgid ""
-"Mailing profiles are email configurations. Mailing profiles are used to send"
-" documents via email."
+"Mailing profiles are email configurations. Mailing profiles allow sending "
+"documents as attachments or as links via email."
 msgstr ""
 
 #: views.py:237

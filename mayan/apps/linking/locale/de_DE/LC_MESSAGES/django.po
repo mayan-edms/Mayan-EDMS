@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:47-0400\n"
-"PO-Revision-Date: 2019-05-08 22:10+0000\n"
+"POT-Creation-Date: 2019-05-21 01:00-0400\n"
+"PO-Revision-Date: 2019-05-17 22:31+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -38,11 +38,11 @@ msgstr "Smart Links"
 
 #: events.py:12
 msgid "Smart link created"
-msgstr ""
+msgstr "Smart Link erstellt"
 
 #: events.py:15
 msgid "Smart link edited"
-msgstr ""
+msgstr "Smart Link bearbeitet"
 
 #: forms.py:36
 msgid "Foreign document field"
@@ -210,7 +210,7 @@ msgstr "Nicht"
 
 #: models.py:215
 msgid "Full label"
-msgstr ""
+msgstr "Voller Bezeichner"
 
 #: permissions.py:10
 msgid "Create new smart links"
@@ -241,16 +241,16 @@ msgstr "Kein Dokumententyp: %s"
 
 #: views.py:46
 msgid "Available smart links"
-msgstr ""
+msgstr "Verfügbare Smart Links"
 
 #: views.py:47
 msgid "Smart links enabled"
-msgstr ""
+msgstr "Aktivierte Smart Links"
 
 #: views.py:79
 #, python-format
 msgid "Smart links to enable for document type: %s"
-msgstr ""
+msgstr "Smart Links für Dokumententyp %s"
 
 #: views.py:123
 #, python-format
@@ -309,7 +309,7 @@ msgstr "Ähnliche Dokumente für Dokument %s"
 #: views.py:264
 #, python-format
 msgid "Delete smart link: %s"
-msgstr "Smart Link %s wirklich löschen?"
+msgstr "Smart Link %s löschen"
 
 #: views.py:279
 #, python-format

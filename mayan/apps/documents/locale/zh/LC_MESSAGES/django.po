@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:46-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
+"POT-Creation-Date: 2019-05-21 00:59-0400\n"
+"PO-Revision-Date: 2019-05-21 05:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -18,51 +18,51 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:108 apps.py:290 events.py:7 menus.py:10
+#: apps.py:109 apps.py:291 events.py:7 menus.py:10
 #: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:14
 #: statistics.py:233
 msgid "Documents"
 msgstr "文档"
 
-#: apps.py:129
+#: apps.py:130
 msgid "Create a document type"
 msgstr "创建文档类型"
 
-#: apps.py:131
+#: apps.py:132
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr "必须为每个上传的文档分配文档类型，这是Mayan EDMS对文档进行分类的基本方式。"
 
-#: apps.py:150
+#: apps.py:151
 msgid "Versions comment"
 msgstr "版本评论"
 
-#: apps.py:154
+#: apps.py:155
 msgid "Versions encoding"
 msgstr "版本编码"
 
-#: apps.py:158
+#: apps.py:159
 msgid "Versions mime type"
 msgstr "版本mime类型"
 
-#: apps.py:162
+#: apps.py:163
 msgid "Versions timestamp"
 msgstr "版本时间戳"
 
-#: apps.py:240 apps.py:269 apps.py:274 apps.py:310 apps.py:327
+#: apps.py:241 apps.py:270 apps.py:275 apps.py:311 apps.py:328
 msgid "Thumbnail"
 msgstr "缩略图"
 
-#: apps.py:248 apps.py:332 forms/document_forms.py:182 links.py:83
+#: apps.py:249 apps.py:333 forms/document_forms.py:182 links.py:83
 msgid "Pages"
 msgstr "页面"
 
-#: apps.py:257 links.py:414
+#: apps.py:258 links.py:420
 msgid "Duplicates"
 msgstr "重复"
 
-#: apps.py:278
+#: apps.py:279
 msgid "Type"
 msgstr "类型"
 
@@ -78,7 +78,7 @@ msgstr "文档总数"
 msgid "Documents in trash"
 msgstr "垃圾箱中的文档"
 
-#: dashboard_widgets.py:85 links.py:400 links.py:405 permissions.py:55
+#: dashboard_widgets.py:85 links.py:406 links.py:411 permissions.py:55
 #: views/document_type_views.py:78
 msgid "Document types"
 msgstr "文档类型"
@@ -186,7 +186,7 @@ msgstr "没有"
 msgid "File encoding"
 msgstr "文件编码"
 
-#: forms/document_forms.py:171 models/document_page_models.py:291
+#: forms/document_forms.py:171 models/document_page_models.py:290
 msgid "File size"
 msgstr "文件大小"
 
@@ -246,7 +246,7 @@ msgstr "清除转换"
 msgid "Clone transformations"
 msgstr "克隆转换"
 
-#: links.py:106 links.py:189 links.py:365 links.py:383
+#: links.py:106 links.py:189 links.py:365 links.py:389
 msgid "Delete"
 msgstr "删除"
 
@@ -382,28 +382,32 @@ msgstr "缩小"
 msgid "Revert"
 msgstr "还原"
 
-#: links.py:360 views/document_type_views.py:93
+#: links.py:360 views/document_type_views.py:90
 msgid "Create document type"
 msgstr "创建文档类型"
 
-#: links.py:369 links.py:390
+#: links.py:371
+msgid "Deletion policies"
+msgstr ""
+
+#: links.py:375 links.py:396
 msgid "Edit"
 msgstr "编辑"
 
-#: links.py:376
+#: links.py:382
 msgid "Add quick label to document type"
 msgstr "为文档类型添加快速标签"
 
-#: links.py:396 models/document_type_models.py:157
+#: links.py:402 models/document_type_models.py:157
 msgid "Quick labels"
 msgstr "快速标签"
 
-#: links.py:409 models/misc_models.py:38 models/misc_models.py:48
+#: links.py:415 models/misc_models.py:38 models/misc_models.py:48
 #: views/document_views.py:690
 msgid "Duplicated documents"
 msgstr "重复的文件"
 
-#: links.py:420 queues.py:70
+#: links.py:426 queues.py:70
 msgid "Duplicated document scan"
 msgstr "重复的文件扫描"
 
@@ -425,7 +429,7 @@ msgstr "文档的UUID，通用唯一ID。为每个文档提供独特的标识。
 msgid "The name of the document."
 msgstr "文档的名称。"
 
-#: models/document_models.py:49 models/document_page_models.py:260
+#: models/document_models.py:49 models/document_page_models.py:259
 #: models/document_type_models.py:32 models/document_type_models.py:149
 #: search.py:21 search.py:42
 msgid "Label"
@@ -494,33 +498,33 @@ msgstr "文档版本"
 msgid "Page number"
 msgstr "页码"
 
-#: models/document_page_models.py:53 models/document_page_models.py:284
-#: models/document_page_models.py:317
+#: models/document_page_models.py:53 models/document_page_models.py:283
+#: models/document_page_models.py:316
 msgid "Document page"
 msgstr "文档页面"
 
-#: models/document_page_models.py:54 models/document_page_models.py:318
+#: models/document_page_models.py:54 models/document_page_models.py:317
 msgid "Document pages"
 msgstr "文档页面"
 
-#: models/document_page_models.py:254
+#: models/document_page_models.py:253
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "页面%(page_num)d超出了%(document)s的总页数%(total_pages)d "
 
-#: models/document_page_models.py:287
+#: models/document_page_models.py:286
 msgid "Date time"
 msgstr "日期时间"
 
-#: models/document_page_models.py:289
+#: models/document_page_models.py:288
 msgid "Filename"
 msgstr "文件名"
 
-#: models/document_page_models.py:297
+#: models/document_page_models.py:296
 msgid "Document page cached image"
 msgstr "文档页面缓存图像"
 
-#: models/document_page_models.py:298
+#: models/document_page_models.py:297
 msgid "Document page cached images"
 msgstr "文档页面缓存图像"
 
@@ -989,48 +993,53 @@ msgstr "文档类型是最基本的配置单元。系统中的所有东西都将
 msgid "No document types available"
 msgstr "没有可用的文档类型"
 
-#: views/document_type_views.py:109
+#: views/document_type_views.py:106
 msgid "All documents of this type will be deleted too."
 msgstr "此类型的所有文件也将被删除。"
 
-#: views/document_type_views.py:111
+#: views/document_type_views.py:108
 #, python-format
 msgid "Delete the document type: %s?"
 msgstr "删除文档类型：%s？"
 
-#: views/document_type_views.py:127
+#: views/document_type_views.py:125
+#, python-format
+msgid "Deletion policies for document type: %s"
+msgstr ""
+
+#: views/document_type_views.py:144
 #, python-format
 msgid "Edit document type: %s"
 msgstr "编辑文档类型：%s"
 
-#: views/document_type_views.py:150
+#: views/document_type_views.py:167
 #, python-format
 msgid "Create quick label for document type: %s"
 msgstr "为文档类型创建快速标签：%s"
 
-#: views/document_type_views.py:169
+#: views/document_type_views.py:186
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
 msgstr "从文档类型“%(document_type)s”删除快速标签：%(label)s？"
 
-#: views/document_type_views.py:198
+#: views/document_type_views.py:215
 #, python-format
 msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr "从文档类型“%(document_type)s”编辑快速标签“%(filename)s”"
 
-#: views/document_type_views.py:236
+#: views/document_type_views.py:253
 msgid ""
 "Quick labels are predetermined filenames that allow the quick renaming of "
 "documents as they are uploaded by selecting them from a list. Quick labels "
 "can also be used after the documents have been uploaded."
 msgstr "快速标签是预定的文件名，允许通过从列表中选择文档来快速重命名文档。上传文档后也可以使用快速标签。"
 
-#: views/document_type_views.py:242
+#: views/document_type_views.py:259
 msgid "There are no quick labels for this document type"
 msgstr "此文档类型没有快速标签"
 
-#: views/document_type_views.py:245
+#: views/document_type_views.py:262
 #, python-format
 msgid "Quick labels for document type: %s"
 msgstr "文档类型的快速标签：%s"

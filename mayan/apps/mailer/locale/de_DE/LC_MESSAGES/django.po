@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:47-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
+"POT-Creation-Date: 2019-05-21 01:00-0400\n"
+"PO-Revision-Date: 2019-05-21 05:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "E-Mail"
 
 #: events.py:10
 msgid "Email sent"
-msgstr ""
+msgstr "E-Mail verschickt"
 
 #: forms.py:60 forms.py:122
 msgid ""
@@ -86,8 +86,8 @@ msgid "System mailer error log"
 msgstr "Fehlerprotokoll des Systemmailprogramms"
 
 #: links.py:42
-msgid "User mailer create"
-msgstr "Mailprofil erstellen"
+msgid "Create mailing profile "
+msgstr ""
 
 #: links.py:48
 msgid "Delete"
@@ -133,13 +133,13 @@ msgstr "Um dieses Dokument anzuzeigen klicken Sie bitte auf folgenden Link: {{ l
 
 #: mailers.py:23 mailers.py:112
 msgid "From"
-msgstr ""
+msgstr "Von"
 
 #: mailers.py:26 mailers.py:115
 msgid ""
 "The sender's address. Some system will refuse to send messages if this value"
 " is not set."
-msgstr ""
+msgstr "Die Adresse des Absenders. Einige Systeme verweigern die Verarbeitung von Nachrichten, wenn dieser Wert nicht gesetzt ist."
 
 #: mailers.py:32
 msgid "Host"
@@ -266,7 +266,7 @@ msgstr "Mailprofile"
 
 #: models.py:84
 msgid "Backend label"
-msgstr ""
+msgstr "Backend Bezeichner"
 
 #: models.py:216
 msgid "Test email from Mayan EDMS"
@@ -399,9 +399,9 @@ msgstr "%s Fehlerprotokoll"
 
 #: views.py:233
 msgid ""
-"Mailing profiles are email configurations. Mailing profiles are used to send"
-" documents via email."
-msgstr "Mailprofile sind E-Mailkonfigurationen. Sie werden zur Versendung von Dokumenten via E-Mail verwendet."
+"Mailing profiles are email configurations. Mailing profiles allow sending "
+"documents as attachments or as links via email."
+msgstr ""
 
 #: views.py:237
 msgid "No mailing profiles available"

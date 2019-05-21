@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:47-0400\n"
-"PO-Revision-Date: 2019-05-09 15:23+0000\n"
+"POT-Creation-Date: 2019-05-21 01:00-0400\n"
+"PO-Revision-Date: 2019-05-17 13:19+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,7 @@ msgstr "Type de métadonnées modifié"
 
 #: events.py:25
 msgid "Metadata type relationship updated"
-msgstr ""
+msgstr "Relation du type de métadonnées mise à jour"
 
 #: forms.py:13
 msgid "ID"
@@ -172,13 +172,13 @@ msgstr "Modifier"
 msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
-msgstr ""
+msgstr "Nom utilisé par d'autres applications pour faire référence à ce type de métadonnées. N'utilisez pas de mots réservés Python, ni d'espace."
 
 #: models.py:59
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr ""
+msgstr "Entrez un modèle à utiliser. Utilisez le langage de gabarit par défaut de Django (https://docs.djangoproject.com/fr/1.11.11/ref/templates/builtins/)"
 
 #: models.py:63 search.py:22
 msgid "Default"
@@ -189,7 +189,7 @@ msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
 "Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
-msgstr ""
+msgstr "Entrez un modèle à afficher. Doit avoir pour résultat une chaîne délimitée par des virgules. Utilisez le langage par défaut de Django pour les modèles (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
 
 #: models.py:73 search.py:25
 msgid "Lookup"
@@ -229,7 +229,7 @@ msgstr "Type"
 
 #: models.py:209
 msgid "The actual value stored in the metadata type field for the document."
-msgstr ""
+msgstr "La valeur actuellement enregistrée dans le champ de type de métadonnées du document."
 
 #: models.py:217 models.py:218
 msgid "Document metadata"
@@ -370,7 +370,7 @@ msgstr "La demande d'édition de métadonnées a été effectuée sur %(count)d 
 msgid ""
 "Add metadata types available for this document's type and assign them "
 "corresponding values."
-msgstr ""
+msgstr "Ajoutez les types de métadonnées disponibles pour le type de ce document et attribuez-leur les valeurs correspondantes."
 
 #: views.py:309
 msgid "There is no metadata to edit"

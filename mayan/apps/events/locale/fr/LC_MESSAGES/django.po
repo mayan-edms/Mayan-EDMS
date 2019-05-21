@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:46-0400\n"
-"PO-Revision-Date: 2019-05-05 03:57+0000\n"
+"POT-Creation-Date: 2019-05-21 01:00-0400\n"
+"PO-Revision-Date: 2019-05-17 13:22+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -161,7 +161,7 @@ msgstr "Souscriptions aux événements mises à jour avec succès"
 
 #: views.py:114
 msgid "Subscribe to global or object events to receive notifications."
-msgstr ""
+msgstr "Abonnez-vous à des événements globaux ou à des objets pour recevoir des notifications."
 
 #: views.py:117
 msgid "There are no notifications"
@@ -171,11 +171,11 @@ msgstr "Il n'y a pas de notification"
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr ""
+msgstr "Les événements sont des actions qui ont été effectuées sur cet objet ou utilisant cet objet."
 
 #: views.py:167
 msgid "There are no events for this object"
-msgstr ""
+msgstr "Il n'y a pas d'événement pour cet objet"
 
 #: views.py:169
 #, python-format

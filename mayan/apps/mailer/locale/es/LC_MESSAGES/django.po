@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:47-0400\n"
-"PO-Revision-Date: 2019-05-17 06:35+0000\n"
+"POT-Creation-Date: 2019-05-21 01:00-0400\n"
+"PO-Revision-Date: 2019-05-21 05:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -87,8 +87,8 @@ msgid "System mailer error log"
 msgstr "Registro de errores del correo del sistema"
 
 #: links.py:42
-msgid "User mailer create"
-msgstr "Create perfíl de correo"
+msgid "Create mailing profile "
+msgstr "Crear perfil de correo"
 
 #: links.py:48
 msgid "Delete"
@@ -400,9 +400,9 @@ msgstr "Registro de errores para %s"
 
 #: views.py:233
 msgid ""
-"Mailing profiles are email configurations. Mailing profiles are used to send"
-" documents via email."
-msgstr "Los perfiles de correo son configuraciones de correo electrónico. Los perfiles de correo se utilizan para enviar documentos por correo electrónico."
+"Mailing profiles are email configurations. Mailing profiles allow sending "
+"documents as attachments or as links via email."
+msgstr "Los perfiles de correo son configuraciones de correo electrónico. Los perfiles de correo permiten enviar documentos como archivos adjuntos o como enlaces por correo electrónico."
 
 #: views.py:237
 msgid "No mailing profiles available"

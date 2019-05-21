@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:45-0400\n"
+"POT-Creation-Date: 2019-05-21 00:59-0400\n"
 "PO-Revision-Date: 2019-05-17 05:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Document comments"
 msgstr "توضیحات سند"
 
-#: apps.py:87 apps.py:91 links.py:33 models.py:45 permissions.py:7
+#: apps.py:84 apps.py:88 links.py:33 models.py:45 permissions.py:7
 msgid "Comments"
 msgstr "توضیحات"
 
@@ -54,7 +54,7 @@ msgstr "ویرایش"
 msgid "Document"
 msgstr "سند"
 
-#: models.py:32
+#: models.py:32 models.py:68
 msgid "User"
 msgstr "کاربر"
 

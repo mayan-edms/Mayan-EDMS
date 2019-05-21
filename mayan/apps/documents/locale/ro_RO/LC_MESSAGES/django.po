@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:46-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
+"POT-Creation-Date: 2019-05-21 00:59-0400\n"
+"PO-Revision-Date: 2019-05-21 05:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -19,51 +19,51 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:108 apps.py:290 events.py:7 menus.py:10
+#: apps.py:109 apps.py:291 events.py:7 menus.py:10
 #: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:14
 #: statistics.py:233
 msgid "Documents"
 msgstr "Documente"
 
-#: apps.py:129
+#: apps.py:130
 msgid "Create a document type"
 msgstr "Creați un tip de document"
 
-#: apps.py:131
+#: apps.py:132
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr "Fiecare document încărcat trebuie să fie atribuit unui tip de document, acesta este modul de bază în care Mayan EDMS categorizează documente."
 
-#: apps.py:150
+#: apps.py:151
 msgid "Versions comment"
 msgstr "Comentarii la versiuni"
 
-#: apps.py:154
+#: apps.py:155
 msgid "Versions encoding"
 msgstr "Codificare versiuni"
 
-#: apps.py:158
+#: apps.py:159
 msgid "Versions mime type"
 msgstr "Tip MIME pt. versiuni"
 
-#: apps.py:162
+#: apps.py:163
 msgid "Versions timestamp"
 msgstr "Marcă temporală versiuni"
 
-#: apps.py:240 apps.py:269 apps.py:274 apps.py:310 apps.py:327
+#: apps.py:241 apps.py:270 apps.py:275 apps.py:311 apps.py:328
 msgid "Thumbnail"
 msgstr "Miniatură"
 
-#: apps.py:248 apps.py:332 forms/document_forms.py:182 links.py:83
+#: apps.py:249 apps.py:333 forms/document_forms.py:182 links.py:83
 msgid "Pages"
 msgstr "Pagini"
 
-#: apps.py:257 links.py:414
+#: apps.py:258 links.py:420
 msgid "Duplicates"
 msgstr "Dubluri"
 
-#: apps.py:278
+#: apps.py:279
 msgid "Type"
 msgstr "Tip"
 
@@ -79,7 +79,7 @@ msgstr "Total documente"
 msgid "Documents in trash"
 msgstr "Documentele din coșul de gunoi"
 
-#: dashboard_widgets.py:85 links.py:400 links.py:405 permissions.py:55
+#: dashboard_widgets.py:85 links.py:406 links.py:411 permissions.py:55
 #: views/document_type_views.py:78
 msgid "Document types"
 msgstr "Tipuri de documente"
@@ -187,7 +187,7 @@ msgstr "Nici unul"
 msgid "File encoding"
 msgstr "Codarea fișierelor"
 
-#: forms/document_forms.py:171 models/document_page_models.py:291
+#: forms/document_forms.py:171 models/document_page_models.py:290
 msgid "File size"
 msgstr "Marime fişier"
 
@@ -247,7 +247,7 @@ msgstr "Șterge transformări"
 msgid "Clone transformations"
 msgstr "Clonare transformări"
 
-#: links.py:106 links.py:189 links.py:365 links.py:383
+#: links.py:106 links.py:189 links.py:365 links.py:389
 msgid "Delete"
 msgstr "Șterge"
 
@@ -383,28 +383,32 @@ msgstr "Micșorează"
 msgid "Revert"
 msgstr "Revenire"
 
-#: links.py:360 views/document_type_views.py:93
+#: links.py:360 views/document_type_views.py:90
 msgid "Create document type"
 msgstr "Creați tipul de document"
 
-#: links.py:369 links.py:390
+#: links.py:371
+msgid "Deletion policies"
+msgstr ""
+
+#: links.py:375 links.py:396
 msgid "Edit"
 msgstr "Editează"
 
-#: links.py:376
+#: links.py:382
 msgid "Add quick label to document type"
 msgstr "Adăugați etichetă rapidă la tipul de document"
 
-#: links.py:396 models/document_type_models.py:157
+#: links.py:402 models/document_type_models.py:157
 msgid "Quick labels"
 msgstr "Etichete rapide"
 
-#: links.py:409 models/misc_models.py:38 models/misc_models.py:48
+#: links.py:415 models/misc_models.py:38 models/misc_models.py:48
 #: views/document_views.py:690
 msgid "Duplicated documents"
 msgstr "Documente duplicate"
 
-#: links.py:420 queues.py:70
+#: links.py:426 queues.py:70
 msgid "Duplicated document scan"
 msgstr "Căutare documente duplicat"
 
@@ -426,7 +430,7 @@ msgstr "UUID al unui document, identificator unic universal. Un identificator un
 msgid "The name of the document."
 msgstr "Numele documentului."
 
-#: models/document_models.py:49 models/document_page_models.py:260
+#: models/document_models.py:49 models/document_page_models.py:259
 #: models/document_type_models.py:32 models/document_type_models.py:149
 #: search.py:21 search.py:42
 msgid "Label"
@@ -495,33 +499,33 @@ msgstr "Versiune document"
 msgid "Page number"
 msgstr "Numărul paginii"
 
-#: models/document_page_models.py:53 models/document_page_models.py:284
-#: models/document_page_models.py:317
+#: models/document_page_models.py:53 models/document_page_models.py:283
+#: models/document_page_models.py:316
 msgid "Document page"
 msgstr "Pagina documentului"
 
-#: models/document_page_models.py:54 models/document_page_models.py:318
+#: models/document_page_models.py:54 models/document_page_models.py:317
 msgid "Document pages"
 msgstr "Pagini document"
 
-#: models/document_page_models.py:254
+#: models/document_page_models.py:253
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Pag %(page_num)d din %(total_pages)d din %(document)s"
 
-#: models/document_page_models.py:287
+#: models/document_page_models.py:286
 msgid "Date time"
 msgstr "Data și ora"
 
-#: models/document_page_models.py:289
+#: models/document_page_models.py:288
 msgid "Filename"
 msgstr "Nume fişier"
 
-#: models/document_page_models.py:297
+#: models/document_page_models.py:296
 msgid "Document page cached image"
 msgstr "Imaginea din cache a paginii documentului"
 
-#: models/document_page_models.py:298
+#: models/document_page_models.py:297
 msgid "Document page cached images"
 msgstr "Imagini din cache a paginilor documentului"
 
@@ -756,7 +760,7 @@ msgstr "Încărcați o nouă versiune de document"
 
 #: queues.py:83
 msgid "Scan document duplicates"
-msgstr ""
+msgstr "Scanați după documente duplicate"
 
 #: settings.py:19
 msgid ""
@@ -949,11 +953,11 @@ msgid ""
 " it is corrupted or that the upload process was interrupted. Use the "
 "document page recalculation action to attempt to introspect the page count "
 "again."
-msgstr ""
+msgstr "Acest lucru ar putea însemna că documentul are un format care nu este acceptat, că este corupt sau că procesul de încărcare a fost întrerupt. Utilizați acțiunea de recalculare a paginii de document pentru a încerca să introduceți din nou numărul paginilor."
 
 #: views/document_page_views.py:59
 msgid "No document pages available"
-msgstr ""
+msgstr "Nu sunt disponibile pagini în document"
 
 #: views/document_page_views.py:61
 #, python-format
@@ -990,48 +994,53 @@ msgstr "Tipurile de documente sunt cele mai elementare unități de configurare.
 msgid "No document types available"
 msgstr "Nu sunt disponibile tipuri de documente"
 
-#: views/document_type_views.py:109
+#: views/document_type_views.py:106
 msgid "All documents of this type will be deleted too."
 msgstr "Toate documentele de acest tip vor fi de asemenea șterse."
 
-#: views/document_type_views.py:111
+#: views/document_type_views.py:108
 #, python-format
 msgid "Delete the document type: %s?"
 msgstr "Ștergeți tipul de document: %s?"
 
-#: views/document_type_views.py:127
+#: views/document_type_views.py:125
+#, python-format
+msgid "Deletion policies for document type: %s"
+msgstr ""
+
+#: views/document_type_views.py:144
 #, python-format
 msgid "Edit document type: %s"
 msgstr "Editați tipul de document: %s"
 
-#: views/document_type_views.py:150
+#: views/document_type_views.py:167
 #, python-format
 msgid "Create quick label for document type: %s"
 msgstr "Creați o etichetă rapidă pentru tipul de document: %s"
 
-#: views/document_type_views.py:169
+#: views/document_type_views.py:186
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
 msgstr "Ștergeți eticheta rapidă: %(label)s, de la tipul de document \"%(document_type)s\"?"
 
-#: views/document_type_views.py:198
+#: views/document_type_views.py:215
 #, python-format
 msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr "Editați eticheta rapidă \"%(filename)s\" din tipul de document \"%(document_type)s\""
 
-#: views/document_type_views.py:236
+#: views/document_type_views.py:253
 msgid ""
 "Quick labels are predetermined filenames that allow the quick renaming of "
 "documents as they are uploaded by selecting them from a list. Quick labels "
 "can also be used after the documents have been uploaded."
 msgstr "Etichetele rapide sunt nume de fișier predeterminate care permit redenumirea rapidă a documentelor în momentul în care sunt încărcate selectându-le dintr-o listă. Etichetele rapide pot fi de asemenea folosite după ce documentele au fost încărcate."
 
-#: views/document_type_views.py:242
+#: views/document_type_views.py:259
 msgid "There are no quick labels for this document type"
 msgstr "Nu există etichete rapide pentru acest tip de document"
 
-#: views/document_type_views.py:245
+#: views/document_type_views.py:262
 #, python-format
 msgid "Quick labels for document type: %s"
 msgstr "Etichete rapide pentru tipul de document: %s"

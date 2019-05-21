@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-17 01:47-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
+"POT-Creation-Date: 2019-05-21 01:00-0400\n"
+"PO-Revision-Date: 2019-05-21 05:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "Mesaj"
 
 #: classes.py:81
 msgid "Null backend"
-msgstr ""
+msgstr "Backend vid"
 
 #: events.py:7 permissions.py:7 queues.py:8 settings.py:11
 msgid "Mailing"
@@ -85,8 +85,8 @@ msgid "System mailer error log"
 msgstr "Mesajele de eroare ale mailer-ului de sistem"
 
 #: links.py:42
-msgid "User mailer create"
-msgstr "Creați utilizator mailer"
+msgid "Create mailing profile "
+msgstr ""
 
 #: links.py:48
 msgid "Delete"
@@ -398,9 +398,9 @@ msgstr "%s jurnal de erori"
 
 #: views.py:233
 msgid ""
-"Mailing profiles are email configurations. Mailing profiles are used to send"
-" documents via email."
-msgstr "Profilurile de mail sunt configurații de e-mail. Profilurile de mail sunt utilizate pentru a trimite documente prin e-mail."
+"Mailing profiles are email configurations. Mailing profiles allow sending "
+"documents as attachments or as links via email."
+msgstr ""
 
 #: views.py:237
 msgid "No mailing profiles available"
