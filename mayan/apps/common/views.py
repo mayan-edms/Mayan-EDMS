@@ -7,7 +7,6 @@ from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone, translation
 from django.utils.http import urlencode
@@ -183,43 +182,35 @@ class RootView(SimpleView):
     template_name = 'appearance/root.html'
 
 
-class SetupListView(TemplateView):
+class SetupListView(SimpleView):
     template_name = 'appearance/generic_list_horizontal.html'
 
-    def get_context_data(self, **kwargs):
-        data = super(SetupListView, self).get_context_data(**kwargs)
-        context = RequestContext(request=self.request)
-        context['request'] = self.request
-        data.update(
-            {
-                'no_results_icon': icon_setup,
-                'no_results_label': _('No setup options available.'),
-                'no_results_text': _(
-                    'No results here means that don\'t have the required '
-                    'permissions to perform administrative task.'
-                ),
-                'resolved_links': menu_setup.resolve(context=context),
-                'title': _('Setup items'),
-                'subtitle': _(
-                    'Here you can configure all aspects of the system.'
-                )
-            }
-        )
-        return data
+    def get_extra_context(self, **kwargs):
+        return {
+            'no_results_icon': icon_setup,
+            'no_results_label': _('No setup options available.'),
+            'no_results_text': _(
+                'No results here means that don\'t have the required '
+                'permissions to perform administrative task.'
+            ),
+            'resolved_links': menu_setup.resolve(
+                request=self.request, sort_results=True
+            ),
+            'title': _('Setup items'),
+            'subtitle': _(
+                'Here you can configure all aspects of the system.'
+            )
+        }
 
 
 class ToolsListView(SimpleView):
     template_name = 'appearance/generic_list_horizontal.html'
 
-    def get_menu_links(self):
-        context = RequestContext(request=self.request)
-        context['request'] = self.request
-
-        return menu_tools.resolve(context=context)
-
     def get_extra_context(self):
         return {
-            'resolved_links': self.get_menu_links(),
+            'resolved_links': menu_tools.resolve(
+                request=self.request, sort_results=True
+            ),
             'title': _('Tools'),
             'subtitle': _(
                 'These modules are used to do system maintenance.'
