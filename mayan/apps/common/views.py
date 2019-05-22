@@ -11,7 +11,7 @@ from django.urls import reverse, reverse_lazy
 from django.utils import timezone, translation
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import RedirectView, TemplateView
+from django.views.generic import RedirectView
 
 from mayan.apps.acls.models import AccessControlList
 
@@ -32,21 +32,17 @@ class AboutView(SimpleView):
     template_name = 'appearance/about.html'
 
 
-class CurrentUserLocaleProfileDetailsView(TemplateView):
+class CurrentUserLocaleProfileDetailsView(SimpleView):
     template_name = 'appearance/generic_form.html'
 
-    def get_context_data(self, **kwargs):
-        data = super(
-            CurrentUserLocaleProfileDetailsView, self
-        ).get_context_data(**kwargs)
-        data.update({
+    def get_extra_context(self, **kwargs):
+        return {
             'form': LocaleProfileForm_view(
                 instance=self.request.user.locale_profile
             ),
             'read_only': True,
             'title': _('Current user locale profile details'),
-        })
-        return data
+        }
 
 
 class CurrentUserLocaleProfileEditView(SingleObjectEditView):
