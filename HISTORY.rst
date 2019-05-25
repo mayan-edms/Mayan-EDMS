@@ -271,6 +271,8 @@
 * Add the checkdependencies command.
 * Add comment and make file target to generate all requirement
   files.
+* Place deletion policies units before periods for clarity.
+
 
 3.1.11 (2019-04-XX)
 ===================

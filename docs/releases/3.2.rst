@@ -705,6 +705,7 @@ Other changes
   Change color scheme to match rest of project. Increase size of data points.
   Improve responsive settings. Redirect to the current view after queueing.
 - Split document type retention policies into it own view.
+- Place deletion policies units before periods for clarity.
 
 
 Removals
