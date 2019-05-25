@@ -148,7 +148,7 @@ Django's development server doesn't serve static files unless the DEBUG option
 is set to True, this mode of operation should only be used for development or
 testing. For production deployments the management command::
 
-    $ mayan-edms.py collectstatic
+    $ mayan-edms.py preparestatic
 
 should be used and the resulting static folder served from a webserver.
 For more information check the

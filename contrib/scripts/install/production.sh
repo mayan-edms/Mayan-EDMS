@@ -161,7 +161,7 @@ priority = 998
 EOF
 
 echo -e "\n -> Collecting the static files \n"
-mayan-edms.py collectstatic --noinput
+mayan-edms.py preparestatic --noinput
 
 echo -e "\n -> Making the installation directory readable and writable by the webserver user \n"
 chown www-data:www-data ${INSTALLATION_DIRECTORY} -R
