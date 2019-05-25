@@ -111,8 +111,8 @@ class DocumentTypeDeleteView(SingleObjectDeleteView):
 
 class DocumentTypeDeletionPoliciesEditView(SingleObjectEditView):
     fields = (
-        'trash_time_period', 'trash_time_unit', 'delete_time_period',
-        'delete_time_unit'
+        'trash_time_unit', 'trash_time_period', 'delete_time_unit',
+        'delete_time_period'
     )
     model = DocumentType
     object_permission = permission_document_type_edit
