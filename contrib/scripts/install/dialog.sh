@@ -1445,7 +1445,7 @@ sudo -u mayan \
 dialog --infobox "Preparing static files" 3 70
 sudo -u mayan \
     MAYAN_MEDIA_ROOT=$MAYAN_MEDIA_ROOT \
-    $MAYAN_BIN collectstatic --noinput > /dev/null
+    $MAYAN_BIN preparestatic --noinput > /dev/null
 
 # Create supervisor file for gunicorn (frontend), 3 background workers, and the scheduler for periodic tasks
 cat > /etc/supervisor/conf.d/mayan.conf <<EOF

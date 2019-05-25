@@ -829,6 +829,10 @@ Backward incompatible changes
 
     ImportError: No module named ocr.backends.pyocr
 
+- To collect and compress the static media files, use the new ``preparestatic``
+  command instead of the traditional ``collectstatic``. Both work the same
+  way, but ``preparestatic`` has a default backlist to avoid collecting
+  test files.
 
 Bugs fixed or issues closed
 ---------------------------
