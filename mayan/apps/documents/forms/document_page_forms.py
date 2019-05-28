@@ -26,7 +26,7 @@ class DocumentPageForm(forms.Form):
 class DocumentPageNumberForm(forms.Form):
     page = forms.ModelChoiceField(
         help_text=_(
-            'Page number from which all the transformation will be cloned. '
+            'Page number from which all the transformations will be cloned. '
             'Existing transformations will be lost.'
         ), queryset=None
     )
