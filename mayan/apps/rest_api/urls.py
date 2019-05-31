@@ -11,17 +11,13 @@ api_urls = [
         regex=r'^auth/token/obtain/$', view=BrowseableObtainAuthToken.as_view(),
         name='auth_token_obtain'
     ),
-]
-
-urlpatterns = [
-    url(
-        regex=r'^auth/token/obtain/$', name='auth_token_obtain',
-        view=BrowseableObtainAuthToken.as_view()
-    ),
     url(
         regex=r'^swagger(?P<format>.json|.yaml)$', name='schema-json',
         view=schema_view.without_ui(cache_timeout=None),
     ),
+]
+
+urlpatterns = [
     url(
         regex=r'^swagger/$', name='schema-swagger-ui',
         view=schema_view.with_ui('swagger', cache_timeout=None)
