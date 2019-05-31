@@ -74,14 +74,8 @@ class Permission(object):
 
     @classmethod
     def check_user_permissions(cls, permissions, user):
-        # TODO: Remove list check. Add permissions arguments will be lists.
-        try:
-            for permission in permissions:
-                if permission.stored_permission.user_has_this(user=user):
-                    return True
-        except TypeError:
-            # Not a list of permissions, just one
-            if permissions.stored_permission.user_has_this(user=user):
+        for permission in permissions:
+            if permission.stored_permission.user_has_this(user=user):
                 return True
 
         logger.debug(
