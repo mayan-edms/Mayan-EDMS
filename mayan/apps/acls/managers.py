@@ -200,19 +200,26 @@ class AccessControlListManager(models.Manager):
 
         return result
 
-    def check_access(self, obj, permissions, user):
-        meta = getattr(obj, '_meta', None)
+    def check_access(self, obj, permissions, user, manager=None):
+        # Allow specific managers for models that have more than one
+        # for example the Document model when checking for access for a trashed
+        # document.
 
-        if not meta:
-            logger.debug(
-                ugettext(
-                    'Object "%s" is not a model and cannot be checked for '
-                    'access.'
-                ) % force_text(obj)
-            )
-            return True
+        if manager:
+            source_queryset = manager.all()
         else:
-            source_queryset = obj._meta.default_manager.all()
+            meta = getattr(obj, '_meta', None)
+
+            if not meta:
+                logger.debug(
+                    ugettext(
+                        'Object "%s" is not a model and cannot be checked for '
+                        'access.'
+                    ) % force_text(obj)
+                )
+                return True
+            else:
+                source_queryset = obj._meta.default_manager.all()
 
         restricted_queryset = obj._meta.default_manager.none()
         for permission in permissions:
