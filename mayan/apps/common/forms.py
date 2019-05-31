@@ -172,6 +172,22 @@ class DynamicFormMixin(object):
             kwargs.update(field_data.get('kwargs', {}))
             self.fields[field_name] = field_class(**kwargs)
 
+    def get_dynamic_values(self):
+        # Consolidate the dynamic fields into a single dictionary.
+        cleaned_data = super(DynamicFormMixin, self).clean()
+        result = {}
+
+        for field_name, field_data in self.schema['fields'].items():
+            result[field_name] = cleaned_data.pop(
+                field_name, field_data.get('default', None)
+            )
+
+        return result
+
+    def set_dynamic_values(self, values):
+        for key in self.schema['fields']:
+            self.fields[key].initial = values.get(key, self.fields[key].initial)
+
 
 class DynamicForm(DynamicFormMixin, forms.Form):
     pass

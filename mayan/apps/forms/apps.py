@@ -18,6 +18,8 @@ from mayan.apps.events.links import (
 )
 from mayan.apps.navigation.classes import SourceColumn
 
+from .classes import FieldClass
+
 
 class FormsApp(MayanAppConfig):
     app_namespace = 'forms'
@@ -28,3 +30,4 @@ class FormsApp(MayanAppConfig):
 
     def ready(self):
         super(FormsApp, self).ready()
+        FieldClass.initialize()

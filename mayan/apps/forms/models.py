@@ -30,6 +30,7 @@ class FieldChoice(models.Model):
         return self.label
 
 
+@python_2_unicode_compatible
 class FormTemplate(models.Model):
     name = models.CharField(max_length=32, verbose_name=_('Name'))
     label = models.CharField(max_length=128, verbose_name=_('Label'))
@@ -39,6 +40,9 @@ class FormTemplate(models.Model):
         ordering = ('label',)
         verbose_name = _('Form template')
         verbose_name_plural = _('Form templates')
+
+    def __str__(self):
+        return self.label
 
     def get_fields_dictionary(self):
         result = {}
@@ -84,8 +88,34 @@ class FormTemplateField(models.Model):
         return json.loads(self.arguments or '{}')
 
 
+@python_2_unicode_compatible
 class FormInstance(models.Model):
     form_template = models.ForeignKey(
         on_delete=models.CASCADE, related_name='instances', to=FormTemplate,
         verbose_name=_('Form template field')
     )
+    data = models.TextField(
+        blank=True, verbose_name=_('Data')
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(FormInstance, self).__init__(*args, **kwargs)
+        self.deserialize_data()
+
+    def __str__(self):
+        return force_text(self.form_template)
+
+    class Meta:
+        verbose_name = _('Form instance')
+        verbose_name_plural = _('Form instances')
+
+    def deserialize_data(self):
+        self.data = json.loads(self.data or '{}')
+
+    def serialize_data(self):
+        self.data = json.dumps(self.data or {})
+
+    def save(self, *args, **kwargs):
+        #if not self.pk:
+        self.serialize_data()
+        return super(FormInstance, self).save(*args, **kwargs)
