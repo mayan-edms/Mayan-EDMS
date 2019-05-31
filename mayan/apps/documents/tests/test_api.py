@@ -627,6 +627,34 @@ class TrashedDocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
             response.data['uuid'], force_text(self.test_document.uuid)
         )
 
+    def _request_trashed_document_image_view(self):
+        latest_version = self.test_document.latest_version
+
+        return self.get(
+            viewname='rest_api:documentpage-image', kwargs={
+                'pk': latest_version.document.pk,
+                'version_pk': latest_version.pk,
+                'page_pk': latest_version.pages.first().pk
+            }
+        )
+
+    def test_trashed_document_image_view_no_permission(self):
+        self.upload_document()
+        self.test_document.delete()
+
+        response = self._request_trashed_document_image_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_trashed_document_image_view_with_access(self):
+        self.upload_document()
+        self.test_document.delete()
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        response = self._request_trashed_document_image_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     def _request_trashed_document_list_view(self):
         return self.get(
             viewname='rest_api:trasheddocument-list'

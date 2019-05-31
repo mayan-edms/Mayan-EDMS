@@ -165,7 +165,7 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
 
         AccessControlList.objects.check_access(
             obj=document, permissions=(permission_required,),
-            user=self.request.user
+            user=self.request.user, manager=Document.passthrough
         )
         return document
 
