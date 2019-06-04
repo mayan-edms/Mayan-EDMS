@@ -781,7 +781,7 @@ Migrate existing database schema with::
 
 Add new static media::
 
-    $ mayan-edms.py collectstatic --noinput
+    $ mayan-edms.py preparestatic --noinput
 
 The upgrade procedure is now complete.
 
@@ -834,6 +834,11 @@ Backward incompatible changes
   command instead of the traditional ``collectstatic``. Both work the same
   way, but ``preparestatic`` has a default backlist to avoid collecting
   test files.
+
+- Instead of the ``collectstatic``, the new ``preparestatic`` command should be
+  used. ``preparestatic`` is a wrapper for ``collectstatic`` that includes
+  a pattern list of files that are not to be collected for production. Files
+  from tests, development setup, demos are ignored using this command.
 
 Bugs fixed or issues closed
 ---------------------------

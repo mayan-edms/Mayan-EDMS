@@ -275,6 +275,7 @@
 * Remove repeated EMAIL_TIMEOUT setting.
 * Invert order to the Action Object and Target columns for
   clarity.
+* Add note about the new preparestatic command.
 
 3.1.11 (2019-04-XX)
 ===================
