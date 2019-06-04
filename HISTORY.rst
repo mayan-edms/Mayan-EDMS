@@ -273,6 +273,8 @@
   files.
 * Place deletion policies units before periods for clarity.
 * Remove repeated EMAIL_TIMEOUT setting.
+* Invert order to the Action Object and Target columns for
+  clarity.
 
 3.1.11 (2019-04-XX)
 ===================

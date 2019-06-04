@@ -48,11 +48,11 @@ class EventsApp(MayanAppConfig):
             func=widget_event_type_link, label=_('Event'), source=Action
         )
         SourceColumn(
-            attribute='action_object', label=_('Action object'), source=Action,
+            attribute='target', label=_('Target'), source=Action,
             widget=ObjectLinkWidget
         )
         SourceColumn(
-            attribute='target', label=_('Target'), source=Action,
+            attribute='action_object', label=_('Action object'), source=Action,
             widget=ObjectLinkWidget
         )
 
