@@ -244,14 +244,6 @@ setting_django_email_user_ssl = namespace.add_setting(
         'are mutually exclusive, so only set one of those settings to True.'
     ),
 )
-setting_django_email_timeout = namespace.add_setting(
-    global_name='EMAIL_TIMEOUT',
-    default=settings.EMAIL_TIMEOUT,
-    help_text=_(
-        'Default: None. Specifies a timeout in seconds for blocking '
-        'operations like the connection attempt.'
-    ),
-)
 setting_django_file_upload_max_memory_size = namespace.add_setting(
     global_name='FILE_UPLOAD_MAX_MEMORY_SIZE',
     default=settings.FILE_UPLOAD_MAX_MEMORY_SIZE,
