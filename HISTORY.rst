@@ -276,6 +276,7 @@
 * Invert order to the Action Object and Target columns for
   clarity.
 * Add note about the new preparestatic command.
+* Add no-result template for workflow instance detail view.
 
 3.1.11 (2019-04-XX)
 ===================

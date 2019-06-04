@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
@@ -10,7 +11,8 @@ from mayan.apps.common.generics import FormView, SingleObjectListView
 from mayan.apps.documents.models import Document
 
 from ..forms import WorkflowInstanceTransitionForm
-from ..icons import icon_workflow_list
+from ..icons import icon_workflow_instance_detail, icon_workflow_list
+from ..links import link_workflow_instance_transition
 from ..models import WorkflowInstance
 from ..permissions import permission_workflow_view
 
@@ -70,6 +72,20 @@ class WorkflowInstanceDetailView(SingleObjectListView):
         return {
             'hide_object': True,
             'navigation_object_list': ('object', 'workflow_instance'),
+            'no_results_icon': icon_workflow_instance_detail,
+            'no_results_main_link': link_workflow_instance_transition.resolve(
+                context=RequestContext(
+                    dict_={'object': self.get_workflow_instance()},
+                   request=self.request
+                )
+            ),
+            'no_results_text': _(
+                'This view will show the state changes as a workflow '
+                'instance is transitioned.'
+            ),
+            'no_results_title': _(
+                'There are no details for this workflow instance'
+            ),
             'object': self.get_workflow_instance().document,
             'title': _('Detail of workflow: %(workflow)s') % {
                 'workflow': self.get_workflow_instance()
