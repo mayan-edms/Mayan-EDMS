@@ -166,4 +166,4 @@ class HTTPPostAction(WorkflowAction):
 
         logger.debug('payload json result: %s', payload)
 
-        requests.post(url=url, data=payload, timeout=self.form_data['timeout'])
+        requests.post(url=url, json=payload, timeout=self.form_data['timeout'])
