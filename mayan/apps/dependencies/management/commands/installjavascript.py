@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.core import management
 from django.utils.translation import ugettext_lazy as _
 
-from ...classes import JavaScriptDependency
+from ...classes import GoogleFontDependency, JavaScriptDependency
 
 
 class Command(management.BaseCommand):
@@ -21,6 +21,10 @@ class Command(management.BaseCommand):
 
     def handle(self, *args, **options):
         JavaScriptDependency.install_multiple(
+            app_label=options['app'], force=options['force'],
+            subclass_only=True
+        )
+        GoogleFontDependency.install_multiple(
             app_label=options['app'], force=options['force'],
             subclass_only=True
         )

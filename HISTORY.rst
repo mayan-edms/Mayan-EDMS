@@ -278,6 +278,12 @@
 * Add note about the new preparestatic command.
 * Add no-result template for workflow instance detail view.
 * Update HTTP workflow action to new requests API.
+* Remove the included Lato font. The font is now downloaded
+  at install time.
+* Add support for Google Fonts dependencies.
+* Add support for patchin dependency files using rewriting rules.
+
+
 
 3.1.11 (2019-04-XX)
 ===================

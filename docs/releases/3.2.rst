@@ -706,7 +706,10 @@ Other changes
   Improve responsive settings. Redirect to the current view after queueing.
 - Split document type retention policies into it own view.
 - Place deletion policies units before periods for clarity.
-
+- Remove the included Lato font. The font is now downloaded
+  at install time.
+- Add support for Google Fonts dependencies.
+- Add support for patchin dependency files using rewriting rules.
 
 Removals
 --------
@@ -854,5 +857,6 @@ Bugs fixed or issues closed
 - :gitlab-issue:`563` Recursive Watch Folder
 - :gitlab-issue:`579` Untranslated items
 - :gitlab-issue:`589` Document {{ link }} send via Email contains example.com as domain
+- :gitlab-issue:`595` Remove dependency to fonts.googleapis.com
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

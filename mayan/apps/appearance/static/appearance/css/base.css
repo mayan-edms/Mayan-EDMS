@@ -11,44 +11,6 @@
         url('../fonts/IM_Fell_English_SC.ttf') format('truetype');
 }
 
-/* Flatly fonts */
-@font-face {
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    src:
-        local('Lato Regular'),
-        local('Lato-Regular'),
-        url('../fonts/Lato_400.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Lato_400.woff') format('woff'),
-        url('../fonts/Lato_400.svg#Lato') format('svg'),
-        url('../fonts/Lato_400.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 700;
-    src:
-        local('Lato Bold'),
-        local('Lato-Bold'),
-        url('../fonts/Lato_700.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Lato_700.woff') format('woff'),
-        url('../fonts/Lato_700.svg#Lato') format('svg'),
-        url('../fonts/Lato_700.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Lato';
-    font-style: italic;
-    font-weight: 400;
-    src:
-        local('Lato Italic'),
-        local('Lato-Italic'),
-        url('../fonts/Lato_400italic.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Lato_400italic.woff') format('woff'),
-        url('../fonts/Lato_400italic.svg#Lato') format('svg'),
-        url('../fonts/Lato_400italic.ttf') format('truetype');
-}
-
 body {
     padding-top: 70px;
 }

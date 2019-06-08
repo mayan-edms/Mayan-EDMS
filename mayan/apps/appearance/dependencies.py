@@ -2,15 +2,31 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.dependencies.classes import JavaScriptDependency
+from mayan.apps.dependencies.classes import (
+    GoogleFontDependency, JavaScriptDependency
+)
 
+GoogleFontDependency(
+    label=_('Lato font'), module=__name__, name='lato',
+    url='https://fonts.googleapis.com/css?family=Lato:400,700,400italic'
+)
 JavaScriptDependency(
     label=_('Bootstrap'), module=__name__, name='bootstrap',
     version_string='=3.4.1'
 )
 JavaScriptDependency(
     label=_('Bootswatch'), module=__name__, name='bootswatch',
-    version_string='=3.4.1'
+    replace_list = [
+        {
+            'filename_pattern': '*.css',
+            'content_patterns': [
+                {
+                    'search': '"https://fonts.googleapis.com/css?family=Lato:400,700,400italic"',
+                    'replace': '../../../google_fonts/lato/import.css',
+                }
+            ]
+        }
+    ], version_string='=3.4.1'
 )
 JavaScriptDependency(
     label=_('Fancybox'), module=__name__, name='@fancyapps/fancybox',

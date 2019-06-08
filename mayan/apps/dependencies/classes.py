@@ -1,5 +1,6 @@
 from __future__ import print_function, unicode_literals
 
+import fileinput
 import json
 import pkg_resources
 import shutil
@@ -34,6 +35,10 @@ class Provider(object):
 
 class PyPIRespository(Provider):
     url = 'https://pypi.org/'
+
+
+class GoogleFontsProvider(Provider):
+    url = 'https://fonts.googleapis.com/'
 
 
 class NPMRegistryRespository(Provider):
@@ -159,7 +164,7 @@ class Dependency(object):
 
     @classmethod
     def check_all(cls):
-        template = '{:<35}{:<10} {:<15} {:<20} {:<15} {:<30} {:<10}'
+        template = '{:<35}{:<11} {:<15} {:<20} {:<15} {:<30} {:<10}'
 
         print('\n  ', end='')
         print(
@@ -249,7 +254,7 @@ class Dependency(object):
     def __init__(
         self, name, app_label=None, copyright_text=None, help_text=None,
         environment=environment_production, label=None, module=None,
-        version_string=None
+        replace_list=None, version_string=None
     ):
         self._app_label = app_label
         self.copyright_text = copyright_text
@@ -259,6 +264,7 @@ class Dependency(object):
         self.module = module
         self.name = name
         self.package_metadata = None
+        self.replace_list = replace_list
         self.repository = self.provider_class()
         self.version_string = version_string
 
@@ -307,12 +313,20 @@ class Dependency(object):
                 print(_('Complete.'))
                 sys.stdout.flush()
         else:
-            self._install()
+            if self.replace_list:
+                self.patch_files()
+                print(_('Complete.'))
+                sys.stdout.flush()
+
+            self.patch_files()
             print(_('Complete.'))
             sys.stdout.flush()
 
     def _install(self):
         raise NotImplementedError
+
+    def __repr__(self):
+        return '<{}: {}>'.format(self.__class__.__name__, self.name)
 
     def check(self):
         """
@@ -372,6 +386,39 @@ class Dependency(object):
 
     def get_version_string(self):
         return self.version_string or _('Not specified')
+
+    def patch_files(self, path=None, replace_list=None):
+        """
+        Search and replace content from a list of file based on a pattern
+        replace_list[
+            {
+                'filename_pattern': '*.css',
+                'content_patterns': [
+                    {
+                        'search': '',
+                        'replace': '',
+                    }
+                ]
+            }
+        ]
+        """
+        print(_('Patching files... '), end='')
+        sys.stdout.flush()
+
+        if not path:
+            path = self.get_install_path()
+
+        if not replace_list:
+            replace_list = self.replace_list
+
+        path_object = Path(path)
+        for replace_entry in replace_list or []:
+            for path_entry in path_object.glob('**/{}'.format(replace_entry['filename_pattern'])):
+                if path_entry.is_file():
+                    with fileinput.FileInput(path_entry, inplace=True, backup='.bck') as fo:
+                        for line in fo:
+                            for pattern in replace_entry['content_patterns']:
+                                print(line.replace(pattern['search'], pattern['replace']), end='')
 
     def verify(self):
         """
@@ -459,12 +506,14 @@ class JavaScriptDependency(Dependency):
                 )
                 dependency.install(include_dependencies=False)
 
-    def extract(self):
+    def extract(self, replace_list=None):
         temporary_directory = mkdtemp()
         path_compressed_file = self.get_tar_file_path()
 
         with tarfile.open(name=force_text(path_compressed_file), mode='r') as file_object:
             file_object.extractall(path=temporary_directory)
+
+        self.patch_files(path=temporary_directory, replace_list=replace_list)
 
         path_install = self.get_install_path()
 
@@ -649,6 +698,88 @@ class PythonDependency(Dependency):
             return import_string(dotted_path=self.copyright_attribute)
         else:
             return super(PythonDependency, self).get_copyright()
+
+
+class GoogleFontDependency(Dependency):
+    class_name = 'google_font'
+    class_name_help_text = _(
+        'Fonts downloaded from fonts.googleapis.com.'
+    )
+    class_name_verbose_name = _('Google font')
+    provider_class = GoogleFontsProvider
+    user_agents = {
+        'woff2': 'Mozilla/5.0 (Windows NT 6.1; rv:60.0) Gecko/20100101 Firefox/60.0',
+        'woff': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36',
+        'ttf': 'Mozilla/5.0 (Linux; U; Android 2.2; en-us; DROID2 GLOBAL Build/S273) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1',
+    }
+
+    def __init__(self, *args, **kwargs):
+        self.url = kwargs.pop('url')
+        self.static_folder = kwargs.pop('static_folder', None)
+        super(GoogleFontDependency, self).__init__(*args, **kwargs)
+
+    def _check(self):
+        return self.get_install_path().exists()
+
+    def _install(self):
+        print(_('Downloading... '), end='')
+        sys.stdout.flush()
+        self.download()
+        print(_('Extracting... '), end='')
+        sys.stdout.flush()
+        self.extract()
+
+    def download(self):
+        self.path_cache = Path(mkdtemp())
+        # Use .css to keep the same ContentType, otherwise the webserver
+        # will use the generic octet and the browser will ignore the import
+        # https://www.w3.org/TR/2013/CR-css-cascade-3-20131003/#content-type
+        self.path_import_file = self.path_cache / 'import.css'
+
+        self.font_files = []
+
+        with open(self.path_import_file, mode='w') as file_object:
+            for agent_name, agent_string in self.user_agents.items():
+                import_file = force_text(
+                    requests.get(
+                        self.url, headers={
+                            'User-Agent': agent_string
+                        }
+                    ).content
+                )
+
+                for line in import_file.split('\n'):
+                    if 'url' in line:
+                        font_url = line.split(' ')[-2][4:-1]
+                        url = furl(force_text(font_url))
+                        font_filename = url.path.segments[-1]
+
+                        with open(self.path_cache / font_filename, mode='wb') as font_file_object:
+                            with requests.get(font_url, stream=True) as response:
+                                shutil.copyfileobj(fsrc=response.raw, fdst=font_file_object)
+
+                        line = line.replace(font_url, font_filename)
+
+                    file_object.write(line)
+
+    def extract(self, replace_list=None):
+        path_install = self.get_install_path()
+
+        # Clear the installation path of previous content
+        shutil.rmtree(path=force_text(path_install), ignore_errors=True)
+
+        shutil.copytree(
+            force_text(self.path_cache), force_text(path_install)
+        )
+        shutil.rmtree(force_text(self.path_cache), ignore_errors=True)
+
+    def get_install_path(self):
+        app = apps.get_app_config(app_label=self.app_label)
+        result = Path(
+            app.path, 'static', self.static_folder or app.label,
+            'google_fonts', self.name
+        )
+        return result
 
 
 DependencyGroup(

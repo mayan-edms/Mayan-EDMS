@@ -22,7 +22,7 @@ class DependenciesApp(MayanAppConfig):
     app_namespace = 'dependencies'
     app_url = 'dependencies'
     has_rest_api = False
-    has_tests = False
+    has_tests = True
     name = 'mayan.apps.dependencies'
     verbose_name = _('Dependencies')
 
