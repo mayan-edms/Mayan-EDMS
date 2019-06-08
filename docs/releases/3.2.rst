@@ -710,6 +710,8 @@ Other changes
   at install time.
 - Add support for Google Fonts dependencies.
 - Add support for patchin dependency files using rewriting rules.
+- Allow searching documents by UUID.
+
 
 Removals
 --------

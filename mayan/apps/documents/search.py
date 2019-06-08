@@ -20,6 +20,7 @@ document_search.add_model_field(
 )
 document_search.add_model_field(field='label', label=_('Label'))
 document_search.add_model_field(field='description', label=_('Description'))
+document_search.add_model_field(field='uuid', label=_('UUID'))
 document_search.add_model_field(
     field='versions__checksum', label=_('Checksum')
 )
