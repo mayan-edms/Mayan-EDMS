@@ -6,6 +6,11 @@ from mayan.apps.dynamic_search.classes import SearchModel
 
 from .permissions import permission_document_view
 
+
+def format_uuid(term_string):
+    return term_string.replace('-', '')
+
+
 document_search = SearchModel(
     app_label='documents', model_name='Document',
     permission=permission_document_view,
@@ -20,7 +25,9 @@ document_search.add_model_field(
 )
 document_search.add_model_field(field='label', label=_('Label'))
 document_search.add_model_field(field='description', label=_('Description'))
-document_search.add_model_field(field='uuid', label=_('UUID'))
+document_search.add_model_field(
+    field='uuid', label=_('UUID'), transformation_function=format_uuid
+)
 document_search.add_model_field(
     field='versions__checksum', label=_('Checksum')
 )

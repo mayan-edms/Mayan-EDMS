@@ -30,8 +30,15 @@ class FieldQuery(object):
                 if term.string == TERM_OPERATION_OR:
                     query_operation = QUERY_OPERATION_OR
             else:
+                if search_field.transformation_function:
+                    term_string = search_field.transformation_function(
+                        term_string=term.string
+                    )
+                else:
+                    term_string = term.string
+
                 q_object = Q(
-                    **{'%s__%s' % (search_field.field, 'icontains'): term.string}
+                    **{'%s__%s' % (search_field.field, 'icontains'): term_string}
                 )
                 if term.negated:
                     q_object = ~q_object
@@ -58,10 +65,11 @@ class SearchField(object):
     """
     Search for terms in fields that directly belong to the parent SearchModel
     """
-    def __init__(self, search_model, field, label):
+    def __init__(self, search_model, field, label, transformation_function=None):
         self.search_model = search_model
         self.field = field
         self.label = label
+        self.transformation_function = transformation_function
 
     def get_full_name(self):
         return self.field
@@ -282,8 +290,6 @@ class SearchTermCollection(object):
                             is_meta = True
                         else:
                             is_meta = False
-
-                        print("NEW TERM", ''.join(term_letters))
 
                         if is_meta:
                             negated = False

@@ -158,3 +158,15 @@ class DocumentSearchTestCase(DocumentTestMixin, BaseTestCase):
             {'label': '-"second-document"'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
+
+    def test_search_field_transformation_functions(self):
+        self.upload_document()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        queryset = document_search.search(
+            {'uuid': force_text(self.test_document.uuid)}, user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 1)
