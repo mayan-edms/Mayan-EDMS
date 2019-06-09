@@ -160,6 +160,13 @@ class SetupWorkflowDeleteView(SingleObjectDeleteView):
         viewname='document_states:setup_workflow_list'
     )
 
+    def get_extra_context(self):
+        return {
+            'title': _(
+                'Delete workflow: %s?'
+            ) % self.object,
+        }
+
 
 class SetupWorkflowEditView(SingleObjectEditView):
     form_class = WorkflowForm
@@ -168,6 +175,13 @@ class SetupWorkflowEditView(SingleObjectEditView):
     post_action_redirect = reverse_lazy(
         viewname='document_states:setup_workflow_list'
     )
+
+    def get_extra_context(self):
+        return {
+            'title': _(
+                'Edit workflow: %s'
+            ) % self.object,
+        }
 
     def get_save_extra_data(self):
         return {'_user': self.request.user}
@@ -442,6 +456,9 @@ class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
         return {
             'navigation_object_list': ('object', 'workflow_instance'),
             'object': self.get_object(),
+            'title': _(
+                'Delete workflow state: %s?'
+            ) % self.object,
             'workflow_instance': self.get_object().workflow,
         }
 
@@ -462,6 +479,9 @@ class SetupWorkflowStateEditView(SingleObjectEditView):
         return {
             'navigation_object_list': ('object', 'workflow_instance'),
             'object': self.get_object(),
+            'title': _(
+                'Edit workflow state: %s'
+            ) % self.object,
             'workflow_instance': self.get_object().workflow,
         }
 
@@ -553,6 +573,9 @@ class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
         return {
             'object': self.get_object(),
             'navigation_object_list': ('object', 'workflow_instance'),
+            'title': _(
+                'Delete workflow transition: %s?'
+            ) % self.object,
             'workflow_instance': self.get_object().workflow,
         }
 
@@ -573,6 +596,9 @@ class SetupWorkflowTransitionEditView(SingleObjectEditView):
         return {
             'navigation_object_list': ('object', 'workflow_instance'),
             'object': self.get_object(),
+            'title': _(
+                'Edit workflow transition: %s'
+            ) % self.object,
             'workflow_instance': self.get_object().workflow,
         }
 
