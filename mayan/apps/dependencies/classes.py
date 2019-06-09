@@ -415,10 +415,14 @@ class Dependency(object):
         for replace_entry in replace_list or []:
             for path_entry in path_object.glob('**/{}'.format(replace_entry['filename_pattern'])):
                 if path_entry.is_file():
-                    with fileinput.FileInput(path_entry, inplace=True, backup='.bck') as fo:
-                        for line in fo:
-                            for pattern in replace_entry['content_patterns']:
-                                print(line.replace(pattern['search'], pattern['replace']), end='')
+                    # PY3
+                    # Don't use context processor to allow working on Python 2.7
+                    # Update on Mayan EDMS version >= 4.0
+                    file_object = fileinput.FileInput(force_text(path_entry), inplace=True)
+                    for line in file_object:
+                        for pattern in replace_entry['content_patterns']:
+                            print(line.replace(pattern['search'], pattern['replace']), end='')
+                    file_object.close()
 
     def verify(self):
         """

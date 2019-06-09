@@ -25,7 +25,7 @@ class DependencyClassTestCase(BaseTestCase):
         path_temporary_directory = Path(temporary_directory)
         path_test_file = path_temporary_directory / 'test_file.css'
 
-        with open(path_test_file, mode='w') as file_object:
+        with path_test_file.open(mode='w') as file_object:
             file_object.write(
                 '@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");'
             )
@@ -45,7 +45,7 @@ class DependencyClassTestCase(BaseTestCase):
 
         dependency.patch_files(path=temporary_directory, replace_list=replace_list)
 
-        with open(path_test_file, mode='r') as file_object:
+        with path_test_file.open(mode='r') as file_object:
             final_text = file_object.read()
 
         shutil.rmtree(temporary_directory, ignore_errors=True)
