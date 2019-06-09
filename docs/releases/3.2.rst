@@ -715,6 +715,8 @@ Other changes
   outside of quotes are now interpreted as negation.
 - Add support for search field transformations.
 - Disable hiding page navigation on idle.
+- Display namespace in the transition trigger view.
+- Sort events list in the transition trigger view.
 
 
 Removals

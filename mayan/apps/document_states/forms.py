@@ -113,6 +113,10 @@ class WorkflowTransitionForm(forms.ModelForm):
 
 
 class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
+    namespace = forms.CharField(
+        label=_('Namespace'), required=False,
+        widget=forms.TextInput(attrs={'readonly': 'readonly'})
+    )
     label = forms.CharField(
         label=_('Label'), required=False,
         widget=forms.TextInput(attrs={'readonly': 'readonly'})
@@ -130,6 +134,7 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
             *args, **kwargs
         )
 
+        self.fields['namespace'].initial = self.initial['event_type'].namespace
         self.fields['label'].initial = self.initial['event_type'].label
 
         relationship = self.initial['transition'].trigger_events.filter(

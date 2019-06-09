@@ -286,6 +286,8 @@
 * Improve search negation logic.
 * Add support for search field transformations.
 * Disable hiding page navigation on idle.
+* Display namespace in the transition trigger view.
+* Sort events list in the transition trigger view.
 
 3.1.11 (2019-04-XX)
 ===================

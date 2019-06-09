@@ -685,9 +685,6 @@ class SetupWorkflowTransitionTriggerEventListView(ExternalObjectMixin, FormView)
             SetupWorkflowTransitionTriggerEventListView, self
         ).form_valid(form=form)
 
-    def get_object(self):
-        return self.external_object
-
     def get_extra_context(self):
         return {
             'form_display_mode_table': True,
@@ -713,12 +710,20 @@ class SetupWorkflowTransitionTriggerEventListView(ExternalObjectMixin, FormView)
             name__in=event_type_ids
         )
 
+        # Sort queryset in Python by namespace, then by label
+        event_type_queryset = sorted(
+            event_type_queryset, key=lambda x: (x.namespace, x.label)
+        )
+
         for event_type in event_type_queryset:
             initial.append({
                 'transition': obj,
                 'event_type': event_type,
             })
         return initial
+
+    def get_object(self):
+        return self.external_object
 
     def get_post_action_redirect(self):
         return reverse(
