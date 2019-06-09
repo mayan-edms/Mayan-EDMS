@@ -19,7 +19,7 @@ DEFAULT_TIMEOUT = 4  # 4 seconds
 class DocumentPropertiesEditAction(WorkflowAction):
     fields = {
         'document_label': {
-            'label': _('Label'),
+            'label': _('Document label'),
             'class': 'django.forms.CharField', 'kwargs': {
                 'help_text': _(
                     'The new label to be assigned to the document. Can be a '
@@ -27,7 +27,7 @@ class DocumentPropertiesEditAction(WorkflowAction):
                 ), 'required': False
             },
         }, 'document_description': {
-            'label': _('Description'),
+            'label': _('Document description'),
             'class': 'django.forms.CharField', 'kwargs': {
                 'help_text': _(
                     'The new description to be assigned to the document. '
