@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2019
 # Berny <berny@bernhard-marx.de>, 2019
 # Felix <felix.com@gmx.com>, 2019
+# Robin Schubert <robin.schubert@gmx.de>, 2019
 # Mathias Behrle <mathiasb@m9s.biz>, 2019
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -17,12 +18,11 @@ msgstr ""
 "POT-Creation-Date: 2019-06-09 03:18-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2019\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
-"teams/13584/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:27 links.py:43 permissions.py:7
@@ -70,10 +70,12 @@ msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing depedencies under this environment."
 msgstr ""
+"Umgebung, in der installierbare Pakete der Software erstellt werden. "
+"Endbenutzer können fehlende Abhängigkeiten in dieser Umgebung ignorieren."
 
 #: classes.py:68
 msgid "Build"
-msgstr ""
+msgstr "Build"
 
 #: classes.py:72
 msgid ""
@@ -119,7 +121,7 @@ msgstr "Name"
 
 #: classes.py:173
 msgid "App"
-msgstr ""
+msgstr "App"
 
 #: classes.py:274
 msgid "Need to specify at least one: app_label or module."
@@ -174,11 +176,11 @@ msgstr "Binärdatei"
 
 #: classes.py:455
 msgid ""
-"Javascript libraries downloaded the from NPM registry and used for front-end "
-"functionality."
+"Javascript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
 msgstr ""
-"Javascript Bibliotheken, die aus der NPM Registry heruntergeladen werden und "
-"für die Front-End-Funktionalität benötigt werden."
+"Javascript Bibliotheken, die aus der NPM Registry heruntergeladen werden und"
+" für die Front-End-Funktionalität benötigt werden."
 
 #: classes.py:458
 msgid "Javascript"
@@ -186,15 +188,15 @@ msgstr "Javascript"
 
 #: classes.py:492 classes.py:725
 msgid "Downloading... "
-msgstr ""
+msgstr "Herunterladen..."
 
 #: classes.py:495
 msgid "Verifying... "
-msgstr ""
+msgstr "Verifizieren..."
 
 #: classes.py:498 classes.py:728
 msgid "Extracting... "
-msgstr ""
+msgstr "Entpacken..."
 
 #: classes.py:677
 msgid "Python packages downloaded from PyPI."
@@ -279,12 +281,16 @@ msgstr "Lizenzen von Abhängigkeiten"
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
+"Kommagetrennte Liste von Abhängigkeiten, die aus der generierten Liste "
+"ausgeschlossen werden."
 
 #: management/commands/generaterequirements.py:22
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
+"Kommagetrennte Liste von Abhängigkeiten, die in der generierten Liste  "
+"erscheinen sollen, während alle anderen ausgeschlossen werden."
 
 #: management/commands/installjavascript.py:15
 msgid "Process a specific app."

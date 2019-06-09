@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
@@ -10,12 +10,11 @@ msgstr ""
 "POT-Creation-Date: 2019-06-09 03:19-0400\n"
 "PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:42
@@ -142,8 +141,8 @@ msgstr ""
 #: models.py:31 models.py:189
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The "
-"{{ document }} context variable is available."
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The {{ "
+"document }} context variable is available."
 msgstr ""
 
 #: models.py:35
@@ -165,8 +164,7 @@ msgstr "Σφάλμα κατά την δημιουργία δυναμικής ε�
 
 #: models.py:102
 msgid "This smart link is not allowed for the selected document's type."
-msgstr ""
-"Αυτός ο έξυπνος συνδεσμός δεν επιτρέπεται για τον επιλεγμένο τύπο εγγράφου."
+msgstr "Αυτός ο έξυπνος συνδεσμός δεν επιτρέπεται για τον επιλεγμένο τύπο εγγράφου."
 
 #: models.py:179
 msgid "The inclusion is ignored for the first item."
@@ -260,11 +258,8 @@ msgstr "Έγγραφα στον έξυπνο σύνδεσμο: %s"
 
 #: views.py:135
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr ""
-"Έγγραφα στον έξυπνο σύνδεσμο \"%(smart_link)s\" που σχετίζονται με το "
-"\"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "Έγγραφα στον έξυπνο σύνδεσμο \"%(smart_link)s\" που σχετίζονται με το \"%(document)s\""
 
 #: views.py:160
 msgid "Available document types"
@@ -277,8 +272,7 @@ msgstr "Ενεργοποίηση τύπων εγγράφου"
 #: views.py:171
 #, python-format
 msgid "Document type for which to enable smart link: %s"
-msgstr ""
-"Τύποι εγγράφων για τους οποίους θα ενεργοποιηθούν οι έξυπνοι σύνδεσμοι: %s"
+msgstr "Τύποι εγγράφων για τους οποίους θα ενεργοποιηθούν οι έξυπνοι σύνδεσμοι: %s"
 
 #: views.py:188
 msgid ""

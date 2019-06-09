@@ -1,0 +1,338 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-09 03:18-0400\n"
+"PO-Revision-Date: 2019-04-27 22:53+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
+"Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: apps.py:27 links.py:43 permissions.py:7
+msgid "Dependencies"
+msgstr "Atkarības"
+
+#: apps.py:33 apps.py:68 apps.py:76
+msgid "Label"
+msgstr "Etiķete"
+
+#: apps.py:36
+msgid "Internal name"
+msgstr "Iekšējais nosaukums"
+
+#: apps.py:39 apps.py:71 apps.py:80
+msgid "Description"
+msgstr "Apraksts"
+
+#: apps.py:43 classes.py:172
+msgid "Type"
+msgstr "Tips"
+
+#: apps.py:47 classes.py:174
+msgid "Other data"
+msgstr "Citi dati"
+
+#: apps.py:51
+msgid "Declared by"
+msgstr "Deklarēja"
+
+#: apps.py:55 classes.py:172
+msgid "Version"
+msgstr "Versija"
+
+#: apps.py:59 classes.py:173 classes.py:804
+msgid "Environment"
+msgstr "Vide"
+
+#: apps.py:63 classes.py:174
+msgid "Check"
+msgstr "Pārbaudiet"
+
+#: classes.py:65
+msgid ""
+"Environment used for building distributable packages of the software. End "
+"users can ignore missing depedencies under this environment."
+msgstr ""
+"Vide, ko izmanto programmatūras sadalāmo iepakojumu veidošanai. "
+"Galalietotāji var ignorēt trūkstošās atkāpes šajā vidē."
+
+#: classes.py:68
+msgid "Build"
+msgstr "Būvēt"
+
+#: classes.py:72
+msgid ""
+"Environment used for developers to make code changes. End users can ignore "
+"missing depedencies under this environment."
+msgstr ""
+"Vide, ko izstrādātāji izmanto, lai veiktu kodu izmaiņas. Galalietotāji var "
+"ignorēt trūkstošās atkāpes šajā vidē."
+
+#: classes.py:74
+msgid "Development"
+msgstr "Attīstība"
+
+#: classes.py:78
+msgid ""
+"Normal environment for end users. A missing depedencies under this "
+"environment will result issues and error during normal use."
+msgstr ""
+"Normāla vide galalietotājiem. Šajā vidē trūkstošās atkāpes radīs problēmas "
+"un kļūdas normālas lietošanas laikā."
+
+#: classes.py:80
+msgid "Production"
+msgstr "Ražošana"
+
+#: classes.py:84
+msgid ""
+"Environment used running the test suit to verify the functionality of the "
+"code. Dependencies in this environment are not needed for normal production "
+"usage."
+msgstr ""
+"Vide, ko izmanto testa uzvalka darbināšanai, lai pārbaudītu koda "
+"funkcionalitāti. Atšķirības šajā vidē nav nepieciešamas normālai ražošanas "
+"izmantošanai."
+
+#: classes.py:87
+msgid "Testing"
+msgstr "Testēšana"
+
+#: classes.py:172
+msgid "Name"
+msgstr "Nosaukums"
+
+#: classes.py:173
+msgid "App"
+msgstr "App"
+
+#: classes.py:274
+msgid "Need to specify at least one: app_label or module."
+msgstr "Nepieciešams norādīt vismaz vienu: app_label vai moduli."
+
+#: classes.py:279
+#, python-format
+msgid "Dependency \"%s\" already registered."
+msgstr "Atkarība &quot;%s&quot; jau ir reģistrēta."
+
+#: classes.py:305
+#, python-format
+msgid "Installing package: %s... "
+msgstr "Pakotnes instalēšana: %s ..."
+
+#: classes.py:310
+msgid "Already installed."
+msgstr "Jau instalēta."
+
+#: classes.py:313 classes.py:318 classes.py:322
+msgid "Complete."
+msgstr "Pabeigts."
+
+#: classes.py:348
+msgid "Installed and correct version"
+msgstr "Instalēta un pareiza versija"
+
+#: classes.py:350
+msgid "Missing or incorrect version"
+msgstr "Trūkst vai ir nepareiza versija"
+
+#: classes.py:379
+msgid "None"
+msgstr "Nav neviens"
+
+#: classes.py:388
+msgid "Not specified"
+msgstr "Nav precizēts"
+
+#: classes.py:405
+msgid "Patching files... "
+msgstr ""
+
+#: classes.py:436
+msgid "Executables that are called directly by the code."
+msgstr "Izpildāms, ko tieši sauc par kodu."
+
+#: classes.py:438
+msgid "Binary"
+msgstr "Binārs"
+
+#: classes.py:455
+msgid ""
+"Javascript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
+msgstr ""
+"Javascript bibliotēkas lejupielādētas no NPM reģistra un tiek izmantotas "
+"front-end funkcionalitātei."
+
+#: classes.py:458
+msgid "Javascript"
+msgstr "Javascript"
+
+#: classes.py:492 classes.py:725
+msgid "Downloading... "
+msgstr "Notiek lejupielāde ..."
+
+#: classes.py:495
+msgid "Verifying... "
+msgstr "Verificēšana ..."
+
+#: classes.py:498 classes.py:728
+msgid "Extracting... "
+msgstr "Izvilkšana ..."
+
+#: classes.py:677
+msgid "Python packages downloaded from PyPI."
+msgstr "Python paketes lejupielādētas no PyPI."
+
+#: classes.py:679
+msgid "Python"
+msgstr "Python"
+
+#: classes.py:706
+msgid "Fonts downloaded from fonts.googleapis.com."
+msgstr ""
+
+#: classes.py:708
+msgid "Google font"
+msgstr ""
+
+#: classes.py:786
+msgid "Declared in app"
+msgstr "Paziņots lietotnē"
+
+#: classes.py:787
+msgid "Show depedencies by the app that declared them."
+msgstr "Rādīt lietojumprogrammas, kas tos deklarējušas."
+
+#: classes.py:791
+msgid "Class"
+msgstr "Klase"
+
+#: classes.py:792
+msgid ""
+"Show the different classes of depedencies. Classes are usually divided by "
+"language or the file types of the depedency."
+msgstr ""
+"Parādiet dažādās depedences klases. Klases parasti tiek sadalītas pēc "
+"valodas vai depedences faila tipiem."
+
+#: classes.py:797
+msgid "State"
+msgstr "Valsts"
+
+#: classes.py:798
+msgid ""
+"Show the different states of the depedencies. True means that the "
+"depedencies is installed and is of a correct version. False means the "
+"depedencies is missing or an incorrect version is present."
+msgstr ""
+"Parādiet dažādos depedences stāvokļus. True nozīmē, ka depedences ir "
+"uzstādītas un ir pareizas. Nepareizi ir trūkumi vai nepareiza versija."
+
+#: classes.py:805
+msgid ""
+"Depedencies required for an environment might not be required for another. "
+"Example environments: Production, Development."
+msgstr ""
+"Vajadzības, kas nepieciešamas videi, nav nepieciešamas citai. Vides paraugi:"
+" ražošana, attīstība."
+
+#: links.py:11 views.py:35
+msgid "Check for updates"
+msgstr "Meklēt atjauninājumus"
+
+#: links.py:17
+msgid "Groups"
+msgstr "Grupas"
+
+#: links.py:25
+msgid "Entries"
+msgstr "Ieraksti"
+
+#: links.py:33
+msgid "Details"
+msgstr "Detaļas"
+
+#: links.py:38
+msgid "Dependencies licenses"
+msgstr "Atkarības licences"
+
+#: management/commands/generaterequirements.py:16
+msgid ""
+"Comma separated names of dependencies to exclude from the list generated."
+msgstr ""
+"Komatu atdalītie atkarību nosaukumi, lai izslēgtu no izveidotā saraksta."
+
+#: management/commands/generaterequirements.py:22
+msgid ""
+"Comma separated names of dependencies to show in the list while excluding "
+"every other one."
+msgstr ""
+"Sarakstā atdalīto atkarību nosaukumus atdaliet ar komatu, izslēdzot katru "
+"otru."
+
+#: management/commands/installjavascript.py:15
+msgid "Process a specific app."
+msgstr "Apstrādājiet konkrētu lietotni."
+
+#: management/commands/installjavascript.py:19
+msgid "Force installation even if already installed."
+msgstr "Piespiediet instalāciju, pat ja tā jau ir instalēta."
+
+#: permissions.py:10
+msgid "View dependencies"
+msgstr "Skatīt atkarības"
+
+#: views.py:23
+#, python-format
+msgid "The version you are using is outdated. The latest version is %s"
+msgstr "Lietotā versija ir novecojusi. Jaunākā versija ir %s"
+
+#: views.py:28
+msgid "It is not possible to determine the latest version available."
+msgstr "Nav iespējams noteikt jaunāko pieejamo versiju."
+
+#: views.py:32
+msgid "Your version is up-to-date."
+msgstr "Jūsu versija ir atjaunināta."
+
+#: views.py:49
+#, python-format
+msgid "Entries for dependency group: %s"
+msgstr "Ieraksti atkarības grupai: %s"
+
+#: views.py:62 views.py:107
+#, python-format
+msgid "Group %s not found."
+msgstr "Grupa %s nav atrasta."
+
+#: views.py:75
+msgid "Dependency groups"
+msgstr "Atkarības grupas"
+
+#: views.py:95
+#, python-format
+msgid "Dependency group and entry: %(group)s, %(entry)s"
+msgstr "Atkarības grupa un ieraksts: %(group)s, %(entry)s"
+
+#: views.py:119
+#, python-format
+msgid "Entry %s not found."
+msgstr "Ieraksts %s nav atrasts."
+
+#: views.py:137
+msgid "Other packages licenses"
+msgstr "Citas paketes licences"

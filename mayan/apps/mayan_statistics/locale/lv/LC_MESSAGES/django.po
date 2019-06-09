@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-09 03:19-0400\n"
+"PO-Revision-Date: 2019-05-31 12:50+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: apps.py:23 links.py:33 permissions.py:7 queues.py:9
+msgid "Statistics"
+msgstr "Statistika"
+
+#. Translators: Schedule here is a noun, the 'schedule' at
+#. which the statistic will be updated
+#: apps.py:32
+msgid "Schedule"
+msgstr "Grafiks"
+
+#: apps.py:37
+msgid "Last update"
+msgstr "Pēdējā atjaunošana"
+
+#: classes.py:150
+msgid "Never"
+msgstr "Nekad"
+
+#: links.py:12
+msgid "Queue"
+msgstr "Rinda"
+
+#: links.py:17
+msgid "View"
+msgstr "Skatīt"
+
+#: links.py:22
+msgid "Namespace details"
+msgstr "Nosaukuma vietas informācija"
+
+#: links.py:27
+msgid "Namespace list"
+msgstr "Vārdu vietas saraksts"
+
+#. Translators: 'Slug' refers to the URL valid ID of the statistic
+#. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
+#: models.py:14
+msgid "Slug"
+msgstr "Lode"
+
+#: models.py:16
+msgid "Date time"
+msgstr "Datums Laiks"
+
+#: models.py:18
+msgid "Data"
+msgstr "Dati"
+
+#: models.py:21
+msgid "Statistics result"
+msgstr "Statistikas rezultāts"
+
+#: models.py:22
+msgid "Statistics results"
+msgstr "Statistikas rezultāti"
+
+#: permissions.py:10
+msgid "View statistics"
+msgstr "Skatīt statistiku"
+
+#: queues.py:13
+msgid "Execute statistic"
+msgstr "Izpildiet statistiku"
+
+#: templates/statistics/renderers/chartjs/line.html:14
+msgid "No data available."
+msgstr "Nav pieejami dati."
+
+#: templates/statistics/renderers/chartjs/line.html:16
+#, python-format
+msgid "Last update: %(datetime)s"
+msgstr "Pēdējais atjauninājums: %(datetime)s"
+
+#: views.py:17
+msgid "Statistics namespaces"
+msgstr "Statistikas nosaukumu vietas"
+
+#: views.py:33
+#, python-format
+msgid "Namespace details for: %s"
+msgstr "Vārda vietas informācija: %s"
+
+#: views.py:55
+#, python-format
+msgid "Results for: %s"
+msgstr "Rezultāti par: %s"
+
+#: views.py:62 views.py:88
+#, python-format
+msgid "Statistic \"%s\" not found."
+msgstr "Statistika &quot;%s&quot; nav atrasta."
+
+#: views.py:80
+#, python-format
+msgid "Queue statistic \"%s\" to be updated?"
+msgstr "Vai atjaunināt rindas statistiku &quot;%s&quot;?"
+
+#: views.py:94
+#, python-format
+msgid "Statistic \"%s\" queued successfully for update."
+msgstr "Statistikai &quot;%s&quot; veiksmīgi atjaunināts."

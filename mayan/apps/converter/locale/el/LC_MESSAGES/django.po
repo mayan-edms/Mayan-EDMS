@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
@@ -10,12 +10,11 @@ msgstr ""
 "POT-Creation-Date: 2019-06-09 03:17-0400\n"
 "PO-Revision-Date: 2019-05-03 05:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:22 permissions.py:7 settings.py:12
@@ -79,9 +78,7 @@ msgstr "Μετασχηματισμός"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Προτεραιότητα με την οποία θα εφαρμοστεί ο μετασχηματισμός. Αν αφαιθεί κενό, "
-"θα αποδοθεί αυτόματα μια τιμή σειράς προτεραιότητας."
+msgstr "Προτεραιότητα με την οποία θα εφαρμοστεί ο μετασχηματισμός. Αν αφαιθεί κενό, θα αποδοθεί αυτόματα μια τιμή σειράς προτεραιότητας."
 
 #: models.py:39
 msgid "Order"
@@ -185,14 +182,12 @@ msgstr "Δημιουργία νέου μετασχηματισμού για: %s"
 #: views.py:127
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
-"Διαγραφή μετασχηματισμού \"%(transformation)s\" για: %(content_object)s?"
+msgstr "Διαγραφή μετασχηματισμού \"%(transformation)s\" για: %(content_object)s?"
 
 #: views.py:171
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
-"Τροποποίηση μετασχηματισμού \"%(transformation)s\" για: %(content_object)s"
+msgstr "Τροποποίηση μετασχηματισμού \"%(transformation)s\" για: %(content_object)s"
 
 #: views.py:227
 msgid ""

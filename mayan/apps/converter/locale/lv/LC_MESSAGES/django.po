@@ -1,0 +1,206 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-09 03:17-0400\n"
+"PO-Revision-Date: 2019-05-31 12:00+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: apps.py:22 permissions.py:7 settings.py:12
+msgid "Converter"
+msgstr "Pārveidotājs"
+
+#: apps.py:31 models.py:57
+msgid "Transformation"
+msgstr "Transformācija"
+
+#: backends/python.py:175 backends/python.py:181
+#, python-format
+msgid "Exception determining PDF page count; %s"
+msgstr "Izņēmums, kas nosaka PDF lapu skaitu; %s"
+
+#: backends/python.py:195
+#, python-format
+msgid "Exception determining page count using Pillow; %s"
+msgstr "Izņēmums, kas nosaka lappušu skaitu, izmantojot spilvenu; %s"
+
+#: classes.py:118
+msgid "LibreOffice not installed or not found."
+msgstr "LibreOffice nav instalēts vai nav atrasts."
+
+#: classes.py:201
+msgid "Not an office file format."
+msgstr "Ne biroja faila formāts."
+
+#: dependencies.py:16
+msgid "Utility from the poppler-utils package used to inspect PDF files."
+msgstr "Utility no poppler-utils paketes, ko izmanto, lai pārbaudītu PDF failus."
+
+#: dependencies.py:21
+msgid ""
+"Utility from the popper-utils package used to extract pages from PDF files "
+"into PPM format images."
+msgstr "Utility no popper-utils paketes, ko izmanto, lai no PDF failiem izņemtu lapas PPM formāta attēlos."
+
+#: forms.py:28
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr "&quot;%s&quot; nav derīgs ieraksts."
+
+#: links.py:36
+msgid "Create new transformation"
+msgstr "Izveidot jaunu transformāciju"
+
+#: links.py:42
+msgid "Delete"
+msgstr "Dzēst"
+
+#: links.py:48
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: links.py:53 models.py:58
+msgid "Transformations"
+msgstr "Transformācijas"
+
+#: models.py:37
+msgid ""
+"Order in which the transformations will be executed. If left unchanged, an "
+"automatic order value will be assigned."
+msgstr "Kārtība, kādā tiks veiktas transformācijas. Ja tas netiek mainīts, tiks piešķirta automātiskā pasūtījuma vērtība."
+
+#: models.py:39
+msgid "Order"
+msgstr "Pasūtījums"
+
+#: models.py:43
+msgid "Name"
+msgstr "Nosaukums"
+
+#: models.py:47
+msgid ""
+"Enter the arguments for the transformation as a YAML dictionary. ie: "
+"{\"degrees\": 180}"
+msgstr "Ievadiet transformācijas argumentus kā YAML vārdnīcu. ti: {&quot;grādi&quot;: 180}"
+
+#: models.py:49
+msgid "Arguments"
+msgstr "Argumenti"
+
+#: permissions.py:10
+msgid "Create new transformations"
+msgstr "Izveidojiet jaunas transformācijas"
+
+#: permissions.py:13
+msgid "Delete transformations"
+msgstr "Dzēst transformācijas"
+
+#: permissions.py:16
+msgid "Edit transformations"
+msgstr "Rediģēt pārveidojumus"
+
+#: permissions.py:19
+msgid "View existing transformations"
+msgstr "Skatiet esošās transformācijas"
+
+#: settings.py:16
+msgid "Graphics conversion backend to use."
+msgstr "Grafikas pārveidošanas backend izmantošana."
+
+#: settings.py:35
+msgid "Configuration options for the graphics conversion backend."
+msgstr "Grafikas reklāmguvumu backend konfigurācijas opcijas."
+
+#: transformations.py:81
+msgid "Crop"
+msgstr "Apgriezt"
+
+#: transformations.py:156
+msgid "Flip"
+msgstr "Flip"
+
+#: transformations.py:167
+msgid "Gaussian blur"
+msgstr "Gausa izplūšana"
+
+#: transformations.py:177
+msgid "Line art"
+msgstr "Line art"
+
+#: transformations.py:188
+msgid "Mirror"
+msgstr "Spogulis"
+
+#: transformations.py:199
+msgid "Resize"
+msgstr "Mainīt izmērus"
+
+#: transformations.py:226
+msgid "Rotate"
+msgstr "Pagriezt"
+
+#: transformations.py:252
+msgid "Rotate 90 degrees"
+msgstr "Pagrieziet 90 grādus"
+
+#: transformations.py:263
+msgid "Rotate 180 degrees"
+msgstr "Pagrieziet 180 grādus"
+
+#: transformations.py:274
+msgid "Rotate 270 degrees"
+msgstr "Pagrieziet 270 grādus"
+
+#: transformations.py:284
+msgid "Unsharp masking"
+msgstr "Nenovērtējama maskēšana"
+
+#: transformations.py:300
+msgid "Zoom"
+msgstr "Tālummaiņa"
+
+#: validators.py:26
+msgid "Enter a valid YAML value."
+msgstr "Ievadiet derīgu YAML vērtību."
+
+#: views.py:72
+#, python-format
+msgid "Create new transformation for: %s"
+msgstr "Izveidot jaunu transformāciju: %s"
+
+#: views.py:127
+#, python-format
+msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
+msgstr "Dzēst transformāciju &quot;%(transformation)s&quot;: %(content_object)s?"
+
+#: views.py:171
+#, python-format
+msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
+msgstr "Rediģēt transformāciju &quot;%(transformation)s&quot; par: %(content_object)s"
+
+#: views.py:227
+msgid ""
+"Transformations allow changing the visual appearance of documents without "
+"making permanent changes to the document file themselves."
+msgstr "Pārveidojumi ļauj mainīt dokumentu vizuālo izskatu, neveicot pastāvīgas izmaiņas dokumenta failā."
+
+#: views.py:231
+msgid "No transformations"
+msgstr "Nav pārveidojumu"
+
+#: views.py:232
+#, python-format
+msgid "Transformations for: %s"
+msgstr "Transformācijas: %s"

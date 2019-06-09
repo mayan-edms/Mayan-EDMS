@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -12,14 +12,12 @@ msgstr ""
 "POT-Creation-Date: 2019-06-09 03:17-0400\n"
 "PO-Revision-Date: 2019-05-17 05:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"rosarior/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:89 permissions_runtime.py:7 settings.py:14
 msgid "Common"
@@ -179,9 +177,7 @@ msgstr ""
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
-"Backend baze podataka je podešeno da koristi SKLite. SKLite treba koristiti "
-"samo za razvoj i testiranje, a ne za proizvodnju."
+msgstr "Backend baze podataka je podešeno da koristi SKLite. SKLite treba koristiti samo za razvoj i testiranje, a ne za proizvodnju."
 
 #: literals.py:31
 msgid "Days"
@@ -202,8 +198,8 @@ msgstr ""
 
 #: management/commands/convertdb.py:47
 msgid ""
-"The database from which data will be exported. If omitted the database named "
-"\"default\" will be used."
+"The database from which data will be exported. If omitted the database named"
+" \"default\" will be used."
 msgstr ""
 
 #: management/commands/convertdb.py:54
@@ -321,15 +317,14 @@ msgstr "Automatski omogućite evidenciju za sve aplikacije."
 
 #: settings.py:25
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Vreme za odlaganje pozadinskih zadataka koji zavise od baze podataka "
-"obavezuju se da se propagiraju."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Vreme za odlaganje pozadinskih zadataka koji zavise od baze podataka obavezuju se da se propagiraju."
 
 #: settings.py:32
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 
 #: settings.py:41
@@ -338,9 +333,7 @@ msgstr "Broj koji određuje koliko objekata treba prikazati po stranici."
 
 #: settings.py:48
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
-"Omogućite prijavljivanje grešaka izvan sistemskih mogućnosti evidentiranja "
-"grešaka."
+msgstr "Omogućite prijavljivanje grešaka izvan sistemskih mogućnosti evidentiranja grešaka."
 
 #: settings.py:55
 msgid "Path to the logfile that will track errors during production."
@@ -356,8 +349,7 @@ msgstr ""
 
 #: settings.py:74
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-" Backend skladišta koju svi radnici mogu koristiti za dijeljenje datoteka."
+msgstr " Backend skladišta koju svi radnici mogu koristiti za dijeljenje datoteka."
 
 #: settings.py:83
 msgid "Django"
@@ -366,14 +358,14 @@ msgstr ""
 #: settings.py:88
 msgid ""
 "A list of strings representing the host/domain names that this site can "
-"serve. This is a security measure to prevent HTTP Host header attacks, which "
-"are possible even under many seemingly-safe web server configurations. "
+"serve. This is a security measure to prevent HTTP Host header attacks, which"
+" are possible even under many seemingly-safe web server configurations. "
 "Values in this list can be fully qualified names (e.g. 'www.example.com'), "
-"in which case they will be matched against the request's Host header exactly "
-"(case-insensitive, not including port). A value beginning with a period can "
-"be used as a subdomain wildcard: '.example.com' will match example.com, www."
-"example.com, and any other subdomain of example.com. A value of '*' will "
-"match anything; in this case you are responsible to provide your own "
+"in which case they will be matched against the request's Host header exactly"
+" (case-insensitive, not including port). A value beginning with a period can"
+" be used as a subdomain wildcard: '.example.com' will match example.com, "
+"www.example.com, and any other subdomain of example.com. A value of '*' will"
+" match anything; in this case you are responsible to provide your own "
 "validation of the Host header (perhaps in a middleware; if so this "
 "middleware must be listed first in MIDDLEWARE)."
 msgstr ""
@@ -381,10 +373,11 @@ msgstr ""
 #: settings.py:106
 msgid ""
 "When set to True, if the request URL does not match any of the patterns in "
-"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the "
-"same URL with a slash appended. Note that the redirect may cause any data "
+"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the"
+" same URL with a slash appended. Note that the redirect may cause any data "
 "submitted in a POST request to be lost. The APPEND_SLASH setting is only "
-"used if CommonMiddleware is installed (see Middleware). See also PREPEND_WWW."
+"used if CommonMiddleware is installed (see Middleware). See also "
+"PREPEND_WWW."
 msgstr ""
 
 #: settings.py:119
@@ -408,10 +401,10 @@ msgid ""
 "body may be before a SuspiciousOperation (RequestDataTooBig) is raised. The "
 "check is done when accessing request.body or request.POST and is calculated "
 "against the total request size excluding any file upload data. You can set "
-"this to None to disable the check. Applications that are expected to receive "
-"unusually large form posts should tune this setting. The amount of request "
-"data is correlated to the amount of memory needed to process the request and "
-"populate the GET and POST dictionaries. Large requests could be used as a "
+"this to None to disable the check. Applications that are expected to receive"
+" unusually large form posts should tune this setting. The amount of request "
+"data is correlated to the amount of memory needed to process the request and"
+" populate the GET and POST dictionaries. Large requests could be used as a "
 "denial-of-service attack vector if left unchecked. Since web servers don't "
 "typically perform deep request inspection, it's not possible to perform a "
 "similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
@@ -468,8 +461,8 @@ msgstr ""
 
 #: settings.py:229
 msgid ""
-"Default: False. Whether to use a TLS (secure) connection when talking to the "
-"SMTP server. This is used for explicit TLS connections, generally on port "
+"Default: False. Whether to use a TLS (secure) connection when talking to the"
+" SMTP server. This is used for explicit TLS connections, generally on port "
 "587. If you are experiencing hanging connections, see the implicit TLS "
 "setting EMAIL_USE_SSL."
 msgstr ""
@@ -501,8 +494,8 @@ msgstr ""
 
 #: settings.py:271
 msgid ""
-"Default: '/accounts/login/' The URL where requests are redirected for login, "
-"especially when using the login_required() decorator. This setting also "
+"Default: '/accounts/login/' The URL where requests are redirected for login,"
+" especially when using the login_required() decorator. This setting also "
 "accepts named URL patterns which can be used to reduce configuration "
 "duplication since you don't have to define the URL in two places (settings "
 "and URLconf)."
@@ -520,8 +513,8 @@ msgstr ""
 #: settings.py:295
 msgid ""
 "Default: None. The URL where requests are redirected after a user logs out "
-"using LogoutView (if the view doesn't get a next_page argument). If None, no "
-"redirect will be performed and the logout view will be rendered. This "
+"using LogoutView (if the view doesn't get a next_page argument). If None, no"
+" redirect will be performed and the logout view will be rendered. This "
 "setting also accepts named URL patterns which can be used to reduce "
 "configuration duplication since you don't have to define the URL in two "
 "places (settings and URLconf)."
@@ -568,8 +561,8 @@ msgstr ""
 msgid ""
 "The file storage engine to use when collecting static files with the "
 "collectstatic management command. A ready-to-use instance of the storage "
-"backend defined in this setting can be found at django.contrib.staticfiles."
-"storage.staticfiles_storage."
+"backend defined in this setting can be found at "
+"django.contrib.staticfiles.storage.staticfiles_storage."
 msgstr ""
 
 #: settings.py:368
@@ -593,17 +586,18 @@ msgstr ""
 
 #: settings.py:391
 msgid ""
-"Default: \"amqp://\". Default broker URL. This must be a URL in the form of: "
-"transport://userid:password@hostname:port/virtual_host Only the scheme part "
-"(transport://) is required, the rest is optional, and defaults to the "
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
 msgstr ""
 
 #: settings.py:401
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
-"task results (tombstones). Refer to http://docs.celeryproject.org/en/v4.1.0/"
-"userguide/configuration.html#result-backend"
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
 msgstr ""
 
 #: templatetags/common_tags.py:31
@@ -637,8 +631,7 @@ msgstr "Kreirati"
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
-"Unesite važeći 'interni naziv' koji se sastoji od slova, brojeva i podčrtava."
+msgstr "Unesite važeći 'interni naziv' koji se sastoji od slova, brojeva i podčrtava."
 
 #: views.py:31
 msgid "About"

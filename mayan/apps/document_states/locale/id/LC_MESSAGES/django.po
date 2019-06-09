@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Adek Lanin, 2019
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-09 03:18-0400\n"
-"PO-Revision-Date: 2019-05-17 05:50+0000\n"
+"PO-Revision-Date: 2019-06-09 07:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/id/)\n"
-"Language: id\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:62 events.py:8 links.py:17 links.py:46 links.py:149 links.py:176
@@ -408,8 +407,8 @@ msgstr "Kunci utama dari transisi yang ditambahkan."
 
 #: views/workflow_instance_views.py:44
 msgid ""
-"Assign workflows to the document type of this document to have this document "
-"execute those workflows. "
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
 msgstr ""
 
 #: views/workflow_instance_views.py:48
@@ -423,14 +422,13 @@ msgstr "Alur kerja untuk dokumen: %s"
 
 #: views/workflow_instance_views.py:83
 msgid ""
-"This view will show the state changes as a workflow instance is transitioned."
+"This view will show the state changes as a workflow instance is "
+"transitioned."
 msgstr ""
 
 #: views/workflow_instance_views.py:87
-#, fuzzy
-#| msgid "There are no workflow for this document"
 msgid "There are no details for this workflow instance"
-msgstr "Tidak ada alur kerja untuk dokumen ini"
+msgstr ""
 
 #: views/workflow_instance_views.py:90
 #, python-format
@@ -528,16 +526,14 @@ msgid "No workflows have been defined"
 msgstr ""
 
 #: views/workflow_views.py:166
-#, fuzzy, python-format
-#| msgid "Delete workflows"
+#, python-format
 msgid "Delete workflow: %s?"
-msgstr "Hapus alur kerja"
+msgstr ""
 
 #: views/workflow_views.py:182
-#, fuzzy, python-format
-#| msgid "Edit workflows"
+#, python-format
 msgid "Edit workflow: %s"
-msgstr "Sunting alur kerja"
+msgstr ""
 
 #: views/workflow_views.py:196
 msgid "Available document types"
@@ -575,8 +571,8 @@ msgstr ""
 
 #: views/workflow_views.py:367
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or "
-"leaves the state in which they reside."
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
 msgstr ""
 
 #: views/workflow_views.py:371
@@ -598,16 +594,14 @@ msgid "Create states for workflow: %s"
 msgstr ""
 
 #: views/workflow_views.py:460
-#, fuzzy, python-format
-#| msgid "Delete workflows"
+#, python-format
 msgid "Delete workflow state: %s?"
-msgstr "Hapus alur kerja"
+msgstr ""
 
 #: views/workflow_views.py:483
-#, fuzzy, python-format
-#| msgid "Edit workflows"
+#, python-format
 msgid "Edit workflow state: %s"
-msgstr "Sunting alur kerja"
+msgstr ""
 
 #: views/workflow_views.py:514
 msgid "This workflow doesn't have any states"
@@ -619,20 +613,19 @@ msgid "Create transitions for workflow: %s"
 msgstr ""
 
 #: views/workflow_views.py:577
-#, fuzzy, python-format
-#| msgid "Workflow transitions"
+#, python-format
 msgid "Delete workflow transition: %s?"
-msgstr "Transisi alur kerja"
+msgstr ""
 
 #: views/workflow_views.py:600
-#, fuzzy, python-format
-#| msgid "Workflow transitions"
+#, python-format
 msgid "Edit workflow transition: %s"
-msgstr "Transisi alur kerja"
+msgstr ""
 
 #: views/workflow_views.py:635
 msgid ""
-"Create a transition and use it to move a workflow from  one state to another."
+"Create a transition and use it to move a workflow from  one state to "
+"another."
 msgstr ""
 
 #: views/workflow_views.py:639
@@ -683,10 +676,8 @@ msgid "Preview of: %s"
 msgstr ""
 
 #: workflow_actions.py:22
-#, fuzzy
-#| msgid "Document states"
 msgid "Document label"
-msgstr "Kondisi dokumen"
+msgstr ""
 
 #: workflow_actions.py:25
 msgid ""
@@ -694,10 +685,8 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:30
-#, fuzzy
-#| msgid "Description"
 msgid "Document description"
-msgstr "Deskripsi"
+msgstr ""
 
 #: workflow_actions.py:33
 msgid ""
@@ -725,10 +714,10 @@ msgstr ""
 
 #: workflow_actions.py:93
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow "
-"log entry instance as part of their context via the variable \"entry_log\". "
-"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", and \"comment\" attributes."
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:103
@@ -746,10 +735,10 @@ msgstr ""
 #: workflow_actions.py:112
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:125

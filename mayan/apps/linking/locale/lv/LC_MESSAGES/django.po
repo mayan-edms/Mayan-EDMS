@@ -1,0 +1,341 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-09 03:19-0400\n"
+"PO-Revision-Date: 2019-05-31 12:28+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: apps.py:42
+msgid "Linking"
+msgstr "Saistīšana"
+
+#: apps.py:74 models.py:27
+msgid "Label"
+msgstr "Etiķete"
+
+#: events.py:8 links.py:20 links.py:79 links.py:84 links.py:89 models.py:48
+#: permissions.py:7 views.py:197
+msgid "Smart links"
+msgstr "Viedās saites"
+
+#: events.py:12
+msgid "Smart link created"
+msgstr "Izveidota gudra saite"
+
+#: events.py:15
+msgid "Smart link edited"
+msgstr "Viedā saite rediģēta"
+
+#: forms.py:36
+msgid "Foreign document field"
+msgstr "Ārvalstu dokumentu lauks"
+
+#: links.py:26
+msgid "Create condition"
+msgstr "Izveidot nosacījumu"
+
+#: links.py:33 links.py:57
+msgid "Delete"
+msgstr "Dzēst"
+
+#: links.py:40 links.py:69
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: links.py:46
+msgid "Conditions"
+msgstr "Nosacījumi"
+
+#: links.py:51 views.py:243
+msgid "Create new smart link"
+msgstr "Izveidojiet jaunu viedo saiti"
+
+#: links.py:63 models.py:40
+msgid "Document types"
+msgstr "Dokumentu veidi"
+
+#: links.py:73
+msgid "Documents"
+msgstr "Dokumenti"
+
+#: literals.py:9
+msgid "and"
+msgstr "un"
+
+#: literals.py:10
+msgid "or"
+msgstr "vai"
+
+#: literals.py:14
+msgid "is equal to"
+msgstr "ir vienāds ar"
+
+#: literals.py:15
+msgid "is equal to (case insensitive)"
+msgstr "ir vienāds ar (gadījuma nejutīgums)"
+
+#: literals.py:16
+msgid "contains"
+msgstr "satur"
+
+#: literals.py:17
+msgid "contains (case insensitive)"
+msgstr "satur (nejutīga lieta)"
+
+#: literals.py:18
+msgid "is in"
+msgstr "ir iekšā"
+
+#: literals.py:19
+msgid "is greater than"
+msgstr "ir labāks par"
+
+#: literals.py:20
+msgid "is greater than or equal to"
+msgstr "ir lielāks vai vienāds ar"
+
+#: literals.py:21
+msgid "is less than"
+msgstr "ir mazāks par"
+
+#: literals.py:22
+msgid "is less than or equal to"
+msgstr "ir mazāks vai vienāds ar"
+
+#: literals.py:23
+msgid "starts with"
+msgstr "sākas ar"
+
+#: literals.py:24
+msgid "starts with (case insensitive)"
+msgstr "sākas ar (nejutīga lieta)"
+
+#: literals.py:25
+msgid "ends with"
+msgstr "beidzas ar"
+
+#: literals.py:26
+msgid "ends with (case insensitive)"
+msgstr "beidzas ar (nejutīga lieta)"
+
+#: literals.py:27
+msgid "is in regular expression"
+msgstr "ir regulāra izteiksme"
+
+#: literals.py:28
+msgid "is in regular expression (case insensitive)"
+msgstr "ir regulāra izteiksme (gadījuma nejutīgums)"
+
+#: models.py:31 models.py:189
+msgid ""
+"Enter a template to render. Use Django's default templating language "
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The {{ "
+"document }} context variable is available."
+msgstr "Ievadiet veidni, kas jāpiešķir. Izmantojiet Django noklusējuma veidnes valodu (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). Ir pieejams {{document}} konteksta mainīgais."
+
+#: models.py:35
+msgid "Dynamic label"
+msgstr "Dinamiska etiķete"
+
+#: models.py:37 models.py:199
+msgid "Enabled"
+msgstr "Iespējots"
+
+#: models.py:47 models.py:175
+msgid "Smart link"
+msgstr "Viedā saite"
+
+#: models.py:87
+#, python-format
+msgid "Error generating dynamic label; %s"
+msgstr "Radot dinamisku marķējumu, radās kļūda; %s"
+
+#: models.py:102
+msgid "This smart link is not allowed for the selected document's type."
+msgstr "Šī viedā saite nav atļauta izvēlētajam dokumenta tipam."
+
+#: models.py:179
+msgid "The inclusion is ignored for the first item."
+msgstr "Pirmā vienuma iekļaušana tiek ignorēta."
+
+#: models.py:183
+msgid "This represents the metadata of all other documents."
+msgstr "Tas atspoguļo visu pārējo dokumentu metadatus."
+
+#: models.py:184
+msgid "Foreign document attribute"
+msgstr "Ārvalstu dokumentu atribūts"
+
+#: models.py:193
+msgid "Expression"
+msgstr "Izteiksme"
+
+#: models.py:196
+msgid "Inverts the logic of the operator."
+msgstr "Pārvērš operatora loģiku."
+
+#: models.py:197
+msgid "Negated"
+msgstr "Negatīvs"
+
+#: models.py:202
+msgid "Link condition"
+msgstr "Saites stāvoklis"
+
+#: models.py:203
+msgid "Link conditions"
+msgstr "Saites nosacījumi"
+
+#: models.py:211
+msgid "not"
+msgstr "ne"
+
+#: models.py:215
+msgid "Full label"
+msgstr "Pilna etiķete"
+
+#: permissions.py:10
+msgid "Create new smart links"
+msgstr "Izveidojiet jaunas viedās saites"
+
+#: permissions.py:13
+msgid "Delete smart links"
+msgstr "Dzēst viedās saites"
+
+#: permissions.py:16
+msgid "Edit smart links"
+msgstr "Rediģējiet viedās saites"
+
+#: permissions.py:19
+msgid "View existing smart links"
+msgstr "Skatiet esošās viedās saites"
+
+#: serializers.py:117
+msgid ""
+"Comma separated list of document type primary keys to which this smart link "
+"will be attached."
+msgstr "Komatu atdalīts dokumentu tipu primāro atslēgu saraksts, kurām tiks pievienota šī viedā saite."
+
+#: serializers.py:141
+#, python-format
+msgid "No such document type: %s"
+msgstr "Nav šāda veida dokumenta: %s"
+
+#: views.py:46
+msgid "Available smart links"
+msgstr "Pieejamās viedās saites"
+
+#: views.py:47
+msgid "Smart links enabled"
+msgstr "Viedās saites ir iespējotas"
+
+#: views.py:79
+#, python-format
+msgid "Smart links to enable for document type: %s"
+msgstr "Viedās saites, lai iespējotu dokumenta tipu: %s"
+
+#: views.py:123
+#, python-format
+msgid "Smart link query error: %s"
+msgstr "Smart saites vaicājuma kļūda: %s"
+
+#: views.py:132
+#, python-format
+msgid "Documents in smart link: %s"
+msgstr "Dokumenti viedā saitē: %s"
+
+#: views.py:135
+#, python-format
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "Dokumenti viedā saite &quot;%(smart_link)s&quot;, kas saistīti ar &quot;%(document)s&quot;"
+
+#: views.py:160
+msgid "Available document types"
+msgstr "Pieejamie dokumentu veidi"
+
+#: views.py:161
+msgid "Document types enabled"
+msgstr "Iespējami dokumentu veidi"
+
+#: views.py:171
+#, python-format
+msgid "Document type for which to enable smart link: %s"
+msgstr "Dokumenta veids, kam jāļauj viedā saite: %s"
+
+#: views.py:188
+msgid ""
+"Indexes group documents into units, usually with similar properties and of "
+"equal or similar types. Smart links allow defining relationships between "
+"documents even if they are in different indexes and are of different types."
+msgstr "Indeksē grupas dokumentus vienībās, parasti ar līdzīgām īpašībām un vienādiem vai līdzīgiem veidiem. Viedās saites ļauj noteikt attiecības starp dokumentiem pat tad, ja tās atrodas dažādos indeksos un ir dažāda veida."
+
+#: views.py:195
+msgid "There are no smart links"
+msgstr "Viedās saites nav"
+
+#: views.py:227
+msgid ""
+"Smart links allow defining relationships between documents even if they are "
+"in different indexes and are of different types."
+msgstr "Viedās saites ļauj noteikt attiecības starp dokumentiem pat tad, ja tās atrodas dažādos indeksos un ir dažāda veida."
+
+#: views.py:232
+msgid "There are no smart links for this document"
+msgstr "Šim dokumentam nav inteliģentas saites"
+
+#: views.py:235
+#, python-format
+msgid "Smart links for document: %s"
+msgstr "Viedās saites dokumentam: %s"
+
+#: views.py:264
+#, python-format
+msgid "Delete smart link: %s"
+msgstr "Dzēst viedo saiti: %s"
+
+#: views.py:279
+#, python-format
+msgid "Edit smart link: %s"
+msgstr "Rediģēt viedo saiti: %s"
+
+#: views.py:302
+msgid ""
+"Conditions are small logic units that when combined define how the smart "
+"link will behave."
+msgstr "Nosacījumi ir nelielas loģikas vienības, kas, kombinējot, definē, kā viedā saite darbosies."
+
+#: views.py:306
+msgid "There are no conditions for this smart link"
+msgstr "Šai viedajai saitei nav nekādu nosacījumu"
+
+#: views.py:310
+#, python-format
+msgid "Conditions for smart link: %s"
+msgstr "Nosacījumi viedai saitei: %s"
+
+#: views.py:338
+#, python-format
+msgid "Add new conditions to smart link: \"%s\""
+msgstr "Pievienot jaunus nosacījumus viedajai saitei: &quot;%s&quot;"
+
+#: views.py:379
+msgid "Edit smart link condition"
+msgstr "Rediģējiet viedās saites stāvokli"
+
+#: views.py:409
+#, python-format
+msgid "Delete smart link condition: \"%s\"?"
+msgstr "Dzēst smart saite nosacījums: &quot;%s&quot;?"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Jesaja Everling <jeverling@gmail.com>, 2017
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-09 03:21-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2019-05-27 21:31+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 apps.py:108 apps.py:115 apps.py:137 apps.py:139 events.py:7
@@ -77,11 +76,11 @@ msgstr "Alle"
 
 #: methods.py:20
 msgid "Return a the tags attached to the document."
-msgstr ""
+msgstr "Gibt die an das Dokument vergebenen Tags zurück."
 
 #: methods.py:22
 msgid "get_tags()"
-msgstr ""
+msgstr "get_tags()"
 
 #: models.py:28
 msgid "A short text used as the tag name."
@@ -143,17 +142,13 @@ msgstr "Tags von Dokumenten entfernen"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr ""
-"Kommagetrennte Liste der Primärschlüssel von Dokumenten, denen dieser Tag "
-"zugeordnet werden soll."
+msgstr "Kommagetrennte Liste der Primärschlüssel von Dokumenten, denen dieser Tag zugeordnet werden soll."
 
 #: serializers.py:86
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr ""
-"API URL, die auf den Tag in Beziehung auf das Dokument verweist. Diese URL "
-"ist unterschiedlich von der kanonischen Tag-URL."
+msgstr "API URL, die auf den Tag in Beziehung auf das Dokument verweist. Diese URL ist unterschiedlich von der kanonischen Tag-URL."
 
 #: serializers.py:106
 msgid "Primary key of the tag to be added."

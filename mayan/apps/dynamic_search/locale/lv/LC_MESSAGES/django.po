@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-09 03:19-0400\n"
+"PO-Revision-Date: 2019-05-31 12:25+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: apps.py:17
+msgid "Dynamic search"
+msgstr "Dinamiskā meklēšana"
+
+#: classes.py:98
+msgid "No search model matching the query"
+msgstr "Meklēšanas vaicājumam neatbilstošais modelis"
+
+#: forms.py:9
+msgid "Match all"
+msgstr "Saskaņot visus"
+
+#: forms.py:10
+msgid ""
+"When checked, only results that match all fields will be returned. When "
+"unchecked results that match at least one field will be returned."
+msgstr "Pēc izvēles tiek atgriezti tikai rezultāti, kas atbilst visiem laukiem. Kad tiks atdoti nekontrolēti rezultāti, kas atbilst vismaz vienam laukam, tiks atgriezti."
+
+#: forms.py:29
+msgid "Search terms"
+msgstr "Meklēšanas vārdi"
+
+#: links.py:8 views.py:56 views.py:69
+msgid "Search"
+msgstr "Meklēt"
+
+#: links.py:11 views.py:83
+msgid "Advanced search"
+msgstr "Izvērstā meklēšana"
+
+#: links.py:15
+msgid "Search again"
+msgstr "Meklēt vēlreiz"
+
+#: views.py:25
+msgid "Try again using different terms. "
+msgstr "Mēģiniet vēlreiz, izmantojot dažādus terminus."
+
+#: views.py:27
+msgid "No search results"
+msgstr "Nav meklēšanas rezultātu"
+
+#: views.py:29
+#, python-format
+msgid "Search results for: %s"
+msgstr "Meklēšanas rezultāti priekš: %s"
+
+#: views.py:71
+#, python-format
+msgid "Search for: %s"
+msgstr "Meklēt: %s"

@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-09 03:19-0400\n"
-"PO-Revision-Date: 2019-05-21 05:03+0000\n"
+"PO-Revision-Date: 2019-06-09 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/"
-"mayan-edms/language/vi_VN/)\n"
-"Language: vi_VN\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:109 apps.py:291 events.py:7 menus.py:10 models/document_models.py:94
-#: permissions.py:7 queues.py:26 settings.py:14 statistics.py:233
+#: apps.py:109 apps.py:291 events.py:7 menus.py:10
+#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:14
+#: statistics.py:233
 msgid "Documents"
 msgstr "Tài liệu"
 
@@ -132,8 +132,8 @@ msgstr "Nén"
 
 #: forms/document_forms.py:28
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
@@ -420,8 +420,8 @@ msgstr ""
 
 #: models/document_models.py:39
 msgid ""
-"UUID of a document, universally Unique ID. An unique identifiergenerated for "
-"each document."
+"UUID of a document, universally Unique ID. An unique identifiergenerated for"
+" each document."
 msgstr ""
 
 #: models/document_models.py:49
@@ -533,7 +533,8 @@ msgstr ""
 
 #: models/document_type_models.py:36
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
 msgstr ""
 
 #: models/document_type_models.py:38
@@ -593,8 +594,8 @@ msgstr "File"
 #: models/document_version_models.py:94
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document. "
-"Some examples: \"text/plain\" or \"image/jpeg\". "
+"describe the format of a file, in this case the file format of the document."
+" Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
 #: models/document_version_models.py:98 search.py:24 search.py:47
@@ -788,15 +789,15 @@ msgstr ""
 #: settings.py:61
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
 msgstr ""
 
 #: settings.py:70
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value "
-"of 0 disables the block calculation and the entire file will be loaded into "
-"memory."
+"Size of blocks to use when calculating the document file's checksum. A value"
+" of 0 disables the block calculation and the entire file will be loaded into"
+" memory."
 msgstr ""
 
 #: settings.py:77
@@ -843,8 +844,7 @@ msgstr ""
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Số phần trăm lớn nhất (%) cho phép người dùng phóng to một trang tài liệu."
+msgstr "Số phần trăm lớn nhất (%) cho phép người dùng phóng to một trang tài liệu."
 
 #: settings.py:154
 msgid ""
@@ -854,9 +854,7 @@ msgstr "Số phần trăm nhỏ nhất (%) cho phép người dùng thu nhỏ tr
 
 #: settings.py:161
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr ""
-"Số phần trăm phóng to hoặc thu nhỏ một trang tài liệu mỗi tác động của người "
-"dùng."
+msgstr "Số phần trăm phóng to hoặc thu nhỏ một trang tài liệu mỗi tác động của người dùng."
 
 #: statistics.py:18
 msgid "January"
@@ -949,9 +947,10 @@ msgstr ""
 
 #: views/document_page_views.py:54
 msgid ""
-"This could mean that the document is of a format that is not supported, that "
-"it is corrupted or that the upload process was interrupted. Use the document "
-"page recalculation action to attempt to introspect the page count again."
+"This could mean that the document is of a format that is not supported, that"
+" it is corrupted or that the upload process was interrupted. Use the "
+"document page recalculation action to attempt to introspect the page count "
+"again."
 msgstr ""
 
 #: views/document_page_views.py:59
@@ -984,8 +983,8 @@ msgstr ""
 #: views/document_type_views.py:71
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
@@ -1025,8 +1024,7 @@ msgstr ""
 
 #: views/document_type_views.py:215
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 
 #: views/document_type_views.py:253
@@ -1228,8 +1226,8 @@ msgstr ""
 #: views/document_views.py:681
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/document_views.py:688
@@ -1238,8 +1236,8 @@ msgstr ""
 
 #: views/document_views.py:706
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 
 #: views/document_views.py:710

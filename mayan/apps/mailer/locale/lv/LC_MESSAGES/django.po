@@ -1,0 +1,412 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-09 03:20-0400\n"
+"PO-Revision-Date: 2019-05-31 12:38+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: apps.py:42
+msgid "Mailer"
+msgstr "Mailer"
+
+#: apps.py:62
+msgid "Date and time"
+msgstr "Datums un laiks"
+
+#: apps.py:65 models.py:30 models.py:228
+msgid "Message"
+msgstr "Ziņojums"
+
+#: classes.py:81
+msgid "Null backend"
+msgstr "Null backend"
+
+#: events.py:7 permissions.py:7 queues.py:8 settings.py:11
+msgid "Mailing"
+msgstr "Pasta sūtīšana"
+
+#: events.py:10
+msgid "Email sent"
+msgstr "Epasts nosūtīts"
+
+#: forms.py:60 forms.py:122
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
+msgstr "Saņēmēja e-pasta adrese. Var būt vairākas adreses, kas atdalītas ar komatu vai semikolu."
+
+#: forms.py:62 forms.py:124
+msgid "Email address"
+msgstr "Epasta adrese"
+
+#: forms.py:64
+msgid "Subject"
+msgstr "Temats"
+
+#: forms.py:66
+msgid "Body"
+msgstr "Ķermenis"
+
+#: forms.py:70
+msgid "The email profile that will be used to send this email."
+msgstr "E-pasta profils, kas tiks izmantots, lai nosūtītu šo e-pastu."
+
+#: forms.py:71 views.py:238
+msgid "Mailing profile"
+msgstr "Pasta profils"
+
+#: forms.py:76
+msgid "Backend"
+msgstr "Backend"
+
+#: links.py:18 links.py:28
+msgid "Email document"
+msgstr "E-pasta dokuments"
+
+#: links.py:24 links.py:32
+msgid "Email link"
+msgstr "E-pasta saite"
+
+#: links.py:37
+msgid "System mailer error log"
+msgstr "Sistēmas sūtītāja kļūdu žurnāls"
+
+#: links.py:42
+msgid "Create mailing profile "
+msgstr "Izveidojiet pasta profilu"
+
+#: links.py:48
+msgid "Delete"
+msgstr "Dzēst"
+
+#: links.py:54
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: links.py:58
+msgid "Log"
+msgstr "Žurnāls"
+
+#: links.py:63
+msgid "Mailing profiles list"
+msgstr "Pasta profilu profils"
+
+#: links.py:68
+msgid "Mailing profiles"
+msgstr "Pasta profili"
+
+#: links.py:74 views.py:257
+msgid "Test"
+msgstr "Pārbaude"
+
+#: literals.py:7
+#, python-format
+msgid ""
+"Attached to this email is the document: {{ document }}\n"
+"\n"
+" --------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr "Šim e-pastam pievienots dokuments: {{document}} -------- Šis e-pasts ir nosūtīts no %(project_title)s (%(project_website)s)"
+
+#: literals.py:13
+#, python-format
+msgid ""
+"To access this document click on the following link: {{ link }}\n"
+"\n"
+"--------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr "Lai piekļūtu šim dokumentam, noklikšķiniet uz šādas saites: {{link}} -------- Šis e-pasts ir nosūtīts no %(project_title)s (%(project_website)s)"
+
+#: mailers.py:23 mailers.py:112
+msgid "From"
+msgstr "No"
+
+#: mailers.py:26 mailers.py:115
+msgid ""
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
+msgstr "Sūtītāja adrese. Dažas sistēmas atsakās sūtīt ziņojumus, ja šī vērtība nav iestatīta."
+
+#: mailers.py:32
+msgid "Host"
+msgstr "Saimnieks"
+
+#: mailers.py:34
+msgid "The host to use for sending email."
+msgstr "Uzņēmēja, kas izmanto e-pasta sūtīšanai."
+
+#: mailers.py:39
+msgid "Port"
+msgstr "Osta"
+
+#: mailers.py:41
+msgid "Port to use for the SMTP server."
+msgstr "Portu, ko izmantot SMTP serverim."
+
+#: mailers.py:44
+msgid "Use TLS"
+msgstr "Izmantojiet TLS"
+
+#: mailers.py:47
+msgid ""
+"Whether to use a TLS (secure) connection when talking to the SMTP server. "
+"This is used for explicit TLS connections, generally on port 587."
+msgstr "Vai lietojat TLS (drošu) savienojumu, runājot ar SMTP serveri. Tas tiek izmantots skaidriem TLS savienojumiem, parasti portā 587."
+
+#: mailers.py:52
+msgid "Use SSL"
+msgstr "Izmantojiet SSL"
+
+#: mailers.py:55
+msgid ""
+"Whether to use an implicit TLS (secure) connection when talking to the SMTP "
+"server. In most email documentation this type of TLS connection is referred "
+"to as SSL. It is generally used on port 465. If you are experiencing "
+"problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
+msgstr "Vai, runājot ar SMTP serveri, izmantojiet netiešu TLS (drošu) savienojumu. Vairumā e-pasta dokumentāciju šāda veida TLS savienojums tiek saukts par SSL. To parasti izmanto 465. portā. Ja rodas problēmas, skatiet skaidru TLS iestatījumu &quot;Lietot TLS&quot;. Ņemiet vērā, ka &quot;Lietot TLS&quot; un &quot;Lietot SSL&quot; ir savstarpēji izslēdzoši, tāpēc tikai vienu no šiem iestatījumiem iestatiet uz True."
+
+#: mailers.py:64
+msgid "Username"
+msgstr "Lietotājvārds"
+
+#: mailers.py:67
+msgid ""
+"Username to use for the SMTP server. If empty, authentication won't "
+"attempted."
+msgstr "SMTP servera lietotājvārds. Ja tukša, autentifikācija netiks mēģināta."
+
+#: mailers.py:73
+msgid "Password"
+msgstr "Parole"
+
+#: mailers.py:76
+msgid ""
+"Password to use for the SMTP server. This setting is used in conjunction "
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
+msgstr "SMTP servera lietojama parole. Šis iestatījums tiek izmantots kopā ar lietotājvārdu, autentificējot to SMTP serverī. Ja kāds no šiem iestatījumiem ir tukšs, autentifikācija netiks mēģināta."
+
+#: mailers.py:85
+msgid "Django SMTP backend"
+msgstr "Django SMTP backend"
+
+#: mailers.py:107
+msgid "File path"
+msgstr "Failu ceļš"
+
+#: mailers.py:122
+msgid "Django file based backend"
+msgstr "Django faila pamatā ir backend"
+
+#: models.py:27 models.py:225
+msgid "Date time"
+msgstr "Datums Laiks"
+
+#: models.py:36
+msgid "Log entry"
+msgstr "Žurnāla ieraksts"
+
+#: models.py:37
+msgid "Log entries"
+msgstr "Žurnāla ieraksti"
+
+#: models.py:48
+msgid "Label"
+msgstr "Etiķete"
+
+#: models.py:52
+msgid ""
+"If default, this mailing profile will be pre-selected on the document "
+"mailing form."
+msgstr "Noklusējuma gadījumā šis pasta profils tiks iepriekš atlasīts dokumentu sūtīšanas veidlapā."
+
+#: models.py:54
+msgid "Default"
+msgstr "Noklusējums"
+
+#: models.py:56
+msgid "Enabled"
+msgstr "Iespējots"
+
+#: models.py:59
+msgid "The dotted Python path to the backend class."
+msgstr "Punkta Python ceļš uz backend klasi."
+
+#: models.py:60
+msgid "Backend path"
+msgstr "Backend ceļš"
+
+#: models.py:63
+msgid "Backend data"
+msgstr "Backend dati"
+
+#: models.py:70 models.py:222
+msgid "User mailer"
+msgstr "Lietotājs"
+
+#: models.py:71
+msgid "User mailers"
+msgstr "Lietotāju sūtītāji"
+
+#: models.py:84
+msgid "Backend label"
+msgstr "Backend etiķete"
+
+#: models.py:216
+msgid "Test email from Mayan EDMS"
+msgstr "Testa e-pasts no Mayan EDMS"
+
+#: models.py:234
+msgid "User mailer log entry"
+msgstr "Lietotāja pasta žurnāla ieraksts"
+
+#: models.py:235
+msgid "User mailer log entries"
+msgstr "Lietotāju pasta žurnāla ieraksti"
+
+#: permissions.py:10
+msgid "Send document link via email"
+msgstr "Sūtiet dokumentu saiti pa e-pastu"
+
+#: permissions.py:13
+msgid "Send document via email"
+msgstr "Sūtiet dokumentu pa e-pastu"
+
+#: permissions.py:16
+msgid "View system mailing error log"
+msgstr "Skatīt sistēmas pasta kļūdu kļūdu žurnālu"
+
+#: permissions.py:19
+msgid "Create a mailing profile"
+msgstr "Izveidojiet pasta profilu"
+
+#: permissions.py:22
+msgid "Delete a mailing profile"
+msgstr "Izdzēsiet pasta profilu"
+
+#: permissions.py:25
+msgid "Edit a mailing profile"
+msgstr "Rediģējiet pasta profilu"
+
+#: permissions.py:28
+msgid "View a mailing profile"
+msgstr "Skatiet pasta profilu"
+
+#: permissions.py:31
+msgid "Use a mailing profile"
+msgstr "Izmantojiet pasta profilu"
+
+#: queues.py:10
+msgid "Send document"
+msgstr "Sūtīt dokumentu"
+
+#: settings.py:14
+msgid "Link for document: {{ document }}"
+msgstr "Saite uz dokumentu: {{document}}"
+
+#: settings.py:15
+msgid "Template for the document link email form subject line."
+msgstr "Dokumenta saites e-pasta veidlapas tēmas veidne."
+
+#: settings.py:20
+msgid "Template for the document link email form body text. Can include HTML."
+msgstr "Dokumenta saites e-pasta veidlapas veidnes teksts. Var iekļaut HTML."
+
+#: settings.py:24
+msgid "Document: {{ document }}"
+msgstr "Dokuments: {{document}}"
+
+#: settings.py:25
+msgid "Template for the document email form subject line."
+msgstr "Dokumenta e-pasta veidlapas tēmas veidne."
+
+#: settings.py:30
+msgid "Template for the document email form body text. Can include HTML."
+msgstr "Dokumenta e-pasta veidlapas veidnes teksts. Var iekļaut HTML."
+
+#: validators.py:14
+#, python-format
+msgid "%(email)s is not a valid email address."
+msgstr "%(email)s nav derīga e-pasta adrese."
+
+#: views.py:37
+msgid "Document mailing error log"
+msgstr "Dokumentu sūtīšanas kļūdu žurnāls"
+
+#: views.py:49
+#, python-format
+msgid "%(count)d document queued for email delivery"
+msgstr "%(count)d dokuments, kas atrodas rindā, lai nosūtītu e-pastu"
+
+#: views.py:51
+#, python-format
+msgid "%(count)d documents queued for email delivery"
+msgstr "%(count)d dokumenti, kas atrodas rindā, lai nosūtītu e-pastu"
+
+#: views.py:62
+msgid "Send"
+msgstr "Sūtīt"
+
+#: views.py:108
+#, python-format
+msgid "%(count)d document link queued for email delivery"
+msgstr "%(count)d dokumentu saite rindā, kas paredzēta e-pasta piegādei"
+
+#: views.py:110
+#, python-format
+msgid "%(count)d document links queued for email delivery"
+msgstr "%(count)d dokumentu saites tiek rindas uz e-pasta piegādi"
+
+#: views.py:119
+msgid "New mailing profile backend selection"
+msgstr "Jauna pasta profila backend izvēle"
+
+#: views.py:151
+#, python-format
+msgid "Create a \"%s\" mailing profile"
+msgstr "Izveidojiet adreses profilu &quot;%s&quot;"
+
+#: views.py:177
+#, python-format
+msgid "Delete mailing profile: %s"
+msgstr "Dzēst pasta profilu: %s"
+
+#: views.py:188
+#, python-format
+msgid "Edit mailing profile: %s"
+msgstr "Rediģēt pasta profilu: %s"
+
+#: views.py:211
+#, python-format
+msgid "%s error log"
+msgstr "%s kļūdu žurnāls"
+
+#: views.py:233
+msgid ""
+"Mailing profiles are email configurations. Mailing profiles allow sending "
+"documents as attachments or as links via email."
+msgstr "Pasta profili ir e-pasta konfigurācijas. Pasta profili ļauj sūtīt dokumentus kā pielikumus vai kā saites pa e-pastu."
+
+#: views.py:237
+msgid "No mailing profiles available"
+msgstr "Nav pieejams neviens pasta profils"
+
+#: views.py:258
+#, python-format
+msgid "Test mailing profile: %s"
+msgstr "Testa pasta profils: %s"

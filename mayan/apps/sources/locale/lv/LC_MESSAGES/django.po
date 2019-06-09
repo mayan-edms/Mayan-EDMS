@@ -1,0 +1,726 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-09 03:21-0400\n"
+"PO-Revision-Date: 2019-05-31 12:49+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
+#: views.py:630
+msgid "Sources"
+msgstr "Avoti"
+
+#: apps.py:56
+msgid "Create a document source"
+msgstr "Izveidojiet dokumentu avotu"
+
+#: apps.py:58
+msgid ""
+"Document sources are the way in which new documents are feed to Mayan EDMS, "
+"create at least a web form source to be able to upload documents from a "
+"browser."
+msgstr "Dokumentu avoti ir veids, kādā jaunie dokumenti tiek piegādāti Mayan EDMS, izveidojiet vismaz tīmekļa veidlapas avotu, lai varētu augšupielādēt dokumentus no pārlūkprogrammas."
+
+#: apps.py:71
+msgid "Type"
+msgstr "Tips"
+
+#: apps.py:80
+msgid "Created"
+msgstr "Izveidots"
+
+#: apps.py:87
+msgid "Thumbnail"
+msgstr "Sīktēls"
+
+#: apps.py:95 models/base.py:248
+msgid "Date time"
+msgstr "Datums Laiks"
+
+#: apps.py:100 models/base.py:251
+msgid "Message"
+msgstr "Ziņojums"
+
+#: dependencies.py:13
+msgid ""
+"Utility provided by the SANE package. Used to control the scanner and "
+"obtained the scanned document image."
+msgstr "Lietderība, ko nodrošina SANE pakete. Izmanto, lai kontrolētu skeneri un iegūtu skenētā dokumenta attēlu."
+
+#: forms.py:30
+msgid "Comment"
+msgstr "Komentārs"
+
+#: forms.py:45
+msgid "Expand compressed files"
+msgstr "Paplašiniet saspiestos failus"
+
+#: forms.py:47
+msgid "Upload a compressed file's contained files as individual documents"
+msgstr "Augšupielādējiet saspiestā faila failus kā atsevišķus dokumentus"
+
+#: forms.py:68 views.py:485
+msgid "Staging file"
+msgstr "Pakāpju fails"
+
+#: forms.py:72 forms.py:77
+msgid "File"
+msgstr "Fails"
+
+#: handlers.py:30
+msgid "Default"
+msgstr "Noklusējums"
+
+#: links.py:49
+msgid "New document"
+msgstr "Jauns dokuments"
+
+#: links.py:61
+msgid "Add new IMAP email"
+msgstr "Pievienojiet jaunu IMAP e-pastu"
+
+#: links.py:67
+msgid "Add new POP3 email"
+msgstr "Pievienojiet jaunu POP3 e-pastu"
+
+#: links.py:73
+msgid "Add new staging folder"
+msgstr "Pievienojiet jaunu pieturvietu mapi"
+
+#: links.py:79
+msgid "Add new watch folder"
+msgstr "Pievienojiet jaunu skatīšanās mapi"
+
+#: links.py:85
+msgid "Add new webform source"
+msgstr "Pievienojiet jaunu tīmekļa veidlapas avotu"
+
+#: links.py:91
+msgid "Add new SANE scanner"
+msgstr "Pievienojiet jaunu SANE skeneri"
+
+#: links.py:97 links.py:114
+msgid "Delete"
+msgstr "Dzēst"
+
+#: links.py:102
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: links.py:107
+msgid "Document sources"
+msgstr "Dokumentu avoti"
+
+#: links.py:120
+msgid "Upload new version"
+msgstr "Augšupielādējiet jaunu versiju"
+
+#: links.py:124
+msgid "Logs"
+msgstr "Žurnāli"
+
+#: links.py:130
+msgid "Check now"
+msgstr "Pārbaudiet tagad"
+
+#: literals.py:16
+msgid "Flatbed"
+msgstr "Plakans"
+
+#: literals.py:17
+msgid "Document feeder"
+msgstr "Dokumentu padevējs"
+
+#: literals.py:24
+msgid "Simplex"
+msgstr "Simplex"
+
+#: literals.py:25
+msgid "Duplex"
+msgstr "Duplex"
+
+#: literals.py:33
+msgid "Lineart"
+msgstr "Lineart"
+
+#: literals.py:34
+msgid "Monochrome"
+msgstr "Melnbalts"
+
+#: literals.py:35
+msgid "Color"
+msgstr "Krāsa"
+
+#: literals.py:43 literals.py:48
+msgid "Always"
+msgstr "Vienmēr"
+
+#: literals.py:44 literals.py:49
+msgid "Never"
+msgstr "Nekad"
+
+#: literals.py:50
+msgid "Ask user"
+msgstr "Uzdot lietotāju"
+
+#: literals.py:61
+msgid "Scanner"
+msgstr "Skeneris"
+
+#: literals.py:62 models/webform_sources.py:42
+msgid "Web form"
+msgstr "Tīmekļa veidlapa"
+
+#: literals.py:63 models/staging_folder_sources.py:69
+msgid "Staging folder"
+msgstr "Pakāpju mape"
+
+#: literals.py:64 models/watch_folder_sources.py:46
+msgid "Watch folder"
+msgstr "Skatīties mapi"
+
+#: literals.py:65
+msgid "POP3 email"
+msgstr "POP3 e-pasts"
+
+#: literals.py:66 models/email_sources.py:220 models/email_sources.py:221
+msgid "IMAP email"
+msgstr "IMAP e-pasts"
+
+#: models/base.py:30
+msgid "Label"
+msgstr "Etiķete"
+
+#: models/base.py:32
+msgid "Enabled"
+msgstr "Iespējots"
+
+#: models/base.py:38 models/base.py:245
+msgid "Source"
+msgstr "Avots"
+
+#: models/base.py:157
+msgid "Interactive source"
+msgstr "Interaktīvs avots"
+
+#: models/base.py:158
+msgid "Interactive sources"
+msgstr "Interaktīvie avoti"
+
+#: models/base.py:167 models/base.py:168
+msgid "Out of process"
+msgstr "Nav procesa"
+
+#: models/base.py:174
+msgid "Interval in seconds between checks for new documents."
+msgstr "Intervāls sekundēs starp jaunu dokumentu pārbaudēm."
+
+#: models/base.py:175
+msgid "Interval"
+msgstr "Intervāls"
+
+#: models/base.py:180
+msgid "Assign a document type to documents uploaded from this source."
+msgstr "Pievienojiet dokumenta veidu dokumentiem, kas augšupielādēti no šī avota."
+
+#: models/base.py:182
+msgid "Document type"
+msgstr "Dokumenta veids"
+
+#: models/base.py:186
+msgid "Whether to expand or not, compressed archives."
+msgstr "Neatkarīgi no tā, vai vēlaties paplašināt vai nē, saspiesti arhīvi."
+
+#: models/base.py:187 models/staging_folder_sources.py:56
+#: models/webform_sources.py:36
+msgid "Uncompress"
+msgstr "Atspiest"
+
+#: models/base.py:193
+msgid "Interval source"
+msgstr "Intervāla avots"
+
+#: models/base.py:194
+msgid "Interval sources"
+msgstr "Intervāla avoti"
+
+#: models/base.py:257
+msgid "Log entry"
+msgstr "Žurnāla ieraksts"
+
+#: models/base.py:258
+msgid "Log entries"
+msgstr "Žurnāla ieraksti"
+
+#: models/email_sources.py:44
+msgid "Host"
+msgstr "Saimnieks"
+
+#: models/email_sources.py:45
+msgid "SSL"
+msgstr "SSL"
+
+#: models/email_sources.py:47
+msgid ""
+"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
+"for IMAP over SSL."
+msgstr "Tipiskas izvēles ir 110 POP3, 995 POP3 pār SSL, 143 IMAP, 993 IMAP pār SSL."
+
+#: models/email_sources.py:48
+msgid "Port"
+msgstr "Osta"
+
+#: models/email_sources.py:50
+msgid "Username"
+msgstr "Lietotājvārds"
+
+#: models/email_sources.py:51
+msgid "Password"
+msgstr "Parole"
+
+#: models/email_sources.py:55
+msgid ""
+"Name of the attachment that will contains the metadata type names and value "
+"pairs to be assigned to the rest of the downloaded attachments. Note: This "
+"attachment has to be the first attachment."
+msgstr "Pielikuma nosaukums, kurā būs metadatu tipa nosaukumi un vērtību pāri, kas tiks piešķirti pārējiem lejupielādētajiem pielikumiem. Piezīme: šim pielikumam jābūt pirmajam pielikumam."
+
+#: models/email_sources.py:59
+msgid "Metadata attachment name"
+msgstr "Metadatu pielikuma nosaukums"
+
+#: models/email_sources.py:63
+msgid ""
+"Select a metadata type valid for the document type selected in which to "
+"store the email's subject."
+msgstr "Atlasiet metadatu tipu, kas derīgs dokumenta tipam, kurā izvēlēts e-pasta objekta saglabāšana."
+
+#: models/email_sources.py:66
+msgid "Subject metadata type"
+msgstr "Tēmas metadatu veids"
+
+#: models/email_sources.py:70
+msgid ""
+"Select a metadata type valid for the document type selected in which to "
+"store the email's \"from\" value."
+msgstr "Atlasiet metadatu tipu, kas derīgs dokumenta tipam, kurā izvēlēts e-pasta &quot;no&quot; vērtības."
+
+#: models/email_sources.py:73
+msgid "From metadata type"
+msgstr "No metadatu veida"
+
+#: models/email_sources.py:77
+msgid "Store the body of the email as a text document."
+msgstr "Saglabājiet e-pasta ziņojuma tekstu kā teksta dokumentu."
+
+#: models/email_sources.py:78
+msgid "Store email body"
+msgstr "Saglabājiet e-pasta korpusu"
+
+#: models/email_sources.py:84
+msgid "Email source"
+msgstr "E-pasta avots"
+
+#: models/email_sources.py:85
+msgid "Email sources"
+msgstr "E-pasta avoti"
+
+#: models/email_sources.py:184
+#, python-format
+msgid ""
+"Subject metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr "Objekta metadatu tips &quot;%(metadata_type)s&quot; nav derīgs dokumenta tipam: %(document_type)s"
+
+#: models/email_sources.py:198
+#, python-format
+msgid ""
+"\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr "&quot;No&quot; metadatu tips &quot;%(metadata_type)s&quot; nav derīgs dokumenta tipam: %(document_type)s"
+
+#: models/email_sources.py:213
+msgid "IMAP Mailbox from which to check for messages."
+msgstr "IMAP pastkaste, no kuras var pārbaudīt ziņas."
+
+#: models/email_sources.py:214
+msgid "Mailbox"
+msgstr "Pastkaste"
+
+#: models/email_sources.py:265
+msgid "Timeout"
+msgstr "Pārtraukums"
+
+#: models/email_sources.py:271 models/email_sources.py:272
+msgid "POP email"
+msgstr "POP e-pasts"
+
+#: models/scanner_sources.py:33
+msgid "Device name as returned by the SANE backend."
+msgstr "Ierīces nosaukums, ko atdod SANE backend."
+
+#: models/scanner_sources.py:34
+msgid "Device name"
+msgstr "Ierīces nosaukums"
+
+#: models/scanner_sources.py:39
+msgid ""
+"Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
+"is not supported by your scanner, leave it blank."
+msgstr "Atlasa skenēšanas režīmu (piem., Lineāru, melnbaltu vai krāsu). Ja skeneris šo iespēju neatbalsta, atstājiet to tukšu."
+
+#: models/scanner_sources.py:41
+msgid "Mode"
+msgstr "Režīms"
+
+#: models/scanner_sources.py:45
+msgid ""
+"Sets the resolution of the scanned image in DPI (dots per inch). Typical "
+"value is 200. If this option is not supported by your scanner, leave it "
+"blank."
+msgstr "Iestata skenētā attēla izšķirtspēju DPI (punkti uz collu). Tipiskā vērtība ir 200. Ja skeneris šo iespēju neatbalsta, atstājiet to tukšu."
+
+#: models/scanner_sources.py:48
+msgid "Resolution"
+msgstr "Izšķirtspēja"
+
+#: models/scanner_sources.py:52
+msgid ""
+"Selects the scan source (such as a document-feeder). If this option is not "
+"supported by your scanner, leave it blank."
+msgstr "Atlasa skenēšanas avotu (piemēram, dokumentu padevēju). Ja skeneris šo iespēju neatbalsta, atstājiet to tukšu."
+
+#: models/scanner_sources.py:54
+msgid "Paper source"
+msgstr "Papīra avots"
+
+#: models/scanner_sources.py:59
+msgid ""
+"Selects the document feeder mode (simplex/duplex). If this option is not "
+"supported by your scanner, leave it blank."
+msgstr "Atlasa dokumentu padevēja režīmu (vienkāršais / duplekss). Ja skeneris šo iespēju neatbalsta, atstājiet to tukšu."
+
+#: models/scanner_sources.py:61
+msgid "ADF mode"
+msgstr "ADF režīms"
+
+#: models/scanner_sources.py:67
+msgid "SANE Scanner"
+msgstr "SANE skeneris"
+
+#: models/scanner_sources.py:68
+msgid "SANE Scanners"
+msgstr "SANE skeneri"
+
+#: models/scanner_sources.py:115
+#, python-format
+msgid "Error while scanning; %s"
+msgstr "Skenēšanas laikā radās kļūda; %s"
+
+#: models/staging_folder_sources.py:41
+msgid "Server side filesystem path."
+msgstr "Servera puses failu sistēmas ceļš."
+
+#: models/staging_folder_sources.py:42 models/watch_folder_sources.py:33
+msgid "Folder path"
+msgstr "Mapes ceļš"
+
+#: models/staging_folder_sources.py:45
+msgid "Width value to be passed to the converter backend."
+msgstr "Platuma vērtība, kas jānodod pārveidotāja aizmugurē."
+
+#: models/staging_folder_sources.py:46
+msgid "Preview width"
+msgstr "Priekšskatījuma platums"
+
+#: models/staging_folder_sources.py:50
+msgid "Height value to be passed to the converter backend."
+msgstr "Augstuma vērtība, kas jānodod pārveidotāja aizmugurē."
+
+#: models/staging_folder_sources.py:51
+msgid "Preview height"
+msgstr "Priekšskatījuma augstums"
+
+#: models/staging_folder_sources.py:55 models/webform_sources.py:35
+msgid "Whether to expand or not compressed archives."
+msgstr "Vai paplašināt vai nesaspiest arhīvus."
+
+#: models/staging_folder_sources.py:61
+msgid "Delete the file after is has been successfully uploaded."
+msgstr "Dzēst failu pēc tam, kad tas ir veiksmīgi augšupielādēts."
+
+#: models/staging_folder_sources.py:63
+msgid "Delete after upload"
+msgstr "Dzēst pēc augšupielādes"
+
+#: models/staging_folder_sources.py:70
+msgid "Staging folders"
+msgstr "Pakāpju mapes"
+
+#: models/staging_folder_sources.py:82
+#, python-format
+msgid "Error deleting staging file; %s"
+msgstr "Dzēšot pieturvietas failu, radās kļūda; %s"
+
+#: models/staging_folder_sources.py:98
+#, python-format
+msgid "Unable get list of staging files: %s"
+msgstr "Nevar iegūt saraksta failu sarakstu: %s"
+
+#: models/watch_folder_sources.py:32
+msgid "Server side filesystem path to scan for files."
+msgstr "Servera puses failu sistēmas ceļš failu skenēšanai."
+
+#: models/watch_folder_sources.py:37
+msgid ""
+"If checked, not only will the folder path be scanned for files but also its "
+"subdirectories."
+msgstr "Ja tiek pārbaudīts, mapes ceļš tiks skenēts ne tikai failiem, bet arī tās apakšdirektorijām."
+
+#: models/watch_folder_sources.py:40
+msgid "Include subdirectories?"
+msgstr "Iekļaut apakšdirektorijas?"
+
+#: models/watch_folder_sources.py:47
+msgid "Watch folders"
+msgstr "Skatiet mapes"
+
+#: models/webform_sources.py:43
+msgid "Web forms"
+msgstr "Tīmekļa veidlapas"
+
+#: permissions.py:7
+msgid "Sources setup"
+msgstr "Avotu iestatīšana"
+
+#: permissions.py:10
+msgid "Create new document sources"
+msgstr "Izveidojiet jaunus dokumentu avotus"
+
+#: permissions.py:13
+msgid "Delete document sources"
+msgstr "Dzēst dokumentu avotus"
+
+#: permissions.py:16
+msgid "Edit document sources"
+msgstr "Rediģējiet dokumentu avotus"
+
+#: permissions.py:19
+msgid "View existing document sources"
+msgstr "Skatīt esošos dokumentu avotus"
+
+#: permissions.py:22
+msgid "Delete staging files"
+msgstr "Dzēst pieturvietas failus"
+
+#: queues.py:12
+msgid "Sources periodic"
+msgstr "Avoti periodiski"
+
+#: queues.py:16
+msgid "Sources fast"
+msgstr "Avoti ātri"
+
+#: queues.py:21
+msgid "Generate staging file image"
+msgstr "Izveidojiet pieturvietas faila attēlu"
+
+#: queues.py:25
+msgid "Check interval source"
+msgstr "Pārbaudiet intervāla avotu"
+
+#: queues.py:29
+msgid "Handle upload"
+msgstr "Rīkot augšupielādi"
+
+#: queues.py:33
+msgid "Upload document"
+msgstr "Augšupielādējiet dokumentu"
+
+#: settings.py:15
+msgid "File path to the scanimage program used to control image scanners."
+msgstr "Faila ceļš uz skenēšanas programmu, ko izmanto, lai kontrolētu attēlu skenerus."
+
+#: settings.py:22
+msgid ""
+"Path to the Storage subclass to use when storing the cached staging_file "
+"image files."
+msgstr "Ceļš uz glabāšanas apakšklasi, ko var izmantot, saglabājot kešatmiņā saglabātos attēlu failus."
+
+#: settings.py:31
+msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
+msgstr "Argumenti, kas jānodod SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
+
+#: tasks.py:46
+#, python-format
+msgid "Error processing source: %s"
+msgstr "Kļūdu apstrādes avots: %s"
+
+#: templates/sources/upload_multiform_subtemplate.html:84
+msgid "Cancel upload"
+msgstr "Atcelt augšupielādi"
+
+#: templates/sources/upload_multiform_subtemplate.html:85
+msgid "Are you sure you want to cancel this upload?"
+msgstr "Vai tiešām vēlaties atcelt šo augšupielādi?"
+
+#: templates/sources/upload_multiform_subtemplate.html:86
+msgid "Drop files or click here to upload files"
+msgstr "Ielādējiet failus vai noklikšķiniet šeit, lai augšupielādētu failus"
+
+#: templates/sources/upload_multiform_subtemplate.html:87
+msgid "Your browser does not support drag and drop file uploads."
+msgstr "Jūsu pārlūkprogramma neatbalsta vilkšanas un nomešanas failu augšupielādes."
+
+#: templates/sources/upload_multiform_subtemplate.html:88
+msgid "Please use the fallback form below to upload your files."
+msgstr "Lai augšupielādētu failus, lūdzu, izmantojiet tālāk norādīto veidlapu."
+
+#: templates/sources/upload_multiform_subtemplate.html:89
+msgid "Clear"
+msgstr "Skaidrs"
+
+#: templates/sources/upload_multiform_subtemplate.html:90
+msgid "Server responded with {{statusCode}} code."
+msgstr "Serveris atbildēja ar {{statusCode}} kodu."
+
+#: views.py:65
+msgid ""
+"Any error produced during the usage of a source will be listed here to "
+"assist in debugging."
+msgstr "Šeit tiks uzskaitītas visas avota lietošanas laikā radušās kļūdas, lai palīdzētu atkļūdot."
+
+#: views.py:68
+msgid "No log entries available"
+msgstr "Nav pieejami žurnāla ieraksti"
+
+#: views.py:70
+#, python-format
+msgid "Log entries for source: %s"
+msgstr "Loga ieraksti avotiem: %s"
+
+#: views.py:125 wizards.py:154
+msgid ""
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Neviens interaktīvs dokumentu avots nav definēts vai neviens no tiem nav iespējots, izveidojiet to pirms turpināšanas."
+
+#: views.py:153 views.py:171 views.py:181
+msgid "Document properties"
+msgstr "Dokumenta rekvizīti"
+
+#: views.py:161
+msgid "Files in staging path"
+msgstr "Faili pieturvietā"
+
+#: views.py:172
+msgid "Scan"
+msgstr "Skenēšana"
+
+#: views.py:282
+#, python-format
+msgid ""
+"Error executing document upload task; %(exception)s, %(exception_class)s"
+msgstr "Kļūda, izpildot dokumenta augšupielādes uzdevumu; %(exception)s, %(exception_class)s"
+
+#: views.py:293
+msgid "New document queued for upload and will be available shortly."
+msgstr "Jauns dokuments tiek rindā augšupielādēts un drīz būs pieejams."
+
+#: views.py:344
+#, python-format
+msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
+msgstr "Augšupielādējiet &quot;%(document_type)s&quot; tipa dokumentu no avota: %(source)s"
+
+#: views.py:378
+#, python-format
+msgid "Document \"%s\" is blocked from uploading new versions."
+msgstr "Dokuments &quot;%s&quot; ir bloķēts jaunu versiju augšupielādei."
+
+#: views.py:431
+msgid "New document version queued for upload and will be available shortly."
+msgstr "Jauna dokumenta versija tiek augšupielādēta rindā un būs pieejama drīz."
+
+#: views.py:472
+#, python-format
+msgid "Upload a new version from source: %s"
+msgstr "Augšupielādējiet jaunu versiju no avota: %s"
+
+#: views.py:486
+#, python-format
+msgid "Delete staging file \"%s\"?"
+msgstr "Vai izdzēst failu &quot;%s&quot;?"
+
+#: views.py:507
+msgid ""
+"This will execute the source check code even if the source is not enabled. "
+"Sources that delete content after downloading will not do so while being "
+"tested. Check the source's error log for information during testing. A "
+"successful test will clear the error log."
+msgstr "Tas veiks avota pārbaudes kodu pat tad, ja avots nav iespējots. Avoti, kas dzēš saturu pēc lejupielādes, to nedarīs, kamēr tie tiks pārbaudīti. Pārbaudes laikā pārbaudiet avota kļūdas žurnālu. Veiksmīgs tests notīra kļūdas žurnālu."
+
+#: views.py:513
+#, python-format
+msgid "Trigger check for source \"%s\"?"
+msgstr "Izmantot avota &quot;%s&quot; pārbaudi?"
+
+#: views.py:530
+msgid "Source check queued."
+msgstr "Avota pārbaude rindā."
+
+#: views.py:547
+#, python-format
+msgid "Create new source of type: %s"
+msgstr "Izveidot jaunu avota veidu: %s"
+
+#: views.py:569
+#, python-format
+msgid "Delete the source: %s?"
+msgstr "Vai izdzēst avotu: %s?"
+
+#: views.py:590
+#, python-format
+msgid "Edit source: %s"
+msgstr "Rediģēt avotu: %s"
+
+#: views.py:624
+msgid ""
+"Sources provide the means to upload documents. Some sources like the "
+"webform, are interactive and require user input to operate. Others like the "
+"email sources, are automatic and run on the background without user "
+"intervention."
+msgstr "Avoti nodrošina līdzekļus dokumentu augšupielādēšanai. Daži avoti, piemēram, tīmekļa veidlapa, ir interaktīvi un pieprasa, lai lietotājs to izmantotu. Citi, piemēram, e-pasta avoti, ir automātiski un darbojas fonā bez lietotāja iejaukšanās."
+
+#: views.py:629
+msgid "No sources available"
+msgstr "Nav pieejami avoti"
+
+#: wizards.py:97
+msgid "Select document type"
+msgstr "Izvēlieties dokumenta veidu"
+
+#: wizards.py:178
+#, python-format
+msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
+msgstr "%(step)d solis no %(total_steps)d: %(step_label)s"
+
+#: wizards.py:183
+msgid "Next step"
+msgstr "Nākamais solis"
+
+#: wizards.py:185
+msgid "Document upload wizard"
+msgstr "Dokumentu augšupielādes vednis"

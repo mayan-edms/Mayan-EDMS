@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
@@ -16,12 +16,11 @@ msgstr ""
 "POT-Creation-Date: 2019-06-09 03:18-0400\n"
 "PO-Revision-Date: 2019-05-17 12:07+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin.py:24
@@ -115,19 +114,16 @@ msgstr "Libellé"
 
 #: models.py:40
 msgid "This value will be used by other apps to reference this index."
-msgstr ""
-"Cette valeur sera utilisée par d'autres applications pour faire référence à "
-"cet index."
+msgstr "Cette valeur sera utilisée par d'autres applications pour faire référence à cet index."
 
 #: models.py:41
 msgid "Slug"
 msgstr "Jeton"
 
 #: models.py:46
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Permet à cet index d'être à la fois visible et mis à jour quand le contenu "
-"d'un document est modifié."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Permet à cet index d'être à la fois visible et mis à jour quand le contenu d'un document est modifié."
 
 #: models.py:49 models.py:235
 msgid "Enabled"
@@ -149,9 +145,7 @@ msgstr "Instances d'index"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr ""
-"Entrez un modèle à utiliser. Utilisez le langage de gabarit par défaut de "
-"Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr "Entrez un modèle à utiliser. Utilisez le langage de gabarit par défaut de Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
 #: models.py:227
 msgid "Indexing expression"
@@ -159,17 +153,13 @@ msgstr "Expression d'indexation"
 
 #: models.py:232
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Permet à ce nœud d'être visible et mis à jour quand le contenu d'un document "
-"est modifié."
+msgstr "Permet à ce nœud d'être visible et mis à jour quand le contenu d'un document est modifié."
 
 #: models.py:240
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Cochez cette option pour permettre à ce nœud d'être un conteneur de "
-"documents et pas seulement un nœud parent d'autres nœuds enfants."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Cochez cette option pour permettre à ce nœud d'être un conteneur de documents et pas seulement un nœud parent d'autres nœuds enfants."
 
 #: models.py:243
 msgid "Link documents"
@@ -192,9 +182,7 @@ msgstr "Racine"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
-"Erreur lors de l'indexation du document : %(document)s; expression: "
-"%(expression)s; %(exception)s"
+msgstr "Erreur lors de l'indexation du document : %(document)s; expression: %(expression)s; %(exception)s"
 
 #: models.py:351
 msgid "Index template node"
@@ -297,13 +285,9 @@ msgstr "Modifier l'index : %s"
 #: views.py:143
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
-msgstr ""
-"Indexe les groupes de documents automatiquement en niveaux. Les index sont "
-"définis à l'aide de modèles dont les marqueurs sont remplacés par les "
-"propriétés directes de documents tels que l'étiquette, la description ou de "
-"propriétés étendues telles que les métadonnées."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
+msgstr "Indexe les groupes de documents automatiquement en niveaux. Les index sont définis à l'aide de modèles dont les marqueurs sont remplacés par les propriétés directes de documents tels que l'étiquette, la description ou de propriétés étendues telles que les métadonnées."
 
 #: views.py:148
 msgid "There are no indexes."

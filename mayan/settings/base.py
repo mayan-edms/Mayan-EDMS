@@ -225,6 +225,7 @@ LANGUAGES = (
     ('hu', _('Hungarian')),
     ('id', _('Indonesian')),
     ('it', _('Italian')),
+    ('lv', _('Latvian')),
     ('nl', _('Dutch')),
     ('pl', _('Polish')),
     ('pt', _('Portuguese')),

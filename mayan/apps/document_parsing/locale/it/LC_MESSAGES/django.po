@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2017
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2018
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2018
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -18,10 +18,10 @@ msgstr ""
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2018\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:50 events.py:8 permissions.py:8 settings.py:7
@@ -162,7 +162,8 @@ msgstr ""
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 "Percorso del programma poppler pdftotext.usato per estrarre il testo dai "
 "file PDF."

@@ -1,0 +1,505 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-09 03:20-0400\n"
+"PO-Revision-Date: 2019-05-31 12:40+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: apps.py:67 apps.py:153 apps.py:158 events.py:7 links.py:48 permissions.py:7
+#: queues.py:9 settings.py:10
+msgid "Metadata"
+msgstr "Metadati"
+
+#: apps.py:99
+msgid "Return the value of a specific document metadata"
+msgstr "Atgrieziet konkrēta dokumenta metadatu vērtību"
+
+#: apps.py:105
+msgid "Metadata type name"
+msgstr "Metadatu tipa nosaukums"
+
+#: apps.py:109
+msgid "Metadata type value"
+msgstr "Metadatu veida vērtība"
+
+#: apps.py:184 apps.py:192 forms.py:123 models.py:93 models.py:304
+msgid "Metadata type"
+msgstr "Metadatu veids"
+
+#: apps.py:187 apps.py:196
+msgid "Metadata value"
+msgstr "Metadatu vērtība"
+
+#: events.py:10
+msgid "Document metadata added"
+msgstr "Pievienoti dokumenta metadati"
+
+#: events.py:13
+msgid "Document metadata edited"
+msgstr "Rediģēti dokumenta metadati"
+
+#: events.py:16
+msgid "Document metadata removed"
+msgstr "Dokumenta metadati ir noņemti"
+
+#: events.py:19
+msgid "Metadata type created"
+msgstr "Izveidots metadatu veids"
+
+#: events.py:22
+msgid "Metadata type edited"
+msgstr "Rediģētais metadatu veids"
+
+#: events.py:25
+msgid "Metadata type relationship updated"
+msgstr "Metadatu veida attiecības atjauninātas"
+
+#: forms.py:13
+msgid "ID"
+msgstr "ID"
+
+#: forms.py:16 models.py:53 search.py:16
+msgid "Name"
+msgstr "Nosaukums"
+
+#: forms.py:20 models.py:211
+msgid "Value"
+msgstr "Vērtība"
+
+#: forms.py:25
+msgid "Update"
+msgstr "Atjaunināt"
+
+#: forms.py:46 forms.py:185 models.py:306
+msgid "Required"
+msgstr "Nepieciešams"
+
+#: forms.py:75
+#, python-format
+msgid "Lookup value error: %s"
+msgstr "Meklēt vērtības kļūda: %s"
+
+#: forms.py:88
+#, python-format
+msgid "Default value error: %s"
+msgstr "Noklusējuma vērtības kļūda: %s"
+
+#: forms.py:104 models.py:172
+#, python-format
+msgid "\"%s\" is required for this document type."
+msgstr "&quot;%s&quot; ir nepieciešams šim dokumenta tipam."
+
+#: forms.py:122
+msgid "Metadata types to be added to the selected documents."
+msgstr "Metadatu veidi, kas jāpievieno izvēlētajiem dokumentiem."
+
+#: forms.py:148 views.py:506
+msgid "Remove"
+msgstr "Noņemt"
+
+#: forms.py:169
+msgid " Available template context variables: "
+msgstr "Pieejamie veidnes konteksta mainīgie:"
+
+#: forms.py:183
+msgid "None"
+msgstr "Nav neviens"
+
+#: forms.py:184
+msgid "Optional"
+msgstr "Neobligāti"
+
+#: forms.py:189 models.py:55 search.py:19
+msgid "Label"
+msgstr "Etiķete"
+
+#: forms.py:193
+msgid "Relationship"
+msgstr "Attiecības"
+
+#: links.py:18 links.py:29
+msgid "Add metadata"
+msgstr "Pievienot metadatus"
+
+#: links.py:25 links.py:33
+msgid "Edit metadata"
+msgstr "Rediģēt metadatus"
+
+#: links.py:37 links.py:43
+msgid "Remove metadata"
+msgstr "Noņemiet metadatus"
+
+#: links.py:55 links.py:83 models.py:94 views.py:656
+msgid "Metadata types"
+msgstr "Metadatu veidi"
+
+#: links.py:61
+msgid "Document types"
+msgstr "Dokumentu veidi"
+
+#: links.py:65
+msgid "Create new"
+msgstr "Izveidot jaunu"
+
+#: links.py:72
+msgid "Delete"
+msgstr "Dzēst"
+
+#: links.py:78 views.py:311
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: models.py:50
+msgid ""
+"Name used by other apps to reference this metadata type. Do not use python "
+"reserved words, or spaces."
+msgstr "Nosaukums, ko citas lietotnes izmanto, lai norādītu uz šo metadatu tipu. Neizmantojiet rezervētos vārdus, kas ir rezervēti, vai atstarpes."
+
+#: models.py:59
+msgid ""
+"Enter a template to render. Use Django's default templating language "
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr "Ievadiet veidni, kas jāpiešķir. Izmantojiet Django noklusējuma veidnes valodu (https://docs.djangoproject.com/lv/1.11/ref/templates/builtins/)"
+
+#: models.py:63 search.py:22
+msgid "Default"
+msgstr "Noklusējums"
+
+#: models.py:68
+msgid ""
+"Enter a template to render. Must result in a comma delimited string. Use "
+"Django's default templating language "
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
+msgstr "Ievadiet veidni, kas jāpiešķir. Jāizveido ar komatu atdalīta virkne. Izmantojiet Django noklusējuma veidnes valodu (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
+
+#: models.py:73 search.py:25
+msgid "Lookup"
+msgstr "Meklēt"
+
+#: models.py:78
+msgid ""
+"The validator will reject data entry if the value entered does not conform "
+"to the expected format."
+msgstr "Validators noraidīs datu ievadīšanu, ja ievadītā vērtība neatbilst paredzētajam formātam."
+
+#: models.py:80 search.py:28
+msgid "Validator"
+msgstr "Validators"
+
+#: models.py:84
+msgid ""
+"The parser will reformat the value entered to conform to the expected "
+"format."
+msgstr "Parsētājs pārveidos ievadīto vērtību, lai tas atbilstu paredzētajam formātam."
+
+#: models.py:86 search.py:31
+msgid "Parser"
+msgstr "Parsētājs"
+
+#: models.py:180
+msgid "Value is not one of the provided options."
+msgstr "Vērtība nav viena no piedāvātajām iespējām."
+
+#: models.py:202
+msgid "Document"
+msgstr "Dokuments"
+
+#: models.py:205
+msgid "Type"
+msgstr "Tips"
+
+#: models.py:209
+msgid "The actual value stored in the metadata type field for the document."
+msgstr "Faktiskā vērtība, kas saglabāta dokumenta metadatu tipa laukā."
+
+#: models.py:217 models.py:218
+msgid "Document metadata"
+msgstr "Dokumentu metadati"
+
+#: models.py:239
+msgid "Metadata type is required for this document type."
+msgstr "Šim dokumenta tipam ir nepieciešams metadatu veids."
+
+#: models.py:269
+msgid "Metadata type is not valid for this document type."
+msgstr "Metadatu veids nav derīgs šim dokumenta tipam."
+
+#: models.py:300
+msgid "Document type"
+msgstr "Dokumenta veids"
+
+#: models.py:313
+msgid "Document type metadata type options"
+msgstr "Dokumenta tipa metadatu tipa opcijas"
+
+#: models.py:314
+msgid "Document type metadata types options"
+msgstr "Dokumenta tipa metadatu tipu opcijas"
+
+#: permissions.py:10
+msgid "Add metadata to a document"
+msgstr "Pievienojiet dokumentam metadatus"
+
+#: permissions.py:13
+msgid "Edit a document's metadata"
+msgstr "Rediģējiet dokumenta metadatus"
+
+#: permissions.py:16
+msgid "Remove metadata from a document"
+msgstr "Noņemt metadatus no dokumenta"
+
+#: permissions.py:20
+msgid "View metadata from a document"
+msgstr "Skatiet dokumenta metadatus"
+
+#: permissions.py:24
+msgid "Metadata setup"
+msgstr "Metadatu iestatīšana"
+
+#: permissions.py:28
+msgid "Edit metadata types"
+msgstr "Rediģēt metadatu tipus"
+
+#: permissions.py:31
+msgid "Create new metadata types"
+msgstr "Izveidojiet jaunus metadatu tipus"
+
+#: permissions.py:34
+msgid "Delete metadata types"
+msgstr "Dzēst metadatu tipus"
+
+#: permissions.py:37
+msgid "View metadata types"
+msgstr "Skatīt metadatu tipus"
+
+#: queues.py:12
+msgid "Remove metadata type"
+msgstr "Noņemt metadatu veidu"
+
+#: queues.py:16
+msgid "Add required metadata type"
+msgstr "Pievienot nepieciešamo metadatu veidu"
+
+#: serializers.py:51
+msgid "Primary key of the metadata type to be added."
+msgstr "Pievienojamā metadatu tipa primārā atslēga."
+
+#: serializers.py:132
+msgid "Primary key of the metadata type to be added to the document."
+msgstr "Dokumentam pievienojamā metadatu tipa primārā atslēga."
+
+#: views.py:51
+#, python-format
+msgid "Metadata add request performed on %(count)d document"
+msgstr "Metadatu pievienošanas pieprasījums ir izpildīts dokumentā %(count)d"
+
+#: views.py:53
+#, python-format
+msgid "Metadata add request performed on %(count)d documents"
+msgstr "Metadatu pievienošanas pieprasījums ir izpildīts dokumentos %(count)d"
+
+#: views.py:69 views.py:237 views.py:462
+msgid "Selected documents must be of the same type."
+msgstr "Atlasītajiem dokumentiem jābūt vienāda veida."
+
+#: views.py:113
+msgid "Add"
+msgstr "Pievienot"
+
+#: views.py:115
+msgid "Add metadata types to document"
+msgid_plural "Add metadata types to documents"
+msgstr[0] "Pievienojiet dokumentiem metadatu veidus"
+msgstr[1] "Pievienojiet dokumentam metadatu veidus"
+msgstr[2] "Pievienojiet dokumentiem metadatu veidus"
+
+#: views.py:126
+#, python-format
+msgid "Add metadata types to document: %s"
+msgstr "Pievienot metadatu veidus dokumentam: %s"
+
+#: views.py:179
+#, python-format
+msgid ""
+"Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
+"%(exception)s"
+msgstr "Kļūda, pievienojot dokumentam &quot;%(metadata_type)s&quot; metadatu tipu: %(document)s; %(exception)s"
+
+#: views.py:194
+#, python-format
+msgid ""
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
+msgstr "Metadatu veids: %(metadata_type)s veiksmīgi pievienots dokumentam %(document)s."
+
+#: views.py:204
+#, python-format
+msgid ""
+"Metadata type: %(metadata_type)s already present in document %(document)s."
+msgstr "Metadatu veids: %(metadata_type)s jau ir iekļauts dokumentā %(document)s."
+
+#: views.py:218
+#, python-format
+msgid "Metadata edit request performed on %(count)d document"
+msgstr "Metadatu rediģēšanas pieprasījums, kas veikts dokumentā %(count)d"
+
+#: views.py:221
+#, python-format
+msgid "Metadata edit request performed on %(count)d documents"
+msgstr "Metadatu rediģēšanas pieprasījums, kas veikts dokumentos %(count)d"
+
+#: views.py:306
+msgid ""
+"Add metadata types available for this document's type and assign them "
+"corresponding values."
+msgstr "Pievienojiet šī dokumenta tipam pieejamos metadatu veidus un piešķiriet tiem atbilstošās vērtības."
+
+#: views.py:309
+msgid "There is no metadata to edit"
+msgstr "Nav nepieciešams rediģēt metadatus"
+
+#: views.py:313
+msgid "Edit document metadata"
+msgid_plural "Edit documents metadata"
+msgstr[0] "Rediģēt dokumentu metadatus"
+msgstr[1] "Dokumenta metadatu rediģēšana"
+msgstr[2] "Rediģēt dokumentu metadatus"
+
+#: views.py:324
+#, python-format
+msgid "Edit metadata for document: %s"
+msgstr "Dokumenta metadatu rediģēšana: %s"
+
+#: views.py:382
+#, python-format
+msgid "Error editing metadata for document: %(document)s; %(exception)s."
+msgstr "Rediģējot dokumenta metadatus, radās kļūda: %(document)s; %(exception)s."
+
+#: views.py:392
+#, python-format
+msgid "Metadata for document %s edited successfully."
+msgstr "Dokumenta %s veiksmīgi rediģēti metadati."
+
+#: views.py:425
+msgid ""
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
+msgstr "Pievienot metadatus, kas ieraksta šī dokumenta tipu, lai tos varētu pievienot atsevišķiem dokumentiem. Pēc pievienošanas atsevišķam dokumentam varat rediģēt savas vērtības."
+
+#: views.py:430
+msgid "This document doesn't have any metadata"
+msgstr "Šajā dokumentā nav metadatu"
+
+#: views.py:431
+#, python-format
+msgid "Metadata for document: %s"
+msgstr "Dokumenta metadati: %s"
+
+#: views.py:443
+#, python-format
+msgid "Metadata remove request performed on %(count)d document"
+msgstr "Metadatu noņemšanas pieprasījums, kas veikts dokumentā %(count)d"
+
+#: views.py:446
+#, python-format
+msgid "Metadata remove request performed on %(count)d documents"
+msgstr "Metadatu noņemšanas pieprasījums, kas veikts dokumentos %(count)d"
+
+#: views.py:508
+msgid "Remove metadata types from the document"
+msgid_plural "Remove metadata types from the documents"
+msgstr[0] "Noņemiet metadatu veidus no dokumentiem"
+msgstr[1] "Noņemiet metadatu veidus no dokumenta"
+msgstr[2] "Noņemiet metadatu veidus no dokumentiem"
+
+#: views.py:519
+#, python-format
+msgid "Remove metadata types from the document: %s"
+msgstr "Noņemt metadatu veidus no dokumenta: %s"
+
+#: views.py:567
+#, python-format
+msgid ""
+"Successfully remove metadata type \"%(metadata_type)s\" from document: "
+"%(document)s."
+msgstr "Veiksmīgi noņemt metadatu tipu &quot;%(metadata_type)s&quot; no dokumenta: %(document)s."
+
+#: views.py:576
+#, python-format
+msgid ""
+"Error removing metadata type \"%(metadata_type)s\" from document: "
+"%(document)s; %(exception)s"
+msgstr "Atceļot metadatu tipu &quot;%(metadata_type)s&quot; no dokumenta, radās kļūda: %(document)s; %(exception)s"
+
+#: views.py:587
+msgid "Create metadata type"
+msgstr "Izveidot metadatu veidu"
+
+#: views.py:612
+#, python-format
+msgid "Delete the metadata type: %s?"
+msgstr "Dzēst metadatu veidu: %s?"
+
+#: views.py:627
+#, python-format
+msgid "Edit metadata type: %s"
+msgstr "Rediģēt metadatu veidu: %s"
+
+#: views.py:648
+msgid ""
+"Metadata types are users defined properties that can be assigned values. "
+"Once created they must be associated to document types, either as optional "
+"or required, for each. Setting a metadata type as required for a document "
+"type will block the upload of documents of that type until a metadata value "
+"is provided."
+msgstr "Metadatu veidi ir lietotāju definētas īpašības, kurām var piešķirt vērtības. Kad tas ir izveidots, katram no tiem ir jābūt saistītam ar dokumenta tipiem, vai nu kā izvēles, vai nepieciešamajiem. Metadatu tipa iestatīšana, kas nepieciešama dokumenta tipam, bloķēs šāda veida dokumentu augšupielādi, līdz tiks nodrošināta metadatu vērtība."
+
+#: views.py:655
+msgid "There are no metadata types"
+msgstr "Nav metadatu tipu"
+
+#: views.py:676
+#, python-format
+msgid "Error updating relationship; %s"
+msgstr "Atjauninot attiecības, radās kļūda; %s"
+
+#: views.py:681
+msgid "Relationships updated successfully"
+msgstr "Attiecības tika veiksmīgi atjauninātas"
+
+#: views.py:697
+msgid ""
+"Create metadata types to be able to associate them to this document type."
+msgstr "Izveidojiet metadatu veidus, lai tos varētu saistīt ar šo dokumenta veidu."
+
+#: views.py:700
+msgid "There are no metadata types available"
+msgstr "Nav pieejami metadatu veidi"
+
+#: views.py:703
+#, python-format
+msgid "Metadata types for document type: %s"
+msgstr "Dokumenta tipa metadatu veidi: %s"
+
+#: views.py:754
+#, python-format
+msgid "Document types for metadata type: %s"
+msgstr "Metadatu tipa dokumentu veidi: %s"
+
+#: wizard_steps.py:15
+msgid "Enter document metadata"
+msgstr "Ievadiet dokumenta metadatus"

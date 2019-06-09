@@ -1,0 +1,220 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-09 03:18-0400\n"
+"PO-Revision-Date: 2017-08-25 00:49+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
+"Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: apps.py:50 events.py:8 permissions.py:8 settings.py:7
+msgid "Document parsing"
+msgstr "Dokumentu analīze"
+
+#: apps.py:116 models.py:78
+msgid "Result"
+msgstr "Rezultāts"
+
+#: apps.py:121 apps.py:125 links.py:16 links.py:22 models.py:27
+msgid "Content"
+msgstr "Saturs"
+
+#: dependencies.py:11
+msgid ""
+"Utility from the poppler-utils package used to text content from PDF files."
+msgstr ""
+"Utility no poppler-utils paketes, ko izmanto teksta saturam no PDF failiem."
+
+#: events.py:12
+msgid "Document version submitted for parsing"
+msgstr "Dokumenta versija iesniegta parsēšanai"
+
+#: events.py:15
+msgid "Document version parsing finished"
+msgstr "Dokumenta versijas parsēšana pabeigta"
+
+#: forms.py:39
+#, python-format
+msgid "Page %(page_number)d"
+msgstr "Lapa %(page_number)d"
+
+#: forms.py:47 forms.py:59
+msgid "Contents"
+msgstr "Saturs"
+
+#: links.py:28 links.py:66 views.py:197
+msgid "Parsing errors"
+msgstr "Parsēšanas kļūdas"
+
+#: links.py:34
+msgid "Download content"
+msgstr "Lejupielādējiet saturu"
+
+#: links.py:39 links.py:46
+msgid "Submit for parsing"
+msgstr "Iesniegt parsēšanai"
+
+#: links.py:52
+msgid "Setup parsing"
+msgstr "Iestatīšanas analīze"
+
+#: links.py:61
+msgid "Parse documents per type"
+msgstr "Parsēt dokumentus katram tipam"
+
+#: models.py:21
+msgid "Document page"
+msgstr "Dokumenta lapa"
+
+#: models.py:25
+msgid "The actual text content as extracted by the document parsing backend."
+msgstr "Faktiskais teksta saturs, ko iegūst no dokumenta parsēšanas."
+
+#: models.py:33
+msgid "Document page content"
+msgstr "Dokumenta lapas saturs"
+
+#: models.py:34
+msgid "Document pages contents"
+msgstr "Dokumentu lappušu saturs"
+
+#: models.py:46
+msgid "Document type"
+msgstr "Dokumenta veids"
+
+#: models.py:50
+msgid "Automatically queue newly created documents for parsing."
+msgstr "Automātiski sagrupējiet jaunizveidotos dokumentus parsēšanai."
+
+#: models.py:61
+msgid "Document type settings"
+msgstr "Dokumenta tipa iestatījumi"
+
+#: models.py:62
+msgid "Document types settings"
+msgstr "Dokumentu veidu iestatījumi"
+
+#: models.py:73
+msgid "Document version"
+msgstr "Dokumenta versija"
+
+#: models.py:76
+msgid "Date time submitted"
+msgstr "Iesniegtais datums"
+
+#: models.py:82
+msgid "Document version parse error"
+msgstr "Dokumenta versijas parsēšanas kļūda"
+
+#: models.py:83
+msgid "Document version parse errors"
+msgstr "Dokumenta versijas parsēšana kļūdas"
+
+#: parsers.py:91
+#, python-format
+msgid "Exception parsing page; %s"
+msgstr "Izņēmuma analīzes lapa; %s"
+
+#: parsers.py:117
+#, python-format
+msgid "Cannot find pdftotext executable at: %s"
+msgstr "Nevar atrast pdftotext izpildāmo: %s"
+
+#: permissions.py:12
+msgid "View the content of a document"
+msgstr "Skatiet dokumenta saturu"
+
+#: permissions.py:15
+msgid "Change document type parsing settings"
+msgstr "Mainīt dokumenta tipa parsēšanas iestatījumus"
+
+#: permissions.py:19
+msgid "Parse the content of a document"
+msgstr "Parsēt dokumenta saturu"
+
+#: queues.py:8
+msgid "Parsing"
+msgstr "Parsēšana"
+
+#: queues.py:11
+msgid "Document version parsing"
+msgstr "Dokumenta versijas analīze"
+
+#: settings.py:12
+msgid "Set new document types to perform parsing automatically by default."
+msgstr ""
+"Iestatiet jaunus dokumentu veidus, lai pēc noklusējuma veiktu parsēšanu."
+
+#: settings.py:19
+msgid ""
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr ""
+"Failu ceļš uz poppler pdftotext programmu, ko izmanto, lai iegūtu tekstu no "
+"PDF failiem."
+
+#: views.py:43
+#, python-format
+msgid "Content for document: %s"
+msgstr "Dokumenta saturs: %s"
+
+#: views.py:78
+#, python-format
+msgid "Content for document page: %s"
+msgstr "Dokumenta lapas saturs: %s"
+
+#: views.py:93
+#, python-format
+msgid "Parsing errors for document: %s"
+msgstr "Analīzes kļūdas dokumentam: %s"
+
+#: views.py:105
+#, python-format
+msgid "%(count)d document added to the parsing queue"
+msgstr "%(count)d dokuments pievienots parsēšanas rindai"
+
+#: views.py:108
+#, python-format
+msgid "%(count)d documents added to the parsing queue"
+msgstr "%(count)d dokumenti, kas pievienoti parsēšanas rindai"
+
+#: views.py:116
+#, python-format
+msgid "Submit %(count)d document to the parsing queue?"
+msgid_plural "Submit %(count)d documents to the parsing queue"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: views.py:129
+#, python-format
+msgid "Submit document \"%s\" to the parsing queue"
+msgstr "Iesniegt parsēšanas rindā dokumentu &quot;%s&quot;"
+
+#: views.py:154
+#, python-format
+msgid "Edit parsing settings for document type: %s."
+msgstr "Rediģēt parsēšanas iestatījumus dokumenta tipam: %s."
+
+#: views.py:164
+msgid "Submit all documents of a type for parsing."
+msgstr "Iesniedziet visus parsēšanai nepieciešamos dokumentus."
+
+#: views.py:185
+#, python-format
+msgid "%(count)d documents added to the parsing queue."
+msgstr "%(count)d dokumenti, kas pievienoti parsēšanas rindai."

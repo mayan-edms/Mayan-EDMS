@@ -1,0 +1,109 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-09 03:21-0400\n"
+"PO-Revision-Date: 2019-05-31 12:46+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: apps.py:22 permissions.py:8
+msgid "Smart settings"
+msgstr "Viedie iestatījumi"
+
+#: apps.py:30
+msgid "Setting count"
+msgstr "Iestatījumu skaits"
+
+#: apps.py:34
+msgid "Name"
+msgstr "Nosaukums"
+
+#: apps.py:38
+msgid "Value"
+msgstr "Vērtība"
+
+#: apps.py:41
+msgid "Overrided by environment variable?"
+msgstr "Vai ir mainījies vides mainīgais?"
+
+#: apps.py:42
+msgid "Yes"
+msgstr "Jā"
+
+#: apps.py:42
+msgid "No"
+msgstr "Nē"
+
+#: forms.py:17
+msgid "Enter the new setting value."
+msgstr "Ievadiet jauno iestatījuma vērtību."
+
+#: forms.py:36
+msgid "Value must be properly quoted."
+msgstr "Vērtībai jābūt pareizi citētai."
+
+#: forms.py:45
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr "&quot;%s&quot; nav derīgs ieraksts."
+
+#: links.py:12 links.py:16
+msgid "Settings"
+msgstr "Iestatījumi"
+
+#: links.py:21
+msgid "Namespaces"
+msgstr "Nosaukumu vietas"
+
+#: links.py:25
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: permissions.py:12
+msgid "Edit settings"
+msgstr "Rediģēt iestatījumus"
+
+#: permissions.py:15
+msgid "View settings"
+msgstr "Skatīt iestatījumus"
+
+#: views.py:23
+msgid ""
+"Settings inherited from an environment variable take precedence and cannot "
+"be changed in this view. "
+msgstr "No vides mainīgā pārņemtie iestatījumi ir prioritāri un šajā skatījumā tos nevar mainīt."
+
+#: views.py:26
+#, python-format
+msgid "Settings in namespace: %s"
+msgstr "Iestatījumi nosaukumvietā: %s"
+
+#: views.py:34
+#, python-format
+msgid "Namespace: %s, not found"
+msgstr "Vārda vieta: %s, nav atrasts"
+
+#: views.py:44
+msgid "Setting namespaces"
+msgstr "Vārdu vietu iestatīšana"
+
+#: views.py:60
+msgid "Setting updated successfully."
+msgstr "Iestatījums ir veiksmīgi atjaunināts."
+
+#: views.py:69
+#, python-format
+msgid "Edit setting: %s"
+msgstr "Rediģēšanas iestatījums: %s"

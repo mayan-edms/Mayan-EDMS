@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:22-0400\n"
+"POT-Creation-Date: 2019-06-09 03:21-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 apps.py:108 apps.py:115 apps.py:137 apps.py:139 events.py:7
@@ -230,8 +229,7 @@ msgstr "Label \"%s\" verwijderd."
 #: views.py:184
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
-msgstr ""
-"Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
+msgstr "Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
 
 #: views.py:199
 #, python-format

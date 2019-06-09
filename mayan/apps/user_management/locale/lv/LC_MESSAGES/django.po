@@ -1,0 +1,307 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-09 03:22-0400\n"
+"PO-Revision-Date: 2019-05-31 12:55+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: apps.py:78 events.py:8 permissions.py:8
+msgid "User management"
+msgstr "Lietotāju pārvaldība"
+
+#: apps.py:96
+msgid "Group"
+msgstr "Grupa"
+
+#: apps.py:97 links.py:41 links.py:52 links.py:75 search.py:25 views.py:120
+msgid "Groups"
+msgstr "Grupas"
+
+#: apps.py:98 search.py:41
+msgid "Name"
+msgstr "Nosaukums"
+
+#: apps.py:104 models.py:18
+msgid "User"
+msgstr "Lietotājs"
+
+#: apps.py:105 apps.py:170 links.py:47 links.py:80 links.py:96 views.py:302
+msgid "Users"
+msgstr "Lietotāji"
+
+#: apps.py:108
+msgid "Username"
+msgstr "Lietotājvārds"
+
+#: apps.py:109 search.py:19
+msgid "First name"
+msgstr "Vārds"
+
+#: apps.py:110 search.py:28
+msgid "Last name"
+msgstr "Uzvārds"
+
+#: apps.py:111 search.py:22
+msgid "Email"
+msgstr "E-pasts"
+
+#: apps.py:112
+msgid "Is active?"
+msgstr "Vai ir aktīvs?"
+
+#: apps.py:115 apps.py:119
+msgid "Has usable password?"
+msgstr "Vai ir izmantojama parole?"
+
+#: apps.py:134
+msgid "All the groups."
+msgstr "Visas grupas."
+
+#: apps.py:138
+msgid "All the users."
+msgstr "Visi lietotāji."
+
+#: events.py:12
+msgid "Group created"
+msgstr "Grupa izveidota"
+
+#: events.py:15
+msgid "Group edited"
+msgstr "Grupa rediģēta"
+
+#: events.py:19
+msgid "User created"
+msgstr "Lietotājs izveidoja"
+
+#: events.py:22
+msgid "User edited"
+msgstr "Lietotāja rediģēts"
+
+#: events.py:25
+msgid "User logged in"
+msgstr "Lietotājs ir pieteicies"
+
+#: events.py:28
+msgid "User logged out"
+msgstr "Lietotājs ir pieteicies"
+
+#: links.py:16
+msgid "User details"
+msgstr "Lietotāja dati"
+
+#: links.py:20
+msgid "Edit details"
+msgstr "Rediģēt informāciju"
+
+#: links.py:24 views.py:56
+msgid "Create new group"
+msgstr "Izveidot jaunu grupu"
+
+#: links.py:31 links.py:64 links.py:85
+msgid "Delete"
+msgstr "Dzēst"
+
+#: links.py:36 links.py:69
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: links.py:57 views.py:152
+msgid "Create new user"
+msgstr "Izveidot jaunu lietotāju"
+
+#: links.py:92
+msgid "User options"
+msgstr "Lietotāja iespējas"
+
+#: models.py:22
+msgid "Forbid this user from changing their password."
+msgstr "Aizliegt šim lietotājam mainīt savu paroli."
+
+#: models.py:28
+msgid "User settings"
+msgstr "Lietotāja iestatījumi"
+
+#: models.py:29
+msgid "Users settings"
+msgstr "Lietotāju iestatījumi"
+
+#: permissions.py:12
+msgid "Create new groups"
+msgstr "Izveidot jaunas grupas"
+
+#: permissions.py:15
+msgid "Delete existing groups"
+msgstr "Dzēst esošās grupas"
+
+#: permissions.py:18
+msgid "Edit existing groups"
+msgstr "Rediģējiet esošās grupas"
+
+#: permissions.py:21
+msgid "View existing groups"
+msgstr "Skatīt esošās grupas"
+
+#: permissions.py:24
+msgid "Create new users"
+msgstr "Izveidot jaunus lietotājus"
+
+#: permissions.py:27
+msgid "Delete existing users"
+msgstr "Dzēst esošos lietotājus"
+
+#: permissions.py:30
+msgid "Edit existing users"
+msgstr "Rediģējiet esošos lietotājus"
+
+#: permissions.py:33
+msgid "View existing users"
+msgstr "Skatīt esošos lietotājus"
+
+#: search.py:31
+msgid "username"
+msgstr "lietotājvārds"
+
+#: serializers.py:34
+msgid "Comma separated list of group primary keys to assign this user to."
+msgstr "Grupu primāro taustiņu atdalīts ar komatu, lai piešķirtu šim lietotājam."
+
+#: serializers.py:64
+msgid "List of group primary keys to which to add the user."
+msgstr "Grupu primāro atslēgu saraksts, kurām jāpievieno lietotājs."
+
+#: utils.py:8
+msgid "Anonymous"
+msgstr "Anonīms"
+
+#: views.py:37
+msgid "Current user details"
+msgstr "Pašreizējā lietotāja informācija"
+
+#: views.py:45
+msgid "Edit current user details"
+msgstr "Rediģējiet pašreizējās lietotāja detaļas"
+
+#: views.py:78
+#, python-format
+msgid "Delete the group: %s?"
+msgstr "Dzēsiet grupu: %s?"
+
+#: views.py:93
+#, python-format
+msgid "Edit group: %s"
+msgstr "Rediģēt grupu: %s"
+
+#: views.py:113
+msgid ""
+"User groups are organizational units. They should mirror the organizational "
+"units of your organization. Groups can't be used for access control. Use "
+"roles for permissions and access control, add groups to them."
+msgstr "Lietotāju grupas ir organizatoriskas vienības. Tām jāatspoguļo jūsu organizācijas organizatoriskās vienības. Grupas nevar izmantot piekļuves kontrolei. Izmantojiet lomas un piekļuves kontroli, pievienojiet tām grupas."
+
+#: views.py:119
+msgid "There are no user groups"
+msgstr "Nav lietotāju grupu"
+
+#: views.py:132
+msgid "Available users"
+msgstr "Pieejamie lietotāji"
+
+#: views.py:133
+msgid "Group users"
+msgstr "Grupas lietotāji"
+
+#: views.py:141
+#, python-format
+msgid "Users of group: %s"
+msgstr "Grupas lietotāji: %s"
+
+#: views.py:173
+#, python-format
+msgid "User delete request performed on %(count)d user"
+msgstr "Lietotāja dzēšanas pieprasījums, kas veikts lietotājā %(count)d"
+
+#: views.py:175
+#, python-format
+msgid "User delete request performed on %(count)d users"
+msgstr "Lietotāja dzēšanas pieprasījums, kas tika veikts %(count)d lietotājiem"
+
+#: views.py:183
+msgid "Delete user"
+msgid_plural "Delete users"
+msgstr[0] "Dzēst lietotājus"
+msgstr[1] "Dzēst lietotāju"
+msgstr[2] "Dzēst lietotājus"
+
+#: views.py:193
+#, python-format
+msgid "Delete user: %s"
+msgstr "Dzēst lietotāju: %s"
+
+#: views.py:204
+msgid ""
+"Super user and staff user deleting is not allowed, use the admin interface "
+"for these cases."
+msgstr "Super lietotājs un personāla lietotājs dzēš nav atļauts, šajos gadījumos izmantojiet admin interfeisu."
+
+#: views.py:212
+#, python-format
+msgid "User \"%s\" deleted successfully."
+msgstr "Lietotājs &quot;%s&quot; veiksmīgi izdzēsts."
+
+#: views.py:218
+#, python-format
+msgid "Error deleting user \"%(user)s\": %(error)s"
+msgstr "Dzēšot lietotāju &quot;%(user)s&quot;, radās kļūda: %(error)s"
+
+#: views.py:236
+#, python-format
+msgid "Details of user: %s"
+msgstr "Informācija par lietotāju: %s"
+
+#: views.py:251
+#, python-format
+msgid "Edit user: %s"
+msgstr "Rediģēt lietotāju: %s"
+
+#: views.py:266
+msgid "Available groups"
+msgstr "Pieejamās grupas"
+
+#. Translators: "User groups" here refer to the group list of a specific
+#. user.
+#: views.py:269
+msgid "User groups"
+msgstr "Lietotāju grupas"
+
+#: views.py:277
+#, python-format
+msgid "Groups of user: %s"
+msgstr "Lietotāja grupas: %s"
+
+#: views.py:298
+msgid ""
+"User accounts can be create from this view. After creating an user account "
+"you will prompted to set a password for it. "
+msgstr "No šī viedokļa var izveidot lietotāju kontus. Pēc lietotāja konta izveides jums tiks piedāvāts iestatīt paroli."
+
+#: views.py:301
+msgid "There are no user accounts"
+msgstr "Nav lietotāju kontu"
+
+#: views.py:316
+#, python-format
+msgid "Edit options for user: %s"
+msgstr "Rediģējiet lietotāja iespējas: %s"
