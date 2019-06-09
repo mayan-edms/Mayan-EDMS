@@ -36,7 +36,7 @@ class ModelPermission(object):
 
         if as_content_type:
             content_type_dictionary = ContentType.objects.get_for_models(
-                models=cls._registry.keys()
+                *cls._registry.keys()
             )
             content_type_ids = [
                 content_type.pk for content_type in content_type_dictionary.values()
