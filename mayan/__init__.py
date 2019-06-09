@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 __title__ = 'Mayan EDMS'
 __version__ = '3.2rc1'
 __build__ = 0x030200
-__build_string__ = 'v3.2b1-57-g7407c67347_Sun Jun 9 03:12:17 2019 -0400'
+__build_string__ = 'v3.2rc1_Sun Jun 9 03:15:18 2019 -0400'
 __django_version__ = '1.11'
 __author__ = 'Roberto Rosario'
 __author_email__ = 'roberto.rosario@mayan-edms.com'
