@@ -283,7 +283,7 @@
 * Add support for Google Fonts dependencies.
 * Add support for patchin dependency files using rewriting rules.
 * Allow searching documents by UUID.
-
+* Improve search negation logic.
 
 3.1.11 (2019-04-XX)
 ===================

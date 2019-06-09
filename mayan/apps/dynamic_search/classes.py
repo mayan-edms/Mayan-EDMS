@@ -255,47 +255,66 @@ class SearchTermCollection(object):
         self.terms = []
 
         for letter in text:
-            if not inside_quotes and letter == TERM_NEGATION_CHARACTER:
-                negated = True
+            if letter in TERM_QUOTES:
+                if inside_quotes:
+                    if term_letters:
+                        term_string = ''.join(term_letters)
+                        negated = False
+                        if term_string.startswith(TERM_NEGATION_CHARACTER):
+                            term_string = term_string[1:]
+                            negated = True
+
+                        self.terms.append(
+                            SearchTerm(
+                                is_meta=False, negated=negated,
+                                string=term_string
+                            )
+                        )
+                        negated = False
+                        term_letters = []
+
+                inside_quotes = not inside_quotes
             else:
-                if letter in TERM_QUOTES:
-                    if inside_quotes:
-                        if term_letters:
-                            self.terms.append(
-                                SearchTerm(
-                                    is_meta=False, negated=negated,
-                                    string=''.join(term_letters)
-                                )
-                            )
-                            negated = False
-                            term_letters = []
+                if not inside_quotes and letter == TERM_SPACE_CHARACTER:
+                    if term_letters:
+                        term_string = ''.join(term_letters)
+                        if term_string in TERM_OPERATIONS:
+                            is_meta = True
+                        else:
+                            is_meta = False
 
-                    inside_quotes = not inside_quotes
+                        print("NEW TERM", ''.join(term_letters))
+
+                        if is_meta:
+                            negated = False
+                        else:
+                            negated = False
+                            if term_string.startswith(TERM_NEGATION_CHARACTER):
+                                term_string = term_string[1:]
+                                negated = True
+
+                        self.terms.append(
+                            SearchTerm(
+                                is_meta=is_meta, negated=negated,
+                                string=term_string
+                            )
+                        )
+                        negated = False
+                        term_letters = []
                 else:
-                    if not inside_quotes and letter == TERM_SPACE_CHARACTER:
-                        if term_letters:
-                            term_string = ''.join(term_letters)
-                            if term_string in TERM_OPERATIONS:
-                                is_meta = True
-                            else:
-                                is_meta = False
-
-                            self.terms.append(
-                                SearchTerm(
-                                    is_meta=is_meta, negated=negated,
-                                    string=term_string
-                                )
-                            )
-                            negated = False
-                            term_letters = []
-                    else:
-                        term_letters.append(letter)
+                    term_letters.append(letter)
 
         if term_letters:
+            term_string = ''.join(term_letters)
+            negated = False
+            if term_string.startswith(TERM_NEGATION_CHARACTER):
+                term_string = term_string[1:]
+                negated = True
+
             self.terms.append(
                 SearchTerm(
                     is_meta=False, negated=negated,
-                    string=''.join(term_letters)
+                    string=term_string
                 )
             )
 

@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from django.utils.encoding import force_text
+
 from mayan.apps.common.tests import BaseTestCase
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
@@ -137,5 +139,22 @@ class DocumentSearchTestCase(DocumentTestMixin, BaseTestCase):
 
         queryset = document_search.search(
             {'label': '-non_valid -second'}, user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 0)
+
+    def test_search_with_dashed_content(self):
+        self.upload_document(label='second-document')
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        queryset = document_search.search(
+            {'label': '-second-document'}, user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 0)
+
+        queryset = document_search.search(
+            {'label': '-"second-document"'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
