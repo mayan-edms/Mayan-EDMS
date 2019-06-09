@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 01:01-0400\n"
+"POT-Creation-Date: 2019-06-09 03:21-0400\n"
 "PO-Revision-Date: 2019-05-05 06:26+0000\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
@@ -34,7 +35,9 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "Sorgenti documento è il mezzo con cui i nuovi documenti alimentano Mayan EDMS, crea almeno una modulo web per poter caricare documenti da un browser."
+msgstr ""
+"Sorgenti documento è il mezzo con cui i nuovi documenti alimentano Mayan "
+"EDMS, crea almeno una modulo web per poter caricare documenti da un browser."
 
 #: apps.py:71
 msgid "Type"
@@ -279,7 +282,9 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Le scelte tipiche sono 110 per POP3, 995 per POP3 su SSL, 143 per IMAP, 993 per IMAP su SSL."
+msgstr ""
+"Le scelte tipiche sono 110 per POP3, 995 per POP3 su SSL, 143 per IMAP, 993 "
+"per IMAP su SSL."
 
 #: models/email_sources.py:48
 msgid "Port"
@@ -298,7 +303,10 @@ msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
-msgstr "Nome degli allegati che possono contenere i nomi dei tipi metadati e le coppie di valori che saranno assegnate al resto degli allegati caricati. Nota: Questo allegato sarà il primo degli allegati."
+msgstr ""
+"Nome degli allegati che possono contenere i nomi dei tipi metadati e le "
+"coppie di valori che saranno assegnate al resto degli allegati caricati. "
+"Nota: Questo allegato sarà il primo degli allegati."
 
 #: models/email_sources.py:59
 msgid "Metadata attachment name"
@@ -308,7 +316,9 @@ msgstr "Nome allegato metadati"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr "Selezionare il tipo metadato valido per il documento selezionato dove impostare l'oggetto della mail."
+msgstr ""
+"Selezionare il tipo metadato valido per il documento selezionato dove "
+"impostare l'oggetto della mail."
 
 #: models/email_sources.py:66
 msgid "Subject metadata type"
@@ -318,7 +328,9 @@ msgstr "Tipo metadato oggetto"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr "Selezionare il tipo metadato valido per il documento selezionato dove impostare il mittente della mail."
+msgstr ""
+"Selezionare il tipo metadato valido per il documento selezionato dove "
+"impostare il mittente della mail."
 
 #: models/email_sources.py:73
 msgid "From metadata type"
@@ -345,14 +357,18 @@ msgstr "Email sorgenti"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "Il tipo metadato \"oggetto\" \"%(metadata_type)s\" non è valido per il tipo documento: %(document_type)s"
+msgstr ""
+"Il tipo metadato \"oggetto\" \"%(metadata_type)s\" non è valido per il tipo "
+"documento: %(document_type)s"
 
 #: models/email_sources.py:198
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "Il tipo metadato \"mittente\" \"%(metadata_type)s\" non è valido per il tipo documento: %(document_type)s"
+msgstr ""
+"Il tipo metadato \"mittente\" \"%(metadata_type)s\" non è valido per il tipo "
+"documento: %(document_type)s"
 
 #: models/email_sources.py:213
 msgid "IMAP Mailbox from which to check for messages."
@@ -442,7 +458,8 @@ msgstr "Percorso cartella"
 
 #: models/staging_folder_sources.py:45
 msgid "Width value to be passed to the converter backend."
-msgstr "valore della larghezza da passare per le operazioni di conversione in backend"
+msgstr ""
+"valore della larghezza da passare per le operazioni di conversione in backend"
 
 #: models/staging_folder_sources.py:46
 msgid "Preview width"
@@ -450,7 +467,8 @@ msgstr "Larghezza anteprima"
 
 #: models/staging_folder_sources.py:50
 msgid "Height value to be passed to the converter backend."
-msgstr "valore dell'altezza da passare per le operazioni di conversione in backend"
+msgstr ""
+"valore dell'altezza da passare per le operazioni di conversione in backend"
 
 #: models/staging_folder_sources.py:51
 msgid "Preview height"
@@ -616,9 +634,11 @@ msgstr "Log per la sorgente: %s"
 
 #: views.py:125 wizards.py:154
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Nessuna fonte interattiva dei documenti è stata definita o non ne sono state attivate."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"Nessuna fonte interattiva dei documenti è stata definita o non ne sono state "
+"attivate."
 
 #: views.py:153 views.py:171 views.py:181
 msgid "Document properties"

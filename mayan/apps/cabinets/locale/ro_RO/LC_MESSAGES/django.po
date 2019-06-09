@@ -2,32 +2,58 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2017
 # Badea Gabriel <gcbadea@gmail.com>, 2017
 # Stefaniu Criste <gupi@hangar.ro>, 2017
 # Harald Ersch, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 00:58-0400\n"
+"POT-Creation-Date: 2019-06-09 03:17-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
-"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/"
+"teams/13584/ro_RO/)\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
 #: apps.py:50 apps.py:111 apps.py:119 apps.py:122 events.py:7 forms.py:16
 #: links.py:24 menus.py:16 models.py:47 permissions.py:7 views.py:159
 msgid "Cabinets"
 msgstr "Fișete"
+
+#: events.py:11
+#, fuzzy
+#| msgid "Cabinet"
+msgid "Cabinet created"
+msgstr "Fișet"
+
+#: events.py:14
+#, fuzzy
+#| msgid "Cabinet"
+msgid "Cabinet edited"
+msgstr "Fișet"
+
+#: events.py:17
+#, fuzzy
+#| msgid "Document cabinet"
+msgid "Document added to cabinet"
+msgstr "Fișet de documente"
+
+#: events.py:20
+#, fuzzy
+#| msgid "Remove from cabinets"
+msgid "Document removed from cabinet"
+msgstr "Scoateți din fișete"
 
 #: links.py:30 links.py:44
 msgid "Remove from cabinets"
@@ -60,6 +86,18 @@ msgstr "Toate"
 #: links.py:92
 msgid "Details"
 msgstr "Detalii"
+
+#: methods.py:18
+#, fuzzy
+#| msgid "Cabinets containing document: %s"
+msgid "Return a list of cabinets containing the document"
+msgstr "Fișete care conțin documentul: %s"
+
+#: methods.py:20
+#, fuzzy
+#| msgid "Create cabinets"
+msgid "get_cabinets()"
+msgstr "Creați fișete"
 
 #: models.py:35 search.py:16
 msgid "Label"
@@ -128,17 +166,16 @@ msgstr ""
 "Numele acestui nivel de fișet a fost anexat la numele precesorilor săi."
 
 #: serializers.py:32
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
-"Adresa URL a punctului de sfârșit API care afișează documentele din listă în"
-" interiorul acestui fișet."
+"Adresa URL a punctului de sfârșit API care afișează documentele din listă în "
+"interiorul acestui fișet."
 
 #: serializers.py:68 serializers.py:179
 msgid "Comma separated list of document primary keys to add to this cabinet."
 msgstr ""
-"Listă de chei primare separate prin virgulă  de documente pentru a le adăuga"
-" în acest fișet."
+"Listă de chei primare separate prin virgulă  de documente pentru a le adăuga "
+"în acest fișet."
 
 #: serializers.py:158
 msgid ""
@@ -222,12 +259,20 @@ msgstr ""
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents"
 msgstr ""
-"Solicitarea de adăugare la fișet a fost efectuată pentru %(count)d documente"
-" "
+"Solicitarea de adăugare la fișet a fost efectuată pentru %(count)d documente "
 
 #: views.py:229
 msgid "Add"
 msgstr "Adaugă"
+
+#: views.py:231
+#, fuzzy, python-format
+#| msgid "Add documents to cabinets"
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] "Adăugați documente la fișete"
+msgstr[1] "Adăugați documente la fișete"
+msgstr[2] "Adăugați documente la fișete"
 
 #: views.py:244
 #, python-format
@@ -262,6 +307,21 @@ msgstr "Cererea de eliminarea din fișet efectuată pe %(count)d documente"
 msgid "Remove"
 msgstr "Elimină"
 
+#: views.py:321
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] "Scoateți documente din fișete"
+msgstr[1] "Scoateți documente din fișete"
+msgstr[2] "Scoateți documente din fișete"
+
+#: views.py:334
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove document \"%s\" from cabinets"
+msgstr "Scoateți documente din fișete"
+
 #: views.py:345
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Fișetele din care vor fi eliminate documentele selectate."
@@ -275,3 +335,15 @@ msgstr "Documentul: %(document)s nu este în fișetul: %(cabinet)s."
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Documentul: %(document)sa fost scos din fișetul: %(cabinet)s."
+
+#: wizard_steps.py:18
+#, fuzzy
+#| msgid "Delete cabinets"
+msgid "Select cabinets"
+msgstr "Ștergeți fișete"
+
+#: wizard_steps.py:32
+#, fuzzy
+#| msgid "Cabinets to which the selected documents will be added."
+msgid "Cabinets to which the document will be added."
+msgstr "Fișetele la care vor fi adăugate documentele selectate."

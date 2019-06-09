@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 00:58-0400\n"
-"PO-Revision-Date: 2019-05-08 07:12+0000\n"
-"Last-Translator: Harald Ersch\n"
+"POT-Creation-Date: 2019-06-09 03:16-0400\n"
+"PO-Revision-Date: 2019-06-09 07:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,47 +23,51 @@ msgstr ""
 msgid "Appearance"
 msgstr "Aspect"
 
-#: dependencies.py:8
+#: dependencies.py:10
+msgid "Lato font"
+msgstr ""
+
+#: dependencies.py:14
 msgid "Bootstrap"
 msgstr "Bootstrap"
 
-#: dependencies.py:12
+#: dependencies.py:18
 msgid "Bootswatch"
 msgstr "Bootswatch"
 
-#: dependencies.py:16
+#: dependencies.py:32
 msgid "Fancybox"
 msgstr "Fancybox"
 
-#: dependencies.py:20
+#: dependencies.py:36
 msgid "FontAwesome"
 msgstr "FontAwesome"
 
-#: dependencies.py:24
+#: dependencies.py:40
 msgid "jQuery"
 msgstr "jQuery"
 
-#: dependencies.py:27
+#: dependencies.py:43
 msgid "JQuery Form"
 msgstr "Formular JQuery"
 
-#: dependencies.py:31
+#: dependencies.py:47
 msgid "jQuery Lazy Load"
 msgstr "jQuery Lazy Load"
 
-#: dependencies.py:35
+#: dependencies.py:51
 msgid "JQuery Match Height"
 msgstr "Potrivire Înălțime JQuery "
 
-#: dependencies.py:39
+#: dependencies.py:55
 msgid "Select 2"
 msgstr "Select 2"
 
-#: dependencies.py:43
+#: dependencies.py:59
 msgid "Toastr"
 msgstr "Toastr"
 
-#: dependencies.py:46
+#: dependencies.py:62
 msgid "URI.js"
 msgstr "URI.js"
 

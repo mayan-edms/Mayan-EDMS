@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 00:59-0400\n"
+"POT-Creation-Date: 2019-06-09 03:18-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:47 permissions.py:8 settings.py:10
@@ -236,7 +237,9 @@ msgstr "Verificar assinatura integrada que falta"
 
 #: settings.py:15
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr "Caminho para a subclasse Storage que será usada para armazenar firmas separadas."
+msgstr ""
+"Caminho para a subclasse Storage que será usada para armazenar firmas "
+"separadas."
 
 #: settings.py:24
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
@@ -279,7 +282,10 @@ msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr "Assinaturas ajudam a proporcionar evidência de autoria e detecção de manipulação. São muito seguras e difíceis de falsificar. Uma assinatura pode ser integrada ao próprio documento ou carregada como um arquivo separado."
+msgstr ""
+"Assinaturas ajudam a proporcionar evidência de autoria e detecção de "
+"manipulação. São muito seguras e difíceis de falsificar. Uma assinatura pode "
+"ser integrada ao próprio documento ou carregada como um arquivo separado."
 
 #: views.py:328
 msgid "There are no signatures for this document."
@@ -297,7 +303,8 @@ msgstr "Carregar a assinatura destacada para a versão do documento: %s"
 
 #: views.py:378
 msgid "On large databases this operation may take some time to execute."
-msgstr "Em grandes bases de dados esta operação pode levar algum tempo para executar."
+msgstr ""
+"Em grandes bases de dados esta operação pode levar algum tempo para executar."
 
 #: views.py:379
 msgid "Verify all document for signatures?"

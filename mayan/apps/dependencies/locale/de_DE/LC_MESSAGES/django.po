@@ -2,26 +2,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2019
 # Berny <berny@bernhard-marx.de>, 2019
 # Felix <felix.com@gmx.com>, 2019
 # Mathias Behrle <mathiasb@m9s.biz>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 00:59-0400\n"
+"POT-Creation-Date: 2019-06-09 03:18-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2019\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
+"teams/13584/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:27 links.py:43 permissions.py:7
@@ -40,11 +41,11 @@ msgstr "Interner Name"
 msgid "Description"
 msgstr "Beschreibung"
 
-#: apps.py:43 classes.py:167
+#: apps.py:43 classes.py:172
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:47 classes.py:169
+#: apps.py:47 classes.py:174
 msgid "Other data"
 msgstr "Andere Daten"
 
@@ -52,29 +53,29 @@ msgstr "Andere Daten"
 msgid "Declared by"
 msgstr "Deklariert von"
 
-#: apps.py:55 classes.py:167
+#: apps.py:55 classes.py:172
 msgid "Version"
 msgstr "Version"
 
-#: apps.py:59 classes.py:168 classes.py:673
+#: apps.py:59 classes.py:173 classes.py:804
 msgid "Environment"
 msgstr "Umgebung"
 
-#: apps.py:63 classes.py:169
+#: apps.py:63 classes.py:174
 msgid "Check"
 msgstr "Überprüfen"
 
-#: classes.py:60
+#: classes.py:65
 msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing depedencies under this environment."
 msgstr ""
 
-#: classes.py:63
+#: classes.py:68
 msgid "Build"
 msgstr ""
 
-#: classes.py:67
+#: classes.py:72
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing depedencies under this environment."
@@ -82,11 +83,11 @@ msgstr ""
 "Umgebung für Entwickler. Endbenutzer können fehlende Abhängigkeiten in "
 "dieser Umgebung ignorieren."
 
-#: classes.py:69
+#: classes.py:74
 msgid "Development"
 msgstr "Entwicklung"
 
-#: classes.py:73
+#: classes.py:78
 msgid ""
 "Normal environment for end users. A missing depedencies under this "
 "environment will result issues and error during normal use."
@@ -94,11 +95,11 @@ msgstr ""
 "Normale Umgebung für Endbenutzer. Fehlende Abhängigkeiten werden in dieser "
 "Umgebung Fehler im normalen Gebrauch verursachen."
 
-#: classes.py:75
+#: classes.py:80
 msgid "Production"
 msgstr "Produktion"
 
-#: classes.py:79
+#: classes.py:84
 msgid ""
 "Environment used running the test suit to verify the functionality of the "
 "code. Dependencies in this environment are not needed for normal production "
@@ -108,110 +109,122 @@ msgstr ""
 "Abhängigkeiten dieser Umgebung werden nicht im normalen Produktivbetrieb "
 "benötigt."
 
-#: classes.py:82
+#: classes.py:87
 msgid "Testing"
 msgstr "Testing"
 
-#: classes.py:167
+#: classes.py:172
 msgid "Name"
 msgstr "Name"
 
-#: classes.py:168
+#: classes.py:173
 msgid "App"
 msgstr ""
 
-#: classes.py:268
+#: classes.py:274
 msgid "Need to specify at least one: app_label or module."
 msgstr ""
 "Es muss wenigstens eines von beiden angegeben werden: app_label oder Modul."
 
-#: classes.py:273
+#: classes.py:279
 #, python-format
 msgid "Dependency \"%s\" already registered."
 msgstr "Abhängigkeit \"%s\" bereits registriert."
 
-#: classes.py:299
+#: classes.py:305
 #, python-format
 msgid "Installing package: %s... "
 msgstr "Installiere Paket: %s... "
 
-#: classes.py:304
+#: classes.py:310
 msgid "Already installed."
 msgstr "Bereits installiert."
 
-#: classes.py:307 classes.py:311
+#: classes.py:313 classes.py:318 classes.py:322
 msgid "Complete."
 msgstr "Vollständig."
 
-#: classes.py:334
+#: classes.py:348
 msgid "Installed and correct version"
 msgstr "Installierte und korrekte Version"
 
-#: classes.py:336
+#: classes.py:350
 msgid "Missing or incorrect version"
 msgstr "Fehlende oder inkorrekte Version"
 
-#: classes.py:365
+#: classes.py:379
 msgid "None"
 msgstr "Keine"
 
-#: classes.py:374
+#: classes.py:388
 msgid "Not specified"
 msgstr "Nicht spezifiziert"
 
-#: classes.py:389
+#: classes.py:405
+msgid "Patching files... "
+msgstr ""
+
+#: classes.py:436
 msgid "Executables that are called directly by the code."
 msgstr "Programme, die direkt durch den Code aufgerufen werden."
 
-#: classes.py:391
+#: classes.py:438
 msgid "Binary"
 msgstr "Binärdatei"
 
-#: classes.py:408
+#: classes.py:455
 msgid ""
-"Javascript libraries downloaded the from NPM registry and used for front-end"
-" functionality."
+"Javascript libraries downloaded the from NPM registry and used for front-end "
+"functionality."
 msgstr ""
-"Javascript Bibliotheken, die aus der NPM Registry heruntergeladen werden und"
-" für die Front-End-Funktionalität benötigt werden."
+"Javascript Bibliotheken, die aus der NPM Registry heruntergeladen werden und "
+"für die Front-End-Funktionalität benötigt werden."
 
-#: classes.py:411
+#: classes.py:458
 msgid "Javascript"
 msgstr "Javascript"
 
-#: classes.py:445
+#: classes.py:492 classes.py:725
 msgid "Downloading... "
 msgstr ""
 
-#: classes.py:448
+#: classes.py:495
 msgid "Verifying... "
 msgstr ""
 
-#: classes.py:451
+#: classes.py:498 classes.py:728
 msgid "Extracting... "
 msgstr ""
 
-#: classes.py:628
+#: classes.py:677
 msgid "Python packages downloaded from PyPI."
 msgstr "Pythonpakete, die von PyPI heruntergeladen werden."
 
-#: classes.py:630
+#: classes.py:679
 msgid "Python"
 msgstr "Python"
 
-#: classes.py:655
+#: classes.py:706
+msgid "Fonts downloaded from fonts.googleapis.com."
+msgstr ""
+
+#: classes.py:708
+msgid "Google font"
+msgstr ""
+
+#: classes.py:786
 msgid "Declared in app"
 msgstr "In App deklariert"
 
-#: classes.py:656
+#: classes.py:787
 msgid "Show depedencies by the app that declared them."
 msgstr "Abhängigkeiten nach der deklarierenden App anzeigen."
 
-#: classes.py:660
+#: classes.py:791
 msgid "Class"
 msgstr "Klasse"
 
-#: classes.py:661
+#: classes.py:792
 msgid ""
 "Show the different classes of depedencies. Classes are usually divided by "
 "language or the file types of the depedency."
@@ -219,11 +232,11 @@ msgstr ""
 "Unterschiedliche Klassen von Abhängigkeiten anzeigen. Klassen sind "
 "üblicherweise unterteilt nach Sprache oder Dateityp der Abhängigkeit."
 
-#: classes.py:666
+#: classes.py:797
 msgid "State"
 msgstr "Status"
 
-#: classes.py:667
+#: classes.py:798
 msgid ""
 "Show the different states of the depedencies. True means that the "
 "depedencies is installed and is of a correct version. False means the "
@@ -234,7 +247,7 @@ msgstr ""
 "False (Falsch) bedeutet eine fehlende oder inkorrekte Version der "
 "Abhängigkeit."
 
-#: classes.py:674
+#: classes.py:805
 msgid ""
 "Depedencies required for an environment might not be required for another. "
 "Example environments: Production, Development."

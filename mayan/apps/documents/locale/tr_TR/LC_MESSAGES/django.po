@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
 # serhatcan77 <serhat_can@yahoo.com>, 2017
@@ -9,19 +9,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 00:59-0400\n"
+"POT-Creation-Date: 2019-06-09 03:19-0400\n"
 "PO-Revision-Date: 2019-05-21 05:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:109 apps.py:291 events.py:7 menus.py:10
-#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:14
-#: statistics.py:233
+#: apps.py:109 apps.py:291 events.py:7 menus.py:10 models/document_models.py:94
+#: permissions.py:7 queues.py:26 settings.py:14 statistics.py:233
 msgid "Documents"
 msgstr "Belgeler"
 
@@ -33,7 +33,9 @@ msgstr "Belge türü oluşturma"
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
-msgstr "Yüklenen her belgeye bir belge türü atanmalıdır; bu, Mayan EDMS'in belgeleri sınıflandırmasının temel şeklidir."
+msgstr ""
+"Yüklenen her belgeye bir belge türü atanmalıdır; bu, Mayan EDMS'in belgeleri "
+"sınıflandırmasının temel şeklidir."
 
 #: apps.py:151
 msgid "Versions comment"
@@ -134,10 +136,13 @@ msgstr "Şıkıştırma"
 
 #: forms/document_forms.py:28
 msgid ""
-"Download the document in the original format or in a compressed manner. This"
-" option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This "
+"option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr "Dokümanı orijinal formatında veya sıkıştırılmış bir şekilde indirin. Bu seçenek yalnızca bir belgeyi indirirken seçilebilir, birden fazla belge için paket sıklıkla sıkıştırılmış bir dosya olarak indirilir."
+msgstr ""
+"Dokümanı orijinal formatında veya sıkıştırılmış bir şekilde indirin. Bu "
+"seçenek yalnızca bir belgeyi indirirken seçilebilir, birden fazla belge için "
+"paket sıklıkla sıkıştırılmış bir dosya olarak indirilir."
 
 #: forms/document_forms.py:35
 msgid "Compressed filename"
@@ -147,7 +152,9 @@ msgstr "Sıkıştırılmış dosya adı"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr "Önceki seçenek seçiliyse, indirilecek belgeleri içeren sıkıştırılmış dosyanın dosya adı."
+msgstr ""
+"Önceki seçenek seçiliyse, indirilecek belgeleri içeren sıkıştırılmış "
+"dosyanın dosya adı."
 
 #: forms/document_forms.py:85
 msgid "Quick document rename"
@@ -167,7 +174,7 @@ msgstr ""
 msgid "Date added"
 msgstr "Ekleme Tarihi"
 
-#: forms/document_forms.py:151 models/document_models.py:41
+#: forms/document_forms.py:151 models/document_models.py:41 search.py:29
 msgid "UUID"
 msgstr "UUID"
 
@@ -200,7 +207,7 @@ msgid "File path in storage"
 msgstr "Depoda dosya yolu"
 
 #: forms/document_forms.py:181 models/document_version_models.py:111
-#: search.py:24 search.py:48
+#: search.py:32 search.py:56
 msgid "Checksum"
 msgstr "Sağlama"
 
@@ -209,14 +216,19 @@ msgid "Page range"
 msgstr "Sayfa aralığı"
 
 #: forms/document_page_forms.py:29
+#, fuzzy
+#| msgid ""
+#| "Page number from which all the transformation will be cloned. Existing "
+#| "transformations will be lost."
 msgid ""
-"Page number from which all the transformation will be cloned. Existing "
+"Page number from which all the transformations will be cloned. Existing "
 "transformations will be lost."
-msgstr "Tüm dönüşümün kopyalanacağı sayfa numarası. Mevcut dönüşümler kaybolacaktır."
+msgstr ""
+"Tüm dönüşümün kopyalanacağı sayfa numarası. Mevcut dönüşümler kaybolacaktır."
 
 #: forms/document_type_forms.py:42 models/document_models.py:45
 #: models/document_type_models.py:60 models/document_type_models.py:146
-#: search.py:16 search.py:35
+#: search.py:21 search.py:43
 msgid "Document type"
 msgstr "Belge Türü"
 
@@ -329,7 +341,9 @@ msgstr "Çöp Kutusu"
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr "Belgelerin ekranını ve etkileşimli dönüşüm sonuçlarını hızlandırmak için kullanılan grafik gösterimlerini temizleyin."
+msgstr ""
+"Belgelerin ekranını ve etkileşimli dönüşüm sonuçlarını hızlandırmak için "
+"kullanılan grafik gösterimlerini temizleyin."
 
 #: links.py:274
 msgid "Clear document image cache"
@@ -422,8 +436,8 @@ msgstr "Tüm sayfalar"
 
 #: models/document_models.py:39
 msgid ""
-"UUID of a document, universally Unique ID. An unique identifiergenerated for"
-" each document."
+"UUID of a document, universally Unique ID. An unique identifiergenerated for "
+"each document."
 msgstr ""
 
 #: models/document_models.py:49
@@ -432,7 +446,7 @@ msgstr ""
 
 #: models/document_models.py:49 models/document_page_models.py:259
 #: models/document_type_models.py:32 models/document_type_models.py:149
-#: search.py:21 search.py:42
+#: search.py:26 search.py:50
 msgid "Label"
 msgstr "Etiket"
 
@@ -440,7 +454,7 @@ msgstr "Etiket"
 msgid "An optional short text describing a document."
 msgstr ""
 
-#: models/document_models.py:54 search.py:22 search.py:45
+#: models/document_models.py:54 search.py:27 search.py:53
 msgid "Description"
 msgstr "Açıklama"
 
@@ -479,7 +493,10 @@ msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
-msgstr "Bir doküman koçanı, veritabanında bir girişi bulunan, ancak hiçbir dosya yüklenmemiş bir dokümandır. Bu, API aracılığıyla kesilen bir yükleme veya ertelenmiş bir yükleme olabilir."
+msgstr ""
+"Bir doküman koçanı, veritabanında bir girişi bulunan, ancak hiçbir dosya "
+"yüklenmemiş bir dokümandır. Bu, API aracılığıyla kesilen bir yükleme veya "
+"ertelenmiş bir yükleme olabilir."
 
 #: models/document_models.py:84
 msgid "Is stub?"
@@ -535,8 +552,7 @@ msgstr ""
 
 #: models/document_type_models.py:36
 msgid ""
-"Amount of time after which documents of this type will be moved to the "
-"trash."
+"Amount of time after which documents of this type will be moved to the trash."
 msgstr "Bu türün belgelerinin çöp kutusuna taşınmasından sonraki süre."
 
 #: models/document_type_models.py:38
@@ -596,11 +612,11 @@ msgstr "Dosya"
 #: models/document_version_models.py:94
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document."
-" Some examples: \"text/plain\" or \"image/jpeg\". "
+"describe the format of a file, in this case the file format of the document. "
+"Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
-#: models/document_version_models.py:98 search.py:19 search.py:39
+#: models/document_version_models.py:98 search.py:24 search.py:47
 msgid "MIME type"
 msgstr "MIME türü"
 
@@ -776,13 +792,18 @@ msgstr ""
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
-msgstr "Belgelerin sayfalarının dönüştürülmemiş, yüksek çözünürlüklü sürümlerini depolayan ilk önbellek katmanını devre dışı bırakır."
+msgstr ""
+"Belgelerin sayfalarının dönüştürülmemiş, yüksek çözünürlüklü sürümlerini "
+"depolayan ilk önbellek katmanını devre dışı bırakır."
 
 #: settings.py:41
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
-msgstr "Orta sayfadan düşük çözünürlüğe, belgenin sayfalarının dönüştürülmüş (döndürülmüş, yakınlaştırılmış vb.) Sürümlerini depolayan ikinci önbellek katmanını devre dışı bırakır."
+msgstr ""
+"Orta sayfadan düşük çözünürlüğe, belgenin sayfalarının dönüştürülmüş "
+"(döndürülmüş, yakınlaştırılmış vb.) Sürümlerini depolayan ikinci önbellek "
+"katmanını devre dışı bırakır."
 
 #: settings.py:55
 msgid "Maximum number of favorite documents to remember per user."
@@ -791,15 +812,15 @@ msgstr ""
 #: settings.py:61
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an"
-" experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an "
+"experimental feature and it is disabled by default."
 msgstr ""
 
 #: settings.py:70
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value"
-" of 0 disables the block calculation and the entire file will be loaded into"
-" memory."
+"Size of blocks to use when calculating the document file's checksum. A value "
+"of 0 disables the block calculation and the entire file will be loaded into "
+"memory."
 msgstr ""
 
 #: settings.py:77
@@ -828,7 +849,9 @@ msgstr ""
 
 #: settings.py:118
 msgid "Amount in degrees to rotate a document page per user interaction."
-msgstr "Kullanıcı etkileşimi başına bir doküman sayfasını döndürmek için gereken derece miktarı."
+msgstr ""
+"Kullanıcı etkileşimi başına bir doküman sayfasını döndürmek için gereken "
+"derece miktarı."
 
 #: settings.py:124
 msgid "Path to the Storage subclass to use when storing document files."
@@ -846,17 +869,23 @@ msgstr ""
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr "Kullanıcının bir belge sayfasını etkileşimli olarak yakınlaştırmasını sağlamak için yüzde olarak maksimum miktarı (%)."
+msgstr ""
+"Kullanıcının bir belge sayfasını etkileşimli olarak yakınlaştırmasını "
+"sağlamak için yüzde olarak maksimum miktarı (%)."
 
 #: settings.py:154
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr "Kullanıcıya bir belge sayfasını etkileşimli olarak uzaklaştırmak için yüzde olarak minimum tutar (%)."
+msgstr ""
+"Kullanıcıya bir belge sayfasını etkileşimli olarak uzaklaştırmak için yüzde "
+"olarak minimum tutar (%)."
 
 #: settings.py:161
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr "Kullanıcı etkileşimi başına belge sayfasında yakınlaştırma veya uzaklaştırma yüzdesi."
+msgstr ""
+"Kullanıcı etkileşimi başına belge sayfasında yakınlaştırma veya uzaklaştırma "
+"yüzdesi."
 
 #: statistics.py:18
 msgid "January"
@@ -949,10 +978,9 @@ msgstr ""
 
 #: views/document_page_views.py:54
 msgid ""
-"This could mean that the document is of a format that is not supported, that"
-" it is corrupted or that the upload process was interrupted. Use the "
-"document page recalculation action to attempt to introspect the page count "
-"again."
+"This could mean that the document is of a format that is not supported, that "
+"it is corrupted or that the upload process was interrupted. Use the document "
+"page recalculation action to attempt to introspect the page count again."
 msgstr ""
 
 #: views/document_page_views.py:59
@@ -985,8 +1013,8 @@ msgstr "Belgelerin türü: %s"
 #: views/document_type_views.py:71
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical"
-" document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical "
+"document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
@@ -1026,8 +1054,10 @@ msgstr "Hızlı etiketi silin: %(label)s, Belge türünün \"%(document_type)s\"
 
 #: views/document_type_views.py:215
 #, python-format
-msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr "\"%(filename)s\" hızlı etiketini %(document_type)sBelge türünden düzenleyin"
+msgid ""
+"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgstr ""
+"\"%(filename)s\" hızlı etiketini %(document_type)sBelge türünden düzenleyin"
 
 #: views/document_type_views.py:253
 msgid ""
@@ -1095,7 +1125,8 @@ msgstr ""
 #: views/document_views.py:107
 #, python-format
 msgid "Document type change request performed on %(count)d document"
-msgstr "%(count)d belge üzerinde gerçekleştirilen Belge türü değişikliği isteği"
+msgstr ""
+"%(count)d belge üzerinde gerçekleştirilen Belge türü değişikliği isteği"
 
 #: views/document_views.py:110
 #, python-format
@@ -1157,18 +1188,21 @@ msgstr "Belge için özellikler: %s"
 #: views/document_views.py:441
 #, python-format
 msgid "%(count)d document queued for page count recalculation"
-msgstr "%(count)d Belgesi, sayfa sayısı yeniden hesaplaması için kuyruğa alındı"
+msgstr ""
+"%(count)d Belgesi, sayfa sayısı yeniden hesaplaması için kuyruğa alındı"
 
 #: views/document_views.py:444
 #, python-format
 msgid "%(count)d documents queued for page count recalculation"
-msgstr "%(count)d Belgeler, sayfa sayısı yeniden hesaplaması için kuyruğa alındı"
+msgstr ""
+"%(count)d Belgeler, sayfa sayısı yeniden hesaplaması için kuyruğa alındı"
 
 #: views/document_views.py:452
 msgid "Recalculate the page count of the selected document?"
 msgid_plural "Recalculate the page count of the selected documents?"
 msgstr[0] "Seçilen belgenin sayfa sayısını yeniden hesapla mı?"
-msgstr[1] "Seçilen belgelerin sayfa sayısını tekrar hesaplamak istiyor musunuz?"
+msgstr[1] ""
+"Seçilen belgelerin sayfa sayısını tekrar hesaplamak istiyor musunuz?"
 
 #: views/document_views.py:463
 #, python-format
@@ -1208,7 +1242,8 @@ msgstr "Belgenin tüm sayfa dönüşümlerini temizle: %s?"
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr "Belge için sayfa dönüşümleri silinirken hata oluştu: %(document)s; %(error)s."
+msgstr ""
+"Belge için sayfa dönüşümleri silinirken hata oluştu: %(document)s; %(error)s."
 
 #: views/document_views.py:565
 msgid "Transformations cloned successfully."
@@ -1231,8 +1266,8 @@ msgstr "Yazdırma: %s"
 #: views/document_views.py:681
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or"
-" were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or "
+"were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/document_views.py:688
@@ -1241,8 +1276,8 @@ msgstr ""
 
 #: views/document_views.py:706
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by"
-" this user account."
+"This view will list the latest documents viewed or manipulated in any way by "
+"this user account."
 msgstr ""
 
 #: views/document_views.py:710

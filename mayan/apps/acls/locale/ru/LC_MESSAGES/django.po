@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 00:57-0400\n"
+"POT-Creation-Date: 2019-06-09 03:16-0400\n"
 "PO-Revision-Date: 2019-05-05 01:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -50,12 +50,12 @@ msgstr "Удалить"
 msgid "Permissions"
 msgstr "Разрешения"
 
-#: managers.py:209
+#: managers.py:216
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
 msgstr ""
 
-#: managers.py:229
+#: managers.py:236
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr ""
@@ -191,6 +191,6 @@ msgstr ""
 msgid "Grant access"
 msgstr ""
 
-#: workflow_actions.py:135
+#: workflow_actions.py:142
 msgid "Revoke access"
 msgstr ""

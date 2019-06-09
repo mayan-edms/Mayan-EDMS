@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 00:58-0400\n"
-"PO-Revision-Date: 2019-05-03 05:20+0000\n"
+"POT-Creation-Date: 2019-06-09 03:16-0400\n"
+"PO-Revision-Date: 2019-06-09 07:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
 "MIME-Version: 1.0\n"
@@ -22,47 +22,51 @@ msgstr ""
 msgid "Appearance"
 msgstr "Videz"
 
-#: dependencies.py:8
+#: dependencies.py:10
+msgid "Lato font"
+msgstr ""
+
+#: dependencies.py:14
 msgid "Bootstrap"
 msgstr ""
 
-#: dependencies.py:12
+#: dependencies.py:18
 msgid "Bootswatch"
 msgstr ""
 
-#: dependencies.py:16
+#: dependencies.py:32
 msgid "Fancybox"
 msgstr ""
 
-#: dependencies.py:20
+#: dependencies.py:36
 msgid "FontAwesome"
 msgstr ""
 
-#: dependencies.py:24
+#: dependencies.py:40
 msgid "jQuery"
 msgstr ""
 
-#: dependencies.py:27
+#: dependencies.py:43
 msgid "JQuery Form"
 msgstr ""
 
-#: dependencies.py:31
+#: dependencies.py:47
 msgid "jQuery Lazy Load"
 msgstr ""
 
-#: dependencies.py:35
+#: dependencies.py:51
 msgid "JQuery Match Height"
 msgstr ""
 
-#: dependencies.py:39
+#: dependencies.py:55
 msgid "Select 2"
 msgstr ""
 
-#: dependencies.py:43
+#: dependencies.py:59
 msgid "Toastr"
 msgstr ""
 
-#: dependencies.py:46
+#: dependencies.py:62
 msgid "URI.js"
 msgstr ""
 

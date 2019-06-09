@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 00:59-0400\n"
+"POT-Creation-Date: 2019-06-09 03:19-0400\n"
 "PO-Revision-Date: 2017-08-15 01:59-0400\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -165,7 +165,7 @@ msgstr ""
 msgid "Date added"
 msgstr ""
 
-#: forms/document_forms.py:151 models/document_models.py:41
+#: forms/document_forms.py:151 models/document_models.py:41 search.py:29
 msgid "UUID"
 msgstr ""
 
@@ -198,7 +198,7 @@ msgid "File path in storage"
 msgstr ""
 
 #: forms/document_forms.py:181 models/document_version_models.py:111
-#: search.py:24 search.py:48
+#: search.py:32 search.py:56
 msgid "Checksum"
 msgstr ""
 
@@ -208,13 +208,13 @@ msgstr ""
 
 #: forms/document_page_forms.py:29
 msgid ""
-"Page number from which all the transformation will be cloned. Existing "
+"Page number from which all the transformations will be cloned. Existing "
 "transformations will be lost."
 msgstr ""
 
 #: forms/document_type_forms.py:42 models/document_models.py:45
 #: models/document_type_models.py:60 models/document_type_models.py:146
-#: search.py:16 search.py:35
+#: search.py:21 search.py:43
 msgid "Document type"
 msgstr ""
 
@@ -430,7 +430,7 @@ msgstr ""
 
 #: models/document_models.py:49 models/document_page_models.py:259
 #: models/document_type_models.py:32 models/document_type_models.py:149
-#: search.py:21 search.py:42
+#: search.py:26 search.py:50
 msgid "Label"
 msgstr ""
 
@@ -438,7 +438,7 @@ msgstr ""
 msgid "An optional short text describing a document."
 msgstr ""
 
-#: models/document_models.py:54 search.py:22 search.py:45
+#: models/document_models.py:54 search.py:27 search.py:53
 msgid "Description"
 msgstr ""
 
@@ -597,7 +597,7 @@ msgid ""
 "Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
-#: models/document_version_models.py:98 search.py:19 search.py:39
+#: models/document_version_models.py:98 search.py:24 search.py:47
 msgid "MIME type"
 msgstr ""
 

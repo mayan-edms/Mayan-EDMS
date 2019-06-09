@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 00:59-0400\n"
+"POT-Creation-Date: 2019-06-09 03:18-0400\n"
 "PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
+"ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: admin.py:24
 msgid "None"
@@ -116,9 +118,9 @@ msgid "Slug"
 msgstr ""
 
 #: models.py:46
-msgid ""
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
 "Causes this index to be visible and updated when document data changes."
-msgstr "Causes this index to be visible and updated when document data changes."
 
 #: models.py:49 models.py:235
 msgid "Enabled"
@@ -152,9 +154,11 @@ msgstr "Causes this node to be visible and updated when document data changes."
 
 #: models.py:240
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Check this option to have this node act as a container for documents and not as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
 
 #: models.py:243
 msgid "Link documents"
@@ -280,8 +284,8 @@ msgstr ""
 #: views.py:143
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like"
-" label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like "
+"label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views.py:148
