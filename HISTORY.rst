@@ -290,6 +290,9 @@
 * Sort events list in the transition trigger view.
 * Add support for form media to DynamicFormMixin.
 * Fix tag attach and remove action form media.
+* Sort content type list of the access grant and remove action.
+* Use select2 for the content type filed of the access
+  grant and remove action.
 
 3.1.11 (2019-04-XX)
 ===================

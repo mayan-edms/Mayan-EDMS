@@ -58,6 +58,11 @@ class GrantAccessAction(WorkflowAction):
     field_order = ('content_type', 'object_id', 'roles', 'permissions')
     label = _('Grant access')
     widgets = {
+        'content_type': {
+            'class': 'django.forms.widgets.Select', 'kwargs': {
+                'attrs': {'class': 'select2'},
+            }
+        },
         'roles': {
             'class': 'django.forms.widgets.SelectMultiple', 'kwargs': {
                 'attrs': {'class': 'select2'},
@@ -97,7 +102,9 @@ class GrantAccessAction(WorkflowAction):
             return form_data
 
     def get_form_schema(self, *args, **kwargs):
-        self.fields['content_type']['kwargs']['queryset'] = ModelPermission.get_classes(as_content_type=True)
+        self.fields['content_type']['kwargs']['queryset'] = ModelPermission.get_classes(
+            as_content_type=True
+        ).order_by('model')
         self.fields['permissions']['kwargs']['choices'] = Permission.all(
             as_choices=True
         )
