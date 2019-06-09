@@ -173,6 +173,11 @@ class DynamicFormMixin(object):
             self.fields[field_name] = field_class(**kwargs)
 
 
+    @property
+    def media(self):
+        return forms.Media(**self.schema.get('media', {}))
+
+
 class DynamicForm(DynamicFormMixin, forms.Form):
     pass
 

@@ -24,6 +24,9 @@ class AttachTagAction(WorkflowAction):
         },
     }
     label = _('Attach tag')
+    media = {
+        'js': ('tags/js/tags_form.js',)
+    }
     widgets = {
         'tags': {
             'class': 'mayan.apps.tags.widgets.TagFormWidget', 'kwargs': {
@@ -32,6 +35,10 @@ class AttachTagAction(WorkflowAction):
         }
     }
     permission = permission_tag_attach
+
+    def execute(self, context):
+        for tag in self.get_tags():
+            tag.attach_to(document=context['document'])
 
     def get_form_schema(self, request):
         user = request.user
@@ -46,15 +53,12 @@ class AttachTagAction(WorkflowAction):
 
         return {
             'fields': self.fields,
+            'media': self.media,
             'widgets': self.widgets
         }
 
     def get_tags(self):
         return Tag.objects.filter(pk__in=self.form_data.get('tags', ()))
-
-    def execute(self, context):
-        for tag in self.get_tags():
-            tag.attach_to(document=context['document'])
 
 
 class RemoveTagAction(AttachTagAction):

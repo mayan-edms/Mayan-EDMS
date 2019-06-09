@@ -288,6 +288,8 @@
 * Disable hiding page navigation on idle.
 * Display namespace in the transition trigger view.
 * Sort events list in the transition trigger view.
+* Add support for form media to DynamicFormMixin.
+* Fix tag attach and remove action form media.
 
 3.1.11 (2019-04-XX)
 ===================
