@@ -38,7 +38,8 @@ class AttachTagAction(WorkflowAction):
         logger.debug('user: %s', user)
 
         queryset = AccessControlList.objects.restrict_queryset(
-            self.permission, user, queryset=Tag.objects.all()
+            permission=self.permission, queryset=Tag.objects.all(),
+            user=user
         )
 
         self.fields['tags']['kwargs']['queryset'] = queryset

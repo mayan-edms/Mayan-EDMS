@@ -76,7 +76,7 @@ class WorkflowInstanceDetailView(SingleObjectListView):
             'no_results_main_link': link_workflow_instance_transition.resolve(
                 context=RequestContext(
                     dict_={'object': self.get_workflow_instance()},
-                   request=self.request
+                    request=self.request
                 )
             ),
             'no_results_text': _(

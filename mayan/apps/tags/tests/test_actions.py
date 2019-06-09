@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
 from mayan.apps.document_states.tests.test_actions import ActionTestCase
 
 from ..models import Tag
@@ -29,3 +31,33 @@ class TagActionTestCase(ActionTestCase):
         action.execute(context={'document': self.test_document})
 
         self.assertEqual(self.tag.documents.count(), 0)
+
+
+class TagActionViewTestCase(WorkflowTestMixin, GenericViewTestCase):
+    def test_tag_attach_action_create_view(self):
+        self._create_test_workflow()
+        self._create_test_workflow_state()
+
+        response = self.get(
+            viewname='document_states:setup_workflow_state_action_create',
+            kwargs={
+                'pk': self.test_workflow_state.pk,
+                'class_path': 'mayan.apps.tags.workflow_actions.AttachTagAction'
+            }
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_tag_remove_action_create_view(self):
+        self._create_test_workflow()
+        self._create_test_workflow_state()
+
+        response = self.get(
+            viewname='document_states:setup_workflow_state_action_create',
+            kwargs={
+                'pk': self.test_workflow_state.pk,
+                'class_path': 'mayan.apps.tags.workflow_actions.RemoveTagAction'
+            }
+        )
+
+        self.assertEqual(response.status_code, 200)
