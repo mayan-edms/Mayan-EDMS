@@ -285,6 +285,7 @@
 * Allow searching documents by UUID.
 * Improve search negation logic.
 * Add support for search field transformations.
+* Disable hiding page navigation on idle.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -714,6 +714,7 @@ Other changes
 - Improve search negation logic. Only dashes at the start of terms and
   outside of quotes are now interpreted as negation.
 - Add support for search field transformations.
+- Disable hiding page navigation on idle.
 
 
 Removals

@@ -22,8 +22,9 @@ class MayanImage {
                 'fullScreen',
                 'close',
             ],
+            idleTime: false,
             infobar: true,
-            selector: 'a.fancybox'
+            selector: 'a.fancybox',
         });
 
         $('img.lazy-load').lazyload({
