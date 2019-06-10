@@ -16,7 +16,7 @@ JavaScriptDependency(
 )
 JavaScriptDependency(
     label=_('Bootswatch'), module=__name__, name='bootswatch',
-    replace_list = [
+    replace_list=[
         {
             'filename_pattern': '*.css',
             'content_patterns': [

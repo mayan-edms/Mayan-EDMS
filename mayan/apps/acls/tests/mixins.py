@@ -36,7 +36,6 @@ class ACLTestMixin(PermissionTestMixin, RoleTestMixin, TestModelTestMixin):
     auto_create_test_role = True
     auto_create_test_object = False
 
-
     def setUp(self):
         super(ACLTestMixin, self).setUp()
         if self.auto_create_test_role:
