@@ -11,7 +11,7 @@ from .views import (
 
 urlpatterns = [
     url(
-        regex=r'^(?P<search_model>[\.\w]+)/$', view=SearchView.as_view(),
+        regex=r'^search/(?P<search_model>[\.\w]+)/$', view=SearchView.as_view(),
         name='search'
     ),
     url(
@@ -19,8 +19,16 @@ urlpatterns = [
         view=AdvancedSearchView.as_view(), name='search_advanced'
     ),
     url(
+        regex=r'^advanced/$',
+        view=AdvancedSearchView.as_view(), name='search_advanced'
+    ),
+    url(
         regex=r'^again/(?P<search_model>[\.\w]+)/$',
         view=SearchAgainView.as_view(), name='search_again'
+    ),
+    url(
+        regex=r'^results/$',
+        view=ResultsView.as_view(), name='results'
     ),
     url(
         regex=r'^results/(?P<search_model>[\.\w]+)/$',

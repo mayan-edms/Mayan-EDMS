@@ -8,7 +8,11 @@ from .classes import SearchModel
 
 class SearchModelMixin(object):
     def get_search_model_name(self):
-        return self.kwargs.get('search_model')
+        return self.kwargs.get(
+            'search_model', self.request.GET.get(
+                '_search_model', self.request.POST.get('_search_model')
+            )
+        )
 
     def get_search_model(self):
         try:
