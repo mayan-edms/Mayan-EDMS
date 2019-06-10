@@ -10,7 +10,7 @@ from .permissions import permission_group_view, permission_user_view
 user_app, user_model = settings.AUTH_USER_MODEL.split('.')
 
 user_search = SearchModel(
-    app_label=user_app, model_name=user_model,
+    app_label=user_app, label=_('User'), model_name=user_model,
     permission=permission_user_view,
     serializer_path='mayan.apps.user_management.serializers.UserSerializer'
 )
@@ -32,7 +32,7 @@ user_search.add_model_field(
 )
 
 group_search = SearchModel(
-    app_label='auth', model_name='Group',
+    app_label='auth', label=_('Group'), model_name='Group',
     permission=permission_group_view,
     serializer_path='user_management.serializers.GroupSerializer'
 )
