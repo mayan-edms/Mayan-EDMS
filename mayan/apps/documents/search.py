@@ -35,7 +35,7 @@ document_search.add_model_field(
 
 document_page_search = SearchModel(
     app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
-    model_name='DocumentPageResult', permission=permission_document_view,
+    model_name='DocumentPage', permission=permission_document_view,
     serializer_path='mayan.apps.documents.serializers.DocumentPageSerializer'
 )
 
