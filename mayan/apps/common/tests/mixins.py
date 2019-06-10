@@ -283,11 +283,13 @@ class TempfileCheckTestCasekMixin(object):
 
 
 class TestModelTestMixin(object):
+    _test_models = []
+
     def _create_test_model(self, fields=None, model_name='TestModel', options=None):
 
         if connection.vendor == 'mysql':
             self.skipTest(
-                reason='MySQL doesn\t support schema changes inside an '
+                reason='MySQL doesn\'t support schema changes inside an '
                 'atomic block.'
             )
 
@@ -340,6 +342,7 @@ class TestModelTestMixin(object):
             )
 
         setattr(self, model_name, TestModel)
+        self._test_models.append(TestModel)
 
         with connection.schema_editor() as schema_editor:
             schema_editor.create_model(model=TestModel)

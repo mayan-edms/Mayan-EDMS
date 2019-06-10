@@ -13,6 +13,12 @@ class ModelPermission(object):
     _registry = {}
 
     @classmethod
+    def deregister(cls, model):
+        cls._registry.pop(model, None)
+        # TODO: Find method to revert the add_to_class('acls'...)
+        # delattr doesn't work.
+
+    @classmethod
     def register(cls, model, permissions):
         from django.contrib.contenttypes.fields import GenericRelation
 

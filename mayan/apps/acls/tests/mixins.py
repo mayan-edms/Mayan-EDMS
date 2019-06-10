@@ -36,10 +36,6 @@ class ACLTestMixin(PermissionTestMixin, RoleTestMixin, TestModelTestMixin):
     auto_create_test_role = True
     auto_create_test_object = False
 
-    def _create_test_acl(self):
-        self.test_acl = AccessControlList.objects.create(
-            content_object=self.test_object, role=self.test_role
-        )
 
     def setUp(self):
         super(ACLTestMixin, self).setUp()
@@ -48,6 +44,22 @@ class ACLTestMixin(PermissionTestMixin, RoleTestMixin, TestModelTestMixin):
 
         if self.auto_create_test_object:
             self._setup_test_object()
+
+    def tearDown(self):
+        # Deregister the permissions of the ephimeral test models
+        # this avoids their Content Type from being looked up
+        # in subsequent tests where they don't exists due to the database
+        # transaction rollback.
+        for model in self._test_models:
+            ModelPermission.deregister(model=model)
+            self._test_models.remove(model)
+
+        super(ACLTestMixin, self).tearDown()
+
+    def _create_test_acl(self):
+        self.test_acl = AccessControlList.objects.create(
+            content_object=self.test_object, role=self.test_role
+        )
 
     def _inject_test_object_content_type(self):
         self.test_object_content_type = ContentType.objects.get_for_model(
