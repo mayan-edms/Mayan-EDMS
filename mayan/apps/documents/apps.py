@@ -269,6 +269,11 @@ class DocumentsApp(MayanAppConfig):
                 instance=context['object']
             ), label=_('Thumbnail'), source=DocumentPage
         )
+
+        SourceColumn(
+            attribute='get_label', is_identifier=True,
+            is_object_absolute_url=True, source=DocumentPageResult
+        )
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']

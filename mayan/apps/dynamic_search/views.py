@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
 
 from mayan.apps.common.generics import SimpleView, SingleObjectListView
+from mayan.apps.common.literals import LIST_MODE_CHOICE_ITEM
 
 from .forms import SearchForm, AdvancedSearchForm
 from .icons import icon_search_submit
@@ -18,8 +19,7 @@ logger = logging.getLogger(__name__)
 class ResultsView(SearchModelMixin, SingleObjectListView):
     def get_extra_context(self):
         context = {
-            'hide_links': True,
-            'list_as_items': True,
+            'hide_object': True,
             'no_results_icon': icon_search_submit,
             'no_results_text': _(
                 'Try again using different terms. '
@@ -28,6 +28,9 @@ class ResultsView(SearchModelMixin, SingleObjectListView):
             'search_model': self.search_model,
             'title': _('Search results for: %s') % self.search_model.label,
         }
+
+        if self.search_model.list_mode == LIST_MODE_CHOICE_ITEM:
+            context['list_as_items'] = True
 
         return context
 

@@ -34,7 +34,7 @@ user_search.add_model_field(
 group_search = SearchModel(
     app_label='auth', label=_('Group'), model_name='Group',
     permission=permission_group_view,
-    serializer_path='user_management.serializers.GroupSerializer'
+    serializer_path='mayan.apps.user_management.serializers.GroupSerializer'
 )
 
 group_search.add_model_field(

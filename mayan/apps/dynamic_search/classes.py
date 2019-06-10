@@ -8,6 +8,8 @@ from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext as _
 
+from mayan.apps.common.literals import LIST_MODE_CHOICE_LIST
+
 from .literals import (
     QUERY_OPERATION_AND, QUERY_OPERATION_OR, TERM_NEGATION_CHARACTER,
     TERM_OPERATION_OR, TERM_OPERATIONS, TERM_QUOTES, TERM_SPACE_CHARACTER
@@ -101,8 +103,12 @@ class SearchModel(object):
 
         return result
 
-    def __init__(self, app_label, model_name, serializer_path, label=None, permission=None):
+    def __init__(
+        self, app_label, model_name, serializer_path, label=None,
+        list_mode=None, permission=None
+    ):
         self.app_label = app_label
+        self.list_mode = list_mode or LIST_MODE_CHOICE_LIST
         self.model_name = model_name
         self.search_fields = []
         self._model = None  # Lazy

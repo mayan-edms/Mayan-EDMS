@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.literals import LIST_MODE_CHOICE_ITEM
 from mayan.apps.dynamic_search.classes import SearchModel
 
 from .permissions import permission_document_view
@@ -12,8 +13,8 @@ def format_uuid(term_string):
 
 
 document_search = SearchModel(
-    app_label='documents', model_name='Document',
-    permission=permission_document_view,
+    app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
+    model_name='Document', permission=permission_document_view,
     serializer_path='mayan.apps.documents.serializers.DocumentSerializer'
 )
 
@@ -33,8 +34,8 @@ document_search.add_model_field(
 )
 
 document_page_search = SearchModel(
-    app_label='documents', model_name='DocumentPageResult',
-    permission=permission_document_view,
+    app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
+    model_name='DocumentPageResult', permission=permission_document_view,
     serializer_path='mayan.apps.documents.serializers.DocumentPageSerializer'
 )
 
