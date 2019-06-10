@@ -723,6 +723,8 @@ Other changes
 - Use select2 for the content type filed of the access
   grant and remove action.
 - Add Latvian translation.
+- Support search model selection.
+
 
 Removals
 --------

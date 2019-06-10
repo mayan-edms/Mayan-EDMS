@@ -42,31 +42,7 @@
         </div>
     </div>
 
-    <div class="well center-block">
-        <div class="row">
-            <div class="col-xs-12">
-                <form action="{% url 'search:results' search_model='documents.DocumentPageResult' %}" method="get" role="search">
-                    <div class="input-group">
-                        <input class="form-control" name="q" placeholder="{% trans 'Search pages' %}" type="text" value="{{ search_terms|default:'' }}">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
-                            <a class="btn btn-primary" href="{% url 'search:search_advanced' search_model='documents.DocumentPageResult' %}">{% trans 'Advanced' %}</a>
-                        </span>
-                    </div>
-                </form>
-                <br/>
-                <form action="{% url 'search:results' search_model='documents.Document' %}" method="get" role="search">
-                    <div class="input-group">
-                        <input class="form-control" name="q" placeholder="{% trans 'Search documents' %}" type="text" value="{{ search_terms|default:'' }}">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
-                            <a class="btn btn-primary" href="{% url 'search:search_advanced' search_model='documents.Document' %}">{% trans 'Advanced' %}</a>
-                        </span>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    {% include 'dynamic_search/search_box.html' %}
 
     {% render_dashboard 'main' %}
 

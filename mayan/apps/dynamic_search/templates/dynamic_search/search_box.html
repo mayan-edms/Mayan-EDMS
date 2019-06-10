@@ -1,0 +1,42 @@
+{% load i18n %}
+
+{% load search_tags %}
+{% get_search_models as search_models %}
+
+<div class="well center-block">
+    <div class="row">
+        <div class="col-xs-12">
+            <form action="{% url 'search:results' %}" class="form-horizontal" id="formSearch" method="get" role="search">
+                <div class="col-sm-2">
+                    <select class="form-control" id="selectSearchModel" name="_search_model">
+                        {% for search_model in search_models %}
+                        {{ search_model.self.get_full_name }}
+                            <option {% if search_model.get_full_name == 'documents.Document' %}selected{% endif %} value="{{ search_model.get_full_name }}">{{ search_model }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <input class="form-control" name="q" placeholder="{% trans 'Search terms' %}" type="text" value="{{ search_terms|default:'' }}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
+                            <a class="btn btn-primary" href="" id="btnSearchAdvanced" >{% trans 'Advanced' %}</a>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    jQuery(document).ready(function() {
+        var $selectSearchModel = $('#selectSearchModel');
+        var $btnSearchAdvanced = $('#btnSearchAdvanced');
+        $btnSearchAdvanced.attr('href', "{% url 'search:search_advanced' %}?_search_model=" + $selectSearchModel.val());
+        $selectSearchModel.change(function () {
+            $btnSearchAdvanced.attr('href', "{% url 'search:search_advanced' %}?_search_model=" + $(this).val());
+        });
+    });
+</script>

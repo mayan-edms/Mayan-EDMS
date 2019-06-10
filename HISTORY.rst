@@ -294,6 +294,7 @@
 * Use select2 for the content type filed of the access
   grant and remove action.
 * Add Latvian translation.
+* Support search model selection.
 
 3.1.11 (2019-04-XX)
 ===================
