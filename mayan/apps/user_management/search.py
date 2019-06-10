@@ -6,12 +6,13 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.dynamic_search.classes import SearchModel
 
 from .permissions import permission_group_view, permission_user_view
+from .querysets import get_user_queryset
 
 user_app, user_model = settings.AUTH_USER_MODEL.split('.')
 
 user_search = SearchModel(
     app_label=user_app, label=_('User'), model_name=user_model,
-    permission=permission_user_view,
+    permission=permission_user_view, queryset=get_user_queryset,
     serializer_path='mayan.apps.user_management.serializers.UserSerializer'
 )
 
