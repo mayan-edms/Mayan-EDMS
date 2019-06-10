@@ -148,6 +148,7 @@ class RoleListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'hide_object': True,
             'no_results_icon': icon_role_list,
             'no_results_main_link': link_role_create.resolve(
                 context=RequestContext(request=self.request)
