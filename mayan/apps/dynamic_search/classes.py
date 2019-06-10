@@ -105,7 +105,7 @@ class SearchModel(object):
 
     def __init__(
         self, app_label, model_name, serializer_path, label=None,
-        list_mode=None, permission=None
+        list_mode=None, permission=None, queryset=None
     ):
         self.app_label = app_label
         self.list_mode = list_mode or LIST_MODE_CHOICE_LIST
@@ -115,6 +115,7 @@ class SearchModel(object):
         self._label = label
         self.serializer_path = serializer_path
         self.permission = permission
+        self.queryset = queryset
         self.__class__._registry[self.get_full_name()] = self
 
     def __str__(self):
@@ -139,6 +140,12 @@ class SearchModel(object):
 
     def get_full_name(self):
         return '%s.%s' % (self.app_label, self.model_name)
+
+    def get_queryset(self):
+        if self.queryset:
+            return self.queryset()
+        else:
+            return self.model.objects.all()
 
     def get_search_field(self, full_name):
         try:
@@ -177,7 +184,7 @@ class SearchModel(object):
             query_string=query_string, global_and_search=global_and_search
         )
 
-        queryset = self.model.objects.filter(search_query.query).distinct()
+        queryset = self.get_queryset().filter(search_query.query).distinct()
 
         if self.permission:
             queryset = AccessControlList.objects.restrict_queryset(

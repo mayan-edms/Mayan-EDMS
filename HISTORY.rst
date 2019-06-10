@@ -295,6 +295,7 @@
   grant and remove action.
 * Add Latvian translation.
 * Support search model selection.
+* Support passing a queryset factory to the search model.
 
 3.1.11 (2019-04-XX)
 ===================

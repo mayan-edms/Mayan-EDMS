@@ -724,6 +724,7 @@ Other changes
   grant and remove action.
 - Add Latvian translation.
 - Support search model selection.
+- Support passing a queryset factory to the search model.
 
 
 Removals
