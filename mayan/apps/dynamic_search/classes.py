@@ -84,7 +84,7 @@ class SearchModel(object):
 
     @classmethod
     def all(cls):
-        return list(cls._registry.values())
+        return sorted(list(cls._registry.values()), key=lambda x: x.label)
 
     @classmethod
     def as_choices(cls):
