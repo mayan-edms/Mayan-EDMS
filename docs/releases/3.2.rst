@@ -725,6 +725,8 @@ Other changes
 - Add Latvian translation.
 - Support search model selection.
 - Support passing a queryset factory to the search model.
+- Add workflow actions to grant or remove permissions to
+  a document.
 
 
 Removals

@@ -1,8 +1,10 @@
 from __future__ import unicode_literals, absolute_import
 
+import itertools
 import logging
 
 from django.apps import apps
+from django.utils.encoding import force_text
 
 logger = logging.getLogger(__name__)
 
@@ -53,8 +55,21 @@ class ModelPermission(object):
             return cls._registry.keys()
 
     @classmethod
-    def get_for_class(cls, klass):
-        return cls._registry.get(klass, ())
+    def get_for_class(cls, klass, as_choices=False):
+        if as_choices:
+            results = []
+
+            for namespace, permissions in itertools.groupby(cls.get_for_class(klass=klass, as_choices=False), lambda entry: entry.namespace):
+                permission_options = [
+                    (force_text(permission.pk), permission) for permission in permissions
+                ]
+                results.append(
+                    (namespace, permission_options)
+                )
+
+            return results
+        else:
+            return cls._registry.get(klass, ())
 
     @classmethod
     def get_for_instance(cls, instance):
