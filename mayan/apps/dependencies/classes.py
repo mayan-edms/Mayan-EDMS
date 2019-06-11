@@ -742,7 +742,7 @@ class GoogleFontDependency(Dependency):
 
         self.font_files = []
 
-        with open(self.path_import_file, mode='w') as file_object:
+        with self.path_import_file.open(mode='w') as file_object:
             for agent_name, agent_string in self.user_agents.items():
                 import_file = force_text(
                     requests.get(
@@ -758,7 +758,8 @@ class GoogleFontDependency(Dependency):
                         url = furl(force_text(font_url))
                         font_filename = url.path.segments[-1]
 
-                        with open(self.path_cache / font_filename, mode='wb') as font_file_object:
+                        path_font_filename = self.path_cache / font_filename
+                        with path_font_filename.open(mode='wb') as font_file_object:
                             with requests.get(font_url, stream=True) as response:
                                 shutil.copyfileobj(fsrc=response.raw, fdst=font_file_object)
 
