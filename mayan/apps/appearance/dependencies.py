@@ -18,7 +18,7 @@ JavaScriptDependency(
     label=_('Bootswatch'), module=__name__, name='bootswatch',
     replace_list=[
         {
-            'filename_pattern': '*.css',
+            'filename_pattern': 'bootstrap.*.css',
             'content_patterns': [
                 {
                     'search': '"https://fonts.googleapis.com/css?family=Lato:400,700,400italic"',
