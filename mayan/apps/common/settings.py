@@ -38,7 +38,7 @@ setting_paginate_by = namespace.add_setting(
     global_name='COMMON_PAGINATE_BY',
     default=40,
     help_text=_(
-        'An integer specifying how many objects should be displayed per page.'
+        'The number objects that will be displayed per page.'
     )
 )
 setting_production_error_logging = namespace.add_setting(
@@ -347,7 +347,7 @@ setting_django_static_url = namespace.add_setting(
         'URL to use when referring to static files located in STATIC_ROOT. '
         'Example: "/static/" or "http://static.example.com/" '
         'If not None, this will be used as the base path for asset '
-        'definitions (the Media class) and the staticfiles app.'
+        'definitions (the Media class) and the staticfiles app. '
         'It must end in a slash if set to a non-empty value.'
     ),
 )
