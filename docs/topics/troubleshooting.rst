@@ -7,8 +7,8 @@ Troubleshooting
 Database
 ********
 
-_mysql_exceptions. OperationalError: (1267, "Illegal mix of collations (latin1_swedish_ci, IMPLICIT) and (utf8_general_ci, COERCIBLE) for operation ‘='”)
-=========================================================================================================================================================
+MySQL error: ``OperationalError: (1267, "Illegal mix of collations (latin1_swedish_ci, IMPLICIT) and (utf8_general_ci, COERCIBLE) for operation '='”)``
+=======================================================================================================================================================
 
 ::
 
@@ -25,8 +25,8 @@ References:
 * http://stackoverflow.com/questions/1073295/django-character-set-with-mysql-weirdness
 
 
-Incorrect string value: ``'xE2x80x95rs6…'`` for column ``'content'`` at row 1
-=============================================================================
+MySQL error: ``Incorrect string value: `'xE2x80x95rs6…'` for column `'content'` at row 1``
+==========================================================================================
 
 When using MySQL and doing OCR on languages other than English
 
@@ -39,8 +39,8 @@ References:
 * http://markmail.org/message/bqajx2utvmtriixi
 
 
-Error "django.db.utils.IntegrityError IntegrityError: (1452, ‘Cannot add or update a child row: a foreign key constraint fails (`…`.`…`, CONSTRAINT `…_refs_id_b0252274` FOREIGN KEY (`…`) REFERENCES `…` (`…`))')
-==================================================================================================================================================================================================================
+MySQL error: ``Error "django.db.utils.IntegrityError IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`…`.`…`, CONSTRAINT `…_refs_id_b0252274` FOREIGN KEY (`…`) REFERENCES `…` (`…`))')``
+===================================================================================================================================================================================================================================
 
 Solution:
 Convert all MySQL tables to the same type, either all MyISAM or InnoDB
@@ -136,3 +136,17 @@ command prompt::
 And then execute the command::
 
     /opt/mayan-edms/bin/mayan-edms.py createsuperuser
+
+
+************
+Watchfolders
+************
+
+Incomplete files uploaded
+=========================
+
+To avoid uploading files are they are being copied to the watchfolder, copy the
+files to a temporary directory on the same partition as the watchfolder first.
+Then move the files to the watchfolder. The move will be executed as an atomic
+operation and will prevent the files to be uploaded in the middle of the
+copying process.
