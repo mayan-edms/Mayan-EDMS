@@ -217,7 +217,7 @@ class ToolsListView(SimpleView):
 def multi_object_action_view(request):
     """
     Proxy view called first when using a multi object action, which
-    then redirects to the appropiate specialized view
+    then redirects to the appropriate specialized view
     """
     next = request.POST.get(
         'next', request.GET.get(

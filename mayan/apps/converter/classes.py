@@ -58,7 +58,7 @@ class ConverterBase(object):
         self.page_number = page_number
 
     def detect_orientation(self, page_number):
-        # Must be overrided by subclass
+        # Must be overridden by subclass
         pass
 
     def get_page(self, output_format=None):
@@ -111,7 +111,7 @@ class ConverterBase(object):
 
     def soffice(self):
         """
-        Executes LibreOffice as a subprocess
+        Executes LibreOffice as a sub process
         """
         if not self.command_libreoffice:
             raise OfficeConversionError(

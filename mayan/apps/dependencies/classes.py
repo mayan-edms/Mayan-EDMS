@@ -63,20 +63,20 @@ class DependencyEnvironment(object):
 environment_build = DependencyEnvironment(
     help_text=_(
         'Environment used for building distributable packages of the '
-        'software. End users can ignore missing depedencies under this '
+        'software. End users can ignore missing dependencies under this '
         'environment.'
     ), label=_('Build'), name='build'
 )
 environment_development = DependencyEnvironment(
     help_text=_(
         'Environment used for developers to make code changes. End users '
-        'can ignore missing depedencies under this environment.'
+        'can ignore missing dependencies under this environment.'
     ), label=_('Development'), name='development'
 )
 environment_production = DependencyEnvironment(
     help_text=_(
-        'Normal environment for end users. A missing depedencies under this '
-        'environment will result issues and error during normal use.'
+        'Normal environment for end users. A missing dependency under this '
+        'environment will result in issues and errors during normal use.'
     ), label=_('Production'), name='production'
 )
 environment_testing = DependencyEnvironment(
@@ -456,10 +456,10 @@ class BinaryDependency(Dependency):
 class JavaScriptDependency(Dependency):
     class_name = 'javascript'
     class_name_help_text = _(
-        'Javascript libraries downloaded the from NPM registry and used for '
+        'JavaScript libraries downloaded the from NPM registry and used for '
         'front-end functionality.'
     )
-    class_name_verbose_name = _('Javascript')
+    class_name_verbose_name = _('JavaScript')
     provider_class = NPMRegistryRespository
 
     def __init__(self, *args, **kwargs):
@@ -789,25 +789,25 @@ class GoogleFontDependency(Dependency):
 
 DependencyGroup(
     attribute_name='app_label', label=_('Declared in app'), help_text=_(
-        'Show depedencies by the app that declared them.'
+        'Show dependencies by the app that declared them.'
     ), name='app'
 )
 DependencyGroup(
     attribute_name='class_name', label=_('Class'), help_text=_(
-        'Show the different classes of depedencies. Classes are usually '
-        'divided by language or the file types of the depedency.'
+        'Show the different classes of dependencies. Classes are usually '
+        'divided by language or the file types of the dependency.'
     ), name='class'
 )
 DependencyGroup(
     attribute_name='check_string', label=_('State'), help_text=_(
-        'Show the different states of the depedencies. True means that the '
-        'depedencies is installed and is of a correct version. False means '
-        'the depedencies is missing or an incorrect version is present.'
+        'Show the different states of the dependencies. True means that the '
+        'dependencies is installed and is of a correct version. False means '
+        'the dependencies is missing or an incorrect version is present.'
     ), name='state'
 )
 DependencyGroup(
     attribute_name='get_environment', label=_('Environment'), help_text=_(
-        'Depedencies required for an environment might not be required for '
+        'Dependencies required for an environment might not be required for '
         'another. Example environments: Production, Development.'
     ), name='environment'
 )
