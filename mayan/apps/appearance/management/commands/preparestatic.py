@@ -2,9 +2,10 @@ from __future__ import unicode_literals
 
 from django.core import management
 
+# '*.html*', removed. It is required by drf-yasg/ to serve oauth2-redirect.html
 IGNORE_LIST = [
     'AUTHORS*', 'CHANGE*', 'CONTRIBUT*', 'CODE_OF_CONDUCT*', 'Grunt*',
-    'LICENSE*', 'MAINTAIN*', 'README*', '*.html*', '*.less', '*.md', '*.nupkg',
+    'LICENSE*', 'MAINTAIN*', 'README*', '*.less', '*.md', '*.nupkg',
     '*.nuspec', '*.scss*', '*.sh', '*tests*', 'bower*', 'composer.json*',
     'demo*', 'docs', 'grunt*', 'gulp*', 'install', 'less', 'package.json*',
     'package-lock*', 'test', 'tests', 'variable*',

@@ -70,6 +70,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.sites',
+    # Allow using WhiteNoise in development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     # 3rd party
