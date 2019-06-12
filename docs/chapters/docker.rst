@@ -288,18 +288,21 @@ on purpose. For example, to make a folder in the host accessible as a watch
 folder, add the following to the Docker command line when starting the
 container::
 
-    -v /opt/scanned_files:/srv/watch_folder
+    -v /opt/scanned_files:/scanned_files
 
 The command line would look like this::
 
-    docker run ... -v /opt/scanned_files:/srv/watch_folder mayanedms/mayanedms:latest
+    docker run ... -v /opt/scanned_files:/scanned_files mayanedms/mayanedms:latest
 
-Now create a watch folder in Mayan EDMS using the path ``/srv/watch_folder``
+Now create a watch folder in Mayan EDMS using the path ``/scanned_files``
 and the documents from the host folder ``/opt/scanned_files`` will be
 automatically available. Use the same procedure to mount host folders to be
-used as staging folderes. In this example ``/srv/watch_folder`` was as the
-container directory, but any path can be used as long as it is not an
-already existing path or a path used by any other program.
+used as staging folderes. In this example ``/scanned_files`` was used as the
+container directory, but any path can be used as long as:
+
+- the path not an already existing path
+- the path is not used by any other program
+- the path is a single level path
 
 
 Performing backups
@@ -310,7 +313,7 @@ For the example::
 
     docker run -d --name mayan-edms --restart=always -p 80:8000 \
     -v /docker-volumes/mayan:/var/lib/mayan \
-    -v /opt/scanned_files:/srv/watch_folder mayanedms/mayanedms:latest
+    -v /opt/scanned_files:/scanned_files mayanedms/mayanedms:latest
 
 That would be the ``/docker-volumes/mayan folder``::
 
