@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import errno
+import fcntl
 import logging
 
 from pathlib2 import Path
@@ -56,11 +58,17 @@ class WatchFolderSource(IntervalBaseModel):
 
         for entry in iterator:
             if entry.is_file() or entry.is_symlink():
-                with entry.open(mode='rb') as file_object:
-                    self.handle_upload(
-                        file_object=file_object,
-                        expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y),
-                        label=entry.name
-                    )
-                    if not test:
-                        entry.unlink()
+                with entry.open(mode='rb+') as file_object:
+                    try:
+                        fcntl.lockf(file_object, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except IOError as exception:
+                        if exception.errno != errno.EAGAIN:
+                            raise
+                    else:
+                        self.handle_upload(
+                            file_object=file_object,
+                            expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y),
+                            label=entry.name
+                        )
+                        if not test:
+                            entry.unlink()

@@ -298,6 +298,7 @@
 * Support passing a queryset factory to the search model.
 * Add workflow actions to grant or remove permissions to
   a document.
+* Add support for locked files for watchfolder.
 
 3.1.11 (2019-04-XX)
 ===================

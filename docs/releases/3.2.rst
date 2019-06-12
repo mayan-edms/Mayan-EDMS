@@ -727,6 +727,7 @@ Other changes
 - Support passing a queryset factory to the search model.
 - Add workflow actions to grant or remove permissions to
   a document.
+- Add support for locked files for watchfolder.
 
 
 Removals

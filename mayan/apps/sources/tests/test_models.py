@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import fcntl
+from multiprocessing import Process
 import shutil
 
 import mock
@@ -11,7 +13,8 @@ from mayan.apps.documents.models import Document
 from mayan.apps.documents.tests import (
     GenericDocumentTestCase, TEST_COMPRESSED_DOCUMENT_PATH,
     TEST_NON_ASCII_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_PATH,
-    TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH
+    TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_FILENAME,
+    TEST_SMALL_DOCUMENT_PATH
 )
 from mayan.apps.metadata.models import MetadataType
 from mayan.apps.storage.utils import mkdtemp
@@ -231,7 +234,7 @@ class POP3SourceTestCase(GenericDocumentTestCase):
 class WatchFolderTestCase(GenericDocumentTestCase):
     auto_upload_document = False
 
-    def _create_watchfolder(self):
+    def _create_test_watchfolder(self):
         return WatchFolderSource.objects.create(
             document_type=self.test_document_type,
             folder_path=self.temporary_directory,
@@ -248,18 +251,18 @@ class WatchFolderTestCase(GenericDocumentTestCase):
         super(WatchFolderTestCase, self).tearDown()
 
     def test_subfolder_support_disabled(self):
-        watch_folder = self._create_watchfolder()
+        watch_folder = self._create_test_watchfolder()
 
         test_path = Path(self.temporary_directory)
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
-        shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, force_text(test_subfolder))
+        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(test_subfolder))
         watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 0)
 
     def test_subfolder_support_enabled(self):
-        watch_folder = self._create_watchfolder()
+        watch_folder = self._create_test_watchfolder()
         watch_folder.include_subdirectories = True
         watch_folder.save()
 
@@ -267,7 +270,7 @@ class WatchFolderTestCase(GenericDocumentTestCase):
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
-        shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, force_text(test_subfolder))
+        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(test_subfolder))
         watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
 
@@ -278,7 +281,7 @@ class WatchFolderTestCase(GenericDocumentTestCase):
 
         self.assertEqual(document.file_mimetype, 'image/png')
         self.assertEqual(document.file_mime_encoding, 'binary')
-        self.assertEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
+        self.assertEqual(document.label, TEST_SMALL_DOCUMENT_FILENAME)
         self.assertEqual(document.page_count, 1)
 
     def test_issue_gh_163(self):
@@ -286,7 +289,7 @@ class WatchFolderTestCase(GenericDocumentTestCase):
         Non-ASCII chars in document name failing in upload via watch folder
         gh-issue #163 https://github.com/mayan-edms/mayan-edms/issues/163
         """
-        watch_folder = self._create_watchfolder()
+        watch_folder = self._create_test_watchfolder()
 
         shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, self.temporary_directory)
         watch_folder.check_source()
@@ -306,7 +309,7 @@ class WatchFolderTestCase(GenericDocumentTestCase):
         """
         Test Non-ASCII named documents inside Non-ASCII named compressed file
         """
-        watch_folder = self._create_watchfolder()
+        watch_folder = self._create_test_watchfolder()
 
         shutil.copy(
             TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH, self.temporary_directory
@@ -323,3 +326,22 @@ class WatchFolderTestCase(GenericDocumentTestCase):
         self.assertEqual(document.file_mime_encoding, 'binary')
         self.assertEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
         self.assertEqual(document.page_count, 1)
+
+    def test_locking_support(self):
+        watch_folder = self._create_test_watchfolder()
+
+        shutil.copy(
+            TEST_SMALL_DOCUMENT_PATH, self.temporary_directory
+        )
+
+        path_test_file = Path(
+            self.temporary_directory, TEST_SMALL_DOCUMENT_FILENAME
+        )
+
+        with path_test_file.open(mode='rb+') as file_object:
+            fcntl.lockf(file_object, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            process = Process(target=watch_folder.check_source)
+            process.start()
+            process.join()
+
+            self.assertEqual(Document.objects.count(), 0)
