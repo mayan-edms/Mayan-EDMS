@@ -1,7 +1,7 @@
 Version 3.2
 ===========
 
-Released: May XX, 2019
+Released: June 13, 2019
 
 Work on version 4.0 continues along. Version 4.0 brings so many changes that it
 missed its release schedule. Therefore we decided to release an interim version,
@@ -67,7 +67,7 @@ Apps
 
 Dependencies app: A new app was added to handle all dependencies. Previously,
 the code to handle JavaScript dependencies and license text collection, was
-contianed in the common app. This new app, called "dependencies" now handles
+contained in the common app. This new app, called "dependencies" now handles
 both tasks. In addition, it provides checks for binary dependencies.
 This app's main view will allow users to know which dependencies are not being
 recognized and help debug installation issues faster and easier. The app
@@ -163,8 +163,8 @@ currently logged user.
 Incompatible changes
 ^^^^^^^^^^^^^^^^^^^^
 
-Existing config.yml files need to be updated manually and 'mayan.apps'
-prepended to any reference to an app.
+Existing config.yml files need to be updated manually. The prefix 'mayan.apps'
+must be added to any reference of an app.
 
 All the Internet Explorer specific HTML markup was removed from the templates.
 
@@ -237,7 +237,7 @@ at the time was to rename Mayan's to "mayan_statistics". With this change
 solutions like this won't be necessary.
 
 This means that any reference to an app, either in the code or from a
-configuration file must now be prepended with ``mayan.apps``. Existing
+configuration file must now be prefixed with ``mayan.apps``. Existing
 ``config.yml`` files need to be updated manually.
 
 For developers, a new test mixin was added called ``SilenceLoggerTestCaseMixin``.
@@ -387,7 +387,7 @@ An optimization was added which removed the exception catch for the
 ``permissions`` argument of the ``check_access`` method. ``permissions``
 argument must now be an iterable.
 
-Signal handlers must now be prepended with ``handler``.
+Signal handlers must now be prefixed with ``handler``.
 
 Remove ``.filter_by_access``. Replaced by ``.restrict_queryset``.
 
@@ -703,13 +703,13 @@ Other changes
 - Add cabinet created and edited events.
 - Chart updates: Show last update date and time in list view and details view.
   Change color scheme to match rest of project. Increase size of data points.
-  Improve responsive settings. Redirect to the current view after queueing.
+  Improve responsive settings. Redirect to the current view after queuing.
 - Split document type retention policies into it own view.
 - Place deletion policies units before periods for clarity.
 - Remove the included Lato font. The font is now downloaded
   at install time.
 - Add support for Google Fonts dependencies.
-- Add support for patchin dependency files using rewriting rules.
+- Add support for patching dependency files using rewriting rules.
 - Allow searching documents by UUID.
 - Improve search negation logic. Only dashes at the start of terms and
   outside of quotes are now interpreted as negation.
@@ -817,33 +817,33 @@ Backward incompatible changes
 - Paths to apps must be updated in existing ``config.yml`` files. Preprend
   ``mayan.apps.`` to any app reference. Some instances:
 
-  .. code-block::
+  .. code-block :: python
 
     LOCK_MANAGER_BACKEND: lock_manager.backends.file_lock.FileLock
 
   to
 
-  .. code-block::
+  .. code-block :: python
 
     LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.file_lock.FileLock
 
-  .. code-block::
+  .. code-block :: python
 
     OCR_BACKEND: ocr.backends.pyocr.PyOCR
 
   to
 
-  .. code-block::
+  .. code-block :: python
 
     OCR_BACKEND: mayan.apps.ocr.backends.pyocr.PyOCR
 
-  .. code-block::
+  .. code-block :: python
 
     CONVERTER_GRAPHICS_BACKEND: converter.backends.python.Python
 
   to
 
-  .. code-block::
+  .. code-block :: python
 
     CONVERTER_GRAPHICS_BACKEND: mayan.apps.converter.backends.python.Python
 
@@ -854,7 +854,7 @@ Backward incompatible changes
 
 - To collect and compress the static media files, use the new ``preparestatic``
   command instead of the traditional ``collectstatic``. Both work the same
-  way, but ``preparestatic`` has a default backlist to avoid collecting
+  way, but ``preparestatic`` has a default blacklist to avoid collecting
   test files.
 
 - Instead of the ``collectstatic``, the new ``preparestatic`` command should be

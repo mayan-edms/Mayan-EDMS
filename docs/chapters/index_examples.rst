@@ -111,8 +111,8 @@ Index documents not found in any cabinet
     {% if document.cabinets.count == 0 %}No Cabinets{% endif %}
 
 
-Index untagged documents
-^^^^^^^^^^^^^^^^^^^^^^^^
+Index documents not tagged
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 ::
 
     {% if document.tags.count == 0 %}No Tags{% endif %}

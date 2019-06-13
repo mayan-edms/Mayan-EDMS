@@ -1,4 +1,4 @@
-3.2 (2019-04-XX)
+3.2 (2019-06-13)
 ================
 * Split sources models into separate modules.
 * Add support for subfolder scanning to watchfolders. Closes
@@ -82,7 +82,7 @@
 * Move Tag app HTML widgets to their own module.
 * Move the document index app widgets to the html_widget.py
   module.
-* Update group members view permission. The group edit and 
+* Update group members view permission. The group edit and
   user edit permission are now required.
 * Add keyword arguments to messages uses.
 * Add keyword arguments to the reverse use in views.
@@ -125,13 +125,13 @@
 * Add document state action view test.
 * Remove sidebar menu instance. The secondary menu and the
   previour sidebar menu now perform the same function.
-* Backport source column identifiable and sortable 
+* Backport source column identifiable and sortable
   improvements.
 * Update the way the no-result template is shown.
 * Improve TwoStateWidget to use a template. Make
   it compatible with the SourceColumn.
 * Update SourceColumn to support related attributes.
-* Add support for display for empty values for 
+* Add support for display for empty values for
   source columns.
 * Add support for source column object or attribute
   absolute URLs.
@@ -141,10 +141,10 @@
 * Remove the full name from the user list.
 * Add the first name and last name to the user list.
 * Add file metadata app.
-* Add support for submitting forms by pressing the 
+* Add support for submitting forms by pressing the
   Enter key or by double clicking.
 * Rename form template 'form_class' to 'form_css_classes'.
-* Add support for adding form button aside from the 
+* Add support for adding form button aside from the
   default submit and cancel.
 * Update ChoiceForm to be full height.
 * Add AddRemoveView to replace AssignRemoveView
@@ -177,7 +177,7 @@
 * Monkeypatch group and user models to make their fields
   translatable.
 * Add new and default Tesseract OCR backend to avoid
-  Tesseract bug 1670 
+  Tesseract bug 1670
   (https://github.com/tesseract-ocr/tesseract/issues/1670)
 * Load only one language in the document properties form.
 * Convert title calculation form to a template tag.
@@ -231,7 +231,7 @@
   from the document type side.
 * Make workflows, workflows states, workflow
   transitions column sortable.
-* Show completion and intial state in the 
+* Show completion and intial state in the
   workflow proxy instance menu list.
 * Fix translation of the source upload forms
   using dropzone.js
@@ -240,12 +240,12 @@
 * Remove MultipleInstanceActionMixin.
 * Backport MultipleObjectMixin improvements.
 * Remove ObjectListPermissionFilterMixin.
-* Add deprecation warning to convertdb 
+* Add deprecation warning to convertdb
 * Add the preparestatic command.
 * Remove the related attribute of check_access.
 * Remove filter_by_access. Replaced by restrict_queryset.
 * Move the user set password views to the authentication app.
-* All views redirect to common's home view instead of the 
+* All views redirect to common's home view instead of the
   REDIRECT_URL setting.
 * Update tag document list and the document tag list
   views to require the view permissions for both objects.
@@ -264,7 +264,7 @@
 * Add cabinet created and edited events.
 * Show a null mailer backend if there is backend with an
   invalid path. Due to the app full path change, existing
-  mailer setups need to be recreated. 
+  mailer setups need to be recreated.
 * The document link URL when mailed is now composed of the
   COMMON_PROJECT_URL + document URL instead of the Site
   domain.

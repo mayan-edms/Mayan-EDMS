@@ -76,5 +76,5 @@ Uploading a new document version
 #. From the :guilabel:`Actions` dropdown select :guilabel:`Upload new version`.
 #. Optionally type a comment explaining the changes in the new version.
 #. Press the :guilabel:`Browse` button and select a new file.
-#. Press :guilabel:`Save` upload the new verision.
+#. Press :guilabel:`Save` upload the new version.
 

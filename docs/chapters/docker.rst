@@ -297,7 +297,7 @@ The command line would look like this::
 Now create a watch folder in Mayan EDMS using the path ``/scanned_files``
 and the documents from the host folder ``/opt/scanned_files`` will be
 automatically available. Use the same procedure to mount host folders to be
-used as staging folderes. In this example ``/scanned_files`` was used as the
+used as staging folders. In this example ``/scanned_files`` was used as the
 container directory, but any path can be used as long as:
 
 - the path not an already existing path
@@ -379,7 +379,7 @@ Execute Docker's build command using the provided makefile::
 
     make docker-build
 
-Or using an apt cacher to speed up the build::
+Or using an APT cache to speed up the build::
 
     make docker-build-with-proxy APT_PROXY=172.17.0.1:3142
 

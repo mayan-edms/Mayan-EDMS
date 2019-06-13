@@ -16,7 +16,7 @@ MERC 6: Lower information disclose
 Abstract
 ========
 
-This MERC proposes the use of errors that don't disclose the existance of a
+This MERC proposes the use of errors that don't disclose the existence of a
 resource in the event that the requester doesn't have the required credentials.
 
 Motivation
@@ -43,7 +43,7 @@ Since most view use the internal custom CRUD classes making a change to the
 failure will fulfill the proposal of this MERC.
 
 Adding the ``object_permission_raise_404`` class attribute and setting it
-to default to False will allow fulfullin the goal of this MERC while
+to default to False will allow fulfilling the goal of this MERC while
 keeping the existing functionality intact.
 
 

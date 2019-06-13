@@ -17,11 +17,11 @@ Version 0.11
 * Added a view to delete the document image cache, useful when switching
   converter backends or doing diagnostics.
 * Added South to the requirements.
-* Merged documents' filename and extension database fiels into a single
+* Merged documents' filename and extension database fields into a single
   filename field, filename are store as uploaded not manipulation is done
-  Users with existing data must install South and run the appropiate
+  Users with existing data must install South and run the appropriate
   migrate commands::
-  
+
     $ pip install -r requirements/production.txt
     $ ./manager syncdb
     $ ./manage.py migrate documents 0001 --fake
@@ -30,5 +30,5 @@ Version 0.11
 * Added new office document mimetype
   * application/vnd.ms-office
 * Fixed documents not saving the file encoding
-* Removed extra slash in ajax-loader.gif URL fixes #15, thanks to 
+* Removed extra slash in ajax-loader.gif URL fixes #15, thanks to
   IHLeanne for finding this one

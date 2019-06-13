@@ -6,6 +6,88 @@ FAQ
 Non technical
 *************
 
+Contact
+=======
+
+Can I contact members of the development team?
+----------------------------------------------
+
+Direct access to members of the development team is reserved for clients
+of a support or consultation contract.
+
+
+I can't pay for support/consultation
+------------------------------------
+
+A community forum is available at https://forum.mayan-edms.com. Members of
+the development team visit the forum on occasions and might answer some
+questions on a voluntary basis.
+
+
+I found a bug
+-------------
+
+For bugs, open an issue at https://gitlab.com/mayan-edms/mayan-edms/issues.
+
+
+I found a security issue
+------------------------
+
+Open an issue at https://gitlab.com/mayan-edms/mayan-edms/issues and mark it as
+Confidential. Allow us at least 48 hours to find and release a fix
+for the issue before submitting it to the CVE database.
+
+
+I want to join the development team
+-----------------------------------
+
+Perfect! We need all the help we can get. Tell us where we can see what you've
+done using Mayan EDMS. It could be a fork, a new UI, an API client, a custom app,
+or anything else that you think will be able to evidence your dominion over the
+codebase.
+
+
+I submitted an issue and it has not been fixed
+----------------------------------------------
+
+There are many reason an issue might not get resolved and remain open for an
+extended period of time. We document on the issue itself the progress and when
+resolved will reference what commit fixed it and the version or approximate time
+for the code to make it into a production release. Some reason why issues remain
+open with no resolution are:
+
+- It was not an issue with the code. It happens that sometimes the problem lies
+  with the operating system, the filesystem being used, the platform or packaging
+  method.
+- It was not an issue but a question or a comment. The issue system is for reporting
+  problems with the code. That said, we sometimes answer questions submitted as
+  issues. For questions or discussions use the community forum.
+- We are not able to reproduce the issue. We need to be able to recreate the
+  conditions that trigger the issue so that we can pinpoint the cause. After that
+  we create a test to make sure the issue is really fixed. Some issues can
+  be triggered manually easily but are hard to trigger programatically.
+- The issue is not clearly explained. Issue descriptions like: "It doesn't work",
+  or "It showed an error but I forgot to write it down" are almost impossible to
+  resolve.
+- We understand the cause of the problem but don't yet a solution to implement.
+  We have studied the issue and have been able to reproduce it, but have not
+  reached a consensus on how it should be fixed. Could be that the solution is
+  beyond the collective expertise of the development team or that a design
+  decision of big impact is needed before code changes can be implemented.
+- The issue is no real. The issue might be for an obsolete version. It could be
+  for a fork or a program that is not developed by us. Sometimes they are just
+  fake issues.
+
+
+I submitted a merge request and has not been merged
+---------------------------------------------------
+
+Merge requests must follow the development standards of the code as close a
+possible. They must also be atomic and as small as possible. The code must also
+not change the behavior of the project. We can't accept merge request that
+customize it in some way based on your own preferences or needs.
+
+
 Distribution
 ============
 
@@ -43,6 +125,7 @@ No, the terms of the license make the project freely available to everyone.
 Restricting distribution or sale would conflict with the license terms. This
 would possible for a commercial version of Mayan EDMS with separate licensing
 terms.
+
 
 Is there a commercial partnership program?
 ------------------------------------------
@@ -84,17 +167,6 @@ upgrades, if a migration fails the database structure is left in a transitory
 state and has to be reverted manually before trying again.
 
 
-Document versions
-=================
-
-How do you upload a new version of an existing file?
-----------------------------------------------------
-
-Choose a document, and go to the versions tab, on the right menu at the bottom
-under Other available action there is Upload new version. Clicking it will
-take you to a very similar view as the Upload new document but you will be
-able to specify version number and comments for the new version being uploaded.
-
 LDAP
 ====
 
@@ -104,6 +176,7 @@ How to do LDAP authentication
 A sample settings file called ldap_connection_settings.py is included in the
 contrib/settings/ folder of the repository showing how to setup LDAP
 authentication.
+
 
 Operating systems
 =================
@@ -154,14 +227,18 @@ should be used and the resulting static folder served from a webserver.
 For more information check the
 :django-docs:`howto/static-files/`
 
-Watchfolders
-============
+
+Watch folders
+=============
 
 The watched folder feature is not working
 -----------------------------------------
 
 Make sure that the Celery BEAT scheduler is running correctly as it is the
-element that triggers the periodics tasks.
+element that triggers the periodic tasks. Check that the user running the Mayan
+EDMS services has read and write permissions for the watch folder.
+
+
 
 Other
 =====
@@ -188,8 +265,3 @@ Example::
 
 Reference:
 * http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html
-
-Can you change the display order of documents…i.e can they be in alphabetical order?
-------------------------------------------------------------------------------------
-
-A the moment no, but it is something being worked on.

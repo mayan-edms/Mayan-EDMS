@@ -26,7 +26,7 @@ Motivation
 ==========
 
 As the project grows, legibility of code becomes more important. Keyword
-argument help document the use of services, clases and functions. Refactors
+argument help document the use of services, classes and functions. Refactors
 that affect the interface of services are also easier to find and update and
 fix. Positional argument can cause a call to continue working as long as the
 datatype of the argument remains the same. Usage of keyword arguments will
@@ -121,7 +121,7 @@ After:
 Keyword arguments should also be used for callables that pass those to others
 down the line like Django's ``reverse`` function. Any change to the name of
 the ``pk`` URL parameter will raise an exception in this code alerting to
-any posible incompatible use.
+any possible incompatible use.
 
 
 Example:
@@ -138,7 +138,7 @@ This becomes even more important when multiple URL parameters are used. Since
 the API documentation is auto generated from the code itself, it would make
 sense to rename the first URL parameter from ``pk`` to ``document_pk``. Such
 change will cause all address to view resolutions to break forcing their
-update and allowing all consumers' interface usage to remain synchonized to the
+update and allowing all consumers' interface usage to remain synchronized to the
 callable's interface.
 
 .. code-block:: python

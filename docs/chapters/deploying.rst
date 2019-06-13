@@ -12,7 +12,7 @@ does.
 
 Compilers and development libraries will be installed to compile runtime
 libraries. LibreOffice and Poppler utils will also be installed as they are
-used to convert document files. Supervisor (http://supervisord.org/), a
+used to convert document files. Supervisor (https://supervisord.org/), a
 Process Control System, will be used to monitor and keep all Mayan processes
 running.
 
@@ -43,7 +43,7 @@ For another setup that offers more performance and scalability refer to the
 
 2. Create the user account for the installation:
 ------------------------------------------------
-   This will create an unpriviledge user account that is also unable to login.
+   This will create an unprivileged user account that is also unable to login.
    ::
 
        sudo adduser mayan --disabled-password --disabled-login --no-create-home --gecos ""
@@ -61,7 +61,7 @@ For another setup that offers more performance and scalability refer to the
 4. Create the Python virtual environment:
 -----------------------------------------
    This will keep all the Python packages installed here isolated from the rest
-   of the Pythoon packages in the system.
+   of the Python packages in the system.
    ::
 
        sudo virtualenv /opt/mayan-edms
@@ -113,9 +113,9 @@ For another setup that offers more performance and scalability refer to the
 
        For simplicity, the ``MAYAN_MEDIA_ROOT`` folder is set to be a subfolder
        of the installation. If you want to keep your files separated from
-       the installation files, change the value of the ``MAYAN_MEDIR_ROOT``
+       the installation files, change the value of the ``MAYAN_MEDIA_ROOT``
        variable in this and all subsequent steps. Be sure to first create the
-       folder and give owership of it to the ``mayan`` user with the ``chown``
+       folder and give ownership of it to the ``mayan`` user with the ``chown``
        command.
 
    .. warning::
@@ -157,7 +157,7 @@ For another setup that offers more performance and scalability refer to the
 
 12. Configure Redis:
 --------------------
-    Configure Redit to discard data when it runs out of memory, not save its
+    Configure Redis to discard data when it runs out of memory, not save its
     database and only keep 1 database:
     ::
 

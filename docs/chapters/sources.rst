@@ -74,6 +74,6 @@ Creating new sources
 
 #. Go to the :menuselection:`System --> Setup --> Sources` menu.
 #. From the :guilabel:`Actions` dropdown select the new type of source to create.
-#. Each source type will have different fields to customize its behaviour. Enter
+#. Each source type will have different fields to customize its behavior. Enter
    the required information in each field based on the help text provided.
 #. Press :guilabel:`Save`.
