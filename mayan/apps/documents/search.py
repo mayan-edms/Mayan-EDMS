@@ -1,7 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.apps import apps
-from django.db import connection, models
+from django.db import connection
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.literals import LIST_MODE_CHOICE_ITEM
