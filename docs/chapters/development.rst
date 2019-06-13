@@ -482,7 +482,7 @@ Release checklist
 
        make check-readme
 
-#. Bump version in ``mayan/__init__.py`` and ``docker/version``::
+#. Bump version in ``mayan/__init__.py`` and ``docker/rootfs/version``::
 
     make increase-version PART=<major, minor or micro>
 
