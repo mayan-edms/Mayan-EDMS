@@ -32,3 +32,4 @@ static_collected/
 /whoosh_index/
 google_fonts/
 node_modules/
+docs/build/
