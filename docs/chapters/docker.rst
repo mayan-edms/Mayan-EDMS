@@ -43,7 +43,7 @@ expose its internal 5432 port (PostgreSQL's default port) via the host's
 5432 port. The data of this container will reside on the host's
 ``/docker-volumes/mayan-edms/postgres`` folder.
 
-Finally create and run a Mayan EDMS container.
+Finally create and run a Mayan EDMS container::
 
     docker run -d \
     --name mayan-edms \
