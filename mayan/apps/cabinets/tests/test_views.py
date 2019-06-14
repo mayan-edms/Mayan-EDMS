@@ -127,7 +127,11 @@ class CabinetChildViewTestCase(CabinetTestMixin, CabinetViewTestMixin, GenericVi
         response = self._request_test_cabinet_child_create_view()
         self.assertEqual(response.status_code, 302)
 
+        self.test_cabinets[0].refresh_from_db()
         self.assertEqual(Cabinet.objects.count(), cabinet_count + 1)
+        self.assertTrue(
+            self.test_cabinets[1] in self.test_cabinets[0].get_descendants()
+        )
 
     def test_cabinet_child_delete_view_no_permission(self):
         self._create_test_cabinet_child()

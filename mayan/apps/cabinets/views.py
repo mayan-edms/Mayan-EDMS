@@ -62,12 +62,16 @@ class CabinetChildAddView(ExternalObjectMixin, SingleObjectCreateView):
             'object': self.external_object
         }
 
+    def get_instance_extra_data(self):
+        return {
+            'parent': self.external_object,
+        }
+
     def get_queryset(self):
         return self.external_object.get_descendants()
 
     def get_save_extra_data(self):
         return {
-            'parent': self.external_object,
             '_user': self.request.user
         }
 

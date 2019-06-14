@@ -56,8 +56,14 @@ class CabinetAPIViewTestMixin(object):
 
 
 class CabinetTestMixin(object):
+    def setUp(self):
+        super(CabinetTestMixin, self).setUp()
+        if not hasattr(self, 'test_cabinets'):
+            self.test_cabinets = []
+
     def _create_test_cabinet(self):
         self.test_cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
+        self.test_cabinets.append(self.test_cabinet)
 
     def _create_test_cabinet_child(self):
         self.test_cabinet_child = Cabinet.objects.create(
@@ -66,6 +72,11 @@ class CabinetTestMixin(object):
 
 
 class CabinetViewTestMixin(object):
+    def setUp(self):
+        super(CabinetViewTestMixin, self).setUp()
+        if not hasattr(self, 'test_cabinets'):
+            self.test_cabinets = []
+
     def _request_test_cabinet_create_view(self):
         # Typecast to list to force queryset evaluation
         values = list(Cabinet.objects.values_list('pk', flat=True))
@@ -77,6 +88,7 @@ class CabinetViewTestMixin(object):
         )
 
         self.test_cabinet = Cabinet.objects.exclude(pk__in=values).first()
+        self.test_cabinets.append(self.test_cabinet)
 
         return response
 
@@ -97,11 +109,19 @@ class CabinetViewTestMixin(object):
         )
 
     def _request_test_cabinet_child_create_view(self):
-        return self.post(
+        # Typecast to list to force queryset evaluation
+        values = list(Cabinet.objects.values_list('pk', flat=True))
+
+        response = self.post(
             viewname='cabinets:cabinet_child_add', kwargs={
                 'pk': self.test_cabinet.pk
             }, data={'label': TEST_CABINET_CHILD_LABEL}
         )
+
+        self.test_cabinet = Cabinet.objects.exclude(pk__in=values).first()
+        self.test_cabinets.append(self.test_cabinet)
+
+        return response
 
     def _request_test_cabinet_child_delete_view(self):
         return self.post(
