@@ -5,9 +5,9 @@ import logging
 import yaml
 
 try:
-    from yaml import CSafeLoader as SafeLoader, CDumper as Dumper
+    from yaml import CSafeLoader as SafeLoader, CSafeDumper as SafeDumper
 except ImportError:
-    from yaml import SafeLoader, Dumper
+    from yaml import SafeLoader, SafeDumper
 
 from django.contrib.contenttypes.models import ContentType
 from django.db import models, transaction
@@ -24,7 +24,7 @@ class TransformationManager(models.Manager):
         self.create(
             content_type=content_type, object_id=obj.pk,
             name=transformation.name, arguments=yaml.dump(
-                data=arguments, Dumper=Dumper
+                data=arguments, Dumper=SafeDumper
             )
         )
 

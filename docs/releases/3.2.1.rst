@@ -8,7 +8,13 @@ Released: June 14, 2019
 Changes
 -------
 
-- Fix sub cabinet creation view.
+- Fix sub cabinet creation view. Thanks to Frédéric Sheedy
+  (@fsheedy) for the report.
+- Add PostgreSQL troubleshooting entry. Closes GitLab
+  issues #523 and #602
+- Use YAML SafeDumper to avoid adding YAML datatype tags.
+  Closes GitLab issue #599. Thanks to Frédéric Sheedy
+  (@fsheedy) for the report and debug information.
 
 
 Removals
@@ -99,6 +105,7 @@ Bugs fixed or issues closed
 ---------------------------
 
 - :gitlab-issue:`523` PostgreSQL error about insufficient connections
+- :gitlab-issue:`599` Settings display !!python/unicode with values since 3.2
 - :gitlab-issue:`601` Error when creating new cabinet level
 - :gitlab-issue:`602` System stops responding for a minute every 10 minutes or so
 

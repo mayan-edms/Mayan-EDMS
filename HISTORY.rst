@@ -4,6 +4,9 @@
   (@fsheedy) for the report.
 * Add PostgreSQL troubleshooting entry. Closes GitLab
   issues #523 and #602
+* Use YAML SafeDumper to avoid adding YAML datatype tags.
+  Closes GitLab issue #599. Thanks to Frédéric Sheedy
+  (@fsheedy) for the report and debug information.
 
 3.2 (2019-06-13)
 ================

@@ -9,9 +9,9 @@ import sys
 import yaml
 
 try:
-    from yaml import CSafeLoader as SafeLoader, CDumper as Dumper
+    from yaml import CSafeLoader as SafeLoader, CSafeDumper as SafeDumper
 except ImportError:
-    from yaml import SafeLoader, Dumper
+    from yaml import SafeLoader, SafeDumper
 
 from django.apps import apps
 from django.conf import settings
@@ -84,11 +84,23 @@ class Setting(object):
         return yaml.load(stream=value, Loader=SafeLoader)
 
     @staticmethod
-    def serialize_value(value):
-        if isinstance(value, Promise):
-            value = force_text(value)
+    def express_promises(value):
+        """
+        Walk all the elements of a value and force promises to text
+        """
+        if isinstance(value, (list, tuple)):
+            return [Setting.express_promises(item) for item in value]
+        elif isinstance(value, Promise):
+            return force_text(value)
+        else:
+            return value
 
-        result = yaml.dump(data=value, allow_unicode=True, Dumper=Dumper)
+    @staticmethod
+    def serialize_value(value):
+        result = yaml.dump(
+            data=Setting.express_promises(value), allow_unicode=True,
+            Dumper=SafeDumper
+        )
         # safe_dump returns bytestrings
         # Disregard the last 3 dots that mark the end of the YAML document
         if force_text(result).endswith('...\n'):
@@ -103,13 +115,10 @@ class Setting(object):
         for setting in cls.get_all():
             if (namespace and setting.namespace.name == namespace) or not namespace:
                 if (filter_term and filter_term.lower() in setting.global_name.lower()) or not filter_term:
-                    if isinstance(setting.value, Promise):
-                        dictionary[setting.global_name] = force_text(setting.value)
-                    else:
-                        dictionary[setting.global_name] = setting.value
+                    dictionary[setting.global_name] = Setting.express_promises(setting.value)
 
         return yaml.dump(
-            data=dictionary, default_flow_style=False, Dumper=Dumper
+            data=dictionary, default_flow_style=False, Dumper=SafeDumper
         )
 
     @classmethod
