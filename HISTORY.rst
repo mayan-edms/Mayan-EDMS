@@ -12,6 +12,8 @@
 * Remove sidebar floar right.
   Fixed GitLab issue #600. Thanks to Frédéric Sheedy
   (@fsheedy) for the report and debug information.
+* Collapse sidebar on small screen
+  Display sidebar at the bottom of the screen on small displays.
 
 3.2 (2019-06-13)
 ================
