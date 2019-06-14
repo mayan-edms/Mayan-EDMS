@@ -9,6 +9,9 @@
   (@fsheedy) for the report and debug information.
 * Add check for app references and point users to release notes for details.
   GitLab issue #603. Thanks to Vikas Kedia (@vikaskedia) for the report.
+* Remove sidebar floar right.
+  Fixed GitLab issue #600. Thanks to Frédéric Sheedy
+  (@fsheedy) for the report and debug information.
 
 3.2 (2019-06-13)
 ================
