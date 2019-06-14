@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-09 03:18-0400\n"
-"PO-Revision-Date: 2019-06-09 07:23+0000\n"
+"PO-Revision-Date: 2019-06-13 11:55+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -424,11 +424,11 @@ msgstr "Fluxuri de lucru pentru documentul: %s"
 msgid ""
 "This view will show the state changes as a workflow instance is "
 "transitioned."
-msgstr ""
+msgstr "Această vizualizare va afișa modificările de stare pe măsură ce o instanță a fluxului de lucru este tranziționată."
 
 #: views/workflow_instance_views.py:87
 msgid "There are no details for this workflow instance"
-msgstr ""
+msgstr "Nu există detalii despre acest exemplu de flux de lucru"
 
 #: views/workflow_instance_views.py:90
 #, python-format
@@ -528,12 +528,12 @@ msgstr "Nu s-au definit fluxuri de lucru"
 #: views/workflow_views.py:166
 #, python-format
 msgid "Delete workflow: %s?"
-msgstr ""
+msgstr "Ștergeți fluxul de lucru: %s?"
 
 #: views/workflow_views.py:182
 #, python-format
 msgid "Edit workflow: %s"
-msgstr ""
+msgstr "Editați fluxul de lucru: %s"
 
 #: views/workflow_views.py:196
 msgid "Available document types"
@@ -596,12 +596,12 @@ msgstr "Creați stări pentru fluxul de lucru: %s"
 #: views/workflow_views.py:460
 #, python-format
 msgid "Delete workflow state: %s?"
-msgstr ""
+msgstr "Ștergeți starea fluxului de lucru: %s?"
 
 #: views/workflow_views.py:483
 #, python-format
 msgid "Edit workflow state: %s"
-msgstr ""
+msgstr "Editați starea fluxului de lucru: %s"
 
 #: views/workflow_views.py:514
 msgid "This workflow doesn't have any states"
@@ -615,12 +615,12 @@ msgstr "Creați tranziții pentru fluxul de lucru: %s"
 #: views/workflow_views.py:577
 #, python-format
 msgid "Delete workflow transition: %s?"
-msgstr ""
+msgstr "Ștergeți tranziția fluxului de lucru: %s?"
 
 #: views/workflow_views.py:600
 #, python-format
 msgid "Edit workflow transition: %s"
-msgstr ""
+msgstr "Editați tranziția fluxului de lucru: %s"
 
 #: views/workflow_views.py:635
 msgid ""
@@ -677,7 +677,7 @@ msgstr "Previzualizarea: %s"
 
 #: workflow_actions.py:22
 msgid "Document label"
-msgstr ""
+msgstr "Etichetele documentului"
 
 #: workflow_actions.py:25
 msgid ""
@@ -686,7 +686,7 @@ msgstr "Noua etichetă care va fi atribuită documentului. Poate fi un șir sau 
 
 #: workflow_actions.py:30
 msgid "Document description"
-msgstr ""
+msgstr "Descrierea documentului"
 
 #: workflow_actions.py:33
 msgid ""

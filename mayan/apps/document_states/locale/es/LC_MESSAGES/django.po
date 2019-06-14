@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-09 03:18-0400\n"
-"PO-Revision-Date: 2019-06-09 07:23+0000\n"
+"PO-Revision-Date: 2019-06-09 18:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -425,11 +425,11 @@ msgstr "Flujos de trabajo para el documento: %s"
 msgid ""
 "This view will show the state changes as a workflow instance is "
 "transitioned."
-msgstr ""
+msgstr "Esta vista mostrará los cambios de estado a medida que se realiza la transición de una instancia de flujo de trabajo."
 
 #: views/workflow_instance_views.py:87
 msgid "There are no details for this workflow instance"
-msgstr ""
+msgstr "No hay detalles para esta instancia de flujo de trabajo"
 
 #: views/workflow_instance_views.py:90
 #, python-format
@@ -529,12 +529,12 @@ msgstr "No se han definido flujos de trabajo"
 #: views/workflow_views.py:166
 #, python-format
 msgid "Delete workflow: %s?"
-msgstr ""
+msgstr "Eliminar flujo de trabajo: %s?"
 
 #: views/workflow_views.py:182
 #, python-format
 msgid "Edit workflow: %s"
-msgstr ""
+msgstr "Editar flujo de trabajo: %s"
 
 #: views/workflow_views.py:196
 msgid "Available document types"
@@ -597,12 +597,12 @@ msgstr "Crear estados para el flujo de trabajo: %s"
 #: views/workflow_views.py:460
 #, python-format
 msgid "Delete workflow state: %s?"
-msgstr ""
+msgstr "Eliminar el estado del flujo de trabajo: %s?"
 
 #: views/workflow_views.py:483
 #, python-format
 msgid "Edit workflow state: %s"
-msgstr ""
+msgstr "Editar el estado del flujo de trabajo: %s"
 
 #: views/workflow_views.py:514
 msgid "This workflow doesn't have any states"
@@ -616,12 +616,12 @@ msgstr "Crear transiciones para el flujo de trabajo: %s"
 #: views/workflow_views.py:577
 #, python-format
 msgid "Delete workflow transition: %s?"
-msgstr ""
+msgstr "Eliminar la transición del flujo de trabajo: %s?"
 
 #: views/workflow_views.py:600
 #, python-format
 msgid "Edit workflow transition: %s"
-msgstr ""
+msgstr "Editar la transición del flujo de trabajo: %s"
 
 #: views/workflow_views.py:635
 msgid ""
@@ -678,7 +678,7 @@ msgstr "Vista previa de: %s"
 
 #: workflow_actions.py:22
 msgid "Document label"
-msgstr ""
+msgstr "Etiqueta de documento"
 
 #: workflow_actions.py:25
 msgid ""
@@ -687,7 +687,7 @@ msgstr "La nueva etiqueta que se asignará al documento. Puede ser una cadena o 
 
 #: workflow_actions.py:30
 msgid "Document description"
-msgstr ""
+msgstr "Descripción del documento"
 
 #: workflow_actions.py:33
 msgid ""

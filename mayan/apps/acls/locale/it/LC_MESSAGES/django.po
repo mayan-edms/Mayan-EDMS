@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Daniele Bortoluzzi <daniele@elkos.it>, 2019
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-09 03:16-0400\n"
-"PO-Revision-Date: 2019-05-05 01:43+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2019-06-13 16:56+0000\n"
+"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,11 +29,11 @@ msgstr "Liste di controllo accessi"
 
 #: events.py:12
 msgid "ACL created"
-msgstr ""
+msgstr "ACL creata"
 
 #: events.py:15
 msgid "ACL edited"
-msgstr ""
+msgstr "ACL modificata"
 
 #: forms.py:15 models.py:49
 msgid "Role"
@@ -53,12 +54,12 @@ msgstr "Permessi"
 #: managers.py:216
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
-msgstr ""
+msgstr "L'oggetto \"%s\" non è un modello e su di esso non si può eseguire un controllo accessi."
 
 #: managers.py:236
 #, python-format
 msgid "Insufficient access for: %s"
-msgstr ""
+msgstr "Permessi insufficienti per: %s"
 
 #: models.py:57
 msgid "Access entry"
@@ -123,13 +124,13 @@ msgstr "Cancella ACL: %s"
 
 #: views.py:147
 msgid "There are no ACLs for this object"
-msgstr ""
+msgstr "Non ci sono ACL per questo oggetto"
 
 #: views.py:150
 msgid ""
 "ACL stands for Access Control List and is a precise method  to control user "
 "access to objects in the system."
-msgstr ""
+msgstr "ACL sta per Access Control List (lista di controllo degli accessi) ed è un metodo preciso per controllare l'accesso dell'utente agli oggetti nel sistema."
 
 #: views.py:154
 #, python-format
@@ -147,7 +148,7 @@ msgstr "Autorizzazioni disponibili "
 #: views.py:215
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
-msgstr ""
+msgstr "Permessi del ruolo \"%(role)s\" per \"%(object)s\"."
 
 #: views.py:224
 msgid ""
@@ -155,24 +156,24 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr ""
+msgstr "I permessi disabilitati sono ereditati da un oggetto padre o direttamente concessi al ruolo e non possono essere rimossi da questa schermata. I permessi ereditati vanno rimossi dalle ACL dell'oggetto padre o del ruolo tramite il menù Setup."
 
 #: workflow_actions.py:25
 msgid "Object type"
-msgstr ""
+msgstr "Tipo dell'oggetto"
 
 #: workflow_actions.py:28
 msgid "Type of the object for which the access will be modified."
-msgstr ""
+msgstr "Tipo dell'oggetto per il quale l'accesso sarà modificato"
 
 #: workflow_actions.py:34
 msgid "Object ID"
-msgstr ""
+msgstr "ID dell'oggetto"
 
 #: workflow_actions.py:37
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
-msgstr ""
+msgstr "Identificativo numerico dell'oggetto per il quale l'accesso sarà modificato"
 
 #: workflow_actions.py:42
 msgid "Roles"
@@ -180,17 +181,17 @@ msgstr "Ruoli "
 
 #: workflow_actions.py:44
 msgid "Roles whose access will be modified."
-msgstr ""
+msgstr "Ruoli il cui accesso sarà modificato"
 
 #: workflow_actions.py:51
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr ""
+msgstr "Permessi da concedere/revocare al ruolo per l'oggetto selezionato"
 
 #: workflow_actions.py:59
 msgid "Grant access"
-msgstr ""
+msgstr "Concedi accesso"
 
 #: workflow_actions.py:142
 msgid "Revoke access"
-msgstr ""
+msgstr "Revoca accesso"

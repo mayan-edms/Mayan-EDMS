@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Daniele Bortoluzzi <daniele@elkos.it>, 2019
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-09 03:17-0400\n"
-"PO-Revision-Date: 2019-05-17 05:50+0000\n"
-"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
+"PO-Revision-Date: 2019-06-13 17:13+0000\n"
+"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +67,7 @@ msgstr "Controlla il meccanismo utilizzato per autenticare l'utente. Le opzioni 
 msgid ""
 "Maximum time an user clicking the \"Remember me\" checkbox will remain "
 "logged in. Value is time in seconds."
-msgstr ""
+msgstr "Tempo massimo per cui un utente che clicca su \"Ricordami\" rimane loggato. Valore temporale espresso in secondi."
 
 #: templates/authentication/login.html:11
 msgid "Login"
@@ -117,28 +118,28 @@ msgstr "Modifica della password dell'utente corrente"
 
 #: views.py:89
 msgid "Changing the password is not allowed for this account."
-msgstr ""
+msgstr "Il cambio password non è consentito per questo account."
 
 #: views.py:145
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr ""
+msgstr "Effettuato il cambio password richiesto per %(count)d utente"
 
 #: views.py:147
 #, python-format
 msgid "Password change request performed on %(count)d users"
-msgstr ""
+msgstr "Effettuato il cambio password richiesto per %(count)d utenti"
 
 #: views.py:156
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cambia la password dell'utente"
+msgstr[1] "Cambia le password degli utenti"
 
 #: views.py:166
 #, python-format
 msgid "Change password for user: %s"
-msgstr ""
+msgstr "Cambia la password dell'utente: %s"
 
 #: views.py:186
 msgid ""
@@ -149,7 +150,7 @@ msgstr "Al super utente e utente non è consentito di reimpostare la password pe
 #: views.py:196
 #, python-format
 msgid "Successful password reset for user: %s."
-msgstr ""
+msgstr "Effettuato reset della password per l'utente: %s."
 
 #: views.py:202
 #, python-format

@@ -163,7 +163,7 @@ msgstr "No especificado"
 
 #: classes.py:405
 msgid "Patching files... "
-msgstr ""
+msgstr "Parcheando archivos..."
 
 #: classes.py:436
 msgid "Executables that are called directly by the code."
@@ -207,11 +207,11 @@ msgstr "Pitón"
 
 #: classes.py:706
 msgid "Fonts downloaded from fonts.googleapis.com."
-msgstr ""
+msgstr "Fuentes descargadas de fonts.googleapis.com."
 
 #: classes.py:708
 msgid "Google font"
-msgstr ""
+msgstr "Fuente de Google"
 
 #: classes.py:786
 msgid "Declared in app"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-09 03:16-0400\n"
-"PO-Revision-Date: 2019-06-09 07:22+0000\n"
+"PO-Revision-Date: 2019-06-09 18:52+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr "Apariencia"
 
 #: dependencies.py:10
 msgid "Lato font"
-msgstr ""
+msgstr "Fuente Lato"
 
 #: dependencies.py:14
 msgid "Bootstrap"

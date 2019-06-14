@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Carlo Zanatto <>, 2012
+# Daniele Bortoluzzi <daniele@elkos.it>, 2019
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
@@ -13,8 +14,8 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-09 03:17-0400\n"
-"PO-Revision-Date: 2019-05-17 05:50+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2019-06-13 17:41+0000\n"
+"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,11 +33,11 @@ msgstr "Attributi disponibili:\n"
 
 #: classes.py:166
 msgid "Available fields: \n"
-msgstr ""
+msgstr "Campi disponibili:\n"
 
 #: dependencies.py:396
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Usato per consentire la traduzione offline delle stringhe di testo nel codice."
 
 #: dependencies.py:401
 msgid "Provides style checking."
@@ -44,11 +45,11 @@ msgstr ""
 
 #: dependencies.py:406
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Ambiente a riga di comando con autocompletamento."
 
 #: dependencies.py:411
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Controlla la corretta formattazione del file README."
 
 #: forms.py:27
 msgid "Selection"
@@ -63,18 +64,18 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Seleziona le voci da rimuovere. Tieni premuto Ctrl per selezionare più di una voce. Quando hai finito di selezionare, clicca il bottone sotto o fai doppio clic sulla lista per attivare l'azione."
 
 #: generics.py:153
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Seleziona le voci da aggiungere. Tieni premuto Ctrl per selezionare più di una voce. Quando hai finito di selezionare, clicca il bottone sotto o fai doppio clic sulla lista per attivare l'azione."
 
 #: generics.py:286
 msgid "Add all"
-msgstr ""
+msgstr "Aggiungi tutto"
 
 #: generics.py:295
 msgid "Add"
@@ -82,7 +83,7 @@ msgstr "Aggiungi"
 
 #: generics.py:305
 msgid "Remove all"
-msgstr ""
+msgstr "Rimuovi tutto"
 
 #: generics.py:314
 msgid "Remove"
@@ -91,7 +92,7 @@ msgstr "Rimuovi"
 #: generics.py:519
 #, python-format
 msgid "Duplicate data error: %(error)s"
-msgstr ""
+msgstr "Errore dati duplicati: %(error)s"
 
 #: generics.py:537
 #, python-format
@@ -141,11 +142,11 @@ msgstr "Documentazione"
 
 #: links.py:54 links.py:65
 msgid "Errors"
-msgstr ""
+msgstr "Errori"
 
 #: links.py:59
 msgid "Clear all"
-msgstr ""
+msgstr "Pulisci tutto"
 
 #: links.py:69
 msgid "Forum"
@@ -174,13 +175,13 @@ msgstr "Strumenti"
 #: literals.py:10
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "Questa funzionalità è obsoleta e verrà rimossa nelle versioni future."
 
 #: literals.py:13
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
+msgstr "Il tuo database attuale è impostato a SQLite, che dovrebbe essere usato solo per sviluppo e test, non in produzione."
 
 #: literals.py:31
 msgid "Days"
@@ -197,29 +198,29 @@ msgstr "Minuti"
 #: management/commands/convertdb.py:40
 msgid ""
 "Restricts dumped data to the specified app_label or app_label.ModelName."
-msgstr ""
+msgstr "Limita i dati del dump a una specifica app_label o app_label.ModelName."
 
 #: management/commands/convertdb.py:47
 msgid ""
 "The database from which data will be exported. If omitted the database named"
 " \"default\" will be used."
-msgstr ""
+msgstr "Il database da cui esportare i dati. Se non specificato, verrà usato il database chiamato \"default\"."
 
 #: management/commands/convertdb.py:54
 msgid ""
 "The database to which data will be imported. If omitted the database named "
 "\"default\" will be used."
-msgstr ""
+msgstr "Il database sul quale importare i dati. Se non specificato, verrà usato il database chiamato \"default\"."
 
 #: management/commands/convertdb.py:61
 msgid ""
 "Force the conversion of the database even if the receiving database is not "
 "empty."
-msgstr ""
+msgstr "Forza la conversione del database anche se il database di destinazione non è vuoto."
 
 #: menus.py:10
 msgid "System"
-msgstr ""
+msgstr "Sistema"
 
 #: menus.py:12 menus.py:13
 msgid "Facet"
@@ -240,7 +241,7 @@ msgstr "Utente"
 #: mixins.py:222
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
-msgstr ""
+msgstr "Nessun %(verbose_name)s trovato con questa query"
 
 #: mixins.py:296
 msgid "Object"
@@ -260,11 +261,11 @@ msgstr "Risultato"
 
 #: models.py:47
 msgid "Error log entry"
-msgstr ""
+msgstr "Voce di errore dei log"
 
 #: models.py:48
 msgid "Error log entries"
-msgstr ""
+msgstr "Voci di errore dei log"
 
 #: models.py:59
 msgid "File"
@@ -300,7 +301,7 @@ msgstr "Profili dell'utente locale"
 
 #: permissions_runtime.py:10
 msgid "View error log"
-msgstr ""
+msgstr "Vedi log errori"
 
 #: queues.py:13
 msgid "Default"
@@ -328,7 +329,7 @@ msgstr "Il ritardo per i task in background dipende dalla propagazione del commi
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Nome della vista collegata all'ancora brand nel menù principale. Questa è anche la vista alla quale gli utenti verranno reindirizzati dopo il login."
 
 #: settings.py:41
 msgid "An integer specifying how many objects should be displayed per page."
@@ -340,15 +341,15 @@ msgstr ""
 
 #: settings.py:55
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Percorso del file di log su cui verranno scritti gli errori in produzione."
 
 #: settings.py:62
 msgid "Name to be displayed in the main menu."
-msgstr ""
+msgstr "Nome da visualizzare nel menù principale."
 
 #: settings.py:68
 msgid "URL of the installation or homepage of the project."
-msgstr ""
+msgstr "URL dell'installazione o pagina home del progetto."
 
 #: settings.py:74
 msgid "A storage backend that all workers can use to share files."
@@ -356,7 +357,7 @@ msgstr "Un backend di memorizzazione che tutti i lavoratori possono utilizzare p
 
 #: settings.py:83
 msgid "Django"
-msgstr ""
+msgstr "Django"
 
 #: settings.py:88
 msgid ""
@@ -371,7 +372,7 @@ msgid ""
 " match anything; in this case you are responsible to provide your own "
 "validation of the Host header (perhaps in a middleware; if so this "
 "middleware must be listed first in MIDDLEWARE)."
-msgstr ""
+msgstr "Una lista di stringhe con i nomi host o nomi di dominio che questo sito può servire. Si tratta di una misura di sicurezza per prevenire attacchi con l'intestazione HTTP Host, che sono possibili in tante configurazioni dei web server anche apparentemente sicure. I valori in questa lista possono essere FQDN (es. 'www.nomesito.it'), nel quale caso verranno confrontati con l'header di richiesta Host in maniera esatta (senza controllo maiuscole e senza la porta). Una stringa che inizi con un punto può essere usata come wildcard per il sottodominio: '.nomesito.it' sarà valido per nomesito.it, www.nomesito.it e qualunque altro sottodominio di nomesito.it. Il valore '*' corrisponde a qualunque sito; in questo caso sei tu responsabile di validare in qualche modo l'intestazione Host (magari in un middleware, in tal caso deve essere il primo della lista MIDDLEWARE)."
 
 #: settings.py:106
 msgid ""
@@ -387,7 +388,7 @@ msgstr ""
 msgid ""
 "The list of validators that are used to check the strength of user's "
 "passwords."
-msgstr ""
+msgstr "La lista dei validatori usati per controllare l'efficacia delle password degli utenti."
 
 #: settings.py:126
 msgid ""
@@ -396,7 +397,7 @@ msgid ""
 "dictionary containing the options for an individual database. The DATABASES "
 "setting must configure a default database; any number of additional "
 "databases may also be specified."
-msgstr ""
+msgstr "Un dizionario che contiene le impostazioni per tutti i database da usare con Django. È un dizionario innestato le cui chiavi sono alias di database e i valori sono i dizionari con le opzioni per ogni database. L'impostazione DATABASES deve contenere un database chiamato 'default'; è possibile poi specificare ulteriori database aggiuntivi."
 
 #: settings.py:138
 msgid ""
