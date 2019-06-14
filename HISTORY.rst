@@ -1,3 +1,10 @@
+3.2.1 (2019-06-14)
+==================
+* Fix sub cabinet creation view. Thanks to Frédéric Sheedy
+  (@fsheedy) for the report.
+* Add PostgreSQL troubleshooting entry. Closes GitLab
+  issues #523 and #602
+
 3.2 (2019-06-13)
 ================
 * Split sources models into separate modules.

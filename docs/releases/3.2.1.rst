@@ -98,6 +98,8 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
+- :gitlab-issue:`523` PostgreSQL error about insufficient connections
 - :gitlab-issue:`601` Error when creating new cabinet level
+- :gitlab-issue:`602` System stops responding for a minute every 10 minutes or so
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
