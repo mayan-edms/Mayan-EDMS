@@ -14,6 +14,7 @@ from __future__ import unicode_literals
 import os
 import sys
 
+from django.core.exceptions import ImproperlyConfigured
 from django.utils.translation import ugettext_lazy as _
 
 import environ
@@ -355,6 +356,9 @@ else:
         }
     }
 
+
+BASE_INSTALLED_APPS = INSTALLED_APPS
+
 CONFIGURATION_FILEPATH = os.path.join(MEDIA_ROOT, CONFIGURATION_FILENAME)
 CONFIGURATION_LAST_GOOD_FILEPATH = os.path.join(
     MEDIA_ROOT, CONFIGURATION_LAST_GOOD_FILENAME
@@ -364,3 +368,11 @@ if 'revertsettings' not in sys.argv:
     result = read_configuration_file(CONFIGURATION_FILEPATH)
     if result:
         globals().update(result)
+
+
+for app in INSTALLED_APPS:
+    if 'mayan.apps.{}'.format(app) in BASE_INSTALLED_APPS:
+        raise ImproperlyConfigured(
+            'Update the app references in the file config.yml as detailed '
+            'in https://docs.mayan-edms.com/releases/3.2.html#backward-incompatible-changes'
+        )
