@@ -46,6 +46,24 @@ Solution:
 Convert all MySQL tables to the same type, either all MyISAM or InnoDB
 
 
+PostgreSQL error: ``OperationalError: FATAL:  sorry, too many clients already``
+===============================================================================
+
+Set ``MAYAN_DATABASE_CONN_MAX_AGE`` to 0
+
+This setting keeps a database connection alive. It allows reuse of database
+connections. When Mayan EDMS is deployed with Gunicorn a microthreads backend,
+the database connections are not shared and this setting has the reverse effect
+of exhausting the available PostgreSQL connections available. To avoid this,
+Setting ``MAYAN_DATABASE_CONN_MAX_AGE`` to 0 will cause all microthreads to
+release their connections, by closing them when finished.
+
+References:
+
+- https://serverfault.com/questions/635100/django-conn-max-age-persists-connections-but-doesnt-reuse-them-with-postgresq
+- https://github.com/benoitc/gunicorn/issues/996
+
+
 ******
 Docker
 ******
