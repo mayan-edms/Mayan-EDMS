@@ -242,7 +242,7 @@ class MultipleObjectMixin(SingleObjectMixin):
 
 class ObjectActionMixin(object):
     """
-    Mixin that performs an user action to a queryset
+    Mixin that performs a user action to a queryset
     """
     error_message = 'Unable to perform operation on object %(instance)s.'
     success_message = 'Operation performed on %(count)d object.'

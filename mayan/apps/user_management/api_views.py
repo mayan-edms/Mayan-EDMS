@@ -97,7 +97,7 @@ class APIUserView(generics.RetrieveUpdateDestroyAPIView):
 
 class APIUserGroupList(generics.ListCreateAPIView):
     """
-    get: Returns a list of all the groups to which an user belongs.
+    get: Returns a list of all the groups to which a user belongs.
     post: Add a user to a list of groups.
     """
     mayan_object_permissions = {

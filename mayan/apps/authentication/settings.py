@@ -17,7 +17,7 @@ setting_login_method = namespace.add_setting(
 setting_maximum_session_length = namespace.add_setting(
     global_name='AUTHENTICATION_MAXIMUM_SESSION_LENGTH',
     default=DEFAULT_MAXIMUM_SESSION_LENGTH, help_text=_(
-        'Maximum time an user clicking the "Remember me" checkbox will '
+        'Maximum time a user clicking the "Remember me" checkbox will '
         'remain logged in. Value is time in seconds.'
     )
 )

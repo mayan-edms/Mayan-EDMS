@@ -85,7 +85,7 @@ class SharedUploadedFile(models.Model):
 @python_2_unicode_compatible
 class UserLocaleProfile(models.Model):
     """
-    Stores the locale preferences of an user. Stores timezone and language
+    Stores the locale preferences of a user. Stores timezone and language
     at the moment.
     """
     user = models.OneToOneField(

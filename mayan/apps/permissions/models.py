@@ -64,7 +64,7 @@ class StoredPermission(models.Model):
 
     def user_has_this(self, user):
         """
-        Helper method to check if an user has been granted this permission.
+        Helper method to check if a user has been granted this permission.
         The check is done sequentially over all of the user's groups and
         roles. The check is interrupted at the first positive result.
         The check always returns True for superusers or staff users.

@@ -9,8 +9,8 @@ from .managers import UserOptionsManager
 
 class UserOptions(models.Model):
     """
-    This model stores administrative configurations for an user accounts.
-    At the moment it stores a boolean flag to restrict an user's
+    This model stores administrative configurations for a user accounts.
+    At the moment it stores a boolean flag to restrict a user's
     ability to change their password.
     """
     user = models.OneToOneField(

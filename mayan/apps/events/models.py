@@ -46,7 +46,7 @@ class StoredEventType(models.Model):
 @python_2_unicode_compatible
 class EventSubscription(models.Model):
     """
-    This model stores the event subscriptions of an user for the entire
+    This model stores the event subscriptions of a user for the entire
     system.
     """
     user = models.ForeignKey(
@@ -72,7 +72,7 @@ class EventSubscription(models.Model):
 @python_2_unicode_compatible
 class Notification(models.Model):
     """
-    This model keeps track of the notifications for an user. Notifications are
+    This model keeps track of the notifications for a user. Notifications are
     created when an event to which this user has been subscribed, are
     commited elsewhere in the system.
     """

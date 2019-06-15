@@ -170,7 +170,7 @@ class UserAPITestMixin(object):
 
 class UserTestCaseMixin(object):
     """
-    This TestCaseMixin is used to create an user and group to execute the
+    This TestCaseMixin is used to create a user and group to execute the
     test case, these are used to just create an identity which is required by
     most of the code in the project, these are not meant to be acted upon
     (edited, deleted, etc). To create a test users or groups to modify, use

@@ -296,7 +296,7 @@ class UserListView(SingleObjectListView):
             ),
             'no_results_text': _(
                 'User accounts can be create from this view. After creating '
-                'an user account you will prompted to set a password for it. '
+                'a user account you will prompted to set a password for it. '
             ),
             'no_results_title': _('There are no user accounts'),
             'title': _('Users'),
