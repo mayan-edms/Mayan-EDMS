@@ -248,9 +248,6 @@ Special branches:
 ``releases/python``
     Used by the continuous delivery system to trigger the build and release
     of a new Python package to PyPI.
-``releases/python``
-    Used by the continuous delivery system to trigger the build and release
-    of a new Python package to PyPI.
 ``nightly``
     Used by the continuous delivery system to trigger the build and release
     of a new Docker image based on development code to the GitLab image
