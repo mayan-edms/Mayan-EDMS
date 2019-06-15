@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:16-0400\n"
-"PO-Revision-Date: 2019-05-06 22:04+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
+"POT-Creation-Date: 2019-06-15 03:35-0400\n"
+"PO-Revision-Date: 2019-06-15 07:48+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +49,7 @@ msgstr "Neue Berechtigung"
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:49 models.py:45 workflow_actions.py:48
+#: links.py:49 models.py:45 workflow_actions.py:49 workflow_actions.py:164
 msgid "Permissions"
 msgstr "Berechtigungen"
 
@@ -160,40 +160,48 @@ msgid ""
 "menu."
 msgstr "Unzureichende Berechtigungen werden durch ein übergeordnetes Objekt vererbt oder direkt an die Rolle erteilt. Sie können nicht direkt auf diesem Formular bearbeitet werden. Vererbte Berechtigungen müssen auf dem übergeordneten Objekt oder für die Rolle über das Einrichtungsmenü eingestellt werden."
 
-#: workflow_actions.py:25
+#: workflow_actions.py:26
 msgid "Object type"
 msgstr "Objekttyp"
 
-#: workflow_actions.py:28
+#: workflow_actions.py:29
 msgid "Type of the object for which the access will be modified."
 msgstr "Objekttyp für den der Zugang bearbeitet wird."
 
-#: workflow_actions.py:34
+#: workflow_actions.py:35
 msgid "Object ID"
 msgstr "Objekt ID"
 
-#: workflow_actions.py:37
+#: workflow_actions.py:38
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
 msgstr "Numerischer Identifikator des Objekts"
 
-#: workflow_actions.py:42
+#: workflow_actions.py:43 workflow_actions.py:158
 msgid "Roles"
 msgstr "Rollen"
 
-#: workflow_actions.py:44
+#: workflow_actions.py:45 workflow_actions.py:160
 msgid "Roles whose access will be modified."
 msgstr "Rollen deren Zugang bearbeitet wird."
 
-#: workflow_actions.py:51
+#: workflow_actions.py:52 workflow_actions.py:167
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr "Berechtigungen, die der Rolle für das ausgewählte Objekt erteilt oder entzogen werden."
 
-#: workflow_actions.py:59
+#: workflow_actions.py:60
 msgid "Grant access"
 msgstr "Zugriffsberechtigung erteilen"
 
-#: workflow_actions.py:142
+#: workflow_actions.py:143
 msgid "Revoke access"
 msgstr "Zugriffsberechtigung entziehen"
+
+#: workflow_actions.py:175
+msgid "Grant document access"
+msgstr ""
+
+#: workflow_actions.py:214
+msgid "Revoke document access"
+msgstr ""

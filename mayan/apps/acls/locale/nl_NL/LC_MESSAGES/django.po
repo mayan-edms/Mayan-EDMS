@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:16-0400\n"
-"PO-Revision-Date: 2019-06-13 06:26+0000\n"
-"Last-Translator: Martin Horseling <martin.horseling@gmail.com>\n"
+"POT-Creation-Date: 2019-06-15 03:35-0400\n"
+"PO-Revision-Date: 2019-06-15 07:48+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +48,7 @@ msgstr "Nieuwe authorisatielijst"
 msgid "Delete"
 msgstr "Verwijder"
 
-#: links.py:49 models.py:45 workflow_actions.py:48
+#: links.py:49 models.py:45 workflow_actions.py:49 workflow_actions.py:164
 msgid "Permissions"
 msgstr "Permissies"
 
@@ -159,40 +159,48 @@ msgid ""
 "menu."
 msgstr "Onbeschikbare of uitgeschakelde rechten zijn geërfd van een hoger niveau of direct geven aan de gebruikersrol en kunnen hier niet verwijderd worden. Geërfde rechten moeten verwijderd worden vanaf het hogere niveau of via de gebruikersrol via het Instellingen menu. "
 
-#: workflow_actions.py:25
+#: workflow_actions.py:26
 msgid "Object type"
 msgstr "Objecttype"
 
-#: workflow_actions.py:28
+#: workflow_actions.py:29
 msgid "Type of the object for which the access will be modified."
 msgstr "Objecttype waarvoor de toegang gewijzigd gaat worden"
 
-#: workflow_actions.py:34
+#: workflow_actions.py:35
 msgid "Object ID"
 msgstr "voorwerp identificatie"
 
-#: workflow_actions.py:37
+#: workflow_actions.py:38
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
 msgstr "Nummer van het voorwerp waarvoor de toegang wordt gewijzigd"
 
-#: workflow_actions.py:42
+#: workflow_actions.py:43 workflow_actions.py:158
 msgid "Roles"
 msgstr "Gebruikersrollen"
 
-#: workflow_actions.py:44
+#: workflow_actions.py:45 workflow_actions.py:160
 msgid "Roles whose access will be modified."
 msgstr "Gebruikersrol waarvoor de toegang wordt gewijzigd"
 
-#: workflow_actions.py:51
+#: workflow_actions.py:52 workflow_actions.py:167
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr "Permissies to geven/verwijderen naar/van de rol voor het geselecteerde object hierboven "
 
-#: workflow_actions.py:59
+#: workflow_actions.py:60
 msgid "Grant access"
 msgstr "Geef toegang"
 
-#: workflow_actions.py:142
+#: workflow_actions.py:143
 msgid "Revoke access"
 msgstr "Verwijder toegang"
+
+#: workflow_actions.py:175
+msgid "Grant document access"
+msgstr ""
+
+#: workflow_actions.py:214
+msgid "Revoke document access"
+msgstr ""

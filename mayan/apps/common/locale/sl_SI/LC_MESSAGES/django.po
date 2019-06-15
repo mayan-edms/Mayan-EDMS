@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:17-0400\n"
-"PO-Revision-Date: 2019-05-17 05:50+0000\n"
+"POT-Creation-Date: 2019-06-15 03:36-0400\n"
+"PO-Revision-Date: 2019-06-15 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
 "MIME-Version: 1.0\n"
@@ -53,47 +53,47 @@ msgstr ""
 msgid "None"
 msgstr "Brez"
 
-#: generics.py:148
+#: generics.py:149
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:153
+#: generics.py:154
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:286
+#: generics.py:287
 msgid "Add all"
 msgstr ""
 
-#: generics.py:295
+#: generics.py:296
 msgid "Add"
 msgstr ""
 
-#: generics.py:305
+#: generics.py:306
 msgid "Remove all"
 msgstr ""
 
-#: generics.py:314
+#: generics.py:315
 msgid "Remove"
 msgstr ""
 
-#: generics.py:519
+#: generics.py:521
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr ""
 
-#: generics.py:537
+#: generics.py:543
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr ""
 
-#: generics.py:550
+#: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
 msgstr ""
@@ -103,17 +103,17 @@ msgstr ""
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr ""
 
-#: generics.py:605
+#: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr ""
 
-#: generics.py:689
+#: generics.py:697
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr ""
 
-#: generics.py:700
+#: generics.py:708
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr ""
@@ -166,26 +166,26 @@ msgstr ""
 msgid "Tools"
 msgstr ""
 
-#: literals.py:10
+#: literals.py:13
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr ""
 
-#: literals.py:13
+#: literals.py:16
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr ""
 
-#: literals.py:31
+#: literals.py:34
 msgid "Days"
 msgstr ""
 
-#: literals.py:32
+#: literals.py:35
 msgid "Hours"
 msgstr ""
 
-#: literals.py:33
+#: literals.py:36
 msgid "Minutes"
 msgstr ""
 
@@ -326,7 +326,7 @@ msgid ""
 msgstr ""
 
 #: settings.py:41
-msgid "An integer specifying how many objects should be displayed per page."
+msgid "The number objects that will be displayed per page."
 msgstr ""
 
 #: settings.py:48
@@ -552,7 +552,7 @@ msgid ""
 "URL to use when referring to static files located in STATIC_ROOT. Example: "
 "\"/static/\" or \"http://static.example.com/\" If not None, this will be "
 "used as the base path for asset definitions (the Media class) and the "
-"staticfiles app.It must end in a slash if set to a non-empty value."
+"staticfiles app. It must end in a slash if set to a non-empty value."
 msgstr ""
 
 #: settings.py:358

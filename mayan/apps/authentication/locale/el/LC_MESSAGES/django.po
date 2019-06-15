@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:17-0400\n"
-"PO-Revision-Date: 2019-05-17 05:50+0000\n"
-"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>\n"
+"POT-Creation-Date: 2019-06-15 03:36-0400\n"
+"PO-Revision-Date: 2019-06-15 07:48+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,9 +63,9 @@ msgstr "Ελέγχει τονμηχανισμό που χρησιμοποιεί�
 
 #: settings.py:20
 msgid ""
-"Maximum time an user clicking the \"Remember me\" checkbox will remain "
-"logged in. Value is time in seconds."
-msgstr "Μέγιστος χρόνος που ένας χρήστης θα παραμείνει συνδεμένος αν έχει τσεκάρει την επιλογή \"Να με θυμάσαι\". Η τιμή είναι σε δευτερόλεπτα."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr ""
 
 #: templates/authentication/login.html:11
 msgid "Login"

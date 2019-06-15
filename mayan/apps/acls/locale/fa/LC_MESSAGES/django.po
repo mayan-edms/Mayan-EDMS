@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:16-0400\n"
-"PO-Revision-Date: 2019-05-05 01:43+0000\n"
+"POT-Creation-Date: 2019-06-15 03:35-0400\n"
+"PO-Revision-Date: 2019-06-15 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "دسترسی جدید"
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:49 models.py:45 workflow_actions.py:48
+#: links.py:49 models.py:45 workflow_actions.py:49 workflow_actions.py:164
 msgid "Permissions"
 msgstr "مجوزها"
 
@@ -158,40 +158,48 @@ msgid ""
 "menu."
 msgstr ""
 
-#: workflow_actions.py:25
+#: workflow_actions.py:26
 msgid "Object type"
 msgstr "نوع شی"
 
-#: workflow_actions.py:28
+#: workflow_actions.py:29
 msgid "Type of the object for which the access will be modified."
 msgstr "نوع شی که دسترسی به آن تغییر خواهد کرد."
 
-#: workflow_actions.py:34
+#: workflow_actions.py:35
 msgid "Object ID"
 msgstr "شناسه اشیاء"
 
-#: workflow_actions.py:37
+#: workflow_actions.py:38
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
 msgstr "شناسه عددی شئی که دسترسی به آن تغییر خواهد کرد."
 
-#: workflow_actions.py:42
+#: workflow_actions.py:43 workflow_actions.py:158
 msgid "Roles"
 msgstr "نقش ها"
 
-#: workflow_actions.py:44
+#: workflow_actions.py:45 workflow_actions.py:160
 msgid "Roles whose access will be modified."
 msgstr "نقش هایی که دسترسی به آنها تغییر خواهد کرد."
 
-#: workflow_actions.py:51
+#: workflow_actions.py:52 workflow_actions.py:167
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr "مجوز برای اعطای / لغو به / از نقش مورد انتخاب شده در بالا."
 
-#: workflow_actions.py:59
+#: workflow_actions.py:60
 msgid "Grant access"
 msgstr "دادن دسترسی"
 
-#: workflow_actions.py:142
+#: workflow_actions.py:143
 msgid "Revoke access"
 msgstr "لغو دسترسی"
+
+#: workflow_actions.py:175
+msgid "Grant document access"
+msgstr ""
+
+#: workflow_actions.py:214
+msgid "Revoke document access"
+msgstr ""

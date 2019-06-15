@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:22-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
+"POT-Creation-Date: 2019-06-15 03:40-0400\n"
+"PO-Revision-Date: 2019-06-15 07:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
 "MIME-Version: 1.0\n"
@@ -22,19 +22,19 @@ msgstr ""
 msgid "User management"
 msgstr "Quản lý người dùng"
 
-#: apps.py:96
+#: apps.py:96 search.py:36
 msgid "Group"
 msgstr ""
 
-#: apps.py:97 links.py:41 links.py:52 links.py:75 search.py:25 views.py:120
+#: apps.py:97 links.py:41 links.py:52 links.py:75 search.py:26 views.py:120
 msgid "Groups"
 msgstr ""
 
-#: apps.py:98 search.py:41
+#: apps.py:98 search.py:42
 msgid "Name"
 msgstr "Tên"
 
-#: apps.py:104 models.py:18
+#: apps.py:104 models.py:18 search.py:14
 msgid "User"
 msgstr "Người dùng"
 
@@ -46,15 +46,15 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: apps.py:109 search.py:19
+#: apps.py:109 search.py:20
 msgid "First name"
 msgstr ""
 
-#: apps.py:110 search.py:28
+#: apps.py:110 search.py:29
 msgid "Last name"
 msgstr ""
 
-#: apps.py:111 search.py:22
+#: apps.py:111 search.py:23
 msgid "Email"
 msgstr "Email"
 
@@ -170,7 +170,7 @@ msgstr "Sửa  người dùng"
 msgid "View existing users"
 msgstr "Xem người dùng"
 
-#: search.py:31
+#: search.py:32
 msgid "username"
 msgstr ""
 
@@ -291,7 +291,7 @@ msgstr ""
 
 #: views.py:298
 msgid ""
-"User accounts can be create from this view. After creating an user account "
+"User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
 msgstr ""
 

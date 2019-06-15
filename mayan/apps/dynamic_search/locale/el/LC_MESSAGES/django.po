@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:19-0400\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-06-15 03:38-0400\n"
+"PO-Revision-Date: 2019-06-15 07:49+0000\n"
+"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "Δυναμική αναζήτηση"
 
-#: classes.py:98
+#: classes.py:100
 msgid "No search model matching the query"
 msgstr "Δεν βρέθηκε μοντέλο αναζήτησης που να ταιριάζει στο ερώτημα"
 
@@ -35,21 +35,26 @@ msgid ""
 "unchecked results that match at least one field will be returned."
 msgstr "Αν επιλεχθεί, θα επιστραφούν μόνο αποτελέσματα που ταιριάζουν με όλα τα πεδία. Αν δεν επιλεχθεί, θα επιστραφούν αποτελέσματα που ταιριάζουν σε τουλάχιστον ένα πεδίο."
 
-#: forms.py:29
+#: forms.py:29 templates/dynamic_search/search_box.html:21
 msgid "Search terms"
 msgstr "Όροι αναζήτησης"
 
-#: links.py:8 views.py:56 views.py:69
+#: links.py:8 templates/dynamic_search/search_box.html:23 views.py:59
+#: views.py:72
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: links.py:11 views.py:83
+#: links.py:11 views.py:86
 msgid "Advanced search"
 msgstr "Προχωρημένη αναζήτηση"
 
 #: links.py:15
 msgid "Search again"
 msgstr "Αναζήτηση πάλι"
+
+#: templates/dynamic_search/search_box.html:24
+msgid "Advanced"
+msgstr "Προχωρημένα"
 
 #: views.py:25
 msgid "Try again using different terms. "
@@ -64,7 +69,7 @@ msgstr ""
 msgid "Search results for: %s"
 msgstr "Αποτελέσματα αναζήτησης για: %s"
 
-#: views.py:71
+#: views.py:74
 #, python-format
 msgid "Search for: %s"
 msgstr "Αναζήτηση για: %s"

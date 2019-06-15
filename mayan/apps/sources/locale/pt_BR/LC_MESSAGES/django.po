@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:21-0400\n"
+"POT-Creation-Date: 2019-06-15 03:40-0400\n"
 "PO-Revision-Date: 2019-05-05 06:26+0000\n"
 "Last-Translator: Aline Freitas <aline@alinefreitas.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -191,7 +191,7 @@ msgstr "formulário web"
 msgid "Staging folder"
 msgstr "Pasta teste"
 
-#: literals.py:64 models/watch_folder_sources.py:46
+#: literals.py:64 models/watch_folder_sources.py:48
 msgid "Watch folder"
 msgstr "Pasta Temporária"
 
@@ -437,7 +437,7 @@ msgstr ""
 msgid "Server side filesystem path."
 msgstr "Caminho do sistema do servidor"
 
-#: models/staging_folder_sources.py:42 models/watch_folder_sources.py:33
+#: models/staging_folder_sources.py:42 models/watch_folder_sources.py:35
 msgid "Folder path"
 msgstr "Caminho da Pasta"
 
@@ -483,21 +483,21 @@ msgstr "Error removendo arquivo de teste; %s"
 msgid "Unable get list of staging files: %s"
 msgstr "Unable get list of staging files: %s"
 
-#: models/watch_folder_sources.py:32
+#: models/watch_folder_sources.py:34
 msgid "Server side filesystem path to scan for files."
 msgstr ""
 
-#: models/watch_folder_sources.py:37
+#: models/watch_folder_sources.py:39
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
 msgstr ""
 
-#: models/watch_folder_sources.py:40
+#: models/watch_folder_sources.py:42
 msgid "Include subdirectories?"
 msgstr ""
 
-#: models/watch_folder_sources.py:47
+#: models/watch_folder_sources.py:49
 msgid "Watch folders"
 msgstr "Pastas Temporárias"
 

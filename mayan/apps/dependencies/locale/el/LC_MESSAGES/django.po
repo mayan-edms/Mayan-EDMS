@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:18-0400\n"
+"POT-Creation-Date: 2019-06-15 03:37-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2019\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Version"
 msgstr "Έκδοση"
 
-#: apps.py:59 classes.py:173 classes.py:804
+#: apps.py:59 classes.py:173 classes.py:809
 msgid "Environment"
 msgstr ""
 
@@ -64,7 +64,7 @@ msgstr ""
 #: classes.py:65
 msgid ""
 "Environment used for building distributable packages of the software. End "
-"users can ignore missing depedencies under this environment."
+"users can ignore missing dependencies under this environment."
 msgstr ""
 
 #: classes.py:68
@@ -74,7 +74,7 @@ msgstr ""
 #: classes.py:72
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
-"missing depedencies under this environment."
+"missing dependencies under this environment."
 msgstr ""
 
 #: classes.py:74
@@ -83,8 +83,8 @@ msgstr ""
 
 #: classes.py:78
 msgid ""
-"Normal environment for end users. A missing depedencies under this "
-"environment will result issues and error during normal use."
+"Normal environment for end users. A missing dependency under this "
+"environment will result in issues and errors during normal use."
 msgstr ""
 
 #: classes.py:80
@@ -152,84 +152,84 @@ msgstr ""
 msgid "Patching files... "
 msgstr ""
 
-#: classes.py:436
+#: classes.py:440
 msgid "Executables that are called directly by the code."
 msgstr ""
 
-#: classes.py:438
+#: classes.py:442
 msgid "Binary"
 msgstr ""
 
-#: classes.py:455
+#: classes.py:459
 msgid ""
-"Javascript libraries downloaded the from NPM registry and used for front-end"
+"JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
 msgstr ""
 
-#: classes.py:458
-msgid "Javascript"
+#: classes.py:462
+msgid "JavaScript"
 msgstr ""
 
-#: classes.py:492 classes.py:725
+#: classes.py:496 classes.py:729
 msgid "Downloading... "
 msgstr ""
 
-#: classes.py:495
+#: classes.py:499
 msgid "Verifying... "
 msgstr ""
 
-#: classes.py:498 classes.py:728
+#: classes.py:502 classes.py:732
 msgid "Extracting... "
 msgstr ""
 
-#: classes.py:677
+#: classes.py:681
 msgid "Python packages downloaded from PyPI."
 msgstr ""
 
-#: classes.py:679
+#: classes.py:683
 msgid "Python"
 msgstr ""
 
-#: classes.py:706
+#: classes.py:710
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr ""
 
-#: classes.py:708
+#: classes.py:712
 msgid "Google font"
 msgstr ""
 
-#: classes.py:786
+#: classes.py:791
 msgid "Declared in app"
 msgstr ""
 
-#: classes.py:787
-msgid "Show depedencies by the app that declared them."
+#: classes.py:792
+msgid "Show dependencies by the app that declared them."
 msgstr ""
 
-#: classes.py:791
+#: classes.py:796
 msgid "Class"
 msgstr ""
 
-#: classes.py:792
+#: classes.py:797
 msgid ""
-"Show the different classes of depedencies. Classes are usually divided by "
-"language or the file types of the depedency."
+"Show the different classes of dependencies. Classes are usually divided by "
+"language or the file types of the dependency."
 msgstr ""
 
-#: classes.py:797
+#: classes.py:802
 msgid "State"
 msgstr ""
 
-#: classes.py:798
+#: classes.py:803
 msgid ""
-"Show the different states of the depedencies. True means that the "
-"depedencies is installed and is of a correct version. False means the "
-"depedencies is missing or an incorrect version is present."
+"Show the different states of the dependencies. True means that the "
+"dependencies is installed and is of a correct version. False means the "
+"dependencies is missing or an incorrect version is present."
 msgstr ""
 
-#: classes.py:805
+#: classes.py:810
 msgid ""
-"Depedencies required for an environment might not be required for another. "
+"Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
 

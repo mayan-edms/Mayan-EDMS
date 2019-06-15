@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:19-0400\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
+"POT-Creation-Date: 2019-06-15 03:38-0400\n"
+"PO-Revision-Date: 2019-06-15 07:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "Búsqueda dinámica "
 
-#: classes.py:98
+#: classes.py:100
 msgid "No search model matching the query"
 msgstr "Ningún modelo de búsqueda que coincida con la consulta"
 
@@ -39,21 +39,26 @@ msgid ""
 "unchecked results that match at least one field will be returned."
 msgstr "Cuando se selecciona, sólo se devolverán los resultados que coincidan con todos los campos. Si no se selecciona los resultados que coincidan con al menos un campo se devolverá."
 
-#: forms.py:29
+#: forms.py:29 templates/dynamic_search/search_box.html:21
 msgid "Search terms"
 msgstr "Términos de búsqueda"
 
-#: links.py:8 views.py:56 views.py:69
+#: links.py:8 templates/dynamic_search/search_box.html:23 views.py:59
+#: views.py:72
 msgid "Search"
 msgstr "Búsqueda"
 
-#: links.py:11 views.py:83
+#: links.py:11 views.py:86
 msgid "Advanced search"
 msgstr "Búsqueda avanzada"
 
 #: links.py:15
 msgid "Search again"
 msgstr "Volver a buscar"
+
+#: templates/dynamic_search/search_box.html:24
+msgid "Advanced"
+msgstr "Avanzada"
 
 #: views.py:25
 msgid "Try again using different terms. "
@@ -68,7 +73,7 @@ msgstr "No hay resultados de búsqueda"
 msgid "Search results for: %s"
 msgstr "Resultados de la búsqueda para: %s"
 
-#: views.py:71
+#: views.py:74
 #, python-format
 msgid "Search for: %s"
 msgstr "Búsqueda para: %s"

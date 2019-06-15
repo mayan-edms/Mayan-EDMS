@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:21-0400\n"
+"POT-Creation-Date: 2019-06-15 03:40-0400\n"
 "PO-Revision-Date: 2019-05-26 21:45+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -196,7 +196,7 @@ msgstr "Webformular"
 msgid "Staging folder"
 msgstr "Staging-Ordner"
 
-#: literals.py:64 models/watch_folder_sources.py:46
+#: literals.py:64 models/watch_folder_sources.py:48
 msgid "Watch folder"
 msgstr "Beobachtungs-Ordner"
 
@@ -442,7 +442,7 @@ msgstr "Fehler beim Scannen; %s"
 msgid "Server side filesystem path."
 msgstr "Pfad auf dem Server."
 
-#: models/staging_folder_sources.py:42 models/watch_folder_sources.py:33
+#: models/staging_folder_sources.py:42 models/watch_folder_sources.py:35
 msgid "Folder path"
 msgstr "Ordnerpfad"
 
@@ -488,21 +488,21 @@ msgstr "Fehler beim Löschen von Staging-Datei: %s"
 msgid "Unable get list of staging files: %s"
 msgstr "Die Liste der Arbeitsdateien kann nicht ermittelt werden: %s"
 
-#: models/watch_folder_sources.py:32
+#: models/watch_folder_sources.py:34
 msgid "Server side filesystem path to scan for files."
 msgstr "Serverseitiger Pfad, der auf Dateien untersucht wird."
 
-#: models/watch_folder_sources.py:37
+#: models/watch_folder_sources.py:39
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
 msgstr "Bei Aktivierung werden auch die Unterverzeichnisse des Pfads durchsucht."
 
-#: models/watch_folder_sources.py:40
+#: models/watch_folder_sources.py:42
 msgid "Include subdirectories?"
 msgstr "Unterverzeichnisse einschließen"
 
-#: models/watch_folder_sources.py:47
+#: models/watch_folder_sources.py:49
 msgid "Watch folders"
 msgstr "Beobachtungs-Ordner"
 

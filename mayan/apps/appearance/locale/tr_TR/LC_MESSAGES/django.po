@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:16-0400\n"
-"PO-Revision-Date: 2019-06-09 07:22+0000\n"
+"POT-Creation-Date: 2019-06-15 03:35-0400\n"
+"PO-Revision-Date: 2019-06-15 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
@@ -264,22 +264,6 @@ msgstr "Başlarken"
 #: templates/appearance/home.html:29
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Maya EDMS'i tam olarak kullanabilmeniz için aşağıdakilere ihtiyacınız vardır:"
-
-#: templates/appearance/home.html:50
-msgid "Search pages"
-msgstr "Sayfalarda ara"
-
-#: templates/appearance/home.html:52 templates/appearance/home.html:62
-msgid "Search"
-msgstr "Arama"
-
-#: templates/appearance/home.html:53 templates/appearance/home.html:63
-msgid "Advanced"
-msgstr "İleri düzey"
-
-#: templates/appearance/home.html:60
-msgid "Search documents"
-msgstr "Belgeleri ara"
 
 #: templates/appearance/main_menu.html:10
 msgid "Toggle navigation"

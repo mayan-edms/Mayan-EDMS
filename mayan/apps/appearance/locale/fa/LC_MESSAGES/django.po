@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:16-0400\n"
-"PO-Revision-Date: 2019-06-09 07:22+0000\n"
+"POT-Creation-Date: 2019-06-15 03:35-0400\n"
+"PO-Revision-Date: 2019-06-15 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -263,22 +263,6 @@ msgstr "شروع کردن"
 #: templates/appearance/home.html:29
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "قبل از اینکه بتوانید به طور کامل از EDMS مایان استفاده کنید، به موارد زیر نیاز دارید:"
-
-#: templates/appearance/home.html:50
-msgid "Search pages"
-msgstr "صفحات جستجو"
-
-#: templates/appearance/home.html:52 templates/appearance/home.html:62
-msgid "Search"
-msgstr "جستجو"
-
-#: templates/appearance/home.html:53 templates/appearance/home.html:63
-msgid "Advanced"
-msgstr "پیشرفته"
-
-#: templates/appearance/home.html:60
-msgid "Search documents"
-msgstr "جستجو اسناد"
 
 #: templates/appearance/main_menu.html:10
 msgid "Toggle navigation"

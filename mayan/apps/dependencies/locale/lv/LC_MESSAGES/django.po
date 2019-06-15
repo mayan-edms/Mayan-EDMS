@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:18-0400\n"
+"POT-Creation-Date: 2019-06-15 03:37-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -53,7 +53,7 @@ msgstr "Deklarēja"
 msgid "Version"
 msgstr "Versija"
 
-#: apps.py:59 classes.py:173 classes.py:804
+#: apps.py:59 classes.py:173 classes.py:809
 msgid "Environment"
 msgstr "Vide"
 
@@ -64,10 +64,8 @@ msgstr "Pārbaudiet"
 #: classes.py:65
 msgid ""
 "Environment used for building distributable packages of the software. End "
-"users can ignore missing depedencies under this environment."
+"users can ignore missing dependencies under this environment."
 msgstr ""
-"Vide, ko izmanto programmatūras sadalāmo iepakojumu veidošanai. "
-"Galalietotāji var ignorēt trūkstošās atkāpes šajā vidē."
 
 #: classes.py:68
 msgid "Build"
@@ -76,10 +74,8 @@ msgstr "Būvēt"
 #: classes.py:72
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
-"missing depedencies under this environment."
+"missing dependencies under this environment."
 msgstr ""
-"Vide, ko izstrādātāji izmanto, lai veiktu kodu izmaiņas. Galalietotāji var "
-"ignorēt trūkstošās atkāpes šajā vidē."
 
 #: classes.py:74
 msgid "Development"
@@ -87,11 +83,9 @@ msgstr "Attīstība"
 
 #: classes.py:78
 msgid ""
-"Normal environment for end users. A missing depedencies under this "
-"environment will result issues and error during normal use."
+"Normal environment for end users. A missing dependency under this "
+"environment will result in issues and errors during normal use."
 msgstr ""
-"Normāla vide galalietotājiem. Šajā vidē trūkstošās atkāpes radīs problēmas "
-"un kļūdas normālas lietošanas laikā."
 
 #: classes.py:80
 msgid "Production"
@@ -161,94 +155,86 @@ msgstr "Nav precizēts"
 msgid "Patching files... "
 msgstr ""
 
-#: classes.py:436
+#: classes.py:440
 msgid "Executables that are called directly by the code."
 msgstr "Izpildāms, ko tieši sauc par kodu."
 
-#: classes.py:438
+#: classes.py:442
 msgid "Binary"
 msgstr "Binārs"
 
-#: classes.py:455
+#: classes.py:459
 msgid ""
-"Javascript libraries downloaded the from NPM registry and used for front-end"
+"JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
 msgstr ""
-"Javascript bibliotēkas lejupielādētas no NPM reģistra un tiek izmantotas "
-"front-end funkcionalitātei."
 
-#: classes.py:458
-msgid "Javascript"
-msgstr "Javascript"
+#: classes.py:462
+msgid "JavaScript"
+msgstr ""
 
-#: classes.py:492 classes.py:725
+#: classes.py:496 classes.py:729
 msgid "Downloading... "
 msgstr "Notiek lejupielāde ..."
 
-#: classes.py:495
+#: classes.py:499
 msgid "Verifying... "
 msgstr "Verificēšana ..."
 
-#: classes.py:498 classes.py:728
+#: classes.py:502 classes.py:732
 msgid "Extracting... "
 msgstr "Izvilkšana ..."
 
-#: classes.py:677
+#: classes.py:681
 msgid "Python packages downloaded from PyPI."
 msgstr "Python paketes lejupielādētas no PyPI."
 
-#: classes.py:679
+#: classes.py:683
 msgid "Python"
 msgstr "Python"
 
-#: classes.py:706
+#: classes.py:710
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr ""
 
-#: classes.py:708
+#: classes.py:712
 msgid "Google font"
 msgstr ""
 
-#: classes.py:786
+#: classes.py:791
 msgid "Declared in app"
 msgstr "Paziņots lietotnē"
 
-#: classes.py:787
-msgid "Show depedencies by the app that declared them."
-msgstr "Rādīt lietojumprogrammas, kas tos deklarējušas."
+#: classes.py:792
+msgid "Show dependencies by the app that declared them."
+msgstr ""
 
-#: classes.py:791
+#: classes.py:796
 msgid "Class"
 msgstr "Klase"
 
-#: classes.py:792
-msgid ""
-"Show the different classes of depedencies. Classes are usually divided by "
-"language or the file types of the depedency."
-msgstr ""
-"Parādiet dažādās depedences klases. Klases parasti tiek sadalītas pēc "
-"valodas vai depedences faila tipiem."
-
 #: classes.py:797
+msgid ""
+"Show the different classes of dependencies. Classes are usually divided by "
+"language or the file types of the dependency."
+msgstr ""
+
+#: classes.py:802
 msgid "State"
 msgstr "Valsts"
 
-#: classes.py:798
+#: classes.py:803
 msgid ""
-"Show the different states of the depedencies. True means that the "
-"depedencies is installed and is of a correct version. False means the "
-"depedencies is missing or an incorrect version is present."
+"Show the different states of the dependencies. True means that the "
+"dependencies is installed and is of a correct version. False means the "
+"dependencies is missing or an incorrect version is present."
 msgstr ""
-"Parādiet dažādos depedences stāvokļus. True nozīmē, ka depedences ir "
-"uzstādītas un ir pareizas. Nepareizi ir trūkumi vai nepareiza versija."
 
-#: classes.py:805
+#: classes.py:810
 msgid ""
-"Depedencies required for an environment might not be required for another. "
+"Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
-"Vajadzības, kas nepieciešamas videi, nav nepieciešamas citai. Vides paraugi:"
-" ražošana, attīstība."
 
 #: links.py:11 views.py:35
 msgid "Check for updates"

@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:17-0400\n"
-"PO-Revision-Date: 2019-05-17 18:46+0000\n"
-"Last-Translator: Harald Ersch\n"
+"POT-Creation-Date: 2019-06-15 03:36-0400\n"
+"PO-Revision-Date: 2019-06-15 07:48+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,47 +55,47 @@ msgstr "Selecţie"
 msgid "None"
 msgstr "Nici unul"
 
-#: generics.py:148
+#: generics.py:149
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "Selectați intrările pentru a fi eliminate. Țineți Control pentru a selecta mai multe intrări. După finalizarea selecției, faceți clic pe butonul de mai jos sau faceți dublu clic pe listă pentru a activa acțiunea."
 
-#: generics.py:153
+#: generics.py:154
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "Selectați intrările pentru a fi adăugate. Țineți Control pentru a selecta mai multe intrări. După finalizarea selecției, faceți clic pe butonul de mai jos sau faceți dublu clic pe listă pentru a activa acțiunea."
 
-#: generics.py:286
+#: generics.py:287
 msgid "Add all"
 msgstr "Adaugă tot setul"
 
-#: generics.py:295
+#: generics.py:296
 msgid "Add"
 msgstr "Adăugți"
 
-#: generics.py:305
+#: generics.py:306
 msgid "Remove all"
 msgstr "Elimină tot setul"
 
-#: generics.py:314
+#: generics.py:315
 msgid "Remove"
 msgstr "Eliminați"
 
-#: generics.py:519
+#: generics.py:521
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr "Eroare de date duplicat: %(error)s"
 
-#: generics.py:537
+#: generics.py:543
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "Obiectul tip %(object)s nu a fost creat, eroare: %(error)s"
 
-#: generics.py:550
+#: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "Obiectul tip %(object)s a fost creat cu succes."
@@ -105,17 +105,17 @@ msgstr "Obiectul tip %(object)s a fost creat cu succes."
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "Obiectul tip %(object)s nu a fost șters, eroare: %(error)s."
 
-#: generics.py:605
+#: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "Obiectul tip %(object)s a fost șters cu succes."
 
-#: generics.py:689
+#: generics.py:697
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "Obiectul tip %(object)s nu a fost actualizat, eroare: %(error)s."
 
-#: generics.py:700
+#: generics.py:708
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "Obiectul tip %(object)s a fost actualizat cu succes."
@@ -168,26 +168,26 @@ msgstr "Suport tehnic"
 msgid "Tools"
 msgstr "Unelte"
 
-#: literals.py:10
+#: literals.py:13
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Această caracteristică a fost depreciată și va fi eliminată într-o versiune viitoare."
 
-#: literals.py:13
+#: literals.py:16
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "Backendul bazei de date este setat să utilizeze SQLite. SQLite ar trebui folosit numai pentru dezvoltare și testare, nu pentru producție."
 
-#: literals.py:31
+#: literals.py:34
 msgid "Days"
 msgstr "Zile"
 
-#: literals.py:32
+#: literals.py:35
 msgid "Hours"
 msgstr "Ore"
 
-#: literals.py:33
+#: literals.py:36
 msgid "Minutes"
 msgstr "Minute"
 
@@ -328,8 +328,8 @@ msgid ""
 msgstr "Numele afișării atașate ancorei de marcă din meniul principal. Aceasta este și perspectiva la care utilizatorii vor fi redirecționați după conectare."
 
 #: settings.py:41
-msgid "An integer specifying how many objects should be displayed per page."
-msgstr "Un număr întreg ce specifică câte obiecte ar trebui să fie afișate pe pagină."
+msgid "The number objects that will be displayed per page."
+msgstr ""
 
 #: settings.py:48
 msgid "Enable error logging outside of the system error logging capabilities."
@@ -554,8 +554,8 @@ msgid ""
 "URL to use when referring to static files located in STATIC_ROOT. Example: "
 "\"/static/\" or \"http://static.example.com/\" If not None, this will be "
 "used as the base path for asset definitions (the Media class) and the "
-"staticfiles app.It must end in a slash if set to a non-empty value."
-msgstr "Adresa URL care trebuie utilizată atunci când se face referire la fișiere statice situate în STATIC_ROOT. Exemplu: \"/ static /\" sau \"http://static.example.com/\" Dacă nu este niciunul, acesta va fi folosit ca și cale de bază pentru definirea activelor (clasa Media) și aplicația staticfiles. Conține slash dacă este setat la o valoare non-vidă."
+"staticfiles app. It must end in a slash if set to a non-empty value."
+msgstr ""
 
 #: settings.py:358
 msgid ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 14:14-0400\n"
+"POT-Creation-Date: 2019-06-15 03:37-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,7 +115,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: handlers.py:54
+#: handlers.py:62
 #, python-format
 msgid "Event trigger: %s"
 msgstr ""
@@ -473,7 +473,7 @@ msgid "There are no workflows"
 msgstr ""
 
 #: views/workflow_proxy_views.py:94
-msgid "There are documents in this workflow state"
+msgid "There are no documents in this workflow state"
 msgstr ""
 
 #: views/workflow_proxy_views.py:97

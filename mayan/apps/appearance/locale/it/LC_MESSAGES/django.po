@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:16-0400\n"
-"PO-Revision-Date: 2019-06-13 17:09+0000\n"
-"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>\n"
+"POT-Creation-Date: 2019-06-15 03:35-0400\n"
+"PO-Revision-Date: 2019-06-15 07:48+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -265,22 +265,6 @@ msgstr "Iniziare"
 #: templates/appearance/home.html:29
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Prima di usare completamente Mayan EDMS hai bisogno di:"
-
-#: templates/appearance/home.html:50
-msgid "Search pages"
-msgstr "Cerca pagine"
-
-#: templates/appearance/home.html:52 templates/appearance/home.html:62
-msgid "Search"
-msgstr "Cerca"
-
-#: templates/appearance/home.html:53 templates/appearance/home.html:63
-msgid "Advanced"
-msgstr "Avanzato"
-
-#: templates/appearance/home.html:60
-msgid "Search documents"
-msgstr "Cerca documenti"
 
 #: templates/appearance/main_menu.html:10
 msgid "Toggle navigation"

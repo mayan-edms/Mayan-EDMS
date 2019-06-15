@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:19-0400\n"
-"PO-Revision-Date: 2019-06-09 07:23+0000\n"
+"POT-Creation-Date: 2019-06-15 03:38-0400\n"
+"PO-Revision-Date: 2019-06-15 07:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:109 apps.py:291 events.py:7 menus.py:10
+#: apps.py:109 apps.py:296 events.py:7 menus.py:10
 #: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:14
 #: statistics.py:233
 msgid "Documents"
@@ -50,11 +50,11 @@ msgstr "Versiju mime tips"
 msgid "Versions timestamp"
 msgstr "Versiju laika zīmogs"
 
-#: apps.py:241 apps.py:270 apps.py:275 apps.py:311 apps.py:328
+#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:333
 msgid "Thumbnail"
 msgstr "Sīktēls"
 
-#: apps.py:249 apps.py:333 forms/document_forms.py:182 links.py:83
+#: apps.py:249 apps.py:338 forms/document_forms.py:182 links.py:83
 msgid "Pages"
 msgstr "Lapas"
 
@@ -62,7 +62,7 @@ msgstr "Lapas"
 msgid "Duplicates"
 msgstr "Dublikāti"
 
-#: apps.py:279
+#: apps.py:284
 msgid "Type"
 msgstr "Tips"
 
@@ -166,7 +166,7 @@ msgstr "Veic faila paplašinājumu un pārvieto to līdz faila nosaukuma beigām
 msgid "Date added"
 msgstr "Pievienošanas datums"
 
-#: forms/document_forms.py:151 models/document_models.py:41 search.py:29
+#: forms/document_forms.py:151 models/document_models.py:41 search.py:43
 msgid "UUID"
 msgstr "UUID"
 
@@ -199,7 +199,7 @@ msgid "File path in storage"
 msgstr "Failu ceļš glabāšanā"
 
 #: forms/document_forms.py:181 models/document_version_models.py:111
-#: search.py:32 search.py:56
+#: search.py:47 search.py:72
 msgid "Checksum"
 msgstr "Kontrolsumma"
 
@@ -215,7 +215,7 @@ msgstr ""
 
 #: forms/document_type_forms.py:42 models/document_models.py:45
 #: models/document_type_models.py:60 models/document_type_models.py:146
-#: search.py:21 search.py:43
+#: search.py:35 search.py:59
 msgid "Document type"
 msgstr "Dokumenta veids"
 
@@ -421,9 +421,9 @@ msgstr "Visas lapas"
 
 #: models/document_models.py:39
 msgid ""
-"UUID of a document, universally Unique ID. An unique identifiergenerated for"
-" each document."
-msgstr "Dokumenta UUID, universāli unikāls ID. Katram dokumentam ir unikāls identifikators."
+"UUID of a document, universally Unique ID. An unique identifier generated "
+"for each document."
+msgstr ""
 
 #: models/document_models.py:49
 msgid "The name of the document."
@@ -431,7 +431,7 @@ msgstr "Dokumenta nosaukums."
 
 #: models/document_models.py:49 models/document_page_models.py:259
 #: models/document_type_models.py:32 models/document_type_models.py:149
-#: search.py:26 search.py:50
+#: search.py:40 search.py:66
 msgid "Label"
 msgstr "Etiķete"
 
@@ -439,7 +439,7 @@ msgstr "Etiķete"
 msgid "An optional short text describing a document."
 msgstr "Izvēles īss teksts, kas apraksta dokumentu."
 
-#: models/document_models.py:54 search.py:27 search.py:53
+#: models/document_models.py:54 search.py:41 search.py:69
 msgid "Description"
 msgstr "Apraksts"
 
@@ -599,7 +599,7 @@ msgid ""
 " Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr "Dokumenta versijas fails ir mimetype. MIME veidi ir standarta veids, kā aprakstīt faila formātu, šajā gadījumā dokumenta faila formātu. Daži piemēri: &quot;text / plain&quot; vai &quot;image / jpeg&quot;."
 
-#: models/document_version_models.py:98 search.py:24 search.py:47
+#: models/document_version_models.py:98 search.py:38 search.py:63
 msgid "MIME type"
 msgstr "MIME tips"
 

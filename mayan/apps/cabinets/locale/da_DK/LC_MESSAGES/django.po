@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:17-0400\n"
+"POT-Creation-Date: 2019-06-15 03:36-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Rasmus Kierudsen <tebrasso@gmail.com>, 2018\n"
 "Language-Team: Danish (Denmark) (https://www.transifex.com/rosarior/teams/13584/da_DK/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:50 apps.py:111 apps.py:119 apps.py:122 events.py:7 forms.py:16
-#: links.py:24 menus.py:16 models.py:47 permissions.py:7 views.py:159
+#: links.py:24 menus.py:16 models.py:47 permissions.py:7 views.py:163
 msgid "Cabinets"
 msgstr "Samlesager"
 
@@ -147,111 +147,111 @@ msgstr "Navigation:"
 msgid "Add new level to: %s"
 msgstr "Tilføj nyt lag til: %s"
 
-#: views.py:83
+#: views.py:87
 #, python-format
 msgid "Delete the cabinet: %s?"
 msgstr "Slet samlesagen: %s?"
 
-#: views.py:118
+#: views.py:122
 msgid ""
 "Cabinet levels can contain documents or other cabinet sub levels. To add "
 "documents to a cabinet, select the cabinet view of a document view."
 msgstr ""
 
-#: views.py:122
+#: views.py:126
 msgid "This cabinet level is empty"
 msgstr "Dette samlesagniveau er tomt"
 
-#: views.py:125
+#: views.py:129
 #, python-format
 msgid "Details of cabinet: %s"
 msgstr "Detaljer om samlesagen: %s"
 
-#: views.py:145
+#: views.py:149
 #, python-format
 msgid "Edit cabinet: %s"
 msgstr "Rediger samlesag: %s"
 
-#: views.py:165
+#: views.py:169
 msgid ""
 "Cabinets are a multi-level method to organize documents. Each cabinet can "
 "contain documents as well as other sub level cabinets."
 msgstr ""
 
-#: views.py:169
+#: views.py:173
 msgid "No cabinets available"
 msgstr "Ingen samlesager tilgængelige"
 
-#: views.py:201
+#: views.py:205
 msgid "Documents can be added to many cabinets."
 msgstr "Dokumenter kan tilføjes flere samlesager"
 
-#: views.py:204
+#: views.py:208
 msgid "This document is not in any cabinet"
 msgstr "Dette dokument findes ikke i en samlesag"
 
-#: views.py:207
+#: views.py:211
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr ""
 
-#: views.py:219
+#: views.py:223
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document"
 msgstr ""
 
-#: views.py:222
+#: views.py:226
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:229
+#: views.py:233
 msgid "Add"
 msgstr "Tilføj"
 
-#: views.py:244
+#: views.py:248
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr "Tilføj dokument \"%s\" til samlesager"
 
-#: views.py:255
+#: views.py:259
 msgid "Cabinets to which the selected documents will be added."
 msgstr ""
 
-#: views.py:284
+#: views.py:288
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr ""
 
-#: views.py:296
+#: views.py:300
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr ""
 
-#: views.py:309
+#: views.py:313
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document"
 msgstr ""
 
-#: views.py:312
+#: views.py:316
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:319
+#: views.py:323
 msgid "Remove"
 msgstr "Fjern"
 
-#: views.py:345
+#: views.py:349
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Samlesager hvorfra dokumentet bliver fjernet"
 
-#: views.py:373
+#: views.py:377
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr "Dokumentet: %(document)s er ikke i samlesagen: %(cabinet)s."
 
-#: views.py:385
+#: views.py:389
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Dokumentet: %(document)s er fjernet fra samlesagen: %(cabinet)s"

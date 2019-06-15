@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:18-0400\n"
-"PO-Revision-Date: 2019-06-09 07:23+0000\n"
-"Last-Translator: yulin Gong <540538248@qq.com>\n"
+"POT-Creation-Date: 2019-06-15 03:37-0400\n"
+"PO-Revision-Date: 2019-06-15 07:49+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -116,7 +116,7 @@ msgstr "否"
 msgid "Yes"
 msgstr "是"
 
-#: handlers.py:54
+#: handlers.py:62
 #, python-format
 msgid "Event trigger: %s"
 msgstr "事件触发器：%s"
@@ -475,8 +475,8 @@ msgid "There are no workflows"
 msgstr "没有工作流"
 
 #: views/workflow_proxy_views.py:94
-msgid "There are documents in this workflow state"
-msgstr "此工作流状态中有文档"
+msgid "There are no documents in this workflow state"
+msgstr ""
 
 #: views/workflow_proxy_views.py:97
 #, python-format

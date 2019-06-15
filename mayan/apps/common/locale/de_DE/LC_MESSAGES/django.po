@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:17-0400\n"
-"PO-Revision-Date: 2019-05-26 21:44+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
+"POT-Creation-Date: 2019-06-15 03:36-0400\n"
+"PO-Revision-Date: 2019-06-15 07:48+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,47 +62,47 @@ msgstr "Auswahl"
 msgid "None"
 msgstr "Keine"
 
-#: generics.py:148
+#: generics.py:149
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "Wählen Sie Einträge aus, die entfernt werden sollen. Mit der Steuerungstaste können mehrere Einträge ausgewählt werden. Wenn die Auswahl vollständig ist, klicken Sie den folgenden Button oder doppelklicken Sie auf die Liste um die Aktion durchzuführen."
 
-#: generics.py:153
+#: generics.py:154
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "Wählen Sie Einträge aus, die hinzugefügt werden sollen. Mit der Steuerungstaste können mehrere Einträge ausgewählt werden. Wenn die Auswahl vollständig ist, klicken Sie den folgenden Button oder doppelklicken Sie auf die Liste um die Aktion durchzuführen."
 
-#: generics.py:286
+#: generics.py:287
 msgid "Add all"
 msgstr "Alle hinzufügen"
 
-#: generics.py:295
+#: generics.py:296
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: generics.py:305
+#: generics.py:306
 msgid "Remove all"
 msgstr "Alle entfernen"
 
-#: generics.py:314
+#: generics.py:315
 msgid "Remove"
 msgstr "Entfernen"
 
-#: generics.py:519
+#: generics.py:521
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr "Duplizierte Daten Fehler: %(error)s"
 
-#: generics.py:537
+#: generics.py:543
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s nicht erstellt, Fehler: %(error)s"
 
-#: generics.py:550
+#: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s erfolgreich erstellt."
@@ -112,17 +112,17 @@ msgstr "%(object)s erfolgreich erstellt."
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s nicht gelöscht, Fehler: %(error)s."
 
-#: generics.py:605
+#: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s erfolgreich gelöscht."
 
-#: generics.py:689
+#: generics.py:697
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s nicht aktualisiert, Fehler: %(error)s."
 
-#: generics.py:700
+#: generics.py:708
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s erfolgreich aktualisiert."
@@ -175,26 +175,26 @@ msgstr "Hilfe"
 msgid "Tools"
 msgstr "Werkzeuge"
 
-#: literals.py:10
+#: literals.py:13
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Diese Funktion ist veraltet und wird in einer zukünftigen Version entfernt."
 
-#: literals.py:13
+#: literals.py:16
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "Sie benutzen SQLite als Datenbank-Backend. SQLite sollte nur für Entwicklungs- und Testzwecke verwendet werden, jedoch nicht in Produktivumgebungen."
 
-#: literals.py:31
+#: literals.py:34
 msgid "Days"
 msgstr "Tage"
 
-#: literals.py:32
+#: literals.py:35
 msgid "Hours"
 msgstr "Stunden"
 
-#: literals.py:33
+#: literals.py:36
 msgid "Minutes"
 msgstr "Minuten"
 
@@ -335,8 +335,8 @@ msgid ""
 msgstr "Name des Formulars, das mit dem Markenanker im Hauptmenü verknüpft ist. Zu diesem Formular werden die Benutzer auch nach dem Anmeldevorgang weitergeleitet."
 
 #: settings.py:41
-msgid "An integer specifying how many objects should be displayed per page."
-msgstr "Eine Ganzzahl, die die Anzahl der angezeigten Datensätze pro Seite angibt."
+msgid "The number objects that will be displayed per page."
+msgstr ""
 
 #: settings.py:48
 msgid "Enable error logging outside of the system error logging capabilities."
@@ -561,8 +561,8 @@ msgid ""
 "URL to use when referring to static files located in STATIC_ROOT. Example: "
 "\"/static/\" or \"http://static.example.com/\" If not None, this will be "
 "used as the base path for asset definitions (the Media class) and the "
-"staticfiles app.It must end in a slash if set to a non-empty value."
-msgstr "URL für statische Dateien in STATIC_ROOT. Beispiel: \"/static/\" oder \"http://static.example.com/\" Wenn nicht None dient diese URL als Basispfad für Medien (die Medienklasse) und die staticfiles App. Sie muss mit einem Schrägstrich enden."
+"staticfiles app. It must end in a slash if set to a non-empty value."
+msgstr ""
 
 #: settings.py:358
 msgid ""

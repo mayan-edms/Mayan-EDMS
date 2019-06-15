@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:20-0400\n"
+"POT-Creation-Date: 2019-06-15 03:39-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:40 events.py:8 models.py:36 models.py:102 permissions.py:7
+#: apps.py:41 events.py:8 models.py:36 models.py:102 permissions.py:7
 msgid "Permissions"
 msgstr "Uprawnienia"
 
@@ -35,7 +35,7 @@ msgstr ""
 msgid "Role edited"
 msgstr ""
 
-#: links.py:16 links.py:40 models.py:113 views.py:164
+#: links.py:16 links.py:40 models.py:113 views.py:165
 msgid "Roles"
 msgstr "Role"
 
@@ -164,7 +164,7 @@ msgstr ""
 msgid "Permissions for role: %s"
 msgstr "Uprawnienia dla roli: %s"
 
-#: views.py:156
+#: views.py:157
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -172,6 +172,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr ""
 
-#: views.py:163
+#: views.py:164
 msgid "There are no roles"
 msgstr ""

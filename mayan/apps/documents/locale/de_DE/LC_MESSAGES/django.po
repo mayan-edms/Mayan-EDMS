@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:19-0400\n"
-"PO-Revision-Date: 2019-06-09 07:23+0000\n"
+"POT-Creation-Date: 2019-06-15 03:38-0400\n"
+"PO-Revision-Date: 2019-06-15 07:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:109 apps.py:291 events.py:7 menus.py:10
+#: apps.py:109 apps.py:296 events.py:7 menus.py:10
 #: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:14
 #: statistics.py:233
 msgid "Documents"
@@ -56,11 +56,11 @@ msgstr "Versions-MIME-Typ"
 msgid "Versions timestamp"
 msgstr "Versionszeitstempel"
 
-#: apps.py:241 apps.py:270 apps.py:275 apps.py:311 apps.py:328
+#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:333
 msgid "Thumbnail"
 msgstr "Miniaturbild"
 
-#: apps.py:249 apps.py:333 forms/document_forms.py:182 links.py:83
+#: apps.py:249 apps.py:338 forms/document_forms.py:182 links.py:83
 msgid "Pages"
 msgstr "Seiten"
 
@@ -68,7 +68,7 @@ msgstr "Seiten"
 msgid "Duplicates"
 msgstr "Duplikate"
 
-#: apps.py:279
+#: apps.py:284
 msgid "Type"
 msgstr "Typ"
 
@@ -172,7 +172,7 @@ msgstr "Setzt die Dateierweiterung an das Ende des Dateinamens. Dies erlaubt es 
 msgid "Date added"
 msgstr "Hinzugefügt am"
 
-#: forms/document_forms.py:151 models/document_models.py:41 search.py:29
+#: forms/document_forms.py:151 models/document_models.py:41 search.py:43
 msgid "UUID"
 msgstr "UUID"
 
@@ -205,7 +205,7 @@ msgid "File path in storage"
 msgstr "Pfad im Dateispeicher"
 
 #: forms/document_forms.py:181 models/document_version_models.py:111
-#: search.py:32 search.py:56
+#: search.py:47 search.py:72
 msgid "Checksum"
 msgstr "Prüfsumme"
 
@@ -221,7 +221,7 @@ msgstr ""
 
 #: forms/document_type_forms.py:42 models/document_models.py:45
 #: models/document_type_models.py:60 models/document_type_models.py:146
-#: search.py:21 search.py:43
+#: search.py:35 search.py:59
 msgid "Document type"
 msgstr "Dokumententyp"
 
@@ -427,9 +427,9 @@ msgstr "Alle Seiten"
 
 #: models/document_models.py:39
 msgid ""
-"UUID of a document, universally Unique ID. An unique identifiergenerated for"
-" each document."
-msgstr "UUID des Dokuments. Eine eindeutige Identifikation für jedes Dokument."
+"UUID of a document, universally Unique ID. An unique identifier generated "
+"for each document."
+msgstr ""
 
 #: models/document_models.py:49
 msgid "The name of the document."
@@ -437,7 +437,7 @@ msgstr "Name des Dokuments."
 
 #: models/document_models.py:49 models/document_page_models.py:259
 #: models/document_type_models.py:32 models/document_type_models.py:149
-#: search.py:26 search.py:50
+#: search.py:40 search.py:66
 msgid "Label"
 msgstr "Bezeichner"
 
@@ -445,7 +445,7 @@ msgstr "Bezeichner"
 msgid "An optional short text describing a document."
 msgstr "Optionaler Kurztext zur Beschreibung eines Dokuments."
 
-#: models/document_models.py:54 search.py:27 search.py:53
+#: models/document_models.py:54 search.py:41 search.py:69
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -605,7 +605,7 @@ msgid ""
 " Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr "Der MIME-Typ der Datei der Dokumentenversion. MIME-Typen sind eine standardisierte Art zur Beschreibung des Dateiformats, in diesem Fall des Dokuments. Besipiele: \"text/plain\" oder \"image/jpeg\"."
 
-#: models/document_version_models.py:98 search.py:24 search.py:47
+#: models/document_version_models.py:98 search.py:38 search.py:63
 msgid "MIME type"
 msgstr "MIME Typ"
 

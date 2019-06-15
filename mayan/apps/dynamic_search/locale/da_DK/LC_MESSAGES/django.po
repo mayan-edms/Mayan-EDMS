@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:19-0400\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
+"POT-Creation-Date: 2019-06-15 03:38-0400\n"
+"PO-Revision-Date: 2019-06-15 07:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Danish (Denmark) (http://www.transifex.com/rosarior/mayan-edms/language/da_DK/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Dynamic search"
 msgstr ""
 
-#: classes.py:98
+#: classes.py:100
 msgid "No search model matching the query"
 msgstr ""
 
@@ -35,20 +35,25 @@ msgid ""
 "unchecked results that match at least one field will be returned."
 msgstr ""
 
-#: forms.py:29
+#: forms.py:29 templates/dynamic_search/search_box.html:21
 msgid "Search terms"
 msgstr ""
 
-#: links.py:8 views.py:56 views.py:69
+#: links.py:8 templates/dynamic_search/search_box.html:23 views.py:59
+#: views.py:72
 msgid "Search"
 msgstr "Søg"
 
-#: links.py:11 views.py:83
+#: links.py:11 views.py:86
 msgid "Advanced search"
 msgstr ""
 
 #: links.py:15
 msgid "Search again"
+msgstr ""
+
+#: templates/dynamic_search/search_box.html:24
+msgid "Advanced"
 msgstr ""
 
 #: views.py:25
@@ -64,7 +69,7 @@ msgstr ""
 msgid "Search results for: %s"
 msgstr ""
 
-#: views.py:71
+#: views.py:74
 #, python-format
 msgid "Search for: %s"
 msgstr ""

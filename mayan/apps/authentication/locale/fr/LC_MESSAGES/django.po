@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 03:17-0400\n"
-"PO-Revision-Date: 2019-05-17 13:21+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
+"POT-Creation-Date: 2019-06-15 03:36-0400\n"
+"PO-Revision-Date: 2019-06-15 07:48+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,9 +68,9 @@ msgstr "Contrôle le mécanisme utilisé pour identifier l'utilisateur. Les opti
 
 #: settings.py:20
 msgid ""
-"Maximum time an user clicking the \"Remember me\" checkbox will remain "
-"logged in. Value is time in seconds."
-msgstr "Le temps maximum qu'un utilisateur clique sur la case à cocher \"Se souvenir de moi\" restera connecté. La valeur est le temps en secondes."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr ""
 
 #: templates/authentication/login.html:11
 msgid "Login"
