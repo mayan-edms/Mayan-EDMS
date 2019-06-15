@@ -91,7 +91,7 @@ class WorkflowStateDocumentListView(DocumentListView):
                 'object': workflow_state,
                 'navigation_object_list': ('object', 'workflow'),
                 'no_results_title': _(
-                    'There are documents in this workflow state'
+                    'There are no documents in this workflow state'
                 ),
                 'title': _(
                     'Documents in the workflow "%s", state "%s"'
