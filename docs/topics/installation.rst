@@ -12,7 +12,7 @@ Minimum hardware requirements
 
 - 2 Gigabytes of RAM (1 Gigabyte if OCR is turned off).
 - Multiple core CPU (64 bit, faster than 1 GHz recommended).
-- Unix-like operating system like Linux and OpenBSD. For other operating systems
+- Unix-like operating system like GNU/Linux. For other operating systems
   user container technologies like Docker or virtual machines.
 
 ****************
