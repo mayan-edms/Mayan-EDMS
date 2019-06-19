@@ -9,7 +9,8 @@ from django.db import OperationalError
 from mayan.celery import app
 
 from .literals import (
-    UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY
+    UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_DOCUMENT_RETRY_DELAY,
+    UPLOAD_NEW_VERSION_RETRY_DELAY
 )
 
 logger = logging.getLogger(__name__)
@@ -125,6 +126,60 @@ def task_update_page_count(self, version_id):
             exception
         )
         raise self.retry(exc=exception)
+
+
+@app.task(bind=True, default_retry_delay=UPLOAD_NEW_DOCUMENT_RETRY_DELAY, ignore_result=True)
+def task_upload_new_document(self, document_type_id, shared_uploaded_file_id):
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+
+    SharedUploadedFile = apps.get_model(
+        app_label='common', model_name='SharedUploadedFile'
+    )
+
+    try:
+        document_type = DocumentType.objects.get(pk=document_type_id)
+        shared_file = SharedUploadedFile.objects.get(
+            pk=shared_uploaded_file_id
+        )
+    except OperationalError as exception:
+        logger.warning(
+            'Operational error during attempt to retrieve shared data for '
+            'new document of type: %s; %s. Retrying.', document_type, exception
+        )
+        raise self.retry(exc=exception)
+
+    try:
+        with shared_file.open() as file_object:
+            document_type.new_document(file_object=file_object)
+    except OperationalError as exception:
+        logger.warning(
+            'Operational error during attempt to create new document '
+            'of type: %s; %s. Retrying.', document_type, exception
+        )
+        raise self.retry(exc=exception)
+    except Exception as exception:
+        # This except and else block emulate a finally:
+        logger.error(
+            'Unexpected error during attempt to create new document '
+            'of type: %s; %s', document_type, exception
+        )
+        try:
+            shared_file.delete()
+        except OperationalError as exception:
+            logger.warning(
+                'Operational error during attempt to delete shared '
+                'file: %s; %s.', shared_file, exception
+            )
+    else:
+        try:
+            shared_file.delete()
+        except OperationalError as exception:
+            logger.warning(
+                'Operational error during attempt to delete shared '
+                'file: %s; %s.', shared_file, exception
+            )
 
 
 @app.task(bind=True, default_retry_delay=UPLOAD_NEW_VERSION_RETRY_DELAY, ignore_result=True)

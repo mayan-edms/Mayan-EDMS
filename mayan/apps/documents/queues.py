@@ -82,3 +82,7 @@ queue_uploads.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_scan_duplicates_for',
     label=_('Scan document duplicates')
 )
+queue_uploads.add_task_type(
+    dotted_path='mayan.apps.documents.tasks.task_upload_new_document',
+    label=_('Upload new document')
+)

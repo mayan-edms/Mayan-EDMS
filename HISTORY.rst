@@ -2,6 +2,7 @@
 ==================
 * Add support for disabling the random primary key
   test mixin.
+* Add a reusable task to upload documents.
  
 3.2.2 (2019-06-19)
 ==================
