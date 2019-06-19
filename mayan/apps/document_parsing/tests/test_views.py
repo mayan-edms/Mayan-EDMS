@@ -6,7 +6,10 @@ from mayan.apps.documents.tests import (
     GenericDocumentViewTestCase, TEST_HYBRID_DOCUMENT
 )
 
-from ..permissions import permission_content_view, permission_parse_document
+from ..permissions import (
+    permission_content_view, permission_document_type_parsing_setup,
+    permission_parse_document
+)
 from ..utils import get_document_content
 
 from .literals import TEST_DOCUMENT_CONTENT
@@ -98,7 +101,7 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
 
     def test_document_type_parsing_settings_view_with_access(self):
         self.grant_access(
-            permission=permission_parse_document,
+            permission=permission_document_type_parsing_setup,
             obj=self.test_document.document_type
         )
 
