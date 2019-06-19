@@ -41,7 +41,12 @@ class ImportManagementCommandTestCase(GenericDocumentTestCase):
             )
             for times in range(self.test_import_count):
                 filewriter.writerow(
-                    [self.test_document_type.label, TEST_SMALL_DOCUMENT_PATH]
+                    [
+                        self.test_document_type.label, TEST_SMALL_DOCUMENT_PATH,
+                        'column 2', 'column 3', 'column 4', 'column 5',
+                        'column 6', 'column 7', 'column 8', 'column 9',
+                        'column 10', 'column 11',
+                    ]
                 )
 
     def _destroy_test_csv_file(self):
@@ -56,3 +61,34 @@ class ImportManagementCommandTestCase(GenericDocumentTestCase):
 
         self.assertTrue(DocumentType.objects.count() > 0)
         self.assertTrue(Document.objects.count() > 0)
+
+    def test_import_document_type_column_mapping(self):
+        self.test_document_type.delete()
+        management.call_command(
+            'import', self.test_csv_path, '--document_type_column', '2'
+        )
+
+        self.assertTrue(DocumentType.objects.first().label == 'column 2')
+        self.assertTrue(Document.objects.count() > 0)
+
+    def test_import_document_path_column_mapping(self):
+        self.test_document_type.delete()
+        with self.assertRaises(IOError):
+            management.call_command(
+                'import', self.test_csv_path, '--document_path_column', '2'
+            )
+
+    def test_import_metadata_column_mapping(self):
+        self.test_document_type.delete()
+        management.call_command(
+            'import', self.test_csv_path, '--metadata_pairs_column', '2:3,4:5',
+        )
+
+        self.assertTrue(DocumentType.objects.count() > 0)
+        self.assertTrue(Document.objects.count() > 0)
+        self.assertTrue(Document.objects.first().metadata.count() > 0)
+        self.assertEqual(
+            Document.objects.first().metadata.get(
+                metadata_type__name='column_2'
+            ).value, 'column 3'
+        )

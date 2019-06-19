@@ -7,18 +7,34 @@ from django.apps import apps
 from django.core import management
 from django.core.files import File
 
-from mayan.apps.documents.tasks import task_upload_new_document
+from ...tasks import task_upload_new_document
 
 
 class Command(management.BaseCommand):
     help = 'Import documents from a CSV file.'
 
     def add_arguments(self, parser):
-        #parser.add_argument(
-        #    '-l', '--link',
-        #    action='store_true', dest='link', default=False,
-        #    help='Create a symbolic link to each file instead of copying.',
-        #)
+        parser.add_argument(
+            '--document_type_column',
+            action='store', dest='document_type_column', default=0,
+            help='Column that contains the document type labels. Column '
+            'numbers start at 0.',
+            type=int
+        )
+        parser.add_argument(
+            '--document_path_column',
+            action='store', dest='document_path_column', default=1,
+            help='Column that contains the path to the document files. Column '
+            'numbers start at 0.',
+            type=int
+        )
+        parser.add_argument(
+            '--metadata_pairs_column',
+            action='store', dest='metadata_pairs_column',
+            help='Column that contains metadata name and values for the '
+            'documents. Use the form: <label column>:<value column>. Example: '
+            '2:5. Separate multiple pairs with commas. Example: 2:5,7:10',
+        )
         parser.add_argument('filelist', nargs='?', help='File list')
 
     def handle(self, *args, **options):
@@ -41,24 +57,44 @@ class Command(management.BaseCommand):
             with open(options['filelist']) as csv_datafile:
                 csv_reader = csv.reader(csv_datafile)
                 for row in csv_reader:
-                    with open(row[1]) as file_object:
-                        if row[0] not in document_types:
-                            self.stdout.write('New document type: {}. Creating and caching.'.format(row[0]))
-                            document_type, created = DocumentType.objects.get_or_create(
-                                label=row[0]
+                    with open(row[options['document_path_column']]) as file_object:
+                        document_type_label = row[options['document_type_column']]
+
+                        if document_type_label not in document_types:
+                            self.stdout.write(
+                                'New document type: {}. Creating and caching.'.format(
+                                    document_type_label
+                                )
                             )
-                            document_types[row[0]] = document_type
+                            document_type, created = DocumentType.objects.get_or_create(
+                                label=document_type_label
+                            )
+                            document_types[document_type_label] = document_type
                         else:
-                            document_type = document_types[row[0]]
+                            document_type = document_types[document_type_label]
 
                         shared_uploaded_file = SharedUploadedFile.objects.create(
                             file=File(file_object)
                         )
 
+                        extra_data = {}
+                        if options['metadata_pairs_column']:
+                            extra_data['metadata_pairs'] = []
+
+                            for pair in options['metadata_pairs_column'].split(','):
+                                name, value = pair.split(':')
+                                extra_data['metadata_pairs'].append(
+                                    {
+                                        'name': row[int(name)],
+                                        'value': row[int(value)]
+                                    }
+                                )
+
                         task_upload_new_document.apply_async(
                             kwargs=dict(
                                 document_type_id=document_type.pk,
                                 shared_uploaded_file_id=shared_uploaded_file.pk,
+                                extra_data=extra_data
                             )
                         )
 
