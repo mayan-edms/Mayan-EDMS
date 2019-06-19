@@ -1,3 +1,8 @@
+3.2.2 (2019-06-XX)
+==================
+* Fix document type change view. Closes GitLab issue #614
+  Thanks to Christoph Roeder (@brightdroid) for the report.
+
 3.2.1 (2019-06-14)
 ==================
 * Fix sub cabinet creation view. Thanks to Frédéric Sheedy

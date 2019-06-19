@@ -53,7 +53,7 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
             response=response, text=self.test_document.label, status_code=200
         )
 
-    def test_document_document_type_change_view_no_permissions(self):
+    def test_document_document_type_change_post_view_no_permissions(self):
         self.assertEqual(
             self.test_document.document_type, self.test_document_type
         )
@@ -62,7 +62,7 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        response = self._request_test_document_type_edit_view(
+        response = self._request_test_document_type_edit_post_view(
             document_type=document_type_2
         )
         self.assertEqual(response.status_code, 404)
@@ -72,7 +72,7 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
             self.test_document_type
         )
 
-    def test_document_document_type_change_view_with_permissions(self):
+    def test_document_document_type_change_post_view_with_permissions(self):
         self.assertEqual(
             self.test_document.document_type, self.test_document_type
         )
@@ -88,7 +88,7 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
             obj=document_type_2, permission=permission_document_create
         )
 
-        response = self._request_test_document_type_edit_view(
+        response = self._request_test_document_type_edit_post_view(
             document_type=document_type_2
         )
         self.assertEqual(response.status_code, 302)
@@ -96,6 +96,29 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
         self.assertEqual(
             Document.objects.get(pk=self.test_document.pk).document_type,
             document_type_2
+        )
+
+    def test_document_document_type_change_view_get_no_permissions(self):
+        response = self._request_test_document_type_edit_get_view(
+        )
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            Document.objects.get(pk=self.test_document.pk).document_type,
+            self.test_document_type
+        )
+
+    def test_document_document_type_change_view_get_with_permissions(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_properties_edit
+        )
+        response = self._request_test_document_type_edit_get_view(
+        )
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(
+            Document.objects.get(pk=self.test_document.pk).document_type,
+            self.test_document_type
         )
 
     def test_document_multiple_document_type_change_view_no_permission(self):

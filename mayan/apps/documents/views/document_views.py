@@ -117,7 +117,7 @@ class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
             'submit_label': _('Change'),
             'title': ungettext(
                 singular='Change the type of the selected document',
-                plurals='Change the type of the selected documents',
+                plural='Change the type of the selected documents',
                 number=queryset.count()
             )
         }

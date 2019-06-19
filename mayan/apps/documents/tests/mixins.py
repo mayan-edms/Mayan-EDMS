@@ -154,7 +154,13 @@ class DocumentViewTestMixin(object):
     def _request_test_document_list_view(self):
         return self.get(viewname='documents:document_list')
 
-    def _request_test_document_type_edit_view(self, document_type):
+    def _request_test_document_type_edit_get_view(self):
+        return self.get(
+            viewname='documents:document_document_type_edit',
+            kwargs={'pk': self.test_document.pk}
+        )
+
+    def _request_test_document_type_edit_post_view(self, document_type):
         return self.post(
             viewname='documents:document_document_type_edit',
             kwargs={'pk': self.test_document.pk},
