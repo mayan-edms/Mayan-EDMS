@@ -3,7 +3,8 @@
 * Add support for disabling the random primary key
   test mixin.
 * Add a reusable task to upload documents.
- 
+* Add MVP of the importer app. 
+
 3.2.2 (2019-06-19)
 ==================
 * Fix document type change view. Closes GitLab issue #614

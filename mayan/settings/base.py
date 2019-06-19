@@ -120,6 +120,7 @@ INSTALLED_APPS = (
     'mayan.apps.document_states',
     'mayan.apps.documents',
     'mayan.apps.file_metadata',
+    'mayan.apps.importer',
     'mayan.apps.linking',
     'mayan.apps.mailer',
     'mayan.apps.mayan_statistics',
