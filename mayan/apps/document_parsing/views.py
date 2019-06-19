@@ -185,7 +185,7 @@ class DocumentTypeSubmitView(FormView):
                 '%(count)d documents added to the parsing queue.'
             ) % {
                 'count': count,
-            }, requrest=self.request
+            }, request=self.request
         )
 
         return HttpResponseRedirect(redirect_to=self.get_success_url())

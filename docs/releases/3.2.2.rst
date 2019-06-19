@@ -9,6 +9,8 @@ Changes
 
 - Fix document type change view. Closes GitLab issue #614.
   Thanks to Christoph Roeder (@brightdroid) for the report.
+- Fix document parsing tool view typo. Closes GitLab issue #615.
+  Thanks to Tyler Page (@iamtpage) for the report.
 
 Removals
 --------
@@ -98,5 +100,6 @@ Bugs fixed or issues closed
 ---------------------------
 
 - :gitlab-issue:`614` change type exception
+- :gitlab-issue:`615` TypeError: success() got an unexpected keyword argument 'requrest'
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

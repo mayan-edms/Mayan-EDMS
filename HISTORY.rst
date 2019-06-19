@@ -2,6 +2,8 @@
 ==================
 * Fix document type change view. Closes GitLab issue #614
   Thanks to Christoph Roeder (@brightdroid) for the report.
+* Fix document parsing tool view typo. Closes GitLab issue #615.
+  Thanks to Tyler Page (@iamtpage) for the report.
 
 3.2.1 (2019-06-14)
 ==================
