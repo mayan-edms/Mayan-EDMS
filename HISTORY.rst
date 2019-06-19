@@ -4,6 +4,9 @@
   Thanks to Christoph Roeder (@brightdroid) for the report.
 * Fix document parsing tool view typo. Closes GitLab issue #615.
   Thanks to Tyler Page (@iamtpage) for the report.
+* Update the task_check_interval_source reference
+  GitLab issue #617. Thanks to Lukas Gill (@lukkigi) for
+  the report and debug information.
 
 3.2.1 (2019-06-14)
 ==================

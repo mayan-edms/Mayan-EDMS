@@ -1,7 +1,7 @@
 Version 3.2.2
 =============
 
-Released: June 17, 2019
+Released: June XX, 2019
 
 
 Changes
@@ -11,6 +11,9 @@ Changes
   Thanks to Christoph Roeder (@brightdroid) for the report.
 - Fix document parsing tool view typo. Closes GitLab issue #615.
   Thanks to Tyler Page (@iamtpage) for the report.
+- Update the task_check_interval_source reference
+  GitLab issue #617. Thanks to Lukas Gill (@lukkigi) for
+  the report and debug information.
 
 Removals
 --------
