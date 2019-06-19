@@ -1,4 +1,4 @@
-3.2.2 (2019-06-XX)
+3.2.2 (2019-06-19)
 ==================
 * Fix document type change view. Closes GitLab issue #614
   Thanks to Christoph Roeder (@brightdroid) for the report.
