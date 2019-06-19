@@ -1,3 +1,8 @@
+3.2.3 (2019-06-XX)
+==================
+* Add support for disabling the random primary key
+  test mixin.
+ 
 3.2.2 (2019-06-19)
 ==================
 * Fix document type change view. Closes GitLab issue #614
