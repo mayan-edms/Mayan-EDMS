@@ -29,6 +29,12 @@ class Command(management.BaseCommand):
             type=int
         )
         parser.add_argument(
+            '--ignore_errors',
+            action='store_true', dest='ignore_errors', default=False,
+            help='Don\'t stop the import process on common errors like '
+            'incorrect file paths.',
+        )
+        parser.add_argument(
             '--metadata_pairs_column',
             action='store', dest='metadata_pairs_column',
             help='Column that contains metadata name and values for the '
@@ -42,6 +48,7 @@ class Command(management.BaseCommand):
         time_last_display = time_start
         document_types = {}
         uploaded_count = 0
+        row_count = 0
 
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
@@ -57,56 +64,68 @@ class Command(management.BaseCommand):
             with open(options['filelist']) as csv_datafile:
                 csv_reader = csv.reader(csv_datafile)
                 for row in csv_reader:
-                    with open(row[options['document_path_column']]) as file_object:
-                        document_type_label = row[options['document_type_column']]
+                    row_count = row_count + 1
+                    try:
+                        with open(row[options['document_path_column']]) as file_object:
+                            document_type_label = row[options['document_type_column']]
 
-                        if document_type_label not in document_types:
-                            self.stdout.write(
-                                'New document type: {}. Creating and caching.'.format(
-                                    document_type_label
+                            if document_type_label not in document_types:
+                                self.stdout.write(
+                                    'New document type: {}. Creating and caching.'.format(
+                                        document_type_label
+                                    )
+                                )
+                                document_type, created = DocumentType.objects.get_or_create(
+                                    label=document_type_label
+                                )
+                                document_types[document_type_label] = document_type
+                            else:
+                                document_type = document_types[document_type_label]
+
+                            shared_uploaded_file = SharedUploadedFile.objects.create(
+                                file=File(file_object)
+                            )
+
+                            extra_data = {}
+                            if options['metadata_pairs_column']:
+                                extra_data['metadata_pairs'] = []
+
+                                for pair in options['metadata_pairs_column'].split(','):
+                                    name, value = pair.split(':')
+                                    extra_data['metadata_pairs'].append(
+                                        {
+                                            'name': row[int(name)],
+                                            'value': row[int(value)]
+                                        }
+                                    )
+
+                            task_upload_new_document.apply_async(
+                                kwargs=dict(
+                                    document_type_id=document_type.pk,
+                                    shared_uploaded_file_id=shared_uploaded_file.pk,
+                                    extra_data=extra_data
                                 )
                             )
-                            document_type, created = DocumentType.objects.get_or_create(
-                                label=document_type_label
-                            )
-                            document_types[document_type_label] = document_type
+
+                            uploaded_count = uploaded_count + 1
+
+                            if (time.time() - time_last_display) > 1:
+                                time_last_display = time.time()
+                                self.stdout.write(
+                                    'Time: {}s, Files copied and queued: {}, files processed per second: {}'.format(
+                                        int(time.time() - time_start),
+                                        uploaded_count,
+                                        uploaded_count / (time.time() - time_start)
+                                    )
+                                )
+
+                    except (IOError, OSError) as exception:
+                        if not options['ignore_errors']:
+                            raise
                         else:
-                            document_type = document_types[document_type_label]
-
-                        shared_uploaded_file = SharedUploadedFile.objects.create(
-                            file=File(file_object)
-                        )
-
-                        extra_data = {}
-                        if options['metadata_pairs_column']:
-                            extra_data['metadata_pairs'] = []
-
-                            for pair in options['metadata_pairs_column'].split(','):
-                                name, value = pair.split(':')
-                                extra_data['metadata_pairs'].append(
-                                    {
-                                        'name': row[int(name)],
-                                        'value': row[int(value)]
-                                    }
-                                )
-
-                        task_upload_new_document.apply_async(
-                            kwargs=dict(
-                                document_type_id=document_type.pk,
-                                shared_uploaded_file_id=shared_uploaded_file.pk,
-                                extra_data=extra_data
-                            )
-                        )
-
-                        uploaded_count = uploaded_count + 1
-
-                        if (time.time() - time_last_display) > 1:
-                            time_last_display = time.time()
-                            self.stdout.write(
-                                'Time: {}s, Files copied and queued: {}, files processed per second: {}'.format(
-                                    int(time.time() - time_start),
-                                    uploaded_count,
-                                    uploaded_count / (time.time() - time_start)
+                            self.stderr.write(
+                                'Error processing row: {}; {}.'.format(
+                                    row_count - 1, exception
                                 )
                             )
 
