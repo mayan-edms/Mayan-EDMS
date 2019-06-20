@@ -277,10 +277,10 @@ class POP3Email(EmailBaseModel):
         logger.debug('ssl: %s', self.ssl)
 
         if self.ssl:
-            mailbox = poplib.POP3_SSL(host=self.host, post=self.port)
+            mailbox = poplib.POP3_SSL(host=self.host, port=self.port)
         else:
             mailbox = poplib.POP3(
-                host=self.host, post=self.port, timeout=self.timeout
+                host=self.host, port=self.port, timeout=self.timeout
             )
 
         mailbox.getwelcome()
