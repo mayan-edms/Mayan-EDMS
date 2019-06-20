@@ -217,7 +217,7 @@ class POP3SourceTestCase(GenericDocumentTestCase):
         def user(self, username):
             return
 
-    @mock.patch('poplib.POP3_SSL')
+    @mock.patch('poplib.POP3_SSL', autospec=True)
     def test_download_document(self, mock_poplib):
         mock_poplib.return_value = POP3SourceTestCase.MockMailbox()
         self.source = POP3Email.objects.create(
