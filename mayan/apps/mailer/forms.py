@@ -96,7 +96,7 @@ class UserMailerDynamicForm(DynamicModelForm):
         if self.instance.backend_data:
             backend_data = json.loads(self.instance.backend_data)
             for key in self.instance.get_backend().fields:
-                self.fields[key].initial = backend_data[key]
+                self.fields[key].initial = backend_data.get(key)
 
         return result
 

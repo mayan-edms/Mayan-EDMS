@@ -12,6 +12,12 @@ Changes
 - Fix mailing profile log columns mappings.
   GitLab issue #626. Thanks to Jesaja Everling (@jeverling)
   for the report.
+- Fix the Django SMTP backend username field name.
+  GitLab issue #625. Thanks to Jesaja Everling (@jeverling)
+  for the report and the research.
+- Increase the Django STMP username.
+  GitLab issue #625. Thanks to Jesaja Everling (@jeverling)
+  for the report and the research.
 
 
 Removals
@@ -101,6 +107,7 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
+- :gitlab-issue:`625` mayan.apps.mailer.mailers.DjangoSMTP uses "user", but django.core.mail.backends.smtp.EmailBackend expects "username"
 - :gitlab-issue:`626` Mailing profile error log is empty, despite errors
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
