@@ -12,6 +12,8 @@ Importer branch
 ==================
 * Add support for disabling the random primary key
   test mixin.
+* Add a reusable task to upload documents.
+* Add MVP of the importer app.
 * Fix mailing profile log columns mappings.
   GitLab issue #626. Thanks to Jesaja Everling (@jeverling)
   for the report.
@@ -21,7 +23,6 @@ Importer branch
 * Increase the Django STMP username.
   GitLab issue #625. Thanks to Jesaja Everling (@jeverling)
   for the report and the research.
->>>>>>> versions/minor
 
 3.2.2 (2019-06-19)
 ==================

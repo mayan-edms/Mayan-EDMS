@@ -65,13 +65,20 @@ def task_upload_new_document(self, document_type_id, shared_uploaded_file_id, ex
         if extra_data:
             for pair in extra_data.get('metadata_pairs', []):
                 name = slugify(pair['name']).replace('-', '_')
+                logger.debug(
+                    'Metadata pair (label, name, value): %s, %s, %s',
+                    pair['name'], name, pair['value']
+                )
+
                 metadata_type, created = MetadataType.objects.get_or_create(
                     label=pair['name'], defaults={'name': name}
                 )
-                if created:
+                if not new_document.document_type.metadata.filter(metadata_type=metadata_type).exists():
+                    logger.debug('Metadata type created')
                     new_document.document_type.metadata.create(
                         metadata_type=metadata_type, required=False
                     )
+
                 new_document.metadata.create(
                     metadata_type=metadata_type, value=pair['value']
                 )
