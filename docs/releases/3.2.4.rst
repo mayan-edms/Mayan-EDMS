@@ -1,23 +1,15 @@
-Version 3.2.3
+Version 3.2.4
 =============
 
-Released: June 21, 2019
+Released: June XX, 2019
 
 
 Changes
 -------
 
-- Add support for disabling the random primary key
-  test mixin.
-- Fix mailing profile log columns mappings.
-  GitLab issue #626. Thanks to Jesaja Everling (@jeverling)
-  for the report.
-- Fix the Django SMTP backend username field name.
-  GitLab issue #625. Thanks to Jesaja Everling (@jeverling)
-  for the report and the research.
-- Increase the Django STMP username.
-  GitLab issue #625. Thanks to Jesaja Everling (@jeverling)
-  for the report and the research.
+- Support configurable GUnicorn timeouts. Defaults to
+  current value of 120 seconds.
+
 
 Removals
 --------
@@ -37,7 +29,7 @@ Remove deprecated requirements::
 
 Type in the console::
 
-    $ pip install mayan-edms==3.2.1
+    $ pip install mayan-edms==3.2.3
 
 the requirements will also be updated automatically.
 
@@ -106,8 +98,6 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
-- :gitlab-issue:`619` poplib.POP3_SSL and poplib.POP3 initialized with wrong kwarg
-- :gitlab-issue:`625` mayan.apps.mailer.mailers.DjangoSMTP uses "user", but django.core.mail.backends.smtp.EmailBackend expects "username"
-- :gitlab-issue:`626` Mailing profile error log is empty, despite errors
+- :gitlab-issue:`628` mailbox.user in POP3Email gets passed keyword argument, but only accepts "user" or positional argument
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

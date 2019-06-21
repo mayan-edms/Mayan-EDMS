@@ -1,4 +1,9 @@
-3.2.3 (2019-06-XX)
+3.2.4 (2019-06-XX)
+==================
+* Support configurable GUnicorn timeouts. Defaults to 
+  current value of 120 seconds.
+
+3.2.3 (2019-06-21)
 ==================
 * Add support for disabling the random primary key
   test mixin.
