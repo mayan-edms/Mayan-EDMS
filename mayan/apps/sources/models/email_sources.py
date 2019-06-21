@@ -284,8 +284,8 @@ class POP3Email(EmailBaseModel):
             )
 
         mailbox.getwelcome()
-        mailbox.user(username=self.username)
-        mailbox.pass_(password=self.password)
+        mailbox.user(self.username)
+        mailbox.pass_(self.password)
         messages_info = mailbox.list()
 
         logger.debug(msg='messages_info:')
