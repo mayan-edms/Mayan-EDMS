@@ -51,6 +51,7 @@ class MailerApp(MayanAppConfig):
 
         LogEntry = self.get_model(model_name='LogEntry')
         UserMailer = self.get_model(model_name='UserMailer')
+        UserMailerLogEntry = self.get_model(model_name='UserMailerLogEntry')
 
         MailerBackend.initialize()
 
@@ -78,6 +79,13 @@ class MailerApp(MayanAppConfig):
         )
         SourceColumn(
             source=UserMailer, attribute='backend_label'
+        )
+        SourceColumn(
+            attribute='datetime', label=_('Date and time'),
+            source=UserMailerLogEntry
+        )
+        SourceColumn(
+            attribute='message', label=_('Message'), source=UserMailerLogEntry
         )
 
         ModelPermission.register(

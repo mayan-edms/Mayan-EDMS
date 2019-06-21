@@ -2,7 +2,10 @@
 ==================
 * Add support for disabling the random primary key
   test mixin.
- 
+* Fix mailing profile log columns mappings.
+  GitLab issue #626. Thanks to Jesaja Everling (@jeverling)
+  for the report.
+
 3.2.2 (2019-06-19)
 ==================
 * Fix document type change view. Closes GitLab issue #614

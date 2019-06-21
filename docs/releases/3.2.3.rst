@@ -9,7 +9,10 @@ Changes
 
 - Add support for disabling the random primary key
   test mixin.
-  
+- Fix mailing profile log columns mappings.
+  GitLab issue #626. Thanks to Jesaja Everling (@jeverling)
+  for the report.
+
 
 Removals
 --------
@@ -98,6 +101,6 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
-- :gitlab-issue:`615`
+- :gitlab-issue:`626` Mailing profile error log is empty, despite errors
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
