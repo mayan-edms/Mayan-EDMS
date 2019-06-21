@@ -4,6 +4,15 @@
   test mixin.
 * Add a reusable task to upload documents.
 * Add MVP of the importer app. 
+* Fix mailing profile log columns mappings.
+  GitLab issue #626. Thanks to Jesaja Everling (@jeverling)
+  for the report.
+* Fix the Django SMTP backend username field name.
+  GitLab issue #625. Thanks to Jesaja Everling (@jeverling)
+  for the report and the research.
+* Increase the Django STMP username.
+  GitLab issue #625. Thanks to Jesaja Everling (@jeverling)
+  for the report and the research.
 
 3.2.2 (2019-06-19)
 ==================

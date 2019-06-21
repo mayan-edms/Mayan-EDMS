@@ -12,11 +12,11 @@ class DjangoSMTP(MailerBackend):
     Backend that wraps Django's SMTP backend
     """
     class_fields = (
-        'host', 'port', 'use_tls', 'use_ssl', 'user', 'password'
+        'host', 'port', 'use_tls', 'use_ssl', 'username', 'password'
     )
     class_path = 'django.core.mail.backends.smtp.EmailBackend'
     field_order = (
-        'host', 'port', 'use_tls', 'use_ssl', 'user', 'password', 'from'
+        'host', 'port', 'use_tls', 'use_ssl', 'username', 'password', 'from'
     )
     fields = {
         'from': {
@@ -60,14 +60,14 @@ class DjangoSMTP(MailerBackend):
                 'that "Use TLS" and "Use SSL" are mutually exclusive, '
                 'so only set one of those settings to True.'
             ), 'required': False
-        }, 'user': {
+        }, 'username': {
             'label': _('Username'),
             'class': 'django.forms.CharField', 'default': '',
             'help_text': _(
                 'Username to use for the SMTP server. If empty, '
                 'authentication won\'t attempted.'
             ), 'kwargs': {
-                'max_length': 48
+                'max_length': 254
             }, 'required': False
         }, 'password': {
             'label': _('Password'),
