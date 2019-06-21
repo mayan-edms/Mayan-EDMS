@@ -33,7 +33,7 @@ Remove deprecated requirements::
 
 Type in the console::
 
-    $ pip install mayan-edms==3.2.1
+    $ pip install mayan-edms==3.2.2
 
 the requirements will also be updated automatically.
 
@@ -104,5 +104,6 @@ Bugs fixed or issues closed
 
 - :gitlab-issue:`614` change type exception
 - :gitlab-issue:`615` TypeError: success() got an unexpected keyword argument 'requrest'
+- :gitlab-issue:`617` Watcher Task not running
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
