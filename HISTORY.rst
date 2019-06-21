@@ -1,9 +1,27 @@
-3.2.3 (2019-06-XX)
+Importer branch
+===============
+* Add a reusable task to upload documents.
+* Add MVP of the importer app.
+
+3.2.4 (2019-06-XX)
+==================
+* Support configurable GUnicorn timeouts. Defaults to
+  current value of 120 seconds.
+
+3.2.3 (2019-06-21)
 ==================
 * Add support for disabling the random primary key
   test mixin.
-* Add a reusable task to upload documents.
-* Add MVP of the importer app. 
+* Fix mailing profile log columns mappings.
+  GitLab issue #626. Thanks to Jesaja Everling (@jeverling)
+  for the report.
+* Fix the Django SMTP backend username field name.
+  GitLab issue #625. Thanks to Jesaja Everling (@jeverling)
+  for the report and the research.
+* Increase the Django STMP username.
+  GitLab issue #625. Thanks to Jesaja Everling (@jeverling)
+  for the report and the research.
+>>>>>>> versions/minor
 
 3.2.2 (2019-06-19)
 ==================

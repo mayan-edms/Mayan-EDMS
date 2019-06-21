@@ -208,7 +208,7 @@ class UserMailerLogEntryListView(SingleObjectListView):
         return {
             'hide_object': True,
             'object': self.get_user_mailer(),
-            'title': _('%s error log') % self.get_user_mailer(),
+            'title': _('Error log for: %s') % self.get_user_mailer(),
         }
 
     def get_source_queryset(self):
