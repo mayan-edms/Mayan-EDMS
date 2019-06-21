@@ -121,6 +121,10 @@ class PlatformTemplateSupervisord(PlatformTemplate):
             environment_name='MAYAN_GUNICORN_WORKERS'
         ),
         Variable(
+            name='GUNICORN_TIMEOUT', default=120,
+            environment_name='MAYAN_GUNICORN_TIMEOUT'
+        ),
+        Variable(
             name='DATABASE_CONN_MAX_AGE', default=0,
             environment_name='MAYAN_DATABASE_CONN_MAX_AGE'
         ),
