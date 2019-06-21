@@ -1,7 +1,7 @@
 Version 3.2.3
 =============
 
-Released: June XX, 2019
+Released: June 21, 2019
 
 
 Changes

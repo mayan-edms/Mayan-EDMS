@@ -1,4 +1,4 @@
-3.2.3 (2019-06-XX)
+3.2.3 (2019-06-21)
 ==================
 * Add support for disabling the random primary key
   test mixin.
