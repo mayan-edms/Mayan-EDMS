@@ -2,6 +2,7 @@
 ==================
 * Support configurable GUnicorn timeouts. Defaults to 
   current value of 120 seconds.
+* Fix help text of the platformtemplate command.
 
 3.2.3 (2019-06-21)
 ==================
