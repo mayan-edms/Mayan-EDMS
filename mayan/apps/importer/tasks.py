@@ -71,7 +71,7 @@ def task_upload_new_document(self, document_type_id, shared_uploaded_file_id, ex
                 )
 
                 metadata_type, created = MetadataType.objects.get_or_create(
-                    label=pair['name'], defaults={'name': name}
+                    label=pair['name'], name=name
                 )
                 if not new_document.document_type.metadata.filter(metadata_type=metadata_type).exists():
                     logger.debug('Metadata type created')
