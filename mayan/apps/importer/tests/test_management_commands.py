@@ -12,13 +12,15 @@ from mayan.apps.storage.utils import fs_cleanup, mkstemp
 
 
 class ImportManagementCommandTestCase(GenericDocumentTestCase):
+    auto_generate_test_csv_file = True
     auto_upload_document = False
     random_primary_key_enable = False
     test_import_count = 1
 
     def setUp(self):
         super(ImportManagementCommandTestCase, self).setUp()
-        self._create_test_csv_file()
+        if self.auto_generate_test_csv_file:
+            self._create_test_csv_file()
 
     def tearDown(self):
         self._destroy_test_csv_file()
@@ -44,8 +46,14 @@ class ImportManagementCommandTestCase(GenericDocumentTestCase):
                     [
                         self.test_document_type.label, TEST_SMALL_DOCUMENT_PATH,
                         'column 2', 'column 3', 'column 4', 'column 5',
-                        'column 6', 'column 7', 'column 8', 'column 9',
-                        'column 10', 'column 11',
+                        'part #', 'value',
+                    ]
+                )
+                filewriter.writerow(
+                    [
+                        self.test_document_type.label, TEST_SMALL_DOCUMENT_PATH,
+                        'column 2', 'column 3', 'column 4', 'column 5',
+                        'part#', 'value',
                     ]
                 )
 
@@ -91,4 +99,22 @@ class ImportManagementCommandTestCase(GenericDocumentTestCase):
             Document.objects.first().metadata.get(
                 metadata_type__name='column_2'
             ).value, 'column 3'
+        )
+
+    def test_import_ambiguous_metadata(self):
+        self.auto_generate_test_csv_file = False
+        self.test_import_count = 2
+
+        self.test_document_type.delete()
+        management.call_command(
+            'import', self.test_csv_path, '--metadata_pairs_column', '6:7',
+        )
+
+        self.assertTrue(DocumentType.objects.count() > 0)
+        self.assertTrue(Document.objects.count() > 0)
+        self.assertTrue(Document.objects.first().metadata.count() > 0)
+        self.assertEqual(
+            Document.objects.first().metadata.get(
+                metadata_type__name='part'
+            ).value, 'value'
         )
