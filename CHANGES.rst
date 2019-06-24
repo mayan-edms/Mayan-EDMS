@@ -1,0 +1,1 @@
+- Use Select2 widget for the document type selection form.
