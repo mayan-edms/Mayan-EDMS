@@ -63,6 +63,7 @@ job_docker_nightly:
   only:
     - nightly
     - staging
+    - /^clients\/.+$/
 
 job_documentation_build:
   stage: build_documentation
@@ -161,6 +162,7 @@ job_push_python:
     - master
     - staging
     - nightly
+    - /^clients\/.+$/
 
 test-mysql:
   <<: *test_base
