@@ -17,6 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.validators import validate_internal_name
 from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.events.models import StoredEventType
 
 from .error_logs import error_log_state_actions
@@ -531,9 +532,30 @@ class WorkflowRuntimeProxy(Workflow):
         verbose_name = _('Workflow runtime proxy')
         verbose_name_plural = _('Workflow runtime proxies')
 
+    def get_document_count(self, user):
+        """
+        Return the numeric count of documents executing this workflow.
+        The count is filtered by access.
+        """
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_document_view,
+            queryset=Document.objects.filter(workflows__workflow=self),
+            user=user
+        ).count()
+
 
 class WorkflowStateRuntimeProxy(WorkflowState):
     class Meta:
         proxy = True
         verbose_name = _('Workflow state runtime proxy')
         verbose_name_plural = _('Workflow state runtime proxies')
+
+    def get_document_count(self, user):
+        """
+        Return the numeric count of documents at this workflow state.
+        The count is filtered by access.
+        """
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_document_view, queryset=self.get_documents(),
+            user=user
+        ).count()

@@ -256,6 +256,19 @@ class DocumentStatesApp(MayanAppConfig):
             )
         )
 
+        SourceColumn(
+            source=WorkflowRuntimeProxy, label=_('Documents'),
+            func=lambda context: context['object'].get_document_count(
+                user=context['request'].user
+            ), order=99
+        )
+        SourceColumn(
+            source=WorkflowStateRuntimeProxy, label=_('Documents'),
+            func=lambda context: context['object'].get_document_count(
+                user=context['request'].user
+            ), order=99
+        )
+
         menu_facet.bind_links(
             links=(link_document_workflow_instance_list,), sources=(Document,)
         )

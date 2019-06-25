@@ -577,44 +577,53 @@ class SourceColumn(object):
 
     @classmethod
     def get_for_source(cls, context, source, exclude_identifier=False, only_identifier=False):
-        try:
-            result = cls._registry[source]
-        except KeyError:
-            try:
-                # Might be an instance, try its class
-                result = cls._registry[source.__class__]
-            except KeyError:
-                try:
-                    # Might be a subclass, try its root class
-                    result = cls._registry[source.__class__.__mro__[-2]]
-                except KeyError:
-                    try:
-                        # Might be an inherited class insance, try its source class
-                        result = cls._registry[source.source_ptr.__class__]
-                    except (KeyError, AttributeError):
-                        try:
-                            # Try it as a queryset
-                            result = cls._registry[source.model]
-                        except AttributeError:
-                            try:
-                                # Special case for queryset items produced from
-                                # .defer() or .only() optimizations
-                                result = cls._registry[list(source._meta.parents.items())[0][0]]
-                            except (AttributeError, KeyError, IndexError):
-                                result = ()
-        except TypeError:
-            # unhashable type: list
-            result = ()
+        columns = []
 
-        result = SourceColumn.sort(columns=result)
+        try:
+            columns.extend(cls._registry[source])
+        except KeyError:
+            pass
+
+        try:
+            # Might be an instance, try its class
+            columns.extend(cls._registry[source.__class__])
+        except KeyError:
+            pass
+
+        try:
+            # Might be a subclass, try its root class
+            columns.extend(cls._registry[source.__class__.__mro__[-2]])
+        except KeyError:
+            pass
+
+        try:
+            # Might be an inherited class insance, try its source class
+            columns.extend(cls._registry[source.source_ptr.__class__])
+        except (KeyError, AttributeError):
+            pass
+
+        try:
+            # Try it as a queryset
+            columns.extend(cls._registry[source.model])
+        except AttributeError:
+            pass
+
+        try:
+            # Special case for queryset items produced from
+            # .defer() or .only() optimizations
+            columns.extend(cls._registry[list(source._meta.parents.items())[0][0]])
+        except (AttributeError, KeyError, IndexError):
+            pass
+
+        columns = SourceColumn.sort(columns=columns)
 
         if exclude_identifier:
-            result = [item for item in result if not item.is_identifier]
+            columns = [column for column in columns if not column.is_identifier]
         else:
             if only_identifier:
-                for item in result:
-                    if item.is_identifier:
-                        return item
+                for column in columns:
+                    if column.is_identifier:
+                        return column
                 return None
 
         final_result = []
@@ -635,12 +644,12 @@ class SourceColumn(object):
                 return result
 
         current_view_name = get_current_view_name(request=request)
-        for item in result:
-            if item.views:
-                if current_view_name in item.views:
-                    final_result.append(item)
+        for column in columns:
+            if column.views:
+                if current_view_name in column.views:
+                    final_result.append(column)
             else:
-                final_result.append(item)
+                final_result.append(column)
 
         return final_result
 
