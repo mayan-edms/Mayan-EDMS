@@ -7,3 +7,4 @@
 - Support exclusions from source columns.
 - Improve source column exclusion. Improve for model subclasses in partial querysets.
 - Add sortable index instance label column.
+- Add rectangle drawing transformation.

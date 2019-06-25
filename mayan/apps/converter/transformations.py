@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import hashlib
 import logging
 
-from PIL import Image, ImageColor, ImageFilter
+from PIL import Image, ImageColor, ImageDraw, ImageFilter
 
 from django.utils.translation import string_concat, ugettext_lazy as _
 from django.utils.encoding import force_bytes
@@ -149,6 +149,108 @@ class TransformationCrop(BaseTransformation):
         )
 
         return self.image.crop((left, top, right, bottom))
+
+
+class TransformationDrawRectangle(BaseTransformation):
+    arguments = (
+        'left', 'top', 'right', 'bottom', 'fillcolor', 'outlinecolor',
+        'outlinewidth'
+    )
+    label = _('Draw rectangle')
+    name = 'draw_rectangle'
+
+    def execute_on(self, *args, **kwargs):
+        super(TransformationDrawRectangle, self).execute_on(*args, **kwargs)
+
+        try:
+            left = int(self.left or '0')
+        except ValueError:
+            left = 0
+
+        try:
+            top = int(self.top or '0')
+        except ValueError:
+            top = 0
+
+        try:
+            right = int(self.right or '0')
+        except ValueError:
+            right = 0
+
+        try:
+            bottom = int(self.bottom or '0')
+        except ValueError:
+            bottom = 0
+
+        if left < 0:
+            left = 0
+
+        if left > self.image.size[0] - 1:
+            left = self.image.size[0] - 1
+
+        if top < 0:
+            top = 0
+
+        if top > self.image.size[1] - 1:
+            top = self.image.size[1] - 1
+
+        if right < 0:
+            right = 0
+
+        if right > self.image.size[0] - 1:
+            right = self.image.size[0] - 1
+
+        if bottom < 0:
+            bottom = 0
+
+        if bottom > self.image.size[1] - 1:
+            bottom = self.image.size[1] - 1
+
+        # Invert right value
+        # Pillow uses left, top, right, bottom to define a viewport
+        # of real coordinates
+        # We invert the right and bottom to define a viewport
+        # that can crop from the right and bottom borders without
+        # having to know the real dimensions of an image
+        right = self.image.size[0] - right
+        bottom = self.image.size[1] - bottom
+
+        if left > right:
+            left = right - 1
+
+        if top > bottom:
+            top = bottom - 1
+
+        logger.debug(
+            'left: %f, top: %f, right: %f, bottom: %f', left, top, right,
+            bottom
+        )
+
+        fillcolor_value = getattr(self, 'fillcolor', None)
+        if fillcolor_value:
+            fill_color = ImageColor.getrgb(fillcolor_value)
+        else:
+            fill_color = 0
+
+        outlinecolor_value = getattr(self, 'outlinecolor', None)
+        if outlinecolor_value:
+            outline_color = ImageColor.getrgb(outlinecolor_value)
+        else:
+            outline_color = None
+
+        outlinewidth_value = getattr(self, 'outlinewidth', None)
+        if outlinewidth_value:
+            outline_width = int(outlinewidth_value)
+        else:
+            outline_width = 0
+
+        draw = ImageDraw.Draw(self.image)
+        draw.rectangle(
+            (left, top, right, bottom), fill=fill_color, outline=outline_color,
+            width=outline_width
+        )
+
+        return self.image
 
 
 class TransformationFlip(BaseTransformation):
@@ -316,6 +418,7 @@ class TransformationZoom(BaseTransformation):
 
 
 BaseTransformation.register(transformation=TransformationCrop)
+BaseTransformation.register(transformation=TransformationDrawRectangle)
 BaseTransformation.register(transformation=TransformationFlip)
 BaseTransformation.register(transformation=TransformationGaussianBlur)
 BaseTransformation.register(transformation=TransformationLineArt)
