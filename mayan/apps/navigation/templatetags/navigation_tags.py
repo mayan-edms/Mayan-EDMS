@@ -114,15 +114,16 @@ def navigation_source_column_get_absolute_url(source_column, obj):
 
 
 @register.simple_tag(takes_context=True)
-def resolve_link(context, link):
-    # This can be used to resolve links or menus too
-    return link.resolve(context=context)
-
-
-@register.simple_tag(takes_context=True)
 def navigation_source_column_resolve(context, column):
     if column:
         result = column.resolve(context=context)
         return result
     else:
         return ''
+
+
+@register.simple_tag(takes_context=True)
+def resolve_link(context, link):
+    # This can be used to resolve links or menus too
+    return link.resolve(context=context)
+
