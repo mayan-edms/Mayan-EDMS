@@ -9,8 +9,8 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.generics import (
-    AddRemoveView, FormView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    AddRemoveView, ConfirmView, FormView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
@@ -32,7 +32,7 @@ from .permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
     permission_document_indexing_edit,
     permission_document_indexing_instance_view,
-    permission_document_indexing_view
+    permission_document_indexing_rebuild, permission_document_indexing_view
 )
 from .tasks import task_rebuild_index
 
@@ -148,6 +148,36 @@ class SetupIndexListView(SingleObjectListView):
             'no_results_title': _('There are no indexes.'),
             'title': _('Indexes'),
         }
+
+
+class SetupIndexRebuildView(ConfirmView):
+    post_action_redirect = reverse_lazy(
+        viewname='indexing:index_setup_list'
+    )
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Rebuild index: %s') % self.get_object()
+        }
+
+    def get_object(self):
+        return get_object_or_404(klass=self.get_queryset(), pk=self.kwargs['pk'])
+
+    def get_queryset(self):
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_document_indexing_rebuild,
+            queryset=Index.objects.all(), user=self.request.user
+        )
+
+    def view_action(self):
+        task_rebuild_index.apply_async(
+            kwargs=dict(index_id=self.get_object().pk)
+        )
+
+        messages.success(
+            message='Index queued for rebuild.', request=self.request
+        )
 
 
 class SetupIndexDocumentTypesView(AddRemoveView):

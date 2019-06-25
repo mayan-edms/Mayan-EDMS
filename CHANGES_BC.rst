@@ -3,3 +3,4 @@
 - Add two columns to show the number of documents per workflow and
   workflow state.
 - Sort module.
+- Add link to sort individual indexes.

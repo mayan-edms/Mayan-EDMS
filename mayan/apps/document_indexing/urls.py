@@ -11,8 +11,8 @@ from .views import (
     DocumentIndexNodeListView, DocumentTypeIndexesView, IndexInstanceNodeView,
     IndexListView, IndexesRebuildView, SetupIndexDocumentTypesView,
     SetupIndexCreateView, SetupIndexDeleteView, SetupIndexEditView,
-    SetupIndexListView, SetupIndexTreeTemplateListView, TemplateNodeCreateView,
-    TemplateNodeDeleteView, TemplateNodeEditView
+    SetupIndexListView, SetupIndexRebuildView, SetupIndexTreeTemplateListView,
+    TemplateNodeCreateView, TemplateNodeDeleteView, TemplateNodeEditView
 )
 
 urlpatterns = [
@@ -45,6 +45,10 @@ urlpatterns = [
         regex=r'^setup/index/(?P<pk>\d+)/document_types/$',
         view=SetupIndexDocumentTypesView.as_view(),
         name='index_setup_document_types'
+    ),
+    url(
+        regex=r'^setup/index/(?P<pk>\d+)/rebuild/$',
+        view=SetupIndexRebuildView.as_view(), name='index_setup_rebuild'
     ),
     url(
         regex=r'^setup/template/node/(?P<pk>\d+)/create/child/$',

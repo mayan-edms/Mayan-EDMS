@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
-from ..models import Index
+from ..models import Index, IndexInstanceNode
 from ..permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
     permission_document_indexing_edit,
@@ -10,7 +10,10 @@ from ..permissions import (
     permission_document_indexing_rebuild
 )
 
-from .literals import TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED
+from .literals import (
+    TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED,
+    TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
+)
 from .mixins import IndexTestMixin, IndexViewTestMixin
 
 
@@ -100,27 +103,27 @@ class IndexViewTestCase(IndexTestMixin, IndexViewTestMixin, GenericDocumentViewT
         )
         self.assertContains(response, text=TEST_INDEX_LABEL, status_code=200)
 
-    def _request_index_rebuild_get_view(self):
+    def _request_indexes_rebuild_get_view(self):
         return self.get(
             viewname='indexing:rebuild_index_instances',
         )
 
-    def _request_index_rebuild_post_view(self):
+    def _request_indexes_rebuild_post_view(self):
         return self.post(
             viewname='indexing:rebuild_index_instances', data={
                 'index_templates': self.test_index.pk
             }
         )
 
-    def test_index_rebuild_no_permission(self):
+    def test_indexes_rebuild_no_permission(self):
         self._create_test_index(rebuild=False)
 
-        response = self._request_index_rebuild_get_view()
+        response = self._request_indexes_rebuild_get_view()
         self.assertNotContains(
             response=response, text=self.test_index.label, status_code=200
         )
 
-        response = self._request_index_rebuild_post_view()
+        response = self._request_indexes_rebuild_post_view()
         # No error since we just don't see the index
         self.assertEqual(response.status_code, 200)
 
@@ -128,7 +131,7 @@ class IndexViewTestCase(IndexTestMixin, IndexViewTestMixin, GenericDocumentViewT
             self.test_index.instance_root.get_children_count(), 0
         )
 
-    def test_index_rebuild_with_access(self):
+    def test_indexes_rebuild_with_access(self):
         self._create_test_index(rebuild=False)
 
         self.grant_access(
@@ -136,13 +139,46 @@ class IndexViewTestCase(IndexTestMixin, IndexViewTestMixin, GenericDocumentViewT
             permission=permission_document_indexing_rebuild
         )
 
-        response = self._request_index_rebuild_get_view()
+        response = self._request_indexes_rebuild_get_view()
         self.assertContains(
             response=response, text=self.test_index.label, status_code=200
         )
 
-        response = self._request_index_rebuild_post_view()
+        response = self._request_indexes_rebuild_post_view()
         self.assertEqual(response.status_code, 302)
 
         # An instance root exists
         self.assertTrue(self.test_index.instance_root.pk)
+
+    def test_index_rebuild_view_no_permission(self):
+        self._create_test_index()
+
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
+            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
+            link_documents=True
+        )
+
+        response = self._request_test_index_rebuild_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(IndexInstanceNode.objects.count(), 0)
+
+    def test_index_rebuild_view_with_access(self):
+        self._create_test_index()
+
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
+            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
+            link_documents=True
+        )
+
+        self.grant_access(
+            obj=self.test_index,
+            permission=permission_document_indexing_rebuild
+        )
+
+        response = self._request_test_index_rebuild_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertNotEqual(IndexInstanceNode.objects.count(), 0)
