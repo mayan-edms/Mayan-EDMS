@@ -126,6 +126,7 @@ INSTALLED_APPS = (
     'mayan.apps.mayan_statistics',
     'mayan.apps.metadata',
     'mayan.apps.mirroring',
+    'mayan.apps.redactions',
     'mayan.apps.ocr',
     'mayan.apps.sources',
     'mayan.apps.storage',
