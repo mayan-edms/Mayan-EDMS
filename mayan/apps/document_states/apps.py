@@ -161,7 +161,8 @@ class DocumentStatesApp(MayanAppConfig):
             attribute='label', is_sortable=True, source=Workflow
         )
         SourceColumn(
-            attribute='internal_name', is_sortable=True, source=Workflow
+            attribute='internal_name', exclude=(WorkflowRuntimeProxy,),
+            is_sortable=True, source=Workflow
         )
         SourceColumn(
             attribute='get_initial_state', empty_value=_('None'),

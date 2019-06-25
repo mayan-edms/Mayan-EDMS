@@ -4,3 +4,4 @@
   workflow state.
 - Sort module.
 - Add link to sort individual indexes.
+- Support exclusions from source columns.

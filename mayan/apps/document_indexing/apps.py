@@ -106,11 +106,12 @@ class DocumentIndexingApp(MayanAppConfig):
             source=Index
         )
         SourceColumn(
-            attribute='slug', is_sortable=True, source=Index
+            attribute='slug', exclude=(IndexInstance,), is_sortable=True,
+            source=Index
         )
         SourceColumn(
-            attribute='enabled', is_sortable=True, source=Index,
-            widget=TwoStateWidget
+            attribute='enabled', exclude=(IndexInstance,), is_sortable=True,
+            source=Index, widget=TwoStateWidget
         )
 
         SourceColumn(

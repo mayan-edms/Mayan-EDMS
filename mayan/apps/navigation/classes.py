@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+import copy
 import inspect
 import logging
 
@@ -615,6 +616,11 @@ class SourceColumn(object):
         except (AttributeError, KeyError, IndexError):
             pass
 
+        columns = copy.copy(columns)
+        for column in columns:
+            if source in column.exclude or source.__class__ in column.exclude or source._meta.model in column.exclude:
+                columns.remove(column)
+
         columns = SourceColumn.sort(columns=columns)
 
         if exclude_identifier:
@@ -654,7 +660,7 @@ class SourceColumn(object):
         return final_result
 
     def __init__(
-        self, source, attribute=None, empty_value=None, func=None,
+        self, source, attribute=None, empty_value=None, exclude=None, func=None,
         include_label=False, is_attribute_absolute_url=False,
         is_object_absolute_url=False, is_identifier=False, is_sortable=False,
         kwargs=None, label=None, order=None, sort_field=None, views=None,
@@ -664,6 +670,7 @@ class SourceColumn(object):
         self._label = label
         self.attribute = attribute
         self.empty_value = empty_value
+        self.exclude = exclude or ()
         self.func = func
         self.is_attribute_absolute_url = is_attribute_absolute_url
         self.is_object_absolute_url = is_object_absolute_url
