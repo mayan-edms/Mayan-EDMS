@@ -309,6 +309,7 @@ class IndexListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_links': True,
+            'hide_object': True,
             'no_results_icon': icon_index,
             'no_results_main_link': link_index_template_create.resolve(
                 context=RequestContext(request=self.request)

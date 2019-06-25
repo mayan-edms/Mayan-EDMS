@@ -102,8 +102,12 @@ class DocumentIndexingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='label', is_identifier=True, is_sortable=True,
-            source=Index
+            attribute='label', exclude=(IndexInstance,), is_identifier=True,
+            is_sortable=True, source=Index
+        )
+        SourceColumn(
+            attribute='label', is_object_absolute_url=True, is_identifier=True,
+            is_sortable=True, source=IndexInstance
         )
         SourceColumn(
             attribute='slug', exclude=(IndexInstance,), is_sortable=True,
