@@ -126,4 +126,3 @@ def navigation_source_column_resolve(context, column):
 def resolve_link(context, link):
     # This can be used to resolve links or menus too
     return link.resolve(context=context)
-

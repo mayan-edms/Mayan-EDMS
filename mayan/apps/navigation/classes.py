@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-import copy
 import inspect
 import logging
 
@@ -580,6 +579,13 @@ class SourceColumn(object):
     def get_for_source(cls, context, source, exclude_identifier=False, only_identifier=False):
         columns = []
 
+        source_classes = set()
+
+        if hasattr(source, '_meta'):
+            source_classes.add(source._meta.model)
+        else:
+            source_classes.add(source)
+
         try:
             columns.extend(cls._registry[source])
         except KeyError:
@@ -589,16 +595,14 @@ class SourceColumn(object):
             # Might be an instance, try its class
             columns.extend(cls._registry[source.__class__])
         except KeyError:
-            pass
+            try:
+                # Might be a subclass, try its root class
+                columns.extend(cls._registry[source.__class__.__mro__[-2]])
+            except KeyError:
+                pass
 
         try:
-            # Might be a subclass, try its root class
-            columns.extend(cls._registry[source.__class__.__mro__[-2]])
-        except KeyError:
-            pass
-
-        try:
-            # Might be an inherited class insance, try its source class
+            # Might be an inherited class instance, try its source class
             columns.extend(cls._registry[source.source_ptr.__class__])
         except (KeyError, AttributeError):
             pass
@@ -609,17 +613,19 @@ class SourceColumn(object):
         except AttributeError:
             pass
 
-        try:
-            # Special case for queryset items produced from
-            # .defer() or .only() optimizations
-            columns.extend(cls._registry[list(source._meta.parents.items())[0][0]])
-        except (AttributeError, KeyError, IndexError):
-            pass
-
-        columns = copy.copy(columns)
-        for column in columns:
-            if source in column.exclude or source.__class__ in column.exclude or source._meta.model in column.exclude:
-                columns.remove(column)
+            try:
+                # Special case for queryset items produced from
+                # .defer() or .only() optimizations
+                result = cls._registry[list(source._meta.parents.items())[0][0]]
+            except (AttributeError, KeyError, IndexError):
+                pass
+            else:
+                # Second level special case for model subclasses from
+                # .defer and .only querysets
+                # Examples: Workflow runtime proxy and index instances in 3.2.x
+                for column in result:
+                    if not source_classes.intersection(set(column.exclude)):
+                        columns.append(column)
 
         columns = SourceColumn.sort(columns=columns)
 
