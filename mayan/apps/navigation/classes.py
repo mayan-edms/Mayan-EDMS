@@ -653,7 +653,7 @@ class SourceColumn(object):
                 logger.warning(
                     'No request variable, aborting request resolution'
                 )
-                return result
+                return final_result
 
         current_view_name = get_current_view_name(request=request)
         for column in columns:
