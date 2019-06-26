@@ -253,6 +253,112 @@ class TransformationDrawRectangle(BaseTransformation):
         return self.image
 
 
+class TransformationDrawRectanglePercent(BaseTransformation):
+    arguments = (
+        'left', 'top', 'right', 'bottom', 'fillcolor', 'outlinecolor',
+        'outlinewidth'
+    )
+    label = _('Draw rectangle (percents coordinates)')
+    name = 'draw_rectangle_percent'
+
+    def execute_on(self, *args, **kwargs):
+        super(TransformationDrawRectanglePercent, self).execute_on(*args, **kwargs)
+
+        try:
+            left = int(self.left or '0')
+        except ValueError:
+            left = 0
+
+        try:
+            top = int(self.top or '0')
+        except ValueError:
+            top = 0
+
+        try:
+            right = int(self.right or '0')
+        except ValueError:
+            right = 0
+
+        try:
+            bottom = int(self.bottom or '0')
+        except ValueError:
+            bottom = 0
+
+        if left < 0:
+            left = 0
+
+        if left > 100:
+            left = 100
+
+        if top < 0:
+            top = 0
+
+        if top > 100:
+            top = 100
+
+        if right < 0:
+            right = 0
+
+        if right > 100:
+            right = 100
+
+        if bottom < 0:
+            bottom = 0
+
+        if bottom > 100:
+            bottom = 100
+
+        if left > right:
+            left, right = right, left
+
+        if top > bottom:
+            top, bottom = bottom, top
+
+        logger.debug(
+            'left: %f, top: %f, right: %f, bottom: %f', left, top, right,
+            bottom
+        )
+
+        fillcolor_value = getattr(self, 'fillcolor', None)
+        if fillcolor_value:
+            fill_color = ImageColor.getrgb(fillcolor_value)
+        else:
+            fill_color = 0
+
+        outlinecolor_value = getattr(self, 'outlinecolor', None)
+        if outlinecolor_value:
+            outline_color = ImageColor.getrgb(outlinecolor_value)
+        else:
+            outline_color = None
+
+        outlinewidth_value = getattr(self, 'outlinewidth', None)
+        if outlinewidth_value:
+            outline_width = int(outlinewidth_value)
+        else:
+            outline_width = 0
+
+        left = left / 100.0 * self.image.size[0]
+        top = top / 100.0 * self.image.size[1]
+
+        # Invert right value
+        # Pillow uses left, top, right, bottom to define a viewport
+        # of real coordinates
+        # We invert the right and bottom to define a viewport
+        # that can crop from the right and bottom borders without
+        # having to know the real dimensions of an image
+
+        right = self.image.size[0] - (right / 100.0 * self.image.size[0])
+        bottom = self.image.size[1] - (bottom / 100.0 * self.image.size[1])
+
+        draw = ImageDraw.Draw(self.image)
+        draw.rectangle(
+            (left, top, right, bottom), fill=fill_color, outline=outline_color,
+            width=outline_width
+        )
+
+        return self.image
+
+
 class TransformationFlip(BaseTransformation):
     arguments = ()
     label = _('Flip')
@@ -419,6 +525,7 @@ class TransformationZoom(BaseTransformation):
 
 BaseTransformation.register(transformation=TransformationCrop)
 BaseTransformation.register(transformation=TransformationDrawRectangle)
+BaseTransformation.register(transformation=TransformationDrawRectanglePercent)
 BaseTransformation.register(transformation=TransformationFlip)
 BaseTransformation.register(transformation=TransformationGaussianBlur)
 BaseTransformation.register(transformation=TransformationLineArt)

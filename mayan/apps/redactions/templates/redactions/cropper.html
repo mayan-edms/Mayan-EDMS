@@ -32,6 +32,8 @@
 {% endblock %}
 
 {% block content %}
+    <div id="cropper-result"></div>
+
     <div class="cropper-main">
         <img src="{{ document_page.get_api_image_url }}">
     </div>
@@ -63,6 +65,7 @@
                     .on('load', function () {
                         pic_real_width = this.width;
                         pic_real_height = this.height;
+                        console.log('loaded');
                     });
 
                     cropperInstance = $image.cropper({
@@ -76,6 +79,16 @@
                             $('#id_top').val(crop_top);
                             $('#id_right').val(crop_right);
                             $('#id_bottom').val(crop_bottom);
+
+                            var arguments = {
+                                'left': crop_left,
+                                'top': crop_top,
+                                'right': crop_right,
+                                'bottom': crop_bottom,
+                                'fillcolor': '#000000',
+                            }
+
+                            //$('#id_arguments').text(JSON.stringify(arguments));
                         },
                         mouseWheelZoom: false,
                         movable: false,
@@ -83,12 +96,14 @@
                         ready: function () {
                             canvasData = $image.cropper('getCanvasData');
                             containerData = $image.cropper('getContainerData');
+                            var arguments = JSON.parse($('#id_arguments').text());
+                            console.log(arguments);
 
                             $image.cropper('setCropBoxData', {
-                                left: Math.round({{ zone.left }} / 100.0 * canvasData.width + canvasData.left),
-                                top: Math.round({{ zone.top }} / 100.0 * canvasData.height + canvasData.top),// + canvasData.top),
-                                width: Math.round({{ zone.width }} / 100.0 * canvasData.width + canvasData.left),// + canvasData.top),
-                                height: Math.round({{ zone.height }} / 100.0 * canvasData.height + canvasData.top),// + canvasData.top),
+                                left: Math.round(arguments.left / 100.0 * canvasData.width + canvasData.left),
+                                top: Math.round(arguments.top / 100.0 * canvasData.height + canvasData.top),// + canvasData.top),
+                                width: Math.round((100.0 - arguments.right - arguments.left) / 100.0 * canvasData.width),// + canvasData.left,
+                                height: Math.round((100.0 - arguments.bottom - arguments.top) / 100.0 * canvasData.height),// + canvasData.top),
                             });
                         },
                         rotatable: false,
