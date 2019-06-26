@@ -311,15 +311,8 @@ class DocumentsApp(MayanAppConfig):
             source=DeletedDocument
         )
         SourceColumn(
-            func=lambda context: document_page_thumbnail_widget.render(
-                instance=context['object']
-            ), label=_('Thumbnail'), source=DeletedDocument
-        )
-        SourceColumn(
-            attribute='document_type', is_sortable=True, source=DeletedDocument
-        )
-        SourceColumn(
-            attribute='deleted_date_time', source=DeletedDocument
+            attribute='deleted_date_time', include_label=True, order=99,
+            source=DeletedDocument
         )
 
         # DocumentVersion
