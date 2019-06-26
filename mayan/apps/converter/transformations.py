@@ -265,22 +265,22 @@ class TransformationDrawRectanglePercent(BaseTransformation):
         super(TransformationDrawRectanglePercent, self).execute_on(*args, **kwargs)
 
         try:
-            left = int(self.left or '0')
+            left = float(self.left or '0')
         except ValueError:
             left = 0
 
         try:
-            top = int(self.top or '0')
+            top = float(self.top or '0')
         except ValueError:
             top = 0
 
         try:
-            right = int(self.right or '0')
+            right = float(self.right or '0')
         except ValueError:
             right = 0
 
         try:
-            bottom = int(self.bottom or '0')
+            bottom = float(self.bottom or '0')
         except ValueError:
             bottom = 0
 
@@ -308,11 +308,11 @@ class TransformationDrawRectanglePercent(BaseTransformation):
         if bottom > 100:
             bottom = 100
 
-        if left > right:
-            left, right = right, left
+        #if left > right:
+        #    left, right = right, left
 
-        if top > bottom:
-            top, bottom = bottom, top
+        #if top > bottom:
+        #    top, bottom = bottom, top
 
         logger.debug(
             'left: %f, top: %f, right: %f, bottom: %f', left, top, right,

@@ -1,60 +1,54 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.contrib import messages
-from django.core.exceptions import PermissionDenied
-from django.core.paginator import Paginator, EmptyPage
+import logging
+
 from django.core.urlresolvers import reverse
-from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.generics import (
-    SingleObjectCreateView, SingleObjectEditView, SingleObjectListView
+    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
+    SingleObjectListView
 )
 from mayan.apps.common.mixins import ExternalObjectMixin
-from mayan.apps.converter.models import Transformation
-from mayan.apps.converter.transformations import TransformationDrawRectangle
-from mayan.apps.converter.views import TransformationListView
-from mayan.apps.documents.models import Document, DocumentPage
+from mayan.apps.converter.transformations import TransformationDrawRectanglePercent
+from mayan.apps.documents.models import DocumentPage
 
-from .forms import RedactionCoordinatesForm, RedactionForm
+from .forms import RedactionCoordinatesForm
 from .icons import icon_redactions
+from .links import link_redaction_create
 from .models import Redaction
+from .permissions import (
+    permission_redaction_create, permission_redaction_delete,
+    permission_redaction_edit, permission_redaction_view
+)
+
+logger = logging.getLogger(__name__)
 
 
 class RedactionCreateView(ExternalObjectMixin, SingleObjectCreateView):
     external_object_class = DocumentPage
     external_object_pk_url_kwarg = 'pk'
-    form_class = RedactionForm
+    form_class = RedactionCoordinatesForm
     model = Redaction
-    #object_permission =
+    object_permission = permission_redaction_create
+    template_name = 'redactions/cropper.html'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
-        instance.name = TransformationDrawRectangle.name
         instance.content_object = self.external_object
+        instance.name = TransformationDrawRectanglePercent.name
         instance.save()
-
-        #messages.success(self.request, _('Redaction created successfully.'))
-
-        return HttpResponseRedirect(self.get_success_url())
+        return super(RedactionCreateView, self).form_valid(form)
 
     def get_extra_context(self, **kwargs):
-        return {
-            'object': self.external_object,
-            'title': _(
-                'Create redaction for document page: %s'
-            ) % self.external_object
+        context = {
+            'document_page': self.external_object,
+            'redaction': self.object,
+            'title': _('Create redaction for: %s') % self.external_object
         }
 
-    def get_form_kwargs(self):
-        """
-        Returns the keyword arguments for instantiating the form.
-        """
-        kwargs = super(RedactionCreateView, self).get_form_kwargs()
-        kwargs.update({'document_page': self.external_object})
-        return kwargs
+        return context
 
     def get_post_action_redirect(self):
         return reverse(
@@ -64,26 +58,48 @@ class RedactionCreateView(ExternalObjectMixin, SingleObjectCreateView):
         )
 
 
+class RedactionDeleteView(SingleObjectDeleteView):
+    model = Redaction
+    object_permission = permission_redaction_delete
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='redactions:redaction_list', kwargs={
+                'pk': self.object.content_object.pk
+            }
+        )
+
+    def get_extra_context(self):
+        return {
+            'content_object': self.object.content_object,
+            'navigation_object_list': ('content_object', 'redaction'),
+            'previous': reverse(
+                viewname='redactions:redaction_list', kwargs={
+                    'pk': self.object.content_object.pk
+                }
+            ),
+            'redaction': self.object,
+            'title': _(
+                'Delete refaction for: %(content_object)s?'
+            ) % {
+                'content_object': self.object.content_object
+            },
+        }
+
+
 class RedactionEditView(SingleObjectEditView):
     form_class = RedactionCoordinatesForm
     model = Redaction
-    #object_permission =
-    #page_kwarg = 'page'
-    #paginate_by = 1
+    object_permission = permission_redaction_edit
     template_name = 'redactions/cropper.html'
 
     def get_extra_context(self, **kwargs):
         context = {
-            #'api_image_data_url': document.get_api_image_url,
             'document_page': self.object.content_object,
-            'hide_help_text': True,
-            'hide_required_text': True,
-            'hide_title': True,
             'navigation_object_list': ['document_page', 'redaction'],
             'redaction': self.object,
             'title': _('Edit redaction: %s') % self.object
         }
-
 
         return context
 
@@ -97,7 +113,7 @@ class RedactionEditView(SingleObjectEditView):
 
 class RedactionListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = DocumentPage
-    #external_object_permission =
+    object_permission = permission_redaction_view
     external_object_pk_url_kwarg = 'pk'
 
     def dispatch(self, request, *args, **kwargs):
@@ -107,38 +123,25 @@ class RedactionListView(ExternalObjectMixin, SingleObjectListView):
 
     def get_extra_context(self):
         return {
+            'hide_object': True,
             'object': self.external_object,
-            #'hide_link': True,
-            #'hide_object': True,
-            #'navigation_object_list': ('content_object',),
             'no_results_icon': icon_redactions,
-            #'no_results_main_link': link_transformation_create.resolve(
-            #    context=RequestContext(
-            #        request=self.request, dict_={
-            #            'content_object': self.content_object
-            #        }
-            #    )
-            #),
-            #'no_results_text': _(
-            #    'Transformations allow changing the visual appearance '
-            #    'of documents without making permanent changes to the '
-            #    'document file themselves.'
-            #),
-            'no_results_title': _('No redactions exist'),
+            'no_results_main_link': link_redaction_create.resolve(
+                context=RequestContext(
+                    request=self.request, dict_={
+                        'object': self.external_object
+                    }
+                )
+            ),
+            'no_results_text': _(
+                'Redactions allow removing access to confidential and '
+                'sensitive information without having to modify the document.'
+            ),
+            'no_results_title': _('No existing redactions'),
             'title': _('Redactions for: %s') % self.external_object,
         }
 
     def get_source_queryset(self):
-        return Transformation.objects.get_for_object(
+        return Redaction.objects.get_for_object(
             obj=self.external_object
         ).filter(name__startswith='draw')
-
-        result = Transformation.objects.none()
-
-        for version in self.external_object.versions.all():
-            for page in version.pages.all():
-                result = result | Transformation.objects.get_for_object(obj=page)
-
-        return result.filter(name__startswith='draw')
-        #return Transformation.objects.get_for_object(obj=self.external_object)
-
