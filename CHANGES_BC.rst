@@ -8,3 +8,6 @@
 - Improve source column exclusion. Improve for model subclasses in partial querysets.
 - Add sortable index instance label column.
 - Add rectangle drawing transformation.
+- Redactions app.
+- Remove duplicated trashed document preview.
+- Add label to trashed date and time document source column.
