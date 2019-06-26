@@ -40,9 +40,6 @@ class RedactionCreateView(ExternalObjectMixin, SingleObjectCreateView):
 
         return HttpResponseRedirect(self.get_success_url())
 
-    #def get_document_type(self):
-    #    return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
-
     def get_extra_context(self, **kwargs):
         return {
             'object': self.external_object,
@@ -75,34 +72,27 @@ class RedactionEditView(SingleObjectEditView):
     #paginate_by = 1
     template_name = 'redactions/cropper.html'
 
-    #def dispatch(self, request, *args, **kwargs):
-    #    self.object_list = self.get_document_list()
-
-    #    return super(RedactionEditView, self).dispatch(
-    #        request, *args, **kwargs
-    #    )
-
     def get_extra_context(self, **kwargs):
         context = {
             #'api_image_data_url': document.get_api_image_url,
             'document_page': self.object.content_object,
-            #'document_number': document_number,
             'hide_help_text': True,
             'hide_required_text': True,
             'hide_title': True,
             'navigation_object_list': ['document_page', 'redaction'],
-            #'next_document_number': document_number + 1,
             'redaction': self.object,
-            #'page_obj': page,
-            #'page_obj': self.get_paginator(
-            #    queryset=queryset, per_page=1
-            #),
             'title': _('Edit redaction: %s') % self.object
         }
 
 
         return context
 
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='redactions:redaction_list', kwargs={
+                'pk': self.object.content_object.pk
+            }
+        )
 
 
 class RedactionListView(ExternalObjectMixin, SingleObjectListView):
