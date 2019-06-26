@@ -35,7 +35,8 @@ def task_upload_new_document(self, document_type_id, shared_uploaded_file_id, ex
     except OperationalError as exception:
         logger.warning(
             'Operational error during attempt to retrieve shared data for '
-            'new document of type: %s; %s. Retrying.', document_type, exception
+            'new document of type ID: %d; %s. Retrying.', document_type_id,
+            exception
         )
         raise self.retry(exc=exception)
 
