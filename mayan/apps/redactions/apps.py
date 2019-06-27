@@ -10,6 +10,7 @@ from mayan.apps.common.menus import (
     menu_list_facet, menu_object, menu_secondary,
 )
 
+from .dependencies import *  # NOQA
 from .links import (
     link_redaction_create, link_redaction_delete, link_redaction_edit,
     link_redaction_list
