@@ -11,3 +11,4 @@
 - Redactions app.
 - Remove duplicated trashed document preview.
 - Add label to trashed date and time document source column.
+- Tag created event fix.
