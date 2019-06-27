@@ -21,8 +21,13 @@ from mayan.apps.common.generics import MultipleObjectFormActionView
 from mayan.apps.common.settings import (
     setting_home_view, setting_project_title, setting_project_url
 )
+from mayan.apps.events.utils import get_system_user
 from mayan.apps.user_management.permissions import permission_user_edit
 
+from .events import (
+    event_user_authentication_error, event_user_password_reset_complete,
+    event_user_password_reset_started
+)
 from .forms import EmailAuthenticationForm, UsernameAuthenticationForm
 from .settings import setting_login_method, setting_maximum_session_length
 
@@ -56,6 +61,10 @@ class MayanLoginView(StrongholdPublicMixin, LoginView):
             self.request.session.set_expiry(0)
 
         return result
+
+    def form_invalid(self, form):
+        event_user_authentication_error.commit(actor=get_system_user())
+        return super(MayanLoginView, self).form_invalid(form=form)
 
     def get_form_class(self):
         if setting_login_method.value == 'email':
@@ -112,6 +121,10 @@ class MayanPasswordResetConfirmView(StrongholdPublicMixin, PasswordResetConfirmV
     )
     template_name = 'authentication/password_reset_confirm.html'
 
+    def post(self, *args, **kwargs):
+        event_user_password_reset_complete.commit(actor=get_system_user())
+        return super(MayanPasswordResetConfirmView, self).post(*args, **kwargs)
+
 
 class MayanPasswordResetDoneView(StrongholdPublicMixin, PasswordResetDoneView):
     extra_context = {
@@ -136,6 +149,10 @@ class MayanPasswordResetView(StrongholdPublicMixin, PasswordResetView):
         viewname='authentication:password_reset_done_view'
     )
     template_name = 'authentication/password_reset_form.html'
+
+    def post(self, *args, **kwargs):
+        event_user_password_reset_started.commit(actor=get_system_user())
+        return super(MayanPasswordResetView, self).post(*args, **kwargs)
 
 
 class UserSetPasswordView(MultipleObjectFormActionView):

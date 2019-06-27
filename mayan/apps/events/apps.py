@@ -19,6 +19,7 @@ from .links import (
     link_events_list, link_notification_mark_read,
     link_notification_mark_read_all, link_user_notifications_list,
 )
+from .utils import create_system_user
 
 
 class EventsApp(MayanAppConfig):
@@ -101,3 +102,5 @@ class EventsApp(MayanAppConfig):
                 link_event_types_subscriptions_list, link_current_user_events
             ), position=50
         )
+
+        create_system_user()
