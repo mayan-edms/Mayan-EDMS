@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import json
+
 from django.core import mail
 
 from mayan.apps.common.tests import GenericViewTestCase
@@ -18,7 +20,7 @@ from .literals import (
 from .mixins import MailerTestMixin
 
 
-class EmailActionTestCase(MailerTestMixin, ActionTestCase):
+class EmailActionTestCase(MailerTestMixin, WorkflowTestMixin, ActionTestCase):
     def test_email_action_literal_text(self):
         self._create_test_user_mailer()
 
@@ -31,6 +33,34 @@ class EmailActionTestCase(MailerTestMixin, ActionTestCase):
             }
         )
         action.execute(context={'document': self.test_document})
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
+        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+
+    def test_email_action_workflow_execute(self):
+        self._create_test_workflow()
+        self._create_test_workflow_state()
+        self._create_test_user_mailer()
+
+        self.test_workflow_state.actions.create(
+            action_data=json.dumps(
+                {
+                    'mailing_profile': self.test_user_mailer.pk,
+                    'recipient': TEST_EMAIL_ADDRESS,
+                    'subject': TEST_EMAIL_SUBJECT,
+                    'body': TEST_EMAIL_BODY,
+                }
+            ),
+            action_path='mayan.apps.mailer.workflow_actions.EmailAction',
+            label='test email action', when=WORKFLOW_ACTION_ON_ENTRY,
+        )
+
+        self.test_workflow_state.initial = True
+        self.test_workflow_state.save()
+        self.test_workflow.document_types.add(self.test_document_type)
+
+        self.upload_document()
+
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
@@ -55,16 +85,8 @@ class EmailActionViewTestCase(DocumentTestMixin, MailerTestMixin, WorkflowTestMi
 
         self.assertEqual(self.test_workflow_state.actions.count(), 0)
 
-    def test_email_action_create_post_view(self):
-        self._create_test_workflow()
-        self._create_test_workflow_state()
-        self._create_test_user_mailer()
-
-        self.grant_access(
-            obj=self.test_user_mailer, permission=permission_user_mailer_use
-        )
-
-        response = self.post(
+    def _request_email_action_create_post_view(self):
+        return self.post(
             viewname='document_states:setup_workflow_state_action_create',
             kwargs={
                 'pk': self.test_workflow_state.pk,
@@ -76,9 +98,19 @@ class EmailActionViewTestCase(DocumentTestMixin, MailerTestMixin, WorkflowTestMi
                 'recipient': TEST_EMAIL_ADDRESS,
                 'subject': TEST_EMAIL_SUBJECT,
                 'body': TEST_EMAIL_BODY,
-
             }
         )
+
+    def test_email_action_create_post_view(self):
+        self._create_test_workflow()
+        self._create_test_workflow_state()
+        self._create_test_user_mailer()
+
+        self.grant_access(
+            obj=self.test_user_mailer, permission=permission_user_mailer_use
+        )
+
+        response = self._request_email_action_create_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(self.test_workflow_state.actions.count(), 1)
