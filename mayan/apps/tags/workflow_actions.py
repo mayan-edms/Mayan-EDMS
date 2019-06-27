@@ -6,8 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.document_states.classes import WorkflowAction
-from mayan.apps.tags.models import Tag
-from mayan.apps.tags.permissions import permission_tag_attach, permission_tag_remove
+
+from .models import Tag
+from .permissions import permission_tag_attach, permission_tag_remove
 
 __all__ = ('AttachTagAction', 'RemoveTagAction')
 logger = logging.getLogger(__name__)
