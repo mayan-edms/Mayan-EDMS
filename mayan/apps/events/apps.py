@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
+from django.db.models.signals import post_migrate
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
@@ -11,6 +12,7 @@ from mayan.apps.common.menus import (
 from mayan.apps.navigation.classes import SourceColumn
 
 from .dependencies import *  # NOQA
+from .handlers import handler_create_system_user
 from .html_widgets import (
     ObjectLinkWidget, widget_event_actor_link, widget_event_type_link
 )
@@ -19,7 +21,6 @@ from .links import (
     link_events_list, link_notification_mark_read,
     link_notification_mark_read_all, link_user_notifications_list,
 )
-from .utils import create_system_user
 
 
 class EventsApp(MayanAppConfig):
@@ -103,4 +104,7 @@ class EventsApp(MayanAppConfig):
             ), position=50
         )
 
-        create_system_user()
+        post_migrate.connect(
+            dispatch_uid='events_create_system_user',
+            receiver=handler_create_system_user,
+        )
