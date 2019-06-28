@@ -136,6 +136,8 @@ class Workflow(models.Model):
                 'name': value['name'],
                 'label': value['label'],
                 'shape': 'doublecircle' if value['connections']['origin'] == 0 or value['connections']['destination'] == 0 or value['initial'] else 'circle',
+                'style': 'filled' if value['initial'] else '',
+                'fillcolor': '#eeeeee',
             }
             diagram.node(**kwargs)
 
