@@ -178,7 +178,12 @@ class WorkflowInstanceTransitionForm(forms.Form):
         label=_('Transition'), queryset=WorkflowTransition.objects.none()
     )
     comment = forms.CharField(
-        label=_('Comment'), required=False, widget=forms.widgets.Textarea()
+        help_text=_('Optional comment to attach to the transition.'),
+        label=_('Comment'), required=False, widget=forms.widgets.Textarea(
+            attrs={
+                'rows': 3
+            }
+        )
     )
 
 

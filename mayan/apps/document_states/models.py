@@ -101,6 +101,7 @@ class Workflow(models.Model):
             }, format='png'
         )
 
+        action_cache = {}
         state_cache = {}
         transition_cache = []
 
@@ -111,6 +112,14 @@ class Workflow(models.Model):
                 'initial': state.initial,
                 'connections': {'origin': 0, 'destination': 0}
             }
+
+            for action in state.actions.all():
+                action_cache['a{}'.format(action.pk)] = {
+                    'name': 'a{}'.format(action.pk),
+                    'label': action.label,
+                    'state': 's{}'.format(state.pk),
+                    'when': action.when,
+                }
 
         for transition in self.transitions.all():
             transition_cache.append(
@@ -128,11 +137,32 @@ class Workflow(models.Model):
                 'name': value['name'],
                 'label': value['label'],
                 'shape': 'doublecircle' if value['connections']['origin'] == 0 or value['connections']['destination'] == 0 or value['initial'] else 'circle',
+                'style': 'filled' if value['initial'] else '',
+                'fillcolor': '#eeeeee',
             }
             diagram.node(**kwargs)
 
         for transition in transition_cache:
             diagram.edge(**transition)
+
+        for key, value in action_cache.items():
+            kwargs = {
+                'name': value['name'],
+                'label': value['label'],
+                'shape': 'box',
+            }
+            diagram.node(**kwargs)
+            diagram.edge(
+                **{
+                    'head_name': '{}'.format(value['name']),
+                    'tail_name': '{}'.format(value['state']),
+                    'label': 'On entry' if value['when'] == WORKFLOW_ACTION_ON_ENTRY else 'On exit',
+                    'arrowhead': 'dot',
+                    'dir': 'both',
+                    'arrowtail': 'dot',
+                    'style': 'dashed',
+                }
+            )
 
         return diagram.pipe()
 
