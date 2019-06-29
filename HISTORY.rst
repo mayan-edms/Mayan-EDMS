@@ -18,6 +18,8 @@
   existing tags.
 * Add proper redirection after moving a document to the
   trash.
+* Remove the INSTALLED_APPS setting. Replace it with
+  the new COMMON_EXTRA_APPS and COMMON_DISABLED_APPS.
 
 3.2.3 (2019-06-21)
 ==================
