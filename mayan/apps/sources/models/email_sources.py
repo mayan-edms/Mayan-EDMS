@@ -247,10 +247,11 @@ class IMAPEmail(EmailBaseModel):
                 EmailBaseModel.process_message(
                     source=self, message_text=data[0][1]
                 )
+
                 if not test:
                     mailbox.store(
                         message_set=message_number, command='+FLAGS',
-                        flag_list='\\Deleted'
+                        flags=r'\Deleted'
                     )
 
         mailbox.expunge()

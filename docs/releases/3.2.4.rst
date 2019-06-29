@@ -10,6 +10,10 @@ Changes
 - Support configurable GUnicorn timeouts. Defaults to
   current value of 120 seconds.
 - Fix help text of the platformtemplate command.
+- Fix IMAP4 mailbox.store flags argument. Python's documentation
+  incorrectly state it is named flag_list. Closes GitLab issue
+  #606. Thanks to Samuel Aebi (@samuelaebi) for the report and 
+  debug information.
 
 Removals
 --------
@@ -98,6 +102,7 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
+- :gitlab-issue:`606` Delete after IMAP Processing
 - :gitlab-issue:`628` mailbox.user in POP3Email gets passed keyword argument, but only accepts "user" or positional argument
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
