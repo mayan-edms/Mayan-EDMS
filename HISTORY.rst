@@ -20,6 +20,9 @@
   trash.
 * Remove the INSTALLED_APPS setting. Replace it with
   the new COMMON_EXTRA_APPS and COMMON_DISABLED_APPS.
+* Improve email metadata support. Can now work on
+  email with nested parts. Also the metadata.yaml
+  attachment no longer needs to be the first attachment.
 
 3.2.3 (2019-06-21)
 ==================
