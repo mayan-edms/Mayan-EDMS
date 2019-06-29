@@ -6,7 +6,13 @@ import shutil
 
 import mock
 from pathlib2 import Path
+import yaml
+try:
+    from yaml import CSafeDumper as SafeDumper
+except ImportError:
+    from yaml import SafeDumper
 
+from django.core import mail
 from django.utils.encoding import force_text
 
 from mayan.apps.documents.models import Document
@@ -189,6 +195,72 @@ class EmailBaseTestCase(GenericDocumentTestCase):
 
         # Only two attachments and a body document
         self.assertEqual(2, Document.objects.count())
+
+    def test_metadata_yaml_attachment(self):
+        TEST_METADATA_VALUE_1 = 'test value 1'
+        TEST_METADATA_VALUE_2 = 'test value 2'
+
+        test_metadata_type_1 = MetadataType.objects.create(
+            name='test_metadata_type_1'
+        )
+        test_metadata_type_2 = MetadataType.objects.create(
+            name='test_metadata_type_2'
+        )
+        self.test_document_type.metadata.create(
+            metadata_type=test_metadata_type_1
+        )
+        self.test_document_type.metadata.create(
+            metadata_type=test_metadata_type_2
+        )
+
+        test_metadata_yaml = yaml.dump(
+            Dumper=SafeDumper, data={
+                test_metadata_type_1.name: TEST_METADATA_VALUE_1,
+                test_metadata_type_2.name: TEST_METADATA_VALUE_2,
+            }
+        )
+
+        # Create email with a test attachment first, then the metadata.yaml
+        # attachment
+        with mail.get_connection(
+            backend='django.core.mail.backends.locmem.EmailBackend'
+        ) as connection:
+            email_message = mail.EmailMultiAlternatives(
+                body='test email body', connection=connection,
+                subject='test email subject', to=['test@example.com'],
+            )
+
+            email_message.attach(
+                filename='test_attachment',
+                content='test_content',
+            )
+
+            email_message.attach(
+                filename='metadata.yaml',
+                content=test_metadata_yaml,
+            )
+
+            email_message.send()
+
+        self._create_email_source()
+        self.source.store_body = True
+        self.source.save()
+
+        EmailBaseModel.process_message(
+            source=self.source, message_text=mail.outbox[0].message()
+        )
+
+        self.assertEqual(Document.objects.count(), 2)
+
+        for document in Document.objects.all():
+            self.assertEqual(
+                document.metadata.get(metadata_type=test_metadata_type_1).value,
+                TEST_METADATA_VALUE_1
+            )
+            self.assertEqual(
+                document.metadata.get(metadata_type=test_metadata_type_2).value,
+                TEST_METADATA_VALUE_2
+            )
 
 
 class IMAPSourceTestCase(GenericDocumentTestCase):
