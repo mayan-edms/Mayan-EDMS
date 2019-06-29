@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:37-0400\n"
+"POT-Creation-Date: 2019-06-29 02:17-0400\n"
 "PO-Revision-Date: 2019-06-15 07:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:62 events.py:8 links.py:17 links.py:46 links.py:149 links.py:176
 #: models.py:61 views/workflow_proxy_views.py:75 views/workflow_views.py:139
@@ -44,7 +46,7 @@ msgstr "Nijedno"
 msgid "Current state"
 msgstr "Trenutna stanje"
 
-#: apps.py:176 apps.py:203 models.py:484
+#: apps.py:176 apps.py:203 models.py:514
 msgid "User"
 msgstr "Korisnik"
 
@@ -56,15 +58,15 @@ msgstr "Poslednja tranzicija"
 msgid "Date and time"
 msgstr "Datum i vreme"
 
-#: apps.py:192 models.py:181
+#: apps.py:192 models.py:211
 msgid "Completion"
 msgstr "Završetak"
 
-#: apps.py:206 forms.py:178 links.py:161 models.py:339 models.py:480
+#: apps.py:206 forms.py:178 links.py:161 models.py:369 models.py:510
 msgid "Transition"
 msgstr "Tranzicija"
 
-#: apps.py:210 forms.py:181 models.py:486
+#: apps.py:210 forms.py:182 models.py:516
 msgid "Comment"
 msgstr "Komentar"
 
@@ -80,7 +82,7 @@ msgstr "Vrsta akcije"
 msgid "Triggers"
 msgstr "Uzroci"
 
-#: error_logs.py:8 models.py:272
+#: error_logs.py:8 models.py:302
 msgid "Workflow state actions"
 msgstr "Akcije stanja rada"
 
@@ -100,11 +102,11 @@ msgstr "Akcija"
 msgid "Namespace"
 msgstr "Imenovani prostor"
 
-#: forms.py:121 models.py:48 models.py:169 models.py:250 models.py:313
+#: forms.py:121 models.py:48 models.py:199 models.py:280 models.py:343
 msgid "Label"
 msgstr "Labela"
 
-#: forms.py:125 models.py:252
+#: forms.py:125 models.py:282
 msgid "Enabled"
 msgstr "Omogućeno"
 
@@ -115,6 +117,10 @@ msgstr "Ne"
 #: forms.py:128
 msgid "Yes"
 msgstr "Da"
+
+#: forms.py:181
+msgid "Optional comment to attach to the transition."
+msgstr ""
 
 #: handlers.py:62
 #, python-format
@@ -197,13 +203,15 @@ msgstr "Na izlazu"
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
-msgstr "Ova vrijednost će koristiti druge aplikacije za upućivanje na ovaj tok posla. Može sadržavati samo slova, brojeve i podvučice."
+msgstr ""
+"Ova vrijednost će koristiti druge aplikacije za upućivanje na ovaj tok "
+"posla. Može sadržavati samo slova, brojeve i podvučice."
 
 #: models.py:45
 msgid "Internal name"
 msgstr "Interno ime"
 
-#: models.py:60 models.py:167 models.py:311 models.py:358
+#: models.py:60 models.py:197 models.py:341 models.py:388
 msgid "Workflow"
 msgstr "Radni tok"
 
@@ -211,127 +219,131 @@ msgstr "Radni tok"
 msgid "Initial state"
 msgstr "Početno stanje"
 
-#: models.py:173
+#: models.py:203
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr "Izaberite da li će ovo biti stanje s kojom želite da radni tok započne. Samo jedno stanje može biti početno stanje."
+msgstr ""
+"Izaberite da li će ovo biti stanje s kojom želite da radni tok započne. Samo "
+"jedno stanje može biti početno stanje."
 
-#: models.py:175
+#: models.py:205
 msgid "Initial"
 msgstr "Inicijalno"
 
-#: models.py:179
+#: models.py:209
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr "Unesite procenat završetka koji ovo stanje predstavlja u odnosu na radni tok. Koristite brojeve bez znakova procenata."
+msgstr ""
+"Unesite procenat završetka koji ovo stanje predstavlja u odnosu na radni "
+"tok. Koristite brojeve bez znakova procenata."
 
-#: models.py:187 models.py:246
+#: models.py:217 models.py:276
 msgid "Workflow state"
 msgstr "Stanje radnog toka"
 
-#: models.py:188
+#: models.py:218
 msgid "Workflow states"
 msgstr "Stanje Radnog toka"
 
-#: models.py:249
+#: models.py:279
 msgid "A simple identifier for this action."
 msgstr ""
 
-#: models.py:256
+#: models.py:286
 msgid "At which moment of the state this action will execute"
 msgstr "U kojem momentu stanje ova akcija će se izvršiti"
 
-#: models.py:257
+#: models.py:287
 msgid "When"
 msgstr "Kada"
 
-#: models.py:261
+#: models.py:291
 msgid "The dotted Python path to the workflow action class to execute."
 msgstr "Podešena staza Python do klase akcije radnog toka."
 
-#: models.py:262
+#: models.py:292
 msgid "Entry action path"
 msgstr "Putanja za ulaznu akciju"
 
-#: models.py:265
+#: models.py:295
 msgid "Entry action data"
 msgstr "Podaci o ulaznoj akciji"
 
-#: models.py:271
+#: models.py:301
 msgid "Workflow state action"
 msgstr "Stanje akcije radnog toka"
 
-#: models.py:316
+#: models.py:346
 msgid "Origin state"
 msgstr "Stanje porekla"
 
-#: models.py:320
+#: models.py:350
 msgid "Destination state"
 msgstr "Stanje destinacije"
 
-#: models.py:328
+#: models.py:358
 msgid "Workflow transition"
 msgstr "Prelazak na radni tok"
 
-#: models.py:329
+#: models.py:359
 msgid "Workflow transitions"
 msgstr "Prelazak na radni tok"
 
-#: models.py:343
+#: models.py:373
 msgid "Event type"
 msgstr "Tip događaja"
 
-#: models.py:347
+#: models.py:377
 msgid "Workflow transition trigger event"
 msgstr "Događaji tranzicije radnog toka"
 
-#: models.py:348
+#: models.py:378
 msgid "Workflow transitions trigger events"
 msgstr "Događaji tranzicije radnog toka"
 
-#: models.py:362
+#: models.py:392
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:368 models.py:473
+#: models.py:398 models.py:503
 msgid "Workflow instance"
 msgstr "Primjer posla"
 
-#: models.py:369
+#: models.py:399
 msgid "Workflow instances"
 msgstr "Primeri toka posla"
 
-#: models.py:476
+#: models.py:506
 msgid "Datetime"
 msgstr "Datum i vrijeme"
 
-#: models.py:490
+#: models.py:520
 msgid "Workflow instance log entry"
 msgstr "Unos tragova u procesu toka posla"
 
-#: models.py:491
+#: models.py:521
 msgid "Workflow instance log entries"
 msgstr "Unos tragova u procesu toka posla"
 
-#: models.py:498
+#: models.py:528
 msgid "Not a valid transition choice."
 msgstr "Izbor tranzicije nije validan."
 
-#: models.py:531
+#: models.py:561
 msgid "Workflow runtime proxy"
 msgstr "Vrijeme radnog toka proxy"
 
-#: models.py:532
+#: models.py:562
 msgid "Workflow runtime proxies"
 msgstr "Vrijeme radnog toka proxies"
 
-#: models.py:538
+#: models.py:568
 msgid "Workflow state runtime proxy"
 msgstr "Proxy za izvršavanje radnog procesa"
 
-#: models.py:539
+#: models.py:569
 msgid "Workflow state runtime proxies"
 msgstr "Radni proksi za izvršavanje posla"
 
@@ -375,7 +387,9 @@ msgstr "Primarni ključ vrste dokumenta koji treba dodati."
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr "API URL koji ukazuje na tip dokumenta u odnosu na tok posla kome je priključen. Ova URL adresa se razlikuje od URL kanonskog tipa dokumenta."
+msgstr ""
+"API URL koji ukazuje na tip dokumenta u odnosu na tok posla kome je "
+"priključen. Ova URL adresa se razlikuje od URL kanonskog tipa dokumenta."
 
 #: serializers.py:116
 msgid "Primary key of the destination state to be added."
@@ -389,7 +403,9 @@ msgstr "Primarni ključ porekla stanja koji treba dodati."
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
-msgstr "URL API koji ukazuje na tok posla u odnosu na dokument na koji je priložen. Ova URL adresa se razlikuje od kanonskog URL-a za radni tok."
+msgstr ""
+"URL API koji ukazuje na tok posla u odnosu na dokument na koji je priložen. "
+"Ova URL adresa se razlikuje od kanonskog URL-a za radni tok."
 
 #: serializers.py:227
 msgid "A link to the entire history of this workflow."
@@ -399,7 +415,9 @@ msgstr "Veza na čitavu istoriju ovog toka posla."
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
-msgstr "Lista odvojenih primarnih ključeva tipova dokumenata na koje se taj radni proces povezuje."
+msgstr ""
+"Lista odvojenih primarnih ključeva tipova dokumenata na koje se taj radni "
+"proces povezuje."
 
 #: serializers.py:319
 msgid "Primary key of the transition to be added."
@@ -407,8 +425,8 @@ msgstr "Primarni ključ tranzicije koji treba dodati."
 
 #: views/workflow_instance_views.py:44
 msgid ""
-"Assign workflows to the document type of this document to have this document"
-" execute those workflows. "
+"Assign workflows to the document type of this document to have this document "
+"execute those workflows. "
 msgstr ""
 
 #: views/workflow_instance_views.py:48
@@ -422,8 +440,7 @@ msgstr "Radni tokovi za dokument: %s"
 
 #: views/workflow_instance_views.py:83
 msgid ""
-"This view will show the state changes as a workflow instance is "
-"transitioned."
+"This view will show the state changes as a workflow instance is transitioned."
 msgstr ""
 
 #: views/workflow_instance_views.py:87
@@ -547,7 +564,9 @@ msgstr "Tipovi dokumenata dodeljeni ovim radnim tokovima"
 msgid ""
 "Removing a document type from a workflow will also remove all running "
 "instances of that workflow for documents of the document type just removed."
-msgstr "Uklanjanje tipa dokumenta iz radnog toka će takođe ukloniti sve pokrenute instance tog toka posla za dokumente tipa dokumenta koji je upravo uklonjen."
+msgstr ""
+"Uklanjanje tipa dokumenta iz radnog toka će takođe ukloniti sve pokrenute "
+"instance tog toka posla za dokumente tipa dokumenta koji je upravo uklonjen."
 
 #: views/workflow_views.py:212
 #, python-format
@@ -571,8 +590,8 @@ msgstr "Izmenite akciju stanja toka posla: %s"
 
 #: views/workflow_views.py:367
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or"
-" leaves the state in which they reside."
+"Workflow state actions are macros that get executed when documents enters or "
+"leaves the state in which they reside."
 msgstr ""
 
 #: views/workflow_views.py:371
@@ -624,8 +643,7 @@ msgstr ""
 
 #: views/workflow_views.py:635
 msgid ""
-"Create a transition and use it to move a workflow from  one state to "
-"another."
+"Create a transition and use it to move a workflow from  one state to another."
 msgstr ""
 
 #: views/workflow_views.py:639
@@ -714,11 +732,15 @@ msgstr "URL"
 
 #: workflow_actions.py:93
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow"
-" log entry instance as part of their context via the variable \"entry_log\"."
-" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
-" \"transition\", \"user\", and \"comment\" attributes."
-msgstr "Može biti IP adresa, domen ili šablon. Šabloni primaju primere prijavljivanja dnevnika rada kao dio njihovog konteksta pomoću varijable \"entri_log\". \"Entri_log\" zauzvrat pruža \"vorkflov_instance\", \"datetime\", \"transition\", \"user\" i \"comment\" atribute."
+"Can be an IP address, a domain or a template. Templates receive the workflow "
+"log entry instance as part of their context via the variable \"entry_log\". "
+"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
+"\"transition\", \"user\", and \"comment\" attributes."
+msgstr ""
+"Može biti IP adresa, domen ili šablon. Šabloni primaju primere "
+"prijavljivanja dnevnika rada kao dio njihovog konteksta pomoću varijable "
+"\"entri_log\". \"Entri_log\" zauzvrat pruža \"vorkflov_instance\", \"datetime"
+"\", \"transition\", \"user\" i \"comment\" atribute."
 
 #: workflow_actions.py:103
 msgid "Timeout"
@@ -735,11 +757,16 @@ msgstr "Payload"
 #: workflow_actions.py:112
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as"
-" part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
-"\"user\", and \"comment\" attributes."
-msgstr "JSON dokument koji treba uključiti u zahtev. Može biti i šablon koji vraća JSON dokument. Šabloni primaju primere prijavljivanja dnevnika rada kao dio njihovog konteksta pomoću varijable \"entri_log\". \"Entri_log\" zauzvrat pruža \"vorkflov_instance\", \"datetime\", \"transition\", \"user\" i \"comment\" atribute."
+"return a JSON document. Templates receive the workflow log entry instance as "
+"part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
+"\", and \"comment\" attributes."
+msgstr ""
+"JSON dokument koji treba uključiti u zahtev. Može biti i šablon koji vraća "
+"JSON dokument. Šabloni primaju primere prijavljivanja dnevnika rada kao dio "
+"njihovog konteksta pomoću varijable \"entri_log\". \"Entri_log\" zauzvrat "
+"pruža \"vorkflov_instance\", \"datetime\", \"transition\", \"user\" i "
+"\"comment\" atribute."
 
 #: workflow_actions.py:125
 msgid "Perform a POST request"

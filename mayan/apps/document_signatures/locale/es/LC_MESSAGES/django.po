@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:37-0400\n"
+"POT-Creation-Date: 2019-06-29 02:17-0400\n"
 "PO-Revision-Date: 2019-04-30 16:40+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:47 permissions.py:8 settings.py:10
@@ -53,7 +54,9 @@ msgstr "Llave"
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
-msgstr "La frase de contraseña para desbloquear la llave y permitir que se use para firmar la versión del documento."
+msgstr ""
+"La frase de contraseña para desbloquear la llave y permitir que se use para "
+"firmar la versión del documento."
 
 #: forms.py:26
 msgid "Passphrase"
@@ -237,7 +240,8 @@ msgstr "Verificar la firma integrada que falta"
 
 #: settings.py:15
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr "Ruta a la subclase Storage para usar cuando se almacenan firmas separadas."
+msgstr ""
+"Ruta a la subclase Storage para usar cuando se almacenan firmas separadas."
 
 #: settings.py:24
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
@@ -280,7 +284,11 @@ msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr "Las firmas ayudan a proporcionar evidencia de autoría y detección de manipulación. Son muy seguras y difíciles de falsificar. Una firma puede integrarse como parte del documento en sí o cargarse como un archivo separado."
+msgstr ""
+"Las firmas ayudan a proporcionar evidencia de autoría y detección de "
+"manipulación. Son muy seguras y difíciles de falsificar. Una firma puede "
+"integrarse como parte del documento en sí o cargarse como un archivo "
+"separado."
 
 #: views.py:328
 msgid "There are no signatures for this document."
@@ -298,7 +306,9 @@ msgstr "Subir firma aparte para la versión de documento: %s"
 
 #: views.py:378
 msgid "On large databases this operation may take some time to execute."
-msgstr "En bases de datos de gran tamaño esta operación puede tardar algún tiempo en ejecutarse."
+msgstr ""
+"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en "
+"ejecutarse."
 
 #: views.py:379
 msgid "Verify all document for signatures?"

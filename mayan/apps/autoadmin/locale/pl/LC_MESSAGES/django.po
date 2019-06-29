@@ -2,25 +2,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # mic <winterfall24@gmail.com>, 2019
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:36-0400\n"
+"POT-Creation-Date: 2019-06-29 02:15-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2019\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:16 settings.py:9
 msgid "Auto administrator"
@@ -54,8 +56,8 @@ msgstr ""
 
 #: settings.py:20
 msgid ""
-"The password of the automatically created super user account. If it is equal"
-" to None, the password is randomly generated."
+"The password of the automatically created super user account. If it is equal "
+"to None, the password is randomly generated."
 msgstr ""
 
 #: settings.py:27
@@ -72,8 +74,7 @@ msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
 msgstr ""
-"Właśnie ukończyłeś instalację <strong>%(project_title)s</strong>. "
-"Gratulacje!"
+"Właśnie ukończyłeś instalację <strong>%(project_title)s</strong>. Gratulacje!"
 
 #: templates/autoadmin/credentials.html:17
 msgid "Login using the following credentials:"

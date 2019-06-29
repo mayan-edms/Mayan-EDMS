@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # yulin Gong <540538248@qq.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:40-0400\n"
+"POT-Creation-Date: 2019-06-29 02:20-0400\n"
 "PO-Revision-Date: 2019-05-05 06:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
+"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/"
+"language/zh/)\n"
+"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
@@ -32,7 +33,9 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "文档源是将新文档提供给Mayan EDMS的方式，至少创建一个网页表单源以便能够从浏览器上传文档。"
+msgstr ""
+"文档源是将新文档提供给Mayan EDMS的方式，至少创建一个网页表单源以便能够从浏览"
+"器上传文档。"
 
 #: apps.py:71
 msgid "Type"
@@ -196,7 +199,7 @@ msgstr "监视文件夹"
 msgid "POP3 email"
 msgstr "POP3电子邮件"
 
-#: literals.py:66 models/email_sources.py:220 models/email_sources.py:221
+#: literals.py:66 models/email_sources.py:226 models/email_sources.py:227
 msgid "IMAP email"
 msgstr "IMAP电子邮件"
 
@@ -265,38 +268,46 @@ msgstr "日志条目"
 msgid "Log entries"
 msgstr "日志条目"
 
-#: models/email_sources.py:44
+#: models/email_sources.py:45
 msgid "Host"
 msgstr "主机"
 
-#: models/email_sources.py:45
+#: models/email_sources.py:46
 msgid "SSL"
 msgstr "SSL"
 
-#: models/email_sources.py:47
+#: models/email_sources.py:48
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "对于POP3，典型的选择是110，对于基于SSL的POP3为995，对于IMAP为143，对于基于SSL的IMAP为993。"
+msgstr ""
+"对于POP3，典型的选择是110，对于基于SSL的POP3为995，对于IMAP为143，对于基于SSL"
+"的IMAP为993。"
 
-#: models/email_sources.py:48
+#: models/email_sources.py:49
 msgid "Port"
 msgstr "端口"
 
-#: models/email_sources.py:50
+#: models/email_sources.py:51
 msgid "Username"
 msgstr "用户名"
 
-#: models/email_sources.py:51
+#: models/email_sources.py:52
 msgid "Password"
 msgstr "密码"
 
-#: models/email_sources.py:55
+#: models/email_sources.py:56
+#, fuzzy
+#| msgid ""
+#| "Name of the attachment that will contains the metadata type names and "
+#| "value pairs to be assigned to the rest of the downloaded attachments. "
+#| "Note: This attachment has to be the first attachment."
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
-"pairs to be assigned to the rest of the downloaded attachments. Note: This "
-"attachment has to be the first attachment."
-msgstr "附件的名称，其中包含要分配给其余下载附件的元数据类型名称和值对。注意：此附件必须是第一个附件。"
+"pairs to be assigned to the rest of the downloaded attachments."
+msgstr ""
+"附件的名称，其中包含要分配给其余下载附件的元数据类型名称和值对。注意：此附件"
+"必须是第一个附件。"
 
 #: models/email_sources.py:59
 msgid "Metadata attachment name"
@@ -338,33 +349,33 @@ msgstr "电邮来源"
 msgid "Email sources"
 msgstr "电邮来源"
 
-#: models/email_sources.py:184
+#: models/email_sources.py:190
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "主题元数据类型“%(metadata_type)s”对于文档类型%(document_type)s无效"
 
-#: models/email_sources.py:198
+#: models/email_sources.py:204
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "“发件人”元数据类型“%(metadata_type)s”对于文档类型%(document_type)s无效"
 
-#: models/email_sources.py:213
+#: models/email_sources.py:219
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "IMAP邮箱，用于检查邮件。"
 
-#: models/email_sources.py:214
+#: models/email_sources.py:220
 msgid "Mailbox"
 msgstr "邮箱"
 
-#: models/email_sources.py:265
+#: models/email_sources.py:272
 msgid "Timeout"
 msgstr "超时"
 
-#: models/email_sources.py:271 models/email_sources.py:272
+#: models/email_sources.py:278 models/email_sources.py:279
 msgid "POP email"
 msgstr "POP电子邮件"
 
@@ -380,7 +391,9 @@ msgstr "设备名称"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr "选择扫描模式（例如，艺术线条，单色或彩色）。如果扫描仪不支持此选项，请将其留空。"
+msgstr ""
+"选择扫描模式（例如，艺术线条，单色或彩色）。如果扫描仪不支持此选项，请将其留"
+"空。"
 
 #: models/scanner_sources.py:41
 msgid "Mode"
@@ -391,7 +404,9 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr "以DPI（每英寸点数）设置扫描图像的分辨率。典型值为200.如果扫描仪不支持此选项，请将其留空。"
+msgstr ""
+"以DPI（每英寸点数）设置扫描图像的分辨率。典型值为200.如果扫描仪不支持此选项，"
+"请将其留空。"
 
 #: models/scanner_sources.py:48
 msgid "Resolution"
@@ -614,8 +629,8 @@ msgstr "源%s的日志条目"
 
 #: views.py:125 wizards.py:154
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr "没有定义交互式文档源或没有启用任何交互式文档源，在继续之前创建一个。"
 
 #: views.py:153 views.py:171 views.py:181
@@ -702,7 +717,9 @@ msgid ""
 "webform, are interactive and require user input to operate. Others like the "
 "email sources, are automatic and run on the background without user "
 "intervention."
-msgstr "来源提供上传文件的方法。某些来源，如网页表单，是交互式的，需要用户输入才能运行。其他来源，如电子邮件，是自动的，无需用户干预即可在后台运行。"
+msgstr ""
+"来源提供上传文件的方法。某些来源，如网页表单，是交互式的，需要用户输入才能运"
+"行。其他来源，如电子邮件，是自动的，无需用户干预即可在后台运行。"
 
 #: views.py:629
 msgid "No sources available"

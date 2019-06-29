@@ -2,24 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2019
 # Roberto Rosario, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:36-0400\n"
+"POT-Creation-Date: 2019-06-29 02:15-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Roberto Rosario, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:16 settings.py:9
@@ -31,8 +31,8 @@ msgid ""
 "Welcome Admin! You have been given superuser privileges. Use them with "
 "caution."
 msgstr ""
-"¡Bienvenido Admin! Se le han otorgado privilegios de superusuario. Úsalo con"
-" precaución."
+"¡Bienvenido Admin! Se le han otorgado privilegios de superusuario. Úsalo con "
+"precaución."
 
 #: models.py:15
 msgid "Account"
@@ -58,8 +58,8 @@ msgstr ""
 
 #: settings.py:20
 msgid ""
-"The password of the automatically created super user account. If it is equal"
-" to None, the password is randomly generated."
+"The password of the automatically created super user account. If it is equal "
+"to None, the password is randomly generated."
 msgstr ""
 "La contraseña de la cuenta de superusuario creada automáticamente. Si es "
 "igual a Ninguno, la contraseña se genera aleatoriamente."

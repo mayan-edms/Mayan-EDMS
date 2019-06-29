@@ -2,32 +2,49 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2017
 # Lucas Weel <ljj.weel@gmail.com>, 2017
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2017
 # Johan Braeken, 2017
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2017
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:36-0400\n"
+"POT-Creation-Date: 2019-06-29 02:15-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2017\n"
-"Language-Team: Dutch (Netherlands) (https://www.transifex.com/rosarior/teams/13584/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (https://www.transifex.com/rosarior/"
+"teams/13584/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:50 apps.py:111 apps.py:119 apps.py:122 events.py:7 forms.py:16
 #: links.py:24 menus.py:16 models.py:47 permissions.py:7 views.py:163
 msgid "Cabinets"
+msgstr ""
+
+#: events.py:11
+msgid "Cabinet created"
+msgstr ""
+
+#: events.py:14
+msgid "Cabinet edited"
+msgstr ""
+
+#: events.py:17
+msgid "Document added to cabinet"
+msgstr ""
+
+#: events.py:20
+msgid "Document removed from cabinet"
 msgstr ""
 
 #: links.py:30 links.py:44
@@ -61,6 +78,14 @@ msgstr ""
 #: links.py:92
 msgid "Details"
 msgstr "Gegevens"
+
+#: methods.py:18
+msgid "Return a list of cabinets containing the document"
+msgstr ""
+
+#: methods.py:20
+msgid "get_cabinets()"
+msgstr ""
 
 #: models.py:35 search.py:16
 msgid "Label"
@@ -128,8 +153,7 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr ""
 
 #: serializers.py:32
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 
 #: serializers.py:68 serializers.py:179
@@ -213,6 +237,13 @@ msgstr ""
 msgid "Add"
 msgstr "Voeg toe"
 
+#: views.py:235
+#, python-format
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] ""
+msgstr[1] ""
+
 #: views.py:248
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -246,6 +277,18 @@ msgstr ""
 msgid "Remove"
 msgstr "Verwijder"
 
+#: views.py:325
+#, python-format
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:338
+#, python-format
+msgid "Remove document \"%s\" from cabinets"
+msgstr ""
+
 #: views.py:349
 msgid "Cabinets from which the selected documents will be removed."
 msgstr ""
@@ -258,4 +301,12 @@ msgstr ""
 #: views.py:389
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+msgstr ""
+
+#: wizard_steps.py:18
+msgid "Select cabinets"
+msgstr ""
+
+#: wizard_steps.py:32
+msgid "Cabinets to which the document will be added."
 msgstr ""
