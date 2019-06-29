@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Jesaja Everling <jeverling@gmail.com>, 2017
 # Mathias Behrle <mathiasb@m9s.biz>, 2018
@@ -17,12 +17,11 @@ msgstr ""
 "POT-Creation-Date: 2019-06-29 02:17-0400\n"
 "PO-Revision-Date: 2019-06-15 07:49+0000\n"
 "Last-Translator: Berny <berny@bernhard-marx.de>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:17
@@ -41,10 +40,7 @@ msgstr "Alle Felder"
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr ""
-"Wenn aktiviert, werden nur Ergebnisse angezeigt bei denen alle Felder "
-"zutreffen. Ohne diese Option werden Ergebnisse mit mindestens einem Feld "
-"angezeigt."
+msgstr "Wenn aktiviert, werden nur Ergebnisse angezeigt bei denen alle Felder zutreffen. Ohne diese Option werden Ergebnisse mit mindestens einem Feld angezeigt."
 
 #: forms.py:29 templates/dynamic_search/search_box.html:21
 msgid "Search terms"

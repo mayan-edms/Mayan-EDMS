@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Harald Ersch, 2019
 msgid ""
@@ -9,16 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-29 02:17-0400\n"
-"PO-Revision-Date: 2019-06-15 07:49+0000\n"
+"PO-Revision-Date: 2019-06-29 06:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:62 events.py:8 links.py:17 links.py:46 links.py:149 links.py:176
 #: models.py:61 views/workflow_proxy_views.py:75 views/workflow_views.py:139
@@ -203,9 +201,7 @@ msgstr "La ieșire"
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
-msgstr ""
-"Această valoare va fi utilizată de alte aplicații pentru a face referire la "
-"acest flux de lucru. Pot conține numai litere, numere și subliniere."
+msgstr "Această valoare va fi utilizată de alte aplicații pentru a face referire la acest flux de lucru. Pot conține numai litere, numere și subliniere."
 
 #: models.py:45
 msgid "Internal name"
@@ -223,9 +219,7 @@ msgstr "Stare inițială"
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr ""
-"Selectați dacă aceasta va fi starea cu care doriți să înceapă fluxul de "
-"lucru. Numai o stare poate fi starea inițială."
+msgstr "Selectați dacă aceasta va fi starea cu care doriți să înceapă fluxul de lucru. Numai o stare poate fi starea inițială."
 
 #: models.py:205
 msgid "Initial"
@@ -235,9 +229,7 @@ msgstr "Iniţială"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr ""
-"Introduceți procentul de finalizare pe care această stare îl reprezinta în "
-"raport cu fluxul de lucru. Utilizați numere fără semnul procentual."
+msgstr "Introduceți procentul de finalizare pe care această stare îl reprezinta în raport cu fluxul de lucru. Utilizați numere fără semnul procentual."
 
 #: models.py:217 models.py:276
 msgid "Workflow state"
@@ -261,9 +253,7 @@ msgstr "Cănd"
 
 #: models.py:291
 msgid "The dotted Python path to the workflow action class to execute."
-msgstr ""
-"Calea Python punctată la clasa de acțiune a fluxului de lucru care trebuie "
-"executată."
+msgstr "Calea Python punctată la clasa de acțiune a fluxului de lucru care trebuie executată."
 
 #: models.py:292
 msgid "Entry action path"
@@ -389,10 +379,7 @@ msgstr "Cheia primară a tipului de document care urmează să fie adăugată."
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr ""
-"Adresă URL API care indică un tip de document în raport cu fluxul de lucru "
-"la care este atașat. Această adresă URL este diferită de URL-ul tipului de "
-"document canonic."
+msgstr "Adresă URL API care indică un tip de document în raport cu fluxul de lucru la care este atașat. Această adresă URL este diferită de URL-ul tipului de document canonic."
 
 #: serializers.py:116
 msgid "Primary key of the destination state to be added."
@@ -406,10 +393,7 @@ msgstr "Cheia primară a stării de origine care urmează să fie adăugată."
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
-msgstr ""
-"Adresă URL API care indică un flux de lucru în raport cu documentul la care "
-"este atașat. Această adresă URL este diferită de adresa URL canonică a "
-"fluxului de lucru."
+msgstr "Adresă URL API care indică un flux de lucru în raport cu documentul la care este atașat. Această adresă URL este diferită de adresa URL canonică a fluxului de lucru."
 
 #: serializers.py:227
 msgid "A link to the entire history of this workflow."
@@ -419,9 +403,7 @@ msgstr "O legătură către întreaga istorie a acestui flux de lucru."
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
-msgstr ""
-"Listă separată prin virgule de chei primare de tip de documente la care se "
-"va atașa acest flux de lucru."
+msgstr "Listă separată prin virgule de chei primare de tip de documente la care se va atașa acest flux de lucru."
 
 #: serializers.py:319
 msgid "Primary key of the transition to be added."
@@ -429,11 +411,9 @@ msgstr "Cheia primară a tranziției care urmează să fie adăugată."
 
 #: views/workflow_instance_views.py:44
 msgid ""
-"Assign workflows to the document type of this document to have this document "
-"execute those workflows. "
-msgstr ""
-"Atribuiți fluxurile de lucru la acest tip de document pentru ca acest "
-"document să execute acele fluxuri de lucru."
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
+msgstr "Atribuiți fluxurile de lucru la acest tip de document pentru ca acest document să execute acele fluxuri de lucru."
 
 #: views/workflow_instance_views.py:48
 msgid "There are no workflow for this document"
@@ -446,10 +426,9 @@ msgstr "Fluxuri de lucru pentru documentul: %s"
 
 #: views/workflow_instance_views.py:83
 msgid ""
-"This view will show the state changes as a workflow instance is transitioned."
-msgstr ""
-"Această vizualizare va afișa modificările de stare pe măsură ce o instanță a "
-"fluxului de lucru este tranziționată."
+"This view will show the state changes as a workflow instance is "
+"transitioned."
+msgstr "Această vizualizare va afișa modificările de stare pe măsură ce o instanță a fluxului de lucru este tranziționată."
 
 #: views/workflow_instance_views.py:87
 msgid "There are no details for this workflow instance"
@@ -478,9 +457,7 @@ msgstr "Execută tranziția pentru fluxul de lucru: %s"
 msgid ""
 "Associate a workflow with some document types and documents of those types "
 "will be listed in this view."
-msgstr ""
-"Asociați un flux de lucru cu unele tipuri de documente și documente de acele "
-"tipuri vor fi listate în această vizualizare."
+msgstr "Asociați un flux de lucru cu unele tipuri de documente și documente de acele tipuri vor fi listate în această vizualizare."
 
 #: views/workflow_proxy_views.py:50
 msgid "There are no documents executing this workflow"
@@ -495,10 +472,7 @@ msgstr "Documentele cu fluxul de lucru: %s"
 msgid ""
 "Create some workflows and associated them with a document type. Active "
 "workflows will be shown here and the documents for which they are executing."
-msgstr ""
-"Creați câteva fluxuri de lucru și asociați-le cu un tip de document. "
-"Fluxurile de lucru active vor fi afișate aici precum și documentele pentru "
-"care se execută."
+msgstr "Creați câteva fluxuri de lucru și asociați-le cu un tip de document. Fluxurile de lucru active vor fi afișate aici precum și documentele pentru care se execută."
 
 #: views/workflow_proxy_views.py:74
 msgid "There are no workflows"
@@ -506,7 +480,7 @@ msgstr "Nu există fluxuri de lucru"
 
 #: views/workflow_proxy_views.py:94
 msgid "There are no documents in this workflow state"
-msgstr ""
+msgstr "Nu există documente în această stare de lucru"
 
 #: views/workflow_proxy_views.py:97
 #, python-format
@@ -538,9 +512,7 @@ msgstr "Fluxurile de lucru  atribuite acestui tip de document"
 msgid ""
 "Removing a workflow from a document type will also remove all running "
 "instances of that workflow."
-msgstr ""
-"Eliminarea unui flux de lucru dintr-un tip de document va elimina, de "
-"asemenea, toate instanțele care rulează din acel flux de lucru."
+msgstr "Eliminarea unui flux de lucru dintr-un tip de document va elimina, de asemenea, toate instanțele care rulează din acel flux de lucru."
 
 #: views/workflow_views.py:87
 #, python-format
@@ -551,10 +523,7 @@ msgstr "Fluxurile de lucru atribuite tipului de document: %s"
 msgid ""
 "Workflows store a series of states and keep track of the current state of a "
 "document. Transitions are used to change the current state to a new one."
-msgstr ""
-"Fluxurile de lucru stochează o serie de stări și urmăresc starea actuală a "
-"unui document. Tranzițiile sunt folosite pentru a schimba starea curentă la "
-"una nouă."
+msgstr "Fluxurile de lucru stochează o serie de stări și urmăresc starea actuală a unui document. Tranzițiile sunt folosite pentru a schimba starea curentă la una nouă."
 
 #: views/workflow_views.py:137
 msgid "No workflows have been defined"
@@ -582,10 +551,7 @@ msgstr "Tipurile de documente atribuite acestui flux de lucru"
 msgid ""
 "Removing a document type from a workflow will also remove all running "
 "instances of that workflow for documents of the document type just removed."
-msgstr ""
-"Înlăturarea unui tip de document dintr-un flux de lucru va elimina, de "
-"asemenea, toate instanțele în execuție ale acelui flux de lucru pentru "
-"documentele de tipul documentului tocmai eliminat."
+msgstr "Înlăturarea unui tip de document dintr-un flux de lucru va elimina, de asemenea, toate instanțele în execuție ale acelui flux de lucru pentru documentele de tipul documentului tocmai eliminat."
 
 #: views/workflow_views.py:212
 #, python-format
@@ -609,11 +575,9 @@ msgstr "Editați acțiunea de stare a fluxului de lucru: %s"
 
 #: views/workflow_views.py:367
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or "
-"leaves the state in which they reside."
-msgstr ""
-"Acțiunile de stare a fluxului de lucru sunt macrocomenzi care se execută "
-"atunci când documentele intră sau părăsesc starea în care se află."
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
+msgstr "Acțiunile de stare a fluxului de lucru sunt macrocomenzi care se execută atunci când documentele intră sau părăsesc starea în care se află."
 
 #: views/workflow_views.py:371
 msgid "There are no actions for this workflow state"
@@ -664,10 +628,9 @@ msgstr "Editați tranziția fluxului de lucru: %s"
 
 #: views/workflow_views.py:635
 msgid ""
-"Create a transition and use it to move a workflow from  one state to another."
-msgstr ""
-"Creați o tranziție și utilizați-o pentru a muta un flux de lucru dintr-o "
-"stare în alta."
+"Create a transition and use it to move a workflow from  one state to "
+"another."
+msgstr "Creați o tranziție și utilizați-o pentru a muta un flux de lucru dintr-o stare în alta."
 
 #: views/workflow_views.py:639
 msgid "This workflow doesn't have any transitions"
@@ -681,20 +644,16 @@ msgstr "Tranzițiile fluxului de lucru: %s"
 #: views/workflow_views.py:673
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
-msgstr ""
-"Eroare la actualizarea evenimentelor de declanșare a fluxului de lucru; %s"
+msgstr "Eroare la actualizarea evenimentelor de declanșare a fluxului de lucru; %s"
 
 #: views/workflow_views.py:680
 msgid "Workflow transition trigger events updated successfully"
-msgstr ""
-"Evenimentele de declanșare a fluxului de lucru au fost actualizate cu succes"
+msgstr "Evenimentele de declanșare a fluxului de lucru au fost actualizate cu succes"
 
 #: views/workflow_views.py:694
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
-msgstr ""
-"Declanșatoarele sunt evenimente care determină ca această tranziție să fie "
-"executată automat."
+msgstr "Declanșatoarele sunt evenimente care determină ca această tranziție să fie executată automat."
 
 #: views/workflow_views.py:698
 #, python-format
@@ -709,9 +668,7 @@ msgstr "Lansați toate fluxurile de lucru?"
 msgid ""
 "This will launch all workflows created after documents have already been "
 "uploaded."
-msgstr ""
-"Aceasta va lansa toate fluxurile de lucru create după ce documentele au fost "
-"deja încărcate."
+msgstr "Aceasta va lansa toate fluxurile de lucru create după ce documentele au fost deja încărcate."
 
 #: views/workflow_views.py:748
 msgid "Workflow launch queued successfully."
@@ -729,9 +686,7 @@ msgstr "Etichetele documentului"
 #: workflow_actions.py:25
 msgid ""
 "The new label to be assigned to the document. Can be a string or a template."
-msgstr ""
-"Noua etichetă care va fi atribuită documentului. Poate fi un șir sau un "
-"șablon."
+msgstr "Noua etichetă care va fi atribuită documentului. Poate fi un șir sau un șablon."
 
 #: workflow_actions.py:30
 msgid "Document description"
@@ -741,9 +696,7 @@ msgstr "Descrierea documentului"
 msgid ""
 "The new description to be assigned to the document. Can be a string or a "
 "template."
-msgstr ""
-"Noua descriere care trebuie atribuită documentului. Poate fi un șir sau un "
-"șablon."
+msgstr "Noua descriere care trebuie atribuită documentului. Poate fi un șir sau un șablon."
 
 #: workflow_actions.py:40
 msgid "Modify the properties of the document"
@@ -765,15 +718,11 @@ msgstr "URL"
 
 #: workflow_actions.py:93
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow "
-"log entry instance as part of their context via the variable \"entry_log\". "
-"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
-"Poate fi o adresă IP, un domeniu sau un șablon. Șabloanele primesc instanța "
-"înregistrării fluxului de lucru ca parte a contextului lor prin intermediul "
-"variabilei \"entry_log\". \"Entry_log\", la rândul său, oferă atributele "
-"\"workflow_instance\", \"datetime\", \"transition\", \"user\" și \"comment\"."
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
+msgstr "Poate fi o adresă IP, un domeniu sau un șablon. Șabloanele primesc instanța înregistrării fluxului de lucru ca parte a contextului lor prin intermediul variabilei \"entry_log\". \"Entry_log\", la rândul său, oferă atributele \"workflow_instance\", \"datetime\", \"transition\", \"user\" și \"comment\"."
 
 #: workflow_actions.py:103
 msgid "Timeout"
@@ -790,16 +739,11 @@ msgstr "Încărcătură utilă"
 #: workflow_actions.py:112
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
-msgstr ""
-"Un document JSON care trebuie inclus în cerere. Poate fi, de asemenea, un "
-"șablon care returnează un document JSON. Șabloanele primesc instanța "
-"înregistrării fluxului de lucru ca parte a contextului lor prin intermediul "
-"variabilei \"entry_log\". \"Entry_log\", la rândul său, oferă atributele "
-"\"workflow_instance\", \"datetime\", \"transition\", \"user\" și \"comment\"."
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr "Un document JSON care trebuie inclus în cerere. Poate fi, de asemenea, un șablon care returnează un document JSON. Șabloanele primesc instanța înregistrării fluxului de lucru ca parte a contextului lor prin intermediul variabilei \"entry_log\". \"Entry_log\", la rândul său, oferă atributele \"workflow_instance\", \"datetime\", \"transition\", \"user\" și \"comment\"."
 
 #: workflow_actions.py:125
 msgid "Perform a POST request"

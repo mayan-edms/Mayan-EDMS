@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # jmcainzos <jmcainzos@vodafone.es>, 2015
@@ -12,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-29 02:20-0400\n"
-"PO-Revision-Date: 2019-05-28 20:24+0000\n"
+"PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
@@ -36,10 +35,7 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
-"Las fuentes de documentos son la manera en la que se almacenan nuevos "
-"documentos en Mayan EDMS. Crea por lo menos una fuente del tipo formulario "
-"web para poder cargar documentos desde un navegador."
+msgstr "Las fuentes de documentos son la manera en la que se almacenan nuevos documentos en Mayan EDMS. Crea por lo menos una fuente del tipo formulario web para poder cargar documentos desde un navegador."
 
 #: apps.py:71
 msgid "Type"
@@ -65,9 +61,7 @@ msgstr "Mensaje"
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
-msgstr ""
-"Utilidad proporcionada por el paquete SANE. Se utiliza para controlar el "
-"escáner y se obtiene la imagen del documento escaneado."
+msgstr "Utilidad proporcionada por el paquete SANE. Se utiliza para controlar el escáner y se obtiene la imagen del documento escaneado."
 
 #: forms.py:30
 msgid "Comment"
@@ -79,8 +73,7 @@ msgstr "Expandir archivos comprimidos"
 
 #: forms.py:47
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Subir los archivos de un archivo comprimido como documentos individuales"
+msgstr "Subir los archivos de un archivo comprimido como documentos individuales"
 
 #: forms.py:68 views.py:485
 msgid "Staging file"
@@ -244,8 +237,7 @@ msgstr "Intérvalo"
 
 #: models/base.py:180
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
-"Asignar un tipo de documento a los documentos subidos desde esta fuente"
+msgstr "Asignar un tipo de documento a los documentos subidos desde esta fuente"
 
 #: models/base.py:182
 msgid "Document type"
@@ -288,9 +280,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Las opciones típicas son 110 para POP3, 995 para POP3 sobre SSL, 143 para "
-"IMAP, 993 para IMAP sobre SSL."
+msgstr "Las opciones típicas son 110 para POP3, 995 para POP3 sobre SSL, 143 para IMAP, 993 para IMAP sobre SSL."
 
 #: models/email_sources.py:49
 msgid "Port"
@@ -305,19 +295,10 @@ msgid "Password"
 msgstr "Contraseña"
 
 #: models/email_sources.py:56
-#, fuzzy
-#| msgid ""
-#| "Name of the attachment that will contains the metadata type names and "
-#| "value pairs to be assigned to the rest of the downloaded attachments. "
-#| "Note: This attachment has to be the first attachment."
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
 msgstr ""
-"Nombre del archivo adjunto que contiene los nombres de los tipos de "
-"metadatos y los pares de valores que se asignará al resto de los archivos "
-"adjuntos descargados. Nota: Este anejo tiene que ser el primer archivo "
-"adjunto."
 
 #: models/email_sources.py:59
 msgid "Metadata attachment name"
@@ -327,9 +308,7 @@ msgstr "Nombre del anejo de metadatos"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr ""
-"Seleccione un tipo de metadatos válido para el tipo de documento "
-"seleccionado para almacenar el asunto del correo electrónico."
+msgstr "Seleccione un tipo de metadatos válido para el tipo de documento seleccionado para almacenar el asunto del correo electrónico."
 
 #: models/email_sources.py:66
 msgid "Subject metadata type"
@@ -339,9 +318,7 @@ msgstr "Tipo de metadatos de asunto "
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr ""
-"Seleccione un tipo de metadatos válido para el tipo de documento "
-"seleccionado para almacenar el valor \"de\" del correo electrónico."
+msgstr "Seleccione un tipo de metadatos válido para el tipo de documento seleccionado para almacenar el valor \"de\" del correo electrónico."
 
 #: models/email_sources.py:73
 msgid "From metadata type"
@@ -368,18 +345,14 @@ msgstr "Fuentes de correo electrónico"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo "
-"de documento: %(document_type)s"
+msgstr "El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo de documento: %(document_type)s"
 
 #: models/email_sources.py:204
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"\"De\" tipo de metadatos \"%(metadata_type)s\" no es válido para el tipo de "
-"documento: %(document_type)s"
+msgstr "\"De\" tipo de metadatos \"%(metadata_type)s\" no es válido para el tipo de documento: %(document_type)s"
 
 #: models/email_sources.py:219
 msgid "IMAP Mailbox from which to check for messages."
@@ -409,9 +382,7 @@ msgstr "Nombre del dispositivo"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr ""
-"Selecciona el modo de escáner (por ejemplo, lineart, monochrome o color). Si "
-"esta opción no es compatible con el escáner, déjela en blanco."
+msgstr "Selecciona el modo de escáner (por ejemplo, lineart, monochrome o color). Si esta opción no es compatible con el escáner, déjela en blanco."
 
 #: models/scanner_sources.py:41
 msgid "Mode"
@@ -422,10 +393,7 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr ""
-"Define la resolución de la imagen escaneada en DPI (puntos por pulgada). El "
-"valor típico es 200. Si esta opción no es compatible con el escáner, déjelo "
-"en blanco."
+msgstr "Define la resolución de la imagen escaneada en DPI (puntos por pulgada). El valor típico es 200. Si esta opción no es compatible con el escáner, déjelo en blanco."
 
 #: models/scanner_sources.py:48
 msgid "Resolution"
@@ -435,9 +403,7 @@ msgstr "Resolución"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"Selecciona la fuente de escaneado (como un alimentador de documentos). Si "
-"esta opción no es compatible con el escáner, déjela en blanco."
+msgstr "Selecciona la fuente de escaneado (como un alimentador de documentos). Si esta opción no es compatible con el escáner, déjela en blanco."
 
 #: models/scanner_sources.py:54
 msgid "Paper source"
@@ -447,9 +413,7 @@ msgstr "Fuente de papel"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"Selecciona el modo de alimentador de documentos (simplex / dúplex). Si esta "
-"opción no es compatible con el escáner, déjela en blanco."
+msgstr "Selecciona el modo de alimentador de documentos (simplex / dúplex). Si esta opción no es compatible con el escáner, déjela en blanco."
 
 #: models/scanner_sources.py:61
 msgid "ADF mode"
@@ -520,16 +484,13 @@ msgstr "No es posible obtener la lista de los archivos provisionales: %s"
 
 #: models/watch_folder_sources.py:34
 msgid "Server side filesystem path to scan for files."
-msgstr ""
-"Ruta del sistema de archivos del lado del servidor para buscar archivos."
+msgstr "Ruta del sistema de archivos del lado del servidor para buscar archivos."
 
 #: models/watch_folder_sources.py:39
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
-msgstr ""
-"Si se marca, no solo se analizará la ruta de la carpeta en busca de "
-"archivos, sino también sus subdirectorios."
+msgstr "Si se marca, no solo se analizará la ruta de la carpeta en busca de archivos, sino también sus subdirectorios."
 
 #: models/watch_folder_sources.py:42
 msgid "Include subdirectories?"
@@ -593,17 +554,13 @@ msgstr "Subir documento"
 
 #: settings.py:15
 msgid "File path to the scanimage program used to control image scanners."
-msgstr ""
-"Ruta de acceso al programa scanimage utilizado para controlar los escáneres "
-"de imágenes."
+msgstr "Ruta de acceso al programa scanimage utilizado para controlar los escáneres de imágenes."
 
 #: settings.py:22
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
-msgstr ""
-"Ruta a la subclase de almacenamiento para usar cuando se almacenan los "
-"archivos de imagen de staging_file almacenados en caché."
+msgstr "Ruta a la subclase de almacenamiento para usar cuando se almacenan los archivos de imagen de staging_file almacenados en caché."
 
 #: settings.py:31
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
@@ -628,14 +585,11 @@ msgstr "Soltar archivos o hacer clic aquí para subir archivos"
 
 #: templates/sources/upload_multiform_subtemplate.html:87
 msgid "Your browser does not support drag and drop file uploads."
-msgstr ""
-"Su navegador no admite la carga de archivos mediante arrastrar y soltar."
+msgstr "Su navegador no admite la carga de archivos mediante arrastrar y soltar."
 
 #: templates/sources/upload_multiform_subtemplate.html:88
 msgid "Please use the fallback form below to upload your files."
-msgstr ""
-"Por favor, use el formulario de reserva a continuación para cargar sus "
-"archivos."
+msgstr "Por favor, use el formulario de reserva a continuación para cargar sus archivos."
 
 #: templates/sources/upload_multiform_subtemplate.html:89
 msgid "Clear"
@@ -649,9 +603,7 @@ msgstr "El servidor respondió con el código {{statusCode}}."
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
-msgstr ""
-"Cualquier error producido durante el uso de una fuente se enumerará aquí "
-"para ayudar en la depuración."
+msgstr "Cualquier error producido durante el uso de una fuente se enumerará aquí para ayudar en la depuración."
 
 #: views.py:68
 msgid "No log entries available"
@@ -664,11 +616,9 @@ msgstr "Entradas de bitácora para fuente: %s"
 
 #: views.py:125 wizards.py:154
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"No se han definido fuentes de documentos interactivos o no hay ninguna "
-"habilitada, cree una antes de continuar."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "No se han definido fuentes de documentos interactivos o no hay ninguna habilitada, cree una antes de continuar."
 
 #: views.py:153 views.py:171 views.py:181
 msgid "Document properties"
@@ -686,20 +636,16 @@ msgstr "Escanear"
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
-msgstr ""
-"Error al ejecutar la tarea de carga de documentos; %(exception)s, "
-"%(exception_class)s"
+msgstr "Error al ejecutar la tarea de carga de documentos; %(exception)s, %(exception_class)s"
 
 #: views.py:293
 msgid "New document queued for upload and will be available shortly."
-msgstr ""
-"Nuevo documento puesto en cola para su carga y estará disponible en breve."
+msgstr "Nuevo documento puesto en cola para su carga y estará disponible en breve."
 
 #: views.py:344
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr ""
-"Cargar un documento del tipo \"%(document_type)s\" de la fuente: %(source)s"
+msgstr "Cargar un documento del tipo \"%(document_type)s\" de la fuente: %(source)s"
 
 #: views.py:378
 #, python-format
@@ -708,9 +654,7 @@ msgstr "Documento \"%s\" esta bloqueado de crear nuevas versiones."
 
 #: views.py:431
 msgid "New document version queued for upload and will be available shortly."
-msgstr ""
-"Nueva versión del documento puesto en cola para su carga y estará disponible "
-"en breve."
+msgstr "Nueva versión del documento puesto en cola para su carga y estará disponible en breve."
 
 #: views.py:472
 #, python-format
@@ -728,12 +672,7 @@ msgid ""
 "Sources that delete content after downloading will not do so while being "
 "tested. Check the source's error log for information during testing. A "
 "successful test will clear the error log."
-msgstr ""
-"Esto ejecutará el código de verificación de fuente incluso si la fuente no "
-"está habilitada. Las fuentes que eliminan el contenido después de la "
-"descarga no lo harán durante la prueba. Verifique el registro de errores de "
-"la fuente para obtener información durante la prueba. Una prueba exitosa "
-"borrará el registro de errores."
+msgstr "Esto ejecutará el código de verificación de fuente incluso si la fuente no está habilitada. Las fuentes que eliminan el contenido después de la descarga no lo harán durante la prueba. Verifique el registro de errores de la fuente para obtener información durante la prueba. Una prueba exitosa borrará el registro de errores."
 
 #: views.py:513
 #, python-format
@@ -765,11 +704,7 @@ msgid ""
 "webform, are interactive and require user input to operate. Others like the "
 "email sources, are automatic and run on the background without user "
 "intervention."
-msgstr ""
-"Las fuentes proporcionan los medios para cargar documentos. Algunas fuentes, "
-"como el formulario web, son interactivas y requieren la intervención del "
-"usuario para operar. Otros, como las fuentes de correo electrónico, son "
-"automáticos y se ejecutan en segundo plano sin la intervención del usuario."
+msgstr "Las fuentes proporcionan los medios para cargar documentos. Algunas fuentes, como el formulario web, son interactivas y requieren la intervención del usuario para operar. Otros, como las fuentes de correo electrónico, son automáticos y se ejecutan en segundo plano sin la intervención del usuario."
 
 #: views.py:629
 msgid "No sources available"

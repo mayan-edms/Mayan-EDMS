@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
 msgid ""
@@ -9,16 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-29 02:14-0400\n"
-"PO-Revision-Date: 2019-06-15 07:48+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"PO-Revision-Date: 2019-06-28 11:16+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:24 links.py:44
 msgid "ACLs"
@@ -92,15 +90,11 @@ msgstr "API URL, kas norāda uz piekļuves kontroles saraksta atļauju sarakstu.
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
-"API URL, kas norāda uz atļauju saistībā ar piekļuves kontroles sarakstu, "
-"kuram tas ir pievienots. Šis URL atšķiras no kanoniskā darbplūsmas URL."
+msgstr "API URL, kas norāda uz atļauju saistībā ar piekļuves kontroles sarakstu, kuram tas ir pievienots. Šis URL atšķiras no kanoniskā darbplūsmas URL."
 
 #: serializers.py:91
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr ""
-"Primārā atslēga priekš jaunās atļaujas, ko piešķirt piekļuves kontroles "
-"sarakstam."
+msgstr "Primārā atslēga priekš jaunās atļaujas, ko piešķirt piekļuves kontroles sarakstam."
 
 #: serializers.py:115 serializers.py:191
 #, python-format
@@ -111,15 +105,11 @@ msgstr "Šādas atļaujas nav: %s"
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr ""
-"Ar komatu atdalīts saraksts ar atļauju primārajām atslēgām, kuras piešķirt "
-"šim piekļuves kontroles sarakstam."
+msgstr "Ar komatu atdalīts saraksts ar atļauju primārajām atslēgām, kuras piešķirt šim piekļuves kontroles sarakstam."
 
 #: serializers.py:142
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr ""
-"Primārās atslēgas lomai, pie kuras šis piekļuves kontroles saraksts ir "
-"piesaistīts."
+msgstr "Primārās atslēgas lomai, pie kuras šis piekļuves kontroles saraksts ir piesaistīts."
 
 #: views.py:62
 #, python-format
@@ -139,9 +129,7 @@ msgstr "Šim objektam nav neviens PKS"
 msgid ""
 "ACL stands for Access Control List and is a precise method  to control user "
 "access to objects in the system."
-msgstr ""
-"PKS apzīmē Piekļuves Kontroles Sarakstu un tā ir precīza metode, lai "
-"kontrolētu lietotāja piekļuvi sistēmā esošajiem objektiem."
+msgstr "PKS apzīmē Piekļuves Kontroles Sarakstu un tā ir precīza metode, lai kontrolētu lietotāja piekļuvi sistēmā esošajiem objektiem."
 
 #: views.py:154
 #, python-format
@@ -167,10 +155,7 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr ""
-"Atspējotas atļaujas tiek mantotas no mātes objekta vai tieši piešķirtas "
-"lomai, un tās nevar noņemt no šī skata. Mantotās atļaujas ir jānoņem no "
-"mātes objekta PKS vai no lomas, izmantojot Setup izvēlni."
+msgstr "Atspējotas atļaujas tiek mantotas no mātes objekta vai tieši piešķirtas lomai, un tās nevar noņemt no šī skata. Mantotās atļaujas ir jānoņem no mātes objekta PKS vai no lomas, izmantojot Setup izvēlni."
 
 #: workflow_actions.py:26
 msgid "Object type"
@@ -185,7 +170,8 @@ msgid "Object ID"
 msgstr "Objekta ID"
 
 #: workflow_actions.py:38
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr "Objekta, kuram tiks rediģēta piekļuve, skaitliskais identifikators."
 
 #: workflow_actions.py:43 workflow_actions.py:158
@@ -199,7 +185,7 @@ msgstr "Lomas, kuru piekļuve tiks mainīta."
 #: workflow_actions.py:52 workflow_actions.py:167
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr "Atļaujas piešķirt / atsaukt iepriekš atlasītā objekta lomu."
+msgstr "Atļaujas piešķirt/atsaukt iepriekš atlasītā objekta lomu."
 
 #: workflow_actions.py:60
 msgid "Grant access"
@@ -211,8 +197,8 @@ msgstr "Atsaukt piekļuvi"
 
 #: workflow_actions.py:175
 msgid "Grant document access"
-msgstr ""
+msgstr "Piešķirt piekļuvi dokumentam"
 
 #: workflow_actions.py:214
 msgid "Revoke document access"
-msgstr ""
+msgstr "Atsaukt piekļuvi dokumentam"

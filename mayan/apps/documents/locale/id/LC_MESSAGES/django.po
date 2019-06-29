@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Adek Lanin, 2019
 msgid ""
@@ -11,16 +11,16 @@ msgstr ""
 "POT-Creation-Date: 2019-06-29 02:17-0400\n"
 "PO-Revision-Date: 2019-06-15 07:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/id/)\n"
-"Language: id\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:109 apps.py:296 events.py:7 menus.py:10 models/document_models.py:94
-#: permissions.py:7 queues.py:26 settings.py:14 statistics.py:233
+#: apps.py:109 apps.py:296 events.py:7 menus.py:10
+#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:14
+#: statistics.py:233
 msgid "Documents"
 msgstr "Dokumen"
 
@@ -133,8 +133,8 @@ msgstr "Kompresi"
 
 #: forms/document_forms.py:28
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
@@ -146,9 +146,7 @@ msgstr "Nama berkas terkompresi"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"Nama berkas dari berkas terkompresi yang mengandung dokumen-dokumen yang "
-"akan diunduh, bila pilihan sebelumnya terpilih."
+msgstr "Nama berkas dari berkas terkompresi yang mengandung dokumen-dokumen yang akan diunduh, bila pilihan sebelumnya terpilih."
 
 #: forms/document_forms.py:85
 msgid "Quick document rename"
@@ -330,9 +328,7 @@ msgstr "Tong sampah"
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"Bersihkan representasi gambar-gambar yang dipergunakan untuk mempercepat "
-"menampilkan dokumen dan hasil transformasi interaktif."
+msgstr "Bersihkan representasi gambar-gambar yang dipergunakan untuk mempercepat menampilkan dokumen dan hasil transformasi interaktif."
 
 #: links.py:274
 msgid "Clear document image cache"
@@ -451,9 +447,7 @@ msgstr "Deskripsi"
 msgid ""
 "The server date and time when the document was finally processed and added "
 "to the system."
-msgstr ""
-"Tanggal dan waktu pada peladen saat dokumen selesai diproses dan ditambahkan "
-"ke sistem."
+msgstr "Tanggal dan waktu pada peladen saat dokumen selesai diproses dan ditambahkan ke sistem."
 
 #: models/document_models.py:60 models/misc_models.py:41
 msgid "Added"
@@ -540,10 +534,9 @@ msgstr "Nama tipe dokumen."
 
 #: models/document_type_models.py:36
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
-msgstr ""
-"Waktu yang dibutuhkan saat dokumen dari tipe ini akan dipindahkan ke tong "
-"sampah."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
+msgstr "Waktu yang dibutuhkan saat dokumen dari tipe ini akan dipindahkan ke tong sampah."
 
 #: models/document_type_models.py:38
 msgid "Trash time period"
@@ -557,9 +550,7 @@ msgstr ""
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
-msgstr ""
-"Waktu yang dibutuhkan setelah dokumen dari tipe ini pada tong sampah akan "
-"dihapus."
+msgstr "Waktu yang dibutuhkan setelah dokumen dari tipe ini pada tong sampah akan dihapus."
 
 #: models/document_type_models.py:48
 msgid "Delete time period"
@@ -604,8 +595,8 @@ msgstr "File"
 #: models/document_version_models.py:94
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document. "
-"Some examples: \"text/plain\" or \"image/jpeg\". "
+"describe the format of a file, in this case the file format of the document."
+" Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
 #: models/document_version_models.py:98 search.py:38 search.py:63
@@ -616,8 +607,7 @@ msgstr "Tipe MIME"
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
-msgstr ""
-"Pengkodean versi dokumen. binari 7-bit, binari 8-bit, teks, base64, dll."
+msgstr "Pengkodean versi dokumen. binari 7-bit, binari 8-bit, teks, base64, dll."
 
 #: models/document_version_models.py:104
 msgid "Encoding"
@@ -800,15 +790,15 @@ msgstr "Jumlah maksimum dokumen favorit per pengguna"
 #: settings.py:61
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
 msgstr ""
 
 #: settings.py:70
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value "
-"of 0 disables the block calculation and the entire file will be loaded into "
-"memory."
+"Size of blocks to use when calculating the document file's checksum. A value"
+" of 0 disables the block calculation and the entire file will be loaded into"
+" memory."
 msgstr ""
 
 #: settings.py:77
@@ -837,8 +827,7 @@ msgstr ""
 
 #: settings.py:118
 msgid "Amount in degrees to rotate a document page per user interaction."
-msgstr ""
-"Jumlah dalam derajat untuk memutar halaman dokumen per interaksi pengguna."
+msgstr "Jumlah dalam derajat untuk memutar halaman dokumen per interaksi pengguna."
 
 #: settings.py:124
 msgid "Path to the Storage subclass to use when storing document files."
@@ -856,23 +845,17 @@ msgstr ""
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Jumlah maksimal dalam persen (%) yang diperbolehkan bagi pengguna untuk "
-"memperbesar tampilan halaman dokumen secara interaktif"
+msgstr "Jumlah maksimal dalam persen (%) yang diperbolehkan bagi pengguna untuk memperbesar tampilan halaman dokumen secara interaktif"
 
 #: settings.py:154
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Jumlah minimal dalam persen (%) yang diperbolehkan bagi pengguna untuk "
-"memperkecil tampilan halaman dokumen secara interaktif."
+msgstr "Jumlah minimal dalam persen (%) yang diperbolehkan bagi pengguna untuk memperkecil tampilan halaman dokumen secara interaktif."
 
 #: settings.py:161
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr ""
-"Satuan dalam persen untuk memperbesar atau memperkecil tampilan halaman "
-"dokumen per interaksi pengguna."
+msgstr "Satuan dalam persen untuk memperbesar atau memperkecil tampilan halaman dokumen per interaksi pengguna."
 
 #: statistics.py:18
 msgid "January"
@@ -965,9 +948,10 @@ msgstr ""
 
 #: views/document_page_views.py:54
 msgid ""
-"This could mean that the document is of a format that is not supported, that "
-"it is corrupted or that the upload process was interrupted. Use the document "
-"page recalculation action to attempt to introspect the page count again."
+"This could mean that the document is of a format that is not supported, that"
+" it is corrupted or that the upload process was interrupted. Use the "
+"document page recalculation action to attempt to introspect the page count "
+"again."
 msgstr ""
 
 #: views/document_page_views.py:59
@@ -1000,8 +984,8 @@ msgstr ""
 #: views/document_type_views.py:71
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
@@ -1041,8 +1025,7 @@ msgstr ""
 
 #: views/document_type_views.py:215
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 
 #: views/document_type_views.py:253
@@ -1221,9 +1204,7 @@ msgstr ""
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Masalah dalam menghapus transformasi-transformasi untuk halaman: "
-"%(document)s; %(error)s."
+msgstr "Masalah dalam menghapus transformasi-transformasi untuk halaman: %(document)s; %(error)s."
 
 #: views/document_views.py:565
 msgid "Transformations cloned successfully."
@@ -1246,8 +1227,8 @@ msgstr ""
 #: views/document_views.py:681
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/document_views.py:688
@@ -1256,8 +1237,8 @@ msgstr ""
 
 #: views/document_views.py:706
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 
 #: views/document_views.py:710

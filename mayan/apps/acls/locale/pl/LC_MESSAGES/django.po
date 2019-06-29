@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2017
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
@@ -13,15 +13,12 @@ msgstr ""
 "POT-Creation-Date: 2019-06-29 02:14-0400\n"
 "PO-Revision-Date: 2019-06-15 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:24 links.py:44
 msgid "ACLs"
@@ -95,15 +92,11 @@ msgstr "API URL prowadzący do listy uprawnień dla listy kontroli dostępu."
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
-"API URL prowadzący do uprawnienia w liście kontroli dostępu, w której "
-"uprawnienie występuje. "
+msgstr "API URL prowadzący do uprawnienia w liście kontroli dostępu, w której uprawnienie występuje. "
 
 #: serializers.py:91
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr ""
-"Klucz główny nowego uprawnienia dla udzielenia dostępu do listy kontroli "
-"dostępu."
+msgstr "Klucz główny nowego uprawnienia dla udzielenia dostępu do listy kontroli dostępu."
 
 #: serializers.py:115 serializers.py:191
 #, python-format
@@ -114,9 +107,7 @@ msgstr "Brak uprawnienia: %s"
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr ""
-"Rozdzielona przecinkami lista uprawnień kluczy głównych dla udzielenia "
-"dostępu do listy kontroli dostępu."
+msgstr "Rozdzielona przecinkami lista uprawnień kluczy głównych dla udzielenia dostępu do listy kontroli dostępu."
 
 #: serializers.py:142
 msgid "Primary keys of the role to which this access control list binds to."
@@ -181,9 +172,9 @@ msgid "Object ID"
 msgstr "ID obiektu"
 
 #: workflow_actions.py:38
-msgid "Numeric identifier of the object for which the access will be modified."
-msgstr ""
-"Numeryczny identyfikator obiektu, dla którego dostęp zostanie zmodyfikowany."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
+msgstr "Numeryczny identyfikator obiektu, dla którego dostęp zostanie zmodyfikowany."
 
 #: workflow_actions.py:43 workflow_actions.py:158
 msgid "Roles"

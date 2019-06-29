@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-29 02:20-0400\n"
-"PO-Revision-Date: 2019-06-15 07:49+0000\n"
+"PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:82 events.py:8 permissions.py:8
@@ -78,16 +77,12 @@ msgid "All the users."
 msgstr "Alle gebruikers."
 
 #: dashboard_widgets.py:16
-#, fuzzy
-#| msgid "Available users"
 msgid "Total users"
-msgstr "Beschikbare gebruikers"
+msgstr ""
 
 #: dashboard_widgets.py:32
-#, fuzzy
-#| msgid "Available groups"
 msgid "Total groups"
-msgstr "Beschikbare groepen"
+msgstr ""
 
 #: events.py:12
 msgid "Group created"
@@ -268,9 +263,7 @@ msgstr "Verwijder gebruiker: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super gebruiker en medewerker verwijderen is niet toegestaan, gebruik de "
-"admin gebruiker voor deze zaken."
+msgstr "Super gebruiker en medewerker verwijderen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
 
 #: views.py:212
 #, python-format

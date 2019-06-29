@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2015,2018
 # Nima Towhidi <nima.towhidi@gmail.com>, 2017
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-29 02:17-0400\n"
-"PO-Revision-Date: 2019-06-15 07:49+0000\n"
+"PO-Revision-Date: 2019-06-29 06:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:62 events.py:8 links.py:17 links.py:46 links.py:149 links.py:176
@@ -203,9 +202,7 @@ msgstr "در خروج"
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
-msgstr ""
-"این مقدار توسط برنامه های دیگر برای ارجاع به این گردش کار استفاده می شود. "
-"فقط شامل حروف، اعداد و حروف الفبا است."
+msgstr "این مقدار توسط برنامه های دیگر برای ارجاع به این گردش کار استفاده می شود. فقط شامل حروف، اعداد و حروف الفبا است."
 
 #: models.py:45
 msgid "Internal name"
@@ -223,9 +220,7 @@ msgstr "حالت اولیه"
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr ""
-"انتخاب کنید اگر این حالت شما خواهد بود که می خواهید جریان کار شروع شود. تنها "
-"یک حالت می تواند وضعیت اولیه باشد."
+msgstr "انتخاب کنید اگر این حالت شما خواهد بود که می خواهید جریان کار شروع شود. تنها یک حالت می تواند وضعیت اولیه باشد."
 
 #: models.py:205
 msgid "Initial"
@@ -235,9 +230,7 @@ msgstr "اولیه"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr ""
-"درصد تکمیل را که این وضعیت در رابطه با جریان کاری نشان می دهد وارد کنید. "
-"استفاده از اعداد بدون نشانه درصد."
+msgstr "درصد تکمیل را که این وضعیت در رابطه با جریان کاری نشان می دهد وارد کنید. استفاده از اعداد بدون نشانه درصد."
 
 #: models.py:217 models.py:276
 msgid "Workflow state"
@@ -387,9 +380,7 @@ msgstr "کلید اولیه نوع سند اضافه می شود"
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr ""
-"URL API اشاره به نوع سند مربوط به جریان کاری که به آن متصل است. این URL "
-"متفاوت از URL سند نوع سند است."
+msgstr "URL API اشاره به نوع سند مربوط به جریان کاری که به آن متصل است. این URL متفاوت از URL سند نوع سند است."
 
 #: serializers.py:116
 msgid "Primary key of the destination state to be added."
@@ -403,9 +394,7 @@ msgstr "کلید اولیه حالت مبدأ اضافه می شود"
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
-msgstr ""
-"URL API اشاره به یک گردش کار در رابطه با سند که آن متصل است. این URL متفاوت "
-"از URL کارآفرینی کانونی است."
+msgstr "URL API اشاره به یک گردش کار در رابطه با سند که آن متصل است. این URL متفاوت از URL کارآفرینی کانونی است."
 
 #: serializers.py:227
 msgid "A link to the entire history of this workflow."
@@ -415,8 +404,7 @@ msgstr "لینک به کل تاریخچه این گردش کار"
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
-msgstr ""
-"لیست کاملی از نوع سند کپی اولیه که این جریان کار متصل است، جدا شده است."
+msgstr "لیست کاملی از نوع سند کپی اولیه که این جریان کار متصل است، جدا شده است."
 
 #: serializers.py:319
 msgid "Primary key of the transition to be added."
@@ -424,8 +412,8 @@ msgstr "کلید اصلی انتقال برای اضافه کردن"
 
 #: views/workflow_instance_views.py:44
 msgid ""
-"Assign workflows to the document type of this document to have this document "
-"execute those workflows. "
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
 msgstr ""
 
 #: views/workflow_instance_views.py:48
@@ -439,7 +427,8 @@ msgstr "گردش کار برای سند: %s"
 
 #: views/workflow_instance_views.py:83
 msgid ""
-"This view will show the state changes as a workflow instance is transitioned."
+"This view will show the state changes as a workflow instance is "
+"transitioned."
 msgstr ""
 
 #: views/workflow_instance_views.py:87
@@ -587,8 +576,8 @@ msgstr "ویرایش عمل جریان کار: %s"
 
 #: views/workflow_views.py:367
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or "
-"leaves the state in which they reside."
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
 msgstr ""
 
 #: views/workflow_views.py:371
@@ -640,7 +629,8 @@ msgstr ""
 
 #: views/workflow_views.py:635
 msgid ""
-"Create a transition and use it to move a workflow from  one state to another."
+"Create a transition and use it to move a workflow from  one state to "
+"another."
 msgstr ""
 
 #: views/workflow_views.py:639
@@ -729,15 +719,11 @@ msgstr "نشانی اینترنتی"
 
 #: workflow_actions.py:93
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow "
-"log entry instance as part of their context via the variable \"entry_log\". "
-"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
-"می تواند یک آدرس IP، یک دامنه یا یک الگو باشد. قالب ها ورودی ورودی ورود به "
-"سیستم را به عنوان بخشی از متن خود از طریق متغیر \"entry_log\" دریافت می "
-"کنند. \"entry_log\" به نوبه خود ویژگی های \"workflow_instance\"، \"datetime"
-"\"، \"transition\"، \"user\" و \"comment\" را فراهم می کند."
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
+msgstr "می تواند یک آدرس IP، یک دامنه یا یک الگو باشد. قالب ها ورودی ورودی ورود به سیستم را به عنوان بخشی از متن خود از طریق متغیر \"entry_log\" دریافت می کنند. \"entry_log\" به نوبه خود ویژگی های \"workflow_instance\"، \"datetime\"، \"transition\"، \"user\" و \"comment\" را فراهم می کند."
 
 #: workflow_actions.py:103
 msgid "Timeout"
@@ -754,16 +740,11 @@ msgstr "ظرفیت ترابری"
 #: workflow_actions.py:112
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
-msgstr ""
-"یک سند JSON برای درخواست در همچنین می تواند یک الگو باشد که یک سند JSON را "
-"بازگرداند. قالب ها ورودی ورودی ورود به سیستم را به عنوان بخشی از متن خود از "
-"طریق متغیر \"entry_log\" دریافت می کنند. \"entry_log\" به نوبه خود ویژگی های "
-"\"workflow_instance\"، \"datetime\"، \"transition\"، \"user\" و \"comment\" "
-"را فراهم می کند."
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr "یک سند JSON برای درخواست در همچنین می تواند یک الگو باشد که یک سند JSON را بازگرداند. قالب ها ورودی ورودی ورود به سیستم را به عنوان بخشی از متن خود از طریق متغیر \"entry_log\" دریافت می کنند. \"entry_log\" به نوبه خود ویژگی های \"workflow_instance\"، \"datetime\"، \"transition\"، \"user\" و \"comment\" را فراهم می کند."
 
 #: workflow_actions.py:125
 msgid "Perform a POST request"

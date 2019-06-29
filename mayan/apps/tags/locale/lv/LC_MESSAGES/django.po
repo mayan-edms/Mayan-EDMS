@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
 msgid ""
@@ -9,16 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-29 02:20-0400\n"
-"PO-Revision-Date: 2019-05-31 12:52+0000\n"
+"PO-Revision-Date: 2019-06-28 11:50+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:52 apps.py:107 apps.py:114 apps.py:136 apps.py:138 events.py:7
 #: forms.py:17 links.py:25 menus.py:16 models.py:42 permissions.py:7
@@ -36,15 +34,15 @@ msgstr "Tagam pievienots dokuments"
 
 #: events.py:13
 msgid "Tag created"
-msgstr "Tag izveidots"
+msgstr "Tags izveidots"
 
 #: events.py:16
 msgid "Tag edited"
-msgstr "Tag rediģēts"
+msgstr "Tags rediģēts"
 
 #: events.py:19
 msgid "Tag removed from document"
-msgstr "Tag ir noņemta no dokumenta"
+msgstr "Tags ir noņemts no dokumenta"
 
 #: links.py:16 workflow_actions.py:75
 msgid "Remove tag"
@@ -76,7 +74,7 @@ msgstr "Visi"
 
 #: methods.py:20
 msgid "Return a the tags attached to the document."
-msgstr "Atgrieziet dokumentam pievienotās atzīmes."
+msgstr "Atgrieziet dokumentam pievienotos tagus."
 
 #: methods.py:22
 msgid "get_tags()"
@@ -84,7 +82,7 @@ msgstr "get_tags ()"
 
 #: models.py:28
 msgid "A short text used as the tag name."
-msgstr "Īss teksts, ko izmanto kā atzīmes nosaukumu."
+msgstr "Īss teksts, ko izmanto kā taga nosaukumu."
 
 #: models.py:29 search.py:16
 msgid "Label"
@@ -100,7 +98,7 @@ msgstr "Krāsa"
 
 #: models.py:41
 msgid "Tag"
-msgstr "Tag"
+msgstr "Tags"
 
 #: models.py:84
 msgid "Preview"
@@ -108,7 +106,7 @@ msgstr "Priekšskatījums"
 
 #: models.py:113
 msgid "Document tag"
-msgstr "Dokumenta atzīme"
+msgstr "Dokumenta tags"
 
 #: models.py:114
 msgid "Document tags"
@@ -116,7 +114,7 @@ msgstr "Dokumentu tagi"
 
 #: permissions.py:10
 msgid "Create new tags"
-msgstr "Izveidojiet jaunas atzīmes"
+msgstr "Izveidojiet jaunus tagus"
 
 #: permissions.py:13
 msgid "Delete tags"
@@ -132,7 +130,7 @@ msgstr "Rediģēt tagus"
 
 #: permissions.py:22
 msgid "Attach tags to documents"
-msgstr "Pievienojiet dokumentus dokumentiem"
+msgstr "Pievienojiet tagus dokumentiem"
 
 #: permissions.py:25
 msgid "Remove tags from documents"
@@ -142,21 +140,17 @@ msgstr "Noņemiet tagus no dokumentiem"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr ""
-"Komatu atdalītu dokumentu primāro atslēgu saraksts, kurām šī atzīme tiks "
-"pievienota."
+msgstr "Komatu atdalītu dokumentu primāro atslēgu saraksts, kurām šis tags tiks pievienots."
 
 #: serializers.py:86
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr ""
-"API URL, kas norāda uz tagu saistībā ar tam pievienoto dokumentu. Šis URL "
-"atšķiras no kanoniskā taga URL."
+msgstr "API URL, kas norāda uz tagu saistībā ar tam pievienoto dokumentu. Šis URL atšķiras no kanoniskā taga URL."
 
 #: serializers.py:106
 msgid "Primary key of the tag to be added."
-msgstr "Pievienojamās taga primārā atslēga."
+msgstr "Pievienojamā taga primārā atslēga."
 
 #: views.py:38
 #, python-format
@@ -176,9 +170,9 @@ msgstr "Pievienojiet"
 #, python-format
 msgid "Attach tags to %(count)d document"
 msgid_plural "Attach tags to %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Pievienojiet tagus dokumentiem %(count)d"
+msgstr[1] "Pievienojiet tagus dokumentam %(count)d"
+msgstr[2] "Pievienojiet tagus dokumentiem %(count)d"
 
 #: views.py:61
 #, python-format
@@ -192,15 +186,12 @@ msgstr "Pievienotie tagi."
 #: views.py:112
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
-msgstr ""
-"Dokuments &quot;%(document)s&quot; jau ir atzīmēts kā &quot;%(tag)s&quot;"
+msgstr "Dokuments \"%(document)s\" jau ir atzīmēts kā \"%(tag)s\""
 
 #: views.py:122
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr ""
-"Tag &quot;%(tag)s&quot;, kas veiksmīgi pievienots dokumentam &quot;"
-"%(document)s&quot;."
+msgstr "Tag \"%(tag)s\", kas veiksmīgi pievienots dokumentam \"%(document)s\"."
 
 #: views.py:131
 msgid "Create tag"
@@ -235,12 +226,12 @@ msgstr "Dzēst tagu: %s"
 #: views.py:179
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
-msgstr "Tag &quot;%s&quot; veiksmīgi izdzēsta."
+msgstr "Tag \"%s\" veiksmīgi izdzēsta."
 
 #: views.py:184
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
-msgstr "Dzēšot tagu &quot;%(tag)s&quot;, radās kļūda: %(error)s"
+msgstr "Dzēšot tagu \"%(tag)s\", radās kļūda: %(error)s"
 
 #: views.py:199
 #, python-format
@@ -251,9 +242,7 @@ msgstr "Rediģēt tagu: %s"
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr ""
-"Tags ir krāsu kodētas īpašības, kuras var pievienot vai noņemt no "
-"dokumentiem."
+msgstr "Tags ir krāsu kodētas īpašības, kuras var pievienot vai noņemt no dokumentiem."
 
 #: views.py:221
 msgid "No tags available"
@@ -291,9 +280,9 @@ msgstr "Noņemt"
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Noņemiet tagus dokumentiem %(count)d"
+msgstr[1] "Noņemiet tagus dokumentam %(count)d"
+msgstr[2] "Noņemiet tagus dokumentiem %(count)d"
 
 #: views.py:312
 #, python-format
@@ -307,14 +296,12 @@ msgstr "Atceltās atzīmes."
 #: views.py:361
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-msgstr "Dokuments &quot;%(document)s&quot; netika atzīmēts kā &quot;%(tag)s"
+msgstr "Dokuments \"%(document)s\" netika atzīmēts kā \"%(tag)s\""
 
 #: views.py:370
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr ""
-"Tag &quot;%(tag)s&quot; veiksmīgi noņemts no dokumenta &quot;"
-"%(document)s&quot;."
+msgstr "Tag \"%(tag)s\" veiksmīgi noņemts no dokumenta \"%(document)s\"."
 
 #: wizard_steps.py:18
 msgid "Select tags"

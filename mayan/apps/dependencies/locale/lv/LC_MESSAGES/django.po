@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -15,12 +15,11 @@ msgstr ""
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
-"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:27 links.py:43 permissions.py:7
 msgid "Dependencies"
@@ -67,6 +66,8 @@ msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing dependencies under this environment."
 msgstr ""
+"Vide, ko izmanto programmatūras izplatāmo pakešu veidošanai. Gala lietotāji "
+"var ignorēt trūkstošās atkarības šajā vidē."
 
 #: classes.py:68
 msgid "Build"
@@ -77,6 +78,8 @@ msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Vide, ko izstrādātāji izmanto, lai veiktu izmaiņas kodā. Gala lietotāji var "
+"ignorēt trūkstošās atkarības šajā vidē."
 
 #: classes.py:74
 msgid "Development"
@@ -87,6 +90,8 @@ msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
 msgstr ""
+"Normāla vide gala lietotājiem. Trūkstošas atkarības šajā vidē radīs "
+"problēmas un kļūdas normālas lietošanas laikā."
 
 #: classes.py:80
 msgid "Production"
@@ -121,7 +126,7 @@ msgstr "Nepieciešams norādīt vismaz vienu: app_label vai moduli."
 #: classes.py:279
 #, python-format
 msgid "Dependency \"%s\" already registered."
-msgstr "Atkarība &quot;%s&quot; jau ir reģistrēta."
+msgstr "Atkarība \"%s\" jau ir reģistrēta."
 
 #: classes.py:305
 #, python-format
@@ -154,7 +159,7 @@ msgstr "Nav precizēts"
 
 #: classes.py:405
 msgid "Patching files... "
-msgstr ""
+msgstr "Notiek failu lāpīšana ..."
 
 #: classes.py:440
 msgid "Executables that are called directly by the code."
@@ -166,13 +171,15 @@ msgstr "Binārs"
 
 #: classes.py:459
 msgid ""
-"JavaScript libraries downloaded the from NPM registry and used for front-end "
-"functionality."
+"JavaScript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
 msgstr ""
+"JavaScript bibliotēkas lejupielādēja no NPM reģistra un tika izmantotas "
+"front-end funkcionalitātei."
 
 #: classes.py:462
 msgid "JavaScript"
-msgstr ""
+msgstr "JavaScript"
 
 #: classes.py:496 classes.py:729
 msgid "Downloading... "
@@ -196,11 +203,11 @@ msgstr "Python"
 
 #: classes.py:710
 msgid "Fonts downloaded from fonts.googleapis.com."
-msgstr ""
+msgstr "Fonti, kas lejupielādēti no fonts.googleapis.com."
 
 #: classes.py:712
 msgid "Google font"
-msgstr ""
+msgstr "Google fonti"
 
 #: classes.py:791
 msgid "Declared in app"
@@ -208,7 +215,7 @@ msgstr "Paziņots lietotnē"
 
 #: classes.py:792
 msgid "Show dependencies by the app that declared them."
-msgstr ""
+msgstr "Rādīt atkarības pēc lietotnēm, kas tās deklarēja."
 
 #: classes.py:796
 msgid "Class"
@@ -219,6 +226,8 @@ msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
+"Rādīt dažādu atkarību klases. Klases parasti tiek sadalītas pēc valodas vai "
+"atkarības faila veidiem."
 
 #: classes.py:802
 msgid "State"
@@ -230,12 +239,16 @@ msgid ""
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
+"Rādīt dažādos atkarību stāvokļus. True nozīmē, ka atkarības ir instalētas un"
+" ir pareizas. False nozīmē, ka trūkst atkarību vai ir nepareiza versija."
 
 #: classes.py:810
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
+"Atkarības, kas nepieciešamas vienai videi, var nebūt nepieciešama citai. "
+"Vides paraugi: Produkcijas vide, Izstrādes vide."
 
 #: links.py:11 views.py:35
 msgid "Check for updates"

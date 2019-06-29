@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
 msgid ""
@@ -9,16 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-29 02:20-0400\n"
-"PO-Revision-Date: 2019-05-31 12:49+0000\n"
-"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"PO-Revision-Date: 2019-06-29 06:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
 #: views.py:630
@@ -34,10 +32,7 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
-"Dokumentu avoti ir veids, kādā jaunie dokumenti tiek piegādāti Mayan EDMS, "
-"izveidojiet vismaz tīmekļa veidlapas avotu, lai varētu augšupielādēt "
-"dokumentus no pārlūkprogrammas."
+msgstr "Dokumentu avoti ir veids, kādā jaunie dokumenti tiek piegādāti Mayan EDMS, izveidojiet vismaz tīmekļa veidlapas avotu, lai varētu augšupielādēt dokumentus no pārlūkprogrammas."
 
 #: apps.py:71
 msgid "Type"
@@ -63,9 +58,7 @@ msgstr "Ziņojums"
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
-msgstr ""
-"Lietderība, ko nodrošina SANE pakete. Izmanto, lai kontrolētu skeneri un "
-"iegūtu skenētā dokumenta attēlu."
+msgstr "Lietderība, ko nodrošina SANE pakete. Izmanto, lai kontrolētu skeneri un iegūtu skenētā dokumenta attēlu."
 
 #: forms.py:30
 msgid "Comment"
@@ -193,11 +186,11 @@ msgstr "Tīmekļa veidlapa"
 
 #: literals.py:63 models/staging_folder_sources.py:69
 msgid "Staging folder"
-msgstr "Pakāpju mape"
+msgstr "Pieturvietu mape"
 
 #: literals.py:64 models/watch_folder_sources.py:48
 msgid "Watch folder"
-msgstr "Skatīties mapi"
+msgstr "Novērot mapi"
 
 #: literals.py:65
 msgid "POP3 email"
@@ -241,8 +234,7 @@ msgstr "Intervāls"
 
 #: models/base.py:180
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
-"Pievienojiet dokumenta veidu dokumentiem, kas augšupielādēti no šī avota."
+msgstr "Pievienojiet dokumenta veidu dokumentiem, kas augšupielādēti no šī avota."
 
 #: models/base.py:182
 msgid "Document type"
@@ -285,12 +277,11 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Tipiskas izvēles ir 110 POP3, 995 POP3 pār SSL, 143 IMAP, 993 IMAP pār SSL."
+msgstr "Tipiskas izvēles ir 110 POP3, 995 POP3 pār SSL, 143 IMAP, 993 IMAP pār SSL."
 
 #: models/email_sources.py:49
 msgid "Port"
-msgstr "Osta"
+msgstr "Ports"
 
 #: models/email_sources.py:51
 msgid "Username"
@@ -301,18 +292,10 @@ msgid "Password"
 msgstr "Parole"
 
 #: models/email_sources.py:56
-#, fuzzy
-#| msgid ""
-#| "Name of the attachment that will contains the metadata type names and "
-#| "value pairs to be assigned to the rest of the downloaded attachments. "
-#| "Note: This attachment has to be the first attachment."
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
 msgstr ""
-"Pielikuma nosaukums, kurā būs metadatu tipa nosaukumi un vērtību pāri, kas "
-"tiks piešķirti pārējiem lejupielādētajiem pielikumiem. Piezīme: šim "
-"pielikumam jābūt pirmajam pielikumam."
 
 #: models/email_sources.py:59
 msgid "Metadata attachment name"
@@ -322,9 +305,7 @@ msgstr "Metadatu pielikuma nosaukums"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr ""
-"Atlasiet metadatu tipu, kas derīgs dokumenta tipam, kurā izvēlēts e-pasta "
-"objekta saglabāšana."
+msgstr "Atlasiet metadatu tipu, kas derīgs dokumenta tipam, kurā izvēlēts e-pasta objekta saglabāšana."
 
 #: models/email_sources.py:66
 msgid "Subject metadata type"
@@ -334,9 +315,7 @@ msgstr "Tēmas metadatu veids"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr ""
-"Atlasiet metadatu tipu, kas derīgs dokumenta tipam, kurā izvēlēts e-pasta "
-"&quot;no&quot; vērtības."
+msgstr "Atlasiet metadatu tipu, kas derīgs dokumenta tipam, kurā izvēlēts e-pasta \"no\" vērtības."
 
 #: models/email_sources.py:73
 msgid "From metadata type"
@@ -363,18 +342,14 @@ msgstr "E-pasta avoti"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"Objekta metadatu tips &quot;%(metadata_type)s&quot; nav derīgs dokumenta "
-"tipam: %(document_type)s"
+msgstr "Objekta metadatu tips \"%(metadata_type)s\" nav derīgs dokumenta tipam: %(document_type)s"
 
 #: models/email_sources.py:204
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"&quot;No&quot; metadatu tips &quot;%(metadata_type)s&quot; nav derīgs "
-"dokumenta tipam: %(document_type)s"
+msgstr "\"No\" metadatu tips \"%(metadata_type)s\" nav derīgs dokumenta tipam: %(document_type)s"
 
 #: models/email_sources.py:219
 msgid "IMAP Mailbox from which to check for messages."
@@ -404,9 +379,7 @@ msgstr "Ierīces nosaukums"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr ""
-"Atlasa skenēšanas režīmu (piem., Lineāru, melnbaltu vai krāsu). Ja skeneris "
-"šo iespēju neatbalsta, atstājiet to tukšu."
+msgstr "Atlasa skenēšanas režīmu (piem., Lineāru, melnbaltu vai krāsu). Ja skeneris šo iespēju neatbalsta, atstājiet to tukšu."
 
 #: models/scanner_sources.py:41
 msgid "Mode"
@@ -417,9 +390,7 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr ""
-"Iestata skenētā attēla izšķirtspēju DPI (punkti uz collu). Tipiskā vērtība "
-"ir 200. Ja skeneris šo iespēju neatbalsta, atstājiet to tukšu."
+msgstr "Iestata skenētā attēla izšķirtspēju DPI (punkti uz collu). Tipiskā vērtība ir 200. Ja skeneris šo iespēju neatbalsta, atstājiet to tukšu."
 
 #: models/scanner_sources.py:48
 msgid "Resolution"
@@ -429,9 +400,7 @@ msgstr "Izšķirtspēja"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"Atlasa skenēšanas avotu (piemēram, dokumentu padevēju). Ja skeneris šo "
-"iespēju neatbalsta, atstājiet to tukšu."
+msgstr "Atlasa skenēšanas avotu (piemēram, dokumentu padevēju). Ja skeneris šo iespēju neatbalsta, atstājiet to tukšu."
 
 #: models/scanner_sources.py:54
 msgid "Paper source"
@@ -441,9 +410,7 @@ msgstr "Papīra avots"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"Atlasa dokumentu padevēja režīmu (vienkāršais / duplekss). Ja skeneris šo "
-"iespēju neatbalsta, atstājiet to tukšu."
+msgstr "Atlasa dokumentu padevēja režīmu (vienkāršais / duplekss). Ja skeneris šo iespēju neatbalsta, atstājiet to tukšu."
 
 #: models/scanner_sources.py:61
 msgid "ADF mode"
@@ -500,7 +467,7 @@ msgstr "Dzēst pēc augšupielādes"
 
 #: models/staging_folder_sources.py:70
 msgid "Staging folders"
-msgstr "Pakāpju mapes"
+msgstr "Pieturvietu mapes"
 
 #: models/staging_folder_sources.py:82
 #, python-format
@@ -520,9 +487,7 @@ msgstr "Servera puses failu sistēmas ceļš failu skenēšanai."
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
-msgstr ""
-"Ja tiek pārbaudīts, mapes ceļš tiks skenēts ne tikai failiem, bet arī tās "
-"apakšdirektorijām."
+msgstr "Ja tiek pārbaudīts, mapes ceļš tiks skenēts ne tikai failiem, bet arī tās apakšdirektorijām."
 
 #: models/watch_folder_sources.py:42
 msgid "Include subdirectories?"
@@ -530,7 +495,7 @@ msgstr "Iekļaut apakšdirektorijas?"
 
 #: models/watch_folder_sources.py:49
 msgid "Watch folders"
-msgstr "Skatiet mapes"
+msgstr "Novērotās mapes"
 
 #: models/webform_sources.py:43
 msgid "Web forms"
@@ -586,17 +551,13 @@ msgstr "Augšupielādējiet dokumentu"
 
 #: settings.py:15
 msgid "File path to the scanimage program used to control image scanners."
-msgstr ""
-"Faila ceļš uz skenēšanas programmu, ko izmanto, lai kontrolētu attēlu "
-"skenerus."
+msgstr "Faila ceļš uz skenēšanas programmu, ko izmanto, lai kontrolētu attēlu skenerus."
 
 #: settings.py:22
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
-msgstr ""
-"Ceļš uz glabāšanas apakšklasi, ko var izmantot, saglabājot kešatmiņā "
-"saglabātos attēlu failus."
+msgstr "Ceļš uz glabāšanas apakšklasi, ko var izmantot, saglabājot kešatmiņā saglabātos attēlu failus."
 
 #: settings.py:31
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
@@ -621,8 +582,7 @@ msgstr "Ielādējiet failus vai noklikšķiniet šeit, lai augšupielādētu fai
 
 #: templates/sources/upload_multiform_subtemplate.html:87
 msgid "Your browser does not support drag and drop file uploads."
-msgstr ""
-"Jūsu pārlūkprogramma neatbalsta vilkšanas un nomešanas failu augšupielādes."
+msgstr "Jūsu pārlūkprogramma neatbalsta vilkšanas un nomešanas failu augšupielādes."
 
 #: templates/sources/upload_multiform_subtemplate.html:88
 msgid "Please use the fallback form below to upload your files."
@@ -640,9 +600,7 @@ msgstr "Serveris atbildēja ar {{statusCode}} kodu."
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
-msgstr ""
-"Šeit tiks uzskaitītas visas avota lietošanas laikā radušās kļūdas, lai "
-"palīdzētu atkļūdot."
+msgstr "Šeit tiks uzskaitītas visas avota lietošanas laikā radušās kļūdas, lai palīdzētu atkļūdot."
 
 #: views.py:68
 msgid "No log entries available"
@@ -655,11 +613,9 @@ msgstr "Loga ieraksti avotiem: %s"
 
 #: views.py:125 wizards.py:154
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"Neviens interaktīvs dokumentu avots nav definēts vai neviens no tiem nav "
-"iespējots, izveidojiet to pirms turpināšanas."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Neviens interaktīvs dokumentu avots nav definēts vai neviens no tiem nav iespējots, izveidojiet to pirms turpināšanas."
 
 #: views.py:153 views.py:171 views.py:181
 msgid "Document properties"
@@ -677,9 +633,7 @@ msgstr "Skenēšana"
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
-msgstr ""
-"Kļūda, izpildot dokumenta augšupielādes uzdevumu; %(exception)s, "
-"%(exception_class)s"
+msgstr "Kļūda, izpildot dokumenta augšupielādes uzdevumu; %(exception)s, %(exception_class)s"
 
 #: views.py:293
 msgid "New document queued for upload and will be available shortly."
@@ -688,19 +642,16 @@ msgstr "Jauns dokuments tiek rindā augšupielādēts un drīz būs pieejams."
 #: views.py:344
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr ""
-"Augšupielādējiet &quot;%(document_type)s&quot; tipa dokumentu no avota: "
-"%(source)s"
+msgstr "Augšupielādējiet \"%(document_type)s\" tipa dokumentu no avota: %(source)s"
 
 #: views.py:378
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
-msgstr "Dokuments &quot;%s&quot; ir bloķēts jaunu versiju augšupielādei."
+msgstr "Dokuments \"%s\" ir bloķēts jaunu versiju augšupielādei."
 
 #: views.py:431
 msgid "New document version queued for upload and will be available shortly."
-msgstr ""
-"Jauna dokumenta versija tiek augšupielādēta rindā un būs pieejama drīz."
+msgstr "Jauna dokumenta versija tiek augšupielādēta rindā un būs pieejama drīz."
 
 #: views.py:472
 #, python-format
@@ -710,7 +661,7 @@ msgstr "Augšupielādējiet jaunu versiju no avota: %s"
 #: views.py:486
 #, python-format
 msgid "Delete staging file \"%s\"?"
-msgstr "Vai izdzēst failu &quot;%s&quot;?"
+msgstr "Vai izdzēst failu \"%s\"?"
 
 #: views.py:507
 msgid ""
@@ -718,16 +669,12 @@ msgid ""
 "Sources that delete content after downloading will not do so while being "
 "tested. Check the source's error log for information during testing. A "
 "successful test will clear the error log."
-msgstr ""
-"Tas veiks avota pārbaudes kodu pat tad, ja avots nav iespējots. Avoti, kas "
-"dzēš saturu pēc lejupielādes, to nedarīs, kamēr tie tiks pārbaudīti. "
-"Pārbaudes laikā pārbaudiet avota kļūdas žurnālu. Veiksmīgs tests notīra "
-"kļūdas žurnālu."
+msgstr "Tas veiks avota pārbaudes kodu pat tad, ja avots nav iespējots. Avoti, kas dzēš saturu pēc lejupielādes, to nedarīs, kamēr tie tiks pārbaudīti. Pārbaudes laikā pārbaudiet avota kļūdas žurnālu. Veiksmīgs tests notīra kļūdas žurnālu."
 
 #: views.py:513
 #, python-format
 msgid "Trigger check for source \"%s\"?"
-msgstr "Izmantot avota &quot;%s&quot; pārbaudi?"
+msgstr "Izmantot avota \"%s\" pārbaudi?"
 
 #: views.py:530
 msgid "Source check queued."
@@ -754,11 +701,7 @@ msgid ""
 "webform, are interactive and require user input to operate. Others like the "
 "email sources, are automatic and run on the background without user "
 "intervention."
-msgstr ""
-"Avoti nodrošina līdzekļus dokumentu augšupielādēšanai. Daži avoti, piemēram, "
-"tīmekļa veidlapa, ir interaktīvi un pieprasa, lai lietotājs to izmantotu. "
-"Citi, piemēram, e-pasta avoti, ir automātiski un darbojas fonā bez lietotāja "
-"iejaukšanās."
+msgstr "Avoti nodrošina līdzekļus dokumentu augšupielādēšanai. Daži avoti, piemēram, tīmekļa veidlapa, ir interaktīvi un pieprasa, lai lietotājs to izmantotu. Citi, piemēram, e-pasta avoti, ir automātiski un darbojas fonā bez lietotāja iejaukšanās."
 
 #: views.py:629
 msgid "No sources available"

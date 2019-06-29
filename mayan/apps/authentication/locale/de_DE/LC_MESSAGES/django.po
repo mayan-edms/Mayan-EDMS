@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Mathias Behrle <mathiasb@m9s.biz>, 2019
@@ -15,12 +15,11 @@ msgstr ""
 "POT-Creation-Date: 2019-06-29 02:15-0400\n"
 "PO-Revision-Date: 2019-06-15 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:25 settings.py:9
@@ -43,9 +42,7 @@ msgstr "Angemeldet bleiben"
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
-"Bitte geben Sie Ihre E-Mailadresse und ein Passwort an. Beachten Sie, dass "
-"das Passwortfeld Groß- und Kleinschreibung unterscheidet."
+msgstr "Bitte geben Sie Ihre E-Mailadresse und ein Passwort an. Beachten Sie, dass das Passwortfeld Groß- und Kleinschreibung unterscheidet."
 
 #: forms.py:27
 msgid "This account is inactive."
@@ -67,14 +64,12 @@ msgstr "Passwort festlegen"
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr ""
-"Authentifizierungs-Mechanismus für die Benutzer. Optionen: Benutzername, E-"
-"Mail-Adresse"
+msgstr "Authentifizierungs-Mechanismus für die Benutzer. Optionen: Benutzername, E-Mail-Adresse"
 
 #: settings.py:20
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
-"in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
 msgstr ""
 
 #: templates/authentication/login.html:11
@@ -101,8 +96,7 @@ msgstr "Passwort zurücksetzen"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr ""
-"Passwortrücksetzung erfolgreich! Klicken Sie auf den Link um sich anzumelden."
+msgstr "Passwortrücksetzung erfolgreich! Klicken Sie auf den Link um sich anzumelden."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
@@ -154,9 +148,7 @@ msgstr "Passwort ändern für Benutzer: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Superuser und Staff-Benutzer löschen ist nicht erlaubt. Benutzen Sie die "
-"Administratoren-Oberfläche dafür."
+msgstr "Superuser und Staff-Benutzer löschen ist nicht erlaubt. Benutzen Sie die Administratoren-Oberfläche dafür."
 
 #: views.py:196
 #, python-format
@@ -166,6 +158,4 @@ msgstr "Passwort für Benutzer %s erfolgreich zurückgesetzt."
 #: views.py:202
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Fehler beim Zurücksetzen des Passworts für den Benutzer  \"%(user)s\": "
-"%(error)s"
+msgstr "Fehler beim Zurücksetzen des Passworts für den Benutzer  \"%(user)s\": %(error)s"

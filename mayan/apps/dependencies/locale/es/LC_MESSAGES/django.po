@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2019
 # Lory977 <helga.carrero@gmail.com>, 2019
 # Roberto Rosario, 2019
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -17,10 +17,10 @@ msgstr ""
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:27 links.py:43 permissions.py:7
@@ -69,8 +69,8 @@ msgid ""
 "users can ignore missing dependencies under this environment."
 msgstr ""
 "Entorno utilizado para la construcción de paquetes distribuibles del "
-"software. Los usuarios finales pueden ignorar las dependencias que faltan en "
-"este entorno."
+"software. Los usuarios finales pueden ignorar las dependencias que faltan en"
+" este entorno."
 
 #: classes.py:68
 msgid "Build"
@@ -108,8 +108,8 @@ msgid ""
 "usage."
 msgstr ""
 "Entorno usado para la ejecución del conjunto de pruebas para verificar la "
-"funcionalidad del código. Las dependencias en este entorno no son necesarias "
-"para el uso normal de producción."
+"funcionalidad del código. Las dependencias en este entorno no son necesarias"
+" para el uso normal de producción."
 
 #: classes.py:87
 msgid "Testing"
@@ -175,11 +175,11 @@ msgstr "Binario"
 
 #: classes.py:459
 msgid ""
-"JavaScript libraries downloaded the from NPM registry and used for front-end "
-"functionality."
+"JavaScript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
 msgstr ""
-"Las librerias de JavaScript descargadas el registro de NPM y utilizadas para "
-"la funcionalidad de front-end."
+"Las librerias de JavaScript descargadas el registro de NPM y utilizadas para"
+" la funcionalidad de front-end."
 
 #: classes.py:462
 msgid "JavaScript"
@@ -243,8 +243,8 @@ msgid ""
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
-"Mostrar los diferentes estados de las dependencias. \"Cierto\" significa que "
-"las dependencias están instaladas y son de una versión correcta. \"Falso\" "
+"Mostrar los diferentes estados de las dependencias. \"Cierto\" significa que"
+" las dependencias están instaladas y son de una versión correcta. \"Falso\" "
 "significa que faltan las dependencias o que existe una versión incorrecta."
 
 #: classes.py:810
@@ -287,8 +287,8 @@ msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
-"Nombres separados por comas de las dependencias se muestran en la lista y se "
-"excluyen todos los demás."
+"Nombres separados por comas de las dependencias se muestran en la lista y se"
+" excluyen todos los demás."
 
 #: management/commands/installjavascript.py:15
 msgid "Process a specific app."

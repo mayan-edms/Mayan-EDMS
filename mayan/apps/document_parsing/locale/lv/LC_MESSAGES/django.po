@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -15,12 +15,11 @@ msgstr ""
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
-"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:50 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
@@ -162,7 +161,8 @@ msgstr ""
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 "Failu ceļš uz poppler pdftotext programmu, ko izmanto, lai iegūtu tekstu no "
 "PDF failiem."
@@ -196,14 +196,14 @@ msgstr "%(count)d dokumenti, kas pievienoti parsēšanas rindai"
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Iesniegt %(count)d dokumentus parsēšanas rindā"
+msgstr[1] "Iesniegt %(count)d dokumentu parsēšanas rindā?"
+msgstr[2] "Iesniegt %(count)d dokumentus parsēšanas rindā"
 
 #: views.py:129
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
-msgstr "Iesniegt parsēšanas rindā dokumentu &quot;%s&quot;"
+msgstr "Iesniegt parsēšanas rindā dokumentu \"%s\""
 
 #: views.py:154
 #, python-format

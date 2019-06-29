@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Carlo Zanatto <>, 2012
 # Daniele Bortoluzzi <daniele@elkos.it>, 2019
@@ -14,14 +14,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-29 02:15-0400\n"
-"PO-Revision-Date: 2019-06-15 07:48+0000\n"
+"PO-Revision-Date: 2019-06-29 06:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:89 permissions_runtime.py:7 settings.py:14
@@ -38,9 +37,7 @@ msgstr "Campi disponibili:\n"
 
 #: dependencies.py:396
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
-"Usato per consentire la traduzione offline delle stringhe di testo nel "
-"codice."
+msgstr "Usato per consentire la traduzione offline delle stringhe di testo nel codice."
 
 #: dependencies.py:401
 msgid "Provides style checking."
@@ -67,20 +64,14 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
-"Seleziona le voci da rimuovere. Tieni premuto Ctrl per selezionare più di "
-"una voce. Quando hai finito di selezionare, clicca il bottone sotto o fai "
-"doppio clic sulla lista per attivare l'azione."
+msgstr "Seleziona le voci da rimuovere. Tieni premuto Ctrl per selezionare più di una voce. Quando hai finito di selezionare, clicca il bottone sotto o fai doppio clic sulla lista per attivare l'azione."
 
 #: generics.py:154
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
-"Seleziona le voci da aggiungere. Tieni premuto Ctrl per selezionare più di "
-"una voce. Quando hai finito di selezionare, clicca il bottone sotto o fai "
-"doppio clic sulla lista per attivare l'azione."
+msgstr "Seleziona le voci da aggiungere. Tieni premuto Ctrl per selezionare più di una voce. Quando hai finito di selezionare, clicca il bottone sotto o fai doppio clic sulla lista per attivare l'azione."
 
 #: generics.py:287
 msgid "Add all"
@@ -190,9 +181,7 @@ msgstr "Questa funzionalità è obsoleta e verrà rimossa nelle versioni future.
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
-"Il tuo database attuale è impostato a SQLite, che dovrebbe essere usato solo "
-"per sviluppo e test, non in produzione."
+msgstr "Il tuo database attuale è impostato a SQLite, che dovrebbe essere usato solo per sviluppo e test, non in produzione."
 
 #: literals.py:34
 msgid "Days"
@@ -209,32 +198,25 @@ msgstr "Minuti"
 #: management/commands/convertdb.py:40
 msgid ""
 "Restricts dumped data to the specified app_label or app_label.ModelName."
-msgstr ""
-"Limita i dati del dump a una specifica app_label o app_label.ModelName."
+msgstr "Limita i dati del dump a una specifica app_label o app_label.ModelName."
 
 #: management/commands/convertdb.py:47
 msgid ""
-"The database from which data will be exported. If omitted the database named "
-"\"default\" will be used."
-msgstr ""
-"Il database da cui esportare i dati. Se non specificato, verrà usato il "
-"database chiamato \"default\"."
+"The database from which data will be exported. If omitted the database named"
+" \"default\" will be used."
+msgstr "Il database da cui esportare i dati. Se non specificato, verrà usato il database chiamato \"default\"."
 
 #: management/commands/convertdb.py:54
 msgid ""
 "The database to which data will be imported. If omitted the database named "
 "\"default\" will be used."
-msgstr ""
-"Il database sul quale importare i dati. Se non specificato, verrà usato il "
-"database chiamato \"default\"."
+msgstr "Il database sul quale importare i dati. Se non specificato, verrà usato il database chiamato \"default\"."
 
 #: management/commands/convertdb.py:61
 msgid ""
 "Force the conversion of the database even if the receiving database is not "
 "empty."
-msgstr ""
-"Forza la conversione del database anche se il database di destinazione non è "
-"vuoto."
+msgstr "Forza la conversione del database anche se il database di destinazione non è vuoto."
 
 #: menus.py:10
 msgid "System"
@@ -339,34 +321,31 @@ msgstr "Abilita automaticamente i log per tutte le app."
 
 #: settings.py:25
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Il ritardo per i task in background dipende dalla propagazione del commit su "
-"database."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Il ritardo per i task in background dipende dalla propagazione del commit su database."
 
 #: settings.py:33
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
 msgstr ""
 
 #: settings.py:43
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
 msgstr ""
 
 #: settings.py:52
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
-msgstr ""
-"Nome della vista collegata all'ancora brand nel menù principale. Questa è "
-"anche la vista alla quale gli utenti verranno reindirizzati dopo il login."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr "Nome della vista collegata all'ancora brand nel menù principale. Questa è anche la vista alla quale gli utenti verranno reindirizzati dopo il login."
 
 #: settings.py:61
 msgid "The number objects that will be displayed per page."
@@ -378,8 +357,7 @@ msgstr ""
 
 #: settings.py:75
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
-"Percorso del file di log su cui verranno scritti gli errori in produzione."
+msgstr "Percorso del file di log su cui verranno scritti gli errori in produzione."
 
 #: settings.py:82
 msgid "Name to be displayed in the main menu."
@@ -391,9 +369,7 @@ msgstr "URL dell'installazione o pagina home del progetto."
 
 #: settings.py:94
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Un backend di memorizzazione che tutti i lavoratori possono utilizzare per "
-"condividere i file."
+msgstr "Un backend di memorizzazione che tutti i lavoratori possono utilizzare per condividere i file."
 
 #: settings.py:103
 msgid "Django"
@@ -402,46 +378,33 @@ msgstr "Django"
 #: settings.py:108
 msgid ""
 "A list of strings representing the host/domain names that this site can "
-"serve. This is a security measure to prevent HTTP Host header attacks, which "
-"are possible even under many seemingly-safe web server configurations. "
+"serve. This is a security measure to prevent HTTP Host header attacks, which"
+" are possible even under many seemingly-safe web server configurations. "
 "Values in this list can be fully qualified names (e.g. 'www.example.com'), "
-"in which case they will be matched against the request's Host header exactly "
-"(case-insensitive, not including port). A value beginning with a period can "
-"be used as a subdomain wildcard: '.example.com' will match example.com, www."
-"example.com, and any other subdomain of example.com. A value of '*' will "
-"match anything; in this case you are responsible to provide your own "
+"in which case they will be matched against the request's Host header exactly"
+" (case-insensitive, not including port). A value beginning with a period can"
+" be used as a subdomain wildcard: '.example.com' will match example.com, "
+"www.example.com, and any other subdomain of example.com. A value of '*' will"
+" match anything; in this case you are responsible to provide your own "
 "validation of the Host header (perhaps in a middleware; if so this "
 "middleware must be listed first in MIDDLEWARE)."
-msgstr ""
-"Una lista di stringhe con i nomi host o nomi di dominio che questo sito può "
-"servire. Si tratta di una misura di sicurezza per prevenire attacchi con "
-"l'intestazione HTTP Host, che sono possibili in tante configurazioni dei web "
-"server anche apparentemente sicure. I valori in questa lista possono essere "
-"FQDN (es. 'www.nomesito.it'), nel quale caso verranno confrontati con "
-"l'header di richiesta Host in maniera esatta (senza controllo maiuscole e "
-"senza la porta). Una stringa che inizi con un punto può essere usata come "
-"wildcard per il sottodominio: '.nomesito.it' sarà valido per nomesito.it, "
-"www.nomesito.it e qualunque altro sottodominio di nomesito.it. Il valore '*' "
-"corrisponde a qualunque sito; in questo caso sei tu responsabile di validare "
-"in qualche modo l'intestazione Host (magari in un middleware, in tal caso "
-"deve essere il primo della lista MIDDLEWARE)."
+msgstr "Una lista di stringhe con i nomi host o nomi di dominio che questo sito può servire. Si tratta di una misura di sicurezza per prevenire attacchi con l'intestazione HTTP Host, che sono possibili in tante configurazioni dei web server anche apparentemente sicure. I valori in questa lista possono essere FQDN (es. 'www.nomesito.it'), nel quale caso verranno confrontati con l'header di richiesta Host in maniera esatta (senza controllo maiuscole e senza la porta). Una stringa che inizi con un punto può essere usata come wildcard per il sottodominio: '.nomesito.it' sarà valido per nomesito.it, www.nomesito.it e qualunque altro sottodominio di nomesito.it. Il valore '*' corrisponde a qualunque sito; in questo caso sei tu responsabile di validare in qualche modo l'intestazione Host (magari in un middleware, in tal caso deve essere il primo della lista MIDDLEWARE)."
 
 #: settings.py:126
 msgid ""
 "When set to True, if the request URL does not match any of the patterns in "
-"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the "
-"same URL with a slash appended. Note that the redirect may cause any data "
+"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the"
+" same URL with a slash appended. Note that the redirect may cause any data "
 "submitted in a POST request to be lost. The APPEND_SLASH setting is only "
-"used if CommonMiddleware is installed (see Middleware). See also PREPEND_WWW."
+"used if CommonMiddleware is installed (see Middleware). See also "
+"PREPEND_WWW."
 msgstr ""
 
 #: settings.py:139
 msgid ""
 "The list of validators that are used to check the strength of user's "
 "passwords."
-msgstr ""
-"La lista dei validatori usati per controllare l'efficacia delle password "
-"degli utenti."
+msgstr "La lista dei validatori usati per controllare l'efficacia delle password degli utenti."
 
 #: settings.py:146
 msgid ""
@@ -450,12 +413,7 @@ msgid ""
 "dictionary containing the options for an individual database. The DATABASES "
 "setting must configure a default database; any number of additional "
 "databases may also be specified."
-msgstr ""
-"Un dizionario che contiene le impostazioni per tutti i database da usare con "
-"Django. È un dizionario innestato le cui chiavi sono alias di database e i "
-"valori sono i dizionari con le opzioni per ogni database. L'impostazione "
-"DATABASES deve contenere un database chiamato 'default'; è possibile poi "
-"specificare ulteriori database aggiuntivi."
+msgstr "Un dizionario che contiene le impostazioni per tutti i database da usare con Django. È un dizionario innestato le cui chiavi sono alias di database e i valori sono i dizionari con le opzioni per ogni database. L'impostazione DATABASES deve contenere un database chiamato 'default'; è possibile poi specificare ulteriori database aggiuntivi."
 
 #: settings.py:158
 msgid ""
@@ -463,10 +421,10 @@ msgid ""
 "body may be before a SuspiciousOperation (RequestDataTooBig) is raised. The "
 "check is done when accessing request.body or request.POST and is calculated "
 "against the total request size excluding any file upload data. You can set "
-"this to None to disable the check. Applications that are expected to receive "
-"unusually large form posts should tune this setting. The amount of request "
-"data is correlated to the amount of memory needed to process the request and "
-"populate the GET and POST dictionaries. Large requests could be used as a "
+"this to None to disable the check. Applications that are expected to receive"
+" unusually large form posts should tune this setting. The amount of request "
+"data is correlated to the amount of memory needed to process the request and"
+" populate the GET and POST dictionaries. Large requests could be used as a "
 "denial-of-service attack vector if left unchecked. Since web servers don't "
 "typically perform deep request inspection, it's not possible to perform a "
 "similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
@@ -523,8 +481,8 @@ msgstr ""
 
 #: settings.py:249
 msgid ""
-"Default: False. Whether to use a TLS (secure) connection when talking to the "
-"SMTP server. This is used for explicit TLS connections, generally on port "
+"Default: False. Whether to use a TLS (secure) connection when talking to the"
+" SMTP server. This is used for explicit TLS connections, generally on port "
 "587. If you are experiencing hanging connections, see the implicit TLS "
 "setting EMAIL_USE_SSL."
 msgstr ""
@@ -548,8 +506,8 @@ msgstr ""
 
 #: settings.py:281
 msgid ""
-"Default: '/accounts/login/' The URL where requests are redirected for login, "
-"especially when using the login_required() decorator. This setting also "
+"Default: '/accounts/login/' The URL where requests are redirected for login,"
+" especially when using the login_required() decorator. This setting also "
 "accepts named URL patterns which can be used to reduce configuration "
 "duplication since you don't have to define the URL in two places (settings "
 "and URLconf)."
@@ -567,8 +525,8 @@ msgstr ""
 #: settings.py:305
 msgid ""
 "Default: None. The URL where requests are redirected after a user logs out "
-"using LogoutView (if the view doesn't get a next_page argument). If None, no "
-"redirect will be performed and the logout view will be rendered. This "
+"using LogoutView (if the view doesn't get a next_page argument). If None, no"
+" redirect will be performed and the logout view will be rendered. This "
 "setting also accepts named URL patterns which can be used to reduce "
 "configuration duplication since you don't have to define the URL in two "
 "places (settings and URLconf)."
@@ -615,8 +573,8 @@ msgstr ""
 msgid ""
 "The file storage engine to use when collecting static files with the "
 "collectstatic management command. A ready-to-use instance of the storage "
-"backend defined in this setting can be found at django.contrib.staticfiles."
-"storage.staticfiles_storage."
+"backend defined in this setting can be found at "
+"django.contrib.staticfiles.storage.staticfiles_storage."
 msgstr ""
 
 #: settings.py:378
@@ -640,17 +598,18 @@ msgstr ""
 
 #: settings.py:401
 msgid ""
-"Default: \"amqp://\". Default broker URL. This must be a URL in the form of: "
-"transport://userid:password@hostname:port/virtual_host Only the scheme part "
-"(transport://) is required, the rest is optional, and defaults to the "
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
 msgstr ""
 
 #: settings.py:411
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
-"task results (tombstones). Refer to http://docs.celeryproject.org/en/v4.1.0/"
-"userguide/configuration.html#result-backend"
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
 msgstr ""
 
 #: templatetags/common_tags.py:31
@@ -684,8 +643,7 @@ msgstr "Crea"
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
-"Inserisci un 'internal name' valido composto da lettere, numeri e underscore."
+msgstr "Inserisci un 'internal name' valido composto da lettere, numeri e underscore."
 
 #: views.py:31
 msgid "About"

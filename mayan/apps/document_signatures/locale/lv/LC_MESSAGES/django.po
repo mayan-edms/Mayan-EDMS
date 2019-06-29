@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
 msgid ""
@@ -9,16 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-29 02:17-0400\n"
-"PO-Revision-Date: 2019-05-31 12:16+0000\n"
+"PO-Revision-Date: 2019-06-27 13:01+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:47 permissions.py:8 settings.py:10
 msgid "Document signatures"
@@ -52,9 +50,7 @@ msgstr "Atslēga"
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
-msgstr ""
-"Ieejas frāze, lai atbloķētu atslēgu un ļautu to izmantot dokumenta versijas "
-"parakstīšanai."
+msgstr "Ieejas frāze, lai atbloķētu atslēgu un ļautu to izmantot dokumenta versijas parakstīšanai."
 
 #: forms.py:26
 msgid "Passphrase"
@@ -62,8 +58,7 @@ msgstr "Ieejas frāze"
 
 #: forms.py:35
 msgid "Private key that will be used to sign this document version."
-msgstr ""
-"Privāta atslēga, kas tiks izmantota, lai parakstītu šo dokumenta versiju."
+msgstr "Privāta atslēga, kas tiks izmantota, lai parakstītu šo dokumenta versiju."
 
 #: forms.py:46
 msgid "Signature is embedded?"
@@ -239,8 +234,7 @@ msgstr "Pārbaudiet trūkstošo iegulto parakstu"
 
 #: settings.py:15
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr ""
-"Ceļš uz glabāšanas apakšklasi, kas jāizmanto, uzglabājot atdalītos parakstus."
+msgstr "Ceļš uz glabāšanas apakšklasi, kas jāizmanto, uzglabājot atdalītos parakstus."
 
 #: settings.py:24
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
@@ -261,12 +255,12 @@ msgstr "Dokumenta versija ir veiksmīgi parakstīta."
 #: views.py:127
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
-msgstr "Parakstiet dokumenta versiju &quot;%s&quot; ar atdalītu parakstu"
+msgstr "Parakstiet dokumenta versiju \"%s\" ar atdalītu parakstu"
 
 #: views.py:224
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
-msgstr "Parakstiet dokumenta versiju &quot;%s&quot; ar iegulto parakstu"
+msgstr "Parakstiet dokumenta versiju \"%s\" ar iegulto parakstu"
 
 #: views.py:240
 #, python-format
@@ -283,10 +277,7 @@ msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr ""
-"Paraksti palīdz nodrošināt autorības pierādījumus un manipulāciju atklāšanu. "
-"Viņi ir ļoti droši un grūti veidojami. Parakstu var ievietot kā daļu no "
-"dokumenta vai augšupielādēt kā atsevišķu failu."
+msgstr "Paraksti palīdz nodrošināt autorības pierādījumus un manipulāciju atklāšanu. Viņi ir ļoti droši un grūti veidojami. Parakstu var ievietot kā daļu no dokumenta vai augšupielādēt kā atsevišķu failu."
 
 #: views.py:328
 msgid "There are no signatures for this document."
