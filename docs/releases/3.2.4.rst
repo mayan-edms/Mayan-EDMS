@@ -14,6 +14,18 @@ Changes
   incorrectly state it is named flag_list. Closes GitLab issue
   #606. Thanks to Samuel Aebi (@samuelaebi) for the report and 
   debug information.
+- Improve the workflow preview generation. Use polylines
+  instead of splines. Add state actions to the preview.
+  Highlight the initial state.
+- Add help text to the workflow transition form comment field.
+- Fix direct deployment instructions.
+- Add user, group, and role dashboard widgets.
+- Add test mixin detect database connection leaks.
+- Remove tag create event registration from the tag
+  instances. The tag create event is not applicable to
+  existing tags.
+- Add proper redirection after moving a document to the
+  trash.
 
 Removals
 --------
