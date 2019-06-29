@@ -16,6 +16,8 @@
 * Remove tag create event registration from the tag
   instances. The tag create event is not applicable to
   existing tags.
+* Add proper redirection after moving a document to the
+  trash.
 
 3.2.3 (2019-06-21)
 ==================
