@@ -8,6 +8,9 @@ Importer branch
 * Support configurable GUnicorn timeouts. Defaults to
   current value of 120 seconds.
 * Fix help text of the platformtemplate command.
+* Fix IMAP4 mailbox.store flags argument. Python's documentation
+  incorrectly state it is named flag_list. Closes GitLab issue
+  #606. 
 
 3.2.3 (2019-06-21)
 ==================
