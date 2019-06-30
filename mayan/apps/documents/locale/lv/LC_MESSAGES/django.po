@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:38-0400\n"
-"PO-Revision-Date: 2019-06-15 07:49+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-06-29 02:17-0400\n"
+"PO-Revision-Date: 2019-06-28 06:41+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +74,7 @@ msgstr "Kopā lapas"
 msgid "Total documents"
 msgstr "Kopā dokumenti"
 
-#: dashboard_widgets.py:66 views/trashed_document_views.py:134
+#: dashboard_widgets.py:66 views/trashed_document_views.py:136
 msgid "Documents in trash"
 msgstr "Dokumenti miskastē"
 
@@ -211,7 +211,7 @@ msgstr "Lapu diapazons"
 msgid ""
 "Page number from which all the transformations will be cloned. Existing "
 "transformations will be lost."
-msgstr ""
+msgstr "Lapas numurs, no kura tiks klonēti visi pārveidojumi. Esošās transformācijas tiks zaudētas."
 
 #: forms/document_type_forms.py:42 models/document_models.py:45
 #: models/document_type_models.py:60 models/document_type_models.py:146
@@ -423,7 +423,7 @@ msgstr "Visas lapas"
 msgid ""
 "UUID of a document, universally Unique ID. An unique identifier generated "
 "for each document."
-msgstr ""
+msgstr "Dokumenta UUID, universāli unikāls ID. Katram dokumentam izveidots unikāls identifikators."
 
 #: models/document_models.py:49
 msgid "The name of the document."
@@ -597,7 +597,7 @@ msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
 "describe the format of a file, in this case the file format of the document."
 " Some examples: \"text/plain\" or \"image/jpeg\". "
-msgstr "Dokumenta versijas fails ir mimetype. MIME veidi ir standarta veids, kā aprakstīt faila formātu, šajā gadījumā dokumenta faila formātu. Daži piemēri: &quot;text / plain&quot; vai &quot;image / jpeg&quot;."
+msgstr "Dokumenta versijas fails ir mimetype. MIME veidi ir standarta veids, kā aprakstīt faila formātu, šajā gadījumā dokumenta faila formātu. Daži piemēri: \"text/plain\" vai \"image/jpeg\"."
 
 #: models/document_version_models.py:98 search.py:38 search.py:63
 msgid "MIME type"
@@ -935,7 +935,7 @@ msgid ""
 "\n"
 "                    Page %(page_number)s of %(total_pages)s\n"
 "                "
-msgstr ""
+msgstr "\nLapa %(page_number)s no %(total_pages)s"
 
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
@@ -944,7 +944,7 @@ msgstr "Parādāmās lapas nav"
 #: utils.py:18
 #, python-format
 msgid "Unknown language \"%s\""
-msgstr "Nezināma valoda &quot;%s&quot;"
+msgstr "Nezināma valoda \"%s\""
 
 #: views/document_page_views.py:54
 msgid ""
@@ -1021,12 +1021,12 @@ msgstr "Izveidojiet ātru uzlīmi dokumenta tipam: %s"
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
-msgstr "Izdzēsiet ātrās iezīmes: %(label)s, no dokumenta tipa &quot;%(document_type)s&quot;?"
+msgstr "Izdzēsiet ātrās iezīmes: %(label)s, no dokumenta tipa \"%(document_type)s\"?"
 
 #: views/document_type_views.py:215
 #, python-format
 msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr "Ātra uzlīmes &quot;%(filename)s&quot; rediģēšana no dokumenta tipa &quot;%(document_type)s&quot;"
+msgstr "Ātra uzlīmes \"%(filename)s\" rediģēšana no dokumenta tipa \"%(document_type)s\""
 
 #: views/document_type_views.py:253
 msgid ""
@@ -1120,7 +1120,7 @@ msgstr "Mainiet dokumenta veidu: %s"
 #: views/document_views.py:151
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
-msgstr "Dokumenta tips &quot;%s&quot; veiksmīgi mainīts."
+msgstr "Dokumenta tips \"%s\" veiksmīgi mainīts."
 
 #: views/document_views.py:220
 msgid "Download"
@@ -1181,7 +1181,7 @@ msgstr "Pārrēķināt dokumenta lapu skaitu: %s?"
 msgid ""
 "Document \"%(document)s\" is empty. Upload at least one document version "
 "before attempting to detect the page count."
-msgstr "Dokuments &quot;%(document)s&quot; ir tukšs. Pirms mēģināt atklāt lapas skaitu, augšupielādējiet vismaz vienu dokumentu versiju."
+msgstr "Dokuments \"%(document)s\" ir tukšs. Pirms mēģināt atklāt lapas skaitu, augšupielādējiet vismaz vienu dokumentu versiju."
 
 #: views/document_views.py:492
 #, python-format
@@ -1294,7 +1294,7 @@ msgstr[2] "Pievienojiet atlasītos dokumentus favorītiem"
 #: views/favorite_document_views.py:73
 #, python-format
 msgid "Document \"%(instance)s\" is not in favorites."
-msgstr "Dokuments &quot;%(instance)s&quot; nav izlasē."
+msgstr "Dokuments \"%(instance)s\" nav izlasē."
 
 #: views/favorite_document_views.py:77
 #, python-format
@@ -1333,70 +1333,70 @@ msgstr "Meklējiet dublētus dokumentus?"
 msgid "Duplicated document scan queued successfully."
 msgstr "Dublētais dokumenta skenēšana veiksmīgi tika rindā."
 
-#: views/trashed_document_views.py:37
+#: views/trashed_document_views.py:39
 #, python-format
 msgid "%(count)d document moved to the trash."
 msgstr "%(count)d dokuments pārvietots uz miskasti."
 
-#: views/trashed_document_views.py:40
+#: views/trashed_document_views.py:42
 #, python-format
 msgid "%(count)d documents moved to the trash."
 msgstr "%(count)d dokumenti pārvietoti uz miskasti."
 
-#: views/trashed_document_views.py:48
+#: views/trashed_document_views.py:50
 msgid "Move the selected document to the trash?"
 msgid_plural "Move the selected documents to the trash?"
 msgstr[0] "Pārvietojiet atlasītos dokumentus uz miskasti?"
 msgstr[1] "Vai pārvietot atlasīto dokumentu uz miskasti?"
 msgstr[2] "Pārvietojiet atlasītos dokumentus uz miskasti?"
 
-#: views/trashed_document_views.py:62
+#: views/trashed_document_views.py:64
 msgid "Empty trash?"
 msgstr "Vai iztukšot miskasti?"
 
-#: views/trashed_document_views.py:76
+#: views/trashed_document_views.py:78
 msgid "Trash emptied successfully"
 msgstr "Miskaste iztukšota veiksmīgi"
 
-#: views/trashed_document_views.py:85
+#: views/trashed_document_views.py:87
 #, python-format
 msgid "%(count)d trashed document deleted."
 msgstr "%(count)d izdzēsts dokuments."
 
-#: views/trashed_document_views.py:88
+#: views/trashed_document_views.py:90
 #, python-format
 msgid "%(count)d trashed documents deleted."
 msgstr "%(count)d izdzēstie dokumenti izdzēsti."
 
-#: views/trashed_document_views.py:96
+#: views/trashed_document_views.py:98
 msgid "Delete the selected trashed document?"
 msgid_plural "Delete the selected trashed documents?"
 msgstr[0] "Vai izdzēst atlasītos atkritumus?"
 msgstr[1] "Vai izdzēst izvēlēto izgāztos dokumentus?"
 msgstr[2] "Vai izdzēst atlasītos atkritumus?"
 
-#: views/trashed_document_views.py:127
+#: views/trashed_document_views.py:129
 msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
 msgstr "Lai izvairītos no datu zuduma, dokumenti netiek nekavējoties dzēsti. Pirmkārt, tie tiek ievietoti miskastē. No šejienes tos pēc tam var beidzot dzēst vai atjaunot."
 
-#: views/trashed_document_views.py:132
+#: views/trashed_document_views.py:134
 msgid "There are no documents in the trash can"
 msgstr "Atkritumu kastē nav dokumentu"
 
-#: views/trashed_document_views.py:145
+#: views/trashed_document_views.py:147
 #, python-format
 msgid "%(count)d trashed document restored."
 msgstr "%(count)d atjaunotais atkritnes dokuments."
 
-#: views/trashed_document_views.py:148
+#: views/trashed_document_views.py:150
 #, python-format
 msgid "%(count)d trashed documents restored."
 msgstr "atjaunoti %(count)d izgāztie dokumenti."
 
-#: views/trashed_document_views.py:156
+#: views/trashed_document_views.py:158
 msgid "Restore the selected trashed document?"
 msgid_plural "Restore the selected trashed documents?"
 msgstr[0] "Vai atjaunot atlasītos atkritumus?"

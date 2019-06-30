@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:36-0400\n"
-"PO-Revision-Date: 2019-05-31 12:00+0000\n"
+"POT-Creation-Date: 2019-06-29 02:16-0400\n"
+"PO-Revision-Date: 2019-06-27 13:00+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgstr "Utility no popper-utils paketes, ko izmanto, lai no PDF failiem izņemtu
 #: forms.py:28
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr "&quot;%s&quot; nav derīgs ieraksts."
+msgstr "\"%s\" nav derīgs ieraksts."
 
 #: links.py:36
 msgid "Create new transformation"
@@ -93,7 +93,7 @@ msgstr "Nosaukums"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr "Ievadiet transformācijas argumentus kā YAML vārdnīcu. ti: {&quot;grādi&quot;: 180}"
+msgstr "Ievadiet transformācijas argumentus kā YAML vārdnīcu. ti: {\"grādi\": 180}"
 
 #: models.py:49
 msgid "Arguments"
@@ -183,12 +183,12 @@ msgstr "Izveidot jaunu transformāciju: %s"
 #: views.py:127
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr "Dzēst transformāciju &quot;%(transformation)s&quot;: %(content_object)s?"
+msgstr "Dzēst transformāciju \"%(transformation)s\": %(content_object)s?"
 
 #: views.py:171
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr "Rediģēt transformāciju &quot;%(transformation)s&quot; par: %(content_object)s"
+msgstr "Rediģēt transformāciju \"%(transformation)s\" par: %(content_object)s"
 
 #: views.py:227
 msgid ""

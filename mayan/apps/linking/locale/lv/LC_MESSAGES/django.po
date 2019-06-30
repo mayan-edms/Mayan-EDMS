@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:38-0400\n"
-"PO-Revision-Date: 2019-05-31 12:28+0000\n"
+"POT-Creation-Date: 2019-06-29 02:18-0400\n"
+"PO-Revision-Date: 2019-06-28 11:18+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -144,7 +144,7 @@ msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The {{ "
 "document }} context variable is available."
-msgstr "Ievadiet veidni, kas jāpiešķir. Izmantojiet Django noklusējuma veidnes valodu (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). Ir pieejams {{document}} konteksta mainīgais."
+msgstr "Ievadiet veidni, kas jāpiešķir. Izmantojiet Django noklusējuma veidnes valodu (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). Ir pieejams {{ document }} konteksta mainīgais."
 
 #: models.py:35
 msgid "Dynamic label"
@@ -260,7 +260,7 @@ msgstr "Dokumenti viedā saitē: %s"
 #: views.py:135
 #, python-format
 msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr "Dokumenti viedā saite &quot;%(smart_link)s&quot;, kas saistīti ar &quot;%(document)s&quot;"
+msgstr "Dokumenti viedā saite \"%(smart_link)s\", kas saistīti ar \"%(document)s\""
 
 #: views.py:160
 msgid "Available document types"
@@ -329,7 +329,7 @@ msgstr "Nosacījumi viedai saitei: %s"
 #: views.py:338
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
-msgstr "Pievienot jaunus nosacījumus viedajai saitei: &quot;%s&quot;"
+msgstr "Pievienot jaunus nosacījumus viedajai saitei: \"%s\""
 
 #: views.py:379
 msgid "Edit smart link condition"
@@ -338,4 +338,4 @@ msgstr "Rediģējiet viedās saites stāvokli"
 #: views.py:409
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
-msgstr "Dzēst smart saite nosacījums: &quot;%s&quot;?"
+msgstr "Dzēst smart saite nosacījums: \"%s\"?"
