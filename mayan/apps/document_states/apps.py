@@ -40,6 +40,10 @@ from .links import (
     link_setup_workflow_state_edit, link_setup_workflow_transitions,
     link_setup_workflow_transition_create,
     link_setup_workflow_transition_delete, link_setup_workflow_transition_edit,
+    link_setup_workflow_transition_field_create,
+    link_setup_workflow_transition_field_delete,
+    link_setup_workflow_transition_field_edit,
+    link_setup_workflow_transition_field_list,
     link_tool_launch_all_workflows, link_workflow_instance_detail,
     link_workflow_instance_transition, link_workflow_runtime_proxy_document_list,
     link_workflow_runtime_proxy_list, link_workflow_preview,
@@ -86,6 +90,7 @@ class DocumentStatesApp(MayanAppConfig):
         WorkflowStateAction = self.get_model('WorkflowStateAction')
         WorkflowStateRuntimeProxy = self.get_model('WorkflowStateRuntimeProxy')
         WorkflowTransition = self.get_model('WorkflowTransition')
+        WorkflowTransitionField = self.get_model('WorkflowTransitionField')
         WorkflowTransitionTriggerEvent = self.get_model(
             'WorkflowTransitionTriggerEvent'
         )
@@ -258,6 +263,18 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         SourceColumn(
+            attribute='name', is_identifier=True, is_sortable=True,
+            source=WorkflowTransitionField
+        )
+        SourceColumn(
+            attribute='label', is_sortable=True, source=WorkflowTransitionField
+        )
+        SourceColumn(
+            attribute='required', is_sortable=True, source=WorkflowTransitionField,
+            widget=TwoStateWidget
+        )
+
+        SourceColumn(
             source=WorkflowRuntimeProxy, label=_('Documents'),
             func=lambda context: context['object'].get_document_count(
                 user=context['request'].user
@@ -305,9 +322,17 @@ class DocumentStatesApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_setup_workflow_transition_edit,
-                link_workflow_transition_events, link_acl_list,
+                link_workflow_transition_events,
+                link_setup_workflow_transition_field_list,
+                link_acl_list,
                 link_setup_workflow_transition_delete
             ), sources=(WorkflowTransition,)
+        )
+        menu_object.bind_links(
+            links=(
+                link_setup_workflow_transition_field_delete,
+                link_setup_workflow_transition_field_edit
+            ), sources=(WorkflowTransitionField,)
         )
         menu_object.bind_links(
             links=(
@@ -340,6 +365,12 @@ class DocumentStatesApp(MayanAppConfig):
             sources=(
                 Workflow, 'document_states:setup_workflow_create',
                 'document_states:setup_workflow_list'
+            )
+        )
+        menu_secondary.bind_links(
+            links=(link_setup_workflow_transition_field_create,),
+            sources=(
+                WorkflowTransition,
             )
         )
         menu_secondary.bind_links(
