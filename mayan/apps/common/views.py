@@ -21,7 +21,7 @@ from .forms import (
 from .generics import (
     ConfirmView, SingleObjectEditView, SingleObjectListView, SimpleView
 )
-from .icons import icon_setup
+from .icons import icon_object_errors, icon_setup
 from .menus import menu_tools, menu_setup
 from .permissions_runtime import permission_error_log_view
 from .settings import setting_home_view
@@ -155,6 +155,14 @@ class ObjectErrorLogEntryListView(SingleObjectListView):
                 {'name': _('Result'), 'attribute': 'result'},
             ),
             'hide_object': True,
+            'no_results_icon': icon_object_errors,
+            'no_results_text': _(
+                'This view displays the error log of different object. '
+                'An empty list is a good thing.'
+            ),
+            'no_results_title': _(
+                'There are no error log entries'
+            ),
             'object': self.get_object(),
             'title': _('Error log entries for: %s' % self.get_object()),
         }
