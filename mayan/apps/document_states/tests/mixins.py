@@ -152,9 +152,10 @@ class WorkflowTransitionViewTestMixin(object):
 
     def _request_test_workflow_transition(self):
         return self.post(
-            viewname='document_states:workflow_instance_transition',
-            kwargs={'pk': self.test_workflow_instance.pk}, data={
-                'transition': self.test_workflow_transition.pk,
+            viewname='document_states:workflow_instance_transition_execute',
+            kwargs={
+                'workflow_instance_pk': self.test_workflow_instance.pk,
+                'workflow_transition_pk': self.test_workflow_transition.pk,
             }
         )
 

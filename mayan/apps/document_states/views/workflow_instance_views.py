@@ -16,7 +16,7 @@ from mayan.apps.documents.models import Document
 from ..forms import WorkflowInstanceTransitionSelectForm
 from ..icons import icon_workflow_instance_detail, icon_workflow_list
 from ..links import link_workflow_instance_transition
-from ..literals import FIELD_TYPE_MAPPING
+from ..literals import FIELD_TYPE_MAPPING, WIDGET_CLASS_MAPPING
 from ..models import WorkflowInstance
 from ..permissions import permission_workflow_view
 
@@ -165,10 +165,16 @@ class WorkflowInstanceTransitionExecuteView(FormView):
 
         for field in self.get_workflow_transition().fields.all():
             schema['fields'][field.name] = {
+                'class': FIELD_TYPE_MAPPING[field.field_type],
+                'help_text': field.help_text,
                 'label': field.label,
-                'class': FIELD_TYPE_MAPPING[field.field_type], 'kwargs': {
-                }
+                'required': field.required,
             }
+            if field.widget:
+                schema['widgets'][field.name] = {
+                    'class': WIDGET_CLASS_MAPPING[field.widget],
+                    'kwargs': field.get_widget_kwargs()
+                }
 
         return {'schema': schema}
 

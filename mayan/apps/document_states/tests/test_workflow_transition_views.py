@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
+from ..literals import FIELD_TYPE_CHOICE_CHAR
 from ..models import WorkflowTransition
 from ..permissions import (
     permission_workflow_edit, permission_workflow_view,
@@ -19,6 +20,7 @@ from .mixins import (
 TEST_WORKFLOW_TRANSITION_FIELD_NAME = 'test_workflow_transition_field'
 TEST_WORKFLOW_TRANSITION_FIELD_LABEL = 'test workflow transition field'
 TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT = 'test workflow transition field help test'
+TEST_WORKFLOW_TRANSITION_FIELD_TYPE = FIELD_TYPE_CHOICE_CHAR
 
 
 class WorkflowTransitionViewTestCase(
@@ -164,7 +166,7 @@ class WorkflowTransitionDocumentViewTestCase(
         permission.
         """
         response = self._request_test_workflow_transition()
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 404)
 
         # Workflow should remain in the same initial state
         self.assertEqual(
@@ -249,6 +251,7 @@ class WorkflowTransitionFieldViewTestCase(
 
     def _create_test_workflow_transition_field(self):
         self.test_workflow_transition_field = self.test_workflow_transition.fields.create(
+            field_type=TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
             name=TEST_WORKFLOW_TRANSITION_FIELD_NAME,
             label=TEST_WORKFLOW_TRANSITION_FIELD_LABEL,
             help_text=TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT
@@ -289,6 +292,7 @@ class WorkflowTransitionFieldViewTestCase(
             viewname='document_states:setup_workflow_transition_field_create',
             kwargs={'pk': self.test_workflow_transition.pk},
             data={
+                'field_type': TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
                 'name': TEST_WORKFLOW_TRANSITION_FIELD_NAME,
                 'label': TEST_WORKFLOW_TRANSITION_FIELD_LABEL,
                 'help_text': TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT

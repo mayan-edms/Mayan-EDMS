@@ -739,8 +739,10 @@ class SetupWorkflowTransitionTriggerEventListView(ExternalObjectMixin, FormView)
 class SetupWorkflowTransitionFieldCreateView(ExternalObjectMixin, SingleObjectCreateView):
     external_object_class = WorkflowTransition
     external_object_permission = permission_workflow_edit
-    fields = ('name', 'label', 'field_type', 'help_text', 'required')
-
+    fields = (
+        'name', 'label', 'field_type', 'help_text', 'required', 'widget',
+        'widget_kwargs'
+    )
     def get_extra_context(self):
         return {
             'navigation_object_list': ('transition', 'workflow'),
@@ -789,7 +791,10 @@ class SetupWorkflowTransitionFieldDeleteView(SingleObjectDeleteView):
 
 
 class SetupWorkflowTransitionFieldEditView(SingleObjectEditView):
-    fields = ('name', 'label', 'field_type', 'help_text', 'required',)
+    fields = (
+        'name', 'label', 'field_type', 'help_text', 'required', 'widget',
+        'widget_kwargs'
+    )
     model = WorkflowTransitionField
     object_permission = permission_workflow_edit
 

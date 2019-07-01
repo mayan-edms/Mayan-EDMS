@@ -4,6 +4,11 @@ import json
 import logging
 
 from graphviz import Digraph
+import yaml
+try:
+    from yaml import CSafeLoader as SafeLoader
+except ImportError:
+    from yaml import SafeLoader
 
 from django.conf import settings
 from django.core.exceptions import PermissionDenied, ValidationError
@@ -15,7 +20,7 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.validators import validate_internal_name
+from mayan.apps.common.validators import YAMLValidator, validate_internal_name
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.events.models import StoredEventType
@@ -23,7 +28,7 @@ from mayan.apps.events.models import StoredEventType
 from .error_logs import error_log_state_actions
 from .events import event_workflow_created, event_workflow_edited
 from .literals import (
-    FIELD_TYPE_CHOICES, WORKFLOW_ACTION_WHEN_CHOICES,
+    FIELD_TYPE_CHOICES, WIDGET_CLASS_CHOICES, WORKFLOW_ACTION_WHEN_CHOICES,
     WORKFLOW_ACTION_ON_ENTRY, WORKFLOW_ACTION_ON_EXIT
 )
 from .managers import WorkflowManager
@@ -393,6 +398,18 @@ class WorkflowTransitionField(models.Model):
             'Whether this fields needs to be filled out or not to proceed.'
         ), verbose_name=_('Required')
     )
+    widget = models.PositiveIntegerField(
+        blank=True, choices=WIDGET_CLASS_CHOICES, help_text=_(
+            'An optional class to change the default presentation of the field.'
+        ), null=True, verbose_name=_('Widget class')
+    )
+    widget_kwargs = models.TextField(
+        blank=True, help_text=_(
+            'A group of keyword arguments to customize the widget. '
+            'Use YAML format.'
+        ), validators=[YAMLValidator()],
+        verbose_name=_('Widget keyword arguments')
+    )
 
     class Meta:
         unique_together = ('transition', 'name')
@@ -401,6 +418,9 @@ class WorkflowTransitionField(models.Model):
 
     def __str__(self):
         return self.label
+
+    def get_widget_kwargs(self):
+        return yaml.load(stream=self.widget_kwargs, Loader=SafeLoader)
 
 
 @python_2_unicode_compatible
@@ -594,6 +614,13 @@ class WorkflowInstanceLogEntry(models.Model):
     def clean(self):
         if self.transition not in self.workflow_instance.get_transition_choices(_user=self.user):
             raise ValidationError(_('Not a valid transition choice.'))
+
+    def get_extra_data(self):
+        result = {}
+        for key, value in self.loads().items():
+            result[self.transition.fields.get(name=key).label] = value
+
+        return result
 
     def loads(self):
         """

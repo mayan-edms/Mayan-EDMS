@@ -27,6 +27,7 @@ from .dependencies import *  # NOQA
 from .handlers import (
     handler_index_document, handler_launch_workflow, handler_trigger_transition
 )
+from .html_widgets import widget_transition_events, WorkflowLogExtraDataWidget
 from .links import (
     link_document_workflow_instance_list, link_setup_document_type_workflows,
     link_setup_workflow_document_types, link_setup_workflow_create,
@@ -54,7 +55,6 @@ from .permissions import (
     permission_workflow_delete, permission_workflow_edit,
     permission_workflow_transition, permission_workflow_view
 )
-from .widgets import widget_transition_events
 
 
 class DocumentStatesApp(MayanAppConfig):
@@ -206,22 +206,31 @@ class DocumentStatesApp(MayanAppConfig):
 
         SourceColumn(
             source=WorkflowInstanceLogEntry, label=_('Date and time'),
-            attribute='datetime'
+            attribute='datetime', is_sortable=True
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry, attribute='user'
-        )
-        SourceColumn(
-            source=WorkflowInstanceLogEntry,
-            attribute='transition'
+            source=WorkflowInstanceLogEntry, attribute='user', is_sortable=True
         )
         SourceColumn(
             source=WorkflowInstanceLogEntry,
-            attribute='comment'
+            attribute='transition__origin_state', is_sortable=True
         )
         SourceColumn(
             source=WorkflowInstanceLogEntry,
-            attribute='extra_data'
+            attribute='transition', is_sortable=True
+        )
+        SourceColumn(
+            source=WorkflowInstanceLogEntry,
+            attribute='transition__destination_state', is_sortable=True
+        )
+        SourceColumn(
+            source=WorkflowInstanceLogEntry,
+            attribute='comment', is_sortable=True
+        )
+        SourceColumn(
+            source=WorkflowInstanceLogEntry,
+            attribute='get_extra_data', label=_('Additional details'),
+            widget=WorkflowLogExtraDataWidget
         )
 
         SourceColumn(
@@ -281,8 +290,16 @@ class DocumentStatesApp(MayanAppConfig):
             source=WorkflowTransitionField
         )
         SourceColumn(
-            attribute='required', is_sortable=True, source=WorkflowTransitionField,
-            widget=TwoStateWidget
+            attribute='required', is_sortable=True,
+            source=WorkflowTransitionField, widget=TwoStateWidget
+        )
+        SourceColumn(
+            attribute='get_widget_display', label=_('Widget'),
+            is_sortable=False, source=WorkflowTransitionField
+        )
+        SourceColumn(
+            attribute='widget_kwargs', is_sortable=True,
+            source=WorkflowTransitionField
         )
 
         SourceColumn(
