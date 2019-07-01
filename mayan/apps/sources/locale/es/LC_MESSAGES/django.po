@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:40-0400\n"
-"PO-Revision-Date: 2019-05-28 20:24+0000\n"
+"POT-Creation-Date: 2019-06-29 02:20-0400\n"
+"PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -199,7 +199,7 @@ msgstr "Carpeta observada"
 msgid "POP3 email"
 msgstr "Correo electrónico POP3"
 
-#: literals.py:66 models/email_sources.py:220 models/email_sources.py:221
+#: literals.py:66 models/email_sources.py:226 models/email_sources.py:227
 msgid "IMAP email"
 msgstr "Correo electrónico IMAP"
 
@@ -268,38 +268,37 @@ msgstr "Entrada de bitácora"
 msgid "Log entries"
 msgstr "Entradas de bitácora"
 
-#: models/email_sources.py:44
+#: models/email_sources.py:45
 msgid "Host"
 msgstr "Host"
 
-#: models/email_sources.py:45
+#: models/email_sources.py:46
 msgid "SSL"
 msgstr "SSL"
 
-#: models/email_sources.py:47
+#: models/email_sources.py:48
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr "Las opciones típicas son 110 para POP3, 995 para POP3 sobre SSL, 143 para IMAP, 993 para IMAP sobre SSL."
 
-#: models/email_sources.py:48
+#: models/email_sources.py:49
 msgid "Port"
 msgstr "Puerto"
 
-#: models/email_sources.py:50
+#: models/email_sources.py:51
 msgid "Username"
 msgstr "Usuario"
 
-#: models/email_sources.py:51
+#: models/email_sources.py:52
 msgid "Password"
 msgstr "Contraseña"
 
-#: models/email_sources.py:55
+#: models/email_sources.py:56
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
-"pairs to be assigned to the rest of the downloaded attachments. Note: This "
-"attachment has to be the first attachment."
-msgstr "Nombre del archivo adjunto que contiene los nombres de los tipos de metadatos y los pares de valores que se asignará al resto de los archivos adjuntos descargados. Nota: Este anejo tiene que ser el primer archivo adjunto."
+"pairs to be assigned to the rest of the downloaded attachments."
+msgstr ""
 
 #: models/email_sources.py:59
 msgid "Metadata attachment name"
@@ -341,33 +340,33 @@ msgstr "Fuente de correo electrónico"
 msgid "Email sources"
 msgstr "Fuentes de correo electrónico"
 
-#: models/email_sources.py:184
+#: models/email_sources.py:190
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo de documento: %(document_type)s"
 
-#: models/email_sources.py:198
+#: models/email_sources.py:204
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "\"De\" tipo de metadatos \"%(metadata_type)s\" no es válido para el tipo de documento: %(document_type)s"
 
-#: models/email_sources.py:213
+#: models/email_sources.py:219
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "Buzón IMAP en el cual revisar mensajes."
 
-#: models/email_sources.py:214
+#: models/email_sources.py:220
 msgid "Mailbox"
 msgstr "Buzón"
 
-#: models/email_sources.py:265
+#: models/email_sources.py:272
 msgid "Timeout"
 msgstr "Tiempo de espera"
 
-#: models/email_sources.py:271 models/email_sources.py:272
+#: models/email_sources.py:278 models/email_sources.py:279
 msgid "POP email"
 msgstr "Correo electrónico POP"
 

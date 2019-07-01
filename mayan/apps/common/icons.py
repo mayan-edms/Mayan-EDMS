@@ -35,8 +35,11 @@ icon_menu_about = Icon(
 icon_menu_user = Icon(
     driver_name='fontawesome', symbol='user-circle'
 )
-icon_object_error_list_with_icon = Icon(
-    driver_name='fontawesome', symbol='lock'
+icon_object_errors = Icon(
+    driver_name='fontawesome', symbol='exclamation-triangle'
+)
+icon_object_error_list = Icon(
+    driver_name='fontawesome', symbol='exclamation-triangle'
 )
 icon_ok = Icon(
     driver_name='fontawesome', symbol='check'

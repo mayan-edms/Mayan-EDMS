@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:40-0400\n"
-"PO-Revision-Date: 2019-05-05 06:26+0000\n"
+"POT-Creation-Date: 2019-06-29 02:20-0400\n"
+"PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -197,7 +197,7 @@ msgstr "Gledajte folder"
 msgid "POP3 email"
 msgstr "POP3 e-pošta"
 
-#: literals.py:66 models/email_sources.py:220 models/email_sources.py:221
+#: literals.py:66 models/email_sources.py:226 models/email_sources.py:227
 msgid "IMAP email"
 msgstr "IMAP e-pošta"
 
@@ -266,38 +266,37 @@ msgstr "Ulazni tragovi"
 msgid "Log entries"
 msgstr "Stavke tragova"
 
-#: models/email_sources.py:44
+#: models/email_sources.py:45
 msgid "Host"
 msgstr "Domaćin"
 
-#: models/email_sources.py:45
+#: models/email_sources.py:46
 msgid "SSL"
 msgstr "SSL"
 
-#: models/email_sources.py:47
+#: models/email_sources.py:48
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr "Tipični izbori su 110 za POP3, 995 za POP3 preko SSL-a, 143 za IMAP, 993 za IMAP preko SSL-a."
 
-#: models/email_sources.py:48
+#: models/email_sources.py:49
 msgid "Port"
 msgstr "Port"
 
-#: models/email_sources.py:50
+#: models/email_sources.py:51
 msgid "Username"
 msgstr "Korisničko ime"
 
-#: models/email_sources.py:51
+#: models/email_sources.py:52
 msgid "Password"
 msgstr "Lozinka"
 
-#: models/email_sources.py:55
+#: models/email_sources.py:56
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
-"pairs to be assigned to the rest of the downloaded attachments. Note: This "
-"attachment has to be the first attachment."
-msgstr "Ime priloga koji će sadržavati imena metapodataka i par vrijednosti koje će biti dodijeljene ostalim preuzjenim prilozima. Napomena: Ovaj prilog mora biti prvi prilog."
+"pairs to be assigned to the rest of the downloaded attachments."
+msgstr ""
 
 #: models/email_sources.py:59
 msgid "Metadata attachment name"
@@ -339,33 +338,33 @@ msgstr "E-mail izvor"
 msgid "Email sources"
 msgstr "E-mail izvori"
 
-#: models/email_sources.py:184
+#: models/email_sources.py:190
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "Tip metapodataka predmeta \"%(metadata_type)s\" ne važi za tip dokumenta: %(document_type)s"
 
-#: models/email_sources.py:198
+#: models/email_sources.py:204
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "\"Od\" metapodataka tipa \"%(metadata_type)s\" ne važi za tip dokumenta: %(document_type)s"
 
-#: models/email_sources.py:213
+#: models/email_sources.py:219
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "IMAP poštansko sanduče sa kojeg možete proveravati poruke."
 
-#: models/email_sources.py:214
+#: models/email_sources.py:220
 msgid "Mailbox"
 msgstr "Poštansko sanduče"
 
-#: models/email_sources.py:265
+#: models/email_sources.py:272
 msgid "Timeout"
 msgstr "Timeout"
 
-#: models/email_sources.py:271 models/email_sources.py:272
+#: models/email_sources.py:278 models/email_sources.py:279
 msgid "POP email"
 msgstr "POP e-pošta"
 

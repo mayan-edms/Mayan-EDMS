@@ -1,7 +1,7 @@
 Version 3.2.4
 =============
 
-Released: June XX, 2019
+Released: June 29, 2019
 
 
 Changes
@@ -14,6 +14,13 @@ Changes
   incorrectly state it is named flag_list. Closes GitLab issue
   #606. Thanks to Samuel Aebi (@samuelaebi) for the report and 
   debug information.
+  debug information.
+- Support configurable GUnicorn timeouts. Defaults to
+  current value of 120 seconds.
+- Fix help text of the platformtemplate command.
+- Fix IMAP4 mailbox.store flags argument. Python's documentation
+  incorrectly state it is named flag_list. Closes GitLab issue
+  #606.
 - Improve the workflow preview generation. Use polylines
   instead of splines. Add state actions to the preview.
   Highlight the initial state.
@@ -89,7 +96,7 @@ variables values show here with your respective settings. This step will refresh
 the supervisord configuration file with the new queues and the latest
 recommended layout::
 
-    MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+    sudo MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
     MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
     MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
     /opt/mayan-edms/bin/mayan-edms.py platformtemplate supervisord > /etc/supervisor/conf.d/mayan.conf
@@ -97,7 +104,7 @@ recommended layout::
 Edit the supervisord configuration file and update any setting the template
 generator missed::
 
-    vi /etc/supervisor/conf.d/mayan.conf
+    sudo vi /etc/supervisor/conf.d/mayan.conf
 
 Migrate existing database schema with::
 

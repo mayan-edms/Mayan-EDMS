@@ -8,8 +8,8 @@ from mayan.apps.navigation.classes import Link
 from .icons import (
     icon_about, icon_current_user_locale_profile_details,
     icon_current_user_locale_profile_edit, icon_documentation,
-    icon_forum, icon_license, icon_object_error_list_with_icon,
-    icon_setup, icon_source_code, icon_support, icon_tools
+    icon_forum, icon_license, icon_setup, icon_source_code, icon_support,
+    icon_tools
 )
 from .permissions_runtime import permission_error_log_view
 
@@ -51,6 +51,7 @@ link_documentation = Link(
 )
 link_object_error_list = Link(
     kwargs=get_kwargs_factory('resolved_object'),
+    icon_class_path='mayan.apps.common.icons.icon_object_error_list',
     permissions=(permission_error_log_view,), text=_('Errors'),
     view='common:object_error_list',
 )
@@ -58,12 +59,6 @@ link_object_error_list_clear = Link(
     kwargs=get_kwargs_factory('resolved_object'),
     permissions=(permission_error_log_view,), text=_('Clear all'),
     view='common:object_error_list_clear',
-)
-link_object_error_list_with_icon = Link(
-    kwargs=get_kwargs_factory('resolved_object'),
-    icon_class=icon_object_error_list_with_icon,
-    permissions=(permission_error_log_view,), text=_('Errors'),
-    view='common:error_list',
 )
 link_forum = Link(
     icon_class=icon_forum, tags='new_window', text=_('Forum'),
