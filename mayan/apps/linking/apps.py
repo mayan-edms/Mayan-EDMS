@@ -58,7 +58,7 @@ class LinkingApp(MayanAppConfig):
 
         ModelEventType.register(
             event_types=(
-                event_smart_link_created, event_smart_link_edited
+                event_smart_link_edited,
             ), model=SmartLink
         )
 
