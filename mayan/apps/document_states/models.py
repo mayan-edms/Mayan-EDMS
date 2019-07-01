@@ -23,8 +23,8 @@ from mayan.apps.events.models import StoredEventType
 from .error_logs import error_log_state_actions
 from .events import event_workflow_created, event_workflow_edited
 from .literals import (
-    WORKFLOW_ACTION_WHEN_CHOICES, WORKFLOW_ACTION_ON_ENTRY,
-    WORKFLOW_ACTION_ON_EXIT
+    FIELD_TYPE_CHOICES, WORKFLOW_ACTION_WHEN_CHOICES,
+    WORKFLOW_ACTION_ON_ENTRY, WORKFLOW_ACTION_ON_EXIT
 )
 from .managers import WorkflowManager
 from .permissions import permission_workflow_transition
@@ -369,6 +369,9 @@ class WorkflowTransitionField(models.Model):
         on_delete=models.CASCADE, related_name='fields',
         to=WorkflowTransition, verbose_name=_('Transition')
     )
+    field_type = models.PositiveIntegerField(
+        choices=FIELD_TYPE_CHOICES, verbose_name=_('Type')
+    )
     name = models.CharField(
         help_text=_(
             'The name that will be used to identify this field in other parts '
@@ -390,7 +393,6 @@ class WorkflowTransitionField(models.Model):
             'Whether this fields needs to be filled out or not to proceed.'
         ), verbose_name=_('Required')
     )
-    #TODO: widget, widget kwargs
 
     class Meta:
         unique_together = ('transition', 'name')
@@ -431,7 +433,7 @@ class WorkflowInstance(models.Model):
         verbose_name=_('Document')
     )
     context = models.TextField(
-        blank=True, verbose_name=_('Backend data')
+        blank=True, verbose_name=_('Context')
     )
 
     class Meta:
@@ -447,25 +449,25 @@ class WorkflowInstance(models.Model):
         with transaction.atomic():
             try:
                 if transition in self.get_current_state().origin_transitions.all():
-                    self.log_entries.create(
-                        comment=comment or '', transition=transition, user=user
-                    )
                     if extra_data:
-                        data = self.loads()
-                        data.update(extra_data)
-                        self.dumps(data=data)
+                        context = self.loads()
+                        context.update(extra_data)
+                        self.dumps(context=context)
+
+                    self.log_entries.create(
+                        comment=comment or '',
+                        extra_data=json.dumps(extra_data or {}),
+                        transition=transition, user=user
+                    )
             except AttributeError:
                 # No initial state has been set for this workflow
                 pass
 
-            # TODO: execute transition event target = document,
-            # action_object = self
-
-    def dumps(self, data):
+    def dumps(self, context):
         """
         Serialize the context data.
         """
-        self.context = json.dumps(data)
+        self.context = json.dumps(context)
         self.save()
 
     def get_absolute_url(self):
@@ -579,6 +581,7 @@ class WorkflowInstanceLogEntry(models.Model):
         to=settings.AUTH_USER_MODEL, verbose_name=_('User')
     )
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
+    extra_data = models.TextField(blank=True, verbose_name=_('Extra data'))
 
     class Meta:
         ordering = ('datetime',)
@@ -591,6 +594,12 @@ class WorkflowInstanceLogEntry(models.Model):
     def clean(self):
         if self.transition not in self.workflow_instance.get_transition_choices(_user=self.user):
             raise ValidationError(_('Not a valid transition choice.'))
+
+    def loads(self):
+        """
+        Deserialize the context data.
+        """
+        return json.loads(self.extra_data or '{}')
 
     def save(self, *args, **kwargs):
         with transaction.atomic():

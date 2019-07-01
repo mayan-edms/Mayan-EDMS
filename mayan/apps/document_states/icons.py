@@ -26,7 +26,9 @@ icon_workflow_list = Icon(driver_name='fontawesome', symbol='sitemap')
 icon_workflow_preview = Icon(driver_name='fontawesome', symbol='eye')
 
 
-icon_workflow_instance_detail = Icon(driver_name='fontawesome', symbol='sitemap')
+icon_workflow_instance_detail = Icon(
+    driver_name='fontawesome', symbol='sitemap'
+)
 icon_workflow_instance_transition = Icon(
     driver_name='fontawesome', symbol='arrows-alt-h'
 )
@@ -58,8 +60,12 @@ icon_workflow_state_delete = Icon(driver_name='fontawesome', symbol='times')
 icon_workflow_state_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
 
 icon_workflow_state_action = Icon(driver_name='fontawesome', symbol='code')
-icon_workflow_state_action_delete = Icon(driver_name='fontawesome', symbol='times')
-icon_workflow_state_action_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
+icon_workflow_state_action_delete = Icon(
+    driver_name='fontawesome', symbol='times'
+)
+icon_workflow_state_action_edit = Icon(
+    driver_name='fontawesome', symbol='pencil-alt'
+)
 icon_workflow_state_action_selection = Icon(
     driver_name='fontawesome-dual', primary_symbol='code',
     secondary_symbol='plus'
@@ -72,19 +78,27 @@ icon_workflow_transition_create = Icon(
     driver_name='fontawesome-dual', primary_symbol='arrows-alt-h',
     secondary_symbol='plus'
 )
-icon_workflow_transition_delete = Icon(driver_name='fontawesome', symbol='times')
+icon_workflow_transition_delete = Icon(
+    driver_name='fontawesome', symbol='times'
+)
 icon_workflow_transition_edit = Icon(
     driver_name='fontawesome', symbol='pencil-alt'
 )
 
-icon_workflow_transition_field = Icon(driver_name='fontawesome', symbol='code')
-icon_workflow_transition_field_delete = Icon(driver_name='fontawesome', symbol='times')
-icon_workflow_transition_field_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
+icon_workflow_transition_field = Icon(driver_name='fontawesome', symbol='table')
+icon_workflow_transition_field_delete = Icon(
+    driver_name='fontawesome', symbol='times'
+)
+icon_workflow_transition_field_edit = Icon(
+    driver_name='fontawesome', symbol='pencil-alt'
+)
 icon_workflow_transition_field_create = Icon(
-    driver_name='fontawesome-dual', primary_symbol='code',
+    driver_name='fontawesome-dual', primary_symbol='table',
     secondary_symbol='plus'
 )
-icon_workflow_transition_field_list = Icon(driver_name='fontawesome', symbol='code')
+icon_workflow_transition_field_list = Icon(
+    driver_name='fontawesome', symbol='table'
+)
 
 icon_workflow_transition_triggers = Icon(
     driver_name='fontawesome', symbol='bolt'

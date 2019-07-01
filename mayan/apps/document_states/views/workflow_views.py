@@ -31,12 +31,13 @@ from ..forms import (
 )
 from ..icons import (
     icon_workflow_list, icon_workflow_state, icon_workflow_state_action,
-    icon_workflow_transition
+    icon_workflow_transition, icon_workflow_transition_field
 )
 from ..links import (
     link_setup_workflow_create, link_setup_workflow_state_create,
     link_setup_workflow_state_action_selection,
-    link_setup_workflow_transition_create
+    link_setup_workflow_transition_create,
+    link_setup_workflow_transition_field_create,
 )
 from ..models import (
     Workflow, WorkflowState, WorkflowStateAction, WorkflowTransition,
@@ -738,8 +739,7 @@ class SetupWorkflowTransitionTriggerEventListView(ExternalObjectMixin, FormView)
 class SetupWorkflowTransitionFieldCreateView(ExternalObjectMixin, SingleObjectCreateView):
     external_object_class = WorkflowTransition
     external_object_permission = permission_workflow_edit
-    fields = ('name', 'label', 'help_text', 'required')
-    #object_permission = permission_workflow_edit
+    fields = ('name', 'label', 'field_type', 'help_text', 'required')
 
     def get_extra_context(self):
         return {
@@ -789,7 +789,7 @@ class SetupWorkflowTransitionFieldDeleteView(SingleObjectDeleteView):
 
 
 class SetupWorkflowTransitionFieldEditView(SingleObjectEditView):
-    fields = ('name', 'label', 'help_text', 'required',)
+    fields = ('name', 'label', 'field_type', 'help_text', 'required',)
     model = WorkflowTransitionField
     object_permission = permission_workflow_edit
 
@@ -819,21 +819,23 @@ class SetupWorkflowTransitionFieldListView(ExternalObjectMixin, SingleObjectList
         return {
             'hide_object': True,
             'navigation_object_list': ('object', 'workflow'),
-            #'no_results_icon': icon_workflow_transition_action,
-            #'no_results_main_link': link_setup_workflow_transition_action_selection.resolve(
-            #    context=RequestContext(
-            #        request=self.request, dict_={
-            #            'object': self.get_workflow_transition()
-            #        }
-            #    )
-            #),
-            #'no_results_text': _(
-            #    'Workflow state actions are macros that get executed when '
-            #    'documents enters or leaves the state in which they reside.'
-            #),
-            #'no_results_title': _(
-            #    'There are no actions for this workflow state'
-            #),
+            'no_results_icon': icon_workflow_transition_field,
+            'no_results_main_link': link_setup_workflow_transition_field_create.resolve(
+                context=RequestContext(
+                    request=self.request, dict_={
+                        'object': self.external_object
+                    }
+                )
+            ),
+            'no_results_text': _(
+                'Workflow transition fields allow adding data to the '
+                'workflow\'s context. This additional context data can then '
+                'be used by other elements of the workflow system like the '
+                'workflow state actions.'
+            ),
+            'no_results_title': _(
+                'There are no fields for this workflow transition'
+            ),
             'object': self.external_object,
             'title': _(
                 'Fields for workflow transition: %s'

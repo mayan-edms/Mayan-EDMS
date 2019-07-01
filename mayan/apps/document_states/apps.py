@@ -158,6 +158,9 @@ class DocumentStatesApp(MayanAppConfig):
             model=WorkflowTransition, related='workflow',
         )
         ModelPermission.register_inheritance(
+            model=WorkflowTransitionField, related='transition',
+        )
+        ModelPermission.register_inheritance(
             model=WorkflowTransitionTriggerEvent,
             related='transition__workflow',
         )
@@ -206,15 +209,19 @@ class DocumentStatesApp(MayanAppConfig):
             attribute='datetime'
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry, label=_('User'), attribute='user'
+            source=WorkflowInstanceLogEntry, attribute='user'
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry, label=_('Transition'),
+            source=WorkflowInstanceLogEntry,
             attribute='transition'
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry, label=_('Comment'),
+            source=WorkflowInstanceLogEntry,
             attribute='comment'
+        )
+        SourceColumn(
+            source=WorkflowInstanceLogEntry,
+            attribute='extra_data'
         )
 
         SourceColumn(
@@ -268,6 +275,10 @@ class DocumentStatesApp(MayanAppConfig):
         )
         SourceColumn(
             attribute='label', is_sortable=True, source=WorkflowTransitionField
+        )
+        SourceColumn(
+            attribute='get_field_type_display', label=_('Type'),
+            source=WorkflowTransitionField
         )
         SourceColumn(
             attribute='required', is_sortable=True, source=WorkflowTransitionField,

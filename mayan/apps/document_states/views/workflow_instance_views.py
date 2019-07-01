@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
@@ -16,6 +16,7 @@ from mayan.apps.documents.models import Document
 from ..forms import WorkflowInstanceTransitionSelectForm
 from ..icons import icon_workflow_instance_detail, icon_workflow_list
 from ..links import link_workflow_instance_transition
+from ..literals import FIELD_TYPE_MAPPING
 from ..models import WorkflowInstance
 from ..permissions import permission_workflow_view
 
@@ -165,7 +166,7 @@ class WorkflowInstanceTransitionExecuteView(FormView):
         for field in self.get_workflow_transition().fields.all():
             schema['fields'][field.name] = {
                 'label': field.label,
-                'class': 'django.forms.CharField', 'kwargs': {
+                'class': FIELD_TYPE_MAPPING[field.field_type], 'kwargs': {
                 }
             }
 
@@ -219,6 +220,3 @@ class WorkflowInstanceTransitionSelectView(ExternalObjectMixin, FormView):
             'user': self.request.user,
             'workflow_instance': self.external_object
         }
-
-    #def get_workflow_instance(self):
-    #    return get_object_or_404(klass=WorkflowInstance, pk=self.kwargs['pk'])
