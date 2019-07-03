@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import errno
+import hashlib
 from importlib import import_module
 import logging
 import os
@@ -78,6 +79,7 @@ class Namespace(object):
 @python_2_unicode_compatible
 class Setting(object):
     _registry = {}
+    _cache_hash = None
 
     @staticmethod
     def deserialize_value(value):
@@ -109,6 +111,15 @@ class Setting(object):
         return result
 
     @classmethod
+    def check_changed(cls):
+        if not cls._cache_hash:
+            cls._cache_hash = cls.get_hash()
+
+        print("!!!@@", cls._cache_hash, cls.get_hash())
+
+        return cls._cache_hash != cls.get_hash()
+
+    @classmethod
     def dump_data(cls, filter_term=None, namespace=None):
         dictionary = {}
 
@@ -128,6 +139,12 @@ class Setting(object):
     @classmethod
     def get_all(cls):
         return sorted(cls._registry.values(), key=lambda x: x.global_name)
+
+    @classmethod
+    def get_hash(cls):
+        return force_text(
+            hashlib.sha256(cls.dump_data()).hexdigest()
+        )
 
     @classmethod
     def save_configuration(cls, path=settings.CONFIGURATION_FILEPATH):
