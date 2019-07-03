@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from django.utils.encoding import force_text
+
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.documents.tests import (
@@ -11,6 +13,7 @@ from mayan.apps.sources.tests.literals import (
 )
 from mayan.apps.sources.wizards import WizardStep
 
+from ..models import Cabinet
 from ..wizard_steps import WizardStepCabinets
 
 from .mixins import CabinetTestMixin
@@ -38,11 +41,14 @@ class CabinetDocumentUploadTestCase(CabinetTestMixin, GenericDocumentViewTestCas
                 }, data={
                     'document_type_id': self.test_document_type.pk,
                     'source-file': file_object,
-                    'cabinets': self.test_cabinet.pk
+                    'cabinets': ','.join(
+                        map(force_text, Cabinet.objects.values_list('pk', flat=True))
+                    )
                 }
             )
 
     def test_upload_interactive_view_with_access(self):
+        self._create_test_cabinet()
         self._create_test_cabinet()
         self.grant_access(
             obj=self.test_document_type, permission=permission_document_create
@@ -51,7 +57,10 @@ class CabinetDocumentUploadTestCase(CabinetTestMixin, GenericDocumentViewTestCas
 
         self.assertEqual(response.status_code, 302)
         self.assertTrue(
-            self.test_cabinet in Document.objects.first().cabinets.all()
+            self.test_cabinets[0] in Document.objects.first().cabinets.all()
+        )
+        self.assertTrue(
+            self.test_cabinets[1] in Document.objects.first().cabinets.all()
         )
 
     def _request_wizard_view(self):

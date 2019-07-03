@@ -51,7 +51,12 @@ class WizardStepCabinets(WizardStep):
         furl_instance = furl(querystring)
         Cabinet = apps.get_model(app_label='cabinets', model_name='Cabinet')
 
-        for cabinet in Cabinet.objects.filter(pk__in=furl_instance.args.getlist('cabinets')):
+        cabinet_id_list = furl_instance.args.get('cabinets', '')
+
+        if cabinet_id_list:
+            cabinet_id_list = cabinet_id_list.split(',')
+
+        for cabinet in Cabinet.objects.filter(pk__in=cabinet_id_list):
             cabinet.documents.add(document)
 
 
