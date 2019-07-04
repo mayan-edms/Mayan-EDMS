@@ -1,7 +1,7 @@
 Version 3.2.2
 =============
 
-Released: June 17, 2019
+Released: June 19, 2019
 
 
 Changes
@@ -9,6 +9,11 @@ Changes
 
 - Fix document type change view. Closes GitLab issue #614.
   Thanks to Christoph Roeder (@brightdroid) for the report.
+- Fix document parsing tool view typo. Closes GitLab issue #615.
+  Thanks to Tyler Page (@iamtpage) for the report.
+- Update the task_check_interval_source reference
+  GitLab issue #617. Thanks to Lukas Gill (@lukkigi) for
+  the report and debug information.
 
 Removals
 --------
@@ -28,7 +33,7 @@ Remove deprecated requirements::
 
 Type in the console::
 
-    $ pip install mayan-edms==3.2.1
+    $ pip install mayan-edms==3.2.2
 
 the requirements will also be updated automatically.
 
@@ -98,5 +103,7 @@ Bugs fixed or issues closed
 ---------------------------
 
 - :gitlab-issue:`614` change type exception
+- :gitlab-issue:`615` TypeError: success() got an unexpected keyword argument 'requrest'
+- :gitlab-issue:`617` Watcher Task not running
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

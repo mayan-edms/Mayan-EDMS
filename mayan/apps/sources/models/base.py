@@ -234,7 +234,7 @@ class IntervalBaseModel(OutOfProcessSource):
         PeriodicTask.objects.create(
             name=self._get_periodic_task_name(),
             interval=interval_instance,
-            task='sources.tasks.task_check_interval_source',
+            task='mayan.apps.sources.tasks.task_check_interval_source',
             kwargs=json.dumps({'source_id': self.pk})
         )
 

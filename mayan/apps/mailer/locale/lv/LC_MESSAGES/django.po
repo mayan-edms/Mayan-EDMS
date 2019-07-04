@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:39-0400\n"
-"PO-Revision-Date: 2019-05-31 12:38+0000\n"
-"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"POT-Creation-Date: 2019-06-29 02:18-0400\n"
+"PO-Revision-Date: 2019-06-29 06:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,11 +22,11 @@ msgstr ""
 msgid "Mailer"
 msgstr "Mailer"
 
-#: apps.py:62
+#: apps.py:63 apps.py:84
 msgid "Date and time"
 msgstr "Datums un laiks"
 
-#: apps.py:65 models.py:30 models.py:228
+#: apps.py:66 apps.py:88 models.py:30 models.py:228
 msgid "Message"
 msgstr "Ziņojums"
 
@@ -178,7 +178,7 @@ msgid ""
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
 "and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
 " True."
-msgstr "Vai, runājot ar SMTP serveri, izmantojiet netiešu TLS (drošu) savienojumu. Vairumā e-pasta dokumentāciju šāda veida TLS savienojums tiek saukts par SSL. To parasti izmanto 465. portā. Ja rodas problēmas, skatiet skaidru TLS iestatījumu &quot;Lietot TLS&quot;. Ņemiet vērā, ka &quot;Lietot TLS&quot; un &quot;Lietot SSL&quot; ir savstarpēji izslēdzoši, tāpēc tikai vienu no šiem iestatījumiem iestatiet uz True."
+msgstr "Vai, runājot ar SMTP serveri, izmantojiet netiešu TLS (drošu) savienojumu. Vairumā e-pasta dokumentāciju šāda veida TLS savienojums tiek saukts par SSL. To parasti izmanto 465. portā. Ja rodas problēmas, skatiet skaidru TLS iestatījumu \"Lietot TLS\". Ņemiet vērā, ka \"Lietot TLS\" un \"Lietot SSL\" ir savstarpēji izslēdzoši, tāpēc tikai vienu no šiem iestatījumiem iestatiet uz True."
 
 #: mailers.py:64
 msgid "Username"
@@ -379,7 +379,7 @@ msgstr "Jauna pasta profila backend izvēle"
 #: views.py:151
 #, python-format
 msgid "Create a \"%s\" mailing profile"
-msgstr "Izveidojiet adreses profilu &quot;%s&quot;"
+msgstr "Izveidojiet adreses profilu \"%s\""
 
 #: views.py:177
 #, python-format
@@ -393,8 +393,8 @@ msgstr "Rediģēt pasta profilu: %s"
 
 #: views.py:211
 #, python-format
-msgid "%s error log"
-msgstr "%s kļūdu žurnāls"
+msgid "Error log for: %s"
+msgstr ""
 
 #: views.py:233
 msgid ""

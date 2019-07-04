@@ -23,7 +23,7 @@ from mayan.apps.navigation.classes import SourceColumn
 
 from .dependencies import *  # NOQA
 from .events import (
-    event_tag_attach, event_tag_created, event_tag_edited, event_tag_remove
+    event_tag_attach, event_tag_edited, event_tag_remove
 )
 from .handlers import handler_index_document, handler_tag_pre_delete
 from .html_widgets import widget_document_tags
@@ -72,8 +72,7 @@ class TagsApp(MayanAppConfig):
 
         ModelEventType.register(
             model=Tag, event_types=(
-                event_tag_attach, event_tag_created, event_tag_edited,
-                event_tag_remove
+                event_tag_attach, event_tag_edited, event_tag_remove
             )
         )
 

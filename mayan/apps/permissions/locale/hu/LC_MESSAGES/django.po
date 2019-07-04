@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:39-0400\n"
-"PO-Revision-Date: 2019-04-27 22:54+0000\n"
+"POT-Creation-Date: 2019-06-29 02:19-0400\n"
+"PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -18,13 +18,17 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:41 events.py:8 models.py:36 models.py:102 permissions.py:7
+#: apps.py:43 events.py:8 models.py:36 models.py:102 permissions.py:7
 msgid "Permissions"
 msgstr "Engedélyek"
 
 #: classes.py:84
 msgid "Insufficient permissions."
 msgstr "Elégtelen jogosúltság"
+
+#: dashboard_widgets.py:15
+msgid "Total roles"
+msgstr ""
 
 #: events.py:12
 msgid "Role created"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:37-0400\n"
+"POT-Creation-Date: 2019-06-29 02:16-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -69,6 +69,8 @@ msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing dependencies under this environment."
 msgstr ""
+"Mediul utilizat pentru a construi pachete distribuite ale software-ului. "
+"Utilizatorii finali pot ignora dependențele care lipsesc în acest mediu."
 
 #: classes.py:68
 msgid "Build"
@@ -79,6 +81,8 @@ msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Mediul fost folosit de dezvoltatori pentru a face schimbări de cod. "
+"Utilizatorii finali pot ignora dependențele care lipsesc în acest mediu."
 
 #: classes.py:74
 msgid "Development"
@@ -89,6 +93,8 @@ msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
 msgstr ""
+"Mediu normal pentru utilizatorii finali. O dependență lipsă în acest mediu "
+"va duce la probleme și erori în timpul utilizării normale."
 
 #: classes.py:80
 msgid "Production"
@@ -171,10 +177,12 @@ msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
 msgstr ""
+"Bibliotecile JavaScript descărcate din registrul NPM și folosite la "
+"funcționalitatea front-end."
 
 #: classes.py:462
 msgid "JavaScript"
-msgstr ""
+msgstr "JavaScript"
 
 #: classes.py:496 classes.py:729
 msgid "Downloading... "
@@ -210,7 +218,7 @@ msgstr "Declarate în aplicație"
 
 #: classes.py:792
 msgid "Show dependencies by the app that declared them."
-msgstr ""
+msgstr "Afișați dependențele după aplicația care le-a declarat."
 
 #: classes.py:796
 msgid "Class"
@@ -221,6 +229,8 @@ msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
+"Arătați diferitele clase de dependențe. Clasele sunt de obicei împărțite în "
+"funcție de limbă sau de tipurile de fișiere ale dependenței."
 
 #: classes.py:802
 msgid "State"
@@ -232,12 +242,17 @@ msgid ""
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
+"Afișați diferitele stări ale dependențelor. True înseamnă că dependențele "
+"sunt instalate și că au o versiune corectă. Fals înseamnă că lipsesc "
+"dependențele sau există o versiune incorectă."
 
 #: classes.py:810
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
+"Este posibil ca dependențele necesare pentru un mediu să nu fie necesare "
+"pentru altul. Exemplu de medii: producție, dezvoltare."
 
 #: links.py:11 views.py:35
 msgid "Check for updates"

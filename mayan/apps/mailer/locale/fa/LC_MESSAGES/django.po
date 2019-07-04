@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:39-0400\n"
-"PO-Revision-Date: 2019-05-21 05:03+0000\n"
+"POT-Creation-Date: 2019-06-29 02:18-0400\n"
+"PO-Revision-Date: 2019-06-29 06:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -22,11 +22,11 @@ msgstr ""
 msgid "Mailer"
 msgstr ""
 
-#: apps.py:62
+#: apps.py:63 apps.py:84
 msgid "Date and time"
 msgstr "تاریخ و زمان"
 
-#: apps.py:65 models.py:30 models.py:228
+#: apps.py:66 apps.py:88 models.py:30 models.py:228
 msgid "Message"
 msgstr "پیام"
 
@@ -393,7 +393,7 @@ msgstr ""
 
 #: views.py:211
 #, python-format
-msgid "%s error log"
+msgid "Error log for: %s"
 msgstr ""
 
 #: views.py:233

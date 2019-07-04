@@ -10,6 +10,7 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.generics import (
     ConfirmView, MultipleObjectConfirmActionView
 )
+from mayan.apps.common.settings import setting_home_view
 
 from ..icons import icon_document_list_deleted
 from ..models import DeletedDocument, Document
@@ -33,6 +34,7 @@ class DocumentTrashView(MultipleObjectConfirmActionView):
     model = Document
     object_permission = permission_document_trash
     pk_url_kwarg = 'pk'
+    post_action_redirect = reverse_lazy(viewname=setting_home_view.value)
     success_message_singular = _(
         '%(count)d document moved to the trash.'
     )

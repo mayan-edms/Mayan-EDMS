@@ -12,7 +12,7 @@ from django.apps import apps
 from django.conf import settings
 from django.conf.urls import url
 from django.contrib.contenttypes.models import ContentType
-from django.db import connection, models
+from django.db import connection, connections, models
 from django.db.models.signals import post_save, pre_save
 from django.http import HttpResponse
 from django.template import Context, Template
@@ -80,6 +80,29 @@ class ClientMethodsTestCaseMixin(object):
         )
 
 
+class ConnectionsCheckTestCaseMixin(object):
+    _open_connections_check_enable = True
+
+    def _get_open_connections_count(self):
+        return len(connections.all())
+
+    def setUp(self):
+        super(ConnectionsCheckTestCaseMixin, self).setUp()
+        self._connections_count = self._get_open_connections_count()
+
+    def tearDown(self):
+        if self._open_connections_check_enable:
+
+            self.assertEqual(
+                self._connections_count, self._get_open_connections_count(),
+                msg='Database connection leak. The number of database '
+                'connections at the start and at the end of the test are not '
+                'the same.'
+            )
+
+        super(ConnectionsCheckTestCaseMixin, self).tearDown()
+
+
 class ContentTypeCheckTestCaseMixin(object):
     expected_content_type = 'text/html; charset=utf-8'
 
@@ -144,6 +167,7 @@ class RandomPrimaryKeyModelMonkeyPatchMixin(object):
     random_primary_key_random_floor = 100
     random_primary_key_random_ceiling = 10000
     random_primary_key_maximum_attempts = 100
+    random_primary_key_enable = True
 
     @staticmethod
     def get_unique_primary_key(model):
@@ -170,47 +194,49 @@ class RandomPrimaryKeyModelMonkeyPatchMixin(object):
         return primary_key
 
     def setUp(self):
-        self.method_save_original = models.Model.save
+        if self.random_primary_key_enable:
+            self.method_save_original = models.Model.save
 
-        def method_save_new(instance, *args, **kwargs):
-            if instance.pk:
-                return self.method_save_original(instance, *args, **kwargs)
-            else:
-                # Set meta.auto_created to True to have the original save_base
-                # not send the pre_save signal which would normally send
-                # the instance without a primary key. Since we assign a random
-                # primary key any pre_save signal handler that relies on an
-                # empty primary key will fail.
-                # The meta.auto_created and manual pre_save sending emulates
-                # the original behavior. Since meta.auto_created also disables
-                # the post_save signal we must also send it ourselves.
-                # This hack work with Django 1.11 .save_base() but can break
-                # in future versions if that method is updated.
-                pre_save.send(
-                    sender=instance.__class__, instance=instance, raw=False,
-                    update_fields=None,
-                )
-                instance._meta.auto_created = True
-                instance.pk = RandomPrimaryKeyModelMonkeyPatchMixin.get_unique_primary_key(
-                    model=instance._meta.model
-                )
-                instance.id = instance.pk
+            def method_save_new(instance, *args, **kwargs):
+                if instance.pk:
+                    return self.method_save_original(instance, *args, **kwargs)
+                else:
+                    # Set meta.auto_created to True to have the original save_base
+                    # not send the pre_save signal which would normally send
+                    # the instance without a primary key. Since we assign a random
+                    # primary key any pre_save signal handler that relies on an
+                    # empty primary key will fail.
+                    # The meta.auto_created and manual pre_save sending emulates
+                    # the original behavior. Since meta.auto_created also disables
+                    # the post_save signal we must also send it ourselves.
+                    # This hack work with Django 1.11 .save_base() but can break
+                    # in future versions if that method is updated.
+                    pre_save.send(
+                        sender=instance.__class__, instance=instance, raw=False,
+                        update_fields=None,
+                    )
+                    instance._meta.auto_created = True
+                    instance.pk = RandomPrimaryKeyModelMonkeyPatchMixin.get_unique_primary_key(
+                        model=instance._meta.model
+                    )
+                    instance.id = instance.pk
 
-                result = instance.save_base(force_insert=True)
-                instance._meta.auto_created = False
+                    result = instance.save_base(force_insert=True)
+                    instance._meta.auto_created = False
 
-                post_save.send(
-                    sender=instance.__class__, instance=instance, created=True,
-                    update_fields=None, raw=False
-                )
+                    post_save.send(
+                        sender=instance.__class__, instance=instance, created=True,
+                        update_fields=None, raw=False
+                    )
 
-                return result
+                    return result
 
-        setattr(models.Model, 'save', method_save_new)
+            setattr(models.Model, 'save', method_save_new)
         super(RandomPrimaryKeyModelMonkeyPatchMixin, self).setUp()
 
     def tearDown(self):
-        models.Model.save = self.method_save_original
+        if self.random_primary_key_enable:
+            models.Model.save = self.method_save_original
         super(RandomPrimaryKeyModelMonkeyPatchMixin, self).tearDown()
 
 
