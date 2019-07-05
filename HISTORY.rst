@@ -11,6 +11,7 @@
 * Add alert when settings are changed and util the installation
   is restarted. GitLab issue #605. Thanks to
   Vikas Kedia (@vikaskedia) to the report.
+* Update Django to version 1.11.22.
 
 3.2.4 (2019-06-29)
 ==================
