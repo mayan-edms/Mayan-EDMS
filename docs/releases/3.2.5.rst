@@ -7,6 +7,18 @@ Released: July XX, 2019
 Changes
 -------
 
+- Don't error out if the EXTRA_APPS or the DISABLED_APPS settings
+  are set to blank.
+- Update troubleshooting documentation topic.
+- Add data migration to the file metadata app. Synchronizes the
+  document type settings model of existing document types.
+- Fix cabinet and tags upload wizard steps missing some entries.
+  GitLab issue #632. Thanks to Matthias Urhahn (@d4rken) for the
+  report.
+- Add alert when settings are changed and util the installation
+  is restarted. GitLab issue #605. Thanks to
+  Vikas Kedia (@vikaskedia) to the report.
+
 Removals
 --------
 
@@ -25,7 +37,7 @@ Remove deprecated requirements::
 
 Type in the console::
 
-    $ pip install mayan-edms==3.2.55555
+    $ pip install mayan-edms==3.2.5
 
 the requirements will also be updated automatically.
 
@@ -94,6 +106,7 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
+- :gitlab-issue:`605` Project title fluctuates between default value and new value [Video]
 - :gitlab-issue:`629` Cannot Upgrade to 3.2.X Docker Image
 - :gitlab-issue:`632` Tags get lost when uploading through the webui
 

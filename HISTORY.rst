@@ -8,6 +8,9 @@
 * Fix cabinet and tags upload wizard steps missing some entries.
   GitLab issue #632. Thanks to Matthias Urhahn (@d4rken) for the
   report.
+* Add alert when settings are changed and util the installation
+  is restarted. GitLab issue #605. Thanks to
+  Vikas Kedia (@vikaskedia) to the report.
 
 3.2.4 (2019-06-29)
 ==================
