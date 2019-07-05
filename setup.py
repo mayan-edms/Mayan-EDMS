@@ -59,7 +59,7 @@ install_requires = """
 django==1.11.22
 Pillow==6.0.0
 PyPDF2==1.26.0
-PyYAML==5.1
+PyYAML==5.1.1
 celery==3.1.24
 django-activity-stream==0.7.0
 django-celery==3.2.1
@@ -75,7 +75,7 @@ django-pure-pagination==0.3.0
 django-qsstats-magic==1.0.0
 django-solo==1.1.3
 django-stronghold==0.3.0
-django-widget-tweaks==1.4.3
+django-widget-tweaks==1.4.5
 djangorestframework==3.7.7
 djangorestframework-recursive==0.1.2
 drf-yasg==1.6.0
@@ -88,7 +88,7 @@ graphviz==0.10.1
 gunicorn==19.9.0
 mock==2.0.0
 node-semver==0.6.1
-pathlib2==2.3.3
+pathlib2==2.3.4
 pycountry==18.12.8
 pyocr==0.6
 python-dateutil==2.8.0
