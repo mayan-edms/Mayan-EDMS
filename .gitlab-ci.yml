@@ -158,7 +158,6 @@ job_push_python:
     - releases/all
     - releases/docker
     - releases/python
-    - master
     - staging
     - nightly
 
