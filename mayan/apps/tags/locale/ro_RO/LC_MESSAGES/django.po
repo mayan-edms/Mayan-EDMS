@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:20-0400\n"
+"POT-Creation-Date: 2019-07-05 01:32-0400\n"
 "PO-Revision-Date: 2019-05-17 18:50+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -182,7 +182,7 @@ msgstr[2] "Atașați etichetele la %(count)ddocumente "
 msgid "Attach tags to document: %s"
 msgstr "Atașați etichete la documentul: %s"
 
-#: views.py:70 wizard_steps.py:30
+#: views.py:70 wizard_steps.py:29
 msgid "Tags to be attached."
 msgstr "Etichetele trebuie atașate."
 
@@ -306,7 +306,7 @@ msgstr "Documentul \"%(document)s\" nu a fost etichetat ca \"%(tag)s"
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Eticheta \"%(tag)s\" a fost eliminată cu succes din documentul \"%(document)s\"."
 
-#: wizard_steps.py:18
+#: wizard_steps.py:17
 msgid "Select tags"
 msgstr "Selectați etichete"
 

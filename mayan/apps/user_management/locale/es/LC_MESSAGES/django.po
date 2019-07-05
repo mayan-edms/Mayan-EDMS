@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:20-0400\n"
-"PO-Revision-Date: 2019-06-29 06:22+0000\n"
+"POT-Creation-Date: 2019-07-05 01:33-0400\n"
+"PO-Revision-Date: 2019-07-05 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -80,11 +80,11 @@ msgstr "Todos los usuarios."
 
 #: dashboard_widgets.py:16
 msgid "Total users"
-msgstr ""
+msgstr "Usuarios totales"
 
 #: dashboard_widgets.py:32
 msgid "Total groups"
-msgstr ""
+msgstr "Grupos totales"
 
 #: events.py:12
 msgid "Group created"

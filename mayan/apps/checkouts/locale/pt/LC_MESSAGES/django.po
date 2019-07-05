@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:15-0400\n"
+"POT-Creation-Date: 2019-07-05 01:28-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
@@ -19,35 +19,35 @@ msgstr ""
 
 #: apps.py:41 events.py:7 links.py:34
 msgid "Checkouts"
-msgstr "Verificação"
+msgstr ""
 
 #: dashboard_widgets.py:16
 msgid "Checked out documents"
-msgstr "Documentos com verificação"
+msgstr ""
 
 #: events.py:10
 msgid "Document automatically checked in"
-msgstr "Documento verificado automaticamente"
+msgstr ""
 
 #: events.py:14
 msgid "Document checked in"
-msgstr "Documento verificado em"
+msgstr ""
 
 #: events.py:17
 msgid "Document checked out"
-msgstr "Documento retirado"
+msgstr ""
 
 #: events.py:20
 msgid "Document forcefully checked in"
-msgstr "Documento com verificação forçada"
+msgstr ""
 
 #: exceptions.py:27 views.py:108
 msgid "Document already checked out."
-msgstr "Documento já verificado."
+msgstr ""
 
 #: forms.py:28
 msgid "Document status"
-msgstr "Status do documento"
+msgstr ""
 
 #: forms.py:39 models.py:41 views.py:148
 msgid "User"
@@ -55,15 +55,15 @@ msgstr "Utilizador"
 
 #: forms.py:43
 msgid "Check out time"
-msgstr "Verificado em"
+msgstr ""
 
 #: forms.py:48
 msgid "Check out expiration"
-msgstr "Verificar a expiração"
+msgstr ""
 
 #: forms.py:53
 msgid "New versions allowed?"
-msgstr "Novas versões permitidas?"
+msgstr ""
 
 #: forms.py:54
 msgid "Yes"
@@ -75,95 +75,95 @@ msgstr "Não"
 
 #: links.py:41
 msgid "Check out document"
-msgstr "Verificar o documento"
+msgstr ""
 
 #: links.py:47
 msgid "Check in document"
-msgstr "Verificar no documento"
+msgstr ""
 
 #: links.py:52
 msgid "Check in/out"
-msgstr "Verificar entrada/saida"
+msgstr ""
 
 #: literals.py:12
 msgid "Checked out"
-msgstr "Verificado"
+msgstr ""
 
 #: literals.py:13
 msgid "Checked in/available"
-msgstr "Verificar entrada/disponível"
+msgstr ""
 
 #: models.py:28 models.py:110
 msgid "Document"
-msgstr "Documento"
+msgstr ""
 
 #: models.py:31
 msgid "Check out date and time"
-msgstr "Verificar data e hora"
+msgstr ""
 
 #: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
-msgstr "Quantidade de tempo para reter o documento em minutos."
+msgstr ""
 
 #: models.py:37
 msgid "Check out expiration date and time"
-msgstr "Verificar a data e hora de vencimento"
+msgstr ""
 
 #: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
-msgstr "Não permitir que nova versão deste documento seja enviada."
+msgstr ""
 
 #: models.py:48
 msgid "Block new version upload"
-msgstr "Bloquear envio de nova versão"
+msgstr ""
 
 #: models.py:55 permissions.py:7
 msgid "Document checkout"
-msgstr "documento"
+msgstr ""
 
 #: models.py:56
 msgid "Document checkouts"
-msgstr "verificação documentos"
+msgstr ""
 
 #: models.py:64
 msgid "Check out expiration date and time must be in the future."
-msgstr "Data e hora de verificação de vencimento deve ser no futuro"
+msgstr ""
 
 #: models.py:116
 msgid "New version block"
-msgstr "Nova versão bloqueada"
+msgstr ""
 
 #: models.py:117
 msgid "New version blocks"
-msgstr "Nova versão bloqueia"
+msgstr ""
 
 #: permissions.py:10
 msgid "Check in documents"
-msgstr "Verificar documentos"
+msgstr ""
 
 #: permissions.py:13
 msgid "Forcefully check in documents"
-msgstr "Forçar a verificação de documentos"
+msgstr ""
 
 #: permissions.py:16
 msgid "Check out documents"
-msgstr "Verificar documentos"
+msgstr ""
 
 #: permissions.py:19
 msgid "Check out details view"
-msgstr "Verificar documentos, vista de detalhe"
+msgstr ""
 
 #: queues.py:13
 msgid "Checkouts periodic"
-msgstr "Verificar periodicamente"
+msgstr ""
 
 #: queues.py:17
 msgid "Check expired checkouts"
-msgstr "Verificar validações expiradas"
+msgstr ""
 
 #: serializers.py:26
 msgid "Primary key of the document to be checked out."
-msgstr "Chave primária do documento a ser verificado."
+msgstr ""
 
 #: views.py:37
 #, python-format
@@ -171,17 +171,15 @@ msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
 msgstr ""
-"Você não fez a verificação de documentos originalmente neste documento. "
-"Forçar a verificação de documento: %s?"
 
 #: views.py:41
 #, python-format
 msgid "Check in the document: %s?"
-msgstr "Validadar documento: %s?"
+msgstr ""
 
 #: views.py:74
 msgid "Document has not been checked out."
-msgstr "O documento não foi verificado"
+msgstr ""
 
 #: views.py:80
 #, python-format
@@ -191,42 +189,40 @@ msgstr ""
 #: views.py:114
 #, python-format
 msgid "Document \"%s\" checked out successfully."
-msgstr "Documento \"%s\" verificado com sucesso"
+msgstr ""
 
 #: views.py:123
 #, python-format
 msgid "Check out document: %s"
-msgstr "Verificar documento: %s"
+msgstr ""
 
 #: views.py:154
 msgid "Checkout time and date"
-msgstr "Verificado em dia e hora"
+msgstr ""
 
 #: views.py:160
 msgid "Checkout expiration"
-msgstr "Válido até"
+msgstr ""
 
 #: views.py:168
 msgid ""
 "Checking out a document blocks certain document operations for a "
 "predetermined amount of time."
 msgstr ""
-"A verificação de um documento bloqueia determinadas operações do "
-"documento por um período de tempo predeterminado."
 
 #: views.py:172
 msgid "No documents have been checked out"
-msgstr "Nenhum documento foi verificado"
+msgstr ""
 
 #: views.py:173
 msgid "Documents checked out"
-msgstr "Documentos verificados"
+msgstr ""
 
 #: views.py:188
 #, python-format
 msgid "Check out details for document: %s"
-msgstr "Detalhes de verificação do documento: %s"
+msgstr ""
 
 #: widgets.py:25
 msgid "Period"
-msgstr "Período"
+msgstr ""

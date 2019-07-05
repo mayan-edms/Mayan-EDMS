@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:18-0400\n"
+"POT-Creation-Date: 2019-07-05 01:31-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
@@ -30,7 +30,7 @@ msgstr "Agenda"
 
 #: apps.py:37
 msgid "Last update"
-msgstr "Última atualização"
+msgstr ""
 
 #: classes.py:150
 msgid "Never"
@@ -46,11 +46,11 @@ msgstr "Ver"
 
 #: links.py:22
 msgid "Namespace details"
-msgstr "Detalhes do namespace"
+msgstr ""
 
 #: links.py:27
 msgid "Namespace list"
-msgstr "Lista de namespaces"
+msgstr ""
 
 #. Translators: 'Slug' refers to the URL valid ID of the statistic
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
@@ -60,7 +60,7 @@ msgstr "Slug"
 
 #: models.py:16
 msgid "Date time"
-msgstr "Data e hora"
+msgstr ""
 
 #: models.py:18
 msgid "Data"
@@ -80,25 +80,25 @@ msgstr "Ver estatísticas"
 
 #: queues.py:13
 msgid "Execute statistic"
-msgstr "Executar estatística"
+msgstr ""
 
 #: templates/statistics/renderers/chartjs/line.html:14
 msgid "No data available."
-msgstr "Não há dados disponíveis."
+msgstr ""
 
 #: templates/statistics/renderers/chartjs/line.html:16
 #, python-format
 msgid "Last update: %(datetime)s"
-msgstr "Última atualização: %(datetime)s"
+msgstr ""
 
 #: views.py:17
 msgid "Statistics namespaces"
-msgstr "Estatísticas dos namespaces"
+msgstr ""
 
 #: views.py:33
 #, python-format
 msgid "Namespace details for: %s"
-msgstr "Detalhes do namespace: %s"
+msgstr ""
 
 #: views.py:55
 #, python-format
@@ -113,9 +113,9 @@ msgstr "Estatística \"%s\" não encontrada."
 #: views.py:80
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
-msgstr "Fila de estatísticas \"%s\" a serem atualizado?"
+msgstr ""
 
 #: views.py:94
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
-msgstr "Fila de estatísticas \"%s\" com êxito na atualização."
+msgstr ""

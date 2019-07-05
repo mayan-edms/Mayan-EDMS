@@ -2,16 +2,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2017
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:20-0400\n"
+"POT-Creation-Date: 2019-07-05 01:32-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2017\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -35,19 +35,19 @@ msgstr "Nome"
 
 #: apps.py:37
 msgid "Default queue?"
-msgstr "Fila padrão?"
+msgstr ""
 
 #: apps.py:41
 msgid "Is transient?"
-msgstr "É temporário?"
+msgstr ""
 
 #: apps.py:45
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 #: apps.py:48
 msgid "Start time"
-msgstr "Hora de início"
+msgstr ""
 
 #: apps.py:51
 msgid "Host"
@@ -55,56 +55,56 @@ msgstr ""
 
 #: apps.py:55
 msgid "Arguments"
-msgstr "Argumentos"
+msgstr ""
 
 #: apps.py:59
 msgid "Keyword arguments"
-msgstr "Argumentos por keyword"
+msgstr ""
 
 #: apps.py:63
 msgid "Worker process ID"
-msgstr "ID processo de trabalho"
+msgstr ""
 
 #: links.py:16 views.py:15
 msgid "Background task queues"
-msgstr "Filas de tarefas em segundo plano"
+msgstr ""
 
 #: links.py:20
 msgid "Active tasks"
-msgstr "Tarefas ativas"
+msgstr ""
 
 #: links.py:24
 msgid "Reserved tasks"
-msgstr "Tarefas reservadas"
+msgstr ""
 
 #: links.py:28
 msgid "Scheduled tasks"
-msgstr "Tarefas agendadas"
+msgstr ""
 
 #: permissions.py:10
 msgid "View tasks"
-msgstr "Ver tarefas"
+msgstr ""
 
 #: tests/literals.py:5
 msgid "Test queue"
-msgstr "Testar fila"
+msgstr ""
 
 #: views.py:30
 #, python-format
 msgid "Active tasks in queue: %s"
-msgstr "Tarefas ativas na fila: %s"
+msgstr ""
 
 #: views.py:42
 #, python-format
 msgid "Unable to retrieve task list; %s"
-msgstr "Não é possível recuperar a lista de tarefas; %s"
+msgstr ""
 
 #: views.py:56
 #, python-format
 msgid "Scheduled tasks in queue: %s"
-msgstr "Tarefas agendadas na fila: %s"
+msgstr ""
 
 #: views.py:68
 #, python-format
 msgid "Reserved tasks in queue: %s"
-msgstr "Tarefas reservadas na fila: %s"
+msgstr ""

@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:16-0400\n"
+"POT-Creation-Date: 2019-07-05 01:29-0400\n"
 "PO-Revision-Date: 2019-05-17 05:50+0000\n"
 "Last-Translator: Emerson Soares <on.emersonsoares@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: apps.py:39 events.py:8
 msgid "Document comments"
-msgstr "Comentários do documento"
+msgstr ""
 
 #: apps.py:84 apps.py:88 links.py:33 models.py:45 permissions.py:7
 msgid "Comments"
@@ -27,15 +27,15 @@ msgstr "Comentários"
 
 #: events.py:12
 msgid "Document comment created"
-msgstr "Comentário do documento criado"
+msgstr ""
 
 #: events.py:15
 msgid "Document comment deleted"
-msgstr "Comentário do documento removido"
+msgstr ""
 
 #: events.py:18
 msgid "Document comment edited"
-msgstr "Comentário do documento editado"
+msgstr ""
 
 #: links.py:18
 msgid "Add comment"
@@ -51,7 +51,7 @@ msgstr "Editar"
 
 #: models.py:28
 msgid "Document"
-msgstr "Documento"
+msgstr ""
 
 #: models.py:32 models.py:68
 msgid "User"
@@ -64,7 +64,7 @@ msgstr "Comentário"
 
 #: models.py:38
 msgid "Date time submitted"
-msgstr "Data da hora enviada"
+msgstr ""
 
 #: permissions.py:10
 msgid "Create new comments"
@@ -90,31 +90,29 @@ msgstr "Adicionar comentário ao documento: %s"
 #: views.py:70
 #, python-format
 msgid "Delete comment: %s?"
-msgstr "Remover comentário: %s?"
+msgstr ""
 
 #: views.py:92
 #, python-format
 msgid "Details for comment: %s?"
-msgstr "Detalhes comentário: %s?"
+msgstr ""
 
 #: views.py:110
 #, python-format
 msgid "Edit comment: %s?"
-msgstr "Editar comentário: %s?"
+msgstr ""
 
 #: views.py:135
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
 msgstr ""
-"Comentários de documentos são entradas de texto com data e hora dos utilizadores. "
-"Eles são ótimos para colaboração."
 
 #: views.py:138
 msgid "There are no comments"
-msgstr "Não há comentários"
+msgstr ""
 
 #: views.py:140
 #, python-format
 msgid "Comments for document: %s"
-msgstr "Comentários para documento: %s"
+msgstr ""

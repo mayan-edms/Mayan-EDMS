@@ -2,16 +2,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2019
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:15-0400\n"
+"POT-Creation-Date: 2019-07-05 01:28-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2019\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -23,19 +23,17 @@ msgstr ""
 
 #: apps.py:16 settings.py:9
 msgid "Auto administrator"
-msgstr "Administração automática"
+msgstr ""
 
 #: auth/allauth.py:54
 msgid ""
 "Welcome Admin! You have been given superuser privileges. Use them with "
 "caution."
 msgstr ""
-"Bem vindo Administrador! Você recebeu privilégios de super-utilizador. Use-os com "
-"cautela"
 
 #: models.py:15
 msgid "Account"
-msgstr "Conta"
+msgstr ""
 
 #: models.py:18
 msgid "Password"
@@ -47,23 +45,21 @@ msgstr ""
 
 #: models.py:27
 msgid "Autoadmin properties"
-msgstr "Propriadades da administração automática"
+msgstr ""
 
 #: settings.py:14
 msgid "Sets the email of the automatically created super user account."
-msgstr "Define o email da conta de super-utilizador criada automaticamente"
+msgstr ""
 
 #: settings.py:20
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
 msgstr ""
-"A senha da conta de super-utilizador criada automaticamente. Se for igual a "
-"nada, a senha é gerada aleatoriamente"
 
 #: settings.py:27
 msgid "The username of the automatically created super user account."
-msgstr "O nome de utilizador da conta de super-utilizador criada automaticamente"
+msgstr ""
 
 #: templates/autoadmin/credentials.html:11
 msgid "First time login"
@@ -75,22 +71,20 @@ msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
 msgstr ""
-"Você acabou de instalar <strong>%(project_title)s</strong>, "
-"parabéns"
 
 #: templates/autoadmin/credentials.html:17
 msgid "Login using the following credentials:"
-msgstr "Entrar usando as seguintes credenciais"
+msgstr ""
 
 #: templates/autoadmin/credentials.html:18
 #, python-format
 msgid "Username: <strong>%(account)s</strong>"
-msgstr "Utilizador: <strong>%(account)s</strong>"
+msgstr ""
 
 #: templates/autoadmin/credentials.html:19
 #, python-format
 msgid "Email: <strong>%(email)s</strong>"
-msgstr "Correio electronico: <strong>%(email)s</strong>"
+msgstr ""
 
 #: templates/autoadmin/credentials.html:20
 #, python-format

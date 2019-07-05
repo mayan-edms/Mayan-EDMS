@@ -2,17 +2,17 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2019
 # Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2019
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:17-0400\n"
+"POT-Creation-Date: 2019-07-05 01:30-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2019\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -29,7 +29,7 @@ msgstr "Nome"
 #: apps.py:56 events.py:8 links.py:18 permissions.py:7 queues.py:9
 #: settings.py:9
 msgid "File metadata"
-msgstr "Metadados do arquivo"
+msgstr ""
 
 #: apps.py:101
 msgid "Return the value of a specific file metadata."
@@ -37,44 +37,44 @@ msgstr ""
 
 #: apps.py:113 apps.py:117 apps.py:170 apps.py:179
 msgid "File metadata key"
-msgstr "Devolve o valor de um metadado de arquivo específico."
+msgstr ""
 
 #: apps.py:174 apps.py:183
 msgid "File metadata value"
-msgstr "Valor dos metadados do arquivo"
+msgstr ""
 
 #: dependencies.py:14
 msgid ""
 "Library and program to read and write meta information in multimedia files."
-msgstr "Biblioteca e programa para ler e gravar meta informações em arquivos multimedia."
+msgstr ""
 
 #: drivers/exiftool.py:26
 msgid "EXIF Tool"
-msgstr "Ferramenta EXIF"
+msgstr ""
 
 #: events.py:12
 msgid "Document version submitted for file metadata processing"
-msgstr "Versão do documento submetida para processamento de metadados de arquivo"
+msgstr ""
 
 #: events.py:16
 msgid "Document version file metadata processing finished"
-msgstr "Processamento de metadados do arquivo da versão do documento concluído"
+msgstr ""
 
 #: links.py:24
 msgid "Attributes"
-msgstr "Atributos"
+msgstr ""
 
 #: links.py:31 links.py:34
 msgid "Submit for file metadata"
-msgstr "Submeter para metadados de arquivo"
+msgstr ""
 
 #: links.py:41
 msgid "Setup file metadata"
-msgstr "Configuração de Metadados em ficheiro"
+msgstr ""
 
 #: links.py:46
 msgid "File metadata processing per type"
-msgstr "Processamento de metadados de arquivo por tipo"
+msgstr ""
 
 #: methods.py:38
 msgid "get_file_metadata(< file metadata dotted path >)"
@@ -82,27 +82,27 @@ msgstr ""
 
 #: methods.py:41
 msgid "Return the specified document file metadata entry."
-msgstr "Devolve a entrada de metadados do arquivo de documento especificado."
+msgstr ""
 
 #: methods.py:62
 msgid "Return the specified document version file metadata entry."
-msgstr "Devolve a entrada de metadados do arquivo de versão do documento especificado."
+msgstr ""
 
 #: models.py:22
 msgid "Driver path"
-msgstr "Caminho para o driver"
+msgstr ""
 
 #: models.py:25
 msgid "Internal name"
-msgstr "Nome interno"
+msgstr ""
 
 #: models.py:30 models.py:74
 msgid "Driver"
-msgstr "Driver"
+msgstr ""
 
 #: models.py:31
 msgid "Drivers"
-msgstr "Drivers"
+msgstr ""
 
 #: models.py:51
 msgid "Document type"
@@ -110,43 +110,43 @@ msgstr "Tipo de documento"
 
 #: models.py:55
 msgid "Automatically queue newly created documents for processing."
-msgstr "Fila automatica de documentos recém-criados para processamento."
+msgstr ""
 
 #: models.py:62
 msgid "Document type settings"
-msgstr "Configurações de tipo de documento"
+msgstr ""
 
 #: models.py:63
 msgid "Document types settings"
-msgstr "Configurações de tipos de documento"
+msgstr ""
 
 #: models.py:78
 msgid "Document version"
-msgstr "Versão do documento"
+msgstr ""
 
 #: models.py:84 models.py:100
 msgid "Document version driver entry"
-msgstr "Entrada do driver da versão do documento"
+msgstr ""
 
 #: models.py:85
 msgid "Document version driver entries"
-msgstr "Entradas do driver da versão do documento"
+msgstr ""
 
 #: models.py:92
 msgid "Attribute count"
-msgstr "Contagem de atributos"
+msgstr ""
 
 #: models.py:104
 msgid "Name of the file metadata entry."
-msgstr "Nome da entrada de metadados do arquivo."
+msgstr ""
 
 #: models.py:105
 msgid "Key"
-msgstr "Chave"
+msgstr ""
 
 #: models.py:108
 msgid "Value of the file metadata entry."
-msgstr "Valor da entrada de metadados do arquivo."
+msgstr ""
 
 #: models.py:109
 msgid "Value"
@@ -154,37 +154,37 @@ msgstr "Valor"
 
 #: models.py:114
 msgid "File metadata entry"
-msgstr "Entrada de metadados do arquivo"
+msgstr ""
 
 #: models.py:115
 msgid "File metadata entries"
-msgstr "Entradas de metadados de arquivos"
+msgstr ""
 
 #: permissions.py:10
 msgid "Change document type file metadata settings"
-msgstr "Alterar configurações de metadados do arquivo de tipo de documento"
+msgstr ""
 
 #: permissions.py:15
 msgid "Submit document for file metadata processing"
-msgstr "Submeter documento para processamento de metadados de arquivo"
+msgstr ""
 
 #: permissions.py:19
 msgid "View file metadata"
-msgstr "Ver metadados do arquivo"
+msgstr ""
 
 #: queues.py:12
 msgid "Process document version"
-msgstr "Versão do documento do processado"
+msgstr ""
 
 #: settings.py:14
 msgid ""
 "Set new document types to perform file metadata processing automatically by "
 "default."
-msgstr "Definir novos tipos de documentos para executar o processamento de metadados de arquivos automaticamente por padrão."
+msgstr ""
 
 #: settings.py:25
 msgid "Arguments to pass to the drivers."
-msgstr "Argumentos para passar para os drivers."
+msgstr ""
 
 #: views.py:35
 msgid ""
@@ -193,38 +193,38 @@ msgid ""
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
-msgstr "Metadados de arquivo são os atributos do arquivo do documento. Eles podem variar de informações de câmera usadas para tirar uma foto para o autor que criou um arquivo. Metadados de arquivo são definidos quando o arquivo do documento foi criado. Atributos de metadados de arquivo residem no próprio arquivo Eles não são os mesmos que os metadados do documento, que são definidos pelo utilizador e residem no base de dados. "
+msgstr ""
 
 #: views.py:43 views.py:62
 msgid "No file metadata available."
-msgstr "Nenhum metadado de arquivo disponível"
+msgstr ""
 
 #: views.py:46
 #, python-format
 msgid "File metadata drivers for: %s"
-msgstr "Drivers de metadados de arquivo para: %s"
+msgstr ""
 
 #: views.py:65
 #, python-format
 msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
-msgstr "Atributos de metadados de arquivo para: %(document)s, pelo driver: %(driver)s"
+msgstr ""
 
 #: views.py:88
 msgid "Submit the selected document to the file metadata queue?"
 msgid_plural "Submit the selected documents to the file metadata queue?"
-msgstr[0] "Submeter o documento selecionado para a fila de metadados do arquivo?"
-msgstr[1] "Submeter os documentos selecionados para a fila de metadados do arquivo?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:114
 #, python-format
 msgid "Edit file metadata settings for document type: %s"
-msgstr "Editar configurações de metadados do arquivo para o tipo de documento: %s"
+msgstr ""
 
 #: views.py:125
 msgid "Submit all documents of a type for file metadata processing."
-msgstr "Enviar todos os documentos de um tipo para processamento de metadados de arquivo."
+msgstr ""
 
 #: views.py:147
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
-msgstr "%(count)d documentos adicionados à fila de processamento de metadados do arquivo"
+msgstr ""

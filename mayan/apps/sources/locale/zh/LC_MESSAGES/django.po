@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:20-0400\n"
+"POT-Creation-Date: 2019-07-05 01:32-0400\n"
 "PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
-#: views.py:630
+#: views.py:627
 msgid "Sources"
 msgstr "来源"
 
@@ -72,7 +72,7 @@ msgstr "展开压缩文件"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "将压缩文件包含的文件作为单个文档上载"
 
-#: forms.py:68 views.py:485
+#: forms.py:68 views.py:482
 msgid "Staging file"
 msgstr "暂存文件"
 
@@ -596,74 +596,74 @@ msgstr ""
 msgid "Server responded with {{statusCode}} code."
 msgstr ""
 
-#: views.py:65
+#: views.py:63
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr "此处列出了在使用源期间产生的任何错误，以帮助调试。"
 
-#: views.py:68
+#: views.py:66
 msgid "No log entries available"
 msgstr "没有可用的日志条目"
 
-#: views.py:70
+#: views.py:68
 #, python-format
 msgid "Log entries for source: %s"
 msgstr "源%s的日志条目"
 
-#: views.py:125 wizards.py:154
+#: views.py:123 wizards.py:154
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr "没有定义交互式文档源或没有启用任何交互式文档源，在继续之前创建一个。"
 
-#: views.py:153 views.py:171 views.py:181
+#: views.py:151 views.py:169 views.py:179
 msgid "Document properties"
 msgstr "文档属性"
 
-#: views.py:161
+#: views.py:159
 msgid "Files in staging path"
 msgstr "暂存路径中的文件"
 
-#: views.py:172
+#: views.py:170
 msgid "Scan"
 msgstr "扫描"
 
-#: views.py:282
+#: views.py:279
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr "执行文档上传任务时出错; %(exception)s，%(exception_class)s"
 
-#: views.py:293
+#: views.py:290
 msgid "New document queued for upload and will be available shortly."
 msgstr "新文档排队等待上传，很快将可用。"
 
-#: views.py:344
+#: views.py:341
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "从源%(source)s上传类型为“%(document_type)s”的文档"
 
-#: views.py:378
+#: views.py:375
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "文档“%s”被阻止上传新版本。"
 
-#: views.py:431
+#: views.py:428
 msgid "New document version queued for upload and will be available shortly."
 msgstr "新文档版本排队等待上传，很快将可用。"
 
-#: views.py:472
+#: views.py:469
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr "从源%s上传新版本"
 
-#: views.py:486
+#: views.py:483
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: views.py:507
+#: views.py:504
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -671,31 +671,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:513
+#: views.py:510
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "检查源“%s”的触发器？"
 
-#: views.py:530
+#: views.py:527
 msgid "Source check queued."
 msgstr "源检查排队。"
 
-#: views.py:547
+#: views.py:544
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "创建%s类型的新来源"
 
-#: views.py:569
+#: views.py:566
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "删除源：%s？"
 
-#: views.py:590
+#: views.py:587
 #, python-format
 msgid "Edit source: %s"
 msgstr "编辑源：%s"
 
-#: views.py:624
+#: views.py:621
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -703,7 +703,7 @@ msgid ""
 "intervention."
 msgstr "来源提供上传文件的方法。某些来源，如网页表单，是交互式的，需要用户输入才能运行。其他来源，如电子邮件，是自动的，无需用户干预即可在后台运行。"
 
-#: views.py:629
+#: views.py:626
 msgid "No sources available"
 msgstr "没有可用的来源"
 

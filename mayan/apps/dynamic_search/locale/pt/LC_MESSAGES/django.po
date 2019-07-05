@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Vítor Figueiró <vfigueiro@gmail.com>, 2012
@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:17-0400\n"
+"POT-Creation-Date: 2019-07-05 01:30-0400\n"
 "PO-Revision-Date: 2019-06-15 07:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
@@ -21,21 +21,21 @@ msgstr ""
 
 #: apps.py:17
 msgid "Dynamic search"
-msgstr "Pesquisa dinâmica"
+msgstr ""
 
 #: classes.py:100
 msgid "No search model matching the query"
-msgstr "Nenhum modelo de pesquisa correspondente à consulta"
+msgstr ""
 
 #: forms.py:9
 msgid "Match all"
-msgstr "Corresponder a todos"
+msgstr ""
 
 #: forms.py:10
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr "Quando assinalado, somente os resultados que corresponderem a todos os campos serão devolvidos. Quando não assinalado os resultados corresponderem a pelo menos um campo, serão devolvidos."
+msgstr ""
 
 #: forms.py:29 templates/dynamic_search/search_box.html:21
 msgid "Search terms"
@@ -48,30 +48,30 @@ msgstr "Pesquisa"
 
 #: links.py:11 views.py:86
 msgid "Advanced search"
-msgstr "Pesquisa Avançada"
+msgstr "Procura Avançada"
 
 #: links.py:15
 msgid "Search again"
-msgstr "Pesquisar novamente"
+msgstr ""
 
 #: templates/dynamic_search/search_box.html:24
 msgid "Advanced"
-msgstr "Avançado"
+msgstr ""
 
 #: views.py:25
 msgid "Try again using different terms. "
-msgstr "Tente novamente usando termos diferentes."
+msgstr ""
 
 #: views.py:27
 msgid "No search results"
-msgstr "Nenhum resultado de pesquisa"
+msgstr ""
 
 #: views.py:29
 #, python-format
 msgid "Search results for: %s"
-msgstr "Resultados de pesquisa para: %s"
+msgstr ""
 
 #: views.py:74
 #, python-format
 msgid "Search for: %s"
-msgstr "Pesquisar por: %s"
+msgstr ""

@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:18-0400\n"
+"POT-Creation-Date: 2019-07-05 01:31-0400\n"
 "PO-Revision-Date: 2019-06-29 06:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
@@ -19,33 +19,33 @@ msgstr ""
 
 #: apps.py:42
 msgid "Mailer"
-msgstr "Mailer"
+msgstr ""
 
 #: apps.py:63 apps.py:84
 msgid "Date and time"
-msgstr "Data e hora"
+msgstr ""
 
 #: apps.py:66 apps.py:88 models.py:30 models.py:228
 msgid "Message"
-msgstr "Mensagem"
+msgstr ""
 
 #: classes.py:81
 msgid "Null backend"
-msgstr "Sem backend"
+msgstr ""
 
 #: events.py:7 permissions.py:7 queues.py:8 settings.py:11
 msgid "Mailing"
-msgstr "Mailing"
+msgstr ""
 
 #: events.py:10
 msgid "Email sent"
-msgstr "correio eletrónico enviado"
+msgstr ""
 
 #: forms.py:60 forms.py:122
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
-msgstr "Endereço de correio eletrónico do destinatário. Podem ser vários endereços separados por vírgula ou ponto e vírgula."
+msgstr ""
 
 #: forms.py:62 forms.py:124
 msgid "Email address"
@@ -61,15 +61,15 @@ msgstr "Corpo"
 
 #: forms.py:70
 msgid "The email profile that will be used to send this email."
-msgstr "O perfil de correio eletrónico que será usado para enviar este correio eletrónico."
+msgstr ""
 
 #: forms.py:71 views.py:238
 msgid "Mailing profile"
-msgstr "Perfil de correspondência"
+msgstr ""
 
 #: forms.py:76
 msgid "Backend"
-msgstr "Backend"
+msgstr ""
 
 #: links.py:18 links.py:28
 msgid "Email document"
@@ -77,15 +77,15 @@ msgstr "Documento de correio eletrónico"
 
 #: links.py:24 links.py:32
 msgid "Email link"
-msgstr "Ligação de correio eletrónico"
+msgstr "Hiperçigação de correio eletrónico"
 
 #: links.py:37
 msgid "System mailer error log"
-msgstr "Registo de erros mailer"
+msgstr ""
 
 #: links.py:42
 msgid "Create mailing profile "
-msgstr "Criar um perfil de correspondência"
+msgstr ""
 
 #: links.py:48
 msgid "Delete"
@@ -97,19 +97,19 @@ msgstr "Editar"
 
 #: links.py:58
 msgid "Log"
-msgstr "Registo (log)"
+msgstr ""
 
 #: links.py:63
 msgid "Mailing profiles list"
-msgstr "Lista de perfis de correspondência"
+msgstr ""
 
 #: links.py:68
 msgid "Mailing profiles"
-msgstr "Perfis de correspondência"
+msgstr ""
 
 #: links.py:74 views.py:257
 msgid "Test"
-msgstr "Teste"
+msgstr ""
 
 #: literals.py:7
 #, python-format
@@ -119,10 +119,6 @@ msgid ""
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
-"Anexado a este email está o documento: {{ document }}\n"
-"\n"
-" --------\n"
-" Este correio eletrónico foi enviado de %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -132,50 +128,46 @@ msgid ""
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
-"Para acessar este documento, clique na seguinte Ligação: {{ link }}\n"
-"\n"
-"--------\n"
-" Este correio eletrónico foi enviado de %(project_title)s (%(project_website)s)"
 
 #: mailers.py:23 mailers.py:112
 msgid "From"
-msgstr "De"
+msgstr ""
 
 #: mailers.py:26 mailers.py:115
 msgid ""
 "The sender's address. Some system will refuse to send messages if this value"
 " is not set."
-msgstr "Endereço do remetente. Alguns sistemas se recusará a enviar mensagens se este valor não estiver definido."
+msgstr ""
 
 #: mailers.py:32
 msgid "Host"
-msgstr "Host"
+msgstr ""
 
 #: mailers.py:34
 msgid "The host to use for sending email."
-msgstr "O host a ser usado para enviar email."
+msgstr ""
 
 #: mailers.py:39
 msgid "Port"
-msgstr "Porta"
+msgstr ""
 
 #: mailers.py:41
 msgid "Port to use for the SMTP server."
-msgstr "Porta a ser usada para o servidor SMTP."
+msgstr ""
 
 #: mailers.py:44
 msgid "Use TLS"
-msgstr "Usar TLS"
+msgstr ""
 
 #: mailers.py:47
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr "Se deve usar uma conexão TLS (segura) ao falar com o servidor SMTP. Isso é usado para conexões TLS explícitas, geralmente na porta 587."
+msgstr ""
 
 #: mailers.py:52
 msgid "Use SSL"
-msgstr "Usar TLS"
+msgstr ""
 
 #: mailers.py:55
 msgid ""
@@ -185,17 +177,17 @@ msgid ""
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
 "and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
 " True."
-msgstr "Se você deve usar uma conexão TLS (segura) implícita ao falar com o servidor SMTP. Na maioria das documentações de correio eletrónico, esse tipo de conexão TLS é chamado de SSL. Geralmente, ela é usada na porta 465. Se você estiver com problemas, consulte Configuração de TLS \"Usar TLS\". Observe que \"Usar TLS\" e \"Usar SSL\" são mutuamente exclusivos, portanto, defina apenas uma dessas configurações como True"
+msgstr ""
 
 #: mailers.py:64
 msgid "Username"
-msgstr "Utilizador"
+msgstr ""
 
 #: mailers.py:67
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
-msgstr "Nome de Utilizador para usar no servidor SMTP. Se estiver vazio, a autenticação não será tentada."
+msgstr ""
 
 #: mailers.py:73
 msgid "Password"
@@ -206,23 +198,23 @@ msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
 "with the username when authenticating to the SMTP server. If either of these"
 " settings is empty, authentication won't be attempted."
-msgstr "Senha a ser usada para o servidor SMTP. Essa configuração é usada em conjunto com o nome de utilizador durante a autenticação no servidor SMTP. Se qualquer uma dessas configurações estiver vazia, a autenticação não será tentada."
+msgstr ""
 
 #: mailers.py:85
 msgid "Django SMTP backend"
-msgstr "Django SMTP backend"
+msgstr ""
 
 #: mailers.py:107
 msgid "File path"
-msgstr "Caminho de arquivo"
+msgstr ""
 
 #: mailers.py:122
 msgid "Django file based backend"
-msgstr "Backend baseado em arquivo Django"
+msgstr ""
 
 #: models.py:27 models.py:225
 msgid "Date time"
-msgstr "Data e hora"
+msgstr ""
 
 #: models.py:36
 msgid "Log entry"
@@ -230,7 +222,7 @@ msgstr ""
 
 #: models.py:37
 msgid "Log entries"
-msgstr "Entradas no registo (log)"
+msgstr ""
 
 #: models.py:48
 msgid "Label"
@@ -248,7 +240,7 @@ msgstr "Padrão"
 
 #: models.py:56
 msgid "Enabled"
-msgstr "Ativado"
+msgstr ""
 
 #: models.py:59
 msgid "The dotted Python path to the backend class."
@@ -264,31 +256,31 @@ msgstr ""
 
 #: models.py:70 models.py:222
 msgid "User mailer"
-msgstr "Mailer do utilizador"
+msgstr ""
 
 #: models.py:71
 msgid "User mailers"
-msgstr "Mailer dos utilizadores"
+msgstr ""
 
 #: models.py:84
 msgid "Backend label"
-msgstr "Rótulo do Backend"
+msgstr ""
 
 #: models.py:216
 msgid "Test email from Mayan EDMS"
-msgstr "Testar email de Mayan EDMS"
+msgstr ""
 
 #: models.py:234
 msgid "User mailer log entry"
-msgstr "Entrada no registo do mailer do utilizador"
+msgstr ""
 
 #: models.py:235
 msgid "User mailer log entries"
-msgstr "Entradas no registo do mailer do utilizador"
+msgstr ""
 
 #: permissions.py:10
 msgid "Send document link via email"
-msgstr "Enviar ligação de documento através de mensagem"
+msgstr "Enviar hiperligação de documento através de mensagem"
 
 #: permissions.py:13
 msgid "Send document via email"
@@ -296,35 +288,35 @@ msgstr "Enviar documento através de mensagem"
 
 #: permissions.py:16
 msgid "View system mailing error log"
-msgstr "Visualizar registo de erro ne envio de correio do sistema"
+msgstr ""
 
 #: permissions.py:19
 msgid "Create a mailing profile"
-msgstr "Crie um perfil de correspondência"
+msgstr ""
 
 #: permissions.py:22
 msgid "Delete a mailing profile"
-msgstr "Remover um perfil de correspondência"
+msgstr ""
 
 #: permissions.py:25
 msgid "Edit a mailing profile"
-msgstr "Editar um perfil de correspondência"
+msgstr ""
 
 #: permissions.py:28
 msgid "View a mailing profile"
-msgstr "Ver um perfil de correspondência"
+msgstr ""
 
 #: permissions.py:31
 msgid "Use a mailing profile"
-msgstr "Usar um perfil de correspondência"
+msgstr ""
 
 #: queues.py:10
 msgid "Send document"
-msgstr "Enviar documento"
+msgstr ""
 
 #: settings.py:14
 msgid "Link for document: {{ document }}"
-msgstr "Ligação para o documento: {{ document }}"
+msgstr "Hiperligação para o documento: {{ document }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
@@ -332,38 +324,38 @@ msgstr "Modelo para a linha do assunto do formulário de mensagem da hiperligaç
 
 #: settings.py:20
 msgid "Template for the document link email form body text. Can include HTML."
-msgstr "Modelo para o texto do corpo do formulário de correio eletrónico de link do documento. Pode incluir HTML."
+msgstr ""
 
 #: settings.py:24
 msgid "Document: {{ document }}"
-msgstr "Documento: {{ document }}"
+msgstr "Document: {{ document }}"
 
 #: settings.py:25
 msgid "Template for the document email form subject line."
-msgstr "Modelo para a linha de assunto do estilo de correio eletrónico do documento."
+msgstr ""
 
 #: settings.py:30
 msgid "Template for the document email form body text. Can include HTML."
-msgstr "Modelo para o texto do corpo do estilo de correio eletrónico do documento. Pode incluir HTML."
+msgstr ""
 
 #: validators.py:14
 #, python-format
 msgid "%(email)s is not a valid email address."
-msgstr "%(email)s não é um endereço de correio eletrónico válido"
+msgstr ""
 
 #: views.py:37
 msgid "Document mailing error log"
-msgstr "Registo (log) de erro de envio de documentos"
+msgstr ""
 
 #: views.py:49
 #, python-format
 msgid "%(count)d document queued for email delivery"
-msgstr "%(count)d documento na fila para entrega de correio eletrónico"
+msgstr ""
 
 #: views.py:51
 #, python-format
 msgid "%(count)d documents queued for email delivery"
-msgstr "%(count)d documentos na fila para entrega de correio eletrónico"
+msgstr ""
 
 #: views.py:62
 msgid "Send"
@@ -372,48 +364,48 @@ msgstr "Enviar"
 #: views.py:108
 #, python-format
 msgid "%(count)d document link queued for email delivery"
-msgstr "%(count)d ligação do documento na fila para entrega de correio eletrónico"
+msgstr ""
 
 #: views.py:110
 #, python-format
 msgid "%(count)d document links queued for email delivery"
-msgstr "%(count)d ligações do documento na fila para entrega de correio eletrónico"
+msgstr ""
 
 #: views.py:119
 msgid "New mailing profile backend selection"
-msgstr "Nova seleção de backend do perfil de correspondência"
+msgstr ""
 
 #: views.py:151
 #, python-format
 msgid "Create a \"%s\" mailing profile"
-msgstr "Criar um \"%s\" perfil de correspondência"
+msgstr ""
 
 #: views.py:177
 #, python-format
 msgid "Delete mailing profile: %s"
-msgstr "Remover perfil de correspondência: %s"
+msgstr ""
 
 #: views.py:188
 #, python-format
 msgid "Edit mailing profile: %s"
-msgstr "Editar perfil de correspondência: %s"
+msgstr ""
 
 #: views.py:211
 #, python-format
 msgid "Error log for: %s"
-msgstr "Registo de erros para: %s"
+msgstr ""
 
 #: views.py:233
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
-msgstr "Os perfis de correspondência são configurações de correio eletrónico. Os perfis de correspondência permitem o envio de documentos como anexos ou como ligações por correio eletrónico."
+msgstr ""
 
 #: views.py:237
 msgid "No mailing profiles available"
-msgstr "Nenhum perfil de correspondência disponível"
+msgstr ""
 
 #: views.py:258
 #, python-format
 msgid "Test mailing profile: %s"
-msgstr "Testar perfil de correspondência: %s"
+msgstr ""

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Renata Oliveira <renatabels@gmail.com>, 2011
 # Vítor Figueiró <vfigueiro@gmail.com>, 2012
@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:16-0400\n"
+"POT-Creation-Date: 2019-07-05 01:29-0400\n"
 "PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
@@ -25,19 +25,19 @@ msgstr "Nenhum"
 
 #: admin.py:26 links.py:79 models.py:52
 msgid "Document types"
-msgstr "Tipos de documentos"
+msgstr ""
 
 #: apps.py:55 events.py:8
 msgid "Document indexing"
-msgstr "Indexação de documentos"
+msgstr ""
 
 #: apps.py:118
 msgid "Total levels"
-msgstr "Níveis totais"
+msgstr ""
 
 #: apps.py:126
 msgid "Total documents"
-msgstr "Total de documentos"
+msgstr ""
 
 #: apps.py:131 apps.py:143 apps.py:162
 msgid "Level"
@@ -45,7 +45,7 @@ msgstr ""
 
 #: apps.py:148 apps.py:167
 msgid "Levels"
-msgstr "Níveis"
+msgstr ""
 
 #: apps.py:156 apps.py:174 models.py:358
 msgid "Documents"
@@ -53,23 +53,23 @@ msgstr "Documentos"
 
 #: events.py:12
 msgid "Index created"
-msgstr "Índice criado"
+msgstr ""
 
 #: events.py:15
 msgid "Index edited"
-msgstr "Índice editado"
+msgstr ""
 
 #: forms.py:19
 msgid "Index templates to be queued for rebuilding."
-msgstr "Modelos de índice a serem enfileirados para reconstrução."
+msgstr ""
 
 #: forms.py:20 links.py:30
 msgid "Index templates"
-msgstr "Modelos de índice"
+msgstr ""
 
 #: handlers.py:20
 msgid "Creation date"
-msgstr "Data de criação"
+msgstr ""
 
 #: links.py:24 links.py:39 links.py:59 links.py:63 models.py:60 views.py:149
 #: views.py:292
@@ -82,11 +82,11 @@ msgstr "Exclui e cria a partir do zero todos os índices de documentos."
 
 #: links.py:50 views.py:415
 msgid "Rebuild indexes"
-msgstr "Reconstruir índices"
+msgstr ""
 
 #: links.py:67 views.py:87
 msgid "Create index"
-msgstr "Criar índice"
+msgstr ""
 
 #: links.py:74 links.py:104
 msgid "Delete"
@@ -98,11 +98,11 @@ msgstr "Editar"
 
 #: links.py:92
 msgid "Tree template"
-msgstr "Modelo de árvore"
+msgstr ""
 
 #: links.py:98
 msgid "New child node"
-msgstr "Novo nó filho"
+msgstr ""
 
 #: models.py:36
 msgid "Label"
@@ -110,7 +110,7 @@ msgstr "Nome"
 
 #: models.py:40
 msgid "This value will be used by other apps to reference this index."
-msgstr "Esse valor será usado por outros aplicativos para fazer referência a esse índice."
+msgstr ""
 
 #: models.py:41
 msgid "Slug"
@@ -123,30 +123,29 @@ msgstr "Faz com que este índice seja visível e atualizado quando os dados do d
 
 #: models.py:49 models.py:235
 msgid "Enabled"
-msgstr "Incluido"
+msgstr ""
 
 #: models.py:59 models.py:219
 msgid "Index"
-msgstr "índice"
+msgstr ""
 
 #: models.py:191
 msgid "Index instance"
-msgstr "Indice da instância"
+msgstr "index instance"
 
 #: models.py:192
 msgid "Index instances"
-msgstr "Indice da instâncias"
+msgstr ""
 
 #: models.py:223
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr "Digite um modelo para visualizar. Use a linguagem de templates padrão do Django"
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr ""
 
 #: models.py:227
 msgid "Indexing expression"
-msgstr "Expressão de Indexação"
+msgstr ""
 
 #: models.py:232
 msgid "Causes this node to be visible and updated when document data changes."
@@ -160,30 +159,30 @@ msgstr "Escolha esta opção para que este nó atue como contentor para document
 
 #: models.py:243
 msgid "Link documents"
-msgstr "Vincular documentos"
+msgstr ""
 
 #: models.py:247
 msgid "Index node template"
-msgstr "Modelo de nó de índice"
+msgstr ""
 
 #: models.py:248
 msgid "Indexes node template"
-msgstr "Modelo de nó de índices"
+msgstr ""
 
 #: models.py:252
 msgid "Root"
-msgstr "Raiz"
+msgstr ""
 
 #: models.py:308
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Erro ao indexar documento: %(document)s; expressão: %(expression)s; %(exception)s"
+msgstr ""
 
 #: models.py:351
 msgid "Index template node"
-msgstr "Nó do modelo de índice"
+msgstr ""
 
 #: models.py:354
 msgid "Value"
@@ -191,19 +190,19 @@ msgstr "Valor"
 
 #: models.py:364
 msgid "Index node instance"
-msgstr "Instância no nó índice"
+msgstr ""
 
 #: models.py:365
 msgid "Indexes node instances"
-msgstr "Instâncias no nó índice"
+msgstr ""
 
 #: models.py:479
 msgid "Document index node instance"
-msgstr "Documentos para instância nó de índice"
+msgstr ""
 
 #: models.py:480
 msgid "Document indexes node instances"
-msgstr "Documentos para instâncias nós de índices"
+msgstr ""
 
 #: permissions.py:7 queues.py:9
 msgid "Indexing"
@@ -223,7 +222,7 @@ msgstr "Eliminar índices de documento"
 
 #: permissions.py:19
 msgid "View document index instances"
-msgstr "Visualizar instâncias de índice de documentos"
+msgstr ""
 
 #: permissions.py:23
 msgid "View document indexes"
@@ -235,27 +234,27 @@ msgstr "Reconstruir índices de documento"
 
 #: queues.py:12
 msgid "Delete empty index nodes"
-msgstr "Excluir nós de índice vazios"
+msgstr ""
 
 #: queues.py:16
 msgid "Remove document"
-msgstr "Remover documento"
+msgstr ""
 
 #: queues.py:20
 msgid "Index document"
-msgstr "Indexar documento"
+msgstr ""
 
 #: queues.py:24
 msgid "Rebuild index"
-msgstr "reconstruir índice"
+msgstr ""
 
 #: views.py:46
 msgid "Available indexes"
-msgstr "Índices disponíveis"
+msgstr ""
 
 #: views.py:47
 msgid "Indexes linked"
-msgstr "Índices vinculados"
+msgstr ""
 
 #: views.py:77
 msgid ""
@@ -263,23 +262,21 @@ msgid ""
 "updated. Events of the documents of this type will trigger updates in the "
 "linked indexes."
 msgstr ""
-"Documentos desse tipo aparecerão nos índices vinculados quando eles forem "
-"atualizados. Os eventos dos documentos desse tipo acionarão atualizações nos índices vinculados."
 
 #: views.py:81
 #, python-format
 msgid "Indexes linked to document type: %s"
-msgstr "Índices vinculados ao tipo de documento: %s"
+msgstr ""
 
 #: views.py:109
 #, python-format
 msgid "Delete the index: %s?"
-msgstr "Remover o índice: %s?"
+msgstr ""
 
 #: views.py:124
 #, python-format
 msgid "Edit index: %s"
-msgstr "Editar o índice: %s?"
+msgstr ""
 
 #: views.py:143
 msgid ""
@@ -287,21 +284,18 @@ msgid ""
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
 msgstr ""
-"Os índices agrupam o documento automaticamente em níveis. Os arquivos do "
-"indice são definidos usando um modelo cujos marcadores são substituídos por "
-"propriedades diretas de documentos como rótulo ou descrição, ou de propriedades estendidas como metadados."
 
 #: views.py:148
 msgid "There are no indexes."
-msgstr "Não existem índices"
+msgstr ""
 
 #: views.py:161
 msgid "Available document types"
-msgstr "Tipos de documentos disponíveis"
+msgstr ""
 
 #: views.py:162
 msgid "Document types linked"
-msgstr "Tipos de documentos vinculado"
+msgstr ""
 
 #: views.py:172
 msgid ""
@@ -309,77 +303,70 @@ msgid ""
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
 msgstr ""
-"Somente os documentos dos tipos selecionados serão mostrados no índice quando "
-"criados. Somente os eventos dos documentos dos tipos selecionados ativarão as "
-"atualizações no índice."
 
 #: views.py:176
 #, python-format
 msgid "Document types linked to index: %s"
-msgstr "Tipos de documentos vinculados ao índice: %s"
+msgstr ""
 
 #: views.py:188
 #, python-format
 msgid "Tree template nodes for index: %s"
-msgstr "Nós de modelo de árvore para índice: %s"
+msgstr ""
 
 #: views.py:218
 #, python-format
 msgid "Create child node of: %s"
-msgstr "Criar nó filho de: %s"
+msgstr ""
 
 #: views.py:241
 #, python-format
 msgid "Delete the index template node: %s?"
-msgstr "Remover o nó do modelo de índice: %s"
+msgstr ""
 
 #: views.py:264
 #, python-format
 msgid "Edit the index template node: %s?"
-msgstr "Editar o nó do modelo de índice: %s"
+msgstr ""
 
 #: views.py:287
 msgid ""
 "This could mean that no index templates have been created or that there "
 "index templates but they are no properly defined."
 msgstr ""
-"Isso pode significar que nenhum modelo de índice foi criado ou que existem "
-"modelos de índice, mas eles não estão definidos corretamente."
 
 #: views.py:291
 msgid "There are no index instances available."
-msgstr "Não há instâncias de índice disponíveis."
+msgstr ""
 
 #: views.py:336
 #, python-format
 msgid "Navigation: %s"
-msgstr "Navegação: %s"
+msgstr ""
 
 #: views.py:341
 #, python-format
 msgid "Contents for index: %s"
-msgstr "Conteúdo para índice: %s"
+msgstr ""
 
 #: views.py:394
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
 msgstr ""
-"Atribuir o tipo de documento deste documento a um índice para que ele apareça "
-"em instâncias daquelas unidades de organização de índices."
 
 #: views.py:399
 msgid "This document is not in any index"
-msgstr "Este documento não está em nenhum índice"
+msgstr ""
 
 #: views.py:403
 #, python-format
 msgid "Indexes nodes containing document: %s"
-msgstr "Nós de índices contendo documento: %s"
+msgstr ""
 
 #: views.py:429
 #, python-format
 msgid "%(count)d index queued for rebuild."
 msgid_plural "%(count)d indexes queued for rebuild."
-msgstr[0] "%(count)d índice de fila de espera para reconstruir"
-msgstr[1] "%(count)d índices de fila de espera para reconstruir"
+msgstr[0] ""
+msgstr[1] ""

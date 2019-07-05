@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:19-0400\n"
+"POT-Creation-Date: 2019-07-05 01:31-0400\n"
 "PO-Revision-Date: 2018-09-12 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: apps.py:35 links.py:36 permissions.py:7
 msgid "Message of the day"
-msgstr "Mensagem do Dia"
+msgstr ""
 
 #: apps.py:57 apps.py:61
 msgid "None"
@@ -27,7 +27,7 @@ msgstr "Nenhum"
 
 #: links.py:16 views.py:32
 msgid "Create message"
-msgstr "Criar mensagem"
+msgstr ""
 
 #: links.py:22
 msgid "Delete"
@@ -39,7 +39,7 @@ msgstr "Editar"
 
 #: models.py:17
 msgid "Short description of this message."
-msgstr "Breve descrição desta mensagem."
+msgstr ""
 
 #: models.py:18
 msgid "Label"
@@ -47,73 +47,73 @@ msgstr "Nome"
 
 #: models.py:21
 msgid "The actual message to be displayed."
-msgstr "A mensagem real a ser exibido."
+msgstr ""
 
 #: models.py:22 models.py:39
 msgid "Message"
-msgstr "Mensagem"
+msgstr ""
 
 #: models.py:24
 msgid "Enabled"
-msgstr "Ativada"
+msgstr ""
 
 #: models.py:27
 msgid "Date and time after which this message will be displayed."
-msgstr "Data e hora após o qual esta mensagem será exibida."
+msgstr ""
 
 #: models.py:28
 msgid "Start date time"
-msgstr "Data e hora de início"
+msgstr ""
 
 #: models.py:32
 msgid "Date and time until when this message is to be displayed."
-msgstr "Data e hora até quando esta mensagem deve ser exibida."
+msgstr ""
 
 #: models.py:33
 msgid "End date time"
-msgstr "Data e hora do fim"
+msgstr ""
 
 #: models.py:40 views.py:80
 msgid "Messages"
-msgstr "Mensagens"
+msgstr ""
 
 #: permissions.py:10
 msgid "Create messages"
-msgstr "Criar mensagens"
+msgstr ""
 
 #: permissions.py:13
 msgid "Delete messages"
-msgstr "Remover mensagens"
+msgstr ""
 
 #: permissions.py:16
 msgid "Edit messages"
-msgstr "Editar mensagens"
+msgstr ""
 
 #: permissions.py:19
 msgid "View messages"
-msgstr "Ver mensagens"
+msgstr ""
 
 #: templates/motd/messages.html:8
 msgid "Messages of the day"
-msgstr "Mensagens do dia"
+msgstr ""
 
 #: views.py:45
 #, python-format
 msgid "Delete the message: %s?"
-msgstr "Remover mensagem: %s?"
+msgstr ""
 
 #: views.py:58
 #, python-format
 msgid "Edit message: %s"
-msgstr "Editar mensagem: %s"
+msgstr ""
 
 #: views.py:75
 msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
-msgstr "As mensagens são exibidas na visualização de login. Você pode usar mensagens para transmitir informações sobre sua organização, anúncios ou diretrizes de uso para seus utilizadores."
+msgstr ""
 
 #: views.py:79
 msgid "No messages available"
-msgstr "Nenhuma mensagem disponível"
+msgstr ""

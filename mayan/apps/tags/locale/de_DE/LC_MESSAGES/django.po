@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:20-0400\n"
+"POT-Creation-Date: 2019-07-05 01:32-0400\n"
 "PO-Revision-Date: 2019-05-27 21:31+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -180,7 +180,7 @@ msgstr[1] "Tags an %(count)d Dokumente anhängen"
 msgid "Attach tags to document: %s"
 msgstr "Tags für Dokument %s zuweisen:"
 
-#: views.py:70 wizard_steps.py:30
+#: views.py:70 wizard_steps.py:29
 msgid "Tags to be attached."
 msgstr "Zuzuweisende Tags."
 
@@ -302,7 +302,7 @@ msgstr "Dokument \"%(document)s\" wurde nicht als \"%(tag)s getaggt"
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" erfolgreich von Dokument \"%(document)s\" entfernt."
 
-#: wizard_steps.py:18
+#: wizard_steps.py:17
 msgid "Select tags"
 msgstr "Tags auswählen"
 

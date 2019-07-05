@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:15-0400\n"
-"PO-Revision-Date: 2019-06-15 07:48+0000\n"
+"POT-Creation-Date: 2019-07-05 01:27-0400\n"
+"PO-Revision-Date: 2019-07-05 05:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -183,16 +183,22 @@ msgid ""
 "            "
 msgstr "\nImprastie vestea. Discutați cu prietenii și colegii despre cât de minunat este %(project_title)s!\nUrmăriți-ne pe <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>,<a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, sau <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>"
 
-#: templates/appearance/base.html:32
+#: templates/appearance/base.html:32 templates/appearance/base.html:42
 msgid "Warning"
 msgstr "Alertă"
 
-#: templates/appearance/base.html:51
+#: templates/appearance/base.html:42
+msgid ""
+"Settings updated, restart your installation for changes to take proper "
+"effect."
+msgstr ""
+
+#: templates/appearance/base.html:59
 #: templates/appearance/generic_list_items_subtemplate.html:104
 msgid "Actions"
 msgstr "Acţiuni"
 
-#: templates/appearance/base.html:53
+#: templates/appearance/base.html:61
 #: templates/appearance/generic_list_items_subtemplate.html:106
 msgid "Toggle Dropdown"
 msgstr "Comutare  mod listă"

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:17-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
+"POT-Creation-Date: 2019-07-05 01:30-0400\n"
+"PO-Revision-Date: 2019-07-05 06:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -119,7 +119,7 @@ msgstr "Si"
 
 #: forms.py:181
 msgid "Optional comment to attach to the transition."
-msgstr ""
+msgstr "Comentario opcional para adjuntar a la transición."
 
 #: handlers.py:62
 #, python-format

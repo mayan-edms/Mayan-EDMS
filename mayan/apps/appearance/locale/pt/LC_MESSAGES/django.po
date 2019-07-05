@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:15-0400\n"
-"PO-Revision-Date: 2019-06-15 07:48+0000\n"
+"POT-Creation-Date: 2019-07-05 01:27-0400\n"
+"PO-Revision-Date: 2019-07-05 05:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -19,59 +19,59 @@ msgstr ""
 
 #: apps.py:12 settings.py:9
 msgid "Appearance"
-msgstr "aparência"
+msgstr ""
 
 #: dependencies.py:10
 msgid "Lato font"
-msgstr "Fonte Lato"
+msgstr ""
 
 #: dependencies.py:14
 msgid "Bootstrap"
-msgstr "Bootstrap"
+msgstr ""
 
 #: dependencies.py:18
 msgid "Bootswatch"
-msgstr "Bootswatch"
+msgstr ""
 
 #: dependencies.py:32
 msgid "Fancybox"
-msgstr "Fancybox"
+msgstr ""
 
 #: dependencies.py:36
 msgid "FontAwesome"
-msgstr "FontAwesome"
+msgstr ""
 
 #: dependencies.py:40
 msgid "jQuery"
-msgstr "jQuery"
+msgstr ""
 
 #: dependencies.py:43
 msgid "JQuery Form"
-msgstr "JQuery Form"
+msgstr ""
 
 #: dependencies.py:47
 msgid "jQuery Lazy Load"
-msgstr "jQuery Lazy Load"
+msgstr ""
 
 #: dependencies.py:51
 msgid "JQuery Match Height"
-msgstr "JQuery Match Height"
+msgstr ""
 
 #: dependencies.py:55
 msgid "Select 2"
-msgstr "Select 2"
+msgstr ""
 
 #: dependencies.py:59
 msgid "Toastr"
-msgstr "Toastr"
+msgstr ""
 
 #: dependencies.py:62
 msgid "URI.js"
-msgstr "URI.js"
+msgstr ""
 
 #: settings.py:14
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr "Número máximo de characteres que serão mostrados como título de vista."
+msgstr ""
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
@@ -91,19 +91,17 @@ msgstr "Desculpe, mas a página solicitada não foi encontrada."
 
 #: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:52
 msgid "Server error"
-msgstr "Erro servidor"
+msgstr ""
 
 #: templates/500.html:11
 msgid ""
 "There's been an error. It's been reported to the site administrators via "
 "e-mail and should be fixed shortly. Thanks for your patience."
 msgstr ""
-"Ocorreu um erro. Foi reportado a administração do sit por email e vai ser "
-"corrigido brevemente. Obrigado pela sua Paciência"
 
 #: templates/appearance/about.html:10
 msgid "About"
-msgstr "Sobre"
+msgstr ""
 
 #: templates/appearance/about.html:77
 #, python-format
@@ -112,9 +110,6 @@ msgid ""
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
 msgstr ""
-"\n"
-"                    %(setting_project_title)s e baseado no %(project_title)s\n"
-"                "
 
 #: templates/appearance/about.html:82
 msgid "Version"
@@ -127,7 +122,7 @@ msgstr ""
 
 #: templates/appearance/about.html:97
 msgid "Released under the license:"
-msgstr "lançado sobre a licença"
+msgstr ""
 
 #: templates/appearance/about.html:103
 #, python-format
@@ -136,9 +131,6 @@ msgid ""
 "                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
 msgstr ""
-"\n"
-"                %(project_title)s é gratuito e software de fonte aberta oferecido por <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> por Roberto Rosario e contribuidores.\n"
-"            "
 
 #: templates/appearance/about.html:109
 #, python-format
@@ -147,9 +139,6 @@ msgid ""
 "                It takes great effort to make %(project_title)s as feature-rich as it is. We need all the help we can get!\n"
 "            "
 msgstr ""
-"\n"
-"                Foi um grande esforço para fazer %(project_title)s como característica-rico como é. Necessitamos toda ajuda que conseguirmos!\n"
-"            "
 
 #: templates/appearance/about.html:115
 #, python-format
@@ -192,23 +181,29 @@ msgid ""
 "            "
 msgstr ""
 
-#: templates/appearance/base.html:32
+#: templates/appearance/base.html:32 templates/appearance/base.html:42
 msgid "Warning"
-msgstr "Aviso"
+msgstr ""
 
-#: templates/appearance/base.html:51
+#: templates/appearance/base.html:42
+msgid ""
+"Settings updated, restart your installation for changes to take proper "
+"effect."
+msgstr ""
+
+#: templates/appearance/base.html:59
 #: templates/appearance/generic_list_items_subtemplate.html:104
 msgid "Actions"
 msgstr "Ações"
 
-#: templates/appearance/base.html:53
+#: templates/appearance/base.html:61
 #: templates/appearance/generic_list_items_subtemplate.html:106
 msgid "Toggle Dropdown"
-msgstr "Alternar o menu suspenso"
+msgstr ""
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
-msgstr "Tem a certeza?"
+msgstr ""
 
 #: templates/appearance/generic_confirm.html:34
 msgid "Yes"
@@ -249,8 +244,6 @@ msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr ""
-"Total de (%(start)s - %(end)s de %(total)s) (página %(page_number)s de "
-"%(total_pages)s)"
 
 #: templates/appearance/generic_list_items_subtemplate.html:19
 #: templates/appearance/generic_list_items_subtemplate.html:22
@@ -258,7 +251,7 @@ msgstr ""
 #: templates/appearance/generic_list_subtemplate.html:22
 #, python-format
 msgid "Total: %(total)s"
-msgstr "Total: %(total)s"
+msgstr ""
 
 #: templates/appearance/generic_list_subtemplate.html:55
 msgid "Identifier"
@@ -266,19 +259,19 @@ msgstr "Identificador"
 
 #: templates/appearance/home.html:10
 msgid "Dashboard"
-msgstr "Painel de controle"
+msgstr ""
 
 #: templates/appearance/home.html:26
 msgid "Getting started"
-msgstr "Iniciar"
+msgstr ""
 
 #: templates/appearance/home.html:29
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr "Antes de poder usar todas as funcionalidades Mayan EDMS necessita de fazer o seguinte:"
+msgstr ""
 
 #: templates/appearance/main_menu.html:10
 msgid "Toggle navigation"
-msgstr "Alternar de navegação"
+msgstr ""
 
 #: templates/appearance/no_results.html:18
 msgid "No results"
@@ -286,15 +279,15 @@ msgstr "Sem resultados"
 
 #: templates/appearance/root.html:57
 msgid "Close"
-msgstr "Fechar"
+msgstr ""
 
 #: templates/appearance/root.html:65
 msgid "Server communication error"
-msgstr "Erro de comunicação com o servidor"
+msgstr ""
 
 #: templates/appearance/root.html:67
 msgid "Check you network connection and try again in a few moments."
-msgstr "Verifique sua ligação de rede e tente novamente em alguns instantes."
+msgstr ""
 
 #: templatetags/appearance_tags.py:17
 msgid "None"

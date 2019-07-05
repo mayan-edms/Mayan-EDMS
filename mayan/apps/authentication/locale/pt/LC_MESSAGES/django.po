@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:15-0400\n"
+"POT-Creation-Date: 2019-07-05 01:28-0400\n"
 "PO-Revision-Date: 2019-06-15 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: apps.py:25 settings.py:9
 msgid "Authentication"
-msgstr "Autenticação"
+msgstr ""
 
 #: forms.py:17
 msgid "Email"
@@ -32,15 +32,13 @@ msgstr "Senha"
 
 #: forms.py:22 forms.py:73
 msgid "Remember me"
-msgstr "Recordar-me"
+msgstr ""
 
 #: forms.py:25
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
 msgstr ""
-"Por favor, digite um e-mail e senha corretos. Observe que o campo de senha faz "
-"distinção entre maiúsculas e minúsculas"
 
 #: forms.py:27
 msgid "This account is inactive."
@@ -56,23 +54,19 @@ msgstr "Alterar senha"
 
 #: links.py:32 links.py:39
 msgid "Set password"
-msgstr "Definir senha"
+msgstr ""
 
 #: settings.py:13
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr ""
-"Controla o mecanismo usado para o utilizador autenticado. As opções são: "
-"nome de utilizador, endereço de correio eletrónico"
 
 #: settings.py:20
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
 msgstr ""
-"O tempo máximo que um usuário clicar na caixa de seleção \"Recordar-me \" "
-"permanecerá conectado. O valor é o tempo em segundos."
 
 #: templates/authentication/login.html:11
 msgid "Login"
@@ -81,11 +75,11 @@ msgstr "Iniciar a sessão"
 #: templates/authentication/login.html:26
 #: templates/authentication/login.html:34
 msgid "Sign in"
-msgstr "Entrar"
+msgstr ""
 
 #: templates/authentication/login.html:39
 msgid "Forgot your password?"
-msgstr "Esqueceu sua senha?"
+msgstr ""
 
 #: templates/authentication/password_reset_complete.html:8
 #: templates/authentication/password_reset_confirm.html:8
@@ -94,15 +88,15 @@ msgstr "Esqueceu sua senha?"
 #: templates/authentication/password_reset_form.html:8
 #: templates/authentication/password_reset_form.html:20
 msgid "Password reset"
-msgstr "Reiniciar a senha"
+msgstr ""
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr "Reinicio de senha concluída! Clique no ligação abaixo para fazer o entrar."
+msgstr ""
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
-msgstr "Página de entrada"
+msgstr ""
 
 #: templates/authentication/password_reset_confirm.html:29
 #: templates/authentication/password_reset_form.html:29 views.py:154
@@ -111,7 +105,7 @@ msgstr "Submeter"
 
 #: templates/authentication/password_reset_done.html:15
 msgid "Password reset email sent!"
-msgstr "Correio electronico para reinicio de senha enviado"
+msgstr ""
 
 #: views.py:74
 msgid "Your password has been successfully changed."
@@ -123,42 +117,39 @@ msgstr "Alteração da senha do utilizador atual"
 
 #: views.py:89
 msgid "Changing the password is not allowed for this account."
-msgstr "A alteração da senha não é permitida para esta conta."
+msgstr ""
 
 #: views.py:145
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr "Solicitação de alteração de senha executada em %(count)d utilizadores"
+msgstr ""
 
 #: views.py:147
 #, python-format
 msgid "Password change request performed on %(count)d users"
-msgstr "Solicitação de alteração de senha executada em %(count)d utilizadores"
+msgstr ""
 
 #: views.py:156
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] "Alterar senha do utilizador"
-msgstr[1] "Alterar senhas do utilizadores"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:166
 #, python-format
 msgid "Change password for user: %s"
-msgstr "Alterar senha para o utilizador: %s"
+msgstr ""
 
 #: views.py:186
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr
-""
-"Não é permitido redefinir a senha de administradores ou de membros da equipa, "
-"utilize a interface de administrador para estes casos."
+msgstr "Não é permitido redefinir a senha de administradores ou de membros da equipa, utilize a interface de administrador para estes casos."
 
 #: views.py:196
 #, python-format
 msgid "Successful password reset for user: %s."
-msgstr "Redefinição de senha bem-sucedida para o utilizar: %s"
+msgstr ""
 
 #: views.py:202
 #, python-format
