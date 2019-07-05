@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:40-0400\n"
-"PO-Revision-Date: 2019-06-15 07:56+0000\n"
+"POT-Creation-Date: 2019-06-29 02:20-0400\n"
+"PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -22,61 +22,69 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:78 events.py:8 permissions.py:8
+#: apps.py:82 events.py:8 permissions.py:8
 msgid "User management"
 msgstr "Administración de usuarios"
 
-#: apps.py:96 search.py:36
+#: apps.py:100 search.py:36
 msgid "Group"
 msgstr "Grupo"
 
-#: apps.py:97 links.py:41 links.py:52 links.py:75 search.py:26 views.py:120
+#: apps.py:101 links.py:41 links.py:52 links.py:75 search.py:26 views.py:120
 msgid "Groups"
 msgstr "Grupos"
 
-#: apps.py:98 search.py:42
+#: apps.py:102 search.py:42
 msgid "Name"
 msgstr "Nombre"
 
-#: apps.py:104 models.py:18 search.py:14
+#: apps.py:108 models.py:18 search.py:14
 msgid "User"
 msgstr "Usuario"
 
-#: apps.py:105 apps.py:170 links.py:47 links.py:80 links.py:96 views.py:302
+#: apps.py:109 apps.py:174 links.py:47 links.py:80 links.py:96 views.py:302
 msgid "Users"
 msgstr "Usuarios"
 
-#: apps.py:108
+#: apps.py:112
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#: apps.py:109 search.py:20
+#: apps.py:113 search.py:20
 msgid "First name"
 msgstr "Nombre de pila"
 
-#: apps.py:110 search.py:29
+#: apps.py:114 search.py:29
 msgid "Last name"
 msgstr "Apellido"
 
-#: apps.py:111 search.py:23
+#: apps.py:115 search.py:23
 msgid "Email"
 msgstr "Correo electrónico"
 
-#: apps.py:112
+#: apps.py:116
 msgid "Is active?"
 msgstr "¿Está activo?"
 
-#: apps.py:115 apps.py:119
+#: apps.py:119 apps.py:123
 msgid "Has usable password?"
 msgstr "¿Tiene contraseña utilizable?"
 
-#: apps.py:134
+#: apps.py:138
 msgid "All the groups."
 msgstr "Todos los grupos."
 
-#: apps.py:138
+#: apps.py:142
 msgid "All the users."
 msgstr "Todos los usuarios."
+
+#: dashboard_widgets.py:16
+msgid "Total users"
+msgstr ""
+
+#: dashboard_widgets.py:32
+msgid "Total groups"
+msgstr ""
 
 #: events.py:12
 msgid "Group created"

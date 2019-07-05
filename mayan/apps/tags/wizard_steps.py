@@ -1,11 +1,10 @@
 from __future__ import unicode_literals
 
-from furl import furl
-
 from django.apps import apps
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.http import URL
 from mayan.apps.sources.wizards import WizardStep
 
 from .forms import TagMultipleSelectionForm
@@ -46,13 +45,9 @@ class WizardStepTags(WizardStep):
 
     @classmethod
     def step_post_upload_process(cls, document, querystring=None):
-        furl_instance = furl(querystring)
         Tag = apps.get_model(app_label='tags', model_name='Tag')
 
-        tag_id_list = furl_instance.args.get('tags', '')
-
-        if tag_id_list:
-            tag_id_list = tag_id_list.split(',')
+        tag_id_list = URL(query_string=querystring).args.getlist('tags')
 
         for tag in Tag.objects.filter(pk__in=tag_id_list):
             tag.documents.add(document)

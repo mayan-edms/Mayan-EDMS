@@ -1,7 +1,63 @@
-3.2.2 (2019-06-XX)
+3.2.5 (2019-07-XX)
+==================
+* Don't error out if the EXTRA_APPS or the DISABLED_APPS settings
+  are set to blank.
+* Update troubleshooting documentation topic.
+* Add data migration to the file metadata app. Synchronizes the
+  document type settings model of existing document types.
+* Fix cabinet and tags upload wizard steps missing some entries.
+  GitLab issue #632. Thanks to Matthias Urhahn (@d4rken) for the
+  report.
+
+3.2.4 (2019-06-29)
+==================
+* Support configurable GUnicorn timeouts. Defaults to
+  current value of 120 seconds.
+* Fix help text of the platformtemplate command.
+* Fix IMAP4 mailbox.store flags argument. Python's documentation
+  incorrectly state it is named flag_list. Closes GitLab issue
+  #606.
+* Improve the workflow preview generation. Use polylines
+  instead of splines. Add state actions to the preview.
+  Highlight the initial state.
+* Add help text to the workflow transition form comment field.
+* Fix direct deployment instructions.
+* Add user, group, and role dashboard widgets.
+* Add test mixin detect database connection leaks.
+* Remove tag create event registration from the tag
+  instances. The tag create event is not applicable to
+  existing tags.
+* Add proper redirection after moving a document to the
+  trash.
+* Remove the INSTALLED_APPS setting. Replace it with
+  the new COMMON_EXTRA_APPS and COMMON_DISABLED_APPS.
+* Improve email metadata support. Can now work on
+  email with nested parts. Also the metadata.yaml
+  attachment no longer needs to be the first attachment.
+
+3.2.3 (2019-06-21)
+==================
+* Add support for disabling the random primary key
+  test mixin.
+* Fix mailing profile log columns mappings.
+  GitLab issue #626. Thanks to Jesaja Everling (@jeverling)
+  for the report.
+* Fix the Django SMTP backend username field name.
+  GitLab issue #625. Thanks to Jesaja Everling (@jeverling)
+  for the report and the research.
+* Increase the Django STMP username.
+  GitLab issue #625. Thanks to Jesaja Everling (@jeverling)
+  for the report and the research.
+
+3.2.2 (2019-06-19)
 ==================
 * Fix document type change view. Closes GitLab issue #614
   Thanks to Christoph Roeder (@brightdroid) for the report.
+* Fix document parsing tool view typo. Closes GitLab issue #615.
+  Thanks to Tyler Page (@iamtpage) for the report.
+* Update the task_check_interval_source reference
+  GitLab issue #617. Thanks to Lukas Gill (@lukkigi) for
+  the report and debug information.
 
 3.2.1 (2019-06-14)
 ==================

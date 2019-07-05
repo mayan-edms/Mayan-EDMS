@@ -1,9 +1,8 @@
 from __future__ import unicode_literals
 
-from furl import furl
-
 from django.urls import reverse
 
+from mayan.apps.common.http import URL
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.documents.tests import (
@@ -35,7 +34,9 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         )
 
     def test_upload_interactive_with_unicode_metadata(self):
-        url = furl(reverse(viewname='sources:upload_interactive'))
+        url = URL(
+            path=reverse(viewname='sources:upload_interactive')
+        )
         url.args['metadata0_id'] = self.test_metadata_type.pk
         url.args['metadata0_value'] = TEST_METADATA_VALUE_UNICODE
 
@@ -46,7 +47,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         # Upload the test document
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_descriptor:
             response = self.post(
-                path=url, data={
+                path=url.to_string(), data={
                     'document-language': 'eng', 'source-file': file_descriptor,
                     'document_type_id': self.test_document_type.pk,
                 }
@@ -60,7 +61,9 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         )
 
     def test_upload_interactive_with_ampersand_metadata(self):
-        url = furl(reverse(viewname='sources:upload_interactive'))
+        url = URL(
+            path=reverse(viewname='sources:upload_interactive')
+        )
         url.args['metadata0_id'] = self.test_metadata_type.pk
         url.args['metadata0_value'] = TEST_METADATA_VALUE_WITH_AMPERSAND
 
@@ -70,7 +73,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         # Upload the test document
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_descriptor:
             response = self.post(
-                path=url, data={
+                path=url.to_string(), data={
                     'document-language': 'eng', 'source-file': file_descriptor,
                     'document_type_id': self.test_document_type.pk,
                 }

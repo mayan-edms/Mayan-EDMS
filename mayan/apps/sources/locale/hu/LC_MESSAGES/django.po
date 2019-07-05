@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:40-0400\n"
-"PO-Revision-Date: 2019-05-05 06:26+0000\n"
+"POT-Creation-Date: 2019-06-29 02:20-0400\n"
+"PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -197,7 +197,7 @@ msgstr ""
 msgid "POP3 email"
 msgstr ""
 
-#: literals.py:66 models/email_sources.py:220 models/email_sources.py:221
+#: literals.py:66 models/email_sources.py:226 models/email_sources.py:227
 msgid "IMAP email"
 msgstr ""
 
@@ -266,37 +266,36 @@ msgstr ""
 msgid "Log entries"
 msgstr ""
 
-#: models/email_sources.py:44
+#: models/email_sources.py:45
 msgid "Host"
 msgstr "Kiszolgáló"
 
-#: models/email_sources.py:45
+#: models/email_sources.py:46
 msgid "SSL"
 msgstr ""
 
-#: models/email_sources.py:47
+#: models/email_sources.py:48
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr ""
 
-#: models/email_sources.py:48
+#: models/email_sources.py:49
 msgid "Port"
 msgstr ""
 
-#: models/email_sources.py:50
+#: models/email_sources.py:51
 msgid "Username"
 msgstr ""
 
-#: models/email_sources.py:51
+#: models/email_sources.py:52
 msgid "Password"
 msgstr "Jelszó"
 
-#: models/email_sources.py:55
+#: models/email_sources.py:56
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
-"pairs to be assigned to the rest of the downloaded attachments. Note: This "
-"attachment has to be the first attachment."
+"pairs to be assigned to the rest of the downloaded attachments."
 msgstr ""
 
 #: models/email_sources.py:59
@@ -339,33 +338,33 @@ msgstr ""
 msgid "Email sources"
 msgstr ""
 
-#: models/email_sources.py:184
+#: models/email_sources.py:190
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
 
-#: models/email_sources.py:198
+#: models/email_sources.py:204
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
 
-#: models/email_sources.py:213
+#: models/email_sources.py:219
 msgid "IMAP Mailbox from which to check for messages."
 msgstr ""
 
-#: models/email_sources.py:214
+#: models/email_sources.py:220
 msgid "Mailbox"
 msgstr ""
 
-#: models/email_sources.py:265
+#: models/email_sources.py:272
 msgid "Timeout"
 msgstr "időtúllépés"
 
-#: models/email_sources.py:271 models/email_sources.py:272
+#: models/email_sources.py:278 models/email_sources.py:279
 msgid "POP email"
 msgstr ""
 

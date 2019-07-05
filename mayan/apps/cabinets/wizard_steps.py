@@ -1,11 +1,10 @@
 from __future__ import unicode_literals
 
-from furl import furl
-
 from django.apps import apps
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.http import URL
 from mayan.apps.sources.wizards import WizardStep
 
 from .forms import CabinetListForm
@@ -48,10 +47,10 @@ class WizardStepCabinets(WizardStep):
 
     @classmethod
     def step_post_upload_process(cls, document, querystring=None):
-        furl_instance = furl(querystring)
         Cabinet = apps.get_model(app_label='cabinets', model_name='Cabinet')
+        cabinet_id_list = URL(query_string=querystring).args.getlist('cabinets')
 
-        for cabinet in Cabinet.objects.filter(pk__in=furl_instance.args.getlist('cabinets')):
+        for cabinet in Cabinet.objects.filter(pk__in=cabinet_id_list):
             cabinet.documents.add(document)
 
 

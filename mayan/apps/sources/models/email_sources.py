@@ -16,6 +16,7 @@ from django.db import models
 from django.utils.encoding import force_bytes
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.documents.models import Document
 from mayan.apps.metadata.api import set_bulk_metadata
 from mayan.apps.metadata.models import MetadataType
 
@@ -54,8 +55,7 @@ class EmailBaseModel(IntervalBaseModel):
         help_text=_(
             'Name of the attachment that will contains the metadata type '
             'names and value pairs to be assigned to the rest of the '
-            'downloaded attachments. Note: This attachment has to be the '
-            'first attachment.'
+            'downloaded attachments.'
         ), max_length=128, verbose_name=_('Metadata attachment name')
     )
     subject_metadata_type = models.ForeignKey(
@@ -85,52 +85,61 @@ class EmailBaseModel(IntervalBaseModel):
         verbose_name_plural = _('Email sources')
 
     @staticmethod
-    def process_message(source, message_text, message_properties=None):
+    def process_message(source, message_text):
         from flanker import mime
 
-        counter = 1
-        message = mime.from_string(force_bytes(message_text))
         metadata_dictionary = {}
 
-        if not message_properties:
-            message_properties = {}
-
-        message_properties['Subject'] = message_properties.get(
-            'Subject', message.headers.get('Subject')
-        )
-
-        message_properties['From'] = message_properties.get(
-            'From', message.headers.get('From')
-        )
-
-        if source.subject_metadata_type:
-            metadata_dictionary[
-                source.subject_metadata_type.name
-            ] = message_properties.get('Subject')
+        message = mime.from_string(force_bytes(message_text))
 
         if source.from_metadata_type:
             metadata_dictionary[
                 source.from_metadata_type.name
-            ] = message_properties.get('From')
+            ] = message.headers.get('From')
+
+        if source.subject_metadata_type:
+            metadata_dictionary[
+                source.subject_metadata_type.name
+            ] = message.headers.get('Subject')
+
+        document_ids, parts_metadata_dictionary = EmailBaseModel._process_message(source=source, message=message)
+
+        metadata_dictionary.update(parts_metadata_dictionary)
+
+        if metadata_dictionary:
+            for document in Document.objects.filter(id__in=document_ids):
+                set_bulk_metadata(
+                    document=document,
+                    metadata_dictionary=metadata_dictionary
+                )
+
+    @staticmethod
+    def _process_message(source, message):
+        counter = 1
+        document_ids = []
+        metadata_dictionary = {}
 
         # Messages are tree based, do nested processing of message parts until
         # a message with no children is found, then work out way up.
         if message.parts:
             for part in message.parts:
-                EmailBaseModel.process_message(
-                    source=source, message_text=part.to_string(),
-                    message_properties=message_properties
+                part_document_ids, part_metadata_dictionary = EmailBaseModel._process_message(
+                    source=source, message=part,
                 )
+
+                document_ids.extend(part_document_ids)
+                metadata_dictionary.update(part_metadata_dictionary)
         else:
             # Treat inlines as attachments, both are extracted and saved as
             # documents
             if message.is_attachment() or message.is_inline():
-
                 # Reject zero length attachments
                 if len(message.body) == 0:
-                    return
+                    return document_ids, metadata_dictionary
 
                 label = message.detected_file_name or 'attachment-{}'.format(counter)
+                counter = counter + 1
+
                 with ContentFile(content=message.body, name=label) as file_object:
                     if label == source.metadata_attachment_name:
                         metadata_dictionary = yaml.load(
@@ -147,12 +156,10 @@ class EmailBaseModel(IntervalBaseModel):
                                 source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y
                             )
                         )
-                        if metadata_dictionary:
-                            for document in documents:
-                                set_bulk_metadata(
-                                    document=document,
-                                    metadata_dictionary=metadata_dictionary
-                                )
+
+                        for document in documents:
+                            document_ids.append(document.pk)
+
             else:
                 # If it is not an attachment then it should be a body message part.
                 # Another option is to use message.is_body()
@@ -168,12 +175,11 @@ class EmailBaseModel(IntervalBaseModel):
                             expand=SOURCE_UNCOMPRESS_CHOICE_N,
                             file_object=file_object
                         )
-                        if metadata_dictionary:
-                            for document in documents:
-                                set_bulk_metadata(
-                                    document=document,
-                                    metadata_dictionary=metadata_dictionary
-                                )
+
+                        for document in documents:
+                            document_ids.append(document.pk)
+
+        return document_ids, metadata_dictionary
 
     def clean(self):
         if self.subject_metadata_type:
@@ -247,10 +253,11 @@ class IMAPEmail(EmailBaseModel):
                 EmailBaseModel.process_message(
                     source=self, message_text=data[0][1]
                 )
+
                 if not test:
                     mailbox.store(
                         message_set=message_number, command='+FLAGS',
-                        flag_list='\\Deleted'
+                        flags=r'\Deleted'
                     )
 
         mailbox.expunge()
@@ -277,15 +284,15 @@ class POP3Email(EmailBaseModel):
         logger.debug('ssl: %s', self.ssl)
 
         if self.ssl:
-            mailbox = poplib.POP3_SSL(host=self.host, post=self.port)
+            mailbox = poplib.POP3_SSL(host=self.host, port=self.port)
         else:
             mailbox = poplib.POP3(
-                host=self.host, post=self.port, timeout=self.timeout
+                host=self.host, port=self.port, timeout=self.timeout
             )
 
         mailbox.getwelcome()
-        mailbox.user(username=self.username)
-        mailbox.pass_(password=self.password)
+        mailbox.user(self.username)
+        mailbox.pass_(self.password)
         messages_info = mailbox.list()
 
         logger.debug(msg='messages_info:')

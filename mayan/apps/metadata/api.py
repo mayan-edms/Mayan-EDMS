@@ -1,9 +1,8 @@
 from __future__ import unicode_literals
 
-from furl import furl
-
 from django.shortcuts import get_object_or_404
-from django.utils.encoding import force_bytes
+
+from mayan.apps.common.http import URL
 
 from .models import DocumentMetadata, MetadataType
 
@@ -19,7 +18,7 @@ def decode_metadata_from_querystring(querystring=None):
     metadata_list = []
     if querystring:
         # Match out of order metadata_type ids with metadata values from request
-        for key, value in furl(force_bytes(querystring)).args.items():
+        for key, value in URL(query_string=querystring).args.items():
             if 'metadata' in key:
                 index, element = key[8:].split('_')
                 metadata_dict[element][index] = value
@@ -27,10 +26,12 @@ def decode_metadata_from_querystring(querystring=None):
         # Convert the nested dictionary into a list of id+values dictionaries
         for order, identifier in metadata_dict['id'].items():
             if order in metadata_dict['value'].keys():
-                metadata_list.append({
-                    'id': identifier,
-                    'value': metadata_dict['value'][order]
-                })
+                metadata_list.append(
+                    {
+                        'id': identifier,
+                        'value': metadata_dict['value'][order]
+                    }
+                )
 
     return metadata_list
 
@@ -105,15 +106,14 @@ def metadata_repr_as_list(metadata_list):
 
 
 def set_bulk_metadata(document, metadata_dictionary):
-    document_type = document.document_type
-    document_type_metadata_types = [
-        document_type_metadata_type.metadata_type for document_type_metadata_type in document_type.metadata.all()
-    ]
+    document_type_metadata_types = document.document_type.metadata.values_list(
+        'metadata_type', flat=True
+    )
 
     for metadata_type_name, value in metadata_dictionary.items():
         metadata_type = MetadataType.objects.get(name=metadata_type_name)
 
-        if metadata_type in document_type_metadata_types:
+        if document_type_metadata_types.filter(metadata_type=metadata_type).exists():
             DocumentMetadata.objects.get_or_create(
                 document=document, metadata_type=metadata_type, value=value
             )

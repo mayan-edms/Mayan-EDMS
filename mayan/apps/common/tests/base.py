@@ -9,16 +9,18 @@ from mayan.apps.permissions.classes import Permission
 from mayan.apps.smart_settings.classes import Namespace
 
 from .mixins import (
-    ClientMethodsTestCaseMixin, ContentTypeCheckTestCaseMixin,
-    ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
-    RandomPrimaryKeyModelMonkeyPatchMixin, SilenceLoggerTestCaseMixin,
-    TempfileCheckTestCasekMixin, TestViewTestCaseMixin
+    ClientMethodsTestCaseMixin, ConnectionsCheckTestCaseMixin,
+    ContentTypeCheckTestCaseMixin, ModelTestCaseMixin,
+    OpenFileCheckTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin,
+    SilenceLoggerTestCaseMixin, TempfileCheckTestCasekMixin,
+    TestViewTestCaseMixin
 )
 
 
 class BaseTestCase(
-    SilenceLoggerTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin,
-    ACLTestCaseMixin, ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
+    SilenceLoggerTestCaseMixin, ConnectionsCheckTestCaseMixin,
+    RandomPrimaryKeyModelMonkeyPatchMixin, ACLTestCaseMixin,
+    ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
     TempfileCheckTestCasekMixin, TestCase
 ):
     """

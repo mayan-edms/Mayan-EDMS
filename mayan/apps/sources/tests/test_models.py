@@ -6,7 +6,13 @@ import shutil
 
 import mock
 from pathlib2 import Path
+import yaml
+try:
+    from yaml import CSafeDumper as SafeDumper
+except ImportError:
+    from yaml import SafeDumper
 
+from django.core import mail
 from django.utils.encoding import force_text
 
 from mayan.apps.documents.models import Document
@@ -20,8 +26,9 @@ from mayan.apps.metadata.models import MetadataType
 from mayan.apps.storage.utils import mkdtemp
 
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
-from ..models import POP3Email, WatchFolderSource, WebFormSource
-from ..models.email_sources import EmailBaseModel
+from ..models.email_sources import EmailBaseModel, IMAPEmail, POP3Email
+from ..models.watch_folder_sources import WatchFolderSource
+from ..models.webform_sources import WebFormSource
 
 from .literals import (
     TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_EMAIL_BASE64_FILENAME,
@@ -60,7 +67,7 @@ class CompressedUploadsTestCase(GenericDocumentTestCase):
         )
 
 
-class EmailFilenameDecodingTestCase(GenericDocumentTestCase):
+class EmailBaseTestCase(GenericDocumentTestCase):
     auto_upload_document = False
 
     def _create_email_source(self):
@@ -189,6 +196,121 @@ class EmailFilenameDecodingTestCase(GenericDocumentTestCase):
         # Only two attachments and a body document
         self.assertEqual(2, Document.objects.count())
 
+    def test_metadata_yaml_attachment(self):
+        TEST_METADATA_VALUE_1 = 'test value 1'
+        TEST_METADATA_VALUE_2 = 'test value 2'
+
+        test_metadata_type_1 = MetadataType.objects.create(
+            name='test_metadata_type_1'
+        )
+        test_metadata_type_2 = MetadataType.objects.create(
+            name='test_metadata_type_2'
+        )
+        self.test_document_type.metadata.create(
+            metadata_type=test_metadata_type_1
+        )
+        self.test_document_type.metadata.create(
+            metadata_type=test_metadata_type_2
+        )
+
+        test_metadata_yaml = yaml.dump(
+            Dumper=SafeDumper, data={
+                test_metadata_type_1.name: TEST_METADATA_VALUE_1,
+                test_metadata_type_2.name: TEST_METADATA_VALUE_2,
+            }
+        )
+
+        # Create email with a test attachment first, then the metadata.yaml
+        # attachment
+        with mail.get_connection(
+            backend='django.core.mail.backends.locmem.EmailBackend'
+        ) as connection:
+            email_message = mail.EmailMultiAlternatives(
+                body='test email body', connection=connection,
+                subject='test email subject', to=['test@example.com'],
+            )
+
+            email_message.attach(
+                filename='test_attachment',
+                content='test_content',
+            )
+
+            email_message.attach(
+                filename='metadata.yaml',
+                content=test_metadata_yaml,
+            )
+
+            email_message.send()
+
+        self._create_email_source()
+        self.source.store_body = True
+        self.source.save()
+
+        EmailBaseModel.process_message(
+            source=self.source, message_text=mail.outbox[0].message()
+        )
+
+        self.assertEqual(Document.objects.count(), 2)
+
+        for document in Document.objects.all():
+            self.assertEqual(
+                document.metadata.get(metadata_type=test_metadata_type_1).value,
+                TEST_METADATA_VALUE_1
+            )
+            self.assertEqual(
+                document.metadata.get(metadata_type=test_metadata_type_2).value,
+                TEST_METADATA_VALUE_2
+            )
+
+
+class IMAPSourceTestCase(GenericDocumentTestCase):
+    auto_upload_document = False
+
+    class MockIMAPServer(object):
+        def login(self, user, password):
+            return ('OK', ['{} authenticated (Success)'.format(user)])
+
+        def select(self, mailbox='INBOX', readonly=False):
+            return ('OK', ['1'])
+
+        def search(self, charset, *criteria):
+            return ('OK', ['1'])
+
+        def fetch(self, message_set, message_parts):
+            return (
+                'OK', [
+                    (
+                        '1 (RFC822 {4800}',
+                        TEST_EMAIL_BASE64_FILENAME
+                    ), ' FLAGS (\\Seen))'
+                ]
+            )
+
+        def store(self, message_set, command, flags):
+            return ('OK', ['1 (FLAGS (\\Seen \\Deleted))'])
+
+        def expunge(self):
+            return ('OK', ['1'])
+
+        def close(self):
+            return ('OK', ['Returned to authenticated state. (Success)'])
+
+        def logout(self):
+            return ('BYE', ['LOGOUT Requested'])
+
+    @mock.patch('imaplib.IMAP4_SSL', autospec=True)
+    def test_download_document(self, mock_imaplib):
+        mock_imaplib.return_value = IMAPSourceTestCase.MockIMAPServer()
+        self.source = IMAPEmail.objects.create(
+            document_type=self.test_document_type, label='', host='',
+            password='', username=''
+        )
+
+        self.source.check_source()
+        self.assertEqual(
+            Document.objects.first().label, 'Ampelm\xe4nnchen.txt'
+        )
+
 
 class POP3SourceTestCase(GenericDocumentTestCase):
     auto_upload_document = False
@@ -203,7 +325,10 @@ class POP3SourceTestCase(GenericDocumentTestCase):
         def list(self, which=None):
             return (None, ['1 test'])
 
-        def pass_(self, password):
+        def user(self, user):
+            return
+
+        def pass_(self, pswd):
             return
 
         def quit(self):
@@ -214,10 +339,7 @@ class POP3SourceTestCase(GenericDocumentTestCase):
                 1, [TEST_EMAIL_BASE64_FILENAME]
             )
 
-        def user(self, username):
-            return
-
-    @mock.patch('poplib.POP3_SSL')
+    @mock.patch('poplib.POP3_SSL', autospec=True)
     def test_download_document(self, mock_poplib):
         mock_poplib.return_value = POP3SourceTestCase.MockMailbox()
         self.source = POP3Email.objects.create(
