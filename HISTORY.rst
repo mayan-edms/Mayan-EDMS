@@ -1,3 +1,14 @@
+3.2.5 (2019-07-XX)
+==================
+* Don't error out if the EXTRA_APPS or the DISABLED_APPS settings
+  are set to blank.
+* Update troubleshooting documentation topic.
+* Add data migration to the file metadata app. Synchronizes the
+  document type settings model of existing document types.
+* Fix cabinet and tags upload wizard steps missing some entries.
+  GitLab issue #632. Thanks to Matthias Urhahn (@d4rken) for the
+  report.
+
 3.2.4 (2019-06-29)
 ==================
 * Support configurable GUnicorn timeouts. Defaults to

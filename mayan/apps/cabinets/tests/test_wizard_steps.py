@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from django.utils.encoding import force_text
-
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.documents.tests import (
@@ -41,9 +39,7 @@ class CabinetDocumentUploadTestCase(CabinetTestMixin, GenericDocumentViewTestCas
                 }, data={
                     'document_type_id': self.test_document_type.pk,
                     'source-file': file_object,
-                    'cabinets': ','.join(
-                        map(force_text, Cabinet.objects.values_list('pk', flat=True))
-                    )
+                    'cabinets': Cabinet.objects.values_list('pk', flat=True)
                 }
             )
 
