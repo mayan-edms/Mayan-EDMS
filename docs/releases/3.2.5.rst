@@ -1,4 +1,4 @@
-Version 3.2.4
+Version 3.2.5
 =============
 
 Released: July XX, 2019
@@ -94,6 +94,7 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
+- :gitlab-issue:`629` Cannot Upgrade to 3.2.X Docker Image
 - :gitlab-issue:`632` Tags get lost when uploading through the webui
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
