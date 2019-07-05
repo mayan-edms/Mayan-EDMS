@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -19,7 +19,7 @@ msgstr ""
 
 #: apps.py:39 events.py:8
 msgid "Document comments"
-msgstr ""
+msgstr "Comentários do documento"
 
 #: apps.py:84 apps.py:88 links.py:33 models.py:45 permissions.py:7
 msgid "Comments"
@@ -27,15 +27,15 @@ msgstr "Comentários"
 
 #: events.py:12
 msgid "Document comment created"
-msgstr ""
+msgstr "Comentário do documento criado"
 
 #: events.py:15
 msgid "Document comment deleted"
-msgstr ""
+msgstr "Comentário do documento removido"
 
 #: events.py:18
 msgid "Document comment edited"
-msgstr ""
+msgstr "Comentário do documento editado"
 
 #: links.py:18
 msgid "Add comment"
@@ -51,7 +51,7 @@ msgstr "Editar"
 
 #: models.py:28
 msgid "Document"
-msgstr ""
+msgstr "Documento"
 
 #: models.py:32 models.py:68
 msgid "User"
@@ -64,7 +64,7 @@ msgstr "Comentário"
 
 #: models.py:38
 msgid "Date time submitted"
-msgstr ""
+msgstr "Data da hora enviada"
 
 #: permissions.py:10
 msgid "Create new comments"
@@ -90,29 +90,31 @@ msgstr "Adicionar comentário ao documento: %s"
 #: views.py:70
 #, python-format
 msgid "Delete comment: %s?"
-msgstr ""
+msgstr "Remover comentário: %s?"
 
 #: views.py:92
 #, python-format
 msgid "Details for comment: %s?"
-msgstr ""
+msgstr "Detalhes comentário: %s?"
 
 #: views.py:110
 #, python-format
 msgid "Edit comment: %s?"
-msgstr ""
+msgstr "Editar comentário: %s?"
 
 #: views.py:135
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
 msgstr ""
+"Comentários de documentos são entradas de texto com data e hora dos utilizadores. "
+"Eles são ótimos para colaboração."
 
 #: views.py:138
 msgid "There are no comments"
-msgstr ""
+msgstr "Não há comentários"
 
 #: views.py:140
 #, python-format
 msgid "Comments for document: %s"
-msgstr ""
+msgstr "Comentários para documento: %s"

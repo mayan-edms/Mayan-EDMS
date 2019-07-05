@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2019
 # Emerson Soares <on.emersonsoares@gmail.com>, 2019
 # Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -25,7 +25,7 @@ msgstr ""
 
 #: apps.py:27 links.py:43 permissions.py:7
 msgid "Dependencies"
-msgstr ""
+msgstr "Dependências"
 
 #: apps.py:33 apps.py:68 apps.py:76
 msgid "Label"
@@ -33,7 +33,7 @@ msgstr "Nome"
 
 #: apps.py:36
 msgid "Internal name"
-msgstr ""
+msgstr "Nome interno"
 
 #: apps.py:39 apps.py:71 apps.py:80
 msgid "Description"
@@ -41,15 +41,15 @@ msgstr "Descrição"
 
 #: apps.py:43 classes.py:172
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: apps.py:47 classes.py:174
 msgid "Other data"
-msgstr ""
+msgstr "Outros dados"
 
 #: apps.py:51
 msgid "Declared by"
-msgstr ""
+msgstr "Declarado por"
 
 #: apps.py:55 classes.py:172
 msgid "Version"
@@ -57,41 +57,47 @@ msgstr "Versão"
 
 #: apps.py:59 classes.py:173 classes.py:809
 msgid "Environment"
-msgstr ""
+msgstr "Ambiente"
 
 #: apps.py:63 classes.py:174
 msgid "Check"
-msgstr ""
+msgstr "Verifica"
 
 #: classes.py:65
 msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing dependencies under this environment."
 msgstr ""
+"Ambiente usado para construir pacotes redistribuíveis do software. "
+"Utilizadores finais podem ignorar dependências ausentes neste ambiente."
 
 #: classes.py:68
 msgid "Build"
-msgstr ""
+msgstr "Build"
 
 #: classes.py:72
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Ambiente usado para desenvolvedores fazerem alterações de código. Utilizadores "
+"finais podem ignorar dependências ausentes neste ambiente."
 
 #: classes.py:74
 msgid "Development"
-msgstr ""
+msgstr "Desenvolvimento"
 
 #: classes.py:78
 msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
 msgstr ""
+"Ambiente normal para utilizadores finais. As dependências ausentes neste "
+"ambiente resultarão em problemas e erros durante o uso normal."
 
 #: classes.py:80
 msgid "Production"
-msgstr ""
+msgstr "Produção"
 
 #: classes.py:84
 msgid ""
@@ -99,10 +105,12 @@ msgid ""
 "code. Dependencies in this environment are not needed for normal production "
 "usage."
 msgstr ""
+"Ambiente usado para executar o teste para verificar a funcionalidade do "
+"código. Dependências neste ambiente não são necessárias para uso normal de produção."
 
 #: classes.py:87
 msgid "Testing"
-msgstr ""
+msgstr "Testes"
 
 #: classes.py:172
 msgid "Name"
@@ -110,37 +118,37 @@ msgstr "Nome"
 
 #: classes.py:173
 msgid "App"
-msgstr ""
+msgstr "App"
 
 #: classes.py:274
 msgid "Need to specify at least one: app_label or module."
-msgstr ""
+msgstr "Precisa especificar pelo menos um: app_label ou modulo."
 
 #: classes.py:279
 #, python-format
 msgid "Dependency \"%s\" already registered."
-msgstr ""
+msgstr "Dependência \"%s\" já registrada."
 
 #: classes.py:305
 #, python-format
 msgid "Installing package: %s... "
-msgstr ""
+msgstr "Instalando o pacote:%s ..."
 
 #: classes.py:310
 msgid "Already installed."
-msgstr ""
+msgstr "Já instalado."
 
 #: classes.py:313 classes.py:318 classes.py:322
 msgid "Complete."
-msgstr ""
+msgstr "Completo."
 
 #: classes.py:348
 msgid "Installed and correct version"
-msgstr ""
+msgstr "Versão instalada e correta"
 
 #: classes.py:350
 msgid "Missing or incorrect version"
-msgstr ""
+msgstr "Versão ausente ou incorreta"
 
 #: classes.py:379
 msgid "None"
@@ -148,41 +156,43 @@ msgstr "Nenhum"
 
 #: classes.py:388
 msgid "Not specified"
-msgstr ""
+msgstr "Não especificado"
 
 #: classes.py:405
 msgid "Patching files... "
-msgstr ""
+msgstr "Corrigindo ficheiros ..."
 
 #: classes.py:440
 msgid "Executables that are called directly by the code."
-msgstr ""
+msgstr "Executáveis que são chamados diretamente pelo código."
 
 #: classes.py:442
 msgid "Binary"
-msgstr ""
+msgstr "Binário"
 
 #: classes.py:459
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
 msgstr ""
+"Bibliotecas Javascript baixaram o registro do NPM e usaram para funcionalidade "
+"front-end."
 
 #: classes.py:462
-msgid "JavaScript"
-msgstr ""
+msgid "Javascript"
+msgstr "Javascript"
 
 #: classes.py:496 classes.py:729
 msgid "Downloading... "
-msgstr ""
+msgstr "Baixar..."
 
 #: classes.py:499
 msgid "Verifying... "
-msgstr ""
+msgstr "Verificando... "
 
 #: classes.py:502 classes.py:732
 msgid "Extracting... "
-msgstr ""
+msgstr "Extraindo ..."
 
 #: classes.py:681
 msgid "Python packages downloaded from PyPI."
@@ -190,37 +200,39 @@ msgstr ""
 
 #: classes.py:683
 msgid "Python"
-msgstr ""
+msgstr "Pacotes Python baixados do PyPI."
 
 #: classes.py:710
 msgid "Fonts downloaded from fonts.googleapis.com."
-msgstr ""
+msgstr "Fontes baixadas de fonts.googleapis.com."
 
 #: classes.py:712
 msgid "Google font"
-msgstr ""
+msgstr "Fontest Google"
 
 #: classes.py:791
 msgid "Declared in app"
-msgstr ""
+msgstr "Declarado no aplicativo"
 
 #: classes.py:792
-msgid "Show dependencies by the app that declared them."
-msgstr ""
+msgid "Show depedencies by the app that declared them."
+msgstr "Mostrar dependências pelo aplicativo que as declarou."
 
 #: classes.py:796
 msgid "Class"
-msgstr ""
+msgstr "Classe"
 
 #: classes.py:797
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
+"Mostre as diferentes classes de dependências. As classes são geralmente "
+"divididas por linguagem ou pelos tipos de arquivo da dependência."
 
 #: classes.py:802
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #: classes.py:803
 msgid ""
@@ -228,16 +240,21 @@ msgid ""
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
+"Mostrar os diferentes estados das dependências. True significa que as "
+"dependências estão instaladas e são de uma versão correta. False "
+"significa que as depedências estão faltando ou que uma versão incorreta está presente."
 
 #: classes.py:810
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
+"Dependências necessárias para um ambiente podem não ser necessárias para outro."
+"Exemplo de ambientes: produção, desenvolvimento."
 
 #: links.py:11 views.py:35
 msgid "Check for updates"
-msgstr ""
+msgstr "Verificar atualizações"
 
 #: links.py:17
 msgid "Groups"
@@ -245,7 +262,7 @@ msgstr "Grupos"
 
 #: links.py:25
 msgid "Entries"
-msgstr ""
+msgstr "Entradas"
 
 #: links.py:33
 msgid "Details"
@@ -253,68 +270,71 @@ msgstr "Detalhes"
 
 #: links.py:38
 msgid "Dependencies licenses"
-msgstr ""
+msgstr "Licenças de dependências"
 
 #: management/commands/generaterequirements.py:16
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
+"Separados por vírgula nomes de dependências para excluir da lista gerada."
 
 #: management/commands/generaterequirements.py:22
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
+"Nomes separados por vírgulas de dependências para mostrar na lista, "
+"excluindo todos os outros."
 
 #: management/commands/installjavascript.py:15
 msgid "Process a specific app."
-msgstr ""
+msgstr "Processar um aplicativo específico."
 
 #: management/commands/installjavascript.py:19
 msgid "Force installation even if already installed."
-msgstr ""
+msgstr "Forcar a instalação, mesmo se já estiver instalado."
 
 #: permissions.py:10
 msgid "View dependencies"
-msgstr ""
+msgstr "Ver dependências"
 
 #: views.py:23
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
+msgstr "A versão que você está usando está desatualizada. A última versão é %s"
 
 #: views.py:28
 msgid "It is not possible to determine the latest version available."
-msgstr ""
+msgstr "Não é possível determinar a versão mais recente disponível."
 
 #: views.py:32
 msgid "Your version is up-to-date."
-msgstr ""
+msgstr "Sua versão está atualizada."
 
 #: views.py:49
 #, python-format
 msgid "Entries for dependency group: %s"
-msgstr ""
+msgstr "Entradas para o grupo de dependência: %s"
 
 #: views.py:62 views.py:107
 #, python-format
 msgid "Group %s not found."
-msgstr ""
+msgstr "Grupo %s não encontrado"
 
 #: views.py:75
 msgid "Dependency groups"
-msgstr ""
+msgstr "Grupos de dependência"
 
 #: views.py:95
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
-msgstr ""
+msgstr "Grupo de Dependência e Entrada: %(group)s, %(entry)s"
 
 #: views.py:119
 #, python-format
 msgid "Entry %s not found."
-msgstr ""
+msgstr "Entrada %s não encontrada"
 
 #: views.py:137
 msgid "Other packages licenses"
-msgstr ""
+msgstr "Outras licenças de pacotes"

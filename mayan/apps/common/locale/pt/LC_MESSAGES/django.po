@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Roberto Rosario, 2012
@@ -22,31 +22,31 @@ msgstr ""
 
 #: apps.py:89 permissions_runtime.py:7 settings.py:14
 msgid "Common"
-msgstr ""
+msgstr "Comum"
 
 #: classes.py:126
 msgid "Available attributes: \n"
-msgstr ""
+msgstr "Atributos disponíveis: \n"
 
 #: classes.py:166
 msgid "Available fields: \n"
-msgstr ""
+msgstr "Campos disponíveis: \n"
 
 #: dependencies.py:396
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Usado para permitir a tradução off-line das sequências de texto do código."
 
 #: dependencies.py:401
 msgid "Provides style checking."
-msgstr ""
+msgstr "Fornece verificação de estilo."
 
 #: dependencies.py:406
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Ambiente de linha de comando com autocompletar."
 
 #: dependencies.py:411
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Verifica a formatação adequada do arquivo README."
 
 #: forms.py:27
 msgid "Selection"
@@ -62,6 +62,9 @@ msgid ""
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
+"Selecione as entradas a serem removidas. Mantenha a tecla \"ctrl\" para selecionar várias "
+"entradas. Quando a seleção estiver completa, clique no botão abaixo ou clique duas "
+"vezes na lista para efectuar a ação"
 
 #: generics.py:154
 msgid ""
@@ -69,10 +72,13 @@ msgid ""
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
+"Selecione as entradas a serem acrescentadas. Mantenha a tecla \"ctrl\" para selecionar várias "
+"entradas. Quando a seleção estiver completa, clique no botão abaixo ou clique duas "
+"vezes na lista para efectuar a ação"
 
 #: generics.py:287
 msgid "Add all"
-msgstr ""
+msgstr "Adicionar todos"
 
 #: generics.py:296
 msgid "Add"
@@ -80,7 +86,7 @@ msgstr "Adicionar"
 
 #: generics.py:306
 msgid "Remove all"
-msgstr ""
+msgstr "Remover todos"
 
 #: generics.py:315
 msgid "Remove"
@@ -89,65 +95,65 @@ msgstr "Remover"
 #: generics.py:521
 #, python-format
 msgid "Duplicate data error: %(error)s"
-msgstr ""
+msgstr "Erro, dados duplicados: %(error)s"
 
 #: generics.py:543
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr ""
+msgstr "%(object)s não criado, erro: %(error)s"
 
 #: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
-msgstr ""
+msgstr "%(object)s criado com sucesso."
 
 #: generics.py:595
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr ""
+msgstr "%(object)s não removido, erro: %(error)s"
 
 #: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr ""
+msgstr "%(object)s removido com sucesso."
 
 #: generics.py:697
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr ""
+msgstr "%(object)s não actualizado, erro: %(error)s"
 
 #: generics.py:708
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr ""
+msgstr "%(object)s actualizado com sucesso."
 
 #: links.py:36
 msgid "About this"
-msgstr ""
+msgstr "Sobre isto"
 
 #: links.py:40
 msgid "Locale profile"
-msgstr ""
+msgstr "Perfil do local"
 
 #: links.py:45
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Editar perfil do local"
 
 #: links.py:50
 msgid "Documentation"
-msgstr ""
+msgstr "Documentação"
 
 #: links.py:54 links.py:65
 msgid "Errors"
-msgstr ""
+msgstr "Erros"
 
 #: links.py:59
 msgid "Clear all"
-msgstr ""
+msgstr "Limpar todos"
 
 #: links.py:69
 msgid "Forum"
-msgstr ""
+msgstr "Fórum"
 
 #: links.py:73 views.py:109
 msgid "License"
@@ -159,11 +165,11 @@ msgstr "Configuração"
 
 #: links.py:79
 msgid "Source code"
-msgstr ""
+msgstr "Código fonte"
 
 #: links.py:83
 msgid "Support"
-msgstr ""
+msgstr "Suporte"
 
 #: links.py:87 queues.py:15 views.py:210
 msgid "Tools"
@@ -173,55 +179,64 @@ msgstr "Ferramentas"
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr ""
+"Este será descontinuado e será removido em uma versão futura."
 
 #: literals.py:16
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr ""
+"Seu back-end de banco de dados está configurado para usar o SQLite. O SQLite "
+"só deve ser usado para desenvolvimento e teste, não para produção"
 
 #: literals.py:34
 msgid "Days"
-msgstr ""
+msgstr "Dias"
 
 #: literals.py:35
 msgid "Hours"
-msgstr ""
+msgstr "Horas"
 
 #: literals.py:36
 msgid "Minutes"
-msgstr ""
+msgstr "Minutos"
 
 #: management/commands/convertdb.py:40
 msgid ""
 "Restricts dumped data to the specified app_label or app_label.ModelName."
 msgstr ""
+"Restringe os dados despejados (dump) ao app_label especificado ou ao app_label.ModelName."
 
 #: management/commands/convertdb.py:47
 msgid ""
 "The database from which data will be exported. If omitted the database named"
 " \"default\" will be used."
 msgstr ""
+"A base de dados do qual os dados serão exportados. Se omitido o nome da base de dados "
+"\"default\" será usado"
 
 #: management/commands/convertdb.py:54
 msgid ""
 "The database to which data will be imported. If omitted the database named "
 "\"default\" will be used."
 msgstr ""
+"A base de dados do qual os dados serão importados. Se omitido o nome da base de dados "
+"\"default\" será usado"
 
 #: management/commands/convertdb.py:61
 msgid ""
 "Force the conversion of the database even if the receiving database is not "
 "empty."
 msgstr ""
+"Forçar a conversão da base de dados mesmo se a base de dados que recebe não estiver vazia"
 
 #: menus.py:10
 msgid "System"
-msgstr ""
+msgstr "Sistema"
 
 #: menus.py:12 menus.py:13
 msgid "Facet"
-msgstr ""
+msgstr "Faceta"
 
 #: menus.py:16
 msgid "Actions"
@@ -229,7 +244,7 @@ msgstr "Ações"
 
 #: menus.py:17
 msgid "Secondary"
-msgstr ""
+msgstr "Secondario"
 
 #: menus.py:21 models.py:93
 msgid "User"
@@ -246,23 +261,23 @@ msgstr "Objeto"
 
 #: models.py:28
 msgid "Namespace"
-msgstr ""
+msgstr "Namespace"
 
 #: models.py:39 models.py:63
 msgid "Date time"
-msgstr ""
+msgstr "Data e tempo"
 
 #: models.py:41 views.py:155
 msgid "Result"
-msgstr ""
+msgstr "Resultado"
 
 #: models.py:47
 msgid "Error log entry"
-msgstr ""
+msgstr "Error log entry"
 
 #: models.py:48
 msgid "Error log entries"
-msgstr ""
+msgstr "Erros (log) registados"
 
 #: models.py:59
 msgid "File"
@@ -274,31 +289,31 @@ msgstr "Nome do ficheiro"
 
 #: models.py:67
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Ficheiro enviado partilhado"
 
 #: models.py:68
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Ficheiro enviado partilhado"
 
 #: models.py:97
 msgid "Timezone"
-msgstr ""
+msgstr "Fuso horário"
 
 #: models.py:100
 msgid "Language"
-msgstr ""
+msgstr "Língua"
 
 #: models.py:106
 msgid "User locale profile"
-msgstr ""
+msgstr "Perfil de localidade do utilizador"
 
 #: models.py:107
 msgid "User locale profiles"
-msgstr ""
+msgstr "Perfis de localidade de utilizadores"
 
 #: permissions_runtime.py:10
 msgid "View error log"
-msgstr ""
+msgstr "Ver erros (log) registados"
 
 #: queues.py:13
 msgid "Default"
@@ -306,21 +321,23 @@ msgstr "Padrão"
 
 #: queues.py:17
 msgid "Common periodic"
-msgstr ""
+msgstr "Periódico comum"
 
 #: queues.py:22
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Excluir uploads antigos"
 
 #: settings.py:19
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Ativar automaticamente o registro de error para todos os aplicativos"
 
 #: settings.py:25
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr ""
+"Tempo para atrasar as tarefas em segundo plano que dependem de uma submissão "
+"para a base de dados para propagar."
 
 #: settings.py:33
 msgid ""
@@ -343,34 +360,36 @@ msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr ""
+"Nome da vista anexada à ligação da marca no menu principal. Essa também é a "
+"vista para a qual os utilizadores serão redirecionados após o entrar."
 
 #: settings.py:61
 msgid "The number objects that will be displayed per page."
-msgstr ""
+msgstr "Especificar número de objectos que são mostrados por página"
 
 #: settings.py:68
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
+msgstr "Ativar o registo (log) de erros fora dos recursos de registo de erros do sistema"
 
 #: settings.py:75
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Caminho para o arquivo de registo (log) que rastreará erros durante a produção"
 
 #: settings.py:82
 msgid "Name to be displayed in the main menu."
-msgstr ""
+msgstr "Nome a ser exibido no menu principal"
 
 #: settings.py:88
 msgid "URL of the installation or homepage of the project."
-msgstr ""
+msgstr "URL da instalação ou homepage do projeto"
 
 #: settings.py:94
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr "Um back-end de armazenamento que todos os subprocessos podem usar para partilhar filcheiros"
 
 #: settings.py:103
 msgid "Django"
-msgstr ""
+msgstr "Django"
 
 #: settings.py:108
 msgid ""
@@ -386,6 +405,16 @@ msgid ""
 "validation of the Host header (perhaps in a middleware; if so this "
 "middleware must be listed first in MIDDLEWARE)."
 msgstr ""
+"Uma lista de strings representando os nomes de host / domínio que este site pode servir. "
+"Essa é uma medida de segurança para impedir ataques de cabeçalho de Host HTTP, que são "
+"possíveis mesmo em muitas configurações de servidor da Web aparentemente seguras. Os "
+"valores nessa lista podem ser totalmente qualificados nomes (por exemplo, www.example.com '),"
+" caso em que eles serão correspondidos exatamente com o cabeçalho do host da solicitação "
+"(sem distinção entre maiúsculas e minúsculas, não incluindo porta). Um valor que começa com "
+"um ponto pode ser usado como um curinga de subdomínio:'. example.com corresponderá a example.com, "
+"a www.example.com ea qualquer outro subdomínio de example.com. Um valor de '*' corresponderá a "
+"qualquer coisa. Nesse caso, você é responsável por fornecer sua própria validação do cabeçalho "
+"do Host. (talvez em um middleware; se assim for, este middleware deve ser listado primeiro no MIDDLEWARE)."
 
 #: settings.py:126
 msgid ""
@@ -396,12 +425,19 @@ msgid ""
 "used if CommonMiddleware is installed (see Middleware). See also "
 "PREPEND_WWW."
 msgstr ""
+"Quando definido como True, se o URL de solicitação não corresponder a nenhum dos padrões no URLconf e não "
+"terminar em uma barra, um redirecionamento HTTP será emitido para o mesmo URL com uma barra anexada. Observe "
+"que o redirecionamento pode causar quaisquer dados enviados em uma solicitação POST serão perdidos. A "
+"configuração APPEND_SLASH será usada somente se o CommonMiddleware estiver instalado (consulte Middleware). "
+"Consulte também PREPEND_WWW. "
 
 #: settings.py:139
 msgid ""
 "The list of validators that are used to check the strength of user's "
 "passwords."
 msgstr ""
+"A lista de validadores que são usados para verificar a segurança das "
+"senhas do Utilizadores."
 
 #: settings.py:146
 msgid ""
@@ -411,6 +447,10 @@ msgid ""
 "setting must configure a default database; any number of additional "
 "databases may also be specified."
 msgstr ""
+"Um dicionário contendo as configurações para todas as base de dados a serem usados com o Django. "
+"É um dicionário cujo conteúdo mapeia um alias de banco de dados para um dicionário contendo as "
+"opções para um banco de dados individual. A configuração DATABASES deve configurar uma base de "
+"dados padrão; base de dados também podem ser especificados."
 
 #: settings.py:158
 msgid ""
@@ -426,6 +466,16 @@ msgid ""
 "typically perform deep request inspection, it's not possible to perform a "
 "similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
 msgstr ""
+"Padrão: 2621440 (ou seja, 2,5 MB). O tamanho máximo em bytes que um corpo de solicitação "
+"pode ser antes de um SuspiciousOperation (RequestDataTooBig) ser gerado. A verificação é "
+"feita ao aceder request.body ou request.POST e é calculada em relação ao total solicitado "
+"tamanho que exclui dados de upload de arquivo. Você pode definir isso como Nenhum para desabilitar "
+"a verificação. Os aplicativos que devem receber mensagens de formulário incomumente grandes devem "
+"ajustar essa configuração. A quantidade de dados de solicitação é correlacionada à quantidade de "
+"memória necessária para processar a solicitação. e preencher os dicionários GET e POST.Grandes pedidos "
+"podem ser usados como um vetor de ataque de negação de serviço se não forem verificados.Como os servidores "
+"da Web normalmente não executam a inspeção profunda de solicitações, não é possível executar uma "
+"verificação semelhante nesse nível. Veja também FILE_UPLOAD_MAX_MEMORY_SIZE. "
 
 #: settings.py:178
 msgid ""
@@ -433,6 +483,9 @@ msgid ""
 "automated correspondence from the site manager(s). This doesn't include "
 "error messages sent to ADMINS and MANAGERS; for that, see SERVER_EMAIL."
 msgstr ""
+"Padrão: 'webmaster @ localhost' Endereço de email padrão a ser usado para "
+"várias correspondências automatizadas do(s) administradore(s) do site. Isso "
+"não inclui mensagens de erro enviadas a ADMINS e MANAGERS; para isso, consulte SERVER_EMAIL."
 
 #: settings.py:188
 msgid ""
@@ -441,16 +494,22 @@ msgid ""
 "systemwide. Use this for bad robots/crawlers. This is only used if "
 "CommonMiddleware is installed (see Middleware)."
 msgstr ""
+"Padrão: [] (Empty list). Lista de objetos de expressões regulares compiladas "
+"representando strings User-Agent que não têm permissão para visitar qualquer "
+"página, em todo o sistema. Use isto para robôs / crawlers ruins. Isso é usado "
+"somente se o CommonMiddleware estiver instalado Middleware)."
 
 #: settings.py:199
 msgid ""
 "Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
 "for sending emails."
 msgstr ""
+"Padrão: 'django.core.mail.backends.smtp.EmailBackend'. O backend a ser "
+"usado para enviar e-mails."
 
 #: settings.py:207
 msgid "Default: 'localhost'. The host to use for sending email."
-msgstr ""
+msgstr "Padrão: 'localhost'. O host a ser usado para enviar email."
 
 #: settings.py:214
 msgid ""
@@ -459,22 +518,30 @@ msgid ""
 "authenticating to the SMTP server. If either of these settings is empty, "
 "Django won't attempt authentication."
 msgstr ""
+"Padrão: '' (vazio). Senha a ser usada para o servidor SMTP definido em "
+"EMAIL_HOST. Essa configuração é usada em conjunto com EMAIL_HOST_USER "
+"ao autenticar no servidor SMTP. Se qualquer uma dessas configurações "
+"estiver vazia, o Django não tentará autenticação "
 
 #: settings.py:225
 msgid ""
 "Default: '' (Empty string). Username to use for the SMTP server defined in "
 "EMAIL_HOST. If empty, Django won't attempt authentication."
 msgstr ""
+"Padrão: '' (vazio). Nome de utilizador para usar no servidor SMTP definido "
+"em EMAIL_HOST. Se vazio, o Django não tentará autenticação."
 
 #: settings.py:234
 msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
-msgstr ""
+msgstr "Padrão: 25. Porta a ser usada para o servidor SMTP definido em EMAIL_HOST."
 
 #: settings.py:241
 msgid ""
 "Default: None. Specifies a timeout in seconds for blocking operations like "
 "the connection attempt."
 msgstr ""
+"Padrão: None. Especifica um tempo limite em segundos para operações de "
+"bloqueio, como a tentativa de conexão."
 
 #: settings.py:249
 msgid ""
@@ -483,6 +550,10 @@ msgid ""
 "587. If you are experiencing hanging connections, see the implicit TLS "
 "setting EMAIL_USE_SSL."
 msgstr ""
+"Padrão: False. Se usar uma conexão TLS (segura) ao falar com o servidor SMTP. "
+"Isso é usado para conexões TLS explícitas, geralmente na porta 587. Se você "
+"estiver com conexões interrompidas, consulte a configuração implícita de "
+"TLS EMAIL_USE_SSL."
 
 #: settings.py:259
 msgid ""
@@ -493,6 +564,12 @@ msgid ""
 "that EMAIL_USE_TLS/EMAIL_USE_SSL are mutually exclusive, so only set one of "
 "those settings to True."
 msgstr ""
+"Padrão: False. Se usar uma conexão TLS (segura) implícita ao falar com o servidor "
+"SMTP. Na maioria das documentações de email, esse tipo de conexão TLS é chamado "
+"de SSL. Geralmente, é usado na porta 465. Se você estiver tendo problemas, "
+"consulte a configuração TLS explícita EMAIL_USE_TLS. Observe que EMAIL_USE_TLS "
+"/ EMAIL_USE_SSL são mutuamente exclusivos, portanto, defina apenas uma dessas "
+"configurações como True."
 
 #: settings.py:271
 msgid ""
@@ -500,6 +577,9 @@ msgid ""
 "will be before it gets streamed to the file system. See Managing files for "
 "details. See also DATA_UPLOAD_MAX_MEMORY_SIZE."
 msgstr ""
+"Padrão: 2621440 (ou seja, 2,5 MB). O tamanho máximo (em bytes) que um upload "
+"será antes de ser transmitido para o sistema de ficheiros. Consulte gestão "
+"ficheiros para obter detalhes. Consulte também DATA_UPLOAD_MAX_MEMORY_SIZE."
 
 #: settings.py:281
 msgid ""
@@ -509,6 +589,12 @@ msgid ""
 "duplication since you don't have to define the URL in two places (settings "
 "and URLconf)."
 msgstr ""
+"Padrão: '/accounts/login/' A URL onde as solicitações são redirecionadas "
+"para entrar, especialmente quando se usa o decorador login_required(). Essa "
+"configuração também aceita padrões de URL nomeados que podem ser usados para "
+"reduzir a duplicação de configuração, já que você não precisa defenir o URL "
+"em dois lugares (settings e URLconf). "
+
 
 #: settings.py:293
 msgid ""
@@ -518,6 +604,12 @@ msgid ""
 "named URL patterns which can be used to reduce configuration duplication "
 "since you don't have to define the URL in two places (settings and URLconf)."
 msgstr ""
+"Padrão: '/accounts/profile/' A URL onde as solicitações são redirecionadas "
+"após o login quando a visualização contrib.auth.login não recebe o próximo "
+"parâmetro. Isso é usado pelo decorador login_required(), por exemplo. Essa "
+"configuração também aceita URLs nomeadas padrões que podem ser usados para "
+"reduzir a duplicação de configuração, já que você não precisa definir o URL "
+"em dois lugares (settings e URLconf). "
 
 #: settings.py:305
 msgid ""
@@ -528,6 +620,12 @@ msgid ""
 "configuration duplication since you don't have to define the URL in two "
 "places (settings and URLconf)."
 msgstr ""
+"Padrão: None. A URL em que as solicitações são redirecionadas depois que um utilizador "
+"termina sessao usando LogoutView (se a exibição não obtiver um argumento next_page). Se "
+"None, nenhum redirecionamento será executado e a exibição de logout será renderizada. "
+"Essa configuração também aceita padrões de URL nomeados que podem ser usados para reduzir "
+"a duplicação de configuração, já que você não precisa definir o URL em dois lugares "
+"(configurações e URLconf). "
 
 #: settings.py:318
 msgid ""
@@ -536,6 +634,10 @@ msgid ""
 "admindocs bookmarklets even if not logged in as a staff user. Are marked as "
 "\"internal\" (as opposed to \"EXTERNAL\") in AdminEmailHandler emails."
 msgstr ""
+"Uma lista de endereços IP, como strings, que: Permitem que o processador de contexto "
+"debug() adicione algumas variáveis ao contexto do modelo. Pode usar os bookmarklets "
+"admindocs mesmo se não estiver logado como utilizador da equipa. São marcados como "
+"\"internal\"(ao contrário de \"EXTERNAL\") em emails AdminEmailHandler."
 
 #: settings.py:329
 msgid ""
@@ -545,6 +647,11 @@ msgid ""
 "the default value should suffice. Only set this setting if you want to "
 "restrict language selection to a subset of the Django-provided languages. "
 msgstr ""
+"Uma lista de todos os idiomas disponíveis. A lista é uma lista de duas tuplas no "
+"formato (código do idioma, nome do idioma), por exemplo, ('ja', 'Japonês'). "
+"Isso especifica quais idiomas estão disponíveis para seleção de idioma. Geralmente, "
+"o valor padrão deve ser suficiente. Somente defina essa configuração se você quiser "
+"restringir a seleção de idioma para um subconjunto dos idiomas fornecidos pelo Django."
 
 #: settings.py:342
 msgid ""
@@ -557,6 +664,14 @@ msgid ""
 "provides the fallback translation when a translation for a given literal "
 "doesn't exist for the user's preferred language."
 msgstr ""
+"Uma string que representa o código de idioma para esta instalação. Deve estar "
+"no formato de ID de idioma padrão. Por exemplo, o inglês dos EUA é \"en-us\". Ele "
+"serve a duas finalidades: Se o middleware de localidade não estiver em uso, ele "
+"decide qual tradução é veiculada para todos os usuários. Se o middleware de localidade "
+"estiver ativo, ele fornecerá um idioma de fallback caso o idioma preferencial do usuário "
+"não possa ser determinado ou não seja suportado pelo site. Ele também fornece a tradução "
+"de fallback quando uma tradução para um determinado literal não existe para o idioma "
+"preferido do usuário. "
 
 #: settings.py:357
 msgid ""
@@ -565,6 +680,10 @@ msgid ""
 "used as the base path for asset definitions (the Media class) and the "
 "staticfiles app. It must end in a slash if set to a non-empty value."
 msgstr ""
+"URL a ser usado ao se referir a arquivos estáticos localizados em STATIC_ROOT. "
+"Exemplo: \"/static/\" ou \"http://static.example.com/\"Se não for None, ele será "
+"usado como o caminho base para definições de ativos (a classe Media) e o aplicativo "
+"staticfiles. Ele deve terminar em uma barra se configurado para um valor não vazio. "
 
 #: settings.py:368
 msgid ""
@@ -573,6 +692,11 @@ msgid ""
 "backend defined in this setting can be found at "
 "django.contrib.staticfiles.storage.staticfiles_storage."
 msgstr ""
+"O mecanismo de armazenamento de arquivos a ser usado ao coletar arquivos "
+"estáticos com o comando de gerenciamento collectstatic. Uma instância "
+"pronta para uso do back-end de armazenamento definido nessa configuração "
+"pode ser encontrada em "
+"django.contrib.staticfiles.storage.staticfiles_storage."
 
 #: settings.py:378
 msgid ""
@@ -580,6 +704,10 @@ msgid ""
 "isn't necessarily the time zone of the server. For example, one server may "
 "serve multiple Django-powered sites, each with a separate time zone setting."
 msgstr ""
+"Uma string representando o fuso horário para esta instalação. Note que este "
+"não é necessariamente o fuso horário do servidor. Por exemplo, um servidor "
+"pode servir vários sites com Django, cada um com uma configuração separada de "
+"fuso horário."
 
 #: settings.py:388
 msgid ""
@@ -588,10 +716,14 @@ msgid ""
 "command will create a simple wsgi.py file with an application callable in "
 "it, and point this setting to that application."
 msgstr ""
+"O caminho Python completo do objeto de aplicativo WSGI que os servidores "
+"integrados do Django (por exemplo, runserver) usarão. O comando django-admin "
+"startproject management criará um arquivo wsgi.py simples com um aplicativo "
+"que pode ser chamado nele e apontará essa configuração para essa aplicação. "
 
 #: settings.py:396
 msgid "Celery"
-msgstr ""
+msgstr "Celery"
 
 #: settings.py:401
 msgid ""
@@ -600,6 +732,10 @@ msgid ""
 " (transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
 msgstr ""
+"Padrão: \"amqp://\" URL padrão do broker. Esta deve ser uma URL na forma de: "
+"transport://userid:senha@hostname:port/virtual_host Somente a parte do esquema "
+"(transport://) é obrigatório, o restante é opcional e é padronizado para os "
+"valores padrão de transportes específicos. "
 
 #: settings.py:411
 msgid ""
@@ -608,6 +744,10 @@ msgid ""
 "http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
 "backend"
 msgstr ""
+"Padrão: nenhum back-end de resultado ativado por padrão. O back-end usado para "
+"armazenar os resultados da tarefa (lápides). Consulte"
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
 
 #: templatetags/common_tags.py:31
 msgid "Confirm delete"
@@ -616,7 +756,7 @@ msgstr "Confirmar eliminação"
 #: templatetags/common_tags.py:36
 #, python-format
 msgid "Edit %s"
-msgstr ""
+msgstr "Editar %s"
 
 #: templatetags/common_tags.py:39
 msgid "Confirm"
@@ -625,12 +765,12 @@ msgstr "Confirmar"
 #: templatetags/common_tags.py:43
 #, python-format
 msgid "Details for: %s"
-msgstr ""
+msgstr "Detalhes para: %s"
 
 #: templatetags/common_tags.py:47
 #, python-format
 msgid "Edit: %s"
-msgstr ""
+msgstr "Editar: %s"
 
 #: templatetags/common_tags.py:50
 msgid "Create"
@@ -641,50 +781,54 @@ msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
 msgstr ""
+"Digite um 'nome interno' válido, composto de letras, números e "
+"sublinhados '_'."
 
 #: views.py:31
 msgid "About"
-msgstr ""
+msgstr "Sobre"
 
 #: views.py:44
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "Detalhes do perfil de localidade do utilizador atual"
 
 #: views.py:50
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "Editar detalhes do perfil de localidade do utilizador atual"
 
 #: views.py:100
 msgid "Dashboard"
-msgstr ""
+msgstr "Painel de controle"
 
 #: views.py:118
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Limpar entradas do registo (log) de erros para:% s"
 
 #: views.py:135
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "Registo (log) de erro do objeto limpo com sucesso"
 
 #: views.py:154
 msgid "Date and time"
-msgstr ""
+msgstr "Data e tempo"
 
 #: views.py:159
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Registo (log) erros para: %s"
 
 #: views.py:187
 msgid "No setup options available."
-msgstr ""
+msgstr "Nenhuma opção de configuração disponível"
 
 #: views.py:189
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr ""
+"Nenhum resultado aqui significa que não tenha as permissões necessárias para "
+"realizar tarefas administrativas."
 
 #: views.py:195
 msgid "Setup items"
@@ -692,11 +836,11 @@ msgstr "Itens de configuração"
 
 #: views.py:197
 msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgstr "Aqui você pode configurar todos os aspectos do sistema."
 
 #: views.py:212
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "Esses módulos são usados para fazer a manutenção do sistema."
 
 #: views.py:240
 msgid "No action selected."

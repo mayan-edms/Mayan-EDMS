@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Vítor Figueiró <vfigueiro@gmail.com>, 2012
 msgid ""
@@ -32,7 +32,7 @@ msgstr "ID da chave"
 
 #: apps.py:101 forms.py:64 models.py:50
 msgid "Signature ID"
-msgstr ""
+msgstr "ID de assinatura"
 
 #: apps.py:102 forms.py:76
 msgid "None"
@@ -40,73 +40,73 @@ msgstr "Nenhum"
 
 #: apps.py:105
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: forms.py:19 forms.py:33
 msgid "Key"
-msgstr ""
+msgstr "Chave"
 
 #: forms.py:24
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
-msgstr ""
+msgstr "A frase secreta para desbloquear a chave e permitir que ela seja usada para assinar a versão do documento."
 
 #: forms.py:26
 msgid "Passphrase"
-msgstr ""
+msgstr "Frase secreta"
 
 #: forms.py:35
 msgid "Private key that will be used to sign this document version."
-msgstr ""
+msgstr "Chave privada que será usada para assinar esta versão do documento."
 
 #: forms.py:46
 msgid "Signature is embedded?"
-msgstr ""
+msgstr "Assinatura é incorporada?"
 
 #: forms.py:48
 msgid "Signature date"
-msgstr ""
+msgstr "Data de assinatura"
 
 #: forms.py:51
 msgid "Signature key ID"
-msgstr ""
+msgstr "ID da chave de assinatura"
 
 #: forms.py:53
 msgid "Signature key present?"
-msgstr ""
+msgstr "Chave de assinatura presente?"
 
 #: forms.py:66
 msgid "Key fingerprint"
-msgstr ""
+msgstr "Impressão digital chave"
 
 #: forms.py:70
 msgid "Key creation date"
-msgstr ""
+msgstr "Data de criação da chave"
 
 #: forms.py:75
 msgid "Key expiration date"
-msgstr ""
+msgstr "Data de expiração da chave"
 
 #: forms.py:80
 msgid "Key length"
-msgstr ""
+msgstr "Comprimento da chave"
 
 #: forms.py:84
 msgid "Key algorithm"
-msgstr ""
+msgstr "Algoritmo chave"
 
 #: forms.py:88
 msgid "Key user ID"
-msgstr ""
+msgstr "Chave do utilizador ID"
 
 #: forms.py:92
 msgid "Key type"
-msgstr ""
+msgstr "Tipo chave"
 
 #: links.py:32
 msgid "Verify all documents"
-msgstr ""
+msgstr "Verificar todos os documentos"
 
 #: links.py:39 links.py:58 queues.py:9
 msgid "Signatures"
@@ -126,51 +126,51 @@ msgstr "Descarregar"
 
 #: links.py:69
 msgid "Upload signature"
-msgstr ""
+msgstr "Carregar assinatura"
 
 #: links.py:76
 msgid "Sign detached"
-msgstr ""
+msgstr "Assinatura Separada"
 
 #: links.py:83
 msgid "Sign embedded"
-msgstr ""
+msgstr "Assinatura incorporada"
 
 #: models.py:40
 msgid "Document version"
-msgstr ""
+msgstr "Versão do documento"
 
 #: models.py:44
 msgid "Date signed"
-msgstr ""
+msgstr "Data de assinatura"
 
 #: models.py:54
 msgid "Public key fingerprint"
-msgstr ""
+msgstr "Impressão digital da chave pública"
 
 #: models.py:60
 msgid "Document version signature"
-msgstr ""
+msgstr "Assinatura da versão do documento"
 
 #: models.py:61
 msgid "Document version signatures"
-msgstr ""
+msgstr "Assinaturas da versão do documento"
 
 #: models.py:80
 msgid "Detached"
-msgstr ""
+msgstr "Separado"
 
 #: models.py:82
 msgid "Embedded"
-msgstr ""
+msgstr "Incorporado"
 
 #: models.py:97
 msgid "Document version embedded signature"
-msgstr ""
+msgstr "Assinatura incorporada na versão do documento"
 
 #: models.py:98
 msgid "Document version embedded signatures"
-msgstr ""
+msgstr "Assinaturas incorporadas na versão do documento"
 
 #: models.py:131
 msgid "Signature file"
@@ -178,35 +178,35 @@ msgstr "Ficheiro de assinatura"
 
 #: models.py:138
 msgid "Document version detached signature"
-msgstr ""
+msgstr "Assinatura separada na versão do documento"
 
 #: models.py:139
 msgid "Document version detached signatures"
-msgstr ""
+msgstr "Assinaturas separadas na versão do documento"
 
 #: models.py:142
 msgid "signature"
-msgstr ""
+msgstr "assinatura"
 
 #: permissions.py:12
 msgid "Sign documents with detached signatures"
-msgstr ""
+msgstr "Assinar documentos com assinaturas separadas"
 
 #: permissions.py:16
 msgid "Sign documents with embedded signatures"
-msgstr ""
+msgstr "Assinar documentos com assinaturas incorporadas"
 
 #: permissions.py:20
 msgid "Delete detached signatures"
-msgstr ""
+msgstr "Remover assinaturas separadas"
 
 #: permissions.py:24
 msgid "Download detached document signatures"
-msgstr ""
+msgstr "Baixar assinaturas separadas de documento"
 
 #: permissions.py:28
 msgid "Upload detached document signatures"
-msgstr ""
+msgstr "Carregar assinaturas separadas de documento"
 
 #: permissions.py:32
 msgid "Verify document signatures"
@@ -214,63 +214,63 @@ msgstr "Verificar as assinaturas do documento"
 
 #: permissions.py:36
 msgid "View details of document signatures"
-msgstr ""
+msgstr "Verificar detalhes das assinaturas do documento"
 
 #: queues.py:12
 msgid "Verify key signatures"
-msgstr ""
+msgstr "Verificar chaves de assinaturas"
 
 #: queues.py:16
 msgid "Unverify key signatures"
-msgstr ""
+msgstr "Cancelar chaves de assinaturas"
 
 #: queues.py:20
 msgid "Verify document version"
-msgstr ""
+msgstr "Verificar a versão do documento"
 
 #: queues.py:25
 msgid "Verify missing embedded signature"
-msgstr ""
+msgstr "Verificar a assinatura incorporada ausente"
 
 #: settings.py:15
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr ""
+msgstr "Caminho para a subclasse de armazenamento para usar ao armazenar assinaturas separadas"
 
 #: settings.py:24
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
-msgstr ""
+msgstr "Argumentos para passar para o SIGNATURE_STORAGE_BACKEND."
 
 #: views.py:68 views.py:159
 msgid "Passphrase is needed to unlock this key."
-msgstr ""
+msgstr "A frase secreta é necessária para desbloquear esta chave."
 
 #: views.py:79 views.py:170
 msgid "Passphrase is incorrect."
-msgstr ""
+msgstr "Frase secreta está incorreta."
 
 #: views.py:101 views.py:191
 msgid "Document version signed successfully."
-msgstr ""
+msgstr "Versão do documento assinada com sucesso"
 
 #: views.py:127
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
-msgstr ""
+msgstr "Assinar a versão do documento \"%s\" com assinatura separada"
 
 #: views.py:224
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
-msgstr ""
+msgstr "Assinar a versão do documento \"%s\" com assinatura incorporada"
 
 #: views.py:240
 #, python-format
 msgid "Delete detached signature: %s"
-msgstr ""
+msgstr "Remover assinatura separada: %s"
 
 #: views.py:260
 #, python-format
 msgid "Details for signature: %s"
-msgstr ""
+msgstr "Detalhes da assinatura: %s"
 
 #: views.py:300
 msgid ""
@@ -278,20 +278,23 @@ msgid ""
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr ""
+"As assinaturas ajudam a fornecer evidência de autoria e detecção de adulteração. "
+"Elas são muito seguras e difíceis de falsificar. Uma assinatura pode ser incorporada "
+"como parte do próprio documento ou carregada como um arquivo separado."
 
 #: views.py:328
 msgid "There are no signatures for this document."
-msgstr ""
+msgstr "Não há assinaturas para este documento"
 
 #: views.py:331
 #, python-format
 msgid "Signatures for document version: %s"
-msgstr ""
+msgstr "Assinaturas para versão do documento: %s"
 
 #: views.py:361
 #, python-format
 msgid "Upload detached signature for document version: %s"
-msgstr ""
+msgstr "Carregar assinatura separada para versão do documento: %s"
 
 #: views.py:378
 msgid "On large databases this operation may take some time to execute."
@@ -299,8 +302,8 @@ msgstr "Esta operação pode levar algum tempo em bases de dados grandes."
 
 #: views.py:379
 msgid "Verify all document for signatures?"
-msgstr ""
+msgstr "Verificar todos os documentos por assinaturas?"
 
 #: views.py:389
 msgid "Signature verification queued successfully."
-msgstr ""
+msgstr "Verificação de assinatura em fila com sucesso"

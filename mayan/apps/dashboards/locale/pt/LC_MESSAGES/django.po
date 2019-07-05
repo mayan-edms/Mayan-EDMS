@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -19,12 +19,12 @@ msgstr ""
 
 #: apps.py:14
 msgid "Dashboards"
-msgstr ""
+msgstr "Paineis de controle"
 
 #: dashboards.py:7
 msgid "Main"
-msgstr ""
+msgstr "Principal"
 
 #: templates/dashboards/numeric_widget.html:27
 msgid "View details"
-msgstr ""
+msgstr "Ver detalhes"

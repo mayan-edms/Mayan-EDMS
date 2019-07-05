@@ -2,11 +2,11 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2017
 # Emerson Soares <on.emersonsoares@gmail.com>, 2018
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -24,11 +24,11 @@ msgstr ""
 
 #: apps.py:50 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
-msgstr ""
+msgstr "Análise de documentos"
 
 #: apps.py:116 models.py:78
 msgid "Result"
-msgstr ""
+msgstr "Resultado"
 
 #: apps.py:121 apps.py:125 links.py:16 links.py:22 models.py:27
 msgid "Content"
@@ -37,20 +37,20 @@ msgstr "Conteúdo"
 #: dependencies.py:11
 msgid ""
 "Utility from the poppler-utils package used to text content from PDF files."
-msgstr ""
+msgstr "Utilitário do pacote poppler-utils usado para conteúdo de texto de arquivos PDF."
 
 #: events.py:12
 msgid "Document version submitted for parsing"
-msgstr ""
+msgstr "Versão do documento enviada para análise"
 
 #: events.py:15
 msgid "Document version parsing finished"
-msgstr ""
+msgstr "Análise da versão do documento concluída"
 
 #: forms.py:39
 #, python-format
 msgid "Page %(page_number)d"
-msgstr ""
+msgstr "Página %(page_number)d"
 
 #: forms.py:47 forms.py:59
 msgid "Contents"
@@ -58,39 +58,39 @@ msgstr "Conteúdos"
 
 #: links.py:28 links.py:66 views.py:197
 msgid "Parsing errors"
-msgstr ""
+msgstr "Erros de análise"
 
 #: links.py:34
 msgid "Download content"
-msgstr ""
+msgstr "Baixe o conteúdo"
 
 #: links.py:39 links.py:46
 msgid "Submit for parsing"
-msgstr ""
+msgstr "Enviar para análise"
 
 #: links.py:52
 msgid "Setup parsing"
-msgstr ""
+msgstr "configuração da análise"
 
 #: links.py:61
 msgid "Parse documents per type"
-msgstr ""
+msgstr "Analisar documentos por tipo"
 
 #: models.py:21
 msgid "Document page"
-msgstr ""
+msgstr "Página do documento"
 
 #: models.py:25
 msgid "The actual text content as extracted by the document parsing backend."
-msgstr ""
+msgstr "O conteúdo actual do texto, conforme extraído pelo backend de análise do documento."
 
 #: models.py:33
 msgid "Document page content"
-msgstr ""
+msgstr "Conteúdo da página do documento"
 
 #: models.py:34
 msgid "Document pages contents"
-msgstr ""
+msgstr "Conteúdo das páginas do documento"
 
 #: models.py:46
 msgid "Document type"
@@ -98,65 +98,65 @@ msgstr "Tipo de documento"
 
 #: models.py:50
 msgid "Automatically queue newly created documents for parsing."
-msgstr ""
+msgstr "Fila automatica de documentos recém-criados para análise."
 
 #: models.py:61
 msgid "Document type settings"
-msgstr ""
+msgstr "Configurações para tipo de documento"
 
 #: models.py:62
 msgid "Document types settings"
-msgstr ""
+msgstr "Configurações de tipos de documento"
 
 #: models.py:73
 msgid "Document version"
-msgstr ""
+msgstr "Versão do documento"
 
 #: models.py:76
 msgid "Date time submitted"
-msgstr ""
+msgstr "Data da hora de envio"
 
 #: models.py:82
 msgid "Document version parse error"
-msgstr ""
+msgstr "Erro de análise da versão do documento"
 
 #: models.py:83
 msgid "Document version parse errors"
-msgstr ""
+msgstr "Erros de análise da versão do documento"
 
 #: parsers.py:91
 #, python-format
 msgid "Exception parsing page; %s"
-msgstr ""
+msgstr "Exceção na análise da página; %s"
 
 #: parsers.py:117
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
-msgstr ""
+msgstr "Não é possível encontrar o executável pdftotext em: %s"
 
 #: permissions.py:12
 msgid "View the content of a document"
-msgstr ""
+msgstr "Ver o conteúdo de um documento"
 
 #: permissions.py:15
 msgid "Change document type parsing settings"
-msgstr ""
+msgstr "Alterar configurações de análise do tipo de documento"
 
 #: permissions.py:19
 msgid "Parse the content of a document"
-msgstr ""
+msgstr "Analisar o conteúdo de um documento"
 
 #: queues.py:8
 msgid "Parsing"
-msgstr ""
+msgstr "A analisar"
 
 #: queues.py:11
 msgid "Document version parsing"
-msgstr ""
+msgstr "Análise de versão do documento"
 
 #: settings.py:12
 msgid "Set new document types to perform parsing automatically by default."
-msgstr ""
+msgstr "Definir novos tipos de documentos para efectuar a análise automática por padrão"
 
 #: settings.py:19
 msgid ""
@@ -169,50 +169,50 @@ msgstr ""
 #: views.py:43
 #, python-format
 msgid "Content for document: %s"
-msgstr ""
+msgstr "Conteúdo para documento: %s"
 
 #: views.py:78
 #, python-format
 msgid "Content for document page: %s"
-msgstr ""
+msgstr "Conteúdo para a página do documento: %s"
 
 #: views.py:93
 #, python-format
 msgid "Parsing errors for document: %s"
-msgstr ""
+msgstr "Erros de análise para documento: %s"
 
 #: views.py:105
 #, python-format
 msgid "%(count)d document added to the parsing queue"
-msgstr ""
+msgstr "%(count)d documento adicionado à fila de análise"
 
 #: views.py:108
 #, python-format
-msgid "%(count)d documents added to the parsing queue"
+msgid "%(count)d documentos adicionados à fila de análise"
 msgstr ""
 
 #: views.py:116
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Enviar o documento %(count)d para a fila de análise?"
+msgstr[1] "Enviar o documentos %(count)d para a fila de análise?"
 
 #: views.py:129
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
-msgstr ""
+msgstr "Enviar o documento \"%s\" para a fila de análise"
 
 #: views.py:154
 #, python-format
 msgid "Edit parsing settings for document type: %s."
-msgstr ""
+msgstr "Editar configurações de análise para o tipo de documento: %s."
 
 #: views.py:164
 msgid "Submit all documents of a type for parsing."
-msgstr ""
+msgstr "Envie todos os documentos de um tipo para análise"
 
 #: views.py:185
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
-msgstr ""
+msgstr "%(count)d documentos adicionados à fila de análise."
