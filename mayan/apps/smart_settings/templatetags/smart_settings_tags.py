@@ -13,6 +13,6 @@ def smart_setting(global_name):
 
 
 @register.simple_tag
-def smart_settings_check_changes():
+def smart_settings_check_changed():
     return Setting.check_changed()
 

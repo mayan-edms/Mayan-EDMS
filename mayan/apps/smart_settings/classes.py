@@ -115,8 +115,6 @@ class Setting(object):
         if not cls._cache_hash:
             cls._cache_hash = cls.get_hash()
 
-        print("!!!@@", cls._cache_hash, cls.get_hash())
-
         return cls._cache_hash != cls.get_hash()
 
     @classmethod
