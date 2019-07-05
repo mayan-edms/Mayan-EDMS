@@ -1,4 +1,4 @@
-3.2.5 (2019-07-XX)
+3.2.5 (2019-07-05)
 ==================
 * Don't error out if the EXTRA_APPS or the DISABLED_APPS settings
   are set to blank.
