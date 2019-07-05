@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -19,11 +19,11 @@ msgstr ""
 
 #: apps.py:22 permissions.py:8
 msgid "Smart settings"
-msgstr ""
+msgstr "Configurações inteligentes"
 
 #: apps.py:30
 msgid "Setting count"
-msgstr ""
+msgstr "Contagem de configurações"
 
 #: apps.py:34
 msgid "Name"
@@ -35,7 +35,7 @@ msgstr "Valor"
 
 #: apps.py:41
 msgid "Overrided by environment variable?"
-msgstr ""
+msgstr "Preferir variável de ambiente?"
 
 #: apps.py:42
 msgid "Yes"
@@ -47,24 +47,24 @@ msgstr "Não"
 
 #: forms.py:17
 msgid "Enter the new setting value."
-msgstr ""
+msgstr "Digite o novo valor de configuração."
 
 #: forms.py:36
 msgid "Value must be properly quoted."
-msgstr ""
+msgstr "O valor deve ser devidamente colocado entre aspas."
 
 #: forms.py:45
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr ""
+msgstr "\"%s\" não é uma entrada válida."
 
 #: links.py:12 links.py:16
 msgid "Settings"
-msgstr ""
+msgstr "Definições"
 
 #: links.py:21
 msgid "Namespaces"
-msgstr ""
+msgstr "Namespaces"
 
 #: links.py:25
 msgid "Edit"
@@ -72,37 +72,37 @@ msgstr "Editar"
 
 #: permissions.py:12
 msgid "Edit settings"
-msgstr ""
+msgstr "Editar definições"
 
 #: permissions.py:15
 msgid "View settings"
-msgstr ""
+msgstr "Ver definições"
 
 #: views.py:23
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
-msgstr ""
+msgstr "As configurações herdadas de uma variável de ambiente têm precedência e não podem ser alteradas nesta vista."
 
 #: views.py:26
 #, python-format
 msgid "Settings in namespace: %s"
-msgstr ""
+msgstr "Configurações no namespace: %s"
 
 #: views.py:34
 #, python-format
 msgid "Namespace: %s, not found"
-msgstr ""
+msgstr "Namespace: %s, não encontrado"
 
 #: views.py:44
 msgid "Setting namespaces"
-msgstr ""
+msgstr "Configurações dos namespaces"
 
 #: views.py:60
 msgid "Setting updated successfully."
-msgstr ""
+msgstr "Configuração atualizada com sucesso."
 
 #: views.py:69
 #, python-format
 msgid "Edit setting: %s"
-msgstr ""
+msgstr "Editar configuração: %s"

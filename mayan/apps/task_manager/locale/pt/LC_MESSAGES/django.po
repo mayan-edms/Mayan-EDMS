@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2017
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -35,19 +35,19 @@ msgstr "Nome"
 
 #: apps.py:37
 msgid "Default queue?"
-msgstr ""
+msgstr "Fila padrão?"
 
 #: apps.py:41
 msgid "Is transient?"
-msgstr ""
+msgstr "É temporário?"
 
 #: apps.py:45
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: apps.py:48
 msgid "Start time"
-msgstr ""
+msgstr "Hora de início"
 
 #: apps.py:51
 msgid "Host"
@@ -55,56 +55,56 @@ msgstr ""
 
 #: apps.py:55
 msgid "Arguments"
-msgstr ""
+msgstr "Argumentos"
 
 #: apps.py:59
 msgid "Keyword arguments"
-msgstr ""
+msgstr "Argumentos por keyword"
 
 #: apps.py:63
 msgid "Worker process ID"
-msgstr ""
+msgstr "ID processo de trabalho"
 
 #: links.py:16 views.py:15
 msgid "Background task queues"
-msgstr ""
+msgstr "Filas de tarefas em segundo plano"
 
 #: links.py:20
 msgid "Active tasks"
-msgstr ""
+msgstr "Tarefas ativas"
 
 #: links.py:24
 msgid "Reserved tasks"
-msgstr ""
+msgstr "Tarefas reservadas"
 
 #: links.py:28
 msgid "Scheduled tasks"
-msgstr ""
+msgstr "Tarefas agendadas"
 
 #: permissions.py:10
 msgid "View tasks"
-msgstr ""
+msgstr "Ver tarefas"
 
 #: tests/literals.py:5
 msgid "Test queue"
-msgstr ""
+msgstr "Testar fila"
 
 #: views.py:30
 #, python-format
 msgid "Active tasks in queue: %s"
-msgstr ""
+msgstr "Tarefas ativas na fila: %s"
 
 #: views.py:42
 #, python-format
 msgid "Unable to retrieve task list; %s"
-msgstr ""
+msgstr "Não é possível recuperar a lista de tarefas; %s"
 
 #: views.py:56
 #, python-format
 msgid "Scheduled tasks in queue: %s"
-msgstr ""
+msgstr "Tarefas agendadas na fila: %s"
 
 #: views.py:68
 #, python-format
 msgid "Reserved tasks in queue: %s"
-msgstr ""
+msgstr "Tarefas reservadas na fila: %s"

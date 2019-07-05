@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -18,16 +18,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:10 settings.py:9
-msgid "Lock manager"
+msgid "Gestor de bloqueio"
 msgstr ""
 
 #: models.py:17
 msgid "Creation datetime"
-msgstr ""
+msgstr "Data e hora da criação"
 
 #: models.py:20
 msgid "Timeout"
-msgstr ""
+msgstr "Tempo esgotado"
 
 #: models.py:23
 msgid "Name"
@@ -35,18 +35,18 @@ msgstr "Nome"
 
 #: models.py:29
 msgid "Lock"
-msgstr ""
+msgstr "Bloqueio"
 
 #: models.py:30
 msgid "Locks"
-msgstr ""
+msgstr "Bloqueios"
 
 #: settings.py:14
 msgid "Path to the class to use when to request and release resource locks."
-msgstr ""
+msgstr "Caminho para a classe usar quando solicitar e libertar recursos bloqueados."
 
 #: settings.py:22
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."
-msgstr ""
+msgstr "Quantidade padrão de tempo em segundos após o qual um bloqueio de recurso será liberado automaticamente."

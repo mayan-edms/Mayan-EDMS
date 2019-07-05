@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Renata Oliveira <renatabels@gmail.com>, 2011
@@ -22,48 +22,50 @@ msgstr ""
 
 #: apps.py:22 permissions.py:7 settings.py:12
 msgid "Converter"
-msgstr ""
+msgstr "Conversor"
 
 #: apps.py:31 models.py:57
 msgid "Transformation"
-msgstr ""
+msgstr "Transformação"
 
 #: backends/python.py:175 backends/python.py:181
 #, python-format
 msgid "Exception determining PDF page count; %s"
-msgstr ""
+msgstr "Exceção que determina a contagem de páginas em PDF; %s"
 
 #: backends/python.py:195
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
-msgstr ""
+msgstr "Exceção que determina a contagem de páginas usando Pillow; %s"
 
 #: classes.py:118
 msgid "LibreOffice not installed or not found."
-msgstr ""
+msgstr "O LibreOffice não está instalado ou não foi encontrado."
 
 #: classes.py:201
 msgid "Not an office file format."
-msgstr ""
+msgstr "Não é um formato de office."
 
 #: dependencies.py:16
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr ""
+msgstr "Utilitário do pacote poppler-utils usado para inspecionar arquivos PDF."
 
 #: dependencies.py:21
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
 msgstr ""
+"Utilitário do pacote popper-utils usado para extrair páginas de arquivos "
+"PDF em imagens no formato PPM."
 
 #: forms.py:28
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr ""
+msgstr "\"%s\" não é uma entrada válida."
 
 #: links.py:36
 msgid "Create new transformation"
-msgstr ""
+msgstr "Criar nova transformação"
 
 #: links.py:42
 msgid "Delete"
@@ -75,17 +77,19 @@ msgstr "Editar"
 
 #: links.py:53 models.py:58
 msgid "Transformations"
-msgstr ""
+msgstr "Transformações"
 
 #: models.py:37
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
 msgstr ""
+"Ordem em que as transformações serão executadas. Se não forem alteradas, "
+"um valor de pedido automático será atribuído."
 
 #: models.py:39
 msgid "Order"
-msgstr ""
+msgstr "Ordem"
 
 #: models.py:43
 msgid "Name"
@@ -96,54 +100,56 @@ msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
 msgstr ""
+"Digite os argumentos para a transformação como um dicionário YAML. Ie:"
+"{\"degrees\": 180}"
 
 #: models.py:49
 msgid "Arguments"
-msgstr ""
+msgstr "Argumentos"
 
 #: permissions.py:10
 msgid "Create new transformations"
-msgstr ""
+msgstr "Criar novas transformações"
 
 #: permissions.py:13
 msgid "Delete transformations"
-msgstr ""
+msgstr "Remover transformações"
 
 #: permissions.py:16
 msgid "Edit transformations"
-msgstr ""
+msgstr "Editar transformações"
 
 #: permissions.py:19
 msgid "View existing transformations"
-msgstr ""
+msgstr "Ver transformações existentes"
 
 #: settings.py:16
 msgid "Graphics conversion backend to use."
-msgstr ""
+msgstr "Backend de conversão de gráficos para usar."
 
 #: settings.py:35
 msgid "Configuration options for the graphics conversion backend."
-msgstr ""
+msgstr "Opções de configuração para o backend de conversão de gráficos."
 
 #: transformations.py:81
 msgid "Crop"
-msgstr ""
+msgstr "Recorte"
 
 #: transformations.py:156
 msgid "Flip"
-msgstr ""
+msgstr "Virar"
 
 #: transformations.py:167
 msgid "Gaussian blur"
-msgstr ""
+msgstr "Gaussian blur"
 
 #: transformations.py:177
 msgid "Line art"
-msgstr ""
+msgstr "Line art"
 
 #: transformations.py:188
 msgid "Mirror"
-msgstr ""
+msgstr "Espelho"
 
 #: transformations.py:199
 msgid "Resize"
@@ -155,19 +161,19 @@ msgstr "Rodar"
 
 #: transformations.py:252
 msgid "Rotate 90 degrees"
-msgstr ""
+msgstr "Rodar 90 graus"
 
 #: transformations.py:263
 msgid "Rotate 180 degrees"
-msgstr ""
+msgstr "Rodar 180 graus"
 
 #: transformations.py:274
 msgid "Rotate 270 degrees"
-msgstr ""
+msgstr "Rodar 270 graus"
 
 #: transformations.py:284
 msgid "Unsharp masking"
-msgstr ""
+msgstr "Máscara não afiada"
 
 #: transformations.py:300
 msgid "Zoom"
@@ -175,34 +181,36 @@ msgstr "Zoom"
 
 #: validators.py:26
 msgid "Enter a valid YAML value."
-msgstr ""
+msgstr "Digite um valor YAML válido."
 
 #: views.py:72
 #, python-format
 msgid "Create new transformation for: %s"
-msgstr ""
+msgstr "Criar nova transformação para: %s"
 
 #: views.py:127
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
+msgstr "Remover transformação \"%(transformation)s\" para: %(content_object)s?"
 
 #: views.py:171
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
+msgstr "Editar transformação \"%(transformation)s\" para: %(content_object)s?"
 
 #: views.py:227
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr ""
+"As transformações permitem alterar a aparência visual dos documentos sem "
+"fazer alterações permanentes no próprio arquivo do documento."
 
 #: views.py:231
 msgid "No transformations"
-msgstr ""
+msgstr "Sem transformações"
 
 #: views.py:232
 #, python-format
 msgid "Transformations for: %s"
-msgstr ""
+msgstr "transformações para: %s"

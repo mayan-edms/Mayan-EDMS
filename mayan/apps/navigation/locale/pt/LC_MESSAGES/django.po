@@ -21,15 +21,15 @@ msgstr ""
 
 #: apps.py:11
 msgid "Navigation"
-msgstr ""
+msgstr "Navegação"
 
 #: classes.py:695
 msgid "Unnamed function"
-msgstr ""
+msgstr "Função sem nome"
 
 #: templates/navigation/generic_navigation.html:7
 msgid "Actions"
-msgstr ""
+msgstr "Ações"
 
 #~ msgid "Multi item action"
 #~ msgstr "Multi item action"

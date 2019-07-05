@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -23,17 +23,19 @@ msgstr ""
 
 #: apps.py:16 settings.py:9
 msgid "Auto administrator"
-msgstr ""
+msgstr "Administração automática"
 
 #: auth/allauth.py:54
 msgid ""
 "Welcome Admin! You have been given superuser privileges. Use them with "
 "caution."
 msgstr ""
+"Bem vindo Administrador! Você recebeu privilégios de super-utilizador. Use-os com "
+"cautela"
 
 #: models.py:15
 msgid "Account"
-msgstr ""
+msgstr "Conta"
 
 #: models.py:18
 msgid "Password"
@@ -45,21 +47,23 @@ msgstr ""
 
 #: models.py:27
 msgid "Autoadmin properties"
-msgstr ""
+msgstr "Propriadades da administração automática"
 
 #: settings.py:14
 msgid "Sets the email of the automatically created super user account."
-msgstr ""
+msgstr "Define o email da conta de super-utilizador criada automaticamente"
 
 #: settings.py:20
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
 msgstr ""
+"A senha da conta de super-utilizador criada automaticamente. Se for igual a "
+"nada, a senha é gerada aleatoriamente"
 
 #: settings.py:27
 msgid "The username of the automatically created super user account."
-msgstr ""
+msgstr "O nome de utilizador da conta de super-utilizador criada automaticamente"
 
 #: templates/autoadmin/credentials.html:11
 msgid "First time login"
@@ -71,20 +75,22 @@ msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
 msgstr ""
+"Você acabou de instalar <strong>%(project_title)s</strong>, "
+"parabéns"
 
 #: templates/autoadmin/credentials.html:17
 msgid "Login using the following credentials:"
-msgstr ""
+msgstr "Entrar usando as seguintes credenciais"
 
 #: templates/autoadmin/credentials.html:18
 #, python-format
 msgid "Username: <strong>%(account)s</strong>"
-msgstr ""
+msgstr "Utilizador: <strong>%(account)s</strong>"
 
 #: templates/autoadmin/credentials.html:19
 #, python-format
 msgid "Email: <strong>%(email)s</strong>"
-msgstr ""
+msgstr "Correio electronico: <strong>%(email)s</strong>"
 
 #: templates/autoadmin/credentials.html:20
 #, python-format

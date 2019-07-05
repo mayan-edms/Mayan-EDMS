@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Roberto Rosario, 2012
@@ -30,15 +30,15 @@ msgstr "Permissões insuficientes."
 
 #: dashboard_widgets.py:15
 msgid "Total roles"
-msgstr ""
+msgstr "Total de funções"
 
 #: events.py:12
 msgid "Role created"
-msgstr ""
+msgstr "Função criada"
 
 #: events.py:15
 msgid "Role edited"
-msgstr ""
+msgstr "Função editada"
 
 #: links.py:16 links.py:40 models.py:113 views.py:165
 msgid "Roles"
@@ -46,11 +46,11 @@ msgstr "Funções"
 
 #: links.py:23
 msgid "Create new role"
-msgstr ""
+msgstr "Criar nova função"
 
 #: links.py:29
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Remover"
 
 #: links.py:34
 msgid "Edit"
@@ -62,11 +62,11 @@ msgstr "Grupos"
 
 #: links.py:52
 msgid "Role permissions"
-msgstr ""
+msgstr "Permissões para função"
 
 #: models.py:27
 msgid "Namespace"
-msgstr ""
+msgstr "Namespace"
 
 #: models.py:28
 msgid "Name"
@@ -74,7 +74,7 @@ msgstr "Nome"
 
 #: models.py:35
 msgid "Permission"
-msgstr ""
+msgstr "Permissão"
 
 #: models.py:98 search.py:16
 msgid "Label"
@@ -82,7 +82,7 @@ msgstr "Nome"
 
 #: models.py:112
 msgid "Role"
-msgstr ""
+msgstr "Funções"
 
 #: permissions.py:10
 msgid "Create roles"
@@ -102,35 +102,35 @@ msgstr "Ver funções"
 
 #: search.py:20
 msgid "Group name"
-msgstr ""
+msgstr "Nome do grupo"
 
 #: serializers.py:46
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr ""
+msgstr "Lista separada por vírgulas de chaves primárias de grupos para adicionar ou substituir nesta função."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr ""
+msgstr "Lista separada por vírgula de chaves primárias de permissões para atribuir a esta função."
 
 #: serializers.py:90
 #, python-format
 msgid "No such permission: %s"
-msgstr ""
+msgstr "Sem essa permissão: %s"
 
 #: views.py:32
 msgid "Available roles"
-msgstr ""
+msgstr "Funções disponiveis"
 
 #: views.py:33
 msgid "Group roles"
-msgstr ""
+msgstr "Grupo de funções"
 
 #: views.py:42
 #, python-format
 msgid "Roles of group: %s"
-msgstr ""
+msgstr "Funções do grupo: %s"
 
 #: views.py:79
 msgid "Available groups"
@@ -138,36 +138,36 @@ msgstr "Grupos disponíveis"
 
 #: views.py:80
 msgid "Role groups"
-msgstr ""
+msgstr "Grupos com a função"
 
 #: views.py:89
 #, python-format
 msgid "Groups of role: %s"
-msgstr ""
+msgstr "Grupos com a função: %s"
 
 #: views.py:91
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr ""
+msgstr "Adicione grupos para fazer parte de uma função. Eles herdarão as permissões e os controlos de acesso da função."
 
 #: views.py:104
 msgid "Available permissions"
-msgstr ""
+msgstr "Permissões disponíveis"
 
 #: views.py:105
 msgid "Granted permissions"
-msgstr ""
+msgstr "Permissões atribuídas"
 
 #: views.py:137
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr ""
+msgstr "As permissões atribuídas aqui serão aplicadas a todo o sistema e a todos os objetos."
 
 #: views.py:140
 #, python-format
 msgid "Permissions for role: %s"
-msgstr ""
+msgstr "Permissões para função: %s"
 
 #: views.py:157
 msgid ""
@@ -175,8 +175,8 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr ""
+msgstr "As funções são unidades de autorização. Elas contêm grupos de utilizadores que herdam as permissões de função de todo o sistema. As funções também podem fazer parte das listas de controlo de acesso. A lista de controlo de acesso é atribuída a uma função para objetos específicos herdados por seus membros."
 
 #: views.py:164
 msgid "There are no roles"
-msgstr ""
+msgstr "Não há funções"

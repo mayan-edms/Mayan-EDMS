@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -19,59 +19,59 @@ msgstr ""
 
 #: apps.py:12 settings.py:9
 msgid "Appearance"
-msgstr ""
+msgstr "aparência"
 
 #: dependencies.py:10
 msgid "Lato font"
-msgstr ""
+msgstr "Fonte Lato"
 
 #: dependencies.py:14
 msgid "Bootstrap"
-msgstr ""
+msgstr "Bootstrap"
 
 #: dependencies.py:18
 msgid "Bootswatch"
-msgstr ""
+msgstr "Bootswatch"
 
 #: dependencies.py:32
 msgid "Fancybox"
-msgstr ""
+msgstr "Fancybox"
 
 #: dependencies.py:36
 msgid "FontAwesome"
-msgstr ""
+msgstr "FontAwesome"
 
 #: dependencies.py:40
 msgid "jQuery"
-msgstr ""
+msgstr "jQuery"
 
 #: dependencies.py:43
 msgid "JQuery Form"
-msgstr ""
+msgstr "JQuery Form"
 
 #: dependencies.py:47
 msgid "jQuery Lazy Load"
-msgstr ""
+msgstr "jQuery Lazy Load"
 
 #: dependencies.py:51
 msgid "JQuery Match Height"
-msgstr ""
+msgstr "JQuery Match Height"
 
 #: dependencies.py:55
 msgid "Select 2"
-msgstr ""
+msgstr "Select 2"
 
 #: dependencies.py:59
 msgid "Toastr"
-msgstr ""
+msgstr "Toastr"
 
 #: dependencies.py:62
 msgid "URI.js"
-msgstr ""
+msgstr "URI.js"
 
 #: settings.py:14
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr ""
+msgstr "Número máximo de characteres que serão mostrados como título de vista."
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
@@ -91,17 +91,19 @@ msgstr "Desculpe, mas a página solicitada não foi encontrada."
 
 #: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:52
 msgid "Server error"
-msgstr ""
+msgstr "Erro servidor"
 
 #: templates/500.html:11
 msgid ""
 "There's been an error. It's been reported to the site administrators via "
 "e-mail and should be fixed shortly. Thanks for your patience."
 msgstr ""
+"Ocorreu um erro. Foi reportado a administração do sit por email e vai ser "
+"corrigido brevemente. Obrigado pela sua Paciência"
 
 #: templates/appearance/about.html:10
 msgid "About"
-msgstr ""
+msgstr "Sobre"
 
 #: templates/appearance/about.html:77
 #, python-format
@@ -110,6 +112,9 @@ msgid ""
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
 msgstr ""
+"\n"
+"                    %(setting_project_title)s e baseado no %(project_title)s\n"
+"                "
 
 #: templates/appearance/about.html:82
 msgid "Version"
@@ -122,7 +127,7 @@ msgstr ""
 
 #: templates/appearance/about.html:97
 msgid "Released under the license:"
-msgstr ""
+msgstr "lançado sobre a licença"
 
 #: templates/appearance/about.html:103
 #, python-format
@@ -131,6 +136,9 @@ msgid ""
 "                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
 msgstr ""
+"\n"
+"                %(project_title)s é gratuito e software de fonte aberta oferecido por <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> por Roberto Rosario e contribuidores.\n"
+"            "
 
 #: templates/appearance/about.html:109
 #, python-format
@@ -139,6 +147,9 @@ msgid ""
 "                It takes great effort to make %(project_title)s as feature-rich as it is. We need all the help we can get!\n"
 "            "
 msgstr ""
+"\n"
+"                Foi um grande esforço para fazer %(project_title)s como característica-rico como é. Necessitamos toda ajuda que conseguirmos!\n"
+"            "
 
 #: templates/appearance/about.html:115
 #, python-format
@@ -183,7 +194,7 @@ msgstr ""
 
 #: templates/appearance/base.html:32
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: templates/appearance/base.html:51
 #: templates/appearance/generic_list_items_subtemplate.html:104
@@ -193,11 +204,11 @@ msgstr "Ações"
 #: templates/appearance/base.html:53
 #: templates/appearance/generic_list_items_subtemplate.html:106
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "Alternar o menu suspenso"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
-msgstr ""
+msgstr "Tem a certeza?"
 
 #: templates/appearance/generic_confirm.html:34
 msgid "Yes"
@@ -238,6 +249,8 @@ msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr ""
+"Total de (%(start)s - %(end)s de %(total)s) (página %(page_number)s de "
+"%(total_pages)s)"
 
 #: templates/appearance/generic_list_items_subtemplate.html:19
 #: templates/appearance/generic_list_items_subtemplate.html:22
@@ -245,7 +258,7 @@ msgstr ""
 #: templates/appearance/generic_list_subtemplate.html:22
 #, python-format
 msgid "Total: %(total)s"
-msgstr ""
+msgstr "Total: %(total)s"
 
 #: templates/appearance/generic_list_subtemplate.html:55
 msgid "Identifier"
@@ -253,19 +266,19 @@ msgstr "Identificador"
 
 #: templates/appearance/home.html:10
 msgid "Dashboard"
-msgstr ""
+msgstr "Painel de controle"
 
 #: templates/appearance/home.html:26
 msgid "Getting started"
-msgstr ""
+msgstr "Iniciar"
 
 #: templates/appearance/home.html:29
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr ""
+msgstr "Antes de poder usar todas as funcionalidades Mayan EDMS necessita de fazer o seguinte:"
 
 #: templates/appearance/main_menu.html:10
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Alternar de navegação"
 
 #: templates/appearance/no_results.html:18
 msgid "No results"
@@ -273,15 +286,15 @@ msgstr "Sem resultados"
 
 #: templates/appearance/root.html:57
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: templates/appearance/root.html:65
 msgid "Server communication error"
-msgstr ""
+msgstr "Erro de comunicação com o servidor"
 
 #: templates/appearance/root.html:67
 msgid "Check you network connection and try again in a few moments."
-msgstr ""
+msgstr "Verifique sua ligação de rede e tente novamente em alguns instantes."
 
 #: templatetags/appearance_tags.py:17
 msgid "None"
