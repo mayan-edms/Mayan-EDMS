@@ -11,7 +11,10 @@
 * Add alert when settings are changed and util the installation
   is restarted. GitLab issue #605. Thanks to
   Vikas Kedia (@vikaskedia) to the report.
-* Update Django to version 1.11.22.
+* Update Django to version 1.11.22, PyYAML to version 5.1.1,
+  django-widget-tweaks to version 1.4.5, pathlib2 to version 2.3.4,
+  Werkzeug to version 0.15.4, django-extensions to version 2.1.9,
+  django-rosetta to version 0.9.3, psutil to version 5.6.3.
 
 3.2.4 (2019-06-29)
 ==================
