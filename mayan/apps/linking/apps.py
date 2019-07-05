@@ -57,9 +57,7 @@ class LinkingApp(MayanAppConfig):
         SmartLinkCondition = self.get_model(model_name='SmartLinkCondition')
 
         ModelEventType.register(
-            event_types=(
-                event_smart_link_edited,
-            ), model=SmartLink
+            event_types=(event_smart_link_edited,), model=SmartLink
         )
 
         ModelPermission.register(

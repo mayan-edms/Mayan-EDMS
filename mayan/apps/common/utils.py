@@ -8,10 +8,6 @@ from django.core.exceptions import FieldDoesNotExist
 from django.db.models.constants import LOOKUP_SEP
 from django.urls import resolve as django_resolve
 from django.urls.base import get_script_prefix
-from django.utils.datastructures import MultiValueDict
-from django.utils.http import (
-    urlencode as django_urlencode, urlquote as django_urlquote
-)
 from django.utils.six.moves import reduce as reduce_function
 
 from mayan.apps.common.compat import dict_type, dictionary_type
@@ -150,50 +146,3 @@ def return_related(instance, related_field):
     using double underscore.
     """
     return reduce_function(getattr, related_field.split('__'), instance)
-
-
-def urlquote(link=None, get=None):
-    """
-    This method does both: urlquote() and urlencode()
-
-    urlqoute(): Quote special characters in 'link'
-
-    urlencode(): Map dictionary to query string key=value&...
-
-    HTML escaping is not done.
-
-    Example:
-
-    urlquote('/wiki/Python_(programming_language)')
-        --> '/wiki/Python_%28programming_language%29'
-    urlquote('/mypath/', {'key': 'value'})
-        --> '/mypath/?key=value'
-    urlquote('/mypath/', {'key': ['value1', 'value2']})
-        --> '/mypath/?key=value1&key=value2'
-    urlquote({'key': ['value1', 'value2']})
-        --> 'key=value1&key=value2'
-    """
-    if get is None:
-        get = []
-
-    assert link or get
-    if isinstance(link, dict):
-        # urlqoute({'key': 'value', 'key2': 'value2'}) -->
-        # key=value&key2=value2
-        assert not get, get
-        get = link
-        link = ''
-    assert isinstance(get, dict), 'wrong type "%s", dict required' % type(get)
-    # assert not (link.startswith('http://') or link.startswith('https://')),
-    #    'This method should only quote the url path.
-    #    It should not start with http(s)://  (%s)' % (
-    #    link)
-    if get:
-        # http://code.djangoproject.com/ticket/9089
-        if isinstance(get, MultiValueDict):
-            get = get.lists()
-        if link:
-            link = '%s?' % django_urlquote(link)
-        return '%s%s' % (link, django_urlencode(get, doseq=True))
-    else:
-        return django_urlquote(link)
