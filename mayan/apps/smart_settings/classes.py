@@ -17,7 +17,9 @@ except ImportError:
 from django.apps import apps
 from django.conf import settings
 from django.utils.functional import Promise
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import (
+    force_bytes, force_text, python_2_unicode_compatible
+)
 
 logger = logging.getLogger(__name__)
 
@@ -141,7 +143,7 @@ class Setting(object):
     @classmethod
     def get_hash(cls):
         return force_text(
-            hashlib.sha256(cls.dump_data()).hexdigest()
+            hashlib.sha256(force_bytes(cls.dump_data())).hexdigest()
         )
 
     @classmethod
