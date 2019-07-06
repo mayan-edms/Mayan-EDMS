@@ -8,6 +8,8 @@
 - Backport workflow preview refactor. GitLab issue #532.
 - Add support for source column inheritance.
 - Add support for source column exclusion.
+- Backport workflow context support.
+- Backport workflow transitions field support.
 
 3.2.5 (2019-07-05)
 ==================
