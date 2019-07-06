@@ -100,17 +100,24 @@ class DocumentIndexingApp(MayanAppConfig):
             model=IndexInstanceNode, related='index_template_node__index'
         )
 
-        SourceColumn(
+        column_index_label = SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=Index
         )
+        column_index_label.add_exclude(source=IndexInstance)
         SourceColumn(
+            attribute='label', is_object_absolute_url=True, is_identifier=True,
+            is_sortable=True, source=IndexInstance
+        )
+        column_index_slug = SourceColumn(
             attribute='slug', is_sortable=True, source=Index
         )
-        SourceColumn(
+        column_index_slug.add_exclude(IndexInstance)
+        column_index_enabled = SourceColumn(
             attribute='enabled', is_sortable=True, source=Index,
             widget=TwoStateWidget
         )
+        column_index_enabled.add_exclude(source=IndexInstance)
 
         SourceColumn(
             func=lambda context: context[
