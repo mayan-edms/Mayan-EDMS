@@ -7,7 +7,7 @@ icon_document_type = Icon(
     driver_name='fontawesome-layers', data=[
         {'class': 'fas fa-circle', 'transform': 'shrink-12 up-2'},
         {'class': 'fas fa-cog', 'transform': 'shrink-6 up-2', 'mask': 'fas fa-torah'}
-    ]
+    ], shadow_class='fas fa-torah'
 )
 
 icon_menu_documents = Icon(driver_name='fontawesome', symbol='book')

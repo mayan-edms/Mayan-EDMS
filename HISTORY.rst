@@ -1,3 +1,7 @@
+3.3 (2019-XX-XX)
+================
+* Add support for icon shadows.
+
 3.2.5 (2019-07-05)
 ==================
 * Don't error out if the EXTRA_APPS or the DISABLED_APPS settings
