@@ -6,6 +6,8 @@
 - Use Select2 widget for the document type selection form.
 - Backport the vertical main menu update.
 - Backport workflow preview refactor. GitLab issue #532.
+- Add support for source column inheritance.
+- Add support for source column exclusion.
 
 3.2.5 (2019-07-05)
 ==================

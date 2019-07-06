@@ -18,6 +18,8 @@ Changes
   a browser refresh will also restore its state to match the selected
   view.
 - Backport workflow preview refactor. GitLab issue #532.
+- Add support for source column inheritance.
+- Add support for source column exclusion.
 
 Removals
 --------
