@@ -11,6 +11,12 @@ Changes
 - Add icons and no-result template to the object error log view and
   links.
 - Use Select2 widget for the document type selection form.
+- Backport the vertical main menu update. This update splits the previous
+  main menu into a new menu in the same location as the previous one
+  now called the top bar, and a new vertical main menu on the left side.
+  The vertical menu remain open even when clicking on items and upon
+  a browser refresh will also restore its state to match the selected
+  view.
 
 Removals
 --------

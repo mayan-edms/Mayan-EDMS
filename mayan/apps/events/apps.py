@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
-    menu_main, menu_object, menu_secondary, menu_tools, menu_user
+    menu_main, menu_object, menu_secondary, menu_tools, menu_topbar, menu_user
 )
 from mayan.apps.navigation.classes import SourceColumn
 
@@ -85,7 +85,7 @@ class EventsApp(MayanAppConfig):
             source=Notification, widget=TwoStateWidget
         )
 
-        menu_main.bind_links(
+        menu_topbar.bind_links(
             links=(link_user_notifications_list,), position=99
         )
         menu_object.bind_links(

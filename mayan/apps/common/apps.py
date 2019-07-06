@@ -28,7 +28,7 @@ from .links import (
 
 from .literals import MESSAGE_SQLITE_WARNING
 from .menus import (
-    menu_about, menu_main, menu_secondary, menu_user
+    menu_about, menu_main, menu_secondary, menu_topbar, menu_user
 )
 from .settings import (
     setting_auto_logging, setting_production_error_log_path,
@@ -97,7 +97,10 @@ class CommonApp(MayanAppConfig):
             )
 
         Template(
-            name='menu_main', template_name='appearance/main_menu.html'
+            name='menu_main', template_name='appearance/menu_main.html'
+        )
+        Template(
+            name='menu_topbar', template_name='appearance/menu_topbar.html'
         )
 
         menu_user.bind_links(
@@ -112,7 +115,7 @@ class CommonApp(MayanAppConfig):
             )
         )
 
-        menu_main.bind_links(links=(menu_about, menu_user,), position=99)
+        menu_topbar.bind_links(links=(menu_about, menu_user,), position=99)
         menu_secondary.bind_links(
             links=(link_object_error_list_clear,), sources=(
                 'common:object_error_list',

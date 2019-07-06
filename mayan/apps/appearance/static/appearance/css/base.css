@@ -12,7 +12,7 @@
 }
 
 body {
-    padding-top: 70px;
+    padding-top: 60px;
 }
 
 .navbar-brand {
@@ -331,7 +331,7 @@ a i {
     .main {
         padding-right: 0px;
         padding-left: 0px;
-        /*margin-left: 210px;*/
+        margin-left: 210px;
     }
 }
 
@@ -412,4 +412,121 @@ a i {
 
 .btn-list {
     margin-bottom: 2px;
+}
+
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+
+/* menu_main */
+/* Hide for mobile, show later */
+
+#menu-main {
+    display: none;
+    background-color: #2c3e50;
+    border-right: 1px solid #18bc9c;
+    bottom: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 10px;
+    position: fixed;
+    top: 51px;
+    width: 210px;
+    z-index: 1000;
+}
+
+@media (min-width: 768px) {
+    #menu-main {
+        display: block;
+    }
+
+    .navbar-brand {
+        text-align: center;
+        width: 210px;
+    }
+}
+
+.main .page-header {
+  margin-top: 0;
+}
+
+.navbar-brand {
+}
+
+.navbar-brand {
+    outline: none;
+}
+
+.container-fluid {
+    margin-right: 0px;
+    margin-left: 0px;
+    width: 100%;
+}
+
+#accordion-sidebar a {
+    padding: 10px 15px;
+}
+
+#accordion-sidebar a[aria-expanded="true"] {
+    background: #1a242f;
+}
+
+#accordion-sidebar .panel {
+    border: 0px;
+}
+
+#accordion-sidebar a {
+    text-decoration: none;
+    outline: none;
+    position: relative;
+    display: block;
+}
+
+#accordion-sidebar .panel-heading {
+    background-color: #2c3e50;
+    color: white;
+    padding: 0px;
+}
+
+#accordion-sidebar .panel-heading:hover {
+    background-color: #517394;
+}
+
+#accordion-sidebar > .panel > div > .panel-body > ul > li > a:hover {
+    background-color: #517394;
+}
+
+#accordion-sidebar > .panel > div > .panel-body > ul > li.active {
+   background: #1a242f;
+}
+
+#accordion-sidebar .panel-title {
+    font-size: 15px;
+}
+
+#accordion-sidebar .panel-body {
+    font-size: 13px;
+    border: 0px;
+    background-color: #2c3e50;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+}
+
+#accordion-sidebar .panel-body li {
+    padding: 0px;
+}
+
+#accordion-sidebar .panel-body a {
+    color: white;
+    text-decoration: none;
+    padding: 9px;
 }
