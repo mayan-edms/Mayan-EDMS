@@ -1,612 +1,611 @@
 3.3 (2019-XX-XX)
 ================
-* Add support for icon shadows.
+- Add support for icon shadows.
+- Add icons and no-result template to the object error log view and
+  links.
 
 3.2.5 (2019-07-05)
 ==================
-* Don't error out if the EXTRA_APPS or the DISABLED_APPS settings
+- Don't error out if the EXTRA_APPS or the DISABLED_APPS settings
   are set to blank.
-* Update troubleshooting documentation topic.
-* Add data migration to the file metadata app. Synchronizes the
+- Update troubleshooting documentation topic.
+- Add data migration to the file metadata app. Synchronizes the
   document type settings model of existing document types.
-* Fix cabinet and tags upload wizard steps missing some entries.
+- Fix cabinet and tags upload wizard steps missing some entries.
   GitLab issue #632. Thanks to Matthias Urhahn (@d4rken) for the
   report.
-* Add alert when settings are changed and util the installation
+- Add alert when settings are changed and util the installation
   is restarted. GitLab issue #605. Thanks to
   Vikas Kedia (@vikaskedia) to the report.
-* Update Django to version 1.11.22, PyYAML to version 5.1.1,
+- Update Django to version 1.11.22, PyYAML to version 5.1.1,
   django-widget-tweaks to version 1.4.5, pathlib2 to version 2.3.4,
   Werkzeug to version 0.15.4, django-extensions to version 2.1.9,
   django-rosetta to version 0.9.3, psutil to version 5.6.3.
 
 3.2.4 (2019-06-29)
 ==================
-* Support configurable GUnicorn timeouts. Defaults to
+- Support configurable GUnicorn timeouts. Defaults to
   current value of 120 seconds.
-* Fix help text of the platformtemplate command.
-* Fix IMAP4 mailbox.store flags argument. Python's documentation
+- Fix help text of the platformtemplate command.
+- Fix IMAP4 mailbox.store flags argument. Python's documentation
   incorrectly state it is named flag_list. Closes GitLab issue
   #606.
-* Improve the workflow preview generation. Use polylines
+- Improve the workflow preview generation. Use polylines
   instead of splines. Add state actions to the preview.
   Highlight the initial state.
-* Add help text to the workflow transition form comment field.
-* Fix direct deployment instructions.
-* Add user, group, and role dashboard widgets.
-* Add test mixin detect database connection leaks.
-* Remove tag create event registration from the tag
+- Add help text to the workflow transition form comment field.
+- Fix direct deployment instructions.
+- Add user, group, and role dashboard widgets.
+- Add test mixin detect database connection leaks.
+- Remove tag create event registration from the tag
   instances. The tag create event is not applicable to
   existing tags.
-* Add proper redirection after moving a document to the
+- Add proper redirection after moving a document to the
   trash.
-* Remove the INSTALLED_APPS setting. Replace it with
+- Remove the INSTALLED_APPS setting. Replace it with
   the new COMMON_EXTRA_APPS and COMMON_DISABLED_APPS.
-* Improve email metadata support. Can now work on
+- Improve email metadata support. Can now work on
   email with nested parts. Also the metadata.yaml
   attachment no longer needs to be the first attachment.
 
 3.2.3 (2019-06-21)
 ==================
-* Add support for disabling the random primary key
+- Add support for disabling the random primary key
   test mixin.
-* Fix mailing profile log columns mappings.
+- Fix mailing profile log columns mappings.
   GitLab issue #626. Thanks to Jesaja Everling (@jeverling)
   for the report.
-* Fix the Django SMTP backend username field name.
+- Fix the Django SMTP backend username field name.
   GitLab issue #625. Thanks to Jesaja Everling (@jeverling)
   for the report and the research.
-* Increase the Django STMP username.
+- Increase the Django STMP username.
   GitLab issue #625. Thanks to Jesaja Everling (@jeverling)
   for the report and the research.
 
 3.2.2 (2019-06-19)
 ==================
-* Fix document type change view. Closes GitLab issue #614
+- Fix document type change view. Closes GitLab issue #614
   Thanks to Christoph Roeder (@brightdroid) for the report.
-* Fix document parsing tool view typo. Closes GitLab issue #615.
+- Fix document parsing tool view typo. Closes GitLab issue #615.
   Thanks to Tyler Page (@iamtpage) for the report.
-* Update the task_check_interval_source reference
+- Update the task_check_interval_source reference
   GitLab issue #617. Thanks to Lukas Gill (@lukkigi) for
   the report and debug information.
 
 3.2.1 (2019-06-14)
 ==================
-* Fix sub cabinet creation view. Thanks to Frédéric Sheedy
+- Fix sub cabinet creation view. Thanks to Frédéric Sheedy
   (@fsheedy) for the report.
-* Add PostgreSQL troubleshooting entry. Closes GitLab
+- Add PostgreSQL troubleshooting entry. Closes GitLab
   issues #523 and #602
-* Use YAML SafeDumper to avoid adding YAML datatype tags.
+- Use YAML SafeDumper to avoid adding YAML datatype tags.
   Closes GitLab issue #599. Thanks to Frédéric Sheedy
   (@fsheedy) for the report and debug information.
-* Add check for app references and point users to release notes for details.
+- Add check for app references and point users to release notes for details.
   GitLab issue #603. Thanks to Vikas Kedia (@vikaskedia) for the report.
-* Remove sidebar floar right.
+- Remove sidebar floar right.
   Fixed GitLab issue #600. Thanks to Frédéric Sheedy
   (@fsheedy) for the report and debug information.
-* Collapse sidebar on small screen
+- Collapse sidebar on small screen
   Display sidebar at the bottom of the screen on small displays.
 
 3.2 (2019-06-13)
 ================
-* Split sources models into separate modules.
-* Add support for subfolder scanning to watchfolders. Closes
+- Split sources models into separate modules.
+- Add support for subfolder scanning to watchfolders. Closes
   GitLab issue #498 and #563.
-* Updated the source check behavior to allow checking a source
+- Updated the source check behavior to allow checking a source
   even when the source is disabled and to not deleted processed files
   during a check.
-* Switch to full app paths.
-* Split document app models into separate modules.
-* Split workflow views into separate modules.
-* Add custom DatabaseWarning to tag the SQLite usage warning.
-* Add keyword arguments to add_to_class instances.
-* Move add_to_class function to their own module called methods.py
-* Remove catch all exception handling for the check in and
+- Switch to full app paths.
+- Split document app models into separate modules.
+- Split workflow views into separate modules.
+- Add custom DatabaseWarning to tag the SQLite usage warning.
+- Add keyword arguments to add_to_class instances.
+- Move add_to_class function to their own module called methods.py
+- Remove catch all exception handling for the check in and
   check out views.
-* Improve checkouts tests code reducing redundant code.
-* Change how the HOME_VIEW setting is defined.
-* Remove the role permission grant and revoke permission.
-* Split trashed document views into their own module.
-* Show entire sys trace when an App import exception is raised.
-* Remove Django suit from requirements.
-* Remove development URLs from main URL file.
-* Move API documentation generation from the root URLs module
+- Improve checkouts tests code reducing redundant code.
+- Change how the HOME_VIEW setting is defined.
+- Remove the role permission grant and revoke permission.
+- Split trashed document views into their own module.
+- Show entire sys trace when an App import exception is raised.
+- Remove Django suit from requirements.
+- Remove development URLs from main URL file.
+- Move API documentation generation from the root URLs module
   to the REST API app's URLs module.
-* Update Pillow to version 6.0.0
-* Update PyYAML to version 5.1. Update use of safe_load and
+- Update Pillow to version 6.0.0
+- Update PyYAML to version 5.1. Update use of safe_load and
   safe_dump to load and dump using the SafeLoader.
-* Add SilenceLoggerTestCaseMixin to lower level of loggers
+- Add SilenceLoggerTestCaseMixin to lower level of loggers
   during tests.
-* New default value for setting DOCUMENTS_HASH_BLOCK_SIZE is
+- New default value for setting DOCUMENTS_HASH_BLOCK_SIZE is
   65535.
-* New default value for setting MIMETYPE_FILE_READ_SIZE is
+- New default value for setting MIMETYPE_FILE_READ_SIZE is
   1024.
-* Add workaround for Tesseract bug 1670
+- Add workaround for Tesseract bug 1670
   https://github.com/tesseract-ocr/tesseract/issues/1670
   https://github.com/tesseract-ocr/tesseract/commit/3292484f67af8bdda23aa5e510918d0115785291
   https://gitlab.gnome.org/World/OpenPaperwork/pyocr/issues/104
-* Move setting COMMON_TEMPORARY_DIRECTORY to the storage app.
+- Move setting COMMON_TEMPORARY_DIRECTORY to the storage app.
   The setting is now STORAGE_TEMPORARY_DIRECTORY.
-* Move file related utilities to the storage app.
-* Backport and remove unused code from the permission app.
-* Move the navigation and authentication templates to their
+- Move file related utilities to the storage app.
+- Backport and remove unused code from the permission app.
+- Move the navigation and authentication templates to their
   respective apps.
-* Add dashboard app.
-* Remove queryset slicing hack from the Document list view.
+- Add dashboard app.
+- Remove queryset slicing hack from the Document list view.
   And slice the Recently Added Document queryset itself.
-* Move stub filtering to the Document model manager.
-* Increase the default number of recently added documents and
+- Move stub filtering to the Document model manager.
+- Increase the default number of recently added documents and
   recently accessed documents from 40 to 400.
-* Integrate django-autoadmin into the core apps.
-* Update middleware to new style classes.
-* Add server side invalid document template.
-* Move tag specific JavaScript to the tags app.
-* Reduce form boilerplate code with new FormOptions class.
-* Use FormOptions for the DetailForm class.
-* DetailForm now support help text on extra fields.
-* Add FilteredSelectionForm class.
-* Use FilteredSelectionForm for TagMultipleSelectionForm.
-* Use FilteredSelectionForm for the class CabinetListForm.
-* Add keyword arguments to URL definitions.
-* Use FilteredSelectionForm to add a new ACLCreateForm.
-* Rename IndexListForm to IndexTemplateFilteredForm.
-* Use FilteredSelectionForm for IndexTemplateFilteredForm.
-* Use FilteredSelectionForm for DocumentVersionSignatureCreateForm.
-* Improve document signatures tests.
-* Add docstrings to most models.
-* Add support to the mailing profiles for specifying a from
+- Integrate django-autoadmin into the core apps.
+- Update middleware to new style classes.
+- Add server side invalid document template.
+- Move tag specific JavaScript to the tags app.
+- Reduce form boilerplate code with new FormOptions class.
+- Use FormOptions for the DetailForm class.
+- DetailForm now support help text on extra fields.
+- Add FilteredSelectionForm class.
+- Use FilteredSelectionForm for TagMultipleSelectionForm.
+- Use FilteredSelectionForm for the class CabinetListForm.
+- Add keyword arguments to URL definitions.
+- Use FilteredSelectionForm to add a new ACLCreateForm.
+- Rename IndexListForm to IndexTemplateFilteredForm.
+- Use FilteredSelectionForm for IndexTemplateFilteredForm.
+- Use FilteredSelectionForm for DocumentVersionSignatureCreateForm.
+- Improve document signatures tests.
+- Add docstrings to most models.
+- Add support to the mailing profiles for specifying a from
   address. Closes GitLab issue #522.
-* Expose new Django settings: AUTH_PASSWORD_VALIDATORS, DEFAULT_FROM_EMAIL,
+- Expose new Django settings: AUTH_PASSWORD_VALIDATORS, DEFAULT_FROM_EMAIL,
   EMAIL_TIMEOUT, INTERNAL_IPS, LANGUAGES, LANGUAGE_CODE, STATIC_URL,
   STATICFILES_STORAGE, TIME_ZONE, WSGI_APPLICATION.
-* Convert language choices into a function.
-* Move language choices generation to documents.utils.
-* Remove support for generating documents images in base 64
+- Convert language choices into a function.
+- Move language choices generation to documents.utils.
+- Remove support for generating documents images in base 64
   format.
-* Move Pillow initialization from the module to the backend
+- Move Pillow initialization from the module to the backend
   class initialization.
-* Remove star import from the ACL and Common apps.
-* Add dependencies app
-* Convert the document tags widget to use HTML templates.
-* Move Tag app HTML widgets to their own module.
-* Move the document index app widgets to the html_widget.py
+- Remove star import from the ACL and Common apps.
+- Add dependencies app
+- Convert the document tags widget to use HTML templates.
+- Move Tag app HTML widgets to their own module.
+- Move the document index app widgets to the html_widget.py
   module.
-* Update group members view permission. The group edit and
+- Update group members view permission. The group edit and
   user edit permission are now required.
-* Add keyword arguments to messages uses.
-* Add keyword arguments to the reverse use in views.
-* Add MERCs 5 and 6.
-* Update authentication function views to use Django's new class
+- Add keyword arguments to messages uses.
+- Add keyword arguments to the reverse use in views.
+- Add MERCs 5 and 6.
+- Update authentication function views to use Django's new class
   based authentication views.
-* Expose Django's LOGOUT_REDIRECT_URL setting.
-* Move current user views from the common app to the user
+- Expose Django's LOGOUT_REDIRECT_URL setting.
+- Move current user views from the common app to the user
   management app.
-* Move the purge permission logic to the StorePermission
+- Move the purge permission logic to the StorePermission
   manager.
-* Remove the MIMETYPE_FILE_READ_SIZE setting.
-* Use copyfileobj in the document parsers.
-* Backport list facet menu code.
-* Backport sidebar code.
-* CSS updates to maximize usable width.
-* Improve partial navigation error messages and display.
-* Add user created and user edited events.
-* Add group created and group edited events.
-* Add support for SourceColumn widgets.
-* Improve styling of the template debug view.
-* Add support for showing the current user's events.
-* Add support kwargs to the SourceColumn class.
-* Improve the event widgets, views and tests.
-* Add mailer use event.
-* Remove the include fontawesome and download it from
+- Remove the MIMETYPE_FILE_READ_SIZE setting.
+- Use copyfileobj in the document parsers.
+- Backport list facet menu code.
+- Backport sidebar code.
+- CSS updates to maximize usable width.
+- Improve partial navigation error messages and display.
+- Add user created and user edited events.
+- Add group created and group edited events.
+- Add support for SourceColumn widgets.
+- Improve styling of the template debug view.
+- Add support for showing the current user's events.
+- Add support kwargs to the SourceColumn class.
+- Improve the event widgets, views and tests.
+- Add mailer use event.
+- Remove the include fontawesome and download it from
   the NPMregistry.
-* Fix issue installing scoped NPM packages.
-* Add new icons classes and templates.
-* Add support for icon composition.
-* Add support for link icon path imports.
-* Remove support for link icon strings.
-* Split document app form into separate modules.
-* Move the favorite document views to their own module.
-* Replace DocumentTypeSelectioForm with an improved
+- Fix issue installing scoped NPM packages.
+- Add new icons classes and templates.
+- Add support for icon composition.
+- Add support for link icon path imports.
+- Remove support for link icon strings.
+- Split document app form into separate modules.
+- Move the favorite document views to their own module.
+- Replace DocumentTypeSelectioForm with an improved
   version that does filtering.
-* Update OCR links activation.
-* Update document parsing link activation.
-* Add favorite document views tests.
-* Add document state action view test.
-* Remove sidebar menu instance. The secondary menu and the
+- Update OCR links activation.
+- Update document parsing link activation.
+- Add favorite document views tests.
+- Add document state action view test.
+- Remove sidebar menu instance. The secondary menu and the
   previour sidebar menu now perform the same function.
-* Backport source column identifiable and sortable
+- Backport source column identifiable and sortable
   improvements.
-* Update the way the no-result template is shown.
-* Improve TwoStateWidget to use a template. Make
+- Update the way the no-result template is shown.
+- Improve TwoStateWidget to use a template. Make
   it compatible with the SourceColumn.
-* Update SourceColumn to support related attributes.
-* Add support for display for empty values for
+- Update SourceColumn to support related attributes.
+- Add support for display for empty values for
   source columns.
-* Add support for source column object or attribute
+- Add support for source column object or attribute
   absolute URLs.
-* Add sortable columns to all apps.
-* Remove permission list display from the ACL list view.
+- Add sortable columns to all apps.
+- Remove permission list display from the ACL list view.
   Reduces clutter and unpredictable column size.
-* Remove the full name from the user list.
-* Add the first name and last name to the user list.
-* Add file metadata app.
-* Add support for submitting forms by pressing the
+- Remove the full name from the user list.
+- Add the first name and last name to the user list.
+- Add file metadata app.
+- Add support for submitting forms by pressing the
   Enter key or by double clicking.
-* Rename form template 'form_class' to 'form_css_classes'.
-* Add support for adding form button aside from the
+- Rename form template 'form_class' to 'form_css_classes'.
+- Add support for adding form button aside from the
   default submit and cancel.
-* Update ChoiceForm to be full height.
-* Add AddRemoveView to replace AssignRemoveView
-* Update the group roles view to use the new AddRemoveView.
-* Add role create and edit events.
-* Sort users by lastname, firstname.
-* Switch user groups and group users views to AddRemoveView.
-* Commit user edit event when an user is added or removed
+- Update ChoiceForm to be full height.
+- Add AddRemoveView to replace AssignRemoveView
+- Update the group roles view to use the new AddRemoveView.
+- Add role create and edit events.
+- Sort users by lastname, firstname.
+- Switch user groups and group users views to AddRemoveView.
+- Commit user edit event when an user is added or removed
   from a group.
-* Commit the group edit event when a group is added or remove
+- Commit the group edit event when a group is added or remove
   from an user.
-* Require dual permissions when add or removing users to and
+- Require dual permissions when add or removing users to and
   from group. Same with group to users.
-* Backport search improvements.
-* Remove search elapsed time calculation.
-* Remove SEARCH_LIMIT setting.
-* Use the 'handler' prefix for all the signal handler functions.
-* Remove custom email widget and use Django's.
-* Increase default maximum number of favorite documents to 400.
-* Update the role group list view to use the new AddRemoveView.
-* Commit the group event in conjunction with the role event
+- Backport search improvements.
+- Remove search elapsed time calculation.
+- Remove SEARCH_LIMIT setting.
+- Use the 'handler' prefix for all the signal handler functions.
+- Remove custom email widget and use Django's.
+- Increase default maximum number of favorite documents to 400.
+- Update the role group list view to use the new AddRemoveView.
+- Commit the group event in conjunction with the role event
   when a group is added or remove from role.
-* Update the role permission view to use the new AddRemoveView.
-* Rename transformation manager method add_for_model to
+- Update the role permission view to use the new AddRemoveView.
+- Rename transformation manager method add_for_model to
   add_to_object.
-* Rename transformation manager method get_for_model to
+- Rename transformation manager method get_for_model to
   get_for_object.
-* Load the converter class on demand.
-* Remove app top level star imports.
-* Monkeypatch group and user models to make their fields
+- Load the converter class on demand.
+- Remove app top level star imports.
+- Monkeypatch group and user models to make their fields
   translatable.
-* Add new and default Tesseract OCR backend to avoid
+- Add new and default Tesseract OCR backend to avoid
   Tesseract bug 1670
   (https://github.com/tesseract-ocr/tesseract/issues/1670)
-* Load only one language in the document properties form.
-* Convert title calculation form to a template tag.
-* Show the full title as a hover title even when truncated.
-* Increase default title truncation length to 120 characters.
-* Improve inherited permission computation.
-* Add test case mixin that produces ephimeral models.
-* Update ACL permissions view to use the new AddRemoveView class.
-* Add ACL created and edited events.
-* Update index document types view to use the new AddRemoveView
+- Load only one language in the document properties form.
+- Convert title calculation form to a template tag.
+- Show the full title as a hover title even when truncated.
+- Increase default title truncation length to 120 characters.
+- Improve inherited permission computation.
+- Add test case mixin that produces ephimeral models.
+- Update ACL permissions view to use the new AddRemoveView class.
+- Add ACL created and edited events.
+- Update index document types view to use the new AddRemoveView
   class.
-* Add index create and edit events.
-* Allow overloading the action_add and action_remove methods
+- Add index create and edit events.
+- Allow overloading the action_add and action_remove methods
   from the AddRemoveView.
-* Add view to link document type and indexes from the document
+- Add view to link document type and indexes from the document
   type side.
-* Update smart link document type selection view to use
+- Update smart link document type selection view to use
   AddRemoveView class.
-* Add smart link created and edited events.
-* Fix smart link ACL support.
-* Update JavaScript downloader to work with Python 3.
-* Improve speed of the NPM package hash verification.
-* Add view to enable smart links for documents types
+- Add smart link created and edited events.
+- Fix smart link ACL support.
+- Update JavaScript downloader to work with Python 3.
+- Improve speed of the NPM package hash verification.
+- Add view to enable smart links for documents types
   from the document type side.
-* Enable list link icons.
-* Add outline links CSS for facets.
-* Add a bottom margin to list links.
-* Use copyfileobj to save documents to files
-* Add user logged in and logged out events.
-* Add transaction handling in more places.
-* Update ACLs tests to use ephimeral models.
-* Add new app to handle all dependencies.
-* Remove the licenses.py module and replace
+- Enable list link icons.
+- Add outline links CSS for facets.
+- Add a bottom margin to list links.
+- Use copyfileobj to save documents to files
+- Add user logged in and logged out events.
+- Add transaction handling in more places.
+- Update ACLs tests to use ephimeral models.
+- Add new app to handle all dependencies.
+- Remove the licenses.py module and replace
   it with a dependencies.py module.
-* Backport ACL computation improvements.
-* Remove model permission proxy models.
-* Remove related access control argument. This is
+- Backport ACL computation improvements.
+- Remove model permission proxy models.
+- Remove related access control argument. This is
   now handled by the related field registration.
-* Allow nested access control checking.
-* check_access's permissions argument must now be
+- Allow nested access control checking.
+- check_access's permissions argument must now be
   an interable.
-* Remove permissions_related from links.
-* Remove mayan_permission_attribute_check from
+- Remove permissions_related from links.
+- Remove mayan_permission_attribute_check from
   API permission.
-* Update Bootstrap and Bootswatch to version 3.4.1.
-* Convert the workflow document types view to use
+- Update Bootstrap and Bootswatch to version 3.4.1.
+- Convert the workflow document types view to use
   the new AddRemove view.
-* Add the workflow created and edited events.
-* Remove AssignRemove View.
-* Add view to setup workflows per document type
+- Add the workflow created and edited events.
+- Remove AssignRemove View.
+- Add view to setup workflows per document type
   from the document type side.
-* Make workflows, workflows states, workflow
+- Make workflows, workflows states, workflow
   transitions column sortable.
-* Show completion and intial state in the
+- Show completion and intial state in the
   workflow proxy instance menu list.
-* Fix translation of the source upload forms
+- Fix translation of the source upload forms
   using dropzone.js
-* Rename get_object_list to get_source_queryset.
-* Add uniqueness validation to SingleObjectCreateView.
-* Remove MultipleInstanceActionMixin.
-* Backport MultipleObjectMixin improvements.
-* Remove ObjectListPermissionFilterMixin.
-* Add deprecation warning to convertdb
-* Add the preparestatic command.
-* Remove the related attribute of check_access.
-* Remove filter_by_access. Replaced by restrict_queryset.
-* Move the user set password views to the authentication app.
-* All views redirect to common's home view instead of the
+- Rename get_object_list to get_source_queryset.
+- Add uniqueness validation to SingleObjectCreateView.
+- Remove MultipleInstanceActionMixin.
+- Backport MultipleObjectMixin improvements.
+- Remove ObjectListPermissionFilterMixin.
+- Add deprecation warning to convertdb
+- Add the preparestatic command.
+- Remove the related attribute of check_access.
+- Remove filter_by_access. Replaced by restrict_queryset.
+- Move the user set password views to the authentication app.
+- All views redirect to common's home view instead of the
   REDIRECT_URL setting.
-* Update tag document list and the document tag list
+- Update tag document list and the document tag list
   views to require the view permissions for both objects.
-* Install and server static content to and from the image.
-* Add support for editing document comments.
-* Remove Internet Explorer specific markup.
-* Fix optional metadata remove when mixed with required
+- Install and server static content to and from the image.
+- Add support for editing document comments.
+- Remove Internet Explorer specific markup.
+- Fix optional metadata remove when mixed with required
   metadata.
-* Create intermedia file cache folder. Fixes preview errors
+- Create intermedia file cache folder. Fixes preview errors
   when the first document uploaded is an office file.
-* Move queue and task registration to the CeleryQueue class.
+- Move queue and task registration to the CeleryQueue class.
   The .queues.py module is now loaded automatically.
-* Allow setting the Docker user UID and GUID.
-* Add task path validation.
-* Increase dropzone upload file size limit to 2GB.
-* Add cabinet created and edited events.
-* Show a null mailer backend if there is backend with an
+- Allow setting the Docker user UID and GUID.
+- Add task path validation.
+- Increase dropzone upload file size limit to 2GB.
+- Add cabinet created and edited events.
+- Show a null mailer backend if there is backend with an
   invalid path. Due to the app full path change, existing
   mailer setups need to be recreated.
-* The document link URL when mailed is now composed of the
+- The document link URL when mailed is now composed of the
   COMMON_PROJECT_URL + document URL instead of the Site
   domain.
-* Add the checkdependencies command.
-* Add comment and make file target to generate all requirement
+- Add the checkdependencies command.
+- Add comment and make file target to generate all requirement
   files.
-* Place deletion policies units before periods for clarity.
-* Remove repeated EMAIL_TIMEOUT setting.
-* Invert order to the Action Object and Target columns for
+- Place deletion policies units before periods for clarity.
+- Remove repeated EMAIL_TIMEOUT setting.
+- Invert order to the Action Object and Target columns for
   clarity.
-* Add note about the new preparestatic command.
-* Add no-result template for workflow instance detail view.
-* Update HTTP workflow action to new requests API.
-* Remove the included Lato font. The font is now downloaded
+- Add note about the new preparestatic command.
+- Add no-result template for workflow instance detail view.
+- Update HTTP workflow action to new requests API.
+- Remove the included Lato font. The font is now downloaded
   at install time.
-* Add support for Google Fonts dependencies.
-* Add support for patchin dependency files using rewriting rules.
-* Allow searching documents by UUID.
-* Improve search negation logic.
-* Add support for search field transformations.
-* Disable hiding page navigation on idle.
-* Display namespace in the transition trigger view.
-* Sort events list in the transition trigger view.
-* Add support for form media to DynamicFormMixin.
-* Fix tag attach and remove action form media.
-* Sort content type list of the access grant and remove action.
-* Use select2 for the content type filed of the access
+- Add support for Google Fonts dependencies.
+- Add support for patchin dependency files using rewriting rules.
+- Allow searching documents by UUID.
+- Improve search negation logic.
+- Add support for search field transformations.
+- Disable hiding page navigation on idle.
+- Display namespace in the transition trigger view.
+- Sort events list in the transition trigger view.
+- Add support for form media to DynamicFormMixin.
+- Fix tag attach and remove action form media.
+- Sort content type list of the access grant and remove action.
+- Use select2 for the content type filed of the access
   grant and remove action.
-* Add Latvian translation.
-* Support search model selection.
-* Support passing a queryset factory to the search model.
-* Add workflow actions to grant or remove permissions to
+- Add Latvian translation.
+- Support search model selection.
+- Support passing a queryset factory to the search model.
+- Add workflow actions to grant or remove permissions to
   a document.
-* Add support for locked files for watchfolder.
-
-3.1.11 (2019-04-XX)
-===================
-* Fix multiple tag selection wizard step.
-* Change the required permission for the checkout info link from
+- Add support for locked files for watchfolder.
+- Fix multiple tag selection wizard step.
+- Change the required permission for the checkout info link from
   document check in to document checkout details view.
-* Lower the log severity when links don't resolve.
-* Add DOCUMENTS_HASH_BLOCK_SIZE to control the size of the file
+- Lower the log severity when links don't resolve.
+- Add DOCUMENTS_HASH_BLOCK_SIZE to control the size of the file
   block when calculating a document's checksum.
 
 3.1.10 (2019-04-04)
 ===================
-* Backport test case improvements from the development branch. Add random
+- Backport test case improvements from the development branch. Add random
   primary key mixin. Split test case code into mixins. Make the view test
   case and the API test cases part of the same class hierarchy. Update tests
   that failed due to the new import locations.
-* Add support for disabling the content type checking test case mixin.
-* Update document indexing tests to be order agnostic. GitLab issue #559.
-* Add test for the advanced search API.
-* Apply merge !36 by Simeon Walker (@simeon-walker) to fix the advanced search
+- Add support for disabling the content type checking test case mixin.
+- Update document indexing tests to be order agnostic. GitLab issue #559.
+- Add test for the advanced search API.
+- Apply merge !36 by Simeon Walker (@simeon-walker) to fix the advanced search
   API.
-* Apply merge !35 by Manoel Brunnen (@mbru) to fix building the Docker image
+- Apply merge !35 by Manoel Brunnen (@mbru) to fix building the Docker image
   on the armv7l platform (RasperryPi, Odroid XU4, Odroid HC2). Also fixes
   assertion errors from pip (https://github.com/pypa/pip/issues/6197).
-* Apply merge !37 by Roger Hunwicks (@roger.hunwicks) to allow
+- Apply merge !37 by Roger Hunwicks (@roger.hunwicks) to allow
   TestViewTestCaseMixin to work with a custom ROOT_URLCONF. GitLab issue #566.
-* Apply merge !40 by Roger Hunwicks (@/roger.hunwicks) to pin the Tornado
+- Apply merge !40 by Roger Hunwicks (@/roger.hunwicks) to pin the Tornado
   version used to 6.0 and continue supporting Python 2.7. GitLab issue #568.
-* Apply merge !41 by Jorge E. Gomez (@jorgeegomez) to fix the compressed class
+- Apply merge !41 by Jorge E. Gomez (@jorgeegomez) to fix the compressed class
   method name. GitLab issue #572.
-* Remove notification badge AJAX setup. Individual link AJAX workers are
+- Remove notification badge AJAX setup. Individual link AJAX workers are
   obsolete now that the menu is being rendered by its own AJAX renderer.
   GitLab issue #562.
-* Add support for server side link badges.
-* Add API to list all templates.
-* Remove newlines from the rendered templates.
-* Reject emails attachments of size 0. Thanks to Robert Schoeftner
+- Add support for server side link badges.
+- Add API to list all templates.
+- Remove newlines from the rendered templates.
+- Reject emails attachments of size 0. Thanks to Robert Schoeftner
   (@robert.schoeftner)for the report and solution. GitLab issue #574.
-* Add missing document index API view create permission.
-* Fix index list API view. Add index create, delete, detail API tests.
+- Add missing document index API view create permission.
+- Fix index list API view. Add index create, delete, detail API tests.
   GitLab issue #564. Thanks to the Stéphane (@shoyu) for the report and debug
   information.
-* Validate the state completion value before saving. Thanks to Manoel Brunnen
+- Validate the state completion value before saving. Thanks to Manoel Brunnen
   (@mbru) for the report and debug information. GitLab issue #557.
-* Add the MIMETYPE_FILE_READ_SIZE setting to limit the number of bytes read
+- Add the MIMETYPE_FILE_READ_SIZE setting to limit the number of bytes read
   to determine the MIME type of a new document.
-* Force object to text when raising PermissionDenied to avoid
+- Force object to text when raising PermissionDenied to avoid
   UnicodeDecodeError. Thanks to Mathias Behrle (@mbehrle) for the report
   and the debug information. GitLab issue #576.
-* Add support for skipping a default set of tests.
+- Add support for skipping a default set of tests.
 
 3.1.9 (2018-11-01)
 ==================
-* Convert the furl instance to text to allow serializing it into
+- Convert the furl instance to text to allow serializing it into
   JSON to be passed as arguments to the background task.
 
 3.1.8 (2018-10-31)
 ==================
-* Reorganize documentation into topics and chapters.
-* Add Workflows and API chapters.
-* Add new material from the Wiki to the documentation.
-* Add data migrations to the sources app migraton 0019 to ensure all labels
+- Reorganize documentation into topics and chapters.
+- Add Workflows and API chapters.
+- Add new material from the Wiki to the documentation.
+- Add data migrations to the sources app migraton 0019 to ensure all labels
   are unique before performing the schema migations.
-* Add improvements to the metadata URL encoding and decoding to support
+- Add improvements to the metadata URL encoding and decoding to support
   ampersand characters as part of the metadata value. GitLab issue
   #529. Thanks to Mark Maglana @relaxdiego for the report.
-* Add custom validator for multiple emails in a single text field.
+- Add custom validator for multiple emails in a single text field.
   Change the widget of the email fields in the mailer app to avoid
   browser side email validation. Closes GitLab issue #530.
   Thanks to Mark Maglana @relaxdiego for the report.
-* Add configuration option to change the project/installation URL.
+- Add configuration option to change the project/installation URL.
   This is used in the password reset emails and in the default
   document mailing templates.
-* Increase the size of the workflow preview image.
-* Center the workflow preview image.
-* Move the noop OCR backend to the right place.
-* Add new management command to display the current configuration
+- Increase the size of the workflow preview image.
+- Center the workflow preview image.
+- Move the noop OCR backend to the right place.
+- Add new management command to display the current configuration
   settings.
-* Default the YAML flow format to False which never uses inline.
-* Add support for reindexing documents when their base properties like
+- Default the YAML flow format to False which never uses inline.
+- Add support for reindexing documents when their base properties like
   the label and description are edited.
 
 3.1.7 (2018-10-14)
 ==================
-* Fix an issue with some browsers not firing the .load event on cached
+- Fix an issue with some browsers not firing the .load event on cached
   images. Ref: http://api.jquery.com/load-event/
-* Remove duplicate YAML loading of environment variables.
-* Don't load development apps if they are already loaded.
-* Make sure all key used as input for the cache key hash are
+- Remove duplicate YAML loading of environment variables.
+  Don't load development apps if they are already loaded.
+- Make sure all key used as input for the cache key hash are
   bytes and not unicode. GitLab issue #520. Thanks to TheOneValen
   @TheOneValen for the report.
-* Ignore document stub from the index mirror. GitLab issue
+- Ignore document stub from the index mirror. GitLab issue
   #520. Thanks to TheOneValen @TheOneValen for the report.
-* Fix for the Docker image INSTALL_FLAG path. Thanks to
+- Fix for the Docker image INSTALL_FLAG path. Thanks to
   Mark Maglana @relaxdiego for the report and to Hamish Farroq @farroq_HAM
   for the patch. GitLab issue #525.
-* Fix the typo in the Docker variable for worker concurrency. Thanks to
+- Fix the typo in the Docker variable for worker concurrency. Thanks to
   Mark Maglana @relaxdiego for the report and to Hamish Farroq @farroq_HAM
   for the patch. GitLab issue #527.
-* Add a noop OCR backend that disables OCR and the check for the
+- Add a noop OCR backend that disables OCR and the check for the
   Tesseract OCR binaries. Set the OCR_BACKEND setting or MAYAN_OCR_BACKEND
   environment variable to ocr.backends.pyocr.PyOCR to use this.
-* All tests pass on Python 3.
-* documentation: Add Docker installation method using a dedicated
+- All tests pass on Python 3.
+- documentation: Add Docker installation method using a dedicated
   Docker network.
-* documentation: Add scaling up chapter.
-* documentation: Add S3 storage configuration section.
+- documentation: Add scaling up chapter.
+- documentation: Add S3 storage configuration section.
 
 3.1.6 (2018-10-09)
 ==================
-* Improve index mirroring value clean up code to remove the spaces at the
+- Improve index mirroring value clean up code to remove the spaces at the
   starts and at the end of directories. Closes again GitLab issue #520
   Thanks to TheOneValen @ for the report.
-* Improve index mirroring cache class to use the hash of the keys
+- Improve index mirroring cache class to use the hash of the keys
   instead of the literal keys. Avoid warning about invalid key
   characters. Closes GitLab issue #518. Thanks to TheOneValen @ for the
   report.
-* Only render the Template API view for authenticated users.
+- Only render the Template API view for authenticated users.
   Thanks rgarcia for the report.
-* Add icon to the cabinet "Add new level" link.
-* Display the cabinet "Add new level" link in the top level view too.
+- Add icon to the cabinet "Add new level" link.
+- Display the cabinet "Add new level" link in the top level view too.
 
 3.1.5 (2018-10-08)
 ==================
-* Consolidate some document indexing test code into a new mixin.
-* Split the code of the mountindex command to be able to add tests.
-* Fix the way the children of IndexInstanceNode are accessed. Fixes GitLab
+- Consolidate some document indexing test code into a new mixin.
+- Split the code of the mountindex command to be able to add tests.
+- Fix the way the children of IndexInstanceNode are accessed. Fixes GitLab
   issue #518. Thanks to TheOneValen @TheOneValen for the report.
-* Remove newlines from the index name levels before using them as FUSE
+- Remove newlines from the index name levels before using them as FUSE
   directories.
-* Fixed duplicated FUSE directory removal.
-* Add link and view to show the parsed content of each document page.
-* Add a modelform for adding and editing transformation and perform YAML
+- Fixed duplicated FUSE directory removal.
+- Add link and view to show the parsed content of each document page.
+- Add a modelform for adding and editing transformation and perform YAML
   validation of arguments.
-* Add stricted error checking to the crop transformation.
-* Update compressed files class module to work with Python 3.
-* Update document parsing app tests to work with Python 3.
-* Handle office files in explicit binary mode for Python 3.
-* Return a proper list of SearchModel instances (Python 3).
-* Specify FUSE literals in explicit octal notation (Python 3).
-* URL quote the encoded names of the staging files using Django's compat
+- Add stricted error checking to the crop transformation.
+- Update compressed files class module to work with Python 3.
+- Update document parsing app tests to work with Python 3.
+- Handle office files in explicit binary mode for Python 3.
+- Return a proper list of SearchModel instances (Python 3).
+- Specify FUSE literals in explicit octal notation (Python 3).
+- URL quote the encoded names of the staging files using Django's compat
   module. (Python 3)
-* Open staging file in explicit binary mode. (Python 3)
-* Add separate Python 2 and Python 3 versions of the MetadataType model
+- Open staging file in explicit binary mode. (Python 3)
+- Add separate Python 2 and Python 3 versions of the MetadataType model
   .comma_splitter() static method.
-* Update the metadata app tests to work on Python 3.
-* Make sure metadata lookup choices are a list to be able to add the
+- Update the metadata app tests to work on Python 3.
+- Make sure metadata lookup choices are a list to be able to add the
   optional marker (Python 3).
-* Make sure the image in the document preview view is centered when it is
+- Make sure the image in the document preview view is centered when it is
   smaller than the viewport.
-* Restore use of the .store_body variable accidentally remove in
+- Restore use of the .store_body variable accidentally remove in
   63a77d0235ffef3cd49924ba280879313c622682. Closes GitLab issue #519.
   Thanks to TheOneValen @TheOneValen for the report.
-* Add shared cache class and add mounted index cache invalidation when
+- Add shared cache class and add mounted index cache invalidation when
   document and index instance nodes are updated or deleted.
-* Fix document metadata app view error when adding multiple optional
+- Fix document metadata app view error when adding multiple optional
   metadata types. Closes GitLab issue #521. Thanks to the TheOneValen
   @TheOneValen for the report.
 
 3.1.4 (2018-10-04)
 ==================
-* Fix the link to the documenation. Closes GitLab issue #516.
+- Fix the link to the documenation. Closes GitLab issue #516.
   Thanks to Matthias Urlichs @smurfix for the report.
-* Update related links. Add links to the new Wiki and Forum.
-* Add Redis config entries in the Docker images to disable
+- Update related links. Add links to the new Wiki and Forum.
+- Add Redis config entries in the Docker images to disable
   saving the database and to only provision 1 database.
-* Remove use of hard coded font icon for document page
+- Remove use of hard coded font icon for document page
   rendering busy indicator.
-* Disable the fancybox caption link if the document is
+- Disable the fancybox caption link if the document is
   in the trash.
-* Load the DropZone CSS from package and remove the
+- Load the DropZone CSS from package and remove the
   hard code CSS from appearance/base.css.
-* Add support for indexing on OCR content changes.
-* Add support for reindexing document on content parsing
+- Add support for indexing on OCR content changes.
+- Add support for reindexing document on content parsing
   changes.
-* Strip HTML entities from the browser's window title.
+- Strip HTML entities from the browser's window title.
   Closes GitLab issue #517. Thanks to Daniel Carrico @daniel1113
   for the report.
-* Improve search app. Refactored to resolve search queries
+- Improve search app. Refactored to resolve search queries
   by terms first then by field.
-* Add explanation to the launch workflows tool.
+- Add explanation to the launch workflows tool.
 
 3.1.3 (2018-09-27)
 ==================
-* Make sure template API renders in non US languages.
-* Fix user groups view.
-* Add no results help text to the document type -> metadata type
+- Make sure template API renders in non US languages.
+- Fix user groups view.
+- Add no results help text to the document type -> metadata type
   association view.
-* Expose the Django INSTALLED_APPS setting.
-* Add support for changing the concurrency of the Celery workers in the
+- Expose the Django INSTALLED_APPS setting.
+- Add support for changing the concurrency of the Celery workers in the
   Docker image. Add environment variables MAYAN_WORKER_FAST_CONCURRENCY,
   MAYAN_WORKER_MEDIUM_CONCURRENCY and MAYAN_WORKER_SLOW_CONCURRENCY.
-* Add latest translation updates.
-* Fixes a few text typos.
-* Documentation updates in the deployment and docker chapters.
+- Add latest translation updates.
+- Fixes a few text typos.
+- Documentation updates in the deployment and docker chapters.
 
 3.1.2 (2018-09-21)
 ==================
-* Database access in data migrations defaults to the 'default' database.
+- Database access in data migrations defaults to the 'default' database.
   Force it to the user selected database instead.
-* Don't use a hardcoded database alias for the destination of the database
+- Don't use a hardcoded database alias for the destination of the database
   conversion.
-* Improve natural key support in the UserOptions model.
-* Update from Django 1.11.11 to 1.11.15.
-* Add support to the convertdb command to operate on specified apps too.
-* Add test mixin to test the db conversion (dumping and loading) of a specific app.
-* Add an user test mixin to group user testing.
-* Add test the user managament app for database conversion.
-* Add support for natural keys to the DocumentPageImageCache model.
-* Add database conversion test to the common app.
-* Fix label display for resolved smart links when not using a dynamic label.
-* Only show smart link resolution errors to the user with the smart link edit
+- Improve natural key support in the UserOptions model.
+- Update from Django 1.11.11 to 1.11.15.
+- Add support to the convertdb command to operate on specified apps too.
+- Add test mixin to test the db conversion (dumping and loading) of a specific app.
+- Add an user test mixin to group user testing.
+- Add test the user managament app for database conversion.
+- Add support for natural keys to the DocumentPageImageCache model.
+- Add database conversion test to the common app.
+- Fix label display for resolved smart links when not using a dynamic label.
+- Only show smart link resolution errors to the user with the smart link edit
   permission.
-* Intercept document list view exception and display them as an error message.
+- Intercept document list view exception and display them as an error message.
 
 3.1.1 (2018-09-18)
 ==================
-* CSS tweak to make sure the AJAX spinner stays in place.
-* Fix 90, 180 and 270 degrees rotation transformations.
+- CSS tweak to make sure the AJAX spinner stays in place.
+- Fix 90, 180 and 270 degrees rotation transformations.
 
 3.1 (2018-09-17)
 ================
