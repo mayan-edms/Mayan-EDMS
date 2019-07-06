@@ -530,3 +530,7 @@ a i {
     text-decoration: none;
     padding: 9px;
 }
+
+.navbar-fixed-top {
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+}
