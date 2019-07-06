@@ -1,12 +1,16 @@
 from __future__ import absolute_import, unicode_literals
 
+import hashlib
 import json
 import logging
 
+from furl import furl
 from graphviz import Digraph
 
 from django.conf import settings
+from django.core import serializers
 from django.core.exceptions import PermissionDenied, ValidationError
+from django.core.files.base import ContentFile
 from django.db import IntegrityError, models, transaction
 from django.db.models import F, Max, Q
 from django.urls import reverse
@@ -27,6 +31,7 @@ from .literals import (
 )
 from .managers import WorkflowManager
 from .permissions import permission_workflow_transition
+from .storages import storage_workflowimagecache
 
 logger = logging.getLogger(__name__)
 
@@ -63,8 +68,48 @@ class Workflow(models.Model):
     def __str__(self):
         return self.label
 
+    def generate_image(self):
+        cache_filename = '{}-{}'.format(self.id, self.get_hash())
+        image = self.render()
+
+        # Since open "wb+" doesn't create files, check if the file
+        # exists, if not then create it
+        if not storage_workflowimagecache.exists(cache_filename):
+            storage_workflowimagecache.save(
+                name=cache_filename, content=ContentFile(content='')
+            )
+
+        with storage_workflowimagecache.open(cache_filename, mode='wb+') as file_object:
+            file_object.write(image)
+
+        return cache_filename
+
+    def get_api_image_url(self, *args, **kwargs):
+        final_url = furl()
+        final_url.args = kwargs
+        final_url.path = reverse(
+            viewname='rest_api:workflow-image',
+            kwargs={'pk': self.pk}
+        )
+        final_url.args['_hash'] = self.get_hash()
+
+        return final_url.tostr()
+
     def get_document_types_not_in_workflow(self):
         return DocumentType.objects.exclude(pk__in=self.document_types.all())
+
+    def get_hash(self):
+        objects_lists = list(
+            Workflow.objects.filter(pk=self.pk)
+        ) + list(
+            WorkflowState.objects.filter(workflow__pk=self.pk)
+        ) + list(
+            WorkflowTransition.objects.filter(workflow__pk=self.pk)
+        )
+
+        return hashlib.sha256(
+            serializers.serialize('json', objects_lists)
+        ).hexdigest()
 
     def get_initial_state(self):
         try:

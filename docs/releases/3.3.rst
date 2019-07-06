@@ -17,6 +17,7 @@ Changes
   The vertical menu remain open even when clicking on items and upon
   a browser refresh will also restore its state to match the selected
   view.
+- Backport workflow preview refactor. GitLab issue #532.
 
 Removals
 --------
@@ -105,6 +106,6 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
-- :gitlab-issue:`XX` 
+- :gitlab-issue:`532` Workflow preview isn't updated right after transitions are modified
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

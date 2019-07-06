@@ -4,9 +4,10 @@ from django.conf.urls import url
 
 from .api_views import (
     APIDocumentTypeWorkflowListView, APIWorkflowDocumentTypeList,
-    APIWorkflowDocumentTypeView, APIWorkflowInstanceListView,
-    APIWorkflowInstanceView, APIWorkflowInstanceLogEntryListView,
-    APIWorkflowListView, APIWorkflowStateListView, APIWorkflowStateView,
+    APIWorkflowDocumentTypeView, APIWorkflowImageView,
+    APIWorkflowInstanceListView, APIWorkflowInstanceView,
+    APIWorkflowInstanceLogEntryListView, APIWorkflowListView,
+    APIWorkflowStateListView, APIWorkflowStateView,
     APIWorkflowTransitionListView, APIWorkflowTransitionView, APIWorkflowView
 )
 from .views import (
@@ -22,7 +23,7 @@ from .views import (
     SetupWorkflowTransitionEditView,
     SetupWorkflowTransitionTriggerEventListView, ToolLaunchAllWorkflows,
     WorkflowDocumentListView, WorkflowInstanceDetailView,
-    WorkflowImageView, WorkflowInstanceTransitionView, WorkflowListView,
+    WorkflowInstanceTransitionView, WorkflowListView,
     WorkflowPreviewView, WorkflowStateDocumentListView, WorkflowStateListView,
 )
 from .views.workflow_views import SetupDocumentTypeWorkflowsView
@@ -168,11 +169,6 @@ urlpatterns = [
         name='workflow_state_list'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/image/$',
-        view=WorkflowImageView.as_view(),
-        name='workflow_image'
-    ),
-    url(
         regex=r'^(?P<pk>\d+)/preview/$',
         view=WorkflowPreviewView.as_view(),
         name='workflow_preview'
@@ -203,6 +199,10 @@ api_urls = [
         regex=r'^workflows/(?P<pk>[0-9]+)/document_types/(?P<document_type_pk>[0-9]+)/$',
         view=APIWorkflowDocumentTypeView.as_view(),
         name='workflow-document-type-detail'
+    ),
+    url(
+        regex=r'^workflows/(?P<pk>\d+)/image/$',
+        name='workflow-image', view=APIWorkflowImageView.as_view()
     ),
     url(
         regex=r'^workflows/(?P<pk>[0-9]+)/states/$',

@@ -1,7 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.core.files.base import ContentFile
 from django.db import transaction
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -13,7 +12,7 @@ from mayan.apps.common.generics import (
     AddRemoveView, ConfirmView, FormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectDetailView,
     SingleObjectDynamicFormCreateView, SingleObjectDynamicFormEditView,
-    SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
+    SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.events import event_document_type_edited
@@ -49,7 +48,6 @@ from ..permissions import (
 from ..tasks import task_launch_all_workflows
 
 __all__ = (
-    'WorkflowImageView', 'WorkflowPreviewView',
     'SetupWorkflowListView', 'SetupWorkflowCreateView', 'SetupWorkflowEditView',
     'SetupWorkflowDeleteView', 'SetupWorkflowDocumentTypesView',
     'SetupWorkflowStateActionCreateView', 'SetupWorkflowStateActionDeleteView',
@@ -59,7 +57,8 @@ __all__ = (
     'SetupWorkflowStateListView', 'SetupWorkflowTransitionCreateView',
     'SetupWorkflowTransitionDeleteView', 'SetupWorkflowTransitionEditView',
     'SetupWorkflowTransitionListView',
-    'SetupWorkflowTransitionTriggerEventListView', 'ToolLaunchAllWorkflows'
+    'SetupWorkflowTransitionTriggerEventListView', 'ToolLaunchAllWorkflows',
+    'WorkflowPreviewView'
 )
 
 
@@ -750,26 +749,15 @@ class ToolLaunchAllWorkflows(ConfirmView):
         )
 
 
-class WorkflowImageView(SingleObjectDownloadView):
-    attachment = False
-    model = Workflow
-    object_permission = permission_workflow_view
-
-    def get_file(self):
-        workflow = self.get_object()
-        return ContentFile(workflow.render(), name=workflow.label)
-
-    def get_mimetype(self):
-        return 'image'
-
-
 class WorkflowPreviewView(SingleObjectDetailView):
     form_class = WorkflowPreviewForm
     model = Workflow
     object_permission = permission_workflow_view
+    pk_url_kwarg = 'pk'
 
     def get_extra_context(self):
         return {
             'hide_labels': True,
+            'object': self.get_object(),
             'title': _('Preview of: %s') % self.get_object()
         }
