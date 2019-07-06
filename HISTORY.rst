@@ -3,6 +3,7 @@
 - Add support for icon shadows.
 - Add icons and no-result template to the object error log view and
   links.
+- Use Select2 widget for the document type selection form.
 
 3.2.5 (2019-07-05)
 ==================
