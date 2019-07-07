@@ -61,7 +61,7 @@ class Tag(models.Model):
     def get_document_count(self, user):
         """
         Return the numeric count of documents that have this tag attached.
-        The count if filtered by access.
+        The count is filtered by access.
         """
         queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_document_view, queryset=self.documents,

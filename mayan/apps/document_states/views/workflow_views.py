@@ -742,6 +742,7 @@ class SetupWorkflowTransitionFieldCreateView(ExternalObjectMixin, SingleObjectCr
         'name', 'label', 'field_type', 'help_text', 'required', 'widget',
         'widget_kwargs'
     )
+
     def get_extra_context(self):
         return {
             'navigation_object_list': ('transition', 'workflow'),

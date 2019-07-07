@@ -11,7 +11,7 @@ from mayan.apps.common.settings import setting_paginate_by
 from mayan.apps.common.tests import BaseTestCase
 from mayan.apps.storage.utils import fs_cleanup
 
-from ..classes import Namespace, Setting
+from ..classes import Setting
 
 from .literals import ENVIRONMENT_TEST_NAME, ENVIRONMENT_TEST_VALUE
 from .mixins import SmartSettingTestMixin
@@ -52,4 +52,3 @@ class ClassesTestCase(SmartSettingTestMixin, BaseTestCase):
         self.assertFalse(Setting.check_changed())
         test_setting.value = 'test value edited'
         self.assertTrue(Setting.check_changed())
-

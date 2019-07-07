@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
-    menu_main, menu_object, menu_secondary, menu_tools, menu_topbar, menu_user
+    menu_object, menu_secondary, menu_tools, menu_topbar, menu_user
 )
 from mayan.apps.navigation.classes import SourceColumn
 

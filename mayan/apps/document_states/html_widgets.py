@@ -1,9 +1,7 @@
 from __future__ import unicode_literals
 
-from django import forms
 from django.template.loader import render_to_string
-from django.urls import reverse
-from django.utils.html import format_html_join, mark_safe
+from django.utils.html import format_html_join
 
 
 def widget_transition_events(transition):
