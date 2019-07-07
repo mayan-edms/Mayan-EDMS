@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:36-0400\n"
+"POT-Creation-Date: 2019-07-05 01:28-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -319,13 +319,13 @@ msgstr "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Document: %(document)s removed from cabinet: %(cabinet)s."
 
-#: wizard_steps.py:18
+#: wizard_steps.py:17
 #, fuzzy
 #| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "Delete cabinets"
 
-#: wizard_steps.py:32
+#: wizard_steps.py:31
 #, fuzzy
 #| msgid "Cabinets to which the selected documents will be added."
 msgid "Cabinets to which the document will be added."

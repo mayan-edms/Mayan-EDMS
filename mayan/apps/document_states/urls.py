@@ -4,9 +4,10 @@ from django.conf.urls import url
 
 from .api_views import (
     APIDocumentTypeWorkflowListView, APIWorkflowDocumentTypeList,
-    APIWorkflowDocumentTypeView, APIWorkflowInstanceListView,
-    APIWorkflowInstanceView, APIWorkflowInstanceLogEntryListView,
-    APIWorkflowListView, APIWorkflowStateListView, APIWorkflowStateView,
+    APIWorkflowDocumentTypeView, APIWorkflowImageView,
+    APIWorkflowInstanceListView, APIWorkflowInstanceView,
+    APIWorkflowInstanceLogEntryListView, APIWorkflowListView,
+    APIWorkflowStateListView, APIWorkflowStateView,
     APIWorkflowTransitionListView, APIWorkflowTransitionView, APIWorkflowView
 )
 from .views import (
@@ -22,16 +23,44 @@ from .views import (
     SetupWorkflowTransitionEditView,
     SetupWorkflowTransitionTriggerEventListView, ToolLaunchAllWorkflows,
     WorkflowDocumentListView, WorkflowInstanceDetailView,
-    WorkflowImageView, WorkflowInstanceTransitionView, WorkflowListView,
-    WorkflowPreviewView, WorkflowStateDocumentListView, WorkflowStateListView,
+    WorkflowInstanceTransitionExecuteView, WorkflowInstanceTransitionSelectView,
+    WorkflowListView, WorkflowPreviewView, WorkflowStateDocumentListView,
+    WorkflowStateListView,
 )
-from .views.workflow_views import SetupDocumentTypeWorkflowsView
+from .views.workflow_views import (
+    SetupDocumentTypeWorkflowsView, SetupWorkflowTransitionFieldCreateView,
+    SetupWorkflowTransitionFieldDeleteView,
+    SetupWorkflowTransitionFieldEditView, SetupWorkflowTransitionFieldListView
+)
 
 urlpatterns_workflows = [
     url(
         regex=r'^document_type/(?P<pk>\d+)/workflows/$',
         view=SetupDocumentTypeWorkflowsView.as_view(),
         name='document_type_workflows'
+    ),
+]
+
+urlpatterns_workflow_transition_fields = [
+    url(
+        regex=r'^setup/workflows/transitions/(?P<pk>\d+)/fields/create/$',
+        view=SetupWorkflowTransitionFieldCreateView.as_view(),
+        name='setup_workflow_transition_field_create'
+    ),
+    url(
+        regex=r'^setup/workflows/transitions/(?P<pk>\d+)/fields/$',
+        view=SetupWorkflowTransitionFieldListView.as_view(),
+        name='setup_workflow_transition_field_list'
+    ),
+    url(
+        regex=r'^setup/workflows/transitions/fields/(?P<pk>\d+)/delete/$',
+        view=SetupWorkflowTransitionFieldDeleteView.as_view(),
+        name='setup_workflow_transition_field_delete'
+    ),
+    url(
+        regex=r'^setup/workflows/transitions/fields/(?P<pk>\d+)/edit/$',
+        view=SetupWorkflowTransitionFieldEditView.as_view(),
+        name='setup_workflow_transition_field_edit'
     ),
 ]
 
@@ -47,9 +76,14 @@ urlpatterns = [
         name='workflow_instance_detail'
     ),
     url(
-        regex=r'^document/workflows/(?P<pk>\d+)/transition/$',
-        view=WorkflowInstanceTransitionView.as_view(),
-        name='workflow_instance_transition'
+        regex=r'^document/workflows/(?P<pk>\d+)/transitions/select/$',
+        view=WorkflowInstanceTransitionSelectView.as_view(),
+        name='workflow_instance_transition_selection'
+    ),
+    url(
+        regex=r'^document/workflows/(?P<workflow_instance_pk>\d+)/transitions/(?P<workflow_transition_pk>\d+)/execute/$',
+        view=WorkflowInstanceTransitionExecuteView.as_view(),
+        name='workflow_instance_transition_execute'
     ),
     url(
         regex=r'^setup/all/$', view=SetupWorkflowListView.as_view(),
@@ -168,11 +202,6 @@ urlpatterns = [
         name='workflow_state_list'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/image/$',
-        view=WorkflowImageView.as_view(),
-        name='workflow_image'
-    ),
-    url(
         regex=r'^(?P<pk>\d+)/preview/$',
         view=WorkflowPreviewView.as_view(),
         name='workflow_preview'
@@ -183,7 +212,9 @@ urlpatterns = [
         name='workflow_state_document_list'
     ),
 ]
+
 urlpatterns.extend(urlpatterns_workflows)
+urlpatterns.extend(urlpatterns_workflow_transition_fields)
 
 api_urls = [
     url(
@@ -203,6 +234,10 @@ api_urls = [
         regex=r'^workflows/(?P<pk>[0-9]+)/document_types/(?P<document_type_pk>[0-9]+)/$',
         view=APIWorkflowDocumentTypeView.as_view(),
         name='workflow-document-type-detail'
+    ),
+    url(
+        regex=r'^workflows/(?P<pk>\d+)/image/$',
+        name='workflow-image', view=APIWorkflowImageView.as_view()
     ),
     url(
         regex=r'^workflows/(?P<pk>[0-9]+)/states/$',

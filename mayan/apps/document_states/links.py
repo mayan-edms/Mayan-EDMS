@@ -129,6 +129,35 @@ link_workflow_transition_events = Link(
     text=_('Transition triggers'),
     view='document_states:setup_workflow_transition_events'
 )
+
+# Workflow transition fields
+link_setup_workflow_transition_field_create = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_transition_field',
+    permissions=(permission_workflow_edit,), text=_('Create field'),
+    view='document_states:setup_workflow_transition_field_create',
+)
+link_setup_workflow_transition_field_delete = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_transition_field_delete',
+    permissions=(permission_workflow_edit,),
+    tags='dangerous', text=_('Delete'),
+    view='document_states:setup_workflow_transition_field_delete',
+)
+link_setup_workflow_transition_field_edit = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_transition_field_edit',
+    permissions=(permission_workflow_edit,),
+    text=_('Edit'), view='document_states:setup_workflow_transition_field_edit',
+)
+link_setup_workflow_transition_field_list = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_transition_field_list',
+    permissions=(permission_workflow_edit,),
+    text=_('Fields'),
+    view='document_states:setup_workflow_transition_field_list',
+)
+
 link_workflow_preview = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.document_states.icons.icon_workflow_preview',
@@ -159,7 +188,7 @@ link_workflow_instance_transition = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.document_states.icons.icon_workflow_instance_transition',
     text=_('Transition'),
-    view='document_states:workflow_instance_transition',
+    view='document_states:workflow_instance_transition_selection',
 )
 
 # Runtime proxies

@@ -12,6 +12,7 @@ from mayan.apps.common.menus import (
     menu_list_facet, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.common.signals import perform_upgrade
+from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
@@ -19,6 +20,7 @@ from mayan.apps.events.links import (
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
+from .dashboard_widgets import DashboardWidgetRoleTotal
 from .events import event_role_created, event_role_edited
 from .handlers import handler_purge_permissions
 from .links import (
@@ -64,6 +66,10 @@ class PermissionsApp(MayanAppConfig):
 
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True, source=Role
+        )
+
+        dashboard_main.add_widget(
+            widget=DashboardWidgetRoleTotal, order=99
         )
 
         menu_list_facet.bind_links(

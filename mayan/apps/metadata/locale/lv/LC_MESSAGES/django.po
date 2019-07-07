@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:39-0400\n"
-"PO-Revision-Date: 2019-05-31 12:40+0000\n"
+"POT-Creation-Date: 2019-07-05 01:31-0400\n"
+"PO-Revision-Date: 2019-06-28 07:05+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -100,7 +100,7 @@ msgstr "Noklusējuma vērtības kļūda: %s"
 #: forms.py:104 models.py:172
 #, python-format
 msgid "\"%s\" is required for this document type."
-msgstr "&quot;%s&quot; ir nepieciešams šim dokumenta tipam."
+msgstr "\"%s\" ir nepieciešams šim dokumenta tipam."
 
 #: forms.py:122
 msgid "Metadata types to be added to the selected documents."
@@ -336,7 +336,7 @@ msgstr "Pievienot metadatu veidus dokumentam: %s"
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr "Kļūda, pievienojot dokumentam &quot;%(metadata_type)s&quot; metadatu tipu: %(document)s; %(exception)s"
+msgstr "Kļūda, pievienojot dokumentam \"%(metadata_type)s\" metadatu tipu: %(document)s; %(exception)s"
 
 #: views.py:194
 #, python-format
@@ -436,14 +436,14 @@ msgstr "Noņemt metadatu veidus no dokumenta: %s"
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
-msgstr "Veiksmīgi noņemt metadatu tipu &quot;%(metadata_type)s&quot; no dokumenta: %(document)s."
+msgstr "Veiksmīgi noņemt metadatu tipu \"%(metadata_type)s\" no dokumenta: %(document)s."
 
 #: views.py:576
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
-msgstr "Atceļot metadatu tipu &quot;%(metadata_type)s&quot; no dokumenta, radās kļūda: %(document)s; %(exception)s"
+msgstr "Atceļot metadatu tipu \"%(metadata_type)s\" no dokumenta, radās kļūda: %(document)s; %(exception)s"
 
 #: views.py:587
 msgid "Create metadata type"

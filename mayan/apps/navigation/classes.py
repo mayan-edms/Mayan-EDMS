@@ -611,8 +611,6 @@ class SourceColumn(object):
             # Try it as a queryset
             columns.extend(cls._registry[source.model])
         except AttributeError:
-            pass
-
             try:
                 # Special case for queryset items produced from
                 # .defer() or .only() optimizations
@@ -676,7 +674,11 @@ class SourceColumn(object):
         self._label = label
         self.attribute = attribute
         self.empty_value = empty_value
+<<<<<<< HEAD
         self.exclude = exclude or ()
+=======
+        self.exclude = ()
+>>>>>>> versions/minor
         self.func = func
         self.is_attribute_absolute_url = is_attribute_absolute_url
         self.is_object_absolute_url = is_object_absolute_url
@@ -718,6 +720,9 @@ class SourceColumn(object):
                 )
 
         self.label = self._label
+
+    def add_exclude(self, source):
+        self.exclude = self.exclude + (source,)
 
     def get_absolute_url(self, obj):
         if self.is_object_absolute_url:

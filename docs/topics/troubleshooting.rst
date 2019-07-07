@@ -168,3 +168,16 @@ files to a temporary directory on the same partition as the watchfolder first.
 Then move the files to the watchfolder. The move will be executed as an atomic
 operation and will prevent the files to be uploaded in the middle of the
 copying process.
+
+************
+Dependencies
+************
+
+Error: ``unable to execute 'x86_64-linux-gnu-gcc': No such file or directory``
+==============================================================================
+
+This happens when using the ``MAYAN_APT_INSTALLS`` feature. It means that the
+``GCC`` package is required to compile the packages specified with
+``MAYAN_APT_INSTALLS``.
+
+Solution: Include ``gcc`` in the list of packages specified with ``MAYAN_APT_INSTALLS``.

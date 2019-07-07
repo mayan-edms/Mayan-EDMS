@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:40-0400\n"
-"PO-Revision-Date: 2019-05-05 06:26+0000\n"
+"POT-Creation-Date: 2019-07-05 01:32-0400\n"
+"PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
-#: views.py:630
+#: views.py:627
 msgid "Sources"
 msgstr "来源"
 
@@ -72,7 +72,7 @@ msgstr "展开压缩文件"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "将压缩文件包含的文件作为单个文档上载"
 
-#: forms.py:68 views.py:485
+#: forms.py:68 views.py:482
 msgid "Staging file"
 msgstr "暂存文件"
 
@@ -196,7 +196,7 @@ msgstr "监视文件夹"
 msgid "POP3 email"
 msgstr "POP3电子邮件"
 
-#: literals.py:66 models/email_sources.py:220 models/email_sources.py:221
+#: literals.py:66 models/email_sources.py:226 models/email_sources.py:227
 msgid "IMAP email"
 msgstr "IMAP电子邮件"
 
@@ -265,38 +265,37 @@ msgstr "日志条目"
 msgid "Log entries"
 msgstr "日志条目"
 
-#: models/email_sources.py:44
+#: models/email_sources.py:45
 msgid "Host"
 msgstr "主机"
 
-#: models/email_sources.py:45
+#: models/email_sources.py:46
 msgid "SSL"
 msgstr "SSL"
 
-#: models/email_sources.py:47
+#: models/email_sources.py:48
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr "对于POP3，典型的选择是110，对于基于SSL的POP3为995，对于IMAP为143，对于基于SSL的IMAP为993。"
 
-#: models/email_sources.py:48
+#: models/email_sources.py:49
 msgid "Port"
 msgstr "端口"
 
-#: models/email_sources.py:50
+#: models/email_sources.py:51
 msgid "Username"
 msgstr "用户名"
 
-#: models/email_sources.py:51
+#: models/email_sources.py:52
 msgid "Password"
 msgstr "密码"
 
-#: models/email_sources.py:55
+#: models/email_sources.py:56
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
-"pairs to be assigned to the rest of the downloaded attachments. Note: This "
-"attachment has to be the first attachment."
-msgstr "附件的名称，其中包含要分配给其余下载附件的元数据类型名称和值对。注意：此附件必须是第一个附件。"
+"pairs to be assigned to the rest of the downloaded attachments."
+msgstr ""
 
 #: models/email_sources.py:59
 msgid "Metadata attachment name"
@@ -338,33 +337,33 @@ msgstr "电邮来源"
 msgid "Email sources"
 msgstr "电邮来源"
 
-#: models/email_sources.py:184
+#: models/email_sources.py:190
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "主题元数据类型“%(metadata_type)s”对于文档类型%(document_type)s无效"
 
-#: models/email_sources.py:198
+#: models/email_sources.py:204
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "“发件人”元数据类型“%(metadata_type)s”对于文档类型%(document_type)s无效"
 
-#: models/email_sources.py:213
+#: models/email_sources.py:219
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "IMAP邮箱，用于检查邮件。"
 
-#: models/email_sources.py:214
+#: models/email_sources.py:220
 msgid "Mailbox"
 msgstr "邮箱"
 
-#: models/email_sources.py:265
+#: models/email_sources.py:272
 msgid "Timeout"
 msgstr "超时"
 
-#: models/email_sources.py:271 models/email_sources.py:272
+#: models/email_sources.py:278 models/email_sources.py:279
 msgid "POP email"
 msgstr "POP电子邮件"
 
@@ -597,74 +596,74 @@ msgstr ""
 msgid "Server responded with {{statusCode}} code."
 msgstr ""
 
-#: views.py:65
+#: views.py:63
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr "此处列出了在使用源期间产生的任何错误，以帮助调试。"
 
-#: views.py:68
+#: views.py:66
 msgid "No log entries available"
 msgstr "没有可用的日志条目"
 
-#: views.py:70
+#: views.py:68
 #, python-format
 msgid "Log entries for source: %s"
 msgstr "源%s的日志条目"
 
-#: views.py:125 wizards.py:154
+#: views.py:123 wizards.py:154
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr "没有定义交互式文档源或没有启用任何交互式文档源，在继续之前创建一个。"
 
-#: views.py:153 views.py:171 views.py:181
+#: views.py:151 views.py:169 views.py:179
 msgid "Document properties"
 msgstr "文档属性"
 
-#: views.py:161
+#: views.py:159
 msgid "Files in staging path"
 msgstr "暂存路径中的文件"
 
-#: views.py:172
+#: views.py:170
 msgid "Scan"
 msgstr "扫描"
 
-#: views.py:282
+#: views.py:279
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr "执行文档上传任务时出错; %(exception)s，%(exception_class)s"
 
-#: views.py:293
+#: views.py:290
 msgid "New document queued for upload and will be available shortly."
 msgstr "新文档排队等待上传，很快将可用。"
 
-#: views.py:344
+#: views.py:341
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "从源%(source)s上传类型为“%(document_type)s”的文档"
 
-#: views.py:378
+#: views.py:375
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "文档“%s”被阻止上传新版本。"
 
-#: views.py:431
+#: views.py:428
 msgid "New document version queued for upload and will be available shortly."
 msgstr "新文档版本排队等待上传，很快将可用。"
 
-#: views.py:472
+#: views.py:469
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr "从源%s上传新版本"
 
-#: views.py:486
+#: views.py:483
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: views.py:507
+#: views.py:504
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -672,31 +671,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:513
+#: views.py:510
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "检查源“%s”的触发器？"
 
-#: views.py:530
+#: views.py:527
 msgid "Source check queued."
 msgstr "源检查排队。"
 
-#: views.py:547
+#: views.py:544
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "创建%s类型的新来源"
 
-#: views.py:569
+#: views.py:566
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "删除源：%s？"
 
-#: views.py:590
+#: views.py:587
 #, python-format
 msgid "Edit source: %s"
 msgstr "编辑源：%s"
 
-#: views.py:624
+#: views.py:621
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -704,7 +703,7 @@ msgid ""
 "intervention."
 msgstr "来源提供上传文件的方法。某些来源，如网页表单，是交互式的，需要用户输入才能运行。其他来源，如电子邮件，是自动的，无需用户干预即可在后台运行。"
 
-#: views.py:629
+#: views.py:626
 msgid "No sources available"
 msgstr "没有可用的来源"
 

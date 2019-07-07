@@ -11,12 +11,13 @@ from mayan.apps.common.settings import setting_paginate_by
 from mayan.apps.common.tests import BaseTestCase
 from mayan.apps.storage.utils import fs_cleanup
 
-from ..classes import Setting
+from ..classes import Namespace, Setting
 
 from .literals import ENVIRONMENT_TEST_NAME, ENVIRONMENT_TEST_VALUE
+from .mixins import SmartSettingTestMixin
 
 
-class ClassesTestCase(BaseTestCase):
+class ClassesTestCase(SmartSettingTestMixin, BaseTestCase):
     def test_environment_variable(self):
         os.environ[
             'MAYAN_{}'.format(ENVIRONMENT_TEST_NAME)
@@ -39,3 +40,16 @@ class ClassesTestCase(BaseTestCase):
 
         with path_config_backup.open(mode='r') as file_object:
             self.assertFalse('!!python/' in file_object.read())
+
+    def test_setting_check_changed(self):
+        self._create_test_settings_namespace()
+        test_setting = self.test_settings_namespace.add_setting(
+            global_name='SMART_SETTINGS_TEST_SETTING',
+            default='test value'
+        )
+        # Initialize hash cache
+        Setting.check_changed()
+        self.assertFalse(Setting.check_changed())
+        test_setting.value = 'test value edited'
+        self.assertTrue(Setting.check_changed())
+

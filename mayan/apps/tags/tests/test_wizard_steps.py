@@ -33,9 +33,7 @@ class TaggedDocumentUploadTestCase(TagTestMixin, GenericDocumentViewTestCase):
                 }, data={
                     'document_type_id': self.test_document_type.pk,
                     'source-file': file_object,
-                    'tags': ','.join(
-                        map(str, Tag.objects.values_list('pk', flat=True))
-                    )
+                    'tags': Tag.objects.values_list('pk', flat=True)
                 }
             )
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:40-0400\n"
+"POT-Creation-Date: 2019-07-05 01:32-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -19,13 +19,13 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:52 apps.py:108 apps.py:115 apps.py:137 apps.py:139 events.py:7
+#: apps.py:52 apps.py:107 apps.py:114 apps.py:136 apps.py:138 events.py:7
 #: forms.py:17 links.py:25 menus.py:16 models.py:42 permissions.py:7
-#: views.py:222 workflow_actions.py:19 workflow_actions.py:67
+#: views.py:222 workflow_actions.py:20 workflow_actions.py:68
 msgid "Tags"
 msgstr "برچسب ها"
 
-#: apps.py:130 models.py:36
+#: apps.py:129 models.py:36
 msgid "Documents"
 msgstr "اسناد"
 
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Tag removed from document"
 msgstr "برچسب از سند حذف شد"
 
-#: links.py:16 workflow_actions.py:74
+#: links.py:16 workflow_actions.py:75
 msgid "Remove tag"
 msgstr "برچسب را حذف کنید"
 
@@ -179,7 +179,7 @@ msgstr[1] "برچسب ها را به اسناد %(count)d اضافه کنید: "
 msgid "Attach tags to document: %s"
 msgstr "برچسب ها را به سند اضافه کنید: %s"
 
-#: views.py:70 wizard_steps.py:30
+#: views.py:70 wizard_steps.py:29
 msgid "Tags to be attached."
 msgstr "برچسب ها باید متصل شوند"
 
@@ -301,18 +301,18 @@ msgstr "سند \"%(document)s\" به عنوان \"%(tag)s\" برچسب گذار�
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "برچسب \"%(tag)s\" با موفقیت از سند \"%(document)s\" حذف شد."
 
-#: wizard_steps.py:18
+#: wizard_steps.py:17
 msgid "Select tags"
 msgstr ""
 
-#: workflow_actions.py:21
+#: workflow_actions.py:22
 msgid "Tags to attach to the document"
 msgstr "برچسب ها برای پیوستن به سند"
 
-#: workflow_actions.py:26
+#: workflow_actions.py:27
 msgid "Attach tag"
 msgstr "ضمیمه برچسب"
 
-#: workflow_actions.py:69
+#: workflow_actions.py:70
 msgid "Tags to remove from the document"
 msgstr "برچسب ها را از سند حذف کنید"

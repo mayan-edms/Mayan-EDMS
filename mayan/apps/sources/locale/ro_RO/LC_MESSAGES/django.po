@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:40-0400\n"
-"PO-Revision-Date: 2019-05-08 07:32+0000\n"
-"Last-Translator: Harald Ersch\n"
+"POT-Creation-Date: 2019-07-05 01:32-0400\n"
+"PO-Revision-Date: 2019-06-29 06:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
-#: views.py:630
+#: views.py:627
 msgid "Sources"
 msgstr "Surse"
 
@@ -74,7 +74,7 @@ msgstr "Dezarhivare fișiere comprimate"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Încărcați fișiere de fișier comprimat care sunt incluse ca documente individuale"
 
-#: forms.py:68 views.py:485
+#: forms.py:68 views.py:482
 msgid "Staging file"
 msgstr "Structura fisier"
 
@@ -198,7 +198,7 @@ msgstr "Dosarul de urmărire"
 msgid "POP3 email"
 msgstr "E-mail POP3"
 
-#: literals.py:66 models/email_sources.py:220 models/email_sources.py:221
+#: literals.py:66 models/email_sources.py:226 models/email_sources.py:227
 msgid "IMAP email"
 msgstr "E-mail IMAP"
 
@@ -267,38 +267,37 @@ msgstr "Intrare în jurnal"
 msgid "Log entries"
 msgstr "Intrările de jurnal"
 
-#: models/email_sources.py:44
+#: models/email_sources.py:45
 msgid "Host"
 msgstr "Gazdă"
 
-#: models/email_sources.py:45
+#: models/email_sources.py:46
 msgid "SSL"
 msgstr "SSL"
 
-#: models/email_sources.py:47
+#: models/email_sources.py:48
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr "Opțiunile tipice sunt 110 pentru POP3, 995 pentru POP3 peste SSL, 143 pentru IMAP, 993 pentru IMAP peste SSL."
 
-#: models/email_sources.py:48
+#: models/email_sources.py:49
 msgid "Port"
 msgstr "Port"
 
-#: models/email_sources.py:50
+#: models/email_sources.py:51
 msgid "Username"
 msgstr "Nume de utilizator"
 
-#: models/email_sources.py:51
+#: models/email_sources.py:52
 msgid "Password"
 msgstr "Parola"
 
-#: models/email_sources.py:55
+#: models/email_sources.py:56
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
-"pairs to be assigned to the rest of the downloaded attachments. Note: This "
-"attachment has to be the first attachment."
-msgstr "Numele atașamentului care va conține nume de perechi de metadate și perechi de valori care vor fi atribuite restului atașamentelor descărcate. Notă: acest atașament trebuie să fie primul atașament."
+"pairs to be assigned to the rest of the downloaded attachments."
+msgstr ""
 
 #: models/email_sources.py:59
 msgid "Metadata attachment name"
@@ -340,33 +339,33 @@ msgstr "Sursa de e-mail"
 msgid "Email sources"
 msgstr "Surse de e-mail"
 
-#: models/email_sources.py:184
+#: models/email_sources.py:190
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "Tipul de metadate Subiect \"%(metadata_type)s\" nu este valid pentru tipul de document: %(document_type)s"
 
-#: models/email_sources.py:198
+#: models/email_sources.py:204
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "Tipul de metadate \"De la\" \"%(metadata_type)s\" nu este valabil pentru tipul de document: %(document_type)s"
 
-#: models/email_sources.py:213
+#: models/email_sources.py:219
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "Căsuța poștală IMAP din care să se verifice mesajele."
 
-#: models/email_sources.py:214
+#: models/email_sources.py:220
 msgid "Mailbox"
 msgstr "Căsuță poștală"
 
-#: models/email_sources.py:265
+#: models/email_sources.py:272
 msgid "Timeout"
 msgstr "Pauză"
 
-#: models/email_sources.py:271 models/email_sources.py:272
+#: models/email_sources.py:278 models/email_sources.py:279
 msgid "POP email"
 msgstr "Emailul POP"
 
@@ -599,74 +598,74 @@ msgstr "Golire"
 msgid "Server responded with {{statusCode}} code."
 msgstr "Serverul a răspuns cu codul {{statusCode}}."
 
-#: views.py:65
+#: views.py:63
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr "Orice eroare produsă în timpul utilizării unei surse va fi listată aici pentru a ajuta la depanare."
 
-#: views.py:68
+#: views.py:66
 msgid "No log entries available"
 msgstr "Nu sunt disponibile înregistrări din jurnal"
 
-#: views.py:70
+#: views.py:68
 #, python-format
 msgid "Log entries for source: %s"
 msgstr "Înregistrări de intrări pentru sursă: %s"
 
-#: views.py:125 wizards.py:154
+#: views.py:123 wizards.py:154
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr "Nu s-au definit surse de documente interactive sau nici una nu a fost activată, creați una înainte de a continua."
 
-#: views.py:153 views.py:171 views.py:181
+#: views.py:151 views.py:169 views.py:179
 msgid "Document properties"
 msgstr "Proprietățile documentului"
 
-#: views.py:161
+#: views.py:159
 msgid "Files in staging path"
 msgstr "Fișiere în calea de așteptare"
 
-#: views.py:172
+#: views.py:170
 msgid "Scan"
 msgstr "Scanează"
 
-#: views.py:282
+#: views.py:279
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr "Eroare la executarea sarcinii de încărcare a documentelor; %(exception)s, %(exception_class)s"
 
-#: views.py:293
+#: views.py:290
 msgid "New document queued for upload and will be available shortly."
 msgstr "Documentul cel nou este în coada de așteptare pentru încărcare și va fi disponibil în scurt timp."
 
-#: views.py:344
+#: views.py:341
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Încărcați un document de tipul \"%(document_type)s\" din sursa: %(source)s"
 
-#: views.py:378
+#: views.py:375
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "Documentul \"%s\" este blocat de la încărcarea de noi versiuni."
 
-#: views.py:431
+#: views.py:428
 msgid "New document version queued for upload and will be available shortly."
 msgstr "Versiunea nouă a documentului este în coada de așteptare pentru încărcare și va fi disponibilă în scurt timp."
 
-#: views.py:472
+#: views.py:469
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr "Încărcați o nouă versiune de la sursa: %s"
 
-#: views.py:486
+#: views.py:483
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Ștergeți fișierul de așteptare \"%s\"?"
 
-#: views.py:507
+#: views.py:504
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -674,31 +673,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr "Aceasta va executa codul de verificare sursă, chiar dacă sursa nu este activată. Sursele care șterg conținutul după descărcare nu vor face acest lucru în timp ce sunt testate. Verificați jurnalul de erori al sursei pentru informații în timpul testelor. Un test cu succes va elimina jurnalul de erori."
 
-#: views.py:513
+#: views.py:510
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Declanșați verificarea pentru sursa \"%s\"?"
 
-#: views.py:530
+#: views.py:527
 msgid "Source check queued."
 msgstr "Verificarea sursei a fost pusă în coada de așteptare"
 
-#: views.py:547
+#: views.py:544
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Creați o nouă sursă de tipul:% s"
 
-#: views.py:569
+#: views.py:566
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Ștergeți sursa: %s?"
 
-#: views.py:590
+#: views.py:587
 #, python-format
 msgid "Edit source: %s"
 msgstr "Editați sursa: %s"
 
-#: views.py:624
+#: views.py:621
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -706,7 +705,7 @@ msgid ""
 "intervention."
 msgstr "Sursele oferă mijloacele de încărcare a documentelor. Unele surse, cum ar fi formularul web, sunt interactive și necesită introducerea manuală de la utilizatori pentru a funcționa. Altele, precum sursele de e-mail, sunt automate și rulează în fundal. fără intervenția utilizatorului."
 
-#: views.py:629
+#: views.py:626
 msgid "No sources available"
 msgstr "Nu există surse disponibile"
 

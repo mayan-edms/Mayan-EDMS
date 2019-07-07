@@ -41,6 +41,17 @@ class MayanApp {
         }
     }
 
+    static setupNavBarState () {
+        $('body').on('click', '.a-main-menu-accordion-link', function (event) {
+            console.log('ad');
+            $('.a-main-menu-accordion-link').each(function (index, value) {
+                $(this).parent().removeClass('active');
+            });
+
+            $(this).parent().addClass('active');
+        });
+    }
+
     static updateNavbarState () {
         var uri = new URI(window.location.hash);
         var uriFragment = uri.fragment();
@@ -160,6 +171,7 @@ class MayanApp {
         this.setupFullHeightResizing();
         this.setupItemsSelector();
         this.setupNavbarCollapse();
+        MayanApp.setupNavBarState();
         this.setupNewWindowAnchor();
         $.each(this.ajaxMenusOptions, function(index, value) {
             value.app = self;

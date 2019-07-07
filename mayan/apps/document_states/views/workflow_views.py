@@ -1,7 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.core.files.base import ContentFile
 from django.db import transaction
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -13,7 +12,7 @@ from mayan.apps.common.generics import (
     AddRemoveView, ConfirmView, FormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectDetailView,
     SingleObjectDynamicFormCreateView, SingleObjectDynamicFormEditView,
-    SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
+    SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.events import event_document_type_edited
@@ -31,15 +30,17 @@ from ..forms import (
 )
 from ..icons import (
     icon_workflow_list, icon_workflow_state, icon_workflow_state_action,
-    icon_workflow_transition
+    icon_workflow_transition, icon_workflow_transition_field
 )
 from ..links import (
     link_setup_workflow_create, link_setup_workflow_state_create,
     link_setup_workflow_state_action_selection,
-    link_setup_workflow_transition_create
+    link_setup_workflow_transition_create,
+    link_setup_workflow_transition_field_create,
 )
 from ..models import (
-    Workflow, WorkflowState, WorkflowStateAction, WorkflowTransition
+    Workflow, WorkflowState, WorkflowStateAction, WorkflowTransition,
+    WorkflowTransitionField
 )
 from ..permissions import (
     permission_workflow_create, permission_workflow_delete,
@@ -49,7 +50,6 @@ from ..permissions import (
 from ..tasks import task_launch_all_workflows
 
 __all__ = (
-    'WorkflowImageView', 'WorkflowPreviewView',
     'SetupWorkflowListView', 'SetupWorkflowCreateView', 'SetupWorkflowEditView',
     'SetupWorkflowDeleteView', 'SetupWorkflowDocumentTypesView',
     'SetupWorkflowStateActionCreateView', 'SetupWorkflowStateActionDeleteView',
@@ -59,7 +59,8 @@ __all__ = (
     'SetupWorkflowStateListView', 'SetupWorkflowTransitionCreateView',
     'SetupWorkflowTransitionDeleteView', 'SetupWorkflowTransitionEditView',
     'SetupWorkflowTransitionListView',
-    'SetupWorkflowTransitionTriggerEventListView', 'ToolLaunchAllWorkflows'
+    'SetupWorkflowTransitionTriggerEventListView', 'ToolLaunchAllWorkflows',
+    'WorkflowPreviewView'
 )
 
 
@@ -732,6 +733,124 @@ class SetupWorkflowTransitionTriggerEventListView(ExternalObjectMixin, FormView)
         )
 
 
+# Transition fields
+
+class SetupWorkflowTransitionFieldCreateView(ExternalObjectMixin, SingleObjectCreateView):
+    external_object_class = WorkflowTransition
+    external_object_permission = permission_workflow_edit
+    fields = (
+        'name', 'label', 'field_type', 'help_text', 'required', 'widget',
+        'widget_kwargs'
+    )
+    def get_extra_context(self):
+        return {
+            'navigation_object_list': ('transition', 'workflow'),
+            'transition': self.external_object,
+            'title': _(
+                'Create a field for workflow transition: %s'
+            ) % self.external_object,
+            'workflow': self.external_object.workflow
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            'transition': self.external_object,
+        }
+
+    def get_queryset(self):
+        return self.external_object.fields.all()
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='document_states:setup_workflow_transition_field_list',
+            kwargs={'pk': self.external_object.pk}
+        )
+
+
+class SetupWorkflowTransitionFieldDeleteView(SingleObjectDeleteView):
+    model = WorkflowTransitionField
+    object_permission = permission_workflow_edit
+
+    def get_extra_context(self):
+        return {
+            'navigation_object_list': (
+                'object', 'workflow_transition', 'workflow'
+            ),
+            'object': self.object,
+            'title': _('Delete workflow transition field: %s') % self.object,
+            'workflow': self.object.transition.workflow,
+            'workflow_transition': self.object.transition,
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='document_states:setup_workflow_transition_field_list',
+            kwargs={'pk': self.object.transition.pk}
+        )
+
+
+class SetupWorkflowTransitionFieldEditView(SingleObjectEditView):
+    fields = (
+        'name', 'label', 'field_type', 'help_text', 'required', 'widget',
+        'widget_kwargs'
+    )
+    model = WorkflowTransitionField
+    object_permission = permission_workflow_edit
+
+    def get_extra_context(self):
+        return {
+            'navigation_object_list': (
+                'object', 'workflow_transition', 'workflow'
+            ),
+            'object': self.object,
+            'title': _('Edit workflow transition field: %s') % self.object,
+            'workflow': self.object.transition.workflow,
+            'workflow_transition': self.object.transition,
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='document_states:setup_workflow_transition_field_list',
+            kwargs={'pk': self.object.transition.pk}
+        )
+
+
+class SetupWorkflowTransitionFieldListView(ExternalObjectMixin, SingleObjectListView):
+    external_object_class = WorkflowTransition
+    external_object_permission = permission_workflow_edit
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'navigation_object_list': ('object', 'workflow'),
+            'no_results_icon': icon_workflow_transition_field,
+            'no_results_main_link': link_setup_workflow_transition_field_create.resolve(
+                context=RequestContext(
+                    request=self.request, dict_={
+                        'object': self.external_object
+                    }
+                )
+            ),
+            'no_results_text': _(
+                'Workflow transition fields allow adding data to the '
+                'workflow\'s context. This additional context data can then '
+                'be used by other elements of the workflow system like the '
+                'workflow state actions.'
+            ),
+            'no_results_title': _(
+                'There are no fields for this workflow transition'
+            ),
+            'object': self.external_object,
+            'title': _(
+                'Fields for workflow transition: %s'
+            ) % self.external_object,
+            'workflow': self.external_object.workflow,
+        }
+
+    def get_source_queryset(self):
+        return self.external_object.fields.all()
+
+
 class ToolLaunchAllWorkflows(ConfirmView):
     extra_context = {
         'title': _('Launch all workflows?'),
@@ -750,26 +869,15 @@ class ToolLaunchAllWorkflows(ConfirmView):
         )
 
 
-class WorkflowImageView(SingleObjectDownloadView):
-    attachment = False
-    model = Workflow
-    object_permission = permission_workflow_view
-
-    def get_file(self):
-        workflow = self.get_object()
-        return ContentFile(workflow.render(), name=workflow.label)
-
-    def get_mimetype(self):
-        return 'image'
-
-
 class WorkflowPreviewView(SingleObjectDetailView):
     form_class = WorkflowPreviewForm
     model = Workflow
     object_permission = permission_workflow_view
+    pk_url_kwarg = 'pk'
 
     def get_extra_context(self):
         return {
             'hide_labels': True,
+            'object': self.get_object(),
             'title': _('Preview of: %s') % self.get_object()
         }

@@ -1,0 +1,115 @@
+Version 3.3
+===========
+
+Released: XX XX, 2019
+
+
+Changes
+-------
+
+- Add support for icon shadows.
+- Add icons and no-result template to the object error log view and
+  links.
+- Use Select2 widget for the document type selection form.
+- Backport the vertical main menu update. This update splits the previous
+  main menu into a new menu in the same location as the previous one
+  now called the top bar, and a new vertical main menu on the left side.
+  The vertical menu remain open even when clicking on items and upon
+  a browser refresh will also restore its state to match the selected
+  view.
+- Backport workflow preview refactor. GitLab issue #532.
+- Add support for source column inheritance.
+- Add support for source column exclusion.
+- Backport workflow context support.
+- Backport workflow transitions field support.
+
+Removals
+--------
+
+- None
+
+
+Upgrading from a previous version
+---------------------------------
+
+If installed via Python's PIP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Remove deprecated requirements::
+
+    $ curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt | pip uninstall -r /dev/stdin
+
+Type in the console::
+
+    $ pip install mayan-edms==3.3
+
+the requirements will also be updated automatically.
+
+
+Using Git
+^^^^^^^^^
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Remove deprecated requirements::
+
+    $ pip uninstall -y -r removals.txt
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+
+Common steps
+^^^^^^^^^^^^
+
+Perform these steps after updating the code from either step above.
+
+Make a backup of your supervisord file::
+
+    sudo cp /etc/supervisor/conf.d/mayan.conf /etc/supervisor/conf.d/mayan.conf.bck
+
+Update the supervisord configuration file. Replace the environment
+variables values show here with your respective settings. This step will refresh
+the supervisord configuration file with the new queues and the latest
+recommended layout::
+
+    sudo MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+    MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+    MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
+    /opt/mayan-edms/bin/mayan-edms.py platformtemplate supervisord > /etc/supervisor/conf.d/mayan.conf
+
+Edit the supervisord configuration file and update any setting the template
+generator missed::
+
+    sudo vi /etc/supervisor/conf.d/mayan.conf
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py preparestatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Bugs fixed or issues closed
+---------------------------
+
+- :gitlab-issue:`532` Workflow preview isn't updated right after transitions are modified
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

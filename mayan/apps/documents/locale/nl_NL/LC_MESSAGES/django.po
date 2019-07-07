@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:38-0400\n"
+"POT-Creation-Date: 2019-07-05 01:30-0400\n"
 "PO-Revision-Date: 2019-06-15 07:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
@@ -75,7 +75,7 @@ msgstr ""
 msgid "Total documents"
 msgstr ""
 
-#: dashboard_widgets.py:66 views/trashed_document_views.py:134
+#: dashboard_widgets.py:66 views/trashed_document_views.py:136
 msgid "Documents in trash"
 msgstr ""
 
@@ -1329,68 +1329,68 @@ msgstr ""
 msgid "Duplicated document scan queued successfully."
 msgstr ""
 
-#: views/trashed_document_views.py:37
+#: views/trashed_document_views.py:39
 #, python-format
 msgid "%(count)d document moved to the trash."
 msgstr ""
 
-#: views/trashed_document_views.py:40
+#: views/trashed_document_views.py:42
 #, python-format
 msgid "%(count)d documents moved to the trash."
 msgstr ""
 
-#: views/trashed_document_views.py:48
+#: views/trashed_document_views.py:50
 msgid "Move the selected document to the trash?"
 msgid_plural "Move the selected documents to the trash?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/trashed_document_views.py:62
+#: views/trashed_document_views.py:64
 msgid "Empty trash?"
 msgstr "Prullenbak legen?"
 
-#: views/trashed_document_views.py:76
+#: views/trashed_document_views.py:78
 msgid "Trash emptied successfully"
 msgstr "Prullenbak succesvol geleegd"
 
-#: views/trashed_document_views.py:85
+#: views/trashed_document_views.py:87
 #, python-format
 msgid "%(count)d trashed document deleted."
 msgstr ""
 
-#: views/trashed_document_views.py:88
+#: views/trashed_document_views.py:90
 #, python-format
 msgid "%(count)d trashed documents deleted."
 msgstr ""
 
-#: views/trashed_document_views.py:96
+#: views/trashed_document_views.py:98
 msgid "Delete the selected trashed document?"
 msgid_plural "Delete the selected trashed documents?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/trashed_document_views.py:127
+#: views/trashed_document_views.py:129
 msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
 msgstr ""
 
-#: views/trashed_document_views.py:132
+#: views/trashed_document_views.py:134
 msgid "There are no documents in the trash can"
 msgstr ""
 
-#: views/trashed_document_views.py:145
+#: views/trashed_document_views.py:147
 #, python-format
 msgid "%(count)d trashed document restored."
 msgstr ""
 
-#: views/trashed_document_views.py:148
+#: views/trashed_document_views.py:150
 #, python-format
 msgid "%(count)d trashed documents restored."
 msgstr ""
 
-#: views/trashed_document_views.py:156
+#: views/trashed_document_views.py:158
 msgid "Restore the selected trashed document?"
 msgid_plural "Restore the selected trashed documents?"
 msgstr[0] ""

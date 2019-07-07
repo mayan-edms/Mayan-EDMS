@@ -9,6 +9,17 @@ from mayan.celery import app
 logger = logging.getLogger(__name__)
 
 
+@app.task()
+def task_generate_workflow_image(document_state_id):
+    Workflow = apps.get_model(
+        app_label='document_states', model_name='Workflow'
+    )
+
+    workflow = Workflow.objects.get(pk=document_state_id)
+
+    return workflow.generate_image()
+
+
 @app.task(ignore_result=True)
 def task_launch_all_workflows():
     Document = apps.get_model(app_label='documents', model_name='Document')

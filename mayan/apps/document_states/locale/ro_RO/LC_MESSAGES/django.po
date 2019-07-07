@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:37-0400\n"
-"PO-Revision-Date: 2019-06-15 07:49+0000\n"
+"POT-Creation-Date: 2019-07-05 01:30-0400\n"
+"PO-Revision-Date: 2019-06-29 06:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgstr "Nici unul"
 msgid "Current state"
 msgstr "Starea curentă"
 
-#: apps.py:176 apps.py:203 models.py:484
+#: apps.py:176 apps.py:203 models.py:514
 msgid "User"
 msgstr "Utilizator"
 
@@ -56,15 +56,15 @@ msgstr "Ultima tranziție"
 msgid "Date and time"
 msgstr "Data și ora"
 
-#: apps.py:192 models.py:181
+#: apps.py:192 models.py:211
 msgid "Completion"
 msgstr "Finalizare"
 
-#: apps.py:206 forms.py:178 links.py:161 models.py:339 models.py:480
+#: apps.py:206 forms.py:178 links.py:161 models.py:369 models.py:510
 msgid "Transition"
 msgstr "Tranziție"
 
-#: apps.py:210 forms.py:181 models.py:486
+#: apps.py:210 forms.py:182 models.py:516
 msgid "Comment"
 msgstr "Comentariu"
 
@@ -80,7 +80,7 @@ msgstr "Tipul de acțiune"
 msgid "Triggers"
 msgstr "Declanșatoare"
 
-#: error_logs.py:8 models.py:272
+#: error_logs.py:8 models.py:302
 msgid "Workflow state actions"
 msgstr "Acțiuni de stare de lucru"
 
@@ -100,11 +100,11 @@ msgstr "Acțiune"
 msgid "Namespace"
 msgstr "Spațiu de nume"
 
-#: forms.py:121 models.py:48 models.py:169 models.py:250 models.py:313
+#: forms.py:121 models.py:48 models.py:199 models.py:280 models.py:343
 msgid "Label"
 msgstr "Etichetă"
 
-#: forms.py:125 models.py:252
+#: forms.py:125 models.py:282
 msgid "Enabled"
 msgstr "Activat"
 
@@ -115,6 +115,10 @@ msgstr "Nu"
 #: forms.py:128
 msgid "Yes"
 msgstr "Da"
+
+#: forms.py:181
+msgid "Optional comment to attach to the transition."
+msgstr ""
 
 #: handlers.py:62
 #, python-format
@@ -203,7 +207,7 @@ msgstr "Această valoare va fi utilizată de alte aplicații pentru a face refer
 msgid "Internal name"
 msgstr "Nume intern"
 
-#: models.py:60 models.py:167 models.py:311 models.py:358
+#: models.py:60 models.py:197 models.py:341 models.py:388
 msgid "Workflow"
 msgstr "Flux de lucru"
 
@@ -211,127 +215,127 @@ msgstr "Flux de lucru"
 msgid "Initial state"
 msgstr "Stare inițială"
 
-#: models.py:173
+#: models.py:203
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
 msgstr "Selectați dacă aceasta va fi starea cu care doriți să înceapă fluxul de lucru. Numai o stare poate fi starea inițială."
 
-#: models.py:175
+#: models.py:205
 msgid "Initial"
 msgstr "Iniţială"
 
-#: models.py:179
+#: models.py:209
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
 msgstr "Introduceți procentul de finalizare pe care această stare îl reprezinta în raport cu fluxul de lucru. Utilizați numere fără semnul procentual."
 
-#: models.py:187 models.py:246
+#: models.py:217 models.py:276
 msgid "Workflow state"
 msgstr "Starea fluxului de lucru"
 
-#: models.py:188
+#: models.py:218
 msgid "Workflow states"
 msgstr "Stările fluxului de lucru"
 
-#: models.py:249
+#: models.py:279
 msgid "A simple identifier for this action."
 msgstr "Un identificator simplu  pentru această acțiune."
 
-#: models.py:256
+#: models.py:286
 msgid "At which moment of the state this action will execute"
 msgstr "În ce moment al stării se va executa această acțiune"
 
-#: models.py:257
+#: models.py:287
 msgid "When"
 msgstr "Cănd"
 
-#: models.py:261
+#: models.py:291
 msgid "The dotted Python path to the workflow action class to execute."
 msgstr "Calea Python punctată la clasa de acțiune a fluxului de lucru care trebuie executată."
 
-#: models.py:262
+#: models.py:292
 msgid "Entry action path"
 msgstr "Căi de acțiune pentru intrare"
 
-#: models.py:265
+#: models.py:295
 msgid "Entry action data"
 msgstr "Datele privind acțiunile de intrare"
 
-#: models.py:271
+#: models.py:301
 msgid "Workflow state action"
 msgstr "Acțiune de stare de flux de lucru"
 
-#: models.py:316
+#: models.py:346
 msgid "Origin state"
 msgstr "Stare originală"
 
-#: models.py:320
+#: models.py:350
 msgid "Destination state"
 msgstr "Stare destinație"
 
-#: models.py:328
+#: models.py:358
 msgid "Workflow transition"
 msgstr "Tranziția fluxului de lucru"
 
-#: models.py:329
+#: models.py:359
 msgid "Workflow transitions"
 msgstr "Tranziții ale fluxului de lucru"
 
-#: models.py:343
+#: models.py:373
 msgid "Event type"
 msgstr "Tip eveniment"
 
-#: models.py:347
+#: models.py:377
 msgid "Workflow transition trigger event"
 msgstr "Evenimentul de declanșare a tranziției fluxului de lucru"
 
-#: models.py:348
+#: models.py:378
 msgid "Workflow transitions trigger events"
 msgstr "Evenimente de declanșare a tranzițiilor fluxului de lucru"
 
-#: models.py:362
+#: models.py:392
 msgid "Document"
 msgstr "Document"
 
-#: models.py:368 models.py:473
+#: models.py:398 models.py:503
 msgid "Workflow instance"
 msgstr "Instanță de flux de lucru"
 
-#: models.py:369
+#: models.py:399
 msgid "Workflow instances"
 msgstr "Instanțe de flux de lucru"
 
-#: models.py:476
+#: models.py:506
 msgid "Datetime"
 msgstr "Marcă temporală"
 
-#: models.py:490
+#: models.py:520
 msgid "Workflow instance log entry"
 msgstr "Înregistrare din jurnalul instanțelor fluxului de lucru"
 
-#: models.py:491
+#: models.py:521
 msgid "Workflow instance log entries"
 msgstr "Înregistrări din jurnalul instanțelor fluxului de lucru"
 
-#: models.py:498
+#: models.py:528
 msgid "Not a valid transition choice."
 msgstr "Nu este o alegere de tranziție valabilă."
 
-#: models.py:531
+#: models.py:561
 msgid "Workflow runtime proxy"
 msgstr "Proxy runtime pentru fluxul de lucru"
 
-#: models.py:532
+#: models.py:562
 msgid "Workflow runtime proxies"
 msgstr "Proxy-uri de runtime pentru fluxul de lucru"
 
-#: models.py:538
+#: models.py:568
 msgid "Workflow state runtime proxy"
 msgstr "Proxy de runtime pentru starea fluxului de lucru"
 
-#: models.py:539
+#: models.py:569
 msgid "Workflow state runtime proxies"
 msgstr "Proxy-uri runtime de stare de flux de lucru"
 
@@ -476,7 +480,7 @@ msgstr "Nu există fluxuri de lucru"
 
 #: views/workflow_proxy_views.py:94
 msgid "There are no documents in this workflow state"
-msgstr ""
+msgstr "Nu există documente în această stare de lucru"
 
 #: views/workflow_proxy_views.py:97
 #, python-format

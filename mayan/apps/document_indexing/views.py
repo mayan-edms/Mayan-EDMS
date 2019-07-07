@@ -308,6 +308,7 @@ class IndexListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
+            'hide_object': True,
             'hide_links': True,
             'hide_object': True,
             'no_results_icon': icon_index,

@@ -360,6 +360,8 @@ else:
 
 
 BASE_INSTALLED_APPS = INSTALLED_APPS
+COMMON_EXTRA_APPS = ()
+COMMON_DISABLED_APPS = ()
 
 CONFIGURATION_FILEPATH = os.path.join(MEDIA_ROOT, CONFIGURATION_FILENAME)
 CONFIGURATION_LAST_GOOD_FILEPATH = os.path.join(
@@ -378,3 +380,12 @@ for app in INSTALLED_APPS:
             'Update the app references in the file config.yml as detailed '
             'in https://docs.mayan-edms.com/releases/3.2.html#backward-incompatible-changes'
         )
+
+
+for APP in (COMMON_EXTRA_APPS or ()):
+    INSTALLED_APPS = INSTALLED_APPS + (APP,)
+
+
+INSTALLED_APPS = [
+    APP for APP in INSTALLED_APPS if APP not in (COMMON_DISABLED_APPS or ())
+]
