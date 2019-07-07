@@ -13,6 +13,7 @@
 - Backport workflow email action.
 - Backport individual index rebuild support.
 - Rename the installjavascript command to installdependencies.
+- Remove database conversion command.
 
 3.2.5 (2019-07-05)
 ==================
