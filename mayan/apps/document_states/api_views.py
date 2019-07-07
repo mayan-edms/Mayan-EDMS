@@ -31,7 +31,7 @@ from .storages import storage_workflowimagecache
 from .tasks import task_generate_workflow_image
 
 
-class APIDocumentTypeWorkflowListView(generics.ListAPIView):
+class APIDocumentTypeWorkflowRuntimeProxyListView(generics.ListAPIView):
     """
     get: Returns a list of all the document type workflows.
     """
@@ -214,7 +214,7 @@ class APIWorkflowImageView(generics.RetrieveAPIView):
             return response
 
 
-class APIWorkflowListView(generics.ListCreateAPIView):
+class APIWorkflowRuntimeProxyListView(generics.ListCreateAPIView):
     """
     get: Returns a list of all the workflows.
     post: Create a new workflow.
@@ -229,7 +229,7 @@ class APIWorkflowListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIWorkflowListView, self).get_serializer(*args, **kwargs)
+        return super(APIWorkflowRuntimeProxyListView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

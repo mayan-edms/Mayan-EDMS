@@ -14,20 +14,14 @@ from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.models import Document
 
 from ..forms import WorkflowInstanceTransitionSelectForm
-from ..icons import icon_workflow_instance_detail, icon_workflow_list
+from ..icons import icon_workflow_instance_detail, icon_workflow_template_list
 from ..links import link_workflow_instance_transition
 from ..literals import FIELD_TYPE_MAPPING, WIDGET_CLASS_MAPPING
 from ..models import WorkflowInstance
 from ..permissions import permission_workflow_view
 
-__all__ = (
-    'DocumentWorkflowInstanceListView', 'WorkflowInstanceDetailView',
-    'WorkflowInstanceTransitionSelectView',
-    'WorkflowInstanceTransitionExecuteView'
-)
 
-
-class DocumentWorkflowInstanceListView(SingleObjectListView):
+class WorkflowInstanceListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
             obj=self.get_document(), permissions=(permission_workflow_view,),
@@ -35,7 +29,7 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
         )
 
         return super(
-            DocumentWorkflowInstanceListView, self
+            WorkflowInstanceListView, self
         ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
@@ -44,7 +38,7 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
-            'no_results_icon': icon_workflow_list,
+            'no_results_icon': icon_workflow_template_list,
             'no_results_text': _(
                 'Assign workflows to the document type of this document '
                 'to have this document execute those workflows. '

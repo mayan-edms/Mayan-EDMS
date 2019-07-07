@@ -39,7 +39,7 @@ class TagActionViewTestCase(WorkflowTestMixin, GenericViewTestCase):
         self._create_test_workflow_state()
 
         response = self.get(
-            viewname='document_states:setup_workflow_state_action_create',
+            viewname='document_states:workflow_template_state_action_create',
             kwargs={
                 'pk': self.test_workflow_state.pk,
                 'class_path': 'mayan.apps.tags.workflow_actions.AttachTagAction'
@@ -53,7 +53,7 @@ class TagActionViewTestCase(WorkflowTestMixin, GenericViewTestCase):
         self._create_test_workflow_state()
 
         response = self.get(
-            viewname='document_states:setup_workflow_state_action_create',
+            viewname='document_states:workflow_template_state_action_create',
             kwargs={
                 'pk': self.test_workflow_state.pk,
                 'class_path': 'mayan.apps.tags.workflow_actions.RemoveTagAction'
