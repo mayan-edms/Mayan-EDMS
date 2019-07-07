@@ -22,6 +22,7 @@ Changes
 - Add support for source column exclusion.
 - Backport workflow context support.
 - Backport workflow transitions field support.
+- Backport workflow email action.
 
 Removals
 --------
