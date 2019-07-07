@@ -23,6 +23,7 @@ Changes
 - Backport workflow context support.
 - Backport workflow transitions field support.
 - Backport workflow email action.
+- Backport individual index rebuild support.
 
 Removals
 --------

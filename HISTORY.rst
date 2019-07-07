@@ -11,6 +11,7 @@
 - Backport workflow context support.
 - Backport workflow transitions field support.
 - Backport workflow email action.
+- Backport individual index rebuild support.
 
 3.2.5 (2019-07-05)
 ==================
