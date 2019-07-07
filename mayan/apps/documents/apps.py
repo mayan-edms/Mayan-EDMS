@@ -311,7 +311,8 @@ class DocumentsApp(MayanAppConfig):
             source=DeletedDocument
         )
         SourceColumn(
-            attribute='deleted_date_time', source=DeletedDocument
+            attribute='deleted_date_time', include_label=True, order=99,
+            source=DeletedDocument
         )
 
         # DocumentVersion
