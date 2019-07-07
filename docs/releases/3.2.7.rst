@@ -34,6 +34,7 @@ Changes
   for the report.
 - Rename the MAYAN_USER_GUID environment variable
   to MAYAN_USER_GID.
+- Backport individual index rebuild support.
 
 Removals
 --------

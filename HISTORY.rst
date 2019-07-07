@@ -7,14 +7,14 @@
   single page navigation to jump to the home view.
 * Remove redundant Celery queue declarations from the
   file_metadata app.
-* Add internal_name field to workflow serializer. 
+* Add internal_name field to workflow serializer.
   Fixes workflow API creation view.
 * Fix document cabinet list API view. Thanks for forum user
   "jere" for the report. Forum topic 1039.
 * Fix document template column field. GitLab issue #655.
   Thanks to Christian Wiegand (@christianwgd) for the
   report.
-* Increase mailing profile password field max length 
+* Increase mailing profile password field max length
   from 48 to 128 characters. GitLab issue #657.
   Thanks to sigsec (@sigsec) for the report.
 * Update the Docker entrypoint to update the ownership
