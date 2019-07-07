@@ -33,11 +33,116 @@ from .views.workflow_views import (
     SetupWorkflowTransitionFieldEditView, SetupWorkflowTransitionFieldListView
 )
 
-urlpatterns_workflows = [
+urlpatterns_workflow_templates = [
     url(
-        regex=r'^document_type/(?P<pk>\d+)/workflows/$',
+        regex=r'^setup/workflows/$', view=SetupWorkflowListView.as_view(),
+        name='setup_workflow_list'
+    ),
+    url(
+        regex=r'^setup/workflows/create/$', view=SetupWorkflowCreateView.as_view(),
+        name='setup_workflow_create'
+    ),
+    url(
+        regex=r'^setup/workflows/(?P<pk>\d+)/delete/$',
+        view=SetupWorkflowDeleteView.as_view(), name='setup_workflow_delete'
+    ),
+    url(
+        regex=r'^setup/workflows/(?P<pk>\d+)/edit/$',
+        view=SetupWorkflowEditView.as_view(), name='setup_workflow_edit'
+    ),
+    url(
+        regex=r'^setup/document_types/(?P<pk>\d+)/workflows/$',
         view=SetupDocumentTypeWorkflowsView.as_view(),
         name='document_type_workflows'
+    ),
+]
+
+urlpatterns_workflow_states = [
+    url(
+        regex=r'^setup/workflows/(?P<pk>\d+)/states/$',
+        view=SetupWorkflowStateListView.as_view(),
+        name='setup_workflow_state_list'
+    ),
+    url(
+        regex=r'^setup/workflows/(?P<pk>\d+)/states/create/$',
+        view=SetupWorkflowStateCreateView.as_view(),
+        name='setup_workflow_state_create'
+    ),
+    url(
+        regex=r'^setup/workflows/states/(?P<pk>\d+)/delete/$',
+        view=SetupWorkflowStateDeleteView.as_view(),
+        name='setup_workflow_state_delete'
+    ),
+    url(
+        regex=r'^setup/workflows/states/(?P<pk>\d+)/edit/$',
+        view=SetupWorkflowStateEditView.as_view(),
+        name='setup_workflow_state_edit'
+    ),
+]
+
+urlpatterns_workflow_state_actions = [
+    url(
+        regex=r'^setup/workflows/states/(?P<pk>\d+)/actions/$',
+        view=SetupWorkflowStateActionListView.as_view(),
+        name='setup_workflow_state_action_list'
+    ),
+    url(
+        regex=r'^setup/workflows/states/(?P<pk>\d+)/actions/selection/$',
+        view=SetupWorkflowStateActionSelectionView.as_view(),
+        name='setup_workflow_state_action_selection'
+    ),
+    url(
+        regex=r'^setup/workflows/states/(?P<pk>\d+)/actions/(?P<class_path>[a-zA-Z0-9_.]+)/create/$',
+        view=SetupWorkflowStateActionCreateView.as_view(),
+        name='setup_workflow_state_action_create'
+    ),
+    url(
+        regex=r'^setup/workflows/states/actions/(?P<pk>\d+)/delete/$',
+        view=SetupWorkflowStateActionDeleteView.as_view(),
+        name='setup_workflow_state_action_delete'
+    ),
+    url(
+        regex=r'^setup/workflows/states/actions/(?P<pk>\d+)/edit/$',
+        view=SetupWorkflowStateActionEditView.as_view(),
+        name='setup_workflow_state_action_edit'
+    ),
+]
+
+urlpatterns_workflow_transitions = [
+    url(
+        regex=r'^setup/workflows/(?P<pk>\d+)/transitions/$',
+        view=SetupWorkflowTransitionListView.as_view(),
+        name='setup_workflow_transition_list'
+    ),
+    url(
+        regex=r'^setup/workflows/(?P<pk>\d+)/transitions/create/$',
+        view=SetupWorkflowTransitionCreateView.as_view(),
+        name='setup_workflow_transition_create'
+    ),
+    url(
+        regex=r'^setup/workflows/(?P<pk>\d+)/transitions/events/$',
+        view=SetupWorkflowTransitionTriggerEventListView.as_view(),
+        name='setup_workflow_transition_events'
+    ),
+    url(
+        regex=r'^setup/workflows/transitions/(?P<pk>\d+)/delete/$',
+        view=SetupWorkflowTransitionDeleteView.as_view(),
+        name='setup_workflow_transition_delete'
+    ),
+    url(
+        regex=r'^setup/workflows/transitions/(?P<pk>\d+)/edit/$',
+        view=SetupWorkflowTransitionEditView.as_view(),
+        name='setup_workflow_transition_edit'
+    ),
+    url(
+        regex=r'^documents/workflows/(?P<pk>\d+)/transitions/select/$',
+        view=WorkflowInstanceTransitionSelectView.as_view(),
+        name='workflow_instance_transition_selection'
+    ),
+    url(
+        regex=r'^documents/workflows/(?P<workflow_instance_pk>\d+)/transitions/(?P<workflow_transition_pk>\d+)/execute/$',
+        view=WorkflowInstanceTransitionExecuteView.as_view(),
+        name='workflow_instance_transition_execute'
     ),
 ]
 
@@ -76,32 +181,6 @@ urlpatterns = [
         name='workflow_instance_detail'
     ),
     url(
-        regex=r'^document/workflows/(?P<pk>\d+)/transitions/select/$',
-        view=WorkflowInstanceTransitionSelectView.as_view(),
-        name='workflow_instance_transition_selection'
-    ),
-    url(
-        regex=r'^document/workflows/(?P<workflow_instance_pk>\d+)/transitions/(?P<workflow_transition_pk>\d+)/execute/$',
-        view=WorkflowInstanceTransitionExecuteView.as_view(),
-        name='workflow_instance_transition_execute'
-    ),
-    url(
-        regex=r'^setup/all/$', view=SetupWorkflowListView.as_view(),
-        name='setup_workflow_list'
-    ),
-    url(
-        regex=r'^setup/create/$', view=SetupWorkflowCreateView.as_view(),
-        name='setup_workflow_create'
-    ),
-    url(
-        regex=r'^setup/workflow/(?P<pk>\d+)/edit/$',
-        view=SetupWorkflowEditView.as_view(), name='setup_workflow_edit'
-    ),
-    url(
-        regex=r'^setup/workflow/(?P<pk>\d+)/delete/$',
-        view=SetupWorkflowDeleteView.as_view(), name='setup_workflow_delete'
-    ),
-    url(
         regex=r'^setup/workflow/(?P<pk>\d+)/documents/$',
         view=WorkflowDocumentListView.as_view(),
         name='setup_workflow_document_list'
@@ -110,76 +189,6 @@ urlpatterns = [
         regex=r'^setup/workflow/(?P<pk>\d+)/document_types/$',
         view=SetupWorkflowDocumentTypesView.as_view(),
         name='setup_workflow_document_types'
-    ),
-    url(
-        regex=r'^setup/workflow/(?P<pk>\d+)/states/$',
-        view=SetupWorkflowStateListView.as_view(),
-        name='setup_workflow_state_list'
-    ),
-    url(
-        regex=r'^setup/workflow/(?P<pk>\d+)/states/create/$',
-        view=SetupWorkflowStateCreateView.as_view(),
-        name='setup_workflow_state_create'
-    ),
-    url(
-        regex=r'^setup/workflow/(?P<pk>\d+)/transitions/$',
-        view=SetupWorkflowTransitionListView.as_view(),
-        name='setup_workflow_transition_list'
-    ),
-    url(
-        regex=r'^setup/workflow/(?P<pk>\d+)/transitions/create/$',
-        view=SetupWorkflowTransitionCreateView.as_view(),
-        name='setup_workflow_transition_create'
-    ),
-    url(
-        regex=r'^setup/workflow/(?P<pk>\d+)/transitions/events/$',
-        view=SetupWorkflowTransitionTriggerEventListView.as_view(),
-        name='setup_workflow_transition_events'
-    ),
-    url(
-        regex=r'^setup/workflow/state/(?P<pk>\d+)/delete/$',
-        view=SetupWorkflowStateDeleteView.as_view(),
-        name='setup_workflow_state_delete'
-    ),
-    url(
-        regex=r'^setup/workflow/state/(?P<pk>\d+)/edit/$',
-        view=SetupWorkflowStateEditView.as_view(),
-        name='setup_workflow_state_edit'
-    ),
-    url(
-        regex=r'^setup/workflow/state/(?P<pk>\d+)/actions/$',
-        view=SetupWorkflowStateActionListView.as_view(),
-        name='setup_workflow_state_action_list'
-    ),
-    url(
-        regex=r'^setup/workflow/state/(?P<pk>\d+)/actions/selection/$',
-        view=SetupWorkflowStateActionSelectionView.as_view(),
-        name='setup_workflow_state_action_selection'
-    ),
-    url(
-        regex=r'^setup/workflow/state/(?P<pk>\d+)/actions/(?P<class_path>[a-zA-Z0-9_.]+)/create/$',
-        view=SetupWorkflowStateActionCreateView.as_view(),
-        name='setup_workflow_state_action_create'
-    ),
-    url(
-        regex=r'^setup/workflow/state/actions/(?P<pk>\d+)/delete/$',
-        view=SetupWorkflowStateActionDeleteView.as_view(),
-        name='setup_workflow_state_action_delete'
-    ),
-    url(
-        regex=r'^setup/workflow/state/actions/(?P<pk>\d+)/edit/$',
-        view=SetupWorkflowStateActionEditView.as_view(),
-        name='setup_workflow_state_action_edit'
-    ),
-    url(
-        regex=r'^setup/workflow/transitions/(?P<pk>\d+)/delete/$',
-        view=SetupWorkflowTransitionDeleteView.as_view(),
-        name='setup_workflow_transition_delete'
-    ),
-    url(
-        regex=r'^setup/workflow/transitions/(?P<pk>\d+)/edit/$',
-        view=SetupWorkflowTransitionEditView.as_view(),
-        name='setup_workflow_transition_edit'
     ),
     url(
         regex=r'^tools/workflow/all/launch/$',
@@ -213,7 +222,10 @@ urlpatterns = [
     ),
 ]
 
-urlpatterns.extend(urlpatterns_workflows)
+urlpatterns.extend(urlpatterns_workflow_states)
+urlpatterns.extend(urlpatterns_workflow_state_actions)
+urlpatterns.extend(urlpatterns_workflow_templates)
+urlpatterns.extend(urlpatterns_workflow_transitions)
 urlpatterns.extend(urlpatterns_workflow_transition_fields)
 
 api_urls = [
