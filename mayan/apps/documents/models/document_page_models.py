@@ -229,7 +229,7 @@ class DocumentPage(models.Model):
                     for transformation in transformations:
                         converter.transform(transformation=transformation)
 
-                    return page_image
+                    return converter.get_page()
             except Exception as exception:
                 # Cleanup in case of error
                 logger.error(
