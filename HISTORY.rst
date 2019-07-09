@@ -22,6 +22,8 @@
   CONFIGURATION_LAST_GOOD_FILEPATH
   (MAYAN_CONFIGURATION_LAST_GOOD_FILEPATH environment variable) settings.
 - Move bootstrapped settings code to their own module in the smart_settings apps.
+- Remove individual database configuration options. All database configuration
+  is now done using MAYAN_DATABASES to mirror Django way of doing database setup.
 
 3.2.5 (2019-07-05)
 ==================

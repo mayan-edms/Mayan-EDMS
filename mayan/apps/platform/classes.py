@@ -125,28 +125,9 @@ class PlatformTemplateSupervisord(PlatformTemplate):
             environment_name='MAYAN_GUNICORN_TIMEOUT'
         ),
         Variable(
-            name='DATABASE_CONN_MAX_AGE', default=0,
-            environment_name='MAYAN_DATABASE_CONN_MAX_AGE'
-        ),
-        Variable(
-            name='DATABASE_ENGINE', default='django.db.backends.postgresql',
-            environment_name='MAYAN_DATABASE_ENGINE'
-        ),
-        Variable(
-            name='DATABASE_HOST', default='127.0.0.1',
-            environment_name='MAYAN_DATABASE_HOST'
-        ),
-        Variable(
-            name='DATABASE_NAME', default='mayan',
-            environment_name='MAYAN_DATABASE_NAME'
-        ),
-        Variable(
-            name='DATABASE_PASSWORD', default='mayanuserpass',
-            environment_name='MAYAN_DATABASE_PASSWORD'
-        ),
-        Variable(
-            name='DATABASE_USER', default='mayan',
-            environment_name='MAYAN_DATABASE_USER'
+            name='DATABASES',
+            default="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}",
+            environment_name='MAYAN_DATABASES'
         ),
         Variable(
             name='INSTALLATION_PATH', default='/opt/mayan-edms',
