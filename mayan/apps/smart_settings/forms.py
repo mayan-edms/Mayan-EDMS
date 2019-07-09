@@ -25,18 +25,6 @@ class SettingForm(forms.Form):
         self.fields['value'].initial = self.setting.serialized_value
 
     def clean(self):
-        quotes = ['"', "'"]
-
-        if self.setting.quoted:
-            stripped = self.cleaned_data['value'].strip()
-
-            if stripped[0] not in quotes or stripped[-1] not in quotes:
-                raise ValidationError(
-                    _(
-                        'Value must be properly quoted.'
-                    )
-                )
-
         try:
             yaml.load(stream=self.cleaned_data['value'], Loader=SafeLoader)
         except yaml.YAMLError:

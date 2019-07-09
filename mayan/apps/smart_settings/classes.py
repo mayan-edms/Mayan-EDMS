@@ -21,6 +21,8 @@ from django.utils.encoding import (
     force_bytes, force_text, python_2_unicode_compatible
 )
 
+from .utils import read_configuration_file
+
 logger = logging.getLogger(__name__)
 
 
@@ -82,6 +84,7 @@ class Namespace(object):
 class Setting(object):
     _registry = {}
     _cache_hash = None
+    _config_file_cache = None
 
     @staticmethod
     def deserialize_value(value):
@@ -103,6 +106,7 @@ class Setting(object):
     def serialize_value(value):
         result = yaml.dump(
             data=Setting.express_promises(value), allow_unicode=True,
+            default_flow_style=False,
             Dumper=SafeDumper
         )
         # safe_dump returns bytestrings
@@ -141,6 +145,16 @@ class Setting(object):
         return sorted(cls._registry.values(), key=lambda x: x.global_name)
 
     @classmethod
+    def get_config_file_content(cls):
+        # Cache content of config file to speed up initial boot up
+        if not cls._config_file_cache:
+            cls._config_file_cache = read_configuration_file(
+                path=settings.CONFIGURATION_FILEPATH
+            )
+
+        return cls._config_file_cache
+
+    @classmethod
     def get_hash(cls):
         return force_text(
             hashlib.sha256(force_bytes(cls.dump_data())).hexdigest()
@@ -167,13 +181,12 @@ class Setting(object):
                 path=settings.CONFIGURATION_LAST_GOOD_FILEPATH
             )
 
-    def __init__(self, namespace, global_name, default, help_text=None, is_path=False, quoted=False):
+    def __init__(self, namespace, global_name, default, help_text=None, is_path=False):
         self.global_name = global_name
         self.default = default
         self.help_text = help_text
         self.loaded = False
         self.namespace = namespace
-        self.quoted = quoted
         self.environment_variable = False
         namespace._settings.append(self)
         self.__class__._registry[global_name] = self
@@ -186,7 +199,7 @@ class Setting(object):
         if environment_value:
             self.environment_variable = True
             try:
-                self.raw_value = environment_value
+                self.raw_value = yaml.load(stream=environment_value, Loader=SafeLoader)
             except yaml.YAMLError as exception:
                 raise type(exception)(
                     'Error interpreting environment variable: {} with '
@@ -195,7 +208,12 @@ class Setting(object):
                     )
                 )
         else:
-            self.raw_value = getattr(settings, self.global_name, self.default)
+            self.raw_value = self.get_config_file_content().get(
+                self.global_name, getattr(
+                    settings, self.global_name, self.default
+                )
+            )
+
         self.yaml = Setting.serialize_value(self.raw_value)
         self.loaded = True
 

@@ -14,6 +14,14 @@
 - Backport individual index rebuild support.
 - Rename the installjavascript command to installdependencies.
 - Remove database conversion command.
+- Remove support for quoted configuration entries. Support unquoted,
+  nested dictionaries in the configuration. Requires manual
+  update of existing config.yml files.
+- Support user specified locations for the configuration file with the
+  CONFIGURATION_FILEPATH (MAYAN_CONFIGURATION_FILEPATH environment variable), and
+  CONFIGURATION_LAST_GOOD_FILEPATH
+  (MAYAN_CONFIGURATION_LAST_GOOD_FILEPATH environment variable) settings.
+- Move bootstrapped settings code to their own module in the smart_settings apps.
 
 3.2.5 (2019-07-05)
 ==================
