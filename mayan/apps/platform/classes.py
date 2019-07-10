@@ -2,16 +2,11 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 
-import yaml
-try:
-    from yaml import CSafeLoader as SafeLoader
-except ImportError:
-    from yaml import SafeLoader
-
 from django.template import loader
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.serialization import yaml_load
 from mayan.apps.common.settings import (
     setting_celery_broker_url, setting_celery_result_backend
 )
@@ -95,9 +90,7 @@ class PlatformTemplate(object):
 
         if context_string:
             context.update(
-                yaml.load(
-                    stream=context_string, Loader=SafeLoader
-                )
+                yaml_load(stream=context_string)
             )
         return loader.render_to_string(
             template_name=self.get_template_name(),

@@ -7,15 +7,10 @@ import shutil
 
 from PIL import Image
 import sh
-import yaml
-
-try:
-    from yaml import CSafeLoader as SafeLoader
-except ImportError:
-    from yaml import SafeLoader
 
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.serialization import yaml_load
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.storage.settings import setting_temporary_directory
 from mayan.apps.storage.utils import (
@@ -30,8 +25,8 @@ from .literals import (
 from .settings import setting_graphics_backend_config
 
 logger = logging.getLogger(__name__)
-BACKEND_CONFIG = yaml.load(
-    stream=setting_graphics_backend_config.value, Loader=SafeLoader
+BACKEND_CONFIG = yaml_load(
+    stream=setting_graphics_backend_config.value
 )
 libreoffice_path = BACKEND_CONFIG.get(
     'libreoffice_path', DEFAULT_LIBREOFFICE_PATH
@@ -62,8 +57,8 @@ class ConverterBase(object):
         pass
 
     def get_page(self, output_format=None):
-        output_format = output_format or yaml.load(
-            stream=setting_graphics_backend_config.value, Loader=SafeLoader
+        output_format = output_format or yaml_load(
+            stream=setting_graphics_backend_config.value
         ).get(
             'pillow_format', DEFAULT_PILLOW_FORMAT
         )

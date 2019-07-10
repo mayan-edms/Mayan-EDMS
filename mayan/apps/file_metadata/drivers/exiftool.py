@@ -4,15 +4,10 @@ import json
 import logging
 
 import sh
-import yaml
-
-try:
-    from yaml import CSafeLoader as SafeLoader
-except ImportError:
-    from yaml import SafeLoader
 
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.serialization import yaml_load
 from mayan.apps.storage.utils import NamedTemporaryFile
 
 from ..literals import DEFAULT_EXIF_PATH
@@ -57,8 +52,8 @@ class EXIFToolDriver(FileMetadataDriver):
             )
 
     def read_settings(self):
-        driver_arguments = yaml.load(
-            stream=setting_drivers_arguments.value, Loader=SafeLoader
+        driver_arguments = yaml_load(
+            stream=setting_drivers_arguments.value
         )
 
         self.exiftool_path = driver_arguments.get(

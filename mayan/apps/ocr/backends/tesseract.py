@@ -4,15 +4,11 @@ import logging
 import shutil
 
 import sh
-import yaml
-try:
-    from yaml import CSafeLoader as SafeLoader
-except ImportError:
-    from yaml import SafeLoader
 
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.serialization import yaml_load
 from mayan.apps.storage.utils import TemporaryFile
 
 from ..classes import OCRBackendBase
@@ -115,8 +111,7 @@ class Tesseract(OCRBackendBase):
             logger.debug('Available languages: %s', ', '.join(self.languages))
 
     def read_settings(self):
-        backend_arguments = yaml.load(
-            Loader=SafeLoader,
+        backend_arguments = yaml_load(
             stream=setting_ocr_backend_arguments.value or '{}',
         )
 

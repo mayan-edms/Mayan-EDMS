@@ -6,15 +6,11 @@ import shutil
 
 import mock
 from pathlib2 import Path
-import yaml
-try:
-    from yaml import CSafeDumper as SafeDumper
-except ImportError:
-    from yaml import SafeDumper
 
 from django.core import mail
 from django.utils.encoding import force_text
 
+from mayan.apps.common.serialization import yaml_dump
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.tests import (
     GenericDocumentTestCase, TEST_COMPRESSED_DOCUMENT_PATH,
@@ -213,8 +209,8 @@ class EmailBaseTestCase(GenericDocumentTestCase):
             metadata_type=test_metadata_type_2
         )
 
-        test_metadata_yaml = yaml.dump(
-            Dumper=SafeDumper, data={
+        test_metadata_yaml = yaml_dump(
+            data={
                 test_metadata_type_1.name: TEST_METADATA_VALUE_1,
                 test_metadata_type_2.name: TEST_METADATA_VALUE_2,
             }

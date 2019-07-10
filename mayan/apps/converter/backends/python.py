@@ -7,15 +7,12 @@ import shutil
 from PIL import Image
 import PyPDF2
 import sh
-import yaml
-try:
-    from yaml import CSafeLoader as SafeLoader
-except ImportError:
-    from yaml import SafeLoader
+
 
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.serialization import yaml_load
 from mayan.apps.storage.utils import NamedTemporaryFile
 
 from ..classes import ConverterBase
@@ -27,8 +24,8 @@ from ..literals import (
     DEFAULT_PDFINFO_PATH
 )
 
-pdftoppm_path = yaml.load(
-    stream=setting_graphics_backend_config.value, Loader=SafeLoader
+pdftoppm_path = yaml_load(
+    stream=setting_graphics_backend_config.value
 ).get(
     'pdftoppm_path', DEFAULT_PDFTOPPM_PATH
 )
@@ -39,16 +36,16 @@ except sh.CommandNotFound:
     pdftoppm = None
 else:
     pdftoppm_format = '-{}'.format(
-        yaml.load(
-            stream=setting_graphics_backend_config.value, Loader=SafeLoader
+        yaml_load(
+            stream=setting_graphics_backend_config.value
         ).get(
             'pdftoppm_format', DEFAULT_PDFTOPPM_FORMAT
         )
     )
 
     pdftoppm_dpi = format(
-        yaml.load(
-            stream=setting_graphics_backend_config.value, Loader=SafeLoader
+        yaml_load(
+            stream=setting_graphics_backend_config.value
         ).get(
             'pdftoppm_dpi', DEFAULT_PDFTOPPM_DPI
         )
@@ -56,8 +53,8 @@ else:
 
     pdftoppm = pdftoppm.bake(pdftoppm_format, '-r', pdftoppm_dpi)
 
-pdfinfo_path = yaml.load(
-    stream=setting_graphics_backend_config.value, Loader=SafeLoader
+pdfinfo_path = yaml_load(
+    stream=setting_graphics_backend_config.value
 ).get(
     'pdfinfo_path', DEFAULT_PDFINFO_PATH
 )
