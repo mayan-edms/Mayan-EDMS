@@ -1,3 +1,7 @@
+3.2.6 (2019-07-XX)
+==================
+* Remove the smart settings app * import.
+
 3.2.5 (2019-07-05)
 ==================
 * Don't error out if the EXTRA_APPS or the DISABLED_APPS settings

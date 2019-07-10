@@ -5,7 +5,7 @@ import os
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings import Namespace
+from mayan.apps.smart_settings.classes import Namespace
 
 from .literals import (
     DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE, DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES
