@@ -1,6 +1,8 @@
 3.2.6 (2019-07-XX)
 ==================
 * Remove the smart settings app * import.
+* Encode settings YAML before hashing.
+* Fix document icon used in the workflow runtime links.
 
 3.2.5 (2019-07-05)
 ==================
