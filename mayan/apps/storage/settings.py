@@ -4,7 +4,7 @@ import tempfile
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings import Namespace
+from mayan.apps.smart_settings.classes import Namespace
 
 namespace = Namespace(label=_('Storage'), name='storage')
 
