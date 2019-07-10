@@ -1,9 +1,12 @@
-3.2.6 (2019-07-XX)
+3.2.6 (2019-07-10)
 ==================
 * Remove the smart settings app * import.
 * Encode settings YAML before hashing.
 * Fix document icon used in the workflow runtime links.
 * Add trashed date time label.
+* Fix thumbnail generation issue. GitLab issue #637.
+  Thanks to Giacomo Cariello (@giacomocariello) for the report
+  and the merge request fixing the issue.
 
 3.2.5 (2019-07-05)
 ==================
