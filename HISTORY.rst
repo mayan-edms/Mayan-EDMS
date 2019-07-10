@@ -3,6 +3,7 @@
 * Remove the smart settings app * import.
 * Encode settings YAML before hashing.
 * Fix document icon used in the workflow runtime links.
+* Add trashed date time label.
 
 3.2.5 (2019-07-05)
 ==================
