@@ -48,6 +48,7 @@ class ClassesTestCase(SmartSettingTestMixin, BaseTestCase):
             default='test value'
         )
         # Initialize hash cache
+        Setting._cache_hash = None
         Setting.check_changed()
         self.assertFalse(Setting.check_changed())
         test_setting.value = 'test value edited'
