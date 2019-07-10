@@ -4,11 +4,12 @@ import os
 
 import yaml
 try:
-    from yaml import CSafeLoader as SafeLoader
+    from yaml import CSafeLoader as SafeLoader, CSafeDumper as SafeDumper
 except ImportError:
-    from yaml import SafeLoader
+    from yaml import SafeLoader, SafeDumper
 
 from django.template import loader
+from django.utils.html import mark_safe
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -24,8 +25,24 @@ class Variable(object):
         self.default = default
         self.environment_name = environment_name
 
-    def get_value(self):
+    def _get_value(self):
         return os.environ.get(self.environment_name, self.default)
+
+    def get_value(self):
+        return mark_safe(self._get_value())
+
+
+class YAMLVariable(Variable):
+    def _get_value(self):
+        value = os.environ.get(self.environment_name)
+        if value:
+            value = yaml.load(stream=value, Loader=SafeLoader)
+        else:
+            value = self.default
+
+        return yaml.dump(
+            data=value, allow_unicode=True, default_flow_style=True, width=999, Dumper=SafeDumper
+        ).replace('...\n', '').replace('\n', '')
 
 
 @python_2_unicode_compatible
@@ -106,10 +123,6 @@ class PlatformTemplate(object):
 
 
 class PlatformTemplateSupervisord(PlatformTemplate):
-    context_defaults = {
-        'BROKER_URL': 'redis://127.0.0.1:6379/0',
-        'CELERY_RESULT_BACKEND': 'redis://127.0.0.1:6379/0',
-    }
     label = _('Template for Supervisord.')
     name = 'supervisord'
     settings = (
@@ -125,15 +138,31 @@ class PlatformTemplateSupervisord(PlatformTemplate):
             environment_name='MAYAN_GUNICORN_TIMEOUT'
         ),
         Variable(
-            name='DATABASES',
-            default="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}",
-            environment_name='MAYAN_DATABASES'
-        ),
-        Variable(
             name='INSTALLATION_PATH', default='/opt/mayan-edms',
             environment_name='MAYAN_INSTALLATION_PATH'
         ),
-        Variable(
+        YAMLVariable(
+            name='ALLOWED_HOSTS',
+            default=['*'],
+            environment_name='MAYAN_ALLOWED_HOSTS'
+        ),
+        YAMLVariable(
+            name='BROKER_URL',
+            default='redis://127.0.0.1:6379/0',
+            environment_name='MAYAN_BROKER_URL'
+        ),
+        YAMLVariable(
+            name='CELERY_RESULT_BACKEND',
+            default='redis://127.0.0.1:6379/0',
+            environment_name='MAYAN_CELERY_RESULT_BACKEND'
+        ),
+        YAMLVariable(
+            name='DATABASES',
+            default={'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}},
+            environment_name='MAYAN_DATABASES'
+        ),
+        YAMLVariable
+        (
             name='MEDIA_ROOT', default='/opt/mayan-edms/media',
             environment_name='MAYAN_MEDIA_ROOT'
         ),

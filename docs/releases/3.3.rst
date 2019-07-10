@@ -36,6 +36,8 @@ Changes
 - Move bootstrapped settings code to their own module in the smart_settings apps.
 - Remove individual database configuration options. All database configuration
   is now done using MAYAN_DATABASES to mirror Django way of doing database setup.
+- Added support for YAML encoded environment variables to the platform 
+  templates apps.
 
 Removals
 --------
