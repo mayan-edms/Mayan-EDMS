@@ -13,7 +13,7 @@ setting_ocr_backend = namespace.add_setting(
 )
 setting_ocr_backend_arguments = namespace.add_setting(
     global_name='OCR_BACKEND_ARGUMENTS',
-    default=''
+    default={}
 )
 setting_auto_ocr = namespace.add_setting(
     global_name='OCR_AUTO_OCR', default=True,
