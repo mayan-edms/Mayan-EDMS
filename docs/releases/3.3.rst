@@ -141,5 +141,6 @@ Bugs fixed or issues closed
 ---------------------------
 
 - :gitlab-issue:`532` Workflow preview isn't updated right after transitions are modified
+- :gitlab-issue:`634` Failing docker entrypoint when using secret config
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
