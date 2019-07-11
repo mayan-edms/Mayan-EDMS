@@ -38,6 +38,14 @@ Changes
   is now done using MAYAN_DATABASES to mirror Django way of doing database setup.
 - Added support for YAML encoded environment variables to the platform 
   templates apps.
+- Move YAML code to its own module. Code now resides in common.serialization
+  in the form of two new functions: yaml_load and yaml_dump.
+- Move Django and Celery settings. Django settings now reside in the smart
+  settings app. Celery settings now reside in the task manager app.
+- Backport FakeStorageSubclass from versions/next. Placeholder class to allow
+  serializing the real storage subclass to support migrations.
+  Used by all configurable storages.
+
 
 Removals
 --------

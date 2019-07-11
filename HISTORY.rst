@@ -28,6 +28,9 @@
   doing atabase etup.
 - Added support for YAML encoded environment variables to the platform
   templates apps.
+- Move YAML code to its own module.
+- Move Django and Celery settings.
+- Backport FakeStorageSubclass from versions/next.
 
 3.2.6 (2019-07-10)
 ==================
