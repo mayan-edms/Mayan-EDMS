@@ -4,18 +4,13 @@ import imaplib
 import logging
 import poplib
 
-import yaml
-try:
-    from yaml import CSafeLoader as SafeLoader
-except ImportError:
-    from yaml import SafeLoader
-
 from django.core.exceptions import ValidationError
 from django.core.files.base import ContentFile
 from django.db import models
 from django.utils.encoding import force_bytes
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.serialization import yaml_load
 from mayan.apps.documents.models import Document
 from mayan.apps.metadata.api import set_bulk_metadata
 from mayan.apps.metadata.models import MetadataType
@@ -142,8 +137,8 @@ class EmailBaseModel(IntervalBaseModel):
 
                 with ContentFile(content=message.body, name=label) as file_object:
                     if label == source.metadata_attachment_name:
-                        metadata_dictionary = yaml.load(
-                            stream=file_object.read(), Loader=SafeLoader
+                        metadata_dictionary = yaml_load(
+                            stream=file_object.read()
                         )
                         logger.debug(
                             'Got metadata dictionary: %s',

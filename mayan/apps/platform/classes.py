@@ -2,17 +2,12 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 
-import yaml
-try:
-    from yaml import CSafeLoader as SafeLoader, CSafeDumper as SafeDumper
-except ImportError:
-    from yaml import SafeLoader, SafeDumper
-
 from django.template import loader
 from django.utils.html import mark_safe
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.serialization import yaml_dump, yaml_load
 from mayan.apps.common.settings import (
     setting_celery_broker_url, setting_celery_result_backend
 )
@@ -36,12 +31,12 @@ class YAMLVariable(Variable):
     def _get_value(self):
         value = os.environ.get(self.environment_name)
         if value:
-            value = yaml.load(stream=value, Loader=SafeLoader)
+            value = yaml_load(stream=value)
         else:
             value = self.default
 
-        return yaml.dump(
-            data=value, allow_unicode=True, default_flow_style=True, width=999, Dumper=SafeDumper
+        return yaml_dump(
+            data=value, allow_unicode=True, default_flow_style=True, width=999
         ).replace('...\n', '').replace('\n', '')
 
 
@@ -112,9 +107,7 @@ class PlatformTemplate(object):
 
         if context_string:
             context.update(
-                yaml.load(
-                    stream=context_string, Loader=SafeLoader
-                )
+                yaml_load(stream=context_string)
             )
         return loader.render_to_string(
             template_name=self.get_template_name(),
@@ -158,7 +151,13 @@ class PlatformTemplateSupervisord(PlatformTemplate):
         ),
         YAMLVariable(
             name='DATABASES',
-            default={'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}},
+            default={
+                'default': {
+                    'ENGINE': 'django.db.backends.postgresql',
+                    'NAME': 'mayan', 'PASSWORD':'mayanuserpass',
+                    'USER': 'mayan', 'HOST':'127.0.0.1'
+                }
+            },
             environment_name='MAYAN_DATABASES'
         ),
         YAMLVariable

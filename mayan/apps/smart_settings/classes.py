@@ -9,17 +9,14 @@ import sys
 
 import yaml
 
-try:
-    from yaml import CSafeLoader as SafeLoader, CSafeDumper as SafeDumper
-except ImportError:
-    from yaml import SafeLoader, SafeDumper
-
 from django.apps import apps
 from django.conf import settings
 from django.utils.functional import Promise
 from django.utils.encoding import (
     force_bytes, force_text, python_2_unicode_compatible
 )
+
+from mayan.apps.common.serialization import yaml_dump, yaml_load
 
 from .utils import read_configuration_file
 
@@ -88,7 +85,7 @@ class Setting(object):
 
     @staticmethod
     def deserialize_value(value):
-        return yaml.load(stream=value, Loader=SafeLoader)
+        return yaml_load(stream=value)
 
     @staticmethod
     def express_promises(value):
@@ -104,10 +101,9 @@ class Setting(object):
 
     @staticmethod
     def serialize_value(value):
-        result = yaml.dump(
+        result = yaml_dump(
             data=Setting.express_promises(value), allow_unicode=True,
             default_flow_style=False,
-            Dumper=SafeDumper
         )
         # safe_dump returns bytestrings
         # Disregard the last 3 dots that mark the end of the YAML document
@@ -132,8 +128,8 @@ class Setting(object):
                 if (filter_term and filter_term.lower() in setting.global_name.lower()) or not filter_term:
                     dictionary[setting.global_name] = Setting.express_promises(setting.value)
 
-        return yaml.dump(
-            data=dictionary, default_flow_style=False, Dumper=SafeDumper
+        return yaml_dump(
+            data=dictionary, default_flow_style=False
         )
 
     @classmethod
@@ -199,7 +195,7 @@ class Setting(object):
         if environment_value:
             self.environment_variable = True
             try:
-                self.raw_value = yaml.load(stream=environment_value, Loader=SafeLoader)
+                self.raw_value = yaml_load(stream=environment_value)
             except yaml.YAMLError as exception:
                 raise type(exception)(
                     'Error interpreting environment variable: {} with '
