@@ -31,6 +31,7 @@
 - Move YAML code to its own module.
 - Move Django and Celery settings.
 - Backport FakeStorageSubclass from versions/next.
+- Remove django-environ.
 
 3.2.6 (2019-07-10)
 ==================
