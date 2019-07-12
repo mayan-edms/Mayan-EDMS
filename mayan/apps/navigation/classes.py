@@ -378,14 +378,15 @@ class Menu(object):
                         if type(resolved_navigation_object) == bound_source:
                             # Check to see if object is a proxy model. If it is, add its parent model
                             # menu links too.
-                            parent_model = resolved_navigation_object._meta.proxy_for_model
-                            if parent_model:
-                                parent_instance = parent_model.objects.filter(pk=resolved_navigation_object.pk)
-                                if parent_instance:
-                                    for link_set in self.resolve(context=context, source=parent_instance.first()):
-                                        for link in link_set['links']:
-                                            if link.link not in self.unbound_links.get(bound_source, ()):
-                                                resolved_links.append(link)
+                            if hasattr(resolved_navigation_object, '_meta'):
+                                parent_model = resolved_navigation_object._meta.proxy_for_model
+                                if parent_model:
+                                    parent_instance = parent_model.objects.filter(pk=resolved_navigation_object.pk)
+                                    if parent_instance:
+                                        for link_set in self.resolve(context=context, source=parent_instance.first()):
+                                            for link in link_set['links']:
+                                                if link.link not in self.unbound_links.get(bound_source, ()):
+                                                    resolved_links.append(link)
 
                             for link in links:
                                 resolved_link = link.resolve(
