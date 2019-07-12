@@ -53,6 +53,23 @@ Changes
 Removals
 --------
 
+- Database conversion. Reason for removal. The database conversions support
+  provided by this feature (SQLite to PostgreSQL) was being confused with
+  database migrations and upgrades.
+  
+  Database upgrades are the responsibility of the app and the framework.
+  Database conversions however are not the responsibility of the app (Mayan),
+  they are the responsibility of the framework.
+  
+  Database conversion is outside the scope of what Mayan does but we added
+  the code, management command, instructions and testing setup to provide
+  this to our users until the framework (Django) decided to add this
+  themselves (like they did with migrations).
+
+  Continued confusion about the purpose of the feature and confusion about 
+  how errors with this feature were a reflexion of the code quality of
+  Mayannecessitated the removal of the database conversion feature.
+
 - Django environ
 
 
