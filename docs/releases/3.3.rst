@@ -45,7 +45,10 @@ Changes
 - Backport FakeStorageSubclass from versions/next. Placeholder class to allow
   serializing the real storage subclass to support migrations.
   Used by all configurable storages.
-
+- Support checking in and out multiple documents.
+- Remove encapsulate helper.
+- Add support for menu inheritance.
+- Emphasize source column labels.
 
 Removals
 --------

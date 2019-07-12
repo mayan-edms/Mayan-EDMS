@@ -32,6 +32,10 @@
 - Move Django and Celery settings.
 - Backport FakeStorageSubclass from versions/next.
 - Remove django-environ.
+- Support checking in and out multiple documents.
+- Remove encapsulate helper.
+- Add support for menu inheritance.
+- Emphasize source column labels.
 
 3.2.6 (2019-07-10)
 ==================
