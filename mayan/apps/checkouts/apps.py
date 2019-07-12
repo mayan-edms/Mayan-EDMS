@@ -11,6 +11,7 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.events.classes import ModelEventType
+from mayan.apps.navigation.classes import SourceColumn
 
 from .dashboard_widgets import DashboardWidgetTotalCheckouts
 from .events import (
@@ -46,6 +47,8 @@ class CheckoutsApp(MayanAppConfig):
     def ready(self):
         super(CheckoutsApp, self).ready()
 
+        CheckedOutDocument = self.get_model(model_name='CheckedOutDocument')
+        DocumentCheckout = self.get_model(model_name='DocumentCheckout')
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
@@ -79,6 +82,22 @@ class CheckoutsApp(MayanAppConfig):
                 permission_document_check_out_detail_view
             )
         )
+        ModelPermission.register_inheritance(
+            model=DocumentCheckout, related='document'
+        )
+
+        SourceColumn(
+            attribute='get_user_display', include_label=True, order=99,
+            source=CheckedOutDocument
+        )
+        SourceColumn(
+            attribute='get_checkout_datetime', include_label=True, order=99,
+            source=CheckedOutDocument
+        )
+        SourceColumn(
+            attribute='get_checkout_expiration', include_label=True, order=99,
+            source=CheckedOutDocument
+        )
 
         dashboard_main.add_widget(
             widget=DashboardWidgetTotalCheckouts, order=-1
@@ -91,8 +110,18 @@ class CheckoutsApp(MayanAppConfig):
         menu_multi_item.bind_links(
             links=(
                 link_check_in_document_multiple,
-                link_check_out_document_multiple
+            ), sources=(CheckedOutDocument,)
+        )
+        menu_multi_item.bind_links(
+            links=(
+                link_check_in_document_multiple,
+                link_check_out_document_multiple,
             ), sources=(Document,)
+        )
+        menu_multi_item.unbind_links(
+            links=(
+                link_check_out_document_multiple,
+            ), sources=(CheckedOutDocument,)
         )
         menu_secondary.bind_links(
             links=(link_check_out_document, link_check_in_document),
