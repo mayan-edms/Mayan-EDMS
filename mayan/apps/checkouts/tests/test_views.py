@@ -12,64 +12,53 @@ from ..permissions import (
     permission_document_check_out, permission_document_check_out_detail_view
 )
 
-from .mixins import DocumentCheckoutTestMixin
+from .mixins import DocumentCheckoutTestMixin, DocumentCheckoutViewTestMixin
 
 
-class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentViewTestCase):
-    def _request_document_check_in_get_view(self):
-        return self.get(
-            viewname='checkouts:check_in_document', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def test_check_in_document_get_view_no_permission(self):
+class DocumentCheckoutViewTestCase(
+    DocumentCheckoutTestMixin, DocumentCheckoutViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    def test_document_check_in_get_view_no_permission(self):
         self._check_out_test_document()
 
-        response = self._request_document_check_in_get_view()
+        response = self._request_test_document_check_in_get_view()
         self.assertContains(
             response=response, text=self.test_document.label, status_code=200
         )
 
         self.assertTrue(self.test_document.is_checked_out())
 
-    def test_check_in_document_get_view_with_access(self):
+    def test_document_check_in_get_view_with_access(self):
         self._check_out_test_document()
 
         self.grant_access(
             obj=self.test_document, permission=permission_document_check_in
         )
 
-        response = self._request_document_check_in_get_view()
+        response = self._request_test_document_check_in_get_view()
         self.assertContains(
             response=response, text=self.test_document.label, status_code=200
         )
 
         self.assertTrue(self.test_document.is_checked_out())
 
-    def _request_document_check_in_post_view(self):
-        return self.post(
-            viewname='checkouts:check_in_document', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def test_check_in_document_post_view_no_permission(self):
+    def test_document_check_in_post_view_no_permission(self):
         self._check_out_test_document()
 
-        response = self._request_document_check_in_post_view()
-        self.assertEqual(response.status_code, 403)
+        response = self._request_test_document_check_in_post_view()
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(self.test_document.is_checked_out())
 
-    def test_check_in_document_post_view_with_access(self):
+    def test_document_check_in_post_view_with_access(self):
         self._check_out_test_document()
 
         self.grant_access(
             obj=self.test_document, permission=permission_document_check_in
         )
 
-        response = self._request_document_check_in_post_view()
+        response = self._request_test_document_check_in_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertFalse(self.test_document.is_checked_out())
@@ -79,24 +68,13 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
             )
         )
 
-    def _request_document_checkout_view(self):
-        return self.post(
-            viewname='checkouts:check_out_document', kwargs={
-                'pk': self.test_document.pk
-            }, data={
-                'expiration_datetime_0': 2,
-                'expiration_datetime_1': TIME_DELTA_UNIT_DAYS,
-                'block_new_version': True
-            }
-        )
-
-    def test_check_out_document_view_no_permission(self):
-        response = self._request_document_checkout_view()
-        self.assertEqual(response.status_code, 403)
+    def test_document_check_out_view_no_permission(self):
+        response = self._request_test_document_check_out_view()
+        self.assertEqual(response.status_code, 404)
 
         self.assertFalse(self.test_document.is_checked_out())
 
-    def test_check_out_document_view_with_access(self):
+    def test_document_check_out_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_check_out
         )
@@ -105,28 +83,21 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
             permission=permission_document_check_out_detail_view
         )
 
-        response = self._request_document_checkout_view()
+        response = self._request_test_document_check_out_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(self.test_document.is_checked_out())
 
-    def _request_check_out_detail_view(self):
-        return self.get(
-            viewname='checkouts:check_out_info', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def test_checkout_detail_view_no_permission(self):
+    def test_document_check_out_detail_view_no_permission(self):
         self._check_out_test_document()
 
-        response = self._request_check_out_detail_view()
+        response = self._request_test_document_check_out_detail_view()
 
         self.assertNotContains(
             response, text=STATE_LABELS[STATE_CHECKED_OUT], status_code=404
         )
 
-    def test_checkout_detail_view_with_access(self):
+    def test_document_check_out_detail_view_with_access(self):
         self._check_out_test_document()
 
         self.grant_access(
@@ -134,15 +105,12 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
             permission=permission_document_check_out_detail_view
         )
 
-        response = self._request_check_out_detail_view()
+        response = self._request_test_document_check_out_detail_view()
         self.assertContains(
             response, text=STATE_LABELS[STATE_CHECKED_OUT], status_code=200
         )
 
-    def _request_check_out_list_view(self):
-        return self.get(viewname='checkouts:check_out_list')
-
-    def test_checkout_list_view_no_permission(self):
+    def test_document_checkout_list_view_no_permission(self):
         self._check_out_test_document()
 
         self.grant_access(
@@ -150,12 +118,12 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
             permission=permission_document_view
         )
 
-        response = self._request_check_out_list_view()
+        response = self._request_test_document_check_out_list_view()
         self.assertNotContains(
             response=response, text=self.test_document.label, status_code=200
         )
 
-    def test_checkout_list_view_with_access(self):
+    def test_document_checkout_list_view_with_access(self):
         self._check_out_test_document()
 
         self.grant_access(
@@ -167,12 +135,12 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
             permission=permission_document_view
         )
 
-        response = self._request_check_out_list_view()
+        response = self._request_test_document_check_out_list_view()
         self.assertContains(
             response=response, text=self.test_document.label, status_code=200
         )
 
-    def test_document_new_version_after_check_out(self):
+    def test_document_check_out_new_version(self):
         """
         Gitlab issue #231
         User shown option to upload new version of a document even though it
@@ -209,7 +177,7 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
 
         self.assertEqual(resolved_link, None)
 
-    def test_forcefull_check_in_document_view_no_permission(self):
+    def test_document_forcefull_check_in_view_no_permission(self):
         # Gitlab issue #237
         # Forcefully checking in a document by a user without adequate
         # permissions throws out an error
@@ -232,7 +200,7 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
 
         self.assertTrue(self.test_document.is_checked_out())
 
-    def test_forcefull_check_in_document_view_with_permission(self):
+    def test_document_forcefull_check_in_view_with_permission(self):
         self._create_test_case_superuser()
         self._check_out_test_document(user=self._test_case_superuser)
 

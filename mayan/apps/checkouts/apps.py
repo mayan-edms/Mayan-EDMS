@@ -6,7 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_facet, menu_main, menu_secondary
+from mayan.apps.common.menus import (
+    menu_facet, menu_main, menu_multi_item, menu_secondary
+)
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.events.classes import ModelEventType
 
@@ -17,8 +19,9 @@ from .events import (
 )
 from .handlers import handler_check_new_version_creation
 from .links import (
-    link_check_in_document, link_check_out_document, link_check_out_info,
-    link_check_out_list
+    link_check_in_document, link_check_in_document_multiple,
+    link_check_out_document, link_check_out_document_multiple,
+    link_check_out_info, link_check_out_list
 )
 from .methods import (
     method_check_in, method_get_check_out_info, method_get_check_out_state,
@@ -85,6 +88,12 @@ class CheckoutsApp(MayanAppConfig):
             links=(link_check_out_info,), sources=(Document,)
         )
         menu_main.bind_links(links=(link_check_out_list,), position=98)
+        menu_multi_item.bind_links(
+            links=(
+                link_check_in_document_multiple,
+                link_check_out_document_multiple
+            ), sources=(Document,)
+        )
         menu_secondary.bind_links(
             links=(link_check_out_document, link_check_in_document),
             sources=(
