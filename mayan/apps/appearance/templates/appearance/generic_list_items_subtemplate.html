@@ -86,7 +86,7 @@
                                     {% if not hide_columns %}
                                         {% navigation_get_source_columns source=object exclude_identifier=True as source_columns %}
                                         {% for column in source_columns %}
-                                            <div class="text-center" style="">{% navigation_source_column_resolve column=column as column_value %}{% if column_value != '' %}{% if column.include_label %}{{ column.label }}: {% endif %}{{ column_value }}{% endif %}</div>
+                                            <div class="text-center" style="">{% navigation_source_column_resolve column=column as column_value %}{% if column_value != '' %}{% if column.include_label %}<span class="source-column-label">{{ column.label }}</span>: {% endif %}{{ column_value }}{% endif %}</div>
                                         {% endfor %}
                                     {% endif %}
 

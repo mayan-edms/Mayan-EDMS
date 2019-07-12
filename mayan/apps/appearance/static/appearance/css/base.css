@@ -216,6 +216,10 @@ a i {
     font-weight: bold;
 }
 
+.source-column-label {
+    font-weight: bold;
+}
+
 /* Content */
 @media (min-width:1200px) {
     .container-fluid {
