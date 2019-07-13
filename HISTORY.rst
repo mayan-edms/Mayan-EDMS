@@ -15,6 +15,42 @@ Importer branch
 - Add support for source column exclusion.
 - Backport workflow context support.
 - Backport workflow transitions field support.
+- Backport workflow email action.
+- Backport individual index rebuild support.
+- Rename the installjavascript command to installdependencies.
+- Remove database conversion command.
+- Remove support for quoted configuration entries. Support unquoted,
+  nested dictionaries in the configuration. Requires manual
+  update of existing config.yml files.
+- Support user specified locations for the configuration file with the
+  CONFIGURATION_FILEPATH (MAYAN_CONFIGURATION_FILEPATH environment variable),
+  and CONFIGURATION_LAST_GOOD_FILEPATH
+  (MAYAN_CONFIGURATION_LAST_GOOD_FILEPATH environment variable) settings.
+- Move bootstrapped settings code to their own module in the smart_settings
+  apps.
+- Remove individual database configuration options. All database
+  configuration is now done using MAYAN_DATABASES to mirror Django way of
+  doing atabase etup.
+- Added support for YAML encoded environment variables to the platform
+  templates apps.
+- Move YAML code to its own module.
+- Move Django and Celery settings.
+- Backport FakeStorageSubclass from versions/next.
+- Remove django-environ.
+- Support checking in and out multiple documents.
+- Remove encapsulate helper.
+- Add support for menu inheritance.
+- Emphasize source column labels.
+
+3.2.6 (2019-07-10)
+==================
+* Remove the smart settings app * import.
+* Encode settings YAML before hashing.
+* Fix document icon used in the workflow runtime links.
+* Add trashed date time label.
+* Fix thumbnail generation issue. GitLab issue #637.
+  Thanks to Giacomo Cariello (@giacomocariello) for the report
+  and the merge request fixing the issue.
 
 3.2.5 (2019-07-05)
 ==================

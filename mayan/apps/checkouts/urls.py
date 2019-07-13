@@ -4,25 +4,34 @@ from django.conf.urls import url
 
 from .api_views import APICheckedoutDocumentListView, APICheckedoutDocumentView
 from .views import (
-    CheckoutDocumentView, CheckoutDetailView, CheckoutListView,
-    DocumentCheckinView
+    DocumentCheckinView, DocumentCheckoutDetailView, DocumentCheckoutView,
+    DocumentCheckoutListView
 )
 
 urlpatterns = [
     url(
-        regex=r'^list/$', view=CheckoutListView.as_view(), name='check_out_list'
+        regex=r'^documents/$', view=DocumentCheckoutListView.as_view(),
+        name='check_out_list'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/check/out/$', view=CheckoutDocumentView.as_view(),
-        name='check_out_document'
-    ),
-    url(
-        regex=r'^(?P<pk>\d+)/check/in/$', view=DocumentCheckinView.as_view(),
+        regex=r'^documents/(?P<pk>\d+)/check_in/$', view=DocumentCheckinView.as_view(),
         name='check_in_document'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/check/info/$', view=CheckoutDetailView.as_view(),
-        name='check_out_info'
+        regex=r'^documents/multiple/check_in/$',
+        name='check_in_document_multiple', view=DocumentCheckinView.as_view()
+    ),
+    url(
+        regex=r'^documents/(?P<pk>\d+)/check_out/$', view=DocumentCheckoutView.as_view(),
+        name='check_out_document'
+    ),
+    url(
+        regex=r'^documents/multiple/check_out/$',
+        name='check_out_document_multiple', view=DocumentCheckoutView.as_view()
+    ),
+    url(
+        regex=r'^documents/(?P<pk>\d+)/checkout/info/$',
+        view=DocumentCheckoutDetailView.as_view(), name='check_out_info'
     ),
 ]
 

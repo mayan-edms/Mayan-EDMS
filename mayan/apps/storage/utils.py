@@ -5,6 +5,8 @@ import os
 import shutil
 import tempfile
 
+from django.utils.module_loading import import_string
+
 from .settings import setting_temporary_directory
 
 logger = logging.getLogger(__name__)
@@ -37,6 +39,27 @@ def fs_cleanup(filename, file_descriptor=None, suppress_exceptions=True):
                 pass
             else:
                 raise
+
+
+def get_storage_subclass(dotted_path):
+    """
+    Import a storage class and return a subclass that will always return eq
+    True to avoid creating a new migration when for runtime storage class
+    changes.
+    """
+    imported_storage_class = import_string(dotted_path=dotted_path)
+
+    class StorageSubclass(imported_storage_class):
+        def __init__(self, *args, **kwargs):
+            return super(StorageSubclass, self).__init__(*args, **kwargs)
+
+        def __eq__(self, other):
+            return True
+
+        def deconstruct(self):
+            return ('mayan.apps.storage.classes.FakeStorageSubclass', (), {})
+
+    return StorageSubclass
 
 
 def mkdtemp(*args, **kwargs):

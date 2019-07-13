@@ -139,7 +139,7 @@ class EmailActionViewTestCase(DocumentTestMixin, MailerTestMixin, WorkflowTestMi
         self._create_test_user_mailer()
 
         response = self.get(
-            viewname='document_states:setup_workflow_state_action_create',
+            viewname='document_states:workflow_template_state_action_create',
             kwargs={
                 'pk': self.test_workflow_state.pk,
                 'class_path': 'mayan.apps.mailer.workflow_actions.EmailAction',
@@ -151,7 +151,7 @@ class EmailActionViewTestCase(DocumentTestMixin, MailerTestMixin, WorkflowTestMi
 
     def _request_email_action_create_post_view(self):
         return self.post(
-            viewname='document_states:setup_workflow_state_action_create',
+            viewname='document_states:workflow_template_state_action_create',
             kwargs={
                 'pk': self.test_workflow_state.pk,
                 'class_path': 'mayan.apps.mailer.workflow_actions.EmailAction',

@@ -22,11 +22,55 @@ Changes
 - Add support for source column exclusion.
 - Backport workflow context support.
 - Backport workflow transitions field support.
+- Backport workflow email action.
+- Backport individual index rebuild support.
+- Rename the installjavascript command to installdependencies.
+- Remove database conversion command.
+- Remove support for quoted configuration entries. Support unquoted,
+  nested dictionaries in the configuration. Requires manual
+  update of existing config.yml files.
+- Support user specified locations for the configuration file with the
+  CONFIGURATION_FILEPATH (MAYAN_CONFIGURATION_FILEPATH environment variable), and
+  CONFIGURATION_LAST_GOOD_FILEPATH
+  (MAYAN_CONFIGURATION_LAST_GOOD_FILEPATH environment variable) settings.
+- Move bootstrapped settings code to their own module in the smart_settings apps.
+- Remove individual database configuration options. All database configuration
+  is now done using MAYAN_DATABASES to mirror Django way of doing database setup.
+- Added support for YAML encoded environment variables to the platform
+  templates apps.
+- Move YAML code to its own module. Code now resides in common.serialization
+  in the form of two new functions: yaml_load and yaml_dump.
+- Move Django and Celery settings. Django settings now reside in the smart
+  settings app. Celery settings now reside in the task manager app.
+- Backport FakeStorageSubclass from versions/next. Placeholder class to allow
+  serializing the real storage subclass to support migrations.
+  Used by all configurable storages.
+- Support checking in and out multiple documents.
+- Remove encapsulate helper.
+- Add support for menu inheritance.
+- Emphasize source column labels.
 
 Removals
 --------
 
-- None
+- Database conversion. Reason for removal. The database conversions support
+  provided by this feature (SQLite to PostgreSQL) was being confused with
+  database migrations and upgrades.
+  
+  Database upgrades are the responsibility of the app and the framework.
+  Database conversions however are not the responsibility of the app (Mayan),
+  they are the responsibility of the framework.
+  
+  Database conversion is outside the scope of what Mayan does but we added
+  the code, management command, instructions and testing setup to provide
+  this to our users until the framework (Django) decided to add this
+  themselves (like they did with migrations).
+
+  Continued confusion about the purpose of the feature and confusion about 
+  how errors with this feature were a reflexion of the code quality of
+  Mayannecessitated the removal of the database conversion feature.
+
+- Django environ
 
 
 Upgrading from a previous version
@@ -37,11 +81,11 @@ If installed via Python's PIP
 
 Remove deprecated requirements::
 
-    $ curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt | pip uninstall -r /dev/stdin
+    sudo -u mayan curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt -o /tmp/removals.txt && sudo -u mayan /opt/mayan-edms/bin/pip uninstall -y -r /tmp/removals.txt
 
 Type in the console::
 
-    $ pip install mayan-edms==3.3
+    /opt/mayan-edms/bin/pip install mayan-edms==3.3
 
 the requirements will also be updated automatically.
 
@@ -51,19 +95,19 @@ Using Git
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
-    $ git reset --hard HEAD
-    $ git pull
+    git reset --hard HEAD
+    git pull
 
 otherwise download the compressed archived and uncompress it overriding the
 existing installation.
 
 Remove deprecated requirements::
 
-    $ pip uninstall -y -r removals.txt
+    pip uninstall -y -r removals.txt
 
 Next upgrade/add the new requirements::
 
-    $ pip install --upgrade -r requirements.txt
+    pip install --upgrade -r requirements.txt
 
 
 Common steps
@@ -80,9 +124,8 @@ variables values show here with your respective settings. This step will refresh
 the supervisord configuration file with the new queues and the latest
 recommended layout::
 
-    sudo MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
-    MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
-    MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
+    sudo MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+    MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
     /opt/mayan-edms/bin/mayan-edms.py platformtemplate supervisord > /etc/supervisor/conf.d/mayan.conf
 
 Edit the supervisord configuration file and update any setting the template
@@ -92,11 +135,11 @@ generator missed::
 
 Migrate existing database schema with::
 
-    $ mayan-edms.py performupgrade
+    sudo -u mayan MAYAN_MEDIA_ROOT=/opt/mayan-edms/media /opt/mayan-edms/bin/mayan-edms.py performupgrade
 
 Add new static media::
 
-    $ mayan-edms.py preparestatic --noinput
+    sudo -u mayan MAYAN_MEDIA_ROOT=/opt/mayan-edms/media /opt/mayan-edms/bin/mayan-edms.py preparestatic --noinput
 
 The upgrade procedure is now complete.
 
@@ -104,12 +147,20 @@ The upgrade procedure is now complete.
 Backward incompatible changes
 -----------------------------
 
-- None
+- Update quoted settings to be unquoted:
+
+  - COMMON_SHARED_STORAGE_ARGUMENTS
+  - CONVERTER_GRAPHICS_BACKEND_ARGUMENTS
+  - DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS
+  - DOCUMENTS_STORAGE_BACKEND_ARGUMENTS
+  - FILE_METADATA_DRIVERS_ARGUMENTS
+  - SIGNATURES_STORAGE_BACKEND_ARGUMENTS
 
 
 Bugs fixed or issues closed
 ---------------------------
 
 - :gitlab-issue:`532` Workflow preview isn't updated right after transitions are modified
+- :gitlab-issue:`634` Failing docker entrypoint when using secret config
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

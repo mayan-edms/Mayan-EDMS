@@ -212,7 +212,7 @@ class WorkflowTransitionEventViewTestCase(
 ):
     def _request_test_workflow_transition_event_list_view(self):
         return self.get(
-            viewname='document_states:setup_workflow_transition_events',
+            viewname='document_states:workflow_template_transition_events',
             kwargs={'pk': self.test_workflow_transition.pk}
         )
 
@@ -256,7 +256,7 @@ class WorkflowTransitionFieldViewTestCase(
 
     def _request_test_workflow_transition_field_list_view(self):
         return self.get(
-            viewname='document_states:setup_workflow_transition_field_list',
+            viewname='document_states:workflow_template_transition_field_list',
             kwargs={'pk': self.test_workflow_transition.pk}
         )
 
@@ -286,7 +286,7 @@ class WorkflowTransitionFieldViewTestCase(
 
     def _request_workflow_transition_field_create_view(self):
         return self.post(
-            viewname='document_states:setup_workflow_transition_field_create',
+            viewname='document_states:workflow_template_transition_field_create',
             kwargs={'pk': self.test_workflow_transition.pk},
             data={
                 'field_type': TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
@@ -324,7 +324,7 @@ class WorkflowTransitionFieldViewTestCase(
 
     def _request_workflow_transition_field_delete_view(self):
         return self.post(
-            viewname='document_states:setup_workflow_transition_field_delete',
+            viewname='document_states:workflow_template_transition_field_delete',
             kwargs={'pk': self.test_workflow_transition_field.pk},
         )
 

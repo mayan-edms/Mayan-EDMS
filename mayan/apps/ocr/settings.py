@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings import Namespace
+from mayan.apps.smart_settings.classes import Namespace
 
 namespace = Namespace(label=_('OCR'), name='ocr')
 
@@ -13,7 +13,7 @@ setting_ocr_backend = namespace.add_setting(
 )
 setting_ocr_backend_arguments = namespace.add_setting(
     global_name='OCR_BACKEND_ARGUMENTS',
-    default=''
+    default={}
 )
 setting_auto_ocr = namespace.add_setting(
     global_name='OCR_AUTO_OCR', default=True,

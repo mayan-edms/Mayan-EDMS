@@ -122,7 +122,7 @@ RUN python -m virtualenv "${PROJECT_INSTALL_DIR}" \
 # Install the built Mayan EDMS package
 && pip install --no-cache-dir --no-use-pep517 dist/mayan* \
 # Install the static content
-&& mayan-edms.py installjavascript \
+&& mayan-edms.py installdependencies \
 && MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}/static mayan-edms.py preparestatic --link --noinput
 
 COPY --chown=mayan:mayan requirements/testing-base.txt "${PROJECT_INSTALL_DIR}"

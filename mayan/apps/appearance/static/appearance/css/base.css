@@ -216,6 +216,10 @@ a i {
     font-weight: bold;
 }
 
+.source-column-label {
+    font-weight: bold;
+}
+
 /* Content */
 @media (min-width:1200px) {
     .container-fluid {
@@ -264,8 +268,8 @@ a i {
 
 #ajax-spinner {
     position: fixed;
-    top: 12px;
-    right: 10px;
+    top: 16px;
+    left: 10px;
     z-index: 9999;
     width: 25px;
     height: 25px;

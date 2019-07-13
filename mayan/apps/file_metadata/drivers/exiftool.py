@@ -4,12 +4,6 @@ import json
 import logging
 
 import sh
-import yaml
-
-try:
-    from yaml import CSafeLoader as SafeLoader
-except ImportError:
-    from yaml import SafeLoader
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -57,11 +51,7 @@ class EXIFToolDriver(FileMetadataDriver):
             )
 
     def read_settings(self):
-        driver_arguments = yaml.load(
-            stream=setting_drivers_arguments.value, Loader=SafeLoader
-        )
-
-        self.exiftool_path = driver_arguments.get(
+        self.exiftool_path = setting_drivers_arguments.value.get(
             'exif_driver', {}
         ).get('exiftool_path', DEFAULT_EXIF_PATH)
 

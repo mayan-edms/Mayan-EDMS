@@ -5,7 +5,7 @@ import os
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings import Namespace
+from mayan.apps.smart_settings.classes import Namespace
 
 from .literals import (
     DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE, DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES
@@ -18,15 +18,14 @@ setting_documentimagecache_storage = namespace.add_setting(
     default='django.core.files.storage.FileSystemStorage', help_text=_(
         'Path to the Storage subclass to use when storing the cached '
         'document image files.'
-    ), quoted=True
+    )
 )
 setting_documentimagecache_storage_arguments = namespace.add_setting(
     global_name='DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS',
-    default='{{location: {}}}'.format(
-        os.path.join(settings.MEDIA_ROOT, 'document_cache')
-    ), help_text=_(
+    default={'location': os.path.join(settings.MEDIA_ROOT, 'document_cache')},
+    help_text=_(
         'Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND.'
-    ), quoted=True,
+    ),
 )
 setting_disable_base_image_cache = namespace.add_setting(
     global_name='DOCUMENTS_DISABLE_BASE_IMAGE_CACHE', default=False,
@@ -127,9 +126,8 @@ setting_storage_backend = namespace.add_setting(
 )
 setting_storage_backend_arguments = namespace.add_setting(
     global_name='DOCUMENTS_STORAGE_BACKEND_ARGUMENTS',
-    default='{{location: {}}}'.format(
-        os.path.join(settings.MEDIA_ROOT, 'document_storage')
-    ), help_text=_('Arguments to pass to the DOCUMENT_STORAGE_BACKEND.')
+    default={'location': os.path.join(settings.MEDIA_ROOT, 'document_storage')},
+    help_text=_('Arguments to pass to the DOCUMENT_STORAGE_BACKEND.')
 )
 setting_thumbnail_height = namespace.add_setting(
     global_name='DOCUMENTS_THUMBNAIL_HEIGHT', default='', help_text=_(

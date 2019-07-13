@@ -65,7 +65,7 @@ class CheckoutsAPITestCase(DocumentCheckoutTestMixin, DocumentTestMixin, BaseAPI
             force_text(self.test_document.uuid)
         )
 
-    def _request_document_checkout_view(self):
+    def _request_test_document_check_out_view(self):
         return self.post(
             viewname='rest_api:checkout-document-list', data={
                 'document_pk': self.test_document.pk,
@@ -74,7 +74,7 @@ class CheckoutsAPITestCase(DocumentCheckoutTestMixin, DocumentTestMixin, BaseAPI
         )
 
     def test_document_checkout_no_access(self):
-        response = self._request_document_checkout_view()
+        response = self._request_test_document_check_out_view()
 
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(DocumentCheckout.objects.count(), 0)
@@ -82,7 +82,7 @@ class CheckoutsAPITestCase(DocumentCheckoutTestMixin, DocumentTestMixin, BaseAPI
     def test_document_checkout_with_access(self):
         self.grant_access(permission=permission_document_check_out, obj=self.test_document)
 
-        response = self._request_document_checkout_view()
+        response = self._request_test_document_check_out_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertEqual(

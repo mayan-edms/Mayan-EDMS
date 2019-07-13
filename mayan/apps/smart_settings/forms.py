@@ -2,14 +2,11 @@ from __future__ import unicode_literals
 
 import yaml
 
-try:
-    from yaml import CSafeLoader as SafeLoader
-except ImportError:
-    from yaml import SafeLoader
-
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
+
+from mayan.apps.common.serialization import yaml_load
 
 
 class SettingForm(forms.Form):
@@ -25,20 +22,8 @@ class SettingForm(forms.Form):
         self.fields['value'].initial = self.setting.serialized_value
 
     def clean(self):
-        quotes = ['"', "'"]
-
-        if self.setting.quoted:
-            stripped = self.cleaned_data['value'].strip()
-
-            if stripped[0] not in quotes or stripped[-1] not in quotes:
-                raise ValidationError(
-                    _(
-                        'Value must be properly quoted.'
-                    )
-                )
-
         try:
-            yaml.load(stream=self.cleaned_data['value'], Loader=SafeLoader)
+            yaml_load(stream=self.cleaned_data['value'])
         except yaml.YAMLError:
             raise ValidationError(
                 _(

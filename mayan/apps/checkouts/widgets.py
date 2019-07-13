@@ -32,8 +32,8 @@ class SplitTimeDeltaWidget(forms.widgets.MultiWidget):
         return (None, None)
 
     def value_from_datadict(self, querydict, files, name):
-        unit = querydict.get('{}_1'.format(name))
-        period = querydict.get('{}_0'.format(name))
+        unit = querydict.get('{}_0'.format(name))
+        period = querydict.get('{}_1'.format(name))
 
         if not unit or not period:
             return now()

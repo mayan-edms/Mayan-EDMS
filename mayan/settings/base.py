@@ -17,15 +17,15 @@ import sys
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.translation import ugettext_lazy as _
 
-import environ
+from mayan.apps.smart_settings.literals import BOOTSTRAP_SETTING_LIST
+from mayan.apps.smart_settings.utils import (
+    get_environment_setting, get_environment_variables, read_configuration_file
+)
 
 from .literals import (
     CONFIGURATION_FILENAME, CONFIGURATION_LAST_GOOD_FILENAME,
     DEFAULT_SECRET_KEY, SECRET_KEY_FILENAME, SYSTEM_DIR
 )
-from .utils import yaml_loads, read_configuration_file
-
-env = environ.Env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
@@ -34,8 +34,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
-MEDIA_ROOT = os.environ.get(
-    'MAYAN_MEDIA_ROOT', os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = get_environment_setting(
+    name='MAYAN_MEDIA_ROOT', fallback_default=os.path.join(BASE_DIR, 'media')
 )
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -50,13 +50,9 @@ else:
         SECRET_KEY = DEFAULT_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('MAYAN_DEBUG', default=False)
+DEBUG = get_environment_setting(name='DEBUG')
 
-ALLOWED_HOSTS = yaml_loads(
-    env(
-        'MAYAN_ALLOWED_HOSTS', default="['127.0.0.1', 'localhost', '[::1]']"
-    )
-)
+ALLOWED_HOSTS = get_environment_setting(name='ALLOWED_HOSTS')
 
 # Application definition
 
@@ -259,12 +255,10 @@ TEST_RUNNER = 'mayan.apps.common.tests.runner.MayanTestRunner'
 
 # --------- Django -------------------
 
-LOGIN_URL = env('MAYAN_LOGIN_URL', default='authentication:login_view')
-LOGIN_REDIRECT_URL = env('MAYAN_LOGIN_REDIRECT_URL', default='common:root')
-LOGOUT_REDIRECT_URL = env(
-    'MAYAN_LOGOUT_REDIRECT_URL', default='authentication:login_view'
-)
-INTERNAL_IPS = ('127.0.0.1',)
+LOGIN_URL = get_environment_setting(name='LOGIN_URL')
+LOGIN_REDIRECT_URL = get_environment_setting(name='LOGIN_REDIRECT_URL')
+LOGOUT_REDIRECT_URL = get_environment_setting(name='LOGOUT_REDIRECT_URL')
+INTERNAL_IPS = get_environment_setting(name='INTERNAL_IPS')
 
 # ---------- Django REST framework -----------
 
@@ -327,51 +321,43 @@ AJAX_REDIRECT_CODE = 278
 
 # ----- Celery -----
 
-BROKER_URL = os.environ.get('MAYAN_BROKER_URL')
-CELERY_ALWAYS_EAGER = env.bool('MAYAN_CELERY_ALWAYS_EAGER', default=True)
-CELERY_RESULT_BACKEND = os.environ.get('MAYAN_CELERY_RESULT_BACKEND')
+BROKER_URL = get_environment_setting(name='BROKER_URL')
+CELERY_ALWAYS_EAGER = get_environment_setting(name='CELERY_ALWAYS_EAGER')
+CELERY_RESULT_BACKEND = get_environment_setting(name='CELERY_RESULT_BACKEND')
 
 # ----- Database -----
-environment_database_engine = os.environ.get('MAYAN_DATABASE_ENGINE')
-
-if environment_database_engine:
-    environment_database_conn_max_age = os.environ.get('MAYAN_DATABASE_CONN_MAX_AGE', 0)
-    if environment_database_conn_max_age:
-        environment_database_conn_max_age = int(environment_database_conn_max_age)
-
-    DATABASES = {
-        'default': {
-            'ENGINE': environment_database_engine,
-            'NAME': os.environ['MAYAN_DATABASE_NAME'],
-            'USER': os.environ['MAYAN_DATABASE_USER'],
-            'PASSWORD': os.environ['MAYAN_DATABASE_PASSWORD'],
-            'HOST': os.environ.get('MAYAN_DATABASE_HOST', None),
-            'PORT': os.environ.get('MAYAN_DATABASE_PORT', None),
-            'CONN_MAX_AGE': environment_database_conn_max_age,
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),
-        }
-    }
-
+}
 
 BASE_INSTALLED_APPS = INSTALLED_APPS
 COMMON_EXTRA_APPS = ()
 COMMON_DISABLED_APPS = ()
 
-CONFIGURATION_FILEPATH = os.path.join(MEDIA_ROOT, CONFIGURATION_FILENAME)
-CONFIGURATION_LAST_GOOD_FILEPATH = os.path.join(
-    MEDIA_ROOT, CONFIGURATION_LAST_GOOD_FILENAME
+CONFIGURATION_FILEPATH = get_environment_setting(
+    name='CONFIGURATION_FILEPATH', fallback_default=os.path.join(
+        MEDIA_ROOT, CONFIGURATION_FILENAME
+    )
+)
+
+CONFIGURATION_LAST_GOOD_FILEPATH = get_environment_setting(
+    name='CONFIGURATION_LAST_GOOD_FILEPATH', fallback_default=os.path.join(
+        MEDIA_ROOT, CONFIGURATION_LAST_GOOD_FILENAME
+    )
 )
 
 if 'revertsettings' not in sys.argv:
-    result = read_configuration_file(CONFIGURATION_FILEPATH)
-    if result:
-        globals().update(result)
+    configuration_result = read_configuration_file(CONFIGURATION_FILEPATH)
+    environment_result = get_environment_variables()
+
+    for setting in BOOTSTRAP_SETTING_LIST:
+        if setting['name'] in configuration_result:
+            globals().update({setting['name']: configuration_result[setting['name']]})
+        elif setting['name'] in environment_result:
+            globals().update({setting['name']: environment_result[setting['name']]})
 
 
 for app in INSTALLED_APPS:

@@ -17,7 +17,11 @@ from .literals import (
 from .mixins import IndexTestMixin, IndexViewTestMixin
 
 
-class IndexViewTestCase(IndexTestMixin, IndexViewTestMixin, GenericDocumentViewTestCase):
+class IndexViewTestCase(
+    IndexTestMixin, IndexViewTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_document = False
+
     def test_index_create_view_no_permission(self):
         response = self._request_test_index_create_view()
         self.assertEqual(response.status_code, 403)
@@ -75,6 +79,45 @@ class IndexViewTestCase(IndexTestMixin, IndexViewTestMixin, GenericDocumentViewT
         self.test_index.refresh_from_db()
         self.assertEqual(self.test_index.label, TEST_INDEX_LABEL_EDITED)
 
+    def test_index_rebuild_view_no_permission(self):
+        self.upload_document()
+        self._create_test_index()
+
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
+            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
+            link_documents=True
+        )
+
+        response = self._request_test_index_rebuild_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(IndexInstanceNode.objects.count(), 0)
+
+    def test_index_rebuild_view_with_access(self):
+        self.upload_document()
+        self._create_test_index()
+
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
+            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
+            link_documents=True
+        )
+
+        self.grant_access(
+            obj=self.test_index,
+            permission=permission_document_indexing_rebuild
+        )
+
+        response = self._request_test_index_rebuild_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertNotEqual(IndexInstanceNode.objects.count(), 0)
+
+
+class IndexInstanceViewTestCase(
+    IndexTestMixin, IndexViewTestMixin, GenericDocumentViewTestCase
+):
     def _request_index_instance_node_view(self, index_instance_node):
         return self.get(
             viewname='indexing:index_instance_node_view', kwargs={
@@ -103,9 +146,13 @@ class IndexViewTestCase(IndexTestMixin, IndexViewTestMixin, GenericDocumentViewT
         )
         self.assertContains(response, text=TEST_INDEX_LABEL, status_code=200)
 
+
+class IndexToolsViewTestCase(
+    IndexTestMixin, IndexViewTestMixin, GenericDocumentViewTestCase
+):
     def _request_indexes_rebuild_get_view(self):
         return self.get(
-            viewname='indexing:rebuild_index_instances',
+            viewname='indexing:rebuild_index_instances'
         )
 
     def _request_indexes_rebuild_post_view(self):
@@ -149,36 +196,3 @@ class IndexViewTestCase(IndexTestMixin, IndexViewTestMixin, GenericDocumentViewT
 
         # An instance root exists
         self.assertTrue(self.test_index.instance_root.pk)
-
-    def test_index_rebuild_view_no_permission(self):
-        self._create_test_index()
-
-        self.test_index.node_templates.create(
-            parent=self.test_index.template_root,
-            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
-            link_documents=True
-        )
-
-        response = self._request_test_index_rebuild_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertEqual(IndexInstanceNode.objects.count(), 0)
-
-    def test_index_rebuild_view_with_access(self):
-        self._create_test_index()
-
-        self.test_index.node_templates.create(
-            parent=self.test_index.template_root,
-            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
-            link_documents=True
-        )
-
-        self.grant_access(
-            obj=self.test_index,
-            permission=permission_document_indexing_rebuild
-        )
-
-        response = self._request_test_index_rebuild_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertNotEqual(IndexInstanceNode.objects.count(), 0)

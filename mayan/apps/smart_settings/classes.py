@@ -9,17 +9,16 @@ import sys
 
 import yaml
 
-try:
-    from yaml import CSafeLoader as SafeLoader, CSafeDumper as SafeDumper
-except ImportError:
-    from yaml import SafeLoader, SafeDumper
-
 from django.apps import apps
 from django.conf import settings
 from django.utils.functional import Promise
 from django.utils.encoding import (
     force_bytes, force_text, python_2_unicode_compatible
 )
+
+from mayan.apps.common.serialization import yaml_dump, yaml_load
+
+from .utils import read_configuration_file
 
 logger = logging.getLogger(__name__)
 
@@ -82,10 +81,11 @@ class Namespace(object):
 class Setting(object):
     _registry = {}
     _cache_hash = None
+    _config_file_cache = None
 
     @staticmethod
     def deserialize_value(value):
-        return yaml.load(stream=value, Loader=SafeLoader)
+        return yaml_load(stream=value)
 
     @staticmethod
     def express_promises(value):
@@ -101,9 +101,9 @@ class Setting(object):
 
     @staticmethod
     def serialize_value(value):
-        result = yaml.dump(
+        result = yaml_dump(
             data=Setting.express_promises(value), allow_unicode=True,
-            Dumper=SafeDumper
+            default_flow_style=False,
         )
         # safe_dump returns bytestrings
         # Disregard the last 3 dots that mark the end of the YAML document
@@ -128,8 +128,8 @@ class Setting(object):
                 if (filter_term and filter_term.lower() in setting.global_name.lower()) or not filter_term:
                     dictionary[setting.global_name] = Setting.express_promises(setting.value)
 
-        return yaml.dump(
-            data=dictionary, default_flow_style=False, Dumper=SafeDumper
+        return yaml_dump(
+            data=dictionary, default_flow_style=False
         )
 
     @classmethod
@@ -139,6 +139,16 @@ class Setting(object):
     @classmethod
     def get_all(cls):
         return sorted(cls._registry.values(), key=lambda x: x.global_name)
+
+    @classmethod
+    def get_config_file_content(cls):
+        # Cache content of config file to speed up initial boot up
+        if not cls._config_file_cache:
+            cls._config_file_cache = read_configuration_file(
+                path=settings.CONFIGURATION_FILEPATH
+            )
+
+        return cls._config_file_cache
 
     @classmethod
     def get_hash(cls):
@@ -167,13 +177,12 @@ class Setting(object):
                 path=settings.CONFIGURATION_LAST_GOOD_FILEPATH
             )
 
-    def __init__(self, namespace, global_name, default, help_text=None, is_path=False, quoted=False):
+    def __init__(self, namespace, global_name, default, help_text=None, is_path=False):
         self.global_name = global_name
         self.default = default
         self.help_text = help_text
         self.loaded = False
         self.namespace = namespace
-        self.quoted = quoted
         self.environment_variable = False
         namespace._settings.append(self)
         self.__class__._registry[global_name] = self
@@ -186,7 +195,7 @@ class Setting(object):
         if environment_value:
             self.environment_variable = True
             try:
-                self.raw_value = environment_value
+                self.raw_value = yaml_load(stream=environment_value)
             except yaml.YAMLError as exception:
                 raise type(exception)(
                     'Error interpreting environment variable: {} with '
@@ -195,7 +204,12 @@ class Setting(object):
                     )
                 )
         else:
-            self.raw_value = getattr(settings, self.global_name, self.default)
+            self.raw_value = self.get_config_file_content().get(
+                self.global_name, getattr(
+                    settings, self.global_name, self.default
+                )
+            )
+
         self.yaml = Setting.serialize_value(self.raw_value)
         self.loaded = True
 

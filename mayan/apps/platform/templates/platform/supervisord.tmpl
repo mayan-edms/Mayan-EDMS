@@ -1,17 +1,12 @@
 [supervisord]
 environment=
-    MAYAN_ALLOWED_HOSTS='["*"]',  # Allow access to other network hosts other than localhost
+    PYTHONPATH={{ INSTALLATION_PATH }}/lib/python2.7/site-packages:{{ MEDIA_ROOT }}/mayan_settings,
+    DJANGO_SETTINGS_MODULE=mayan.settings.production,
+    MAYAN_MEDIA_ROOT="{{ MEDIA_ROOT }}",
+    MAYAN_ALLOWED_HOSTS="{{ ALLOWED_HOSTS }}",
     MAYAN_CELERY_RESULT_BACKEND="{{ CELERY_RESULT_BACKEND }}",
     MAYAN_BROKER_URL="{{ BROKER_URL }}",
-    PYTHONPATH={{ INSTALLATION_PATH }}/lib/python2.7/site-packages:{{ MEDIA_ROOT }}/mayan_settings,
-    MAYAN_MEDIA_ROOT={{ MEDIA_ROOT }},
-    MAYAN_DATABASE_ENGINE={{ DATABASE_ENGINE }},
-    MAYAN_DATABASE_HOST={{ DATABASE_HOST }},
-    MAYAN_DATABASE_NAME={{ DATABASE_NAME }},
-    MAYAN_DATABASE_PASSWORD={{ DATABASE_PASSWORD }},
-    MAYAN_DATABASE_USER={{ DATABASE_USER }},
-    MAYAN_DATABASE_CONN_MAX_AGE={{ DATABASE_CONN_MAX_AGE }},
-    DJANGO_SETTINGS_MODULE=mayan.settings.production
+    MAYAN_DATABASES="{{ DATABASES }}"
 
 [program:mayan-gunicorn]
 autorestart = true

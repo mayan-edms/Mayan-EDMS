@@ -369,10 +369,25 @@ class Menu(object):
         for resolved_navigation_object in resolved_navigation_object_list:
             resolved_links = []
 
+            # List of resolved links source links used for deduplication
+            resolved_links_links = []
+
             for bound_source, links in self.bound_links.items():
                 try:
                     if inspect.isclass(bound_source):
                         if type(resolved_navigation_object) == bound_source:
+                            # Check to see if object is a proxy model. If it is, add its parent model
+                            # menu links too.
+                            if hasattr(resolved_navigation_object, '_meta'):
+                                parent_model = resolved_navigation_object._meta.proxy_for_model
+                                if parent_model:
+                                    parent_instance = parent_model.objects.filter(pk=resolved_navigation_object.pk)
+                                    if parent_instance:
+                                        for link_set in self.resolve(context=context, source=parent_instance.first()):
+                                            for link in link_set['links']:
+                                                if link.link not in self.unbound_links.get(bound_source, ()):
+                                                    resolved_links.append(link)
+
                             for link in links:
                                 resolved_link = link.resolve(
                                     context=context,
@@ -395,9 +410,21 @@ class Menu(object):
                                         resolved_links.append(resolved_link)
                             # No need for further content object match testing
                             break
+
                 except TypeError:
                     # When source is a dictionary
                     pass
+
+            # Remove duplicated resolved link by using their source link
+            # instance as reference. The actual resolved link can't be used
+            # since a single source link can produce multiple resolved links.
+            # Since dictionaries keys can't have duplicates, we use that as a
+            # native deduplicator.
+            resolved_links_dict = {}
+            for resolved_link in resolved_links:
+                resolved_links_dict[resolved_link.link] = resolved_link
+
+            resolved_links = resolved_links_dict.values()
 
             if resolved_links:
                 result.append(
@@ -406,6 +433,7 @@ class Menu(object):
                         'links': resolved_links
                     }
                 )
+
 
         resolved_links = []
         # View links
