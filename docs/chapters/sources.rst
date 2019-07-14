@@ -15,7 +15,8 @@ The current document sources supported are:
 - IMAP email - Same as the ``POP3`` email source but for email accounts using
   the ``IMAP`` protocol.
 - Watch folder - A filesystem folder that is scanned periodically for files.
-  Any file in the watch folder is automatically uploaded.
+  Any file in the watch folder is automatically uploaded. When the upload for a
+  file is completed, the file is removed from source folder.
 - Staging folder - Folder where networked attached scanned can save image
   files. The files in these staging folders are scanned and a preview is
   generated to help the process of upload. Staging folders and Watch folders
