@@ -95,6 +95,7 @@ INSTALLED_APPS = (
     'mayan.apps.django_gpg',
     'mayan.apps.dynamic_search',
     'mayan.apps.events',
+    'mayan.apps.file_caching',
     'mayan.apps.lock_manager',
     'mayan.apps.mimetype',
     'mayan.apps.navigation',

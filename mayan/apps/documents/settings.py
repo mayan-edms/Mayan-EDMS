@@ -8,11 +8,22 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.smart_settings.classes import Namespace
 
 from .literals import (
-    DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE, DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES
+    DEFAULT_DOCUMENTS_CACHE_MAXIMUM_SIZE, DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE,
+    DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES
 )
+from .utils import callback_update_cache_size
 
 namespace = Namespace(label=_('Documents'), name='documents')
 
+setting_document_cache_maximum_size = namespace.add_setting(
+    global_name='DOCUMENTS_CACHE_MAXIMUM_SIZE',
+    default=DEFAULT_DOCUMENTS_CACHE_MAXIMUM_SIZE,
+    help_text=_(
+        'The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start '
+        'deleting the oldest document image cache files. Specify the size in '
+        'bytes.'
+    ), post_edit_function=callback_update_cache_size
+)
 setting_documentimagecache_storage = namespace.add_setting(
     global_name='DOCUMENTS_CACHE_STORAGE_BACKEND',
     default='django.core.files.storage.FileSystemStorage', help_text=_(

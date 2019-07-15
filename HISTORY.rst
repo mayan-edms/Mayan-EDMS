@@ -36,6 +36,10 @@
 - Remove encapsulate helper.
 - Add support for menu inheritance.
 - Emphasize source column labels.
+- Backport file cache manager app.
+- Convert document image cache to use file cache manager app.
+  Add setting DOCUMENTS_CACHE_MAXIMUM_SIZE defaults to 500 MB.
+
 
 3.2.6 (2019-07-10)
 ==================

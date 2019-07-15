@@ -36,7 +36,6 @@ from .serializers import (
     WritableDocumentTypeSerializer, WritableDocumentVersionSerializer
 )
 from .settings import settings_document_page_image_cache_time
-from .storages import storage_documentimagecache
 from .tasks import task_generate_document_page_image
 
 logger = logging.getLogger(__name__)
@@ -205,11 +204,13 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         )
 
         cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
-        with storage_documentimagecache.open(cache_filename) as file_object:
+        cache_file = self.get_object().cache_partition.get_file(filename=cache_filename)
+        with cache_file.open() as file_object:
             response = HttpResponse(file_object.read(), content_type='image')
             if '_hash' in request.GET:
                 patch_cache_control(
-                    response, max_age=settings_document_page_image_cache_time.value
+                    response=response,
+                    max_age=settings_document_page_image_cache_time.value
                 )
             return response
 

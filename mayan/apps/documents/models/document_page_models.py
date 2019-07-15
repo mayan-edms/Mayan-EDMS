@@ -4,13 +4,14 @@ import logging
 
 from furl import furl
 
-from django.core.files.base import ContentFile
 from django.db import models
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
+
 from mayan.apps.converter.models import Transformation
 from mayan.apps.converter.transformations import (
     BaseTransformation, TransformationResize, TransformationRotate,
@@ -24,7 +25,6 @@ from ..settings import (
     setting_display_width, setting_display_height, setting_zoom_max_level,
     setting_zoom_min_level
 )
-from ..storages import storage_documentimagecache
 
 from .document_version_models import DocumentVersion
 
@@ -56,9 +56,12 @@ class DocumentPage(models.Model):
     def __str__(self):
         return self.get_label()
 
-    @property
-    def cache_filename(self):
-        return 'page-cache-{}'.format(self.uuid)
+    @cached_property
+    def cache_partition(self):
+        partition, created = self.document_version.cache.partitions.get_or_create(
+            name=self.uuid
+        )
+        return partition
 
     def delete(self, *args, **kwargs):
         self.invalidate_cache()
@@ -80,29 +83,24 @@ class DocumentPage(models.Model):
 
     def generate_image(self, *args, **kwargs):
         transformation_list = self.get_combined_transformation_list(*args, **kwargs)
-
-        cache_filename = '{}-{}'.format(
-            self.cache_filename, BaseTransformation.combine(transformation_list)
-        )
+        combined_cache_filename = BaseTransformation.combine(transformation_list)
 
         # Check is transformed image is available
-        logger.debug('transformations cache filename: %s', cache_filename)
+        logger.debug('transformations cache filename: %s', combined_cache_filename)
 
-        if not setting_disable_transformed_image_cache.value and storage_documentimagecache.exists(cache_filename):
+        if not setting_disable_transformed_image_cache.value and self.cache_partition.get_file(filename=combined_cache_filename):
             logger.debug(
-                'transformations cache file "%s" found', cache_filename
+                'transformations cache file "%s" found', combined_cache_filename
             )
         else:
             logger.debug(
-                'transformations cache file "%s" not found', cache_filename
+                'transformations cache file "%s" not found', combined_cache_filename
             )
             image = self.get_image(transformations=transformation_list)
-            with storage_documentimagecache.open(cache_filename, 'wb+') as file_object:
+            with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
                 file_object.write(image.getvalue())
 
-            self.cached_images.create(filename=cache_filename)
-
-        return cache_filename
+        return combined_cache_filename
 
     def get_absolute_url(self):
         return reverse(
@@ -159,7 +157,6 @@ class DocumentPage(models.Model):
             zoom_level = setting_zoom_max_level.value
 
         # Generate transformation hash
-
         transformation_list = []
 
         # Stored transformations first
@@ -186,13 +183,15 @@ class DocumentPage(models.Model):
         return transformation_list
 
     def get_image(self, transformations=None):
-        cache_filename = self.cache_filename
+        cache_filename = 'base_image'
         logger.debug('Page cache filename: %s', cache_filename)
 
-        if not setting_disable_base_image_cache.value and storage_documentimagecache.exists(cache_filename):
+        cache_file = self.cache_partition.get_file(filename=cache_filename)
+
+        if not setting_disable_base_image_cache.value and cache_file:
             logger.debug('Page cache file "%s" found', cache_filename)
 
-            with storage_documentimagecache.open(cache_filename) as file_object:
+            with cache_file.open as file_object:
                 converter = get_converter_class()(
                     file_object=file_object
                 )
@@ -200,8 +199,8 @@ class DocumentPage(models.Model):
                 converter.seek_page(page_number=0)
 
                 # This code is also repeated below to allow using a context
-                # manager with storage_documentimagecache.open and close it
-                # automatically.
+                # manager with cache_file.open and close it automatically.
+                # Apply runtime transformations
                 for transformation in transformations:
                     converter.transform(transformation=transformation)
 
@@ -218,14 +217,11 @@ class DocumentPage(models.Model):
 
                     page_image = converter.get_page()
 
-                    # Since open "wb+" doesn't create files, check if the file
-                    # exists, if not then create it
-                    if not storage_documentimagecache.exists(cache_filename):
-                        storage_documentimagecache.save(name=cache_filename, content=ContentFile(content=''))
-
-                    with storage_documentimagecache.open(cache_filename, 'wb+') as file_object:
+                    # Since open "wb+" doesn't create files, create it explicitly
+                    with self.cache_partition.create_file(filename=cache_filename) as file_object:
                         file_object.write(page_image.getvalue())
 
+                    # Apply runtime transformations
                     for transformation in transformations:
                         converter.transform(transformation=transformation)
 
@@ -236,13 +232,10 @@ class DocumentPage(models.Model):
                     'Error creating page cache file "%s"; %s',
                     cache_filename, exception
                 )
-                storage_documentimagecache.delete(cache_filename)
                 raise
 
     def invalidate_cache(self):
-        storage_documentimagecache.delete(self.cache_filename)
-        for cached_image in self.cached_images.all():
-            cached_image.delete()
+        self.cache_partition.purge()
 
     @property
     def is_in_trash(self):
@@ -275,38 +268,6 @@ class DocumentPage(models.Model):
         images
         """
         return '{}-{}'.format(self.document_version.uuid, self.pk)
-
-
-class DocumentPageCachedImage(models.Model):
-    document_page = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='cached_images',
-        to=DocumentPage, verbose_name=_('Document page')
-    )
-    datetime = models.DateTimeField(
-        auto_now_add=True, db_index=True, verbose_name=_('Date time')
-    )
-    filename = models.CharField(max_length=128, verbose_name=_('Filename'))
-    file_size = models.PositiveIntegerField(
-        db_index=True, default=0, verbose_name=_('File size')
-    )
-
-    objects = DocumentPageCachedImage()
-
-    class Meta:
-        verbose_name = _('Document page cached image')
-        verbose_name_plural = _('Document page cached images')
-
-    def delete(self, *args, **kwargs):
-        storage_documentimagecache.delete(self.filename)
-        return super(DocumentPageCachedImage, self).delete(*args, **kwargs)
-
-    def natural_key(self):
-        return (self.filename, self.document_page.natural_key())
-    natural_key.dependencies = ['documents.DocumentPage']
-
-    def save(self, *args, **kwargs):
-        self.file_size = storage_documentimagecache.size(self.filename)
-        return super(DocumentPageCachedImage, self).save(*args, **kwargs)
 
 
 class DocumentPageResult(DocumentPage):

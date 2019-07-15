@@ -2,9 +2,17 @@ from __future__ import unicode_literals
 
 import pycountry
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from .settings import setting_language_codes
+from .literals import DOCUMENT_IMAGES_CACHE_NAME
+
+
+def callback_update_cache_size(setting):
+    Cache = apps.get_model(app_label='common', model_name='Cache')
+    cache = Cache.objects.get(name=DOCUMENT_IMAGES_CACHE_NAME)
+    cache.maximum_size = setting.value
+    cache.save()
 
 
 def get_language(language_code):
@@ -19,6 +27,8 @@ def get_language(language_code):
 
 
 def get_language_choices():
+    from .settings import setting_language_codes
+
     return sorted(
         [
             (
