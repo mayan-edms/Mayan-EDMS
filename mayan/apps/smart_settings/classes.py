@@ -177,13 +177,14 @@ class Setting(object):
                 path=settings.CONFIGURATION_LAST_GOOD_FILEPATH
             )
 
-    def __init__(self, namespace, global_name, default, help_text=None, is_path=False):
+    def __init__(self, namespace, global_name, default, help_text=None, is_path=False, post_edit_function=None):
         self.global_name = global_name
         self.default = default
         self.help_text = help_text
         self.loaded = False
         self.namespace = namespace
         self.environment_variable = False
+        self.post_edit_function = post_edit_function
         namespace._settings.append(self)
         self.__class__._registry[global_name] = self
 
@@ -239,3 +240,5 @@ class Setting(object):
         # value is in YAML format
         self.yaml = value
         self.raw_value = Setting.deserialize_value(value)
+        if self.post_edit_function:
+            self.post_edit_function(setting=self)
