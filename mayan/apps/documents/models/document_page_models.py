@@ -191,7 +191,7 @@ class DocumentPage(models.Model):
         if not setting_disable_base_image_cache.value and cache_file:
             logger.debug('Page cache file "%s" found', cache_filename)
 
-            with cache_file.open as file_object:
+            with cache_file.open() as file_object:
                 converter = get_converter_class()(
                     file_object=file_object
                 )
