@@ -10,7 +10,7 @@ from .views import (
     AboutView, CurrentUserLocaleProfileDetailsView,
     CurrentUserLocaleProfileEditView, FaviconRedirectView, HomeView,
     LicenseView, ObjectErrorLogEntryListClearView, ObjectErrorLogEntryListView,
-    RootView, SetupListView, ToolsListView, multi_object_action_view
+    RootView, SetupListView, ToolsListView
 )
 
 urlpatterns = [
@@ -18,10 +18,6 @@ urlpatterns = [
     url(regex=r'^home/$', view=HomeView.as_view(), name='home'),
     url(regex=r'^about/$', view=AboutView.as_view(), name='about_view'),
     url(regex=r'^license/$', view=LicenseView.as_view(), name='license_view'),
-    url(
-        regex=r'^object/multiple/action/$', view=multi_object_action_view,
-        name='multi_object_action_view'
-    ),
     url(regex=r'^setup/$', view=SetupListView.as_view(), name='setup_list'),
     url(regex=r'^tools/$', view=ToolsListView.as_view(), name='tools_list'),
     url(

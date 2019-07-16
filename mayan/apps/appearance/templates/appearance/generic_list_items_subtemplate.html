@@ -23,26 +23,20 @@
                 {% endif %}
             </h4>
             <hr>
+
             <div class="well center-block">
-                <div class="clearfix">
-                    <div class="pull-right">
-                        <form action="{% url 'common:multi_object_action_view' %}" class="form-multi-object-action" method="get">
-                            {% if object_list %}
-                                {% if not hide_multi_item_actions %}
-                                    {% get_multi_item_links_form object_list %}
-                                {% endif %}
-                                {% if multi_item_actions %}
-                                    <fieldset style="margin-top: -10px;">
-                                        <input class="check-all" type="checkbox"/>&nbsp;
-                                        {{ multi_item_form }}
-                                    </fieldset>
-                                {% endif %}
-                            {% endif %}
-                        </form>
-                    </div>
-                </div>
 
                 {% if object_list %}
+                    {% if not hide_multi_item_actions %}
+                        {% navigation_resolve_menu name='multi item' sort_results=True source=object_list.0 as links_multi_menus_results %}
+                    {% endif %}
+                {% endif %}
+
+                <div class="clearfix">
+                    {% include 'appearance/list_toolbar.html' %}
+                </div>
+
+                {% if links_multi_menus_results %}
                     <hr style="border-bottom: 1px solid lightgrey;">
                 {% endif %}
 
@@ -54,8 +48,8 @@
                                     <div class="form-group">
                                         <div class="checkbox">
                                             <label for="id_indexes_0">
-                                                {% if multi_item_actions %}
-                                                    <input class="form-multi-object-action-checkbox check-all-slave checkbox" type="checkbox" name="pk_{{ object.pk }}" />
+                                                {% if links_multi_menus_results %}
+                                                    <input class="form-multi-object-action-checkbox check-all-slave checkbox" name="pk_{{ object.pk }}" type="checkbox" />
                                                 {% endif %}
 
                                                 <span style="color: white; word-break: break-all; overflow-wrap: break-word;">
@@ -82,7 +76,6 @@
 
                                 </div>
                                 <div class="panel-body">
-
                                     {% if not hide_columns %}
                                         {% navigation_get_source_columns source=object exclude_identifier=True as source_columns %}
                                         {% for column in source_columns %}

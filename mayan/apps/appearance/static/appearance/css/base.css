@@ -220,6 +220,18 @@ a i {
     font-weight: bold;
 }
 
+.panel-highlighted {
+    box-shadow: 0px 0px 3px #18bc9c, 10px 10px 20px #000000;
+}
+
+.panel-highlighted:hover {
+    box-shadow: 0px 0px 3px #18bc9c, 10px 10px 20px #000000, 0px 0px 8px #000000;
+}
+
+.panel-item:not(.panel-highlighted):hover  {
+    box-shadow: 0px 0px 8px #000000;
+}
+
 /* Content */
 @media (min-width:1200px) {
     .container-fluid {
@@ -249,14 +261,6 @@ a i {
     margin: auto;
 }
 
-.thin_border {
-    border: 1px solid black;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
 .thin_border-thumbnail {
   display: block;
   max-width: 100%;
@@ -264,6 +268,14 @@ a i {
   width: auto;
   height: auto;
   margin: auto;
+}
+
+/* Must go after .thin_border-thumbnail */
+.thin_border {
+    border: 1px solid black;
+    display: inline;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 #ajax-spinner {
