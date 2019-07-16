@@ -328,6 +328,17 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_template_preview
             ), sources=(Workflow,)
         )
+
+        menu_list_facet.unbind_links(
+            links=(
+                link_acl_list, link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
+                link_workflow_template_document_types,
+                link_workflow_template_state_list, link_workflow_template_transition_list,
+                link_workflow_template_preview
+            ), sources=(WorkflowRuntimeProxy,)
+        )
+
         menu_list_facet.bind_links(
             links=(
                 link_document_type_workflow_templates,
