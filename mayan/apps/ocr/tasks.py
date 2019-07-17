@@ -28,7 +28,7 @@ def task_do_ocr(self, document_version_pk):
         logger.debug('trying to acquire lock: %s', lock_id)
         # Acquire lock to avoid doing OCR on the same document version more
         # than once concurrently
-        lock = locking_backend.acquire_lock(lock_id, LOCK_EXPIRE)
+        lock = locking_backend.acquire_lock(name=lock_id, timeout=LOCK_EXPIRE)
         logger.debug('acquired lock: %s', lock_id)
         document_version = None
         try:
