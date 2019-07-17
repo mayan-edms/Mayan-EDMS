@@ -8,10 +8,10 @@ from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_dump, yaml_load
-from mayan.apps.common.settings import (
+from mayan.apps.task_manager.classes import Worker
+from mayan.apps.task_manager.settings import (
     setting_celery_broker_url, setting_celery_result_backend
 )
-from mayan.apps.task_manager.classes import Worker
 
 
 class Variable(object):
