@@ -1,15 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
-from json import dumps
-
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
-from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.utils import timezone, translation
-from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
 

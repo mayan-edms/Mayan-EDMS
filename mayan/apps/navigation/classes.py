@@ -369,9 +369,6 @@ class Menu(object):
         for resolved_navigation_object in resolved_navigation_object_list:
             resolved_links = []
 
-            # List of resolved links source links used for deduplication
-            resolved_links_links = []
-
             for bound_source, links in self.bound_links.items():
                 try:
                     if inspect.isclass(bound_source):
@@ -433,7 +430,6 @@ class Menu(object):
                         'links': resolved_links
                     }
                 )
-
 
         resolved_links = []
         # View links

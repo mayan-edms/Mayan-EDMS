@@ -10,7 +10,6 @@ import sh
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.serialization import yaml_load
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.storage.settings import setting_temporary_directory
 from mayan.apps.storage.utils import (

@@ -2,46 +2,23 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.db import transaction
-from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.template import RequestContext
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.generics import (
-    AddRemoveView, ConfirmView, FormView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectDetailView,
-    SingleObjectDynamicFormCreateView, SingleObjectDynamicFormEditView,
-    SingleObjectEditView, SingleObjectListView
+    AddRemoveView, ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_edit
-from mayan.apps.events.classes import EventType
-from mayan.apps.events.models import StoredEventType
 
-from ..classes import WorkflowAction
 from ..events import event_workflow_edited
-from ..forms import (
-    WorkflowActionSelectionForm, WorkflowForm, WorkflowPreviewForm,
-    WorkflowStateActionDynamicForm, WorkflowStateForm, WorkflowTransitionForm,
-    WorkflowTransitionTriggerEventRelationshipFormSet
-)
-from ..icons import (
-    icon_workflow_template_list, icon_workflow_state, icon_workflow_state_action,
-    icon_workflow_transition, icon_workflow_transition_field
-)
-from ..links import (
-    link_workflow_template_create, link_workflow_template_state_create,
-    link_workflow_template_state_action_selection,
-    link_workflow_template_transition_create,
-    link_workflow_template_transition_field_create,
-)
-from ..models import (
-    Workflow, WorkflowState, WorkflowStateAction, WorkflowTransition,
-    WorkflowTransitionField
-)
+from ..forms import WorkflowForm, WorkflowPreviewForm
+from ..icons import icon_workflow_template_list
+from ..links import link_workflow_template_create
+from ..models import Workflow
 from ..permissions import (
     permission_workflow_create, permission_workflow_delete,
     permission_workflow_edit, permission_workflow_tools,

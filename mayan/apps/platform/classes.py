@@ -154,8 +154,8 @@ class PlatformTemplateSupervisord(PlatformTemplate):
             default={
                 'default': {
                     'ENGINE': 'django.db.backends.postgresql',
-                    'NAME': 'mayan', 'PASSWORD':'mayanuserpass',
-                    'USER': 'mayan', 'HOST':'127.0.0.1'
+                    'NAME': 'mayan', 'PASSWORD': 'mayanuserpass',
+                    'USER': 'mayan', 'HOST': '127.0.0.1'
                 }
             },
             environment_name='MAYAN_DATABASES'
