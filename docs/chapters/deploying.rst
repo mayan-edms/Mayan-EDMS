@@ -220,11 +220,11 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 ---------------------------------------------------------------------
    Replace (paying attention to the comma at the end)::
 
-       MAYAN_BROKER_URL="redis://127.0.0.1:6379/0",
+       MAYAN_CELERY_BROKER_URL="redis://127.0.0.1:6379/0",
 
    with::
 
-       MAYAN_BROKER_URL="amqp://mayan:mayanrabbitmqpassword@localhost:5672/mayan",
+       MAYAN_CELERY_BROKER_URL="amqp://mayan:mayanrabbitmqpassword@localhost:5672/mayan",
 
    increase the number of Gunicorn workers to 3 in the line (``-w 2`` section)::
 

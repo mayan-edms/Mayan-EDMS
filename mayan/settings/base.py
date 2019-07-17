@@ -74,7 +74,7 @@ INSTALLED_APPS = (
     'actstream',
     'colorful',
     'corsheaders',
-    'djcelery',
+    'django_celery_beat',
     'formtools',
     'mathfilters',
     'mptt',
@@ -280,18 +280,25 @@ PAGINATION_SETTINGS = {
 
 # ----------- Celery ----------
 
+CELERY_BROKER_URL = get_environment_setting(name='CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = get_environment_setting(name='CELERY_RESULT_BACKEND')
+CELERY_TASK_ALWAYS_EAGER = get_environment_setting(
+    name='CELERY_TASK_ALWAYS_EAGER'
+)
+
 CELERY_ACCEPT_CONTENT = ('json',)
-CELERY_ALWAYS_EAGER = False
-CELERY_CREATE_MISSING_QUEUES = False
+CELERY_BEAT_SCHEDULE = {}
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
 CELERY_DISABLE_RATE_LIMITS = True
-CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 CELERY_ENABLE_UTC = True
-CELERY_QUEUES = []
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_ROUTES = {}
+CELERY_TASK_ALWAYS_EAGER = False
+CELERY_TASK_CREATE_MISSING_QUEUES = False
+CELERY_TASK_EAGER_PROPAGATES = True
+CELERY_TASK_QUEUES = []
+CELERY_TASK_ROUTES = {}
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
-CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 # ------------ CORS ------------
 
@@ -317,12 +324,6 @@ SWAGGER_SETTINGS = {
 # ----- AJAX REDIRECT -----
 
 AJAX_REDIRECT_CODE = 278
-
-# ----- Celery -----
-
-BROKER_URL = get_environment_setting(name='BROKER_URL')
-CELERY_ALWAYS_EAGER = get_environment_setting(name='CELERY_ALWAYS_EAGER')
-CELERY_RESULT_BACKEND = get_environment_setting(name='CELERY_RESULT_BACKEND')
 
 # ----- Database -----
 DATABASES = {

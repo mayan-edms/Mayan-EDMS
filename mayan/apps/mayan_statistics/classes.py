@@ -107,7 +107,7 @@ class Statistic(object):
             day_of_month=day_of_month, month_of_year=month_of_year,
         )
 
-        app.conf.CELERYBEAT_SCHEDULE.update(
+        app.conf.beat_schedule.update(
             {
                 self.get_task_name(): {
                     'task': task_execute_statistic.dotted_path,
@@ -117,7 +117,7 @@ class Statistic(object):
             }
         )
 
-        app.conf.CELERY_ROUTES.update(
+        app.conf.task_routes.update(
             {
                 self.get_task_name(): {
                     'queue': queue_statistics.name

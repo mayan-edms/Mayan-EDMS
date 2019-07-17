@@ -4,7 +4,7 @@
 # BASE_IMAGE - Bare bones image with the base packages needed to run Mayan EDMS
 ####
 
-FROM debian:9.8-slim as BASE_IMAGE
+FROM debian:10.0-slim as BASE_IMAGE
 
 LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 
@@ -29,7 +29,7 @@ apt-get update \
     graphviz \
     libfuse2 \
     libmagic1 \
-    libmariadbclient18 \
+    libmmariadb3 \
     libreoffice \
     libpq5 \
     poppler-utils \
@@ -96,31 +96,31 @@ apt-get install -y --no-install-recommends \
     libssl-dev \
     g++ \
     gcc \
-    python-dev \
-    python-virtualenv \
+    python3-dev \
+    python3-venv \
 && mkdir -p "${PROJECT_INSTALL_DIR}" \
 && chown -R mayan:mayan "${PROJECT_INSTALL_DIR}" \
 && chown -R mayan:mayan /src
 
 USER mayan
-RUN python -m virtualenv "${PROJECT_INSTALL_DIR}" \
+RUN python3 -m venv "${PROJECT_INSTALL_DIR}" \
 && . "${PROJECT_INSTALL_DIR}/bin/activate" \
-&& pip install --no-cache-dir --no-use-pep517 \
-    librabbitmq==1.6.1 \
-    mysql-python==1.2.5 \
-    psycopg2==2.7.3.2 \
-    redis==2.10.6 \
+&& pip install --no-cache-dir \
+    librabbitmq==2.0.0 \
+    mysqlclient==1.4.2.post1 \
+    psycopg2==2.8.3 \
+    redis==3.2.1 \
 # psutil is needed by ARM builds otherwise gevent and gunicorn fail to start
 && UNAME=`uname -m` && if [ "${UNAME#*arm}" != $UNAME ]; then \
-    pip install --no-cache-dir --no-use-pep517 \
+    pip install --no-cache-dir \
     psutil==5.6.2 \
 ; fi \
 # Install the Python packages needed to build Mayan EDMS
-&& pip install --no-cache-dir --no-use-pep517 -r /src/requirements/build.txt \
+&& pip install --no-cache-dir -r /src/requirements/build.txt \
 # Build Mayan EDMS
 && python setup.py sdist \
 # Install the built Mayan EDMS package
-&& pip install --no-cache-dir --no-use-pep517 dist/mayan* \
+&& pip install --no-cache-dir dist/mayan* \
 # Install the static content
 && mayan-edms.py installdependencies \
 && MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}/static mayan-edms.py preparestatic --link --noinput

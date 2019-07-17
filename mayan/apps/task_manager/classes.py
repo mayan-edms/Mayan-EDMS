@@ -156,13 +156,13 @@ class CeleryQueue(object):
         if self.transient:
             kwargs['delivery_mode'] = 1
 
-        celery_app.conf.CELERY_QUEUES.append(Queue(**kwargs))
+        celery_app.conf.task_queues.append(Queue(**kwargs))
 
         if self.default_queue:
-            celery_app.conf.CELERY_DEFAULT_QUEUE = self.name
+            celery_app.conf.task_default_queue = self.name
 
         for task_type in self.task_types:
-            celery_app.conf.CELERY_ROUTES.update(
+            celery_app.conf.task_routes.update(
                 {
                     task_type.dotted_path: {
                         'queue': self.name
@@ -171,7 +171,7 @@ class CeleryQueue(object):
             )
 
             if task_type.schedule:
-                celery_app.conf.CELERYBEAT_SCHEDULE.update(
+                celery_app.conf.beat_schedule.update(
                     {
                         task_type.name: {
                             'task': task_type.dotted_path,

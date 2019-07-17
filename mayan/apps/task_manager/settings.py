@@ -10,7 +10,7 @@ __all__ = ()
 namespace = Namespace(label=_('Celery'), name='celery')
 
 setting_celery_broker_url = namespace.add_setting(
-    global_name='BROKER_URL', default=None,
+    global_name='CELERY_BROKER_URL', default=None,
     help_text=_(
         'Default: "amqp://". Default broker URL. This must be a URL in '
         'the form of: transport://userid:password@hostname:port/virtual_host '

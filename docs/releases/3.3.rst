@@ -52,7 +52,9 @@ Changes
 - Backport file cache manager app.
 - Convert document image cache to use file cache manager app.
   Add setting DOCUMENTS_CACHE_MAXIMUM_SIZE defaults to 500 MB.
-  
+- Update Celery to version 4.3.0. Settings changed:
+  MAYAN_BROKER_URL to MAYAN_CELERY_BROKER_URL,
+  MAYAN_CELERY_ALWAYS_EAGER to MAYAN_CELERY_TASK_ALWAYS_EAGER.
 
 Removals
 --------

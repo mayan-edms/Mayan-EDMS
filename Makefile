@@ -258,7 +258,7 @@ test-with-docker-frontend: ## Launch a front end instance that uses the producti
 	./manage.py runserver --settings=mayan.settings.staging.docker
 
 test-with-docker-worker: ## Launch a worker instance that uses the production-like services.
-	./manage.py celery worker --settings=mayan.settings.staging.docker -B -l INFO -O fair
+	DJANGO_SETTINGS_MODULE=mayan.settings.staging.docker ./manage.py celery worker -A mayan -B -l INFO -O fair
 
 docker-mysql-on: ## Launch and initialize a MySQL Docker container.
 	docker run -d --name mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan_edms mysql

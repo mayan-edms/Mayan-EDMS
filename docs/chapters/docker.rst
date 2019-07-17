@@ -190,7 +190,7 @@ the default port. Not used with SQLite. For more information read the
 pertinent Django documentation page:
 :django-docs:`Settings, PORT <ref/settings/#port>`
 
-``MAYAN_BROKER_URL``
+``MAYAN_CELERY_BROKER_URL``
 
 This optional environment variable determines the broker that Celery will use
 to relay task messages between the frontend code and the background workers.
@@ -200,7 +200,7 @@ For more information read the pertinent Celery Kombu documentation page: `Broker
 
 This Docker image supports using Redis and RabbitMQ as brokers.
 
-Caveat: If the `MAYAN_BROKER_URL` and `MAYAN_CELERY_RESULT_BACKEND` environment
+Caveat: If the `MAYAN_CELERY_BROKER_URL` and `MAYAN_CELERY_RESULT_BACKEND` environment
 variables are specified, the built-in Redis server inside the container will
 be disabled.
 
@@ -215,7 +215,7 @@ code. For more information read the pertinent Celery Kombu documentation page:
 
 This Docker image supports using Redis and RabbitMQ as result backends.
 
-Caveat: If the `MAYAN_BROKER_URL` and `MAYAN_CELERY_RESULT_BACKEND` environment
+Caveat: If the `MAYAN_CELERY_BROKER_URL` and `MAYAN_CELERY_RESULT_BACKEND` environment
 variables are specified, the built-in Redis server inside the container will
 be disabled.
 

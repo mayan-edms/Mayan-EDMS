@@ -34,7 +34,11 @@ def get_environment_variables():
 
 
 def get_environment_setting(name, fallback_default=None):
-    value = os.environ.get('MAYAN_{}'.format(name), get_default(name=name, fallback_default=fallback_default))
+    value = os.environ.get(
+        'MAYAN_{}'.format(name), get_default(
+            name=name, fallback_default=fallback_default
+        )
+    )
 
     if value:
         return yaml.load(stream=value, Loader=SafeLoader)
