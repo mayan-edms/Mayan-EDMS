@@ -35,7 +35,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 MEDIA_ROOT = get_environment_setting(
-    name='MAYAN_MEDIA_ROOT', fallback_default=os.path.join(BASE_DIR, 'media')
+    name='MEDIA_ROOT', fallback_default=os.path.join(BASE_DIR, 'media')
 )
 
 # SECURITY WARNING: keep the secret key used in production secret!
