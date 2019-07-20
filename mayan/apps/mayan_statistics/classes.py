@@ -61,7 +61,7 @@ class Statistic(object):
     @staticmethod
     def purge_schedules():
         PeriodicTask = apps.get_model(
-            app_label='djcelery', model_name='PeriodicTask'
+            app_label='django_celery_beat', model_name='PeriodicTask'
         )
         StatisticResult = apps.get_model(
             app_label='mayan_statistics', model_name='StatisticResult'
