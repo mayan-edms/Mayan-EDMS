@@ -28,8 +28,8 @@ class Command(management.BaseCommand):
         )
 
         parser.add_argument(
-            '--no-javascript', action='store_true', dest='no_javascript',
-            help='Don\'t download the JavaScript dependencies.',
+            '--no-dependencies', action='store_true', dest='no_dependencies',
+            help='Don\'t download dependencies.',
         )
 
     def initialize_system(self, force=False):
@@ -88,9 +88,9 @@ class Command(management.BaseCommand):
         self.initialize_system(force=options.get('force', False))
         pre_initial_setup.send(sender=self)
 
-        if not options.get('no_javascript', False):
+        if not options.get('no_dependencies', False):
             management.call_command(
-                command_name='installjavascript', interactive=False
+                command_name='installdependencies', interactive=False
             )
 
         management.call_command(
