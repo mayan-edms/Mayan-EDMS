@@ -70,6 +70,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         self.grant_access(
             permission=permission_document_create, obj=self.test_document_type
         )
+
         # Upload the test document
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_descriptor:
             response = self.post(
@@ -78,6 +79,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
                     'document_type_id': self.test_document_type.pk,
                 }
             )
+
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(Document.objects.count(), 1)

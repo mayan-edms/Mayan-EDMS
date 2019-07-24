@@ -20,9 +20,7 @@ class URL(object):
 
     def to_string(self):
         if self._args.keys():
-            query = force_bytes(
-                '?{}'.format(self._args.urlencode())
-            )
+            query = '?{}'.format(self._args.urlencode())
         else:
             query = ''
 
@@ -31,6 +29,6 @@ class URL(object):
         else:
             path = ''
 
-        result = force_bytes('{}{}'.format(path, query))
+        result = '{}{}'.format(path, query)
 
         return result
