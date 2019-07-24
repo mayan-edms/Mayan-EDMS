@@ -39,7 +39,8 @@
 - Backport file cache manager app.
 - Convert document image cache to use file cache manager app.
   Add setting DOCUMENTS_CACHE_MAXIMUM_SIZE defaults to 500 MB.
-
+- Rename MAYAN_GUID to MAYAN_GID
+- Switch Gunicorn worker to sync.
 
 3.2.6 (2019-07-10)
 ==================
