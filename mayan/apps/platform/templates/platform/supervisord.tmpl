@@ -1,6 +1,6 @@
 [supervisord]
 environment=
-    PYTHONPATH={{ INSTALLATION_PATH }}/lib/python3.7/site-packages:{{ MEDIA_ROOT }}/mayan_settings,
+    PYTHONPATH="%(ENV_PYTHONPATH)s:{{ MEDIA_ROOT }}/mayan_settings",
     DJANGO_SETTINGS_MODULE=mayan.settings.production,
     MAYAN_MEDIA_ROOT="{{ MEDIA_ROOT }}",
     MAYAN_ALLOWED_HOSTS="{{ ALLOWED_HOSTS }}",
