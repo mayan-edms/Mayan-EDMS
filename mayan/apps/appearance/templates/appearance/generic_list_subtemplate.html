@@ -11,34 +11,9 @@
                 {% include 'appearance/no_results.html' %}
             </div>
         {% else %}
-            <h4>
-                {% if page_obj %}
-                    {% if page_obj.paginator.num_pages != 1 %}
-                        {% blocktrans with page_obj.start_index as start and page_obj.end_index as end and page_obj.paginator.object_list|length as total and page_obj.number as page_number and page_obj.paginator.num_pages as total_pages %}Total ({{ start }} - {{ end }} out of {{ total }}) (Page {{ page_number }} of {{ total_pages }}){% endblocktrans %}
-                    {% else %}
-                        {% blocktrans with page_obj.paginator.object_list|length as total %}Total: {{ total }}{% endblocktrans %}
-                    {% endif %}
-                {% else %}
-                    {% blocktrans with object_list|length as total %}Total: {{ total }}{% endblocktrans %}
-                {% endif %}
-            </h4>
-            <hr>
-
+            {% include "appearance/list_header.html" %}
+            {% navigation_resolve_menu name='multi item' sort_results=True source=object_list.0 as links_multi_menus_results %}
             <div class="well center-block">
-                {% if object_list %}
-                    {% if not hide_multi_item_actions %}
-                        {% navigation_resolve_menu name='multi item' sort_results=True source=object_list.0 as links_multi_menus_results %}
-                    {% endif %}
-                {% endif %}
-
-                <div class="clearfix">
-                    {% include 'appearance/list_toolbar.html' %}
-                </div>
-
-                {% if links_multi_menus_results %}
-                    <hr style="border-bottom: 1px solid lightgrey;">
-                {% endif %}
-
                 <div class="table-responsive">
                     <table class="table table-condensed table-striped">
                         <tbody>
