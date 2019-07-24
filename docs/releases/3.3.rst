@@ -74,6 +74,7 @@ Changes
 - Add entrypoint commands to run single workers, single gunicorn
   or single celery commands like "flower".
 - Add platform template to return queues for a worker.
+- Remove task inspection from task manager app.
 
 
 Removals
@@ -186,7 +187,9 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
+- :gitlab-issue:`526` RuntimeWarning: Never call result.get() within a task!
 - :gitlab-issue:`532` Workflow preview isn't updated right after transitions are modified
+- :gitlab-issue:`540` hint-outdated/update documentation
 - :gitlab-issue:`594` 3.2b1: Unable to install/run under Python 3.5/3.6/3.7
 - :gitlab-issue:`634` Failing docker entrypoint when using secret config
 - :gitlab-issue:`635` Build a docker image for Python3

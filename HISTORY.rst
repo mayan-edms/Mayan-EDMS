@@ -59,7 +59,7 @@
 - Add platform template to return queues for a worker.
 - Update the EXIFTOOL driver to run for all documents
   regardless of MIME type.
-
+- Remove task inspection from task manager app.
 
 3.2.6 (2019-07-10)
 ==================
