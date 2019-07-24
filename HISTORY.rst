@@ -39,16 +39,33 @@
 - Backport file cache manager app.
 - Convert document image cache to use file cache manager app.
   Add setting DOCUMENTS_CACHE_MAXIMUM_SIZE defaults to 500 MB.
+- Replace djcelery and replace it with django-celery-beat.
+- Update Celery to version 4.3.0
+  Thanks to Jakob Haufe (@sur5r) and Jesaja Everling (@jeverling)
+  for much of the research and code updates.
+- Support wildcard MIME type associations for the file metadata drivers.
 - Rename MAYAN_GUID to MAYAN_GID
-- Switch Gunicorn worker to sync.
+- Update Gunicorn to use sync workers.
+- Include devpi-server as a development dependency.
+- Update default Docker stack file.
+- Remove Redis from the Docker image.
+- Add Celery flower to the Docker image.
+- Allow PIP proxying to the Docker image during build.
+- Default Celery worker concurrency to 0 (auto).
+- Set DJANGO_SETTINGS_MODULE environment variable to make it
+  available to sub processes.
+- Add entrypoint commands to run single workers, single gunicorn
+  or single celery commands like "flower".
+- Add platform template to return queues for a worker.
+
 
 3.2.6 (2019-07-10)
 ==================
-* Remove the smart settings app * import.
-* Encode settings YAML before hashing.
-* Fix document icon used in the workflow runtime links.
-* Add trashed date time label.
-* Fix thumbnail generation issue. GitLab issue #637.
+- Remove the smart settings app * import.
+- Encode settings YAML before hashing.
+- Fix document icon used in the workflow runtime links.
+- Add trashed date time label.
+- Fix thumbnail generation issue. GitLab issue #637.
   Thanks to Giacomo Cariello (@giacomocariello) for the report
   and the merge request fixing the issue.
 

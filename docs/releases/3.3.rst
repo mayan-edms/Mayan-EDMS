@@ -55,6 +55,26 @@ Changes
 - Update Celery to version 4.3.0. Settings changed:
   MAYAN_BROKER_URL to MAYAN_CELERY_BROKER_URL,
   MAYAN_CELERY_ALWAYS_EAGER to MAYAN_CELERY_TASK_ALWAYS_EAGER.
+- Replace djcelery and replace it with django-celery-beat.
+- Update Celery to version 4.3.0 with 55e9b2263cbdb9b449361412fd18d8ee0a442dd3
+  from versions/next, code from GitLab issue #594 and GitLab merge request !55.
+  Thanks to Jakob Haufe (@sur5r) and Jesaja Everling (@jeverling)
+  for much of the research and code updates.
+- Support wildcard MIME type associations for the file metadata drivers.
+- Rename MAYAN_GUID to MAYAN_GID
+- Update Gunicorn to use sync workers.
+- Include devpi-server as a development dependency.
+- Update default Docker stack file.
+- Remove Redis from the Docker image.
+- Add Celery flower to the Docker image.
+- Allow PIP proxying to the Docker image during build.
+- Default Celery worker concurrency to 0 (auto).
+- Set DJANGO_SETTINGS_MODULE environment variable to make it
+  available to sub processes.
+- Add entrypoint commands to run single workers, single gunicorn
+  or single celery commands like "flower".
+- Add platform template to return queues for a worker.
+
 
 Removals
 --------
@@ -62,17 +82,17 @@ Removals
 - Database conversion. Reason for removal. The database conversions support
   provided by this feature (SQLite to PostgreSQL) was being confused with
   database migrations and upgrades.
-  
+
   Database upgrades are the responsibility of the app and the framework.
   Database conversions however are not the responsibility of the app (Mayan),
   they are the responsibility of the framework.
-  
+
   Database conversion is outside the scope of what Mayan does but we added
   the code, management command, instructions and testing setup to provide
   this to our users until the framework (Django) decided to add this
   themselves (like they did with migrations).
 
-  Continued confusion about the purpose of the feature and confusion about 
+  Continued confusion about the purpose of the feature and confusion about
   how errors with this feature were a reflexion of the code quality of
   Mayannecessitated the removal of the database conversion feature.
 
@@ -167,6 +187,10 @@ Bugs fixed or issues closed
 ---------------------------
 
 - :gitlab-issue:`532` Workflow preview isn't updated right after transitions are modified
+- :gitlab-issue:`594` 3.2b1: Unable to install/run under Python 3.5/3.6/3.7
 - :gitlab-issue:`634` Failing docker entrypoint when using secret config
+- :gitlab-issue:`635` Build a docker image for Python3
+- :gitlab-issue:`644` Update sane-utils package in docker image.
+
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
