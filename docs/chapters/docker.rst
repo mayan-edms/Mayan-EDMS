@@ -171,9 +171,9 @@ number of CPUs detected).
 Optional. Changes the UID of the ``mayan`` user internal to the Docker
 container. Defaults to 1000.
 
-``MAYAN_USER_GUID``
+``MAYAN_USER_GID``
 
-Optional. Changes the GUID of the ``mayan`` user internal to the Docker
+Optional. Changes the GID of the ``mayan`` user internal to the Docker
 container. Defaults to 1000.
 
 
