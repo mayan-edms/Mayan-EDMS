@@ -181,5 +181,28 @@ class PlatformTemplateSupervisordDocker(PlatformTemplate):
         return {'workers': Worker.all()}
 
 
+class PlatformTemplateWorkerQueues(PlatformTemplate):
+    label = _('Template showing the queues of a worker.')
+    name = 'worker_queues'
+
+    variables = (
+        Variable(
+            name='WORKER_NAME', default=None,
+            environment_name='MAYAN_WORKER_NAME'
+        ),
+    )
+
+    def get_context(self):
+        worker_name = self.get_variables_context().get('WORKER_NAME')
+        queues = Worker.get(name=worker_name).queues
+
+        return {
+            'queues': queues, 'queue_names': sorted(
+                map(lambda x: x.name, queues)
+            )
+        }
+
+
 PlatformTemplate.register(klass=PlatformTemplateSupervisord)
 PlatformTemplate.register(klass=PlatformTemplateSupervisordDocker)
+PlatformTemplate.register(klass=PlatformTemplateWorkerQueues)

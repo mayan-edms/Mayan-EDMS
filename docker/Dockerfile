@@ -144,7 +144,7 @@ VOLUME ["/var/lib/mayan"]
 ENTRYPOINT ["entrypoint.sh"]
 
 EXPOSE 8000
-CMD ["mayan"]
+CMD ["run_all"]
 
 RUN ${PROJECT_INSTALL_DIR}/bin/mayan-edms.py platformtemplate supervisord_docker > /etc/supervisor/conf.d/mayan.conf \
 && apt-get clean autoclean \
