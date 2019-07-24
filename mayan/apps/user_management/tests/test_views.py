@@ -19,7 +19,7 @@ from .mixins import (
 )
 
 
-class GroupViewsTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin, GenericViewTestCase):
+class GroupViewsTestCase(GroupTestMixin, GroupViewTestMixin, GenericViewTestCase):
     def test_group_create_view_no_permission(self):
         group_count = Group.objects.count()
 
@@ -158,7 +158,7 @@ class GroupViewsTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin, Gene
         )
 
 
-class SuperUserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCase):
+class SuperUserViewTestCase(UserViewTestMixin, GenericViewTestCase):
     def setUp(self):
         super(SuperUserViewTestCase, self).setUp()
         self._create_test_superuser()
@@ -199,7 +199,7 @@ class SuperUserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCas
         self.assertEqual(response.status_code, 404)
 
 
-class UserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCase):
+class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
     def test_user_create_view_no_permission(self):
         user_count = get_user_model().objects.count()
 
@@ -263,7 +263,9 @@ class UserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCase):
         self.assertEqual(get_user_model().objects.count(), user_count - 1)
 
 
-class UserGroupViewTestCase(GroupTestMixin, UserTestMixin, UserViewTestMixin, GenericViewTestCase):
+class UserGroupViewTestCase(
+    GroupTestMixin, UserViewTestMixin, GenericViewTestCase
+):
     def test_user_groups_view_no_permission(self):
         self._create_test_user()
         self._create_test_group()

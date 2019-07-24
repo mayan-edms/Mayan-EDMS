@@ -107,7 +107,7 @@ class GroupAPITestCase(GroupAPITestMixin, GroupTestMixin, BaseAPITestCase):
         self.assertNotEqual(self.test_group.name, group_name)
 
 
-class UserAPITestCase(UserAPITestMixin, UserTestMixin, BaseAPITestCase):
+class UserAPITestCase(UserAPITestMixin, BaseAPITestCase):
     def test_user_create_api_view_no_permission(self):
         user_count = get_user_model().objects.count()
 
@@ -194,7 +194,7 @@ class UserAPITestCase(UserAPITestMixin, UserTestMixin, BaseAPITestCase):
         self.assertNotEqual(self.test_user.username, user_username)
 
 
-class UserGroupAPITestCase(GroupTestMixin, UserAPITestMixin, UserTestMixin, BaseAPITestCase):
+class UserGroupAPITestCase(GroupTestMixin, UserAPITestMixin, BaseAPITestCase):
     def test_user_create_with_group_api_view_no_permission(self):
         self._create_test_group()
 

@@ -21,7 +21,9 @@ from .mixins import (
 )
 
 
-class GroupEventsViewTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin, GenericViewTestCase):
+class GroupEventsViewTestCase(
+    GroupTestMixin, GroupViewTestMixin, GenericViewTestCase
+):
     def test_group_create_event(self):
         self.grant_permission(
             permission=permission_group_create
@@ -53,7 +55,9 @@ class GroupEventsViewTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin,
         self.assertEqual(action.verb, event_group_edited.id)
 
 
-class GroupEventsAPITestCase(GroupAPITestMixin, GroupTestMixin, GroupViewTestMixin, BaseAPITestCase):
+class GroupEventsAPITestCase(
+    GroupAPITestMixin, GroupTestMixin, GroupViewTestMixin, BaseAPITestCase
+):
     def test_group_create_event_from_api_view(self):
         self.grant_permission(
             permission=permission_group_create
@@ -91,7 +95,7 @@ class GroupEventsAPITestCase(GroupAPITestMixin, GroupTestMixin, GroupViewTestMix
         self.assertEqual(action.verb, event_group_edited.id)
 
 
-class UserEventsTestCase(UserTestMixin, GenericViewTestCase):
+class UserEventsTestCase(GenericViewTestCase):
     auto_login_user = False
     create_test_case_user = False
 
@@ -130,7 +134,9 @@ class UserEventsTestCase(UserTestMixin, GenericViewTestCase):
         self.assertEqual(action.verb, event_user_logged_out.id)
 
 
-class UserEventsViewTestCase(UserAPITestMixin, UserTestMixin, UserViewTestMixin, GenericViewTestCase):
+class UserEventsViewTestCase(
+    UserAPITestMixin, UserViewTestMixin, GenericViewTestCase
+):
     def test_user_create_event_from_view(self):
         self.grant_permission(
             permission=permission_user_create
@@ -164,7 +170,9 @@ class UserEventsViewTestCase(UserAPITestMixin, UserTestMixin, UserViewTestMixin,
         self.assertEqual(action.verb, event_user_edited.id)
 
 
-class UserEventsAPITestCase(UserAPITestMixin, UserTestMixin, UserViewTestMixin, BaseAPITestCase):
+class UserEventsAPITestCase(
+    UserAPITestMixin, UserViewTestMixin, BaseAPITestCase
+):
     def test_user_create_event_from_api_view(self):
         self.grant_permission(
             permission=permission_user_create
