@@ -22,6 +22,7 @@ RUN set -x \
 && DEBIAN_FRONTEND=noninteractive \
 apt-get update \
 && apt-get install -y --no-install-recommends \
+    ca-certificates \
     exiftool \
     ghostscript \
     gpgv \
@@ -29,11 +30,11 @@ apt-get update \
     graphviz \
     libfuse2 \
     libmagic1 \
-    libmmariadb3 \
+    libmariadb3 \
     libreoffice \
     libpq5 \
     poppler-utils \
-    redis-server \
+    python3-distutils \
     sane-utils \
     sudo \
     supervisor \
@@ -52,21 +53,19 @@ apt-get update \
 && if [ "$(uname -m)" = "armv7l" ]; then \
     ln -s /usr/lib/arm-linux-gnueabihf/libz.so /usr/lib/ \
     && ln -s /usr/lib/arm-linux-gnueabihf/libjpeg.so /usr/lib/ \
-; fi \
-# Discard data when Redis runs out of memory
-&& echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf \
-# Disable saving the Redis database
-echo "save \"\"" >> /etc/redis/redis.conf \
-# Only provision 1 database
-&& echo "databases 1" >> /etc/redis/redis.conf
-
+; fi
 
 ####
-# BUILDER_IMAGE - This image buildS the Python package and is discarded afterwards
+# BUILDER_IMAGE - This image builds the Python package and is discarded afterwards
+#                 only the build artifact is carried over to the next image.
 ####
 
 # Reuse image
 FROM BASE_IMAGE as BUILDER_IMAGE
+
+# Python libraries caching
+ARG PIP_INDEX_URL
+ARG PIP_TRUSTED_HOST
 
 WORKDIR /src
 
@@ -110,6 +109,7 @@ RUN python3 -m venv "${PROJECT_INSTALL_DIR}" \
     mysqlclient==1.4.2.post1 \
     psycopg2==2.8.3 \
     redis==3.2.1 \
+    flower==0.9.3 \
 # psutil is needed by ARM builds otherwise gevent and gunicorn fail to start
 && UNAME=`uname -m` && if [ "${UNAME#*arm}" != $UNAME ]; then \
     pip install --no-cache-dir \
@@ -118,7 +118,7 @@ RUN python3 -m venv "${PROJECT_INSTALL_DIR}" \
 # Install the Python packages needed to build Mayan EDMS
 && pip install --no-cache-dir -r /src/requirements/build.txt \
 # Build Mayan EDMS
-&& python setup.py sdist \
+&& python3 setup.py sdist \
 # Install the built Mayan EDMS package
 && pip install --no-cache-dir dist/mayan* \
 # Install the static content
@@ -128,7 +128,7 @@ RUN python3 -m venv "${PROJECT_INSTALL_DIR}" \
 COPY --chown=mayan:mayan requirements/testing-base.txt "${PROJECT_INSTALL_DIR}"
 
 ####
-# Final image - BASE_IMAGE + Mayan install directory from the builder image
+# Final image - BASE_IMAGE + BUILDER_IMAGE artifact (Mayan install directory)
 ####
 
 FROM BASE_IMAGE
