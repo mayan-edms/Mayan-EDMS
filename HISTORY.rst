@@ -57,6 +57,8 @@
 - Add entrypoint commands to run single workers, single gunicorn
   or single celery commands like "flower".
 - Add platform template to return queues for a worker.
+- Update the EXIFTOOL driver to run for all documents
+  regardless of MIME type.
 
 
 3.2.6 (2019-07-10)
