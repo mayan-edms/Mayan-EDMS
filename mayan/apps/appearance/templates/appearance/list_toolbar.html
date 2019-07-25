@@ -3,7 +3,9 @@
 {% load common_tags %}
 {% load navigation_tags %}
 
-<div class="well center-block" style="border: 1px solid rgba(0, 0, 0, 0.1); margin-bottom: 10px; padding-bottom: 8px; padding-top: 8px; padding-left: 12px; padding-right: 15px; box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);">
+{% if is_paginated or links_multi_menus_results %}
+    <div class="well center-block toolbar">
+{% endif %}
 
     <div class="pull-left">
         <div class="btn-toolbar" role="toolbar">
@@ -16,6 +18,42 @@
             </div>
         </div>
     </div>
+
+{% if is_paginated %}
+    <div class="pull-left">
+        <div class="btn-toolbar" role="toolbar" style="margin-left: 10px;">
+            <div class="btn-group">
+
+        {% if page_obj.has_previous %}
+            <a class="btn btn-default btn-sm" href="?{{ page_obj.previous_page_number.querystring }}">&lsaquo;&lsaquo;</a>
+        {% else %}
+            <a class="btn btn-default btn-sm disabled" href="#">&lsaquo;&lsaquo;</a>
+        {% endif %}
+
+        {% for page in page_obj.pages %}
+
+            {% if page %}
+
+                {% ifequal page page_obj.number %}
+                    <a class="active btn btn-default btn-sm pagination-disabled" href="#">{{ page }}</a>
+                {% else %}
+                    <a class="btn btn-default btn-sm" href="?{{ page.querystring }}">{{ page }}</a>
+                {% endifequal %}
+            {% else %}
+                <a class="btn btn-default btn-sm disabled" href="#">...</a>
+            {% endif %}
+
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <a class="btn btn-default btn-sm" href="?{{ page_obj.next_page_number.querystring }}">&rsaquo;&rsaquo;</a>
+        {% else %}
+            <a class="btn btn-default btn-sm disabled" href="#">&rsaquo;&rsaquo;</a>
+        {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endif %}
 
     {% if links_multi_menus_results %}
         <p class="pull-right" id="multi-item-title" style="line-height: 16px; padding-top: 8px;">{% trans 'Select items to activate bulk actions. Use Shift + click to select many.' %}</p>
@@ -48,4 +86,7 @@
         </div>
         <div class="clearfix"></div>
     {% endif %}
-</div>
+
+{% if is_paginated or links_multi_menus_results %}
+    </div>
+{% endif %}

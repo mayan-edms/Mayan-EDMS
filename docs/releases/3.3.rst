@@ -75,6 +75,7 @@ Changes
   or single celery commands like "flower".
 - Add platform template to return queues for a worker.
 - Remove task inspection from task manager app.
+- Move pagination navigation inside the toolbar.
 
 
 Removals

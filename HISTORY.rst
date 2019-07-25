@@ -60,6 +60,7 @@
 - Update the EXIFTOOL driver to run for all documents
   regardless of MIME type.
 - Remove task inspection from task manager app.
+- Move pagination navigation inside the toolbar.
 
 3.2.6 (2019-07-10)
 ==================
