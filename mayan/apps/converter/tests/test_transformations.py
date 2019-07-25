@@ -121,7 +121,7 @@ class TransformationTestCase(GenericDocumentTestCase):
             arguments={'top': '10'}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
     def test_crop_transformation_invalid_arguments(self):
         self._silence_logger(name='mayan.apps.converter.managers')
@@ -132,8 +132,7 @@ class TransformationTestCase(GenericDocumentTestCase):
             obj=document_page, transformation=TransformationCrop,
             arguments={'top': 'x', 'left': '-'}
         )
-
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
     def test_crop_transformation_non_valid_range_arguments(self):
         self._silence_logger(name='mayan.apps.converter.managers')
@@ -145,7 +144,7 @@ class TransformationTestCase(GenericDocumentTestCase):
             arguments={'top': '-1000', 'bottom': '100000000'}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
     def test_crop_transformation_overlapping_ranges_arguments(self):
         self._silence_logger(name='mayan.apps.converter.managers')
@@ -162,7 +161,7 @@ class TransformationTestCase(GenericDocumentTestCase):
             arguments={'left': '1000', 'right': '10000'}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
     def test_lineart_transformations(self):
         document_page = self.test_document.pages.first()
@@ -172,7 +171,7 @@ class TransformationTestCase(GenericDocumentTestCase):
             arguments={}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
     def test_rotate_transformations(self):
         document_page = self.test_document.pages.first()
@@ -182,18 +181,18 @@ class TransformationTestCase(GenericDocumentTestCase):
             arguments={}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
         Transformation.objects.add_to_object(
             obj=document_page, transformation=TransformationRotate180,
             arguments={}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
         Transformation.objects.add_to_object(
             obj=document_page, transformation=TransformationRotate270,
             arguments={}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
