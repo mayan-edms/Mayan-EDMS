@@ -6,6 +6,7 @@ import logging
 from django.core.files.base import ContentFile
 from django.db import models, transaction
 from django.db.models import Sum
+from django.template.defaultfilters import filesizeformat
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
@@ -14,18 +15,31 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.apps.lock_manager.runtime import locking_backend
 
+from .events import (
+    event_cache_created, event_cache_edited, event_cache_purged
+)
+
 logger = logging.getLogger(__name__)
 
 
 @python_2_unicode_compatible
 class Cache(models.Model):
     name = models.CharField(
-        max_length=128, unique=True, verbose_name=_('Name')
+        help_text=_('Internal name of the cache.'), max_length=128,
+        unique=True, verbose_name=_('Name')
     )
-    label = models.CharField(max_length=128, verbose_name=_('Label'))
-    maximum_size = models.PositiveIntegerField(verbose_name=_('Maximum size'))
+    label = models.CharField(
+        help_text=_('A short text describing the cache.'), max_length=128,
+        verbose_name=_('Label')
+    )
+    maximum_size = models.PositiveIntegerField(
+        help_text=_('Maximum size of the cache in bytes.'),
+        verbose_name=_('Maximum size')
+    )
     storage_instance_path = models.CharField(
-        max_length=255, unique=True, verbose_name=_('Storage instance path')
+        help_text=_(
+            'Dotted path to the actual storage class used for the cache.'
+        ), max_length=255, unique=True, verbose_name=_('Storage instance path')
     )
 
     class Meta:
@@ -38,21 +52,55 @@ class Cache(models.Model):
     def get_files(self):
         return CachePartitionFile.objects.filter(partition__cache__id=self.pk)
 
+    def get_maximum_size_display(self):
+        return filesizeformat(bytes_=self.maximum_size)
+
+    get_maximum_size_display.short_description = _('Maximum size')
+
     def get_total_size(self):
+        """
+        Return the actual usage of the cache.
+        """
         return self.get_files().aggregate(
             file_size__sum=Sum('file_size')
         )['file_size__sum'] or 0
 
+    def get_total_size_display(self):
+        return filesizeformat(bytes_=self.get_total_size())
+
+    get_total_size_display.short_description = _('Total size')
+
     def prune(self):
+        """
+        Deletes files until the total size of the cache is below the allowed
+        maximum size of the cache.
+        """
         while self.get_total_size() > self.maximum_size:
             self.get_files().earliest().delete()
 
-    def purge(self):
+    def purge(self, _user=None):
+        """
+        Deletes the entire cache.
+        """
         for partition in self.partitions.all():
             partition.purge()
 
+        event_cache_purged.commit(actor=_user, target=self)
+
     def save(self, *args, **kwargs):
-        result = super(Cache, self).save(*args, **kwargs)
+        _user = kwargs.pop('_user', None)
+        with transaction.atomic():
+            is_new = not self.pk
+            result = super(Cache, self).save(*args, **kwargs)
+            if is_new:
+                event_cache_created.commit(
+                    actor=_user, target=self
+                )
+            else:
+                event_cache_edited.commit(
+                    actor=_user, target=self
+                )
+
         self.prune()
         return result
 

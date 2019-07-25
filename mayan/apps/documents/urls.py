@@ -13,7 +13,7 @@ from .api_views import (
     APIRecentDocumentListView
 )
 from .views import (
-    ClearImageCacheView, DocumentDocumentTypeEditView, DocumentDownloadFormView,
+    DocumentDocumentTypeEditView, DocumentDownloadFormView,
     DocumentDownloadView, DocumentDuplicatesListView, DocumentEditView,
     DocumentListView, DocumentPageListView, DocumentPageNavigationFirst,
     DocumentPageNavigationLast, DocumentPageNavigationNext,
@@ -271,10 +271,6 @@ urlpatterns = [
         regex=r'^multiple/clear_transformations/$',
         view=DocumentTransformationsClearView.as_view(),
         name='document_multiple_clear_transformations'
-    ),
-    url(
-        regex=r'^cache/clear/$', view=ClearImageCacheView.as_view(),
-        name='document_clear_image_cache'
     ),
     url(
         regex=r'^page/(?P<pk>\d+)/$', view=DocumentPageView.as_view(),

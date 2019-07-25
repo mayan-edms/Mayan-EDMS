@@ -42,17 +42,6 @@ def task_check_trash_periods():
 
 
 @app.task(ignore_result=True)
-def task_clear_image_cache():
-    Document = apps.get_model(
-        app_label='documents', model_name='Document'
-    )
-
-    logger.info('Starting document cache invalidation')
-    Document.objects.invalidate_cache()
-    logger.info('Finished document cache invalidation')
-
-
-@app.task(ignore_result=True)
 def task_delete_document(trashed_document_id):
     DeletedDocument = apps.get_model(
         app_label='documents', model_name='DeletedDocument'

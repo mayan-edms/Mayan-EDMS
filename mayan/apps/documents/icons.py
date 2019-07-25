@@ -12,8 +12,6 @@ icon_document_type = Icon(
 
 icon_menu_documents = Icon(driver_name='fontawesome', symbol='book')
 
-icon_clear_image_cache = Icon(driver_name='fontawesome', symbol='file-image')
-
 icon_dashboard_document_types = icon_document_type
 icon_dashboard_documents_in_trash = Icon(
     driver_name='fontawesome', symbol='trash-alt'

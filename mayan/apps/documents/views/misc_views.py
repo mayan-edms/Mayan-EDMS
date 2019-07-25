@@ -8,23 +8,10 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.generics import ConfirmView
 
 from ..permissions import permission_document_tools
-from ..tasks import task_clear_image_cache, task_scan_duplicates_all
+from ..tasks import task_scan_duplicates_all
 
-__all__ = ('ClearImageCacheView', 'ScanDuplicatedDocuments')
+__all__ = ('ScanDuplicatedDocuments',)
 logger = logging.getLogger(__name__)
-
-
-class ClearImageCacheView(ConfirmView):
-    extra_context = {
-        'title': _('Clear the document image cache?')
-    }
-    view_permission = permission_document_tools
-
-    def view_action(self):
-        task_clear_image_cache.apply_async()
-        messages.success(
-            self.request, _('Document cache clearing queued successfully.')
-        )
 
 
 class ScanDuplicatedDocuments(ConfirmView):

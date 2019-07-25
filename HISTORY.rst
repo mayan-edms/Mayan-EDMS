@@ -61,6 +61,8 @@
   regardless of MIME type.
 - Remove task inspection from task manager app.
 - Move pagination navigation inside the toolbar.
+- Remove document image clear link and view.
+  This is now handled by the file caching app.
 
 3.2.6 (2019-07-10)
 ==================

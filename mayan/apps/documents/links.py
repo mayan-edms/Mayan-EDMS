@@ -8,7 +8,7 @@ from mayan.apps.converter.permissions import (
 from mayan.apps.navigation.classes import Link
 
 from .icons import (
-    icon_clear_image_cache, icon_document_list_recent_access,
+    icon_document_list_recent_access,
     icon_recent_added_document_list, icon_document_page_navigation_first,
     icon_document_page_navigation_last, icon_document_page_navigation_next,
     icon_document_page_navigation_previous, icon_document_page_return,
@@ -264,16 +264,6 @@ link_document_list_deleted = Link(
     text=_('Trash can'), view='documents:document_list_deleted'
 )
 
-# Tools
-link_clear_image_cache = Link(
-    icon_class=icon_clear_image_cache,
-    description=_(
-        'Clear the graphics representations used to speed up the documents\' '
-        'display and interactive transformations results.'
-    ), permissions=(permission_document_tools,),
-    text=_('Clear document image cache'),
-    view='documents:document_clear_image_cache'
-)
 link_trash_can_empty = Link(
     permissions=(permission_empty_trash,), text=_('Empty trash'),
     view='documents:trash_can_empty'

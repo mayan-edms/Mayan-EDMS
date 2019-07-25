@@ -47,7 +47,7 @@ from .handlers import (
     handler_remove_empty_duplicates_lists, handler_scan_duplicates_for
 )
 from .links import (
-    link_clear_image_cache, link_document_clear_transformations,
+    link_document_clear_transformations,
     link_document_clone_transformations, link_document_delete,
     link_document_document_type_edit, link_document_download,
     link_document_duplicates_list, link_document_edit,
@@ -377,7 +377,7 @@ class DocumentsApp(MayanAppConfig):
 
         menu_setup.bind_links(links=(link_document_type_setup,))
         menu_tools.bind_links(
-            links=(link_clear_image_cache, link_duplicated_document_scan)
+            links=(link_duplicated_document_scan,)
         )
 
         # Document type links
