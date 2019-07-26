@@ -146,7 +146,7 @@ class ConverterBase(object):
                 logger.error('Exception launching Libre Office; %s', exception)
                 raise
             finally:
-                fs_cleanup(libreoffice_home_directory)
+                fs_cleanup(filename=libreoffice_home_directory)
 
             # LibreOffice return a PDF file with the same name as the input
             # provided but with the .pdf extension.
@@ -180,7 +180,7 @@ class ConverterBase(object):
             shutil.copyfileobj(
                 fsrc=converted_file_object, fdst=temporary_converted_file_object
             )
-        fs_cleanup(converted_file_path)
+        fs_cleanup(filename=converted_file_path)
         temporary_converted_file_object.seek(0)
         return temporary_converted_file_object
 

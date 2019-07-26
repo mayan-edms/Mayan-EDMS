@@ -238,7 +238,7 @@ class StagingFolderViewTestCase(GenericViewTestCase):
         self.filename = os.path.basename(TEST_SMALL_DOCUMENT_PATH)
 
     def tearDown(self):
-        fs_cleanup(self.temporary_directory)
+        fs_cleanup(filename=self.temporary_directory)
         super(StagingFolderViewTestCase, self).tearDown()
 
     def _request_staging_file_delete_view(self, staging_folder, staging_file):
