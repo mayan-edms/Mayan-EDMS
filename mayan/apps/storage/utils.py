@@ -62,7 +62,7 @@ def get_storage_subclass(dotted_path):
 def mkdtemp(*args, **kwargs):
     """
     Creates a temporary directory in the most secure manner possible.
-    There are no race conditions in the directory’s creation.
+    There are no race conditions in the directory's creation.
     The directory is readable, writable, and searchable only by the creating
     user ID.
     """
