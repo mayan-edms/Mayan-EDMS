@@ -22,13 +22,10 @@ def NamedTemporaryFile(*args, **kwargs):
     return tempfile.NamedTemporaryFile(*args, **kwargs)
 
 
-def fs_cleanup(filename, file_descriptor=None, suppress_exceptions=True):
+def fs_cleanup(filename, suppress_exceptions=True):
     """
-    Tries to remove the given filename. Ignores non-existent files
+    Tries to remove the given filename. Ignores non-existent files.
     """
-    if file_descriptor:
-        os.close(file_descriptor)
-
     try:
         os.remove(filename)
     except OSError:
@@ -63,6 +60,12 @@ def get_storage_subclass(dotted_path):
 
 
 def mkdtemp(*args, **kwargs):
+    """
+    Creates a temporary directory in the most secure manner possible.
+    There are no race conditions in the directory’s creation.
+    The directory is readable, writable, and searchable only by the creating
+    user ID.
+    """
     kwargs.update({'dir': setting_temporary_directory.value})
     return tempfile.mkdtemp(*args, **kwargs)
 
