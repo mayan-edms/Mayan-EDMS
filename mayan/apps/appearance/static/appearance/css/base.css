@@ -552,3 +552,8 @@ a i {
     padding-right: 15px;
     padding-top: 8px;
 }
+
+#body-plain {
+    padding-top: 0px;
+    margin-top: 10px;
+}
