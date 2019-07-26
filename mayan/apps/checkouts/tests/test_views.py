@@ -315,43 +315,6 @@ class DocumentCheckoutViewTestCase(
             response=response, text=self.test_document.label, status_code=200
         )
 
-    def test_document_check_out_new_version(self):
-        """
-        Gitlab issue #231
-        User shown option to upload new version of a document even though it
-        is blocked by checkout - v2.0.0b2
-
-        Expected results:
-            - Link to upload version view should not resolve
-            - Upload version view should reject request
-        """
-        self._create_test_case_superuser()
-        self._check_out_test_document()
-        self.login_superuser()
-
-        response = self.post(
-            viewname='sources:upload_version', kwargs={
-                'document_pk': self.test_document.pk
-            }, follow=True
-        )
-
-        self.assertContains(
-            response=response, text='blocked from uploading',
-            status_code=200
-        )
-
-        response = self.get(
-            viewname='documents:document_version_list', kwargs={
-                'pk': self.test_document.pk
-            }, follow=True
-        )
-
-        # Needed by the url view resolver
-        response.context.current_app = None
-        resolved_link = link_document_version_upload.resolve(context=response.context)
-
-        self.assertEqual(resolved_link, None)
-
     def test_document_check_in_forcefull_view_no_permission(self):
         # Gitlab issue #237
         # Forcefully checking in a document by a user without adequate
@@ -388,3 +351,47 @@ class DocumentCheckoutViewTestCase(
         )
         self.assertEqual(response.status_code, 302)
         self.assertFalse(self.test_document.is_checked_out())
+
+
+class NewVersionBlockViewTestCase(
+    DocumentCheckoutTestMixin, DocumentCheckoutViewTestMixin,
+    GenericDocumentViewTestCase):
+
+    def test_document_check_out_new_version(self):
+        """
+        Gitlab issue #231
+        User shown option to upload new version of a document even though it
+        is blocked by checkout - v2.0.0b2
+
+        Expected results:
+            - Link to upload version view should not resolve
+            - Upload version view should reject request
+        """
+        self._create_test_case_superuser()
+        self._check_out_test_document()
+        self.login_superuser()
+
+        response = self.post(
+            viewname='sources:upload_version', kwargs={
+                'document_pk': self.test_document.pk
+            }, follow=True
+        )
+
+        self.assertContains(
+            response=response, text='blocked from uploading',
+            status_code=200
+        )
+
+        response = self.get(
+            viewname='documents:document_version_list', kwargs={
+                'pk': self.test_document.pk
+            }, follow=True
+        )
+
+        # Needed by the url view resolver
+        response.context.current_app = None
+        resolved_link = link_document_version_upload.resolve(
+            context=response.context
+        )
+
+        self.assertEqual(resolved_link, None)
