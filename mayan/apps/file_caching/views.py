@@ -15,7 +15,7 @@ from .tasks import task_cache_purge
 
 class CacheListView(SingleObjectListView):
     model = Cache
-    permission = permission_cache_view
+    object_permission = permission_cache_view
 
     def get_extra_context(self):
         return {

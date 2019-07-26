@@ -25,7 +25,7 @@ from .permissions import permission_cache_purge, permission_cache_view
 class FileCachingConfig(MayanAppConfig):
     app_namespace = 'file_caching'
     app_url = 'file_caching'
-    has_tests = False
+    has_tests = True
     name = 'mayan.apps.file_caching'
     verbose_name = _('File caching')
 
