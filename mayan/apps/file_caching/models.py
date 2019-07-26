@@ -167,6 +167,10 @@ class CachePartition(models.Model):
             logger.debug('unable to obtain lock: %s' % lock_id)
             raise
 
+    def delete(self, *args, **kwargs):
+        self.purge()
+        return super(CachePartition, self).delete(*args, **kwargs)
+
     def get_file(self, filename):
         try:
             return self.files.get(filename=filename)
