@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from django.http import QueryDict
-from django.utils.encoding import force_bytes
 
 
 class URL(object):

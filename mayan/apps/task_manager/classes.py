@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from datetime import timedelta
 from importlib import import_module
 import logging
 
@@ -9,7 +8,6 @@ from kombu import Exchange, Queue
 from django.apps import apps
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.module_loading import import_string
-from django.utils.timezone import now
 
 from mayan.celery import app as celery_app
 

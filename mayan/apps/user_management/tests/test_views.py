@@ -14,9 +14,7 @@ from ..permissions import (
     permission_user_edit, permission_user_view
 )
 
-from .mixins import (
-    GroupTestMixin, GroupViewTestMixin, UserTestMixin, UserViewTestMixin
-)
+from .mixins import GroupTestMixin, GroupViewTestMixin, UserViewTestMixin
 
 
 class GroupViewsTestCase(GroupTestMixin, GroupViewTestMixin, GenericViewTestCase):

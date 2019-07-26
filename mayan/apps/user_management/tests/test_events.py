@@ -17,7 +17,7 @@ from ..events import (
 
 from .mixins import (
     GroupAPITestMixin, GroupTestMixin, GroupViewTestMixin, UserAPITestMixin,
-    UserTestMixin, UserViewTestMixin
+    UserViewTestMixin
 )
 
 

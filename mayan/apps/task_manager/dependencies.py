@@ -1,11 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.utils.translation import ugettext_lazy as _
-
-from mayan.apps.dependencies.classes import (
-    environment_build, environment_development, environment_testing,
-    PythonDependency
-)
+from mayan.apps.dependencies.classes import PythonDependency
 
 PythonDependency(
     copyright_text='''

@@ -14,9 +14,7 @@ from ..permissions import (
     permission_user_edit, permission_user_view
 )
 
-from .mixins import (
-    GroupAPITestMixin, GroupTestMixin, UserAPITestMixin, UserTestMixin
-)
+from .mixins import GroupAPITestMixin, GroupTestMixin, UserAPITestMixin
 
 
 class GroupAPITestCase(GroupAPITestMixin, GroupTestMixin, BaseAPITestCase):
