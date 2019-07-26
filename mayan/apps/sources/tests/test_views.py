@@ -152,11 +152,11 @@ class DocumentUploadIssueTestCase(GenericDocumentViewTestCase):
         self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_descriptor:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.post(
                 viewname='sources:upload_interactive', data={
                     'document-language': 'eng',
-                    'source-file': file_descriptor,
+                    'source-file': file_object,
                     'document_type_id': self.test_document_type.pk
                 }
             )

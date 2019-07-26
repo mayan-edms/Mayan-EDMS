@@ -154,11 +154,11 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
     auto_upload_document = False
 
     def _request_document_upload(self):
-        with open(TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='rest_api:document-list', data={
                     'document_type': self.test_document_type.pk,
-                    'file': file_descriptor
+                    'file': file_object
                 }
             )
 
@@ -208,12 +208,12 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
         # is the latest.
         time.sleep(1)
 
-        with open(TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='rest_api:document-version-list', kwargs={
                     'pk': self.test_document.pk,
                 }, data={
-                    'comment': '', 'file': file_descriptor,
+                    'comment': '', 'file': file_object,
                 }
             )
 
