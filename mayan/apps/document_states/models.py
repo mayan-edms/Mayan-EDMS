@@ -14,7 +14,9 @@ from django.core.files.base import ContentFile
 from django.db import IntegrityError, models, transaction
 from django.db.models import F, Max, Q
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import (
+    force_bytes, force_text, python_2_unicode_compatible
+)
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
@@ -110,7 +112,9 @@ class Workflow(models.Model):
         )
 
         return hashlib.sha256(
-            serializers.serialize('json', objects_lists)
+            force_bytes(
+                serializers.serialize('json', objects_lists)
+            )
         ).hexdigest()
 
     def get_initial_state(self):
