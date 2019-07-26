@@ -210,6 +210,9 @@ class CachePartitionFile(models.Model):
         self.partition.cache.storage.delete(name=self.full_filename)
         return super(CachePartitionFile, self).delete(*args, **kwargs)
 
+    def exists(self):
+        return self.partition.cache.storage.exists(name=self.full_filename)
+
     @cached_property
     def full_filename(self):
         return CachePartition.get_combined_filename(
