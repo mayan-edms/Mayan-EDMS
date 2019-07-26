@@ -139,6 +139,7 @@ class DocumentVersion(models.Model):
             page.delete()
 
         self.file.storage.delete(self.file.name)
+        self.cache_partition.delete()
 
         return super(DocumentVersion, self).delete(*args, **kwargs)
 
@@ -224,11 +225,6 @@ class DocumentVersion(models.Model):
     def natural_key(self):
         return (self.checksum, self.document.natural_key())
     natural_key.dependencies = ['documents.Document']
-
-    def invalidate_cache(self):
-        self.cache_partition.purge()
-        for page in self.pages.all():
-            page.invalidate_cache()
 
     @property
     def is_in_trash(self):

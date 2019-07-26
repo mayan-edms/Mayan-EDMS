@@ -64,7 +64,7 @@ class DocumentPage(models.Model):
         return partition
 
     def delete(self, *args, **kwargs):
-        self.invalidate_cache()
+        self.cache_partition.delete()
         super(DocumentPage, self).delete(*args, **kwargs)
 
     def detect_orientation(self):
@@ -233,9 +233,6 @@ class DocumentPage(models.Model):
                     cache_filename, exception
                 )
                 raise
-
-    def invalidate_cache(self):
-        self.cache_partition.purge()
 
     @property
     def is_in_trash(self):

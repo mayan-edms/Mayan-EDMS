@@ -25,10 +25,6 @@ class DocumentManager(models.Manager):
             self.model, using=self._db
         ).filter(in_trash=False).filter(is_stub=False)
 
-    def invalidate_cache(self):
-        for document in self.model.objects.all():
-            document.invalidate_cache()
-
 
 class DocumentPageCachedImage(models.Manager):
     def get_by_natural_key(self, filename, document_page_natural_key):

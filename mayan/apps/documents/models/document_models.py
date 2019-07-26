@@ -136,10 +136,6 @@ class Document(models.Model):
         if latest_version:
             return latest_version.get_api_image_url(*args, **kwargs)
 
-    def invalidate_cache(self):
-        for document_version in self.versions.all():
-            document_version.invalidate_cache()
-
     @property
     def is_in_trash(self):
         return self.in_trash
