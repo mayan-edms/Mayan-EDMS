@@ -6,11 +6,6 @@ import logging
 
 from furl import furl
 from graphviz import Digraph
-import yaml
-try:
-    from yaml import CSafeLoader as SafeLoader
-except ImportError:
-    from yaml import SafeLoader
 
 from django.conf import settings
 from django.core import serializers
@@ -24,6 +19,7 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.serialization import yaml_load
 from mayan.apps.common.validators import YAMLValidator, validate_internal_name
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
@@ -465,7 +461,7 @@ class WorkflowTransitionField(models.Model):
         return self.label
 
     def get_widget_kwargs(self):
-        return yaml.load(stream=self.widget_kwargs, Loader=SafeLoader)
+        return yaml_load(stream=self.widget_kwargs)
 
 
 @python_2_unicode_compatible
