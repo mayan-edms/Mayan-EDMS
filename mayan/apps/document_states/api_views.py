@@ -27,7 +27,6 @@ from .serializers import (
 )
 
 from .settings import settings_workflow_image_cache_time
-from .storages import storage_workflowimagecache
 from .tasks import task_generate_workflow_image
 
 
@@ -204,7 +203,8 @@ class APIWorkflowImageView(generics.RetrieveAPIView):
         )
 
         cache_filename = task.get(timeout=WORKFLOW_IMAGE_TASK_TIMEOUT)
-        with storage_workflowimagecache.open(cache_filename) as file_object:
+        cache_file = self.get_object().cache_partition.get_file(filename=cache_filename)
+        with cache_file.open() as file_object:
             response = HttpResponse(file_object.read(), content_type='image')
             if '_hash' in request.GET:
                 patch_cache_control(

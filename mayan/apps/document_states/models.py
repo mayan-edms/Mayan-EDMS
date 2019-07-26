@@ -7,16 +7,17 @@ import logging
 from furl import furl
 from graphviz import Digraph
 
+from django.apps import apps
 from django.conf import settings
 from django.core import serializers
 from django.core.exceptions import PermissionDenied, ValidationError
-from django.core.files.base import ContentFile
 from django.db import IntegrityError, models, transaction
 from django.db.models import F, Max, Q
 from django.urls import reverse
 from django.utils.encoding import (
     force_bytes, force_text, python_2_unicode_compatible
 )
+from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
@@ -31,11 +32,11 @@ from .error_logs import error_log_state_actions
 from .events import event_workflow_created, event_workflow_edited
 from .literals import (
     FIELD_TYPE_CHOICES, WIDGET_CLASS_CHOICES, WORKFLOW_ACTION_WHEN_CHOICES,
-    WORKFLOW_ACTION_ON_ENTRY, WORKFLOW_ACTION_ON_EXIT
+    WORKFLOW_ACTION_ON_ENTRY, WORKFLOW_ACTION_ON_EXIT,
+    WORKFLOW_IMAGE_CACHE_NAME
 )
 from .managers import WorkflowManager
 from .permissions import permission_workflow_transition
-from .storages import storage_workflowimagecache
 
 logger = logging.getLogger(__name__)
 
@@ -72,19 +73,37 @@ class Workflow(models.Model):
     def __str__(self):
         return self.label
 
-    def generate_image(self):
-        cache_filename = '{}-{}'.format(self.id, self.get_hash())
-        image = self.render()
+    @cached_property
+    def cache(self):
+        Cache = apps.get_model(app_label='file_caching', model_name='Cache')
+        return Cache.objects.get(name=WORKFLOW_IMAGE_CACHE_NAME)
 
-        # Since open "wb+" doesn't create files, check if the file
-        # exists, if not then create it
-        if not storage_workflowimagecache.exists(cache_filename):
-            storage_workflowimagecache.save(
-                name=cache_filename, content=ContentFile(content='')
+    @cached_property
+    def cache_partition(self):
+        partition, created = self.cache.partitions.get_or_create(
+            name='{}'.format(self.pk)
+        )
+        return partition
+
+    def delete(self, *args, **kwargs):
+        self.cache_partition.delete()
+        return super(Workflow, self).delete(*args, **kwargs)
+
+    def generate_image(self):
+        cache_filename = '{}'.format(self.get_hash())
+
+        if self.cache_partition.get_file(filename=cache_filename):
+            logger.debug(
+                'workflow cache file "%s" found', cache_filename
+            )
+        else:
+            logger.debug(
+                'workflow cache file "%s" not found', cache_filename
             )
 
-        with storage_workflowimagecache.open(cache_filename, mode='wb+') as file_object:
-            file_object.write(image)
+            image = self.render()
+            with self.cache_partition.create_file(filename=cache_filename) as file_object:
+                file_object.write(image)
 
         return cache_filename
 
@@ -107,6 +126,8 @@ class Workflow(models.Model):
             Workflow.objects.filter(pk=self.pk)
         ) + list(
             WorkflowState.objects.filter(workflow__pk=self.pk)
+        ) + list(
+            WorkflowStateAction.objects.filter(state__workflow__pk=self.pk)
         ) + list(
             WorkflowTransition.objects.filter(workflow__pk=self.pk)
         )

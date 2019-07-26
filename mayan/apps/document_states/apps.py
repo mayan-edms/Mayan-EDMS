@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
-from django.db.models.signals import post_save
+from django.db.models.signals import post_migrate, post_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -25,7 +25,8 @@ from .classes import DocumentStateHelper, WorkflowAction
 from .events import event_workflow_created, event_workflow_edited
 from .dependencies import *  # NOQA
 from .handlers import (
-    handler_index_document, handler_launch_workflow, handler_trigger_transition
+    handler_create_workflow_image_cache, handler_index_document,
+    handler_launch_workflow, handler_trigger_transition
 )
 from .html_widgets import WorkflowLogExtraDataWidget, widget_transition_events
 from .links import (
@@ -452,6 +453,10 @@ class DocumentStatesApp(MayanAppConfig):
 
         # Index updating
 
+        post_migrate.connect(
+            dispatch_uid='workflows_handler_create_workflow_image_cache',
+            receiver=handler_create_workflow_image_cache,
+        )
         post_save.connect(
             dispatch_uid='workflows_handler_index_document_save',
             receiver=handler_index_document,

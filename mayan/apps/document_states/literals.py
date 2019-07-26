@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+DEFAULT_WORKFLOW_IMAGE_CACHE_MAXIMUM_SIZE = 50 * 2 ** 20  # 50 Megabytes
+
 FIELD_TYPE_CHOICE_CHAR = 1
 FIELD_TYPE_CHOICE_INTEGER = 2
 FIELD_TYPE_CHOICES = (
@@ -30,4 +32,6 @@ WORKFLOW_ACTION_WHEN_CHOICES = (
     (WORKFLOW_ACTION_ON_ENTRY, _('On entry')),
     (WORKFLOW_ACTION_ON_EXIT, _('On exit')),
 )
+WORKFLOW_IMAGE_CACHE_NAME = 'workflow_images'
+WORKFLOW_IMAGE_CACHE_STORAGE_INSTANCE_PATH = 'mayan.apps.document_states.storages.storage_workflowimagecache'
 WORKFLOW_IMAGE_TASK_TIMEOUT = 60
