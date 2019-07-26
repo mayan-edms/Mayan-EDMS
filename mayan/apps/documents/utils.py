@@ -9,7 +9,7 @@ from .literals import DOCUMENT_IMAGES_CACHE_NAME
 
 
 def callback_update_cache_size(setting):
-    Cache = apps.get_model(app_label='common', model_name='Cache')
+    Cache = apps.get_model(app_label='file_caching', model_name='Cache')
     cache = Cache.objects.get(name=DOCUMENT_IMAGES_CACHE_NAME)
     cache.maximum_size = setting.value
     cache.save()
