@@ -18,14 +18,14 @@ test_storage = None
 
 class CacheTestMixin(object):
     def setUp(self):
+        super(CacheTestMixin, self).setUp()
         global test_storage
         self.temporary_directory = mkdtemp()
         test_storage = FileSystemStorage(location=self.temporary_directory)
-        super(CacheTestMixin, self).setUp()
 
     def tearDown(self):
-        super(CacheTestMixin, self).tearDown()
         fs_cleanup(filename=self.temporary_directory)
+        super(CacheTestMixin, self).tearDown()
 
     def _create_test_cache(self):
         self.test_cache = Cache.objects.create(
