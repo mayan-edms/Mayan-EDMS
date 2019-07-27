@@ -1,0 +1,144 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-26 23:35-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: apps.py:38
+msgid "Links"
+msgstr ""
+
+#: events.py:8 links.py:17 links.py:52 links.py:57 links.py:61 models.py:36
+#: permissions.py:7 views.py:145
+msgid "Web links"
+msgstr ""
+
+#: events.py:12
+msgid "Web link created"
+msgstr ""
+
+#: events.py:15
+msgid "Web link edited"
+msgstr ""
+
+#: links.py:23 views.py:193
+msgid "Create new web link"
+msgstr ""
+
+#: links.py:29
+msgid "Delete"
+msgstr ""
+
+#: links.py:35 models.py:28
+msgid "Document types"
+msgstr ""
+
+#: links.py:41
+msgid "Edit"
+msgstr ""
+
+#: links.py:47
+msgid "Navigate"
+msgstr ""
+
+#: models.py:22
+msgid "Label"
+msgstr ""
+
+#: models.py:24
+msgid "Template"
+msgstr ""
+
+#: models.py:25
+msgid "Enabled"
+msgstr ""
+
+#: models.py:35
+msgid "Web link"
+msgstr ""
+
+#: permissions.py:10
+msgid "Create new web links"
+msgstr ""
+
+#: permissions.py:13
+msgid "Delete web links"
+msgstr ""
+
+#: permissions.py:16
+msgid "Edit web links"
+msgstr ""
+
+#: permissions.py:19
+msgid "View existing web links"
+msgstr ""
+
+#: permissions.py:22
+msgid "View web link instances"
+msgstr ""
+
+#: views.py:44
+msgid "Available web links"
+msgstr ""
+
+#: views.py:45
+msgid "Web links enabled"
+msgstr ""
+
+#: views.py:77
+#, python-format
+msgid "Web links to enable for document type: %s"
+msgstr ""
+
+#: views.py:111
+msgid "Available document types"
+msgstr ""
+
+#: views.py:112
+msgid "Document types enabled"
+msgstr ""
+
+#: views.py:122
+#, python-format
+msgid "Document type for which to enable web link: %s"
+msgstr ""
+
+#: views.py:139
+msgid "Web links allow generating links from documents to external resources."
+msgstr ""
+
+#: views.py:143
+msgid "There are no web links"
+msgstr ""
+
+#: views.py:180
+msgid "There are no web links for this document"
+msgstr ""
+
+#: views.py:183
+#, python-format
+msgid "Web links for document: %s"
+msgstr ""
+
+#: views.py:214
+#, python-format
+msgid "Delete web link: %s"
+msgstr ""
+
+#: views.py:229
+#, python-format
+msgid "Edit web link: %s"
+msgstr ""

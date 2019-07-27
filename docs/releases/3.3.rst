@@ -78,7 +78,7 @@ Changes
 - Move pagination navigation inside the toolbar.
 - Remove document image clear link and view.
   This is now handled by the file caching app.
-
+- Add web links app.
 
 Removals
 --------
