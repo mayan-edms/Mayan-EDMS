@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 
 from django.http import QueryDict
+from django.utils.encoding import force_bytes
+from django.utils.six import PY3
 
 
 class URL(object):
@@ -30,4 +32,7 @@ class URL(object):
 
         result = '{}{}'.format(path, query)
 
-        return result
+        if PY3:
+            return result
+        else:
+            return force_bytes(result)
