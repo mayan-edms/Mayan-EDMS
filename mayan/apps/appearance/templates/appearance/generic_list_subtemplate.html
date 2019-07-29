@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load static %}
 
+{% load appearance_tags %}
 {% load common_tags %}
 {% load navigation_tags %}
 
@@ -30,13 +31,18 @@
                                         {% if source_column %}
                                             <th>
                                                 {% if source_column.is_sortable %}
-                                                    <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}
+                                                    <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}</a>
                                                     {% if source_column.get_sort_field == sort_field %}
                                                         {% if icon_sort %}{{ icon_sort.render }}{% endif %}
                                                     {% endif %}
-                                                    </a>
                                                 {% else %}
                                                     {{ source_column.label }}
+                                                {% endif %}
+
+                                                {% if source_column.help_text %}
+                                                    <span data-toggle="tooltip" data-placement="bottom" title="{{ source_column.help_text }}">
+                                                    {% get_icon icon_path='mayan.apps.navigation.icons.icon_source_column_help_text' %}
+                                                    </span>
                                                 {% endif %}
                                             </th>
                                         {% endif %}
@@ -44,16 +50,21 @@
 
                                     {% if not hide_columns %}
                                         {% navigation_get_source_columns source=object_list exclude_identifier=True as source_columns %}
-                                        {% for column in source_columns %}
+                                        {% for source_column in source_columns %}
                                             <th>
-                                                {% if column.is_sortable %}
-                                                    <a href="{% navigation_get_sort_field_querystring column=column %}">{{ column.label }}
-                                                    {% if column.get_sort_field == sort_field %}
+                                                {% if source_column.is_sortable %}
+                                                    <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}</a>
+                                                    {% if source_column.get_sort_field == sort_field %}
                                                         {% if icon_sort %}{{ icon_sort.render }}{% endif %}
                                                     {% endif %}
-                                                    </a>
                                                 {% else %}
-                                                    {{ column.label }}
+                                                    {{ source_column.label }}
+                                                {% endif %}
+
+                                                {% if source_column.help_text %}
+                                                    <span data-toggle="tooltip" data-placement="bottom" title="{{ source_column.help_text }}">
+                                                    {% get_icon icon_path='mayan.apps.navigation.icons.icon_source_column_help_text' %}
+                                                    </span>
                                                 {% endif %}
                                             </th>
                                         {% endfor %}

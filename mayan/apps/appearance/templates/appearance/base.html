@@ -136,6 +136,9 @@
             },
         {% endfor %}
     ];
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    })
 </script>
 {% block javascript %}{% endblock %}
 

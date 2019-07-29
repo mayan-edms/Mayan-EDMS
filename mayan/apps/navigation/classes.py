@@ -6,7 +6,9 @@ import logging
 from furl import furl
 
 from django.apps import apps
-from django.contrib.admin.utils import label_for_field
+from django.contrib.admin.utils import (
+    help_text_for_field, label_for_field
+)
 from django.core.exceptions import (
     FieldDoesNotExist, ImproperlyConfigured, PermissionDenied
 )
@@ -689,13 +691,14 @@ class SourceColumn(object):
 
     def __init__(
         self, source, attribute=None, empty_value=None, func=None,
-        include_label=False, is_attribute_absolute_url=False,
+        help_text=None, include_label=False, is_attribute_absolute_url=False,
         is_object_absolute_url=False, is_identifier=False, is_sortable=False,
         kwargs=None, label=None, order=None, sort_field=None, views=None,
         widget=None
     ):
-        self.source = source
         self._label = label
+        self._help_text = help_text
+        self.source = source
         self.attribute = attribute
         self.empty_value = empty_value
         self.exclude = ()
@@ -715,6 +718,32 @@ class SourceColumn(object):
         self.__class__._registry[source].append(self)
 
         self._calculate_label()
+        self._calculate_help_text()
+
+    def _calculate_help_text(self):
+        if not self._help_text:
+            if self.attribute:
+                try:
+                    attribute = resolve_attribute(
+                        obj=self.source, attribute=self.attribute
+                    )
+                    self._help_text = getattr(attribute, 'help_text')
+                except AttributeError:
+                    try:
+                        name, model = SourceColumn.get_attribute_recursive(
+                            attribute=self.attribute, model=self.source._meta.model
+                        )
+                        self._help_text = help_text_for_field(
+                            name=name, model=model
+                        )
+                    except AttributeError:
+                        self._help_text = self.attribute
+            else:
+                self._help_text = getattr(
+                    self.func, 'help_text', _('Unnamed function')
+                )
+
+        self.help_text = self._help_text
 
     def _calculate_label(self):
         if not self._label:

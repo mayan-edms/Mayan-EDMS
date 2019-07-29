@@ -64,6 +64,8 @@
 - Remove document image clear link and view.
   This is now handled by the file caching app.
 - Add web links app.
+- Add support to display column help text
+  as a tooltip.
 
 3.2.6 (2019-07-10)
 ==================
