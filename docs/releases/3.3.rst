@@ -81,6 +81,8 @@ Changes
 - Add web links app.
 - Add support to display column help text
   as a tooltip.
+- Update numeric dashboard widget to display
+  thousand commas.
 
 Removals
 --------

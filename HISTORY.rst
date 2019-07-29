@@ -66,6 +66,8 @@
 - Add web links app.
 - Add support to display column help text
   as a tooltip.
+- Update numeric dashboard widget to display
+  thousand commas.
 
 3.2.6 (2019-07-10)
 ==================

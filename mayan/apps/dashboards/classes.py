@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.contrib.humanize.templatetags.humanize import intcomma
 from django.template import loader
 
 
@@ -85,7 +86,8 @@ class DashboardWidgetNumeric(BaseDashboardWidget):
 
     def get_context(self):
         return {
-            'count': self.count,
+            'count': intcomma(value=self.count),
+            'count_raw': self.count,
             'icon_class': self.icon_class,
             'label': self.label,
             'link': self.link,
