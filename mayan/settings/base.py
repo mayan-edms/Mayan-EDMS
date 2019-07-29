@@ -275,7 +275,7 @@ REST_FRAMEWORK = {
 # --------- Pagination --------
 
 PAGINATION_SETTINGS = {
-    'PAGE_RANGE_DISPLAYED': 8,
+    'PAGE_RANGE_DISPLAYED': 5,
     'MARGIN_PAGES_DISPLAYED': 2,
 }
 
