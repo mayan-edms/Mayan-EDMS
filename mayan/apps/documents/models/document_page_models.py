@@ -19,7 +19,7 @@ from mayan.apps.converter.transformations import (
 )
 from mayan.apps.converter.utils import get_converter_class
 
-from ..managers import DocumentPageCachedImage, DocumentPageManager
+from ..managers import DocumentPageManager
 from ..settings import (
     setting_disable_base_image_cache, setting_disable_transformed_image_cache,
     setting_display_width, setting_display_height, setting_zoom_max_level,
@@ -28,7 +28,7 @@ from ..settings import (
 
 from .document_version_models import DocumentVersion
 
-__all__ = ('DocumentPage', 'DocumentPageCachedImage', 'DocumentPageResult')
+__all__ = ('DocumentPage', 'DocumentPageResult')
 logger = logging.getLogger(__name__)
 
 
