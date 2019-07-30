@@ -225,7 +225,7 @@ urlpatterns_workflow_transition_fields = [
     ),
 ]
 
-urlpatterns = [
+urlpatterns_tools = [
     url(
         regex=r'^tools/workflows/launch/$',
         view=ToolLaunchWorkflows.as_view(),
@@ -233,6 +233,8 @@ urlpatterns = [
     ),
 ]
 
+urlpatterns = []
+urlpatterns.extend(urlpatterns_tools)
 urlpatterns.extend(urlpatterns_workflow_instances)
 urlpatterns.extend(urlpatterns_workflow_runtime_proxies)
 urlpatterns.extend(urlpatterns_workflow_states)

@@ -13,44 +13,44 @@ from .views import (
 )
 
 urlpatterns = [
-    url(regex=r'^list/$', view=TagListView.as_view(), name='tag_list'),
-    url(regex=r'^create/$', view=TagCreateView.as_view(), name='tag_create'),
+    url(regex=r'^tags/$', view=TagListView.as_view(), name='tag_list'),
+    url(regex=r'^tags/create/$', view=TagCreateView.as_view(), name='tag_create'),
     url(
-        regex=r'^(?P<pk>\d+)/delete/$', view=TagDeleteActionView.as_view(),
+        regex=r'^tags/(?P<pk>\d+)/delete/$', view=TagDeleteActionView.as_view(),
         name='tag_delete'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/edit/$', view=TagEditView.as_view(),
+        regex=r'^tags/(?P<pk>\d+)/edit/$', view=TagEditView.as_view(),
         name='tag_edit'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/documents/$', view=TagDocumentListView.as_view(),
+        regex=r'^tags/(?P<pk>\d+)/documents/$', view=TagDocumentListView.as_view(),
         name='tag_document_list'
     ),
     url(
-        regex=r'^multiple/delete/$', view=TagDeleteActionView.as_view(),
+        regex=r'^tags/multiple/delete/$', view=TagDeleteActionView.as_view(),
         name='tag_multiple_delete'
     ),
     url(
-        regex=r'^multiple/remove/document/(?P<pk>\d+)/$',
+        regex=r'^documents/(?P<pk>\d+)/tags/remove/$',
         view=TagRemoveActionView.as_view(),
         name='single_document_multiple_tag_remove'
     ),
     url(
-        regex=r'^multiple/remove/document/multiple/$',
+        regex=r'^documents/multiple/tags/remove/$',
         view=TagRemoveActionView.as_view(),
         name='multiple_documents_selection_tag_remove'
     ),
     url(
-        regex=r'^selection/attach/document/(?P<pk>\d+)/$',
+        regex=r'^documents/(?P<pk>\d+)/tags/attach/$',
         view=TagAttachActionView.as_view(), name='tag_attach'
     ),
     url(
-        regex=r'^selection/attach/document/multiple/$',
+        regex=r'^documents/multiple/tags/attach/$',
         view=TagAttachActionView.as_view(), name='multiple_documents_tag_attach'
     ),
     url(
-        regex=r'^document/(?P<pk>\d+)/tags/$',
+        regex=r'^documents/(?P<pk>\d+)/tags/$',
         view=DocumentTagListView.as_view(), name='document_tag_list'
     ),
 ]
