@@ -25,8 +25,6 @@ icon_dashboard_new_documents_this_month = Icon(
 icon_dashboard_total_document = Icon(
     driver_name='fontawesome', symbol='book'
 )
-
-
 icon_document_quick_download = Icon(
     driver_name='fontawesome', symbol='download'
 )
@@ -104,6 +102,14 @@ icon_favorite_document_remove = Icon(
     secondary_symbol='minus'
 )
 
+# Document pages
+
+icon_document_page_disable = Icon(
+    driver_name='fontawesomecss', css_classes='far fa-eye-slash'
+)
+icon_document_page_enable = Icon(
+    driver_name='fontawesomecss', css_classes='far fa-eye'
+)
 icon_document_page_navigation_first = Icon(
     driver_name='fontawesome', symbol='step-backward'
 )

@@ -237,6 +237,18 @@ class Document(models.Model):
         return self.latest_version.page_count
 
     @property
+    def pages_all(self):
+        try:
+            return self.latest_version.pages_all
+        except AttributeError:
+            # Document has no version yet
+            DocumentPage = apps.get_model(
+                app_label='documents', model_name='DocumentPage'
+            )
+
+            return DocumentPage.objects.none()
+
+    @property
     def pages(self):
         try:
             return self.latest_version.pages

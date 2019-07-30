@@ -38,15 +38,17 @@ class DocumentPage(models.Model):
     Model that describes a document version page
     """
     document_version = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='pages', to=DocumentVersion,
+        on_delete=models.CASCADE, related_name='version_pages', to=DocumentVersion,
         verbose_name=_('Document version')
     )
+    enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
     page_number = models.PositiveIntegerField(
         db_index=True, default=1, editable=False,
         verbose_name=_('Page number')
     )
 
     objects = DocumentPageManager()
+    passthrough = models.Manager()
 
     class Meta:
         ordering = ('page_number',)
@@ -244,7 +246,7 @@ class DocumentPage(models.Model):
         ) % {
             'document': force_text(self.document),
             'page_num': self.page_number,
-            'total_pages': self.document_version.pages.count()
+            'total_pages': self.document_version.pages_all.count()
         }
     get_label.short_description = _('Label')
 

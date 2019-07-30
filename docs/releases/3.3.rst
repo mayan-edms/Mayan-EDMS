@@ -83,6 +83,7 @@ Changes
   as a tooltip.
 - Update numeric dashboard widget to display
   thousand commas.
+- Add support for disabling document pages.
 
 Removals
 --------

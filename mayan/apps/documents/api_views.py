@@ -174,7 +174,7 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         )
 
     def get_queryset(self):
-        return self.get_document_version().pages.all()
+        return self.get_document_version().pages_all.all()
 
     def get_serializer(self, *args, **kwargs):
         return None

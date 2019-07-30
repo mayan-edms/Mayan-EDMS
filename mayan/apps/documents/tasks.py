@@ -70,8 +70,7 @@ def task_generate_document_page_image(document_page_id, *args, **kwargs):
         app_label='documents', model_name='DocumentPage'
     )
 
-    document_page = DocumentPage.objects.get(pk=document_page_id)
-
+    document_page = DocumentPage.passthrough.get(pk=document_page_id)
     return document_page.generate_image(*args, **kwargs)
 
 

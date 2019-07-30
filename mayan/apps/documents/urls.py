@@ -32,6 +32,9 @@ from .views import (
     RecentAccessDocumentListView, RecentAddedDocumentListView,
     ScanDuplicatedDocuments
 )
+from .views.document_page_views import (
+    DocumentPageDisable, DocumentPageEnable
+)
 from .views.document_type_views import DocumentTypeDeletionPoliciesEditView
 from .views.favorite_document_views import (
     FavoriteAddView, FavoriteDocumentListView, FavoriteRemoveView
@@ -266,7 +269,6 @@ urlpatterns = [
         regex=r'^(?P<pk>\d+)/pages/all/$', view=DocumentPageListView.as_view(),
         name='document_pages'
     ),
-
     url(
         regex=r'^multiple/clear_transformations/$',
         view=DocumentTransformationsClearView.as_view(),
@@ -275,6 +277,22 @@ urlpatterns = [
     url(
         regex=r'^page/(?P<pk>\d+)/$', view=DocumentPageView.as_view(),
         name='document_page_view'
+    ),
+    url(
+        regex=r'^pages/(?P<pk>\d+)/disable/$',
+        name='document_page_disable', view=DocumentPageDisable.as_view()
+    ),
+    url(
+        regex=r'^pages/multiple/disable/$', name='document_page_multiple_disable',
+        view=DocumentPageDisable.as_view()
+    ),
+    url(
+        regex=r'^pages/(?P<pk>\d+)/enable/$',
+        name='document_page_enable', view=DocumentPageEnable.as_view()
+    ),
+    url(
+        regex=r'^pages/multiple/enable/$', name='document_page_multiple_enable',
+        view=DocumentPageEnable.as_view()
     ),
     url(
         regex=r'^page/(?P<pk>\d+)/navigation/next/$',

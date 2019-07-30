@@ -68,6 +68,7 @@
   as a tooltip.
 - Update numeric dashboard widget to display
   thousand commas.
+- Add support for disabling document pages.
 
 3.2.6 (2019-07-10)
 ==================

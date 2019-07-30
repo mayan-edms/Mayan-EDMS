@@ -19,14 +19,14 @@ from .icons import (
     icon_duplicated_document_list, icon_duplicated_document_scan
 )
 from .permissions import (
-    permission_document_delete, permission_document_download,
-    permission_document_properties_edit, permission_document_print,
-    permission_document_restore, permission_document_tools,
-    permission_document_version_revert, permission_document_view,
-    permission_document_trash, permission_document_type_create,
-    permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view, permission_empty_trash,
-    permission_document_version_view
+    permission_document_delete, permission_document_edit,
+    permission_document_download, permission_document_properties_edit,
+    permission_document_print, permission_document_restore,
+    permission_document_tools, permission_document_version_revert,
+    permission_document_view, permission_document_trash,
+    permission_document_type_create, permission_document_type_delete,
+    permission_document_type_edit, permission_document_type_view,
+    permission_empty_trash, permission_document_version_view
 )
 from .settings import setting_zoom_max_level, setting_zoom_min_level
 
@@ -270,6 +270,29 @@ link_trash_can_empty = Link(
 )
 
 # Document pages
+
+link_document_page_disable = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_page_disable',
+    kwargs={'pk': 'resolved_object.id'},
+    permissions=(permission_document_edit,), text=_('Disable page'),
+    view='documents:document_page_disable'
+)
+link_document_page_multiple_disable = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_page_disable',
+    text=_('Disable pages'),
+    view='documents:document_page_multiple_disable'
+)
+link_document_page_enable = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_page_enable',
+    kwargs={'pk': 'resolved_object.id'},
+    permissions=(permission_document_edit,), text=_('Enable page'),
+    view='documents:document_page_enable'
+)
+link_document_page_multiple_enable = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_page_enable',
+    text=_('Enable pages'),
+    view='documents:document_page_multiple_enable'
+)
 link_document_page_navigation_first = Link(
     args='resolved_object.pk', conditional_disable=is_first_page,
     icon_class=icon_document_page_navigation_first,

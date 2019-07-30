@@ -7,10 +7,12 @@ from furl import furl
 from django.contrib import messages
 from django.urls import reverse
 from django.utils.encoding import force_text
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ungettext
 from django.views.generic import RedirectView
 
-from mayan.apps.common.generics import SimpleView, SingleObjectListView
+from mayan.apps.common.generics import (
+    MultipleObjectConfirmActionView, SimpleView, SingleObjectListView
+)
 from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.common.utils import resolve
@@ -20,19 +22,20 @@ from ..forms import DocumentPageForm
 from ..icons import icon_document_pages
 from ..links import link_document_update_page_count
 from ..models import Document, DocumentPage
-from ..permissions import permission_document_view
+from ..permissions import permission_document_edit, permission_document_view
 from ..settings import (
     setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,
     setting_zoom_min_level
 )
 
 __all__ = (
-    'DocumentPageListView', 'DocumentPageNavigationFirst',
-    'DocumentPageNavigationLast', 'DocumentPageNavigationNext',
-    'DocumentPageNavigationPrevious', 'DocumentPageView',
-    'DocumentPageViewResetView', 'DocumentPageInteractiveTransformation',
-    'DocumentPageZoomInView', 'DocumentPageZoomOutView',
-    'DocumentPageRotateLeftView', 'DocumentPageRotateRightView'
+    'DocumentPageDisable', 'DocumentPageEnable', 'DocumentPageListView',
+    'DocumentPageNavigationFirst', 'DocumentPageNavigationLast',
+    'DocumentPageNavigationNext', 'DocumentPageNavigationPrevious',
+    'DocumentPageView', 'DocumentPageViewResetView',
+    'DocumentPageInteractiveTransformation', 'DocumentPageZoomInView',
+    'DocumentPageZoomOutView', 'DocumentPageRotateLeftView',
+    'DocumentPageRotateRightView'
 )
 logger = logging.getLogger(__name__)
 
@@ -62,7 +65,7 @@ class DocumentPageListView(ExternalObjectMixin, SingleObjectListView):
         }
 
     def get_source_queryset(self):
-        return self.external_object.pages.all()
+        return self.external_object.pages_all
 
 
 class DocumentPageNavigationBase(ExternalObjectMixin, RedirectView):
@@ -129,9 +132,9 @@ class DocumentPageNavigationNext(DocumentPageNavigationBase):
         document_page = self.get_object()
 
         try:
-            document_page = document_page.siblings.get(
-                page_number=document_page.page_number + 1
-            )
+            document_page = document_page.siblings.filter(
+                page_number__gt=document_page.page_number
+            ).first()
         except DocumentPage.DoesNotExist:
             messages.warning(
                 message=_(
@@ -147,9 +150,9 @@ class DocumentPageNavigationPrevious(DocumentPageNavigationBase):
         document_page = self.get_object()
 
         try:
-            document_page = document_page.siblings.get(
-                page_number=document_page.page_number - 1
-            )
+            document_page = document_page.siblings.filter(
+                page_number__lt=document_page.page_number
+            ).last()
         except DocumentPage.DoesNotExist:
             messages.warning(
                 message=_(
@@ -261,3 +264,63 @@ class DocumentPageRotateRightView(DocumentPageInteractiveTransformation):
         query_dict['rotation'] = (
             int(query_dict['rotation']) + setting_rotation_step.value
         ) % 360
+
+
+class DocumentPageDisable(MultipleObjectConfirmActionView):
+    object_permission = permission_document_edit
+    pk_url_kwarg = 'pk'
+    success_message_singular = '%(count)d document page disabled.'
+    success_message_plural = '%(count)d document pages disabled.'
+
+    def get_extra_context(self):
+        queryset = self.object_list
+
+        result = {
+            'title': ungettext(
+                singular='Disable the selected document page?',
+                plural='Disable the selected document pages?',
+                number=queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result['object'] = queryset.first()
+
+        return result
+
+    def get_source_queryset(self):
+        return DocumentPage.passthrough.all()
+
+    def object_action(self, form, instance):
+        instance.enabled = False
+        instance.save()
+
+
+class DocumentPageEnable(MultipleObjectConfirmActionView):
+    object_permission = permission_document_edit
+    pk_url_kwarg = 'pk'
+    success_message_singular = '%(count)d document page enabled.'
+    success_message_plural = '%(count)d document pages enabled.'
+
+    def get_extra_context(self):
+        queryset = self.object_list
+
+        result = {
+            'title': ungettext(
+                singular='Enable the selected document page?',
+                plural='Enable the selected document pages?',
+                number=queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result['object'] = queryset.first()
+
+        return result
+
+    def get_source_queryset(self):
+        return DocumentPage.passthrough.all()
+
+    def object_action(self, form, instance):
+        instance.enabled = True
+        instance.save()

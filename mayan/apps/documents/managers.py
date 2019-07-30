@@ -22,7 +22,7 @@ class DocumentManager(models.Manager):
 
     def get_queryset(self):
         return TrashCanQuerySet(
-            self.model, using=self._db
+            model=self.model, using=self._db
         ).filter(in_trash=False).filter(is_stub=False)
 
 
@@ -37,6 +37,11 @@ class DocumentPageManager(models.Manager):
             raise self.model.DoesNotExist
 
         return self.get(document_version__pk=document_version.pk, page_number=page_number)
+
+    def get_queryset(self):
+        return models.QuerySet(
+            model=self.model, using=self._db
+        ).filter(enabled=True)
 
 
 class DocumentTypeManager(models.Manager):

@@ -60,6 +60,8 @@ from .links import (
     link_document_multiple_download, link_document_multiple_favorites_add,
     link_document_multiple_favorites_remove, link_document_multiple_restore,
     link_document_multiple_trash, link_document_multiple_update_page_count,
+    link_document_page_disable, link_document_page_multiple_disable,
+    link_document_page_enable, link_document_page_multiple_enable,
     link_document_page_navigation_first, link_document_page_navigation_last,
     link_document_page_navigation_next, link_document_page_navigation_previous,
     link_document_page_return, link_document_page_rotate_left,
@@ -214,11 +216,20 @@ class DocumentsApp(MayanAppConfig):
         ModelPermission.register_inheritance(
             model=Document, related='document_type',
         )
+        ModelPermission.register_manager(
+            model=Document, manager_name='passthrough'
+        )
         ModelPermission.register_inheritance(
             model=DocumentPage, related='document_version__document',
         )
+        ModelPermission.register_manager(
+            model=DocumentPage, manager_name='passthrough'
+        )
         ModelPermission.register_inheritance(
             model=DocumentPageResult, related='document_version__document',
+        )
+        ModelPermission.register_manager(
+            model=DocumentPageResult, manager_name='passthrough'
         )
         ModelPermission.register_inheritance(
             model=DocumentTypeFilename, related='document_type',
@@ -268,6 +279,13 @@ class DocumentsApp(MayanAppConfig):
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             ), label=_('Thumbnail'), source=DocumentPage
+        )
+        SourceColumn(
+            attribute='enabled', include_label=True, source=DocumentPage,
+            widget=TwoStateWidget
+        )
+        SourceColumn(
+            attribute='page_number', include_label=True, source=DocumentPage
         )
 
         SourceColumn(
@@ -502,6 +520,16 @@ class DocumentsApp(MayanAppConfig):
                 link_document_page_navigation_next,
                 link_document_page_navigation_last
             ), sources=(DocumentPage,)
+        )
+        menu_multi_item.bind_links(
+            links=(
+                link_document_page_multiple_disable,
+                link_document_page_multiple_enable
+            ), sources=(DocumentPage,)
+        )
+        menu_object.bind_links(
+            links=(link_document_page_disable, link_document_page_enable),
+            sources=(DocumentPage,)
         )
         menu_list_facet.bind_links(
             links=(link_transformation_list,), sources=(DocumentPage,)
