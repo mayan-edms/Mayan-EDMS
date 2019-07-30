@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 class ModelPermission(object):
     _functions = {}
     _inheritances = {}
+    _manager_names = {}
     _registry = {}
 
     @classmethod
@@ -98,9 +99,17 @@ class ModelPermission(object):
         return cls._inheritances[model]
 
     @classmethod
+    def get_manager_name(cls, model):
+        return cls._manager_names[model]
+
+    @classmethod
     def register_function(cls, model, function):
         cls._functions[model] = function
 
     @classmethod
     def register_inheritance(cls, model, related):
         cls._inheritances[model] = related
+
+    @classmethod
+    def register_manager(cls, model, manager_name):
+        cls._manager_names[model] = manager_name

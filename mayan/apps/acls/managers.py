@@ -200,28 +200,37 @@ class AccessControlListManager(models.Manager):
 
         return result
 
-    def check_access(self, obj, permissions, user, manager=None):
+    def check_access(self, obj, permissions, user):
         # Allow specific managers for models that have more than one
         # for example the Document model when checking for access for a trashed
         # document.
 
-        if manager:
-            source_queryset = manager.all()
+        meta = getattr(obj, '_meta', None)
+
+        if not meta:
+            logger.debug(
+                ugettext(
+                    'Object "%s" is not a model and cannot be checked for '
+                    'access.'
+                ) % force_text(obj)
+            )
+            return True
         else:
-            meta = getattr(obj, '_meta', None)
-
-            if not meta:
-                logger.debug(
-                    ugettext(
-                        'Object "%s" is not a model and cannot be checked for '
-                        'access.'
-                    ) % force_text(obj)
+            try:
+                manager_name = ModelPermission.get_manager_name(
+                    model=meta.model
                 )
-                return True
-            else:
-                source_queryset = obj._meta.default_manager.all()
+            except KeyError:
+                manager_name = None
 
-        restricted_queryset = obj._meta.default_manager.none()
+            if manager_name:
+                manager = getattr(obj._meta.model, manager_name)
+            else:
+                manager = obj._meta.default_manager
+
+            source_queryset = manager.all()
+
+        restricted_queryset = manager.none()
         for permission in permissions:
             # Default relationship betweens permissions is OR
             # TODO: Add support for AND relationship
