@@ -250,9 +250,9 @@ class ObjectActionMixin(object):
 
     def get_success_message(self, count):
         return ungettext(
-            self.success_message,
-            self.success_message_plural,
-            count
+            singular=self.success_message,
+            plural=self.success_message_plural,
+            number=count
         ) % {
             'count': count,
         }
@@ -271,14 +271,15 @@ class ObjectActionMixin(object):
                 pass
             except ActionError:
                 messages.error(
-                    self.request, self.error_message % {'instance': instance}
+                    message=self.error_message % {'instance': instance},
+                    request=self.request
                 )
             else:
                 self.action_count += 1
 
         messages.success(
-            self.request,
-            self.get_success_message(count=self.action_count)
+            message=self.get_success_message(count=self.action_count),
+            request=self.request
         )
 
 
