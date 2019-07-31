@@ -9,8 +9,13 @@ from .permissions import (
     permission_document_type_ocr_setup
 )
 
+
+def is_document_page_disabled(context):
+    return not context['resolved_object'].enabled
+
+
 link_document_page_ocr_content = Link(
-    args='resolved_object.id',
+    args='resolved_object.id', conditional_disable=is_document_page_disabled,
     icon_class_path='mayan.apps.ocr.icons.icon_document_page_ocr_content',
     permissions=(permission_ocr_content_view,), text=_('OCR'),
     view='ocr:document_page_ocr_content',
