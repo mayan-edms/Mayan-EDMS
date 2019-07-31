@@ -102,6 +102,11 @@ from .widgets import (
 )
 
 
+def is_document_page_enabled(context):
+    return context['object'].enabled
+
+
+
 class DocumentsApp(MayanAppConfig):
     app_namespace = 'documents'
     app_url = 'documents'
@@ -273,7 +278,8 @@ class DocumentsApp(MayanAppConfig):
         # DocumentPage
         SourceColumn(
             attribute='get_label', is_identifier=True,
-            is_object_absolute_url=True, source=DocumentPage
+            is_object_absolute_url=True, source=DocumentPage,
+            widget_condition=is_document_page_enabled
         )
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
