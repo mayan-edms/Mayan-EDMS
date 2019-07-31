@@ -131,17 +131,17 @@ class DocumentPageNavigationNext(DocumentPageNavigationBase):
     def get_new_kwargs(self):
         document_page = self.get_object()
 
-        try:
-            document_page = document_page.siblings.filter(
-                page_number__gt=document_page.page_number
-            ).first()
-        except DocumentPage.DoesNotExist:
+        new_document_page = document_page.siblings.filter(
+            page_number__gt=document_page.page_number
+        ).first()
+        if new_document_page:
+            return {'pk': new_document_page.pk}
+        else:
             messages.warning(
                 message=_(
                     'There are no more pages in this document'
                 ), request=self.request
             )
-        finally:
             return {'pk': document_page.pk}
 
 
@@ -149,17 +149,17 @@ class DocumentPageNavigationPrevious(DocumentPageNavigationBase):
     def get_new_kwargs(self):
         document_page = self.get_object()
 
-        try:
-            document_page = document_page.siblings.filter(
-                page_number__lt=document_page.page_number
-            ).last()
-        except DocumentPage.DoesNotExist:
+        new_document_page = document_page.siblings.filter(
+            page_number__lt=document_page.page_number
+        ).last()
+        if new_document_page:
+            return {'pk': new_document_page.pk}
+        else:
             messages.warning(
                 message=_(
                     'You are already at the first page of this document'
                 ), request=self.request
             )
-        finally:
             return {'pk': document_page.pk}
 
 

@@ -43,11 +43,11 @@ def is_not_current_version(context):
 
 
 def is_first_page(context):
-    return context['resolved_object'].page_number <= 1
+    return context['resolved_object'].siblings.first() == context['resolved_object']
 
 
 def is_last_page(context):
-    return context['resolved_object'].page_number >= context['resolved_object'].document_version.pages.count()
+    return context['resolved_object'].siblings.last() == context['resolved_object']
 
 
 def is_max_zoom(context):
@@ -56,6 +56,14 @@ def is_max_zoom(context):
 
 def is_min_zoom(context):
     return context['zoom'] <= setting_zoom_min_level.value
+
+
+def is_document_page_enabled(context):
+    return context['resolved_object'].enabled
+
+
+def is_document_page_disabled(context):
+    return not context['resolved_object'].enabled
 
 
 # Facet
@@ -272,6 +280,7 @@ link_trash_can_empty = Link(
 # Document pages
 
 link_document_page_disable = Link(
+    condition=is_document_page_enabled,
     icon_class_path='mayan.apps.documents.icons.icon_document_page_disable',
     kwargs={'pk': 'resolved_object.id'},
     permissions=(permission_document_edit,), text=_('Disable page'),
@@ -283,6 +292,7 @@ link_document_page_multiple_disable = Link(
     view='documents:document_page_multiple_disable'
 )
 link_document_page_enable = Link(
+    condition=is_document_page_disabled,
     icon_class_path='mayan.apps.documents.icons.icon_document_page_enable',
     kwargs={'pk': 'resolved_object.id'},
     permissions=(permission_document_edit,), text=_('Enable page'),
@@ -336,6 +346,7 @@ link_document_page_rotate_right = Link(
     text=_('Rotate right'), view='documents:document_page_rotate_right',
 )
 link_document_page_view = Link(
+    conditional_disable=is_document_page_disabled,
     icon_class_path='mayan.apps.documents.icons.icon_document_page_view',
     permissions=(permission_document_view,), text=_('Page image'),
     view='documents:document_page_view', args='resolved_object.pk'
