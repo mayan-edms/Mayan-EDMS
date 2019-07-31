@@ -29,6 +29,7 @@ from mayan.apps.common.settings import setting_home_view
 from mayan.apps.common.utils import resolve_attribute
 from mayan.apps.permissions import Permission
 
+from .html_widgets import SourceColumnLinkWidget
 from .utils import get_current_view_name
 
 logger = logging.getLogger(__name__)
@@ -694,7 +695,7 @@ class SourceColumn(object):
         help_text=None, include_label=False, is_attribute_absolute_url=False,
         is_object_absolute_url=False, is_identifier=False, is_sortable=False,
         kwargs=None, label=None, order=None, sort_field=None, views=None,
-        widget=None
+        widget=None, widget_condition=None
     ):
         self._label = label
         self._help_text = help_text
@@ -713,6 +714,11 @@ class SourceColumn(object):
         self.sort_field = sort_field
         self.views = views or []
         self.widget = widget
+        self.widget_condition = widget_condition
+
+        if self.is_attribute_absolute_url or self.is_object_absolute_url:
+            if not self.widget:
+                self.widget = SourceColumnLinkWidget
 
         self.__class__._registry.setdefault(source, [])
         self.__class__._registry[source].append(self)
@@ -773,6 +779,12 @@ class SourceColumn(object):
     def add_exclude(self, source):
         self.exclude = self.exclude + (source,)
 
+    def check_widget_condition(self, context):
+        if self.widget_condition:
+            return self.widget_condition(context=context)
+        else:
+            return True
+
     def get_absolute_url(self, obj):
         if self.is_object_absolute_url:
             return obj.get_absolute_url()
@@ -826,9 +838,12 @@ class SourceColumn(object):
         else:
             result = context['object']
 
+        self.absolute_url = self.get_absolute_url(obj=context['object'])
         if self.widget:
-            widget_instance = self.widget()
-            return widget_instance.render(name=self.attribute, value=result)
+            if self.check_widget_condition(context=context):
+                widget_instance = self.widget()
+                widget_instance.column = self
+                return widget_instance.render(name=self.attribute, value=result)
 
         if not result:
             if self.empty_value:

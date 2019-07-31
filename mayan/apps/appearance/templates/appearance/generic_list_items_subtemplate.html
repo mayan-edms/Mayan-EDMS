@@ -21,9 +21,9 @@
                                 <div class="panel-heading">
                                     <div class="form-group">
                                         <div class="checkbox">
-                                            <label for="id_indexes_0">
+                                            <label for="id_indexes_0" style="cursor: auto;">
                                                 {% if links_multi_menus_results %}
-                                                    <input class="form-multi-object-action-checkbox check-all-slave checkbox" name="pk_{{ object.pk }}" type="checkbox" />
+                                                    <input class="form-multi-object-action-checkbox check-all-slave checkbox" name="pk_{{ object.pk }}" style="cursor: pointer;" type="checkbox" />
                                                 {% endif %}
 
                                                 <span style="color: white; word-break: break-all; overflow-wrap: break-word;">
@@ -36,12 +36,7 @@
                                                     {% else %}
                                                         {% navigation_get_source_columns source=object only_identifier=True as source_column %}
                                                         {% navigation_source_column_resolve column=source_column as column_value %}
-
-                                                        {% if source_column.is_attribute_absolute_url or source_column.is_object_absolute_url %}
-                                                            <a href="{% navigation_source_column_get_absolute_url source_column=source_column obj=object %}">{{ column_value }}</a>
-                                                        {% else %}
-                                                            {{ column_value }}
-                                                        {% endif %}
+                                                        {{ column_value }}
                                                     {% endif %}
                                                 </span>
                                             </label>
