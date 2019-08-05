@@ -99,6 +99,20 @@ class ModelPermission(object):
         return cls._inheritances[model]
 
     @classmethod
+    def get_manager(cls, model):
+        try:
+            manager_name = cls.get_manager_name(model=model)
+        except KeyError:
+            manager_name = None
+
+        if manager_name:
+            manager = getattr(model, manager_name)
+        else:
+            manager = model._meta.default_manager
+
+        return manager
+
+    @classmethod
     def get_manager_name(cls, model):
         return cls._manager_names[model]
 

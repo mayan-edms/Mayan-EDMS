@@ -216,18 +216,7 @@ class AccessControlListManager(models.Manager):
             )
             return True
         else:
-            try:
-                manager_name = ModelPermission.get_manager_name(
-                    model=meta.model
-                )
-            except KeyError:
-                manager_name = None
-
-            if manager_name:
-                manager = getattr(obj._meta.model, manager_name)
-            else:
-                manager = obj._meta.default_manager
-
+            manager = ModelPermission.get_manager(model=obj._meta.model)
             source_queryset = manager.all()
 
         restricted_queryset = manager.none()
