@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.utils.translation import ungettext, ugettext_lazy as _
 from django.views.generic.detail import SingleObjectMixin
 
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.permissions import Permission
 
@@ -103,7 +104,15 @@ class ExternalObjectMixin(object):
                 'get_external_object_queryset() method.'
             )
 
-        return self.external_object_queryset or self.external_object_class.objects.all()
+        queryset = self.external_object_queryset
+
+        if not queryset:
+            manager = ModelPermission.get_manager(
+                model=self.external_object_class
+            )
+            queryset = manager.all()
+
+        return queryset
 
     def get_external_object_queryset_filtered(self):
         queryset = self.get_external_object_queryset()
