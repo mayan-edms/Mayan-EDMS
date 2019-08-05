@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import messages
+from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ImproperlyConfigured, PermissionDenied
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -16,6 +17,28 @@ from .exceptions import ActionError
 from .forms import DynamicForm
 from .literals import PK_LIST_SEPARATOR
 from .settings import setting_home_view
+
+
+class ContentTypeViewMixin(object):
+    """
+    This mixin makes it easier for views to retrieve a content type from
+    the URL pattern.
+    """
+    content_type_url_kw_args = {
+        'app_label': 'app_label',
+        'model_name': 'model'
+    }
+
+    def get_content_type(self):
+        return get_object_or_404(
+            klass=ContentType,
+            app_label=self.kwargs[
+                self.content_type_url_kw_args['app_label']
+            ],
+            model=self.kwargs[
+                self.content_type_url_kw_args['model_name']
+            ]
+        )
 
 
 class DeleteExtraDataMixin(object):
@@ -125,6 +148,20 @@ class ExternalObjectMixin(object):
             )
 
         return queryset
+
+
+class ExternalContentTypeObjectMixin(ContentTypeViewMixin, ExternalObjectMixin):
+    """
+    Mixin to retrieve an external object by content type from the URL pattern.
+    """
+    external_object_pk_url_kwarg = 'object_id'
+
+    def get_external_object_queryset(self):
+        content_type = self.get_content_type()
+        self.external_object_class = content_type.model_class()
+        return super(
+            ExternalContentTypeObjectMixin, self
+        ).get_external_object_queryset()
 
 
 class FormExtraKwargsMixin(object):
