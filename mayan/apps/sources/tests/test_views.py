@@ -152,11 +152,11 @@ class DocumentUploadIssueTestCase(GenericDocumentViewTestCase):
         self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_descriptor:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.post(
                 viewname='sources:upload_interactive', data={
                     'document-language': 'eng',
-                    'source-file': file_descriptor,
+                    'source-file': file_object,
                     'document_type_id': self.test_document_type.pk
                 }
             )
@@ -238,7 +238,7 @@ class StagingFolderViewTestCase(GenericViewTestCase):
         self.filename = os.path.basename(TEST_SMALL_DOCUMENT_PATH)
 
     def tearDown(self):
-        fs_cleanup(self.temporary_directory)
+        fs_cleanup(filename=self.temporary_directory)
         super(StagingFolderViewTestCase, self).tearDown()
 
     def _request_staging_file_delete_view(self, staging_folder, staging_file):

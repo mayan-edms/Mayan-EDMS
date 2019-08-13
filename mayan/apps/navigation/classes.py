@@ -6,7 +6,9 @@ import logging
 from furl import furl
 
 from django.apps import apps
-from django.contrib.admin.utils import label_for_field
+from django.contrib.admin.utils import (
+    help_text_for_field, label_for_field
+)
 from django.core.exceptions import (
     FieldDoesNotExist, ImproperlyConfigured, PermissionDenied
 )
@@ -27,6 +29,7 @@ from mayan.apps.common.settings import setting_home_view
 from mayan.apps.common.utils import resolve_attribute
 from mayan.apps.permissions import Permission
 
+from .html_widgets import SourceColumnLinkWidget
 from .utils import get_current_view_name
 
 logger = logging.getLogger(__name__)
@@ -373,6 +376,18 @@ class Menu(object):
                 try:
                     if inspect.isclass(bound_source):
                         if type(resolved_navigation_object) == bound_source:
+                            # Check to see if object is a proxy model. If it is, add its parent model
+                            # menu links too.
+                            if hasattr(resolved_navigation_object, '_meta'):
+                                parent_model = resolved_navigation_object._meta.proxy_for_model
+                                if parent_model:
+                                    parent_instance = parent_model.objects.filter(pk=resolved_navigation_object.pk)
+                                    if parent_instance:
+                                        for link_set in self.resolve(context=context, source=parent_instance.first()):
+                                            for link in link_set['links']:
+                                                if link.link not in self.unbound_links.get(bound_source, ()):
+                                                    resolved_links.append(link)
+
                             for link in links:
                                 resolved_link = link.resolve(
                                     context=context,
@@ -395,9 +410,21 @@ class Menu(object):
                                         resolved_links.append(resolved_link)
                             # No need for further content object match testing
                             break
+
                 except TypeError:
                     # When source is a dictionary
                     pass
+
+            # Remove duplicated resolved link by using their source link
+            # instance as reference. The actual resolved link can't be used
+            # since a single source link can produce multiple resolved links.
+            # Since dictionaries keys can't have duplicates, we use that as a
+            # native deduplicator.
+            resolved_links_dict = {}
+            for resolved_link in resolved_links:
+                resolved_links_dict[resolved_link.link] = resolved_link
+
+            resolved_links = resolved_links_dict.values()
 
             if resolved_links:
                 result.append(
@@ -611,8 +638,6 @@ class SourceColumn(object):
             # Try it as a queryset
             columns.extend(cls._registry[source.model])
         except AttributeError:
-            pass
-
             try:
                 # Special case for queryset items produced from
                 # .defer() or .only() optimizations
@@ -666,17 +691,18 @@ class SourceColumn(object):
         return final_result
 
     def __init__(
-        self, source, attribute=None, empty_value=None, exclude=None, func=None,
-        include_label=False, is_attribute_absolute_url=False,
+        self, source, attribute=None, empty_value=None, func=None,
+        help_text=None, include_label=False, is_attribute_absolute_url=False,
         is_object_absolute_url=False, is_identifier=False, is_sortable=False,
         kwargs=None, label=None, order=None, sort_field=None, views=None,
-        widget=None
+        widget=None, widget_condition=None
     ):
-        self.source = source
         self._label = label
+        self._help_text = help_text
+        self.source = source
         self.attribute = attribute
         self.empty_value = empty_value
-        self.exclude = exclude or ()
+        self.exclude = ()
         self.func = func
         self.is_attribute_absolute_url = is_attribute_absolute_url
         self.is_object_absolute_url = is_object_absolute_url
@@ -688,11 +714,42 @@ class SourceColumn(object):
         self.sort_field = sort_field
         self.views = views or []
         self.widget = widget
+        self.widget_condition = widget_condition
+
+        if self.is_attribute_absolute_url or self.is_object_absolute_url:
+            if not self.widget:
+                self.widget = SourceColumnLinkWidget
 
         self.__class__._registry.setdefault(source, [])
         self.__class__._registry[source].append(self)
 
         self._calculate_label()
+        self._calculate_help_text()
+
+    def _calculate_help_text(self):
+        if not self._help_text:
+            if self.attribute:
+                try:
+                    attribute = resolve_attribute(
+                        obj=self.source, attribute=self.attribute
+                    )
+                    self._help_text = getattr(attribute, 'help_text')
+                except AttributeError:
+                    try:
+                        name, model = SourceColumn.get_attribute_recursive(
+                            attribute=self.attribute, model=self.source._meta.model
+                        )
+                        self._help_text = help_text_for_field(
+                            name=name, model=model
+                        )
+                    except AttributeError:
+                        self._help_text = self.attribute
+            else:
+                self._help_text = getattr(
+                    self.func, 'help_text', _('Unnamed function')
+                )
+
+        self.help_text = self._help_text
 
     def _calculate_label(self):
         if not self._label:
@@ -718,6 +775,15 @@ class SourceColumn(object):
                 )
 
         self.label = self._label
+
+    def add_exclude(self, source):
+        self.exclude = self.exclude + (source,)
+
+    def check_widget_condition(self, context):
+        if self.widget_condition:
+            return self.widget_condition(context=context)
+        else:
+            return True
 
     def get_absolute_url(self, obj):
         if self.is_object_absolute_url:
@@ -772,9 +838,12 @@ class SourceColumn(object):
         else:
             result = context['object']
 
+        self.absolute_url = self.get_absolute_url(obj=context['object'])
         if self.widget:
-            widget_instance = self.widget()
-            return widget_instance.render(name=self.attribute, value=result)
+            if self.check_widget_condition(context=context):
+                widget_instance = self.widget()
+                widget_instance.column = self
+                return widget_instance.render(name=self.attribute, value=result)
 
         if not result:
             if self.empty_value:

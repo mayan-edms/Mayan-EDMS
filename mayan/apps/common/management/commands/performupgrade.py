@@ -11,8 +11,8 @@ class Command(management.BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            '--no-javascript', action='store_true', dest='no_javascript',
-            help='Don\'t download the JavaScript dependencies.',
+            '--no-dependencies', action='store_true', dest='no_dependencies',
+            help='Don\'t download dependencies.',
         )
 
     def handle(self, *args, **options):
@@ -25,9 +25,9 @@ class Command(management.BaseCommand):
                 )
             )
 
-        if not options.get('no_javascript', False):
+        if not options.get('no_dependencies', False):
             management.call_command(
-                command_name='installjavascript', interactive=False
+                command_name='installdependencies', interactive=False
             )
 
         try:

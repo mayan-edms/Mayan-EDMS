@@ -5,7 +5,7 @@ import os
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings import Namespace
+from mayan.apps.smart_settings.classes import Namespace
 
 namespace = Namespace(label=_('Sources'), name='sources')
 
@@ -21,13 +21,13 @@ setting_staging_file_image_cache_storage = namespace.add_setting(
     default='django.core.files.storage.FileSystemStorage', help_text=_(
         'Path to the Storage subclass to use when storing the cached '
         'staging_file image files.'
-    ), quoted=True
+    )
 )
 setting_staging_file_image_cache_storage_arguments = namespace.add_setting(
     global_name='SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND_ARGUMENTS',
-    default='{{location: {}}}'.format(
-        os.path.join(settings.MEDIA_ROOT, 'staging_file_cache')
-    ), help_text=_(
+    default={
+        'location': os.path.join(settings.MEDIA_ROOT, 'staging_file_cache')
+    }, help_text=_(
         'Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND.'
-    ), quoted=True,
+    )
 )

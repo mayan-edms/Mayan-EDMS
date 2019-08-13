@@ -8,7 +8,6 @@ from django.apps import apps
 from django.conf import settings
 from django.db import models
 
-from mayan.apps.documents.storages import storage_documentimagecache
 from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from mayan.apps.documents.tasks import task_generate_document_page_image
 
@@ -36,9 +35,9 @@ class DocumentPageOCRContentManager(models.Manager):
             )
         )
 
-        cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
+        cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT, disable_sync_subtasks=False)
 
-        with storage_documentimagecache.open(cache_filename) as file_object:
+        with document_page.cache_partition.get_file(filename=cache_filename).open() as file_object:
             document_page_content, created = DocumentPageOCRContent.objects.get_or_create(
                 document_page=document_page
             )

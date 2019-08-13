@@ -7,8 +7,7 @@ from mayan.apps.documents.tests import GenericDocumentTestCase, DocumentTestMixi
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 
 from ..exceptions import (
-    DocumentAlreadyCheckedOut, DocumentNotCheckedOut,
-    NewDocumentVersionNotAllowed
+    DocumentAlreadyCheckedOut, NewDocumentVersionNotAllowed
 )
 from ..models import DocumentCheckout, NewVersionBlock
 
@@ -48,10 +47,6 @@ class DocumentCheckoutTestCase(DocumentCheckoutTestMixin, GenericDocumentTestCas
                 user=self._test_case_superuser,
                 block_new_version=True
             )
-
-    def test_checkin_without_checkout(self):
-        with self.assertRaises(DocumentNotCheckedOut):
-            self.test_document.check_in()
 
     def test_auto_check_in(self):
         self._check_out_test_document()

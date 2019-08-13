@@ -7,6 +7,11 @@ from django.utils.translation import ugettext_lazy as _
 register = Library()
 
 
+@register.simple_tag
+def appearance_icon_render(icon_class, enable_shadow=False):
+    return icon_class.render(extra_context={'enable_shadow': enable_shadow})
+
+
 @register.filter
 def get_choice_value(field):
     try:

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:38-0400\n"
-"PO-Revision-Date: 2019-05-31 12:26+0000\n"
+"POT-Creation-Date: 2019-07-05 01:30-0400\n"
+"PO-Revision-Date: 2019-06-28 12:35+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -85,11 +85,11 @@ msgstr "Notikumu abonēšana"
 
 #: links.py:67
 msgid "Mark as seen"
-msgstr "Atzīmējiet kā redzams"
+msgstr "Atzīmējiet kā redzēts"
 
 #: links.py:71
 msgid "Mark all as seen"
-msgstr "Atzīmējiet visu, kā redzams"
+msgstr "Atzīmējiet visu, kā redzēts"
 
 #: links.py:76
 msgid "Subscriptions"

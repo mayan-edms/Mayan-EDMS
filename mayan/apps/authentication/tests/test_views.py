@@ -14,7 +14,6 @@ from django.utils.http import urlunquote_plus
 from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.smart_settings.classes import Namespace
 from mayan.apps.user_management.permissions import permission_user_edit
-from mayan.apps.user_management.tests.mixins import UserTestMixin
 from mayan.apps.user_management.tests.literals import TEST_USER_PASSWORD_EDITED
 
 from ..settings import setting_maximum_session_length
@@ -262,7 +261,7 @@ class UserLoginTestCase(GenericViewTestCase):
         self.assertEqual(response.redirect_chain, [(TEST_REDIRECT_URL, 302)])
 
 
-class UserViewTestCase(UserTestMixin, UserPasswordViewTestMixin, GenericViewTestCase):
+class UserViewTestCase(UserPasswordViewTestMixin, GenericViewTestCase):
     def test_user_set_password_view_no_access(self):
         self._create_test_user()
 

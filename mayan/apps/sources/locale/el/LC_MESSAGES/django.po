@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:40-0400\n"
-"PO-Revision-Date: 2019-05-05 06:26+0000\n"
-"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>\n"
+"POT-Creation-Date: 2019-07-05 01:32-0400\n"
+"PO-Revision-Date: 2019-06-29 06:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
-#: views.py:630
+#: views.py:627
 msgid "Sources"
 msgstr "Πηγές"
 
@@ -71,7 +71,7 @@ msgstr "Αποσυμπίεση αρχείου"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Ανέβασμα των περιεχομένων ενός συμπιεσμένου αρχείου ως αυτόνομα έγγραφα."
 
-#: forms.py:68 views.py:485
+#: forms.py:68 views.py:482
 msgid "Staging file"
 msgstr ""
 
@@ -195,7 +195,7 @@ msgstr "Φάκελος παρακολούθησης"
 msgid "POP3 email"
 msgstr "Λογαριασμός POP3"
 
-#: literals.py:66 models/email_sources.py:220 models/email_sources.py:221
+#: literals.py:66 models/email_sources.py:226 models/email_sources.py:227
 msgid "IMAP email"
 msgstr "Λογαριασμός IMAP"
 
@@ -264,37 +264,36 @@ msgstr "Εγγραφή ημερολογίου"
 msgid "Log entries"
 msgstr "Εγγραφές ημερολογίου"
 
-#: models/email_sources.py:44
+#: models/email_sources.py:45
 msgid "Host"
 msgstr "Διεύθυνση διακομιστή"
 
-#: models/email_sources.py:45
+#: models/email_sources.py:46
 msgid "SSL"
 msgstr ""
 
-#: models/email_sources.py:47
+#: models/email_sources.py:48
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr "Τυπικές τιμές είναι 110 για POP3, 995 για POP3 με χρήση SSL, 143 για IMAP, 993 για IMAP με χρήση SSL."
 
-#: models/email_sources.py:48
+#: models/email_sources.py:49
 msgid "Port"
 msgstr "Θύρα"
 
-#: models/email_sources.py:50
+#: models/email_sources.py:51
 msgid "Username"
 msgstr "Όνομα χρήστη"
 
-#: models/email_sources.py:51
+#: models/email_sources.py:52
 msgid "Password"
 msgstr "Κωδικός πρόσβασης"
 
-#: models/email_sources.py:55
+#: models/email_sources.py:56
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
-"pairs to be assigned to the rest of the downloaded attachments. Note: This "
-"attachment has to be the first attachment."
+"pairs to be assigned to the rest of the downloaded attachments."
 msgstr ""
 
 #: models/email_sources.py:59
@@ -337,33 +336,33 @@ msgstr ""
 msgid "Email sources"
 msgstr ""
 
-#: models/email_sources.py:184
+#: models/email_sources.py:190
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
 
-#: models/email_sources.py:198
+#: models/email_sources.py:204
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
 
-#: models/email_sources.py:213
+#: models/email_sources.py:219
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "Θυρίδα IMAP που θα ελέγχεται για μηνύματα."
 
-#: models/email_sources.py:214
+#: models/email_sources.py:220
 msgid "Mailbox"
 msgstr "Θυρίδα"
 
-#: models/email_sources.py:265
+#: models/email_sources.py:272
 msgid "Timeout"
 msgstr "Λήξη χρόνου"
 
-#: models/email_sources.py:271 models/email_sources.py:272
+#: models/email_sources.py:278 models/email_sources.py:279
 msgid "POP email"
 msgstr ""
 
@@ -596,74 +595,74 @@ msgstr "Καθαρισμός"
 msgid "Server responded with {{statusCode}} code."
 msgstr ""
 
-#: views.py:65
+#: views.py:63
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr ""
 
-#: views.py:68
+#: views.py:66
 msgid "No log entries available"
 msgstr ""
 
-#: views.py:70
+#: views.py:68
 #, python-format
 msgid "Log entries for source: %s"
 msgstr ""
 
-#: views.py:125 wizards.py:154
+#: views.py:123 wizards.py:154
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr ""
 
-#: views.py:153 views.py:171 views.py:181
+#: views.py:151 views.py:169 views.py:179
 msgid "Document properties"
 msgstr "Ιδιότητες εγγράφου"
 
-#: views.py:161
+#: views.py:159
 msgid "Files in staging path"
 msgstr ""
 
-#: views.py:172
+#: views.py:170
 msgid "Scan"
 msgstr "Ανάγνωση"
 
-#: views.py:282
+#: views.py:279
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr ""
 
-#: views.py:293
+#: views.py:290
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:344
+#: views.py:341
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:378
+#: views.py:375
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "Η δυνατότητα ανεβάσματος νέας έκδοσης έχει απενεργοποιηθεί για το έγγραφο \"%s\""
 
-#: views.py:431
+#: views.py:428
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:472
+#: views.py:469
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr "Ανέβασμα μιας νέας έκδοσης από την πηγή: %s"
 
-#: views.py:486
+#: views.py:483
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: views.py:507
+#: views.py:504
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -671,31 +670,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:513
+#: views.py:510
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Έναρξη ελέγχου για την πηγή \"%s\";"
 
-#: views.py:530
+#: views.py:527
 msgid "Source check queued."
 msgstr "Αλιτημα ελέγχου πηγής κατχωρήθηκε. "
 
-#: views.py:547
+#: views.py:544
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Δημιουργία νέας πηγής τύπου: %s"
 
-#: views.py:569
+#: views.py:566
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Διαγραφή της πηγής: %s;"
 
-#: views.py:590
+#: views.py:587
 #, python-format
 msgid "Edit source: %s"
 msgstr "Τροποποίηση πηγής: %s"
 
-#: views.py:624
+#: views.py:621
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -703,7 +702,7 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:629
+#: views.py:626
 msgid "No sources available"
 msgstr ""
 

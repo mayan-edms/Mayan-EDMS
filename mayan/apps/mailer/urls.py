@@ -11,19 +11,19 @@ from .views import (
 
 urlpatterns = [
     url(
-        regex=r'^(?P<pk>\d+)/send/link/$', view=MailDocumentLinkView.as_view(),
+        regex=r'^documents/(?P<pk>\d+)/send/link/$', view=MailDocumentLinkView.as_view(),
         name='send_document_link'
     ),
     url(
-        regex=r'^multiple/send/link/$', view=MailDocumentLinkView.as_view(),
+        regex=r'^documents/multiple/send/link/$', view=MailDocumentLinkView.as_view(),
         name='send_multiple_document_link'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/send/document/$', view=MailDocumentView.as_view(),
+        regex=r'^documents/(?P<pk>\d+)/send/document/$', view=MailDocumentView.as_view(),
         name='send_document'
     ),
     url(
-        regex=r'^multiple/send/document/$', view=MailDocumentView.as_view(),
+        regex=r'^documents/multiple/send/document/$', view=MailDocumentView.as_view(),
         name='send_multiple_document'
     ),
     url(

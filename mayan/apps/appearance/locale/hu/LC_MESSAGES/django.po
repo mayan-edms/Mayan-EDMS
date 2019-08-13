@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:35-0400\n"
-"PO-Revision-Date: 2019-06-15 07:48+0000\n"
+"POT-Creation-Date: 2019-07-05 01:27-0400\n"
+"PO-Revision-Date: 2019-07-05 05:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -182,16 +182,22 @@ msgid ""
 "            "
 msgstr ""
 
-#: templates/appearance/base.html:32
+#: templates/appearance/base.html:32 templates/appearance/base.html:42
 msgid "Warning"
 msgstr ""
 
-#: templates/appearance/base.html:51
+#: templates/appearance/base.html:42
+msgid ""
+"Settings updated, restart your installation for changes to take proper "
+"effect."
+msgstr ""
+
+#: templates/appearance/base.html:59
 #: templates/appearance/generic_list_items_subtemplate.html:104
 msgid "Actions"
 msgstr "Műveletek"
 
-#: templates/appearance/base.html:53
+#: templates/appearance/base.html:61
 #: templates/appearance/generic_list_items_subtemplate.html:106
 msgid "Toggle Dropdown"
 msgstr ""

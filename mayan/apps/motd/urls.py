@@ -8,18 +8,18 @@ from .views import (
 )
 
 urlpatterns = [
-    url(regex=r'^list/$', view=MessageListView.as_view(), name='message_list'),
+    url(regex=r'^messages/$', view=MessageListView.as_view(), name='message_list'),
     url(
-        regex=r'^create/$', view=MessageCreateView.as_view(),
+        regex=r'^messages/create/$', view=MessageCreateView.as_view(),
         name='message_create'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/edit/$', view=MessageEditView.as_view(),
-        name='message_edit'
+        regex=r'^messages/(?P<pk>\d+)/delete/$', view=MessageDeleteView.as_view(),
+        name='message_delete'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/delete/$', view=MessageDeleteView.as_view(),
-        name='message_delete'
+        regex=r'^messages/(?P<pk>\d+)/edit/$', view=MessageEditView.as_view(),
+        name='message_edit'
     ),
 ]
 

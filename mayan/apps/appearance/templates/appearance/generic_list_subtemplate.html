@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load static %}
 
+{% load appearance_tags %}
 {% load common_tags %}
 {% load navigation_tags %}
 
@@ -11,44 +12,16 @@
                 {% include 'appearance/no_results.html' %}
             </div>
         {% else %}
-            <h4>
-                {% if page_obj %}
-                    {% if page_obj.paginator.num_pages != 1 %}
-                        {% blocktrans with page_obj.start_index as start and page_obj.end_index as end and page_obj.paginator.object_list|length as total and page_obj.number as page_number and page_obj.paginator.num_pages as total_pages %}Total ({{ start }} - {{ end }} out of {{ total }}) (Page {{ page_number }} of {{ total_pages }}){% endblocktrans %}
-                    {% else %}
-                        {% blocktrans with page_obj.paginator.object_list|length as total %}Total: {{ total }}{% endblocktrans %}
-                    {% endif %}
-                {% else %}
-                    {% blocktrans with object_list|length as total %}Total: {{ total }}{% endblocktrans %}
-                {% endif %}
-            </h4>
-            <hr>
-
+            {% include "appearance/list_header.html" %}
+            {% navigation_resolve_menu name='multi item' sort_results=True source=object_list.0 as links_multi_menus_results %}
             <div class="well center-block">
-                <div class="clearfix">
-                    <div class="pull-right">
-                        <form action="{% url 'common:multi_object_action_view' %}" class="form-multi-object-action" method="get">
-                            {% if object_list %}
-                                {% if not hide_multi_item_actions %}
-                                    {% get_multi_item_links_form object_list %}
-                                {% endif %}
-                                {% if multi_item_actions %}
-                                    <fieldset style="margin-top: -10px; margin-bottom: 10px;">
-                                        {{ multi_item_form }}
-                                    </fieldset>
-                                {% endif %}
-                            {% endif %}
-                        </form>
-                    </div>
-                </div>
-
                 <div class="table-responsive">
                     <table class="table table-condensed table-striped">
                         <tbody>
                             {% if not hide_header %}
                                 <tr>
-                                    {% if multi_item_actions %}
-                                        <th class="first"><input class="checkbox check-all" type="checkbox" /></th>
+                                    {% if links_multi_menus_results %}
+                                        <th class="first"></th>
                                     {% endif %}
 
                                     {% if not hide_object %}
@@ -58,13 +31,18 @@
                                         {% if source_column %}
                                             <th>
                                                 {% if source_column.is_sortable %}
-                                                    <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}
+                                                    <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}</a>
                                                     {% if source_column.get_sort_field == sort_field %}
                                                         {% if icon_sort %}{{ icon_sort.render }}{% endif %}
                                                     {% endif %}
-                                                    </a>
                                                 {% else %}
                                                     {{ source_column.label }}
+                                                {% endif %}
+
+                                                {% if source_column.help_text %}
+                                                    <span data-toggle="tooltip" data-placement="bottom" title="{{ source_column.help_text }}">
+                                                    {% get_icon icon_path='mayan.apps.navigation.icons.icon_source_column_help_text' %}
+                                                    </span>
                                                 {% endif %}
                                             </th>
                                         {% endif %}
@@ -72,16 +50,21 @@
 
                                     {% if not hide_columns %}
                                         {% navigation_get_source_columns source=object_list exclude_identifier=True as source_columns %}
-                                        {% for column in source_columns %}
+                                        {% for source_column in source_columns %}
                                             <th>
-                                                {% if column.is_sortable %}
-                                                    <a href="{% navigation_get_sort_field_querystring column=column %}">{{ column.label }}
-                                                    {% if column.get_sort_field == sort_field %}
+                                                {% if source_column.is_sortable %}
+                                                    <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}</a>
+                                                    {% if source_column.get_sort_field == sort_field %}
                                                         {% if icon_sort %}{{ icon_sort.render }}{% endif %}
                                                     {% endif %}
-                                                    </a>
                                                 {% else %}
-                                                    {{ column.label }}
+                                                    {{ source_column.label }}
+                                                {% endif %}
+
+                                                {% if source_column.help_text %}
+                                                    <span data-toggle="tooltip" data-placement="bottom" title="{{ source_column.help_text }}">
+                                                    {% get_icon icon_path='mayan.apps.navigation.icons.icon_source_column_help_text' %}
+                                                    </span>
                                                 {% endif %}
                                             </th>
                                         {% endfor %}
@@ -99,9 +82,9 @@
                             {% for object in object_list %}
                                 <tr>
 
-                                    {% if multi_item_actions %}
+                                    {% if links_multi_menus_results %}
                                         <td>
-                                            <input type="checkbox" class="form-multi-object-action-checkbox check-all-slave checkbox" name="pk_{{ object.pk }}" value="" />
+                                            <input class="form-multi-object-action-checkbox check-all-slave checkbox" name="pk_{{ object.pk }}" type="checkbox" value="" />
                                         </td>
                                     {% endif %}
 
@@ -112,11 +95,7 @@
                                         {% navigation_source_column_resolve column=source_column as column_value %}
                                         {% if column_value %}
                                             <td>
-                                                {% if source_column.is_attribute_absolute_url or source_column.is_object_absolute_url %}
-                                                    <a href="{% navigation_source_column_get_absolute_url source_column=source_column obj=object %}">{{ column_value }}</a>
-                                                {% else %}
-                                                    {{ column_value }}
-                                                {% endif %}
+                                                {{ column_value }}
                                             </td>
                                         {% endif %}
                                     {% endif %}
@@ -170,7 +149,6 @@
                         </tbody>
                     </table>
                 </div>
-                {% include 'pagination/pagination.html' %}
             </div>
         {% endif %}
     </div>

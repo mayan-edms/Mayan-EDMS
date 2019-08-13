@@ -17,7 +17,7 @@ from mayan.apps.events.links import (
 )
 from mayan.apps.navigation.classes import SourceColumn
 
-from .events import event_smart_link_created, event_smart_link_edited
+from .events import event_smart_link_edited
 from .links import (
     link_document_type_smart_links, link_smart_link_create,
     link_smart_link_condition_create, link_smart_link_condition_delete,
@@ -57,9 +57,7 @@ class LinkingApp(MayanAppConfig):
         SmartLinkCondition = self.get_model(model_name='SmartLinkCondition')
 
         ModelEventType.register(
-            event_types=(
-                event_smart_link_created, event_smart_link_edited
-            ), model=SmartLink
+            event_types=(event_smart_link_edited,), model=SmartLink
         )
 
         ModelPermission.register(

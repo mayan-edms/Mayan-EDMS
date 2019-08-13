@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:40-0400\n"
-"PO-Revision-Date: 2019-05-28 20:24+0000\n"
+"POT-Creation-Date: 2019-07-05 01:32-0400\n"
+"PO-Revision-Date: 2019-07-05 06:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
-#: views.py:630
+#: views.py:627
 msgid "Sources"
 msgstr "Fuentes"
 
@@ -75,7 +75,7 @@ msgstr "Expandir archivos comprimidos"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Subir los archivos de un archivo comprimido como documentos individuales"
 
-#: forms.py:68 views.py:485
+#: forms.py:68 views.py:482
 msgid "Staging file"
 msgstr "Archivo provisional"
 
@@ -199,7 +199,7 @@ msgstr "Carpeta observada"
 msgid "POP3 email"
 msgstr "Correo electrónico POP3"
 
-#: literals.py:66 models/email_sources.py:220 models/email_sources.py:221
+#: literals.py:66 models/email_sources.py:226 models/email_sources.py:227
 msgid "IMAP email"
 msgstr "Correo electrónico IMAP"
 
@@ -268,38 +268,37 @@ msgstr "Entrada de bitácora"
 msgid "Log entries"
 msgstr "Entradas de bitácora"
 
-#: models/email_sources.py:44
+#: models/email_sources.py:45
 msgid "Host"
 msgstr "Host"
 
-#: models/email_sources.py:45
+#: models/email_sources.py:46
 msgid "SSL"
 msgstr "SSL"
 
-#: models/email_sources.py:47
+#: models/email_sources.py:48
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr "Las opciones típicas son 110 para POP3, 995 para POP3 sobre SSL, 143 para IMAP, 993 para IMAP sobre SSL."
 
-#: models/email_sources.py:48
+#: models/email_sources.py:49
 msgid "Port"
 msgstr "Puerto"
 
-#: models/email_sources.py:50
+#: models/email_sources.py:51
 msgid "Username"
 msgstr "Usuario"
 
-#: models/email_sources.py:51
+#: models/email_sources.py:52
 msgid "Password"
 msgstr "Contraseña"
 
-#: models/email_sources.py:55
+#: models/email_sources.py:56
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
-"pairs to be assigned to the rest of the downloaded attachments. Note: This "
-"attachment has to be the first attachment."
-msgstr "Nombre del archivo adjunto que contiene los nombres de los tipos de metadatos y los pares de valores que se asignará al resto de los archivos adjuntos descargados. Nota: Este anejo tiene que ser el primer archivo adjunto."
+"pairs to be assigned to the rest of the downloaded attachments."
+msgstr "Nombre del archivo adjunto que contendrá los nombres de tipo de metadatos y los pares de valores que se asignarán al resto de los archivos adjuntos descargados."
 
 #: models/email_sources.py:59
 msgid "Metadata attachment name"
@@ -341,33 +340,33 @@ msgstr "Fuente de correo electrónico"
 msgid "Email sources"
 msgstr "Fuentes de correo electrónico"
 
-#: models/email_sources.py:184
+#: models/email_sources.py:190
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo de documento: %(document_type)s"
 
-#: models/email_sources.py:198
+#: models/email_sources.py:204
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "\"De\" tipo de metadatos \"%(metadata_type)s\" no es válido para el tipo de documento: %(document_type)s"
 
-#: models/email_sources.py:213
+#: models/email_sources.py:219
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "Buzón IMAP en el cual revisar mensajes."
 
-#: models/email_sources.py:214
+#: models/email_sources.py:220
 msgid "Mailbox"
 msgstr "Buzón"
 
-#: models/email_sources.py:265
+#: models/email_sources.py:272
 msgid "Timeout"
 msgstr "Tiempo de espera"
 
-#: models/email_sources.py:271 models/email_sources.py:272
+#: models/email_sources.py:278 models/email_sources.py:279
 msgid "POP email"
 msgstr "Correo electrónico POP"
 
@@ -600,74 +599,74 @@ msgstr "Limpiar"
 msgid "Server responded with {{statusCode}} code."
 msgstr "El servidor respondió con el código {{statusCode}}."
 
-#: views.py:65
+#: views.py:63
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr "Cualquier error producido durante el uso de una fuente se enumerará aquí para ayudar en la depuración."
 
-#: views.py:68
+#: views.py:66
 msgid "No log entries available"
 msgstr "No hay entradas de registro disponibles"
 
-#: views.py:70
+#: views.py:68
 #, python-format
 msgid "Log entries for source: %s"
 msgstr "Entradas de bitácora para fuente: %s"
 
-#: views.py:125 wizards.py:154
+#: views.py:123 wizards.py:154
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr "No se han definido fuentes de documentos interactivos o no hay ninguna habilitada, cree una antes de continuar."
 
-#: views.py:153 views.py:171 views.py:181
+#: views.py:151 views.py:169 views.py:179
 msgid "Document properties"
 msgstr "Propiedades de documento"
 
-#: views.py:161
+#: views.py:159
 msgid "Files in staging path"
 msgstr "Archivos provisionales en la ruta"
 
-#: views.py:172
+#: views.py:170
 msgid "Scan"
 msgstr "Escanear"
 
-#: views.py:282
+#: views.py:279
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr "Error al ejecutar la tarea de carga de documentos; %(exception)s, %(exception_class)s"
 
-#: views.py:293
+#: views.py:290
 msgid "New document queued for upload and will be available shortly."
 msgstr "Nuevo documento puesto en cola para su carga y estará disponible en breve."
 
-#: views.py:344
+#: views.py:341
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Cargar un documento del tipo \"%(document_type)s\" de la fuente: %(source)s"
 
-#: views.py:378
+#: views.py:375
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "Documento \"%s\" esta bloqueado de crear nuevas versiones."
 
-#: views.py:431
+#: views.py:428
 msgid "New document version queued for upload and will be available shortly."
 msgstr "Nueva versión del documento puesto en cola para su carga y estará disponible en breve."
 
-#: views.py:472
+#: views.py:469
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr "Subir una nueva versión de la fuente: %s"
 
-#: views.py:486
+#: views.py:483
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "¿Eliminar archivo provisional \"%s\"?"
 
-#: views.py:507
+#: views.py:504
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -675,31 +674,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr "Esto ejecutará el código de verificación de fuente incluso si la fuente no está habilitada. Las fuentes que eliminan el contenido después de la descarga no lo harán durante la prueba. Verifique el registro de errores de la fuente para obtener información durante la prueba. Una prueba exitosa borrará el registro de errores."
 
-#: views.py:513
+#: views.py:510
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "¿Lanzar chequeo para la fuenta \"%s\"? "
 
-#: views.py:530
+#: views.py:527
 msgid "Source check queued."
 msgstr "Verificación del origen en sometida."
 
-#: views.py:547
+#: views.py:544
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Crear nuevo tipo de fuente: %s"
 
-#: views.py:569
+#: views.py:566
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "¿Eliminar la fuente: %s?"
 
-#: views.py:590
+#: views.py:587
 #, python-format
 msgid "Edit source: %s"
 msgstr "Editar fuente: %s"
 
-#: views.py:624
+#: views.py:621
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -707,7 +706,7 @@ msgid ""
 "intervention."
 msgstr "Las fuentes proporcionan los medios para cargar documentos. Algunas fuentes, como el formulario web, son interactivas y requieren la intervención del usuario para operar. Otros, como las fuentes de correo electrónico, son automáticos y se ejecutan en segundo plano sin la intervención del usuario."
 
-#: views.py:629
+#: views.py:626
 msgid "No sources available"
 msgstr "No hay fuentes disponibles"
 

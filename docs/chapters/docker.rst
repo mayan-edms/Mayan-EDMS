@@ -49,12 +49,7 @@ Finally create and run a Mayan EDMS container::
     --name mayan-edms \
     --restart=always \
     -p 80:8000 \
-    -e MAYAN_DATABASE_ENGINE=django.db.backends.postgresql \
-    -e MAYAN_DATABASE_HOST=172.17.0.1 \
-    -e MAYAN_DATABASE_NAME=mayan \
-    -e MAYAN_DATABASE_PASSWORD=mayanuserpass \
-    -e MAYAN_DATABASE_USER=mayan \
-    -e MAYAN_DATABASE_CONN_MAX_AGE=0 \
+    -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'172.17.0.1'}}" \
     -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
     mayanedms/mayanedms:<version>
 
@@ -108,12 +103,7 @@ instead of the IP address of the Docker host (``172.17.0.1``)::
     --network=mayan \
     --restart=always \
     -p 80:8000 \
-    -e MAYAN_DATABASE_ENGINE=django.db.backends.postgresql \
-    -e MAYAN_DATABASE_HOST=mayan-edms-postgres \
-    -e MAYAN_DATABASE_NAME=mayan \
-    -e MAYAN_DATABASE_PASSWORD=mayanuserpass \
-    -e MAYAN_DATABASE_USER=mayan \
-    -e MAYAN_DATABASE_CONN_MAX_AGE=0 \
+    -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'mayan-edms-postgres'}}" \
     -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
     mayanedms/mayanedms:<version>
 
@@ -137,101 +127,13 @@ To start the container again::
 Environment Variables
 ---------------------
 
-The Mayan EDMS image can be configure via environment variables.
-
-``MAYAN_DATABASE_ENGINE``
-
-Defaults to ``None``. This environment variable configures the database
-backend to use. If left unset, SQLite will be used. The database backends
-supported by this Docker image are:
-
-- ``'django.db.backends.postgresql'``
-- ``'django.db.backends.mysql'``
-- ``'django.db.backends.sqlite3'``
-
-When using the SQLite backend, the database file will be saved in the Docker
-volume. The SQLite database as used by Mayan EDMS is meant only for development
-or testing, never use it in production.
-
-``MAYAN_DATABASE_NAME``
-
-Defaults to 'mayan'. This optional environment variable can be used to define
-the database name that Mayan EDMS will connect to. For more information read
-the pertinent Django documentation page:
-:django-docs:`Connecting to the database <ref/databases/#connecting-to-the-database>`
-
-``MAYAN_DATABASE_USER``
-
-Defaults to 'mayan'. This optional environment variable is used to set the
-username that will be used to connect to the database. For more information
-read the pertinent Django documentation page:
-:django-docs:`Settings, USER <ref/settings/#user>`
-
-``MAYAN_DATABASE_PASSWORD``
-
-Defaults to ''. This optional environment variable is used to set the
-password that will be used to connect to the database. For more information
-read the pertinent Django documentation page:
-:django-docs:`Settings, PASSWORD <ref/settings/#password>`
-
-``MAYAN_DATABASE_HOST``
-
-Defaults to `None`. This optional environment variable is used to set the
-hostname that will be used to connect to the database. This can be the
-hostname of another container or an IP address. For more information read
-the pertinent Django documentation page:
-:django-docs:`Settings, HOST <ref/settings/#host>`
-
-``MAYAN_DATABASE_PORT``
-
-Defaults to `None`. This optional environment variable is used to set the
-port number to use when connecting to the database. An empty string means
-the default port. Not used with SQLite. For more information read the
-pertinent Django documentation page:
-:django-docs:`Settings, PORT <ref/settings/#port>`
-
-``MAYAN_BROKER_URL``
-
-This optional environment variable determines the broker that Celery will use
-to relay task messages between the frontend code and the background workers.
-For more information read the pertinent Celery Kombu documentation page: `Broker URL`_
-
-.. _Broker URL: http://kombu.readthedocs.io/en/latest/userguide/connections.html#connection-urls
-
-This Docker image supports using Redis and RabbitMQ as brokers.
-
-Caveat: If the `MAYAN_BROKER_URL` and `MAYAN_CELERY_RESULT_BACKEND` environment
-variables are specified, the built-in Redis server inside the container will
-be disabled.
-
-``MAYAN_CELERY_RESULT_BACKEND``
-
-This optional environment variable determines the results backend that Celery
-will use to relay result messages from the background workers to the frontend
-code. For more information read the pertinent Celery Kombu documentation page:
-`Task result backend settings`_
-
-.. _Task result backend settings: http://docs.celeryproject.org/en/3.1/configuration.html#celery-result-backend
-
-This Docker image supports using Redis and RabbitMQ as result backends.
-
-Caveat: If the `MAYAN_BROKER_URL` and `MAYAN_CELERY_RESULT_BACKEND` environment
-variables are specified, the built-in Redis server inside the container will
-be disabled.
+The common set of settings can also be modified via environment variables when
+using the Docker image. In addition to the common set of settings, some Docker
+image specific environment variables are available.
 
 ``MAYAN_SETTINGS_MODULE``
 
 Optional. Allows loading an alternate settings file.
-
-``MAYAN_DATABASE_CONN_MAX_AGE``
-
-Amount in seconds to keep a database connection alive. Allow reuse of database
-connections. For more information read the pertinent Django documentation
-page: :django-docs:`Settings, CONN_MAX_AGE <ref/settings/#conn-max-age>`
-According to new information Gunicorn's microthreads don't share connections
-and will exhaust the available Postgres connections available if a number
-other than 0 is used. Reference: https://serverfault.com/questions/635100/django-conn-max-age-persists-connections-but-doesnt-reuse-them-with-postgresq
-and https://github.com/benoitc/gunicorn/issues/996
 
 ``MAYAN_GUNICORN_WORKERS``
 
@@ -269,10 +171,19 @@ number of CPUs detected).
 Optional. Changes the UID of the ``mayan`` user internal to the Docker
 container. Defaults to 1000.
 
-``MAYAN_USER_GUID``
+``MAYAN_USER_GID``
 
-Optional. Changes the GUID of the ``mayan`` user internal to the Docker
+Optional. Changes the GID of the ``mayan`` user internal to the Docker
 container. Defaults to 1000.
+
+
+Included drivers
+----------------
+
+The Docker image supports using Redis and RabbitMQ as result backends. For
+databases, the image includes support for PostgreSQL and MySQL/MariaDB.
+Support for additional brokers or databases may be added using the
+``MAYAN_APT_INSTALL`` environment variable.
 
 
 .. _docker-accessing-outside-data:
@@ -442,6 +353,7 @@ These are:
 
 Nightly images
 ==============
+
 The continuous integration pipeline used for testing development builds also
 produces a resulting Docker image. These are build automatically and their
 stability is not guaranteed. They should never be used in production.

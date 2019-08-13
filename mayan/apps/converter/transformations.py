@@ -308,12 +308,6 @@ class TransformationDrawRectanglePercent(BaseTransformation):
         if bottom > 100:
             bottom = 100
 
-        #if left > right:
-        #    left, right = right, left
-
-        #if top > bottom:
-        #    top, bottom = bottom, top
-
         logger.debug(
             'left: %f, top: %f, right: %f, bottom: %f', left, top, right,
             bottom
@@ -525,7 +519,9 @@ class TransformationZoom(BaseTransformation):
 
 BaseTransformation.register(transformation=TransformationCrop)
 BaseTransformation.register(transformation=TransformationDrawRectangle)
-BaseTransformation.register(transformation=TransformationDrawRectanglePercent)
+BaseTransformation.register(
+    transformation=TransformationDrawRectanglePercent
+)
 BaseTransformation.register(transformation=TransformationFlip)
 BaseTransformation.register(transformation=TransformationGaussianBlur)
 BaseTransformation.register(transformation=TransformationLineArt)

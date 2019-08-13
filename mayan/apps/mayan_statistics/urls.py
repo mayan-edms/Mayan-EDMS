@@ -8,17 +8,17 @@ from .views import (
 )
 
 urlpatterns = [
-    url(regex=r'^$', view=NamespaceListView.as_view(), name='namespace_list'),
+    url(regex=r'^namespace/$', view=NamespaceListView.as_view(), name='namespace_list'),
     url(
-        regex=r'^namespace/(?P<slug>[\w-]+)/details/$',
+        regex=r'^namespaces/(?P<slug>[\w-]+)/$',
         view=NamespaceDetailView.as_view(), name='namespace_details'
     ),
     url(
-        regex=r'^(?P<slug>[\w-]+)/view/$', view=StatisticDetailView.as_view(),
+        regex=r'^statistics/(?P<slug>[\w-]+)/view/$', view=StatisticDetailView.as_view(),
         name='statistic_detail'
     ),
     url(
-        regex=r'^(?P<slug>[\w-]+)/queue/$', view=StatisticQueueView.as_view(),
+        regex=r'^statistics/(?P<slug>[\w-]+)/queue/$', view=StatisticQueueView.as_view(),
         name='statistic_queue'
     ),
 ]

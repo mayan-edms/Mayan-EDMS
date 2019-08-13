@@ -4,7 +4,6 @@ Direct deployments
 
 Mayan EDMS should be deployed like any other Django_ project and
 preferably using virtualenv_. Below are some ways to deploy and use Mayan EDMS.
-Do not use more than one method.
 
 Being a Django_ and a Python_ project, familiarity with these technologies is
 recommended to better understand why Mayan EDMS does some of the things it
@@ -38,7 +37,7 @@ For another setup that offers more performance and scalability refer to the
        Platforms with the ARM CPU might also need additional requirements.
        ::
 
-           apt-sudo get libffi-dev libssl-dev -y
+           sudo apt-get install libffi-dev libssl-dev -y
 
 
 2. Create the user account for the installation:
@@ -128,9 +127,8 @@ For another setup that offers more performance and scalability refer to the
 
    ::
 
-       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
-       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
-       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
        /opt/mayan-edms/bin/mayan-edms.py initialsetup
 
 
@@ -149,9 +147,8 @@ For another setup that offers more performance and scalability refer to the
 ------------------------------------------------------------------------
     ::
 
-        MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
-        MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
-        MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
+        sudo mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+        MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
         /opt/mayan-edms/bin/mayan-edms.py platformtemplate supervisord > /etc/supervisor/conf.d/mayan.conf
 
 
@@ -161,17 +158,17 @@ For another setup that offers more performance and scalability refer to the
     database and only keep 1 database:
     ::
 
-        echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
-        echo "save \"\"" >> /etc/redis/redis.conf
-        echo "databases 1" >> /etc/redis/redis.conf
-        systemctl restart redis
+        sudo echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
+        sudo echo "save \"\"" >> /etc/redis/redis.conf
+        sudo echo "databases 1" >> /etc/redis/redis.conf
+        sudo systemctl restart redis
 
 13. Enable and restart the services [1_]:
 -----------------------------------------
     ::
 
-        systemctl enable supervisor
-        systemctl restart supervisor
+        sudo systemctl enable supervisor
+        sudo systemctl restart supervisor
 
 
 14. Cleaning up:
@@ -180,7 +177,7 @@ For another setup that offers more performance and scalability refer to the
     installation and can be removed.
     ::
 
-        apt-get remove --purge libjpeg-dev libpq-dev libpng-dev libtiff-dev zlib1g-dev
+        sudo apt-get remove --purge libjpeg-dev libpq-dev libpng-dev libtiff-dev zlib1g-dev
 
 
 .. _deployment_advanced:
@@ -223,11 +220,11 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 ---------------------------------------------------------------------
    Replace (paying attention to the comma at the end)::
 
-       MAYAN_BROKER_URL="redis://127.0.0.1:6379/0",
+       MAYAN_CELERY_BROKER_URL="redis://127.0.0.1:6379/0",
 
    with::
 
-       MAYAN_BROKER_URL="amqp://mayan:mayanuserpass@localhost:5672/mayan",
+       MAYAN_CELERY_BROKER_URL="amqp://mayan:mayanrabbitmqpassword@localhost:5672/mayan",
 
    increase the number of Gunicorn workers to 3 in the line (``-w 2`` section)::
 
@@ -240,7 +237,7 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 ------------------------
    ::
 
-       supervisorctl restart all
+       sudo supervisorctl restart all
 
 
 

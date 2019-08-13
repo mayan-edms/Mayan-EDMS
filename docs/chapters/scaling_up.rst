@@ -94,11 +94,11 @@ For the Docker image, launch a separate RabbitMQ container
 
     docker run -d --name mayan-edms-rabbitmq -e RABBITMQ_DEFAULT_USER=mayan -e RABBITMQ_DEFAULT_PASS=mayanrabbitmqpassword -e RABBITMQ_DEFAULT_VHOST=mayan rabbitmq:3
 
-Pass the MAYAN_BROKER_URL environment variable (https://kombu.readthedocs.io/en/latest/userguide/connections.html#connection-urls)
+Pass the MAYAN_CELERY_BROKER_URL environment variable (https://kombu.readthedocs.io/en/latest/userguide/connections.html#connection-urls)
 to the Mayan EDMS container so that it uses the RabbitMQ container the
 message broker::
 
-    -e MAYAN_BROKER_URL="amqp://mayan:mayanrabbitmqpassword@localhost:5672/mayan",
+    -e MAYAN_CELERY_BROKER_URL="amqp://mayan:mayanrabbitmqpassword@localhost:5672/mayan",
 
 When tasks finish, they leave behind a return status or the result of a
 calculation, these are stored for a while so that whoever requested the

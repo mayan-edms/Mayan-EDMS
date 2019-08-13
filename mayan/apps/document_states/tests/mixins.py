@@ -38,19 +38,19 @@ class WorkflowStateViewTestMixin(object):
             data.update(extra_data)
 
         return self.post(
-            viewname='document_states:setup_workflow_state_create',
+            viewname='document_states:workflow_template_state_create',
             kwargs={'pk': self.test_workflow.pk}, data=data
         )
 
     def _request_test_workflow_state_delete_view(self):
         return self.post(
-            viewname='document_states:setup_workflow_state_delete',
+            viewname='document_states:workflow_template_state_delete',
             kwargs={'pk': self.test_workflow_state_1.pk}
         )
 
     def _request_test_workflow_state_edit_view(self):
         return self.post(
-            viewname='document_states:setup_workflow_state_edit',
+            viewname='document_states:workflow_template_state_edit',
             kwargs={'pk': self.test_workflow_state_1.pk}, data={
                 'label': TEST_WORKFLOW_STATE_LABEL_EDITED
             }
@@ -58,7 +58,7 @@ class WorkflowStateViewTestMixin(object):
 
     def _request_test_workflow_state_list_view(self):
         return self.get(
-            viewname='document_states:setup_workflow_state_list',
+            viewname='document_states:workflow_template_state_list',
             kwargs={'pk': self.test_workflow.pk}
         )
 
@@ -120,7 +120,7 @@ class WorkflowTestMixin(object):
 class WorkflowTransitionViewTestMixin(object):
     def _request_test_workflow_transition_create_view(self):
         return self.post(
-            viewname='document_states:setup_workflow_transition_create',
+            viewname='document_states:workflow_template_transition_create',
             kwargs={'pk': self.test_workflow.pk}, data={
                 'label': TEST_WORKFLOW_TRANSITION_LABEL,
                 'origin_state': self.test_workflow_state_1.pk,
@@ -130,13 +130,13 @@ class WorkflowTransitionViewTestMixin(object):
 
     def _request_test_workflow_transition_delete_view(self):
         return self.post(
-            viewname='document_states:setup_workflow_transition_delete',
+            viewname='document_states:workflow_template_transition_delete',
             kwargs={'pk': self.test_workflow_transition.pk}
         )
 
     def _request_test_workflow_transition_edit_view(self):
         return self.post(
-            viewname='document_states:setup_workflow_transition_edit',
+            viewname='document_states:workflow_template_transition_edit',
             kwargs={'pk': self.test_workflow_transition.pk}, data={
                 'label': TEST_WORKFLOW_TRANSITION_LABEL_EDITED,
                 'origin_state': self.test_workflow_state_1.pk,
@@ -146,15 +146,16 @@ class WorkflowTransitionViewTestMixin(object):
 
     def _request_test_workflow_transition_list_view(self):
         return self.get(
-            viewname='document_states:setup_workflow_transition_list',
+            viewname='document_states:workflow_template_transition_list',
             kwargs={'pk': self.test_workflow.pk}
         )
 
     def _request_test_workflow_transition(self):
         return self.post(
-            viewname='document_states:workflow_instance_transition',
-            kwargs={'pk': self.test_workflow_instance.pk}, data={
-                'transition': self.test_workflow_transition.pk,
+            viewname='document_states:workflow_instance_transition_execute',
+            kwargs={
+                'workflow_instance_pk': self.test_workflow_instance.pk,
+                'workflow_transition_pk': self.test_workflow_transition.pk,
             }
         )
 
@@ -162,7 +163,7 @@ class WorkflowTransitionViewTestMixin(object):
 class WorkflowViewTestMixin(object):
     def _request_test_workflow_create_view(self):
         return self.post(
-            viewname='document_states:setup_workflow_create', data={
+            viewname='document_states:workflow_template_create', data={
                 'label': TEST_WORKFLOW_LABEL,
                 'internal_name': TEST_WORKFLOW_INTERNAL_NAME,
             }
@@ -170,14 +171,14 @@ class WorkflowViewTestMixin(object):
 
     def _request_test_workflow_delete_view(self):
         return self.post(
-            viewname='document_states:setup_workflow_delete', kwargs={
+            viewname='document_states:workflow_template_delete', kwargs={
                 'pk': self.test_workflow.pk
             }
         )
 
     def _request_test_workflow_edit_view(self):
         return self.post(
-            viewname='document_states:setup_workflow_edit', kwargs={
+            viewname='document_states:workflow_template_edit', kwargs={
                 'pk': self.test_workflow.pk,
             }, data={
                 'label': TEST_WORKFLOW_LABEL_EDITED,
@@ -187,12 +188,12 @@ class WorkflowViewTestMixin(object):
 
     def _request_test_workflow_list_view(self):
         return self.get(
-            viewname='document_states:setup_workflow_list',
+            viewname='document_states:workflow_template_list',
         )
 
-    def _request_test_workflow_preview_view(self):
+    def _request_test_workflow_template_preview_view(self):
         return self.get(
-            viewname='document_states:workflow_preview', kwargs={
+            viewname='document_states:workflow_template_preview', kwargs={
                 'pk': self.test_workflow.pk,
             }
         )

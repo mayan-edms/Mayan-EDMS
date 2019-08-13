@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:38-0400\n"
+"POT-Creation-Date: 2019-07-05 01:30-0400\n"
 "PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Linking"
 msgstr "Spojni"
 
-#: apps.py:74 models.py:27
+#: apps.py:72 models.py:27
 msgid "Label"
 msgstr "Labela"
 

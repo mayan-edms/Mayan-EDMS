@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:36-0400\n"
-"PO-Revision-Date: 2019-06-15 07:48+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-07-05 01:28-0400\n"
+"PO-Revision-Date: 2019-07-01 05:47+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -320,41 +320,57 @@ msgid ""
 "propagate."
 msgstr "Laiks uz kādu aizkavēt fona uzdevumus, kas ir atkarīgs no datu bāzes apņemšanās uz izplatīšanu."
 
-#: settings.py:32
+#: settings.py:33
+msgid ""
+"A list of strings designating all applications that are to be removed from "
+"the list normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "Saraksts ar virknēm, kas apzīmē visas lietojumprogrammas, kuras jānoņem no saraksta, kuras parasti uzstāda Mayan EDMS. Katrai virknei vajadzētu būt punktveida Python ceļam uz: lietojumprogrammas konfigurācijas klasi (vēlams) vai paketi, kurā ir lietojumprogramma."
+
+#: settings.py:43
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "Saraksts ar virknēm, kas apzīmē visas lietojumprogrammas, kas ir uzstādītas ārpus tām, ko parasti uzstāda Mayan EDMS. Katrai virknei vajadzētu būt punktveida Python ceļam uz: lietojumprogrammas konfigurācijas klasi (vēlams) vai paketi, kurā ir lietojumprogramma."
+
+#: settings.py:52
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr "Zīmola enkuram pievienotā skata nosaukums galvenajā izvēlnē. Tas ir arī skats, uz kuru pēc pierakstīšanās lietotāji tiks novirzīti."
 
-#: settings.py:41
+#: settings.py:61
 msgid "The number objects that will be displayed per page."
-msgstr ""
+msgstr "Objektu skaits, kas tiks rādīti vienā lapā."
 
-#: settings.py:48
+#: settings.py:68
 msgid "Enable error logging outside of the system error logging capabilities."
 msgstr "Iespējot kļūdu reģistrēšanu ārpus sistēmas kļūdu reģistrēšanas iespējām."
 
-#: settings.py:55
+#: settings.py:75
 msgid "Path to the logfile that will track errors during production."
 msgstr "Ceļš uz žurnāla failu, kurā tiks novērotas kļūdas ražošanas laikā."
 
-#: settings.py:62
+#: settings.py:82
 msgid "Name to be displayed in the main menu."
 msgstr "Nosaukums, kas jārāda galvenajā izvēlnē."
 
-#: settings.py:68
+#: settings.py:88
 msgid "URL of the installation or homepage of the project."
 msgstr "Projekta instalācijas vai mājas lapas URL."
 
-#: settings.py:74
+#: settings.py:94
 msgid "A storage backend that all workers can use to share files."
 msgstr "Uzglabāšanas backend, ko visi darbinieki var izmantot, lai koplietotu failus."
 
-#: settings.py:83
+#: settings.py:103
 msgid "Django"
 msgstr "Django"
 
-#: settings.py:88
+#: settings.py:108
 msgid ""
 "A list of strings representing the host/domain names that this site can "
 "serve. This is a security measure to prevent HTTP Host header attacks, which"
@@ -367,9 +383,9 @@ msgid ""
 " match anything; in this case you are responsible to provide your own "
 "validation of the Host header (perhaps in a middleware; if so this "
 "middleware must be listed first in MIDDLEWARE)."
-msgstr "Saraksts ar virknēm, kas pārstāv vietnes / domēna vārdus, kurus šī vietne var pasniegt. Šis ir drošības pasākums, lai novērstu HTTP uzņēmēja galvenes uzbrukumus, kas ir iespējami pat daudzās šķietami drošās tīmekļa servera konfigurācijās. Vērtības šajā sarakstā var būt pilnībā kvalificēti vārdi (piemēram, “www.example.com”), un tādā gadījumā tie tiks precīzi saskaņoti ar pieprasījuma Host galvenes virsrakstu (nejūtīga, neietverot portu). Vērtību, kas sākas ar punktu, var izmantot kā apakšdomēna aizstājējzīmi: '.example.com' atbilst example.com, www.example.com un jebkuram citam example.com apakšdomēnam. Vērtība '*' atbilst jebkuram; šajā gadījumā jūs esat atbildīgs par savas galvenes apstiprinājuma apstiprināšanu (varbūt starpprogrammatūrā; ja tā, tad starpprogrammatūra vispirms jānorāda iekš MIDDLEWARE)."
+msgstr "Saraksts ar virknēm, kas pārstāv vietnes/domēna vārdus, kurus šī vietne var pasniegt. Šis ir drošības pasākums, lai novērstu HTTP uzņēmēja galvenes uzbrukumus, kas ir iespējami pat daudzās šķietami drošās tīmekļa servera konfigurācijās. Vērtības šajā sarakstā var būt pilnībā kvalificēti vārdi (piemēram, “www.example.com”), un tādā gadījumā tie tiks precīzi saskaņoti ar pieprasījuma Host galvenes virsrakstu (nejūtīga, neietverot portu). Vērtību, kas sākas ar punktu, var izmantot kā apakšdomēna aizstājējzīmi: '.example.com' atbilst example.com, www.example.com un jebkuram citam example.com apakšdomēnam. Vērtība '*' atbilst jebkuram; šajā gadījumā jūs esat atbildīgs par savas galvenes apstiprinājuma apstiprināšanu (varbūt starpprogrammatūrā; ja tā, tad starpprogrammatūra vispirms jānorāda iekš MIDDLEWARE)."
 
-#: settings.py:106
+#: settings.py:126
 msgid ""
 "When set to True, if the request URL does not match any of the patterns in "
 "the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the"
@@ -379,13 +395,13 @@ msgid ""
 "PREPEND_WWW."
 msgstr "Ja iestatījums ir True, un pieprasījuma URL neatbilst nevienam no URLconf modeļiem un tas nenotiek slīpsvītrā, HTTP novirzīšana tiek izdota tam pašam URL ar pievienoto slīpsvītru. Ņemiet vērā, ka novirzīšana var izraisīt jebkādu POST pieprasījumā iesniegto datu pazaudēšanu. Iestatījums APPEND_SLASH tiek izmantots tikai tad, ja ir instalēta CommonMiddleware (sk. Starpprogrammatūra). Skatiet arī PREPEND_WWW."
 
-#: settings.py:119
+#: settings.py:139
 msgid ""
 "The list of validators that are used to check the strength of user's "
 "passwords."
 msgstr "Validatoru saraksts, kurus izmanto, lai pārbaudītu lietotāja paroļu stiprumu."
 
-#: settings.py:126
+#: settings.py:146
 msgid ""
 "A dictionary containing the settings for all databases to be used with "
 "Django. It is a nested dictionary whose contents map a database alias to a "
@@ -394,7 +410,7 @@ msgid ""
 "databases may also be specified."
 msgstr "Vārdnīca ar visu Django lietojamo datu bāzu iestatījumiem. Tā ir ligzdota vārdnīca, kuras saturs iezīmē datubāzes aizstājvārdu vārdnīcā, kurā ir atsevišķas datu bāzes iespējas. DATABASES iestatījumam jākonfigurē noklusējuma datu bāze; var norādīt arī jebkuru papildu datu bāzu skaitu."
 
-#: settings.py:138
+#: settings.py:158
 msgid ""
 "Default: 2621440 (i.e. 2.5 MB). The maximum size in bytes that a request "
 "body may be before a SuspiciousOperation (RequestDataTooBig) is raised. The "
@@ -409,56 +425,56 @@ msgid ""
 "similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
 msgstr "Noklusējums: 2621440 (ti, 2,5 MB). Maksimālais lielums baitos, ko pieprasīšanas struktūra var būt pirms aizdomīgas darbības (RequestDataTooBig) palielināšanas. Pārbaude tiek veikta, piekļūstot pieprasījumam.body vai request.POST, un tiek aprēķināta pēc kopējā pieprasījuma lieluma, izņemot visus failu augšupielādes datus. To var iestatīt uz Nav, lai izslēgtu pārbaudi. Lietojumprogrammām, kurām sagaidāms, ka tās saņems neparasti lielas veidlapas ziņas, ir jākontrolē šis iestatījums. Pieprasījuma datu apjoms ir saistīts ar atmiņas apjomu, kas nepieciešams, lai apstrādātu pieprasījumu un aizpildītu GET un POST vārdnīcas. Lielus pieprasījumus var izmantot kā pakalpojumu atteikšanas uzbrukuma vektoru, ja tas netiek pārbaudīts. Tā kā tīmekļa serveri parasti neveic dziļu pieprasījumu pārbaudi, nav iespējams veikt līdzīgu pārbaudi šajā līmenī. Skatiet arī FILE_UPLOAD_MAX_MEMORY_SIZE."
 
-#: settings.py:158
+#: settings.py:178
 msgid ""
 "Default: 'webmaster@localhost' Default email address to use for various "
 "automated correspondence from the site manager(s). This doesn't include "
 "error messages sent to ADMINS and MANAGERS; for that, see SERVER_EMAIL."
 msgstr "Noklusējums: “webmaster@localhost” Noklusējuma e-pasta adrese, ko izmanto dažādai automatizētai sarakstei no vietnes pārvaldnieka (-iem). Tas neietver kļūdas ziņojumus, kas nosūtīti ADMINS un MANAGERS; par to skatiet SERVER_EMAIL."
 
-#: settings.py:168
+#: settings.py:188
 msgid ""
 "Default: [] (Empty list). List of compiled regular expression objects "
 "representing User-Agent strings that are not allowed to visit any page, "
 "systemwide. Use this for bad robots/crawlers. This is only used if "
 "CommonMiddleware is installed (see Middleware)."
-msgstr "Noklusējums: [] (Tukšs saraksts). Sastādīto regulāro izteiksmes objektu saraksts, kas pārstāv lietotāja-aģentu virknes, kurām nav atļauts apmeklēt jebkuru lapu. Izmantojiet to sliktiem robotiem / rāpuļprogrammām. Tas tiek izmantots tikai tad, ja ir instalēta CommonMiddleware (sk. Starpprogrammatūra)."
+msgstr "Noklusējums: [] (Tukšs saraksts). Sastādīto regulāro izteiksmes objektu saraksts, kas pārstāv lietotāja-aģentu virknes, kurām nav atļauts apmeklēt jebkuru lapu. Izmantojiet to sliktiem robotiem/rāpuļprogrammām. Tas tiek izmantots tikai tad, ja ir instalēta CommonMiddleware (sk. Starpprogrammatūra)."
 
-#: settings.py:179
+#: settings.py:199
 msgid ""
 "Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
 "for sending emails."
 msgstr "Noklusējums: “django.core.mail.backends.smtp.EmailBackend”. Backend, ko izmanto e-pasta sūtīšanai."
 
-#: settings.py:187
+#: settings.py:207
 msgid "Default: 'localhost'. The host to use for sending email."
 msgstr "Noklusējums: “localhost”. Hosts, ko izmanto e-pasta sūtīšanai."
 
-#: settings.py:194
+#: settings.py:214
 msgid ""
 "Default: '' (Empty string). Password to use for the SMTP server defined in "
 "EMAIL_HOST. This setting is used in conjunction with EMAIL_HOST_USER when "
 "authenticating to the SMTP server. If either of these settings is empty, "
 "Django won't attempt authentication."
-msgstr "Noklusējums: &#39;&#39; (Tukša virkne). Parole, ko izmantot SMTP serverim, kas definēts vietnē EMAIL_HOST. Šis iestatījums tiek izmantots kopā ar EMAIL_HOST_USER autentificējot SMTP serveri. Ja kāds no šiem iestatījumiem ir tukšs, Django neveic autentifikāciju."
+msgstr "Noklusējums: '' (Tukša virkne). Parole, ko izmantot SMTP serverim, kas definēts vietnē EMAIL_HOST. Šis iestatījums tiek izmantots kopā ar EMAIL_HOST_USER autentificējot SMTP serveri. Ja kāds no šiem iestatījumiem ir tukšs, Django neveic autentifikāciju."
 
-#: settings.py:205
+#: settings.py:225
 msgid ""
 "Default: '' (Empty string). Username to use for the SMTP server defined in "
 "EMAIL_HOST. If empty, Django won't attempt authentication."
-msgstr "Noklusējums: &#39;&#39; (Tukša virkne). Lietotājvārds, ko izmantot SMTP serverim, kas definēts pakalpojumā EMAIL_HOST. Ja tukšs, Django neizmēģinās autentifikāciju."
+msgstr "Noklusējums: '' (Tukša virkne). Lietotājvārds, ko izmantot SMTP serverim, kas definēts pakalpojumā EMAIL_HOST. Ja tukšs, Django neizmēģinās autentifikāciju."
 
-#: settings.py:214
+#: settings.py:234
 msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
 msgstr "Noklusējums: 25. Portu, ko izmantot SMTP serverim, kas definēts EMAIL_HOST."
 
-#: settings.py:221
+#: settings.py:241
 msgid ""
 "Default: None. Specifies a timeout in seconds for blocking operations like "
 "the connection attempt."
 msgstr "Noklusējums: nav. Norāda taimautu sekundēs, lai bloķētu darbības, piemēram, savienojuma mēģinājumu."
 
-#: settings.py:229
+#: settings.py:249
 msgid ""
 "Default: False. Whether to use a TLS (secure) connection when talking to the"
 " SMTP server. This is used for explicit TLS connections, generally on port "
@@ -466,7 +482,7 @@ msgid ""
 "setting EMAIL_USE_SSL."
 msgstr "Noklusējums: False. Vai lietojat TLS (drošu) savienojumu, runājot ar SMTP serveri. Tas tiek izmantots skaidriem TLS savienojumiem, parasti 587. portā. Ja rodas savienojumi ar kabeļiem, skatiet netiešo TLS iestatījumu EMAIL_USE_SSL."
 
-#: settings.py:239
+#: settings.py:259
 msgid ""
 "Default: False. Whether to use an implicit TLS (secure) connection when "
 "talking to the SMTP server. In most email documentation this type of TLS "
@@ -474,42 +490,34 @@ msgid ""
 "are experiencing problems, see the explicit TLS setting EMAIL_USE_TLS. Note "
 "that EMAIL_USE_TLS/EMAIL_USE_SSL are mutually exclusive, so only set one of "
 "those settings to True."
-msgstr "Noklusējums: False. Vai, runājot ar SMTP serveri, izmantojiet netiešu TLS (drošu) savienojumu. Vairumā e-pasta dokumentāciju šāda veida TLS savienojums tiek saukts par SSL. To parasti izmanto 465. portā. Ja rodas problēmas, skatiet skaidru TLS iestatījumu EMAIL_USE_TLS. Ņemiet vērā, ka EMAIL_USE_TLS / EMAIL_USE_SSL ir savstarpēji izslēdzoši, tāpēc tikai vienu no šiem iestatījumiem iestatiet uz True."
+msgstr "Noklusējums: False. Vai, runājot ar SMTP serveri, izmantojiet netiešu TLS (drošu) savienojumu. Vairumā e-pasta dokumentāciju šāda veida TLS savienojums tiek saukts par SSL. To parasti izmanto 465. portā. Ja rodas problēmas, skatiet skaidru TLS iestatījumu EMAIL_USE_TLS. Ņemiet vērā, ka EMAIL_USE_TLS/EMAIL_USE_SSL ir savstarpēji izslēdzoši, tāpēc tikai vienu no šiem iestatījumiem iestatiet uz True."
 
-#: settings.py:251
+#: settings.py:271
 msgid ""
 "Default: 2621440 (i.e. 2.5 MB). The maximum size (in bytes) that an upload "
 "will be before it gets streamed to the file system. See Managing files for "
 "details. See also DATA_UPLOAD_MAX_MEMORY_SIZE."
 msgstr "Noklusējums: 2621440 (ti, 2,5 MB). Maksimālais lielums (baitos), ko augšupielāde būs pirms straumēšanas datņu sistēmā. Papildinformāciju skatiet sadaļā Failu pārvaldīšana. Skatiet arī DATA_UPLOAD_MAX_MEMORY_SIZE."
 
-#: settings.py:261
-msgid ""
-"A list of strings designating all applications that are enabled in this "
-"Django installation. Each string should be a dotted Python path to: an "
-"application configuration class (preferred), or a package containing an "
-"application."
-msgstr "Saraksts ar virknēm, kas apzīmē visas programmas, kas ir iespējotas šajā Django instalācijā. Katrai virknei vajadzētu būt punktveida Python ceļam uz: lietojumprogrammas konfigurācijas klasi (vēlamo) vai paketi, kurā ir lietojumprogramma."
-
-#: settings.py:271
+#: settings.py:281
 msgid ""
 "Default: '/accounts/login/' The URL where requests are redirected for login,"
 " especially when using the login_required() decorator. This setting also "
 "accepts named URL patterns which can be used to reduce configuration "
 "duplication since you don't have to define the URL in two places (settings "
 "and URLconf)."
-msgstr "Noklusējums: &#39;/ accounts / login /&#39; URL, kurā pieprasījumi tiek novirzīti, lai pieteiktos, īpaši, ja izmantojat login_required () dekoratoru. Šis iestatījums arī pieņem nosauktos URL modeļus, kurus var izmantot, lai samazinātu konfigurācijas dublēšanos, jo jums nav jādefinē URL divās vietās (iestatījumi un URLconf)."
+msgstr "Noklusējums: '/accounts/login/' URL, kurā pieprasījumi tiek novirzīti, lai pieteiktos, īpaši, ja izmantojat login_required () dekoratoru. Šis iestatījums arī pieņem nosauktos URL modeļus, kurus var izmantot, lai samazinātu konfigurācijas dublēšanos, jo jums nav jādefinē URL divās vietās (iestatījumi un URLconf)."
 
-#: settings.py:283
+#: settings.py:293
 msgid ""
 "Default: '/accounts/profile/' The URL where requests are redirected after "
 "login when the contrib.auth.login view gets no next parameter. This is used "
 "by the login_required() decorator, for example. This setting also accepts "
 "named URL patterns which can be used to reduce configuration duplication "
 "since you don't have to define the URL in two places (settings and URLconf)."
-msgstr "Noklusējums: &#39;/ accounts / profile /&#39; URL, kurā pieprasījumi tiek novirzīti pēc pieteikšanās brīdī, kad skats par ieguldījumu.auth.login nesaņem nākamo parametru. To izmanto, piemēram, login_required () dekorētājs. Šis iestatījums arī pieņem nosauktos URL modeļus, kurus var izmantot, lai samazinātu konfigurācijas dublēšanos, jo jums nav jādefinē URL divās vietās (iestatījumi un URLconf)."
+msgstr "Noklusējums: '/accounts/profile/' URL, kurā pieprasījumi tiek novirzīti pēc pieteikšanās brīdī, kad skats par ieguldījumu.auth.login nesaņem nākamo parametru. To izmanto, piemēram, login_required () dekorētājs. Šis iestatījums arī pieņem nosauktos URL modeļus, kurus var izmantot, lai samazinātu konfigurācijas dublēšanos, jo jums nav jādefinē URL divās vietās (iestatījumi un URLconf)."
 
-#: settings.py:295
+#: settings.py:305
 msgid ""
 "Default: None. The URL where requests are redirected after a user logs out "
 "using LogoutView (if the view doesn't get a next_page argument). If None, no"
@@ -519,24 +527,24 @@ msgid ""
 "places (settings and URLconf)."
 msgstr "Noklusējums: nav. URL, kurā pieprasījumi tiek novirzīti pēc tam, kad lietotājs ir pieteicies, izmantojot LogoutView (ja skats nesaņem nākamo lapu argumentu). Ja nav, netiks veikta novirzīšana un tiks atteikts logout skats. Šis iestatījums arī pieņem nosauktos URL modeļus, kurus var izmantot, lai samazinātu konfigurācijas dublēšanos, jo jums nav jādefinē URL divās vietās (iestatījumi un URLconf)."
 
-#: settings.py:308
+#: settings.py:318
 msgid ""
 "A list of IP addresses, as strings, that: Allow the debug() context "
 "processor to add some variables to the template context. Can use the "
 "admindocs bookmarklets even if not logged in as a staff user. Are marked as "
 "\"internal\" (as opposed to \"EXTERNAL\") in AdminEmailHandler emails."
-msgstr "IP adrešu saraksts kā virknes, kas: Ļauj atkļūdošanas () konteksta procesoram pievienot dažus mainīgos veidnes kontekstam. Var izmantot admindocs grāmatzīmes, pat ja nav pieteicies kā personāla lietotājs. Tiek atzīmēti kā &quot;iekšējie&quot; (atšķirībā no &quot;EXTERNAL&quot;) AdminEmailHandler e-pastos."
+msgstr "IP adrešu saraksts kā virknes, kas: Ļauj atkļūdošanas () konteksta procesoram pievienot dažus mainīgos veidnes kontekstam. Var izmantot admindocs grāmatzīmes, pat ja nav pieteicies kā personāla lietotājs. Tiek atzīmēti kā \"iekšējie\" (atšķirībā no \"EXTERNAL\") AdminEmailHandler e-pastos."
 
-#: settings.py:319
+#: settings.py:329
 msgid ""
 "A list of all available languages. The list is a list of two-tuples in the "
 "format (language code, language name) for example, ('ja', 'Japanese'). This "
 "specifies which languages are available for language selection. Generally, "
 "the default value should suffice. Only set this setting if you want to "
 "restrict language selection to a subset of the Django-provided languages. "
-msgstr "Visu pieejamo valodu saraksts. Sarakstā ir iekļauts divu ierakstu saraksts (valodas kods, valodas nosaukums), piemēram, (&#39;ja&#39;, &#39;japāņu&#39;). Tas norāda, kuras valodas ir pieejamas valodas izvēlei. Parasti pietiek ar noklusējuma vērtību. Iestatiet šo iestatījumu tikai tad, ja vēlaties ierobežot valodu izvēli ar Django sniegto valodu apakškopu."
+msgstr "Visu pieejamo valodu saraksts. Sarakstā ir iekļauts divu ierakstu saraksts (valodas kods, valodas nosaukums), piemēram, ('ja', 'japāņu'). Tas norāda, kuras valodas ir pieejamas valodas izvēlei. Parasti pietiek ar noklusējuma vērtību. Iestatiet šo iestatījumu tikai tad, ja vēlaties ierobežot valodu izvēli ar Django sniegto valodu apakškopu."
 
-#: settings.py:332
+#: settings.py:342
 msgid ""
 "A string representing the language code for this installation. This should "
 "be in standard language ID format. For example, U.S. English is \"en-us\". "
@@ -546,17 +554,17 @@ msgid ""
 "language can't be determined or is not supported by the website. It also "
 "provides the fallback translation when a translation for a given literal "
 "doesn't exist for the user's preferred language."
-msgstr "Stringi, kas attēlo šīs instalācijas valodas kodu. Tam jābūt standarta valodas ID formātā. Piemēram, ASV angļu valoda ir &quot;en-us&quot;. Tas kalpo diviem mērķiem: ja lokālā starpprogrammatūra netiek izmantota, tā nolemj, kurš tulkojums tiek nodrošināts visiem lietotājiem. Ja lokalizācijas starpprogrammatūra ir aktīva, tā nodrošina rezerves valodu, ja lietotāja vēlamo valodu nevar noteikt vai vietne to neatbalsta. Tā arī nodrošina rezerves tulkojumu, ja konkrētā literārā tulkojums nav lietotāja vēlamajai valodai."
+msgstr "Stringi, kas attēlo šīs instalācijas valodas kodu. Tam jābūt standarta valodas ID formātā. Piemēram, ASV angļu valoda ir \"en-us\". Tas kalpo diviem mērķiem: ja lokālā starpprogrammatūra netiek izmantota, tā nolemj, kurš tulkojums tiek nodrošināts visiem lietotājiem. Ja lokalizācijas starpprogrammatūra ir aktīva, tā nodrošina rezerves valodu, ja lietotāja vēlamo valodu nevar noteikt vai vietne to neatbalsta. Tā arī nodrošina rezerves tulkojumu, ja konkrētā literārā tulkojums nav lietotāja vēlamajai valodai."
 
-#: settings.py:347
+#: settings.py:357
 msgid ""
 "URL to use when referring to static files located in STATIC_ROOT. Example: "
 "\"/static/\" or \"http://static.example.com/\" If not None, this will be "
 "used as the base path for asset definitions (the Media class) and the "
 "staticfiles app. It must end in a slash if set to a non-empty value."
-msgstr ""
+msgstr "URL, kas jāizmanto, atsaucoties uz statiskiem failiem, kas atrodas STATIC_ROOT. Piemērs: \"/static/\" vai \"http://static.example.com/\". Ja šī vērtība nav tukša, tā tiks izmantota kā bāzes ceļš aktīvu definīcijām (multivides Media klase) un staticfiles lietotnei. Ja vērtība nav tukša, tai ir jābeidzas ar slīpsvītru."
 
-#: settings.py:358
+#: settings.py:368
 msgid ""
 "The file storage engine to use when collecting static files with the "
 "collectstatic management command. A ready-to-use instance of the storage "
@@ -564,14 +572,14 @@ msgid ""
 "django.contrib.staticfiles.storage.staticfiles_storage."
 msgstr "Failu glabāšanas dzinējs, ko izmanto, lai savāktu statiskos failus ar kolektīvās pārvaldības komandu. Šajā iestatījumā definētais glabāšanas backend piemērs ir pieejams vietnē django.contrib.staticfiles.storage.staticfiles_storage."
 
-#: settings.py:368
+#: settings.py:378
 msgid ""
 "A string representing the time zone for this installation. Note that this "
 "isn't necessarily the time zone of the server. For example, one server may "
 "serve multiple Django-powered sites, each with a separate time zone setting."
 msgstr "Virkne, kas attēlo šīs instalācijas laika joslu. Ņemiet vērā, ka tas ne vienmēr ir servera laika josla. Piemēram, viens serveris var kalpot vairākām Django darbinātām vietnēm, katra ar atsevišķu laika joslu iestatījumu."
 
-#: settings.py:378
+#: settings.py:388
 msgid ""
 "The full Python path of the WSGI application object that Django's built-in "
 "servers (e.g. runserver) will use. The django-admin startproject management "
@@ -579,19 +587,19 @@ msgid ""
 "it, and point this setting to that application."
 msgstr "Pilns Python ceļš WSGI lietojumprogrammas objektam, ko izmantos Django iebūvētie serveri (piemēram, palaišanas serveris). Django-admin startproject vadības komanda izveidos vienkāršu wsgi.py failu ar tajā pieprasāmo lietojumprogrammu un norādīs šo iestatījumu uz šo programmu."
 
-#: settings.py:386
+#: settings.py:396
 msgid "Celery"
 msgstr "Selerijas"
 
-#: settings.py:391
+#: settings.py:401
 msgid ""
 "Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
 " transport://userid:password@hostname:port/virtual_host Only the scheme part"
 " (transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
-msgstr "Noklusējums: &quot;amqp: //&quot;. Noklusējuma starpnieka URL. Tam ir jābūt URL:"
+msgstr "Noklusējums: \"amqp://\". Noklusējuma starpnieka URL. Tam ir jābūt URL šādā formā: transport://userid:password@hostname:port/virtual_host Nepieciešama tikai shēmas daļa (transport://), pārējais ir neobligāts, un pēc noklusējuma konkrētās transportēšanas noklusējuma vērtības."
 
-#: settings.py:401
+#: settings.py:411
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
 "task results (tombstones). Refer to "

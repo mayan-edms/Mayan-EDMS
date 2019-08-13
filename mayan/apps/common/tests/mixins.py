@@ -12,7 +12,7 @@ from django.apps import apps
 from django.conf import settings
 from django.conf.urls import url
 from django.contrib.contenttypes.models import ContentType
-from django.db import connection, models
+from django.db import connection, connections, models
 from django.db.models.signals import post_save, pre_save
 from django.http import HttpResponse
 from django.template import Context, Template
@@ -78,6 +78,29 @@ class ClientMethodsTestCaseMixin(object):
                 path=path, viewname=viewname, *args, **kwargs
             )
         )
+
+
+class ConnectionsCheckTestCaseMixin(object):
+    _open_connections_check_enable = True
+
+    def _get_open_connections_count(self):
+        return len(connections.all())
+
+    def setUp(self):
+        super(ConnectionsCheckTestCaseMixin, self).setUp()
+        self._connections_count = self._get_open_connections_count()
+
+    def tearDown(self):
+        if self._open_connections_check_enable:
+
+            self.assertEqual(
+                self._connections_count, self._get_open_connections_count(),
+                msg='Database connection leak. The number of database '
+                'connections at the start and at the end of the test are not '
+                'the same.'
+            )
+
+        super(ConnectionsCheckTestCaseMixin, self).tearDown()
 
 
 class ContentTypeCheckTestCaseMixin(object):

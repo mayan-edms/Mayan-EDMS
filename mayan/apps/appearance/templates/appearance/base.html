@@ -34,6 +34,14 @@
                 {% endif %}
                 {% block messages %}
                 {% endblock %}
+
+                {% smart_settings_check_changed as settings_changed %}
+                {% if settings_changed %}
+                    <div class="alert alert-dismissible alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <p><strong>{% trans 'Warning' %}</strong> {% trans 'Settings updated, restart your installation for changes to take proper effect.' %}</p>
+                    </div>
+                {% endif %}
             </div>
         </div>
 
@@ -128,6 +136,9 @@
             },
         {% endfor %}
     ];
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    })
 </script>
 {% block javascript %}{% endblock %}
 

@@ -1,16 +1,19 @@
 from __future__ import absolute_import, unicode_literals
 
+from mayan.apps.smart_settings.utils import get_environment_setting
+
 from . import *  # NOQA
 
 ALLOWED_HOSTS = ['*']
 
 DEBUG = True
 
-CELERY_ALWAYS_EAGER = True
-CELERY_EAGER_PROPAGATES_EXCEPTIONS = CELERY_ALWAYS_EAGER
+CELERY_TASK_ALWAYS_EAGER = get_environment_setting(
+    name='CELERY_TASK_ALWAYS_EAGER', fallback_default='true'
+)
+CELERY_TASK_EAGER_PROPAGATES = CELERY_TASK_ALWAYS_EAGER
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 
 if 'rosetta' not in INSTALLED_APPS:
     try:

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings import Namespace
+from mayan.apps.smart_settings.classes import Namespace
 
 from .literals import DEFAULT_BACKEND, DEFAULT_LOCK_TIMEOUT_VALUE
 

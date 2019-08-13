@@ -7,12 +7,10 @@ icon_document_type = Icon(
     driver_name='fontawesome-layers', data=[
         {'class': 'fas fa-circle', 'transform': 'shrink-12 up-2'},
         {'class': 'fas fa-cog', 'transform': 'shrink-6 up-2', 'mask': 'fas fa-torah'}
-    ]
+    ], shadow_class='fas fa-torah'
 )
 
 icon_menu_documents = Icon(driver_name='fontawesome', symbol='book')
-
-icon_clear_image_cache = Icon(driver_name='fontawesome', symbol='file-image')
 
 icon_dashboard_document_types = icon_document_type
 icon_dashboard_documents_in_trash = Icon(
@@ -27,8 +25,6 @@ icon_dashboard_new_documents_this_month = Icon(
 icon_dashboard_total_document = Icon(
     driver_name='fontawesome', symbol='book'
 )
-
-
 icon_document_quick_download = Icon(
     driver_name='fontawesome', symbol='download'
 )
@@ -106,6 +102,14 @@ icon_favorite_document_remove = Icon(
     secondary_symbol='minus'
 )
 
+# Document pages
+
+icon_document_page_disable = Icon(
+    driver_name='fontawesomecss', css_classes='far fa-eye-slash'
+)
+icon_document_page_enable = Icon(
+    driver_name='fontawesomecss', css_classes='far fa-eye'
+)
 icon_document_page_navigation_first = Icon(
     driver_name='fontawesome', symbol='step-backward'
 )

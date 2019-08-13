@@ -17,6 +17,7 @@ menu_object = Menu(label=_('Actions'), name='object')
 menu_secondary = Menu(label=_('Secondary'), name='secondary')
 menu_setup = Menu(name='setup')
 menu_tools = Menu(name='tools')
+menu_topbar = Menu(name='topbar')
 menu_user = Menu(
     icon_class=icon_menu_user, name='user', label=_('User')
 )

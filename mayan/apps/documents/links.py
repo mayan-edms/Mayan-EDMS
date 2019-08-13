@@ -8,7 +8,7 @@ from mayan.apps.converter.permissions import (
 from mayan.apps.navigation.classes import Link
 
 from .icons import (
-    icon_clear_image_cache, icon_document_list_recent_access,
+    icon_document_list_recent_access,
     icon_recent_added_document_list, icon_document_page_navigation_first,
     icon_document_page_navigation_last, icon_document_page_navigation_next,
     icon_document_page_navigation_previous, icon_document_page_return,
@@ -19,14 +19,14 @@ from .icons import (
     icon_duplicated_document_list, icon_duplicated_document_scan
 )
 from .permissions import (
-    permission_document_delete, permission_document_download,
-    permission_document_properties_edit, permission_document_print,
-    permission_document_restore, permission_document_tools,
-    permission_document_version_revert, permission_document_view,
-    permission_document_trash, permission_document_type_create,
-    permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view, permission_empty_trash,
-    permission_document_version_view
+    permission_document_delete, permission_document_edit,
+    permission_document_download, permission_document_properties_edit,
+    permission_document_print, permission_document_restore,
+    permission_document_tools, permission_document_version_revert,
+    permission_document_view, permission_document_trash,
+    permission_document_type_create, permission_document_type_delete,
+    permission_document_type_edit, permission_document_type_view,
+    permission_empty_trash, permission_document_version_view
 )
 from .settings import setting_zoom_max_level, setting_zoom_min_level
 
@@ -43,11 +43,11 @@ def is_not_current_version(context):
 
 
 def is_first_page(context):
-    return context['resolved_object'].page_number <= 1
+    return context['resolved_object'].siblings.first() == context['resolved_object']
 
 
 def is_last_page(context):
-    return context['resolved_object'].page_number >= context['resolved_object'].document_version.pages.count()
+    return context['resolved_object'].siblings.last() == context['resolved_object']
 
 
 def is_max_zoom(context):
@@ -56,6 +56,14 @@ def is_max_zoom(context):
 
 def is_min_zoom(context):
     return context['zoom'] <= setting_zoom_min_level.value
+
+
+def is_document_page_enabled(context):
+    return context['resolved_object'].enabled
+
+
+def is_document_page_disabled(context):
+    return not context['resolved_object'].enabled
 
 
 # Facet
@@ -264,22 +272,37 @@ link_document_list_deleted = Link(
     text=_('Trash can'), view='documents:document_list_deleted'
 )
 
-# Tools
-link_clear_image_cache = Link(
-    icon_class=icon_clear_image_cache,
-    description=_(
-        'Clear the graphics representations used to speed up the documents\' '
-        'display and interactive transformations results.'
-    ), permissions=(permission_document_tools,),
-    text=_('Clear document image cache'),
-    view='documents:document_clear_image_cache'
-)
 link_trash_can_empty = Link(
     permissions=(permission_empty_trash,), text=_('Empty trash'),
     view='documents:trash_can_empty'
 )
 
 # Document pages
+
+link_document_page_disable = Link(
+    condition=is_document_page_enabled,
+    icon_class_path='mayan.apps.documents.icons.icon_document_page_disable',
+    kwargs={'pk': 'resolved_object.id'},
+    permissions=(permission_document_edit,), text=_('Disable page'),
+    view='documents:document_page_disable'
+)
+link_document_page_multiple_disable = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_page_disable',
+    text=_('Disable pages'),
+    view='documents:document_page_multiple_disable'
+)
+link_document_page_enable = Link(
+    condition=is_document_page_disabled,
+    icon_class_path='mayan.apps.documents.icons.icon_document_page_enable',
+    kwargs={'pk': 'resolved_object.id'},
+    permissions=(permission_document_edit,), text=_('Enable page'),
+    view='documents:document_page_enable'
+)
+link_document_page_multiple_enable = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_page_enable',
+    text=_('Enable pages'),
+    view='documents:document_page_multiple_enable'
+)
 link_document_page_navigation_first = Link(
     args='resolved_object.pk', conditional_disable=is_first_page,
     icon_class=icon_document_page_navigation_first,
@@ -323,6 +346,7 @@ link_document_page_rotate_right = Link(
     text=_('Rotate right'), view='documents:document_page_rotate_right',
 )
 link_document_page_view = Link(
+    conditional_disable=is_document_page_disabled,
     icon_class_path='mayan.apps.documents.icons.icon_document_page_view',
     permissions=(permission_document_view,), text=_('Page image'),
     view='documents:document_page_view', args='resolved_object.pk'

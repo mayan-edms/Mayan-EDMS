@@ -1,15 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
-from json import dumps
-
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
-from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.utils import timezone, translation
-from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
 
@@ -21,7 +17,7 @@ from .forms import (
 from .generics import (
     ConfirmView, SingleObjectEditView, SingleObjectListView, SimpleView
 )
-from .icons import icon_setup
+from .icons import icon_object_errors, icon_setup
 from .menus import menu_tools, menu_setup
 from .permissions_runtime import permission_error_log_view
 from .settings import setting_home_view
@@ -155,6 +151,14 @@ class ObjectErrorLogEntryListView(SingleObjectListView):
                 {'name': _('Result'), 'attribute': 'result'},
             ),
             'hide_object': True,
+            'no_results_icon': icon_object_errors,
+            'no_results_text': _(
+                'This view displays the error log of different object. '
+                'An empty list is a good thing.'
+            ),
+            'no_results_title': _(
+                'There are no error log entries'
+            ),
             'object': self.get_object(),
             'title': _('Error log entries for: %s' % self.get_object()),
         }
@@ -212,67 +216,3 @@ class ToolsListView(SimpleView):
                 'These modules are used to do system maintenance.'
             )
         }
-
-
-def multi_object_action_view(request):
-    """
-    Proxy view called first when using a multi object action, which
-    then redirects to the appropriate specialized view
-    """
-    next = request.POST.get(
-        'next', request.GET.get(
-            'next', request.META.get(
-                'HTTP_REFERER', reverse(setting_home_view.value)
-            )
-        )
-    )
-
-    action = request.GET.get('action', None)
-    id_list = ','.join(
-        [key[3:] for key in request.GET.keys() if key.startswith('pk_')]
-    )
-    items_property_list = [
-        (key[11:]) for key in request.GET.keys() if key.startswith('properties_')
-    ]
-
-    if not action:
-        messages.error(
-            message=_('No action selected.'), request=request
-        )
-        return HttpResponseRedirect(
-            redirect_to=request.META.get(
-                'HTTP_REFERER', reverse(setting_home_view.value)
-            )
-        )
-
-    if not id_list and not items_property_list:
-        messages.error(
-            message=_('Must select at least one item.'),
-            request=request
-        )
-        return HttpResponseRedirect(
-            redirect_to=request.META.get(
-                'HTTP_REFERER', reverse(setting_home_view.value)
-            )
-        )
-
-    # Separate redirects to keep backwards compatibility with older
-    # functions that don't expect a properties_list parameter
-    if items_property_list:
-        return HttpResponseRedirect(
-            redirect_to='%s?%s' % (
-                action,
-                urlencode(
-                    {
-                        'items_property_list': dumps(items_property_list),
-                        'next': next
-                    }
-                )
-            )
-        )
-    else:
-        return HttpResponseRedirect(
-            redirect_to='%s?%s' % (
-                action, urlencode({'id_list': id_list, 'next': next})
-            )
-        )

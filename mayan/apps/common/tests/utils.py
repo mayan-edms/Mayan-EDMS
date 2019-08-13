@@ -1,5 +1,9 @@
+from __future__ import absolute_import, unicode_literals
+
 from contextlib import contextmanager
 import sys
+
+from django.utils.encoding import force_text
 
 
 class NullFile(object):
@@ -13,3 +17,9 @@ def mute_stdout():
     sys.stdout = NullFile()
     yield
     sys.stdout = stdout_old
+
+
+def as_id_list(items):
+    return ','.join(
+        [force_text(item.pk) for item in items]
+    )

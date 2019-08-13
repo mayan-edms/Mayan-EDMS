@@ -1,21 +1,29 @@
 from __future__ import absolute_import, unicode_literals
 
+import hashlib
 import json
 import logging
 
+from furl import furl
 from graphviz import Digraph
 
+from django.apps import apps
 from django.conf import settings
+from django.core import serializers
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import IntegrityError, models, transaction
 from django.db.models import F, Max, Q
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import (
+    force_bytes, force_text, python_2_unicode_compatible
+)
+from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.validators import validate_internal_name
+from mayan.apps.common.serialization import yaml_load
+from mayan.apps.common.validators import YAMLValidator, validate_internal_name
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.events.models import StoredEventType
@@ -23,8 +31,9 @@ from mayan.apps.events.models import StoredEventType
 from .error_logs import error_log_state_actions
 from .events import event_workflow_created, event_workflow_edited
 from .literals import (
-    WORKFLOW_ACTION_WHEN_CHOICES, WORKFLOW_ACTION_ON_ENTRY,
-    WORKFLOW_ACTION_ON_EXIT
+    FIELD_TYPE_CHOICES, WIDGET_CLASS_CHOICES, WORKFLOW_ACTION_WHEN_CHOICES,
+    WORKFLOW_ACTION_ON_ENTRY, WORKFLOW_ACTION_ON_EXIT,
+    WORKFLOW_IMAGE_CACHE_NAME
 )
 from .managers import WorkflowManager
 from .permissions import permission_workflow_transition
@@ -64,8 +73,70 @@ class Workflow(models.Model):
     def __str__(self):
         return self.label
 
+    @cached_property
+    def cache(self):
+        Cache = apps.get_model(app_label='file_caching', model_name='Cache')
+        return Cache.objects.get(name=WORKFLOW_IMAGE_CACHE_NAME)
+
+    @cached_property
+    def cache_partition(self):
+        partition, created = self.cache.partitions.get_or_create(
+            name='{}'.format(self.pk)
+        )
+        return partition
+
+    def delete(self, *args, **kwargs):
+        self.cache_partition.delete()
+        return super(Workflow, self).delete(*args, **kwargs)
+
+    def generate_image(self):
+        cache_filename = '{}'.format(self.get_hash())
+
+        if self.cache_partition.get_file(filename=cache_filename):
+            logger.debug(
+                'workflow cache file "%s" found', cache_filename
+            )
+        else:
+            logger.debug(
+                'workflow cache file "%s" not found', cache_filename
+            )
+
+            image = self.render()
+            with self.cache_partition.create_file(filename=cache_filename) as file_object:
+                file_object.write(image)
+
+        return cache_filename
+
+    def get_api_image_url(self, *args, **kwargs):
+        final_url = furl()
+        final_url.args = kwargs
+        final_url.path = reverse(
+            viewname='rest_api:workflow-image',
+            kwargs={'pk': self.pk}
+        )
+        final_url.args['_hash'] = self.get_hash()
+
+        return final_url.tostr()
+
     def get_document_types_not_in_workflow(self):
         return DocumentType.objects.exclude(pk__in=self.document_types.all())
+
+    def get_hash(self):
+        objects_lists = list(
+            Workflow.objects.filter(pk=self.pk)
+        ) + list(
+            WorkflowState.objects.filter(workflow__pk=self.pk)
+        ) + list(
+            WorkflowStateAction.objects.filter(state__workflow__pk=self.pk)
+        ) + list(
+            WorkflowTransition.objects.filter(workflow__pk=self.pk)
+        )
+
+        return hashlib.sha256(
+            force_bytes(
+                serializers.serialize('json', objects_lists)
+            )
+        ).hexdigest()
 
     def get_initial_state(self):
         try:
@@ -97,10 +168,11 @@ class Workflow(models.Model):
     def render(self):
         diagram = Digraph(
             name='finite_state_machine', graph_attr={
-                'rankdir': 'LR',
+                'rankdir': 'LR', 'splines': 'polyline'
             }, format='png'
         )
 
+        action_cache = {}
         state_cache = {}
         transition_cache = []
 
@@ -111,6 +183,14 @@ class Workflow(models.Model):
                 'initial': state.initial,
                 'connections': {'origin': 0, 'destination': 0}
             }
+
+            for action in state.actions.all():
+                action_cache['a{}'.format(action.pk)] = {
+                    'name': 'a{}'.format(action.pk),
+                    'label': action.label,
+                    'state': 's{}'.format(state.pk),
+                    'when': action.when,
+                }
 
         for transition in self.transitions.all():
             transition_cache.append(
@@ -128,11 +208,32 @@ class Workflow(models.Model):
                 'name': value['name'],
                 'label': value['label'],
                 'shape': 'doublecircle' if value['connections']['origin'] == 0 or value['connections']['destination'] == 0 or value['initial'] else 'circle',
+                'style': 'filled' if value['initial'] else '',
+                'fillcolor': '#eeeeee',
             }
             diagram.node(**kwargs)
 
         for transition in transition_cache:
             diagram.edge(**transition)
+
+        for key, value in action_cache.items():
+            kwargs = {
+                'name': value['name'],
+                'label': value['label'],
+                'shape': 'box',
+            }
+            diagram.node(**kwargs)
+            diagram.edge(
+                **{
+                    'head_name': '{}'.format(value['name']),
+                    'tail_name': '{}'.format(value['state']),
+                    'label': 'On entry' if value['when'] == WORKFLOW_ACTION_ON_ENTRY else 'On exit',
+                    'arrowhead': 'dot',
+                    'dir': 'both',
+                    'arrowtail': 'dot',
+                    'style': 'dashed',
+                }
+            )
 
         return diagram.pipe()
 
@@ -334,6 +435,61 @@ class WorkflowTransition(models.Model):
 
 
 @python_2_unicode_compatible
+class WorkflowTransitionField(models.Model):
+    transition = models.ForeignKey(
+        on_delete=models.CASCADE, related_name='fields',
+        to=WorkflowTransition, verbose_name=_('Transition')
+    )
+    field_type = models.PositiveIntegerField(
+        choices=FIELD_TYPE_CHOICES, verbose_name=_('Type')
+    )
+    name = models.CharField(
+        help_text=_(
+            'The name that will be used to identify this field in other parts '
+            'of the workflow system.'
+        ), max_length=128, verbose_name=_('Internal name')
+    )
+    label = models.CharField(
+        help_text=_(
+            'The field name that will be shown on the user interface.'
+        ), max_length=128, verbose_name=_('Label'))
+    help_text = models.TextField(
+        blank=True, help_text=_(
+            'An optional message that will help users better understand the '
+            'purpose of the field and data to provide.'
+        ), verbose_name=_('Help text')
+    )
+    required = models.BooleanField(
+        default=False, help_text=_(
+            'Whether this fields needs to be filled out or not to proceed.'
+        ), verbose_name=_('Required')
+    )
+    widget = models.PositiveIntegerField(
+        blank=True, choices=WIDGET_CLASS_CHOICES, help_text=_(
+            'An optional class to change the default presentation of the field.'
+        ), null=True, verbose_name=_('Widget class')
+    )
+    widget_kwargs = models.TextField(
+        blank=True, help_text=_(
+            'A group of keyword arguments to customize the widget. '
+            'Use YAML format.'
+        ), validators=[YAMLValidator()],
+        verbose_name=_('Widget keyword arguments')
+    )
+
+    class Meta:
+        unique_together = ('transition', 'name')
+        verbose_name = _('Workflow transition trigger event')
+        verbose_name_plural = _('Workflow transitions trigger events')
+
+    def __str__(self):
+        return self.label
+
+    def get_widget_kwargs(self):
+        return yaml_load(stream=self.widget_kwargs)
+
+
+@python_2_unicode_compatible
 class WorkflowTransitionTriggerEvent(models.Model):
     transition = models.ForeignKey(
         on_delete=models.CASCADE, related_name='trigger_events',
@@ -362,6 +518,9 @@ class WorkflowInstance(models.Model):
         on_delete=models.CASCADE, related_name='workflows', to=Document,
         verbose_name=_('Document')
     )
+    context = models.TextField(
+        blank=True, verbose_name=_('Context')
+    )
 
     class Meta:
         ordering = ('workflow',)
@@ -372,15 +531,30 @@ class WorkflowInstance(models.Model):
     def __str__(self):
         return force_text(self.workflow)
 
-    def do_transition(self, transition, user=None, comment=None):
-        try:
-            if transition in self.get_current_state().origin_transitions.all():
-                self.log_entries.create(
-                    comment=comment or '', transition=transition, user=user
-                )
-        except AttributeError:
-            # No initial state has been set for this workflow
-            pass
+    def do_transition(self, transition, extra_data=None, user=None, comment=None):
+        with transaction.atomic():
+            try:
+                if transition in self.get_current_state().origin_transitions.all():
+                    if extra_data:
+                        context = self.loads()
+                        context.update(extra_data)
+                        self.dumps(context=context)
+
+                    self.log_entries.create(
+                        comment=comment or '',
+                        extra_data=json.dumps(extra_data or {}),
+                        transition=transition, user=user
+                    )
+            except AttributeError:
+                # No initial state has been set for this workflow
+                pass
+
+    def dumps(self, context):
+        """
+        Serialize the context data.
+        """
+        self.context = json.dumps(context)
+        self.save()
 
     def get_absolute_url(self):
         return reverse(
@@ -390,10 +564,12 @@ class WorkflowInstance(models.Model):
         )
 
     def get_context(self):
-        return {
+        context = {
             'document': self.document, 'workflow': self.workflow,
             'workflow_instance': self,
         }
+        context['workflow_instance_context'] = self.loads()
+        return context
 
     def get_current_state(self):
         """
@@ -459,6 +635,12 @@ class WorkflowInstance(models.Model):
             """
             return WorkflowTransition.objects.none()
 
+    def loads(self):
+        """
+        Deserialize the context data.
+        """
+        return json.loads(self.context or '{}')
+
 
 @python_2_unicode_compatible
 class WorkflowInstanceLogEntry(models.Model):
@@ -485,6 +667,7 @@ class WorkflowInstanceLogEntry(models.Model):
         to=settings.AUTH_USER_MODEL, verbose_name=_('User')
     )
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
+    extra_data = models.TextField(blank=True, verbose_name=_('Extra data'))
 
     class Meta:
         ordering = ('datetime',)
@@ -498,32 +681,46 @@ class WorkflowInstanceLogEntry(models.Model):
         if self.transition not in self.workflow_instance.get_transition_choices(_user=self.user):
             raise ValidationError(_('Not a valid transition choice.'))
 
-    def save(self, *args, **kwargs):
-        result = super(WorkflowInstanceLogEntry, self).save(*args, **kwargs)
-        context = self.workflow_instance.get_context()
-        context.update(
-            {
-                'entry_log': self
-            }
-        )
-
-        for action in self.transition.origin_state.exit_actions.filter(enabled=True):
-            context.update(
-                {
-                    'action': action,
-                }
-            )
-            action.execute(context=context)
-
-        for action in self.transition.destination_state.entry_actions.filter(enabled=True):
-            context.update(
-                {
-                    'action': action,
-                }
-            )
-            action.execute(context=context)
+    def get_extra_data(self):
+        result = {}
+        for key, value in self.loads().items():
+            result[self.transition.fields.get(name=key).label] = value
 
         return result
+
+    def loads(self):
+        """
+        Deserialize the context data.
+        """
+        return json.loads(self.extra_data or '{}')
+
+    def save(self, *args, **kwargs):
+        with transaction.atomic():
+            result = super(WorkflowInstanceLogEntry, self).save(*args, **kwargs)
+            context = self.workflow_instance.get_context()
+            context.update(
+                {
+                    'entry_log': self
+                }
+            )
+
+            for action in self.transition.origin_state.exit_actions.filter(enabled=True):
+                context.update(
+                    {
+                        'action': action,
+                    }
+                )
+                action.execute(context=context)
+
+            for action in self.transition.destination_state.entry_actions.filter(enabled=True):
+                context.update(
+                    {
+                        'action': action,
+                    }
+                )
+                action.execute(context=context)
+
+            return result
 
 
 class WorkflowRuntimeProxy(Workflow):

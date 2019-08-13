@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:38-0400\n"
-"PO-Revision-Date: 2019-06-15 07:49+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-07-05 01:30-0400\n"
+"PO-Revision-Date: 2019-06-17 20:38+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,7 +78,7 @@ msgstr "Nombre de pages"
 msgid "Total documents"
 msgstr "Nombre total de documents"
 
-#: dashboard_widgets.py:66 views/trashed_document_views.py:134
+#: dashboard_widgets.py:66 views/trashed_document_views.py:136
 msgid "Documents in trash"
 msgstr "Documents dans la corbeille"
 
@@ -392,7 +392,7 @@ msgstr "Créer un type de document"
 
 #: links.py:371
 msgid "Deletion policies"
-msgstr ""
+msgstr "Règle de suppression"
 
 #: links.py:375 links.py:396
 msgid "Edit"
@@ -960,7 +960,7 @@ msgstr ""
 
 #: views/document_page_views.py:59
 msgid "No document pages available"
-msgstr ""
+msgstr "Aucune page de document disponible"
 
 #: views/document_page_views.py:61
 #, python-format
@@ -1009,7 +1009,7 @@ msgstr "Êtes-vous sûr de vouloir supprimer le type de document : %s ?"
 #: views/document_type_views.py:125
 #, python-format
 msgid "Deletion policies for document type: %s"
-msgstr ""
+msgstr "Règles de suppression pour le type de document: %s"
 
 #: views/document_type_views.py:144
 #, python-format
@@ -1332,68 +1332,68 @@ msgstr "Recherche de documents dupliqués ?"
 msgid "Duplicated document scan queued successfully."
 msgstr "Recherche de documents dupliqués effectuée avec succès."
 
-#: views/trashed_document_views.py:37
+#: views/trashed_document_views.py:39
 #, python-format
 msgid "%(count)d document moved to the trash."
 msgstr "%(count)d document déplacé dans la corbeille."
 
-#: views/trashed_document_views.py:40
+#: views/trashed_document_views.py:42
 #, python-format
 msgid "%(count)d documents moved to the trash."
 msgstr "%(count)d documents déplacés dans la corbeille."
 
-#: views/trashed_document_views.py:48
+#: views/trashed_document_views.py:50
 msgid "Move the selected document to the trash?"
 msgid_plural "Move the selected documents to the trash?"
 msgstr[0] "Déplacez le document sélectionné dans la corbeille?"
 msgstr[1] "Déplacez les documents sélectionnés vers la corbeille?"
 
-#: views/trashed_document_views.py:62
+#: views/trashed_document_views.py:64
 msgid "Empty trash?"
 msgstr "Vider la corbeille ?"
 
-#: views/trashed_document_views.py:76
+#: views/trashed_document_views.py:78
 msgid "Trash emptied successfully"
 msgstr "Corbeille vidée avec succès"
 
-#: views/trashed_document_views.py:85
+#: views/trashed_document_views.py:87
 #, python-format
 msgid "%(count)d trashed document deleted."
 msgstr "%(count)d document supprimé de la corbeille."
 
-#: views/trashed_document_views.py:88
+#: views/trashed_document_views.py:90
 #, python-format
 msgid "%(count)d trashed documents deleted."
 msgstr "%(count)d documents supprimés de la corbeille."
 
-#: views/trashed_document_views.py:96
+#: views/trashed_document_views.py:98
 msgid "Delete the selected trashed document?"
 msgid_plural "Delete the selected trashed documents?"
 msgstr[0] "Supprimer le document sélectionné dans la corbeille?"
 msgstr[1] "Supprimer les documents de la corbeille sélectionnés?"
 
-#: views/trashed_document_views.py:127
+#: views/trashed_document_views.py:129
 msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
 msgstr "Pour éviter toute perte de données, les documents ne sont pas supprimés instantanément. Tout d'abord, ils sont placés à la corbeille. De là, ils peuvent être supprimés ou restaurés."
 
-#: views/trashed_document_views.py:132
+#: views/trashed_document_views.py:134
 msgid "There are no documents in the trash can"
 msgstr "Il n'y a pas de documents dans la corbeille"
 
-#: views/trashed_document_views.py:145
+#: views/trashed_document_views.py:147
 #, python-format
 msgid "%(count)d trashed document restored."
 msgstr "%(count)d document restauré de la corbeille."
 
-#: views/trashed_document_views.py:148
+#: views/trashed_document_views.py:150
 #, python-format
 msgid "%(count)d trashed documents restored."
 msgstr "%(count)d documents restaurés de la corbeille."
 
-#: views/trashed_document_views.py:156
+#: views/trashed_document_views.py:158
 msgid "Restore the selected trashed document?"
 msgid_plural "Restore the selected trashed documents?"
 msgstr[0] "Restaurer le document sélectionné dans la corbeille?"

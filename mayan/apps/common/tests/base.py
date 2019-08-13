@@ -7,19 +7,22 @@ from django_downloadview import assert_download_response
 from mayan.apps.acls.tests.mixins import ACLTestCaseMixin
 from mayan.apps.permissions.classes import Permission
 from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.user_management.tests.mixins import UserTestMixin
 
 from .mixins import (
-    ClientMethodsTestCaseMixin, ContentTypeCheckTestCaseMixin,
-    ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
-    RandomPrimaryKeyModelMonkeyPatchMixin, SilenceLoggerTestCaseMixin,
-    TempfileCheckTestCasekMixin, TestViewTestCaseMixin
+    ClientMethodsTestCaseMixin, ConnectionsCheckTestCaseMixin,
+    ContentTypeCheckTestCaseMixin, ModelTestCaseMixin,
+    OpenFileCheckTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin,
+    SilenceLoggerTestCaseMixin, TempfileCheckTestCasekMixin,
+    TestViewTestCaseMixin
 )
 
 
 class BaseTestCase(
-    SilenceLoggerTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin,
-    ACLTestCaseMixin, ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
-    TempfileCheckTestCasekMixin, TestCase
+    SilenceLoggerTestCaseMixin, ConnectionsCheckTestCaseMixin,
+    RandomPrimaryKeyModelMonkeyPatchMixin, ACLTestCaseMixin,
+    ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
+    TempfileCheckTestCasekMixin, UserTestMixin, TestCase
 ):
     """
     This is the most basic test case class any test in the project should use.

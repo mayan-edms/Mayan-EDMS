@@ -26,22 +26,22 @@ urlpatterns_current_user = [
 
 urlpatterns_groups = [
     url(
-        regex=r'^group/list/$', view=GroupListView.as_view(), name='group_list'
+        regex=r'^groups/$', view=GroupListView.as_view(), name='group_list'
     ),
     url(
-        regex=r'^group/create/$', view=GroupCreateView.as_view(),
+        regex=r'^groups/create/$', view=GroupCreateView.as_view(),
         name='group_create'
     ),
     url(
-        regex=r'^group/(?P<pk>\d+)/edit/$', view=GroupEditView.as_view(),
-        name='group_edit'
-    ),
-    url(
-        regex=r'^group/(?P<pk>\d+)/delete/$', view=GroupDeleteView.as_view(),
+        regex=r'^groups/(?P<pk>\d+)/delete/$', view=GroupDeleteView.as_view(),
         name='group_delete'
     ),
     url(
-        regex=r'^group/(?P<pk>\d+)/users/$', view=GroupUsersView.as_view(),
+        regex=r'^groups/(?P<pk>\d+)/edit/$', view=GroupEditView.as_view(),
+        name='group_edit'
+    ),
+    url(
+        regex=r'^groups/(?P<pk>\d+)/users/$', view=GroupUsersView.as_view(),
         name='group_members'
     )
 ]

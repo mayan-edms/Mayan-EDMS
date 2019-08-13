@@ -22,27 +22,8 @@ class DocumentManager(models.Manager):
 
     def get_queryset(self):
         return TrashCanQuerySet(
-            self.model, using=self._db
+            model=self.model, using=self._db
         ).filter(in_trash=False).filter(is_stub=False)
-
-    def invalidate_cache(self):
-        for document in self.model.objects.all():
-            document.invalidate_cache()
-
-
-class DocumentPageCachedImage(models.Manager):
-    def get_by_natural_key(self, filename, document_page_natural_key):
-        DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentPage'
-        )
-        try:
-            document_page = DocumentPage.objects.get_by_natural_key(
-                *document_page_natural_key
-            )
-        except DocumentPage.DoesNotExist:
-            raise self.model.DoesNotExist
-
-        return self.get(document_page__pk=document_page.pk, filename=filename)
 
 
 class DocumentPageManager(models.Manager):
@@ -56,6 +37,11 @@ class DocumentPageManager(models.Manager):
             raise self.model.DoesNotExist
 
         return self.get(document_version__pk=document_version.pk, page_number=page_number)
+
+    def get_queryset(self):
+        return models.QuerySet(
+            model=self.model, using=self._db
+        ).filter(enabled=True)
 
 
 class DocumentTypeManager(models.Manager):

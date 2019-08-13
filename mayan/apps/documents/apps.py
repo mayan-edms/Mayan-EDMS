@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.db.models.signals import post_delete
+from django.db.models.signals import post_delete, post_migrate
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -43,11 +43,11 @@ from .events import (
     event_document_view
 )
 from .handlers import (
-    handler_create_default_document_type, handler_remove_empty_duplicates_lists,
-    handler_scan_duplicates_for,
+    handler_create_default_document_type, handler_create_document_cache,
+    handler_remove_empty_duplicates_lists, handler_scan_duplicates_for
 )
 from .links import (
-    link_clear_image_cache, link_document_clear_transformations,
+    link_document_clear_transformations,
     link_document_clone_transformations, link_document_delete,
     link_document_document_type_edit, link_document_download,
     link_document_duplicates_list, link_document_edit,
@@ -60,6 +60,8 @@ from .links import (
     link_document_multiple_download, link_document_multiple_favorites_add,
     link_document_multiple_favorites_remove, link_document_multiple_restore,
     link_document_multiple_trash, link_document_multiple_update_page_count,
+    link_document_page_disable, link_document_page_multiple_disable,
+    link_document_page_enable, link_document_page_multiple_enable,
     link_document_page_navigation_first, link_document_page_navigation_last,
     link_document_page_navigation_next, link_document_page_navigation_previous,
     link_document_page_return, link_document_page_rotate_left,
@@ -98,6 +100,11 @@ from .widgets import (
     DocumentPageThumbnailWidget, widget_document_page_number,
     widget_document_version_page_number
 )
+
+
+def is_document_page_enabled(context):
+    return context['object'].enabled
+
 
 
 class DocumentsApp(MayanAppConfig):
@@ -214,11 +221,20 @@ class DocumentsApp(MayanAppConfig):
         ModelPermission.register_inheritance(
             model=Document, related='document_type',
         )
+        ModelPermission.register_manager(
+            model=Document, manager_name='passthrough'
+        )
         ModelPermission.register_inheritance(
             model=DocumentPage, related='document_version__document',
         )
+        ModelPermission.register_manager(
+            model=DocumentPage, manager_name='passthrough'
+        )
         ModelPermission.register_inheritance(
             model=DocumentPageResult, related='document_version__document',
+        )
+        ModelPermission.register_manager(
+            model=DocumentPageResult, manager_name='passthrough'
         )
         ModelPermission.register_inheritance(
             model=DocumentTypeFilename, related='document_type',
@@ -262,12 +278,20 @@ class DocumentsApp(MayanAppConfig):
         # DocumentPage
         SourceColumn(
             attribute='get_label', is_identifier=True,
-            is_object_absolute_url=True, source=DocumentPage
+            is_object_absolute_url=True, source=DocumentPage,
+            widget_condition=is_document_page_enabled
         )
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             ), label=_('Thumbnail'), source=DocumentPage
+        )
+        SourceColumn(
+            attribute='enabled', include_label=True, source=DocumentPage,
+            widget=TwoStateWidget
+        )
+        SourceColumn(
+            attribute='page_number', include_label=True, source=DocumentPage
         )
 
         SourceColumn(
@@ -311,15 +335,8 @@ class DocumentsApp(MayanAppConfig):
             source=DeletedDocument
         )
         SourceColumn(
-            func=lambda context: document_page_thumbnail_widget.render(
-                instance=context['object']
-            ), label=_('Thumbnail'), source=DeletedDocument
-        )
-        SourceColumn(
-            attribute='document_type', is_sortable=True, source=DeletedDocument
-        )
-        SourceColumn(
-            attribute='deleted_date_time', source=DeletedDocument
+            attribute='deleted_date_time', include_label=True, order=99,
+            source=DeletedDocument
         )
 
         # DocumentVersion
@@ -384,7 +401,7 @@ class DocumentsApp(MayanAppConfig):
 
         menu_setup.bind_links(links=(link_document_type_setup,))
         menu_tools.bind_links(
-            links=(link_clear_image_cache, link_duplicated_document_scan)
+            links=(link_duplicated_document_scan,)
         )
 
         # Document type links
@@ -510,6 +527,16 @@ class DocumentsApp(MayanAppConfig):
                 link_document_page_navigation_last
             ), sources=(DocumentPage,)
         )
+        menu_multi_item.bind_links(
+            links=(
+                link_document_page_multiple_disable,
+                link_document_page_multiple_enable
+            ), sources=(DocumentPage,)
+        )
+        menu_object.bind_links(
+            links=(link_document_page_disable, link_document_page_enable),
+            sources=(DocumentPage,)
+        )
         menu_list_facet.bind_links(
             links=(link_transformation_list,), sources=(DocumentPage,)
         )
@@ -533,6 +560,10 @@ class DocumentsApp(MayanAppConfig):
         post_initial_setup.connect(
             dispatch_uid='handler_create_default_document_type',
             receiver=handler_create_default_document_type
+        )
+        post_migrate.connect(
+            dispatch_uid='documents_handler_create_document_cache',
+            receiver=handler_create_document_cache,
         )
         post_version_upload.connect(
             dispatch_uid='handler_scan_duplicates_for',

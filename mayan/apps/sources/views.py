@@ -2,8 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from furl import furl
-
 from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
@@ -257,9 +255,8 @@ class UploadInteractiveView(UploadBaseView):
             except Exception as exception:
                 messages.error(message=exception, request=self.request)
 
-            querystring = furl()
-            querystring.args.update(self.request.GET)
-            querystring.args.update(self.request.POST)
+            querystring = self.request.GET.copy()
+            querystring.update(self.request.POST)
 
             try:
                 task_source_handle_upload.apply_async(
@@ -271,7 +268,7 @@ class UploadInteractiveView(UploadBaseView):
                             filename=force_text(shared_uploaded_file)
                         ),
                         language=forms['document_form'].cleaned_data.get('language'),
-                        querystring=querystring.tostr(),
+                        querystring=querystring.urlencode(),
                         shared_uploaded_file_id=shared_uploaded_file.pk,
                         source_id=self.source.pk,
                         user_id=user_id,

@@ -11,41 +11,9 @@
                 {% include 'appearance/no_results.html' %}
             </div>
         {% else %}
-            <h4>
-                {% if page_obj %}
-                    {% if page_obj.paginator.num_pages != 1 %}
-                        {% blocktrans with page_obj.start_index as start and page_obj.end_index as end and page_obj.paginator.object_list|length as total and page_obj.number as page_number and page_obj.paginator.num_pages as total_pages %}Total ({{ start }} - {{ end }} out of {{ total }}) (Page {{ page_number }} of {{ total_pages }}){% endblocktrans %}
-                    {% else %}
-                        {% blocktrans with page_obj.paginator.object_list|length as total %}Total: {{ total }}{% endblocktrans %}
-                    {% endif %}
-                {% else %}
-                    {% blocktrans with object_list|length as total %}Total: {{ total }}{% endblocktrans %}
-                {% endif %}
-            </h4>
-            <hr>
+            {% include "appearance/list_header.html" %}
+            {% navigation_resolve_menu name='multi item' sort_results=True source=object_list.0 as links_multi_menus_results %}
             <div class="well center-block">
-                <div class="clearfix">
-                    <div class="pull-right">
-                        <form action="{% url 'common:multi_object_action_view' %}" class="form-multi-object-action" method="get">
-                            {% if object_list %}
-                                {% if not hide_multi_item_actions %}
-                                    {% get_multi_item_links_form object_list %}
-                                {% endif %}
-                                {% if multi_item_actions %}
-                                    <fieldset style="margin-top: -10px;">
-                                        <input class="check-all" type="checkbox"/>&nbsp;
-                                        {{ multi_item_form }}
-                                    </fieldset>
-                                {% endif %}
-                            {% endif %}
-                        </form>
-                    </div>
-                </div>
-
-                {% if object_list %}
-                    <hr style="border-bottom: 1px solid lightgrey;">
-                {% endif %}
-
                 <div class="row row-items">
                     {% for object in object_list %}
                         <div class="{{ column_class|default:'col-xs-12 col-sm-4 col-md-3 col-lg-2' }}">
@@ -53,9 +21,9 @@
                                 <div class="panel-heading">
                                     <div class="form-group">
                                         <div class="checkbox">
-                                            <label for="id_indexes_0">
-                                                {% if multi_item_actions %}
-                                                    <input class="form-multi-object-action-checkbox check-all-slave checkbox" type="checkbox" name="pk_{{ object.pk }}" />
+                                            <label for="id_indexes_0" style="cursor: auto;">
+                                                {% if links_multi_menus_results %}
+                                                    <input class="form-multi-object-action-checkbox check-all-slave checkbox" name="pk_{{ object.pk }}" style="cursor: pointer;" type="checkbox" />
                                                 {% endif %}
 
                                                 <span style="color: white; word-break: break-all; overflow-wrap: break-word;">
@@ -68,12 +36,7 @@
                                                     {% else %}
                                                         {% navigation_get_source_columns source=object only_identifier=True as source_column %}
                                                         {% navigation_source_column_resolve column=source_column as column_value %}
-
-                                                        {% if source_column.is_attribute_absolute_url or source_column.is_object_absolute_url %}
-                                                            <a href="{% navigation_source_column_get_absolute_url source_column=source_column obj=object %}">{{ column_value }}</a>
-                                                        {% else %}
-                                                            {{ column_value }}
-                                                        {% endif %}
+                                                        {{ column_value }}
                                                     {% endif %}
                                                 </span>
                                             </label>
@@ -82,11 +45,10 @@
 
                                 </div>
                                 <div class="panel-body">
-
                                     {% if not hide_columns %}
                                         {% navigation_get_source_columns source=object exclude_identifier=True as source_columns %}
                                         {% for column in source_columns %}
-                                            <div class="text-center" style="">{% navigation_source_column_resolve column=column as column_value %}{% if column_value != '' %}{% if column.include_label %}{{ column.label }}: {% endif %}{{ column_value }}{% endif %}</div>
+                                            <div class="text-center" style="">{% navigation_source_column_resolve column=column as column_value %}{% if column_value != '' %}{% if column.include_label %}<span class="source-column-label">{{ column.label }}</span>: {% endif %}{{ column_value }}{% endif %}</div>
                                         {% endfor %}
                                     {% endif %}
 
@@ -136,7 +98,6 @@
                         </div>
                     {% endfor %}
                 </div>
-                {% include 'pagination/pagination.html' %}
             </div>
         {% endif %}
     </div>

@@ -4,6 +4,7 @@ from django.template.loader import get_template
 
 
 class IconDriver(object):
+    context = {}
     _registry = {}
 
     @classmethod
@@ -14,6 +15,17 @@ class IconDriver(object):
     def register(cls, driver_class):
         cls._registry[driver_class.name] = driver_class
 
+    def get_context(self):
+        return self.context
+
+    def render(self, extra_context=None):
+        context = self.get_context()
+        if extra_context:
+            context.update(extra_context)
+        return get_template(template_name=self.template_name).render(
+            context=context
+        )
+
 
 class FontAwesomeDriver(IconDriver):
     name = 'fontawesome'
@@ -22,10 +34,8 @@ class FontAwesomeDriver(IconDriver):
     def __init__(self, symbol):
         self.symbol = symbol
 
-    def render(self):
-        return get_template(template_name=self.template_name).render(
-            context={'symbol': self.symbol}
-        )
+    def get_context(self):
+        return {'symbol': self.symbol}
 
 
 class FontAwesomeDualDriver(IconDriver):
@@ -36,23 +46,21 @@ class FontAwesomeDualDriver(IconDriver):
         self.primary_symbol = primary_symbol
         self.secondary_symbol = secondary_symbol
 
-    def render(self):
-        return get_template(template_name=self.template_name).render(
-            context={
-                'data': (
-                    {
-                        'class': 'fas fa-circle',
-                        'transform': 'down-3 right-10',
-                        'mask': 'fas fa-{}'.format(self.primary_symbol)
-                    },
-                    {'class': 'far fa-circle', 'transform': 'down-3 right-10'},
-                    {
-                        'class': 'fas fa-{}'.format(self.secondary_symbol),
-                        'transform': 'shrink-4 down-3 right-10'
-                    },
-                )
-            }
-        )
+    def get_context(self):
+        return {
+            'data': (
+                {
+                    'class': 'fas fa-circle',
+                    'transform': 'down-3 right-10',
+                    'mask': 'fas fa-{}'.format(self.primary_symbol)
+                },
+                {'class': 'far fa-circle', 'transform': 'down-3 right-10'},
+                {
+                    'class': 'fas fa-{}'.format(self.secondary_symbol),
+                    'transform': 'shrink-4 down-3 right-10'
+                },
+            )
+        }
 
 
 class FontAwesomeCSSDriver(IconDriver):
@@ -62,10 +70,8 @@ class FontAwesomeCSSDriver(IconDriver):
     def __init__(self, css_classes):
         self.css_classes = css_classes
 
-    def render(self):
-        return get_template(template_name=self.template_name).render(
-            context={'css_classes': self.css_classes}
-        )
+    def get_context(self):
+        return {'css_classes': self.css_classes}
 
 
 class FontAwesomeMasksDriver(IconDriver):
@@ -75,23 +81,23 @@ class FontAwesomeMasksDriver(IconDriver):
     def __init__(self, data):
         self.data = data
 
-    def render(self):
-        return get_template(template_name=self.template_name).render(
-            context={'data': self.data}
-        )
+    def get_context(self):
+        return {'data': self.data}
 
 
 class FontAwesomeLayersDriver(IconDriver):
     name = 'fontawesome-layers'
     template_name = 'appearance/icons/font_awesome_layers.html'
 
-    def __init__(self, data):
+    def __init__(self, data, shadow_class=None):
         self.data = data
+        self.shadow_class = shadow_class
 
-    def render(self):
-        return get_template(template_name=self.template_name).render(
-            context={'data': self.data}
-        )
+    def get_context(self):
+        return {
+            'data': self.data,
+            'shadow_class': self.shadow_class,
+        }
 
 
 class Icon(object):

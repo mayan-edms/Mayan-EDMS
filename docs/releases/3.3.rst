@@ -1,0 +1,207 @@
+Version 3.3
+===========
+
+Released: XX XX, 2019
+
+
+Changes
+-------
+
+- Add support for icon shadows.
+- Add icons and no-result template to the object error log view and
+  links.
+- Use Select2 widget for the document type selection form.
+- Backport the vertical main menu update. This update splits the previous
+  main menu into a new menu in the same location as the previous one
+  now called the top bar, and a new vertical main menu on the left side.
+  The vertical menu remain open even when clicking on items and upon
+  a browser refresh will also restore its state to match the selected
+  view.
+- Backport workflow preview refactor. GitLab issue #532.
+- Add support for source column inheritance.
+- Add support for source column exclusion.
+- Backport workflow context support.
+- Backport workflow transitions field support.
+- Backport workflow email action.
+- Backport individual index rebuild support.
+- Rename the installjavascript command to installdependencies.
+- Remove database conversion command.
+- Remove support for quoted configuration entries. Support unquoted,
+  nested dictionaries in the configuration. Requires manual
+  update of existing config.yml files.
+- Support user specified locations for the configuration file with the
+  CONFIGURATION_FILEPATH (MAYAN_CONFIGURATION_FILEPATH environment variable), and
+  CONFIGURATION_LAST_GOOD_FILEPATH
+  (MAYAN_CONFIGURATION_LAST_GOOD_FILEPATH environment variable) settings.
+- Move bootstrapped settings code to their own module in the smart_settings apps.
+- Remove individual database configuration options. All database configuration
+  is now done using MAYAN_DATABASES to mirror Django way of doing database setup.
+- Added support for YAML encoded environment variables to the platform
+  templates apps.
+- Move YAML code to its own module. Code now resides in common.serialization
+  in the form of two new functions: yaml_load and yaml_dump.
+- Move Django and Celery settings. Django settings now reside in the smart
+  settings app. Celery settings now reside in the task manager app.
+- Backport FakeStorageSubclass from versions/next. Placeholder class to allow
+  serializing the real storage subclass to support migrations.
+  Used by all configurable storages.
+- Support checking in and out multiple documents.
+- Remove encapsulate helper.
+- Add support for menu inheritance.
+- Emphasize source column labels.
+- Backport file cache manager app.
+- Convert document image cache to use file cache manager app.
+  Add setting DOCUMENTS_CACHE_MAXIMUM_SIZE defaults to 500 MB.
+- Update Celery to version 4.3.0. Settings changed:
+  MAYAN_BROKER_URL to MAYAN_CELERY_BROKER_URL,
+  MAYAN_CELERY_ALWAYS_EAGER to MAYAN_CELERY_TASK_ALWAYS_EAGER.
+- Replace djcelery and replace it with django-celery-beat.
+- Update Celery to version 4.3.0 with 55e9b2263cbdb9b449361412fd18d8ee0a442dd3
+  from versions/next, code from GitLab issue #594 and GitLab merge request !55.
+  Thanks to Jakob Haufe (@sur5r) and Jesaja Everling (@jeverling)
+  for much of the research and code updates.
+- Support wildcard MIME type associations for the file metadata drivers.
+- Rename MAYAN_GUID to MAYAN_GID
+- Update Gunicorn to use sync workers.
+- Include devpi-server as a development dependency.
+- Update default Docker stack file.
+- Remove Redis from the Docker image.
+- Add Celery flower to the Docker image.
+- Allow PIP proxying to the Docker image during build.
+- Default Celery worker concurrency to 0 (auto).
+- Set DJANGO_SETTINGS_MODULE environment variable to make it
+  available to sub processes.
+- Add entrypoint commands to run single workers, single gunicorn
+  or single celery commands like "flower".
+- Add platform template to return queues for a worker.
+- Remove task inspection from task manager app.
+- Move pagination navigation inside the toolbar.
+- Remove document image clear link and view.
+  This is now handled by the file caching app.
+- Add web links app.
+- Add support to display column help text
+  as a tooltip.
+- Update numeric dashboard widget to display
+  thousand commas.
+- Add support for disabling document pages.
+
+Removals
+--------
+
+- Database conversion. Reason for removal. The database conversions support
+  provided by this feature (SQLite to PostgreSQL) was being confused with
+  database migrations and upgrades.
+
+  Database upgrades are the responsibility of the app and the framework.
+  Database conversions however are not the responsibility of the app (Mayan),
+  they are the responsibility of the framework.
+
+  Database conversion is outside the scope of what Mayan does but we added
+  the code, management command, instructions and testing setup to provide
+  this to our users until the framework (Django) decided to add this
+  themselves (like they did with migrations).
+
+  Continued confusion about the purpose of the feature and confusion about
+  how errors with this feature were a reflexion of the code quality of
+  Mayannecessitated the removal of the database conversion feature.
+
+- Django environ
+
+
+Upgrading from a previous version
+---------------------------------
+
+If installed via Python's PIP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Remove deprecated requirements::
+
+    sudo -u mayan curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt -o /tmp/removals.txt && sudo -u mayan /opt/mayan-edms/bin/pip uninstall -y -r /tmp/removals.txt
+
+Type in the console::
+
+    /opt/mayan-edms/bin/pip install mayan-edms==3.3
+
+the requirements will also be updated automatically.
+
+
+Using Git
+^^^^^^^^^
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    git reset --hard HEAD
+    git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Remove deprecated requirements::
+
+    pip uninstall -y -r removals.txt
+
+Next upgrade/add the new requirements::
+
+    pip install --upgrade -r requirements.txt
+
+
+Common steps
+^^^^^^^^^^^^
+
+Perform these steps after updating the code from either step above.
+
+Make a backup of your supervisord file::
+
+    sudo cp /etc/supervisor/conf.d/mayan.conf /etc/supervisor/conf.d/mayan.conf.bck
+
+Update the supervisord configuration file. Replace the environment
+variables values show here with your respective settings. This step will refresh
+the supervisord configuration file with the new queues and the latest
+recommended layout::
+
+    sudo MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+    MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
+    /opt/mayan-edms/bin/mayan-edms.py platformtemplate supervisord > /etc/supervisor/conf.d/mayan.conf
+
+Edit the supervisord configuration file and update any setting the template
+generator missed::
+
+    sudo vi /etc/supervisor/conf.d/mayan.conf
+
+Migrate existing database schema with::
+
+    sudo -u mayan MAYAN_MEDIA_ROOT=/opt/mayan-edms/media /opt/mayan-edms/bin/mayan-edms.py performupgrade
+
+Add new static media::
+
+    sudo -u mayan MAYAN_MEDIA_ROOT=/opt/mayan-edms/media /opt/mayan-edms/bin/mayan-edms.py preparestatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- Update quoted settings to be unquoted:
+
+  - COMMON_SHARED_STORAGE_ARGUMENTS
+  - CONVERTER_GRAPHICS_BACKEND_ARGUMENTS
+  - DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS
+  - DOCUMENTS_STORAGE_BACKEND_ARGUMENTS
+  - FILE_METADATA_DRIVERS_ARGUMENTS
+  - SIGNATURES_STORAGE_BACKEND_ARGUMENTS
+
+
+Bugs fixed or issues closed
+---------------------------
+
+- :gitlab-issue:`526` RuntimeWarning: Never call result.get() within a task!
+- :gitlab-issue:`532` Workflow preview isn't updated right after transitions are modified
+- :gitlab-issue:`540` hint-outdated/update documentation
+- :gitlab-issue:`594` 3.2b1: Unable to install/run under Python 3.5/3.6/3.7
+- :gitlab-issue:`634` Failing docker entrypoint when using secret config
+- :gitlab-issue:`635` Build a docker image for Python3
+- :gitlab-issue:`644` Update sane-utils package in docker image.
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

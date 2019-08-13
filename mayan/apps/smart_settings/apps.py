@@ -11,6 +11,7 @@ from .links import (
     link_namespace_detail, link_namespace_list, link_namespace_root_list,
     link_setting_edit
 )
+from .settings import *  # NOQA
 from .widgets import setting_widget
 
 

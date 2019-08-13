@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-15 03:39-0400\n"
-"PO-Revision-Date: 2019-05-31 12:44+0000\n"
+"POT-Creation-Date: 2019-07-05 01:32-0400\n"
+"PO-Revision-Date: 2019-07-01 05:54+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -18,13 +18,17 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:41 events.py:8 models.py:36 models.py:102 permissions.py:7
+#: apps.py:43 events.py:8 models.py:36 models.py:102 permissions.py:7
 msgid "Permissions"
 msgstr "Atļaujas"
 
 #: classes.py:84
 msgid "Insufficient permissions."
 msgstr "Nepietiekamas atļaujas."
+
+#: dashboard_widgets.py:15
+msgid "Total roles"
+msgstr "Kopējās lomas"
 
 #: events.py:12
 msgid "Role created"

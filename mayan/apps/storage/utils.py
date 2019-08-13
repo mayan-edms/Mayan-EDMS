@@ -5,6 +5,8 @@ import os
 import shutil
 import tempfile
 
+from django.utils.module_loading import import_string
+
 from .settings import setting_temporary_directory
 
 logger = logging.getLogger(__name__)
@@ -20,13 +22,10 @@ def NamedTemporaryFile(*args, **kwargs):
     return tempfile.NamedTemporaryFile(*args, **kwargs)
 
 
-def fs_cleanup(filename, file_descriptor=None, suppress_exceptions=True):
+def fs_cleanup(filename, suppress_exceptions=True):
     """
-    Tries to remove the given filename. Ignores non-existent files
+    Tries to remove the given filename. Ignores non-existent files.
     """
-    if file_descriptor:
-        os.close(file_descriptor)
-
     try:
         os.remove(filename)
     except OSError:
@@ -39,7 +38,34 @@ def fs_cleanup(filename, file_descriptor=None, suppress_exceptions=True):
                 raise
 
 
+def get_storage_subclass(dotted_path):
+    """
+    Import a storage class and return a subclass that will always return eq
+    True to avoid creating a new migration when for runtime storage class
+    changes.
+    """
+    imported_storage_class = import_string(dotted_path=dotted_path)
+
+    class StorageSubclass(imported_storage_class):
+        def __init__(self, *args, **kwargs):
+            return super(StorageSubclass, self).__init__(*args, **kwargs)
+
+        def __eq__(self, other):
+            return True
+
+        def deconstruct(self):
+            return ('mayan.apps.storage.classes.FakeStorageSubclass', (), {})
+
+    return StorageSubclass
+
+
 def mkdtemp(*args, **kwargs):
+    """
+    Creates a temporary directory in the most secure manner possible.
+    There are no race conditions in the directory's creation.
+    The directory is readable, writable, and searchable only by the creating
+    user ID.
+    """
     kwargs.update({'dir': setting_temporary_directory.value})
     return tempfile.mkdtemp(*args, **kwargs)
 
