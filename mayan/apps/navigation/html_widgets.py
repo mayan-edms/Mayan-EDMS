@@ -12,4 +12,3 @@ class SourceColumnLinkWidget(object):
                 'column': self.column, 'value': value
             }
         )
-

@@ -355,8 +355,8 @@ class DocumentCheckoutViewTestCase(
 
 class NewVersionBlockViewTestCase(
     DocumentCheckoutTestMixin, DocumentCheckoutViewTestMixin,
-    GenericDocumentViewTestCase):
-
+    GenericDocumentViewTestCase
+):
     def test_document_check_out_new_version(self):
         """
         Gitlab issue #231

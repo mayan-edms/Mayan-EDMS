@@ -17,8 +17,8 @@ from mayan.apps.navigation.classes import SourceColumn
 from .classes import StagingFile
 from .dependencies import *  # NOQA
 from .handlers import (
-    handler_copy_transformations_to_version, handler_create_default_document_source,
-    handler_initialize_periodic_tasks
+    handler_copy_transformations_to_version,
+    handler_create_default_document_source, handler_initialize_periodic_tasks
 )
 from .links import (
     link_document_create_multiple, link_setup_sources,

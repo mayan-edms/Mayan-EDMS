@@ -106,7 +106,6 @@ def is_document_page_enabled(context):
     return context['object'].enabled
 
 
-
 class DocumentsApp(MayanAppConfig):
     app_namespace = 'documents'
     app_url = 'documents'

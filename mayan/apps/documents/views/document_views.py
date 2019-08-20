@@ -2,8 +2,10 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
+from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
+from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
@@ -17,7 +19,7 @@ from mayan.apps.common.generics import (
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
     SingleObjectListView
 )
-from mayan.apps.converter.models import Transformation
+from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
 )
@@ -522,7 +524,7 @@ class DocumentTransformationsClearView(MultipleObjectConfirmActionView):
     def object_action(self, form, instance):
         try:
             for page in instance.pages.all():
-                Transformation.objects.get_for_object(obj=page).delete()
+                layer_saved_transformations.get_transformations_for(obj=page).delete()
         except Exception as exception:
             messages.error(
                 self.request, _(
@@ -545,24 +547,29 @@ class DocumentTransformationsCloneView(FormView):
                 pk=form.cleaned_data['page'].pk
             )
 
-            for page in target_pages:
-                Transformation.objects.get_for_object(obj=page).delete()
+            with transaction.atomic():
+                for page in target_pages:
+                    layer_saved_transformations.get_transformations_for(obj=page).delete()
 
-            Transformation.objects.copy(
-                source=form.cleaned_data['page'], targets=target_pages
-            )
+                layer_saved_transformations.copy_transformations(
+                    source=form.cleaned_data['page'], targets=target_pages
+                )
         except Exception as exception:
-            messages.error(
-                self.request, _(
-                    'Error deleting the page transformations for '
-                    'document: %(document)s; %(error)s.'
-                ) % {
-                    'document': instance, 'error': exception
-                }
-            )
+            if settings.DEBUG:
+                raise
+            else:
+                messages.error(
+                    message=_(
+                        'Error cloning the page transformations for '
+                        'document: %(document)s; %(error)s.'
+                    ) % {
+                        'document': instance, 'error': exception
+                    }, request=self.request
+                )
         else:
             messages.success(
-                self.request, _('Transformations cloned successfully.')
+                message=_('Transformations cloned successfully.'),
+                request=self.request
             )
 
         return super(DocumentTransformationsCloneView, self).form_valid(form=form)

@@ -7,7 +7,7 @@ from ..storages import storage_documentimagecache
 
 def operation_clear_old_cache(apps, schema_editor):
     DocumentPageCachedImage = apps.get_model(
-        'documents', 'DocumentPageCachedImage'
+        app_label='documents', model_name='DocumentPageCachedImage'
     )
 
     for cached_image in DocumentPageCachedImage.objects.using(schema_editor.connection.alias).all():

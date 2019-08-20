@@ -3,14 +3,15 @@ from __future__ import unicode_literals
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_object, menu_secondary
 from mayan.apps.navigation.classes import SourceColumn
 
 from .dependencies import *  # NOQA
 from .links import (
-    link_transformation_create, link_transformation_delete,
-    link_transformation_edit
+    link_transformation_delete, link_transformation_edit,
+    link_transformation_select
 )
 
 
@@ -24,26 +25,31 @@ class ConverterApp(MayanAppConfig):
     def ready(self):
         super(ConverterApp, self).ready()
 
-        Transformation = self.get_model(model_name='Transformation')
+        LayerTransformation = self.get_model(model_name='LayerTransformation')
 
-        SourceColumn(attribute='order', source=Transformation)
+        ModelPermission.register_inheritance(
+            model=LayerTransformation,
+            related='object_layer__content_object',
+        )
+
+        SourceColumn(attribute='order', source=LayerTransformation)
         SourceColumn(
-            source=Transformation, label=_('Transformation'),
+            source=LayerTransformation, label=_('Transformation'),
             func=lambda context: force_text(context['object'])
         )
         SourceColumn(
-            attribute='arguments', source=Transformation
+            attribute='arguments', source=LayerTransformation
         )
 
         menu_object.bind_links(
             links=(link_transformation_edit, link_transformation_delete),
-            sources=(Transformation,)
+            sources=(LayerTransformation,)
         )
         menu_secondary.bind_links(
-            links=(link_transformation_create,), sources=(Transformation,)
+            links=(link_transformation_select,), sources=(LayerTransformation,)
         )
         menu_secondary.bind_links(
-            links=(link_transformation_create,),
+            links=(link_transformation_select,),
             sources=(
                 'converter:transformation_create',
                 'converter:transformation_list'

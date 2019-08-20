@@ -65,13 +65,19 @@ def task_delete_stubs():
 
 
 @app.task()
-def task_generate_document_page_image(document_page_id, *args, **kwargs):
+def task_generate_document_page_image(document_page_id, user_id=None, **kwargs):
     DocumentPage = apps.get_model(
         app_label='documents', model_name='DocumentPage'
     )
+    User = get_user_model()
+
+    if user_id:
+        user = User.objects.get(pk=user_id)
+    else:
+        user = None
 
     document_page = DocumentPage.passthrough.get(pk=document_page_id)
-    return document_page.generate_image(*args, **kwargs)
+    return document_page.generate_image(user=user, **kwargs)
 
 
 @app.task(ignore_result=True)

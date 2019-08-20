@@ -9,7 +9,8 @@ from django.db.models import Max
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from .managers import TransformationManager
+from .classes import Layer
+from .managers import LayerTransformationManager
 from .transformations import BaseTransformation
 from .validators import YAMLValidator
 
@@ -17,7 +18,47 @@ logger = logging.getLogger(__name__)
 
 
 @python_2_unicode_compatible
-class Transformation(models.Model):
+class StoredLayer(models.Model):
+    name = models.CharField(
+        max_length=64, unique=True, verbose_name=_('Name')
+    )
+    order = models.PositiveIntegerField(
+        db_index=True, unique=True, verbose_name=_('Order')
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ('order',)
+        verbose_name = _('Stored layer')
+        verbose_name_plural = _('Stored layers')
+
+    def get_layer(self):
+        return Layer.get(name=self.name)
+
+
+class ObjectLayer(models.Model):
+    content_type = models.ForeignKey(on_delete=models.CASCADE, to=ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey(
+        ct_field='content_type', fk_field='object_id'
+    )
+    enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
+    stored_layer = models.ForeignKey(
+        on_delete=models.CASCADE, related_name='object_layers', to=StoredLayer,
+        verbose_name=_('Stored layer')
+    )
+
+    class Meta:
+        ordering = ('stored_layer__order',)
+        unique_together = ('content_type', 'object_id', 'stored_layer')
+        verbose_name = _('Object layer')
+        verbose_name_plural = _('Object layers')
+
+
+@python_2_unicode_compatible
+class LayerTransformation(models.Model):
     """
     Model that stores the transformation and transformation arguments
     for a given object
@@ -29,9 +70,10 @@ class Transformation(models.Model):
     transformation argument. Example: if a page is rotated with the Rotation
     transformation, this field will show by how many degrees it was rotated.
     """
-    content_type = models.ForeignKey(on_delete=models.CASCADE, to=ContentType)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
+    object_layer = models.ForeignKey(
+        on_delete=models.CASCADE, related_name='transformations',
+        to=ObjectLayer, verbose_name=_('Object layer')
+    )
     order = models.PositiveIntegerField(
         blank=True, db_index=True, default=0, help_text=_(
             'Order in which the transformations will be executed. If left '
@@ -48,23 +90,27 @@ class Transformation(models.Model):
             'dictionary. ie: {"degrees": 180}'
         ), validators=[YAMLValidator()], verbose_name=_('Arguments')
     )
+    enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
-    objects = TransformationManager()
+    objects = LayerTransformationManager()
 
     class Meta:
-        ordering = ('order',)
-        unique_together = ('content_type', 'object_id', 'order')
-        verbose_name = _('Transformation')
-        verbose_name_plural = _('Transformations')
+        ordering = ('object_layer__stored_layer__order', 'order',)
+        unique_together = ('object_layer', 'order')
+        verbose_name = _('Layer transformation')
+        verbose_name_plural = _('Layer transformations')
 
     def __str__(self):
         return self.get_name_display()
 
+    def get_transformation_class(self):
+        return BaseTransformation.get(name=self.name)
+
     def save(self, *args, **kwargs):
         if not self.order:
-            last_order = Transformation.objects.filter(
-                content_type=self.content_type, object_id=self.object_id
+            last_order = LayerTransformation.objects.filter(
+                object_layer=self.object_layer
             ).aggregate(Max('order'))['order__max']
             if last_order is not None:
                 self.order = last_order + 1
-        super(Transformation, self).save(*args, **kwargs)
+        super(LayerTransformation, self).save(*args, **kwargs)

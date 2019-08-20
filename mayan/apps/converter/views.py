@@ -2,59 +2,56 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.contrib.contenttypes.models import ContentType
-from django.http import Http404
-from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.generics import (
-    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
-    SingleObjectListView
+    FormView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.common.mixins import ExternalContentTypeObjectMixin
 
-from .forms import TransformationForm
-from .icons import icon_transformation_list
-from .links import link_transformation_create
-from .models import Transformation
-from .permissions import (
-    permission_transformation_create, permission_transformation_delete,
-    permission_transformation_edit, permission_transformation_view
-)
+from .classes import Layer
+from .forms import LayerTransformationForm, LayerTransformationSelectForm
+from .links import link_transformation_select
+from .models import LayerTransformation, ObjectLayer
+from .transformations import BaseTransformation
 
 logger = logging.getLogger(__name__)
 
 
-class TransformationCreateView(SingleObjectCreateView):
-    form_class = TransformationForm
-
+class LayerViewMixin(object):
     def dispatch(self, request, *args, **kwargs):
-        content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model']
+        self.layer = self.get_layer()
+        return super(LayerViewMixin, self).dispatch(
+            request=request, *args, **kwargs
         )
 
-        try:
-            self.content_object = content_type.get_object_for_this_type(
-                pk=self.kwargs['object_id']
-            )
-        except content_type.model_class().DoesNotExist:
-            raise Http404
-
-        AccessControlList.objects.check_access(
-            obj=self.content_object,
-            permissions=(permission_transformation_create,), user=request.user
+    def get_layer(self):
+        return Layer.get(
+            name=self.kwargs['layer_name']
         )
 
-        return super(TransformationCreateView, self).dispatch(
-            request, *args, **kwargs
-        )
+
+class TransformationCreateView(
+    LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectCreateView
+):
+    form_class = LayerTransformationForm
 
     def form_valid(self, form):
+        layer = self.layer
+        content_type = self.get_content_type()
+        object_layer, created = ObjectLayer.objects.get_or_create(
+            content_type=content_type, object_id=self.external_object.pk,
+            stored_layer=layer.stored_layer
+        )
+
         instance = form.save(commit=False)
-        instance.content_object = self.content_object
+        instance.content_object = self.external_object
+        instance.name = self.kwargs['transformation_name']
+        instance.object_layer = object_layer
         try:
             instance.full_clean()
             instance.save()
@@ -66,91 +63,101 @@ class TransformationCreateView(SingleObjectCreateView):
 
     def get_extra_context(self):
         return {
-            'content_object': self.content_object,
+            'content_object': self.external_object,
+            'form_field_css_classes': 'hidden' if hasattr(
+                self.get_transformation_class(), 'template_name'
+            ) else '',
+            'layer': self.layer,
+            'layer_name': self.layer.name,
             'navigation_object_list': ('content_object',),
             'title': _(
-                'Create new transformation for: %s'
-            ) % self.content_object,
+                'Create layer "%(layer)s" transformation '
+                '"%(transformation)s" for: %(object)s'
+            ) % {
+                'layer': self.layer,
+                'transformation': self.get_transformation_class(),
+                'object': self.external_object,
+            }
         }
+
+    def get_form_extra_kwargs(self):
+        return {
+            'transformation_name': self.kwargs['transformation_name']
+        }
+
+    def get_external_object_permission(self):
+        return self.layer.permissions.get('create', None)
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='converter:transformation_list', kwargs={
                 'app_label': self.kwargs['app_label'],
                 'model': self.kwargs['model'],
-                'object_id': self.kwargs['object_id']
+                'object_id': self.kwargs['object_id'],
+                'layer_name': self.kwargs['layer_name']
             }
         )
 
     def get_queryset(self):
-        return Transformation.objects.get_for_object(obj=self.content_object)
-
-
-class TransformationDeleteView(SingleObjectDeleteView):
-    model = Transformation
-
-    def dispatch(self, request, *args, **kwargs):
-        self.transformation = get_object_or_404(
-            klass=Transformation, pk=self.kwargs['pk']
+        return self.layer.get_transformations_for(
+            obj=self.content_object
         )
 
-        AccessControlList.objects.check_access(
-            obj=self.transformation.content_object,
-            permissions=(permission_transformation_delete,), user=request.user
-        )
+    def get_template_names(self):
+        return [
+            getattr(
+                self.get_transformation_class(), 'template_name',
+                self.template_name
+            )
+        ]
 
-        return super(TransformationDeleteView, self).dispatch(
-            request, *args, **kwargs
-        )
+    def get_transformation_class(self):
+        return BaseTransformation.get(name=self.kwargs['transformation_name'])
 
-    def get_post_action_redirect(self):
-        return reverse(
-            viewname='converter:transformation_list', kwargs={
-                'app_label': self.transformation.content_type.app_label,
-                'model': self.transformation.content_type.model,
-                'object_id': self.transformation.object_id
-            }
-        )
+
+class TransformationDeleteView(LayerViewMixin, SingleObjectDeleteView):
+    model = LayerTransformation
 
     def get_extra_context(self):
         return {
-            'content_object': self.transformation.content_object,
+            'content_object': self.object.object_layer.content_object,
+            'layer_name': self.layer.name,
             'navigation_object_list': ('content_object', 'transformation'),
             'previous': reverse(
                 viewname='converter:transformation_list', kwargs={
-                    'app_label': self.transformation.content_type.app_label,
-                    'model': self.transformation.content_type.model,
-                    'object_id': self.transformation.object_id
+                    'app_label': self.object.object_layer.content_type.app_label,
+                    'model': self.object.object_layer.content_type.model,
+                    'object_id': self.object.object_layer.object_id,
+                    'layer_name': self.object.object_layer.stored_layer.name
                 }
             ),
             'title': _(
                 'Delete transformation "%(transformation)s" for: '
                 '%(content_object)s?'
             ) % {
-                'transformation': self.transformation,
-                'content_object': self.transformation.content_object
+                'transformation': self.object,
+                'content_object': self.object.object_layer.content_object
             },
-            'transformation': self.transformation,
+            'transformation': self.object,
         }
 
+    def get_object_permission(self):
+        return self.layer.permissions.get('delete', None)
 
-class TransformationEditView(SingleObjectEditView):
-    form_class = TransformationForm
-    model = Transformation
-
-    def dispatch(self, request, *args, **kwargs):
-        self.transformation = get_object_or_404(
-            klass=Transformation, pk=self.kwargs['pk']
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='converter:transformation_list', kwargs={
+                'app_label': self.object.object_layer.content_type.app_label,
+                'model': self.object.object_layer.content_type.model,
+                'object_id': self.object.object_layer.object_id,
+                'layer_name': self.object.object_layer.stored_layer.name
+            }
         )
 
-        AccessControlList.objects.check_access(
-            obj=self.transformation.content_object,
-            permissions=(permission_transformation_edit,), user=request.user
-        )
 
-        return super(TransformationEditView, self).dispatch(
-            request, *args, **kwargs
-        )
+class TransformationEditView(LayerViewMixin, SingleObjectEditView):
+    form_class = LayerTransformationForm
+    model = LayerTransformation
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -165,72 +172,121 @@ class TransformationEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'content_object': self.transformation.content_object,
+            'content_object': self.object.object_layer.content_object,
+            'form_field_css_classes': 'hidden' if hasattr(
+                self.object.get_transformation_class(), 'template_name'
+            ) else '',
+            'layer': self.layer,
+            'layer_name': self.layer.name,
             'navigation_object_list': ('content_object', 'transformation'),
             'title': _(
-                'Edit transformation "%(transformation)s" for: %(content_object)s'
+                'Edit transformation "%(transformation)s" '
+                'for: %(content_object)s'
             ) % {
-                'transformation': self.transformation,
-                'content_object': self.transformation.content_object
+                'transformation': self.object,
+                'content_object': self.object.object_layer.content_object
             },
-            'transformation': self.transformation,
+            'transformation': self.object,
         }
+
+    def get_object_permission(self):
+        return self.layer.permissions.get('edit', None)
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='converter:transformation_list', kwargs={
-                'app_label': self.transformation.content_type.app_label,
-                'model': self.transformation.content_type.model,
-                'object_id': self.transformation.object_id
+                'app_label': self.object.object_layer.content_type.app_label,
+                'model': self.object.object_layer.content_type.model,
+                'object_id': self.object.object_layer.object_id,
+                'layer_name': self.object.object_layer.stored_layer.name
             }
         )
 
-
-class TransformationListView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model']
-        )
-
-        try:
-            self.content_object = content_type.get_object_for_this_type(
-                pk=self.kwargs['object_id']
+    def get_template_names(self):
+        return [
+            getattr(
+                self.object.get_transformation_class(), 'template_name',
+                self.template_name
             )
-        except content_type.model_class().DoesNotExist:
-            raise Http404
+        ]
 
-        AccessControlList.objects.check_access(
-            obj=self.content_object,
-            permissions=(permission_transformation_view,), user=request.user
-        )
 
-        return super(TransformationListView, self).dispatch(
-            request, *args, **kwargs
+class TransformationListView(
+    LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectListView
+):
+    def get_external_object_permission(self):
+        return self.layer.permissions.get('view', None)
+
+    def get_extra_context(self):
+        return {
+            'object': self.external_object,
+            'hide_link': True,
+            'hide_object': True,
+            'layer_name': self.layer.name,
+            'no_results_icon': self.layer.get_icon(),
+            'no_results_main_link': link_transformation_select.resolve(
+                context=RequestContext(
+                    request=self.request, dict_={
+                        'resolved_object': self.external_object,
+                        'layer_name': self.kwargs['layer_name'],
+                    }
+                )
+            ),
+            'no_results_text': self.layer.get_empty_results_text(),
+            'no_results_title': _(
+                'There are no entries for layer "%(layer_name)s"'
+            ) % {'layer_name': self.layer.label},
+            'title': _(
+                'Layer "%(layer)s" transformations for: %(object)s'
+            ) % {
+                'layer': self.layer,
+                'object': self.external_object,
+            }
+        }
+
+    def get_source_queryset(self):
+        return self.layer.get_transformations_for(obj=self.external_object)
+
+
+class TransformationSelectView(
+    ExternalContentTypeObjectMixin, LayerViewMixin, FormView
+):
+    form_class = LayerTransformationSelectForm
+    template_name = 'appearance/generic_form.html'
+
+    def form_valid(self, form):
+        return HttpResponseRedirect(
+            redirect_to=reverse(
+                viewname='converter:transformation_create',
+                kwargs={
+                    'app_label': self.kwargs['app_label'],
+                    'model': self.kwargs['model'],
+                    'object_id': self.kwargs['object_id'],
+                    'layer_name': self.kwargs['layer_name'],
+                    'transformation_name': form.cleaned_data[
+                        'transformation'
+                    ]
+                }
+            )
         )
 
     def get_extra_context(self):
         return {
-            'content_object': self.content_object,
-            'hide_link': True,
-            'hide_object': True,
+            'layer': self.layer,
+            'layer_name': self.kwargs['layer_name'],
             'navigation_object_list': ('content_object',),
-            'no_results_icon': icon_transformation_list,
-            'no_results_main_link': link_transformation_create.resolve(
-                context=RequestContext(
-                    request=self.request, dict_={
-                        'content_object': self.content_object
-                    }
-                )
-            ),
-            'no_results_text': _(
-                'Transformations allow changing the visual appearance '
-                'of documents without making permanent changes to the '
-                'document file themselves.'
-            ),
-            'no_results_title': _('No transformations'),
-            'title': _('Transformations for: %s') % self.content_object,
+            'content_object': self.external_object,
+            'submit_label': _('Select'),
+            'title': _(
+                'Select new layer "%(layer)s" transformation '
+                'for: %(object)s'
+            ) % {
+                'layer': self.layer,
+                'object': self.external_object,
+            }
         }
 
-    def get_source_queryset(self):
-        return Transformation.objects.get_for_object(obj=self.content_object)
+    def get_form_extra_kwargs(self):
+        return {
+            'layer': self.layer
+        }

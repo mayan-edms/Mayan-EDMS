@@ -15,7 +15,7 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.converter.exceptions import InvalidOfficeFormat, PageCountError
-from mayan.apps.converter.models import Transformation
+from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.transformations import TransformationRotate
 from mayan.apps.converter.utils import get_converter_class
 from mayan.apps.mimetype.api import get_mimetype
@@ -156,7 +156,7 @@ class DocumentVersion(models.Model):
         for page in self.pages.all():
             degrees = page.detect_orientation()
             if degrees:
-                Transformation.objects.add_to_object(
+                layer_saved_transformations.add_to_object(
                     obj=page, transformation=TransformationRotate,
                     arguments='{{"degrees": {}}}'.format(360 - degrees)
                 )

@@ -45,7 +45,7 @@
         {{ field }}
     {% endfor %}
         {% for field in form.visible_fields %}
-            <div class="form-group {% if field.errors %}has-error{% endif %}">
+            <div class="form-group {% if field.errors %}has-error{% endif %} {{ form_field_css_classes }}">
                 {# We display the label then the field for all except checkboxes #}
                 {% if field|widget_type != 'checkboxinput' and not field.field.widget.attrs.hidden %}
                     {% if not hide_labels %}{{ field.label_tag }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}{% endif %}

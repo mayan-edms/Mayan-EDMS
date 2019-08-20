@@ -430,6 +430,21 @@ class RestrictedQuerysetMixin(object):
     object_permission = None
     source_queryset = None
 
+    def get_object_permission(self):
+        return self.object_permission
+
+    def get_queryset(self):
+        queryset = self.get_source_queryset()
+        object_permission = self.get_object_permission()
+
+        if object_permission:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=object_permission, queryset=queryset,
+                user=self.request.user
+            )
+
+        return queryset
+
     def get_source_queryset(self):
         if self.source_queryset is None:
             if self.model:
@@ -445,17 +460,6 @@ class RestrictedQuerysetMixin(object):
 
         return self.source_queryset.all()
 
-    def get_queryset(self):
-        queryset = self.get_source_queryset()
-
-        if self.object_permission:
-            queryset = AccessControlList.objects.restrict_queryset(
-                permission=self.object_permission, queryset=queryset,
-                user=self.request.user
-            )
-
-        return queryset
-
 
 class ViewPermissionCheckMixin(object):
     """
@@ -467,11 +471,16 @@ class ViewPermissionCheckMixin(object):
     view_permission = None
 
     def dispatch(self, request, *args, **kwargs):
-        if self.view_permission:
+        view_permission = self.get_view_permission()
+        if view_permission:
             Permission.check_user_permissions(
-                permissions=(self.view_permission,), user=self.request.user
+                permissions=(view_permission,),
+                user=self.request.user
             )
 
         return super(
             ViewPermissionCheckMixin, self
         ).dispatch(request, *args, **kwargs)
+
+    def get_view_permission(self):
+        return self.view_permission

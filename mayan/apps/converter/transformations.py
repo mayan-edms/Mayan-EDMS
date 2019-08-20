@@ -5,10 +5,17 @@ import logging
 
 from PIL import Image, ImageColor, ImageDraw, ImageFilter
 
+from django.utils.encoding import force_bytes, force_text
 from django.utils.translation import string_concat, ugettext_lazy as _
-from django.utils.encoding import force_bytes
+
+from .layers import layer_saved_transformations
 
 logger = logging.getLogger(__name__)
+
+
+class BaseTransformationType(type):
+    def __str__(self):
+        return force_text(self.label)
 
 
 class BaseTransformation(object):
@@ -18,7 +25,9 @@ class BaseTransformation(object):
     """
     arguments = ()
     name = 'base_transformation'
+    _layer_transformations = {}
     _registry = {}
+    __metaclass__ = BaseTransformationType
 
     @staticmethod
     def combine(transformations):
@@ -44,16 +53,25 @@ class BaseTransformation(object):
             return cls.label
 
     @classmethod
-    def get_transformation_choices(cls):
+    def get_transformation_choices(cls, layer=None):
+        if layer:
+            transformation_list = [
+                (transformation.name, transformation) for transformation in cls._layer_transformations[layer]
+            ]
+        else:
+            transformation_list = cls._registry.items()
+
         return sorted(
             [
-                (name, klass.get_label()) for name, klass in cls._registry.items()
+                (name, klass.get_label()) for name, klass in transformation_list
             ]
         )
 
     @classmethod
-    def register(cls, transformation):
+    def register(cls, layer, transformation):
         cls._registry[transformation.name] = transformation
+        cls._layer_transformations.setdefault(layer, [])
+        cls._layer_transformations[layer].append(transformation)
 
     def __init__(self, **kwargs):
         self.kwargs = {}
@@ -517,19 +535,19 @@ class TransformationZoom(BaseTransformation):
         )
 
 
-BaseTransformation.register(transformation=TransformationCrop)
-BaseTransformation.register(transformation=TransformationDrawRectangle)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationCrop)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationDrawRectangle)
 BaseTransformation.register(
-    transformation=TransformationDrawRectanglePercent
+    layer=layer_saved_transformations, transformation=TransformationDrawRectanglePercent
 )
-BaseTransformation.register(transformation=TransformationFlip)
-BaseTransformation.register(transformation=TransformationGaussianBlur)
-BaseTransformation.register(transformation=TransformationLineArt)
-BaseTransformation.register(transformation=TransformationMirror)
-BaseTransformation.register(transformation=TransformationResize)
-BaseTransformation.register(transformation=TransformationRotate)
-BaseTransformation.register(transformation=TransformationRotate90)
-BaseTransformation.register(transformation=TransformationRotate180)
-BaseTransformation.register(transformation=TransformationRotate270)
-BaseTransformation.register(transformation=TransformationUnsharpMask)
-BaseTransformation.register(transformation=TransformationZoom)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationFlip)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationGaussianBlur)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationLineArt)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationMirror)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationResize)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationRotate)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationRotate90)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationRotate180)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationRotate270)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationUnsharpMask)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationZoom)

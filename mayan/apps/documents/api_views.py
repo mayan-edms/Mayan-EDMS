@@ -196,10 +196,16 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         if rotation:
             rotation = int(rotation)
 
+        maximum_layer_order = request.GET.get('maximum_layer_order')
+        if maximum_layer_order:
+            maximum_layer_order = int(maximum_layer_order)
+
         task = task_generate_document_page_image.apply_async(
             kwargs=dict(
                 document_page_id=self.get_object().pk, width=width,
-                height=height, zoom=zoom, rotation=rotation
+                height=height, zoom=zoom, rotation=rotation,
+                maximum_layer_order=maximum_layer_order,
+                user_id=request.user.pk
             )
         )
 

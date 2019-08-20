@@ -3,19 +3,16 @@ from __future__ import unicode_literals
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.converter.layers import layer_saved_transformations
+
 from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK
 
 
-def handler_copy_transformations_to_version(sender, **kwargs):
-    Transformation = apps.get_model(
-        app_label='converter', model_name='Transformation'
-    )
-
-    instance = kwargs['instance']
-
+def handler_copy_transformations_to_version(sender, instance, **kwargs):
     # TODO: Fix this, source should be previous version
     # TODO: Fix this, shouldn't this be at the documents app
-    Transformation.objects.copy(
+
+    layer_saved_transformations.copy_transformations(
         source=instance.document, targets=instance.pages.all()
     )
 

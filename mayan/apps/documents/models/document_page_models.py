@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
 
-from mayan.apps.converter.models import Transformation
+from mayan.apps.converter.models import LayerTransformation
 from mayan.apps.converter.transformations import (
     BaseTransformation, TransformationResize, TransformationRotate,
     TransformationZoom
@@ -83,8 +83,8 @@ class DocumentPage(models.Model):
     def document(self):
         return self.document_version.document
 
-    def generate_image(self, *args, **kwargs):
-        transformation_list = self.get_combined_transformation_list(*args, **kwargs)
+    def generate_image(self, user=None, **kwargs):
+        transformation_list = self.get_combined_transformation_list(user=user, **kwargs)
         combined_cache_filename = BaseTransformation.combine(transformation_list)
 
         # Check is transformed image is available
@@ -136,7 +136,7 @@ class DocumentPage(models.Model):
 
         return final_url.tostr()
 
-    def get_combined_transformation_list(self, *args, **kwargs):
+    def get_combined_transformation_list(self, user=None, *args, **kwargs):
         """
         Return a list of transformation containing the server side
         document page transformation as well as tranformations created
@@ -161,8 +161,13 @@ class DocumentPage(models.Model):
         # Generate transformation hash
         transformation_list = []
 
+        maximum_layer_order = kwargs.get('maximum_layer_order', None)
+
         # Stored transformations first
-        for stored_transformation in Transformation.objects.get_for_object(self, as_classes=True):
+        for stored_transformation in LayerTransformation.objects.get_for_object(
+            self, maximum_layer_order=maximum_layer_order, as_classes=True,
+            user=user
+        ):
             transformation_list.append(stored_transformation)
 
         # Interactive transformations second

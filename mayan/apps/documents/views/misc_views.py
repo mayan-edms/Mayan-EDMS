@@ -23,5 +23,6 @@ class ScanDuplicatedDocuments(ConfirmView):
     def view_action(self):
         task_scan_duplicates_all.apply_async()
         messages.success(
-            self.request, _('Duplicated document scan queued successfully.')
+            message=_('Duplicated document scan queued successfully.'),
+            request=self.request
         )
