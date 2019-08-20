@@ -22,22 +22,6 @@ class ModelPermission(object):
         # delattr doesn't work.
 
     @classmethod
-    def register(cls, model, permissions):
-        from django.contrib.contenttypes.fields import GenericRelation
-
-        cls._registry.setdefault(model, [])
-        for permission in permissions:
-            cls._registry[model].append(permission)
-
-        AccessControlList = apps.get_model(
-            app_label='acls', model_name='AccessControlList'
-        )
-
-        model.add_to_class(
-            name='acls', value=GenericRelation(AccessControlList)
-        )
-
-    @classmethod
     def get_classes(cls, as_content_type=False):
         ContentType = apps.get_model(
             app_label='contenttypes', model_name='ContentType'
@@ -115,6 +99,22 @@ class ModelPermission(object):
     @classmethod
     def get_manager_name(cls, model):
         return cls._manager_names[model]
+
+    @classmethod
+    def register(cls, model, permissions):
+        from django.contrib.contenttypes.fields import GenericRelation
+
+        cls._registry.setdefault(model, [])
+        for permission in permissions:
+            cls._registry[model].append(permission)
+
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
+        model.add_to_class(
+            name='acls', value=GenericRelation(AccessControlList)
+        )
 
     @classmethod
     def register_function(cls, model, function):
