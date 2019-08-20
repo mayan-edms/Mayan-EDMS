@@ -7,6 +7,7 @@ from django.utils.encoding import force_text
 from django_downloadview import assert_download_response
 from rest_framework import status
 
+from mayan.apps.converter.tests.mixins import LayerTestMixin
 from mayan.apps.rest_api.tests import BaseAPITestCase
 
 from ..models import Document, DocumentType
@@ -29,7 +30,7 @@ from .literals import (
 from .mixins import DocumentTestMixin
 
 
-class DocumentTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
+class DocumentTypeAPITestCase(LayerTestMixin, DocumentTestMixin, BaseAPITestCase):
     auto_upload_document = False
     auto_create_document_type = False
 

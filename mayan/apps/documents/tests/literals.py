@@ -6,6 +6,7 @@ import os
 from django.conf import settings
 
 from mayan.apps.common.literals import TIME_DELTA_UNIT_DAYS
+from mayan.apps.converter.transformations import TransformationRotate
 
 __all__ = (
     'TEST_COMPRESSED_DOCUMENTS_FILENAME', 'TEST_COMPRESSED_DOCUMENT_PATH',
@@ -49,6 +50,7 @@ TEST_SMALL_DOCUMENT_CHECKSUM = 'efa10e6cc21f83078aaa94d5cbe51de67b51af706143b\
 afc7fd6d4c02124879a'
 TEST_SMALL_DOCUMENT_MIMETYPE = 'image/png'
 TEST_SMALL_DOCUMENT_SIZE = 17436
+TEST_TRANSFORMATION_CLASS = TransformationRotate
 TEST_TRANSFORMATION_NAME = 'rotate'
 TEST_TRANSFORMATION_ARGUMENT = 'degrees: 180'
 
