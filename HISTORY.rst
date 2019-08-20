@@ -69,6 +69,8 @@
 - Update numeric dashboard widget to display
   thousand commas.
 - Add support for disabling document pages.
+- Add support for converter layers.
+- Add redactions app.
 
 3.2.6 (2019-07-10)
 ==================
