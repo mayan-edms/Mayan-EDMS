@@ -4,6 +4,8 @@ import os
 
 from django.conf import settings
 
+from mayan.apps.converter.classes import Layer
+
 from ..literals import PAGE_RANGE_ALL
 from ..models import DocumentType
 
@@ -30,6 +32,30 @@ class DocumentTestMixin(object):
         )
         self.test_document_type = self.test_document_type
 
+    def _calculate_test_document_path(self):
+        if not self.test_document_path:
+            self.test_document_path = os.path.join(
+                settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+                'sample_documents', self.test_document_filename
+            )
+
+    def setUp(self):
+        super(DocumentTestMixin, self).setUp()
+        Layer.invalidate_cache()
+
+        self.test_documents = []
+
+        if self.auto_create_document_type:
+            self._create_document_type()
+
+            if self.auto_upload_document:
+                self.upload_document()
+
+    def tearDown(self):
+        for document_type in DocumentType.objects.all():
+            document_type.delete()
+        super(DocumentTestMixin, self).tearDown()
+
     def upload_document(self, label=None):
         self._calculate_test_document_path()
 
@@ -43,28 +69,6 @@ class DocumentTestMixin(object):
 
         self.test_document = document
         self.test_documents.append(document)
-
-    def _calculate_test_document_path(self):
-        if not self.test_document_path:
-            self.test_document_path = os.path.join(
-                settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
-                'sample_documents', self.test_document_filename
-            )
-
-    def setUp(self):
-        super(DocumentTestMixin, self).setUp()
-        self.test_documents = []
-
-        if self.auto_create_document_type:
-            self._create_document_type()
-
-            if self.auto_upload_document:
-                self.upload_document()
-
-    def tearDown(self):
-        for document_type in DocumentType.objects.all():
-            document_type.delete()
-        super(DocumentTestMixin, self).tearDown()
 
 
 class DocumentTypeViewTestMixin(object):

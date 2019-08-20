@@ -30,7 +30,7 @@ from .literals import (
 from .mixins import DocumentTestMixin
 
 
-class DocumentTypeAPITestCase(LayerTestMixin, DocumentTestMixin, BaseAPITestCase):
+class DocumentTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
     auto_upload_document = False
     auto_create_document_type = False
 
