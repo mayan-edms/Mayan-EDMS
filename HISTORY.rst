@@ -6,6 +6,8 @@
   single page navigation to jump to the home view.
 * Remove redundant Celery queue declarations from the
   file_metadata app.
+* Add internal_name field to workflow serializer. 
+  Fixes workflow API creation view.
 
 3.2.6 (2019-07-10)
 ==================

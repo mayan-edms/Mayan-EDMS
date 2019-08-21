@@ -13,6 +13,8 @@ Changes
   single page navigation to jump to the home view.
 - Remove redundant Celery queue declarations from the
   file_metadata app.
+- Add internal_name field to workflow serializer. 
+  Fixes workflow API creation view.
 
 Removals
 --------
