@@ -1,6 +1,7 @@
 3.2.7 (2019-08-XX)
 ==================
-* Fix checkout form bug.
+* Fix checkout form bug. Thanks to Lucius Schaerer
+  (@lschaer1) for the report.
 * Disable pagination current page button
   Current page button was clickable and would cause the
   single page navigation to jump to the home view.
