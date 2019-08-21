@@ -4,6 +4,8 @@
 * Disable pagination current page button
   Current page button was clickable and would cause the
   single page navigation to jump to the home view.
+* Remove redundant Celery queue declarations from the
+  file_metadata app.
 
 3.2.6 (2019-07-10)
 ==================

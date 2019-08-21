@@ -4,8 +4,6 @@ from django.apps import apps
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
-from kombu import Exchange, Queue
-
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelAttribute, ModelField
@@ -18,7 +16,6 @@ from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
-from mayan.celery import app
 
 from .classes import FileMetadataHelper
 from .dependencies import *  # NOQA
@@ -148,21 +145,6 @@ class FileMetadataApp(MayanAppConfig):
         )
         SourceColumn(
             attribute='get_attribute_count', source=DocumentVersionDriverEntry
-        )
-
-        app.conf.CELERY_QUEUES.append(
-            Queue(
-                'file_metadata', Exchange('file_metadata'),
-                routing_key='file_metadata'
-            ),
-        )
-
-        app.conf.CELERY_ROUTES.update(
-            {
-                'mayan.apps.file_metadata.tasks.task_process_document_version': {
-                    'queue': 'file_metadata'
-                },
-            }
         )
 
         document_search.add_model_field(
