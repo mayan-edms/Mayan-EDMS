@@ -24,7 +24,7 @@ from .permissions import (
 )
 
 
-class DocumentCheckinView(ConfirmView):
+class DocumentCheckInView(ConfirmView):
     def get_extra_context(self):
         document = self.get_object()
 
@@ -82,7 +82,21 @@ class DocumentCheckinView(ConfirmView):
             )
 
 
-class CheckoutDocumentView(SingleObjectCreateView):
+class DocumentCheckOutDetailView(SingleObjectDetailView):
+    form_class = DocumentCheckoutDefailForm
+    model = Document
+    object_permission = permission_document_check_out_detail_view
+
+    def get_extra_context(self):
+        return {
+            'object': self.object,
+            'title': _(
+                'Check out details for document: %s'
+            ) % self.object
+        }
+
+
+class DocumentCheckOutView(SingleObjectCreateView):
     form_class = DocumentCheckoutForm
 
     def dispatch(self, request, *args, **kwargs):
@@ -94,7 +108,7 @@ class CheckoutDocumentView(SingleObjectCreateView):
         )
 
         return super(
-            CheckoutDocumentView, self
+            DocumentCheckOutView, self
         ).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -131,7 +145,7 @@ class CheckoutDocumentView(SingleObjectCreateView):
         )
 
 
-class CheckoutListView(DocumentListView):
+class DocumentCheckOutListView(DocumentListView):
     def get_document_queryset(self):
         return AccessControlList.objects.restrict_queryset(
             permission=permission_document_check_out_detail_view,
@@ -140,7 +154,7 @@ class CheckoutListView(DocumentListView):
         )
 
     def get_extra_context(self):
-        context = super(CheckoutListView, self).get_extra_context()
+        context = super(DocumentCheckOutListView, self).get_extra_context()
         context.update(
             {
                 'extra_columns': (
@@ -174,17 +188,3 @@ class CheckoutListView(DocumentListView):
             }
         )
         return context
-
-
-class CheckoutDetailView(SingleObjectDetailView):
-    form_class = DocumentCheckoutDefailForm
-    model = Document
-    object_permission = permission_document_check_out_detail_view
-
-    def get_extra_context(self):
-        return {
-            'object': self.object,
-            'title': _(
-                'Check out details for document: %s'
-            ) % self.object
-        }
