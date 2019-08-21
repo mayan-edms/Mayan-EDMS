@@ -1,3 +1,7 @@
+3.2.7 (2019-08-XX)
+==================
+* Fix checkout form bug.
+
 3.2.6 (2019-07-10)
 ==================
 * Remove the smart settings app * import.
