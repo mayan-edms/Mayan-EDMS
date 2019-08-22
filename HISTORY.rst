@@ -9,6 +9,8 @@
   file_metadata app.
 * Add internal_name field to workflow serializer. 
   Fixes workflow API creation view.
+* Fix document cabinet list view. Thanks for forum user
+  "jere" for the report. Forum topic 1039.
 
 3.2.6 (2019-07-10)
 ==================
