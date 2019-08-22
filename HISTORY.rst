@@ -11,6 +11,9 @@
   Fixes workflow API creation view.
 * Fix document cabinet list API view. Thanks for forum user
   "jere" for the report. Forum topic 1039.
+* Fix document template column field. GitLab issue #655.
+  Thanks to Christian Wiegand (@christianwgd) for the
+  report.
 
 3.2.6 (2019-07-10)
 ==================

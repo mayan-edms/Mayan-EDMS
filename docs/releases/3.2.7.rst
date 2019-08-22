@@ -18,6 +18,9 @@ Changes
   Fixes workflow API creation view.
 - Fix document cabinet list API view. Thanks for forum user
   "jere" for the report. Forum topic 1039.
+- Fix document template column field. GitLab issue #655.
+  Thanks to Christian Wiegand (@christianwgd) for the
+  report.
 
 Removals
 --------
@@ -111,6 +114,7 @@ Bugs fixed or issues closed
 ---------------------------
 
 - :gitlab-issue:`654` Internal Server Error, Document Checkout
+- :gitlab-issue:`655` Index setup tree view shows two times the "enabled" field instead of "Link documents"
 - :forum-topic:`1039` Re: /api/documents/{id}/cabinets returns 500
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
