@@ -14,6 +14,9 @@
 * Fix document template column field. GitLab issue #655.
   Thanks to Christian Wiegand (@christianwgd) for the
   report.
+* Increase mailing profile password field max length 
+  from 48 to 128 characters. GitLab issue #657.
+  Thanks to sigsec (@sigsec) for the report.
 
 3.2.6 (2019-07-10)
 ==================
