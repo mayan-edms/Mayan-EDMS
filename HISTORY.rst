@@ -25,6 +25,8 @@
   the GID of the mayan user to existing values.
   GitLab issue #652. Thanks to Fabian (@ruffy91)
   for the report.
+* Rename the MAYAN_USER_GUID environment variable
+  to MAYAN_USER_GID.
 
 3.2.6 (2019-07-10)
 ==================
