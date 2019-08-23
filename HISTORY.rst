@@ -17,6 +17,14 @@
 * Increase mailing profile password field max length 
   from 48 to 128 characters. GitLab issue #657.
   Thanks to sigsec (@sigsec) for the report.
+* Update the Docker entrypoint to update the ownership
+  of files when the UID of GUID are changed.
+  GitLab issue #650. Thanks to Fabian (@ruffy91)
+  for the report.
+* Update the Docker entrypoint to allow changing
+  the GID of the mayan user to existing values.
+  GitLab issue #652. Thanks to Fabian (@ruffy91)
+  for the report.
 
 3.2.6 (2019-07-10)
 ==================

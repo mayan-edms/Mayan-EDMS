@@ -8,6 +8,9 @@ CONCURRENCY_ARGUMENT=--concurrency=
 DEFAULT_USER_UID=1000
 DEFAULT_USER_GUID=1000
 
+MAYAN_USER_UID=${MAYAN_USER_UID:-${DEFAULT_USER_UID}}
+MAYAN_USER_GUID=${MAYAN_USER_GUID:-${DEFAULT_USER_GUID}}
+
 export MAYAN_DEFAULT_BROKER_URL=redis://127.0.0.1:6379/0
 export MAYAN_DEFAULT_CELERY_RESULT_BACKEND=redis://127.0.0.1:6379/0
 
@@ -30,9 +33,18 @@ MAYAN_WORKER_FAST_CONCURRENCY=${MAYAN_WORKER_FAST_CONCURRENCY:-1}
 MAYAN_WORKER_MEDIUM_CONCURRENCY=${MAYAN_WORKER_MEDIUM_CONCURRENCY:-1}
 MAYAN_WORKER_SLOW_CONCURRENCY=${MAYAN_WORKER_SLOW_CONCURRENCY:-1}
 
-echo "mayan: changing uid/guid"
-usermod mayan -u ${MAYAN_USER_UID:-${DEFAULT_USER_UID}}
-groupmod mayan -g ${MAYAN_USER_GUID:-${DEFAULT_USER_GUID}}
+update_uid_gid() {
+    echo "mayan: update_uid_gid()"
+    groupmod mayan -g ${MAYAN_USER_GUID} 2>/dev/null || true
+    usermod mayan -u ${MAYAN_USER_UID} -g ${MAYAN_USER_GUID} 2>/dev/null
+
+    if [ ${MAYAN_USER_UID} -ne ${DEFAULT_USER_UID} ] || [ ${MAYAN_USER_GUID} -ne ${DEFAULT_USER_GUID} ]; then
+        echo "mayan: Updating file ownership. This might take a while if there are many documents."
+        chown mayan:mayan ${MAYAN_INSTALL_DIR} ${MAYAN_STATIC_ROOT} ${MAYAN_MEDIA_ROOT}
+    fi
+}
+
+update_uid_gid
 
 if [ "$MAYAN_WORKER_FAST_CONCURRENCY" -eq 0 ]; then
     MAYAN_WORKER_FAST_CONCURRENCY=
