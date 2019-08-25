@@ -4,7 +4,6 @@ from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.user_management.tests.mixins import UserTestMixin
 
 from ..models import ErrorLogEntry
 from ..permissions_runtime import permission_error_log_view
@@ -13,7 +12,7 @@ from .base import GenericViewTestCase
 from .literals import TEST_ERROR_LOG_ENTRY_RESULT
 
 
-class CommonViewTestCase(UserTestMixin, GenericViewTestCase):
+class CommonViewTestCase(GenericViewTestCase):
     def _request_about_view(self):
         return self.get(viewname='common:about_view')
 
