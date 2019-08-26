@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Daniele Bortoluzzi <daniele@elkos.it>, 2019
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Roberto Rosario, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 01:30-0400\n"
-"PO-Revision-Date: 2019-06-15 07:49+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-08-25 20:30-0400\n"
+"PO-Revision-Date: 2019-07-08 11:14+0000\n"
+"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,25 +38,25 @@ msgstr "Ad ogni documento caricato deve essere assegnato un tipo documento,  que
 
 #: apps.py:151
 msgid "Versions comment"
-msgstr ""
+msgstr "Commento alle versioni"
 
 #: apps.py:155
 msgid "Versions encoding"
-msgstr ""
+msgstr "Codifica delle versioni"
 
 #: apps.py:159
 msgid "Versions mime type"
-msgstr ""
+msgstr "Tipo MIME delle versioni"
 
 #: apps.py:163
 msgid "Versions timestamp"
-msgstr ""
+msgstr "Timestamp delle versioni"
 
-#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:333
+#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:334
 msgid "Thumbnail"
 msgstr "Miniatura"
 
-#: apps.py:249 apps.py:338 forms/document_forms.py:182 links.py:83
+#: apps.py:249 apps.py:339 forms/document_forms.py:182 links.py:83
 msgid "Pages"
 msgstr "Pagine"
 
@@ -69,7 +70,7 @@ msgstr "Tipo"
 
 #: dashboard_widgets.py:24
 msgid "Total pages"
-msgstr ""
+msgstr "Pagine totali"
 
 #: dashboard_widgets.py:47
 msgid "Total documents"
@@ -114,11 +115,11 @@ msgstr "Cambiamenti al tipo di documento"
 
 #: events.py:27
 msgid "Document type created"
-msgstr ""
+msgstr "Tipo di documento creato"
 
 #: events.py:31
 msgid "Document type edited"
-msgstr ""
+msgstr "Tipo di documento modificato"
 
 #: events.py:34
 msgid "Document version reverted"
@@ -155,13 +156,13 @@ msgstr "Rinomina del documento veloce"
 
 #: forms/document_forms.py:93 forms/document_version_forms.py:15
 msgid "Preserve extension"
-msgstr ""
+msgstr "Conserva l'estensione"
 
 #: forms/document_forms.py:95
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open document correctly."
-msgstr ""
+msgstr "Mette l'estensione del file alla fine del nome, consentendo ai sistemi operativi che tengono conto di ciò di aprire il file correttamente."
 
 #: forms/document_forms.py:147
 msgid "Date added"
@@ -212,7 +213,7 @@ msgstr "Intervallo pagina"
 msgid ""
 "Page number from which all the transformations will be cloned. Existing "
 "transformations will be lost."
-msgstr ""
+msgstr "Numero della pagina dalla quale verranno clonate tutte le trasformazioni. Le trasformazioni esistenti andranno perse."
 
 #: forms/document_type_forms.py:42 models/document_models.py:45
 #: models/document_type_models.py:60 models/document_type_models.py:146
@@ -225,7 +226,7 @@ msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open the downloaded "
 "document version correctly."
-msgstr ""
+msgstr "Mette l'estensione del file alla fine del nome, consentendo ai sistemi operativi che tengono conto di ciò di aprire versione scaricata del file correttamente."
 
 #: links.py:66
 msgid "Preview"
@@ -253,15 +254,15 @@ msgstr "Cancella"
 
 #: links.py:112 views/favorite_document_views.py:37
 msgid "Favorites"
-msgstr ""
+msgstr "Preferiti"
 
 #: links.py:118 links.py:193
 msgid "Add to favorites"
-msgstr ""
+msgstr "Aggiungi ai preferiti"
 
 #: links.py:124 links.py:198
 msgid "Remove from favorites"
-msgstr ""
+msgstr "Rimuovi dai preferiti"
 
 #: links.py:130 links.py:184
 msgid "Move to trash"
@@ -277,7 +278,7 @@ msgstr "Cambia tipo"
 
 #: links.py:148 links.py:209
 msgid "Advanced download"
-msgstr ""
+msgstr "Download avanzato"
 
 #: links.py:155
 msgid "Print"
@@ -285,7 +286,7 @@ msgstr "Stampa"
 
 #: links.py:160
 msgid "Quick download"
-msgstr ""
+msgstr "Download rapido"
 
 #: links.py:167 links.py:214
 msgid "Recalculate page count"
@@ -315,11 +316,11 @@ msgstr "Tutti i documenti"
 
 #: links.py:255 views/document_views.py:712
 msgid "Recently accessed"
-msgstr ""
+msgstr "Consultati di recente"
 
 #: links.py:259 views/document_views.py:738
 msgid "Recently added"
-msgstr ""
+msgstr "Aggiunti di recente"
 
 #: links.py:264
 msgid "Trash can"
@@ -389,7 +390,7 @@ msgstr "Crea tipo di documento"
 
 #: links.py:371
 msgid "Deletion policies"
-msgstr ""
+msgstr "Politiche di cancellazione"
 
 #: links.py:375 links.py:396
 msgid "Edit"
@@ -406,7 +407,7 @@ msgstr "Etichette rapide"
 #: links.py:415 models/misc_models.py:38 models/misc_models.py:48
 #: views/document_views.py:690
 msgid "Duplicated documents"
-msgstr ""
+msgstr "Documenti duplicati"
 
 #: links.py:426 queues.py:70
 msgid "Duplicated document scan"
@@ -424,11 +425,11 @@ msgstr "Tutte le pagine"
 msgid ""
 "UUID of a document, universally Unique ID. An unique identifier generated "
 "for each document."
-msgstr ""
+msgstr "UUID, ID Universale del Documento. Un identifitacore univoco generato per ogni documento."
 
 #: models/document_models.py:49
 msgid "The name of the document."
-msgstr ""
+msgstr "Il nome del documento."
 
 #: models/document_models.py:49 models/document_page_models.py:259
 #: models/document_type_models.py:32 models/document_type_models.py:149
@@ -438,7 +439,7 @@ msgstr "Etichetta"
 
 #: models/document_models.py:53
 msgid "An optional short text describing a document."
-msgstr ""
+msgstr "Un breve testo opzionale per descrivere il documento."
 
 #: models/document_models.py:54 search.py:41 search.py:69
 msgid "Description"
@@ -448,7 +449,7 @@ msgstr "Descrizione "
 msgid ""
 "The server date and time when the document was finally processed and added "
 "to the system."
-msgstr ""
+msgstr "Data e ora del server in cui il documento è stato processato e aggiunto al sistema."
 
 #: models/document_models.py:60 models/misc_models.py:41
 msgid "Added"
@@ -456,11 +457,11 @@ msgstr "Aggiunto"
 
 #: models/document_models.py:64
 msgid "The dominant language in the document."
-msgstr ""
+msgstr "Il linguaggio principale del documento."
 
 #: models/document_models.py:69
 msgid "Whether or not this document is in the trash."
-msgstr ""
+msgstr "Se il documento si trova o no nel cestino."
 
 #: models/document_models.py:70
 msgid "In trash?"
@@ -468,7 +469,7 @@ msgstr "Nel cestino?"
 
 #: models/document_models.py:75
 msgid "The server date and time when the document was moved to the trash."
-msgstr ""
+msgstr "Data e ora del server in cui il documento è stato messo nel cestino."
 
 #: models/document_models.py:77
 msgid "Date and time trashed"
@@ -531,7 +532,7 @@ msgstr "Immagini pagine documenti in cache"
 
 #: models/document_type_models.py:31
 msgid "The name of the document type."
-msgstr ""
+msgstr "Nome del tipo di documento."
 
 #: models/document_type_models.py:36
 msgid ""
@@ -575,7 +576,7 @@ msgstr "Etichetta rapida"
 
 #: models/document_version_models.py:78
 msgid "The server date and time when the document version was processed."
-msgstr ""
+msgstr "Data e ora del server in cui il documento è stato processato."
 
 #: models/document_version_models.py:79
 msgid "Timestamp"
@@ -583,7 +584,7 @@ msgstr "Timestamp"
 
 #: models/document_version_models.py:83
 msgid "An optional short text describing the document version."
-msgstr ""
+msgstr "Breve testo opzionale per descrivere la versione del documento."
 
 #: models/document_version_models.py:84
 msgid "Comment"
@@ -598,7 +599,7 @@ msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
 "describe the format of a file, in this case the file format of the document."
 " Some examples: \"text/plain\" or \"image/jpeg\". "
-msgstr ""
+msgstr "Il tipo MIME della versione del documento. I tipi MIME sono un modo standard di descrivere il formato del file, in questo caso del documento. Alcuni esempi: \"text/plain\" o \"image/jpeg\"."
 
 #: models/document_version_models.py:98 search.py:38 search.py:63
 msgid "MIME type"
@@ -608,7 +609,7 @@ msgstr "Tipo MIME"
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
-msgstr ""
+msgstr "La codifica di questa versione del file, es. 7-bit binario, 8-bit binario, testo, base64, ecc."
 
 #: models/document_version_models.py:104
 msgid "Encoding"
@@ -624,11 +625,11 @@ msgstr "Utente"
 
 #: models/misc_models.py:71
 msgid "Favorite document"
-msgstr ""
+msgstr "Documento preferito"
 
 #: models/misc_models.py:72
 msgid "Favorite documents"
-msgstr ""
+msgstr "Documenti preferiti"
 
 #: models/misc_models.py:97
 msgid "Accessed"
@@ -688,7 +689,7 @@ msgstr "Ripristinare i documenti ad una versione precedente"
 
 #: permissions.py:44
 msgid "View documents' versions list"
-msgstr ""
+msgstr "Vedi la lista delle versioni del documento"
 
 #: permissions.py:48
 msgid "View documents"
@@ -724,7 +725,7 @@ msgstr "Caricamenti"
 
 #: queues.py:31
 msgid "Generate document page image"
-msgstr ""
+msgstr "Genera immagine della pagina del documento"
 
 #: queues.py:36
 msgid "Delete a document"
@@ -732,11 +733,11 @@ msgstr "Cancella documento"
 
 #: queues.py:40
 msgid "Clean empty duplicate lists"
-msgstr ""
+msgstr "Pulisci le liste dei duplicati vuote"
 
 #: queues.py:45
 msgid "Check document type delete periods"
-msgstr ""
+msgstr "Controlla i periodi di cancellazione dei tipi di documento"
 
 #: queues.py:53
 msgid "Check document type trash periods"
@@ -752,25 +753,25 @@ msgstr "Pulisci la cache immagini"
 
 #: queues.py:75
 msgid "Update document page count"
-msgstr ""
+msgstr "Aggiorna il conteggio delle pagine del documento"
 
 #: queues.py:79
 msgid "Upload new document version"
-msgstr ""
+msgstr "Carica una nuova versione del documento"
 
 #: queues.py:83
 msgid "Scan document duplicates"
-msgstr ""
+msgstr "Cerca duplicati del documento"
 
 #: settings.py:19
 msgid ""
 "Path to the Storage subclass to use when storing the cached document image "
 "files."
-msgstr ""
+msgstr "Percorso per la classe Storage da usare per la cache delle immagini dei documenti."
 
 #: settings.py:28
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argomenti da passare a DOCUMENT_CACHE_STORAGE_BACKEND."
 
 #: settings.py:34
 msgid ""
@@ -1237,21 +1238,21 @@ msgstr ""
 
 #: views/document_views.py:688
 msgid "There are no duplicated documents"
-msgstr ""
+msgstr "Non ci sono documenti duplicati."
 
 #: views/document_views.py:706
 msgid ""
 "This view will list the latest documents viewed or manipulated in any way by"
 " this user account."
-msgstr ""
+msgstr "Questa schermata elenca gli ultimi documenti visti o manipolati in qualche modo da questo account utente."
 
 #: views/document_views.py:710
 msgid "There are no recently accessed document"
-msgstr ""
+msgstr "Non ci sono documenti aperti di recente"
 
 #: views/document_views.py:732
 msgid "This view will list the latest documents uploaded in the system."
-msgstr ""
+msgstr "Questa schermata elenca gli ultimi documenti caricati nel sistema."
 
 #: views/document_views.py:736
 msgid "There are no recently added document"

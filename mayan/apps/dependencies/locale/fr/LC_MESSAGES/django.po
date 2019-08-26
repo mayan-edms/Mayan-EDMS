@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 01:29-0400\n"
+"POT-Creation-Date: 2019-08-25 20:29-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2019\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -80,6 +80,9 @@ msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Environnement utilisé par les développeurs pour modifier le code. Les "
+"utilisateurs finaux peuvent ignorer les dépendances manquantes dans cet "
+"environnement."
 
 #: classes.py:74
 msgid "Development"
@@ -90,6 +93,9 @@ msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
 msgstr ""
+"Environnement normal pour les utilisateurs finaux. Une dépendance manquante "
+"dans cet environnement entraînera des problèmes et des erreurs lors d'une "
+"utilisation normale."
 
 #: classes.py:80
 msgid "Production"
@@ -175,7 +181,7 @@ msgstr ""
 
 #: classes.py:462
 msgid "JavaScript"
-msgstr ""
+msgstr "JavaScript"
 
 #: classes.py:496 classes.py:729
 msgid "Downloading... "
@@ -199,11 +205,11 @@ msgstr "Python"
 
 #: classes.py:710
 msgid "Fonts downloaded from fonts.googleapis.com."
-msgstr ""
+msgstr "Polices téléchargées à partir de fonts.googleapis.com."
 
 #: classes.py:712
 msgid "Google font"
-msgstr ""
+msgstr "Google Font"
 
 #: classes.py:791
 msgid "Declared in app"

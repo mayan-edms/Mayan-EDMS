@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 01:30-0400\n"
+"POT-Creation-Date: 2019-08-25 20:31-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2019\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -30,20 +30,20 @@ msgstr ""
 msgid "Label"
 msgstr "Libellé"
 
-#: apps.py:56 events.py:8 links.py:18 permissions.py:7 queues.py:9
+#: apps.py:53 events.py:8 links.py:18 permissions.py:7 queues.py:9
 #: settings.py:9
 msgid "File metadata"
 msgstr "Métadonnées du fichier"
 
-#: apps.py:101
+#: apps.py:98
 msgid "Return the value of a specific file metadata."
 msgstr "Renvoie la valeur des métadonnées  pour un fichier spécifique."
 
-#: apps.py:113 apps.py:117 apps.py:170 apps.py:179
+#: apps.py:110 apps.py:114 apps.py:152 apps.py:161
 msgid "File metadata key"
 msgstr "Clé de métadonnées de fichier"
 
-#: apps.py:174 apps.py:183
+#: apps.py:156 apps.py:165
 msgid "File metadata value"
 msgstr "Valeur des métadonnées du fichier"
 

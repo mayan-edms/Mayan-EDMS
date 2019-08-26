@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 01:30-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-08-25 20:30-0400\n"
+"PO-Revision-Date: 2019-08-22 13:55+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -121,7 +121,7 @@ msgstr "Oui"
 
 #: forms.py:181
 msgid "Optional comment to attach to the transition."
-msgstr ""
+msgstr "Commentaire facultatif à joindre à la transition."
 
 #: handlers.py:62
 #, python-format
@@ -416,7 +416,7 @@ msgstr "Clé principale de la transition à ajouter."
 msgid ""
 "Assign workflows to the document type of this document to have this document"
 " execute those workflows. "
-msgstr ""
+msgstr "Assigner des flux de travail au type de document de ce document pour que ce document exécute ces flux de travail."
 
 #: views/workflow_instance_views.py:48
 msgid "There are no workflow for this document"
@@ -475,7 +475,7 @@ msgstr "Documents avec le flux de travail : %s"
 msgid ""
 "Create some workflows and associated them with a document type. Active "
 "workflows will be shown here and the documents for which they are executing."
-msgstr ""
+msgstr "Créer des flux de travail et les associer à un type de document. Les flux de travail actifs seront affichés ici et les documents pour lesquels ils sont exécutés."
 
 #: views/workflow_proxy_views.py:74
 msgid "There are no workflows"
@@ -515,7 +515,7 @@ msgstr "Flux de travail affectés à ce type de document"
 msgid ""
 "Removing a workflow from a document type will also remove all running "
 "instances of that workflow."
-msgstr ""
+msgstr "La suppression d'un flux de travail d'un type de document supprimera également toutes les instances en cours d'exécution de ce flux de travail."
 
 #: views/workflow_views.py:87
 #, python-format
@@ -526,7 +526,7 @@ msgstr "Les flux de travail affecté à ce type de document: %s"
 msgid ""
 "Workflows store a series of states and keep track of the current state of a "
 "document. Transitions are used to change the current state to a new one."
-msgstr ""
+msgstr "Les flux de travail stockent une série d'états et assurent le suivi de l'état actuel d'un document. Les transitions sont utilisées pour changer l'état actuel en un nouvel état."
 
 #: views/workflow_views.py:137
 msgid "No workflows have been defined"
@@ -580,7 +580,7 @@ msgstr "Modifier une action d'état de flux de travail : %s"
 msgid ""
 "Workflow state actions are macros that get executed when documents enters or"
 " leaves the state in which they reside."
-msgstr ""
+msgstr "Les actions de flux de travail sont des macros qui sont exécutées lorsque des documents entrent ou sortent de l'état dans lequel ils se trouvent."
 
 #: views/workflow_views.py:371
 msgid "There are no actions for this workflow state"
