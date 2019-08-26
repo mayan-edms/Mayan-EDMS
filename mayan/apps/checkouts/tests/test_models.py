@@ -24,7 +24,7 @@ class DocumentCheckoutTestCase(DocumentCheckoutTestMixin, GenericDocumentTestCas
             )
         )
 
-    def test_checkin_in(self):
+    def test_document_check_in(self):
         self._check_out_test_document()
 
         self.test_document.check_in()
@@ -36,7 +36,7 @@ class DocumentCheckoutTestCase(DocumentCheckoutTestMixin, GenericDocumentTestCas
             )
         )
 
-    def test_double_check_out(self):
+    def test_document_double_check_out(self):
         self._create_test_case_superuser()
         self._check_out_test_document()
 
@@ -48,7 +48,7 @@ class DocumentCheckoutTestCase(DocumentCheckoutTestMixin, GenericDocumentTestCas
                 block_new_version=True
             )
 
-    def test_auto_check_in(self):
+    def test_document_auto_check_in(self):
         self._check_out_test_document()
 
         # Ensure we wait from longer than the document check out expiration

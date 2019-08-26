@@ -285,7 +285,7 @@ class DocumentCheckoutViewTestCase(
             response, text=STATE_LABELS[STATE_CHECKED_OUT], status_code=200
         )
 
-    def test_document_checkout_list_view_no_permission(self):
+    def test_document_check_out_list_view_no_permission(self):
         self._check_out_test_document()
 
         self.grant_access(
@@ -298,7 +298,7 @@ class DocumentCheckoutViewTestCase(
             response=response, text=self.test_document.label, status_code=200
         )
 
-    def test_document_checkout_list_view_with_access(self):
+    def test_document_check_out_list_view_with_access(self):
         self._check_out_test_document()
 
         self.grant_access(
@@ -333,6 +333,7 @@ class DocumentCheckoutViewTestCase(
             }
         )
         self.assertEqual(response.status_code, 302)
+        
         self.assertTrue(self.test_document.is_checked_out())
 
     def test_document_check_in_forcefull_view_with_access(self):
@@ -350,6 +351,7 @@ class DocumentCheckoutViewTestCase(
             }
         )
         self.assertEqual(response.status_code, 302)
+        
         self.assertFalse(self.test_document.is_checked_out())
 
 
