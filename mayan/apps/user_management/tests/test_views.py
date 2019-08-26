@@ -17,7 +17,9 @@ from ..permissions import (
 from .mixins import GroupTestMixin, GroupViewTestMixin, UserViewTestMixin
 
 
-class GroupViewsTestCase(GroupTestMixin, GroupViewTestMixin, GenericViewTestCase):
+class GroupViewsTestCase(
+    GroupTestMixin, GroupViewTestMixin, GenericViewTestCase
+):
     def test_group_create_view_no_permission(self):
         group_count = Group.objects.count()
 
@@ -162,7 +164,9 @@ class SuperUserViewTestCase(UserViewTestMixin, GenericViewTestCase):
         self._create_test_superuser()
 
     def test_superuser_delete_view_with_access(self):
-        superuser_count = get_user_model().objects.filter(is_superuser=True).count()
+        superuser_count = get_user_model().objects.filter(
+            is_superuser=True
+        ).count()
         self.grant_access(
             obj=self.test_superuser, permission=permission_user_delete
         )
@@ -334,7 +338,8 @@ class MetadataLookupIntegrationTestCase(
             metadata_type=self.test_metadata_type
         )
         self.grant_access(
-            obj=self.test_document, permission=permission_document_metadata_edit
+            obj=self.test_document,
+            permission=permission_document_metadata_edit
         )
 
         response = self.get(
@@ -355,7 +360,8 @@ class MetadataLookupIntegrationTestCase(
             metadata_type=self.test_metadata_type
         )
         self.grant_access(
-            obj=self.test_document, permission=permission_document_metadata_edit
+            obj=self.test_document,
+            permission=permission_document_metadata_edit
         )
 
         response = self.get(

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 01:30-0400\n"
-"PO-Revision-Date: 2019-06-17 20:38+0000\n"
+"POT-Creation-Date: 2019-08-25 20:30-0400\n"
+"PO-Revision-Date: 2019-08-22 13:59+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -54,11 +54,11 @@ msgstr "Type MIME des version"
 msgid "Versions timestamp"
 msgstr "Horodatage des versions "
 
-#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:333
+#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:334
 msgid "Thumbnail"
 msgstr "Vignette"
 
-#: apps.py:249 apps.py:338 forms/document_forms.py:182 links.py:83
+#: apps.py:249 apps.py:339 forms/document_forms.py:182 links.py:83
 msgid "Pages"
 msgstr "Pages"
 
@@ -215,7 +215,7 @@ msgstr "Ensemble de pages"
 msgid ""
 "Page number from which all the transformations will be cloned. Existing "
 "transformations will be lost."
-msgstr ""
+msgstr "Numéro de page à partir duquel toutes les transformations seront clonées. Les transformations existantes seront perdues."
 
 #: forms/document_type_forms.py:42 models/document_models.py:45
 #: models/document_type_models.py:60 models/document_type_models.py:146
@@ -427,7 +427,7 @@ msgstr "Toutes les pages"
 msgid ""
 "UUID of a document, universally Unique ID. An unique identifier generated "
 "for each document."
-msgstr ""
+msgstr "UUID d'un document, en anglais: universally Unique ID. Un identifiant unique généré pour chaque document."
 
 #: models/document_models.py:49
 msgid "The name of the document."
@@ -463,7 +463,7 @@ msgstr "La langue dominante dans le document."
 
 #: models/document_models.py:69
 msgid "Whether or not this document is in the trash."
-msgstr ""
+msgstr "Que ce document soit ou non à la poubelle."
 
 #: models/document_models.py:70
 msgid "In trash?"
@@ -763,7 +763,7 @@ msgstr "Transférer une nouvelle version du document"
 
 #: queues.py:83
 msgid "Scan document duplicates"
-msgstr ""
+msgstr "Numériser des doublons de documents"
 
 #: settings.py:19
 msgid ""
@@ -956,7 +956,7 @@ msgid ""
 " it is corrupted or that the upload process was interrupted. Use the "
 "document page recalculation action to attempt to introspect the page count "
 "again."
-msgstr ""
+msgstr "Cela pourrait signifier que le document a un format qui n'est pas pris en charge, qu'il est corrompu ou que le processus de téléchargement a été interrompu. Utilisez l'action de recalcul de page de document pour tenter à nouveau d'effectuer une introspection du nombre de pages."
 
 #: views/document_page_views.py:59
 msgid "No document pages available"

@@ -11,7 +11,7 @@ from mayan.apps.common.generics import (
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.views import DocumentListView
 
-from .forms import DocumentCheckoutForm, DocumentCheckoutDefailForm
+from .forms import DocumentCheckOutForm, DocumentCheckOutDetailForm
 from .icons import icon_check_out_info
 from .models import DocumentCheckout
 from .permissions import (
@@ -20,7 +20,7 @@ from .permissions import (
 )
 
 
-class DocumentCheckinView(MultipleObjectConfirmActionView):
+class DocumentCheckInView(MultipleObjectConfirmActionView):
     error_message = 'Unable to check in document "%(instance)s". %(exception)s'
     model = Document
     pk_url_kwarg = 'pk'
@@ -59,13 +59,13 @@ class DocumentCheckinView(MultipleObjectConfirmActionView):
                 kwargs={'pk': self.action_id_list[0]}
             )
         else:
-            super(DocumentCheckinView, self).get_post_action_redirect()
+            super(DocumentCheckInView, self).get_post_action_redirect()
 
     def get_source_queryset(self):
         # object_permission is None to disable restricting queryset mixin
         # and restrict the queryset ourselves from two permissions
 
-        source_queryset = super(DocumentCheckinView, self).get_source_queryset()
+        source_queryset = super(DocumentCheckInView, self).get_source_queryset()
 
         check_in_queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_document_check_in, queryset=source_queryset,
@@ -85,9 +85,9 @@ class DocumentCheckinView(MultipleObjectConfirmActionView):
         )
 
 
-class DocumentCheckoutView(MultipleObjectFormActionView):
+class DocumentCheckOutView(MultipleObjectFormActionView):
     error_message = 'Unable to checkout document "%(instance)s". %(exception)s'
-    form_class = DocumentCheckoutForm
+    form_class = DocumentCheckOutForm
     model = Document
     object_permission = permission_document_check_out
     pk_url_kwarg = 'pk'
@@ -126,7 +126,7 @@ class DocumentCheckoutView(MultipleObjectFormActionView):
                 kwargs={'pk': self.action_id_list[0]}
             )
         else:
-            super(DocumentCheckoutView, self).get_post_action_redirect()
+            super(DocumentCheckOutView, self).get_post_action_redirect()
 
     def object_action(self, form, instance):
         DocumentCheckout.objects.check_out_document(
@@ -137,8 +137,8 @@ class DocumentCheckoutView(MultipleObjectFormActionView):
         )
 
 
-class DocumentCheckoutDetailView(SingleObjectDetailView):
-    form_class = DocumentCheckoutDefailForm
+class DocumentCheckOutDetailView(SingleObjectDetailView):
+    form_class = DocumentCheckOutDetailForm
     model = Document
     object_permission = permission_document_check_out_detail_view
 
@@ -151,7 +151,7 @@ class DocumentCheckoutDetailView(SingleObjectDetailView):
         }
 
 
-class DocumentCheckoutListView(DocumentListView):
+class DocumentCheckOutListView(DocumentListView):
     def get_document_queryset(self):
         return AccessControlList.objects.restrict_queryset(
             permission=permission_document_check_out_detail_view,
@@ -160,7 +160,7 @@ class DocumentCheckoutListView(DocumentListView):
         )
 
     def get_extra_context(self):
-        context = super(DocumentCheckoutListView, self).get_extra_context()
+        context = super(DocumentCheckOutListView, self).get_extra_context()
         context.update(
             {
                 'no_results_icon': icon_check_out_info,

@@ -10,7 +10,7 @@ from .models import DocumentCheckout
 from .widgets import SplitTimeDeltaWidget
 
 
-class DocumentCheckoutForm(forms.ModelForm):
+class DocumentCheckOutForm(forms.ModelForm):
     class Meta:
         fields = ('expiration_datetime', 'block_new_version')
         model = DocumentCheckout
@@ -19,7 +19,7 @@ class DocumentCheckoutForm(forms.ModelForm):
         }
 
 
-class DocumentCheckoutDefailForm(DetailForm):
+class DocumentCheckOutDetailForm(DetailForm):
     def __init__(self, *args, **kwargs):
         instance = kwargs['instance']
 
@@ -56,7 +56,7 @@ class DocumentCheckoutDefailForm(DetailForm):
             )
 
         kwargs['extra_fields'] = extra_fields
-        super(DocumentCheckoutDefailForm, self).__init__(*args, **kwargs)
+        super(DocumentCheckOutDetailForm, self).__init__(*args, **kwargs)
 
     class Meta:
         fields = ()

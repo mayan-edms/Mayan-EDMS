@@ -196,7 +196,7 @@ class DocumentCheckoutViewTestCase(
             )
         )
 
-    def test_document_multiple_check_out_post_view_with_document_0_access(self):
+    def test_document_multiple_check_out_post_view_with_document_access(self):
         # Upload second document
         self.upload_document()
 
@@ -319,8 +319,8 @@ class DocumentCheckoutViewTestCase(
         # Gitlab issue #237
         # Forcefully checking in a document by a user without adequate
         # permissions throws out an error
-
         self._create_test_user()
+        # Check out document as test_user
         self._check_out_test_document(user=self.test_user)
 
         self.grant_access(
@@ -333,11 +333,12 @@ class DocumentCheckoutViewTestCase(
             }
         )
         self.assertEqual(response.status_code, 302)
-        
+
         self.assertTrue(self.test_document.is_checked_out())
 
     def test_document_check_in_forcefull_view_with_access(self):
         self._create_test_user()
+        # Check out document as test_user
         self._check_out_test_document(user=self.test_user)
 
         self.grant_access(
@@ -345,13 +346,14 @@ class DocumentCheckoutViewTestCase(
             permission=permission_document_check_in_override
         )
 
+        # Check in document as test_case_user
         response = self.post(
             viewname='checkouts:check_in_document', kwargs={
                 'pk': self.test_document.pk
             }
         )
         self.assertEqual(response.status_code, 302)
-        
+
         self.assertFalse(self.test_document.is_checked_out())
 
 
@@ -359,7 +361,7 @@ class NewVersionBlockViewTestCase(
     DocumentCheckoutTestMixin, DocumentCheckoutViewTestMixin,
     GenericDocumentViewTestCase
 ):
-    def test_document_check_out_new_version(self):
+    def test_document_check_out_block_new_version(self):
         """
         Gitlab issue #231
         User shown option to upload new version of a document even though it

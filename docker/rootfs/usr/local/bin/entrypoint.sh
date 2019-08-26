@@ -11,6 +11,9 @@ CONCURRENCY_ARGUMENT=--concurrency=
 DEFAULT_USER_UID=1000
 DEFAULT_USER_GID=1000
 
+MAYAN_USER_UID=${MAYAN_USER_UID:-${DEFAULT_USER_UID}}
+MAYAN_USER_GID=${MAYAN_USER_GID:-${DEFAULT_USER_GID}}
+
 export MAYAN_ALLOWED_HOSTS='["*"]'
 export MAYAN_BIN=/opt/mayan-edms/bin/mayan-edms.py
 export MAYAN_INSTALL_DIR=/opt/mayan-edms
@@ -28,6 +31,19 @@ export MAYAN_STATIC_ROOT=${MAYAN_INSTALL_DIR}/static
 MAYAN_WORKER_FAST_CONCURRENCY=${MAYAN_WORKER_FAST_CONCURRENCY:-0}
 MAYAN_WORKER_MEDIUM_CONCURRENCY=${MAYAN_WORKER_MEDIUM_CONCURRENCY:-0}
 MAYAN_WORKER_SLOW_CONCURRENCY=${MAYAN_WORKER_SLOW_CONCURRENCY:-0}
+
+update_uid_gid() {
+    echo "mayan: update_uid_gid()"
+    groupmod mayan -g ${MAYAN_USER_GID} 2>/dev/null || true
+    usermod mayan -u ${MAYAN_USER_UID} -g ${MAYAN_USER_GID} 2>/dev/null
+
+    if [ ${MAYAN_USER_UID} -ne ${DEFAULT_USER_UID} ] || [ ${MAYAN_USER_GID} -ne ${DEFAULT_USER_GID} ]; then
+        echo "mayan: Updating file ownership. This might take a while if there are many documents."
+        chown mayan:mayan ${MAYAN_INSTALL_DIR} ${MAYAN_STATIC_ROOT} ${MAYAN_MEDIA_ROOT}
+    fi
+}
+
+update_uid_gid
 
 if [ "$MAYAN_WORKER_FAST_CONCURRENCY" -eq 0 ]; then
     MAYAN_WORKER_FAST_CONCURRENCY=

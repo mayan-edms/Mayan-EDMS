@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from collections import OrderedDict
 import datetime
 
 from django import forms
@@ -7,38 +8,41 @@ from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.literals import TIME_DELTA_UNIT_CHOICES
+from mayan.apps.common.widgets import NamedMultiWidget
 
 
-class SplitTimeDeltaWidget(forms.widgets.MultiWidget):
+class SplitTimeDeltaWidget(NamedMultiWidget):
     """
-    A Widget that splits a timedelta input into three <input type="text">
-    boxes.
+    A Widget that splits a timedelta input into two field: one for unit of
+    time and another for the amount of units.
     """
     def __init__(self, attrs=None):
-        widgets = (
-            forms.widgets.Select(
-                attrs={'style': 'width: 8em;'}, choices=TIME_DELTA_UNIT_CHOICES
-            ),
-            forms.widgets.NumberInput(
-                attrs={
-                    'maxlength': 4, 'style': 'width: 8em;',
-                    'placeholder': _('Period')
-                }
-            )
+        widgets = OrderedDict()
+        widgets['unit'] = forms.widgets.Select(
+            attrs={'style': 'width: 8em;'}, choices=TIME_DELTA_UNIT_CHOICES
         )
-        super(SplitTimeDeltaWidget, self).__init__(widgets, attrs)
+        widgets['amount'] = forms.widgets.NumberInput(
+            attrs={
+                'maxlength': 4, 'style': 'width: 8em;',
+                'placeholder': _('Amount')
+            }
+        )
+
+        super(SplitTimeDeltaWidget, self).__init__(widgets=widgets, attrs=attrs)
 
     def decompress(self, value):
-        return (None, None)
+        return {
+            'unit': None, 'amount': None
+        }
 
     def value_from_datadict(self, querydict, files, name):
-        unit = querydict.get('{}_0'.format(name))
-        period = querydict.get('{}_1'.format(name))
+        unit = querydict.get('{}_unit'.format(name))
+        amount = querydict.get('{}_amount'.format(name))
 
-        if not unit or not period:
+        if not unit or not amount:
             return now()
 
-        period = int(period)
+        amount = int(amount)
 
-        timedelta = datetime.timedelta(**{unit: period})
+        timedelta = datetime.timedelta(**{unit: amount})
         return now() + timedelta

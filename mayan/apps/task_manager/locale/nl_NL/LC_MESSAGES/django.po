@@ -6,15 +6,16 @@
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2017
 # Lucas Weel <ljj.weel@gmail.com>, 2017
+# Ben Zweekhorst <bzweekhorst@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 01:32-0400\n"
+"POT-Creation-Date: 2019-08-25 20:34-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
-"Last-Translator: Lucas Weel <ljj.weel@gmail.com>, 2017\n"
+"Last-Translator: Ben Zweekhorst <bzweekhorst@gmail.com>, 2019\n"
 "Language-Team: Dutch (Netherlands) (https://www.transifex.com/rosarior/teams/13584/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +25,7 @@ msgstr ""
 
 #: apps.py:23 links.py:12 permissions.py:7
 msgid "Task manager"
-msgstr ""
+msgstr "Taakbeheer"
 
 #: apps.py:31
 msgid "Label"
@@ -36,7 +37,7 @@ msgstr "Naam"
 
 #: apps.py:37
 msgid "Default queue?"
-msgstr ""
+msgstr "Standaard wachtrij?"
 
 #: apps.py:41
 msgid "Is transient?"
@@ -48,7 +49,7 @@ msgstr "Soort"
 
 #: apps.py:48
 msgid "Start time"
-msgstr ""
+msgstr "Starttijd"
 
 #: apps.py:51
 msgid "Host"
@@ -60,7 +61,7 @@ msgstr "Argumenten"
 
 #: apps.py:59
 msgid "Keyword arguments"
-msgstr ""
+msgstr "Trefwoord argumenten"
 
 #: apps.py:63
 msgid "Worker process ID"
@@ -72,7 +73,7 @@ msgstr ""
 
 #: links.py:20
 msgid "Active tasks"
-msgstr ""
+msgstr "Actieve taken"
 
 #: links.py:24
 msgid "Reserved tasks"
@@ -80,30 +81,30 @@ msgstr ""
 
 #: links.py:28
 msgid "Scheduled tasks"
-msgstr ""
+msgstr "Geplande taken"
 
 #: permissions.py:10
 msgid "View tasks"
-msgstr ""
+msgstr "Bekijk taken"
 
 #: tests/literals.py:5
 msgid "Test queue"
-msgstr ""
+msgstr "Test wachtrij"
 
 #: views.py:30
 #, python-format
 msgid "Active tasks in queue: %s"
-msgstr ""
+msgstr "Actieve taken in de wachtrij: %s"
 
 #: views.py:42
 #, python-format
 msgid "Unable to retrieve task list; %s"
-msgstr ""
+msgstr "Niet mogelijk om takenlijst op te halen; %s"
 
 #: views.py:56
 #, python-format
 msgid "Scheduled tasks in queue: %s"
-msgstr ""
+msgstr "Geplande taken in de wachtrij: %s"
 
 #: views.py:68
 #, python-format

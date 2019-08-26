@@ -242,6 +242,9 @@ extlinks = {
             mayan.__django_version__
         ), 'Django documentation section: '
     ),
+    'forum-topic': (
+        'https://forum.mayan-edms.com/viewtopic.php?t=%s', 'Forum topic #'
+    ),
     'github-issue': (
         'https://github.com/mayan-edms/mayan-edms/issues/%s', 'GitHub issue #'
     ),

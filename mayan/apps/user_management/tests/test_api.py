@@ -48,7 +48,9 @@ class GroupAPITestCase(GroupAPITestMixin, GroupTestMixin, BaseAPITestCase):
 
     def test_group_delete_with_access(self):
         self._create_test_group()
-        self.grant_access(obj=self.test_group, permission=permission_group_delete)
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_delete
+        )
         group_count = Group.objects.count()
 
         response = self._request_test_group_delete_api_view()
@@ -70,7 +72,9 @@ class GroupAPITestCase(GroupAPITestMixin, GroupTestMixin, BaseAPITestCase):
     def test_group_edit_via_patch_with_access(self):
         self._create_test_group()
 
-        self.grant_access(obj=self.test_group, permission=permission_group_edit)
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
 
         group_name = self.test_group.name
 
@@ -94,7 +98,9 @@ class GroupAPITestCase(GroupAPITestMixin, GroupTestMixin, BaseAPITestCase):
     def test_group_edit_via_put_with_access(self):
         self._create_test_group()
 
-        self.grant_access(obj=self.test_group, permission=permission_group_edit)
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
 
         group_name = self.test_group.name
 
@@ -136,7 +142,9 @@ class UserAPITestCase(UserAPITestMixin, BaseAPITestCase):
 
     def test_user_delete_with_access(self):
         self._create_test_user()
-        self.grant_access(obj=self.test_user, permission=permission_user_delete)
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_delete
+        )
 
         user_count = get_user_model().objects.count()
 

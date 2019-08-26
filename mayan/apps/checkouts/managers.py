@@ -24,7 +24,12 @@ logger = logging.getLogger(__name__)
 
 class DocumentCheckoutBusinessLogicManager(models.Manager):
     def check_in_document(self, document, user=None):
+        # Convert any document submodel to the parent model class
         queryset = document._meta.default_manager.filter(pk=document.pk)
+
+        if not self.filter(document__pk__in=queryset).exists():
+            raise DocumentNotCheckedOut
+
         return self.check_in_documents(queryset=queryset, user=user)
 
     def check_in_documents(self, queryset, user=None):

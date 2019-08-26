@@ -38,7 +38,9 @@ class CurrentUserViewTestCase(GenericViewTestCase):
         self.assertEqual(response.status_code, 200)
 
         self._test_case_user.refresh_from_db()
-        self.assertTrue(self._test_case_user.check_password(raw_password=new_password))
+        self.assertTrue(
+            self._test_case_user.check_password(raw_password=new_password)
+        )
 
 
 class UserLoginTestCase(GenericViewTestCase):

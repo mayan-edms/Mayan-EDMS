@@ -11,6 +11,12 @@ class NullFile(object):
         """Writes here go nowhere"""
 
 
+def as_id_list(items):
+    return ','.join(
+        [force_text(item.pk) for item in items]
+    )
+
+
 @contextmanager
 def mute_stdout():
     stdout_old = sys.stdout

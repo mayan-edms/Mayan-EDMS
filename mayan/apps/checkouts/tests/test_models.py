@@ -3,18 +3,23 @@ from __future__ import unicode_literals
 import time
 
 from mayan.apps.common.tests import BaseTestCase
-from mayan.apps.documents.tests import GenericDocumentTestCase, DocumentTestMixin
+from mayan.apps.documents.tests import (
+    GenericDocumentTestCase, DocumentTestMixin
+)
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 
 from ..exceptions import (
-    DocumentAlreadyCheckedOut, NewDocumentVersionNotAllowed
+    DocumentAlreadyCheckedOut, DocumentNotCheckedOut,
+    NewDocumentVersionNotAllowed
 )
 from ..models import DocumentCheckout, NewVersionBlock
 
 from .mixins import DocumentCheckoutTestMixin
 
 
-class DocumentCheckoutTestCase(DocumentCheckoutTestMixin, GenericDocumentTestCase):
+class DocumentCheckoutTestCase(
+    DocumentCheckoutTestMixin, GenericDocumentTestCase
+):
     def test_document_check_out(self):
         self._check_out_test_document()
 
@@ -48,6 +53,10 @@ class DocumentCheckoutTestCase(DocumentCheckoutTestMixin, GenericDocumentTestCas
                 block_new_version=True
             )
 
+    def test_document_check_in_without_check_out(self):
+        with self.assertRaises(DocumentNotCheckedOut):
+            self.test_document.check_in()
+
     def test_document_auto_check_in(self):
         self._check_out_test_document()
 
@@ -59,7 +68,9 @@ class DocumentCheckoutTestCase(DocumentCheckoutTestMixin, GenericDocumentTestCas
         self.assertFalse(self.test_document.is_checked_out())
 
 
-class NewVersionBlockTestCase(DocumentCheckoutTestMixin, DocumentTestMixin, BaseTestCase):
+class NewVersionBlockTestCase(
+    DocumentCheckoutTestMixin, DocumentTestMixin, BaseTestCase
+):
     def test_blocking(self):
         NewVersionBlock.objects.block(document=self.test_document)
 
