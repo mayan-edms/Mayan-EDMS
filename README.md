@@ -43,6 +43,16 @@
 
 </div>
 
+<h2 align="center">Book</h2>
+
+The pre-release version of the book "Exploring Mayan EDMS" available now at a discounted price!
+
+<img width="400" src="https://d12swbtw719y4s.cloudfront.net/images/v6RpxW40/aP0qKLjkPiAuXZhYuB45/wDAULAzFyx.jpeg?w=548">
+
+Limited quantities. Buyers of the pre-release will get the full version for free when it is ready.
+
+The link is https://sellfy.com/p/um2fkx/
+
 <h2 align="center">Installation</h2>
 
 The easiest way to use Mayan EDMS is by using the official
