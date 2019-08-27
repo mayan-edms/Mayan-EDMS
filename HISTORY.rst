@@ -30,6 +30,7 @@
 * Add automatic adjustment of HTML body on navigation
   bar changes. Closes GitLab issue #643. Thanks to
   Light Templar (@LightTemplar) for the report.
+* Unify all line endings to be Linux style.
 
 3.2.6 (2019-07-10)
 ==================
