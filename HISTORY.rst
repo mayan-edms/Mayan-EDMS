@@ -27,6 +27,9 @@
   for the report.
 * Rename the MAYAN_USER_GUID environment variable
   to MAYAN_USER_GID.
+* Add automatic adjustment of HTML body on navigation
+  bar changes. Closes GitLab issue #643. Thanks to
+  Light Templar (@LightTemplar) for the report.
 
 3.2.6 (2019-07-10)
 ==================

@@ -55,6 +55,7 @@
                 {% navigation_resolve_menus names='object,secondary' sort_results=True as action_menus_link_results %}
                 {% if action_menus_link_results %}
                     <div class="pull-right btn-group" id="menu-actions">
+                        <div class="body-spacer"></div>
                         <button aria-expanded="true" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" type="button">
                             {% trans 'Actions' %}
                             <span class="caret"></span>
@@ -106,6 +107,7 @@
 
             {% if facet_menus_link_results %}
                 <div id="sidebar">
+                    <div class="body-spacer"></div>
                     <div class="list-group">
                         {% for menu_link_result in facet_menus_link_results %}
                             {% for link_group in menu_link_result.link_groups %}
