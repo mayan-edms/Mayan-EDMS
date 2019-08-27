@@ -31,6 +31,8 @@
   bar changes. Closes GitLab issue #643. Thanks to
   Light Templar (@LightTemplar) for the report.
 * Unify all line endings to be Linux style.
+* Make sure system alerts don't appear under
+  floating elements.
 
 3.2.6 (2019-07-10)
 ==================

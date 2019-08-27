@@ -23,32 +23,32 @@
     {% block content_plain %}{% endblock %}
 {% else %}
     <div class="">
-        <div class="row zero-margin">
-            <div class="col-xs-12">
-                {% common_check_sqlite as check_sqlite %}
-                {% if common_check_sqlite %}
-                    <div class="alert alert-dismissible alert-warning">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <p><strong>{% trans 'Warning' %}</strong> {{ check_sqlite }}</p>
-                    </div>
-                {% endif %}
-                {% block messages %}
-                {% endblock %}
-
-                {% smart_settings_check_changed as settings_changed %}
-                {% if settings_changed %}
-                    <div class="alert alert-dismissible alert-warning">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <p><strong>{% trans 'Warning' %}</strong> {% trans 'Settings updated, restart your installation for changes to take proper effect.' %}</p>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-
         {% navigation_resolve_menus names='facet,list facet' sort_results=True as facet_menus_link_results %}
 
         <div class="row zero-margin">
             <div class="col-xs-12 {% if facet_menus_link_results %}has-sidebar{% endif %}" id="viewport">
+                <div class="row zero-margin">
+                    <div class="col-xs-12">
+                        {% common_check_sqlite as check_sqlite %}
+                        {% if common_check_sqlite or 1 %}
+                            <div class="alert alert-dismissible alert-warning">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <p><strong>{% trans 'Warning' %}</strong> {{ check_sqlite }}</p>
+                            </div>
+                        {% endif %}
+                        {% block messages %}
+                        {% endblock %}
+
+                        {% smart_settings_check_changed as settings_changed %}
+                        {% if settings_changed %}
+                            <div class="alert alert-dismissible alert-warning">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <p><strong>{% trans 'Warning' %}</strong> {% trans 'Settings updated, restart your installation for changes to take proper effect.' %}</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
                 {% include 'appearance/calculate_form_title.html' %}
 
                 {# action menu #}
