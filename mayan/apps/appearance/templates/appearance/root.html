@@ -117,11 +117,11 @@
                 MayanImage.intialize({
                     templateInvalidDocument: '{% spaceless %}{% include "documents/invalid_document.html" %}{% endspaceless %}'
                 });
+                app.doBodyAdjust();
                 app.doToastrMessages();
                 app.resizeFullHeight();
                 app.setupSelect2();
                 app.setupScrollView();
-
             }
 
             jQuery(document).ready(function() {
