@@ -90,7 +90,6 @@ class IndexInstaceViewTestCase(
             link_documents=True
         )
 
-
     def test_index_rebuild_view_no_permission(self):
         self.upload_document()
         self._create_test_index()
