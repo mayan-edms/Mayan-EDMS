@@ -1,4 +1,4 @@
-3.2.7 (2019-08-XX)
+3.2.7 (2019-08-28)
 ==================
 * Fix checkout form bug. Thanks to Lucius Schaerer
   (@lschaer1) for the report.
