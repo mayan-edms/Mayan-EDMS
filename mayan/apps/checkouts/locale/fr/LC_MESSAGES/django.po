@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 01:28-0400\n"
-"PO-Revision-Date: 2019-05-17 13:31+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
+"POT-Creation-Date: 2019-08-25 20:28-0400\n"
+"PO-Revision-Date: 2019-08-26 01:01+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,7 +46,7 @@ msgstr "Document verrouillé"
 msgid "Document forcefully checked in"
 msgstr "Document déverrouillé de force"
 
-#: exceptions.py:27 views.py:108
+#: exceptions.py:27 views.py:122
 msgid "Document already checked out."
 msgstr "Document déjà verrouillé."
 
@@ -54,7 +54,7 @@ msgstr "Document déjà verrouillé."
 msgid "Document status"
 msgstr "Statut du document"
 
-#: forms.py:39 models.py:41 views.py:148
+#: forms.py:39 models.py:41 views.py:162
 msgid "User"
 msgstr "Utilisateur"
 
@@ -191,43 +191,43 @@ msgstr "Le document n'a pas été verrouillé."
 msgid "Document \"%s\" checked in successfully."
 msgstr "Document \"%s\" déverrouillé avec succès."
 
-#: views.py:114
+#: views.py:94
+#, python-format
+msgid "Check out details for document: %s"
+msgstr "Détails du verrouillage pour le document : %s"
+
+#: views.py:128
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "Document \"%s\" verrouillé avec succès."
 
-#: views.py:123
+#: views.py:137
 #, python-format
 msgid "Check out document: %s"
 msgstr "Verrouiller le document : %s"
 
-#: views.py:154
+#: views.py:168
 msgid "Checkout time and date"
 msgstr "Date et heure du verrouillage"
 
-#: views.py:160
+#: views.py:174
 msgid "Checkout expiration"
 msgstr "Expiration du verrouillage"
 
-#: views.py:168
+#: views.py:182
 msgid ""
 "Checking out a document blocks certain document operations for a "
 "predetermined amount of time."
 msgstr "Le verrouillage d'un document bloque certaines opérations sur le document pendant une durée prédéterminée."
 
-#: views.py:172
+#: views.py:186
 msgid "No documents have been checked out"
 msgstr "Aucun document n'a été verrouillé"
 
-#: views.py:173
+#: views.py:187
 msgid "Documents checked out"
 msgstr "Documents verrouillés"
 
-#: views.py:188
-#, python-format
-msgid "Check out details for document: %s"
-msgstr "Détails du verrouillage pour le document : %s"
-
-#: widgets.py:25
-msgid "Period"
-msgstr "Période"
+#: widgets.py:27
+msgid "Amount"
+msgstr ""

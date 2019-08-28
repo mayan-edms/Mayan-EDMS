@@ -1,3 +1,39 @@
+3.2.7 (2019-08-28)
+==================
+* Fix checkout form bug. Thanks to Lucius Schaerer
+  (@lschaer1) for the report.
+* Disable pagination current page button
+  Current page button was clickable and would cause the
+  single page navigation to jump to the home view.
+* Remove redundant Celery queue declarations from the
+  file_metadata app.
+* Add internal_name field to workflow serializer.
+  Fixes workflow API creation view.
+* Fix document cabinet list API view. Thanks for forum user
+  "jere" for the report. Forum topic 1039.
+* Fix document template column field. GitLab issue #655.
+  Thanks to Christian Wiegand (@christianwgd) for the
+  report.
+* Increase mailing profile password field max length
+  from 48 to 128 characters. GitLab issue #657.
+  Thanks to sigsec (@sigsec) for the report.
+* Update the Docker entrypoint to update the ownership
+  of files when the UID of GUID are changed.
+  GitLab issue #650. Thanks to Fabian (@ruffy91)
+  for the report.
+* Update the Docker entrypoint to allow changing
+  the GID of the mayan user to existing values.
+  GitLab issue #652. Thanks to Fabian (@ruffy91)
+  for the report.
+* Rename the MAYAN_USER_GUID environment variable
+  to MAYAN_USER_GID.
+* Add automatic adjustment of HTML body on navigation
+  bar changes. Closes GitLab issue #643. Thanks to
+  Light Templar (@LightTemplar) for the report.
+* Unify all line endings to be Linux style.
+* Make sure system alerts don't appear under
+  floating elements.
+
 3.2.6 (2019-07-10)
 ==================
 * Remove the smart settings app * import.

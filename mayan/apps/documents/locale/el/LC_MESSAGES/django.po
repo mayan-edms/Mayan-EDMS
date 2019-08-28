@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 01:30-0400\n"
+"POT-Creation-Date: 2019-08-25 20:30-0400\n"
 "PO-Revision-Date: 2019-06-15 07:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
@@ -50,11 +50,11 @@ msgstr ""
 msgid "Versions timestamp"
 msgstr ""
 
-#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:333
+#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:334
 msgid "Thumbnail"
 msgstr "Μικρογραφία"
 
-#: apps.py:249 apps.py:338 forms/document_forms.py:182 links.py:83
+#: apps.py:249 apps.py:339 forms/document_forms.py:182 links.py:83
 msgid "Pages"
 msgstr "Σελίδες"
 

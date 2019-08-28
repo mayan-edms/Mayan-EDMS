@@ -49,6 +49,12 @@ link_index_instances_rebuild = Link(
     ),
     text=_('Rebuild indexes'), view='indexing:rebuild_index_instances'
 )
+link_index_instance_rebuild = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_indexing.icons.icon_index_instances_rebuild',
+    permissions=(permission_document_indexing_rebuild,),
+    text=_('Rebuild index'), view='indexing:index_setup_rebuild'
+)
 
 link_index_template_setup = Link(
     condition=get_cascade_condition(

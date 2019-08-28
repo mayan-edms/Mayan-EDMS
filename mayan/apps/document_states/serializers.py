@@ -266,7 +266,7 @@ class WritableWorkflowSerializer(serializers.ModelSerializer):
             'url': {'view_name': 'rest_api:workflow-detail'},
         }
         fields = (
-            'document_types_pk_list', 'label', 'id', 'url',
+            'document_types_pk_list', 'label', 'id', 'internal_name', 'url',
         )
         model = Workflow
 

@@ -50,3 +50,10 @@ class IndexViewTestMixin(object):
                 'label': TEST_INDEX_LABEL_EDITED, 'slug': TEST_INDEX_SLUG
             }
         )
+
+    def _request_test_index_rebuild_view(self):
+        return self.post(
+            viewname='indexing:index_setup_rebuild', kwargs={
+                'pk': self.test_index.pk
+            }
+        )

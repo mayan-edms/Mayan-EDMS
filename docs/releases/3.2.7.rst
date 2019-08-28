@@ -1,0 +1,145 @@
+Version 3.2.7
+=============
+
+Released: August 28, 2019
+
+
+Changes
+-------
+
+- Fix checkouts form bug. Fixes GitLab issue #654
+  Thanks to Lucius Schaerer (@lschaer1) for the report.
+- Disable pagination current page button
+  Current page button was clickable and would cause the
+  single page navigation to jump to the home view.
+- Remove redundant Celery queue declarations from the
+  file_metadata app.
+- Add internal_name field to workflow serializer.
+  Fixes workflow API creation view.
+- Fix document cabinet list API view. Thanks for forum user
+  "jere" for the report. Forum topic 1039.
+- Fix document template column field. GitLab issue #655.
+  Thanks to Christian Wiegand (@christianwgd) for the
+  report.
+- Increase mailing profile password field max length
+  from 48 to 128 characters. GitLab issue #657.
+  Thanks to sigsec (@sigsec) for the report.
+- Update the Docker entrypoint to update the ownership
+  of files when the UID of GUID are changed.
+  GitLab issue #650. Thanks to Fabian (@ruffy91)
+  for the report.
+- Update the Docker entrypoint to allow changing
+  the GID of the mayan user to existing values.
+  GitLab issue #652. Thanks to Fabian (@ruffy91)
+  for the report.
+- Rename the MAYAN_USER_GUID environment variable
+  to MAYAN_USER_GID.
+- Backport individual index rebuild support.
+- Add automatic adjustment of HTML body on navigation
+  bar changes. Closes GitLab issue #643. Thanks to
+  Light Templar (@LightTemplar) for the report.
+- Unify all line endings to be Linux style.
+- Make sure system alerts don't appear under
+  floating elements.
+
+Removals
+--------
+
+- None
+
+
+Upgrading from a previous version
+---------------------------------
+
+If installed via Python's PIP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Remove deprecated requirements::
+
+    sudo -u mayan curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt -o /tmp/removals.txt && sudo -u mayan /opt/mayan-edms/bin/pip uninstall -y -r /tmp/removals.txt
+
+Type in the console::
+
+    sudo -u mayan /opt/mayan-edms/bin/pip install mayan-edms==3.2.7
+
+the requirements will also be updated automatically.
+
+
+Using Git
+^^^^^^^^^
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Remove deprecated requirements::
+
+    $ pip uninstall -y -r removals.txt
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+
+Common steps
+^^^^^^^^^^^^
+
+Perform these steps after updating the code from either step above.
+
+Make a backup of your supervisord file::
+
+    sudo cp /etc/supervisor/conf.d/mayan.conf /etc/supervisor/conf.d/mayan.conf.bck
+
+Update the supervisord configuration file. Replace the environment
+variables values show here with your respective settings. This step will refresh
+the supervisord configuration file with the new queues and the latest
+recommended layout::
+
+    sudo MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+    MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+    MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
+    /opt/mayan-edms/bin/mayan-edms.py platformtemplate supervisord > /etc/supervisor/conf.d/mayan.conf
+
+Edit the supervisord configuration file and update any setting the template
+generator missed::
+
+    sudo vi /etc/supervisor/conf.d/mayan.conf
+
+Migrate existing database schema with::
+
+    sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+    MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+    MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
+    /opt/mayan-edms/bin/mayan-edms.py performupgrade
+
+Add new static media::
+
+    sudo -u mayan MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
+    /opt/mayan-edms/bin/mayan-edms.py preparestatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Bugs fixed or issues closed
+---------------------------
+
+- :gitlab-issue:`643` The "Actions" button won't show up, if window size between 992 and 1248 px
+- :gitlab-issue:`650` Permission denied when MAYAN_USER_UID and MAYAN_USER_GUID are set
+- :gitlab-issue:`652` MAYAN_USER_GUID cannot be set to specific values
+- :gitlab-issue:`654` Internal Server Error, Document Checkout
+- :gitlab-issue:`655` Index setup tree view shows two times the "enabled" field instead of "Link documents"
+- :gitlab-issue:`657` Mailer password length restriction is too short
+- :forum-topic:`1039` Re: /api/documents/{id}/cabinets returns 500
+- :forum-topic:`1050` edit/delete sub-cabinet
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

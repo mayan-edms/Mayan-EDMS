@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
-from ..models import Index
+from ..models import Index, IndexInstanceNode
 from ..permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
     permission_document_indexing_edit,
@@ -10,7 +10,10 @@ from ..permissions import (
     permission_document_indexing_rebuild
 )
 
-from .literals import TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED
+from .literals import (
+    TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED,
+    TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
+)
 from .mixins import IndexTestMixin, IndexViewTestMixin
 
 
@@ -77,9 +80,41 @@ class IndexViewTestCase(
         self.assertEqual(self.test_index.label, TEST_INDEX_LABEL_EDITED)
 
 
-class IndexInstanceViewTestCase(
+class IndexInstaceViewTestCase(
     IndexTestMixin, IndexViewTestMixin, GenericDocumentViewTestCase
 ):
+    def _create_index_template_node(self):
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
+            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
+            link_documents=True
+        )
+
+    def test_index_rebuild_view_no_permission(self):
+        self.upload_document()
+        self._create_test_index()
+        self._create_index_template_node()
+
+        response = self._request_test_index_rebuild_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(IndexInstanceNode.objects.count(), 0)
+
+    def test_index_rebuild_view_with_access(self):
+        self.upload_document()
+        self._create_test_index()
+        self._create_index_template_node()
+
+        self.grant_access(
+            obj=self.test_index,
+            permission=permission_document_indexing_rebuild
+        )
+
+        response = self._request_test_index_rebuild_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertNotEqual(IndexInstanceNode.objects.count(), 0)
+
     def _request_index_instance_node_view(self, index_instance_node):
         return self.get(
             viewname='indexing:index_instance_node_view', kwargs={
@@ -108,9 +143,13 @@ class IndexInstanceViewTestCase(
         )
         self.assertContains(response, text=TEST_INDEX_LABEL, status_code=200)
 
+
+class IndexToolsViewTestCase(
+    IndexTestMixin, IndexViewTestMixin, GenericDocumentViewTestCase
+):
     def _request_indexes_rebuild_get_view(self):
         return self.get(
-            viewname='indexing:rebuild_index_instances',
+            viewname='indexing:rebuild_index_instances'
         )
 
     def _request_indexes_rebuild_post_view(self):

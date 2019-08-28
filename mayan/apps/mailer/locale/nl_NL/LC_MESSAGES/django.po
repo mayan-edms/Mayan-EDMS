@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Ben Zweekhorst <bzweekhorst@gmail.com>, 2019
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 01:31-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-08-25 20:32-0400\n"
+"PO-Revision-Date: 2019-07-21 20:58+0000\n"
+"Last-Translator: Ben Zweekhorst <bzweekhorst@gmail.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,7 +41,7 @@ msgstr ""
 
 #: events.py:10
 msgid "Email sent"
-msgstr ""
+msgstr "E-mail verzonden"
 
 #: forms.py:60 forms.py:122
 msgid ""
@@ -78,7 +79,7 @@ msgstr "E-mail document"
 
 #: links.py:24 links.py:32
 msgid "Email link"
-msgstr "E-mail lin"
+msgstr "E-mail link"
 
 #: links.py:37
 msgid "System mailer error log"
@@ -98,7 +99,7 @@ msgstr "Bewerken"
 
 #: links.py:58
 msgid "Log"
-msgstr ""
+msgstr "Log"
 
 #: links.py:63
 msgid "Mailing profiles list"
@@ -110,7 +111,7 @@ msgstr ""
 
 #: links.py:74 views.py:257
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: literals.py:7
 #, python-format
@@ -119,7 +120,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "Bijgevoegd aan deze e-mail is het document: {{ document }}\n\n--------\nDeze e-mail is verzonden van %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -158,7 +159,7 @@ msgstr ""
 
 #: mailers.py:44
 msgid "Use TLS"
-msgstr ""
+msgstr "Gebruik TLS"
 
 #: mailers.py:47
 msgid ""
@@ -168,7 +169,7 @@ msgstr ""
 
 #: mailers.py:52
 msgid "Use SSL"
-msgstr ""
+msgstr "Gebruik SSL"
 
 #: mailers.py:55
 msgid ""
@@ -182,7 +183,7 @@ msgstr ""
 
 #: mailers.py:64
 msgid "Username"
-msgstr ""
+msgstr "Gebruikersnaam"
 
 #: mailers.py:67
 msgid ""
