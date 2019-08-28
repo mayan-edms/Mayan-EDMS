@@ -1,7 +1,6 @@
-[![Donation](https://img.shields.io/badge/Donation-PayPal-brightgreen)](https://paypal.me/MayanEDMS)
+[![Donation](https://img.shields.io/badge/donation-PayPal-brightgreen)](https://paypal.me/MayanEDMS)
 [![pypi][pypi]][pypi-url]
 [![builds][builds]][builds-url]
-[![coverage][cover]][cover-url]
 ![python][python]
 ![license][license]
 [![Docker pulls](https://img.shields.io/docker/pulls/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
