@@ -1,11 +1,11 @@
+[![Donation](https://img.shields.io/badge/donation-PayPal-brightgreen)](https://paypal.me/MayanEDMS)
 [![pypi][pypi]][pypi-url]
 [![builds][builds]][builds-url]
-[![coverage][cover]][cover-url]
 ![python][python]
 ![license][license]
 [![Docker pulls](https://img.shields.io/docker/pulls/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
 [![Docker Stars](https://img.shields.io/docker/stars/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
-[![Docker layers](https://images.microbadger.com/badges/image/mayanedms/mayanedms.svg)](https://microbadger.com/images/mayanedms/mayanedms)
+
 
 [pypi]: http://img.shields.io/pypi/v/mayan-edms.svg
 [pypi-url]: http://badge.fury.io/py/mayan-edms
@@ -42,6 +42,20 @@
 </p>
 
 </div>
+
+<h2 align="center">Book</h2>
+
+The pre-release version of the book "Exploring Mayan EDMS" available now at a discounted price!
+
+<p align="center">
+    <a href="https://sellfy.com/p/um2fkx/">
+        <img width="400" src="https://d12swbtw719y4s.cloudfront.net/images/v6RpxW40/aP0qKLjkPiAuXZhYuB45/wDAULAzFyx.jpeg?w=548">
+    </a>
+</p>
+
+Limited quantities. Buyers of the pre-release will get the full version for free when it is ready.
+
+The link is https://sellfy.com/p/um2fkx/
 
 <h2 align="center">Installation</h2>
 

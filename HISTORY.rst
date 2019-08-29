@@ -73,7 +73,7 @@
 - Add redactions app.
 - Unify all line endings to be Linux style.
 
-3.2.7 (2019-08-XX)
+3.2.7 (2019-08-28)
 ==================
 - Fix checkout form bug. Thanks to Lucius Schaerer
   (@lschaer1) for the report.
@@ -102,6 +102,12 @@
   for the report.
 - Rename the MAYAN_USER_GUID environment variable
   to MAYAN_USER_GID.
+* Add automatic adjustment of HTML body on navigation
+  bar changes. Closes GitLab issue #643. Thanks to
+  Light Templar (@LightTemplar) for the report.
+* Unify all line endings to be Linux style.
+* Make sure system alerts don't appear under
+  floating elements.
 
 3.2.6 (2019-07-10)
 ==================

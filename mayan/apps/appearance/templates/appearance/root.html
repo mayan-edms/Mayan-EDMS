@@ -39,6 +39,7 @@
                 {% include 'appearance/menu_main.html' %}
             </div>
             <div class="main">
+                <div class="body-spacer"></div>
                 <div class="row zero-margin">
                     <div class="col-xs-12">
                         <div id="ajax-content"></div>
@@ -104,7 +105,10 @@
             var app = new MayanApp({
                 ajaxMenusOptions: [
                     {
-                        callback: MayanApp.updateNavbarState,
+                        callback: function (options) {
+                            MayanApp.updateNavbarState();
+                            options.app.doBodyAdjust();
+                        },
                         interval: 5000,
                         menuSelector: '#menu-main',
                         name: 'menu_main',
@@ -123,6 +127,7 @@
                 MayanImage.intialize({
                     templateInvalidDocument: '{% spaceless %}{% include "documents/invalid_document.html" %}{% endspaceless %}'
                 });
+                app.doBodyAdjust();
                 app.doToastrMessages();
                 app.resizeFullHeight();
                 app.setupSelect2();
@@ -132,6 +137,7 @@
             jQuery(document).ready(function() {
                 app.initialize();
             });
+
         </script>
     </body>
 </html>

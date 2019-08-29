@@ -49,12 +49,13 @@ class MayanApp {
 
     static setupNavBarState () {
         $('body').on('click', '.a-main-menu-accordion-link', function (event) {
-            console.log('ad');
+            var $this = $(this);
+
             $('.a-main-menu-accordion-link').each(function (index, value) {
-                $(this).parent().removeClass('active');
+                $this.parent().removeClass('active');
             });
 
-            $(this).parent().addClass('active');
+            $this.parent().addClass('active');
         });
     }
 
@@ -63,8 +64,10 @@ class MayanApp {
         var uriFragment = uri.fragment();
         $('.a-main-menu-accordion-link').each(function (index, value) {
             if (value.pathname === uriFragment) {
-                $(this).closest('.collapse').addClass('in').parent().find('.collapsed').removeClass('collapsed').attr('aria-expanded', 'true');
-                $(this).parent().addClass('active');
+                var $this = $(this);
+
+                $this.closest('.collapse').addClass('in').parent().find('.collapsed').removeClass('collapsed').attr('aria-expanded', 'true');
+                $this.parent().addClass('active');
             }
         });
     }
@@ -75,6 +78,13 @@ class MayanApp {
         if (this.ajaxExecuting) {
             $(this.ajaxSpinnerSeletor).fadeIn(50);
         }
+    }
+
+    doBodyAdjust () {
+        // Adjust the height of the body-spacer to move content elements
+        // up or down when the navbar changes size.
+        const navbarSize = 60;
+        $('.body-spacer').css('height', $('.navbar').height() - navbarSize);
     }
 
     doRefreshAJAXMenu (options) {
@@ -89,7 +99,7 @@ class MayanApp {
                     $(options.menuSelector).html(data.html);
                     options.app.ajaxMenuHashes[data.name] = data.hex_hash;
                     if (options.callback !== undefined) {
-                        options.callback();
+                        options.callback(options);
                     }
                 }
             },
@@ -172,6 +182,7 @@ class MayanApp {
         var self = this;
 
         this.setupAJAXSpinner();
+        this.setupBodyAdjust();
         this.setupFormHotkeys();
         this.setupFullHeightResizing();
         this.setupItemsSelector();
@@ -204,6 +215,14 @@ class MayanApp {
                 $(self.ajaxSpinnerSeletor).fadeOut();
                 self.ajaxExecuting = false;
             });
+        });
+    }
+
+    setupBodyAdjust () {
+        var self = this;
+
+        this.window.resize(function() {
+            self.doBodyAdjust();
         });
     }
 
@@ -298,7 +317,7 @@ class MayanApp {
         });
     }
 
-   setupPanelSelection () {
+    setupPanelSelection () {
         var app = this;
 
         // Setup panel highlighting on check
