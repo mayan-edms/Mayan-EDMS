@@ -86,6 +86,7 @@ Changes
 - Add support for disabling document pages.
 - Add support for converter layers.
 - Add redactions app.
+- Unify all line endings to be Linux style.
 
 Removals
 --------

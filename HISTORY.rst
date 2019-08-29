@@ -71,6 +71,7 @@
 - Add support for disabling document pages.
 - Add support for converter layers.
 - Add redactions app.
+- Unify all line endings to be Linux style.
 
 3.2.7 (2019-08-XX)
 ==================
