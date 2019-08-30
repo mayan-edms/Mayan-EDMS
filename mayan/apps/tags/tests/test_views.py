@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 
 from django.utils.encoding import force_text
 
-from mayan.apps.common.tests import GenericViewTestCase
-from mayan.apps.documents.tests import GenericDocumentViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..models import Tag
 from ..permissions import (

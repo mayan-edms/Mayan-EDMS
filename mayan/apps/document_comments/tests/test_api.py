@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 
 from rest_framework import status
 
-from mayan.apps.documents.tests import DocumentTestMixin
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models import Comment
 from ..permissions import (

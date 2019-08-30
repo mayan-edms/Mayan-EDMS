@@ -10,7 +10,7 @@ from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.common.menus import menu_list_facet
 
 from .dependencies import *  # NOQA
-from .layers import layer_redactions  # NOQA
+from .layers import layer_redactions
 from .transformations import *  # NOQA
 
 logger = logging.getLogger(__name__)

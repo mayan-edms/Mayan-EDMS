@@ -1,9 +1,8 @@
 from __future__ import unicode_literals
 
-from mayan.apps.common.tests import BaseTestCase
-from mayan.apps.documents.tests import (
-    TEST_PDF_DOCUMENT_FILENAME, DocumentTestMixin
-)
+from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.documents.tests.literals import TEST_PDF_DOCUMENT_FILENAME
+from mayan.apps.documents.tests.mixins import DocumentTestMixin
 
 from .literals import (
     TEST_PDF_FILE_METADATA_DOTTED_NAME, TEST_PDF_FILE_METADATA_VALUE

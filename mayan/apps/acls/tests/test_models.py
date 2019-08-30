@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.core.exceptions import PermissionDenied
 from django.db import models
 
-from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.common.tests.base import BaseTestCase
 
 from ..classes import ModelPermission
 from ..models import AccessControlList

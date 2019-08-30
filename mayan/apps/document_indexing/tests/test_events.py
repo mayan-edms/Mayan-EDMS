@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 
 from actstream.models import Action
 
-from mayan.apps.common.tests import GenericViewTestCase
-from mayan.apps.documents.tests import DocumentTestMixin
+from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.documents.tests.mixins import DocumentTestMixin
 
 from ..permissions import (
     permission_document_indexing_create, permission_document_indexing_edit,

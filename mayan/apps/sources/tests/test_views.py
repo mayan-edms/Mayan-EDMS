@@ -4,13 +4,13 @@ import os
 import shutil
 
 from mayan.apps.checkouts.models import NewVersionBlock
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
-from mayan.apps.documents.tests import (
-    GenericDocumentViewTestCase, TEST_COMPRESSED_DOCUMENT_PATH,
-    TEST_DOCUMENT_DESCRIPTION, TEST_SMALL_DOCUMENT_CHECKSUM,
-    TEST_SMALL_DOCUMENT_PATH,
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.literals import (
+    TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
+    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 

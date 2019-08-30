@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.user_management.permissions import permission_group_edit
 from mayan.apps.user_management.tests.mixins import GroupTestMixin
 

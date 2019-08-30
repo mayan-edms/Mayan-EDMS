@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 import os
 import shutil
 
-from mayan.apps.common.tests import BaseTestCase
-from mayan.apps.documents.tests import TEST_NON_ASCII_DOCUMENT_PATH
+from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.documents.tests.literals import TEST_NON_ASCII_DOCUMENT_PATH
 from mayan.apps.storage.utils import mkdtemp
 
 from ..classes import StagingFile

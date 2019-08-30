@@ -8,7 +8,7 @@ from django.conf import settings
 from django.utils.encoding import force_text
 
 from mayan.apps.common.settings import setting_paginate_by
-from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.storage.utils import fs_cleanup
 
 from ..classes import Setting

@@ -3,9 +3,8 @@ from __future__ import absolute_import, unicode_literals
 from django_downloadview.test import assert_download_response
 
 from mayan.apps.documents.models import DocumentVersion
-from mayan.apps.documents.tests import (
-    GenericDocumentViewTestCase, TEST_DOCUMENT_PATH
-)
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.literals import TEST_DOCUMENT_PATH
 
 from ..models import DetachedSignature, EmbeddedSignature
 from ..permissions import (

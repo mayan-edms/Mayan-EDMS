@@ -12,11 +12,11 @@ from django.utils.encoding import force_text
 
 from mayan.apps.common.serialization import yaml_dump
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.tests import (
-    GenericDocumentTestCase, TEST_COMPRESSED_DOCUMENT_PATH,
-    TEST_NON_ASCII_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_PATH,
-    TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_FILENAME,
-    TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
+from mayan.apps.documents.tests.literals import (
+    TEST_COMPRESSED_DOCUMENT_PATH, TEST_NON_ASCII_DOCUMENT_FILENAME,
+    TEST_NON_ASCII_DOCUMENT_PATH, TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH,
+    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
 )
 from mayan.apps.metadata.models import MetadataType
 from mayan.apps.storage.utils import mkdtemp

@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.tests import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.sources.links import link_document_version_upload
 
 from ..literals import STATE_CHECKED_OUT, STATE_LABELS

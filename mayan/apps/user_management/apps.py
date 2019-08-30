@@ -56,7 +56,7 @@ from .permissions import (
     permission_group_view, permission_user_delete, permission_user_edit,
     permission_user_view
 )
-from .search import *  # NOQA
+from .search import group_search, user_search  # NOQA
 
 
 def get_groups():

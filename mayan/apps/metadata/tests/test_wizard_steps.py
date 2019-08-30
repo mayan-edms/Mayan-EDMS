@@ -5,9 +5,8 @@ from django.urls import reverse
 from mayan.apps.common.http import URL
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
-from mayan.apps.documents.tests import (
-    GenericDocumentViewTestCase, TEST_SMALL_DOCUMENT_PATH,
-)
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 from mayan.apps.sources.models import WebFormSource
 from mayan.apps.sources.tests.literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N,

@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django_downloadview.test import assert_download_response
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 
 from ..models import Key
 from ..permissions import permission_key_download, permission_key_upload

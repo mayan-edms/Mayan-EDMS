@@ -7,8 +7,7 @@ from django.utils.encoding import force_text
 from django_downloadview import assert_download_response
 from rest_framework import status
 
-from mayan.apps.converter.tests.mixins import LayerTestMixin
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models import Document, DocumentType
 from ..permissions import (

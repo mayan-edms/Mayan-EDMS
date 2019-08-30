@@ -3,7 +3,7 @@ from __future__ import print_function, unicode_literals
 from pathlib2 import Path
 import shutil
 
-from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.storage.utils import mkdtemp
 
 from ..classes import Dependency, Provider

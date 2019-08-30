@@ -2,9 +2,8 @@ from __future__ import unicode_literals
 
 from django.urls import reverse
 
-from mayan.apps.documents.tests import (
-    GenericDocumentViewTestCase, TEST_DOCUMENT_PATH
-)
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.literals import TEST_DOCUMENT_PATH
 
 from ..links import (
     link_document_version_signature_delete,

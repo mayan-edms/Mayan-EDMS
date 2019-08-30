@@ -72,13 +72,6 @@ class DocumentCheckoutViewTestMixin(object):
             }
         )
 
-    def _request_test_document_check_out_detail_view(self):
-        return self.get(
-            viewname='checkouts:check_out_info', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
     def _request_test_document_check_out_view(self):
         return self.post(
             viewname='checkouts:check_out_document', kwargs={
@@ -106,9 +99,6 @@ class DocumentCheckoutViewTestMixin(object):
                 'pk': self.test_document.pk
             }
         )
-
-    def _request_test_document_check_out_list_view(self):
-        return self.get(viewname='checkouts:check_out_list')
 
     def _request_test_document_check_out_list_view(self):
         return self.get(viewname='checkouts:check_out_list')

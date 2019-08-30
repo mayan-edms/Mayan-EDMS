@@ -5,7 +5,7 @@ from django.contrib.auth.models import Group
 
 from rest_framework import status
 
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..permissions import (
     permission_group_create, permission_group_delete,
