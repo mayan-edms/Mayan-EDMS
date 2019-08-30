@@ -34,7 +34,7 @@ class WebLinksApp(MayanAppConfig):
     app_namespace = 'web_links'
     app_url = 'web_links'
     has_rest_api = False
-    has_tests = False
+    has_tests = True
     name = 'mayan.apps.web_links'
     verbose_name = _('Links')
 
