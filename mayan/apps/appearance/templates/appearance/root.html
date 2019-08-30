@@ -120,7 +120,8 @@
                         name: 'menu_topbar',
                         url: '{% url "rest_api:template-detail" "menu_topbar" %}'
                     },
-                ]
+                ],
+                messagePosition: '{% smart_setting "APPEARANCE_MESSAGE_POSITION" %}'
             });
 
             var afterBaseLoad = function () {

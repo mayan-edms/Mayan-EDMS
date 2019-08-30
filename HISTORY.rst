@@ -72,6 +72,8 @@
 - Add support for converter layers.
 - Add redactions app.
 - Unify all line endings to be Linux style.
+- Add support for changing the system messages position.
+  GitLab issue #640. Thanks to Matthias Urhahn (@d4rken).
 
 3.2.7 (2019-08-28)
 ==================

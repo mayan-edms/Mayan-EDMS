@@ -4,7 +4,7 @@ class MayanApp {
     constructor (options) {
         var self = this;
 
-        options = options || {
+        this.options = options || {
             ajaxMenusOptions: []
         }
 
@@ -112,7 +112,7 @@ class MayanApp {
             'closeButton': true,
             'debug': false,
             'newestOnTop': true,
-            'positionClass': 'toast-top-right',
+            'positionClass': 'toast-' + this.options.messagePosition,
             'preventDuplicates': false,
             'onclick': null,
             'showDuration': '300',

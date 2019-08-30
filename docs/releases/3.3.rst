@@ -87,6 +87,8 @@ Changes
 - Add support for converter layers.
 - Add redactions app.
 - Unify all line endings to be Linux style.
+- Add support for changing the system messages position.
+  GitLab issue #640. Thanks to Matthias Urhahn (@d4rken).
 
 Removals
 --------
@@ -204,6 +206,7 @@ Bugs fixed or issues closed
 - :gitlab-issue:`594` 3.2b1: Unable to install/run under Python 3.5/3.6/3.7
 - :gitlab-issue:`634` Failing docker entrypoint when using secret config
 - :gitlab-issue:`635` Build a docker image for Python3
+- :gitlab-issue:`640` UX: "Toast" Popup position prevents access to actions
 - :gitlab-issue:`644` Update sane-utils package in docker image.
 
 
