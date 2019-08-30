@@ -89,6 +89,7 @@ INSTALLED_APPS = (
     'mayan.apps.authentication',
     'mayan.apps.autoadmin',
     'mayan.apps.common',
+    'mayan.apps.control_codes',
     'mayan.apps.converter',
     'mayan.apps.dashboards',
     'mayan.apps.dependencies',
