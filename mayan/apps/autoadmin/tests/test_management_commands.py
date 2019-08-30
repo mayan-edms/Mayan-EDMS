@@ -10,6 +10,8 @@ from ..models import AutoAdminSingleton
 
 
 class AutoAdminManagementCommandTestCase(BaseTestCase):
+    create_test_case_user = False
+
     def setUp(self):
         super(AutoAdminManagementCommandTestCase, self).setUp()
         with mute_stdout():
