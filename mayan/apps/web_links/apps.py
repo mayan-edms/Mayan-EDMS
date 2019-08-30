@@ -16,6 +16,7 @@ from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
 from mayan.apps.navigation.classes import SourceColumn
+
 from .events import event_web_link_edited
 from .links import (
     link_document_type_web_links, link_document_web_link_list,
