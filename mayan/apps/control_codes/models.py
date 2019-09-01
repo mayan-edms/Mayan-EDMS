@@ -75,6 +75,7 @@ class ControlSheetCode(models.Model):
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
     class Meta:
+        ordering = ('order',)
         verbose_name = _('Control sheet code')
         verbose_name_plural = _('Control sheet codes')
 
@@ -108,7 +109,6 @@ class ControlSheetCode(models.Model):
 
             image = self.render()
             with self.cache_partition.create_file(filename=cache_filename) as file_object:
-                #file_object.write(image)
                 image.save(file_object)
 
         return cache_filename
@@ -117,8 +117,11 @@ class ControlSheetCode(models.Model):
         final_url = furl()
         final_url.args = kwargs
         final_url.path = reverse(
-            viewname='rest_api:workflow-image',
-            kwargs={'pk': self.pk}
+            viewname='rest_api:controlsheet-code-image',
+            kwargs={
+                'control_sheet_id': self.control_sheet.pk,
+                'control_sheet_code_id': self.pk
+            }
         )
         final_url.args['_hash'] = self.get_hash()
 
@@ -129,6 +132,14 @@ class ControlSheetCode(models.Model):
 
     def get_control_code_class(self):
         return ControlCode.get(name=self.name)
+
+    def get_control_code_instance(self):
+        return self.get_control_code_class()(
+            **self.get_arguments()
+        )
+
+    def get_display(self):
+        return force_text(self.get_control_code_instance())
 
     def get_hash(self):
         objects_lists = list(
@@ -142,7 +153,7 @@ class ControlSheetCode(models.Model):
         ).hexdigest()
 
     def render(self):
-        return self.get_control_code_class()(**self.get_arguments()).image
+        return self.get_control_code_instance().get_image(order=self.order)
 
     def save(self, *args, **kwargs):
         if not self.order:

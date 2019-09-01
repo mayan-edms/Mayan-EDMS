@@ -226,6 +226,6 @@ class APIControlSheetCodeImageView(generics.RetrieveAPIView):
             if '_hash' in request.GET:
                 patch_cache_control(
                     response,
-                    max_age=settings_control_sheet_image_cache_time.value
+                    max_age=settings_control_sheet_code_image_cache_time.value
                 )
             return response

@@ -1,0 +1,24 @@
+{% extends 'appearance/base_plain.html' %}
+
+{% load documents_tags %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content_plain %}
+    <p class="text-center">
+    Mayan EDMS control sheet:     {{  object }}
+    </p>
+
+    <ul class="list-inline text-center">
+        {% for code in object.codes.all %}
+            <li class="list-inline-item">
+                <img
+                    class="img-responsive"
+                    src="{{ code.get_api_image_url }}"
+                    style=""
+                />
+                <p>{{ code.get_display }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

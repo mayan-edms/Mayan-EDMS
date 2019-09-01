@@ -25,12 +25,13 @@ class ControlSheetDetailView(SingleObjectDetailView):
     fields = ('label',)
     pk_url_kwarg = 'control_sheet_id'
     model = ControlSheet
+    template_name = 'control_codes/control_sheet_print.html'
 
     def get_extra_context(self):
         return {
             'object': self.object,
             'title': _(
-                'Details for control sheet: %s'
+                'Print preview for control sheet: %s'
             ) % self.object
         }
 

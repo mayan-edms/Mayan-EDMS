@@ -1,8 +1,7 @@
 from __future__ import unicode_literals
 
-CONTROL_CODE_MAGIC_NUMBER = 'MCTRL'
+CONTROL_CODE_MAGIC_NUMBER = 'MCTRL1'
 CONTROL_CODE_SEPARATOR = ':'
-CONTROL_CODE_VERSION = '1'
 
 CONTROL_SHEET_CODE_IMAGE_CACHE_NAME = 'control_sheet_codes'
 CONTROL_SHEET_CODE_IMAGE_CACHE_STORAGE_INSTANCE_PATH = 'mayan.apps.control_codes.storages.storage_controlsheetcodeimagecache'
