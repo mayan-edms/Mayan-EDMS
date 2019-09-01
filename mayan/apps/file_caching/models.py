@@ -25,8 +25,8 @@ logger = logging.getLogger(__name__)
 @python_2_unicode_compatible
 class Cache(models.Model):
     name = models.CharField(
-        help_text=_('Internal name of the cache.'), max_length=128,
-        unique=True, verbose_name=_('Name')
+        db_index=True, help_text=_('Internal name of the cache.'),
+        max_length=128, unique=True, verbose_name=_('Name')
     )
     label = models.CharField(
         help_text=_('A short text describing the cache.'), max_length=128,
@@ -55,6 +55,9 @@ class Cache(models.Model):
     def get_maximum_size_display(self):
         return filesizeformat(bytes_=self.maximum_size)
 
+    get_maximum_size_display.help_text = _(
+        'Size at which the cache will start deleting old entries.'
+    )
     get_maximum_size_display.short_description = _('Maximum size')
 
     def get_total_size(self):
@@ -69,6 +72,7 @@ class Cache(models.Model):
         return filesizeformat(bytes_=self.get_total_size())
 
     get_total_size_display.short_description = _('Total size')
+    get_total_size_display.help_text = _('Current size of the cache.')
 
     def prune(self):
         """
