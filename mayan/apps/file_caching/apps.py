@@ -47,8 +47,8 @@ class FileCachingConfig(MayanAppConfig):
             )
         )
 
-        SourceColumn(attribute='name', is_sortable=True, source=Cache)
         SourceColumn(attribute='label', is_sortable=True, source=Cache)
+        SourceColumn(attribute='name', is_sortable=True, source=Cache)
         SourceColumn(
             attribute='storage_instance_path', is_sortable=True, source=Cache
         )
