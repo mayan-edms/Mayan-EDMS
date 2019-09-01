@@ -28,7 +28,7 @@ settings_control_sheet_code_image_cache_time = namespace.add_setting(
         'code images. The default of 31559626 seconds corresponde to 1 year.'
     )
 )
-setting_control_sheet_code_image_cache_storage = namespace.add_setting(
+setting_control_sheet_code_image_cache_storage_dotted_path = namespace.add_setting(
     global_name='CONTROL_SHEETS_CODE_IMAGE_CACHE_STORAGE_BACKEND',
     default='django.core.files.storage.FileSystemStorage', help_text=_(
         'Path to the Storage subclass to use when storing the cached '

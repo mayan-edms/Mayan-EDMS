@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
-from django.db.models.signals import post_save
+from django.db.models.signals import post_migrate, post_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -20,7 +20,11 @@ from mayan.apps.events.links import (
 from mayan.apps.navigation.classes import SourceColumn
 
 from .control_codes import *
-from .handlers import handler_process_document_version
+from .dependencies import *  # NOQA
+from .handlers import (
+    handler_create_control_sheet_codes_image_cache,
+    handler_process_document_version
+)
 from .methods import method_document_submit, method_document_version_submit
 
 
@@ -55,6 +59,10 @@ class ControlCodesApp(MayanAppConfig):
             value=method_document_version_submit
         )
 
+        post_migrate.connect(
+            dispatch_uid='control_codes_handler_create_control_sheet_codes_image_cache',
+            receiver=handler_create_control_sheet_codes_image_cache,
+        )
         post_version_upload.connect(
             dispatch_uid='control_codes_handler_process_document_version',
             receiver=handler_process_document_version, sender=DocumentVersion
