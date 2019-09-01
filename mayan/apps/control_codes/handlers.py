@@ -17,5 +17,5 @@ def handler_initialize_new_document_type_settings(sender, instance, **kwargs):
 
 
 def handler_process_document_version(sender, instance, **kwargs):
-    #if instance.document.document_type.file_metadata_settings.auto_process:
+    #if instance.document.document_type.control_codes_settings.auto_process:
     instance.submit_for_control_codes_processing()

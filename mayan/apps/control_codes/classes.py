@@ -8,14 +8,16 @@ import qrcode
 
 from django.apps import apps
 from django.db import transaction
+from django.utils.translation import string_concat, ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from mayan.apps.documents.tasks import task_generate_document_page_image
 
-CONTROL_CODE_MAGIC_NUMBER = 'MCTRL'
-CONTROL_CODE_SEPARATOR = ':'
-CONTROL_CODE_VERSION = '1'
+from .literals import (
+    CONTROL_CODE_MAGIC_NUMBER, CONTROL_CODE_SEPARATOR, CONTROL_CODE_VERSION
+)
+
 logger = logging.getLogger(__name__)
 
 
@@ -26,6 +28,28 @@ class ControlCode(object):
     @classmethod
     def get(cls, name):
         return cls._registry[name]
+
+    @classmethod
+    def get_label(cls):
+        if cls.arguments:
+            return string_concat(cls.label, ': ', ', '.join(cls.arguments))
+        else:
+            return cls.label
+
+    @classmethod
+    def get_choices(cls):
+        #if layer:
+        #    transformation_list = [
+        #       (transformation.name, transformation) for transformation in cls._layer_transformations[layer]
+        #    ]
+        #else:
+        #control_code_list = cls._registry.items()
+
+        return sorted(
+            [
+                (name, klass.get_label()) for name, klass in cls._registry.items()#transformation_list
+            ]
+        )
 
     @classmethod
     def process_document_version(cls, document_version):

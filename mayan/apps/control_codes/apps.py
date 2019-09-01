@@ -19,6 +19,7 @@ from mayan.apps.events.links import (
 )
 from mayan.apps.navigation.classes import SourceColumn
 
+from .control_codes import *
 from .handlers import handler_process_document_version
 from .methods import method_document_submit, method_document_version_submit
 
@@ -26,7 +27,7 @@ from .methods import method_document_submit, method_document_version_submit
 class ControlCodesApp(MayanAppConfig):
     app_namespace = 'control_codes'
     app_url = 'control_codes'
-    has_rest_api = False
+    has_rest_api = True
     has_tests = False
     name = 'mayan.apps.control_codes'
     verbose_name = _('Control codes')
