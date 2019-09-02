@@ -7,12 +7,31 @@ from .api_views import (
     APIControlSheetListView, APIControlSheetView,
     APIControlSheetCodeImageView
 )
-from .views import ControlSheetDetailView
+from .views import (
+    ControlSheetCreateView, ControlSheetDeleteView, ControlSheetEditView,
+    ControlSheetListView, ControlSheetPreviewView
+)
 
 urlpatterns = [
     url(
-        regex=r'^control_sheets/(?P<control_sheet_id>\d+)/$',
-        view=ControlSheetDetailView.as_view(), name='control_sheet_detail'
+        regex=r'^control_sheets/$',
+        view=ControlSheetListView.as_view(), name='control_sheet_list'
+    ),
+    url(
+        regex=r'^control_sheets/create/$',
+        view=ControlSheetCreateView.as_view(), name='control_sheet_create'
+    ),
+    url(
+        regex=r'^control_sheets/(?P<control_sheet_id>\d+)/delete/$',
+        view=ControlSheetDeleteView.as_view(), name='control_sheet_delete'
+    ),
+    url(
+        regex=r'^control_sheets/(?P<control_sheet_id>\d+)/edit/$',
+        view=ControlSheetEditView.as_view(), name='control_sheet_edit'
+    ),
+    url(
+        regex=r'^control_sheets/(?P<control_sheet_id>\d+)/preview/$',
+        view=ControlSheetPreviewView.as_view(), name='control_sheet_preview'
     ),
 ]
 

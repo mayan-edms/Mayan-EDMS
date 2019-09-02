@@ -19,7 +19,6 @@ from .models import ControlSheet, ControlSheetCode
 
 class ControlSheetSerializer(serializers.HyperlinkedModelSerializer):
     #states = ControlSheetStateSerializer(many=True, required=False)
-    #transitions = ControlSheetTransitionSerializer(many=True, required=False)
 
     code_list_url = serializers.HyperlinkedIdentityField(
         lookup_url_kwarg='control_sheet_id',
@@ -76,4 +75,3 @@ class ControlSheetCodeSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         validated_data['control_sheet'] = self.context['control_sheet']
         return super(ControlSheetCodeSerializer, self).create(validated_data)
-

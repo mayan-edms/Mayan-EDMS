@@ -25,7 +25,16 @@ from .handlers import (
     handler_create_control_sheet_codes_image_cache,
     handler_process_document_version
 )
+from .links import (
+    link_control_sheet_create, link_control_sheet_delete,
+    link_control_sheet_edit, link_control_sheet_list,
+    link_control_sheet_preview
+)
 from .methods import method_document_submit, method_document_version_submit
+from .permissions import (
+    permission_control_sheet_delete, permission_control_sheet_edit,
+    permission_control_sheet_view
+)
 
 
 class ControlCodesApp(MayanAppConfig):
@@ -40,6 +49,8 @@ class ControlCodesApp(MayanAppConfig):
         super(ControlCodesApp, self).ready()
         from actstream import registry
 
+        ControlSheet = self.get_model(model_name='ControlSheet')
+        ControlSheetCode = self.get_model(model_name='ControlSheetCode')
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
@@ -57,6 +68,52 @@ class ControlCodesApp(MayanAppConfig):
         DocumentVersion.add_to_class(
             name='submit_for_control_codes_processing',
             value=method_document_version_submit
+        )
+
+        ModelPermission.register(
+            model=ControlSheet, permissions=(
+                permission_control_sheet_delete,
+                permission_control_sheet_edit,
+                permission_control_sheet_view
+            )
+        )
+
+        ModelPermission.register_inheritance(
+            model=ControlSheetCode, related='control_sheet',
+        )
+
+        SourceColumn(
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=ControlSheet
+        )
+
+        menu_list_facet.bind_links(
+            links=(
+                link_acl_list, #link_events_for_object,
+                #link_object_event_types_user_subcriptions_list,
+            ), sources=(ControlSheet,)
+        )
+        menu_list_facet.bind_links(
+            links=(
+                link_control_sheet_preview,
+            ),
+            sources=(ControlSheet,)
+        )
+        menu_object.bind_links(
+            links=(
+                link_control_sheet_edit, link_control_sheet_delete,
+            ),
+            sources=(ControlSheet,)
+        )
+        menu_secondary.bind_links(
+            links=(link_control_sheet_list, link_control_sheet_create),
+            sources=(
+                ControlSheet, 'control_sheet:control_sheet_list',
+                'control_sheet:control_sheet_create'
+            )
+        )
+        menu_setup.bind_links(
+            links=(link_control_sheet_list,),
         )
 
         post_migrate.connect(

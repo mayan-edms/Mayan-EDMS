@@ -14,26 +14,98 @@ from mayan.apps.common.generics import (
 from mayan.apps.common.mixins import ExternalContentTypeObjectMixin
 
 from .forms import ControlCodeClassSelectionForm
-#from .links import link_transformation_select
+from .links import link_control_sheet_create
 from .models import ControlSheet
-#from .transformations import BaseTransformation
+from .permissions import (
+    permission_control_sheet_create, permission_control_sheet_delete,
+    permission_control_sheet_edit, permission_control_sheet_view
+)
 
 logger = logging.getLogger(__name__)
 
 
-class ControlSheetDetailView(SingleObjectDetailView):
+class ControlSheetCreateView(SingleObjectCreateView):
+    fields = ('label',)
+
+    model = ControlSheet
+    object_permission = permission_control_sheet_create
+    #template_name = 'control_codes/control_sheet_print.html'
+
+    #def get_extra_context(self):
+    #    return {
+    #        'object': self.object,
+    #        'title': _(
+    #            'Control sheet: %s'
+    #        ) % self.object
+    #    }
+
+
+class ControlSheetDeleteView(SingleObjectDeleteView):
+    model = ControlSheet
+    object_permission = permission_control_sheet_delete
+    pk_url_kwarg = 'control_sheet_id'
+
+    def get_extra_context(self):
+        return {
+            'object': self.object,
+            'title': _(
+                'Delete control sheet: %s?'
+            ) % self.object
+        }
+
+
+class ControlSheetEditView(SingleObjectEditView):
+    fields = ('label',)
+    model = ControlSheet
+    object_permission = permission_control_sheet_edit
+    pk_url_kwarg = 'control_sheet_id'
+
+    def get_extra_context(self):
+        return {
+            'object': self.object,
+            'title': _(
+                'Edit control sheet: %s'
+            ) % self.object
+        }
+
+
+class ControlSheetListView(SingleObjectListView):
+    model = ControlSheet
+    object_permission = permission_control_sheet_view
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            #'no_results_icon': self.layer.get_icon(),
+            'no_results_main_link': link_control_sheet_create.resolve(
+                context=RequestContext(
+                    request=self.request, #dict_={
+                        #'resolved_object': self.external_object,
+                        #'layer_name': self.kwargs['layer_name'],
+                    #}
+                )
+            ),
+            #'no_results_text': self.layer.get_empty_results_text(),
+            'no_results_title': _('There are no control sheets'),
+            'title': _('Control sheets')
+        }
+
+
+class ControlSheetPreviewView(SingleObjectDetailView):
     fields = ('label',)
     pk_url_kwarg = 'control_sheet_id'
     model = ControlSheet
+    object_permission = permission_control_sheet_view
     template_name = 'control_codes/control_sheet_print.html'
 
     def get_extra_context(self):
         return {
             'object': self.object,
             'title': _(
-                'Print preview for control sheet: %s'
+                'Control sheet: %s'
             ) % self.object
         }
+
 
 
 """

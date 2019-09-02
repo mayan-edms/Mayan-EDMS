@@ -14,10 +14,10 @@ from mayan.apps.rest_api.permissions import MayanPermission
 
 from .literals import CONTROL_SHEET_CODE_IMAGE_TASK_TIMEOUT
 from .models import ControlSheet
-#from .permissions import (
-#    permission_workflow_create, permission_workflow_delete,
-#    permission_workflow_edit, permission_workflow_view
-#)
+from .permissions import (
+    permission_control_sheet_create, permission_control_sheet_delete,
+    permission_control_sheet_edit, permission_control_sheet_view
+)
 from .serializers import (
     ControlSheetSerializer, ControlSheetCodeSerializer
 )
@@ -26,14 +26,31 @@ from .settings import settings_control_sheet_code_image_cache_time
 from .tasks import task_generate_control_sheet_code_image
 
 
+class ControlSheetAPIViewMixin(object):
+    def get_control_sheet(self):
+        if self.request.method == 'GET':
+            permission = permission_control_sheet_view
+        else:
+            permission = permission_control_sheet_edit
+
+        queryset = AccessControlList.objects.restrict_queryset(
+            permission=permission, queryset=ControlSheet.objects.all(),
+            user=self.request.user
+        )
+
+        return get_object_or_404(
+            klass=queryset, pk=self.kwargs['control_sheet_id']
+        )
+
+
 class APIControlSheetListView(generics.ListCreateAPIView):
     """
     get: Returns a list of all the control sheets.
     post: Create a new control sheet.
     """
     filter_backends = (MayanObjectPermissionsFilter,)
-    #mayan_object_permissions = {'GET': (permission_control_sheet_view,)}
-    #mayan_view_permissions = {'POST': (permission_control_sheet_create,)}
+    mayan_object_permissions = {'GET': (permission_control_sheet_view,)}
+    mayan_view_permissions = {'POST': (permission_control_sheet_create,)}
     permission_classes = (MayanPermission,)
     queryset = ControlSheet.objects.all()
     serializer_class = ControlSheetSerializer
@@ -61,12 +78,12 @@ class APIControlSheetView(generics.RetrieveUpdateDestroyAPIView):
     put: Edit the selected control sheet.
     """
     filter_backends = (MayanObjectPermissionsFilter,)
-    #mayan_object_permissions = {
-    #    'DELETE': (permission_control sheet_delete,),
-    #    'GET': (permission_control sheet_view,),
-    #    'PATCH': (permission_control sheet_edit,),
-    #    'PUT': (permission_control sheet_edit,)
-    #}
+    mayan_object_permissions = {
+        'DELETE': (permission_control_sheet_delete,),
+        'GET': (permission_control_sheet_view,),
+        'PATCH': (permission_control_sheet_edit,),
+        'PUT': (permission_control_sheet_edit,)
+    }
     lookup_url_kwarg = 'control_sheet_id'
     queryset = ControlSheet.objects.all()
     serializer_class = ControlSheetSerializer
@@ -86,8 +103,9 @@ class APIControlSheetView(generics.RetrieveUpdateDestroyAPIView):
     #        return WritableControlSheetSerializer
 
 
-
-class APIControlSheetCodeListView(generics.ListCreateAPIView):
+class APIControlSheetCodeListView(
+    ControlSheetAPIViewMixin, generics.ListCreateAPIView
+):
     """
     get: Returns a list of all the control sheet codes.
     post: Create a new control sheet code.
@@ -101,7 +119,9 @@ class APIControlSheetCodeListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIControlSheetCodeListView, self).get_serializer_context()
+        context = super(
+            APIControlSheetCodeListView, self
+        ).get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -111,25 +131,10 @@ class APIControlSheetCodeListView(generics.ListCreateAPIView):
 
         return context
 
-    def get_control_sheet(self):
-        #if self.request.method == 'GET':
-        #    permission_required = permission_control_sheet_view
-        #else:
-        #    permission_required = permission_control_sheet_edit
 
-        control_sheet = get_object_or_404(
-            klass=ControlSheet, pk=self.kwargs['control_sheet_id']
-        )
-
-        #AccessControlList.objects.check_access(
-        #    obj=control_sheet, permissions=(permission_required,),
-        #    user=self.request.user
-        #)
-
-        return control_sheet
-
-
-class APIControlSheetCodeView(generics.RetrieveUpdateDestroyAPIView):
+class APIControlSheetCodeView(
+    ControlSheetAPIViewMixin, generics.RetrieveUpdateDestroyAPIView
+):
     """
     delete: Delete the selected control sheet code.
     get: Return the details of the selected control sheet code.
@@ -156,25 +161,10 @@ class APIControlSheetCodeView(generics.RetrieveUpdateDestroyAPIView):
 
         return context
 
-    def get_control_sheet(self):
-        #if self.request.method == 'GET':
-        #    permission_required = permission_control_sheet_view
-        #else:
-        #   permission_required = permission_control_sheet_edit
 
-        control_sheet = get_object_or_404(
-            klass=ControlSheet, pk=self.kwargs['control_sheet_id']
-        )
-
-        #AccessControlList.objects.check_access(
-        #    obj=control_sheet, permissions=(permission_required,),
-        #   user=self.request.user
-        #)
-
-        return control_sheet
-
-
-class APIControlSheetCodeImageView(generics.RetrieveAPIView):
+class APIControlSheetCodeImageView(
+    ControlSheetAPIViewMixin, generics.RetrieveAPIView
+):
     """
     get: Returns an image representation of the selected control_sheet.
     """
@@ -187,23 +177,6 @@ class APIControlSheetCodeImageView(generics.RetrieveAPIView):
 
     def get_queryset(self):
         return self.get_control_sheet().codes.all()
-
-    def get_control_sheet(self):
-        #if self.request.method == 'GET':
-        #    permission_required = permission_control_sheet_view
-        #else:
-        #   permission_required = permission_control_sheet_edit
-
-        control_sheet = get_object_or_404(
-            klass=ControlSheet, pk=self.kwargs['control_sheet_id']
-        )
-
-        #AccessControlList.objects.check_access(
-        #    obj=control_sheet, permissions=(permission_required,),
-        #   user=self.request.user
-        #)
-
-        return control_sheet
 
     def get_serializer(self, *args, **kwargs):
         return None
