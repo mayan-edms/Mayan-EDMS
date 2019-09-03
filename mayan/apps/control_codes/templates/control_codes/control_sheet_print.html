@@ -1,7 +1,5 @@
 {% extends 'appearance/base_plain.html' %}
 
-{% load documents_tags %}
-
 {% block title %}{{ title }}{% endblock title %}
 
 {% block content_plain %}
@@ -11,20 +9,19 @@
             max-width: 100%;
             height: auto;
         }
-.list-inline {
-    padding-left: 0;
-    list-style: none;
-    margin-left: -5px;
-}
-.text-center {
-    text-align: center;
-}
-
-.list-inline > li {
-    display: inline-block;
-    padding-right: 5px;
-    padding-left: 5px;
-}
+        .list-inline {
+            padding-left: 0;
+            list-style: none;
+            margin-left: -5px;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .list-inline > li {
+            display: inline-block;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
     </style>
 
     <h1 class="text-center">{{ title }}</h1>
@@ -32,7 +29,7 @@
         {% for code in object.codes.all %}
             <li class="list-inline-item">
                 <img class="img-responsive" src="{{ code.get_api_image_url }}" />
-                <p>{{ code.get_display }}</p>
+                <p class="text-center">{{ code.get_label }}</p>
             </li>
         {% endfor %}
     </ul>

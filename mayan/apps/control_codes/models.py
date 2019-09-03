@@ -51,6 +51,7 @@ class ControlSheet(models.Model):
         verbose_name_plural = _('Control sheets')
 
 
+@python_2_unicode_compatible
 class ControlSheetCode(models.Model):
     control_sheet = models.ForeignKey(
         on_delete=models.CASCADE, related_name='codes', to=ControlSheet,
@@ -58,7 +59,7 @@ class ControlSheetCode(models.Model):
     )
     order = models.PositiveIntegerField(
         blank=True, db_index=True, default=0, help_text=_(
-            'Order in which the transformations will be executed. If left '
+            'Order in which the control codes will be interpreted. If left '
             'unchanged, an automatic order value will be assigned.'
         ), verbose_name=_('Order')
     )
@@ -68,7 +69,7 @@ class ControlSheetCode(models.Model):
     )
     arguments = models.TextField(
         blank=True, help_text=_(
-            'Enter the arguments for the control code as a YAML '
+            'The arguments for the control code as a YAML '
             'dictionary.'
         ), validators=[YAMLValidator()], verbose_name=_('Arguments')
     )
@@ -78,6 +79,9 @@ class ControlSheetCode(models.Model):
         ordering = ('order',)
         verbose_name = _('Control sheet code')
         verbose_name_plural = _('Control sheet codes')
+
+    def __str__(self):
+        return force_text(self.get_label())
 
     @cached_property
     def cache(self):
@@ -151,6 +155,10 @@ class ControlSheetCode(models.Model):
                 serializers.serialize('json', objects_lists)
             )
         ).hexdigest()
+
+    def get_label(self):
+        return force_text(self.get_control_code_class().label)
+    get_label.short_description = _('Label')
 
     def render(self):
         return self.get_control_code_instance().get_image(order=self.order)

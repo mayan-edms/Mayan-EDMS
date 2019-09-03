@@ -11,9 +11,9 @@ from mayan.apps.common.generics import (
     FormView, SimpleView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.common.mixins import ExternalContentTypeObjectMixin
+from mayan.apps.common.mixins import ExternalObjectMixin
 
-from .forms import ControlCodeClassSelectionForm
+from .forms import ControlSheetCodeClassSelectionForm, ControlSheetCodeForm
 from .links import link_control_sheet_create
 from .models import ControlSheet
 from .permissions import (
@@ -105,6 +105,64 @@ class ControlSheetPreviewView(SingleObjectDetailView):
                 'Control sheet: %s'
             ) % self.object
         }
+
+
+class ControlSheetCodeDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
+    form_class = ControlSheetCodeForm
+    external_object_class = ControlSheet
+    external_object_permission = permission_control_sheet_delete
+    external_object_pk_url_kwarg = 'control_sheet_id'
+    pk_url_kwarg = 'control_sheet_code_id'
+
+    def get_extra_context(self):
+        return {
+            'control_sheet': self.external_object,
+            'hide_object': True,
+            'navigation_object_list': ('control_sheet', 'object',),
+            'object': self.object,
+            'title': _('Delete control sheet code: %s') % self.object,
+        }
+
+    def get_source_queryset(self):
+        return self.external_object.codes.all()
+
+
+class ControlSheetCodeEditView(ExternalObjectMixin, SingleObjectEditView):
+    form_class = ControlSheetCodeForm
+    external_object_class = ControlSheet
+    external_object_permission = permission_control_sheet_edit
+    external_object_pk_url_kwarg = 'control_sheet_id'
+    pk_url_kwarg = 'control_sheet_code_id'
+
+    def get_extra_context(self):
+        return {
+            'control_sheet': self.external_object,
+            'hide_object': True,
+            'navigation_object_list': ('control_sheet', 'object',),
+            'object': self.object,
+            'title': _('Edit control sheet code: %s') % self.object,
+        }
+
+    def get_source_queryset(self):
+        return self.external_object.codes.all()
+
+
+class ControlSheetCodeListView(ExternalObjectMixin, SingleObjectListView):
+    external_object_class = ControlSheet
+    external_object_permission = permission_control_sheet_view
+    external_object_pk_url_kwarg = 'control_sheet_id'
+
+    def get_extra_context(self):
+        return {
+            'control_sheet': self.external_object,
+            'hide_object': True,
+            'navigation_object_list': ('control_sheet',),
+            #'object': self.external_object,
+            'title': _('Codes of control sheet: %s') % self.external_object,
+        }
+
+    def get_source_queryset(self):
+        return self.external_object.codes.all()
 
 
 

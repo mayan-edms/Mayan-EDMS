@@ -28,7 +28,10 @@ from .handlers import (
 from .links import (
     link_control_sheet_create, link_control_sheet_delete,
     link_control_sheet_edit, link_control_sheet_list,
-    link_control_sheet_preview
+    link_control_sheet_preview,
+
+    link_control_sheet_code_delete, link_control_sheet_code_edit,
+    link_control_sheet_code_list
 )
 from .methods import method_document_submit, method_document_version_submit
 from .permissions import (
@@ -87,6 +90,19 @@ class ControlCodesApp(MayanAppConfig):
             source=ControlSheet
         )
 
+        SourceColumn(
+            attribute='get_label', is_identifier=True,# is_sortable=True,
+            source=ControlSheetCode
+        )
+        SourceColumn(
+            attribute='order', is_sortable=True,
+            source=ControlSheetCode
+        )
+        SourceColumn(
+            attribute='arguments',
+            source=ControlSheetCode
+        )
+
         menu_list_facet.bind_links(
             links=(
                 link_acl_list, #link_events_for_object,
@@ -95,15 +111,22 @@ class ControlCodesApp(MayanAppConfig):
         )
         menu_list_facet.bind_links(
             links=(
-                link_control_sheet_preview,
+                link_control_sheet_code_list,
             ),
             sources=(ControlSheet,)
         )
         menu_object.bind_links(
             links=(
                 link_control_sheet_edit, link_control_sheet_delete,
+                link_control_sheet_preview,
             ),
             sources=(ControlSheet,)
+        )
+        menu_object.bind_links(
+            links=(
+                link_control_sheet_code_delete, link_control_sheet_code_edit,
+            ),
+            sources=(ControlSheetCode,)
         )
         menu_secondary.bind_links(
             links=(link_control_sheet_list, link_control_sheet_create),

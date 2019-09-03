@@ -38,3 +38,27 @@ link_control_sheet_preview = Link(
     text=_('Preview'), permissions=(permission_control_sheet_view,),
     view='control_codes:control_sheet_preview'
 )
+
+link_control_sheet_code_delete = Link(
+    icon_class_path='mayan.apps.control_codes.icons.icon_control_sheet_code_delete',
+    kwargs={
+        'control_sheet_id': 'control_sheet.pk',
+        'control_sheet_code_id': 'resolved_object.pk'
+    }, tags='dangerous', text=_('Delete'),
+    permissions=(permission_control_sheet_delete,),
+    view='control_codes:control_sheet_code_delete'
+)
+link_control_sheet_code_edit = Link(
+    icon_class_path='mayan.apps.control_codes.icons.icon_control_sheet_code_edit',
+    kwargs={
+        'control_sheet_id': 'control_sheet.pk',
+        'control_sheet_code_id': 'resolved_object.pk'
+    }, text=_('Edit'), permissions=(permission_control_sheet_edit,),
+    view='control_codes:control_sheet_code_edit'
+)
+link_control_sheet_code_list = Link(
+    icon_class_path='mayan.apps.control_codes.icons.icon_control_sheet_code_list',
+    kwargs={'control_sheet_id': 'resolved_object.pk'},
+    text=_('Codes'), permissions=(permission_control_sheet_view,),
+    view='control_codes:control_sheet_code_list'
+)
