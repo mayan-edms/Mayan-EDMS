@@ -7,8 +7,6 @@ from django.views.decorators.cache import cache_control, patch_cache_control
 from rest_framework import generics
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.models import Document, DocumentType
-from mayan.apps.documents.permissions import permission_document_type_view
 from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
 from mayan.apps.rest_api.permissions import MayanPermission
 
@@ -63,12 +61,6 @@ class APIControlSheetListView(generics.ListCreateAPIView):
             *args, **kwargs
         )
 
-    #def get_serializer_class(self):
-    #    if self.request.method == 'GET':
-    #        return ControlSheetSerializer
-    #    else:
-    #        return WritableControlSheetSerializer
-
 
 class APIControlSheetView(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -95,12 +87,6 @@ class APIControlSheetView(generics.RetrieveUpdateDestroyAPIView):
         return super(APIControlSheetView, self).get_serializer(
             *args, **kwargs
         )
-
-    #def get_serializer_class(self):
-    #   if self.request.method == 'GET':
-    #        return ControlSheetSerializer
-    #    else:
-    #        return WritableControlSheetSerializer
 
 
 class APIControlSheetCodeListView(
@@ -169,11 +155,7 @@ class APIControlSheetCodeImageView(
     get: Returns an image representation of the selected control_sheet.
     """
     filter_backends = (MayanObjectPermissionsFilter,)
-    #mayan_object_permissions = {
-    #    'GET': (permission_control_sheet_view,),
-    #}
     lookup_url_kwarg = 'control_sheet_code_id'
-    #queryset = ControlSheetCode.objects.all()
 
     def get_queryset(self):
         return self.get_control_sheet().codes.all()

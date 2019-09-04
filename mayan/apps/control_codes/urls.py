@@ -9,9 +9,10 @@ from .api_views import (
 )
 from .views import (
     ControlSheetCreateView, ControlSheetDeleteView, ControlSheetEditView,
-    ControlSheetListView, ControlSheetPreviewView,
-
-    ControlSheetCodeDeleteView, ControlSheetCodeEditView, ControlSheetCodeListView
+    ControlSheetListView, ControlSheetPreviewView, ControlSheetPrintView,
+    ControlSheetCodeCreate, ControlSheetCodeDeleteView,
+    ControlSheetCodeEditView, ControlSheetCodeListView,
+    ControlSheetCodeSelectView
 )
 
 urlpatterns = [
@@ -26,6 +27,14 @@ urlpatterns = [
     url(
         regex=r'^control_sheets/(?P<control_sheet_id>\d+)/codes/$',
         view=ControlSheetCodeListView.as_view(), name='control_sheet_code_list'
+    ),
+    url(
+        regex=r'^control_sheets/(?P<control_sheet_id>\d+)/codes/select/$',
+        view=ControlSheetCodeSelectView.as_view(), name='control_sheet_code_select'
+    ),
+    url(
+        regex=r'^control_sheets/(?P<control_sheet_id>\d+)/codes/(?P<control_code_class_name>[-_\w]+)/create/$',
+        view=ControlSheetCodeCreate.as_view(), name='control_sheet_code_create'
     ),
     url(
         regex=r'^control_sheets/(?P<control_sheet_id>\d+)/codes/(?P<control_sheet_code_id>\d+)/edit/$',
@@ -46,6 +55,10 @@ urlpatterns = [
     url(
         regex=r'^control_sheets/(?P<control_sheet_id>\d+)/preview/$',
         view=ControlSheetPreviewView.as_view(), name='control_sheet_preview'
+    ),
+    url(
+        regex=r'^control_sheets/(?P<control_sheet_id>\d+)/print/$',
+        view=ControlSheetPrintView.as_view(), name='control_sheet_print'
     ),
 ]
 

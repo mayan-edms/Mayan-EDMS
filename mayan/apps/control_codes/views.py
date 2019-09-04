@@ -8,13 +8,15 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.generics import (
-    FormView, SimpleView, SingleObjectCreateView, SingleObjectDeleteView,
+    FormView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.common.mixins import ExternalObjectMixin
 
+from .classes import ControlCode
 from .forms import ControlSheetCodeClassSelectionForm, ControlSheetCodeForm
-from .links import link_control_sheet_create
+from .icons import icon_control_sheet, icon_control_sheet_code
+from .links import link_control_sheet_create, link_control_sheet_code_select
 from .models import ControlSheet
 from .permissions import (
     permission_control_sheet_create, permission_control_sheet_delete,
@@ -26,18 +28,13 @@ logger = logging.getLogger(__name__)
 
 class ControlSheetCreateView(SingleObjectCreateView):
     fields = ('label',)
-
     model = ControlSheet
     object_permission = permission_control_sheet_create
-    #template_name = 'control_codes/control_sheet_print.html'
 
-    #def get_extra_context(self):
-    #    return {
-    #        'object': self.object,
-    #        'title': _(
-    #            'Control sheet: %s'
-    #        ) % self.object
-    #    }
+    def get_extra_context(self):
+        return {
+            'title': _('Create new control sheet')
+        }
 
 
 class ControlSheetDeleteView(SingleObjectDeleteView):
@@ -76,16 +73,15 @@ class ControlSheetListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
-            #'no_results_icon': self.layer.get_icon(),
+            'no_results_icon': icon_control_sheet,
             'no_results_main_link': link_control_sheet_create.resolve(
-                context=RequestContext(
-                    request=self.request, #dict_={
-                        #'resolved_object': self.external_object,
-                        #'layer_name': self.kwargs['layer_name'],
-                    #}
-                )
+                context=RequestContext(request=self.request,)
             ),
-            #'no_results_text': self.layer.get_empty_results_text(),
+            'no_results_text': _(
+                'Control sheets contain barcodes that are scanned together '
+                'with the document to automate how that document will be '
+                'processed.'
+            ),
             'no_results_title': _('There are no control sheets'),
             'title': _('Control sheets')
         }
@@ -96,6 +92,18 @@ class ControlSheetPreviewView(SingleObjectDetailView):
     pk_url_kwarg = 'control_sheet_id'
     model = ControlSheet
     object_permission = permission_control_sheet_view
+    template_name = 'control_codes/control_sheet_preview.html'
+
+    def get_extra_context(self):
+        return {
+            'object': self.object,
+            'title': _(
+                'Preview of control sheet: %s'
+            ) % self.object
+        }
+
+
+class ControlSheetPrintView(ControlSheetPreviewView):
     template_name = 'control_codes/control_sheet_print.html'
 
     def get_extra_context(self):
@@ -105,6 +113,51 @@ class ControlSheetPreviewView(SingleObjectDetailView):
                 'Control sheet: %s'
             ) % self.object
         }
+
+
+class ControlSheetCodeCreate(ExternalObjectMixin, SingleObjectCreateView):
+    external_object_class = ControlSheet
+    external_object_permission = permission_control_sheet_edit
+    external_object_pk_url_kwarg = 'control_sheet_id'
+    form_class = ControlSheetCodeForm
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.control_sheet = self.external_object
+        instance.name = self.kwargs['control_code_class_name']
+        try:
+            instance.full_clean()
+            instance.save()
+        except Exception as exception:
+            logger.debug('Invalid form, exception: %s', exception)
+            return super(ControlSheetCodeCreate, self).form_invalid(form)
+        else:
+            return super(ControlSheetCodeCreate, self).form_valid(form)
+
+    def get_extra_context(self):
+        return {
+            'control_sheet': self.external_object,
+            'navigation_object_list': ('control_sheet',),
+            'title': _(
+                'Create code "%(control_code)s" for: %(control_sheet)s'
+            ) % {
+                'control_code': self.get_control_code_class(),
+                'control_sheet': self.external_object,
+            }
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='control_codes:control_sheet_code_list', kwargs={
+                'control_sheet_id': self.external_object.pk,
+            }
+        )
+
+    def get_source_queryset(self):
+        return self.external_object.codes.all()
+
+    def get_control_code_class(self):
+        return ControlCode.get(name=self.kwargs['control_code_class_name'])
 
 
 class ControlSheetCodeDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
@@ -157,7 +210,19 @@ class ControlSheetCodeListView(ExternalObjectMixin, SingleObjectListView):
             'control_sheet': self.external_object,
             'hide_object': True,
             'navigation_object_list': ('control_sheet',),
-            #'object': self.external_object,
+            'no_results_icon': icon_control_sheet_code,
+            'no_results_main_link': link_control_sheet_code_select.resolve(
+                context=RequestContext(
+                    request=self.request, dict_={
+                        'control_sheet': self.external_object,
+                    }
+                )
+            ),
+            'no_results_text': _(
+                'Control sheet codes are barcodes that trigger a specific '
+                'process when they are scanned.'
+            ),
+            'no_results_title': _('There are no control sheet codes'),
             'title': _('Codes of control sheet: %s') % self.external_object,
         }
 
@@ -165,238 +230,21 @@ class ControlSheetCodeListView(ExternalObjectMixin, SingleObjectListView):
         return self.external_object.codes.all()
 
 
-
-"""
-class TransformationCreateView(
-    LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectCreateView
-):
-    form_class = LayerTransformationForm
-
-    def form_valid(self, form):
-        layer = self.layer
-        content_type = self.get_content_type()
-        object_layer, created = ObjectLayer.objects.get_or_create(
-            content_type=content_type, object_id=self.external_object.pk,
-            stored_layer=layer.stored_layer
-        )
-
-        instance = form.save(commit=False)
-        instance.content_object = self.external_object
-        instance.name = self.kwargs['transformation_name']
-        instance.object_layer = object_layer
-        try:
-            instance.full_clean()
-            instance.save()
-        except Exception as exception:
-            logger.debug('Invalid form, exception: %s', exception)
-            return super(TransformationCreateView, self).form_invalid(form)
-        else:
-            return super(TransformationCreateView, self).form_valid(form)
-
-    def get_extra_context(self):
-        return {
-            'content_object': self.external_object,
-            'form_field_css_classes': 'hidden' if hasattr(
-                self.get_transformation_class(), 'template_name'
-            ) else '',
-            'layer': self.layer,
-            'layer_name': self.layer.name,
-            'navigation_object_list': ('content_object',),
-            'title': _(
-                'Create layer "%(layer)s" transformation '
-                '"%(transformation)s" for: %(object)s'
-            ) % {
-                'layer': self.layer,
-                'transformation': self.get_transformation_class(),
-                'object': self.external_object,
-            }
-        }
-
-    def get_form_extra_kwargs(self):
-        return {
-            'transformation_name': self.kwargs['transformation_name']
-        }
-
-    def get_external_object_permission(self):
-        return self.layer.permissions.get('create', None)
-
-    def get_post_action_redirect(self):
-        return reverse(
-            viewname='converter:transformation_list', kwargs={
-                'app_label': self.kwargs['app_label'],
-                'model': self.kwargs['model'],
-                'object_id': self.kwargs['object_id'],
-                'layer_name': self.kwargs['layer_name']
-            }
-        )
-
-    def get_queryset(self):
-        return self.layer.get_transformations_for(
-            obj=self.content_object
-        )
-
-    def get_template_names(self):
-        return [
-            getattr(
-                self.get_transformation_class(), 'template_name',
-                self.template_name
-            )
-        ]
-
-    def get_transformation_class(self):
-        return BaseTransformation.get(name=self.kwargs['transformation_name'])
-
-
-class TransformationDeleteView(LayerViewMixin, SingleObjectDeleteView):
-    model = LayerTransformation
-
-    def get_extra_context(self):
-        return {
-            'content_object': self.object.object_layer.content_object,
-            'layer_name': self.layer.name,
-            'navigation_object_list': ('content_object', 'transformation'),
-            'previous': reverse(
-                viewname='converter:transformation_list', kwargs={
-                    'app_label': self.object.object_layer.content_type.app_label,
-                    'model': self.object.object_layer.content_type.model,
-                    'object_id': self.object.object_layer.object_id,
-                    'layer_name': self.object.object_layer.stored_layer.name
-                }
-            ),
-            'title': _(
-                'Delete transformation "%(transformation)s" for: '
-                '%(content_object)s?'
-            ) % {
-                'transformation': self.object,
-                'content_object': self.object.object_layer.content_object
-            },
-            'transformation': self.object,
-        }
-
-    def get_object_permission(self):
-        return self.layer.permissions.get('delete', None)
-
-    def get_post_action_redirect(self):
-        return reverse(
-            viewname='converter:transformation_list', kwargs={
-                'app_label': self.object.object_layer.content_type.app_label,
-                'model': self.object.object_layer.content_type.model,
-                'object_id': self.object.object_layer.object_id,
-                'layer_name': self.object.object_layer.stored_layer.name
-            }
-        )
-
-
-class TransformationEditView(LayerViewMixin, SingleObjectEditView):
-    form_class = LayerTransformationForm
-    model = LayerTransformation
-
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        try:
-            instance.full_clean()
-            instance.save()
-        except Exception as exception:
-            logger.debug('Invalid form, exception: %s', exception)
-            return super(TransformationEditView, self).form_invalid(form=form)
-        else:
-            return super(TransformationEditView, self).form_valid(form=form)
-
-    def get_extra_context(self):
-        return {
-            'content_object': self.object.object_layer.content_object,
-            'form_field_css_classes': 'hidden' if hasattr(
-                self.object.get_transformation_class(), 'template_name'
-            ) else '',
-            'layer': self.layer,
-            'layer_name': self.layer.name,
-            'navigation_object_list': ('content_object', 'transformation'),
-            'title': _(
-                'Edit transformation "%(transformation)s" '
-                'for: %(content_object)s'
-            ) % {
-                'transformation': self.object,
-                'content_object': self.object.object_layer.content_object
-            },
-            'transformation': self.object,
-        }
-
-    def get_object_permission(self):
-        return self.layer.permissions.get('edit', None)
-
-    def get_post_action_redirect(self):
-        return reverse(
-            viewname='converter:transformation_list', kwargs={
-                'app_label': self.object.object_layer.content_type.app_label,
-                'model': self.object.object_layer.content_type.model,
-                'object_id': self.object.object_layer.object_id,
-                'layer_name': self.object.object_layer.stored_layer.name
-            }
-        )
-
-    def get_template_names(self):
-        return [
-            getattr(
-                self.object.get_transformation_class(), 'template_name',
-                self.template_name
-            )
-        ]
-
-
-class TransformationListView(
-    LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectListView
-):
-    def get_external_object_permission(self):
-        return self.layer.permissions.get('view', None)
-
-    def get_extra_context(self):
-        return {
-            'object': self.external_object,
-            'hide_link': True,
-            'hide_object': True,
-            'layer_name': self.layer.name,
-            'no_results_icon': self.layer.get_icon(),
-            'no_results_main_link': link_transformation_select.resolve(
-                context=RequestContext(
-                    request=self.request, dict_={
-                        'resolved_object': self.external_object,
-                        'layer_name': self.kwargs['layer_name'],
-                    }
-                )
-            ),
-            'no_results_text': self.layer.get_empty_results_text(),
-            'no_results_title': _(
-                'There are no entries for layer "%(layer_name)s"'
-            ) % {'layer_name': self.layer.label},
-            'title': _(
-                'Layer "%(layer)s" transformations for: %(object)s'
-            ) % {
-                'layer': self.layer,
-                'object': self.external_object,
-            }
-        }
-
-    def get_source_queryset(self):
-        return self.layer.get_transformations_for(obj=self.external_object)
-
-
-class TransformationSelectView(
-    ExternalContentTypeObjectMixin, LayerViewMixin, FormView
-):
-    form_class = LayerTransformationSelectForm
+class ControlSheetCodeSelectView(ExternalObjectMixin, FormView):
+    external_object_class = ControlSheet
+    external_object_permission = permission_control_sheet_edit
+    external_object_pk_url_kwarg = 'control_sheet_id'
+    form_class = ControlSheetCodeClassSelectionForm
     template_name = 'appearance/generic_form.html'
 
     def form_valid(self, form):
         return HttpResponseRedirect(
             redirect_to=reverse(
-                viewname='converter:transformation_create',
+                viewname='control_codes:control_sheet_code_create',
                 kwargs={
-                    'app_label': self.kwargs['app_label'],
-                    'model': self.kwargs['model'],
-                    'object_id': self.kwargs['object_id'],
-                    'layer_name': self.kwargs['layer_name'],
-                    'transformation_name': form.cleaned_data[
-                        'transformation'
+                    'control_sheet_id': self.external_object.pk,
+                    'control_code_class_name': form.cleaned_data[
+                        'control_code_class_name'
                     ]
                 }
             )
@@ -404,22 +252,13 @@ class TransformationSelectView(
 
     def get_extra_context(self):
         return {
-            'layer': self.layer,
-            'layer_name': self.kwargs['layer_name'],
-            'navigation_object_list': ('content_object',),
-            'content_object': self.external_object,
+            'control_sheet': self.external_object,
+            'navigation_object_list': ('control_sheet',),
             'submit_label': _('Select'),
             'title': _(
-                'Select new layer "%(layer)s" transformation '
-                'for: %(object)s'
+                'Select new control sheet code '
+                'for: %(control_sheet)s'
             ) % {
-                'layer': self.layer,
-                'object': self.external_object,
+                'control_sheet': self.external_object,
             }
         }
-
-    def get_form_extra_kwargs(self):
-        return {
-            'layer': self.layer
-        }
-"""

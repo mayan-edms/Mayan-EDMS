@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
-from django.db.models.signals import post_migrate, post_save
+from django.db.models.signals import post_migrate
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -11,7 +11,7 @@ from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_object, menu_secondary, menu_setup
+    menu_list_facet, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.events.links import (
@@ -28,10 +28,9 @@ from .handlers import (
 from .links import (
     link_control_sheet_create, link_control_sheet_delete,
     link_control_sheet_edit, link_control_sheet_list,
-    link_control_sheet_preview,
-
+    link_control_sheet_preview, link_control_sheet_print,
     link_control_sheet_code_delete, link_control_sheet_code_edit,
-    link_control_sheet_code_list
+    link_control_sheet_code_list, link_control_sheet_code_select
 )
 from .methods import method_document_submit, method_document_version_submit
 from .permissions import (
@@ -50,15 +49,11 @@ class ControlCodesApp(MayanAppConfig):
 
     def ready(self):
         super(ControlCodesApp, self).ready()
-        from actstream import registry
 
         ControlSheet = self.get_model(model_name='ControlSheet')
         ControlSheetCode = self.get_model(model_name='ControlSheetCode')
         Document = apps.get_model(
             app_label='documents', model_name='Document'
-        )
-        DocumentType = apps.get_model(
-            app_label='documents', model_name='DocumentType'
         )
         DocumentVersion = apps.get_model(
             app_label='documents', model_name='DocumentVersion'
@@ -89,36 +84,33 @@ class ControlCodesApp(MayanAppConfig):
             attribute='label', is_identifier=True, is_sortable=True,
             source=ControlSheet
         )
-
         SourceColumn(
-            attribute='get_label', is_identifier=True,# is_sortable=True,
+            attribute='get_label', is_identifier=True,
             source=ControlSheetCode
         )
         SourceColumn(
-            attribute='order', is_sortable=True,
-            source=ControlSheetCode
+            attribute='order', is_sortable=True, source=ControlSheetCode
         )
         SourceColumn(
-            attribute='arguments',
-            source=ControlSheetCode
+            attribute='arguments', source=ControlSheetCode
+        )
+        SourceColumn(
+            attribute='enabled', source=ControlSheetCode
         )
 
         menu_list_facet.bind_links(
-            links=(
-                link_acl_list, #link_events_for_object,
-                #link_object_event_types_user_subcriptions_list,
-            ), sources=(ControlSheet,)
+            links=(link_acl_list,), sources=(ControlSheet,)
         )
         menu_list_facet.bind_links(
             links=(
-                link_control_sheet_code_list,
+                link_control_sheet_preview, link_control_sheet_code_list,
             ),
             sources=(ControlSheet,)
         )
         menu_object.bind_links(
             links=(
                 link_control_sheet_edit, link_control_sheet_delete,
-                link_control_sheet_preview,
+                link_control_sheet_print,
             ),
             sources=(ControlSheet,)
         )
@@ -131,8 +123,16 @@ class ControlCodesApp(MayanAppConfig):
         menu_secondary.bind_links(
             links=(link_control_sheet_list, link_control_sheet_create),
             sources=(
-                ControlSheet, 'control_sheet:control_sheet_list',
-                'control_sheet:control_sheet_create'
+                ControlSheet, 'control_codes:control_sheet_list',
+                'control_codes:control_sheet_create'
+            )
+        )
+        menu_secondary.bind_links(
+            links=(link_control_sheet_code_select,),
+            sources=(
+                'control_codes:control_sheet_code_create',
+                'control_codes:control_sheet_code_list',
+                'control_codes:control_sheet_code_select', ControlSheetCode
             )
         )
         menu_setup.bind_links(

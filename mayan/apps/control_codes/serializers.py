@@ -1,25 +1,17 @@
 from __future__ import unicode_literals
 
-from django.core.exceptions import ValidationError as DjangoValidationError
-from django.utils.translation import ugettext_lazy as _
-
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
-from rest_framework.reverse import reverse
 
-from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.serializers import DocumentTypeSerializer
 from mayan.apps.rest_api.relations import (
     FilteredPrimaryKeyRelatedField, MultiKwargHyperlinkedIdentityField
 )
-from mayan.apps.user_management.serializers import UserSerializer
 
 from .models import ControlSheet, ControlSheetCode
 
 
 class ControlSheetSerializer(serializers.HyperlinkedModelSerializer):
-    #states = ControlSheetStateSerializer(many=True, required=False)
-
+    #codes = ControlSheetCodeSerializer(many=True, required=False)
     code_list_url = serializers.HyperlinkedIdentityField(
         lookup_url_kwarg='control_sheet_id',
         view_name='rest_api:controlsheet-code-list'

@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from django.utils.translation import ugettext_lazy as _
-
 from .tasks import task_process_document_version
 
 

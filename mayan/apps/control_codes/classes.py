@@ -9,9 +9,7 @@ import qrcode
 from django.apps import apps
 from django.db import transaction
 from django.utils.encoding import force_text, python_2_unicode_compatible
-from django.utils.translation import (
-    force_text, string_concat, ugettext_lazy as _
-)
+from django.utils.translation import string_concat, ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT

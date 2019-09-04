@@ -25,12 +25,5 @@
     </style>
 
     <h1 class="text-center">{{ title }}</h1>
-    <ul class="list-inline text-center">
-        {% for code in object.codes.all %}
-            <li class="list-inline-item">
-                <img class="img-responsive" src="{{ code.get_api_image_url }}" />
-                <p class="text-center">{{ code.get_label }}</p>
-            </li>
-        {% endfor %}
-    </ul>
+    {% include 'control_codes/control_sheet_content.html' %}
 {% endblock %}

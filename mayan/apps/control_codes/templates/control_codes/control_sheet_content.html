@@ -1,0 +1,9 @@
+    <ul class="list-inline text-center">
+        {% for code in object.codes.enabled %}
+            <li class="list-inline-item">
+                <img class="img-responsive" src="{{ code.get_api_image_url }}" />
+                <p class="text-center">{{ code.get_label }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+

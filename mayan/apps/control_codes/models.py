@@ -1,15 +1,11 @@
 from __future__ import unicode_literals
 
 import hashlib
-import json
 import logging
 
 from furl import furl
 
 from django.apps import apps
-from django.conf import settings
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
 from django.core import serializers
 from django.db import models
 from django.db.models import Max
@@ -32,8 +28,14 @@ logger = logging.getLogger(__name__)
 @python_2_unicode_compatible
 class ControlSheet(models.Model):
     label = models.CharField(
+        help_text=_('Short text to describe the control sheet.'),
         max_length=196, unique=True, verbose_name=_('Label')
     )
+
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Control sheet')
+        verbose_name_plural = _('Control sheets')
 
     def __str__(self):
         return self.label
@@ -45,10 +47,10 @@ class ControlSheet(models.Model):
             }
         )
 
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Control sheet')
-        verbose_name_plural = _('Control sheets')
+
+class ControlSheetCodeBusinessLogicManager(models.Manager):
+    def enabled(self):
+        return self.filter(enabled=True)
 
 
 @python_2_unicode_compatible
@@ -59,8 +61,8 @@ class ControlSheetCode(models.Model):
     )
     order = models.PositiveIntegerField(
         blank=True, db_index=True, default=0, help_text=_(
-            'Order in which the control codes will be interpreted. If left '
-            'unchanged, an automatic order value will be assigned.'
+            'Order in which the control sheet codes will be interpreted. '
+            'If left unchanged, an automatic order value will be assigned.'
         ), verbose_name=_('Order')
     )
     name = models.CharField(
@@ -69,11 +71,14 @@ class ControlSheetCode(models.Model):
     )
     arguments = models.TextField(
         blank=True, help_text=_(
-            'The arguments for the control code as a YAML '
+            'The arguments for the control sheet code as a YAML '
             'dictionary.'
         ), validators=[YAMLValidator()], verbose_name=_('Arguments')
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
+
+    business_logic = ControlSheetCodeBusinessLogicManager()
+    objects = models.Manager()
 
     class Meta:
         ordering = ('order',)
@@ -97,7 +102,7 @@ class ControlSheetCode(models.Model):
 
     def delete(self, *args, **kwargs):
         self.cache_partition.delete()
-        return super(Workflow, self).delete(*args, **kwargs)
+        return super(ControlSheetCode, self).delete(*args, **kwargs)
 
     def generate_image(self):
         cache_filename = '{}'.format(self.get_hash())
