@@ -40,7 +40,9 @@ class ControlCode(object):
     def get_choices(cls):
         return sorted(
             [
-                (name, klass.get_label()) for name, klass in cls._registry.items()
+                (
+                    name, klass.get_label()
+                ) for name, klass in cls._registry.items()
             ]
         )
 
@@ -61,6 +63,9 @@ class ControlCode(object):
                 timeout=DOCUMENT_IMAGE_TASK_TIMEOUT, disable_sync_subtasks=False
             )
 
+            results = []
+
+            # Collect control codes per page
             with document_page.cache_partition.get_file(filename=cache_filename).open() as file_object:
                 image = Image.open(file_object)
                 for code in decode(image):
@@ -69,7 +74,7 @@ class ControlCode(object):
 
                     if parts[0] == CONTROL_CODE_MAGIC_NUMBER:
                         try:
-                            control_code_class = ControlCode.get(name=parts[2])
+                            ControlCode.get(name=parts[2])
                         except KeyError:
                             # Unknown control code name
                             pass
@@ -78,10 +83,23 @@ class ControlCode(object):
                             document_page.save()
 
                             arguments = CONTROL_CODE_SEPARATOR.join(parts[3:])
-                            control_code = control_code_class(
-                                **yaml_load(arguments)
+                            results.append(
+                                {
+                                    'order': parts[1], 'name': parts[2],
+                                    'arguments': arguments
+                                }
                             )
-                            control_code.execute()
+
+                # Sort control codes so that they are executed in the
+                # specified order after the collection finishes.
+                results = results.sort(key=lambda x: x['order'])
+
+                for result in results:
+                    control_code_class = ControlCode.get(name=result['name'])
+                    control_code = control_code_class(
+                        **yaml_load(result['arguments'])
+                    )
+                    control_code.execute()
 
     @classmethod
     def register(cls, control_code):

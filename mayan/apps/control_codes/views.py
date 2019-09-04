@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 class ControlSheetCreateView(SingleObjectCreateView):
     fields = ('label',)
     model = ControlSheet
-    object_permission = permission_control_sheet_create
+    view_permission = permission_control_sheet_create
 
     def get_extra_context(self):
         return {

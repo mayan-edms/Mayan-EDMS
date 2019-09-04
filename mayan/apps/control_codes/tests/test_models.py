@@ -7,6 +7,7 @@ from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 
 from ..classes import ControlCode
+from ..models import ControlSheet
 
 TEST_CONTROL_CODE_DOCUMENT_PATH = '/tmp/test_control_code.png'
 
@@ -28,7 +29,6 @@ class ControlCodeTestCase(GenericDocumentTestCase):
     test_document_path = TEST_CONTROL_CODE_DOCUMENT_PATH
 
     def test_control_code_detection(self):
-
         with open(TEST_CONTROL_CODE_DOCUMENT_PATH, mode='wb') as file_object:
             control_code = ControlCodeTest(argument_1='test argument value')
             control_code.image.save(file_object)

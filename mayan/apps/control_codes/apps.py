@@ -75,7 +75,6 @@ class ControlCodesApp(MayanAppConfig):
                 permission_control_sheet_view
             )
         )
-
         ModelPermission.register_inheritance(
             model=ControlSheetCode, related='control_sheet',
         )
@@ -95,7 +94,8 @@ class ControlCodesApp(MayanAppConfig):
             attribute='arguments', source=ControlSheetCode
         )
         SourceColumn(
-            attribute='enabled', source=ControlSheetCode
+            attribute='enabled', is_sortable=True, source=ControlSheetCode,
+            widget=TwoStateWidget
         )
 
         menu_list_facet.bind_links(
