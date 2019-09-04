@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:30-0400\n"
-"PO-Revision-Date: 2019-07-08 11:14+0000\n"
+"POT-Creation-Date: 2019-09-03 23:17-0400\n"
+"PO-Revision-Date: 2019-08-30 08:51+0000\n"
 "Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -741,7 +741,7 @@ msgstr "Controlla i periodi di cancellazione dei tipi di documento"
 
 #: queues.py:53
 msgid "Check document type trash periods"
-msgstr ""
+msgstr "Controlla la durata del tipo di documento nel cestino"
 
 #: queues.py:59
 msgid "Delete document stubs"
@@ -777,55 +777,55 @@ msgstr "Argomenti da passare a DOCUMENT_CACHE_STORAGE_BACKEND."
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
-msgstr ""
+msgstr "Disabilita il primo livello della cache, che memorizza le pagine dei documenti in alta risoluzione, in versione non trasformata."
 
 #: settings.py:41
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
-msgstr ""
+msgstr "Disabilita il secondo livello della cache, che memorizza le pagine dei documenti da media a bassa risoluzione, in versione trasformata (ruotati, ingranditi, ecc)."
 
 #: settings.py:55
 msgid "Maximum number of favorite documents to remember per user."
-msgstr ""
+msgstr "Numero massimo di documenti preferiti da memorizzare per utente."
 
 #: settings.py:61
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
 "corresponding rotation transformation to display it rightside up. This is an"
 " experimental feature and it is disabled by default."
-msgstr ""
+msgstr "Individua l'orientamento di ogni pagina del documento e crea una corrispondente trasformazione per visualizzarlo in modo da essere letto. Questa è una funzionalità sperimentale ed è disattivata di default."
 
 #: settings.py:70
 msgid ""
 "Size of blocks to use when calculating the document file's checksum. A value"
 " of 0 disables the block calculation and the entire file will be loaded into"
 " memory."
-msgstr ""
+msgstr "Grandezza dei blocchi da usare nel calcolo del checksum del file del documento. Un valore 0 disabilita il calcolo dei blocchi e l'intero file verrà caricato in memoria."
 
 #: settings.py:77
 msgid "Default documents language (in ISO639-3 format)."
-msgstr ""
+msgstr "Lingua di default del documento (in formato ISO639-3)."
 
 #: settings.py:81
 msgid "List of supported document languages. In ISO639-3 format."
-msgstr ""
+msgstr "Elenco delle lingue supportate. In ISO639-3 format."
 
 #: settings.py:86
 msgid ""
 "Time in seconds that the browser should cache the supplied document images. "
 "The default of 31559626 seconds corresponde to 1 year."
-msgstr ""
+msgstr "Tempo in secondi per cui il browser memorizza nella cache le immagini del documento fornite. Il default è 31559626 secondi, che corrisponde a 1 anno."
 
 #: settings.py:105
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
-msgstr ""
+msgstr "Massimo numero di documenti aperti di recente (creati, modificati, visualizzati) da ricordare per utente."
 
 #: settings.py:112
 msgid "Maximum number of recently created documents to show."
-msgstr ""
+msgstr "Numero massimo di documenti creati di recente da visualizzare."
 
 #: settings.py:118
 msgid "Amount in degrees to rotate a document page per user interaction."
@@ -833,15 +833,15 @@ msgstr "Quantità di gradi per la rotazione della pagina del documento"
 
 #: settings.py:124
 msgid "Path to the Storage subclass to use when storing document files."
-msgstr ""
+msgstr "Percorso per la classe Storage da usare per l'archiviazione dei file dei documenti."
 
 #: settings.py:132
 msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argomenti da passare a DOCUMENT_STORAGE_BACKEND."
 
 #: settings.py:136
 msgid "Height in pixels of the document thumbnail image."
-msgstr ""
+msgstr "Altezza in pixel dell'immagine anteprima del documento."
 
 #: settings.py:147
 msgid ""
@@ -861,51 +861,51 @@ msgstr "Percentuale dello zoom di una pagina del documento per l'interazione del
 
 #: statistics.py:18
 msgid "January"
-msgstr ""
+msgstr "Gennaio"
 
 #: statistics.py:18
 msgid "February"
-msgstr ""
+msgstr "Febbraio"
 
 #: statistics.py:18
 msgid "March"
-msgstr ""
+msgstr "Marzo"
 
 #: statistics.py:18
 msgid "April"
-msgstr ""
+msgstr "Aprile"
 
 #: statistics.py:18
 msgid "May"
-msgstr ""
+msgstr "Maggio"
 
 #: statistics.py:19
 msgid "June"
-msgstr ""
+msgstr "Giugno"
 
 #: statistics.py:19
 msgid "July"
-msgstr ""
+msgstr "Luglio"
 
 #: statistics.py:19
 msgid "August"
-msgstr ""
+msgstr "Agosto"
 
 #: statistics.py:19
 msgid "September"
-msgstr ""
+msgstr "Settembre"
 
 #: statistics.py:19
 msgid "October"
-msgstr ""
+msgstr "Ottobre"
 
 #: statistics.py:20
 msgid "November"
-msgstr ""
+msgstr "Novembre"
 
 #: statistics.py:20
 msgid "December"
-msgstr ""
+msgstr "Dicembre"
 
 #: statistics.py:237
 msgid "New documents per month"
@@ -937,16 +937,16 @@ msgid ""
 "\n"
 "                    Page %(page_number)s of %(total_pages)s\n"
 "                "
-msgstr ""
+msgstr "\n                    Pagina %(page_number)s di %(total_pages)s\n                "
 
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
-msgstr ""
+msgstr "Nessuna pagina da visualizzare"
 
 #: utils.py:18
 #, python-format
 msgid "Unknown language \"%s\""
-msgstr ""
+msgstr "Lingua sconosciuta \"%s\""
 
 #: views/document_page_views.py:54
 msgid ""
@@ -954,11 +954,11 @@ msgid ""
 " it is corrupted or that the upload process was interrupted. Use the "
 "document page recalculation action to attempt to introspect the page count "
 "again."
-msgstr ""
+msgstr "Questo significa che il documento è in un formato non supportato, è corrotto oppure che l'upload è stato interrotto. Usa il ricalcolo delle pagine documento per provare a rivedere il conteggio delle pagine."
 
 #: views/document_page_views.py:59
 msgid "No document pages available"
-msgstr ""
+msgstr "Nessuna pagina documento disponibile"
 
 #: views/document_page_views.py:61
 #, python-format

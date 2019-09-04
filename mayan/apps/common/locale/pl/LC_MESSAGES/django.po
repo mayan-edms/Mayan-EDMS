@@ -5,6 +5,7 @@
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2017
+# Marcin Lozynski <mlozynski@wp.pl>, 2019
 # mic, 2012
 # mic <diveaway12@gmail.com>, 2012
 # mic <winterfall24@gmail.com>, 2012,2015
@@ -14,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:28-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-09-03 23:15-0400\n"
+"PO-Revision-Date: 2019-08-30 21:50+0000\n"
+"Last-Translator: Marcin Lozynski <mlozynski@wp.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,7 +35,7 @@ msgstr "Dostępne atrybuty: \n"
 
 #: classes.py:166
 msgid "Available fields: \n"
-msgstr ""
+msgstr "Dostępne pola:\n"
 
 #: dependencies.py:396
 msgid "Used to allow offline translation of the code text strings."
@@ -76,7 +77,7 @@ msgstr ""
 
 #: generics.py:287
 msgid "Add all"
-msgstr ""
+msgstr "Dodaj wszystko"
 
 #: generics.py:296
 msgid "Add"
@@ -84,7 +85,7 @@ msgstr "Dodaj"
 
 #: generics.py:306
 msgid "Remove all"
-msgstr ""
+msgstr "Usuń wszystko"
 
 #: generics.py:315
 msgid "Remove"
@@ -93,7 +94,7 @@ msgstr "Usuń"
 #: generics.py:521
 #, python-format
 msgid "Duplicate data error: %(error)s"
-msgstr ""
+msgstr "Błąd powielenia danych: %(error)s"
 
 #: generics.py:543
 #, python-format
@@ -147,7 +148,7 @@ msgstr "Błędy"
 
 #: links.py:59
 msgid "Clear all"
-msgstr ""
+msgstr "Wyczyść wszystko"
 
 #: links.py:69
 msgid "Forum"
@@ -176,7 +177,7 @@ msgstr "Narzędzia"
 #: literals.py:13
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "Ta funkcja jest przestarzała i zostanie usunięta w przyszłych wersjach."
 
 #: literals.py:16
 msgid ""

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:27-0400\n"
-"PO-Revision-Date: 2019-07-05 05:33+0000\n"
+"POT-Creation-Date: 2019-09-03 23:14-0400\n"
+"PO-Revision-Date: 2019-09-04 03:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -90,7 +90,7 @@ msgstr "Lapa nav atrasta"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Diemžēl pieprasīto lapu nevarēja atrast."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:52
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:53
 msgid "Server error"
 msgstr "Servera kļūda"
 
@@ -153,11 +153,26 @@ msgstr "\nJa izmantojat %(project_title)s, lūdzu, <a class=\"new_window\" href=
 #, python-format
 msgid ""
 "\n"
+"                You can also <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">donate directly to the creator and lead developer.  %(icon_social_paypal)s</a>\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:127
+msgid ""
+"\n"
+"                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>. <br>The book is available on pre-release format at a discounted price for a limited time.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:133
+#, python-format
+msgid ""
+"\n"
 "                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr "\nPilns izmaiņu saraksts ir pieejams, skatot <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> vai īso versiju <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a> ."
 
-#: templates/appearance/about.html:127
+#: templates/appearance/about.html:139
 #, python-format
 msgid ""
 "\n"
@@ -165,7 +180,7 @@ msgid ""
 "            "
 msgstr "\nJautājumu gadījumā pārbaudiet <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">dokumentāciju %(icon_documentation)s</a> vai <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki %(icon_wiki)s</a> ."
 
-#: templates/appearance/about.html:133
+#: templates/appearance/about.html:145
 #, python-format
 msgid ""
 "\n"
@@ -173,7 +188,7 @@ msgid ""
 "            "
 msgstr "\nJa atradāt kļūdu vai ir kāda funkcionalitātes ideja, apmeklējiet <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">forumu %(icon_forum)s</a> vai atveriet biļeti <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">pirmkoda repozitorijā %(icon_source_code)s</a> ."
 
-#: templates/appearance/about.html:138
+#: templates/appearance/about.html:150
 #, python-format
 msgid ""
 "\n"
@@ -182,22 +197,22 @@ msgid ""
 "            "
 msgstr "\nIzplatiet vārdu. Runājiet ar saviem draugiem un kolēģiem par to, cik lielisks %(project_title)s ir! Sekojiet mums <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a> , <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a> vai <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>"
 
-#: templates/appearance/base.html:32 templates/appearance/base.html:42
+#: templates/appearance/base.html:36 templates/appearance/base.html:46
 msgid "Warning"
 msgstr "Brīdinājums"
 
-#: templates/appearance/base.html:42
+#: templates/appearance/base.html:46
 msgid ""
 "Settings updated, restart your installation for changes to take proper "
 "effect."
 msgstr ""
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:60
 #: templates/appearance/generic_list_items_subtemplate.html:104
 msgid "Actions"
 msgstr "Darbības"
 
-#: templates/appearance/base.html:61
+#: templates/appearance/base.html:62
 #: templates/appearance/generic_list_items_subtemplate.html:106
 msgid "Toggle Dropdown"
 msgstr "Toggle Dropdown"
@@ -278,15 +293,15 @@ msgstr "Pārslēgt navigāciju"
 msgid "No results"
 msgstr "Nav rezultātu"
 
-#: templates/appearance/root.html:57
+#: templates/appearance/root.html:58
 msgid "Close"
 msgstr "Aizvērt"
 
-#: templates/appearance/root.html:65
+#: templates/appearance/root.html:66
 msgid "Server communication error"
 msgstr "Servera sakaru kļūda"
 
-#: templates/appearance/root.html:67
+#: templates/appearance/root.html:68
 msgid "Check you network connection and try again in a few moments."
 msgstr "Pārbaudiet tīkla savienojumu un pēc brīža mēģiniet vēlreiz."
 

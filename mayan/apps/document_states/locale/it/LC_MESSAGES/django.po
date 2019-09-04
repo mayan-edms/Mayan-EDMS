@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Daniele Bortoluzzi <daniele@elkos.it>, 2019
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:30-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-09-03 23:17-0400\n"
+"PO-Revision-Date: 2019-08-28 12:20+0000\n"
+"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,12 +30,12 @@ msgstr "Stato corrente del workflow"
 
 #: apps.py:105
 msgid "Return the current state of the selected workflow"
-msgstr ""
+msgstr "Restituisce lo stato corrente del flusso di lavoro selezionato"
 
 #: apps.py:112
 msgid ""
 "Return the completion value of the current state of the selected workflow"
-msgstr ""
+msgstr "Restituisce la percentuale di completamento dello stato corrente del flusso di lavoro selezionato"
 
 #: apps.py:167 apps.py:178 apps.py:188 apps.py:194
 msgid "None"
@@ -70,31 +71,31 @@ msgstr "Commento"
 
 #: apps.py:233
 msgid "When?"
-msgstr ""
+msgstr "Quando?"
 
 #: apps.py:237
 msgid "Action type"
-msgstr ""
+msgstr "Tipo di azione"
 
 #: apps.py:253
 msgid "Triggers"
-msgstr ""
+msgstr "Triggers (azioni innescate)"
 
 #: error_logs.py:8 models.py:302
 msgid "Workflow state actions"
-msgstr ""
+msgstr "Azioni per lo stato del flusso di lavoro"
 
 #: events.py:12
 msgid "Workflow created"
-msgstr ""
+msgstr "Flusso di lavoro creato"
 
 #: events.py:15
 msgid "Workflow edited"
-msgstr ""
+msgstr "Flusso di lavoro modificato"
 
 #: forms.py:22
 msgid "Action"
-msgstr ""
+msgstr "Azione"
 
 #: forms.py:117
 msgid "Namespace"
@@ -118,7 +119,7 @@ msgstr "Si"
 
 #: forms.py:181
 msgid "Optional comment to attach to the transition."
-msgstr ""
+msgstr "Commento opzionale da aggiungere alla transizione."
 
 #: handlers.py:62
 #, python-format
@@ -147,7 +148,7 @@ msgstr "Azioni "
 
 #: links.py:72
 msgid "Create action"
-msgstr ""
+msgstr "Crea azione"
 
 #: links.py:78
 msgid "Create state"
@@ -167,7 +168,7 @@ msgstr "Transizioni"
 
 #: links.py:129
 msgid "Transition triggers"
-msgstr ""
+msgstr "Trigger per la transizione"
 
 #: links.py:136
 msgid "Preview"
@@ -183,25 +184,25 @@ msgstr "Dettagli"
 
 #: links.py:170
 msgid "Workflow documents"
-msgstr ""
+msgstr "Documenti di workflow"
 
 #: links.py:182
 msgid "State documents"
-msgstr ""
+msgstr "Documenti di stato"
 
 #: literals.py:9
 msgid "On entry"
-msgstr ""
+msgstr "All'entrata"
 
 #: literals.py:10
 msgid "On exit"
-msgstr ""
+msgstr "All'uscita"
 
 #: models.py:42
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
-msgstr ""
+msgstr "Questo valore sarà usato da altre applicazioni per riferirsi a questo workflow. Può contenere solo lettere, numeri e underscore (trattino basso)."
 
 #: models.py:45
 msgid "Internal name"
@@ -241,31 +242,31 @@ msgstr "Stati workflow"
 
 #: models.py:279
 msgid "A simple identifier for this action."
-msgstr ""
+msgstr "Un semplice identificatore per questa azione."
 
 #: models.py:286
 msgid "At which moment of the state this action will execute"
-msgstr ""
+msgstr "In quale momento dello stato questa azione sarà eseguita"
 
 #: models.py:287
 msgid "When"
-msgstr ""
+msgstr "Quando"
 
 #: models.py:291
 msgid "The dotted Python path to the workflow action class to execute."
-msgstr ""
+msgstr "Il percorso alla classe Python per l'azione di workflow da eseguire."
 
 #: models.py:292
 msgid "Entry action path"
-msgstr ""
+msgstr "Percorso per l'inizio dell'azione"
 
 #: models.py:295
 msgid "Entry action data"
-msgstr ""
+msgstr "Dati per l'inizio dell'azione"
 
 #: models.py:301
 msgid "Workflow state action"
-msgstr ""
+msgstr "Azione dello stato del workflow"
 
 #: models.py:346
 msgid "Origin state"
@@ -289,11 +290,11 @@ msgstr "Tipo evento"
 
 #: models.py:377
 msgid "Workflow transition trigger event"
-msgstr ""
+msgstr "Evento scatenato dalla transizione del workflow"
 
 #: models.py:378
 msgid "Workflow transitions trigger events"
-msgstr ""
+msgstr "Eventi scatenati dalla transizione del workflow"
 
 #: models.py:392
 msgid "Document"
@@ -321,7 +322,7 @@ msgstr "Voci log istanza workflow"
 
 #: models.py:528
 msgid "Not a valid transition choice."
-msgstr ""
+msgstr "Non è una scelta valida per la transizione"
 
 #: models.py:561
 msgid "Workflow runtime proxy"
@@ -461,7 +462,7 @@ msgstr ""
 
 #: views/workflow_proxy_views.py:50
 msgid "There are no documents executing this workflow"
-msgstr ""
+msgstr "Non ci sono documenti che eseguono questo workflow"
 
 #: views/workflow_proxy_views.py:53
 #, python-format
