@@ -88,16 +88,18 @@ class ControlCode(object):
                                 }
                             )
 
-                # Sort control codes so that they are executed in the
-                # specified order after the collection finishes.
-                results = results.sort(key=lambda x: x['order'])
+            # Sort control codes so that they are executed in the
+            # specified order after the collection finishes.
+            results.sort(key=lambda x: x['order'])
 
-                for result in results:
-                    control_code_class = ControlCode.get(name=result['name'])
-                    control_code = control_code_class(
-                        **yaml_load(result['arguments'])
-                    )
-                    control_code.execute()
+            context = {'document_page': document_page}
+
+            for result in results:
+                control_code_class = ControlCode.get(name=result['name'])
+                control_code = control_code_class(
+                    **yaml_load(result['arguments'])
+                )
+                control_code.execute(context=context)
 
     @classmethod
     def register(cls, control_code):
@@ -128,7 +130,7 @@ class ControlCode(object):
 
         return CONTROL_CODE_SEPARATOR.join(result)
 
-    def execute(self):
+    def execute(self, context):
         raise NotImplementedError(
             'Your %s class has not defined the required '
             'execue() method.' % self.__class__.__name__
