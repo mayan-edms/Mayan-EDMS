@@ -2,16 +2,12 @@ from __future__ import unicode_literals
 
 from rest_framework import serializers
 
-from mayan.apps.documents.serializers import DocumentTypeSerializer
-from mayan.apps.rest_api.relations import (
-    FilteredPrimaryKeyRelatedField, MultiKwargHyperlinkedIdentityField
-)
+from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
 
 from .models import ControlSheet, ControlSheetCode
 
 
 class ControlSheetSerializer(serializers.HyperlinkedModelSerializer):
-    #codes = ControlSheetCodeSerializer(many=True, required=False)
     code_list_url = serializers.HyperlinkedIdentityField(
         lookup_url_kwarg='control_sheet_id',
         view_name='rest_api:controlsheet-code-list'

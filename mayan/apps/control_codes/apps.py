@@ -13,10 +13,6 @@ from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_list_facet, menu_object, menu_secondary, menu_setup
 )
-from mayan.apps.events.classes import ModelEventType
-from mayan.apps.events.links import (
-    link_events_for_object, link_object_event_types_user_subcriptions_list
-)
 from mayan.apps.navigation.classes import SourceColumn
 
 from .control_codes import *
@@ -70,6 +66,7 @@ class ControlCodesApp(MayanAppConfig):
 
         ModelPermission.register(
             model=ControlSheet, permissions=(
+                permission_acl_edit, permission_acl_view,
                 permission_control_sheet_delete,
                 permission_control_sheet_edit,
                 permission_control_sheet_view

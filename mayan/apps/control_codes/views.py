@@ -163,7 +163,7 @@ class ControlSheetCodeCreate(ExternalObjectMixin, SingleObjectCreateView):
 class ControlSheetCodeDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
     form_class = ControlSheetCodeForm
     external_object_class = ControlSheet
-    external_object_permission = permission_control_sheet_delete
+    external_object_permission = permission_control_sheet_edit
     external_object_pk_url_kwarg = 'control_sheet_id'
     pk_url_kwarg = 'control_sheet_code_id'
 

@@ -7,7 +7,7 @@ icon_control_sheet = Icon(
         {'class': 'far fa-file ', 'transform': 'grow-4'},
         {'class': 'fas fa-barcode', 'transform': 'shrink-6'},
     ],
-    # shadow_class='far fa-file',
+    #shadow_class='far fa-file',
 )
 icon_control_sheet_create = Icon(
     driver_name='fontawesome-layers', data=[
