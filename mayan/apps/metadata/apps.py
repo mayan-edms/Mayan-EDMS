@@ -26,6 +26,7 @@ from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import DocumentMetadataHelper
+from .control_codes import *  # NOQA
 from .dependencies import *  # NOQA
 from .events import (
     event_document_metadata_added, event_document_metadata_edited,
