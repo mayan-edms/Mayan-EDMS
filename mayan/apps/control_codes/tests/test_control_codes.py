@@ -5,6 +5,8 @@ from mayan.apps.storage.utils import fs_cleanup, mkstemp
 
 from ..control_codes import ControlCodeAttributeEdit
 
+TEST_ATTRIBUTE_VALUE = 'test value'
+
 
 class ControlCodeAttributeEditTestCase(GenericDocumentTestCase):
     auto_upload_document = False
@@ -18,8 +20,6 @@ class ControlCodeAttributeEditTestCase(GenericDocumentTestCase):
         super(ControlCodeAttributeEditTestCase, self).tearDown()
 
     def test_control_code(self):
-        TEST_ATTRIBUTE_VALUE = 'test value'
-
         with open(self.test_document_path, mode='wb') as file_object:
             control_code = ControlCodeAttributeEdit(
                 name='label', value=TEST_ATTRIBUTE_VALUE
