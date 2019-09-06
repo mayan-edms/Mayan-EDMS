@@ -15,7 +15,7 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.navigation.classes import SourceColumn
 
-from .control_codes import *
+from .control_codes import *  # NOQA
 from .dependencies import *  # NOQA
 from .handlers import (
     handler_create_control_sheet_codes_image_cache,

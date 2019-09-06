@@ -124,15 +124,18 @@ class ControlSheetCodeCreate(ExternalObjectMixin, SingleObjectCreateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.control_sheet = self.external_object
-        instance.name = self.kwargs['control_code_class_name']
         try:
+            instance.name = self.get_control_code_class().name
             instance.full_clean()
             instance.save()
         except Exception as exception:
-            logger.debug('Invalid form, exception: %s', exception)
-            return super(ControlSheetCodeCreate, self).form_invalid(form)
+            logger.error('Invalid form, exception: %s', exception)
+            return super(ControlSheetCodeCreate, self).form_invalid(form=form)
         else:
-            return super(ControlSheetCodeCreate, self).form_valid(form)
+            return super(ControlSheetCodeCreate, self).form_valid(form=form)
+
+    def get_control_code_class(self):
+        return ControlCode.get(name=self.kwargs['control_code_class_name'])
 
     def get_extra_context(self):
         return {
@@ -141,7 +144,7 @@ class ControlSheetCodeCreate(ExternalObjectMixin, SingleObjectCreateView):
             'title': _(
                 'Create code "%(control_code)s" for: %(control_sheet)s'
             ) % {
-                'control_code': self.get_control_code_class(),
+                'control_code': self.get_control_code_class().label,
                 'control_sheet': self.external_object,
             }
         }
@@ -155,9 +158,6 @@ class ControlSheetCodeCreate(ExternalObjectMixin, SingleObjectCreateView):
 
     def get_source_queryset(self):
         return self.external_object.codes.all()
-
-    def get_control_code_class(self):
-        return ControlCode.get(name=self.kwargs['control_code_class_name'])
 
 
 class ControlSheetCodeDeleteView(ExternalObjectMixin, SingleObjectDeleteView):

@@ -11,7 +11,7 @@ from .permissions import (
 
 link_control_sheet_create = Link(
     icon_class_path='mayan.apps.control_codes.icons.icon_control_sheet_create',
-    text=_('Create'), permissions=(permission_control_sheet_create,),
+    text=_('Create control sheet'), permissions=(permission_control_sheet_create,),
     view='control_codes:control_sheet_create'
 )
 link_control_sheet_delete = Link(

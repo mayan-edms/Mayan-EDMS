@@ -1,22 +1,13 @@
 from __future__ import unicode_literals
 
-from ..classes import ControlCode
 from ..models import ControlSheet
 
+from .control_codes import ControlCodeTest
 from .literals import (
     TEST_CONTROL_SHEET_CODE_ARGUMENTS,
     TEST_CONTROL_SHEET_CODE_ARGUMENTS_EDITED, TEST_CONTROL_SHEET_LABEL,
     TEST_CONTROL_SHEET_LABEL_EDITED
 )
-
-
-class ControlCodeTest(ControlCode):
-    arguments = ('argument_1',)
-    label = 'Test'
-    name = 'test'
-
-    def execute(self):
-        pass
 
 
 class ControlSheetAPIViewTestMixin(object):
@@ -137,7 +128,6 @@ class ControlSheetCodeViewTestMixin(object):
                 'control_sheet_id': self.test_control_sheet.pk,
                 'control_code_class_name': self._test_control_code_class.name
             }
-
         )
 
     def _request_test_control_sheet_code_delete_view(self):
@@ -165,6 +155,3 @@ class ControlSheetCodeViewTestMixin(object):
                 'control_sheet_id': self.test_control_sheet.pk
             }
         )
-
-
-ControlCode.register(control_code=ControlCodeTest)

@@ -2,18 +2,17 @@ from __future__ import unicode_literals
 
 from .classes import ControlCode
 
+__all__ = ('ControlCodeAttributeEdit',)
+
 
 class ControlCodeAttributeEdit(ControlCode):
-    arguments = ('attribute', 'value')
-    label = 'Change document attribute'
-    name = 'document_attribute_edit'
+    arguments = ('name', 'value')
+    label = 'Change document property'
+    name = 'document_property_edit'
 
     def execute(self, context):
         document = context['document_page'].document
-        print("!@#@", self.attribute, self.value)
-        setattr(document, self.attribute, self.value)
-        print("!!", document.label)
-
+        setattr(document, self.kwargs['name'], self.kwargs['value'])
         document.save()
 
 

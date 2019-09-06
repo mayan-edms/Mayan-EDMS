@@ -21,6 +21,7 @@ from mayan.apps.common.validators import YAMLValidator
 
 from .classes import ControlCode
 from .literals import CONTROL_SHEET_CODE_IMAGE_CACHE_NAME
+from .managers import ControlSheetCodeBusinessLogicManager
 
 logger = logging.getLogger(__name__)
 
@@ -48,11 +49,6 @@ class ControlSheet(models.Model):
         )
 
 
-class ControlSheetCodeBusinessLogicManager(models.Manager):
-    def enabled(self):
-        return self.filter(enabled=True)
-
-
 @python_2_unicode_compatible
 class ControlSheetCode(models.Model):
     control_sheet = models.ForeignKey(
@@ -65,10 +61,7 @@ class ControlSheetCode(models.Model):
             'If left unchanged, an automatic order value will be assigned.'
         ), verbose_name=_('Order')
     )
-    name = models.CharField(
-        choices=ControlCode.get_choices(),
-        max_length=128, verbose_name=_('Name')
-    )
+    name = models.CharField(max_length=128, verbose_name=_('Name'))
     arguments = models.TextField(
         blank=True, help_text=_(
             'The arguments for the control sheet code as a YAML '

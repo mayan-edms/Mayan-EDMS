@@ -24,6 +24,10 @@ class ControlCode(object):
     arguments = ()
 
     @classmethod
+    def all(cls):
+        return cls._registry.values()
+
+    @classmethod
     def get(cls, name):
         return cls._registry[name]
 
@@ -38,9 +42,7 @@ class ControlCode(object):
     def get_choices(cls):
         return sorted(
             [
-                (
-                    name, klass.get_label()
-                ) for name, klass in cls._registry.items()
+                (klass.name, klass.get_label()) for klass in cls.all()
             ]
         )
 
@@ -108,7 +110,6 @@ class ControlCode(object):
     def __init__(self, **kwargs):
         self.kwargs = {}
         for argument_name in self.arguments:
-            setattr(self, argument_name, kwargs.get(argument_name))
             self.kwargs[argument_name] = kwargs.get(argument_name)
 
     def __str__(self):
