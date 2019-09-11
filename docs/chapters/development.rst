@@ -226,32 +226,46 @@ Git branch structure
 Mayan EDMS follows a simplified model layout based on Vincent Driessen's
 `Successful Git Branching Model`_ blog post.
 
-``development``
-    The "next release" branch, likely unstable, don't use in production.
+``/versions/micro``
+    Working branch for the next bugfix release. Micro increment (third digit).
+    Only bug fixes, minor features, back-ported urgent features. This
+    branch is stable and safe for production.
+``/versions/minor``
+    Working branch for the next minor release (second digit). New features,
+    occasional breakage. Not for production but should run in test
+    environment most of the time. This is the branch you will want to
+    try out if you want to check out new features.
+``/versions/major``
+    Working branch for the next major release (first digit). New features,
+    incompatible changes to the user facing interfaces. Broken most of the
+    time, not for production and should only be cloned by developers
+    with experience with Mayan's development.
 ``master``
     Current production release (|version|). Points to the latest version of
     the latest series. Production quality code.
-``feature/``
-    Unfinished/unmerged feature. Likely unstable, don't use in production.
-
+``features/``
+    Working branches for unfinished and unmerged feature. Likely unstable,
+    don't use in production. Once the feature is complete, it is merged
+    into one of the versions branches and deleted.
+    
 Special branches:
 
 ``releases/all``
-    Used by the continuous delivery system to trigger the build and release
+    Pushing code to this branch will trigger the build and release
     a new Docker image, Documentation and Python package.
 ``releases/docker``
-    Used by the continuous delivery system to trigger the build and release
+    Pushing code to this branch will trigger the build and release
     of a new Docker image to Docker Hub.
 ``releases/documentation``
-    Used by the continuous delivery system to trigger the build and release
+    Pushing code to this branch will trigger the build and release
     of new documentation.
 ``releases/python``
-    Used by the continuous delivery system to trigger the build and release
+    Pushing code to this branch will trigger the build and release
     of a new Python package to PyPI.
 ``nightly``
-    Used by the continuous delivery system to trigger the build and release
+    Pushing code to this branch will trigger the build and release
     of a new Docker image based on development code to the GitLab image
-    repository.
+    repository only. The image will not be published to Docker Hub.
 
 Each release is tagged separately using annotated Git tags.
 
