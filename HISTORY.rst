@@ -1,3 +1,7 @@
+3.2.8 (2019-XX-XX)
+==================
+* Add cabinet add and remove workflow actions.
+
 3.2.7 (2019-08-28)
 ==================
 * Fix checkout form bug. Thanks to Lucius Schaerer
