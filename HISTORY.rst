@@ -3,6 +3,7 @@
 * Add cabinet add and remove workflow actions.
 * Tweaked the jstree component's appearance to cope with
   long labels.
+* Update Django to version 1.11.24
 
 3.2.7 (2019-08-28)
 ==================
