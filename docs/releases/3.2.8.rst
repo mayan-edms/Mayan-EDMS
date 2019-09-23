@@ -20,6 +20,7 @@ Other changes
 
 - Add cabinet add and remove workflow actions.
 - Update Django to version 1.11.24.
+- Update jQuery to version 3.4.1
 
 
 Removals
