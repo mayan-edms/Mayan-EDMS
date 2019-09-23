@@ -5,6 +5,8 @@
   long labels.
 * Update Django to version 1.11.24
 * Update jQuery to version 3.4.1
+* Add support for deleting the OCR content of a document
+  or selection of documents.
 
 3.2.7 (2019-08-28)
 ==================

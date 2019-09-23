@@ -23,10 +23,11 @@ from .handlers import (
 )
 from .links import (
     link_document_page_ocr_content, link_document_ocr_content,
-    link_document_ocr_download, link_document_ocr_errors_list,
-    link_document_submit, link_document_submit_multiple,
-    link_document_type_ocr_settings, link_document_type_submit,
-    link_entry_list
+    link_document_ocr_content_delete,
+    link_document_ocr_content_delete_multiple, link_document_ocr_download,
+    link_document_ocr_errors_list, link_document_submit,
+    link_document_submit_multiple, link_document_type_ocr_settings,
+    link_document_type_submit, link_entry_list
 )
 from .methods import (
     method_document_ocr_submit, method_document_version_ocr_submit
@@ -131,10 +132,14 @@ class OCRApp(MayanAppConfig):
             links=(link_document_type_ocr_settings,), sources=(DocumentType,)
         )
         menu_multi_item.bind_links(
-            links=(link_document_submit_multiple,), sources=(Document,)
+            links=(
+                link_document_ocr_content_delete_multiple,
+                link_document_submit_multiple,
+            ), sources=(Document,)
         )
         menu_secondary.bind_links(
             links=(
+                link_document_ocr_content_delete,
                 link_document_ocr_errors_list,
                 link_document_ocr_download, link_document_submit
             ),

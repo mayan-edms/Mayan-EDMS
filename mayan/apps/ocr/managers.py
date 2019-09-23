@@ -6,7 +6,7 @@ import traceback
 
 from django.apps import apps
 from django.conf import settings
-from django.db import models
+from django.db import models, transaction
 
 from mayan.apps.documents.storages import storage_documentimagecache
 from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
@@ -20,6 +20,11 @@ logger = logging.getLogger(__name__)
 
 
 class DocumentPageOCRContentManager(models.Manager):
+    def delete_ocr_content_for(self, document):
+        with transaction.atomic():
+            for document_page in document.pages.all():
+                self.filter(document_page=document_page).delete()
+
     def process_document_page(self, document_page):
         logger.info(
             'Processing page: %d of document version: %s',
