@@ -1,6 +1,8 @@
 3.2.8 (2019-XX-XX)
 ==================
 * Add cabinet add and remove workflow actions.
+* Tweaked the jstree component's appearance to cope with
+  long labels.
 
 3.2.7 (2019-08-28)
 ==================

@@ -7,7 +7,19 @@ Released: XX, 2019
 Changes
 -------
 
+Cabinets
+^^^^^^^^
+
+Tweaked the jstree component's appearance to cope with long labels.
+Added a scrollbar, reduced the font size, switched to a sans serif font,
+and reduced padding. Thanks for forum user @briboe for the report.
+
+
+Other changes
+^^^^^^^^^^^^^
+
 - Add cabinet add and remove workflow actions.
+
 
 Removals
 --------
@@ -101,6 +113,6 @@ Bugs fixed or issues closed
 ---------------------------
 
 - :gitlab-issue:`643` The "Actions" button won't show up, if window size between 992 and 1248 px
-- :forum-topic:`1050` edit/delete sub-cabinet
+- :forum-topic:`1120` Cabinet Presentation
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
