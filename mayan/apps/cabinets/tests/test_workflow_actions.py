@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from mayan.apps.common.tests import GenericViewTestCase
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
 from mayan.apps.document_states.tests.test_actions import ActionTestCase
 
@@ -40,11 +39,8 @@ class CabinetWorkflowActionTestCase(CabinetTestMixin, ActionTestCase):
 
 
 class CabinetWorkflowActionViewTestCase(
-    CabinetTestMixin, WorkflowTestMixin, DocumentTestMixin,
-    GenericViewTestCase
+    CabinetTestMixin, WorkflowTestMixin, GenericViewTestCase
 ):
-    auto_upload_document = False
-
     def test_cabinet_add_action_create_get_view(self):
         self._create_test_workflow()
         self._create_test_workflow_state()
