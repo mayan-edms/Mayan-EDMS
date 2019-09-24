@@ -46,7 +46,7 @@ class DocumentOCRContentDeleteView(MultipleObjectConfirmActionView):
         return result
 
     def object_action(self, form, instance):
-        DocumentPageOCRContent.objects.delete_ocr_content_for(
+        DocumentPageOCRContent.objects.delete_content_for(
             document=instance, user=self.request.user
         )
 

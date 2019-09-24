@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 
 class DocumentPageOCRContentManager(models.Manager):
-    def delete_ocr_content_for(self, document, user=None):
+    def delete_content_for(self, document, user=None):
         with transaction.atomic():
             for document_page in document.pages.all():
                 self.filter(document_page=document_page).delete()

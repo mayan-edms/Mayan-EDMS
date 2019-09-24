@@ -56,12 +56,6 @@ class OCRViewTestMixin(object):
             }
         )
 
-    def _request_document_type_ocr_settings_view(self):
-        return self.get(
-            viewname='ocr:document_type_ocr_settings',
-            kwargs={'pk': self.test_document.document_type.pk}
-        )
-
 
 class OCRViewsTestCase(OCRViewTestMixin, GenericDocumentViewTestCase):
     # PyOCR's leak descriptor in get_available_languages and image_to_string
@@ -194,13 +188,27 @@ class OCRViewsTestCase(OCRViewTestMixin, GenericDocumentViewTestCase):
             ),
         )
 
+
+class DocumentTypeOCRViewTestMixin(object):
+    def _request_document_type_ocr_settings_view(self):
+        return self.get(
+            viewname='ocr:document_type_ocr_settings',
+            kwargs={'pk': self.test_document_type.pk}
+        )
+
+
+class DocumentTypeOCRViewsTestCase(
+    DocumentTypeOCRViewTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_document = False
+
     def test_document_type_ocr_settings_view_no_permission(self):
         response = self._request_document_type_ocr_settings_view()
         self.assertEqual(response.status_code, 404)
 
     def test_document_type_ocr_settings_view_with_access(self):
         self.grant_access(
-            obj=self.test_document.document_type,
+            obj=self.test_document_type,
             permission=permission_document_type_ocr_setup
         )
 

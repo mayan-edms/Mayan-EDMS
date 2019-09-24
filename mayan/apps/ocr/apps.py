@@ -157,8 +157,9 @@ class OCRApp(MayanAppConfig):
                 link_document_ocr_download, link_document_submit
             ),
             sources=(
-                'ocr:document_submit', 'ocr:document_ocr_content',
-                'ocr:document_ocr_download', 'ocr:document_ocr_error_list'
+                'ocr:document_ocr_content_delete',
+                'ocr:document_ocr_content', 'ocr:document_ocr_download',
+                'ocr:document_ocr_error_list', 'ocr:document_submit',
             )
         )
         menu_secondary.bind_links(
