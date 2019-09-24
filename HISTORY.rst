@@ -8,6 +8,9 @@
 * Add support for deleting the OCR content of a document
   or selection of documents.
 * Add OCR content deleted event.
+* Add missing recursive option to Docker entrypoint
+  chown. GitLab issue #668. Thanks to John Wice (@brilthor)
+  for the report.
 
 3.2.7 (2019-08-28)
 ==================

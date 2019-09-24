@@ -23,6 +23,10 @@ Other changes
 - Update jQuery to version 3.4.1
 - Add support for deleting the OCR content of a document
   or selection of documents.
+- Add OCR content deleted event.
+- Add missing recursive option to Docker entrypoint
+  chown. GitLab issue #668. Thanks to John Wice (@brilthor) 
+  for the report.
 
 Removals
 --------
@@ -115,7 +119,7 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
-- :gitlab-issue:`643` The "Actions" button won't show up, if window size between 992 and 1248 px
+- :gitlab-issue:`668` Permission denied errors with custom uid persist (650 needs re-open)
 - :forum-topic:`1120` Cabinet Presentation
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
