@@ -14,9 +14,14 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.documents.search import document_search, document_page_search
 from mayan.apps.documents.signals import post_version_upload
+from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
 from .dependencies import *  # NOQA
+from .events import (
+    event_ocr_document_content_deleted, event_ocr_document_version_finish,
+    event_ocr_document_version_submit
+)
 from .handlers import (
     handler_index_document, handler_initialize_new_ocr_settings,
     handler_ocr_document_version,
@@ -81,6 +86,14 @@ class OCRApp(MayanAppConfig):
         )
         DocumentVersion.add_to_class(
             name='submit_for_ocr', value=method_document_version_ocr_submit
+        )
+
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_ocr_document_content_deleted,
+                event_ocr_document_version_finish,
+                event_ocr_document_version_submit
+            )
         )
 
         ModelField(

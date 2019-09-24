@@ -7,6 +7,7 @@
 * Update jQuery to version 3.4.1
 * Add support for deleting the OCR content of a document
   or selection of documents.
+* Add OCR content deleted event.
 
 3.2.7 (2019-08-28)
 ==================
