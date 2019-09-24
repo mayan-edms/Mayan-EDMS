@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-22 20:39-0400\n"
-"PO-Revision-Date: 2019-05-17 06:35+0000\n"
+"POT-Creation-Date: 2019-09-24 00:40-0400\n"
+"PO-Revision-Date: 2019-09-24 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -20,16 +20,16 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:50 apps.py:117 apps.py:121 events.py:7 links.py:15 links.py:21
+#: apps.py:56 apps.py:131 apps.py:135 events.py:7 links.py:15 links.py:21
 #: permissions.py:7 queues.py:8 settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:109
+#: apps.py:123
 msgid "Date and time"
 msgstr "Fecha y hora"
 
-#: apps.py:112 models.py:76
+#: apps.py:126 models.py:76
 msgid "Result"
 msgstr "Resultado"
 
@@ -48,10 +48,14 @@ msgid ""
 msgstr "PyOCR es una librería de Python que simplifica el uso de herramientas OCR como Tesseract o Cuneiform."
 
 #: events.py:10
+msgid "Document OCR content deleted"
+msgstr ""
+
+#: events.py:14
 msgid "Document version submitted for OCR"
 msgstr "Versión de documento enviada para OCR"
 
-#: events.py:14
+#: events.py:18
 msgid "Document version OCR finished"
 msgstr "OCR de versión del documento terminado"
 
@@ -65,22 +69,26 @@ msgid "Page %(page_number)d"
 msgstr "Página %(page_number)d"
 
 #: links.py:27 links.py:32
+msgid "Delete OCR content"
+msgstr ""
+
+#: links.py:38 links.py:43
 msgid "Submit for OCR"
 msgstr "Enviar para OCR"
 
-#: links.py:37
+#: links.py:48
 msgid "Setup OCR"
 msgstr "Configurar OCR"
 
-#: links.py:42
+#: links.py:53
 msgid "OCR documents per type"
 msgstr "Realizar OCR por tipo de documento"
 
-#: links.py:47 links.py:53 views.py:157
+#: links.py:58 links.py:64 views.py:185
 msgid "OCR errors"
 msgstr "Errores de OCR"
 
-#: links.py:59
+#: links.py:70
 msgid "Download OCR text"
 msgstr "Descargar texto OCR"
 
@@ -160,37 +168,43 @@ msgstr "Ruta completa a la aplicación que se usará para OCR."
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Realizar OCR a nuevo tipos de documentos por defecto."
 
-#: views.py:43
+#: views.py:37
+msgid "Delete the OCR content of the selected document?"
+msgid_plural "Delete the OCR content of the selected documents?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:71
 #, python-format
 msgid "OCR result for document: %s"
 msgstr "Resultados del OCR para documento: %s"
 
-#: views.py:65
+#: views.py:93
 #, python-format
 msgid "OCR result for document page: %s"
 msgstr "Resultado de OCR para la página del documento: %s"
 
-#: views.py:80
+#: views.py:108
 msgid "Submit the selected document to the OCR queue?"
 msgid_plural "Submit the selected documents to the OCR queue?"
 msgstr[0] "¿Presentar el documento seleccionado en la cola de OCR?"
 msgstr[1] "¿Envía los documentos seleccionados a la cola de OCR?"
 
-#: views.py:97
+#: views.py:125
 msgid "Submit all documents of a type for OCR"
 msgstr "Enviar todos los documentos de un tipo para OCR"
 
-#: views.py:111
+#: views.py:139
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr "%(count)d documentos agregados a la lista de OCR."
 
-#: views.py:146
+#: views.py:174
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr "Editar la configuración de OCR para el tipo de documento: %s."
 
-#: views.py:175
+#: views.py:203
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr "Errores OCR para documento: %s"

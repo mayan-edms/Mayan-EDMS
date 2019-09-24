@@ -6,15 +6,16 @@
 # Translators:
 # Roberto Rosario, 2017
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-22 20:35-0400\n"
+"POT-Creation-Date: 2019-09-24 00:36-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2019\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,14 +25,15 @@ msgstr ""
 
 #: apps.py:50 apps.py:111 apps.py:119 apps.py:122 events.py:7 forms.py:16
 #: links.py:24 menus.py:16 models.py:47 permissions.py:7 views.py:163
+#: workflow_actions.py:22
 msgid "Cabinets"
 msgstr "Szafki"
 
-#: links.py:30 links.py:44
+#: links.py:30 links.py:44 workflow_actions.py:76
 msgid "Remove from cabinets"
 msgstr "Usuń z szafek"
 
-#: links.py:35 links.py:40
+#: links.py:35 links.py:40 workflow_actions.py:31
 msgid "Add to cabinets"
 msgstr "Dodaj do szafek"
 
@@ -67,7 +69,7 @@ msgstr "Etykieta"
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: models.py:46 models.py:135 serializers.py:138
+#: models.py:46 models.py:135 serializers.py:138 workflow_actions.py:68
 msgid "Cabinet"
 msgstr "Szafka"
 
@@ -122,12 +124,14 @@ msgstr "Liczba dokumentów na tym poziomie w szafce."
 
 #: serializers.py:26
 msgid "The name of this cabinet level appended to the names of its ancestors."
-msgstr ""
+msgstr "Nazwa tego poziomu szafy dołączona do nazw jego przodków."
 
 #: serializers.py:32
 msgid ""
 "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
+"Adres URL punktu końcowego interfejsu API pokazujący listę dokumentów w tej "
+"szafce."
 
 #: serializers.py:68 serializers.py:179
 msgid "Comma separated list of document primary keys to add to this cabinet."
@@ -140,6 +144,9 @@ msgid ""
 "API URL pointing to a document in relation to the cabinet storing it. This "
 "URL is different than the canonical document URL."
 msgstr ""
+"Adres URL interfejsu API wskazujący na dokument w stosunku do szafy, w "
+"której jest przechowywany. Ten adres URL jest inny niż kanoniczny adres URL "
+"dokumentu."
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
@@ -160,10 +167,12 @@ msgid ""
 "Cabinet levels can contain documents or other cabinet sub levels. To add "
 "documents to a cabinet, select the cabinet view of a document view."
 msgstr ""
+"Poziomy szafek mogą zawierać dokumenty lub inne podrzędne poziomy szafek. "
+"Aby dodać dokumenty do szafki, wybierz widok szafki widoku dokumentu."
 
 #: views.py:126
 msgid "This cabinet level is empty"
-msgstr ""
+msgstr "Ten poziom szafki jest pusty"
 
 #: views.py:129
 #, python-format
@@ -180,18 +189,20 @@ msgid ""
 "Cabinets are a multi-level method to organize documents. Each cabinet can "
 "contain documents as well as other sub level cabinets."
 msgstr ""
+"Szafy to wielopoziomowa metoda organizowania dokumentów. Każda szafka może "
+"zawierać dokumenty, a także inne szafki niższego poziomu."
 
 #: views.py:173
 msgid "No cabinets available"
-msgstr ""
+msgstr "Brak dostępnych szafek"
 
 #: views.py:205
 msgid "Documents can be added to many cabinets."
-msgstr ""
+msgstr "Dokumenty można dodawać do wielu szafek."
 
 #: views.py:208
 msgid "This document is not in any cabinet"
-msgstr ""
+msgstr "Ten dokument nie znajduje się w żadnej szafce"
 
 #: views.py:211
 #, python-format
@@ -201,12 +212,12 @@ msgstr "Szafki zawierające dokument: %s"
 #: views.py:223
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document"
-msgstr ""
+msgstr "Żądanie dodania do szafki wykonano na ilości dokumentów: %(count)d "
 
 #: views.py:226
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents"
-msgstr ""
+msgstr "Żądanie dodania do szafki wykonano na ilości dokumentów: %(count)d"
 
 #: views.py:233
 msgid "Add"
@@ -234,12 +245,12 @@ msgstr "Dokument %(document)s dodano pomyślnie do szafki %(cabinet)s."
 #: views.py:313
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document"
-msgstr ""
+msgstr "Żądanie usunięcia z szafki wykonano na ilości dokumentów: %(count)d"
 
 #: views.py:316
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents"
-msgstr ""
+msgstr "Żądanie usunięcia z szafki wykonano na ilości dokumentów: %(count)d"
 
 #: views.py:323
 msgid "Remove"

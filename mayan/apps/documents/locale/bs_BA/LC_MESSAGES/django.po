@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-22 20:37-0400\n"
-"PO-Revision-Date: 2019-06-15 07:49+0000\n"
+"POT-Creation-Date: 2019-09-24 00:38-0400\n"
+"PO-Revision-Date: 2019-09-24 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -930,6 +930,10 @@ msgstr "Ukupne verzije dokumenata svakog meseca"
 msgid "Total document pages at each month"
 msgstr "Ukupne stranice dokumenta svakog meseca"
 
+#: templates/documents/document_print.html:12
+msgid "Document page image preview"
+msgstr ""
+
 #: templates/documents/forms/widgets/document_page_carousel.html:16
 #, python-format
 msgid ""
@@ -941,6 +945,10 @@ msgstr "\n                    Stranica %(page_number)s od %(
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
 msgstr "Nema stranica za prikazivanje"
+
+#: templates/documents/forms/widgets/document_page_image.html:13
+msgid "Document image"
+msgstr ""
 
 #: utils.py:18
 #, python-format
