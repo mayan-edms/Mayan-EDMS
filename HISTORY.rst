@@ -11,6 +11,9 @@
 * Add missing recursive option to Docker entrypoint
   chown. GitLab issue #668. Thanks to John Wice (@brilthor)
   for the report.
+* Add support for deleting the parsed content of a document
+  of selection of documents.
+* Add parsed content deleted event.
 
 3.2.7 (2019-08-28)
 ==================

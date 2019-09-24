@@ -8,6 +8,10 @@ namespace = EventTypeNamespace(
     label=_('Document parsing'), name='document_parsing'
 )
 
+event_parsing_document_content_deleted = namespace.add_event_type(
+    label=_('Document parsed content deleted'),
+    name='document_content_deleted'
+)
 event_parsing_document_version_submit = namespace.add_event_type(
     label=_('Document version submitted for parsing'), name='version_submit'
 )
