@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
-from mayan.apps.document_states.tests.test_actions import ActionTestCase
+from mayan.apps.document_states.tests.test_workflow_actions import ActionTestCase
 
 from ..models import Tag
 from ..workflow_actions import AttachTagAction, RemoveTagAction
