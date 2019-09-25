@@ -14,7 +14,7 @@ from ..models import DocumentPageOCRContent
 class OCREventsTestCase(GenericDocumentTestCase):
     def test_document_content_deleted_event(self):
         Action.objects.all().delete()
-        DocumentPageOCRContent.objects.delete_ocr_content_for(
+        DocumentPageOCRContent.objects.delete_content_for(
             document=self.test_document
         )
 
