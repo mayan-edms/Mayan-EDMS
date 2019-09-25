@@ -18,6 +18,8 @@ and reduced padding. Thanks for forum user @briboe for the report.
 Other changes
 ^^^^^^^^^^^^^
 
+- Fix error when accessing some API entry points without
+  being authenticated.
 - Add cabinet add and remove workflow actions.
 - Update Django to version 1.11.24.
 - Update jQuery to version 3.4.1
@@ -25,11 +27,12 @@ Other changes
   or selection of documents.
 - Add OCR content deleted event.
 - Add missing recursive option to Docker entrypoint
-  chown. GitLab issue #668. Thanks to John Wice (@brilthor) 
+  chown. GitLab issue #668. Thanks to John Wice (@brilthor)
   for the report.
 - Add support for deleting the parsed content of a document
   of selection of documents.
 - Add parsed content deleted event.
+- Allow scaling of UI on mobile devices.
 
 
 Removals

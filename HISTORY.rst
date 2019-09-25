@@ -1,8 +1,10 @@
 3.2.8 (2019-XX-XX)
 ==================
+* Fix error when accessing some API entry points without
+  being authenticated.
 * Add cabinet add and remove workflow actions.
 * Tweaked the jstree component's appearance to cope with
-  long labels.
+  long cabinet labels.
 * Update Django to version 1.11.24
 * Update jQuery to version 3.4.1
 * Add support for deleting the OCR content of a document
@@ -14,6 +16,7 @@
 * Add support for deleting the parsed content of a document
   of selection of documents.
 * Add parsed content deleted event.
+* Allow scaling of UI on mobile devices.
 
 3.2.7 (2019-08-28)
 ==================
