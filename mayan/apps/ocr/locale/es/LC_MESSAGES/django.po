@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 00:40-0400\n"
-"PO-Revision-Date: 2019-09-24 04:46+0000\n"
+"POT-Creation-Date: 2019-09-24 23:18-0400\n"
+"PO-Revision-Date: 2019-09-24 21:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgstr "PyOCR es una librería de Python que simplifica el uso de herramientas O
 
 #: events.py:10
 msgid "Document OCR content deleted"
-msgstr ""
+msgstr "Contenido OCR del documento eliminado"
 
 #: events.py:14
 msgid "Document version submitted for OCR"
@@ -70,7 +70,7 @@ msgstr "Página %(page_number)d"
 
 #: links.py:27 links.py:32
 msgid "Delete OCR content"
-msgstr ""
+msgstr "Eliminar contenido OCR"
 
 #: links.py:38 links.py:43
 msgid "Submit for OCR"
@@ -171,8 +171,8 @@ msgstr "Realizar OCR a nuevo tipos de documentos por defecto."
 #: views.py:37
 msgid "Delete the OCR content of the selected document?"
 msgid_plural "Delete the OCR content of the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "¿Eliminar el contenido de OCR del documento seleccionado?"
+msgstr[1] "¿Eliminar el contenido de OCR de los documentos seleccionados?"
 
 #: views.py:71
 #, python-format

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 00:37-0400\n"
+"POT-Creation-Date: 2019-09-24 23:10-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2018\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -23,15 +23,15 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:50 events.py:8 permissions.py:8 settings.py:7
+#: apps.py:57 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr ""
 
-#: apps.py:116 models.py:78
+#: apps.py:131 models.py:78
 msgid "Result"
 msgstr "Wynik"
 
-#: apps.py:121 apps.py:125 links.py:16 links.py:22 models.py:27
+#: apps.py:136 apps.py:140 links.py:16 links.py:33 models.py:27
 msgid "Content"
 msgstr "Zawartość"
 
@@ -41,10 +41,14 @@ msgid ""
 msgstr ""
 
 #: events.py:12
+msgid "Document parsed content deleted"
+msgstr ""
+
+#: events.py:16
 msgid "Document version submitted for parsing"
 msgstr ""
 
-#: events.py:15
+#: events.py:19
 msgid "Document version parsing finished"
 msgstr ""
 
@@ -57,23 +61,27 @@ msgstr ""
 msgid "Contents"
 msgstr "Zawartość"
 
-#: links.py:28 links.py:66 views.py:197
+#: links.py:22 links.py:27
+msgid "Delete parsed content"
+msgstr ""
+
+#: links.py:39 links.py:77 views.py:225
 msgid "Parsing errors"
 msgstr ""
 
-#: links.py:34
+#: links.py:45
 msgid "Download content"
 msgstr ""
 
-#: links.py:39 links.py:46
+#: links.py:50 links.py:57
 msgid "Submit for parsing"
 msgstr ""
 
-#: links.py:52
+#: links.py:63
 msgid "Setup parsing"
 msgstr ""
 
-#: links.py:61
+#: links.py:72
 msgid "Parse documents per type"
 msgstr ""
 
@@ -165,32 +173,40 @@ msgid ""
 "files."
 msgstr ""
 
-#: views.py:43
+#: views.py:37
+msgid "Delete the parsed content of the selected document?"
+msgid_plural "Delete the parsed content of the selected documents?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: views.py:71
 #, python-format
 msgid "Content for document: %s"
 msgstr ""
 
-#: views.py:78
+#: views.py:106
 #, python-format
 msgid "Content for document page: %s"
 msgstr ""
 
-#: views.py:93
+#: views.py:121
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr ""
 
-#: views.py:105
+#: views.py:133
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr ""
 
-#: views.py:108
+#: views.py:136
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr ""
 
-#: views.py:116
+#: views.py:144
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
@@ -199,21 +215,21 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: views.py:129
+#: views.py:157
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr ""
 
-#: views.py:154
+#: views.py:182
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr ""
 
-#: views.py:164
+#: views.py:192
 msgid "Submit all documents of a type for parsing."
 msgstr ""
 
-#: views.py:185
+#: views.py:213
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr ""
