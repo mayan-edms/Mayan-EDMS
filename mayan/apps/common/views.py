@@ -276,3 +276,8 @@ def multi_object_action_view(request):
                 action, urlencode({'id_list': id_list, 'next': next})
             )
         )
+
+
+class QUnitView(SimpleView):
+    extra_context = {'title': _('QUnit tests')}
+    template_name = 'common/qunit.html'

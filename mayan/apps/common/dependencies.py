@@ -4,7 +4,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.dependencies.classes import (
     environment_build, environment_development, environment_testing,
-    PythonDependency
+    JavaScriptDependency, PythonDependency
+)
+
+JavaScriptDependency(
+    environment=environment_testing, label=_('QUnit'), module=__name__,
+    name='qunit', version_string='=2.9.2'
 )
 
 PythonDependency(

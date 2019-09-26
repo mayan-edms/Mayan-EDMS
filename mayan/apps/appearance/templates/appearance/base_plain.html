@@ -38,6 +38,7 @@
         <script src="{% static 'appearance/node_modules/jquery/dist/jquery.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'appearance/node_modules/bootstrap/dist/js/bootstrap.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'appearance/node_modules/@fortawesome/fontawesome-free/js/all.min.js' %}" data-auto-replace-svg="nest" type="text/javascript"></script>
+        {% block javascript %}{% endblock %}
     </body>
 </html>
 {% endspaceless %}

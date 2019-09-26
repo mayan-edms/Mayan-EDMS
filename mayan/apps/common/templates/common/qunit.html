@@ -1,0 +1,22 @@
+{% extends 'appearance/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% block base_title %}{% trans 'Qunit' %}{% endblock %}
+
+{% block project_name %}{% endblock %}
+
+{% block stylesheets %}
+    <link href="{% static 'common/node_modules/qunit/qunit/qunit.css' %}" media="screen" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'common/node_modules/qunit/qunit/qunit.js' %}" type="text/javascript"></script>
+    <script src="{% static 'appearance/js/test/unit/partial_navigation.js' %}" type="text/javascript"></script>
+{% endblock %}

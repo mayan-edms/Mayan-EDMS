@@ -10,7 +10,8 @@ from .views import (
     AboutView, CurrentUserLocaleProfileDetailsView,
     CurrentUserLocaleProfileEditView, FaviconRedirectView, HomeView,
     LicenseView, ObjectErrorLogEntryListClearView, ObjectErrorLogEntryListView,
-    RootView, SetupListView, ToolsListView, multi_object_action_view
+    RootView, SetupListView, ToolsListView, QUnitView,
+    multi_object_action_view
 )
 
 urlpatterns = [
@@ -43,6 +44,9 @@ urlpatterns = [
         view=ObjectErrorLogEntryListClearView.as_view(),
         name='object_error_list_clear'
     ),
+    url(
+        regex=r'^qunit/', view=QUnitView.as_view(), name='qunit'
+    )
 ]
 
 urlpatterns += [
