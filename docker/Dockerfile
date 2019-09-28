@@ -23,6 +23,8 @@ RUN set -x \
 apt-get update \
 && apt-get install -y --no-install-recommends \
     exiftool \
+    fonts-arphic-uming \
+    fonts-arphic-ukai \
     ghostscript \
     gpgv \
     gnupg1 \
@@ -59,7 +61,6 @@ apt-get update \
 echo "save \"\"" >> /etc/redis/redis.conf \
 # Only provision 1 database
 && echo "databases 1" >> /etc/redis/redis.conf
-
 
 ####
 # BUILDER_IMAGE - This image buildS the Python package and is discarded afterwards
