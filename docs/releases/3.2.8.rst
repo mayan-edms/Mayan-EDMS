@@ -33,6 +33,7 @@ Other changes
   of selection of documents.
 - Add parsed content deleted event.
 - Allow scaling of UI on mobile devices.
+- Add Chinese fonts to the Docker image
 
 
 Removals
@@ -126,7 +127,9 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
+- :gitlab-issue:`666` Chinese document such as .doc can't display well.
 - :gitlab-issue:`668` Permission denied errors with custom uid persist (650 needs re-open)
 - :forum-topic:`1120` Cabinet Presentation
+- :forum-topic:`2202` Cannot display Chinese character and cannot identify Excel files
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

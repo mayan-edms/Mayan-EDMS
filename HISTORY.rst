@@ -17,6 +17,7 @@
   of selection of documents.
 - Add parsed content deleted event.
 - Allow scaling of UI on mobile devices.
+- Add Chinese fonts to the Docker image
 
 3.2.7 (2019-08-28)
 ==================
