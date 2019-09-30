@@ -20,7 +20,7 @@ class TagActionTestCase(TagTestMixin, ActionTestCase):
         action.execute(context={'document': self.test_document})
 
         self.assertEqual(self.test_tag.documents.count(), 1)
-        self.assertEqual(self.test_document in self.test_tag.documents.all())
+        self.assertTrue(self.test_document in self.test_tag.documents.all())
 
     def test_tag_remove_action(self):
         self.test_tag.attach_to(document=self.test_document)
