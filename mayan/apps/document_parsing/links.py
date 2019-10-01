@@ -16,6 +16,17 @@ link_document_content = Link(
     permissions=(permission_content_view,), text=_('Content'),
     view='document_parsing:document_content'
 )
+link_document_content_delete = Link(
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.document_parsing.icons.icon_document_content_delete',
+    permissions=(permission_parse_document,), text=_('Delete parsed content'),
+    view='document_parsing:document_content_delete',
+)
+link_document_content_delete_multiple = Link(
+    icon_class_path='mayan.apps.document_parsing.icons.icon_document_content_delete',
+    text=_('Delete parsed content'),
+    view='document_parsing:document_content_delete_multiple',
+)
 link_document_page_content = Link(
     args='resolved_object.id',
     icon_class_path='mayan.apps.document_parsing.icons.icon_document_content',

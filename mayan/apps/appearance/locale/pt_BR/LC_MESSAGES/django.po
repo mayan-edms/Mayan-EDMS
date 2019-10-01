@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:27-0400\n"
-"PO-Revision-Date: 2019-07-05 05:33+0000\n"
+"POT-Creation-Date: 2019-09-24 23:06-0400\n"
+"PO-Revision-Date: 2019-09-04 03:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -155,11 +155,26 @@ msgstr "\nSe você utiliza %(project_title)s, por favor, <a class=\"new_window\"
 #, python-format
 msgid ""
 "\n"
+"                You can also <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">donate directly to the creator and lead developer.  %(icon_social_paypal)s</a>\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:127
+msgid ""
+"\n"
+"                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>. <br>The book is available on pre-release format at a discounted price for a limited time.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:133
+#, python-format
+msgid ""
+"\n"
 "                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr "\nA lista de mudanças está disponível de maneira detalhada nas <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Notas de Lançamento %(icon_documentation)s</a> ou,  em versão mais curta, <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">no Registro de Mudanças%(icon_documentation)s</a>."
 
-#: templates/appearance/about.html:127
+#: templates/appearance/about.html:139
 #, python-format
 msgid ""
 "\n"
@@ -167,7 +182,7 @@ msgid ""
 "            "
 msgstr "\nCaso tenha dúvidas consulte a <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentação%(icon_documentation)s</a> ou a <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki%(icon_wiki)s</a>."
 
-#: templates/appearance/about.html:133
+#: templates/appearance/about.html:145
 #, python-format
 msgid ""
 "\n"
@@ -175,7 +190,7 @@ msgid ""
 "            "
 msgstr "\nSe você encontrar algum erro ou tiver ideias para novos recursos, visite o <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Fórum%(icon_forum)s</a> ou abra um chamado no <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Repositório de Código Fonte%(icon_source_code)s</a>."
 
-#: templates/appearance/about.html:138
+#: templates/appearance/about.html:150
 #, python-format
 msgid ""
 "\n"
@@ -184,22 +199,22 @@ msgid ""
 "            "
 msgstr "\n\nEspalhe a palavra! Fale com seus amigos e colegas sobre como o %(project_title)s é incrível!\nSiga-nos no <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, ou <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram%(icon_social_instagram)s</a>"
 
-#: templates/appearance/base.html:32 templates/appearance/base.html:42
+#: templates/appearance/base.html:36 templates/appearance/base.html:46
 msgid "Warning"
 msgstr "Advertência"
 
-#: templates/appearance/base.html:42
+#: templates/appearance/base.html:46
 msgid ""
 "Settings updated, restart your installation for changes to take proper "
 "effect."
 msgstr ""
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:60
 #: templates/appearance/generic_list_items_subtemplate.html:104
 msgid "Actions"
 msgstr "Ações"
 
-#: templates/appearance/base.html:61
+#: templates/appearance/base.html:62
 #: templates/appearance/generic_list_items_subtemplate.html:106
 msgid "Toggle Dropdown"
 msgstr "Mostrar/esconder menu"

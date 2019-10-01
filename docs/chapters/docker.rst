@@ -233,6 +233,12 @@ and will exhaust the available Postgres connections available if a number
 other than 0 is used. Reference: https://serverfault.com/questions/635100/django-conn-max-age-persists-connections-but-doesnt-reuse-them-with-postgresq
 and https://github.com/benoitc/gunicorn/issues/996
 
+``MAYAN_GUNICORN_TIMEOUT``
+
+Optional. Changes the amount of time the frontend worker will wait for a
+request to finish before raising a timeout error. The default is 120
+seconds.
+
 ``MAYAN_GUNICORN_WORKERS``
 
 Optional. This environment variable controls the number of frontend workers

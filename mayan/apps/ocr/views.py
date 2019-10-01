@@ -15,12 +15,40 @@ from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
 from mayan.apps.documents.models import Document, DocumentPage, DocumentType
 
 from .forms import DocumentPageOCRContentForm, DocumentOCRContentForm
-from .models import DocumentVersionOCRError
+from .models import DocumentPageOCRContent, DocumentVersionOCRError
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
     permission_document_type_ocr_setup
 )
 from .utils import get_document_ocr_content
+
+
+class DocumentOCRContentDeleteView(MultipleObjectConfirmActionView):
+    model = Document
+    object_permission = permission_ocr_document
+    success_message = 'Deleted OCR content of %(count)d document.'
+    success_message_plural = 'Deleted OCR content of %(count)d documents.'
+
+    def get_extra_context(self):
+        queryset = self.object_list
+
+        result = {
+            'title': ungettext(
+                singular='Delete the OCR content of the selected document?',
+                plural='Delete the OCR content of the selected documents?',
+                number=queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result['object'] = queryset.first()
+
+        return result
+
+    def object_action(self, form, instance):
+        DocumentPageOCRContent.objects.delete_content_for(
+            document=instance, user=self.request.user
+        )
 
 
 class DocumentOCRContentView(SingleObjectDetailView):

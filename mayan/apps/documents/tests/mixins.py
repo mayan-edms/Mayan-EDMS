@@ -24,6 +24,21 @@ class DocumentTestMixin(object):
     test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
     test_document_path = None
 
+    def setUp(self):
+        super(DocumentTestMixin, self).setUp()
+        self.test_documents = []
+
+        if self.auto_create_document_type:
+            self._create_document_type()
+
+            if self.auto_upload_document:
+                self.upload_document()
+
+    def tearDown(self):
+        for document_type in DocumentType.objects.all():
+            document_type.delete()
+        super(DocumentTestMixin, self).tearDown()
+
     def _create_document_type(self):
         self.test_document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
@@ -50,21 +65,6 @@ class DocumentTestMixin(object):
                 settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
                 'sample_documents', self.test_document_filename
             )
-
-    def setUp(self):
-        super(DocumentTestMixin, self).setUp()
-        self.test_documents = []
-
-        if self.auto_create_document_type:
-            self._create_document_type()
-
-            if self.auto_upload_document:
-                self.upload_document()
-
-    def tearDown(self):
-        for document_type in DocumentType.objects.all():
-            document_type.delete()
-        super(DocumentTestMixin, self).tearDown()
 
 
 class DocumentTypeViewTestMixin(object):

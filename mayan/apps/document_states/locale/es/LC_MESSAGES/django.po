@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:30-0400\n"
-"PO-Revision-Date: 2019-07-05 06:49+0000\n"
+"POT-Creation-Date: 2019-09-24 23:11-0400\n"
+"PO-Revision-Date: 2019-09-24 21:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -37,47 +37,47 @@ msgid ""
 "Return the completion value of the current state of the selected workflow"
 msgstr "Devolver el valor de finalización del estado actual del flujo de trabajo seleccionado"
 
-#: apps.py:167 apps.py:178 apps.py:188 apps.py:194
+#: apps.py:165 apps.py:176 apps.py:186 apps.py:192
 msgid "None"
 msgstr "Ninguno"
 
-#: apps.py:172
+#: apps.py:170
 msgid "Current state"
 msgstr "Estado actual"
 
-#: apps.py:176 apps.py:203 models.py:514
+#: apps.py:174 apps.py:201 models.py:514
 msgid "User"
 msgstr "Usuario"
 
-#: apps.py:182
+#: apps.py:180
 msgid "Last transition"
 msgstr "Última transición"
 
-#: apps.py:186 apps.py:199
+#: apps.py:184 apps.py:197
 msgid "Date and time"
 msgstr "Fecha y hora"
 
-#: apps.py:192 models.py:211
+#: apps.py:190 models.py:211
 msgid "Completion"
 msgstr "Cantidad de completación"
 
-#: apps.py:206 forms.py:178 links.py:161 models.py:369 models.py:510
+#: apps.py:204 forms.py:178 links.py:161 models.py:369 models.py:510
 msgid "Transition"
 msgstr "Transición"
 
-#: apps.py:210 forms.py:182 models.py:516
+#: apps.py:208 forms.py:182 models.py:516
 msgid "Comment"
 msgstr "Comentario"
 
-#: apps.py:233
+#: apps.py:231
 msgid "When?"
 msgstr "¿Cuando?"
 
-#: apps.py:237
+#: apps.py:235
 msgid "Action type"
 msgstr "Tipo de acción"
 
-#: apps.py:253
+#: apps.py:251
 msgid "Triggers"
 msgstr "Disparadores"
 
@@ -679,6 +679,10 @@ msgstr "Lanzamiento de flujos de trabajo sometido con éxito."
 #, python-format
 msgid "Preview of: %s"
 msgstr "Vista previa de: %s"
+
+#: widgets.py:21
+msgid "Workflow preview"
+msgstr "Vista previa del flujo de trabajo"
 
 #: workflow_actions.py:22
 msgid "Document label"

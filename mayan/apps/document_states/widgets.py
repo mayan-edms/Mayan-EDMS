@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django import forms
 from django.urls import reverse
 from django.utils.html import format_html_join, mark_safe
+from django.utils.translation import ugettext_lazy as _
 
 
 def widget_transition_events(transition):
@@ -17,8 +18,8 @@ def widget_transition_events(transition):
 
 def widget_workflow_diagram(workflow):
     return mark_safe(
-        '<img class="img-responsive" src="{}" style="margin:auto;">'.format(
-            reverse(
+        '<img alt="{}" class="img-responsive" src="{}" style="margin:auto;">'.format(
+            _('Workflow preview'), reverse(
                 viewname='document_states:workflow_image', kwargs={
                     'pk': workflow.pk
                 }

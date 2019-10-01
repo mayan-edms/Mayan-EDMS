@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Marcin Lozynski <mlozynski@wp.pl>, 2019
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:31-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-09-24 23:14-0400\n"
+"PO-Revision-Date: 2019-08-30 22:12+0000\n"
+"Last-Translator: Marcin Lozynski <mlozynski@wp.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +32,7 @@ msgstr "Harmonogram"
 
 #: apps.py:37
 msgid "Last update"
-msgstr ""
+msgstr "Ostatnia aktualizacja"
 
 #: classes.py:150
 msgid "Never"
@@ -85,12 +86,12 @@ msgstr "Wykonaj statystykę"
 
 #: templates/statistics/renderers/chartjs/line.html:14
 msgid "No data available."
-msgstr ""
+msgstr "Brak danych"
 
 #: templates/statistics/renderers/chartjs/line.html:16
 #, python-format
 msgid "Last update: %(datetime)s"
-msgstr ""
+msgstr "Ostatnia aktualizacja: %(datetime)s"
 
 #: views.py:17
 msgid "Statistics namespaces"

@@ -2,35 +2,33 @@ from __future__ import unicode_literals
 
 from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
-from mayan.apps.document_states.tests.test_actions import ActionTestCase
+from mayan.apps.document_states.tests.test_workflow_actions import ActionTestCase
 
 from ..models import Tag
 from ..workflow_actions import AttachTagAction, RemoveTagAction
 
-from .literals import TEST_TAG_COLOR, TEST_TAG_LABEL
+from .mixins import TagTestMixin
 
 
-class TagActionTestCase(ActionTestCase):
+class TagActionTestCase(TagTestMixin, ActionTestCase):
     def setUp(self):
         super(TagActionTestCase, self).setUp()
-        self.tag = Tag.objects.create(
-            color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
-        )
+        self._create_test_tag()
 
     def test_tag_attach_action(self):
         action = AttachTagAction(form_data={'tags': Tag.objects.all()})
         action.execute(context={'document': self.test_document})
 
-        self.assertEqual(self.tag.documents.count(), 1)
-        self.assertEqual(list(self.tag.documents.all()), [self.test_document])
+        self.assertEqual(self.test_tag.documents.count(), 1)
+        self.assertTrue(self.test_document in self.test_tag.documents.all())
 
     def test_tag_remove_action(self):
-        self.tag.attach_to(document=self.test_document)
+        self.test_tag.attach_to(document=self.test_document)
 
         action = RemoveTagAction(form_data={'tags': Tag.objects.all()})
         action.execute(context={'document': self.test_document})
 
-        self.assertEqual(self.tag.documents.count(), 0)
+        self.assertEqual(self.test_tag.documents.count(), 0)
 
 
 class TagActionViewTestCase(WorkflowTestMixin, GenericViewTestCase):

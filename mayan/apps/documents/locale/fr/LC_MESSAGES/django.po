@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:30-0400\n"
-"PO-Revision-Date: 2019-08-22 13:59+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
+"POT-Creation-Date: 2019-09-24 23:11-0400\n"
+"PO-Revision-Date: 2019-09-24 04:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -933,6 +933,10 @@ msgstr "Nombre total de versions de documents chaque mois"
 msgid "Total document pages at each month"
 msgstr "Nombre total de pages de documents chaque mois"
 
+#: templates/documents/document_print.html:12
+msgid "Document page image preview"
+msgstr ""
+
 #: templates/documents/forms/widgets/document_page_carousel.html:16
 #, python-format
 msgid ""
@@ -944,6 +948,10 @@ msgstr "\n Page %(page_number)s de %(total_pages)s\n "
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
 msgstr "Aucune page à afficher"
+
+#: templates/documents/forms/widgets/document_page_image.html:13
+msgid "Document image"
+msgstr ""
 
 #: utils.py:18
 #, python-format

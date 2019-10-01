@@ -15,9 +15,7 @@ from .literals import TEST_COMMENT_TEXT, TEST_COMMENT_TEXT_EDITED
 from .mixins import DocumentCommentTestMixin
 
 
-class CommentAPITestCase(
-    DocumentCommentTestMixin, DocumentTestMixin, BaseAPITestCase
-):
+class CommentAPIViewTestMixin(object):
     def _request_test_comment_create_api_view(self):
         return self.post(
             viewname='rest_api:comment-list', kwargs={
@@ -27,6 +25,42 @@ class CommentAPITestCase(
             }
         )
 
+    def _request_test_comment_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:comment-detail', kwargs={
+                'document_pk': self.test_document.pk,
+                'comment_pk': self.test_document_comment.pk,
+            }
+        )
+
+    def _request_test_comment_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:comment-detail', kwargs={
+                'document_pk': self.test_document.pk,
+                'comment_pk': self.test_document_comment.pk
+            }
+        )
+
+    def _request_test_comment_edit_patch_api_view(self):
+        return self.patch(
+            viewname='rest_api:comment-detail', kwargs={
+                'document_pk': self.test_document.pk,
+                'comment_pk': self.test_document_comment.pk,
+            }, data={'comment': TEST_COMMENT_TEXT_EDITED}
+        )
+
+    def _request_test_comment_list_api_view(self):
+        return self.get(
+            viewname='rest_api:comment-list', kwargs={
+                'document_pk': self.test_document.pk
+            }
+        )
+
+
+class CommentAPIViewTestCase(
+    CommentAPIViewTestMixin, DocumentCommentTestMixin, DocumentTestMixin,
+    BaseAPITestCase
+):
     def test_comment_create_view_no_access(self):
         response = self._request_test_comment_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -44,14 +78,6 @@ class CommentAPITestCase(
         comment = Comment.objects.first()
         self.assertEqual(Comment.objects.count(), 1)
         self.assertEqual(response.data['id'], comment.pk)
-
-    def _request_test_comment_delete_api_view(self):
-        return self.delete(
-            viewname='rest_api:comment-detail', kwargs={
-                'document_pk': self.test_document.pk,
-                'comment_pk': self.test_document_comment.pk,
-            }
-        )
 
     def test_comment_delete_view_no_access(self):
         self._create_test_comment()
@@ -72,19 +98,11 @@ class CommentAPITestCase(
 
         self.assertFalse(self.test_document_comment in Comment.objects.all())
 
-    def _request_comment_edit_patch_api_view(self):
-        return self.patch(
-            viewname='rest_api:comment-detail', kwargs={
-                'document_pk': self.test_document.pk,
-                'comment_pk': self.test_document_comment.pk,
-            }, data={'comment': TEST_COMMENT_TEXT_EDITED}
-        )
-
     def test_comment_edit_view_no_access(self):
         self._create_test_comment()
         comment_text = self.test_document_comment.comment
 
-        response = self._request_comment_edit_patch_api_view()
+        response = self._request_test_comment_edit_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.test_document_comment.refresh_from_db()
@@ -97,24 +115,16 @@ class CommentAPITestCase(
         )
         comment_text = self.test_document_comment.comment
 
-        response = self._request_comment_edit_patch_api_view()
+        response = self._request_test_comment_edit_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_document_comment.refresh_from_db()
         self.assertNotEqual(self.test_document_comment.comment, comment_text)
 
-    def _request_test_comment_api_view(self):
-        return self.get(
-            viewname='rest_api:comment-detail', kwargs={
-                'document_pk': self.test_document.pk,
-                'comment_pk': self.test_document_comment.pk
-            }
-        )
-
     def test_comment_detail_view_no_access(self):
         self._create_test_comment()
 
-        response = self._request_test_comment_api_view()
+        response = self._request_test_comment_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_comment_detail_view_with_access(self):
@@ -123,17 +133,10 @@ class CommentAPITestCase(
             obj=self.test_document, permission=permission_document_comment_view
         )
 
-        response = self._request_test_comment_api_view()
+        response = self._request_test_comment_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(response.data['comment'], self.test_document_comment.comment)
-
-    def _request_test_comment_list_api_view(self):
-        return self.get(
-            viewname='rest_api:comment-list', kwargs={
-                'document_pk': self.test_document.pk
-            }
-        )
 
     def test_comment_list_view_no_access(self):
         self._create_test_comment()

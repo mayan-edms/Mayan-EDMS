@@ -5,15 +5,16 @@
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2016
+# Marcin Lozynski <mlozynski@wp.pl>, 2019
 # mic <winterfall24@gmail.com>, 2012
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:34-0400\n"
-"PO-Revision-Date: 2019-06-29 06:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-09-24 23:22-0400\n"
+"PO-Revision-Date: 2019-08-30 21:25+0000\n"
+"Last-Translator: Marcin Lozynski <mlozynski@wp.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +28,7 @@ msgstr "Zarządzanie użytkownikami"
 
 #: apps.py:100 search.py:36
 msgid "Group"
-msgstr ""
+msgstr "Grupa"
 
 #: apps.py:101 links.py:41 links.py:52 links.py:75 search.py:26 views.py:120
 msgid "Groups"
@@ -63,7 +64,7 @@ msgstr "Email"
 
 #: apps.py:116
 msgid "Is active?"
-msgstr ""
+msgstr "Czy aktywny?"
 
 #: apps.py:119 apps.py:123
 msgid "Has usable password?"
@@ -79,35 +80,35 @@ msgstr "Wszyscy użytkownicy."
 
 #: dashboard_widgets.py:16
 msgid "Total users"
-msgstr ""
+msgstr "Razem użytkowników"
 
 #: dashboard_widgets.py:32
 msgid "Total groups"
-msgstr ""
+msgstr "Razem grup"
 
 #: events.py:12
 msgid "Group created"
-msgstr ""
+msgstr "Grupa utworzona"
 
 #: events.py:15
 msgid "Group edited"
-msgstr ""
+msgstr "Grupa edytowana"
 
 #: events.py:19
 msgid "User created"
-msgstr ""
+msgstr "Użytkownik utworzony"
 
 #: events.py:22
 msgid "User edited"
-msgstr ""
+msgstr "Użytkownik edytowany"
 
 #: events.py:25
 msgid "User logged in"
-msgstr ""
+msgstr "Użytkownik zalogowany"
 
 #: events.py:28
 msgid "User logged out"
-msgstr ""
+msgstr "Użytkownik wylogowany"
 
 #: links.py:16
 msgid "User details"
@@ -135,19 +136,19 @@ msgstr "Tworzenie nowego użytkownika"
 
 #: links.py:92
 msgid "User options"
-msgstr ""
+msgstr "Parametry użytkownika"
 
 #: models.py:22
 msgid "Forbid this user from changing their password."
-msgstr ""
+msgstr "Zabroń użytkownikowi zmiany hasła."
 
 #: models.py:28
 msgid "User settings"
-msgstr ""
+msgstr "Ustawienia użytkownika"
 
 #: models.py:29
 msgid "Users settings"
-msgstr ""
+msgstr "Ustawienia użytkowników"
 
 #: permissions.py:12
 msgid "Create new groups"
@@ -155,31 +156,31 @@ msgstr "Tworzyć nowe grupy"
 
 #: permissions.py:15
 msgid "Delete existing groups"
-msgstr "Usunąć istniejące grupy"
+msgstr "Usuń istniejące grupy"
 
 #: permissions.py:18
 msgid "Edit existing groups"
-msgstr "Edytować istniejące grupy"
+msgstr "Edytuj istniejące grupy"
 
 #: permissions.py:21
 msgid "View existing groups"
-msgstr "Zobacz istniejących grup"
+msgstr "Wyświetl istniejące grupy"
 
 #: permissions.py:24
 msgid "Create new users"
-msgstr "Tworzenie nowych użytkowników"
+msgstr "Utwórz nowych użytkowników"
 
 #: permissions.py:27
 msgid "Delete existing users"
-msgstr "Usuwanie istniejących użytkowników"
+msgstr "Usuń istniejących użytkowników"
 
 #: permissions.py:30
 msgid "Edit existing users"
-msgstr "Edycja istniejących użytkowników"
+msgstr "Edytuj istniejących użytkowników"
 
 #: permissions.py:33
 msgid "View existing users"
-msgstr "Zobacz istniejących użytkowników"
+msgstr "Wyświetl istniejących użytkowników"
 
 #: search.py:32
 msgid "username"
@@ -203,7 +204,7 @@ msgstr "Dane użytkownika"
 
 #: views.py:45
 msgid "Edit current user details"
-msgstr "Edycja danych użytkownika"
+msgstr "Edytuj dane użytkownika"
 
 #: views.py:78
 #, python-format
@@ -213,18 +214,18 @@ msgstr "Usunąć grupę: %s?"
 #: views.py:93
 #, python-format
 msgid "Edit group: %s"
-msgstr "Edycja grupy: %s"
+msgstr "Edytować grupę: %s"
 
 #: views.py:113
 msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr ""
+msgstr "Grupy użytkowników są elementem organizacyjnym. Nie muszą być kopią struktury Twojej organizacji. Potrzebne są do określenia praw dostępu. Użyj ról do nadawania uprawnień i kontroli dostępu, a grupy przypisz do nich."
 
 #: views.py:119
 msgid "There are no user groups"
-msgstr ""
+msgstr "Brak grup użytkowników"
 
 #: views.py:132
 msgid "Available users"
@@ -232,12 +233,12 @@ msgstr "Dostępni użytkownicy"
 
 #: views.py:133
 msgid "Group users"
-msgstr ""
+msgstr "Grupa użytkowników"
 
 #: views.py:141
 #, python-format
 msgid "Users of group: %s"
-msgstr ""
+msgstr "Użytkownicy przypisani do grupy: %s"
 
 #: views.py:173
 #, python-format
@@ -266,12 +267,12 @@ msgstr "Usuń użytkownika: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Super user oraz staff user usuwanie nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
+msgstr "Usuwanie nie jest dozwolone na kontach \"Super user\" i \"Staff user\", aby to zrobić użyj interfejsu Administratora"
 
 #: views.py:212
 #, python-format
 msgid "User \"%s\" deleted successfully."
-msgstr "Użytkownik \"%s\" został usunięta."
+msgstr "Użytkownik \"%s\" został usunięty."
 
 #: views.py:218
 #, python-format
@@ -281,7 +282,7 @@ msgstr "Błąd podczas usuwania użytkownika \" %(user)s \": %(error)s "
 #: views.py:236
 #, python-format
 msgid "Details of user: %s"
-msgstr ""
+msgstr "Szczegóły użytkownika: %s"
 
 #: views.py:251
 #, python-format
@@ -296,7 +297,7 @@ msgstr "Dostępne grupy"
 #. user.
 #: views.py:269
 msgid "User groups"
-msgstr ""
+msgstr "Grupy użytkowników"
 
 #: views.py:277
 #, python-format
@@ -307,13 +308,13 @@ msgstr "Grupy użytkownika: %s"
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
-msgstr ""
+msgstr "Tutaj możesz utworzyć konto użytkownika, następnie zostaniesz poproszony o uzupełnienie hasła dla utworzonego konta."
 
 #: views.py:301
 msgid "There are no user accounts"
-msgstr ""
+msgstr "Brak kont użytkowników"
 
 #: views.py:316
 #, python-format
 msgid "Edit options for user: %s"
-msgstr ""
+msgstr "Edytuj parametry dla użytkownika: %s"

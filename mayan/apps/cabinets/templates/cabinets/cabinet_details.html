@@ -13,9 +13,9 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2" style="margin-right: -25px;">{# Remove gutter #}
             <h4>{% trans 'Navigation:' %}</h4>
-            <div class="jstree"></div>
+            <div id="jstree"></div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
@@ -31,11 +31,11 @@
 {% block javascript %}
     <script>
         $.getScript( "{% static 'cabinets/node_modules/jstree/dist/jstree.min.js' %}" )
-            .done(function( script, textStatus ) {
-            $(function () {
-                var jstreeElement = $('.jstree');
+            .done(function(script, textStatus) {
+                $(function () {
+                    var jstreeElement = $('#jstree');
 
-                jstreeElement
+                    jstreeElement
                     .on('select_node.jstree', function (e, data) {
                         if(data.selected.length) {
                             partialNavigation.setLocation(data.instance.get_node(data.selected[0]).data.href);
