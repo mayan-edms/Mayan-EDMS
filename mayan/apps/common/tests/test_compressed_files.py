@@ -73,5 +73,3 @@ class TarGzArchiveClassTestCase(TarArchiveClassTestCase):
 class TarBz2ArchiveClassTestCase(TarArchiveClassTestCase):
     archive_path = TEST_TAR_BZ2_FILE_PATH
     cls = TarArchive
-
-

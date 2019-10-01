@@ -10,6 +10,14 @@ from .literals import (
 )
 
 
+class SmartLinkDocumentViewTestMixin(object):
+    def _request_test_smart_link_document_instances_view(self):
+        return self.get(
+            viewname='linking:smart_link_instances_for_document',
+            kwargs={'pk': self.test_document.pk}
+        )
+
+
 class SmartLinkTestMixin(object):
     def _create_test_smart_link(self, add_test_document_type=False):
         self.test_smart_link = SmartLink.objects.create(
