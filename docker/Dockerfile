@@ -24,6 +24,8 @@ apt-get update \
 && apt-get install -y --no-install-recommends \
     ca-certificates \
     exiftool \
+    fonts-arphic-uming \
+    fonts-arphic-ukai \
     ghostscript \
     gpgv \
     gnupg1 \

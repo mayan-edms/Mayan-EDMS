@@ -5,6 +5,7 @@ from django.test import override_settings
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
 
+from ..models import DocumentPageContent
 from ..permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
@@ -14,22 +15,46 @@ from ..utils import get_document_content
 from .literals import TEST_DOCUMENT_CONTENT
 
 
-@override_settings(DOCUMENT_PARSING_AUTO_PARSING=True)
-class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
-    _skip_file_descriptor_test = True
+class DocumentContentViewTestMixin(object):
+    def _request_test_document_content_delete_view(self):
+        return self.post(
+            viewname='document_parsing:document_content_delete', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
 
-    # Ensure we use a PDF file
-    test_document_filename = TEST_HYBRID_DOCUMENT
+    def _request_test_document_content_download_view(self):
+        return self.get(
+            viewname='document_parsing:document_content_download',
+            kwargs={'pk': self.test_document.pk}
+        )
 
-    def _request_document_content_view(self):
+    def _request_test_document_content_view(self):
         return self.get(
             'document_parsing:document_content', kwargs={
                 'pk': self.test_document.pk
             }
         )
 
+    def _request_test_document_page_content_view(self):
+        return self.get(
+            viewname='document_parsing:document_page_content', kwargs={
+                'pk': self.test_document.pages.first().pk,
+            }
+        )
+
+
+@override_settings(DOCUMENT_PARSING_AUTO_PARSING=True)
+class DocumentContentViewsTestCase(
+    DocumentContentViewTestMixin, GenericDocumentViewTestCase
+):
+    _skip_file_descriptor_test = True
+
+    # Ensure we use a PDF file
+    test_document_filename = TEST_HYBRID_DOCUMENT
+
     def test_document_content_view_no_permissions(self):
-        response = self._request_document_content_view()
+        response = self._request_test_document_content_view()
         self.assertEqual(response.status_code, 404)
 
     def test_document_content_view_with_access(self):
@@ -37,20 +62,37 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
             obj=self.test_document, permission=permission_content_view
         )
 
-        response = self._request_document_content_view()
+        response = self._request_test_document_content_view()
         self.assertContains(
             response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
 
-    def _request_document_page_content_view(self):
-        return self.get(
-            viewname='document_parsing:document_page_content', kwargs={
-                'pk': self.test_document.pages.first().pk,
-            }
+    def test_document_content_delete_view_no_permissions(self):
+        response = self._request_test_document_content_delete_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            DocumentPageContent.objects.filter(
+                document_page=self.test_document.pages.first()
+            ).exists()
+        )
+
+    def test_document_content_delete_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_parse_document
+        )
+
+        response = self._request_test_document_content_delete_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertFalse(
+            DocumentPageContent.objects.filter(
+                document_page=self.test_document.pages.first()
+            ).exists()
         )
 
     def test_document_page_content_view_no_permissions(self):
-        response = self._request_document_page_content_view()
+        response = self._request_test_document_page_content_view()
         self.assertEqual(response.status_code, 404)
 
     def test_document_page_content_view_with_access(self):
@@ -58,19 +100,13 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
             permission=permission_content_view, obj=self.test_document
         )
 
-        response = self._request_document_page_content_view()
+        response = self._request_test_document_page_content_view()
         self.assertContains(
             response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
 
-    def _request_document_content_download_view(self):
-        return self.get(
-            viewname='document_parsing:document_content_download',
-            kwargs={'pk': self.test_document.pk}
-        )
-
     def test_document_parsing_download_view_no_permission(self):
-        response = self._request_document_content_download_view()
+        response = self._request_test_document_content_download_view()
         self.assertEqual(response.status_code, 403)
 
     def test_download_view_with_access(self):
@@ -79,7 +115,7 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
             permission=permission_content_view, obj=self.test_document
         )
 
-        response = self._request_document_content_download_view()
+        response = self._request_test_document_content_download_view()
         self.assertEqual(response.status_code, 200)
 
         self.assert_download_response(
@@ -88,11 +124,19 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
             ),
         )
 
+
+class DocumentTypeContentViewsTestMixin(object):
     def _request_test_document_type_parsing_settings(self):
         return self.get(
             viewname='document_parsing:document_type_parsing_settings',
-            kwargs={'pk': self.test_document.document_type.pk}
+            kwargs={'pk': self.test_document_type.pk}
         )
+
+
+class DocumentTypeContentViewsTestCase(
+    DocumentTypeContentViewsTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_document = False
 
     def test_document_type_parsing_settings_view_no_permission(self):
         response = self._request_test_document_type_parsing_settings()
@@ -101,7 +145,7 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
     def test_document_type_parsing_settings_view_with_access(self):
         self.grant_access(
             permission=permission_document_type_parsing_setup,
-            obj=self.test_document.document_type
+            obj=self.test_document_type
         )
 
         response = self._request_test_document_type_parsing_settings()

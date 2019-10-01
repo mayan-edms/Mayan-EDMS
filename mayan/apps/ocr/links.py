@@ -26,6 +26,17 @@ link_document_ocr_content = Link(
     permissions=(permission_ocr_content_view,), text=_('OCR'),
     view='ocr:document_ocr_content',
 )
+link_document_ocr_content_delete = Link(
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.ocr.icons.icon_document_ocr_content_delete',
+    permissions=(permission_ocr_content_view,), text=_('Delete OCR content'),
+    view='ocr:document_ocr_content_delete',
+)
+link_document_ocr_content_delete_multiple = Link(
+    icon_class_path='mayan.apps.ocr.icons.icon_document_ocr_content_delete',
+    text=_('Delete OCR content'),
+    view='ocr:document_ocr_content_delete_multiple',
+)
 link_document_submit = Link(
     args='resolved_object.id',
     icon_class_path='mayan.apps.ocr.icons.icon_document_submit',

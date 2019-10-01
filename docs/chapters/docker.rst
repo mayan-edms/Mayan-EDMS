@@ -135,6 +135,13 @@ image specific environment variables are available.
 
 Optional. Allows loading an alternate settings file.
 
+
+``MAYAN_GUNICORN_TIMEOUT``
+
+Optional. Changes the amount of time the frontend worker will wait for a
+request to finish before raising a timeout error. The default is 120
+seconds.
+
 ``MAYAN_GUNICORN_WORKERS``
 
 Optional. This environment variable controls the number of frontend workers

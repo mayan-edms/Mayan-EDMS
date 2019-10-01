@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:33-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
+"POT-Creation-Date: 2019-09-24 23:18-0400\n"
+"PO-Revision-Date: 2019-09-24 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -19,16 +19,16 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:50 apps.py:117 apps.py:121 events.py:7 links.py:15 links.py:21
+#: apps.py:56 apps.py:131 apps.py:135 events.py:7 links.py:15 links.py:21
 #: permissions.py:7 queues.py:8 settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:109
+#: apps.py:123
 msgid "Date and time"
 msgstr "Data e ora"
 
-#: apps.py:112 models.py:76
+#: apps.py:126 models.py:76
 msgid "Result"
 msgstr "Risultato"
 
@@ -47,10 +47,14 @@ msgid ""
 msgstr ""
 
 #: events.py:10
-msgid "Document version submitted for OCR"
+msgid "Document OCR content deleted"
 msgstr ""
 
 #: events.py:14
+msgid "Document version submitted for OCR"
+msgstr ""
+
+#: events.py:18
 msgid "Document version OCR finished"
 msgstr ""
 
@@ -64,22 +68,26 @@ msgid "Page %(page_number)d"
 msgstr "Pagina %(page_number)d"
 
 #: links.py:27 links.py:32
+msgid "Delete OCR content"
+msgstr ""
+
+#: links.py:38 links.py:43
 msgid "Submit for OCR"
 msgstr "Invia per l'OCR"
 
-#: links.py:37
+#: links.py:48
 msgid "Setup OCR"
 msgstr "Configura OCR"
 
-#: links.py:42
+#: links.py:53
 msgid "OCR documents per type"
 msgstr "OCR per tipo documento"
 
-#: links.py:47 links.py:53 views.py:157
+#: links.py:58 links.py:64 views.py:185
 msgid "OCR errors"
 msgstr "Errori OCR"
 
-#: links.py:59
+#: links.py:70
 msgid "Download OCR text"
 msgstr ""
 
@@ -159,37 +167,43 @@ msgstr "Percorso completo al backend utilizzato per eseguire l'OCR."
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Imposta i nuovi tipi documento per eseguire automaticamente l'OCR per default."
 
-#: views.py:43
+#: views.py:37
+msgid "Delete the OCR content of the selected document?"
+msgid_plural "Delete the OCR content of the selected documents?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:71
 #, python-format
 msgid "OCR result for document: %s"
 msgstr "Risultati OCR per il documento: %s"
 
-#: views.py:65
+#: views.py:93
 #, python-format
 msgid "OCR result for document page: %s"
 msgstr ""
 
-#: views.py:80
+#: views.py:108
 msgid "Submit the selected document to the OCR queue?"
 msgid_plural "Submit the selected documents to the OCR queue?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:97
+#: views.py:125
 msgid "Submit all documents of a type for OCR"
 msgstr "Invia tutti i documenti del tipo alla coda OCR"
 
-#: views.py:111
+#: views.py:139
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr ""
 
-#: views.py:146
+#: views.py:174
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr ""
 
-#: views.py:175
+#: views.py:203
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr ""

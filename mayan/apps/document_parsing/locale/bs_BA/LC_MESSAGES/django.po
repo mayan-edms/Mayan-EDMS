@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:30-0400\n"
+"POT-Creation-Date: 2019-09-24 23:10-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>, 2018\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (https://www.transifex.com/rosarior/teams/13584/bs_BA/)\n"
@@ -23,15 +23,15 @@ msgstr ""
 "Language: bs_BA\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:50 events.py:8 permissions.py:8 settings.py:7
+#: apps.py:57 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr "Gramatička analiza dokumenta"
 
-#: apps.py:116 models.py:78
+#: apps.py:131 models.py:78
 msgid "Result"
 msgstr "Rezultat"
 
-#: apps.py:121 apps.py:125 links.py:16 links.py:22 models.py:27
+#: apps.py:136 apps.py:140 links.py:16 links.py:33 models.py:27
 msgid "Content"
 msgstr "Sadržaj"
 
@@ -41,10 +41,14 @@ msgid ""
 msgstr ""
 
 #: events.py:12
+msgid "Document parsed content deleted"
+msgstr ""
+
+#: events.py:16
 msgid "Document version submitted for parsing"
 msgstr "Verzija dokumenta dostavljena za analiziranje"
 
-#: events.py:15
+#: events.py:19
 msgid "Document version parsing finished"
 msgstr "Propisivanje verzije dokumenta završeno"
 
@@ -57,23 +61,27 @@ msgstr "Strana %(page_number)d"
 msgid "Contents"
 msgstr "Sadržaj"
 
-#: links.py:28 links.py:66 views.py:197
+#: links.py:22 links.py:27
+msgid "Delete parsed content"
+msgstr ""
+
+#: links.py:39 links.py:77 views.py:225
 msgid "Parsing errors"
 msgstr "Greške u anlazi"
 
-#: links.py:34
+#: links.py:45
 msgid "Download content"
 msgstr "Preuzmi sadržaj"
 
-#: links.py:39 links.py:46
+#: links.py:50 links.py:57
 msgid "Submit for parsing"
 msgstr "Dodaj za analizu"
 
-#: links.py:52
+#: links.py:63
 msgid "Setup parsing"
 msgstr "Podešavanja analize"
 
-#: links.py:61
+#: links.py:72
 msgid "Parse documents per type"
 msgstr "Analiziraj dokumente po tipu"
 
@@ -168,32 +176,39 @@ msgid ""
 msgstr ""
 "Staza do popplerovog programa pdftotext za vađenje teksta iz PDF datoteka."
 
-#: views.py:43
+#: views.py:37
+msgid "Delete the parsed content of the selected document?"
+msgid_plural "Delete the parsed content of the selected documents?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: views.py:71
 #, python-format
 msgid "Content for document: %s"
 msgstr "Sadržaj za dokument: %s"
 
-#: views.py:78
+#: views.py:106
 #, python-format
 msgid "Content for document page: %s"
 msgstr ""
 
-#: views.py:93
+#: views.py:121
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "Greške analize u dokumentu: %s"
 
-#: views.py:105
+#: views.py:133
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)ddokument dodan u red liste "
 
-#: views.py:108
+#: views.py:136
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d dokumente dodati u red liste"
 
-#: views.py:116
+#: views.py:144
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
@@ -201,21 +216,21 @@ msgstr[0] "Pošaljite dokument %(count)d u red liste?"
 msgstr[1] "Pošaljite dokumente %(count)d u red liste"
 msgstr[2] "Pošaljite dokumente %(count)d u red liste"
 
-#: views.py:129
+#: views.py:157
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "Pošaljite dokument \"%s\" u red liste"
 
-#: views.py:154
+#: views.py:182
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr ""
 
-#: views.py:164
+#: views.py:192
 msgid "Submit all documents of a type for parsing."
 msgstr ""
 
-#: views.py:185
+#: views.py:213
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr ""

@@ -14,10 +14,15 @@ from .literals import (
     TEST_SMART_LINK_DYNAMIC_LABEL, TEST_SMART_LINK_LABEL_EDITED,
     TEST_SMART_LINK_LABEL
 )
-from .mixins import SmartLinkTestMixin, SmartLinkViewTestMixin
+from .mixins import (
+    SmartLinkDocumentViewTestMixin, SmartLinkTestMixin,
+    SmartLinkViewTestMixin
+)
 
 
-class SmartLinkViewTestCase(SmartLinkTestMixin, SmartLinkViewTestMixin, GenericViewTestCase):
+class SmartLinkViewTestCase(
+    SmartLinkTestMixin, SmartLinkViewTestMixin, GenericViewTestCase
+):
     def test_smart_link_create_view_no_permission(self):
         response = self._request_test_smart_link_create_view()
         self.assertEqual(response.status_code, 403)
@@ -74,10 +79,15 @@ class SmartLinkViewTestCase(SmartLinkTestMixin, SmartLinkViewTestMixin, GenericV
         self.assertEqual(response.status_code, 302)
 
         self.test_smart_link.refresh_from_db()
-        self.assertEqual(self.test_smart_link.label, TEST_SMART_LINK_LABEL_EDITED)
+        self.assertEqual(
+            self.test_smart_link.label, TEST_SMART_LINK_LABEL_EDITED
+        )
 
 
-class SmartLinkDocumentViewTestCase(SmartLinkTestMixin, GenericDocumentViewTestCase):
+class SmartLinkDocumentViewTestCase(
+    SmartLinkTestMixin, SmartLinkDocumentViewTestMixin,
+    GenericDocumentViewTestCase
+):
     def setUp(self):
         super(SmartLinkDocumentViewTestCase, self).setUp()
         self._create_test_smart_link()
@@ -88,12 +98,6 @@ class SmartLinkDocumentViewTestCase(SmartLinkTestMixin, GenericDocumentViewTestC
             dynamic_label=TEST_SMART_LINK_DYNAMIC_LABEL
         )
         self.test_smart_link_2.document_types.add(self.test_document_type)
-
-    def _request_test_smart_link_document_instances_view(self):
-        return self.get(
-            viewname='linking:smart_link_instances_for_document',
-            kwargs={'pk': self.test_document.pk}
-        )
 
     def test_document_smart_link_list_view_no_permission(self):
         self.grant_access(

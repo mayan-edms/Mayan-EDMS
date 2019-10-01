@@ -26,19 +26,6 @@ class DocumentTestMixin(object):
     test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
     test_document_path = None
 
-    def _create_document_type(self):
-        self.test_document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-        self.test_document_type = self.test_document_type
-
-    def _calculate_test_document_path(self):
-        if not self.test_document_path:
-            self.test_document_path = os.path.join(
-                settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
-                'sample_documents', self.test_document_filename
-            )
-
     def setUp(self):
         super(DocumentTestMixin, self).setUp()
         Layer.invalidate_cache()
@@ -55,6 +42,19 @@ class DocumentTestMixin(object):
         for document_type in DocumentType.objects.all():
             document_type.delete()
         super(DocumentTestMixin, self).tearDown()
+
+    def _create_document_type(self):
+        self.test_document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
+        self.test_document_type = self.test_document_type
+
+    def _calculate_test_document_path(self):
+        if not self.test_document_path:
+            self.test_document_path = os.path.join(
+                settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+                'sample_documents', self.test_document_filename
+            )
 
     def upload_document(self, label=None):
         self._calculate_test_document_path()

@@ -22,7 +22,7 @@ from mayan.apps.events.links import (
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import DocumentStateHelper, WorkflowAction
-from .events import event_workflow_created, event_workflow_edited
+from .events import event_workflow_edited
 from .dependencies import *  # NOQA
 from .handlers import (
     handler_create_workflow_image_cache, handler_index_document,
@@ -121,9 +121,7 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         ModelEventType.register(
-            event_types=(
-                event_workflow_created, event_workflow_edited
-            ), model=Workflow
+            event_types=(event_workflow_edited,), model=Workflow
         )
 
         ModelPermission.register(

@@ -15,12 +15,40 @@ from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
 from mayan.apps.documents.models import Document, DocumentPage, DocumentType
 
 from .forms import DocumentContentForm, DocumentPageContentForm
-from .models import DocumentVersionParseError
+from .models import DocumentPageContent, DocumentVersionParseError
 from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
 )
 from .utils import get_document_content
+
+
+class DocumentContentDeleteView(MultipleObjectConfirmActionView):
+    model = Document
+    object_permission = permission_parse_document
+    success_message = 'Deleted parsed content of %(count)d document.'
+    success_message_plural = 'Deleted parsed content of %(count)d documents.'
+
+    def get_extra_context(self):
+        queryset = self.object_list
+
+        result = {
+            'title': ungettext(
+                singular='Delete the parsed content of the selected document?',
+                plural='Delete the parsed content of the selected documents?',
+                number=queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result['object'] = queryset.first()
+
+        return result
+
+    def object_action(self, form, instance):
+        DocumentPageContent.objects.delete_content_for(
+            document=instance, user=self.request.user
+        )
 
 
 class DocumentContentView(SingleObjectDetailView):

@@ -13,7 +13,8 @@ class IndexTestMixin(object):
         self.test_index = Index.objects.create(label=TEST_INDEX_LABEL)
 
         # Add our document type to the new index
-        self.test_index.document_types.add(self.test_document_type)
+        if hasattr(self, 'test_document_type'):
+            self.test_index.document_types.add(self.test_document_type)
 
         # Rebuild indexes
         if rebuild:
