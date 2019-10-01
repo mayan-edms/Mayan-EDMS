@@ -1,4 +1,4 @@
-3.2.8 (2019-XX-XX)
+3.2.8 (2019-10-01)
 ==================
 - Fix error when accessing some API entry points without
   being authenticated.

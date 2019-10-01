@@ -1,11 +1,20 @@
 Version 3.2.8
 =============
 
-Released: XX, 2019
+Released: October 1, 2019
 
 
 Changes
 -------
+
+
+API
+^^^
+
+Fix an error when accessing some API entry points without
+being authenticated. Accessing API endpoints without being authenticated
+will now always return empty results.
+
 
 Cabinets
 ^^^^^^^^
@@ -14,26 +23,43 @@ Tweaked the jstree component's appearance to cope with long labels.
 Added a scrollbar, reduced the font size, switched to a sans serif font,
 and reduced padding. Thanks for forum user @briboe for the report.
 
+Workflow actions to add and remove documents from cabinets was added.
 
-Other changes
-^^^^^^^^^^^^^
 
-- Fix error when accessing some API entry points without
-  being authenticated.
-- Add cabinet add and remove workflow actions.
-- Update Django to version 1.11.24.
-- Update jQuery to version 3.4.1
-- Add support for deleting the OCR content of a document
-  or selection of documents.
-- Add OCR content deleted event.
-- Add missing recursive option to Docker entrypoint
-  chown. GitLab issue #668. Thanks to John Wice (@brilthor)
-  for the report.
-- Add support for deleting the parsed content of a document
-  of selection of documents.
-- Add parsed content deleted event.
-- Allow scaling of UI on mobile devices.
-- Add Chinese fonts to the Docker image
+Dependencies
+^^^^^^^^^^^^
+
+The Django version used was updated to version 1.11.24. The jQuery version
+used was updated to version 3.4.1. Both as fully backwards compatible with
+their previous versions.
+
+
+OCR
+^^^
+
+Support was added to delete the content of document's OCR or parsed content.
+Events for both situations was added allowing content deletion to be used
+as workflow transition triggers.
+
+
+Docker
+^^^^^^
+
+A missing recursive option was added to the Docker entrypoint
+command "chown" to change the ownership of files when specifying a custom
+UID or GID. Closes GitLab issue #668. Thanks to John Wice (@brilthor)
+for the report.
+
+Two fonts were added to the Docker image to support rendering Chinese office
+documents. Closes GitLab issue #666. Thanks to javawcy (@javawcy) and forum
+user @leoliu for the report and help closing this issue.
+
+
+Usability
+^^^^^^^^^
+
+Descriptions for screenreaders was added via image alt tag. The user interface
+will also now allow scaling.
 
 
 Removals
