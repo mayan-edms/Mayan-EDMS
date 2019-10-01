@@ -533,7 +533,7 @@ Release using GitLab CI
    ::
 
        git checkout releases/all
-       git merge versions/next
+       git merge <corresponding branch>
 
 #. Push code to trigger builds:
    ::
