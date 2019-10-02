@@ -46,7 +46,7 @@ class CabinetWorkflowActionViewTestCase(
         self._create_test_workflow_state()
 
         response = self.get(
-            viewname='document_states:setup_workflow_state_action_create',
+            viewname='document_states:workflow_template_state_action_create',
             kwargs={
                 'pk': self.test_workflow_state.pk,
                 'class_path': 'mayan.apps.cabinets.workflow_actions.CabinetAddAction'
@@ -61,7 +61,7 @@ class CabinetWorkflowActionViewTestCase(
         self._create_test_cabinet()
 
         response = self.get(
-            viewname='document_states:setup_workflow_state_action_create',
+            viewname='document_states:workflow_template_state_action_create',
             kwargs={
                 'pk': self.test_workflow_state.pk,
                 'class_path': 'mayan.apps.cabinets.workflow_actions.CabinetRemoveAction'

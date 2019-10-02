@@ -163,7 +163,7 @@ class DocumentAPIViewTestMixin(object):
         )
 
     def _request_test_document_api_upload_view(self):
-        with open(TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='rest_api:document-list', data={
                     'document_type': self.test_document_type.pk,

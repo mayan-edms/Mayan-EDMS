@@ -79,41 +79,6 @@ class IndexViewTestCase(
         self.test_index.refresh_from_db()
         self.assertEqual(self.test_index.label, TEST_INDEX_LABEL_EDITED)
 
-    def test_index_rebuild_view_no_permission(self):
-        self.upload_document()
-        self._create_test_index()
-
-        self.test_index.node_templates.create(
-            parent=self.test_index.template_root,
-            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
-            link_documents=True
-        )
-
-        response = self._request_test_index_rebuild_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertEqual(IndexInstanceNode.objects.count(), 0)
-
-    def test_index_rebuild_view_with_access(self):
-        self.upload_document()
-        self._create_test_index()
-
-        self.test_index.node_templates.create(
-            parent=self.test_index.template_root,
-            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
-            link_documents=True
-        )
-
-        self.grant_access(
-            obj=self.test_index,
-            permission=permission_document_indexing_rebuild
-        )
-
-        response = self._request_test_index_rebuild_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertNotEqual(IndexInstanceNode.objects.count(), 0)
-
 
 class IndexInstaceViewTestMixin(object):
     def _create_index_template_node(self):
