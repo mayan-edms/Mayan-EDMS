@@ -74,6 +74,10 @@
 - Unify all line endings to be Linux style.
 - Add support for changing the system messages position.
   GitLab issue #640. Thanks to Matthias Urhahn (@d4rken).
+- Update Docker deploy script. Use alpine postgres version.
+  Support Docker networks and make it the default.
+  Delete the containers to allow the script to be idempotent.
+
 
 3.2.8 (2019-10-01)
 ==================
@@ -528,8 +532,6 @@
 - Add workflow actions to grant or remove permissions to
   a document.
 - Add support for locked files for watchfolder.
-<<<<<<< HEAD
-=======
 
 3.1.11 (2019-04-XX)
 ===================
