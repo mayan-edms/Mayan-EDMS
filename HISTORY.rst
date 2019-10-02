@@ -77,7 +77,7 @@
 - Update Docker deploy script. Use alpine postgres version.
   Support Docker networks and make it the default.
   Delete the containers to allow the script to be idempotent.
-
+  Deploy a Redis container.
 
 3.2.8 (2019-10-01)
 ==================
