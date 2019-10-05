@@ -49,13 +49,11 @@ class MayanApp {
 
     static setupNavBarState () {
         $('body').on('click', '.a-main-menu-accordion-link', function (event) {
-            var $this = $(this);
-
             $('.a-main-menu-accordion-link').each(function (index, value) {
-                $this.parent().removeClass('active');
+                $(this).parent().removeClass('active');
             });
 
-            $this.parent().addClass('active');
+            $(this).parent().addClass('active');
         });
     }
 
