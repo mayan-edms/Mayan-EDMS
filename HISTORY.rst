@@ -535,7 +535,6 @@
 
 3.1.11 (2019-04-XX)
 ===================
->>>>>>> origin/versions/micro
 - Fix multiple tag selection wizard step.
 - Change the required permission for the checkout info link from
   document check in to document checkout details view.
@@ -552,31 +551,18 @@
 - Add support for disabling the content type checking test case mixin.
 - Update document indexing tests to be order agnostic. GitLab issue #559.
 - Add test for the advanced search API.
-<<<<<<< HEAD
-- Apply merge !36 by Simeon Walker (@simeon-walker) to fix the advanced search
-  API.
-=======
 - Apply merge !36 by Simeon Walker (@simeon-walker) to fix the advanced
   search API.
->>>>>>> origin/versions/micro
 - Apply merge !35 by Manoel Brunnen (@mbru) to fix building the Docker image
   on the armv7l platform (RasperryPi, Odroid XU4, Odroid HC2). Also fixes
   assertion errors from pip (https://github.com/pypa/pip/issues/6197).
 - Apply merge !37 by Roger Hunwicks (@roger.hunwicks) to allow
-<<<<<<< HEAD
-  TestViewTestCaseMixin to work with a custom ROOT_URLCONF. GitLab issue #566.
-- Apply merge !40 by Roger Hunwicks (@/roger.hunwicks) to pin the Tornado
-  version used to 6.0 and continue supporting Python 2.7. GitLab issue #568.
-- Apply merge !41 by Jorge E. Gomez (@jorgeegomez) to fix the compressed class
-  method name. GitLab issue #572.
-=======
   TestViewTestCaseMixin to work with a custom ROOT_URLCONF. GitLab issue
   #566.
 - Apply merge !40 by Roger Hunwicks (@/roger.hunwicks) to pin the Tornado
   version used to 6.0 and continue supporting Python 2.7. GitLab issue #568.
 - Apply merge !41 by Jorge E. Gomez (@jorgeegomez) to fix the compressed
   class method name. GitLab issue #572.
->>>>>>> origin/versions/micro
 - Remove notification badge AJAX setup. Individual link AJAX workers are
   obsolete now that the menu is being rendered by its own AJAX renderer.
   GitLab issue #562.
@@ -587,18 +573,11 @@
   (@robert.schoeftner)for the report and solution. GitLab issue #574.
 - Add missing document index API view create permission.
 - Fix index list API view. Add index create, delete, detail API tests.
-<<<<<<< HEAD
-  GitLab issue #564. Thanks to the Stéphane (@shoyu) for the report and debug
-  information.
-- Validate the state completion value before saving. Thanks to Manoel Brunnen
-  (@mbru) for the report and debug information. GitLab issue #557.
-=======
   GitLab issue #564. Thanks to the Stéphane (@shoyu) for the report and
   debug information.
 - Validate the state completion value before saving. Thanks to
   Manoel Brunnen (@mbru) for the report and debug information.
   GitLab issue #557.
->>>>>>> origin/versions/micro
 - Add the MIMETYPE_FILE_READ_SIZE setting to limit the number of bytes read
   to determine the MIME type of a new document.
 - Force object to text when raising PermissionDenied to avoid
@@ -642,11 +621,7 @@
 - Fix an issue with some browsers not firing the .load event on cached
   images. Ref: http://api.jquery.com/load-event/
 - Remove duplicate YAML loading of environment variables.
-<<<<<<< HEAD
-  Don't load development apps if they are already loaded.
-=======
 - Don't load development apps if they are already loaded.
->>>>>>> origin/versions/micro
 - Make sure all key used as input for the cache key hash are
   bytes and not unicode. GitLab issue #520. Thanks to TheOneValen
   @TheOneValen for the report.
@@ -764,27 +739,17 @@
 - Improve natural key support in the UserOptions model.
 - Update from Django 1.11.11 to 1.11.15.
 - Add support to the convertdb command to operate on specified apps too.
-<<<<<<< HEAD
-- Add test mixin to test the db conversion (dumping and loading) of a specific app.
-=======
 - Add test mixin to test the db conversion (dumping and loading) of a
   specific app.
->>>>>>> origin/versions/micro
 - Add an user test mixin to group user testing.
 - Add test the user managament app for database conversion.
 - Add support for natural keys to the DocumentPageImageCache model.
 - Add database conversion test to the common app.
 - Fix label display for resolved smart links when not using a dynamic label.
-<<<<<<< HEAD
-- Only show smart link resolution errors to the user with the smart link edit
-  permission.
-- Intercept document list view exception and display them as an error message.
-=======
 - Only show smart link resolution errors to the user with the smart link
   edit permission.
 - Intercept document list view exception and display them as an error
   message.
->>>>>>> origin/versions/micro
 
 3.1.1 (2018-09-18)
 ==================
