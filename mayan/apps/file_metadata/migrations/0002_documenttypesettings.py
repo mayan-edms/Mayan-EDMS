@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
-from django.db import migrations, models
-import django.db.models.deletion
+from django.db import migrations
 
 
 def operation_create_file_metadata_setting_for_existing_document_types(apps, schema_editor):

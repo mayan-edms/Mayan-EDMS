@@ -78,7 +78,7 @@ class DjangoSMTP(MailerBackend):
                 'the SMTP server. If either of these settings is empty, '
                 'authentication won\'t be attempted.'
             ), 'kwargs': {
-                'max_length': 48
+                'max_length': 128
             }, 'required': False
         },
     }

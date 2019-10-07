@@ -28,7 +28,6 @@ from mayan.apps.storage.utils import mkdtemp
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models.email_sources import EmailBaseModel, IMAPEmail, POP3Email
 from ..models.watch_folder_sources import WatchFolderSource
-from ..models.webform_sources import WebFormSource
 
 from .literals import (
     TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_EMAIL_BASE64_FILENAME,
@@ -37,21 +36,24 @@ from .literals import (
     TEST_EMAIL_NO_CONTENT_TYPE_STRING, TEST_EMAIL_ZERO_LENGTH_ATTACHMENT,
     TEST_WATCHFOLDER_SUBFOLDER
 )
+from .mixins import SourceTestMixin
 
 
-class CompressedUploadsTestCase(GenericDocumentTestCase):
+class CompressedUploadsTestCase(SourceTestMixin, GenericDocumentTestCase):
     auto_upload_document = False
 
     def test_upload_compressed_file(self):
-        source = WebFormSource(
-            label='test source', uncompress=SOURCE_UNCOMPRESS_CHOICE_Y
-        )
+        self._create_test_source()
+        self.test_source.uncompress = SOURCE_UNCOMPRESS_CHOICE_Y
+        self.test_source.save()
 
         with open(TEST_COMPRESSED_DOCUMENT_PATH, mode='rb') as file_object:
-            source.handle_upload(
+            self.test_source.handle_upload(
                 document_type=self.test_document_type,
                 file_object=file_object,
-                expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y)
+                expand=(
+                    self.test_source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y
+                )
             )
 
         self.assertEqual(Document.objects.count(), 2)

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:17-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
+"POT-Creation-Date: 2019-09-24 23:11-0400\n"
+"PO-Revision-Date: 2019-09-24 04:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -36,47 +36,47 @@ msgid ""
 "Return the completion value of the current state of the selected workflow"
 msgstr "Vratite završnu vrijednost trenutnog stanja izabranog toka posla"
 
-#: apps.py:167 apps.py:178 apps.py:188 apps.py:194
+#: apps.py:165 apps.py:176 apps.py:186 apps.py:192
 msgid "None"
 msgstr "Nijedno"
 
-#: apps.py:172
+#: apps.py:170
 msgid "Current state"
 msgstr "Trenutna stanje"
 
-#: apps.py:176 apps.py:203 models.py:514
+#: apps.py:174 apps.py:201 models.py:514
 msgid "User"
 msgstr "Korisnik"
 
-#: apps.py:182
+#: apps.py:180
 msgid "Last transition"
 msgstr "Poslednja tranzicija"
 
-#: apps.py:186 apps.py:199
+#: apps.py:184 apps.py:197
 msgid "Date and time"
 msgstr "Datum i vreme"
 
-#: apps.py:192 models.py:211
+#: apps.py:190 models.py:211
 msgid "Completion"
 msgstr "Završetak"
 
-#: apps.py:206 forms.py:178 links.py:161 models.py:369 models.py:510
+#: apps.py:204 forms.py:178 links.py:161 models.py:369 models.py:510
 msgid "Transition"
 msgstr "Tranzicija"
 
-#: apps.py:210 forms.py:182 models.py:516
+#: apps.py:208 forms.py:182 models.py:516
 msgid "Comment"
 msgstr "Komentar"
 
-#: apps.py:233
+#: apps.py:231
 msgid "When?"
 msgstr "Kada?"
 
-#: apps.py:237
+#: apps.py:235
 msgid "Action type"
 msgstr "Vrsta akcije"
 
-#: apps.py:253
+#: apps.py:251
 msgid "Triggers"
 msgstr "Uzroci"
 
@@ -678,6 +678,10 @@ msgstr "Lansiranje toka posla je u redu."
 #, python-format
 msgid "Preview of: %s"
 msgstr "Pregled od: %s"
+
+#: widgets.py:21
+msgid "Workflow preview"
+msgstr ""
 
 #: workflow_actions.py:22
 msgid "Document label"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:20-0400\n"
+"POT-Creation-Date: 2019-09-24 23:21-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -179,7 +179,7 @@ msgstr[1] "برچسب ها را به اسناد %(count)d اضافه کنید: "
 msgid "Attach tags to document: %s"
 msgstr "برچسب ها را به سند اضافه کنید: %s"
 
-#: views.py:70 wizard_steps.py:30
+#: views.py:70 wizard_steps.py:29
 msgid "Tags to be attached."
 msgstr "برچسب ها باید متصل شوند"
 
@@ -301,7 +301,7 @@ msgstr "سند \"%(document)s\" به عنوان \"%(tag)s\" برچسب گذار�
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "برچسب \"%(tag)s\" با موفقیت از سند \"%(document)s\" حذف شد."
 
-#: wizard_steps.py:18
+#: wizard_steps.py:17
 msgid "Select tags"
 msgstr ""
 

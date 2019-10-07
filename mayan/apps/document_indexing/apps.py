@@ -141,8 +141,8 @@ class DocumentIndexingApp(MayanAppConfig):
             widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='enabled', is_sortable=True, source=IndexTemplateNode,
-            widget=TwoStateWidget
+            attribute='link_documents', is_sortable=True,
+            source=IndexTemplateNode, widget=TwoStateWidget
         )
         SourceColumn(
             func=lambda context: index_instance_item_link(context['object']),

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:15-0400\n"
+"POT-Creation-Date: 2019-09-24 23:07-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,7 @@ msgstr ""
 
 #: apps.py:50 apps.py:111 apps.py:119 apps.py:122 events.py:7 forms.py:16
 #: links.py:24 menus.py:16 models.py:47 permissions.py:7 views.py:163
+#: workflow_actions.py:22
 msgid "Cabinets"
 msgstr "Cabinets"
 
@@ -47,11 +48,11 @@ msgstr "Document cabinet"
 msgid "Document removed from cabinet"
 msgstr "Remove from cabinets"
 
-#: links.py:30 links.py:44
+#: links.py:30 links.py:44 workflow_actions.py:76
 msgid "Remove from cabinets"
 msgstr "Remove from cabinets"
 
-#: links.py:35 links.py:40
+#: links.py:35 links.py:40 workflow_actions.py:31
 msgid "Add to cabinets"
 msgstr "Add to cabinets"
 
@@ -99,7 +100,7 @@ msgstr "Label"
 msgid "Documents"
 msgstr "Documents"
 
-#: models.py:46 models.py:135 serializers.py:138
+#: models.py:46 models.py:135 serializers.py:138 workflow_actions.py:68
 msgid "Cabinet"
 msgstr "Cabinet"
 
@@ -319,14 +320,20 @@ msgstr "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Document: %(document)s removed from cabinet: %(cabinet)s."
 
-#: wizard_steps.py:18
+#: wizard_steps.py:17
 #, fuzzy
 #| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "Delete cabinets"
 
-#: wizard_steps.py:32
+#: wizard_steps.py:31 workflow_actions.py:25
 #, fuzzy
 #| msgid "Cabinets to which the selected documents will be added."
 msgid "Cabinets to which the document will be added."
 msgstr "Cabinets to which the selected documents will be added."
+
+#: workflow_actions.py:71
+#, fuzzy
+#| msgid "Cabinets from which the selected documents will be removed."
+msgid "Cabinets from which the document will be removed."
+msgstr "Cabinets from which the selected documents will be removed."

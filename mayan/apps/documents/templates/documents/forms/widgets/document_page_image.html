@@ -1,3 +1,5 @@
+{% load i18n %}
+
 {% load appearance_tags %}
 {% load documents_tags %}
 
@@ -8,6 +10,7 @@
         {% get_icon 'mayan.apps.documents.icons.icon_document_image_loading'  %}
     </span>
     <img
+        alt="{% trans 'Document image' %}"
         class="thin_border {{ image_classes }}"
         data-url="{% get_api_image_url instance width=image_width height=image_height zoom=image_zoom rotation=image_rotation %}"
         src="#"

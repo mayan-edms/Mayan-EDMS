@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.core.exceptions import PermissionDenied
 
 from mayan.apps.common.tests import BaseTestCase
-from mayan.apps.user_management.tests.mixins import GroupTestMixin, UserTestMixin
+from mayan.apps.user_management.tests.mixins import GroupTestMixin
 
 from ..classes import Permission, PermissionNamespace
 from ..models import StoredPermission
@@ -16,7 +16,9 @@ from .literals import (
 from .mixins import PermissionTestMixin, RoleTestMixin
 
 
-class PermissionTestCase(GroupTestMixin, PermissionTestMixin, RoleTestMixin, UserTestMixin, BaseTestCase):
+class PermissionTestCase(
+    GroupTestMixin, PermissionTestMixin, RoleTestMixin, BaseTestCase
+):
     def setUp(self):
         super(PermissionTestCase, self).setUp()
         self._create_test_user()

@@ -12,3 +12,9 @@
 - Remove duplicated trashed document preview.
 - Add label to trashed date and time document source column.
 - Tag created event fix.
+
+3.2.3 (2019-06-21)
+* Add a reusable task to upload documents.
+* Add MVP of the importer app.
+
+3.2.4-3.2.8 (2019-10-07)

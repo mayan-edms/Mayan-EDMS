@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:17-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
+"POT-Creation-Date: 2019-09-24 23:11-0400\n"
+"PO-Revision-Date: 2019-09-24 04:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -36,47 +36,47 @@ msgid ""
 "Return the completion value of the current state of the selected workflow"
 msgstr "返回所选工作流的当前状态的完成值"
 
-#: apps.py:167 apps.py:178 apps.py:188 apps.py:194
+#: apps.py:165 apps.py:176 apps.py:186 apps.py:192
 msgid "None"
 msgstr "没有"
 
-#: apps.py:172
+#: apps.py:170
 msgid "Current state"
 msgstr "当前状态"
 
-#: apps.py:176 apps.py:203 models.py:514
+#: apps.py:174 apps.py:201 models.py:514
 msgid "User"
 msgstr "用户"
 
-#: apps.py:182
+#: apps.py:180
 msgid "Last transition"
 msgstr "最后的流转"
 
-#: apps.py:186 apps.py:199
+#: apps.py:184 apps.py:197
 msgid "Date and time"
 msgstr "日期和时间"
 
-#: apps.py:192 models.py:211
+#: apps.py:190 models.py:211
 msgid "Completion"
 msgstr "完成"
 
-#: apps.py:206 forms.py:178 links.py:161 models.py:369 models.py:510
+#: apps.py:204 forms.py:178 links.py:161 models.py:369 models.py:510
 msgid "Transition"
 msgstr "流转"
 
-#: apps.py:210 forms.py:182 models.py:516
+#: apps.py:208 forms.py:182 models.py:516
 msgid "Comment"
 msgstr "评论"
 
-#: apps.py:233
+#: apps.py:231
 msgid "When?"
 msgstr "何时？"
 
-#: apps.py:237
+#: apps.py:235
 msgid "Action type"
 msgstr "操作类型"
 
-#: apps.py:253
+#: apps.py:251
 msgid "Triggers"
 msgstr "触发器"
 
@@ -678,6 +678,10 @@ msgstr "工作流启动成功排队。"
 #, python-format
 msgid "Preview of: %s"
 msgstr "%s的预览"
+
+#: widgets.py:21
+msgid "Workflow preview"
+msgstr ""
 
 #: workflow_actions.py:22
 msgid "Document label"

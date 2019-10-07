@@ -5,18 +5,20 @@
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2017
+# Marcin Lozynski <mlozynski@wp.pl>, 2019
 # mic, 2012
 # mic <diveaway12@gmail.com>, 2012
 # mic <winterfall24@gmail.com>, 2012,2015
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2019
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:15-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-09-24 23:07-0400\n"
+"PO-Revision-Date: 2019-09-23 10:05+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,23 +36,23 @@ msgstr "Dostępne atrybuty: \n"
 
 #: classes.py:166
 msgid "Available fields: \n"
-msgstr ""
+msgstr "Dostępne pola:\n"
 
 #: dependencies.py:396
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Służy do umożliwienia tłumaczenia ciągów tekstowych kodu w trybie offline."
 
 #: dependencies.py:401
 msgid "Provides style checking."
-msgstr ""
+msgstr "Zapewnia kontrolę stylu."
 
 #: dependencies.py:406
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Środowisko wiersza poleceń z funkcją autouzupełniania."
 
 #: dependencies.py:411
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Sprawdza poprawność formatowania pliku README."
 
 #: forms.py:27
 msgid "Selection"
@@ -65,18 +67,18 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Wybierz wpisy do usunięcia. Przytrzymaj Control, aby wybrać wiele wpisów. Po zakończeniu wyboru kliknij przycisk poniżej lub kliknij dwukrotnie listę, aby aktywować akcję."
 
 #: generics.py:154
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Wybierz wpisy do dodania. Przytrzymaj Control, aby wybrać wiele wpisów. Po zakończeniu wyboru kliknij przycisk poniżej lub kliknij dwukrotnie listę, aby aktywować akcję."
 
 #: generics.py:287
 msgid "Add all"
-msgstr ""
+msgstr "Dodaj wszystko"
 
 #: generics.py:296
 msgid "Add"
@@ -84,7 +86,7 @@ msgstr "Dodaj"
 
 #: generics.py:306
 msgid "Remove all"
-msgstr ""
+msgstr "Usuń wszystko"
 
 #: generics.py:315
 msgid "Remove"
@@ -93,7 +95,7 @@ msgstr "Usuń"
 #: generics.py:521
 #, python-format
 msgid "Duplicate data error: %(error)s"
-msgstr ""
+msgstr "Błąd powielenia danych: %(error)s"
 
 #: generics.py:543
 #, python-format
@@ -147,7 +149,7 @@ msgstr "Błędy"
 
 #: links.py:59
 msgid "Clear all"
-msgstr ""
+msgstr "Wyczyść wszystko"
 
 #: links.py:69
 msgid "Forum"
@@ -176,13 +178,13 @@ msgstr "Narzędzia"
 #: literals.py:13
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "Ta funkcja jest przestarzała i zostanie usunięta w przyszłych wersjach."
 
 #: literals.py:16
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
+msgstr "Twój backend bazy danych jest skonfigurowany do używania SQLite. SQLite powinien być używany tylko do programowania i testowania, a nie na produkcji."
 
 #: literals.py:34
 msgid "Days"
@@ -199,25 +201,25 @@ msgstr "Minuty"
 #: management/commands/convertdb.py:40
 msgid ""
 "Restricts dumped data to the specified app_label or app_label.ModelName."
-msgstr ""
+msgstr "Ogranicza zrzucone dane do podanego app_label lub app_label.ModelName."
 
 #: management/commands/convertdb.py:47
 msgid ""
 "The database from which data will be exported. If omitted the database named"
 " \"default\" will be used."
-msgstr ""
+msgstr "Baza danych, z której dane zostaną wyeksportowane. Jeśli zostanie pominięty, zostanie użyta baza danych o nazwie „default”."
 
 #: management/commands/convertdb.py:54
 msgid ""
 "The database to which data will be imported. If omitted the database named "
 "\"default\" will be used."
-msgstr ""
+msgstr "Baza danych, do której zostaną zaimportowane dane. Jeśli zostanie pominięty, zostanie użyta baza danych o nazwie „default”."
 
 #: management/commands/convertdb.py:61
 msgid ""
 "Force the conversion of the database even if the receiving database is not "
 "empty."
-msgstr ""
+msgstr "Wymuś konwersję bazy danych, nawet jeśli docelowa baza danych nie jest pusta."
 
 #: menus.py:10
 msgid "System"
@@ -225,7 +227,7 @@ msgstr "System"
 
 #: menus.py:12 menus.py:13
 msgid "Facet"
-msgstr ""
+msgstr "Aspekt"
 
 #: menus.py:16
 msgid "Actions"
@@ -233,7 +235,7 @@ msgstr "Akcje"
 
 #: menus.py:17
 msgid "Secondary"
-msgstr ""
+msgstr "Drugorzędny"
 
 #: menus.py:21 models.py:93
 msgid "User"
@@ -242,7 +244,7 @@ msgstr "Użytkownik"
 #: mixins.py:222
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
-msgstr ""
+msgstr "Nie znaleziono %(verbose_name)s pasującego do zapytania"
 
 #: mixins.py:296
 msgid "Object"
@@ -310,7 +312,7 @@ msgstr "Domyślny"
 
 #: queues.py:17
 msgid "Common periodic"
-msgstr ""
+msgstr "Wspólne okresy"
 
 #: queues.py:22
 msgid "Delete stale uploads"
@@ -332,7 +334,7 @@ msgid ""
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Lista ciągów znaków wskazujących wszystkie aplikacje, które mają zostać usunięte z listy normalnie instalowanej przez Mayan EDMS. Każdy ciąg powinien być kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji (preferowane) lub pakietu zawierającego aplikację."
 
 #: settings.py:43
 msgid ""
@@ -340,21 +342,21 @@ msgid ""
 "those normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Lista ciągów oznaczających wszystkie aplikacje, które są instalowane poza tymi, które normalnie instaluje Mayan EDMS. Każdy ciąg powinien być kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji (preferowane) lub pakietu zawierającego aplikację."
 
 #: settings.py:52
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Nazwa widoku dołączonego do marki w menu głównym. Jest to również widok, do którego użytkownicy będą przekierowywani po zalogowaniu."
 
 #: settings.py:61
 msgid "The number objects that will be displayed per page."
-msgstr ""
+msgstr "Liczba obiektów, które będą wyświetlane na stronie."
 
 #: settings.py:68
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
+msgstr "Włącz rejestrowanie błędów poza systemowym rejestrowaniem błędów."
 
 #: settings.py:75
 msgid "Path to the logfile that will track errors during production."
@@ -362,11 +364,11 @@ msgstr "Ścieżka do pliku dziennika śledzącego błędy w systemie produkcyjny
 
 #: settings.py:82
 msgid "Name to be displayed in the main menu."
-msgstr ""
+msgstr "Nazwa wyświetlana w menu głównym."
 
 #: settings.py:88
 msgid "URL of the installation or homepage of the project."
-msgstr ""
+msgstr "Adres URL instalacji lub strona główna projektu."
 
 #: settings.py:94
 msgid "A storage backend that all workers can use to share files."
@@ -374,7 +376,7 @@ msgstr "Backend przechowywania umożliwiający wszystkim użytkownikom udostępn
 
 #: settings.py:103
 msgid "Django"
-msgstr ""
+msgstr "Django"
 
 #: settings.py:108
 msgid ""
@@ -389,7 +391,7 @@ msgid ""
 " match anything; in this case you are responsible to provide your own "
 "validation of the Host header (perhaps in a middleware; if so this "
 "middleware must be listed first in MIDDLEWARE)."
-msgstr ""
+msgstr "Lista ciągów znaków reprezentujących nazwy hosta / domeny, które może obsługiwać ta strona. Jest to środek bezpieczeństwa zapobiegający atakom na nagłówki hosta HTTP, które są możliwe nawet przy wielu pozornie bezpiecznych konfiguracjach serwera WWW. Wartości na tej liście mogą być w pełni kwalifikowanymi nazwami (np. „www.example.com”), w którym to przypadku zostaną one dokładnie dopasowane do nagłówka hosta żądania (bez rozróżniania wielkości liter, bez portu). Wartość zaczynającą się od kropki można wykorzystać jako symbol zastępczy subdomeny: „.example.com” będzie pasował do example.com, www.example.com i każdej innej subdomeny example.com. Wartość „*” pasuje do wszystkiego; w takim przypadku jesteś odpowiedzialny za zapewnienie własnej walidacji nagłówka hosta (być może w oprogramowaniu pośrednim; jeśli tak, to oprogramowanie pośrednie musi być wymienione najpierw w MIDDLEWARE)."
 
 #: settings.py:126
 msgid ""

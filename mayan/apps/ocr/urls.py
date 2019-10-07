@@ -7,7 +7,8 @@ from .api_views import (
     APIDocumentVersionOCRView
 )
 from .views import (
-    DocumentOCRContentView, DocumentOCRDownloadView,
+    DocumentOCRContentDeleteView, DocumentOCRContentView,
+    DocumentOCRDownloadView,
     DocumentOCRErrorsListView, DocumentPageOCRContentView, DocumentSubmitView,
     DocumentTypeSettingsEditView, DocumentTypeSubmitView, EntryListView
 )
@@ -21,6 +22,16 @@ urlpatterns = [
     url(
         regex=r'^documents/(?P<pk>\d+)/content/$',
         view=DocumentOCRContentView.as_view(), name='document_ocr_content'
+    ),
+    url(
+        regex=r'^documents/(?P<pk>\d+)/content/delete/$',
+        view=DocumentOCRContentDeleteView.as_view(),
+        name='document_ocr_content_delete'
+    ),
+    url(
+        regex=r'^documents/multiple/content/delete/$',
+        view=DocumentOCRContentDeleteView.as_view(),
+        name='document_ocr_content_delete_multiple'
     ),
     url(
         regex=r'^documents/(?P<pk>\d+)/submit/$',

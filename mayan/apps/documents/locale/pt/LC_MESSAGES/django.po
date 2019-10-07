@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:17-0400\n"
-"PO-Revision-Date: 2019-06-15 07:49+0000\n"
+"POT-Creation-Date: 2019-09-24 23:11-0400\n"
+"PO-Revision-Date: 2019-09-24 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -49,11 +49,11 @@ msgstr ""
 msgid "Versions timestamp"
 msgstr ""
 
-#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:333
+#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:334
 msgid "Thumbnail"
 msgstr ""
 
-#: apps.py:249 apps.py:338 forms/document_forms.py:182 links.py:83
+#: apps.py:249 apps.py:339 forms/document_forms.py:182 links.py:83
 msgid "Pages"
 msgstr "Páginas"
 
@@ -928,6 +928,10 @@ msgstr ""
 msgid "Total document pages at each month"
 msgstr ""
 
+#: templates/documents/document_print.html:12
+msgid "Document page image preview"
+msgstr ""
+
 #: templates/documents/forms/widgets/document_page_carousel.html:16
 #, python-format
 msgid ""
@@ -938,6 +942,10 @@ msgstr ""
 
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
+msgstr ""
+
+#: templates/documents/forms/widgets/document_page_image.html:13
+msgid "Document image"
 msgstr ""
 
 #: utils.py:18

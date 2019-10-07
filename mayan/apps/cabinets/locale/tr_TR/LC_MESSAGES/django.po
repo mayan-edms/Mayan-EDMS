@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:15-0400\n"
+"POT-Creation-Date: 2019-09-24 23:07-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2017\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
@@ -23,14 +23,15 @@ msgstr ""
 
 #: apps.py:50 apps.py:111 apps.py:119 apps.py:122 events.py:7 forms.py:16
 #: links.py:24 menus.py:16 models.py:47 permissions.py:7 views.py:163
+#: workflow_actions.py:22
 msgid "Cabinets"
 msgstr "Dolaplar"
 
-#: links.py:30 links.py:44
+#: links.py:30 links.py:44 workflow_actions.py:76
 msgid "Remove from cabinets"
 msgstr "Dolaplardan Çıkar"
 
-#: links.py:35 links.py:40
+#: links.py:35 links.py:40 workflow_actions.py:31
 msgid "Add to cabinets"
 msgstr "Dolaplara Ekle"
 
@@ -66,7 +67,7 @@ msgstr "Etiket"
 msgid "Documents"
 msgstr "Belgeler"
 
-#: models.py:46 models.py:135 serializers.py:138
+#: models.py:46 models.py:135 serializers.py:138 workflow_actions.py:68
 msgid "Cabinet"
 msgstr "Dolap"
 

@@ -14,15 +14,22 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.documents.search import document_search, document_page_search
 from mayan.apps.documents.signals import post_version_upload
+from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
 from .dependencies import *  # NOQA
+from .events import (
+    event_parsing_document_content_deleted,
+    event_parsing_document_version_submit,
+    event_parsing_document_version_finish
+)
 from .handlers import (
     handler_index_document, handler_initialize_new_parsing_settings,
     handler_parse_document_version
 )
 from .links import (
-    link_document_content, link_document_page_content,
+    link_document_content, link_document_content_delete,
+    link_document_content_delete_multiple, link_document_page_content,
     link_document_content_download, link_document_parsing_errors_list,
     link_document_submit_multiple, link_document_submit,
     link_document_type_parsing_settings, link_document_type_submit,
@@ -85,6 +92,14 @@ class DocumentParsingApp(MayanAppConfig):
             value=method_document_version_parsing_submit
         )
 
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_parsing_document_content_deleted,
+                event_parsing_document_version_submit,
+                event_parsing_document_version_finish
+            )
+        )
+
         ModelField(
             model=Document, name='versions__pages__content__content'
         )
@@ -136,16 +151,21 @@ class DocumentParsingApp(MayanAppConfig):
             sources=(DocumentType,)
         )
         menu_multi_item.bind_links(
-            links=(link_document_submit_multiple,), sources=(Document,)
+            links=(
+                link_document_content_delete_multiple,
+                link_document_submit_multiple,
+            ), sources=(Document,)
         )
         menu_secondary.bind_links(
             links=(
+                link_document_content_delete,
                 link_document_content_download,
                 link_document_parsing_errors_list,
                 link_document_submit
             ),
             sources=(
                 'document_parsing:document_content',
+                'document_parsing:document_content_delete',
                 'document_parsing:document_content_download',
                 'document_parsing:document_parsing_error_list',
                 'document_parsing:document_submit',

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:15-0400\n"
-"PO-Revision-Date: 2019-06-15 07:48+0000\n"
+"POT-Creation-Date: 2019-09-24 23:06-0400\n"
+"PO-Revision-Date: 2019-09-04 03:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -153,11 +153,26 @@ msgstr "\n                如果您使用%(project_title)s，请
 #, python-format
 msgid ""
 "\n"
+"                You can also <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">donate directly to the creator and lead developer.  %(icon_social_paypal)s</a>\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:127
+msgid ""
+"\n"
+"                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>. <br>The book is available on pre-release format at a discounted price for a limited time.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:133
+#, python-format
+msgid ""
+"\n"
 "                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr "\n                完整的更改列表可见于<a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">发行说明%(icon_documentation)s </a>或简短版本<a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">更改日志%(icon_documentation)s </a>。\n            "
 
-#: templates/appearance/about.html:127
+#: templates/appearance/about.html:139
 #, python-format
 msgid ""
 "\n"
@@ -165,7 +180,7 @@ msgid ""
 "            "
 msgstr "\n                有关问题，请查看<a class=\"new_window\" href=\"https://docs.mayan-edms.com\">文档%(icon_documentation)s </a>或<a class=\"new_window\" href=\"https://wiki.mayan-edms.com\"> Wiki %(icon_wiki)s </a>。\n            "
 
-#: templates/appearance/about.html:133
+#: templates/appearance/about.html:145
 #, python-format
 msgid ""
 "\n"
@@ -173,7 +188,7 @@ msgid ""
 "            "
 msgstr "\n                如果您发现了bug或有功能创意，请访问<a class=\"new_window\" href=\"https://forum.mayan-edms.com\">论坛%(icon_forum)s </a>或在<a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">源代码仓库%(icon_source_code)s </a>提交问题。\n            "
 
-#: templates/appearance/about.html:138
+#: templates/appearance/about.html:150
 #, python-format
 msgid ""
 "\n"
@@ -182,16 +197,22 @@ msgid ""
 "            "
 msgstr "\n                宣传这个软件。和你的朋友和同事谈谈%(project_title)s真棒！\n                在<a class=\"new_window\" href=\"https://twitter.com/mayanedms\"> Twitter %(icon_social_twitter)s </a>，<a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\"> Facebook %(icon_social_facebook)s </a>，或<a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\"> Instagram %(icon_social_instagram)s </a>关注我们\n            "
 
-#: templates/appearance/base.html:32
+#: templates/appearance/base.html:36 templates/appearance/base.html:46
 msgid "Warning"
 msgstr "警告"
 
-#: templates/appearance/base.html:51
+#: templates/appearance/base.html:46
+msgid ""
+"Settings updated, restart your installation for changes to take proper "
+"effect."
+msgstr ""
+
+#: templates/appearance/base.html:60
 #: templates/appearance/generic_list_items_subtemplate.html:104
 msgid "Actions"
 msgstr "操作"
 
-#: templates/appearance/base.html:53
+#: templates/appearance/base.html:62
 #: templates/appearance/generic_list_items_subtemplate.html:106
 msgid "Toggle Dropdown"
 msgstr "切换下拉列表"

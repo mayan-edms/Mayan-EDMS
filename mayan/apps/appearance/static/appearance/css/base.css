@@ -410,3 +410,12 @@ a i {
 .btn-list {
     margin-bottom: 2px;
 }
+
+/* jstree - cabinets */
+#jstree {
+    max-width: 100%;
+    overflow: auto;
+    font: 11px Verdana, sans-serif;
+    padding: 0px;
+    padding-bottom: 10px; /* Padding for scrollbar */
+}

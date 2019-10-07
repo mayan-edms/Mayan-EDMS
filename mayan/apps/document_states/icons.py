@@ -1,7 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from mayan.apps.appearance.classes import Icon
-from mayan.apps.documents.icons import icon_document_type
+from mayan.apps.documents.icons import icon_document, icon_document_type
 
 icon_workflow = Icon(driver_name='fontawesome', symbol='sitemap')
 
@@ -32,11 +32,11 @@ icon_workflow_instance_transition = Icon(
     driver_name='fontawesome', symbol='arrows-alt-h'
 )
 
-icon_workflow_runtime_proxy_document_list = icon_document_type
+icon_workflow_runtime_proxy_document_list = icon_document
 icon_workflow_runtime_proxy_list = Icon(
     driver_name='fontawesome', symbol='sitemap'
 )
-icon_workflow_runtime_proxy_state_document_list = icon_document_type
+icon_workflow_runtime_proxy_state_document_list = icon_document
 icon_workflow_runtime_proxy_state_list = Icon(
     driver_name='fontawesome', symbol='circle'
 )

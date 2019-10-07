@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:15-0400\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
+"POT-Creation-Date: 2019-09-24 23:07-0400\n"
+"PO-Revision-Date: 2019-08-26 01:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr "Dokument odjavljen"
 msgid "Document forcefully checked in"
 msgstr "Dokument je prisilno prijavljen"
 
-#: exceptions.py:27 views.py:108
+#: exceptions.py:27 views.py:122
 msgid "Document already checked out."
 msgstr "Dokument je već odjavljen."
 
@@ -50,7 +50,7 @@ msgstr "Dokument je već odjavljen."
 msgid "Document status"
 msgstr "Status dokumenta"
 
-#: forms.py:39 models.py:41 views.py:148
+#: forms.py:39 models.py:41 views.py:162
 msgid "User"
 msgstr "Korisnik"
 
@@ -187,43 +187,43 @@ msgstr "Dokument nije odjavljen."
 msgid "Document \"%s\" checked in successfully."
 msgstr "Dokument \"%s\" uspješno prijavljen."
 
-#: views.py:114
+#: views.py:94
+#, python-format
+msgid "Check out details for document: %s"
+msgstr "Odjavni detalji za dokument: %s"
+
+#: views.py:128
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "Dokument \"%s\" uspješno odjavljen."
 
-#: views.py:123
+#: views.py:137
 #, python-format
 msgid "Check out document: %s"
 msgstr "Odjaviti dokument: %s"
 
-#: views.py:154
+#: views.py:168
 msgid "Checkout time and date"
 msgstr "Provjerite vrijeme i datum"
 
-#: views.py:160
+#: views.py:174
 msgid "Checkout expiration"
 msgstr "Potvrda istrage"
 
-#: views.py:168
+#: views.py:182
 msgid ""
 "Checking out a document blocks certain document operations for a "
 "predetermined amount of time."
 msgstr ""
 
-#: views.py:172
+#: views.py:186
 msgid "No documents have been checked out"
 msgstr ""
 
-#: views.py:173
+#: views.py:187
 msgid "Documents checked out"
 msgstr "Dokumenti su odjavljeni"
 
-#: views.py:188
-#, python-format
-msgid "Check out details for document: %s"
-msgstr "Odjavni detalji za dokument: %s"
-
-#: widgets.py:25
-msgid "Period"
-msgstr "Perioda"
+#: widgets.py:27
+msgid "Amount"
+msgstr ""

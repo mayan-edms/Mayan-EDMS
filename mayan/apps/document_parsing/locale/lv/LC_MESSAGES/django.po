@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:16-0400\n"
+"POT-Creation-Date: 2019-09-24 23:10-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -21,15 +21,15 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:50 events.py:8 permissions.py:8 settings.py:7
+#: apps.py:57 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr "Dokumentu analīze"
 
-#: apps.py:116 models.py:78
+#: apps.py:131 models.py:78
 msgid "Result"
 msgstr "Rezultāts"
 
-#: apps.py:121 apps.py:125 links.py:16 links.py:22 models.py:27
+#: apps.py:136 apps.py:140 links.py:16 links.py:33 models.py:27
 msgid "Content"
 msgstr "Saturs"
 
@@ -40,10 +40,14 @@ msgstr ""
 "Utility no poppler-utils paketes, ko izmanto teksta saturam no PDF failiem."
 
 #: events.py:12
+msgid "Document parsed content deleted"
+msgstr ""
+
+#: events.py:16
 msgid "Document version submitted for parsing"
 msgstr "Dokumenta versija iesniegta parsēšanai"
 
-#: events.py:15
+#: events.py:19
 msgid "Document version parsing finished"
 msgstr "Dokumenta versijas parsēšana pabeigta"
 
@@ -56,23 +60,27 @@ msgstr "Lapa %(page_number)d"
 msgid "Contents"
 msgstr "Saturs"
 
-#: links.py:28 links.py:66 views.py:197
+#: links.py:22 links.py:27
+msgid "Delete parsed content"
+msgstr ""
+
+#: links.py:39 links.py:77 views.py:225
 msgid "Parsing errors"
 msgstr "Parsēšanas kļūdas"
 
-#: links.py:34
+#: links.py:45
 msgid "Download content"
 msgstr "Lejupielādējiet saturu"
 
-#: links.py:39 links.py:46
+#: links.py:50 links.py:57
 msgid "Submit for parsing"
 msgstr "Iesniegt parsēšanai"
 
-#: links.py:52
+#: links.py:63
 msgid "Setup parsing"
 msgstr "Iestatīšanas analīze"
 
-#: links.py:61
+#: links.py:72
 msgid "Parse documents per type"
 msgstr "Parsēt dokumentus katram tipam"
 
@@ -167,32 +175,39 @@ msgstr ""
 "Failu ceļš uz poppler pdftotext programmu, ko izmanto, lai iegūtu tekstu no "
 "PDF failiem."
 
-#: views.py:43
+#: views.py:37
+msgid "Delete the parsed content of the selected document?"
+msgid_plural "Delete the parsed content of the selected documents?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: views.py:71
 #, python-format
 msgid "Content for document: %s"
 msgstr "Dokumenta saturs: %s"
 
-#: views.py:78
+#: views.py:106
 #, python-format
 msgid "Content for document page: %s"
 msgstr "Dokumenta lapas saturs: %s"
 
-#: views.py:93
+#: views.py:121
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "Analīzes kļūdas dokumentam: %s"
 
-#: views.py:105
+#: views.py:133
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)d dokuments pievienots parsēšanas rindai"
 
-#: views.py:108
+#: views.py:136
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d dokumenti, kas pievienoti parsēšanas rindai"
 
-#: views.py:116
+#: views.py:144
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
@@ -200,21 +215,21 @@ msgstr[0] "Iesniegt %(count)d dokumentus parsēšanas rindā"
 msgstr[1] "Iesniegt %(count)d dokumentu parsēšanas rindā?"
 msgstr[2] "Iesniegt %(count)d dokumentus parsēšanas rindā"
 
-#: views.py:129
+#: views.py:157
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "Iesniegt parsēšanas rindā dokumentu \"%s\""
 
-#: views.py:154
+#: views.py:182
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr "Rediģēt parsēšanas iestatījumus dokumenta tipam: %s."
 
-#: views.py:164
+#: views.py:192
 msgid "Submit all documents of a type for parsing."
 msgstr "Iesniedziet visus parsēšanai nepieciešamos dokumentus."
 
-#: views.py:185
+#: views.py:213
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d dokumenti, kas pievienoti parsēšanas rindai."

@@ -215,6 +215,7 @@ class UploadInteractiveView(UploadBaseView):
                 UploadInteractiveView, self
             ).dispatch(request, *args, **kwargs)
         except Exception as exception:
+            raise
             if request.is_ajax():
                 return JsonResponse(
                     data={'error': force_text(exception)}, status=500

@@ -14,19 +14,25 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.documents.search import document_search, document_page_search
 from mayan.apps.documents.signals import post_version_upload
+from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
 from .dependencies import *  # NOQA
+from .events import (
+    event_ocr_document_content_deleted, event_ocr_document_version_finish,
+    event_ocr_document_version_submit
+)
 from .handlers import (
     handler_index_document, handler_initialize_new_ocr_settings,
     handler_ocr_document_version,
 )
 from .links import (
     link_document_page_ocr_content, link_document_ocr_content,
-    link_document_ocr_download, link_document_ocr_errors_list,
-    link_document_submit, link_document_submit_multiple,
-    link_document_type_ocr_settings, link_document_type_submit,
-    link_entry_list
+    link_document_ocr_content_delete,
+    link_document_ocr_content_delete_multiple, link_document_ocr_download,
+    link_document_ocr_errors_list, link_document_submit,
+    link_document_submit_multiple, link_document_type_ocr_settings,
+    link_document_type_submit, link_entry_list
 )
 from .methods import (
     method_document_ocr_submit, method_document_version_ocr_submit
@@ -82,6 +88,14 @@ class OCRApp(MayanAppConfig):
             name='submit_for_ocr', value=method_document_version_ocr_submit
         )
 
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_ocr_document_content_deleted,
+                event_ocr_document_version_finish,
+                event_ocr_document_version_submit
+            )
+        )
+
         ModelField(
             model=Document, name='versions__pages__ocr_content__content'
         )
@@ -131,16 +145,21 @@ class OCRApp(MayanAppConfig):
             links=(link_document_type_ocr_settings,), sources=(DocumentType,)
         )
         menu_multi_item.bind_links(
-            links=(link_document_submit_multiple,), sources=(Document,)
+            links=(
+                link_document_ocr_content_delete_multiple,
+                link_document_submit_multiple,
+            ), sources=(Document,)
         )
         menu_secondary.bind_links(
             links=(
+                link_document_ocr_content_delete,
                 link_document_ocr_errors_list,
                 link_document_ocr_download, link_document_submit
             ),
             sources=(
-                'ocr:document_submit', 'ocr:document_ocr_content',
-                'ocr:document_ocr_download', 'ocr:document_ocr_error_list'
+                'ocr:document_ocr_content_delete',
+                'ocr:document_ocr_content', 'ocr:document_ocr_download',
+                'ocr:document_ocr_error_list', 'ocr:document_submit',
             )
         )
         menu_secondary.bind_links(

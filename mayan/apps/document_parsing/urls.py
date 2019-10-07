@@ -4,10 +4,10 @@ from django.conf.urls import url
 
 from .api_views import APIDocumentPageContentView
 from .views import (
-    DocumentContentView, DocumentContentDownloadView,
-    DocumentPageContentView, DocumentParsingErrorsListView,
-    DocumentSubmitView, DocumentTypeSettingsEditView, DocumentTypeSubmitView,
-    ParseErrorListView
+    DocumentContentView, DocumentContentDeleteView,
+    DocumentContentDownloadView, DocumentPageContentView,
+    DocumentParsingErrorsListView, DocumentSubmitView,
+    DocumentTypeSettingsEditView, DocumentTypeSubmitView, ParseErrorListView
 )
 
 urlpatterns = [
@@ -16,21 +16,23 @@ urlpatterns = [
         view=DocumentContentView.as_view(), name='document_content'
     ),
     url(
-        regex=r'^documents/pages/(?P<pk>\d+)/content/$',
-        view=DocumentPageContentView.as_view(), name='document_page_content'
+        regex=r'^documents/(?P<pk>\d+)/content/delete/$',
+        view=DocumentContentDeleteView.as_view(),
+        name='document_content_delete'
+    ),
+    url(
+        regex=r'^documents/multiple/content/delete/$',
+        view=DocumentContentDeleteView.as_view(),
+        name='document_content_delete_multiple'
     ),
     url(
         regex=r'^documents/(?P<pk>\d+)/content/download/$',
-        view=DocumentContentDownloadView.as_view(), name='document_content_download'
+        view=DocumentContentDownloadView.as_view(),
+        name='document_content_download'
     ),
     url(
-        regex=r'^document_types/submit/$',
-        view=DocumentTypeSubmitView.as_view(), name='document_type_submit'
-    ),
-    url(
-        regex=r'^document_types/(?P<pk>\d+)/parsing/settings/$',
-        view=DocumentTypeSettingsEditView.as_view(),
-        name='document_type_parsing_settings'
+        regex=r'^documents/pages/(?P<pk>\d+)/content/$',
+        view=DocumentPageContentView.as_view(), name='document_page_content'
     ),
     url(
         regex=r'^documents/(?P<pk>\d+)/submit/$',
@@ -44,6 +46,15 @@ urlpatterns = [
         regex=r'^documents/(?P<pk>\d+)/errors/$',
         view=DocumentParsingErrorsListView.as_view(),
         name='document_parsing_error_list'
+    ),
+    url(
+        regex=r'^document_types/submit/$',
+        view=DocumentTypeSubmitView.as_view(), name='document_type_submit'
+    ),
+    url(
+        regex=r'^document_types/(?P<pk>\d+)/parsing/settings/$',
+        view=DocumentTypeSettingsEditView.as_view(),
+        name='document_type_parsing_settings'
     ),
     url(
         regex=r'^errors/all/$', view=ParseErrorListView.as_view(),

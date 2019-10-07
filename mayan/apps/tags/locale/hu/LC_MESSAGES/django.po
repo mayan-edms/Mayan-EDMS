@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:20-0400\n"
+"POT-Creation-Date: 2019-09-24 23:21-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
@@ -178,7 +178,7 @@ msgstr[1] "Cimkék hozzárendelése %(count)d dokumentumhoz"
 msgid "Attach tags to document: %s"
 msgstr "Cimkék hozzárendelése dokumentumhoz: %s"
 
-#: views.py:70 wizard_steps.py:30
+#: views.py:70 wizard_steps.py:29
 msgid "Tags to be attached."
 msgstr "Hozzárendelendő címkék."
 
@@ -300,7 +300,7 @@ msgstr "A \"%(document)s\" dokumentum nem lett \"%(tag)s\"-el megcímkézve"
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "A \"%(tag)s\" címke sikeresen leszedésre került a \"%(document)s\" dokumentumról."
 
-#: wizard_steps.py:18
+#: wizard_steps.py:17
 msgid "Select tags"
 msgstr ""
 

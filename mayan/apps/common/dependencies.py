@@ -36,7 +36,7 @@ PythonDependency(
         ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django', version_string='==1.11.20'
+    ''', module=__name__, name='django', version_string='==1.11.24'
 )
 PythonDependency(
     copyright_text='''
@@ -59,7 +59,7 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
         SOFTWARE.
-    ''', module=__name__, name='PyYAML', version_string='==5.1'
+    ''', module=__name__, name='PyYAML', version_string='==5.1.1'
 )
 PythonDependency(
     copyright_text='''
@@ -303,7 +303,7 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
         THE SOFTWARE.
-    ''', module=__name__, name='django-widget-tweaks', version_string='==1.4.3'
+    ''', module=__name__, name='django-widget-tweaks', version_string='==1.4.5'
 )
 PythonDependency(
     module=__name__, name='furl', version_string='==2.0.0'
@@ -318,7 +318,7 @@ PythonDependency(
     module=__name__, name='mock', version_string='==2.0.0'
 )
 PythonDependency(
-    module=__name__, name='pathlib2', version_string='==2.3.3'
+    module=__name__, name='pathlib2', version_string='==2.3.4'
 )
 PythonDependency(
     copyright_text='''
@@ -381,7 +381,7 @@ PythonDependency(
 
 PythonDependency(
     module=__name__, environment=environment_development, name='Werkzeug',
-    version_string='==0.15.2'
+    version_string='==0.15.4'
 )
 PythonDependency(
     environment=environment_development, module=__name__,
@@ -389,12 +389,12 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_development, module=__name__,
-    name='django-extensions', version_string='==2.1.6'
+    name='django-extensions', version_string='==2.1.9'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
         'Used to allow offline translation of the code text strings.'
-    ), module=__name__, name='django-rosetta', version_string='==0.9.2'
+    ), module=__name__, name='django-rosetta', version_string='==0.9.3'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
@@ -443,7 +443,7 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='psutil',
-    version_string='==5.6.1'
+    version_string='==5.6.3'
 )
 
 PythonDependency(

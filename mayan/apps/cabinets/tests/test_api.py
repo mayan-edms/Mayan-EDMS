@@ -15,10 +15,14 @@ from ..permissions import (
     permission_cabinet_remove_document, permission_cabinet_view
 )
 
-from .mixins import CabinetAPIViewTestMixin, CabinetTestMixin
+from .mixins import (
+    CabinetAPIViewTestMixin, CabinetTestMixin, DocumentCabinetAPIViewTestMixin
+)
 
 
-class CabinetAPITestCase(CabinetAPIViewTestMixin, CabinetTestMixin, BaseAPITestCase):
+class CabinetAPITestCase(
+    CabinetAPIViewTestMixin, CabinetTestMixin, BaseAPITestCase
+):
     def test_cabinet_create_api_view_no_permission(self):
         cabinet_count = Cabinet.objects.count()
 
@@ -135,7 +139,9 @@ class CabinetAPITestCase(CabinetAPIViewTestMixin, CabinetTestMixin, BaseAPITestC
         )
 
 
-class CabinetDocumentAPITestCase(CabinetAPIViewTestMixin, CabinetTestMixin, DocumentTestMixin, BaseAPITestCase):
+class CabinetDocumentAPITestCase(
+    CabinetAPIViewTestMixin, CabinetTestMixin, DocumentTestMixin, BaseAPITestCase
+):
     auto_upload_document = False
 
     def test_cabinet_create_with_single_document(self):
@@ -287,4 +293,57 @@ class CabinetDocumentAPITestCase(CabinetAPIViewTestMixin, CabinetTestMixin, Docu
         self.assertQuerysetEqual(
             qs=self.test_cabinet.documents.all(),
             values=map(repr, self.test_documents)
+        )
+
+
+class DocumentCabinetAPITestCase(
+    CabinetAPIViewTestMixin, CabinetTestMixin,
+    DocumentCabinetAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
+):
+    auto_upload_document = False
+
+    def setUp(self):
+        super(DocumentCabinetAPITestCase, self).setUp()
+        self.upload_document()
+        self._create_test_cabinet()
+        self.test_cabinet.documents.add(self.test_document)
+
+    def test_document_cabinet_list_view_no_permission(self):
+        response = self._request_test_document_cabinet_list_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertTrue('count' not in response.data)
+
+    def test_document_cabinet_list_view_with_document_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view,
+        )
+
+        response = self._request_test_document_cabinet_list_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 0)
+
+    def test_document_cabinet_list_view_with_cabinet_access(self):
+        self.grant_access(
+            obj=self.test_cabinet, permission=permission_cabinet_view,
+        )
+
+        response = self._request_test_document_cabinet_list_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertTrue('count' not in response.data)
+
+    def test_document_cabinet_list_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view,
+        )
+        self.grant_access(
+            obj=self.test_cabinet, permission=permission_cabinet_view,
+        )
+
+        response = self._request_test_document_cabinet_list_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.data['count'], Cabinet.objects.all().count()
+        )
+        self.assertEqual(
+            response.data['results'][0]['id'], self.test_cabinet.pk
         )

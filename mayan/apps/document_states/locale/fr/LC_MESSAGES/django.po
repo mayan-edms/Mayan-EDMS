@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:17-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
+"POT-Creation-Date: 2019-09-24 23:11-0400\n"
+"PO-Revision-Date: 2019-09-24 04:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -39,47 +39,47 @@ msgid ""
 "Return the completion value of the current state of the selected workflow"
 msgstr "Renvoyer la valeur d'achèvement de l'état actuel du flux de travail sélectionné"
 
-#: apps.py:167 apps.py:178 apps.py:188 apps.py:194
+#: apps.py:165 apps.py:176 apps.py:186 apps.py:192
 msgid "None"
 msgstr "Aucun"
 
-#: apps.py:172
+#: apps.py:170
 msgid "Current state"
 msgstr "État actuel"
 
-#: apps.py:176 apps.py:203 models.py:514
+#: apps.py:174 apps.py:201 models.py:514
 msgid "User"
 msgstr "Utilisateur"
 
-#: apps.py:182
+#: apps.py:180
 msgid "Last transition"
 msgstr "Dernière transition"
 
-#: apps.py:186 apps.py:199
+#: apps.py:184 apps.py:197
 msgid "Date and time"
 msgstr "Date et heure"
 
-#: apps.py:192 models.py:211
+#: apps.py:190 models.py:211
 msgid "Completion"
 msgstr "Finalisation"
 
-#: apps.py:206 forms.py:178 links.py:161 models.py:369 models.py:510
+#: apps.py:204 forms.py:178 links.py:161 models.py:369 models.py:510
 msgid "Transition"
 msgstr "Transition"
 
-#: apps.py:210 forms.py:182 models.py:516
+#: apps.py:208 forms.py:182 models.py:516
 msgid "Comment"
 msgstr "Commentaire"
 
-#: apps.py:233
+#: apps.py:231
 msgid "When?"
 msgstr "Quand ?"
 
-#: apps.py:237
+#: apps.py:235
 msgid "Action type"
 msgstr "Type d'action"
 
-#: apps.py:253
+#: apps.py:251
 msgid "Triggers"
 msgstr "Déclencheurs"
 
@@ -121,7 +121,7 @@ msgstr "Oui"
 
 #: forms.py:181
 msgid "Optional comment to attach to the transition."
-msgstr ""
+msgstr "Commentaire facultatif à joindre à la transition."
 
 #: handlers.py:62
 #, python-format
@@ -416,7 +416,7 @@ msgstr "Clé principale de la transition à ajouter."
 msgid ""
 "Assign workflows to the document type of this document to have this document"
 " execute those workflows. "
-msgstr ""
+msgstr "Assigner des flux de travail au type de document de ce document pour que ce document exécute ces flux de travail."
 
 #: views/workflow_instance_views.py:48
 msgid "There are no workflow for this document"
@@ -475,7 +475,7 @@ msgstr "Documents avec le flux de travail : %s"
 msgid ""
 "Create some workflows and associated them with a document type. Active "
 "workflows will be shown here and the documents for which they are executing."
-msgstr ""
+msgstr "Créer des flux de travail et les associer à un type de document. Les flux de travail actifs seront affichés ici et les documents pour lesquels ils sont exécutés."
 
 #: views/workflow_proxy_views.py:74
 msgid "There are no workflows"
@@ -515,7 +515,7 @@ msgstr "Flux de travail affectés à ce type de document"
 msgid ""
 "Removing a workflow from a document type will also remove all running "
 "instances of that workflow."
-msgstr ""
+msgstr "La suppression d'un flux de travail d'un type de document supprimera également toutes les instances en cours d'exécution de ce flux de travail."
 
 #: views/workflow_views.py:87
 #, python-format
@@ -526,7 +526,7 @@ msgstr "Les flux de travail affecté à ce type de document: %s"
 msgid ""
 "Workflows store a series of states and keep track of the current state of a "
 "document. Transitions are used to change the current state to a new one."
-msgstr ""
+msgstr "Les flux de travail stockent une série d'états et assurent le suivi de l'état actuel d'un document. Les transitions sont utilisées pour changer l'état actuel en un nouvel état."
 
 #: views/workflow_views.py:137
 msgid "No workflows have been defined"
@@ -580,7 +580,7 @@ msgstr "Modifier une action d'état de flux de travail : %s"
 msgid ""
 "Workflow state actions are macros that get executed when documents enters or"
 " leaves the state in which they reside."
-msgstr ""
+msgstr "Les actions de flux de travail sont des macros qui sont exécutées lorsque des documents entrent ou sortent de l'état dans lequel ils se trouvent."
 
 #: views/workflow_views.py:371
 msgid "There are no actions for this workflow state"
@@ -681,6 +681,10 @@ msgstr "Le lancement du flux de travail a été mis en file d'attente avec succ�
 #, python-format
 msgid "Preview of: %s"
 msgstr "Prévisualisation de : %s"
+
+#: widgets.py:21
+msgid "Workflow preview"
+msgstr ""
 
 #: workflow_actions.py:22
 msgid "Document label"

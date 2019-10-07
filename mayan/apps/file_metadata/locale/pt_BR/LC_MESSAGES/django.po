@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:17-0400\n"
+"POT-Creation-Date: 2019-09-24 23:13-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -27,20 +27,20 @@ msgstr ""
 msgid "Label"
 msgstr "Rótulo"
 
-#: apps.py:56 events.py:8 links.py:18 permissions.py:7 queues.py:9
+#: apps.py:53 events.py:8 links.py:18 permissions.py:7 queues.py:9
 #: settings.py:9
 msgid "File metadata"
 msgstr ""
 
-#: apps.py:101
+#: apps.py:98
 msgid "Return the value of a specific file metadata."
 msgstr ""
 
-#: apps.py:113 apps.py:117 apps.py:170 apps.py:179
+#: apps.py:110 apps.py:114 apps.py:152 apps.py:161
 msgid "File metadata key"
 msgstr ""
 
-#: apps.py:174 apps.py:183
+#: apps.py:156 apps.py:165
 msgid "File metadata value"
 msgstr ""
 

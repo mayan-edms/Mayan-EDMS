@@ -1,4 +1,4 @@
-|pypi| |builds| |coverage| |python| |license| |docker_pulls| |docker_stars| |docker_layers|
+|donation| |pypi| |builds| |coverage| |python| |license| |docker_pulls| |docker_stars| |docker_layers|
 
 
 .. image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
@@ -25,6 +25,16 @@ at: https://docs.mayan-edms.com/topics/installation.html
 
 .. _Docker: https://www.docker.com/
 
+The pre-release version of the book "Exploring Mayan EDMS" available now at a discounted price!
+
+.. image:: https://camo.githubusercontent.com/89d2fe787507c9247aa7bb406e2682b53eb7a5f9/68747470733a2f2f64313273776274773731397934732e636c6f756466726f6e742e6e65742f696d616765732f76365270785734302f615030714b4c6a6b50694175585a6859754234352f774441554c417a4679782e6a7065673f773d353438
+    :align: center
+    :width: 300
+    :target: https://sellfy.com/p/um2fkx/
+
+Limited quantities. Buyers of the pre-release will get the full version for free when it is ready.
+Click the image or visit: https://sellfy.com/p/um2fkx/
+
 Hardware requirements
 
 - 2 Gigabytes of RAM (1 Gigabyte if OCR is turned off).
@@ -44,6 +54,8 @@ Important links
 - `Videos <https://www.youtube.com/channel/UCJOOXHP1MJ9lVA7d8ZTlHPw>`__
 
 
+.. |donation| image:: https://img.shields.io/badge/donation-PayPal-brightgreen
+   :target: https://paypal.me/MayanEDMS
 .. |pypi| image:: http://img.shields.io/pypi/v/mayan-edms.svg
    :target: http://badge.fury.io/py/mayan-edms
 .. |builds| image:: https://gitlab.com/mayan-edms/mayan-edms/badges/master/build.svg

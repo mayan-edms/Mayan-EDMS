@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:17-0400\n"
-"PO-Revision-Date: 2019-06-15 07:49+0000\n"
+"POT-Creation-Date: 2019-09-24 23:11-0400\n"
+"PO-Revision-Date: 2019-09-24 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -50,11 +50,11 @@ msgstr "版本mime类型"
 msgid "Versions timestamp"
 msgstr "版本时间戳"
 
-#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:333
+#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:334
 msgid "Thumbnail"
 msgstr "缩略图"
 
-#: apps.py:249 apps.py:338 forms/document_forms.py:182 links.py:83
+#: apps.py:249 apps.py:339 forms/document_forms.py:182 links.py:83
 msgid "Pages"
 msgstr "页面"
 
@@ -929,6 +929,10 @@ msgstr "每月文档版本总数"
 msgid "Total document pages at each month"
 msgstr "每月总文档页数"
 
+#: templates/documents/document_print.html:12
+msgid "Document page image preview"
+msgstr ""
+
 #: templates/documents/forms/widgets/document_page_carousel.html:16
 #, python-format
 msgid ""
@@ -940,6 +944,10 @@ msgstr "\n                    第%(page_number)s页，总%(t
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
 msgstr "没有要显示的页面"
+
+#: templates/documents/forms/widgets/document_page_image.html:13
+msgid "Document image"
+msgstr ""
 
 #: utils.py:18
 #, python-format

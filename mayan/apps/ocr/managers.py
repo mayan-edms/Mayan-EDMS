@@ -6,13 +6,15 @@ import traceback
 
 from django.apps import apps
 from django.conf import settings
-from django.db import models
+from django.db import models, transaction
 
 from mayan.apps.documents.storages import storage_documentimagecache
 from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from mayan.apps.documents.tasks import task_generate_document_page_image
 
-from .events import event_ocr_document_version_finish
+from .events import (
+    event_ocr_document_content_deleted, event_ocr_document_version_finish
+)
 from .runtime import ocr_backend
 from .signals import post_document_version_ocr
 
@@ -20,6 +22,15 @@ logger = logging.getLogger(__name__)
 
 
 class DocumentPageOCRContentManager(models.Manager):
+    def delete_content_for(self, document, user=None):
+        with transaction.atomic():
+            for document_page in document.pages.all():
+                self.filter(document_page=document_page).delete()
+
+            event_ocr_document_content_deleted.commit(
+                actor=user, target=document
+            )
+
     def process_document_page(self, document_page):
         logger.info(
             'Processing page: %d of document version: %s',

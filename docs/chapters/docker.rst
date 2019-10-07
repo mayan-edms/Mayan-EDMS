@@ -233,6 +233,12 @@ and will exhaust the available Postgres connections available if a number
 other than 0 is used. Reference: https://serverfault.com/questions/635100/django-conn-max-age-persists-connections-but-doesnt-reuse-them-with-postgresq
 and https://github.com/benoitc/gunicorn/issues/996
 
+``MAYAN_GUNICORN_TIMEOUT``
+
+Optional. Changes the amount of time the frontend worker will wait for a
+request to finish before raising a timeout error. The default is 120
+seconds.
+
 ``MAYAN_GUNICORN_WORKERS``
 
 Optional. This environment variable controls the number of frontend workers
@@ -269,9 +275,9 @@ number of CPUs detected).
 Optional. Changes the UID of the ``mayan`` user internal to the Docker
 container. Defaults to 1000.
 
-``MAYAN_USER_GUID``
+``MAYAN_USER_GID``
 
-Optional. Changes the GUID of the ``mayan`` user internal to the Docker
+Optional. Changes the GID of the ``mayan`` user internal to the Docker
 container. Defaults to 1000.
 
 

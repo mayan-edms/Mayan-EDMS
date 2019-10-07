@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 02:15-0400\n"
-"PO-Revision-Date: 2019-05-30 08:08+0000\n"
-"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"POT-Creation-Date: 2019-09-24 23:07-0400\n"
+"PO-Revision-Date: 2019-08-26 01:01+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,7 +42,7 @@ msgstr "Dokuments izrakstīts"
 msgid "Document forcefully checked in"
 msgstr "Dokuments piespiedus pierakstīts"
 
-#: exceptions.py:27 views.py:108
+#: exceptions.py:27 views.py:122
 msgid "Document already checked out."
 msgstr "Dokuments jau ir izrakstīts."
 
@@ -50,7 +50,7 @@ msgstr "Dokuments jau ir izrakstīts."
 msgid "Document status"
 msgstr "Dokumenta statuss"
 
-#: forms.py:39 models.py:41 views.py:148
+#: forms.py:39 models.py:41 views.py:162
 msgid "User"
 msgstr "Lietotājs"
 
@@ -187,43 +187,43 @@ msgstr "Dokuments nav ticis izrakstīts."
 msgid "Document \"%s\" checked in successfully."
 msgstr "Dokuments \"%s\" pierakstīts veiksmīgi."
 
-#: views.py:114
+#: views.py:94
+#, python-format
+msgid "Check out details for document: %s"
+msgstr "Izraksta detaļas dokumentam: %s"
+
+#: views.py:128
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "Dokuments \"%s\" izrakstīts veiksmīgi."
 
-#: views.py:123
+#: views.py:137
 #, python-format
 msgid "Check out document: %s"
 msgstr "Izrakstīt dokumentu: %s"
 
-#: views.py:154
+#: views.py:168
 msgid "Checkout time and date"
 msgstr "Izraksta laiks un datums"
 
-#: views.py:160
+#: views.py:174
 msgid "Checkout expiration"
 msgstr "Izraksta derīguma termiņš"
 
-#: views.py:168
+#: views.py:182
 msgid ""
 "Checking out a document blocks certain document operations for a "
 "predetermined amount of time."
 msgstr "Dokumenta izrakstīšana bloķē noteiktas dokumentu darbības uz iepriekš noteiktu laika periodu."
 
-#: views.py:172
+#: views.py:186
 msgid "No documents have been checked out"
 msgstr "Neviens dokuments nav izrakstīts"
 
-#: views.py:173
+#: views.py:187
 msgid "Documents checked out"
 msgstr "Izrakstītie dokumenti"
 
-#: views.py:188
-#, python-format
-msgid "Check out details for document: %s"
-msgstr "Izraksta detaļas dokumentam: %s"
-
-#: widgets.py:25
-msgid "Period"
-msgstr "Periods"
+#: widgets.py:27
+msgid "Amount"
+msgstr ""

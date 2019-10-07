@@ -6,11 +6,10 @@
 {% load smart_settings_tags %}
 
 {% spaceless %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=5" name="viewport">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
         <title>
@@ -36,6 +35,7 @@
                 {% include 'appearance/main_menu.html' %}
             </div>
             <div class="main">
+                <div class="body-spacer"></div>
                 <div class="row zero-margin">
                     <div class="col-xs-12">
                         <div id="ajax-content"></div>
@@ -101,6 +101,9 @@
             var app = new MayanApp({
                 ajaxMenusOptions: [
                     {
+                        callback: function (options) {
+                            options.app.doBodyAdjust();
+                        },
                         interval: 5000,
                         menuSelector: '#menu-main',
                         name: 'menu_main',
@@ -113,6 +116,7 @@
                 MayanImage.intialize({
                     templateInvalidDocument: '{% spaceless %}{% include "documents/invalid_document.html" %}{% endspaceless %}'
                 });
+                app.doBodyAdjust();
                 app.doToastrMessages();
                 app.resizeFullHeight();
                 app.setupSelect2();
@@ -122,6 +126,7 @@
             jQuery(document).ready(function() {
                 app.initialize();
             });
+
         </script>
     </body>
 </html>
