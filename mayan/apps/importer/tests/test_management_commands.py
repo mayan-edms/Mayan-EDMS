@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import csv
 
 from django.core import management
-from django.utils.encoding import force_bytes
+from django.utils.encoding import force_bytes, force_text
 
 from mayan.apps.documents.models import DocumentType, Document
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
@@ -27,13 +27,13 @@ class ImportManagementCommandTestCase(GenericDocumentTestCase):
         super(ImportManagementCommandTestCase, self).tearDown()
 
     def _create_test_csv_file(self):
-        self.test_csv_file_descriptor, self.test_csv_path = mkstemp()
+        self.test_csv_path = mkstemp()[1]
 
         print('Test CSV file: {}'.format(self.test_csv_path))
 
-        with open(self.test_csv_path, mode='wb') as csvfile:
+        with open(self.test_csv_path, mode='w', newline='') as file_object:
             filewriter = csv.writer(
-                csvfile, delimiter=force_bytes(','), quotechar=force_bytes('"'),
+                file_object, delimiter=',', quotechar='"',
                 quoting=csv.QUOTE_MINIMAL
             )
             print(
@@ -58,10 +58,7 @@ class ImportManagementCommandTestCase(GenericDocumentTestCase):
                 )
 
     def _destroy_test_csv_file(self):
-        fs_cleanup(
-            filename=self.test_csv_path,
-            file_descriptor=self.test_csv_file_descriptor
-        )
+        fs_cleanup(filename=self.test_csv_path)
 
     def test_import_csv_read(self):
         self.test_document_type.delete()

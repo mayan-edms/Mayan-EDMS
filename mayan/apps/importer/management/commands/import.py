@@ -70,8 +70,10 @@ class Command(management.BaseCommand):
             self.stderr.write('Must specify a CSV file path.')
             exit(1)
         else:
-            with open(options['filelist']) as csv_datafile:
-                csv_reader = csv.reader(csv_datafile)
+            with open(options['filelist'], mode='r') as csv_datafile:
+                csv_reader = csv.reader(
+                    csv_datafile, delimiter=',', quotechar='"'
+                )
                 for row in csv_reader:
                     # Increase row count here even though start index is 0
                     # purpose is to avoid losing row number increments on
@@ -79,7 +81,7 @@ class Command(management.BaseCommand):
                     row_count = row_count + 1
                     if row_count - 1 not in rows_to_ignore:
                         try:
-                            with open(row[options['document_path_column']]) as file_object:
+                            with open(row[options['document_path_column']], mode='rb') as file_object:
                                 document_type_label = row[options['document_type_column']]
 
                                 if document_type_label not in document_types:
