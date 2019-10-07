@@ -52,7 +52,6 @@ link_documentation = Link(
 link_object_error_list = Link(
     icon_class_path='mayan.apps.common.icons.icon_object_error_list',
     kwargs=get_kwargs_factory('resolved_object'),
-    icon_class_path='mayan.apps.common.icons.icon_object_error_list',
     permissions=(permission_error_log_view,), text=_('Errors'),
     view='common:object_error_list',
 )

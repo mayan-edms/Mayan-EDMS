@@ -411,12 +411,6 @@ class DocumentStatesApp(MayanAppConfig):
             )
         )
         menu_secondary.bind_links(
-            links=(link_setup_workflow_transition_field_create,),
-            sources=(
-                WorkflowTransition,
-            )
-        )
-        menu_secondary.bind_links(
             links=(link_workflow_runtime_proxy_list,),
             sources=(
                 WorkflowRuntimeProxy,
