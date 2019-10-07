@@ -153,8 +153,10 @@ job_push_python:
     - locale-gen en_US.UTF-8
     - update-locale LANG=en_US.UTF-8
     - export LC_ALL=en_US.UTF-8
-    - apt-get install -qq curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils libreoffice poppler-utils python-dev python-pip python3-dev python3-pip tesseract-ocr tesseract-ocr-deu
-    - pip3 install -r requirements.txt -r requirements/testing-base.txt
+    - apt-get install -qq curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils libreoffice poppler-utils python-dev python3-dev python-virtualenv tesseract-ocr tesseract-ocr-deu
+    - virtualenv venv -p /usr/bin/python3
+    - . venv/bin/activate
+    - pip install -r requirements.txt -r requirements/testing-base.txt
   only:
     - releases/all
     - releases/docker
@@ -172,9 +174,10 @@ test-mysql:
     - mysql:8.0.3
   script:
     - apt-get install -qq libmysqlclient-dev mysql-client
-    - pip3 install mysqlclient
+    - . venv/bin/activate
+    - pip install mysqlclient
     - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
-    - python3 manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
+    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
   tags:
     - mysql
 
@@ -187,15 +190,17 @@ test-postgres:
     - postgres
   script:
     - apt-get install -qq libpq-dev
-    - pip3 install psycopg2
-    - python3 manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
+    - . venv/bin/activate
+    - pip install psycopg2
+    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
   tags:
     - postgres
 
 test-sqlite:
   <<: *test_base
   script:
-    - python3 manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
+    - . venv/bin/activate
+    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
 
 deploy_demo:
   environment:
