@@ -36,7 +36,6 @@ from .serializers import (
     WritableDocumentTypeSerializer, WritableDocumentVersionSerializer
 )
 from .settings import settings_document_page_image_cache_time
-from .storages import storage_documentimagecache
 from .tasks import task_generate_document_page_image
 
 logger = logging.getLogger(__name__)
@@ -165,7 +164,7 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
 
         AccessControlList.objects.check_access(
             obj=document, permissions=(permission_required,),
-            user=self.request.user, manager=Document.passthrough
+            user=self.request.user
         )
         return document
 
@@ -175,7 +174,7 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         )
 
     def get_queryset(self):
-        return self.get_document_version().pages.all()
+        return self.get_document_version().pages_all.all()
 
     def get_serializer(self, *args, **kwargs):
         return None
@@ -197,19 +196,27 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         if rotation:
             rotation = int(rotation)
 
+        maximum_layer_order = request.GET.get('maximum_layer_order')
+        if maximum_layer_order:
+            maximum_layer_order = int(maximum_layer_order)
+
         task = task_generate_document_page_image.apply_async(
             kwargs=dict(
                 document_page_id=self.get_object().pk, width=width,
-                height=height, zoom=zoom, rotation=rotation
+                height=height, zoom=zoom, rotation=rotation,
+                maximum_layer_order=maximum_layer_order,
+                user_id=request.user.pk
             )
         )
 
         cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
-        with storage_documentimagecache.open(cache_filename) as file_object:
+        cache_file = self.get_object().cache_partition.get_file(filename=cache_filename)
+        with cache_file.open() as file_object:
             response = HttpResponse(file_object.read(), content_type='image')
             if '_hash' in request.GET:
                 patch_cache_control(
-                    response, max_age=settings_document_page_image_cache_time.value
+                    response=response,
+                    max_age=settings_document_page_image_cache_time.value
                 )
             return response
 

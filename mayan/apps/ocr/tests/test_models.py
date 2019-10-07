@@ -2,10 +2,9 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from mayan.apps.common.tests import BaseTestCase
-from mayan.apps.documents.tests import (
-    DocumentTestMixin, TEST_DEU_DOCUMENT_PATH
-)
+from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.literals import TEST_DEU_DOCUMENT_PATH
 
 from .literals import (
     TEST_DOCUMENT_CONTENT, TEST_DOCUMENT_CONTENT_DEU_1,

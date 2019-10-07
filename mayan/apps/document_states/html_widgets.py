@@ -1,9 +1,7 @@
 from __future__ import unicode_literals
 
-from django import forms
 from django.template.loader import render_to_string
-from django.urls import reverse
-from django.utils.html import format_html_join, mark_safe
+from django.utils.html import format_html_join
 
 
 def widget_transition_events(transition):
@@ -12,18 +10,6 @@ def widget_transition_events(transition):
             (
                 transition_trigger.event_type.label,
             ) for transition_trigger in transition.trigger_events.all()
-        )
-    )
-
-
-def widget_workflow_diagram(workflow):
-    return mark_safe(
-        '<img class="img-responsive" src="{}" style="margin:auto;">'.format(
-            reverse(
-                viewname='document_states:workflow_image', kwargs={
-                    'pk': workflow.pk
-                }
-            )
         )
     )
 

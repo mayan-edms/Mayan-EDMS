@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from mayan.apps.common.settings import setting_home_view
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.common.tests.utils import mute_stdout
 
 from ..models import AutoAdminSingleton

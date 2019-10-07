@@ -9,18 +9,13 @@ from mayan.apps.common.generics import SingleObjectListView
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.views import DocumentListView
 
-from ..icons import icon_workflow_list
-from ..links import link_setup_workflow_create, link_setup_workflow_state_create
+from ..icons import icon_workflow_template_list
+from ..links import link_workflow_template_create, link_workflow_template_state_create
 from ..models import WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
 from ..permissions import permission_workflow_view
 
-__all__ = (
-    'WorkflowDocumentListView', 'WorkflowListView',
-    'WorkflowStateDocumentListView', 'WorkflowStateListView'
-)
 
-
-class WorkflowDocumentListView(DocumentListView):
+class WorkflowRuntimeProxyDocumentListView(DocumentListView):
     def dispatch(self, request, *args, **kwargs):
         self.workflow = get_object_or_404(
             klass=WorkflowRuntimeProxy, pk=self.kwargs['pk']
@@ -32,14 +27,14 @@ class WorkflowDocumentListView(DocumentListView):
         )
 
         return super(
-            WorkflowDocumentListView, self
+            WorkflowRuntimeProxyDocumentListView, self
         ).dispatch(request, *args, **kwargs)
 
     def get_document_queryset(self):
         return Document.objects.filter(workflows__workflow=self.workflow)
 
     def get_extra_context(self):
-        context = super(WorkflowDocumentListView, self).get_extra_context()
+        context = super(WorkflowRuntimeProxyDocumentListView, self).get_extra_context()
         context.update(
             {
                 'no_results_text': _(
@@ -56,14 +51,14 @@ class WorkflowDocumentListView(DocumentListView):
         return context
 
 
-class WorkflowListView(SingleObjectListView):
+class WorkflowRuntimeProxyListView(SingleObjectListView):
     object_permission = permission_workflow_view
 
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'no_results_icon': icon_workflow_list,
-            'no_results_main_link': link_setup_workflow_create.resolve(
+            'no_results_icon': icon_workflow_template_list,
+            'no_results_main_link': link_workflow_template_create.resolve(
                 context=RequestContext(request=self.request)
             ),
             'no_results_text': _(
@@ -79,13 +74,13 @@ class WorkflowListView(SingleObjectListView):
         return WorkflowRuntimeProxy.objects.all()
 
 
-class WorkflowStateDocumentListView(DocumentListView):
+class WorkflowRuntimeProxyStateDocumentListView(DocumentListView):
     def get_document_queryset(self):
         return self.get_workflow_state().get_documents()
 
     def get_extra_context(self):
         workflow_state = self.get_workflow_state()
-        context = super(WorkflowStateDocumentListView, self).get_extra_context()
+        context = super(WorkflowRuntimeProxyStateDocumentListView, self).get_extra_context()
         context.update(
             {
                 'object': workflow_state,
@@ -118,7 +113,7 @@ class WorkflowStateDocumentListView(DocumentListView):
         return workflow_state
 
 
-class WorkflowStateListView(SingleObjectListView):
+class WorkflowRuntimeProxyStateListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
             obj=self.get_workflow(), permissions=(permission_workflow_view,),
@@ -126,14 +121,14 @@ class WorkflowStateListView(SingleObjectListView):
         )
 
         return super(
-            WorkflowStateListView, self
+            WorkflowRuntimeProxyStateListView, self
         ).dispatch(request, *args, **kwargs)
 
     def get_extra_context(self):
         return {
             'hide_link': True,
             'hide_object': True,
-            'no_results_main_link': link_setup_workflow_state_create.resolve(
+            'no_results_main_link': link_workflow_template_state_create.resolve(
                 context=RequestContext(
                     request=self.request, dict_={'object': self.get_workflow()}
                 )

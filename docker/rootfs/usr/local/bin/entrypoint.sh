@@ -1,4 +1,7 @@
-#!/bin/sh
+#!/bin/bash
+
+# Use bash and not sh to support argument slicing "${@:2}"
+# sh defaults to dash instead of bash.
 
 set -e
 echo "mayan: starting entrypoint.sh"
@@ -11,17 +14,13 @@ DEFAULT_USER_GID=1000
 MAYAN_USER_UID=${MAYAN_USER_UID:-${DEFAULT_USER_UID}}
 MAYAN_USER_GID=${MAYAN_USER_GID:-${DEFAULT_USER_GID}}
 
-export MAYAN_DEFAULT_BROKER_URL=redis://127.0.0.1:6379/0
-export MAYAN_DEFAULT_CELERY_RESULT_BACKEND=redis://127.0.0.1:6379/0
-
 export MAYAN_ALLOWED_HOSTS='["*"]'
 export MAYAN_BIN=/opt/mayan-edms/bin/mayan-edms.py
-export MAYAN_BROKER_URL=${MAYAN_BROKER_URL:-${MAYAN_DEFAULT_BROKER_URL}}
-export MAYAN_CELERY_RESULT_BACKEND=${MAYAN_CELERY_RESULT_BACKEND:-${MAYAN_DEFAULT_CELERY_RESULT_BACKEND}}
 export MAYAN_INSTALL_DIR=/opt/mayan-edms
 export MAYAN_PYTHON_BIN_DIR=/opt/mayan-edms/bin/
 export MAYAN_MEDIA_ROOT=/var/lib/mayan
 export MAYAN_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE:-mayan.settings.production}
+export DJANGO_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE}
 
 export MAYAN_GUNICORN_BIN=${MAYAN_PYTHON_BIN_DIR}gunicorn
 export MAYAN_GUNICORN_WORKERS=${MAYAN_GUNICORN_WORKERS:-2}
@@ -29,8 +28,8 @@ export MAYAN_GUNICORN_TIMEOUT=${MAYAN_GUNICORN_TIMEOUT:-120}
 export MAYAN_PIP_BIN=${MAYAN_PYTHON_BIN_DIR}pip
 export MAYAN_STATIC_ROOT=${MAYAN_INSTALL_DIR}/static
 
-MAYAN_WORKER_FAST_CONCURRENCY=${MAYAN_WORKER_FAST_CONCURRENCY:-1}
-MAYAN_WORKER_MEDIUM_CONCURRENCY=${MAYAN_WORKER_MEDIUM_CONCURRENCY:-1}
+MAYAN_WORKER_FAST_CONCURRENCY=${MAYAN_WORKER_FAST_CONCURRENCY:-0}
+MAYAN_WORKER_MEDIUM_CONCURRENCY=${MAYAN_WORKER_MEDIUM_CONCURRENCY:-0}
 MAYAN_WORKER_SLOW_CONCURRENCY=${MAYAN_WORKER_SLOW_CONCURRENCY:-1}
 
 update_uid_gid() {
@@ -67,10 +66,8 @@ else
 fi
 export MAYAN_WORKER_SLOW_CONCURRENCY
 
-export CELERY_ALWAYS_EAGER=False
+# Allow importing of user setting modules
 export PYTHONPATH=$PYTHONPATH:$MAYAN_MEDIA_ROOT
-
-chown mayan:mayan /var/lib/mayan -R
 
 apt_get_install() {
     apt-get -q update
@@ -79,9 +76,9 @@ apt_get_install() {
     rm -rf /var/lib/apt/lists/*
 }
 
-initialize() {
-    echo "mayan: initialize()"
-    su mayan -c "${MAYAN_BIN} initialsetup --force --no-javascript"
+initialsetup() {
+    echo "mayan: initialsetup()"
+    su mayan -c "${MAYAN_BIN} initialsetup --force --no-dependencies"
 }
 
 os_package_installs() {
@@ -98,43 +95,71 @@ pip_installs() {
     fi
 }
 
-start() {
+run_all() {
     echo "mayan: start()"
     rm -rf /var/run/supervisor.sock
     exec /usr/bin/supervisord -nc /etc/supervisor/supervisord.conf
 }
 
-upgrade() {
-    echo "mayan: upgrade()"
-    su mayan -c "${MAYAN_BIN} performupgrade --no-javascript"
+performupgrade() {
+    echo "mayan: performupgrade()"
+    su mayan -c "${MAYAN_BIN} performupgrade --no-dependencies"
+}
+
+make_ready() {
+    # Check if this is a new install, otherwise try to upgrade the existing
+    # installation on subsequent starts
+    if [ ! -f $INSTALL_FLAG ]; then
+        initialsetup
+    else
+        performupgrade
+    fi
+}
+
+set_uid_guid() {
+    echo "mayan: changing uid/guid"
+    usermod mayan -u ${MAYAN_USER_UID:-${DEFAULT_USER_UID}}
+    groupmod mayan -g ${MAYAN_USER_GID:-${DEFAULT_USER_GID}}
 }
 
 os_package_installs || true
 pip_installs || true
+chown mayan:mayan /var/lib/mayan -R
 
 case "$1" in
 
-mayan) # Check if this is a new install, otherwise try to upgrade the existing
-       # installation on subsequent starts
-       if [ ! -f $INSTALL_FLAG ]; then
-           initialize
-       else
-           upgrade
-       fi
-       start
-       ;;
+run_initialsetup)
+    initialsetup
+    ;;
 
-run-tests) # Check if this is a new install, otherwise try to upgrade the existing
-           # installation on subsequent starts
-           if [ ! -f $INSTALL_FLAG ]; then
-               initialize
-           else
-               upgrade
-           fi
-           run-tests.sh
-           ;;
+run_performupgrade)
+    performupgrade
+    ;;
 
-*) su mayan -c "$@";
-   ;;
+run_all)
+    make_ready
+    run_all
+    ;;
+
+run_celery)
+    run_celery.sh "${@:2}"
+    ;;
+
+run_frontend)
+    run_frontend.sh
+    ;;
+
+run_tests)
+    make_ready
+    run_tests.sh
+    ;;
+
+run_worker)
+    run_worker.sh "${@:2}"
+    ;;
+
+*)
+    su mayan -c "$@"
+    ;;
 
 esac

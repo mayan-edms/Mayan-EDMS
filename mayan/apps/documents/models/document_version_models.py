@@ -7,24 +7,25 @@ import shutil
 import uuid
 
 from django.apps import apps
-from django.core.files.base import ContentFile
 from django.db import models, transaction
 from django.template import Template, Context
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.converter.exceptions import InvalidOfficeFormat, PageCountError
-from mayan.apps.converter.models import Transformation
+from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.transformations import TransformationRotate
 from mayan.apps.converter.utils import get_converter_class
 from mayan.apps.mimetype.api import get_mimetype
 
 from ..events import event_document_new_version, event_document_version_revert
+from ..literals import DOCUMENT_IMAGES_CACHE_NAME
 from ..managers import DocumentVersionManager
 from ..settings import setting_fix_orientation, setting_hash_block_size
 from ..signals import post_document_created, post_version_upload
-from ..storages import storage_documentversion, storage_documentimagecache
+from ..storages import storage_documentversion
 
 from .document_models import Document
 
@@ -60,14 +61,6 @@ class DocumentVersion(models.Model):
     """
     _pre_open_hooks = {}
     _post_save_hooks = {}
-
-    @classmethod
-    def register_pre_open_hook(cls, order, func):
-        cls._pre_open_hooks[order] = func
-
-    @classmethod
-    def register_post_save_hook(cls, order, func):
-        cls._post_save_hooks[order] = func
 
     document = models.ForeignKey(
         on_delete=models.CASCADE, related_name='versions', to=Document,
@@ -118,18 +111,35 @@ class DocumentVersion(models.Model):
 
     objects = DocumentVersionManager()
 
+    @classmethod
+    def register_pre_open_hook(cls, order, func):
+        cls._pre_open_hooks[order] = func
+
+    @classmethod
+    def register_post_save_hook(cls, order, func):
+        cls._post_save_hooks[order] = func
+
     def __str__(self):
         return self.get_rendered_string()
 
-    @property
-    def cache_filename(self):
-        return 'document-version-{}'.format(self.uuid)
+    @cached_property
+    def cache(self):
+        Cache = apps.get_model(app_label='file_caching', model_name='Cache')
+        return Cache.objects.get(name=DOCUMENT_IMAGES_CACHE_NAME)
+
+    @cached_property
+    def cache_partition(self):
+        partition, created = self.cache.partitions.get_or_create(
+            name='version-{}'.format(self.uuid)
+        )
+        return partition
 
     def delete(self, *args, **kwargs):
         for page in self.pages.all():
             page.delete()
 
         self.file.storage.delete(self.file.name)
+        self.cache_partition.delete()
 
         return super(DocumentVersion, self).delete(*args, **kwargs)
 
@@ -146,7 +156,7 @@ class DocumentVersion(models.Model):
         for page in self.pages.all():
             degrees = page.detect_orientation()
             if degrees:
-                Transformation.objects.add_to_object(
+                layer_saved_transformations.add_to_object(
                     obj=page, transformation=TransformationRotate,
                     arguments='{{"degrees": {}}}'.format(360 - degrees)
                 )
@@ -164,43 +174,36 @@ class DocumentVersion(models.Model):
             return first_page.get_api_image_url(*args, **kwargs)
 
     def get_intermediate_file(self):
-        cache_filename = self.cache_filename
-        logger.debug('Intermidiate filename: %s', cache_filename)
-
-        if storage_documentimagecache.exists(cache_filename):
-            logger.debug('Intermidiate file "%s" found.', cache_filename)
-
-            return storage_documentimagecache.open(cache_filename)
+        cache_filename = 'intermediate_file'
+        cache_file = self.cache_partition.get_file(filename=cache_filename)
+        if cache_file:
+            logger.debug('Intermidiate file found.')
+            return cache_file.open()
         else:
-            logger.debug('Intermidiate file "%s" not found.', cache_filename)
+            logger.debug('Intermidiate file not found.')
 
             try:
                 with self.open() as version_file_object:
-                    converter = get_converter_class()(file_object=version_file_object)
+                    converter = get_converter_class()(
+                        file_object=version_file_object
+                    )
                     with converter.to_pdf() as pdf_file_object:
-
-                        # Since open "wb+" doesn't create files, check if the file
-                        # exists, if not then create it
-                        if not storage_documentimagecache.exists(cache_filename):
-                            storage_documentimagecache.save(
-                                name=cache_filename, content=ContentFile(content='')
-                            )
-
-                        with storage_documentimagecache.open(cache_filename, mode='wb+') as file_object:
+                        with self.cache_partition.create_file(filename=cache_filename) as file_object:
                             shutil.copyfileobj(
                                 fsrc=pdf_file_object, fdst=file_object
                             )
 
-                    return storage_documentimagecache.open(cache_filename)
+                        return self.cache_partition.get_file(filename=cache_filename).open()
             except InvalidOfficeFormat:
                 return self.open()
             except Exception as exception:
-                # Cleanup in case of error
                 logger.error(
                     'Error creating intermediate file "%s"; %s.',
                     cache_filename, exception
                 )
-                storage_documentimagecache.delete(cache_filename)
+                cache_file = self.cache_partition.get_file(filename=cache_filename)
+                if cache_file:
+                    cache_file.delete()
                 raise
 
     def get_rendered_string(self, preserve_extension=False):
@@ -223,11 +226,6 @@ class DocumentVersion(models.Model):
         return (self.checksum, self.document.natural_key())
     natural_key.dependencies = ['documents.Document']
 
-    def invalidate_cache(self):
-        storage_documentimagecache.delete(self.cache_filename)
-        for page in self.pages.all():
-            page.invalidate_cache()
-
     @property
     def is_in_trash(self):
         return self.document.is_in_trash
@@ -247,6 +245,17 @@ class DocumentVersion(models.Model):
                 )
 
             return result
+
+    @property
+    def pages_all(self):
+        DocumentPage = apps.get_model(
+            app_label='documents', model_name='DocumentPage'
+        )
+        return DocumentPage.passthrough.filter(document_version=self)
+
+    @property
+    def pages(self):
+        return self.version_pages.all()
 
     @property
     def page_count(self):

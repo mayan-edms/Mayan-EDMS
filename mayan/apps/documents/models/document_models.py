@@ -136,10 +136,6 @@ class Document(models.Model):
         if latest_version:
             return latest_version.get_api_image_url(*args, **kwargs)
 
-    def invalidate_cache(self):
-        for document_version in self.versions.all():
-            document_version.invalidate_cache()
-
     @property
     def is_in_trash(self):
         return self.in_trash
@@ -239,6 +235,18 @@ class Document(models.Model):
     @property
     def page_count(self):
         return self.latest_version.page_count
+
+    @property
+    def pages_all(self):
+        try:
+            return self.latest_version.pages_all
+        except AttributeError:
+            # Document has no version yet
+            DocumentPage = apps.get_model(
+                app_label='documents', model_name='DocumentPage'
+            )
+
+            return DocumentPage.objects.none()
 
     @property
     def pages(self):

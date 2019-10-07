@@ -12,10 +12,10 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.forms import DynamicModelForm
 
 from .classes import WorkflowAction
+from .fields import WorfklowImageField
 from .models import (
     Workflow, WorkflowState, WorkflowStateAction, WorkflowTransition
 )
-from .widgets import WorkflowImageWidget
 
 
 class WorkflowActionSelectionForm(forms.Form):
@@ -181,9 +181,9 @@ class WorkflowInstanceTransitionSelectForm(forms.Form):
 
 
 class WorkflowPreviewForm(forms.Form):
-    preview = forms.CharField(widget=WorkflowImageWidget())
+    workflow = WorfklowImageField()
 
     def __init__(self, *args, **kwargs):
         instance = kwargs.pop('instance', None)
         super(WorkflowPreviewForm, self).__init__(*args, **kwargs)
-        self.fields['preview'].initial = instance
+        self.fields['workflow'].initial = instance

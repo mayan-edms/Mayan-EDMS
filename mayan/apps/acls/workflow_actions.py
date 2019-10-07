@@ -16,7 +16,6 @@ from mayan.apps.permissions.models import Role
 from .classes import ModelPermission
 from .permissions import permission_acl_edit
 
-__all__ = ('GrantAccessAction', 'RevokeAccessAction')
 logger = logging.getLogger(__name__)
 
 
@@ -57,7 +56,7 @@ class GrantAccessAction(WorkflowAction):
         }
     }
     field_order = ('content_type', 'object_id', 'roles', 'permissions')
-    label = _('Grant access')
+    label = _('Grant object access')
     widgets = {
         'content_type': {
             'class': 'django.forms.widgets.Select', 'kwargs': {
@@ -140,7 +139,7 @@ class GrantAccessAction(WorkflowAction):
 
 
 class RevokeAccessAction(GrantAccessAction):
-    label = _('Revoke access')
+    label = _('Revoke object access')
 
     def execute(self, context):
         self.get_execute_data()

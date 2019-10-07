@@ -1,6 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.views.decorators.cache import cache_control, patch_cache_control
 
 from rest_framework import generics
 
@@ -10,6 +12,7 @@ from mayan.apps.documents.permissions import permission_document_type_view
 from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
 from mayan.apps.rest_api.permissions import MayanPermission
 
+from .literals import WORKFLOW_IMAGE_TASK_TIMEOUT
 from .models import Workflow
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
@@ -23,8 +26,11 @@ from .serializers import (
     WritableWorkflowTransitionSerializer
 )
 
+from .settings import settings_workflow_image_cache_time
+from .tasks import task_generate_workflow_image
 
-class APIDocumentTypeWorkflowListView(generics.ListAPIView):
+
+class APIDocumentTypeWorkflowRuntimeProxyListView(generics.ListAPIView):
     """
     get: Returns a list of all the document type workflows.
     """
@@ -172,7 +178,43 @@ class APIWorkflowDocumentTypeView(generics.RetrieveDestroyAPIView):
         self.get_workflow().document_types.remove(instance)
 
 
-class APIWorkflowListView(generics.ListCreateAPIView):
+class APIWorkflowImageView(generics.RetrieveAPIView):
+    """
+    get: Returns an image representation of the selected workflow.
+    """
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = {
+        'GET': (permission_workflow_view,),
+    }
+    queryset = Workflow.objects.all()
+
+    def get_serializer(self, *args, **kwargs):
+        return None
+
+    def get_serializer_class(self):
+        return None
+
+    @cache_control(private=True)
+    def retrieve(self, request, *args, **kwargs):
+        task = task_generate_workflow_image.apply_async(
+            kwargs=dict(
+                document_state_id=self.get_object().pk,
+            )
+        )
+
+        cache_filename = task.get(timeout=WORKFLOW_IMAGE_TASK_TIMEOUT)
+        cache_file = self.get_object().cache_partition.get_file(filename=cache_filename)
+        with cache_file.open() as file_object:
+            response = HttpResponse(file_object.read(), content_type='image')
+            if '_hash' in request.GET:
+                patch_cache_control(
+                    response,
+                    max_age=settings_workflow_image_cache_time.value
+                )
+            return response
+
+
+class APIWorkflowRuntimeProxyListView(generics.ListCreateAPIView):
     """
     get: Returns a list of all the workflows.
     post: Create a new workflow.
@@ -187,7 +229,7 @@ class APIWorkflowListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIWorkflowListView, self).get_serializer(*args, **kwargs)
+        return super(APIWorkflowRuntimeProxyListView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

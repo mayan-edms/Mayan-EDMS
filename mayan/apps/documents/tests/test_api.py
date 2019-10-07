@@ -7,7 +7,7 @@ from django.utils.encoding import force_text
 from django_downloadview import assert_download_response
 from rest_framework import status
 
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models import Document, DocumentType
 from ..permissions import (
@@ -163,11 +163,11 @@ class DocumentAPIViewTestMixin(object):
         )
 
     def _request_test_document_api_upload_view(self):
-        with open(TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='rest_api:document-list', data={
                     'document_type': self.test_document_type.pk,
-                    'file': file_descriptor
+                    'file': file_object
                 }
             )
 

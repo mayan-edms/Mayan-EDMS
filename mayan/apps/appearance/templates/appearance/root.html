@@ -31,8 +31,11 @@
         {% if appearance_type == 'plain' %}
             {% block content_plain %}{% endblock %}
         {% else %}
+            <div id="menu-topbar">
+                {% include 'appearance/menu_topbar.html' %}
+            </div>
             <div id="menu-main">
-                {% include 'appearance/main_menu.html' %}
+                {% include 'appearance/menu_main.html' %}
             </div>
             <div class="main">
                 <div class="body-spacer"></div>
@@ -102,6 +105,7 @@
                 ajaxMenusOptions: [
                     {
                         callback: function (options) {
+                            MayanApp.updateNavbarState();
                             options.app.doBodyAdjust();
                         },
                         interval: 5000,
@@ -109,7 +113,14 @@
                         name: 'menu_main',
                         url: '{% url "rest_api:template-detail" "menu_main" %}'
                     },
-                ]
+                    {
+                        interval: 5000,
+                        menuSelector: '#menu-topbar',
+                        name: 'menu_topbar',
+                        url: '{% url "rest_api:template-detail" "menu_topbar" %}'
+                    },
+                ],
+                messagePosition: '{% smart_setting "APPEARANCE_MESSAGE_POSITION" %}'
             });
 
             var afterBaseLoad = function () {

@@ -15,7 +15,6 @@ from .views import (
     TemplateNodeCreateView, TemplateNodeDeleteView, TemplateNodeEditView
 )
 
-
 urlpatterns_templates = [
     url(
         regex=r'^document_types/(?P<pk>\d+)/index_templates/$',

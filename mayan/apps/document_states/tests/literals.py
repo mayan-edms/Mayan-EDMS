@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from ..literals import FIELD_TYPE_CHOICE_CHAR
+
 TEST_INDEX_LABEL = 'test workflow index'
 
 TEST_WORKFLOW_LABEL = 'test workflow label'
@@ -11,6 +13,10 @@ TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT = 'test workflow instance log entry com
 TEST_WORKFLOW_STATE_LABEL = 'test state label'
 TEST_WORKFLOW_STATE_LABEL_EDITED = 'test state label edited'
 TEST_WORKFLOW_STATE_COMPLETION = 66
+TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT = 'test workflow transition field help test'
+TEST_WORKFLOW_TRANSITION_FIELD_LABEL = 'test workflow transition field'
+TEST_WORKFLOW_TRANSITION_FIELD_NAME = 'test_workflow_transition_field'
+TEST_WORKFLOW_TRANSITION_FIELD_TYPE = FIELD_TYPE_CHOICE_CHAR
 TEST_WORKFLOW_TRANSITION_LABEL = 'test transition label'
 TEST_WORKFLOW_TRANSITION_LABEL_2 = 'test transition label 2'
 TEST_WORKFLOW_TRANSITION_LABEL_EDITED = 'test transition label edited'

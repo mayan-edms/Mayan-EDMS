@@ -1,3 +1,84 @@
+3.3 (2019-XX-XX)
+================
+- Add support for icon shadows.
+- Add icons and no-result template to the object error log view and
+  links.
+- Use Select2 widget for the document type selection form.
+- Backport the vertical main menu update.
+- Backport workflow preview refactor. GitLab issue #532.
+- Add support for source column inheritance.
+- Add support for source column exclusion.
+- Backport workflow context support.
+- Backport workflow transitions field support.
+- Backport workflow email action.
+- Backport individual index rebuild support.
+- Rename the installjavascript command to installdependencies.
+- Remove database conversion command.
+- Remove support for quoted configuration entries. Support unquoted,
+  nested dictionaries in the configuration. Requires manual
+  update of existing config.yml files.
+- Support user specified locations for the configuration file with the
+  CONFIGURATION_FILEPATH (MAYAN_CONFIGURATION_FILEPATH environment variable),
+  and CONFIGURATION_LAST_GOOD_FILEPATH
+  (MAYAN_CONFIGURATION_LAST_GOOD_FILEPATH environment variable) settings.
+- Move bootstrapped settings code to their own module in the smart_settings
+  apps.
+- Remove individual database configuration options. All database
+  configuration is now done using MAYAN_DATABASES to mirror Django way of
+  doing atabase etup.
+- Added support for YAML encoded environment variables to the platform
+  templates apps.
+- Move YAML code to its own module.
+- Move Django and Celery settings.
+- Backport FakeStorageSubclass from versions/next.
+- Remove django-environ.
+- Support checking in and out multiple documents.
+- Remove encapsulate helper.
+- Add support for menu inheritance.
+- Emphasize source column labels.
+- Backport file cache manager app.
+- Convert document image cache to use file cache manager app.
+  Add setting DOCUMENTS_CACHE_MAXIMUM_SIZE defaults to 500 MB.
+- Replace djcelery and replace it with django-celery-beat.
+- Update Celery to version 4.3.0
+  Thanks to Jakob Haufe (@sur5r) and Jesaja Everling (@jeverling)
+  for much of the research and code updates.
+- Support wildcard MIME type associations for the file metadata drivers.
+- Rename MAYAN_GUID to MAYAN_GID
+- Update Gunicorn to use sync workers.
+- Include devpi-server as a development dependency.
+- Update default Docker stack file.
+- Remove Redis from the Docker image.
+- Add Celery flower to the Docker image.
+- Allow PIP proxying to the Docker image during build.
+- Default Celery worker concurrency to 0 (auto).
+- Set DJANGO_SETTINGS_MODULE environment variable to make it
+  available to sub processes.
+- Add entrypoint commands to run single workers, single gunicorn
+  or single celery commands like "flower".
+- Add platform template to return queues for a worker.
+- Update the EXIFTOOL driver to run for all documents
+  regardless of MIME type.
+- Remove task inspection from task manager app.
+- Move pagination navigation inside the toolbar.
+- Remove document image clear link and view.
+  This is now handled by the file caching app.
+- Add web links app.
+- Add support to display column help text
+  as a tooltip.
+- Update numeric dashboard widget to display
+  thousand commas.
+- Add support for disabling document pages.
+- Add support for converter layers.
+- Add redactions app.
+- Unify all line endings to be Linux style.
+- Add support for changing the system messages position.
+  GitLab issue #640. Thanks to Matthias Urhahn (@d4rken).
+- Update Docker deploy script. Use alpine postgres version.
+  Support Docker networks and make it the default.
+  Delete the containers to allow the script to be idempotent.
+  Deploy a Redis container.
+
 3.2.8 (2019-10-01)
 ==================
 - Fix error when accessing some API entry points without

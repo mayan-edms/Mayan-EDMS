@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from mayan.apps.documents.tests import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..models import Comment
 from ..permissions import (

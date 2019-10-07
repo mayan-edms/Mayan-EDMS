@@ -2,9 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.dependencies.classes import (
-    GoogleFontDependency, JavaScriptDependency
-)
+from mayan.apps.dependencies.classes import JavaScriptDependency
 
 JavaScriptDependency(
     label=_('JavaScript image cropper'), module=__name__, name='cropperjs',

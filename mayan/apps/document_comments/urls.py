@@ -11,24 +11,24 @@ from .views import (
 
 urlpatterns = [
     url(
-        regex=r'^(?P<pk>\d+)/comment/add/$',
+        regex=r'^documents/(?P<pk>\d+)/comments/$',
+        view=DocumentCommentListView.as_view(), name='comments_for_document'
+    ),
+    url(
+        regex=r'^documents/(?P<pk>\d+)/comments/add/$',
         view=DocumentCommentCreateView.as_view(), name='comment_add'
     ),
     url(
-        regex=r'^comment/(?P<pk>\d+)/delete/$',
+        regex=r'^comments/(?P<pk>\d+)/delete/$',
         view=DocumentCommentDeleteView.as_view(), name='comment_delete'
     ),
     url(
-        regex=r'^comment/(?P<pk>\d+)/$',
+        regex=r'^comments/(?P<pk>\d+)/$',
         view=DocumentCommentDetailView.as_view(), name='comment_details'
     ),
     url(
-        regex=r'^comment/(?P<pk>\d+)/edit/$',
+        regex=r'^comments/(?P<pk>\d+)/edit/$',
         view=DocumentCommentEditView.as_view(), name='comment_edit'
-    ),
-    url(
-        regex=r'^(?P<pk>\d+)/comment/list/$',
-        view=DocumentCommentListView.as_view(), name='comments_for_document'
     ),
 ]
 

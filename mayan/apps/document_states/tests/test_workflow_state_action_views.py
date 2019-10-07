@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 
 from ..permissions import permission_workflow_edit
 
@@ -15,7 +15,7 @@ class WorkflowStateActionViewTestCase(WorkflowStateActionTestMixin, WorkflowTest
 
     def _request_test_document_state_action_view(self):
         return self.get(
-            viewname='document_states:setup_workflow_state_action_list',
+            viewname='document_states:workflow_template_state_action_list',
             kwargs={'pk': self.test_workflow_state.pk}
         )
 

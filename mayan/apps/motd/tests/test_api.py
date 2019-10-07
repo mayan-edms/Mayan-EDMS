@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from rest_framework import status
 
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models import Message
 from ..permissions import (

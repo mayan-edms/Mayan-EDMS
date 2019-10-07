@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from rest_framework import status
 
 from mayan.apps.permissions.tests.literals import TEST_ROLE_LABEL
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view

@@ -1,8 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 
+import hashlib
 import json
 import logging
 
+from furl import furl
 from graphviz import Digraph
 import yaml
 try:
@@ -10,16 +12,22 @@ try:
 except ImportError:
     from yaml import SafeLoader
 
+from django.apps import apps
 from django.conf import settings
+from django.core import serializers
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import IntegrityError, models, transaction
 from django.db.models import F, Max, Q
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import (
+    force_bytes, force_text, python_2_unicode_compatible
+)
+from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.serialization import yaml_load
 from mayan.apps.common.validators import YAMLValidator, validate_internal_name
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
@@ -29,7 +37,8 @@ from .error_logs import error_log_state_actions
 from .events import event_workflow_created, event_workflow_edited
 from .literals import (
     FIELD_TYPE_CHOICES, WIDGET_CLASS_CHOICES, WORKFLOW_ACTION_WHEN_CHOICES,
-    WORKFLOW_ACTION_ON_ENTRY, WORKFLOW_ACTION_ON_EXIT
+    WORKFLOW_ACTION_ON_ENTRY, WORKFLOW_ACTION_ON_EXIT,
+    WORKFLOW_IMAGE_CACHE_NAME
 )
 from .managers import WorkflowManager
 from .permissions import permission_workflow_transition
@@ -69,8 +78,70 @@ class Workflow(models.Model):
     def __str__(self):
         return self.label
 
+    @cached_property
+    def cache(self):
+        Cache = apps.get_model(app_label='file_caching', model_name='Cache')
+        return Cache.objects.get(name=WORKFLOW_IMAGE_CACHE_NAME)
+
+    @cached_property
+    def cache_partition(self):
+        partition, created = self.cache.partitions.get_or_create(
+            name='{}'.format(self.pk)
+        )
+        return partition
+
+    def delete(self, *args, **kwargs):
+        self.cache_partition.delete()
+        return super(Workflow, self).delete(*args, **kwargs)
+
+    def generate_image(self):
+        cache_filename = '{}'.format(self.get_hash())
+
+        if self.cache_partition.get_file(filename=cache_filename):
+            logger.debug(
+                'workflow cache file "%s" found', cache_filename
+            )
+        else:
+            logger.debug(
+                'workflow cache file "%s" not found', cache_filename
+            )
+
+            image = self.render()
+            with self.cache_partition.create_file(filename=cache_filename) as file_object:
+                file_object.write(image)
+
+        return cache_filename
+
+    def get_api_image_url(self, *args, **kwargs):
+        final_url = furl()
+        final_url.args = kwargs
+        final_url.path = reverse(
+            viewname='rest_api:workflow-image',
+            kwargs={'pk': self.pk}
+        )
+        final_url.args['_hash'] = self.get_hash()
+
+        return final_url.tostr()
+
     def get_document_types_not_in_workflow(self):
         return DocumentType.objects.exclude(pk__in=self.document_types.all())
+
+    def get_hash(self):
+        objects_lists = list(
+            Workflow.objects.filter(pk=self.pk)
+        ) + list(
+            WorkflowState.objects.filter(workflow__pk=self.pk)
+        ) + list(
+            WorkflowStateAction.objects.filter(state__workflow__pk=self.pk)
+        ) + list(
+            WorkflowTransition.objects.filter(workflow__pk=self.pk)
+        )
+
+        return hashlib.sha256(
+            force_bytes(
+                serializers.serialize('json', objects_lists)
+            )
+        ).hexdigest()
 
     def get_initial_state(self):
         try:
@@ -420,7 +491,7 @@ class WorkflowTransitionField(models.Model):
         return self.label
 
     def get_widget_kwargs(self):
-        return yaml.load(stream=self.widget_kwargs, Loader=SafeLoader)
+        return yaml_load(stream=self.widget_kwargs)
 
 
 @python_2_unicode_compatible

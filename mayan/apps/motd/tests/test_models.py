@@ -2,15 +2,16 @@ from __future__ import unicode_literals
 
 from datetime import timedelta
 
-from django.test import TestCase
 from django.utils import timezone
+
+from mayan.apps.common.tests.base import BaseTestCase
 
 from ..models import Message
 
 from .mixins import MOTDTestMixin
 
 
-class MOTDTestCase(MOTDTestMixin, TestCase):
+class MOTDTestCase(MOTDTestMixin, BaseTestCase):
     def setUp(self):
         super(MOTDTestCase, self).setUp()
         self._create_test_message()

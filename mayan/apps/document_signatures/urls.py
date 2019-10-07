@@ -12,37 +12,37 @@ from .views import (
 
 urlpatterns = [
     url(
-        regex=r'^(?P<pk>\d+)/details/$',
+        regex=r'^signatures/(?P<pk>\d+)/details/$',
         view=DocumentVersionSignatureDetailView.as_view(),
         name='document_version_signature_details'
     ),
     url(
-        regex=r'^signature/(?P<pk>\d+)/download/$',
+        regex=r'^signatures/(?P<pk>\d+)/download/$',
         view=DocumentVersionSignatureDownloadView.as_view(),
         name='document_version_signature_download'
     ),
     url(
-        regex=r'^document/version/(?P<pk>\d+)/signatures/list/$',
+        regex=r'^documents/versions/(?P<pk>\d+)/signatures/$',
         view=DocumentVersionSignatureListView.as_view(),
         name='document_version_signature_list'
     ),
     url(
-        regex=r'^documents/version/(?P<pk>\d+)/signature/detached/upload/$',
+        regex=r'^documents/versions/(?P<pk>\d+)/signatures/detached/upload/$',
         view=DocumentVersionSignatureUploadView.as_view(),
         name='document_version_signature_upload'
     ),
     url(
-        regex=r'^documents/version/(?P<pk>\d+)/signature/detached/create/$',
+        regex=r'^documents/versions/(?P<pk>\d+)/signatures/detached/create/$',
         view=DocumentVersionDetachedSignatureCreateView.as_view(),
         name='document_version_signature_detached_create'
     ),
     url(
-        regex=r'^documents/version/(?P<pk>\d+)/signature/embedded/create/$',
+        regex=r'^documents/versions/(?P<pk>\d+)/signatures/embedded/create/$',
         view=DocumentVersionEmbeddedSignatureCreateView.as_view(),
         name='document_version_signature_embedded_create'
     ),
     url(
-        regex=r'^signature/(?P<pk>\d+)/delete/$',
+        regex=r'^signatures/(?P<pk>\d+)/delete/$',
         view=DocumentVersionSignatureDeleteView.as_view(),
         name='document_version_signature_delete'
     ),

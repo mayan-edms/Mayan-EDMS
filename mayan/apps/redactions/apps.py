@@ -6,15 +6,12 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import (
-    menu_list_facet, menu_object, menu_secondary,
-)
+from mayan.apps.converter.links import link_transformation_list
+from mayan.apps.common.menus import menu_list_facet
 
 from .dependencies import *  # NOQA
-from .links import (
-    link_redaction_create, link_redaction_delete, link_redaction_edit,
-    link_redaction_list
-)
+from .layers import layer_redactions
+from .transformations import *  # NOQA
 
 logger = logging.getLogger(__name__)
 
@@ -33,24 +30,12 @@ class RedactionsApp(MayanAppConfig):
         DocumentPage = apps.get_model(
             app_label='documents', model_name='DocumentPage'
         )
-        Redaction = self.get_model(model_name='Redaction')
+
+        link_redaction_list = link_transformation_list.copy(
+            layer=layer_redactions
+        )
+        link_redaction_list.text = _('Redactions')
 
         menu_list_facet.bind_links(
-            links=(
-                link_redaction_list,
-            ), sources=(DocumentPage,)
-        )
-        menu_object.bind_links(
-            links=(link_redaction_delete, link_redaction_edit,),
-            sources=(Redaction,)
-        )
-        menu_secondary.bind_links(
-            links=(link_redaction_create,), sources=(Redaction,)
-        )
-        menu_secondary.bind_links(
-            links=(link_redaction_create,),
-            sources=(
-                'redactions:redaction_create',
-                'redactions:redaction_list'
-            )
+            links=(link_redaction_list,), sources=(DocumentPage,)
         )

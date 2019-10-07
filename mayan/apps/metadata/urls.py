@@ -17,56 +17,56 @@ from .views import (
 
 urlpatterns = [
     url(
-        regex=r'^(?P<pk>\d+)/edit/$', view=DocumentMetadataEditView.as_view(),
+        regex=r'^documents/metadata/(?P<pk>\d+)/edit/$', view=DocumentMetadataEditView.as_view(),
         name='metadata_edit'
     ),
     url(
-        regex=r'^multiple/edit/$', view=DocumentMetadataEditView.as_view(),
+        regex=r'^documents/multiple/metadata/edit/$', view=DocumentMetadataEditView.as_view(),
         name='metadata_multiple_edit'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/view/$', view=DocumentMetadataListView.as_view(),
+        regex=r'^documents/(?P<pk>\d+)/view/$', view=DocumentMetadataListView.as_view(),
         name='metadata_view'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/add/$', view=DocumentMetadataAddView.as_view(),
+        regex=r'^documents/(?P<pk>\d+)/add/$', view=DocumentMetadataAddView.as_view(),
         name='metadata_add'
     ),
     url(
-        regex=r'^multiple/add/$', view=DocumentMetadataAddView.as_view(),
+        regex=r'^documents/multiple/add/$', view=DocumentMetadataAddView.as_view(),
         name='metadata_multiple_add'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/remove/$',
+        regex=r'^documents/(?P<pk>\d+)/remove/$',
         view=DocumentMetadataRemoveView.as_view(), name='metadata_remove'
     ),
     url(
-        regex=r'^multiple/remove/$', view=DocumentMetadataRemoveView.as_view(),
+        regex=r'^documents/multiple/remove/$', view=DocumentMetadataRemoveView.as_view(),
         name='metadata_multiple_remove'
     ),
     url(
-        regex=r'^setup/type/list/$', view=MetadataTypeListView.as_view(),
+        regex=r'^metadata_types/$', view=MetadataTypeListView.as_view(),
         name='setup_metadata_type_list'
     ),
     url(
-        regex=r'^setup/type/create/$', view=MetadataTypeCreateView.as_view(),
+        regex=r'^metadata_types/create/$', view=MetadataTypeCreateView.as_view(),
         name='setup_metadata_type_create'
     ),
     url(
-        regex=r'^setup/type/(?P<pk>\d+)/edit/$',
+        regex=r'^metadata_types/(?P<pk>\d+)/edit/$',
         view=MetadataTypeEditView.as_view(), name='setup_metadata_type_edit'
     ),
     url(
-        regex=r'^setup/type/(?P<pk>\d+)/delete/$',
+        regex=r'^metadata_types/(?P<pk>\d+)/delete/$',
         view=MetadataTypeDeleteView.as_view(), name='setup_metadata_type_delete'
     ),
     url(
-        regex=r'^setup/document_types/(?P<pk>\d+)/metadata_types/$',
+        regex=r'^document_types/(?P<pk>\d+)/metadata_types/$',
         view=SetupDocumentTypeMetadataTypes.as_view(),
         name='setup_document_type_metadata_types'
     ),
     url(
-        regex=r'^setup/metadata_types/(?P<pk>\d+)/document_types/$',
+        regex=r'^metadata_types/(?P<pk>\d+)/document_types/$',
         view=SetupMetadataTypesDocumentTypes.as_view(),
         name='setup_metadata_type_document_types'
     ),

@@ -2,7 +2,8 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from mayan.apps.documents.tests import GenericDocumentTestCase, TEST_HYBRID_DOCUMENT
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
+from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
 
 from .literals import TEST_DOCUMENT_CONTENT
 

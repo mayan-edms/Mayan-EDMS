@@ -21,14 +21,6 @@ def check_for_sqlite():
     return settings.DATABASES['default']['ENGINE'] == DJANGO_SQLITE_BACKEND and settings.DEBUG is False
 
 
-def encapsulate(function):
-    # Workaround Django ticket 15791
-    # Changeset 16045
-    # http://stackoverflow.com/questions/6861601/
-    # cannot-resolve-callable-context-variable/6955045#6955045
-    return lambda: function
-
-
 def get_related_field(model, related_field_name):
     try:
         local_field_name, remaining_field_path = related_field_name.split(

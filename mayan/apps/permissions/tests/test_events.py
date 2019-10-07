@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from actstream.models import Action
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 
 from ..events import event_role_created, event_role_edited
 from ..permissions import permission_role_create, permission_role_edit

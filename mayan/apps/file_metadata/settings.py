@@ -16,12 +16,7 @@ setting_auto_process = namespace.add_setting(
     )
 )
 setting_drivers_arguments = namespace.add_setting(
-    default='''
-        {{
-            exif_driver: {{exiftool_path: {}}},
-
-        }}
-    '''.replace('\n', '').format(DEFAULT_EXIF_PATH), help_text=_(
+    default={'exif_driver': {'exiftool_path': DEFAULT_EXIF_PATH}}, help_text=_(
         'Arguments to pass to the drivers.'
-    ), global_name='FILE_METADATA_DRIVERS_ARGUMENTS', quoted=True
+    ), global_name='FILE_METADATA_DRIVERS_ARGUMENTS'
 )

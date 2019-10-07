@@ -41,6 +41,9 @@ icon_object_errors = Icon(
 icon_object_error_list = Icon(
     driver_name='fontawesome', symbol='exclamation-triangle'
 )
+icon_object_error_list_clear = Icon(
+    driver_name='fontawesome', symbol='times'
+)
 icon_ok = Icon(
     driver_name='fontawesome', symbol='check'
 )

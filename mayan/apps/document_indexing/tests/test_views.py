@@ -1,7 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
-from mayan.apps.common.tests import GenericViewTestCase
-from mayan.apps.documents.tests import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.base import (
+    GenericDocumentViewTestCase, GenericViewTestCase
+)
 
 from ..models import Index, IndexInstanceNode
 from ..permissions import (

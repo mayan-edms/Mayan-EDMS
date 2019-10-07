@@ -32,7 +32,10 @@ class Cabinet(MPTTModel):
         blank=True, db_index=True, null=True, on_delete=models.CASCADE,
         related_name='children', to='self'
     )
-    label = models.CharField(max_length=128, verbose_name=_('Label'))
+    label = models.CharField(
+        help_text=_('A short text used to identify the cabinet.'),
+        max_length=128, verbose_name=_('Label')
+    )
     documents = models.ManyToManyField(
         blank=True, related_name='cabinets', to=Document,
         verbose_name=_('Documents')

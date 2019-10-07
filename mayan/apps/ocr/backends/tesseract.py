@@ -4,11 +4,6 @@ import logging
 import shutil
 
 import sh
-import yaml
-try:
-    from yaml import CSafeLoader as SafeLoader
-except ImportError:
-    from yaml import SafeLoader
 
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -115,15 +110,10 @@ class Tesseract(OCRBackendBase):
             logger.debug('Available languages: %s', ', '.join(self.languages))
 
     def read_settings(self):
-        backend_arguments = yaml.load(
-            Loader=SafeLoader,
-            stream=setting_ocr_backend_arguments.value or '{}',
-        )
-
-        self.tesseract_binary_path = backend_arguments.get(
+        self.tesseract_binary_path = setting_ocr_backend_arguments.value.get(
             'tesseract_path', DEFAULT_TESSERACT_BINARY_PATH
         )
 
-        self.command_timeout = backend_arguments.get(
+        self.command_timeout = setting_ocr_backend_arguments.value.get(
             'timeout', DEFAULT_TESSERACT_TIMEOUT
         )

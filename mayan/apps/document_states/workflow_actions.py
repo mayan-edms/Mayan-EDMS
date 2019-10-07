@@ -11,7 +11,6 @@ from django.utils.translation import ugettext_lazy as _
 from .classes import WorkflowAction
 from .exceptions import WorkflowStateActionError
 
-__all__ = ('DocumentPropertiesEditAction', 'HTTPPostAction',)
 logger = logging.getLogger(__name__)
 DEFAULT_TIMEOUT = 4  # 4 seconds
 
@@ -37,7 +36,7 @@ class DocumentPropertiesEditAction(WorkflowAction):
         },
     }
     field_order = ('document_label', 'document_description')
-    label = _('Modify the properties of the document')
+    label = _('Modify document properties')
     widgets = {
         'document_description': {
             'class': 'django.forms.widgets.Textarea', 'kwargs': {

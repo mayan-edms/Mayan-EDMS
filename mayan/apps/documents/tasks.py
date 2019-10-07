@@ -43,17 +43,6 @@ def task_check_trash_periods():
 
 
 @app.task(ignore_result=True)
-def task_clear_image_cache():
-    Document = apps.get_model(
-        app_label='documents', model_name='Document'
-    )
-
-    logger.info('Starting document cache invalidation')
-    Document.objects.invalidate_cache()
-    logger.info('Finished document cache invalidation')
-
-
-@app.task(ignore_result=True)
 def task_delete_document(trashed_document_id):
     DeletedDocument = apps.get_model(
         app_label='documents', model_name='DeletedDocument'
@@ -77,14 +66,19 @@ def task_delete_stubs():
 
 
 @app.task()
-def task_generate_document_page_image(document_page_id, *args, **kwargs):
+def task_generate_document_page_image(document_page_id, user_id=None, **kwargs):
     DocumentPage = apps.get_model(
         app_label='documents', model_name='DocumentPage'
     )
+    User = get_user_model()
 
-    document_page = DocumentPage.objects.get(pk=document_page_id)
+    if user_id:
+        user = User.objects.get(pk=user_id)
+    else:
+        user = None
 
-    return document_page.generate_image(*args, **kwargs)
+    document_page = DocumentPage.passthrough.get(pk=document_page_id)
+    return document_page.generate_image(user=user, **kwargs)
 
 
 @app.task(ignore_result=True)

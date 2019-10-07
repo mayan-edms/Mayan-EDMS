@@ -15,6 +15,9 @@ permission_redaction_delete = namespace.add_permission(
 permission_redaction_edit = namespace.add_permission(
     label=_('Edit redactions'), name='redaction_edit'
 )
+permission_redaction_exclude = namespace.add_permission(
+    label=_('Exclude redactions'), name='redaction_exclude'
+)
 permission_redaction_view = namespace.add_permission(
     label=_('View existing redactions'), name='redaction_view'
 )

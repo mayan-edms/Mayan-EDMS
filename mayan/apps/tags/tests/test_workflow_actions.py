@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
 from mayan.apps.document_states.tests.test_workflow_actions import ActionTestCase
 
@@ -37,7 +37,7 @@ class TagActionViewTestCase(WorkflowTestMixin, GenericViewTestCase):
         self._create_test_workflow_state()
 
         response = self.get(
-            viewname='document_states:setup_workflow_state_action_create',
+            viewname='document_states:workflow_template_state_action_create',
             kwargs={
                 'pk': self.test_workflow_state.pk,
                 'class_path': 'mayan.apps.tags.workflow_actions.AttachTagAction'
@@ -51,7 +51,7 @@ class TagActionViewTestCase(WorkflowTestMixin, GenericViewTestCase):
         self._create_test_workflow_state()
 
         response = self.get(
-            viewname='document_states:setup_workflow_state_action_create',
+            viewname='document_states:workflow_template_state_action_create',
             kwargs={
                 'pk': self.test_workflow_state.pk,
                 'class_path': 'mayan.apps.tags.workflow_actions.RemoveTagAction'

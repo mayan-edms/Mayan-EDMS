@@ -6,9 +6,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_facet, menu_main, menu_secondary
+from mayan.apps.common.menus import (
+    menu_facet, menu_main, menu_multi_item, menu_secondary
+)
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.events.classes import ModelEventType
+from mayan.apps.navigation.classes import SourceColumn
 
 from .dashboard_widgets import DashboardWidgetTotalCheckouts
 from .events import (
@@ -17,8 +20,9 @@ from .events import (
 )
 from .handlers import handler_check_new_version_creation
 from .links import (
-    link_check_in_document, link_check_out_document, link_check_out_info,
-    link_check_out_list
+    link_check_in_document, link_check_in_document_multiple,
+    link_check_out_document, link_check_out_document_multiple,
+    link_check_out_info, link_check_out_list
 )
 from .methods import (
     method_check_in, method_get_check_out_info, method_get_check_out_state,
@@ -43,6 +47,8 @@ class CheckoutsApp(MayanAppConfig):
     def ready(self):
         super(CheckoutsApp, self).ready()
 
+        CheckedOutDocument = self.get_model(model_name='CheckedOutDocument')
+        DocumentCheckout = self.get_model(model_name='DocumentCheckout')
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
@@ -76,6 +82,22 @@ class CheckoutsApp(MayanAppConfig):
                 permission_document_check_out_detail_view
             )
         )
+        ModelPermission.register_inheritance(
+            model=DocumentCheckout, related='document'
+        )
+
+        SourceColumn(
+            attribute='get_user_display', include_label=True, order=99,
+            source=CheckedOutDocument
+        )
+        SourceColumn(
+            attribute='get_checkout_datetime', include_label=True, order=99,
+            source=CheckedOutDocument
+        )
+        SourceColumn(
+            attribute='get_checkout_expiration', include_label=True, order=99,
+            source=CheckedOutDocument
+        )
 
         dashboard_main.add_widget(
             widget=DashboardWidgetTotalCheckouts, order=-1
@@ -85,6 +107,22 @@ class CheckoutsApp(MayanAppConfig):
             links=(link_check_out_info,), sources=(Document,)
         )
         menu_main.bind_links(links=(link_check_out_list,), position=98)
+        menu_multi_item.bind_links(
+            links=(
+                link_check_in_document_multiple,
+            ), sources=(CheckedOutDocument,)
+        )
+        menu_multi_item.bind_links(
+            links=(
+                link_check_in_document_multiple,
+                link_check_out_document_multiple,
+            ), sources=(Document,)
+        )
+        menu_multi_item.unbind_links(
+            links=(
+                link_check_out_document_multiple,
+            ), sources=(CheckedOutDocument,)
+        )
         menu_secondary.bind_links(
             links=(link_check_out_document, link_check_in_document),
             sources=(

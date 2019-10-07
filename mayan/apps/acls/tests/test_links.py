@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.urls import reverse
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 
 from ..links import (
     link_acl_delete, link_acl_list, link_acl_create, link_acl_permissions

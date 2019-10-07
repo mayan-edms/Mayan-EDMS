@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 
 from ..classes import Statistic
 from ..permissions import permission_statistics_view

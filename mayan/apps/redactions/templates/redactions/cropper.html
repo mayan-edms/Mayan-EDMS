@@ -4,13 +4,19 @@
 {% load static %}
 
 {% load common_tags %}
+{% load documents_tags %}
 
-{% block title %}{% blocktrans with object as object %}Redaction coordinates for: {{ object }}{% endblocktrans %}{% endblock title %}
+{% block title %}{{ title }}{% endblock title %}
 
 {% block stylesheets %}
     <link href="{% static 'redactions/node_modules/cropperjs/dist/cropper.css' %}" rel="stylesheet">
 
     <style>
+        .cropper-invisible {
+            background: #000;
+            opacity: 1;
+        }
+
         .cropper-main {
             width: 100%;
         }
@@ -18,12 +24,16 @@
         .cropper-main img {
             max-width: 100%;
         }
+
+        .cropper-modal {
+            opacity: 0;
+        }
     </style>
 {% endblock %}
 
 {% block content %}
     <div class="cropper-main">
-        <img src="{{ document_page.get_api_image_url }}">
+        <img id="cropper-img" src="{% get_api_image_url obj=content_object maximum_layer_order=layer.order %}">
     </div>
 
     <br>
@@ -38,29 +48,33 @@
         var pic_real_width, pic_real_height;
         var canvasData;
         var containerData;
-        var $image = $('.cropper-main img');
-        var cropperInstance;
+        var $image = $('#cropper-img');
+        var image = document.getElementById('cropper-img');
         var defaultArguments = {
             left: 10,
             top: 10,
             right: 10,
             bottom: 10,
-            fillcolor: '#000000',
         }
-        var initialArguments = JSON.parse($('#id_arguments').text() || JSON.stringify(defaultArguments));
+        var initialArguments = JSON.parse(
+            $('#id_arguments').text() || JSON.stringify(defaultArguments)
+        );
 
         var callbackCrop = function (data) {
             var crop_left = (data.detail.x / pic_real_width * 100).toFixed(2);
             var crop_top = (data.detail.y / pic_real_height * 100).toFixed(2);
-            var crop_right = (100.001 - (data.detail.x + data.detail.width) / pic_real_width * 100).toFixed(2);
-            var crop_bottom = (100.001 - (data.detail.y + data.detail.height) / pic_real_height * 100).toFixed(2);
+            var crop_right = (
+                100.001 - (data.detail.x + data.detail.width) / pic_real_width * 100
+            ).toFixed(2);
+            var crop_bottom = (
+                100.001 - (data.detail.y + data.detail.height) / pic_real_height * 100
+            ).toFixed(2);
 
             var arguments = {
                 'left': parseFloat(crop_left),
                 'top': parseFloat(crop_top),
                 'right': parseFloat(crop_right),
                 'bottom': parseFloat(crop_bottom),
-                'fillcolor': '#000000',
             }
 
             $('#id_arguments').text(JSON.stringify(arguments));
@@ -85,16 +99,16 @@
                         pic_real_height = this.height;
                     });
 
-                    cropperInstance = $image.cropper({
+                    new Cropper(
+                        image, {
                         crop: callbackCrop,
+                        highlight: false,
                         mouseWheelZoom: false,
                         movable: false,
-                        //preview: '.cropper-preview',
                         ready: function () {
-                            canvasData = $image.cropper('getCanvasData');
-                            containerData = $image.cropper('getContainerData');
-
-                            $image.cropper('setCropBoxData', {
+                            canvasData = this.cropper.getCanvasData();
+                            containerData = this.cropper.getContainerData();
+                            this.cropper.setCropBoxData({
                                 left: initialArguments.left / 100.0 * canvasData.width + canvasData.left,
                                 top: initialArguments.top / 100.0 * canvasData.height + canvasData.top,
                                 width: (100.0 - initialArguments.right - initialArguments.left) / 100.0 * canvasData.width,

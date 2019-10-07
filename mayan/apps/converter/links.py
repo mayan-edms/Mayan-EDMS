@@ -1,55 +1,37 @@
 from __future__ import unicode_literals
 
-from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.navigation.classes import Link
-
-from .permissions import (
-    permission_transformation_create, permission_transformation_delete,
-    permission_transformation_edit, permission_transformation_view
-)
+from .classes import LayerLink
+from .layers import layer_saved_transformations
 
 
-def get_kwargs_factory(variable_name):
-    def get_kwargs(context):
-        ContentType = apps.get_model(
-            app_label='contenttypes', model_name='ContentType'
-        )
-
-        content_type = ContentType.objects.get_for_model(
-            context[variable_name]
-        )
-        return {
-            'app_label': '"{}"'.format(content_type.app_label),
-            'model': '"{}"'.format(content_type.model),
-            'object_id': '{}.pk'.format(variable_name)
-        }
-
-    return get_kwargs
+def conditional_active(context, resolved_link):
+    return resolved_link.link.view == resolved_link.current_view_name and context.get('layer_name', None) == resolved_link.link.layer_name
 
 
-link_transformation_create = Link(
-    icon_class_path='mayan.apps.converter.icons.icon_transformation_create',
-    kwargs=get_kwargs_factory('content_object'),
-    permissions=(permission_transformation_create,),
-    text=_('Create new transformation'), view='converter:transformation_create'
-)
-link_transformation_delete = Link(
-    args='resolved_object.pk',
+link_transformation_delete = LayerLink(
+    action='delete',
+    kwargs={'layer_name': 'layer_name', 'pk': 'resolved_object.pk'},
     icon_class_path='mayan.apps.converter.icons.icon_transformation_delete',
-    permissions=(permission_transformation_delete,),
+    layer=layer_saved_transformations,
     tags='dangerous', text=_('Delete'), view='converter:transformation_delete'
 )
-link_transformation_edit = Link(
-    args='resolved_object.pk',
+link_transformation_edit = LayerLink(
+    action='edit',
+    kwargs={'layer_name': 'layer_name', 'pk': 'resolved_object.pk'},
     icon_class_path='mayan.apps.converter.icons.icon_transformation_edit',
-    permissions=(permission_transformation_edit,),
+    layer=layer_saved_transformations,
     text=_('Edit'), view='converter:transformation_edit'
 )
-link_transformation_list = Link(
-    icon_class_path='mayan.apps.converter.icons.icon_transformation_list',
-    kwargs=get_kwargs_factory('resolved_object'),
-    permissions=(permission_transformation_view,), text=_('Transformations'),
+link_transformation_list = LayerLink(
+    action='list', conditional_active=conditional_active,
+    layer=layer_saved_transformations, text=_('Transformations'),
     view='converter:transformation_list'
+)
+link_transformation_select = LayerLink(
+    action='select',
+    icon_class_path='mayan.apps.converter.icons.icon_transformation_select',
+    layer=layer_saved_transformations, text=_('Select new transformation'),
+    view='converter:transformation_select'
 )

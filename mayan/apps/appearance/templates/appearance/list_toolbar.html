@@ -1,0 +1,90 @@
+{% load i18n %}
+
+{% load common_tags %}
+{% load navigation_tags %}
+
+{% if is_paginated or links_multi_menus_results %}
+    <div class="well center-block toolbar">
+{% endif %}
+
+    {% if links_multi_menus_results %}
+        <div class="pull-left">
+            <div class="btn-toolbar" role="toolbar" style="margin-right: 10px;">
+                <div class="btn-group">
+                        <a class="btn btn-default btn-sm check-all" data-checked=false data-icon-checked="fa fa-check-square" data-icon-unchecked="far fa-square" title="{% trans 'Select/Deselect all' %}">
+                            <i class="far fa-square"></i>
+                        </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if is_paginated %}
+        <div class="pull-left">
+            <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group">
+                    {% if page_obj.has_previous %}
+                        <a class="btn btn-default btn-sm" href="?{{ page_obj.previous_page_number.querystring }}">&lsaquo;&lsaquo;</a>
+                    {% else %}
+                        <a class="btn btn-default btn-sm disabled" href="#">&lsaquo;&lsaquo;</a>
+                    {% endif %}
+
+                    {% for page in page_obj.pages %}
+
+                        {% if page %}
+
+                            {% ifequal page page_obj.number %}
+                                <a class="active btn btn-default btn-sm pagination-disabled" href="#">{{ page }}</a>
+                            {% else %}
+                                <a class="btn btn-default btn-sm" href="?{{ page.querystring }}">{{ page }}</a>
+                            {% endifequal %}
+                        {% else %}
+                            <a class="btn btn-default btn-sm disabled" href="#">...</a>
+                        {% endif %}
+
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <a class="btn btn-default btn-sm" href="?{{ page_obj.next_page_number.querystring }}">&rsaquo;&rsaquo;</a>
+                    {% else %}
+                        <a class="btn btn-default btn-sm disabled" href="#">&rsaquo;&rsaquo;</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if links_multi_menus_results %}
+        <p class="pull-right" id="multi-item-title" style="line-height: 16px; padding-top: 8px;">{% trans 'Select items to activate bulk actions. Use Shift + click to select many.' %}</p>
+
+        <div class="pull-right btn-group" id="multi-item-actions" style="display: none;">
+            <button aria-expanded="true" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" type="button">
+                {% trans 'Bulk actions' %}
+                <span class="caret"></span>
+                <span class="sr-only">{% trans 'Toggle Dropdown' %}</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                {% for multi_item_menu_results in links_multi_menus_results %}
+                    {% for link_group in multi_item_menu_results.link_groups %}
+                        {% with link_group.links as object_navigation_links %}
+                        {% with 'true' as as_li %}
+                        {% with 'true' as hide_active_anchor %}
+                        {% with 'btn-sm btn-multi-item-action' as link_classes %}
+                            {% include 'navigation/generic_navigation.html' %}
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
+
+                    {% endfor %}
+                    {% if not forloop.last and link_group %}
+                        <li class="divider"></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+{% if is_paginated or links_multi_menus_results %}
+    <div class="clearfix"></div>
+    </div>
+{% endif %}

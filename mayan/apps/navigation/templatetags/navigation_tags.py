@@ -108,11 +108,6 @@ def navigation_resolve_menus(context, names, source=None, sort_results=None):
     return result
 
 
-@register.simple_tag()
-def navigation_source_column_get_absolute_url(source_column, obj):
-    return source_column.get_absolute_url(obj=obj)
-
-
 @register.simple_tag(takes_context=True)
 def navigation_source_column_resolve(context, column):
     if column:

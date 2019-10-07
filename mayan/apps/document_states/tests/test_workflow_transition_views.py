@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
-from mayan.apps.common.tests import GenericViewTestCase
-from mayan.apps.documents.tests import GenericDocumentViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..literals import FIELD_TYPE_CHOICE_CHAR
 from ..models import WorkflowTransition
@@ -11,7 +11,10 @@ from ..permissions import (
 )
 
 from .literals import (
-    TEST_WORKFLOW_TRANSITION_LABEL, TEST_WORKFLOW_TRANSITION_LABEL_EDITED
+    TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT,
+    TEST_WORKFLOW_TRANSITION_FIELD_LABEL, TEST_WORKFLOW_TRANSITION_FIELD_NAME,
+    TEST_WORKFLOW_TRANSITION_FIELD_TYPE, TEST_WORKFLOW_TRANSITION_LABEL,
+    TEST_WORKFLOW_TRANSITION_LABEL_EDITED
 )
 from .mixins import (
     WorkflowTestMixin, WorkflowViewTestMixin, WorkflowTransitionViewTestMixin
@@ -215,7 +218,7 @@ class WorkflowTransitionEventViewTestCase(
 ):
     def _request_test_workflow_transition_event_list_view(self):
         return self.get(
-            viewname='document_states:setup_workflow_transition_events',
+            viewname='document_states:workflow_template_transition_events',
             kwargs={'pk': self.test_workflow_transition.pk}
         )
 
@@ -259,7 +262,7 @@ class WorkflowTransitionFieldViewTestCase(
 
     def _request_test_workflow_transition_field_list_view(self):
         return self.get(
-            viewname='document_states:setup_workflow_transition_field_list',
+            viewname='document_states:workflow_template_transition_field_list',
             kwargs={'pk': self.test_workflow_transition.pk}
         )
 
@@ -289,7 +292,7 @@ class WorkflowTransitionFieldViewTestCase(
 
     def _request_workflow_transition_field_create_view(self):
         return self.post(
-            viewname='document_states:setup_workflow_transition_field_create',
+            viewname='document_states:workflow_template_transition_field_create',
             kwargs={'pk': self.test_workflow_transition.pk},
             data={
                 'field_type': TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
@@ -327,7 +330,7 @@ class WorkflowTransitionFieldViewTestCase(
 
     def _request_workflow_transition_field_delete_view(self):
         return self.post(
-            viewname='document_states:setup_workflow_transition_field_delete',
+            viewname='document_states:workflow_template_transition_field_delete',
             kwargs={'pk': self.test_workflow_transition_field.pk},
         )
 

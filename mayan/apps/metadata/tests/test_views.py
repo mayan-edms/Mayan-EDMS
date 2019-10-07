@@ -1,14 +1,13 @@
 from __future__ import unicode_literals
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_properties_edit, permission_document_type_edit,
     permission_document_view
 )
-from mayan.apps.documents.tests import (
-    GenericDocumentViewTestCase, TEST_DOCUMENT_TYPE_2_LABEL
-)
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.literals import TEST_DOCUMENT_TYPE_2_LABEL
 
 from ..models import MetadataType
 from ..permissions import (

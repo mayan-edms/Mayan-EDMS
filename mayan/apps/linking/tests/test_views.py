@@ -1,8 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.tests import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..models import SmartLink
 from ..permissions import (

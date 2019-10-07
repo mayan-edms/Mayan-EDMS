@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.core import management
 
-from djcelery.models import IntervalSchedule, PeriodicTask
+from django_celery_beat.models import IntervalSchedule, PeriodicTask
 
 
 class Command(management.BaseCommand):

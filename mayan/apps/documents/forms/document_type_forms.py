@@ -41,7 +41,8 @@ class DocumentTypeFilteredSelectForm(forms.Form):
         self.fields['document_type'] = field_class(
             help_text=help_text, label=_('Document type'),
             queryset=queryset, required=True,
-            widget=widget_class(attrs={'class': 'select2', 'size': 10}), **extra_kwargs
+            widget=widget_class(attrs={'class': 'select2', 'size': 10}),
+            **extra_kwargs
         )
 
 

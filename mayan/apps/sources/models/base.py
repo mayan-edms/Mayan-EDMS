@@ -7,12 +7,12 @@ from django.db import models, transaction
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from djcelery.models import PeriodicTask, IntervalSchedule
+from django_celery_beat.models import PeriodicTask, IntervalSchedule
 from model_utils.managers import InheritanceManager
 
 from mayan.apps.common.compressed_files import Archive
 from mayan.apps.common.exceptions import NoMIMETypeMatch
-from mayan.apps.converter.models import Transformation
+from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.settings import setting_language
 
@@ -131,7 +131,7 @@ class Source(models.Model):
                 if user:
                     document.add_as_recent_document_for_user(user=user)
 
-                Transformation.objects.copy(
+                layer_saved_transformations.copy_transformations(
                     source=self, targets=document_version.pages.all()
                 )
 

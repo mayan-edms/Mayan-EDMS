@@ -23,6 +23,7 @@
     {% block content_plain %}{% endblock %}
 {% else %}
     <div class="">
+
         {% navigation_resolve_menus names='facet,list facet' sort_results=True as facet_menus_link_results %}
 
         <div class="row zero-margin">
@@ -43,7 +44,7 @@
                         {% if settings_changed %}
                             <div class="alert alert-dismissible alert-warning">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <p><strong>{% trans 'Warning' %}</strong> {% trans 'Settings updated, restart your installation for changes to take proper effect.' %}</p>
+                                <p><strong>{% trans 'Warning' %}</strong> {% trans 'Settings updated, restart your installation and refresh your browser for changes to take effect.' %}</p>
                             </div>
                         {% endif %}
                     </div>
@@ -138,6 +139,9 @@
             },
         {% endfor %}
     ];
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    })
 </script>
 {% block javascript %}{% endblock %}
 

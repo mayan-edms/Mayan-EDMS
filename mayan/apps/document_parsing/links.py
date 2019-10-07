@@ -10,6 +10,11 @@ from .permissions import (
     permission_parse_document
 )
 
+
+def is_document_page_disabled(context):
+    return not context['resolved_object'].enabled
+
+
 link_document_content = Link(
     args='resolved_object.id',
     icon_class_path='mayan.apps.document_parsing.icons.icon_document_content',
@@ -28,7 +33,7 @@ link_document_content_delete_multiple = Link(
     view='document_parsing:document_content_delete_multiple',
 )
 link_document_page_content = Link(
-    args='resolved_object.id',
+    args='resolved_object.id', conditional_disable=is_document_page_disabled,
     icon_class_path='mayan.apps.document_parsing.icons.icon_document_content',
     permissions=(permission_content_view,), text=_('Content'),
     view='document_parsing:document_page_content'

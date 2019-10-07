@@ -2,13 +2,11 @@ from __future__ import unicode_literals
 
 from django.utils.encoding import force_text
 
-from mayan.apps.common.tests import BaseTestCase
-from mayan.apps.documents.tests import (
-    DocumentTestMixin, TEST_SMALL_DOCUMENT_PATH
-)
+from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.documents.tests.literals import (
     TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_DESCRIPTION_EDITED,
-    TEST_DOCUMENT_LABEL_EDITED
+    TEST_DOCUMENT_LABEL_EDITED, TEST_SMALL_DOCUMENT_PATH
 )
 from mayan.apps.metadata.models import MetadataType, DocumentTypeMetadataType
 

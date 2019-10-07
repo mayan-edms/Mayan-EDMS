@@ -1,9 +1,9 @@
 from __future__ import unicode_literals
 
-from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.document_indexing.models import Index, IndexInstanceNode
 from mayan.apps.document_indexing.tests.literals import TEST_INDEX_LABEL
-from mayan.apps.documents.tests import DocumentTestMixin
+from mayan.apps.documents.tests.base import DocumentTestMixin
 
 from .literals import (
     TEST_FILE_METADATA_INDEX_NODE_TEMPLATE, TEST_FILE_METADATA_VALUE

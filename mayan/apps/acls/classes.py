@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 class ModelPermission(object):
     _functions = {}
     _inheritances = {}
+    _manager_names = {}
     _registry = {}
 
     @classmethod
@@ -19,22 +20,6 @@ class ModelPermission(object):
         cls._registry.pop(model, None)
         # TODO: Find method to revert the add_to_class('acls'...)
         # delattr doesn't work.
-
-    @classmethod
-    def register(cls, model, permissions):
-        from django.contrib.contenttypes.fields import GenericRelation
-
-        cls._registry.setdefault(model, [])
-        for permission in permissions:
-            cls._registry[model].append(permission)
-
-        AccessControlList = apps.get_model(
-            app_label='acls', model_name='AccessControlList'
-        )
-
-        model.add_to_class(
-            name='acls', value=GenericRelation(AccessControlList)
-        )
 
     @classmethod
     def get_classes(cls, as_content_type=False):
@@ -98,9 +83,47 @@ class ModelPermission(object):
         return cls._inheritances[model]
 
     @classmethod
+    def get_manager(cls, model):
+        try:
+            manager_name = cls.get_manager_name(model=model)
+        except KeyError:
+            manager_name = None
+
+        if manager_name:
+            manager = getattr(model, manager_name)
+        else:
+            manager = model._meta.default_manager
+
+        return manager
+
+    @classmethod
+    def get_manager_name(cls, model):
+        return cls._manager_names[model]
+
+    @classmethod
+    def register(cls, model, permissions):
+        from django.contrib.contenttypes.fields import GenericRelation
+
+        cls._registry.setdefault(model, [])
+        for permission in permissions:
+            cls._registry[model].append(permission)
+
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
+        model.add_to_class(
+            name='acls', value=GenericRelation(AccessControlList)
+        )
+
+    @classmethod
     def register_function(cls, model, function):
         cls._functions[model] = function
 
     @classmethod
     def register_inheritance(cls, model, related):
         cls._inheritances[model] = related
+
+    @classmethod
+    def register_manager(cls, model, manager_name):
+        cls._manager_names[model] = manager_name

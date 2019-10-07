@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.http import QueryDict
 from django.utils.encoding import force_bytes
+from django.utils.six import PY3
 
 
 class URL(object):
@@ -20,9 +21,7 @@ class URL(object):
 
     def to_string(self):
         if self._args.keys():
-            query = force_bytes(
-                '?{}'.format(self._args.urlencode())
-            )
+            query = '?{}'.format(self._args.urlencode())
         else:
             query = ''
 
@@ -31,6 +30,9 @@ class URL(object):
         else:
             path = ''
 
-        result = force_bytes('{}{}'.format(path, query))
+        result = '{}{}'.format(path, query)
 
-        return result
+        if PY3:
+            return result
+        else:
+            return force_bytes(result)
