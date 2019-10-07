@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:27-0400\n"
+"POT-Creation-Date: 2019-09-24 23:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -158,6 +158,26 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                You can also <a class=\"new_window\" href=\"https://www."
+"paypal.com/paypalme2/RobertoRosario\">donate directly to the creator and "
+"lead developer.  %(icon_social_paypal)s</a>\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:127
+msgid ""
+"\n"
+"                Besides donations you can also support the project by <a "
+"class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy "
+"of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>. <br>The book is "
+"available on pre-release format at a discounted price for a limited time.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:133
+#, python-format
+msgid ""
+"\n"
 "                The complete list of changes is available via the <a class="
 "\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
 "\">Release notes %(icon_documentation)s</a> or the short version <a class="
@@ -166,7 +186,7 @@ msgid ""
 "            "
 msgstr ""
 
-#: templates/appearance/about.html:127
+#: templates/appearance/about.html:139
 #, python-format
 msgid ""
 "\n"
@@ -177,7 +197,7 @@ msgid ""
 "            "
 msgstr ""
 
-#: templates/appearance/about.html:133
+#: templates/appearance/about.html:145
 #, python-format
 msgid ""
 "\n"
@@ -189,7 +209,7 @@ msgid ""
 "            "
 msgstr ""
 
-#: templates/appearance/about.html:138
+#: templates/appearance/about.html:150
 #, python-format
 msgid ""
 "\n"
@@ -203,22 +223,22 @@ msgid ""
 "            "
 msgstr ""
 
-#: templates/appearance/base.html:32 templates/appearance/base.html:42
+#: templates/appearance/base.html:36 templates/appearance/base.html:46
 msgid "Warning"
 msgstr ""
 
-#: templates/appearance/base.html:42
+#: templates/appearance/base.html:46
 msgid ""
 "Settings updated, restart your installation for changes to take proper "
 "effect."
 msgstr ""
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:60
 #: templates/appearance/generic_list_items_subtemplate.html:104
 msgid "Actions"
 msgstr ""
 
-#: templates/appearance/base.html:61
+#: templates/appearance/base.html:62
 #: templates/appearance/generic_list_items_subtemplate.html:106
 msgid "Toggle Dropdown"
 msgstr ""

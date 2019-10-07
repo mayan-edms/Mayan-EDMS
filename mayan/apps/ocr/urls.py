@@ -7,37 +7,30 @@ from .api_views import (
     APIDocumentVersionOCRView
 )
 from .views import (
-    DocumentOCRContentView, DocumentOCRDownloadView,
+    DocumentOCRContentDeleteView, DocumentOCRContentView,
+    DocumentOCRDownloadView,
     DocumentOCRErrorsListView, DocumentPageOCRContentView, DocumentSubmitView,
     DocumentTypeSettingsEditView, DocumentTypeSubmitView, EntryListView
 )
 
 urlpatterns = [
     url(
-        regex=r'^document_types/submit/$',
-        view=DocumentTypeSubmitView.as_view(), name='document_type_submit'
-    ),
-    url(
-        regex=r'^documents/multiple/submit/$',
-        view=DocumentSubmitView.as_view(), name='document_submit_multiple'
-    ),
-    url(
-        regex=r'^document_types/(?P<pk>\d+)/ocr/settings/$',
-        view=DocumentTypeSettingsEditView.as_view(),
-        name='document_type_ocr_settings'
-    ),
-    url(
-        regex=r'^documents/pages/(?P<pk>\d+)/content/$',
-        view=DocumentPageOCRContentView.as_view(),
-        name='document_page_ocr_content'
-    ),
-    url(
         regex=r'^documents/(?P<pk>\d+)/content/$',
         view=DocumentOCRContentView.as_view(), name='document_ocr_content'
     ),
     url(
-        regex=r'^documents/(?P<pk>\d+)/submit/$',
-        view=DocumentSubmitView.as_view(), name='document_submit'
+        regex=r'^documents/(?P<pk>\d+)/content/delete/$',
+        view=DocumentOCRContentDeleteView.as_view(),
+        name='document_ocr_content_delete'
+    ),
+    url(
+        regex=r'^documents/multiple/content/delete/$',
+        view=DocumentOCRContentDeleteView.as_view(),
+        name='document_ocr_content_delete_multiple'
+    ),
+    url(
+        regex=r'^documents/(?P<pk>\d+)/ocr/download/$',
+        view=DocumentOCRDownloadView.as_view(), name='document_ocr_download'
     ),
     url(
         regex=r'^documents/(?P<pk>\d+)/ocr/errors/$',
@@ -45,8 +38,26 @@ urlpatterns = [
         name='document_ocr_error_list'
     ),
     url(
-        regex=r'^documents/(?P<pk>\d+)/ocr/download/$',
-        view=DocumentOCRDownloadView.as_view(), name='document_ocr_download'
+        regex=r'^documents/(?P<pk>\d+)/submit/$',
+        view=DocumentSubmitView.as_view(), name='document_submit'
+    ),
+    url(
+        regex=r'^documents/multiple/submit/$',
+        view=DocumentSubmitView.as_view(), name='document_submit_multiple'
+    ),
+    url(
+        regex=r'^documents/pages/(?P<pk>\d+)/content/$',
+        view=DocumentPageOCRContentView.as_view(),
+        name='document_page_ocr_content'
+    ),
+    url(
+        regex=r'^document_types/submit/$',
+        view=DocumentTypeSubmitView.as_view(), name='document_type_submit'
+    ),
+    url(
+        regex=r'^document_types/(?P<pk>\d+)/ocr/settings/$',
+        view=DocumentTypeSettingsEditView.as_view(),
+        name='document_type_ocr_settings'
     ),
     url(regex=r'^logs/$', view=EntryListView.as_view(), name='entry_list'),
 ]

@@ -755,10 +755,6 @@ class SourceColumn(object):
                         )
                     except AttributeError:
                         self._help_text = self.attribute
-            else:
-                self._help_text = getattr(
-                    self.func, 'help_text', _('Unnamed function')
-                )
 
         self.help_text = self._help_text
 

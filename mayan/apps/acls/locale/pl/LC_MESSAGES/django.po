@@ -4,15 +4,17 @@
 # 
 # Translators:
 # Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2017
+# Marcin Lozynski <mlozynski@wp.pl>, 2019
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2019
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-25 20:27-0400\n"
-"PO-Revision-Date: 2019-06-15 07:48+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-09-24 23:06-0400\n"
+"PO-Revision-Date: 2019-09-23 09:33+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,15 +28,15 @@ msgstr "Listy ACL"
 
 #: events.py:8 permissions.py:7
 msgid "Access control lists"
-msgstr "Listy ACL"
+msgstr "Listy kontroli dostępu"
 
 #: events.py:12
 msgid "ACL created"
-msgstr ""
+msgstr "Utworzono listę ACL"
 
 #: events.py:15
 msgid "ACL edited"
-msgstr ""
+msgstr "Wyedytowano listę ACL"
 
 #: forms.py:15 models.py:49
 msgid "Role"
@@ -55,7 +57,7 @@ msgstr "Uprawnienia"
 #: managers.py:216
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
-msgstr ""
+msgstr "Obiekt \"%s\" nie jest modelem i nie może być sprawdzony pod kątem dostępu."
 
 #: managers.py:236
 #, python-format
@@ -125,13 +127,13 @@ msgstr "Usuń listę ACL: %s"
 
 #: views.py:147
 msgid "There are no ACLs for this object"
-msgstr ""
+msgstr "Brak listy ACL dla tego objektu"
 
 #: views.py:150
 msgid ""
 "ACL stands for Access Control List and is a precise method  to control user "
 "access to objects in the system."
-msgstr ""
+msgstr "Lista ACL stanowi metodę kontroli dostępu użytkownika do obiektów znajdujących się w systemie."
 
 #: views.py:154
 #, python-format
@@ -149,7 +151,7 @@ msgstr "Dostępne uprawnienia"
 #: views.py:215
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
-msgstr ""
+msgstr "Rola \"%(role)s\" uprawnienia dla \"%(object)s\"."
 
 #: views.py:224
 msgid ""
@@ -157,7 +159,7 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr ""
+msgstr "Wyłączone prawa są dziedziczone z obiektu rodzica lub bezpośrednio nadane dla roli i nie mogą być usunięte w tym widoku. Dziedziczone prawa muszą być usunięte z listy ACL obiektu rodzica lub z roli w menu Ustawień."
 
 #: workflow_actions.py:26
 msgid "Object type"
@@ -191,16 +193,16 @@ msgstr "Uprawnienia do nadawania/odwoływania do/z roli dla obiektu."
 
 #: workflow_actions.py:60
 msgid "Grant access"
-msgstr "Przyznaj dostęp"
+msgstr "Przydziel dostęp"
 
 #: workflow_actions.py:143
 msgid "Revoke access"
-msgstr "Odwołaj dostęp"
+msgstr "Zabierz dostęp"
 
 #: workflow_actions.py:175
 msgid "Grant document access"
-msgstr ""
+msgstr "Przydziel dostęp dla dokumentu"
 
 #: workflow_actions.py:214
 msgid "Revoke document access"
-msgstr ""
+msgstr "Zabierz dostęp do dokumentu"

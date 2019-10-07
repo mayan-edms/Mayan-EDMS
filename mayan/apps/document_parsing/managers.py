@@ -6,9 +6,12 @@ import traceback
 
 from django.apps import apps
 from django.conf import settings
-from django.db import models
+from django.db import models, transaction
 
-from .events import event_parsing_document_version_finish
+from .events import (
+    event_parsing_document_content_deleted,
+    event_parsing_document_version_finish
+)
 from .parsers import Parser
 from .signals import post_document_version_parsing
 
@@ -16,6 +19,15 @@ logger = logging.getLogger(__name__)
 
 
 class DocumentPageContentManager(models.Manager):
+    def delete_content_for(self, document, user=None):
+        with transaction.atomic():
+            for document_page in document.pages.all():
+                self.filter(document_page=document_page).delete()
+
+            event_parsing_document_content_deleted.commit(
+                actor=user, target=document
+            )
+
     def process_document_version(self, document_version):
         logger.info(
             'Starting parsing for document version: %s', document_version

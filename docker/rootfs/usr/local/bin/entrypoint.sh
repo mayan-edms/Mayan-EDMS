@@ -30,7 +30,7 @@ export MAYAN_STATIC_ROOT=${MAYAN_INSTALL_DIR}/static
 
 MAYAN_WORKER_FAST_CONCURRENCY=${MAYAN_WORKER_FAST_CONCURRENCY:-0}
 MAYAN_WORKER_MEDIUM_CONCURRENCY=${MAYAN_WORKER_MEDIUM_CONCURRENCY:-0}
-MAYAN_WORKER_SLOW_CONCURRENCY=${MAYAN_WORKER_SLOW_CONCURRENCY:-0}
+MAYAN_WORKER_SLOW_CONCURRENCY=${MAYAN_WORKER_SLOW_CONCURRENCY:-1}
 
 update_uid_gid() {
     echo "mayan: update_uid_gid()"
@@ -39,7 +39,7 @@ update_uid_gid() {
 
     if [ ${MAYAN_USER_UID} -ne ${DEFAULT_USER_UID} ] || [ ${MAYAN_USER_GID} -ne ${DEFAULT_USER_GID} ]; then
         echo "mayan: Updating file ownership. This might take a while if there are many documents."
-        chown mayan:mayan ${MAYAN_INSTALL_DIR} ${MAYAN_STATIC_ROOT} ${MAYAN_MEDIA_ROOT}
+        chown -R mayan:mayan ${MAYAN_INSTALL_DIR} ${MAYAN_STATIC_ROOT} ${MAYAN_MEDIA_ROOT}
     fi
 }
 

@@ -30,20 +30,22 @@
                                         {% navigation_get_source_columns source=object_list only_identifier=True as source_column %}
                                         {% if source_column %}
                                             <th>
-                                                {% if source_column.is_sortable %}
-                                                    <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}</a>
-                                                    {% if source_column.get_sort_field == sort_field %}
-                                                        {% if icon_sort %}{{ icon_sort.render }}{% endif %}
+                                                <span style="white-space: nowrap">
+                                                    {% if source_column.is_sortable %}
+                                                        <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}</a>
+                                                        {% if source_column.get_sort_field == sort_field %}
+                                                            {% if icon_sort %}{{ icon_sort.render }}{% endif %}
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {{ source_column.label }}
                                                     {% endif %}
-                                                {% else %}
-                                                    {{ source_column.label }}
-                                                {% endif %}
 
-                                                {% if source_column.help_text %}
-                                                    <span data-toggle="tooltip" data-placement="bottom" title="{{ source_column.help_text }}">
-                                                    {% get_icon icon_path='mayan.apps.navigation.icons.icon_source_column_help_text' %}
-                                                    </span>
-                                                {% endif %}
+                                                    {% if source_column.help_text %}
+                                                        <span data-toggle="tooltip" data-placement="bottom" title="{{ source_column.help_text }}">
+                                                        {% get_icon icon_path='mayan.apps.navigation.icons.icon_source_column_help_text' %}
+                                                        </span>
+                                                    {% endif %}
+                                                </span>
                                             </th>
                                         {% endif %}
                                     {% endif %}
@@ -52,20 +54,22 @@
                                         {% navigation_get_source_columns source=object_list exclude_identifier=True as source_columns %}
                                         {% for source_column in source_columns %}
                                             <th>
-                                                {% if source_column.is_sortable %}
-                                                    <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}</a>
-                                                    {% if source_column.get_sort_field == sort_field %}
-                                                        {% if icon_sort %}{{ icon_sort.render }}{% endif %}
+                                                <span style="white-space: nowrap">
+                                                    {% if source_column.is_sortable %}
+                                                        <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}</a>
+                                                        {% if source_column.get_sort_field == sort_field %}
+                                                            {% if icon_sort %}{{ icon_sort.render }}{% endif %}
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {{ source_column.label }}
                                                     {% endif %}
-                                                {% else %}
-                                                    {{ source_column.label }}
-                                                {% endif %}
 
-                                                {% if source_column.help_text %}
-                                                    <span data-toggle="tooltip" data-placement="bottom" title="{{ source_column.help_text }}">
-                                                    {% get_icon icon_path='mayan.apps.navigation.icons.icon_source_column_help_text' %}
-                                                    </span>
-                                                {% endif %}
+                                                    {% if source_column.help_text %}
+                                                        <span data-toggle="tooltip" data-placement="bottom" title="{{ source_column.help_text }}">
+                                                        {% get_icon icon_path='mayan.apps.navigation.icons.icon_source_column_help_text' %}
+                                                        </span>
+                                                    {% endif %}
+                                                </span>
                                             </th>
                                         {% endfor %}
                                     {% endif %}
