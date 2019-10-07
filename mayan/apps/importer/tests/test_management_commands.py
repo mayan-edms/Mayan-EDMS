@@ -6,7 +6,7 @@ from django.core import management
 from django.utils.encoding import force_bytes
 
 from mayan.apps.documents.models import DocumentType, Document
-from mayan.apps.documents.tests import GenericDocumentTestCase
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 from mayan.apps.storage.utils import fs_cleanup, mkstemp
 

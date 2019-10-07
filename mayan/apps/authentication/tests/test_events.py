@@ -8,7 +8,7 @@ from django.core import mail
 
 from actstream.models import Action
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.events.utils import create_system_user
 
 from ..events import (
