@@ -14,6 +14,12 @@ from .literals import (
 )
 
 
+class LayerTestCaseMixin(object):
+    def setUp(self):
+        super(LayerTestCaseMixin, self).setUp()
+        Layer.invalidate_cache()
+
+
 class LayerTestMixin(PermissionTestMixin):
     test_layer = Layer(
         label='Test layer', name='test_layer', order=1000,
@@ -38,8 +44,6 @@ class LayerTestMixin(PermissionTestMixin):
             'select': self.test_layer_permission,
             'view': self.test_layer_permission,
         }
-        Layer.invalidate_cache()
-        Layer.update()
 
 
 class TransformationTestMixin(LayerTestMixin):

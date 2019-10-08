@@ -5,6 +5,7 @@ from django.test import TestCase
 from django_downloadview import assert_download_response
 
 from mayan.apps.acls.tests.mixins import ACLTestCaseMixin
+from mayan.apps.converter.tests.mixins import LayerTestCaseMixin
 from mayan.apps.permissions.classes import Permission
 from mayan.apps.smart_settings.classes import Namespace
 from mayan.apps.user_management.tests.mixins import UserTestMixin
@@ -19,7 +20,7 @@ from .mixins import (
 
 
 class BaseTestCase(
-    SilenceLoggerTestCaseMixin, ConnectionsCheckTestCaseMixin,
+    LayerTestCaseMixin, SilenceLoggerTestCaseMixin, ConnectionsCheckTestCaseMixin,
     RandomPrimaryKeyModelMonkeyPatchMixin, ACLTestCaseMixin,
     ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
     TempfileCheckTestCasekMixin, UserTestMixin, TestCase
