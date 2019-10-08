@@ -17,8 +17,8 @@ class DocumentPageContent(models.Model):
     This model store's the parsed content of a document page.
     """
     document_page = models.OneToOneField(
-        on_delete=models.CASCADE, related_name='content', to=DocumentPage,
-        verbose_name=_('Document page')
+        on_delete=models.CASCADE, related_name='content',
+        to=DocumentPage, verbose_name=_('Document page')
     )
     content = models.TextField(
         blank=True, help_text=_(

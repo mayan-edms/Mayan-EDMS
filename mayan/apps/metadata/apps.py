@@ -76,7 +76,7 @@ class MetadataApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
         DocumentPageResult = apps.get_model(
-            app_label='documents', model_name='DocumentPageResult'
+            app_label='documents', model_name='DocumentVersionPageResult'
         )
 
         DocumentType = apps.get_model(

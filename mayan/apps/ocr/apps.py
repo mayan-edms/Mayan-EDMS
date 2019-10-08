@@ -62,7 +62,7 @@ class OCRApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
         DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentPage'
+            app_label='documents', model_name='DocumentVersionPage'
         )
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
@@ -96,9 +96,9 @@ class OCRApp(MayanAppConfig):
             )
         )
 
-        ModelField(
-            model=Document, name='versions__version_pages__ocr_content__content'
-        )
+        #ModelField(
+        #    model=Document, name='versions__pages__ocr_content__content'
+        #)
 
         ModelPermission.register(
             model=Document, permissions=(

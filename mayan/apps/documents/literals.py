@@ -42,3 +42,5 @@ PAGE_RANGE_RANGE = 'range'
 PAGE_RANGE_CHOICES = (
     (PAGE_RANGE_ALL, _('All pages')), (PAGE_RANGE_RANGE, _('Page range'))
 )
+
+RETRY_DELAY_DOCUMENT_RESET_PAGES = 30

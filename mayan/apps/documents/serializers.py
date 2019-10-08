@@ -8,42 +8,40 @@ from rest_framework.reverse import reverse
 from mayan.apps.common.models import SharedUploadedFile
 
 from .models import (
-    Document, DocumentVersion, DocumentPage, DocumentType,
-    DocumentTypeFilename, RecentDocument
+    Document, DocumentPage, DocumentType, DocumentTypeFilename,
+    DocumentVersion, DocumentVersionPage, RecentDocument
 )
 from .settings import setting_language
 from .tasks import task_upload_new_version
 
 
 class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
-    document_version_url = serializers.SerializerMethodField()
+    document_url = serializers.SerializerMethodField()
     image_url = serializers.SerializerMethodField()
     url = serializers.SerializerMethodField()
 
     class Meta:
-        fields = ('document_version_url', 'image_url', 'page_number', 'url')
+        fields = ('document_url', 'image_url', 'page_number', 'url')
         model = DocumentPage
 
-    def get_document_version_url(self, instance):
+    def get_document_url(self, instance):
         return reverse(
-            viewname='rest_api:documentversion-detail', args=(
-                instance.document.pk, instance.document_version.pk,
+            viewname='rest_api:document-detail', args=(
+                instance.document.pk,
             ), request=self.context['request'], format=self.context['format']
         )
 
     def get_image_url(self, instance):
         return reverse(
             viewname='rest_api:documentpage-image', args=(
-                instance.document.pk, instance.document_version.pk,
-                instance.pk,
+                instance.document.pk, instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
 
     def get_url(self, instance):
         return reverse(
             viewname='rest_api:documentpage-detail', args=(
-                instance.document.pk, instance.document_version.pk,
-                instance.pk,
+                instance.document.pk, instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
 
@@ -95,6 +93,39 @@ class WritableDocumentTypeSerializer(serializers.ModelSerializer):
 
     def get_documents_count(self, obj):
         return obj.documents.count()
+
+
+class DocumentVersionPageSerializer(serializers.HyperlinkedModelSerializer):
+    document_version_url = serializers.SerializerMethodField()
+    image_url = serializers.SerializerMethodField()
+    url = serializers.SerializerMethodField()
+
+    class Meta:
+        fields = ('document_version_url', 'image_url', 'page_number', 'url')
+        model = DocumentVersionPage
+
+    def get_document_version_url(self, instance):
+        return reverse(
+            viewname='rest_api:documentversion-detail', args=(
+                instance.document.pk, instance.document_version.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+    def get_image_url(self, instance):
+        return reverse(
+            viewname='rest_api:documentversionpage-image', args=(
+                instance.document.pk, instance.document_version.pk,
+                instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+    def get_url(self, instance):
+        return reverse(
+            viewname='rest_api:documentversionpage-detail', args=(
+                instance.document.pk, instance.document_version.pk,
+                instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
 
 
 class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):

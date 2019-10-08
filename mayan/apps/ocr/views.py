@@ -12,7 +12,9 @@ from mayan.apps.common.generics import (
 )
 from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
-from mayan.apps.documents.models import Document, DocumentPage, DocumentType
+from mayan.apps.documents.models import (
+    Document, DocumentType, DocumentVersionPage
+)
 
 from .forms import DocumentPageOCRContentForm, DocumentOCRContentForm
 from .models import DocumentPageOCRContent, DocumentVersionOCRError
@@ -74,7 +76,7 @@ class DocumentOCRContentView(SingleObjectDetailView):
 
 class DocumentPageOCRContentView(SingleObjectDetailView):
     form_class = DocumentPageOCRContentForm
-    model = DocumentPage
+    model = DocumentVersionPage
     object_permission = permission_ocr_content_view
 
     def dispatch(self, request, *args, **kwargs):

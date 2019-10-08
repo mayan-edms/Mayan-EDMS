@@ -65,7 +65,7 @@ class OCRAPITestCase(DocumentTestMixin, BaseAPITestCase):
             hasattr(self.test_document.pages.first(), 'ocr_content')
         )
 
-    def _request_document_page_content_view(self):
+    def _request_document_version_page_content_view(self):
         return self.get(
             viewname='rest_api:document-page-ocr-content-view', kwargs={
                 'document_pk': self.test_document.pk,
@@ -75,7 +75,7 @@ class OCRAPITestCase(DocumentTestMixin, BaseAPITestCase):
         )
 
     def test_get_document_version_page_content_no_access(self):
-        response = self._request_document_page_content_view()
+        response = self._request_document_version_page_content_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_get_document_version_page_content_with_access(self):
@@ -83,7 +83,7 @@ class OCRAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.grant_access(
             permission=permission_ocr_content_view, obj=self.test_document
         )
-        response = self._request_document_page_content_view()
+        response = self._request_document_version_page_content_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(
             TEST_DOCUMENT_CONTENT in response.data['content']

@@ -28,15 +28,15 @@ class DocumentManager(models.Manager):
 
 class DocumentPageManager(models.Manager):
     def get_by_natural_key(self, page_number, document_version_natural_key):
-        DocumentVersion = apps.get_model(
-            app_label='documents', model_name='DocumentVersion'
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
         )
         try:
-            document_version = DocumentVersion.objects.get_by_natural_key(*document_version_natural_key)
-        except DocumentVersion.DoesNotExist:
+            document = Document.objects.get_by_natural_key(*document_version_natural_key)
+        except Document.DoesNotExist:
             raise self.model.DoesNotExist
 
-        return self.get(document_version__pk=document_version.pk, page_number=page_number)
+        return self.get(document__pk=document.pk, page_number=page_number)
 
     def get_queryset(self):
         return models.QuerySet(
@@ -122,6 +122,24 @@ class DocumentVersionManager(models.Manager):
             raise self.model.DoesNotExist
 
         return self.get(document__pk=document.pk, checksum=checksum)
+
+
+class DocumentVersionPageManager(models.Manager):
+    def get_by_natural_key(self, page_number, document_version_natural_key):
+        DocumentVersion = apps.get_model(
+            app_label='documents', model_name='DocumentVersion'
+        )
+        try:
+            document_version = DocumentVersion.objects.get_by_natural_key(*document_version_natural_key)
+        except DocumentVersion.DoesNotExist:
+            raise self.model.DoesNotExist
+
+        return self.get(document_version__pk=document_version.pk, page_number=page_number)
+
+    def get_queryset(self):
+        return models.QuerySet(
+            model=self.model, using=self._db
+        ).filter(enabled=True)
 
 
 class DuplicatedDocumentManager(models.Manager):

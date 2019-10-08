@@ -30,6 +30,10 @@ queue_converter.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_generate_document_page_image',
     label=_('Generate document page image')
 )
+queue_converter.add_task_type(
+    dotted_path='mayan.apps.documents.tasks.task_generate_document_version_page_image',
+    label=_('Generate document version page image')
+)
 
 queue_documents.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_delete_document',
@@ -66,6 +70,10 @@ queue_tools.add_task_type(
     label=_('Duplicated document scan')
 )
 
+queue_uploads.add_task_type(
+    dotted_path='mayan.apps.documents.tasks.task_document_reset_pages',
+    label=_('Reset document pages')
+)
 queue_uploads.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_update_page_count',
     label=_('Update document page count')

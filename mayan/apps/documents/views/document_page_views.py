@@ -21,7 +21,7 @@ from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 from ..forms import DocumentPageForm
 from ..icons import icon_document_pages
 from ..links import link_document_update_page_count
-from ..models import Document, DocumentPage
+from ..models import Document, DocumentVersionPage
 from ..permissions import permission_document_edit, permission_document_view
 from ..settings import (
     setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,
@@ -69,7 +69,7 @@ class DocumentPageListView(ExternalObjectMixin, SingleObjectListView):
 
 
 class DocumentPageNavigationBase(ExternalObjectMixin, RedirectView):
-    external_object_class = DocumentPage
+    external_object_class = DocumentVersionPage
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'pk'
 
@@ -164,7 +164,7 @@ class DocumentPageNavigationPrevious(DocumentPageNavigationBase):
 
 
 class DocumentPageView(ExternalObjectMixin, SimpleView):
-    external_object_class = DocumentPage
+    external_object_class = DocumentVersionPage
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'pk'
     template_name = 'appearance/generic_form.html'
@@ -204,7 +204,7 @@ class DocumentPageViewResetView(RedirectView):
 
 
 class DocumentPageInteractiveTransformation(ExternalObjectMixin, RedirectView):
-    external_object_class = DocumentPage
+    external_object_class = DocumentVersionPage
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'pk'
 
@@ -289,7 +289,7 @@ class DocumentPageDisable(MultipleObjectConfirmActionView):
         return result
 
     def get_source_queryset(self):
-        return DocumentPage.passthrough.all()
+        return DocumentVersionPage.passthrough.all()
 
     def object_action(self, form, instance):
         instance.enabled = False
@@ -319,7 +319,7 @@ class DocumentPageEnable(MultipleObjectConfirmActionView):
         return result
 
     def get_source_queryset(self):
-        return DocumentPage.passthrough.all()
+        return DocumentVersionPage.passthrough.all()
 
     def object_action(self, form, instance):
         instance.enabled = True

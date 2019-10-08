@@ -12,7 +12,9 @@ from mayan.apps.common.generics import (
 )
 from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
-from mayan.apps.documents.models import Document, DocumentPage, DocumentType
+from mayan.apps.documents.models import (
+    Document, DocumentType, DocumentVersionPage
+)
 
 from .forms import DocumentContentForm, DocumentPageContentForm
 from .models import DocumentPageContent, DocumentVersionParseError
@@ -87,7 +89,7 @@ class DocumentContentDownloadView(SingleObjectDownloadView):
 
 class DocumentPageContentView(SingleObjectDetailView):
     form_class = DocumentPageContentForm
-    model = DocumentPage
+    model = DocumentVersionPage
     object_permission = permission_content_view
 
     def dispatch(self, request, *args, **kwargs):

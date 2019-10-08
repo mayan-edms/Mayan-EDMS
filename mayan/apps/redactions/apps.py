@@ -28,7 +28,7 @@ class RedactionsApp(MayanAppConfig):
         super(RedactionsApp, self).ready()
 
         DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentPage'
+            app_label='documents', model_name='DocumentVersionPage'
         )
 
         link_redaction_list = link_transformation_list.copy(

@@ -246,16 +246,16 @@ class DocumentVersion(models.Model):
 
             return result
 
-    @property
-    def pages_all(self):
-        DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentPage'
-        )
-        return DocumentPage.passthrough.filter(document_version=self)
+    #@property
+    #def pages_all(self):
+    #    DocumentPage = apps.get_model(
+    #        app_label='documents', model_name='DocumentVersionPage'
+    #    )
+    #    return DocumentPage.passthrough.filter(document_version=self)
 
-    @property
-    def pages(self):
-        return self.version_pages.all()
+    #@property
+    #def pages(self):
+    #    return self.pages.all()
 
     @property
     def page_count(self):
@@ -410,7 +410,7 @@ class DocumentVersion(models.Model):
             pass
         else:
             DocumentPage = apps.get_model(
-                app_label='documents', model_name='DocumentPage'
+                app_label='documents', model_name='DocumentVersionPage'
             )
 
             with transaction.atomic():

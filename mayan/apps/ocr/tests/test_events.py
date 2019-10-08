@@ -8,13 +8,13 @@ from ..events import (
     event_ocr_document_content_deleted, event_ocr_document_version_submit,
     event_ocr_document_version_finish
 )
-from ..models import DocumentPageOCRContent
+from ..models import DocumentVersionPageOCRContent
 
 
 class OCREventsTestCase(GenericDocumentTestCase):
     def test_document_content_deleted_event(self):
         Action.objects.all().delete()
-        DocumentPageOCRContent.objects.delete_content_for(
+        DocumentVersionPageOCRContent.objects.delete_content_for(
             document=self.test_document
         )
 

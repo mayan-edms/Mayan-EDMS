@@ -32,12 +32,12 @@ class DashboardWidgetDocumentPagesTotal(DashboardWidgetNumeric):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
-        DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentPage'
+        DocumentVersionPage = apps.get_model(
+            app_label='documents', model_name='DocumentVersionPage'
         )
         self.count = AccessControlList.objects.restrict_queryset(
             permission=permission_document_view, user=request.user,
-            queryset=DocumentPage.objects.all()
+            queryset=DocumentVersionPage.objects.all()
         ).count()
         return super(DashboardWidgetDocumentPagesTotal, self).render(request)
 

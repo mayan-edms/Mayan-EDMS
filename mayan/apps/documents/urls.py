@@ -4,13 +4,15 @@ from django.conf.urls import url
 
 from .api_views import (
     APITrashedDocumentListView, APIDeletedDocumentRestoreView,
-    APIDeletedDocumentView, APIDocumentDownloadView, APIDocumentView,
-    APIDocumentListView, APIDocumentVersionDownloadView,
+    APIDeletedDocumentView, APIDocumentDownloadView, APIDocumentPageListView,
+    APIDocumentView, APIDocumentListView, APIDocumentVersionDownloadView,
     APIDocumentPageImageView, APIDocumentPageView,
     APIDocumentTypeDocumentListView, APIDocumentTypeListView,
     APIDocumentTypeView, APIDocumentVersionsListView,
     APIDocumentVersionPageListView, APIDocumentVersionView,
-    APIRecentDocumentListView
+    APIRecentDocumentListView,
+    APIDocumentVersionPageView,
+    APIDocumentVersionPageImageView
 )
 from .views.document_views import (
     DocumentDocumentTypeEditView, DocumentDownloadFormView,
@@ -406,6 +408,11 @@ api_urls = [
         name='documentversion-page-list'
     ),
     url(
+        regex=r'^documents/(?P<pk>[0-9]+)/pages/$',
+        view=APIDocumentPageListView.as_view(),
+        name='document-page-list'
+    ),
+    url(
         regex=r'^documents/(?P<pk>[0-9]+)/versions/(?P<version_pk>[0-9]+)/download/$',
         view=APIDocumentVersionDownloadView.as_view(),
         name='documentversion-download'
@@ -416,11 +423,19 @@ api_urls = [
     ),
     url(
         regex=r'^documents/(?P<pk>[0-9]+)/versions/(?P<version_pk>[0-9]+)/pages/(?P<page_pk>[0-9]+)$',
+        view=APIDocumentVersionPageView.as_view(), name='documentversionpage-detail'
+    ),
+    url(
+        regex=r'^documents/(?P<pk>[0-9]+)/pages/(?P<page_pk>[0-9]+)$',
         view=APIDocumentPageView.as_view(), name='documentpage-detail'
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/versions/(?P<version_pk>[0-9]+)/pages/(?P<page_pk>[0-9]+)/image/$',
+        regex=r'^documents/(?P<pk>[0-9]+)/pages/(?P<page_pk>[0-9]+)/image/$',
         view=APIDocumentPageImageView.as_view(), name='documentpage-image'
+    ),
+    url(
+        regex=r'^documents/(?P<pk>[0-9]+)/versions/(?P<version_pk>[0-9]+)/pages/(?P<page_pk>[0-9]+)/image/$',
+        view=APIDocumentVersionPageImageView.as_view(), name='documentversionpage-image'
     ),
     url(
         regex=r'^trashed_documents/$',

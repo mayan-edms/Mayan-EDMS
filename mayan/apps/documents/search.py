@@ -20,7 +20,7 @@ def transformation_format_uuid(term_string):
 def get_queryset_page_search_queryset():
     # Ignore documents in trash can
     DocumentPage = apps.get_model(
-        app_label='documents', model_name='DocumentPage'
+        app_label='documents', model_name='DocumentVersionPage'
     )
     return DocumentPage.objects.filter(document_version__document__in_trash=False)
 
@@ -49,7 +49,7 @@ document_search.add_model_field(
 
 document_page_search = SearchModel(
     app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
-    model_name='DocumentPage', permission=permission_document_view,
+    model_name='DocumentVersionPage', permission=permission_document_view,
     queryset=get_queryset_page_search_queryset,
     serializer_path='mayan.apps.documents.serializers.DocumentPageSerializer'
 )

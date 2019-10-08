@@ -5,9 +5,10 @@ import uuid
 
 from django.apps import apps
 from django.core.files import File
-from django.db import models
+from django.db import models, transaction
 from django.urls import reverse
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.functional import cached_property
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
@@ -15,6 +16,7 @@ from ..events import (
     event_document_create, event_document_properties_edit,
     event_document_type_change,
 )
+from ..literals import DOCUMENT_IMAGES_CACHE_NAME
 from ..managers import DocumentManager, PassthroughManager, TrashCanManager
 from ..settings import setting_language
 from ..signals import post_document_type_change
@@ -102,6 +104,18 @@ class Document(models.Model):
         )
         return RecentDocument.objects.add_document_for_user(user, self)
 
+    @cached_property
+    def cache(self):
+        Cache = apps.get_model(app_label='file_caching', model_name='Cache')
+        return Cache.objects.get(name=DOCUMENT_IMAGES_CACHE_NAME)
+
+    @cached_property
+    def cache_partition(self):
+        partition, created = self.cache.partitions.get_or_create(
+            name='document-{}'.format(self.uuid)
+        )
+        return partition
+
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
 
@@ -164,6 +178,22 @@ class Document(models.Model):
         the storage backend
         """
         return self.latest_version.open(*args, **kwargs)
+
+    def reset_pages(self):
+        with transaction.atomic():
+            for page in self.pages.all():
+                page.delete()
+
+            self.latest_version.update_page_count()
+
+            for version_page in self.latest_version.pages.all():
+                document_page = self.pages.create(
+                    #content_type = models.ForeignKey(
+                    #    on_delete=models.CASCADE, to=ContentType
+                    #)
+                    #object_id = models.PositiveIntegerField()
+                    content_object = version_page
+                )
 
     def restore(self):
         self.in_trash = False
@@ -234,28 +264,31 @@ class Document(models.Model):
 
     @property
     def page_count(self):
-        return self.latest_version.page_count
+        return self.pages.count()
+        #return self.latest_version.page_count
 
     @property
     def pages_all(self):
-        try:
-            return self.latest_version.pages_all
-        except AttributeError:
-            # Document has no version yet
-            DocumentPage = apps.get_model(
-                app_label='documents', model_name='DocumentPage'
-            )
+        return self.pages.all()
+        #try:
+        #    return self.latest_version.pages_all
+        #except AttributeError:
+        #    # Document has no version yet
+        #    DocumentPage = apps.get_model(
+        #        app_label='documents', model_name='DocumentPage'
+        #    )
 
-            return DocumentPage.objects.none()
+        #    return DocumentPage.objects.none()
 
     @property
     def pages(self):
-        try:
-            return self.latest_version.pages
-        except AttributeError:
-            # Document has no version yet
-            DocumentPage = apps.get_model(
-                app_label='documents', model_name='DocumentPage'
-            )
+        return self.pages.all()
+        #try:
+        #    return self.latest_version.pages
+        #except AttributeError:
+        #    # Document has no version yet
+        #    DocumentPage = apps.get_model(
+        #        app_label='documents', model_name='DocumentVersionPage'
+        #    )
 
-            return DocumentPage.objects.none()
+        #    return DocumentPage.objects.none()

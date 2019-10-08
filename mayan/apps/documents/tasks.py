@@ -9,7 +9,8 @@ from django.db import OperationalError
 from mayan.celery import app
 
 from .literals import (
-    UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY
+    RETRY_DELAY_DOCUMENT_RESET_PAGES, UPDATE_PAGE_COUNT_RETRY_DELAY,
+    UPLOAD_NEW_VERSION_RETRY_DELAY
 )
 
 logger = logging.getLogger(__name__)
@@ -64,6 +65,25 @@ def task_delete_stubs():
     logger.info(msg='Finshed')
 
 
+@app.task(bind=True, default_retry_delay=RETRY_DELAY_DOCUMENT_RESET_PAGES, ignore_result=True)
+def task_document_reset_pages(self, document_id):
+    Document = apps.get_model(
+        app_label='documents', model_name='Document'
+    )
+
+    document = Document.objects.get(pk=document_id)
+
+    try:
+        document.reset_pages()
+    except OperationalError as exception:
+        logger.warning(
+            'Operational error during attempt to reset pages for '
+            'document: %s; %s. Retrying.', document,
+            exception
+        )
+        raise self.retry(exc=exception)
+
+
 @app.task()
 def task_generate_document_page_image(document_page_id, user_id=None, **kwargs):
     DocumentPage = apps.get_model(
@@ -78,6 +98,22 @@ def task_generate_document_page_image(document_page_id, user_id=None, **kwargs):
 
     document_page = DocumentPage.passthrough.get(pk=document_page_id)
     return document_page.generate_image(user=user, **kwargs)
+
+
+@app.task()
+def task_generate_document_version_page_image(document_version_page_id, user_id=None, **kwargs):
+    DocumentVersionPage = apps.get_model(
+        app_label='documents', model_name='DocumentVersionPage'
+    )
+    User = get_user_model()
+
+    if user_id:
+        user = User.objects.get(pk=user_id)
+    else:
+        user = None
+
+    document_version_page = DocumentVersionPage.objects.get(pk=document_version_page_id)
+    return document_version_page.generate_image(user=user, **kwargs)
 
 
 @app.task(ignore_result=True)

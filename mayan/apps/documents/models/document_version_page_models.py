@@ -4,16 +4,14 @@ import logging
 
 from furl import furl
 
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.db.models import Max
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
+
 from mayan.apps.converter.models import LayerTransformation
 from mayan.apps.converter.transformations import (
     BaseTransformation, TransformationResize, TransformationRotate,
@@ -21,63 +19,55 @@ from mayan.apps.converter.transformations import (
 )
 from mayan.apps.converter.utils import get_converter_class
 
-from ..managers import DocumentPageManager
+from ..managers import DocumentVersionPageManager
 from ..settings import (
     setting_disable_base_image_cache, setting_disable_transformed_image_cache,
     setting_display_width, setting_display_height, setting_zoom_max_level,
     setting_zoom_min_level
 )
 
-from .document_models import Document
-#from .document_version_page_models import DocumentVersionPage
+from .document_version_models import DocumentVersion
 
-__all__ = ('DocumentPage',)# 'DocumentPageResult')
+__all__ = ('DocumentVersionPage', 'DocumentVersionPageResult')
 logger = logging.getLogger(__name__)
 
 
 @python_2_unicode_compatible
-class DocumentPage(models.Model):
+class DocumentVersionPage(models.Model):
     """
-    Model that describes a document page
+    Model that describes a document version page
     """
-    document = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='pages', to=Document,
-        verbose_name=_('Document')
+    document_version = models.ForeignKey(
+        on_delete=models.CASCADE, related_name='pages', to=DocumentVersion,
+        verbose_name=_('Document version')
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
     page_number = models.PositiveIntegerField(
-        db_index=True, blank=True, null=True, verbose_name=_('Page number')
-    )
-    content_type = models.ForeignKey(
-        on_delete=models.CASCADE, to=ContentType
-    )
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey(
-        ct_field='content_type', fk_field='object_id'
+        db_index=True, default=1, editable=False,
+        verbose_name=_('Page number')
     )
 
-    objects = DocumentPageManager()
-    passthrough = models.Manager()
+    objects = DocumentVersionPageManager()
+    #passthrough = models.Manager()
 
     class Meta:
         ordering = ('page_number',)
-        unique_together = ('document', 'page_number')
-        verbose_name = _('Document page')
-        verbose_name_plural = _('Document pages')
+        verbose_name = _('Document version page')
+        verbose_name_plural = _('Document version pages')
 
     def __str__(self):
         return self.get_label()
 
     @cached_property
     def cache_partition(self):
-        partition, created = self.document.cache.partitions.get_or_create(
+        partition, created = self.document_version.cache.partitions.get_or_create(
             name=self.uuid
         )
         return partition
 
     def delete(self, *args, **kwargs):
         self.cache_partition.delete()
-        super(DocumentPage, self).delete(*args, **kwargs)
+        super(DocumentVersionPage, self).delete(*args, **kwargs)
 
     #def detect_orientation(self):
     #    with self.document_version.open() as file_object:
@@ -89,9 +79,9 @@ class DocumentPage(models.Model):
     #            page_number=self.page_number
     #        )
 
-    #@property
-    #def document(self):
-    #    return self.document_version.document
+    @property
+    def document(self):
+        return self.document_version.document
 
     def generate_image(self, user=None, **kwargs):
         transformation_list = self.get_combined_transformation_list(user=user, **kwargs)
@@ -114,10 +104,12 @@ class DocumentPage(models.Model):
 
         return combined_cache_filename
 
-    def get_absolute_url(self):
-        return reverse(
-            viewname='documents:document_page_view', kwargs={'pk': self.pk}
-        )
+    #def get_absolute_url(self):
+    #    return reverse(
+    #        viewname='documents:document_version_page_view', kwargs={
+    #            'pk': self.pk
+    #        }
+    #    )
 
     def get_api_image_url(self, *args, **kwargs):
         """
@@ -137,9 +129,8 @@ class DocumentPage(models.Model):
         final_url = furl()
         final_url.args = kwargs
         final_url.path = reverse(
-            viewname='rest_api:documentpage-image', kwargs={
-                'pk': self.document.pk,
-                #'version_pk': self.document_version.pk,
+            viewname='rest_api:documentversionpage-image', kwargs={
+                'pk': self.document.pk, 'version_pk': self.document_version.pk,
                 'page_pk': self.pk
             }
         )
@@ -201,7 +192,7 @@ class DocumentPage(models.Model):
         return transformation_list
 
     def get_image(self, transformations=None):
-        cache_filename = 'document_page'
+        cache_filename = 'base_image'
         logger.debug('Page cache filename: %s', cache_filename)
 
         cache_file = self.cache_partition.get_file(filename=cache_filename)
@@ -219,7 +210,7 @@ class DocumentPage(models.Model):
                 # This code is also repeated below to allow using a context
                 # manager with cache_file.open and close it automatically.
                 # Apply runtime transformations
-                for transformation in transformations:
+                for transformation in transformations or []:
                     converter.transform(transformation=transformation)
 
                 return converter.get_page()
@@ -227,12 +218,7 @@ class DocumentPage(models.Model):
             logger.debug('Page cache file "%s" not found', cache_filename)
 
             try:
-                #with self.document_version.get_intermediate_file() as file_object:
-                #Render or get cached document version page
-                self.content_object.get_image()
-                cache_filename = 'base_image'
-                cache_file = self.content_object.cache_partition.get_file(filename=cache_filename)
-                with cache_file.open() as file_object:
+                with self.document_version.get_intermediate_file() as file_object:
                     converter = get_converter_class()(
                         file_object=file_object
                     )
@@ -245,7 +231,7 @@ class DocumentPage(models.Model):
                         file_object.write(page_image.getvalue())
 
                     # Apply runtime transformations
-                    for transformation in transformations:
+                    for transformation in transformations or []:
                         converter.transform(transformation=transformation)
 
                     return converter.get_page()
@@ -257,40 +243,29 @@ class DocumentPage(models.Model):
                 )
                 raise
 
+    #@property
+    #def is_in_trash(self):
+    #    return self.document.is_in_trash
+
     def get_label(self):
         return _(
-            'Page %(page_number)d out of %(total_pages)d of %(document)s'
+            'Version page %(page_number)d out of %(total_pages)d of %(document)s'
         ) % {
             'document': force_text(self.document),
             'page_number': self.page_number,
-            'total_pages': self.document.pages_all.count()
+            'total_pages': self.document_version.pages.count()
         }
     get_label.short_description = _('Label')
 
-    @property
-    def is_in_trash(self):
-        return self.document.is_in_trash
-
     def natural_key(self):
-        return (self.page_number, self.document.natural_key())
-    natural_key.dependencies = ['documents.Document']
+        return (self.page_number, self.document_version.natural_key())
+    natural_key.dependencies = ['documents.DocumentVersion']
 
-    def save(self, *args, **kwargs):
-        if not self.page_number:
-            last_page_number = DocumentPage.objects.filter(
-                document=self.document
-            ).aggregate(Max('page_number'))['page_number__max']
-            if last_page_number is not None:
-                self.page_number = last_page_number + 1
-            else:
-                self.page_number = 1
-        super(DocumentPage, self).save(*args, **kwargs)
-
-    @property
-    def siblings(self):
-        return DocumentPage.objects.filter(
-            document=self.document
-        )
+    #@property
+    #def siblings(self):
+    #    return DocumentVersionPage.objects.filter(
+    #        document_version=self.document_version
+    #    )
 
     @property
     def uuid(self):
@@ -298,12 +273,12 @@ class DocumentPage(models.Model):
         Make cache UUID a mix of version ID and page ID to avoid using stale
         images
         """
-        return '{}-{}'.format(self.document.uuid, self.pk)
+        return '{}-{}'.format(self.document_version.uuid, self.pk)
 
 
-#class DocumentVersionPageResult(DocumentVersionPage):
-#    class Meta:
-#        ordering = ('document_version__document', 'page_number')
-#        proxy = True
-#        verbose_name = _('Document version page')
-#        verbose_name_plural = _('Document version pages')
+class DocumentVersionPageResult(DocumentVersionPage):
+    class Meta:
+        ordering = ('document_version__document', 'page_number')
+        proxy = True
+        verbose_name = _('Document version page')
+        verbose_name_plural = _('Document version pages')

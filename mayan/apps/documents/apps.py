@@ -120,8 +120,8 @@ class DocumentsApp(MayanAppConfig):
 
         DeletedDocument = self.get_model(model_name='DeletedDocument')
         Document = self.get_model(model_name='Document')
-        DocumentPage = self.get_model(model_name='DocumentPage')
-        DocumentPageResult = self.get_model(model_name='DocumentPageResult')
+        DocumentPage = self.get_model(model_name='DocumentVersionPage')
+        DocumentPageResult = self.get_model(model_name='DocumentVersionPageResult')
         DocumentType = self.get_model(model_name='DocumentType')
         DocumentTypeFilename = self.get_model(model_name='DocumentTypeFilename')
         DocumentVersion = self.get_model(model_name='DocumentVersion')

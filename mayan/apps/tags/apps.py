@@ -62,7 +62,7 @@ class TagsApp(MayanAppConfig):
         )
 
         DocumentPageResult = apps.get_model(
-            app_label='documents', model_name='DocumentPageResult'
+            app_label='documents', model_name='DocumentVersionPageResult'
         )
 
         DocumentTag = self.get_model(model_name='DocumentTag')
