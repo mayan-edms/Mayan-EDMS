@@ -19,7 +19,7 @@ job_docker_build:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
     - VERSION=`cat docker/rootfs/version`
     - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$VERSION"
-    - docker run --rm "$CI_REGISTRY_IMAGE:$VERSION" run-tests
+    - docker run --rm "$CI_REGISTRY_IMAGE:$VERSION" run_tests
     - docker push "$CI_REGISTRY_IMAGE:$VERSION"
     - docker push "$CI_REGISTRY_IMAGE:latest"
     - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
@@ -58,7 +58,7 @@ job_docker_nightly:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
-    - docker run --rm "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" run-tests
+    - docker run --rm "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" run_tests
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
   only:
     - nightly
