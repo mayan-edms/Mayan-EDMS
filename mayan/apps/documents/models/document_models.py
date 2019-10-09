@@ -146,9 +146,9 @@ class Document(models.Model):
         )
 
     def get_api_image_url(self, *args, **kwargs):
-        latest_version = self.latest_version
-        if latest_version:
-            return latest_version.get_api_image_url(*args, **kwargs)
+        first_page = self.pages.first()
+        if first_page:
+            return first_page.get_api_image_url(*args, **kwargs)
 
     @property
     def is_in_trash(self):
@@ -178,6 +178,30 @@ class Document(models.Model):
         the storage backend
         """
         return self.latest_version.open(*args, **kwargs)
+
+    @property
+    def page_count(self):
+        return self.pages.count()
+
+    @property
+    def pages(self):
+        return self.pages.all()
+        #try:
+        #    return self.latest_version.pages
+        #except AttributeError:
+        #    # Document has no version yet
+        #    DocumentPage = apps.get_model(
+        #        app_label='documents', model_name='DocumentVersionPage'
+        #    )
+
+        #    return DocumentPage.objects.none()
+
+    @property
+    def pages_all(self):
+        DocumentPage = apps.get_model(
+            app_label='documents', model_name='DocumentPage'
+        )
+        return DocumentPage.passthrough.filter(document=self)
 
     def reset_pages(self):
         with transaction.atomic():
@@ -261,34 +285,3 @@ class Document(models.Model):
     @property
     def latest_version(self):
         return self.versions.order_by('timestamp').last()
-
-    @property
-    def page_count(self):
-        return self.pages.count()
-        #return self.latest_version.page_count
-
-    @property
-    def pages_all(self):
-        return self.pages.all()
-        #try:
-        #    return self.latest_version.pages_all
-        #except AttributeError:
-        #    # Document has no version yet
-        #    DocumentPage = apps.get_model(
-        #        app_label='documents', model_name='DocumentPage'
-        #    )
-
-        #    return DocumentPage.objects.none()
-
-    @property
-    def pages(self):
-        return self.pages.all()
-        #try:
-        #    return self.latest_version.pages
-        #except AttributeError:
-        #    # Document has no version yet
-        #    DocumentPage = apps.get_model(
-        #        app_label='documents', model_name='DocumentVersionPage'
-        #    )
-
-        #    return DocumentPage.objects.none()

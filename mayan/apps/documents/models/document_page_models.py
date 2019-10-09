@@ -89,10 +89,6 @@ class DocumentPage(models.Model):
     #            page_number=self.page_number
     #        )
 
-    #@property
-    #def document(self):
-    #    return self.document_version.document
-
     def generate_image(self, user=None, **kwargs):
         transformation_list = self.get_combined_transformation_list(user=user, **kwargs)
         combined_cache_filename = BaseTransformation.combine(transformation_list)
@@ -138,9 +134,7 @@ class DocumentPage(models.Model):
         final_url.args = kwargs
         final_url.path = reverse(
             viewname='rest_api:documentpage-image', kwargs={
-                'pk': self.document.pk,
-                #'version_pk': self.document_version.pk,
-                'page_pk': self.pk
+                'pk': self.document.pk, 'page_pk': self.pk
             }
         )
         final_url.args['_hash'] = transformations_hash
@@ -229,16 +223,22 @@ class DocumentPage(models.Model):
             try:
                 #with self.document_version.get_intermediate_file() as file_object:
                 #Render or get cached document version page
+
+                #self.content_object.generate_image()
                 self.content_object.get_image()
                 cache_filename = 'base_image'
                 cache_file = self.content_object.cache_partition.get_file(filename=cache_filename)
+
                 with cache_file.open() as file_object:
                     converter = get_converter_class()(
                         file_object=file_object
                     )
-                    converter.seek_page(page_number=self.page_number - 1)
+                    converter.seek_page(page_number=0)
+                    #self.page_number - 1)
 
                     page_image = converter.get_page()
+
+                    cache_filename = 'document_page'
 
                     # Since open "wb+" doesn't create files, create it explicitly
                     with self.cache_partition.create_file(filename=cache_filename) as file_object:

@@ -136,11 +136,6 @@ class DocumentVersionPageManager(models.Manager):
 
         return self.get(document_version__pk=document_version.pk, page_number=page_number)
 
-    def get_queryset(self):
-        return models.QuerySet(
-            model=self.model, using=self._db
-        ).filter(enabled=True)
-
 
 class DuplicatedDocumentManager(models.Manager):
     def clean_empty_duplicate_lists(self):

@@ -37,7 +37,10 @@ from .serializers import (
     DocumentVersionPageSerializer
 )
 from .settings import settings_document_page_image_cache_time
-from .tasks import task_generate_document_page_image
+from .tasks import (
+    task_generate_document_page_image,
+    task_generate_document_version_page_image
+)
 
 logger = logging.getLogger(__name__)
 
@@ -169,11 +172,6 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         )
         return document
 
-    #def get_document_version(self):
-    #    return get_object_or_404(
-    #        self.get_document().versions.all(), pk=self.kwargs['version_pk']
-    #    )
-
     def get_queryset(self):
         return self.get_document().pages_all.all()
 
@@ -248,7 +246,7 @@ class APIDocumentVersionPageImageView(generics.RetrieveAPIView):
         )
 
     def get_queryset(self):
-        return self.get_document_version().pages_all.all()
+        return self.get_document_version().pages.all()
 
     def get_serializer(self, *args, **kwargs):
         return None
@@ -333,11 +331,6 @@ class APIDocumentPageView(generics.RetrieveUpdateAPIView):
             user=self.request.user
         )
         return document
-
-    #def get_document_version(self):
-    #    return get_object_or_404(
-    #        self.get_document().versions.all(), pk=self.kwargs['version_pk']
-    #    )
 
     def get_queryset(self):
         return self.get_document().pages.all()
@@ -544,7 +537,7 @@ class APIRecentDocumentListView(generics.ListAPIView):
 
 
 class APIDocumentVersionPageListView(generics.ListAPIView):
-    serializer_class = DocumentPageSerializer
+    serializer_class = DocumentVersionPageSerializer
 
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])

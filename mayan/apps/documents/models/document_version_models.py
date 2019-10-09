@@ -246,17 +246,6 @@ class DocumentVersion(models.Model):
 
             return result
 
-    #@property
-    #def pages_all(self):
-    #    DocumentPage = apps.get_model(
-    #        app_label='documents', model_name='DocumentVersionPage'
-    #    )
-    #    return DocumentPage.passthrough.filter(document_version=self)
-
-    #@property
-    #def pages(self):
-    #    return self.pages.all()
-
     @property
     def page_count(self):
         """
