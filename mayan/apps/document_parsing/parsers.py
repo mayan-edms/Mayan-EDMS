@@ -68,8 +68,9 @@ class Parser(object):
             self.process_document_page(document_page=document_page)
 
     def process_document_page(self, document_page):
-        DocumentPageContent = apps.get_model(
-            app_label='document_parsing', model_name='DocumentPageContent'
+        DocumentVersionPageContent = apps.get_model(
+            app_label='document_parsing',
+            model_name='DocumentVersionPageContent'
         )
 
         logger.info(
@@ -80,7 +81,7 @@ class Parser(object):
         file_object = document_page.document_version.get_intermediate_file()
 
         try:
-            document_page_content, created = DocumentPageContent.objects.get_or_create(
+            document_page_content, created = DocumentVersionPageContent.objects.get_or_create(
                 document_page=document_page
             )
             document_page_content.content = self.execute(

@@ -56,7 +56,9 @@ class TrashedDocumentTestMixin(object):
         return self.get(viewname='documents:document_list_deleted')
 
 
-class TrashedDocumentTestCase(GenericDocumentViewTestCase):
+class TrashedDocumentTestCase(
+    TrashedDocumentTestMixin, GenericDocumentViewTestCase
+):
     def test_document_restore_get_view_no_permission(self):
         self.test_document.delete()
         self.assertEqual(Document.objects.count(), 0)
