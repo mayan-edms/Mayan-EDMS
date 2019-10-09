@@ -38,7 +38,7 @@ document_search = SearchModel(
     model_name='Document', permission=permission_document_view,
     serializer_path='mayan.apps.documents.serializers.DocumentSerializer'
 )
-
+'''
 document_search.add_model_field(
     field='document_type__label', label=_('Document type')
 )
@@ -51,10 +51,10 @@ document_search.add_model_field(
     field='uuid', label=_('UUID'),
     transformation_function=transformation_format_uuid
 )
-document_search.add_model_field(
-    field='versions__checksum', label=_('Checksum')
-)
-
+#document_search.add_model_field(
+#    field='versions__checksum', label=_('Checksum')
+#)
+'''
 document_page_search = SearchModel(
     app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
     model_name='DocumentPage', permission=permission_document_view,
@@ -65,10 +65,10 @@ document_page_search = SearchModel(
 document_version_page_search = SearchModel(
     app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
     model_name='DocumentVersionPage', permission=permission_document_view,
-    queryset=get_queryset_document_version_page_search_queryset,
+    #queryset=get_queryset_document_version_page_search_queryset,
     serializer_path='mayan.apps.documents.serializers.DocumentPageVersionSerializer'
 )
-
+'''
 document_page_search.add_model_field(
     field='document__document_type__label',
     label=_('Document type')
@@ -83,10 +83,12 @@ document_page_search.add_model_field(
 document_page_search.add_model_field(
     field='document__description', label=_('Description')
 )
-document_page_search.add_model_field(
-    field='document__document_version__checksum', label=_('Checksum')
-)
+'''
+#document_page_search.add_model_field(
+#    field='document__document_version__checksum', label=_('Checksum')
+#)
 
+'''
 document_version_page_search.add_model_field(
     field='document_version__document__document_type__label',
     label=_('Document type')
@@ -104,3 +106,4 @@ document_version_page_search.add_model_field(
 document_version_page_search.add_model_field(
     field='document_version__checksum', label=_('Checksum')
 )
+'''

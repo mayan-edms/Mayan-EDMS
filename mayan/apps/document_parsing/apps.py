@@ -12,7 +12,9 @@ from mayan.apps.common.classes import ModelField
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
-from mayan.apps.documents.search import document_search, document_page_search
+from mayan.apps.documents.search import (
+    document_search, document_page_search, document_version_page_search
+)
 from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
@@ -133,10 +135,10 @@ class DocumentParsingApp(MayanAppConfig):
         )
 
         document_search.add_model_field(
-            field='pages__content__content', label=_('Content')
+            field='versions__pages__content__content', label=_('Content')
         )
 
-        document_page_search.add_model_field(
+        document_version_page_search.add_model_field(
             field='content__content', label=_('Content')
         )
 

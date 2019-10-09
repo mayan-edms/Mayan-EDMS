@@ -12,7 +12,9 @@ from mayan.apps.common.classes import ModelField
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
-from mayan.apps.documents.search import document_search, document_page_search
+from mayan.apps.documents.search import (
+    document_search, document_page_search, document_version_page_search
+)
 from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
@@ -128,12 +130,14 @@ class OCRApp(MayanAppConfig):
         )
 
         document_search.add_model_field(
-            field='pages__ocr_content__content', label=_('OCR')
+            field='versions__pages__ocr_content__content', label=_('OCR')
         )
-
-        document_page_search.add_model_field(
+        document_version_page_search.add_model_field(
             field='ocr_content__content', label=_('OCR')
         )
+        #document_page_search.add_model_field(
+        #    field='ocr_content__content', label=_('OCR')
+        #)
 
         menu_facet.bind_links(
             links=(link_document_ocr_content,), sources=(Document,)

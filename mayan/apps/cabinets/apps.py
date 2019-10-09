@@ -10,12 +10,14 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
     menu_secondary
 )
+from mayan.apps.documents.search import (
+    document_page_search, document_search, document_version_page_search
+)
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
 )
 from mayan.apps.events.permissions import permission_events_view
-from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.navigation.classes import SourceColumn
 
 from .dependencies import *  # NOQA
@@ -115,11 +117,15 @@ class CabinetsApp(MayanAppConfig):
         )
 
         document_page_search.add_model_field(
-            field='document_version__document__cabinets__label',
+            field='document__cabinets__label',
             label=_('Cabinets')
         )
         document_search.add_model_field(
             field='cabinets__label', label=_('Cabinets')
+        )
+        document_version_page_search.add_model_field(
+            field='document_version__document__cabinets__label',
+            label=_('Cabinets')
         )
 
         menu_facet.bind_links(

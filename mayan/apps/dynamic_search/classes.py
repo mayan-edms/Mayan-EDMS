@@ -184,7 +184,14 @@ class SearchModel(object):
             query_string=query_string, global_and_search=global_and_search
         )
 
-        queryset = self.get_queryset().filter(search_query.query).distinct()
+        try:
+            queryset = self.get_queryset().filter(search_query.query).distinct()
+        except Exception:
+            logger.error(
+                'Error filtering model %s with queryset: %s', self.model,
+                search_query.query
+            )
+            raise
 
         if self.permission:
             queryset = AccessControlList.objects.restrict_queryset(

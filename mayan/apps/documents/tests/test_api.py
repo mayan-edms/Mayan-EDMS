@@ -601,12 +601,10 @@ class TrashedDocumentAPIViewTestMixin(object):
         )
 
     def _request_test_trashed_document_api_image_view(self):
-        latest_version = self.test_document.latest_version
-
         return self.get(
             viewname='rest_api:documentpage-image', kwargs={
-                'pk': latest_version.document.pk,
-                'page_pk': latest_version.pages.first().pk
+                'pk': self.test_document.pk,
+                'page_pk': self.test_document.pages.first().pk
             }
         )
 
