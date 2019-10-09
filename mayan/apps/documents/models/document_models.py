@@ -170,6 +170,9 @@ class Document(models.Model):
         document_version.save(_user=_user)
 
         logger.info('New document version queued for document: %s', self)
+
+        self.reset_pages(update_page_count=False)
+
         return document_version
 
     def open(self, *args, **kwargs):
@@ -186,15 +189,6 @@ class Document(models.Model):
     @property
     def pages(self):
         return self.pages.all()
-        #try:
-        #    return self.latest_version.pages
-        #except AttributeError:
-        #    # Document has no version yet
-        #    DocumentPage = apps.get_model(
-        #        app_label='documents', model_name='DocumentVersionPage'
-        #    )
-
-        #    return DocumentPage.objects.none()
 
     @property
     def pages_all(self):
@@ -203,19 +197,16 @@ class Document(models.Model):
         )
         return DocumentPage.passthrough.filter(document=self)
 
-    def reset_pages(self):
+    def reset_pages(self, update_page_count=True):
         with transaction.atomic():
             for page in self.pages.all():
                 page.delete()
 
-            self.latest_version.update_page_count()
+            if update_page_count:
+                self.latest_version.update_page_count()
 
             for version_page in self.latest_version.pages.all():
                 document_page = self.pages.create(
-                    #content_type = models.ForeignKey(
-                    #    on_delete=models.CASCADE, to=ContentType
-                    #)
-                    #object_id = models.PositiveIntegerField()
                     content_object = version_page
                 )
 

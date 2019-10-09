@@ -69,6 +69,7 @@ class DocumentTestMixin(object):
 
         self.test_document = document
         self.test_documents.append(document)
+        self.test_document_version = document.latest_version
 
 
 class DocumentTypeViewTestMixin(object):
@@ -148,6 +149,26 @@ class DocumentVersionTestMixin(object):
             )
 
 
+class DocumentVersionViewTestMixin(object):
+    def _request_document_version_list_view(self):
+        return self.get(
+            viewname='documents:document_version_list',
+            kwargs={'pk': self.test_document.pk}
+        )
+
+    def _request_document_version_revert_view(self, document_version):
+        return self.post(
+            viewname='documents:document_version_revert',
+            kwargs={'pk': document_version.pk}
+        )
+
+    def _request_test_document_version_page_count_update_view(self):
+        return self.post(
+            viewname='documents:document_version_page_count_update',
+            kwargs={'pk': self.test_document_version.pk}
+        )
+
+
 class DocumentViewTestMixin(object):
     def _request_document_properties_view(self):
         return self.get(
@@ -200,24 +221,18 @@ class DocumentViewTestMixin(object):
             data={'id_list': self.test_document.pk}
         )
 
+    def _request_document_pages_reset_view(self):
+        return self.post(
+            viewname='documents:document_pages_reset',
+            kwargs={'pk': self.test_document.pk}
+        )
+
     def _request_document_version_download(self, data=None):
         data = data or {}
         return self.get(
             viewname='documents:document_version_download', kwargs={
                 'pk': self.test_document.latest_version.pk
             }, data=data
-        )
-
-    def _request_document_update_page_count_view(self):
-        return self.post(
-            viewname='documents:document_update_page_count',
-            kwargs={'pk': self.test_document.pk}
-        )
-
-    def _request_document_multiple_update_page_count_view(self):
-        return self.post(
-            viewname='documents:document_multiple_update_page_count',
-            data={'id_list': self.test_document.pk}
         )
 
     def _request_document_clear_transformations_view(self):
@@ -232,8 +247,11 @@ class DocumentViewTestMixin(object):
             data={'id_list': self.test_document.pk}
         )
 
-    def _request_empty_trash_view(self):
-        return self.post(viewname='documents:trash_can_empty')
+    def _request_document_multiple_pages_reset_view(self):
+        return self.post(
+            viewname='documents:document_multiple_pages_reset',
+            data={'id_list': self.test_document.pk}
+        )
 
     def _request_document_print_view(self):
         return self.get(
@@ -243,3 +261,7 @@ class DocumentViewTestMixin(object):
                 'page_group': PAGE_RANGE_ALL
             }
         )
+
+    def _request_empty_trash_view(self):
+        return self.post(viewname='documents:trash_can_empty')
+

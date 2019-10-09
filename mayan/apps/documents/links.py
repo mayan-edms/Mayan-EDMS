@@ -168,12 +168,12 @@ link_document_quick_download = Link(
     permissions=(permission_document_download,), text=_('Quick download'),
     view='documents:document_download',
 )
-link_document_update_page_count = Link(
+link_document_pages_reset = Link(
     args='resolved_object.pk',
-    icon_class_path='mayan.apps.documents.icons.icon_document_page_count_update',
+    icon_class_path='mayan.apps.documents.icons.icon_document_pages_reset',
     permissions=(permission_document_tools,),
-    text=_('Recalculate page count'),
-    view='documents:document_update_page_count'
+    text=_('Reset pages'),
+    view='documents:document_pages_reset'
 )
 link_document_restore = Link(
     permissions=(permission_document_restore,),
@@ -217,10 +217,10 @@ link_document_multiple_download = Link(
     text=_('Advanced download'),
     view='documents:document_multiple_download_form'
 )
-link_document_multiple_update_page_count = Link(
-    icon_class_path='mayan.apps.documents.icons.icon_document_page_count_update',
-    text=_('Recalculate page count'),
-    view='documents:document_multiple_update_page_count'
+link_document_multiple_pages_reset = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_pages_reset',
+    text=_('Reset pages'),
+    view='documents:document_multiple_pages_reset'
 )
 link_document_multiple_restore = Link(
     icon_class_path='mayan.apps.documents.icons.icon_trashed_document_restore',
@@ -245,6 +245,18 @@ link_document_version_return_list = Link(
     icon_class_path='mayan.apps.documents.icons.icon_document_version_return_list',
     permissions=(permission_document_version_view,), text=_('Versions'),
     view='documents:document_version_list',
+)
+link_document_version_page_count_update = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_count_update',
+    permissions=(permission_document_tools,),
+    text=_('Update page count'),
+    view='documents:document_version_page_count_update'
+)
+link_document_version_multiple_page_count_update = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_count_update',
+    text=_('Update page count'),
+    view='documents:document_version_multiple_page_count_update'
 )
 link_document_version_view = Link(
     args='resolved_object.pk',

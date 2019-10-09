@@ -59,7 +59,7 @@ from .links import (
     link_document_multiple_delete, link_document_multiple_document_type_edit,
     link_document_multiple_download, link_document_multiple_favorites_add,
     link_document_multiple_favorites_remove, link_document_multiple_restore,
-    link_document_multiple_trash, link_document_multiple_update_page_count,
+    link_document_multiple_trash, link_document_multiple_pages_reset,
     link_document_page_disable, link_document_page_multiple_disable,
     link_document_page_enable, link_document_page_multiple_enable,
     link_document_page_navigation_first, link_document_page_navigation_last,
@@ -74,8 +74,10 @@ from .links import (
     link_document_type_filename_create, link_document_type_filename_delete,
     link_document_type_filename_edit, link_document_type_filename_list,
     link_document_type_list, link_document_type_policies,
-    link_document_type_setup, link_document_update_page_count,
+    link_document_type_setup, link_document_pages_reset,
     link_document_version_download, link_document_version_list,
+    link_document_version_multiple_page_count_update,
+    link_document_version_page_count_update,
     link_document_version_return_document, link_document_version_return_list,
     link_document_version_revert, link_document_version_view,
     link_duplicated_document_list, link_duplicated_document_scan,
@@ -87,10 +89,10 @@ from .permissions import (
     permission_document_download, permission_document_edit,
     permission_document_new_version, permission_document_print,
     permission_document_properties_edit, permission_document_restore,
-    permission_document_trash, permission_document_type_delete,
-    permission_document_type_edit, permission_document_type_view,
-    permission_document_version_revert, permission_document_version_view,
-    permission_document_view
+    permission_document_tools, permission_document_trash,
+    permission_document_type_delete, permission_document_type_edit,
+    permission_document_type_view, permission_document_version_revert,
+    permission_document_version_view, permission_document_view,
 )
 # Just import to initialize the search models
 from .search import document_search, document_page_search  # NOQA
@@ -190,13 +192,15 @@ class DocumentsApp(MayanAppConfig):
                 permission_acl_edit, permission_acl_view,
                 permission_document_delete, permission_document_download,
                 permission_document_edit, permission_document_new_version,
-                permission_document_print, permission_document_properties_edit,
-                permission_document_restore, permission_document_trash,
-                permission_document_version_revert,
+                permission_document_print,
+                permission_document_properties_edit,
+                permission_document_restore, permission_document_tools,
+                permission_document_trash, permission_document_version_revert,
                 permission_document_version_view, permission_document_view,
                 permission_events_view, permission_transformation_create,
                 permission_transformation_delete,
-                permission_transformation_edit, permission_transformation_view,
+                permission_transformation_edit,
+                permission_transformation_view,
             )
         )
 
@@ -454,7 +458,7 @@ class DocumentsApp(MayanAppConfig):
                 link_document_quick_download, link_document_download,
                 link_document_clear_transformations,
                 link_document_clone_transformations,
-                link_document_update_page_count,
+                link_document_pages_reset,
             ), sources=(Document,)
         )
         menu_object.bind_links(
@@ -495,7 +499,7 @@ class DocumentsApp(MayanAppConfig):
                 link_document_multiple_favorites_remove,
                 link_document_multiple_clear_transformations,
                 link_document_multiple_trash, link_document_multiple_download,
-                link_document_multiple_update_page_count,
+                link_document_multiple_pages_reset,
                 link_document_multiple_document_type_edit,
             ), sources=(Document,)
         )
@@ -547,6 +551,17 @@ class DocumentsApp(MayanAppConfig):
                 link_document_version_return_list
             ), sources=(DocumentVersion,)
         )
+        menu_multi_item.bind_links(
+            links=(
+                link_document_version_multiple_page_count_update,
+            ), sources=(DocumentVersion,)
+        )
+        menu_object.bind_links(
+            links=(
+                link_document_version_page_count_update,
+            ), sources=(DocumentVersion,)
+        )
+
         menu_list_facet.bind_links(
             links=(link_document_version_view,), sources=(DocumentVersion,)
         )

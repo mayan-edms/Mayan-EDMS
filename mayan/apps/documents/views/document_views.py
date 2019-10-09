@@ -44,14 +44,14 @@ from ..permissions import (
 from ..settings import (
     setting_print_width, setting_print_height, setting_recent_added_count
 )
-from ..tasks import task_update_page_count
+from ..tasks import task_document_reset_pages
 from ..utils import parse_range
 
 __all__ = (
     'DocumentListView', 'DocumentDocumentTypeEditView',
     'DocumentDuplicatesListView', 'DocumentEditView', 'DocumentPreviewView',
     'DocumentView', 'DocumentDownloadFormView', 'DocumentDownloadView',
-    'DocumentUpdatePageCountView', 'DocumentTransformationsClearView',
+    'DocumentPagesResetView', 'DocumentTransformationsClearView',
     'DocumentTransformationsCloneView', 'DocumentPrint',
     'DuplicatedDocumentListView', 'RecentAccessDocumentListView',
     'RecentAddedDocumentListView'
@@ -418,6 +418,52 @@ class DocumentPreviewView(SingleObjectDetailView):
         }
 
 
+class DocumentPagesResetView(MultipleObjectConfirmActionView):
+    model = Document
+    object_permission = permission_document_tools
+    success_message = _('%(count)d document queued for pages reset')
+    success_message_plural = _('%(count)d documents queued for pages reset')
+
+    def get_extra_context(self):
+        queryset = self.object_list
+
+        result = {
+            'title': ungettext(
+                singular='Reset the pages of the selected document?',
+                plural='Reset the pages of the selected documents?',
+                number=queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _(
+                        'Reset the pages of the document: %s?'
+                    ) % queryset.first()
+                }
+            )
+
+        return result
+
+    def object_action(self, form, instance):
+        latest_version = instance.latest_version
+        if latest_version:
+            task_document_reset_pages.apply_async(
+                kwargs={'document_id': instance.pk}
+            )
+        else:
+            messages.error(
+                self.request, _(
+                    'Document "%(document)s" is empty. Upload at least one '
+                    'document version before attempting to reset the pages. '
+                ) % {
+                    'document': instance,
+                }
+            )
+
+
 class DocumentView(SingleObjectDetailView):
     form_class = DocumentPropertiesForm
     model = Document
@@ -434,57 +480,6 @@ class DocumentView(SingleObjectDetailView):
             'object': self.get_object(),
             'title': _('Properties for document: %s') % self.get_object(),
         }
-
-
-class DocumentUpdatePageCountView(MultipleObjectConfirmActionView):
-    model = Document
-    object_permission = permission_document_tools
-    success_message = _(
-        '%(count)d document queued for page count recalculation'
-    )
-    success_message_plural = _(
-        '%(count)d documents queued for page count recalculation'
-    )
-
-    def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
-            'title': ungettext(
-                singular='Recalculate the page count of the selected document?',
-                plural='Recalculate the page count of the selected documents?',
-                number=queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result.update(
-                {
-                    'object': queryset.first(),
-                    'title': _(
-                        'Recalculate the page count of the document: %s?'
-                    ) % queryset.first()
-                }
-            )
-
-        return result
-
-    def object_action(self, form, instance):
-        latest_version = instance.latest_version
-        if latest_version:
-            task_update_page_count.apply_async(
-                kwargs={'version_id': latest_version.pk}
-            )
-        else:
-            messages.error(
-                self.request, _(
-                    'Document "%(document)s" is empty. Upload at least one '
-                    'document version before attempting to detect the '
-                    'page count.'
-                ) % {
-                    'document': instance,
-                }
-            )
 
 
 class DocumentTransformationsClearView(MultipleObjectConfirmActionView):

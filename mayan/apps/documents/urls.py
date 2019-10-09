@@ -18,9 +18,10 @@ from .views.document_views import (
     DocumentDocumentTypeEditView, DocumentDownloadFormView,
     DocumentDownloadView, DocumentDuplicatesListView, DocumentEditView,
     DocumentListView, DocumentPreviewView, DocumentPrint,
-    DocumentTransformationsClearView, DocumentTransformationsCloneView,
-    DocumentUpdatePageCountView, DocumentView, DuplicatedDocumentListView,
-    RecentAccessDocumentListView, RecentAddedDocumentListView
+    DocumentPagesResetView, DocumentTransformationsClearView,
+    DocumentTransformationsCloneView, DocumentView,
+    DuplicatedDocumentListView, RecentAccessDocumentListView,
+    RecentAddedDocumentListView
 )
 from .views.document_page_views import (
     DocumentPageDisable, DocumentPageEnable, DocumentPageListView,
@@ -32,7 +33,8 @@ from .views.document_page_views import (
 )
 from .views.document_version_views import (
     DocumentVersionDownloadFormView, DocumentVersionDownloadView,
-    DocumentVersionListView, DocumentVersionRevertView, DocumentVersionView,
+    DocumentVersionListView, DocumentVersionRevertView,
+    DocumentVersionUpdatePageCountView, DocumentVersionView,
 )
 from .views.document_type_views import (
     DocumentTypeCreateView, DocumentTypeDeleteView,
@@ -174,14 +176,14 @@ urlpatterns_documents = [
         name='document_print'
     ),
     url(
-        regex=r'^documents/(?P<pk>\d+)/reset_page_count/$',
-        view=DocumentUpdatePageCountView.as_view(),
-        name='document_update_page_count'
+        regex=r'^documents/(?P<pk>\d+)/pages/reset/$',
+        view=DocumentPagesResetView.as_view(),
+        name='document_pages_reset'
     ),
     url(
-        regex=r'^documents/multiple/reset_page_count/$',
-        view=DocumentUpdatePageCountView.as_view(),
-        name='document_multiple_update_page_count'
+        regex=r'^documents/multiple/pages/reset/$',
+        view=DocumentPagesResetView.as_view(),
+        name='document_multiple_pages_reset'
     ),
     url(
         regex=r'^documents/(?P<pk>\d+)/download/form/$',
@@ -306,6 +308,16 @@ urlpatterns_document_versions = [
         regex=r'^documents/versions/(?P<pk>\d+)/download/$',
         view=DocumentVersionDownloadView.as_view(),
         name='document_version_download'
+    ),
+    url(
+        regex=r'^documents/versions/(?P<pk>\d+)/pages/update/$',
+        view=DocumentVersionUpdatePageCountView.as_view(),
+        name='document_version_page_count_update'
+    ),
+    url(
+        regex=r'^documents/versions/multiple/pages/update/$',
+        view=DocumentVersionUpdatePageCountView.as_view(),
+        name='document_version_multiple_page_count_update'
     ),
     url(
         regex=r'^documents/versions/(?P<pk>\d+)/revert/$',
