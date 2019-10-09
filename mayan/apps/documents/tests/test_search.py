@@ -8,17 +8,23 @@ from ..search import document_search, document_page_search
 from .mixins import DocumentTestMixin
 
 
-class DocumentSearchTestCase(DocumentTestMixin, BaseTestCase):
+class DocumentSearchTestMixin(object):
     def _perform_document_page_search(self):
         return document_page_search.search(
-            query_string={'q': self.test_document.label}, user=self._test_case_user
+            query_string={'q': self.test_document.label},
+            user=self._test_case_user
         )
 
     def _perform_document_search(self):
         return document_search.search(
-            query_string={'q': self.test_document.label}, user=self._test_case_user
+            query_string={'q': self.test_document.label},
+            user=self._test_case_user
         )
 
+
+class DocumentSearchTestCase(
+    DocumentSearchTestMixin, DocumentTestMixin, BaseTestCase
+):
     def test_document_page_search_no_access(self):
         queryset = self._perform_document_page_search()
         self.assertFalse(self.test_document.pages.first() in queryset)
