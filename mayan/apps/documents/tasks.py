@@ -66,7 +66,7 @@ def task_delete_stubs():
 
 
 @app.task(bind=True, default_retry_delay=RETRY_DELAY_DOCUMENT_RESET_PAGES, ignore_result=True)
-def task_document_reset_pages(self, document_id):
+def task_document_pages_reset(self, document_id):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
@@ -74,7 +74,7 @@ def task_document_reset_pages(self, document_id):
     document = Document.objects.get(pk=document_id)
 
     try:
-        document.reset_pages()
+        document.pages_reset()
     except OperationalError as exception:
         logger.warning(
             'Operational error during attempt to reset pages for '

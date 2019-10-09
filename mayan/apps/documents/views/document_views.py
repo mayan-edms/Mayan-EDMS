@@ -44,7 +44,7 @@ from ..permissions import (
 from ..settings import (
     setting_print_width, setting_print_height, setting_recent_added_count
 )
-from ..tasks import task_document_reset_pages
+from ..tasks import task_document_pages_reset
 from ..utils import parse_range
 
 __all__ = (
@@ -450,7 +450,7 @@ class DocumentPagesResetView(MultipleObjectConfirmActionView):
     def object_action(self, form, instance):
         latest_version = instance.latest_version
         if latest_version:
-            task_document_reset_pages.apply_async(
+            task_document_pages_reset.apply_async(
                 kwargs={'document_id': instance.pk}
             )
         else:

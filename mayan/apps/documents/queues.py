@@ -71,7 +71,7 @@ queue_tools.add_task_type(
 )
 
 queue_uploads.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_document_reset_pages',
+    dotted_path='mayan.apps.documents.tasks.task_document_pages_reset',
     label=_('Reset document pages')
 )
 queue_uploads.add_task_type(

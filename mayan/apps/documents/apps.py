@@ -127,6 +127,7 @@ class DocumentsApp(MayanAppConfig):
         DocumentType = self.get_model(model_name='DocumentType')
         DocumentTypeFilename = self.get_model(model_name='DocumentTypeFilename')
         DocumentVersion = self.get_model(model_name='DocumentVersion')
+        DocumentVersionPage = self.get_model(model_name='DocumentVersionPage')
         DuplicatedDocument = self.get_model(model_name='DuplicatedDocument')
 
         DynamicSerializerField.add_serializer(
@@ -228,7 +229,7 @@ class DocumentsApp(MayanAppConfig):
             model=Document, manager_name='passthrough'
         )
         ModelPermission.register_inheritance(
-            model=DocumentPage, related='document_version__document',
+            model=DocumentPage, related='document',
         )
         ModelPermission.register_manager(
             model=DocumentPage, manager_name='passthrough'
@@ -244,6 +245,9 @@ class DocumentsApp(MayanAppConfig):
         )
         ModelPermission.register_inheritance(
             model=DocumentVersion, related='document',
+        )
+        ModelPermission.register_inheritance(
+            model=DocumentVersionPage, related='document_version',
         )
 
         # Document and document page thumbnail widget

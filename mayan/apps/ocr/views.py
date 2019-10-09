@@ -17,7 +17,7 @@ from mayan.apps.documents.models import (
 )
 
 from .forms import DocumentPageOCRContentForm, DocumentOCRContentForm
-from .models import DocumentPageOCRContent, DocumentVersionOCRError
+from .models import DocumentVersionPageOCRContent, DocumentVersionOCRError
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
     permission_document_type_ocr_setup
@@ -48,7 +48,7 @@ class DocumentOCRContentDeleteView(MultipleObjectConfirmActionView):
         return result
 
     def object_action(self, form, instance):
-        DocumentPageOCRContent.objects.delete_content_for(
+        DocumentVersionPageOCRContent.objects.delete_content_for(
             document=instance, user=self.request.user
         )
 

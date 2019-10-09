@@ -530,8 +530,7 @@ class DocumentPageAPIViewTestMixin(object):
         page = self.test_document.pages.first()
         return self.get(
             viewname='rest_api:documentpage-image', kwargs={
-                'pk': page.document.pk, 'version_pk': page.document_version.pk,
-                'page_pk': page.pk
+                'pk': page.document.pk, 'page_pk': page.pk
             }
         )
 
@@ -549,6 +548,33 @@ class DocumentPageAPIViewTestCase(
         )
 
         response = self._request_document_page_image()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+
+class DocumentVersionPageAPIViewTestMixin(object):
+    def _request_document_version_page_image(self):
+        page = self.test_document_version.pages.first()
+        return self.get(
+            viewname='rest_api:documentversionpage-image', kwargs={
+                'pk': page.document.pk, 'version_pk': page.document_version.pk,
+                'page_pk': page.pk
+            }
+        )
+
+
+class DocumentVersionPageAPIViewTestCase(
+    DocumentVersionPageAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
+):
+    def test_document_version_page_api_image_view_no_access(self):
+        response = self._request_document_version_page_image()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_document_version_page_api_image_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        response = self._request_document_version_page_image()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
@@ -580,7 +606,6 @@ class TrashedDocumentAPIViewTestMixin(object):
         return self.get(
             viewname='rest_api:documentpage-image', kwargs={
                 'pk': latest_version.document.pk,
-                'version_pk': latest_version.pk,
                 'page_pk': latest_version.pages.first().pk
             }
         )

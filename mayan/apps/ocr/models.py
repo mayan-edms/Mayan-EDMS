@@ -5,7 +5,7 @@ from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import (
-    DocumentPage, DocumentType, DocumentVersion
+    DocumentPage, DocumentType, DocumentVersion, DocumentVersionPage
 )
 
 from .managers import (
@@ -38,13 +38,13 @@ class DocumentTypeSettings(models.Model):
 
 
 @python_2_unicode_compatible
-class DocumentPageOCRContent(models.Model):
+class DocumentVersionPageOCRContent(models.Model):
     """
     This model stores the OCR results for a document page.
     """
-    document_page = models.OneToOneField(
+    document_version_page = models.OneToOneField(
         on_delete=models.CASCADE, related_name='ocr_content',
-        to=DocumentPage, verbose_name=_('Document page')
+        to=DocumentVersionPage, verbose_name=_('Document version page')
     )
     content = models.TextField(
         blank=True, help_text=_(
@@ -55,8 +55,8 @@ class DocumentPageOCRContent(models.Model):
     objects = DocumentPageOCRContentManager()
 
     class Meta:
-        verbose_name = _('Document page OCR content')
-        verbose_name_plural = _('Document pages OCR contents')
+        verbose_name = _('Document version page OCR content')
+        verbose_name_plural = _('Document version pages OCR contents')
 
     def __str__(self):
         return force_text(self.document_page)

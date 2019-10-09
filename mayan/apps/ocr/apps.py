@@ -128,7 +128,7 @@ class OCRApp(MayanAppConfig):
         )
 
         document_search.add_model_field(
-            field='versions__version_pages__ocr_content__content', label=_('OCR')
+            field='pages__ocr_content__content', label=_('OCR')
         )
 
         document_page_search.add_model_field(

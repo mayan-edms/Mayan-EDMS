@@ -41,14 +41,12 @@ class DocumentVersionPage(models.Model):
         on_delete=models.CASCADE, related_name='pages', to=DocumentVersion,
         verbose_name=_('Document version')
     )
-    enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
     page_number = models.PositiveIntegerField(
         db_index=True, default=1, editable=False,
         verbose_name=_('Page number')
     )
 
     objects = DocumentVersionPageManager()
-    #passthrough = models.Manager()
 
     class Meta:
         ordering = ('page_number',)
@@ -261,11 +259,11 @@ class DocumentVersionPage(models.Model):
         return (self.page_number, self.document_version.natural_key())
     natural_key.dependencies = ['documents.DocumentVersion']
 
-    #@property
-    #def siblings(self):
-    #    return DocumentVersionPage.objects.filter(
-    #        document_version=self.document_version
-    #    )
+    @property
+    def siblings(self):
+        return DocumentVersionPage.objects.filter(
+            document_version=self.document_version
+        )
 
     @property
     def uuid(self):

@@ -116,6 +116,14 @@ class Document(models.Model):
         )
         return partition
 
+    @property
+    def checksum(self):
+        return self.latest_version.checksum
+
+    @property
+    def date_updated(self):
+        return self.latest_version.timestamp
+
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
 
@@ -140,6 +148,14 @@ class Document(models.Model):
         else:
             return False
 
+    @property
+    def file_mime_encoding(self):
+        return self.latest_version.encoding
+
+    @property
+    def file_mimetype(self):
+        return self.latest_version.mimetype
+
     def get_absolute_url(self):
         return reverse(
             viewname='documents:document_preview', kwargs={'pk': self.pk}
@@ -153,6 +169,10 @@ class Document(models.Model):
     @property
     def is_in_trash(self):
         return self.in_trash
+
+    @property
+    def latest_version(self):
+        return self.versions.order_by('timestamp').last()
 
     def natural_key(self):
         return (self.uuid,)
@@ -170,8 +190,6 @@ class Document(models.Model):
         document_version.save(_user=_user)
 
         logger.info('New document version queued for document: %s', self)
-
-        self.reset_pages(update_page_count=False)
 
         return document_version
 
@@ -197,7 +215,7 @@ class Document(models.Model):
         )
         return DocumentPage.passthrough.filter(document=self)
 
-    def reset_pages(self, update_page_count=True):
+    def pages_reset(self, update_page_count=True):
         with transaction.atomic():
             for page in self.pages.all():
                 page.delete()
@@ -254,25 +272,3 @@ class Document(models.Model):
     @property
     def size(self):
         return self.latest_version.size
-
-    # Compatibility methods
-
-    @property
-    def checksum(self):
-        return self.latest_version.checksum
-
-    @property
-    def date_updated(self):
-        return self.latest_version.timestamp
-
-    @property
-    def file_mime_encoding(self):
-        return self.latest_version.encoding
-
-    @property
-    def file_mimetype(self):
-        return self.latest_version.mimetype
-
-    @property
-    def latest_version(self):
-        return self.versions.order_by('timestamp').last()

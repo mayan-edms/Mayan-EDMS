@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from mayan.apps.documents.models import Document, DocumentVersion
 from mayan.apps.rest_api.permissions import MayanPermission
 
-from .models import DocumentPageOCRContent
+from .models import DocumentVersionPageOCRContent
 from .permissions import permission_ocr_content_view, permission_ocr_document
 from .serializers import DocumentPageOCRContentSerializer
 
@@ -90,8 +90,8 @@ class APIDocumentPageOCRContentView(generics.RetrieveAPIView):
 
         try:
             ocr_content = instance.ocr_content
-        except DocumentPageOCRContent.DoesNotExist:
-            ocr_content = DocumentPageOCRContent.objects.none()
+        except DocumentVersionPageOCRContent.DoesNotExist:
+            ocr_content = DocumentVersionPageOCRContent.objects.none()
 
         serializer = self.get_serializer(ocr_content)
         return Response(serializer.data)

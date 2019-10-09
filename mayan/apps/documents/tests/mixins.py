@@ -70,6 +70,7 @@ class DocumentTestMixin(object):
         self.test_document = document
         self.test_documents.append(document)
         self.test_document_version = document.latest_version
+        self.test_document_page = document.pages_all.first()
 
 
 class DocumentTypeViewTestMixin(object):
@@ -264,4 +265,3 @@ class DocumentViewTestMixin(object):
 
     def _request_empty_trash_view(self):
         return self.post(viewname='documents:trash_can_empty')
-

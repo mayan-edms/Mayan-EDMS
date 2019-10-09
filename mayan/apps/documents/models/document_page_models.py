@@ -29,9 +29,8 @@ from ..settings import (
 )
 
 from .document_models import Document
-#from .document_version_page_models import DocumentVersionPage
 
-__all__ = ('DocumentPage',)# 'DocumentPageResult')
+__all__ = ('DocumentPage', 'DocumentPageResult')
 logger = logging.getLogger(__name__)
 
 
@@ -301,9 +300,9 @@ class DocumentPage(models.Model):
         return '{}-{}'.format(self.document.uuid, self.pk)
 
 
-#class DocumentVersionPageResult(DocumentVersionPage):
-#    class Meta:
-#        ordering = ('document_version__document', 'page_number')
-#        proxy = True
-#        verbose_name = _('Document version page')
-#        verbose_name_plural = _('Document version pages')
+class DocumentPageResult(DocumentPage):
+    class Meta:
+        ordering = ('document', 'page_number')
+        proxy = True
+        verbose_name = _('Document page result')
+        verbose_name_plural = _('Document pages result')

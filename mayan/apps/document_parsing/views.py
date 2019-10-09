@@ -13,11 +13,11 @@ from mayan.apps.common.generics import (
 from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
 from mayan.apps.documents.models import (
-    Document, DocumentType, DocumentVersionPage
+    Document, DocumentPage, DocumentType, DocumentVersionPage
 )
 
 from .forms import DocumentContentForm, DocumentPageContentForm
-from .models import DocumentPageContent, DocumentVersionParseError
+from .models import DocumentVersionPageContent, DocumentVersionParseError
 from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
@@ -48,7 +48,7 @@ class DocumentContentDeleteView(MultipleObjectConfirmActionView):
         return result
 
     def object_action(self, form, instance):
-        DocumentPageContent.objects.delete_content_for(
+        DocumentVersionPageContent.objects.delete_content_for(
             document=instance, user=self.request.user
         )
 
@@ -89,7 +89,7 @@ class DocumentContentDownloadView(SingleObjectDownloadView):
 
 class DocumentPageContentView(SingleObjectDetailView):
     form_class = DocumentPageContentForm
-    model = DocumentVersionPage
+    model = DocumentPage
     object_permission = permission_content_view
 
     def dispatch(self, request, *args, **kwargs):
@@ -106,6 +106,30 @@ class DocumentPageContentView(SingleObjectDetailView):
             'hide_labels': True,
             'object': self.get_object(),
             'title': _('Content for document page: %s') % self.get_object(),
+        }
+
+
+class DocumentVersionPageContentView(SingleObjectDetailView):
+    form_class = DocumentPageContentForm
+    model = DocumentVersionPage
+    object_permission = permission_content_view
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(DocumentPageContentView, self).dispatch(
+            request, *args, **kwargs
+        )
+        self.get_object().document.add_as_recent_document_for_user(
+            request.user
+        )
+        return result
+
+    def get_extra_context(self):
+        return {
+            'hide_labels': True,
+            'object': self.get_object(),
+            'title': _(
+                'Content for document version page: %s'
+            ) % self.get_object(),
         }
 
 

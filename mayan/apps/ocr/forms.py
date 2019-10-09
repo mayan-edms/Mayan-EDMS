@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _, ugettext
 
 from mayan.apps.common.widgets import TextAreaDiv
 
-from .models import DocumentPageOCRContent
+from .models import DocumentVersionPageOCRContent
 
 
 class DocumentPageOCRContentForm(forms.Form):
@@ -30,7 +30,7 @@ class DocumentPageOCRContentForm(forms.Form):
 
         try:
             page_content = page.ocr_content.content
-        except DocumentPageOCRContent.DoesNotExist:
+        except DocumentVersionPageOCRContent.DoesNotExist:
             pass
         else:
             content = conditional_escape(force_text(page_content))
@@ -66,7 +66,7 @@ class DocumentOCRContentForm(forms.Form):
         for page in document_pages:
             try:
                 page_content = page.ocr_content.content
-            except DocumentPageOCRContent.DoesNotExist:
+            except DocumentVersionPageOCRContent.DoesNotExist:
                 pass
             else:
                 content.append(conditional_escape(force_text(page_content)))

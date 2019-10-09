@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0051_documentpage_enabled'),
     ]
@@ -20,8 +19,20 @@ class Migration(migrations.Migration):
             name='document_version',
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE,
-                related_name='version_pages', to='documents.DocumentVersion',
+                related_name='pages', to='documents.DocumentVersion',
                 verbose_name='Document version'
             ),
+        ),
+        migrations.RemoveField(
+            model_name='documentversionpage',
+            name='enabled',
+        ),
+        migrations.AlterModelOptions(
+            name='documentversionpage',
+            options={
+                'ordering': ('page_number',),
+                'verbose_name': 'Document version page',
+                'verbose_name_plural': 'Document version pages'
+            },
         ),
     ]

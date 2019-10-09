@@ -133,7 +133,7 @@ class DocumentParsingApp(MayanAppConfig):
         )
 
         document_search.add_model_field(
-            field='versions__pages__content__content', label=_('Content')
+            field='pages__content__content', label=_('Content')
         )
 
         document_page_search.add_model_field(

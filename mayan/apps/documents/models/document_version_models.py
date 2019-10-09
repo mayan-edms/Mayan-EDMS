@@ -246,12 +246,12 @@ class DocumentVersion(models.Model):
 
             return result
 
-    @property
-    def page_count(self):
-        """
-        The number of pages that the document posses.
-        """
-        return self.pages.count()
+    #@property
+    #def page_count(self):
+    #    """
+    #    The number of pages that the document posses.
+    #    """
+    #    return self.pages.count()
 
     def revert(self, _user=None):
         """
@@ -325,6 +325,8 @@ class DocumentVersion(models.Model):
                     post_document_created.send(
                         sender=Document, instance=self.document
                     )
+
+                self.document.pages_reset(update_page_count=False)
 
     def save_to_file(self, file_object):
         """
