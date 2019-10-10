@@ -453,9 +453,15 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
         )
 
     def get_form_classes(self):
+        source_form_class = get_upload_form_class(self.source.source_type)
+
+        # Override source form class to enable the HTML5 file uploader
+        if source_form_class == WebFormUploadForm:
+            source_form_class = WebFormUploadFormHTML5
+
         return {
             'document_form': NewVersionForm,
-            'source_form': get_upload_form_class(self.source.source_type)
+            'source_form': source_form_class
         }
 
     def get_context_data(self, **kwargs):
@@ -468,6 +474,14 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
             'from source: %(source)s'
         ) % {'document': self.document, 'source': self.source.label}
         context['submit_label'] = _('Submit')
+        context['form_css_classes'] = 'dropzone'
+        context['form_disable_submit'] = True
+        context['form_action'] = '{}?{}'.format(
+            reverse(
+                viewname=self.request.resolver_match.view_name,
+                kwargs=self.request.resolver_match.kwargs
+            ), self.request.META['QUERY_STRING']
+        )
 
         return context
 
