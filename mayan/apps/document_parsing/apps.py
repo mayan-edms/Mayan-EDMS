@@ -45,7 +45,7 @@ from .permissions import (
     permission_parse_document
 )
 from .signals import post_document_version_parsing
-from .utils import get_document_content
+from .utils import get_document_content, get_document_version_content
 
 logger = logging.getLogger(__name__)
 
@@ -65,7 +65,7 @@ class DocumentParsingApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
         DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentVersionPage'
+            app_label='documents', model_name='DocumentPage'
         )
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
@@ -75,6 +75,9 @@ class DocumentParsingApp(MayanAppConfig):
         )
         DocumentVersion = apps.get_model(
             app_label='documents', model_name='DocumentVersion'
+        )
+        DocumentVersionPage = apps.get_model(
+            app_label='documents', model_name='DocumentVersionPage'
         )
         DocumentVersionParseError = self.get_model(
             model_name='DocumentVersionParseError'
@@ -87,7 +90,7 @@ class DocumentParsingApp(MayanAppConfig):
             name='content', value=get_document_content
         )
         DocumentVersion.add_to_class(
-            name='content', value=get_document_content
+            name='content', value=get_document_version_content
         )
         DocumentVersion.add_to_class(
             name='submit_for_parsing',

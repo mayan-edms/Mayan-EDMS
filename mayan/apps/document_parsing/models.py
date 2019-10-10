@@ -11,6 +11,31 @@ from mayan.apps.documents.models import (
 from .managers import DocumentPageContentManager, DocumentTypeSettingsManager
 
 
+class DocumentTypeSettings(models.Model):
+    """
+    This model stores the parsing settings for a document type.
+    """
+    document_type = models.OneToOneField(
+        on_delete=models.CASCADE, related_name='parsing_settings',
+        to=DocumentType, unique=True, verbose_name=_('Document type')
+    )
+    auto_parsing = models.BooleanField(
+        default=True, verbose_name=_(
+            'Automatically queue newly created documents for parsing.'
+        )
+    )
+
+    objects = DocumentTypeSettingsManager()
+
+    def natural_key(self):
+        return self.document_type.natural_key()
+    natural_key.dependencies = ['documents.DocumentType']
+
+    class Meta:
+        verbose_name = _('Document type settings')
+        verbose_name_plural = _('Document types settings')
+
+
 @python_2_unicode_compatible
 class DocumentVersionPageContent(models.Model):
     """
@@ -35,31 +60,6 @@ class DocumentVersionPageContent(models.Model):
 
     def __str__(self):
         return force_text(self.document_page)
-
-
-class DocumentTypeSettings(models.Model):
-    """
-    This model stores the parsing settings for a document type.
-    """
-    document_type = models.OneToOneField(
-        on_delete=models.CASCADE, related_name='parsing_settings',
-        to=DocumentType, unique=True, verbose_name=_('Document type')
-    )
-    auto_parsing = models.BooleanField(
-        default=True, verbose_name=_(
-            'Automatically queue newly created documents for parsing.'
-        )
-    )
-
-    objects = DocumentTypeSettingsManager()
-
-    def natural_key(self):
-        return self.document_type.natural_key()
-    natural_key.dependencies = ['documents.DocumentType']
-
-    class Meta:
-        verbose_name = _('Document type settings')
-        verbose_name_plural = _('Document types settings')
 
 
 @python_2_unicode_compatible

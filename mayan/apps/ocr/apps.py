@@ -66,7 +66,7 @@ class OCRApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
         DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentVersionPage'
+            app_label='documents', model_name='DocumentPage'
         )
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'

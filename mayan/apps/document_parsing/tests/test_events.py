@@ -10,7 +10,7 @@ from ..events import (
     event_parsing_document_version_submit,
     event_parsing_document_version_finish
 )
-from ..models import DocumentPageContent
+from ..models import DocumentVersionPageContent
 
 
 class DocumentParsingEventsTestCase(GenericDocumentTestCase):
@@ -19,7 +19,7 @@ class DocumentParsingEventsTestCase(GenericDocumentTestCase):
 
     def test_document_content_deleted_event(self):
         Action.objects.all().delete()
-        DocumentPageContent.objects.delete_content_for(
+        DocumentVersionPageContent.objects.delete_content_for(
             document=self.test_document
         )
 
