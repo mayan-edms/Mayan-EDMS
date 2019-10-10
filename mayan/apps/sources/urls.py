@@ -9,7 +9,7 @@ from .api_views import (
 from .views import (
     SetupSourceCheckView, SetupSourceCreateView, SetupSourceDeleteView,
     SetupSourceEditView, SetupSourceListView, SourceLogListView,
-    StagingFileDeleteView, UploadInteractiveVersionView, UploadInteractiveView
+    StagingFileDeleteView, DocumentVersionUploadInteractiveView, UploadInteractiveView
 )
 from .wizards import DocumentCreateWizard
 
@@ -27,19 +27,23 @@ urlpatterns = [
     ),
     url(
         regex=r'^documents/upload/new/interactive/(?P<source_id>\d+)/$',
-        view=UploadInteractiveView.as_view(), name='upload_interactive'
+        view=UploadInteractiveView.as_view(),
+        name='document_upload_interactive'
     ),
     url(
         regex=r'^documents/upload/new/interactive/$',
-        view=UploadInteractiveView.as_view(), name='upload_interactive'
+        view=UploadInteractiveView.as_view(),
+        name='document_upload_interactive'
     ),
     url(
         regex=r'^documents/(?P<document_pk>\d+)/versions/upload/interactive/(?P<source_id>\d+)/$',
-        view=UploadInteractiveVersionView.as_view(), name='upload_version'
+        view=DocumentVersionUploadInteractiveView.as_view(),
+        name='document_version_upload'
     ),
     url(
         regex=r'^documents/(?P<document_pk>\d+)/versions/upload/interactive/$',
-        view=UploadInteractiveVersionView.as_view(), name='upload_version'
+        view=DocumentVersionUploadInteractiveView.as_view(),
+        name='document_version_upload'
     ),
 
     # Setup views

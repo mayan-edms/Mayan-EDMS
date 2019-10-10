@@ -117,7 +117,7 @@ link_document_version_upload = Link(
     args='resolved_object.pk', condition=document_new_version_not_blocked,
     icon_class_path='mayan.apps.sources.icons.icon_document_version_upload',
     permissions=(permission_document_new_version,),
-    text=_('Upload new version'), view='sources:upload_version',
+    text=_('Upload new version'), view='sources:document_version_upload',
 )
 link_setup_source_logs = Link(
     args=('resolved_object.pk',),

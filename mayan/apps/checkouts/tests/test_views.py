@@ -376,7 +376,7 @@ class NewVersionBlockViewTestCase(
         self.login_superuser()
 
         response = self.post(
-            viewname='sources:upload_version', kwargs={
+            viewname='sources:document_version_upload', kwargs={
                 'document_pk': self.test_document.pk
             }, follow=True
         )

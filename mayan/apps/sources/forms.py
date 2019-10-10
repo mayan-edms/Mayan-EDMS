@@ -23,14 +23,11 @@ class NewDocumentForm(DocumentForm):
 
 
 class NewVersionForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        super(NewVersionForm, self).__init__(*args, **kwargs)
-
-        self.fields['comment'] = forms.CharField(
-            label=_('Comment'),
-            required=False,
-            widget=forms.widgets.Textarea(attrs={'rows': 4}),
-        )
+    comment = forms.CharField(
+        help_text=_('An optional comment to explain the upload.'),
+        label=_('Comment'), required=False,
+        widget=forms.widgets.Textarea(attrs={'rows': 4}),
+    )
 
 
 class UploadBaseForm(forms.Form):
