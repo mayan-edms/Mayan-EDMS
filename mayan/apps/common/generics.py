@@ -53,8 +53,8 @@ class MultiFormView(DjangoFormView):
     template_name = 'appearance/generic_form.html'
 
     def _create_form(self, form_name, klass):
-        form_kwargs = self.get_form_kwargs(form_name)
-        form_create_method = 'create_%s_form' % form_name
+        form_kwargs = self.get_form_kwargs(form_name=form_name)
+        form_create_method = 'create_{}_form'.format(form_name)
         if hasattr(self, form_create_method):
             form = getattr(self, form_create_method)(**form_kwargs)
         else:
@@ -71,7 +71,7 @@ class MultiFormView(DjangoFormView):
 
     def forms_valid(self, forms):
         for form_name, form in forms.items():
-            form_valid_method = '%s_form_valid' % form_name
+            form_valid_method = '{}_form_valid'.format(form_name)
 
             if hasattr(self, form_valid_method):
                 return getattr(self, form_valid_method)(form)
@@ -98,8 +98,8 @@ class MultiFormView(DjangoFormView):
 
     def get_form_kwargs(self, form_name):
         kwargs = {}
-        kwargs.update({'initial': self.get_initial(form_name)})
-        kwargs.update({'prefix': self.get_prefix(form_name)})
+        kwargs.update({'initial': self.get_initial(form_name=form_name)})
+        kwargs.update({'prefix': self.get_prefix(form_name=form_name)})
 
         if self.request.method in ('POST', 'PUT'):
             kwargs.update({
@@ -124,7 +124,7 @@ class MultiFormView(DjangoFormView):
         )
 
     def get_initial(self, form_name):
-        initial_method = 'get_%s_initial' % form_name
+        initial_method = 'get_{}_initial'.format(form_name)
         if hasattr(self, initial_method):
             return getattr(self, initial_method)()
         else:

@@ -21,9 +21,10 @@ from .handlers import (
     handler_create_default_document_source, handler_initialize_periodic_tasks
 )
 from .links import (
-    link_document_create_multiple, link_setup_sources,
-    link_setup_source_check_now, link_setup_source_create_imap_email,
-    link_setup_source_create_pop3_email, link_setup_source_create_sane_scanner,
+    link_document_create_multiple, link_document_pages_append,
+    link_setup_sources, link_setup_source_check_now,
+    link_setup_source_create_imap_email, link_setup_source_create_pop3_email,
+    link_setup_source_create_sane_scanner,
     link_setup_source_create_watch_folder, link_setup_source_create_webform,
     link_setup_source_create_staging_folder, link_setup_source_delete,
     link_setup_source_edit, link_setup_source_logs, link_staging_file_delete,
@@ -145,8 +146,14 @@ class SourcesApp(MayanAppConfig):
         menu_secondary.bind_links(
             links=(link_document_version_upload,),
             sources=(
-                'documents:document_version_list', 'documents:upload_version',
+                'documents:document_version_list', 'sources:upload_version',
                 'documents:document_version_revert'
+            )
+        )
+        menu_secondary.bind_links(
+            links=(link_document_pages_append,),
+            sources=(
+                'documents:document_pages', 'sources:document_pages_append'
             )
         )
 

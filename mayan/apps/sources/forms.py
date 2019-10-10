@@ -23,18 +23,25 @@ class NewDocumentForm(DocumentForm):
 
 
 class NewVersionForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        super(NewVersionForm, self).__init__(*args, **kwargs)
+    comment = forms.CharField(
+        help_text=_('An optional comment to explain the upload.'),
+        label=_('Comment'), required=False,
+        widget=forms.widgets.Textarea(attrs={'rows': 4}),
+    )
 
-        self.fields['comment'] = forms.CharField(
-            label=_('Comment'),
-            required=False,
-            widget=forms.widgets.Textarea(attrs={'rows': 4}),
-        )
-        self.fields['append_pages'] = forms.BooleanField(
-            initial=False, label=_('Append pages?'),
-            required=False,
-        )
+    append_pages = forms.BooleanField(
+        help_text=_(
+            'If selected, the pages of the file uploaded will be appended '
+            'to the existing document pages. Otherwise the pages of the '
+            'upload will replace the existing pages of the document.'
+        ), label=_('Append pages?'), required=False,
+    )
+
+    def __init__(self, *args, **kwargs):
+        hide_append_pages = kwargs.pop('hide_append_pages', False)
+        super(NewVersionForm, self).__init__(*args, **kwargs)
+        if hide_append_pages:
+            self.fields['append_pages'].widget = forms.widgets.HiddenInput()
 
 
 class UploadBaseForm(forms.Form):
