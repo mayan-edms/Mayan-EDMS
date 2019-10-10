@@ -93,7 +93,7 @@ Changes
 Removals
 --------
 
-- Database conversion. Reason for removal. The database conversions support
+- Database conversion. Reason for removal: The database conversions support
   provided by this feature (SQLite to PostgreSQL) was being confused with
   database migrations and upgrades.
 
@@ -108,7 +108,7 @@ Removals
 
   Continued confusion about the purpose of the feature and confusion about
   how errors with this feature were a reflexion of the code quality of
-  Mayannecessitated the removal of the database conversion feature.
+  Mayan necessitated the removal of the database conversion feature.
 
 - Django environ
 

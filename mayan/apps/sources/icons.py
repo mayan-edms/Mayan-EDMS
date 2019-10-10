@@ -9,6 +9,10 @@ icon_document_version_upload = Icon(
     driver_name='fontawesome', symbol='upload'
 )
 icon_log = Icon(driver_name='fontawesome', symbol='exclamation-triangle')
+icon_document_pages_append = Icon(
+    driver_name='fontawesome-dual', primary_symbol='copy',
+    secondary_symbol='plus'
+)
 icon_setup_sources = Icon(driver_name='fontawesome', symbol='upload')
 icon_setup_source_check_now = Icon(driver_name='fontawesome', symbol='check')
 icon_setup_source_delete = Icon(driver_name='fontawesome', symbol='times')

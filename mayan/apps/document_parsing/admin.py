@@ -3,13 +3,13 @@ from __future__ import unicode_literals
 from django.contrib import admin
 
 from .models import (
-    DocumentPageContent, DocumentVersionParseError
+    DocumentVersionPageContent, DocumentVersionParseError
 )
 
 
-@admin.register(DocumentPageContent)
-class DocumentPageContentAdmin(admin.ModelAdmin):
-    list_display = ('document_page',)
+@admin.register(DocumentVersionPageContent)
+class DocumentVersionPageContentAdmin(admin.ModelAdmin):
+    list_display = ('document_version_page',)
 
 
 @admin.register(DocumentVersionParseError)

@@ -16,7 +16,9 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
     menu_setup
 )
-from mayan.apps.documents.search import document_page_search, document_search
+from mayan.apps.documents.search import (
+    document_page_search, document_search, document_version_page_search
+)
 from mayan.apps.documents.signals import post_document_type_change
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.events.links import (
@@ -76,7 +78,7 @@ class MetadataApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
         DocumentPageResult = apps.get_model(
-            app_label='documents', model_name='DocumentPageResult'
+            app_label='documents', model_name='DocumentVersionPageResult'
         )
 
         DocumentType = apps.get_model(
@@ -188,10 +190,18 @@ class MetadataApp(MayanAppConfig):
         )
 
         document_page_search.add_model_field(
-            field='document_version__document__metadata__metadata_type__name',
+            field='document__metadata__metadata_type__name',
             label=_('Metadata type')
         )
         document_page_search.add_model_field(
+            field='document__metadata__value',
+            label=_('Metadata value')
+        )
+        document_version_page_search.add_model_field(
+            field='document_version__document__metadata__metadata_type__name',
+            label=_('Metadata type')
+        )
+        document_version_page_search.add_model_field(
             field='document_version__document__metadata__value',
             label=_('Metadata value')
         )

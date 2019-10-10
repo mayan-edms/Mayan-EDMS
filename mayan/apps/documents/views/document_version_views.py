@@ -3,10 +3,11 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib import messages
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.common.generics import (
-    ConfirmView, SingleObjectDetailView, SingleObjectListView
+    ConfirmView, MultipleObjectConfirmActionView, SingleObjectDetailView,
+    SingleObjectListView
 )
 from mayan.apps.common.mixins import ExternalObjectMixin
 
@@ -14,9 +15,10 @@ from ..events import event_document_view
 from ..forms import DocumentVersionDownloadForm, DocumentVersionPreviewForm
 from ..models import Document, DocumentVersion
 from ..permissions import (
-    permission_document_download, permission_document_version_revert,
-    permission_document_version_view
+    permission_document_download, permission_document_tools,
+    permission_document_version_revert, permission_document_version_view
 )
+from ..tasks import task_update_page_count
 
 from .document_views import DocumentDownloadFormView, DocumentDownloadView
 
@@ -140,6 +142,45 @@ class DocumentVersionRevertView(ExternalObjectMixin, ConfirmView):
                 message=_('Error reverting document version; %s') % exception,
                 request=self.request
             )
+
+
+class DocumentVersionUpdatePageCountView(MultipleObjectConfirmActionView):
+    model = DocumentVersion
+    object_permission = permission_document_tools
+    success_message = _(
+        '%(count)d document version queued for page count recalculation'
+    )
+    success_message_plural = _(
+        '%(count)d documents version queued for page count recalculation'
+    )
+
+    def get_extra_context(self):
+        queryset = self.object_list
+
+        result = {
+            'title': ungettext(
+                singular='Recalculate the page count of the selected document version?',
+                plural='Recalculate the page count of the selected document versions?',
+                number=queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _(
+                        'Recalculate the page count of the document version: %s?'
+                    ) % queryset.first()
+                }
+            )
+
+        return result
+
+    def object_action(self, form, instance):
+        task_update_page_count.apply_async(
+            kwargs={'version_id': instance.pk}
+        )
 
 
 class DocumentVersionView(SingleObjectDetailView):

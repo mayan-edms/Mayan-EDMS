@@ -33,10 +33,14 @@ from .serializers import (
     DocumentTypeSerializer, DocumentVersionSerializer,
     NewDocumentSerializer, NewDocumentVersionSerializer,
     RecentDocumentSerializer, WritableDocumentSerializer,
-    WritableDocumentTypeSerializer, WritableDocumentVersionSerializer
+    WritableDocumentTypeSerializer, WritableDocumentVersionSerializer,
+    DocumentVersionPageSerializer
 )
 from .settings import settings_document_page_image_cache_time
-from .tasks import task_generate_document_page_image
+from .tasks import (
+    task_generate_document_page_image,
+    task_generate_document_version_page_image
+)
 
 logger = logging.getLogger(__name__)
 
@@ -168,13 +172,8 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         )
         return document
 
-    def get_document_version(self):
-        return get_object_or_404(
-            self.get_document().versions.all(), pk=self.kwargs['version_pk']
-        )
-
     def get_queryset(self):
-        return self.get_document_version().pages_all.all()
+        return self.get_document().pages_all.all()
 
     def get_serializer(self, *args, **kwargs):
         return None
@@ -221,6 +220,95 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
             return response
 
 
+class APIDocumentVersionPageImageView(generics.RetrieveAPIView):
+    """
+    get: Returns an image representation of the selected document version page.
+    """
+    lookup_url_kwarg = 'page_pk'
+
+    def get_document(self):
+        if self.request.method == 'GET':
+            permission_required = permission_document_view
+        else:
+            permission_required = permission_document_edit
+
+        document = get_object_or_404(Document.passthrough, pk=self.kwargs['pk'])
+
+        AccessControlList.objects.check_access(
+            obj=document, permissions=(permission_required,),
+            user=self.request.user
+        )
+        return document
+
+    def get_document_version(self):
+        return get_object_or_404(
+            self.get_document().versions.all(), pk=self.kwargs['version_pk']
+        )
+
+    def get_queryset(self):
+        return self.get_document_version().pages.all()
+
+    def get_serializer(self, *args, **kwargs):
+        return None
+
+    def get_serializer_class(self):
+        return None
+
+    @cache_control(private=True)
+    def retrieve(self, request, *args, **kwargs):
+        width = request.GET.get('width')
+        height = request.GET.get('height')
+        zoom = request.GET.get('zoom')
+
+        if zoom:
+            zoom = int(zoom)
+
+        rotation = request.GET.get('rotation')
+
+        if rotation:
+            rotation = int(rotation)
+
+        maximum_layer_order = request.GET.get('maximum_layer_order')
+        if maximum_layer_order:
+            maximum_layer_order = int(maximum_layer_order)
+
+        task = task_generate_document_version_page_image.apply_async(
+            kwargs=dict(
+                document_version_page_id=self.get_object().pk, width=width,
+                height=height, zoom=zoom, rotation=rotation,
+                maximum_layer_order=maximum_layer_order,
+                user_id=request.user.pk
+            )
+        )
+
+        cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
+        cache_file = self.get_object().cache_partition.get_file(filename=cache_filename)
+        with cache_file.open() as file_object:
+            response = HttpResponse(file_object.read(), content_type='image')
+            if '_hash' in request.GET:
+                patch_cache_control(
+                    response=response,
+                    max_age=settings_document_page_image_cache_time.value
+                )
+            return response
+
+
+class APIDocumentPageListView(generics.ListAPIView):
+    serializer_class = DocumentPageSerializer
+
+    def get_document(self):
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        AccessControlList.objects.check_access(
+            obj=document, permissions=(permission_document_view,),
+            user=self.request.user
+        )
+        return document
+
+    def get_queryset(self):
+        return self.get_document().pages.all()
+
+
 class APIDocumentPageView(generics.RetrieveUpdateAPIView):
     """
     get: Returns the selected document page details.
@@ -229,6 +317,33 @@ class APIDocumentPageView(generics.RetrieveUpdateAPIView):
     """
     lookup_url_kwarg = 'page_pk'
     serializer_class = DocumentPageSerializer
+
+    def get_document(self):
+        if self.request.method == 'GET':
+            permission_required = permission_document_view
+        else:
+            permission_required = permission_document_edit
+
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        AccessControlList.objects.check_access(
+            obj=document, permissions=(permission_required,),
+            user=self.request.user
+        )
+        return document
+
+    def get_queryset(self):
+        return self.get_document().pages.all()
+
+
+class APIDocumentVersionPageView(generics.RetrieveUpdateAPIView):
+    """
+    get: Returns the selected document verion page details.
+    patch: Edit the selected document version page.
+    put: Edit the selected document version page.
+    """
+    lookup_url_kwarg = 'page_pk'
+    serializer_class = DocumentVersionPageSerializer
 
     def get_document(self):
         if self.request.method == 'GET':
@@ -289,8 +404,7 @@ class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
         'GET': (permission_document_type_view,),
         'PUT': (permission_document_type_edit,),
         'PATCH': (permission_document_type_edit,),
-        'DELETE': (permission_document_type_delete,)
-    }
+        'DELETE': (permission_document_type_delete,)    }
     permission_classes = (MayanPermission,)
     queryset = DocumentType.objects.all()
 
@@ -423,7 +537,7 @@ class APIRecentDocumentListView(generics.ListAPIView):
 
 
 class APIDocumentVersionPageListView(generics.ListAPIView):
-    serializer_class = DocumentPageSerializer
+    serializer_class = DocumentVersionPageSerializer
 
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])

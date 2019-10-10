@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from mayan.apps.documents.models import Document
 from mayan.apps.rest_api.permissions import MayanPermission
 
-from .models import DocumentPageContent
+from .models import DocumentVersionPageContent
 from .permissions import permission_content_view
 from .serializers import DocumentPageContentSerializer
 
@@ -41,8 +41,8 @@ class APIDocumentPageContentView(generics.RetrieveAPIView):
 
         try:
             content = instance.content
-        except DocumentPageContent.DoesNotExist:
-            content = DocumentPageContent.objects.none()
+        except DocumentVersionPageContent.DoesNotExist:
+            content = DocumentVersionPageContent.objects.none()
 
         serializer = self.get_serializer(content)
         return Response(serializer.data)

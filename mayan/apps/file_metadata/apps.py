@@ -12,7 +12,9 @@ from mayan.apps.common.menus import (
     menu_tools
 )
 from mayan.apps.document_indexing.handlers import handler_index_document
-from mayan.apps.documents.search import document_page_search, document_search
+from mayan.apps.documents.search import (
+    document_page_search, document_search, document_version_page_search
+)
 from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
@@ -156,11 +158,19 @@ class FileMetadataApp(MayanAppConfig):
             label=_('File metadata value')
         )
 
-        document_page_search.add_model_field(
+        #document_page_search.add_model_field(
+        #    field='document__document_version__file_metadata_drivers__entries__key',
+        #    label=_('File metadata key')
+        #)
+        #document_page_search.add_model_field(
+        #    field='document__document_version__file_metadata_drivers__entries__value',
+        #    label=_('File metadata value')
+        #)
+        document_version_page_search.add_model_field(
             field='document_version__file_metadata_drivers__entries__key',
             label=_('File metadata key')
         )
-        document_page_search.add_model_field(
+        document_version_page_search.add_model_field(
             field='document_version__file_metadata_drivers__entries__value',
             label=_('File metadata value')
         )

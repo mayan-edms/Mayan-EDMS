@@ -5,7 +5,7 @@ from django.test import override_settings
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
 
-from ..models import DocumentPageContent
+from ..models import DocumentVersionPageContent
 from ..permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
@@ -72,8 +72,8 @@ class DocumentContentViewsTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            DocumentPageContent.objects.filter(
-                document_page=self.test_document.pages.first()
+            DocumentVersionPageContent.objects.filter(
+                document_version_page=self.test_document.pages.first().content_object
             ).exists()
         )
 
@@ -86,8 +86,8 @@ class DocumentContentViewsTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertFalse(
-            DocumentPageContent.objects.filter(
-                document_page=self.test_document.pages.first()
+            DocumentVersionPageContent.objects.filter(
+                document_version_page=self.test_document.pages.first().content_object
             ).exists()
         )
 

@@ -20,8 +20,8 @@ from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 
 from ..forms import DocumentPageForm
 from ..icons import icon_document_pages
-from ..links import link_document_update_page_count
-from ..models import Document, DocumentPage
+from ..links import link_document_pages_reset
+from ..models import Document, DocumentPage, DocumentVersionPage
 from ..permissions import permission_document_edit, permission_document_view
 from ..settings import (
     setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,
@@ -50,13 +50,13 @@ class DocumentPageListView(ExternalObjectMixin, SingleObjectListView):
             'hide_object': True,
             'list_as_items': True,
             'no_results_icon': icon_document_pages,
-            'no_results_main_link': link_document_update_page_count.resolve(
+            'no_results_main_link': link_document_pages_reset.resolve(
                 request=self.request, resolved_object=self.external_object
             ),
             'no_results_text': _(
                 'This could mean that the document is of a format that is '
-                'not supported, that it is corrupted or that the upload '
-                'process was interrupted. Use the document page recalculation '
+                'not supported, that it is corrupted, or that the upload '
+                'process was interrupted. Use the document page reset '
                 'action to attempt to introspect the page count again.'
             ),
             'no_results_title': _('No document pages available'),

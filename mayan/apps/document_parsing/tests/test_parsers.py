@@ -18,5 +18,5 @@ class ParserTestCase(DocumentTestMixin, BaseTestCase):
         parser.process_document_version(self.test_document.latest_version)
 
         self.assertTrue(
-            TEST_DOCUMENT_CONTENT in self.test_document.pages.first().content.content
+            TEST_DOCUMENT_CONTENT in self.test_document.pages.first().content_object.content.content
         )

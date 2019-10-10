@@ -12,10 +12,15 @@ from mayan.apps.common.generics import (
 )
 from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
-from mayan.apps.documents.models import Document, DocumentPage, DocumentType
+from mayan.apps.documents.models import (
+    Document, DocumentPage, DocumentType, DocumentVersionPage
+)
 
-from .forms import DocumentPageOCRContentForm, DocumentOCRContentForm
-from .models import DocumentPageOCRContent, DocumentVersionOCRError
+from .forms import (
+    DocumentPageOCRContentForm, DocumentOCRContentForm,
+    DocumentVersionPageOCRContentForm
+)
+from .models import DocumentVersionPageOCRContent, DocumentVersionOCRError
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
     permission_document_type_ocr_setup
@@ -46,7 +51,7 @@ class DocumentOCRContentDeleteView(MultipleObjectConfirmActionView):
         return result
 
     def object_action(self, form, instance):
-        DocumentPageOCRContent.objects.delete_content_for(
+        DocumentVersionPageOCRContent.objects.delete_content_for(
             document=instance, user=self.request.user
         )
 
@@ -91,6 +96,30 @@ class DocumentPageOCRContentView(SingleObjectDetailView):
             'hide_labels': True,
             'object': self.get_object(),
             'title': _('OCR result for document page: %s') % self.get_object(),
+        }
+
+
+class DocumentVersionPageOCRContentView(SingleObjectDetailView):
+    form_class = DocumentVersionPageOCRContentForm
+    model = DocumentVersionPage
+    object_permission = permission_ocr_content_view
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(DocumentVersionPageOCRContentView, self).dispatch(
+            request, *args, **kwargs
+        )
+        self.get_object().document.add_as_recent_document_for_user(
+            user=request.user
+        )
+        return result
+
+    def get_extra_context(self):
+        return {
+            'hide_labels': True,
+            'object': self.get_object(),
+            'title': _(
+                'OCR result for document version page: %s'
+            ) % self.get_object(),
         }
 
 

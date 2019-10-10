@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
-from ..models import DocumentPageOCRContent
+from ..models import DocumentVersionPageOCRContent
 from ..permissions import (
     permission_ocr_content_view, permission_ocr_document,
     permission_document_type_ocr_setup
@@ -27,10 +27,10 @@ class OCRViewTestMixin(object):
             }
         )
 
-    def _request_document_page_content_view(self):
+    def _request_document_version_page_content_view(self):
         return self.get(
-            viewname='ocr:document_page_ocr_content', kwargs={
-                'pk': self.test_document.pages.first().pk
+            viewname='ocr:document_version_page_ocr_content', kwargs={
+                'pk': self.test_document_version.pages.first().pk
             }
         )
 
@@ -86,8 +86,8 @@ class OCRViewsTestCase(OCRViewTestMixin, GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            DocumentPageOCRContent.objects.filter(
-                document_page=self.test_document.pages.first()
+            DocumentVersionPageOCRContent.objects.filter(
+                document_version_page=self.test_document.pages.first().content_object
             ).exists()
         )
 
@@ -101,26 +101,9 @@ class OCRViewsTestCase(OCRViewTestMixin, GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 302)
 
         self.assertFalse(
-            DocumentPageOCRContent.objects.filter(
-                document_page=self.test_document.pages.first()
+            DocumentVersionPageOCRContent.objects.filter(
+                document_version_page=self.test_document.pages.first().content_object
             ).exists()
-        )
-
-    def test_document_page_content_view_no_permissions(self):
-        self.test_document.submit_for_ocr()
-
-        response = self._request_document_page_content_view()
-        self.assertEqual(response.status_code, 404)
-
-    def test_document_page_content_view_with_access(self):
-        self.test_document.submit_for_ocr()
-        self.grant_access(
-            obj=self.test_document, permission=permission_ocr_content_view
-        )
-
-        response = self._request_document_page_content_view()
-        self.assertContains(
-            response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
 
     def test_document_submit_view_no_permission(self):
@@ -186,6 +169,23 @@ class OCRViewsTestCase(OCRViewTestMixin, GenericDocumentViewTestCase):
             response=response, content=(
                 ''.join(get_document_ocr_content(document=self.test_document))
             ),
+        )
+
+    def test_document_version_page_content_view_no_permissions(self):
+        self.test_document.submit_for_ocr()
+
+        response = self._request_document_version_page_content_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_page_content_view_with_access(self):
+        self.test_document.submit_for_ocr()
+        self.grant_access(
+            obj=self.test_document, permission=permission_ocr_content_view
+        )
+
+        response = self._request_document_version_page_content_view()
+        self.assertContains(
+            response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
 
 

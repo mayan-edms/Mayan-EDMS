@@ -362,7 +362,6 @@ class UploadInteractiveView(UploadBaseView):
 
 class UploadInteractiveVersionView(UploadBaseView):
     def dispatch(self, request, *args, **kwargs):
-
         self.subtemplates_list = []
 
         self.document = get_object_or_404(
@@ -417,12 +416,17 @@ class UploadInteractiveVersionView(UploadBaseView):
             else:
                 user_id = None
 
-            task_upload_new_version.apply_async(kwargs=dict(
-                shared_uploaded_file_id=shared_uploaded_file.pk,
-                document_id=self.document.pk,
-                user_id=user_id,
-                comment=forms['document_form'].cleaned_data.get('comment')
-            ))
+            task_upload_new_version.apply_async(
+                kwargs=dict(
+                    append_pages=forms['document_form'].cleaned_data.get(
+                        'append_pages', False
+                    ),
+                    shared_uploaded_file_id=shared_uploaded_file.pk,
+                    document_id=self.document.pk,
+                    user_id=user_id,
+                    comment=forms['document_form'].cleaned_data.get('comment')
+                )
+            )
 
             messages.success(
                 message=_(
@@ -448,13 +452,6 @@ class UploadInteractiveVersionView(UploadBaseView):
             files=kwargs.get('files', None),
         )
 
-    def create_document_form_form(self, **kwargs):
-        return self.get_form_classes()['document_form'](
-            prefix=kwargs['prefix'],
-            data=kwargs.get('data', None),
-            files=kwargs.get('files', None),
-        )
-
     def get_form_classes(self):
         return {
             'document_form': NewVersionForm,
@@ -467,8 +464,33 @@ class UploadInteractiveVersionView(UploadBaseView):
         ).get_context_data(**kwargs)
         context['object'] = self.document
         context['title'] = _(
-            'Upload a new version from source: %s'
-        ) % self.source.label
+            'Upload a new version for document "%(document)s" from source: %(source)s'
+        ) % {'document': self.document, 'source': self.source.label}
+
+        context['submit_label'] = _('Submit')
+
+        return context
+
+
+class DocumentPagesAppendView(UploadInteractiveVersionView):
+    def get_document_form_initial(self):
+        return {
+            'append_pages': True,
+        }
+
+    def get_form_extra_kwargs(self, form_name):
+        if form_name == 'document_form':
+            return {
+                'hide_append_pages': True
+            }
+
+    def get_context_data(self, **kwargs):
+        context = super(
+            DocumentPagesAppendView, self
+        ).get_context_data(**kwargs)
+        context['title'] = _(
+            'Append pages to document "%(document)s" from source: %(source)s'
+        ) % {'document': self.document, 'source': self.source.label}
 
         return context
 

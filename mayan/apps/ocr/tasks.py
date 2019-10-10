@@ -19,8 +19,8 @@ def task_do_ocr(self, document_version_pk):
     DocumentVersion = apps.get_model(
         app_label='documents', model_name='DocumentVersion'
     )
-    DocumentPageOCRContent = apps.get_model(
-        app_label='ocr', model_name='DocumentPageOCRContent'
+    DocumentVersionPageOCRContent = apps.get_model(
+        app_label='ocr', model_name='DocumentVersionPageOCRContent'
     )
 
     lock_id = 'task_do_ocr_doc_version-%d' % document_version_pk
@@ -39,7 +39,7 @@ def task_do_ocr(self, document_version_pk):
                 'Starting document OCR for document version: %s',
                 document_version
             )
-            DocumentPageOCRContent.objects.process_document_version(
+            DocumentVersionPageOCRContent.objects.process_document_version(
                 document_version=document_version
             )
         except OperationalError as exception:

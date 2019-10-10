@@ -23,11 +23,13 @@ class Parser(object):
     _registry = {}
 
     @classmethod
-    def parse_document_page(cls, document_page):
-        for parser_class in cls._registry.get(document_page.document_version.mimetype, ()):
+    def parse_document_version_page(cls, document_version_page):
+        for parser_class in cls._registry.get(document_version_page.document_version.mimetype, ()):
             try:
                 parser = parser_class()
-                parser.process_document_page(document_page)
+                parser.process_document_page(
+                    document_version_page=document_version_page
+                )
             except ParserError:
                 # If parser raises error, try next parser in the list
                 pass
@@ -41,7 +43,9 @@ class Parser(object):
         for parser_class in cls._registry.get(document_version.mimetype, ()):
             try:
                 parser = parser_class()
-                parser.process_document_version(document_version)
+                parser.process_document_version(
+                    document_version=document_version
+                )
             except ParserError:
                 # If parser raises error, try next parser in the list
                 pass
@@ -64,29 +68,33 @@ class Parser(object):
         )
         logger.debug('document version: %d', document_version.pk)
 
-        for document_page in document_version.pages.all():
-            self.process_document_page(document_page=document_page)
+        for document_version_page in document_version.pages.all():
+            self.process_document_version_page(
+                document_version_page=document_version_page
+            )
 
-    def process_document_page(self, document_page):
-        DocumentPageContent = apps.get_model(
-            app_label='document_parsing', model_name='DocumentPageContent'
+    def process_document_version_page(self, document_version_page):
+        DocumentVersionPageContent = apps.get_model(
+            app_label='document_parsing',
+            model_name='DocumentVersionPageContent'
         )
 
         logger.info(
             'Processing page: %d of document version: %s',
-            document_page.page_number, document_page.document_version
+            document_version_page.page_number,
+            document_version_page.document_version
         )
 
-        file_object = document_page.document_version.get_intermediate_file()
+        file_object = document_version_page.document_version.get_intermediate_file()
 
         try:
-            document_page_content, created = DocumentPageContent.objects.get_or_create(
-                document_page=document_page
+            document_version_page_content, created = DocumentVersionPageContent.objects.get_or_create(
+                document_version_page=document_version_page
             )
-            document_page_content.content = self.execute(
-                file_object=file_object, page_number=document_page.page_number
+            document_version_page_content.content = self.execute(
+                file_object=file_object, page_number=document_version_page.page_number
             )
-            document_page_content.save()
+            document_version_page_content.save()
         except Exception as exception:
             error_message = _('Exception parsing page; %s') % exception
             logger.error(error_message)
@@ -96,7 +104,8 @@ class Parser(object):
 
         logger.info(
             'Finished processing page: %d of document version: %s',
-            document_page.page_number, document_page.document_version
+            document_version_page.page_number,
+            document_version_page.document_version
         )
 
     def execute(self, file_object, page_number):

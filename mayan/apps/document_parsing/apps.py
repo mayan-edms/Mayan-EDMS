@@ -12,7 +12,9 @@ from mayan.apps.common.classes import ModelField
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
-from mayan.apps.documents.search import document_search, document_page_search
+from mayan.apps.documents.search import (
+    document_search, document_page_search, document_version_page_search
+)
 from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
@@ -43,7 +45,7 @@ from .permissions import (
     permission_parse_document
 )
 from .signals import post_document_version_parsing
-from .utils import get_document_content
+from .utils import get_document_content, get_document_version_content
 
 logger = logging.getLogger(__name__)
 
@@ -74,6 +76,9 @@ class DocumentParsingApp(MayanAppConfig):
         DocumentVersion = apps.get_model(
             app_label='documents', model_name='DocumentVersion'
         )
+        DocumentVersionPage = apps.get_model(
+            app_label='documents', model_name='DocumentVersionPage'
+        )
         DocumentVersionParseError = self.get_model(
             model_name='DocumentVersionParseError'
         )
@@ -85,7 +90,7 @@ class DocumentParsingApp(MayanAppConfig):
             name='content', value=get_document_content
         )
         DocumentVersion.add_to_class(
-            name='content', value=get_document_content
+            name='content', value=get_document_version_content
         )
         DocumentVersion.add_to_class(
             name='submit_for_parsing',
@@ -100,9 +105,9 @@ class DocumentParsingApp(MayanAppConfig):
             )
         )
 
-        ModelField(
-            model=Document, name='versions__version_pages__content__content'
-        )
+        #ModelField(
+        #    model=Document, name='versions__pages__content__content'
+        #)
 
         ModelPermission.register(
             model=Document, permissions=(
@@ -133,17 +138,17 @@ class DocumentParsingApp(MayanAppConfig):
         )
 
         document_search.add_model_field(
-            field='versions__version_pages__content__content', label=_('Content')
+            field='versions__pages__content__content', label=_('Content')
         )
 
-        document_page_search.add_model_field(
+        document_version_page_search.add_model_field(
             field='content__content', label=_('Content')
         )
 
         menu_facet.bind_links(
             links=(link_document_content,), sources=(Document,)
         )
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_document_page_content,), sources=(DocumentPage,)
         )
         menu_list_facet.bind_links(

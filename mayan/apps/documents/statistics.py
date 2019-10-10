@@ -41,7 +41,7 @@ def new_documents_per_month():
 
 def new_document_pages_per_month():
     DocumentPage = apps.get_model(
-        app_label='documents', model_name='DocumentPage'
+        app_label='documents', model_name='DocumentVersionPage'
     )
 
     qss = qsstats.QuerySetStats(
@@ -106,7 +106,7 @@ def new_document_pages_this_month(user=None):
         app_label='acls', model_name='AccessControlList'
     )
     DocumentPage = apps.get_model(
-        app_label='documents', model_name='DocumentPage'
+        app_label='documents', model_name='DocumentVersionPage'
     )
 
     queryset = DocumentPage.objects.all()
@@ -195,7 +195,7 @@ def total_document_version_per_month():
 
 def total_document_page_per_month():
     DocumentPage = apps.get_model(
-        app_label='documents', model_name='DocumentPage'
+        app_label='documents', model_name='DocumentVersionPage'
     )
 
     qss = qsstats.QuerySetStats(

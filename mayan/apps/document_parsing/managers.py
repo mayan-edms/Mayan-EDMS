@@ -18,11 +18,13 @@ from .signals import post_document_version_parsing
 logger = logging.getLogger(__name__)
 
 
-class DocumentPageContentManager(models.Manager):
+class DocumentVersionPageContentManager(models.Manager):
     def delete_content_for(self, document, user=None):
         with transaction.atomic():
             for document_page in document.pages.all():
-                self.filter(document_page=document_page).delete()
+                self.filter(
+                    document_version_page=document_page.content_object
+                ).delete()
 
             event_parsing_document_content_deleted.commit(
                 actor=user, target=document

@@ -292,46 +292,44 @@ class DocumentsViewsTestCase(
                 )
             )
 
-    def test_document_update_page_count_view_no_permission(self):
+    def test_document_pages_reset_view_no_permission(self):
         self.test_document.pages.all().delete()
-        self.assertEqual(self.test_document.pages.count(), 0)
 
-        response = self._request_document_update_page_count_view()
+        response = self._request_document_pages_reset_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(self.test_document.pages.count(), 0)
 
-    def test_document_update_page_count_view_with_permission(self):
-        # TODO: Revise permission association
-
+    def test_document_pages_reset_view_with_access(self):
         page_count = self.test_document.pages.count()
         self.test_document.pages.all().delete()
-        self.assertEqual(self.test_document.pages.count(), 0)
 
-        self.grant_permission(permission=permission_document_tools)
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_tools
+        )
 
-        response = self._request_document_update_page_count_view()
+        response = self._request_document_pages_reset_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(self.test_document.pages.count(), page_count)
 
-    def test_document_multiple_update_page_count_view_no_permission(self):
+    def test_document_multiple_pages_reset_view_no_permission(self):
         self.test_document.pages.all().delete()
-        self.assertEqual(self.test_document.pages.count(), 0)
 
-        response = self._request_document_multiple_update_page_count_view()
+        response = self._request_document_multiple_pages_reset_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(self.test_document.pages.count(), 0)
 
-    def test_document_multiple_update_page_count_view_with_permission(self):
+    def test_document_multiple_pages_reset_view_with_access(self):
         page_count = self.test_document.pages.count()
         self.test_document.pages.all().delete()
-        self.assertEqual(self.test_document.pages.count(), 0)
 
-        self.grant_permission(permission=permission_document_tools)
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_tools
+        )
 
-        response = self._request_document_multiple_update_page_count_view()
+        response = self._request_document_multiple_pages_reset_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(self.test_document.pages.count(), page_count)

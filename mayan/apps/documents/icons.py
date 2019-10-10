@@ -36,7 +36,10 @@ icon_document_edit = Icon(
 )
 icon_document = Icon(driver_name='fontawesome', symbol='book')
 icon_document_list = icon_document
-icon_document_page_count_update = Icon(
+icon_document_pages_reset = Icon(
+    driver_name='fontawesome', symbol='copy'
+)
+icon_document_version_page_count_update = Icon(
     driver_name='fontawesome', symbol='copy'
 )
 icon_document_preview = Icon(driver_name='fontawesome', symbol='eye')

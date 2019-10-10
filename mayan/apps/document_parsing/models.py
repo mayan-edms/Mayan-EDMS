@@ -5,36 +5,12 @@ from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import (
-    DocumentPage, DocumentType, DocumentVersion
+    DocumentPage, DocumentType, DocumentVersion, DocumentVersionPage
 )
 
-from .managers import DocumentPageContentManager, DocumentTypeSettingsManager
-
-
-@python_2_unicode_compatible
-class DocumentPageContent(models.Model):
-    """
-    This model store's the parsed content of a document page.
-    """
-    document_page = models.OneToOneField(
-        on_delete=models.CASCADE, related_name='content', to=DocumentPage,
-        verbose_name=_('Document page')
-    )
-    content = models.TextField(
-        blank=True, help_text=_(
-            'The actual text content as extracted by the document '
-            'parsing backend.'
-        ), verbose_name=_('Content')
-    )
-
-    objects = DocumentPageContentManager()
-
-    class Meta:
-        verbose_name = _('Document page content')
-        verbose_name_plural = _('Document pages contents')
-
-    def __str__(self):
-        return force_text(self.document_page)
+from .managers import (
+    DocumentVersionPageContentManager, DocumentTypeSettingsManager
+)
 
 
 class DocumentTypeSettings(models.Model):
@@ -60,6 +36,32 @@ class DocumentTypeSettings(models.Model):
     class Meta:
         verbose_name = _('Document type settings')
         verbose_name_plural = _('Document types settings')
+
+
+@python_2_unicode_compatible
+class DocumentVersionPageContent(models.Model):
+    """
+    This model store's the parsed content of a document page.
+    """
+    document_version_page = models.OneToOneField(
+        on_delete=models.CASCADE, related_name='content',
+        to=DocumentVersionPage, verbose_name=_('Document version page')
+    )
+    content = models.TextField(
+        blank=True, help_text=_(
+            'The actual text content as extracted by the document '
+            'parsing backend.'
+        ), verbose_name=_('Content')
+    )
+
+    objects = DocumentVersionPageContentManager()
+
+    class Meta:
+        verbose_name = _('Document version page content')
+        verbose_name_plural = _('Document version pages contents')
+
+    def __str__(self):
+        return force_text(self.document_page)
 
 
 @python_2_unicode_compatible

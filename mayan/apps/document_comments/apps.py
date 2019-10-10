@@ -8,7 +8,9 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_object, menu_secondary
 )
-from mayan.apps.documents.search import document_page_search, document_search
+from mayan.apps.documents.search import (
+    document_page_search, document_search, document_version_page_search
+)
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
@@ -80,11 +82,15 @@ class DocumentCommentsApp(MayanAppConfig):
         SourceColumn(attribute='comment', source=Comment)
 
         document_page_search.add_model_field(
-            field='document_version__document__comments__comment',
+            field='document__comments__comment',
             label=_('Comments')
         )
         document_search.add_model_field(
             field='comments__comment',
+            label=_('Comments')
+        )
+        document_version_page_search.add_model_field(
+            field='document_version__document__comments__comment',
             label=_('Comments')
         )
 

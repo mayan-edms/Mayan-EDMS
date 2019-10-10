@@ -7,7 +7,9 @@ from .views import (
     DocumentContentView, DocumentContentDeleteView,
     DocumentContentDownloadView, DocumentPageContentView,
     DocumentParsingErrorsListView, DocumentSubmitView,
-    DocumentTypeSettingsEditView, DocumentTypeSubmitView, ParseErrorListView
+    DocumentTypeSettingsEditView, DocumentTypeSubmitView,
+    DocumentVersionPageContentView,
+    ParseErrorListView
 )
 
 urlpatterns = [
@@ -33,6 +35,11 @@ urlpatterns = [
     url(
         regex=r'^documents/pages/(?P<pk>\d+)/content/$',
         view=DocumentPageContentView.as_view(), name='document_page_content'
+    ),
+    url(
+        regex=r'^documents/versions/pages/(?P<pk>\d+)/content/$',
+        view=DocumentVersionPageContentView.as_view(),
+        name='document_version_page_content'
     ),
     url(
         regex=r'^documents/(?P<pk>\d+)/submit/$',

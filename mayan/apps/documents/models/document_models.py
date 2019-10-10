@@ -5,9 +5,10 @@ import uuid
 
 from django.apps import apps
 from django.core.files import File
-from django.db import models
+from django.db import models, transaction
 from django.urls import reverse
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.functional import cached_property
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
@@ -15,6 +16,7 @@ from ..events import (
     event_document_create, event_document_properties_edit,
     event_document_type_change,
 )
+from ..literals import DOCUMENT_IMAGES_CACHE_NAME
 from ..managers import DocumentManager, PassthroughManager, TrashCanManager
 from ..settings import setting_language
 from ..signals import post_document_type_change
@@ -102,6 +104,26 @@ class Document(models.Model):
         )
         return RecentDocument.objects.add_document_for_user(user, self)
 
+    @cached_property
+    def cache(self):
+        Cache = apps.get_model(app_label='file_caching', model_name='Cache')
+        return Cache.objects.get(name=DOCUMENT_IMAGES_CACHE_NAME)
+
+    @cached_property
+    def cache_partition(self):
+        partition, created = self.cache.partitions.get_or_create(
+            name='document-{}'.format(self.uuid)
+        )
+        return partition
+
+    @property
+    def checksum(self):
+        return self.latest_version.checksum
+
+    @property
+    def date_updated(self):
+        return self.latest_version.timestamp
+
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
 
@@ -126,25 +148,37 @@ class Document(models.Model):
         else:
             return False
 
+    @property
+    def file_mime_encoding(self):
+        return self.latest_version.encoding
+
+    @property
+    def file_mimetype(self):
+        return self.latest_version.mimetype
+
     def get_absolute_url(self):
         return reverse(
             viewname='documents:document_preview', kwargs={'pk': self.pk}
         )
 
     def get_api_image_url(self, *args, **kwargs):
-        latest_version = self.latest_version
-        if latest_version:
-            return latest_version.get_api_image_url(*args, **kwargs)
+        first_page = self.pages.first()
+        if first_page:
+            return first_page.get_api_image_url(*args, **kwargs)
 
     @property
     def is_in_trash(self):
         return self.in_trash
 
+    @property
+    def latest_version(self):
+        return self.versions.order_by('timestamp').last()
+
     def natural_key(self):
         return (self.uuid,)
     natural_key.dependencies = ['documents.DocumentType']
 
-    def new_version(self, file_object, comment=None, _user=None):
+    def new_version(self, file_object, append_pages=False, comment=None, _user=None):
         logger.info('Creating new document version for document: %s', self)
         DocumentVersion = apps.get_model(
             app_label='documents', model_name='DocumentVersion'
@@ -153,9 +187,10 @@ class Document(models.Model):
         document_version = DocumentVersion(
             document=self, comment=comment or '', file=File(file_object)
         )
-        document_version.save(_user=_user)
+        document_version.save(append_pages=append_pages, _user=_user)
 
         logger.info('New document version queued for document: %s', self)
+
         return document_version
 
     def open(self, *args, **kwargs):
@@ -164,6 +199,34 @@ class Document(models.Model):
         the storage backend
         """
         return self.latest_version.open(*args, **kwargs)
+
+    @property
+    def page_count(self):
+        return self.pages.count()
+
+    @property
+    def pages(self):
+        return self.pages.all()
+
+    @property
+    def pages_all(self):
+        DocumentPage = apps.get_model(
+            app_label='documents', model_name='DocumentPage'
+        )
+        return DocumentPage.passthrough.filter(document=self)
+
+    def pages_reset(self, update_page_count=True):
+        with transaction.atomic():
+            for page in self.pages.all():
+                page.delete()
+
+            if update_page_count:
+                self.latest_version.update_page_count()
+
+            for version_page in self.latest_version.pages.all():
+                document_page = self.pages.create(
+                    content_object = version_page
+                )
 
     def restore(self):
         self.in_trash = False
@@ -209,53 +272,3 @@ class Document(models.Model):
     @property
     def size(self):
         return self.latest_version.size
-
-    # Compatibility methods
-
-    @property
-    def checksum(self):
-        return self.latest_version.checksum
-
-    @property
-    def date_updated(self):
-        return self.latest_version.timestamp
-
-    @property
-    def file_mime_encoding(self):
-        return self.latest_version.encoding
-
-    @property
-    def file_mimetype(self):
-        return self.latest_version.mimetype
-
-    @property
-    def latest_version(self):
-        return self.versions.order_by('timestamp').last()
-
-    @property
-    def page_count(self):
-        return self.latest_version.page_count
-
-    @property
-    def pages_all(self):
-        try:
-            return self.latest_version.pages_all
-        except AttributeError:
-            # Document has no version yet
-            DocumentPage = apps.get_model(
-                app_label='documents', model_name='DocumentPage'
-            )
-
-            return DocumentPage.objects.none()
-
-    @property
-    def pages(self):
-        try:
-            return self.latest_version.pages
-        except AttributeError:
-            # Document has no version yet
-            DocumentPage = apps.get_model(
-                app_label='documents', model_name='DocumentPage'
-            )
-
-            return DocumentPage.objects.none()

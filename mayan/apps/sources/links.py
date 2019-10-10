@@ -113,6 +113,13 @@ link_staging_file_delete = Link(
     permissions=(permission_document_new_version, permission_document_create),
     tags='dangerous', text=_('Delete'), view='sources:staging_file_delete',
 )
+link_document_pages_append = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.sources.icons.icon_document_pages_append',
+    permissions=(permission_document_new_version,),
+    text=_('Append pages'),
+    view='sources:document_pages_append'
+)
 link_document_version_upload = Link(
     args='resolved_object.pk', condition=document_new_version_not_blocked,
     icon_class_path='mayan.apps.sources.icons.icon_document_version_upload',

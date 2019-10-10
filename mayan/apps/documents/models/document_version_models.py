@@ -246,23 +246,12 @@ class DocumentVersion(models.Model):
 
             return result
 
-    @property
-    def pages_all(self):
-        DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentPage'
-        )
-        return DocumentPage.passthrough.filter(document_version=self)
-
-    @property
-    def pages(self):
-        return self.version_pages.all()
-
-    @property
-    def page_count(self):
-        """
-        The number of pages that the document posses.
-        """
-        return self.pages.count()
+    #@property
+    #def page_count(self):
+    #    """
+    #    The number of pages that the document posses.
+    #    """
+    #    return self.pages.count()
 
     def revert(self, _user=None):
         """
@@ -285,6 +274,7 @@ class DocumentVersion(models.Model):
         Overloaded save method that updates the document version's checksum,
         mimetype, and page count when created
         """
+        append_pages = kwargs.pop('append_pages', False)
         user = kwargs.pop('_user', None)
         new_document_version = not self.pk
 
@@ -304,7 +294,7 @@ class DocumentVersion(models.Model):
                     # Only do this for new documents
                     self.update_checksum(save=False)
                     self.update_mimetype(save=False)
-                    self.save()
+                    self.save(append_pages=append_pages, _user=user)
                     self.update_page_count(save=False)
                     if setting_fix_orientation.value:
                         self.fix_orientation()
@@ -336,6 +326,14 @@ class DocumentVersion(models.Model):
                     post_document_created.send(
                         sender=Document, instance=self.document
                     )
+
+                if append_pages:
+                    for version_page in self.pages.all():
+                        self.document.pages.create(
+                            content_object = version_page
+                        )
+                else:
+                    self.document.pages_reset(update_page_count=False)
 
     def save_to_file(self, file_object):
         """
@@ -410,7 +408,7 @@ class DocumentVersion(models.Model):
             pass
         else:
             DocumentPage = apps.get_model(
-                app_label='documents', model_name='DocumentPage'
+                app_label='documents', model_name='DocumentVersionPage'
             )
 
             with transaction.atomic():
