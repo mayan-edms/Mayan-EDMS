@@ -9,7 +9,7 @@ from mayan.apps.documents.models import (
 )
 
 from .managers import (
-    DocumentPageOCRContentManager, DocumentTypeSettingsManager
+    DocumentVesionPageOCRContentManager, DocumentTypeSettingsManager
 )
 
 
@@ -52,7 +52,7 @@ class DocumentVersionPageOCRContent(models.Model):
         ), verbose_name=_('Content')
     )
 
-    objects = DocumentPageOCRContentManager()
+    objects = DocumentVesionPageOCRContentManager()
 
     class Meta:
         verbose_name = _('Document version page OCR content')

@@ -18,7 +18,7 @@ from .signals import post_document_version_parsing
 logger = logging.getLogger(__name__)
 
 
-class DocumentPageContentManager(models.Manager):
+class DocumentVersionPageContentManager(models.Manager):
     def delete_content_for(self, document, user=None):
         with transaction.atomic():
             for document_page in document.pages.all():

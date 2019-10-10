@@ -148,7 +148,7 @@ class DocumentParsingApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(link_document_content,), sources=(Document,)
         )
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_document_page_content,), sources=(DocumentPage,)
         )
         menu_list_facet.bind_links(

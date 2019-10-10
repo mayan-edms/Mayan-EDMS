@@ -15,7 +15,7 @@ def is_document_page_disabled(context):
 
 
 link_document_page_ocr_content = Link(
-    args='resolved_object.id',# conditional_disable=is_document_page_disabled,
+    args='resolved_object.id', conditional_disable=is_document_page_disabled,
     icon_class_path='mayan.apps.ocr.icons.icon_document_page_ocr_content',
     permissions=(permission_ocr_content_view,), text=_('OCR'),
     view='ocr:document_page_ocr_content',

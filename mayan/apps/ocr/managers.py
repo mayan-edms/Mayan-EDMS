@@ -22,7 +22,7 @@ from .signals import post_document_version_ocr
 logger = logging.getLogger(__name__)
 
 
-class DocumentPageOCRContentManager(models.Manager):
+class DocumentVesionPageOCRContentManager(models.Manager):
     def delete_content_for(self, document, user=None):
         with transaction.atomic():
             for document_page in document.pages.all():

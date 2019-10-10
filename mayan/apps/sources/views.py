@@ -362,7 +362,6 @@ class UploadInteractiveView(UploadBaseView):
 
 class UploadInteractiveVersionView(UploadBaseView):
     def dispatch(self, request, *args, **kwargs):
-
         self.subtemplates_list = []
 
         self.document = get_object_or_404(
@@ -417,12 +416,17 @@ class UploadInteractiveVersionView(UploadBaseView):
             else:
                 user_id = None
 
-            task_upload_new_version.apply_async(kwargs=dict(
-                shared_uploaded_file_id=shared_uploaded_file.pk,
-                document_id=self.document.pk,
-                user_id=user_id,
-                comment=forms['document_form'].cleaned_data.get('comment')
-            ))
+            task_upload_new_version.apply_async(
+                kwargs=dict(
+                    append_pages=forms['document_form'].cleaned_data.get(
+                        'append_pages', False
+                    ),
+                    shared_uploaded_file_id=shared_uploaded_file.pk,
+                    document_id=self.document.pk,
+                    user_id=user_id,
+                    comment=forms['document_form'].cleaned_data.get('comment')
+                )
+            )
 
             messages.success(
                 message=_(

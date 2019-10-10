@@ -31,6 +31,10 @@ class NewVersionForm(forms.Form):
             required=False,
             widget=forms.widgets.Textarea(attrs={'rows': 4}),
         )
+        self.fields['append_pages'] = forms.BooleanField(
+            initial=False, label=_('Append pages?'),
+            required=False,
+        )
 
 
 class UploadBaseForm(forms.Form):

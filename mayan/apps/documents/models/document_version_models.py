@@ -274,6 +274,7 @@ class DocumentVersion(models.Model):
         Overloaded save method that updates the document version's checksum,
         mimetype, and page count when created
         """
+        append_pages = kwargs.pop('append_pages', False)
         user = kwargs.pop('_user', None)
         new_document_version = not self.pk
 
@@ -293,7 +294,7 @@ class DocumentVersion(models.Model):
                     # Only do this for new documents
                     self.update_checksum(save=False)
                     self.update_mimetype(save=False)
-                    self.save()
+                    self.save(append_pages=append_pages, _user=user)
                     self.update_page_count(save=False)
                     if setting_fix_orientation.value:
                         self.fix_orientation()
@@ -326,7 +327,13 @@ class DocumentVersion(models.Model):
                         sender=Document, instance=self.document
                     )
 
-                self.document.pages_reset(update_page_count=False)
+                if append_pages:
+                    for version_page in self.pages.all():
+                        self.document.pages.create(
+                            content_object = version_page
+                        )
+                else:
+                    self.document.pages_reset(update_page_count=False)
 
     def save_to_file(self, file_object):
         """

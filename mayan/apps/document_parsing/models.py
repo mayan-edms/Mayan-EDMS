@@ -8,7 +8,9 @@ from mayan.apps.documents.models import (
     DocumentPage, DocumentType, DocumentVersion, DocumentVersionPage
 )
 
-from .managers import DocumentPageContentManager, DocumentTypeSettingsManager
+from .managers import (
+    DocumentVersionPageContentManager, DocumentTypeSettingsManager
+)
 
 
 class DocumentTypeSettings(models.Model):
@@ -52,7 +54,7 @@ class DocumentVersionPageContent(models.Model):
         ), verbose_name=_('Content')
     )
 
-    objects = DocumentPageContentManager()
+    objects = DocumentVersionPageContentManager()
 
     class Meta:
         verbose_name = _('Document version page content')

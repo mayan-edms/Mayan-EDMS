@@ -178,7 +178,7 @@ class Document(models.Model):
         return (self.uuid,)
     natural_key.dependencies = ['documents.DocumentType']
 
-    def new_version(self, file_object, comment=None, _user=None):
+    def new_version(self, file_object, append_pages=False, comment=None, _user=None):
         logger.info('Creating new document version for document: %s', self)
         DocumentVersion = apps.get_model(
             app_label='documents', model_name='DocumentVersion'
@@ -187,7 +187,7 @@ class Document(models.Model):
         document_version = DocumentVersion(
             document=self, comment=comment or '', file=File(file_object)
         )
-        document_version.save(_user=_user)
+        document_version.save(append_pages=append_pages, _user=_user)
 
         logger.info('New document version queued for document: %s', self)
 

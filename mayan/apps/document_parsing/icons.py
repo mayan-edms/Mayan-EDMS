@@ -17,6 +17,9 @@ icon_document_content_download = Icon(
 icon_document_multiple_submit = Icon(
     driver_name='fontawesome', symbol='font'
 )
+icon_document_page_content = Icon(
+    driver_name='fontawesome', symbol='font'
+)
 icon_document_submit = Icon(
     driver_name='fontawesome', symbol='font'
 )
