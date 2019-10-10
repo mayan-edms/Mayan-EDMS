@@ -32,7 +32,7 @@ class DocumentUploadWizardViewTestMixin(object):
     def _request_upload_wizard_view(self, document_path=TEST_SMALL_DOCUMENT_PATH):
         with open(document_path, mode='rb') as file_object:
             return self.post(
-                viewname='sources:upload_interactive', kwargs={
+                viewname='sources:document_upload_interactive', kwargs={
                     'source_id': self.test_source.pk
                 }, data={
                     'source-file': file_object,
@@ -42,7 +42,7 @@ class DocumentUploadWizardViewTestMixin(object):
 
     def _request_upload_interactive_view(self):
         return self.get(
-            viewname='sources:upload_interactive', data={
+            viewname='sources:document_upload_interactive', data={
                 'document_type_id': self.test_document_type.pk,
             }
         )
@@ -113,7 +113,7 @@ class DocumentUploadWizardViewTestCase(
 
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             response = self.post(
-                viewname='sources:upload_interactive', kwargs={
+                viewname='sources:document_upload_interactive', kwargs={
                     'source_id': self.test_source.pk
                 }, data={
                     'source-file': file_object,
@@ -157,7 +157,7 @@ class DocumentUploadIssueTestCase(GenericDocumentViewTestCase):
         # Upload the test document
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.post(
-                viewname='sources:upload_interactive', data={
+                viewname='sources:document_upload_interactive', data={
                     'document-language': 'eng',
                     'source-file': file_object,
                     'document_type_id': self.test_document_type.pk
@@ -207,7 +207,7 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
         NewVersionBlock.objects.block(self.test_document)
 
         response = self.post(
-            viewname='sources:upload_version', kwargs={
+            viewname='sources:document_version_upload', kwargs={
                 'document_pk': self.test_document.pk
             }, follow=True
         )
