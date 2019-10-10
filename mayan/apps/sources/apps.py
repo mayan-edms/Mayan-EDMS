@@ -146,8 +146,9 @@ class SourcesApp(MayanAppConfig):
         menu_secondary.bind_links(
             links=(link_document_version_upload,),
             sources=(
-                'documents:document_version_list', 'sources:upload_version',
-                'documents:document_version_revert'
+                'documents:document_version_list',
+                'documents:document_version_revert',
+                'sources:document_version_upload'
             )
         )
         menu_secondary.bind_links(

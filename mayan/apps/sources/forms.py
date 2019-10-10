@@ -28,7 +28,6 @@ class NewVersionForm(forms.Form):
         label=_('Comment'), required=False,
         widget=forms.widgets.Textarea(attrs={'rows': 4}),
     )
-
     append_pages = forms.BooleanField(
         help_text=_(
             'If selected, the pages of the file uploaded will be appended '

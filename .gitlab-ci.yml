@@ -19,7 +19,7 @@ job_docker_build:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
     - VERSION=`cat docker/rootfs/version`
     - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$VERSION"
-    - docker run --rm "$CI_REGISTRY_IMAGE:$VERSION" run-tests
+    - docker run --rm "$CI_REGISTRY_IMAGE:$VERSION" run_tests
     - docker push "$CI_REGISTRY_IMAGE:$VERSION"
     - docker push "$CI_REGISTRY_IMAGE:latest"
     - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
@@ -58,7 +58,7 @@ job_docker_nightly:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
-    - docker run --rm "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" run-tests
+    - docker run --rm "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" run_tests
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
   only:
     - nightly
@@ -152,7 +152,9 @@ job_push_python:
     - locale-gen en_US.UTF-8
     - update-locale LANG=en_US.UTF-8
     - export LC_ALL=en_US.UTF-8
-    - apt-get install -qq curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils libreoffice poppler-utils python-dev python-pip tesseract-ocr tesseract-ocr-deu
+    - apt-get install -qq curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils libreoffice poppler-utils python-dev python-virtualenv python3-dev tesseract-ocr tesseract-ocr-deu
+    - virtualenv venv -p /usr/bin/python3
+    - . venv/bin/activate
     - pip install -r requirements.txt -r requirements/testing-base.txt
   only:
     - releases/all
@@ -170,6 +172,7 @@ test-mysql:
     - mysql:8.0.3
   script:
     - apt-get install -qq libmysqlclient-dev mysql-client
+    - . venv/bin/activate
     - pip install mysqlclient
     - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
@@ -185,6 +188,7 @@ test-postgres:
     - postgres
   script:
     - apt-get install -qq libpq-dev
+    - . venv/bin/activate
     - pip install psycopg2
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
   tags:
@@ -193,6 +197,7 @@ test-postgres:
 test-sqlite:
   <<: *test_base
   script:
+    - . venv/bin/activate
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
 
 deploy_demo:
