@@ -57,7 +57,7 @@ class OCRAPIViewTestCase(
 
         self.assertTrue(
             hasattr(
-                self.test_document.pages.first().content_type, 'ocr_content'
+                self.test_document.pages.first().content_object, 'ocr_content'
             )
         )
 
