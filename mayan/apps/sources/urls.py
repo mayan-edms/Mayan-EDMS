@@ -10,8 +10,7 @@ from .views import (
     DocumentPagesAppendView, DocumentVersionUploadInteractiveView,
     SetupSourceCheckView, SetupSourceCreateView,
     SetupSourceDeleteView, SetupSourceEditView, SetupSourceListView,
-    SourceLogListView, StagingFileDeleteView, UploadInteractiveVersionView,
-    UploadInteractiveView
+    SourceLogListView, StagingFileDeleteView, UploadInteractiveView
 )
 from .wizards import DocumentCreateWizard
 

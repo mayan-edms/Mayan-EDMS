@@ -472,7 +472,7 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
         return context
 
 
-class DocumentPagesAppendView(UploadInteractiveVersionView):
+class DocumentPagesAppendView(DocumentVersionUploadInteractiveView):
     def get_document_form_initial(self):
         return {
             'append_pages': True,
