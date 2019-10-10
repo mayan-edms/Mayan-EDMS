@@ -10,7 +10,7 @@ from mayan.celery import app
 
 from .literals import (
     RETRY_DELAY_DOCUMENT_RESET_PAGES, UPDATE_PAGE_COUNT_RETRY_DELAY,
-    UPLOAD_NEW_DOCUMENT_RETRY_DELAY,
+    UPLOAD_NEW_DOCUMENT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY
 )
 
 logger = logging.getLogger(__name__)
