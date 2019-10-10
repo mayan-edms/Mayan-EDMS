@@ -15,7 +15,7 @@ def is_document_page_disabled(context):
 
 
 link_document_page_ocr_content = Link(
-    args='resolved_object.id', conditional_disable=is_document_page_disabled,
+    args='resolved_object.id',# conditional_disable=is_document_page_disabled,
     icon_class_path='mayan.apps.ocr.icons.icon_document_page_ocr_content',
     permissions=(permission_ocr_content_view,), text=_('OCR'),
     view='ocr:document_page_ocr_content',
@@ -58,10 +58,11 @@ link_document_type_submit = Link(
     permissions=(permission_ocr_document,), text=_('OCR documents per type'),
     view='ocr:document_type_submit'
 )
-link_entry_list = Link(
-    icon_class_path='mayan.apps.ocr.icons.icon_entry_list',
-    permissions=(permission_ocr_document,), text=_('OCR errors'),
-    view='ocr:entry_list'
+link_document_version_page_ocr_content = Link(
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.ocr.icons.icon_document_version_page_ocr_content',
+    permissions=(permission_ocr_content_view,), text=_('OCR'),
+    view='ocr:document_version_page_ocr_content',
 )
 link_document_ocr_errors_list = Link(
     args='resolved_object.id',
@@ -74,4 +75,9 @@ link_document_ocr_download = Link(
     icon_class_path='mayan.apps.ocr.icons.icon_document_ocr_download',
     permissions=(permission_ocr_content_view,), text=_('Download OCR text'),
     view='ocr:document_ocr_download'
+)
+link_entry_list = Link(
+    icon_class_path='mayan.apps.ocr.icons.icon_entry_list',
+    permissions=(permission_ocr_document,), text=_('OCR errors'),
+    view='ocr:entry_list'
 )

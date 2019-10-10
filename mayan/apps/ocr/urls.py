@@ -8,9 +8,10 @@ from .api_views import (
 )
 from .views import (
     DocumentOCRContentDeleteView, DocumentOCRContentView,
-    DocumentOCRDownloadView,
-    DocumentOCRErrorsListView, DocumentPageOCRContentView, DocumentSubmitView,
-    DocumentTypeSettingsEditView, DocumentTypeSubmitView, EntryListView
+    DocumentOCRDownloadView, DocumentOCRErrorsListView,
+    DocumentPageOCRContentView, DocumentSubmitView,
+    DocumentTypeSettingsEditView, DocumentTypeSubmitView,
+    DocumentVersionPageOCRContentView, EntryListView
 )
 
 urlpatterns = [
@@ -49,6 +50,11 @@ urlpatterns = [
         regex=r'^documents/pages/(?P<pk>\d+)/content/$',
         view=DocumentPageOCRContentView.as_view(),
         name='document_page_ocr_content'
+    ),
+    url(
+        regex=r'^documents/versions/pages/(?P<pk>\d+)/content/$',
+        view=DocumentVersionPageOCRContentView.as_view(),
+        name='document_version_page_ocr_content'
     ),
     url(
         regex=r'^document_types/submit/$',

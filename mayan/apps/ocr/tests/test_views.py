@@ -30,7 +30,7 @@ class OCRViewTestMixin(object):
     def _request_document_version_page_content_view(self):
         return self.get(
             viewname='ocr:document_version_page_ocr_content', kwargs={
-                'pk': self.test_document.pages.first().pk
+                'pk': self.test_document_version.pages.first().pk
             }
         )
 
@@ -87,7 +87,7 @@ class OCRViewsTestCase(OCRViewTestMixin, GenericDocumentViewTestCase):
 
         self.assertTrue(
             DocumentVersionPageOCRContent.objects.filter(
-                document_version_page=self.test_document.pages.first()
+                document_version_page=self.test_document.pages.first().content_object
             ).exists()
         )
 
@@ -102,7 +102,7 @@ class OCRViewsTestCase(OCRViewTestMixin, GenericDocumentViewTestCase):
 
         self.assertFalse(
             DocumentVersionPageOCRContent.objects.filter(
-                document_version_page=self.test_document.pages.first()
+                document_version_page=self.test_document.pages.first().content_object
             ).exists()
         )
 

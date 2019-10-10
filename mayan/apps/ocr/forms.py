@@ -28,14 +28,25 @@ class DocumentPageOCRContentForm(forms.Form):
         content = ''
         self.fields['contents'].initial = ''
 
-        try:
-            page_content = page.ocr_content.content
-        except DocumentVersionPageOCRContent.DoesNotExist:
-            pass
-        else:
-            content = conditional_escape(force_text(page_content))
+        content = conditional_escape(
+            force_text(self.get_instance_ocr_content(instance=page))
+        )
 
         self.fields['contents'].initial = mark_safe(content)
+
+    def get_instance_ocr_content(self, instance):
+        try:
+            return instance.content_object.ocr_content.content
+        except DocumentVersionPageOCRContent.DoesNotExist:
+            return ''
+
+
+class DocumentVersionPageOCRContentForm(DocumentPageOCRContentForm):
+    def get_instance_ocr_content(self, instance):
+        try:
+            return instance.ocr_content.content
+        except (AttributeError, DocumentVersionPageOCRContent.DoesNotExist):
+            return ''
 
 
 class DocumentOCRContentForm(forms.Form):
@@ -54,19 +65,15 @@ class DocumentOCRContentForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        self.document = kwargs.pop('instance', None)
+        document = kwargs.pop('instance', None)
         super(DocumentOCRContentForm, self).__init__(*args, **kwargs)
         content = []
         self.fields['contents'].initial = ''
-        try:
-            document_pages = self.document.pages.all()
-        except AttributeError:
-            document_pages = []
 
-        for page in document_pages:
+        for document_page in document.pages.all():
             try:
-                page_content = page.ocr_content.content
-            except DocumentVersionPageOCRContent.DoesNotExist:
+                page_content = document_page.content_object.ocr_content.content
+            except (AttributeError, DocumentVersionPageOCRContent.DoesNotExist):
                 pass
             else:
                 content.append(conditional_escape(force_text(page_content)))
@@ -74,7 +81,7 @@ class DocumentOCRContentForm(forms.Form):
                     '\n\n\n<hr/><div class="document-page-content-divider">- %s -</div><hr/>\n\n\n' % (
                         ugettext(
                             'Page %(page_number)d'
-                        ) % {'page_number': page.page_number}
+                        ) % {'page_number': document_page.page_number}
                     )
                 )
 

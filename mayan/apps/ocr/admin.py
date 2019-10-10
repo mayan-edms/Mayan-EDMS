@@ -10,7 +10,8 @@ from .models import (
 
 @admin.register(DocumentVersionPageOCRContent)
 class DocumentVersionPageOCRContentAdmin(admin.ModelAdmin):
-    list_display = ('document_version_page',)
+    pass
+    #list_display = ('document_page',)
 
 
 @admin.register(DocumentTypeSettings)

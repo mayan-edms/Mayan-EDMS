@@ -64,8 +64,8 @@ document_page_search = SearchModel(
 document_version_page_search = SearchModel(
     app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
     model_name='DocumentVersionPage', permission=permission_document_view,
-    #queryset=get_queryset_document_version_page_search_queryset,
-    serializer_path='mayan.apps.documents.serializers.DocumentPageVersionSerializer'
+    queryset=get_queryset_document_version_page_search_queryset,
+    serializer_path='mayan.apps.documents.serializers.DocumentVersionPageSerializer'
 )
 
 document_page_search.add_model_field(

@@ -19,7 +19,7 @@ class DocumentOCRTestCase(DocumentTestMixin, BaseTestCase):
     _skip_file_descriptor_test = True
 
     def test_ocr_language_backends_end(self):
-        content = self.test_document.pages.first().ocr_content.content
+        content = self.test_document.pages.first().get_ocr_content()
         self.assertTrue(TEST_DOCUMENT_CONTENT in content)
 
 

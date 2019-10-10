@@ -13,10 +13,13 @@ from mayan.apps.common.generics import (
 from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
 from mayan.apps.documents.models import (
-    Document, DocumentType, DocumentVersionPage
+    Document, DocumentPage, DocumentType, DocumentVersionPage
 )
 
-from .forms import DocumentPageOCRContentForm, DocumentOCRContentForm
+from .forms import (
+    DocumentPageOCRContentForm, DocumentOCRContentForm,
+    DocumentVersionPageOCRContentForm
+)
 from .models import DocumentVersionPageOCRContent, DocumentVersionOCRError
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
@@ -76,7 +79,7 @@ class DocumentOCRContentView(SingleObjectDetailView):
 
 class DocumentPageOCRContentView(SingleObjectDetailView):
     form_class = DocumentPageOCRContentForm
-    model = DocumentVersionPage
+    model = DocumentPage
     object_permission = permission_ocr_content_view
 
     def dispatch(self, request, *args, **kwargs):
@@ -93,6 +96,30 @@ class DocumentPageOCRContentView(SingleObjectDetailView):
             'hide_labels': True,
             'object': self.get_object(),
             'title': _('OCR result for document page: %s') % self.get_object(),
+        }
+
+
+class DocumentVersionPageOCRContentView(SingleObjectDetailView):
+    form_class = DocumentVersionPageOCRContentForm
+    model = DocumentVersionPage
+    object_permission = permission_ocr_content_view
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(DocumentVersionPageOCRContentView, self).dispatch(
+            request, *args, **kwargs
+        )
+        self.get_object().document.add_as_recent_document_for_user(
+            user=request.user
+        )
+        return result
+
+    def get_extra_context(self):
+        return {
+            'hide_labels': True,
+            'object': self.get_object(),
+            'title': _(
+                'OCR result for document version page: %s'
+            ) % self.get_object(),
         }
 
 

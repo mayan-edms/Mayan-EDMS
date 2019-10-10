@@ -9,7 +9,9 @@ from django.conf import settings
 from django.db import models, transaction
 
 from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
-from mayan.apps.documents.tasks import task_generate_document_page_image
+from mayan.apps.documents.tasks import (
+    task_generate_document_version_page_image
+)
 
 from .events import (
     event_ocr_document_content_deleted, event_ocr_document_version_finish
@@ -24,25 +26,28 @@ class DocumentPageOCRContentManager(models.Manager):
     def delete_content_for(self, document, user=None):
         with transaction.atomic():
             for document_page in document.pages.all():
-                self.filter(document_page=document_page).delete()
+                self.filter(
+                    document_version_page=document_page.content_object
+                ).delete()
 
             event_ocr_document_content_deleted.commit(
                 actor=user, target=document
             )
 
-    def process_document_page(self, document_page):
+    def process_document_version_page(self, document_version_page):
         logger.info(
             'Processing page: %d of document version: %s',
-            document_page.page_number, document_page.document_version
+            document_version_page.page_number,
+            document_version_page.document_version
         )
 
-        DocumentPageOCRContent = apps.get_model(
-            app_label='ocr', model_name='DocumentPageOCRContent'
+        DocumentVersionPageOCRContent = apps.get_model(
+            app_label='ocr', model_name='DocumentVersionPageOCRContent'
         )
 
-        task = task_generate_document_page_image.apply_async(
+        task = task_generate_document_version_page_image.apply_async(
             kwargs=dict(
-                document_page_id=document_page.pk
+                document_version_page_id=document_version_page.pk
             )
         )
 
@@ -50,19 +55,20 @@ class DocumentPageOCRContentManager(models.Manager):
             timeout=DOCUMENT_IMAGE_TASK_TIMEOUT, disable_sync_subtasks=False
         )
 
-        with document_page.cache_partition.get_file(filename=cache_filename).open() as file_object:
-            document_page_content, created = DocumentPageOCRContent.objects.get_or_create(
-                document_page=document_page
+        with document_version_page.cache_partition.get_file(filename=cache_filename).open() as file_object:
+            document_version_page_content, created = DocumentVersionPageOCRContent.objects.get_or_create(
+                document_version_page=document_version_page
             )
-            document_page_content.content = ocr_backend.execute(
+            document_version_page_content.content = ocr_backend.execute(
                 file_object=file_object,
-                language=document_page.document.language
+                language=document_version_page.document.language
             )
-            document_page_content.save()
+            document_version_page_content.save()
 
         logger.info(
             'Finished processing page: %d of document version: %s',
-            document_page.page_number, document_page.document_version
+            document_version_page.page_number,
+            document_version_page.document_version
         )
 
     def process_document_version(self, document_version):
@@ -70,8 +76,10 @@ class DocumentPageOCRContentManager(models.Manager):
         logger.debug('document version: %d', document_version.pk)
 
         try:
-            for document_page in document_version.pages.all():
-                self.process_document_page(document_page=document_page)
+            for document_version_page in document_version.pages.all():
+                self.process_document_version_page(
+                    document_version_page=document_version_page
+                )
         except Exception as exception:
             logger.error(
                 'OCR error for document version: %d; %s', document_version.pk,

@@ -34,17 +34,19 @@ from .links import (
     link_document_ocr_content_delete_multiple, link_document_ocr_download,
     link_document_ocr_errors_list, link_document_submit,
     link_document_submit_multiple, link_document_type_ocr_settings,
-    link_document_type_submit, link_entry_list
+    link_document_type_submit, link_document_version_page_ocr_content,
+    link_entry_list
 )
 from .methods import (
-    method_document_ocr_submit, method_document_version_ocr_submit
+    method_document_ocr_submit, method_document_page_get_ocr_content,
+    method_document_version_ocr_submit
 )
 from .permissions import (
     permission_document_type_ocr_setup, permission_ocr_document,
     permission_ocr_content_view
 )
 from .signals import post_document_version_ocr
-from .utils import get_document_ocr_content
+from .utils import get_document_ocr_content, get_document_version_ocr_content
 
 logger = logging.getLogger(__name__)
 
@@ -75,6 +77,9 @@ class OCRApp(MayanAppConfig):
         DocumentVersion = apps.get_model(
             app_label='documents', model_name='DocumentVersion'
         )
+        DocumentVersionPage = apps.get_model(
+            app_label='documents', model_name='DocumentVersionPage'
+        )
 
         DocumentVersionOCRError = self.get_model(
             model_name='DocumentVersionOCRError'
@@ -83,8 +88,11 @@ class OCRApp(MayanAppConfig):
         Document.add_to_class(
             name='submit_for_ocr', value=method_document_ocr_submit
         )
+        DocumentPage.add_to_class(
+            name='get_ocr_content', value=method_document_page_get_ocr_content
+        )
         DocumentVersion.add_to_class(
-            name='ocr_content', value=get_document_ocr_content
+            name='ocr_content', value=get_document_version_ocr_content
         )
         DocumentVersion.add_to_class(
             name='submit_for_ocr', value=method_document_version_ocr_submit
@@ -98,9 +106,9 @@ class OCRApp(MayanAppConfig):
             )
         )
 
-        #ModelField(
-        #    model=Document, name='versions__pages__ocr_content__content'
-        #)
+        ModelField(
+            model=Document, name='versions__pages__ocr_content__content'
+        )
 
         ModelPermission.register(
             model=Document, permissions=(
@@ -144,6 +152,10 @@ class OCRApp(MayanAppConfig):
         )
         menu_list_facet.bind_links(
             links=(link_document_page_ocr_content,), sources=(DocumentPage,)
+        )
+        menu_list_facet.bind_links(
+            links=(link_document_version_page_ocr_content,),
+            sources=(DocumentVersionPage,)
         )
         menu_list_facet.bind_links(
             links=(link_document_type_ocr_settings,), sources=(DocumentType,)

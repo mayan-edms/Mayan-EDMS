@@ -19,10 +19,24 @@ class Migration(migrations.Migration):
             name='document_page',
             field=models.OneToOneField(
                 on_delete=django.db.models.deletion.CASCADE,
-                name='document_version_page',
                 related_name='content',
                 to='documents.DocumentVersionPage',
                 verbose_name='Document version page'
             ),
         ),
+        migrations.RenameField(
+            model_name='documentversionpagecontent',
+            old_name='document_page',
+            new_name='document_version_page',
+        ),
+        migrations.AlterModelOptions(
+            name='documentversionpagecontent',
+            options={
+                'verbose_name': 'Document version page content',
+                'verbose_name_plural': 'Document version pages contents'
+            },
+        ),
     ]
+
+
+
