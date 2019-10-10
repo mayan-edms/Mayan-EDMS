@@ -53,8 +53,8 @@ class MultiFormView(DjangoFormView):
     template_name = 'appearance/generic_form.html'
 
     def _create_form(self, form_name, klass):
-        form_kwargs = self.get_form_kwargs(form_name)
-        form_create_method = 'create_%s_form' % form_name
+        form_kwargs = self.get_form_kwargs(form_name=form_name)
+        form_create_method = 'create_{}_form'.format(form_name)
         if hasattr(self, form_create_method):
             form = getattr(self, form_create_method)(**form_kwargs)
         else:
@@ -66,17 +66,17 @@ class MultiFormView(DjangoFormView):
 
     def dispatch(self, request, *args, **kwargs):
         form_classes = self.get_form_classes()
-        self.forms = self.get_forms(form_classes)
+        self.forms = self.get_forms(form_classes=form_classes)
         return super(MultiFormView, self).dispatch(request, *args, **kwargs)
 
     def forms_valid(self, forms):
         for form_name, form in forms.items():
-            form_valid_method = '%s_form_valid' % form_name
+            form_valid_method = '{}_form_valid'.format(form_name)
 
             if hasattr(self, form_valid_method):
-                return getattr(self, form_valid_method)(form)
+                return getattr(self, form_valid_method)(form=form)
 
-        self.all_forms_valid(forms)
+        self.all_forms_valid(forms=forms)
 
         return HttpResponseRedirect(redirect_to=self.get_success_url())
 
@@ -98,14 +98,16 @@ class MultiFormView(DjangoFormView):
 
     def get_form_kwargs(self, form_name):
         kwargs = {}
-        kwargs.update({'initial': self.get_initial(form_name)})
-        kwargs.update({'prefix': self.get_prefix(form_name)})
+        kwargs.update({'initial': self.get_initial(form_name=form_name)})
+        kwargs.update({'prefix': self.get_prefix(form_name=form_name)})
 
         if self.request.method in ('POST', 'PUT'):
-            kwargs.update({
-                'data': self.request.POST,
-                'files': self.request.FILES,
-            })
+            kwargs.update(
+                {
+                    'data': self.request.POST,
+                    'files': self.request.FILES,
+                }
+            )
 
         kwargs.update(self.get_form_extra_kwargs(form_name=form_name) or {})
 
@@ -118,13 +120,13 @@ class MultiFormView(DjangoFormView):
         return dict(
             [
                 (
-                    key, self._create_form(key, klass)
+                    key, self._create_form(form_name=key, klass=klass)
                 ) for key, klass in form_classes.items()
             ]
         )
 
     def get_initial(self, form_name):
-        initial_method = 'get_%s_initial' % form_name
+        initial_method = 'get_{}_initial'.format(form_name)
         if hasattr(self, initial_method):
             return getattr(self, initial_method)()
         else:
@@ -206,9 +208,9 @@ class AddRemoveView(
             getattr(self.main_object, self.related_field).add(*queryset)
         else:
             raise ImproperlyConfigured(
-                'View %s must be called with a main_object_method_add, a '
+                'View {} must be called with a main_object_method_add, a '
                 'related_field, or an action_add '
-                'method.' % self.__class__.__name__
+                'method.'.format(self.__class__.__name__)
             )
 
     def _action_remove(self, queryset):
@@ -225,9 +227,9 @@ class AddRemoveView(
             getattr(self.main_object, self.related_field).remove(*queryset)
         else:
             raise ImproperlyConfigured(
-                'View %s must be called with a main_object_method_remove, a '
+                'View {} must be called with a main_object_method_remove, a '
                 'related_field, or an action_remove '
-                'method.' % self.__class__.__name__
+                'method.'.format(self.__class__.__name__)
             )
 
     def dispatch(self, request, *args, **kwargs):
@@ -348,8 +350,10 @@ class AddRemoveView(
     def get_list_added_queryset(self):
         if not self.related_field:
             raise ImproperlyConfigured(
-                'View %s must be called with either a related_field or '
-                'override .get_list_added_queryset().' % self.__class__.__name__
+                'View {} must be called with either a related_field or '
+                'override .get_list_added_queryset().'.format(
+                    self.__class__.__name__
+                )
             )
 
         return self.get_secondary_object_list().filter(
