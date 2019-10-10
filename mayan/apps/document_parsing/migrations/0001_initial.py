@@ -12,6 +12,9 @@ class Migration(migrations.Migration):
         ('documents', '0041_auto_20170823_1855'),
     ]
 
+    run_before = [
+        ('documents', '0052_rename_document_page'),
+    ]
     operations = [
         migrations.CreateModel(
             name='DocumentPageContent',
