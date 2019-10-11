@@ -15,15 +15,13 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.converter.exceptions import InvalidOfficeFormat, PageCountError
-from mayan.apps.converter.layers import layer_saved_transformations
-from mayan.apps.converter.transformations import TransformationRotate
 from mayan.apps.converter.utils import get_converter_class
 from mayan.apps.mimetype.api import get_mimetype
 
 from ..events import event_document_new_version, event_document_version_revert
 from ..literals import DOCUMENT_IMAGES_CACHE_NAME
 from ..managers import DocumentVersionManager
-from ..settings import setting_fix_orientation, setting_hash_block_size
+from ..settings import setting_hash_block_size
 from ..signals import post_document_created, post_version_upload
 from ..storages import storage_documentversion
 
@@ -151,15 +149,6 @@ class DocumentVersion(models.Model):
         detect if the storage has desynchronized (ie: Amazon's S3).
         """
         return self.file.storage.exists(self.file.name)
-
-    def fix_orientation(self):
-        for page in self.pages.all():
-            degrees = page.detect_orientation()
-            if degrees:
-                layer_saved_transformations.add_to_object(
-                    obj=page, transformation=TransformationRotate,
-                    arguments='{{"degrees": {}}}'.format(360 - degrees)
-                )
 
     def get_absolute_url(self):
         return reverse(
@@ -296,8 +285,6 @@ class DocumentVersion(models.Model):
                     self.update_mimetype(save=False)
                     self.save(append_pages=append_pages, _user=user)
                     self.update_page_count(save=False)
-                    if setting_fix_orientation.value:
-                        self.fix_orientation()
 
                     logger.info(
                         'New document version "%s" created for document: %s',
@@ -330,7 +317,7 @@ class DocumentVersion(models.Model):
                 if append_pages:
                     for version_page in self.pages.all():
                         self.document.pages.create(
-                            content_object = version_page
+                            content_object=version_page
                         )
                 else:
                     self.document.pages_reset(update_page_count=False)

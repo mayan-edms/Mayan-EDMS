@@ -21,7 +21,7 @@ from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 from ..forms import DocumentPageForm
 from ..icons import icon_document_pages
 from ..links import link_document_pages_reset
-from ..models import Document, DocumentPage, DocumentVersionPage
+from ..models import Document, DocumentPage
 from ..permissions import permission_document_edit, permission_document_view
 from ..settings import (
     setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,

@@ -23,7 +23,6 @@ from mayan.apps.converter.utils import get_converter_class
 
 from ..managers import DocumentPageManager
 from ..settings import (
-    setting_disable_base_image_cache, setting_disable_transformed_image_cache,
     setting_display_width, setting_display_height, setting_zoom_max_level,
     setting_zoom_min_level
 )

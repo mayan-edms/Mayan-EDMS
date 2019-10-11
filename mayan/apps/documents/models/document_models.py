@@ -224,8 +224,8 @@ class Document(models.Model):
                 self.latest_version.update_page_count()
 
             for version_page in self.latest_version.pages.all():
-                document_page = self.pages.create(
-                    content_object = version_page
+                self.pages.create(
+                    content_object=version_page
                 )
 
     def restore(self):

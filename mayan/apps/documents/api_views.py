@@ -404,7 +404,8 @@ class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
         'GET': (permission_document_type_view,),
         'PUT': (permission_document_type_edit,),
         'PATCH': (permission_document_type_edit,),
-        'DELETE': (permission_document_type_delete,)    }
+        'DELETE': (permission_document_type_delete,)
+    }
     permission_classes = (MayanPermission,)
     queryset = DocumentType.objects.all()
 
