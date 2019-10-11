@@ -97,6 +97,8 @@ Changes
   Robert Schöftner (@robert.schoeftner).
 - Add support to execute the IMAP expunge command after each
   processed message.
+- Support simple search disable via the new
+  SEARCH_DISABLE_SIMPLE_SEARCH setting.
 
 Removals
 --------

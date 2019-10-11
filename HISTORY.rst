@@ -80,6 +80,7 @@
   Deploy a Redis container.
 - Improve document version upload form.
 - Use dropzone for document version upload form.
+<<<<<<< HEAD
 - Allow the "Execute document tools" permission to be
   granted via ACL.
 - Add support for custom IMAP search criteria.
@@ -90,6 +91,8 @@
 - Add support for specifing a destination IMAP mailbox for
   processed messages. GitLab issue #399. Thanks to
   Robert Schöftner (@robert.schoeftner).
+- Support simple search disable via the new
+  SEARCH_DISABLE_SIMPLE_SEARCH setting.
 
 3.2.8 (2019-10-01)
 ==================
