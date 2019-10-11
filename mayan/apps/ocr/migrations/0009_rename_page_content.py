@@ -19,7 +19,6 @@ class Migration(migrations.Migration):
             name='document_page',
             field=models.OneToOneField(
                 on_delete=django.db.models.deletion.CASCADE,
-                #name='document_version_page',
                 related_name='ocr_content',
                 to='documents.DocumentVersionPage',
                 verbose_name='Document version page'
@@ -38,5 +37,3 @@ class Migration(migrations.Migration):
             },
         ),
     ]
-
-

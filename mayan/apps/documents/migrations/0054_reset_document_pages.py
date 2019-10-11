@@ -9,9 +9,6 @@ def get_latest_version(document):
 
 def operation_reset_document_pages(apps, schema_editor):
     Document = apps.get_model(app_label='documents', model_name='Document')
-    DocumentPage = apps.get_model(
-        app_label='documents', model_name='DocumentPage'
-    )
 
     # Define inside the function to use the migration's apps instance
     def pages_reset(document):
@@ -40,9 +37,6 @@ def operation_reset_document_pages(apps, schema_editor):
 
 def operation_reset_document_pages_reverse(apps, schema_editor):
     Document = apps.get_model(app_label='documents', model_name='Document')
-    DocumentPage = apps.get_model(
-        app_label='documents', model_name='DocumentPage'
-    )
 
     for document in Document.objects.using(schema_editor.connection.alias).all():
         for document_page in document.pages.all():

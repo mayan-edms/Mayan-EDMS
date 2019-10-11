@@ -38,21 +38,6 @@ setting_documentimagecache_storage_arguments = namespace.add_setting(
         'Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND.'
     ),
 )
-setting_disable_base_image_cache = namespace.add_setting(
-    global_name='DOCUMENTS_DISABLE_BASE_IMAGE_CACHE', default=False,
-    help_text=_(
-        'Disables the first cache tier which stores high resolution, '
-        'non transformed versions of documents\'s pages.'
-    )
-)
-setting_disable_transformed_image_cache = namespace.add_setting(
-    global_name='DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE', default=False,
-    help_text=_(
-        'Disables the second cache tier which stores medium to low '
-        'resolution, transformed (rotated, zoomed, etc) versions '
-        'of documents\' pages.'
-    )
-)
 setting_display_height = namespace.add_setting(
     global_name='DOCUMENTS_DISPLAY_HEIGHT', default=''
 )
@@ -63,15 +48,6 @@ setting_favorite_count = namespace.add_setting(
     global_name='DOCUMENTS_FAVORITE_COUNT', default=400,
     help_text=_(
         'Maximum number of favorite documents to remember per user.'
-    )
-)
-setting_fix_orientation = namespace.add_setting(
-    global_name='DOCUMENTS_FIX_ORIENTATION', default=False,
-    help_text=_(
-        'Detect the orientation of each of the document\'s pages '
-        'and create a corresponding rotation transformation to '
-        'display it rightside up. This is an experimental '
-        'feature and it is disabled by default.'
     )
 )
 setting_hash_block_size = namespace.add_setting(

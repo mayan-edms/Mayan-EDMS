@@ -6,7 +6,9 @@ import shutil
 from mayan.apps.checkouts.models import NewVersionBlock
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.permissions import permission_document_create
+from mayan.apps.documents.permissions import (
+    permission_document_create, permission_document_new_version
+)
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import (
     TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
@@ -26,6 +28,44 @@ from .literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N, TEST_STAGING_PREVIEW_WIDTH
 )
 from .mixins import SourceTestMixin, SourceViewTestMixin
+
+
+class DocumentViewTestMixin(object):
+    def _request_test_document_append_pages_view(self):
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            return self.post(
+                viewname='sources:document_pages_append', kwargs={
+                    'document_pk': self.test_document.pk
+                }, data={
+                    'source-file': file_object,
+                    'document-append_pages': True,  # Needs to be explicit
+                },
+            )
+
+
+class DocumentViewTestCase(
+    SourceTestMixin, DocumentViewTestMixin, GenericDocumentViewTestCase
+):
+    def test_document_append_pages_view_no_permission(self):
+        page_count = self.test_document.pages.count()
+
+        response = self._request_test_document_append_pages_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(self.test_document.pages.count(), page_count)
+
+    def test_document_append_pages_view_with_access(self):
+        page_count = self.test_document.pages.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_new_version
+        )
+
+        response = self._request_test_document_append_pages_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(self.test_document.pages.count() > page_count)
 
 
 class DocumentUploadWizardViewTestMixin(object):
@@ -53,10 +93,6 @@ class DocumentUploadWizardViewTestCase(
     GenericDocumentViewTestCase
 ):
     auto_upload_document = False
-
-    def setUp(self):
-        super(DocumentUploadWizardViewTestCase, self).setUp()
-        self._create_test_source()
 
     def test_upload_compressed_file(self):
         self.test_source.uncompress = SOURCE_UNCOMPRESS_CHOICE_Y
@@ -188,7 +224,7 @@ class DocumentUploadIssueTestCase(GenericDocumentViewTestCase):
         self.assertEqual(document.description, TEST_DOCUMENT_DESCRIPTION)
 
 
-class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
+class DocumentVersionUploadViewTestCase(GenericDocumentViewTestCase):
     auto_login_superuser = True
     auto_login_user = False
     create_test_case_superuser = True
@@ -300,6 +336,8 @@ class StagingFolderViewTestCase(
 class SourcesViewTestCase(
     SourceTestMixin, SourceViewTestMixin, GenericViewTestCase
 ):
+    auto_create_test_source = False
+
     def test_source_create_view_no_permission(self):
         response = self._request_setup_source_create_view()
         self.assertEqual(response.status_code, 403)

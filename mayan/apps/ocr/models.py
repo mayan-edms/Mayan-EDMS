@@ -5,7 +5,7 @@ from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import (
-    DocumentPage, DocumentType, DocumentVersion, DocumentVersionPage
+    DocumentType, DocumentVersion, DocumentVersionPage
 )
 
 from .managers import (

@@ -21,7 +21,6 @@ from mayan.apps.converter.utils import get_converter_class
 
 from ..managers import DocumentVersionPageManager
 from ..settings import (
-    setting_disable_base_image_cache, setting_disable_transformed_image_cache,
     setting_display_width, setting_display_height, setting_zoom_max_level,
     setting_zoom_min_level
 )
@@ -67,16 +66,6 @@ class DocumentVersionPage(models.Model):
         self.cache_partition.delete()
         super(DocumentVersionPage, self).delete(*args, **kwargs)
 
-    #def detect_orientation(self):
-    #    with self.document_version.open() as file_object:
-    #        converter = get_converter_class()(
-    #            file_object=file_object,
-    #            mime_type=self.document_version.mimetype
-    #        )
-    #        return converter.detect_orientation(
-    #            page_number=self.page_number
-    #        )
-
     @property
     def document(self):
         return self.document_version.document
@@ -102,12 +91,12 @@ class DocumentVersionPage(models.Model):
 
         return combined_cache_filename
 
-    #def get_absolute_url(self):
-    #    return reverse(
-    #        viewname='documents:document_version_page_view', kwargs={
-    #            'pk': self.pk
-    #        }
-    #    )
+    def get_absolute_url(self):
+        return reverse(
+            viewname='documents:document_version_page_view', kwargs={
+                'pk': self.pk
+            }
+        )
 
     def get_api_image_url(self, *args, **kwargs):
         """
@@ -241,10 +230,6 @@ class DocumentVersionPage(models.Model):
                 )
                 raise
 
-    #@property
-    #def is_in_trash(self):
-    #    return self.document.is_in_trash
-
     def get_label(self):
         return _(
             'Version page %(page_number)d out of %(total_pages)d of %(document)s'
@@ -254,6 +239,10 @@ class DocumentVersionPage(models.Model):
             'total_pages': self.document_version.pages.count()
         }
     get_label.short_description = _('Label')
+
+    @property
+    def is_in_trash(self):
+        return self.document_version.document.is_in_trash
 
     def natural_key(self):
         return (self.page_number, self.document_version.natural_key())
