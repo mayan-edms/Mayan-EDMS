@@ -203,7 +203,7 @@ class DocumentTypeQuickLabelViewsTestCase(
         )
 
 
-class DocumentsQuickLabelViewsTestCase(DocumentTypeQuickLabelTestMixin, GenericDocumentViewTestCase):
+class DocumentsQuickLabelViewTestMixin(object):
     def _request_document_quick_label_edit_view(self, extra_data=None):
         data = {
             'document_type_available_filenames': self.test_document_type_filename.pk,
@@ -219,6 +219,11 @@ class DocumentsQuickLabelViewsTestCase(DocumentTypeQuickLabelTestMixin, GenericD
             }, data=data
         )
 
+
+class DocumentsQuickLabelViewTestCase(
+    DocumentsQuickLabelViewTestMixin, DocumentTypeQuickLabelTestMixin,
+    GenericDocumentViewTestCase
+):
     def test_document_quick_label_no_permission(self):
         self._create_test_quick_label()
 

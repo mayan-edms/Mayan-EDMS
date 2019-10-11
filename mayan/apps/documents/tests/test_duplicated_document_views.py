@@ -5,7 +5,7 @@ from ..permissions import permission_document_view
 from .base import GenericDocumentViewTestCase
 
 
-class DuplicatedDocumentsViewsTestCase(GenericDocumentViewTestCase):
+class DuplicatedDocumentsViewsTestMixin(object):
     def _upload_duplicate_document(self):
         self.upload_document()
 
@@ -18,6 +18,10 @@ class DuplicatedDocumentsViewsTestCase(GenericDocumentViewTestCase):
             kwargs={'pk': self.test_documents[0].pk}
         )
 
+
+class DuplicatedDocumentsViewsTestCase(
+    DuplicatedDocumentsViewsTestMixin, GenericDocumentViewTestCase
+):
     def test_duplicated_document_list_no_permissions(self):
         self._upload_duplicate_document()
 
