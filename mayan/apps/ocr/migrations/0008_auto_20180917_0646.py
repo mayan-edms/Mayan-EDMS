@@ -8,6 +8,9 @@ class Migration(migrations.Migration):
     dependencies = [
         ('ocr', '0007_auto_20170827_1617'),
     ]
+    run_before = [
+        ('documents', '0052_rename_document_page'),
+    ]
 
     operations = [
         migrations.AlterField(
