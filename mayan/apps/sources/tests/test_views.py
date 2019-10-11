@@ -54,10 +54,6 @@ class DocumentUploadWizardViewTestCase(
 ):
     auto_upload_document = False
 
-    def setUp(self):
-        super(DocumentUploadWizardViewTestCase, self).setUp()
-        self._create_test_source()
-
     def test_upload_compressed_file(self):
         self.test_source.uncompress = SOURCE_UNCOMPRESS_CHOICE_Y
         self.test_source.save()
@@ -300,6 +296,8 @@ class StagingFolderViewTestCase(
 class SourcesViewTestCase(
     SourceTestMixin, SourceViewTestMixin, GenericViewTestCase
 ):
+    auto_create_test_source = False
+
     def test_source_create_view_no_permission(self):
         response = self._request_setup_source_create_view()
         self.assertEqual(response.status_code, 403)
