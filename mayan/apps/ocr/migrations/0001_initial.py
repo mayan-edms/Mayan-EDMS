@@ -9,6 +9,10 @@ class Migration(migrations.Migration):
         ('documents', '__first__'),
     ]
 
+    run_before = [
+        ('documents', '0052_rename_document_page'),
+    ]
+
     operations = [
         migrations.CreateModel(
             name='DocumentVersionOCRError',
