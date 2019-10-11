@@ -83,6 +83,8 @@
 - Remove the DOCUMENTS_DISABLE_BASE_IMAGE_CACHE,
   DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE, and 
   DOCUMENTS_FIX_ORIENTATION settings.
+- Support simple search disable via the new
+  SEARCH_DISABLE_SIMPLE_SEARCH setting.
 
 3.2.8 (2019-10-01)
 ==================
