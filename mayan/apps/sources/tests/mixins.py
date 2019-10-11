@@ -7,6 +7,13 @@ from .literals import TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 
 
 class SourceTestMixin(object):
+    auto_create_test_source = True
+
+    def setUp(self):
+        super(SourceTestMixin, self).setUp()
+        if self.auto_create_test_source:
+            self._create_test_source()
+
     def _create_test_source(self):
         self.test_source = WebFormSource.objects.create(
             enabled=True, label=TEST_SOURCE_LABEL,

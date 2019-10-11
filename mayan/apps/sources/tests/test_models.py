@@ -39,7 +39,6 @@ class CompressedUploadsTestCase(SourceTestMixin, GenericDocumentTestCase):
     auto_upload_document = False
 
     def test_upload_compressed_file(self):
-        self._create_test_source()
         self.test_source.uncompress = SOURCE_UNCOMPRESS_CHOICE_Y
         self.test_source.save()
 
