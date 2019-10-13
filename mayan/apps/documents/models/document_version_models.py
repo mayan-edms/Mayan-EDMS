@@ -254,15 +254,15 @@ class DocumentVersion(models.Model):
         return DocumentPage.passthrough.filter(document_version=self)
 
     @property
-    def pages(self):
-        return self.version_pages.all()
-
-    @property
     def page_count(self):
         """
         The number of pages that the document posses.
         """
         return self.pages.count()
+
+    @property
+    def pages(self):
+        return self.version_pages.all()
 
     def revert(self, _user=None):
         """

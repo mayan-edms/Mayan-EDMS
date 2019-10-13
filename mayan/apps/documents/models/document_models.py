@@ -102,6 +102,14 @@ class Document(models.Model):
         )
         return RecentDocument.objects.add_document_for_user(user, self)
 
+    @property
+    def checksum(self):
+        return self.latest_version.checksum
+
+    @property
+    def date_updated(self):
+        return self.latest_version.timestamp
+
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
 
@@ -126,6 +134,14 @@ class Document(models.Model):
         else:
             return False
 
+    @property
+    def file_mime_encoding(self):
+        return self.latest_version.encoding
+
+    @property
+    def file_mimetype(self):
+        return self.latest_version.mimetype
+
     def get_absolute_url(self):
         return reverse(
             viewname='documents:document_preview', kwargs={'pk': self.pk}
@@ -139,6 +155,10 @@ class Document(models.Model):
     @property
     def is_in_trash(self):
         return self.in_trash
+
+    @property
+    def latest_version(self):
+        return self.versions.order_by('timestamp').last()
 
     def natural_key(self):
         return (self.uuid,)
@@ -164,6 +184,34 @@ class Document(models.Model):
         the storage backend
         """
         return self.latest_version.open(*args, **kwargs)
+
+    @property
+    def page_count(self):
+        return self.latest_version.page_count
+
+    @property
+    def pages(self):
+        try:
+            return self.latest_version.pages
+        except AttributeError:
+            # Document has no version yet
+            DocumentPage = apps.get_model(
+                app_label='documents', model_name='DocumentPage'
+            )
+
+            return DocumentPage.objects.none()
+
+    @property
+    def pages_all(self):
+        try:
+            return self.latest_version.pages_all
+        except AttributeError:
+            # Document has no version yet
+            DocumentPage = apps.get_model(
+                app_label='documents', model_name='DocumentPage'
+            )
+
+            return DocumentPage.objects.none()
 
     def restore(self):
         self.in_trash = False
@@ -209,53 +257,3 @@ class Document(models.Model):
     @property
     def size(self):
         return self.latest_version.size
-
-    # Compatibility methods
-
-    @property
-    def checksum(self):
-        return self.latest_version.checksum
-
-    @property
-    def date_updated(self):
-        return self.latest_version.timestamp
-
-    @property
-    def file_mime_encoding(self):
-        return self.latest_version.encoding
-
-    @property
-    def file_mimetype(self):
-        return self.latest_version.mimetype
-
-    @property
-    def latest_version(self):
-        return self.versions.order_by('timestamp').last()
-
-    @property
-    def page_count(self):
-        return self.latest_version.page_count
-
-    @property
-    def pages_all(self):
-        try:
-            return self.latest_version.pages_all
-        except AttributeError:
-            # Document has no version yet
-            DocumentPage = apps.get_model(
-                app_label='documents', model_name='DocumentPage'
-            )
-
-            return DocumentPage.objects.none()
-
-    @property
-    def pages(self):
-        try:
-            return self.latest_version.pages
-        except AttributeError:
-            # Document has no version yet
-            DocumentPage = apps.get_model(
-                app_label='documents', model_name='DocumentPage'
-            )
-
-            return DocumentPage.objects.none()
