@@ -5,6 +5,7 @@ import os
 from django.conf import settings
 
 from mayan.apps.converter.classes import Layer
+from mayan.apps.converter.layers import layer_saved_transformations
 
 from ..literals import PAGE_RANGE_ALL
 from ..models import DocumentType
@@ -14,6 +15,7 @@ from .literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_LABEL_EDITED,
     TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED,
     TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH,
+    TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_CLASS,
     TEST_VERSION_COMMENT
 )
 

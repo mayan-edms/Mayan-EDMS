@@ -16,8 +16,7 @@ from ..permissions import (
 
 from .base import GenericDocumentViewTestCase
 from .literals import (
-    TEST_DOCUMENT_TYPE_2_LABEL, TEST_SMALL_DOCUMENT_FILENAME,
-    TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_CLASS
+    TEST_DOCUMENT_TYPE_2_LABEL, TEST_SMALL_DOCUMENT_FILENAME
 )
 from .mixins import DocumentViewTestMixin
 
@@ -295,8 +294,6 @@ class DocumentViewTestCase(
         self.assertEqual(self.test_document.pages.count(), 0)
 
     def test_document_update_page_count_view_with_permission(self):
-        # TODO: Revise permission association
-
         page_count = self.test_document.pages.count()
         self.test_document.pages.all().delete()
         self.assertEqual(self.test_document.pages.count(), 0)
