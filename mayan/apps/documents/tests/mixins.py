@@ -76,13 +76,6 @@ class DocumentTestMixin(object):
 
 
 class DocumentTypeViewTestMixin(object):
-    def _create_document_transformation(self):
-        layer_saved_transformations.add_transformation_to(
-            obj=self.test_document.pages.first(),
-            transformation_class=TEST_TRANSFORMATION_CLASS,
-            arguments=TEST_TRANSFORMATION_ARGUMENT
-        )
-
     def _request_test_document_type_create_view(self):
         return self.post(
             viewname='documents:document_type_create',
@@ -160,6 +153,13 @@ class DocumentVersionTestMixin(object):
 
 
 class DocumentViewTestMixin(object):
+    def _create_document_transformation(self):
+        layer_saved_transformations.add_transformation_to(
+            obj=self.test_document.pages.first(),
+            transformation_class=TEST_TRANSFORMATION_CLASS,
+            arguments=TEST_TRANSFORMATION_ARGUMENT
+        )
+
     def _request_document_properties_view(self):
         return self.get(
             viewname='documents:document_properties',
