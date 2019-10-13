@@ -22,16 +22,9 @@ from .literals import (
 from .mixins import DocumentViewTestMixin
 
 
-class DocumentsViewsTestCase(
+class DocumentViewTestCase(
     LayerTestMixin, DocumentViewTestMixin, GenericDocumentViewTestCase
 ):
-    def _create_document_transformation(self):
-        layer_saved_transformations.add_transformation_to(
-            obj=self.test_document.pages.first(),
-            transformation_class=TEST_TRANSFORMATION_CLASS,
-            arguments=TEST_TRANSFORMATION_ARGUMENT
-        )
-
     def test_document_view_no_permissions(self):
         response = self._request_document_properties_view()
         self.assertEqual(response.status_code, 404)

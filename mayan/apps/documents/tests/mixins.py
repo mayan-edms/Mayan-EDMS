@@ -70,9 +70,17 @@ class DocumentTestMixin(object):
         self.test_document = document
         self.test_documents.append(document)
         self.test_document_page = document.latest_version.pages.first()
+        self.test_document_version = document.latest_version
 
 
 class DocumentTypeViewTestMixin(object):
+    def _create_document_transformation(self):
+        layer_saved_transformations.add_transformation_to(
+            obj=self.test_document.pages.first(),
+            transformation_class=TEST_TRANSFORMATION_CLASS,
+            arguments=TEST_TRANSFORMATION_ARGUMENT
+        )
+
     def _request_test_document_type_create_view(self):
         return self.post(
             viewname='documents:document_type_create',
