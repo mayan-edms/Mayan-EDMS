@@ -80,6 +80,9 @@
   Deploy a Redis container.
 - Improve document version upload form.
 - Use dropzone for document version upload form.
+- Allow the "Execute document tools" permission to be
+  granted via ACL.
+
 
 3.2.8 (2019-10-01)
 ==================

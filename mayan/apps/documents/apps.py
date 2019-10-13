@@ -87,10 +87,10 @@ from .permissions import (
     permission_document_download, permission_document_edit,
     permission_document_new_version, permission_document_print,
     permission_document_properties_edit, permission_document_restore,
-    permission_document_trash, permission_document_type_delete,
-    permission_document_type_edit, permission_document_type_view,
-    permission_document_version_revert, permission_document_version_view,
-    permission_document_view
+    permission_document_tools, permission_document_trash,
+    permission_document_type_delete, permission_document_type_edit,
+    permission_document_type_view, permission_document_version_revert,
+    permission_document_version_view, permission_document_view
 )
 # Just import to initialize the search models
 from .search import document_search, document_page_search  # NOQA
@@ -191,8 +191,8 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_delete, permission_document_download,
                 permission_document_edit, permission_document_new_version,
                 permission_document_print, permission_document_properties_edit,
-                permission_document_restore, permission_document_trash,
-                permission_document_version_revert,
+                permission_document_restore, permission_document_tools,
+                permission_document_trash, permission_document_version_revert,
                 permission_document_version_view, permission_document_view,
                 permission_events_view, permission_transformation_create,
                 permission_transformation_delete,

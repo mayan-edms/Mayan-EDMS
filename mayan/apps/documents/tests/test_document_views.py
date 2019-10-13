@@ -301,7 +301,9 @@ class DocumentViewTestCase(
         self.test_document.pages.all().delete()
         self.assertEqual(self.test_document.pages.count(), 0)
 
-        self.grant_permission(permission=permission_document_tools)
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_tools
+        )
 
         response = self._request_document_update_page_count_view()
         self.assertEqual(response.status_code, 302)
@@ -322,7 +324,9 @@ class DocumentViewTestCase(
         self.test_document.pages.all().delete()
         self.assertEqual(self.test_document.pages.count(), 0)
 
-        self.grant_permission(permission=permission_document_tools)
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_tools
+        )
 
         response = self._request_document_multiple_update_page_count_view()
         self.assertEqual(response.status_code, 302)
