@@ -1,14 +1,9 @@
 from __future__ import unicode_literals
 
-from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.search import document_search, document_page_search
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
-
 from ..permissions import permission_document_view
 from ..search import document_search, document_page_search
 
 from .base import GenericDocumentViewTestCase
-from .mixins import DocumentTestMixin
 
 
 class DocumentSearchTestMixin(object):

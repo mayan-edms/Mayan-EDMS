@@ -13,7 +13,7 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
 from mayan.apps.documents.search import (
-    document_search, document_page_search, document_version_page_search
+    document_search, document_version_page_search
 )
 from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.events.classes import ModelEventType
@@ -46,7 +46,7 @@ from .permissions import (
     permission_ocr_content_view
 )
 from .signals import post_document_version_ocr
-from .utils import get_document_ocr_content, get_document_version_ocr_content
+from .utils import get_document_version_ocr_content
 
 logger = logging.getLogger(__name__)
 
