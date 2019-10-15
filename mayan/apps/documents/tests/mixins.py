@@ -69,8 +69,9 @@ class DocumentTestMixin(object):
 
         self.test_document = document
         self.test_documents.append(document)
-        self.test_document_version = document.latest_version
         self.test_document_page = document.pages_all.first()
+        self.test_document_version = document.latest_version
+        self.test_document_version_page = document.latest_version.pages.first()
 
 
 class DocumentTypeViewTestMixin(object):

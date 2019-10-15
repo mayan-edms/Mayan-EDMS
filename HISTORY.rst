@@ -81,7 +81,7 @@
 - Improve document version upload form.
 - Use dropzone for document version upload form.
 - Remove the DOCUMENTS_DISABLE_BASE_IMAGE_CACHE,
-  DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE, and 
+  DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE, and
   DOCUMENTS_FIX_ORIENTATION settings.
 
 3.2.8 (2019-10-01)
