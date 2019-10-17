@@ -20,7 +20,7 @@ class RedactionsApp(MayanAppConfig):
     app_namespace = 'redactions'
     app_url = 'redactions'
     has_rest_api = False
-    has_tests = False
+    has_tests = True
     name = 'mayan.apps.redactions'
     verbose_name = _('Redactions')
 
