@@ -76,7 +76,6 @@ class ACLAPITestCase(ACLTestMixin, BaseAPITestCase):
         )
 
     def test_acl_delete_api_view_with_access(self):
-        self.expected_content_type = None
         self._create_test_acl()
 
         self.grant_access(self.test_object, permission=permission_acl_edit)
@@ -100,7 +99,6 @@ class ACLAPITestCase(ACLTestMixin, BaseAPITestCase):
         )
 
     def test_acl_permission_delete_view_with_access(self):
-        self.expected_content_type = None
         self._create_test_acl()
         self.test_acl.permissions.add(self.test_permission.stored_permission)
 
