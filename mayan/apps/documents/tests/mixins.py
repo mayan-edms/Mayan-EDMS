@@ -243,9 +243,6 @@ class DocumentViewTestMixin(object):
             data={'id_list': self.test_document.pk}
         )
 
-    def _request_empty_trash_view(self):
-        return self.post(viewname='documents:trash_can_empty')
-
     def _request_document_print_view(self):
         return self.get(
             viewname='documents:document_print', kwargs={
@@ -254,3 +251,6 @@ class DocumentViewTestMixin(object):
                 'page_group': PAGE_RANGE_ALL
             }
         )
+
+    def _request_empty_trash_view(self):
+        return self.post(viewname='documents:trash_can_empty')
