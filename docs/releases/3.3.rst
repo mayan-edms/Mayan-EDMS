@@ -89,6 +89,7 @@ Changes
 - Unify all line endings to be Linux style.
 - Add support for changing the system messages position.
   GitLab issue #640. Thanks to Matthias Urhahn (@d4rken).
+- Update IMAP source to be UID based.
 - Add support for custom IMAP search criteria.
 - Add support for executing custom IMAP STORE commands
   on processed messages.
