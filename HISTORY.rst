@@ -82,7 +82,14 @@
 - Use dropzone for document version upload form.
 - Allow the "Execute document tools" permission to be
   granted via ACL.
-
+- Add support for custom IMAP search criteria.
+- Add support for executing custom IMAP STORE commands
+  on processed messages.
+- Add support to execute the IMAP expunge command after each
+  processed message.
+- Add support for specifing a destination IMAP mailbox for
+  processed messages. GitLab issue #399. Thanks to
+  Robert Schöftner (@robert.schoeftner).
 
 3.2.8 (2019-10-01)
 ==================

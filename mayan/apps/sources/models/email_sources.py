@@ -15,8 +15,10 @@ from mayan.apps.documents.models import Document
 from mayan.apps.metadata.api import set_bulk_metadata
 from mayan.apps.metadata.models import MetadataType
 
+from ..exceptions import SourceException
 from ..literals import (
-    DEFAULT_IMAP_MAILBOX, DEFAULT_METADATA_ATTACHMENT_NAME,
+    DEFAULT_IMAP_MAILBOX, DEFAULT_IMAP_SEARCH_CRITERIA,
+    DEFAULT_IMAP_STORE_COMMANDS, DEFAULT_METADATA_ATTACHMENT_NAME,
     DEFAULT_POP3_TIMEOUT, SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3,
     SOURCE_UNCOMPRESS_CHOICE_N, SOURCE_UNCOMPRESS_CHOICE_Y,
 )
@@ -214,6 +216,32 @@ class IMAPEmail(EmailBaseModel):
         help_text=_('IMAP Mailbox from which to check for messages.'),
         max_length=64, verbose_name=_('Mailbox')
     )
+    search_criteria = models.TextField(
+        blank=True, default=DEFAULT_IMAP_SEARCH_CRITERIA, help_text=_(
+            'Criteria to use when searching for messages to process. '
+            'Use the format specified in '
+            'https://tools.ietf.org/html/rfc2060.html#section-6.4.4'
+        ), null=True, verbose_name=_('Search criteria')
+    )
+    store_commands = models.TextField(
+        blank=True, default=DEFAULT_IMAP_STORE_COMMANDS, help_text=_(
+            'IMAP STORE command to execute on messages after they are '
+            'processed. One command per line. Use the commands specified in '
+            'https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or '
+            'the custom commands for your IMAP server.'
+        ), null=True, verbose_name=_('Store commands')
+    )
+    execute_expunge = models.BooleanField(
+        default=True, help_text=_(
+            'Execute the IMAP expunge command after processing each email '
+            'message.'
+        ), verbose_name=_('Execute expunge')
+    )
+    mailbox_destination = models.CharField(
+        blank=True, help_text=_(
+            'IMAP Mailbox to which processed messages will be copied.'
+        ), max_length=96, null=True, verbose_name=_('Destination mailbox')
+    )
 
     objects = models.Manager()
 
@@ -235,27 +263,59 @@ class IMAPEmail(EmailBaseModel):
         mailbox.login(user=self.username, password=self.password)
         mailbox.select(mailbox=self.mailbox)
 
-        status, data = mailbox.search(None, 'NOT', 'DELETED')
-        if data:
-            messages_info = data[0].split()
-            logger.debug('messages count: %s', len(messages_info))
+        try:
+            status, data = mailbox.uid(
+                'SEARCH', None, *self.search_criteria.strip().split()
+            )
+        except Exception as exception:
+            raise SourceException(
+                'Error executing search command; {}'.format(exception)
+            )
 
-            for message_number in messages_info:
-                logger.debug('message_number: %s', message_number)
-                status, data = mailbox.fetch(
-                    message_set=message_number, message_parts='(RFC822)'
-                )
+        if data:
+            # data is a space separated sequence of message uids
+            uids = data[0].split()
+            logger.debug('messages count: %s', len(uids))
+            logger.debug('message uids: %s', uids)
+
+            for uid in uids:
+                logger.debug('message uid: %s', uid)
+                status, data = mailbox.uid('FETCH', uid, '(RFC822)')
                 EmailBaseModel.process_message(
                     source=self, message_text=data[0][1]
                 )
 
                 if not test:
-                    mailbox.store(
-                        message_set=message_number, command='+FLAGS',
-                        flags=r'\Deleted'
-                    )
+                    if self.store_commands:
+                        for command in self.store_commands.split('\n'):
+                            try:
+                                args = [uid]
+                                args.extend(command.strip().split(' '))
+                                mailbox.uid('STORE', *args)
+                            except Exception as exception:
+                                raise SourceException(
+                                    'Error executing IMAP store command "{}" '
+                                    'on message uid {}; {}'.format(
+                                        command, uid, exception
+                                    )
+                                )
 
-        mailbox.expunge()
+                    if self.mailbox_destination:
+                        try:
+                            mailbox.uid(
+                                'COPY', uid, self.mailbox_destination
+                            )
+                        except Exception as exception:
+                            raise SourceException(
+                                'Error copying message uid {} to mailbox {}; '
+                                '{}'.format(
+                                    uid, self.mailbox_destination, exception
+                                )
+                            )
+
+                    if self.execute_expunge:
+                        mailbox.expunge()
+
         mailbox.close()
         mailbox.logout()
 

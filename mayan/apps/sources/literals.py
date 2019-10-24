@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 DEFAULT_IMAP_MAILBOX = 'INBOX'
+DEFAULT_IMAP_SEARCH_CRITERIA = 'NOT DELETED'
+DEFAULT_IMAP_STORE_COMMANDS = '+FLAGS (\\Deleted)'
 DEFAULT_INTERVAL = 600
 DEFAULT_METADATA_ATTACHMENT_NAME = 'metadata.yaml'
 DEFAULT_POP3_TIMEOUT = 60
