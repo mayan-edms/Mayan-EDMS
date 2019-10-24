@@ -256,15 +256,15 @@ class IMAPEmail(EmailBaseModel):
         logger.debug('ssl: %s', self.ssl)
 
         if self.ssl:
-            mailbox = imaplib.IMAP4_SSL(host=self.host, port=self.port)
+            server = imaplib.IMAP4_SSL(host=self.host, port=self.port)
         else:
-            mailbox = imaplib.IMAP4(host=self.host, port=self.port)
+            server = imaplib.IMAP4(host=self.host, port=self.port)
 
-        mailbox.login(user=self.username, password=self.password)
-        mailbox.select(mailbox=self.mailbox)
+        server.login(user=self.username, password=self.password)
+        server.select(mailbox=self.mailbox)
 
         try:
-            status, data = mailbox.uid(
+            status, data = server.uid(
                 'SEARCH', None, *self.search_criteria.strip().split()
             )
         except Exception as exception:
@@ -280,7 +280,7 @@ class IMAPEmail(EmailBaseModel):
 
             for uid in uids:
                 logger.debug('message uid: %s', uid)
-                status, data = mailbox.uid('FETCH', uid, '(RFC822)')
+                status, data = server.uid('FETCH', uid, '(RFC822)')
                 EmailBaseModel.process_message(
                     source=self, message_text=data[0][1]
                 )
@@ -291,7 +291,7 @@ class IMAPEmail(EmailBaseModel):
                             try:
                                 args = [uid]
                                 args.extend(command.strip().split(' '))
-                                mailbox.uid('STORE', *args)
+                                server.uid('STORE', *args)
                             except Exception as exception:
                                 raise SourceException(
                                     'Error executing IMAP store command "{}" '
@@ -302,7 +302,7 @@ class IMAPEmail(EmailBaseModel):
 
                     if self.mailbox_destination:
                         try:
-                            mailbox.uid(
+                            server.uid(
                                 'COPY', uid, self.mailbox_destination
                             )
                         except Exception as exception:
@@ -314,10 +314,10 @@ class IMAPEmail(EmailBaseModel):
                             )
 
                     if self.execute_expunge:
-                        mailbox.expunge()
+                        server.expunge()
 
-        mailbox.close()
-        mailbox.logout()
+        server.close()
+        server.logout()
 
 
 class POP3Email(EmailBaseModel):
@@ -339,16 +339,16 @@ class POP3Email(EmailBaseModel):
         logger.debug('ssl: %s', self.ssl)
 
         if self.ssl:
-            mailbox = poplib.POP3_SSL(host=self.host, port=self.port)
+            server = poplib.POP3_SSL(host=self.host, port=self.port)
         else:
-            mailbox = poplib.POP3(
+            server = poplib.POP3(
                 host=self.host, port=self.port, timeout=self.timeout
             )
 
-        mailbox.getwelcome()
-        mailbox.user(self.username)
-        mailbox.pass_(self.password)
-        messages_info = mailbox.list()
+        server.getwelcome()
+        server.user(self.username)
+        server.pass_(self.password)
+        messages_info = server.list()
 
         logger.debug(msg='messages_info:')
         logger.debug(msg=messages_info)
@@ -359,12 +359,12 @@ class POP3Email(EmailBaseModel):
             logger.debug('message_number: %s', message_number)
             logger.debug('message_size: %s', message_size)
 
-            complete_message = '\n'.join(mailbox.retr(message_number)[1])
+            complete_message = '\n'.join(server.retr(message_number)[1])
 
             EmailBaseModel.process_message(
                 source=self, message_text=complete_message
             )
             if not test:
-                mailbox.dele(which=message_number)
+                server.dele(which=message_number)
 
-        mailbox.quit()
+        server.quit()
