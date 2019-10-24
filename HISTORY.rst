@@ -85,6 +85,7 @@
   DOCUMENTS_FIX_ORIENTATION settings.
 - Allow the "Execute document tools" permission to be
   granted via ACL.
+- Update IMAP source to be UID based.
 - Add support for custom IMAP search criteria.
 - Add support for executing custom IMAP STORE commands
   on processed messages.
