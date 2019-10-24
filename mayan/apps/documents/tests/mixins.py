@@ -152,6 +152,20 @@ class DocumentVersionTestMixin(object):
             )
 
 
+class DocumentVersionViewTestMixin(object):
+    def _request_document_version_list_view(self):
+        return self.get(
+            viewname='documents:document_version_list',
+            kwargs={'pk': self.test_document.pk}
+        )
+
+    def _request_document_version_revert_view(self, document_version):
+        return self.post(
+            viewname='documents:document_version_revert',
+            kwargs={'pk': document_version.pk}
+        )
+
+
 class DocumentViewTestMixin(object):
     def _create_document_transformation(self):
         layer_saved_transformations.add_transformation_to(

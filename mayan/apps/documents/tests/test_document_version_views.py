@@ -6,21 +6,7 @@ from ..permissions import (
 
 from .base import GenericDocumentViewTestCase
 from .literals import TEST_VERSION_COMMENT
-from .mixins import DocumentVersionTestMixin
-
-
-class DocumentVersionViewTestMixin(object):
-    def _request_document_version_list_view(self):
-        return self.get(
-            viewname='documents:document_version_list',
-            kwargs={'pk': self.test_document.pk}
-        )
-
-    def _request_document_version_revert_view(self, document_version):
-        return self.post(
-            viewname='documents:document_version_revert',
-            kwargs={'pk': document_version.pk}
-        )
+from .mixins import DocumentVersionTestMixin, DocumentVersionViewTestMixin
 
 
 class DocumentVersionViewTestCase(
