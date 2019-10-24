@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:19-0400\n"
-"PO-Revision-Date: 2019-01-17 19:28+0000\n"
-"Last-Translator: Jiri Fait <fait@orkasolutions.cz>\n"
+"POT-Creation-Date: 2019-10-22 22:54-0400\n"
+"PO-Revision-Date: 2019-10-18 10:54+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,90 +20,90 @@ msgstr ""
 
 #: apps.py:22 permissions.py:8
 msgid "Smart settings"
-msgstr ""
+msgstr "Cyhtré nastavení"
 
 #: apps.py:30
 msgid "Setting count"
-msgstr ""
+msgstr "Počet nastavení"
 
 #: apps.py:34
 msgid "Name"
-msgstr ""
+msgstr "název"
 
 #: apps.py:38
 msgid "Value"
-msgstr ""
+msgstr "Hodnota"
 
 #: apps.py:41
 msgid "Overrided by environment variable?"
-msgstr ""
+msgstr "Přepsat proměnná prostředí?"
 
 #: apps.py:42
 msgid "Yes"
-msgstr ""
+msgstr "Ano"
 
 #: apps.py:42
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 #: forms.py:17
 msgid "Enter the new setting value."
-msgstr ""
+msgstr "Zadejte novou hodnotu nastavení."
 
 #: forms.py:36
 msgid "Value must be properly quoted."
-msgstr ""
+msgstr "Hodnota musí být správně uvedena."
 
 #: forms.py:45
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr ""
+msgstr "\"%s\" není platná položka."
 
 #: links.py:12 links.py:16
 msgid "Settings"
-msgstr ""
+msgstr "Nastavení"
 
 #: links.py:21
 msgid "Namespaces"
-msgstr ""
+msgstr "Jmenné prostory"
 
 #: links.py:25
 msgid "Edit"
-msgstr "Editovat"
+msgstr "Upravit"
 
 #: permissions.py:12
 msgid "Edit settings"
-msgstr ""
+msgstr "Upravit nastavení"
 
 #: permissions.py:15
 msgid "View settings"
-msgstr ""
+msgstr "Zobrazit nastavení"
 
 #: views.py:23
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
-msgstr ""
+msgstr "Nastavení zděděná z proměnné prostředí mají přednost a nelze je v tomto pohledu změnit."
 
 #: views.py:26
 #, python-format
 msgid "Settings in namespace: %s"
-msgstr ""
+msgstr "Nastavení v oboru názvů: %s"
 
 #: views.py:34
 #, python-format
 msgid "Namespace: %s, not found"
-msgstr ""
+msgstr "Jmenný prostor: %s, nebyl nalezen"
 
 #: views.py:44
 msgid "Setting namespaces"
-msgstr ""
+msgstr "Nastavení oborů názvů"
 
 #: views.py:60
 msgid "Setting updated successfully."
-msgstr ""
+msgstr "Nastavení bylo úspěšně aktualizováno."
 
 #: views.py:69
 #, python-format
 msgid "Edit setting: %s"
-msgstr ""
+msgstr "Upravit nastavení: %s"

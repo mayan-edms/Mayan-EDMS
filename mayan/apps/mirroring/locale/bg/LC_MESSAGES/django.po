@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:16-0400\n"
-"PO-Revision-Date: 2015-09-24 05:11+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2019-10-22 22:53-0400\n"
+"PO-Revision-Date: 2019-10-17 09:52+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,12 +20,12 @@ msgstr ""
 
 #: apps.py:16 settings.py:7
 msgid "Mirroring"
-msgstr ""
+msgstr "Огледално отразяване"
 
 #: settings.py:11
 msgid "Time in seconds to cache the path lookup to a document."
-msgstr ""
+msgstr "Време в секунди, за да кеширате търсенето на пътя към документ."
 
 #: settings.py:15
 msgid "Time in seconds to cache the path lookup to an index node."
-msgstr ""
+msgstr "Време в секунди, за да кеширате търсенето на пътя към възел на индекс."

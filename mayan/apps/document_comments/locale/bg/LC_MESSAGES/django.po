@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:09-0400\n"
-"PO-Revision-Date: 2019-05-17 05:50+0000\n"
-"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
+"POT-Creation-Date: 2019-10-22 22:51-0400\n"
+"PO-Revision-Date: 2019-10-16 14:48+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +20,7 @@ msgstr ""
 
 #: apps.py:39 events.py:8
 msgid "Document comments"
-msgstr ""
+msgstr "Коментари по документа"
 
 #: apps.py:84 apps.py:88 links.py:33 models.py:45 permissions.py:7
 msgid "Comments"
@@ -27,23 +28,23 @@ msgstr "Коментари"
 
 #: events.py:12
 msgid "Document comment created"
-msgstr ""
+msgstr "Коментар към документа е създаден"
 
 #: events.py:15
 msgid "Document comment deleted"
-msgstr ""
+msgstr "Коментарът към документа е изтрит"
 
 #: events.py:18
 msgid "Document comment edited"
-msgstr ""
+msgstr "Коментарът към документа е редактиран"
 
 #: links.py:18
 msgid "Add comment"
-msgstr ""
+msgstr "Добави коментар"
 
 #: links.py:24
 msgid "Delete"
-msgstr ""
+msgstr "Изтрийте"
 
 #: links.py:29
 msgid "Edit"
@@ -51,7 +52,7 @@ msgstr "Редактиране"
 
 #: models.py:28
 msgid "Document"
-msgstr ""
+msgstr "Документ"
 
 #: models.py:32 models.py:68
 msgid "User"
@@ -64,7 +65,7 @@ msgstr "Коментар"
 
 #: models.py:38
 msgid "Date time submitted"
-msgstr ""
+msgstr "Дата и час на подаване"
 
 #: permissions.py:10
 msgid "Create new comments"
@@ -76,7 +77,7 @@ msgstr "Изтриване на коментари"
 
 #: permissions.py:16
 msgid "Edit comments"
-msgstr ""
+msgstr "Редактиране на коментари"
 
 #: permissions.py:19
 msgid "View comments"
@@ -90,29 +91,29 @@ msgstr "Добавяне на коментар към документ:  %s"
 #: views.py:70
 #, python-format
 msgid "Delete comment: %s?"
-msgstr ""
+msgstr "Изтрийте коментар: %s?"
 
 #: views.py:92
 #, python-format
 msgid "Details for comment: %s?"
-msgstr ""
+msgstr "Данни за коментар: %s?"
 
 #: views.py:110
 #, python-format
 msgid "Edit comment: %s?"
-msgstr ""
+msgstr "Редактиране на коментар: %s?"
 
 #: views.py:135
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
-msgstr ""
+msgstr "Коментарите към документа са текстови записи от потребителите. Те са идеални за сътрудничество."
 
 #: views.py:138
 msgid "There are no comments"
-msgstr ""
+msgstr "Няма коментари"
 
 #: views.py:140
 #, python-format
 msgid "Comments for document: %s"
-msgstr ""
+msgstr "Коментари към документ: %s"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:20-0400\n"
+"POT-Creation-Date: 2019-10-22 22:54-0400\n"
 "PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
-#: views.py:627
+#: views.py:628
 msgid "Sources"
 msgstr "来源"
 
@@ -72,7 +72,7 @@ msgstr "展开压缩文件"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "将压缩文件包含的文件作为单个文档上载"
 
-#: forms.py:68 views.py:482
+#: forms.py:68 views.py:483
 msgid "Staging file"
 msgstr "暂存文件"
 
@@ -629,41 +629,41 @@ msgstr "暂存路径中的文件"
 msgid "Scan"
 msgstr "扫描"
 
-#: views.py:279
+#: views.py:280
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr "执行文档上传任务时出错; %(exception)s，%(exception_class)s"
 
-#: views.py:290
+#: views.py:291
 msgid "New document queued for upload and will be available shortly."
 msgstr "新文档排队等待上传，很快将可用。"
 
-#: views.py:341
+#: views.py:342
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "从源%(source)s上传类型为“%(document_type)s”的文档"
 
-#: views.py:375
+#: views.py:376
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "文档“%s”被阻止上传新版本。"
 
-#: views.py:428
+#: views.py:429
 msgid "New document version queued for upload and will be available shortly."
 msgstr "新文档版本排队等待上传，很快将可用。"
 
-#: views.py:469
+#: views.py:470
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr "从源%s上传新版本"
 
-#: views.py:483
+#: views.py:484
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: views.py:504
+#: views.py:505
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -671,31 +671,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:510
+#: views.py:511
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "检查源“%s”的触发器？"
 
-#: views.py:527
+#: views.py:528
 msgid "Source check queued."
 msgstr "源检查排队。"
 
-#: views.py:544
+#: views.py:545
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "创建%s类型的新来源"
 
-#: views.py:566
+#: views.py:567
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "删除源：%s？"
 
-#: views.py:587
+#: views.py:588
 #, python-format
 msgid "Edit source: %s"
 msgstr "编辑源：%s"
 
-#: views.py:621
+#: views.py:622
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -703,7 +703,7 @@ msgid ""
 "intervention."
 msgstr "来源提供上传文件的方法。某些来源，如网页表单，是交互式的，需要用户输入才能运行。其他来源，如电子邮件，是自动的，无需用户干预即可在后台运行。"
 
-#: views.py:626
+#: views.py:627
 msgid "No sources available"
 msgstr "没有可用的来源"
 

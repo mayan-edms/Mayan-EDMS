@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:07-0400\n"
-"PO-Revision-Date: 2019-08-26 01:01+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-22 22:50-0400\n"
+"PO-Revision-Date: 2019-10-21 09:57+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,15 +20,15 @@ msgstr ""
 
 #: apps.py:41 events.py:7 links.py:34
 msgid "Checkouts"
-msgstr ""
+msgstr "Kontrola"
 
 #: dashboard_widgets.py:16
 msgid "Checked out documents"
-msgstr ""
+msgstr "Dokomenty ke kontrole"
 
 #: events.py:10
 msgid "Document automatically checked in"
-msgstr ""
+msgstr "Provedena automatická vstupní kontrola"
 
 #: events.py:14
 msgid "Document checked in"
@@ -47,11 +48,11 @@ msgstr ""
 
 #: forms.py:28
 msgid "Document status"
-msgstr ""
+msgstr "Stav dokumentu"
 
 #: forms.py:39 models.py:41 views.py:162
 msgid "User"
-msgstr ""
+msgstr "Uživatel"
 
 #: forms.py:43
 msgid "Check out time"
@@ -63,15 +64,15 @@ msgstr ""
 
 #: forms.py:53
 msgid "New versions allowed?"
-msgstr ""
+msgstr "Povoleny nové verze?"
 
 #: forms.py:54
 msgid "Yes"
-msgstr ""
+msgstr "Ano"
 
 #: forms.py:54
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 #: links.py:41
 msgid "Check out document"
@@ -95,7 +96,7 @@ msgstr ""
 
 #: models.py:28 models.py:110
 msgid "Document"
-msgstr ""
+msgstr "Dokument"
 
 #: models.py:31
 msgid "Check out date and time"
@@ -131,7 +132,7 @@ msgstr ""
 
 #: models.py:116
 msgid "New version block"
-msgstr ""
+msgstr "Nová verze bloku"
 
 #: models.py:117
 msgid "New version blocks"
@@ -225,4 +226,4 @@ msgstr ""
 
 #: widgets.py:27
 msgid "Amount"
-msgstr ""
+msgstr "Množství"

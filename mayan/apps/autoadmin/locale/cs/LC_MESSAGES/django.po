@@ -3,13 +3,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:07-0400\n"
+"POT-Creation-Date: 2019-10-22 22:50-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,47 +23,50 @@ msgstr ""
 
 #: apps.py:16 settings.py:9
 msgid "Auto administrator"
-msgstr ""
+msgstr "Automatický správce"
 
 #: auth/allauth.py:54
 msgid ""
 "Welcome Admin! You have been given superuser privileges. Use them with "
 "caution."
 msgstr ""
+"Vítejte Admin! Dostali jste oprávnění superuživatele. Používejte je opatrně."
 
 #: models.py:15
 msgid "Account"
-msgstr ""
+msgstr "Účet"
 
 #: models.py:18
 msgid "Password"
-msgstr ""
+msgstr "Heslo"
 
 #: models.py:21
 msgid "Password hash"
-msgstr ""
+msgstr "Hash hesla"
 
 #: models.py:27
 msgid "Autoadmin properties"
-msgstr ""
+msgstr "Vlastnosti automatického správce"
 
 #: settings.py:14
 msgid "Sets the email of the automatically created super user account."
-msgstr ""
+msgstr "Nastaví e-mail automaticky vytvořeného superuživatelského účtu."
 
 #: settings.py:20
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
 msgstr ""
+"Heslo automaticky vytvořeného superuživatelského účtu. Pokud je rovno Žádné,"
+" heslo se vygeneruje náhodně."
 
 #: settings.py:27
 msgid "The username of the automatically created super user account."
-msgstr ""
+msgstr "Uživatelské jméno automaticky vytvořeného superuživatelského účtu."
 
 #: templates/autoadmin/credentials.html:11
 msgid "First time login"
-msgstr ""
+msgstr "První přihlášení"
 
 #: templates/autoadmin/credentials.html:16
 #, python-format
@@ -67,28 +74,32 @@ msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
 msgstr ""
+"Právě jste dokončili instalaci <strong>%(project_title)s</strong> , "
+"gratuluji!"
 
 #: templates/autoadmin/credentials.html:17
 msgid "Login using the following credentials:"
-msgstr ""
+msgstr "Přihlaste se pomocí následujících přihlašovacích údajů:"
 
 #: templates/autoadmin/credentials.html:18
 #, python-format
 msgid "Username: <strong>%(account)s</strong>"
-msgstr ""
+msgstr "Uživatelské jméno: <strong>%(account)s</strong>"
 
 #: templates/autoadmin/credentials.html:19
 #, python-format
 msgid "Email: <strong>%(email)s</strong>"
-msgstr ""
+msgstr "E-mail: <strong>%(email)s</strong>"
 
 #: templates/autoadmin/credentials.html:20
 #, python-format
 msgid "Password: <strong>%(password)s</strong>"
-msgstr ""
+msgstr "Heslo: <strong>%(password)s</strong>"
 
 #: templates/autoadmin/credentials.html:21
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
 msgstr ""
+"Nezapomeňte změnit heslo, abyste zvýšili zabezpečení a tuto zprávu "
+"deaktivovali."

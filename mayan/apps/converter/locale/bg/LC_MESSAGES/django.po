@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:07-0400\n"
-"PO-Revision-Date: 2019-05-03 05:20+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-22 22:50-0400\n"
+"PO-Revision-Date: 2019-10-16 14:15+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,52 +21,52 @@ msgstr ""
 
 #: apps.py:22 permissions.py:7 settings.py:12
 msgid "Converter"
-msgstr ""
+msgstr "Конвертор"
 
 #: apps.py:31 models.py:57
 msgid "Transformation"
-msgstr ""
+msgstr "Трансформация"
 
 #: backends/python.py:175 backends/python.py:181
 #, python-format
 msgid "Exception determining PDF page count; %s"
-msgstr ""
+msgstr "Изключение, определящо броя на PDF страниците; %s"
 
 #: backends/python.py:195
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
-msgstr ""
+msgstr "Изключение, определящо броя на страниците с използване на Възглавница; %s"
 
 #: classes.py:118
 msgid "LibreOffice not installed or not found."
-msgstr ""
+msgstr "LibreOffice не е инсталиран или не е намерен."
 
 #: classes.py:201
 msgid "Not an office file format."
-msgstr ""
+msgstr "Не е във формат на офис файл"
 
 #: dependencies.py:16
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr ""
+msgstr "Помощна програма от пакета poppler-utils, използвана за проверка на PDF файлове."
 
 #: dependencies.py:21
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr ""
+msgstr "Помощна програма от пакета popper-utils, използвана за извличане на страници от PDF файлове в изображения във формат PPM."
 
 #: forms.py:28
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr ""
+msgstr "&quot;%s&quot; не е валиден запис."
 
 #: links.py:36
 msgid "Create new transformation"
-msgstr ""
+msgstr "Създайте нова трансформация"
 
 #: links.py:42
 msgid "Delete"
-msgstr ""
+msgstr "Изтрийте"
 
 #: links.py:48
 msgid "Edit"
@@ -73,17 +74,17 @@ msgstr "Редактиране"
 
 #: links.py:53 models.py:58
 msgid "Transformations"
-msgstr ""
+msgstr "Трансформации"
 
 #: models.py:37
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
+msgstr "Ред, в който ще бъдат извършени трансформациите. Ако остане непроменено, ще бъде назначена автоматична стойност на поръчката."
 
 #: models.py:39
 msgid "Order"
-msgstr ""
+msgstr "Поръчка"
 
 #: models.py:43
 msgid "Name"
@@ -93,55 +94,55 @@ msgstr "Име"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
+msgstr "Въведете аргументите за преобразуването като YAML речник. т.е.: {&quot;градуси&quot;: 180}"
 
 #: models.py:49
 msgid "Arguments"
-msgstr ""
+msgstr "Аргументи"
 
 #: permissions.py:10
 msgid "Create new transformations"
-msgstr ""
+msgstr "Създайте нови трансформации"
 
 #: permissions.py:13
 msgid "Delete transformations"
-msgstr ""
+msgstr "Изтрийте трансформациите"
 
 #: permissions.py:16
 msgid "Edit transformations"
-msgstr ""
+msgstr "Редактиране на трансформации"
 
 #: permissions.py:19
 msgid "View existing transformations"
-msgstr ""
+msgstr "Преглед на съществуващите трансформации"
 
 #: settings.py:16
 msgid "Graphics conversion backend to use."
-msgstr ""
+msgstr "Използван бекенд за преобразуване на графики."
 
 #: settings.py:35
 msgid "Configuration options for the graphics conversion backend."
-msgstr ""
+msgstr "Опции за конфигуриране на бекенда за графично преобразуване"
 
 #: transformations.py:81
 msgid "Crop"
-msgstr ""
+msgstr "Изрязване"
 
 #: transformations.py:156
 msgid "Flip"
-msgstr ""
+msgstr "Преобръщане"
 
 #: transformations.py:167
 msgid "Gaussian blur"
-msgstr ""
+msgstr "Гаусово замъгляване"
 
 #: transformations.py:177
 msgid "Line art"
-msgstr ""
+msgstr "Графично изкуство"
 
 #: transformations.py:188
 msgid "Mirror"
-msgstr ""
+msgstr "Огледало"
 
 #: transformations.py:199
 msgid "Resize"
@@ -149,23 +150,23 @@ msgstr "Преоразмеряване"
 
 #: transformations.py:226
 msgid "Rotate"
-msgstr "Завъртете"
+msgstr "Завъртане"
 
 #: transformations.py:252
 msgid "Rotate 90 degrees"
-msgstr ""
+msgstr "Завъртане на 90 градуса"
 
 #: transformations.py:263
 msgid "Rotate 180 degrees"
-msgstr ""
+msgstr "Въртене на 180 градуса"
 
 #: transformations.py:274
 msgid "Rotate 270 degrees"
-msgstr ""
+msgstr "Въртене на 270 градуса"
 
 #: transformations.py:284
 msgid "Unsharp masking"
-msgstr ""
+msgstr "Размазващо маскиране"
 
 #: transformations.py:300
 msgid "Zoom"
@@ -173,34 +174,34 @@ msgstr "Увеличаване"
 
 #: validators.py:26
 msgid "Enter a valid YAML value."
-msgstr ""
+msgstr "Въведете валидна YAML стойност."
 
 #: views.py:72
 #, python-format
 msgid "Create new transformation for: %s"
-msgstr ""
+msgstr "Създайте нова трансформация за: %s"
 
 #: views.py:127
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
+msgstr "Да се изтрие трансформацията „%(transformation)s“ за: %(content_object)s?"
 
 #: views.py:171
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
+msgstr "Редактиране на трансформацията „%(transformation)s“ за: %(content_object)s"
 
 #: views.py:227
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr ""
+msgstr "Трансформациите позволяват промяна на външния вид на документите, без да се правят постоянни промени в самия файл на документа."
 
 #: views.py:231
 msgid "No transformations"
-msgstr ""
+msgstr "Няма трансформации"
 
 #: views.py:232
 #, python-format
 msgid "Transformations for: %s"
-msgstr ""
+msgstr "Трансформации за: %s"

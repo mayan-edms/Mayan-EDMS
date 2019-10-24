@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:07-0400\n"
-"PO-Revision-Date: 2019-06-15 07:48+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-22 22:50-0400\n"
+"PO-Revision-Date: 2019-10-16 09:44+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +20,7 @@ msgstr ""
 
 #: apps.py:25 settings.py:9
 msgid "Authentication"
-msgstr ""
+msgstr "Удостоверяване"
 
 #: forms.py:17
 msgid "Email"
@@ -27,21 +28,21 @@ msgstr "Електронна поща"
 
 #: forms.py:20
 msgid "Password"
-msgstr ""
+msgstr "Парола"
 
 #: forms.py:22 forms.py:73
 msgid "Remember me"
-msgstr ""
+msgstr "Запомни ме"
 
 #: forms.py:25
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
+msgstr "Моля въведете правилна електронна поща и парола. Забележете, че полето за паролата е чувствително за главни/малки букви."
 
 #: forms.py:27
 msgid "This account is inactive."
-msgstr ""
+msgstr "Този акаунт е неактивен."
 
 #: links.py:22
 msgid "Logout"
@@ -49,23 +50,23 @@ msgstr "Изход"
 
 #: links.py:27
 msgid "Change password"
-msgstr ""
+msgstr "Промяна на парола"
 
 #: links.py:32 links.py:39
 msgid "Set password"
-msgstr ""
+msgstr "Задаване на парола"
 
 #: settings.py:13
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr ""
+msgstr "Управлява механизма, използван за удостоверяване на потребителя. Опциите са: потребителско име, имейл"
 
 #: settings.py:20
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
-msgstr ""
+msgstr "Максимално време, за което потребителят натискащ квадратчето „Запомни ме“ ще остане включен. Стойността е време в секунди."
 
 #: templates/authentication/login.html:11
 msgid "Login"
@@ -74,11 +75,11 @@ msgstr "Влез"
 #: templates/authentication/login.html:26
 #: templates/authentication/login.html:34
 msgid "Sign in"
-msgstr ""
+msgstr "Впиши се"
 
 #: templates/authentication/login.html:39
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Забравена парола?"
 
 #: templates/authentication/password_reset_complete.html:8
 #: templates/authentication/password_reset_confirm.html:8
@@ -87,15 +88,15 @@ msgstr ""
 #: templates/authentication/password_reset_form.html:8
 #: templates/authentication/password_reset_form.html:20
 msgid "Password reset"
-msgstr ""
+msgstr "Нулиране на парола"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr ""
+msgstr "Нулирането на паролата завърши! Кликнете върху връзката по-долу, за да влезете."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
-msgstr ""
+msgstr "Страница за вход"
 
 #: templates/authentication/password_reset_confirm.html:29
 #: templates/authentication/password_reset_form.html:29 views.py:154
@@ -104,7 +105,7 @@ msgstr "Подаване"
 
 #: templates/authentication/password_reset_done.html:15
 msgid "Password reset email sent!"
-msgstr ""
+msgstr "Изпратен имейл за нулиране на парола!"
 
 #: views.py:74
 msgid "Your password has been successfully changed."
@@ -116,28 +117,28 @@ msgstr "Промяна паролата на текущия потребител
 
 #: views.py:89
 msgid "Changing the password is not allowed for this account."
-msgstr ""
+msgstr "Промяната на паролата не е разрешена за този акаунт."
 
 #: views.py:145
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr ""
+msgstr "Заявка за промяна на парола, изпълнена за%(count)d потребител"
 
 #: views.py:147
 #, python-format
 msgid "Password change request performed on %(count)d users"
-msgstr ""
+msgstr "Заявка за промяна на парола, изпълнена за %(count)d потребител"
 
 #: views.py:156
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Промяна на паролата на потребителя"
+msgstr[1] "Промяна на паролите на потребителите"
 
 #: views.py:166
 #, python-format
 msgid "Change password for user: %s"
-msgstr ""
+msgstr "Промяна на паролата за потребителя: %s"
 
 #: views.py:186
 msgid ""
@@ -148,7 +149,7 @@ msgstr "Промяна на парола на потребители от суп
 #: views.py:196
 #, python-format
 msgid "Successful password reset for user: %s."
-msgstr ""
+msgstr "Успешно нулиране на паролата за потребителя: %s."
 
 #: views.py:202
 #, python-format

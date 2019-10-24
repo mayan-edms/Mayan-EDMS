@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:07-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-22 22:50-0400\n"
+"PO-Revision-Date: 2019-10-15 13:38+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,15 +20,15 @@ msgstr ""
 
 #: apps.py:89 permissions_runtime.py:7 settings.py:14
 msgid "Common"
-msgstr ""
+msgstr "Společný"
 
 #: classes.py:126
 msgid "Available attributes: \n"
-msgstr ""
+msgstr "Dostupné atributy:\n"
 
 #: classes.py:166
 msgid "Available fields: \n"
-msgstr ""
+msgstr "Dostupná pole:\n"
 
 #: dependencies.py:396
 msgid "Used to allow offline translation of the code text strings."
@@ -35,41 +36,41 @@ msgstr ""
 
 #: dependencies.py:401
 msgid "Provides style checking."
-msgstr ""
+msgstr "Poskytuje kontrolu stylu."
 
 #: dependencies.py:406
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Prostředí příkazového řádku s automatickým dokončováním."
 
 #: dependencies.py:411
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Zkontroluje správné formátování souboru README."
 
 #: forms.py:27
 msgid "Selection"
-msgstr ""
+msgstr "Výběr"
 
 #: forms.py:103
 msgid "None"
-msgstr ""
+msgstr "žádný"
 
 #: generics.py:149
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Vyberte položky, které chcete odstranit. Podržte Control pro výběr více záznamů. Po dokončení výběru klepněte na tlačítko níže nebo poklepáním na seznam akci aktivujte."
 
 #: generics.py:154
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Vyberte položky, které chcete přidat. Podržte Control pro výběr více záznamů. Po dokončení výběru klepněte na tlačítko níže nebo poklepáním na seznam akci aktivujte."
 
 #: generics.py:287
 msgid "Add all"
-msgstr ""
+msgstr "Přidat vše"
 
 #: generics.py:296
 msgid "Add"
@@ -77,7 +78,7 @@ msgstr "Přidat"
 
 #: generics.py:306
 msgid "Remove all"
-msgstr ""
+msgstr "Odebrat vše"
 
 #: generics.py:315
 msgid "Remove"
@@ -86,108 +87,108 @@ msgstr "Odstranit"
 #: generics.py:521
 #, python-format
 msgid "Duplicate data error: %(error)s"
-msgstr ""
+msgstr "Chyba duplicitních dat: %(error)s"
 
 #: generics.py:543
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr ""
+msgstr "%(object)s nebyl vytvořen, chyba: %(error)s"
 
 #: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
-msgstr ""
+msgstr "%(object)s byl úspěšně vytvořen."
 
 #: generics.py:595
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr ""
+msgstr "%(object)s nebyl smazán, chyba: %(error)s."
 
 #: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr ""
+msgstr "%(object)s byl úspěšně smazán."
 
 #: generics.py:697
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr ""
+msgstr "%(object)s nebyl aktualizován, chyba: %(error)s."
 
 #: generics.py:708
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr ""
+msgstr "%(object)s byl úspěšně aktualizován."
 
 #: links.py:36
 msgid "About this"
-msgstr ""
+msgstr "O tom"
 
 #: links.py:40
 msgid "Locale profile"
-msgstr ""
+msgstr "Profil národního prostředí"
 
 #: links.py:45
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Upravit místní nastavení"
 
 #: links.py:50
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentace"
 
 #: links.py:54 links.py:65
 msgid "Errors"
-msgstr ""
+msgstr "Chyby"
 
 #: links.py:59
 msgid "Clear all"
-msgstr ""
+msgstr "Vymazat vše"
 
 #: links.py:69
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
 #: links.py:73 views.py:109
 msgid "License"
-msgstr ""
+msgstr "Licence"
 
 #: links.py:76
 msgid "Setup"
-msgstr ""
+msgstr "Instalace"
 
 #: links.py:79
 msgid "Source code"
-msgstr ""
+msgstr "Zdrojový kód"
 
 #: links.py:83
 msgid "Support"
-msgstr ""
+msgstr "Podpora"
 
 #: links.py:87 queues.py:15 views.py:210
 msgid "Tools"
-msgstr ""
+msgstr "Nástroje"
 
 #: literals.py:13
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "Tato funkce byla ukončena a v budoucí verzi bude odstraněna."
 
 #: literals.py:16
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
+msgstr "Backend vaší databáze je nastaven na použití SQLite. SQLite by se měl používat pouze pro vývoj a testování, nikoli pro produkční prostředí."
 
 #: literals.py:34
 msgid "Days"
-msgstr ""
+msgstr "Dny"
 
 #: literals.py:35
 msgid "Hours"
-msgstr ""
+msgstr "Hodiny"
 
 #: literals.py:36
 msgid "Minutes"
-msgstr ""
+msgstr "Minuty"
 
 #: management/commands/convertdb.py:40
 msgid ""
@@ -198,108 +199,108 @@ msgstr ""
 msgid ""
 "The database from which data will be exported. If omitted the database named"
 " \"default\" will be used."
-msgstr ""
+msgstr "Databáze, ze které budou data exportována. Pokud je vynechána, bude použita databáze s názvem „default“."
 
 #: management/commands/convertdb.py:54
 msgid ""
 "The database to which data will be imported. If omitted the database named "
 "\"default\" will be used."
-msgstr ""
+msgstr "Databáze, do které budou data importována. Pokud je vynechána, bude použita databáze s názvem „default“."
 
 #: management/commands/convertdb.py:61
 msgid ""
 "Force the conversion of the database even if the receiving database is not "
 "empty."
-msgstr ""
+msgstr "Vynutit převod databáze, i když přijímající databáze není prázdná."
 
 #: menus.py:10
 msgid "System"
-msgstr ""
+msgstr "Systém"
 
 #: menus.py:12 menus.py:13
 msgid "Facet"
-msgstr ""
+msgstr "Aspekt"
 
 #: menus.py:16
 msgid "Actions"
-msgstr ""
+msgstr "Akce"
 
 #: menus.py:17
 msgid "Secondary"
-msgstr ""
+msgstr "Sekundární"
 
 #: menus.py:21 models.py:93
 msgid "User"
-msgstr ""
+msgstr "Uživatel"
 
 #: mixins.py:222
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
-msgstr ""
+msgstr "Nebyl nalezen žádný dotaz %(verbose_name)s"
 
 #: mixins.py:296
 msgid "Object"
-msgstr ""
+msgstr "Objekt"
 
 #: models.py:28
 msgid "Namespace"
-msgstr ""
+msgstr "Jmenný prostor"
 
 #: models.py:39 models.py:63
 msgid "Date time"
-msgstr ""
+msgstr "Datum a čas"
 
 #: models.py:41 views.py:155
 msgid "Result"
-msgstr ""
+msgstr "Výsledek"
 
 #: models.py:47
 msgid "Error log entry"
-msgstr ""
+msgstr "Položka protokolu chyb"
 
 #: models.py:48
 msgid "Error log entries"
-msgstr ""
+msgstr "Chybové položky protokolu"
 
 #: models.py:59
 msgid "File"
-msgstr ""
+msgstr "Soubor"
 
 #: models.py:61
 msgid "Filename"
-msgstr ""
+msgstr "Název souboru"
 
 #: models.py:67
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Sdílený nahraný soubor"
 
 #: models.py:68
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Sdílené nahrané soubory"
 
 #: models.py:97
 msgid "Timezone"
-msgstr ""
+msgstr "Časové pásmo"
 
 #: models.py:100
 msgid "Language"
-msgstr ""
+msgstr "Jazyk"
 
 #: models.py:106
 msgid "User locale profile"
-msgstr ""
+msgstr "Profil místního uživatele"
 
 #: models.py:107
 msgid "User locale profiles"
-msgstr ""
+msgstr "Profily národního prostředí uživatele"
 
 #: permissions_runtime.py:10
 msgid "View error log"
-msgstr ""
+msgstr "Zobrazit protokol chyb"
 
 #: queues.py:13
 msgid "Default"
-msgstr ""
+msgstr "Výchozí"
 
 #: queues.py:17
 msgid "Common periodic"
@@ -307,17 +308,17 @@ msgstr ""
 
 #: queues.py:22
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Odstraňte zastaralá nahrávání"
 
 #: settings.py:19
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Automaticky povolit protokolování pro všechny aplikace."
 
 #: settings.py:25
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
-msgstr ""
+msgstr "Čas na čekání úkolů na pozadí, čekající na propagaci do databáze."
 
 #: settings.py:33
 msgid ""
@@ -325,7 +326,7 @@ msgid ""
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Seznam řetězců označujících všechny aplikace, které mají být odstraněny ze seznamu normálně nainstalovaného Mayan EDMS. Každý řetězec by měla být tečkovaná cesta Pythonu k: třídě konfigurace aplikace (upřednostňováno) nebo balíčku obsahující aplikaci."
 
 #: settings.py:43
 msgid ""
@@ -333,41 +334,41 @@ msgid ""
 "those normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Seznam řetězců označujících všechny aplikace, které jsou nainstalovány nad rámec těch, které jsou obvykle nainstalovány Mayn EDMS. Každý řetězec by měla být tečkovaná cesta Pythonu k: třídě konfigurace aplikace (upřednostňováno) nebo balíčku obsahující aplikaci."
 
 #: settings.py:52
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Název pohledu připojeného ke kotvě značky v hlavní nabídce. Toto je také pohled, na který budou uživatelé přesměrováni po přihlášení."
 
 #: settings.py:61
 msgid "The number objects that will be displayed per page."
-msgstr ""
+msgstr "Počet objektů, které se zobrazí na stránce."
 
 #: settings.py:68
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
+msgstr "Povolit protokolování chyb mimo možnosti protokolování systémových chyb."
 
 #: settings.py:75
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Cesta k souboru protokolu, který bude sledovat chyby produkce."
 
 #: settings.py:82
 msgid "Name to be displayed in the main menu."
-msgstr ""
+msgstr "Název, který se zobrazí v hlavní nabídce."
 
 #: settings.py:88
 msgid "URL of the installation or homepage of the project."
-msgstr ""
+msgstr "URL instalace nebo domovská stránka projektu."
 
 #: settings.py:94
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr "Úložiště, které všichni pracovníci mohou použít ke sdílení souborů."
 
 #: settings.py:103
 msgid "Django"
-msgstr ""
+msgstr "Django"
 
 #: settings.py:108
 msgid ""
@@ -398,7 +399,7 @@ msgstr ""
 msgid ""
 "The list of validators that are used to check the strength of user's "
 "passwords."
-msgstr ""
+msgstr "Seznam ověřovatelů, kteří se používají ke kontrole síly uživatelských hesel."
 
 #: settings.py:146
 msgid ""
@@ -443,11 +444,11 @@ msgstr ""
 msgid ""
 "Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
 "for sending emails."
-msgstr ""
+msgstr "Výchozí: &#39;django.core.mail.backends.smtp.EmailBackend&#39;. Backend, který se používá pro odesílání e-mailů."
 
 #: settings.py:207
 msgid "Default: 'localhost'. The host to use for sending email."
-msgstr ""
+msgstr "Výchozí: &#39;localhost&#39;. Hostitel, který má být použit pro odesílání e-mailů."
 
 #: settings.py:214
 msgid ""
@@ -455,23 +456,23 @@ msgid ""
 "EMAIL_HOST. This setting is used in conjunction with EMAIL_HOST_USER when "
 "authenticating to the SMTP server. If either of these settings is empty, "
 "Django won't attempt authentication."
-msgstr ""
+msgstr "Výchozí: &#39;&#39; (prázdný řetězec). Heslo pro server SMTP definované v EMAIL_HOST. Toto nastavení se používá ve spojení s EMAIL_HOST_USER při autentizaci na server SMTP. Pokud je některé z těchto nastavení prázdné, Django se nepokusí o ověření."
 
 #: settings.py:225
 msgid ""
 "Default: '' (Empty string). Username to use for the SMTP server defined in "
 "EMAIL_HOST. If empty, Django won't attempt authentication."
-msgstr ""
+msgstr "Výchozí: &#39;&#39; (prázdný řetězec). Uživatelské jméno pro server SMTP definované v EMAIL_HOST. Pokud je prázdný, Django se nepokouší o ověření."
 
 #: settings.py:234
 msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
-msgstr ""
+msgstr "Výchozí: 25. Port, který má být použit pro server SMTP definovaný v EMAIL_HOST."
 
 #: settings.py:241
 msgid ""
 "Default: None. Specifies a timeout in seconds for blocking operations like "
 "the connection attempt."
-msgstr ""
+msgstr "Výchozí: None. Určuje časový limit v sekundách pro operace blokování, jako je pokus o připojení."
 
 #: settings.py:249
 msgid ""
@@ -608,97 +609,97 @@ msgstr ""
 
 #: templatetags/common_tags.py:31
 msgid "Confirm delete"
-msgstr ""
+msgstr "Potvrďte smazání"
 
 #: templatetags/common_tags.py:36
 #, python-format
 msgid "Edit %s"
-msgstr ""
+msgstr "Upravit %s"
 
 #: templatetags/common_tags.py:39
 msgid "Confirm"
-msgstr ""
+msgstr "Potvrdit"
 
 #: templatetags/common_tags.py:43
 #, python-format
 msgid "Details for: %s"
-msgstr ""
+msgstr "Podrobnosti pro: %s"
 
 #: templatetags/common_tags.py:47
 #, python-format
 msgid "Edit: %s"
-msgstr ""
+msgstr "Upravit: %s"
 
 #: templatetags/common_tags.py:50
 msgid "Create"
-msgstr ""
+msgstr "Vytvořit"
 
 #: validators.py:29
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Zadejte platný „interní název“ skládající se z písmen, číslic a podtržítek."
 
 #: views.py:31
 msgid "About"
-msgstr ""
+msgstr "O"
 
 #: views.py:44
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "Podrobnosti o aktuálním místním profilu uživatele"
 
 #: views.py:50
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "Upravit podrobnosti o aktuálním místním profilu uživatele"
 
 #: views.py:100
 msgid "Dashboard"
-msgstr ""
+msgstr "Řídící panel"
 
 #: views.py:118
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Vymažte položky protokolu chyb pro: %s"
 
 #: views.py:135
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "Protokol chyb objektu byl úspěšně vymazán"
 
 #: views.py:154
 msgid "Date and time"
-msgstr ""
+msgstr "Datum a čas"
 
 #: views.py:159
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Položky protokolu chyb pro: %s"
 
 #: views.py:187
 msgid "No setup options available."
-msgstr ""
+msgstr "Nejsou k dispozici žádné možnosti nastavení."
 
 #: views.py:189
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
+msgstr "Žádné výsledky zde znamenají, že nemáte potřebná oprávnění k provedení administrativní úlohy."
 
 #: views.py:195
 msgid "Setup items"
-msgstr ""
+msgstr "Položky nastavení"
 
 #: views.py:197
 msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgstr "Zde můžete nakonfigurovat všechny aspekty systému."
 
 #: views.py:212
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "Tyto moduly se používají k údržbě systému."
 
 #: views.py:240
 msgid "No action selected."
-msgstr ""
+msgstr "Nebyla vybrána žádná akce."
 
 #: views.py:250
 msgid "Must select at least one item."
-msgstr ""
+msgstr "Musíte vybrat alespoň jednu položku."

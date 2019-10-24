@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:20-0400\n"
+"POT-Creation-Date: 2019-10-22 22:54-0400\n"
 "PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
-#: views.py:627
+#: views.py:628
 msgid "Sources"
 msgstr "Sources"
 
@@ -77,7 +77,7 @@ msgstr "Décompresser les fichiers"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Importer le contenu d'un ensemble de fichiers compressés comme fichiers individuels"
 
-#: forms.py:68 views.py:482
+#: forms.py:68 views.py:483
 msgid "Staging file"
 msgstr "Fichier en pré-validation"
 
@@ -634,41 +634,41 @@ msgstr "Fichiers en cours de pré-validation"
 msgid "Scan"
 msgstr "Numériser"
 
-#: views.py:279
+#: views.py:280
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr "Tâche en erreur d'exécution lors du téléversement; %(exception)s, %(exception_class)s"
 
-#: views.py:290
+#: views.py:291
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:341
+#: views.py:342
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:375
+#: views.py:376
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "L'ajout de nouvelles versions du document \"%s\" est bloqué."
 
-#: views.py:428
+#: views.py:429
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:469
+#: views.py:470
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr "Transférer une nouvelle version à partir de la source : %s"
 
-#: views.py:483
+#: views.py:484
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: views.py:504
+#: views.py:505
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -676,31 +676,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:510
+#: views.py:511
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Vérification de déclenchement pour la source \"%s\"?"
 
-#: views.py:527
+#: views.py:528
 msgid "Source check queued."
 msgstr "Vérification de la source ajoutée à la file d'attente."
 
-#: views.py:544
+#: views.py:545
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Créer une nouvelle source de type : %s"
 
-#: views.py:566
+#: views.py:567
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Supprimer la source: %s?"
 
-#: views.py:587
+#: views.py:588
 #, python-format
 msgid "Edit source: %s"
 msgstr "Modifier la source: %s"
 
-#: views.py:621
+#: views.py:622
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -708,7 +708,7 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:626
+#: views.py:627
 msgid "No sources available"
 msgstr "Aucune source disponible"
 

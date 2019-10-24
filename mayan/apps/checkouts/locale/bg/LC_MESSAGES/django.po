@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:07-0400\n"
-"PO-Revision-Date: 2019-08-26 01:01+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-22 22:50-0400\n"
+"PO-Revision-Date: 2019-10-16 11:41+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,11 +20,11 @@ msgstr ""
 
 #: apps.py:41 events.py:7 links.py:34
 msgid "Checkouts"
-msgstr ""
+msgstr "Изписване"
 
 #: dashboard_widgets.py:16
 msgid "Checked out documents"
-msgstr ""
+msgstr "Изписани документи"
 
 #: events.py:10
 msgid "Document automatically checked in"
@@ -35,7 +36,7 @@ msgstr "Докъментът е регистриран"
 
 #: events.py:17
 msgid "Document checked out"
-msgstr "Документът е проверен."
+msgstr "Документът е изписан"
 
 #: events.py:20
 msgid "Document forcefully checked in"
@@ -43,11 +44,11 @@ msgstr "Документът е принудително регистриран"
 
 #: exceptions.py:27 views.py:122
 msgid "Document already checked out."
-msgstr "Документът вече е проверен."
+msgstr "Документът вече е изписан."
 
 #: forms.py:28
 msgid "Document status"
-msgstr ""
+msgstr "Състояние на документа"
 
 #: forms.py:39 models.py:41 views.py:162
 msgid "User"
@@ -55,15 +56,15 @@ msgstr "Потребител"
 
 #: forms.py:43
 msgid "Check out time"
-msgstr ""
+msgstr "Време на изписване"
 
 #: forms.py:48
 msgid "Check out expiration"
-msgstr ""
+msgstr "Срок на изписване"
 
 #: forms.py:53
 msgid "New versions allowed?"
-msgstr ""
+msgstr "Разрешени ли са нови версии?"
 
 #: forms.py:54
 msgid "Yes"
@@ -75,39 +76,39 @@ msgstr "Не"
 
 #: links.py:41
 msgid "Check out document"
-msgstr ""
+msgstr "Изписване на документ"
 
 #: links.py:47
 msgid "Check in document"
-msgstr ""
+msgstr "Регистриране на документ"
 
 #: links.py:52
 msgid "Check in/out"
-msgstr ""
+msgstr "Регистриране / изписване"
 
 #: literals.py:12
 msgid "Checked out"
-msgstr ""
+msgstr "Изписан"
 
 #: literals.py:13
 msgid "Checked in/available"
-msgstr ""
+msgstr "Регистрирани / налични"
 
 #: models.py:28 models.py:110
 msgid "Document"
-msgstr ""
+msgstr "Документ"
 
 #: models.py:31
 msgid "Check out date and time"
-msgstr ""
+msgstr "Дата и час на изписване"
 
 #: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
-msgstr "Време за задържане на проверения документ в минути."
+msgstr "Време за задържане на изписания документ в минути."
 
 #: models.py:37
 msgid "Check out expiration date and time"
-msgstr "Проверете срока на валидност"
+msgstr "Срока на изписване - дата и час"
 
 #: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
@@ -115,27 +116,27 @@ msgstr "Забранете качването на нова версия на т
 
 #: models.py:48
 msgid "Block new version upload"
-msgstr ""
+msgstr "Блокиране на качване на нова версия"
 
 #: models.py:55 permissions.py:7
 msgid "Document checkout"
-msgstr "Проверка на документ"
+msgstr "Изписване на документ"
 
 #: models.py:56
 msgid "Document checkouts"
-msgstr ""
+msgstr "Изписвания на документи"
 
 #: models.py:64
 msgid "Check out expiration date and time must be in the future."
-msgstr ""
+msgstr "Датата и часът за срока на изписване трябва да бъдат в бъдещето."
 
 #: models.py:116
 msgid "New version block"
-msgstr ""
+msgstr "Ново блокиране на версията"
 
 #: models.py:117
 msgid "New version blocks"
-msgstr ""
+msgstr "Нови блокирания на версията"
 
 #: permissions.py:10
 msgid "Check in documents"
@@ -147,39 +148,39 @@ msgstr "Регистрирай принудилтелно документи"
 
 #: permissions.py:16
 msgid "Check out documents"
-msgstr "Провери документи"
+msgstr "Изпиши документи"
 
 #: permissions.py:19
 msgid "Check out details view"
-msgstr ""
+msgstr "Изглед на подробности за изписване"
 
 #: queues.py:13
 msgid "Checkouts periodic"
-msgstr ""
+msgstr "Периодика на изписванията"
 
 #: queues.py:17
 msgid "Check expired checkouts"
-msgstr ""
+msgstr "Провери изписванията с изтекъл срок"
 
 #: serializers.py:26
 msgid "Primary key of the document to be checked out."
-msgstr ""
+msgstr "Основен ключ на документа, който трябва да бъде изписан."
 
 #: views.py:37
 #, python-format
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
-msgstr ""
+msgstr "Не сте изписали този документ. Принудително регистрирайте документа: %s?"
 
 #: views.py:41
 #, python-format
 msgid "Check in the document: %s?"
-msgstr ""
+msgstr "Регистрирайте документ: %s?"
 
 #: views.py:74
 msgid "Document has not been checked out."
-msgstr "Документът не е проверяван."
+msgstr "Документът не е изписан."
 
 #: views.py:80
 #, python-format
@@ -189,40 +190,40 @@ msgstr "Документ \"%s\" е регистриран успешно."
 #: views.py:94
 #, python-format
 msgid "Check out details for document: %s"
-msgstr "Данни от проверката на документ: %s"
+msgstr "Данни за изписването на документ: %s"
 
 #: views.py:128
 #, python-format
 msgid "Document \"%s\" checked out successfully."
-msgstr "Документ \"%s\" проверен успешно."
+msgstr "Документ \"%s\" изписан успешно."
 
 #: views.py:137
 #, python-format
 msgid "Check out document: %s"
-msgstr "Провери документ: %s"
+msgstr "Изпиши документ: %s"
 
 #: views.py:168
 msgid "Checkout time and date"
-msgstr ""
+msgstr "Час и дата на изписване"
 
 #: views.py:174
 msgid "Checkout expiration"
-msgstr ""
+msgstr "Срок на изписване"
 
 #: views.py:182
 msgid ""
 "Checking out a document blocks certain document operations for a "
 "predetermined amount of time."
-msgstr ""
+msgstr "Изписването на документ блокира определени операции с документи за предварително определен период от време."
 
 #: views.py:186
 msgid "No documents have been checked out"
-msgstr ""
+msgstr "Не са изписани документи"
 
 #: views.py:187
 msgid "Documents checked out"
-msgstr ""
+msgstr "Изписани документи"
 
 #: widgets.py:27
 msgid "Amount"
-msgstr ""
+msgstr "Брой"
