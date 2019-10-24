@@ -309,8 +309,8 @@ class POP3SourceTestCase(GenericDocumentTestCase):
     def test_download_document(self, mock_poplib):
         mock_poplib.return_value = POP3SourceTestCase.MockMailbox()
         self.source = POP3Email.objects.create(
-            document_type=self.test_document_type, label='', host='', password='',
-            username=''
+            document_type=self.test_document_type, label='', host='',
+            password='', username=''
         )
 
         self.source.check_source()
