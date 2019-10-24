@@ -86,7 +86,9 @@ class EmailActionTemplateTestCase(MetadataTypeTestMixin, MailerTestMixin, Workfl
         action.execute(context={'document': self.test_document})
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
-        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+        self.assertEqual(
+            mail.outbox[0].to, [self.test_document.metadata.first().value]
+        )
 
     def test_email_action_subject_template(self):
         self._create_test_metadata_type()
@@ -107,6 +109,9 @@ class EmailActionTemplateTestCase(MetadataTypeTestMixin, MailerTestMixin, Workfl
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+        self.assertEqual(
+            mail.outbox[0].subject, self.test_document.metadata.first().value
+        )
 
     def test_email_action_body_template(self):
         self._create_test_metadata_type()

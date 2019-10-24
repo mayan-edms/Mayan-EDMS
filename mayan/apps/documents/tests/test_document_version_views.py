@@ -10,8 +10,8 @@ from .literals import TEST_VERSION_COMMENT
 from .mixins import DocumentVersionTestMixin, DocumentVersionViewTestMixin
 
 
-class DocumentVersionTestCase(
-    DocumentVersionViewTestMixin, DocumentVersionTestMixin,
+class DocumentVersionViewTestCase(
+    DocumentVersionTestMixin, DocumentVersionViewTestMixin,
     GenericDocumentViewTestCase
 ):
     def test_document_version_list_no_permission(self):

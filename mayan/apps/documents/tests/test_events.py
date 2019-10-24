@@ -17,12 +17,23 @@ TEST_TRANSFORMATION_NAME = 'rotate'
 TEST_TRANSFORMATION_ARGUMENT = 'degrees: 180'
 
 
-class DocumentEventsTestCase(GenericDocumentViewTestCase):
+class DocumentEventsTestMixin(object):
     def _request_test_document_download_view(self):
         return self.get(
             'documents:document_download', kwargs={'pk': self.test_document.pk}
         )
 
+    def _request_test_document_preview_view(self):
+        return self.get(
+            viewname='documents:document_preview', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+
+class DocumentEventsTestCase(
+    DocumentEventsTestMixin, GenericDocumentViewTestCase
+):
     def test_document_download_event_no_permissions(self):
         Action.objects.all().delete()
 
@@ -54,13 +65,6 @@ class DocumentEventsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.target, self.test_document)
         self.assertEqual(event.verb, event_document_download.id)
-
-    def _request_test_document_preview_view(self):
-        return self.get(
-            viewname='documents:document_preview', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
 
     def test_document_view_event_no_permissions(self):
         Action.objects.all().delete()

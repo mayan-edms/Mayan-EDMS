@@ -5,6 +5,7 @@ import os
 from django.conf import settings
 
 from mayan.apps.converter.classes import Layer
+from mayan.apps.converter.layers import layer_saved_transformations
 
 from ..literals import PAGE_RANGE_ALL
 from ..models import DocumentType
@@ -14,6 +15,7 @@ from .literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_LABEL_EDITED,
     TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED,
     TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH,
+    TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_CLASS,
     TEST_VERSION_COMMENT
 )
 
@@ -69,8 +71,8 @@ class DocumentTestMixin(object):
 
         self.test_document = document
         self.test_documents.append(document)
-        self.test_document_version = document.latest_version
         self.test_document_page = document.pages_all.first()
+        self.test_document_version = document.latest_version
 
 
 class DocumentTypeViewTestMixin(object):
@@ -171,6 +173,13 @@ class DocumentVersionViewTestMixin(object):
 
 
 class DocumentViewTestMixin(object):
+    def _create_document_transformation(self):
+        layer_saved_transformations.add_transformation_to(
+            obj=self.test_document.pages.first(),
+            transformation_class=TEST_TRANSFORMATION_CLASS,
+            arguments=TEST_TRANSFORMATION_ARGUMENT
+        )
+
     def _request_document_properties_view(self):
         return self.get(
             viewname='documents:document_properties',

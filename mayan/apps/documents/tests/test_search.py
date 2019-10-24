@@ -1,11 +1,9 @@
 from __future__ import unicode_literals
 
-from mayan.apps.common.tests.base import BaseTestCase
-
 from ..permissions import permission_document_view
 from ..search import document_search, document_page_search
 
-from .mixins import DocumentTestMixin
+from .base import GenericDocumentViewTestCase
 
 
 class DocumentSearchTestMixin(object):
@@ -23,7 +21,7 @@ class DocumentSearchTestMixin(object):
 
 
 class DocumentSearchTestCase(
-    DocumentSearchTestMixin, DocumentTestMixin, BaseTestCase
+    DocumentSearchTestMixin, GenericDocumentViewTestCase
 ):
     def test_document_page_search_no_access(self):
         queryset = self._perform_document_page_search()

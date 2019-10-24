@@ -133,7 +133,10 @@ class EmailSetupBaseForm(forms.ModelForm):
 
 class IMAPEmailSetupForm(EmailSetupBaseForm):
     class Meta(EmailSetupBaseForm.Meta):
-        fields = EmailSetupBaseForm.Meta.fields + ('mailbox',)
+        fields = EmailSetupBaseForm.Meta.fields + (
+            'mailbox', 'search_criteria', 'store_commands',
+            'mailbox_destination', 'execute_expunge'
+        )
         model = IMAPEmail
 
 

@@ -242,6 +242,10 @@ class DocumentVersion(models.Model):
     #    """
     #    return self.pages.count()
 
+    @property
+    def pages(self):
+        return self.version_pages.all()
+
     def revert(self, _user=None):
         """
         Delete the subsequent versions after this one

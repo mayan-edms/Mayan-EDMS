@@ -92,7 +92,7 @@ from .permissions import (
     permission_document_tools, permission_document_trash,
     permission_document_type_delete, permission_document_type_edit,
     permission_document_type_view, permission_document_version_revert,
-    permission_document_version_view, permission_document_view,
+    permission_document_version_view, permission_document_view
 )
 # Just import to initialize the search models
 from .search import document_search, document_page_search  # NOQA

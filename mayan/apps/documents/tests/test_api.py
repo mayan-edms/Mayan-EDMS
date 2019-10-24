@@ -91,7 +91,6 @@ class DocumentTypeAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_document_type_api_delete_view_with_access(self):
-        self.expected_content_type = None
         self.test_document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
@@ -633,8 +632,6 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_document_api_trash_view_with_access(self):
-        self.expected_content_type = None
-
         self.upload_document()
         self.grant_access(
             obj=self.test_document, permission=permission_document_trash
@@ -657,8 +654,6 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(Document.trash.count(), 1)
 
     def test_trashed_document_api_delete_view_with_access(self):
-        self.expected_content_type = None
-
         self.upload_document()
         self.test_document.delete()
         self.grant_access(

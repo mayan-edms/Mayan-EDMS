@@ -89,6 +89,16 @@ Changes
 - Unify all line endings to be Linux style.
 - Add support for changing the system messages position.
   GitLab issue #640. Thanks to Matthias Urhahn (@d4rken).
+- Add support for custom IMAP search criteria.
+- Add support for executing custom IMAP STORE commands
+  on processed messages.
+- Add support for specifing a destination IMAP mailbox for
+  processed messages. GitLab issue #399. Thanks to
+  Robert Schöftner (@robert.schoeftner).
+- Add support to execute the IMAP expunge command after each
+  processed message.
+- Support simple search disable via the new
+  SEARCH_DISABLE_SIMPLE_SEARCH setting.
 
 Removals
 --------
@@ -200,6 +210,7 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
+- :gitlab-issue:`399` Archive of processed e-mails
 - :gitlab-issue:`526` RuntimeWarning: Never call result.get() within a task!
 - :gitlab-issue:`532` Workflow preview isn't updated right after transitions are modified
 - :gitlab-issue:`540` hint-outdated/update documentation

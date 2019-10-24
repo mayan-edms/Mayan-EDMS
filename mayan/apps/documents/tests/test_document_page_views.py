@@ -167,7 +167,6 @@ class DocumentPageViewTestMixin(object):
 class DocumentPageViewTestCase(
     DocumentPageViewTestMixin, GenericDocumentViewTestCase
 ):
-
     def test_document_page_list_view_no_permission(self):
         response = self._request_test_document_page_list_view()
         self.assertEqual(response.status_code, 404)

@@ -81,8 +81,18 @@
 - Improve document version upload form.
 - Use dropzone for document version upload form.
 - Remove the DOCUMENTS_DISABLE_BASE_IMAGE_CACHE,
-  DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE, and 
+  DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE, and
   DOCUMENTS_FIX_ORIENTATION settings.
+- Allow the "Execute document tools" permission to be
+  granted via ACL.
+- Add support for custom IMAP search criteria.
+- Add support for executing custom IMAP STORE commands
+  on processed messages.
+- Add support to execute the IMAP expunge command after each
+  processed message.
+- Add support for specifing a destination IMAP mailbox for
+  processed messages. GitLab issue #399. Thanks to
+  Robert Schöftner (@robert.schoeftner).
 - Support simple search disable via the new
   SEARCH_DISABLE_SIMPLE_SEARCH setting.
 
