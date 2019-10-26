@@ -24,12 +24,14 @@ def operation_reset_document_pages(apps, schema_editor):
         for document_page in document.pages.all():
             document_page.delete()
 
-        for version_page in get_latest_version(document=document).pages.all():
-            document_page = document.pages.create(
-                content_type=content_type,
-                page_number=version_page.page_number,
-                object_id=version_page.pk,
-            )
+        latest_version = get_latest_version(document=document)
+        if latest_version:
+            for version_page in latest_version.pages.all():
+                document_page = document.pages.create(
+                    content_type=content_type,
+                    page_number=version_page.page_number,
+                    object_id=version_page.pk,
+                )
 
     for document in Document.objects.using(schema_editor.connection.alias).all():
         pages_reset(document=document)
