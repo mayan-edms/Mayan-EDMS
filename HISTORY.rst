@@ -3,6 +3,7 @@
 - Move IMAPMockServer to its own module.
 - Display feedback message when testing a mailing profile.
 - Add tests to the platform app.
+- Fix platformtemplate command --context option help message.
 
 3.2.8 (2019-10-01)
 ==================

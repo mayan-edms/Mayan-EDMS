@@ -16,8 +16,8 @@ class Command(management.BaseCommand):
         )
         parser.add_argument(
             '--context', action='store', default='', dest='context',
-            help='Pass a context to the template in the form of a JSON encoded '
-            'dictionary.',
+            help='Pass a context to the template in the form of a YAML '
+            'encoded dictionary.',
         )
 
     def handle(self, *args, **options):
