@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-22 22:54-0400\n"
+"POT-Creation-Date: 2019-10-27 15:00-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -26,10 +26,10 @@ msgstr ""
 msgid "Platform"
 msgstr "Платформа"
 
-#: classes.py:113
+#: classes.py:122
 msgid "Template for Supervisord."
 msgstr "Шаблон за Supervisord"
 
-#: classes.py:168
+#: classes.py:175
 msgid "Template for Supervisord inside a Docker image."
 msgstr "Шаблон за Supervisord в Docker образ"

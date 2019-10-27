@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-22 22:54-0400\n"
+"POT-Creation-Date: 2019-10-27 15:00-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Language-Team: Chinese (https://www.transifex.com/rosarior/teams/13584/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -21,10 +21,10 @@ msgstr ""
 msgid "Platform"
 msgstr ""
 
-#: classes.py:113
+#: classes.py:122
 msgid "Template for Supervisord."
 msgstr ""
 
-#: classes.py:168
+#: classes.py:175
 msgid "Template for Supervisord inside a Docker image."
 msgstr ""

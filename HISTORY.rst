@@ -4,6 +4,7 @@
 - Display feedback message when testing a mailing profile.
 - Add tests to the platform app.
 - Fix platformtemplate command --context option help message.
+- Language translations update.
 
 3.2.8 (2019-10-01)
 ==================

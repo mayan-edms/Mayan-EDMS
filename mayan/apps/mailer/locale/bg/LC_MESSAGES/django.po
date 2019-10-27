@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-22 22:53-0400\n"
-"PO-Revision-Date: 2019-10-17 08:56+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
+"POT-Creation-Date: 2019-10-27 14:59-0400\n"
+"PO-Revision-Date: 2019-10-27 19:04+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,7 +65,7 @@ msgstr "Съдържание"
 msgid "The email profile that will be used to send this email."
 msgstr "Профилът на имейла, който ще се използва за изпращане на този имейл."
 
-#: forms.py:71 views.py:238
+#: forms.py:71 views.py:239
 msgid "Mailing profile"
 msgstr "Профил за изпращане на имейл"
 
@@ -109,7 +109,7 @@ msgstr "Списък с пощенски профили"
 msgid "Mailing profiles"
 msgstr "Пощенски профили"
 
-#: links.py:74 views.py:257
+#: links.py:74 views.py:261
 msgid "Test"
 msgstr "Тест"
 
@@ -345,69 +345,73 @@ msgstr "Шаблон за основния текст на формуляра з
 msgid "%(email)s is not a valid email address."
 msgstr "%(email)s не е валиден имейл адрес."
 
-#: views.py:37
+#: views.py:38
 msgid "Document mailing error log"
 msgstr "Дневник на грешки при изпращане на документи"
 
-#: views.py:49
+#: views.py:50
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "%(count)d документ на опашка за доставка по имейл"
 
-#: views.py:51
+#: views.py:52
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "%(count)d документи на опашка за доставка по имейл"
 
-#: views.py:62
+#: views.py:63
 msgid "Send"
 msgstr "Изпрати"
 
-#: views.py:108
+#: views.py:109
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "%(count)d връзка с документ на опашка за доставка по имейл"
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "%(count)d връзки с документ на опашка за доставка по имейл"
 
-#: views.py:119
+#: views.py:120
 msgid "New mailing profile backend selection"
 msgstr "Избор на бекенд за нов пощенски профил"
 
-#: views.py:151
+#: views.py:152
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Създаване на пощенски профил &quot;%s&quot;"
 
-#: views.py:177
+#: views.py:178
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Изтриване на пощенски профил: %s"
 
-#: views.py:188
+#: views.py:189
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Редактиране на пощенски профил: %s"
 
-#: views.py:211
+#: views.py:212
 #, python-format
 msgid "Error log for: %s"
 msgstr "Дневник на грешки за: %s"
 
-#: views.py:233
+#: views.py:234
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
 msgstr "Пощенските профили са конфигурации на имейл. Пощенските профили позволяват изпращане на документи като прикачени файлове или като връзки по имейл."
 
-#: views.py:237
+#: views.py:238
 msgid "No mailing profiles available"
 msgstr "Няма налични пощенски профили"
 
-#: views.py:258
+#: views.py:253
+msgid "Test email sent."
+msgstr ""
+
+#: views.py:262
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Тест на пощенския профил: %s"

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-22 22:53-0400\n"
-"PO-Revision-Date: 2019-10-17 12:11+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
+"POT-Creation-Date: 2019-10-27 14:59-0400\n"
+"PO-Revision-Date: 2019-10-27 19:04+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,7 +64,7 @@ msgstr "Tělo"
 msgid "The email profile that will be used to send this email."
 msgstr "E-mailový profil, který bude použit k odeslání tohoto e-mailu."
 
-#: forms.py:71 views.py:238
+#: forms.py:71 views.py:239
 msgid "Mailing profile"
 msgstr "Poštovní profil"
 
@@ -108,7 +108,7 @@ msgstr "Seznam poštovních profilů"
 msgid "Mailing profiles"
 msgstr "Poštovní profily"
 
-#: links.py:74 views.py:257
+#: links.py:74 views.py:261
 msgid "Test"
 msgstr "Test"
 
@@ -344,69 +344,73 @@ msgstr "Šablona pro text textu formuláře elektronické pošty. Může obsahov
 msgid "%(email)s is not a valid email address."
 msgstr "%(email)s není platná e-mailová adresa."
 
-#: views.py:37
+#: views.py:38
 msgid "Document mailing error log"
 msgstr "Protokol chyb odesílání dokumentů"
 
-#: views.py:49
+#: views.py:50
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "dokument %(count)d zařazený do fronty pro doručení e-mailem"
 
-#: views.py:51
+#: views.py:52
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "%(count)d dokumenty zařazené do fronty pro doručení e-mailem"
 
-#: views.py:62
+#: views.py:63
 msgid "Send"
 msgstr "Poslat"
 
-#: views.py:108
+#: views.py:109
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "Odkaz na dokument %(count)d zařazený do fronty pro doručování e-mailů"
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "Odkazy na dokument %(count)d zařazené do fronty pro doručování e-mailů"
 
-#: views.py:119
+#: views.py:120
 msgid "New mailing profile backend selection"
 msgstr "Výběr backend nového poštovního profilu"
 
-#: views.py:151
+#: views.py:152
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Vytvořit poštovní profil „%s“"
 
-#: views.py:177
+#: views.py:178
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Smazat poštovní profil: %s"
 
-#: views.py:188
+#: views.py:189
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Upravit poštovní profil: %s"
 
-#: views.py:211
+#: views.py:212
 #, python-format
 msgid "Error log for: %s"
 msgstr "Protokol chyb pro: %s"
 
-#: views.py:233
+#: views.py:234
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
 msgstr "Poštovní profily jsou e-mailové konfigurace. Poštovní profily umožňují odesílání dokumentů jako přílohy nebo jako odkazy prostřednictvím e-mailu."
 
-#: views.py:237
+#: views.py:238
 msgid "No mailing profiles available"
 msgstr "K dispozici nejsou žádné poštovní profily"
 
-#: views.py:258
+#: views.py:253
+msgid "Test email sent."
+msgstr ""
+
+#: views.py:262
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Vyzkoušejte poštovní profil: %s"
