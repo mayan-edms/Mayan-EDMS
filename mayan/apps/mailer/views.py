@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.contrib import messages
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
@@ -248,6 +249,9 @@ class UserMailerTestView(FormView):
 
     def form_valid(self, form):
         self.get_object().test(to=form.cleaned_data['email'])
+        messages.success(
+            message=_('Test email sent.'), request=self.request
+        )
         return super(UserMailerTestView, self).form_valid(form=form)
 
     def get_extra_context(self):

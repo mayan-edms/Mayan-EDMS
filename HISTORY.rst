@@ -1,6 +1,7 @@
 3.2.9 (2019-XX-XX)
 ==================
 - Move IMAPMockServer to its own module.
+- Display feedback message when testing a mailing profile.
 
 3.2.8 (2019-10-01)
 ==================
