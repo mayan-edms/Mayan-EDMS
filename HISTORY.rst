@@ -1,3 +1,7 @@
+3.2.9 (2019-XX-XX)
+==================
+- Move IMAPMockServer to its own module.
+
 3.2.8 (2019-10-01)
 ==================
 - Fix error when accessing some API entry points without
