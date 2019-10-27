@@ -6,6 +6,7 @@
 - Fix platformtemplate command --context option help message.
 - Language translations update.
 - Add target to run all translations targets.
+- Backport color log formatter from branch version/next.
 
 3.2.8 (2019-10-01)
 ==================
