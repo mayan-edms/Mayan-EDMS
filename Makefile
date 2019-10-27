@@ -115,6 +115,9 @@ translations-push: ## Upload all translation files to Transifex.
 translations-pull: ## Download all translation files from Transifex.
 	tx pull -f
 
+translations-all: ## Execute all translations targets.
+translations-all: translations-make translations-push translations-pull translations-compile
+
 # Releases
 
 increase-version: ## Increase the version number of the entire project's files.

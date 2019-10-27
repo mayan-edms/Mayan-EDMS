@@ -5,6 +5,7 @@
 - Add tests to the platform app.
 - Fix platformtemplate command --context option help message.
 - Language translations update.
+- Add target to run all translations targets.
 
 3.2.8 (2019-10-01)
 ==================
