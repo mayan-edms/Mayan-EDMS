@@ -9,7 +9,7 @@ class PlatformApp(MayanAppConfig):
     app_namespace = 'platform'
     app_url = 'platform'
     has_rest_api = False
-    has_tests = False
+    has_tests = True
     name = 'mayan.apps.platform'
     verbose_name = _('Platform')
 

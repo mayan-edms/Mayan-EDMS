@@ -40,6 +40,8 @@ class Command(management.BaseCommand):
                 )
                 exit(1)
             else:
-                self.stdout.write(template().render(
-                    context_string=options.get('context'))
+                self.stdout.write(
+                    template().render(
+                        context_string=options.get('context')
+                    )
                 )
