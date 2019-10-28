@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from io import BytesIO
+from django.utils.six import StringIO
 
 from django.core import management
 from django.test import TestCase
@@ -38,7 +38,7 @@ PlatformTemplate.register(klass=TestPlatformTemplate)
 class PlatformTemplateManagementCommandTestCase(TestCase):
 
     def test_platform_template_simple(self):
-        output = BytesIO()
+        output = StringIO()
         args = (TEST_TEMPLATE_NAME,)
         options = {
             'stdout': output
@@ -47,7 +47,7 @@ class PlatformTemplateManagementCommandTestCase(TestCase):
         self.assertEqual(output.getvalue(), TEST_TEMPLATE_STRING_RENDER)
 
     def test_platform_template_context(self):
-        output = BytesIO()
+        output = StringIO()
         args = (
             TEST_TEMPLATE_NAME, '--context',
             'test_template_variable: {}'.format(

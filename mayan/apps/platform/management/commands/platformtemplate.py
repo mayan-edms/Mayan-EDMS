@@ -40,8 +40,11 @@ class Command(management.BaseCommand):
                 )
                 exit(1)
             else:
+                # Python 2 & 3 way to convert from SafeString to unicode
                 self.stdout.write(
-                    template().render(
-                        context_string=options.get('context')
+                    '{}'.format(
+                        template().render(
+                            context_string=options.get('context')
+                        )
                     )
                 )
