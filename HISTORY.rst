@@ -7,6 +7,8 @@
 - Language translations update.
 - Add target to run all translations targets.
 - Backport color log formatter from branch version/next.
+- Don't raise error checking AnonymousUser for permissions.
+  Instead return always False.
 
 3.2.8 (2019-10-01)
 ==================
