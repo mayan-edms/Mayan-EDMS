@@ -99,6 +99,7 @@
   indexes, parsing, documents, metadata, ocr, permission,
   user management.
 - Split document app links.
+- Make Postgres container wait delay configurable.
 
 3.2.9 (2019-XX-XX)
 ==================
