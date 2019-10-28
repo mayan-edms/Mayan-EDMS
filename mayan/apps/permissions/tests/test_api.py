@@ -93,7 +93,7 @@ class RoleAPIViewTestCase(GroupTestMixin, PermissionTestMixin, RoleAPIViewTestMi
         role_count = Role.objects.count()
 
         response = self._request_test_role_delete_api_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(Role.objects.count(), role_count)
 
@@ -112,11 +112,10 @@ class RoleAPIViewTestCase(GroupTestMixin, PermissionTestMixin, RoleAPIViewTestMi
     def test_role_edit_via_patch_no_access(self):
         self._create_test_role()
 
-        response = self._request_test_role_edit_api_view(request_type='patch')
-
         role_label = self.test_role.label
 
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        response = self._request_test_role_edit_api_view(request_type='patch')
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_role.refresh_from_db()
         self.assertEqual(self.test_role.label, role_label)
@@ -140,7 +139,7 @@ class RoleAPIViewTestCase(GroupTestMixin, PermissionTestMixin, RoleAPIViewTestMi
 
         role_label = self.test_role.label
 
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_role.refresh_from_db()
         self.assertEqual(self.test_role.label, role_label)
@@ -174,8 +173,7 @@ class RoleAPIViewTestCase(GroupTestMixin, PermissionTestMixin, RoleAPIViewTestMi
         role_label = self.test_role.label
 
         response = self._request_role_edit_api_patch_view_extra_data()
-
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_role.refresh_from_db()
         self.assertEqual(self.test_role.label, role_label)
@@ -224,8 +222,7 @@ class RoleAPIViewTestCase(GroupTestMixin, PermissionTestMixin, RoleAPIViewTestMi
         role_label = self.test_role.label
 
         response = self._request_role_edit_api_put_view_extra_data()
-
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_role.refresh_from_db()
         self.assertEqual(self.test_role.label, role_label)

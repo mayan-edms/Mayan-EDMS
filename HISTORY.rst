@@ -93,6 +93,11 @@
   Robert Schöftner (@robert.schoeftner).
 - Support simple search disable via the new
   SEARCH_DISABLE_SIMPLE_SEARCH setting.
+- Move all generic API classes definitions to the 
+  rest_api.generics module.
+- Update API status code on insufficient access for the apps:
+  indexes, parsing, documents, metadata, ocr, permission,
+  user management.
 
 3.2.8 (2019-10-01)
 ==================

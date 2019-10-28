@@ -3,8 +3,9 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics
 from rest_framework.response import Response
+
+from mayan.apps.rest_api import generics
 
 from .literals import STAGING_FILE_IMAGE_TASK_TIMEOUT
 from .models import StagingFolderSource

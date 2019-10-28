@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings.classes import Namespace
@@ -14,4 +13,3 @@ setting_disable_simple_search = namespace.add_setting(
         'search button.'
     )
 )
-

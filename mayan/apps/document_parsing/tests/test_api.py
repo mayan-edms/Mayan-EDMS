@@ -28,7 +28,7 @@ class DocumentParsingAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
     def test_get_document_version_page_content_no_access(self):
         response = self._request_document_page_content_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_get_document_version_page_content_with_access(self):
         self.grant_access(

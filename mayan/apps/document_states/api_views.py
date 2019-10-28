@@ -4,13 +4,10 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.cache import cache_control, patch_cache_control
 
-from rest_framework import generics
-
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_type_view
-from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
-from mayan.apps.rest_api.permissions import MayanPermission
+from mayan.apps.rest_api import generics
 
 from .literals import WORKFLOW_IMAGE_TASK_TIMEOUT
 from .models import Workflow
@@ -34,7 +31,6 @@ class APIDocumentTypeWorkflowRuntimeProxyListView(generics.ListAPIView):
     """
     get: Returns a list of all the document type workflows.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_workflow_view,),
     }
@@ -61,7 +57,6 @@ class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
     get: Returns a list of all the document types attached to a workflow.
     post: Attach a document type to a specified workflow.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_document_type_view,),
     }
@@ -123,7 +118,6 @@ class APIWorkflowDocumentTypeView(generics.RetrieveDestroyAPIView):
     delete: Remove a document type from the selected workflow.
     get: Returns the details of the selected workflow document type.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     lookup_url_kwarg = 'document_type_pk'
     mayan_object_permissions = {
         'GET': (permission_document_type_view,),
@@ -182,7 +176,6 @@ class APIWorkflowImageView(generics.RetrieveAPIView):
     """
     get: Returns an image representation of the selected workflow.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_workflow_view,),
     }
@@ -219,10 +212,8 @@ class APIWorkflowRuntimeProxyListView(generics.ListCreateAPIView):
     get: Returns a list of all the workflows.
     post: Create a new workflow.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_workflow_view,)}
     mayan_view_permissions = {'POST': (permission_workflow_create,)}
-    permission_classes = (MayanPermission,)
     queryset = Workflow.objects.all()
 
     def get_serializer(self, *args, **kwargs):
@@ -245,7 +236,6 @@ class APIWorkflowView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected workflow.
     put: Edit the selected workflow.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'DELETE': (permission_workflow_delete,),
         'GET': (permission_workflow_view,),
@@ -467,7 +457,6 @@ class APIWorkflowInstanceListView(generics.ListAPIView):
     """
     get: Returns a list of all the document workflows.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     serializer_class = WorkflowInstanceSerializer
     mayan_object_permissions = {
         'GET': (permission_workflow_view,),
@@ -491,7 +480,6 @@ class APIWorkflowInstanceView(generics.RetrieveAPIView):
     """
     get: Return the details of the selected document workflow.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     lookup_url_kwarg = 'workflow_pk'
     mayan_object_permissions = {
         'GET': (permission_workflow_view,),

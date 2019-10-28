@@ -1,9 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
-from rest_framework import generics
-
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.rest_api import generics
 
 from .models import DocumentCheckout
 from .permissions import (

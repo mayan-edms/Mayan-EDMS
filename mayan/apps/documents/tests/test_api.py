@@ -88,7 +88,7 @@ class DocumentTypeAPIViewTestCase(
         )
 
         response = self._request_test_document_type_api_delete_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_type_api_delete_view_with_access(self):
         self.test_document_type = DocumentType.objects.create(
@@ -110,7 +110,7 @@ class DocumentTypeAPIViewTestCase(
         )
 
         response = self._request_test_document_type_api_patch_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_type_api_edit_via_patch_view_with_access(self):
         self.test_document_type = DocumentType.objects.create(
@@ -133,7 +133,7 @@ class DocumentTypeAPIViewTestCase(
         self._create_document_type()
 
         response = self._request_test_document_type_api_put_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_type_api_edit_via_put_view_with_access(self):
         self.test_document_type = DocumentType.objects.create(
@@ -194,7 +194,7 @@ class DocumentAPIViewTestCase(
         self.upload_document()
 
         response = self._request_test_document_api_download_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_api_download_view_with_access(self):
         self.upload_document()
@@ -258,7 +258,7 @@ class DocumentAPIViewTestCase(
         self.upload_document()
 
         response = self._request_test_document_description_api_edit_via_patch_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_description_api_edit_via_patch_view_with_access(self):
         self.upload_document()
@@ -280,7 +280,7 @@ class DocumentAPIViewTestCase(
         self.upload_document()
 
         response = self._request_test_document_description_api_edit_via_put_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_description_api_edit_via_put_view_with_access(self):
         self.upload_document()
@@ -606,7 +606,7 @@ class TrashedDocumentAPIViewTestCase(
         self.upload_document()
 
         response = self._request_test_document_api_trash_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_api_trash_view_with_access(self):
         self.upload_document()
@@ -625,7 +625,7 @@ class TrashedDocumentAPIViewTestCase(
         self.test_document.delete()
 
         response = self._request_test_trashed_document_api_delete_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(Document.objects.count(), 0)
         self.assertEqual(Document.trash.count(), 1)
@@ -648,7 +648,7 @@ class TrashedDocumentAPIViewTestCase(
         self.test_document.delete()
 
         response = self._request_test_trashed_document_api_detail_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertFalse('uuid' in response.data)
 
     def test_trashed_document_api_detail_view_with_access(self):
@@ -708,7 +708,7 @@ class TrashedDocumentAPIViewTestCase(
         self.test_document.delete()
 
         response = self._request_test_trashed_document_api_restore_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(Document.trash.count(), 1)
         self.assertEqual(Document.objects.count(), 0)

@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 
@@ -10,8 +9,7 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.serializers import DocumentSerializer
-from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
-from mayan.apps.rest_api.permissions import MayanPermission
+from mayan.apps.rest_api import generics
 
 from .models import Tag
 from .permissions import (
@@ -29,10 +27,8 @@ class APITagListView(generics.ListCreateAPIView):
     get: Returns a list of all the tags.
     post: Create a new tag.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_tag_view,)}
     mayan_view_permissions = {'POST': (permission_tag_create,)}
-    permission_classes = (MayanPermission,)
     queryset = Tag.objects.all()
 
     def get_serializer(self, *args, **kwargs):
@@ -55,7 +51,6 @@ class APITagView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected tag.
     put: Edit the selected tag.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'DELETE': (permission_tag_delete,),
         'GET': (permission_tag_view,),
@@ -81,7 +76,6 @@ class APITagDocumentListView(generics.ListAPIView):
     """
     get: Returns a list of all the documents tagged by a particular tag.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_view,)}
     serializer_class = DocumentSerializer
 
@@ -100,7 +94,6 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
     get: Returns a list of all the tags attached to a document.
     post: Attach a tag to a document.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_tag_view,),
         'POST': (permission_tag_attach,)
@@ -156,7 +149,6 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
     delete: Remove a tag from the selected document.
     get: Returns the details of the selected document tag.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_tag_view,),
         'DELETE': (permission_tag_remove,)

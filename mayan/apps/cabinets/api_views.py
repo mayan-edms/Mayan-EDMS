@@ -2,14 +2,12 @@ from __future__ import absolute_import, unicode_literals
 
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics
 from rest_framework.response import Response
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
-from mayan.apps.rest_api.permissions import MayanPermission
+from mayan.apps.rest_api import generics
 
 from .models import Cabinet
 from .permissions import (
@@ -27,10 +25,8 @@ class APIDocumentCabinetListView(generics.ListAPIView):
     """
     Returns a list of all the cabinets to which a document belongs.
     """
-    serializer_class = CabinetSerializer
-
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_cabinet_view,)}
+    serializer_class = CabinetSerializer
 
     def get_queryset(self):
         document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
@@ -48,10 +44,8 @@ class APICabinetListView(generics.ListCreateAPIView):
     get: Returns a list of all the cabinets.
     post: Create a new cabinet
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_cabinet_view,)}
     mayan_view_permissions = {'POST': (permission_cabinet_create,)}
-    permission_classes = (MayanPermission,)
     queryset = Cabinet.objects.all()
 
     def get_serializer(self, *args, **kwargs):
@@ -74,14 +68,12 @@ class APICabinetView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected cabinet.
     put: Edit the selected cabinet.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_cabinet_view,),
         'PUT': (permission_cabinet_edit,),
         'PATCH': (permission_cabinet_edit,),
         'DELETE': (permission_cabinet_delete,)
     }
-    permission_classes = (MayanPermission,)
     queryset = Cabinet.objects.all()
 
     def get_serializer(self, *args, **kwargs):
@@ -102,7 +94,6 @@ class APICabinetDocumentListView(generics.ListCreateAPIView):
     get: Returns a list of all the documents contained in a particular cabinet.
     post: Add a document to the selected cabinet.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_cabinet_view,),
         'POST': (permission_cabinet_add_document,)
@@ -154,7 +145,6 @@ class APICabinetDocumentView(generics.RetrieveDestroyAPIView):
     delete: Remove a document from the selected cabinet.
     get: Returns the details of the selected cabinet document.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     lookup_url_kwarg = 'document_pk'
     mayan_object_permissions = {
         'GET': (permission_cabinet_view,),
