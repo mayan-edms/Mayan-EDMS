@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:11-0400\n"
+"POT-Creation-Date: 2019-10-27 14:57-0400\n"
 "PO-Revision-Date: 2019-09-24 21:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -680,7 +680,7 @@ msgstr "Lanzamiento de flujos de trabajo sometido con éxito."
 msgid "Preview of: %s"
 msgstr "Vista previa de: %s"
 
-#: widgets.py:21
+#: widgets.py:22
 msgid "Workflow preview"
 msgstr "Vista previa del flujo de trabajo"
 

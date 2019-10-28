@@ -76,6 +76,9 @@ class StoredPermission(models.Model):
             )
             return True
 
+        if not user.is_authenticated():
+            return False
+
         if Role.objects.filter(groups__user=user, permissions=self).exists():
             return True
         else:

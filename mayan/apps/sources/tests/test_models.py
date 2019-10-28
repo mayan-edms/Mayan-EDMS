@@ -25,6 +25,9 @@ from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models.email_sources import EmailBaseModel, IMAPEmail, POP3Email
 from ..models.watch_folder_sources import WatchFolderSource
 
+from .mocks import MockIMAPServer
+
+
 from .literals import (
     TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_EMAIL_BASE64_FILENAME,
     TEST_EMAIL_BASE64_FILENAME_FROM, TEST_EMAIL_BASE64_FILENAME_SUBJECT,

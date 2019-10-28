@@ -93,11 +93,23 @@
   Robert Schöftner (@robert.schoeftner).
 - Support simple search disable via the new
   SEARCH_DISABLE_SIMPLE_SEARCH setting.
-- Move all generic API classes definitions to the 
+- Move all generic API classes definitions to the
   rest_api.generics module.
 - Update API status code on insufficient access for the apps:
   indexes, parsing, documents, metadata, ocr, permission,
   user management.
+
+3.2.9 (2019-XX-XX)
+==================
+- Move IMAPMockServer to its own module.
+- Display feedback message when testing a mailing profile.
+- Add tests to the platform app.
+- Fix platformtemplate command --context option help message.
+- Language translations update.
+- Add target to run all translations targets.
+- Backport color log formatter from branch version/next.
+- Don't raise error checking AnonymousUser for permissions.
+  Instead return always False.
 
 3.2.8 (2019-10-01)
 ==================

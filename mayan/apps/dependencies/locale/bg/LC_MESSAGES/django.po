@@ -7,15 +7,16 @@
 # Iliya Georgiev <inactive+iliicho7@transifex.com>, 2019
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2019
 # Roberto Rosario, 2019
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:08-0400\n"
+"POT-Creation-Date: 2019-10-27 14:57-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Roberto Rosario, 2019\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,15 +26,15 @@ msgstr ""
 
 #: apps.py:27 links.py:43 permissions.py:7
 msgid "Dependencies"
-msgstr ""
+msgstr "Зависимости"
 
 #: apps.py:33 apps.py:68 apps.py:76
 msgid "Label"
-msgstr ""
+msgstr "Етикет"
 
 #: apps.py:36
 msgid "Internal name"
-msgstr ""
+msgstr "Вътрешно име"
 
 #: apps.py:39 apps.py:71 apps.py:80
 msgid "Description"
@@ -41,15 +42,15 @@ msgstr "Описание"
 
 #: apps.py:43 classes.py:172
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: apps.py:47 classes.py:174
 msgid "Other data"
-msgstr ""
+msgstr "Други данни"
 
 #: apps.py:51
 msgid "Declared by"
-msgstr ""
+msgstr "Декларирано от"
 
 #: apps.py:55 classes.py:172
 msgid "Version"
@@ -57,41 +58,47 @@ msgstr "Версия"
 
 #: apps.py:59 classes.py:173 classes.py:809
 msgid "Environment"
-msgstr ""
+msgstr "Среда"
 
 #: apps.py:63 classes.py:174
 msgid "Check"
-msgstr ""
+msgstr "Проверка"
 
 #: classes.py:65
 msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing dependencies under this environment."
 msgstr ""
+"Среда, използвана за изграждане на дистрибуторски пакети на софтуера. "
+"Крайните потребители могат да игнорират липсващите зависимости в тази среда."
 
 #: classes.py:68
 msgid "Build"
-msgstr ""
+msgstr "Конструкция"
 
 #: classes.py:72
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Среда, използвана от разработчиците за извършване на промени в кода. "
+"Крайните потребители могат да игнорират липсващите зависимости в тази среда."
 
 #: classes.py:74
 msgid "Development"
-msgstr ""
+msgstr "Разработка"
 
 #: classes.py:78
 msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
 msgstr ""
+"Нормална среда за крайните потребители. Липсваща зависимост в тази среда ще "
+"доведе до проблеми и грешки при нормална употреба."
 
 #: classes.py:80
 msgid "Production"
-msgstr ""
+msgstr "Производство"
 
 #: classes.py:84
 msgid ""
@@ -99,10 +106,13 @@ msgid ""
 "code. Dependencies in this environment are not needed for normal production "
 "usage."
 msgstr ""
+"Използвана среда за набора тестове за проверка на функционалността на кода. "
+"Зависимостите в тази среда не са необходими за нормалното използване в "
+"производството."
 
 #: classes.py:87
 msgid "Testing"
-msgstr ""
+msgstr "Тестване"
 
 #: classes.py:172
 msgid "Name"
@@ -110,37 +120,37 @@ msgstr "Име"
 
 #: classes.py:173
 msgid "App"
-msgstr ""
+msgstr "Приложение"
 
 #: classes.py:274
 msgid "Need to specify at least one: app_label or module."
-msgstr ""
+msgstr "Трябва да посочите поне едно: app_label или модул."
 
 #: classes.py:279
 #, python-format
 msgid "Dependency \"%s\" already registered."
-msgstr ""
+msgstr "Зависимостта „%s“ вече е регистрирана."
 
 #: classes.py:305
 #, python-format
 msgid "Installing package: %s... "
-msgstr ""
+msgstr "Инсталиране на пакет: %s ..."
 
 #: classes.py:310
 msgid "Already installed."
-msgstr ""
+msgstr "Вече е инсталирано."
 
 #: classes.py:313 classes.py:318 classes.py:322
 msgid "Complete."
-msgstr ""
+msgstr "Завършено."
 
 #: classes.py:348
 msgid "Installed and correct version"
-msgstr ""
+msgstr "Инсталирана е правилна версия"
 
 #: classes.py:350
 msgid "Missing or incorrect version"
-msgstr ""
+msgstr "Липсваща или неправилна версия"
 
 #: classes.py:379
 msgid "None"
@@ -148,79 +158,83 @@ msgstr "Няма"
 
 #: classes.py:388
 msgid "Not specified"
-msgstr ""
+msgstr "Не  е конкретизирано"
 
 #: classes.py:405
 msgid "Patching files... "
-msgstr ""
+msgstr "Пачване на файлове ..."
 
 #: classes.py:440
 msgid "Executables that are called directly by the code."
-msgstr ""
+msgstr "Изпълними файлове, които се извикват директно от кода."
 
 #: classes.py:442
 msgid "Binary"
-msgstr ""
+msgstr "Двоичен файл"
 
 #: classes.py:459
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
 msgstr ""
+"JavaScript библиотеките са изтеглени от регистъра на NPM и са използвани за "
+"функционалност на интерфейса."
 
 #: classes.py:462
 msgid "JavaScript"
-msgstr ""
+msgstr "JavaScript"
 
 #: classes.py:496 classes.py:729
 msgid "Downloading... "
-msgstr ""
+msgstr "Изтегля се ..."
 
 #: classes.py:499
 msgid "Verifying... "
-msgstr ""
+msgstr "Проверява се ..."
 
 #: classes.py:502 classes.py:732
 msgid "Extracting... "
-msgstr ""
+msgstr "Извличане ..."
 
 #: classes.py:681
 msgid "Python packages downloaded from PyPI."
-msgstr ""
+msgstr "Пакети Python, изтеглени от PyPI."
 
 #: classes.py:683
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #: classes.py:710
 msgid "Fonts downloaded from fonts.googleapis.com."
-msgstr ""
+msgstr "Шрифтове, изтеглени от fonts.googleapis.com."
 
 #: classes.py:712
 msgid "Google font"
-msgstr ""
+msgstr "Google шрифт"
 
 #: classes.py:791
 msgid "Declared in app"
-msgstr ""
+msgstr "Декларирано в приложение"
 
 #: classes.py:792
 msgid "Show dependencies by the app that declared them."
-msgstr ""
+msgstr "Показване зависимостите от приложението, което ги е декларирало."
 
 #: classes.py:796
 msgid "Class"
-msgstr ""
+msgstr "Клас"
 
 #: classes.py:797
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
+"Покажете различните класове на зависимости. Класовете обикновено се разделят"
+" по език или файлови типове на зависимостта."
 
 #: classes.py:802
 msgid "State"
-msgstr ""
+msgstr "Състояние"
 
 #: classes.py:803
 msgid ""
@@ -228,16 +242,21 @@ msgid ""
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
+"Показване различните състояния на зависимостите. Вярно означава, че "
+"зависимостите са инсталирани и са с правилна версия. Грешно означава, че "
+"зависимостите липсват или е налице неправилна версия."
 
 #: classes.py:810
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
+"Зависимости, необходими за дадена среда, може да не се изискват за друга. "
+"Примерни среди: производство, разработка."
 
 #: links.py:11 views.py:35
 msgid "Check for updates"
-msgstr ""
+msgstr "Проверка за актуализации"
 
 #: links.py:17
 msgid "Groups"
@@ -245,7 +264,7 @@ msgstr "Групи"
 
 #: links.py:25
 msgid "Entries"
-msgstr ""
+msgstr "Записи"
 
 #: links.py:33
 msgid "Details"
@@ -253,68 +272,72 @@ msgstr "Детайли"
 
 #: links.py:38
 msgid "Dependencies licenses"
-msgstr ""
+msgstr "Лицензи за зависимости"
 
 #: management/commands/generaterequirements.py:16
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
+"Разделени със запетаи имена на зависимости, които да се изключат от "
+"генерирания списък."
 
 #: management/commands/generaterequirements.py:22
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
+"Разделени със запетаи имена на зависимости, които да се показват в списъка, "
+"като изключват всяка друга."
 
 #: management/commands/installjavascript.py:15
 msgid "Process a specific app."
-msgstr ""
+msgstr "Обработка на конкретно приложение."
 
 #: management/commands/installjavascript.py:19
 msgid "Force installation even if already installed."
-msgstr ""
+msgstr "Принудително инсталиране, дори ако вече е инсталирано."
 
 #: permissions.py:10
 msgid "View dependencies"
-msgstr ""
+msgstr "Вижте зависимостите"
 
 #: views.py:23
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
+msgstr "Версията, която използвате, е остаряла. Последната версия е %s"
 
 #: views.py:28
 msgid "It is not possible to determine the latest version available."
-msgstr ""
+msgstr "Не е възможно да се определи най-новата налична версия."
 
 #: views.py:32
 msgid "Your version is up-to-date."
-msgstr ""
+msgstr "Вашата версия е актуална."
 
 #: views.py:49
 #, python-format
 msgid "Entries for dependency group: %s"
-msgstr ""
+msgstr "Записи за група зависимости: %s"
 
 #: views.py:62 views.py:107
 #, python-format
 msgid "Group %s not found."
-msgstr ""
+msgstr "Група %s не е намерена."
 
 #: views.py:75
 msgid "Dependency groups"
-msgstr ""
+msgstr "Групи зависимости"
 
 #: views.py:95
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
-msgstr ""
+msgstr "Група зависимостите и запис: %(group)s, %(entry)s"
 
 #: views.py:119
 #, python-format
 msgid "Entry %s not found."
-msgstr ""
+msgstr "Запис %s не е намерен."
 
 #: views.py:137
 msgid "Other packages licenses"
-msgstr ""
+msgstr "Лицензи за други пакети"

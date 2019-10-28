@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:15-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
+"POT-Creation-Date: 2019-10-27 14:59-0400\n"
+"PO-Revision-Date: 2019-10-27 19:04+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgstr "Telo"
 msgid "The email profile that will be used to send this email."
 msgstr "Profil e-pošte koji će se koristiti za slanje e-pošte."
 
-#: forms.py:71 views.py:238
+#: forms.py:71 views.py:239
 msgid "Mailing profile"
 msgstr "Mailing profil"
 
@@ -108,7 +108,7 @@ msgstr "Lista poštanskih profila"
 msgid "Mailing profiles"
 msgstr "Mailing profili"
 
-#: links.py:74 views.py:257
+#: links.py:74 views.py:261
 msgid "Test"
 msgstr "Test"
 
@@ -344,69 +344,73 @@ msgstr "Šablon za tekst e-pošte oblikuje tekst tela. Može uključiti HTML."
 msgid "%(email)s is not a valid email address."
 msgstr ""
 
-#: views.py:37
+#: views.py:38
 msgid "Document mailing error log"
 msgstr "Evidencija grešaka u dokumentaciji"
 
-#: views.py:49
+#: views.py:50
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "%(count)d dokument postavljen za dostavljanje e-pošte"
 
-#: views.py:51
+#: views.py:52
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "%(count)d dokumenata koji su stavljeni u red za dostavljanje e-pošte"
 
-#: views.py:62
+#: views.py:63
 msgid "Send"
 msgstr "Pošalji"
 
-#: views.py:108
+#: views.py:109
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "%(count)d dokument link je postavljen za dostavljanje e-pošte"
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "%(count)d dokument linkova su postavljana za dostavljanje e-pošte"
 
-#: views.py:119
+#: views.py:120
 msgid "New mailing profile backend selection"
 msgstr "Izbor novog profila pozadinskog profila"
 
-#: views.py:151
+#: views.py:152
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Kreirajte mailing listu \"%s\""
 
-#: views.py:177
+#: views.py:178
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Obriši mailing profil: %s"
 
-#: views.py:188
+#: views.py:189
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Uredi mailing adresu: %s"
 
-#: views.py:211
+#: views.py:212
 #, python-format
 msgid "Error log for: %s"
 msgstr ""
 
-#: views.py:233
+#: views.py:234
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
 msgstr ""
 
-#: views.py:237
+#: views.py:238
 msgid "No mailing profiles available"
 msgstr ""
 
-#: views.py:258
+#: views.py:253
+msgid "Test email sent."
+msgstr ""
+
+#: views.py:262
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Test mailing profila: %s"

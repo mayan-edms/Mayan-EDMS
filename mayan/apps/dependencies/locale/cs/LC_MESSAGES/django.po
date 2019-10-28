@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:08-0400\n"
+"POT-Creation-Date: 2019-10-27 14:57-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Jiri Fait <fait@orkasolutions.cz>, 2019\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 
 #: apps.py:27 links.py:43 permissions.py:7
 msgid "Dependencies"
-msgstr ""
+msgstr "Závislosti"
 
 #: apps.py:33 apps.py:68 apps.py:76
 msgid "Label"
@@ -31,65 +32,71 @@ msgstr "Označení"
 
 #: apps.py:36
 msgid "Internal name"
-msgstr ""
+msgstr "Vnitřní název"
 
 #: apps.py:39 apps.py:71 apps.py:80
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
 #: apps.py:43 classes.py:172
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: apps.py:47 classes.py:174
 msgid "Other data"
-msgstr ""
+msgstr "Další údaje"
 
 #: apps.py:51
 msgid "Declared by"
-msgstr ""
+msgstr "Deklarováno uživatelem"
 
 #: apps.py:55 classes.py:172
 msgid "Version"
-msgstr ""
+msgstr "Verze"
 
 #: apps.py:59 classes.py:173 classes.py:809
 msgid "Environment"
-msgstr ""
+msgstr "Prostředí"
 
 #: apps.py:63 classes.py:174
 msgid "Check"
-msgstr ""
+msgstr "Kontrola"
 
 #: classes.py:65
 msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing dependencies under this environment."
 msgstr ""
+"Prostředí používané k vytváření distribuovatelných balíčků softwaru. Koncoví"
+" uživatelé mohou v tomto prostředí ignorovat chybějící závislosti."
 
 #: classes.py:68
 msgid "Build"
-msgstr ""
+msgstr "Sestavení"
 
 #: classes.py:72
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Prostředí používané pro vývojáře k provádění změn kódu. Koncoví uživatelé "
+"mohou v tomto prostředí ignorovat chybějící závislosti."
 
 #: classes.py:74
 msgid "Development"
-msgstr ""
+msgstr "Vývoj"
 
 #: classes.py:78
 msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
 msgstr ""
+"Normální prostředí pro koncové uživatele. Chybějící závislost v tomto "
+"prostředí bude mít za následek problémy a chyby při běžném používání."
 
 #: classes.py:80
 msgid "Production"
-msgstr ""
+msgstr "Produkce"
 
 #: classes.py:84
 msgid ""
@@ -97,128 +104,135 @@ msgid ""
 "code. Dependencies in this environment are not needed for normal production "
 "usage."
 msgstr ""
+"Prostředí použité při spuštění testovacího prostředí k ověření funkčnosti "
+"kódu. Závislosti v tomto prostředí nejsou nutné pro normální využití v "
+"produkčním prostředí."
 
 #: classes.py:87
 msgid "Testing"
-msgstr ""
+msgstr "Testování"
 
 #: classes.py:172
 msgid "Name"
-msgstr ""
+msgstr "název"
 
 #: classes.py:173
 msgid "App"
-msgstr ""
+msgstr "Aplikace"
 
 #: classes.py:274
 msgid "Need to specify at least one: app_label or module."
-msgstr ""
+msgstr "Je třeba zadat alespoň jeden: app_label nebo modul."
 
 #: classes.py:279
 #, python-format
 msgid "Dependency \"%s\" already registered."
-msgstr ""
+msgstr "Závislost \"%s\" je již zaregistrována."
 
 #: classes.py:305
 #, python-format
 msgid "Installing package: %s... "
-msgstr ""
+msgstr "Instalace balíčku: %s ..."
 
 #: classes.py:310
 msgid "Already installed."
-msgstr ""
+msgstr "Už nainstalováno."
 
 #: classes.py:313 classes.py:318 classes.py:322
 msgid "Complete."
-msgstr ""
+msgstr "Kompletní."
 
 #: classes.py:348
 msgid "Installed and correct version"
-msgstr ""
+msgstr "Nainstalovaná správná verze"
 
 #: classes.py:350
 msgid "Missing or incorrect version"
-msgstr ""
+msgstr "Chybějící nebo nesprávná verze"
 
 #: classes.py:379
 msgid "None"
-msgstr ""
+msgstr "Žádný"
 
 #: classes.py:388
 msgid "Not specified"
-msgstr ""
+msgstr "Nespecifikováno"
 
 #: classes.py:405
 msgid "Patching files... "
-msgstr ""
+msgstr "Opravné soubory ..."
 
 #: classes.py:440
 msgid "Executables that are called directly by the code."
-msgstr ""
+msgstr "Spustitelné soubory, které jsou volány přímo kódem."
 
 #: classes.py:442
 msgid "Binary"
-msgstr ""
+msgstr "Binární"
 
 #: classes.py:459
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
 msgstr ""
+"Knihovny JavaScriptu stažené z registru NPM a použily se pro front-end "
+"funkce."
 
 #: classes.py:462
 msgid "JavaScript"
-msgstr ""
+msgstr "JavaScript"
 
 #: classes.py:496 classes.py:729
 msgid "Downloading... "
-msgstr ""
+msgstr "Stahování ..."
 
 #: classes.py:499
 msgid "Verifying... "
-msgstr ""
+msgstr "Ověření ..."
 
 #: classes.py:502 classes.py:732
 msgid "Extracting... "
-msgstr ""
+msgstr "Probíhá extrakce ..."
 
 #: classes.py:681
 msgid "Python packages downloaded from PyPI."
-msgstr ""
+msgstr "Python balíčky stažené z PyPI."
 
 #: classes.py:683
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #: classes.py:710
 msgid "Fonts downloaded from fonts.googleapis.com."
-msgstr ""
+msgstr "Fonty stažené z fonts.googleapis.com."
 
 #: classes.py:712
 msgid "Google font"
-msgstr ""
+msgstr "Písmo Google"
 
 #: classes.py:791
 msgid "Declared in app"
-msgstr ""
+msgstr "Deklarováno v aplikaci"
 
 #: classes.py:792
 msgid "Show dependencies by the app that declared them."
-msgstr ""
+msgstr "Zobrazit závislosti podle aplikace, která je deklarovala."
 
 #: classes.py:796
 msgid "Class"
-msgstr ""
+msgstr "Třída"
 
 #: classes.py:797
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
+"Zobrazit různé třídy závislostí. Třídy jsou obvykle rozděleny podle jazyka "
+"nebo typu souboru závislosti."
 
 #: classes.py:802
 msgid "State"
-msgstr ""
+msgstr "Stav"
 
 #: classes.py:803
 msgid ""
@@ -226,24 +240,29 @@ msgid ""
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
+"Zobrazit různé stavy závislostí. True znamená, že jsou nainstalovány "
+"závislosti a mají správnou verzi. False znamená, že chybí závislosti nebo je"
+" přítomna nesprávná verze."
 
 #: classes.py:810
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
+"Závislosti vyžadované pro prostředí nemusí být vyžadovány pro jiné. Příklad "
+"prostředí: Výroba, vývoj."
 
 #: links.py:11 views.py:35
 msgid "Check for updates"
-msgstr ""
+msgstr "Kontrola aktualizací"
 
 #: links.py:17
 msgid "Groups"
-msgstr ""
+msgstr "Skupiny"
 
 #: links.py:25
 msgid "Entries"
-msgstr ""
+msgstr "Příspěvky"
 
 #: links.py:33
 msgid "Details"
@@ -251,68 +270,72 @@ msgstr "Detail"
 
 #: links.py:38
 msgid "Dependencies licenses"
-msgstr ""
+msgstr "Licence závislostí"
 
 #: management/commands/generaterequirements.py:16
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
+"Čárkami oddělené názvy závislostí, které mají být vyloučeny z vygenerovaného"
+" seznamu."
 
 #: management/commands/generaterequirements.py:22
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
+"Čárkami oddělené názvy závislostí, které se mají zobrazit v seznamu, přičemž"
+" vylučují všechny ostatní."
 
 #: management/commands/installjavascript.py:15
 msgid "Process a specific app."
-msgstr ""
+msgstr "Zpracovat konkrétní aplikaci."
 
 #: management/commands/installjavascript.py:19
 msgid "Force installation even if already installed."
-msgstr ""
+msgstr "Vynutit instalaci, i když již byla nainstalována."
 
 #: permissions.py:10
 msgid "View dependencies"
-msgstr ""
+msgstr "Zobrazit závislosti"
 
 #: views.py:23
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
+msgstr "Verze, kterou používáte, je zastaralá. Poslední verze je %s"
 
 #: views.py:28
 msgid "It is not possible to determine the latest version available."
-msgstr ""
+msgstr "Není možné určit nejnovější dostupnou verzi."
 
 #: views.py:32
 msgid "Your version is up-to-date."
-msgstr ""
+msgstr "Vaše verze je aktuální."
 
 #: views.py:49
 #, python-format
 msgid "Entries for dependency group: %s"
-msgstr ""
+msgstr "Položky pro skupinu závislostí: %s"
 
 #: views.py:62 views.py:107
 #, python-format
 msgid "Group %s not found."
-msgstr ""
+msgstr "Skupina %s nebyla nalezena."
 
 #: views.py:75
 msgid "Dependency groups"
-msgstr ""
+msgstr "Skupiny závislostí"
 
 #: views.py:95
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
-msgstr ""
+msgstr "Skupina závislostí a položka: %(group)s, %(entry)s"
 
 #: views.py:119
 #, python-format
 msgid "Entry %s not found."
-msgstr ""
+msgstr "Záznam %s nebyl nalezen."
 
 #: views.py:137
 msgid "Other packages licenses"
-msgstr ""
+msgstr "Licence na další balíčky"
