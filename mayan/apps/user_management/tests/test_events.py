@@ -16,8 +16,8 @@ from ..events import (
 )
 
 from .mixins import (
-    GroupAPITestMixin, GroupTestMixin, GroupViewTestMixin, UserAPITestMixin,
-    UserViewTestMixin
+    GroupAPIViewTestMixin, GroupTestMixin, GroupViewTestMixin,
+    UserAPIViewTestMixin, UserViewTestMixin
 )
 
 
@@ -56,7 +56,8 @@ class GroupEventsViewTestCase(
 
 
 class GroupEventsAPITestCase(
-    GroupAPITestMixin, GroupTestMixin, GroupViewTestMixin, BaseAPITestCase
+    GroupAPIViewTestMixin, GroupTestMixin, GroupViewTestMixin,
+    BaseAPITestCase
 ):
     def test_group_create_event_from_api_view(self):
         self.grant_permission(
@@ -135,7 +136,7 @@ class UserEventsTestCase(GenericViewTestCase):
 
 
 class UserEventsViewTestCase(
-    UserAPITestMixin, UserViewTestMixin, GenericViewTestCase
+    UserAPIViewTestMixin, UserViewTestMixin, GenericViewTestCase
 ):
     def test_user_create_event_from_view(self):
         self.grant_permission(
@@ -171,7 +172,7 @@ class UserEventsViewTestCase(
 
 
 class UserEventsAPITestCase(
-    UserAPITestMixin, UserViewTestMixin, BaseAPITestCase
+    UserAPIViewTestMixin, UserViewTestMixin, BaseAPITestCase
 ):
     def test_user_create_event_from_api_view(self):
         self.grant_permission(
