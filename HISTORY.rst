@@ -11,6 +11,7 @@
   Instead return always False.
 - Enable the main menu workflow runtime link when the workflow view
   permission is granted to at least one workflow.
+- Make Postgres container wait delay configurable.
 
 3.2.8 (2019-10-01)
 ==================
