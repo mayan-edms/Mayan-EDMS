@@ -4,10 +4,10 @@ import time
 
 from django.urls import reverse
 
-from ..links import (
-    link_document_restore, link_document_version_download,
-    link_document_version_revert
+from ..links.document_version_links import (
+    link_document_version_download, link_document_version_revert
 )
+from ..links.trashed_document_links import link_document_restore
 from ..models import DeletedDocument
 from ..permissions import (
     permission_document_download, permission_document_restore,

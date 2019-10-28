@@ -17,7 +17,7 @@ from ..forms import DocumentTypeFilenameForm_create
 from ..icons import (
     icon_document_type_filename, icon_document_type_setup
 )
-from ..links import (
+from ..links.document_type_links import (
     link_document_type_create, link_document_type_filename_create
 )
 from ..models import DocumentType, DocumentTypeFilename

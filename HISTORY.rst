@@ -98,6 +98,7 @@
 - Update API status code on insufficient access for the apps:
   indexes, parsing, documents, metadata, ocr, permission,
   user management.
+- Split document app links.
 
 3.2.9 (2019-XX-XX)
 ==================
