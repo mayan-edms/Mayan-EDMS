@@ -9,6 +9,8 @@ from mayan.apps.storage.utils import mkdtemp
 
 from ..classes import StagingFile
 
+from .mocks import MockStagingFolder
+
 
 class StagingFileTestCase(BaseTestCase):
     def test_unicode_staging_file(self):
@@ -16,9 +18,6 @@ class StagingFileTestCase(BaseTestCase):
         shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, temporary_directory)
 
         filename = os.path.basename(TEST_NON_ASCII_DOCUMENT_PATH)
-
-        class MockStagingFolder(object):
-            self.folder_path = temporary_directory
 
         staging_file_1 = StagingFile(
             staging_folder=MockStagingFolder(),

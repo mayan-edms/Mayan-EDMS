@@ -25,9 +25,6 @@ from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models.email_sources import EmailBaseModel, IMAPEmail, POP3Email
 from ..models.watch_folder_sources import WatchFolderSource
 
-from .mocks import MockIMAPServer
-
-
 from .literals import (
     TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_EMAIL_BASE64_FILENAME,
     TEST_EMAIL_BASE64_FILENAME_FROM, TEST_EMAIL_BASE64_FILENAME_SUBJECT,
@@ -36,7 +33,7 @@ from .literals import (
     TEST_WATCHFOLDER_SUBFOLDER
 )
 from .mixins import SourceTestMixin
-from .mocks import MockIMAPServer
+from .mocks import MockIMAPServer, MockPOP3Mailbox
 
 
 class CompressedUploadsTestCase(SourceTestMixin, GenericDocumentTestCase):
@@ -284,33 +281,9 @@ class IMAPSourceTestCase(GenericDocumentTestCase):
 class POP3SourceTestCase(GenericDocumentTestCase):
     auto_upload_document = False
 
-    class MockMailbox(object):
-        def dele(self, which):
-            return
-
-        def getwelcome(self):
-            return
-
-        def list(self, which=None):
-            return (None, ['1 test'])
-
-        def user(self, user):
-            return
-
-        def pass_(self, pswd):
-            return
-
-        def quit(self):
-            return
-
-        def retr(self, which=None):
-            return (
-                1, [TEST_EMAIL_BASE64_FILENAME]
-            )
-
     @mock.patch('poplib.POP3_SSL', autospec=True)
     def test_download_document(self, mock_poplib):
-        mock_poplib.return_value = POP3SourceTestCase.MockMailbox()
+        mock_poplib.return_value = MockPOP3Mailbox()
         self.source = POP3Email.objects.create(
             document_type=self.test_document_type, label='', host='',
             password='', username=''
