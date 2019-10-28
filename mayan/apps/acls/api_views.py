@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics
+from mayan.apps.rest_api import generics
 
 from .models import AccessControlList
 from .permissions import permission_acl_edit, permission_acl_view

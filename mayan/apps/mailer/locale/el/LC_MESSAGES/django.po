@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:15-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
+"POT-Creation-Date: 2019-10-27 14:59-0400\n"
+"PO-Revision-Date: 2019-10-27 19:04+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -63,7 +63,7 @@ msgstr "Σώμα"
 msgid "The email profile that will be used to send this email."
 msgstr "Το προφίλ που θα χρησιμοποιηθεί για την αποστολή αυτού του μηνύματος."
 
-#: forms.py:71 views.py:238
+#: forms.py:71 views.py:239
 msgid "Mailing profile"
 msgstr "Προφίλ ηλεκτρονικού ταχυδρομείου"
 
@@ -107,7 +107,7 @@ msgstr "Λίστα προφίλ ηλεκτρονικού ταχυδρομείο�
 msgid "Mailing profiles"
 msgstr "Προφίλ ηλεκτρονικού ταχυδρομείου"
 
-#: links.py:74 views.py:257
+#: links.py:74 views.py:261
 msgid "Test"
 msgstr "Δοκιμή"
 
@@ -343,69 +343,73 @@ msgstr ""
 msgid "%(email)s is not a valid email address."
 msgstr ""
 
-#: views.py:37
+#: views.py:38
 msgid "Document mailing error log"
 msgstr "Ημερολόγιοκαταγραφής σφαλμάτων ηλεκτρονικής ταχυδρόμησης."
 
-#: views.py:49
+#: views.py:50
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "%(count)d έγγραφο στην λίστα προς παράδοση"
 
-#: views.py:51
+#: views.py:52
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "%(count)d έγγραφα στην λίστα προς παράδοση"
 
-#: views.py:62
+#: views.py:63
 msgid "Send"
 msgstr "Αποστολή"
 
-#: views.py:108
+#: views.py:109
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "%(count)d σύνδεσμος εγγράφου προς παράδοση"
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "%(count)d σύνδεσμοι εγγράφων προς παράδοση"
 
-#: views.py:119
+#: views.py:120
 msgid "New mailing profile backend selection"
 msgstr ""
 
-#: views.py:151
+#: views.py:152
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Δημιουργία ενός \"%s\"  προφίλ ηλεκτρονικού ταχυδρομείου"
 
-#: views.py:177
+#: views.py:178
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Διαγραφή προφίλ ηλεκτρονικού ταχυδρομείου: %s"
 
-#: views.py:188
+#: views.py:189
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Τροποποίηση προφίλ ηλεκτρονικού ταχυδρομείου: %s"
 
-#: views.py:211
+#: views.py:212
 #, python-format
 msgid "Error log for: %s"
 msgstr ""
 
-#: views.py:233
+#: views.py:234
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
 msgstr ""
 
-#: views.py:237
+#: views.py:238
 msgid "No mailing profiles available"
 msgstr ""
 
-#: views.py:258
+#: views.py:253
+msgid "Test email sent."
+msgstr ""
+
+#: views.py:262
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Δοκιμή προφίλ ηλεκτρονικού ταχυδρομείου: %s"

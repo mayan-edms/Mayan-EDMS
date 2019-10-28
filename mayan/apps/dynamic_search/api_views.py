@@ -2,10 +2,9 @@ from __future__ import unicode_literals
 
 from django.utils.encoding import force_text
 
-from rest_framework import generics
 from rest_framework.exceptions import ParseError
 
-from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
+from mayan.apps.rest_api import generics
 
 from .classes import SearchModel
 from .mixins import SearchModelMixin
@@ -16,8 +15,6 @@ class APISearchView(SearchModelMixin, generics.ListAPIView):
     """
     get: Perform a search operation
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
-
     def get_queryset(self):
         search_model = self.get_search_model()
 
@@ -48,8 +45,6 @@ class APIAdvancedSearchView(SearchModelMixin, generics.ListAPIView):
     """
     get: Perform an advanced search operation
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
-
     def get_queryset(self):
         self.search_model = self.get_search_model()
 

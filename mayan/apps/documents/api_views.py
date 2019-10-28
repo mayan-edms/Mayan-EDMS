@@ -7,12 +7,11 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.cache import cache_control, patch_cache_control
 
 from django_downloadview import DownloadMixin, VirtualFile
-from rest_framework import generics, status
+from rest_framework import status
 from rest_framework.response import Response
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
-from mayan.apps.rest_api.permissions import MayanPermission
+from mayan.apps.rest_api import generics
 
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (
@@ -49,9 +48,7 @@ class APITrashedDocumentListView(generics.ListAPIView):
     """
     Returns a list of all the trashed documents.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_view,)}
-    permission_classes = (MayanPermission,)
     queryset = DeletedDocument.objects.all()
     serializer_class = DeletedDocumentSerializer
 
@@ -66,7 +63,6 @@ class APIDeletedDocumentView(generics.RetrieveDestroyAPIView):
         'DELETE': (permission_document_delete,),
         'GET': (permission_document_view,)
     }
-    permission_classes = (MayanPermission,)
     queryset = DeletedDocument.objects.all()
     serializer_class = DeletedDocumentSerializer
 
@@ -78,7 +74,6 @@ class APIDeletedDocumentRestoreView(generics.GenericAPIView):
     mayan_object_permissions = {
         'POST': (permission_document_restore,)
     }
-    permission_classes = (MayanPermission,)
     queryset = DeletedDocument.objects.all()
 
     def get_serializer(self, *args, **kwargs):
@@ -99,7 +94,6 @@ class APIDocumentDownloadView(DownloadMixin, generics.RetrieveAPIView):
     mayan_object_permissions = {
         'GET': (permission_document_download,)
     }
-    permission_classes = (MayanPermission,)
     queryset = Document.objects.all()
 
     def get_encoding(self):
@@ -127,9 +121,7 @@ class APIDocumentListView(generics.ListCreateAPIView):
     get: Returns a list of all the documents.
     post: Create a new document.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_view,)}
-    permission_classes = (MayanPermission,)
     queryset = Document.objects.all()
 
     def get_serializer(self, *args, **kwargs):
@@ -373,10 +365,8 @@ class APIDocumentTypeListView(generics.ListCreateAPIView):
     get: Returns a list of all the document types.
     post: Create a new document type.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_type_view,)}
     mayan_view_permissions = {'POST': (permission_document_type_create,)}
-    permission_classes = (MayanPermission,)
     queryset = DocumentType.objects.all()
     serializer_class = DocumentTypeSerializer
 
@@ -406,7 +396,6 @@ class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
         'PATCH': (permission_document_type_edit,),
         'DELETE': (permission_document_type_delete,)
     }
-    permission_classes = (MayanPermission,)
     queryset = DocumentType.objects.all()
 
     def get_serializer(self, *args, **kwargs):
@@ -426,7 +415,6 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
     """
     Returns a list of all the documents of a particular document type.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_view,)}
     serializer_class = DocumentSerializer
 
@@ -504,7 +492,6 @@ class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
         'PATCH': (permission_document_properties_edit,),
         'DELETE': (permission_document_trash,)
     }
-    permission_classes = (MayanPermission,)
     queryset = Document.objects.all()
 
     def get_serializer(self, *args, **kwargs):
@@ -563,11 +550,9 @@ class APIDocumentVersionsListView(generics.ListCreateAPIView):
     get: Return a list of the selected document's versions.
     post: Create a new document version.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_document_version_view,),
     }
-    permission_classes = (MayanPermission,)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

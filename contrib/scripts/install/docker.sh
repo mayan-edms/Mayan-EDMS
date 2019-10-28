@@ -21,6 +21,7 @@ set -e
 : ${DOCKER_POSTGRES_CONTAINER:=mayan-edms-postgres}
 : ${DOCKER_POSTGRES_VOLUME:=/docker-volumes/mayan-edms/postgres}
 : ${DOCKER_POSTGRES_PORT:=5432}
+: ${DOCKER_POSTGRES_DELAY:=10}
 : ${DOCKER_REDIS_IMAGE:=redis:5.0-alpine}
 : ${DOCKER_REDIS_CONTAINER:=mayan-edms-redis}
 : ${DOCKER_REDIS_PORT:=6379}
@@ -57,6 +58,7 @@ echo "DOCKER_POSTGRES_IMAGE: $DOCKER_POSTGRES_IMAGE"
 echo "DOCKER_POSTGRES_CONTAINER: $DOCKER_POSTGRES_CONTAINER"
 echo "DOCKER_POSTGRES_VOLUME: $DOCKER_POSTGRES_VOLUME"
 echo "DOCKER_POSTGRES_PORT: $DOCKER_POSTGRES_PORT"
+echo "DOCKER_POSTGRES_DELAY: $DOCKER_POSTGRES_DELAY"
 echo "DOCKER_REDIS_IMAGE: $DOCKER_REDIS_IMAGE"
 echo "DOCKER_REDIS_CONTAINER: $DOCKER_REDIS_CONTAINER"
 echo "DOCKER_REDIS_PORT: $DOCKER_REDIS_PORT"
@@ -166,8 +168,8 @@ redis-server \
 >/dev/null
 echo "Done"
 
-echo -n "* Waiting for the PostgreSQL container to be ready (10 seconds)..."
-sleep 10
+echo -n "* Waiting for the PostgreSQL container to be ready (${DOCKER_POSTGRES_DELAY} seconds)..."
+sleep $DOCKER_POSTGRES_DELAY
 echo "Done"
 
 echo -n "* Deploying Mayan EDMS container..."

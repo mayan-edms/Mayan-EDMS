@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:20-0400\n"
+"POT-Creation-Date: 2019-10-27 15:00-0400\n"
 "PO-Revision-Date: 2019-07-01 05:59+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
-#: views.py:627
+#: views.py:628
 msgid "Sources"
 msgstr "Avoti"
 
@@ -72,7 +72,7 @@ msgstr "Paplašiniet saspiestos failus"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Augšupielādējiet saspiestā faila failus kā atsevišķus dokumentus"
 
-#: forms.py:68 views.py:482
+#: forms.py:68 views.py:483
 msgid "Staging file"
 msgstr "Pakāpju fails"
 
@@ -629,41 +629,41 @@ msgstr "Faili pieturvietā"
 msgid "Scan"
 msgstr "Skenēšana"
 
-#: views.py:279
+#: views.py:280
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr "Kļūda, izpildot dokumenta augšupielādes uzdevumu; %(exception)s, %(exception_class)s"
 
-#: views.py:290
+#: views.py:291
 msgid "New document queued for upload and will be available shortly."
 msgstr "Jauns dokuments tiek rindā augšupielādēts un drīz būs pieejams."
 
-#: views.py:341
+#: views.py:342
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Augšupielādējiet \"%(document_type)s\" tipa dokumentu no avota: %(source)s"
 
-#: views.py:375
+#: views.py:376
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "Dokuments \"%s\" ir bloķēts jaunu versiju augšupielādei."
 
-#: views.py:428
+#: views.py:429
 msgid "New document version queued for upload and will be available shortly."
 msgstr "Jauna dokumenta versija tiek augšupielādēta rindā un būs pieejama drīz."
 
-#: views.py:469
+#: views.py:470
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr "Augšupielādējiet jaunu versiju no avota: %s"
 
-#: views.py:483
+#: views.py:484
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Vai izdzēst failu \"%s\"?"
 
-#: views.py:504
+#: views.py:505
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -671,31 +671,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr "Tas veiks avota pārbaudes kodu pat tad, ja avots nav iespējots. Avoti, kas dzēš saturu pēc lejupielādes, to nedarīs, kamēr tie tiks pārbaudīti. Pārbaudes laikā pārbaudiet avota kļūdas žurnālu. Veiksmīgs tests notīra kļūdas žurnālu."
 
-#: views.py:510
+#: views.py:511
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Izmantot avota \"%s\" pārbaudi?"
 
-#: views.py:527
+#: views.py:528
 msgid "Source check queued."
 msgstr "Avota pārbaude rindā."
 
-#: views.py:544
+#: views.py:545
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Izveidot jaunu avota veidu: %s"
 
-#: views.py:566
+#: views.py:567
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Vai izdzēst avotu: %s?"
 
-#: views.py:587
+#: views.py:588
 #, python-format
 msgid "Edit source: %s"
 msgstr "Rediģēt avotu: %s"
 
-#: views.py:621
+#: views.py:622
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -703,7 +703,7 @@ msgid ""
 "intervention."
 msgstr "Avoti nodrošina līdzekļus dokumentu augšupielādēšanai. Daži avoti, piemēram, tīmekļa veidlapa, ir interaktīvi un pieprasa, lai lietotājs to izmantotu. Citi, piemēram, e-pasta avoti, ir automātiski un darbojas fonā bez lietotāja iejaukšanās."
 
-#: views.py:626
+#: views.py:627
 msgid "No sources available"
 msgstr "Nav pieejami avoti"
 

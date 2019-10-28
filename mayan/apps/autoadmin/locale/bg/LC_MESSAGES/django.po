@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2019
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:07-0400\n"
+"POT-Creation-Date: 2019-10-27 14:56-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
-"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>, 2019\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,43 +24,48 @@ msgstr ""
 
 #: apps.py:16 settings.py:9
 msgid "Auto administrator"
-msgstr ""
+msgstr "Автоматичен администратор"
 
 #: auth/allauth.py:54
 msgid ""
 "Welcome Admin! You have been given superuser privileges. Use them with "
 "caution."
 msgstr ""
+"Добре дошли Админ! Получили сте привилегии за свръхпотребител. Използвайте "
+"ги с повишено внимание."
 
 #: models.py:15
 msgid "Account"
-msgstr ""
+msgstr "Акаунт"
 
 #: models.py:18
 msgid "Password"
-msgstr ""
+msgstr "Парола"
 
 #: models.py:21
 msgid "Password hash"
-msgstr ""
+msgstr "Хеш на парола"
 
 #: models.py:27
 msgid "Autoadmin properties"
-msgstr ""
+msgstr "Свойства за автоматично администриране"
 
 #: settings.py:14
 msgid "Sets the email of the automatically created super user account."
-msgstr ""
+msgstr "Задава имейла на автоматично създадения супер потребителски акаунт."
 
 #: settings.py:20
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
 msgstr ""
+"Паролата на автоматично създадения супер потребителски акаунт. Ако е равна "
+"на None, паролата се генерира на случаен принцип."
 
 #: settings.py:27
 msgid "The username of the automatically created super user account."
 msgstr ""
+"Потребителското име на автоматично създадения супер потребителски акаунт."
 
 #: templates/autoadmin/credentials.html:11
 msgid "First time login"
@@ -71,10 +77,12 @@ msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
 msgstr ""
+"Току-що завършихте с инсталирането на <strong>%(project_title)s</strong> , "
+"поздравления!"
 
 #: templates/autoadmin/credentials.html:17
 msgid "Login using the following credentials:"
-msgstr "Логване, използвайки следните параметри:"
+msgstr "Влезте, като използвате следните идентификационни данни:"
 
 #: templates/autoadmin/credentials.html:18
 #, python-format
@@ -84,7 +92,7 @@ msgstr "Потребителско име: <strong>%(account)s</strong>"
 #: templates/autoadmin/credentials.html:19
 #, python-format
 msgid "Email: <strong>%(email)s</strong>"
-msgstr ""
+msgstr "Имейл: <strong>%(email)s</strong>"
 
 #: templates/autoadmin/credentials.html:20
 #, python-format

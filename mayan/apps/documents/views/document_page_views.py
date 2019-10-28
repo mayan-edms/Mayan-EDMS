@@ -20,7 +20,7 @@ from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 
 from ..forms import DocumentPageForm
 from ..icons import icon_document_pages
-from ..links import link_document_pages_reset
+from ..links.document_links import link_document_pages_reset
 from ..models import Document, DocumentPage
 from ..permissions import permission_document_edit, permission_document_view
 from ..settings import (

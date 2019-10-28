@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:15-0400\n"
-"PO-Revision-Date: 2019-07-01 05:54+0000\n"
-"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"POT-Creation-Date: 2019-10-27 14:59-0400\n"
+"PO-Revision-Date: 2019-10-27 19:04+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,7 +64,7 @@ msgstr "Ķermenis"
 msgid "The email profile that will be used to send this email."
 msgstr "E-pasta profils, kas tiks izmantots, lai nosūtītu šo e-pastu."
 
-#: forms.py:71 views.py:238
+#: forms.py:71 views.py:239
 msgid "Mailing profile"
 msgstr "Pasta profils"
 
@@ -108,7 +108,7 @@ msgstr "Pasta profilu profils"
 msgid "Mailing profiles"
 msgstr "Pasta profili"
 
-#: links.py:74 views.py:257
+#: links.py:74 views.py:261
 msgid "Test"
 msgstr "Pārbaude"
 
@@ -344,69 +344,73 @@ msgstr "Dokumenta e-pasta veidlapas veidnes teksts. Var iekļaut HTML."
 msgid "%(email)s is not a valid email address."
 msgstr "%(email)s nav derīga e-pasta adrese."
 
-#: views.py:37
+#: views.py:38
 msgid "Document mailing error log"
 msgstr "Dokumentu sūtīšanas kļūdu žurnāls"
 
-#: views.py:49
+#: views.py:50
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "%(count)d dokuments, kas atrodas rindā, lai nosūtītu e-pastu"
 
-#: views.py:51
+#: views.py:52
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "%(count)d dokumenti, kas atrodas rindā, lai nosūtītu e-pastu"
 
-#: views.py:62
+#: views.py:63
 msgid "Send"
 msgstr "Sūtīt"
 
-#: views.py:108
+#: views.py:109
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "%(count)d dokumentu saite rindā, kas paredzēta e-pasta piegādei"
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "%(count)d dokumentu saites tiek rindas uz e-pasta piegādi"
 
-#: views.py:119
+#: views.py:120
 msgid "New mailing profile backend selection"
 msgstr "Jauna pasta profila backend izvēle"
 
-#: views.py:151
+#: views.py:152
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Izveidojiet adreses profilu \"%s\""
 
-#: views.py:177
+#: views.py:178
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Dzēst pasta profilu: %s"
 
-#: views.py:188
+#: views.py:189
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Rediģēt pasta profilu: %s"
 
-#: views.py:211
+#: views.py:212
 #, python-format
 msgid "Error log for: %s"
 msgstr "Kļūdu žurnāls priekš: %s"
 
-#: views.py:233
+#: views.py:234
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
 msgstr "Pasta profili ir e-pasta konfigurācijas. Pasta profili ļauj sūtīt dokumentus kā pielikumus vai kā saites pa e-pastu."
 
-#: views.py:237
+#: views.py:238
 msgid "No mailing profiles available"
 msgstr "Nav pieejams neviens pasta profils"
 
-#: views.py:258
+#: views.py:253
+msgid "Test email sent."
+msgstr ""
+
+#: views.py:262
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Testa pasta profils: %s"

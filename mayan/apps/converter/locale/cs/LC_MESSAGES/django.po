@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:07-0400\n"
-"PO-Revision-Date: 2019-05-03 05:20+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-27 14:56-0400\n"
+"PO-Revision-Date: 2019-10-15 16:46+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,48 +20,48 @@ msgstr ""
 
 #: apps.py:22 permissions.py:7 settings.py:12
 msgid "Converter"
-msgstr ""
+msgstr "Konvertor"
 
 #: apps.py:31 models.py:57
 msgid "Transformation"
-msgstr ""
+msgstr "Transformace"
 
 #: backends/python.py:175 backends/python.py:181
 #, python-format
 msgid "Exception determining PDF page count; %s"
-msgstr ""
+msgstr "Výjimka určující počet stránek PDF; %s"
 
 #: backends/python.py:195
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
-msgstr ""
+msgstr "Výjimka určující počet stránek pomocí Pillow; %s"
 
 #: classes.py:118
 msgid "LibreOffice not installed or not found."
-msgstr ""
+msgstr "LibreOffice není nainstalován nebo nebyl nalezen."
 
 #: classes.py:201
 msgid "Not an office file format."
-msgstr ""
+msgstr "Nemá formát kancelářského souboru."
 
 #: dependencies.py:16
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr ""
+msgstr "Obslužný program z balíčku poppler-utils používaný k prohlížení souborů PDF."
 
 #: dependencies.py:21
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr ""
+msgstr "Obslužný program z balíčku popper-utils používaný k extrahování stránek ze souborů PDF do obrázků ve formátu PPM."
 
 #: forms.py:28
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr ""
+msgstr "&quot;%s&quot; není platná položka."
 
 #: links.py:36
 msgid "Create new transformation"
-msgstr ""
+msgstr "Vytvořit novou transformaci"
 
 #: links.py:42
 msgid "Delete"
@@ -72,134 +73,134 @@ msgstr "Editovat"
 
 #: links.py:53 models.py:58
 msgid "Transformations"
-msgstr ""
+msgstr "Transformace"
 
 #: models.py:37
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
+msgstr "Pořadí, ve kterém budou provedeny transformace. Pokud zůstane nezměněna, bude přiřazena hodnota automatického třídění."
 
 #: models.py:39
 msgid "Order"
-msgstr ""
+msgstr "Třídění"
 
 #: models.py:43
 msgid "Name"
-msgstr ""
+msgstr "název"
 
 #: models.py:47
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
+msgstr "Zadejte argumenty pro transformaci jako slovník YAML. tj .: {&quot;stupně&quot;: 180}"
 
 #: models.py:49
 msgid "Arguments"
-msgstr ""
+msgstr "Argumenty"
 
 #: permissions.py:10
 msgid "Create new transformations"
-msgstr ""
+msgstr "Vytvořit nové transformace"
 
 #: permissions.py:13
 msgid "Delete transformations"
-msgstr ""
+msgstr "Odstranit transformace"
 
 #: permissions.py:16
 msgid "Edit transformations"
-msgstr ""
+msgstr "Upravit transformace"
 
 #: permissions.py:19
 msgid "View existing transformations"
-msgstr ""
+msgstr "Zobrazit existující transformace"
 
 #: settings.py:16
 msgid "Graphics conversion backend to use."
-msgstr ""
+msgstr "Grafické převody backend-u k použití."
 
 #: settings.py:35
 msgid "Configuration options for the graphics conversion backend."
-msgstr ""
+msgstr "Možnosti konfigurace pro backend grafické konverze."
 
 #: transformations.py:81
 msgid "Crop"
-msgstr ""
+msgstr "Oříznutí"
 
 #: transformations.py:156
 msgid "Flip"
-msgstr ""
+msgstr "Překlopit"
 
 #: transformations.py:167
 msgid "Gaussian blur"
-msgstr ""
+msgstr "Gaussovské rozostření"
 
 #: transformations.py:177
 msgid "Line art"
-msgstr ""
+msgstr "Kresba tužkou"
 
 #: transformations.py:188
 msgid "Mirror"
-msgstr ""
+msgstr "Zrcadlo"
 
 #: transformations.py:199
 msgid "Resize"
-msgstr ""
+msgstr "Změnit velikost"
 
 #: transformations.py:226
 msgid "Rotate"
-msgstr ""
+msgstr "Otočit"
 
 #: transformations.py:252
 msgid "Rotate 90 degrees"
-msgstr ""
+msgstr "Otočit o 90 stupňů"
 
 #: transformations.py:263
 msgid "Rotate 180 degrees"
-msgstr ""
+msgstr "Otočit o 180 stupňů"
 
 #: transformations.py:274
 msgid "Rotate 270 degrees"
-msgstr ""
+msgstr "Otočit o 270 stupňů"
 
 #: transformations.py:284
 msgid "Unsharp masking"
-msgstr ""
+msgstr "Neostré maskování "
 
 #: transformations.py:300
 msgid "Zoom"
-msgstr ""
+msgstr "Zoom"
 
 #: validators.py:26
 msgid "Enter a valid YAML value."
-msgstr ""
+msgstr "Zadejte platnou hodnotu YAML."
 
 #: views.py:72
 #, python-format
 msgid "Create new transformation for: %s"
-msgstr ""
+msgstr "Vytvořit novou transformaci pro: %s"
 
 #: views.py:127
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
+msgstr "Smazat transformaci &quot;%(transformation)s&quot; pro: %(content_object)s?"
 
 #: views.py:171
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
+msgstr "Upravit transformaci &quot;%(transformation)s&quot; pro: %(content_object)s"
 
 #: views.py:227
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr ""
+msgstr "Transformace umožňují změnu vizuálního vzhledu dokumentů bez provedení trvalých změn v samotném souboru dokumentu."
 
 #: views.py:231
 msgid "No transformations"
-msgstr ""
+msgstr "Žádné transformace"
 
 #: views.py:232
 #, python-format
 msgid "Transformations for: %s"
-msgstr ""
+msgstr "Transformace pro: %s"

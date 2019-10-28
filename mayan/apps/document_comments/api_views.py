@@ -2,10 +2,9 @@ from __future__ import absolute_import, unicode_literals
 
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics
-
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
+from mayan.apps.rest_api import generics
 
 from .permissions import (
     permission_document_comment_create, permission_document_comment_delete,

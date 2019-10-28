@@ -3,8 +3,10 @@ from __future__ import absolute_import, unicode_literals
 import os
 
 from django.template import loader
-from django.utils.html import mark_safe
+from django.template.base import Template
+from django.template.context import Context
 from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_dump, yaml_load
@@ -46,8 +48,10 @@ class PlatformTemplate(object):
     context = {}
     context_defaults = {}
     label = None
+    name = None
     settings = None
     template_name = None
+    template_string = None
     variables = None
 
     @classmethod
@@ -109,10 +113,15 @@ class PlatformTemplate(object):
             context.update(
                 yaml_load(stream=context_string)
             )
-        return loader.render_to_string(
-            template_name=self.get_template_name(),
-            context=context
-        )
+
+        if self.template_string:
+            template = Template(template_string=self.template_string)
+            return template.render(context=Context(dict_=context))
+        else:
+            return loader.render_to_string(
+                template_name=self.get_template_name(),
+                context=context
+            )
 
 
 class PlatformTemplateSupervisord(PlatformTemplate):
@@ -168,9 +177,7 @@ class PlatformTemplateSupervisord(PlatformTemplate):
     )
 
     def get_context(self):
-        return {
-            'workers': Worker.all()
-        }
+        return {'workers': Worker.all()}
 
 
 class PlatformTemplateSupervisordDocker(PlatformTemplate):

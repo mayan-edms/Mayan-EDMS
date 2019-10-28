@@ -2,11 +2,10 @@ from __future__ import absolute_import, unicode_literals
 
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics
 from rest_framework.response import Response
 
 from mayan.apps.documents.models import Document
-from mayan.apps.rest_api.permissions import MayanPermission
+from mayan.apps.rest_api import generics
 
 from .models import DocumentVersionPageContent
 from .permissions import permission_content_view
@@ -21,7 +20,6 @@ class APIDocumentPageContentView(generics.RetrieveAPIView):
     mayan_object_permissions = {
         'GET': (permission_content_view,),
     }
-    permission_classes = (MayanPermission,)
     serializer_class = DocumentPageContentSerializer
 
     def get_document(self):

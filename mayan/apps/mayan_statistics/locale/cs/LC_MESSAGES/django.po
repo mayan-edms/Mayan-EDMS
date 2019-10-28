@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:14-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-27 14:58-0400\n"
+"PO-Revision-Date: 2019-10-18 11:50+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,102 +20,102 @@ msgstr ""
 
 #: apps.py:23 links.py:33 permissions.py:7 queues.py:9
 msgid "Statistics"
-msgstr ""
+msgstr "Statistika"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
 #: apps.py:32
 msgid "Schedule"
-msgstr ""
+msgstr "Plán"
 
 #: apps.py:37
 msgid "Last update"
-msgstr ""
+msgstr "Poslední aktualizace"
 
 #: classes.py:150
 msgid "Never"
-msgstr ""
+msgstr "Nikdy"
 
 #: links.py:12
 msgid "Queue"
-msgstr ""
+msgstr "Fronta"
 
 #: links.py:17
 msgid "View"
-msgstr ""
+msgstr "Pohled"
 
 #: links.py:22
 msgid "Namespace details"
-msgstr ""
+msgstr "Podrobnosti o oboru názvů"
 
 #: links.py:27
 msgid "Namespace list"
-msgstr ""
+msgstr "Seznam jmenných prostorů"
 
 #. Translators: 'Slug' refers to the URL valid ID of the statistic
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
 #: models.py:14
 msgid "Slug"
-msgstr ""
+msgstr "Slug"
 
 #: models.py:16
 msgid "Date time"
-msgstr ""
+msgstr "Datum a čas"
 
 #: models.py:18
 msgid "Data"
-msgstr ""
+msgstr "Data"
 
 #: models.py:21
 msgid "Statistics result"
-msgstr ""
+msgstr "Výsledek statistiky"
 
 #: models.py:22
 msgid "Statistics results"
-msgstr ""
+msgstr "Statistické výsledky"
 
 #: permissions.py:10
 msgid "View statistics"
-msgstr ""
+msgstr "Zobrazit statistiky"
 
 #: queues.py:13
 msgid "Execute statistic"
-msgstr ""
+msgstr "Spusťte statistiku"
 
 #: templates/statistics/renderers/chartjs/line.html:14
 msgid "No data available."
-msgstr ""
+msgstr "Nejsou k dispozici žádná data."
 
 #: templates/statistics/renderers/chartjs/line.html:16
 #, python-format
 msgid "Last update: %(datetime)s"
-msgstr ""
+msgstr "Poslední aktualizace: %(datetime)s"
 
 #: views.py:17
 msgid "Statistics namespaces"
-msgstr ""
+msgstr "Statistika oborů názvů"
 
 #: views.py:33
 #, python-format
 msgid "Namespace details for: %s"
-msgstr ""
+msgstr "Podrobnosti o oboru názvů pro: %s"
 
 #: views.py:55
 #, python-format
 msgid "Results for: %s"
-msgstr ""
+msgstr "Výsledky hledání pro: %s"
 
 #: views.py:62 views.py:88
 #, python-format
 msgid "Statistic \"%s\" not found."
-msgstr ""
+msgstr "Statistické údaje „%s“ nebyly nalezeny."
 
 #: views.py:80
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
-msgstr ""
+msgstr "Fronta statistiky \"%s\" má být aktualizována?"
 
 #: views.py:94
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
-msgstr ""
+msgstr "Statistiky \"%s\" byly úspěšně zařazeny do fronty pro aktualizaci."

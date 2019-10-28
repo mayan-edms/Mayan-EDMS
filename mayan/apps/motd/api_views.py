@@ -1,9 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from rest_framework import generics
-
-from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
-from mayan.apps.rest_api.permissions import MayanPermission
+from mayan.apps.rest_api import generics
 
 from .models import Message
 from .permissions import (
@@ -18,10 +15,8 @@ class APIMessageListView(generics.ListCreateAPIView):
     get: Returns a list of all the messages.
     post: Create a new message.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_message_view,)}
     mayan_view_permissions = {'POST': (permission_message_create,)}
-    permission_classes = (MayanPermission,)
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
 
@@ -33,7 +28,6 @@ class APIMessageView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected message.
     put: Edit the selected message.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'DELETE': (permission_message_delete,),
         'GET': (permission_message_view,),

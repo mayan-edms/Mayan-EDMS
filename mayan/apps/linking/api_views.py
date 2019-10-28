@@ -2,13 +2,10 @@ from __future__ import absolute_import, unicode_literals
 
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics
-
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
-from mayan.apps.rest_api.permissions import MayanPermission
+from mayan.apps.rest_api import generics
 
 from .models import SmartLink
 from .permissions import (
@@ -26,9 +23,7 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
     """
     get: Returns a list of the smart link documents that apply to the document.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_view,)}
-    permission_classes = (MayanPermission,)
     serializer_class = ResolvedSmartLinkDocumentSerializer
 
     def get_document(self):
@@ -81,10 +76,8 @@ class APIResolvedSmartLinkView(generics.RetrieveAPIView):
     """
     get: Return the details of the selected resolved smart link.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     lookup_url_kwarg = 'smart_link_pk'
     mayan_object_permissions = {'GET': (permission_smart_link_view,)}
-    permission_classes = (MayanPermission,)
     serializer_class = ResolvedSmartLinkSerializer
 
     def get_document(self):
@@ -119,9 +112,7 @@ class APIResolvedSmartLinkListView(generics.ListAPIView):
     """
     get: Returns a list of the smart links that apply to the document.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_smart_link_view,)}
-    permission_classes = (MayanPermission,)
     serializer_class = ResolvedSmartLinkSerializer
 
     def get_document(self):
@@ -242,10 +233,8 @@ class APISmartLinkListView(generics.ListCreateAPIView):
     get: Returns a list of all the smart links.
     post: Create a new smart link.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_smart_link_view,)}
     mayan_view_permissions = {'POST': (permission_smart_link_create,)}
-    permission_classes = (MayanPermission,)
     queryset = SmartLink.objects.all()
 
     def get_serializer(self, *args, **kwargs):
@@ -268,7 +257,6 @@ class APISmartLinkView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected smart link.
     put: Edit the selected smart link.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'DELETE': (permission_smart_link_delete,),
         'GET': (permission_smart_link_view,),

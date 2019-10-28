@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:18-0400\n"
-"PO-Revision-Date: 2019-06-29 06:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-27 15:00-0400\n"
+"PO-Revision-Date: 2019-10-18 10:50+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,27 +24,27 @@ msgstr "Práva"
 
 #: classes.py:84
 msgid "Insufficient permissions."
-msgstr ""
+msgstr "Nedostatečná oprávnění."
 
 #: dashboard_widgets.py:15
 msgid "Total roles"
-msgstr ""
+msgstr "Celkem rolí"
 
 #: events.py:12
 msgid "Role created"
-msgstr ""
+msgstr "Role byla vytvořena"
 
 #: events.py:15
 msgid "Role edited"
-msgstr ""
+msgstr "Role byla upravena"
 
 #: links.py:16 links.py:40 models.py:113 views.py:165
 msgid "Roles"
-msgstr ""
+msgstr "Role"
 
 #: links.py:23
 msgid "Create new role"
-msgstr ""
+msgstr "Vytvořit novou roli"
 
 #: links.py:29
 msgid "Delete"
@@ -55,23 +56,23 @@ msgstr "Editovat"
 
 #: links.py:45 models.py:105
 msgid "Groups"
-msgstr ""
+msgstr "Skupiny"
 
 #: links.py:52
 msgid "Role permissions"
-msgstr ""
+msgstr "Oprávnění rolí"
 
 #: models.py:27
 msgid "Namespace"
-msgstr ""
+msgstr "Jmenný prostor"
 
 #: models.py:28
 msgid "Name"
-msgstr ""
+msgstr "název"
 
 #: models.py:35
 msgid "Permission"
-msgstr ""
+msgstr "Oprávnění"
 
 #: models.py:98 search.py:16
 msgid "Label"
@@ -79,92 +80,92 @@ msgstr "Označení"
 
 #: models.py:112
 msgid "Role"
-msgstr ""
+msgstr "Role"
 
 #: permissions.py:10
 msgid "Create roles"
-msgstr ""
+msgstr "Vytvořit role"
 
 #: permissions.py:13
 msgid "Delete roles"
-msgstr ""
+msgstr "Smazat role"
 
 #: permissions.py:16
 msgid "Edit roles"
-msgstr ""
+msgstr "Úpravy rolí"
 
 #: permissions.py:19
 msgid "View roles"
-msgstr ""
+msgstr "Zobrazit role"
 
 #: search.py:20
 msgid "Group name"
-msgstr ""
+msgstr "Název skupiny"
 
 #: serializers.py:46
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr ""
+msgstr "Čárkami oddělený seznam skupin primárních klíčů, které se mají přidat nebo nahradit v této roli."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr ""
+msgstr "Čárkami oddělený seznam oprávnění primárních klíčů pro udělení této roli."
 
 #: serializers.py:90
 #, python-format
 msgid "No such permission: %s"
-msgstr ""
+msgstr "Bez povolení: %s"
 
 #: views.py:32
 msgid "Available roles"
-msgstr ""
+msgstr "Dostupné role"
 
 #: views.py:33
 msgid "Group roles"
-msgstr ""
+msgstr "Role skupiny "
 
 #: views.py:42
 #, python-format
 msgid "Roles of group: %s"
-msgstr ""
+msgstr "Role skupiny: %s"
 
 #: views.py:79
 msgid "Available groups"
-msgstr ""
+msgstr "Dostupné skupiny"
 
 #: views.py:80
 msgid "Role groups"
-msgstr ""
+msgstr "Skupiny rolí "
 
 #: views.py:89
 #, python-format
 msgid "Groups of role: %s"
-msgstr ""
+msgstr "Skupiny rolí: %s"
 
 #: views.py:91
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr ""
+msgstr "Přidejte skupiny, které se stanou součástí role. Zdědí oprávnění role a řízení přístupu."
 
 #: views.py:104
 msgid "Available permissions"
-msgstr ""
+msgstr "Dostupná oprávnění"
 
 #: views.py:105
 msgid "Granted permissions"
-msgstr ""
+msgstr "Udělení oprávnění"
 
 #: views.py:137
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr ""
+msgstr "Oprávnění udělená zde se budou vztahovat na celý systém a všechny objekty."
 
 #: views.py:140
 #, python-format
 msgid "Permissions for role: %s"
-msgstr ""
+msgstr "Oprávnění pro roli: %s"
 
 #: views.py:157
 msgid ""
@@ -172,8 +173,8 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr ""
+msgstr "Role jsou autorizační jednotky. Obsahují skupiny uživatelů, které zdědí oprávnění role pro celý systém. Role mohou být také součástí seznamů řízení přístupu. Seznam ovládacích prvků přístupu je oprávnění udělená roli konkrétním objektům, které dědí její členové skupiny."
 
 #: views.py:164
 msgid "There are no roles"
-msgstr ""
+msgstr "Bez rolí"

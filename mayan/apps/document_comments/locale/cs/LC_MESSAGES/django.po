@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:09-0400\n"
-"PO-Revision-Date: 2019-05-17 05:50+0000\n"
-"Last-Translator: Jiri Fait <fait@orkasolutions.cz>\n"
+"POT-Creation-Date: 2019-10-27 14:57-0400\n"
+"PO-Revision-Date: 2019-10-15 16:58+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,27 +20,27 @@ msgstr ""
 
 #: apps.py:39 events.py:8
 msgid "Document comments"
-msgstr ""
+msgstr "Komentáře k dokumentu"
 
 #: apps.py:84 apps.py:88 links.py:33 models.py:45 permissions.py:7
 msgid "Comments"
-msgstr ""
+msgstr "Komentáře"
 
 #: events.py:12
 msgid "Document comment created"
-msgstr ""
+msgstr "Komentář dokumentu byl vytvořen"
 
 #: events.py:15
 msgid "Document comment deleted"
-msgstr ""
+msgstr "Komentář dokumentu byl smazán"
 
 #: events.py:18
 msgid "Document comment edited"
-msgstr ""
+msgstr "Komentář dokumentu byl upraven"
 
 #: links.py:18
 msgid "Add comment"
-msgstr ""
+msgstr "Přidat komentář"
 
 #: links.py:24
 msgid "Delete"
@@ -51,68 +52,68 @@ msgstr "Editovat"
 
 #: models.py:28
 msgid "Document"
-msgstr ""
+msgstr "Dokument"
 
 #: models.py:32 models.py:68
 msgid "User"
-msgstr ""
+msgstr "Uživatel"
 
 #. Translators: Comment here is a noun and refers to the actual text stored
 #: models.py:35 models.py:44
 msgid "Comment"
-msgstr ""
+msgstr "Komentář"
 
 #: models.py:38
 msgid "Date time submitted"
-msgstr ""
+msgstr "Datuma čas odeslání"
 
 #: permissions.py:10
 msgid "Create new comments"
-msgstr ""
+msgstr "Vytvořit nové komentáře"
 
 #: permissions.py:13
 msgid "Delete comments"
-msgstr ""
+msgstr "Smazat komentáře"
 
 #: permissions.py:16
 msgid "Edit comments"
-msgstr ""
+msgstr "Upravit komentáře"
 
 #: permissions.py:19
 msgid "View comments"
-msgstr ""
+msgstr "Zobrazit komentáře"
 
 #: views.py:33
 #, python-format
 msgid "Add comment to document: %s"
-msgstr ""
+msgstr "Přidat komentář k dokumentu: %s"
 
 #: views.py:70
 #, python-format
 msgid "Delete comment: %s?"
-msgstr ""
+msgstr "Smazat komentář: %s?"
 
 #: views.py:92
 #, python-format
 msgid "Details for comment: %s?"
-msgstr ""
+msgstr "Podrobnosti pro komentář: %s?"
 
 #: views.py:110
 #, python-format
 msgid "Edit comment: %s?"
-msgstr ""
+msgstr "Upravit komentář: %s?"
 
 #: views.py:135
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
-msgstr ""
+msgstr "Komentáře k dokumentu jsou časově označené textové záznamy od uživatelů. Jsou skvělé pro spolupráci."
 
 #: views.py:138
 msgid "There are no comments"
-msgstr ""
+msgstr "Nejsou žádné komentáře"
 
 #: views.py:140
 #, python-format
 msgid "Comments for document: %s"
-msgstr ""
+msgstr "Komentáře k dokumentu: %s"

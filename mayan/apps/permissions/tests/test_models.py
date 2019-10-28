@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import PermissionDenied
 
 from mayan.apps.common.tests.base import BaseTestCase
@@ -43,6 +44,15 @@ class PermissionTestCase(
             )
         except PermissionDenied:
             self.fail('PermissionDenied exception was not expected.')
+
+    def test_anonymous_user_permissions(self):
+        self.auto_login_user = False
+        test_anonymous_user = AnonymousUser()
+
+        with self.assertRaises(PermissionDenied):
+            Permission.check_user_permissions(
+                permissions=(self.test_permission,), user=test_anonymous_user
+            )
 
 
 class StoredPermissionManagerTestCase(BaseTestCase):

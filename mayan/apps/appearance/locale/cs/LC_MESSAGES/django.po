@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:06-0400\n"
-"PO-Revision-Date: 2019-09-04 03:25+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-27 14:55-0400\n"
+"PO-Revision-Date: 2019-10-15 16:19+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,89 +20,89 @@ msgstr ""
 
 #: apps.py:12 settings.py:9
 msgid "Appearance"
-msgstr ""
+msgstr "Vzhled"
 
 #: dependencies.py:10
 msgid "Lato font"
-msgstr ""
+msgstr "Lato písmo"
 
 #: dependencies.py:14
 msgid "Bootstrap"
-msgstr ""
+msgstr "Bootstrap"
 
 #: dependencies.py:18
 msgid "Bootswatch"
-msgstr ""
+msgstr "Bootswatch"
 
 #: dependencies.py:32
 msgid "Fancybox"
-msgstr ""
+msgstr "Fancybox"
 
 #: dependencies.py:36
 msgid "FontAwesome"
-msgstr ""
+msgstr "FontAwesome"
 
 #: dependencies.py:40
 msgid "jQuery"
-msgstr ""
+msgstr "jQuery"
 
 #: dependencies.py:43
 msgid "JQuery Form"
-msgstr ""
+msgstr "Formulář JQuery"
 
 #: dependencies.py:47
 msgid "jQuery Lazy Load"
-msgstr ""
+msgstr "jQuery spožděné načítání"
 
 #: dependencies.py:51
 msgid "JQuery Match Height"
-msgstr ""
+msgstr "JQuery Match Height"
 
 #: dependencies.py:55
 msgid "Select 2"
-msgstr ""
+msgstr "Select 2"
 
 #: dependencies.py:59
 msgid "Toastr"
-msgstr ""
+msgstr "Toastr"
 
 #: dependencies.py:62
 msgid "URI.js"
-msgstr ""
+msgstr "URI.js"
 
 #: settings.py:14
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr ""
+msgstr "Maximální počet znaků, které se zobrazí jako název pohledu."
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
-msgstr ""
+msgstr "Nedostatečná oprávnění"
 
 #: templates/403.html:11
 msgid "You don't have enough permissions for this operation."
-msgstr ""
+msgstr "Pro tuto operaci nemáte dostatečná oprávnění."
 
 #: templates/404.html:5 templates/404.html:9
 msgid "Page not found"
-msgstr ""
+msgstr "Stránka nenalezena"
 
 #: templates/404.html:11
 msgid "Sorry, but the requested page could not be found."
-msgstr ""
+msgstr "Litujeme, ale požadovanou stránku nelze najít."
 
 #: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:52
 msgid "Server error"
-msgstr ""
+msgstr "Chyba serveru"
 
 #: templates/500.html:11
 msgid ""
 "There's been an error. It's been reported to the site administrators via "
 "e-mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
+msgstr "Došlo k chybě. Bylo to hlášeno správcům webu prostřednictvím e-mailu a mělo by být brzy opraveno. Děkuji za Vaši trpělivost."
 
 #: templates/appearance/about.html:10
 msgid "About"
-msgstr ""
+msgstr "O"
 
 #: templates/appearance/about.html:77
 #, python-format
@@ -109,20 +110,20 @@ msgid ""
 "\n"
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
-msgstr ""
+msgstr "\n%(setting_project_title)s je založen na %(project_title)s"
 
 #: templates/appearance/about.html:82
 msgid "Version"
-msgstr ""
+msgstr "Verze"
 
 #: templates/appearance/about.html:84
 #, python-format
 msgid "Build number: %(build_number)s"
-msgstr ""
+msgstr "Číslo sestavy: %(build_number)s"
 
 #: templates/appearance/about.html:97
 msgid "Released under the license:"
-msgstr ""
+msgstr "Vydáno na základě licence:"
 
 #: templates/appearance/about.html:103
 #, python-format
@@ -130,7 +131,7 @@ msgid ""
 "\n"
 "                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr ""
+msgstr "\n%(project_title)s je bezplatný a open-source software, který vám přináší <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> Roberto Rosario a přispěvatelé."
 
 #: templates/appearance/about.html:109
 #, python-format
@@ -138,7 +139,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is. We need all the help we can get!\n"
 "            "
-msgstr ""
+msgstr "\nVynakládá velké úsilí, aby byl %(project_title)s stejně bohatý na funkce. Potřebujeme veškerou pomoc, kterou můžeme získat!"
 
 #: templates/appearance/about.html:115
 #, python-format
@@ -146,7 +147,7 @@ msgid ""
 "\n"
 "                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">consider making a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\nPokud používáte %(project_title)s, <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">zvažte</a> prosím <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">darování %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:121
 #, python-format
@@ -154,14 +155,14 @@ msgid ""
 "\n"
 "                You can also <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">donate directly to the creator and lead developer.  %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\nMůžete také <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">přispět přímo tvůrci a hlavnímu vývojáři. %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:127
 msgid ""
 "\n"
 "                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>. <br>The book is available on pre-release format at a discounted price for a limited time.\n"
 "            "
-msgstr ""
+msgstr "\nKromě darů můžete také podpořit projekt <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">zakoupením kopie knihy „Exploring Mayan EDMS“ od Roberta Rosaria</a> . <br> Kniha je k dispozici ve formátu před vydáním za sníženou cenu po omezenou dobu."
 
 #: templates/appearance/about.html:133
 #, python-format
@@ -169,7 +170,7 @@ msgid ""
 "\n"
 "                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nÚplný seznam změn je k dispozici v <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">poznámkách</a> k <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">vydání %(icon_documentation)s</a> nebo v krátké verzi <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a> ."
 
 #: templates/appearance/about.html:139
 #, python-format
@@ -177,7 +178,7 @@ msgid ""
 "\n"
 "                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a> or the <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki %(icon_wiki)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nV případě dotazů zkontrolujte <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">dokumentaci %(icon_documentation)s</a> nebo <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki %(icon_wiki)s</a> ."
 
 #: templates/appearance/about.html:145
 #, python-format
@@ -185,7 +186,7 @@ msgid ""
 "\n"
 "                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nPokud jste našli chybu nebo máte nějaký nápad, navštivte <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">fórum %(icon_forum)s</a> nebo otevřete lístek v <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">úložišti zdrojových kódů %(icon_source_code)s</a> ."
 
 #: templates/appearance/about.html:150
 #, python-format
@@ -194,63 +195,63 @@ msgid ""
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "                Follow us on <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, or <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n"
 "            "
-msgstr ""
+msgstr "\nŠiřme slovo. Promluvte si se svými přáteli a kolegy o tom, jak úžasný je %(project_title)s! Sledujte nás na <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitteru %(icon_social_twitter)s</a> , <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a> nebo <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>"
 
 #: templates/appearance/base.html:36 templates/appearance/base.html:46
 msgid "Warning"
-msgstr ""
+msgstr "Varování"
 
 #: templates/appearance/base.html:46
 msgid ""
 "Settings updated, restart your installation for changes to take proper "
 "effect."
-msgstr ""
+msgstr "Nastavení byla aktualizována, restartujte vaši instalaci, aby se změny projevily správně."
 
 #: templates/appearance/base.html:60
 #: templates/appearance/generic_list_items_subtemplate.html:104
 msgid "Actions"
-msgstr ""
+msgstr "Akce"
 
 #: templates/appearance/base.html:62
 #: templates/appearance/generic_list_items_subtemplate.html:106
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "Přepnout rozevírací seznam"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
-msgstr ""
+msgstr "Jsi si jistí?"
 
 #: templates/appearance/generic_confirm.html:34
 msgid "Yes"
-msgstr ""
+msgstr "Ano"
 
 #: templates/appearance/generic_confirm.html:38
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 #: templates/appearance/generic_form_instance.html:51
 #: templates/appearance/generic_form_instance.html:57
 #: templates/appearance/generic_form_subtemplate.html:51
 #: templates/appearance/generic_multiform_subtemplate.html:37
 msgid "required"
-msgstr ""
+msgstr "Požadované"
 
 #: templates/appearance/generic_form_subtemplate.html:86
 #: templates/appearance/generic_form_subtemplate.html:99
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Save"
-msgstr ""
+msgstr "Uložit"
 
 #: templates/appearance/generic_form_subtemplate.html:86
 #: templates/appearance/generic_form_subtemplate.html:99
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Submit"
-msgstr ""
+msgstr "Odeslat"
 
 #: templates/appearance/generic_form_subtemplate.html:90
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušit"
 
 #: templates/appearance/generic_list_items_subtemplate.html:17
 #: templates/appearance/generic_list_subtemplate.html:17
@@ -258,7 +259,7 @@ msgstr ""
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
+msgstr "Celkem (%(start)s - %(end)s z %(total)s) (stránka %(page_number)s z %(total_pages)s)"
 
 #: templates/appearance/generic_list_items_subtemplate.html:19
 #: templates/appearance/generic_list_items_subtemplate.html:22
@@ -266,44 +267,44 @@ msgstr ""
 #: templates/appearance/generic_list_subtemplate.html:22
 #, python-format
 msgid "Total: %(total)s"
-msgstr ""
+msgstr "Celkem: %(total)s"
 
 #: templates/appearance/generic_list_subtemplate.html:55
 msgid "Identifier"
-msgstr ""
+msgstr "Identifikátor"
 
 #: templates/appearance/home.html:10
 msgid "Dashboard"
-msgstr ""
+msgstr "Řídící panel"
 
 #: templates/appearance/home.html:26
 msgid "Getting started"
-msgstr ""
+msgstr "Začínáme"
 
 #: templates/appearance/home.html:29
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr ""
+msgstr "Než začnete plně používat Mayan EDMS, potřebujete následující:"
 
 #: templates/appearance/main_menu.html:10
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Přepnout navigaci"
 
 #: templates/appearance/no_results.html:18
 msgid "No results"
-msgstr ""
+msgstr "Žádné výsledky"
 
 #: templates/appearance/root.html:57
 msgid "Close"
-msgstr ""
+msgstr "Zavřít"
 
 #: templates/appearance/root.html:65
 msgid "Server communication error"
-msgstr ""
+msgstr "Chyba komunikace se serverem"
 
 #: templates/appearance/root.html:67
 msgid "Check you network connection and try again in a few moments."
-msgstr ""
+msgstr "Zkontrolujte připojení k síti a zkuste to znovu za chvíli."
 
 #: templatetags/appearance_tags.py:17
 msgid "None"
-msgstr ""
+msgstr "žádný"

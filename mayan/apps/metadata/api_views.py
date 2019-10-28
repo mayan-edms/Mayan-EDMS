@@ -2,15 +2,12 @@ from __future__ import absolute_import, unicode_literals
 
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics
-
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_view, permission_document_type_edit
 )
-from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
-from mayan.apps.rest_api.permissions import MayanPermission
+from mayan.apps.rest_api import generics
 
 from .models import MetadataType
 from .permissions import (
@@ -130,10 +127,8 @@ class APIMetadataTypeListView(generics.ListCreateAPIView):
     get: Returns a list of all the metadata types.
     post: Create a new metadata type.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_metadata_type_view,)}
     mayan_view_permissions = {'POST': (permission_metadata_type_create,)}
-    permission_classes = (MayanPermission,)
     queryset = MetadataType.objects.all()
     serializer_class = MetadataTypeSerializer
 
@@ -152,7 +147,6 @@ class APIMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
         'PATCH': (permission_metadata_type_edit,),
         'DELETE': (permission_metadata_type_delete,)
     }
-    permission_classes = (MayanPermission,)
     queryset = MetadataType.objects.all()
     serializer_class = MetadataTypeSerializer
 
@@ -188,7 +182,9 @@ class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIDocumentTypeMetadataTypeListView, self).get_serializer(*args, **kwargs)
+        return super(
+            APIDocumentTypeMetadataTypeListView, self
+        ).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
