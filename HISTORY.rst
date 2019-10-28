@@ -9,6 +9,8 @@
 - Backport color log formatter from branch version/next.
 - Don't raise error checking AnonymousUser for permissions.
   Instead return always False.
+- Enable the main menu workflow runtime link when the workflow view
+  permission is granted to at least one workflow.
 
 3.2.8 (2019-10-01)
 ==================
