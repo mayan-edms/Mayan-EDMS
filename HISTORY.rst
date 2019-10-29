@@ -11,7 +11,8 @@
   Instead return always False.
 - Enable the main menu workflow runtime link when the workflow view
   permission is granted to at least one workflow.
-- Make Postgres container wait delay configurable.
+- Make Postgres container wait delay configurable. GitLab issue #677.
+  Thanks to Antenore Gatta (@antenore) for the report.
 - Update Django to version 1.11.25.
 - Update PyYAML to version 5.1.2.
 - Update celery to version 3.1.26.post2.
