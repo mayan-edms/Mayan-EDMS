@@ -36,7 +36,7 @@ PythonDependency(
         ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django', version_string='==1.11.24'
+    ''', module=__name__, name='django', version_string='==1.11.25'
 )
 PythonDependency(
     copyright_text='''
@@ -59,7 +59,7 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
         SOFTWARE.
-    ''', module=__name__, name='PyYAML', version_string='==5.1.1'
+    ''', module=__name__, name='PyYAML', version_string='==5.1.2'
 )
 PythonDependency(
     module=__name__, name='django-downloadview', version_string='==1.9'
@@ -225,7 +225,7 @@ PythonDependency(
     module=__name__, name='mock', version_string='==2.0.0'
 )
 PythonDependency(
-    module=__name__, name='pathlib2', version_string='==2.3.4'
+    module=__name__, name='pathlib2', version_string='==2.3.5'
 )
 PythonDependency(
     copyright_text='''
@@ -283,7 +283,7 @@ PythonDependency(
     ''', module=__name__, name='sh', version_string='==1.12.14'
 )
 PythonDependency(
-    module=__name__, name='whitenoise', version_string='==4.1.2'
+    module=__name__, name='whitenoise', version_string='==4.1.4'
 )
 
 PythonDependency(
@@ -310,12 +310,12 @@ PythonDependency(
 PythonDependency(
     environment=environment_development, help_text=_(
         'Provides style checking.'
-    ), module=__name__, name='flake8', version_string='==3.7.7'
+    ), module=__name__, name='flake8', version_string='==3.7.9'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
         'Command line environment with autocompletion.'
-    ), module=__name__, name='ipython', version_string='==5.5.0'
+    ), module=__name__, name='ipython', version_string='==5.8.0'
 )
 PythonDependency(
     environment=environment_development, help_text=_(

@@ -4,6 +4,7 @@ import logging
 
 from django.apps import apps
 from django.core.exceptions import PermissionDenied
+from django.template import Variable, VariableDoesNotExist
 from django.urls import Resolver404, resolve
 
 from mayan.apps.permissions import Permission
@@ -11,7 +12,9 @@ from mayan.apps.permissions import Permission
 logger = logging.getLogger(__name__)
 
 
-def get_cascade_condition(app_label, model_name, object_permission, view_permission=None):
+def get_cascade_condition(
+    app_label, model_name, object_permission, view_permission=None
+):
     """
     Return a function that first checks to see if the user has the view
     permission. If not, then filters the objects with the object permission
@@ -25,10 +28,23 @@ def get_cascade_condition(app_label, model_name, object_permission, view_permiss
         )
         Model = apps.get_model(app_label=app_label, model_name=model_name)
 
+        try:
+            request = context.request
+        except AttributeError:
+            # Simple request extraction failed. Might not be a view context.
+            # Try alternate method.
+            try:
+                request = Variable('request').resolve(context)
+            except VariableDoesNotExist:
+                # There is no request variable, most probable a 500 in a test
+                # view. Don't return any resolved links then.
+                logger.warning('No request variable, aborting cascade resolution')
+                return ()
+
         if view_permission:
             try:
                 Permission.check_user_permissions(
-                    permissions=(view_permission,), user=context.request.user
+                    permissions=(view_permission,), user=request.user
                 )
             except PermissionDenied:
                 pass
@@ -36,7 +52,7 @@ def get_cascade_condition(app_label, model_name, object_permission, view_permiss
                 return True
 
         queryset = AccessControlList.objects.restrict_queryset(
-            permission=object_permission, user=context.request.user,
+            permission=object_permission, user=request.user,
             queryset=Model.objects.all()
         )
         return queryset.count() > 0

@@ -134,6 +134,10 @@ class DocumentStatesApp(MayanAppConfig):
                 permission_workflow_view,
             )
         )
+        ModelPermission.register(
+            model=WorkflowTransition,
+            permissions=(permission_workflow_transition,)
+        )
 
         ModelPermission.register_inheritance(
             model=WorkflowInstance, related='workflow',
@@ -142,11 +146,6 @@ class DocumentStatesApp(MayanAppConfig):
             model=WorkflowInstanceLogEntry,
             related='workflow_instance__workflow',
         )
-        ModelPermission.register(
-            model=WorkflowTransition,
-            permissions=(permission_workflow_transition,)
-        )
-
         ModelPermission.register_inheritance(
             model=WorkflowState, related='workflow',
         )

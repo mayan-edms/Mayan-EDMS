@@ -56,10 +56,10 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-django==1.11.24
-Pillow==6.0.0
+django==1.11.25
+Pillow==6.2.1
 PyPDF2==1.26.0
-PyYAML==5.1.1
+PyYAML==5.1.2
 celery==4.3.0
 django-activity-stream==0.7.0
 django-celery-beat==1.5.0
@@ -87,7 +87,7 @@ graphviz==0.10.1
 gunicorn==19.9.0
 mock==2.0.0
 node-semver==0.6.1
-pathlib2==2.3.4
+pathlib2==2.3.5
 pycountry==18.12.8
 pyocr==0.6
 python-dateutil==2.8.0
@@ -97,7 +97,7 @@ pytz==2019.1
 requests==2.21.0
 sh==1.12.14
 swagger-spec-validator==2.4.3
-whitenoise==4.1.2
+whitenoise==4.1.4
 """.split()
 
 with open('README.rst') as f:
