@@ -21,6 +21,7 @@
 - Update Pillow to version 6.2.1.
 - Move Celery and Django Celery dependencies
   to the task manager app.
+- Improve dependecies app tests.
 
 3.2.8 (2019-10-01)
 ==================
