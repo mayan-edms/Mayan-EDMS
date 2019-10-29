@@ -12,6 +12,13 @@
 - Enable the main menu workflow runtime link when the workflow view
   permission is granted to at least one workflow.
 - Make Postgres container wait delay configurable.
+- Update Django to version 1.11.25.
+- Update PyYAML to version 5.1.2.
+- Update celery to version 3.1.26.post2.
+- Update django-celery to version 3.2.2.
+- Update pathlib2 to version 2.3.5.
+- Update whitenoise to version 4.1.4.
+- Update Pillow to version 6.2.1.
 
 3.2.8 (2019-10-01)
 ==================
