@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-  
+
 import logging
 
 from django.utils.termcolors import colorize
@@ -20,4 +20,3 @@ class ColorFormatter(logging.Formatter):
             text=record.msg, **PALETTE.get(record.levelname, {})
         )
         return super(ColorFormatter, self).format(record)
-
