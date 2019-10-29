@@ -19,6 +19,8 @@
 - Update pathlib2 to version 2.3.5.
 - Update whitenoise to version 4.1.4.
 - Update Pillow to version 6.2.1.
+- Move Celery and Django Celery dependencies
+  to the task manager app.
 
 3.2.8 (2019-10-01)
 ==================
