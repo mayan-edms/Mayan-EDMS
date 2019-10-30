@@ -21,7 +21,7 @@ services:
       MAYAN_CELERY_BROKER_URL: redis://redis:6379/1
       MAYAN_CELERY_RESULT_BACKEND: redis://redis:6379/0
       MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayandbpass','USER':'mayan','HOST':'postgresql'}}"
-    image: mayanedms/mayanedms:3.2.6
+    image: mayanedms/mayanedms:3.3
     networks:
       - mayan-bridge
     ports:
@@ -69,7 +69,7 @@ services:
   #     # - rabbitmq
   #   environment:
   #     <<: *mayan_env
-  #   image: mayanedms/mayanedms:3.2.6
+  #   image: mayanedms/mayanedms:3.3
   #   networks:
   #     - mayan-bridge
   #   ports:
@@ -90,7 +90,7 @@ services:
   #   volumes:
   #     - /docker-volumes/mayan-edms/rabbitmq:/var/lib/rabbitmq
 
-  # Enable to run stand alone workers
+  # Enable to run standalone workers
   # worker_fast:
   #   command:
   #     - run_worker
@@ -102,14 +102,14 @@ services:
   #     # - rabbitmq
   #   environment:
   #     <<: *mayan_env
-  #   image: mayanedms/mayanedms:3.2.6
+  #   image: mayanedms/mayanedms:3.3
   #   networks:
   #     - mayan-bridge
   #   restart: unless-stopped
   #   volumes:
   #     - /docker-volumes/mayan-edms/media:/var/lib/mayan
 
-  # Enable to run stand frontend gunicorn
+  # Enable to run frontend gunicorn
   # frontend:
   #   command:
   #     - run_frontend
@@ -120,7 +120,7 @@ services:
   #     # - rabbitmq
   #   environment:
   #     <<: *mayan_env
-  #   image: mayanedms/mayanedms:3.2.6
+  #   image: mayanedms/mayanedms:3.3
   #   networks:
   #     - mayan-bridge
   #   ports:
