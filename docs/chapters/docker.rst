@@ -35,7 +35,7 @@ Create and run a PostgreSQL container::
     -e POSTGRES_DB=mayan \
     -e POSTGRES_PASSWORD=mayanuserpass \
     -v /docker-volumes/mayan-edms/postgres:/var/lib/postgresql/data \
-    -d postgres:9.6
+    postgres:9.6
 
 The PostgreSQL container will have one database named ``mayan``, with an user
 named ``mayan`` too, with a password of ``mayanuserpass``. The container will
@@ -97,7 +97,7 @@ binding (``-p 5432:5432``)::
     -e POSTGRES_DB=mayan \
     -e POSTGRES_PASSWORD=mayanuserpass \
     -v /docker-volumes/mayan-edms/postgres:/var/lib/postgresql/data \
-    -d postgres:9.6
+    postgres:9.6
 
 Launch the Mayan EDMS container with the network option and change the
 database hostname to the PostgreSQL container name (``mayan-edms-postgres``)
