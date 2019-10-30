@@ -27,6 +27,7 @@
   Thanks to Ezio Vernacotola (@eziove) for the report and solution.
 - Fix MAYAN_GUNICORN_TIMEOUT Docker image setting. GitLab issue #671.
   Thanks to Lennart Sauerbeck (@lennart_s) for the report.
+- Add makefile target to launch a production staging Docker image.
 
 3.2.8 (2019-10-01)
 ==================
