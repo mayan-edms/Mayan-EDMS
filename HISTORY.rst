@@ -25,6 +25,8 @@
 - Improve dependecies app tests.
 - Return st_nlink of 1 files in mirrored indexes. GitLab issue #676.
   Thanks to Ezio Vernacotola (@eziove) for the report and solution.
+- Fix MAYAN_GUNICORN_TIMEOUT Docker image setting. GitLab issue #671.
+  Thanks to Lennart Sauerbeck (@lennart_s) for the report.
 
 3.2.8 (2019-10-01)
 ==================

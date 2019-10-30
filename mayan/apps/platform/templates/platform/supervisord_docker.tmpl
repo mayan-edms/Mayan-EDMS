@@ -1,7 +1,7 @@
 [program:mayan-gunicorn]
 autorestart = false
 autostart = true
-command = /bin/bash -c "${MAYAN_GUNICORN_BIN} -w ${MAYAN_GUNICORN_WORKERS} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --env DJANGO_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE}" --timeout ${MAYAN_GUNICORN_TIMEOUT}
+command = /bin/bash -c "${MAYAN_GUNICORN_BIN} -w ${MAYAN_GUNICORN_WORKERS} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --env DJANGO_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE} --timeout ${MAYAN_GUNICORN_TIMEOUT}"
 redirect_stderr = true
 stderr_logfile = /dev/fd/2
 stderr_logfile_maxbytes = 0
