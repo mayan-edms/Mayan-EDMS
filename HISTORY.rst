@@ -28,6 +28,8 @@
 - Fix MAYAN_GUNICORN_TIMEOUT Docker image setting. GitLab issue #671.
   Thanks to Lennart Sauerbeck (@lennart_s) for the report.
 - Add makefile target to launch a production staging Docker image.
+- Improve duplicated document list view logic to not show 
+  documents with trashed duplicates.
 
 3.2.8 (2019-10-01)
 ==================
