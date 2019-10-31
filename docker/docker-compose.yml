@@ -18,8 +18,8 @@ services:
       # Enable to use RabbitMQ
       # MAYAN_CELERY_BROKER_URL: amqp://mayan:mayanrabbitpass@broker:5672/mayan
       # Disable Redis Broker to use RabbitMQ as Broker
-      MAYAN_CELERY_BROKER_URL: redis://redis:6379/1
-      MAYAN_CELERY_RESULT_BACKEND: redis://redis:6379/0
+      MAYAN_CELERY_BROKER_URL: redis://redis:6379/0
+      MAYAN_CELERY_RESULT_BACKEND: redis://redis:6379/1
       MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayandbpass','USER':'mayan','HOST':'postgresql'}}"
     image: mayanedms/mayanedms:3.3
     networks:
@@ -35,7 +35,7 @@ services:
       POSTGRES_DB: mayan
       POSTGRES_PASSWORD: mayandbpass
       POSTGRES_USER: mayan
-    image: postgres:9.6
+    image: postgres:9.6-alpine
     networks:
       - mayan-bridge
     restart: unless-stopped
@@ -51,7 +51,7 @@ services:
       - allkeys-lru
       - --save
       - ""
-    image: redis:5.0
+    image: redis:5.0-alpine
     networks:
       - mayan-bridge
     restart: unless-stopped
