@@ -120,7 +120,8 @@
   Instead return always False.
 - Enable the main menu workflow runtime link when the workflow view
   permission is granted to at least one workflow.
-- Make Postgres container wait delay configurable.
+- Make Postgres container wait delay configurable. GitLab issue #677.
+  Thanks to Antenore Gatta (@antenore) for the report.
 - Update Django to version 1.11.25.
 - Update PyYAML to version 5.1.2.
 - Update celery to version 3.1.26.post2.
@@ -128,6 +129,16 @@
 - Update pathlib2 to version 2.3.5.
 - Update whitenoise to version 4.1.4.
 - Update Pillow to version 6.2.1.
+- Move Celery and Django Celery dependencies
+  to the task manager app.
+- Improve dependecies app tests.
+- Return st_nlink of 1 files in mirrored indexes. GitLab issue #676.
+  Thanks to Ezio Vernacotola (@eziove) for the report and solution.
+- Fix MAYAN_GUNICORN_TIMEOUT Docker image setting. GitLab issue #671.
+  Thanks to Lennart Sauerbeck (@lennart_s) for the report.
+- Add makefile target to launch a production staging Docker image.
+- Improve duplicated document list view logic to not show 
+  documents with trashed duplicates.
 
 3.2.8 (2019-10-01)
 ==================

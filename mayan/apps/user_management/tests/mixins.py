@@ -306,6 +306,13 @@ class UserViewTestMixin(object):
             }
         )
 
+    def _request_test_user_detail_view(self):
+        return self.get(
+            viewname='user_management:user_details', kwargs={
+                'pk': self.test_user.pk
+            }
+        )
+
     def _request_test_user_edit_view(self):
         return self.post(
             viewname='user_management:user_edit', kwargs={

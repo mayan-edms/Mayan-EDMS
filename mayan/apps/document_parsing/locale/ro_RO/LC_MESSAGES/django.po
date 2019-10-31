@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-27 14:57-0400\n"
+"POT-Creation-Date: 2019-10-30 02:59-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -45,7 +45,7 @@ msgstr ""
 
 #: events.py:12
 msgid "Document parsed content deleted"
-msgstr ""
+msgstr "Conținutul analizat al documentului a fost șters"
 
 #: events.py:16
 msgid "Document version submitted for parsing"
@@ -66,7 +66,7 @@ msgstr "Conţinut"
 
 #: links.py:22 links.py:27
 msgid "Delete parsed content"
-msgstr ""
+msgstr "Ștergeți conținutul analizat"
 
 #: links.py:39 links.py:77 views.py:225
 msgid "Parsing errors"
@@ -185,9 +185,9 @@ msgstr ""
 #: views.py:37
 msgid "Delete the parsed content of the selected document?"
 msgid_plural "Delete the parsed content of the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Ștergeți conținutul analizat al documentului selectat?"
+msgstr[1] "Ștergeți conținutul analizat al documentelor selectate?"
+msgstr[2] "Ștergeți conținutul analizat al documentelor selectate?"
 
 #: views.py:71
 #, python-format

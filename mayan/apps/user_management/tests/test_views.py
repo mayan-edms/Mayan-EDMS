@@ -184,13 +184,6 @@ class SuperUserViewTestCase(UserViewTestMixin, GenericViewTestCase):
         response = self._request_test_superuser_detail_view()
         self.assertEqual(response.status_code, 404)
 
-    def _request_test_user_detail_view(self):
-        return self.get(
-            viewname='user_management:user_details', kwargs={
-                'pk': self.test_user.pk
-            }
-        )
-
     def test_superuser_normal_user_detail_view_with_access(self):
         self.grant_access(
             obj=self.test_superuser, permission=permission_user_view

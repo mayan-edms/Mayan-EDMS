@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-27 15:00-0400\n"
+"POT-Creation-Date: 2019-10-30 03:02-0400\n"
 "PO-Revision-Date: 2019-07-05 06:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:43 events.py:8 models.py:36 models.py:102 permissions.py:7
+#: apps.py:43 events.py:8 models.py:36 models.py:105 permissions.py:7
 msgid "Permissions"
 msgstr "Permisos"
 
@@ -40,7 +40,7 @@ msgstr "Rol creado"
 msgid "Role edited"
 msgstr "Rol editado"
 
-#: links.py:16 links.py:40 models.py:113 views.py:165
+#: links.py:16 links.py:40 models.py:116 views.py:165
 msgid "Roles"
 msgstr "Roles"
 
@@ -56,7 +56,7 @@ msgstr "Borrar"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:45 models.py:105
+#: links.py:45 models.py:108
 msgid "Groups"
 msgstr "Grupos"
 
@@ -76,11 +76,11 @@ msgstr "Nombre"
 msgid "Permission"
 msgstr "Permiso"
 
-#: models.py:98 search.py:16
+#: models.py:101 search.py:16
 msgid "Label"
 msgstr "Etiqueta"
 
-#: models.py:112
+#: models.py:115
 msgid "Role"
 msgstr "Rol"
 

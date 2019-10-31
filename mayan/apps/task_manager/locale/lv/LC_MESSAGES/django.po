@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-27 15:01-0400\n"
+"POT-Creation-Date: 2019-10-30 03:03-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -21,47 +21,47 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:23 links.py:12 permissions.py:7
+#: apps.py:24 links.py:12 permissions.py:7
 msgid "Task manager"
 msgstr "Uzdevumu pārvaldnieks"
 
-#: apps.py:31
+#: apps.py:32
 msgid "Label"
 msgstr "Etiķete"
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Nosaukums"
 
-#: apps.py:37
+#: apps.py:38
 msgid "Default queue?"
 msgstr "Noklusējuma rinda?"
 
-#: apps.py:41
+#: apps.py:42
 msgid "Is transient?"
 msgstr "Vai tas ir pārejošs?"
 
-#: apps.py:45
+#: apps.py:46
 msgid "Type"
 msgstr "Tips"
 
-#: apps.py:48
+#: apps.py:49
 msgid "Start time"
 msgstr "Sākuma laiks"
 
-#: apps.py:51
+#: apps.py:52
 msgid "Host"
 msgstr "Saimnieks"
 
-#: apps.py:55
+#: apps.py:56
 msgid "Arguments"
 msgstr "Argumenti"
 
-#: apps.py:59
+#: apps.py:60
 msgid "Keyword arguments"
 msgstr "Atslēgvārdu argumenti"
 
-#: apps.py:63
+#: apps.py:64
 msgid "Worker process ID"
 msgstr "Darbinieku procesa ID"
 
