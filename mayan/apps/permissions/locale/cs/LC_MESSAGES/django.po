@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-27 15:00-0400\n"
+"POT-Creation-Date: 2019-10-30 03:02-0400\n"
 "PO-Revision-Date: 2019-10-18 10:50+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:43 events.py:8 models.py:36 models.py:102 permissions.py:7
+#: apps.py:43 events.py:8 models.py:36 models.py:105 permissions.py:7
 msgid "Permissions"
 msgstr "Práva"
 
@@ -38,7 +38,7 @@ msgstr "Role byla vytvořena"
 msgid "Role edited"
 msgstr "Role byla upravena"
 
-#: links.py:16 links.py:40 models.py:113 views.py:165
+#: links.py:16 links.py:40 models.py:116 views.py:165
 msgid "Roles"
 msgstr "Role"
 
@@ -54,7 +54,7 @@ msgstr "Odstranit"
 msgid "Edit"
 msgstr "Editovat"
 
-#: links.py:45 models.py:105
+#: links.py:45 models.py:108
 msgid "Groups"
 msgstr "Skupiny"
 
@@ -74,11 +74,11 @@ msgstr "název"
 msgid "Permission"
 msgstr "Oprávnění"
 
-#: models.py:98 search.py:16
+#: models.py:101 search.py:16
 msgid "Label"
 msgstr "Označení"
 
-#: models.py:112
+#: models.py:115
 msgid "Role"
 msgstr "Role"
 

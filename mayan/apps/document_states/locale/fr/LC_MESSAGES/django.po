@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-27 14:57-0400\n"
+"POT-Creation-Date: 2019-10-30 03:00-0400\n"
 "PO-Revision-Date: 2019-09-24 04:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:62 events.py:8 links.py:17 links.py:46 links.py:149 links.py:176
+#: apps.py:62 events.py:8 links.py:18 links.py:47 links.py:150 links.py:179
 #: models.py:61 views/workflow_proxy_views.py:75 views/workflow_views.py:139
 msgid "Workflows"
 msgstr "Flux de travail"
@@ -63,7 +63,7 @@ msgstr "Date et heure"
 msgid "Completion"
 msgstr "Finalisation"
 
-#: apps.py:204 forms.py:178 links.py:161 models.py:369 models.py:510
+#: apps.py:204 forms.py:178 links.py:162 models.py:369 models.py:510
 msgid "Transition"
 msgstr "Transition"
 
@@ -128,67 +128,67 @@ msgstr "Commentaire facultatif à joindre à la transition."
 msgid "Event trigger: %s"
 msgstr "Déclencheur d'action : %s"
 
-#: links.py:23 views/workflow_views.py:144
+#: links.py:24 views/workflow_views.py:144
 msgid "Create workflow"
 msgstr "Créer un flux de travail"
 
-#: links.py:29 links.py:53 links.py:85 links.py:110
+#: links.py:30 links.py:54 links.py:86 links.py:111
 msgid "Delete"
 msgstr "Supprimer"
 
-#: links.py:35 models.py:52
+#: links.py:36 models.py:52
 msgid "Document types"
 msgstr "Types de document"
 
-#: links.py:42 links.py:60 links.py:92 links.py:117
+#: links.py:43 links.py:61 links.py:93 links.py:118
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:66
+#: links.py:67
 msgid "Actions"
 msgstr "Actions"
 
-#: links.py:72
+#: links.py:73
 msgid "Create action"
 msgstr "Créer une action"
 
-#: links.py:78
+#: links.py:79
 msgid "Create state"
 msgstr "Créer un état"
 
-#: links.py:97 links.py:189
+#: links.py:98 links.py:192
 msgid "States"
 msgstr "États"
 
-#: links.py:103
+#: links.py:104
 msgid "Create transition"
 msgstr "Créer une transition"
 
-#: links.py:122
+#: links.py:123
 msgid "Transitions"
 msgstr "Transitions"
 
-#: links.py:129
+#: links.py:130
 msgid "Transition triggers"
 msgstr "Déclencheurs de transition"
 
-#: links.py:136
+#: links.py:137
 msgid "Preview"
 msgstr "Prévisualiser"
 
-#: links.py:141 queues.py:13
+#: links.py:142 queues.py:13
 msgid "Launch all workflows"
 msgstr "Lancer tous les flux de travail"
 
-#: links.py:156
+#: links.py:157
 msgid "Detail"
 msgstr "Détail"
 
-#: links.py:170
+#: links.py:171
 msgid "Workflow documents"
 msgstr "Documents du flux de travail"
 
-#: links.py:182
+#: links.py:185
 msgid "State documents"
 msgstr "Documents d'état"
 

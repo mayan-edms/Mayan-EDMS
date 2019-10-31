@@ -403,7 +403,11 @@ class Dependency(object):
         ]
         """
         print(_('Patching files... '), end='')
-        sys.stdout.flush()
+
+        try:
+            sys.stdout.flush()
+        except AttributeError:
+            pass
 
         if not path:
             path = self.get_install_path()

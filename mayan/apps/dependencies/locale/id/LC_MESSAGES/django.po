@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-27 14:57-0400\n"
+"POT-Creation-Date: 2019-10-30 02:59-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Adek Lanin, 2019\n"
 "Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
-#: apps.py:59 classes.py:173 classes.py:809
+#: apps.py:59 classes.py:173 classes.py:813
 msgid "Environment"
 msgstr ""
 
@@ -153,82 +153,82 @@ msgstr ""
 msgid "Patching files... "
 msgstr ""
 
-#: classes.py:440
+#: classes.py:444
 msgid "Executables that are called directly by the code."
 msgstr ""
 
-#: classes.py:442
+#: classes.py:446
 msgid "Binary"
 msgstr ""
 
-#: classes.py:459
+#: classes.py:463
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
 msgstr ""
 
-#: classes.py:462
+#: classes.py:466
 msgid "JavaScript"
 msgstr ""
 
-#: classes.py:496 classes.py:729
+#: classes.py:500 classes.py:733
 msgid "Downloading... "
 msgstr ""
 
-#: classes.py:499
+#: classes.py:503
 msgid "Verifying... "
 msgstr ""
 
-#: classes.py:502 classes.py:732
+#: classes.py:506 classes.py:736
 msgid "Extracting... "
 msgstr ""
 
-#: classes.py:681
+#: classes.py:685
 msgid "Python packages downloaded from PyPI."
 msgstr ""
 
-#: classes.py:683
+#: classes.py:687
 msgid "Python"
 msgstr ""
 
-#: classes.py:710
+#: classes.py:714
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr ""
 
-#: classes.py:712
+#: classes.py:716
 msgid "Google font"
 msgstr ""
 
-#: classes.py:791
+#: classes.py:795
 msgid "Declared in app"
 msgstr ""
 
-#: classes.py:792
+#: classes.py:796
 msgid "Show dependencies by the app that declared them."
 msgstr ""
 
-#: classes.py:796
+#: classes.py:800
 msgid "Class"
 msgstr ""
 
-#: classes.py:797
+#: classes.py:801
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
 
-#: classes.py:802
+#: classes.py:806
 msgid "State"
 msgstr ""
 
-#: classes.py:803
+#: classes.py:807
 msgid ""
 "Show the different states of the dependencies. True means that the "
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
 
-#: classes.py:810
+#: classes.py:814
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."

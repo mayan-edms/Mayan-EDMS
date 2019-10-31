@@ -62,30 +62,22 @@ PythonDependency(
 )
 PythonDependency(
     copyright_text='''
-        Copyright (c) 2015-2016 Ask Solem.  All Rights Reserved.
-        Copyright (c) 2012-2014 GoPivotal, Inc.  All Rights Reserved.
+        Copyright (c) 2012-2013 GoPivotal, Inc.  All Rights Reserved.
         Copyright (c) 2009-2012 Ask Solem.  All Rights Reserved.
-
-        django-celery-beat is licensed under The BSD License (3 Clause, also known as
-        the new BSD license).  The license is an OSI approved Open Source
-        license and is GPL-compatible(1).
-
-        The license text can also be found here:
-        http://www.opensource.org/licenses/BSD-3-Clause
-
-        License
-        =======
+        All rights reserved.
 
         Redistribution and use in source and binary forms, with or without
         modification, are permitted provided that the following conditions are met:
-            * Redistributions of source code must retain the above copyright
-              notice, this list of conditions and the following disclaimer.
-            * Redistributions in binary form must reproduce the above copyright
-              notice, this list of conditions and the following disclaimer in the
-              documentation and/or other materials provided with the distribution.
-            * Neither the name of Ask Solem nor the
-              names of its contributors may be used to endorse or promote products
-              derived from this software without specific prior written permission.
+
+        * Redistributions of source code must retain the above copyright notice,
+        this list of conditions and the following disclaimer.
+        * Redistributions in binary form must reproduce the above copyright
+        notice, this list of conditions and the following disclaimer in the
+        documentation and/or other materials provided with the distribution.
+
+        Neither the name of Ask Solem nor the names of its contributors may be used
+        to endorse or promote products derived from this software without specific
+        prior written permission.
 
         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
         AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-27 15:01-0400\n"
+"POT-Creation-Date: 2019-10-30 03:03-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Roberto Rosario, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -21,47 +21,47 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:23 links.py:12 permissions.py:7
+#: apps.py:24 links.py:12 permissions.py:7
 msgid "Task manager"
 msgstr "Administrador de tareas"
 
-#: apps.py:31
+#: apps.py:32
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Nombre"
 
-#: apps.py:37
+#: apps.py:38
 msgid "Default queue?"
 msgstr "¿Cola principal?"
 
-#: apps.py:41
+#: apps.py:42
 msgid "Is transient?"
 msgstr "¿Es transitoria?"
 
-#: apps.py:45
+#: apps.py:46
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:48
+#: apps.py:49
 msgid "Start time"
 msgstr "Tiempo de inicio"
 
-#: apps.py:51
+#: apps.py:52
 msgid "Host"
 msgstr "Servidor"
 
-#: apps.py:55
+#: apps.py:56
 msgid "Arguments"
 msgstr "Argumentos"
 
-#: apps.py:59
+#: apps.py:60
 msgid "Keyword arguments"
 msgstr "Argumentos explícitos"
 
-#: apps.py:63
+#: apps.py:64
 msgid "Worker process ID"
 msgstr "ID del proceso trabajador"
 

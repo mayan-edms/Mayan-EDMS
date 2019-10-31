@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-27 14:57-0400\n"
+"POT-Creation-Date: 2019-10-30 03:00-0400\n"
 "PO-Revision-Date: 2019-10-17 11:06+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:62 events.py:8 links.py:17 links.py:46 links.py:149 links.py:176
+#: apps.py:62 events.py:8 links.py:18 links.py:47 links.py:150 links.py:179
 #: models.py:61 views/workflow_proxy_views.py:75 views/workflow_views.py:139
 msgid "Workflows"
 msgstr "Workfows"
@@ -60,7 +60,7 @@ msgstr "Datum a čas"
 msgid "Completion"
 msgstr "Dokončení"
 
-#: apps.py:204 forms.py:178 links.py:161 models.py:369 models.py:510
+#: apps.py:204 forms.py:178 links.py:162 models.py:369 models.py:510
 msgid "Transition"
 msgstr "Krok"
 
@@ -125,67 +125,67 @@ msgstr "Volitelný komentář pro připojení ke krok."
 msgid "Event trigger: %s"
 msgstr "Spouštěč událostí: %s"
 
-#: links.py:23 views/workflow_views.py:144
+#: links.py:24 views/workflow_views.py:144
 msgid "Create workflow"
 msgstr "Vytvořte workflow"
 
-#: links.py:29 links.py:53 links.py:85 links.py:110
+#: links.py:30 links.py:54 links.py:86 links.py:111
 msgid "Delete"
 msgstr "Odstranit"
 
-#: links.py:35 models.py:52
+#: links.py:36 models.py:52
 msgid "Document types"
 msgstr "Typy dokumentů"
 
-#: links.py:42 links.py:60 links.py:92 links.py:117
+#: links.py:43 links.py:61 links.py:93 links.py:118
 msgid "Edit"
 msgstr "Editovat"
 
-#: links.py:66
+#: links.py:67
 msgid "Actions"
 msgstr "Akce"
 
-#: links.py:72
+#: links.py:73
 msgid "Create action"
 msgstr "Vytvořit akci"
 
-#: links.py:78
+#: links.py:79
 msgid "Create state"
 msgstr "Vytvořit stav"
 
-#: links.py:97 links.py:189
+#: links.py:98 links.py:192
 msgid "States"
 msgstr "Stavy"
 
-#: links.py:103
+#: links.py:104
 msgid "Create transition"
 msgstr "Vytvořit krok"
 
-#: links.py:122
+#: links.py:123
 msgid "Transitions"
 msgstr "Kroky"
 
-#: links.py:129
+#: links.py:130
 msgid "Transition triggers"
 msgstr "Spouštěče kroku"
 
-#: links.py:136
+#: links.py:137
 msgid "Preview"
 msgstr "Náhled"
 
-#: links.py:141 queues.py:13
+#: links.py:142 queues.py:13
 msgid "Launch all workflows"
 msgstr "Spusťte všechny workflow"
 
-#: links.py:156
+#: links.py:157
 msgid "Detail"
 msgstr "Detail"
 
-#: links.py:170
+#: links.py:171
 msgid "Workflow documents"
 msgstr "Workflow dokumentů"
 
-#: links.py:182
+#: links.py:185
 msgid "State documents"
 msgstr "Stav dokumentů"
 

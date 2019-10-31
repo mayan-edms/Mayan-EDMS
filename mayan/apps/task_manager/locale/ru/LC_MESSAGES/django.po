@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-27 15:01-0400\n"
+"POT-Creation-Date: 2019-10-30 03:03-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: lilo.panic, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -23,47 +23,47 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:23 links.py:12 permissions.py:7
+#: apps.py:24 links.py:12 permissions.py:7
 msgid "Task manager"
 msgstr ""
 
-#: apps.py:31
+#: apps.py:32
 msgid "Label"
 msgstr "Ярлык"
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Название"
 
-#: apps.py:37
+#: apps.py:38
 msgid "Default queue?"
 msgstr ""
 
-#: apps.py:41
+#: apps.py:42
 msgid "Is transient?"
 msgstr ""
 
-#: apps.py:45
+#: apps.py:46
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:48
+#: apps.py:49
 msgid "Start time"
 msgstr ""
 
-#: apps.py:51
+#: apps.py:52
 msgid "Host"
 msgstr "Хост"
 
-#: apps.py:55
+#: apps.py:56
 msgid "Arguments"
 msgstr "Аргументы"
 
-#: apps.py:59
+#: apps.py:60
 msgid "Keyword arguments"
 msgstr ""
 
-#: apps.py:63
+#: apps.py:64
 msgid "Worker process ID"
 msgstr ""
 
