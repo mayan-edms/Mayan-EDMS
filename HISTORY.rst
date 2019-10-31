@@ -35,6 +35,7 @@
   organize cache invalidation of both apps for tests.
 - Add a version attribute to setting namespace. These are dumped 
   as SMART_SETTINGS_NAMESPACES.
+- Add savesettings command.
 
 3.2.8 (2019-10-01)
 ==================
