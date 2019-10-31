@@ -31,6 +31,8 @@
 - Improve duplicated document list view logic to not show 
   documents with trashed duplicates.
 - Backport Docker composer makefile targets.
+- Add PermissionTestCaseMixin and SmartSettingTestCaseMixin to better
+  organize cache invalidation of both apps for tests.
 
 3.2.8 (2019-10-01)
 ==================

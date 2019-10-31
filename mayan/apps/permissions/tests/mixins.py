@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from ..classes import PermissionNamespace
+from ..classes import Permission, PermissionNamespace
 from ..models import Role
 
 from .literals import (
@@ -43,6 +43,12 @@ class PermissionTestMixin(object):
             label=TEST_PERMISSION_LABEL_2,
             name=TEST_PERMISSION_NAME_2
         )
+
+
+class PermissionTestCaseMixin(object):
+    def setUp(self):
+        super(PermissionTestCaseMixin, self).setUp()
+        Permission.invalidate_cache()
 
 
 class RoleAPIViewTestMixin(object):
