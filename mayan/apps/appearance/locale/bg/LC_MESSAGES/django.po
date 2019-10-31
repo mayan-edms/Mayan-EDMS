@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-27 14:55-0400\n"
-"PO-Revision-Date: 2019-10-16 09:27+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
+"POT-Creation-Date: 2019-10-30 02:57-0400\n"
+"PO-Revision-Date: 2019-10-30 07:03+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -160,9 +160,9 @@ msgstr "\n                Може също <a class=\"new_window\" href=\"https
 #: templates/appearance/about.html:127
 msgid ""
 "\n"
-"                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>. <br>The book is available on pre-release format at a discounted price for a limited time.\n"
+"                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>.\n"
 "            "
-msgstr "\n                Освен дарения може също така да подкрепите проекта чрез  <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">покупка на екземпляр на книгата \"Изследване на Mayan EDMS\" от Роберто Росарио</a>. <br>Книгата е налична в предпечатен формат на намалена цена за ограничен период.\n            "
+msgstr ""
 
 #: templates/appearance/about.html:133
 #, python-format

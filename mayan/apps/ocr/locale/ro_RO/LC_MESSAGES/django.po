@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-27 15:00-0400\n"
-"PO-Revision-Date: 2019-09-24 04:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-30 03:02-0400\n"
+"PO-Revision-Date: 2019-10-29 12:30+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +48,7 @@ msgstr "PyOCR este o bibliotecă Python care simplifică utilizarea instrumentel
 
 #: events.py:10
 msgid "Document OCR content deleted"
-msgstr ""
+msgstr "Conținutul OCR al documentului a fost șters"
 
 #: events.py:14
 msgid "Document version submitted for OCR"
@@ -69,7 +69,7 @@ msgstr "Pagina %(page_number)d"
 
 #: links.py:27 links.py:32
 msgid "Delete OCR content"
-msgstr ""
+msgstr "Ștergeți conținutul OCR"
 
 #: links.py:38 links.py:43
 msgid "Submit for OCR"
@@ -170,9 +170,9 @@ msgstr "Setați tipuri noi de documente pentru a efectua automat funcția OCR î
 #: views.py:37
 msgid "Delete the OCR content of the selected document?"
 msgid_plural "Delete the OCR content of the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Ștergeți conținutul OCR al documentului selectat?"
+msgstr[1] "Ștergeți conținutul OCR al documentelor selectate?"
+msgstr[2] "Ștergeți conținutul OCR al documentelor selectate?"
 
 #: views.py:71
 #, python-format
