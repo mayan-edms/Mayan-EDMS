@@ -30,6 +30,7 @@
 - Add makefile target to launch a production staging Docker image.
 - Improve duplicated document list view logic to not show 
   documents with trashed duplicates.
+- Backport Docker composer makefile targets.
 
 3.2.8 (2019-10-01)
 ==================

@@ -27,6 +27,15 @@ docker-runtest-cleanup: ## Delete the test container and the test volume.
 docker-runtest-all: ## Executed the test suite in a test container.
 	docker run --rm run-tests
 
+docker-compose-build:
+	docker-compose -f docker/docker-compose.yml -p mayan-edms build
+
+docker-compose-build-with-proxy:
+	docker-compose -f docker/docker-compose.yml -p mayan-edms build --build-arg APT_PROXY=$(APT_PROXY)
+
+docker-compose-up:
+	docker-compose -f docker/docker-compose.yml -p mayan-edms up
+
 docker-staging-network-create:
 	@docker network rm mayan-staging || true
 	docker network create mayan-staging
