@@ -1,14 +1,11 @@
+#!make
+include config.env
 .PHONY: clean-pyc clean-build
 
 DOCKER_MYSQL_IMAGE = mysql:8.0
 DOCKER_ORACLE_IMAGE = wnameless/oracle-xe-11g
 DOCKER_POSTGRES_IMAGE = postgres:9.6-alpine
 DOCKER_REDIS_IMAGE = redis:5.0-alpine
-
-PYTHON_MYSQL_VERSION = 1.4.4
-PYTHON_PSYCOPG2_VERSION = 2.8.3
-PYTHON_RABBITMQ_VERSION = 2.0.0
-PYTHON_REDIS_VERSION = 3.2.1
 
 help:
 	@echo "Usage: make <target>\n"
@@ -43,7 +40,7 @@ test-all: clean-pyc
 test-launch-postgres:
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
-	docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE)
+	docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
 	sudo apt-get install -q libpq-dev
 	pip install psycopg2==$(PYTHON_PSYCOPG2_VERSION)
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
@@ -63,7 +60,7 @@ test-with-postgres-all: test-launch-postgres
 test-launch-mysql:
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
-	docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan -v test-mysql:/var/lib/mysql $(DOCKER_MYSQL_IMAGE)
+	docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan -v test-mysql:/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION)
 	sudo apt-get install -q libmysqlclient-dev mysql-client
 	pip install mysqlclient==$(PYTHON_MYSQL_VERSION)
 	while ! nc -z 127.0.0.1 3306; do sleep 1; done
@@ -85,9 +82,9 @@ test-with-mysql-all: test-launch-mysql
 test-launch-oracle:
 	@docker rm -f test-oracle || true
 	@docker volume rm test-oracle || true
-	docker run -d --name test-oracle -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v test-oracle:/u01/app/oracle $(DOCKER_ORACLE_IMAGE)
+	docker run -d --name test-oracle -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v test-oracle:/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
 	# https://gist.github.com/kimus/10012910
-	pip install cx_Oracle
+	pip install cx_Oracle==$(PYTHON_ORACLE_VERSION)
 	while ! nc -z 127.0.0.1 49161; do sleep 1; done
 	sleep 10
 
@@ -256,8 +253,8 @@ shell_plus: ## Run the shell_plus command.
 	./manage.py shell_plus --settings=mayan.settings.development
 
 test-with-docker-services-on: ## Launch and initialize production-like services using Docker (Postgres and Redis).
-	docker run -d --name redis -p 6379:6379 $(DOCKER_REDIS_IMAGE)
-	docker run -d --name postgres -p 5432:5432 $(DOCKER_POSTGRES_IMAGE)
+	docker run -d --name redis -p 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
+	docker run -d --name postgres -p 5432:5432 $(DOCKER_POSTGRES_IMAGE_VERSION)
 	while ! nc -z 127.0.0.1 6379; do sleep 1; done
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 	sleep 4
@@ -275,7 +272,7 @@ test-with-docker-worker: ## Launch a worker instance that uses the production-li
 	DJANGO_SETTINGS_MODULE=mayan.settings.staging.docker ./manage.py celery worker -A mayan -B -l INFO -O fair
 
 docker-mysql-on: ## Launch and initialize a MySQL Docker container.
-	docker run -d --name mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan_edms $(DOCKER_MYSQL_IMAGE)
+	docker run -d --name mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan_edms $(DOCKER_MYSQL_IMAGE_VERSION)
 	while ! nc -z 127.0.0.1 3306; do sleep 1; done
 
 docker-mysql-off: ## Stop and delete the MySQL Docker container.
@@ -283,7 +280,7 @@ docker-mysql-off: ## Stop and delete the MySQL Docker container.
 	docker rm mysql
 
 docker-postgres-on: ## Launch and initialize a PostgreSQL Docker container.
-	docker run -d --name postgres -p 5432:5432 $(DOCKER_POSTGRES_IMAGE)
+	docker run -d --name postgres -p 5432:5432 $(DOCKER_POSTGRES_IMAGE_VERSION)
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 
 docker-postgres-off: ## Stop and delete the PostgreSQL Docker container.

@@ -1,3 +1,6 @@
+#!make
+include config.env
+
 HOST_IP = `/sbin/ip route|awk '/docker0/ { print $$9 }'`
 APT_PROXY ?= $(HOST_IP):3142
 CONSOLE_COLUMNS ?= `echo $$(tput cols)`
@@ -51,13 +54,13 @@ docker-staging-container-postgresql-start:
     -e POSTGRES_DB=mayan \
     -e POSTGRES_PASSWORD=mayanuserpass \
     -v mayan-staging-postgres:/var/lib/postgresql/data \
-    postgres:9.6-alpine
+    $(DOCKER_POSTGRES_IMAGE_VERSION)
 
 docker-staging-container-redis-start:
 	docker run -d \
     --name mayan-staging-redis \
     --network=mayan-staging \
-    redis:5.0-alpine \
+    $(DOCKER_REDIS_IMAGE_VERSION) \
     redis-server \
     --databases \
     "2" \

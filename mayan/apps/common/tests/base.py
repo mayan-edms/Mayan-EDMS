@@ -6,8 +6,10 @@ from django_downloadview import assert_download_response
 
 from mayan.apps.acls.tests.mixins import ACLTestCaseMixin
 from mayan.apps.converter.tests.mixins import LayerTestCaseMixin
-from mayan.apps.permissions.classes import Permission
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.permissions.tests.mixins import PermissionTestCaseMixin
+from mayan.apps.smart_settings.tests.mixins import SmartSettingsTestCaseMixin
+
+
 from mayan.apps.user_management.tests.mixins import UserTestMixin
 
 from .mixins import (
@@ -22,18 +24,14 @@ from .mixins import (
 class BaseTestCase(
     LayerTestCaseMixin, SilenceLoggerTestCaseMixin, ConnectionsCheckTestCaseMixin,
     RandomPrimaryKeyModelMonkeyPatchMixin, ACLTestCaseMixin,
-    ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
-    TempfileCheckTestCasekMixin, UserTestMixin, TestCase
+    ModelTestCaseMixin, OpenFileCheckTestCaseMixin, PermissionTestCaseMixin,
+    SmartSettingsTestCaseMixin, TempfileCheckTestCasekMixin, UserTestMixin,
+    TestCase
 ):
     """
     This is the most basic test case class any test in the project should use.
     """
     assert_download_response = assert_download_response
-
-    def setUp(self):
-        super(BaseTestCase, self).setUp()
-        Namespace.invalidate_cache_all()
-        Permission.invalidate_cache()
 
 
 class GenericViewTestCase(

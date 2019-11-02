@@ -22,7 +22,7 @@ from .handlers import (
     handler_user_locale_profile_session_config, handler_user_locale_profile_create
 )
 from .links import (
-    link_about, link_current_user_locale_profile_edit, link_license,
+    link_about, link_book, link_current_user_locale_profile_edit, link_license,
     link_object_error_list_clear, link_setup, link_tools
 )
 
@@ -109,7 +109,7 @@ class CommonApp(MayanAppConfig):
 
         menu_about.bind_links(
             links=(
-                link_tools, link_setup, link_about, link_license,
+                link_tools, link_setup, link_about, link_book, link_license,
             )
         )
 

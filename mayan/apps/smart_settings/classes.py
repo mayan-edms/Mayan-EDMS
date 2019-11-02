@@ -21,6 +21,7 @@ from mayan.apps.common.serialization import yaml_dump, yaml_load
 from .utils import read_configuration_file
 
 logger = logging.getLogger(__name__)
+SMART_SETTINGS_NAMESPACES_NAME = 'SMART_SETTINGS_NAMESPACES'
 
 
 @python_2_unicode_compatible
@@ -40,25 +41,34 @@ class Namespace(object):
                     )
 
     @classmethod
+    def get(cls, name):
+        return cls._registry[name]
+
+    @classmethod
     def get_all(cls):
         return sorted(cls._registry.values(), key=lambda x: x.label)
 
     @classmethod
-    def get(cls, name):
-        return cls._registry[name]
+    def get_namespace_config(cls, name):
+        return cls.get_namespaces_config().get(name, {})
+
+    @classmethod
+    def get_namespaces_config(cls):
+        return getattr(settings, SMART_SETTINGS_NAMESPACES_NAME, {})
 
     @classmethod
     def invalidate_cache_all(cls):
         for namespace in cls.get_all():
             namespace.invalidate_cache()
 
-    def __init__(self, name, label):
+    def __init__(self, name, label, version='0001'):
         if name in self.__class__._registry:
             raise Exception(
                 'Namespace names must be unique; "%s" already exists.' % name
             )
         self.name = name
         self.label = label
+        self.version = version
         self.__class__._registry[name] = self
         self._settings = []
 
@@ -67,6 +77,9 @@ class Namespace(object):
 
     def add_setting(self, **kwargs):
         return Setting(namespace=self, **kwargs)
+
+    def get_config_version(self):
+        return Namespace.get_namespace_config(name=self.name).get('version', None)
 
     def invalidate_cache(self):
         for setting in self._settings:
@@ -123,7 +136,18 @@ class Setting(object):
     def dump_data(cls, filter_term=None, namespace=None):
         dictionary = {}
 
+        if not namespace:
+            namespace_dictionary = {}
+            for _namespace in Namespace.get_all():
+                namespace_dictionary[_namespace.name] = {
+                    'version': _namespace.version
+                }
+
+            dictionary[SMART_SETTINGS_NAMESPACES_NAME] = namespace_dictionary
+
         for setting in cls.get_all():
+            # If a namespace is specified, filter the list by that namespace
+            # otherwise return always True to include all (or not None == True)
             if (namespace and setting.namespace.name == namespace) or not namespace:
                 if (filter_term and filter_term.lower() in setting.global_name.lower()) or not filter_term:
                     dictionary[setting.global_name] = Setting.express_promises(setting.value)
@@ -157,9 +181,12 @@ class Setting(object):
         )
 
     @classmethod
-    def save_configuration(cls, path=settings.CONFIGURATION_FILEPATH):
+    def save_configuration(cls, path=None):
+        if not path:
+            path = settings.CONFIGURATION_FILEPATH
+
         try:
-            with open(path, 'w') as file_object:
+            with open(path, mode='w') as file_object:
                 file_object.write(cls.dump_data())
         except IOError as exception:
             if exception.errno == errno.ENOENT:

@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 
 from .icons import (
-    icon_about, icon_current_user_locale_profile_details,
+    icon_about, icon_book, icon_current_user_locale_profile_details,
     icon_current_user_locale_profile_edit, icon_documentation,
     icon_forum, icon_license, icon_setup, icon_source_code, icon_support,
     icon_tools
@@ -34,6 +34,10 @@ def get_kwargs_factory(variable_name):
 
 link_about = Link(
     icon_class=icon_about, text=_('About this'), view='common:about_view'
+)
+link_book = Link(
+    icon_class=icon_book, tags='new_window', text=_('Get the book'),
+    url='https://mayan-edms.com/book/'
 )
 link_current_user_locale_profile_details = Link(
     icon_class=icon_current_user_locale_profile_details,
