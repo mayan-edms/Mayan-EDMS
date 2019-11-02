@@ -174,7 +174,7 @@ test-mysql:
     - apt-get install -qq libmysqlclient-dev mysql-client
     - . venv/bin/activate
     - set -a && . ./config.env && set +a
-    - pip install mysqlclient==$PYTHON_MYSQL_VERSION
+    - pip install mysql-python==$PYTHON_MYSQL_VERSION
     - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
   tags:
