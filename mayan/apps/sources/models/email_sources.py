@@ -20,6 +20,7 @@ from mayan.apps.documents.models import Document
 from mayan.apps.metadata.api import set_bulk_metadata
 from mayan.apps.metadata.models import MetadataType
 
+from ..exceptions import SourceException
 from ..literals import (
     DEFAULT_IMAP_MAILBOX, DEFAULT_METADATA_ATTACHMENT_NAME,
     DEFAULT_POP3_TIMEOUT, SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3,
@@ -238,9 +239,22 @@ class IMAPEmail(EmailBaseModel):
             mailbox = imaplib.IMAP4(host=self.host, port=self.port)
 
         mailbox.login(user=self.username, password=self.password)
-        mailbox.select(mailbox=self.mailbox)
+        try:
+            mailbox.select(mailbox=self.mailbox)
+        except Exception as exception:
+            raise SourceException(
+                'Error selecting mailbox: {}; {}'.format(
+                    self.mailbox, exception
+                )
+            )
 
-        status, data = mailbox.search(None, 'NOT', 'DELETED')
+        try:
+            status, data = mailbox.search(None, 'NOT', 'DELETED')
+        except Exception as exception:
+            raise SourceException(
+                'Error executing search command; {}'.format(exception)
+            )
+
         if data:
             messages_info = data[0].split()
             logger.debug('messages count: %s', len(messages_info))
@@ -250,15 +264,30 @@ class IMAPEmail(EmailBaseModel):
                 status, data = mailbox.fetch(
                     message_set=message_number, message_parts='(RFC822)'
                 )
-                EmailBaseModel.process_message(
-                    source=self, message_text=data[0][1]
-                )
+                try:
+                    EmailBaseModel.process_message(
+                        source=self, message_text=data[0][1]
+                    )
+                except Exception as exception:
+                    raise SourceException(
+                        'Error processing message number: {}; {}'.format(
+                            message_number, exception
+                        )
+                    )
 
                 if not test:
-                    mailbox.store(
-                        message_set=message_number, command='+FLAGS',
-                        flags=r'\Deleted'
-                    )
+                    try:
+                        mailbox.store(
+                            message_set=message_number, command='+FLAGS',
+                            flags=r'\Deleted'
+                        )
+                    except Exception as exception:
+                        raise SourceException(
+                            'Error executing IMAP store command '
+                            'on message number {}; {}'.format(
+                                message_number, exception
+                            )
+                        )
 
         mailbox.expunge()
         mailbox.close()

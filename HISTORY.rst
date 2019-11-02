@@ -36,6 +36,8 @@
 - Add a version attribute to setting namespace. These are dumped 
   as SMART_SETTINGS_NAMESPACES.
 - Add savesettings command.
+- Add extra logging to the IMAP email source. GitLab issue #682.
+  Thanks to Patrick Hütter (@PatrickHuetter) for the report.
 
 3.2.8 (2019-10-01)
 ==================
