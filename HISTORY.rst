@@ -137,6 +137,19 @@
 - Add makefile target to launch a production staging Docker image.
 - Improve duplicated document list view logic to not show 
   documents with trashed duplicates.
+- Backport Docker composer makefile targets.
+- Add PermissionTestCaseMixin and SmartSettingTestCaseMixin to better
+  organize cache invalidation of both apps for tests.
+- Add a version attribute to setting namespace. These are dumped 
+  as SMART_SETTINGS_NAMESPACES.
+- Add savesettings command.
+- Add extra logging to the IMAP email source. GitLab issue #682.
+  Thanks to Patrick Hütter (@PatrickHuetter) for the report.
+- Rename all instances of the IMAP server from mailbox to 
+  server for clarity.
+- Add book link in the about menu.
+- Add unknown exception handling when checking for the latest
+  version.
 
 3.2.8 (2019-10-01)
 ==================

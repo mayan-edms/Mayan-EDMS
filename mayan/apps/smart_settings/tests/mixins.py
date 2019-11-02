@@ -5,6 +5,12 @@ from ..classes import Namespace
 from .literals import TEST_NAMESPACE_LABEL, TEST_NAMESPACE_NAME
 
 
+class SmartSettingsTestCaseMixin(object):
+    def setUp(self):
+        super(SmartSettingsTestCaseMixin, self).setUp()
+        Namespace.invalidate_cache_all()
+
+
 class SmartSettingTestMixin(object):
     def _create_test_settings_namespace(self):
         try:

@@ -8,6 +8,8 @@ FROM debian:10.0-slim as BASE_IMAGE
 
 LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 
+COPY config.env /config.env
+
 ENV PYTHONUNBUFFERED=1 \
     LC_ALL=C.UTF-8 \
     PROJECT_INSTALL_DIR=/opt/mayan-edms
@@ -104,18 +106,22 @@ apt-get install -y --no-install-recommends \
 && chown -R mayan:mayan /src
 
 USER mayan
-RUN python3 -m venv "${PROJECT_INSTALL_DIR}" \
+
+RUN set -a \
+&& . /config.env \
+&& set +a \
+&& python3 -m venv "${PROJECT_INSTALL_DIR}" \
 && . "${PROJECT_INSTALL_DIR}/bin/activate" \
 && pip install --no-cache-dir \
-    librabbitmq==2.0.0 \
-    mysqlclient==1.4.2.post1 \
-    psycopg2==2.8.3 \
-    redis==3.2.1 \
-    flower==0.9.3 \
+    librabbitmq==$PYTHON_LIBRABBITMQ_VERSION \
+    mysql-python==$PYTHON_MYSQL_VERSION \
+    psycopg2==$PYTHON_PSYCOPG2_VERSION \
+    redis==$PYTHON_REDIS_VERSION \
+    flower==$PYTHON_FLOWER_VERSION \
 # psutil is needed by ARM builds otherwise gevent and gunicorn fail to start
 && UNAME=`uname -m` && if [ "${UNAME#*arm}" != $UNAME ]; then \
     pip install --no-cache-dir \
-    psutil==5.6.2 \
+    psutil==$PYTHON_PSUTIL_VERSION \
 ; fi \
 # Install the Python packages needed to build Mayan EDMS
 && pip install --no-cache-dir -r /src/requirements/build.txt \

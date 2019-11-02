@@ -84,14 +84,14 @@ For another setup that offers more performance and scalability refer to the
 ------------------------------------------------------
    ::
 
-       sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 psycopg2==2.7.3.2 redis==2.10.6
+       sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
 
    .. note::
 
        Platforms with the ARM CPU might also need additional requirements.
        ::
 
-           sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 psutil==5.6.2
+           sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
 
 
 8. Create the database for the installation:
@@ -204,7 +204,7 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 ------------------------------------------
    ::
 
-       sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 librabbitmq==2.0.0
+       sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 librabbitmq==|PYTHON_LIBRABBITMQ_VERSION|
 
 
 3. Create the RabbitMQ user and vhost:

@@ -261,7 +261,14 @@ class IMAPEmail(EmailBaseModel):
             server = imaplib.IMAP4(host=self.host, port=self.port)
 
         server.login(user=self.username, password=self.password)
-        server.select(mailbox=self.mailbox)
+        try:
+            server.select(mailbox=self.mailbox)
+        except Exception as exception:
+            raise SourceException(
+                'Error selecting mailbox: {}; {}'.format(
+                    self.mailbox, exception
+                )
+            )
 
         try:
             status, data = server.uid(
@@ -280,10 +287,26 @@ class IMAPEmail(EmailBaseModel):
 
             for uid in uids:
                 logger.debug('message uid: %s', uid)
-                status, data = server.uid('FETCH', uid, '(RFC822)')
-                EmailBaseModel.process_message(
-                    source=self, message_text=data[0][1]
-                )
+
+                try:
+                    status, data = server.uid('FETCH', uid, '(RFC822)')
+                except Exception as exception:
+                    raise SourceException(
+                        'Error fetching message uid: {}; {}'.format(
+                            uid, exception
+                        )
+                    )
+
+                try:
+                    EmailBaseModel.process_message(
+                        source=self, message_text=data[0][1]
+                    )
+                except Exception as exception:
+                    raise SourceException(
+                        'Error processing message uid: {}; {}'.format(
+                            uid, exception
+                        )
+                    )
 
                 if not test:
                     if self.store_commands:
