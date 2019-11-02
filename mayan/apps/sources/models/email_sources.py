@@ -234,13 +234,13 @@ class IMAPEmail(EmailBaseModel):
         logger.debug('ssl: %s', self.ssl)
 
         if self.ssl:
-            mailbox = imaplib.IMAP4_SSL(host=self.host, port=self.port)
+            server = imaplib.IMAP4_SSL(host=self.host, port=self.port)
         else:
-            mailbox = imaplib.IMAP4(host=self.host, port=self.port)
+            server = imaplib.IMAP4(host=self.host, port=self.port)
 
-        mailbox.login(user=self.username, password=self.password)
+        server.login(user=self.username, password=self.password)
         try:
-            mailbox.select(mailbox=self.mailbox)
+            server.select(mailbox=self.mailbox)
         except Exception as exception:
             raise SourceException(
                 'Error selecting mailbox: {}; {}'.format(
@@ -249,7 +249,7 @@ class IMAPEmail(EmailBaseModel):
             )
 
         try:
-            status, data = mailbox.search(None, 'NOT', 'DELETED')
+            status, data = server.search(None, 'NOT', 'DELETED')
         except Exception as exception:
             raise SourceException(
                 'Error executing search command; {}'.format(exception)
@@ -261,7 +261,7 @@ class IMAPEmail(EmailBaseModel):
 
             for message_number in messages_info:
                 logger.debug('message_number: %s', message_number)
-                status, data = mailbox.fetch(
+                status, data = server.fetch(
                     message_set=message_number, message_parts='(RFC822)'
                 )
                 try:
@@ -277,7 +277,7 @@ class IMAPEmail(EmailBaseModel):
 
                 if not test:
                     try:
-                        mailbox.store(
+                        server.store(
                             message_set=message_number, command='+FLAGS',
                             flags=r'\Deleted'
                         )
@@ -289,9 +289,9 @@ class IMAPEmail(EmailBaseModel):
                             )
                         )
 
-        mailbox.expunge()
-        mailbox.close()
-        mailbox.logout()
+        server.expunge()
+        server.close()
+        server.logout()
 
 
 class POP3Email(EmailBaseModel):

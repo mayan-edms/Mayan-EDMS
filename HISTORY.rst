@@ -38,6 +38,8 @@
 - Add savesettings command.
 - Add extra logging to the IMAP email source. GitLab issue #682.
   Thanks to Patrick Hütter (@PatrickHuetter) for the report.
+- Rename all instances of the IMAP server from mailbox to 
+  server for clarity.
 
 3.2.8 (2019-10-01)
 ==================
