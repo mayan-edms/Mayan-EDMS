@@ -92,7 +92,7 @@ section for the required changes.
 For the Docker image, launch a separate RabbitMQ container
 (https://hub.docker.com/_/rabbitmq/)::
 
-    docker run -d --name mayan-edms-rabbitmq -e RABBITMQ_DEFAULT_USER=mayan -e RABBITMQ_DEFAULT_PASS=mayanrabbitmqpassword -e RABBITMQ_DEFAULT_VHOST=mayan rabbitmq:3
+    docker run -d --name mayan-edms-rabbitmq -e RABBITMQ_DEFAULT_USER=mayan -e RABBITMQ_DEFAULT_PASS=mayanrabbitmqpassword -e RABBITMQ_DEFAULT_VHOST=mayan |DOCKER_RABBITMQ_IMAGE_VERSION|
 
 Pass the MAYAN_BROKER_URL environment variable (https://kombu.readthedocs.io/en/latest/userguide/connections.html#connection-urls)
 to the Mayan EDMS container so that it uses the RabbitMQ container the

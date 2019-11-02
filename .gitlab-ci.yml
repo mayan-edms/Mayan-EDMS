@@ -170,7 +170,8 @@ test-mysql:
     - mysql:8.0.3
   script:
     - apt-get install -qq libmysqlclient-dev mysql-client
-    - pip install mysqlclient
+    - set -a && . ./config.env && set +a
+    - pip install mysqlclient==$PYTHON_MYSQL_VERSION
     - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
   tags:
@@ -185,7 +186,8 @@ test-postgres:
     - postgres
   script:
     - apt-get install -qq libpq-dev
-    - pip install psycopg2
+    - set -a && . ./config.env && set +a
+    - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
   tags:
     - postgres
