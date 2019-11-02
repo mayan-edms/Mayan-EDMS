@@ -41,6 +41,8 @@
 - Rename all instances of the IMAP server from mailbox to 
   server for clarity.
 - Add book link in the about menu.
+- Add unknown exception handling when checking for the latest
+  version.
 
 3.2.8 (2019-10-01)
 ==================
