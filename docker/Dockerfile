@@ -114,7 +114,7 @@ RUN set -a \
 && . "${PROJECT_INSTALL_DIR}/bin/activate" \
 && pip install --no-cache-dir \
     librabbitmq==$PYTHON_LIBRABBITMQ_VERSION \
-    mysql-python==$PYTHON_MYSQL_VERSION \
+    mysqlclient==$PYTHON_MYSQL_VERSION \
     psycopg2==$PYTHON_PSYCOPG2_VERSION \
     redis==$PYTHON_REDIS_VERSION \
     flower==$PYTHON_FLOWER_VERSION \
