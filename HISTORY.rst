@@ -40,6 +40,7 @@
   Thanks to Patrick Hütter (@PatrickHuetter) for the report.
 - Rename all instances of the IMAP server from mailbox to 
   server for clarity.
+- Add book link in the about menu.
 
 3.2.8 (2019-10-01)
 ==================
