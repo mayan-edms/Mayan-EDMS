@@ -34,3 +34,32 @@ class MockIMAPServer(object):
 
     def logout(self):
         return ('BYE', ['LOGOUT Requested'])
+
+
+class MockMailbox(object):
+    def dele(self, which):
+        return
+
+    def getwelcome(self):
+        return
+
+    def list(self, which=None):
+        return (None, ['1 test'])
+
+    def user(self, user):
+        return
+
+    def pass_(self, pswd):
+        return
+
+    def quit(self):
+        return
+
+    def retr(self, which=None):
+        return (
+            1, [TEST_EMAIL_BASE64_FILENAME]
+        )
+
+
+class MockStagingFolder(object):
+    """Mock of a StagingFolder model"""
