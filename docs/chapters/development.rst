@@ -502,6 +502,7 @@ Release checklist
 
        make generate-setup
 
+#. Commit as version bump.
 #. Build source package and test:
    ::
 
@@ -529,18 +530,18 @@ Release checklist
 Release using GitLab CI
 -----------------------
 
-#. Switch to the ``releases/all`` branch and merge the latest changes:
+#. Delete the corresponding ``releases/`` branch:
    ::
 
-       git checkout releases/all
-       git merge <corresponding branch>
+       git push origin :releases/<branch>
 
-#. Push code to trigger builds:
+#. Push the current branch to the corresponding origin ``releases/`` branch:
    ::
 
-       git push
+       git push origin <local branch> releases/<branch>
 
-#. Push tag upstream:
+
+#. Push the new tags:
    ::
 
        git push --tags

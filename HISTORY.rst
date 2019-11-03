@@ -105,7 +105,7 @@
   least one workflow.
 - Add ACL support to smart links.
 
-3.2.9 (2019-XX-XX)
+3.2.9 (2019-11-03)
 ==================
 - Move IMAPMockServer to its own module.
 - Display feedback message when testing a mailing profile.
@@ -135,17 +135,17 @@
 - Fix MAYAN_GUNICORN_TIMEOUT Docker image setting. GitLab issue #671.
   Thanks to Lennart Sauerbeck (@lennart_s) for the report.
 - Add makefile target to launch a production staging Docker image.
-- Improve duplicated document list view logic to not show 
+- Improve duplicated document list view logic to not show
   documents with trashed duplicates.
 - Backport Docker composer makefile targets.
 - Add PermissionTestCaseMixin and SmartSettingTestCaseMixin to better
   organize cache invalidation of both apps for tests.
-- Add a version attribute to setting namespace. These are dumped 
+- Add a version attribute to setting namespace. These are dumped
   as SMART_SETTINGS_NAMESPACES.
 - Add savesettings command.
 - Add extra logging to the IMAP email source. GitLab issue #682.
   Thanks to Patrick Hütter (@PatrickHuetter) for the report.
-- Rename all instances of the IMAP server from mailbox to 
+- Rename all instances of the IMAP server from mailbox to
   server for clarity.
 - Add book link in the about menu.
 - Add unknown exception handling when checking for the latest

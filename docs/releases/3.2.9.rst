@@ -1,25 +1,30 @@
 Version 3.2.9
 =============
 
-Released: October XX, 2019
+Released: November 3, 2019
 
 
 Changes
 -------
 
-- Move IMAPMockServer to its own module.
-- Display feedback message when testing a mailing profile.
-- Add tests to the platform app.
-- Fix platformtemplate command --context option help message.
-- Language translations update.
-- Add target to run all translations targets.
-- Backport color log formatter from branch version/next.
-- Don't raise error checking AnonymousUser for permissions.
-  Instead return always False.
-- Enable the main menu workflow runtime link when the workflow view
-  permission is granted to at least one workflow.
-- Make Postgres container wait delay configurable. GitLab issue #677.
-  Thanks to Antenore Gatta (@antenore) for the report.
+
+Debugging
+^^^^^^^^^
+
+The colored log formatter was ported from the versions/next branch. The
+color of the log output will be determined by the log level.
+
+Extra logging was added to the IMAP source to help with import issues.
+This relates to GitLab issue #682.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+The help message of the ``--context`` option of the ``platformtemplate``
+command was fixed to say "YAML" instead of "JSON".
+
+
 - Update Django to version 1.11.25.
 - Update PyYAML to version 5.1.2.
 - Update celery to version 3.1.26.post2.
@@ -29,12 +34,93 @@ Changes
 - Update Pillow to version 6.2.1.
 - Move Celery and Django Celery dependencies
   to the task manager app.
-- Improve dependecies app tests.
-- Return st_nlink of 1 files in mirrored indexes. GitLab issue #676.
-  Thanks to Ezio Vernacotola (@eziove) for the report and solution.
-- Fix MAYAN_GUNICORN_TIMEOUT Docker image setting. GitLab issue #671.
-  Thanks to Lennart Sauerbeck (@lennart_s) for the report.
+
+
+Docker
+^^^^^^
+
+The Mayan EDMS launcher script at get.mayan-edms.com was updated to allow
+configuring the wait delay after the PostgreSQL container is launched. The
+environment variable for this is called ``DOCKER_POSTGRES_DELAY`` and
+defaults to 10 seconds to preserve the existing behavior. This closes
+GitLab issue #677.
+
+A formatting error was fixed enabling again the use of the
+MAYAN_GUNICORN_TIMEOUT Docker image setting. Closes GitLab issue #671.
+
+
+Duplicates
+^^^^^^^^^^
+
+The duplicated document list view logic was improved and will not show
+documents with trashed duplicates.
+
+
+Mirroring
+^^^^^^^^^
+
+Mirrored document entries will now return 1 on their ``st_nlink`` attribute,
+fixing access errors in some operating systems. Fixes GitLab issue #676.
+
+
+Permissions
+^^^^^^^^^^^
+
+Instead of adding check to every API endpoint for authentication, the
+permission was updated to return False to any permission check for
+anonymous users. This change centralizes this check in a single place
+and lowers the probability of error on non authenticated API access.
+
+
+Settings
+^^^^^^^^
+
+To reduce config file incompatibilities between versions, the setting
+namespaces will now include a version attribute. This attribute is
+saved along with all the other settings when the ``config.yml`` is saved.
+This version attribute will allow apps to read entries in older formats
+instead of raising an error.
+
+A new management command was added, this is the ``savesettings`` command.
+This command does the same things as saving a setting from the user interface,
+it will update the ``config.yml`` file or create it, if it doesn't exists.
+
+
+Testing
+^^^^^^^
+
+Several improvements to the test system were ported from unreleased branches.
+All the mocked object were moved to their own module called mocks.py for each
+respective app.
+
+Test were added to the platform app and improved for the dependencies app.
+
+The mixins PermissionTestCaseMixin and SmartSettingTestCaseMixin were added
+to better organize cache invalidation of both apps for tests.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+A message is now displayed when testing a mailing profile.
+
+Granting the workflow view permission to at least on workflow will now enable
+the workflow main menu workflow link.
+
+
+Other changes
+^^^^^^^^^^^^^
+
+- Language translations update.
+- Add makefile target to run all translations targets.
 - Add makefile target to launch a production staging Docker image.
+- Backport Docker composer makefile targets.
+- Rename all instances of the IMAP server variable from mailbox to
+  server for clarity.
+- Add book link in the about menu.
+- Add unknown exception handling when checking for the latest
+  version.
+
 
 
 Removals

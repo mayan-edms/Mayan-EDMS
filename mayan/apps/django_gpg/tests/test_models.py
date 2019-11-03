@@ -17,32 +17,12 @@ from ..exceptions import (
 from ..models import Key
 
 from .literals import (
-    TEST_DETACHED_SIGNATURE, TEST_FILE, TEST_KEY_DATA, TEST_KEY_FINGERPRINT,
-    TEST_KEY_PASSPHRASE, TEST_RECEIVE_KEY, TEST_SEARCH_FINGERPRINT,
-    TEST_SEARCH_UID, TEST_SIGNED_FILE, TEST_SIGNED_FILE_CONTENT
+    MOCK_SEARCH_KEYS_RESPONSE, TEST_DETACHED_SIGNATURE, TEST_FILE,
+    TEST_KEY_DATA, TEST_KEY_FINGERPRINT, TEST_KEY_PASSPHRASE,
+    TEST_SEARCH_FINGERPRINT, TEST_SEARCH_UID, TEST_SIGNED_FILE,
+    TEST_SIGNED_FILE_CONTENT
 )
-
-MOCK_SEARCH_KEYS_RESPONSE = [
-    {
-        'algo': u'1',
-        'date': u'1311475606',
-        'expires': u'1643601600',
-        'keyid': u'607138F1AECC5A5CA31CB7715F3F7F75D210724D',
-        'length': u'2048',
-        'type': u'pub',
-        'uids': [u'Roberto Rosario <roberto.rosario.gonzalez@gmail.com>']
-    }
-]
-
-
-def mock_recv_keys(self, keyserver, *keyids):
-    class ImportResult(object):
-        count = 1
-        fingerprints = [TEST_SEARCH_FINGERPRINT]
-
-    self.import_keys(TEST_RECEIVE_KEY)
-
-    return ImportResult()
+from .mocks import mock_recv_keys
 
 
 class KeyTestCase(BaseTestCase):
