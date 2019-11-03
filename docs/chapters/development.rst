@@ -502,6 +502,7 @@ Release checklist
 
        make generate-setup
 
+#. Commit as version bump.
 #. Build source package and test:
    ::
 
