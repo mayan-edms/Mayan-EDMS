@@ -32,10 +32,10 @@ from ..forms import (
 )
 from ..icons import (
     icon_document_list, icon_document_list_recent_access,
-    icon_recent_added_document_list, icon_duplicated_document_list
+    icon_recent_added_document_list
 )
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
-from ..models import Document, DuplicatedDocument, RecentDocument
+from ..models import Document, RecentDocument
 from ..permissions import (
     permission_document_download, permission_document_print,
     permission_document_properties_edit, permission_document_tools,
@@ -48,12 +48,11 @@ from ..tasks import task_update_page_count
 from ..utils import parse_range
 
 __all__ = (
-    'DocumentListView', 'DocumentDocumentTypeEditView',
-    'DocumentDuplicatesListView', 'DocumentEditView', 'DocumentPreviewView',
-    'DocumentView', 'DocumentDownloadFormView', 'DocumentDownloadView',
-    'DocumentUpdatePageCountView', 'DocumentTransformationsClearView',
-    'DocumentTransformationsCloneView', 'DocumentPrint',
-    'DuplicatedDocumentListView', 'RecentAccessDocumentListView',
+    'DocumentListView', 'DocumentDocumentTypeEditView', 'DocumentEditView',
+    'DocumentPreviewView', 'DocumentView', 'DocumentDownloadFormView',
+    'DocumentDownloadView', 'DocumentUpdatePageCountView',
+    'DocumentTransformationsClearView', 'DocumentTransformationsCloneView',
+    'DocumentPrint', 'RecentAccessDocumentListView',
     'RecentAddedDocumentListView'
 )
 logger = logging.getLogger(__name__)
@@ -320,47 +319,6 @@ class DocumentDownloadView(SingleObjectDownloadView):
 
     def get_item_label(self, item):
         return item.label
-
-
-class DocumentDuplicatesListView(DocumentListView):
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_document(), permissions=(permission_document_view,),
-            user=self.request.user
-        )
-
-        return super(
-            DocumentDuplicatesListView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_document(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
-
-    def get_extra_context(self):
-        context = super(DocumentDuplicatesListView, self).get_extra_context()
-        context.update(
-            {
-                'no_results_icon': icon_duplicated_document_list,
-                'no_results_text': _(
-                    'Only exact copies of this document will be shown in the '
-                    'this list.'
-                ),
-                'no_results_title': _(
-                    'There are no duplicates for this document'
-                ),
-                'object': self.get_document(),
-                'title': _('Duplicates for document: %s') % self.get_document(),
-            }
-        )
-        return context
-
-    def get_source_queryset(self):
-        try:
-            return DuplicatedDocument.objects.get(
-                document=self.get_document()
-            ).documents.all()
-        except DuplicatedDocument.DoesNotExist:
-            return Document.objects.none()
 
 
 class DocumentEditView(SingleObjectEditView):
@@ -673,31 +631,6 @@ class DocumentPrint(FormView):
             return ('documents/document_print.html',)
         else:
             return (self.template_name,)
-
-
-class DuplicatedDocumentListView(DocumentListView):
-    def get_document_queryset(self):
-        return DuplicatedDocument.objects.get_duplicated_documents()
-
-    def get_extra_context(self):
-        context = super(DuplicatedDocumentListView, self).get_extra_context()
-        context.update(
-            {
-                'no_results_icon': icon_duplicated_document_list,
-                'no_results_text': _(
-                    'Duplicates are documents that are composed of the exact '
-                    'same file, down to the last byte. Files that have the '
-                    'same text or OCR but are not identical or were saved '
-                    'using a different file format will not appear as '
-                    'duplicates.'
-                ),
-                'no_results_title': _(
-                    'There are no duplicated documents'
-                ),
-                'title': _('Duplicated documents')
-            }
-        )
-        return context
 
 
 class RecentAccessDocumentListView(DocumentListView):

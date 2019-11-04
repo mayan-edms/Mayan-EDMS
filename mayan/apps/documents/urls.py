@@ -12,14 +12,6 @@ from .api_views import (
     APIDocumentVersionPageListView, APIDocumentVersionView,
     APIRecentDocumentListView
 )
-from .views.document_views import (
-    DocumentDocumentTypeEditView, DocumentDownloadFormView,
-    DocumentDownloadView, DocumentDuplicatesListView, DocumentEditView,
-    DocumentListView, DocumentPreviewView, DocumentPrint,
-    DocumentTransformationsClearView, DocumentTransformationsCloneView,
-    DocumentUpdatePageCountView, DocumentView, DuplicatedDocumentListView,
-    RecentAccessDocumentListView, RecentAddedDocumentListView
-)
 from .views.document_page_views import (
     DocumentPageDisable, DocumentPageEnable, DocumentPageListView,
     DocumentPageNavigationFirst, DocumentPageNavigationLast,
@@ -28,16 +20,26 @@ from .views.document_page_views import (
     DocumentPageView, DocumentPageViewResetView, DocumentPageZoomInView,
     DocumentPageZoomOutView
 )
-from .views.document_version_views import (
-    DocumentVersionDownloadFormView, DocumentVersionDownloadView,
-    DocumentVersionListView, DocumentVersionRevertView, DocumentVersionView,
-)
 from .views.document_type_views import (
     DocumentTypeCreateView, DocumentTypeDeleteView,
     DocumentTypeDeletionPoliciesEditView, DocumentTypeDocumentListView,
     DocumentTypeEditView, DocumentTypeFilenameCreateView,
     DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
     DocumentTypeFilenameListView, DocumentTypeListView
+)
+from .views.document_version_views import (
+    DocumentVersionDownloadFormView, DocumentVersionDownloadView,
+    DocumentVersionListView, DocumentVersionRevertView, DocumentVersionView,
+)
+from .views.document_views import (
+    DocumentDocumentTypeEditView, DocumentDownloadFormView,
+    DocumentDownloadView, DocumentEditView, DocumentListView,
+    DocumentPreviewView, DocumentPrint, DocumentTransformationsClearView,
+    DocumentTransformationsCloneView, DocumentUpdatePageCountView,
+    DocumentView, RecentAccessDocumentListView, RecentAddedDocumentListView
+)
+from .views.duplicated_document_views import (
+    DocumentDuplicatesListView, DuplicatedDocumentListView
 )
 from .views.favorite_document_views import (
     FavoriteAddView, FavoriteDocumentListView, FavoriteRemoveView
