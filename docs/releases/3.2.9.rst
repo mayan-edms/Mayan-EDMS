@@ -216,8 +216,11 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
+- :gitlab-issue:`659` GitLab config: '.gitlab-ci.yml' does not specify the
+  exact version of all dependencies
 - :gitlab-issue:`676` Access fuse mounted index via samba
-- :gitlab-issue:`671` [Docker] MAYAN_GUNICORN_TIMEOUT timeout not passed to worker
+- :gitlab-issue:`671` [Docker] MAYAN_GUNICORN_TIMEOUT timeout not passed
+  to worker
 - :gitlab-issue:`677` Django start before PostgreSQL is up.
 - :forum-topic:`1347` Workflow state action: perform a POST request
 
