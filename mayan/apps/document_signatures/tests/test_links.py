@@ -14,10 +14,12 @@ from ..permissions import (
     permission_document_version_signature_view
 )
 from .literals import TEST_SIGNED_DOCUMENT_PATH
-from .mixins import SignaturesTestMixin
+from .mixins import SignatureTestMixin
 
 
-class DocumentSignatureLinksTestCase(SignaturesTestMixin, GenericDocumentViewTestCase):
+class DocumentSignatureLinksTestCase(
+    SignatureTestMixin, GenericDocumentViewTestCase
+):
     def test_document_version_signature_detail_link_no_permission(self):
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
         self.upload_document()

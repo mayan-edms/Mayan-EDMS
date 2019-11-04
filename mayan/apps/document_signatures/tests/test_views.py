@@ -15,59 +15,23 @@ from ..permissions import (
     permission_document_version_signature_view
 )
 
-from .literals import TEST_SIGNATURE_FILE_PATH, TEST_SIGNED_DOCUMENT_PATH
-from .mixins import SignaturesTestMixin
+from .literals import TEST_SIGNED_DOCUMENT_PATH
+from .mixins import (
+    DetachedSignatureViewTestMixin, SignatureTestMixin,
+    SignatureViewTestMixin
+)
 
 TEST_UNSIGNED_DOCUMENT_COUNT = 4
 TEST_SIGNED_DOCUMENT_COUNT = 2
 
 
-class SignaturesViewTestMixin(object):
-    def _request_test_document_version_signature_delete_view(self):
-        return self.post(
-            viewname='signatures:document_version_signature_delete',
-            kwargs={'pk': self.test_signature.pk}
-        )
-
-    def _request_test_document_version_signature_details_view(self):
-        return self.get(
-            viewname='signatures:document_version_signature_details',
-            kwargs={'pk': self.test_signature.pk}
-        )
-
-    def _request_test_document_version_signature_download_view(self):
-        return self.get(
-            viewname='signatures:document_version_signature_download',
-            kwargs={'pk': self.test_signature.pk}
-        )
-
-    def _request_test_document_version_signature_list_view(self, document):
-        return self.get(
-            viewname='signatures:document_version_signature_list',
-            kwargs={'pk': self.test_document.latest_version.pk}
-        )
-
-    def _request_test_document_version_signature_upload_view(self):
-        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
-            return self.post(
-                viewname='signatures:document_version_signature_upload',
-                kwargs={'pk': self.test_document.latest_version.pk},
-                data={'signature_file': file_object}
-            )
-
-    def _request_all_test_document_version_signature_verify_view(self):
-        return self.post(
-            viewname='signatures:all_document_version_signature_verify'
-        )
-
-
 class SignaturesViewTestCase(
-    SignaturesTestMixin, SignaturesViewTestMixin, GenericDocumentViewTestCase
+    SignatureTestMixin, SignatureViewTestMixin, GenericDocumentViewTestCase
 ):
     auto_upload_document = False
 
     def test_signature_delete_view_no_permission(self):
-        self._create_test_key()
+        self._create_test_public_key()
 
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
@@ -84,7 +48,7 @@ class SignaturesViewTestCase(
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
     def test_signature_delete_view_with_access(self):
-        self._create_test_key()
+        self._create_test_public_key()
 
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
@@ -105,7 +69,7 @@ class SignaturesViewTestCase(
         self.assertEqual(DetachedSignature.objects.count(), 0)
 
     def test_signature_detail_view_no_permission(self):
-        self._create_test_key()
+        self._create_test_public_key()
 
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
@@ -116,7 +80,7 @@ class SignaturesViewTestCase(
         self.assertEqual(response.status_code, 404)
 
     def test_signature_detail_view_with_access(self):
-        self._create_test_key()
+        self._create_test_public_key()
 
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
@@ -134,37 +98,8 @@ class SignaturesViewTestCase(
             status_code=200
         )
 
-    def test_signature_download_view_no_permission(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
-        self.upload_document()
-
-        self._create_test_detached_signature()
-
-        response = self._request_test_document_version_signature_download_view()
-        self.assertEqual(response.status_code, 403)
-
-    def test_signature_download_view_with_access(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
-        self.upload_document()
-
-        self._create_test_detached_signature()
-
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_version_signature_download
-        )
-
-        self.expected_content_type = 'application/octet-stream; charset=utf-8'
-
-        response = self._request_test_document_version_signature_download_view()
-
-        with self.test_signature.signature_file as file_object:
-            assert_download_response(
-                self, response=response, content=file_object.read(),
-            )
-
     def test_signature_list_view_no_permission(self):
-        self._create_test_key()
+        self._create_test_public_key()
 
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
@@ -174,10 +109,10 @@ class SignaturesViewTestCase(
         response = self._request_test_document_version_signature_list_view(
             document=self.test_document
         )
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_signature_list_view_with_access(self):
-        self._create_test_key()
+        self._create_test_public_key()
 
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
@@ -194,29 +129,6 @@ class SignaturesViewTestCase(
         )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['object_list'].count(), 1)
-
-    def test_signature_upload_view_no_permission(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
-        self.upload_document()
-
-        response = self._request_test_document_version_signature_upload_view()
-        self.assertEqual(response.status_code, 403)
-
-        self.assertEqual(DetachedSignature.objects.count(), 0)
-
-    def test_signature_upload_view_with_access(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
-        self.upload_document()
-
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_version_signature_upload
-        )
-
-        response = self._request_test_document_version_signature_upload_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertEqual(DetachedSignature.objects.count(), 1)
 
     def test_missing_signature_verify_view_no_permission(self):
         # Silence converter logging
@@ -287,3 +199,62 @@ class SignaturesViewTestCase(
             EmbeddedSignature.objects.unsigned_document_versions().count(),
             TEST_UNSIGNED_DOCUMENT_COUNT
         )
+
+
+class DetachedSignaturesViewTestCase(
+    SignatureTestMixin, DetachedSignatureViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_upload_document = False
+
+    def test_signature_download_view_no_permission(self):
+        self.test_document_path = TEST_DOCUMENT_PATH
+        self.upload_document()
+
+        self._create_test_detached_signature()
+
+        response = self._request_test_document_version_signature_download_view()
+        self.assertEqual(response.status_code, 403)
+
+    def test_signature_download_view_with_access(self):
+        self.test_document_path = TEST_DOCUMENT_PATH
+        self.upload_document()
+
+        self._create_test_detached_signature()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_signature_download
+        )
+
+        self.expected_content_type = 'application/octet-stream; charset=utf-8'
+
+        response = self._request_test_document_version_signature_download_view()
+
+        with self.test_signature.signature_file as file_object:
+            assert_download_response(
+                self, response=response, content=file_object.read(),
+            )
+
+    def test_signature_upload_view_no_permission(self):
+        self.test_document_path = TEST_DOCUMENT_PATH
+        self.upload_document()
+
+        response = self._request_test_document_version_signature_upload_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(DetachedSignature.objects.count(), 0)
+
+    def test_signature_upload_view_with_access(self):
+        self.test_document_path = TEST_DOCUMENT_PATH
+        self.upload_document()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_signature_upload
+        )
+
+        response = self._request_test_document_version_signature_upload_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(DetachedSignature.objects.count(), 1)

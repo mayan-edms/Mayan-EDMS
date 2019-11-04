@@ -14,7 +14,7 @@ from mayan.apps.django_gpg.exceptions import VerificationError
 from mayan.apps.django_gpg.models import Key
 from mayan.apps.documents.models import DocumentVersion
 
-from .managers import EmbeddedSignatureManager
+from .managers import DetachedSignatureManager, EmbeddedSignatureManager
 from .storages import storage_detachedsignature
 
 logger = logging.getLogger(__name__)
@@ -57,6 +57,7 @@ class SignatureBaseModel(models.Model):
     objects = InheritanceManager()
 
     class Meta:
+        ordering = ('pk',)
         verbose_name = _('Document version signature')
         verbose_name_plural = _('Document version signatures')
 
@@ -131,8 +132,7 @@ class DetachedSignature(SignatureBaseModel):
         upload_to=upload_to, verbose_name=_('Signature file')
     )
 
-    # Don't inherit the SignatureBaseModel manager
-    objects = models.Manager()
+    objects = DetachedSignatureManager()
 
     class Meta:
         verbose_name = _('Document version detached signature')

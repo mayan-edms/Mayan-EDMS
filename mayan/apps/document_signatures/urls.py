@@ -2,6 +2,11 @@ from __future__ import unicode_literals
 
 from django.conf.urls import url
 
+from .api_views import (
+    APIDocumentDetachedSignatureListView, APIDocumentDetachedSignatureView,
+    APIDocumentEmbeddedSignatureListView, APIDocumentEmbeddedSignatureView
+)
+
 from .views import (
     AllDocumentSignatureVerifyView, DocumentVersionDetachedSignatureCreateView,
     DocumentVersionEmbeddedSignatureCreateView,
@@ -50,5 +55,28 @@ urlpatterns = [
         regex=r'^tools/all/document/version/signature/verify/$',
         view=AllDocumentSignatureVerifyView.as_view(),
         name='all_document_version_signature_verify'
+    ),
+]
+
+api_urls = [
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/signatures/detached/$',
+        view=APIDocumentDetachedSignatureListView.as_view(),
+        name='document-version-signature-detached-list'
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/signatures/detached/(?P<detached_signature_id>[0-9]+)/$',
+        view=APIDocumentDetachedSignatureView.as_view(),
+        name='detachedsignature-detail'
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/signatures/embedded/$',
+        view=APIDocumentEmbeddedSignatureListView.as_view(),
+        name='document-version-signature-embedded-list'
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/signatures/embedded/(?P<embedded_signature_id>[0-9]+)/$',
+        view=APIDocumentEmbeddedSignatureView.as_view(),
+        name='embeddedsignature-detail'
     ),
 ]
