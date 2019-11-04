@@ -25,7 +25,11 @@ from .forms import (
     DocumentVersionSignatureCreateForm,
     DocumentVersionSignatureDetailForm
 )
-from .icons import icon_document_signature_list
+from .icons import (
+    icon_document_signature_list,
+    icon_document_version_signature_detached_create,
+    icon_document_version_signature_embedded_create
+)
 from .links import (
     link_document_version_signature_detached_create,
     link_document_version_signature_embedded_create,
@@ -123,6 +127,8 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
     def get_extra_context(self):
         return {
             'object': self.get_document_version(),
+            'submit_icon_class': icon_document_version_signature_detached_create,
+            'submit_label': _('Sign'),
             'title': _(
                 'Sign document version "%s" with a detached signature'
             ) % self.get_document_version(),
@@ -220,6 +226,8 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
     def get_extra_context(self):
         return {
             'object': self.get_document_version(),
+            'submit_icon_class': icon_document_version_signature_embedded_create,
+            'submit_label': _('Sign'),
             'title': _(
                 'Sign document version "%s" with a embedded signature'
             ) % self.get_document_version(),
