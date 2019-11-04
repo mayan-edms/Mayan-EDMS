@@ -24,6 +24,10 @@ Dependencies
 The help message of the ``--context`` option of the ``platformtemplate``
 command was fixed to say "YAML" instead of "JSON".
 
+The Celery and Django Celery dependencies were moved to the task
+manager app.
+
+Some dependecies were updated to a new version:
 
 - Update Django to version 1.11.25.
 - Update PyYAML to version 5.1.2.
@@ -32,8 +36,6 @@ command was fixed to say "YAML" instead of "JSON".
 - Update pathlib2 to version 2.3.5.
 - Update whitenoise to version 4.1.4.
 - Update Pillow to version 6.2.1.
-- Move Celery and Django Celery dependencies
-  to the task manager app.
 
 
 Docker
