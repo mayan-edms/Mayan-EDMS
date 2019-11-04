@@ -106,6 +106,10 @@
 - Add ACL support to smart links.
 - Add "no result" template to staging folder files
   view.
+- Split duplicated document views, links into their
+  own module.
+- Update label and icon of the document sign form
+  Label updated from "Save" to "Sign".
 
 3.2.9 (2019-11-03)
 ==================
