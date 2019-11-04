@@ -538,7 +538,7 @@ Release using GitLab CI
 #. Push the current branch to the corresponding origin ``releases/`` branch:
    ::
 
-       git push origin <local branch> releases/<branch>
+       git push origin <local branch>:releases/<branch>
 
 
 #. Push the new tags:
