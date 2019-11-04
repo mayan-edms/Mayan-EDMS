@@ -8,13 +8,11 @@ from mayan.apps.converter.permissions import (
 from mayan.apps.navigation.classes import Link
 
 from ..icons import (
-    icon_document_list_recent_access, icon_recent_added_document_list,
-    icon_duplicated_document_list, icon_duplicated_document_scan
+    icon_document_list_recent_access, icon_recent_added_document_list
 )
 from ..permissions import (
     permission_document_download, permission_document_properties_edit,
-    permission_document_print, permission_document_tools,
-    permission_document_view
+    permission_document_print, permission_document_view
 )
 
 
