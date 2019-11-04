@@ -158,7 +158,6 @@ class UploadBaseView(MultiFormView):
                         'name': 'appearance/generic_list_subtemplate.html',
                         'context': {
                             'hide_link': True,
-
                             'no_results_icon': icon_staging_folder_file,
                             'no_results_text': _(
                                 'This could mean that the staging folder is '
@@ -167,8 +166,9 @@ class UploadBaseView(MultiFormView):
                                 'for Mayan EDMS doesn\'t have the necessary '
                                 'file system permissions for the folder.'
                             ),
-                            'no_results_title': _('No staging files available'),
-
+                            'no_results_title': _(
+                                'No staging files available'
+                            ),
                             'object_list': staging_filelist,
                             'title': _('Files in staging path'),
                         }
