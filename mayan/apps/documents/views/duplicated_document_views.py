@@ -2,45 +2,30 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.conf import settings
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
-from django.db import transaction
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
-from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _, ungettext
+from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.generics import (
-    FormView, MultipleObjectConfirmActionView, MultipleObjectFormActionView,
-    SingleObjectDetailView, SingleObjectListView
-)
+from mayan.apps.common.generics import ConfirmView
+from mayan.apps.common.mixins import ExternalObjectMixin
 
-from ..events import event_document_view
-from ..icons import icon_document_list, icon_duplicated_document_list
+from ..icons import icon_duplicated_document_list
 from ..models import Document, DuplicatedDocument
-from ..permissions import permission_document_view
+from ..permissions import permission_document_tools, permission_document_view
+from ..tasks import task_scan_duplicates_all
 
 from .document_views import DocumentListView
 
-__all__ = ('DocumentDuplicatesListView', 'DuplicatedDocumentListView')
+__all__ = (
+    'DocumentDuplicatesListView', 'DuplicatedDocumentListView',
+    'ScanDuplicatedDocuments'
+)
 logger = logging.getLogger(__name__)
 
 
-class DocumentDuplicatesListView(DocumentListView):
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_document(), permissions=(permission_document_view,),
-            user=self.request.user
-        )
-
-        return super(
-            DocumentDuplicatesListView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_document(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+class DocumentDuplicatesListView(ExternalObjectMixin, DocumentListView):
+    external_object_class = Document
+    external_object_permission = permission_document_view
+    external_object_pk_url_kwarg = 'document_id'
 
     def get_extra_context(self):
         context = super(DocumentDuplicatesListView, self).get_extra_context()
@@ -54,8 +39,10 @@ class DocumentDuplicatesListView(DocumentListView):
                 'no_results_title': _(
                     'There are no duplicates for this document'
                 ),
-                'object': self.get_document(),
-                'title': _('Duplicates for document: %s') % self.get_document(),
+                'object': self.external_object,
+                'title': _(
+                    'Duplicates for document: %s'
+                ) % self.external_object,
             }
         )
         return context
@@ -63,7 +50,7 @@ class DocumentDuplicatesListView(DocumentListView):
     def get_source_queryset(self):
         try:
             return DuplicatedDocument.objects.get(
-                document=self.get_document()
+                document=self.external_object
             ).documents.all()
         except DuplicatedDocument.DoesNotExist:
             return Document.objects.none()
@@ -92,3 +79,17 @@ class DuplicatedDocumentListView(DocumentListView):
             }
         )
         return context
+
+
+class ScanDuplicatedDocuments(ConfirmView):
+    extra_context = {
+        'title': _('Scan for duplicated documents?')
+    }
+    view_permission = permission_document_tools
+
+    def view_action(self):
+        task_scan_duplicates_all.apply_async()
+        messages.success(
+            message=_('Duplicated document scan queued successfully.'),
+            request=self.request
+        )

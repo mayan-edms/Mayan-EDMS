@@ -44,11 +44,6 @@ link_document_download = Link(
     permissions=(permission_document_download,), text=_('Advanced download'),
     view='documents:document_download_form',
 )
-link_document_duplicates_list = Link(
-    args='resolved_object.id', icon_class=icon_duplicated_document_list,
-    permissions=(permission_document_view,), text=_('Duplicates'),
-    view='documents:document_duplicates_list',
-)
 link_document_edit = Link(
     args='resolved_object.id',
     icon_class_path='mayan.apps.documents.icons.icon_document_edit',
@@ -107,14 +102,4 @@ link_document_quick_download = Link(
     icon_class_path='mayan.apps.documents.icons.icon_document_quick_download',
     permissions=(permission_document_download,), text=_('Quick download'),
     view='documents:document_download',
-)
-link_duplicated_document_list = Link(
-    icon_class=icon_duplicated_document_list, text=_('Duplicated documents'),
-    view='documents:duplicated_document_list'
-)
-link_duplicated_document_scan = Link(
-    icon_class=icon_duplicated_document_scan,
-    permissions=(permission_document_tools,),
-    text=_('Duplicated document scan'),
-    view='documents:duplicated_document_scan'
 )

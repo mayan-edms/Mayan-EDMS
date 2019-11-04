@@ -49,14 +49,13 @@ from .handlers import (
 from .links.document_links import (
     link_document_clear_transformations, link_document_clone_transformations,
     link_document_document_type_edit, link_document_download,
-    link_document_duplicates_list, link_document_edit, link_document_list,
-    link_document_list_recent_access, link_document_list_recent_added,
+    link_document_edit, link_document_list, link_document_list_recent_access,
+    link_document_list_recent_added,
     link_document_multiple_clear_transformations,
     link_document_multiple_document_type_edit,
     link_document_multiple_download, link_document_preview,
     link_document_print, link_document_properties,
-    link_document_quick_download, link_duplicated_document_list,
-    link_duplicated_document_scan
+    link_document_quick_download
 )
 from .links.document_version_links import (
     link_document_version_download, link_document_version_list,
@@ -80,6 +79,10 @@ from .links.document_version_page_links import (
     link_document_page_view, link_document_page_view_reset,
     link_document_page_zoom_in, link_document_page_zoom_out,
     link_document_pages, link_document_update_page_count
+)
+from .links.duplicated_document_links import (
+    link_document_duplicates_list, link_duplicated_document_list,
+    link_duplicated_document_scan
 )
 from .links.favorite_links import (
     link_document_favorites_add, link_document_favorites_remove,
