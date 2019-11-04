@@ -104,6 +104,8 @@
   the workflow view permission is granted to at
   least one workflow.
 - Add ACL support to smart links.
+- Add "no result" template to staging folder files
+  view.
 
 3.2.9 (2019-11-03)
 ==================
