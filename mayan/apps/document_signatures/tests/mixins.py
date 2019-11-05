@@ -82,16 +82,6 @@ class EmbeddedSignatureAPIViewTestMixin(object):
             }
         )
 
-    def _request_test_document_signature_embedded_delete_view(self):
-        return self.delete(
-            viewname='rest_api:embeddedsignature-detail',
-            kwargs={
-                'document_id': self.test_document.pk,
-                'document_version_id': self.test_document_version.pk,
-                'embedded_signature_id': self.test_document_version.signatures.first().pk
-            }
-        )
-
     def _request_test_document_signature_embedded_detail_view(self):
         return self.get(
             viewname='rest_api:embeddedsignature-detail',

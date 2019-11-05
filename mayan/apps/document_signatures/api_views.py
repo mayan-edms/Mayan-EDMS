@@ -197,9 +197,8 @@ class APIDocumentEmbeddedSignatureListView(generics.ListCreateAPIView):
         return context
 
 
-class APIDocumentEmbeddedSignatureView(generics.RetrieveDestroyAPIView):
+class APIDocumentEmbeddedSignatureView(generics.RetrieveAPIView):
     """
-    delete: Delete an embedded signature of the selected document.
     get: Returns the details of the selected embedded signature.
     """
     lookup_url_kwarg = 'embedded_signature_id'
@@ -215,8 +214,6 @@ class APIDocumentEmbeddedSignatureView(generics.RetrieveDestroyAPIView):
             permission = permission_document_version_signature_view
         elif self.request.method == 'POST':
             permission = permission_document_version_signature_view
-        elif self.request.method == 'DELETE':
-            permission = permission_document_version_signature_delete
 
         return AccessControlList.objects.restrict_queryset(
             permission=permission, queryset=Document.objects.all(),

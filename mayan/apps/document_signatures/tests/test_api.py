@@ -187,62 +187,6 @@ class EmbeddedSignatureDocumentAPIViewTestCase(
 ):
     auto_upload_document = False
 
-    def test_document_signature_embedded_delete_no_permission(self):
-        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
-        self.upload_document()
-
-        signatures = self.test_document.latest_version.signatures.count()
-
-        response = self._request_test_document_signature_embedded_delete_view()
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-
-        self.assertEqual(
-            self.test_document.latest_version.signatures.count(),
-            signatures
-        )
-
-    def test_document_signature_embedded_delete_with_access(self):
-        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
-        self.upload_document()
-
-        signatures = self.test_document.latest_version.signatures.count()
-
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_version_signature_delete
-        )
-
-        response = self._request_test_document_signature_embedded_delete_view()
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-
-        self.assertEqual(
-            self.test_document.latest_version.signatures.count(),
-            signatures - 1
-        )
-
-    def test_document_signature_embedded_detail_no_permission(self):
-        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
-        self.upload_document()
-
-        response = self._request_test_document_signature_embedded_detail_view()
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-
-    def test_document_signature_embedded_detail_with_access(self):
-        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
-        self.upload_document()
-
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_version_signature_view
-        )
-
-        response = self._request_test_document_signature_embedded_detail_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-        self.assertEqual(
-            response.data['key_id'], TEST_KEY_PUBLIC_ID
-        )
-
     def test_document_signature_embedded_create_view_no_permission(self):
         self.upload_document()
         self._create_test_key_private()
@@ -316,6 +260,29 @@ class EmbeddedSignatureDocumentAPIViewTestCase(
         self.assertEqual(
             self.test_document.latest_version.signatures.count(),
             signatures + 1
+        )
+
+    def test_document_signature_embedded_detail_no_permission(self):
+        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
+        self.upload_document()
+
+        response = self._request_test_document_signature_embedded_detail_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_document_signature_embedded_detail_with_access(self):
+        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
+        self.upload_document()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_signature_view
+        )
+
+        response = self._request_test_document_signature_embedded_detail_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(
+            response.data['key_id'], TEST_KEY_PUBLIC_ID
         )
 
     def test_document_signature_embedded_list_view_no_permission(self):
