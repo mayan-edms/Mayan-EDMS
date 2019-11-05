@@ -110,8 +110,7 @@
   own module.
 - Update label and icon of the document sign form
   Label updated from "Save" to "Sign".
-- Add list, create, detail and edit API views for
-  detached and embedded signatures.
+- Document signatures API views.
 
 3.2.9 (2019-11-03)
 ==================

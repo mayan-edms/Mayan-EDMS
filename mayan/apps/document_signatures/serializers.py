@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.utils.translation import ugettext_lazy as _
+
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
@@ -11,7 +13,7 @@ from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
 from .models import DetachedSignature, EmbeddedSignature
 
 
-class DetachedSignatureSerializer(serializers.HyperlinkedModelSerializer):
+class BaseSignatureSerializer(serializers.HyperlinkedModelSerializer):
     document_version_url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
@@ -26,6 +28,18 @@ class DetachedSignatureSerializer(serializers.HyperlinkedModelSerializer):
         view_name='rest_api:documentversion-detail'
     )
 
+
+class BaseSignSerializer(serializers.HyperlinkedModelSerializer):
+    passphrase = serializers.CharField(
+        help_text=_(
+            'The passphrase to unlock the key and allow it to be used to '
+            'sign the document version.'
+        ),
+        required=False, write_only=True
+    )
+
+
+class DetachedSignatureSerializer(BaseSignatureSerializer):
     url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
@@ -43,38 +57,22 @@ class DetachedSignatureSerializer(serializers.HyperlinkedModelSerializer):
         ),
         view_name='rest_api:detachedsignature-detail'
     )
-    passphrase = serializers.CharField(required=False, write_only=True)
 
     class Meta:
+        extra_kwargs = {
+            'signature_file': {'write_only': True},
+        }
         fields = (
-            'date', 'document_version_url', 'key_id', 'signature_id',
-            'passphrase', 'public_key_fingerprint', 'url'
+            'date', 'document_version_url', 'key_id', 'signature_file',
+            'signature_id', 'public_key_fingerprint', 'url'
         )
         model = DetachedSignature
+        read_only_fields = ('key_id',)
 
     def create(self, validated_data):
-        key_id = validated_data.pop('key_id')
-        passphrase = validated_data.pop('passphrase', None)
-
-        key_queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_key_sign, queryset=Key.objects.all(),
-            user=self.context['request'].user
-        )
-
-        try:
-            key = key_queryset.get(fingerprint__endswith=key_id)
-        except Key.DoesNotExist:
-            raise ValidationError(
-                {
-                    'key_id': [
-                        'Key "{}" not found.'.format(key_id)
-                    ]
-                }, code='invalid'
-            )
-
-        return DetachedSignature.objects.sign_document_version(
-            document_version=self.context['document_version'], key=key,
-            passphrase=passphrase, user=self.context['request'].user
+        validated_data['document_version'] = self.context['document_version']
+        return super(DetachedSignatureSerializer, self).create(
+            validated_data=validated_data
         )
 
 
@@ -145,3 +143,65 @@ class EmbeddedSignatureSerializer(serializers.HyperlinkedModelSerializer):
         )
 
         return signature
+
+
+class SignDetachedSerializer(BaseSignatureSerializer, BaseSignSerializer):
+    class Meta:
+        fields = (
+            'date', 'document_version_url', 'key_id', 'signature_id',
+            'passphrase', 'public_key_fingerprint', 'url'
+        )
+        model = DetachedSignature
+
+    def sign(self, key_id, passphrase):
+        key_queryset = AccessControlList.objects.restrict_queryset(
+            permission=permission_key_sign, queryset=Key.objects.all(),
+            user=self.context['request'].user
+        )
+
+        try:
+            key = key_queryset.get(fingerprint__endswith=key_id)
+        except Key.DoesNotExist:
+            raise ValidationError(
+                {
+                    'key_id': [
+                        'Key "{}" not found.'.format(key_id)
+                    ]
+                }, code='invalid'
+            )
+
+        return DetachedSignature.objects.sign_document_version(
+            document_version=self.context['document_version'], key=key,
+            passphrase=passphrase, user=self.context['request'].user
+        )
+
+
+class SignEmbeddedSerializer(SignDetachedSerializer):
+    class Meta:
+        fields = (
+            'date', 'document_version_url', 'key_id', 'signature_id',
+            'passphrase', 'public_key_fingerprint', 'url'
+        )
+        model = EmbeddedSignature
+
+    def sign(self, key_id, passphrase):
+        key_queryset = AccessControlList.objects.restrict_queryset(
+            permission=permission_key_sign, queryset=Key.objects.all(),
+            user=self.context['request'].user
+        )
+
+        try:
+            key = key_queryset.get(fingerprint__endswith=key_id)
+        except Key.DoesNotExist:
+            raise ValidationError(
+                {
+                    'key_id': [
+                        'Key "{}" not found.'.format(key_id)
+                    ]
+                }, code='invalid'
+            )
+
+        return EmbeddedSignature.objects.sign_document_version(
+            document_version=self.context['document_version'], key=key,
+            passphrase=passphrase, user=self.context['request'].user
+        )
