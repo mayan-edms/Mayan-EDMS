@@ -4,6 +4,18 @@ import os
 
 from django.conf import settings
 
+MOCK_SEARCH_KEYS_RESPONSE = [
+    {
+        'algo': u'1',
+        'date': u'1311475606',
+        'expires': u'1643601600',
+        'keyid': u'607138F1AECC5A5CA31CB7715F3F7F75D210724D',
+        'length': u'2048',
+        'type': u'pub',
+        'uids': [u'Roberto Rosario <roberto.rosario.gonzalez@gmail.com>']
+    }
+]
+
 TEST_DETACHED_SIGNATURE = os.path.join(
     settings.BASE_DIR, 'apps', 'django_gpg', 'tests', 'contrib',
     'test_files', 'test_file.txt.asc'
@@ -14,7 +26,7 @@ TEST_FILE = os.path.join(
     'test_files', 'test_file.txt'
 )
 
-TEST_KEY_DATA = '''-----BEGIN PGP PRIVATE KEY BLOCK-----
+TEST_KEY_PRIVATE_DATA = '''-----BEGIN PGP PRIVATE KEY BLOCK-----
 Version: GnuPG v1
 
 lQO+BFbxfC8BCACnUZoD96W4+CSIaU9G8I08kXu2zJLzy2XgUtwLx8VQ8dOHr0E/
@@ -74,9 +86,9 @@ h4oCbUV5JHhOyB+89Y1w8haFU9LrgOER2kXff1xU6wMfLdcO5ApV/sRJcNdYL7Cg
 =JZ5G
 -----END PGP PRIVATE KEY BLOCK-----'''
 
-TEST_KEY_ID = '4125E9C571F378AC'
-TEST_KEY_FINGERPRINT = '6A24574E0A35004CDDFD22704125E9C571F378AC'
-TEST_KEY_PASSPHRASE = 'testpassphrase'
+TEST_KEY_PRIVATE_ID = '4125E9C571F378AC'
+TEST_KEY_PRIVATE_FINGERPRINT = '6A24574E0A35004CDDFD22704125E9C571F378AC'
+TEST_KEY_PRIVATE_PASSPHRASE = 'testpassphrase'
 
 TEST_KEYSERVERS = ['pool.sks-keyservers.net']
 

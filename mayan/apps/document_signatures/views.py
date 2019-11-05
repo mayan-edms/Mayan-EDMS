@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib import messages
-from django.core.files import File
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
@@ -16,22 +15,26 @@ from mayan.apps.common.generics import (
     ConfirmView, FormView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView
 )
+from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.django_gpg.exceptions import NeedPassphrase, PassphraseError
 from mayan.apps.django_gpg.permissions import permission_key_sign
 from mayan.apps.documents.models import DocumentVersion
-from mayan.apps.storage.utils import TemporaryFile
 
 from .forms import (
     DocumentVersionSignatureCreateForm,
     DocumentVersionSignatureDetailForm
 )
-from .icons import icon_document_signature_list
+from .icons import (
+    icon_document_signature_list,
+    icon_document_version_signature_detached_create,
+    icon_document_version_signature_embedded_create
+)
 from .links import (
     link_document_version_signature_detached_create,
     link_document_version_signature_embedded_create,
     link_document_version_signature_upload
 )
-from .models import DetachedSignature, SignatureBaseModel
+from .models import DetachedSignature, EmbeddedSignature, SignatureBaseModel
 from .permissions import (
     permission_document_version_sign_detached,
     permission_document_version_sign_embedded,
@@ -58,11 +61,10 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
         )
 
         try:
-            with self.get_document_version().open() as file_object:
-                detached_signature = key.sign_file(
-                    file_object=file_object, detached=True,
-                    passphrase=passphrase
-                )
+            DetachedSignature.objects.sign_document_version(
+                document_version=self.get_document_version(),
+                key=key, passphrase=passphrase, user=self.request.user
+            )
         except NeedPassphrase:
             messages.error(
                 message=_('Passphrase is needed to unlock this key.'),
@@ -86,17 +88,6 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
                 )
             )
         else:
-            temporary_file_object = TemporaryFile()
-            temporary_file_object.write(detached_signature.data)
-            temporary_file_object.seek(0)
-
-            DetachedSignature.objects.create(
-                document_version=self.get_document_version(),
-                signature_file=File(temporary_file_object)
-            )
-
-            temporary_file_object.close()
-
             messages.success(
                 message=_('Document version signed successfully.'),
                 request=self.request
@@ -123,6 +114,8 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
     def get_extra_context(self):
         return {
             'object': self.get_document_version(),
+            'submit_icon_class': icon_document_version_signature_detached_create,
+            'submit_label': _('Sign'),
             'title': _(
                 'Sign document version "%s" with a detached signature'
             ) % self.get_document_version(),
@@ -150,10 +143,10 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
         )
 
         try:
-            with self.get_document_version().open() as file_object:
-                signature_result = key.sign_file(
-                    binary=True, file_object=file_object, passphrase=passphrase
-                )
+            new_version = EmbeddedSignature.objects.sign_document_version(
+                document_version=self.get_document_version(),
+                key=key, passphrase=passphrase, user=self.request.user
+            )
         except NeedPassphrase:
             messages.error(
                 message=_('Passphrase is needed to unlock this key.'),
@@ -177,16 +170,6 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
                 )
             )
         else:
-            temporary_file_object = TemporaryFile()
-            temporary_file_object.write(signature_result.data)
-            temporary_file_object.seek(0)
-
-            new_version = self.get_document_version().document.new_version(
-                file_object=temporary_file_object, _user=self.request.user
-            )
-
-            temporary_file_object.close()
-
             messages.success(
                 message=_('Document version signed successfully.'),
                 request=self.request
@@ -220,6 +203,8 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
     def get_extra_context(self):
         return {
             'object': self.get_document_version(),
+            'submit_icon_class': icon_document_version_signature_embedded_create,
+            'submit_label': _('Sign'),
             'title': _(
                 'Sign document version "%s" with a embedded signature'
             ) % self.get_document_version(),
@@ -277,20 +262,11 @@ class DocumentVersionSignatureDownloadView(SingleObjectDownloadView):
         )
 
 
-class DocumentVersionSignatureListView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_document_version(),
-            permissions=(permission_document_version_signature_view,),
-            user=request.user
-        )
-
-        return super(
-            DocumentVersionSignatureListView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_document_version(self):
-        return get_object_or_404(klass=DocumentVersion, pk=self.kwargs['pk'])
+class DocumentVersionSignatureListView(
+    ExternalObjectMixin, SingleObjectListView
+):
+    external_object_class = DocumentVersion
+    external_object_permission = permission_document_version_signature_view
 
     def get_extra_context(self):
         return {
@@ -306,34 +282,34 @@ class DocumentVersionSignatureListView(SingleObjectListView):
                 link_document_version_signature_detached_create.resolve(
                     RequestContext(
                         request=self.request, dict_={
-                            'object': self.get_document_version()
+                            'object': self.external_object
                         }
                     )
                 ),
                 link_document_version_signature_embedded_create.resolve(
                     RequestContext(
                         request=self.request, dict_={
-                            'object': self.get_document_version()
+                            'object': self.external_object
                         }
                     )
                 ),
                 link_document_version_signature_upload.resolve(
                     RequestContext(
                         request=self.request, dict_={
-                            'object': self.get_document_version()
+                            'object': self.external_object
                         }
                     )
                 ),
             ],
             'no_results_title': _('There are no signatures for this document.'),
-            'object': self.get_document_version(),
+            'object': self.external_object,
             'title': _(
                 'Signatures for document version: %s'
-            ) % self.get_document_version(),
+            ) % self.external_object,
         }
 
     def get_source_queryset(self):
-        return self.get_document_version().signatures.all()
+        return self.external_object.signatures.all()
 
 
 class DocumentVersionSignatureUploadView(SingleObjectCreateView):

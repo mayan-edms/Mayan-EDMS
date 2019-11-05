@@ -16,12 +16,10 @@ from .api_views import (
 )
 from .views.document_views import (
     DocumentDocumentTypeEditView, DocumentDownloadFormView,
-    DocumentDownloadView, DocumentDuplicatesListView, DocumentEditView,
-    DocumentListView, DocumentPreviewView, DocumentPrint,
-    DocumentPagesResetView, DocumentTransformationsClearView,
-    DocumentTransformationsCloneView, DocumentView,
-    DuplicatedDocumentListView, RecentAccessDocumentListView,
-    RecentAddedDocumentListView
+    DocumentDownloadView, DocumentEditView, DocumentListView,
+    DocumentPreviewView, DocumentPrint, DocumentPagesResetView,
+    DocumentTransformationsClearView, DocumentTransformationsCloneView,
+    DocumentView, RecentAccessDocumentListView, RecentAddedDocumentListView
 )
 from .views.document_page_views import (
     DocumentPageDisable, DocumentPageEnable, DocumentPageListView,
@@ -43,10 +41,24 @@ from .views.document_type_views import (
     DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
     DocumentTypeFilenameListView, DocumentTypeListView
 )
+from .views.document_version_views import (
+    DocumentVersionDownloadFormView, DocumentVersionDownloadView,
+    DocumentVersionListView, DocumentVersionRevertView, DocumentVersionView,
+)
+from .views.document_views import (
+    DocumentDocumentTypeEditView, DocumentDownloadFormView,
+    DocumentDownloadView, DocumentEditView, DocumentListView,
+    DocumentPreviewView, DocumentPrint, DocumentTransformationsClearView,
+    DocumentTransformationsCloneView, DocumentView,
+    RecentAccessDocumentListView, RecentAddedDocumentListView
+)
+from .views.duplicated_document_views import (
+    DocumentDuplicatesListView, DuplicatedDocumentListView,
+    ScanDuplicatedDocuments
+)
 from .views.favorite_document_views import (
     FavoriteAddView, FavoriteDocumentListView, FavoriteRemoveView
 )
-from .views.misc_views import ScanDuplicatedDocuments
 from .views.trashed_document_views import (
     DocumentTrashView, EmptyTrashCanView, TrashedDocumentDeleteView,
     TrashedDocumentListView, TrashedDocumentRestoreView
@@ -101,31 +113,6 @@ urlpatterns_document_types = [
     ),
 ]
 
-urlpatterns_favorite_documents = [
-    url(
-        regex=r'^documents/favorites/$', view=FavoriteDocumentListView.as_view(),
-        name='document_list_favorites'
-    ),
-    url(
-        regex=r'^documents/(?P<pk>\d+)/add_to_favorites/$',
-        view=FavoriteAddView.as_view(), name='document_add_to_favorites'
-    ),
-    url(
-        regex=r'^documents/multiple/add_to_favorites/$', view=FavoriteAddView.as_view(),
-        name='document_multiple_add_to_favorites'
-    ),
-    url(
-        regex=r'^documents/(?P<pk>\d+)/remove_from_favorites/$',
-        view=FavoriteRemoveView.as_view(),
-        name='document_remove_from_favorites'
-    ),
-    url(
-        regex=r'^documents/multiple/remove_from_favorites/$',
-        view=FavoriteRemoveView.as_view(),
-        name='document_multiple_remove_from_favorites'
-    ),
-]
-
 urlpatterns_documents = [
     url(
         regex=r'^documents/$', view=DocumentListView.as_view(), name='document_list'
@@ -141,22 +128,12 @@ urlpatterns_documents = [
         name='document_list_recent_added'
     ),
     url(
-        regex=r'^documents/duplicated/$',
-        view=DuplicatedDocumentListView.as_view(),
-        name='duplicated_document_list'
-    ),
-    url(
         regex=r'^documents/(?P<pk>\d+)/preview/$', view=DocumentPreviewView.as_view(),
         name='document_preview'
     ),
     url(
         regex=r'^documents/(?P<pk>\d+)/properties/$', view=DocumentView.as_view(),
         name='document_properties'
-    ),
-    url(
-        regex=r'^documents/(?P<pk>\d+)/duplicates/$',
-        view=DocumentDuplicatesListView.as_view(),
-        name='document_duplicates_list'
     ),
     url(
         regex=r'^documents/(?P<pk>\d+)/type/$',
@@ -326,11 +303,46 @@ urlpatterns_document_versions = [
     ),
 ]
 
-urlpatterns_tools = [
+urlpatterns_duplicated_documents = [
+    url(
+        regex=r'^documents/duplicated/$',
+        view=DuplicatedDocumentListView.as_view(),
+        name='duplicated_document_list'
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>\d+)/duplicates/$',
+        view=DocumentDuplicatesListView.as_view(),
+        name='document_duplicates_list'
+    ),
     url(
         regex=r'^tools/documents/duplicated/scan/$',
         view=ScanDuplicatedDocuments.as_view(),
         name='duplicated_document_scan'
+    ),
+]
+
+urlpatterns_favorite_documents = [
+    url(
+        regex=r'^documents/favorites/$', view=FavoriteDocumentListView.as_view(),
+        name='document_list_favorites'
+    ),
+    url(
+        regex=r'^documents/(?P<pk>\d+)/add_to_favorites/$',
+        view=FavoriteAddView.as_view(), name='document_add_to_favorites'
+    ),
+    url(
+        regex=r'^documents/multiple/add_to_favorites/$', view=FavoriteAddView.as_view(),
+        name='document_multiple_add_to_favorites'
+    ),
+    url(
+        regex=r'^documents/(?P<pk>\d+)/remove_from_favorites/$',
+        view=FavoriteRemoveView.as_view(),
+        name='document_remove_from_favorites'
+    ),
+    url(
+        regex=r'^documents/multiple/remove_from_favorites/$',
+        view=FavoriteRemoveView.as_view(),
+        name='document_multiple_remove_from_favorites'
     ),
 ]
 
@@ -375,8 +387,8 @@ urlpatterns.extend(urlpatterns_documents)
 urlpatterns.extend(urlpatterns_document_pages)
 urlpatterns.extend(urlpatterns_document_types)
 urlpatterns.extend(urlpatterns_document_versions)
+urlpatterns.extend(urlpatterns_duplicated_documents)
 urlpatterns.extend(urlpatterns_favorite_documents)
-urlpatterns.extend(urlpatterns_tools)
 urlpatterns.extend(urlpatterns_trashed_documents)
 
 api_urls = [

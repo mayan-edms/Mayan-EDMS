@@ -42,6 +42,7 @@ logger = logging.getLogger(__name__)
 class DocumentSignaturesApp(MayanAppConfig):
     app_namespace = 'signatures'
     app_url = 'signatures'
+    has_rest_api = True
     has_tests = True
     name = 'mayan.apps.document_signatures'
     verbose_name = _('Document signatures')

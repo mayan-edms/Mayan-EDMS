@@ -9,7 +9,7 @@ class DuplicatedDocumentsViewsTestMixin(object):
     def _request_document_duplicates_list_view(self):
         return self.get(
             viewname='documents:document_duplicates_list',
-            kwargs={'pk': self.test_documents[0].pk}
+            kwargs={'document_id': self.test_documents[0].pk}
         )
 
     def _request_duplicated_document_list_view(self):
@@ -26,7 +26,7 @@ class DuplicatedDocumentsViewsTestCase(
         self._upload_duplicate_document()
 
         response = self._request_document_duplicates_list_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_duplicates_list_with_access(self):
         self._upload_duplicate_document()
