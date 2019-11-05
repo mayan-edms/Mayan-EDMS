@@ -139,7 +139,6 @@ class DetachedSignatureDocumentAPIViewTestCase(
             response.data['results'][0]['key_id'], TEST_KEY_PUBLIC_ID
         )
 
-    ##
     def test_document_signature_detached_sign_view_with_no_permission(self):
         self.upload_document()
         self._create_test_key_private()

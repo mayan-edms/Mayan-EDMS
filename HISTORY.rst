@@ -111,6 +111,7 @@
 - Update label and icon of the document sign form
   Label updated from "Save" to "Sign".
 - Document signatures API views.
+- Add and improve document signatures app tests.
 
 3.2.9 (2019-11-03)
 ==================

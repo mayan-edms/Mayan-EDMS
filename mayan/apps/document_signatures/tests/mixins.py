@@ -64,6 +64,15 @@ class DetachedSignatureAPIViewTestMixin(object):
 
 
 class DetachedSignatureViewTestMixin(object):
+    def _request_test_document_version_signature_create_view(self):
+        return self.post(
+            viewname='signatures:document_version_signature_detached_create',
+            kwargs={'pk': self.test_document_version.pk}, data={
+                'key': self.test_key_private.pk,
+                'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
+            }
+        )
+
     def _request_test_document_version_signature_download_view(self):
         return self.get(
             viewname='signatures:document_version_signature_download',
@@ -107,6 +116,17 @@ class EmbeddedSignatureAPIViewTestMixin(object):
                 'document_version_id': self.test_document_version.pk
             }, data={
                 'key_id': self.test_key_private.key_id,
+                'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
+            }
+        )
+
+
+class EmbeddedSignatureViewTestMixin(object):
+    def _request_test_document_version_signature_create_view(self):
+        return self.post(
+            viewname='signatures:document_version_signature_embedded_create',
+            kwargs={'pk': self.test_document_version.pk}, data={
+                'key': self.test_key_private.pk,
                 'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
             }
         )
