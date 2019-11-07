@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:06-0400\n"
-"PO-Revision-Date: 2019-09-24 21:04+0000\n"
+"POT-Creation-Date: 2019-10-30 02:57-0400\n"
+"PO-Revision-Date: 2019-10-30 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -160,9 +160,9 @@ msgstr "\nTambién puede <a class=\"new_window\" href=\"https://www.paypal.com/p
 #: templates/appearance/about.html:127
 msgid ""
 "\n"
-"                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>. <br>The book is available on pre-release format at a discounted price for a limited time.\n"
+"                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>.\n"
 "            "
-msgstr "\nAdemás de las donaciones, también puede apoyar el proyecto <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">comprando una copia del libro \"Exploring Mayan EDMS\" de Roberto Rosario</a> . <br> El libro está disponible en formato de prelanzamiento a un precio con descuento por tiempo limitado."
+msgstr ""
 
 #: templates/appearance/about.html:133
 #, python-format

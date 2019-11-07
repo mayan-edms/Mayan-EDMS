@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:11-0400\n"
+"POT-Creation-Date: 2019-10-30 03:00-0400\n"
 "PO-Revision-Date: 2019-09-24 04:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Language: sl_SI\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:62 events.py:8 links.py:17 links.py:46 links.py:149 links.py:176
+#: apps.py:62 events.py:8 links.py:18 links.py:47 links.py:150 links.py:179
 #: models.py:61 views/workflow_proxy_views.py:75 views/workflow_views.py:139
 msgid "Workflows"
 msgstr ""
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Completion"
 msgstr ""
 
-#: apps.py:204 forms.py:178 links.py:161 models.py:369 models.py:510
+#: apps.py:204 forms.py:178 links.py:162 models.py:369 models.py:510
 msgid "Transition"
 msgstr ""
 
@@ -124,67 +124,67 @@ msgstr ""
 msgid "Event trigger: %s"
 msgstr ""
 
-#: links.py:23 views/workflow_views.py:144
+#: links.py:24 views/workflow_views.py:144
 msgid "Create workflow"
 msgstr ""
 
-#: links.py:29 links.py:53 links.py:85 links.py:110
+#: links.py:30 links.py:54 links.py:86 links.py:111
 msgid "Delete"
 msgstr "Izbriši"
 
-#: links.py:35 models.py:52
+#: links.py:36 models.py:52
 msgid "Document types"
 msgstr ""
 
-#: links.py:42 links.py:60 links.py:92 links.py:117
+#: links.py:43 links.py:61 links.py:93 links.py:118
 msgid "Edit"
 msgstr ""
 
-#: links.py:66
+#: links.py:67
 msgid "Actions"
 msgstr "Akcije"
 
-#: links.py:72
+#: links.py:73
 msgid "Create action"
 msgstr ""
 
-#: links.py:78
+#: links.py:79
 msgid "Create state"
 msgstr ""
 
-#: links.py:97 links.py:189
+#: links.py:98 links.py:192
 msgid "States"
 msgstr ""
 
-#: links.py:103
+#: links.py:104
 msgid "Create transition"
 msgstr ""
 
-#: links.py:122
+#: links.py:123
 msgid "Transitions"
 msgstr ""
 
-#: links.py:129
+#: links.py:130
 msgid "Transition triggers"
 msgstr ""
 
-#: links.py:136
+#: links.py:137
 msgid "Preview"
 msgstr ""
 
-#: links.py:141 queues.py:13
+#: links.py:142 queues.py:13
 msgid "Launch all workflows"
 msgstr ""
 
-#: links.py:156
+#: links.py:157
 msgid "Detail"
 msgstr ""
 
-#: links.py:170
+#: links.py:171
 msgid "Workflow documents"
 msgstr ""
 
-#: links.py:182
+#: links.py:185
 msgid "State documents"
 msgstr ""
 
@@ -678,7 +678,7 @@ msgstr ""
 msgid "Preview of: %s"
 msgstr ""
 
-#: widgets.py:21
+#: widgets.py:22
 msgid "Workflow preview"
 msgstr ""
 

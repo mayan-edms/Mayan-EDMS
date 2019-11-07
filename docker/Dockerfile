@@ -8,6 +8,8 @@ FROM debian:9.8-slim as BASE_IMAGE
 
 LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 
+COPY config.env /config.env
+
 ENV PYTHONUNBUFFERED=1 \
     LC_ALL=C.UTF-8 \
     PROJECT_INSTALL_DIR=/opt/mayan-edms
@@ -63,7 +65,7 @@ echo "save \"\"" >> /etc/redis/redis.conf \
 && echo "databases 1" >> /etc/redis/redis.conf
 
 ####
-# BUILDER_IMAGE - This image buildS the Python package and is discarded afterwards
+# BUILDER_IMAGE - This image builds the Python package and is discarded afterwards
 ####
 
 # Reuse image
@@ -104,17 +106,21 @@ apt-get install -y --no-install-recommends \
 && chown -R mayan:mayan /src
 
 USER mayan
-RUN python -m virtualenv "${PROJECT_INSTALL_DIR}" \
+
+RUN set -a \
+&& . /config.env \
+&& set +a \
+&& python -m virtualenv "${PROJECT_INSTALL_DIR}" \
 && . "${PROJECT_INSTALL_DIR}/bin/activate" \
 && pip install --no-cache-dir --no-use-pep517 \
-    librabbitmq==1.6.1 \
-    mysql-python==1.2.5 \
-    psycopg2==2.7.3.2 \
-    redis==2.10.6 \
+    librabbitmq==$PYTHON_LIBRABBITMQ_VERSION \
+    mysql-python==$PYTHON_MYSQL_VERSION \
+    psycopg2==$PYTHON_PSYCOPG2_VERSION \
+    redis==$PYTHON_REDIS_VERSION \
 # psutil is needed by ARM builds otherwise gevent and gunicorn fail to start
 && UNAME=`uname -m` && if [ "${UNAME#*arm}" != $UNAME ]; then \
     pip install --no-cache-dir --no-use-pep517 \
-    psutil==5.6.2 \
+    psutil==$PYTHON_PSUTIL_VERSION \
 ; fi \
 # Install the Python packages needed to build Mayan EDMS
 && pip install --no-cache-dir --no-use-pep517 -r /src/requirements/build.txt \

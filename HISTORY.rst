@@ -1,3 +1,49 @@
+3.2.9 (2019-11-03)
+==================
+- Move IMAPMockServer to its own module.
+- Display feedback message when testing a mailing profile.
+- Add tests to the platform app.
+- Fix platformtemplate command --context option help message.
+- Language translations update.
+- Add target to run all translations targets.
+- Backport color log formatter from branch version/next.
+- Don't raise error checking AnonymousUser for permissions.
+  Instead return always False.
+- Enable the main menu workflow runtime link when the workflow view
+  permission is granted to at least one workflow.
+- Make Postgres container wait delay configurable. GitLab issue #677.
+  Thanks to Antenore Gatta (@antenore) for the report.
+- Update Django to version 1.11.25.
+- Update PyYAML to version 5.1.2.
+- Update celery to version 3.1.26.post2.
+- Update django-celery to version 3.2.2.
+- Update pathlib2 to version 2.3.5.
+- Update whitenoise to version 4.1.4.
+- Update Pillow to version 6.2.1.
+- Move Celery and Django Celery dependencies
+  to the task manager app.
+- Improve dependecies app tests.
+- Return st_nlink of 1 files in mirrored indexes. GitLab issue #676.
+  Thanks to Ezio Vernacotola (@eziove) for the report and solution.
+- Fix MAYAN_GUNICORN_TIMEOUT Docker image setting. GitLab issue #671.
+  Thanks to Lennart Sauerbeck (@lennart_s) for the report.
+- Add makefile target to launch a production staging Docker image.
+- Improve duplicated document list view logic to not show
+  documents with trashed duplicates.
+- Backport Docker composer makefile targets.
+- Add PermissionTestCaseMixin and SmartSettingTestCaseMixin to better
+  organize cache invalidation of both apps for tests.
+- Add a version attribute to setting namespace. These are dumped
+  as SMART_SETTINGS_NAMESPACES.
+- Add savesettings command.
+- Add extra logging to the IMAP email source. GitLab issue #682.
+  Thanks to Patrick Hütter (@PatrickHuetter) for the report.
+- Rename all instances of the IMAP server from mailbox to
+  server for clarity.
+- Add book link in the about menu.
+- Add unknown exception handling when checking for the latest
+  version.
+
 3.2.8 (2019-10-01)
 ==================
 - Fix error when accessing some API entry points without

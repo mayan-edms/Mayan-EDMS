@@ -247,7 +247,7 @@ Mayan EDMS follows a simplified model layout based on Vincent Driessen's
     Working branches for unfinished and unmerged feature. Likely unstable,
     don't use in production. Once the feature is complete, it is merged
     into one of the versions branches and deleted.
-    
+
 Special branches:
 
 ``releases/all``
@@ -317,7 +317,7 @@ Steps to deploy a development version
 
     $ git clone https://gitlab.com/mayan-edms/mayan-edms.git
     $ cd mayan-edms
-    $ git checkout development
+    $ git checkout <Corresponding branch>
     $ virtualenv venv
     $ source venv/bin/activate
     $ pip install -r requirements.txt
@@ -502,6 +502,7 @@ Release checklist
 
        make generate-setup
 
+#. Commit as version bump.
 #. Build source package and test:
    ::
 
@@ -529,18 +530,18 @@ Release checklist
 Release using GitLab CI
 -----------------------
 
-#. Switch to the ``releases/all`` branch and merge the latest changes:
+#. Delete the corresponding ``releases/`` branch:
    ::
 
-       git checkout releases/all
-       git merge versions/next
+       git push origin :releases/<branch>
 
-#. Push code to trigger builds:
+#. Push the current branch to the corresponding origin ``releases/`` branch:
    ::
 
-       git push
+       git push origin <local branch>:releases/<branch>
 
-#. Push tag upstream:
+
+#. Push the new tags:
    ::
 
        git push --tags
@@ -558,3 +559,10 @@ Manual release
    ::
 
        make release-via-docker-ubuntu
+
+Other steps
+-----------
+
+#. Update the contrib/scripts/install/docker.sh values
+
+#. Upload contrib/scripts/install/docker.sh to https://get.mayan-edms.com

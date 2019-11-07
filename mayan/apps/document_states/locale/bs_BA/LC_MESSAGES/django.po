@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:11-0400\n"
+"POT-Creation-Date: 2019-10-30 03:00-0400\n"
 "PO-Revision-Date: 2019-09-24 04:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: bs_BA\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:62 events.py:8 links.py:17 links.py:46 links.py:149 links.py:176
+#: apps.py:62 events.py:8 links.py:18 links.py:47 links.py:150 links.py:179
 #: models.py:61 views/workflow_proxy_views.py:75 views/workflow_views.py:139
 msgid "Workflows"
 msgstr "Radni tok"
@@ -60,7 +60,7 @@ msgstr "Datum i vreme"
 msgid "Completion"
 msgstr "Završetak"
 
-#: apps.py:204 forms.py:178 links.py:161 models.py:369 models.py:510
+#: apps.py:204 forms.py:178 links.py:162 models.py:369 models.py:510
 msgid "Transition"
 msgstr "Tranzicija"
 
@@ -125,67 +125,67 @@ msgstr ""
 msgid "Event trigger: %s"
 msgstr "Uzroci događaja: %s"
 
-#: links.py:23 views/workflow_views.py:144
+#: links.py:24 views/workflow_views.py:144
 msgid "Create workflow"
 msgstr "Kreirati radni tok"
 
-#: links.py:29 links.py:53 links.py:85 links.py:110
+#: links.py:30 links.py:54 links.py:86 links.py:111
 msgid "Delete"
 msgstr "Obriši"
 
-#: links.py:35 models.py:52
+#: links.py:36 models.py:52
 msgid "Document types"
 msgstr "Tipovi dokumenta"
 
-#: links.py:42 links.py:60 links.py:92 links.py:117
+#: links.py:43 links.py:61 links.py:93 links.py:118
 msgid "Edit"
 msgstr "Urediti"
 
-#: links.py:66
+#: links.py:67
 msgid "Actions"
 msgstr "Akcije"
 
-#: links.py:72
+#: links.py:73
 msgid "Create action"
 msgstr "Stvorite akciju"
 
-#: links.py:78
+#: links.py:79
 msgid "Create state"
 msgstr "Kreiraj stanje"
 
-#: links.py:97 links.py:189
+#: links.py:98 links.py:192
 msgid "States"
 msgstr "Stanje"
 
-#: links.py:103
+#: links.py:104
 msgid "Create transition"
 msgstr "Kreirajte tranziciju"
 
-#: links.py:122
+#: links.py:123
 msgid "Transitions"
 msgstr "Tranzicije"
 
-#: links.py:129
+#: links.py:130
 msgid "Transition triggers"
 msgstr "Uzroci tranzicije"
 
-#: links.py:136
+#: links.py:137
 msgid "Preview"
 msgstr "Pregled"
 
-#: links.py:141 queues.py:13
+#: links.py:142 queues.py:13
 msgid "Launch all workflows"
 msgstr "Pokrenite sve tokove rada"
 
-#: links.py:156
+#: links.py:157
 msgid "Detail"
 msgstr "Detalji"
 
-#: links.py:170
+#: links.py:171
 msgid "Workflow documents"
 msgstr "Dokumenti radnog toka"
 
-#: links.py:182
+#: links.py:185
 msgid "State documents"
 msgstr "Stanje dokumenta"
 
@@ -679,7 +679,7 @@ msgstr "Lansiranje toka posla je u redu."
 msgid "Preview of: %s"
 msgstr "Pregled od: %s"
 
-#: widgets.py:21
+#: widgets.py:22
 msgid "Workflow preview"
 msgstr ""
 

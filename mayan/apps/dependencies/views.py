@@ -28,6 +28,12 @@ class CheckVersionView(SimpleView):
                 'It is not possible to determine the latest version '
                 'available.'
             )
+        except Exception as exception:
+            message = _(
+                'Unexpected error trying to determine the latest version '
+                'available. Make sure your installation has a connection to '
+                'the internet; %s'
+            ) % exception
         else:
             message = _('Your version is up-to-date.')
 

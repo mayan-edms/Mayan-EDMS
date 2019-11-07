@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:07-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-30 02:58-0400\n"
+"PO-Revision-Date: 2019-10-16 13:39+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,35 +21,35 @@ msgstr ""
 
 #: apps.py:89 permissions_runtime.py:7 settings.py:14
 msgid "Common"
-msgstr ""
+msgstr "Обобщение"
 
 #: classes.py:126
 msgid "Available attributes: \n"
-msgstr ""
+msgstr "Налични характеристики: \n"
 
 #: classes.py:166
 msgid "Available fields: \n"
-msgstr ""
+msgstr "Налични полета: \n"
 
-#: dependencies.py:396
+#: dependencies.py:306
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Използва се за разрешаване на офлайн превод на текстови низове в код."
 
-#: dependencies.py:401
+#: dependencies.py:311
 msgid "Provides style checking."
-msgstr ""
+msgstr "Осигурява проверка на стила."
 
-#: dependencies.py:406
+#: dependencies.py:316
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Команден ред с автоматично довършване."
 
-#: dependencies.py:411
+#: dependencies.py:321
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Проверява правилното форматиране на файла README."
 
 #: forms.py:27
 msgid "Selection"
-msgstr ""
+msgstr "Избиране"
 
 #: forms.py:103
 msgid "None"
@@ -59,26 +60,26 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Изберете записи, които ще бъдат премахнати. Задръжте Control, за да изберете няколко записа. След като избирането приключи, щракнете върху бутона по-долу или щракнете двукратно върху списъка, за да активирате действието."
 
 #: generics.py:154
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Изберете записи за добавяне. Задръжте Control, за да изберете няколко записа. След като избирането приключи, щракнете върху бутона по-долу или щракнете двукратно върху списъка, за да активирате действието."
 
 #: generics.py:287
 msgid "Add all"
-msgstr ""
+msgstr "Добавете всички"
 
 #: generics.py:296
 msgid "Add"
-msgstr "Добави"
+msgstr "Добавете"
 
 #: generics.py:306
 msgid "Remove all"
-msgstr ""
+msgstr "Премахнете всички"
 
 #: generics.py:315
 msgid "Remove"
@@ -87,65 +88,65 @@ msgstr "Премахнете"
 #: generics.py:521
 #, python-format
 msgid "Duplicate data error: %(error)s"
-msgstr ""
+msgstr "Грешка в дублиращи данни: %(error)s"
 
 #: generics.py:543
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr ""
+msgstr "%(object)s не е създаден, грешка: %(error)s"
 
 #: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
-msgstr ""
+msgstr "%(object)s е създаден успешно."
 
 #: generics.py:595
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr ""
+msgstr "%(object)s не е изтрит, грешка: %(error)s."
 
 #: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr ""
+msgstr "%(object)s изтрит успешно."
 
 #: generics.py:697
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr ""
+msgstr "%(object)s не е актуализиран, грешка: %(error)s."
 
 #: generics.py:708
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr ""
+msgstr "%(object)s актуализиран успешно."
 
 #: links.py:36
 msgid "About this"
-msgstr ""
+msgstr "Относно това"
 
 #: links.py:40
 msgid "Locale profile"
-msgstr ""
+msgstr "Локален профил"
 
 #: links.py:45
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Редактиране на локален профил"
 
 #: links.py:50
 msgid "Documentation"
-msgstr ""
+msgstr "Документация"
 
 #: links.py:54 links.py:65
 msgid "Errors"
-msgstr ""
+msgstr "Грешки"
 
 #: links.py:59
 msgid "Clear all"
-msgstr ""
+msgstr "Изчисти всичко"
 
 #: links.py:69
 msgid "Forum"
-msgstr ""
+msgstr "Форум"
 
 #: links.py:73 views.py:109
 msgid "License"
@@ -153,30 +154,30 @@ msgstr "Лиценз"
 
 #: links.py:76
 msgid "Setup"
-msgstr ""
+msgstr "Настройка"
 
 #: links.py:79
 msgid "Source code"
-msgstr ""
+msgstr "Изходен код"
 
 #: links.py:83
 msgid "Support"
-msgstr ""
+msgstr "Поддръжка"
 
 #: links.py:87 queues.py:15 views.py:210
 msgid "Tools"
-msgstr ""
+msgstr "Инструменти"
 
 #: literals.py:13
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "Тази функция е оттеглена и ще бъде премахната в бъдеща версия."
 
 #: literals.py:16
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
+msgstr "Вашата база данни е настроена да използва SQLite. SQLite трябва да се използва само за разработка и тестване, а не за производство."
 
 #: literals.py:34
 msgid "Days"
@@ -193,33 +194,33 @@ msgstr "Минути"
 #: management/commands/convertdb.py:40
 msgid ""
 "Restricts dumped data to the specified app_label or app_label.ModelName."
-msgstr ""
+msgstr "Ограничава изхвърлените данни до определените app_label или app_label.ModelName."
 
 #: management/commands/convertdb.py:47
 msgid ""
 "The database from which data will be exported. If omitted the database named"
 " \"default\" will be used."
-msgstr ""
+msgstr "Базата данни, от която ще бъдат експортирани данни. Ако е пропусната, ще се използва базата данни с име &quot;по подразбиране&quot;."
 
 #: management/commands/convertdb.py:54
 msgid ""
 "The database to which data will be imported. If omitted the database named "
 "\"default\" will be used."
-msgstr ""
+msgstr "Базата данни, в която ще бъдат импортирани данни. Ако е пропусната, ще се използва базата данни с име &quot;по подразбиране&quot;."
 
 #: management/commands/convertdb.py:61
 msgid ""
 "Force the conversion of the database even if the receiving database is not "
 "empty."
-msgstr ""
+msgstr "Принудително преобразуване на базата данни, дори ако приемащата база данни не е празна."
 
 #: menus.py:10
 msgid "System"
-msgstr ""
+msgstr "Система"
 
 #: menus.py:12 menus.py:13
 msgid "Facet"
-msgstr ""
+msgstr "Аспект"
 
 #: menus.py:16
 msgid "Actions"
@@ -227,7 +228,7 @@ msgstr "Действия"
 
 #: menus.py:17
 msgid "Secondary"
-msgstr ""
+msgstr "Допълнително"
 
 #: menus.py:21 models.py:93
 msgid "User"
@@ -236,7 +237,7 @@ msgstr "Потребител"
 #: mixins.py:222
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
-msgstr ""
+msgstr "Не е намерен %(verbose_name)s, отговарящ на заявката"
 
 #: mixins.py:296
 msgid "Object"
@@ -244,23 +245,23 @@ msgstr "Обект"
 
 #: models.py:28
 msgid "Namespace"
-msgstr ""
+msgstr "Именно пространство"
 
 #: models.py:39 models.py:63
 msgid "Date time"
-msgstr ""
+msgstr "Дата час"
 
 #: models.py:41 views.py:155
 msgid "Result"
-msgstr ""
+msgstr "Резултат"
 
 #: models.py:47
 msgid "Error log entry"
-msgstr ""
+msgstr "Запис в дневника за грешки"
 
 #: models.py:48
 msgid "Error log entries"
-msgstr ""
+msgstr "Записи в дневника за грешки"
 
 #: models.py:59
 msgid "File"
@@ -272,31 +273,31 @@ msgstr "Име на файл"
 
 #: models.py:67
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Споделен качен файл"
 
 #: models.py:68
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Споделени качени файлове"
 
 #: models.py:97
 msgid "Timezone"
-msgstr ""
+msgstr "Часова зона"
 
 #: models.py:100
 msgid "Language"
-msgstr ""
+msgstr "Език"
 
 #: models.py:106
 msgid "User locale profile"
-msgstr ""
+msgstr "Профил на местоположението на потребителя"
 
 #: models.py:107
 msgid "User locale profiles"
-msgstr ""
+msgstr "Профили на местоположението на потребителя"
 
 #: permissions_runtime.py:10
 msgid "View error log"
-msgstr ""
+msgstr "Преглед на дневника за грешки"
 
 #: queues.py:13
 msgid "Default"
@@ -304,21 +305,21 @@ msgstr "По подразбиране"
 
 #: queues.py:17
 msgid "Common periodic"
-msgstr ""
+msgstr "Обща периодичност"
 
 #: queues.py:22
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Изтриване на застояли качвания"
 
 #: settings.py:19
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Автоматично активиране на регистрацията във всички приложения."
 
 #: settings.py:25
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
-msgstr ""
+msgstr "Време за забавяне на фоновите задачи, които зависят от запис в базата данни, за да се изпълнят."
 
 #: settings.py:33
 msgid ""
@@ -326,7 +327,7 @@ msgid ""
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Списък с низове, обозначаващи всички приложения, които трябва да бъдат премахнати от списъка, обикновено инсталиран от Mayan EDMS. Всеки низ трябва да бъде пунктиран Python път към: клас на конфигурация на приложението (предпочитан) или пакет, съдържащ приложение."
 
 #: settings.py:43
 msgid ""
@@ -334,41 +335,41 @@ msgid ""
 "those normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Списък на низове, обозначаващи всички приложения, които са инсталирани извън тези, които обикновено се инсталират от Mayan EDMS. Всеки низ трябва да бъде пунктиран Python път към: клас на конфигурация на приложението (предпочитан) или пакет, съдържащ приложение."
 
 #: settings.py:52
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Име на изгледа, прикрепен към котвата на марката в главното меню. Това е и изгледът, към който потребителите ще бъдат пренасочени след влизане."
 
 #: settings.py:61
 msgid "The number objects that will be displayed per page."
-msgstr ""
+msgstr "Брой на обектите, които ще бъдат показани на страница."
 
 #: settings.py:68
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
+msgstr "Активирайте регистрирането на грешки извън възможностите за регистриране на грешки в системата."
 
 #: settings.py:75
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Път към файла на дневника, който ще проследява грешките по време на производството."
 
 #: settings.py:82
 msgid "Name to be displayed in the main menu."
-msgstr ""
+msgstr "Име, което се показва в главното меню."
 
 #: settings.py:88
 msgid "URL of the installation or homepage of the project."
-msgstr ""
+msgstr "URL адрес на инсталацията или началната страница на проекта."
 
 #: settings.py:94
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr "Бекенд за съхранение, който всички работници могат да използват за споделяне на файлове."
 
 #: settings.py:103
 msgid "Django"
-msgstr ""
+msgstr "Джанго"
 
 #: settings.py:108
 msgid ""
@@ -383,7 +384,7 @@ msgid ""
 " match anything; in this case you are responsible to provide your own "
 "validation of the Host header (perhaps in a middleware; if so this "
 "middleware must be listed first in MIDDLEWARE)."
-msgstr ""
+msgstr "Списък с низове, представляващи имена на хост / домейн, които този сайт може да показва. Това е мярка за сигурност за предотвратяване на HTTP Host header атаки, които са възможни дори при на пръв поглед много безопасни конфигурации на уеб сървъра. Стойностите в този списък могат да бъдат напълно квалифицирани имена (напр. „www.example.com“), като в този случай те ще бъдат съпоставени точно със заглавката на хоста на заявката (нечувствителни към регистъра, без да включват порта). Стойност, започваща с точка, може да бъде използвана като заместващ поддомейн: „.example.com“ ще съответства на example.com, www.example.com и всеки друг поддомейн от example.com. Стойност &#39;*&#39; ще отговаря на всичко; в този случай вие сте отговорни да предоставите вашата собствена валидация на заглавката на хоста (може би в междинния софтуер; ако е така, този междинен софтуер трябва да бъде посочен първи в MIDDLEWARE)."
 
 #: settings.py:126
 msgid ""
@@ -393,13 +394,13 @@ msgid ""
 "submitted in a POST request to be lost. The APPEND_SLASH setting is only "
 "used if CommonMiddleware is installed (see Middleware). See also "
 "PREPEND_WWW."
-msgstr ""
+msgstr "Когато е зададено като True, ако URL адресът на заявката не съвпада с който и да е от шаблоните в URLconf и не завършва с наклонена черта, HTTP пренасочване се издава на същия URL адрес с добавена наклонена черта. Имайте предвид, че пренасочването може да доведе до загуба на данни, изпратени в POST заявка. Настройката APPEND_SLASH се използва само ако е инсталиран CommonMiddleware (вижте Middleware). Вижте също PREPEND_WWW."
 
 #: settings.py:139
 msgid ""
 "The list of validators that are used to check the strength of user's "
 "passwords."
-msgstr ""
+msgstr "Списък на валидаторите, които се използват за проверка на силата на паролите на потребителя."
 
 #: settings.py:146
 msgid ""
@@ -408,7 +409,7 @@ msgid ""
 "dictionary containing the options for an individual database. The DATABASES "
 "setting must configure a default database; any number of additional "
 "databases may also be specified."
-msgstr ""
+msgstr "Речник, съдържащ настройките за всички бази данни, които ще се използват с Джанго. Това е вложен речник, чието съдържание пренася псевдоним в базата данни към речник, съдържащ опциите за отделна база данни. Настройката DATABASES трябва да конфигурира база данни по подразбиране; може да бъде посочен и всякакъв брой допълнителни бази данни."
 
 #: settings.py:158
 msgid ""
@@ -423,14 +424,14 @@ msgid ""
 "denial-of-service attack vector if left unchecked. Since web servers don't "
 "typically perform deep request inspection, it's not possible to perform a "
 "similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
-msgstr ""
+msgstr "По подразбиране: 2621440 (т.е. 2,5 MB). Максималният размер в байтове, който тялото на заявката може да бъде, преди да се повдигне SuspiciousOperation (RequestDataTooBig). Проверката се извършва при достъп до request.body или request.POST и се изчислява спрямо общия размер на заявката, с изключение на евентуални данни за качването на файлове. Можете да зададете това като None, за да деактивирате проверката. Приложенията, които се очаква да получават необичайно големи текстове във формуляра, трябва да настройват тази настройка. Количеството данни на заявката е свързано с обема памет, необходима за обработка на заявката и попълване на GET и POST речниците. Големите заявки могат да бъдат използвани като вектор за атака на отказ на услуга, ако се остави без отметка. Тъй като уеб сървърите обикновено не извършват дълбока проверка на заявката, не е възможно да се извърши подобна проверка на това ниво. Вижте също FILE_UPLOAD_MAX_MEMORY_SIZE."
 
 #: settings.py:178
 msgid ""
 "Default: 'webmaster@localhost' Default email address to use for various "
 "automated correspondence from the site manager(s). This doesn't include "
 "error messages sent to ADMINS and MANAGERS; for that, see SERVER_EMAIL."
-msgstr ""
+msgstr "По подразбиране: &#39;webmaster@localhost&#39; По подразбиране имейл адрес, който да се използва за различни автоматизирани кореспонденции от мениджъра(ите) на сайта. Това не включва съобщения за грешки, изпратени до ADMINS и MANAGERS; за това вижте SERVER_EMAIL."
 
 #: settings.py:188
 msgid ""
@@ -438,17 +439,17 @@ msgid ""
 "representing User-Agent strings that are not allowed to visit any page, "
 "systemwide. Use this for bad robots/crawlers. This is only used if "
 "CommonMiddleware is installed (see Middleware)."
-msgstr ""
+msgstr "По подразбиране: [] (празен списък). Списък на компилирани обекти на регулярни изрази, представляващи низове на User-Agent, на които не е разрешено да посещават никоя страница в цялата система. Използвайте това за лоши роботи/пълзящи роботи . Това се използва само ако е инсталиран CommonMiddleware (вижте Middleware)."
 
 #: settings.py:199
 msgid ""
 "Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
 "for sending emails."
-msgstr ""
+msgstr "По подразбиране: &#39;django.core.mail.backends.smtp.EmailBackend&#39;. Бекенд, който да използвате за изпращане на имейли."
 
 #: settings.py:207
 msgid "Default: 'localhost'. The host to use for sending email."
-msgstr ""
+msgstr "По подразбиране: &#39;localhost&#39;. Хостът, който да използвате за изпращане на имейл."
 
 #: settings.py:214
 msgid ""
@@ -456,23 +457,23 @@ msgid ""
 "EMAIL_HOST. This setting is used in conjunction with EMAIL_HOST_USER when "
 "authenticating to the SMTP server. If either of these settings is empty, "
 "Django won't attempt authentication."
-msgstr ""
+msgstr "По подразбиране: &#39;&#39; (празен низ). Парола за SMTP сървър, дефиниран в EMAIL_HOST. Тази настройка се използва заедно с EMAIL_HOST_USER, когато се прави удостоверяване на SMTP сървъра. Ако някоя от тези настройки е празна, Django няма да прави опит за удостоверяване."
 
 #: settings.py:225
 msgid ""
 "Default: '' (Empty string). Username to use for the SMTP server defined in "
 "EMAIL_HOST. If empty, Django won't attempt authentication."
-msgstr ""
+msgstr "По подразбиране: &#39;&#39; (празен низ). Потребителско име за SMTP сървър, дефиниран в EMAIL_HOST. Ако е празно, Django няма да прави опит за удостоверяване."
 
 #: settings.py:234
 msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
-msgstr ""
+msgstr "По подразбиране: 25. Порт, който да се използва за SMTP сървър, дефиниран в EMAIL_HOST."
 
 #: settings.py:241
 msgid ""
 "Default: None. Specifies a timeout in seconds for blocking operations like "
 "the connection attempt."
-msgstr ""
+msgstr "По подразбиране: Няма. Посочва изчакване в секунди за блокиране на операции като опит за свързване."
 
 #: settings.py:249
 msgid ""
@@ -480,7 +481,7 @@ msgid ""
 " SMTP server. This is used for explicit TLS connections, generally on port "
 "587. If you are experiencing hanging connections, see the implicit TLS "
 "setting EMAIL_USE_SSL."
-msgstr ""
+msgstr "По подразбиране: Грешно. Дали да използвате TLS (сигурна) връзка, когато говорите със SMTP сървъра. Това се използва за изрични TLS връзки, обикновено на порт 587. Ако имате зависващи връзки, вижте неявната настройка на TLS EMAIL_USE_SSL."
 
 #: settings.py:259
 msgid ""
@@ -490,14 +491,14 @@ msgid ""
 "are experiencing problems, see the explicit TLS setting EMAIL_USE_TLS. Note "
 "that EMAIL_USE_TLS/EMAIL_USE_SSL are mutually exclusive, so only set one of "
 "those settings to True."
-msgstr ""
+msgstr "По подразбиране: Грешно. Дали да използвате неявна TLS (сигурна) връзка, когато говорите със SMTP сървъра. В повечето имейл документации този тип TLS връзка се нарича SSL. Обикновено се използва на порт 465. Ако имате проблеми, вижте изричната настройка на TLS EMAIL_USE_TLS. Обърнете внимание, че EMAIL_USE_TLS / EMAIL_USE_SSL са взаимно изключващи се, така че задайте само една от тези настройки като True."
 
 #: settings.py:271
 msgid ""
 "Default: 2621440 (i.e. 2.5 MB). The maximum size (in bytes) that an upload "
 "will be before it gets streamed to the file system. See Managing files for "
 "details. See also DATA_UPLOAD_MAX_MEMORY_SIZE."
-msgstr ""
+msgstr "По подразбиране: 2621440 (т.е. 2,5 MB). Максималният размер (в байтове), който ще бъде качен, преди да бъде пуснат към файловата система. Вижте Управление на файлове за подробности. Вижте също DATA_UPLOAD_MAX_MEMORY_SIZE."
 
 #: settings.py:281
 msgid ""
@@ -506,7 +507,7 @@ msgid ""
 "accepts named URL patterns which can be used to reduce configuration "
 "duplication since you don't have to define the URL in two places (settings "
 "and URLconf)."
-msgstr ""
+msgstr "По подразбиране: &#39;/accounts/login/&#39; URL адресът, при който заявките са пренасочени за вход, особено при използване на декоратора login_required(). Тази настройка приема също именувани модели на URL адреси, които могат да се използват за намаляване на дублирането на конфигурацията, тъй като не е необходимо да определяте URL адреса на две места (настройки и URLconf)."
 
 #: settings.py:293
 msgid ""
@@ -515,7 +516,7 @@ msgid ""
 "by the login_required() decorator, for example. This setting also accepts "
 "named URL patterns which can be used to reduce configuration duplication "
 "since you don't have to define the URL in two places (settings and URLconf)."
-msgstr ""
+msgstr "По подразбиране:  '/accounts/profile/'; URL адресът, където заявките са пренасочени след влизане, когато изгледът contrib.auth.login не получи следващ параметър. Това се използва например от декоратора login_required(). Тази настройка приема и именувани модели на URL адреси, които могат да се използват за намаляване на дублирането на конфигурацията, тъй като не е необходимо да определяте URL адреса на две места (настройки и URLconf)."
 
 #: settings.py:305
 msgid ""
@@ -525,7 +526,7 @@ msgid ""
 "setting also accepts named URL patterns which can be used to reduce "
 "configuration duplication since you don't have to define the URL in two "
 "places (settings and URLconf)."
-msgstr ""
+msgstr "По подразбиране: Няма. URL адресът, където заявките са пренасочени, след като потребителят излезе от LogoutView (ако изгледът не получи аргумент next_page). Ако е Няма, няма да се извърши пренасочване и изгледът ще се изведе. Тази настройка приема и именувани модели на URL адреси, които могат да се използват за намаляване на дублирането на конфигурацията, тъй като не е необходимо да определяте URL адреса на две места (настройки и URLconf)."
 
 #: settings.py:318
 msgid ""
@@ -533,7 +534,7 @@ msgid ""
 "processor to add some variables to the template context. Can use the "
 "admindocs bookmarklets even if not logged in as a staff user. Are marked as "
 "\"internal\" (as opposed to \"EXTERNAL\") in AdminEmailHandler emails."
-msgstr ""
+msgstr "Списък на IP адреси като низове, който: Позволява на debug() контекст процесора да добави някои променливи към контекста на шаблона. Може да използва книжните маркери на admindocs, дори ако не е влязъл като потребител от персонала. Те са маркирани като &quot;вътрешни&quot; (за разлика от &quot;ВЪНШНИ&quot;) в имейлите на AdminEmailHandler."
 
 #: settings.py:329
 msgid ""
@@ -542,7 +543,7 @@ msgid ""
 "specifies which languages are available for language selection. Generally, "
 "the default value should suffice. Only set this setting if you want to "
 "restrict language selection to a subset of the Django-provided languages. "
-msgstr ""
+msgstr "Списък на всички налични езици. Списъкът е списък с две двойки във формата (код на езика, име на език), например, („ja“, „японски“). Това определя кои езици са достъпни за избор на език. По принцип стойността по подразбиране трябва да е достатъчна. Задайте тази настройка само ако искате да ограничите избора на език до подмножество от предоставените от Джанго езици."
 
 #: settings.py:342
 msgid ""
@@ -554,7 +555,7 @@ msgid ""
 "language can't be determined or is not supported by the website. It also "
 "provides the fallback translation when a translation for a given literal "
 "doesn't exist for the user's preferred language."
-msgstr ""
+msgstr "Низ, представляващ езиков код за тази инсталация. Това трябва да е в стандартен езиков ID формат. Например американският английски е „en-us“. Той служи за две цели: Ако междинният софтуер за локална мрежа не се използва, списъкът решава кой превод да служи на всички потребители. Ако междинният софтуер за локална мрежа е активен, той предоставя резервен език в случай, че предпочитаният език на потребителя не може да бъде определен или не се поддържа от уебсайта. Той също така осигурява резервен превод, когато превод за даден буква не съществува за предпочитания от потребителя език."
 
 #: settings.py:357
 msgid ""
@@ -562,7 +563,7 @@ msgid ""
 "\"/static/\" or \"http://static.example.com/\" If not None, this will be "
 "used as the base path for asset definitions (the Media class) and the "
 "staticfiles app. It must end in a slash if set to a non-empty value."
-msgstr ""
+msgstr "URL адрес, който да използвате, когато се позовавате на статични файлове, разположени в STATIC_ROOT. Пример: \"/static/\"; или \"http://static.example.com/\" Ако не е None, адресът ще бъде използвано като основен път за дефинициите на активите (клас Media) и приложението staticfiles. Трябва да завършва с наклонена черта, ако е зададен на непразна стойност."
 
 #: settings.py:368
 msgid ""
@@ -570,14 +571,14 @@ msgid ""
 "collectstatic management command. A ready-to-use instance of the storage "
 "backend defined in this setting can be found at "
 "django.contrib.staticfiles.storage.staticfiles_storage."
-msgstr ""
+msgstr "Двигателят за съхранение на файлове, който да се използва при събиране на статични файлове с командата за управление collectstatic. Готов за използване екземпляр на резервния архив за съхранение, дефиниран в тази настройка, може да бъде намерен на django.contrib.staticfiles.storage.staticfiles_storage."
 
 #: settings.py:378
 msgid ""
 "A string representing the time zone for this installation. Note that this "
 "isn't necessarily the time zone of the server. For example, one server may "
 "serve multiple Django-powered sites, each with a separate time zone setting."
-msgstr ""
+msgstr "Низ, представляващ часовата зона за тази инсталация. Обърнете внимание, че това не е непременно часовата зона на сървъра. Например един сървър може да обслужва множество сайтове, захранвани от Django, всеки с отделна настройка на часовата зона."
 
 #: settings.py:388
 msgid ""
@@ -585,11 +586,11 @@ msgid ""
 "servers (e.g. runserver) will use. The django-admin startproject management "
 "command will create a simple wsgi.py file with an application callable in "
 "it, and point this setting to that application."
-msgstr ""
+msgstr "Пълният Python път на обекта на приложението WSGI, който ще използва вградените сървъри на Django (например runserver). Командата за управление django-admin startproject ще създаде прост файл wsgi.py с приложение, което може да се извиква в него и ще насочи тази настройка към това приложение."
 
 #: settings.py:396
 msgid "Celery"
-msgstr ""
+msgstr "Celery"
 
 #: settings.py:401
 msgid ""
@@ -597,7 +598,7 @@ msgid ""
 " transport://userid:password@hostname:port/virtual_host Only the scheme part"
 " (transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
-msgstr ""
+msgstr "По подразбиране: &quot;amqp: //&quot;. URL адрес на брокера по подразбиране Това трябва да бъде URL под формата на: transport://userid:password@hostname:port/virtual_host Изисква се само частта от схемата (transport://), останалото е по избор и по подразбиране към конкретните стойности на транспортиране по подразбиране."
 
 #: settings.py:411
 msgid ""
@@ -605,7 +606,7 @@ msgid ""
 "task results (tombstones). Refer to "
 "http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
 "backend"
-msgstr ""
+msgstr "По подразбиране: По подразбиране не е активиран бекенд. Бекендът, използван за съхраняване на резултати от задачи (надгробни камъни). Вижте http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-backend"
 
 #: templatetags/common_tags.py:31
 msgid "Confirm delete"
@@ -614,7 +615,7 @@ msgstr "Потвърдете изтриване"
 #: templatetags/common_tags.py:36
 #, python-format
 msgid "Edit %s"
-msgstr ""
+msgstr "Редактиране %s"
 
 #: templatetags/common_tags.py:39
 msgid "Confirm"
@@ -623,12 +624,12 @@ msgstr "Потвърждаване"
 #: templatetags/common_tags.py:43
 #, python-format
 msgid "Details for: %s"
-msgstr ""
+msgstr "Подробности за: %s"
 
 #: templatetags/common_tags.py:47
 #, python-format
 msgid "Edit: %s"
-msgstr ""
+msgstr "Редактиране: %s"
 
 #: templatetags/common_tags.py:50
 msgid "Create"
@@ -638,63 +639,63 @@ msgstr "Създаване"
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Въведете валидно „вътрешно име“, състоящо се от букви, цифри и подчертавания."
 
 #: views.py:31
 msgid "About"
-msgstr ""
+msgstr "Относно"
 
 #: views.py:44
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "Данни от текущия локален потребителски профил "
 
 #: views.py:50
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "Редактиране на данни за текущия локален потребителски профил"
 
 #: views.py:100
 msgid "Dashboard"
-msgstr ""
+msgstr "Контролно табло"
 
 #: views.py:118
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Изчистване на записите в дневника за грешки за: %s"
 
 #: views.py:135
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "Дневникът за грешки в обекта е изчистен успешно"
 
 #: views.py:154
 msgid "Date and time"
-msgstr ""
+msgstr "Дата и час"
 
 #: views.py:159
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Записи в дневника за грешки за: %s"
 
 #: views.py:187
 msgid "No setup options available."
-msgstr ""
+msgstr "Няма опции за настройка."
 
 #: views.py:189
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
+msgstr "Липса на резултати тук означава, че нямате необходимите разрешения за изпълнение на административна задача."
 
 #: views.py:195
 msgid "Setup items"
-msgstr ""
+msgstr "Елементи за настройка"
 
 #: views.py:197
 msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgstr "Тук можете да конфигурирате всички аспекти на системата."
 
 #: views.py:212
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "Тези модули се използват за поддръжка на системата."
 
 #: views.py:240
 msgid "No action selected."
@@ -702,4 +703,4 @@ msgstr "Не са избрани действия."
 
 #: views.py:250
 msgid "Must select at least one item."
-msgstr ""
+msgstr "Трябва да изберете поне един елемент."

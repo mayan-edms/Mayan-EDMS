@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:09-0400\n"
-"PO-Revision-Date: 2019-08-26 01:02+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-30 02:59-0400\n"
+"PO-Revision-Date: 2019-10-18 11:48+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,31 +20,31 @@ msgstr ""
 
 #: admin.py:24
 msgid "None"
-msgstr ""
+msgstr "žádný"
 
 #: admin.py:26 links.py:85 models.py:52
 msgid "Document types"
-msgstr ""
+msgstr "Typy dokumentů"
 
 #: apps.py:56 events.py:8
 msgid "Document indexing"
-msgstr ""
+msgstr "Indexování dokumentů"
 
 #: apps.py:119
 msgid "Total levels"
-msgstr ""
+msgstr "Celkem úrovní"
 
 #: apps.py:127
 msgid "Total documents"
-msgstr ""
+msgstr "Celkem dokumentů"
 
 #: apps.py:132 apps.py:144 apps.py:163
 msgid "Level"
-msgstr ""
+msgstr "Úroveň"
 
 #: apps.py:149 apps.py:168
 msgid "Levels"
-msgstr ""
+msgstr "Úrovně"
 
 #: apps.py:157 apps.py:175 models.py:358
 msgid "Documents"
@@ -51,44 +52,44 @@ msgstr "Dokumenty"
 
 #: events.py:12
 msgid "Index created"
-msgstr ""
+msgstr "Rejstřík vytvořen"
 
 #: events.py:15
 msgid "Index edited"
-msgstr ""
+msgstr "Rejstřík upraven"
 
 #: forms.py:19
 msgid "Index templates to be queued for rebuilding."
-msgstr ""
+msgstr "Šablony rejstříků, které mají být zařazeny do fronty pro nové sestavení."
 
 #: forms.py:20 links.py:30
 msgid "Index templates"
-msgstr ""
+msgstr "Šablony rejstříků"
 
 #: handlers.py:20
 msgid "Creation date"
-msgstr ""
+msgstr "Datum vytvoření"
 
 #: links.py:24 links.py:39 links.py:65 links.py:69 models.py:60 views.py:149
 #: views.py:322
 msgid "Indexes"
-msgstr ""
+msgstr "Rejstříky"
 
 #: links.py:48
 msgid "Deletes and creates from scratch all the document indexes."
-msgstr ""
+msgstr "Odstraní a vytvoří od začátku všechny rejstříky dokumentů"
 
 #: links.py:50 views.py:445
 msgid "Rebuild indexes"
-msgstr ""
+msgstr "Znovu setsavit rejstříky"
 
 #: links.py:56 queues.py:24
 msgid "Rebuild index"
-msgstr ""
+msgstr "Znovu sestavit rejstřík"
 
 #: links.py:73 views.py:87
 msgid "Create index"
-msgstr ""
+msgstr "Vytvořit rejstřík"
 
 #: links.py:80 links.py:110
 msgid "Delete"
@@ -100,11 +101,11 @@ msgstr "Editovat"
 
 #: links.py:98
 msgid "Tree template"
-msgstr ""
+msgstr "Šablona stromu"
 
 #: links.py:104
 msgid "New child node"
-msgstr ""
+msgstr "Nový podřízený uzel"
 
 #: models.py:36
 msgid "Label"
@@ -112,52 +113,52 @@ msgstr "Označení"
 
 #: models.py:40
 msgid "This value will be used by other apps to reference this index."
-msgstr ""
+msgstr "Tuto hodnotu použijí jiné aplikace k odkazu na tento rejstřík."
 
 #: models.py:41
 msgid "Slug"
-msgstr ""
+msgstr "Slug"
 
 #: models.py:46
 msgid ""
 "Causes this index to be visible and updated when document data changes."
-msgstr ""
+msgstr "Způsobí, že tento rejstřík bude viditelný a aktualizovaný při změně dat dokumentu"
 
 #: models.py:49 models.py:235
 msgid "Enabled"
-msgstr ""
+msgstr "Povoleno"
 
 #: models.py:59 models.py:219
 msgid "Index"
-msgstr ""
+msgstr "Rejstřík"
 
 #: models.py:191
 msgid "Index instance"
-msgstr ""
+msgstr "Instance rejstříku"
 
 #: models.py:192
 msgid "Index instances"
-msgstr ""
+msgstr "Instance rejstříků"
 
 #: models.py:223
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr ""
+msgstr "Zadejte šablonu, kterou chcete vykreslit. Použijte výchozí jazyk pro šablony Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
 #: models.py:227
 msgid "Indexing expression"
-msgstr ""
+msgstr "Výraz tvorby rejstříku"
 
 #: models.py:232
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
+msgstr "Způsobí, že tento uzel bude viditelný a aktualizovaný při změně dat dokumentu."
 
 #: models.py:240
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
-msgstr ""
+msgstr "Zaškrtněte tuto možnost, chcete-li, aby tento uzel fungoval jako kontejner pro dokumenty a ne jako nadřazený pro další uzly."
 
 #: models.py:243
 msgid "Link documents"
@@ -165,213 +166,213 @@ msgstr ""
 
 #: models.py:247
 msgid "Index node template"
-msgstr ""
+msgstr "Šablona uzlu rejstříku"
 
 #: models.py:248
 msgid "Indexes node template"
-msgstr ""
+msgstr "Šablona uzlů rejstříků"
 
 #: models.py:252
 msgid "Root"
-msgstr ""
+msgstr "Kořen"
 
 #: models.py:308
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
+msgstr "Chyba při zařazení dokumentu do rejstříku: %(document)s; výraz: %(expression)s; %(exception)s"
 
 #: models.py:351
 msgid "Index template node"
-msgstr ""
+msgstr "Uzel šablony rejstříku"
 
 #: models.py:354
 msgid "Value"
-msgstr ""
+msgstr "Hodnota"
 
 #: models.py:364
 msgid "Index node instance"
-msgstr ""
+msgstr "Instance rejstříkového uzlu"
 
 #: models.py:365
 msgid "Indexes node instances"
-msgstr ""
+msgstr "Instance uzlů rejstříků"
 
 #: models.py:479
 msgid "Document index node instance"
-msgstr ""
+msgstr "Instance uzlu rejstříku dokumentů"
 
 #: models.py:480
 msgid "Document indexes node instances"
-msgstr ""
+msgstr "Instance uzlů rejstříků dokumentů"
 
 #: permissions.py:7 queues.py:9
 msgid "Indexing"
-msgstr ""
+msgstr "Indexování"
 
 #: permissions.py:10
 msgid "Create new document indexes"
-msgstr ""
+msgstr "Vytvoř nové rejstříky dokumentů"
 
 #: permissions.py:13
 msgid "Edit document indexes"
-msgstr ""
+msgstr "Uprav rejstřík dokumentů"
 
 #: permissions.py:16
 msgid "Delete document indexes"
-msgstr ""
+msgstr "Smaž rejstříky doomentů"
 
 #: permissions.py:19
 msgid "View document index instances"
-msgstr ""
+msgstr "Zobrazit instance rejstříku dokumentů"
 
 #: permissions.py:23
 msgid "View document indexes"
-msgstr ""
+msgstr "Zobrazení rejstříků dokumentů"
 
 #: permissions.py:26
 msgid "Rebuild document indexes"
-msgstr ""
+msgstr "Znovu sestavit rejstříky dokumentů"
 
 #: queues.py:12
 msgid "Delete empty index nodes"
-msgstr ""
+msgstr "Odstranit prázdné rejstříkové uzly"
 
 #: queues.py:16
 msgid "Remove document"
-msgstr ""
+msgstr "Odebrat dokument"
 
 #: queues.py:20
 msgid "Index document"
-msgstr ""
+msgstr "Rejstřík dokumentu"
 
 #: views.py:46
 msgid "Available indexes"
-msgstr ""
+msgstr "Dostupné rejstříky"
 
 #: views.py:47
 msgid "Indexes linked"
-msgstr ""
+msgstr "Propojené rejstříky"
 
 #: views.py:77
 msgid ""
 "Documents of this type will appear in the indexes linked when these are "
 "updated. Events of the documents of this type will trigger updates in the "
 "linked indexes."
-msgstr ""
+msgstr "Dokumenty tohoto typu se objeví v rejstřících propojených při jejich aktualizaci. Události dokumentů tohoto typu vyvolají aktualizace v propojených rejstřících."
 
 #: views.py:81
 #, python-format
 msgid "Indexes linked to document type: %s"
-msgstr ""
+msgstr "Rejstříky spojené s typem dokumentu: %s"
 
 #: views.py:109
 #, python-format
 msgid "Delete the index: %s?"
-msgstr ""
+msgstr "Smazat rejstřík: %s"
 
 #: views.py:124
 #, python-format
 msgid "Edit index: %s"
-msgstr ""
+msgstr "Upravit rejstřík %s"
 
 #: views.py:143
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
-msgstr ""
+msgstr "Zařadí do rejstříku skupinu dokumentů automaticky do úrovní. Rejstříky jsou definovány pomocí šablony, jejíž značky jsou nahrazeny přímými vlastnostmi dokumentů, jako je popisek nebo popis, nebo rozšířených vlastností, jako jsou metadata."
 
 #: views.py:148
 msgid "There are no indexes."
-msgstr ""
+msgstr "Žádné rejstříky."
 
 #: views.py:161
 #, python-format
 msgid "Rebuild index: %s"
-msgstr ""
+msgstr "Znovu sestavit index: %s"
 
 #: views.py:191
 msgid "Available document types"
-msgstr ""
+msgstr "Dostupné typy dokumentů"
 
 #: views.py:192
 msgid "Document types linked"
-msgstr ""
+msgstr "Propojené typy dokumentů"
 
 #: views.py:202
 msgid ""
 "Only the documents of the types selected will be shown in the index when "
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
-msgstr ""
+msgstr "Po vytvoření budou v rejstříku zobrazeny pouze dokumenty vybraných typů. Aktualizace v rejstříku vyvolají pouze události dokumentů vybraných typů."
 
 #: views.py:206
 #, python-format
 msgid "Document types linked to index: %s"
-msgstr ""
+msgstr "Typy dokumentů spojené s rejstříkem: %s"
 
 #: views.py:218
 #, python-format
 msgid "Tree template nodes for index: %s"
-msgstr ""
+msgstr "Uzly stromové šablony pro rejstřík: %s"
 
 #: views.py:248
 #, python-format
 msgid "Create child node of: %s"
-msgstr ""
+msgstr "Vytvořit podřízený uzel: %s"
 
 #: views.py:271
 #, python-format
 msgid "Delete the index template node: %s?"
-msgstr ""
+msgstr "Odstranit uzel šablony rejstříku: %s?"
 
 #: views.py:294
 #, python-format
 msgid "Edit the index template node: %s?"
-msgstr ""
+msgstr "Upravit uzel šablony rejstříku: %s?"
 
 #: views.py:317
 msgid ""
 "This could mean that no index templates have been created or that there "
 "index templates but they are no properly defined."
-msgstr ""
+msgstr "To by mohlo znamenat, že nebyly vytvořeny žádné šablony rejstříků, nebo že tam byly šablony rejstříků, ale nejsou správně definovány."
 
 #: views.py:321
 msgid "There are no index instances available."
-msgstr ""
+msgstr "Nejsou k dispozici žádné instance rejstříků."
 
 #: views.py:366
 #, python-format
 msgid "Navigation: %s"
-msgstr ""
+msgstr "Navigace: %s"
 
 #: views.py:371
 #, python-format
 msgid "Contents for index: %s"
-msgstr ""
+msgstr "Obsah rejstříku: %s"
 
 #: views.py:424
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
-msgstr ""
+msgstr "Přiřaďte typ dokumentu tohoto dokumentu k rejstříku, aby se zobrazoval v případech těchto organizačních jednotek rejstříků."
 
 #: views.py:429
 msgid "This document is not in any index"
-msgstr ""
+msgstr "Tento dokument není v žádném rejstříku"
 
 #: views.py:433
 #, python-format
 msgid "Indexes nodes containing document: %s"
-msgstr ""
+msgstr "Uzel rejstříku obsahuje dokument: %s"
 
 #: views.py:459
 #, python-format
 msgid "%(count)d index queued for rebuild."
 msgid_plural "%(count)d indexes queued for rebuild."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Index %(count)d zařazený do fronty pro nové sestavení."
+msgstr[1] "%(count)d indexy zařazené do fronty k novému sestavení."
+msgstr[2] "%(count)d indexy zařazené do fronty k novému sestavení."
+msgstr[3] "%(count)d Rejstříky ve frontě k novému sestavení."

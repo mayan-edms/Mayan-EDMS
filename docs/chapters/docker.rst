@@ -23,7 +23,7 @@ tag here, remember to do so in the next steps also.::
 
 Then download version 9.6 of the Docker PostgreSQL image::
 
-    docker pull postgres:9.6
+    docker pull |DOCKER_POSTGRES_IMAGE_VERSION|
 
 Create and run a PostgreSQL container::
 
@@ -35,7 +35,7 @@ Create and run a PostgreSQL container::
     -e POSTGRES_DB=mayan \
     -e POSTGRES_PASSWORD=mayanuserpass \
     -v /docker-volumes/mayan-edms/postgres:/var/lib/postgresql/data \
-    -d postgres:9.6
+    |DOCKER_POSTGRES_IMAGE_VERSION|
 
 The PostgreSQL container will have one database named ``mayan``, with an user
 named ``mayan`` too, with a password of ``mayanuserpass``. The container will
@@ -97,7 +97,7 @@ binding (``-p 5432:5432``)::
     -e POSTGRES_DB=mayan \
     -e POSTGRES_PASSWORD=mayanuserpass \
     -v /docker-volumes/mayan-edms/postgres:/var/lib/postgresql/data \
-    -d postgres:9.6
+    |DOCKER_POSTGRES_IMAGE_VERSION|
 
 Launch the Mayan EDMS container with the network option and change the
 database hostname to the PostgreSQL container name (``mayan-edms-postgres``)

@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Iliya Georgiev <inactive+iliicho7@transifex.com>, 2012
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:18-0400\n"
-"PO-Revision-Date: 2019-06-29 06:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-30 03:02-0400\n"
+"PO-Revision-Date: 2019-10-17 10:50+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:43 events.py:8 models.py:36 models.py:102 permissions.py:7
+#: apps.py:43 events.py:8 models.py:36 models.py:105 permissions.py:7
 msgid "Permissions"
 msgstr "Разрешения"
 
@@ -28,43 +29,43 @@ msgstr "Недостатъчни разрешения."
 
 #: dashboard_widgets.py:15
 msgid "Total roles"
-msgstr ""
+msgstr "Общо роли"
 
 #: events.py:12
 msgid "Role created"
-msgstr ""
+msgstr "Роля създадена"
 
 #: events.py:15
 msgid "Role edited"
-msgstr ""
+msgstr "Роля редактирана"
 
-#: links.py:16 links.py:40 models.py:113 views.py:165
+#: links.py:16 links.py:40 models.py:116 views.py:165
 msgid "Roles"
 msgstr "Роли"
 
 #: links.py:23
 msgid "Create new role"
-msgstr ""
+msgstr "Създайте нова роля"
 
 #: links.py:29
 msgid "Delete"
-msgstr ""
+msgstr "Изтрийте"
 
 #: links.py:34
 msgid "Edit"
 msgstr "Редактиране"
 
-#: links.py:45 models.py:105
+#: links.py:45 models.py:108
 msgid "Groups"
 msgstr "Групи"
 
 #: links.py:52
 msgid "Role permissions"
-msgstr ""
+msgstr "Разрешения за роли"
 
 #: models.py:27
 msgid "Namespace"
-msgstr ""
+msgstr "Именно пространство"
 
 #: models.py:28
 msgid "Name"
@@ -74,13 +75,13 @@ msgstr "Име"
 msgid "Permission"
 msgstr "Разрешение"
 
-#: models.py:98 search.py:16
+#: models.py:101 search.py:16
 msgid "Label"
-msgstr ""
+msgstr "Етикет"
 
-#: models.py:112
+#: models.py:115
 msgid "Role"
-msgstr ""
+msgstr "Роля"
 
 #: permissions.py:10
 msgid "Create roles"
@@ -100,72 +101,72 @@ msgstr "Преглед на роли"
 
 #: search.py:20
 msgid "Group name"
-msgstr ""
+msgstr "Име на групата"
 
 #: serializers.py:46
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr ""
+msgstr "Разделен със запетаи списък на групи към които да се добавят основни ключове за добавяне или замяна в тази роля."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr ""
+msgstr "Разделен със запетаи списък от разрешения които основните ключове да дадат на тази роля."
 
 #: serializers.py:90
 #, python-format
 msgid "No such permission: %s"
-msgstr ""
+msgstr "Няма такова разрешение: %s"
 
 #: views.py:32
 msgid "Available roles"
-msgstr ""
+msgstr "Налични роли"
 
 #: views.py:33
 msgid "Group roles"
-msgstr ""
+msgstr "Групови роли"
 
 #: views.py:42
 #, python-format
 msgid "Roles of group: %s"
-msgstr ""
+msgstr "Роли на групата: %s"
 
 #: views.py:79
 msgid "Available groups"
-msgstr ""
+msgstr "Налични групи"
 
 #: views.py:80
 msgid "Role groups"
-msgstr ""
+msgstr "Ролеви групи"
 
 #: views.py:89
 #, python-format
 msgid "Groups of role: %s"
-msgstr ""
+msgstr "Групи за роля: %s"
 
 #: views.py:91
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr ""
+msgstr "Добавете групи, които да бъдат част от роля. Те ще наследят разрешенията на ролите и контрола за достъп."
 
 #: views.py:104
 msgid "Available permissions"
-msgstr ""
+msgstr "Налични разрешения"
 
 #: views.py:105
 msgid "Granted permissions"
-msgstr ""
+msgstr "Дадени разрешения"
 
 #: views.py:137
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr ""
+msgstr "Разрешенията, предоставени тук, ще се прилагат за цялата система и всички обекти."
 
 #: views.py:140
 #, python-format
 msgid "Permissions for role: %s"
-msgstr ""
+msgstr "Разрешения за роля: %s"
 
 #: views.py:157
 msgid ""
@@ -173,8 +174,8 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr ""
+msgstr "Ролите са групи разрешения. Те съдържат потребителски групи, които наследяват разрешенията за роли за цялата система. Ролите могат също да са част от списъци за контрол на достъпа. Списъкът за контрол на достъпа са разрешения, предоставени на роля за конкретни обекти, които членовете на нейната група наследяват."
 
 #: views.py:164
 msgid "There are no roles"
-msgstr ""
+msgstr "Няма роли"

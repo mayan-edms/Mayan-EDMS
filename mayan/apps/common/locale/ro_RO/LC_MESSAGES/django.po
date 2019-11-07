@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:07-0400\n"
+"POT-Creation-Date: 2019-10-30 02:58-0400\n"
 "PO-Revision-Date: 2019-09-03 08:34+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -31,19 +31,19 @@ msgstr "Atributele disponibile:\n"
 msgid "Available fields: \n"
 msgstr "Câmpuri disponibile:\n"
 
-#: dependencies.py:396
+#: dependencies.py:306
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Folosit pentru a permite traducerea offline a șirurilor de text cod."
 
-#: dependencies.py:401
+#: dependencies.py:311
 msgid "Provides style checking."
 msgstr "Oferă verificarea stilului."
 
-#: dependencies.py:406
+#: dependencies.py:316
 msgid "Command line environment with autocompletion."
 msgstr "Mediul liniei de comandă cu autocompletare."
 
-#: dependencies.py:411
+#: dependencies.py:321
 msgid "Checks proper formatting of the README file."
 msgstr "Verifică formatarea corectă a fișierului README."
 

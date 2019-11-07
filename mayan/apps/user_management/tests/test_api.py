@@ -14,10 +14,10 @@ from ..permissions import (
     permission_user_edit, permission_user_view
 )
 
-from .mixins import GroupAPITestMixin, GroupTestMixin, UserAPITestMixin
+from .mixins import GroupAPIViewTestMixin, GroupTestMixin, UserAPIViewTestMixin
 
 
-class GroupAPITestCase(GroupAPITestMixin, GroupTestMixin, BaseAPITestCase):
+class GroupAPITestCase(GroupAPIViewTestMixin, GroupTestMixin, BaseAPITestCase):
     def test_group_create_no_permission(self):
         group_count = Group.objects.count()
 
@@ -111,7 +111,7 @@ class GroupAPITestCase(GroupAPITestMixin, GroupTestMixin, BaseAPITestCase):
         self.assertNotEqual(self.test_group.name, group_name)
 
 
-class UserAPITestCase(UserAPITestMixin, BaseAPITestCase):
+class UserAPITestCase(UserAPIViewTestMixin, BaseAPITestCase):
     def test_user_create_api_view_no_permission(self):
         user_count = get_user_model().objects.count()
 
@@ -200,7 +200,7 @@ class UserAPITestCase(UserAPITestMixin, BaseAPITestCase):
         self.assertNotEqual(self.test_user.username, user_username)
 
 
-class UserGroupAPITestCase(GroupTestMixin, UserAPITestMixin, BaseAPITestCase):
+class UserGroupAPITestCase(GroupTestMixin, UserAPIViewTestMixin, BaseAPITestCase):
     def test_user_create_with_group_api_view_no_permission(self):
         self._create_test_group()
 

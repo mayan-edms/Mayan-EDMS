@@ -8,6 +8,7 @@ from mayan.apps.common.menus import menu_object, menu_secondary, menu_tools
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import CeleryQueue, Task
+from .dependencies import *  # NOQA
 from .links import (
     link_queue_list, link_queue_active_task_list,
     link_queue_scheduled_task_list, link_queue_reserved_task_list,

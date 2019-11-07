@@ -4,6 +4,18 @@ import os
 
 from django.conf import settings
 
+MOCK_SEARCH_KEYS_RESPONSE = [
+    {
+        'algo': u'1',
+        'date': u'1311475606',
+        'expires': u'1643601600',
+        'keyid': u'607138F1AECC5A5CA31CB7715F3F7F75D210724D',
+        'length': u'2048',
+        'type': u'pub',
+        'uids': [u'Roberto Rosario <roberto.rosario.gonzalez@gmail.com>']
+    }
+]
+
 TEST_DETACHED_SIGNATURE = os.path.join(
     settings.BASE_DIR, 'apps', 'django_gpg', 'tests', 'contrib',
     'test_files', 'test_file.txt.asc'

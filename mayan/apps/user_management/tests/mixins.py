@@ -12,7 +12,7 @@ from .literals import (
 )
 
 
-class GroupAPITestMixin(object):
+class GroupAPIViewTestMixin(object):
     def _request_test_group_create_api_view(self):
         result = self.post(
             viewname='rest_api:group-list', data={
@@ -91,7 +91,7 @@ class GroupViewTestMixin(object):
         )
 
 
-class UserAPITestMixin(object):
+class UserAPIViewTestMixin(object):
     def _request_test_user_create_api_view(self):
         result = self.post(
             viewname='rest_api:user-list', data={
@@ -295,6 +295,13 @@ class UserViewTestMixin(object):
         return self.post(
             viewname='user_management:user_multiple_delete', data={
                 'id_list': self.test_user.pk
+            }
+        )
+
+    def _request_test_user_detail_view(self):
+        return self.get(
+            viewname='user_management:user_details', kwargs={
+                'pk': self.test_user.pk
             }
         )
 

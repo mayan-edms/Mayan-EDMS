@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:12-0400\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-10-30 03:00-0400\n"
+"PO-Revision-Date: 2019-10-22 19:26+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,180 +20,180 @@ msgstr ""
 
 #: apps.py:30 links.py:49 links.py:54 links.py:59 permissions.py:7 views.py:36
 msgid "Events"
-msgstr ""
+msgstr "Audit"
 
 #: apps.py:42 apps.py:68
 msgid "Date and time"
-msgstr ""
+msgstr "Datum a čas"
 
 #: apps.py:45 apps.py:71
 msgid "Actor"
-msgstr ""
+msgstr "Púvodce"
 
 #: apps.py:48 apps.py:75
 msgid "Event"
-msgstr ""
+msgstr "činnost"
 
 #: apps.py:51 apps.py:79
 msgid "Target"
-msgstr ""
+msgstr "cíl"
 
 #: apps.py:55
 msgid "Action object"
-msgstr ""
+msgstr "Objekt činnosti"
 
 #: apps.py:60 forms.py:12 forms.py:69
 msgid "Namespace"
-msgstr ""
+msgstr "Jmenný prostor"
 
 #: apps.py:63 forms.py:16 forms.py:73
 msgid "Label"
-msgstr "Označení"
+msgstr "Jmenovka"
 
 #: apps.py:84
 msgid "Seen"
-msgstr ""
+msgstr "Zhlédnuto"
 
 #: classes.py:71
 #, python-format
 msgid "Unknown or obsolete event type: %s"
-msgstr ""
+msgstr "Neznámý nebo zastaralý typ události: %s"
 
 #: forms.py:20 forms.py:77
 msgid "Subscription"
-msgstr ""
+msgstr "Předplatné"
 
 #: forms.py:22 forms.py:79
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 #: forms.py:23 forms.py:80
 msgid "Subscribed"
-msgstr ""
+msgstr "Odebírané"
 
 #: html_widgets.py:57
 msgid "System"
-msgstr ""
+msgstr "Systém"
 
 #: links.py:45
 msgid "My events"
-msgstr ""
+msgstr "Moje činnosti"
 
 #: links.py:63 models.py:66 views.py:80
 msgid "Event subscriptions"
-msgstr ""
+msgstr "Předplatné události"
 
 #: links.py:67
 msgid "Mark as seen"
-msgstr ""
+msgstr "Označte, jako shlédnuté"
 
 #: links.py:71
 msgid "Mark all as seen"
-msgstr ""
+msgstr "Označte vše, jako zhlédnuté"
 
 #: links.py:76
 msgid "Subscriptions"
-msgstr ""
+msgstr "Předplatné"
 
 #: models.py:24
 msgid "Name"
-msgstr ""
+msgstr "název"
 
 #: models.py:28
 msgid "Stored event type"
-msgstr ""
+msgstr "Uložený typ událostí"
 
 #: models.py:29
 msgid "Stored event types"
-msgstr ""
+msgstr "Uložené typy událostí"
 
 #: models.py:55 models.py:82 models.py:112
 msgid "User"
-msgstr ""
+msgstr "Uživatel"
 
 #: models.py:59 models.py:116
 msgid "Event type"
-msgstr ""
+msgstr "Typ události"
 
 #: models.py:65
 msgid "Event subscription"
-msgstr ""
+msgstr "Předplatné události"
 
 #: models.py:86
 msgid "Action"
-msgstr ""
+msgstr "Akce"
 
 #: models.py:88
 msgid "Read"
-msgstr ""
+msgstr "Číst"
 
 #: models.py:92
 msgid "Notification"
-msgstr ""
+msgstr "Oznámení"
 
 #: models.py:93 views.py:119
 msgid "Notifications"
-msgstr ""
+msgstr "Oznámení"
 
 #: models.py:122
 msgid "Object event subscription"
-msgstr ""
+msgstr "Předplatné události objektu"
 
 #: models.py:123
 msgid "Object event subscriptions"
-msgstr ""
+msgstr "Předplatné událostí objektu"
 
 #: permissions.py:10
 msgid "Access the events of an object"
-msgstr ""
+msgstr "Přístup k událostem objektu"
 
 #: views.py:59
 #, python-format
 msgid "Error updating event subscription; %s"
-msgstr ""
+msgstr "Chyba při aktualizaci předplatného události; %s"
 
 #: views.py:64
 msgid "Event subscriptions updated successfully"
-msgstr ""
+msgstr "Předplatné činností bylo úspěšně aktualizováno"
 
 #: views.py:114
 msgid "Subscribe to global or object events to receive notifications."
-msgstr ""
+msgstr "Přihlaste se k odběru globálních událostí nebo událostí objektů a dostávejte oznámení."
 
 #: views.py:117
 msgid "There are no notifications"
-msgstr ""
+msgstr "Bez oznámení"
 
 #: views.py:164
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr ""
+msgstr "Činnosti jsou akce, které byly provedeny s tímto objektem nebo pomocí tohoto objektu."
 
 #: views.py:167
 msgid "There are no events for this object"
-msgstr ""
+msgstr "Pro tento objekt neexistují žádné činnosti"
 
 #: views.py:169
 #, python-format
 msgid "Events for: %s"
-msgstr ""
+msgstr "Činnosti pro: %s"
 
 #: views.py:209
 #, python-format
 msgid "Error updating object event subscription; %s"
-msgstr ""
+msgstr "Chyba při aktualizaci předplatného činnosti objektu; %s"
 
 #: views.py:215
 msgid "Object event subscriptions updated successfully"
-msgstr ""
+msgstr "Předplatné činností objektu bylo úspěšně aktualizováno"
 
 #: views.py:248
 #, python-format
 msgid "Event subscriptions for: %s"
-msgstr ""
+msgstr "Předplatné událostí pro: %s"
 
 #: views.py:280
 #, python-format
 msgid "Events of type: %s"
-msgstr ""
+msgstr "Události typu: %s"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:07-0400\n"
+"POT-Creation-Date: 2019-10-30 02:58-0400\n"
 "PO-Revision-Date: 2019-06-29 06:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -31,19 +31,19 @@ msgstr "Kullanılabilir özellikler:\n"
 msgid "Available fields: \n"
 msgstr ""
 
-#: dependencies.py:396
+#: dependencies.py:306
 msgid "Used to allow offline translation of the code text strings."
 msgstr ""
 
-#: dependencies.py:401
+#: dependencies.py:311
 msgid "Provides style checking."
 msgstr ""
 
-#: dependencies.py:406
+#: dependencies.py:316
 msgid "Command line environment with autocompletion."
 msgstr ""
 
-#: dependencies.py:411
+#: dependencies.py:321
 msgid "Checks proper formatting of the README file."
 msgstr ""
 

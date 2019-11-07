@@ -146,6 +146,9 @@ class IndexFilesystem(Operations):
         if not result:
             raise FuseOSError(ENOENT)
 
+        # st_nlink tracks the number of hard links to a file.
+        # Must be 2 for directories and at least 1 for files
+        # https://www.gnu.org/software/libc/manual/html_node/Attribute-Meanings.html
         if isinstance(result, IndexInstanceNode):
             return {
                 'st_mode': (S_IFDIR | DIRECTORY_MODE), 'st_ctime': now,
@@ -161,7 +164,8 @@ class IndexFilesystem(Operations):
                     result.latest_version.timestamp.replace(tzinfo=None) - result.latest_version.timestamp.utcoffset() - datetime.datetime(1970, 1, 1)
                 ).total_seconds(),
                 'st_atime': now,
-                'st_size': result.size
+                'st_size': result.size,
+                'st_nlink': 1
             }
 
     def open(self, path, flags):

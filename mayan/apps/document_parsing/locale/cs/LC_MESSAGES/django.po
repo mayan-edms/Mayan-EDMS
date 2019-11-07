@@ -3,13 +3,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:10-0400\n"
+"POT-Creation-Date: 2019-10-30 02:59-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,211 +23,217 @@ msgstr ""
 
 #: apps.py:57 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
-msgstr ""
+msgstr "Analýza dokumentů"
 
 #: apps.py:131 models.py:78
 msgid "Result"
-msgstr ""
+msgstr "Výsledek"
 
 #: apps.py:136 apps.py:140 links.py:16 links.py:33 models.py:27
 msgid "Content"
-msgstr ""
+msgstr "Obsah"
 
 #: dependencies.py:11
 msgid ""
 "Utility from the poppler-utils package used to text content from PDF files."
 msgstr ""
+"Obslužný program z balíčku poppler-utils používaný k textovému obsahu ze "
+"souborů PDF."
 
 #: events.py:12
 msgid "Document parsed content deleted"
-msgstr ""
+msgstr "Analyzovaný obsah v dokumentu byl odstraněn"
 
 #: events.py:16
 msgid "Document version submitted for parsing"
-msgstr ""
+msgstr "Verze dokumentu byla odeslána k analýze"
 
 #: events.py:19
 msgid "Document version parsing finished"
-msgstr ""
+msgstr "Analýza verze dokumentu byla dokončena"
 
 #: forms.py:39
 #, python-format
 msgid "Page %(page_number)d"
-msgstr ""
+msgstr "Strana %(page_number)d"
 
 #: forms.py:47 forms.py:59
 msgid "Contents"
-msgstr ""
+msgstr "Obsah"
 
 #: links.py:22 links.py:27
 msgid "Delete parsed content"
-msgstr ""
+msgstr "Smazat analyzovaný obsah"
 
 #: links.py:39 links.py:77 views.py:225
 msgid "Parsing errors"
-msgstr ""
+msgstr "Chyby analýzy"
 
 #: links.py:45
 msgid "Download content"
-msgstr ""
+msgstr "Stáhněte si obsah"
 
 #: links.py:50 links.py:57
 msgid "Submit for parsing"
-msgstr ""
+msgstr "Odeslat k analýze"
 
 #: links.py:63
 msgid "Setup parsing"
-msgstr ""
+msgstr "Nastavení analýzy"
 
 #: links.py:72
 msgid "Parse documents per type"
-msgstr ""
+msgstr "Analyzujte dokumenty podle typu"
 
 #: models.py:21
 msgid "Document page"
-msgstr ""
+msgstr "Strana dokumentu"
 
 #: models.py:25
 msgid "The actual text content as extracted by the document parsing backend."
-msgstr ""
+msgstr "Skutečný textový obsah extrahovaný backendem analýzy dokumentu."
 
 #: models.py:33
 msgid "Document page content"
-msgstr ""
+msgstr "Obsah stránky dokumentu"
 
 #: models.py:34
 msgid "Document pages contents"
-msgstr ""
+msgstr "Obsah stránek dokumentu"
 
 #: models.py:46
 msgid "Document type"
-msgstr ""
+msgstr "Typ dokumentu"
 
 #: models.py:50
 msgid "Automatically queue newly created documents for parsing."
-msgstr ""
+msgstr "Automaticky zařazuje nově vytvořené dokumenty do fronty pro analýzu."
 
 #: models.py:61
 msgid "Document type settings"
-msgstr ""
+msgstr "Nastavení typu dokumentu"
 
 #: models.py:62
 msgid "Document types settings"
-msgstr ""
+msgstr "Nastavení typů dokumentů"
 
 #: models.py:73
 msgid "Document version"
-msgstr ""
+msgstr "Verze dokumentu"
 
 #: models.py:76
 msgid "Date time submitted"
-msgstr ""
+msgstr "Datuma čas odeslání"
 
 #: models.py:82
 msgid "Document version parse error"
-msgstr ""
+msgstr "Chyba analýzy verze dokumentu"
 
 #: models.py:83
 msgid "Document version parse errors"
-msgstr ""
+msgstr "Chyby analýzy verze dokumentu"
 
 #: parsers.py:91
 #, python-format
 msgid "Exception parsing page; %s"
-msgstr ""
+msgstr "Nastala vyjímka analýzy strany; %s"
 
 #: parsers.py:117
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
-msgstr ""
+msgstr "Nelze najít pdftotext spustitelný na: %s"
 
 #: permissions.py:12
 msgid "View the content of a document"
-msgstr ""
+msgstr "Zobrazení obsahu dokumentu"
 
 #: permissions.py:15
 msgid "Change document type parsing settings"
-msgstr ""
+msgstr "Změňte nastavení analýzy typu dokumentu"
 
 #: permissions.py:19
 msgid "Parse the content of a document"
-msgstr ""
+msgstr "Analyzujte obsah dokumentu"
 
 #: queues.py:8
 msgid "Parsing"
-msgstr ""
+msgstr "Analýza"
 
 #: queues.py:11
 msgid "Document version parsing"
-msgstr ""
+msgstr "Analýza verze dokumentu"
 
 #: settings.py:12
 msgid "Set new document types to perform parsing automatically by default."
 msgstr ""
+"Nastavte nové typy dokumentů tak, aby ve výchozím nastavení prováděly "
+"automatické analýzy."
 
 #: settings.py:19
 msgid ""
 "File path to poppler's pdftotext program used to extract text from PDF "
 "files."
 msgstr ""
+"Cesta souboru k programu pplftotext poppler, který se používá k extrahování "
+"textu ze souborů PDF."
 
 #: views.py:37
 msgid "Delete the parsed content of the selected document?"
 msgid_plural "Delete the parsed content of the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Odstranit analyzovaný obsah vybraného dokumentu?"
+msgstr[1] "Smazat analyzovaný obsah vybraných dokumentů?"
+msgstr[2] "Smazat analyzovaný obsah vybraných dokumentů?"
+msgstr[3] "Smazat analyzovaný obsah vybraných dokumentů?"
 
 #: views.py:71
 #, python-format
 msgid "Content for document: %s"
-msgstr ""
+msgstr "Obsah dokumentu: %s"
 
 #: views.py:106
 #, python-format
 msgid "Content for document page: %s"
-msgstr ""
+msgstr "Obsah stránky dokumentu: %s"
 
 #: views.py:121
 #, python-format
 msgid "Parsing errors for document: %s"
-msgstr ""
+msgstr "Chyby analýzy dokumentu: %s"
 
 #: views.py:133
 #, python-format
 msgid "%(count)d document added to the parsing queue"
-msgstr ""
+msgstr "%(count)d dokument přidán do fronty pro analýzu"
 
 #: views.py:136
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
-msgstr ""
+msgstr "%(count)d dokumenty přidané do fronty pro analýzu"
 
 #: views.py:144
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Odeslat dokument %(count)d do fronty pro analýzu?"
+msgstr[1] "Odešlete dokumenty %(count)d do fronty pro analýzu"
+msgstr[2] "Odešlete dokumenty %(count)d do fronty pro analýzu"
+msgstr[3] "Odešlete dokumenty %(count)d do fronty pro analýzu"
 
 #: views.py:157
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
-msgstr ""
+msgstr "Zašlete dokument &quot;%s&quot; do fronty pro analýzu"
 
 #: views.py:182
 #, python-format
 msgid "Edit parsing settings for document type: %s."
-msgstr ""
+msgstr "Upravit nastavení analýzy typu dokumentu: %s."
 
 #: views.py:192
 msgid "Submit all documents of a type for parsing."
-msgstr ""
+msgstr "Odešlete všechny dokumenty daného typu k analýze."
 
 #: views.py:213
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
-msgstr ""
+msgstr "%(count)d dokumenty přidané do fronty pro analýzu."

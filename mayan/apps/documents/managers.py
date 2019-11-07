@@ -147,7 +147,7 @@ class DuplicatedDocumentManager(models.Manager):
             app_label='documents', model_name='Document'
         )
         return Document.objects.filter(
-            pk__in=self.filter(documents__isnull=False).values_list(
+            pk__in=self.filter(documents__in_trash=False).values_list(
                 'document_id', flat=True
             )
         )

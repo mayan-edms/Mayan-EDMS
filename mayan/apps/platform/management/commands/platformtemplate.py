@@ -16,8 +16,8 @@ class Command(management.BaseCommand):
         )
         parser.add_argument(
             '--context', action='store', default='', dest='context',
-            help='Pass a context to the template in the form of a JSON encoded '
-            'dictionary.',
+            help='Pass a context to the template in the form of a YAML '
+            'encoded dictionary.',
         )
 
     def handle(self, *args, **options):
@@ -40,6 +40,11 @@ class Command(management.BaseCommand):
                 )
                 exit(1)
             else:
-                self.stdout.write(template().render(
-                    context_string=options.get('context'))
+                # Python 2 & 3 way to convert from SafeString to unicode
+                self.stdout.write(
+                    '{}'.format(
+                        template().render(
+                            context_string=options.get('context')
+                        )
+                    )
                 )

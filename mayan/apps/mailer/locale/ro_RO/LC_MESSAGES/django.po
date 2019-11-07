@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 23:15-0400\n"
-"PO-Revision-Date: 2019-09-03 08:36+0000\n"
+"POT-Creation-Date: 2019-10-30 03:01-0400\n"
+"PO-Revision-Date: 2019-10-29 12:27+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgstr "Corp"
 msgid "The email profile that will be used to send this email."
 msgstr "Profilul de e-mail care va fi folosit pentru a trimite acest e-mail."
 
-#: forms.py:71 views.py:238
+#: forms.py:71 views.py:239
 msgid "Mailing profile"
 msgstr "Profilul de corespondență"
 
@@ -108,7 +108,7 @@ msgstr "Listă de profiluri de corespondență"
 msgid "Mailing profiles"
 msgstr "Profiluri de corespondență"
 
-#: links.py:74 views.py:257
+#: links.py:74 views.py:261
 msgid "Test"
 msgstr "Test"
 
@@ -344,69 +344,73 @@ msgstr "Șablon pentru textul corpului mail-ului. Poate include HTML."
 msgid "%(email)s is not a valid email address."
 msgstr "%(email)s nu este o adresă de e-mail validă."
 
-#: views.py:37
+#: views.py:38
 msgid "Document mailing error log"
 msgstr "Jurnal de eroare de trimitere a documentelor"
 
-#: views.py:49
+#: views.py:50
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "%(count)d document a fost pus în coada de așteptare pentru livrarea prin e-mail"
 
-#: views.py:51
+#: views.py:52
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "%(count)d documente au fost puse în coada de așteptare pentru livrarea prin e-mail"
 
-#: views.py:62
+#: views.py:63
 msgid "Send"
 msgstr "Trimite"
 
-#: views.py:108
+#: views.py:109
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "%(count)d link de document a fost pus în coadă pentru livrarea prin e-mail"
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "%(count)d linkuri de documente au fost puse în coadă pentru livrarea prin e-mail"
 
-#: views.py:119
+#: views.py:120
 msgid "New mailing profile backend selection"
 msgstr "Selecție nouă de profil backend de poștă electronică"
 
-#: views.py:151
+#: views.py:152
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Creați un profil de poștă electronică \"%s\""
 
-#: views.py:177
+#: views.py:178
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Ștergeți profilul de poștă electronică: %s"
 
-#: views.py:188
+#: views.py:189
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Editați profilul de poștă electronică: %s"
 
-#: views.py:211
+#: views.py:212
 #, python-format
 msgid "Error log for: %s"
 msgstr "Jurnal de erori pentru: %s"
 
-#: views.py:233
+#: views.py:234
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
 msgstr "Profilurile de corespondență sunt configurații de e-mail. Ele permit trimiterea documentelor ca atașamente sau ca legături prin e-mail."
 
-#: views.py:237
+#: views.py:238
 msgid "No mailing profiles available"
 msgstr "Nu sunt disponibile profiluri de poștă electronică"
 
-#: views.py:258
+#: views.py:253
+msgid "Test email sent."
+msgstr "E-mail de testare trimis."
+
+#: views.py:262
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Testare profil de poștă electronică: %s"

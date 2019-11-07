@@ -11,7 +11,7 @@ from django.core.exceptions import (
     FieldDoesNotExist, ImproperlyConfigured, PermissionDenied
 )
 from django.db.models.constants import LOOKUP_SEP
-from django.template import RequestContext, VariableDoesNotExist, Variable
+from django.template import RequestContext, Variable, VariableDoesNotExist
 from django.template.defaulttags import URLNode
 from django.urls import resolve, reverse
 from django.utils.encoding import force_str, force_text
