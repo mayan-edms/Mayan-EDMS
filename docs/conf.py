@@ -258,10 +258,12 @@ extlinks = {
 
 
 def _load_env_file(filename='../config.env'):
+    print('Loading env file: {}'.format(filename))
     result = []
     with open(filename) as file_object:
         for line in file_object:
             if not line.startswith('#'):
+                print('Found entry: {}'.format(line))
                 key, value = line.strip().split('=')
                 result.append(('|{}|'.format(key), value))
 
