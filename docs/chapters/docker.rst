@@ -10,8 +10,8 @@ How to use this image
 Start a Mayan EDMS Docker image
 -------------------------------
 
-With Docker properly installed, proceed to download the Mayan EDMS image using
-the command::
+With Docker properly installed, proceed to download the Mayan EDMS Docker
+image using the command::
 
     docker pull mayanedms/mayanedms:<version>
 
@@ -21,7 +21,7 @@ tag here, remember to do so in the next steps also.::
 
     docker pull mayanedms/mayanedms:latest
 
-Then download version 9.6 of the Docker PostgreSQL image::
+Then download the PostgreSQL Docker image::
 
     docker pull |DOCKER_POSTGRES_IMAGE_VERSION|
 
