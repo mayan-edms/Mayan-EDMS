@@ -272,13 +272,13 @@ class WorkflowState(models.Model):
     initial = models.BooleanField(
         default=False,
         help_text=_(
-            'Select if this will be the state with which you want the '
-            'workflow to start in. Only one state can be the initial state.'
+            'The state at which the workflow will start in. Only one state '
+            'can be the initial state.'
         ), verbose_name=_('Initial')
     )
     completion = models.IntegerField(
         blank=True, default=0, help_text=_(
-            'Enter the percent of completion that this state represents in '
+            'The percent of completion that this state represents in '
             'relation to the workflow. Use numbers without the percent sign.'
         ), verbose_name=_('Completion')
     )
@@ -355,7 +355,7 @@ class WorkflowStateAction(models.Model):
     when = models.PositiveIntegerField(
         choices=WORKFLOW_ACTION_WHEN_CHOICES,
         default=WORKFLOW_ACTION_ON_ENTRY, help_text=_(
-            'At which moment of the state this action will execute'
+            'At which moment of the state this action will execute.'
         ), verbose_name=_('When')
     )
     action_path = models.CharField(
