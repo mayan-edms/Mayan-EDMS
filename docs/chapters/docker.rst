@@ -367,3 +367,12 @@ stability is not guaranteed. They should never be used in production.
 If you want to try out the Docker images the development uses or want a sneak
 peek at the new features being worked on checkout the container registry at:
 https://gitlab.com/mayan-edms/mayan-edms/container_registry
+
+
+Executing commands on a container
+=================================
+
+To perform Mayan EDMS commands in a running container that will take all the
+settings from the container, use the following command::
+
+    docker exec -ti <container name> /usr/local/bin/entrypoint.sh "/opt/mayan-edms/bin/mayan-edms.py <command>"
