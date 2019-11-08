@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from ..classes import WorkflowAction
-from ..models import Workflow
+from ..models import Workflow, WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
 
 from .literals import (
     TEST_WORKFLOW_INITIAL_STATE_LABEL, TEST_WORKFLOW_INITIAL_STATE_COMPLETION,
@@ -96,6 +96,9 @@ class WorkflowTestMixin(object):
             label=TEST_WORKFLOW_LABEL,
             internal_name=TEST_WORKFLOW_INTERNAL_NAME
         )
+        self.test_workflow_runtime_proxy = WorkflowRuntimeProxy.objects.get(
+            pk=self.test_workflow.pk
+        )
 
         if add_document_type:
             self.test_workflow.document_types.add(self.test_document_type)
@@ -104,6 +107,9 @@ class WorkflowTestMixin(object):
         self.test_workflow_state = self.test_workflow.states.create(
             completion=TEST_WORKFLOW_STATE_COMPLETION,
             label=TEST_WORKFLOW_STATE_LABEL
+        )
+        self.test_workflow_state_runtime_proxy = WorkflowStateRuntimeProxy.objects.get(
+            pk=self.test_workflow_state.pk
         )
 
     def _create_test_workflow_states(self):
@@ -114,6 +120,12 @@ class WorkflowTestMixin(object):
         self.test_workflow_state_2 = self.test_workflow.states.create(
             completion=TEST_WORKFLOW_STATE_COMPLETION,
             label=TEST_WORKFLOW_STATE_LABEL
+        )
+        self.test_workflow_state_runtime_proxy_1 = WorkflowStateRuntimeProxy.objects.get(
+            pk=self.test_workflow_state_1.pk
+        )
+        self.test_workflow_state_runtime_proxy_2 = WorkflowStateRuntimeProxy.objects.get(
+            pk=self.test_workflow_state_2.pk
         )
 
     def _create_test_workflow_transition(self):
