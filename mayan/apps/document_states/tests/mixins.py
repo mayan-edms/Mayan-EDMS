@@ -17,6 +17,33 @@ class TestWorkflowAction(WorkflowAction):
     label = 'test workflow state action'
 
 
+class WorkflowRuntimeProxyStateViewTestMixin(object):
+    def _request_test_workflow_runtime_proxy_state_list_view(self):
+        return self.get(
+            viewname='document_states:workflow_runtime_proxy_state_list',
+            kwargs={'pk': self.test_workflow.pk}
+        )
+
+    def _request_test_workflow_runtime_proxy_state_document_list_view(self):
+        return self.get(
+            viewname='document_states:workflow_runtime_proxy_state_document_list',
+            kwargs={'pk': self.test_workflow_state_1.pk}
+        )
+
+
+class WorkflowRuntimeProxyViewTestMixin(object):
+    def _request_test_workflow_runtime_proxy_list_view(self):
+        return self.get(
+            viewname='document_states:workflow_runtime_proxy_list'
+        )
+
+    def _request_test_workflow_runtime_proxy_document_list_view(self):
+        return self.get(
+            viewname='document_states:workflow_runtime_proxy_document_list',
+            kwargs={'pk': self.test_workflow.pk}
+        )
+
+
 class WorkflowStateActionTestMixin(object):
     TestWorkflowAction = TestWorkflowAction
     test_workflow_state_action_path = 'mayan.apps.document_states.tests.mixins.TestWorkflowAction'
