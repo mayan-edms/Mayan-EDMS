@@ -112,6 +112,14 @@
   Label updated from "Save" to "Sign".
 - Document signatures API views.
 - Add and improve document signatures app tests.
+- Rename document_states/tests/test_workflow_actions.py to
+  document_states/tests/base.py.
+- Added TestServerTestCaseMixin to perform mocked HTTP
+  requests.
+- Authentication and headers added to the workflow
+  HTTP POST action.
+- Update the timeout field of the workflow HTTP POST
+  action to support templates.
 
 3.2.9 (2019-11-03)
 ==================
