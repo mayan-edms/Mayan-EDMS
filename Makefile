@@ -9,7 +9,7 @@ DOCKER_REDIS_IMAGE = redis:5.0-alpine
 
 help:
 	@echo "Usage: make <target>\n"
-	@awk 'BEGIN {FS = ":.*##"} /^[a-zA-Z_-]+:.*?## / { printf "  * %-40s -%s\n", $$1, $$2 }' $(MAKEFILE_LIST)|sort
+	@awk 'BEGIN {FS = ":.*##"} /^[0-9a-zA-Z_-]+:.*?## / { printf "  * %-40s -%s\n", $$1, $$2 }' $(MAKEFILE_LIST)|sort
 
 # Cleaning
 
