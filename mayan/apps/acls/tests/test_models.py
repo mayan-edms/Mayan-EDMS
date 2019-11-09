@@ -67,8 +67,10 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
 
     def _setup_child_parent_test_objects(self):
         self._create_test_permission()
-        self._create_test_model(model_name='TestModelParent')
-        self._create_test_model(
+        self.TestModelParent = self._create_test_model(
+            model_name='TestModelParent'
+        )
+        self.TestModelChild = self._create_test_model(
             fields={
                 'parent': models.ForeignKey(
                     on_delete=models.CASCADE, related_name='children',
@@ -166,7 +168,7 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
 
 class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
     def test_retrieve_inherited_role_permission_not_model_applicable(self):
-        self._create_test_model()
+        self.TestModel = self._create_test_model()
         self.test_object = self.TestModel.objects.create()
         self._create_test_acl()
         self._create_test_permission()
@@ -179,7 +181,7 @@ class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
         self.assertTrue(self.test_permission.stored_permission not in queryset)
 
     def test_retrieve_inherited_role_permission_model_applicable(self):
-        self._create_test_model()
+        self.TestModel = self._create_test_model()
         self.test_object = self.TestModel.objects.create()
         self._create_test_acl()
         self._create_test_permission()
@@ -199,8 +201,10 @@ class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
     def test_retrieve_inherited_related_parent_child_permission(self):
         self._create_test_permission()
 
-        self._create_test_model(model_name='TestModelParent')
-        self._create_test_model(
+        self.TestModelParent = self._create_test_model(
+            model_name='TestModelParent'
+        )
+        self.TestModelChild = self._create_test_model(
             fields={
                 'parent': models.ForeignKey(
                     on_delete=models.CASCADE, related_name='children',
@@ -240,8 +244,10 @@ class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
     ):
         self._create_test_permission()
 
-        self._create_test_model(model_name='TestModelGrandParent')
-        self._create_test_model(
+        self.TestModelGrandParent = self._create_test_model(
+            model_name='TestModelGrandParent'
+        )
+        self.TestModelParent = self._create_test_model(
             fields={
                 'parent': models.ForeignKey(
                     on_delete=models.CASCADE, related_name='children',
@@ -249,7 +255,7 @@ class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
                 )
             }, model_name='TestModelParent'
         )
-        self._create_test_model(
+        self.TestModelChild = self._create_test_model(
             fields={
                 'parent': models.ForeignKey(
                     on_delete=models.CASCADE, related_name='children',
@@ -294,3 +300,84 @@ class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
         )
 
         self.assertTrue(self.test_permission.stored_permission in queryset)
+
+
+class ProxyModelPermissionTestCase(ACLTestMixin, BaseTestCase):
+    def test_proxy_model_filtering_no_permission(self):
+        self._setup_test_object_base()
+        self._setup_test_object_proxy()
+
+        proxy_object = self.TestModelProxy.objects.get(pk=self.test_object.pk)
+
+        self.assertFalse(
+            proxy_object in AccessControlList.objects.restrict_queryset(
+                permission=self.test_permission,
+                queryset=self.TestModelProxy.objects.all(),
+                user=self._test_case_user
+            )
+        )
+
+    def test_proxy_model_filtering_with_access(self):
+        self._setup_test_object_base()
+        self._setup_test_object_proxy()
+
+        self.grant_access(
+            obj=self.test_object, permission=self.test_permission
+        )
+
+        proxy_object = self.TestModelProxy.objects.get(pk=self.test_object.pk)
+
+        self.assertTrue(
+            proxy_object in AccessControlList.objects.restrict_queryset(
+                permission=self.test_permission,
+                queryset=self.TestModelProxy.objects.all(),
+                user=self._test_case_user
+            )
+        )
+
+    def test_proxy_model_inheritance_with_access(self):
+        self._create_test_permission()
+
+        self.TestModelParent = self._create_test_model(
+            model_name='TestModelParent'
+        )
+        self.TestModelChild = self._create_test_model(
+            fields={
+                'parent': models.ForeignKey(
+                    on_delete=models.CASCADE, related_name='children',
+                    to='TestModelParent',
+                )
+            }, model_name='TestModelChild'
+        )
+        self.TestModelProxy = self._create_test_model(
+            base_class=self.TestModelChild, model_name='TestModelProxy',
+            options={
+                'proxy': True
+            }
+        )
+
+        ModelPermission.register(
+            model=self.TestModelParent, permissions=(
+                self.test_permission,
+            )
+        )
+        ModelPermission.register_inheritance(
+            model=self.TestModelChild, related='parent',
+        )
+
+        parent = self.TestModelParent.objects.create()
+        child = self.TestModelChild.objects.create(parent=parent)
+
+        self.grant_access(
+            obj=parent, permission=self.test_permission
+        )
+
+        proxy_object = self.TestModelProxy.objects.get(pk=child.pk)
+
+        self.assertTrue(
+            proxy_object in AccessControlList.objects.restrict_queryset(
+                permission=self.test_permission,
+                queryset=self.TestModelProxy.objects.all(),
+                user=self._test_case_user
+            )
+        )

@@ -124,7 +124,8 @@
   characters.
 - Improve TestModelTestMixin. Allow specifying a base model.
   Fix passing the dynamic Meta class to the test model.
-  
+- Support for proxy model permission inheritance. Proxy models
+  now get the permission inheritance from their base models.
 
 3.2.9 (2019-11-03)
 ==================
