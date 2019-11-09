@@ -4,6 +4,23 @@ from ..literals import FIELD_TYPE_CHOICE_CHAR
 
 TEST_INDEX_LABEL = 'test workflow index'
 
+TEST_HEADERS_KEY = 'test key'
+TEST_HEADERS_VALUE = 'test value'
+TEST_HEADERS_JSON = '{{"{}": "{}"}}'.format(
+    TEST_HEADERS_KEY, TEST_HEADERS_VALUE
+)
+TEST_HEADERS_JSON_TEMPLATE_KEY = 'test key'
+TEST_HEADERS_JSON_TEMPLATE_VALUE = '{{ document.label }}'
+TEST_HEADERS_JSON_TEMPLATE = '{{"{}": "{}"}}'.format(
+    TEST_HEADERS_JSON_TEMPLATE_KEY, TEST_HEADERS_JSON_TEMPLATE_VALUE
+)
+TEST_HEADERS_AUTHENTICATION_KEY = 'Authorization'
+TEST_HEADERS_AUTHENTICATION_VALUE = 'Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=='
+TEST_PAYLOAD_JSON = '{"label": "label"}'
+TEST_PAYLOAD_TEMPLATE_DOCUMENT_LABEL = '{"label": "{{ document.label }}"}'
+TEST_SERVER_USERNAME = 'testusername'
+TEST_SERVER_PASSWORD = 'testpassword'
+
 TEST_WORKFLOW_LABEL = 'test workflow label'
 TEST_WORKFLOW_INTERNAL_NAME = 'test_workflow_label'
 TEST_WORKFLOW_LABEL_EDITED = 'test workflow label edited'

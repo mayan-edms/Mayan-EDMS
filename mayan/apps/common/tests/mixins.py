@@ -23,7 +23,9 @@ from django.utils.six import PY3
 
 from mayan.apps.storage.settings import setting_temporary_directory
 
-from .literals import TEST_VIEW_NAME, TEST_VIEW_URL
+from .literals import (
+    TEST_SERVER_HOST, TEST_SERVER_SCHEME, TEST_VIEW_NAME, TEST_VIEW_URL
+)
 
 
 if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
@@ -35,6 +37,7 @@ class ClientMethodsTestCaseMixin(object):
         data = kwargs.pop('data', {})
         follow = kwargs.pop('follow', False)
         query = kwargs.pop('query', {})
+        headers = kwargs.pop('headers', {})
 
         if viewname:
             path = reverse(viewname=viewname, *args, **kwargs)
@@ -42,11 +45,20 @@ class ClientMethodsTestCaseMixin(object):
         path = furl(url=path)
         path.args.update(query)
 
-        return {'follow': follow, 'data': data, 'path': path.tostr()}
+        result = {'follow': follow, 'data': data, 'path': path.tostr()}
+        result.update(headers)
+        return result
 
     def delete(self, viewname=None, path=None, *args, **kwargs):
         return self.client.delete(
             **self._build_verb_kwargs(
+                path=path, viewname=viewname, *args, **kwargs
+            )
+        )
+
+    def generic(self, method, viewname=None, path=None, *args, **kwargs):
+        return self.client.generic(
+            method=method, **self._build_verb_kwargs(
                 path=path, viewname=viewname, *args, **kwargs
             )
         )
@@ -381,8 +393,43 @@ class TestModelTestMixin(object):
         self.test_object = TestModel.objects.create(**kwargs)
 
 
+class TestServerTestCaseMixin(object):
+    def setUp(self):
+        super(TestServerTestCaseMixin, self).setUp()
+        self.testserver_prefix = self.get_testserver_prefix()
+        self.testserver_url = self.get_testserver_url()
+        self.test_view_request = None
+
+    def _test_view_factory(self, test_object=None):
+        def test_view(request):
+            self.test_view_request = request
+            return HttpResponse()
+
+        return test_view
+
+    def get_testserver_prefix(self):
+        return furl(
+            scheme=TEST_SERVER_SCHEME, host=TEST_SERVER_HOST,
+        ).tostr()
+
+    def get_testserver_url(self):
+        return furl(
+            scheme=TEST_SERVER_SCHEME, host=TEST_SERVER_HOST,
+            path=self.test_view_url
+        ).tostr()
+
+
 class TestViewTestCaseMixin(object):
+    auto_add_test_view = False
     has_test_view = False
+    test_view_object = None
+    test_view_name = TEST_VIEW_NAME
+    test_view_url = TEST_VIEW_URL
+
+    def setUp(self):
+        super(TestViewTestCaseMixin, self).setUp()
+        if self.auto_add_test_view:
+            self.add_test_view(test_object=self.test_view_object)
 
     def tearDown(self):
         urlconf = importlib.import_module(settings.ROOT_URLCONF)
@@ -392,9 +439,7 @@ class TestViewTestCaseMixin(object):
             urlconf.urlpatterns.pop(0)
         super(TestViewTestCaseMixin, self).tearDown()
 
-    def add_test_view(self, test_object):
-        urlconf = importlib.import_module(settings.ROOT_URLCONF)
-
+    def _test_view_factory(self, test_object=None):
         def test_view(request):
             template = Template('{{ object }}')
             context = Context(
@@ -402,12 +447,23 @@ class TestViewTestCaseMixin(object):
             )
             return HttpResponse(template.render(context=context))
 
-        urlconf.urlpatterns.insert(0, url(TEST_VIEW_URL, test_view, name=TEST_VIEW_NAME))
+        return test_view
+
+    def add_test_view(self, test_object=None):
+        urlconf = importlib.import_module(settings.ROOT_URLCONF)
+
+        urlconf.urlpatterns.insert(
+            0, url(
+                regex=self.test_view_url, view=self._test_view_factory(
+                    test_object=test_object
+                ), name=self.test_view_name
+            )
+        )
         clear_url_caches()
         self.has_test_view = True
 
     def get_test_view(self):
-        response = self.get(TEST_VIEW_NAME)
+        response = self.get(viewname=self.test_view_name)
         if isinstance(response.context, ContextList):
             # template widget rendering causes test client response to be
             # ContextList rather than RequestContext. Typecast to dictionary
@@ -416,5 +472,6 @@ class TestViewTestCaseMixin(object):
             result.update({'request': response.wsgi_request})
             return Context(result)
         else:
-            response.context.update({'request': response.wsgi_request})
-            return Context(response.context)
+            result = response.context or {}
+            result.update({'request': response.wsgi_request})
+            return Context(result)

@@ -101,7 +101,10 @@ class HTTPPostAction(WorkflowAction):
         }, 'timeout': {
             'label': _('Timeout'),
             'class': 'django.forms.IntegerField', 'default': DEFAULT_TIMEOUT,
-            'help_text': _('Time in seconds to wait for a response.'),
+            'help_text': _(
+                'Time in seconds to wait for a response. Can be a static '
+                'value or a template. '
+            ),
             'required': True
 
         }, 'payload': {
@@ -116,53 +119,117 @@ class HTTPPostAction(WorkflowAction):
                     '"workflow_instance", "datetime", "transition", "user", '
                     'and "comment" attributes.'
                 ), 'required': False
-            }
-
-        },
+            },
+        }, 'username': {
+            'label': _('Username'),
+            'class': 'django.forms.CharField', 'kwargs': {
+                'help_text': _(
+                    'Username to use for making the request with HTTP Basic '
+                    'Auth. Can be a static value or a template. Templates '
+                    'receive the workflow log entry instance as part of '
+                    'their context via the variable "entry_log". '
+                    'The "entry_log" in turn provides the '
+                    '"workflow_instance", "datetime", "transition", "user", '
+                    'and "comment" attributes.'
+                ), 'max_length': 192, 'required': False
+            },
+        }, 'password': {
+            'label': _('Password'),
+            'class': 'django.forms.CharField', 'kwargs': {
+                'help_text': _(
+                    'Password to use for making the request with HTTP Basic '
+                    'Auth. Can be a static value or a template. Templates '
+                    'receive the workflow log entry instance as part of '
+                    'their context via the variable "entry_log". '
+                    'The "entry_log" in turn provides the '
+                    '"workflow_instance", "datetime", "transition", "user", '
+                    'and "comment" attributes.'
+                ), 'max_length': 192, 'required': False
+            },
+        }, 'headers': {
+            'label': _('Headers'),
+            'class': 'django.forms.CharField', 'kwargs': {
+                'help_text': _(
+                    'Headers to send with the HTTP request. Must be in JSON '
+                    'format. Can be a static value or a template. Templates '
+                    'receive the workflow log entry instance as part of '
+                    'their context via the variable "entry_log". '
+                    'The "entry_log" in turn provides the '
+                    '"workflow_instance", "datetime", "transition", "user", '
+                    'and "comment" attributes.'
+                ), 'required': False
+            },
+        }
     }
-    field_order = ('url', 'timeout', 'payload')
+    field_order = (
+        'url', 'username', 'password', 'headers', 'timeout', 'payload'
+    )
     label = _('Perform a POST request')
     widgets = {
         'payload': {
             'class': 'django.forms.widgets.Textarea', 'kwargs': {
                 'attrs': {'rows': '10'},
             }
+        },
+        'headers': {
+            'class': 'django.forms.widgets.Textarea', 'kwargs': {
+                'attrs': {'rows': '10'},
+            }
         }
     }
 
+    def render_load(self, field_name, context):
+        """
+        Method to perform a template render and subsequent JSON load.
+        """
+        render_result = self.render(
+            field_name=field_name, context=context
+        ) or '{}'
+
+        try:
+            load_result = json.loads(render_result, strict=False)
+        except Exception as exception:
+            raise WorkflowStateActionError(
+                _('%(field_name)s JSON error: %(exception)s') % {
+                    'field_name': field_name, 'exception': exception
+                }
+            )
+
+        logger.debug('load result: %s', load_result)
+
+        return load_result
+
+    def render(self, field_name, context):
+        try:
+            result = Template(self.form_data.get(field_name, '')).render(
+                context=Context(context)
+            )
+        except Exception as exception:
+            raise WorkflowStateActionError(
+                _('%(field_name)s template error: %(exception)s') % {
+                    'field_name': field_name, 'exception': exception
+                }
+            )
+
+        logger.debug('%s template result: %s', field_name, result)
+
+        return result
+
     def execute(self, context):
-        self.url = self.form_data.get('url')
-        self.payload = self.form_data.get('payload')
+        url = self.render(field_name='url', context=context)
+        username = self.render(field_name='username', context=context)
+        password = self.render(field_name='password', context=context)
+        timeout = self.render(field_name='timeout', context=context)
+        headers = self.render_load(field_name='headers', context=context)
+        payload = self.render_load(field_name='payload', context=context)
 
-        try:
-            url = Template(self.url).render(
-                context=Context(context)
-            )
-        except Exception as exception:
-            raise WorkflowStateActionError(
-                _('URL template error: %s') % exception
-            )
-
-        logger.debug('URL template result: %s', url)
-
-        try:
-            result = Template(self.payload or '{}').render(
-                context=Context(context)
-            )
-        except Exception as exception:
-            raise WorkflowStateActionError(
-                _('Payload template error: %s') % exception
+        authentication = None
+        if username or password:
+            authentication = requests.auth.HTTPBasicAuth(
+                username=username, password=password
             )
 
-        logger.debug('payload template result: %s', result)
-
-        try:
-            payload = json.loads(result, strict=False)
-        except Exception as exception:
-            raise WorkflowStateActionError(
-                _('Payload JSON error: %s') % exception
-            )
-
-        logger.debug('payload json result: %s', payload)
-
-        requests.post(url=url, json=payload, timeout=self.form_data['timeout'])
+        requests.post(
+            url=url, json=payload, timeout=timeout,
+            auth=authentication, headers=headers
+        )

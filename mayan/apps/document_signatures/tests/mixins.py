@@ -12,16 +12,14 @@ from .literals import TEST_KEY_FILE_PATH, TEST_SIGNATURE_FILE_PATH
 
 class DetachedSignatureAPIViewTestMixin(object):
     def _request_test_document_signature_detached_create_view(self):
-        return self.post(
-            viewname='rest_api:document-version-signature-detached-list',
-            kwargs={
-                'document_id': self.test_document.pk,
-                'document_version_id': self.test_document_version.pk
-            }, data={
-                'key_id': self.test_key_private.key_id,
-                'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
-            }
-        )
+        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
+            return self.post(
+                viewname='rest_api:document-version-signature-detached-list',
+                kwargs={
+                    'document_id': self.test_document.pk,
+                    'document_version_id': self.test_document_version.pk
+                }, data={'signature_file': file_object}
+            )
 
     def _request_test_document_signature_detached_delete_view(self):
         return self.delete(
@@ -52,8 +50,29 @@ class DetachedSignatureAPIViewTestMixin(object):
             }
         )
 
+    def _request_test_document_signature_detached_sign_view(self):
+        return self.post(
+            viewname='rest_api:document-version-signature-detached-sign',
+            kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document_version.pk
+            }, data={
+                'key_id': self.test_key_private.key_id,
+                'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
+            }
+        )
+
 
 class DetachedSignatureViewTestMixin(object):
+    def _request_test_document_version_signature_create_view(self):
+        return self.post(
+            viewname='signatures:document_version_signature_detached_create',
+            kwargs={'pk': self.test_document_version.pk}, data={
+                'key': self.test_key_private.pk,
+                'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
+            }
+        )
+
     def _request_test_document_version_signature_download_view(self):
         return self.get(
             viewname='signatures:document_version_signature_download',
@@ -70,28 +89,6 @@ class DetachedSignatureViewTestMixin(object):
 
 
 class EmbeddedSignatureAPIViewTestMixin(object):
-    def _request_test_document_signature_embedded_create_view(self):
-        return self.post(
-            viewname='rest_api:document-version-signature-embedded-list',
-            kwargs={
-                'document_id': self.test_document.pk,
-                'document_version_id': self.test_document_version.pk
-            }, data={
-                'key_id': self.test_key_private.key_id,
-                'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
-            }
-        )
-
-    def _request_test_document_signature_embedded_delete_view(self):
-        return self.delete(
-            viewname='rest_api:embeddedsignature-detail',
-            kwargs={
-                'document_id': self.test_document.pk,
-                'document_version_id': self.test_document_version.pk,
-                'embedded_signature_id': self.test_document_version.signatures.first().pk
-            }
-        )
-
     def _request_test_document_signature_embedded_detail_view(self):
         return self.get(
             viewname='rest_api:embeddedsignature-detail',
@@ -108,6 +105,29 @@ class EmbeddedSignatureAPIViewTestMixin(object):
             kwargs={
                 'document_id': self.test_document.pk,
                 'document_version_id': self.test_document_version.pk
+            }
+        )
+
+    def _request_test_document_signature_embedded_sign_view(self):
+        return self.post(
+            viewname='rest_api:document-version-signature-embedded-sign',
+            kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document_version.pk
+            }, data={
+                'key_id': self.test_key_private.key_id,
+                'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
+            }
+        )
+
+
+class EmbeddedSignatureViewTestMixin(object):
+    def _request_test_document_version_signature_create_view(self):
+        return self.post(
+            viewname='signatures:document_version_signature_embedded_create',
+            kwargs={'pk': self.test_document_version.pk}, data={
+                'key': self.test_key_private.pk,
+                'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
             }
         )
 
