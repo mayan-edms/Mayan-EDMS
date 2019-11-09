@@ -122,6 +122,9 @@
   action to support templates.
 - DjangoSMTP mailer password field size increased to 192
   characters.
+- Improve TestModelTestMixin. Allow specifying a base model.
+  Fix passing the dynamic Meta class to the test model.
+  
 
 3.2.9 (2019-11-03)
 ==================

@@ -323,8 +323,10 @@ class TempfileCheckTestCasekMixin(object):
 class TestModelTestMixin(object):
     _test_models = []
 
-    def _create_test_model(self, fields=None, model_name='TestModel', options=None):
-
+    def _create_test_model(
+        self, base_class=models.Model, fields=None, model_name='TestModel',
+        options=None
+    ):
         if connection.vendor == 'mysql':
             self.skipTest(
                 reason='MySQL doesn\'t support schema changes inside an '
@@ -338,7 +340,7 @@ class TestModelTestMixin(object):
         app_label = app_config.label
 
         class Meta:
-            pass
+            """Empty Meta class to be populated by the 'options' argument"""
 
         setattr(Meta, 'app_label', app_label)
 
@@ -359,7 +361,7 @@ class TestModelTestMixin(object):
                 return instance.save_base(force_insert=True)
 
         attrs = {
-            '__module__': self.__class__.__module__, 'save': save, 'Meta': Meta
+            '__module__': self.__class__.__module__, 'save': save, 'meta': Meta
         }
 
         if fields:
@@ -372,11 +374,11 @@ class TestModelTestMixin(object):
 
         if PY3:
             TestModel = type(
-                model_name, (models.Model,), attrs
+                model_name, (base_class,), attrs
             )
         else:
             TestModel = type(
-                force_bytes(model_name), (models.Model,), attrs
+                force_bytes(model_name), (base_class,), attrs
             )
 
         setattr(self, model_name, TestModel)
@@ -387,10 +389,12 @@ class TestModelTestMixin(object):
 
         ContentType.objects.clear_cache()
 
+        return TestModel
+
     def _create_test_object(self, model_name='TestModel', **kwargs):
         TestModel = getattr(self, model_name)
 
-        self.test_object = TestModel.objects.create(**kwargs)
+        return TestModel.objects.create(**kwargs)
 
 
 class TestServerTestCaseMixin(object):
