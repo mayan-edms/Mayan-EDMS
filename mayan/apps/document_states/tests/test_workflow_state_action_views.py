@@ -7,7 +7,9 @@ from ..permissions import permission_workflow_edit
 from .mixins import WorkflowStateActionTestMixin, WorkflowTestMixin
 
 
-class WorkflowStateActionViewTestCase(WorkflowStateActionTestMixin, WorkflowTestMixin, GenericViewTestCase):
+class WorkflowStateActionViewTestCase(
+    WorkflowStateActionTestMixin, WorkflowTestMixin, GenericViewTestCase
+):
     def setUp(self):
         super(WorkflowStateActionViewTestCase, self).setUp()
         self._create_test_workflow()

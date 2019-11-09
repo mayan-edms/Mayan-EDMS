@@ -119,7 +119,8 @@
 - Authentication and headers added to the workflow
   HTTP POST action.
 - Update the timeout field of the workflow HTTP POST
-  action to support templates.
+  action to support templates. The timeout field also
+  support integers, float, or empty values.
 - DjangoSMTP mailer password field size increased to 192
   characters.
 - Improve TestModelTestMixin. Allow specifying a base model.
