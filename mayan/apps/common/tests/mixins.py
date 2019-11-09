@@ -321,33 +321,23 @@ class TempfileCheckTestCasekMixin(object):
 
 
 class TestModelTestMixin(object):
-    _test_models = []
-
-    def _create_test_model(
-        self, base_class=models.Model, fields=None, model_name='TestModel',
-        options=None
-    ):
-        if connection.vendor == 'mysql':
-            self.skipTest(
-                reason='MySQL doesn\'t support schema changes inside an '
-                'atomic block.'
-            )
-
-        # Obtain the app_config and app_label from the test's module path
-        app_config = apps.get_containing_app_config(
-            object_name=self.__class__.__module__
+    def _get_test_model_meta(self):
+        self.db_table = '{}_{}'.format(
+            self.app_config.label, self.model_name.lower()
         )
-        app_label = app_config.label
 
-        class Meta:
-            """Empty Meta class to be populated by the 'options' argument"""
+        class Meta(object):
+            app_label = self.app_config.label
+            db_table = self.db_table
+            verbose_name = self.model_name
 
-        setattr(Meta, 'app_label', app_label)
-
-        if options is not None:
-            for key, value in options.items():
+        if self.options:
+            for key, value in self.options.items():
                 setattr(Meta, key, value)
 
+        return Meta
+
+    def _get_test_model_save_method(self):
         def save(instance, *args, **kwargs):
             # Custom .save() method to use random primary key values.
             if instance.pk:
@@ -359,9 +349,29 @@ class TestModelTestMixin(object):
                 instance.id = instance.pk
 
                 return instance.save_base(force_insert=True)
+        return save
+
+    def _create_test_model(
+        self, base_class=models.Model, fields=None, model_name=None,
+        options=None
+    ):
+        self.model_name = model_name or 'TestModel'
+        self.options = options
+        # Obtain the app_config and app_label from the test's module path
+        self.app_config = apps.get_containing_app_config(
+            object_name=self.__class__.__module__
+        )
+
+        if connection.vendor == 'mysql':
+            self.skipTest(
+                reason='MySQL doesn\'t support schema changes inside an '
+                'atomic block.'
+            )
 
         attrs = {
-            '__module__': self.__class__.__module__, 'save': save, 'meta': Meta
+            '__module__': self.__class__.__module__,
+            'save': self._get_test_model_save_method(),
+            'Meta': self._get_test_model_meta(),
         }
 
         if fields:
@@ -370,31 +380,24 @@ class TestModelTestMixin(object):
         # Clear previous model registration before re-registering it again to
         # avoid conflict with test models with the same name, in the same app
         # but from another test module.
-        apps.all_models[app_label].pop(model_name.lower(), None)
+        apps.all_models[self.app_config.label].pop(self.model_name.lower(), None)
 
         if PY3:
-            TestModel = type(
-                model_name, (base_class,), attrs
+            model = type(
+                self.model_name, (base_class,), attrs
             )
         else:
-            TestModel = type(
-                force_bytes(model_name), (base_class,), attrs
+            model = type(
+                force_bytes(self.model_name), (base_class,), attrs
             )
 
-        setattr(self, model_name, TestModel)
-        self._test_models.append(TestModel)
-
-        with connection.schema_editor() as schema_editor:
-            schema_editor.create_model(model=TestModel)
+        if not model._meta.proxy:
+            with connection.schema_editor() as schema_editor:
+                schema_editor.create_model(model=model)
 
         ContentType.objects.clear_cache()
 
-        return TestModel
-
-    def _create_test_object(self, model_name='TestModel', **kwargs):
-        TestModel = getattr(self, model_name)
-
-        return TestModel.objects.create(**kwargs)
+        return model
 
 
 class TestServerTestCaseMixin(object):
