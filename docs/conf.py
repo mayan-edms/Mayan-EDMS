@@ -263,13 +263,22 @@ extlinks = {
 }
 
 
-def _load_env_file(filename='../config.env'):
-    result = []
+def load_env_file(filename='../config.env'):
+    result = {}
     with open(filename) as file_object:
         for line in file_object:
             if not line.startswith('#'):
                 key, value = line.strip().split('=')
-                result.append(('|{}|'.format(key), value))
+                result[key] = value
+
+    return result
+
+
+def generate_substitutions(dictionary):
+    result = []
+
+    for key, value in dictionary.items():
+        result.append(('|{}|'.format(key), value))
 
     return result
 
@@ -279,9 +288,9 @@ def global_substitution_function(app, docname, source):
         source[0] = source[0].replace(old, new)
 
 
-def monkey_path_include():
+def monkey_patch_include():
     """
-    Monkey path docutil's Include directive to support global substitutions.
+    Monkey patch docutil's Include directive to support global substitutions.
     The Include class doesn't have a hook to modify the content before
     inserting it back, so we add a call to our own transformation
     method. We patch the base Include class, recreate Sphinx's Include class,
@@ -312,7 +321,11 @@ def monkey_path_include():
 def setup(app):
     app.add_stylesheet('css/custom.css')
     app.connect('source-read', global_substitution_function)
-    directives.register_directive('include', monkey_path_include())
+    directives.register_directive('include', monkey_patch_include())
 
 
-global_subtitutions_list = _load_env_file()
+environment_variables = load_env_file()
+environment_variables['DOCKER_MAYAN_IMAGE_VERSION'] = mayan.__version__
+global_subtitutions_list = generate_substitutions(
+    dictionary=environment_variables
+)
