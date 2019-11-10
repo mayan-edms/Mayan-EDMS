@@ -88,7 +88,7 @@ configure to not save its content to disk and to automatically clear up
 memory.
 
 6. Create and run a Mayan EDMS container
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
