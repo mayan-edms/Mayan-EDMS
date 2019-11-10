@@ -23,7 +23,6 @@ from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import DocumentStateHelper, WorkflowAction
 from .events import event_workflow_edited
-from .dependencies import *  # NOQA
 from .handlers import (
     handler_create_workflow_image_cache, handler_index_document,
     handler_launch_workflow, handler_trigger_transition

@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings.classes import Namespace
 
-# Don't import anything on start import, we just want to make it easy
+# Don't import anything on star import, we just want to make it easy
 # for apps.py to activate the settings in this module.
 __all__ = ()
 namespace = Namespace(label=_('Celery'), name='celery')

@@ -10,7 +10,6 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.navigation.classes import SourceColumn
 
-from .dependencies import *  # NOQA
 from .html_widgets import (
     ObjectLinkWidget, widget_event_actor_link, widget_event_type_link
 )

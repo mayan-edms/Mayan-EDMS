@@ -16,7 +16,6 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import Template
-from .dependencies import *  # NOQA
 from .handlers import (
     handler_pre_initial_setup, handler_pre_upgrade,
     handler_user_locale_profile_session_config, handler_user_locale_profile_create

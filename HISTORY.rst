@@ -129,6 +129,8 @@
   now get the permission inheritance from their base models.
 - Update common.http.URL to allow passing a query dictionary.
 - Add the document template sandbox feature.
+- Auto-import dependecies. No need to use:
+  from .dependencies import *  # NOQA
 
 3.2.9 (2019-11-03)
 ==================

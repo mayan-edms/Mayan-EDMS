@@ -8,7 +8,6 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_object, menu_secondary
 from mayan.apps.navigation.classes import SourceColumn
 
-from .dependencies import *  # NOQA
 from .links import (
     link_transformation_delete, link_transformation_edit,
     link_transformation_select

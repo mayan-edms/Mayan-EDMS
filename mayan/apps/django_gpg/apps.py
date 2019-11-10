@@ -12,7 +12,6 @@ from mayan.apps.common.menus import (
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import KeyStub
-from .dependencies import *  # NOQA
 from .links import (
     link_key_delete, link_key_detail, link_key_download, link_key_query,
     link_key_receive, link_key_setup, link_key_upload, link_private_keys,
