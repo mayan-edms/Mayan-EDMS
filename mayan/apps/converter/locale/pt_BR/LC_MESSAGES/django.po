@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
@@ -12,41 +12,56 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:58-0400\n"
+"POT-Creation-Date: 2019-11-09 23:35-0400\n"
 "PO-Revision-Date: 2019-05-03 05:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:22 permissions.py:7 settings.py:12
+#: apps.py:23 permissions.py:7 settings.py:12
 msgid "Converter"
 msgstr "Conversor"
 
-#: apps.py:31 models.py:57
+#: apps.py:37 forms.py:25
 msgid "Transformation"
 msgstr "Transformação"
 
-#: backends/python.py:175 backends/python.py:181
+#: backends/python.py:162 backends/python.py:168
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Exceção ao determinar o número de páginas do PDF; %s"
 
-#: backends/python.py:195
+#: backends/python.py:182
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Exceção ao determinar o número de páginas usando Pillow; %s"
 
-#: classes.py:118
+#: classes.py:116
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice não instalado ou não encontrado."
 
-#: classes.py:201
+#: classes.py:199
 msgid "Not an office file format."
 msgstr "Não é um formato de arquivo de escritório."
+
+#: classes.py:327
+msgid ""
+"Transformations allow changing the visual appearance of documents without "
+"making permanent changes to the document file themselves."
+msgstr ""
+"As transformações permitem mudar a aparência de documentos sem fazer "
+"mudanças permanentes nos arquivos dos documentos."
+
+#: classes.py:375
+#, fuzzy
+#| msgid "Transformation"
+msgid "transformation"
+msgstr "Transformação"
 
 #: dependencies.py:16
 msgid "Utility from the poppler-utils package used to inspect PDF files."
@@ -58,50 +73,100 @@ msgid ""
 "into PPM format images."
 msgstr ""
 
-#: forms.py:28
+#: forms.py:24
+#, fuzzy
+#| msgid "Transformations for: %s"
+msgid "Available transformations for this layer."
+msgstr "Transformações para: %s"
+
+#: forms.py:61
 #, python-format
 msgid "\"%s\" not a valid entry."
 msgstr "\"%s\" não é uma entrada válida."
 
-#: links.py:36
-msgid "Create new transformation"
-msgstr "Criar nova transformação"
+#: layers.py:12
+#, fuzzy
+#| msgid "Edit transformations"
+msgid "Saved transformations"
+msgstr "Editar transformações"
 
-#: links.py:42
+#: links.py:18
 msgid "Delete"
 msgstr "Excluir"
 
-#: links.py:48
+#: links.py:25
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:53 models.py:58
+#: links.py:29
 msgid "Transformations"
 msgstr "Transformações"
 
-#: models.py:37
-msgid ""
-"Order in which the transformations will be executed. If left unchanged, an "
-"automatic order value will be assigned."
-msgstr "Ordem de execução das transformações. Se deixar em branco, um valor automático vai ser atribuído."
+#: links.py:35
+#, fuzzy
+#| msgid "Delete transformations"
+msgid "Select new transformation"
+msgstr "Excluir transformações"
 
-#: models.py:39
-msgid "Order"
-msgstr "Ordem"
-
-#: models.py:43
+#: models.py:23 models.py:85
 msgid "Name"
 msgstr "Nome"
 
-#: models.py:47
+#: models.py:26 models.py:81
+msgid "Order"
+msgstr "Ordem"
+
+#: models.py:34 models.py:50
+msgid "Stored layer"
+msgstr ""
+
+#: models.py:35
+msgid "Stored layers"
+msgstr ""
+
+#: models.py:47 models.py:93
+msgid "Enabled"
+msgstr ""
+
+#: models.py:56 models.py:75
+msgid "Object layer"
+msgstr ""
+
+#: models.py:57
+msgid "Object layers"
+msgstr ""
+
+#: models.py:79
+msgid ""
+"Order in which the transformations will be executed. If left unchanged, an "
+"automatic order value will be assigned."
+msgstr ""
+"Ordem de execução das transformações. Se deixar em branco, um valor "
+"automático vai ser atribuído."
+
+#: models.py:89
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr "Entre com os argumentos da transformação como um dicionário YAML. ie: {\"degrees\": 180}"
+msgstr ""
+"Entre com os argumentos da transformação como um dicionário YAML. ie: "
+"{\"degrees\": 180}"
 
-#: models.py:49
+#: models.py:91
 msgid "Arguments"
 msgstr "Argumentos"
+
+#: models.py:100
+#, fuzzy
+#| msgid "No transformations"
+msgid "Layer transformation"
+msgstr "Sem transformações"
+
+#: models.py:101
+#, fuzzy
+#| msgid "No transformations"
+msgid "Layer transformations"
+msgstr "Sem transformações"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -123,88 +188,110 @@ msgstr "Visualizar transformações existentes"
 msgid "Graphics conversion backend to use."
 msgstr "Módulo de conversão de gráficos a ser usado."
 
-#: settings.py:35
+#: settings.py:28
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Opções de configuração para o back-end de conversão de gráficos."
 
-#: transformations.py:81
+#: transformations.py:99
 msgid "Crop"
 msgstr "Recortar"
 
-#: transformations.py:156
+#: transformations.py:177
+msgid "Draw rectangle"
+msgstr ""
+
+#: transformations.py:279
+msgid "Draw rectangle (percents coordinates)"
+msgstr ""
+
+#: transformations.py:376
 msgid "Flip"
 msgstr "Giro"
 
-#: transformations.py:167
+#: transformations.py:387
 msgid "Gaussian blur"
 msgstr "Gaussian blur"
 
-#: transformations.py:177
+#: transformations.py:397
 msgid "Line art"
 msgstr "Desenho de linhas"
 
-#: transformations.py:188
+#: transformations.py:408
 msgid "Mirror"
 msgstr "Espelho"
 
-#: transformations.py:199
+#: transformations.py:419
 msgid "Resize"
 msgstr "Redimensionar"
 
-#: transformations.py:226
+#: transformations.py:446
 msgid "Rotate"
 msgstr "Rotacionar"
 
-#: transformations.py:252
+#: transformations.py:472
 msgid "Rotate 90 degrees"
 msgstr "Girar 90 graus"
 
-#: transformations.py:263
+#: transformations.py:483
 msgid "Rotate 180 degrees"
 msgstr "Girar 180 graus"
 
-#: transformations.py:274
+#: transformations.py:494
 msgid "Rotate 270 degrees"
 msgstr "Girar 270 graus"
 
-#: transformations.py:284
+#: transformations.py:504
 msgid "Unsharp masking"
 msgstr "Unsharp mascaramento"
 
-#: transformations.py:300
+#: transformations.py:520
 msgid "Zoom"
 msgstr "Ampliar"
 
-#: validators.py:26
+#: validators.py:23
 msgid "Enter a valid YAML value."
 msgstr "Entre com um valor YAML válido."
 
-#: views.py:72
-#, python-format
-msgid "Create new transformation for: %s"
-msgstr "Criar nova transformação para: %s"
+#: views.py:74
+#, fuzzy, python-format
+#| msgid ""
+#| "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
+msgid ""
+"Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
+"%(object)s"
+msgstr "Excluir transformaçãa \"%(transformation)s\" para: %(content_object)s?"
 
-#: views.py:127
+#: views.py:135
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "Excluir transformaçãa \"%(transformation)s\" para: %(content_object)s?"
 
-#: views.py:171
+#: views.py:183
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "Editar transformação \"%(transformation)s\" para: %(content_object)s"
 
-#: views.py:227
-msgid ""
-"Transformations allow changing the visual appearance of documents without "
-"making permanent changes to the document file themselves."
-msgstr "As transformações permitem mudar a aparência de documentos sem fazer mudanças permanentes nos arquivos dos documentos."
-
-#: views.py:231
-msgid "No transformations"
-msgstr "Sem transformações"
-
-#: views.py:232
+#: views.py:237
 #, python-format
-msgid "Transformations for: %s"
-msgstr "Transformações para: %s"
+msgid "There are no entries for layer \"%(layer_name)s\""
+msgstr ""
+
+#: views.py:240
+#, fuzzy, python-format
+#| msgid "Create new transformation for: %s"
+msgid "Layer \"%(layer)s\" transformations for: %(object)s"
+msgstr "Criar nova transformação para: %s"
+
+#: views.py:279
+msgid "Select"
+msgstr ""
+
+#: views.py:281
+#, fuzzy, python-format
+#| msgid ""
+#| "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
+msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
+msgstr "Excluir transformaçãa \"%(transformation)s\" para: %(content_object)s?"
+
+#~ msgid "Create new transformation"
+#~ msgstr "Criar nova transformação"

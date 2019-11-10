@@ -1,24 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:03-0400\n"
+"POT-Creation-Date: 2019-11-09 23:39-0400\n"
 "PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
+"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/sl_SI/)\n"
+"Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sl_SI\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
 #: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
-#: views.py:628
+#: views.py:651
 msgid "Sources"
 msgstr ""
 
@@ -59,27 +61,31 @@ msgid ""
 "obtained the scanned document image."
 msgstr ""
 
-#: forms.py:30
+#: forms.py:27
+msgid "An optional comment to explain the upload."
+msgstr ""
+
+#: forms.py:28
 msgid "Comment"
 msgstr "Komentar"
 
-#: forms.py:45
+#: forms.py:42
 msgid "Expand compressed files"
 msgstr ""
 
-#: forms.py:47
+#: forms.py:44
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr ""
 
-#: forms.py:68 views.py:483
+#: forms.py:65 views.py:506
 msgid "Staging file"
 msgstr ""
 
-#: forms.py:72 forms.py:77
+#: forms.py:69 forms.py:74
 msgid "File"
 msgstr ""
 
-#: handlers.py:30
+#: handlers.py:27
 msgid "Default"
 msgstr ""
 
@@ -135,67 +141,67 @@ msgstr ""
 msgid "Check now"
 msgstr ""
 
-#: literals.py:16
+#: literals.py:18
 msgid "Flatbed"
 msgstr ""
 
-#: literals.py:17
+#: literals.py:19
 msgid "Document feeder"
 msgstr ""
 
-#: literals.py:24
+#: literals.py:26
 msgid "Simplex"
 msgstr ""
 
-#: literals.py:25
+#: literals.py:27
 msgid "Duplex"
 msgstr ""
 
-#: literals.py:33
+#: literals.py:35
 msgid "Lineart"
 msgstr ""
 
-#: literals.py:34
+#: literals.py:36
 msgid "Monochrome"
 msgstr ""
 
-#: literals.py:35
+#: literals.py:37
 msgid "Color"
 msgstr "Barva"
 
-#: literals.py:43 literals.py:48
+#: literals.py:45 literals.py:50
 msgid "Always"
 msgstr ""
 
-#: literals.py:44 literals.py:49
+#: literals.py:46 literals.py:51
 msgid "Never"
 msgstr ""
 
-#: literals.py:50
+#: literals.py:52
 msgid "Ask user"
 msgstr ""
 
-#: literals.py:61
+#: literals.py:63
 msgid "Scanner"
 msgstr ""
 
-#: literals.py:62 models/webform_sources.py:42
+#: literals.py:64 models/webform_sources.py:42
 msgid "Web form"
 msgstr ""
 
-#: literals.py:63 models/staging_folder_sources.py:69
+#: literals.py:65 models/staging_folder_sources.py:69
 msgid "Staging folder"
 msgstr ""
 
-#: literals.py:64 models/watch_folder_sources.py:48
+#: literals.py:66 models/watch_folder_sources.py:48
 msgid "Watch folder"
 msgstr ""
 
-#: literals.py:65
+#: literals.py:67
 msgid "POP3 email"
 msgstr ""
 
-#: literals.py:66 models/email_sources.py:226 models/email_sources.py:227
+#: literals.py:68 models/email_sources.py:249 models/email_sources.py:250
 msgid "IMAP email"
 msgstr ""
 
@@ -264,105 +270,142 @@ msgstr ""
 msgid "Log entries"
 msgstr ""
 
-#: models/email_sources.py:45
+#: models/email_sources.py:42
 msgid "Host"
 msgstr ""
 
-#: models/email_sources.py:46
+#: models/email_sources.py:43
 msgid "SSL"
 msgstr ""
 
-#: models/email_sources.py:48
+#: models/email_sources.py:45
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr ""
 
-#: models/email_sources.py:49
+#: models/email_sources.py:46
 msgid "Port"
 msgstr ""
 
-#: models/email_sources.py:51
+#: models/email_sources.py:48
 msgid "Username"
 msgstr ""
 
-#: models/email_sources.py:52
+#: models/email_sources.py:49
 msgid "Password"
 msgstr ""
 
-#: models/email_sources.py:56
+#: models/email_sources.py:53
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
 msgstr ""
 
-#: models/email_sources.py:59
+#: models/email_sources.py:56
 msgid "Metadata attachment name"
 msgstr ""
 
-#: models/email_sources.py:63
+#: models/email_sources.py:60
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
 msgstr ""
 
-#: models/email_sources.py:66
+#: models/email_sources.py:63
 msgid "Subject metadata type"
 msgstr ""
 
-#: models/email_sources.py:70
+#: models/email_sources.py:67
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
 msgstr ""
 
-#: models/email_sources.py:73
+#: models/email_sources.py:70
 msgid "From metadata type"
 msgstr ""
 
-#: models/email_sources.py:77
+#: models/email_sources.py:74
 msgid "Store the body of the email as a text document."
 msgstr ""
 
-#: models/email_sources.py:78
+#: models/email_sources.py:75
 msgid "Store email body"
 msgstr ""
 
-#: models/email_sources.py:84
+#: models/email_sources.py:81
 msgid "Email source"
 msgstr ""
 
-#: models/email_sources.py:85
+#: models/email_sources.py:82
 msgid "Email sources"
 msgstr ""
 
-#: models/email_sources.py:190
+#: models/email_sources.py:187
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
 
-#: models/email_sources.py:204
+#: models/email_sources.py:201
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
 
-#: models/email_sources.py:219
+#: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
 msgstr ""
 
-#: models/email_sources.py:220
+#: models/email_sources.py:217
 msgid "Mailbox"
 msgstr ""
 
-#: models/email_sources.py:272
+#: models/email_sources.py:221
+msgid ""
+"Criteria to use when searching for messages to process. Use the format "
+"specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
+msgstr ""
+
+#: models/email_sources.py:224
+msgid "Search criteria"
+msgstr ""
+
+#: models/email_sources.py:228
+msgid ""
+"IMAP STORE command to execute on messages after they are processed. One "
+"command per line. Use the commands specified in https://tools.ietf.org/html/"
+"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+msgstr ""
+
+#: models/email_sources.py:232
+msgid "Store commands"
+msgstr ""
+
+#: models/email_sources.py:236
+msgid "Execute the IMAP expunge command after processing each email message."
+msgstr ""
+
+#: models/email_sources.py:238
+msgid "Execute expunge"
+msgstr ""
+
+#: models/email_sources.py:242
+msgid "IMAP Mailbox to which processed messages will be copied."
+msgstr ""
+
+#: models/email_sources.py:243
+msgid "Destination mailbox"
+msgstr ""
+
+#: models/email_sources.py:350
 msgid "Timeout"
 msgstr ""
 
-#: models/email_sources.py:278 models/email_sources.py:279
+#: models/email_sources.py:356 models/email_sources.py:357
 msgid "POP email"
 msgstr ""
 
@@ -567,102 +610,118 @@ msgstr ""
 msgid "Error processing source: %s"
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:84
+#: templates/sources/dropzone.html:82
 msgid "Cancel upload"
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:85
+#: templates/sources/dropzone.html:83
 msgid "Are you sure you want to cancel this upload?"
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:86
+#: templates/sources/dropzone.html:84
 msgid "Drop files or click here to upload files"
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:87
+#: templates/sources/dropzone.html:85
 msgid "Your browser does not support drag and drop file uploads."
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:88
+#: templates/sources/dropzone.html:86
 msgid "Please use the fallback form below to upload your files."
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:89
+#: templates/sources/dropzone.html:87
 msgid "Clear"
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:90
+#: templates/sources/dropzone.html:88
 msgid "Server responded with {{statusCode}} code."
 msgstr ""
 
-#: views.py:63
+#: views.py:66
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr ""
 
-#: views.py:66
+#: views.py:69
 msgid "No log entries available"
 msgstr ""
 
-#: views.py:68
+#: views.py:71
 #, python-format
 msgid "Log entries for source: %s"
 msgstr ""
 
-#: views.py:123 wizards.py:154
+#: views.py:126 wizards.py:154
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 
-#: views.py:151 views.py:169 views.py:179
+#: views.py:154 views.py:183 views.py:193
 msgid "Document properties"
 msgstr ""
 
-#: views.py:159
-msgid "Files in staging path"
+#: views.py:163
+msgid ""
+"This could mean that the staging folder is empty. It could also mean that "
+"the operating system user account being used for Mayan EDMS doesn't have the "
+"necessary file system permissions for the folder."
 msgstr ""
 
 #: views.py:170
+msgid "No staging files available"
+msgstr ""
+
+#: views.py:173
+msgid "Files in staging path"
+msgstr ""
+
+#: views.py:184
 msgid "Scan"
 msgstr ""
 
-#: views.py:280
+#: views.py:294
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr ""
 
-#: views.py:291
+#: views.py:305
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:342
+#: views.py:356
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:376
+#: views.py:390
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
-#: views.py:429
+#: views.py:443
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:470
+#: views.py:483
 #, python-format
-msgid "Upload a new version from source: %s"
+msgid ""
+"Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:484
+#: views.py:486
+msgid "Submit"
+msgstr ""
+
+#: views.py:507
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: views.py:505
+#: views.py:528
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -670,31 +729,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:511
+#: views.py:534
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr ""
 
-#: views.py:528
+#: views.py:551
 msgid "Source check queued."
 msgstr ""
 
-#: views.py:545
+#: views.py:568
 #, python-format
 msgid "Create new source of type: %s"
 msgstr ""
 
-#: views.py:567
+#: views.py:590
 #, python-format
 msgid "Delete the source: %s?"
 msgstr ""
 
-#: views.py:588
+#: views.py:611
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:622
+#: views.py:645
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -702,7 +761,7 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:627
+#: views.py:650
 msgid "No sources available"
 msgstr ""
 

@@ -20,7 +20,8 @@ docker-shell: ## Launch a bash instance inside a running container. Pass the con
 
 docker-runtest-container: ## Run a test container.
 docker-runtest-container: docker-test-cleanup
-	docker run -d \
+	docker run \
+	-d \
 	--name test-mayan-edms \
 	-p 80:8000 \
 	-v test-mayan_data:/var/lib/mayan \
@@ -47,7 +48,8 @@ docker-staging-network-create:
 	docker network create mayan-staging
 
 docker-staging-container-postgresql-start:
-	docker run -d \
+	docker run \
+    -d \
     --name mayan-staging-postgres \
     --network=mayan-staging \
     -e POSTGRES_USER=mayan \
@@ -57,7 +59,8 @@ docker-staging-container-postgresql-start:
     $(DOCKER_POSTGRES_IMAGE_VERSION)
 
 docker-staging-container-redis-start:
-	docker run -d \
+	docker run \
+    -d \
     --name mayan-staging-redis \
     --network=mayan-staging \
     $(DOCKER_REDIS_IMAGE_VERSION) \
@@ -70,7 +73,8 @@ docker-staging-container-redis-start:
     ""
 
 docker-staging-container-mayan-start:
-	docker run -d \
+	docker run \
+    -d \
     --name mayan-staging-app \
     --network=mayan-staging \
     -p 80:8000 \

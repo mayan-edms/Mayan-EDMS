@@ -122,7 +122,16 @@
 - Authentication and headers added to the workflow
   HTTP POST action.
 - Update the timeout field of the workflow HTTP POST
-  action to support templates.
+  action to support templates. The timeout field also
+  support integers, float, or empty values.
+- DjangoSMTP mailer password field size increased to 192
+  characters.
+- Improve TestModelTestMixin. Allow specifying a base model.
+  Fix passing the dynamic Meta class to the test model.
+- Support for proxy model permission inheritance. Proxy models
+  now get the permission inheritance from their base models.
+- Update common.http.URL to allow passing a query dictionary.
+- Add the document template sandbox feature.
 
 3.2.9 (2019-11-03)
 ==================

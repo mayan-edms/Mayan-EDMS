@@ -530,6 +530,11 @@ Release checklist
 Release using GitLab CI
 -----------------------
 
+#. Push the current brach:
+   ::
+
+       git push
+
 #. Delete the corresponding ``releases/`` branch:
    ::
 

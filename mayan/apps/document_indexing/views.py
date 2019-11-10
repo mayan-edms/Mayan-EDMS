@@ -1,8 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.template import RequestContext
+from django.template import (
+    Context, RequestContext, Template, TemplateSyntaxError
+)
 from django.urls import reverse, reverse_lazy
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -12,6 +15,8 @@ from mayan.apps.common.generics import (
     AddRemoveView, ConfirmView, FormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.common.http import URL
+from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
@@ -20,7 +25,9 @@ from mayan.apps.documents.permissions import (
 from mayan.apps.documents.views import DocumentListView
 
 from .events import event_index_template_edited
-from .forms import IndexTemplateFilteredForm, IndexTemplateNodeForm
+from .forms import (
+    DocumentTemplateSandboxForm, IndexTemplateFilteredForm, IndexTemplateNodeForm
+)
 from .html_widgets import node_tree
 from .icons import icon_index
 from .links import link_index_template_create
@@ -474,3 +481,47 @@ class IndexesRebuildView(FormView):
 
     def get_post_action_redirect(self):
         return reverse(viewname='common:tools_list')
+
+
+class DocumentTemplateSandboxView(ExternalObjectMixin, FormView):
+    external_object_class = Document
+    external_object_permission = permission_document_indexing_create
+    form_class = DocumentTemplateSandboxForm
+
+    def form_valid(self, form):
+        path = reverse(
+            viewname='indexing:document_template_sandbox',
+            kwargs={'pk': self.external_object.pk}
+        )
+        url = URL(
+            path=path, query={'template': form.cleaned_data['template']}
+        )
+
+        return HttpResponseRedirect(redirect_to=url.to_string())
+
+    def get_initial(self):
+        template_string = self.request.GET.get('template')
+        try:
+            context = Context(
+                {'document': self.external_object}
+            )
+            template = Template(template_string=template_string)
+            result = template.render(context=context)
+        except TemplateSyntaxError as exception:
+            result = ''
+            error_message = _(
+                'Template error; %(exception)s'
+            ) % {
+                'exception': exception
+            }
+            messages.error(request=self.request, message=error_message)
+
+        return {
+            'template': template_string, 'result': result
+        }
+
+    def get_extra_context(self):
+        return {
+            'object': self.external_object,
+            'title': _('Template sandbox for: %s') % self.external_object
+        }

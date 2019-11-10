@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:01-0400\n"
+"POT-Creation-Date: 2019-11-09 23:37-0400\n"
 "PO-Revision-Date: 2019-10-27 19:04+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:42
@@ -33,7 +34,7 @@ msgstr "Μήνυμα"
 msgid "Null backend"
 msgstr ""
 
-#: events.py:7 permissions.py:7 queues.py:8 settings.py:11
+#: events.py:7 permissions.py:7 queues.py:8 settings.py:12
 msgid "Mailing"
 msgstr ""
 
@@ -43,19 +44,21 @@ msgstr ""
 
 #: forms.py:60 forms.py:122
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon."
-msgstr "Διεύθυνση του παραλήπτη. Μπορεί να περιέχει πολλαπλές διευθύνσεις χωρισμένες με κόμμα (,) ή ελληνικό ερωτηματικό (;)"
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon."
+msgstr ""
+"Διεύθυνση του παραλήπτη. Μπορεί να περιέχει πολλαπλές διευθύνσεις χωρισμένες "
+"με κόμμα (,) ή ελληνικό ερωτηματικό (;)"
 
 #: forms.py:62 forms.py:124
 msgid "Email address"
 msgstr "Διευθύνσεις ηλ. ταχυδρομείου"
 
-#: forms.py:64
+#: forms.py:64 workflow_actions.py:40
 msgid "Subject"
 msgstr "Θέμα"
 
-#: forms.py:66
+#: forms.py:66 workflow_actions.py:49
 msgid "Body"
 msgstr "Σώμα"
 
@@ -63,7 +66,7 @@ msgstr "Σώμα"
 msgid "The email profile that will be used to send this email."
 msgstr "Το προφίλ που θα χρησιμοποιηθεί για την αποστολή αυτού του μηνύματος."
 
-#: forms.py:71 views.py:239
+#: forms.py:71 views.py:239 workflow_actions.py:22
 msgid "Mailing profile"
 msgstr "Προφίλ ηλεκτρονικού ταχυδρομείου"
 
@@ -118,7 +121,15 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Το μήνυμα αυτό περιέχει συνημμένο το έγγραφο: {{document}}\\n\n\n--------\nΑυτό το μήνυμα έχει σταλεί από %(project_title)s (%(project_website)s)"
+msgstr ""
+"Το μήνυμα αυτό περιέχει συνημμένο το έγγραφο: {{document}}\\n\n"
+"\n"
+"--------\n"
+"Αυτό το μήνυμα έχει σταλεί από %(project_title)s (%(project_website)s)"
+
+#: literals.py:11
+msgid "Document: {{ document }}"
+msgstr "Έγγραφο: {{document}}"
 
 #: literals.py:13
 #, python-format
@@ -127,7 +138,15 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Για να δείτε αυτό το έγγραφο πιέστε τον παρακάτω σύνδεσμο: {{ link }}\n\n--------\n Αυτό το μήνυμα έχει σταλεί από %(project_title)s (%(project_website)s)"
+msgstr ""
+"Για να δείτε αυτό το έγγραφο πιέστε τον παρακάτω σύνδεσμο: {{ link }}\n"
+"\n"
+"--------\n"
+" Αυτό το μήνυμα έχει σταλεί από %(project_title)s (%(project_website)s)"
+
+#: literals.py:17
+msgid "Link for document: {{ document }}"
+msgstr "Δεσμός για το έγγραφο: {{document}}"
 
 #: mailers.py:23 mailers.py:112
 msgid "From"
@@ -135,8 +154,8 @@ msgstr ""
 
 #: mailers.py:26 mailers.py:115
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value"
-" is not set."
+"The sender's address. Some system will refuse to send messages if this value "
+"is not set."
 msgstr ""
 
 #: mailers.py:32
@@ -163,7 +182,10 @@ msgstr "Χρήση TLS"
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr "Αν θα γίνει χρήση του TLS (ασφαλής σύνδεση) κατά την σύνδεση με τον διακομιστή αλληλογραφίας SMTP. Χρησιμοποιείται όταν έχει ζητηθεί ρητά η χρήση σύνδεσης TLS, συνήθως στην θύρα 587."
+msgstr ""
+"Αν θα γίνει χρήση του TLS (ασφαλής σύνδεση) κατά την σύνδεση με τον "
+"διακομιστή αλληλογραφίας SMTP. Χρησιμοποιείται όταν έχει ζητηθεί ρητά η "
+"χρήση σύνδεσης TLS, συνήθως στην θύρα 587."
 
 #: mailers.py:52
 msgid "Use SSL"
@@ -175,9 +197,15 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
-" True."
-msgstr "Αν θα γίνει χρήση ασφαλούς σύνδεσης TLS κατά την σύνδεση με τον διακομιστή αλληλογραφίας SMTP. Στα περισσότερα εγχειρίδια χρήσης αυτός ο τύπος σύνδεσης TLS αναφέρεται ως SSL. Ως επι το πλείστον κάνει χρήση της θύρας 465. Αν συναντήσετε προβλήματα κατά την σύνδεση,δοκιμάστε να ρυθμίσετε ρητή χρήση του πρωτοκόλου TLS. Σημειωτέον ότι οι επιλογές  \"Χρήση TLS\" και \"Χρήση SSL\" δεν μπορεύν να χρησιμοποιηθούν ταυτόχρονα, οπότε ενεργοποιήστε μόνο μια."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
+"True."
+msgstr ""
+"Αν θα γίνει χρήση ασφαλούς σύνδεσης TLS κατά την σύνδεση με τον διακομιστή "
+"αλληλογραφίας SMTP. Στα περισσότερα εγχειρίδια χρήσης αυτός ο τύπος σύνδεσης "
+"TLS αναφέρεται ως SSL. Ως επι το πλείστον κάνει χρήση της θύρας 465. Αν "
+"συναντήσετε προβλήματα κατά την σύνδεση,δοκιμάστε να ρυθμίσετε ρητή χρήση "
+"του πρωτοκόλου TLS. Σημειωτέον ότι οι επιλογές  \"Χρήση TLS\" και \"Χρήση SSL"
+"\" δεν μπορεύν να χρησιμοποιηθούν ταυτόχρονα, οπότε ενεργοποιήστε μόνο μια."
 
 #: mailers.py:64
 msgid "Username"
@@ -187,7 +215,9 @@ msgstr "Όνομα χρήστη"
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
-msgstr "Όνομα χρήστη που θα χρησιμοποιηθεί για τον διακομιστή SMTP. Αν μείνει κενό, δεν θα γίνει προσπάθεια ταυτοποίησης."
+msgstr ""
+"Όνομα χρήστη που θα χρησιμοποιηθεί για τον διακομιστή SMTP. Αν μείνει κενό, "
+"δεν θα γίνει προσπάθεια ταυτοποίησης."
 
 #: mailers.py:73
 msgid "Password"
@@ -196,9 +226,13 @@ msgstr "Κωδικός πρόσβασης"
 #: mailers.py:76
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these"
-" settings is empty, authentication won't be attempted."
-msgstr "Κωδικός πρόσβασης που θα χρησιμοποιηθεί για τον διακομιστή SMTP. Αυτή η επιλογή χρησιμοποιείται σε συνδιασμό με το όνομα χρήστη για την ταυτοποίηση στον διακομιστή SMTP. Αν οποιοδήποτε από τα δύο πεδία είναι κενό, δεν θα πραγματοποιηθεί ταυτοποίηση. "
+"with the username when authenticating to the SMTP server. If either of these "
+"settings is empty, authentication won't be attempted."
+msgstr ""
+"Κωδικός πρόσβασης που θα χρησιμοποιηθεί για τον διακομιστή SMTP. Αυτή η "
+"επιλογή χρησιμοποιείται σε συνδιασμό με το όνομα χρήστη για την ταυτοποίηση "
+"στον διακομιστή SMTP. Αν οποιοδήποτε από τα δύο πεδία είναι κενό, δεν θα "
+"πραγματοποιηθεί ταυτοποίηση. "
 
 #: mailers.py:85
 msgid "Django SMTP backend"
@@ -232,7 +266,9 @@ msgstr "Ετικέτα"
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr "Αν οριστεί σαν προκαθορισμένο, αυτό το προφίλ θα είναι προ-επιλεγμένο στην φόρμα αποστολής εγγράφου. "
+msgstr ""
+"Αν οριστεί σαν προκαθορισμένο, αυτό το προφίλ θα είναι προ-επιλεγμένο στην "
+"φόρμα αποστολής εγγράφου. "
 
 #: models.py:54
 msgid "Default"
@@ -268,7 +304,8 @@ msgstr ""
 
 #: models.py:216
 msgid "Test email from Mayan EDMS"
-msgstr "Δοκιμαστικό μήνυμα από το Σύστημα Διαχείρισης Ηλεκτρονικών  Εγγράφων Mayan"
+msgstr ""
+"Δοκιμαστικό μήνυμα από το Σύστημα Διαχείρισης Ηλεκτρονικών  Εγγράφων Mayan"
 
 #: models.py:234
 msgid "User mailer log entry"
@@ -314,28 +351,22 @@ msgstr "Χρήση ενός προφίλ ηλεκτρονικού ταχυδρο
 msgid "Send document"
 msgstr "Αποστολή εγγρου"
 
-#: settings.py:14
-msgid "Link for document: {{ document }}"
-msgstr "Δεσμός για το έγγραφο: {{document}}"
-
-#: settings.py:15
-msgid "Template for the document link email form subject line."
-msgstr "Πρότυπο για την γραμμή θέματος φόρμας μηνύματος για την αποστολή συνδέσμου σε έγγραφο."
-
-#: settings.py:20
-msgid "Template for the document link email form body text. Can include HTML."
-msgstr ""
-
-#: settings.py:24
-msgid "Document: {{ document }}"
-msgstr "Έγγραφο: {{document}}"
-
-#: settings.py:25
+#: settings.py:16
 msgid "Template for the document email form subject line."
 msgstr "Πρότυπο για την γραμμή θέματος φόρμας μηνύματος αποστολής εγγράφου."
 
-#: settings.py:30
+#: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
+msgstr ""
+
+#: settings.py:26
+msgid "Template for the document link email form subject line."
+msgstr ""
+"Πρότυπο για την γραμμή θέματος φόρμας μηνύματος για την αποστολή συνδέσμου "
+"σε έγγραφο."
+
+#: settings.py:31
+msgid "Template for the document link email form body text. Can include HTML."
 msgstr ""
 
 #: validators.py:14
@@ -413,3 +444,54 @@ msgstr ""
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Δοκιμή προφίλ ηλεκτρονικού ταχυδρομείου: %s"
+
+#: workflow_actions.py:24
+#, fuzzy
+#| msgid "The email profile that will be used to send this email."
+msgid "Mailing profile to use when sending the email."
+msgstr "Το προφίλ που θα χρησιμοποιηθεί για την αποστολή αυτού του μηνύματος."
+
+#: workflow_actions.py:29
+msgid "Recipient"
+msgstr ""
+
+#: workflow_actions.py:32
+#, fuzzy
+#| msgid ""
+#| "Email address of the recipient. Can be multiple addresses separated by "
+#| "comma or semicolon."
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon. A template can be used to reference properties of the document."
+msgstr ""
+"Διεύθυνση του παραλήπτη. Μπορεί να περιέχει πολλαπλές διευθύνσεις χωρισμένες "
+"με κόμμα (,) ή ελληνικό ερωτηματικό (;)"
+
+#: workflow_actions.py:43
+msgid "Subject of the email. Can be a string or a template."
+msgstr ""
+
+#: workflow_actions.py:52
+msgid "Body of the email to send. Can be a string or a template."
+msgstr ""
+
+#: workflow_actions.py:59
+#, fuzzy
+#| msgid "Send document via email"
+msgid "Send email"
+msgstr "Αποστολή εγγράφου μεμήνυμα"
+
+#: workflow_actions.py:74
+#, python-format
+msgid "Recipient template error: %s"
+msgstr ""
+
+#: workflow_actions.py:85
+#, python-format
+msgid "Subject template error: %s"
+msgstr ""
+
+#: workflow_actions.py:96
+#, python-format
+msgid "Body template error: %s"
+msgstr ""

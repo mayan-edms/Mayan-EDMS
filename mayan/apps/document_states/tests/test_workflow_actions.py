@@ -8,6 +8,7 @@ from mayan.apps.common.tests.mixins import TestServerTestCaseMixin
 from mayan.apps.common.tests.mocks import request_method_factory
 from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
 from mayan.apps.document_states.tests.base import ActionTestCase
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..workflow_actions import HTTPPostAction
 
@@ -21,9 +22,9 @@ from .literals import (
 
 
 class HTTPPostWorkflowActionTestCase(
-    TestServerTestCaseMixin, GenericViewTestCase, WorkflowTestMixin,
-    ActionTestCase
+    TestServerTestCaseMixin, GenericDocumentViewTestCase, WorkflowTestMixin,
 ):
+    auto_upload_document = False
     auto_add_test_view = True
 
     @mock.patch('requests.api.request')
@@ -35,7 +36,7 @@ class HTTPPostWorkflowActionTestCase(
                 'url': self.testserver_url,
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={})
 
         self.assertFalse(self.test_view_request is None)
 
@@ -49,7 +50,7 @@ class HTTPPostWorkflowActionTestCase(
                 'payload': TEST_PAYLOAD_JSON,
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={})
 
         self.assertEqual(
             json.loads(self.test_view_request.body),
@@ -58,6 +59,7 @@ class HTTPPostWorkflowActionTestCase(
 
     @mock.patch('requests.api.request')
     def test_http_post_action_payload_template(self, mock_object):
+        self.upload_document()
         mock_object.side_effect = request_method_factory(test_case=self)
 
         action = HTTPPostAction(
@@ -83,7 +85,7 @@ class HTTPPostWorkflowActionTestCase(
                 'headers': TEST_HEADERS_JSON,
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={})
 
         self.assertTrue(
             TEST_HEADERS_KEY in self.test_view_request.META,
@@ -94,6 +96,7 @@ class HTTPPostWorkflowActionTestCase(
 
     @mock.patch('requests.api.request')
     def test_http_post_action_headers_template(self, mock_object):
+        self.upload_document()
         mock_object.side_effect = request_method_factory(test_case=self)
 
         action = HTTPPostAction(
@@ -123,7 +126,7 @@ class HTTPPostWorkflowActionTestCase(
                 'password': TEST_SERVER_PASSWORD
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={})
 
         self.assertTrue(
             TEST_HEADERS_AUTHENTICATION_KEY in self.test_view_request.META,
@@ -132,3 +135,53 @@ class HTTPPostWorkflowActionTestCase(
             self.test_view_request.META[TEST_HEADERS_AUTHENTICATION_KEY],
             TEST_HEADERS_AUTHENTICATION_VALUE
         )
+
+    @mock.patch('requests.api.request')
+    def test_http_post_action_timeout_value_int(self, mock_object):
+        def mock_request(method, url, **kwargs):
+            self.timeout = kwargs.get('timeout')
+
+        mock_object.side_effect = mock_request
+
+        action = HTTPPostAction(
+            form_data={
+                'url': self.testserver_url,
+                'timeout': '1'
+            }
+        )
+        action.execute(context={})
+
+        self.assertEqual(self.timeout, 1)
+
+    @mock.patch('requests.api.request')
+    def test_http_post_action_timeout_value_float(self, mock_object):
+        def mock_request(method, url, **kwargs):
+            self.timeout = kwargs.get('timeout')
+
+        mock_object.side_effect = mock_request
+
+        action = HTTPPostAction(
+            form_data={
+                'url': self.testserver_url,
+                'timeout': '1.5'
+            }
+        )
+        action.execute(context={})
+
+        self.assertEqual(self.timeout, 1.5)
+
+    @mock.patch('requests.api.request')
+    def test_http_post_action_timeout_value_none(self, mock_object):
+        def mock_request(method, url, **kwargs):
+            self.timeout = kwargs.get('timeout')
+
+        mock_object.side_effect = mock_request
+
+        action = HTTPPostAction(
+            form_data={
+                'url': self.testserver_url,
+            }
+        )
+        action.execute(context={})
+
+        self.assertEqual(self.timeout, None)

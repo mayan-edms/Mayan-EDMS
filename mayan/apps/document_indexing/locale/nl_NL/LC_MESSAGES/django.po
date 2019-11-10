@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Johan Braeken, 2017
@@ -10,21 +10,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:59-0400\n"
+"POT-Creation-Date: 2019-11-09 23:35-0400\n"
 "PO-Revision-Date: 2019-08-26 01:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
 msgid "None"
 msgstr "Geen"
 
-#: admin.py:26 links.py:85 models.py:52
+#: admin.py:26 links.py:85 models.py:54
 msgid "Document types"
 msgstr "Documentsoorten"
 
@@ -32,23 +33,23 @@ msgstr "Documentsoorten"
 msgid "Document indexing"
 msgstr "Documentindexering"
 
-#: apps.py:119
+#: apps.py:126
 msgid "Total levels"
 msgstr ""
 
-#: apps.py:127
+#: apps.py:134
 msgid "Total documents"
 msgstr ""
 
-#: apps.py:132 apps.py:144 apps.py:163
+#: apps.py:139 apps.py:151 apps.py:170
 msgid "Level"
 msgstr "Niveau"
 
-#: apps.py:149 apps.py:168
+#: apps.py:156 apps.py:175
 msgid "Levels"
 msgstr ""
 
-#: apps.py:157 apps.py:175 models.py:358
+#: apps.py:164 apps.py:182 models.py:360
 msgid "Documents"
 msgstr "Documenten"
 
@@ -72,8 +73,8 @@ msgstr ""
 msgid "Creation date"
 msgstr "Aanmaakdatum"
 
-#: links.py:24 links.py:39 links.py:65 links.py:69 models.py:60 views.py:149
-#: views.py:322
+#: links.py:24 links.py:39 links.py:65 links.py:69 models.py:62 views.py:149
+#: views.py:323
 msgid "Indexes"
 msgstr "Indexeringen"
 
@@ -81,7 +82,7 @@ msgstr "Indexeringen"
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Documentindexeringen vanaf nul vernieuwen"
 
-#: links.py:50 views.py:445
+#: links.py:50 views.py:446
 msgid "Rebuild indexes"
 msgstr "Opnieuw indexeren"
 
@@ -110,102 +111,110 @@ msgid "New child node"
 msgstr "Nieuwe node"
 
 #: models.py:36
+msgid "Short description of this index."
+msgstr ""
+
+#: models.py:37
 msgid "Label"
 msgstr "Label"
 
-#: models.py:40
+#: models.py:41
 msgid "This value will be used by other apps to reference this index."
 msgstr ""
 
-#: models.py:41
+#: models.py:42
 msgid "Slug"
 msgstr ""
 
-#: models.py:46
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Maakt deze index zichtbaar en 'up-to-date' wanneer document gegevens wijzigd."
+#: models.py:47
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Maakt deze index zichtbaar en 'up-to-date' wanneer document gegevens wijzigd."
 
-#: models.py:49 models.py:235
+#: models.py:50 models.py:237
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: models.py:59 models.py:219
+#: models.py:61 models.py:221
 msgid "Index"
 msgstr "Index"
 
-#: models.py:191
+#: models.py:193
 msgid "Index instance"
 msgstr "index instance"
 
-#: models.py:192
+#: models.py:194
 msgid "Index instances"
 msgstr ""
 
-#: models.py:223
+#: models.py:225
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr ""
 
-#: models.py:227
+#: models.py:229
 msgid "Indexing expression"
 msgstr "Indexeringsexpressie"
 
-#: models.py:232
+#: models.py:234
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Maakt deze node zichtbaar en 'up-to-date' wanneer document gegevens wijzigen"
+msgstr ""
+"Maakt deze node zichtbaar en 'up-to-date' wanneer document gegevens wijzigen"
 
-#: models.py:240
+#: models.py:242
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Selecteer deze optie, wanneer deze node alleen documenten dient te bevatten. "
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Selecteer deze optie, wanneer deze node alleen documenten dient te bevatten. "
 
-#: models.py:243
+#: models.py:245
 msgid "Link documents"
 msgstr "Koppel documenten"
 
-#: models.py:247
+#: models.py:249
 msgid "Index node template"
 msgstr ""
 
-#: models.py:248
+#: models.py:250
 msgid "Indexes node template"
 msgstr ""
 
-#: models.py:252
+#: models.py:254
 msgid "Root"
 msgstr ""
 
-#: models.py:308
+#: models.py:310
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Fout bij het indexeren van document: %(document)s; uitdrukking: %(expression)s; %(exception)s"
+msgstr ""
+"Fout bij het indexeren van document: %(document)s; uitdrukking: "
+"%(expression)s; %(exception)s"
 
-#: models.py:351
+#: models.py:353
 msgid "Index template node"
 msgstr ""
 
-#: models.py:354
+#: models.py:356
 msgid "Value"
 msgstr "Waarde"
 
-#: models.py:364
+#: models.py:366
 msgid "Index node instance"
 msgstr ""
 
-#: models.py:365
+#: models.py:367
 msgid "Indexes node instances"
 msgstr ""
 
-#: models.py:479
+#: models.py:481
 msgid "Document index node instance"
 msgstr ""
 
-#: models.py:480
+#: models.py:482
 msgid "Document indexes node instances"
 msgstr ""
 
@@ -282,8 +291,8 @@ msgstr ""
 #: views.py:143
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like"
-" label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like "
+"label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views.py:148
@@ -335,42 +344,42 @@ msgstr ""
 msgid "Edit the index template node: %s?"
 msgstr ""
 
-#: views.py:317
+#: views.py:318
 msgid ""
 "This could mean that no index templates have been created or that there "
 "index templates but they are no properly defined."
 msgstr ""
 
-#: views.py:321
+#: views.py:322
 msgid "There are no index instances available."
 msgstr ""
 
-#: views.py:366
+#: views.py:367
 #, python-format
 msgid "Navigation: %s"
 msgstr ""
 
-#: views.py:371
+#: views.py:372
 #, python-format
 msgid "Contents for index: %s"
 msgstr ""
 
-#: views.py:424
+#: views.py:425
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
 msgstr ""
 
-#: views.py:429
+#: views.py:430
 msgid "This document is not in any index"
 msgstr ""
 
-#: views.py:433
+#: views.py:434
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr ""
 
-#: views.py:459
+#: views.py:460
 #, python-format
 msgid "%(count)d index queued for rebuild."
 msgid_plural "%(count)d indexes queued for rebuild."

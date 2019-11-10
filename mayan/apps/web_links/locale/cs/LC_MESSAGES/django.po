@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-26 23:35-0400\n"
+"POT-Creation-Date: 2019-11-09 23:40-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Links"
 msgstr ""
 
-#: events.py:8 links.py:17 links.py:52 links.py:57 links.py:61 models.py:36
-#: permissions.py:7 views.py:145
+#: events.py:8 links.py:16 links.py:51 links.py:56 links.py:60 models.py:43
+#: permissions.py:7 views.py:154
 msgid "Web links"
 msgstr ""
 
@@ -35,39 +35,53 @@ msgstr ""
 msgid "Web link edited"
 msgstr ""
 
-#: links.py:23 views.py:193
+#: events.py:18
+msgid "Web link navigated"
+msgstr ""
+
+#: links.py:22 views.py:194
 msgid "Create new web link"
 msgstr ""
 
-#: links.py:29
+#: links.py:28
 msgid "Delete"
 msgstr ""
 
-#: links.py:35 models.py:28
+#: links.py:34 models.py:35
 msgid "Document types"
 msgstr ""
 
-#: links.py:41
+#: links.py:40
 msgid "Edit"
 msgstr ""
 
-#: links.py:47
+#: links.py:46
 msgid "Navigate"
 msgstr ""
 
-#: models.py:22
-msgid "Label"
+#: models.py:23
+msgid "A short text describing the weblink."
 msgstr ""
 
 #: models.py:24
+msgid "Label"
+msgstr ""
+
+#: models.py:28
+msgid ""
+"Template that will be used to craft the final URL of the weblink. The "
+"{{ document }} variable is available to the template."
+msgstr ""
+
+#: models.py:30
 msgid "Template"
 msgstr ""
 
-#: models.py:25
+#: models.py:32
 msgid "Enabled"
 msgstr ""
 
-#: models.py:35
+#: models.py:42
 msgid "Web link"
 msgstr ""
 
@@ -104,42 +118,44 @@ msgstr ""
 msgid "Web links to enable for document type: %s"
 msgstr ""
 
-#: views.py:111
+#: views.py:119
 msgid "Available document types"
 msgstr ""
 
-#: views.py:112
+#: views.py:120
 msgid "Document types enabled"
 msgstr ""
 
-#: views.py:122
+#: views.py:130
 #, python-format
 msgid "Document type for which to enable web link: %s"
 msgstr ""
 
-#: views.py:139
-msgid "Web links allow generating links from documents to external resources."
+#: views.py:147 views.py:176
+msgid ""
+"Web links allow generating HTTP links from documents to external resources. "
+"The link URL's can contain document properties values."
 msgstr ""
 
-#: views.py:143
+#: views.py:152
 msgid "There are no web links"
 msgstr ""
 
-#: views.py:180
+#: views.py:181
 msgid "There are no web links for this document"
 msgstr ""
 
-#: views.py:183
+#: views.py:184
 #, python-format
 msgid "Web links for document: %s"
 msgstr ""
 
-#: views.py:214
+#: views.py:215
 #, python-format
 msgid "Delete web link: %s"
 msgstr ""
 
-#: views.py:229
+#: views.py:230
 #, python-format
 msgid "Edit web link: %s"
 msgstr ""

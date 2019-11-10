@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:00-0400\n"
+"POT-Creation-Date: 2019-11-09 23:36-0400\n"
 "PO-Revision-Date: 2019-09-10 20:39+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:30 links.py:49 links.py:54 links.py:59 permissions.py:7 views.py:36
@@ -161,7 +162,9 @@ msgstr "Abonnements aux événements mises à jour avec succès"
 
 #: views.py:114
 msgid "Subscribe to global or object events to receive notifications."
-msgstr "Abonnez-vous à des événements globaux ou à des objets pour recevoir des notifications."
+msgstr ""
+"Abonnez-vous à des événements globaux ou à des objets pour recevoir des "
+"notifications."
 
 #: views.py:117
 msgid "There are no notifications"
@@ -171,7 +174,9 @@ msgstr "Il n'y a pas de notification"
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr "Les événements sont des actions qui ont été effectuées sur cet objet ou utilisant cet objet."
+msgstr ""
+"Les événements sont des actions qui ont été effectuées sur cet objet ou "
+"utilisant cet objet."
 
 #: views.py:167
 msgid "There are no events for this object"

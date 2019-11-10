@@ -14,16 +14,18 @@ from __future__ import unicode_literals
 # serve to show the default.
 
 import os
-import inspect
 import sys
 
 from docutils.parsers.rst import directives
-import docutils.parsers.rst.directives.misc
-from sphinx.directives.other import Include as SphinxInclude
 
 sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(1, os.path.abspath('.'))
 
 import mayan
+
+import callbacks
+import patches
+import utils
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -263,56 +265,21 @@ extlinks = {
 }
 
 
-def _load_env_file(filename='../config.env'):
-    result = []
-    with open(filename) as file_object:
-        for line in file_object:
-            if not line.startswith('#'):
-                key, value = line.strip().split('=')
-                result.append(('|{}|'.format(key), value))
-
-    return result
-
-
-def global_substitution_function(app, docname, source):
-    for old, new in global_subtitutions_list:
-        source[0] = source[0].replace(old, new)
-
-
-def monkey_path_include():
-    """
-    Monkey path docutil's Include directive to support global substitutions.
-    The Include class doesn't have a hook to modify the content before
-    inserting it back, so we add a call to our own transformation
-    method. We patch the base Include class, recreate Sphinx's Include class,
-    and register it as the new main include directive.
-    All this avoids copy and paste of the original code here.
-    """
-    source_code = ''.join(inspect.getsourcelines(
-        docutils.parsers.rst.directives.misc.Include)[0]
-    )
-    source_code = source_code.replace(
-        'self.state_machine.insert_input(include_lines, path)',
-        'include_lines=self.global_substitution(lines=include_lines)\n        self.state_machine.insert_input(include_lines, path)',
-    )
-    exec(source_code, docutils.parsers.rst.directives.misc.__dict__)
-
-    class Include(docutils.parsers.rst.directives.misc.Include, SphinxInclude):
-        def global_substitution(self, lines):
-            result = []
-            for line in lines:
-                for old, new in global_subtitutions_list:
-                    line = line.replace(old, new)
-                result.append(line)
-            return result
-
-    return Include
-
-
 def setup(app):
-    app.add_stylesheet('css/custom.css')
-    app.connect('source-read', global_substitution_function)
-    directives.register_directive('include', monkey_path_include())
+    environment_variables = utils.load_env_file()
+    environment_variables['DOCKER_MAYAN_IMAGE_VERSION'] = mayan.__version__
+    substitutions = utils.generate_substitutions(
+        dictionary=environment_variables
+    )
 
-
-global_subtitutions_list = _load_env_file()
+    app.add_stylesheet(filename='css/custom.css')
+    app.connect(
+        event='source-read', callback=callbacks.get_source_read_callback(
+            substitutions=substitutions
+        )
+    )
+    directives.register_directive(
+        name='include', directive=patches.monkey_patch_include(
+            substitutions=substitutions
+        )
+    )

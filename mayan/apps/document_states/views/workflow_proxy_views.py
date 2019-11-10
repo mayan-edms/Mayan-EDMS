@@ -1,11 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.generics import SingleObjectListView
+from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.views import DocumentListView
 
@@ -15,26 +14,21 @@ from ..models import WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
 from ..permissions import permission_workflow_view
 
 
-class WorkflowRuntimeProxyDocumentListView(DocumentListView):
-    def dispatch(self, request, *args, **kwargs):
-        self.workflow = get_object_or_404(
-            klass=WorkflowRuntimeProxy, pk=self.kwargs['pk']
-        )
-
-        AccessControlList.objects.check_access(
-            obj=self.workflow, permissions=(permission_workflow_view,),
-            user=request.user
-        )
-
-        return super(
-            WorkflowRuntimeProxyDocumentListView, self
-        ).dispatch(request, *args, **kwargs)
+class WorkflowRuntimeProxyDocumentListView(
+    ExternalObjectMixin, DocumentListView
+):
+    external_object_class = WorkflowRuntimeProxy
+    external_object_permission = permission_workflow_view
 
     def get_document_queryset(self):
-        return Document.objects.filter(workflows__workflow=self.workflow)
+        return Document.objects.filter(
+            workflows__workflow=self.external_object
+        )
 
     def get_extra_context(self):
-        context = super(WorkflowRuntimeProxyDocumentListView, self).get_extra_context()
+        context = super(
+            WorkflowRuntimeProxyDocumentListView, self
+        ).get_extra_context()
         context.update(
             {
                 'no_results_text': _(
@@ -44,8 +38,10 @@ class WorkflowRuntimeProxyDocumentListView(DocumentListView):
                 'no_results_title': _(
                     'There are no documents executing this workflow'
                 ),
-                'object': self.workflow,
-                'title': _('Documents with the workflow: %s') % self.workflow
+                'object': self.external_object,
+                'title': _(
+                    'Documents with the workflow: %s'
+                ) % self.external_object
             }
         )
         return context
@@ -74,16 +70,22 @@ class WorkflowRuntimeProxyListView(SingleObjectListView):
         return WorkflowRuntimeProxy.objects.all()
 
 
-class WorkflowRuntimeProxyStateDocumentListView(DocumentListView):
+class WorkflowRuntimeProxyStateDocumentListView(
+    ExternalObjectMixin, DocumentListView
+):
+    external_object_class = WorkflowStateRuntimeProxy
+    external_object_permission = permission_workflow_view
+
     def get_document_queryset(self):
-        return self.get_workflow_state().get_documents()
+        return self.external_object.get_documents()
 
     def get_extra_context(self):
-        workflow_state = self.get_workflow_state()
-        context = super(WorkflowRuntimeProxyStateDocumentListView, self).get_extra_context()
+        context = super(
+            WorkflowRuntimeProxyStateDocumentListView, self
+        ).get_extra_context()
         context.update(
             {
-                'object': workflow_state,
+                'object': self.external_object,
                 'navigation_object_list': ('object', 'workflow'),
                 'no_results_title': _(
                     'There are no documents in this workflow state'
@@ -91,38 +93,21 @@ class WorkflowRuntimeProxyStateDocumentListView(DocumentListView):
                 'title': _(
                     'Documents in the workflow "%s", state "%s"'
                 ) % (
-                    workflow_state.workflow, workflow_state
+                    self.external_object.workflow, self.external_object
                 ),
                 'workflow': WorkflowRuntimeProxy.objects.get(
-                    pk=workflow_state.workflow.pk
+                    pk=self.external_object.workflow.pk
                 ),
             }
         )
         return context
 
-    def get_workflow_state(self):
-        workflow_state = get_object_or_404(
-            klass=WorkflowStateRuntimeProxy, pk=self.kwargs['pk']
-        )
 
-        AccessControlList.objects.check_access(
-            obj=workflow_state.workflow,
-            permissions=(permission_workflow_view,), user=self.request.user
-        )
-
-        return workflow_state
-
-
-class WorkflowRuntimeProxyStateListView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_workflow(), permissions=(permission_workflow_view,),
-            user=request.user
-        )
-
-        return super(
-            WorkflowRuntimeProxyStateListView, self
-        ).dispatch(request, *args, **kwargs)
+class WorkflowRuntimeProxyStateListView(
+    ExternalObjectMixin, SingleObjectListView
+):
+    external_object_class = WorkflowRuntimeProxy
+    external_object_permission = permission_workflow_view
 
     def get_extra_context(self):
         return {
@@ -130,7 +115,7 @@ class WorkflowRuntimeProxyStateListView(SingleObjectListView):
             'hide_object': True,
             'no_results_main_link': link_workflow_template_state_create.resolve(
                 context=RequestContext(
-                    request=self.request, dict_={'object': self.get_workflow()}
+                    request=self.request, dict_={'object': self.external_object}
                 )
             ),
             'no_results_text': _(
@@ -139,16 +124,11 @@ class WorkflowRuntimeProxyStateListView(SingleObjectListView):
             'no_results_title': _(
                 'This workflow doesn\'t have any state'
             ),
-            'object': self.get_workflow(),
-            'title': _('States of workflow: %s') % self.get_workflow()
+            'object': self.external_object,
+            'title': _('States of workflow: %s') % self.external_object
         }
 
     def get_source_queryset(self):
         return WorkflowStateRuntimeProxy.objects.filter(
-            workflow=self.get_workflow()
-        )
-
-    def get_workflow(self):
-        return get_object_or_404(
-            klass=WorkflowRuntimeProxy, pk=self.kwargs['pk']
+            workflow=self.external_object
         )

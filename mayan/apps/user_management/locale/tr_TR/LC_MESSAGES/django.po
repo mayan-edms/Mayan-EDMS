@@ -1,40 +1,41 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:03-0400\n"
+"POT-Creation-Date: 2019-11-09 23:40-0400\n"
 "PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:82 events.py:8 permissions.py:8
 msgid "User management"
 msgstr "Kullanıcı yönetimi"
 
-#: apps.py:100 search.py:36
+#: apps.py:100 search.py:12
 msgid "Group"
 msgstr ""
 
-#: apps.py:101 links.py:41 links.py:52 links.py:75 search.py:26 views.py:120
+#: apps.py:101 links.py:41 links.py:52 links.py:75 search.py:36 views.py:120
 msgid "Groups"
 msgstr "Gruplar"
 
-#: apps.py:102 search.py:42
+#: apps.py:102 search.py:18
 msgid "Name"
 msgstr "İsim"
 
-#: apps.py:108 models.py:18 search.py:14
+#: apps.py:108 models.py:18 search.py:24
 msgid "User"
 msgstr "Kullanıcı"
 
@@ -46,15 +47,15 @@ msgstr "Kullanıcılar"
 msgid "Username"
 msgstr "Kullanıcı adı"
 
-#: apps.py:113 search.py:20
+#: apps.py:113 search.py:30
 msgid "First name"
 msgstr "Ad"
 
-#: apps.py:114 search.py:29
+#: apps.py:114 search.py:39
 msgid "Last name"
 msgstr "Soyad"
 
-#: apps.py:115 search.py:23
+#: apps.py:115 search.py:33
 msgid "Email"
 msgstr "E-posta"
 
@@ -178,7 +179,7 @@ msgstr "Var olan kullanıcıları düzenle"
 msgid "View existing users"
 msgstr "Mevcut kullanıcıları görüntüle"
 
-#: search.py:32
+#: search.py:42
 msgid "username"
 msgstr "kullanıcı adı"
 
@@ -188,7 +189,8 @@ msgstr "Bu kullanıcıya atamak için virgülle ayrılmış birincil gruplar lis
 
 #: serializers.py:64
 msgid "List of group primary keys to which to add the user."
-msgstr "Kullanıcının hangi gruba ekleneceğini belirten birincil anahtarların listesi."
+msgstr ""
+"Kullanıcının hangi gruba ekleneceğini belirten birincil anahtarların listesi."
 
 #: utils.py:8
 msgid "Anonymous"
@@ -261,7 +263,9 @@ msgstr "Kullanıcıyı sil: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Süper kullanıcı ve çalışanların silinmesine izin verilmiyor, bu durumlarda admin arayüzünü kullanın."
+msgstr ""
+"Süper kullanıcı ve çalışanların silinmesine izin verilmiyor, bu durumlarda "
+"admin arayüzünü kullanın."
 
 #: views.py:212
 #, python-format

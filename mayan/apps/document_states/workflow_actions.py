@@ -223,6 +223,13 @@ class HTTPPostAction(WorkflowAction):
         headers = self.render_load(field_name='headers', context=context)
         payload = self.render_load(field_name='payload', context=context)
 
+        if '.' in timeout:
+            timeout = float(timeout)
+        elif timeout:
+            timeout = int(timeout)
+        else:
+            timeout = None
+
         authentication = None
         if username or password:
             authentication = requests.auth.HTTPBasicAuth(

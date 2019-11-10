@@ -80,6 +80,10 @@ class ModelPermission(object):
 
     @classmethod
     def get_inheritance(cls, model):
+        # Proxy models get the inheritance from their base model
+        if model._meta.proxy:
+            model = model._meta.proxy_for_model
+
         return cls._inheritances[model]
 
     @classmethod

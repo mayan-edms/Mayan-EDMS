@@ -2,109 +2,118 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:03-0400\n"
+"POT-Creation-Date: 2019-11-09 23:39-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lv\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 
-#: apps.py:24 links.py:12 permissions.py:7
+#: apps.py:20 links.py:12 permissions.py:7
 msgid "Task manager"
 msgstr "Uzdevumu pārvaldnieks"
 
-#: apps.py:32
+#: apps.py:28
 msgid "Label"
 msgstr "Etiķete"
 
-#: apps.py:35
+#: apps.py:31
 msgid "Name"
 msgstr "Nosaukums"
 
-#: apps.py:38
+#: apps.py:34
 msgid "Default queue?"
 msgstr "Noklusējuma rinda?"
 
-#: apps.py:42
+#: apps.py:38
 msgid "Is transient?"
 msgstr "Vai tas ir pārejošs?"
 
-#: apps.py:46
+#: apps.py:42
 msgid "Type"
 msgstr "Tips"
 
-#: apps.py:49
+#: apps.py:45
 msgid "Start time"
 msgstr "Sākuma laiks"
 
-#: apps.py:52
+#: apps.py:48
 msgid "Host"
 msgstr "Saimnieks"
 
-#: apps.py:56
+#: apps.py:52
 msgid "Arguments"
 msgstr "Argumenti"
 
-#: apps.py:60
+#: apps.py:56
 msgid "Keyword arguments"
 msgstr "Atslēgvārdu argumenti"
 
-#: apps.py:64
+#: apps.py:60
 msgid "Worker process ID"
 msgstr "Darbinieku procesa ID"
-
-#: links.py:16 views.py:15
-msgid "Background task queues"
-msgstr "Fona uzdevumu rindas"
-
-#: links.py:20
-msgid "Active tasks"
-msgstr "Aktīvie uzdevumi"
-
-#: links.py:24
-msgid "Reserved tasks"
-msgstr "Rezervētie uzdevumi"
-
-#: links.py:28
-msgid "Scheduled tasks"
-msgstr "Plānotie uzdevumi"
 
 #: permissions.py:10
 msgid "View tasks"
 msgstr "Skatīt uzdevumus"
 
+#: settings.py:10
+msgid "Celery"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of: "
+"transport://userid:password@hostname:port/virtual_host Only the scheme part "
+"(transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
+msgstr ""
+
+#: settings.py:24
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to http://docs.celeryproject.org/en/v4.1.0/"
+"userguide/configuration.html#result-backend"
+msgstr ""
+
 #: tests/literals.py:5
 msgid "Test queue"
 msgstr "Pārbaudes rinda"
 
-#: views.py:30
-#, python-format
-msgid "Active tasks in queue: %s"
-msgstr "Aktīvie uzdevumi rindā: %s"
+#: views.py:14
+msgid "Background task queues"
+msgstr "Fona uzdevumu rindas"
 
-#: views.py:42
-#, python-format
-msgid "Unable to retrieve task list; %s"
-msgstr "Nevar izgūt uzdevumu sarakstu; %s"
+#~ msgid "Active tasks"
+#~ msgstr "Aktīvie uzdevumi"
 
-#: views.py:56
-#, python-format
-msgid "Scheduled tasks in queue: %s"
-msgstr "Plānotie uzdevumi rindā: %s"
+#~ msgid "Reserved tasks"
+#~ msgstr "Rezervētie uzdevumi"
 
-#: views.py:68
-#, python-format
-msgid "Reserved tasks in queue: %s"
-msgstr "Rezervētie uzdevumi rindā: %s"
+#~ msgid "Scheduled tasks"
+#~ msgstr "Plānotie uzdevumi"
+
+#~ msgid "Active tasks in queue: %s"
+#~ msgstr "Aktīvie uzdevumi rindā: %s"
+
+#~ msgid "Unable to retrieve task list; %s"
+#~ msgstr "Nevar izgūt uzdevumu sarakstu; %s"
+
+#~ msgid "Scheduled tasks in queue: %s"
+#~ msgstr "Plānotie uzdevumi rindā: %s"
+
+#~ msgid "Reserved tasks in queue: %s"
+#~ msgstr "Rezervētie uzdevumi rindā: %s"

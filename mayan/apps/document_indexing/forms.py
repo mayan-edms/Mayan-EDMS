@@ -12,6 +12,41 @@ from .models import Index, IndexTemplateNode
 from .permissions import permission_document_indexing_rebuild
 
 
+class DocumentTemplateSandboxForm(forms.Form):
+    template = forms.CharField(
+        help_text=_(
+            'The template string to be evaluated. The current document '
+            'is available as the {{ document }} variable.'
+        ), label=_('Template'), widget=forms.widgets.Textarea(
+            attrs={'rows': 5}
+        )
+    )
+    result = forms.CharField(
+        help_text=_('Resulting text from the evaluated template.'),
+        label=_('Result'), required=False, widget=forms.widgets.Textarea(
+            attrs={'rows': 5}
+        )
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(DocumentTemplateSandboxForm, self).__init__(*args, **kwargs)
+        self.fields['template'].help_text = ' '.join(
+            [
+                force_text(self.fields['template'].help_text),
+                force_text(
+                    _(
+                        'Use Django\'s default templating language '
+                        '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)'
+                    ),
+                ),
+                '<br>',
+                ModelProperty.get_help_text_for(
+                    model=Document, show_name=True
+                ).replace('\n', '<br>')
+            ]
+        )
+
+
 class IndexTemplateFilteredForm(FilteredSelectionForm):
     class Meta:
         allow_multiple = True
