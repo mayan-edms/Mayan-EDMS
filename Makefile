@@ -1,11 +1,7 @@
 #!make
 include config.env
-.PHONY: clean-pyc clean-build
 
-DOCKER_MYSQL_IMAGE = mysql:8.0
-DOCKER_ORACLE_IMAGE = wnameless/oracle-xe-11g
-DOCKER_POSTGRES_IMAGE = postgres:9.6-alpine
-DOCKER_REDIS_IMAGE = redis:5.0-alpine
+.PHONY: clean-pyc clean-build
 
 help:
 	@echo "Usage: make <target>\n"
