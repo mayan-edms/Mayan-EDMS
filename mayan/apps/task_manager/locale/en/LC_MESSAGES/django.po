@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:03-0400\n"
+"POT-Creation-Date: 2019-11-09 23:39-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,90 +17,77 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:24 links.py:12 permissions.py:7
+#: apps.py:20 links.py:12 permissions.py:7
 msgid "Task manager"
 msgstr ""
 
-#: apps.py:32
+#: apps.py:28
 msgid "Label"
 msgstr ""
 
-#: apps.py:35
+#: apps.py:31
 msgid "Name"
 msgstr ""
 
-#: apps.py:38
+#: apps.py:34
 msgid "Default queue?"
 msgstr ""
 
-#: apps.py:42
+#: apps.py:38
 msgid "Is transient?"
 msgstr ""
 
-#: apps.py:46
+#: apps.py:42
 msgid "Type"
 msgstr ""
 
-#: apps.py:49
+#: apps.py:45
 msgid "Start time"
 msgstr ""
 
-#: apps.py:52
+#: apps.py:48
 msgid "Host"
 msgstr ""
 
-#: apps.py:56
+#: apps.py:52
 msgid "Arguments"
 msgstr ""
 
-#: apps.py:60
+#: apps.py:56
 msgid "Keyword arguments"
 msgstr ""
 
-#: apps.py:64
+#: apps.py:60
 msgid "Worker process ID"
-msgstr ""
-
-#: links.py:16 views.py:15
-msgid "Background task queues"
-msgstr ""
-
-#: links.py:20
-msgid "Active tasks"
-msgstr ""
-
-#: links.py:24
-msgid "Reserved tasks"
-msgstr ""
-
-#: links.py:28
-msgid "Scheduled tasks"
 msgstr ""
 
 #: permissions.py:10
 msgid "View tasks"
 msgstr ""
 
+#: settings.py:10
+msgid "Celery"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of: "
+"transport://userid:password@hostname:port/virtual_host Only the scheme part "
+"(transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
+msgstr ""
+
+#: settings.py:24
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to http://docs.celeryproject.org/en/v4.1.0/"
+"userguide/configuration.html#result-backend"
+msgstr ""
+
 #: tests/literals.py:5
 msgid "Test queue"
 msgstr ""
 
-#: views.py:30
-#, python-format
-msgid "Active tasks in queue: %s"
-msgstr ""
-
-#: views.py:42
-#, python-format
-msgid "Unable to retrieve task list; %s"
-msgstr ""
-
-#: views.py:56
-#, python-format
-msgid "Scheduled tasks in queue: %s"
-msgstr ""
-
-#: views.py:68
-#, python-format
-msgid "Reserved tasks in queue: %s"
+#: views.py:14
+msgid "Background task queues"
 msgstr ""

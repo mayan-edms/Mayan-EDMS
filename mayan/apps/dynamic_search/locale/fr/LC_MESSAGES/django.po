@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014-2015
@@ -13,14 +13,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:00-0400\n"
+"POT-Creation-Date: 2019-11-09 23:36-0400\n"
 "PO-Revision-Date: 2019-06-15 07:49+0000\n"
 "Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:17
@@ -39,18 +40,21 @@ msgstr "Correspond à tous"
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr "Lorsqu'il est coché, seuls les résultats correspondant à tous les champs seront renvoyés. Lorsqu'il ne l'est pas, les résultats correspondant à au moins un champ seront retournés."
+msgstr ""
+"Lorsqu'il est coché, seuls les résultats correspondant à tous les champs "
+"seront renvoyés. Lorsqu'il ne l'est pas, les résultats correspondant à au "
+"moins un champ seront retournés."
 
-#: forms.py:29 templates/dynamic_search/search_box.html:21
+#: forms.py:29 templates/dynamic_search/search_box.html:39
 msgid "Search terms"
 msgstr "Termes de recherche"
 
-#: links.py:8 templates/dynamic_search/search_box.html:23 views.py:59
-#: views.py:72
+#: links.py:8 settings.py:7 templates/dynamic_search/search_box.html:43
+#: views.py:59 views.py:72
 msgid "Search"
 msgstr "Recherche"
 
-#: links.py:11 views.py:86
+#: links.py:11 templates/dynamic_search/search_box.html:45 views.py:86
 msgid "Advanced search"
 msgstr "Recherche avancée"
 
@@ -58,7 +62,12 @@ msgstr "Recherche avancée"
 msgid "Search again"
 msgstr "Rechercher à nouveau"
 
-#: templates/dynamic_search/search_box.html:24
+#: settings.py:12
+msgid ""
+"Disables the single term bar search leaving only the advanced search button."
+msgstr ""
+
+#: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
 msgstr "Avancé"
 

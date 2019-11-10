@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:01-0400\n"
+"POT-Creation-Date: 2019-11-09 23:37-0400\n"
 "PO-Revision-Date: 2019-10-27 19:04+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
+"cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:42
 msgid "Mailer"
@@ -34,7 +36,7 @@ msgstr "Zpráva"
 msgid "Null backend"
 msgstr "Null backend"
 
-#: events.py:7 permissions.py:7 queues.py:8 settings.py:11
+#: events.py:7 permissions.py:7 queues.py:8 settings.py:12
 msgid "Mailing"
 msgstr "Mailing"
 
@@ -44,19 +46,21 @@ msgstr "Email odeslán"
 
 #: forms.py:60 forms.py:122
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon."
-msgstr "E-mailová adresa příjemce. Může být více adres oddělených čárkou nebo středníkem."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon."
+msgstr ""
+"E-mailová adresa příjemce. Může být více adres oddělených čárkou nebo "
+"středníkem."
 
 #: forms.py:62 forms.py:124
 msgid "Email address"
 msgstr "Emailová adresa"
 
-#: forms.py:64
+#: forms.py:64 workflow_actions.py:40
 msgid "Subject"
 msgstr "Předmět"
 
-#: forms.py:66
+#: forms.py:66 workflow_actions.py:49
 msgid "Body"
 msgstr "Tělo"
 
@@ -64,7 +68,7 @@ msgstr "Tělo"
 msgid "The email profile that will be used to send this email."
 msgstr "E-mailový profil, který bude použit k odeslání tohoto e-mailu."
 
-#: forms.py:71 views.py:239
+#: forms.py:71 views.py:239 workflow_actions.py:22
 msgid "Mailing profile"
 msgstr "Poštovní profil"
 
@@ -119,7 +123,14 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "K tomuto e-mailu je připojen dokument: {{document}} \n-------- \nTento e-mail byl odeslán z %(project_title)s (%(project_website)s)"
+msgstr ""
+"K tomuto e-mailu je připojen dokument: {{document}} \n"
+"-------- \n"
+"Tento e-mail byl odeslán z %(project_title)s (%(project_website)s)"
+
+#: literals.py:11
+msgid "Document: {{ document }}"
+msgstr "Dokument: {{document}}"
 
 #: literals.py:13
 #, python-format
@@ -128,7 +139,15 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Pro přístup k tomuto dokumentu klikněte na následující odkaz: {{link}}\n\n -------- \nTento e-mail byl odeslán z %(project_title)s (%(project_website)s)"
+msgstr ""
+"Pro přístup k tomuto dokumentu klikněte na následující odkaz: {{link}}\n"
+"\n"
+" -------- \n"
+"Tento e-mail byl odeslán z %(project_title)s (%(project_website)s)"
+
+#: literals.py:17
+msgid "Link for document: {{ document }}"
+msgstr "Odkaz na dokument: {{document}}"
 
 #: mailers.py:23 mailers.py:112
 msgid "From"
@@ -136,9 +155,11 @@ msgstr "Z"
 
 #: mailers.py:26 mailers.py:115
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value"
-" is not set."
-msgstr "Adresa odesílatele. Pokud není tato hodnota nastavena, některé systémy odmítnou odesílat zprávy."
+"The sender's address. Some system will refuse to send messages if this value "
+"is not set."
+msgstr ""
+"Adresa odesílatele. Pokud není tato hodnota nastavena, některé systémy "
+"odmítnou odesílat zprávy."
 
 #: mailers.py:32
 msgid "Host"
@@ -164,7 +185,9 @@ msgstr "Použijte TLS"
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr "Pokud se má při komunikaci se serverem SMTP používat zabezpečené připojení TLS. Používá se pro explicitní připojení TLS, obvykle na portu 587."
+msgstr ""
+"Pokud se má při komunikaci se serverem SMTP používat zabezpečené připojení "
+"TLS. Používá se pro explicitní připojení TLS, obvykle na portu 587."
 
 #: mailers.py:52
 msgid "Use SSL"
@@ -176,9 +199,15 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
-" True."
-msgstr "Pokud se použije implicitní TLS (zabezpečené) připojení při rozhovoru se serverem SMTP. Ve většině e-mailové dokumentace se tento typ připojení TLS označuje jako SSL. Obvykle se používá na portu 465. Pokud máte problémy, podívejte se na explicitní nastavení TLS „Use TLS“. Upozorňujeme, že možnosti „Použít TLS“ a „Použít SSL“ se vzájemně vylučují, takže pouze jedno z těchto nastavení nastavte na hodnotu TRUE."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
+"True."
+msgstr ""
+"Pokud se použije implicitní TLS (zabezpečené) připojení při rozhovoru se "
+"serverem SMTP. Ve většině e-mailové dokumentace se tento typ připojení TLS "
+"označuje jako SSL. Obvykle se používá na portu 465. Pokud máte problémy, "
+"podívejte se na explicitní nastavení TLS „Use TLS“. Upozorňujeme, že "
+"možnosti „Použít TLS“ a „Použít SSL“ se vzájemně vylučují, takže pouze jedno "
+"z těchto nastavení nastavte na hodnotu TRUE."
 
 #: mailers.py:64
 msgid "Username"
@@ -188,7 +217,8 @@ msgstr "Uživatelské jméno"
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
-msgstr "Uživatelské jméno pro server SMTP. Pokud je prázdné, o ověření se nepokusí."
+msgstr ""
+"Uživatelské jméno pro server SMTP. Pokud je prázdné, o ověření se nepokusí."
 
 #: mailers.py:73
 msgid "Password"
@@ -197,9 +227,12 @@ msgstr "Heslo"
 #: mailers.py:76
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these"
-" settings is empty, authentication won't be attempted."
-msgstr "Heslo pro server SMTP. Toto nastavení se používá ve spojení s uživatelským jménem při autentizaci na server SMTP. Pokud je některé z těchto nastavení prázdné, nebude ověřování provedeno."
+"with the username when authenticating to the SMTP server. If either of these "
+"settings is empty, authentication won't be attempted."
+msgstr ""
+"Heslo pro server SMTP. Toto nastavení se používá ve spojení s uživatelským "
+"jménem při autentizaci na server SMTP. Pokud je některé z těchto nastavení "
+"prázdné, nebude ověřování provedeno."
 
 #: mailers.py:85
 msgid "Django SMTP backend"
@@ -233,7 +266,9 @@ msgstr "Označení"
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr "Pokud je výchozí, bude tento poštovní profil předem vybrán ve formuláři pro zasílání dokumentů."
+msgstr ""
+"Pokud je výchozí, bude tento poštovní profil předem vybrán ve formuláři pro "
+"zasílání dokumentů."
 
 #: models.py:54
 msgid "Default"
@@ -315,29 +350,23 @@ msgstr "Použijte poštovní profil"
 msgid "Send document"
 msgstr "Odeslat dokument"
 
-#: settings.py:14
-msgid "Link for document: {{ document }}"
-msgstr "Odkaz na dokument: {{document}}"
-
-#: settings.py:15
-msgid "Template for the document link email form subject line."
-msgstr "Šablona pro řádek s předmětem odkazu na dokument e-mailového formuláře"
-
-#: settings.py:20
-msgid "Template for the document link email form body text. Can include HTML."
-msgstr "Šablona textového textu odkazu na e-mail formuláře. Může obsahovat HTML."
-
-#: settings.py:24
-msgid "Document: {{ document }}"
-msgstr "Dokument: {{document}}"
-
-#: settings.py:25
+#: settings.py:16
 msgid "Template for the document email form subject line."
 msgstr "Šablona pro řádek předmětu e-mailu formuláře."
 
-#: settings.py:30
+#: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
-msgstr "Šablona pro text textu formuláře elektronické pošty. Může obsahovat HTML."
+msgstr ""
+"Šablona pro text textu formuláře elektronické pošty. Může obsahovat HTML."
+
+#: settings.py:26
+msgid "Template for the document link email form subject line."
+msgstr "Šablona pro řádek s předmětem odkazu na dokument e-mailového formuláře"
+
+#: settings.py:31
+msgid "Template for the document link email form body text. Can include HTML."
+msgstr ""
+"Šablona textového textu odkazu na e-mail formuláře. Může obsahovat HTML."
 
 #: validators.py:14
 #, python-format
@@ -400,7 +429,9 @@ msgstr "Protokol chyb pro: %s"
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
-msgstr "Poštovní profily jsou e-mailové konfigurace. Poštovní profily umožňují odesílání dokumentů jako přílohy nebo jako odkazy prostřednictvím e-mailu."
+msgstr ""
+"Poštovní profily jsou e-mailové konfigurace. Poštovní profily umožňují "
+"odesílání dokumentů jako přílohy nebo jako odkazy prostřednictvím e-mailu."
 
 #: views.py:238
 msgid "No mailing profiles available"
@@ -414,3 +445,54 @@ msgstr ""
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Vyzkoušejte poštovní profil: %s"
+
+#: workflow_actions.py:24
+#, fuzzy
+#| msgid "The email profile that will be used to send this email."
+msgid "Mailing profile to use when sending the email."
+msgstr "E-mailový profil, který bude použit k odeslání tohoto e-mailu."
+
+#: workflow_actions.py:29
+msgid "Recipient"
+msgstr ""
+
+#: workflow_actions.py:32
+#, fuzzy
+#| msgid ""
+#| "Email address of the recipient. Can be multiple addresses separated by "
+#| "comma or semicolon."
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon. A template can be used to reference properties of the document."
+msgstr ""
+"E-mailová adresa příjemce. Může být více adres oddělených čárkou nebo "
+"středníkem."
+
+#: workflow_actions.py:43
+msgid "Subject of the email. Can be a string or a template."
+msgstr ""
+
+#: workflow_actions.py:52
+msgid "Body of the email to send. Can be a string or a template."
+msgstr ""
+
+#: workflow_actions.py:59
+#, fuzzy
+#| msgid "Send document via email"
+msgid "Send email"
+msgstr "Odeslat dokument e-mailem"
+
+#: workflow_actions.py:74
+#, python-format
+msgid "Recipient template error: %s"
+msgstr ""
+
+#: workflow_actions.py:85
+#, python-format
+msgid "Subject template error: %s"
+msgstr ""
+
+#: workflow_actions.py:96
+#, python-format
+msgid "Body template error: %s"
+msgstr ""

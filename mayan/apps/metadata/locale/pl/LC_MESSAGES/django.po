@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # mic <winterfall24@gmail.com>, 2012
@@ -11,15 +11,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:01-0400\n"
+"POT-Creation-Date: 2019-11-09 23:37-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:67 apps.py:153 apps.py:158 events.py:7 links.py:48 permissions.py:7
 #: queues.py:9 settings.py:10
@@ -38,7 +41,7 @@ msgstr "Nazwa typu metadanych"
 msgid "Metadata type value"
 msgstr "Wartość typu metadanych"
 
-#: apps.py:184 apps.py:192 forms.py:123 models.py:93 models.py:304
+#: apps.py:184 apps.py:192 forms.py:123 models.py:96 models.py:307
 msgid "Metadata type"
 msgstr "Typ metadanych"
 
@@ -78,7 +81,7 @@ msgstr "ID"
 msgid "Name"
 msgstr "Nazwa"
 
-#: forms.py:20 models.py:211
+#: forms.py:20 models.py:214
 msgid "Value"
 msgstr "Wartość"
 
@@ -86,7 +89,7 @@ msgstr "Wartość"
 msgid "Update"
 msgstr "Aktualizacja"
 
-#: forms.py:46 forms.py:185 models.py:306
+#: forms.py:46 forms.py:185 models.py:309
 msgid "Required"
 msgstr "Wymagane"
 
@@ -100,7 +103,7 @@ msgstr "Błąd wartości wyszukiwania: %s"
 msgid "Default value error: %s"
 msgstr "Błąd dotyczący domyślnej wartości: %s"
 
-#: forms.py:104 models.py:172
+#: forms.py:104 models.py:175
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "\"%s\" jest wymagane dla tego typu dokumentu."
@@ -125,7 +128,7 @@ msgstr "Brak"
 msgid "Optional"
 msgstr "Opcjonalny"
 
-#: forms.py:189 models.py:55 search.py:19
+#: forms.py:189 models.py:57 search.py:19
 msgid "Label"
 msgstr "Etykieta"
 
@@ -145,7 +148,7 @@ msgstr "Edytuj metadane"
 msgid "Remove metadata"
 msgstr "Usuń metadane"
 
-#: links.py:55 links.py:83 models.py:94 views.py:656
+#: links.py:55 links.py:83 models.py:97 views.py:656
 msgid "Metadata types"
 msgstr "Typy metadanych"
 
@@ -171,84 +174,89 @@ msgid ""
 "reserved words, or spaces."
 msgstr ""
 
-#: models.py:59
+#: models.py:56
+msgid "Short description of this metadata type."
+msgstr ""
+
+#: models.py:62
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr ""
 
-#: models.py:63 search.py:22
+#: models.py:66 search.py:22
 msgid "Default"
 msgstr "Domyślny"
 
-#: models.py:68
+#: models.py:71
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
+"Django's default templating language (https://docs.djangoproject.com/en/1.11/"
+"ref/templates/builtins/)."
 msgstr ""
 
-#: models.py:73 search.py:25
+#: models.py:76 search.py:25
 msgid "Lookup"
 msgstr "Wyszukanie"
 
-#: models.py:78
+#: models.py:81
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
-msgstr "Walidator odrzuci dane jeśli podana wartość nie będzie zgodna z oczekiwanym formatem."
+msgstr ""
+"Walidator odrzuci dane jeśli podana wartość nie będzie zgodna z oczekiwanym "
+"formatem."
 
-#: models.py:80 search.py:28
+#: models.py:83 search.py:28
 msgid "Validator"
 msgstr "Walidator"
 
-#: models.py:84
+#: models.py:87
 msgid ""
-"The parser will reformat the value entered to conform to the expected "
-"format."
+"The parser will reformat the value entered to conform to the expected format."
 msgstr "Parser zmieni format podanej wartości na format oczekiwany."
 
-#: models.py:86 search.py:31
+#: models.py:89 search.py:31
 msgid "Parser"
 msgstr "Parser"
 
-#: models.py:180
+#: models.py:183
 msgid "Value is not one of the provided options."
 msgstr "Wartość nie jest jedną z dostępnych opcji."
 
-#: models.py:202
+#: models.py:205
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:205
+#: models.py:208
 msgid "Type"
 msgstr "Typ"
 
-#: models.py:209
+#: models.py:212
 msgid "The actual value stored in the metadata type field for the document."
 msgstr ""
 
-#: models.py:217 models.py:218
+#: models.py:220 models.py:221
 msgid "Document metadata"
 msgstr "Metadane dokumentów"
 
-#: models.py:239
+#: models.py:242
 msgid "Metadata type is required for this document type."
 msgstr "Typ metadanych jest wymagany dla tego typu dokumentu."
 
-#: models.py:269
+#: models.py:272
 msgid "Metadata type is not valid for this document type."
 msgstr "Typ metadanej jest niewłaściwy dla tego typu dokumentu."
 
-#: models.py:300
+#: models.py:303
 msgid "Document type"
 msgstr "Typ dokumentu"
 
-#: models.py:313
+#: models.py:316
 msgid "Document type metadata type options"
 msgstr "Opcje typu metadanych dla typu dokumentów"
 
-#: models.py:314
+#: models.py:317
 msgid "Document type metadata types options"
 msgstr "Opcje typów metadanych dla typu dokumentów"
 
@@ -340,20 +348,23 @@ msgstr "Dodaj typy metadanych do dokumentu: %s"
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr "Błąd dodawania typu metadanych \"%(metadata_type)s\" do dokumentu: %(document)s; %(exception)s"
+msgstr ""
+"Błąd dodawania typu metadanych \"%(metadata_type)s\" do dokumentu: "
+"%(document)s; %(exception)s"
 
 #: views.py:194
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document "
-"%(document)s."
-msgstr "Typ metadanych: %(metadata_type)s dodano pomyślnie do dokumentu %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+msgstr ""
+"Typ metadanych: %(metadata_type)s dodano pomyślnie do dokumentu %(document)s."
 
 #: views.py:204
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
-msgstr "Typ metadanych: %(metadata_type)s już istnieje w dokumencie %(document)s."
+msgstr ""
+"Typ metadanych: %(metadata_type)s już istnieje w dokumencie %(document)s."
 
 #: views.py:218
 #, python-format
@@ -391,7 +402,8 @@ msgstr "Edytuj metadane dokumentu: %s"
 #: views.py:382
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr "Błąd podczas edycji metadanych dla dokumentu: %(document)s; %(exception)s."
+msgstr ""
+"Błąd podczas edycji metadanych dla dokumentu: %(document)s; %(exception)s."
 
 #: views.py:392
 #, python-format
@@ -400,9 +412,8 @@ msgstr "Metadane dla dokumentu %s zostały pomyślnie zmodyfikowane."
 
 #: views.py:425
 msgid ""
-"Add metadata types this document's type to be able to add them to individual"
-" documents. Once added to individual document, you can then edit their "
-"values."
+"Add metadata types this document's type to be able to add them to individual "
+"documents. Once added to individual document, you can then edit their values."
 msgstr ""
 
 #: views.py:430

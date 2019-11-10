@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
@@ -12,14 +12,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:02-0400\n"
+"POT-Creation-Date: 2019-11-09 23:38-0400\n"
 "PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:43 events.py:8 models.py:36 models.py:105 permissions.py:7
@@ -110,11 +111,15 @@ msgstr ""
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "Lista separada por vírgulas de chaves primárias de grupo para adicionar ou substituir nesta função."
+msgstr ""
+"Lista separada por vírgulas de chaves primárias de grupo para adicionar ou "
+"substituir nesta função."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "Lista separada por vírgulas de chaves primárias de permissão para conceder a esta função."
+msgstr ""
+"Lista separada por vírgulas de chaves primárias de permissão para conceder a "
+"esta função."
 
 #: serializers.py:90
 #, python-format

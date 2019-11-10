@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:57-0400\n"
+"POT-Creation-Date: 2019-11-09 23:34-0400\n"
 "PO-Revision-Date: 2019-06-15 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:25 settings.py:9
 msgid "Authentication"
@@ -38,7 +40,9 @@ msgstr "Zapamti"
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr "Molimo unesite ispravan e-mail i lozinku. Imajte na umu da je polje za lozinku osetljivo na slovo."
+msgstr ""
+"Molimo unesite ispravan e-mail i lozinku. Imajte na umu da je polje za "
+"lozinku osetljivo na slovo."
 
 #: forms.py:27
 msgid "This account is inactive."
@@ -60,12 +64,14 @@ msgstr "Postavite lozinku"
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr "Kontroliše mehanizam koji se koristi za autentifikaciju korisnika. Opcije su: korisničko ime, e-pošta"
+msgstr ""
+"Kontroliše mehanizam koji se koristi za autentifikaciju korisnika. Opcije "
+"su: korisničko ime, e-pošta"
 
 #: settings.py:20
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
-" in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
+"in. Value is time in seconds."
 msgstr ""
 
 #: templates/authentication/login.html:11
@@ -92,7 +98,8 @@ msgstr "Resetovanje lozinke"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr "Resetovanje lozinke završeno! Kliknite na link ispod kako biste se prijavili."
+msgstr ""
+"Resetovanje lozinke završeno! Kliknite na link ispod kako biste se prijavili."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
@@ -145,7 +152,9 @@ msgstr "Izmjenite lozinku korisnika: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "Super user i staff user reset lozinke nije dozvoljen, koristite administratorski interface za takve slučajeve"
+msgstr ""
+"Super user i staff user reset lozinke nije dozvoljen, koristite "
+"administratorski interface za takve slučajeve"
 
 #: views.py:196
 #, python-format

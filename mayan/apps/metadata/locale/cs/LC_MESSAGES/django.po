@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:01-0400\n"
+"POT-Creation-Date: 2019-11-09 23:37-0400\n"
 "PO-Revision-Date: 2019-10-14 12:19+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
+"cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:67 apps.py:153 apps.py:158 events.py:7 links.py:48 permissions.py:7
 #: queues.py:9 settings.py:10
@@ -35,7 +37,7 @@ msgstr "Název typu metadat"
 msgid "Metadata type value"
 msgstr "Hodnota typu metadat"
 
-#: apps.py:184 apps.py:192 forms.py:123 models.py:93 models.py:304
+#: apps.py:184 apps.py:192 forms.py:123 models.py:96 models.py:307
 msgid "Metadata type"
 msgstr "Typ metadat"
 
@@ -75,7 +77,7 @@ msgstr "ID"
 msgid "Name"
 msgstr "název"
 
-#: forms.py:20 models.py:211
+#: forms.py:20 models.py:214
 msgid "Value"
 msgstr "Hodnota"
 
@@ -83,7 +85,7 @@ msgstr "Hodnota"
 msgid "Update"
 msgstr "Aktualizace"
 
-#: forms.py:46 forms.py:185 models.py:306
+#: forms.py:46 forms.py:185 models.py:309
 msgid "Required"
 msgstr "Požadované"
 
@@ -97,7 +99,7 @@ msgstr "Chyba hodnoty vyhledávání: %s"
 msgid "Default value error: %s"
 msgstr "Chyba výchozí hodnoty: %s"
 
-#: forms.py:104 models.py:172
+#: forms.py:104 models.py:175
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "&quot;%s&quot; je vyžadován pro tento typ dokumentu."
@@ -122,7 +124,7 @@ msgstr "žádný"
 msgid "Optional"
 msgstr "Volitelný"
 
-#: forms.py:189 models.py:55 search.py:19
+#: forms.py:189 models.py:57 search.py:19
 msgid "Label"
 msgstr "Označení"
 
@@ -142,7 +144,7 @@ msgstr "Upravit metadata"
 msgid "Remove metadata"
 msgstr "Odebrat metadata"
 
-#: links.py:55 links.py:83 models.py:94 views.py:656
+#: links.py:55 links.py:83 models.py:97 views.py:656
 msgid "Metadata types"
 msgstr "Typy metadat"
 
@@ -166,86 +168,100 @@ msgstr "Editovat"
 msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
-msgstr "Název používaný jinými aplikacemi k odkazu na tento typ metadat. Nepoužívejte vyhrazená slova ani mezery."
+msgstr ""
+"Název používaný jinými aplikacemi k odkazu na tento typ metadat. "
+"Nepoužívejte vyhrazená slova ani mezery."
 
-#: models.py:59
+#: models.py:56
+msgid "Short description of this metadata type."
+msgstr ""
+
+#: models.py:62
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr "Zadejte šablonu, kterou chcete vykreslit. Použijte výchozí jazyk pro šablony Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr ""
+"Zadejte šablonu, kterou chcete vykreslit. Použijte výchozí jazyk pro šablony "
+"Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
-#: models.py:63 search.py:22
+#: models.py:66 search.py:22
 msgid "Default"
 msgstr "Výchozí"
 
-#: models.py:68
+#: models.py:71
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
-msgstr "Zadejte šablonu, kterou chcete vykreslit. Výsledkem musí být řetězec oddělený čárkami. Použijte výchozí jazyk šablon společnosti Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
+"Django's default templating language (https://docs.djangoproject.com/en/1.11/"
+"ref/templates/builtins/)."
+msgstr ""
+"Zadejte šablonu, kterou chcete vykreslit. Výsledkem musí být řetězec "
+"oddělený čárkami. Použijte výchozí jazyk šablon společnosti Django (https://"
+"docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
 
-#: models.py:73 search.py:25
+#: models.py:76 search.py:25
 msgid "Lookup"
 msgstr "Vyhledávání"
 
-#: models.py:78
+#: models.py:81
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
-msgstr "Validator odmítne zadání dat, pokud zadaná hodnota neodpovídá očekávanému formátu."
+msgstr ""
+"Validator odmítne zadání dat, pokud zadaná hodnota neodpovídá očekávanému "
+"formátu."
 
-#: models.py:80 search.py:28
+#: models.py:83 search.py:28
 msgid "Validator"
 msgstr "Validator"
 
-#: models.py:84
+#: models.py:87
 msgid ""
-"The parser will reformat the value entered to conform to the expected "
-"format."
-msgstr "Analyzátor přeformátuje zadanou hodnotu tak, aby odpovídala očekávanému formátu."
+"The parser will reformat the value entered to conform to the expected format."
+msgstr ""
+"Analyzátor přeformátuje zadanou hodnotu tak, aby odpovídala očekávanému "
+"formátu."
 
-#: models.py:86 search.py:31
+#: models.py:89 search.py:31
 msgid "Parser"
 msgstr "Analyzátor"
 
-#: models.py:180
+#: models.py:183
 msgid "Value is not one of the provided options."
 msgstr "Hodnota není jednou z nabízených možností."
 
-#: models.py:202
+#: models.py:205
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:205
+#: models.py:208
 msgid "Type"
 msgstr "Typ"
 
-#: models.py:209
+#: models.py:212
 msgid "The actual value stored in the metadata type field for the document."
 msgstr "Skutečná hodnota uložená v poli typu metadat dokumentu."
 
-#: models.py:217 models.py:218
+#: models.py:220 models.py:221
 msgid "Document metadata"
 msgstr "Metadata dokumentu"
 
-#: models.py:239
+#: models.py:242
 msgid "Metadata type is required for this document type."
 msgstr "Pro tento typ dokumentu lsou vyžadována metadata."
 
-#: models.py:269
+#: models.py:272
 msgid "Metadata type is not valid for this document type."
 msgstr "Tento typ metadat není pro tento typ dokumentu platný."
 
-#: models.py:300
+#: models.py:303
 msgid "Document type"
 msgstr "Typ dokumentu"
 
-#: models.py:313
+#: models.py:316
 msgid "Document type metadata type options"
 msgstr "Možnosti typu dokumentu typu metadat"
 
-#: models.py:314
+#: models.py:317
 msgid "Document type metadata types options"
 msgstr "Možnosti typu metadat typu dokumentu"
 
@@ -337,14 +353,16 @@ msgstr "Přidejte do dokumentu typy metadat: %s"
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr "Chyba při přidávání metadat typu „%(metadata_type)s“ do dokumentu: %(document)s; %(exception)s"
+msgstr ""
+"Chyba při přidávání metadat typu „%(metadata_type)s“ do dokumentu: "
+"%(document)s; %(exception)s"
 
 #: views.py:194
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document "
-"%(document)s."
-msgstr "Typ metadat: %(metadata_type)s byl úspěšně přidán do dokumentu %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+msgstr ""
+"Typ metadat: %(metadata_type)s byl úspěšně přidán do dokumentu %(document)s."
 
 #: views.py:204
 #, python-format
@@ -366,7 +384,9 @@ msgstr "Žádost o úpravu metadat byla provedena na dokumentech %(count)d"
 msgid ""
 "Add metadata types available for this document's type and assign them "
 "corresponding values."
-msgstr "Přidejte typy metadat dostupných pro typ tohoto dokumentu a přiřaďte jim odpovídající hodnoty."
+msgstr ""
+"Přidejte typy metadat dostupných pro typ tohoto dokumentu a přiřaďte jim "
+"odpovídající hodnoty."
 
 #: views.py:309
 msgid "There is no metadata to edit"
@@ -397,10 +417,12 @@ msgstr "Metadata pro dokument %s byla úspěšně upravena."
 
 #: views.py:425
 msgid ""
-"Add metadata types this document's type to be able to add them to individual"
-" documents. Once added to individual document, you can then edit their "
-"values."
-msgstr "Přidat typy metadat tohoto typu dokumentů, abyste je mohli přidat do jednotlivých dokumentů. Po přidání do samostatného dokumentu můžete upravit jejich hodnoty."
+"Add metadata types this document's type to be able to add them to individual "
+"documents. Once added to individual document, you can then edit their values."
+msgstr ""
+"Přidat typy metadat tohoto typu dokumentů, abyste je mohli přidat do "
+"jednotlivých dokumentů. Po přidání do samostatného dokumentu můžete upravit "
+"jejich hodnoty."
 
 #: views.py:430
 msgid "This document doesn't have any metadata"
@@ -439,14 +461,18 @@ msgstr "Odeberte z dokumentu typy metadat: %s"
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
-msgstr "Metadata typu „%(metadata_type)s“ byla úspěšně odstraněna z dokumentu: %(document)s."
+msgstr ""
+"Metadata typu „%(metadata_type)s“ byla úspěšně odstraněna z dokumentu: "
+"%(document)s."
 
 #: views.py:576
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
-msgstr "Chyba při odstraňování typu metadat „%(metadata_type)s“ z dokumentu: %(document)s; %(exception)s"
+msgstr ""
+"Chyba při odstraňování typu metadat „%(metadata_type)s“ z dokumentu: "
+"%(document)s; %(exception)s"
 
 #: views.py:587
 msgid "Create metadata type"
@@ -469,7 +495,12 @@ msgid ""
 "or required, for each. Setting a metadata type as required for a document "
 "type will block the upload of documents of that type until a metadata value "
 "is provided."
-msgstr "Typy metadat jsou uživatelem definované vlastnosti, kterým lze přiřadit hodnoty. Jakmile jsou vytvořeny, musí být přiřazeny k typům dokumentů, buď jako volitelné nebo požadované, pro každý z nich. Nastavení typu metadat podle potřeby pro typ dokumentu bude blokovat nahrávání dokumentů tohoto typu, dokud nebude poskytnuta hodnota metadat."
+msgstr ""
+"Typy metadat jsou uživatelem definované vlastnosti, kterým lze přiřadit "
+"hodnoty. Jakmile jsou vytvořeny, musí být přiřazeny k typům dokumentů, buď "
+"jako volitelné nebo požadované, pro každý z nich. Nastavení typu metadat "
+"podle potřeby pro typ dokumentu bude blokovat nahrávání dokumentů tohoto "
+"typu, dokud nebude poskytnuta hodnota metadat."
 
 #: views.py:655
 msgid "There are no metadata types"
@@ -487,7 +518,8 @@ msgstr "Vztahy byly úspěšně aktualizovány"
 #: views.py:697
 msgid ""
 "Create metadata types to be able to associate them to this document type."
-msgstr "Vytvořte typy metadat, abyste je mohli přiřadit k tomuto typu dokumentu."
+msgstr ""
+"Vytvořte typy metadat, abyste je mohli přiřadit k tomuto typu dokumentu."
 
 #: views.py:700
 msgid "There are no metadata types available"

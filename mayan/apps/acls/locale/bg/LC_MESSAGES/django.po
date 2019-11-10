@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:57-0400\n"
+"POT-Creation-Date: 2019-11-09 23:33-0400\n"
 "PO-Revision-Date: 2019-10-16 08:27+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24 links.py:44
@@ -46,16 +47,16 @@ msgstr "Нов ACL"
 msgid "Delete"
 msgstr "Изтрийте"
 
-#: links.py:49 models.py:45 workflow_actions.py:49 workflow_actions.py:164
+#: links.py:49 models.py:45 workflow_actions.py:48 workflow_actions.py:163
 msgid "Permissions"
 msgstr "Разрешения"
 
-#: managers.py:216
+#: managers.py:231
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
 msgstr "Обект \"%s\" не е модел и не може да бъде проверен за достъп"
 
-#: managers.py:236
+#: managers.py:252
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr "Недостатъчен достъп за: %s"
@@ -90,11 +91,14 @@ msgstr "API URL посочва списък с разрешения за кон�
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr "API URL посочва разрешение във връзка с контролен списък на достъп към който е прикачено. Този URL е различен от основния URL на работния поток."
+msgstr ""
+"API URL посочва разрешение във връзка с контролен списък на достъп към който "
+"е прикачено. Този URL е различен от основния URL на работния поток."
 
 #: serializers.py:91
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr "Основен ключ на новото разрешение за включване в контролния списък на достъп"
+msgstr ""
+"Основен ключ на новото разрешение за включване в контролния списък на достъп"
 
 #: serializers.py:115 serializers.py:191
 #, python-format
@@ -105,11 +109,15 @@ msgstr "Няма такова разрешение: %s"
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr "Разделен със запетаи списък на основни ключове за разрешение в контролен списък на разрешения"
+msgstr ""
+"Разделен със запетаи списък на основни ключове за разрешение в контролен "
+"списък на разрешения"
 
 #: serializers.py:142
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr "Основни ключове на ролята, към която е свързан този контролен списък на достъп"
+msgstr ""
+"Основни ключове на ролята, към която е свързан този контролен списък на "
+"достъп"
 
 #: views.py:62
 #, python-format
@@ -129,7 +137,9 @@ msgstr "Няма контролни списъци за достъп за тоз
 msgid ""
 "ACL stands for Access Control List and is a precise method  to control user "
 "access to objects in the system."
-msgstr "ACL е съкращение на Контролен Списък на Достъп и е точен метод за контролиране достъпа на потребителите към обектите в системата."
+msgstr ""
+"ACL е съкращение на Контролен Списък на Достъп и е точен метод за "
+"контролиране достъпа на потребителите към обектите в системата."
 
 #: views.py:154
 #, python-format
@@ -155,50 +165,63 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr "Отменени разрешения се наследяват от родителския обект или се дават направо на потребител с определена роля и не могат да бъдат премахнати от този изглед. Наследените разрешения трябва да бъдат премахнати от ACL на родителския обект или от определената роля чрез меню Настройки."
+msgstr ""
+"Отменени разрешения се наследяват от родителския обект или се дават направо "
+"на потребител с определена роля и не могат да бъдат премахнати от този "
+"изглед. Наследените разрешения трябва да бъдат премахнати от ACL на "
+"родителския обект или от определената роля чрез меню Настройки."
 
-#: workflow_actions.py:26
+#: workflow_actions.py:25
 msgid "Object type"
 msgstr "Тип обект"
 
-#: workflow_actions.py:29
+#: workflow_actions.py:28
 msgid "Type of the object for which the access will be modified."
 msgstr "Тип на обекта за който достъпа ще бъде променен"
 
-#: workflow_actions.py:35
+#: workflow_actions.py:34
 msgid "Object ID"
 msgstr "ID на обекта"
 
-#: workflow_actions.py:38
-msgid ""
-"Numeric identifier of the object for which the access will be modified."
+#: workflow_actions.py:37
+msgid "Numeric identifier of the object for which the access will be modified."
 msgstr "Числов показател на обекта, достъпа на който ще бъде променен."
 
-#: workflow_actions.py:43 workflow_actions.py:158
+#: workflow_actions.py:42 workflow_actions.py:157
 msgid "Roles"
 msgstr "Роли"
 
-#: workflow_actions.py:45 workflow_actions.py:160
+#: workflow_actions.py:44 workflow_actions.py:159
 msgid "Roles whose access will be modified."
 msgstr "Роли, за които достъпа ще бъде променен."
 
-#: workflow_actions.py:52 workflow_actions.py:167
+#: workflow_actions.py:51 workflow_actions.py:166
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr "Разрешение за даване/отнемане на/от ролята за обекта избран по-горе."
 
-#: workflow_actions.py:60
-msgid "Grant access"
-msgstr "Даване на достъп"
+#: workflow_actions.py:59
+#, fuzzy
+#| msgid "Grant document access"
+msgid "Grant object access"
+msgstr "Даване достъп към документа"
 
-#: workflow_actions.py:143
-msgid "Revoke access"
-msgstr "Отнемане на достъп"
+#: workflow_actions.py:142
+#, fuzzy
+#| msgid "Revoke document access"
+msgid "Revoke object access"
+msgstr "Отнемане достъп към документа"
 
-#: workflow_actions.py:175
+#: workflow_actions.py:174
 msgid "Grant document access"
 msgstr "Даване достъп към документа"
 
-#: workflow_actions.py:214
+#: workflow_actions.py:213
 msgid "Revoke document access"
 msgstr "Отнемане достъп към документа"
+
+#~ msgid "Grant access"
+#~ msgstr "Даване на достъп"
+
+#~ msgid "Revoke access"
+#~ msgstr "Отнемане на достъп"

@@ -1,24 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:02-0400\n"
+"POT-Creation-Date: 2019-11-09 23:38-0400\n"
 "PO-Revision-Date: 2019-10-18 09:07+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
+"cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:56 apps.py:131 apps.py:135 events.py:7 links.py:15 links.py:21
+#: apps.py:56 apps.py:131 apps.py:135 events.py:7 links.py:20 links.py:26
 #: permissions.py:7 queues.py:8 settings.py:7
 msgid "OCR"
 msgstr "OCR"
@@ -31,7 +33,7 @@ msgstr "Datum a čas"
 msgid "Result"
 msgstr "Výsledek"
 
-#: backends/tesseract.py:95
+#: backends/tesseract.py:90
 msgid "Tesseract OCR not found."
 msgstr "Tesseract OCR nebyl nalezen."
 
@@ -41,9 +43,11 @@ msgstr "Free Open Source OCR Engine"
 
 #: dependencies.py:36
 msgid ""
-"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or"
-" Cuneiform."
-msgstr "PyOCR je knihovna Python, která zjednodušuje použití nástrojů OCR, jako je Tesseract nebo Cuneiform."
+"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or "
+"Cuneiform."
+msgstr ""
+"PyOCR je knihovna Python, která zjednodušuje použití nástrojů OCR, jako je "
+"Tesseract nebo Cuneiform."
 
 #: events.py:10
 msgid "Document OCR content deleted"
@@ -66,27 +70,27 @@ msgstr "Obsah"
 msgid "Page %(page_number)d"
 msgstr "Strana %(page_number)d"
 
-#: links.py:27 links.py:32
+#: links.py:32 links.py:37
 msgid "Delete OCR content"
 msgstr "Smazat obsah OCR"
 
-#: links.py:38 links.py:43
+#: links.py:43 links.py:48
 msgid "Submit for OCR"
 msgstr "Odeslat do OCR"
 
-#: links.py:48
+#: links.py:53
 msgid "Setup OCR"
 msgstr "Nastavení OCR"
 
-#: links.py:53
+#: links.py:58
 msgid "OCR documents per type"
 msgstr "Dokumenty OCR podle typu"
 
-#: links.py:58 links.py:64 views.py:185
+#: links.py:63 links.py:69 views.py:185
 msgid "OCR errors"
 msgstr "Chyby OCR"
 
-#: links.py:70
+#: links.py:75
 msgid "Download OCR text"
 msgstr "Stáhněte si text OCR"
 

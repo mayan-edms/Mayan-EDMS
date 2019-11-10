@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
@@ -12,14 +12,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:00-0400\n"
+"POT-Creation-Date: 2019-11-09 23:37-0400\n"
 "PO-Revision-Date: 2019-06-17 20:40+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:42
@@ -146,9 +147,12 @@ msgstr "est une expression régulière (insensible à la casse)"
 #: models.py:31 models.py:189
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The {{ "
-"document }} context variable is available."
-msgstr "Entrez un modèle à rendre. Utilisez le langage par défaut de Django pour les modèles (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). La variable de contexte {{document}} est disponible."
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The "
+"{{ document }} context variable is available."
+msgstr ""
+"Entrez un modèle à rendre. Utilisez le langage par défaut de Django pour les "
+"modèles (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). La "
+"variable de contexte {{document}} est disponible."
 
 #: models.py:35
 msgid "Dynamic label"
@@ -169,7 +173,8 @@ msgstr "Erreur de génération du libellé dynamique ; %s"
 
 #: models.py:102
 msgid "This smart link is not allowed for the selected document's type."
-msgstr "Un lien intelligent n'est pas autorisé pour le type de document sélectionné."
+msgstr ""
+"Un lien intelligent n'est pas autorisé pour le type de document sélectionné."
 
 #: models.py:179
 msgid "The inclusion is ignored for the first item."
@@ -231,7 +236,9 @@ msgstr "Afficher les liens intelligents existants"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr "Liste séparée par des virgules des clés primaires de type de document auxquelles ce lien intelligent sera attaché."
+msgstr ""
+"Liste séparée par des virgules des clés primaires de type de document "
+"auxquelles ce lien intelligent sera attaché."
 
 #: serializers.py:141
 #, python-format
@@ -263,8 +270,11 @@ msgstr "Lien inetlligent du document : %s"
 
 #: views.py:135
 #, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr "Documents du lien intelligent  \"%(smart_link)s\" en relation avec \"%(document)s\""
+msgid ""
+"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr ""
+"Documents du lien intelligent  \"%(smart_link)s\" en relation avec "
+"\"%(document)s\""
 
 #: views.py:160
 msgid "Available document types"
@@ -284,7 +294,11 @@ msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
-msgstr "Les index regroupent les documents en unités, généralement avec des propriétés similaires et de types identiques ou similaires. Les liens intelligents permettent de définir des relations entre des documents même s'ils se trouvent dans différents index et sont de types différents."
+msgstr ""
+"Les index regroupent les documents en unités, généralement avec des "
+"propriétés similaires et de types identiques ou similaires. Les liens "
+"intelligents permettent de définir des relations entre des documents même "
+"s'ils se trouvent dans différents index et sont de types différents."
 
 #: views.py:195
 msgid "There are no smart links"
@@ -294,7 +308,10 @@ msgstr "Il n'y a pas de liens intelligents"
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
-msgstr "Les liens intelligents permettent de définir des relations entre des documents même s'ils se trouvent dans différents index et sont de types différents."
+msgstr ""
+"Les liens intelligents permettent de définir des relations entre des "
+"documents même s'ils se trouvent dans différents index et sont de types "
+"différents."
 
 #: views.py:232
 msgid "There are no smart links for this document"
@@ -319,7 +336,9 @@ msgstr "Modifier le lien intelligent :%s"
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
-msgstr "Les conditions sont de petites unités logiques qui, lorsqu'elles sont combinées, définissent le comportement du lien intelligent."
+msgstr ""
+"Les conditions sont de petites unités logiques qui, lorsqu'elles sont "
+"combinées, définissent le comportement du lien intelligent."
 
 #: views.py:306
 msgid "There are no conditions for this smart link"
