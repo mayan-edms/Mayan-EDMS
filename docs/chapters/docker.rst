@@ -10,24 +10,43 @@ How to use this image
 Start a Mayan EDMS Docker image
 -------------------------------
 
+1. Download the Mayan EDMS Docker image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 With Docker properly installed, proceed to download the Mayan EDMS Docker
 image using the command::
 
-    docker pull mayanedms/mayanedms:<version>
+    docker pull mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
 
-Instead of a specific version tag you may use then generic ``:latest`` tag
-to the get latest version available automatically. If you use the ``:latest``
+Instead of a specific version tag you may use then generic ``latest`` tag
+to the get latest version available automatically. If you use the ``latest``
 tag here, remember to do so in the next steps also.::
 
     docker pull mayanedms/mayanedms:latest
 
-Then download the PostgreSQL Docker image::
+
+2. Download the PostgreSQL Docker image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
 
     docker pull |DOCKER_POSTGRES_IMAGE_VERSION|
 
-Create and run a PostgreSQL container::
 
-    docker run -d \
+3. Download the Redis Docker image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+    docker pull |DOCKER_REDIS_IMAGE_VERSION|
+
+4. Create and run a PostgreSQL container
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+    docker run \
+    -d \
     --name mayan-edms-postgres \
     --restart=always \
     -p 5432:5432 \
@@ -43,13 +62,45 @@ expose its internal 5432 port (PostgreSQL's default port) via the host's
 5432 port. The data of this container will reside on the host's
 ``/docker-volumes/mayan-edms/postgres`` folder.
 
-Finally create and run a Mayan EDMS container::
 
-    docker run -d \
+5. Create and run a Redis container
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+    docker run \
+    -d \
+    --name mayan-edms-redis \
+    --restart=always \
+    -p 6379:6379
+    |DOCKER_REDIS_IMAGE_VERSION| \
+    redis-server \
+    --databases \
+    "2" \
+    --maxmemory-policy \
+    allkeys-lru \
+    --save \
+    ""
+
+The Redis container will have two databases, one for background task messages,
+and the other to hold the results of those background tasks. Redis is
+configure to not save its content to disk and to automatically clear up
+memory.
+
+6. Create and run a Mayan EDMS container
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+
+    docker run \
+    -d \
     --name mayan-edms \
     --restart=always \
     -p 80:8000 \
     -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'172.17.0.1'}}" \
+    -e MAYAN_BROKER_URL="redis://172.17.0.1:6379/0" \
+    -e MAYAN_CELERY_RESULT_BACKEND="redis://172.17.0.1:6379/1" \
     -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
     mayanedms/mayanedms:<version>
 
@@ -57,9 +108,7 @@ The Mayan EDMS container will connect to the PostgreSQL container via the
 ``172.17.0.1`` IP address (the Docker host's default IP address). It will
 connect using the ``django.db.backends.postgresql`` database driver and
 connect to the ``mayan`` database using the ``mayan`` user with the password
-``mayanuserpass``. The container will keep connections to the database
-for up to 60 seconds in an attempt to reuse them increasing response time
-and reducing memory usage. The files of the container will be store in the
+``mayanuserpass``. The files of the container will be store in the
 host's ``/docker-volumes/mayan-edms/media`` folder. The container will
 expose its web service running on port 8000 on the host's port 80.
 
@@ -84,7 +133,8 @@ Create the network::
 Launch the PostgreSQL container with the network option and remove the port
 binding (``-p 5432:5432``)::
 
-    docker run -d \
+    docker run \
+    -d \
     --name mayan-edms-postgres \
     --network=mayan \
     --restart=always \
@@ -94,16 +144,35 @@ binding (``-p 5432:5432``)::
     -v /docker-volumes/mayan-edms/postgres:/var/lib/postgresql/data \
     |DOCKER_POSTGRES_IMAGE_VERSION|
 
+Launch the Redis container with the network option and remove the port
+binding (``-p 6379:6379``)::
+
+    docker run \
+    -d \
+    --name mayan-edms-redis \
+    --network=mayan \
+    |DOCKER_REDIS_IMAGE_VERSION| \
+    redis-server \
+    --databases \
+    "2" \
+    --maxmemory-policy \
+    allkeys-lru \
+    --save \
+    ""
+
 Launch the Mayan EDMS container with the network option and change the
 database hostname to the PostgreSQL container name (``mayan-edms-postgres``)
 instead of the IP address of the Docker host (``172.17.0.1``)::
 
-    docker run -d \
+    docker run \
+    -d \
     --name mayan-edms \
     --network=mayan \
     --restart=always \
     -p 80:8000 \
     -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'mayan-edms-postgres'}}" \
+    -e MAYAN_BROKER_URL="redis://mayan-edms-redis:6379/0" \
+    -e MAYAN_CELERY_RESULT_BACKEND="redis://mayan-edms-redis:6379/1" \
     -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
     mayanedms/mayanedms:<version>
 
