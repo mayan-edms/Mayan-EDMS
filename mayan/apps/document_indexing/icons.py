@@ -3,10 +3,13 @@ from __future__ import absolute_import, unicode_literals
 from mayan.apps.appearance.classes import Icon
 from mayan.apps.documents.icons import icon_document_type
 
+icon_index = Icon(driver_name='fontawesome', symbol='list-ul')
 icon_document_index_instance_list = Icon(
     driver_name='fontawesome', symbol='list-ul'
 )
-icon_index = Icon(driver_name='fontawesome', symbol='list-ul')
+icon_document_template_sandbox = Icon(
+    driver_name='fontawesome', symbol='flask'
+)
 icon_document_type_index_templates = icon_index
 icon_index_level_up = Icon(
     driver_name='fontawesomecss', css_classes='fa-level-up-alt fa-rotate-90'

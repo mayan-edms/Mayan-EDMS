@@ -128,6 +128,7 @@
 - Support for proxy model permission inheritance. Proxy models
   now get the permission inheritance from their base models.
 - Update common.http.URL to allow passing a query dictionary.
+- Add the document template sandbox feature.
 
 3.2.9 (2019-11-03)
 ==================
