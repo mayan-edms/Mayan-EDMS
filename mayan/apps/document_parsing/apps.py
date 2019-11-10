@@ -17,7 +17,6 @@ from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
-from .dependencies import *  # NOQA
 from .events import (
     event_parsing_document_content_deleted,
     event_parsing_document_version_submit,

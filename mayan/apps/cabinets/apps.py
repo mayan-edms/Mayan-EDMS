@@ -18,7 +18,6 @@ from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.navigation.classes import SourceColumn
 
-from .dependencies import *  # NOQA
 from .events import (
     event_cabinet_edited, event_cabinet_add_document,
     event_cabinet_remove_document

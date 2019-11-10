@@ -15,7 +15,6 @@ from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import StagingFile
-from .dependencies import *  # NOQA
 from .handlers import (
     handler_copy_transformations_to_version, handler_create_default_document_source,
     handler_initialize_periodic_tasks

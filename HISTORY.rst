@@ -1,3 +1,9 @@
+3.2.10 (2019-XX-XX)
+===================
+- Auto-import dependecies. No need to use:
+  from .dependencies import *  # NOQA
+
+
 3.2.9 (2019-11-03)
 ==================
 - Move IMAPMockServer to its own module.

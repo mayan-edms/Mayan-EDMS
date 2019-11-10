@@ -18,7 +18,6 @@ from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import FileMetadataHelper
-from .dependencies import *  # NOQA
 from .drivers import *  # NOQA
 from .events import (
     event_file_metadata_document_version_finish,

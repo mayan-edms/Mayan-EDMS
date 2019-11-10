@@ -8,7 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_tools
 
-from .dependencies import *  # NOQA
 from .links import (
     link_api, link_api_documentation, link_api_documentation_redoc
 )
