@@ -127,6 +127,7 @@
   Fix passing the dynamic Meta class to the test model.
 - Support for proxy model permission inheritance. Proxy models
   now get the permission inheritance from their base models.
+- Update common.http.URL to allow passing a query dictionary.
 
 3.2.9 (2019-11-03)
 ==================
