@@ -13,6 +13,9 @@
 - Improve workflow field help text. Make it usable
   for the creation/edit form help text and for the 
   column pop over.
+- Fix NamedMultiWidget issue on Python 3. Affects
+  document checkout form. GitLab issue #683. Thanks
+  to John Bentley (@johnbentleyii) for the report.
 
 3.2.9 (2019-11-03)
 ==================
