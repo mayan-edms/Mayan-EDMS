@@ -93,10 +93,10 @@ class MetadataApp(MayanAppConfig):
         )
 
         ModelAttribute(
-            model=Document, name='metadata_value_of',
+            model=Document, name='metadata_value_of.< metadata type name >',
             description=_(
                 'Return the value of a specific document metadata'
-            )
+            ), label=_('Metadata value of')
         )
 
         ModelField(
