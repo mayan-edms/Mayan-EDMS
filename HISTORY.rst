@@ -10,7 +10,9 @@
   and allow a list of content types to be specified.
 - Add missing label to metadata and file metadata model
   properties entries.
-
+- Improve workflow field help text. Make it usable
+  for the creation/edit form help text and for the 
+  column pop over.
 
 3.2.9 (2019-11-03)
 ==================
