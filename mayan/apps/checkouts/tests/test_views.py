@@ -147,13 +147,29 @@ class DocumentCheckoutViewTestCase(
             )
         )
 
-    def test_document_check_out_view_no_permission(self):
-        response = self._request_test_document_check_out_view()
+    def test_document_check_out_get_view_no_permission(self):
+        response = self._request_test_document_check_out_get_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertFalse(self.test_document.is_checked_out())
 
-    def test_document_check_out_view_with_access(self):
+    def test_document_check_out_get_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_check_out
+        )
+
+        response = self._request_test_document_check_out_get_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertFalse(self.test_document.is_checked_out())
+
+    def test_document_check_out_post_view_no_permission(self):
+        response = self._request_test_document_check_out_post_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertFalse(self.test_document.is_checked_out())
+
+    def test_document_check_out_post_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_check_out
         )
@@ -162,7 +178,7 @@ class DocumentCheckoutViewTestCase(
             permission=permission_document_check_out_detail_view
         )
 
-        response = self._request_test_document_check_out_view()
+        response = self._request_test_document_check_out_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(self.test_document.is_checked_out())
