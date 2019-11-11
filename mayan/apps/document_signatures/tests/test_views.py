@@ -2,8 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 from django_downloadview.test import assert_download_response
 
-from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.django_gpg.permissions import permission_key_sign
+from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.models import DocumentVersion
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import TEST_DOCUMENT_PATH
