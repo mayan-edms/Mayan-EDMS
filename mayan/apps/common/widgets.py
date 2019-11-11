@@ -79,7 +79,7 @@ class NamedMultiWidget(forms.widgets.Widget):
 
     def id_for_label(self, id_):
         if id_:
-            id_ += '_{}'.format(self.widgets.keys()[0])
+            id_ += '_{}'.format(list(self.widgets.keys())[0])
         return id_
 
     def value_from_datadict(self, data, files, name):
