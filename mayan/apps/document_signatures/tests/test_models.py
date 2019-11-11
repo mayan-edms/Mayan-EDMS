@@ -3,10 +3,8 @@ from __future__ import unicode_literals
 import hashlib
 import time
 
-from mayan.apps.django_gpg.models import Key
-from mayan.apps.django_gpg.tests.literals import (
-    TEST_KEY_DATA, TEST_KEY_PASSPHRASE
-)
+from mayan.apps.django_gpg.tests.literals import TEST_KEY_PRIVATE_PASSPHRASE
+from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.models import DocumentVersion
 from mayan.apps.documents.tests import (
     GenericDocumentTestCase, TEST_DOCUMENT_PATH
@@ -15,11 +13,13 @@ from mayan.apps.documents.tests import (
 from ..models import DetachedSignature, EmbeddedSignature
 from ..tasks import task_verify_missing_embedded_signature
 
-from .literals import TEST_SIGNED_DOCUMENT_PATH, TEST_KEY_ID, TEST_SIGNATURE_ID
-from .mixins import SignaturesTestMixin
+from .literals import (
+    TEST_SIGNED_DOCUMENT_PATH, TEST_KEY_PUBLIC_ID, TEST_SIGNATURE_ID
+)
+from .mixins import SignatureTestMixin
 
 
-class DocumentSignaturesTestCase(SignaturesTestMixin, GenericDocumentTestCase):
+class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
     auto_upload_document = False
 
     def test_embedded_signature_no_key(self):
@@ -32,7 +32,7 @@ class DocumentSignaturesTestCase(SignaturesTestMixin, GenericDocumentTestCase):
         self.assertEqual(
             signature.document_version, self.test_document.latest_version
         )
-        self.assertEqual(signature.key_id, TEST_KEY_ID)
+        self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(signature.signature_id, None)
 
     def test_embedded_signature_post_key_verify(self):
@@ -45,17 +45,17 @@ class DocumentSignaturesTestCase(SignaturesTestMixin, GenericDocumentTestCase):
         self.assertEqual(
             signature.document_version, self.test_document.latest_version
         )
-        self.assertEqual(signature.key_id, TEST_KEY_ID)
+        self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(signature.signature_id, None)
 
-        self._create_test_key()
+        self._create_test_key_private()
 
         signature = EmbeddedSignature.objects.first()
 
         self.assertEqual(signature.signature_id, TEST_SIGNATURE_ID)
 
     def test_embedded_signature_post_no_key_verify(self):
-        self._create_test_key()
+        self._create_test_key_private()
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
         self.upload_document()
 
@@ -66,7 +66,7 @@ class DocumentSignaturesTestCase(SignaturesTestMixin, GenericDocumentTestCase):
         self.assertEqual(
             signature.document_version, self.test_document.latest_version
         )
-        self.assertEqual(signature.key_id, TEST_KEY_ID)
+        self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(signature.signature_id, TEST_SIGNATURE_ID)
 
         self.test_key.delete()
@@ -76,7 +76,7 @@ class DocumentSignaturesTestCase(SignaturesTestMixin, GenericDocumentTestCase):
         self.assertEqual(signature.signature_id, None)
 
     def test_embedded_signature_with_key(self):
-        self._create_test_key()
+        self._create_test_key_private()
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
         self.upload_document()
 
@@ -88,7 +88,7 @@ class DocumentSignaturesTestCase(SignaturesTestMixin, GenericDocumentTestCase):
             signature.document_version,
             self.test_document.latest_version
         )
-        self.assertEqual(signature.key_id, TEST_KEY_ID)
+        self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(
             signature.public_key_fingerprint, self.test_key.fingerprint
         )
@@ -105,11 +105,11 @@ class DocumentSignaturesTestCase(SignaturesTestMixin, GenericDocumentTestCase):
         self.assertEqual(
             self.test_signature.document_version, self.test_document.latest_version
         )
-        self.assertEqual(self.test_signature.key_id, TEST_KEY_ID)
+        self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(self.test_signature.public_key_fingerprint, None)
 
     def test_detached_signature_with_key(self):
-        self._create_test_key()
+        self._create_test_key_private()
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
 
@@ -120,7 +120,7 @@ class DocumentSignaturesTestCase(SignaturesTestMixin, GenericDocumentTestCase):
         self.assertEqual(
             self.test_signature.document_version, self.test_document.latest_version
         )
-        self.assertEqual(self.test_signature.key_id, TEST_KEY_ID)
+        self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(
             self.test_signature.public_key_fingerprint,
             self.test_key.fingerprint
@@ -138,10 +138,10 @@ class DocumentSignaturesTestCase(SignaturesTestMixin, GenericDocumentTestCase):
             self.test_signature.document_version,
             self.test_document.latest_version
         )
-        self.assertEqual(self.test_signature.key_id, TEST_KEY_ID)
+        self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(self.test_signature.public_key_fingerprint, None)
 
-        self._create_test_key()
+        self._create_test_key_private()
 
         signature = DetachedSignature.objects.first()
 
@@ -150,7 +150,7 @@ class DocumentSignaturesTestCase(SignaturesTestMixin, GenericDocumentTestCase):
         )
 
     def test_detached_signature_post_no_key_verify(self):
-        self._create_test_key()
+        self._create_test_key_private()
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
 
@@ -162,7 +162,7 @@ class DocumentSignaturesTestCase(SignaturesTestMixin, GenericDocumentTestCase):
             self.test_signature.document_version,
             self.test_document.latest_version
         )
-        self.assertEqual(self.test_signature.key_id, TEST_KEY_ID)
+        self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(
             self.test_signature.public_key_fingerprint,
             self.test_key.fingerprint
@@ -199,10 +199,10 @@ class DocumentSignaturesTestCase(SignaturesTestMixin, GenericDocumentTestCase):
         signature = EmbeddedSignature.objects.first()
 
         self.assertEqual(signature.document_version, signed_version)
-        self.assertEqual(signature.key_id, TEST_KEY_ID)
+        self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
 
 
-class EmbeddedSignaturesTestCase(GenericDocumentTestCase):
+class EmbeddedSignaturesTestCase(KeyTestMixin, GenericDocumentTestCase):
     auto_upload_document = False
 
     def test_unsigned_document_version_method(self):
@@ -256,7 +256,7 @@ class EmbeddedSignaturesTestCase(GenericDocumentTestCase):
         )
 
     def test_signing(self):
-        self.test_key = Key.objects.create(key_data=TEST_KEY_DATA)
+        self._create_test_key_private()
 
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
@@ -269,8 +269,8 @@ class EmbeddedSignaturesTestCase(GenericDocumentTestCase):
 
         new_version = EmbeddedSignature.objects.sign_document_version(
             document_version=self.test_document.latest_version,
-            key=self.test_key,
-            passphrase=TEST_KEY_PASSPHRASE
+            key=self.test_key_private,
+            passphrase=TEST_KEY_PRIVATE_PASSPHRASE
         )
 
         self.assertEqual(EmbeddedSignature.objects.count(), 1)

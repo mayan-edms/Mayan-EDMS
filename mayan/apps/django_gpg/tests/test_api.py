@@ -9,27 +9,8 @@ from ..permissions import (
     permission_key_delete, permission_key_upload, permission_key_view
 )
 
-from .literals import TEST_KEY_DATA, TEST_KEY_FINGERPRINT
-from .mixins import KeyTestMixin
-
-
-class KeyAPIViewTestMixin(object):
-    def _request_test_key_create_view(self):
-        return self.post(
-            viewname='rest_api:key-list', data={
-                'key_data': TEST_KEY_DATA
-            }
-        )
-
-    def _request_test_key_delete_view(self):
-        return self.delete(
-            viewname='rest_api:key-detail', kwargs={'pk': self.test_key.pk}
-        )
-
-    def _request_test_key_detail_view(self):
-        return self.get(
-            viewname='rest_api:key-detail', kwargs={'pk': self.test_key.pk}
-        )
+from .literals import TEST_KEY_PRIVATE_FINGERPRINT
+from .mixins import KeyAPIViewTestMixin, KeyTestMixin
 
 
 class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
@@ -44,14 +25,14 @@ class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
 
         response = self._request_test_key_create_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data['fingerprint'], TEST_KEY_FINGERPRINT)
+        self.assertEqual(response.data['fingerprint'], TEST_KEY_PRIVATE_FINGERPRINT)
 
         key = Key.objects.first()
         self.assertEqual(Key.objects.count(), 1)
-        self.assertEqual(key.fingerprint, TEST_KEY_FINGERPRINT)
+        self.assertEqual(key.fingerprint, TEST_KEY_PRIVATE_FINGERPRINT)
 
     def test_key_delete_view_no_access(self):
-        self._create_test_key()
+        self._create_test_key_private()
 
         response = self._request_test_key_delete_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -59,9 +40,9 @@ class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
         self.assertEqual(Key.objects.count(), 1)
 
     def test_key_delete_view_with_access(self):
-        self._create_test_key()
+        self._create_test_key_private()
         self.grant_access(
-            obj=self.test_key, permission=permission_key_delete
+            obj=self.test_key_private, permission=permission_key_delete
         )
 
         response = self._request_test_key_delete_view()
@@ -70,19 +51,19 @@ class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
         self.assertEqual(Key.objects.count(), 0)
 
     def test_key_detail_view_no_access(self):
-        self._create_test_key()
+        self._create_test_key_private()
 
         response = self._request_test_key_detail_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_key_detail_view_with_access(self):
-        self._create_test_key()
+        self._create_test_key_private()
         self.grant_access(
-            obj=self.test_key, permission=permission_key_view
+            obj=self.test_key_private, permission=permission_key_view
         )
 
         response = self._request_test_key_detail_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['fingerprint'], self.test_key.fingerprint
+            response.data['fingerprint'], self.test_key_private.fingerprint
         )

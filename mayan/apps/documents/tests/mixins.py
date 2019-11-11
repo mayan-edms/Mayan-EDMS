@@ -58,6 +58,8 @@ class DocumentTestMixin(object):
 
         self.test_document = document
         self.test_documents.append(document)
+        self.test_document_page = document.latest_version.pages.first()
+        self.test_document_version = document.latest_version
 
     def _calculate_test_document_path(self):
         if not self.test_document_path:
