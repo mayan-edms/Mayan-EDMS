@@ -137,6 +137,8 @@
   tests.
 - Rename expected_content_type to expected_content_types
   and allow a list of content types to be specified.
+- Add missing label to metadata and file metadata model
+  properties entries.
 
 3.2.9 (2019-11-03)
 ==================
