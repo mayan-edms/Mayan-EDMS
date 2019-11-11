@@ -288,3 +288,218 @@ class SignaturesViewTestCase(
             EmbeddedSignature.objects.unsigned_document_versions().count(),
             TEST_UNSIGNED_DOCUMENT_COUNT
         )
+
+
+class DetachedSignaturesViewTestCase(
+    KeyTestMixin, SignatureTestMixin, DetachedSignatureViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_upload_document = False
+
+    def test_detached_signature_create_view_with_no_permission(self):
+        self.upload_document()
+        self._create_test_key_private()
+
+        signatures = self.test_document.latest_version.signatures.count()
+
+        response = self._request_test_document_version_signature_create_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(
+            self.test_document.latest_version.signatures.count(),
+            signatures
+        )
+
+    def test_detached_signature_create_view_with_document_access(self):
+        self.upload_document()
+        self._create_test_key_private()
+
+        signatures = self.test_document.latest_version.signatures.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_sign_detached
+        )
+
+        response = self._request_test_document_version_signature_create_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(
+            self.test_document.latest_version.signatures.count(),
+            signatures
+        )
+
+    def test_detached_signature_create_view_with_key_access(self):
+        self.upload_document()
+        self._create_test_key_private()
+
+        signatures = self.test_document.latest_version.signatures.count()
+
+        self.grant_access(
+            obj=self.test_key_private,
+            permission=permission_key_sign
+        )
+
+        response = self._request_test_document_version_signature_create_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(
+            self.test_document.latest_version.signatures.count(),
+            signatures
+        )
+
+    def test_detached_signature_create_view_with_full_access(self):
+        self.upload_document()
+        self._create_test_key_private()
+
+        signatures = self.test_document.latest_version.signatures.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_sign_detached
+        )
+        self.grant_access(
+            obj=self.test_key_private,
+            permission=permission_key_sign
+        )
+
+        response = self._request_test_document_version_signature_create_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_document.latest_version.signatures.count(),
+            signatures + 1
+        )
+
+    def test_signature_download_view_no_permission(self):
+        self.test_document_path = TEST_DOCUMENT_PATH
+        self.upload_document()
+
+        self._create_test_detached_signature()
+
+        response = self._request_test_document_version_signature_download_view()
+        self.assertEqual(response.status_code, 403)
+
+    def test_signature_download_view_with_access(self):
+        self.test_document_path = TEST_DOCUMENT_PATH
+        self.upload_document()
+
+        self._create_test_detached_signature()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_signature_download
+        )
+
+        self.expected_content_types = ('application/octet-stream; charset=utf-8',)
+
+        response = self._request_test_document_version_signature_download_view()
+
+        with self.test_signature.signature_file as file_object:
+            assert_download_response(
+                self, response=response, content=file_object.read(),
+            )
+
+    def test_signature_upload_view_no_permission(self):
+        self.test_document_path = TEST_DOCUMENT_PATH
+        self.upload_document()
+
+        response = self._request_test_document_version_signature_upload_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(DetachedSignature.objects.count(), 0)
+
+    def test_signature_upload_view_with_access(self):
+        self.test_document_path = TEST_DOCUMENT_PATH
+        self.upload_document()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_signature_upload
+        )
+
+        response = self._request_test_document_version_signature_upload_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(DetachedSignature.objects.count(), 1)
+
+
+class EmbeddedSignaturesViewTestCase(
+    KeyTestMixin, EmbeddedSignatureViewTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_document = False
+
+    def test_embedded_signature_create_view_with_no_permission(self):
+        self.upload_document()
+        self._create_test_key_private()
+
+        signatures = self.test_document.latest_version.signatures.count()
+
+        response = self._request_test_document_version_signature_create_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(
+            self.test_document.latest_version.signatures.count(),
+            signatures
+        )
+
+    def test_embedded_signature_create_view_with_document_access(self):
+        self.upload_document()
+        self._create_test_key_private()
+
+        signatures = self.test_document.latest_version.signatures.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_sign_embedded
+        )
+
+        response = self._request_test_document_version_signature_create_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(
+            self.test_document.latest_version.signatures.count(),
+            signatures
+        )
+
+    def test_embedded_signature_create_view_with_key_access(self):
+        self.upload_document()
+        self._create_test_key_private()
+
+        signatures = self.test_document.latest_version.signatures.count()
+
+        self.grant_access(
+            obj=self.test_key_private,
+            permission=permission_key_sign
+        )
+
+        response = self._request_test_document_version_signature_create_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(
+            self.test_document.latest_version.signatures.count(),
+            signatures
+        )
+
+    def test_embedded_signature_create_view_with_full_access(self):
+        self.upload_document()
+        self._create_test_key_private()
+
+        signatures = self.test_document.latest_version.signatures.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_sign_embedded
+        )
+        self.grant_access(
+            obj=self.test_key_private,
+            permission=permission_key_sign
+        )
+
+        response = self._request_test_document_version_signature_create_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_document.latest_version.signatures.count(),
+            signatures + 1
+        )
