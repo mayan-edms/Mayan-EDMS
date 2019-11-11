@@ -104,6 +104,7 @@ INSTALLED_APPS = (
     'mayan.apps.rest_api',
     'mayan.apps.smart_settings',
     'mayan.apps.task_manager',
+    'mayan.apps.templating',
     'mayan.apps.user_management',
     # Project apps
     'mayan.apps.motd',

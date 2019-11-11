@@ -1,0 +1,28 @@
+{% load static %}
+
+{% include 'appearance/generic_form.html' %}
+
+{% block javascript %}
+    <script>
+        jQuery(document).ready(function() {
+            $('#id_template_model_property').change(function(event) {
+                var $idModelProperty = $(this);
+                var $idTemplate = $('#id_template_template');
+                var templateCursorPosition = $idTemplate.prop('selectionStart');
+                var templateValue = $idTemplate.val();
+
+                var propertyText = '{{ ';
+                propertyText = propertyText + '{{ form.model_variable }}.';
+                propertyText = propertyText + $idModelProperty.val();
+                propertyText = propertyText + ' }}';
+
+                templateValue = templateValue.slice(0, templateCursorPosition) + propertyText + templateValue.slice(templateCursorPosition);
+                $idTemplate.val(templateValue);
+                $idTemplate.focus();
+                $idTemplate.prop('selectionStart', templateCursorPosition + propertyText.length);
+                $idTemplate.prop('selectionEnd', templateCursorPosition + propertyText.length);
+                $('#id_template_model_property option')[0].selected = true;
+            });
+        });
+    </script>
+{% endblock javascript %}
