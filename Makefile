@@ -32,6 +32,10 @@ test-all: ## Run all tests.
 test-all: clean-pyc
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --nomigrations $(ARGUMENTS)
 
+test-all-debug: ## Run all tests in debug mode.
+test-all-debug: clean-pyc
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --nomigrations --debug-mode $(ARGUMENTS)
+
 test-launch-postgres:
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
