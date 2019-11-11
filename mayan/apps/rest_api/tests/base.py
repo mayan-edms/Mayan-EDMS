@@ -11,7 +11,7 @@ class BaseAPITestCase(APITestCase, GenericViewTestCase):
     """
     API test case class that invalidates permissions and smart settings
     """
-    expected_content_type = None
+    expected_content_types = None
 
     def setUp(self):
         super(BaseAPITestCase, self).setUp()

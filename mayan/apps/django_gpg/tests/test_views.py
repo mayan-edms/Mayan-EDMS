@@ -31,7 +31,7 @@ class KeyViewTestCase(KeyTestMixin, KeyViewTestMixin, GenericViewTestCase):
         self.assertEqual(response.status_code, 403)
 
     def test_key_download_view_with_permission(self):
-        self.expected_content_type = 'application/octet-stream; charset=utf-8'
+        self.expected_content_types = ('application/octet-stream; charset=utf-8',)
 
         self._create_test_key()
 
