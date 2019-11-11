@@ -306,7 +306,7 @@ class DetachedSignaturesViewTestCase(
             permission=permission_document_version_signature_download
         )
 
-        self.expected_content_type = 'application/octet-stream; charset=utf-8'
+        self.expected_content_types = ('application/octet-stream; charset=utf-8',)
 
         response = self._request_test_document_version_signature_download_view()
 

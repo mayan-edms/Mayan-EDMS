@@ -131,6 +131,12 @@
 - Add the document template sandbox feature.
 - Auto-import dependecies. No need to use:
   from .dependencies import *  # NOQA
+- Add makefile target to run all tests in debug mode.
+  This mode is more strict and sidesteps a Django bug that
+  causes errors in the template code that to be silent during
+  tests.
+- Rename expected_content_type to expected_content_types
+  and allow a list of content types to be specified.
 
 3.2.9 (2019-11-03)
 ==================

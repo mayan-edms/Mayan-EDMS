@@ -43,7 +43,7 @@ class DocumentEventsTestCase(
         self.assertEqual(list(Action.objects.any(obj=self.test_document)), [])
 
     def test_document_download_event_with_permissions(self):
-        self.expected_content_type = 'image/png; charset=utf-8'
+        self.expected_content_types = ('image/png; charset=utf-8',)
 
         Action.objects.all().delete()
 

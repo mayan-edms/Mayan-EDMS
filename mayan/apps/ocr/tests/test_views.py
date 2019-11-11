@@ -173,7 +173,7 @@ class OCRViewsTestCase(OCRViewTestMixin, GenericDocumentViewTestCase):
 
     def test_document_ocr_download_view_with_access(self):
         self.test_document.submit_for_ocr()
-        self.expected_content_type = 'application/octet-stream; charset=utf-8'
+        self.expected_content_types = ('application/octet-stream; charset=utf-8',)
 
         self.grant_access(
             obj=self.test_document, permission=permission_ocr_content_view

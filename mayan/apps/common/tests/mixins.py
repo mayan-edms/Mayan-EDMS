@@ -116,7 +116,7 @@ class ConnectionsCheckTestCaseMixin(object):
 
 
 class ContentTypeCheckTestCaseMixin(object):
-    expected_content_type = 'text/html; charset=utf-8'
+    expected_content_types = ('text/html', 'text/html; charset=utf-8')
 
     def _pre_setup(self):
         super(ContentTypeCheckTestCaseMixin, self)._pre_setup()
@@ -127,11 +127,11 @@ class ContentTypeCheckTestCaseMixin(object):
                 response = super(CustomClient, self).request(*args, **kwargs)
 
                 content_type = response._headers.get('content-type', [None, ''])[1]
-                if test_instance.expected_content_type:
-                    test_instance.assertEqual(
-                        content_type, test_instance.expected_content_type,
+                if test_instance.expected_content_types:
+                    test_instance.assertTrue(
+                        content_type in test_instance.expected_content_types,
                         msg='Unexpected response content type: {}, expected: {}.'.format(
-                            content_type, test_instance.expected_content_type
+                            content_type, ' or '.join(test_instance.expected_content_types)
                         )
                     )
 
