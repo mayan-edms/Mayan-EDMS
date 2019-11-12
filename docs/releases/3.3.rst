@@ -216,6 +216,7 @@ Bugs fixed or issues closed
 - :gitlab-issue:`532` Workflow preview isn't updated right after transitions are modified
 - :gitlab-issue:`540` hint-outdated/update documentation
 - :gitlab-issue:`594` 3.2b1: Unable to install/run under Python 3.5/3.6/3.7
+- :gitlab-issue:`608` How to know who put a document in trash can? [Video]
 - :gitlab-issue:`634` Failing docker entrypoint when using secret config
 - :gitlab-issue:`635` Build a docker image for Python3
 - :gitlab-issue:`640` UX: "Toast" Popup position prevents access to actions

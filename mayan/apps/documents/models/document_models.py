@@ -5,7 +5,7 @@ import uuid
 
 from django.apps import apps
 from django.core.files import File
-from django.db import models
+from django.db import models, transaction
 from django.urls import reverse
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
@@ -13,7 +13,7 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 
 from ..events import (
     event_document_create, event_document_properties_edit,
-    event_document_type_change,
+    event_document_trashed, event_document_type_change,
 )
 from ..managers import DocumentManager, PassthroughManager, TrashCanManager
 from ..settings import setting_language
@@ -112,11 +112,14 @@ class Document(models.Model):
 
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
+        _user = kwargs.pop('_user', True)
 
         if not self.in_trash and to_trash:
             self.in_trash = True
             self.deleted_date_time = now()
-            self.save()
+            with transaction.atomic():
+                self.save(_commit_events=False)
+                event_document_trashed.commit(actor=_user, target=self)
         else:
             for version in self.versions.all():
                 version.delete()
