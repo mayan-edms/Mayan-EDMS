@@ -16,6 +16,8 @@
 - Fix NamedMultiWidget issue on Python 3. Affects
   document checkout form. GitLab issue #683. Thanks
   to John Bentley (@johnbentleyii) for the report.
+- Add missing Event class cache invalidation when
+  calling the refresh() method.
 
 3.2.9 (2019-11-03)
 ==================
