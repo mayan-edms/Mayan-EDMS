@@ -328,14 +328,6 @@ SWAGGER_SETTINGS = {
 
 AJAX_REDIRECT_CODE = 278
 
-# ----- Database -----
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),
-    }
-}
-
 BASE_INSTALLED_APPS = INSTALLED_APPS
 COMMON_EXTRA_APPS = ()
 COMMON_DISABLED_APPS = ()
@@ -358,9 +350,32 @@ if 'revertsettings' not in sys.argv:
 
     for setting in BOOTSTRAP_SETTING_LIST:
         if setting['name'] in configuration_result:
-            globals().update({setting['name']: configuration_result[setting['name']]})
+            globals().update(
+                {setting['name']: configuration_result[setting['name']]}
+            )
         elif setting['name'] in environment_result:
-            globals().update({setting['name']: environment_result[setting['name']]})
+            globals().update(
+                {setting['name']: environment_result[setting['name']]}
+            )
+        else:
+            # Apply the default only if it has not yet been defined previously
+            # in this module.
+            if setting['name'] not in globals():
+                globals().update(
+                    {
+                        setting['name']: get_environment_setting(
+                            name=setting['name']
+                        )
+                    }
+                )
+else:
+    # Safe fallback to allow the revertsettings command to complete.
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),
+        }
+    }
 
 
 for app in INSTALLED_APPS:
@@ -378,3 +393,24 @@ for APP in (COMMON_EXTRA_APPS or ()):
 INSTALLED_APPS = [
     APP for APP in INSTALLED_APPS if APP not in (COMMON_DISABLED_APPS or ())
 ]
+
+if not DATABASES:
+    if DATABASE_ENGINE:
+        DATABASES = {
+            'default': {
+                'ENGINE': DATABASE_ENGINE,
+                'NAME': DATABASE_NAME,
+                'USER': DATABASE_USER,
+                'PASSWORD': DATABASE_PASSWORD,
+                'HOST': DATABASE_HOST,
+                'PORT': DATABASE_PORT,
+                'CONN_MAX_AGE': DATABASE_CONN_MAX_AGE
+            }
+        }
+    else:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),
+            }
+        }

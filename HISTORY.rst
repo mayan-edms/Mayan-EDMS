@@ -134,6 +134,10 @@
 - Add document trashed event. Closes GitLab issue #608
   Thanks to Vikas Kedia (@vikaskedia) for the report.
 - Add transaction handling to document model events.
+- Add back support for individual database settings
+  for compatibility with version 3.2 settings.
+  These are now a fallback if the new 'DATABASES'
+  setting is not specified.
 
 3.2.10 (2019-XX-XX)
 ===================
