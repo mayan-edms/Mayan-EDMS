@@ -20,3 +20,5 @@ class TemplateField(forms.CharField):
             'Use Django\'s default templating language '
             '(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)'
         ) % {'django_version': mayan.__django_version__}
+        self.widget.attrs['model'] = self.model
+        self.widget.attrs['data-model-variable'] = self.model_variable

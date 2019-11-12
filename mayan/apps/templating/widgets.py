@@ -16,9 +16,11 @@ class TemplateWidget(NamedMultiWidget):
     def __init__(self, attrs=None, **kwargs):
         widgets = OrderedDict()
 
-        widgets['model_property'] = forms.widgets.Select()
+        widgets['model_property'] = forms.widgets.Select(
+            attrs={'data-template-fields': 'model_property'}
+        )
         widgets['template'] = forms.widgets.Textarea(
-            attrs={'rows': 5}
+            attrs={'rows': 5, 'data-template-fields': 'template'}
         )
         super(TemplateWidget, self).__init__(
             widgets=widgets, attrs=attrs, **kwargs

@@ -23,7 +23,3 @@ class DocumentTemplateSandboxForm(forms.Form):
             model_variable=self.model_variable, required=False
         )
         self.order_fields(field_order=('template', 'result'))
-        self.fields['template'].widget.attrs['model'] = self.model
-        self.fields['template'].widget.attrs[
-            'data-model-variable'
-        ] = self.model_variable
