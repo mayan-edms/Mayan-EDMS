@@ -21,3 +21,15 @@ class SmartSettingTestMixin(object):
             self.test_settings_namespace = Namespace(
                 label=TEST_NAMESPACE_LABEL, name=TEST_NAMESPACE_NAME
             )
+
+
+class SmartSettingViewTestMixin(object):
+    def _request_namespace_list_view(self):
+        return self.get(viewname='settings:namespace_list')
+
+    def _request_namespace_detail_view(self):
+        return self.get(
+            viewname='settings:namespace_detail', kwargs={
+                'namespace_name': self.test_settings_namespace.name
+            }
+        )
