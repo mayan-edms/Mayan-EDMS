@@ -75,7 +75,6 @@ class SignaturesViewTestCase(
     def test_signature_detail_view_no_permission(self):
         self._create_test_key_public()
 
-
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
 
