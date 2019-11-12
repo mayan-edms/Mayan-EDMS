@@ -1,3 +1,7 @@
+3.3.11 (2019-XX-XX)
+===================
+- Backport transaction handling to document model events.
+
 3.2.10 (2019-11-19)
 ===================
 - Auto-import dependencies. No need to use:
