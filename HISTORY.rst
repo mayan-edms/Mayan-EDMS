@@ -129,6 +129,9 @@
   now get the permission inheritance from their base models.
 - Update common.http.URL to allow passing a query dictionary.
 - Add the document template sandbox feature.
+
+3.2.10 (2019-XX-XX)
+===================
 - Auto-import dependecies. No need to use:
   from .dependencies import *  # NOQA
 - Add makefile target to run all tests in debug mode.
@@ -139,6 +142,14 @@
   and allow a list of content types to be specified.
 - Add missing label to metadata and file metadata model
   properties entries.
+- Improve workflow field help text. Make it usable
+  for the creation/edit form help text and for the
+  column pop over.
+- Fix NamedMultiWidget issue on Python 3. Affects
+  document checkout form. GitLab issue #683. Thanks
+  to John Bentley (@johnbentleyii) for the report.
+- Add missing Event class cache invalidation when
+  calling the refresh() method.
 
 3.2.9 (2019-11-03)
 ==================

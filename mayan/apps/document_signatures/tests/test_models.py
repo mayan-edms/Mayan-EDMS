@@ -47,14 +47,14 @@ class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
         self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(signature.signature_id, None)
 
-        self._create_test_public_key()
+        self._create_test_key_public()
 
         signature = EmbeddedSignature.objects.first()
 
         self.assertEqual(signature.signature_id, TEST_SIGNATURE_ID)
 
     def test_embedded_signature_post_no_key_verify(self):
-        self._create_test_public_key()
+        self._create_test_key_public()
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
         self.upload_document()
 
@@ -75,7 +75,7 @@ class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
         self.assertEqual(signature.signature_id, None)
 
     def test_embedded_signature_with_key(self):
-        self._create_test_public_key()
+        self._create_test_key_public()
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
         self.upload_document()
 
@@ -109,7 +109,7 @@ class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
         self.assertEqual(self.test_signature.public_key_fingerprint, None)
 
     def test_detached_signature_with_key(self):
-        self._create_test_public_key()
+        self._create_test_key_public()
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
 
@@ -142,7 +142,7 @@ class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
         self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(self.test_signature.public_key_fingerprint, None)
 
-        self._create_test_public_key()
+        self._create_test_key_public()
 
         signature = DetachedSignature.objects.first()
 
@@ -151,7 +151,7 @@ class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
         )
 
     def test_detached_signature_post_no_key_verify(self):
-        self._create_test_public_key()
+        self._create_test_key_public()
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
 

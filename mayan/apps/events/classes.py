@@ -73,6 +73,9 @@ class EventType(object):
     @classmethod
     def refresh(cls):
         for event_type in cls.all():
+            # Invalidate cache and recreate store events while repopulating
+            # cache
+            event_type.stored_event_type = None
             event_type.get_stored_event_type()
 
     def __init__(self, namespace, name, label):
