@@ -129,6 +129,8 @@
   now get the permission inheritance from their base models.
 - Update common.http.URL to allow passing a query dictionary.
 - Add the document template sandbox feature.
+- Use the generic TemplateField for the expression field
+  of index tree templates.
 
 3.2.10 (2019-XX-XX)
 ===================

@@ -1,11 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.template import (
-    Context, RequestContext, Template, TemplateSyntaxError
-)
+from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -15,8 +12,6 @@ from mayan.apps.common.generics import (
     AddRemoveView, ConfirmView, FormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.common.http import URL
-from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
