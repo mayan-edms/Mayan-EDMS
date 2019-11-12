@@ -3,12 +3,16 @@ from __future__ import absolute_import, unicode_literals
 from collections import OrderedDict
 
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.classes import ModelProperty
 from mayan.apps.common.widgets import NamedMultiWidget
 
 
 class TemplateWidget(NamedMultiWidget):
+    class Media:
+        js = ('templating/js/template_widget.js',)
+
     def __init__(self, attrs=None, **kwargs):
         widgets = OrderedDict()
 
@@ -25,7 +29,7 @@ class TemplateWidget(NamedMultiWidget):
             model=self.attrs['model']
         )
         self.widgets['model_property'].choices = (
-            [('', '----')] + choices
+            [('', _('<Model property choices>'))] + choices
         )
         return {
             'model_property': None, 'template': value

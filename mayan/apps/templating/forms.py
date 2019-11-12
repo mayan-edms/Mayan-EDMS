@@ -19,12 +19,11 @@ class DocumentTemplateSandboxForm(forms.Form):
         self.model_variable = kwargs.pop('model_variable')
         super(DocumentTemplateSandboxForm, self).__init__(*args, **kwargs)
         self.fields['template'] = TemplateField(
-            help_text=_(
-                'The template string to be evaluated. '
-                'Use Django\'s default templating language '
-                '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)'
-            ), label=_('Template'), model=self.model,
+            label=_('Template'), model=self.model,
             model_variable=self.model_variable, required=False
         )
         self.order_fields(field_order=('template', 'result'))
         self.fields['template'].widget.attrs['model'] = self.model
+        self.fields['template'].widget.attrs[
+            'data-model-variable'
+        ] = self.model_variable

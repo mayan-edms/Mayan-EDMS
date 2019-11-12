@@ -19,7 +19,6 @@ class DocumentTemplateSandboxView(ExternalObjectMixin, FormView):
     external_object_class = Document
     external_object_permission = permission_template_sandbox
     form_class = DocumentTemplateSandboxForm
-    template_name = 'templating/template_form.html'
 
     def form_valid(self, form):
         path = reverse(
