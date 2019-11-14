@@ -8,11 +8,10 @@ from .api_views import (
     APIIndexTemplateView, APIIndexView
 )
 from .views import (
-    DocumentIndexNodeListView, DocumentTemplateSandboxView,
-    DocumentTypeIndexesView, IndexInstanceNodeView, IndexListView,
-    IndexesRebuildView, SetupIndexDocumentTypesView, SetupIndexCreateView,
-    SetupIndexDeleteView, SetupIndexEditView, SetupIndexListView,
-    SetupIndexRebuildView, SetupIndexTreeTemplateListView,
+    DocumentIndexNodeListView, DocumentTypeIndexesView, IndexInstanceNodeView,
+    IndexListView, IndexesRebuildView, SetupIndexDocumentTypesView,
+    SetupIndexCreateView, SetupIndexDeleteView, SetupIndexEditView,
+    SetupIndexListView, SetupIndexRebuildView, SetupIndexTreeTemplateListView,
     TemplateNodeCreateView, TemplateNodeDeleteView, TemplateNodeEditView
 )
 
@@ -83,11 +82,6 @@ urlpatterns_tools = [
     url(
         regex=r'^instances/rebuild/$', view=IndexesRebuildView.as_view(),
         name='rebuild_index_instances'
-    ),
-    url(
-        regex=r'^documents/(?P<pk>\d+)/sandbox/$',
-        view=DocumentTemplateSandboxView.as_view(),
-        name='document_template_sandbox'
     ),
 ]
 

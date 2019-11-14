@@ -23,13 +23,6 @@ link_document_index_instance_list = Link(
     text=_('Indexes'), view='indexing:document_index_list',
 )
 
-link_document_template_sandbox = Link(
-    args='resolved_object.pk',
-    icon_class_path='mayan.apps.document_indexing.icons.icon_document_template_sandbox',
-    permissions=(permission_document_indexing_edit,),
-    text=_('Sandbox'),
-    view='indexing:document_template_sandbox',
-)
 link_document_type_index_templates = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.document_indexing.icons.icon_document_type_index_templates',

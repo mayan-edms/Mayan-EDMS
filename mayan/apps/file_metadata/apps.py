@@ -20,7 +20,6 @@ from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import FileMetadataHelper
-from .dependencies import *  # NOQA
 from .drivers import *  # NOQA
 from .events import (
     event_file_metadata_document_version_finish,
@@ -95,10 +94,11 @@ class FileMetadataApp(MayanAppConfig):
         )
 
         ModelAttribute(
-            model=Document, name='file_metadata_value_of',
+            model=Document,
+            name='file_metadata_value_of.< dotted path to driver and property >',
             description=_(
                 'Return the value of a specific file metadata.'
-            )
+            ), label=_('File metadata value of')
         )
 
         ModelEventType.register(

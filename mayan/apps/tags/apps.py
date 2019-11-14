@@ -23,7 +23,6 @@ from mayan.apps.events.links import (
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
-from .dependencies import *  # NOQA
 from .events import (
     event_tag_attach, event_tag_edited, event_tag_remove
 )

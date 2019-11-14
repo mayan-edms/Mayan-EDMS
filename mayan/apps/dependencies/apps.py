@@ -10,7 +10,6 @@ from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import Dependency, DependencyGroup, DependencyGroupEntry
-from .dependencies import *  # NOQA
 from .links import (
     link_check_version, link_dependency_group_entry_detail,
     link_dependency_group_entry_list, link_dependency_group_list,
@@ -28,6 +27,8 @@ class DependenciesApp(MayanAppConfig):
 
     def ready(self):
         super(DependenciesApp, self).ready()
+
+        Dependency.initialize()
 
         SourceColumn(
             attribute='get_label', label=_('Label'), order=-1, source=Dependency

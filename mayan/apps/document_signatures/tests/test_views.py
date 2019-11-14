@@ -2,8 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 from django_downloadview.test import assert_download_response
 
-from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.django_gpg.permissions import permission_key_sign
+from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.models import DocumentVersion
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import TEST_DOCUMENT_PATH
@@ -35,7 +35,7 @@ class SignaturesViewTestCase(
     auto_upload_document = False
 
     def test_signature_delete_view_no_permission(self):
-        self._create_test_public_key()
+        self._create_test_key_public()
 
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
@@ -52,7 +52,7 @@ class SignaturesViewTestCase(
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
     def test_signature_delete_view_with_access(self):
-        self._create_test_public_key()
+        self._create_test_key_public()
 
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
@@ -73,7 +73,7 @@ class SignaturesViewTestCase(
         self.assertEqual(DetachedSignature.objects.count(), 0)
 
     def test_signature_detail_view_no_permission(self):
-        self._create_test_public_key()
+        self._create_test_key_public()
 
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
@@ -84,7 +84,7 @@ class SignaturesViewTestCase(
         self.assertEqual(response.status_code, 404)
 
     def test_signature_detail_view_with_access(self):
-        self._create_test_public_key()
+        self._create_test_key_public()
 
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
@@ -103,8 +103,7 @@ class SignaturesViewTestCase(
         )
 
     def test_signature_list_view_no_permission(self):
-        self._create_test_public_key()
-
+        self._create_test_key_public()
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
 
@@ -116,7 +115,7 @@ class SignaturesViewTestCase(
         self.assertEqual(response.status_code, 404)
 
     def test_signature_list_view_with_access(self):
-        self._create_test_public_key()
+        self._create_test_key_public()
 
         self.test_document_path = TEST_DOCUMENT_PATH
         self.upload_document()
@@ -306,7 +305,7 @@ class DetachedSignaturesViewTestCase(
             permission=permission_document_version_signature_download
         )
 
-        self.expected_content_type = 'application/octet-stream; charset=utf-8'
+        self.expected_content_types = ('application/octet-stream; charset=utf-8',)
 
         response = self._request_test_document_version_signature_download_view()
 

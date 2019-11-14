@@ -18,6 +18,9 @@ event_document_new_version = namespace.add_event_type(
 event_document_properties_edit = namespace.add_event_type(
     label=_('Document properties edited'), name='document_edit'
 )
+event_document_trashed = namespace.add_event_type(
+    label=_('Document trashed'), name='document_trashed'
+)
 # The type of an existing document is changed to another type
 event_document_type_change = namespace.add_event_type(
     label=_('Document type changed'), name='document_type_change'

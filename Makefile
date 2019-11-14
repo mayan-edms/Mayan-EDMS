@@ -29,9 +29,17 @@ test: clean-pyc
 test: ## MODULE=<python module name> - Run tests for a single app, module or test class.
 	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --nomigrations $(ARGUMENTS)
 
+test-debug: clean-pyc
+test-debug: ## MODULE=<python module name> - Run tests for a single app, module or test class, in debug mode.
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --nomigrations --debug-mode $(ARGUMENTS)
+
 test-all: ## Run all tests.
 test-all: clean-pyc
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --nomigrations $(ARGUMENTS)
+
+test-all-debug: ## Run all tests in debug mode.
+test-all-debug: clean-pyc
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --nomigrations --debug-mode $(ARGUMENTS)
 
 test-launch-postgres:
 	@docker rm -f test-postgres || true

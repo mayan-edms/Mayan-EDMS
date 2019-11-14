@@ -3,11 +3,9 @@ from __future__ import unicode_literals
 import json
 import mock
 
-from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.common.tests.mixins import TestServerTestCaseMixin
 from mayan.apps.common.tests.mocks import request_method_factory
 from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
-from mayan.apps.document_states.tests.base import ActionTestCase
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..workflow_actions import HTTPPostAction

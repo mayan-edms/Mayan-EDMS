@@ -187,10 +187,12 @@ class DocumentViewTestCase(
         self.assertEqual(response.status_code, 403)
 
     def test_document_download_view_with_permission(self):
-        # Set the expected_content_type for
+        # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
-        self.expected_content_type = '{}; charset=utf-8'.format(
-            self.test_document.file_mimetype
+        self.expected_content_types = (
+            '{}; charset=utf-8'.format(
+                self.test_document.file_mimetype
+            ),
         )
 
         self.grant_access(
@@ -212,10 +214,12 @@ class DocumentViewTestCase(
         self.assertEqual(response.status_code, 403)
 
     def test_document_multiple_download_view_with_permission(self):
-        # Set the expected_content_type for
+        # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
-        self.expected_content_type = '{}; charset=utf-8'.format(
-            self.test_document.file_mimetype
+        self.expected_content_types = (
+            '{}; charset=utf-8'.format(
+                self.test_document.file_mimetype
+            ),
         )
         self.grant_access(
             obj=self.test_document, permission=permission_document_download
@@ -236,10 +240,12 @@ class DocumentViewTestCase(
         self.assertEqual(response.status_code, 403)
 
     def test_document_version_download_view_with_permission(self):
-        # Set the expected_content_type for
+        # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
-        self.expected_content_type = '{}; charset=utf-8'.format(
-            self.test_document.latest_version.mimetype
+        self.expected_content_types = (
+            '{}; charset=utf-8'.format(
+                self.test_document.latest_version.mimetype
+            ),
         )
 
         self.grant_access(
@@ -259,10 +265,12 @@ class DocumentViewTestCase(
             )
 
     def test_document_version_download_preserve_extension_view_with_permission(self):
-        # Set the expected_content_type for
+        # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
-        self.expected_content_type = '{}; charset=utf-8'.format(
-            self.test_document.latest_version.mimetype
+        self.expected_content_types = (
+            '{}; charset=utf-8'.format(
+                self.test_document.latest_version.mimetype
+            ),
         )
 
         self.grant_access(

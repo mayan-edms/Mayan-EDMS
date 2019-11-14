@@ -7,57 +7,11 @@ from ..permissions import (
 )
 
 from .base import GenericDocumentViewTestCase
+from .mixins import TrashedDocumentViewTestMixin
 
 
-class TrashedDocumentTestMixin(object):
-    def _request_document_trash_get_view(self):
-        return self.get(
-            viewname='documents:document_trash', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_document_trash_post_view(self):
-        return self.post(
-            viewname='documents:document_trash', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_trashed_document_delete_get_view(self):
-        return self.get(
-            viewname='documents:document_delete', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_trashed_document_delete_post_view(self):
-        return self.post(
-            viewname='documents:document_delete', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_trashed_document_restore_get_view(self):
-        return self.get(
-            viewname='documents:document_restore', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_trashed_document_restore_post_view(self):
-        return self.post(
-            viewname='documents:document_restore', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_trashed_document_list_view(self):
-        return self.get(viewname='documents:document_list_deleted')
-
-
-class TrashedDocumentTestCase(
-    TrashedDocumentTestMixin, GenericDocumentViewTestCase
+class TrashedDocumentViewTestCase(
+    TrashedDocumentViewTestMixin, GenericDocumentViewTestCase
 ):
     def test_document_trash_get_view_no_permissions(self):
         document_count = Document.objects.count()

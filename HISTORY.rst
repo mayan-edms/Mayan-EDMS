@@ -132,6 +132,37 @@
   now get the permission inheritance from their base models.
 - Update common.http.URL to allow passing a query dictionary.
 - Add the document template sandbox feature.
+- Use the generic TemplateField for the expression field
+  of index tree templates.
+- Add document trashed event. Closes GitLab issue #608
+  Thanks to Vikas Kedia (@vikaskedia) for the report.
+- Add transaction handling to document model events.
+- Add back support for individual database settings
+  for compatibility with version 3.2 settings.
+  These are now a fallback if the new 'DATABASES'
+  setting is not specified.
+- Refactor the initial setting bootstrap code.
+
+3.2.10 (2019-XX-XX)
+===================
+- Auto-import dependecies. No need to use:
+  from .dependencies import *  # NOQA
+- Add makefile target to run all tests in debug mode.
+  This mode is more strict and sidesteps a Django bug that
+  causes errors in the template code that to be silent during
+  tests.
+- Rename expected_content_type to expected_content_types
+  and allow a list of content types to be specified.
+- Add missing label to metadata and file metadata model
+  properties entries.
+- Improve workflow field help text. Make it usable
+  for the creation/edit form help text and for the
+  column pop over.
+- Fix NamedMultiWidget issue on Python 3. Affects
+  document checkout form. GitLab issue #683. Thanks
+  to John Bentley (@johnbentleyii) for the report.
+- Add missing Event class cache invalidation when
+  calling the refresh() method.
 
 3.2.9 (2019-11-03)
 ==================

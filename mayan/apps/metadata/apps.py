@@ -28,7 +28,6 @@ from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import DocumentMetadataHelper
-from .dependencies import *  # NOQA
 from .events import (
     event_document_metadata_added, event_document_metadata_edited,
     event_document_metadata_removed, event_metadata_type_edited,
@@ -96,10 +95,10 @@ class MetadataApp(MayanAppConfig):
         )
 
         ModelAttribute(
-            model=Document, name='metadata_value_of',
+            model=Document, name='metadata_value_of.< metadata type name >',
             description=_(
                 'Return the value of a specific document metadata'
-            )
+            ), label=_('Metadata value of')
         )
 
         ModelField(

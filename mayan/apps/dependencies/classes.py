@@ -2,6 +2,8 @@ from __future__ import print_function, unicode_literals
 
 import fileinput
 import json
+from importlib import import_module
+import logging
 import pkg_resources
 import shutil
 import sys
@@ -27,6 +29,8 @@ from mayan.apps.storage.utils import mkdtemp
 
 from .algorithms import HashAlgorithm
 from .exceptions import DependenciesException
+
+logger = logging.getLogger(__name__)
 
 
 class Provider(object):
@@ -157,6 +161,18 @@ class DependencyGroupEntry(object):
 
 class Dependency(object):
     _registry = {}
+
+    @staticmethod
+    def initialize():
+        for app in apps.get_app_configs():
+            try:
+                import_module('{}.dependencies'.format(app.name))
+            except ImportError as exception:
+                if force_text(exception) not in ('No module named dependencies', 'No module named \'{}.dependencies\''.format(app.name)):
+                    logger.error(
+                        'Error importing %s dependencies.py file; %s', app.name,
+                        exception
+                    )
 
     @staticmethod
     def return_sorted(dependencies):

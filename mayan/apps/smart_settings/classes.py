@@ -18,10 +18,30 @@ from django.utils.encoding import (
 
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 
-from .utils import read_configuration_file
-
 logger = logging.getLogger(__name__)
 SMART_SETTINGS_NAMESPACES_NAME = 'SMART_SETTINGS_NAMESPACES'
+
+
+def read_configuration_file(filepath):
+    try:
+        with open(filepath) as file_object:
+            file_object.seek(0, os.SEEK_END)
+            if file_object.tell():
+                file_object.seek(0)
+                try:
+                    return yaml_load(stream=file_object)
+                except yaml.YAMLError as exception:
+                    exit(
+                        'Error loading configuration file: {}; {}'.format(
+                            filepath, exception
+                        )
+                    )
+    except IOError as exception:
+        if exception.errno == errno.ENOENT:
+            # No config file, return empty dictionary
+            return {}
+        else:
+            raise
 
 
 @python_2_unicode_compatible
@@ -169,7 +189,7 @@ class Setting(object):
         # Cache content of config file to speed up initial boot up
         if not cls._config_file_cache:
             cls._config_file_cache = read_configuration_file(
-                path=settings.CONFIGURATION_FILEPATH
+                filepath=settings.CONFIGURATION_FILEPATH
             )
 
         return cls._config_file_cache

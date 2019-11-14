@@ -6,7 +6,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 
-from .dependencies import *  # NOQA
 from .handlers import handler_document_cache_delete, handler_node_cache_delete
 
 

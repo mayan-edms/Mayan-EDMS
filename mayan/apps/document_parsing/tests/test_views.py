@@ -110,7 +110,7 @@ class DocumentContentViewsTestCase(
         self.assertEqual(response.status_code, 403)
 
     def test_download_view_with_access(self):
-        self.expected_content_type = 'application/octet-stream; charset=utf-8'
+        self.expected_content_types = ('application/octet-stream; charset=utf-8',)
         self.grant_access(
             permission=permission_content_view, obj=self.test_document
         )
