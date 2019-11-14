@@ -138,6 +138,7 @@
   for compatibility with version 3.2 settings.
   These are now a fallback if the new 'DATABASES'
   setting is not specified.
+- Refactor the initial setting bootstrap code.
 
 3.2.10 (2019-XX-XX)
 ===================
