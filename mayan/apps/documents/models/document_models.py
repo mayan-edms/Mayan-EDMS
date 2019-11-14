@@ -112,7 +112,7 @@ class Document(models.Model):
 
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
-        _user = kwargs.pop('_user', True)
+        _user = kwargs.pop('_user', None)
 
         if not self.in_trash and to_trash:
             self.in_trash = True
