@@ -7,8 +7,8 @@ from django.core import mail
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
+from mayan.apps.document_states.tests.base import ActionTestCase
 from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
-from mayan.apps.document_states.tests.test_workflow_actions import ActionTestCase
 from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin
 
 from ..permissions import permission_user_mailer_use

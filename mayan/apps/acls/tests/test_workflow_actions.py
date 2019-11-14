@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 
-from mayan.apps.document_states.tests.test_workflow_actions import ActionTestCase
+from mayan.apps.document_states.tests.base import ActionTestCase
 from mayan.apps.documents.permissions import permission_document_view
 
 from ..workflow_actions import (
