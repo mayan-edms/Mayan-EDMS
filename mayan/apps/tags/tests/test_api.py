@@ -115,7 +115,9 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         self.assertNotEqual(self.test_tag.color, tag_color)
 
 
-class TagDocumentAPIViewTestCase(DocumentTestMixin, TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
+class TagDocumentAPIViewTestCase(
+    DocumentTestMixin, TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase
+):
     auto_upload_document = False
 
     def test_tag_document_list_view_no_access(self):
