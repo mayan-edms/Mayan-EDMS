@@ -140,6 +140,11 @@
   setting is not specified.
 - Refactor the initial setting bootstrap code.
 - Use timezone aware date for document statistics
+- Show placeholder label on invalid action classes
+  Instead of throwing an error a sample label of
+  "Unknown action type" will be used and allow users to
+  delete the unknown state action.
+- Add workflow action to sign documents.
 
 3.2.10 (2019-XX-XX)
 ===================
