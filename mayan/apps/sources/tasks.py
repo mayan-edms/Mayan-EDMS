@@ -150,7 +150,7 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                         exception
                     )
             except NoMIMETypeMatch:
-                logging.debug('Exception: NoMIMETypeMatch')
+                logger.debug('Exception: NoMIMETypeMatch')
                 task_upload_document.delay(
                     shared_uploaded_file_id=shared_upload.pk, **kwargs
                 )
