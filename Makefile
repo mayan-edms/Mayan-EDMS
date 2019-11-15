@@ -1,7 +1,7 @@
 #!make
 include config.env
 
-.PHONY: clean-pyc clean-build
+.PHONY: clean clean-pyc clean-build test
 
 help:
 	@echo "Usage: make <target>\n"
