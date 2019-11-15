@@ -13,7 +13,9 @@ docker-build: ## Build a new image locally.
 	docker build -t mayanedms/mayanedms:$(IMAGE_VERSION) -f docker/Dockerfile .
 
 docker-build-with-proxy: ## Build a new image locally using an APT proxy as APT_PROXY.
+docker-build-with-proxy: devpi-start
 	docker build -t mayanedms/mayanedms:$(IMAGE_VERSION) -f docker/Dockerfile --build-arg APT_PROXY=$(APT_PROXY) --build-arg PIP_INDEX_URL=$(PIP_INDEX_URL) --build-arg PIP_TRUSTED_HOST=$(PIP_TRUSTED_HOST) --build-arg HTTP_PROXY=$(HTTP_PROXY) --build-arg HTTPS_PROXY=$(HTTPS_PROXY) .
+	$(MAKE) devpi-stop
 
 docker-shell: ## Launch a bash instance inside a running container. Pass the container name via DOCKER_CONTAINER.
 	docker exec -e TERM=$(TERM) -e "COLUMNS=$(CONSOLE_COLUMNS)" -e "LINES=$(CONSOLE_LINES)" -it $(DOCKER_CONTAINER) /bin/bash
@@ -37,8 +39,9 @@ docker-runtest-all: ## Executed the test suite in a test container.
 docker-compose-build:
 	docker-compose -f docker/docker-compose.yml -p mayan-edms build
 
-docker-compose-build-with-proxy:
+docker-compose-build-with-proxy: devpi-start
 	docker-compose -f docker/docker-compose.yml -p mayan-edms build --build-arg APT_PROXY=$(APT_PROXY) --build-arg PIP_INDEX_URL=$(PIP_INDEX_URL) --build-arg PIP_TRUSTED_HOST=$(PIP_TRUSTED_HOST) --build-arg HTTP_PROXY=$(HTTP_PROXY) --build-arg HTTPS_PROXY=$(HTTPS_PROXY)
+	$(MAKE) devpi-stop
 
 docker-compose-up:
 	docker-compose -f docker/docker-compose.yml -p mayan-edms up
@@ -98,3 +101,12 @@ docker-staging-cleanup: ## Delete the test container and the test volume.
 	@docker volume rm mayan-staging-app || true
 	@docker volume rm mayan-staging-postgres || true
 	@docker network rm mayan-staging || true
+
+devpi-init:
+	devpi-init || true
+
+devpi-start: devpi-init
+	devpi-server --start --host=0.0.0.0 || true
+
+devpi-stop:
+	devpi-server --stop || true
