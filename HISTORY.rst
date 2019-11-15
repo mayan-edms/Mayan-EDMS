@@ -18,6 +18,7 @@
   to John Bentley (@johnbentleyii) for the report.
 - Add missing Event class cache invalidation when
   calling the refresh() method.
+- Use timezone aware date for document statistics.
 
 3.2.9 (2019-11-03)
 ==================
