@@ -99,7 +99,7 @@ memory.
     --restart=always \
     -p 80:8000 \
     -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'172.17.0.1'}}" \
-    -e MAYAN_BROKER_URL="redis://172.17.0.1:6379/0" \
+    -e MAYAN_CELERY_BROKER_URL="redis://172.17.0.1:6379/0" \
     -e MAYAN_CELERY_RESULT_BACKEND="redis://172.17.0.1:6379/1" \
     -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
     mayanedms/mayanedms:<version>
@@ -171,7 +171,7 @@ instead of the IP address of the Docker host (``172.17.0.1``)::
     --restart=always \
     -p 80:8000 \
     -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'mayan-edms-postgres'}}" \
-    -e MAYAN_BROKER_URL="redis://mayan-edms-redis:6379/0" \
+    -e MAYAN_CELERY_BROKER_URL="redis://mayan-edms-redis:6379/0" \
     -e MAYAN_CELERY_RESULT_BACKEND="redis://mayan-edms-redis:6379/1" \
     -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
     mayanedms/mayanedms:<version>

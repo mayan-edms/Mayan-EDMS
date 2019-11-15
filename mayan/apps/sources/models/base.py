@@ -83,7 +83,7 @@ class Source(models.Model):
                             )
                         )
             except NoMIMETypeMatch:
-                logging.debug(msg='Exception: NoMIMETypeMatch')
+                logger.debug(msg='Exception: NoMIMETypeMatch')
                 documents.append(
                     self.upload_document(file_object=file_object, **kwargs)
                 )

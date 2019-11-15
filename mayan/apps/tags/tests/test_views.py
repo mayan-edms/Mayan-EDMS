@@ -120,7 +120,9 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
         )
 
 
-class TagDocumentViewTestCase(TagTestMixin, TagViewTestMixin, GenericDocumentViewTestCase):
+class TagDocumentViewTestCase(
+    TagTestMixin, TagViewTestMixin, GenericDocumentViewTestCase
+):
     def test_document_tags_list_no_permissions(self):
         self._create_test_tag()
 

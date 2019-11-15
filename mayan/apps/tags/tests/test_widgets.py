@@ -11,7 +11,9 @@ from ..permissions import permission_tag_view
 from .mixins import TagTestMixin
 
 
-class DocumentTagHTMLWidgetTestCase(DocumentViewTestMixin, TagTestMixin, GenericDocumentViewTestCase):
+class DocumentTagHTMLWidgetTestCase(
+    DocumentViewTestMixin, TagTestMixin, GenericDocumentViewTestCase
+):
     def test_document_tags_widget_no_permissions(self):
         self._create_test_tag()
 
