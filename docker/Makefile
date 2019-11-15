@@ -86,7 +86,7 @@ docker-staging-container-mayan-start:
 	-e MAYAN_DATABASE_NAME=mayan \
 	-e MAYAN_DATABASE_PASSWORD=mayanuserpass \
 	-e MAYAN_DATABASE_USER=mayan \
-	-e MAYAN_BROKER_URL="redis://mayan-staging-redis:6379/0" \
+	-e MAYAN_CELERY_BROKER_URL="redis://mayan-staging-redis:6379/0" \
 	-e MAYAN_CELERY_RESULT_BACKEND="redis://mayan-staging-redis:6379/1" \
 	-v mayan-staging-app:/var/lib/mayan \
 	mayanedms/mayanedms:$(IMAGE_VERSION)
