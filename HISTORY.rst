@@ -19,6 +19,10 @@
 - Add missing Event class cache invalidation when
   calling the refresh() method.
 - Use timezone aware date for document statistics.
+- Show placeholder label on invalid action classes
+  Instead of throwing an error a sample label of
+  "Unknown action type" will be used and allow users to
+  delete the unknown state action.
 
 3.2.9 (2019-11-03)
 ==================
