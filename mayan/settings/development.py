@@ -6,8 +6,8 @@ ALLOWED_HOSTS = ['*']
 
 DEBUG = True
 
+CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = CELERY_TASK_ALWAYS_EAGER  # NOQA: F405
-
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 if 'rosetta' not in INSTALLED_APPS:   # NOQA: F405
