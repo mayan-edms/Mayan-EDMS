@@ -139,6 +139,7 @@
   These are now a fallback if the new 'DATABASES'
   setting is not specified.
 - Refactor the initial setting bootstrap code.
+- Use timezone aware date for document statistics
 
 3.2.10 (2019-XX-XX)
 ===================
