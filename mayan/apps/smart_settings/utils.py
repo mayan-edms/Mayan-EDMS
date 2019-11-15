@@ -72,6 +72,7 @@ class SettingNamespaceSingleton(object):
             )
 
             file_data = self.load_config_file(filepath=filepath)
+            self._cache_file_data = file_data
 
         try:
             return file_data[name]
