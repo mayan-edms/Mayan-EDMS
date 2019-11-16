@@ -158,6 +158,11 @@ class Statistic(object):
             return StatisticResult.objects.get(slug=self.slug)
         except StatisticResult.DoesNotExist:
             return StatisticResult.objects.none()
+        except StatisticResult.MultipleObjectsReturned:
+            # This should not happen. Self-heal by deleting the duplicate
+            # results.
+            StatisticResult.objects.filter(slug=self.slug).delete()
+            return StatisticResult.objects.none()
 
     def get_results_data(self):
         results = self.get_results()
