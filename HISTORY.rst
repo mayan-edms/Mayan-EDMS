@@ -9,6 +9,9 @@
   generalized utility of the storages app.
 - Add book link to the documentation.
 - Make the statistics slug field unique.
+- Self-heal statistics results model when multiple
+  results are created using the same slug value.
+  Forum topic 1404.
 
 3.2.10 (2019-11-19)
 ===================
