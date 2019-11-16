@@ -145,6 +145,10 @@ run_celery)
     run_celery.sh "${@:2}"
     ;;
 
+run_command)
+    su mayan -c "${MAYAN_BIN} ${@:2}"
+    ;;
+
 run_frontend)
     run_frontend.sh
     ;;

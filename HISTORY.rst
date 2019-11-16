@@ -151,6 +151,8 @@
 - Self-heal statistics results model when multiple
   results are created using the same slug value.
   Forum topic 1404.
+- Add "run_command" Docker entrypoint option to run arbitrary
+  Mayan management command.
 
 3.2.10 (2019-XX-XX)
 ===================
