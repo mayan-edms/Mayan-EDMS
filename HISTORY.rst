@@ -8,6 +8,7 @@
 - Move the file patching code from the Dependency class to a
   generalized utility of the storages app.
 - Add book link to the documentation.
+- Make the statistics slug field unique.
 
 3.2.10 (2019-11-19)
 ===================
