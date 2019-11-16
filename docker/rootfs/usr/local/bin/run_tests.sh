@@ -3,7 +3,7 @@
 export DEBIAN_FRONTEND=noninteractive
 
 apt-get update
-apt-get install -y --no-install-recommends gcc python-dev tesseract-ocr-deu
+apt-get install -y --no-install-recommends gcc python3-dev tesseract-ocr-deu
 
 su mayan -c "$MAYAN_PIP_BIN install -r ${MAYAN_INSTALL_DIR}/testing-base.txt"
 
