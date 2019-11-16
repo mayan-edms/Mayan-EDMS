@@ -145,13 +145,17 @@ run_celery)
     run_celery.sh "${@:2}"
     ;;
 
+run_command)
+    su mayan -c "${MAYAN_BIN} ${@:2}"
+    ;;
+
 run_frontend)
     run_frontend.sh
     ;;
 
 run_tests)
     make_ready
-    run_tests.sh
+    run_tests.sh "${@:2}"
     ;;
 
 run_worker)

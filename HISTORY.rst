@@ -142,6 +142,22 @@
   These are now a fallback if the new 'DATABASES'
   setting is not specified.
 - Refactor the initial setting bootstrap code.
+- Use timezone aware date for document statistics
+- Show placeholder label on invalid action classes
+  Instead of throwing an error a sample label of
+  "Unknown action type" will be used and allow users to
+  delete the unknown state action.
+- Add workflow action to sign documents.
+- Support running specific tests inside the Docker container.
+  docker run --rm mayanedms/mayanedms:3.3 run_tests
+- Make the statistics slug field unique.
+- Self-heal statistics results model when multiple
+  results are created using the same slug value.
+  Forum topic 1404.
+- Add "run_command" Docker entrypoint option to run arbitrary
+  Mayan management command.
+- Allow specifying the queue list for the run_worker Docker
+  command.
 
 3.2.10 (2019-XX-XX)
 ===================

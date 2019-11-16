@@ -237,6 +237,7 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 ------------------------
    ::
 
+       sudo supervisorctl reread
        sudo supervisorctl restart all
 
 

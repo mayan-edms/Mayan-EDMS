@@ -193,18 +193,32 @@ class FilesystemBootstrapSetting(BaseSetting):
         return self.load_environment_value()
 
 
-# FilesystemBootstrapSetting setting
+class MediaBootstrapSetting(FilesystemBootstrapSetting):
+    def get_default_value(self):
+        """
+        The default value of this setting class is not static but calculated.
+        """
+        return os.path.join(
+            self.namespace.get_setting_value(name='MEDIA_ROOT'),
+            *self.path_parts
+        )
+
+
+# FilesystemBootstrapSetting settings
 
 SettingNamespaceSingleton.register_setting(
-    name='CONFIGURATION_FILEPATH', klass=FilesystemBootstrapSetting,
+    name='CONFIGURATION_FILEPATH', klass=MediaBootstrapSetting,
     kwargs={
-        'critical': True, 'path_parts': ('media', CONFIGURATION_FILENAME,)
+        'critical': True, 'path_parts': (CONFIGURATION_FILENAME,)
     }
 )
+
+# MediaBootstrapSetting settings
+
 SettingNamespaceSingleton.register_setting(
-    name='CONFIGURATION_LAST_GOOD_FILEPATH', klass=FilesystemBootstrapSetting,
+    name='CONFIGURATION_LAST_GOOD_FILEPATH', klass=MediaBootstrapSetting,
     kwargs={
-        'critical': True, 'path_parts': ('media', CONFIGURATION_LAST_GOOD_FILENAME,)
+        'critical': True, 'path_parts': (CONFIGURATION_LAST_GOOD_FILENAME,)
     }
 )
 SettingNamespaceSingleton.register_setting(

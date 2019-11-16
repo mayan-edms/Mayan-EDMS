@@ -405,7 +405,10 @@ class WorkflowStateAction(models.Model):
         return self.get_class()(form_data=self.loads())
 
     def get_class_label(self):
-        return self.get_class().label
+        try:
+            return self.get_class().label
+        except ImportError:
+            return _('Unknown action type')
 
     def loads(self):
         return json.loads(self.action_data)

@@ -211,6 +211,7 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
+- :forum-topic:`1404` Mayan EDMS 3.2.8 statistics error
 - :gitlab-issue:`399` Archive of processed e-mails
 - :gitlab-issue:`526` RuntimeWarning: Never call result.get() within a task!
 - :gitlab-issue:`532` Workflow preview isn't updated right after transitions are modified
@@ -221,6 +222,5 @@ Bugs fixed or issues closed
 - :gitlab-issue:`635` Build a docker image for Python3
 - :gitlab-issue:`640` UX: "Toast" Popup position prevents access to actions
 - :gitlab-issue:`644` Update sane-utils package in docker image.
-
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
