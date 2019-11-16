@@ -153,6 +153,8 @@
   Forum topic 1404.
 - Add "run_command" Docker entrypoint option to run arbitrary
   Mayan management command.
+- Allow specifying the queue list for the run_worker Docker
+  command.
 
 3.2.10 (2019-XX-XX)
 ===================
