@@ -160,7 +160,7 @@ For another setup that offers more performance and scalability refer to the
 
         sudo echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
         sudo echo "save \"\"" >> /etc/redis/redis.conf
-        sudo echo "databases 1" >> /etc/redis/redis.conf
+        sudo echo "databases 2" >> /etc/redis/redis.conf
         sudo systemctl restart redis
 
 13. Enable and restart the services [1_]:

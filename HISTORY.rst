@@ -176,6 +176,9 @@
   to John Bentley (@johnbentleyii) for the report.
 - Add missing Event class cache invalidation when
   calling the refresh() method.
+- Switch default installation to use two Redis
+  databases. One for the message broker, and the
+  other to store task results.
 
 3.2.9 (2019-11-03)
 ==================
