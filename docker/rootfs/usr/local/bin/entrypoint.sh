@@ -151,7 +151,7 @@ run_frontend)
 
 run_tests)
     make_ready
-    run_tests.sh
+    run_tests.sh "${@:2}"
     ;;
 
 run_worker)

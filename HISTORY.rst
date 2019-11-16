@@ -145,6 +145,8 @@
   "Unknown action type" will be used and allow users to
   delete the unknown state action.
 - Add workflow action to sign documents.
+- Support running specific tests inside the Docker container.
+  docker run --rm mayanedms/mayanedms:3.3 run_tests
 
 3.2.10 (2019-XX-XX)
 ===================
