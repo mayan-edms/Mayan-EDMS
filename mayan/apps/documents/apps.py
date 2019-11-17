@@ -566,12 +566,12 @@ class DocumentsApp(MayanAppConfig):
         )
 
         post_delete.connect(
-            dispatch_uid='handler_remove_empty_duplicates_lists',
+            dispatch_uid='documents_handler_remove_empty_duplicates_lists',
             receiver=handler_remove_empty_duplicates_lists,
             sender=Document
         )
         post_initial_setup.connect(
-            dispatch_uid='handler_create_default_document_type',
+            dispatch_uid='documents_handler_create_default_document_type',
             receiver=handler_create_default_document_type
         )
         post_migrate.connect(
@@ -579,7 +579,7 @@ class DocumentsApp(MayanAppConfig):
             receiver=handler_create_document_cache,
         )
         post_version_upload.connect(
-            dispatch_uid='handler_scan_duplicates_for',
+            dispatch_uid='documents_handler_scan_duplicates_for',
             receiver=handler_scan_duplicates_for
         )
 
