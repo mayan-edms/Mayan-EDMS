@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.generics import SingleObjectListView
 from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.views import DocumentListView
+from mayan.apps.documents.views.document_views import DocumentListView
 
 from ..icons import icon_workflow_template_list
 from ..links import link_workflow_template_create, link_workflow_template_state_create
