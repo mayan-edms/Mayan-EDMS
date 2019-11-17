@@ -155,6 +155,9 @@
   Mayan management command.
 - Allow specifying the queue list for the run_worker Docker
   command.
+- Switch default installation to use two Redis
+  databases. One for the message broker, and the
+  other to store task results.
 
 3.2.10 (2019-XX-XX)
 ===================
@@ -176,9 +179,11 @@
   to John Bentley (@johnbentleyii) for the report.
 - Add missing Event class cache invalidation when
   calling the refresh() method.
-- Switch default installation to use two Redis
-  databases. One for the message broker, and the
-  other to store task results.
+- Use timezone aware date for document statistics.
+- Show placeholder label on invalid action classes
+  Instead of throwing an error a sample label of
+  "Unknown action type" will be used and allow users to
+  delete the unknown state action.
 
 3.2.9 (2019-11-03)
 ==================
