@@ -29,7 +29,7 @@ For another setup that offers more performance and scalability refer to the
 
        sudo apt-get install g++ gcc ghostscript gnupg1 graphviz libfuse2 \
        libjpeg-dev libmagic1 libpq-dev libpng-dev libreoffice libtiff-dev \
-       poppler-utils postgresql python-dev python-virtualenv redis-server \
+       poppler-utils postgresql python3-dev python3-virtualenv redis-server \
        sane-utils supervisor tesseract-ocr zlib1g-dev -y
 
    .. note::
@@ -63,7 +63,7 @@ For another setup that offers more performance and scalability refer to the
    of the Python packages in the system.
    ::
 
-       sudo virtualenv /opt/mayan-edms
+       sudo virtualenv /opt/mayan-edms -p /usr/bin/python3
 
 
 5. Make the mayan user the owner of the installation directory:

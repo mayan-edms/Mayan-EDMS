@@ -130,9 +130,14 @@ Upgrading from a previous version
 If installed via Python's PIP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Update the virtualenv to Python 3::
+
+    sudo -u mayan virtualenv /opt/mayan-edms -p /usr/bin/python3
+
 Remove deprecated requirements::
 
-    sudo -u mayan curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt -o /tmp/removals.txt && sudo -u mayan /opt/mayan-edms/bin/pip uninstall -y -r /tmp/removals.txt
+    sudo -u mayan curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u mayan /opt/mayan-edms/bin/pip uninstall -y -r /tmp/removals.txt
 
 Type in the console::
 
