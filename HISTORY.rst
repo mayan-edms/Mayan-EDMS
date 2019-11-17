@@ -158,6 +158,9 @@
 - Switch default installation to use two Redis
   databases. One for the message broker, and the
   other to store task results.
+- Complete the prefixing of template tags with the 
+  app name.
+- Remove unused template tags.
 
 3.2.10 (2019-XX-XX)
 ===================

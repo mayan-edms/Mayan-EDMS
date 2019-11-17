@@ -13,10 +13,10 @@
                 <div class="cols-xs-12">
             {% endif %}
                 {% if subtemplate.form %}
-                    {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
+                    {% common_render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
                         {{ rendered_subtemplate }}
                 {% else %}
-                    {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
+                    {% common_render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
                     {{ rendered_subtemplate }}
                 {% endif %}
             </div>

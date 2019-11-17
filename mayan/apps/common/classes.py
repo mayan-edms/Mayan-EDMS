@@ -13,47 +13,6 @@ from .settings import setting_home_view
 
 
 @python_2_unicode_compatible
-class Collection(object):
-    _registry = []
-
-    @classmethod
-    def get_all(cls):
-        return sorted(cls._registry, key=lambda entry: entry._order)
-
-    def __init__(
-        self, label, icon_class=None, link=None, queryset=None, model=None,
-        order=None
-    ):
-        self._label = label
-        self._icon_class = icon_class
-        self._link = link
-        self._queryset = queryset
-        self._model = model
-        self._order = order or 99
-        self.__class__._registry.append(self)
-
-    def __str__(self):
-        return force_text(self.label)
-
-    def _get_children(self):
-        if self._queryset:
-            return self._queryset
-        else:
-            if self._model:
-                return self._model.objects.all()
-
-    def resolve(self):
-        self.children = self._get_children()
-        self.icon = self._icon
-        self.label = self._label
-        self.url = None
-        if self._link:
-            self.icon_class = getattr(self._link, 'icon_class', self._icon_class)
-            self.url = reverse(viewname=self._link.view, args=self._link.args)
-        return ''
-
-
-@python_2_unicode_compatible
 class ErrorLogNamespace(object):
     def __init__(self, name, label=None):
         self.name = name
