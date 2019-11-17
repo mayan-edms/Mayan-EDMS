@@ -27,10 +27,10 @@ For another setup that offers more performance and scalability refer to the
    If using a Debian_ or Ubuntu_ based Linux distribution, get the executable
    requirements using::
 
-       sudo apt-get install g++ gcc ghostscript gnupg1 graphviz libfuse2 \
-       libjpeg-dev libmagic1 libpq-dev libpng-dev libreoffice libtiff-dev \
-       poppler-utils postgresql python-dev python-virtualenv redis-server \
-       sane-utils supervisor tesseract-ocr zlib1g-dev -y
+       sudo apt-get install exiftool g++ gcc ghostscript gnupg1 graphviz \
+       libfuse2 libjpeg-dev libmagic1 libpq-dev libpng-dev libreoffice \
+       libtiff-dev poppler-utils postgresql python-dev python-virtualenv \
+       redis-server sane-utils supervisor tesseract-ocr zlib1g-dev -y
 
    .. note::
 
