@@ -58,12 +58,14 @@ to be valid. You can revert manually by copy the file or by using the
 Via Python settings files
 =========================
 
-Another way to configure Mayan EDMS is via Python-style, settings files.
+Another way to configure Mayan EDMS and the one required when more extensive
+setup is required, such as when using external Python libraries, is via
+Python-style, settings files.
 If Mayan EDMS was installed using the Python package a ``mayan_settings``
 folder will created for this purpose. If you installed Mayan EDMS
 according to the :doc:`../chapters/deploying` instructions provided in this
 documentation your ``mayan_settings`` folder should be located in the directory:
-``/usr/share/mayan-edms/mayan/media/mayan_settings``.
+``|MAYAN_MEDIA_ROOT|/mayan_settings/``.
 
 If Mayan EDMS was installed using Docker, the ``mayan_settings`` folder
 will be found inside the install Docker volume. If you installed Mayan EDMS
@@ -100,7 +102,7 @@ For the :doc:`../chapters/deploying` method, the full import path will be
 ``mayan.media.mayan_settings.mysettings`` and can be passed via the
 ``--settings`` command line argument like this::
 
-    python manage.py runserver --settings=mayan.media.mayan_settings.mysettings
+    |MAYAN_BIN| runserver --settings=mayan.media.mayan_settings.mysettings
 
 or via the ``DJANGO_SETTINGS_MODULE`` environment variable like this::
 

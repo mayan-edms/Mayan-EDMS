@@ -23,6 +23,9 @@
   Instead of throwing an error a sample label of
   "Unknown action type" will be used and allow users to
   delete the unknown state action.
+- Automate paths in documentation.
+- Settings chapter improvements.
+- Documentation paths consistency fixes.
 
 3.2.9 (2019-11-03)
 ==================

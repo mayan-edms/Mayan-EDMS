@@ -10,11 +10,11 @@ Direct install
 ==============
 
 * Make a backup of your existing SQLite database and documents by copying the
-  ``/opt/mayan-edms/media`` folder.
+  ``|MAYAN_MEDIA_ROOT|`` folder.
 * :doc:`Upgrade to at least version 3.1.3. <../releases/3.1.3>`
 *  Migrate the existing SQLite database with the command ``performupgrade``::
 
-    sudo -u mayan MAYAN_MEDIA_ROOT=/opt/mayan-edms/media /opt/mayan-edms/bin/mayan-edms.py performupgrade
+    sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| |MAYAN_BIN| performupgrade
 
 * Install PostgreSQL::
 
@@ -27,11 +27,11 @@ Direct install
 
 * Install the Python client for PostgreSQL::
 
-    sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 psycopg2==2.7.3.2
+    sudo -u mayan |MAYAN_PIP_BIN| install --no-cache-dir --no-use-pep517 psycopg2==2.7.3.2
 
 * Copy the newly created fallback config file::
 
-    cp /opt/mayan-edms/media/config_backup.yml /opt/mayan-edms/media/config.yml
+    cp |MAYAN_MEDIA_ROOT|/config_backup.yml |MAYAN_MEDIA_ROOT|/config.yml
 
 * Edit the configuration file to add the entry for the PostgreSQL database and
   rename the SQLite database to 'old'::
@@ -44,7 +44,7 @@ Direct install
         CONN_MAX_AGE: 0
         ENGINE: django.db.backends.sqlite3
         HOST: ''
-        NAME: /opt/mayan-edms/media/db.sqlite3
+        NAME: |MAYAN_MEDIA_ROOT|/db.sqlite3
         OPTIONS: {}
         PASSWORD: ''
         PORT: ''
@@ -60,7 +60,7 @@ Direct install
         CONN_MAX_AGE: 0
         ENGINE: django.db.backends.sqlite3
         HOST: ''
-        NAME: /opt/mayan-edms/media/db.sqlite3
+        NAME: |MAYAN_MEDIA_ROOT|/db.sqlite3
         OPTIONS: {}
         PASSWORD: ''
         PORT: ''
@@ -73,7 +73,7 @@ Direct install
         CONN_MAX_AGE: 0
         ENGINE: django.db.backends.postgresql
         HOST: '127.0.0.1'
-        NAME: /opt/mayan-edms/media/db.sqlite3
+        NAME: |MAYAN_MEDIA_ROOT|/db.sqlite3
         OPTIONS: {}
         PASSWORD: 'mayanuserpass'
         PORT: ''
@@ -83,11 +83,11 @@ Direct install
 
 * Migrate the new database to create the empty tables::
 
-    sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=/opt/mayan-edms/media /opt/mayan-edms/bin/mayan-edms.py migrate
+    sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| |MAYAN_BIN| migrate
 
 * Convert the data in the SQLite and store it in the PostgreSQL database::
 
-    sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=/opt/mayan-edms/media /opt/mayan-edms/bin/mayan-edms.py convertdb --from=old --to=default --force
+    sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| |MAYAN_BIN| convertdb --from=old --to=default --force
 
 * Update the supervisor config file to have Mayan EDMS run from the PostgreSQL database::
 
