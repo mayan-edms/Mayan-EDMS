@@ -5,9 +5,9 @@ from pathlib2 import Path
 from django.conf import settings
 from django.utils.encoding import force_bytes, force_text
 
-from mayan.apps.common.mixins import EnvironmentTestCaseMixin
 from mayan.apps.common.settings import setting_paginate_by
 from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.common.tests.mixins import EnvironmentTestCaseMixin
 from mayan.apps.storage.utils import fs_cleanup, NamedTemporaryFile
 
 from ..classes import Setting
@@ -91,6 +91,7 @@ class NamespaceMigrationTestCase(
                 )
             )
             file_object.seek(0)
+            Setting._config_file_cache = None
 
             self.assertEqual(
                 self.test_setting.value, '{}_0001'.format(TEST_SETTING_VALUE)
@@ -110,6 +111,7 @@ class NamespaceMigrationTestCase(
                 )
             )
             file_object.seek(0)
+            Setting._config_file_cache = None
 
             self.assertEqual(
                 self.test_setting.value, '{}_0001_0002'.format(TEST_SETTING_VALUE)
