@@ -64,7 +64,7 @@ urlpatterns = [
 
 api_urls = [
     url(
-        regex=r'^documents/(?P<pk>\d+)/submit/$',
+        regex=r'^documents/(?P<pk>\d+)/ocr/submit/$',
         view=APIDocumentOCRView.as_view(), name='document-ocr-submit-view'
     ),
     url(
