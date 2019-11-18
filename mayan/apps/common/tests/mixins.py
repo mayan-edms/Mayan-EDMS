@@ -141,6 +141,22 @@ class ContentTypeCheckTestCaseMixin(object):
         self.client = CustomClient()
 
 
+class EnvironmentTestCaseMixin(object):
+    def setUp(self):
+        super(EnvironmentTestCaseMixin, self).setUp()
+        self._test_environment_variables = []
+
+    def tearDown(self):
+        for name in self._test_environment_variables:
+            os.environ.pop(name)
+
+        super(EnvironmentTestCaseMixin, self).tearDown()
+
+    def _set_environment_variable(self, name, value):
+        self._test_environment_variables.append(name)
+        os.environ[name] = value
+
+
 class ModelTestCaseMixin(object):
     def _model_instance_to_dictionary(self, instance):
         return instance._meta.model._default_manager.filter(

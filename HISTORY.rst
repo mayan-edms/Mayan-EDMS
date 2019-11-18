@@ -44,13 +44,15 @@
   Thanks to Jakob Haufe (@sur5r) and Jesaja Everling (@jeverling)
   for much of the research and code updates.
 - Support wildcard MIME type associations for the file metadata drivers.
-- Rename MAYAN_GUID to MAYAN_GID
 - Update Gunicorn to use sync workers.
-- Include devpi-server as a development dependency.
+- Include devpi-server as a development dependency. Used to speed up
+  local builds of the Docker image.
 - Update default Docker stack file.
-- Remove Redis from the Docker image.
+- Remove Redis from the Docker image. A separate container must now
+  be deployed.
 - Add Celery flower to the Docker image.
-- Allow PIP proxying to the Docker image during build.
+- Allow PIP proxying to the Docker image during build. Can be used
+  with the local devpi-server or other similar.
 - Default Celery worker concurrency to 0 (auto).
 - Set DJANGO_SETTINGS_MODULE environment variable to make it
   available to sub processes.
@@ -187,6 +189,7 @@
   Instead of throwing an error a sample label of
   "Unknown action type" will be used and allow users to
   delete the unknown state action.
+- Add support for setting migrations.
 
 3.2.9 (2019-11-03)
 ==================
