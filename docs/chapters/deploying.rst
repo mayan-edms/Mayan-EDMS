@@ -120,7 +120,7 @@ For another setup that offers more performance and scalability refer to the
    .. warning::
 
        If this step is interrupted, even if it is later resumed, will
-       cause the automatic admin user to no be created in some cases. Make sure all
+       cause the automatic admin user to not be created in some cases. Make sure all
        environment variable and values are correct. If this happens, refer to the
        troubleshooting chapters: :ref:`troubleshooting-autoadmin-account` and
        :ref:`troubleshooting-admin-password`.
