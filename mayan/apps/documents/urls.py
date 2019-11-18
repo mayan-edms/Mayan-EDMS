@@ -4,13 +4,13 @@ from django.conf.urls import url
 
 from .api_views import (
     APITrashedDocumentListView, APIDeletedDocumentRestoreView,
-    APIDeletedDocumentView, APIDocumentDownloadView, APIDocumentView,
-    APIDocumentListView, APIDocumentVersionDownloadView,
-    APIDocumentPageImageView, APIDocumentPageView,
-    APIDocumentTypeDocumentListView, APIDocumentTypeListView,
-    APIDocumentTypeView, APIDocumentVersionsListView,
-    APIDocumentVersionPageListView, APIDocumentVersionView,
-    APIRecentDocumentListView
+    APIDeletedDocumentView, APIDocumentDocumentTypeChangeView,
+    APIDocumentDownloadView, APIDocumentView, APIDocumentListView,
+    APIDocumentVersionDownloadView, APIDocumentPageImageView,
+    APIDocumentPageView, APIDocumentTypeDocumentListView,
+    APIDocumentTypeListView, APIDocumentTypeView,
+    APIDocumentVersionsListView, APIDocumentVersionPageListView,
+    APIDocumentVersionView, APIRecentDocumentListView
 )
 from .views.document_page_views import (
     DocumentPageDisable, DocumentPageEnable, DocumentPageListView,
@@ -392,6 +392,11 @@ api_urls = [
     url(
         regex=r'^documents/(?P<pk>[0-9]+)/download/$',
         view=APIDocumentDownloadView.as_view(), name='document-download'
+    ),
+    url(
+        regex=r'^documents/(?P<pk>[0-9]+)/type/change/$',
+        view=APIDocumentDocumentTypeChangeView.as_view(),
+        name='document-type-change'
     ),
     url(
         regex=r'^documents/(?P<pk>[0-9]+)/versions/$',

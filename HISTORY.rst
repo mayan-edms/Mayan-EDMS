@@ -166,6 +166,7 @@
 - Add support for setting migrations.
 - Add setting migrations for the common, converter, documents,
   file metadata, and document signatures app.
+- Add document type change API endpoint.
 
 3.2.10 (2019-XX-XX)
 ===================

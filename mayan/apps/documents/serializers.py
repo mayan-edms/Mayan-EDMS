@@ -237,7 +237,10 @@ class DeletedDocumentSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class DocumentSerializer(serializers.HyperlinkedModelSerializer):
-    document_type = DocumentTypeSerializer()
+    document_type = DocumentTypeSerializer(read_only=True)
+    document_type_change_url = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:document-type-change',
+    )
     latest_version = DocumentVersionSerializer(many=False, read_only=True)
     versions_url = serializers.HyperlinkedIdentityField(
         view_name='rest_api:document-version-list',
@@ -246,14 +249,25 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         extra_kwargs = {
             'document_type': {'view_name': 'rest_api:documenttype-detail'},
-            'url': {'view_name': 'rest_api:document-detail'}
+            'url': {'view_name': 'rest_api:document-detail'},
         }
         fields = (
-            'date_added', 'description', 'document_type', 'id', 'label',
-            'language', 'latest_version', 'url', 'uuid', 'versions_url',
+            'date_added', 'description', 'document_type',
+            'document_type_change_url', 'id', 'label', 'language',
+            'latest_version', 'url', 'uuid', 'pk', 'versions_url',
         )
         model = Document
         read_only_fields = ('document_type',)
+
+
+class NewDocumentDocumentTypeSerializer(serializers.ModelSerializer):
+    new_document_type = serializers.PrimaryKeyRelatedField(
+        queryset=DocumentType.objects.all(), write_only=True
+    )
+
+    class Meta:
+        fields = ('new_document_type',)
+        model = Document
 
 
 class WritableDocumentSerializer(serializers.ModelSerializer):

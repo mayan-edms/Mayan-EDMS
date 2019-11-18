@@ -22,7 +22,7 @@ from ..permissions import (
 
 from .literals import (
     TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_PDF_DOCUMENT_FILENAME,
-    TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
+    TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_2_LABEL,
     TEST_DOCUMENT_TYPE_LABEL_EDITED, TEST_DOCUMENT_VERSION_COMMENT_EDITED,
     TEST_SMALL_DOCUMENT_FILENAME
 )
@@ -184,6 +184,13 @@ class DocumentAPIViewTestMixin(object):
             }, data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
         )
 
+    def _request_test_document_document_type_change_api_view(self):
+        return self.post(
+            viewname='rest_api:document-type-change', kwargs={
+                'pk': self.test_document.pk
+            }, data={'new_document_type': self.test_document_type_2.pk}
+        )
+
 
 class DocumentAPIViewTestCase(
     DocumentAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
@@ -253,6 +260,40 @@ class DocumentAPIViewTestCase(
             'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3'
         )
         self.assertEqual(document.page_count, 47)
+
+    def test_document_document_type_change_api_via_no_permission(self):
+        self.upload_document()
+        self.test_document_type_2 = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_2_LABEL
+        )
+
+        response = self._request_test_document_document_type_change_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.document_type,
+            self.test_document_type
+        )
+
+    def test_document_document_type_change_api_via_with_access(self):
+        self.upload_document()
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_properties_edit
+        )
+        self.test_document_type_2 = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_2_LABEL
+        )
+
+        response = self._request_test_document_document_type_change_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.document_type,
+            self.test_document_type_2
+        )
 
     def test_document_description_api_edit_via_patch_view_no_permission(self):
         self.upload_document()
