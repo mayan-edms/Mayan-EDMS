@@ -163,6 +163,9 @@
 - Complete the prefixing of template tags with the 
   app name.
 - Remove unused template tags.
+- Add support for setting migrations.
+- Add setting migrations for the common, converter, documents,
+  file metadata, and document signatures app.
 
 3.2.10 (2019-XX-XX)
 ===================
@@ -189,7 +192,6 @@
   Instead of throwing an error a sample label of
   "Unknown action type" will be used and allow users to
   delete the unknown state action.
-- Add support for setting migrations.
 
 3.2.9 (2019-11-03)
 ==================

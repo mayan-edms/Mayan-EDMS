@@ -9,8 +9,12 @@ import mayan
 from mayan.apps.smart_settings.classes import Namespace
 
 from .literals import DEFAULT_COMMON_HOME_VIEW
+from .setting_migrations import CommonSettingMigration
 
-namespace = Namespace(label=_('Common'), name='common')
+namespace = Namespace(
+    label=_('Common'), migration_class=CommonSettingMigration,
+    name='common', version='0002'
+)
 
 setting_auto_logging = namespace.add_setting(
     global_name='COMMON_AUTO_LOGGING',
