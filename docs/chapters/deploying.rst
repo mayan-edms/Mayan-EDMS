@@ -51,7 +51,8 @@ For another setup that offers more performance and scalability refer to the
 3. Create the parent directory where the project will be deployed:
 ------------------------------------------------------------------
    ``/opt/`` is a good choice as it is meant is for "software and add-on packages
-   that are not part of the default installation". (https://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html)
+   that are not part of the default installation". (https://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html).
+   Create the ``/opt`` directory if it doesn't already exists.
    ::
 
        sudo mkdir /opt
@@ -63,35 +64,35 @@ For another setup that offers more performance and scalability refer to the
    of the Python packages in the system.
    ::
 
-       sudo virtualenv /opt/mayan-edms -p /usr/bin/python3
+       sudo virtualenv |MAYAN_INSTALLATION_DIRECTORY| -p /usr/bin/python3
 
 
 5. Make the mayan user the owner of the installation directory:
 ---------------------------------------------------------------
    ::
 
-       sudo chown mayan:mayan /opt/mayan-edms -R
+       sudo chown mayan:mayan |MAYAN_INSTALLATION_DIRECTORY| -R
 
 
 6. Install Mayan EDMS from PyPI:
 --------------------------------
    ::
 
-       sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 mayan-edms
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-cache-dir --no-use-pep517 mayan-edms
 
 
 7. Install the Python client for PostgreSQL and Redis:
 ------------------------------------------------------
    ::
 
-       sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-cache-dir --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
 
    .. note::
 
        Platforms with the ARM CPU might also need additional requirements.
        ::
 
-           sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
+           sudo -u mayan |MAYAN_PIP_BIN| install --no-cache-dir --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
 
 
 8. Create the database for the installation:
@@ -120,16 +121,17 @@ For another setup that offers more performance and scalability refer to the
    .. warning::
 
        If this step is interrupted, even if it is later resumed, will
-       cause the automatic admin user to not be created in some cases. Make sure all
-       environment variable and values are correct. If this happens, refer to the
-       troubleshooting chapters: :ref:`troubleshooting-autoadmin-account` and
+       cause the automatic admin user to not be created in some cases. Make
+       sure all environment variables and values are correct. If this
+       happens, refer to the troubleshooting chapters:
+       :ref:`troubleshooting-autoadmin-account` and
        :ref:`troubleshooting-admin-password`.
 
    ::
 
        sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
-       MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
-       /opt/mayan-edms/bin/mayan-edms.py initialsetup
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| initialsetup
 
 
 10. Collect the static files:
@@ -139,17 +141,17 @@ For another setup that offers more performance and scalability refer to the
 
     ::
 
-        sudo -u mayan MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
-        /opt/mayan-edms/bin/mayan-edms.py preparestatic --noinput
+        sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+        |MAYAN_BIN| preparestatic --noinput
 
 
-11. Create the supervisor file at ``/etc/supervisor/conf.d/mayan.conf``:
+11. Create the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
 ------------------------------------------------------------------------
     ::
 
         sudo mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
-        MAYAN_MEDIA_ROOT=/opt/mayan-edms/media \
-        /opt/mayan-edms/bin/mayan-edms.py platformtemplate supervisord > /etc/supervisor/conf.d/mayan.conf
+        MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+        |MAYAN_BIN| platformtemplate supervisord > |MAYAN_SUPERVISOR_CONF|
 
 
 12. Configure Redis:
@@ -204,7 +206,7 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 ------------------------------------------
    ::
 
-       sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 librabbitmq==|PYTHON_LIBRABBITMQ_VERSION|
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-cache-dir --no-use-pep517 librabbitmq==|PYTHON_LIBRABBITMQ_VERSION|
 
 
 3. Create the RabbitMQ user and vhost:
@@ -216,7 +218,7 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
        sudo rabbitmqctl set_permissions -p mayan mayan ".*" ".*" ".*"
 
 
-4. Edit the supervisor file at ``/etc/supervisor/conf.d/mayan.conf``:
+4. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
 ---------------------------------------------------------------------
    Replace (paying attention to the comma at the end)::
 
@@ -228,7 +230,7 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 
    increase the number of Gunicorn workers to 3 in the line (``-w 2`` section)::
 
-       command = /opt/mayan-edms/bin/gunicorn -w 2 mayan.wsgi --max-requests 1000 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
+       command = |MAYAN_GUNICORN_BIN| -w 2 mayan.wsgi --max-requests 1000 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
 
    remove the concurrency limit (or increase it) of the fast worker (remove ``--concurrency=1``).
 
