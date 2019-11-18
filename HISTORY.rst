@@ -26,6 +26,7 @@
 - Automate paths in documentation.
 - Settings chapter improvements.
 - Documentation paths consistency fixes.
+- Expand custom Python setting section.
 
 3.2.9 (2019-11-03)
 ==================

@@ -146,14 +146,14 @@ For another setup that offers more performance and scalability refer to the
         |MAYAN_BIN| preparestatic --noinput
 
 
-11. Create the supervisor file at ``/etc/supervisor/conf.d/mayan.conf``:
+11. Create the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
 ------------------------------------------------------------------------
     ::
 
         sudo MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
         MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
         MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
-        |MAYAN_BIN| platformtemplate supervisord > /etc/supervisor/conf.d/mayan.conf
+        |MAYAN_BIN| platformtemplate supervisord > |MAYAN_SUPERVISOR_CONF|
 
 
 12. Configure Redis:
@@ -220,7 +220,7 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
        sudo rabbitmqctl set_permissions -p mayan mayan ".*" ".*" ".*"
 
 
-4. Edit the supervisor file at ``/etc/supervisor/conf.d/mayan.conf``:
+4. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
 ---------------------------------------------------------------------
    Replace (paying attention to the comma at the end)::
 

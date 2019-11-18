@@ -273,6 +273,8 @@ def setup(app):
     MAYAN_GUNICORN_BIN = os.path.join(MAYAN_PYTHON_BIN_DIR, 'gunicorn')
     MAYAN_PIP_BIN = os.path.join(MAYAN_PYTHON_BIN_DIR, 'pip')
     MAYAN_BIN = os.path.join(MAYAN_PYTHON_BIN_DIR, 'mayan-edms.py')
+    SUPERVISOR_ETC_PATH = '/etc/supervisor/conf.d/'
+    MAYAN_SUPERVISOR_CONF = os.path.join(SUPERVISOR_ETC_PATH, 'mayan.conf')
 
     environment_variables = utils.load_env_file()
     environment_variables['DOCKER_MAYAN_IMAGE_VERSION'] = mayan.__version__
@@ -280,8 +282,10 @@ def setup(app):
     environment_variables['MAYAN_MEDIA_ROOT'] = MAYAN_MEDIA_ROOT
     environment_variables['MAYAN_PYTHON_BIN_DIR'] = MAYAN_PYTHON_BIN_DIR
     environment_variables['MAYAN_GUNICORN_BIN'] = MAYAN_GUNICORN_BIN
-    environment_variables['MAYAN_PIP_BIN'] = MAYAN_PIP_BIN
     environment_variables['MAYAN_BIN'] = MAYAN_BIN
+    environment_variables['MAYAN_PIP_BIN'] = MAYAN_PIP_BIN
+    environment_variables['SUPERVISOR_ETC_PATH'] = SUPERVISOR_ETC_PATH
+    environment_variables['MAYAN_SUPERVISOR_CONF'] = MAYAN_SUPERVISOR_CONF
     substitutions = utils.generate_substitutions(
         dictionary=environment_variables
     )

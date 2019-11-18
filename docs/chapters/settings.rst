@@ -108,6 +108,17 @@ or via the ``DJANGO_SETTINGS_MODULE`` environment variable like this::
 
     export DJANGO_SETTINGS_MODULE=mayan.media.mayan_settings.mysettings
 
+To make the use of the custom Python setting file permanent, update the ``|MAYAN_SUPERVISOR_CONF|``
+file. In the ``[supervisord]`` section, update the ``environment=`` value of
+``DJANGO_SETTINGS_MODULE`` from  the default ``mayan.settings.production`` to 
+``mayan.media.mayan_settings.mysettings``. Pay attention to the indentation of
+the ``environment=`` entries.
+
+Force supervisor to read the changes and restart using::
+    
+    sudo supervisorctl reread
+    sudo supervisorctl restart all
+
 For the :doc:`../chapters/docker` installation method, the full import path will be
 ``mayan_settings.mysettings`` and can only be passed via the
 ``MAYAN_SETTINGS_MODULE`` environment variable like this::
