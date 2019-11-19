@@ -535,6 +535,13 @@ Release using GitLab CI
 
        git push
 
+
+#. Push the new tags:
+   ::
+
+       git push --tags
+
+
 #. Delete the corresponding ``releases/`` branch:
    ::
 
@@ -544,12 +551,6 @@ Release using GitLab CI
    ::
 
        git push origin <local branch>:releases/<branch>
-
-
-#. Push the new tags:
-   ::
-
-       git push --tags
 
 
 Manual release

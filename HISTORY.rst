@@ -160,7 +160,7 @@
 - Switch default installation to use two Redis
   databases. One for the message broker, and the
   other to store task results.
-- Complete the prefixing of template tags with the 
+- Complete the prefixing of template tags with the
   app name.
 - Remove unused template tags.
 - Add support for setting migrations.
@@ -170,9 +170,9 @@
 - Change OCR API submit URL from documents/{pk}/submit
   to documents/{pk}/ocr/submit.
 
-3.2.10 (2019-XX-XX)
+3.2.10 (2019-11-19)
 ===================
-- Auto-import dependecies. No need to use:
+- Auto-import dependencies. No need to use:
   from .dependencies import *  # NOQA
 - Add makefile target to run all tests in debug mode.
   This mode is more strict and sidesteps a Django bug that

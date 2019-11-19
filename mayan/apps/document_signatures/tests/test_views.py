@@ -6,7 +6,9 @@ from mayan.apps.django_gpg.permissions import permission_key_sign
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.models import DocumentVersion
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.documents.tests.literals import TEST_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import (
+    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
+)
 
 from ..models import DetachedSignature, EmbeddedSignature
 from ..permissions import (
@@ -35,9 +37,7 @@ class SignaturesViewTestCase(
     auto_upload_document = False
 
     def test_signature_delete_view_no_permission(self):
-        self._create_test_key_public()
-
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
         self._create_test_detached_signature()
@@ -52,9 +52,7 @@ class SignaturesViewTestCase(
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
     def test_signature_delete_view_with_access(self):
-        self._create_test_key_public()
-
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
         self._create_test_detached_signature()
@@ -73,9 +71,7 @@ class SignaturesViewTestCase(
         self.assertEqual(DetachedSignature.objects.count(), 0)
 
     def test_signature_detail_view_no_permission(self):
-        self._create_test_key_public()
-
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
         self._create_test_detached_signature()
@@ -84,9 +80,7 @@ class SignaturesViewTestCase(
         self.assertEqual(response.status_code, 404)
 
     def test_signature_detail_view_with_access(self):
-        self._create_test_key_public()
-
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
         self._create_test_detached_signature()
@@ -103,8 +97,7 @@ class SignaturesViewTestCase(
         )
 
     def test_signature_list_view_no_permission(self):
-        self._create_test_key_public()
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
         self._create_test_detached_signature()
@@ -115,9 +108,7 @@ class SignaturesViewTestCase(
         self.assertEqual(response.status_code, 404)
 
     def test_signature_list_view_with_access(self):
-        self._create_test_key_public()
-
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
         self._create_test_detached_signature()
@@ -143,7 +134,7 @@ class SignaturesViewTestCase(
         old_hooks = DocumentVersion._post_save_hooks
         DocumentVersion._post_save_hooks = {}
 
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
             self.upload_document()
 
@@ -176,7 +167,7 @@ class SignaturesViewTestCase(
         old_hooks = DocumentVersion._post_save_hooks
         DocumentVersion._post_save_hooks = {}
 
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
             self.upload_document()
 
@@ -211,6 +202,7 @@ class DetachedSignaturesViewTestCase(
     auto_upload_document = False
 
     def test_detached_signature_create_view_with_no_permission(self):
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
         self._create_test_key_private()
 
@@ -225,6 +217,7 @@ class DetachedSignaturesViewTestCase(
         )
 
     def test_detached_signature_create_view_with_document_access(self):
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
         self._create_test_key_private()
 
@@ -244,6 +237,7 @@ class DetachedSignaturesViewTestCase(
         )
 
     def test_detached_signature_create_view_with_key_access(self):
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
         self._create_test_key_private()
 
@@ -263,6 +257,7 @@ class DetachedSignaturesViewTestCase(
         )
 
     def test_detached_signature_create_view_with_full_access(self):
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
         self._create_test_key_private()
 
@@ -286,7 +281,7 @@ class DetachedSignaturesViewTestCase(
         )
 
     def test_signature_download_view_no_permission(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
         self._create_test_detached_signature()
@@ -295,7 +290,7 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(response.status_code, 403)
 
     def test_signature_download_view_with_access(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
         self._create_test_detached_signature()
@@ -316,6 +311,7 @@ class DetachedSignaturesViewTestCase(
 
     def test_signature_upload_view_no_permission(self):
         self.test_document_path = TEST_DOCUMENT_PATH
+
         self.upload_document()
 
         response = self._request_test_document_version_signature_upload_view()
@@ -344,6 +340,7 @@ class EmbeddedSignaturesViewTestCase(
     auto_upload_document = False
 
     def test_embedded_signature_create_view_with_no_permission(self):
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
         self._create_test_key_private()
 
@@ -358,6 +355,7 @@ class EmbeddedSignaturesViewTestCase(
         )
 
     def test_embedded_signature_create_view_with_document_access(self):
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
         self._create_test_key_private()
 
@@ -377,6 +375,7 @@ class EmbeddedSignaturesViewTestCase(
         )
 
     def test_embedded_signature_create_view_with_key_access(self):
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
         self._create_test_key_private()
 
@@ -396,6 +395,7 @@ class EmbeddedSignaturesViewTestCase(
         )
 
     def test_embedded_signature_create_view_with_full_access(self):
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
         self._create_test_key_private()
 

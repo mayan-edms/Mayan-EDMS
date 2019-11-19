@@ -1,13 +1,79 @@
 Version 3.2.10
 ==============
 
-Released: November XX, 2019
-
+Released: November 19, 2019
 
 Changes
 -------
 
+Dependencies
+^^^^^^^^^^^^
 
+App dependencies are now automatically imported ensuring there are no missing
+dependencies when installing or upgrading.
+
+For developers this means that the line::
+
+  from .dependencies import *  # NOQA
+
+is no longer needed.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+Improvements in the settings chapter.
+
+The file paths in the documentation are now inserted programmatically.
+This ensures consistency and avoid human error when copying and pasting path
+when writing documentation chapters.
+
+
+Testing
+^^^^^^^
+
+New targets for the makefile to run all tests in debug mode. This mode is
+more strict and sidesteps a Django bug that causes errors in the template
+code that to be silent during tests.
+
+Renamed the ``expected_content_type`` to ``expected_content_types`` and
+allow a list of content types to be specified.
+
+Added missing ``Event`` class cache invalidation when calling the
+``refresh()`` method.
+
+
+Python 3
+^^^^^^^^
+
+Fixed an issue with the NamedMultiWidget class on Python 3. This issue
+affected the document checkout form. This closes GitLab issue #683. Thanks
+to John Bentley (@johnbentleyii) for the report.
+
+
+Statistics
+^^^^^^^^^^
+
+Statistics code were updated to use timezone aware date. This solves a few
+off-by-one-day results.
+
+
+Workflows
+^^^^^^^^^
+
+When renaming custom workflow state actions, the workflow system would
+error out when trying to show the label of the deleted or removed class. A
+placeholder label will now be shown on invalid action classes reading
+"Unknown action type".
+
+The help text for workflows was improved.
+
+
+Indexing
+^^^^^^^^
+
+The missing label for document metadata and file metadata model
+properties entries were added. No functional changes were made just visual.
 
 
 Removals
