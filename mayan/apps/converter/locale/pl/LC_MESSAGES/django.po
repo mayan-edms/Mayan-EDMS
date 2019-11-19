@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # mic <winterfall24@gmail.com>, 2012,2015
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
@@ -10,56 +10,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:35-0400\n"
+"POT-Creation-Date: 2019-11-18 22:35-0400\n"
 "PO-Revision-Date: 2019-05-03 05:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:23 permissions.py:7 settings.py:12
+#: apps.py:21 permissions.py:7 settings.py:12
 msgid "Converter"
 msgstr "Konwerter"
 
-#: apps.py:37 forms.py:25
+#: apps.py:30 models.py:57
 msgid "Transformation"
 msgstr "Przekształcenie"
 
-#: backends/python.py:162 backends/python.py:168
+#: backends/python.py:175 backends/python.py:181
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Wyjątek określający liczbę stron PDF: %s"
 
-#: backends/python.py:182
+#: backends/python.py:195
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Wyjątek określający liczbę stron przy użyciu Pillow; %s"
 
-#: classes.py:116
+#: classes.py:118
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice nie zainstalowano lub nie został zainstalowany."
 
-#: classes.py:199
+#: classes.py:201
 msgid "Not an office file format."
 msgstr "Format niezgodny z formatem plików LibreOffice."
-
-#: classes.py:327
-msgid ""
-"Transformations allow changing the visual appearance of documents without "
-"making permanent changes to the document file themselves."
-msgstr ""
-
-#: classes.py:375
-#, fuzzy
-#| msgid "Transformation"
-msgid "transformation"
-msgstr "Przekształcenie"
 
 #: dependencies.py:16
 msgid "Utility from the poppler-utils package used to inspect PDF files."
@@ -71,100 +56,50 @@ msgid ""
 "into PPM format images."
 msgstr ""
 
-#: forms.py:24
-#, fuzzy
-#| msgid "Transformations for: %s"
-msgid "Available transformations for this layer."
-msgstr "Przekształcenia dla %s"
-
-#: forms.py:61
+#: forms.py:28
 #, python-format
 msgid "\"%s\" not a valid entry."
 msgstr ""
 
-#: layers.py:12
-#, fuzzy
-#| msgid "Edit transformations"
-msgid "Saved transformations"
-msgstr "Edytuj przekształcenia"
+#: links.py:36
+msgid "Create new transformation"
+msgstr "Utwórz nowe przekształcenie"
 
-#: links.py:18
+#: links.py:42
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:25
+#: links.py:48
 msgid "Edit"
 msgstr "Edytuj"
 
-#: links.py:29
+#: links.py:53 models.py:58
 msgid "Transformations"
 msgstr "Przekształcenia"
 
-#: links.py:35
-#, fuzzy
-#| msgid "Delete transformations"
-msgid "Select new transformation"
-msgstr "Usuń przekształcenia"
-
-#: models.py:23 models.py:85
-msgid "Name"
-msgstr "Nazwa"
-
-#: models.py:26 models.py:81
-msgid "Order"
-msgstr "Kolejność"
-
-#: models.py:34 models.py:50
-msgid "Stored layer"
-msgstr ""
-
-#: models.py:35
-msgid "Stored layers"
-msgstr ""
-
-#: models.py:47 models.py:93
-msgid "Enabled"
-msgstr ""
-
-#: models.py:56 models.py:75
-msgid "Object layer"
-msgstr ""
-
-#: models.py:57
-msgid "Object layers"
-msgstr ""
-
-#: models.py:79
+#: models.py:37
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Kolejność wykonywania przekształceń. Jeśli nie zostanie zmieniona, przyjmie "
-"wartość automatyczną."
+msgstr "Kolejność wykonywania przekształceń. Jeśli nie zostanie zmieniona, przyjmie wartość automatyczną."
 
-#: models.py:89
+#: models.py:39
+msgid "Order"
+msgstr "Kolejność"
+
+#: models.py:43
+msgid "Name"
+msgstr "Nazwa"
+
+#: models.py:47
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Wprowadź argumenty dla przekształcenia w postaci słownika YAML np.: "
-"{\"degrees\": 180}"
+msgstr "Wprowadź argumenty dla przekształcenia w postaci słownika YAML np.: {\"degrees\": 180}"
 
-#: models.py:91
+#: models.py:49
 msgid "Arguments"
 msgstr "Argumenty"
-
-#: models.py:100
-#, fuzzy
-#| msgid "Transformation"
-msgid "Layer transformation"
-msgstr "Przekształcenie"
-
-#: models.py:101
-#, fuzzy
-#| msgid "Delete transformations"
-msgid "Layer transformations"
-msgstr "Usuń przekształcenia"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -186,110 +121,88 @@ msgstr "Przeglądaj utworzone przekształcenia"
 msgid "Graphics conversion backend to use."
 msgstr "Backend używany do konwersji grafiki."
 
-#: settings.py:28
+#: settings.py:35
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Opcje konfiguracji dla silnika konwersji grafiki."
 
-#: transformations.py:99
+#: transformations.py:81
 msgid "Crop"
 msgstr "Przycięcie"
 
-#: transformations.py:177
-msgid "Draw rectangle"
-msgstr ""
-
-#: transformations.py:279
-msgid "Draw rectangle (percents coordinates)"
-msgstr ""
-
-#: transformations.py:376
+#: transformations.py:156
 msgid "Flip"
 msgstr "Odbicie"
 
-#: transformations.py:387
+#: transformations.py:167
 msgid "Gaussian blur"
 msgstr "Rozmycie Gaussa"
 
-#: transformations.py:397
+#: transformations.py:177
 msgid "Line art"
 msgstr "Rysunek kreskowy"
 
-#: transformations.py:408
+#: transformations.py:188
 msgid "Mirror"
 msgstr "Odbicie lustrzane"
 
-#: transformations.py:419
+#: transformations.py:199
 msgid "Resize"
 msgstr "Zmiana rozmiaru"
 
-#: transformations.py:446
+#: transformations.py:226
 msgid "Rotate"
 msgstr "Obrócenie"
 
-#: transformations.py:472
+#: transformations.py:252
 msgid "Rotate 90 degrees"
 msgstr "Obrócenie o 90 stopni"
 
-#: transformations.py:483
+#: transformations.py:263
 msgid "Rotate 180 degrees"
 msgstr "Obrócenie o 180 stopni"
 
-#: transformations.py:494
+#: transformations.py:274
 msgid "Rotate 270 degrees"
 msgstr "Obrócenie o 270 stopni"
 
-#: transformations.py:504
+#: transformations.py:284
 msgid "Unsharp masking"
 msgstr "Maska wyostrzająca"
 
-#: transformations.py:520
+#: transformations.py:300
 msgid "Zoom"
 msgstr "Powiększenie"
 
-#: validators.py:23
+#: validators.py:26
 msgid "Enter a valid YAML value."
 msgstr "Wprowadź poprawną wartość YAML."
 
-#: views.py:74
-#, fuzzy, python-format
-#| msgid ""
-#| "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgid ""
-"Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
-"%(object)s"
-msgstr "Usunąć przekształcenie \"%(transformation)s\" dla %(content_object)s?"
+#: views.py:72
+#, python-format
+msgid "Create new transformation for: %s"
+msgstr "Utwórz nowe przekształcenie dla %s"
 
-#: views.py:135
+#: views.py:127
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "Usunąć przekształcenie \"%(transformation)s\" dla %(content_object)s?"
 
-#: views.py:183
+#: views.py:171
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "Edycja przekształcenia \"%(transformation)s\" dla %(content_object)s"
 
-#: views.py:237
+#: views.py:227
+msgid ""
+"Transformations allow changing the visual appearance of documents without "
+"making permanent changes to the document file themselves."
+msgstr ""
+
+#: views.py:231
+msgid "No transformations"
+msgstr ""
+
+#: views.py:232
 #, python-format
-msgid "There are no entries for layer \"%(layer_name)s\""
-msgstr ""
-
-#: views.py:240
-#, fuzzy, python-format
-#| msgid "Create new transformation for: %s"
-msgid "Layer \"%(layer)s\" transformations for: %(object)s"
-msgstr "Utwórz nowe przekształcenie dla %s"
-
-#: views.py:279
-msgid "Select"
-msgstr ""
-
-#: views.py:281
-#, fuzzy, python-format
-#| msgid ""
-#| "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr "Usunąć przekształcenie \"%(transformation)s\" dla %(content_object)s?"
-
-#~ msgid "Create new transformation"
-#~ msgstr "Utwórz nowe przekształcenie"
+msgid "Transformations for: %s"
+msgstr "Przekształcenia dla %s"

@@ -1,31 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:34-0400\n"
+"POT-Creation-Date: 2019-11-18 22:34-0400\n"
 "PO-Revision-Date: 2019-08-26 01:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:45 events.py:7 links.py:34
+#: apps.py:41 events.py:7 links.py:34
 msgid "Checkouts"
 msgstr "Забронированные документы"
 
-#: dashboard_widgets.py:16 views.py:172
+#: dashboard_widgets.py:16
 msgid "Checked out documents"
 msgstr ""
 
@@ -45,7 +42,7 @@ msgstr "Документ забронирован"
 msgid "Document forcefully checked in"
 msgstr "Документ освобождён насильно"
 
-#: exceptions.py:27
+#: exceptions.py:27 views.py:122
 msgid "Document already checked out."
 msgstr "Документ уже забронирован."
 
@@ -53,7 +50,7 @@ msgstr "Документ уже забронирован."
 msgid "Document status"
 msgstr "Статус документа"
 
-#: forms.py:39 models.py:44 models.py:136
+#: forms.py:39 models.py:41 views.py:162
 msgid "User"
 msgstr "Пользователь"
 
@@ -81,23 +78,11 @@ msgstr "Нет"
 msgid "Check out document"
 msgstr "Забронировать документ"
 
-#: links.py:45
-#, fuzzy
-#| msgid "Checked out"
-msgid "Check out"
-msgstr "Разбронирован"
-
-#: links.py:52
+#: links.py:47
 msgid "Check in document"
 msgstr "Освободить документ"
 
-#: links.py:56
-#, fuzzy
-#| msgid "Check in/out"
-msgid "Check in"
-msgstr "Освободить/забронировать"
-
-#: links.py:62
+#: links.py:52
 msgid "Check in/out"
 msgstr "Освободить/забронировать"
 
@@ -109,57 +94,49 @@ msgstr "Разбронирован"
 msgid "Checked in/available"
 msgstr "Освобождён/доступен"
 
-#: models.py:31 models.py:114
+#: models.py:28 models.py:110
 msgid "Document"
 msgstr "Документ"
 
-#: models.py:34
+#: models.py:31
 msgid "Check out date and time"
 msgstr "Дата и время брониварония"
 
-#: models.py:38
+#: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Время бронирования документа в минутах."
 
-#: models.py:40
+#: models.py:37
 msgid "Check out expiration date and time"
 msgstr "Дата и время окончания бронирования"
 
-#: models.py:49
+#: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Запретить загрузку новых версий документа."
 
-#: models.py:51
+#: models.py:48
 msgid "Block new version upload"
 msgstr "Заблокировать загрузку новых версий"
 
-#: models.py:59 permissions.py:7
+#: models.py:55 permissions.py:7
 msgid "Document checkout"
 msgstr "Бронирование документа"
 
-#: models.py:60
+#: models.py:56
 msgid "Document checkouts"
 msgstr "Забронированные документы"
 
-#: models.py:68
+#: models.py:64
 msgid "Check out expiration date and time must be in the future."
 msgstr "Время окончания брованирования должно быть в будущем."
 
-#: models.py:120
+#: models.py:116
 msgid "New version block"
 msgstr "Блокировка добавления новых версий"
 
-#: models.py:121
+#: models.py:117
 msgid "New version blocks"
 msgstr "Блокировки добавления новых версий"
-
-#: models.py:141
-msgid "Checkout time and date"
-msgstr "Дата и время бронирования"
-
-#: models.py:146
-msgid "Checkout expiration"
-msgstr "Истечение бронирования"
 
 #: permissions.py:10
 msgid "Check in documents"
@@ -189,72 +166,64 @@ msgstr ""
 msgid "Primary key of the document to be checked out."
 msgstr ""
 
-#: views.py:35
-#, fuzzy, python-format
-#| msgid "Check out document"
-msgid "Check in %(count)d document"
-msgid_plural "Check in %(count)d documents"
-msgstr[0] "Забронировать документ"
-msgstr[1] "Забронировать документ"
-msgstr[2] "Забронировать документ"
-msgstr[3] "Забронировать документ"
-
-#: views.py:48
-#, fuzzy, python-format
-#| msgid "Check in documents"
-msgid "Check in document: %s"
-msgstr "Освобождение документов"
-
-#: views.py:102
-#, fuzzy, python-format
-#| msgid "Check out document"
-msgid "Checkout %(count)d document"
-msgid_plural "Checkout %(count)d documents"
-msgstr[0] "Забронировать документ"
-msgstr[1] "Забронировать документ"
-msgstr[2] "Забронировать документ"
-msgstr[3] "Забронировать документ"
-
-#: views.py:115
+#: views.py:37
 #, python-format
-msgid "Check out document: %s"
-msgstr "Бронирование документа: %s"
+msgid ""
+"You didn't originally checked out this document. Forcefully check in the "
+"document: %s?"
+msgstr "Документ был забронирован не вами. Освободить насильно %s?"
 
-#: views.py:149
+#: views.py:41
+#, python-format
+msgid "Check in the document: %s?"
+msgstr "Освободить документ: %s?"
+
+#: views.py:74
+msgid "Document has not been checked out."
+msgstr "Документ не был забронирован."
+
+#: views.py:80
+#, python-format
+msgid "Document \"%s\" checked in successfully."
+msgstr "Документ \"%s\" освобожден."
+
+#: views.py:94
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Подробности бронирования %s"
 
+#: views.py:128
+#, python-format
+msgid "Document \"%s\" checked out successfully."
+msgstr "Документ \"%s\" забронирован."
+
+#: views.py:137
+#, python-format
+msgid "Check out document: %s"
+msgstr "Бронирование документа: %s"
+
 #: views.py:168
+msgid "Checkout time and date"
+msgstr "Дата и время бронирования"
+
+#: views.py:174
+msgid "Checkout expiration"
+msgstr "Истечение бронирования"
+
+#: views.py:182
 msgid ""
-"Checking out a document, blocks certain operations for a predetermined "
-"amount of time."
+"Checking out a document blocks certain document operations for a "
+"predetermined amount of time."
 msgstr ""
 
-#: views.py:171
+#: views.py:186
 msgid "No documents have been checked out"
 msgstr ""
+
+#: views.py:187
+msgid "Documents checked out"
+msgstr "Документы забронированы"
 
 #: widgets.py:27
 msgid "Amount"
 msgstr ""
-
-#~ msgid ""
-#~ "You didn't originally checked out this document. Forcefully check in the "
-#~ "document: %s?"
-#~ msgstr "Документ был забронирован не вами. Освободить насильно %s?"
-
-#~ msgid "Check in the document: %s?"
-#~ msgstr "Освободить документ: %s?"
-
-#~ msgid "Document has not been checked out."
-#~ msgstr "Документ не был забронирован."
-
-#~ msgid "Document \"%s\" checked in successfully."
-#~ msgstr "Документ \"%s\" освобожден."
-
-#~ msgid "Document \"%s\" checked out successfully."
-#~ msgstr "Документ \"%s\" забронирован."
-
-#~ msgid "Documents checked out"
-#~ msgstr "Документы забронированы"

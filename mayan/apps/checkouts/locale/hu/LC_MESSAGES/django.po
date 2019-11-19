@@ -1,29 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # molnars <szabolcs.molnar@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:34-0400\n"
+"POT-Creation-Date: 2019-11-18 22:34-0400\n"
 "PO-Revision-Date: 2019-08-26 01:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/hu/)\n"
-"Language: hu\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:45 events.py:7 links.py:34
+#: apps.py:41 events.py:7 links.py:34
 msgid "Checkouts"
 msgstr "Kikölcsönzések"
 
-#: dashboard_widgets.py:16 views.py:172
+#: dashboard_widgets.py:16
 msgid "Checked out documents"
 msgstr ""
 
@@ -43,7 +42,7 @@ msgstr "Dokumentum kikölcsönzés"
 msgid "Document forcefully checked in"
 msgstr "Dokumentum felűlbíráltan feltöltve"
 
-#: exceptions.py:27
+#: exceptions.py:27 views.py:122
 msgid "Document already checked out."
 msgstr "Dokumentum már kikölcsönözve"
 
@@ -51,7 +50,7 @@ msgstr "Dokumentum már kikölcsönözve"
 msgid "Document status"
 msgstr ""
 
-#: forms.py:39 models.py:44 models.py:136
+#: forms.py:39 models.py:41 views.py:162
 msgid "User"
 msgstr "Felhasználó"
 
@@ -79,23 +78,11 @@ msgstr "Nem"
 msgid "Check out document"
 msgstr "Dokumentum kikölcsönzése"
 
-#: links.py:45
-#, fuzzy
-#| msgid "Checked out"
-msgid "Check out"
-msgstr "Kikölcsönözve"
-
-#: links.py:52
+#: links.py:47
 msgid "Check in document"
 msgstr "Dokumentum feltöltése"
 
-#: links.py:56
-#, fuzzy
-#| msgid "Check in/out"
-msgid "Check in"
-msgstr "Feltöltés/kikölcsönzés"
-
-#: links.py:62
+#: links.py:52
 msgid "Check in/out"
 msgstr "Feltöltés/kikölcsönzés"
 
@@ -107,57 +94,49 @@ msgstr "Kikölcsönözve"
 msgid "Checked in/available"
 msgstr "Feltöltve/elérhető"
 
-#: models.py:31 models.py:114
+#: models.py:28 models.py:110
 msgid "Document"
 msgstr "Dokumentum"
 
-#: models.py:34
+#: models.py:31
 msgid "Check out date and time"
 msgstr "Kikölcsönzés dátuma és ideje"
 
-#: models.py:38
+#: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Dokumentum kikölcsönzött státuszban tartásának ideje percekben"
 
-#: models.py:40
+#: models.py:37
 msgid "Check out expiration date and time"
 msgstr "Kikülcsönzés lejárati ideje"
 
-#: models.py:49
+#: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Új dokumentum verzió feltöltésének tiltása"
 
-#: models.py:51
+#: models.py:48
 msgid "Block new version upload"
 msgstr "Új verzió feltöltésének blokkolása"
 
-#: models.py:59 permissions.py:7
+#: models.py:55 permissions.py:7
 msgid "Document checkout"
 msgstr "Dokumentum kikölcsönzés"
 
-#: models.py:60
+#: models.py:56
 msgid "Document checkouts"
 msgstr "Dokumentumok kikölcsönzése"
 
-#: models.py:68
+#: models.py:64
 msgid "Check out expiration date and time must be in the future."
 msgstr ""
 
-#: models.py:120
+#: models.py:116
 msgid "New version block"
 msgstr ""
 
-#: models.py:121
+#: models.py:117
 msgid "New version blocks"
 msgstr ""
-
-#: models.py:141
-msgid "Checkout time and date"
-msgstr "Kikölcsönzés dátuma és ideje"
-
-#: models.py:146
-msgid "Checkout expiration"
-msgstr "Kikölcsönzés lejárta"
 
 #: permissions.py:10
 msgid "Check in documents"
@@ -187,60 +166,64 @@ msgstr ""
 msgid "Primary key of the document to be checked out."
 msgstr ""
 
-#: views.py:35
-#, fuzzy, python-format
-#| msgid "Check out document"
-msgid "Check in %(count)d document"
-msgid_plural "Check in %(count)d documents"
-msgstr[0] "Dokumentum kikölcsönzése"
-msgstr[1] "Dokumentum kikölcsönzése"
-
-#: views.py:48
-#, fuzzy, python-format
-#| msgid "Check in documents"
-msgid "Check in document: %s"
-msgstr "Dokumentumok kikölcsönzése"
-
-#: views.py:102
-#, fuzzy, python-format
-#| msgid "Check out document"
-msgid "Checkout %(count)d document"
-msgid_plural "Checkout %(count)d documents"
-msgstr[0] "Dokumentum kikölcsönzése"
-msgstr[1] "Dokumentum kikölcsönzése"
-
-#: views.py:115
+#: views.py:37
 #, python-format
-msgid "Check out document: %s"
-msgstr "Dokumentum kikölcsönzése: %s"
+msgid ""
+"You didn't originally checked out this document. Forcefully check in the "
+"document: %s?"
+msgstr ""
 
-#: views.py:149
+#: views.py:41
+#, python-format
+msgid "Check in the document: %s?"
+msgstr ""
+
+#: views.py:74
+msgid "Document has not been checked out."
+msgstr "A dokumentum nem kerül kikölcsönzésre."
+
+#: views.py:80
+#, python-format
+msgid "Document \"%s\" checked in successfully."
+msgstr "A \"%s\" dokumentum feltöltése sikeres."
+
+#: views.py:94
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Dokumentum kikölcsönzés részletei: %s"
 
+#: views.py:128
+#, python-format
+msgid "Document \"%s\" checked out successfully."
+msgstr "A \"%s\" dokumentum kikölcsönzése sikeres."
+
+#: views.py:137
+#, python-format
+msgid "Check out document: %s"
+msgstr "Dokumentum kikölcsönzése: %s"
+
 #: views.py:168
+msgid "Checkout time and date"
+msgstr "Kikölcsönzés dátuma és ideje"
+
+#: views.py:174
+msgid "Checkout expiration"
+msgstr "Kikölcsönzés lejárta"
+
+#: views.py:182
 msgid ""
-"Checking out a document, blocks certain operations for a predetermined "
-"amount of time."
+"Checking out a document blocks certain document operations for a "
+"predetermined amount of time."
 msgstr ""
 
-#: views.py:171
+#: views.py:186
 msgid "No documents have been checked out"
 msgstr ""
+
+#: views.py:187
+msgid "Documents checked out"
+msgstr "Dokumentum kikölcsönzések"
 
 #: widgets.py:27
 msgid "Amount"
 msgstr ""
-
-#~ msgid "Document has not been checked out."
-#~ msgstr "A dokumentum nem kerül kikölcsönzésre."
-
-#~ msgid "Document \"%s\" checked in successfully."
-#~ msgstr "A \"%s\" dokumentum feltöltése sikeres."
-
-#~ msgid "Document \"%s\" checked out successfully."
-#~ msgstr "A \"%s\" dokumentum kikölcsönzése sikeres."
-
-#~ msgid "Documents checked out"
-#~ msgstr "Dokumentum kikölcsönzések"

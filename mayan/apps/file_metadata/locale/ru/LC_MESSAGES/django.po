@@ -2,41 +2,43 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2019
 # Sergey Glita <gsv70@mail.ru>, 2019
 # lilo.panic, 2019
 # D Muzzle <muzzlerator@gmail.com>, 2019
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:37-0400\n"
+"POT-Creation-Date: 2019-11-18 22:37-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: D Muzzle <muzzlerator@gmail.com>, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: admin.py:15
 msgid "Label"
 msgstr "Ярлык"
 
-#: apps.py:53 events.py:8 links.py:18 permissions.py:7 queues.py:9
+#: apps.py:52 events.py:8 links.py:18 permissions.py:7 queues.py:9
 #: settings.py:9
 msgid "File metadata"
 msgstr ""
 
 #: apps.py:98
 msgid "Return the value of a specific file metadata."
+msgstr ""
+
+#: apps.py:99
+msgid "File metadata value of"
 msgstr ""
 
 #: apps.py:110 apps.py:114 apps.py:152 apps.py:161
@@ -52,7 +54,7 @@ msgid ""
 "Library and program to read and write meta information in multimedia files."
 msgstr ""
 
-#: drivers/exiftool.py:20
+#: drivers/exiftool.py:26
 msgid "EXIF Tool"
 msgstr ""
 
@@ -186,14 +188,14 @@ msgid ""
 "default."
 msgstr ""
 
-#: settings.py:20
+#: settings.py:25
 msgid "Arguments to pass to the drivers."
 msgstr ""
 
 #: views.py:35
 msgid ""
-"File metadata are the attributes of the document's file. They can range from "
-"camera information used to take a photo to the author that created a file. "
+"File metadata are the attributes of the document's file. They can range from"
+" camera information used to take a photo to the author that created a file. "
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."

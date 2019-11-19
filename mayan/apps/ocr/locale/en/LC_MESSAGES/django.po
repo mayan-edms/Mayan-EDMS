@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:38-0400\n"
+"POT-Creation-Date: 2019-11-18 22:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,20 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:56 apps.py:131 apps.py:135 events.py:7 links.py:20 links.py:26
+#: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:15 links.py:21
 #: permissions.py:7 queues.py:8 settings.py:7
 msgid "OCR"
 msgstr ""
 
-#: apps.py:123
+#: apps.py:122
 msgid "Date and time"
 msgstr ""
 
-#: apps.py:126 models.py:76
+#: apps.py:125 models.py:76
 msgid "Result"
 msgstr ""
 
-#: backends/tesseract.py:90
+#: backends/tesseract.py:95
 msgid "Tesseract OCR not found."
 msgstr ""
 
@@ -65,27 +65,27 @@ msgstr ""
 msgid "Page %(page_number)d"
 msgstr ""
 
-#: links.py:32 links.py:37
+#: links.py:27 links.py:32
 msgid "Delete OCR content"
 msgstr ""
 
-#: links.py:43 links.py:48
+#: links.py:38 links.py:43
 msgid "Submit for OCR"
 msgstr ""
 
-#: links.py:53
+#: links.py:48
 msgid "Setup OCR"
 msgstr ""
 
-#: links.py:58
+#: links.py:53
 msgid "OCR documents per type"
 msgstr ""
 
-#: links.py:63 links.py:69 views.py:185
+#: links.py:58 links.py:64 views.py:185
 msgid "OCR errors"
 msgstr ""
 
-#: links.py:75
+#: links.py:70
 msgid "Download OCR text"
 msgstr ""
 

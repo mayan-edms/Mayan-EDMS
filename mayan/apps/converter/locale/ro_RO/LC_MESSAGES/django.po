@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 # Harald Ersch, 2019
@@ -9,166 +9,96 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:35-0400\n"
+"POT-Creation-Date: 2019-11-18 22:35-0400\n"
 "PO-Revision-Date: 2019-05-08 08:08+0000\n"
 "Last-Translator: Harald Ersch\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:23 permissions.py:7 settings.py:12
+#: apps.py:21 permissions.py:7 settings.py:12
 msgid "Converter"
 msgstr "Convertizor"
 
-#: apps.py:37 forms.py:25
+#: apps.py:30 models.py:57
 msgid "Transformation"
 msgstr "Transformare"
 
-#: backends/python.py:162 backends/python.py:168
+#: backends/python.py:175 backends/python.py:181
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Excepție determinând numărul de pagini PDF; %s"
 
-#: backends/python.py:182
+#: backends/python.py:195
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Excepție de determinare a numărului de pagini PDF; %s"
 
-#: classes.py:116
+#: classes.py:118
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice nu este instalat sau nu a fost găsit."
 
-#: classes.py:199
+#: classes.py:201
 msgid "Not an office file format."
 msgstr "Nu este un format de fișier Office."
 
-#: classes.py:327
-msgid ""
-"Transformations allow changing the visual appearance of documents without "
-"making permanent changes to the document file themselves."
-msgstr ""
-"Transformările permit modificarea aspectului vizual al documentelor, fără a "
-"face modificări permanente ale fișierului documentului în sine."
-
-#: classes.py:375
-#, fuzzy
-#| msgid "Transformation"
-msgid "transformation"
-msgstr "Transformare"
-
 #: dependencies.py:16
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr ""
-"Utilitar din pachetul poppler-utils folosit pentru inspectarea fișierelor "
-"PDF."
+msgstr "Utilitar din pachetul poppler-utils folosit pentru inspectarea fișierelor PDF."
 
 #: dependencies.py:21
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr ""
-"Utilitar din pachetul popper-utils folosit pentru extragerea paginilor din "
-"fișiere PDF în imagini în format PPM."
+msgstr "Utilitar din pachetul popper-utils folosit pentru extragerea paginilor din fișiere PDF în imagini în format PPM."
 
-#: forms.py:24
-#, fuzzy
-#| msgid "Transformations for: %s"
-msgid "Available transformations for this layer."
-msgstr "Transformări pentru: %s"
-
-#: forms.py:61
+#: forms.py:28
 #, python-format
 msgid "\"%s\" not a valid entry."
 msgstr "\"%s\" nu este o intrare validă."
 
-#: layers.py:12
-#, fuzzy
-#| msgid "Edit transformations"
-msgid "Saved transformations"
-msgstr "Editați transformări"
+#: links.py:36
+msgid "Create new transformation"
+msgstr "Creați o nouă transformare"
 
-#: links.py:18
+#: links.py:42
 msgid "Delete"
 msgstr "Șterge"
 
-#: links.py:25
+#: links.py:48
 msgid "Edit"
 msgstr "Editează"
 
-#: links.py:29
+#: links.py:53 models.py:58
 msgid "Transformations"
 msgstr "Transformări"
 
-#: links.py:35
-#, fuzzy
-#| msgid "Delete transformations"
-msgid "Select new transformation"
-msgstr "Ștergeți transformări"
-
-#: models.py:23 models.py:85
-msgid "Name"
-msgstr "Nume"
-
-#: models.py:26 models.py:81
-msgid "Order"
-msgstr "Ordine"
-
-#: models.py:34 models.py:50
-msgid "Stored layer"
-msgstr ""
-
-#: models.py:35
-msgid "Stored layers"
-msgstr ""
-
-#: models.py:47 models.py:93
-msgid "Enabled"
-msgstr ""
-
-#: models.py:56 models.py:75
-msgid "Object layer"
-msgstr ""
-
-#: models.py:57
-msgid "Object layers"
-msgstr ""
-
-#: models.py:79
+#: models.py:37
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Ordinea în care vor fi executate transformările. Dacă este lăsat neschimbat, "
-"va fi alocată o ordine automată."
+msgstr "Ordinea în care vor fi executate transformările. Dacă este lăsat neschimbat, va fi alocată o ordine automată."
 
-#: models.py:89
+#: models.py:39
+msgid "Order"
+msgstr "Ordine"
+
+#: models.py:43
+msgid "Name"
+msgstr "Nume"
+
+#: models.py:47
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Introduceți argumentele pentru transformare ca dicționar YAML. adică: "
-"{\"grade\": 180}"
+msgstr "Introduceți argumentele pentru transformare ca dicționar YAML. adică: {\"grade\": 180}"
 
-#: models.py:91
+#: models.py:49
 msgid "Arguments"
 msgstr "Argumente"
-
-#: models.py:100
-#, fuzzy
-#| msgid "No transformations"
-msgid "Layer transformation"
-msgstr "Fără transformări"
-
-#: models.py:101
-#, fuzzy
-#| msgid "No transformations"
-msgid "Layer transformations"
-msgstr "Fără transformări"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -190,114 +120,88 @@ msgstr "Vizualizați transformările existente"
 msgid "Graphics conversion backend to use."
 msgstr "Back-end de conversie grafică."
 
-#: settings.py:28
+#: settings.py:35
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Opțiuni de configurare pentru backend-ul de conversie grafică."
 
-#: transformations.py:99
+#: transformations.py:81
 msgid "Crop"
 msgstr "Decupare"
 
-#: transformations.py:177
-msgid "Draw rectangle"
-msgstr ""
-
-#: transformations.py:279
-msgid "Draw rectangle (percents coordinates)"
-msgstr ""
-
-#: transformations.py:376
+#: transformations.py:156
 msgid "Flip"
 msgstr "Basculare"
 
-#: transformations.py:387
+#: transformations.py:167
 msgid "Gaussian blur"
 msgstr "Încețoșare Gaussiană"
 
-#: transformations.py:397
+#: transformations.py:177
 msgid "Line art"
 msgstr "Linie de arta"
 
-#: transformations.py:408
+#: transformations.py:188
 msgid "Mirror"
 msgstr "Oglindire"
 
-#: transformations.py:419
+#: transformations.py:199
 msgid "Resize"
 msgstr "Redimensionare"
 
-#: transformations.py:446
+#: transformations.py:226
 msgid "Rotate"
 msgstr "Rotire"
 
-#: transformations.py:472
+#: transformations.py:252
 msgid "Rotate 90 degrees"
 msgstr "Rotiți 90 de grade"
 
-#: transformations.py:483
+#: transformations.py:263
 msgid "Rotate 180 degrees"
 msgstr "Rotiți 180 de grade"
 
-#: transformations.py:494
+#: transformations.py:274
 msgid "Rotate 270 degrees"
 msgstr "Rotiți 270 de grade"
 
-#: transformations.py:504
+#: transformations.py:284
 msgid "Unsharp masking"
 msgstr "Unsharp masking"
 
-#: transformations.py:520
+#: transformations.py:300
 msgid "Zoom"
 msgstr "Zoom"
 
-#: validators.py:23
+#: validators.py:26
 msgid "Enter a valid YAML value."
 msgstr "Introduceți o valoare validă YAML."
 
-#: views.py:74
-#, fuzzy, python-format
-#| msgid ""
-#| "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgid ""
-"Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
-"%(object)s"
-msgstr ""
-"Ștergeți transformarea \"%(transformation)s\" pentru: %(content_object)s?"
-
-#: views.py:135
+#: views.py:72
 #, python-format
-msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
-"Ștergeți transformarea \"%(transformation)s\" pentru: %(content_object)s?"
-
-#: views.py:183
-#, python-format
-msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
-"Editați transformarea \"%(transformation)s\" pentru: %(content_object)s"
-
-#: views.py:237
-#, python-format
-msgid "There are no entries for layer \"%(layer_name)s\""
-msgstr ""
-
-#: views.py:240
-#, fuzzy, python-format
-#| msgid "Create new transformation for: %s"
-msgid "Layer \"%(layer)s\" transformations for: %(object)s"
+msgid "Create new transformation for: %s"
 msgstr "Creați o nouă transformare pentru: %s"
 
-#: views.py:279
-msgid "Select"
-msgstr ""
+#: views.py:127
+#, python-format
+msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
+msgstr "Ștergeți transformarea \"%(transformation)s\" pentru: %(content_object)s?"
 
-#: views.py:281
-#, fuzzy, python-format
-#| msgid ""
-#| "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr ""
-"Ștergeți transformarea \"%(transformation)s\" pentru: %(content_object)s?"
+#: views.py:171
+#, python-format
+msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
+msgstr "Editați transformarea \"%(transformation)s\" pentru: %(content_object)s"
 
-#~ msgid "Create new transformation"
-#~ msgstr "Creați o nouă transformare"
+#: views.py:227
+msgid ""
+"Transformations allow changing the visual appearance of documents without "
+"making permanent changes to the document file themselves."
+msgstr "Transformările permit modificarea aspectului vizual al documentelor, fără a face modificări permanente ale fișierului documentului în sine."
+
+#: views.py:231
+msgid "No transformations"
+msgstr "Fără transformări"
+
+#: views.py:232
+#, python-format
+msgid "Transformations for: %s"
+msgstr "Transformări pentru: %s"

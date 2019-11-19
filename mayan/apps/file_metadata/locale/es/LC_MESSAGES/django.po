@@ -2,30 +2,30 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2019
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:37-0400\n"
+"POT-Creation-Date: 2019-11-18 22:37-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Rosario, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:15
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:53 events.py:8 links.py:18 permissions.py:7 queues.py:9
+#: apps.py:52 events.py:8 links.py:18 permissions.py:7 queues.py:9
 #: settings.py:9
 msgid "File metadata"
 msgstr "Metadatos de archivo"
@@ -33,6 +33,10 @@ msgstr "Metadatos de archivo"
 #: apps.py:98
 msgid "Return the value of a specific file metadata."
 msgstr "Devuelve el valor de un metadato de archivo específico."
+
+#: apps.py:99
+msgid "File metadata value of"
+msgstr "Valor de metadatos de archivo de"
 
 #: apps.py:110 apps.py:114 apps.py:152 apps.py:161
 msgid "File metadata key"
@@ -49,14 +53,15 @@ msgstr ""
 "Librería y programa para leer y escribir meta información en archivos "
 "multimedia."
 
-#: drivers/exiftool.py:20
+#: drivers/exiftool.py:26
 msgid "EXIF Tool"
 msgstr "Herramienta EXIF"
 
 #: events.py:12
 msgid "Document version submitted for file metadata processing"
 msgstr ""
-"Versión del documento enviado para el procesamiento de metadatos del archivo."
+"Versión del documento enviado para el procesamiento de metadatos del "
+"archivo."
 
 #: events.py:16
 msgid "Document version file metadata processing finished"
@@ -172,7 +177,8 @@ msgstr "Entradas de metadato de archivos"
 
 #: permissions.py:10
 msgid "Change document type file metadata settings"
-msgstr "Cambiar la configuración de metadatos del archivo de tipo de documento"
+msgstr ""
+"Cambiar la configuración de metadatos del archivo de tipo de documento"
 
 #: permissions.py:15
 msgid "Submit document for file metadata processing"
@@ -194,14 +200,14 @@ msgstr ""
 "Establecer nuevos tipos de documentos para realizar el procesamiento de "
 "metadatos de archivos automáticamente de forma predeterminada."
 
-#: settings.py:20
+#: settings.py:25
 msgid "Arguments to pass to the drivers."
 msgstr "Argumentos para pasar a los controladores."
 
 #: views.py:35
 msgid ""
-"File metadata are the attributes of the document's file. They can range from "
-"camera information used to take a photo to the author that created a file. "
+"File metadata are the attributes of the document's file. They can range from"
+" camera information used to take a photo to the author that created a file. "
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
@@ -248,8 +254,8 @@ msgstr ""
 #: views.py:125
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
-"Enviar todos los documentos de un tipo para el procesamiento de metadatos de "
-"archivos."
+"Enviar todos los documentos de un tipo para el procesamiento de metadatos de"
+" archivos."
 
 #: views.py:147
 #, python-format

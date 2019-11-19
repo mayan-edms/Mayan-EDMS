@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Daniele Bortoluzzi <daniele@elkos.it>, 2019
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:33-0400\n"
+"POT-Creation-Date: 2019-11-18 22:33-0400\n"
 "PO-Revision-Date: 2019-08-28 11:33+0000\n"
 "Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24 links.py:44
@@ -48,18 +47,16 @@ msgstr "Nuova ACL"
 msgid "Delete"
 msgstr "Cancella"
 
-#: links.py:49 models.py:45 workflow_actions.py:48 workflow_actions.py:163
+#: links.py:49 models.py:45 workflow_actions.py:49 workflow_actions.py:164
 msgid "Permissions"
 msgstr "Permessi"
 
-#: managers.py:231
+#: managers.py:216
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
-msgstr ""
-"L'oggetto \"%s\" non è un modello e su di esso non si può eseguire un "
-"controllo accessi."
+msgstr "L'oggetto \"%s\" non è un modello e su di esso non si può eseguire un controllo accessi."
 
-#: managers.py:252
+#: managers.py:236
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr "Permessi insufficienti per: %s"
@@ -94,10 +91,7 @@ msgstr "URL delle API che punta alla lista controllo accessi"
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
-"API URL che indica una autorizzazione in relazione all'elenco di controllo "
-"di accesso a cui è associato. Questo URL è diverso dall'originale canonico "
-"URL."
+msgstr "API URL che indica una autorizzazione in relazione all'elenco di controllo di accesso a cui è associato. Questo URL è diverso dall'originale canonico URL."
 
 #: serializers.py:91
 msgid "Primary key of the new permission to grant to the access control list."
@@ -112,9 +106,7 @@ msgstr "Nessun permesso: %s"
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr ""
-"Lista separata da virgole delle chiavi primarie dei permessi per garantire "
-"l'accesso alle liste di controllo"
+msgstr "Lista separata da virgole delle chiavi primarie dei permessi per garantire l'accesso alle liste di controllo"
 
 #: serializers.py:142
 msgid "Primary keys of the role to which this access control list binds to."
@@ -138,10 +130,7 @@ msgstr "Non ci sono ACL per questo oggetto"
 msgid ""
 "ACL stands for Access Control List and is a precise method  to control user "
 "access to objects in the system."
-msgstr ""
-"ACL sta per Access Control List (lista di controllo degli accessi) ed è un "
-"metodo preciso per controllare l'accesso dell'utente agli oggetti nel "
-"sistema."
+msgstr "ACL sta per Access Control List (lista di controllo degli accessi) ed è un metodo preciso per controllare l'accesso dell'utente agli oggetti nel sistema."
 
 #: views.py:154
 #, python-format
@@ -167,64 +156,50 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr ""
-"I permessi disabilitati sono ereditati da un oggetto padre o direttamente "
-"concessi al ruolo e non possono essere rimossi da questa schermata. I "
-"permessi ereditati vanno rimossi dalle ACL dell'oggetto padre o del ruolo "
-"tramite il menù Setup."
+msgstr "I permessi disabilitati sono ereditati da un oggetto padre o direttamente concessi al ruolo e non possono essere rimossi da questa schermata. I permessi ereditati vanno rimossi dalle ACL dell'oggetto padre o del ruolo tramite il menù Setup."
 
-#: workflow_actions.py:25
+#: workflow_actions.py:26
 msgid "Object type"
 msgstr "Tipo dell'oggetto"
 
-#: workflow_actions.py:28
+#: workflow_actions.py:29
 msgid "Type of the object for which the access will be modified."
 msgstr "Tipo dell'oggetto per il quale l'accesso sarà modificato"
 
-#: workflow_actions.py:34
+#: workflow_actions.py:35
 msgid "Object ID"
 msgstr "ID dell'oggetto"
 
-#: workflow_actions.py:37
-msgid "Numeric identifier of the object for which the access will be modified."
-msgstr ""
-"Identificativo numerico dell'oggetto per il quale l'accesso sarà modificato"
+#: workflow_actions.py:38
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
+msgstr "Identificativo numerico dell'oggetto per il quale l'accesso sarà modificato"
 
-#: workflow_actions.py:42 workflow_actions.py:157
+#: workflow_actions.py:43 workflow_actions.py:158
 msgid "Roles"
 msgstr "Ruoli "
 
-#: workflow_actions.py:44 workflow_actions.py:159
+#: workflow_actions.py:45 workflow_actions.py:160
 msgid "Roles whose access will be modified."
 msgstr "Ruoli il cui accesso sarà modificato"
 
-#: workflow_actions.py:51 workflow_actions.py:166
+#: workflow_actions.py:52 workflow_actions.py:167
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr "Permessi da concedere/revocare al ruolo per l'oggetto selezionato"
 
-#: workflow_actions.py:59
-#, fuzzy
-#| msgid "Grant document access"
-msgid "Grant object access"
-msgstr "Concedi accesso al documento"
+#: workflow_actions.py:60
+msgid "Grant access"
+msgstr "Concedi accesso"
 
-#: workflow_actions.py:142
-#, fuzzy
-#| msgid "Revoke document access"
-msgid "Revoke object access"
-msgstr "Revoca accesso al documento"
+#: workflow_actions.py:143
+msgid "Revoke access"
+msgstr "Revoca accesso"
 
-#: workflow_actions.py:174
+#: workflow_actions.py:175
 msgid "Grant document access"
 msgstr "Concedi accesso al documento"
 
-#: workflow_actions.py:213
+#: workflow_actions.py:214
 msgid "Revoke document access"
 msgstr "Revoca accesso al documento"
-
-#~ msgid "Grant access"
-#~ msgstr "Concedi accesso"
-
-#~ msgid "Revoke access"
-#~ msgstr "Revoca accesso"

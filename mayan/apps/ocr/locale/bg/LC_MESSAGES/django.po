@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
@@ -9,31 +9,30 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:38-0400\n"
+"POT-Creation-Date: 2019-11-18 22:38-0400\n"
 "PO-Revision-Date: 2019-10-17 10:39+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:56 apps.py:131 apps.py:135 events.py:7 links.py:20 links.py:26
+#: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:15 links.py:21
 #: permissions.py:7 queues.py:8 settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:123
+#: apps.py:122
 msgid "Date and time"
 msgstr "Дата и час"
 
-#: apps.py:126 models.py:76
+#: apps.py:125 models.py:76
 msgid "Result"
 msgstr "Резултат"
 
-#: backends/tesseract.py:90
+#: backends/tesseract.py:95
 msgid "Tesseract OCR not found."
 msgstr "Tesseract OCR не е намерен."
 
@@ -43,11 +42,9 @@ msgstr "Безплатен двигател OCR с отворен код"
 
 #: dependencies.py:36
 msgid ""
-"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or "
-"Cuneiform."
-msgstr ""
-"PyOCR е библиотека на Python, опростяваща използването на OCR инструменти "
-"като Tesseract или Cuneiform."
+"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or"
+" Cuneiform."
+msgstr "PyOCR е библиотека на Python, опростяваща използването на OCR инструменти като Tesseract или Cuneiform."
 
 #: events.py:10
 msgid "Document OCR content deleted"
@@ -70,27 +67,27 @@ msgstr "Съдържание"
 msgid "Page %(page_number)d"
 msgstr "Страница %(page_number)d"
 
-#: links.py:32 links.py:37
+#: links.py:27 links.py:32
 msgid "Delete OCR content"
 msgstr "Изтриване на OCR съдържание"
 
-#: links.py:43 links.py:48
+#: links.py:38 links.py:43
 msgid "Submit for OCR"
 msgstr "Изпращане за OCR"
 
-#: links.py:53
+#: links.py:48
 msgid "Setup OCR"
 msgstr "Настройка на OCR"
 
-#: links.py:58
+#: links.py:53
 msgid "OCR documents per type"
 msgstr "OCR на документи по тип"
 
-#: links.py:63 links.py:69 views.py:185
+#: links.py:58 links.py:64 views.py:185
 msgid "OCR errors"
 msgstr "Грешки в OCR"
 
-#: links.py:75
+#: links.py:70
 msgid "Download OCR text"
 msgstr "Изтеглете OCR текст"
 
@@ -168,9 +165,7 @@ msgstr "Пълен път към бекенда, за да се използва
 
 #: settings.py:21
 msgid "Set new document types to perform OCR automatically by default."
-msgstr ""
-"Задайте нови типове документи за автоматично изпълнение на OCR по "
-"подразбиране."
+msgstr "Задайте нови типове документи за автоматично изпълнение на OCR по подразбиране."
 
 #: views.py:37
 msgid "Delete the OCR content of the selected document?"

@@ -1,30 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:34-0400\n"
+"POT-Creation-Date: 2019-11-18 22:34-0400\n"
 "PO-Revision-Date: 2019-10-21 09:57+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:45 events.py:7 links.py:34
+#: apps.py:41 events.py:7 links.py:34
 msgid "Checkouts"
 msgstr "Kontrola"
 
-#: dashboard_widgets.py:16 views.py:172
+#: dashboard_widgets.py:16
 msgid "Checked out documents"
 msgstr "Dokomenty ke kontrole"
 
@@ -44,7 +42,7 @@ msgstr ""
 msgid "Document forcefully checked in"
 msgstr ""
 
-#: exceptions.py:27
+#: exceptions.py:27 views.py:122
 msgid "Document already checked out."
 msgstr ""
 
@@ -52,7 +50,7 @@ msgstr ""
 msgid "Document status"
 msgstr "Stav dokumentu"
 
-#: forms.py:39 models.py:44 models.py:136
+#: forms.py:39 models.py:41 views.py:162
 msgid "User"
 msgstr "Uživatel"
 
@@ -80,21 +78,11 @@ msgstr "Ne"
 msgid "Check out document"
 msgstr ""
 
-#: links.py:45
-#, fuzzy
-#| msgid "Checkouts"
-msgid "Check out"
-msgstr "Kontrola"
-
-#: links.py:52
+#: links.py:47
 msgid "Check in document"
 msgstr ""
 
-#: links.py:56
-msgid "Check in"
-msgstr ""
-
-#: links.py:62
+#: links.py:52
 msgid "Check in/out"
 msgstr ""
 
@@ -106,56 +94,48 @@ msgstr ""
 msgid "Checked in/available"
 msgstr ""
 
-#: models.py:31 models.py:114
+#: models.py:28 models.py:110
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:34
+#: models.py:31
 msgid "Check out date and time"
 msgstr ""
 
-#: models.py:38
+#: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr ""
 
-#: models.py:40
+#: models.py:37
 msgid "Check out expiration date and time"
 msgstr ""
 
-#: models.py:49
+#: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
 msgstr ""
 
-#: models.py:51
+#: models.py:48
 msgid "Block new version upload"
 msgstr ""
 
-#: models.py:59 permissions.py:7
+#: models.py:55 permissions.py:7
 msgid "Document checkout"
 msgstr ""
 
-#: models.py:60
+#: models.py:56
 msgid "Document checkouts"
 msgstr ""
 
-#: models.py:68
+#: models.py:64
 msgid "Check out expiration date and time must be in the future."
 msgstr ""
 
-#: models.py:120
+#: models.py:116
 msgid "New version block"
 msgstr "Nová verze bloku"
 
-#: models.py:121
+#: models.py:117
 msgid "New version blocks"
-msgstr ""
-
-#: models.py:141
-msgid "Checkout time and date"
-msgstr ""
-
-#: models.py:146
-msgid "Checkout expiration"
 msgstr ""
 
 #: permissions.py:10
@@ -186,50 +166,62 @@ msgstr ""
 msgid "Primary key of the document to be checked out."
 msgstr ""
 
-#: views.py:35
-#, fuzzy, python-format
-#| msgid "Checked out documents"
-msgid "Check in %(count)d document"
-msgid_plural "Check in %(count)d documents"
-msgstr[0] "Dokomenty ke kontrole"
-msgstr[1] "Dokomenty ke kontrole"
-msgstr[2] "Dokomenty ke kontrole"
-msgstr[3] "Dokomenty ke kontrole"
-
-#: views.py:48
-#, fuzzy, python-format
-#| msgid "Checked out documents"
-msgid "Check in document: %s"
-msgstr "Dokomenty ke kontrole"
-
-#: views.py:102
-#, fuzzy, python-format
-#| msgid "Checked out documents"
-msgid "Checkout %(count)d document"
-msgid_plural "Checkout %(count)d documents"
-msgstr[0] "Dokomenty ke kontrole"
-msgstr[1] "Dokomenty ke kontrole"
-msgstr[2] "Dokomenty ke kontrole"
-msgstr[3] "Dokomenty ke kontrole"
-
-#: views.py:115
+#: views.py:37
 #, python-format
-msgid "Check out document: %s"
+msgid ""
+"You didn't originally checked out this document. Forcefully check in the "
+"document: %s?"
 msgstr ""
 
-#: views.py:149
+#: views.py:41
+#, python-format
+msgid "Check in the document: %s?"
+msgstr ""
+
+#: views.py:74
+msgid "Document has not been checked out."
+msgstr ""
+
+#: views.py:80
+#, python-format
+msgid "Document \"%s\" checked in successfully."
+msgstr ""
+
+#: views.py:94
 #, python-format
 msgid "Check out details for document: %s"
 msgstr ""
 
-#: views.py:168
-msgid ""
-"Checking out a document, blocks certain operations for a predetermined "
-"amount of time."
+#: views.py:128
+#, python-format
+msgid "Document \"%s\" checked out successfully."
 msgstr ""
 
-#: views.py:171
+#: views.py:137
+#, python-format
+msgid "Check out document: %s"
+msgstr ""
+
+#: views.py:168
+msgid "Checkout time and date"
+msgstr ""
+
+#: views.py:174
+msgid "Checkout expiration"
+msgstr ""
+
+#: views.py:182
+msgid ""
+"Checking out a document blocks certain document operations for a "
+"predetermined amount of time."
+msgstr ""
+
+#: views.py:186
 msgid "No documents have been checked out"
+msgstr ""
+
+#: views.py:187
+msgid "Documents checked out"
 msgstr ""
 
 #: widgets.py:27

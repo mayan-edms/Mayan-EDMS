@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:33-0400\n"
+"POT-Creation-Date: 2019-11-18 22:33-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,16 +45,16 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: links.py:49 models.py:45 workflow_actions.py:48 workflow_actions.py:163
+#: links.py:49 models.py:45 workflow_actions.py:49 workflow_actions.py:164
 msgid "Permissions"
 msgstr ""
 
-#: managers.py:231
+#: managers.py:216
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
 msgstr ""
 
-#: managers.py:252
+#: managers.py:236
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr ""
@@ -156,47 +156,47 @@ msgid ""
 "menu."
 msgstr ""
 
-#: workflow_actions.py:25
+#: workflow_actions.py:26
 msgid "Object type"
 msgstr ""
 
-#: workflow_actions.py:28
+#: workflow_actions.py:29
 msgid "Type of the object for which the access will be modified."
 msgstr ""
 
-#: workflow_actions.py:34
+#: workflow_actions.py:35
 msgid "Object ID"
 msgstr ""
 
-#: workflow_actions.py:37
+#: workflow_actions.py:38
 msgid "Numeric identifier of the object for which the access will be modified."
 msgstr ""
 
-#: workflow_actions.py:42 workflow_actions.py:157
+#: workflow_actions.py:43 workflow_actions.py:158
 msgid "Roles"
 msgstr ""
 
-#: workflow_actions.py:44 workflow_actions.py:159
+#: workflow_actions.py:45 workflow_actions.py:160
 msgid "Roles whose access will be modified."
 msgstr ""
 
-#: workflow_actions.py:51 workflow_actions.py:166
+#: workflow_actions.py:52 workflow_actions.py:167
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr ""
 
-#: workflow_actions.py:59
-msgid "Grant object access"
+#: workflow_actions.py:60
+msgid "Grant access"
 msgstr ""
 
-#: workflow_actions.py:142
-msgid "Revoke object access"
+#: workflow_actions.py:143
+msgid "Revoke access"
 msgstr ""
 
-#: workflow_actions.py:174
+#: workflow_actions.py:175
 msgid "Grant document access"
 msgstr ""
 
-#: workflow_actions.py:213
+#: workflow_actions.py:214
 msgid "Revoke document access"
 msgstr ""

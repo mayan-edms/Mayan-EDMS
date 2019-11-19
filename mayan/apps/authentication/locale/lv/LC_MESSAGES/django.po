@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:34-0400\n"
+"POT-Creation-Date: 2019-11-18 22:34-0400\n"
 "PO-Revision-Date: 2019-06-27 12:07+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:25 settings.py:9
 msgid "Authentication"
@@ -40,9 +38,7 @@ msgstr "Atceries mani"
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
-"Lūdzu, ievadiet pareizu e-pasta adresi un paroli. Ņemiet vērā, ka paroles "
-"lauks ir reģistrjutīgs."
+msgstr "Lūdzu, ievadiet pareizu e-pasta adresi un paroli. Ņemiet vērā, ka paroles lauks ir reģistrjutīgs."
 
 #: forms.py:27
 msgid "This account is inactive."
@@ -64,17 +60,13 @@ msgstr "Uzstādīt paroli"
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr ""
-"Kontrolē lietotāja autentifikācijas mehānismu. Iespējas ir: lietotājvārds, e-"
-"pasts"
+msgstr "Kontrolē lietotāja autentifikācijas mehānismu. Iespējas ir: lietotājvārds, e-pasts"
 
 #: settings.py:20
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
-"in. Value is time in seconds."
-msgstr ""
-"Maksimālais laiks, uz kādu lietotājs, noklikšķinot uz izvēles rūtiņas "
-"„Atcerēties mani”, paliks pieteicies. Vērtība ir laiks sekundēs."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr "Maksimālais laiks, uz kādu lietotājs, noklikšķinot uz izvēles rūtiņas „Atcerēties mani”, paliks pieteicies. Vērtība ir laiks sekundēs."
 
 #: templates/authentication/login.html:11
 msgid "Login"
@@ -100,9 +92,7 @@ msgstr "Paroles atiestatīšana"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr ""
-"Paroles atiestatīšana pabeigta! Lai pierakstītos, noklikšķiniet uz tālāk "
-"redzamās saites."
+msgstr "Paroles atiestatīšana pabeigta! Lai pierakstītos, noklikšķiniet uz tālāk redzamās saites."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
@@ -155,9 +145,7 @@ msgstr "Mainīt paroli lietotājam: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Super lietotāju un darbinieku lietotāju paroles atiestatīšana nav atļauta, "
-"šajos gadījumos izmantojiet admin saskarni."
+msgstr "Super lietotāju un darbinieku lietotāju paroles atiestatīšana nav atļauta, šajos gadījumos izmantojiet admin saskarni."
 
 #: views.py:196
 #, python-format
