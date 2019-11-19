@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:59-0400\n"
+"POT-Creation-Date: 2019-11-18 22:35-0400\n"
 "PO-Revision-Date: 2019-10-16 14:38+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -19,35 +19,35 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:33
+#: apps.py:32
 msgid "Django GPG"
 msgstr "Джанго GPG"
 
-#: apps.py:48 apps.py:51 forms.py:17
+#: apps.py:47 apps.py:50 forms.py:17
 msgid "Key ID"
 msgstr "Ключ ID"
 
-#: apps.py:52 forms.py:34 models.py:55
+#: apps.py:51 forms.py:34 models.py:55
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:54 forms.py:23 models.py:36
+#: apps.py:53 forms.py:23 models.py:36
 msgid "Creation date"
 msgstr "Дата на създаване"
 
-#: apps.py:57
+#: apps.py:56
 msgid "No expiration"
 msgstr "Няма срок"
 
-#: apps.py:58 forms.py:27 models.py:40
+#: apps.py:57 forms.py:27 models.py:40
 msgid "Expiration date"
 msgstr "Срок"
 
-#: apps.py:60 forms.py:32 models.py:47
+#: apps.py:59 forms.py:32 models.py:47
 msgid "Length"
 msgstr "Дължина"
 
-#: apps.py:63 forms.py:19 models.py:52
+#: apps.py:62 forms.py:19 models.py:52
 msgid "User ID"
 msgstr "Потребител №"
 

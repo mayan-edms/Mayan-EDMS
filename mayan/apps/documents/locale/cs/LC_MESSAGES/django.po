@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:00-0400\n"
+"POT-Creation-Date: 2019-11-18 22:36-0400\n"
 "PO-Revision-Date: 2019-10-22 18:57+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: apps.py:109 apps.py:296 events.py:7 menus.py:10
 #: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:14
-#: statistics.py:233
+#: statistics.py:238
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -857,75 +857,75 @@ msgstr "Minimální částka v procentech (%) umožňující uživateli interakt
 msgid "Amount in percent zoom in or out a document page per user interaction."
 msgstr "Částka v procentech přiblížení nebo oddálení stránky dokumentu na interakci uživatele."
 
-#: statistics.py:18
+#: statistics.py:17
 msgid "January"
 msgstr "leden"
 
-#: statistics.py:18
+#: statistics.py:17
 msgid "February"
 msgstr "únor"
 
-#: statistics.py:18
+#: statistics.py:17
 msgid "March"
 msgstr "březen"
 
-#: statistics.py:18
+#: statistics.py:17
 msgid "April"
 msgstr "duben"
 
-#: statistics.py:18
+#: statistics.py:17
 msgid "May"
 msgstr "květen"
 
-#: statistics.py:19
+#: statistics.py:18
 msgid "June"
 msgstr "červen"
 
-#: statistics.py:19
+#: statistics.py:18
 msgid "July"
 msgstr "červenec"
 
-#: statistics.py:19
+#: statistics.py:18
 msgid "August"
 msgstr "srpen"
 
-#: statistics.py:19
+#: statistics.py:18
 msgid "September"
 msgstr "září"
 
-#: statistics.py:19
+#: statistics.py:18
 msgid "October"
 msgstr "říjen"
 
-#: statistics.py:20
+#: statistics.py:19
 msgid "November"
 msgstr "listopad"
 
-#: statistics.py:20
+#: statistics.py:19
 msgid "December"
 msgstr "prosinec"
 
-#: statistics.py:237
+#: statistics.py:242
 msgid "New documents per month"
 msgstr "Nové dokumenty za měsíc"
 
-#: statistics.py:244
+#: statistics.py:249
 msgid "New document versions per month"
 msgstr "Nové verze dokumentů za měsíc"
 
-#: statistics.py:251
+#: statistics.py:256
 msgid "New document pages per month"
 msgstr "Nové stránky dokumentu za měsíc"
 
-#: statistics.py:258
+#: statistics.py:263
 msgid "Total documents at each month"
 msgstr "Celkem dokumentů za každý měsíc"
 
-#: statistics.py:265
+#: statistics.py:270
 msgid "Total document versions at each month"
 msgstr "Celkem verze dokumentů v každém měsíci"
 
-#: statistics.py:272
+#: statistics.py:277
 msgid "Total document pages at each month"
 msgstr "Celkový počet stránek dokumentu v každém měsíci"
 

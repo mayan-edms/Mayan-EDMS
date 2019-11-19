@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:00-0400\n"
+"POT-Creation-Date: 2019-11-18 22:36-0400\n"
 "PO-Revision-Date: 2019-09-24 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: apps.py:109 apps.py:296 events.py:7 menus.py:10
 #: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:14
-#: statistics.py:233
+#: statistics.py:238
 msgid "Documents"
 msgstr "文档"
 
@@ -857,75 +857,75 @@ msgstr "允许用户以交互方式缩小文档页面的最小百分比（％）
 msgid "Amount in percent zoom in or out a document page per user interaction."
 msgstr "每个用户交互放大或缩小文档页面的百分比数量。"
 
-#: statistics.py:18
+#: statistics.py:17
 msgid "January"
 msgstr "一月"
 
-#: statistics.py:18
+#: statistics.py:17
 msgid "February"
 msgstr "二月"
 
-#: statistics.py:18
+#: statistics.py:17
 msgid "March"
 msgstr "三月"
 
-#: statistics.py:18
+#: statistics.py:17
 msgid "April"
 msgstr "四月"
 
-#: statistics.py:18
+#: statistics.py:17
 msgid "May"
 msgstr "五月"
 
-#: statistics.py:19
+#: statistics.py:18
 msgid "June"
 msgstr "六月"
 
-#: statistics.py:19
+#: statistics.py:18
 msgid "July"
 msgstr "七月"
 
-#: statistics.py:19
+#: statistics.py:18
 msgid "August"
 msgstr "八月"
 
-#: statistics.py:19
+#: statistics.py:18
 msgid "September"
 msgstr "九月"
 
-#: statistics.py:19
+#: statistics.py:18
 msgid "October"
 msgstr "十月"
 
-#: statistics.py:20
+#: statistics.py:19
 msgid "November"
 msgstr "十一月"
 
-#: statistics.py:20
+#: statistics.py:19
 msgid "December"
 msgstr "十二月"
 
-#: statistics.py:237
+#: statistics.py:242
 msgid "New documents per month"
 msgstr "每月新文档数"
 
-#: statistics.py:244
+#: statistics.py:249
 msgid "New document versions per month"
 msgstr "每月新文档版本数"
 
-#: statistics.py:251
+#: statistics.py:256
 msgid "New document pages per month"
 msgstr "每月新文档页数"
 
-#: statistics.py:258
+#: statistics.py:263
 msgid "Total documents at each month"
 msgstr "每月文档总数"
 
-#: statistics.py:265
+#: statistics.py:270
 msgid "Total document versions at each month"
 msgstr "每月文档版本总数"
 
-#: statistics.py:272
+#: statistics.py:277
 msgid "Total document pages at each month"
 msgstr "每月总文档页数"
 

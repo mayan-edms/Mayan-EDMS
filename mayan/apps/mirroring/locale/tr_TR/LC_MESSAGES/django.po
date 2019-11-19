@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:01-0400\n"
+"POT-Creation-Date: 2019-11-18 22:38-0400\n"
 "PO-Revision-Date: 2017-09-22 21:28+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:16 settings.py:7
+#: apps.py:15 settings.py:7
 msgid "Mirroring"
 msgstr "Yansıtma"
 

@@ -8,15 +8,16 @@
 # Berny <berny@bernhard-marx.de>, 2018
 # Robin Schubert <robin.schubert@gmx.de>, 2019
 # Mathias Behrle <mathiasb@m9s.biz>, 2019
+# Marvin Haschker <marvin@haschker.me>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:59-0400\n"
+"POT-Creation-Date: 2019-11-18 22:36-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2019\n"
+"Last-Translator: Marvin Haschker <marvin@haschker.me>, 2019\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,15 +25,15 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:57 events.py:8 permissions.py:8 settings.py:7
+#: apps.py:56 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr "Dokument parsen"
 
-#: apps.py:131 models.py:78
+#: apps.py:130 models.py:78
 msgid "Result"
 msgstr "Ergebnis"
 
-#: apps.py:136 apps.py:140 links.py:16 links.py:33 models.py:27
+#: apps.py:135 apps.py:139 links.py:16 links.py:33 models.py:27
 msgid "Content"
 msgstr "Inhalt"
 
@@ -45,7 +46,7 @@ msgstr ""
 
 #: events.py:12
 msgid "Document parsed content deleted"
-msgstr ""
+msgstr "OCR-Inhalt des Dokumentes gelöscht"
 
 #: events.py:16
 msgid "Document version submitted for parsing"
@@ -66,7 +67,7 @@ msgstr "Inhalte"
 
 #: links.py:22 links.py:27
 msgid "Delete parsed content"
-msgstr ""
+msgstr "OCR-Inhalt löschen"
 
 #: links.py:39 links.py:77 views.py:225
 msgid "Parsing errors"
@@ -183,8 +184,8 @@ msgstr ""
 #: views.py:37
 msgid "Delete the parsed content of the selected document?"
 msgid_plural "Delete the parsed content of the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Den OCR-Inhalt des auswählten Dokumentes löschen?"
+msgstr[1] "Den OCR-Inhalt der ausgewählten Dokumente löschen?"
 
 #: views.py:71
 #, python-format

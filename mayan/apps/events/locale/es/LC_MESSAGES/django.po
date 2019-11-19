@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:00-0400\n"
+"POT-Creation-Date: 2019-11-18 22:36-0400\n"
 "PO-Revision-Date: 2019-04-30 16:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -19,39 +19,39 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:30 links.py:49 links.py:54 links.py:59 permissions.py:7 views.py:36
+#: apps.py:29 links.py:49 links.py:54 links.py:59 permissions.py:7 views.py:36
 msgid "Events"
 msgstr "Eventos"
 
-#: apps.py:42 apps.py:68
+#: apps.py:41 apps.py:67
 msgid "Date and time"
 msgstr "Fecha y hora"
 
-#: apps.py:45 apps.py:71
+#: apps.py:44 apps.py:70
 msgid "Actor"
 msgstr "Actor"
 
-#: apps.py:48 apps.py:75
+#: apps.py:47 apps.py:74
 msgid "Event"
 msgstr "Evento"
 
-#: apps.py:51 apps.py:79
+#: apps.py:50 apps.py:78
 msgid "Target"
 msgstr "Objetivo"
 
-#: apps.py:55
+#: apps.py:54
 msgid "Action object"
 msgstr "Objeto de acción"
 
-#: apps.py:60 forms.py:12 forms.py:69
+#: apps.py:59 forms.py:12 forms.py:69
 msgid "Namespace"
 msgstr "Categoría"
 
-#: apps.py:63 forms.py:16 forms.py:73
+#: apps.py:62 forms.py:16 forms.py:73
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:84
+#: apps.py:83
 msgid "Seen"
 msgstr "Visto"
 

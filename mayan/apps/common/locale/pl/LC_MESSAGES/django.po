@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:58-0400\n"
-"PO-Revision-Date: 2019-09-23 10:05+0000\n"
-"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
+"POT-Creation-Date: 2019-11-18 22:34-0400\n"
+"PO-Revision-Date: 2019-11-19 02:40+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:89 permissions_runtime.py:7 settings.py:14
+#: apps.py:88 permissions_runtime.py:7 settings.py:14
 msgid "Common"
 msgstr "Ustawienia wspólne"
 
@@ -131,47 +131,51 @@ msgstr "%(object)s zaktualizowano pomyślnie."
 msgid "About this"
 msgstr "O programie"
 
-#: links.py:40
+#: links.py:39
+msgid "Get the book"
+msgstr ""
+
+#: links.py:44
 msgid "Locale profile"
 msgstr "Profil regionalny"
 
-#: links.py:45
+#: links.py:49
 msgid "Edit locale profile"
 msgstr "Edycja ustawień regionalnych"
 
-#: links.py:50
+#: links.py:54
 msgid "Documentation"
 msgstr "Dokumentacja"
 
-#: links.py:54 links.py:65
+#: links.py:58 links.py:69
 msgid "Errors"
 msgstr "Błędy"
 
-#: links.py:59
+#: links.py:63
 msgid "Clear all"
 msgstr "Wyczyść wszystko"
 
-#: links.py:69
+#: links.py:73
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:73 views.py:109
+#: links.py:77 views.py:109
 msgid "License"
 msgstr "Licencja"
 
-#: links.py:76
+#: links.py:80
 msgid "Setup"
 msgstr "Ustawienia"
 
-#: links.py:79
+#: links.py:83
 msgid "Source code"
 msgstr "Kod źródłowy"
 
-#: links.py:83
+#: links.py:87
 msgid "Support"
 msgstr "Wsparcie"
 
-#: links.py:87 queues.py:15 views.py:210
+#: links.py:91 queues.py:15 views.py:210
 msgid "Tools"
 msgstr "Narzędzia"
 

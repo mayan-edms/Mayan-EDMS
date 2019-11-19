@@ -7,6 +7,7 @@
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
 # Felix <felix.com@gmx.com>, 2018
 # Jesaja Everling <jeverling@gmail.com>, 2017
+# Marvin Haschker <marvin@haschker.me>, 2019
 # Mathias Behrle <mathiasb@m9s.biz>, 2018-2019
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Robin Schubert <robin.schubert@gmx.de>, 2019
@@ -16,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:58-0400\n"
-"PO-Revision-Date: 2019-06-29 06:21+0000\n"
+"POT-Creation-Date: 2019-11-18 22:34-0400\n"
+"PO-Revision-Date: 2019-11-19 02:40+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +27,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:89 permissions_runtime.py:7 settings.py:14
+#: apps.py:88 permissions_runtime.py:7 settings.py:14
 msgid "Common"
 msgstr "Allgemein"
 
@@ -131,47 +132,51 @@ msgstr "%(object)s erfolgreich aktualisiert."
 msgid "About this"
 msgstr "Über Mayan"
 
-#: links.py:40
+#: links.py:39
+msgid "Get the book"
+msgstr ""
+
+#: links.py:44
 msgid "Locale profile"
 msgstr "Lokalisierungsprofil"
 
-#: links.py:45
+#: links.py:49
 msgid "Edit locale profile"
 msgstr "Lokalisierungsprofil bearbeiten"
 
-#: links.py:50
+#: links.py:54
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: links.py:54 links.py:65
+#: links.py:58 links.py:69
 msgid "Errors"
 msgstr "Fehler"
 
-#: links.py:59
+#: links.py:63
 msgid "Clear all"
 msgstr "Alles löschen"
 
-#: links.py:69
+#: links.py:73
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:73 views.py:109
+#: links.py:77 views.py:109
 msgid "License"
 msgstr "Lizenz"
 
-#: links.py:76
+#: links.py:80
 msgid "Setup"
 msgstr "Einrichtung"
 
-#: links.py:79
+#: links.py:83
 msgid "Source code"
 msgstr "Quelltext"
 
-#: links.py:83
+#: links.py:87
 msgid "Support"
 msgstr "Hilfe"
 
-#: links.py:87 queues.py:15 views.py:210
+#: links.py:91 queues.py:15 views.py:210
 msgid "Tools"
 msgstr "Werkzeuge"
 
@@ -334,7 +339,7 @@ msgid ""
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Eine Liste mit Strings aller Applikationen, welche für diese Django-Installation aktiviert sind. Jede Zeichenfolge muss ein punktuierter Pythonpfad zu einer Anwendungskonfigurationsklasse (bevorzugt) oder einem Anwendungspaket sein."
 
 #: settings.py:43
 msgid ""
@@ -342,7 +347,7 @@ msgid ""
 "those normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Eine Liste von Strings, die alle Anwendungen angeben, die über die normalerweise von Mayan EDMS installierten Anwendungen hinaus installiert wurden. Jede Zeichenfolge sollte ein punktuierter Python-Pfad sein zu: einer Anwendungskonfigurationsklasse (bevorzugt) oder einem Paket, das eine Anwendung enthält."
 
 #: settings.py:52
 msgid ""
@@ -352,7 +357,7 @@ msgstr "Name des Formulars, das mit dem Markenanker im Hauptmenü verknüpft ist
 
 #: settings.py:61
 msgid "The number objects that will be displayed per page."
-msgstr ""
+msgstr "Die Anzahl der Objekte, die pro Seite angezeigt werden."
 
 #: settings.py:68
 msgid "Enable error logging outside of the system error logging capabilities."
@@ -570,7 +575,7 @@ msgid ""
 "\"/static/\" or \"http://static.example.com/\" If not None, this will be "
 "used as the base path for asset definitions (the Media class) and the "
 "staticfiles app. It must end in a slash if set to a non-empty value."
-msgstr ""
+msgstr "URL für statische Dateien in STATIC_ROOT. Beispiel: \"/static/\" oder \"http://static.example.com/\". Wenn nicht None, dient diese URL als Basispfad für Medien (die Medienklasse) und die staticfiles App. Sie muss mit einem Schrägstrich enden, falls nicht leer."
 
 #: settings.py:368
 msgid ""

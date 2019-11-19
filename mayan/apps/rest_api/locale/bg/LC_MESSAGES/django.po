@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:02-0400\n"
+"POT-Creation-Date: 2019-11-18 22:39-0400\n"
 "PO-Revision-Date: 2019-10-17 10:52+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:21 links.py:13
+#: apps.py:20 links.py:13
 msgid "REST API"
 msgstr "REST API"
 

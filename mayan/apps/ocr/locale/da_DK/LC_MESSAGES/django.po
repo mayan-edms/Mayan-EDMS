@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:02-0400\n"
+"POT-Creation-Date: 2019-11-18 22:38-0400\n"
 "PO-Revision-Date: 2019-09-24 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Danish (Denmark) (http://www.transifex.com/rosarior/mayan-edms/language/da_DK/)\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Language: da_DK\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:56 apps.py:131 apps.py:135 events.py:7 links.py:15 links.py:21
+#: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:15 links.py:21
 #: permissions.py:7 queues.py:8 settings.py:7
 msgid "OCR"
 msgstr ""
 
-#: apps.py:123
+#: apps.py:122
 msgid "Date and time"
 msgstr ""
 
-#: apps.py:126 models.py:76
+#: apps.py:125 models.py:76
 msgid "Result"
 msgstr "Resultat"
 

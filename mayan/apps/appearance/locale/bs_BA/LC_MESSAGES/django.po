@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:57-0400\n"
+"POT-Creation-Date: 2019-11-18 22:33-0400\n"
 "PO-Revision-Date: 2019-10-30 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: bs_BA\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:12 settings.py:9
+#: apps.py:10 settings.py:9
 msgid "Appearance"
 msgstr "Izgled"
 

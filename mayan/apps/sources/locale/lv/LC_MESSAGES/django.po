@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:03-0400\n"
+"POT-Creation-Date: 2019-11-18 22:39-0400\n"
 "PO-Revision-Date: 2019-07-01 05:59+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -18,39 +18,39 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
+#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:10
 #: views.py:628
 msgid "Sources"
 msgstr "Avoti"
 
-#: apps.py:56
+#: apps.py:55
 msgid "Create a document source"
 msgstr "Izveidojiet dokumentu avotu"
 
-#: apps.py:58
+#: apps.py:57
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr "Dokumentu avoti ir veids, kādā jaunie dokumenti tiek piegādāti Mayan EDMS, izveidojiet vismaz tīmekļa veidlapas avotu, lai varētu augšupielādēt dokumentus no pārlūkprogrammas."
 
-#: apps.py:71
+#: apps.py:70
 msgid "Type"
 msgstr "Tips"
 
-#: apps.py:80
+#: apps.py:79
 msgid "Created"
 msgstr "Izveidots"
 
-#: apps.py:87
+#: apps.py:86
 msgid "Thumbnail"
 msgstr "Sīktēls"
 
-#: apps.py:95 models/base.py:248
+#: apps.py:94 models/base.py:248
 msgid "Date time"
 msgstr "Datums Laiks"
 
-#: apps.py:100 models/base.py:251
+#: apps.py:99 models/base.py:251
 msgid "Message"
 msgstr "Ziņojums"
 
@@ -196,7 +196,7 @@ msgstr "Novērot mapi"
 msgid "POP3 email"
 msgstr "POP3 e-pasts"
 
-#: literals.py:66 models/email_sources.py:226 models/email_sources.py:227
+#: literals.py:66 models/email_sources.py:227 models/email_sources.py:228
 msgid "IMAP email"
 msgstr "IMAP e-pasts"
 
@@ -265,105 +265,105 @@ msgstr "Žurnāla ieraksts"
 msgid "Log entries"
 msgstr "Žurnāla ieraksti"
 
-#: models/email_sources.py:45
+#: models/email_sources.py:46
 msgid "Host"
 msgstr "Saimnieks"
 
-#: models/email_sources.py:46
+#: models/email_sources.py:47
 msgid "SSL"
 msgstr "SSL"
 
-#: models/email_sources.py:48
+#: models/email_sources.py:49
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr "Tipiskas izvēles ir 110 POP3, 995 POP3 pār SSL, 143 IMAP, 993 IMAP pār SSL."
 
-#: models/email_sources.py:49
+#: models/email_sources.py:50
 msgid "Port"
 msgstr "Ports"
 
-#: models/email_sources.py:51
+#: models/email_sources.py:52
 msgid "Username"
 msgstr "Lietotājvārds"
 
-#: models/email_sources.py:52
+#: models/email_sources.py:53
 msgid "Password"
 msgstr "Parole"
 
-#: models/email_sources.py:56
+#: models/email_sources.py:57
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
 msgstr "Pielikuma nosaukums, kurā būs metadatu tipa nosaukumi un vērtību pāri, kas tiks piešķirti pārējiem lejupielādētajiem pielikumiem."
 
-#: models/email_sources.py:59
+#: models/email_sources.py:60
 msgid "Metadata attachment name"
 msgstr "Metadatu pielikuma nosaukums"
 
-#: models/email_sources.py:63
+#: models/email_sources.py:64
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
 msgstr "Atlasiet metadatu tipu, kas derīgs dokumenta tipam, kurā izvēlēts e-pasta objekta saglabāšana."
 
-#: models/email_sources.py:66
+#: models/email_sources.py:67
 msgid "Subject metadata type"
 msgstr "Tēmas metadatu veids"
 
-#: models/email_sources.py:70
+#: models/email_sources.py:71
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
 msgstr "Atlasiet metadatu tipu, kas derīgs dokumenta tipam, kurā izvēlēts e-pasta \"no\" vērtības."
 
-#: models/email_sources.py:73
+#: models/email_sources.py:74
 msgid "From metadata type"
 msgstr "No metadatu veida"
 
-#: models/email_sources.py:77
+#: models/email_sources.py:78
 msgid "Store the body of the email as a text document."
 msgstr "Saglabājiet e-pasta ziņojuma tekstu kā teksta dokumentu."
 
-#: models/email_sources.py:78
+#: models/email_sources.py:79
 msgid "Store email body"
 msgstr "Saglabājiet e-pasta korpusu"
 
-#: models/email_sources.py:84
+#: models/email_sources.py:85
 msgid "Email source"
 msgstr "E-pasta avots"
 
-#: models/email_sources.py:85
+#: models/email_sources.py:86
 msgid "Email sources"
 msgstr "E-pasta avoti"
 
-#: models/email_sources.py:190
+#: models/email_sources.py:191
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "Objekta metadatu tips \"%(metadata_type)s\" nav derīgs dokumenta tipam: %(document_type)s"
 
-#: models/email_sources.py:204
+#: models/email_sources.py:205
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "\"No\" metadatu tips \"%(metadata_type)s\" nav derīgs dokumenta tipam: %(document_type)s"
 
-#: models/email_sources.py:219
+#: models/email_sources.py:220
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "IMAP pastkaste, no kuras var pārbaudīt ziņas."
 
-#: models/email_sources.py:220
+#: models/email_sources.py:221
 msgid "Mailbox"
 msgstr "Pastkaste"
 
-#: models/email_sources.py:272
+#: models/email_sources.py:301
 msgid "Timeout"
 msgstr "Pārtraukums"
 
-#: models/email_sources.py:278 models/email_sources.py:279
+#: models/email_sources.py:307 models/email_sources.py:308
 msgid "POP email"
 msgstr "POP e-pasts"
 

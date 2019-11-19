@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:59-0400\n"
+"POT-Creation-Date: 2019-11-18 22:36-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>, 2018\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -22,15 +22,15 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:57 events.py:8 permissions.py:8 settings.py:7
+#: apps.py:56 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr ""
 
-#: apps.py:131 models.py:78
+#: apps.py:130 models.py:78
 msgid "Result"
 msgstr ""
 
-#: apps.py:136 apps.py:140 links.py:16 links.py:33 models.py:27
+#: apps.py:135 apps.py:139 links.py:16 links.py:33 models.py:27
 msgid "Content"
 msgstr "المحتوى"
 

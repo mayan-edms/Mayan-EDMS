@@ -5,6 +5,7 @@
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Jesaja Everling <jeverling@gmail.com>, 2017
+# Marvin Haschker <marvin@haschker.me>, 2019
 # Mathias Behrle <mathiasb@m9s.biz>, 2018
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
@@ -12,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:02-0400\n"
-"PO-Revision-Date: 2019-06-29 06:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-11-18 22:39-0400\n"
+"PO-Revision-Date: 2019-11-08 11:14+0000\n"
+"Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,7 +33,7 @@ msgstr "Unzureichende Berechtigungen."
 
 #: dashboard_widgets.py:15
 msgid "Total roles"
-msgstr ""
+msgstr "Rollen insgesamt"
 
 #: events.py:12
 msgid "Role created"

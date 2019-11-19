@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:59-0400\n"
+"POT-Creation-Date: 2019-11-18 22:36-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -24,15 +24,15 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:57 events.py:8 permissions.py:8 settings.py:7
+#: apps.py:56 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr "Analiza documentelor"
 
-#: apps.py:131 models.py:78
+#: apps.py:130 models.py:78
 msgid "Result"
 msgstr "Rezultat"
 
-#: apps.py:136 apps.py:140 links.py:16 links.py:33 models.py:27
+#: apps.py:135 apps.py:139 links.py:16 links.py:33 models.py:27
 msgid "Content"
 msgstr "Conținut"
 

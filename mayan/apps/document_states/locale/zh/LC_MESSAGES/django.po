@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:00-0400\n"
-"PO-Revision-Date: 2019-09-24 04:45+0000\n"
+"POT-Creation-Date: 2019-11-18 22:36-0400\n"
+"PO-Revision-Date: 2019-11-19 02:41+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -18,65 +18,65 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:62 events.py:8 links.py:18 links.py:47 links.py:150 links.py:179
+#: apps.py:61 events.py:8 links.py:18 links.py:47 links.py:150 links.py:179
 #: models.py:61 views/workflow_proxy_views.py:75 views/workflow_views.py:139
 msgid "Workflows"
 msgstr "工作流"
 
-#: apps.py:104 apps.py:111
+#: apps.py:103 apps.py:110
 msgid "Current state of a workflow"
 msgstr "工作流的当前状态"
 
-#: apps.py:105
+#: apps.py:104
 msgid "Return the current state of the selected workflow"
 msgstr "返回所选工作流的当前状态"
 
-#: apps.py:112
+#: apps.py:111
 msgid ""
 "Return the completion value of the current state of the selected workflow"
 msgstr "返回所选工作流的当前状态的完成值"
 
-#: apps.py:165 apps.py:176 apps.py:186 apps.py:192
+#: apps.py:164 apps.py:175 apps.py:185 apps.py:191
 msgid "None"
 msgstr "没有"
 
-#: apps.py:170
+#: apps.py:169
 msgid "Current state"
 msgstr "当前状态"
 
-#: apps.py:174 apps.py:201 models.py:514
+#: apps.py:173 apps.py:200 models.py:517
 msgid "User"
 msgstr "用户"
 
-#: apps.py:180
+#: apps.py:179
 msgid "Last transition"
 msgstr "最后的流转"
 
-#: apps.py:184 apps.py:197
+#: apps.py:183 apps.py:196
 msgid "Date and time"
 msgstr "日期和时间"
 
-#: apps.py:190 models.py:211
+#: apps.py:189 models.py:211
 msgid "Completion"
 msgstr "完成"
 
-#: apps.py:204 forms.py:178 links.py:162 models.py:369 models.py:510
+#: apps.py:203 forms.py:178 links.py:162 models.py:372 models.py:513
 msgid "Transition"
 msgstr "流转"
 
-#: apps.py:208 forms.py:182 models.py:516
+#: apps.py:207 forms.py:182 models.py:519
 msgid "Comment"
 msgstr "评论"
 
-#: apps.py:231
+#: apps.py:230
 msgid "When?"
 msgstr "何时？"
 
-#: apps.py:235
+#: apps.py:234
 msgid "Action type"
 msgstr "操作类型"
 
-#: apps.py:251
+#: apps.py:250
 msgid "Triggers"
 msgstr "触发器"
 
@@ -100,7 +100,7 @@ msgstr "操作"
 msgid "Namespace"
 msgstr "命名空间"
 
-#: forms.py:121 models.py:48 models.py:199 models.py:280 models.py:343
+#: forms.py:121 models.py:48 models.py:199 models.py:280 models.py:346
 msgid "Label"
 msgstr "标签"
 
@@ -207,7 +207,7 @@ msgstr "其他应用程序将使用此值来引用此工作流程。只能包含
 msgid "Internal name"
 msgstr "内部名称"
 
-#: models.py:60 models.py:197 models.py:341 models.py:388
+#: models.py:60 models.py:197 models.py:344 models.py:391
 msgid "Workflow"
 msgstr "工作流"
 
@@ -267,75 +267,79 @@ msgstr "进入操作数据"
 msgid "Workflow state action"
 msgstr "工作流状态操作"
 
-#: models.py:346
+#: models.py:334
+msgid "Unknown action type"
+msgstr ""
+
+#: models.py:349
 msgid "Origin state"
 msgstr "原始状态"
 
-#: models.py:350
+#: models.py:353
 msgid "Destination state"
 msgstr "目标状态"
 
-#: models.py:358
+#: models.py:361
 msgid "Workflow transition"
 msgstr "工作流流转"
 
-#: models.py:359
+#: models.py:362
 msgid "Workflow transitions"
 msgstr "工作流流转"
 
-#: models.py:373
+#: models.py:376
 msgid "Event type"
 msgstr "事件类型"
 
-#: models.py:377
+#: models.py:380
 msgid "Workflow transition trigger event"
 msgstr "工作流流转触发事件"
 
-#: models.py:378
+#: models.py:381
 msgid "Workflow transitions trigger events"
 msgstr "工作流流转触发事件"
 
-#: models.py:392
+#: models.py:395
 msgid "Document"
 msgstr "文档"
 
-#: models.py:398 models.py:503
+#: models.py:401 models.py:506
 msgid "Workflow instance"
 msgstr "工作流实例"
 
-#: models.py:399
+#: models.py:402
 msgid "Workflow instances"
 msgstr "工作流实例"
 
-#: models.py:506
+#: models.py:509
 msgid "Datetime"
 msgstr "日期时间"
 
-#: models.py:520
+#: models.py:523
 msgid "Workflow instance log entry"
 msgstr "工作流实例日志条目"
 
-#: models.py:521
+#: models.py:524
 msgid "Workflow instance log entries"
 msgstr "工作流实例日志条目"
 
-#: models.py:528
+#: models.py:531
 msgid "Not a valid transition choice."
 msgstr "不是有效的流转选择。"
 
-#: models.py:561
+#: models.py:564
 msgid "Workflow runtime proxy"
 msgstr "工作流运行时的代理"
 
-#: models.py:562
+#: models.py:565
 msgid "Workflow runtime proxies"
 msgstr "工作流运行时的代理"
 
-#: models.py:568
+#: models.py:571
 msgid "Workflow state runtime proxy"
 msgstr "工作流状态运行时的代理"
 
-#: models.py:569
+#: models.py:572
 msgid "Workflow state runtime proxies"
 msgstr "工作流状态运行时的代理"
 

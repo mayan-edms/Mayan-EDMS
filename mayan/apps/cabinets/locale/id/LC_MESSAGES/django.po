@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:58-0400\n"
+"POT-Creation-Date: 2019-11-18 22:34-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Adek Lanin, 2019\n"
 "Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:50 apps.py:111 apps.py:119 apps.py:122 events.py:7 forms.py:16
+#: apps.py:49 apps.py:110 apps.py:118 apps.py:121 events.py:7 forms.py:16
 #: links.py:24 menus.py:16 models.py:47 permissions.py:7 views.py:163
 #: workflow_actions.py:22
 msgid "Cabinets"

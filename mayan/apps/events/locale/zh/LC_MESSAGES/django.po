@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:00-0400\n"
+"POT-Creation-Date: 2019-11-18 22:36-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: yulin Gong <540538248@qq.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
@@ -18,39 +18,39 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:30 links.py:49 links.py:54 links.py:59 permissions.py:7 views.py:36
+#: apps.py:29 links.py:49 links.py:54 links.py:59 permissions.py:7 views.py:36
 msgid "Events"
 msgstr "事件"
 
-#: apps.py:42 apps.py:68
+#: apps.py:41 apps.py:67
 msgid "Date and time"
 msgstr "日期和时间"
 
-#: apps.py:45 apps.py:71
+#: apps.py:44 apps.py:70
 msgid "Actor"
 msgstr "操作者"
 
-#: apps.py:48 apps.py:75
+#: apps.py:47 apps.py:74
 msgid "Event"
 msgstr "事件"
 
-#: apps.py:51 apps.py:79
+#: apps.py:50 apps.py:78
 msgid "Target"
 msgstr "目标"
 
-#: apps.py:55
+#: apps.py:54
 msgid "Action object"
 msgstr "操作对象"
 
-#: apps.py:60 forms.py:12 forms.py:69
+#: apps.py:59 forms.py:12 forms.py:69
 msgid "Namespace"
 msgstr "命名空间"
 
-#: apps.py:63 forms.py:16 forms.py:73
+#: apps.py:62 forms.py:16 forms.py:73
 msgid "Label"
 msgstr "标签"
 
-#: apps.py:84
+#: apps.py:83
 msgid "Seen"
 msgstr "已见"
 

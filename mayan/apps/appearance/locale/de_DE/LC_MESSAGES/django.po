@@ -6,14 +6,15 @@
 # Berny <berny@bernhard-marx.de>, 2015
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
 # Jesaja Everling <jeverling@gmail.com>, 2017
+# Marvin Haschker <marvin@haschker.me>, 2019
 # Mathias Behrle <mathiasb@m9s.biz>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:57-0400\n"
-"PO-Revision-Date: 2019-10-30 07:03+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-11-18 22:33-0400\n"
+"PO-Revision-Date: 2019-11-08 10:26+0000\n"
+"Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,13 +22,13 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:12 settings.py:9
+#: apps.py:10 settings.py:9
 msgid "Appearance"
 msgstr "Erscheinungsbild"
 
 #: dependencies.py:10
 msgid "Lato font"
-msgstr ""
+msgstr "Lato-Schriftart"
 
 #: dependencies.py:14
 msgid "Bootstrap"
@@ -158,14 +159,14 @@ msgid ""
 "\n"
 "                You can also <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">donate directly to the creator and lead developer.  %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\nSie können auch <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">direkt an den Ersteller und leitenden Entwickler spenden. %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:127
 msgid ""
 "\n"
 "                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>.\n"
 "            "
-msgstr ""
+msgstr "\nNeben Spenden können Sie das Projekt auch unterstützen, indem Sie <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">ein Exemplar des Buches \"Exploring Mayan EDMS\" von Roberto Rosario erwerben</a> ."
 
 #: templates/appearance/about.html:133
 #, python-format
@@ -208,7 +209,7 @@ msgstr "Warnung"
 msgid ""
 "Settings updated, restart your installation for changes to take proper "
 "effect."
-msgstr ""
+msgstr "Einstellungen wurden aktualisiert, starten Sie die Instanz neu, damit die Änderungen wirksam werden."
 
 #: templates/appearance/base.html:60
 #: templates/appearance/generic_list_items_subtemplate.html:104

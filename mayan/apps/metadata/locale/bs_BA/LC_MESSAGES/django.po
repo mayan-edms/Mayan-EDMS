@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:01-0400\n"
-"PO-Revision-Date: 2019-04-27 22:54+0000\n"
+"POT-Creation-Date: 2019-11-18 22:38-0400\n"
+"PO-Revision-Date: 2019-11-19 02:41+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -19,28 +19,32 @@ msgstr ""
 "Language: bs_BA\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:67 apps.py:153 apps.py:158 events.py:7 links.py:48 permissions.py:7
+#: apps.py:66 apps.py:152 apps.py:157 events.py:7 links.py:48 permissions.py:7
 #: queues.py:9 settings.py:10
 msgid "Metadata"
 msgstr "Metadata"
 
-#: apps.py:99
+#: apps.py:98
 msgid "Return the value of a specific document metadata"
 msgstr "Vratite vrednost određenih metapodataka dokumenta"
 
-#: apps.py:105
+#: apps.py:99
+msgid "Metadata value of"
+msgstr ""
+
+#: apps.py:104
 msgid "Metadata type name"
 msgstr "Naziv metapodataka"
 
-#: apps.py:109
+#: apps.py:108
 msgid "Metadata type value"
 msgstr "Vrednost metapodataka"
 
-#: apps.py:184 apps.py:192 forms.py:123 models.py:93 models.py:304
+#: apps.py:183 apps.py:191 forms.py:123 models.py:93 models.py:304
 msgid "Metadata type"
 msgstr "Metadata tip"
 
-#: apps.py:187 apps.py:196
+#: apps.py:186 apps.py:195
 msgid "Metadata value"
 msgstr "Metadata vrijednost"
 

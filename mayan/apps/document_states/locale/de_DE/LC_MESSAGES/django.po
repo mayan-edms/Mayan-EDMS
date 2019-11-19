@@ -5,13 +5,14 @@
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Jesaja Everling <jeverling@gmail.com>, 2017
+# Marvin Haschker <marvin@haschker.me>, 2019
 # Mathias Behrle <mathiasb@m9s.biz>, 2018-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:00-0400\n"
-"PO-Revision-Date: 2019-09-24 04:45+0000\n"
+"POT-Creation-Date: 2019-11-18 22:36-0400\n"
+"PO-Revision-Date: 2019-11-19 02:41+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -20,65 +21,65 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:62 events.py:8 links.py:18 links.py:47 links.py:150 links.py:179
+#: apps.py:61 events.py:8 links.py:18 links.py:47 links.py:150 links.py:179
 #: models.py:61 views/workflow_proxy_views.py:75 views/workflow_views.py:139
 msgid "Workflows"
 msgstr "Workflows"
 
-#: apps.py:104 apps.py:111
+#: apps.py:103 apps.py:110
 msgid "Current state of a workflow"
 msgstr "Aktueller Status eines Workflows"
 
-#: apps.py:105
+#: apps.py:104
 msgid "Return the current state of the selected workflow"
 msgstr "Den aktuellen Status des ausgewählten Workflows zurückgeben"
 
-#: apps.py:112
+#: apps.py:111
 msgid ""
 "Return the completion value of the current state of the selected workflow"
 msgstr "Den Ergebniswert des aktuellen Status des ausgewählten Workflows zurückgeben"
 
-#: apps.py:165 apps.py:176 apps.py:186 apps.py:192
+#: apps.py:164 apps.py:175 apps.py:185 apps.py:191
 msgid "None"
 msgstr "Keiner"
 
-#: apps.py:170
+#: apps.py:169
 msgid "Current state"
 msgstr "Aktueller Status"
 
-#: apps.py:174 apps.py:201 models.py:514
+#: apps.py:173 apps.py:200 models.py:517
 msgid "User"
 msgstr "Benutzer"
 
-#: apps.py:180
+#: apps.py:179
 msgid "Last transition"
 msgstr "Letzter Übergang"
 
-#: apps.py:184 apps.py:197
+#: apps.py:183 apps.py:196
 msgid "Date and time"
 msgstr "Datum und Zeit"
 
-#: apps.py:190 models.py:211
+#: apps.py:189 models.py:211
 msgid "Completion"
 msgstr "Fertigstellung"
 
-#: apps.py:204 forms.py:178 links.py:162 models.py:369 models.py:510
+#: apps.py:203 forms.py:178 links.py:162 models.py:372 models.py:513
 msgid "Transition"
 msgstr "Übergang"
 
-#: apps.py:208 forms.py:182 models.py:516
+#: apps.py:207 forms.py:182 models.py:519
 msgid "Comment"
 msgstr "Kommentar"
 
-#: apps.py:231
+#: apps.py:230
 msgid "When?"
 msgstr "Wann"
 
-#: apps.py:235
+#: apps.py:234
 msgid "Action type"
 msgstr "Aktionstyp"
 
-#: apps.py:251
+#: apps.py:250
 msgid "Triggers"
 msgstr "Trigger"
 
@@ -102,7 +103,7 @@ msgstr "Aktion"
 msgid "Namespace"
 msgstr "Namensraum"
 
-#: forms.py:121 models.py:48 models.py:199 models.py:280 models.py:343
+#: forms.py:121 models.py:48 models.py:199 models.py:280 models.py:346
 msgid "Label"
 msgstr "Bezeichnung"
 
@@ -120,7 +121,7 @@ msgstr "Ja"
 
 #: forms.py:181
 msgid "Optional comment to attach to the transition."
-msgstr ""
+msgstr "Optionaler Kommentar, der an den Übergang angehängt werden soll."
 
 #: handlers.py:62
 #, python-format
@@ -209,7 +210,7 @@ msgstr "Dieser Wert wird von anderen Programmteilen verwendet, um sich auf diese
 msgid "Internal name"
 msgstr "Interner Name"
 
-#: models.py:60 models.py:197 models.py:341 models.py:388
+#: models.py:60 models.py:197 models.py:344 models.py:391
 msgid "Workflow"
 msgstr "Workflow"
 
@@ -269,75 +270,79 @@ msgstr "Daten der Eingangsaktion"
 msgid "Workflow state action"
 msgstr "Workflowstatusaktion"
 
-#: models.py:346
+#: models.py:334
+msgid "Unknown action type"
+msgstr ""
+
+#: models.py:349
 msgid "Origin state"
 msgstr "Herkunftsstatus"
 
-#: models.py:350
+#: models.py:353
 msgid "Destination state"
 msgstr "Zielstatus"
 
-#: models.py:358
+#: models.py:361
 msgid "Workflow transition"
 msgstr "Workflow Übergang"
 
-#: models.py:359
+#: models.py:362
 msgid "Workflow transitions"
 msgstr "Workflow Übergänge"
 
-#: models.py:373
+#: models.py:376
 msgid "Event type"
 msgstr "Ereignistyp"
 
-#: models.py:377
+#: models.py:380
 msgid "Workflow transition trigger event"
 msgstr "Workflowübergangstriggerereignis"
 
-#: models.py:378
+#: models.py:381
 msgid "Workflow transitions trigger events"
 msgstr "Workflowübergangstriggerereignisse"
 
-#: models.py:392
+#: models.py:395
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:398 models.py:503
+#: models.py:401 models.py:506
 msgid "Workflow instance"
 msgstr "Workflow"
 
-#: models.py:399
+#: models.py:402
 msgid "Workflow instances"
 msgstr "Workflows"
 
-#: models.py:506
+#: models.py:509
 msgid "Datetime"
 msgstr "Zeit"
 
-#: models.py:520
+#: models.py:523
 msgid "Workflow instance log entry"
 msgstr "Workflow Logeintrag"
 
-#: models.py:521
+#: models.py:524
 msgid "Workflow instance log entries"
 msgstr "Workflow Logeinträge"
 
-#: models.py:528
+#: models.py:531
 msgid "Not a valid transition choice."
 msgstr "Kein gültiger Übergang."
 
-#: models.py:561
+#: models.py:564
 msgid "Workflow runtime proxy"
 msgstr "Workflow-Laufzeitproxy"
 
-#: models.py:562
+#: models.py:565
 msgid "Workflow runtime proxies"
 msgstr "Workflow-Laufzeit-Proxies"
 
-#: models.py:568
+#: models.py:571
 msgid "Workflow state runtime proxy"
 msgstr "Laufzeitproxy für Workflowstatus"
 
-#: models.py:569
+#: models.py:572
 msgid "Workflow state runtime proxies"
 msgstr "Runtime-Proxies für Workflowstatus"
 
@@ -430,11 +435,11 @@ msgstr "Workflows für Dokument %s"
 msgid ""
 "This view will show the state changes as a workflow instance is "
 "transitioned."
-msgstr ""
+msgstr "In dieser Ansicht werden die Statusänderungen beim Übergang einer Workflow-Instanz angezeigt."
 
 #: views/workflow_instance_views.py:87
 msgid "There are no details for this workflow instance"
-msgstr ""
+msgstr "Zu dieser Workflow-Instanz sind keine Details vorhanden"
 
 #: views/workflow_instance_views.py:90
 #, python-format
@@ -482,7 +487,7 @@ msgstr "Keine Workflows vorhanden"
 
 #: views/workflow_proxy_views.py:94
 msgid "There are no documents in this workflow state"
-msgstr ""
+msgstr "In diesem Workflow-Status befinden sich keine Dokumente"
 
 #: views/workflow_proxy_views.py:97
 #, python-format
@@ -534,12 +539,12 @@ msgstr "Es sind keine Workflows definiert"
 #: views/workflow_views.py:166
 #, python-format
 msgid "Delete workflow: %s?"
-msgstr ""
+msgstr "Workflow löschen: %s?"
 
 #: views/workflow_views.py:182
 #, python-format
 msgid "Edit workflow: %s"
-msgstr ""
+msgstr "Workflow bearbeiten: %s"
 
 #: views/workflow_views.py:196
 msgid "Available document types"
@@ -602,12 +607,12 @@ msgstr "Status für Workflow %s erstellen"
 #: views/workflow_views.py:460
 #, python-format
 msgid "Delete workflow state: %s?"
-msgstr ""
+msgstr "Workflow-Status löschen: %s?"
 
 #: views/workflow_views.py:483
 #, python-format
 msgid "Edit workflow state: %s"
-msgstr ""
+msgstr "Workflow-Status bearbeiten: %s"
 
 #: views/workflow_views.py:514
 msgid "This workflow doesn't have any states"
@@ -621,12 +626,12 @@ msgstr "Übergänge für Workflow %s erstellen"
 #: views/workflow_views.py:577
 #, python-format
 msgid "Delete workflow transition: %s?"
-msgstr ""
+msgstr "Workflow-Übergang löschen: %s?"
 
 #: views/workflow_views.py:600
 #, python-format
 msgid "Edit workflow transition: %s"
-msgstr ""
+msgstr "Workflow-Übergang bearbeiten: %s"
 
 #: views/workflow_views.py:635
 msgid ""
@@ -683,11 +688,11 @@ msgstr "Vorschau von %s"
 
 #: widgets.py:22
 msgid "Workflow preview"
-msgstr ""
+msgstr "Workflow-Vorschau"
 
 #: workflow_actions.py:22
 msgid "Document label"
-msgstr ""
+msgstr "Dokumentbezeichnung"
 
 #: workflow_actions.py:25
 msgid ""
@@ -696,7 +701,7 @@ msgstr "Der neue Bezeichner, der dem Dokument zugewiesen werden soll. Kann eine 
 
 #: workflow_actions.py:30
 msgid "Document description"
-msgstr ""
+msgstr "Dokumentbeschreibung"
 
 #: workflow_actions.py:33
 msgid ""

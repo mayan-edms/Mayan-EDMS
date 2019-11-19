@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 02:59-0400\n"
+"POT-Creation-Date: 2019-11-18 22:36-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>, 2018\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (https://www.transifex.com/rosarior/teams/13584/bs_BA/)\n"
@@ -23,15 +23,15 @@ msgstr ""
 "Language: bs_BA\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:57 events.py:8 permissions.py:8 settings.py:7
+#: apps.py:56 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr "Gramatička analiza dokumenta"
 
-#: apps.py:131 models.py:78
+#: apps.py:130 models.py:78
 msgid "Result"
 msgstr "Rezultat"
 
-#: apps.py:136 apps.py:140 links.py:16 links.py:33 models.py:27
+#: apps.py:135 apps.py:139 links.py:16 links.py:33 models.py:27
 msgid "Content"
 msgstr "Sadržaj"
 

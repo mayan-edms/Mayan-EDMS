@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:03-0400\n"
+"POT-Creation-Date: 2019-11-18 22:39-0400\n"
 "PO-Revision-Date: 2019-10-17 12:04+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -19,39 +19,39 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
+#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:10
 #: views.py:628
 msgid "Sources"
 msgstr "Източници"
 
-#: apps.py:56
+#: apps.py:55
 msgid "Create a document source"
 msgstr "Създайте източник на документи"
 
-#: apps.py:58
+#: apps.py:57
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr "Източниците на документи са начинът, по който новите документи се подават към Mayan EDMS, създайте поне източник на уеб формуляр, за да можете да качвате документи от браузър."
 
-#: apps.py:71
+#: apps.py:70
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:80
+#: apps.py:79
 msgid "Created"
 msgstr "Създаден"
 
-#: apps.py:87
+#: apps.py:86
 msgid "Thumbnail"
 msgstr "Умалено изображение"
 
-#: apps.py:95 models/base.py:248
+#: apps.py:94 models/base.py:248
 msgid "Date time"
 msgstr "Дата час"
 
-#: apps.py:100 models/base.py:251
+#: apps.py:99 models/base.py:251
 msgid "Message"
 msgstr "Съобщение"
 
@@ -197,7 +197,7 @@ msgstr "Наблюдавана папка"
 msgid "POP3 email"
 msgstr "POP3 имейл"
 
-#: literals.py:66 models/email_sources.py:226 models/email_sources.py:227
+#: literals.py:66 models/email_sources.py:227 models/email_sources.py:228
 msgid "IMAP email"
 msgstr "IMAP имейл"
 
@@ -266,105 +266,105 @@ msgstr "Запис в дневника"
 msgid "Log entries"
 msgstr "Записи в дневника"
 
-#: models/email_sources.py:45
+#: models/email_sources.py:46
 msgid "Host"
 msgstr "Хост"
 
-#: models/email_sources.py:46
+#: models/email_sources.py:47
 msgid "SSL"
 msgstr "SSL"
 
-#: models/email_sources.py:48
+#: models/email_sources.py:49
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr "Типичните възможности за избор са 110 за POP3, 995 за POP3 над SSL, 143 за IMAP, 993 за IMAP над SSL."
 
-#: models/email_sources.py:49
+#: models/email_sources.py:50
 msgid "Port"
 msgstr "Порт"
 
-#: models/email_sources.py:51
+#: models/email_sources.py:52
 msgid "Username"
 msgstr "Име на потребител"
 
-#: models/email_sources.py:52
+#: models/email_sources.py:53
 msgid "Password"
 msgstr "Парола"
 
-#: models/email_sources.py:56
+#: models/email_sources.py:57
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
 msgstr "Име на прикачения файл, който ще съдържа имена на метаданни и двойки стойности, които ще бъдат присвоени на останалите изтеглени прикачени файлове."
 
-#: models/email_sources.py:59
+#: models/email_sources.py:60
 msgid "Metadata attachment name"
 msgstr "Име за прикачени метаданни"
 
-#: models/email_sources.py:63
+#: models/email_sources.py:64
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
 msgstr "Изберете тип метаданни, валидни за избрания тип документ, в който да съхранявате темата на имейла."
 
-#: models/email_sources.py:66
+#: models/email_sources.py:67
 msgid "Subject metadata type"
 msgstr "Тип метаданните за темата"
 
-#: models/email_sources.py:70
+#: models/email_sources.py:71
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
 msgstr "Изберете тип метаданни, валидни за избрания тип документ, в който да съхранявате стойността „от“ на имейла."
 
-#: models/email_sources.py:73
+#: models/email_sources.py:74
 msgid "From metadata type"
 msgstr "От тип метаданни"
 
-#: models/email_sources.py:77
+#: models/email_sources.py:78
 msgid "Store the body of the email as a text document."
 msgstr "Съхраняване основния текст на имейла като текстов документ."
 
-#: models/email_sources.py:78
+#: models/email_sources.py:79
 msgid "Store email body"
 msgstr "Съхраняване основния текст на имейла"
 
-#: models/email_sources.py:84
+#: models/email_sources.py:85
 msgid "Email source"
 msgstr "Източник на имейл"
 
-#: models/email_sources.py:85
+#: models/email_sources.py:86
 msgid "Email sources"
 msgstr "Източници на имейл"
 
-#: models/email_sources.py:190
+#: models/email_sources.py:191
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "Типът метаданни за темата &quot;%(metadata_type)s&quot; не е валиден за типа документ: %(document_type)s"
 
-#: models/email_sources.py:204
+#: models/email_sources.py:205
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "„От„ тип метаданни “%(metadata_type)s“ не е валиден за типа документ: %(document_type)s"
 
-#: models/email_sources.py:219
+#: models/email_sources.py:220
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "IMAP пощенска кутия, от която да проверявате за съобщения."
 
-#: models/email_sources.py:220
+#: models/email_sources.py:221
 msgid "Mailbox"
 msgstr "Пощенска кутия"
 
-#: models/email_sources.py:272
+#: models/email_sources.py:301
 msgid "Timeout"
 msgstr "Изтичане на времето"
 
-#: models/email_sources.py:278 models/email_sources.py:279
+#: models/email_sources.py:307 models/email_sources.py:308
 msgid "POP email"
 msgstr "POP имейл"
 

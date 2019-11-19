@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:01-0400\n"
-"PO-Revision-Date: 2019-04-27 22:54+0000\n"
+"POT-Creation-Date: 2019-11-18 22:38-0400\n"
+"PO-Revision-Date: 2019-11-19 02:41+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -22,28 +22,32 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:67 apps.py:153 apps.py:158 events.py:7 links.py:48 permissions.py:7
+#: apps.py:66 apps.py:152 apps.py:157 events.py:7 links.py:48 permissions.py:7
 #: queues.py:9 settings.py:10
 msgid "Metadata"
 msgstr "Metadados"
 
-#: apps.py:99
+#: apps.py:98
 msgid "Return the value of a specific document metadata"
 msgstr "Devolver o valor de um documento específico de metadados"
 
-#: apps.py:105
+#: apps.py:99
+msgid "Metadata value of"
+msgstr ""
+
+#: apps.py:104
 msgid "Metadata type name"
 msgstr "Metadados nome do tipo"
 
-#: apps.py:109
+#: apps.py:108
 msgid "Metadata type value"
 msgstr "Metadados valor do tipo"
 
-#: apps.py:184 apps.py:192 forms.py:123 models.py:93 models.py:304
+#: apps.py:183 apps.py:191 forms.py:123 models.py:93 models.py:304
 msgid "Metadata type"
 msgstr "Tipo de metadados"
 
-#: apps.py:187 apps.py:196
+#: apps.py:186 apps.py:195
 msgid "Metadata value"
 msgstr "Valor de metadados"
 

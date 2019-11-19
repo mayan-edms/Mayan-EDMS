@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:03-0400\n"
+"POT-Creation-Date: 2019-11-18 22:39-0400\n"
 "PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -19,39 +19,39 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:41 links.py:54 models/base.py:39 queues.py:9 settings.py:10
+#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:10
 #: views.py:628
 msgid "Sources"
 msgstr "منابع"
 
-#: apps.py:56
+#: apps.py:55
 msgid "Create a document source"
 msgstr "یک منبع مستند ایجاد کنید"
 
-#: apps.py:58
+#: apps.py:57
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr "منابع سندي روشي است که اسناد جديد به EDMS ميان تغيير مي کند و حداقل يک منبع فرم وب را قادر مي سازد تا اسناد را از يک مرورگر آپلود کند."
 
-#: apps.py:71
+#: apps.py:70
 msgid "Type"
 msgstr "نوع"
 
-#: apps.py:80
+#: apps.py:79
 msgid "Created"
 msgstr "ایجاد شده"
 
-#: apps.py:87
+#: apps.py:86
 msgid "Thumbnail"
 msgstr "بند انگشتی"
 
-#: apps.py:95 models/base.py:248
+#: apps.py:94 models/base.py:248
 msgid "Date time"
 msgstr "زمان قرار"
 
-#: apps.py:100 models/base.py:251
+#: apps.py:99 models/base.py:251
 msgid "Message"
 msgstr "پیام"
 
@@ -197,7 +197,7 @@ msgstr "پوشه تماشا کنید"
 msgid "POP3 email"
 msgstr "ایمیل POP3"
 
-#: literals.py:66 models/email_sources.py:226 models/email_sources.py:227
+#: literals.py:66 models/email_sources.py:227 models/email_sources.py:228
 msgid "IMAP email"
 msgstr "ایمیل IMAP"
 
@@ -266,105 +266,105 @@ msgstr "ورودی لاگ"
 msgid "Log entries"
 msgstr "ورودیهای لاگ"
 
-#: models/email_sources.py:45
+#: models/email_sources.py:46
 msgid "Host"
 msgstr "هاست"
 
-#: models/email_sources.py:46
+#: models/email_sources.py:47
 msgid "SSL"
 msgstr "SSL"
 
-#: models/email_sources.py:48
+#: models/email_sources.py:49
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL."
 
-#: models/email_sources.py:49
+#: models/email_sources.py:50
 msgid "Port"
 msgstr "Port"
 
-#: models/email_sources.py:51
+#: models/email_sources.py:52
 msgid "Username"
 msgstr "نام کاربری"
 
-#: models/email_sources.py:52
+#: models/email_sources.py:53
 msgid "Password"
 msgstr "کلمه عبور"
 
-#: models/email_sources.py:56
+#: models/email_sources.py:57
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
 msgstr ""
 
-#: models/email_sources.py:59
+#: models/email_sources.py:60
 msgid "Metadata attachment name"
 msgstr "نام دلبستگی متاداده"
 
-#: models/email_sources.py:63
+#: models/email_sources.py:64
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
 msgstr "نوع متادیتایی معتبر برای نوع سند انتخاب شده که در آن برای ذخیره موضوع ایمیل انتخاب کنید."
 
-#: models/email_sources.py:66
+#: models/email_sources.py:67
 msgid "Subject metadata type"
 msgstr "نوع Metadata موضوع"
 
-#: models/email_sources.py:70
+#: models/email_sources.py:71
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
 msgstr "نوع متادیتایی معتبر برای نوع سند انتخاب شده که در آن برای ذخیره \"ایمیل\" از \"ارزش\" را انتخاب کنید."
 
-#: models/email_sources.py:73
+#: models/email_sources.py:74
 msgid "From metadata type"
 msgstr "از نوع ابرداده"
 
-#: models/email_sources.py:77
+#: models/email_sources.py:78
 msgid "Store the body of the email as a text document."
 msgstr "بدن ایمیل را به عنوان یک سند متن ذخیره کنید."
 
-#: models/email_sources.py:78
+#: models/email_sources.py:79
 msgid "Store email body"
 msgstr "فروشگاه الکترونیکی ذخیره کنید"
 
-#: models/email_sources.py:84
+#: models/email_sources.py:85
 msgid "Email source"
 msgstr "ایمیل کردن سورس"
 
-#: models/email_sources.py:85
+#: models/email_sources.py:86
 msgid "Email sources"
 msgstr "ایمیل کردن سورسها"
 
-#: models/email_sources.py:190
+#: models/email_sources.py:191
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "نوع Metadata موضوع \"%(metadata_type)s\" برای نوع سند معتبر نیست: %(document_type)s"
 
-#: models/email_sources.py:204
+#: models/email_sources.py:205
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "\"از\" نوع ابرداده \"%(metadata_type)s\" برای نوع سند معتبر نیست: %(document_type)s"
 
-#: models/email_sources.py:219
+#: models/email_sources.py:220
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "صندوق پستی IMAP که از آن برای بررسی پیام ها است."
 
-#: models/email_sources.py:220
+#: models/email_sources.py:221
 msgid "Mailbox"
 msgstr "صندوق پستی"
 
-#: models/email_sources.py:272
+#: models/email_sources.py:301
 msgid "Timeout"
 msgstr "اتمام وقت"
 
-#: models/email_sources.py:278 models/email_sources.py:279
+#: models/email_sources.py:307 models/email_sources.py:308
 msgid "POP email"
 msgstr "POP ایمیل"
 

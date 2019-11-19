@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 03:00-0400\n"
+"POT-Creation-Date: 2019-11-18 22:37-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Label"
 msgstr "Conținut etichetă"
 
-#: apps.py:53 events.py:8 links.py:18 permissions.py:7 queues.py:9
+#: apps.py:52 events.py:8 links.py:18 permissions.py:7 queues.py:9
 #: settings.py:9
 msgid "File metadata"
 msgstr "Metadatele fișierului"
@@ -35,6 +35,10 @@ msgstr "Metadatele fișierului"
 #: apps.py:98
 msgid "Return the value of a specific file metadata."
 msgstr "Returnați valoarea unei metadate de fișier specifice."
+
+#: apps.py:99
+msgid "File metadata value of"
+msgstr ""
 
 #: apps.py:110 apps.py:114 apps.py:152 apps.py:161
 msgid "File metadata key"
