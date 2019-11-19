@@ -200,7 +200,7 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
     def test_add_new_version(self):
         self.assertEqual(self.test_document.versions.count(), 1)
 
-        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_document.new_version(
                 file_object=file_object
             )
@@ -209,7 +209,7 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
 
         self.assertEqual(
             self.test_document.checksum,
-            'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3'
+            TEST_SMALL_DOCUMENT_CHECKSUM
         )
 
     def test_revert_version(self):
@@ -219,7 +219,7 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
         # field
         time.sleep(1.01)
 
-        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_document.new_version(
                 file_object=file_object
             )
