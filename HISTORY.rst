@@ -1,6 +1,6 @@
-3.2.10 (2019-XX-XX)
+3.2.10 (2019-11-19)
 ===================
-- Auto-import dependecies. No need to use:
+- Auto-import dependencies. No need to use:
   from .dependencies import *  # NOQA
 - Add makefile target to run all tests in debug mode.
   This mode is more strict and sidesteps a Django bug that
@@ -11,7 +11,7 @@
 - Add missing label to metadata and file metadata model
   properties entries.
 - Improve workflow field help text. Make it usable
-  for the creation/edit form help text and for the 
+  for the creation/edit form help text and for the
   column pop over.
 - Fix NamedMultiWidget issue on Python 3. Affects
   document checkout form. GitLab issue #683. Thanks
