@@ -169,7 +169,7 @@ test-mysql:
   services:
     - mysql:8.0.3
   script:
-    - apt-get install -qq libmysqlclient-dev mysql-client
+    - apt-get install -qq libmysqlclient-dev libssd-dev
     - set -a && . ./config.env && set +a
     - pip install mysql-python==$PYTHON_MYSQL_VERSION
     - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
