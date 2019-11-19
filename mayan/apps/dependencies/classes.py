@@ -30,6 +30,8 @@ from mayan.apps.storage.utils import mkdtemp
 from .algorithms import HashAlgorithm
 from .exceptions import DependenciesException
 
+logger = logging.getLogger(__name__)
+
 
 class Provider(object):
     """Base provider class"""

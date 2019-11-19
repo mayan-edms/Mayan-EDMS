@@ -13,7 +13,6 @@ from .links import (
     link_queue_scheduled_task_list, link_queue_reserved_task_list,
     link_task_manager
 )
-from .links import link_task_manager
 
 
 class TaskManagerApp(MayanAppConfig):
