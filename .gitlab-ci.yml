@@ -185,7 +185,7 @@ test-postgres:
   services:
     - postgres
   script:
-    - apt-get install -qq libpq-dev
+    - apt-get install -qq libpq-dev mysql-client
     - set -a && . ./config.env && set +a
     - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
