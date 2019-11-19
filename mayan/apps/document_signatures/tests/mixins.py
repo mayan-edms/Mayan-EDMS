@@ -54,9 +54,11 @@ class SignatureTestMixin(object):
                 signature_file=File(file_object)
             )
 
-    def _create_test_key_private(self):
+    def _create_test_key_public(self):
         with open(TEST_KEY_FILE_PATH, mode='rb') as file_object:
-            self.test_key = Key.objects.create(key_data=file_object.read())
+            self.test_key_public = Key.objects.create(
+                key_data=file_object.read()
+            )
 
 
 class SignatureViewTestMixin(object):

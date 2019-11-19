@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.urls import reverse
 
 from mayan.apps.documents.tests import (
-    GenericDocumentViewTestCase, TEST_DOCUMENT_PATH
+    GenericDocumentViewTestCase, TEST_SMALL_DOCUMENT_PATH
 )
 
 from ..links import (
@@ -62,7 +62,7 @@ class DocumentSignatureLinksTestCase(
         )
 
     def test_document_version_signature_delete_link_no_permission(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
         self._create_test_detached_signature()
@@ -77,7 +77,7 @@ class DocumentSignatureLinksTestCase(
         self.assertEqual(resolved_link, None)
 
     def test_document_version_signature_delete_link_with_permission(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
         self._create_test_detached_signature()
