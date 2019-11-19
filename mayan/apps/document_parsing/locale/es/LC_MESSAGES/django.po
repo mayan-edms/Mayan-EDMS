@@ -42,7 +42,7 @@ msgstr ""
 
 #: events.py:12
 msgid "Document parsed content deleted"
-msgstr ""
+msgstr "Contenido analizado del documento eliminado"
 
 #: events.py:16
 msgid "Document version submitted for parsing"
@@ -63,7 +63,7 @@ msgstr "Contenido"
 
 #: links.py:22 links.py:27
 msgid "Delete parsed content"
-msgstr ""
+msgstr "Eliminar contenido analizado"
 
 #: links.py:39 links.py:77 views.py:225
 msgid "Parsing errors"
@@ -183,8 +183,8 @@ msgstr ""
 #: views.py:37
 msgid "Delete the parsed content of the selected document?"
 msgid_plural "Delete the parsed content of the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "¿Eliminar el contenido analizado del documento seleccionado?"
+msgstr[1] "¿Eliminar el contenido analizado de los documentos seleccionados?"
 
 #: views.py:71
 #, python-format

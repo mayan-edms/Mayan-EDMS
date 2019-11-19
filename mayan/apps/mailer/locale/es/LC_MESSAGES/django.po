@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-18 22:38-0400\n"
-"PO-Revision-Date: 2019-10-27 19:04+0000\n"
+"PO-Revision-Date: 2019-11-19 05:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -410,7 +410,7 @@ msgstr "No hay perfiles de correo disponibles"
 
 #: views.py:253
 msgid "Test email sent."
-msgstr ""
+msgstr "Correo electrónico de prueba enviado."
 
 #: views.py:262
 #, python-format

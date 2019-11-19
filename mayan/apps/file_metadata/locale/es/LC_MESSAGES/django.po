@@ -36,7 +36,7 @@ msgstr "Devuelve el valor de un metadato de archivo específico."
 
 #: apps.py:99
 msgid "File metadata value of"
-msgstr ""
+msgstr "Valor de metadatos de archivo de"
 
 #: apps.py:110 apps.py:114 apps.py:152 apps.py:161
 msgid "File metadata key"

@@ -317,6 +317,8 @@ msgid ""
 "Unexpected error trying to determine the latest version available. Make sure"
 " your installation has a connection to the internet; %s"
 msgstr ""
+"Error inesperado al intentar determinar la última versión disponible. "
+"Asegúrese de que su instalación tenga conexión a Internet; %s"
 
 #: views.py:38
 msgid "Your version is up-to-date."
