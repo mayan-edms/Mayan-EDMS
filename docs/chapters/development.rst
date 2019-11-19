@@ -530,6 +530,17 @@ Release checklist
 Release using GitLab CI
 -----------------------
 
+#. Push the current brach:
+   ::
+
+       git push
+
+#. Push the new tags:
+   ::
+
+        git push --tags
+
+
 #. Delete the corresponding ``releases/`` branch:
    ::
 
@@ -539,12 +550,6 @@ Release using GitLab CI
    ::
 
        git push origin <local branch>:releases/<branch>
-
-
-#. Push the new tags:
-   ::
-
-       git push --tags
 
 
 Manual release
