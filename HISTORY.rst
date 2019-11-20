@@ -5,6 +5,8 @@
 - Update FAQ entry about the LDAP file.
 - Automate documentation building dependencies.
 - Add sphinx sitemap extension.
+- Move the file patching code from the Dependency class to a
+  generalized utility of the storages app.
 
 3.2.10 (2019-11-19)
 ===================

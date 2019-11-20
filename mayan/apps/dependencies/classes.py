@@ -1,6 +1,5 @@
 from __future__ import print_function, unicode_literals
 
-import fileinput
 import json
 from importlib import import_module
 import logging
@@ -25,7 +24,7 @@ from django.utils.translation import ugettext_lazy as _, ugettext
 
 from mayan.apps.common.compat import FileNotFoundErrorException
 from mayan.apps.common.utils import resolve_attribute
-from mayan.apps.storage.utils import mkdtemp
+from mayan.apps.storage.utils import mkdtemp, patch_files as storage_patch_files
 
 from .algorithms import HashAlgorithm
 from .exceptions import DependenciesException
@@ -410,20 +409,6 @@ class Dependency(object):
         return self.version_string or _('Not specified')
 
     def patch_files(self, path=None, replace_list=None):
-        """
-        Search and replace content from a list of file based on a pattern
-        replace_list[
-            {
-                'filename_pattern': '*.css',
-                'content_patterns': [
-                    {
-                        'search': '',
-                        'replace': '',
-                    }
-                ]
-            }
-        ]
-        """
         print(_('Patching files... '), end='')
 
         try:
@@ -437,18 +422,7 @@ class Dependency(object):
         if not replace_list:
             replace_list = self.replace_list
 
-        path_object = Path(path)
-        for replace_entry in replace_list or []:
-            for path_entry in path_object.glob('**/{}'.format(replace_entry['filename_pattern'])):
-                if path_entry.is_file():
-                    # PY3
-                    # Don't use context processor to allow working on Python 2.7
-                    # Update on Mayan EDMS version >= 4.0
-                    file_object = fileinput.FileInput(force_text(path_entry), inplace=True)
-                    for line in file_object:
-                        for pattern in replace_entry['content_patterns']:
-                            print(line.replace(pattern['search'], pattern['replace']), end='')
-                    file_object.close()
+        storage_patch_files(path=path, replace_list=replace_list)
 
     def verify(self):
         """

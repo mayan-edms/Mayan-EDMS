@@ -1,9 +1,15 @@
 from __future__ import unicode_literals
 
+import fileinput
 import logging
 import os
 import shutil
 import tempfile
+
+from pathlib2 import Path
+
+from django.utils.encoding import force_text
+from django.utils.module_loading import import_string
 
 from .settings import setting_temporary_directory
 
@@ -47,6 +53,36 @@ def mkdtemp(*args, **kwargs):
 def mkstemp(*args, **kwargs):
     kwargs.update({'dir': setting_temporary_directory.value})
     return tempfile.mkstemp(*args, **kwargs)
+
+
+def patch_files(path=None, replace_list=None):
+    """
+    Search and replace content from a list of file based on a pattern
+    replace_list[
+        {
+            'filename_pattern': '*.css',
+            'content_patterns': [
+                {
+                    'search': '',
+                    'replace': '',
+                }
+            ]
+        }
+    ]
+    """
+    path_object = Path(path)
+    for replace_entry in replace_list or []:
+        for path_entry in path_object.glob('**/{}'.format(replace_entry['filename_pattern'])):
+            if path_entry.is_file():
+                # PY3
+                # Don't use context processor to allow working on Python 2.7
+                # Update on Mayan EDMS version >= 4.0
+                file_object = fileinput.FileInput(force_text(path_entry), inplace=True)
+                for line in file_object:
+                    for pattern in replace_entry['content_patterns']:
+                        line = line.replace(pattern['search'], pattern['replace'])
+                    print(line, end='')
+                file_object.close()
 
 
 def validate_path(path):
