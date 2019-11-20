@@ -175,7 +175,8 @@ How to do LDAP authentication
 
 A sample settings file called ldap_connection_settings.py is included in the
 contrib/settings/ folder of the repository showing how to setup LDAP
-authentication.
+authentication. This file can be found on the web at: https://gitlab.com/mayan-edms/mayan-edms/blob/master/contrib/settings/ldap_connection_settings.py. This is a community contributed file. Use the Python
+settings file method to use this file.
 
 
 Operating systems
