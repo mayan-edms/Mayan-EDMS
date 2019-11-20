@@ -3,8 +3,8 @@ from __future__ import absolute_import, unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.dependencies.classes import (
-    environment_build, environment_development, environment_testing,
-    PythonDependency
+    environment_build, environment_development, environment_documentation,
+    environment_testing, PythonDependency
 )
 
 PythonDependency(
@@ -289,6 +289,8 @@ PythonDependency(
     module=__name__, name='whitenoise', version_string='==4.1.4'
 )
 
+# Development
+
 PythonDependency(
     module=__name__, environment=environment_development, name='Werkzeug',
     version_string='==0.15.4'
@@ -330,6 +332,8 @@ PythonDependency(
     module=__name__, name='transifex-client', version_string='==0.13.6'
 )
 
+# Testing
+
 PythonDependency(
     environment=environment_testing, module=__name__, name='codecov',
     version_string='==2.0.15'
@@ -356,6 +360,8 @@ PythonDependency(
     version_string='==5.6.3'
 )
 
+# Build
+
 PythonDependency(
     environment=environment_build, module=__name__, name='twine',
     version_string='==1.9.1'
@@ -363,4 +369,37 @@ PythonDependency(
 PythonDependency(
     environment=environment_build, module=__name__, name='wheel',
     version_string='==0.30.0'
+)
+
+# Documentation
+
+PythonDependency(
+    environment=environment_documentation, module=__name__, name='Sphinx',
+    version_string='==1.8.5'
+)
+PythonDependency(
+    environment=environment_documentation, module=__name__,
+    name='sphinx-autobuild',
+    version_string='==0.7.1'
+)
+PythonDependency(
+    environment=environment_documentation, module=__name__,
+    name='sphinx_rtd_theme',
+    version_string='==0.4.3'
+)
+PythonDependency(
+    environment=environment_documentation, module=__name__,
+    name='sphinxcontrib-blockdiag',
+    version_string='==1.5.5'
+)
+PythonDependency(
+    environment=environment_documentation, module=__name__,
+    name='sphinxcontrib-spelling',
+    version_string='==4.2.1'
+)
+# sphinx-autobuild has a dependency on Tornado,
+# but Tornado 6.0 dropped support for Python 2.7
+PythonDependency(
+    environment=environment_documentation, module=__name__, name='tornado',
+    version_string='<6.0'
 )

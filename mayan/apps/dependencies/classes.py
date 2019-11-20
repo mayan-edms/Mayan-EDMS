@@ -77,6 +77,12 @@ environment_development = DependencyEnvironment(
         'can ignore missing dependencies under this environment.'
     ), label=_('Development'), name='development'
 )
+environment_documentation = DependencyEnvironment(
+    help_text=_(
+        'Environment used for building the documentation. End users '
+        'can ignore missing dependencies under this environment.'
+    ), label=_('Documentation'), name='documentation'
+)
 environment_production = DependencyEnvironment(
     help_text=_(
         'Normal environment for end users. A missing dependency under this '

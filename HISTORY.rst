@@ -3,6 +3,7 @@
 - Backport transaction handling to document model events.
 - Update example LDAP authentication settings file.
 - Update FAQ entry about the LDAP file.
+- Automate documentation building dependencies.
 
 3.2.10 (2019-11-19)
 ===================
