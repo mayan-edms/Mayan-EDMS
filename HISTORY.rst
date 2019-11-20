@@ -172,6 +172,7 @@
 - Add Redis based distributed lock backend. Requires one
   argument: "redis_url". Example: redis://127.0.0.1:6379/0
 - Add the setting LOCK_MANAGER_BACKEND_ARGUMENTS.
+- Automate documentation building dependencies.
 
 3.3.11 (2019-XX-XX)
 ===================
