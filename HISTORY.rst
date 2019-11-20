@@ -174,6 +174,8 @@
 - Add the setting LOCK_MANAGER_BACKEND_ARGUMENTS.
 - Automate documentation building dependencies.
 - Add sphinx sitemap extension.
+- Move the file patching code from the Dependency class to a
+  generalized utility of the storages app.
 
 3.3.11 (2019-XX-XX)
 ===================
