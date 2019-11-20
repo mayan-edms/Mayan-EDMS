@@ -4,6 +4,7 @@
 - Update example LDAP authentication settings file.
 - Update FAQ entry about the LDAP file.
 - Automate documentation building dependencies.
+- Add sphinx sitemap extension.
 
 3.2.10 (2019-11-19)
 ===================

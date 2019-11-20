@@ -44,8 +44,8 @@ sys.path.append(
 # extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
 # extensions = ["djangodocs", "sphinx.ext.intersphinx"]
 extensions = [
-    'sphinx.ext.extlinks', 'sphinxcontrib.blockdiag',
-    'sphinxcontrib.spelling'
+    'sphinx_sitemap', 'sphinx.ext.extlinks', 'sphinxcontrib.blockdiag',
+    'sphinxcontrib.spelling',
 ]
 
 blockdiag_antialias = True
@@ -263,6 +263,10 @@ extlinks = {
         'https://gitlab.com/mayan-edms/mayan-edms/issues/%s', 'GitLab issue #'
     )
 }
+
+# -- Options for sitemap extension ---------------------------------------------
+
+html_baseurl = 'https://docs.mayan-edms.com/'
 
 
 def setup(app):

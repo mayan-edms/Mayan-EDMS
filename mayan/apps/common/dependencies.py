@@ -384,6 +384,11 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
+    name='sphinx-sitemap',
+    version_string='==1.0.2'
+)
+PythonDependency(
+    environment=environment_documentation, module=__name__,
     name='sphinx_rtd_theme',
     version_string='==0.4.3'
 )

@@ -1,5 +1,6 @@
 Sphinx==1.8.5
 sphinx-autobuild==0.7.1
+sphinx-sitemap==1.0.2
 sphinx_rtd_theme==0.4.3
 sphinxcontrib-blockdiag==1.5.5
 sphinxcontrib-spelling==4.2.1
