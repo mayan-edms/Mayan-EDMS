@@ -15,6 +15,10 @@ setting_backend = namespace.add_setting(
         'resource locks.'
     )
 )
+setting_backend_arguments = namespace.add_setting(
+    global_name='LOCK_MANAGER_BACKEND_ARGUMENTS',
+    default={}, help_text=_('Arguments to pass to the LOCK_MANAGER_BACKEND.')
+)
 
 setting_default_lock_timeout = namespace.add_setting(
     default=DEFAULT_LOCK_TIMEOUT_VALUE,
