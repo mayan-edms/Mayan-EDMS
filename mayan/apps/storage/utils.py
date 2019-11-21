@@ -8,7 +8,6 @@ import tempfile
 from pathlib2 import Path
 
 from django.utils.six import PY3
-from django.utils.module_loading import import_string
 
 from .settings import setting_temporary_directory
 
