@@ -14,8 +14,8 @@ except ImportError:
     # This is being imported outside of Django
     import sys
     PY3 = sys.version_info[0] == 3
-
-from .settings import setting_temporary_directory
+else:
+    from .settings import setting_temporary_directory
 
 logger = logging.getLogger(__name__)
 
