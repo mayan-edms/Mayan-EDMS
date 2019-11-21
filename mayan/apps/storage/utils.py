@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-import fileinput
 import logging
 import os
 import shutil
@@ -8,7 +7,6 @@ import tempfile
 
 from pathlib2 import Path
 
-from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 
 from .settings import setting_temporary_directory
@@ -98,15 +96,42 @@ def patch_files(path=None, replace_list=None):
     for replace_entry in replace_list or []:
         for path_entry in path_object.glob('**/{}'.format(replace_entry['filename_pattern'])):
             if path_entry.is_file():
-                # PY3
-                # Don't use context processor to allow working on Python 2.7
-                # Update on Mayan EDMS version >= 4.0
-                file_object = fileinput.FileInput(force_text(path_entry), inplace=True)
-                for line in file_object:
-                    for pattern in replace_entry['content_patterns']:
-                        line = line.replace(pattern['search'], pattern['replace'])
-                    print(line, end='')
-                file_object.close()
+                for pattern in replace_entry['content_patterns']:
+                    with path_entry.open(mode='r+') as source_file_object:
+                        with tempfile.TemporaryFile(mode='r+') as temporary_file_object:
+                            source_position = 0
+                            destination_position = 0
+
+                            while(True):
+                                source_file_object.seek(source_position)
+                                letter = source_file_object.read(1)
+
+                                if len(letter) == 0:
+                                    break
+                                else:
+                                    if letter == pattern['search'][0]:
+                                        text = '{}{}'.format(letter, source_file_object.read(len(pattern['search']) - 1))
+
+                                        temporary_file_object.seek(destination_position)
+                                        if text == pattern['search']:
+                                            text = pattern['replace']
+                                            source_position = source_position + len(pattern['search'])
+                                            destination_position = destination_position + len(pattern['replace'])
+                                            temporary_file_object.write(text)
+
+                                        else:
+                                            source_position = source_position + 1
+                                            destination_position = destination_position + 1
+                                            temporary_file_object.write(letter)
+                                    else:
+                                        source_position = source_position + 1
+                                        destination_position = destination_position + 1
+                                        temporary_file_object.write(letter)
+
+                            source_file_object.seek(0)
+                            source_file_object.truncate()
+                            temporary_file_object.seek(0)
+                            shutil.copyfileobj(fsrc=temporary_file_object, fdst=source_file_object)
 
 
 def validate_path(path):
