@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import shutil
+
 from pathlib2 import Path
 import sphinx_rtd_theme
 
