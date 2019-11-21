@@ -33,3 +33,4 @@ static_collected/
 google_fonts/
 node_modules/
 docs/build/
+docs/_templates/layout.html
