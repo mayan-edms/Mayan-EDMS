@@ -8,6 +8,7 @@ import tempfile
 from pathlib2 import Path
 
 from django.utils.module_loading import import_string
+from django.utils.six import PY3
 
 from .settings import setting_temporary_directory
 
@@ -92,13 +93,18 @@ def patch_files(path=None, replace_list=None):
         }
     ]
     """
+    if PY3:
+        file_open_mode = 'r+'
+    else:
+        file_open_mode = 'rb+'
+
     path_object = Path(path)
     for replace_entry in replace_list or []:
         for path_entry in path_object.glob('**/{}'.format(replace_entry['filename_pattern'])):
             if path_entry.is_file():
                 for pattern in replace_entry['content_patterns']:
-                    with path_entry.open(mode='r+') as source_file_object:
-                        with tempfile.TemporaryFile(mode='r+') as temporary_file_object:
+                    with path_entry.open(mode=file_open_mode) as source_file_object:
+                        with tempfile.TemporaryFile(mode=file_open_mode) as temporary_file_object:
                             source_position = 0
                             destination_position = 0
 

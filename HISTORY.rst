@@ -178,9 +178,16 @@
   generalized utility of the storages app.
 - Add book link to the documentation.
 
-3.3.11 (2019-XX-XX)
+3.2.11 (2019-XX-XX)
 ===================
 - Backport transaction handling to document model events.
+- Update example LDAP authentication settings file.
+- Update FAQ entry about the LDAP file.
+- Automate documentation building dependencies.
+- Add sphinx sitemap extension.
+- Move the file patching code from the Dependency class to a
+  generalized utility of the storages app.
+- Add book link to the documentation.
 
 3.2.10 (2019-11-19)
 ===================

@@ -242,9 +242,34 @@ generate-requirements: ## Generate all requirements files from the project deped
 	@./manage.py generaterequirements build > requirements/build.txt
 	@./manage.py generaterequirements development > requirements/development.txt
 	@./manage.py generaterequirements documentation > requirements/documentation.txt
+	@./manage.py generaterequirements production --only=pathlib2 >> requirements/documentation.txt
 	@./manage.py generaterequirements testing > requirements/testing-base.txt
 	@./manage.py generaterequirements production --exclude=django > requirements/base.txt
 	@./manage.py generaterequirements production --only=django > requirements/common.txt
+
+gitlab-release-documentation: ## Trigger the documentation build and publication using GitLab CI
+gitlab-release-documentation:
+	git push
+	git push origin :releases/documentation
+	git push origin HEAD:releases/documentation
+
+gitlab-release-docker: ## Trigger the Docker image build and publication using GitLab CI
+gitlab-release-docker:
+	git push
+	git push origin :releases/docker
+	git push origin HEAD:releases/docker
+
+gitlab-release-python: ## Trigger the Python package build and publication using GitLab CI
+gitlab-release-python:
+	git push
+	git push origin :releases/python
+	git push origin HEAD:releases/python
+
+gitlab-release-all: ## Trigger the Python package, Docker image, and documentation build and publication using GitLab CI
+gitlab-release-all:
+	git push
+	git push origin :releases/all
+	git push origin HEAD:releases/all
 
 # Dev server
 
