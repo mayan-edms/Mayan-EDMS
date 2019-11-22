@@ -44,13 +44,15 @@
   Thanks to Jakob Haufe (@sur5r) and Jesaja Everling (@jeverling)
   for much of the research and code updates.
 - Support wildcard MIME type associations for the file metadata drivers.
-- Rename MAYAN_GUID to MAYAN_GID
 - Update Gunicorn to use sync workers.
-- Include devpi-server as a development dependency.
+- Include devpi-server as a development dependency. Used to speed up
+  local builds of the Docker image.
 - Update default Docker stack file.
-- Remove Redis from the Docker image.
+- Remove Redis from the Docker image. A separate container must now
+  be deployed.
 - Add Celery flower to the Docker image.
-- Allow PIP proxying to the Docker image during build.
+- Allow PIP proxying to the Docker image during build. Can be used
+  with the local devpi-server or other similar.
 - Default Celery worker concurrency to 0 (auto).
 - Set DJANGO_SETTINGS_MODULE environment variable to make it
   available to sub processes.
@@ -158,10 +160,41 @@
   Mayan management command.
 - Allow specifying the queue list for the run_worker Docker
   command.
+- Switch default installation to use two Redis
+  databases. One for the message broker, and the
+  other to store task results.
+- Complete the prefixing of template tags with the
+  app name.
+- Remove unused template tags.
+- Add support for setting migrations.
+- Add setting migrations for the common, converter, documents,
+  file metadata, and document signatures app.
+- Add document type change API endpoint.
+- Change OCR API submit URL from documents/{pk}/submit
+  to documents/{pk}/ocr/submit.
+- Add Redis based distributed lock backend. Requires one
+  argument: "redis_url". Example: redis://127.0.0.1:6379/0
+- Add the setting LOCK_MANAGER_BACKEND_ARGUMENTS.
+- Automate documentation building dependencies.
+- Add sphinx sitemap extension.
+- Move the file patching code from the Dependency class to a
+  generalized utility of the storages app.
+- Add book link to the documentation.
 
-3.2.10 (2019-XX-XX)
+3.2.11 (2019-XX-XX)
 ===================
-- Auto-import dependecies. No need to use:
+- Backport transaction handling to document model events.
+- Update example LDAP authentication settings file.
+- Update FAQ entry about the LDAP file.
+- Automate documentation building dependencies.
+- Add sphinx sitemap extension.
+- Move the file patching code from the Dependency class to a
+  generalized utility of the storages app.
+- Add book link to the documentation.
+
+3.2.10 (2019-11-19)
+===================
+- Auto-import dependencies. No need to use:
   from .dependencies import *  # NOQA
 - Add makefile target to run all tests in debug mode.
   This mode is more strict and sidesteps a Django bug that
@@ -179,6 +212,15 @@
   to John Bentley (@johnbentleyii) for the report.
 - Add missing Event class cache invalidation when
   calling the refresh() method.
+- Use timezone aware date for document statistics.
+- Show placeholder label on invalid action classes
+  Instead of throwing an error a sample label of
+  "Unknown action type" will be used and allow users to
+  delete the unknown state action.
+- Automate paths in documentation.
+- Settings chapter improvements.
+- Documentation paths consistency fixes.
+- Expand custom Python setting section.
 
 3.2.9 (2019-11-03)
 ==================

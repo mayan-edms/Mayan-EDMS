@@ -2,18 +2,21 @@ from __future__ import unicode_literals
 
 import time
 
-from django.test import TestCase
+from django.test import override_settings
 from django.utils.module_loading import import_string
+
+from mayan.apps.common.tests.base import BaseTestCase
 
 from ..exceptions import LockError
 
 TEST_LOCK_1 = 'test lock 1'
 
 
-class FileLockTestCase(TestCase):
+class FileLockTestCase(BaseTestCase):
     backend_string = 'mayan.apps.lock_manager.backends.file_lock.FileLock'
 
     def setUp(self):
+        super(FileLockTestCase, self).setUp()
         self.locking_backend = import_string(self.backend_string)
 
     def test_exclusive(self):
@@ -72,3 +75,10 @@ class FileLockTestCase(TestCase):
 
 class ModelLockTestCase(FileLockTestCase):
     backend_string = 'mayan.apps.lock_manager.backends.model_lock.ModelLock'
+
+
+@override_settings(
+    LOCK_MANAGER_BACKEND_ARGUMENTS={'redis_url': 'redis://127.0.0.1:6379/0'}
+)
+class RedisLockTestCase(FileLockTestCase):
+    backend_string = 'mayan.apps.lock_manager.backends.redis_lock.RedisLock'

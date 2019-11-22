@@ -3,7 +3,7 @@
 {% load search_tags %}
 {% load smart_settings_tags %}
 
-{% get_search_models as search_models %}
+{% search_get_search_models as search_models %}
 {% smart_setting global_name="SEARCH_DISABLE_SIMPLE_SEARCH" as setting_disable_simple_search %}
 
 {% if setting_disable_simple_search %}

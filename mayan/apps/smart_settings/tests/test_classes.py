@@ -1,27 +1,32 @@
 from __future__ import absolute_import, unicode_literals
 
-import os
-
 from pathlib2 import Path
 
 from django.conf import settings
-from django.utils.encoding import force_text
+from django.utils.encoding import force_bytes, force_text
 
 from mayan.apps.common.settings import setting_paginate_by
 from mayan.apps.common.tests.base import BaseTestCase
-from mayan.apps.storage.utils import fs_cleanup
+from mayan.apps.common.tests.mixins import EnvironmentTestCaseMixin
+from mayan.apps.storage.utils import fs_cleanup, NamedTemporaryFile
 
 from ..classes import Setting
 
-from .literals import ENVIRONMENT_TEST_NAME, ENVIRONMENT_TEST_VALUE
+from .literals import (
+    ENVIRONMENT_TEST_NAME, ENVIRONMENT_TEST_VALUE, TEST_SETTING_GLOBAL_NAME,
+    TEST_SETTING_INITIAL_VALUE, TEST_SETTING_VALUE
+)
 from .mixins import SmartSettingTestMixin
+from .mocks import TestNamespaceMigrationOne, TestNamespaceMigrationTwo
 
 
-class ClassesTestCase(SmartSettingTestMixin, BaseTestCase):
+class ClassesTestCase(EnvironmentTestCaseMixin, SmartSettingTestMixin, BaseTestCase):
     def test_environment_variable(self):
-        os.environ[
-            'MAYAN_{}'.format(ENVIRONMENT_TEST_NAME)
-        ] = ENVIRONMENT_TEST_VALUE
+        self._set_environment_variable(
+            name='MAYAN_{}'.format(ENVIRONMENT_TEST_NAME),
+            value=ENVIRONMENT_TEST_VALUE
+        )
+
         self.assertTrue(setting_paginate_by.value, ENVIRONMENT_TEST_VALUE)
 
     def test_config_backup_creation(self):
@@ -53,3 +58,61 @@ class ClassesTestCase(SmartSettingTestMixin, BaseTestCase):
         self.assertFalse(Setting.check_changed())
         test_setting.value = 'test value edited'
         self.assertTrue(Setting.check_changed())
+
+
+class NamespaceMigrationTestCase(
+    EnvironmentTestCaseMixin, SmartSettingTestMixin, BaseTestCase
+):
+    def test_environment_migration(self):
+        self._set_environment_variable(
+            name='MAYAN_{}'.format(TEST_SETTING_GLOBAL_NAME),
+            value=TEST_SETTING_INITIAL_VALUE
+        )
+        self._create_test_settings_namespace(
+            migration_class=TestNamespaceMigrationOne, version='0002'
+        )
+        self._create_test_setting()
+
+        self.assertEqual(
+            self.test_setting.value, TEST_SETTING_INITIAL_VALUE
+        )
+
+    def test_migration_0001_to_0002(self):
+        self._create_test_settings_namespace(
+            migration_class=TestNamespaceMigrationTwo, version='0002'
+        )
+        self._create_test_setting()
+
+        with NamedTemporaryFile() as file_object:
+            settings.CONFIGURATION_FILEPATH = file_object.name
+            file_object.write(
+                force_bytes(
+                    '{}: {}'.format(TEST_SETTING_GLOBAL_NAME, TEST_SETTING_VALUE)
+                )
+            )
+            file_object.seek(0)
+            Setting._config_file_cache = None
+
+            self.assertEqual(
+                self.test_setting.value, '{}_0001'.format(TEST_SETTING_VALUE)
+            )
+
+    def test_migration_0001_to_0003(self):
+        self._create_test_settings_namespace(
+            migration_class=TestNamespaceMigrationTwo, version='0003'
+        )
+        self._create_test_setting()
+
+        with NamedTemporaryFile() as file_object:
+            settings.CONFIGURATION_FILEPATH = file_object.name
+            file_object.write(
+                force_bytes(
+                    '{}: {}'.format(TEST_SETTING_GLOBAL_NAME, TEST_SETTING_VALUE)
+                )
+            )
+            file_object.seek(0)
+            Setting._config_file_cache = None
+
+            self.assertEqual(
+                self.test_setting.value, '{}_0001_0002'.format(TEST_SETTING_VALUE)
+            )

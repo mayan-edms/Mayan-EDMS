@@ -42,7 +42,7 @@
 
                                                     {% if source_column.help_text %}
                                                         <span data-toggle="tooltip" data-placement="bottom" title="{{ source_column.help_text }}">
-                                                        {% get_icon icon_path='mayan.apps.navigation.icons.icon_source_column_help_text' %}
+                                                        {% appearance_get_icon icon_path='mayan.apps.navigation.icons.icon_source_column_help_text' %}
                                                         </span>
                                                     {% endif %}
                                                 </span>
@@ -66,7 +66,7 @@
 
                                                     {% if source_column.help_text %}
                                                         <span data-toggle="tooltip" data-placement="bottom" title="{{ source_column.help_text }}">
-                                                        {% get_icon icon_path='mayan.apps.navigation.icons.icon_source_column_help_text' %}
+                                                        {% appearance_get_icon icon_path='mayan.apps.navigation.icons.icon_source_column_help_text' %}
                                                         </span>
                                                     {% endif %}
                                                 </span>
@@ -117,7 +117,7 @@
                                     {% endif %}
 
                                     {% for column in extra_columns %}
-                                        <td>{{ object|object_property:column.attribute }}</td>
+                                        <td>{{ object|common_object_property:column.attribute }}</td>
                                     {% endfor %}
 
                                     {% if not hide_links %}

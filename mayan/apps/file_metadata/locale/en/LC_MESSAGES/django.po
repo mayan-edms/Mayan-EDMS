@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:37-0400\n"
+"POT-Creation-Date: 2019-11-18 22:37-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,13 +21,17 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: apps.py:53 events.py:8 links.py:18 permissions.py:7 queues.py:9
+#: apps.py:52 events.py:8 links.py:18 permissions.py:7 queues.py:9
 #: settings.py:9
 msgid "File metadata"
 msgstr ""
 
 #: apps.py:98
 msgid "Return the value of a specific file metadata."
+msgstr ""
+
+#: apps.py:99
+msgid "File metadata value of"
 msgstr ""
 
 #: apps.py:110 apps.py:114 apps.py:152 apps.py:161
@@ -43,7 +47,7 @@ msgid ""
 "Library and program to read and write meta information in multimedia files."
 msgstr ""
 
-#: drivers/exiftool.py:20
+#: drivers/exiftool.py:26
 msgid "EXIF Tool"
 msgstr ""
 
@@ -177,7 +181,7 @@ msgid ""
 "default."
 msgstr ""
 
-#: settings.py:20
+#: settings.py:25
 msgid "Arguments to pass to the drivers."
 msgstr ""
 

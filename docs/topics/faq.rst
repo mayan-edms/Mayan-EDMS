@@ -175,7 +175,8 @@ How to do LDAP authentication
 
 A sample settings file called ldap_connection_settings.py is included in the
 contrib/settings/ folder of the repository showing how to setup LDAP
-authentication.
+authentication. This file can be found on the web at: https://gitlab.com/mayan-edms/mayan-edms/blob/master/contrib/settings/ldap_connection_settings.py. This is a community contributed file. Use the Python
+settings file method to use this file.
 
 
 Operating systems
@@ -207,8 +208,23 @@ apparent reason.
 Does Mayan EDMS work with Python 3?
 -----------------------------------
 
-Yes but it is not production ready yet. Users are encouraged to deploy test
-installations of Mayan EDMS on Python 3 and report findings.
+Yes, version 3.3 ships with Python 3.7 support. Support for Python 2 will
+be removed in version 4.0.
+
+How to upgrade an existing Python 2 virtualenv
+----------------------------------------------
+
+Use::
+
+    virtualenv <existing directory> -p <Python 3 binary path>
+
+If you followed the deployment instructions, the command line would be::
+
+    virtualenv /opt/mayan-edms -p /usr/bin/python3
+
+If using a dedicated user account for Mayan EDMS::
+
+    sudo -u <username> virtualenv /opt/mayan-edms -p /usr/bin/python3
 
 
 Static files

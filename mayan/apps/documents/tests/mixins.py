@@ -49,7 +49,6 @@ class DocumentTestMixin(object):
         self.test_document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
-        self.test_document_type = self.test_document_type
 
     def _calculate_test_document_path(self):
         if not self.test_document_path:

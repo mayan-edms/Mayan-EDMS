@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Johan Braeken, 2017
@@ -10,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:36-0400\n"
+"POT-Creation-Date: 2019-11-18 22:36-0400\n"
 "PO-Revision-Date: 2019-06-15 07:49+0000\n"
 "Last-Translator: Justin Albstbstmeijer <justin@albstmeijer.nl>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:17
@@ -39,16 +38,16 @@ msgid ""
 "unchecked results that match at least one field will be returned."
 msgstr ""
 
-#: forms.py:29 templates/dynamic_search/search_box.html:39
+#: forms.py:29 templates/dynamic_search/search_box.html:21
 msgid "Search terms"
 msgstr "Zoektermen"
 
-#: links.py:8 settings.py:7 templates/dynamic_search/search_box.html:43
-#: views.py:59 views.py:72
+#: links.py:8 templates/dynamic_search/search_box.html:23 views.py:59
+#: views.py:72
 msgid "Search"
 msgstr "Zoek"
 
-#: links.py:11 templates/dynamic_search/search_box.html:45 views.py:86
+#: links.py:11 views.py:86
 msgid "Advanced search"
 msgstr "Geavanceerd zoeken"
 
@@ -56,12 +55,7 @@ msgstr "Geavanceerd zoeken"
 msgid "Search again"
 msgstr "Zoek nog een keer"
 
-#: settings.py:12
-msgid ""
-"Disables the single term bar search leaving only the advanced search button."
-msgstr ""
-
-#: templates/dynamic_search/search_box.html:45
+#: templates/dynamic_search/search_box.html:24
 msgid "Advanced"
 msgstr "Geavanceerd"
 

@@ -53,7 +53,7 @@
                                     {% endif %}
 
                                     {% for column in extra_columns %}
-                                        <div class="text-center"><span class="list-extra-column-label">{{ column.name }}</span>: {{ object|object_property:column.attribute }}</div>
+                                        <div class="text-center"><span class="list-extra-column-label">{{ column.name }}</span>: {{ object|common_object_property:column.attribute }}</div>
                                     {% endfor %}
 
                                     {% if not hide_links %}

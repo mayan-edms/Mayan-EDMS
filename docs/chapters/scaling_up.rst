@@ -29,7 +29,7 @@ Increase this number to match the number of CPU cores + 1.
 
 If you are using the direct deployment methods, change the line that reads::
 
-    command = /opt/mayan-edms/bin/gunicorn -w 2 mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
+    command = |MAYAN_GUNICORN_BIN| -w 2 mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
 
 And increase the value of the ``-w 2`` argument. This line is found in the
 ``[program:mayan-gunicorn]`` section of the supervisor configuration file.

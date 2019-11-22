@@ -17,7 +17,7 @@ from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_edit, permission_document_view
 )
-from mayan.apps.documents.views import DocumentListView
+from mayan.apps.documents.views.document_views import DocumentListView
 
 from .events import event_index_template_edited
 from .forms import IndexTemplateFilteredForm, IndexTemplateNodeForm

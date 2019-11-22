@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Harald Ersch, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:37-0400\n"
+"POT-Creation-Date: 2019-11-18 22:38-0400\n"
 "PO-Revision-Date: 2019-10-29 12:27+0000\n"
 "Last-Translator: Harald Ersch\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:42
 msgid "Mailer"
@@ -36,7 +34,7 @@ msgstr "Mesaj"
 msgid "Null backend"
 msgstr "Backend vid"
 
-#: events.py:7 permissions.py:7 queues.py:8 settings.py:12
+#: events.py:7 permissions.py:7 queues.py:8 settings.py:11
 msgid "Mailing"
 msgstr "Corespondență electonică"
 
@@ -46,21 +44,19 @@ msgstr "Email trimis"
 
 #: forms.py:60 forms.py:122
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon."
-msgstr ""
-"Adresa de e-mail a destinatarului. Pot fi mai multe adrese separate prin "
-"virgulă sau punct și virgulă."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
+msgstr "Adresa de e-mail a destinatarului. Pot fi mai multe adrese separate prin virgulă sau punct și virgulă."
 
 #: forms.py:62 forms.py:124
 msgid "Email address"
 msgstr "Adresa de email"
 
-#: forms.py:64 workflow_actions.py:40
+#: forms.py:64
 msgid "Subject"
 msgstr "Subiect"
 
-#: forms.py:66 workflow_actions.py:49
+#: forms.py:66
 msgid "Body"
 msgstr "Corp"
 
@@ -68,7 +64,7 @@ msgstr "Corp"
 msgid "The email profile that will be used to send this email."
 msgstr "Profilul de e-mail care va fi folosit pentru a trimite acest e-mail."
 
-#: forms.py:71 views.py:239 workflow_actions.py:22
+#: forms.py:71 views.py:239
 msgid "Mailing profile"
 msgstr "Profilul de corespondență"
 
@@ -123,15 +119,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Atașat la acest e-mail este documentul: {{document}}\n"
-"\n"
-" --------\n"
-" Acest e-mail a fost trimis de la %(project_title)s (%(project_website)s)"
-
-#: literals.py:11
-msgid "Document: {{ document }}"
-msgstr "Documentul: {{document}}"
+msgstr "Atașat la acest e-mail este documentul: {{document}}\n\n --------\n Acest e-mail a fost trimis de la %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -140,15 +128,7 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Pentru a accesa acest document, faceți clic pe următorul link: {{link}}\n"
-"\n"
-"--------\n"
-" Acest e-mail a fost trimis de la %(project_title)s (%(project_website)s)"
-
-#: literals.py:17
-msgid "Link for document: {{ document }}"
-msgstr "Link pentru documentul: {{document}}"
+msgstr "Pentru a accesa acest document, faceți clic pe următorul link: {{link}}\n\n--------\n Acest e-mail a fost trimis de la %(project_title)s (%(project_website)s)"
 
 #: mailers.py:23 mailers.py:112
 msgid "From"
@@ -156,11 +136,9 @@ msgstr "De la"
 
 #: mailers.py:26 mailers.py:115
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value "
-"is not set."
-msgstr ""
-"Adresa expeditorului. Unele sisteme vor refuza să trimită mesaje dacă "
-"această valoare nu este setată."
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
+msgstr "Adresa expeditorului. Unele sisteme vor refuza să trimită mesaje dacă această valoare nu este setată."
 
 #: mailers.py:32
 msgid "Host"
@@ -186,10 +164,7 @@ msgstr "Utilizați TLS"
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr ""
-"Dacă să utilizați o conexiune TLS (securizată) atunci când vorbiți cu "
-"serverul SMTP. Acesta este utilizat pentru conexiuni TLS explicite, în "
-"general pe portul 587."
+msgstr "Dacă să utilizați o conexiune TLS (securizată) atunci când vorbiți cu serverul SMTP. Acesta este utilizat pentru conexiuni TLS explicite, în general pe portul 587."
 
 #: mailers.py:52
 msgid "Use SSL"
@@ -201,15 +176,9 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
-msgstr ""
-"Dacă să utilizați o conexiune implicită TLS (securizată) atunci când vorbiți "
-"cu serverul SMTP. În majoritatea documentelor de e-mail, acest tip de "
-"conexiune TLS este denumit SSL. Este utilizat în general la portul 465. Dacă "
-"întâmpinați probleme, consultați setarea explicită TLS \"Utilizați TLS\". "
-"Rețineți că \"Utilizați TLS\" și \"Utilizați SSL\" se exclud reciproc, deci "
-"setați numai una dintre aceste setări la True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
+msgstr "Dacă să utilizați o conexiune implicită TLS (securizată) atunci când vorbiți cu serverul SMTP. În majoritatea documentelor de e-mail, acest tip de conexiune TLS este denumit SSL. Este utilizat în general la portul 465. Dacă întâmpinați probleme, consultați setarea explicită TLS \"Utilizați TLS\". Rețineți că \"Utilizați TLS\" și \"Utilizați SSL\" se exclud reciproc, deci setați numai una dintre aceste setări la True."
 
 #: mailers.py:64
 msgid "Username"
@@ -219,9 +188,7 @@ msgstr "Nume de utilizator"
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
-msgstr ""
-"Nume de utilizator de folosit pentru serverul SMTP. Dacă este gol, nu se va "
-"încerca autentificarea."
+msgstr "Nume de utilizator de folosit pentru serverul SMTP. Dacă este gol, nu se va încerca autentificarea."
 
 #: mailers.py:73
 msgid "Password"
@@ -230,12 +197,9 @@ msgstr "Parola"
 #: mailers.py:76
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
-msgstr ""
-"Parolă de utilizat pentru serverul SMTP. Această setare este utilizată "
-"împreună cu numele de utilizator când se autentifică pe serverul SMTP. Dacă "
-"una dintre aceste setări este goală, autentificarea nu va fi încercată."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
+msgstr "Parolă de utilizat pentru serverul SMTP. Această setare este utilizată împreună cu numele de utilizator când se autentifică pe serverul SMTP. Dacă una dintre aceste setări este goală, autentificarea nu va fi încercată."
 
 #: mailers.py:85
 msgid "Django SMTP backend"
@@ -269,9 +233,7 @@ msgstr "Etichetă"
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr ""
-"Dacă este implicit, acest profil de poștă electronică va fi pre-selectat pe "
-"formularul de trimitere a documentelor."
+msgstr "Dacă este implicit, acest profil de poștă electronică va fi pre-selectat pe formularul de trimitere a documentelor."
 
 #: models.py:54
 msgid "Default"
@@ -353,23 +315,29 @@ msgstr "Utilizați un profil de corespondență"
 msgid "Send document"
 msgstr "Trimiteți un document"
 
-#: settings.py:16
-msgid "Template for the document email form subject line."
-msgstr "Șablon pentru subiectul liniei de subiecte a documentului."
+#: settings.py:14
+msgid "Link for document: {{ document }}"
+msgstr "Link pentru documentul: {{document}}"
 
-#: settings.py:21
-msgid "Template for the document email form body text. Can include HTML."
-msgstr "Șablon pentru textul corpului mail-ului. Poate include HTML."
-
-#: settings.py:26
+#: settings.py:15
 msgid "Template for the document link email form subject line."
 msgstr "Șablon pentru subiectul liniei de e-mail a documentului."
 
-#: settings.py:31
+#: settings.py:20
 msgid "Template for the document link email form body text. Can include HTML."
-msgstr ""
-"Șablon pentru corpul formularul de e-mail pentru link-ul documentului. Poate "
-"include HTML."
+msgstr "Șablon pentru corpul formularul de e-mail pentru link-ul documentului. Poate include HTML."
+
+#: settings.py:24
+msgid "Document: {{ document }}"
+msgstr "Documentul: {{document}}"
+
+#: settings.py:25
+msgid "Template for the document email form subject line."
+msgstr "Șablon pentru subiectul liniei de subiecte a documentului."
+
+#: settings.py:30
+msgid "Template for the document email form body text. Can include HTML."
+msgstr "Șablon pentru textul corpului mail-ului. Poate include HTML."
 
 #: validators.py:14
 #, python-format
@@ -383,16 +351,12 @@ msgstr "Jurnal de eroare de trimitere a documentelor"
 #: views.py:50
 #, python-format
 msgid "%(count)d document queued for email delivery"
-msgstr ""
-"%(count)d document a fost pus în coada de așteptare pentru livrarea prin e-"
-"mail"
+msgstr "%(count)d document a fost pus în coada de așteptare pentru livrarea prin e-mail"
 
 #: views.py:52
 #, python-format
 msgid "%(count)d documents queued for email delivery"
-msgstr ""
-"%(count)d documente au fost puse în coada de așteptare pentru livrarea prin "
-"e-mail"
+msgstr "%(count)d documente au fost puse în coada de așteptare pentru livrarea prin e-mail"
 
 #: views.py:63
 msgid "Send"
@@ -401,15 +365,12 @@ msgstr "Trimite"
 #: views.py:109
 #, python-format
 msgid "%(count)d document link queued for email delivery"
-msgstr ""
-"%(count)d link de document a fost pus în coadă pentru livrarea prin e-mail"
+msgstr "%(count)d link de document a fost pus în coadă pentru livrarea prin e-mail"
 
 #: views.py:111
 #, python-format
 msgid "%(count)d document links queued for email delivery"
-msgstr ""
-"%(count)d linkuri de documente au fost puse în coadă pentru livrarea prin e-"
-"mail"
+msgstr "%(count)d linkuri de documente au fost puse în coadă pentru livrarea prin e-mail"
 
 #: views.py:120
 msgid "New mailing profile backend selection"
@@ -439,9 +400,7 @@ msgstr "Jurnal de erori pentru: %s"
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
-msgstr ""
-"Profilurile de corespondență sunt configurații de e-mail. Ele permit "
-"trimiterea documentelor ca atașamente sau ca legături prin e-mail."
+msgstr "Profilurile de corespondență sunt configurații de e-mail. Ele permit trimiterea documentelor ca atașamente sau ca legături prin e-mail."
 
 #: views.py:238
 msgid "No mailing profiles available"
@@ -455,54 +414,3 @@ msgstr "E-mail de testare trimis."
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Testare profil de poștă electronică: %s"
-
-#: workflow_actions.py:24
-#, fuzzy
-#| msgid "The email profile that will be used to send this email."
-msgid "Mailing profile to use when sending the email."
-msgstr "Profilul de e-mail care va fi folosit pentru a trimite acest e-mail."
-
-#: workflow_actions.py:29
-msgid "Recipient"
-msgstr ""
-
-#: workflow_actions.py:32
-#, fuzzy
-#| msgid ""
-#| "Email address of the recipient. Can be multiple addresses separated by "
-#| "comma or semicolon."
-msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon. A template can be used to reference properties of the document."
-msgstr ""
-"Adresa de e-mail a destinatarului. Pot fi mai multe adrese separate prin "
-"virgulă sau punct și virgulă."
-
-#: workflow_actions.py:43
-msgid "Subject of the email. Can be a string or a template."
-msgstr ""
-
-#: workflow_actions.py:52
-msgid "Body of the email to send. Can be a string or a template."
-msgstr ""
-
-#: workflow_actions.py:59
-#, fuzzy
-#| msgid "Send document via email"
-msgid "Send email"
-msgstr "Trimiteți documentul prin e-mail"
-
-#: workflow_actions.py:74
-#, python-format
-msgid "Recipient template error: %s"
-msgstr ""
-
-#: workflow_actions.py:85
-#, python-format
-msgid "Subject template error: %s"
-msgstr ""
-
-#: workflow_actions.py:96
-#, python-format
-msgid "Body template error: %s"
-msgstr ""

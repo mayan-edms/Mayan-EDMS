@@ -10,7 +10,7 @@
     {% for page in pages %}
         <img
             alt="{% trans 'Document page image preview' %}"
-            src="{% get_api_image_url page width=width height=height %}" style="width: 100%;"
+            src="{% documents_get_api_image_url page width=width height=height %}" style="width: 100%;"
         />
     {% endfor %}
 {% endblock %}

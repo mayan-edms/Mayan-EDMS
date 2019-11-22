@@ -565,3 +565,8 @@ a i {
     padding: 0px;
     padding-bottom: 10px; /* Padding for scrollbar */
 }
+
+/* appearance - JavaScript server error */
+.banner-server-error {
+    margin-top: 10px;
+}

@@ -171,11 +171,13 @@ class PartialNavigation {
             $('#ajax-content').html(
                 ' \
                     <div class="row">\
-                    <div class="col-xs-12">\
-                    <div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Server Error, status code: ' + jqXHR.status + '</div> \
-                    <pre class="pre-server-error"><code>' +  errorMessage +'</code> \
-                    </pre> \
-                    </div>\
+                        <div class="col-xs-12">\
+                            <div class="banner-server-error">\
+                                <div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Server error, status code: ' + jqXHR.status + '</div> \
+                                    <pre class="pre-server-error"><code>' +  errorMessage +'</code> \
+                                    </pre> \
+                                </div>\
+                            </div>\
                     </div>\
                 '
             );

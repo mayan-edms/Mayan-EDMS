@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
@@ -10,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:37-0400\n"
+"POT-Creation-Date: 2019-11-18 22:38-0400\n"
 "PO-Revision-Date: 2019-10-27 19:04+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:42
@@ -37,7 +36,7 @@ msgstr "Mensagem"
 msgid "Null backend"
 msgstr ""
 
-#: events.py:7 permissions.py:7 queues.py:8 settings.py:12
+#: events.py:7 permissions.py:7 queues.py:8 settings.py:11
 msgid "Mailing"
 msgstr "Envio de e-mails"
 
@@ -47,19 +46,19 @@ msgstr ""
 
 #: forms.py:60 forms.py:122
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
 msgstr ""
 
 #: forms.py:62 forms.py:124
 msgid "Email address"
 msgstr "Endereço de E-mail"
 
-#: forms.py:64 workflow_actions.py:40
+#: forms.py:64
 msgid "Subject"
 msgstr "Assunto"
 
-#: forms.py:66 workflow_actions.py:49
+#: forms.py:66
 msgid "Body"
 msgstr "Corpo"
 
@@ -67,7 +66,7 @@ msgstr "Corpo"
 msgid "The email profile that will be used to send this email."
 msgstr ""
 
-#: forms.py:71 views.py:239 workflow_actions.py:22
+#: forms.py:71 views.py:239
 msgid "Mailing profile"
 msgstr ""
 
@@ -122,14 +121,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Se anexa a este documento de e-mail: {{ document }}\n"
-"--------\n"
-"Este e-mail foi enviado por %(project_title)s (%(project_website)s)"
-
-#: literals.py:11
-msgid "Document: {{ document }}"
-msgstr "Documento: {{ document }}"
+msgstr "Se anexa a este documento de e-mail: {{ document }}\n--------\nEste e-mail foi enviado por %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -138,14 +130,7 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Para acessar este documento clique na ligação a seguir: {{ link }}\n"
-"--------\n"
-"Este email foi enviado por %(project_title)s (%(project_website)s)"
-
-#: literals.py:17
-msgid "Link for document: {{ document }}"
-msgstr "Link para o documento: {{ document }}"
+msgstr "Para acessar este documento clique na ligação a seguir: {{ link }}\n--------\nEste email foi enviado por %(project_title)s (%(project_website)s)"
 
 #: mailers.py:23 mailers.py:112
 msgid "From"
@@ -153,8 +138,8 @@ msgstr ""
 
 #: mailers.py:26 mailers.py:115
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value "
-"is not set."
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
 msgstr ""
 
 #: mailers.py:32
@@ -193,8 +178,8 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
 msgstr ""
 
 #: mailers.py:64
@@ -214,8 +199,8 @@ msgstr "Senha"
 #: mailers.py:76
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
 msgstr ""
 
 #: mailers.py:85
@@ -332,21 +317,28 @@ msgstr ""
 msgid "Send document"
 msgstr ""
 
-#: settings.py:16
+#: settings.py:14
+msgid "Link for document: {{ document }}"
+msgstr "Link para o documento: {{ document }}"
+
+#: settings.py:15
+msgid "Template for the document link email form subject line."
+msgstr "Modelo para a linha de assunto do e-mail para envio do link do documento."
+
+#: settings.py:20
+msgid "Template for the document link email form body text. Can include HTML."
+msgstr ""
+
+#: settings.py:24
+msgid "Document: {{ document }}"
+msgstr "Documento: {{ document }}"
+
+#: settings.py:25
 msgid "Template for the document email form subject line."
 msgstr "Modelo para a linha de assunto do e-mail de envio de documento."
 
-#: settings.py:21
+#: settings.py:30
 msgid "Template for the document email form body text. Can include HTML."
-msgstr ""
-
-#: settings.py:26
-msgid "Template for the document link email form subject line."
-msgstr ""
-"Modelo para a linha de assunto do e-mail para envio do link do documento."
-
-#: settings.py:31
-msgid "Template for the document link email form body text. Can include HTML."
 msgstr ""
 
 #: validators.py:14
@@ -423,47 +415,4 @@ msgstr ""
 #: views.py:262
 #, python-format
 msgid "Test mailing profile: %s"
-msgstr ""
-
-#: workflow_actions.py:24
-msgid "Mailing profile to use when sending the email."
-msgstr ""
-
-#: workflow_actions.py:29
-msgid "Recipient"
-msgstr ""
-
-#: workflow_actions.py:32
-msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon. A template can be used to reference properties of the document."
-msgstr ""
-
-#: workflow_actions.py:43
-msgid "Subject of the email. Can be a string or a template."
-msgstr ""
-
-#: workflow_actions.py:52
-msgid "Body of the email to send. Can be a string or a template."
-msgstr ""
-
-#: workflow_actions.py:59
-#, fuzzy
-#| msgid "Send document via email"
-msgid "Send email"
-msgstr "Enviar documento por  e-mail"
-
-#: workflow_actions.py:74
-#, python-format
-msgid "Recipient template error: %s"
-msgstr ""
-
-#: workflow_actions.py:85
-#, python-format
-msgid "Subject template error: %s"
-msgstr ""
-
-#: workflow_actions.py:96
-#, python-format
-msgid "Body template error: %s"
 msgstr ""

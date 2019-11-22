@@ -8,5 +8,5 @@ register = Library()
 
 
 @register.simple_tag(takes_context=True)
-def render_dashboard(context, name):
+def dashboards_render_dashboard(context, name):
     return Dashboard.get(name=name).render(request=context.request)

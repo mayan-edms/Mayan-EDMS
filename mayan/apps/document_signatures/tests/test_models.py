@@ -7,7 +7,9 @@ from mayan.apps.django_gpg.tests.literals import TEST_KEY_PRIVATE_PASSPHRASE
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.models import DocumentVersion
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
-from mayan.apps.documents.tests.literals import TEST_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import (
+    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
+)
 
 from ..models import DetachedSignature, EmbeddedSignature
 from ..tasks import task_verify_missing_embedded_signature
@@ -94,7 +96,7 @@ class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
         self.assertEqual(signature.signature_id, TEST_SIGNATURE_ID)
 
     def test_detached_signature_no_key(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
         self._create_test_detached_signature()
@@ -176,13 +178,13 @@ class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
         self.assertEqual(signature.public_key_fingerprint, None)
 
     def test_document_no_signature(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
         self.assertEqual(EmbeddedSignature.objects.count(), 0)
 
     def test_new_signed_version(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
         with open(TEST_SIGNED_DOCUMENT_PATH, mode='rb') as file_object:
@@ -210,7 +212,7 @@ class EmbeddedSignaturesTestCase(KeyTestMixin, GenericDocumentTestCase):
         TEST_UNSIGNED_DOCUMENT_COUNT = 2
         TEST_SIGNED_DOCUMENT_COUNT = 2
 
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
             self.upload_document()
 
@@ -234,7 +236,7 @@ class EmbeddedSignaturesTestCase(KeyTestMixin, GenericDocumentTestCase):
         TEST_UNSIGNED_DOCUMENT_COUNT = 2
         TEST_SIGNED_DOCUMENT_COUNT = 2
 
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
             self.upload_document()
 

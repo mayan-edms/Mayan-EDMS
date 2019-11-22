@@ -61,20 +61,22 @@ Changes
   Thanks to Jakob Haufe (@sur5r) and Jesaja Everling (@jeverling)
   for much of the research and code updates.
 - Support wildcard MIME type associations for the file metadata drivers.
-- Rename MAYAN_GUID to MAYAN_GID
 - Update Gunicorn to use sync workers.
-- Include devpi-server as a development dependency.
+- Include devpi-server as a development dependency. Used to speed up
+  local builds of the Docker image.
 - Update default Docker stack file.
-- Remove Redis from the Docker image.
+- Remove Redis from the Docker image. A separate container must now
+  be deployed.
 - Add Celery flower to the Docker image.
-- Allow PIP proxying to the Docker image during build.
+- Allow PIP proxying to the Docker image during build. Can be used
+  with the local devpi-server or other similar.
 - Default Celery worker concurrency to 0 (auto).
 - Set DJANGO_SETTINGS_MODULE environment variable to make it
   available to sub processes.
 - Add entrypoint commands to run single workers, single gunicorn
   or single celery commands like "flower".
 - Add platform template to return queues for a worker.
-- Remove task inspection from task manager app.
+- Remove task inspection from task manager app. 
 - Move pagination navigation inside the toolbar.
 - Remove document image clear link and view.
   This is now handled by the file caching app.
@@ -130,9 +132,14 @@ Upgrading from a previous version
 If installed via Python's PIP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Update the virtualenv to Python 3::
+
+    sudo -u mayan virtualenv /opt/mayan-edms -p /usr/bin/python3
+
 Remove deprecated requirements::
 
-    sudo -u mayan curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt -o /tmp/removals.txt && sudo -u mayan /opt/mayan-edms/bin/pip uninstall -y -r /tmp/removals.txt
+    sudo -u mayan curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u mayan /opt/mayan-edms/bin/pip uninstall -y -r /tmp/removals.txt
 
 Type in the console::
 

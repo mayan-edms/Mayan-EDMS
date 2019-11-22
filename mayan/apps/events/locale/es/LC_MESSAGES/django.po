@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roberto Rosario, 2015
 # Roberto Rosario, 2017-2019
@@ -9,50 +9,49 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:36-0400\n"
+"POT-Creation-Date: 2019-11-18 22:36-0400\n"
 "PO-Revision-Date: 2019-04-30 16:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:30 links.py:49 links.py:54 links.py:59 permissions.py:7 views.py:36
+#: apps.py:29 links.py:49 links.py:54 links.py:59 permissions.py:7 views.py:36
 msgid "Events"
 msgstr "Eventos"
 
-#: apps.py:42 apps.py:68
+#: apps.py:41 apps.py:67
 msgid "Date and time"
 msgstr "Fecha y hora"
 
-#: apps.py:45 apps.py:71
+#: apps.py:44 apps.py:70
 msgid "Actor"
 msgstr "Actor"
 
-#: apps.py:48 apps.py:75
+#: apps.py:47 apps.py:74
 msgid "Event"
 msgstr "Evento"
 
-#: apps.py:51 apps.py:79
+#: apps.py:50 apps.py:78
 msgid "Target"
 msgstr "Objetivo"
 
-#: apps.py:55
+#: apps.py:54
 msgid "Action object"
 msgstr "Objeto de acción"
 
-#: apps.py:60 forms.py:12 forms.py:69
+#: apps.py:59 forms.py:12 forms.py:69
 msgid "Namespace"
 msgstr "Categoría"
 
-#: apps.py:63 forms.py:16 forms.py:73
+#: apps.py:62 forms.py:16 forms.py:73
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:84
+#: apps.py:83
 msgid "Seen"
 msgstr "Visto"
 
@@ -160,8 +159,7 @@ msgstr "Las suscripciones de eventos se actualizaron con éxito"
 
 #: views.py:114
 msgid "Subscribe to global or object events to receive notifications."
-msgstr ""
-"Suscríbase a eventos globales o de objetos para recibir notificaciones."
+msgstr "Suscríbase a eventos globales o de objetos para recibir notificaciones."
 
 #: views.py:117
 msgid "There are no notifications"
@@ -171,9 +169,7 @@ msgstr "No hay notificaciones"
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr ""
-"Los eventos son acciones que se han realizado a este objeto o utilizando "
-"este objeto."
+msgstr "Los eventos son acciones que se han realizado a este objeto o utilizando este objeto."
 
 #: views.py:167
 msgid "There are no events for this object"

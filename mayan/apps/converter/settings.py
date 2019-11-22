@@ -8,8 +8,12 @@ from .literals import (
     DEFAULT_LIBREOFFICE_PATH, DEFAULT_PDFTOPPM_DPI, DEFAULT_PDFTOPPM_FORMAT,
     DEFAULT_PDFTOPPM_PATH, DEFAULT_PDFINFO_PATH, DEFAULT_PILLOW_FORMAT
 )
+from .setting_migrations import ConvertSettingMigration
 
-namespace = Namespace(label=_('Converter'), name='converter')
+namespace = Namespace(
+    label=_('Converter'), migration_class=ConvertSettingMigration,
+    name='converter', version='0002'
+)
 
 setting_graphics_backend = namespace.add_setting(
     default='mayan.apps.converter.backends.python.Python',

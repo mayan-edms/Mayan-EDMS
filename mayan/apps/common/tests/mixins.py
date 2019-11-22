@@ -21,6 +21,7 @@ from django.urls import clear_url_caches, reverse
 from django.utils.encoding import force_bytes
 from django.utils.six import PY3
 
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.storage.settings import setting_temporary_directory
 
 from .literals import (
@@ -138,6 +139,22 @@ class ContentTypeCheckTestCaseMixin(object):
                 return response
 
         self.client = CustomClient()
+
+
+class EnvironmentTestCaseMixin(object):
+    def setUp(self):
+        super(EnvironmentTestCaseMixin, self).setUp()
+        self._test_environment_variables = []
+
+    def tearDown(self):
+        for name in self._test_environment_variables:
+            os.environ.pop(name)
+
+        super(EnvironmentTestCaseMixin, self).tearDown()
+
+    def _set_environment_variable(self, name, value):
+        self._test_environment_variables.append(name)
+        os.environ[name] = value
 
 
 class ModelTestCaseMixin(object):
@@ -321,6 +338,21 @@ class TempfileCheckTestCasekMixin(object):
 
 
 class TestModelTestMixin(object):
+    _test_models = []
+
+    def tearDown(self):
+        # Delete the test models' content type entries and deregister the
+        # permissions, this avoids their Content Type from being looked up
+        # in subsequent tests where they don't exists due to the database
+        # transaction rollback.
+        for model in self._test_models:
+            content_type = ContentType.objects.get_for_model(model=model)
+            if content_type.pk:
+                content_type.delete()
+            ModelPermission.deregister(model=model)
+
+        super(TestModelTestMixin, self).tearDown()
+
     def _get_test_model_meta(self):
         self.db_table = '{}_{}'.format(
             self.app_config.label, self.model_name.lower()
@@ -395,6 +427,7 @@ class TestModelTestMixin(object):
             with connection.schema_editor() as schema_editor:
                 schema_editor.create_model(model=model)
 
+        self._test_models.append(model)
         ContentType.objects.clear_cache()
 
         return model

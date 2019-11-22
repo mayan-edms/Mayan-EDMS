@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Iliya Georgiev <inactive+iliicho7@transifex.com>, 2012
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019
@@ -9,34 +9,33 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:39-0400\n"
+"POT-Creation-Date: 2019-11-18 22:40-0400\n"
 "PO-Revision-Date: 2019-10-17 12:55+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:82 events.py:8 permissions.py:8
 msgid "User management"
 msgstr "Управление на потребители"
 
-#: apps.py:100 search.py:12
+#: apps.py:100 search.py:36
 msgid "Group"
 msgstr "Група"
 
-#: apps.py:101 links.py:41 links.py:52 links.py:75 search.py:36 views.py:120
+#: apps.py:101 links.py:41 links.py:52 links.py:75 search.py:26 views.py:120
 msgid "Groups"
 msgstr "Групи"
 
-#: apps.py:102 search.py:18
+#: apps.py:102 search.py:42
 msgid "Name"
 msgstr "Име"
 
-#: apps.py:108 models.py:18 search.py:24
+#: apps.py:108 models.py:18 search.py:14
 msgid "User"
 msgstr "Потребител"
 
@@ -48,15 +47,15 @@ msgstr "Потребители"
 msgid "Username"
 msgstr "Име на потребител"
 
-#: apps.py:113 search.py:30
+#: apps.py:113 search.py:20
 msgid "First name"
 msgstr "Малко име"
 
-#: apps.py:114 search.py:39
+#: apps.py:114 search.py:29
 msgid "Last name"
 msgstr "Фамилия"
 
-#: apps.py:115 search.py:33
+#: apps.py:115 search.py:23
 msgid "Email"
 msgstr "Електронна поща"
 
@@ -180,15 +179,13 @@ msgstr "Редактиране на нови потребители"
 msgid "View existing users"
 msgstr "Преглед на съществуващи потребители"
 
-#: search.py:42
+#: search.py:32
 msgid "username"
 msgstr "потребителско име"
 
 #: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
-"Разделен със запетаи списък на групови основни ключове за усвояване от този "
-"потребител."
+msgstr "Разделен със запетаи списък на групови основни ключове за усвояване от този потребител."
 
 #: serializers.py:64
 msgid "List of group primary keys to which to add the user."
@@ -221,11 +218,7 @@ msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr ""
-"Потребителските групи са организационни звена. Те трябва да отразяват "
-"организационните звена на вашата организация. Групите не могат да се "
-"използват за контрол на достъпа. Използвайте роли за разрешения и контрол на "
-"достъпа, добавете групи към тях."
+msgstr "Потребителските групи са организационни звена. Те трябва да отразяват организационните звена на вашата организация. Групите не могат да се използват за контрол на достъпа. Използвайте роли за разрешения и контрол на достъпа, добавете групи към тях."
 
 #: views.py:119
 msgid "There are no user groups"
@@ -269,9 +262,7 @@ msgstr "Изтриване на потребителя: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Изтриване на потребители от супер потребител и служител не е разрешено. "
-"Използвайте администраторския модул за тези случаи."
+msgstr "Изтриване на потребители от супер потребител и служител не е разрешено. Използвайте администраторския модул за тези случаи."
 
 #: views.py:212
 #, python-format
@@ -312,10 +303,7 @@ msgstr "Групи на потребителя: %s"
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
-msgstr ""
-"Потребителски акаунти могат да бъдат създадени от този изглед. След "
-"създаването на потребителски акаунт ще бъдете подканени да зададете парола "
-"за него."
+msgstr "Потребителски акаунти могат да бъдат създадени от този изглед. След създаването на потребителски акаунт ще бъдете подканени да зададете парола за него."
 
 #: views.py:301
 msgid "There are no user accounts"

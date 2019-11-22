@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Johan Braeken, 2017
@@ -11,54 +11,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:35-0400\n"
+"POT-Creation-Date: 2019-11-18 22:35-0400\n"
 "PO-Revision-Date: 2019-05-03 05:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:23 permissions.py:7 settings.py:12
+#: apps.py:21 permissions.py:7 settings.py:12
 msgid "Converter"
 msgstr "Converter"
 
-#: apps.py:37 forms.py:25
+#: apps.py:30 models.py:57
 msgid "Transformation"
 msgstr "Transformatie"
 
-#: backends/python.py:162 backends/python.py:168
+#: backends/python.py:175 backends/python.py:181
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Exceptie bij het bepalen van aan aantal bladzijden van de PDF: %s"
 
-#: backends/python.py:182
+#: backends/python.py:195
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr ""
 
-#: classes.py:116
+#: classes.py:118
 msgid "LibreOffice not installed or not found."
 msgstr ""
 
-#: classes.py:199
+#: classes.py:201
 msgid "Not an office file format."
 msgstr "Geen office bestandsformaat."
-
-#: classes.py:327
-msgid ""
-"Transformations allow changing the visual appearance of documents without "
-"making permanent changes to the document file themselves."
-msgstr ""
-
-#: classes.py:375
-#, fuzzy
-#| msgid "Transformation"
-msgid "transformation"
-msgstr "Transformatie"
 
 #: dependencies.py:16
 msgid "Utility from the poppler-utils package used to inspect PDF files."
@@ -70,100 +57,50 @@ msgid ""
 "into PPM format images."
 msgstr ""
 
-#: forms.py:24
-#, fuzzy
-#| msgid "Transformations for: %s"
-msgid "Available transformations for this layer."
-msgstr "Transformaties voor: %s"
-
-#: forms.py:61
+#: forms.py:28
 #, python-format
 msgid "\"%s\" not a valid entry."
 msgstr ""
 
-#: layers.py:12
-#, fuzzy
-#| msgid "Edit transformations"
-msgid "Saved transformations"
-msgstr "Wijzig transformaties"
+#: links.py:36
+msgid "Create new transformation"
+msgstr "Maak een nieuwe transformatie aan"
 
-#: links.py:18
+#: links.py:42
 msgid "Delete"
 msgstr "Verwijder"
 
-#: links.py:25
+#: links.py:48
 msgid "Edit"
 msgstr "bewerken"
 
-#: links.py:29
+#: links.py:53 models.py:58
 msgid "Transformations"
 msgstr "Transformaties"
 
-#: links.py:35
-#, fuzzy
-#| msgid "Delete transformations"
-msgid "Select new transformation"
-msgstr "Transformaties verwijderen"
-
-#: models.py:23 models.py:85
-msgid "Name"
-msgstr "Naam"
-
-#: models.py:26 models.py:81
-msgid "Order"
-msgstr "Volgorde"
-
-#: models.py:34 models.py:50
-msgid "Stored layer"
-msgstr ""
-
-#: models.py:35
-msgid "Stored layers"
-msgstr ""
-
-#: models.py:47 models.py:93
-msgid "Enabled"
-msgstr ""
-
-#: models.py:56 models.py:75
-msgid "Object layer"
-msgstr ""
-
-#: models.py:57
-msgid "Object layers"
-msgstr ""
-
-#: models.py:79
+#: models.py:37
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Volgorde waarin de transformaties worden uitgevoerd. Indien ongewijzigd zal "
-"automatisch een volgorde toegekend worden."
+msgstr "Volgorde waarin de transformaties worden uitgevoerd. Indien ongewijzigd zal automatisch een volgorde toegekend worden."
 
-#: models.py:89
+#: models.py:39
+msgid "Order"
+msgstr "Volgorde"
+
+#: models.py:43
+msgid "Name"
+msgstr "Naam"
+
+#: models.py:47
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Voer de argumenten voor de transformatie in als een YAML statement, "
-"bijvoorbeeld: {\"degrees\": 180}"
+msgstr "Voer de argumenten voor de transformatie in als een YAML statement, bijvoorbeeld: {\"degrees\": 180}"
 
-#: models.py:91
+#: models.py:49
 msgid "Arguments"
 msgstr "Argumenten"
-
-#: models.py:100
-#, fuzzy
-#| msgid "Transformation"
-msgid "Layer transformation"
-msgstr "Transformatie"
-
-#: models.py:101
-#, fuzzy
-#| msgid "Delete transformations"
-msgid "Layer transformations"
-msgstr "Transformaties verwijderen"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -185,113 +122,88 @@ msgstr "Bekijk bestaande transformaties"
 msgid "Graphics conversion backend to use."
 msgstr "Te gebruiken backend voor grafische conversie."
 
-#: settings.py:28
+#: settings.py:35
 msgid "Configuration options for the graphics conversion backend."
 msgstr ""
 
-#: transformations.py:99
+#: transformations.py:81
 msgid "Crop"
 msgstr "Bijsnijden"
 
-#: transformations.py:177
-msgid "Draw rectangle"
-msgstr ""
-
-#: transformations.py:279
-msgid "Draw rectangle (percents coordinates)"
-msgstr ""
-
-#: transformations.py:376
+#: transformations.py:156
 msgid "Flip"
 msgstr ""
 
-#: transformations.py:387
+#: transformations.py:167
 msgid "Gaussian blur"
 msgstr ""
 
-#: transformations.py:397
+#: transformations.py:177
 msgid "Line art"
 msgstr ""
 
-#: transformations.py:408
+#: transformations.py:188
 msgid "Mirror"
 msgstr ""
 
-#: transformations.py:419
+#: transformations.py:199
 msgid "Resize"
 msgstr "Afmeting wijzigen"
 
-#: transformations.py:446
+#: transformations.py:226
 msgid "Rotate"
 msgstr "Roteren"
 
-#: transformations.py:472
+#: transformations.py:252
 msgid "Rotate 90 degrees"
 msgstr ""
 
-#: transformations.py:483
+#: transformations.py:263
 msgid "Rotate 180 degrees"
 msgstr ""
 
-#: transformations.py:494
+#: transformations.py:274
 msgid "Rotate 270 degrees"
 msgstr ""
 
-#: transformations.py:504
+#: transformations.py:284
 msgid "Unsharp masking"
 msgstr ""
 
-#: transformations.py:520
+#: transformations.py:300
 msgid "Zoom"
 msgstr "Inzoomen"
 
-#: validators.py:23
+#: validators.py:26
 msgid "Enter a valid YAML value."
 msgstr "Voer een geldige YAML-waarde in."
 
-#: views.py:74
-#, fuzzy, python-format
-#| msgid ""
-#| "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgid ""
-"Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
-"%(object)s"
-msgstr ""
-"Transformatie verwijderen \"%(transformation)s\" voor: %(content_object)s?"
+#: views.py:72
+#, python-format
+msgid "Create new transformation for: %s"
+msgstr "Maak een nieuwe transformatie aan voor: %s"
 
-#: views.py:135
+#: views.py:127
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
-"Transformatie verwijderen \"%(transformation)s\" voor: %(content_object)s?"
+msgstr "Transformatie verwijderen \"%(transformation)s\" voor: %(content_object)s?"
 
-#: views.py:183
+#: views.py:171
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "Wijzig transformatie \"%(transformation)s\" voor: %(content_object)s"
 
-#: views.py:237
+#: views.py:227
+msgid ""
+"Transformations allow changing the visual appearance of documents without "
+"making permanent changes to the document file themselves."
+msgstr ""
+
+#: views.py:231
+msgid "No transformations"
+msgstr ""
+
+#: views.py:232
 #, python-format
-msgid "There are no entries for layer \"%(layer_name)s\""
-msgstr ""
-
-#: views.py:240
-#, fuzzy, python-format
-#| msgid "Create new transformation for: %s"
-msgid "Layer \"%(layer)s\" transformations for: %(object)s"
-msgstr "Maak een nieuwe transformatie aan voor: %s"
-
-#: views.py:279
-msgid "Select"
-msgstr ""
-
-#: views.py:281
-#, fuzzy, python-format
-#| msgid ""
-#| "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr ""
-"Transformatie verwijderen \"%(transformation)s\" voor: %(content_object)s?"
-
-#~ msgid "Create new transformation"
-#~ msgstr "Maak een nieuwe transformatie aan"
+msgid "Transformations for: %s"
+msgstr "Transformaties voor: %s"

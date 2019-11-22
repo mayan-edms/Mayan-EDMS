@@ -11,9 +11,13 @@ from .literals import (
     DEFAULT_DOCUMENTS_CACHE_MAXIMUM_SIZE, DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE,
     DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES
 )
+from .setting_migrations import DocumentsSettingMigration
 from .utils import callback_update_cache_size
 
-namespace = Namespace(label=_('Documents'), name='documents')
+namespace = Namespace(
+    label=_('Documents'), migration_class=DocumentsSettingMigration,
+    name='documents', version='0002'
+)
 
 setting_document_cache_maximum_size = namespace.add_setting(
     global_name='DOCUMENTS_CACHE_MAXIMUM_SIZE',

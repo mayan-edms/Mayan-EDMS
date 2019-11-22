@@ -77,13 +77,13 @@
                     {% endif %}
                 {% elif field|widget_type == 'select' %}
                     {% if read_only %}
-                        {{ field|get_choice_value }}
+                        {{ field|appearance_get_choice_value }}
                     {% else %}
                         {% render_field field class+="form-control" %}
                     {% endif %}
                 {% elif field|widget_type == 'selectmultiple' %}
                     {% if read_only %}
-                        {{ field|get_choice_value }}
+                        {{ field|appearance_get_choice_value }}
                     {% else %}
                         {% render_field field class+="form-control" %}
                     {% endif %}
@@ -119,7 +119,7 @@
 {% endif %}
 
 <script>
-    {% for script in form|get_form_media_js %}
+    {% for script in form|appearance_get_form_media_js %}
         $.getScript('{{ script }}');
     {% endfor %}
 </script>

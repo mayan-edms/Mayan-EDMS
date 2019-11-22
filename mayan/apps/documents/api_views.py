@@ -30,10 +30,10 @@ from .permissions import (
 from .serializers import (
     DeletedDocumentSerializer, DocumentPageSerializer, DocumentSerializer,
     DocumentTypeSerializer, DocumentVersionSerializer,
-    NewDocumentSerializer, NewDocumentVersionSerializer,
-    RecentDocumentSerializer, WritableDocumentSerializer,
-    WritableDocumentTypeSerializer, WritableDocumentVersionSerializer,
-    DocumentVersionPageSerializer
+    NewDocumentDocumentTypeSerializer, NewDocumentSerializer,
+    NewDocumentVersionSerializer, RecentDocumentSerializer,
+    WritableDocumentSerializer, WritableDocumentTypeSerializer,
+    WritableDocumentVersionSerializer, DocumentVersionPageSerializer
 )
 from .settings import settings_document_page_image_cache_time
 from .tasks import (
@@ -84,6 +84,26 @@ class APIDeletedDocumentRestoreView(generics.GenericAPIView):
 
     def post(self, *args, **kwargs):
         self.get_object().restore()
+        return Response(status=status.HTTP_200_OK)
+
+
+class APIDocumentDocumentTypeChangeView(generics.GenericAPIView):
+    """
+    post: Change the type of the selected document.
+    """
+    mayan_object_permissions = {
+        'POST': (permission_document_properties_edit,),
+    }
+    queryset = Document.objects.all()
+    serializer_class = NewDocumentDocumentTypeSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        document_type = DocumentType.objects.get(pk=request.data['new_document_type'])
+        self.get_object().set_document_type(
+            document_type=document_type, _user=self.request.user
+        )
         return Response(status=status.HTTP_200_OK)
 
 

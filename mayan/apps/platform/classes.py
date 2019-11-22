@@ -155,7 +155,7 @@ class PlatformTemplateSupervisord(PlatformTemplate):
         ),
         YAMLVariable(
             name='CELERY_RESULT_BACKEND',
-            default='redis://127.0.0.1:6379/0',
+            default='redis://127.0.0.1:6379/1',
             environment_name='MAYAN_CELERY_RESULT_BACKEND'
         ),
         YAMLVariable(

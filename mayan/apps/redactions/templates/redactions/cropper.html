@@ -33,7 +33,7 @@
 
 {% block content %}
     <div class="cropper-main">
-        <img id="cropper-img" src="{% get_api_image_url obj=content_object maximum_layer_order=layer.order %}">
+        <img id="cropper-img" src="{% documents_get_api_image_url obj=content_object maximum_layer_order=layer.order %}">
     </div>
 
     <br>

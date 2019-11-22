@@ -17,7 +17,7 @@
             {% else %}
                 <div class="col-xs-12">
             {% endif %}
-                {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
+                {% common_render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
                 {{ rendered_subtemplate }}
             </div>
         {% endfor %}

@@ -173,7 +173,7 @@ test-mysql:
   services:
     - mysql:8.0.3
   script:
-    - apt-get install -qq libmysqlclient-dev mysql-client
+    - apt-get install -qq libmysqlclient-dev libssl-dev mysql-client
     - . venv/bin/activate
     - set -a && . ./config.env && set +a
     - pip install mysqlclient==$PYTHON_MYSQL_VERSION

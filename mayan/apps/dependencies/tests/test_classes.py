@@ -7,15 +7,7 @@ from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.common.tests.utils import mute_stdout
 from mayan.apps.storage.utils import mkdtemp
 
-from ..classes import Dependency, Provider
-
-
-class TestProvider(Provider):
-    """Test provider"""
-
-
-class TestDependency(Dependency):
-    provider_class = TestProvider
+from .mocks import TestDependency
 
 
 class DependencyClassTestCase(BaseTestCase):
@@ -40,7 +32,7 @@ class DependencyClassTestCase(BaseTestCase):
         super(DependencyClassTestCase, self).tearDown()
         shutil.rmtree(self.temporary_directory, ignore_errors=True)
 
-    def test_file_patching(self):
+    def _patch_test_file(self):
         replace_list = [
             {
                 'filename_pattern': '*',
@@ -59,8 +51,11 @@ class DependencyClassTestCase(BaseTestCase):
             )
 
         with self.path_test_file.open(mode='r') as file_object:
-            final_text = file_object.read()
+            self.final_text = file_object.read()
+
+    def test_file_patching(self):
+        self._patch_test_file()
 
         self.assertEqual(
-            final_text, '@import url({});'.format(self.test_replace_text)
+            self.final_text, '@import url({});'.format(self.test_replace_text)
         )

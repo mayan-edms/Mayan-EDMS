@@ -19,6 +19,7 @@ from django.utils.encoding import (
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 
 logger = logging.getLogger(__name__)
+NAMESPACE_VERSION_INITIAL = '0001'
 SMART_SETTINGS_NAMESPACES_NAME = 'SMART_SETTINGS_NAMESPACES'
 
 
@@ -81,11 +82,15 @@ class Namespace(object):
         for namespace in cls.get_all():
             namespace.invalidate_cache()
 
-    def __init__(self, name, label, version='0001'):
+    def __init__(
+        self, name, label, migration_class=None,
+        version=NAMESPACE_VERSION_INITIAL
+    ):
         if name in self.__class__._registry:
             raise Exception(
                 'Namespace names must be unique; "%s" already exists.' % name
             )
+        self.migration_class = migration_class
         self.name = name
         self.label = label
         self.version = version
@@ -99,15 +104,73 @@ class Namespace(object):
         return Setting(namespace=self, **kwargs)
 
     def get_config_version(self):
-        return Namespace.get_namespace_config(name=self.name).get('version', None)
+        return Namespace.get_namespace_config(name=self.name).get(
+            'version', NAMESPACE_VERSION_INITIAL
+        )
 
     def invalidate_cache(self):
         for setting in self._settings:
             setting.invalidate_cache()
 
+    def migrate(self, setting):
+        if self.migration_class:
+            self.migration_class(namespace=self).migrate(setting=setting)
+
     @property
     def settings(self):
         return sorted(self._settings, key=lambda x: x.global_name)
+
+
+class NamespaceMigration(object):
+    def __init__(self, namespace):
+        self.namespace = namespace
+
+    def get_method_name(self, setting):
+        return setting.global_name.lower()
+
+    def get_method_name_full(self, setting, version):
+        return '{}_{}'.format(
+            self.get_method_name(setting=setting),
+            version
+        )
+
+    def migrate(self, setting):
+        if self.namespace.get_config_version() != self.namespace.version:
+            method_name = self.get_method_name(setting=setting)
+
+            # Get methods for this setting
+            setting_methods = [
+                method for method in dir(self) if method.startswith(
+                    method_name
+                )
+            ]
+            # Get order of execution of setting methods
+            versions = [
+                method.replace(
+                    '{}_'.format(method_name), ''
+                ) for method in setting_methods
+            ]
+            try:
+                start = versions.index(self.namespace.get_config_version())
+            except ValueError:
+                start = 0
+
+            try:
+                end = versions.index(self.namespace.version)
+            except ValueError:
+                end = None
+
+            value = setting.raw_value
+            for version in versions[start:end]:
+                method = getattr(
+                    self, self.get_method_name_full(
+                        setting=setting, version=version
+                    ), None
+                )
+                if method:
+                    value = method(value=value)
+
+            setting.raw_value = value
 
 
 @python_2_unicode_compatible
@@ -191,7 +254,6 @@ class Setting(object):
             cls._config_file_cache = read_configuration_file(
                 filepath=settings.CONFIGURATION_FILEPATH
             )
-
         return cls._config_file_cache
 
     @classmethod
@@ -224,7 +286,10 @@ class Setting(object):
                 path=settings.CONFIGURATION_LAST_GOOD_FILEPATH
             )
 
-    def __init__(self, namespace, global_name, default, help_text=None, is_path=False, post_edit_function=None):
+    def __init__(
+        self, namespace, global_name, default, help_text=None, is_path=False,
+        post_edit_function=None
+    ):
         self.global_name = global_name
         self.default = default
         self.help_text = help_text
@@ -252,17 +317,30 @@ class Setting(object):
                     )
                 )
         else:
-            self.raw_value = self.get_config_file_content().get(
-                self.global_name, getattr(
-                    settings, self.global_name, self.default
-                )
-            )
+            try:
+                # Try the config file
+                self.raw_value = self.get_config_file_content()[self.global_name]
+            except KeyError:
+                try:
+                    # Try the Django settings variable
+                    self.raw_value = getattr(
+                        settings, self.global_name
+                    )
+                except AttributeError:
+                    # Finally set to the default value
+                    self.raw_value = self.default
+            else:
+                # Found in the config file, try to migrate the value
+                self.migrate()
 
         self.yaml = Setting.serialize_value(self.raw_value)
         self.loaded = True
 
     def invalidate_cache(self):
         self.loaded = False
+
+    def migrate(self):
+        self.namespace.migrate(setting=self)
 
     @property
     def serialized_value(self):

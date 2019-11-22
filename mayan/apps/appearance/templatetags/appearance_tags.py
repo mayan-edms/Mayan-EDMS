@@ -7,13 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 register = Library()
 
 
-@register.simple_tag
-def appearance_icon_render(icon_class, enable_shadow=False):
-    return icon_class.render(extra_context={'enable_shadow': enable_shadow})
-
-
 @register.filter
-def get_choice_value(field):
+def appearance_get_choice_value(field):
     try:
         return dict(field.field.choices)[field.value()]
     except TypeError:
@@ -23,10 +18,15 @@ def get_choice_value(field):
 
 
 @register.filter
-def get_form_media_js(form):
+def appearance_get_form_media_js(form):
     return [form.media.absolute_path(path) for path in form.media._js]
 
 
 @register.simple_tag
-def get_icon(icon_path):
+def appearance_get_icon(icon_path):
     return import_string(dotted_path=icon_path).render()
+
+
+@register.simple_tag
+def appearance_icon_render(icon_class, enable_shadow=False):
+    return icon_class.render(extra_context={'enable_shadow': enable_shadow})

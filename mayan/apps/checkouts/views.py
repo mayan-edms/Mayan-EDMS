@@ -9,7 +9,7 @@ from mayan.apps.common.generics import (
     SingleObjectDetailView
 )
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.views import DocumentListView
+from mayan.apps.documents.views.document_views import DocumentListView
 
 from .forms import DocumentCheckOutForm, DocumentCheckOutDetailForm
 from .icons import icon_check_out_info
