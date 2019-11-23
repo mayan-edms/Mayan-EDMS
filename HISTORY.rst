@@ -177,6 +177,8 @@
 - Move the file patching code from the Dependency class to a
   generalized utility of the storages app.
 - Add book link to the documentation.
+- Update mayan_statistics migration 0002 to rename
+  duplicate slugs.
 
 3.2.11 (2019-XX-XX)
 ===================
