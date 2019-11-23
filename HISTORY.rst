@@ -12,6 +12,8 @@
 - Self-heal statistics results model when multiple
   results are created using the same slug value.
   Forum topic 1404.
+- Update mayan_statistics migration 0002 to rename
+  duplicate slugs.
 
 3.2.10 (2019-11-19)
 ===================
