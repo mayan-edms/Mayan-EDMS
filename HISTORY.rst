@@ -179,6 +179,7 @@
 - Add book link to the documentation.
 - Update mayan_statistics migration 0002 to rename
   duplicate slugs.
+- Add document index reset view.
 
 3.2.11 (2019-XX-XX)
 ===================
