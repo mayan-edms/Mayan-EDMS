@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import time
 
+from unittest import skip
 from django.test import override_settings
 from django.utils.module_loading import import_string
 
@@ -77,6 +78,7 @@ class ModelLockTestCase(FileLockTestCase):
     backend_string = 'mayan.apps.lock_manager.backends.model_lock.ModelLock'
 
 
+@skip('Skip until a Mock Redis server class is added.')
 @override_settings(
     LOCK_MANAGER_BACKEND_ARGUMENTS={'redis_url': 'redis://127.0.0.1:6379/0'}
 )
