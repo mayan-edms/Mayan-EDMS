@@ -69,7 +69,6 @@ class Document(models.Model):
             'Whether or not this document is in the trash.'
         ), editable=False, verbose_name=_('In trash?')
     )
-    # TODO: set editable to False
     deleted_date_time = models.DateTimeField(
         blank=True, editable=True, help_text=_(
             'The server date and time when the document was moved to the '

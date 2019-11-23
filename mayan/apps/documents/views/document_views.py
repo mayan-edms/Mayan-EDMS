@@ -254,7 +254,6 @@ class DocumentDownloadView(SingleObjectDownloadView):
                 target=item
             )
         else:
-            # TODO: Improve by adding a document version download event
             event_document_download.commit(
                 actor=request.user,
                 target=item.document

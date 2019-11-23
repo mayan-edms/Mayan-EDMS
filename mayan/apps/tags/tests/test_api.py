@@ -201,7 +201,6 @@ class TagDocumentAPIViewTestCase(
         response = self._request_test_document_attach_tag_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        # TODO: This should be false. Update API View.
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
     def test_document_attach_tag_view_with_full_access(self):

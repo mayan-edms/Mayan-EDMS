@@ -124,7 +124,6 @@ class DetailForm(forms.ModelForm):
                         field_object, 'help_text', None
                     )
 
-            # TODO: Add others result types <=> Field types
             if isinstance(result, models.query.QuerySet):
                 self.fields[field] = forms.ModelMultipleChoiceField(
                     queryset=result, label=label
