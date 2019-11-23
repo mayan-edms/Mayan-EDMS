@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 from ..models import Index
 
 from .literals import (
-    TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED, TEST_INDEX_SLUG
+    TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED, TEST_INDEX_SLUG,
+    TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
 )
 
 
@@ -19,6 +20,13 @@ class IndexTestMixin(object):
         # Rebuild indexes
         if rebuild:
             Index.objects.rebuild()
+
+    def _create_test_index_template_node(self):
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
+            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
+            link_documents=True
+        )
 
 
 class IndexViewTestMixin(object):

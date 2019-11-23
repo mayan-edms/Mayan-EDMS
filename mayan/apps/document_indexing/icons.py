@@ -16,7 +16,12 @@ icon_index_instance_node_with_documents = Icon(
     driver_name='fontawesome', symbol='folder'
 )
 icon_index_instances_rebuild = Icon(
-    driver_name='fontawesome', symbol='list-ul'
+    driver_name='fontawesome-dual', primary_symbol='list-ul',
+    secondary_symbol='hammer'
+)
+icon_index_instances_reset = Icon(
+    driver_name='fontawesome-dual', primary_symbol='list-ul',
+    secondary_symbol='times'
 )
 
 icon_index_template_create = Icon(
