@@ -6,12 +6,15 @@ import logging
 from django.apps import apps
 from django.utils.encoding import force_text
 
+from mayan.apps.common.utils import get_related_field
+
 logger = logging.getLogger(__name__)
 
 
 class ModelPermission(object):
     _functions = {}
     _inheritances = {}
+    _inheritances_reverse = {}
     _manager_names = {}
     _registry = {}
 
@@ -52,7 +55,14 @@ class ModelPermission(object):
 
             return results
         else:
-            return cls._registry.get(klass, ())
+            # Return the permissions for the klass and the models that
+            # inherit from it.
+            result = []
+            result.extend(cls._registry.get(klass, ()))
+            for model in cls._inheritances_reverse.get(klass, ()):
+                result.extend(cls._registry.get(model, ()))
+
+            return result
 
     @classmethod
     def get_for_instance(cls, instance):
@@ -124,6 +134,12 @@ class ModelPermission(object):
 
     @classmethod
     def register_inheritance(cls, model, related):
+        model_reverse = get_related_field(
+            model=model, related_field_name=related
+        ).related_model
+        cls._inheritances_reverse.setdefault(model_reverse, [])
+        cls._inheritances_reverse[model_reverse].append(model)
+
         cls._inheritances[model] = related
 
     @classmethod
