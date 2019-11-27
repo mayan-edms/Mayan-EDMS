@@ -85,7 +85,6 @@ class DocumentIndexingApp(MayanAppConfig):
         ModelPermission.register(
             model=Index, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_document_indexing_create,
                 permission_document_indexing_delete,
                 permission_document_indexing_edit,
                 permission_document_indexing_instance_view,

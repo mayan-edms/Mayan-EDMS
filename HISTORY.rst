@@ -15,6 +15,8 @@
 - Update mayan_statistics migration 0002 to rename
   duplicate slugs.
 - Fix reverse inheritance permissions.
+- Remove index create permission as an ACL permission
+  for indexes.
 
 3.2.10 (2019-11-19)
 ===================
