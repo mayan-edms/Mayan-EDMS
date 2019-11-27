@@ -17,6 +17,7 @@
 - Fix reverse inheritance permissions.
 - Remove index create permission as an ACL permission
   for indexes.
+- Fix API example.
 
 3.2.10 (2019-11-19)
 ===================

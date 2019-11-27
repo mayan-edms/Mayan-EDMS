@@ -57,7 +57,7 @@ Get a list of document types::
 
 Upload a new document::
 
-    with open('test_document.pdf', mode='rb') as
+    with open('test_document.pdf', mode='rb') as file_object:
         requests.post('http://127.0.0.1:8000/api/documents/', auth=('username', 'password'), files={'file': file_object}, data={'document_type': 1}).json()
 
     {u'description': u'',
