@@ -14,6 +14,7 @@
   Forum topic 1404.
 - Update mayan_statistics migration 0002 to rename
   duplicate slugs.
+- Fix reverse inheritance permissions.
 
 3.2.10 (2019-11-19)
 ===================

@@ -8,7 +8,7 @@ from ..permissions import permission_acl_edit, permission_acl_view
 from .mixins import ACLTestMixin
 
 
-class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
+class AccessControlListViewTestMixin(object):
     def _request_test_acl_create_get_view(self):
         return self.get(
             viewname='acls:acl_create',
@@ -17,6 +17,18 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
             }
         )
 
+    def _request_test_acl_create_post_view(self):
+        return self.post(
+            viewname='acls:acl_create',
+            kwargs=self.test_content_object_view_kwargs, data={
+                'role': self.test_role.pk
+            }
+        )
+
+
+class AccessControlListViewTestCase(
+    AccessControlListViewTestMixin, ACLTestMixin, GenericViewTestCase
+):
     def test_acl_create_get_view_no_permission(self):
         self._setup_test_object()
 
@@ -39,14 +51,6 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(AccessControlList.objects.count(), acl_count)
-
-    def _request_test_acl_create_post_view(self):
-        return self.post(
-            viewname='acls:acl_create',
-            kwargs=self.test_content_object_view_kwargs, data={
-                'role': self.test_role.pk
-            }
-        )
 
     def test_acl_create_view_post_no_permission(self):
         self._setup_test_object()
