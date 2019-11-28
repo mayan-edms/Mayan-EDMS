@@ -40,8 +40,7 @@ from .links import (
     link_index_template_node_delete, link_index_template_node_edit
 )
 from .permissions import (
-    permission_document_indexing_create, permission_document_indexing_delete,
-    permission_document_indexing_edit,
+    permission_document_indexing_delete, permission_document_indexing_edit,
     permission_document_indexing_instance_view,
     permission_document_indexing_rebuild, permission_document_indexing_view
 )

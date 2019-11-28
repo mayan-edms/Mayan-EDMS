@@ -11,13 +11,7 @@ from ..models import DocumentCheckout
 
 
 class DocumentCheckoutsAPIViewTestMixin(object):
-    def _request_checkedout_document_view(self):
-        return self.get(
-            viewname='rest_api:checkedout-document-view',
-            kwargs={'pk': self.test_check_out.pk}
-        )
-
-    def _request_test_document_check_out_view(self):
+    def _request_test_document_check_out_create_api_view(self):
         return self.post(
             viewname='rest_api:checkout-document-list', data={
                 'document_pk': self.test_document.pk,
@@ -25,7 +19,19 @@ class DocumentCheckoutsAPIViewTestMixin(object):
             }
         )
 
-    def _request_checkout_list_view(self):
+    def _request_test_document_check_out_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:checkedout-document-view',
+            kwargs={'pk': self.test_check_out.pk}
+        )
+
+    def _request_test_document_check_out_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:checkedout-document-view',
+            kwargs={'pk': self.test_check_out.pk}
+        )
+
+    def _request_test_document_check_out_list_api_view(self):
         return self.get(viewname='rest_api:checkout-document-list')
 
 
