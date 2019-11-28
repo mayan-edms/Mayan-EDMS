@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:35-0400\n"
+"POT-Creation-Date: 2019-11-28 11:13-0400\n"
 "PO-Revision-Date: 2019-11-08 10:44+0000\n"
 "Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -33,27 +33,27 @@ msgstr "Keine"
 msgid "Document types"
 msgstr "Dokumententypen"
 
-#: apps.py:56 events.py:8
+#: apps.py:55 events.py:8
 msgid "Document indexing"
 msgstr "Dokumentenindizierung"
 
-#: apps.py:119
+#: apps.py:117
 msgid "Total levels"
 msgstr "Gesamtanzahl Ebenen"
 
-#: apps.py:127
+#: apps.py:125
 msgid "Total documents"
 msgstr "Alle Dokumente"
 
-#: apps.py:132 apps.py:144 apps.py:163
+#: apps.py:130 apps.py:142 apps.py:161
 msgid "Level"
 msgstr "Ebene"
 
-#: apps.py:149 apps.py:168
+#: apps.py:147 apps.py:166
 msgid "Levels"
 msgstr "Ebenen"
 
-#: apps.py:157 apps.py:175 models.py:358
+#: apps.py:155 apps.py:173 models.py:358
 msgid "Documents"
 msgstr "Index bearbeitet"
 

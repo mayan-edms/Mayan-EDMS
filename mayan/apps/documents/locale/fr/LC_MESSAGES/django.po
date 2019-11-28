@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:36-0400\n"
-"PO-Revision-Date: 2019-09-24 04:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-11-28 11:14-0400\n"
+"PO-Revision-Date: 2019-11-27 00:52+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:109 apps.py:296 events.py:7 menus.py:10
+#: apps.py:109 apps.py:288 events.py:7 menus.py:10
 #: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:14
 #: statistics.py:238
 msgid "Documents"
@@ -54,19 +54,19 @@ msgstr "Type MIME des version"
 msgid "Versions timestamp"
 msgstr "Horodatage des versions "
 
-#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:334
+#: apps.py:233 apps.py:262 apps.py:272 apps.py:308 apps.py:326
 msgid "Thumbnail"
 msgstr "Vignette"
 
-#: apps.py:249 apps.py:339 forms/document_forms.py:182 links.py:83
+#: apps.py:241 apps.py:331 forms/document_forms.py:182 links.py:83
 msgid "Pages"
 msgstr "Pages"
 
-#: apps.py:258 links.py:420
+#: apps.py:250 links.py:420
 msgid "Duplicates"
 msgstr "Doublons"
 
-#: apps.py:284
+#: apps.py:276
 msgid "Type"
 msgstr "Type"
 
@@ -935,7 +935,7 @@ msgstr "Nombre total de pages de documents chaque mois"
 
 #: templates/documents/document_print.html:12
 msgid "Document page image preview"
-msgstr ""
+msgstr "Aperçu de l'image de la page du document"
 
 #: templates/documents/forms/widgets/document_page_carousel.html:16
 #, python-format
@@ -951,7 +951,7 @@ msgstr "Aucune page à afficher"
 
 #: templates/documents/forms/widgets/document_page_image.html:13
 msgid "Document image"
-msgstr ""
+msgstr "Image du document "
 
 #: utils.py:18
 #, python-format

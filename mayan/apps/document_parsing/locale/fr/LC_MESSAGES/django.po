@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:36-0400\n"
+"POT-Creation-Date: 2019-11-28 11:13-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2019\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -41,10 +41,12 @@ msgstr "Contenu"
 msgid ""
 "Utility from the poppler-utils package used to text content from PDF files."
 msgstr ""
+"Utilitaire du paquet poppler-utils, utilisé pour générer du contenu au "
+"format texte provenant de fichiers PDF."
 
 #: events.py:12
 msgid "Document parsed content deleted"
-msgstr ""
+msgstr "Le contenu du document analysé a été supprimé."
 
 #: events.py:16
 msgid "Document version submitted for parsing"
@@ -65,7 +67,7 @@ msgstr "Contenus"
 
 #: links.py:22 links.py:27
 msgid "Delete parsed content"
-msgstr ""
+msgstr "Supprimer le contenu analysé"
 
 #: links.py:39 links.py:77 views.py:225
 msgid "Parsing errors"
@@ -186,8 +188,8 @@ msgstr ""
 #: views.py:37
 msgid "Delete the parsed content of the selected document?"
 msgid_plural "Delete the parsed content of the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Supprimer le contenu analysé du document sélectionné?"
+msgstr[1] "Supprimer le contenu analysé des documents sélectionnés?"
 
 #: views.py:71
 #, python-format
@@ -229,7 +231,7 @@ msgstr "Ajouter le document \"%s\" à la file d'attente d'analyse"
 #: views.py:182
 #, python-format
 msgid "Edit parsing settings for document type: %s."
-msgstr ""
+msgstr "Modifiez les paramètres d'analyse pour le type de document: %s."
 
 #: views.py:192
 msgid "Submit all documents of a type for parsing."

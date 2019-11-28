@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:35-0400\n"
+"POT-Creation-Date: 2019-11-28 11:13-0400\n"
 "PO-Revision-Date: 2019-08-26 01:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
@@ -26,27 +26,27 @@ msgstr "没有"
 msgid "Document types"
 msgstr "文件类型"
 
-#: apps.py:56 events.py:8
+#: apps.py:55 events.py:8
 msgid "Document indexing"
 msgstr "文档索引"
 
-#: apps.py:119
+#: apps.py:117
 msgid "Total levels"
 msgstr "总级别"
 
-#: apps.py:127
+#: apps.py:125
 msgid "Total documents"
 msgstr "文档总数"
 
-#: apps.py:132 apps.py:144 apps.py:163
+#: apps.py:130 apps.py:142 apps.py:161
 msgid "Level"
 msgstr "级别"
 
-#: apps.py:149 apps.py:168
+#: apps.py:147 apps.py:166
 msgid "Levels"
 msgstr "级别"
 
-#: apps.py:157 apps.py:175 models.py:358
+#: apps.py:155 apps.py:173 models.py:358
 msgid "Documents"
 msgstr "文档"
 

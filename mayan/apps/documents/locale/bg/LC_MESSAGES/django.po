@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:36-0400\n"
+"POT-Creation-Date: 2019-11-28 11:14-0400\n"
 "PO-Revision-Date: 2019-10-16 21:23+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:109 apps.py:296 events.py:7 menus.py:10
+#: apps.py:109 apps.py:288 events.py:7 menus.py:10
 #: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:14
 #: statistics.py:238
 msgid "Documents"
@@ -50,19 +50,19 @@ msgstr "Мime тип на версиите"
 msgid "Versions timestamp"
 msgstr "Времева марка на версиите"
 
-#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:334
+#: apps.py:233 apps.py:262 apps.py:272 apps.py:308 apps.py:326
 msgid "Thumbnail"
 msgstr "Умалено изображение"
 
-#: apps.py:249 apps.py:339 forms/document_forms.py:182 links.py:83
+#: apps.py:241 apps.py:331 forms/document_forms.py:182 links.py:83
 msgid "Pages"
 msgstr "Страници"
 
-#: apps.py:258 links.py:420
+#: apps.py:250 links.py:420
 msgid "Duplicates"
 msgstr "Дубликати"
 
-#: apps.py:284
+#: apps.py:276
 msgid "Type"
 msgstr "Тип"
 

@@ -181,7 +181,7 @@
   duplicate slugs.
 - Add document index reset view.
 
-3.2.11 (2019-XX-XX)
+3.2.11 (2019-11-28)
 ===================
 - Backport transaction handling to document model events.
 - Update example LDAP authentication settings file.

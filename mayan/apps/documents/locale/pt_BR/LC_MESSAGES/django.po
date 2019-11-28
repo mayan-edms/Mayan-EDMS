@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:36-0400\n"
+"POT-Creation-Date: 2019-11-28 11:14-0400\n"
 "PO-Revision-Date: 2019-09-24 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:109 apps.py:296 events.py:7 menus.py:10
+#: apps.py:109 apps.py:288 events.py:7 menus.py:10
 #: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:14
 #: statistics.py:238
 msgid "Documents"
@@ -52,19 +52,19 @@ msgstr "Tipo MIME de versões"
 msgid "Versions timestamp"
 msgstr "Registro de data e hora das versões"
 
-#: apps.py:241 apps.py:270 apps.py:280 apps.py:316 apps.py:334
+#: apps.py:233 apps.py:262 apps.py:272 apps.py:308 apps.py:326
 msgid "Thumbnail"
 msgstr "Miniatura"
 
-#: apps.py:249 apps.py:339 forms/document_forms.py:182 links.py:83
+#: apps.py:241 apps.py:331 forms/document_forms.py:182 links.py:83
 msgid "Pages"
 msgstr "Páginas"
 
-#: apps.py:258 links.py:420
+#: apps.py:250 links.py:420
 msgid "Duplicates"
 msgstr "Duplicados"
 
-#: apps.py:284
+#: apps.py:276
 msgid "Type"
 msgstr "Tipo"
 

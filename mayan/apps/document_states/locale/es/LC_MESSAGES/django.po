@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:36-0400\n"
-"PO-Revision-Date: 2019-11-19 05:08+0000\n"
+"POT-Creation-Date: 2019-11-28 11:14-0400\n"
+"PO-Revision-Date: 2019-11-28 15:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -595,7 +595,7 @@ msgstr "Acciones para el estado de flujo de trabajo: %s"
 
 #: views/workflow_views.py:409
 msgid "New workflow state action selection"
-msgstr "Selección de nueva acciones de estado de flujo de trabajo"
+msgstr "Nueva selección de acción de estado de flujo de trabajo"
 
 #: views/workflow_views.py:430
 #, python-format
@@ -635,7 +635,7 @@ msgstr "Editar la transición del flujo de trabajo: %s"
 msgid ""
 "Create a transition and use it to move a workflow from  one state to "
 "another."
-msgstr "Cree una transición y úselo para mover un flujo de trabajo de un estado a otro."
+msgstr "Cree una transición y úsela para mover un flujo de trabajo de un estado a otro."
 
 #: views/workflow_views.py:639
 msgid "This workflow doesn't have any transitions"
@@ -658,12 +658,12 @@ msgstr "Eventos de activación de transición de flujo de trabajo actualizados c
 #: views/workflow_views.py:694
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
-msgstr "Los desencadenantes son eventos que hacen que esta transición se ejecute automáticamente."
+msgstr "Los disparadores son eventos que hacen que esta transición se ejecute automáticamente."
 
 #: views/workflow_views.py:698
 #, python-format
 msgid "Workflow transition trigger events for: %s"
-msgstr "Eventos de activación de transición de flujo de trabajo para: %s"
+msgstr "Eventos de disparo de transición de flujo de trabajo para: %s"
 
 #: views/workflow_views.py:737
 msgid "Launch all workflows?"
