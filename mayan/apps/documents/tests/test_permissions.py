@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.permissions import permission_acl_edit
 from mayan.apps.acls.tests.mixins import ACLTestMixin
-from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.common.tests.base import BaseTestCase
 
 from ..models import DocumentType
 from ..permissions import permission_document_view
