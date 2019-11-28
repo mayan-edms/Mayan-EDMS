@@ -20,6 +20,7 @@
 - Fix API example.
 - Fix document check in via the API. GitLab issue #688.
   Thanks to inam ul haq (@inam.sys) for the report.
+- Improve supervisord upgrade instructions. Forum topic 880.
 
 3.2.10 (2019-11-19)
 ===================
