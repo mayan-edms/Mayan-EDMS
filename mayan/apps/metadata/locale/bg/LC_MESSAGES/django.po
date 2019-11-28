@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:38-0400\n"
-"PO-Revision-Date: 2019-11-19 02:41+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-11-28 11:15-0400\n"
+"PO-Revision-Date: 2019-11-22 13:13+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr "Получаване стойността на конкретни мет
 
 #: apps.py:99
 msgid "Metadata value of"
-msgstr ""
+msgstr "Метаданни за"
 
 #: apps.py:104
 msgid "Metadata type name"

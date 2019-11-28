@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:34-0400\n"
-"PO-Revision-Date: 2019-11-19 02:40+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-11-28 11:13-0400\n"
+"PO-Revision-Date: 2019-11-27 00:54+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,19 +38,19 @@ msgstr "Attributs disponibles: \n"
 msgid "Available fields: \n"
 msgstr "Champs disponibles: \n"
 
-#: dependencies.py:306
+#: dependencies.py:308
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Utilisé pour permettre la traduction hors ligne des chaînes de texte du code."
 
-#: dependencies.py:311
+#: dependencies.py:313
 msgid "Provides style checking."
 msgstr "Fournit une vérification de style."
 
-#: dependencies.py:316
+#: dependencies.py:318
 msgid "Command line environment with autocompletion."
 msgstr "Environnement de ligne de commande avec autocomplétion."
 
-#: dependencies.py:321
+#: dependencies.py:323
 msgid "Checks proper formatting of the README file."
 msgstr "Vérifie le formatage du fichier README."
 
@@ -67,14 +67,14 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Sélectionnez les entrées à supprimer. Maintenez la commande enfoncée pour sélectionner plusieurs entrées. Une fois la sélection terminée, cliquez sur le bouton ci-dessous ou double-cliquez sur la liste pour activer l'action."
 
 #: generics.py:154
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Sélectionnez les entrées à ajouter. Maintenez la commande enfoncée pour sélectionner plusieurs entrées. Une fois la sélection terminée, cliquez sur le bouton ci-dessous ou double-cliquez sur la liste pour activer l'action."
 
 #: generics.py:287
 msgid "Add all"
@@ -133,7 +133,7 @@ msgstr "À propos de"
 
 #: links.py:39
 msgid "Get the book"
-msgstr ""
+msgstr "Obtenez le livre"
 
 #: links.py:44
 msgid "Locale profile"
@@ -182,7 +182,7 @@ msgstr "Outils"
 #: literals.py:13
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "Cette fonctionnalité n'est plus utilisée et sera supprimée dans une version ultérieure."
 
 #: literals.py:16
 msgid ""
@@ -223,7 +223,7 @@ msgstr ""
 msgid ""
 "Force the conversion of the database even if the receiving database is not "
 "empty."
-msgstr ""
+msgstr "Forcer la conversion de la base de données même si la base de données distante n'est pas vide."
 
 #: menus.py:10
 msgid "System"
@@ -356,7 +356,7 @@ msgstr ""
 
 #: settings.py:61
 msgid "The number objects that will be displayed per page."
-msgstr ""
+msgstr "Le nombre d'objets qui seront affichés par page."
 
 #: settings.py:68
 msgid "Enable error logging outside of the system error logging capabilities."
