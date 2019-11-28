@@ -94,6 +94,8 @@ msgid ""
 "Environment used for building the documentation. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Entorno utilizado para construir la documentación. Los usuarios finales "
+"pueden ignorar las dependencias que faltan en este entorno."
 
 #: classes.py:83
 msgid "Documentation"

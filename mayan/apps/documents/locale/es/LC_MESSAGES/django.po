@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-28 11:14-0400\n"
-"PO-Revision-Date: 2019-09-24 21:06+0000\n"
+"PO-Revision-Date: 2019-11-28 15:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -1326,7 +1326,7 @@ msgstr "¿Borrar la caché de imágenes de documentos?"
 
 #: views/misc_views.py:26
 msgid "Document cache clearing queued successfully."
-msgstr "Caché de documentos borrara con éxito."
+msgstr "Borrado del caché de documentos sometido con éxito."
 
 #: views/misc_views.py:32
 msgid "Scan for duplicated documents?"
