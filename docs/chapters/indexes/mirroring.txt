@@ -1,0 +1,35 @@
+=========
+Mirroring
+=========
+
+Indexes can be exported as `FUSE <https://en.wikipedia.org/wiki/Filesystem_in_Userspace>`_
+filesystems. Using the management command ``mountindex`` we could export the
+previous example index as follows::
+
+    mkdir -p ~/indexes/products
+    mayan-edms.py mountindex product-sheets-per-year ~/indexes/products
+
+The ``~/indexes/products`` directory will now have a directory and files structure
+identical to that of the index. Once indexes are mounted with this command, they
+behave like any other filesystem directory and can even be further shared
+via the network with network file system software like
+`Samba <https://www.samba.org/>`_ or
+`NFS <https://en.wikipedia.org/wiki/Network_File_System>`_.
+
+.. blockdiag::
+
+    blockdiag {
+        orientation = portrait
+        span_width = 200;
+
+        index [ label = 'Product sheets per year', width=180 ];
+        block_device [ height = 100, label = "Block device\n(Hard drive)", shape = flowchart.database ];
+        network [ label = "Network", shape = cloud ];
+        user [ label = "Users", shape = actor ];
+
+        index -> block_device [ label = "mirroring", fontsize = 8 ];
+        block_device -> network -> user;
+   }
+
+Indexes and mirrored indexes are Read Only as they are generated as a result of
+prior activities like document uploads, metadata changes.

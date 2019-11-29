@@ -1,0 +1,37 @@
+==============
+Categorization
+==============
+
+Mayan EDMS several ways to visual organize documents. Document categorization
+allows showing users different views of document groups. These are divided
+into ones requiring manual maintenance and others that are updated
+automatically.
+
+
+Manual methods
+==============
+
+- :doc:`../chapters/document_types`
+- :doc:`../chapters/cabinets`
+- :doc:`../chapters/tags`
+
+.. toctree::
+  :hidden:
+
+  ../chapters/document_types
+  ../chapters/cabinets
+  ../chapters/tags
+
+
+Automatic methods
+=================
+
+- :doc:`../chapters/indexes/index`
+- :doc:`../chapters/smart_links`
+
+.. toctree::
+  :hidden:
+
+  ../chapters/indexes/index
+  ../chapters/smart_links
+

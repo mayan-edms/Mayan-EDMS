@@ -1,0 +1,30 @@
+=========
+Upgrading
+=========
+
+Upgrading a Mayan EDMS Docker container is actually a matter of stopping and
+deleting the container, downloading the most recent version of the image and
+starting a container again. The container will take care of updating the
+database structure to the newest version if necessary.
+
+**IMPORTANT!** Do not delete the volume storing the data, only the container.
+
+Stop the container to be upgraded::
+
+    docker stop mayan-edms
+
+
+Remove the container::
+
+    docker rm mayan-edms
+
+
+Pull the new image version::
+
+    docker pull mayanedms/mayanedms:latest
+
+
+Start the container again with the new image version::
+
+    docker run -d --name mayan-edms --restart=always -p 80:8000 -v /docker-volumes/mayan:/var/lib/mayan mayanedms/mayanedms:latest
+

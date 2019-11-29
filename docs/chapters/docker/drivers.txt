@@ -1,0 +1,12 @@
+.. _docker_image_drivers:
+
+================
+Included drivers
+================
+
+The Docker image supports using Redis and RabbitMQ as result backends. For
+databases, the image includes support for PostgreSQL and MySQL/MariaDB.
+Support for additional brokers or databases may be added using the
+``MAYAN_APT_INSTALL`` environment variable.
+
+

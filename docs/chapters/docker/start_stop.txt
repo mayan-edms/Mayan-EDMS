@@ -1,0 +1,13 @@
+===================================
+Stopping and starting the container
+===================================
+
+To stop the container use::
+
+    docker stop mayan-edms
+
+
+To start the container again::
+
+    docker start mayan-edms
+

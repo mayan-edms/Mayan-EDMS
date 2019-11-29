@@ -1,0 +1,29 @@
+==============
+For developers
+==============
+
+- :doc:`../chapters/philosophies`
+- :doc:`../chapters/code_structure`
+- :doc:`../chapters/documentation`
+- :doc:`../chapters/source_control`
+- :doc:`../chapters/contributing`
+- :doc:`../chapters/releases`
+- :doc:`../chapters/translations`
+- :doc:`../mercs/index`
+- :doc:`../chapters/caa_entity`
+- :doc:`../chapters/caa_individual`
+
+
+.. toctree::
+    :hidden:
+
+    ../chapters/philosophies
+    ../chapters/code_structure
+    ../chapters/documentation
+    ../chapters/source_control
+    ../chapters/contributing
+    ../chapters/releases
+    ../chapters/translations
+    ../mercs/index
+    ../chapters/caa_entity
+    ../chapters/caa_individual
