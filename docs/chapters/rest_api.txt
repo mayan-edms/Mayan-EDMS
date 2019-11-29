@@ -8,7 +8,7 @@ API allows integration with 3rd party software using simple HTTP requests.
 Several API authentication methods are provides: **Session**, **Token**,
 and **HTTP Basic**.
 
-The URL for the API can be found via the :menuselection:`Tools --> REST API
+The URL for the API can be found via the :menuselection:`Tools --> REST API`
 menu. The API is also self-documenting. The live API documentation can be
 found in the :menuselection:`Tools --> API Documentation (Swagger)` menu for
 the Swagger version and in the
