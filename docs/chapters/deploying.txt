@@ -24,8 +24,8 @@ This setup uses less memory and CPU resources at the expense of some speed.
 For another setup that offers more performance and scalability refer to the
 `Advanced deployment`_ below.
 
-1. Install binary dependencies:
--------------------------------
+#. Install binary dependencies:
+
    If using a Debian_ or Ubuntu_ based Linux distribution, get the executable
    requirements using::
 
@@ -42,16 +42,16 @@ For another setup that offers more performance and scalability refer to the
            sudo apt-get install libffi-dev libssl-dev -y
 
 
-2. Create the user account for the installation:
-------------------------------------------------
+#. Create the user account for the installation:
+
    This will create an unprivileged user account that is also unable to login.
    ::
 
        sudo adduser mayan --disabled-password --disabled-login --no-create-home --gecos ""
 
 
-3. Create the parent directory where the project will be deployed:
-------------------------------------------------------------------
+#. Create the parent directory where the project will be deployed:
+
    ``/opt/`` is a good choice as it is meant is for "software and add-on packages
    that are not part of the default installation". (https://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html).
    Create the ``/opt`` directory if it doesn't already exists.
@@ -60,8 +60,8 @@ For another setup that offers more performance and scalability refer to the
        sudo mkdir /opt
 
 
-4. Create the Python virtual environment:
------------------------------------------
+#. Create the Python virtual environment:
+
    This will keep all the Python packages installed here isolated from the rest
    of the Python packages in the system.
    ::
@@ -69,22 +69,22 @@ For another setup that offers more performance and scalability refer to the
        sudo virtualenv |MAYAN_INSTALLATION_DIRECTORY| -p /usr/bin/python3
 
 
-5. Make the mayan user the owner of the installation directory:
----------------------------------------------------------------
+#. Make the mayan user the owner of the installation directory:
+
    ::
 
        sudo chown mayan:mayan |MAYAN_INSTALLATION_DIRECTORY| -R
 
 
-6. Install Mayan EDMS from PyPI:
---------------------------------
+#. Install Mayan EDMS from PyPI:
+
    ::
 
        sudo -u mayan |MAYAN_PIP_BIN| install --no-cache-dir --no-use-pep517 mayan-edms
 
 
-7. Install the Python client for PostgreSQL and Redis:
-------------------------------------------------------
+#. Install the Python client for PostgreSQL and Redis:
+
    ::
 
        sudo -u mayan |MAYAN_PIP_BIN| install --no-cache-dir --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
@@ -97,16 +97,16 @@ For another setup that offers more performance and scalability refer to the
            sudo -u mayan |MAYAN_PIP_BIN| install --no-cache-dir --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
 
 
-8. Create the database for the installation:
---------------------------------------------
+#. Create the database for the installation:
+
    ::
 
        sudo -u postgres psql -c "CREATE USER mayan WITH password 'mayanuserpass';"
        sudo -u postgres createdb -O mayan mayan
 
 
-9. Initialize the project:
---------------------------
+#. Initialize the project:
+
    This step will create all the database structures, download static media files
    like JavaScript libraries and HTML frameworks, and create and initial admin
    account with a random password.
@@ -136,52 +136,52 @@ For another setup that offers more performance and scalability refer to the
        |MAYAN_BIN| initialsetup
 
 
-10. Collect the static files:
------------------------------
-    This step merges and compressed static media files so they can be served more
-    effectively.
+#. Collect the static files:
 
-    ::
+   This step merges and compressed static media files so they can be served more
+   effectively.
 
-        sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
-        |MAYAN_BIN| preparestatic --noinput
+   ::
 
-
-11. Create the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
-------------------------------------------------------------------------
-    ::
-
-        sudo mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
-        MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
-        |MAYAN_BIN| platformtemplate supervisord > |MAYAN_SUPERVISOR_CONF|
+       sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| preparestatic --noinput
 
 
-12. Configure Redis:
---------------------
-    Configure Redis to discard data when it runs out of memory, not save its
-    database and only keep 1 database:
-    ::
+#. Create the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
 
-        sudo echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
-        sudo echo "save \"\"" >> /etc/redis/redis.conf
-        sudo echo "databases 2" >> /etc/redis/redis.conf
-        sudo systemctl restart redis
+   ::
 
-13. Enable and restart the services [1_]:
------------------------------------------
-    ::
-
-        sudo systemctl enable supervisor
-        sudo systemctl restart supervisor
+       sudo mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord > |MAYAN_SUPERVISOR_CONF|
 
 
-14. Cleaning up:
-----------------
-    The following operating system dependencies are only needed during
-    installation and can be removed.
-    ::
+#. Configure Redis:
 
-        sudo apt-get remove --purge libjpeg-dev libpq-dev libpng-dev libtiff-dev zlib1g-dev
+   Configure Redis to discard data when it runs out of memory, not save its
+   database and only keep 1 database:
+   ::
+
+       sudo echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
+       sudo echo "save \"\"" >> /etc/redis/redis.conf
+       sudo echo "databases 2" >> /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+#. Enable and restart the services [1_]:
+
+   ::
+
+       sudo systemctl enable supervisor
+       sudo systemctl restart supervisor
+
+
+#. Cleaning up:
+
+   The following operating system dependencies are only needed during
+   installation and can be removed.
+   ::
+
+       sudo apt-get remove --purge libjpeg-dev libpq-dev libpng-dev libtiff-dev zlib1g-dev
 
 
 .. _deployment_advanced:
@@ -195,8 +195,7 @@ persistent by default, this means that pending tasks are not lost in the case
 of a restart or power failure. The Gunicorn workers are increased to 3.
 
 
-1. Install RabbitMQ:
---------------------
+#. Install RabbitMQ:
 
    If using a Debian_ or Ubuntu_ based Linux distribution, get the executable
    requirements using::
@@ -204,15 +203,15 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
        sudo apt-get install rabbitmq-server -y
 
 
-2. Install the Python client for RabbitMQ:
-------------------------------------------
+#. Install the Python client for RabbitMQ:
+
    ::
 
        sudo -u mayan |MAYAN_PIP_BIN| install --no-cache-dir --no-use-pep517 librabbitmq==|PYTHON_LIBRABBITMQ_VERSION|
 
 
-3. Create the RabbitMQ user and vhost:
---------------------------------------
+#. Create the RabbitMQ user and vhost:
+
    ::
 
        sudo rabbitmqctl add_user mayan mayanrabbitmqpassword
@@ -220,8 +219,8 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
        sudo rabbitmqctl set_permissions -p mayan mayan ".*" ".*" ".*"
 
 
-4. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
----------------------------------------------------------------------
+#. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
+
    Replace (paying attention to the comma at the end)::
 
        MAYAN_CELERY_BROKER_URL="redis://127.0.0.1:6379/0",
@@ -237,8 +236,8 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
    remove the concurrency limit (or increase it) of the fast worker (remove ``--concurrency=1``).
 
 
-5. Restart the services:
-------------------------
+#. Restart the services:
+
    ::
 
        sudo supervisorctl reread

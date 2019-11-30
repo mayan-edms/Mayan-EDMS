@@ -4,15 +4,16 @@
 Docker
 ======
 
+Docker is a container technology. Containers are a standard unit of software
+that packages up code and all its dependencies.
+
+
 - Installation: :doc:`install_simple` | :doc:`install_docker_network` | :doc:`docker_compose` | :doc:`start_stop`
 - Setup: :doc:`environment_variables` | :doc:`drivers`
 - Integration: :doc:`accessing_data`
 - Development: :doc:`building` | :doc:`customizing` | :doc:`nightly`
 - Administration: :doc:`backups` | :doc:`upgrading` | :doc:`commands`
 
-
-Docker is a container technology. Containers are a standard unit of software
-that packages up code and all its dependencies.
 
 .. toctree::
     :hidden:
