@@ -24,6 +24,7 @@ set -e
 : ${DOCKER_MAYAN_IMAGE:=mayanedms/mayanedms:latest}
 : ${DOCKER_MAYAN_CONTAINER:=mayan-edms}
 : ${DOCKER_MAYAN_VOLUME:=/docker-volumes/mayan-edms/media}
+: ${DOCKER_MAYAN_PORT:=80}
 
 cat << EOF
 
@@ -56,6 +57,7 @@ echo "DOCKER_POSTGRES_DELAY: $DOCKER_POSTGRES_DELAY"
 echo "DOCKER_MAYAN_IMAGE: $DOCKER_MAYAN_IMAGE"
 echo "DOCKER_MAYAN_CONTAINER: $DOCKER_MAYAN_CONTAINER"
 echo "DOCKER_MAYAN_VOLUME: $DOCKER_MAYAN_VOLUME"
+echo "DOCKER_MAYAN_PORT: $DOCKER_MAYAN_PORT"
 echo "\nStarting in 10 seconds."
 sleep 10
 fi
@@ -116,7 +118,7 @@ echo -n "* Deploying Mayan EDMS container..."
 docker run -d \
 --name $DOCKER_MAYAN_CONTAINER \
 --restart=always \
--p 80:8000 \
+-p $DOCKER_MAYAN_PORT:8000 \
 -e MAYAN_DATABASE_ENGINE=django.db.backends.postgresql \
 -e MAYAN_DATABASE_HOST=172.17.0.1 \
 -e MAYAN_DATABASE_NAME=$DATABASE_NAME \
@@ -129,5 +131,5 @@ $DOCKER_MAYAN_IMAGE >/dev/null
 echo "Done"
 
 echo -n "* Waiting for the Mayan EDMS container to be ready (might take a few minutes)..."
-while ! curl --output /dev/null --silent --head --fail http://localhost:80; do sleep 1 && echo -n .; done;
+while ! curl --output /dev/null --silent --head --fail http://localhost:$DOCKER_MAYAN_PORT; do sleep 1 && echo -n .; done;
 echo "Done"
