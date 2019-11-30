@@ -98,7 +98,9 @@ management commands. This avoids having to use Docker's ``exec`` command.
 
 It is now possible to specify the queue list for the ``run_worker`` Docker
 command. The command accepts one of two environment variables:
-MAYAN_WORKER_NAME or MAYAN_QUEUE_LIST.
+``MAYAN_WORKER_NAME`` or ``MAYAN_QUEUE_LIST``. These environment variables
+are only read by the ``run_worker`` command. They are not used by the rest of
+the image or other commands.
 
 The installation procedure was updated to use two Redis databases. One for
 the message broker, and the other to store task results.
@@ -122,7 +124,7 @@ File metadata
 Support was added for wildcard MIME type associations for the file metadata
 drivers.
 
-The EXIFTOOL driver was updated to run for all documents regardless of MIME
+The ``EXIFTOOL`` driver was updated to run for all documents regardless of MIME
 type. Even with non image documents, this driver still provides some useful
 file information.
 
@@ -142,13 +144,14 @@ Lock manager
 
 A distributed Redis lock backend was added to the lock manager app. This lock
 helps keep multiple Mayan EDMS instances synchronized, even if they are running
-in differnt hosts. This new lock requires one argument: ``redis_url``.
-Example::
-
-    redis://127.0.0.1:6379/0
+on different hosts. This new lock requires one argument: ``redis_url``.
 
 The ``redis_url`` argument must be added to the new ``LOCK_MANAGER_BACKEND_ARGUMENTS``
 setting.
+
+Example::
+
+    LOCK_MANAGER_BACKEND_ARGUMENTS='{"redis_url": "redis://127.0.0.1:6379/2"}'
 
 
 Mailing
@@ -161,7 +164,7 @@ Permissions
 ^^^^^^^^^^^
 
 The permission "Execute document tools" can now be granted via ACL. This
-allows giving access to roles to document tools with granting the permission
+allows giving access to roles to document tools without granting the permission
 globally.
 
 
@@ -221,18 +224,27 @@ and ``CONFIGURATION_LAST_GOOD_FILEPATH`` (``MAYAN_CONFIGURATION_LAST_GOOD_FILEPA
 environment variable) settings. This allows setting the location of the
 configuration file independently of the ``MEDIA_ROOT`` setting.
 
-Multi database configuration is now supported. Instead of the individual
-settings with the ``MAYAN_DATABASE`` prefix, use ``MAYAN_DATABASES``
-setting. This new setting more closely mirror the upstream behavior of Django.
+Multi database configuration is now supported. To specify multiple databases,
+use the new ``MAYAN_DATABASES`` environment variable. This new setting more
+closely mirrors the upstream behavior of Django.
 
 Example::
 
     MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}"
 
+This is the same as passing the environment variables::
+
+    MAYAN_DATABASE_ENGINE=django.db.backends.postgresql
+    MAYAN_DATABASE_NAME=mayan
+    MAYAN_DATABASE_PASSWORD=mayanuserpass
+    MAYAN_DATABASE_NAME=mayan
+    MAYAN_DATABASE_HOST=127.0.0.1
+
 This method allows specifying multiple databases such as when using replication
 or sharding. It also allows for null entries such as when using Linux sockets.
 
-Both methods (``MAYAN_DATABASE_`` prefix, use ``MAYAN_DATABASES``) are supported.
+Both methods (``MAYAN_DATABASE_`` prefixed entries, and single ``MAYAN_DATABASES``)
+are supported.
 
 
 Smart links
@@ -251,7 +263,7 @@ predictable.
 Support was also added for custom IMAP search criteria. By default ``NOT DELETED``
 is used to process non-deleted messages.
 
-The IMAP source can now also execute custom IMAP STORE commands on processed
+The IMAP source can now also execute custom ``IMAP STORE`` commands on processed
 messages. The command defaults to ``+FLAGS (\\Deleted)``.
 
 After processing IMAP message it is now possible to specify a destination
@@ -263,7 +275,7 @@ The IMAP expunge command can now be turned on or off.
 Storage
 ^^^^^^^
 
-The class FakeStorageSubclass was added. This placeholder class allows
+The class ``FakeStorageSubclass`` was added. This placeholder class allows
 serializing the real storage subclass. This prevents Django's migration
 system from confusing path changes as requiring a complete database
 migrations.
@@ -324,13 +336,13 @@ Other
 - Improve document version upload form.
 - Update label and icon of the document sign form
   Label updated from "Save" to "Sign".
-- Rename document_states/tests/test_workflow_actions.py to
-  document_states/tests/base.py.
-- Added TestServerTestCaseMixin to perform mocked HTTP
+- Rename ``document_states/tests/test_workflow_actions.py`` to
+  ``document_states/tests/base.py``.
+- Added ``TestServerTestCaseMixin`` to perform mocked HTTP
   requests.
-- Improve TestModelTestMixin. Allow specifying a base model.
-  Fix passing the dynamic Meta class to the test model.
-- Update common.http.URL to allow passing a query dictionary.
+- Improve ``TestModelTestMixin``. Allow specifying a base model.
+  Fix passing the dynamic ``Meta`` class to the test model.
+- Update ``common.http.URL`` to allow passing a query dictionary.
 
 
 Removals
@@ -365,17 +377,17 @@ Upgrading from a previous version
 If installed via Python's PIP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Update the virtualenv to Python 3::
+#. Update the virtualenv to use Python 3::
 
     sudo -u mayan virtualenv /opt/mayan-edms -p /usr/bin/python3
 
 
 #. Remove deprecated requirements::
 
-    sudo -u mayan curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt -o /tmp/removals.txt \
+    sudo -u mayan curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
     && sudo -u mayan |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
 
-#. Update the Mayan EDMS package::
+#. Update the Mayan EDMS Python package::
 
     sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3
 
@@ -427,8 +439,7 @@ Perform these steps after updating the code from either step above.
        MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
        |MAYAN_BIN| platformtemplate supervisord > |MAYAN_SUPERVISOR_CONF|"
 
-#. Edit the supervisord configuration file and update any setting the template
-   generator missed::
+#. Edit the supervisord configuration file and update any setting specific to your installation::
 
        sudo vi |MAYAN_SUPERVISOR_CONF|
 
