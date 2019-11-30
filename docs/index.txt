@@ -31,7 +31,7 @@ repository for electronic documents.
     parts/advanced
     parts/administration
     parts/troubleshooting
-    parts/development
+    chapters/development/index
     parts/faq
     parts/license
     parts/contact
