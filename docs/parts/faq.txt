@@ -210,6 +210,7 @@ Does Mayan EDMS work with Python 3?
 Yes, version 3.3 ships with Python 3.7 support. Support for Python 2 will
 be removed in version 4.0.
 
+
 How to upgrade an existing Python 2 virtualenv
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -226,57 +227,3 @@ If using a dedicated user account for Mayan EDMS::
     sudo -u <username> virtualenv /opt/mayan-edms -p /usr/bin/python3
 
 
-Static files
-------------
-
-Mayan EDMS installed correctly and works, but static files are not served
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Django's development server doesn't serve static files unless the DEBUG option
-is set to True, this mode of operation should only be used for development or
-testing. For production deployments the management command::
-
-    $ mayan-edms.py preparestatic
-
-should be used and the resulting static folder served from a webserver.
-For more information check the
-:django-docs:`howto/static-files/`
-
-
-Watch folders
--------------
-
-The watched folder feature is not working
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Make sure that the Celery BEAT scheduler is running correctly as it is the
-element that triggers the periodic tasks. Check that the user running the Mayan
-EDMS services has read and write permissions for the watch folder.
-
-
-
-Other
------
-
-File system links not showing when serving content with ``Samba``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Disable unix extensions in the [global] section and enable wide links for the file serving share
-
-Example::
-
-    [global]
-        unix extensions = no
-
-        ...
-
-    [digitalizacion]
-        path = /var/local/mayan
-        guest ok = yes
-        read only = yes
-        wide links = yes
-        follow symlinks = yes
-
-
-Reference:
-* http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html

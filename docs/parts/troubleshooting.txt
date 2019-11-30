@@ -21,7 +21,7 @@ MySQL error: ``OperationalError: (1267, "Illegal mix of collations (latin1_swedi
 
 References:
 
-* http://stackoverflow.com/questions/1073295/django-character-set-with-mysql-weirdness
+- http://stackoverflow.com/questions/1073295/django-character-set-with-mysql-weirdness
 
 
 MySQL error: ``Incorrect string value: `'xE2x80x95rs6…'` for column `'content'` at row 1``
@@ -34,8 +34,8 @@ Use utf-8 collation on MySQL server, or at least in table
 
 References:
 
-* http://groups.google.com/group/django-users/browse_thread/thread/429447086fca6412
-* http://markmail.org/message/bqajx2utvmtriixi
+- http://groups.google.com/group/django-users/browse_thread/thread/429447086fca6412
+- http://markmail.org/message/bqajx2utvmtriixi
 
 
 MySQL error: ``Error "django.db.utils.IntegrityError IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`…`.`…`, CONSTRAINT `…_refs_id_b0252274` FOREIGN KEY (`…`) REFERENCES `…` (`…`))')``
@@ -79,8 +79,8 @@ The workaround is to disable metacopy::
 
 References:
 
-* https://bbs.archlinux.org/viewtopic.php?id=241866
-* https://www.spinics.net/lists/linux-unionfs/msg06316.html
+- https://bbs.archlinux.org/viewtopic.php?id=241866
+- https://www.spinics.net/lists/linux-unionfs/msg06316.html
 
 
 
@@ -166,6 +166,14 @@ operation and will prevent the files to be uploaded in the middle of the
 copying process.
 
 
+The watched folder feature is not working
+-----------------------------------------
+
+Make sure that the Celery BEAT scheduler is running correctly as it is the
+element that triggers the periodic tasks. Check that the user running the Mayan
+EDMS services has read and write permissions for the watch folder.
+
+
 Dependencies
 ============
 
@@ -177,3 +185,48 @@ This happens when using the ``MAYAN_APT_INSTALLS`` feature. It means that the
 ``MAYAN_APT_INSTALLS``.
 
 Solution: Include ``gcc`` in the list of packages specified with ``MAYAN_APT_INSTALLS``.
+
+
+Static files
+============
+
+Mayan EDMS installed correctly and works, but static files are not served
+-------------------------------------------------------------------------
+
+Django's development server doesn't serve static files unless the DEBUG option
+is set to True, this mode of operation should only be used for development or
+testing. For production deployments the management command::
+
+    $ mayan-edms.py preparestatic
+
+should be used and the resulting static folder served from a webserver.
+For more information check the
+:django-docs:`howto/static-files/`
+
+
+Other
+=====
+
+File system links not showing when serving content with ``Samba``
+-----------------------------------------------------------------
+
+Disable unix extensions in the [global] section and enable wide links for the file serving share
+
+Example::
+
+    [global]
+        unix extensions = no
+
+        ...
+
+    [digitalizacion]
+        path = /var/local/mayan
+        guest ok = yes
+        read only = yes
+        wide links = yes
+        follow symlinks = yes
+
+
+Reference:
+
+- http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html
