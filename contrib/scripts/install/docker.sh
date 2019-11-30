@@ -131,5 +131,5 @@ $DOCKER_MAYAN_IMAGE >/dev/null
 echo "Done"
 
 echo -n "* Waiting for the Mayan EDMS container to be ready (might take a few minutes)..."
-while ! curl --output /dev/null --silent --head --fail http://localhost:80; do sleep 1 && echo -n .; done;
+while ! curl --output /dev/null --silent --head --fail http://localhost:$DOCKER_MAYAN_PORT; do sleep 1 && echo -n .; done;
 echo "Done"
