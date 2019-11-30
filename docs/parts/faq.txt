@@ -26,13 +26,13 @@ questions on a voluntary basis.
 I found a bug
 ^^^^^^^^^^^^^
 
-For bugs, open an issue at https://gitlab.com/mayan-edms/mayan-edms/issues.
+For bugs, open an issue at |SOURCE_CODE_ISSUES|.
 
 
 I found a security issue
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Open an issue at https://gitlab.com/mayan-edms/mayan-edms/issues and mark it as
+Open an issue at |SOURCE_CODE_ISSUES| and mark it as
 Confidential. Allow us at least 48 hours to find and release a fix
 for the issue before submitting it to the CVE database.
 
@@ -174,8 +174,10 @@ How to do LDAP authentication
 
 A sample settings file called ldap_connection_settings.py is included in the
 contrib/settings/ folder of the repository showing how to setup LDAP
-authentication. This file can be found on the web at: https://gitlab.com/mayan-edms/mayan-edms/blob/master/contrib/settings/ldap_connection_settings.py. This is a community contributed file. Use the Python
-settings file method to use this file.
+authentication. This file can be found on the web at:
+|SOURCE_CODE_REPOSITORY|blob/master/contrib/settings/ldap_connection_settings.py.
+This is a community contributed file. Use the Python settings file method to
+use this file.
 
 
 Operating systems

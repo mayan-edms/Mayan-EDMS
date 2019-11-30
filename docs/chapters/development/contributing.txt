@@ -8,11 +8,11 @@ If you have a feature request, suggestion or bug report, please open a new
 issue on the `GitLab issue tracker`_. To submit patches, please send a merge
 request on GitLab_.
 
-.. _GitLab: https://gitlab.com/mayan-edms/mayan-edms/
-.. _`GitLab issue tracker`: https://gitlab.com/mayan-edms/mayan-edms/issues
+.. _GitLab: |SOURCE_CODE_REPOSITORY|
+.. _`GitLab issue tracker`: |SOURCE_CODE_ISSUES|
 
 
 Contributing changes
 ====================
 Follow the latest contributing guidelines outlined here:
-https://gitlab.com/mayan-edms/mayan-edms/blob/master/CONTRIBUTING.md
+|SOURCE_CODE_REPOSITORY|blob/master/CONTRIBUTING.md

@@ -6,7 +6,7 @@ Building the image
 
 Clone the repository with::
 
-    git clone https://gitlab.com/mayan-edms/mayan-edms.git
+    git clone |SOURCE_CODE_GIT|
 
 Change to the directory of the cloned repository::
 

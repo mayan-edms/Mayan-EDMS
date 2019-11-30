@@ -6,7 +6,7 @@ Mayan EDMS source is controlled with Git_.
 
 The project is publicly accessible, hosted and can be cloned from **GitLab** using::
 
-    $ git clone https://gitlab.com/mayan-edms/mayan-edms.git
+    $ git clone |SOURCE_CODE_GIT|
 
 
 Git branch structure
@@ -59,7 +59,7 @@ Special branches:
 Each release is tagged separately using annotated Git tags.
 
 When submitting patches, please place your code in its own ``feature/`` branch
-prior to opening a Merge Request on GitLab_.
+prior to opening a Merge Request on |SOURCE_CODE_ISSUES|.
 
 .. _Git: http://git-scm.org
 .. _`Successful Git Branching Model`: http://nvie.com/posts/a-successful-git-branching-model/
@@ -97,6 +97,3 @@ Commit messages
    Use::
 
        Document: Fix typo in label description
-
-
-.. _GitLab: https://gitlab.com/mayan-edms/mayan-edms/

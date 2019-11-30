@@ -174,7 +174,7 @@ Steps to deploy a development version
 
 .. code-block:: bash
 
-    $ git clone https://gitlab.com/mayan-edms/mayan-edms.git
+    $ git clone |SOURCE_CODE_GIT|
     $ cd mayan-edms
     $ git checkout <Corresponding branch>
     $ virtualenv venv
