@@ -24,8 +24,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'device_name', models.CharField(
-                        help_text='Device name as returned by the SANE backend.',
-                        max_length=255, verbose_name='Device name'
+                        help_text='Device name as returned by the SANE '
+                        'backend.', max_length=255,
+                        verbose_name='Device name'
                     )
                 ),
             ],

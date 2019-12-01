@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 'ordering': ('pk',),
                 'verbose_name': 'Document version signature',
                 'verbose_name_plural': 'Document version signatures'
-                },
+            },
         ),
         migrations.AlterField(
             model_name='detachedsignature',
