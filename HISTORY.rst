@@ -1,5 +1,7 @@
 3.2.12 (2019-XX-XX)
 ===================
+- Add Mayan container port environment variable to the
+  docker installer. Thanks to Sergios Kefalas for the patch.
 - Fix off-by-one error in document statistics.
 
 3.2.11 (2019-11-28)
