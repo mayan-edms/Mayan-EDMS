@@ -7,8 +7,8 @@ import tempfile
 
 from pathlib2 import Path
 
-from django.utils.module_loading import import_string
 try:
+    from django.utils.module_loading import import_string
     from django.utils.six import PY3
 except ImportError:
     # This is being imported outside of Django
