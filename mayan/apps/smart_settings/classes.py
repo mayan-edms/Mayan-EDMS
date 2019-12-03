@@ -75,7 +75,7 @@ class Namespace(object):
 
     @classmethod
     def get_namespaces_config(cls):
-        return getattr(settings, SMART_SETTINGS_NAMESPACES_NAME, {})
+        return Setting.get_config_file_content().get(SMART_SETTINGS_NAMESPACES_NAME, {})
 
     @classmethod
     def invalidate_cache_all(cls):
