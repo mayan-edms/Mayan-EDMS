@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:14-0400\n"
+"POT-Creation-Date: 2019-12-03 01:16-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: kontrabant <kontrabant@gmail.com>, 2019\n"
 "Language-Team: Slovenian (Slovenia) (https://www.transifex.com/rosarior/teams/13584/sl_SI/)\n"
@@ -26,7 +26,7 @@ msgid "Label"
 msgstr "Oznaka"
 
 #: apps.py:52 events.py:8 links.py:18 permissions.py:7 queues.py:9
-#: settings.py:9
+#: settings.py:11
 msgid "File metadata"
 msgstr ""
 
@@ -51,7 +51,7 @@ msgid ""
 "Library and program to read and write meta information in multimedia files."
 msgstr ""
 
-#: drivers/exiftool.py:26
+#: drivers/exiftool.py:20
 msgid "EXIF Tool"
 msgstr ""
 
@@ -179,13 +179,13 @@ msgstr ""
 msgid "Process document version"
 msgstr ""
 
-#: settings.py:14
+#: settings.py:18
 msgid ""
 "Set new document types to perform file metadata processing automatically by "
 "default."
 msgstr ""
 
-#: settings.py:25
+#: settings.py:24
 msgid "Arguments to pass to the drivers."
 msgstr ""
 

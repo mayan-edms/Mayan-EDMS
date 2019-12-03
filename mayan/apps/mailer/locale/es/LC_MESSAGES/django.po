@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:15-0400\n"
-"PO-Revision-Date: 2019-11-19 05:07+0000\n"
+"POT-Creation-Date: 2019-12-03 01:17-0400\n"
+"PO-Revision-Date: 2019-12-03 05:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr "Mensaje"
 msgid "Null backend"
 msgstr "Backend nulo"
 
-#: events.py:7 permissions.py:7 queues.py:8 settings.py:11
+#: events.py:7 permissions.py:7 queues.py:8 settings.py:12
 msgid "Mailing"
 msgstr "Correspondencia"
 
@@ -54,11 +54,11 @@ msgstr "Dirección de correo electrónico del destinatario. Pueden ser varias di
 msgid "Email address"
 msgstr "Dirección de correo electrónico"
 
-#: forms.py:64
+#: forms.py:64 workflow_actions.py:40
 msgid "Subject"
 msgstr "Tema"
 
-#: forms.py:66
+#: forms.py:66 workflow_actions.py:49
 msgid "Body"
 msgstr "Cuerpo"
 
@@ -66,7 +66,7 @@ msgstr "Cuerpo"
 msgid "The email profile that will be used to send this email."
 msgstr "El perfil de correo electrónico que se utilizará para enviar este correo electrónico."
 
-#: forms.py:71 views.py:239
+#: forms.py:71 views.py:239 workflow_actions.py:22
 msgid "Mailing profile"
 msgstr "Perfil de correo"
 
@@ -123,6 +123,10 @@ msgid ""
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr "Se adjunta a este correo electrónico es el documento: {{ document }}\n\n\n--------\nEste correo electrónico ha sido enviado desde %(project_title)s (%(project_website)s)"
 
+#: literals.py:11
+msgid "Document: {{ document }}"
+msgstr "Documento: {{ document }}"
+
 #: literals.py:13
 #, python-format
 msgid ""
@@ -131,6 +135,10 @@ msgid ""
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr "Para acceder a este documento, haga clic en el siguiente enlace: {{ link }}\n\n\n--------\nEste correo electrónico ha sido enviado desde %(project_title)s (%(project_website)s)"
+
+#: literals.py:17
+msgid "Link for document: {{ document }}"
+msgstr "Enlace para el documento: {{ documento }}"
 
 #: mailers.py:23 mailers.py:112
 msgid "From"
@@ -317,29 +325,21 @@ msgstr "Utilizar un perfil de correo"
 msgid "Send document"
 msgstr "Enviar documento"
 
-#: settings.py:14
-msgid "Link for document: {{ document }}"
-msgstr "Enlace para el documento: {{ documento }}"
-
-#: settings.py:15
-msgid "Template for the document link email form subject line."
-msgstr "Plantilla para la línea de asunto del correo electrónico para envío de enlace del documento."
-
-#: settings.py:20
-msgid "Template for the document link email form body text. Can include HTML."
-msgstr "Plantilla para el texto del cuerpo del correo electrónico del enlace del documento. Puede incluir HTML."
-
-#: settings.py:24
-msgid "Document: {{ document }}"
-msgstr "Documento: {{ document }}"
-
-#: settings.py:25
+#: settings.py:16
 msgid "Template for the document email form subject line."
 msgstr "Plantilla para la línea de sujeto del correo electrónico de envio de documento."
 
-#: settings.py:30
+#: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
 msgstr "Plantilla para el texto del cuerpo del correo electrónico con documento anejado. Puede incluir HTML."
+
+#: settings.py:26
+msgid "Template for the document link email form subject line."
+msgstr "Plantilla para la línea de asunto del correo electrónico para envío de enlace del documento."
+
+#: settings.py:31
+msgid "Template for the document link email form body text. Can include HTML."
+msgstr "Plantilla para el texto del cuerpo del correo electrónico del enlace del documento. Puede incluir HTML."
 
 #: validators.py:14
 #, python-format
@@ -416,3 +416,45 @@ msgstr "Correo electrónico de prueba enviado."
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Probar perfil de correo: %s"
+
+#: workflow_actions.py:24
+msgid "Mailing profile to use when sending the email."
+msgstr "Perfil de correo para usar al enviar el correo electrónico."
+
+#: workflow_actions.py:29
+msgid "Recipient"
+msgstr "Recipiente"
+
+#: workflow_actions.py:32
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
+msgstr "Dirección de correo electrónico del destinatario. Pueden ser múltiples direcciones separadas por coma o punto y coma. Se puede usar una plantilla para hacer referencia a las propiedades del documento."
+
+#: workflow_actions.py:43
+msgid "Subject of the email. Can be a string or a template."
+msgstr "Asunto del correo electrónico. Puede ser un texto o una plantilla."
+
+#: workflow_actions.py:52
+msgid "Body of the email to send. Can be a string or a template."
+msgstr "Cuerpo del correo electrónico a enviar. Puede ser un texto o una plantilla."
+
+#: workflow_actions.py:59
+msgid "Send email"
+msgstr "Enviar correo electrónico"
+
+#: workflow_actions.py:74
+#, python-format
+msgid "Recipient template error: %s"
+msgstr "Error de plantilla del destinatario: %s"
+
+#: workflow_actions.py:85
+#, python-format
+msgid "Subject template error: %s"
+msgstr "Error de plantilla de asunto: %s"
+
+#: workflow_actions.py:96
+#, python-format
+msgid "Body template error: %s"
+msgstr "Error de plantilla del cuerpo: %s"

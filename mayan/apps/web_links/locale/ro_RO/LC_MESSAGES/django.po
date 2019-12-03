@@ -2,20 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Harald Ersch, 2019
+# Stefaniu Criste <gupi@hangar.ro>, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 23:40-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2019-12-03 01:20-0400\n"
+"PO-Revision-Date: 2019-12-03 05:24+0000\n"
+"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2019\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:39
 msgid "Links"
@@ -44,15 +49,15 @@ msgstr ""
 
 #: links.py:28
 msgid "Delete"
-msgstr ""
+msgstr "Șterge"
 
 #: links.py:34 models.py:35
 msgid "Document types"
-msgstr ""
+msgstr "Tipuri de documente"
 
 #: links.py:40
 msgid "Edit"
-msgstr ""
+msgstr "Editați"
 
 #: links.py:46
 msgid "Navigate"
@@ -64,12 +69,12 @@ msgstr ""
 
 #: models.py:24
 msgid "Label"
-msgstr ""
+msgstr "Conținut etichetă"
 
 #: models.py:28
 msgid ""
-"Template that will be used to craft the final URL of the weblink. The "
-"{{ document }} variable is available to the template."
+"Template that will be used to craft the final URL of the weblink. The {{ "
+"document }} variable is available to the template."
 msgstr ""
 
 #: models.py:30
@@ -78,7 +83,7 @@ msgstr ""
 
 #: models.py:32
 msgid "Enabled"
-msgstr ""
+msgstr "Activat"
 
 #: models.py:42
 msgid "Web link"
@@ -119,11 +124,11 @@ msgstr ""
 
 #: views.py:119
 msgid "Available document types"
-msgstr ""
+msgstr "Tipuri de documente disponibile"
 
 #: views.py:120
 msgid "Document types enabled"
-msgstr ""
+msgstr "Tipuri de documente activate"
 
 #: views.py:130
 #, python-format

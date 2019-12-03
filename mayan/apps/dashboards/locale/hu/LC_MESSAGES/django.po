@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:13-0400\n"
+"POT-Creation-Date: 2019-12-03 01:15-0400\n"
 "PO-Revision-Date: 2019-04-14 03:23+0000\n"
 "Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -25,6 +25,6 @@ msgstr ""
 msgid "Main"
 msgstr ""
 
-#: templates/dashboards/numeric_widget.html:27
+#: templates/dashboards/numeric_widget.html:29
 msgid "View details"
 msgstr ""

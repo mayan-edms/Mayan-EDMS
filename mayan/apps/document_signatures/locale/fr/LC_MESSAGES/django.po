@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:14-0400\n"
-"PO-Revision-Date: 2019-05-17 12:04+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
+"POT-Creation-Date: 2019-12-03 01:15-0400\n"
+"PO-Revision-Date: 2019-12-03 05:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,41 +23,41 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:47 permissions.py:8 settings.py:10
+#: apps.py:48 permissions.py:8 settings.py:13
 msgid "Document signatures"
 msgstr "Signatures du document"
 
-#: apps.py:94
+#: apps.py:95
 msgid "Date"
 msgstr "Date"
 
-#: apps.py:97 models.py:46
+#: apps.py:98 models.py:48
 msgid "Key ID"
 msgstr "ID de la clé"
 
-#: apps.py:101 forms.py:64 models.py:50
+#: apps.py:102 forms.py:64 models.py:53
 msgid "Signature ID"
 msgstr "ID de la signature"
 
-#: apps.py:102 forms.py:76
+#: apps.py:103 forms.py:76
 msgid "None"
 msgstr "Aucune"
 
-#: apps.py:105
+#: apps.py:106
 msgid "Type"
 msgstr "Type"
 
-#: forms.py:19 forms.py:33
+#: forms.py:19 forms.py:33 workflow_actions.py:20
 msgid "Key"
 msgstr "Clé"
 
-#: forms.py:24
+#: forms.py:24 serializers.py:35 workflow_actions.py:31
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
 msgstr "La phrase secrète permettant de déverrouiller la clé pour pouvoir signer la version du document."
 
-#: forms.py:26
+#: forms.py:26 workflow_actions.py:28
 msgid "Passphrase"
 msgstr "Phrase secrète"
 
@@ -149,47 +149,55 @@ msgstr "Version du document"
 msgid "Date signed"
 msgstr "Date de signature"
 
-#: models.py:54
+#: models.py:47
+msgid "ID of the key that will be used to sign the document."
+msgstr ""
+
+#: models.py:57
 msgid "Public key fingerprint"
 msgstr "Empreinte de la clef publique"
 
-#: models.py:60
+#: models.py:64
 msgid "Document version signature"
 msgstr "Signature de la version du document"
 
-#: models.py:61
+#: models.py:65
 msgid "Document version signatures"
 msgstr "Signatures pour la version du document"
 
-#: models.py:80
+#: models.py:84
 msgid "Detached"
 msgstr "Détachée"
 
-#: models.py:82
+#: models.py:86
 msgid "Embedded"
 msgstr "Intégrée"
 
-#: models.py:97
+#: models.py:101
 msgid "Document version embedded signature"
 msgstr "Signature intégrée de la version du document"
 
-#: models.py:98
+#: models.py:102
 msgid "Document version embedded signatures"
 msgstr "Signatures intégrées de la version du document"
 
-#: models.py:131
+#: models.py:135
+msgid "Signature file previously generated."
+msgstr ""
+
+#: models.py:137
 msgid "Signature file"
 msgstr "Fichier de signature"
 
-#: models.py:138
+#: models.py:143
 msgid "Document version detached signature"
 msgstr "Signature détachée de la version du document"
 
-#: models.py:139
+#: models.py:144
 msgid "Document version detached signatures"
 msgstr "Signatures détachées de la version du document"
 
-#: models.py:142
+#: models.py:147
 msgid "signature"
 msgstr "signature"
 
@@ -237,75 +245,91 @@ msgstr "Vérifier la version du document"
 msgid "Verify missing embedded signature"
 msgstr "Vérifier la signature intégrée manquante"
 
-#: settings.py:15
+#: settings.py:21
 msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr "Emplacement de la sous-classe de stockage à utiliser lors du stockage des signatures détachées."
 
-#: settings.py:24
+#: settings.py:30
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
 msgstr "Arguments à transmettre à SIGNATURE_STORAGE_BACKEND."
 
-#: views.py:68 views.py:159
+#: views.py:70 views.py:152
 msgid "Passphrase is needed to unlock this key."
 msgstr "Une phrase secrète est nécessaire pour déverrouiller cette clé."
 
-#: views.py:79 views.py:170
+#: views.py:81 views.py:163
 msgid "Passphrase is incorrect."
 msgstr "Phrase secrète incorrecte."
 
-#: views.py:101 views.py:191
+#: views.py:92 views.py:174
 msgid "Document version signed successfully."
 msgstr "Signature de la version du document réussie."
 
-#: views.py:127
+#: views.py:118 views.py:207
+msgid "Sign"
+msgstr ""
+
+#: views.py:120
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
 msgstr "Signer la version \"%s\" du document avec une signature détachée"
 
-#: views.py:224
+#: views.py:209
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr "Signer la version \"%s\" du document avec une signature intégrée"
 
-#: views.py:240
+#: views.py:225
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Supprimer la signature détachée : %s"
 
-#: views.py:260
+#: views.py:245
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Détails de la signature : %s"
 
-#: views.py:300
+#: views.py:276
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr "Les signatures aident à fournir des preuves d’auteur et la détection d’altération. Ils sont très sécurisés et difficiles à copier. Une signature peut être incorporée dans le document lui-même ou dans un fichier séparé."
 
-#: views.py:328
+#: views.py:304
 msgid "There are no signatures for this document."
 msgstr "Il n'y a pas de signatures pour ce document."
 
-#: views.py:331
+#: views.py:307
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Signatures pour cette version du document : %s"
 
-#: views.py:361
+#: views.py:337
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Transférer une signature détachée pour la version du document : %s"
 
-#: views.py:378
+#: views.py:354
 msgid "On large databases this operation may take some time to execute."
 msgstr "Sur de grosses bases de données, cette opération peut prendre un certain temps."
 
-#: views.py:379
+#: views.py:355
 msgid "Verify all document for signatures?"
 msgstr "Vérifier les signatures de tous les documents ?"
 
-#: views.py:389
+#: views.py:365
 msgid "Signature verification queued successfully."
 msgstr "Vérification de la signature ajoutée à la file d'attente avec succès."
+
+#: workflow_actions.py:23
+msgid "Private key that will be used to sign the document version."
+msgstr ""
+
+#: workflow_actions.py:38
+msgid "Sign document (detached)"
+msgstr ""
+
+#: workflow_actions.py:68
+msgid "Sign document (embedded)"
+msgstr ""

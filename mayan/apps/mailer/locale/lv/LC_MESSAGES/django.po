@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:15-0400\n"
-"PO-Revision-Date: 2019-10-27 19:04+0000\n"
+"POT-Creation-Date: 2019-12-03 01:17-0400\n"
+"PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Ziņojums"
 msgid "Null backend"
 msgstr "Null backend"
 
-#: events.py:7 permissions.py:7 queues.py:8 settings.py:11
+#: events.py:7 permissions.py:7 queues.py:8 settings.py:12
 msgid "Mailing"
 msgstr "Pasta sūtīšana"
 
@@ -52,11 +52,11 @@ msgstr "Saņēmēja e-pasta adrese. Var būt vairākas adreses, kas atdalītas a
 msgid "Email address"
 msgstr "Epasta adrese"
 
-#: forms.py:64
+#: forms.py:64 workflow_actions.py:40
 msgid "Subject"
 msgstr "Temats"
 
-#: forms.py:66
+#: forms.py:66 workflow_actions.py:49
 msgid "Body"
 msgstr "Ķermenis"
 
@@ -64,7 +64,7 @@ msgstr "Ķermenis"
 msgid "The email profile that will be used to send this email."
 msgstr "E-pasta profils, kas tiks izmantots, lai nosūtītu šo e-pastu."
 
-#: forms.py:71 views.py:239
+#: forms.py:71 views.py:239 workflow_actions.py:22
 msgid "Mailing profile"
 msgstr "Pasta profils"
 
@@ -121,6 +121,10 @@ msgid ""
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr "Šim e-pastam pievienots dokuments: {{document}} -------- Šis e-pasts ir nosūtīts no %(project_title)s (%(project_website)s)"
 
+#: literals.py:11
+msgid "Document: {{ document }}"
+msgstr "Dokuments: {{document}}"
+
 #: literals.py:13
 #, python-format
 msgid ""
@@ -129,6 +133,10 @@ msgid ""
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr "Lai piekļūtu šim dokumentam, noklikšķiniet uz šādas saites: {{link}} -------- Šis e-pasts ir nosūtīts no %(project_title)s (%(project_website)s)"
+
+#: literals.py:17
+msgid "Link for document: {{ document }}"
+msgstr "Saite uz dokumentu: {{document}}"
 
 #: mailers.py:23 mailers.py:112
 msgid "From"
@@ -315,29 +323,21 @@ msgstr "Izmantojiet pasta profilu"
 msgid "Send document"
 msgstr "Sūtīt dokumentu"
 
-#: settings.py:14
-msgid "Link for document: {{ document }}"
-msgstr "Saite uz dokumentu: {{document}}"
-
-#: settings.py:15
-msgid "Template for the document link email form subject line."
-msgstr "Dokumenta saites e-pasta veidlapas tēmas veidne."
-
-#: settings.py:20
-msgid "Template for the document link email form body text. Can include HTML."
-msgstr "Dokumenta saites e-pasta veidlapas veidnes teksts. Var iekļaut HTML."
-
-#: settings.py:24
-msgid "Document: {{ document }}"
-msgstr "Dokuments: {{document}}"
-
-#: settings.py:25
+#: settings.py:16
 msgid "Template for the document email form subject line."
 msgstr "Dokumenta e-pasta veidlapas tēmas veidne."
 
-#: settings.py:30
+#: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
 msgstr "Dokumenta e-pasta veidlapas veidnes teksts. Var iekļaut HTML."
+
+#: settings.py:26
+msgid "Template for the document link email form subject line."
+msgstr "Dokumenta saites e-pasta veidlapas tēmas veidne."
+
+#: settings.py:31
+msgid "Template for the document link email form body text. Can include HTML."
+msgstr "Dokumenta saites e-pasta veidlapas veidnes teksts. Var iekļaut HTML."
 
 #: validators.py:14
 #, python-format
@@ -414,3 +414,45 @@ msgstr ""
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Testa pasta profils: %s"
+
+#: workflow_actions.py:24
+msgid "Mailing profile to use when sending the email."
+msgstr ""
+
+#: workflow_actions.py:29
+msgid "Recipient"
+msgstr ""
+
+#: workflow_actions.py:32
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
+msgstr ""
+
+#: workflow_actions.py:43
+msgid "Subject of the email. Can be a string or a template."
+msgstr ""
+
+#: workflow_actions.py:52
+msgid "Body of the email to send. Can be a string or a template."
+msgstr ""
+
+#: workflow_actions.py:59
+msgid "Send email"
+msgstr ""
+
+#: workflow_actions.py:74
+#, python-format
+msgid "Recipient template error: %s"
+msgstr ""
+
+#: workflow_actions.py:85
+#, python-format
+msgid "Subject template error: %s"
+msgstr ""
+
+#: workflow_actions.py:96
+#, python-format
+msgid "Body template error: %s"
+msgstr ""

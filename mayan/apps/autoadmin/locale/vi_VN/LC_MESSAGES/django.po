@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:12-0400\n"
+"POT-Creation-Date: 2019-12-03 01:14-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Trung Phan Minh <navmobile@gmail.com>, 2019\n"
 "Language-Team: Vietnamese (Viet Nam) (https://www.transifex.com/rosarior/teams/13584/vi_VN/)\n"
@@ -62,8 +62,8 @@ msgid "The username of the automatically created super user account."
 msgstr ""
 
 #: templates/autoadmin/credentials.html:11
-msgid "First time login"
-msgstr "Đăng nhập lần đầu"
+msgid "Automatic credentials"
+msgstr ""
 
 #: templates/autoadmin/credentials.html:16
 #, python-format
@@ -76,22 +76,22 @@ msgstr ""
 msgid "Login using the following credentials:"
 msgstr "Đăng nhập dùng các thông tin sau:"
 
-#: templates/autoadmin/credentials.html:18
+#: templates/autoadmin/credentials.html:19
 #, python-format
 msgid "Username: <strong>%(account)s</strong>"
 msgstr "Người dùng: <strong>%(account)s</strong>"
 
-#: templates/autoadmin/credentials.html:19
+#: templates/autoadmin/credentials.html:20
 #, python-format
 msgid "Email: <strong>%(email)s</strong>"
 msgstr ""
 
-#: templates/autoadmin/credentials.html:20
+#: templates/autoadmin/credentials.html:21
 #, python-format
 msgid "Password: <strong>%(password)s</strong>"
 msgstr "Mật khẩu: <strong>%(password)s</strong>"
 
-#: templates/autoadmin/credentials.html:21
+#: templates/autoadmin/credentials.html:23
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."

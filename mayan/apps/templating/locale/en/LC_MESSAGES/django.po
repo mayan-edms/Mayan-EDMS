@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-11 02:58-0400\n"
+"POT-Creation-Date: 2019-12-03 01:19-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,14 @@ msgstr ""
 msgid "Templating"
 msgstr ""
 
+#: fields.py:19
+#, python-format
+msgid ""
+"The template string to be evaluated. Use Django's default templating "
+"language (https://docs.djangoproject.com/en/%(django_version)s/ref/templates/"
+"builtins/)"
+msgstr ""
+
 #: forms.py:11
 msgid "Resulting text from the evaluated template."
 msgstr ""
@@ -29,13 +37,7 @@ msgstr ""
 msgid "Result"
 msgstr ""
 
-#: forms.py:23
-msgid ""
-"The template string to be evaluated. Use Django's default templating "
-"language (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr ""
-
-#: forms.py:26
+#: forms.py:22
 msgid "Template"
 msgstr ""
 
@@ -47,12 +49,16 @@ msgstr ""
 msgid "Use the template sandbox"
 msgstr ""
 
-#: views.py:46
+#: views.py:45
 #, python-format
 msgid "Template error; %(exception)s"
 msgstr ""
 
-#: views.py:59
+#: views.py:58
 #, python-format
 msgid "Template sandbox for: %s"
+msgstr ""
+
+#: widgets.py:34
+msgid "<Model property choices>"
 msgstr ""

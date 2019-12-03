@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:13-0400\n"
+"POT-Creation-Date: 2019-12-03 01:15-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -297,11 +297,11 @@ msgstr ""
 "Čárkami oddělené názvy závislostí, které se mají zobrazit v seznamu, přičemž"
 " vylučují všechny ostatní."
 
-#: management/commands/installjavascript.py:15
+#: management/commands/installdependencies.py:15
 msgid "Process a specific app."
 msgstr "Zpracovat konkrétní aplikaci."
 
-#: management/commands/installjavascript.py:19
+#: management/commands/installdependencies.py:19
 msgid "Force installation even if already installed."
 msgstr "Vynutit instalaci, i když již byla nainstalována."
 

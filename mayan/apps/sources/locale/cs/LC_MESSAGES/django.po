@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:16-0400\n"
-"PO-Revision-Date: 2019-10-18 11:47+0000\n"
+"POT-Creation-Date: 2019-12-03 01:19-0400\n"
+"PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:10
-#: views.py:628
+#: views.py:650
 msgid "Sources"
 msgstr "Zdroje"
 
@@ -60,27 +60,31 @@ msgid ""
 "obtained the scanned document image."
 msgstr "Obslužný program poskytovaný balíčkem SANE. Slouží k ovládání skeneru a získání naskenovaného obrázku dokumentu."
 
-#: forms.py:30
+#: forms.py:27
+msgid "An optional comment to explain the upload."
+msgstr ""
+
+#: forms.py:28
 msgid "Comment"
 msgstr "Komentář"
 
-#: forms.py:45
+#: forms.py:42
 msgid "Expand compressed files"
 msgstr "Rozbal komprimované soubory"
 
-#: forms.py:47
+#: forms.py:44
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Nahraj soubory obsahující komprimovaný soubor jako jednotlivé dokumenty"
 
-#: forms.py:68 views.py:483
+#: forms.py:65 views.py:505
 msgid "Staging file"
 msgstr "Pracovní soubor"
 
-#: forms.py:72 forms.py:77
+#: forms.py:69 forms.py:74
 msgid "File"
 msgstr "Soubor"
 
-#: handlers.py:30
+#: handlers.py:27
 msgid "Default"
 msgstr "Výchozí"
 
@@ -136,67 +140,67 @@ msgstr "Protokoly"
 msgid "Check now"
 msgstr "Zkontrolovat nyní"
 
-#: literals.py:16
+#: literals.py:18
 msgid "Flatbed"
 msgstr "Stolní scanner"
 
-#: literals.py:17
+#: literals.py:19
 msgid "Document feeder"
 msgstr "Podavač dokumentů"
 
-#: literals.py:24
+#: literals.py:26
 msgid "Simplex"
 msgstr "Simplex"
 
-#: literals.py:25
+#: literals.py:27
 msgid "Duplex"
 msgstr "Duplex"
 
-#: literals.py:33
+#: literals.py:35
 msgid "Lineart"
 msgstr "Kresba tužkou"
 
-#: literals.py:34
+#: literals.py:36
 msgid "Monochrome"
 msgstr "Černobílý"
 
-#: literals.py:35
+#: literals.py:37
 msgid "Color"
 msgstr "Barevný"
 
-#: literals.py:43 literals.py:48
+#: literals.py:45 literals.py:50
 msgid "Always"
 msgstr "Vždy"
 
-#: literals.py:44 literals.py:49
+#: literals.py:46 literals.py:51
 msgid "Never"
 msgstr "Nikdy"
 
-#: literals.py:50
+#: literals.py:52
 msgid "Ask user"
 msgstr "Zeptat se uživatele"
 
-#: literals.py:61
+#: literals.py:63
 msgid "Scanner"
 msgstr "Skener"
 
-#: literals.py:62 models/webform_sources.py:42
+#: literals.py:64 models/webform_sources.py:42
 msgid "Web form"
 msgstr "Webový formulář"
 
-#: literals.py:63 models/staging_folder_sources.py:69
+#: literals.py:65 models/staging_folder_sources.py:69
 msgid "Staging folder"
 msgstr "Pracovní složka"
 
-#: literals.py:64 models/watch_folder_sources.py:48
+#: literals.py:66 models/watch_folder_sources.py:48
 msgid "Watch folder"
 msgstr "Sledovaná složka"
 
-#: literals.py:65
+#: literals.py:67
 msgid "POP3 email"
 msgstr "POP3 email"
 
-#: literals.py:66 models/email_sources.py:227 models/email_sources.py:228
+#: literals.py:68 models/email_sources.py:249 models/email_sources.py:250
 msgid "IMAP email"
 msgstr "E-mail IMAP"
 
@@ -265,105 +269,143 @@ msgstr "Záznam protokolu"
 msgid "Log entries"
 msgstr "Záznamy protokolu"
 
-#: models/email_sources.py:46
+#: models/email_sources.py:42
 msgid "Host"
 msgstr "Hostitel"
 
-#: models/email_sources.py:47
+#: models/email_sources.py:43
 msgid "SSL"
 msgstr "SSL"
 
-#: models/email_sources.py:49
+#: models/email_sources.py:45
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr "Typické volby jsou 110 pro POP3, 995 pro POP3 přes SSL, 143 pro IMAP, 993 pro IMAP přes SSL."
 
-#: models/email_sources.py:50
+#: models/email_sources.py:46
 msgid "Port"
 msgstr "Přístav"
 
-#: models/email_sources.py:52
+#: models/email_sources.py:48
 msgid "Username"
 msgstr "Uživatelské jméno"
 
-#: models/email_sources.py:53
+#: models/email_sources.py:49
 msgid "Password"
 msgstr "Heslo"
 
-#: models/email_sources.py:57
+#: models/email_sources.py:53
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
 msgstr "Název přílohy, která bude obsahovat názvy typů metadat a páry hodnot, které mají být přiřazeny ke zbytku stažených příloh."
 
-#: models/email_sources.py:60
+#: models/email_sources.py:56
 msgid "Metadata attachment name"
 msgstr "Název přílohy metadat"
 
-#: models/email_sources.py:64
+#: models/email_sources.py:60
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
 msgstr "Vyberte typ metadat platný pro vybraný typ dokumentu, do kterého chcete uložit předmět e-mailu."
 
-#: models/email_sources.py:67
+#: models/email_sources.py:63
 msgid "Subject metadata type"
 msgstr "Typ metadat předmětu"
 
-#: models/email_sources.py:71
+#: models/email_sources.py:67
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
 msgstr "Vyberte typ metadat platný pro vybraný typ dokumentu, do kterého chcete uložit e-mailovou hodnotu „Od“."
 
-#: models/email_sources.py:74
+#: models/email_sources.py:70
 msgid "From metadata type"
 msgstr "Typ metadat Od"
 
-#: models/email_sources.py:78
+#: models/email_sources.py:74
 msgid "Store the body of the email as a text document."
 msgstr "Uložte tělo e-mailu jako textový dokument."
 
-#: models/email_sources.py:79
+#: models/email_sources.py:75
 msgid "Store email body"
 msgstr "Uložte tělo e-mailu"
 
-#: models/email_sources.py:85
+#: models/email_sources.py:81
 msgid "Email source"
 msgstr "Zdroj e-mailu"
 
-#: models/email_sources.py:86
+#: models/email_sources.py:82
 msgid "Email sources"
 msgstr "Zdroje e-mailu"
 
-#: models/email_sources.py:191
+#: models/email_sources.py:187
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "Typ metadat předmětu \"%(metadata_type)s\" není platný pro typ dokumentu: %(document_type)s"
 
-#: models/email_sources.py:205
+#: models/email_sources.py:201
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "„Od“ typ metadat „%(metadata_type)s“ není platný pro typ dokumentu: %(document_type)s"
 
-#: models/email_sources.py:220
+#: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "Poštovní schránka IMAP, ve které se kontrolují zprávy."
 
-#: models/email_sources.py:221
+#: models/email_sources.py:217
 msgid "Mailbox"
 msgstr "Poštovní schránka"
 
-#: models/email_sources.py:301
+#: models/email_sources.py:221
+msgid ""
+"Criteria to use when searching for messages to process. Use the format "
+"specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
+msgstr ""
+
+#: models/email_sources.py:224
+msgid "Search criteria"
+msgstr ""
+
+#: models/email_sources.py:228
+msgid ""
+"IMAP STORE command to execute on messages after they are processed. One "
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
+msgstr ""
+
+#: models/email_sources.py:232
+msgid "Store commands"
+msgstr ""
+
+#: models/email_sources.py:236
+msgid "Execute the IMAP expunge command after processing each email message."
+msgstr ""
+
+#: models/email_sources.py:238
+msgid "Execute expunge"
+msgstr ""
+
+#: models/email_sources.py:242
+msgid "IMAP Mailbox to which processed messages will be copied."
+msgstr ""
+
+#: models/email_sources.py:243
+msgid "Destination mailbox"
+msgstr ""
+
+#: models/email_sources.py:350
 msgid "Timeout"
 msgstr "Časový limit"
 
-#: models/email_sources.py:307 models/email_sources.py:308
+#: models/email_sources.py:356 models/email_sources.py:357
 msgid "POP email"
 msgstr "POP email"
 
@@ -568,102 +610,117 @@ msgstr "Argumenty k předání na SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgid "Error processing source: %s"
 msgstr "Chyba zpracování zdroje: %s"
 
-#: templates/sources/upload_multiform_subtemplate.html:84
+#: templates/sources/dropzone.html:82
 msgid "Cancel upload"
 msgstr "Zrušit nahrávání"
 
-#: templates/sources/upload_multiform_subtemplate.html:85
+#: templates/sources/dropzone.html:83
 msgid "Are you sure you want to cancel this upload?"
 msgstr "Opravdu chcete toto nahrávání zrušit?"
 
-#: templates/sources/upload_multiform_subtemplate.html:86
+#: templates/sources/dropzone.html:84
 msgid "Drop files or click here to upload files"
 msgstr "Přetáhněte soubory nebo kliknutím sem nahrajte soubory"
 
-#: templates/sources/upload_multiform_subtemplate.html:87
+#: templates/sources/dropzone.html:85
 msgid "Your browser does not support drag and drop file uploads."
 msgstr "Váš prohlížeč nepodporuje nahrávání drag and drop souborů."
 
-#: templates/sources/upload_multiform_subtemplate.html:88
+#: templates/sources/dropzone.html:86
 msgid "Please use the fallback form below to upload your files."
 msgstr "K nahrání souborů použijte záložní formulář níže."
 
-#: templates/sources/upload_multiform_subtemplate.html:89
+#: templates/sources/dropzone.html:87
 msgid "Clear"
 msgstr "Clear"
 
-#: templates/sources/upload_multiform_subtemplate.html:90
+#: templates/sources/dropzone.html:88
 msgid "Server responded with {{statusCode}} code."
 msgstr "Server odpověděl kódem {{statusCode}}."
 
-#: views.py:63
+#: views.py:66
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr "Jakákoli chyba způsobená během používání zdroje bude uvedena zde, aby pomohla při ladění."
 
-#: views.py:66
+#: views.py:69
 msgid "No log entries available"
 msgstr "K dispozici nejsou žádné záznamy"
 
-#: views.py:68
+#: views.py:71
 #, python-format
 msgid "Log entries for source: %s"
 msgstr "Položky protokolu pro zdroj: %s"
 
-#: views.py:123 wizards.py:154
+#: views.py:126 wizards.py:154
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr "Nebyly definovány žádné interaktivní zdroje dokumentů nebo nebyly povoleny žádné, vytvořte je před pokračováním."
 
-#: views.py:151 views.py:169 views.py:179
+#: views.py:154 views.py:183 views.py:193
 msgid "Document properties"
 msgstr "Vlastnosti dokumentu"
 
-#: views.py:159
+#: views.py:163
+msgid ""
+"This could mean that the staging folder is empty. It could also mean that "
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
+msgstr ""
+
+#: views.py:170
+msgid "No staging files available"
+msgstr ""
+
+#: views.py:173
 msgid "Files in staging path"
 msgstr "Soubory v pracovní cestě"
 
-#: views.py:170
+#: views.py:184
 msgid "Scan"
 msgstr "Skenovat"
 
-#: views.py:280
+#: views.py:294
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr "Při provádění úlohy nahrávání dokumentu došlo k chybě; %(exception)s, %(exception_class)s"
 
-#: views.py:291
+#: views.py:305
 msgid "New document queued for upload and will be available shortly."
 msgstr "Nový dokument zařazený do fronty k nahrání bude brzy k dispozici."
 
-#: views.py:342
+#: views.py:356
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Nahrajte dokument typu \"%(document_type)s\" ze zdroje: %(source)s"
 
-#: views.py:376
+#: views.py:389
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "Dokument \"%s\" je blokován z nahrávání nových verzí."
 
-#: views.py:429
+#: views.py:442
 msgid "New document version queued for upload and will be available shortly."
 msgstr "Nová verze dokumentu zařazená do fronty k nahrání a brzy bude k dispozici."
 
-#: views.py:470
+#: views.py:482
 #, python-format
-msgid "Upload a new version from source: %s"
-msgstr "Nahrajte novou verzi ze zdroje: %s"
+msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgstr ""
 
-#: views.py:484
+#: views.py:485
+msgid "Submit"
+msgstr "Odeslat"
+
+#: views.py:506
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Odstranit pracovní soubor \"%s\"?"
 
-#: views.py:505
+#: views.py:527
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -671,31 +728,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr "Tím se spustí kontrola kódu zdroje, i když zdroj není povolen. Zdroje, které odstraní obsah po stažení, tak během testování neučiní. Během testování zkontrolujte informace o chybách zdrojů. Úspěšný test vymaže protokol chyb."
 
-#: views.py:511
+#: views.py:533
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Spustit kontrolu zdroje \"%s\"?"
 
-#: views.py:528
+#: views.py:550
 msgid "Source check queued."
 msgstr "Kontrola zdroje ve frontě."
 
-#: views.py:545
+#: views.py:567
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Vytvořit nový zdroj typu: %s"
 
-#: views.py:567
+#: views.py:589
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Odstranit zdroj: %s?"
 
-#: views.py:588
+#: views.py:610
 #, python-format
 msgid "Edit source: %s"
 msgstr "Upravit zdroj: %s"
 
-#: views.py:622
+#: views.py:644
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -703,7 +760,7 @@ msgid ""
 "intervention."
 msgstr "Zdroje poskytují prostředky pro nahrávání dokumentů. Některé zdroje, jako je webový formulář, jsou interaktivní a vyžadují součinnost uživatele. Ostatní, jako jsou e-mailové zdroje, jsou automatické a běží na pozadí bez zásahu uživatele."
 
-#: views.py:627
+#: views.py:649
 msgid "No sources available"
 msgstr "Nejsou k dispozici žádné zdroje"
 

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:13-0400\n"
+"POT-Creation-Date: 2019-12-03 01:15-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -32,7 +32,7 @@ msgstr "Análise de documentos"
 msgid "Result"
 msgstr "resultado"
 
-#: apps.py:135 apps.py:139 links.py:16 links.py:33 models.py:27
+#: apps.py:135 apps.py:139 links.py:21 links.py:38 models.py:27
 msgid "Content"
 msgstr "Conteúdo"
 
@@ -62,27 +62,27 @@ msgstr "Pagina: %(page_number)d"
 msgid "Contents"
 msgstr "Conteúdos"
 
-#: links.py:22 links.py:27
+#: links.py:27 links.py:32
 msgid "Delete parsed content"
 msgstr ""
 
-#: links.py:39 links.py:77 views.py:225
+#: links.py:44 links.py:82 views.py:225
 msgid "Parsing errors"
 msgstr "Erros de análise"
 
-#: links.py:45
+#: links.py:50
 msgid "Download content"
 msgstr "Baixar conteúdo"
 
-#: links.py:50 links.py:57
+#: links.py:55 links.py:62
 msgid "Submit for parsing"
 msgstr "Enviar para análise"
 
-#: links.py:63
+#: links.py:68
 msgid "Setup parsing"
 msgstr "Configurar análise"
 
-#: links.py:72
+#: links.py:77
 msgid "Parse documents per type"
 msgstr "Analisar documentos por tipo"
 

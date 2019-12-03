@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:15-0400\n"
+"POT-Creation-Date: 2019-12-03 01:18-0400\n"
 "PO-Revision-Date: 2019-09-24 21:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:15 links.py:21
+#: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:20 links.py:26
 #: permissions.py:7 queues.py:8 settings.py:7
 msgid "OCR"
 msgstr "OCR"
@@ -33,7 +33,7 @@ msgstr "Fecha y hora"
 msgid "Result"
 msgstr "Resultado"
 
-#: backends/tesseract.py:95
+#: backends/tesseract.py:90
 msgid "Tesseract OCR not found."
 msgstr "Tesseract OCR no encontrado."
 
@@ -68,27 +68,27 @@ msgstr "Contenido"
 msgid "Page %(page_number)d"
 msgstr "Página %(page_number)d"
 
-#: links.py:27 links.py:32
+#: links.py:32 links.py:37
 msgid "Delete OCR content"
 msgstr "Eliminar contenido OCR"
 
-#: links.py:38 links.py:43
+#: links.py:43 links.py:48
 msgid "Submit for OCR"
 msgstr "Enviar para OCR"
 
-#: links.py:48
+#: links.py:53
 msgid "Setup OCR"
 msgstr "Configurar OCR"
 
-#: links.py:53
+#: links.py:58
 msgid "OCR documents per type"
 msgstr "Realizar OCR por tipo de documento"
 
-#: links.py:58 links.py:64 views.py:185
+#: links.py:63 links.py:69 views.py:185
 msgid "OCR errors"
 msgstr "Errores de OCR"
 
-#: links.py:70
+#: links.py:75
 msgid "Download OCR text"
 msgstr "Descargar texto OCR"
 
