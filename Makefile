@@ -250,24 +250,28 @@ generate-requirements: ## Generate all requirements files from the project deped
 gitlab-release-documentation: ## Trigger the documentation build and publication using GitLab CI
 gitlab-release-documentation:
 	git push
+	git push --tags
 	git push origin :releases/documentation
 	git push origin HEAD:releases/documentation
 
 gitlab-release-docker: ## Trigger the Docker image build and publication using GitLab CI
 gitlab-release-docker:
 	git push
+	git push --tags
 	git push origin :releases/docker
 	git push origin HEAD:releases/docker
 
 gitlab-release-python: ## Trigger the Python package build and publication using GitLab CI
 gitlab-release-python:
 	git push
+	git push --tags
 	git push origin :releases/python
 	git push origin HEAD:releases/python
 
 gitlab-release-all: ## Trigger the Python package, Docker image, and documentation build and publication using GitLab CI
 gitlab-release-all:
 	git push
+	git push --tags
 	git push origin :releases/all
 	git push origin HEAD:releases/all
 

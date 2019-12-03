@@ -115,8 +115,17 @@ Release checklist
 #. Release the version using one of the two following methods: GitLab CI or
    manual
 
-Release using GitLab CI
------------------------
+
+Release using GitLab CI using the makefile
+------------------------------------------
+
+#. Use of the GitLab makefile targets: ``gitlab-release-all``,
+   ``gitlab-release-docker``, ``gitlab-release-documentation``,
+   ``gitlab-release-python``.
+
+
+Release using GitLab CI manually
+--------------------------------
 
 #. Push the current brach:
    ::
