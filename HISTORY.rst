@@ -1,3 +1,7 @@
+3.3.1 (2019-XX-XX)
+==================
+- Update Celery broker environment variable in the docker installer.
+
 3.3 (2019-12-03)
 ================
 - Add support for icon shadows.
