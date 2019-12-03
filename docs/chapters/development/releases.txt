@@ -18,6 +18,7 @@ This is the sequence of step used to produce an installable package:
     $ source venv/bin/activate
     $ pip install <path of the Git repository>/dist/mayan-edms-x.y.z.tar.gz
     $ mayan-edms.py initialsetup
+    $ mayan-edms.py preparestatic
     $ mayan-edms.py runserver
 
 
@@ -39,6 +40,7 @@ Wheel package
     $ source venv/bin/activate
     $ pip install <path of the Git repository>/dist/mayan_edms-x.y.z-py2-none-any.whl
     $ mayan-edms.py initialsetup
+    $ mayan-edms.py preparestatic
     $ mayan-edms.py runserver
 
 

@@ -181,6 +181,7 @@ Steps to deploy a development version
     $ source venv/bin/activate
     $ pip install -r requirements.txt
     $ ./manage.py initialsetup
+    $ ./manage.py preparestatic
     $ ./manage.py runserver
 
 
