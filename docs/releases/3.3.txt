@@ -1,7 +1,7 @@
 Version 3.3
 ===========
 
-Released: XX XX, 2019
+Released: December 3, 2019
 
 
 Changes

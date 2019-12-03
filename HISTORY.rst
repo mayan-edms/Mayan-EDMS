@@ -1,4 +1,4 @@
-3.3 (2019-XX-XX)
+3.3 (2019-12-03)
 ================
 - Add support for icon shadows.
 - Add icons and no-result template to the object error log view and
