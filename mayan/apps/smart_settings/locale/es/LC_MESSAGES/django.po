@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 01:18-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
+"POT-Creation-Date: 2019-12-03 18:40-0400\n"
+"PO-Revision-Date: 2019-12-03 22:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -94,7 +94,7 @@ msgid ""
 " match anything; in this case you are responsible to provide your own "
 "validation of the Host header (perhaps in a middleware; if so this "
 "middleware must be listed first in MIDDLEWARE)."
-msgstr "Una lista de cadenas que representan los nombres de host / dominio que este sitio puede servir. Esta es una medida de seguridad para evitar los ataques de encabezado HTTP Host, que son posibles incluso bajo muchas configuraciones de servidor web aparentemente seguras. Los valores en esta lista pueden ser nombres totalmente calificados (por ejemplo, 'www.ejemplo.com'), en cuyo caso se compararán exactamente con el encabezado Host de la solicitud (no distingue entre mayúsculas y minúsculas, sin incluir el puerto). Un valor que comienza con un punto se puede usar como un comodín de subdominio: '.example.com' coincidirá con example.com, www.example.com y cualquier otro subdominio de example.com. Un valor de '*' coincidirá con cualquier cosa; en este caso, usted es responsable de proporcionar su propia validación del encabezado de host (quizás en un middleware, si es así, este middleware debe aparecer primero en MIDDLEWARE)."
+msgstr "Una lista de textos que representan los nombres de host / dominio que este sitio puede servir. Esta es una medida de seguridad para evitar los ataques de encabezado HTTP Host, que son posibles incluso bajo muchas configuraciones de servidor web aparentemente seguras. Los valores en esta lista pueden ser nombres totalmente calificados (por ejemplo, 'www.ejemplo.com'), en cuyo caso se compararán exactamente con el encabezado Host de la solicitud (no distingue entre mayúsculas y minúsculas, sin incluir el puerto). Un valor que comienza con un punto se puede usar como un comodín de subdominio: '.example.com' coincidirá con example.com, www.example.com y cualquier otro subdominio de example.com. Un valor de '*' coincidirá con cualquier cosa; en este caso, usted es responsable de proporcionar su propia validación del encabezado de host (quizás en un middleware, si es así, este middleware debe aparecer primero en MIDDLEWARE)."
 
 #: settings.py:34
 msgid ""
@@ -149,7 +149,7 @@ msgid ""
 "representing User-Agent strings that are not allowed to visit any page, "
 "systemwide. Use this for bad robots/crawlers. This is only used if "
 "CommonMiddleware is installed (see Middleware)."
-msgstr "Valor predeterminado: [] (lista vacía). Lista de objetos de expresiones regulares compilados que representan cadenas de User-Agent que no pueden visitar ninguna página, en todo el sistema. Úselo para robots / rastreadores malos. Esto solo se usa si CommonMiddleware está instalado (ver Middleware)."
+msgstr "Valor predeterminado: [] (lista vacía). Lista de objetos de expresiones regulares compilados que representan textos de User-Agent que no pueden visitar ninguna página, en todo el sistema. Úselo para robots / rastreadores malos. Esto solo se usa si CommonMiddleware está instalado (ver Middleware)."
 
 #: settings.py:107
 msgid ""
@@ -167,13 +167,13 @@ msgid ""
 "EMAIL_HOST. This setting is used in conjunction with EMAIL_HOST_USER when "
 "authenticating to the SMTP server. If either of these settings is empty, "
 "Django won't attempt authentication."
-msgstr "Valor predeterminado: '' (cadena vacía). Contraseña para usar para el servidor SMTP definido en EMAIL_HOST. Esta configuración se usa junto con EMAIL_HOST_USER al autenticarse en el servidor SMTP. Si cualquiera de estas configuraciones está vacía, Django no intentará la autenticación."
+msgstr "Valor predeterminado: '' (texto vacío). Contraseña para usar para el servidor SMTP definido en EMAIL_HOST. Esta configuración se usa junto con EMAIL_HOST_USER al autenticarse en el servidor SMTP. Si cualquiera de estas configuraciones está vacía, Django no intentará la autenticación."
 
 #: settings.py:133
 msgid ""
 "Default: '' (Empty string). Username to use for the SMTP server defined in "
 "EMAIL_HOST. If empty, Django won't attempt authentication."
-msgstr "Valor predeterminado: '' (cadena vacía). Nombre de usuario a usar para el servidor SMTP definido en EMAIL_HOST. Si está vacío, Django no intentará la autenticación."
+msgstr "Valor predeterminado: '' (text vacío). Nombre de usuario a usar para el servidor SMTP definido en EMAIL_HOST. Si está vacío, Django no intentará la autenticación."
 
 #: settings.py:142
 msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
@@ -244,7 +244,7 @@ msgid ""
 "processor to add some variables to the template context. Can use the "
 "admindocs bookmarklets even if not logged in as a staff user. Are marked as "
 "\"internal\" (as opposed to \"EXTERNAL\") in AdminEmailHandler emails."
-msgstr "Una lista de direcciones IP, como cadenas, que: Permiten que el procesador de contexto debug() agregue algunas variables al contexto de la plantilla. Puede usar los marcadores de Admindocs incluso si no ha iniciado sesión como usuario del personal. Están marcados como 'internos' (a diferencia de 'EXTERNOS') en los correos electrónicos de AdminEmailHandler."
+msgstr "Una lista de direcciones IP, en forma de texto, que: Permiten que el procesador de contexto debug() agregue algunas variables al contexto de la plantilla. Puede usar los marcadores de Admindocs incluso si no ha iniciado sesión como usuario del personal. Están marcados como 'internos' (a diferencia de 'EXTERNOS') en los correos electrónicos de AdminEmailHandler."
 
 #: settings.py:237
 msgid ""
@@ -288,7 +288,7 @@ msgid ""
 "A string representing the time zone for this installation. Note that this "
 "isn't necessarily the time zone of the server. For example, one server may "
 "serve multiple Django-powered sites, each with a separate time zone setting."
-msgstr "Una cadena que representa la zona horaria para esta instalación. Tenga en cuenta que esto no es necesariamente la zona horaria del servidor. Por ejemplo, un servidor puede servir múltiples sitios con Django, cada uno con una configuración de zona horaria separada."
+msgstr "Un text que representa la zona horaria para esta instalación. Tenga en cuenta que esto no es necesariamente la zona horaria del servidor. Por ejemplo, un servidor puede servir múltiples sitios con Django, cada uno con una configuración de zona horaria separada."
 
 #: settings.py:296
 msgid ""

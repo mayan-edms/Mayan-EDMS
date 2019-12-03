@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 01:14-0400\n"
+"POT-Creation-Date: 2019-12-03 18:35-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -64,7 +64,7 @@ msgstr "Detalii"
 
 #: models.py:36
 msgid "A short text used to identify the cabinet."
-msgstr ""
+msgstr "Un text scurt folosit pentru identificarea cabinetului."
 
 #: models.py:37 search.py:16
 msgid "Label"

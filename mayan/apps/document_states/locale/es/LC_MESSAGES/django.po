@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 01:16-0400\n"
-"PO-Revision-Date: 2019-12-03 05:55+0000\n"
+"POT-Creation-Date: 2019-12-03 18:37-0400\n"
+"PO-Revision-Date: 2019-12-03 22:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -584,7 +584,7 @@ msgstr "Enviar"
 #: views/workflow_instance_views.py:127
 #, python-format
 msgid "Execute transition \"%(transition)s\" for workflow: %(workflow)s"
-msgstr ""
+msgstr "Ejecutar la transición \"%(transition)s\" para el flujo de trabajo: %(workflow)s"
 
 #: views/workflow_instance_views.py:142
 msgid "Optional comment to attach to the transition."
@@ -597,7 +597,7 @@ msgstr "Seleccionar"
 #: views/workflow_instance_views.py:213
 #, python-format
 msgid "Select transition for workflow: %s"
-msgstr ""
+msgstr "Seleccionar transición para flujo de trabajo: %s"
 
 #: views/workflow_proxy_views.py:35
 msgid ""
@@ -753,33 +753,33 @@ msgstr "Eventos de disparo de transición de flujo de trabajo para: %s"
 #: views/workflow_template_transition_views.py:246
 #, python-format
 msgid "Create a field for workflow transition: %s"
-msgstr ""
+msgstr "Cree un campo para la transición del flujo de trabajo: %s"
 
 #: views/workflow_template_transition_views.py:276
 #, python-format
 msgid "Delete workflow transition field: %s"
-msgstr ""
+msgstr "Eliminar el campo de transición del flujo de trabajo: %s"
 
 #: views/workflow_template_transition_views.py:302
 #, python-format
 msgid "Edit workflow transition field: %s"
-msgstr ""
+msgstr "Editar campo de transición de flujo de trabajo: %s"
 
 #: views/workflow_template_transition_views.py:331
 msgid ""
 "Workflow transition fields allow adding data to the workflow's context. This"
 " additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
-msgstr ""
+msgstr "Los campos de transición de flujo de trabajo permiten agregar datos al contexto del flujo de trabajo. Estos datos de contexto adicionales pueden ser utilizados por otros elementos del sistema de flujo de trabajo, como las acciones de estado del flujo de trabajo."
 
 #: views/workflow_template_transition_views.py:337
 msgid "There are no fields for this workflow transition"
-msgstr ""
+msgstr "No hay campos para esta transición de flujo de trabajo"
 
 #: views/workflow_template_transition_views.py:341
 #, python-format
 msgid "Fields for workflow transition: %s"
-msgstr ""
+msgstr "Campos para la transición del flujo de trabajo: %s"
 
 #: views/workflow_template_views.py:36
 msgid "Available workflows"
@@ -879,7 +879,7 @@ msgstr "La nueva descripción que se asignará al documento. Puede ser una caden
 
 #: workflow_actions.py:39
 msgid "Modify document properties"
-msgstr ""
+msgstr "Modificar propiedades del documento"
 
 #: workflow_actions.py:61
 #, python-format
@@ -911,7 +911,7 @@ msgstr "Tiempo de expiración"
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
-msgstr ""
+msgstr "Tiempo en segundos para esperar una respuesta. Puede ser un valor estático o una plantilla."
 
 #: workflow_actions.py:111
 msgid "Payload"
@@ -937,7 +937,7 @@ msgid ""
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Nombre de usuario que se utilizará para realizar la solicitud con HTTP Basic Auth. Puede ser un valor estático o una plantilla. Las plantillas reciben la instancia de entrada de registro de flujo de trabajo como parte de su contexto a través de la variable \"entry_log\". El \"entry_log\" a su vez proporciona los atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\" y \"comment\"."
 
 #: workflow_actions.py:137
 msgid "Password"
@@ -950,11 +950,11 @@ msgid ""
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Contraseña a utilizar para realizar la solicitud con HTTP Basic Auth. Puede ser un valor estático o una plantilla. Las plantillas reciben la instancia de entrada de registro de flujo de trabajo como parte de su contexto a través de la variable \"entry_log\". El \"entry_log\" a su vez proporciona los atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\" y \"comment\"."
 
 #: workflow_actions.py:150
 msgid "Headers"
-msgstr ""
+msgstr "Encabezados"
 
 #: workflow_actions.py:153
 msgid ""
@@ -963,7 +963,7 @@ msgid ""
 "instance as part of their context via the variable \"entry_log\". The "
 "\"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
 "\"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Encabezados para enviar con la solicitud HTTP. Debe estar en formato JSON. Puede ser un valor estático o una plantilla. Las plantillas reciben la instancia de entrada de registro de flujo de trabajo como parte de su contexto a través de la variable \"entry_log\". El \"entry_log\" a su vez proporciona los atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\" y \"comment\"."
 
 #: workflow_actions.py:167
 msgid "Perform a POST request"
@@ -972,9 +972,9 @@ msgstr "Realizar una solicitud POST"
 #: workflow_actions.py:193
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
-msgstr ""
+msgstr "Error JSON en %(field_name)s: %(exception)s"
 
 #: workflow_actions.py:209
 #, python-format
 msgid "%(field_name)s template error: %(exception)s"
-msgstr ""
+msgstr "Error de plantilla en %(field_name)s: %(exception)s"

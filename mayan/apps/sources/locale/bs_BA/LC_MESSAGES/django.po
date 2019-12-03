@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 01:19-0400\n"
+"POT-Creation-Date: 2019-12-03 18:40-0400\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: www.ping.ba <jomer@ping.ba>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: bs_BA\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:10
+#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:13
 #: views.py:650
 msgid "Sources"
 msgstr "Izvori"
@@ -592,17 +592,17 @@ msgstr "Handle upload"
 msgid "Upload document"
 msgstr "Upload dokument"
 
-#: settings.py:15
+#: settings.py:20
 msgid "File path to the scanimage program used to control image scanners."
 msgstr "Putanja do skenirajućeg programa koji se koristi za kontrolu skenera slike."
 
-#: settings.py:22
+#: settings.py:27
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
 msgstr ""
 
-#: settings.py:31
+#: settings.py:36
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr ""
 

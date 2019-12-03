@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 01:19-0400\n"
+"POT-Creation-Date: 2019-12-03 18:40-0400\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: yulin Gong <540538248@qq.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:10
+#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:13
 #: views.py:650
 msgid "Sources"
 msgstr "来源"
@@ -591,17 +591,17 @@ msgstr "处理上传"
 msgid "Upload document"
 msgstr "上传文档"
 
-#: settings.py:15
+#: settings.py:20
 msgid "File path to the scanimage program used to control image scanners."
 msgstr "用于控制图像扫描仪的scanimage程序的文件路径。"
 
-#: settings.py:22
+#: settings.py:27
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
 msgstr "存储缓存的staging_file映像文件时要使用的Storage子类的路径。"
 
-#: settings.py:31
+#: settings.py:36
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr "传递给SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND的参数。"
 

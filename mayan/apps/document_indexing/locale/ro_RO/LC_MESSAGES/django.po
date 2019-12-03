@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 01:15-0400\n"
-"PO-Revision-Date: 2019-12-03 05:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-03 18:36-0400\n"
+"PO-Revision-Date: 2019-12-03 13:29+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -69,7 +69,7 @@ msgstr "Șabloane de index"
 
 #: forms.py:34
 msgid "Template"
-msgstr ""
+msgstr "Șablon"
 
 #: handlers.py:20
 msgid "Creation date"
@@ -94,7 +94,7 @@ msgstr "Refaceți index-uri"
 
 #: links.py:66 views.py:481
 msgid "Reset indexes"
-msgstr ""
+msgstr "Resetați indexurile"
 
 #: links.py:83 views.py:87
 msgid "Create index"
@@ -118,7 +118,7 @@ msgstr "Nou nod copil"
 
 #: models.py:36
 msgid "Short description of this index."
-msgstr ""
+msgstr "Scurtă descriere a acestui indice."
 
 #: models.py:37
 msgid "Label"
@@ -393,10 +393,10 @@ msgstr[2] "%(count)d indexări în coada pentru reconstrucție."
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%(count)d resetare index."
+msgstr[1] "%(count)d resetează indexurile."
+msgstr[2] "%(count)d indexări resetate."
 
 #: views.py:506
 msgid "Index templates for which their instances will be deleted."
-msgstr ""
+msgstr "Șabloane de index pentru care instanțele lor vor fi șterse."

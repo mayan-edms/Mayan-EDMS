@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 01:19-0400\n"
+"POT-Creation-Date: 2019-12-03 18:40-0400\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:10
+#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:13
 #: views.py:650
 msgid "Sources"
 msgstr "Avoti"
@@ -591,17 +591,17 @@ msgstr "Rīkot augšupielādi"
 msgid "Upload document"
 msgstr "Augšupielādējiet dokumentu"
 
-#: settings.py:15
+#: settings.py:20
 msgid "File path to the scanimage program used to control image scanners."
 msgstr "Faila ceļš uz skenēšanas programmu, ko izmanto, lai kontrolētu attēlu skenerus."
 
-#: settings.py:22
+#: settings.py:27
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
 msgstr "Ceļš uz glabāšanas apakšklasi, ko var izmantot, saglabājot kešatmiņā saglabātos attēlu failus."
 
-#: settings.py:31
+#: settings.py:36
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr "Argumenti, kas jānodod SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 

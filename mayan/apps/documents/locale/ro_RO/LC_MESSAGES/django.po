@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 01:16-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-03 18:37-0400\n"
+"PO-Revision-Date: 2019-12-03 13:19+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -112,7 +112,7 @@ msgstr "Proprietățile documentului au fost editate"
 
 #: events.py:22
 msgid "Document trashed"
-msgstr ""
+msgstr "Document trimis la coș"
 
 #: events.py:26
 msgid "Document type changed"
@@ -235,7 +235,7 @@ msgstr "Ia extensia de fișier și o mută până la capătul fișierului, permi
 
 #: handlers.py:33
 msgid "Document images"
-msgstr ""
+msgstr "Imaginile documentului"
 
 #: links/document_links.py:23 links/document_links.py:67
 msgid "Clear transformations"
@@ -334,19 +334,19 @@ msgstr "Revenire"
 
 #: links/document_version_page_links.py:49
 msgid "Disable page"
-msgstr ""
+msgstr "Dezactivați pagina"
 
 #: links/document_version_page_links.py:54
 msgid "Disable pages"
-msgstr ""
+msgstr "Dezactivați paginile"
 
 #: links/document_version_page_links.py:61
 msgid "Enable page"
-msgstr ""
+msgstr "Activați pagina"
 
 #: links/document_version_page_links.py:66
 msgid "Enable pages"
-msgstr ""
+msgstr "Activați paginile"
 
 #: links/document_version_page_links.py:73
 msgid "First page"
@@ -763,7 +763,7 @@ msgstr "Scanați după documente duplicate"
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
-msgstr ""
+msgstr "Pragul la care DOCUMENT_CACHE_STORAGE_BACKEND va începe să șterge cele mai vechi fișiere din memoria cache a imaginilor documentelor. Specificați dimensiunea în octeți."
 
 #: settings.py:34
 msgid ""
@@ -991,16 +991,16 @@ msgstr "Imaginea: %s"
 #: views/document_page_views.py:280
 msgid "Disable the selected document page?"
 msgid_plural "Disable the selected document pages?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Dezactivați pagina documentului selectat?"
+msgstr[1] "Dezactivați paginile de document selectate?"
+msgstr[2] "Dezactivați paginile de document selectate?"
 
 #: views/document_page_views.py:310
 msgid "Enable the selected document page?"
 msgid_plural "Enable the selected document pages?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Activați pagina documentului selectat?"
+msgstr[1] "Activați paginile de document selectate?"
+msgstr[2] "Activați paginile de document selectate?"
 
 #: views/document_type_views.py:52
 #, python-format
@@ -1230,7 +1230,7 @@ msgstr "Eroare la ștergerea transformări : %(document)s; %(error)s."
 msgid ""
 "Error cloning the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
+msgstr "Eroare la clonarea transformărilor de pagini pentru document: %(document)s; %(error)s."
 
 #: views/document_views.py:528
 msgid "Transformations cloned successfully."

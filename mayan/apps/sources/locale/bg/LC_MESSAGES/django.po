@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 01:19-0400\n"
+"POT-Creation-Date: 2019-12-03 18:40-0400\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:10
+#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:13
 #: views.py:650
 msgid "Sources"
 msgstr "Източници"
@@ -592,17 +592,17 @@ msgstr "Обработете качването"
 msgid "Upload document"
 msgstr "Качване на документ"
 
-#: settings.py:15
+#: settings.py:20
 msgid "File path to the scanimage program used to control image scanners."
 msgstr "Пътека към файла на програмата за сканиране, използвана за управление на скенери за изображения."
 
-#: settings.py:22
+#: settings.py:27
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
 msgstr "Път към подкласа за съхранение, който да се използва при съхранение на кешираните файлове с изображения staging_file."
 
-#: settings.py:31
+#: settings.py:36
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr "Аргументи за подаване към SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 

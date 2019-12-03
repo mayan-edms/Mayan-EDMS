@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 01:16-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
+"POT-Creation-Date: 2019-12-03 18:37-0400\n"
+"PO-Revision-Date: 2019-12-03 10:52+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,7 @@ msgstr "Tip"
 
 #: apps.py:294
 msgid "Widget"
-msgstr ""
+msgstr "Widget"
 
 #: apps.py:303 apps.py:309
 msgid "Documents"
@@ -128,7 +128,7 @@ msgstr "Da"
 
 #: forms.py:178
 msgid "Select a transition to execute in the next step."
-msgstr ""
+msgstr "Selectați o tranziție de executat în pasul următor."
 
 #: forms.py:179 links.py:197 models.py:444 models.py:499 models.py:666
 msgid "Transition"
@@ -136,7 +136,7 @@ msgstr "Tranziție"
 
 #: handlers.py:19
 msgid "Workflow images"
-msgstr ""
+msgstr "Imagini de flux de lucru"
 
 #: handlers.py:78
 #, python-format
@@ -193,11 +193,11 @@ msgstr "Tranziţii"
 
 #: links.py:156
 msgid "Create field"
-msgstr ""
+msgstr "Creați câmp"
 
 #: links.py:176
 msgid "Fields"
-msgstr ""
+msgstr "Câmpuri"
 
 #: links.py:186
 msgid "Detail"
@@ -217,15 +217,15 @@ msgstr "Lansați toate fluxurile de lucru"
 
 #: literals.py:10
 msgid "Character"
-msgstr ""
+msgstr "Caracter"
 
 #: literals.py:11
 msgid "Number (Integer)"
-msgstr ""
+msgstr "Număr (număr întreg)"
 
 #: literals.py:21
 msgid "Text area"
-msgstr ""
+msgstr "Zona de text"
 
 #: literals.py:32
 msgid "On entry"
@@ -257,7 +257,7 @@ msgstr "Stare inițială"
 msgid ""
 "The state at which the workflow will start in. Only one state can be the "
 "initial state."
-msgstr ""
+msgstr "Starea în care va începe fluxul de lucru. O singură stare poate fi starea inițială."
 
 #: models.py:277
 msgid "Initial"
@@ -267,7 +267,7 @@ msgstr "Iniţială"
 msgid ""
 "The percent of completion that this state represents in relation to the "
 "workflow. Use numbers without the percent sign."
-msgstr ""
+msgstr "Procentul de finalizare pe care îl reprezintă această stare în raport cu fluxul de lucru. Utilizați numerele fără semnul procentual."
 
 #: models.py:289 models.py:348
 msgid "Workflow state"
@@ -283,7 +283,7 @@ msgstr "Un identificator simplu  pentru această acțiune."
 
 #: models.py:358
 msgid "At which moment of the state this action will execute."
-msgstr ""
+msgstr "În ce moment al stării se va executa această acțiune."
 
 #: models.py:359
 msgid "When"
@@ -329,25 +329,25 @@ msgstr "Tranziții ale fluxului de lucru"
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
-msgstr ""
+msgstr "Numele care va fi utilizat pentru a identifica acest câmp în alte părți ale sistemului de flux de lucru."
 
 #: models.py:457
 msgid "The field name that will be shown on the user interface."
-msgstr ""
+msgstr "Numele câmpului care va fi afișat pe interfața de utilizator."
 
 #: models.py:461
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
-msgstr ""
+msgstr "Un mesaj opțional care îi va ajuta pe utilizatori să înțeleagă mai bine scopul câmpului și datele pe care să le furnizeze."
 
 #: models.py:463
 msgid "Help text"
-msgstr ""
+msgstr "Text de ajutor"
 
 #: models.py:467
 msgid "Whether this fields needs to be filled out or not to proceed."
-msgstr ""
+msgstr "Specificați dacă aceste câmpuri trebuie completate sau nu."
 
 #: models.py:468
 msgid "Required"
@@ -355,19 +355,19 @@ msgstr "Necesară"
 
 #: models.py:472
 msgid "An optional class to change the default presentation of the field."
-msgstr ""
+msgstr "O clasă opțională pentru a modifica prezentarea implicită a câmpului."
 
 #: models.py:473
 msgid "Widget class"
-msgstr ""
+msgstr "Clasa widget"
 
 #: models.py:477
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
-msgstr ""
+msgstr "Un grup de argumente de cuvinte cheie pentru a personaliza widget-ul. Folosiți formatul YAML."
 
 #: models.py:480
 msgid "Widget keyword arguments"
-msgstr ""
+msgstr "Argumentele cuvintelor cheie pentru Widget "
 
 #: models.py:485 models.py:507
 msgid "Workflow transition trigger event"
@@ -387,7 +387,7 @@ msgstr "Document"
 
 #: models.py:525
 msgid "Context"
-msgstr ""
+msgstr "Context"
 
 #: models.py:531 models.py:659
 msgid "Workflow instance"
@@ -407,7 +407,7 @@ msgstr "Comentariu"
 
 #: models.py:673
 msgid "Extra data"
-msgstr ""
+msgstr "Date suplimentare"
 
 #: models.py:677
 msgid "Workflow instance log entry"
@@ -471,11 +471,11 @@ msgstr "Starea documentelor"
 
 #: queues.py:12
 msgid "Document states fast"
-msgstr ""
+msgstr "Stările documentului rapid"
 
 #: queues.py:21
 msgid "Generate workflow previews"
-msgstr ""
+msgstr "Generați previzualizări ale fluxului de lucru"
 
 #: serializers.py:22
 msgid "Primary key of the document type to be added."
@@ -519,23 +519,23 @@ msgstr "Cheia primară a tranziției care urmează să fie adăugată."
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
-msgstr ""
+msgstr "Pragul la care WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND va începe să șteargă cele mai vechi fișiere de memorie cache a imaginilor fluxului de lucru. Specificați dimensiunea în octeți."
 
 #: settings.py:27
 msgid ""
 "Time in seconds that the browser should cache the supplied workflow images. "
 "The default of 31559626 seconds corresponde to 1 year."
-msgstr ""
+msgstr "Timp în secunde care browser-ul trebuie să cacheze imaginile fluxului de lucru furnizate. Valoarea implicită de 31559626 secunde corespunde unui an."
 
 #: settings.py:34
 msgid ""
 "Path to the Storage subclass to use when storing the cached workflow image "
 "files."
-msgstr ""
+msgstr "Calea către subclasa de stocare pe care să o utilizați la stocarea fișierelor de imagine ale fluxului de lucru din cache"
 
 #: settings.py:42
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumente de transmis la WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: templates/document_states/forms/widgets/workflow_image.html:2
 msgid "Workflow preview"
@@ -583,7 +583,7 @@ msgstr "Trimiteţi"
 #: views/workflow_instance_views.py:127
 #, python-format
 msgid "Execute transition \"%(transition)s\" for workflow: %(workflow)s"
-msgstr ""
+msgstr "Executați tranziția \"%(transition)s\" pentru fluxul de lucru: %(workflow)s"
 
 #: views/workflow_instance_views.py:142
 msgid "Optional comment to attach to the transition."
@@ -596,7 +596,7 @@ msgstr "Selecta"
 #: views/workflow_instance_views.py:213
 #, python-format
 msgid "Select transition for workflow: %s"
-msgstr ""
+msgstr "Selectați tranziția pentru fluxul de lucru: %s"
 
 #: views/workflow_proxy_views.py:35
 msgid ""
@@ -752,33 +752,33 @@ msgstr "Evenimente de declanșare a fluxului de lucru pentru: %s"
 #: views/workflow_template_transition_views.py:246
 #, python-format
 msgid "Create a field for workflow transition: %s"
-msgstr ""
+msgstr "Creați un câmp pentru tranziția fluxului de lucru: %s"
 
 #: views/workflow_template_transition_views.py:276
 #, python-format
 msgid "Delete workflow transition field: %s"
-msgstr ""
+msgstr "Ștergeți câmpul de tranziție a fluxului de lucru: %s"
 
 #: views/workflow_template_transition_views.py:302
 #, python-format
 msgid "Edit workflow transition field: %s"
-msgstr ""
+msgstr "Editați câmpul de tranziție a fluxului de lucru: %s"
 
 #: views/workflow_template_transition_views.py:331
 msgid ""
 "Workflow transition fields allow adding data to the workflow's context. This"
 " additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
-msgstr ""
+msgstr "Câmpurile de tranziție ale fluxului de lucru permit adăugarea de date în contextul fluxului de lucru. Aceste date de context adiționale pot fi apoi utilizate de alte elemente ale sistemului de flux de lucru, cum ar fi acțiunile stării fluxului de lucru."
 
 #: views/workflow_template_transition_views.py:337
 msgid "There are no fields for this workflow transition"
-msgstr ""
+msgstr "Nu există câmpuri pentru această tranziție a fluxului de lucru"
 
 #: views/workflow_template_transition_views.py:341
 #, python-format
 msgid "Fields for workflow transition: %s"
-msgstr ""
+msgstr "Câmpuri pentru tranziția fluxului de lucru: %s"
 
 #: views/workflow_template_views.py:36
 msgid "Available workflows"
@@ -878,7 +878,7 @@ msgstr "Noua descriere care trebuie atribuită documentului. Poate fi un șir sa
 
 #: workflow_actions.py:39
 msgid "Modify document properties"
-msgstr ""
+msgstr "Modificați proprietățile documentului"
 
 #: workflow_actions.py:61
 #, python-format
@@ -910,7 +910,7 @@ msgstr "Pauză"
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
-msgstr ""
+msgstr "Timpul în secunde de așteptare după un răspuns. Poate fi o valoare statică sau un șablon."
 
 #: workflow_actions.py:111
 msgid "Payload"
@@ -936,7 +936,7 @@ msgid ""
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Nume de utilizator pe care să-l utilizăm pentru efectuarea cererii cu HTTP Basic Auth Poate fi o valoare statică sau un șablon. Șabloanele primesc instanța de intrare în jurnalul fluxului de lucru ca parte a contextului lor prin variabila „entry_log\". La rândul său, „entry_log” furnizează atributele „workflow_instance”, „datetime”, „tranziție”, „user” și „comment”."
 
 #: workflow_actions.py:137
 msgid "Password"
@@ -949,11 +949,11 @@ msgid ""
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Parolă de utilizat pentru efectuarea cererii cu HTTP Basic Auth. Poate fi o valoare statică sau un șablon. Șabloanele primesc instanța de intrare în jurnalul fluxului de lucru ca parte a contextului lor prin variabila „entry_log”. La rândul său, „entry_log” furnizează atributele „workflow_instance”, „datetime”, „tranziție”, „user” și „comment”."
 
 #: workflow_actions.py:150
 msgid "Headers"
-msgstr ""
+msgstr "Anteturi"
 
 #: workflow_actions.py:153
 msgid ""
@@ -962,7 +962,7 @@ msgid ""
 "instance as part of their context via the variable \"entry_log\". The "
 "\"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
 "\"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Anteturi de trimis cu cererea HTTP. Trebuie să fie în format JSON. Poate fi o valoare statică sau un șablon. Șabloanele primesc instanța de intrare în jurnalul fluxului de lucru ca parte a contextului lor prin variabila „entry_log”,. La rândul său, „entry_log” furnizează atributele „workflow_instance”, „datetime”, „tranziție”, „user” și „comment”."
 
 #: workflow_actions.py:167
 msgid "Perform a POST request"
@@ -971,9 +971,9 @@ msgstr "Efectuați o solicitare POST"
 #: workflow_actions.py:193
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
-msgstr ""
+msgstr "%(field_name)s eroare JSON: %(exception)s"
 
 #: workflow_actions.py:209
 #, python-format
 msgid "%(field_name)s template error: %(exception)s"
-msgstr ""
+msgstr "%(field_name)s eroare de șablon: %(exception)s"
