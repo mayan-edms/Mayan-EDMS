@@ -435,29 +435,67 @@ a i {
 /* Hide for mobile, show later */
 
 #menu-main {
-    display: none;
+    display: block;
     background-color: #2c3e50;
     border-right: 1px solid #18bc9c;
     bottom: 0;
-    left: 0;
+    left: -210px;
     overflow-x: hidden;
     overflow-y: auto;
     padding-top: 10px;
     position: fixed;
     top: 51px;
+    transition: left 0.3s;
     width: 210px;
     z-index: 1000;
+
+}
+
+#menu-main-button-close {
+    border-radius: 0;
+    border-top: 2px solid #1c2733;
+    border-bottom: 2px solid #1c2733;
+    bottom: 0;
+    display: block;
+    height: 40px;
+    position: relative;
+    text-align: center;
+    width: 209px;
+}
+
+#main-menu-button-open {
+    background-color: transparent;
+    border: 0;
+    border-right: 1px solid #95a5a6;
+    display: block;
+    padding: 6px 20px 0px 10px;
+    margin: 0 10px 0 -15px;
 }
 
 @media (min-width: 768px) {
     #menu-main {
         display: block;
+        left: 0;
+    }
+
+    #menu-main-button-close {
+        display: none;
+    }
+
+    #main-menu-button-open {
+        display: none;
+
     }
 
     .navbar-brand {
         text-align: center;
         width: 210px;
     }
+}
+
+.menu-main-opened {
+    display: block !important;
+    left: 0 !important;
 }
 
 .main .page-header {

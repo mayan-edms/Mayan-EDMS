@@ -305,6 +305,16 @@ class MayanApp {
                 $('.navbar-collapse').collapse('hide');
             }
         });
+
+        // Small screen main menu toggle to open
+        $('body').on('click', '#main-menu-button-open', function (event) {
+            $('#menu-main').addClass('menu-main-opened');
+        });
+
+        // Small screen main menu toggle to close
+        $('body').on('click', '#menu-main-button-close', function (event) {
+            $('#menu-main').removeClass('menu-main-opened');
+        });
     }
 
     setupNewWindowAnchor () {

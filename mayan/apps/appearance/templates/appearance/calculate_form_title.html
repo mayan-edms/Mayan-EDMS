@@ -5,13 +5,31 @@
 {% common_calculate_title as result %}
 
 {% if not non_html_title %}
-    <h3 title='{{ result.title_full }}'>
+    <div style="display: flex;">
+        <button id="main-menu-button-open">
+            <span class="sr-only">{% trans 'Open main menu' %}</span>
+            <i aria-hidden="true" data-hidden="true" class="fa fa-bars"></i>
+        </button>
 {% endif %}
-    {{ result.title }}
+
 {% if not non_html_title %}
-    </h3>
-    {% if subtitle %}
-        <small>{{ subtitle }}</small>
-    {% endif %}
+        <div>
+            <h3 id="content-title" title='{{ result.title_full }}'>
+{% endif %}
+
+                {{ result.title }}
+
+{% if not non_html_title %}
+            </h3>
+            {% if subtitle %}
+                <p>
+                    <small>{{ subtitle }}</small>
+                </p>
+            {% endif %}
+{% endif %}
+
+{% if not non_html_title %}
+        </div>
+    </div>
     <hr/>
 {% endif %}
