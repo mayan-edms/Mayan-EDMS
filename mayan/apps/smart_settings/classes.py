@@ -253,7 +253,7 @@ class Setting(object):
         if not cls._config_file_cache:
             cls._config_file_cache = read_configuration_file(
                 filepath=settings.CONFIGURATION_FILEPATH
-            )
+            ) or {}
         return cls._config_file_cache
 
     @classmethod
