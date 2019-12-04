@@ -78,13 +78,6 @@ class MayanApp {
         }
     }
 
-    doBodyAdjust () {
-        // Adjust the height of the body-spacer to move content elements
-        // up or down when the navbar changes size.
-        const navbarSize = 60;
-        $('.body-spacer').css('height', $('.navbar').height() - navbarSize);
-    }
-
     doRefreshAJAXMenu (options) {
         $.ajax({
             complete: function() {
@@ -180,7 +173,6 @@ class MayanApp {
         var self = this;
 
         this.setupAJAXSpinner();
-        this.setupBodyAdjust();
         this.setupFormHotkeys();
         this.setupFullHeightResizing();
         this.setupItemsSelector();
@@ -213,14 +205,6 @@ class MayanApp {
                 $(self.ajaxSpinnerSeletor).fadeOut();
                 self.ajaxExecuting = false;
             });
-        });
-    }
-
-    setupBodyAdjust () {
-        var self = this;
-
-        this.window.resize(function() {
-            self.doBodyAdjust();
         });
     }
 

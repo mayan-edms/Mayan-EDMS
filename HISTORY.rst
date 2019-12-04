@@ -6,6 +6,7 @@
 - Fix username color on mobile screens.
 - Hide the multi item selection help text on mobile screens.
 - Update Django to version 1.11.26.
+- Remove body spacer HTML and JavaScript. Not needed with the new UI.
 
 3.3 (2019-12-03)
 ================
