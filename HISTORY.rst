@@ -7,6 +7,10 @@
 - Hide the multi item selection help text on mobile screens.
 - Update Django to version 1.11.26.
 - Remove body spacer HTML and JavaScript. Not needed with the new UI.
+- Change the required permission to view the document parsing error
+  from "View document parsed content" to "Parse document". This way only
+  users with the access to affect the parsed content are the only ones
+  that can view what errors occurred during parsing.
 
 3.3 (2019-12-03)
 ================

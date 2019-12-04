@@ -79,6 +79,6 @@ link_document_type_submit = Link(
 )
 link_error_list = Link(
     icon_class_path='mayan.apps.document_parsing.icons.icon_link_error_list',
-    permissions=(permission_content_view,), text=_('Parsing errors'),
+    permissions=(permission_parse_document,), text=_('Parsing errors'),
     view='document_parsing:error_list'
 )

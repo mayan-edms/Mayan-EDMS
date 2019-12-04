@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
@@ -107,23 +106,23 @@ class DocumentPageContentView(SingleObjectDetailView):
         }
 
 
-class DocumentParsingErrorsListView(SingleObjectListView):
-    view_permission = permission_content_view
-
-    def get_document(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+class DocumentParsingErrorsListView(
+    ExternalObjectMixin, SingleObjectListView
+):
+    external_object_class = Document
+    external_object_permission = permission_parse_document
 
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'object': self.get_document(),
+            'object': self.external_object,
             'title': _(
                 'Parsing errors for document: %s'
-            ) % self.get_document(),
+            ) % self.external_object,
         }
 
     def get_source_queryset(self):
-        return self.get_document().latest_version.parsing_errors.all()
+        return self.external_object.latest_version.parsing_errors.all()
 
 
 class DocumentSubmitView(MultipleObjectConfirmActionView):
@@ -224,7 +223,7 @@ class ParseErrorListView(SingleObjectListView):
         'hide_object': True,
         'title': _('Parsing errors'),
     }
-    view_permission = permission_document_type_parsing_setup
+    view_permission = permission_parse_document
 
     def get_source_queryset(self):
         return DocumentVersionParseError.objects.all()
