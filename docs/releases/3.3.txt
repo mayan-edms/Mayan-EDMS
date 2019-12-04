@@ -87,7 +87,7 @@ task monitor tool.
 
 Several entrypoint commands were added. These are ``run_celery``,
 ``run_frontend``, ``run_tests``, ``run_worker``. These commands allow
-running containers with a specific purpose. Adding more container with the
+running containers with a specific purpose. Adding more containers with the
 ``run_worker`` command is a simple way to scale up an existing installation.
 
 All Docker scripts were updated to use the Alpine Linux versions of PostgreSQL

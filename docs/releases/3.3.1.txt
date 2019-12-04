@@ -1,0 +1,175 @@
+Version 3.3.1
+=============
+
+Released: December 4, 2019
+
+
+Changes
+-------
+
+
+Dependencies
+^^^^^^^^^^^^
+
+Update Django to version 1.11.26.
+
+
+Docker installer
+^^^^^^^^^^^^^^^^
+
+Update the Celery broker environment variable in the docker installer.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+Add preparestatic command to development deployment documentation.
+
+
+Permissions
+^^^^^^^^^^^
+
+Change the required permission to view the document parsing error
+from "View document parsed content" to "Parse document". This way only
+users with the access to affect the parsed content are the only ones
+that can view what errors occurred during parsing.
+
+
+Settings
+
+^^^^^^^^
+Fix error with the command ``savesettings`` when there are no existing config
+files.
+
+
+Sources
+^^^^^^^
+
+Add migration for the ``SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND_ARGUMENTS``
+setting.
+
+
+User interface
+^^^^^^^^^^^^^^
+Fix the username color label on mobile screens.
+
+Hide the multi item selection help text on mobile screens.
+
+Remove body spacer HTML and JavaScript. Not needed with the new UI.
+
+
+Removals
+--------
+
+- HTML auto body spacer feature.
+
+
+Upgrading from a previous version
+---------------------------------
+
+If installed via Python's PIP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Update the virtualenv to use Python 3::
+
+    sudo -u mayan virtualenv /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Remove deprecated requirements::
+
+    sudo -u mayan curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u mayan |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+#. Update the Mayan EDMS Python package::
+
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.1
+
+the requirements will also be updated automatically.
+
+
+Using Git
+^^^^^^^^^
+
+#. If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    git reset --hard HEAD
+    git pull
+
+   otherwise download the compressed archived and decompress it overriding the
+   existing installation.
+
+#. Remove deprecated requirements::
+
+    pip uninstall -y -r removals.txt
+
+#. Next upgrade/add the new requirements::
+
+    pip install --upgrade -r requirements.txt
+
+
+Common steps
+^^^^^^^^^^^^
+
+Perform these steps after updating the code from either step above.
+
+#. Make a backup of your supervisord file::
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout::
+
+       sudo sh -c "MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord > |MAYAN_SUPERVISOR_CONF|"
+
+   or::
+
+       sudo sh -c "MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord > |MAYAN_SUPERVISOR_CONF|"
+
+#. Edit the supervisord configuration file and update any setting specific to your installation::
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+#. Migrate existing database schema with::
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or::
+
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Add new static media::
+
+       sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| preparestatic --noinput
+
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Bugs fixed or issues closed
+---------------------------
+
+- :gitlab-issue:`690` Update to 3.3 problem with mayan-edms.py
+- :gitlab-issue:`692` Deploying a development version
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

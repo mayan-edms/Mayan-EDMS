@@ -1,8 +1,10 @@
-3.3.1 (2019-XX-XX)
+3.3.1 (2019-12-04)
 ==================
 - Update Celery broker environment variable in the docker installer.
 - Add preparestatic command to documentation. GitLab issue #692.
   Thanks to Christopher S. Meiklejohn (@cmeiklejohn2) for the report.
+- Add sources setting migration.
+- Savesettings command fixes.
 - Fix username color on mobile screens.
 - Hide the multi item selection help text on mobile screens.
 - Update Django to version 1.11.26.
