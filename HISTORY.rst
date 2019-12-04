@@ -4,6 +4,7 @@
 - Add preparestatic command to documentation. GitLab issue #692.
   Thanks to Christopher S. Meiklejohn (@cmeiklejohn2) for the report.
 - Fix username color on mobile screens.
+- Hide the multi item selection help text on mobile screens.
 
 3.3 (2019-12-03)
 ================

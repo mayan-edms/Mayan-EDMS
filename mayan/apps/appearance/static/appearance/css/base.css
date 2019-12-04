@@ -476,6 +476,10 @@ a i {
     color: white;
 }
 
+#multi-item-title-responsible-wrapper {
+    display: none;
+}
+
 @media (min-width: 768px) {
     #menu-main {
         display: block;
@@ -493,6 +497,10 @@ a i {
     #main-menu-button-open {
         display: none;
 
+    }
+
+    #multi-item-title-responsible-wrapper {
+        display: block;
     }
 
     .navbar-brand {

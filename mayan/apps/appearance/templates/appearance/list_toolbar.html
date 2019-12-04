@@ -54,7 +54,9 @@
     {% endif %}
 
     {% if links_multi_menus_results %}
-        <p class="pull-right" id="multi-item-title" style="line-height: 16px; padding-top: 8px;">{% trans 'Select items to activate bulk actions. Use Shift + click to select many.' %}</p>
+        <div id="multi-item-title-responsible-wrapper">
+            <p class="pull-right" id="multi-item-title" style="line-height: 16px; padding-top: 8px;">{% trans 'Select items to activate bulk actions. Use Shift + click to select many.' %}</p>
+        </div>
 
         <div class="pull-right btn-group" id="multi-item-actions" style="display: none;">
             <button aria-expanded="true" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" type="button">
