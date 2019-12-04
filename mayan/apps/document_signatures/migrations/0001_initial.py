@@ -38,7 +38,8 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'document_version', models.ForeignKey(
-                        editable=False, to='documents.DocumentVersion',
+                        editable=False, on_delete=models.CASCADE,
+                        to='documents.DocumentVersion',
                         verbose_name='Document version'
                     )
                 ),

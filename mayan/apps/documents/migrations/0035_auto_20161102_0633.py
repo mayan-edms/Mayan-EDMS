@@ -15,8 +15,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'id', models.AutoField(
-                        verbose_name='ID', serialize=False,
-                        auto_created=True, primary_key=True
+                        auto_created=True, primary_key=True,
+                        serialize=False, verbose_name='ID'
                     )
                 ),
                 (
@@ -46,8 +46,8 @@ class Migration(migrations.Migration):
             model_name='documentpagecachedimage',
             name='document_page',
             field=models.ForeignKey(
-                related_name='cached_images', verbose_name='Document page',
-                to='documents.DocumentPage'
+                on_delete=models.CASCADE, related_name='cached_images',
+                to='documents.DocumentPage', verbose_name='Document page'
             ),
         ),
     ]

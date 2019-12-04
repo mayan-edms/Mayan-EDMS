@@ -24,6 +24,7 @@ class Migration(migrations.Migration):
                 ('object_id', models.PositiveIntegerField()),
                 (
                     'content_type', models.ForeignKey(
+                        on_delete=models.CASCADE,
                         related_name='object_content_type',
                         to='contenttypes.ContentType'
                     )
@@ -36,8 +37,8 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'role', models.ForeignKey(
-                        related_name='acls', verbose_name='Role',
-                        to='permissions.Role'
+                        on_delete=models.CASCADE, related_name='acls',
+                        to='permissions.Role', verbose_name='Role'
                     )
                 ),
             ],

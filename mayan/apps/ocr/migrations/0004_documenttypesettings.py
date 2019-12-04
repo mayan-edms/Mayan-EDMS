@@ -33,8 +33,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'id', models.AutoField(
-                        verbose_name='ID', serialize=False, auto_created=True,
-                        primary_key=True
+                        auto_created=True, primary_key=True, serialize=False,
+                        verbose_name='ID'
                     )
                 ),
                 (
@@ -46,9 +46,10 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'document_type', models.OneToOneField(
+                        on_delete=models.CASCADE,
                         related_name='ocr_settings',
-                        verbose_name='Document type',
-                        to='documents.DocumentType'
+                        to='documents.DocumentType',
+                        verbose_name='Document type'
                     )
                 ),
             ],

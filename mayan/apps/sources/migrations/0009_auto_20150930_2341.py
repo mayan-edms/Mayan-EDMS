@@ -15,11 +15,12 @@ class Migration(migrations.Migration):
             model_name='emailbasemodel',
             name='from_metadata_type',
             field=models.ForeignKey(
-                related_name='email_from', blank=True,
+                blank=True, help_text='Select a metadata type valid for '
+                'the document type selected in which to store the '
+                'email\'s "from" value.', null=True,
+                on_delete=models.CASCADE, related_name='email_from',
                 to='metadata.MetadataType',
-                help_text='Select a metadata type valid for the document '
-                'type selected in which to store the email\'s "from" value.',
-                null=True, verbose_name='From metadata type'
+                verbose_name='From metadata type'
             ),
             preserve_default=True,
         ),
@@ -27,10 +28,11 @@ class Migration(migrations.Migration):
             model_name='emailbasemodel',
             name='subject_metadata_type',
             field=models.ForeignKey(
-                related_name='email_subject', blank=True,
-                to='metadata.MetadataType', help_text='Select a metadata '
+                blank=True, help_text='Select a metadata '
                 'type valid for the document type selected in which to '
-                'store the email\'s subject.', null=True,
+                'store the email\'s subject.',
+                null=True, on_delete=models.CASCADE,
+                related_name='email_subject', to='metadata.MetadataType',
                 verbose_name='Subject metadata type'
             ),
             preserve_default=True,

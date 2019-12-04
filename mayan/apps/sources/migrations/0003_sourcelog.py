@@ -31,8 +31,8 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'source', models.ForeignKey(
-                        related_name='logs', verbose_name='Source',
-                        to='sources.Source'
+                        on_delete=models.CASCADE, related_name='logs',
+                        to='sources.Source', verbose_name='Source'
                     )
                 ),
             ],

@@ -29,14 +29,15 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'document', models.ForeignKey(
-                        related_name='comments', verbose_name='Document',
-                        to='documents.Document'
+                        on_delete=models.CASCADE, related_name='comments',
+                        to='documents.Document', verbose_name='Document'
                     )
                 ),
                 (
                     'user', models.ForeignKey(
-                        related_name='comments', editable=False,
-                        to=settings.AUTH_USER_MODEL, verbose_name='User'
+                        editable=False, on_delete=models.CASCADE,
+                        related_name='comments', to=settings.AUTH_USER_MODEL,
+                        verbose_name='User'
                     )
                 ),
             ],

@@ -32,8 +32,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'document_version', models.ForeignKey(
-                        verbose_name='Document version',
-                        to='documents.DocumentVersion'
+                        on_delete=models.CASCADE,
+                        to='documents.DocumentVersion',
+                        verbose_name='Document version'
                     )
                 ),
             ],

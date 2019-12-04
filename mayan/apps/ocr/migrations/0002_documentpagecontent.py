@@ -27,9 +27,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'document_page', models.OneToOneField(
-                        related_name='ocr_content',
-                        verbose_name='Document page',
-                        to='documents.DocumentPage'
+                        on_delete=models.CASCADE, related_name='ocr_content',
+                        to='documents.DocumentPage',
+                        verbose_name='Document page'
                     )
                 ),
             ],

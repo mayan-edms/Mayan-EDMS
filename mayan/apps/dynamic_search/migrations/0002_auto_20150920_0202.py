@@ -15,8 +15,8 @@ class Migration(migrations.Migration):
             model_name='recentsearch',
             name='user',
             field=models.ForeignKey(
-                editable=False, to=settings.AUTH_USER_MODEL,
-                verbose_name='User'
+                editable=False, on_delete=models.CASCADE,
+                to=settings.AUTH_USER_MODEL, verbose_name='User'
             ),
             preserve_default=True,
         ),

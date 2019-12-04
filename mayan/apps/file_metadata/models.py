@@ -3,10 +3,9 @@ from __future__ import unicode_literals
 import logging
 
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
-from django.utils.translation import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import DocumentType, DocumentVersion

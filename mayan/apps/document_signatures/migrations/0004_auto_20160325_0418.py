@@ -14,7 +14,8 @@ class Migration(migrations.Migration):
             model_name='documentversionsignature',
             name='document_version',
             field=models.ForeignKey(
-                editable=False, to='documents.DocumentVersion',
+                editable=False, on_delete=models.CASCADE,
+                to='documents.DocumentVersion',
                 verbose_name='Document version'
             ),
         ),
@@ -30,8 +31,8 @@ class Migration(migrations.Migration):
             model_name='signaturebasemodel',
             name='document_version',
             field=models.ForeignKey(
-                related_name='signatures', editable=False,
-                to='documents.DocumentVersion',
+                editable=False, on_delete=models.CASCADE,
+                related_name='signatures', to='documents.DocumentVersion',
                 verbose_name='Document version'
             ),
         ),

@@ -43,7 +43,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'source_ptr', models.OneToOneField(
-                        parent_link=True, auto_created=True, primary_key=True,
+                        auto_created=True, on_delete=models.CASCADE,
+                        parent_link=True, primary_key=True,
                         serialize=False, to='sources.Source'
                     )
                 ),
@@ -59,7 +60,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'outofprocesssource_ptr', models.OneToOneField(
-                        parent_link=True, auto_created=True, primary_key=True,
+                        auto_created=True, on_delete=models.CASCADE,
+                        parent_link=True, primary_key=True,
                         serialize=False, to='sources.OutOfProcessSource'
                     )
                 ),
@@ -88,7 +90,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'intervalbasemodel_ptr', models.OneToOneField(
-                        parent_link=True, auto_created=True, primary_key=True,
+                        auto_created=True, on_delete=models.CASCADE,
+                        parent_link=True, primary_key=True,
                         serialize=False, to='sources.IntervalBaseModel'
                     )
                 ),
@@ -131,7 +134,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'emailbasemodel_ptr', models.OneToOneField(
-                        parent_link=True, auto_created=True, primary_key=True,
+                        auto_created=True, on_delete=models.CASCADE,
+                        parent_link=True, primary_key=True,
                         serialize=False, to='sources.EmailBaseModel'
                     )
                 ),
@@ -152,7 +156,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'emailbasemodel_ptr', models.OneToOneField(
-                        parent_link=True, auto_created=True, primary_key=True,
+                        auto_created=True, on_delete=models.CASCADE,
+                        parent_link=True, primary_key=True,
                         serialize=False, to='sources.EmailBaseModel'
                     )
                 ),
@@ -175,7 +180,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'source_ptr', models.OneToOneField(
-                        parent_link=True, auto_created=True, primary_key=True,
+                        auto_created=True, on_delete=models.CASCADE,
+                        parent_link=True, primary_key=True,
                         serialize=False, to='sources.Source'
                     )
                 ),
@@ -222,6 +228,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'content_type', models.ForeignKey(
+                        on_delete=models.CASCADE,
                         to='contenttypes.ContentType'
                     )
                 ),
@@ -238,7 +245,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'interactivesource_ptr', models.OneToOneField(
-                        parent_link=True, auto_created=True, primary_key=True,
+                        auto_created=True, parent_link=True,
+                        primary_key=True, on_delete=models.CASCADE,
                         serialize=False, to='sources.InteractiveSource'
                     )
                 ),
@@ -289,7 +297,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'intervalbasemodel_ptr', models.OneToOneField(
-                        parent_link=True, auto_created=True, primary_key=True,
+                        auto_created=True, parent_link=True,
+                        primary_key=True, on_delete=models.CASCADE,
                         serialize=False, to='sources.IntervalBaseModel'
                     )
                 ),
@@ -311,7 +320,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'interactivesource_ptr', models.OneToOneField(
-                        parent_link=True, auto_created=True, primary_key=True,
+                        auto_created=True, on_delete=models.CASCADE,
+                        parent_link=True, primary_key=True,
                         serialize=False, to='sources.InteractiveSource'
                     )
                 ),
@@ -335,9 +345,10 @@ class Migration(migrations.Migration):
             model_name='intervalbasemodel',
             name='document_type',
             field=models.ForeignKey(
-                verbose_name='Document type', to='documents.DocumentType',
+                on_delete=models.CASCADE,
                 help_text='Assign a document type to documents uploaded from '
-                'this source.'
+                'this source.', to='documents.DocumentType',
+                verbose_name='Document type'
             ),
             preserve_default=True,
         ),

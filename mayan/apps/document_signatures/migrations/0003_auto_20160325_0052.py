@@ -74,8 +74,9 @@ class Migration(migrations.Migration):
             model_name='documentversionsignature',
             name='document_version',
             field=models.ForeignKey(
-                related_name='signature', editable=False,
-                to='documents.DocumentVersion', verbose_name='Document version'
+                editable=False, on_delete=models.CASCADE,
+                related_name='signature', to='documents.DocumentVersion',
+                verbose_name='Document version'
             ),
         ),
         migrations.CreateModel(
@@ -83,8 +84,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'signaturebasemodel_ptr', models.OneToOneField(
-                        parent_link=True, auto_created=True, primary_key=True,
-                        serialize=False,
+                        auto_created=True, on_delete=models.CASCADE,
+                        parent_link=True, primary_key=True, serialize=False,
                         to='document_signatures.SignatureBaseModel'
                     )
                 ),
@@ -107,7 +108,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'signaturebasemodel_ptr', models.OneToOneField(
-                        parent_link=True, auto_created=True, primary_key=True,
+                        auto_created=True, parent_link=True,
+                        primary_key=True, on_delete=models.CASCADE,
                         serialize=False,
                         to='document_signatures.SignatureBaseModel'
                     )
@@ -123,8 +125,10 @@ class Migration(migrations.Migration):
             model_name='signaturebasemodel',
             name='document_version',
             field=models.ForeignKey(
-                related_name='signaturebasemodel', editable=False,
-                to='documents.DocumentVersion', verbose_name='Document version'
+                editable=False, on_delete=models.CASCADE,
+                related_name='signaturebasemodel',
+                to='documents.DocumentVersion',
+                verbose_name='Document version'
             ),
         ),
     ]

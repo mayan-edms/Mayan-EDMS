@@ -23,7 +23,8 @@ class Migration(migrations.Migration):
             model_name='documentcheckout',
             name='user',
             field=models.ForeignKey(
-                verbose_name='User', to=settings.AUTH_USER_MODEL
+                on_delete=models.CASCADE, to=settings.AUTH_USER_MODEL,
+                verbose_name='User'
             ),
             preserve_default=True,
         ),
