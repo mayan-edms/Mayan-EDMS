@@ -866,6 +866,7 @@ class Text(Link):
     Menu text. Renders to a plain <li> tag
     """
     def __init__(self, *args, **kwargs):
+        self.html_extra_classes = kwargs.get('html_extra_classes')
         self.icon = None
         self.text = kwargs.get('text')
         self.view = None

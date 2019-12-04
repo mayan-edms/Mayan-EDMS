@@ -472,10 +472,18 @@ a i {
     margin: 0 10px 0 -15px;
 }
 
+.menu-user-name {
+    color: white;
+}
+
 @media (min-width: 768px) {
     #menu-main {
         display: block;
         left: 0;
+    }
+
+    .menu-user-name {
+        color: inherit;
     }
 
     #menu-main-button-close {

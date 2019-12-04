@@ -97,4 +97,6 @@ link_user_setup = Link(
     view='user_management:user_list'
 )
 separator_user_label = Separator()
-text_user_label = Text(text=get_user_label_text)
+text_user_label = Text(
+    html_extra_classes='menu-user-name', text=get_user_label_text
+)
