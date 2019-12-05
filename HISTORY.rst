@@ -1,4 +1,4 @@
-3.3.3 (2019-XX-XX)
+3.3.3 (2019-12-05)
 ==================
 - Fix transformation label display in transformation create view.
 - Remove supervisor environment variable expansion.
