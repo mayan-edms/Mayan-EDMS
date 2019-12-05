@@ -87,7 +87,7 @@ Upgrade steps from any previous version of Mayan EDMS
 
    .. code-block:: bash
 
-    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.1
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.2
 
    the requirements will also be updated automatically.
 
