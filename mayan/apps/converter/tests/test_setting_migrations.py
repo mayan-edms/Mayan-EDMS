@@ -8,13 +8,13 @@ from mayan.apps.common.tests.mixins import EnvironmentTestCaseMixin
 from mayan.apps.smart_settings.classes import Setting
 from mayan.apps.storage.utils import NamedTemporaryFile
 
-from ..settings import setting_storage_backend_arguments
+from ..settings import setting_graphics_backend_arguments
 
 
-class DocumentSignaturesSettingMigrationTestCase(
+class ConverterSettingMigrationTestCase(
     EnvironmentTestCaseMixin, BaseTestCase
 ):
-    def test_signatures_storage_backend_arguments_0001_migration(self):
+    def test_converter_graphics_backend_arguments_0001_migration(self):
 
         test_value = {'location': 'test value'}
 
@@ -23,7 +23,7 @@ class DocumentSignaturesSettingMigrationTestCase(
             file_object.write(
                 force_bytes(
                     '{}: {}'.format(
-                        'SIGNATURES_STORAGE_BACKEND_ARGUMENTS',
+                        'CONVERTER_GRAPHICS_BACKEND_ARGUMENTS',
                         '"{}"'.format(
                             Setting.serialize_value(value=test_value)
                         )
@@ -34,6 +34,6 @@ class DocumentSignaturesSettingMigrationTestCase(
             Setting._config_file_cache = None
 
             self.assertEqual(
-                setting_storage_backend_arguments.value,
+                setting_graphics_backend_arguments.value,
                 test_value
             )
