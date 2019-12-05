@@ -3,6 +3,8 @@
 - Fix transformation label display in transformation create view.
 - Remove supervisor environment variable expansion.
 - Don't exit GitLab makefile target if the branch to delete doesn't exist.
+- Automatically create transformations from the selection form that
+  doesn't have arguments.
 
 3.3.2 (2019-12-05)
 ==================
