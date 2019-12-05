@@ -158,9 +158,9 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: bash
 
-       sudo mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
        MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
-       |MAYAN_BIN| platformtemplate supervisord > |MAYAN_SUPERVISOR_CONF|
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
 
 
 #. Configure Redis:
