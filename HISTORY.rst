@@ -3,6 +3,7 @@
 - Improve setting migration method matching. Avoid executing
   a migrations for settings with similar but shorter names.
 - Fix sources app setting migrations.
+- Add OCR app setting migrations.
 
 3.3.1 (2019-12-04)
 ==================
