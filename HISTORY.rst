@@ -7,6 +7,7 @@
   doesn't have arguments.
 - Add missing message displays for transformation error creation and
   not argument transformation creation.
+- Mark missing text for document indexing as translatable.
 
 3.3.2 (2019-12-05)
 ==================
