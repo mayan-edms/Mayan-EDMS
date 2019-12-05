@@ -1,6 +1,8 @@
 3.3.3 (2019-XX-XX)
 ==================
 - Fix transformation label display in transformation create view.
+- Remove supervisor environment variable expansion.
+- Don't exit GitLab makefile target if the branch to delete doesn't exist.
 
 3.3.2 (2019-12-05)
 ==================
