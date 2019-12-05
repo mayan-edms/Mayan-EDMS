@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.urls import reverse
@@ -57,6 +58,10 @@ class TransformationCreateView(
             instance.save()
         except Exception as exception:
             logger.debug('Invalid form, exception: %s', exception)
+            messages.error(
+                message=_('Error creating transforamtion: %s.') % exception,
+                request=self.request
+            )
             return super(TransformationCreateView, self).form_invalid(form)
         else:
             return super(TransformationCreateView, self).form_valid(form)
@@ -282,6 +287,11 @@ class TransformationSelectView(
             )
             object_layer.transformations.create(
                 name=form.cleaned_data['transformation']
+            )
+
+            messages.success(
+                message=_('Transformation created successfully.'),
+                request=self.request
             )
 
             return HttpResponseRedirect(

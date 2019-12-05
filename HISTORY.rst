@@ -5,6 +5,8 @@
 - Don't exit GitLab makefile target if the branch to delete doesn't exist.
 - Automatically create transformations from the selection form that
   doesn't have arguments.
+- Add missing message displays for transformation error creation and
+  not argument transformation creation.
 
 3.3.2 (2019-12-05)
 ==================
