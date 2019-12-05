@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:39-0400\n"
+"POT-Creation-Date: 2019-12-05 01:05-0400\n"
 "PO-Revision-Date: 2019-09-24 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:20 links.py:26
-#: permissions.py:7 queues.py:8 settings.py:7
+#: permissions.py:7 queues.py:8 settings.py:10
 msgid "OCR"
 msgstr "OCR"
 
@@ -158,11 +158,11 @@ msgstr "تغییر نوع سند تنظیمات OCR"
 msgid "Document version OCR"
 msgstr "نسخه اسناد OCR"
 
-#: settings.py:12
+#: settings.py:17
 msgid "Full path to the backend to be used to do OCR."
 msgstr "محل اجرای نرم افزار OCR"
 
-#: settings.py:21
+#: settings.py:26
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "انواع سند جدید را برای انجام OCR به طور پیش فرض به صورت خودکار تنظیم کنید."
 

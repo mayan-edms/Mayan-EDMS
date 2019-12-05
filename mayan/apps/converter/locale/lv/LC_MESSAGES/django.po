@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:36-0400\n"
-"PO-Revision-Date: 2019-12-03 05:22+0000\n"
+"POT-Creation-Date: 2019-12-05 01:01-0400\n"
+"PO-Revision-Date: 2019-12-04 06:49+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -52,7 +52,7 @@ msgstr "Pārveidojumi ļauj mainīt dokumentu vizuālo izskatu, neveicot pastāv
 
 #: classes.py:375
 msgid "transformation"
-msgstr ""
+msgstr "pārvērtība"
 
 #: dependencies.py:16
 msgid "Utility from the poppler-utils package used to inspect PDF files."
@@ -66,7 +66,7 @@ msgstr "Utility no popper-utils paketes, ko izmanto, lai no PDF failiem izņemtu
 
 #: forms.py:24
 msgid "Available transformations for this layer."
-msgstr ""
+msgstr "Pieejamās šī slāņa pārvērtības."
 
 #: forms.py:61
 #, python-format
@@ -75,7 +75,7 @@ msgstr "\"%s\" nav derīgs ieraksts."
 
 #: layers.py:12
 msgid "Saved transformations"
-msgstr ""
+msgstr "Saglabātās pārvērtības"
 
 #: links.py:18
 msgid "Delete"

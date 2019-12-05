@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:37-0400\n"
-"PO-Revision-Date: 2019-12-03 05:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-05 01:02-0400\n"
+"PO-Revision-Date: 2019-12-04 16:58+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -147,7 +147,7 @@ msgstr "Дата на подписване"
 
 #: models.py:47
 msgid "ID of the key that will be used to sign the document."
-msgstr ""
+msgstr "Идентификационен номер на ключа, който ще бъде използван за подписване на документа."
 
 #: models.py:57
 msgid "Public key fingerprint"
@@ -179,7 +179,7 @@ msgstr "Вградени подписи на версия на документ�
 
 #: models.py:135
 msgid "Signature file previously generated."
-msgstr ""
+msgstr "Предварително създаден файл с подпис."
 
 #: models.py:137
 msgid "Signature file"
@@ -263,7 +263,7 @@ msgstr "Версията на документа е подписана успе�
 
 #: views.py:118 views.py:207
 msgid "Sign"
-msgstr ""
+msgstr "Подпишете"
 
 #: views.py:120
 #, python-format
@@ -320,12 +320,12 @@ msgstr "Проверката на подписа успешно е постав�
 
 #: workflow_actions.py:23
 msgid "Private key that will be used to sign the document version."
-msgstr ""
+msgstr "Личен ключ, който ще се използва за подписване на версията на документа."
 
 #: workflow_actions.py:38
 msgid "Sign document (detached)"
-msgstr ""
+msgstr "Документ за подписване (отделен)"
 
 #: workflow_actions.py:68
 msgid "Sign document (embedded)"
-msgstr ""
+msgstr "Документ за подписване (вграден)"

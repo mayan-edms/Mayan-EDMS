@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:37-0400\n"
+"POT-Creation-Date: 2019-12-05 01:02-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2019\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -69,7 +69,7 @@ msgstr "Contenus"
 msgid "Delete parsed content"
 msgstr "Supprimer le contenu analysé"
 
-#: links.py:44 links.py:82 views.py:225
+#: links.py:44 links.py:82 views.py:224
 msgid "Parsing errors"
 msgstr "Erreurs d'analyse"
 
@@ -185,59 +185,59 @@ msgstr ""
 "Chemin vers l'exécutable poppler pdftotext, utilisé pour extraire du texte à"
 " partir des fichiers PDF."
 
-#: views.py:37
+#: views.py:36
 msgid "Delete the parsed content of the selected document?"
 msgid_plural "Delete the parsed content of the selected documents?"
 msgstr[0] "Supprimer le contenu analysé du document sélectionné?"
 msgstr[1] "Supprimer le contenu analysé des documents sélectionnés?"
 
-#: views.py:71
+#: views.py:70
 #, python-format
 msgid "Content for document: %s"
 msgstr "Contenu du document : %s"
 
-#: views.py:106
+#: views.py:105
 #, python-format
 msgid "Content for document page: %s"
 msgstr "Contenu pour la page du document: %s"
 
-#: views.py:121
+#: views.py:120
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "Erreurs d'analyse pour le document : %s"
 
-#: views.py:133
+#: views.py:132
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)d document ajouté à la file d'attente d'analyse"
 
-#: views.py:136
+#: views.py:135
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d documents ajoutés à la file d'attente d'analyse"
 
-#: views.py:144
+#: views.py:143
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
 msgstr[0] "Ajouter %(count)d document à la file d'attente d'analyse ?"
 msgstr[1] "Ajouter %(count)d documents à la file d'attente d'analyse"
 
-#: views.py:157
+#: views.py:156
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "Ajouter le document \"%s\" à la file d'attente d'analyse"
 
-#: views.py:182
+#: views.py:181
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr "Modifiez les paramètres d'analyse pour le type de document: %s."
 
-#: views.py:192
+#: views.py:191
 msgid "Submit all documents of a type for parsing."
 msgstr "Soumettre tous les documents d'un type pour analyse."
 
-#: views.py:213
+#: views.py:212
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d documents ajoutés dans la file d'attente pour analyse."

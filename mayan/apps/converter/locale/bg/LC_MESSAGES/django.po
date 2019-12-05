@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:36-0400\n"
-"PO-Revision-Date: 2019-12-03 05:22+0000\n"
-"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
+"POT-Creation-Date: 2019-12-05 01:01-0400\n"
+"PO-Revision-Date: 2019-12-04 18:32+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -67,7 +67,7 @@ msgstr "Помощна програма от пакета popper-utils, изпо
 
 #: forms.py:24
 msgid "Available transformations for this layer."
-msgstr ""
+msgstr "Налични трансформации за този слой."
 
 #: forms.py:61
 #, python-format
@@ -76,7 +76,7 @@ msgstr "&quot;%s&quot; не е валиден запис."
 
 #: layers.py:12
 msgid "Saved transformations"
-msgstr ""
+msgstr "Запазени трансформации"
 
 #: links.py:18
 msgid "Delete"
@@ -92,7 +92,7 @@ msgstr "Трансформации"
 
 #: links.py:35
 msgid "Select new transformation"
-msgstr ""
+msgstr "Изберете нова трансформация"
 
 #: models.py:23 models.py:85
 msgid "Name"
@@ -104,11 +104,11 @@ msgstr "Поръчка"
 
 #: models.py:34 models.py:50
 msgid "Stored layer"
-msgstr ""
+msgstr "Съхранен слой"
 
 #: models.py:35
 msgid "Stored layers"
-msgstr ""
+msgstr "Съхранени слоеве"
 
 #: models.py:47 models.py:93
 msgid "Enabled"
@@ -116,11 +116,11 @@ msgstr "Активиран"
 
 #: models.py:56 models.py:75
 msgid "Object layer"
-msgstr ""
+msgstr "Обектен слой"
 
 #: models.py:57
 msgid "Object layers"
-msgstr ""
+msgstr "Обектни слоеве"
 
 #: models.py:79
 msgid ""
@@ -140,11 +140,11 @@ msgstr "Аргументи"
 
 #: models.py:100
 msgid "Layer transformation"
-msgstr ""
+msgstr "Трансформация на слоеве"
 
 #: models.py:101
 msgid "Layer transformations"
-msgstr ""
+msgstr "Трансформации на слоеве"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -176,11 +176,11 @@ msgstr "Изрязване"
 
 #: transformations.py:177
 msgid "Draw rectangle"
-msgstr ""
+msgstr "Начертайте правоъгълник"
 
 #: transformations.py:279
 msgid "Draw rectangle (percents coordinates)"
-msgstr ""
+msgstr "Начертайте правоъгълник (процентни координати)"
 
 #: transformations.py:376
 msgid "Flip"
@@ -235,7 +235,7 @@ msgstr "Въведете валидна YAML стойност."
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr ""
+msgstr "Създайте слой &quot;%(layer)s&quot; трансформация &quot;%(transformation)s&quot; за: %(object)s"
 
 #: views.py:135
 #, python-format
@@ -250,12 +250,12 @@ msgstr "Редактиране на трансформацията „%(transfor
 #: views.py:237
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
-msgstr ""
+msgstr "Няма записи за слой &quot;%(layer_name)s&quot;"
 
 #: views.py:240
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
-msgstr ""
+msgstr "Трансформации на слой &quot;%(layer)s&quot; за: %(object)s"
 
 #: views.py:279
 msgid "Select"
@@ -264,4 +264,4 @@ msgstr "Изберете"
 #: views.py:281
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr ""
+msgstr "Изберете нова трансформация на слой &quot;%(layer)s&quot; за: %(object)s"
