@@ -5,6 +5,7 @@ import hashlib
 from importlib import import_module
 import logging
 import os
+import re
 import sys
 
 import yaml
@@ -122,11 +123,12 @@ class Namespace(object):
 
 
 class NamespaceMigration(object):
+    @staticmethod
+    def get_method_name(setting):
+        return setting.global_name.lower()
+
     def __init__(self, namespace):
         self.namespace = namespace
-
-    def get_method_name(self, setting):
-        return setting.global_name.lower()
 
     def get_method_name_full(self, setting, version):
         return '{}_{}'.format(
@@ -136,18 +138,20 @@ class NamespaceMigration(object):
 
     def migrate(self, setting):
         if self.namespace.get_config_version() != self.namespace.version:
-            method_name = self.get_method_name(setting=setting)
+            setting_method_name = NamespaceMigration.get_method_name(
+                setting=setting
+            )
 
             # Get methods for this setting
-            setting_methods = [
-                method for method in dir(self) if method.startswith(
-                    method_name
-                )
-            ]
+            pattern = r'{}_\d{{4}}'.format(setting_method_name)
+            setting_methods = re.findall(
+                pattern=pattern, string='\n'.join(dir(self))
+            )
+
             # Get order of execution of setting methods
             versions = [
                 method.replace(
-                    '{}_'.format(method_name), ''
+                    '{}_'.format(setting_method_name), ''
                 ) for method in setting_methods
             ]
             try:

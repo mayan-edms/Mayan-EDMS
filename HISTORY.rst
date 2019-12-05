@@ -1,3 +1,8 @@
+3.3.2 (2019-XX-XX)
+==================
+- Improve setting migration method matching. Avoid executing
+  a migrations for settings with similar but shorter names.
+
 3.3.1 (2019-12-04)
 ==================
 - Update Celery broker environment variable in the docker installer.
