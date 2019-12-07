@@ -11,7 +11,7 @@ environment=
 [program:mayan-gunicorn]
 autorestart = true
 autostart = true
-command = {{ INSTALLATION_PATH }}/bin/gunicorn -w {{ GUNICORN_WORKERS }} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout {{ GUNICORN_TIMEOUT }}
+command = {{ INSTALLATION_PATH }}/bin/gunicorn -w {{ GUNICORN_WORKERS }} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class sync --bind 0.0.0.0:8000 --timeout {{ GUNICORN_TIMEOUT }}
 user = mayan
 
 {% for worker in workers %}

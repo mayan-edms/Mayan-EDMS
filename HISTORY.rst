@@ -1,3 +1,8 @@
+3.3.4 (2019-12-XX)
+==================
+- Update the gunicorn worker class to synchronous.
+
+
 3.3.3 (2019-12-05)
 ==================
 - Fix transformation label display in transformation create view.
