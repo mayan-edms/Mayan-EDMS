@@ -80,7 +80,7 @@ class TransformationCreateView(
                 '"%(transformation)s" for: %(object)s'
             ) % {
                 'layer': self.layer,
-                'transformation': self.get_transformation_class().label,
+                'transformation': self.get_transformation_class(),
                 'object': self.external_object,
             }
         }

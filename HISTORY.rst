@@ -1,7 +1,8 @@
 3.3.4 (2019-12-XX)
 ==================
 - Update the gunicorn worker class to synchronous.
-
+- Update the way the BaseTransformationType metaclass is passed
+  to work on Python 3.
 
 3.3.3 (2019-12-05)
 ==================
