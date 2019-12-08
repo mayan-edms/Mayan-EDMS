@@ -34,7 +34,7 @@ docker-runtest-cleanup: ## Delete the test container and the test volume.
 	@docker volume rm test-mayan_data || true
 
 docker-runtest-all: ## Executed the test suite in a test container.
-	docker run --rm run-tests
+	docker run --rm mayanedms/mayanedms:$(IMAGE_VERSION) run_tests
 
 docker-compose-build:
 	docker-compose -f docker/docker-compose.yml -p mayan-edms build

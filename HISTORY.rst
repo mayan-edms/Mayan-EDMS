@@ -14,6 +14,7 @@
   variable. Add better text explanation. Change the column to a check
   mark widget.
 - Add icons to the smart settings links.
+- Fix docker-runtest-all target.
 
 3.3.3 (2019-12-05)
 ==================
