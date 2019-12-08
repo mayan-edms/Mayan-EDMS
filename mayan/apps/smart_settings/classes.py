@@ -16,6 +16,7 @@ from django.utils.functional import Promise
 from django.utils.encoding import (
     force_bytes, force_text, python_2_unicode_compatible
 )
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 
@@ -342,6 +343,12 @@ class Setting(object):
 
     def invalidate_cache(self):
         self.loaded = False
+
+    def is_overrided(self):
+        return self.environment_variable
+
+    is_overrided.short_description = _('Overrided')
+    is_overrided.help_text = 'Is this settings being overrided by an environment variable?'
 
     def migrate(self):
         self.namespace.migrate(setting=self)
