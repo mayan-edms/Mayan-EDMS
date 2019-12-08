@@ -23,7 +23,37 @@ from .mocks import (
 )
 
 
-class ClassesTestCase(EnvironmentTestCaseMixin, SmartSettingTestMixin, BaseTestCase):
+class ClassesTestCase(
+    EnvironmentTestCaseMixin, SmartSettingTestMixin, BaseTestCase
+):
+    def test_environment_override(self):
+        test_environment_value = 'test environment value'
+        test_file_value = 'test file value'
+
+        self._create_test_settings_namespace()
+        self._create_test_setting()
+
+        self._set_environment_variable(
+            name='MAYAN_{}'.format(TEST_SETTING_GLOBAL_NAME),
+            value=test_environment_value
+        )
+
+        with NamedTemporaryFile() as file_object:
+            settings.CONFIGURATION_FILEPATH = file_object.name
+            file_object.write(
+                force_bytes(
+                    '{}: {}'.format(
+                        TEST_SETTING_GLOBAL_NAME, test_file_value
+                    )
+                )
+            )
+            file_object.seek(0)
+            Setting._config_file_cache = None
+
+            self.assertEqual(
+                self.test_setting.value, test_environment_value
+            )
+
     def test_environment_variable(self):
         self._set_environment_variable(
             name='MAYAN_{}'.format(ENVIRONMENT_TEST_NAME),

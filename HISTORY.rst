@@ -7,6 +7,7 @@
 - Update devpi-server version to 5.3.1.
 - Add targets to run staging containers using RabbitMQ as
   broker.
+- Add test for GitLab issue #702
 
 3.3.3 (2019-12-05)
 ==================
