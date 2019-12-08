@@ -4,6 +4,7 @@
 - Update the way the BaseTransformationType metaclass is passed
   to work on Python 3.
 - Add locking to the file metadata document processing task.
+- Update devpi-server version to 5.3.1.
 
 3.3.3 (2019-12-05)
 ==================
