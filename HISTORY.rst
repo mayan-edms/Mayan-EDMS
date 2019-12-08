@@ -3,6 +3,7 @@
 - Update the gunicorn worker class to synchronous.
 - Update the way the BaseTransformationType metaclass is passed
   to work on Python 3.
+- Add locking to the file metadata document processing task.
 
 3.3.3 (2019-12-05)
 ==================
