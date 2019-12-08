@@ -75,8 +75,15 @@ docker-staging-container-redis-start:
 	--save \
 	""
 
-docker-staging-container-mayan-start:
+docker-staging-container-rabbitmq-start:
 	docker run \
+	-d \
+	--name mayan-staging-rabbitmq \
+	--network=mayan-staging \
+	$(DOCKER_RABBITMQ_IMAGE_VERSION) \
+
+docker-staging-container-mayan-start:
+	sleep 5 && docker run \
 	-d \
 	--name mayan-staging-app \
 	--network=mayan-staging \
@@ -86,24 +93,31 @@ docker-staging-container-mayan-start:
 	-e MAYAN_DATABASE_NAME=mayan \
 	-e MAYAN_DATABASE_PASSWORD=mayanuserpass \
 	-e MAYAN_DATABASE_USER=mayan \
-	-e MAYAN_CELERY_BROKER_URL="redis://mayan-staging-redis:6379/0" \
+	-e MAYAN_CELERY_BROKER_URL=$(MAYAN_CELERY_BROKER_URL) \
 	-e MAYAN_CELERY_RESULT_BACKEND="redis://mayan-staging-redis:6379/1" \
 	-v mayan-staging-app:/var/lib/mayan \
 	mayanedms/mayanedms:$(IMAGE_VERSION)
 
-docker-staging-start: docker-staging-network-create docker-staging-container-postgresql-start docker-staging-container-redis-start docker-staging-container-mayan-start
+docker-staging-start-with-rabbitmq: MAYAN_CELERY_BROKER_URL="amqp://guest:guest@mayan-staging-rabbitmq:5672/"
+docker-staging-start-with-rabbitmq: docker-staging-start
+
+docker-staging-start-with-redis: MAYAN_CELERY_BROKER_URL="redis://mayan-staging-redis:6379/0"
+docker-staging-start-with-redis: docker-staging-start
+
+docker-staging-start: docker-staging-cleanup docker-staging-network-create docker-staging-container-postgresql-start docker-staging-container-rabbitmq-start docker-staging-container-redis-start docker-staging-container-mayan-start
 	docker logs -f mayan-staging-app
 
 docker-staging-cleanup: ## Delete the test container and the test volume.
 	@docker rm -f mayan-staging-app || true
 	@docker rm -f mayan-staging-redis || true
+	@docker rm -f mayan-staging-rabbitmq || true
 	@docker rm -f mayan-staging-postgres || true
 	@docker volume rm mayan-staging-app || true
 	@docker volume rm mayan-staging-postgres || true
 	@docker network rm mayan-staging || true
 
 devpi-init:
-	devpi-init || true
+	devpi-server --init || true
 
 devpi-start: devpi-init
 	devpi-server --start --host=0.0.0.0 || true
