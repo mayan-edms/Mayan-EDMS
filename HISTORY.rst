@@ -8,6 +8,8 @@
 - Add targets to run staging containers using RabbitMQ as
   broker.
 - Add test for GitLab issue #702
+- Don't set SourceColumns to the attribute name when no help text
+  is defined.
 
 3.3.3 (2019-12-05)
 ==================

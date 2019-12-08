@@ -754,7 +754,7 @@ class SourceColumn(object):
                             name=name, model=model
                         )
                     except AttributeError:
-                        self._help_text = self.attribute
+                        self._help_text = None
 
         self.help_text = self._help_text
 
