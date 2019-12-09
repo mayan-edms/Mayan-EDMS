@@ -480,6 +480,16 @@ a i {
     display: none;
 }
 
+.overlay-gray {
+    background-color: rgba(0,0,0,0.25);
+    display: block;
+    height: 100%;
+    position: fixed;
+    transition: background-color 0.3s;
+    width: 100%;
+    z-index: 50;
+}
+
 @media (min-width: 768px) {
     #menu-main {
         display: block;

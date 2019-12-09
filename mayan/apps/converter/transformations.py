@@ -18,7 +18,7 @@ class BaseTransformationType(type):
         return force_text(self.label)
 
 
-class BaseTransformation(object):
+class BaseTransformation(object, metaclass=BaseTransformationType):
     """
     Transformation can modify the appearance of the document's page preview.
     Some transformation available are: Rotate, zoom, resize and crop.
@@ -27,6 +27,7 @@ class BaseTransformation(object):
     name = 'base_transformation'
     _layer_transformations = {}
     _registry = {}
+    # PY 2
     __metaclass__ = BaseTransformationType
 
     @staticmethod

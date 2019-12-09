@@ -1,3 +1,46 @@
+3.3.4 (2019-12-09)
+==================
+- Update the gunicorn worker class to synchronous.
+- Update the way the BaseTransformationType metaclass is passed
+  to work on Python 3.
+- Add locking to the file metadata document processing task.
+- Update devpi-server version to 5.3.1.
+- Add targets to run staging containers using RabbitMQ as
+  broker.
+- Don't set SourceColumn to the attribute name when no help text
+  is defined.
+- Make it clear when a setting is being overridden by an environment
+  variable. Add better text explanation. Change the column to a check
+  mark widget.
+- Add icons to the smart settings links.
+- Fix docker-runtest-all target.
+- Fix the evaluation priority of the bootstrap settings. Closes GitLab issue
+  #702. Thanks to Kevin Pawsey (@kevinpawsey) for the report and the help
+  debugging the issue.
+- Switch from librabbitmq to py-amqp. Closes GitLab issue #699. Thanks to
+  Rob de Canha-Knight (@rssfed23) for the report, research, and debug.
+- Darken content area when opening the mobile menu.
+
+3.3.3 (2019-12-05)
+==================
+- Fix transformation label display in transformation create view.
+- Remove supervisor environment variable expansion.
+- Don't exit GitLab makefile target if the branch to delete doesn't exist.
+- Automatically create transformations from the selection form that
+  doesn't have arguments.
+- Add missing message displays for transformation error creation and
+  not argument transformation creation.
+- Mark missing text for document indexing as translatable.
+
+3.3.2 (2019-12-05)
+==================
+- Improve setting migration method matching. Avoid executing
+  a migrations for settings with similar but shorter names.
+- Fix sources app setting migrations.
+- Add OCR app setting migrations.
+- Improve upgrade and deployment instructions.
+- Update backup chapters to refer to upstream database documentation.
+
 3.3.1 (2019-12-04)
 ==================
 - Update Celery broker environment variable in the docker installer.

@@ -5,7 +5,7 @@
 Simple Docker installation
 ==========================
 
-#. Install Docker
+#. Install Docker:
 
    .. code-block:: bash
 
@@ -18,35 +18,31 @@ Simple Docker installation
    the Docker image for Mayan EDMS.
 
 
-#. Download the Mayan EDMS Docker image
+#. Download the Mayan EDMS Docker image:
 
    With Docker properly installed, proceed to download the Mayan EDMS Docker
-   image using the command::
+   image using the command:
+
+   .. code-block:: bash
 
        docker pull mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
 
-   Instead of a specific version tag you may use then generic ``latest`` tag
-   to the get latest version available automatically. If you use the ``latest``
-   tag here, remember to do so in the next steps also.::
 
-       docker pull mayanedms/mayanedms:latest
-
-
-#. Download the PostgreSQL Docker image
+#. Download the PostgreSQL Docker image:
 
    .. code-block:: bash
 
        docker pull |DOCKER_POSTGRES_IMAGE_VERSION|
 
 
-#. Download the Redis Docker image
+#. Download the Redis Docker image:
 
    .. code-block:: bash
 
        docker pull |DOCKER_REDIS_IMAGE_VERSION|
 
 
-#. Create and run a PostgreSQL container
+#. Create and run a PostgreSQL container:
 
    .. code-block:: bash
 
@@ -68,7 +64,7 @@ Simple Docker installation
    ``/docker-volumes/mayan-edms/postgres`` folder.
 
 
-#. Create and run a Redis container
+#. Create and run a Redis container:
 
    .. code-block:: bash
 
@@ -91,7 +87,7 @@ Simple Docker installation
    configure to not save its content to disk and to automatically clear up
    memory.
 
-#. Create and run a Mayan EDMS container
+#. Create and run a Mayan EDMS container:
 
    .. code-block:: bash
 
@@ -104,7 +100,7 @@ Simple Docker installation
        -e MAYAN_CELERY_BROKER_URL="redis://172.17.0.1:6379/0" \
        -e MAYAN_CELERY_RESULT_BACKEND="redis://172.17.0.1:6379/1" \
        -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
-       mayanedms/mayanedms:<version>
+       mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
 
    The Mayan EDMS container will connect to the PostgreSQL container via the
    ``172.17.0.1`` IP address (the Docker host's default IP address). It will

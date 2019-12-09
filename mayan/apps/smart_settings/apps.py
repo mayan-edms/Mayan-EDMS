@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import menu_secondary, menu_setup, menu_object
 from mayan.apps.navigation.classes import SourceColumn
 
@@ -35,11 +36,10 @@ class SmartSettingsApp(MayanAppConfig):
             func=lambda context: setting_widget(context['object'])
         )
         SourceColumn(
-            source=Setting, label=_('Value'), attribute='serialized_value'
+            attribute='serialized_value', label=_('Value'), source=Setting
         )
         SourceColumn(
-            source=Setting, label=_('Overrided by environment variable?'),
-            func=lambda context: _('Yes') if context['object'].environment_variable else _('No')
+            attribute='is_overrided', source=Setting, widget=TwoStateWidget
         )
 
         menu_object.bind_links(

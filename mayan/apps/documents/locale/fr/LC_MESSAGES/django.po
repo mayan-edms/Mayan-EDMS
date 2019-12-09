@@ -6,15 +6,16 @@
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016-2018
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Olivier W, 2019
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 # Yves Dubois <ydubois@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:37-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-09 00:32-0400\n"
+"PO-Revision-Date: 2019-12-08 19:13+0000\n"
+"Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,7 +116,7 @@ msgstr "Propriétés du document modifiées"
 
 #: events.py:22
 msgid "Document trashed"
-msgstr ""
+msgstr "Document mis à la corbeille"
 
 #: events.py:26
 msgid "Document type changed"
@@ -238,7 +239,7 @@ msgstr "Reprend l'extension de fichier et la place à la fin du nom de fichier a
 
 #: handlers.py:33
 msgid "Document images"
-msgstr ""
+msgstr "Images du document"
 
 #: links/document_links.py:23 links/document_links.py:67
 msgid "Clear transformations"
@@ -337,19 +338,19 @@ msgstr "Rétablir"
 
 #: links/document_version_page_links.py:49
 msgid "Disable page"
-msgstr ""
+msgstr "Désactiver la page"
 
 #: links/document_version_page_links.py:54
 msgid "Disable pages"
-msgstr ""
+msgstr "Désactiver les pages"
 
 #: links/document_version_page_links.py:61
 msgid "Enable page"
-msgstr ""
+msgstr "Activer la page"
 
 #: links/document_version_page_links.py:66
 msgid "Enable pages"
-msgstr ""
+msgstr "Activer les pages"
 
 #: links/document_version_page_links.py:73
 msgid "First page"
@@ -994,14 +995,14 @@ msgstr "Image de : %s"
 #: views/document_page_views.py:280
 msgid "Disable the selected document page?"
 msgid_plural "Disable the selected document pages?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Désactiver la page de document sélectionnée?"
+msgstr[1] "Êtes-vous sûr de vouloir désactiver les pages sélectionnées du document ?"
 
 #: views/document_page_views.py:310
 msgid "Enable the selected document page?"
 msgid_plural "Enable the selected document pages?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Activer la page de document sélectionnée?"
+msgstr[1] "Êtes-vous sûr de vouloir activer les pages sélectionnées du document ?"
 
 #: views/document_type_views.py:52
 #, python-format

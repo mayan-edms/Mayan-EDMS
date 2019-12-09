@@ -17,10 +17,43 @@ from .literals import (
     TEST_SETTING_INITIAL_VALUE, TEST_SETTING_VALUE
 )
 from .mixins import SmartSettingTestMixin
-from .mocks import TestNamespaceMigrationOne, TestNamespaceMigrationTwo
+from .mocks import (
+    TestNamespaceMigrationOne, TestNamespaceMigrationTwo,
+    TestNamespaceMigrationInvalid, TestNamespaceMigrationInvalidDual
+)
 
 
-class ClassesTestCase(EnvironmentTestCaseMixin, SmartSettingTestMixin, BaseTestCase):
+class ClassesTestCase(
+    EnvironmentTestCaseMixin, SmartSettingTestMixin, BaseTestCase
+):
+    def test_environment_override(self):
+        test_environment_value = 'test environment value'
+        test_file_value = 'test file value'
+
+        self._create_test_settings_namespace()
+        self._create_test_setting()
+
+        self._set_environment_variable(
+            name='MAYAN_{}'.format(TEST_SETTING_GLOBAL_NAME),
+            value=test_environment_value
+        )
+
+        with NamedTemporaryFile() as file_object:
+            settings.CONFIGURATION_FILEPATH = file_object.name
+            file_object.write(
+                force_bytes(
+                    '{}: {}'.format(
+                        TEST_SETTING_GLOBAL_NAME, test_file_value
+                    )
+                )
+            )
+            file_object.seek(0)
+            Setting._config_file_cache = None
+
+            self.assertEqual(
+                self.test_setting.value, test_environment_value
+            )
+
     def test_environment_variable(self):
         self._set_environment_variable(
             name='MAYAN_{}'.format(ENVIRONMENT_TEST_NAME),
@@ -115,4 +148,44 @@ class NamespaceMigrationTestCase(
 
             self.assertEqual(
                 self.test_setting.value, '{}_0001_0002'.format(TEST_SETTING_VALUE)
+            )
+
+    def test_migration_invalid(self):
+        self._create_test_settings_namespace(
+            migration_class=TestNamespaceMigrationInvalid, version='0002'
+        )
+        self._create_test_setting()
+
+        with NamedTemporaryFile() as file_object:
+            settings.CONFIGURATION_FILEPATH = file_object.name
+            file_object.write(
+                force_bytes(
+                    '{}: {}'.format(TEST_SETTING_GLOBAL_NAME, TEST_SETTING_VALUE)
+                )
+            )
+            file_object.seek(0)
+            Setting._config_file_cache = None
+
+            self.assertEqual(
+                self.test_setting.value, TEST_SETTING_VALUE
+            )
+
+    def test_migration_invalid_dual(self):
+        self._create_test_settings_namespace(
+            migration_class=TestNamespaceMigrationInvalidDual, version='0002'
+        )
+        self._create_test_setting()
+
+        with NamedTemporaryFile() as file_object:
+            settings.CONFIGURATION_FILEPATH = file_object.name
+            file_object.write(
+                force_bytes(
+                    '{}: {}'.format(TEST_SETTING_GLOBAL_NAME, TEST_SETTING_VALUE)
+                )
+            )
+            file_object.seek(0)
+            Setting._config_file_cache = None
+
+            self.assertEqual(
+                self.test_setting.value, TEST_SETTING_VALUE
             )

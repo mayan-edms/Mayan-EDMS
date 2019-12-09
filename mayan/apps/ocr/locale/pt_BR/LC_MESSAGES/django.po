@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:39-0400\n"
+"POT-Creation-Date: 2019-12-09 00:34-0400\n"
 "PO-Revision-Date: 2019-09-24 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:20 links.py:26
-#: permissions.py:7 queues.py:8 settings.py:7
+#: permissions.py:7 queues.py:8 settings.py:10
 msgid "OCR"
 msgstr "Enviar para a  fila de OCR"
 
@@ -160,11 +160,11 @@ msgstr "Alterar configurações de OCR para tipo de documento"
 msgid "Document version OCR"
 msgstr ""
 
-#: settings.py:12
+#: settings.py:17
 msgid "Full path to the backend to be used to do OCR."
 msgstr "Caminho completo para o servidor a ser usado para fazer OCR."
 
-#: settings.py:21
+#: settings.py:26
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Definir novos tipos de documentos para realizar OCR automaticamente"
 

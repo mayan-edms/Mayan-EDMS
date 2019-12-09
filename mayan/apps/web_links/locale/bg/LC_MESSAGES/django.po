@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:41-0400\n"
+"POT-Creation-Date: 2019-12-09 00:35-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -24,28 +24,28 @@ msgstr ""
 
 #: apps.py:39
 msgid "Links"
-msgstr ""
+msgstr "Връзки"
 
 #: events.py:8 links.py:16 links.py:51 links.py:56 links.py:60 models.py:43
 #: permissions.py:7 views.py:154
 msgid "Web links"
-msgstr ""
+msgstr "Уеб връзки"
 
 #: events.py:12
 msgid "Web link created"
-msgstr ""
+msgstr "Създадена е уеб връзка"
 
 #: events.py:15
 msgid "Web link edited"
-msgstr ""
+msgstr "Редактирана уеб връзка"
 
 #: events.py:18
 msgid "Web link navigated"
-msgstr ""
+msgstr "Навигирана уеб връзка"
 
 #: links.py:22 views.py:194
 msgid "Create new web link"
-msgstr ""
+msgstr "Създайте нова уеб връзка"
 
 #: links.py:28
 msgid "Delete"
@@ -61,11 +61,11 @@ msgstr "Редактиране"
 
 #: links.py:46
 msgid "Navigate"
-msgstr ""
+msgstr "Навигация"
 
 #: models.py:23
 msgid "A short text describing the weblink."
-msgstr ""
+msgstr "Кратък текст, описващ уеб връзката."
 
 #: models.py:24
 msgid "Label"
@@ -76,10 +76,12 @@ msgid ""
 "Template that will be used to craft the final URL of the weblink. The {{ "
 "document }} variable is available to the template."
 msgstr ""
+"Шаблон, който ще бъде използван за изработка на крайния URL адрес на уеб "
+"връзката. Променливата {{document}} е достъпна за шаблона."
 
 #: models.py:30
 msgid "Template"
-msgstr ""
+msgstr "Шаблон"
 
 #: models.py:32
 msgid "Enabled"
@@ -87,40 +89,40 @@ msgstr "Активиран"
 
 #: models.py:42
 msgid "Web link"
-msgstr ""
+msgstr "Уеб връзка"
 
 #: permissions.py:10
 msgid "Create new web links"
-msgstr ""
+msgstr "Създайте нови уеб връзки"
 
 #: permissions.py:13
 msgid "Delete web links"
-msgstr ""
+msgstr "Изтриване на уеб връзки"
 
 #: permissions.py:16
 msgid "Edit web links"
-msgstr ""
+msgstr "Редактиране на уеб връзки"
 
 #: permissions.py:19
 msgid "View existing web links"
-msgstr ""
+msgstr "Вижте съществуващите уеб връзки"
 
 #: permissions.py:22
 msgid "View web link instances"
-msgstr ""
+msgstr "Вижте случаи на уеб връзки"
 
 #: views.py:44
 msgid "Available web links"
-msgstr ""
+msgstr "Налични уеб връзки"
 
 #: views.py:45
 msgid "Web links enabled"
-msgstr ""
+msgstr "Активирани уеб връзки"
 
 #: views.py:77
 #, python-format
 msgid "Web links to enable for document type: %s"
-msgstr ""
+msgstr "Уеб връзки за активиране на тип документ: %s"
 
 #: views.py:119
 msgid "Available document types"
@@ -133,33 +135,36 @@ msgstr "Типовете документи са активирани"
 #: views.py:130
 #, python-format
 msgid "Document type for which to enable web link: %s"
-msgstr ""
+msgstr "Тип документ, за който да се активира уеб връзка: %s"
 
 #: views.py:147 views.py:176
 msgid ""
 "Web links allow generating HTTP links from documents to external resources. "
 "The link URL's can contain document properties values."
 msgstr ""
+"Уеб връзките позволяват генериране на HTTP връзки от документи към външни "
+"ресурси. URL адресът на връзката може да съдържа стойности на свойствата на "
+"документа."
 
 #: views.py:152
 msgid "There are no web links"
-msgstr ""
+msgstr "Няма уеб връзки"
 
 #: views.py:181
 msgid "There are no web links for this document"
-msgstr ""
+msgstr "Няма уеб връзки за този документ"
 
 #: views.py:184
 #, python-format
 msgid "Web links for document: %s"
-msgstr ""
+msgstr "Уеб връзки за документ: %s"
 
 #: views.py:215
 #, python-format
 msgid "Delete web link: %s"
-msgstr ""
+msgstr "Изтриване на уеб връзка: %s"
 
 #: views.py:230
 #, python-format
 msgid "Edit web link: %s"
-msgstr ""
+msgstr "Редактиране на уеб връзка: %s"

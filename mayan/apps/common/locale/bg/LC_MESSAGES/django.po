@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:35-0400\n"
-"PO-Revision-Date: 2019-12-03 05:22+0000\n"
+"POT-Creation-Date: 2019-12-09 00:30-0400\n"
+"PO-Revision-Date: 2019-12-04 16:43+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -377,7 +377,7 @@ msgstr "Създаване"
 
 #: validators.py:46
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "Въведете валидна JSON стойност."
 
 #: validators.py:70
 msgid "Enter a valid YAML value."
@@ -422,11 +422,11 @@ msgstr "Дата и час"
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
-msgstr ""
+msgstr "Този изглед показва дневника на грешките на различен обект. Празен списък е нещо добро."
 
 #: views.py:160
 msgid "There are no error log entries"
-msgstr ""
+msgstr "Няма записи в дневника за грешки"
 
 #: views.py:163
 #, python-format

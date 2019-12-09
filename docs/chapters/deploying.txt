@@ -27,7 +27,9 @@ For another setup that offers more performance and scalability refer to the
 #. Install binary dependencies:
 
    If using a Debian_ or Ubuntu_ based Linux distribution, get the executable
-   requirements using::
+   requirements using:
+
+   .. code-block:: bash
 
        sudo apt-get install exiftool g++ gcc ghostscript gnupg1 graphviz \
        libfuse2 libjpeg-dev libmagic1 libpq-dev libpng-dev libreoffice \
@@ -36,26 +38,29 @@ For another setup that offers more performance and scalability refer to the
 
    .. note::
 
-       Platforms with the ARM CPU might also need additional requirements.
-       ::
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
 
            sudo apt-get install libffi-dev libssl-dev -y
 
 
 #. Create the user account for the installation:
 
-   This will create an unprivileged user account that is also unable to login.
-   ::
+   This will create an unprivileged user account that is also unable to login:
 
-       sudo adduser mayan --disabled-password --disabled-login --no-create-home --gecos ""
+   .. code-block:: bash
+
+       sudo adduser mayan --disabled-password --disabled-login --gecos ""
 
 
 #. Create the parent directory where the project will be deployed:
 
    ``/opt/`` is a good choice as it is meant is for "software and add-on packages
    that are not part of the default installation". (https://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html).
-   Create the ``/opt`` directory if it doesn't already exists.
-   ::
+   Create the ``/opt`` directory if it doesn't already exists:
+
+   .. code-block:: bash
 
        sudo mkdir /opt
 
@@ -63,43 +68,45 @@ For another setup that offers more performance and scalability refer to the
 #. Create the Python virtual environment:
 
    This will keep all the Python packages installed here isolated from the rest
-   of the Python packages in the system.
-   ::
+   of the Python packages in the system:
+
+   .. code-block:: bash
 
        sudo virtualenv |MAYAN_INSTALLATION_DIRECTORY| -p /usr/bin/python3
 
 
 #. Make the mayan user the owner of the installation directory:
 
-   ::
+   .. code-block:: bash
 
        sudo chown mayan:mayan |MAYAN_INSTALLATION_DIRECTORY| -R
 
 
 #. Install Mayan EDMS from PyPI:
 
-   ::
+   .. code-block:: bash
 
-       sudo -u mayan |MAYAN_PIP_BIN| install --no-cache-dir --no-use-pep517 mayan-edms
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 mayan-edms
 
 
 #. Install the Python client for PostgreSQL and Redis:
 
-   ::
+   .. code-block:: bash
 
-       sudo -u mayan |MAYAN_PIP_BIN| install --no-cache-dir --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
 
    .. note::
 
-       Platforms with the ARM CPU might also need additional requirements.
-       ::
+       Platforms with the ARM CPU might also need additional requirements:
 
-           sudo -u mayan |MAYAN_PIP_BIN| install --no-cache-dir --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
+       .. code-block:: bash
+
+           sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
 
 
 #. Create the database for the installation:
 
-   ::
+   .. code-block:: bash
 
        sudo -u postgres psql -c "CREATE USER mayan WITH password 'mayanuserpass';"
        sudo -u postgres createdb -O mayan mayan
@@ -129,7 +136,7 @@ For another setup that offers more performance and scalability refer to the
        :ref:`troubleshooting-autoadmin-account` and
        :ref:`troubleshooting-admin-password`.
 
-   ::
+   .. code-block:: bash
 
        sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
        MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
@@ -141,7 +148,7 @@ For another setup that offers more performance and scalability refer to the
    This step merges and compressed static media files so they can be served more
    effectively.
 
-   ::
+   .. code-block:: bash
 
        sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
        |MAYAN_BIN| preparestatic --noinput
@@ -149,18 +156,19 @@ For another setup that offers more performance and scalability refer to the
 
 #. Create the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
 
-   ::
+   .. code-block:: bash
 
-       sudo mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
        MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
-       |MAYAN_BIN| platformtemplate supervisord > |MAYAN_SUPERVISOR_CONF|
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
 
 
 #. Configure Redis:
 
    Configure Redis to discard data when it runs out of memory, not save its
    database and only keep 1 database:
-   ::
+
+   .. code-block:: bash
 
        sudo echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
        sudo echo "save \"\"" >> /etc/redis/redis.conf
@@ -169,7 +177,7 @@ For another setup that offers more performance and scalability refer to the
 
 #. Enable and restart the services [1_]:
 
-   ::
+   .. code-block:: bash
 
        sudo systemctl enable supervisor
        sudo systemctl restart supervisor
@@ -179,7 +187,8 @@ For another setup that offers more performance and scalability refer to the
 
    The following operating system dependencies are only needed during
    installation and can be removed.
-   ::
+
+   .. code-block:: bash
 
        sudo apt-get remove --purge libjpeg-dev libpq-dev libpng-dev libtiff-dev zlib1g-dev
 
@@ -198,21 +207,23 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 #. Install RabbitMQ:
 
    If using a Debian_ or Ubuntu_ based Linux distribution, get the executable
-   requirements using::
+   requirements using:
+
+   .. code-block:: bash
 
        sudo apt-get install rabbitmq-server -y
 
 
 #. Install the Python client for RabbitMQ:
 
-   ::
+   .. code-block:: bash
 
-       sudo -u mayan |MAYAN_PIP_BIN| install --no-cache-dir --no-use-pep517 librabbitmq==|PYTHON_LIBRABBITMQ_VERSION|
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
 
 
 #. Create the RabbitMQ user and vhost:
 
-   ::
+   .. code-block:: bash
 
        sudo rabbitmqctl add_user mayan mayanrabbitmqpassword
        sudo rabbitmqctl add_vhost mayan
@@ -221,15 +232,21 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 
 #. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
 
-   Replace (paying attention to the comma at the end)::
+   Replace (paying attention to the comma at the end):
+
+   .. code-block:: ini
 
        MAYAN_CELERY_BROKER_URL="redis://127.0.0.1:6379/0",
 
-   with::
+   with:
+
+   .. code-block:: ini
 
        MAYAN_CELERY_BROKER_URL="amqp://mayan:mayanrabbitmqpassword@localhost:5672/mayan",
 
-   increase the number of Gunicorn workers to 3 in the line (``-w 2`` section)::
+   increase the number of Gunicorn workers to 3 in the line (``-w 2`` section):
+
+   .. code-block:: ini
 
        command = |MAYAN_GUNICORN_BIN| -w 2 mayan.wsgi --max-requests 1000 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
 
@@ -238,11 +255,10 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 
 #. Restart the services:
 
-   ::
+   .. code-block:: bash
 
        sudo supervisorctl reread
        sudo supervisorctl restart all
-
 
 
 

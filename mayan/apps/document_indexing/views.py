@@ -176,7 +176,7 @@ class SetupIndexRebuildView(ConfirmView):
         )
 
         messages.success(
-            message='Index queued for rebuild.', request=self.request
+            message=_('Index queued for rebuild.'), request=self.request
         )
 
 

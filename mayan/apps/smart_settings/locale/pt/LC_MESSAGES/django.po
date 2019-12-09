@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:40-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
+"POT-Creation-Date: 2019-12-09 01:03-0400\n"
+"PO-Revision-Date: 2019-12-09 05:04+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -17,33 +17,29 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:22 permissions.py:8
+#: apps.py:23 permissions.py:8
 msgid "Smart settings"
 msgstr ""
 
-#: apps.py:30
+#: apps.py:31
 msgid "Setting count"
 msgstr ""
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Nome"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Value"
 msgstr "Valor"
 
-#: apps.py:41
-msgid "Overrided by environment variable?"
+#: classes.py:350
+msgid "Overrided"
 msgstr ""
 
-#: apps.py:42
-msgid "Yes"
-msgstr "Sim"
-
-#: apps.py:42
-msgid "No"
-msgstr "Não"
+#: classes.py:352
+msgid "Is this settings being overrided by an environment variable?"
+msgstr ""
 
 #: forms.py:14
 msgid "Enter the new setting value."
@@ -54,15 +50,15 @@ msgstr ""
 msgid "\"%s\" not a valid entry."
 msgstr ""
 
-#: links.py:12 links.py:16
+#: links.py:14 links.py:18
 msgid "Settings"
 msgstr ""
 
-#: links.py:21
+#: links.py:24
 msgid "Namespaces"
 msgstr ""
 
-#: links.py:25
+#: links.py:28
 msgid "Edit"
 msgstr "Editar"
 

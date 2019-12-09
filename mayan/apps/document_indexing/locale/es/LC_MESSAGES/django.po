@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:36-0400\n"
-"PO-Revision-Date: 2019-12-03 05:58+0000\n"
+"POT-Creation-Date: 2019-12-09 00:31-0400\n"
+"PO-Revision-Date: 2019-12-05 18:37+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -306,6 +306,10 @@ msgstr "No hay índices"
 #, python-format
 msgid "Rebuild index: %s"
 msgstr "Reconstruir índice: %s"
+
+#: views.py:179
+msgid "Index queued for rebuild."
+msgstr "Índice en cola para la reconstrucción."
 
 #: views.py:191
 msgid "Available document types"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:36-0400\n"
+"POT-Creation-Date: 2019-12-09 00:31-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -301,6 +301,10 @@ msgstr ""
 #: views.py:161
 #, python-format
 msgid "Rebuild index: %s"
+msgstr ""
+
+#: views.py:179
+msgid "Index queued for rebuild."
 msgstr ""
 
 #: views.py:191

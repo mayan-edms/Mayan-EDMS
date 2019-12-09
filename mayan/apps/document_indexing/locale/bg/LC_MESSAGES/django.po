@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:36-0400\n"
-"PO-Revision-Date: 2019-12-03 05:22+0000\n"
+"POT-Creation-Date: 2019-12-09 00:31-0400\n"
+"PO-Revision-Date: 2019-12-05 10:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "Шаблони за индексиране"
 
 #: forms.py:34
 msgid "Template"
-msgstr ""
+msgstr "Шаблон"
 
 #: handlers.py:20
 msgid "Creation date"
@@ -94,7 +94,7 @@ msgstr "Възстановяване на индекси"
 
 #: links.py:66 views.py:481
 msgid "Reset indexes"
-msgstr ""
+msgstr "Нулиране на индекси"
 
 #: links.py:83 views.py:87
 msgid "Create index"
@@ -118,7 +118,7 @@ msgstr "Нов възел дете"
 
 #: models.py:36
 msgid "Short description of this index."
-msgstr ""
+msgstr "Кратко описание на този индекс."
 
 #: models.py:37
 msgid "Label"
@@ -306,6 +306,10 @@ msgstr "Няма индекси."
 msgid "Rebuild index: %s"
 msgstr "Възстановяване на индекс: %s"
 
+#: views.py:179
+msgid "Index queued for rebuild."
+msgstr ""
+
 #: views.py:191
 msgid "Available document types"
 msgstr "Налични типове документи"
@@ -392,9 +396,9 @@ msgstr[1] "%(count)d индекси на опашка за възстановя�
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "нулиране на индекс %(count)d."
+msgstr[1] " %(count)d индекса са нулирани."
 
 #: views.py:506
 msgid "Index templates for which their instances will be deleted."
-msgstr ""
+msgstr "Индексни шаблони, екземплярите на които ще бъдат изтрити."

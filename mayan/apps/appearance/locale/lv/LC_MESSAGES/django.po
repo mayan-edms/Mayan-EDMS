@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:35-0400\n"
-"PO-Revision-Date: 2019-12-03 05:20+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-09 00:29-0400\n"
+"PO-Revision-Date: 2019-12-04 06:27+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,7 +78,7 @@ msgstr "Maksimālais rakstzīmju skaits, kas tiks attēlots kā skata nosaukums.
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
+msgstr "Pozīcija, kur tiks parādīts sistēmas ziņojums. Iespējas ir: augšā pa kreisi, augšā centrā, augšā pa labi, apakšā pa kreisi, apakšā centrā, apakšā pa labi."
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
@@ -96,7 +96,7 @@ msgstr "Lapa nav atrasta"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Diemžēl pieprasīto lapu nevarēja atrast."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:55
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:54
 msgid "Server error"
 msgstr "Servera kļūda"
 
@@ -161,14 +161,14 @@ msgid ""
 "\n"
 "                You can also <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">donate directly to the creator and lead developer.  %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\n                Jūs varat arī <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">ziedot tieši radītājam un galvenajam izstrādātājam. %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:127
 msgid ""
 "\n"
 "                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>.\n"
 "            "
-msgstr ""
+msgstr "\nPapildus ziedojumiem jūs varat arī atbalstīt projektu, <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">iegādājoties Roberto Rosario grāmatas “Exploring Mayan EDMS” kopiju</a>."
 
 #: templates/appearance/about.html:133
 #, python-format
@@ -211,22 +211,22 @@ msgstr "Brīdinājums"
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
+msgstr "Iestatījumi ir atjaunināti, restartējiet instalēšanu un atsvaidziniet pārlūku, lai izmaiņas stātos spēkā."
 
-#: templates/appearance/base.html:61
+#: templates/appearance/base.html:60
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Darbības"
 
-#: templates/appearance/base.html:63
+#: templates/appearance/base.html:62
 #: templates/appearance/generic_list_items_subtemplate.html:68
-#: templates/appearance/list_toolbar.html:63
+#: templates/appearance/list_toolbar.html:65
 msgid "Toggle Dropdown"
 msgstr "Toggle Dropdown"
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
-msgstr ""
+msgstr "Atvērt galveno izvēlni"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
@@ -295,16 +295,16 @@ msgstr "Kopā: %(total)s"
 
 #: templates/appearance/list_toolbar.html:14
 msgid "Select/Deselect all"
-msgstr ""
+msgstr "Atlasīt / noņemt atlasi visiem"
 
-#: templates/appearance/list_toolbar.html:57
+#: templates/appearance/list_toolbar.html:58
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
+msgstr "Atlasiet vienumus, lai aktivizētu lielapjoma darbības. Izmantojiet taustiņu kombināciju Shift + noklikšķiniet, lai atlasītu daudzus."
 
-#: templates/appearance/list_toolbar.html:61
+#: templates/appearance/list_toolbar.html:63
 msgid "Bulk actions"
-msgstr ""
+msgstr "Lielapjoma darbības"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
@@ -314,15 +314,15 @@ msgstr "Pārslēgt navigāciju"
 msgid "No results"
 msgstr "Nav rezultātu"
 
-#: templates/appearance/root.html:60
+#: templates/appearance/root.html:59
 msgid "Close"
 msgstr "Aizvērt"
 
-#: templates/appearance/root.html:68
+#: templates/appearance/root.html:67
 msgid "Server communication error"
 msgstr "Servera sakaru kļūda"
 
-#: templates/appearance/root.html:70
+#: templates/appearance/root.html:69
 msgid "Check you network connection and try again in a few moments."
 msgstr "Pārbaudiet tīkla savienojumu un pēc brīža mēģiniet vēlreiz."
 

@@ -5,6 +5,7 @@ import hashlib
 from importlib import import_module
 import logging
 import os
+import re
 import sys
 
 import yaml
@@ -15,6 +16,7 @@ from django.utils.functional import Promise
 from django.utils.encoding import (
     force_bytes, force_text, python_2_unicode_compatible
 )
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 
@@ -122,11 +124,12 @@ class Namespace(object):
 
 
 class NamespaceMigration(object):
+    @staticmethod
+    def get_method_name(setting):
+        return setting.global_name.lower()
+
     def __init__(self, namespace):
         self.namespace = namespace
-
-    def get_method_name(self, setting):
-        return setting.global_name.lower()
 
     def get_method_name_full(self, setting, version):
         return '{}_{}'.format(
@@ -136,18 +139,20 @@ class NamespaceMigration(object):
 
     def migrate(self, setting):
         if self.namespace.get_config_version() != self.namespace.version:
-            method_name = self.get_method_name(setting=setting)
+            setting_method_name = NamespaceMigration.get_method_name(
+                setting=setting
+            )
 
             # Get methods for this setting
-            setting_methods = [
-                method for method in dir(self) if method.startswith(
-                    method_name
-                )
-            ]
+            pattern = r'{}_\d{{4}}'.format(setting_method_name)
+            setting_methods = re.findall(
+                pattern=pattern, string='\n'.join(dir(self))
+            )
+
             # Get order of execution of setting methods
             versions = [
                 method.replace(
-                    '{}_'.format(method_name), ''
+                    '{}_'.format(setting_method_name), ''
                 ) for method in setting_methods
             ]
             try:
@@ -338,6 +343,14 @@ class Setting(object):
 
     def invalidate_cache(self):
         self.loaded = False
+
+    def is_overrided(self):
+        return self.environment_variable
+
+    is_overrided.short_description = _('Overrided')
+    is_overrided.help_text = _(
+        'Is this settings being overrided by an environment variable?'
+    )
 
     def migrate(self):
         self.namespace.migrate(setting=self)

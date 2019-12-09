@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:37-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
+"POT-Creation-Date: 2019-12-09 00:32-0400\n"
+"PO-Revision-Date: 2019-12-04 17:34+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,7 @@ msgstr "Тип"
 
 #: apps.py:294
 msgid "Widget"
-msgstr ""
+msgstr "Управляващ елемент"
 
 #: apps.py:303 apps.py:309
 msgid "Documents"
@@ -128,7 +128,7 @@ msgstr "Да"
 
 #: forms.py:178
 msgid "Select a transition to execute in the next step."
-msgstr ""
+msgstr "Изберете преход за изпълнение на следващ етап."
 
 #: forms.py:179 links.py:197 models.py:444 models.py:499 models.py:666
 msgid "Transition"
@@ -136,7 +136,7 @@ msgstr "Преход"
 
 #: handlers.py:19
 msgid "Workflow images"
-msgstr ""
+msgstr "Изображения на работния процес"
 
 #: handlers.py:78
 #, python-format
@@ -193,11 +193,11 @@ msgstr "Преходи"
 
 #: links.py:156
 msgid "Create field"
-msgstr ""
+msgstr "Създаване на поле"
 
 #: links.py:176
 msgid "Fields"
-msgstr ""
+msgstr "Полета"
 
 #: links.py:186
 msgid "Detail"
@@ -217,15 +217,15 @@ msgstr "Стартирайте всички работни потоци"
 
 #: literals.py:10
 msgid "Character"
-msgstr ""
+msgstr "Знак"
 
 #: literals.py:11
 msgid "Number (Integer)"
-msgstr ""
+msgstr "Номер (цяло число)"
 
 #: literals.py:21
 msgid "Text area"
-msgstr ""
+msgstr "Текстова област"
 
 #: literals.py:32
 msgid "On entry"
@@ -257,7 +257,7 @@ msgstr "Начално състояние"
 msgid ""
 "The state at which the workflow will start in. Only one state can be the "
 "initial state."
-msgstr ""
+msgstr "Състоянието, в което ще започне работният процес. Само едно състояние може да бъде първоначално състояние."
 
 #: models.py:277
 msgid "Initial"
@@ -267,7 +267,7 @@ msgstr "Начално"
 msgid ""
 "The percent of completion that this state represents in relation to the "
 "workflow. Use numbers without the percent sign."
-msgstr ""
+msgstr "Процентът на завършеност, който това състояние представлява по отношение на работния процес. Използвайте числа без знака за процент."
 
 #: models.py:289 models.py:348
 msgid "Workflow state"
@@ -283,7 +283,7 @@ msgstr "Прост идентификатор за това действие."
 
 #: models.py:358
 msgid "At which moment of the state this action will execute."
-msgstr ""
+msgstr "В кой момент на състоянието ще се извърши това действие."
 
 #: models.py:359
 msgid "When"
@@ -329,25 +329,25 @@ msgstr "Преходи на работния поток"
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
-msgstr ""
+msgstr "Името, което ще се използва за идентифициране на това поле в други части на системата на работния процес."
 
 #: models.py:457
 msgid "The field name that will be shown on the user interface."
-msgstr ""
+msgstr "Името на полето, което ще бъде показано в потребителския интерфейс."
 
 #: models.py:461
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
-msgstr ""
+msgstr "Незадължително съобщение, което ще помогне на потребителите да разберат по-добре целта на полето и данните, които да предоставят."
 
 #: models.py:463
 msgid "Help text"
-msgstr ""
+msgstr "Помощен текст"
 
 #: models.py:467
 msgid "Whether this fields needs to be filled out or not to proceed."
-msgstr ""
+msgstr "Дали това поле трябва да бъде попълнено или не, за да продължите."
 
 #: models.py:468
 msgid "Required"
@@ -355,19 +355,19 @@ msgstr "Задължително"
 
 #: models.py:472
 msgid "An optional class to change the default presentation of the field."
-msgstr ""
+msgstr "Незадължителен клас за промяна на представянето по подразбиране на полето."
 
 #: models.py:473
 msgid "Widget class"
-msgstr ""
+msgstr "Клас на управляващ елемент"
 
 #: models.py:477
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
-msgstr ""
+msgstr "Група от ключови аргументи за персонализиране на управляващия елемент. Използвайте YAML формат."
 
 #: models.py:480
 msgid "Widget keyword arguments"
-msgstr ""
+msgstr "Аргументи на ключови думи на управляващия елемент"
 
 #: models.py:485 models.py:507
 msgid "Workflow transition trigger event"
@@ -387,7 +387,7 @@ msgstr "Документ"
 
 #: models.py:525
 msgid "Context"
-msgstr ""
+msgstr "Контекст"
 
 #: models.py:531 models.py:659
 msgid "Workflow instance"
@@ -407,7 +407,7 @@ msgstr "Коментар"
 
 #: models.py:673
 msgid "Extra data"
-msgstr ""
+msgstr "Допълнителни данни"
 
 #: models.py:677
 msgid "Workflow instance log entry"
@@ -471,11 +471,11 @@ msgstr "Състояния на документа"
 
 #: queues.py:12
 msgid "Document states fast"
-msgstr ""
+msgstr "Бързо избиране състояния на документа"
 
 #: queues.py:21
 msgid "Generate workflow previews"
-msgstr ""
+msgstr "Генериране на визуализации на работния процес"
 
 #: serializers.py:22
 msgid "Primary key of the document type to be added."
@@ -519,23 +519,23 @@ msgstr "Основен ключ на прехода, който трябва д�
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
-msgstr ""
+msgstr "Прагът, при който WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND ще започне да изтрива най-старите файлове за кеш на изображения на работния процес. Посочете размера в байтове."
 
 #: settings.py:27
 msgid ""
 "Time in seconds that the browser should cache the supplied workflow images. "
 "The default of 31559626 seconds corresponde to 1 year."
-msgstr ""
+msgstr "Време в секунди, за което браузърът трябва да кешира предоставените изображения на работния процес. По подразбиране 31559626 секунди съответстват на 1 година."
 
 #: settings.py:34
 msgid ""
 "Path to the Storage subclass to use when storing the cached workflow image "
 "files."
-msgstr ""
+msgstr "Път към подклас Съхранение, който да се използва при съхранение на кешираните файлове с изображения на работния процес."
 
 #: settings.py:42
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Аргументи предавани към WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: templates/document_states/forms/widgets/workflow_image.html:2
 msgid "Workflow preview"
@@ -583,7 +583,7 @@ msgstr "Подаване"
 #: views/workflow_instance_views.py:127
 #, python-format
 msgid "Execute transition \"%(transition)s\" for workflow: %(workflow)s"
-msgstr ""
+msgstr "Изпълнете преход &quot;%(transition)s&quot; за работен поток: %(workflow)s"
 
 #: views/workflow_instance_views.py:142
 msgid "Optional comment to attach to the transition."
@@ -596,7 +596,7 @@ msgstr "Изберете"
 #: views/workflow_instance_views.py:213
 #, python-format
 msgid "Select transition for workflow: %s"
-msgstr ""
+msgstr "Изберете преход за работен поток: %s"
 
 #: views/workflow_proxy_views.py:35
 msgid ""
@@ -752,33 +752,33 @@ msgstr "Събития задействащи прехода на работни
 #: views/workflow_template_transition_views.py:246
 #, python-format
 msgid "Create a field for workflow transition: %s"
-msgstr ""
+msgstr "Създайте поле за преход на работния поток: %s"
 
 #: views/workflow_template_transition_views.py:276
 #, python-format
 msgid "Delete workflow transition field: %s"
-msgstr ""
+msgstr "Изтрийте полето за преход на работния поток: %s"
 
 #: views/workflow_template_transition_views.py:302
 #, python-format
 msgid "Edit workflow transition field: %s"
-msgstr ""
+msgstr "Редактиране на поле за преход на работния поток: %s"
 
 #: views/workflow_template_transition_views.py:331
 msgid ""
 "Workflow transition fields allow adding data to the workflow's context. This"
 " additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
-msgstr ""
+msgstr "Полетата за преход на работния поток позволяват добавяне на данни в контекста на работния поток. След това тези допълнителни данни за контекста могат да бъдат използвани от други елементи на системата на работния поток, като действията на състоянието на работния поток."
 
 #: views/workflow_template_transition_views.py:337
 msgid "There are no fields for this workflow transition"
-msgstr ""
+msgstr "Няма полета за този преход на работния поток"
 
 #: views/workflow_template_transition_views.py:341
 #, python-format
 msgid "Fields for workflow transition: %s"
-msgstr ""
+msgstr "Полета за преход на работния поток: %s"
 
 #: views/workflow_template_views.py:36
 msgid "Available workflows"
@@ -878,7 +878,7 @@ msgstr "Новото описание, което трябва да бъде п�
 
 #: workflow_actions.py:39
 msgid "Modify document properties"
-msgstr ""
+msgstr "Промяна на свойствата на документа"
 
 #: workflow_actions.py:61
 #, python-format
@@ -910,7 +910,7 @@ msgstr "Изтичане на времето"
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
-msgstr ""
+msgstr "Време в секунди за изчакване на отговор. Може да бъде статична стойност или шаблон."
 
 #: workflow_actions.py:111
 msgid "Payload"
@@ -936,7 +936,7 @@ msgid ""
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Потребителско име, което да използвате за отправяне на заявката с HTTP Basic Auth. Може да бъде статична стойност или шаблон. Шаблоните получават инстанцията за въвеждане в дневника на работния поток като част от техния контекст чрез променливата &quot;entry_log&quot;. На свой ред „entry_log“ предоставя атрибутите „workflow_instance“, „timetime“, „transition“, „user“ и „comment“."
 
 #: workflow_actions.py:137
 msgid "Password"
@@ -949,11 +949,11 @@ msgid ""
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Парола, която да използвате за отправяне на заявката с HTTP Basic Auth. Може да бъде статична стойност или шаблон. Шаблоните получават инстанцията за въвеждане в дневника на работния поток като част от техния контекст чрез променливата &quot;entry_log&quot;. На свой ред „entry_log“ предоставя атрибутите „workflow_instance“, „datetime“, „transition“, „user“ и „comment“."
 
 #: workflow_actions.py:150
 msgid "Headers"
-msgstr ""
+msgstr "Заглавки"
 
 #: workflow_actions.py:153
 msgid ""
@@ -962,7 +962,7 @@ msgid ""
 "instance as part of their context via the variable \"entry_log\". The "
 "\"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
 "\"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Заглавки за изпращане с HTTP заявката. Трябва да са във формат JSON. Може да бъдат статична стойност или шаблон. Шаблоните получават инстанцията за въвеждане в дневника на работния поток като част от техния контекст чрез променливата &quot;entry_log&quot;. На свой ред „entry_log“ предоставя атрибутите „workflow_instance“, „datetime“, „transition“, „user“ и „comment“."
 
 #: workflow_actions.py:167
 msgid "Perform a POST request"
@@ -971,9 +971,9 @@ msgstr "Изпълнете POST заявка"
 #: workflow_actions.py:193
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
-msgstr ""
+msgstr "%(field_name)s JSON грешка: %(exception)s"
 
 #: workflow_actions.py:209
 #, python-format
 msgid "%(field_name)s template error: %(exception)s"
-msgstr ""
+msgstr "%(field_name)s грешка в шаблона: %(exception)s"

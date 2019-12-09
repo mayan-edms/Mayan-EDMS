@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:40-0400\n"
+"POT-Creation-Date: 2019-12-09 00:35-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: apps.py:19 permissions.py:7
 msgid "Templating"
-msgstr ""
+msgstr "Шаблониране"
 
 #: fields.py:19
 #, python-format
@@ -32,10 +32,13 @@ msgid ""
 "language "
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)"
 msgstr ""
+"Низът на шаблона, който трябва да бъде оценен. Използвайте езика за "
+"шаблониране на Django по подразбиране "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)"
 
 #: forms.py:11
 msgid "Resulting text from the evaluated template."
-msgstr ""
+msgstr "Текстов резултат от оценявания шаблон."
 
 #: forms.py:12
 msgid "Result"
@@ -43,26 +46,26 @@ msgstr "Резултат"
 
 #: forms.py:22
 msgid "Template"
-msgstr ""
+msgstr "Шаблон"
 
 #: links.py:14
 msgid "Sandbox"
-msgstr ""
+msgstr "Пясъчник"
 
 #: permissions.py:10
 msgid "Use the template sandbox"
-msgstr ""
+msgstr "Използвайте пясъчника на шаблона"
 
 #: views.py:45
 #, python-format
 msgid "Template error; %(exception)s"
-msgstr ""
+msgstr "Грешка в шаблона; %(exception)s"
 
 #: views.py:58
 #, python-format
 msgid "Template sandbox for: %s"
-msgstr ""
+msgstr "Пясъчник за шаблона за: %s"
 
 #: widgets.py:34
 msgid "<Model property choices>"
-msgstr ""
+msgstr "<Model property choices>"

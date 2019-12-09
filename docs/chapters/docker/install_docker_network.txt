@@ -8,12 +8,16 @@ Use this method to avoid having to expose PostreSQL port to the host's network
 or if you have other PostgreSQL instances but still want to use the default
 port of 5432 for this installation.
 
-#. Create the network::
+#. Create the network:
+
+   .. code-block:: bash
 
        docker network create mayan
 
 #. Launch the PostgreSQL container with the network option and remove the
-   port binding (``-p 5432:5432``)::
+   port binding (``-p 5432:5432``):
+
+   .. code-block:: bash
 
        docker run \
        -d \
@@ -27,7 +31,9 @@ port of 5432 for this installation.
        |DOCKER_POSTGRES_IMAGE_VERSION|
 
 #. Launch the Redis container with the network option and remove the port
-   binding (``-p 6379:6379``)::
+   binding (``-p 6379:6379``):
+
+   .. code-block:: bash
 
        docker run \
        -d \
@@ -44,7 +50,9 @@ port of 5432 for this installation.
 
 #. Launch the Mayan EDMS container with the network option and change the
    database hostname to the PostgreSQL container name (``mayan-edms-postgres``)
-   instead of the IP address of the Docker host (``172.17.0.1``)::
+   instead of the IP address of the Docker host (``172.17.0.1``):
+
+   .. code-block:: bash
 
        docker run \
        -d \
@@ -56,4 +64,4 @@ port of 5432 for this installation.
        -e MAYAN_CELERY_BROKER_URL="redis://mayan-edms-redis:6379/0" \
        -e MAYAN_CELERY_RESULT_BACKEND="redis://mayan-edms-redis:6379/1" \
        -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
-       mayanedms/mayanedms:<version>
+       mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
