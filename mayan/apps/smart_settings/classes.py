@@ -348,7 +348,9 @@ class Setting(object):
         return self.environment_variable
 
     is_overrided.short_description = _('Overrided')
-    is_overrided.help_text = 'Is this settings being overrided by an environment variable?'
+    is_overrided.help_text = _(
+        'Is this settings being overrided by an environment variable?'
+    )
 
     def migrate(self):
         self.namespace.migrate(setting=self)
