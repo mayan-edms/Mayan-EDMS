@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-05 06:01-0400\n"
+"POT-Creation-Date: 2019-12-09 00:30-0400\n"
 "PO-Revision-Date: 2019-12-05 10:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -170,59 +170,59 @@ msgstr "Използван бекенд за преобразуване на г�
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Опции за конфигуриране на бекенда за графично преобразуване"
 
-#: transformations.py:99
+#: transformations.py:100
 msgid "Crop"
 msgstr "Изрязване"
 
-#: transformations.py:177
+#: transformations.py:178
 msgid "Draw rectangle"
 msgstr "Начертайте правоъгълник"
 
-#: transformations.py:279
+#: transformations.py:280
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Начертайте правоъгълник (процентни координати)"
 
-#: transformations.py:376
+#: transformations.py:377
 msgid "Flip"
 msgstr "Преобръщане"
 
-#: transformations.py:387
+#: transformations.py:388
 msgid "Gaussian blur"
 msgstr "Гаусово замъгляване"
 
-#: transformations.py:397
+#: transformations.py:398
 msgid "Line art"
 msgstr "Графично изкуство"
 
-#: transformations.py:408
+#: transformations.py:409
 msgid "Mirror"
 msgstr "Огледало"
 
-#: transformations.py:419
+#: transformations.py:420
 msgid "Resize"
 msgstr "Преоразмеряване"
 
-#: transformations.py:446
+#: transformations.py:447
 msgid "Rotate"
 msgstr "Завъртане"
 
-#: transformations.py:472
+#: transformations.py:473
 msgid "Rotate 90 degrees"
 msgstr "Завъртане на 90 градуса"
 
-#: transformations.py:483
+#: transformations.py:484
 msgid "Rotate 180 degrees"
 msgstr "Въртене на 180 градуса"
 
-#: transformations.py:494
+#: transformations.py:495
 msgid "Rotate 270 degrees"
 msgstr "Въртене на 270 градуса"
 
-#: transformations.py:504
+#: transformations.py:505
 msgid "Unsharp masking"
 msgstr "Размазващо маскиране"
 
-#: transformations.py:520
+#: transformations.py:521
 msgid "Zoom"
 msgstr "Увеличаване"
 

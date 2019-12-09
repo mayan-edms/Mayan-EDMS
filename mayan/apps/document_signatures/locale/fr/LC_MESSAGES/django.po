@@ -7,15 +7,16 @@
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Olivier W, 2019
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # Yves Dubois <ydubois@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-05 06:02-0400\n"
-"PO-Revision-Date: 2019-12-03 05:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-09 00:31-0400\n"
+"PO-Revision-Date: 2019-12-08 19:18+0000\n"
+"Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -151,7 +152,7 @@ msgstr "Date de signature"
 
 #: models.py:47
 msgid "ID of the key that will be used to sign the document."
-msgstr ""
+msgstr "ID de la clé qui sera utilisée pour signer le document."
 
 #: models.py:57
 msgid "Public key fingerprint"
@@ -183,7 +184,7 @@ msgstr "Signatures intégrées de la version du document"
 
 #: models.py:135
 msgid "Signature file previously generated."
-msgstr ""
+msgstr "Fichier de signature généré précédemment."
 
 #: models.py:137
 msgid "Signature file"
@@ -267,7 +268,7 @@ msgstr "Signature de la version du document réussie."
 
 #: views.py:118 views.py:207
 msgid "Sign"
-msgstr ""
+msgstr "Signer"
 
 #: views.py:120
 #, python-format
@@ -324,12 +325,12 @@ msgstr "Vérification de la signature ajoutée à la file d'attente avec succès
 
 #: workflow_actions.py:23
 msgid "Private key that will be used to sign the document version."
-msgstr ""
+msgstr "Clé privée qui sera utilisée pour signer la version du document."
 
 #: workflow_actions.py:38
 msgid "Sign document (detached)"
-msgstr ""
+msgstr "Signer le document (détachée)"
 
 #: workflow_actions.py:68
 msgid "Sign document (embedded)"
-msgstr ""
+msgstr "Signer le document (intégrée)"

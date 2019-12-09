@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-05 06:01-0400\n"
+"POT-Creation-Date: 2019-12-09 00:30-0400\n"
 "PO-Revision-Date: 2019-12-05 10:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
@@ -169,59 +169,59 @@ msgstr ""
 msgid "Configuration options for the graphics conversion backend."
 msgstr ""
 
-#: transformations.py:99
+#: transformations.py:100
 msgid "Crop"
 msgstr ""
 
-#: transformations.py:177
+#: transformations.py:178
 msgid "Draw rectangle"
 msgstr ""
 
-#: transformations.py:279
+#: transformations.py:280
 msgid "Draw rectangle (percents coordinates)"
 msgstr ""
 
-#: transformations.py:376
+#: transformations.py:377
 msgid "Flip"
 msgstr ""
 
-#: transformations.py:387
+#: transformations.py:388
 msgid "Gaussian blur"
 msgstr ""
 
-#: transformations.py:397
+#: transformations.py:398
 msgid "Line art"
 msgstr ""
 
-#: transformations.py:408
+#: transformations.py:409
 msgid "Mirror"
 msgstr ""
 
-#: transformations.py:419
+#: transformations.py:420
 msgid "Resize"
 msgstr "Átméretez"
 
-#: transformations.py:446
+#: transformations.py:447
 msgid "Rotate"
 msgstr ""
 
-#: transformations.py:472
+#: transformations.py:473
 msgid "Rotate 90 degrees"
 msgstr ""
 
-#: transformations.py:483
+#: transformations.py:484
 msgid "Rotate 180 degrees"
 msgstr ""
 
-#: transformations.py:494
+#: transformations.py:495
 msgid "Rotate 270 degrees"
 msgstr ""
 
-#: transformations.py:504
+#: transformations.py:505
 msgid "Unsharp masking"
 msgstr ""
 
-#: transformations.py:520
+#: transformations.py:521
 msgid "Zoom"
 msgstr ""
 

@@ -7,15 +7,16 @@
 # Frédéric Escudero <frederic.escudero@gmail.com>, 2017
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Olivier W, 2019
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 # Yves Dubois <ydubois@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-05 06:00-0400\n"
-"PO-Revision-Date: 2019-12-03 05:20+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-09 00:29-0400\n"
+"PO-Revision-Date: 2019-12-08 18:56+0000\n"
+"Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -231,7 +232,7 @@ msgstr "Activer la liste déroulante"
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
-msgstr ""
+msgstr "Ouvrir le menu principal"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
@@ -300,7 +301,7 @@ msgstr "Total : %(total)s"
 
 #: templates/appearance/list_toolbar.html:14
 msgid "Select/Deselect all"
-msgstr ""
+msgstr "Tout sélectionner/Désélectionner"
 
 #: templates/appearance/list_toolbar.html:58
 msgid ""
@@ -309,7 +310,7 @@ msgstr ""
 
 #: templates/appearance/list_toolbar.html:63
 msgid "Bulk actions"
-msgstr ""
+msgstr "Actions en masse"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
