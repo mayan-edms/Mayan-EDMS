@@ -1,42 +1,12 @@
-Version 3.3.3
+Version 3.3.4
 =============
 
-Released: December 5, 2019
+Released: December XX, 2019
 
 
 Changes
 -------
 
-
-Indexing
-^^^^^^^^
-
-A missed text from the indexing app was marked as translatable.
-
-
-Platform
-^^^^^^^^
-
-Removed the supervisord PYTHONPATH environment variable expansion.
-
-
-Transformations
-^^^^^^^^^^^^^^^
-
-Fix transformation label display in the transformation create view.
-
-Automatically create transformations from the selection form that
-doesn't have arguments.
-
-Add missing message displays for transformation creation error and
-non argument transformation creation.
-
-
-Other
-^^^^^
-
-Don't exit GitLab makefile target if the branch to delete doesn't exist
-upstream.
 
 
 Removals
@@ -205,7 +175,8 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
-- :gitlab-issue:`690` Update to 3.3 problem with mayan-edms.py
+- :gitlab-issue:`699` 3.3.3 - TypeError: can't pickle memoryview objects
+- :gitlab-issue:`702` [Docker] Issue after upgrading to 3.3.3
 
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

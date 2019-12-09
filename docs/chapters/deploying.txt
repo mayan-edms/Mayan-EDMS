@@ -218,7 +218,7 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 
    .. code-block:: bash
 
-       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 librabbitmq==|PYTHON_LIBRABBITMQ_VERSION|
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
 
 
 #. Create the RabbitMQ user and vhost:

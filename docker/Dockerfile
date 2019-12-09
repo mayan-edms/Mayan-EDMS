@@ -113,7 +113,7 @@ RUN set -a \
 && python3 -m venv "${PROJECT_INSTALL_DIR}" \
 && . "${PROJECT_INSTALL_DIR}/bin/activate" \
 && pip install --no-cache-dir \
-    librabbitmq==$PYTHON_LIBRABBITMQ_VERSION \
+    amqp==$PYTHON_AMQP_VERSION \
     mysqlclient==$PYTHON_MYSQL_VERSION \
     psycopg2==$PYTHON_PSYCOPG2_VERSION \
     redis==$PYTHON_REDIS_VERSION \

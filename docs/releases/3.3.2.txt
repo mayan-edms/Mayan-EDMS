@@ -72,26 +72,6 @@ Upgrading from Mayan EDMS 3.2.x
     chown mayan:mayan /home/mayan
 
 
-Upgrade steps from any previous version of Mayan EDMS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#. Remove deprecated requirements:
-
-   .. code-block:: bash
-
-    sudo -u mayan curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
-    && sudo -u mayan |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
-
-
-#. Update the Mayan EDMS Python package:
-
-   .. code-block:: bash
-
-    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.2
-
-   the requirements will also be updated automatically.
-
-
 #. Reinstall the Python client for PostgreSQL and Redis:
 
    .. code-block:: bash
@@ -111,7 +91,27 @@ Upgrade steps from any previous version of Mayan EDMS
 
    .. code-block:: bash
 
-       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 librabbitmq==|PYTHON_LIBRABBITMQ_VERSION|
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
+
+
+Upgrade steps from any previous version of Mayan EDMS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u mayan curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u mayan |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.2
+
+   the requirements will also be updated automatically.
 
 
 #. Make a backup of your supervisord file:

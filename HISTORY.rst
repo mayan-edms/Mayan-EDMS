@@ -7,17 +7,18 @@
 - Update devpi-server version to 5.3.1.
 - Add targets to run staging containers using RabbitMQ as
   broker.
-- Add test for GitLab issue #702
-- Don't set SourceColumns to the attribute name when no help text
+- Don't set SourceColumn to the attribute name when no help text
   is defined.
-- Make it clear when a setting is being overrided by an environment
+- Make it clear when a setting is being overridden by an environment
   variable. Add better text explanation. Change the column to a check
   mark widget.
 - Add icons to the smart settings links.
 - Fix docker-runtest-all target.
 - Fix the evaluation priority of the bootstrap settings. Closes GitLab issue
   #702. Thanks to Kevin Pawsey (@kevinpawsey) for the report and the help
-  debuging the issue.
+  debugging the issue.
+- Switch from librabbitmq to py-amqp. Closes GitLab issue #699. Thanks to
+  Rob de Canha-Knight (@rssfed23) for the report, research, and debug.
 
 3.3.3 (2019-12-05)
 ==================
