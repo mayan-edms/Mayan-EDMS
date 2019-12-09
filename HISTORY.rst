@@ -1,3 +1,8 @@
+4.0 (2020-XX-XX)
+================
+- Update Python GNUPG to version 0.4.5.
+- Update Django REST framework to 3.9.4.
+
 3.3.4 (2019-12-09)
 ==================
 - Update the gunicorn worker class to synchronous.
