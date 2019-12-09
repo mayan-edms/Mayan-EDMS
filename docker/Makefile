@@ -80,6 +80,7 @@ docker-staging-container-rabbitmq-start:
 	-d \
 	--name mayan-staging-rabbitmq \
 	--network=mayan-staging \
+	-v mayan-staging-rabbitmq:/var/lib/rabbitmq \
 	$(DOCKER_RABBITMQ_IMAGE_VERSION) \
 
 docker-staging-container-mayan-start:
@@ -114,6 +115,7 @@ docker-staging-cleanup: ## Delete the test container and the test volume.
 	@docker rm -f mayan-staging-postgres || true
 	@docker volume rm mayan-staging-app || true
 	@docker volume rm mayan-staging-postgres || true
+	@docker volume rm mayan-staging-rabbitmq || true
 	@docker network rm mayan-staging || true
 
 devpi-init:
