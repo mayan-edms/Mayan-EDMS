@@ -2,8 +2,10 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
+from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
+from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
@@ -17,7 +19,7 @@ from mayan.apps.common.generics import (
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
     SingleObjectListView
 )
-from mayan.apps.converter.models import Transformation
+from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
 )
@@ -30,10 +32,10 @@ from ..forms import (
 )
 from ..icons import (
     icon_document_list, icon_document_list_recent_access,
-    icon_recent_added_document_list, icon_duplicated_document_list
+    icon_recent_added_document_list
 )
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
-from ..models import Document, DuplicatedDocument, RecentDocument
+from ..models import Document, RecentDocument
 from ..permissions import (
     permission_document_download, permission_document_print,
     permission_document_properties_edit, permission_document_tools,
@@ -46,12 +48,11 @@ from ..tasks import task_update_page_count
 from ..utils import parse_range
 
 __all__ = (
-    'DocumentListView', 'DocumentDocumentTypeEditView',
-    'DocumentDuplicatesListView', 'DocumentEditView', 'DocumentPreviewView',
-    'DocumentView', 'DocumentDownloadFormView', 'DocumentDownloadView',
-    'DocumentUpdatePageCountView', 'DocumentTransformationsClearView',
-    'DocumentTransformationsCloneView', 'DocumentPrint',
-    'DuplicatedDocumentListView', 'RecentAccessDocumentListView',
+    'DocumentListView', 'DocumentDocumentTypeEditView', 'DocumentEditView',
+    'DocumentPreviewView', 'DocumentView', 'DocumentDownloadFormView',
+    'DocumentDownloadView', 'DocumentUpdatePageCountView',
+    'DocumentTransformationsClearView', 'DocumentTransformationsCloneView',
+    'DocumentPrint', 'RecentAccessDocumentListView',
     'RecentAddedDocumentListView'
 )
 logger = logging.getLogger(__name__)
@@ -253,7 +254,6 @@ class DocumentDownloadView(SingleObjectDownloadView):
                 target=item
             )
         else:
-            # TODO: Improve by adding a document version download event
             event_document_download.commit(
                 actor=request.user,
                 target=item.document
@@ -318,47 +318,6 @@ class DocumentDownloadView(SingleObjectDownloadView):
 
     def get_item_label(self, item):
         return item.label
-
-
-class DocumentDuplicatesListView(DocumentListView):
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_document(), permissions=(permission_document_view,),
-            user=self.request.user
-        )
-
-        return super(
-            DocumentDuplicatesListView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_document(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
-
-    def get_extra_context(self):
-        context = super(DocumentDuplicatesListView, self).get_extra_context()
-        context.update(
-            {
-                'no_results_icon': icon_duplicated_document_list,
-                'no_results_text': _(
-                    'Only exact copies of this document will be shown in the '
-                    'this list.'
-                ),
-                'no_results_title': _(
-                    'There are no duplicates for this document'
-                ),
-                'object': self.get_document(),
-                'title': _('Duplicates for document: %s') % self.get_document(),
-            }
-        )
-        return context
-
-    def get_source_queryset(self):
-        try:
-            return DuplicatedDocument.objects.get(
-                document=self.get_document()
-            ).documents.all()
-        except DuplicatedDocument.DoesNotExist:
-            return Document.objects.none()
 
 
 class DocumentEditView(SingleObjectEditView):
@@ -522,7 +481,7 @@ class DocumentTransformationsClearView(MultipleObjectConfirmActionView):
     def object_action(self, form, instance):
         try:
             for page in instance.pages.all():
-                Transformation.objects.get_for_object(obj=page).delete()
+                layer_saved_transformations.get_transformations_for(obj=page).delete()
         except Exception as exception:
             messages.error(
                 self.request, _(
@@ -545,24 +504,29 @@ class DocumentTransformationsCloneView(FormView):
                 pk=form.cleaned_data['page'].pk
             )
 
-            for page in target_pages:
-                Transformation.objects.get_for_object(obj=page).delete()
+            with transaction.atomic():
+                for page in target_pages:
+                    layer_saved_transformations.get_transformations_for(obj=page).delete()
 
-            Transformation.objects.copy(
-                source=form.cleaned_data['page'], targets=target_pages
-            )
+                layer_saved_transformations.copy_transformations(
+                    source=form.cleaned_data['page'], targets=target_pages
+                )
         except Exception as exception:
-            messages.error(
-                self.request, _(
-                    'Error deleting the page transformations for '
-                    'document: %(document)s; %(error)s.'
-                ) % {
-                    'document': instance, 'error': exception
-                }
-            )
+            if settings.DEBUG:
+                raise
+            else:
+                messages.error(
+                    message=_(
+                        'Error cloning the page transformations for '
+                        'document: %(document)s; %(error)s.'
+                    ) % {
+                        'document': instance, 'error': exception
+                    }, request=self.request
+                )
         else:
             messages.success(
-                self.request, _('Transformations cloned successfully.')
+                message=_('Transformations cloned successfully.'),
+                request=self.request
             )
 
         return super(DocumentTransformationsCloneView, self).form_valid(form=form)
@@ -666,31 +630,6 @@ class DocumentPrint(FormView):
             return ('documents/document_print.html',)
         else:
             return (self.template_name,)
-
-
-class DuplicatedDocumentListView(DocumentListView):
-    def get_document_queryset(self):
-        return DuplicatedDocument.objects.get_duplicated_documents()
-
-    def get_extra_context(self):
-        context = super(DuplicatedDocumentListView, self).get_extra_context()
-        context.update(
-            {
-                'no_results_icon': icon_duplicated_document_list,
-                'no_results_text': _(
-                    'Duplicates are documents that are composed of the exact '
-                    'same file, down to the last byte. Files that have the '
-                    'same text or OCR but are not identical or were saved '
-                    'using a different file format will not appear as '
-                    'duplicates.'
-                ),
-                'no_results_title': _(
-                    'There are no duplicated documents'
-                ),
-                'title': _('Duplicated documents')
-            }
-        )
-        return context
 
 
 class RecentAccessDocumentListView(DocumentListView):

@@ -2,8 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 
-from django.test import TestCase
-
+from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.common.tests.utils import mute_stdout
 
 from ..models import AutoAdminSingleton
@@ -12,7 +11,7 @@ from ..settings import setting_username
 from .literals import TEST_ADMIN_USER_PASSWORD
 
 
-class AutoAdminHandlerTestCase(TestCase):
+class AutoAdminHandlerTestCase(BaseTestCase):
     def test_post_admin_creation(self):
         logging.disable(logging.INFO)
 

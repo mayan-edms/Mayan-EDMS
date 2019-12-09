@@ -44,17 +44,6 @@ class ACLTestMixin(PermissionTestMixin, RoleTestMixin, TestModelTestMixin):
         if self.auto_create_test_object:
             self._setup_test_object()
 
-    def tearDown(self):
-        # Deregister the permissions of the ephimeral test models
-        # this avoids their Content Type from being looked up
-        # in subsequent tests where they don't exists due to the database
-        # transaction rollback.
-        for model in self._test_models:
-            ModelPermission.deregister(model=model)
-            self._test_models.remove(model)
-
-        super(ACLTestMixin, self).tearDown()
-
     def _create_test_acl(self):
         self.test_acl = AccessControlList.objects.create(
             content_object=self.test_object, role=self.test_role
@@ -71,12 +60,12 @@ class ACLTestMixin(PermissionTestMixin, RoleTestMixin, TestModelTestMixin):
             'object_id': self.test_object.pk
         }
 
-    def _setup_test_object(self, register_model_permissions=True):
-        self._create_test_model()
-        self._create_test_object()
+    def _setup_test_object(self, model_name=None, register_model_permissions=True):
+        self.TestModel = self._create_test_model(model_name=model_name)
+        self.test_object = self.TestModel.objects.create()
         if register_model_permissions:
             ModelPermission.register(
-                model=self.test_object._meta.model, permissions=(
+                model=self.TestModel, permissions=(
                     permission_acl_edit, permission_acl_view,
                 )
             )
@@ -85,9 +74,23 @@ class ACLTestMixin(PermissionTestMixin, RoleTestMixin, TestModelTestMixin):
 
         if register_model_permissions:
             ModelPermission.register(
-                model=self.test_object._meta.model, permissions=(
+                model=self.TestModel, permissions=(
                     self.test_permission,
                 )
             )
 
         self._inject_test_object_content_type()
+
+    def _setup_test_object_base(self):
+        self.test_object_base = self._setup_test_object(
+            model_name='TestModelBase'
+        )
+
+    def _setup_test_object_proxy(self):
+        self.TestModelProxy = self._create_test_model(
+            base_class=self.TestModel, model_name='TestModelProxy',
+            options={
+                'proxy': True
+            }
+        )
+        self.test_object_proxy = self.TestModelProxy.objects.create()

@@ -4,10 +4,10 @@ import hashlib
 
 from fuse import FuseOSError
 
-from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.tests import DocumentTestMixin
-from mayan.apps.document_indexing.tests import IndexTestMixin
+from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.document_indexing.tests.mixins import IndexTestMixin
 
 from ..filesystems import IndexFilesystem
 

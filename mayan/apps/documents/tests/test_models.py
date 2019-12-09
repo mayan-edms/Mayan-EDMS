@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from datetime import timedelta
 import time
 
-from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.common.tests.base import BaseTestCase
 
 from ..literals import STUB_EXPIRATION_INTERVAL
 from ..models import (

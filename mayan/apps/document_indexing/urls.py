@@ -9,12 +9,12 @@ from .api_views import (
 )
 from .views import (
     DocumentIndexNodeListView, DocumentTypeIndexesView, IndexInstanceNodeView,
-    IndexListView, IndexesRebuildView, SetupIndexDocumentTypesView,
-    SetupIndexCreateView, SetupIndexDeleteView, SetupIndexEditView,
-    SetupIndexListView, SetupIndexRebuildView, SetupIndexTreeTemplateListView,
-    TemplateNodeCreateView, TemplateNodeDeleteView, TemplateNodeEditView
+    IndexListView, IndexesRebuildView, IndexesResetView,
+    SetupIndexDocumentTypesView, SetupIndexCreateView, SetupIndexDeleteView,
+    SetupIndexEditView, SetupIndexListView, SetupIndexRebuildView,
+    SetupIndexTreeTemplateListView, TemplateNodeCreateView,
+    TemplateNodeDeleteView, TemplateNodeEditView
 )
-
 
 urlpatterns_templates = [
     url(
@@ -83,6 +83,10 @@ urlpatterns_tools = [
     url(
         regex=r'^instances/rebuild/$', view=IndexesRebuildView.as_view(),
         name='rebuild_index_instances'
+    ),
+    url(
+        regex=r'^instances/reset/$', view=IndexesResetView.as_view(),
+        name='index_instances_reset'
     ),
 ]
 

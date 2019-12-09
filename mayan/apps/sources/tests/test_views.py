@@ -4,13 +4,13 @@ import os
 import shutil
 
 from mayan.apps.checkouts.models import NewVersionBlock
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
-from mayan.apps.documents.tests import (
-    GenericDocumentViewTestCase, TEST_COMPRESSED_DOCUMENT_PATH,
-    TEST_DOCUMENT_DESCRIPTION, TEST_SMALL_DOCUMENT_CHECKSUM,
-    TEST_SMALL_DOCUMENT_PATH,
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.literals import (
+    TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
+    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
@@ -32,7 +32,7 @@ class DocumentUploadWizardViewTestMixin(object):
     def _request_upload_wizard_view(self, document_path=TEST_SMALL_DOCUMENT_PATH):
         with open(document_path, mode='rb') as file_object:
             return self.post(
-                viewname='sources:upload_interactive', kwargs={
+                viewname='sources:document_upload_interactive', kwargs={
                     'source_id': self.test_source.pk
                 }, data={
                     'source-file': file_object,
@@ -42,7 +42,7 @@ class DocumentUploadWizardViewTestMixin(object):
 
     def _request_upload_interactive_view(self):
         return self.get(
-            viewname='sources:upload_interactive', data={
+            viewname='sources:document_upload_interactive', data={
                 'document_type_id': self.test_document_type.pk,
             }
         )
@@ -53,10 +53,6 @@ class DocumentUploadWizardViewTestCase(
     GenericDocumentViewTestCase
 ):
     auto_upload_document = False
-
-    def setUp(self):
-        super(DocumentUploadWizardViewTestCase, self).setUp()
-        self._create_test_source()
 
     def test_upload_compressed_file(self):
         self.test_source.uncompress = SOURCE_UNCOMPRESS_CHOICE_Y
@@ -113,7 +109,7 @@ class DocumentUploadWizardViewTestCase(
 
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             response = self.post(
-                viewname='sources:upload_interactive', kwargs={
+                viewname='sources:document_upload_interactive', kwargs={
                     'source_id': self.test_source.pk
                 }, data={
                     'source-file': file_object,
@@ -155,11 +151,11 @@ class DocumentUploadIssueTestCase(GenericDocumentViewTestCase):
         self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_descriptor:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.post(
-                viewname='sources:upload_interactive', data={
+                viewname='sources:document_upload_interactive', data={
                     'document-language': 'eng',
-                    'source-file': file_descriptor,
+                    'source-file': file_object,
                     'document_type_id': self.test_document_type.pk
                 }
             )
@@ -207,7 +203,7 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
         NewVersionBlock.objects.block(self.test_document)
 
         response = self.post(
-            viewname='sources:upload_version', kwargs={
+            viewname='sources:document_version_upload', kwargs={
                 'document_pk': self.test_document.pk
             }, follow=True
         )
@@ -253,7 +249,7 @@ class StagingFolderViewTestCase(
         self.filename = os.path.basename(TEST_SMALL_DOCUMENT_PATH)
 
     def tearDown(self):
-        fs_cleanup(self.temporary_directory)
+        fs_cleanup(filename=self.temporary_directory)
         super(StagingFolderViewTestCase, self).tearDown()
 
     def test_staging_file_delete_no_permission(self):
@@ -300,6 +296,8 @@ class StagingFolderViewTestCase(
 class SourcesViewTestCase(
     SourceTestMixin, SourceViewTestMixin, GenericViewTestCase
 ):
+    auto_create_test_source = False
+
     def test_source_create_view_no_permission(self):
         response = self._request_setup_source_create_view()
         self.assertEqual(response.status_code, 403)

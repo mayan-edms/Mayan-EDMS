@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.db.models.signals import post_delete
+from django.db.models.signals import post_delete, post_migrate
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -43,40 +43,56 @@ from .events import (
     event_document_view
 )
 from .handlers import (
-    handler_create_default_document_type, handler_remove_empty_duplicates_lists,
-    handler_scan_duplicates_for,
+    handler_create_default_document_type, handler_create_document_cache,
+    handler_remove_empty_duplicates_lists, handler_scan_duplicates_for
 )
-from .links import (
-    link_clear_image_cache, link_document_clear_transformations,
-    link_document_clone_transformations, link_document_delete,
+from .links.document_links import (
+    link_document_clear_transformations, link_document_clone_transformations,
     link_document_document_type_edit, link_document_download,
-    link_document_duplicates_list, link_document_edit,
-    link_document_favorites_add, link_document_favorites_remove,
-    link_document_list, link_document_list_deleted,
-    link_document_list_favorites, link_document_list_recent_access,
+    link_document_edit, link_document_list, link_document_list_recent_access,
     link_document_list_recent_added,
     link_document_multiple_clear_transformations,
-    link_document_multiple_delete, link_document_multiple_document_type_edit,
-    link_document_multiple_download, link_document_multiple_favorites_add,
-    link_document_multiple_favorites_remove, link_document_multiple_restore,
-    link_document_multiple_trash, link_document_multiple_update_page_count,
-    link_document_page_navigation_first, link_document_page_navigation_last,
-    link_document_page_navigation_next, link_document_page_navigation_previous,
-    link_document_page_return, link_document_page_rotate_left,
-    link_document_page_rotate_right, link_document_page_view,
-    link_document_page_view_reset, link_document_page_zoom_in,
-    link_document_page_zoom_out, link_document_pages, link_document_preview,
-    link_document_print, link_document_properties, link_document_quick_download,
-    link_document_restore, link_document_trash, link_document_type_create,
-    link_document_type_delete, link_document_type_edit,
-    link_document_type_filename_create, link_document_type_filename_delete,
-    link_document_type_filename_edit, link_document_type_filename_list,
-    link_document_type_list, link_document_type_policies,
-    link_document_type_setup, link_document_update_page_count,
+    link_document_multiple_document_type_edit,
+    link_document_multiple_download, link_document_preview,
+    link_document_print, link_document_properties,
+    link_document_quick_download
+)
+from .links.document_version_links import (
     link_document_version_download, link_document_version_list,
     link_document_version_return_document, link_document_version_return_list,
-    link_document_version_revert, link_document_version_view,
-    link_duplicated_document_list, link_duplicated_document_scan,
+    link_document_version_revert, link_document_version_view
+)
+from .links.document_type_links import (
+    link_document_type_create, link_document_type_delete,
+    link_document_type_edit, link_document_type_filename_create,
+    link_document_type_filename_delete, link_document_type_filename_edit,
+    link_document_type_filename_list, link_document_type_list,
+    link_document_type_policies, link_document_type_setup
+)
+from .links.document_version_page_links import (
+    link_document_multiple_update_page_count, link_document_page_disable,
+    link_document_page_enable, link_document_page_multiple_enable,
+    link_document_page_multiple_disable, link_document_page_navigation_first,
+    link_document_page_navigation_last, link_document_page_navigation_next,
+    link_document_page_navigation_previous, link_document_page_return,
+    link_document_page_rotate_left, link_document_page_rotate_right,
+    link_document_page_view, link_document_page_view_reset,
+    link_document_page_zoom_in, link_document_page_zoom_out,
+    link_document_pages, link_document_update_page_count
+)
+from .links.duplicated_document_links import (
+    link_document_duplicates_list, link_duplicated_document_list,
+    link_duplicated_document_scan
+)
+from .links.favorite_links import (
+    link_document_favorites_add, link_document_favorites_remove,
+    link_document_list_favorites, link_document_multiple_favorites_add,
+    link_document_multiple_favorites_remove
+)
+from .links.trashed_document_links import (
+    link_document_delete, link_document_list_deleted,
+    link_document_multiple_delete, link_document_multiple_restore,
+    link_document_multiple_trash, link_document_restore, link_document_trash,
     link_trash_can_empty
 )
 from .menus import menu_documents
@@ -85,10 +101,10 @@ from .permissions import (
     permission_document_download, permission_document_edit,
     permission_document_new_version, permission_document_print,
     permission_document_properties_edit, permission_document_restore,
-    permission_document_trash, permission_document_type_delete,
-    permission_document_type_edit, permission_document_type_view,
-    permission_document_version_revert, permission_document_version_view,
-    permission_document_view
+    permission_document_tools, permission_document_trash,
+    permission_document_type_delete, permission_document_type_edit,
+    permission_document_type_view, permission_document_version_revert,
+    permission_document_version_view, permission_document_view
 )
 # Just import to initialize the search models
 from .search import document_search, document_page_search  # NOQA
@@ -98,6 +114,10 @@ from .widgets import (
     DocumentPageThumbnailWidget, widget_document_page_number,
     widget_document_version_page_number
 )
+
+
+def is_document_page_enabled(context):
+    return context['object'].enabled
 
 
 class DocumentsApp(MayanAppConfig):
@@ -185,8 +205,8 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_delete, permission_document_download,
                 permission_document_edit, permission_document_new_version,
                 permission_document_print, permission_document_properties_edit,
-                permission_document_restore, permission_document_trash,
-                permission_document_version_revert,
+                permission_document_restore, permission_document_tools,
+                permission_document_trash, permission_document_version_revert,
                 permission_document_version_view, permission_document_view,
                 permission_events_view, permission_transformation_create,
                 permission_transformation_delete,
@@ -206,11 +226,20 @@ class DocumentsApp(MayanAppConfig):
         ModelPermission.register_inheritance(
             model=Document, related='document_type',
         )
+        ModelPermission.register_manager(
+            model=Document, manager_name='passthrough'
+        )
         ModelPermission.register_inheritance(
             model=DocumentPage, related='document_version__document',
         )
+        ModelPermission.register_manager(
+            model=DocumentPage, manager_name='passthrough'
+        )
         ModelPermission.register_inheritance(
             model=DocumentPageResult, related='document_version__document',
+        )
+        ModelPermission.register_manager(
+            model=DocumentPageResult, manager_name='passthrough'
         )
         ModelPermission.register_inheritance(
             model=DocumentTypeFilename, related='document_type',
@@ -254,12 +283,20 @@ class DocumentsApp(MayanAppConfig):
         # DocumentPage
         SourceColumn(
             attribute='get_label', is_identifier=True,
-            is_object_absolute_url=True, source=DocumentPage
+            is_object_absolute_url=True, source=DocumentPage,
+            widget_condition=is_document_page_enabled
         )
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             ), label=_('Thumbnail'), source=DocumentPage
+        )
+        SourceColumn(
+            attribute='enabled', include_label=True, source=DocumentPage,
+            widget=TwoStateWidget
+        )
+        SourceColumn(
+            attribute='page_number', include_label=True, source=DocumentPage
         )
 
         SourceColumn(
@@ -301,14 +338,6 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=DeletedDocument
-        )
-        SourceColumn(
-            func=lambda context: document_page_thumbnail_widget.render(
-                instance=context['object']
-            ), label=_('Thumbnail'), source=DeletedDocument
-        )
-        SourceColumn(
-            attribute='document_type', is_sortable=True, source=DeletedDocument
         )
         SourceColumn(
             attribute='deleted_date_time', include_label=True, order=99,
@@ -377,7 +406,7 @@ class DocumentsApp(MayanAppConfig):
 
         menu_setup.bind_links(links=(link_document_type_setup,))
         menu_tools.bind_links(
-            links=(link_clear_image_cache, link_duplicated_document_scan)
+            links=(link_duplicated_document_scan,)
         )
 
         # Document type links
@@ -503,6 +532,16 @@ class DocumentsApp(MayanAppConfig):
                 link_document_page_navigation_last
             ), sources=(DocumentPage,)
         )
+        menu_multi_item.bind_links(
+            links=(
+                link_document_page_multiple_disable,
+                link_document_page_multiple_enable
+            ), sources=(DocumentPage,)
+        )
+        menu_object.bind_links(
+            links=(link_document_page_disable, link_document_page_enable),
+            sources=(DocumentPage,)
+        )
         menu_list_facet.bind_links(
             links=(link_transformation_list,), sources=(DocumentPage,)
         )
@@ -519,16 +558,20 @@ class DocumentsApp(MayanAppConfig):
         )
 
         post_delete.connect(
-            dispatch_uid='handler_remove_empty_duplicates_lists',
+            dispatch_uid='documents_handler_remove_empty_duplicates_lists',
             receiver=handler_remove_empty_duplicates_lists,
             sender=Document
         )
         post_initial_setup.connect(
-            dispatch_uid='handler_create_default_document_type',
+            dispatch_uid='documents_handler_create_default_document_type',
             receiver=handler_create_default_document_type
         )
+        post_migrate.connect(
+            dispatch_uid='documents_handler_create_document_cache',
+            receiver=handler_create_document_cache,
+        )
         post_version_upload.connect(
-            dispatch_uid='handler_scan_duplicates_for',
+            dispatch_uid='documents_handler_scan_duplicates_for',
             receiver=handler_scan_duplicates_for
         )
 

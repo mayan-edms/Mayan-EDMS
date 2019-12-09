@@ -23,6 +23,7 @@
     {% block content_plain %}{% endblock %}
 {% else %}
     <div class="">
+
         {% navigation_resolve_menus names='facet,list facet' sort_results=True as facet_menus_link_results %}
 
         <div class="row zero-margin">
@@ -43,7 +44,7 @@
                         {% if settings_changed %}
                             <div class="alert alert-dismissible alert-warning">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <p><strong>{% trans 'Warning' %}</strong> {% trans 'Settings updated, restart your installation for changes to take proper effect.' %}</p>
+                                <p><strong>{% trans 'Warning' %}</strong> {% trans 'Settings updated, restart your installation and refresh your browser for changes to take effect.' %}</p>
                             </div>
                         {% endif %}
                     </div>
@@ -55,7 +56,6 @@
                 {% navigation_resolve_menus names='object,secondary' sort_results=True as action_menus_link_results %}
                 {% if action_menus_link_results %}
                     <div class="pull-right btn-group" id="menu-actions">
-                        <div class="body-spacer"></div>
                         <button aria-expanded="true" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" type="button">
                             {% trans 'Actions' %}
                             <span class="caret"></span>
@@ -107,7 +107,6 @@
 
             {% if facet_menus_link_results %}
                 <div id="sidebar">
-                    <div class="body-spacer"></div>
                     <div class="list-group">
                         {% for menu_link_result in facet_menus_link_results %}
                             {% for link_group in menu_link_result.link_groups %}
@@ -138,6 +137,9 @@
             },
         {% endfor %}
     ];
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    })
 </script>
 {% block javascript %}{% endblock %}
 

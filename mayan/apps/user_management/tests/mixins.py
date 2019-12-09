@@ -249,11 +249,19 @@ class UserTestMixin(object):
         self.test_superuser.cleartext_password = TEST_USER_PASSWORD
 
     def _create_test_user(self):
+        total_test_users = len(self.test_users)
+        username = '{}_{}'.format(TEST_USER_USERNAME, total_test_users)
+
         self.test_user = get_user_model().objects.create_user(
-            username=TEST_USER_USERNAME, email=TEST_USER_EMAIL,
+            username=username, email=TEST_USER_EMAIL,
             password=TEST_USER_PASSWORD
         )
         self.test_user.cleartext_password = TEST_USER_PASSWORD
+        self.test_users.append(self.test_user)
+
+    def setUp(self):
+        super(UserTestMixin, self).setUp()
+        self.test_users = []
 
 
 class UserViewTestMixin(object):

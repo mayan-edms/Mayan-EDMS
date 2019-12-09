@@ -6,8 +6,9 @@ import time
 from mayan.apps.django_gpg.tests.literals import TEST_KEY_PRIVATE_PASSPHRASE
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.models import DocumentVersion
-from mayan.apps.documents.tests import (
-    GenericDocumentTestCase, TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
+from mayan.apps.documents.tests.literals import (
+    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
 )
 
 from ..models import DetachedSignature, EmbeddedSignature
@@ -103,7 +104,8 @@ class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
         self.assertEqual(
-            self.test_signature.document_version, self.test_document.latest_version
+            self.test_signature.document_version,
+            self.test_document.latest_version
         )
         self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(self.test_signature.public_key_fingerprint, None)
@@ -118,7 +120,8 @@ class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
         self.assertEqual(
-            self.test_signature.document_version, self.test_document.latest_version
+            self.test_signature.document_version,
+            self.test_document.latest_version
         )
         self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(
@@ -267,7 +270,7 @@ class EmbeddedSignaturesTestCase(KeyTestMixin, GenericDocumentTestCase):
             file_object.seek(0)
             original_hash = hashlib.sha256(file_object.read()).hexdigest()
 
-        new_version = EmbeddedSignature.objects.sign_document_version(
+        signature = EmbeddedSignature.objects.sign_document_version(
             document_version=self.test_document.latest_version,
             key=self.test_key_private,
             passphrase=TEST_KEY_PRIVATE_PASSPHRASE
@@ -275,7 +278,7 @@ class EmbeddedSignaturesTestCase(KeyTestMixin, GenericDocumentTestCase):
 
         self.assertEqual(EmbeddedSignature.objects.count(), 1)
 
-        with new_version.open() as file_object:
+        with signature.document_version.open() as file_object:
             file_object.seek(0, 2)
             new_size = file_object.tell()
             file_object.seek(0)

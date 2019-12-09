@@ -1,0 +1,25 @@
+.. _docker_building:
+
+==================
+Building the image
+==================
+
+Clone the repository with::
+
+    git clone |SOURCE_CODE_GIT|
+
+Change to the directory of the cloned repository::
+
+    cd mayan-edms
+
+Execute Docker's build command using the provided makefile::
+
+    make docker-build
+
+Or using an APT cache to speed up the build::
+
+    make docker-build-with-proxy APT_PROXY=172.17.0.1:3142
+
+Replace the IP address `172.17.0.1` with the IP address of the computer
+running the APT proxy and caching service.
+

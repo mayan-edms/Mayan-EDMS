@@ -4,7 +4,7 @@ class MayanApp {
     constructor (options) {
         var self = this;
 
-        options = options || {
+        this.options = options || {
             ajaxMenusOptions: []
         }
 
@@ -17,28 +17,44 @@ class MayanApp {
 
     // Class methods and variables
 
-    static MultiObjectFormProcess ($form, options) {
-        /*
-         * ajaxForm callback to add the external item checkboxes to the
-         * submitted form
-         */
+    static countChecked() {
+        var checkCount = $('.check-all-slave:checked').length;
 
-        if ($form.hasClass('form-multi-object-action')) {
-            // Turn form data into an object
-            var formArray = $form.serializeArray().reduce(function (obj, item) {
-                obj[item.name] = item.value;
-                return obj;
-            }, {});
+        if (checkCount) {
+            $('#multi-item-title').hide();
+            $('#multi-item-actions').show();
+        } else {
+            $('#multi-item-title').show();
+            $('#multi-item-actions').hide();
+        }
+    }
 
-            // Add all checked checkboxes to the form data
-            $('.form-multi-object-action-checkbox:checked').each(function() {
-                var $this = $(this);
-                formArray[$this.attr('name')] = $this.attr('value');
+    static setupMultiItemActions () {
+        $('body').on('change', '.check-all-slave', function () {
+            MayanApp.countChecked();
+        });
+
+        $('body').on('click', '.btn-multi-item-action', function (event) {
+            var id_list = [];
+            $('.check-all-slave:checked').each(function (index, value) {
+                //Split the name (ie:"pk_200") and extract only the ID
+                id_list.push(value.name.split('_')[1]);
+            });
+            event.preventDefault();
+            partialNavigation.setLocation(
+                $(this).attr('href') + '?id_list=' + id_list.join(',')
+            );
+        });
+    }
+
+    static setupNavBarState () {
+        $('body').on('click', '.a-main-menu-accordion-link', function (event) {
+            $('.a-main-menu-accordion-link').each(function (index, value) {
+                $(this).parent().removeClass('active');
             });
 
-            // Set the form data as the data to send
-            options.data = formArray;
-        }
+            $(this).parent().addClass('active');
+        });
     }
 
     static updateNavbarState () {
@@ -46,8 +62,10 @@ class MayanApp {
         var uriFragment = uri.fragment();
         $('.a-main-menu-accordion-link').each(function (index, value) {
             if (value.pathname === uriFragment) {
-                $(this).closest('.collapse').addClass('in').parent().find('.collapsed').removeClass('collapsed').attr('aria-expanded', 'true');
-                $(this).parent().addClass('active');
+                var $this = $(this);
+
+                $this.closest('.collapse').addClass('in').parent().find('.collapsed').removeClass('collapsed').attr('aria-expanded', 'true');
+                $this.parent().addClass('active');
             }
         });
     }
@@ -58,13 +76,6 @@ class MayanApp {
         if (this.ajaxExecuting) {
             $(this.ajaxSpinnerSeletor).fadeIn(50);
         }
-    }
-
-    doBodyAdjust () {
-        // Adjust the height of the body-spacer to move content elements
-        // up or down when the navbar changes size.
-        const navbarSize = 60;
-        $('.body-spacer').css('height', $('.navbar').height() - navbarSize);
     }
 
     doRefreshAJAXMenu (options) {
@@ -92,7 +103,7 @@ class MayanApp {
             'closeButton': true,
             'debug': false,
             'newestOnTop': true,
-            'positionClass': 'toast-top-right',
+            'positionClass': 'toast-' + this.options.messagePosition,
             'preventDuplicates': false,
             'onclick': null,
             'showDuration': '300',
@@ -162,17 +173,18 @@ class MayanApp {
         var self = this;
 
         this.setupAJAXSpinner();
-        this.setupAutoSubmit();
-        this.setupBodyAdjust();
         this.setupFormHotkeys();
         this.setupFullHeightResizing();
         this.setupItemsSelector();
+        MayanApp.setupMultiItemActions();
         this.setupNavbarCollapse();
+        MayanApp.setupNavBarState();
         this.setupNewWindowAnchor();
         $.each(this.ajaxMenusOptions, function(index, value) {
             value.app = self;
             app.doRefreshAJAXMenu(value);
         });
+        this.setupPanelSelection();
         partialNavigation.initialize();
     }
 
@@ -193,22 +205,6 @@ class MayanApp {
                 $(self.ajaxSpinnerSeletor).fadeOut();
                 self.ajaxExecuting = false;
             });
-        });
-    }
-
-    setupAutoSubmit () {
-        $('body').on('change', '.select-auto-submit', function () {
-            if ($(this).val()) {
-                $(this.form).trigger('submit');
-            }
-        });
-    }
-
-    setupBodyAdjust () {
-        var self = this;
-
-        this.window.resize(function() {
-            self.doBodyAdjust();
         });
     }
 
@@ -242,8 +238,21 @@ class MayanApp {
         app.lastChecked = null;
 
         $('body').on('click', '.check-all', function (event) {
+            var $this = $(this);
             var checked = $(event.target).prop('checked');
             var $checkBoxes = $('.check-all-slave');
+
+            if (checked === undefined) {
+                checked = $this.data('checked');
+                checked = !checked;
+                $this.data('checked', checked);
+
+                if (checked) {
+                    $this.find('[data-fa-i2svg]').addClass($this.data('icon-checked')).removeClass($this.data('icon-unchecked'));
+                } else {
+                    $this.find('[data-fa-i2svg]').addClass($this.data('icon-unchecked')).removeClass($this.data('icon-checked'));
+                }
+            }
 
             $checkBoxes.prop('checked', checked);
             $checkBoxes.trigger('change');
@@ -280,6 +289,18 @@ class MayanApp {
                 $('.navbar-collapse').collapse('hide');
             }
         });
+
+        // Small screen main menu toggle to open
+        $('body').on('click', '#main-menu-button-open', function (event) {
+            $('#menu-main').addClass('menu-main-opened');
+            $('#ajax-header').addClass('overlay-gray');
+        });
+
+        // Small screen main menu toggle to close
+        $('body').on('click', '#menu-main-button-close', function (event) {
+            $('#menu-main').removeClass('menu-main-opened');
+            $('#ajax-header').removeClass('overlay-gray');
+        });
     }
 
     setupNewWindowAnchor () {
@@ -287,6 +308,58 @@ class MayanApp {
             event.preventDefault();
             var newWindow = window.open($(this).attr('href'), '_blank');
             newWindow.focus();
+        });
+    }
+
+    setupPanelSelection () {
+        var app = this;
+
+        // Setup panel highlighting on check
+        $('body').on('change', '.check-all-slave', function (event) {
+            var checked = $(event.target).prop('checked');
+            if (checked) {
+                $(this).closest('.panel-item').addClass('panel-highlighted');
+            } else {
+                $(this).closest('.panel-item').removeClass('panel-highlighted');
+            }
+        });
+
+        $('body').on('click', '.panel-item', function (event) {
+            var $this = $(this);
+            var targetSrc = $(event.target).prop('src');
+            var targetHref = $(event.target).prop('href');
+            var targetIsButton = event.target.tagName === 'BUTTON';
+            var lastChecked = null;
+
+            if ((targetSrc === undefined) && (targetHref === undefined) && (targetIsButton === false)) {
+                var $checkbox = $this.find('.check-all-slave');
+                var checked = $checkbox.prop('checked');
+
+                if (checked) {
+                    $checkbox.prop('checked', '');
+                    $checkbox.trigger('change');
+                } else {
+                    $checkbox.prop('checked', 'checked');
+                    $checkbox.trigger('change');
+                }
+
+                if(!app.lastChecked) {
+                    app.lastChecked = $checkbox;
+                }
+
+                if (event.shiftKey) {
+                    var $checkBoxes = $('.check-all-slave');
+
+                    var start = $checkBoxes.index($checkbox);
+                    var end = $checkBoxes.index(app.lastChecked);
+
+                    $checkBoxes.slice(
+                        Math.min(start, end), Math.max(start, end) + 1
+                    ).prop('checked', app.lastChecked.prop('checked')).trigger('change');
+                }
+                app.lastChecked = $checkbox;
+                window.getSelection().removeAllRanges();
+            }
         });
     }
 

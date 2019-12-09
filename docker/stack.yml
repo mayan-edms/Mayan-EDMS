@@ -9,24 +9,32 @@ volumes:
 services:
 
   db:
-    image: postgres
     environment:
       POSTGRES_DB: mayan
-      POSTGRES_PASSWORD: mayan-password
+      POSTGRES_PASSWORD: mayandbpass
       POSTGRES_USER: mayan
+    image: postgres
     volumes:
       - db:/var/lib/postgresql/data
 
   app:
+    environment:
+      MAYAN_CELERY_BROKER_URL: redis://redis:6379/1
+      MAYAN_CELERY_RESULT_BACKEND: redis://redis:6379/0
+      MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayandbpass','USER':'mayan','HOST':'db'}}"
     image: mayanedms/mayanedms:latest
     ports:
       - 80:8000
-    environment:
-      MAYAN_DATABASE_ENGINE: django.db.backends.postgresql
-      MAYAN_DATABASE_HOST: db
-      MAYAN_DATABASE_NAME: mayan
-      MAYAN_DATABASE_PASSWORD: mayan-password
-      MAYAN_DATABASE_USER: mayan
-      MAYAN_DATABASE_CONN_MAX_AGE: 0
     volumes:
       - app:/var/lib/mayan
+
+  redis:
+    command:
+      - redis-server
+      - --databases
+      - "2"
+      - --maxmemory-policy
+      - allkeys-lru
+      - --save
+      - ""
+    image: redis:5.0

@@ -56,7 +56,7 @@ class DocumentTrashView(MultipleObjectConfirmActionView):
         return result
 
     def object_action(self, form, instance):
-        instance.delete()
+        instance.delete(_user=self.request.user)
 
 
 class EmptyTrashCanView(ConfirmView):

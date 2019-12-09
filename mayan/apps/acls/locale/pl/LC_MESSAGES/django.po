@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:12-0400\n"
-"PO-Revision-Date: 2019-09-23 09:33+0000\n"
-"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
+"POT-Creation-Date: 2019-12-09 00:29-0400\n"
+"PO-Revision-Date: 2019-12-03 05:20+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,7 +38,7 @@ msgstr "Utworzono listę ACL"
 msgid "ACL edited"
 msgstr "Wyedytowano listę ACL"
 
-#: forms.py:15 models.py:49
+#: forms.py:15 models.py:48
 msgid "Role"
 msgstr "Rola"
 
@@ -50,29 +50,29 @@ msgstr "Nowa lista ACL"
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:49 models.py:45 workflow_actions.py:49 workflow_actions.py:164
+#: links.py:49 models.py:44 workflow_actions.py:48 workflow_actions.py:163
 msgid "Permissions"
 msgstr "Uprawnienia"
 
-#: managers.py:216
+#: managers.py:231
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
 msgstr "Obiekt \"%s\" nie jest modelem i nie może być sprawdzony pod kątem dostępu."
 
-#: managers.py:236
+#: managers.py:252
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr "Niewystarczający dostęp dla: %s"
 
-#: models.py:57
+#: models.py:56
 msgid "Access entry"
 msgstr "Zgłoszenie dostępu"
 
-#: models.py:58
+#: models.py:57
 msgid "Access entries"
 msgstr "Zgłoszenia dostępu"
 
-#: models.py:62
+#: models.py:61
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Uprawnienia roli \"%(role)s\" dla obiektu \"%(object)s\""
@@ -161,48 +161,48 @@ msgid ""
 "menu."
 msgstr "Wyłączone prawa są dziedziczone z obiektu rodzica lub bezpośrednio nadane dla roli i nie mogą być usunięte w tym widoku. Dziedziczone prawa muszą być usunięte z listy ACL obiektu rodzica lub z roli w menu Ustawień."
 
-#: workflow_actions.py:26
+#: workflow_actions.py:25
 msgid "Object type"
 msgstr "Typ obiektu"
 
-#: workflow_actions.py:29
+#: workflow_actions.py:28
 msgid "Type of the object for which the access will be modified."
 msgstr "Typ obiektu, dla którego dostęp zostanie zmodyfikowany."
 
-#: workflow_actions.py:35
+#: workflow_actions.py:34
 msgid "Object ID"
 msgstr "ID obiektu"
 
-#: workflow_actions.py:38
+#: workflow_actions.py:37
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
 msgstr "Numeryczny identyfikator obiektu, dla którego dostęp zostanie zmodyfikowany."
 
-#: workflow_actions.py:43 workflow_actions.py:158
+#: workflow_actions.py:42 workflow_actions.py:157
 msgid "Roles"
 msgstr "Role"
 
-#: workflow_actions.py:45 workflow_actions.py:160
+#: workflow_actions.py:44 workflow_actions.py:159
 msgid "Roles whose access will be modified."
 msgstr "Role, których dostęp zostanie zmodyfikowany."
 
-#: workflow_actions.py:52 workflow_actions.py:167
+#: workflow_actions.py:51 workflow_actions.py:166
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr "Uprawnienia do nadawania/odwoływania do/z roli dla obiektu."
 
-#: workflow_actions.py:60
-msgid "Grant access"
-msgstr "Przydziel dostęp"
+#: workflow_actions.py:59
+msgid "Grant object access"
+msgstr ""
 
-#: workflow_actions.py:143
-msgid "Revoke access"
-msgstr "Zabierz dostęp"
+#: workflow_actions.py:142
+msgid "Revoke object access"
+msgstr ""
 
-#: workflow_actions.py:175
+#: workflow_actions.py:174
 msgid "Grant document access"
 msgstr "Przydziel dostęp dla dokumentu"
 
-#: workflow_actions.py:214
+#: workflow_actions.py:213
 msgid "Revoke document access"
 msgstr "Zabierz dostęp do dokumentu"

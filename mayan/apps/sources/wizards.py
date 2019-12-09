@@ -201,7 +201,7 @@ class DocumentCreateWizard(SessionWizardView):
         for step in WizardStep.get_all():
             query_dict.update(step.done(wizard=self) or {})
 
-        url = furl(reverse(viewname='sources:upload_interactive'))
+        url = furl(reverse(viewname='sources:document_upload_interactive'))
         # Use equal and not .update() to get the same result as using
         # urlencode(doseq=True)
         url.args = query_dict

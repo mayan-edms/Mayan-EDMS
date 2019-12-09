@@ -115,6 +115,12 @@ source_lang = en
 source_file = mayan/apps/events/locale/en/LC_MESSAGES/django.po
 type = PO
 
+[mayan-edms.file_caching-3-0]
+file_filter = mayan/apps/file_caching/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/file_caching/locale/en/LC_MESSAGES/django.po
+type = PO
+
 [mayan-edms.file_metadata-3-0]
 file_filter = mayan/apps/file_metadata/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
@@ -217,8 +223,21 @@ source_lang = en
 source_file = mayan/apps/task_manager/locale/en/LC_MESSAGES/django.po
 type = PO
 
+[mayan-edms.templating-3-0]
+file_filter = mayan/apps/templating/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/templating/locale/en/LC_MESSAGES/django.po
+type = PO
+
 [mayan-edms.user_management-2-0]
 file_filter = mayan/apps/user_management/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
 source_file = mayan/apps/user_management/locale/en/LC_MESSAGES/django.po
 type = PO
+
+[mayan-edms.web_link-3-0]
+file_filter = mayan/apps/web_links/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/web_links/locale/en/LC_MESSAGES/django.po
+type = PO
+

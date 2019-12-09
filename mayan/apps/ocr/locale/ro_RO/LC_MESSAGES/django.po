@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:15-0400\n"
+"POT-Creation-Date: 2019-12-09 00:34-0400\n"
 "PO-Revision-Date: 2019-10-29 12:30+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -19,8 +19,8 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:15 links.py:21
-#: permissions.py:7 queues.py:8 settings.py:7
+#: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:20 links.py:26
+#: permissions.py:7 queues.py:8 settings.py:10
 msgid "OCR"
 msgstr "OCR"
 
@@ -32,7 +32,7 @@ msgstr "Data și ora"
 msgid "Result"
 msgstr "Rezultat"
 
-#: backends/tesseract.py:95
+#: backends/tesseract.py:90
 msgid "Tesseract OCR not found."
 msgstr "OCR Tesseract nu a fost găsit."
 
@@ -67,27 +67,27 @@ msgstr "Conţinut"
 msgid "Page %(page_number)d"
 msgstr "Pagina %(page_number)d"
 
-#: links.py:27 links.py:32
+#: links.py:32 links.py:37
 msgid "Delete OCR content"
 msgstr "Ștergeți conținutul OCR"
 
-#: links.py:38 links.py:43
+#: links.py:43 links.py:48
 msgid "Submit for OCR"
 msgstr "Trimiteți pentru OCR"
 
-#: links.py:48
+#: links.py:53
 msgid "Setup OCR"
 msgstr "Configurare OCR"
 
-#: links.py:53
+#: links.py:58
 msgid "OCR documents per type"
 msgstr "Documente OCR pe tip"
 
-#: links.py:58 links.py:64 views.py:185
+#: links.py:63 links.py:69 views.py:185
 msgid "OCR errors"
 msgstr "Erori OCR"
 
-#: links.py:70
+#: links.py:75
 msgid "Download OCR text"
 msgstr "Descărcați text OCR"
 
@@ -159,11 +159,11 @@ msgstr "Modificați setările OCR de tip document"
 msgid "Document version OCR"
 msgstr "OCR pe versiunea documentului "
 
-#: settings.py:12
+#: settings.py:17
 msgid "Full path to the backend to be used to do OCR."
 msgstr "Calea completă spre backend-ul care trebuie utilizat pentru a face OCR."
 
-#: settings.py:21
+#: settings.py:26
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Setați tipuri noi de documente pentru a efectua automat funcția OCR în mod implicit."
 

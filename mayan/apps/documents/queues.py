@@ -62,10 +62,6 @@ queue_documents_periodic.add_task_type(
 )
 
 queue_tools.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_clear_image_cache',
-    label=_('Clear image cache')
-)
-queue_tools.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_scan_duplicates_all',
     label=_('Duplicated document scan')
 )

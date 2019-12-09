@@ -3,22 +3,32 @@ from __future__ import unicode_literals
 import hashlib
 import logging
 
-from PIL import Image, ImageColor, ImageFilter
+from PIL import Image, ImageColor, ImageDraw, ImageFilter
 
+from django.utils.encoding import force_bytes, force_text
 from django.utils.translation import string_concat, ugettext_lazy as _
-from django.utils.encoding import force_bytes
+
+from .layers import layer_saved_transformations
 
 logger = logging.getLogger(__name__)
 
 
-class BaseTransformation(object):
+class BaseTransformationType(type):
+    def __str__(self):
+        return force_text(self.label)
+
+
+class BaseTransformation(object, metaclass=BaseTransformationType):
     """
     Transformation can modify the appearance of the document's page preview.
     Some transformation available are: Rotate, zoom, resize and crop.
     """
     arguments = ()
     name = 'base_transformation'
+    _layer_transformations = {}
     _registry = {}
+    # PY 2
+    __metaclass__ = BaseTransformationType
 
     @staticmethod
     def combine(transformations):
@@ -44,16 +54,25 @@ class BaseTransformation(object):
             return cls.label
 
     @classmethod
-    def get_transformation_choices(cls):
+    def get_transformation_choices(cls, layer=None):
+        if layer:
+            transformation_list = [
+                (transformation.name, transformation) for transformation in cls._layer_transformations[layer]
+            ]
+        else:
+            transformation_list = cls._registry.items()
+
         return sorted(
             [
-                (name, klass.get_label()) for name, klass in cls._registry.items()
+                (name, klass.get_label()) for name, klass in transformation_list
             ]
         )
 
     @classmethod
-    def register(cls, transformation):
+    def register(cls, layer, transformation):
         cls._registry[transformation.name] = transformation
+        cls._layer_transformations.setdefault(layer, [])
+        cls._layer_transformations[layer].append(transformation)
 
     def __init__(self, **kwargs):
         self.kwargs = {}
@@ -149,6 +168,208 @@ class TransformationCrop(BaseTransformation):
         )
 
         return self.image.crop((left, top, right, bottom))
+
+
+class TransformationDrawRectangle(BaseTransformation):
+    arguments = (
+        'left', 'top', 'right', 'bottom', 'fillcolor', 'outlinecolor',
+        'outlinewidth'
+    )
+    label = _('Draw rectangle')
+    name = 'draw_rectangle'
+
+    def execute_on(self, *args, **kwargs):
+        super(TransformationDrawRectangle, self).execute_on(*args, **kwargs)
+
+        try:
+            left = int(self.left or '0')
+        except ValueError:
+            left = 0
+
+        try:
+            top = int(self.top or '0')
+        except ValueError:
+            top = 0
+
+        try:
+            right = int(self.right or '0')
+        except ValueError:
+            right = 0
+
+        try:
+            bottom = int(self.bottom or '0')
+        except ValueError:
+            bottom = 0
+
+        if left < 0:
+            left = 0
+
+        if left > self.image.size[0] - 1:
+            left = self.image.size[0] - 1
+
+        if top < 0:
+            top = 0
+
+        if top > self.image.size[1] - 1:
+            top = self.image.size[1] - 1
+
+        if right < 0:
+            right = 0
+
+        if right > self.image.size[0] - 1:
+            right = self.image.size[0] - 1
+
+        if bottom < 0:
+            bottom = 0
+
+        if bottom > self.image.size[1] - 1:
+            bottom = self.image.size[1] - 1
+
+        # Invert right value
+        # Pillow uses left, top, right, bottom to define a viewport
+        # of real coordinates
+        # We invert the right and bottom to define a viewport
+        # that can crop from the right and bottom borders without
+        # having to know the real dimensions of an image
+        right = self.image.size[0] - right
+        bottom = self.image.size[1] - bottom
+
+        if left > right:
+            left = right - 1
+
+        if top > bottom:
+            top = bottom - 1
+
+        logger.debug(
+            'left: %f, top: %f, right: %f, bottom: %f', left, top, right,
+            bottom
+        )
+
+        fillcolor_value = getattr(self, 'fillcolor', None)
+        if fillcolor_value:
+            fill_color = ImageColor.getrgb(fillcolor_value)
+        else:
+            fill_color = 0
+
+        outlinecolor_value = getattr(self, 'outlinecolor', None)
+        if outlinecolor_value:
+            outline_color = ImageColor.getrgb(outlinecolor_value)
+        else:
+            outline_color = None
+
+        outlinewidth_value = getattr(self, 'outlinewidth', None)
+        if outlinewidth_value:
+            outline_width = int(outlinewidth_value)
+        else:
+            outline_width = 0
+
+        draw = ImageDraw.Draw(self.image)
+        draw.rectangle(
+            (left, top, right, bottom), fill=fill_color, outline=outline_color,
+            width=outline_width
+        )
+
+        return self.image
+
+
+class TransformationDrawRectanglePercent(BaseTransformation):
+    arguments = (
+        'left', 'top', 'right', 'bottom', 'fillcolor', 'outlinecolor',
+        'outlinewidth'
+    )
+    label = _('Draw rectangle (percents coordinates)')
+    name = 'draw_rectangle_percent'
+
+    def execute_on(self, *args, **kwargs):
+        super(TransformationDrawRectanglePercent, self).execute_on(*args, **kwargs)
+
+        try:
+            left = float(self.left or '0')
+        except ValueError:
+            left = 0
+
+        try:
+            top = float(self.top or '0')
+        except ValueError:
+            top = 0
+
+        try:
+            right = float(self.right or '0')
+        except ValueError:
+            right = 0
+
+        try:
+            bottom = float(self.bottom or '0')
+        except ValueError:
+            bottom = 0
+
+        if left < 0:
+            left = 0
+
+        if left > 100:
+            left = 100
+
+        if top < 0:
+            top = 0
+
+        if top > 100:
+            top = 100
+
+        if right < 0:
+            right = 0
+
+        if right > 100:
+            right = 100
+
+        if bottom < 0:
+            bottom = 0
+
+        if bottom > 100:
+            bottom = 100
+
+        logger.debug(
+            'left: %f, top: %f, right: %f, bottom: %f', left, top, right,
+            bottom
+        )
+
+        fillcolor_value = getattr(self, 'fillcolor', None)
+        if fillcolor_value:
+            fill_color = ImageColor.getrgb(fillcolor_value)
+        else:
+            fill_color = 0
+
+        outlinecolor_value = getattr(self, 'outlinecolor', None)
+        if outlinecolor_value:
+            outline_color = ImageColor.getrgb(outlinecolor_value)
+        else:
+            outline_color = None
+
+        outlinewidth_value = getattr(self, 'outlinewidth', None)
+        if outlinewidth_value:
+            outline_width = int(outlinewidth_value)
+        else:
+            outline_width = 0
+
+        left = left / 100.0 * self.image.size[0]
+        top = top / 100.0 * self.image.size[1]
+
+        # Invert right value
+        # Pillow uses left, top, right, bottom to define a viewport
+        # of real coordinates
+        # We invert the right and bottom to define a viewport
+        # that can crop from the right and bottom borders without
+        # having to know the real dimensions of an image
+
+        right = self.image.size[0] - (right / 100.0 * self.image.size[0])
+        bottom = self.image.size[1] - (bottom / 100.0 * self.image.size[1])
+
+        draw = ImageDraw.Draw(self.image)
+        draw.rectangle(
+            (left, top, right, bottom), fill=fill_color, outline=outline_color,
+            width=outline_width
+        )
+
+        return self.image
 
 
 class TransformationFlip(BaseTransformation):
@@ -315,15 +536,19 @@ class TransformationZoom(BaseTransformation):
         )
 
 
-BaseTransformation.register(transformation=TransformationCrop)
-BaseTransformation.register(transformation=TransformationFlip)
-BaseTransformation.register(transformation=TransformationGaussianBlur)
-BaseTransformation.register(transformation=TransformationLineArt)
-BaseTransformation.register(transformation=TransformationMirror)
-BaseTransformation.register(transformation=TransformationResize)
-BaseTransformation.register(transformation=TransformationRotate)
-BaseTransformation.register(transformation=TransformationRotate90)
-BaseTransformation.register(transformation=TransformationRotate180)
-BaseTransformation.register(transformation=TransformationRotate270)
-BaseTransformation.register(transformation=TransformationUnsharpMask)
-BaseTransformation.register(transformation=TransformationZoom)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationCrop)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationDrawRectangle)
+BaseTransformation.register(
+    layer=layer_saved_transformations, transformation=TransformationDrawRectanglePercent
+)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationFlip)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationGaussianBlur)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationLineArt)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationMirror)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationResize)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationRotate)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationRotate90)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationRotate180)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationRotate270)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationUnsharpMask)
+BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationZoom)

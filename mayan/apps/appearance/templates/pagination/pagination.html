@@ -11,7 +11,7 @@
             {% if page %}
 
                 {% ifequal page page_obj.number %}
-                    <li class="active"><a class="disabled" href="#">{{ page }}</a></li>
+                    <li class="active"><a class="pagination-disabled" href="#">{{ page }}</a></li>
                 {% else %}
                     <li><a href="?{{ page.querystring }}">{{ page }}</a></li>
                 {% endifequal %}

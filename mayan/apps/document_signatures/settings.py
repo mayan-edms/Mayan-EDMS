@@ -7,7 +7,13 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings.classes import Namespace
 
-namespace = Namespace(label=_('Document signatures'), name='signatures')
+from .setting_migrations import DocumentSignaturesSettingMigration
+
+namespace = Namespace(
+    label=_('Document signatures'),
+    migration_class=DocumentSignaturesSettingMigration, name='signatures',
+    version='0002'
+)
 
 setting_storage_backend = namespace.add_setting(
     default='django.core.files.storage.FileSystemStorage',
@@ -18,9 +24,9 @@ setting_storage_backend = namespace.add_setting(
 )
 setting_storage_backend_arguments = namespace.add_setting(
     global_name='SIGNATURES_STORAGE_BACKEND_ARGUMENTS',
-    default='{{location: {}}}'.format(
-        os.path.join(settings.MEDIA_ROOT, 'document_signatures')
-    ), quoted=True, help_text=_(
+    default={
+        'location': os.path.join(settings.MEDIA_ROOT, 'document_signatures')
+    }, help_text=_(
         'Arguments to pass to the SIGNATURE_STORAGE_BACKEND. '
     )
 )

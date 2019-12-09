@@ -30,7 +30,10 @@ from .exceptions import SourceException
 from .forms import (
     NewDocumentForm, NewVersionForm, WebFormUploadForm, WebFormUploadFormHTML5
 )
-from .icons import icon_log, icon_setup_sources, icon_upload_view_link
+from .icons import (
+    icon_log, icon_setup_sources, icon_staging_folder_file,
+    icon_upload_view_link
+)
 from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK, SOURCE_UNCOMPRESS_CHOICE_Y
 from .links import (
     link_setup_source_create_imap_email, link_setup_source_create_pop3_email,
@@ -84,10 +87,10 @@ class UploadBaseView(MultiFormView):
     @staticmethod
     def get_tab_link_for_source(source, document=None):
         if document:
-            view = 'sources:upload_version'
+            view = 'sources:document_version_upload'
             args = ('"{}"'.format(document.pk), '"{}"'.format(source.pk),)
         else:
-            view = 'sources:upload_interactive'
+            view = 'sources:document_upload_interactive'
             args = ('"{}"'.format(source.pk),)
 
         return Link(
@@ -155,6 +158,17 @@ class UploadBaseView(MultiFormView):
                         'name': 'appearance/generic_list_subtemplate.html',
                         'context': {
                             'hide_link': True,
+                            'no_results_icon': icon_staging_folder_file,
+                            'no_results_text': _(
+                                'This could mean that the staging folder is '
+                                'empty. It could also mean that the '
+                                'operating system user account being used '
+                                'for Mayan EDMS doesn\'t have the necessary '
+                                'file system permissions for the folder.'
+                            ),
+                            'no_results_title': _(
+                                'No staging files available'
+                            ),
                             'object_list': staging_filelist,
                             'title': _('Files in staging path'),
                         }
@@ -180,8 +194,8 @@ class UploadBaseView(MultiFormView):
                 },
             })
 
-        menu_facet.bound_links['sources:upload_interactive'] = self.tab_links
-        menu_facet.bound_links['sources:upload_version'] = self.tab_links
+        menu_facet.bound_links['sources:document_upload_interactive'] = self.tab_links
+        menu_facet.bound_links['sources:document_version_upload'] = self.tab_links
 
         context.update(
             {
@@ -360,7 +374,7 @@ class UploadInteractiveView(UploadBaseView):
         return context
 
 
-class UploadInteractiveVersionView(UploadBaseView):
+class DocumentVersionUploadInteractiveView(UploadBaseView):
     def dispatch(self, request, *args, **kwargs):
 
         self.subtemplates_list = []
@@ -369,7 +383,6 @@ class UploadInteractiveVersionView(UploadBaseView):
             klass=Document, pk=kwargs['document_pk']
         )
 
-        # TODO: Try to remove this new version block check from here
         if NewVersionBlock.objects.is_blocked(self.document):
             messages.error(
                 message=_(
@@ -392,7 +405,7 @@ class UploadInteractiveVersionView(UploadBaseView):
         self.tab_links = UploadBaseView.get_active_tab_links(self.document)
 
         return super(
-            UploadInteractiveVersionView, self
+            DocumentVersionUploadInteractiveView, self
         ).dispatch(request, *args, **kwargs)
 
     def forms_valid(self, forms):
@@ -448,27 +461,36 @@ class UploadInteractiveVersionView(UploadBaseView):
             files=kwargs.get('files', None),
         )
 
-    def create_document_form_form(self, **kwargs):
-        return self.get_form_classes()['document_form'](
-            prefix=kwargs['prefix'],
-            data=kwargs.get('data', None),
-            files=kwargs.get('files', None),
-        )
-
     def get_form_classes(self):
+        source_form_class = get_upload_form_class(self.source.source_type)
+
+        # Override source form class to enable the HTML5 file uploader
+        if source_form_class == WebFormUploadForm:
+            source_form_class = WebFormUploadFormHTML5
+
         return {
             'document_form': NewVersionForm,
-            'source_form': get_upload_form_class(self.source.source_type)
+            'source_form': source_form_class
         }
 
     def get_context_data(self, **kwargs):
         context = super(
-            UploadInteractiveVersionView, self
+            DocumentVersionUploadInteractiveView, self
         ).get_context_data(**kwargs)
         context['object'] = self.document
         context['title'] = _(
-            'Upload a new version from source: %s'
-        ) % self.source.label
+            'Upload a new version for document "%(document)s" '
+            'from source: %(source)s'
+        ) % {'document': self.document, 'source': self.source.label}
+        context['submit_label'] = _('Submit')
+        context['form_css_classes'] = 'dropzone'
+        context['form_disable_submit'] = True
+        context['form_action'] = '{}?{}'.format(
+            reverse(
+                viewname=self.request.resolver_match.view_name,
+                kwargs=self.request.resolver_match.kwargs
+            ), self.request.META['QUERY_STRING']
+        )
 
         return context
 

@@ -4,8 +4,8 @@ from django.core import mail
 
 from actstream.models import Action
 
-from mayan.apps.common.tests import GenericViewTestCase
-from mayan.apps.documents.tests import DocumentTestMixin
+from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.documents.tests.base import DocumentTestMixin
 
 from ..permissions import (
     permission_mailing_send_document, permission_user_mailer_use

@@ -11,7 +11,7 @@ from django.test import override_settings
 from django.urls import reverse
 from django.utils.http import urlunquote_plus
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.smart_settings.classes import Namespace
 from mayan.apps.user_management.permissions import permission_user_edit
 from mayan.apps.user_management.tests.literals import TEST_USER_PASSWORD_EDITED

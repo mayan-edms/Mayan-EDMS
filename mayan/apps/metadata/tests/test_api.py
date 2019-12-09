@@ -5,8 +5,8 @@ from rest_framework import status
 from mayan.apps.documents.permissions import (
     permission_document_type_edit, permission_document_type_view
 )
-from mayan.apps.documents.tests import DocumentTestMixin
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models import DocumentTypeMetadataType, MetadataType
 from ..permissions import (
@@ -46,7 +46,7 @@ class MetadataTypeAPITestCase(
         self._create_test_metadata_type()
         response = self._request_test_metadata_type_delete_view()
 
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(MetadataType.objects.count(), 1)
 
     def test_metadata_type_delete_with_access(self):
@@ -70,7 +70,7 @@ class MetadataTypeAPITestCase(
         self._create_test_metadata_type()
 
         response = self._request_metadata_type_detail_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_metadata_type_detail_view_with_access(self):
         self._create_test_metadata_type()
@@ -101,7 +101,7 @@ class MetadataTypeAPITestCase(
         )
 
         response = self._request_test_metadata_type_edit_view_via_patch()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_metadata_type.refresh_from_db()
         self.assertEqual(
@@ -145,7 +145,7 @@ class MetadataTypeAPITestCase(
         )
 
         response = self._request_test_metadata_type_edit_view_via_put()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_metadata_type.refresh_from_db()
         self.assertEqual(

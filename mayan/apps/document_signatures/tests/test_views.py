@@ -5,9 +5,9 @@ from django_downloadview.test import assert_download_response
 from mayan.apps.django_gpg.permissions import permission_key_sign
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.models import DocumentVersion
-from mayan.apps.documents.tests import (
-    GenericDocumentViewTestCase, TEST_DOCUMENT_PATH,
-    TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.literals import (
+    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
 )
 
 from ..models import DetachedSignature, EmbeddedSignature
@@ -105,7 +105,7 @@ class SignaturesViewTestCase(
         response = self._request_test_document_version_signature_list_view(
             document=self.test_document
         )
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_signature_list_view_with_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH

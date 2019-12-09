@@ -43,3 +43,6 @@ TEST_TAR_GZ_FILE_PATH = os.path.join(
 TEST_ZIP_FILE_PATH = os.path.join(
     settings.BASE_DIR, 'apps', 'common', 'tests', 'contrib', TEST_ZIP_FILE
 )
+
+TEST_SERVER_HOST = 'testserver'
+TEST_SERVER_SCHEME = 'http'

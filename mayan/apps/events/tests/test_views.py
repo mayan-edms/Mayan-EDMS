@@ -2,8 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 
-from mayan.apps.common.tests import GenericViewTestCase
-from mayan.apps.documents.tests import GenericDocumentViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..permissions import permission_events_view
 

@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 
 from rest_framework import status
 
-from mayan.apps.documents.tests import DocumentTestMixin
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..permissions import (
     permission_ocr_document, permission_ocr_content_view,
@@ -21,7 +21,7 @@ class OCRAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
     def test_submit_document_no_access(self):
         response = self._request_document_ocr_submit_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertFalse(
             hasattr(self.test_document.pages.first(), 'ocr_content')
@@ -48,7 +48,7 @@ class OCRAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
     def test_submit_document_version_no_access(self):
         response = self._request_document_version_ocr_submit_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertFalse(
             hasattr(self.test_document.pages.first(), 'ocr_content')
@@ -76,7 +76,7 @@ class OCRAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
     def test_get_document_version_page_content_no_access(self):
         response = self._request_document_page_content_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_get_document_version_page_content_with_access(self):
         self.test_document.submit_for_ocr()

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from actstream.models import Action
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 
 from ..events import event_workflow_created, event_workflow_edited
 from ..models import Workflow

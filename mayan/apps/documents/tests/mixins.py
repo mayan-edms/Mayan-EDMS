@@ -4,6 +4,9 @@ import os
 
 from django.conf import settings
 
+from mayan.apps.converter.classes import Layer
+from mayan.apps.converter.layers import layer_saved_transformations
+
 from ..literals import PAGE_RANGE_ALL
 from ..models import DocumentType
 
@@ -12,6 +15,7 @@ from .literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_LABEL_EDITED,
     TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED,
     TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH,
+    TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_CLASS,
     TEST_VERSION_COMMENT
 )
 
@@ -26,6 +30,8 @@ class DocumentTestMixin(object):
 
     def setUp(self):
         super(DocumentTestMixin, self).setUp()
+        Layer.invalidate_cache()
+
         self.test_documents = []
 
         if self.auto_create_document_type:
@@ -43,7 +49,13 @@ class DocumentTestMixin(object):
         self.test_document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
-        self.test_document_type = self.test_document_type
+
+    def _calculate_test_document_path(self):
+        if not self.test_document_path:
+            self.test_document_path = os.path.join(
+                settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+                'sample_documents', self.test_document_filename
+            )
 
     def upload_document(self, label=None):
         self._calculate_test_document_path()
@@ -60,13 +72,6 @@ class DocumentTestMixin(object):
         self.test_documents.append(document)
         self.test_document_page = document.latest_version.pages.first()
         self.test_document_version = document.latest_version
-
-    def _calculate_test_document_path(self):
-        if not self.test_document_path:
-            self.test_document_path = os.path.join(
-                settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
-                'sample_documents', self.test_document_filename
-            )
 
 
 class DocumentTypeViewTestMixin(object):
@@ -146,7 +151,28 @@ class DocumentVersionTestMixin(object):
             )
 
 
+class DocumentVersionViewTestMixin(object):
+    def _request_document_version_list_view(self):
+        return self.get(
+            viewname='documents:document_version_list',
+            kwargs={'pk': self.test_document.pk}
+        )
+
+    def _request_document_version_revert_view(self, document_version):
+        return self.post(
+            viewname='documents:document_version_revert',
+            kwargs={'pk': document_version.pk}
+        )
+
+
 class DocumentViewTestMixin(object):
+    def _create_document_transformation(self):
+        layer_saved_transformations.add_transformation_to(
+            obj=self.test_document.pages.first(),
+            transformation_class=TEST_TRANSFORMATION_CLASS,
+            arguments=TEST_TRANSFORMATION_ARGUMENT
+        )
+
     def _request_document_properties_view(self):
         return self.get(
             viewname='documents:document_properties',
@@ -230,9 +256,6 @@ class DocumentViewTestMixin(object):
             data={'id_list': self.test_document.pk}
         )
 
-    def _request_empty_trash_view(self):
-        return self.post(viewname='documents:trash_can_empty')
-
     def _request_document_print_view(self):
         return self.get(
             viewname='documents:document_print', kwargs={
@@ -241,3 +264,53 @@ class DocumentViewTestMixin(object):
                 'page_group': PAGE_RANGE_ALL
             }
         )
+
+    def _request_empty_trash_view(self):
+        return self.post(viewname='documents:trash_can_empty')
+
+
+class TrashedDocumentViewTestMixin(object):
+    def _request_document_trash_get_view(self):
+        return self.get(
+            viewname='documents:document_trash', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_document_trash_post_view(self):
+        return self.post(
+            viewname='documents:document_trash', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_trashed_document_restore_get_view(self):
+        return self.get(
+            viewname='documents:document_restore', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_trashed_document_restore_post_view(self):
+        return self.post(
+            viewname='documents:document_restore', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_trashed_document_delete_get_view(self):
+        return self.get(
+            viewname='documents:document_delete', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_trashed_document_delete_post_view(self):
+        return self.post(
+            viewname='documents:document_delete', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_trashed_document_list_view(self):
+        return self.get(viewname='documents:document_list_deleted')

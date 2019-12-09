@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from rest_framework import status
 
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models import Key
 from ..permissions import (
@@ -25,7 +25,9 @@ class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
 
         response = self._request_test_key_create_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data['fingerprint'], TEST_KEY_PRIVATE_FINGERPRINT)
+        self.assertEqual(
+            response.data['fingerprint'], TEST_KEY_PRIVATE_FINGERPRINT
+        )
 
         key = Key.objects.first()
         self.assertEqual(Key.objects.count(), 1)

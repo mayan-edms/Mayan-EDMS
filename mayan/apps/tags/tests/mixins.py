@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+
 from ..models import Tag
 
 from .literals import (
@@ -158,3 +160,17 @@ class TagViewTestMixin(object):
                 'pk': self.test_document.pk
             }
         )
+
+
+class TaggedDocumentUploadViewTestMixin(object):
+    def _request_upload_interactive_document_create_view(self):
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            return self.post(
+                viewname='sources:document_upload_interactive', kwargs={
+                    'source_id': self.test_source.pk
+                }, data={
+                    'document_type_id': self.test_document_type.pk,
+                    'source-file': file_object,
+                    'tags': Tag.objects.values_list('pk', flat=True)
+                }
+            )

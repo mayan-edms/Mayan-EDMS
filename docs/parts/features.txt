@@ -1,0 +1,100 @@
+========
+Features
+========
+
+- :doc:`Document versioning <../chapters/versioning>`.
+
+  - Store many versions of the same document, download or revert to a
+    previous version.
+
+- :doc:`Digital signatures <../chapters/signatures>`.
+
+  - Check the authenticity of documents by verifying their embedded
+    cryptographic signatures or upload detached signatures for document
+    signed after they were stored.
+
+- :doc:`Collaboration tools <../parts/collaboration>`.
+
+  - Discuss documents, or comment on new versions of a document.
+
+- :doc:`User-defined document metadata <../chapters/metadata>`.
+
+  - Several metadata fields can be matched to a document type as per technical,
+    legal or structural requirements such as the `Dublin core`_.
+  - Metadata fields can have an initial value, which can be static or determined
+    by a template code snippet provided by the user.
+
+- :doc:`Documents can be uploaded from different sources <../chapters/sources>`.
+
+  - Local file or server side file uploads, multifunctional copier, or even via
+    email.
+
+- Batch uploads.
+
+  - Many documents can be upload in a single action.
+  - Clone a document's metadata for speedier uploads and eliminate repetitive
+    data entry.
+
+- Previews for many file formats.
+
+  - Mayan EDMS provides image preview generation for many popular file
+    formats.
+
+- Office document format support.
+
+  - Mayan EDMS can detect the presence of Libre Office and use it to support
+    word processing files, spreadsheets and presentations.
+
+- Full text searching.
+
+  - Documents can be searched by their text content, their metadata or any other
+    file attribute such as name, extension, etc.
+
+- :doc:`Configurable document grouping <../parts/categorization>`.
+
+  - Automatic linking of documents based on metadata values or document
+    properties.
+
+- :doc:`Advanced access control system <../chapters/permissions>`.
+
+  - Role based access control. It is possible to create an unlimited amount
+    of different roles not being restricted to the traditional admin,
+    operator, guest paradigm.
+  - There is a permission for every atomic operation performed by users.
+
+- Multi page document support.
+
+  - Multiple page PDF and TIFF files are supported.
+
+- :doc:`Automatic OCR processing <../chapters/ocr_backend>`.
+
+  - The task of transcribing text from documents via OCR can be distributed
+    among several physical or virtual computers to decrease load and increase
+    availability.
+  - The current language of the document is passed to the corresponding OCR
+    engine to increase the text recognition rate.
+
+- Multilingual user interface.
+
+  - Mayan EDMS being written using the Django_ framework, can be translated
+    to practically any language spoken in the world. For a list of translated
+    languages have a look at the Transifex_ project location.
+
+- :doc:`Plugable storage backends <../parts/storage>`.
+
+  - It is very easy to use 3rd party plugins such as the ones available for
+    Amazon EC2.
+
+- :doc:`Color coded tags <../chapters/tags>`.
+
+  - Labeled and color coded tags can be assigned for intuitive recognition.
+
+- :doc:`Workflows <../chapters/workflows>`.
+
+  - Keep track of the state of documents, along with the log of the previous
+    state changes.
+
+
+.. _`Dublin core`: http://dublincore.org/metadata-basics/
+.. _Django:  https://www.djangoproject.com/
+.. _Transifex: https://www.transifex.com/projects/p/mayan-edms/

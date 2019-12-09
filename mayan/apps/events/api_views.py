@@ -5,10 +5,9 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404
 
 from actstream.models import Action, any_stream
-from rest_framework import generics
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.rest_api.permissions import MayanPermission
+from mayan.apps.rest_api import generics
 
 from .classes import EventType, EventTypeNamespace
 from .models import Notification
@@ -119,7 +118,6 @@ class APIEventListView(generics.ListAPIView):
     get: Returns a list of all the available events.
     """
     mayan_view_permissions = {'GET': (permission_events_view,)}
-    permission_classes = (MayanPermission,)
     queryset = Action.objects.all()
     serializer_class = EventSerializer
 

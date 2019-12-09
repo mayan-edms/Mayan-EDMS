@@ -1,26 +1,18 @@
 from __future__ import absolute_import, unicode_literals
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 
 from ..permissions import permission_settings_view
 
-from .mixins import SmartSettingTestMixin
+from .mixins import SmartSettingTestMixin, SmartSettingViewTestMixin
 
 
-class SmartSettingViewTestCase(SmartSettingTestMixin, GenericViewTestCase):
+class SmartSettingViewTestCase(
+    SmartSettingTestMixin, SmartSettingViewTestMixin, GenericViewTestCase
+):
     def setUp(self):
         super(SmartSettingViewTestCase, self).setUp()
         self._create_test_settings_namespace()
-
-    def _request_namespace_list_view(self):
-        return self.get(viewname='settings:namespace_list')
-
-    def _request_namespace_detail_view(self):
-        return self.get(
-            viewname='settings:namespace_detail', kwargs={
-                'namespace_name': self.test_settings_namespace.name
-            }
-        )
 
     def test_namespace_list_view_no_permission(self):
         response = self._request_namespace_list_view()

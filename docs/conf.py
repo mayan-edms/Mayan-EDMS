@@ -41,8 +41,7 @@ sys.path.append(
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-# extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
-# extensions = ["djangodocs", "sphinx.ext.intersphinx"]
+# extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'sphinx.ext.intersphinx']
 extensions = [
     'sphinx_sitemap', 'sphinx.ext.extlinks', 'sphinxcontrib.blockdiag',
     'sphinxcontrib.spelling',
@@ -56,7 +55,7 @@ blockdiag_latex_image_format = 'PDF'
 templates_path = ['_templates']
 
 # The suffix of source filenames.
-source_suffix = '.rst'
+source_suffix = '.txt'
 
 # The encoding of source files.
 # source_encoding = 'utf-8-sig'

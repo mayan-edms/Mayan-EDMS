@@ -45,8 +45,8 @@ class AccessControlListManager(models.Manager):
         # 4: No related field, but has an inherited related field, solved by
         # recursion, branches to #2 or #3.
         # 5: Inherited field of a related field
-        # -- Not addressed yet --
         # 6: Inherited field of a related field that is Generic Foreign Key
+        # -- Not addressed yet --
         # 7: Has a related function
         result = []
 
@@ -58,10 +58,28 @@ class AccessControlListManager(models.Manager):
             if isinstance(related_field, GenericForeignKey):
                 # Case 3: Generic Foreign Key, multiple ContentTypes + object
                 # id combinations
+                # Also handles case #6 using the parent related field
+                # reference template.
+
+                # Craft a double underscore reference to a previous related
+                # field in the case where multiple related fields are
+                # associated.
+                # Example: object_layer__content_type
+                recuisive_related_reference = '__'.join(related_field_name.split('__')[0:-1])
+
+                # If there is at least one parent related field we add a
+                # double underscore to make it a valid filter template.
+                if recuisive_related_reference:
+                    recuisive_related_reference = '{}__'.format(recuisive_related_reference)
+
                 content_type_object_id_queryset = queryset.annotate(
                     ct_fk_combination=Concat(
-                        related_field.ct_field, Value('-'),
-                        related_field.fk_field, output_field=CharField()
+                        '{}{}'.format(
+                            recuisive_related_reference, related_field.ct_field
+                        ), Value('-'),
+                        '{}{}'.format(
+                            recuisive_related_reference, related_field.fk_field
+                        ), output_field=CharField()
                     )
                 ).values('ct_fk_combination')
 
@@ -75,8 +93,7 @@ class AccessControlListManager(models.Manager):
                     ct_fk_combination__in=content_type_object_id_queryset
                 ).values('object_id')
 
-                field_lookup = 'object_id__in'
-
+                field_lookup = '{}object_id__in'.format(recuisive_related_reference)
                 result.append(Q(**{field_lookup: acl_filter}))
             else:
                 # Case 2: Related field of a single type, single ContentType,
@@ -97,6 +114,7 @@ class AccessControlListManager(models.Manager):
 
                 # Case 5: Related field, has an inherited related field itself
                 # Bubble up permssion check
+                # Recurse and reduce
                 # TODO: Add relationship support: OR or AND
                 # TODO: OR for document pages, version, doc, and types
                 # TODO: AND for new cabinet levels ACLs
@@ -200,28 +218,26 @@ class AccessControlListManager(models.Manager):
 
         return result
 
-    def check_access(self, obj, permissions, user, manager=None):
+    def check_access(self, obj, permissions, user):
         # Allow specific managers for models that have more than one
         # for example the Document model when checking for access for a trashed
         # document.
 
-        if manager:
-            source_queryset = manager.all()
+        meta = getattr(obj, '_meta', None)
+
+        if not meta:
+            logger.debug(
+                ugettext(
+                    'Object "%s" is not a model and cannot be checked for '
+                    'access.'
+                ) % force_text(obj)
+            )
+            return True
         else:
-            meta = getattr(obj, '_meta', None)
+            manager = ModelPermission.get_manager(model=obj._meta.model)
+            source_queryset = manager.all()
 
-            if not meta:
-                logger.debug(
-                    ugettext(
-                        'Object "%s" is not a model and cannot be checked for '
-                        'access.'
-                    ) % force_text(obj)
-                )
-                return True
-            else:
-                source_queryset = obj._meta.default_manager.all()
-
-        restricted_queryset = obj._meta.default_manager.none()
+        restricted_queryset = manager.none()
         for permission in permissions:
             # Default relationship betweens permissions is OR
             # TODO: Add support for AND relationship

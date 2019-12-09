@@ -8,11 +8,11 @@ DEFAULT_DOCUMENT_BODY_TEMPLATE = _(
     '--------\n '
     'This email has been sent from %(project_title)s (%(project_website)s)'
 )
-
+DEFAULT_DOCUMENT_SUBJECT_TEMPLATE = _('Document: {{ document }}')
 DEFAULT_LINK_BODY_TEMPLATE = _(
     'To access this document click on the following link: '
     '{{ link }}\n\n--------\n '
     'This email has been sent from %(project_title)s (%(project_website)s)'
 )
-
+DEFAULT_LINK_SUBJECT_TEMPLATE = _('Link for document: {{ document }}')
 EMAIL_SEPARATORS = (',', ';')

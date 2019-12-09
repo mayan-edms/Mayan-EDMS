@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from rest_framework import status
 
 from mayan.apps.permissions.tests.literals import TEST_ROLE_LABEL
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view
@@ -26,7 +26,9 @@ class ACLAPITestCase(ACLTestMixin, BaseAPITestCase):
         )
 
     def test_acl_create_api_api_view_with_access(self):
-        self.grant_access(obj=self.test_object, permission=permission_acl_edit)
+        self.grant_access(
+            obj=self.test_object, permission=permission_acl_edit
+        )
 
         response = self._request_acl_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -44,7 +46,9 @@ class ACLAPITestCase(ACLTestMixin, BaseAPITestCase):
         )
 
     def test_acl_create_post_api_extra_data_view_with_access(self):
-        self.grant_access(obj=self.test_object, permission=permission_acl_edit)
+        self.grant_access(
+            obj=self.test_object, permission=permission_acl_edit
+        )
 
         response = self._request_acl_create_api_view(
             extra_data={'permissions_pk_list': permission_acl_view.pk}
@@ -76,7 +80,6 @@ class ACLAPITestCase(ACLTestMixin, BaseAPITestCase):
         )
 
     def test_acl_delete_api_view_with_access(self):
-        self.expected_content_type = None
         self._create_test_acl()
 
         self.grant_access(self.test_object, permission=permission_acl_edit)
@@ -100,7 +103,6 @@ class ACLAPITestCase(ACLTestMixin, BaseAPITestCase):
         )
 
     def test_acl_permission_delete_view_with_access(self):
-        self.expected_content_type = None
         self._create_test_acl()
         self.test_acl.permissions.add(self.test_permission.stored_permission)
 
@@ -114,7 +116,9 @@ class ACLAPITestCase(ACLTestMixin, BaseAPITestCase):
     def test_acl_detail_api_view_with_access(self):
         self._create_test_acl()
 
-        self.grant_access(obj=self.test_object, permission=permission_acl_view)
+        self.grant_access(
+            obj=self.test_object, permission=permission_acl_view
+        )
 
         response = self._request_test_acl_detail_api_view()
 
@@ -141,7 +145,9 @@ class ACLAPITestCase(ACLTestMixin, BaseAPITestCase):
         self._create_test_acl()
         self.test_acl.permissions.add(self.test_permission.stored_permission)
 
-        self.grant_access(obj=self.test_object, permission=permission_acl_view)
+        self.grant_access(
+            obj=self.test_object, permission=permission_acl_view
+        )
 
         response = self._request_test_acl_permission_detail_api_view()
         self.assertEqual(
@@ -151,7 +157,9 @@ class ACLAPITestCase(ACLTestMixin, BaseAPITestCase):
     def test_acl_list_api_view_with_access(self):
         self._create_test_acl()
 
-        self.grant_access(obj=self.test_object, permission=permission_acl_view)
+        self.grant_access(
+            obj=self.test_object, permission=permission_acl_view
+        )
 
         response = self.get(
             viewname='rest_api:accesscontrollist-list', kwargs={
@@ -194,7 +202,9 @@ class ACLAPITestCase(ACLTestMixin, BaseAPITestCase):
         self._create_test_acl()
         self.test_acl.permissions.add(self.test_permission.stored_permission)
 
-        self.grant_access(obj=self.test_object, permission=permission_acl_view)
+        self.grant_access(
+            obj=self.test_object, permission=permission_acl_view
+        )
 
         response = self._request_test_acl_permission_list_api_get_view()
         self.assertEqual(
@@ -215,7 +225,9 @@ class ACLAPITestCase(ACLTestMixin, BaseAPITestCase):
     def test_acl_permission_list_api_post_view_with_access(self):
         self._create_test_acl()
 
-        self.grant_access(obj=self.test_object, permission=permission_acl_edit)
+        self.grant_access(
+            obj=self.test_object, permission=permission_acl_edit
+        )
 
         response = self._request_acl_permssion_list_api_post_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)

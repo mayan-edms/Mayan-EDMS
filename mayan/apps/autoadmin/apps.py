@@ -18,7 +18,7 @@ class AutoAdminAppConfig(MayanAppConfig):
         super(AutoAdminAppConfig, self).ready()
 
         post_save.connect(
-            dispatch_uid='auto_admin_handler_account_password_change',
+            dispatch_uid='autoadmin_handler_account_password_change',
             receiver=handler_auto_admin_account_password_change,
             sender=settings.AUTH_USER_MODEL
         )

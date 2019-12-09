@@ -1,0 +1,15 @@
+=============
+Collaboration
+=============
+
+Mayan EDMS includes several methods to allow users to collectively collaborate
+when working with documents.
+
+- :doc:`../chapters/checkouts`
+- :doc:`../chapters/mailing`
+
+.. toctree::
+    :hidden:
+
+    ../chapters/checkouts
+    ../chapters/mailing

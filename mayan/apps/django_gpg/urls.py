@@ -11,35 +11,35 @@ from .views import (
 
 urlpatterns = [
     url(
-        regex=r'^(?P<pk>\d+)/$', view=KeyDetailView.as_view(),
+        regex=r'^keys/(?P<pk>\d+)/$', view=KeyDetailView.as_view(),
         name='key_detail'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/delete/$', view=KeyDeleteView.as_view(),
+        regex=r'^keys/(?P<pk>\d+)/delete/$', view=KeyDeleteView.as_view(),
         name='key_delete'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/download/$', view=KeyDownloadView.as_view(),
+        regex=r'^keys/(?P<pk>\d+)/download/$', view=KeyDownloadView.as_view(),
         name='key_download'
     ),
     url(
-        regex=r'^list/private/$', view=PrivateKeyListView.as_view(),
+        regex=r'^keys/private/$', view=PrivateKeyListView.as_view(),
         name='key_private_list'
     ),
     url(
-        regex=r'^list/public/$', view=PublicKeyListView.as_view(),
+        regex=r'^keys/public/$', view=PublicKeyListView.as_view(),
         name='key_public_list'
     ),
     url(
-        regex=r'^upload/$', view=KeyUploadView.as_view(), name='key_upload'
+        regex=r'^keys/upload/$', view=KeyUploadView.as_view(), name='key_upload'
     ),
-    url(regex=r'^query/$', view=KeyQueryView.as_view(), name='key_query'),
+    url(regex=r'^keys/query/$', view=KeyQueryView.as_view(), name='key_query'),
     url(
-        regex=r'^query/results/$', view=KeyQueryResultView.as_view(),
+        regex=r'^keys/query/results/$', view=KeyQueryResultView.as_view(),
         name='key_query_results'
     ),
     url(
-        regex=r'^receive/(?P<key_id>.+)/$', view=KeyReceive.as_view(),
+        regex=r'^keys/receive/(?P<key_id>.+)/$', view=KeyReceive.as_view(),
         name='key_receive'
     ),
 ]

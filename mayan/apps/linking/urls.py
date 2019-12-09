@@ -18,12 +18,12 @@ from .views import (
 
 urlpatterns = [
     url(
-        regex=r'^document/(?P<pk>\d+)/list/$',
+        regex=r'^documents/(?P<pk>\d+)/smart_links/$',
         view=DocumentSmartLinkListView.as_view(),
         name='smart_link_instances_for_document'
     ),
     url(
-        regex=r'^document/(?P<document_pk>\d+)/(?P<smart_link_pk>\d+)/$',
+        regex=r'^documents/(?P<document_pk>\d+)/smart_links/(?P<smart_link_pk>\d+)/$',
         view=ResolvedSmartLinkView.as_view(), name='smart_link_instance_view'
     ),
     url(
@@ -32,45 +32,45 @@ urlpatterns = [
         name='document_type_smart_links'
     ),
     url(
-        regex=r'^setup/list/$', view=SmartLinkListView.as_view(),
+        regex=r'^smart_links/$', view=SmartLinkListView.as_view(),
         name='smart_link_list'
     ),
     url(
-        regex=r'^setup/create/$', view=SmartLinkCreateView.as_view(),
+        regex=r'^smart_links/create/$', view=SmartLinkCreateView.as_view(),
         name='smart_link_create'
     ),
     url(
-        regex=r'^setup/(?P<pk>\d+)/delete/$',
+        regex=r'^smart_links/(?P<pk>\d+)/delete/$',
         view=SmartLinkDeleteView.as_view(), name='smart_link_delete'
     ),
     url(
-        regex=r'^setup/(?P<pk>\d+)/edit/$', view=SmartLinkEditView.as_view(),
+        regex=r'^smart_links/(?P<pk>\d+)/edit/$', view=SmartLinkEditView.as_view(),
         name='smart_link_edit'
     ),
     url(
-        regex=r'^setup/(?P<pk>\d+)/document_types/$',
+        regex=r'^smart_links/(?P<pk>\d+)/document_types/$',
         view=SetupSmartLinkDocumentTypesView.as_view(),
         name='smart_link_document_types'
     ),
     url(
-        regex=r'^setup/(?P<pk>\d+)/condition/list/$',
+        regex=r'^smart_links/(?P<pk>\d+)/conditions/$',
         view=SmartLinkConditionListView.as_view(),
         name='smart_link_condition_list'
     ),
     url(
-        regex=r'^setup/(?P<pk>\d+)/condition/create/$',
+        regex=r'^smart_links/(?P<pk>\d+)/conditions/create/$',
         view=SmartLinkConditionCreateView.as_view(),
         name='smart_link_condition_create'
     ),
     url(
-        regex=r'^setup/smart_link/condition/(?P<pk>\d+)/edit/$',
-        view=SmartLinkConditionEditView.as_view(),
-        name='smart_link_condition_edit'
-    ),
-    url(
-        regex=r'^setup/smart_link/condition/(?P<pk>\d+)/delete/$',
+        regex=r'^smart_links/conditions/(?P<pk>\d+)/delete/$',
         view=SmartLinkConditionDeleteView.as_view(),
         name='smart_link_condition_delete'
+    ),
+    url(
+        regex=r'^smart_links/conditions/(?P<pk>\d+)/edit/$',
+        view=SmartLinkConditionEditView.as_view(),
+        name='smart_link_condition_edit'
     ),
 ]
 

@@ -17,9 +17,10 @@ class Migration(migrations.Migration):
                 blank=True, choices=[
                     ('simplex', 'Simplex'), ('duplex', 'Duplex')
                 ],
-                help_text='Selects the document feeder mode (simplex/duplex). '
-                'If this option is not supported by your scanner, leave it '
-                'blank.', max_length=16, verbose_name='ADF mode'
+                help_text='Selects the document feeder mode '
+                '(simplex/duplex). If this option is not supported by your '
+                'scanner, leave it blank.', max_length=16,
+                verbose_name='ADF mode'
             ),
         ),
     ]

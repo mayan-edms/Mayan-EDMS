@@ -31,13 +31,16 @@
         {% if appearance_type == 'plain' %}
             {% block content_plain %}{% endblock %}
         {% else %}
+            <div id="menu-topbar">
+                {% include 'appearance/menu_topbar.html' %}
+            </div>
             <div id="menu-main">
-                {% include 'appearance/main_menu.html' %}
+                {% include 'appearance/menu_main.html' %}
             </div>
             <div class="main">
-                <div class="body-spacer"></div>
                 <div class="row zero-margin">
                     <div class="col-xs-12">
+                        <div id="ajax-header"></div>
                         <div id="ajax-content"></div>
                     </div>
                 </div>
@@ -102,21 +105,27 @@
                 ajaxMenusOptions: [
                     {
                         callback: function (options) {
-                            options.app.doBodyAdjust();
+                            MayanApp.updateNavbarState();
                         },
                         interval: 5000,
                         menuSelector: '#menu-main',
                         name: 'menu_main',
                         url: '{% url "rest_api:template-detail" "menu_main" %}'
                     },
-                ]
+                    {
+                        interval: 5000,
+                        menuSelector: '#menu-topbar',
+                        name: 'menu_topbar',
+                        url: '{% url "rest_api:template-detail" "menu_topbar" %}'
+                    },
+                ],
+                messagePosition: '{% smart_setting "APPEARANCE_MESSAGE_POSITION" %}'
             });
 
             var afterBaseLoad = function () {
                 MayanImage.intialize({
                     templateInvalidDocument: '{% spaceless %}{% include "documents/invalid_document.html" %}{% endspaceless %}'
                 });
-                app.doBodyAdjust();
                 app.doToastrMessages();
                 app.resizeFullHeight();
                 app.setupSelect2();

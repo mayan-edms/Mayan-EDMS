@@ -12,54 +12,61 @@ from .views import (
     CabinetDeleteView, CabinetDetailView, CabinetEditView, CabinetListView,
 )
 
-urlpatterns = [
+urlpatterns_cabinets = [
     url(
-        regex=r'^list/$', view=CabinetListView.as_view(), name='cabinet_list'
+        regex=r'^cabinets/$', view=CabinetListView.as_view(), name='cabinet_list'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/child/add/$', view=CabinetChildAddView.as_view(),
-        name='cabinet_child_add'
-    ),
-    url(
-        regex=r'^create/$', view=CabinetCreateView.as_view(),
+        regex=r'^cabinets/create/$', view=CabinetCreateView.as_view(),
         name='cabinet_create'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/edit/$', view=CabinetEditView.as_view(),
-        name='cabinet_edit'
+        regex=r'^cabinets/(?P<pk>\d+)/children/add/$', view=CabinetChildAddView.as_view(),
+        name='cabinet_child_add'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/delete/$', view=CabinetDeleteView.as_view(),
+        regex=r'^cabinets/(?P<pk>\d+)/delete/$', view=CabinetDeleteView.as_view(),
         name='cabinet_delete'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/$', view=CabinetDetailView.as_view(),
-        name='cabinet_view'
+        regex=r'^cabinets/(?P<pk>\d+)/edit/$', view=CabinetEditView.as_view(),
+        name='cabinet_edit'
     ),
     url(
-        regex=r'^document/(?P<pk>\d+)/cabinet/add/$',
+        regex=r'^cabinets/(?P<pk>\d+)/$', view=CabinetDetailView.as_view(),
+        name='cabinet_view'
+    ),
+]
+
+urlpatterns_documents_cabinets = [
+    url(
+        regex=r'^documents/(?P<pk>\d+)/cabinets/add/$',
         view=DocumentAddToCabinetView.as_view(), name='document_cabinet_add'
     ),
     url(
-        regex=r'^document/multiple/cabinet/add/$',
+        regex=r'^documents/multiple/cabinets/add/$',
         view=DocumentAddToCabinetView.as_view(),
         name='document_multiple_cabinet_add'
     ),
     url(
-        regex=r'^document/(?P<pk>\d+)/cabinet/remove/$',
+        regex=r'^documents/(?P<pk>\d+)/cabinets/remove/$',
         view=DocumentRemoveFromCabinetView.as_view(),
         name='document_cabinet_remove'
     ),
     url(
-        regex=r'^document/multiple/cabinet/remove/$',
+        regex=r'^documents/multiple/cabinets/remove/$',
         view=DocumentRemoveFromCabinetView.as_view(),
         name='multiple_document_cabinet_remove'
     ),
     url(
-        regex=r'^document/(?P<pk>\d+)/cabinet/list/$',
+        regex=r'^documents/(?P<pk>\d+)/cabinets/$',
         view=DocumentCabinetListView.as_view(), name='document_cabinet_list'
     ),
 ]
+
+urlpatterns = []
+urlpatterns.extend(urlpatterns_cabinets)
+urlpatterns.extend(urlpatterns_documents_cabinets)
 
 api_urls = [
     url(

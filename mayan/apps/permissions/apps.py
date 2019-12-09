@@ -31,7 +31,7 @@ from .methods import method_group_roles_add, method_group_roles_remove
 from .permissions import (
     permission_role_delete, permission_role_edit, permission_role_view
 )
-from .search import *  # NOQA
+from .search import role_search  # NOQA
 
 
 class PermissionsApp(MayanAppConfig):

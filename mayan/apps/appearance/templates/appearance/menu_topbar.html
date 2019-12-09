@@ -1,0 +1,43 @@
+{% load i18n %}
+
+{% load navigation_tags %}
+{% load smart_settings_tags %}
+
+{% spaceless %}
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" type="button">
+                    <span class="sr-only">{% trans 'Toggle navigation' %}</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url home_view %}">{% smart_setting 'COMMON_PROJECT_TITLE' %}</a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    {% navigation_resolve_menu name='topbar' as topbar_menus_results %}
+                    {% for tobpar_menu_result in topbar_menus_results %}
+                        {% for link_group in tobpar_menu_result.link_groups %}
+                            {% for link in link_group.links %}
+                                {% with 'true' as as_li %}
+                                {% with 'true' as hide_active_anchor %}
+                                {% with 'active' as li_class_active %}
+                                {% with 'first' as li_class_first %}
+                                {% with ' ' as link_classes %}
+                                    {% include 'navigation/generic_subnavigation.html' %}
+                                {% endwith %}
+                                {% endwith %}
+                                {% endwith %}
+                                {% endwith %}
+                                {% endwith %}
+                            {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endspaceless %}

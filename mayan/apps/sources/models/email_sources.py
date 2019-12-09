@@ -4,25 +4,21 @@ import imaplib
 import logging
 import poplib
 
-import yaml
-try:
-    from yaml import CSafeLoader as SafeLoader
-except ImportError:
-    from yaml import SafeLoader
-
 from django.core.exceptions import ValidationError
 from django.core.files.base import ContentFile
 from django.db import models
 from django.utils.encoding import force_bytes
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.serialization import yaml_load
 from mayan.apps.documents.models import Document
 from mayan.apps.metadata.api import set_bulk_metadata
 from mayan.apps.metadata.models import MetadataType
 
 from ..exceptions import SourceException
 from ..literals import (
-    DEFAULT_IMAP_MAILBOX, DEFAULT_METADATA_ATTACHMENT_NAME,
+    DEFAULT_IMAP_MAILBOX, DEFAULT_IMAP_SEARCH_CRITERIA,
+    DEFAULT_IMAP_STORE_COMMANDS, DEFAULT_METADATA_ATTACHMENT_NAME,
     DEFAULT_POP3_TIMEOUT, SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3,
     SOURCE_UNCOMPRESS_CHOICE_N, SOURCE_UNCOMPRESS_CHOICE_Y,
 )
@@ -143,8 +139,8 @@ class EmailBaseModel(IntervalBaseModel):
 
                 with ContentFile(content=message.body, name=label) as file_object:
                     if label == source.metadata_attachment_name:
-                        metadata_dictionary = yaml.load(
-                            stream=file_object.read(), Loader=SafeLoader
+                        metadata_dictionary = yaml_load(
+                            stream=file_object.read()
                         )
                         logger.debug(
                             'Got metadata dictionary: %s',
@@ -220,6 +216,32 @@ class IMAPEmail(EmailBaseModel):
         help_text=_('IMAP Mailbox from which to check for messages.'),
         max_length=64, verbose_name=_('Mailbox')
     )
+    search_criteria = models.TextField(
+        blank=True, default=DEFAULT_IMAP_SEARCH_CRITERIA, help_text=_(
+            'Criteria to use when searching for messages to process. '
+            'Use the format specified in '
+            'https://tools.ietf.org/html/rfc2060.html#section-6.4.4'
+        ), null=True, verbose_name=_('Search criteria')
+    )
+    store_commands = models.TextField(
+        blank=True, default=DEFAULT_IMAP_STORE_COMMANDS, help_text=_(
+            'IMAP STORE command to execute on messages after they are '
+            'processed. One command per line. Use the commands specified in '
+            'https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or '
+            'the custom commands for your IMAP server.'
+        ), null=True, verbose_name=_('Store commands')
+    )
+    execute_expunge = models.BooleanField(
+        default=True, help_text=_(
+            'Execute the IMAP expunge command after processing each email '
+            'message.'
+        ), verbose_name=_('Execute expunge')
+    )
+    mailbox_destination = models.CharField(
+        blank=True, help_text=_(
+            'IMAP Mailbox to which processed messages will be copied.'
+        ), max_length=96, null=True, verbose_name=_('Destination mailbox')
+    )
 
     objects = models.Manager()
 
@@ -249,47 +271,74 @@ class IMAPEmail(EmailBaseModel):
             )
 
         try:
-            status, data = server.search(None, 'NOT', 'DELETED')
+            status, data = server.uid(
+                'SEARCH', None, *self.search_criteria.strip().split()
+            )
         except Exception as exception:
             raise SourceException(
                 'Error executing search command; {}'.format(exception)
             )
 
         if data:
-            messages_info = data[0].split()
-            logger.debug('messages count: %s', len(messages_info))
+            # data is a space separated sequence of message uids
+            uids = data[0].split()
+            logger.debug('messages count: %s', len(uids))
+            logger.debug('message uids: %s', uids)
 
-            for message_number in messages_info:
-                logger.debug('message_number: %s', message_number)
-                status, data = server.fetch(
-                    message_set=message_number, message_parts='(RFC822)'
-                )
+            for uid in uids:
+                logger.debug('message uid: %s', uid)
+
+                try:
+                    status, data = server.uid('FETCH', uid, '(RFC822)')
+                except Exception as exception:
+                    raise SourceException(
+                        'Error fetching message uid: {}; {}'.format(
+                            uid, exception
+                        )
+                    )
+
                 try:
                     EmailBaseModel.process_message(
                         source=self, message_text=data[0][1]
                     )
                 except Exception as exception:
                     raise SourceException(
-                        'Error processing message number: {}; {}'.format(
-                            message_number, exception
+                        'Error processing message uid: {}; {}'.format(
+                            uid, exception
                         )
                     )
 
                 if not test:
-                    try:
-                        server.store(
-                            message_set=message_number, command='+FLAGS',
-                            flags=r'\Deleted'
-                        )
-                    except Exception as exception:
-                        raise SourceException(
-                            'Error executing IMAP store command '
-                            'on message number {}; {}'.format(
-                                message_number, exception
-                            )
-                        )
+                    if self.store_commands:
+                        for command in self.store_commands.split('\n'):
+                            try:
+                                args = [uid]
+                                args.extend(command.strip().split(' '))
+                                server.uid('STORE', *args)
+                            except Exception as exception:
+                                raise SourceException(
+                                    'Error executing IMAP store command "{}" '
+                                    'on message uid {}; {}'.format(
+                                        command, uid, exception
+                                    )
+                                )
 
-        server.expunge()
+                    if self.mailbox_destination:
+                        try:
+                            server.uid(
+                                'COPY', uid, self.mailbox_destination
+                            )
+                        except Exception as exception:
+                            raise SourceException(
+                                'Error copying message uid {} to mailbox {}; '
+                                '{}'.format(
+                                    uid, self.mailbox_destination, exception
+                                )
+                            )
+
+                    if self.execute_expunge:
+                        server.expunge()
+
         server.close()
         server.logout()
 
@@ -313,16 +362,16 @@ class POP3Email(EmailBaseModel):
         logger.debug('ssl: %s', self.ssl)
 
         if self.ssl:
-            mailbox = poplib.POP3_SSL(host=self.host, port=self.port)
+            server = poplib.POP3_SSL(host=self.host, port=self.port)
         else:
-            mailbox = poplib.POP3(
+            server = poplib.POP3(
                 host=self.host, port=self.port, timeout=self.timeout
             )
 
-        mailbox.getwelcome()
-        mailbox.user(self.username)
-        mailbox.pass_(self.password)
-        messages_info = mailbox.list()
+        server.getwelcome()
+        server.user(self.username)
+        server.pass_(self.password)
+        messages_info = server.list()
 
         logger.debug(msg='messages_info:')
         logger.debug(msg=messages_info)
@@ -333,12 +382,12 @@ class POP3Email(EmailBaseModel):
             logger.debug('message_number: %s', message_number)
             logger.debug('message_size: %s', message_size)
 
-            complete_message = '\n'.join(mailbox.retr(message_number)[1])
+            complete_message = '\n'.join(server.retr(message_number)[1])
 
             EmailBaseModel.process_message(
                 source=self, message_text=complete_message
             )
             if not test:
-                mailbox.dele(which=message_number)
+                server.dele(which=message_number)
 
-        mailbox.quit()
+        server.quit()

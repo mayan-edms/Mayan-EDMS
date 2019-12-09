@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from mayan.apps.documents.tests import GenericDocumentTestCase
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
 
 from .mixins import SmartLinkTestMixin
 

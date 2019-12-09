@@ -1,0 +1,30 @@
+.. _docker-accessing-outside-data:
+
+
+======================
+Accessing outside data
+======================
+
+To use Mayan EDMS's staging folders or watch folders from Docker, the data
+for these source must be made accessible to the container. This is done by
+mounting the folders in the host computer to folders inside the container.
+This is necessary because Docker containers do not have access to host data
+on purpose. For example, to make a folder in the host accessible as a watch
+folder, add the following to the Docker command line when starting the
+container::
+
+    -v /opt/scanned_files:/scanned_files
+
+The command line would look like this::
+
+    docker run ... -v /opt/scanned_files:/scanned_files mayanedms/mayanedms:latest
+
+Now create a watch folder in Mayan EDMS using the path ``/scanned_files``
+and the documents from the host folder ``/opt/scanned_files`` will be
+automatically available. Use the same procedure to mount host folders to be
+used as staging folders. In this example ``/scanned_files`` was used as the
+container directory, but any path can be used as long as:
+
+- the path not an already existing path
+- the path is not used by any other program
+- the path is a single level path

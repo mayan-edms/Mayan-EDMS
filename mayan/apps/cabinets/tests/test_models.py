@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 
 from django.core.exceptions import ValidationError
 
-from mayan.apps.common.tests import BaseTestCase
-from mayan.apps.documents.tests import DocumentTestMixin
+from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.documents.tests.mixins import DocumentTestMixin
 
 from ..models import Cabinet
 

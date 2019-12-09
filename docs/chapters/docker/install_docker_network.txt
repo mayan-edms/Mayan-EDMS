@@ -1,0 +1,67 @@
+.. _docker_install_networked:
+
+================================
+Using a dedicated Docker network
+================================
+
+Use this method to avoid having to expose PostreSQL port to the host's network
+or if you have other PostgreSQL instances but still want to use the default
+port of 5432 for this installation.
+
+#. Create the network:
+
+   .. code-block:: bash
+
+       docker network create mayan
+
+#. Launch the PostgreSQL container with the network option and remove the
+   port binding (``-p 5432:5432``):
+
+   .. code-block:: bash
+
+       docker run \
+       -d \
+       --name mayan-edms-postgres \
+       --network=mayan \
+       --restart=always \
+       -e POSTGRES_USER=mayan \
+       -e POSTGRES_DB=mayan \
+       -e POSTGRES_PASSWORD=mayanuserpass \
+       -v /docker-volumes/mayan-edms/postgres:/var/lib/postgresql/data \
+       |DOCKER_POSTGRES_IMAGE_VERSION|
+
+#. Launch the Redis container with the network option and remove the port
+   binding (``-p 6379:6379``):
+
+   .. code-block:: bash
+
+       docker run \
+       -d \
+       --name mayan-edms-redis \
+       --network=mayan \
+       |DOCKER_REDIS_IMAGE_VERSION| \
+       redis-server \
+       --databases \
+       "2" \
+       --maxmemory-policy \
+       allkeys-lru \
+       --save \
+       ""
+
+#. Launch the Mayan EDMS container with the network option and change the
+   database hostname to the PostgreSQL container name (``mayan-edms-postgres``)
+   instead of the IP address of the Docker host (``172.17.0.1``):
+
+   .. code-block:: bash
+
+       docker run \
+       -d \
+       --name mayan-edms \
+       --network=mayan \
+       --restart=always \
+       -p 80:8000 \
+       -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'mayan-edms-postgres'}}" \
+       -e MAYAN_CELERY_BROKER_URL="redis://mayan-edms-redis:6379/0" \
+       -e MAYAN_CELERY_RESULT_BACKEND="redis://mayan-edms-redis:6379/1" \
+       -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
+       mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|

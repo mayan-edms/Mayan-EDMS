@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:16-0400\n"
+"POT-Creation-Date: 2019-12-09 00:35-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Roberto Rosario, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -21,90 +21,87 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:23 links.py:12 permissions.py:7
+#: apps.py:19 links.py:12 permissions.py:7
 msgid "Task manager"
 msgstr "Administrador de tareas"
 
-#: apps.py:31
+#: apps.py:27
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:34
+#: apps.py:30
 msgid "Name"
 msgstr "Nombre"
 
-#: apps.py:37
+#: apps.py:33
 msgid "Default queue?"
 msgstr "¿Cola principal?"
 
-#: apps.py:41
+#: apps.py:37
 msgid "Is transient?"
 msgstr "¿Es transitoria?"
 
-#: apps.py:45
+#: apps.py:41
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:48
+#: apps.py:44
 msgid "Start time"
 msgstr "Tiempo de inicio"
 
-#: apps.py:51
+#: apps.py:47
 msgid "Host"
 msgstr "Servidor"
 
-#: apps.py:55
+#: apps.py:51
 msgid "Arguments"
 msgstr "Argumentos"
 
-#: apps.py:59
+#: apps.py:55
 msgid "Keyword arguments"
 msgstr "Argumentos explícitos"
 
-#: apps.py:63
+#: apps.py:59
 msgid "Worker process ID"
 msgstr "ID del proceso trabajador"
-
-#: links.py:16 views.py:15
-msgid "Background task queues"
-msgstr "Listas de tareas de fondo"
-
-#: links.py:20
-msgid "Active tasks"
-msgstr "Tareas activas"
-
-#: links.py:24
-msgid "Reserved tasks"
-msgstr "Tareas reservadas"
-
-#: links.py:28
-msgid "Scheduled tasks"
-msgstr "Tareas programadas"
 
 #: permissions.py:10
 msgid "View tasks"
 msgstr "Ver tareas"
 
+#: settings.py:10
+msgid "Celery"
+msgstr "Celery"
+
+#: settings.py:15
+msgid ""
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
+msgstr ""
+"Valor predeterminado: \"amqp://\". URL del intermediario predeterminado Debe"
+" ser una URL en forma de: "
+"transporte://usuario:contraseña@servidor:puerto/virtual_host Solo se "
+"requiere la parte de esquema (transporte: //), el resto es opcional y se "
+"predetermina a los valores predeterminados de transporte específico."
+
+#: settings.py:24
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
+msgstr ""
+"Predeterminado: Sin back-end de resultados habilitado por defecto. El "
+"backend utilizado para almacenar resultados de tareas (lápidas). Consulte "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
+
 #: tests/literals.py:5
 msgid "Test queue"
 msgstr "Lista de prueba"
 
-#: views.py:30
-#, python-format
-msgid "Active tasks in queue: %s"
-msgstr "Tareas activas en cola: %s"
-
-#: views.py:42
-#, python-format
-msgid "Unable to retrieve task list; %s"
-msgstr "No se puede obtener la lista de tareas; %s"
-
-#: views.py:56
-#, python-format
-msgid "Scheduled tasks in queue: %s"
-msgstr "Tareas programadas en cola: %s"
-
-#: views.py:68
-#, python-format
-msgid "Reserved tasks in queue: %s"
-msgstr "Tareas reservadas en cola: %s"
+#: views.py:14
+msgid "Background task queues"
+msgstr "Listas de tareas de fondo"

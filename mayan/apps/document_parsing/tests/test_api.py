@@ -4,8 +4,9 @@ from django.test import override_settings
 
 from rest_framework import status
 
-from mayan.apps.documents.tests import DocumentTestMixin, TEST_HYBRID_DOCUMENT
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
+from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..permissions import permission_content_view
 
@@ -27,7 +28,7 @@ class DocumentParsingAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
     def test_get_document_version_page_content_no_access(self):
         response = self._request_document_page_content_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_get_document_version_page_content_with_access(self):
         self.grant_access(

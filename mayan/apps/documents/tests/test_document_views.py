@@ -1,10 +1,10 @@
 from __future__ import unicode_literals
 
-from django.contrib.contenttypes.models import ContentType
 from django.utils.encoding import force_text
 
-from mayan.apps.converter.models import Transformation
+from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.permissions import permission_transformation_delete
+from mayan.apps.converter.tests.mixins import LayerTestMixin
 
 from ..models import DeletedDocument, Document, DocumentType
 from ..permissions import (
@@ -16,13 +16,14 @@ from ..permissions import (
 
 from .base import GenericDocumentViewTestCase
 from .literals import (
-    TEST_DOCUMENT_TYPE_2_LABEL, TEST_SMALL_DOCUMENT_FILENAME,
-    TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_NAME,
+    TEST_DOCUMENT_TYPE_2_LABEL, TEST_SMALL_DOCUMENT_FILENAME
 )
 from .mixins import DocumentViewTestMixin
 
 
-class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase):
+class DocumentViewTestCase(
+    LayerTestMixin, DocumentViewTestMixin, GenericDocumentViewTestCase
+):
     def test_document_view_no_permissions(self):
         response = self._request_document_properties_view()
         self.assertEqual(response.status_code, 404)
@@ -301,13 +302,13 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
         self.assertEqual(self.test_document.pages.count(), 0)
 
     def test_document_update_page_count_view_with_permission(self):
-        # TODO: Revise permission association
-
         page_count = self.test_document.pages.count()
         self.test_document.pages.all().delete()
         self.assertEqual(self.test_document.pages.count(), 0)
 
-        self.grant_permission(permission=permission_document_tools)
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_tools
+        )
 
         response = self._request_document_update_page_count_view()
         self.assertEqual(response.status_code, 302)
@@ -328,7 +329,9 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
         self.test_document.pages.all().delete()
         self.assertEqual(self.test_document.pages.count(), 0)
 
-        self.grant_permission(permission=permission_document_tools)
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_tools
+        )
 
         response = self._request_document_multiple_update_page_count_view()
         self.assertEqual(response.status_code, 302)
@@ -336,18 +339,11 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
         self.assertEqual(self.test_document.pages.count(), page_count)
 
     def test_document_clear_transformations_view_no_permission(self):
-        document_page = self.test_document.pages.first()
-        content_type = ContentType.objects.get_for_model(model=document_page)
-        transformation = Transformation.objects.create(
-            content_type=content_type, object_id=document_page.pk,
-            name=TEST_TRANSFORMATION_NAME,
-            arguments=TEST_TRANSFORMATION_ARGUMENT
-        )
+        self._create_document_transformation()
 
-        self.assertQuerysetEqual(
-            Transformation.objects.get_for_object(obj=document_page),
-            (repr(transformation),)
-        )
+        transformation_count = layer_saved_transformations.get_transformations_for(
+            obj=self.test_document.pages.first()
+        ).count()
 
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
@@ -356,26 +352,23 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
         response = self._request_document_clear_transformations_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertQuerysetEqual(
-            Transformation.objects.get_for_object(obj=document_page),
-            (repr(transformation),)
+        self.assertEqual(
+            transformation_count,
+            layer_saved_transformations.get_transformations_for(
+                obj=self.test_document.pages.first()
+            ).count()
         )
 
     def test_document_clear_transformations_view_with_access(self):
-        document_page = self.test_document.pages.first()
-        content_type = ContentType.objects.get_for_model(model=document_page)
-        transformation = Transformation.objects.create(
-            content_type=content_type, object_id=document_page.pk,
-            name=TEST_TRANSFORMATION_NAME,
-            arguments=TEST_TRANSFORMATION_ARGUMENT
-        )
-        self.assertQuerysetEqual(
-            Transformation.objects.get_for_object(obj=document_page),
-            (repr(transformation),)
-        )
+        self._create_document_transformation()
+
+        transformation_count = layer_saved_transformations.get_transformations_for(
+            obj=self.test_document.pages.first()
+        ).count()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_transformation_delete
+            obj=self.test_document,
+            permission=permission_transformation_delete
         )
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
@@ -385,45 +378,39 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            Transformation.objects.get_for_object(obj=document_page).count(), 0
+            transformation_count - 1,
+            layer_saved_transformations.get_transformations_for(
+                obj=self.test_document.pages.first()
+            ).count()
         )
 
     def test_document_multiple_clear_transformations_view_no_permission(self):
-        document_page = self.test_document.pages.first()
-        content_type = ContentType.objects.get_for_model(model=document_page)
-        transformation = Transformation.objects.create(
-            content_type=content_type, object_id=document_page.pk,
-            name=TEST_TRANSFORMATION_NAME,
-            arguments=TEST_TRANSFORMATION_ARGUMENT
-        )
+        self._create_document_transformation()
 
-        self.assertQuerysetEqual(
-            Transformation.objects.get_for_object(obj=document_page),
-            (repr(transformation),)
-        )
+        transformation_count = layer_saved_transformations.get_transformations_for(
+            obj=self.test_document.pages.first()
+        ).count()
 
-        self.grant_permission(permission=permission_document_view)
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
 
         response = self._request_document_multiple_clear_transformations()
         self.assertEqual(response.status_code, 404)
-        self.assertQuerysetEqual(
-            Transformation.objects.get_for_object(obj=document_page),
-            (repr(transformation),)
+
+        self.assertEqual(
+            transformation_count,
+            layer_saved_transformations.get_transformations_for(
+                obj=self.test_document.pages.first()
+            ).count()
         )
 
     def test_document_multiple_clear_transformations_view_with_access(self):
-        document_page = self.test_document.pages.first()
-        content_type = ContentType.objects.get_for_model(model=document_page)
-        transformation = Transformation.objects.create(
-            content_type=content_type, object_id=document_page.pk,
-            name=TEST_TRANSFORMATION_NAME,
-            arguments=TEST_TRANSFORMATION_ARGUMENT
-        )
+        self._create_document_transformation()
 
-        self.assertQuerysetEqual(
-            Transformation.objects.get_for_object(obj=document_page),
-            (repr(transformation),)
-        )
+        transformation_count = layer_saved_transformations.get_transformations_for(
+            obj=self.test_document.pages.first()
+        ).count()
 
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
@@ -436,7 +423,10 @@ class DocumentsViewsTestCase(DocumentViewTestMixin, GenericDocumentViewTestCase)
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            Transformation.objects.get_for_object(obj=document_page).count(), 0
+            transformation_count - 1,
+            layer_saved_transformations.get_transformations_for(
+                obj=self.test_document.pages.first()
+            ).count()
         )
 
     def test_trash_can_empty_view_no_permission(self):

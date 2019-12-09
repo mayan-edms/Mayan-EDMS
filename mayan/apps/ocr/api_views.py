@@ -2,11 +2,11 @@ from __future__ import absolute_import, unicode_literals
 
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics, status
+from rest_framework import status
 from rest_framework.response import Response
 
 from mayan.apps.documents.models import Document, DocumentVersion
-from mayan.apps.rest_api.permissions import MayanPermission
+from mayan.apps.rest_api import generics
 
 from .models import DocumentPageOCRContent
 from .permissions import permission_ocr_content_view, permission_ocr_document
@@ -20,7 +20,6 @@ class APIDocumentOCRView(generics.GenericAPIView):
     mayan_object_permissions = {
         'POST': (permission_ocr_document,)
     }
-    permission_classes = (MayanPermission,)
     queryset = Document.objects.all()
 
     def get_serializer(self, *args, **kwargs):
@@ -42,7 +41,6 @@ class APIDocumentVersionOCRView(generics.GenericAPIView):
     mayan_object_permissions = {
         'POST': (permission_ocr_document,)
     }
-    permission_classes = (MayanPermission,)
     queryset = DocumentVersion.objects.all()
 
     def get_document(self):
@@ -70,7 +68,6 @@ class APIDocumentPageOCRContentView(generics.RetrieveAPIView):
     mayan_object_permissions = {
         'GET': (permission_ocr_content_view,),
     }
-    permission_classes = (MayanPermission,)
     serializer_class = DocumentPageOCRContentSerializer
 
     def get_document(self):

@@ -96,7 +96,7 @@ class OCRApp(MayanAppConfig):
         )
 
         ModelField(
-            model=Document, name='versions__pages__ocr_content__content'
+            model=Document, name='versions__version_pages__ocr_content__content'
         )
 
         ModelPermission.register(
@@ -127,7 +127,7 @@ class OCRApp(MayanAppConfig):
         )
 
         document_search.add_model_field(
-            field='versions__pages__ocr_content__content', label=_('OCR')
+            field='versions__version_pages__ocr_content__content', label=_('OCR')
         )
 
         document_page_search.add_model_field(

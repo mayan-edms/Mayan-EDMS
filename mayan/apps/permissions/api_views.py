@@ -1,9 +1,6 @@
 from __future__ import unicode_literals
 
-from rest_framework import generics
-
-from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
-from mayan.apps.rest_api.permissions import MayanPermission
+from mayan.apps.rest_api import generics
 
 from .classes import Permission
 from .models import Role
@@ -29,10 +26,8 @@ class APIRoleListView(generics.ListCreateAPIView):
     get: Returns a list of all the roles.
     post: Create a new role.
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_role_view,)}
     mayan_view_permissions = {'POST': (permission_role_create,)}
-    permission_classes = (MayanPermission,)
     queryset = Role.objects.all()
 
     def get_serializer(self, *args, **kwargs):
@@ -61,7 +56,6 @@ class APIRoleView(generics.RetrieveUpdateDestroyAPIView):
         'PATCH': (permission_role_edit,),
         'DELETE': (permission_role_delete,)
     }
-    permission_classes = (MayanPermission,)
     queryset = Role.objects.all()
 
     def get_serializer(self, *args, **kwargs):

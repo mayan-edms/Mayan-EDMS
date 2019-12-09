@@ -58,7 +58,7 @@ PythonDependency(
         Celery under the GPL license.  The BSD license, unlike the GPL,
         let you distribute a modified version without making your
         changes open source.
-    ''', module=__name__, name='celery', version_string='==3.1.26.post2'
+    ''', module=__name__, name='celery', version_string='==4.3.0'
 )
 PythonDependency(
     copyright_text='''
@@ -82,7 +82,7 @@ PythonDependency(
         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
         AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
         THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-        PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+        PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL Ask Solem OR CONTRIBUTORS
         BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
         CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
         SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
@@ -90,5 +90,23 @@ PythonDependency(
         CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
         ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
         POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django-celery', version_string='==3.2.1'
+
+        Documentation License
+        =====================
+
+        The documentation portion of django-celery-beat (the rendered contents of the
+        "docs" directory of a software distribution or checkout) is supplied
+        under the "Creative Commons Attribution-ShareAlike 4.0
+        International" (CC BY-SA 4.0) License as described by
+        http://creativecommons.org/licenses/by-sa/4.0/
+
+        Footnotes
+        =========
+        (1) A GPL-compatible license makes it possible to
+            combine django-celery-beat with other software that is released
+            under the GPL, it does not mean that we're distributing
+            django-celery-beat under the GPL license.  The BSD license, unlike the GPL,
+            let you distribute a modified version without making your
+            changes open source.
+    ''', module=__name__, name='django-celery-beat', version_string='==1.5.0'
 )

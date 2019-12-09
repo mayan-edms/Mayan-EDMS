@@ -14,7 +14,10 @@ from mayan.apps.documents.models import Document
 
 from .events import event_document_check_out
 from .exceptions import DocumentAlreadyCheckedOut
-from .managers import DocumentCheckoutManager, NewVersionBlockManager
+from .managers import (
+    DocumentCheckoutBusinessLogicManager, DocumentCheckoutManager,
+    NewVersionBlockManager
+)
 
 logger = logging.getLogger(__name__)
 
@@ -49,6 +52,7 @@ class DocumentCheckout(models.Model):
     )
 
     objects = DocumentCheckoutManager()
+    business_logic = DocumentCheckoutBusinessLogicManager()
 
     class Meta:
         ordering = ('pk',)
@@ -81,13 +85,13 @@ class DocumentCheckout(models.Model):
     natural_key.dependencies = ['documents.Document']
 
     def save(self, *args, **kwargs):
-        new_checkout = not self.pk
-        if not new_checkout or self.document.is_checked_out():
+        is_new = not self.pk
+        if not is_new or self.document.is_checked_out():
             raise DocumentAlreadyCheckedOut
 
         with transaction.atomic():
             result = super(DocumentCheckout, self).save(*args, **kwargs)
-            if new_checkout:
+            if is_new:
                 event_document_check_out.commit(
                     actor=self.user, target=self.document
                 )
@@ -119,3 +123,24 @@ class NewVersionBlock(models.Model):
     def natural_key(self):
         return self.document.natural_key()
     natural_key.dependencies = ['documents.Document']
+
+
+class CheckedOutDocument(Document):
+    class Meta:
+        proxy = True
+
+    def get_user_display(self):
+        check_out_info = self.get_check_out_info()
+        return check_out_info.user.get_full_name() or check_out_info.user
+
+    get_user_display.short_description = _('User')
+
+    def get_checkout_datetime(self):
+        return self.get_check_out_info().checkout_datetime
+
+    get_checkout_datetime.short_description = _('Checkout time and date')
+
+    def get_checkout_expiration(self):
+        return self.get_check_out_info().expiration_datetime
+
+    get_checkout_expiration.short_description = _('Checkout expiration')

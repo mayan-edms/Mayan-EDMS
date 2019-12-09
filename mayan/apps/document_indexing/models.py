@@ -33,6 +33,7 @@ class Index(models.Model):
     template and instance when resolved.
     """
     label = models.CharField(
+        help_text=_('Short description of this index.'),
         max_length=128, unique=True, verbose_name=_('Label')
     )
     slug = models.SlugField(
@@ -49,7 +50,8 @@ class Index(models.Model):
         verbose_name=_('Enabled')
     )
     document_types = models.ManyToManyField(
-        related_name='indexes', to=DocumentType, verbose_name=_('Document types')
+        related_name='indexes', to=DocumentType,
+        verbose_name=_('Document types')
     )
 
     objects = IndexManager()

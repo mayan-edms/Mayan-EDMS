@@ -2,9 +2,8 @@ from __future__ import unicode_literals
 
 from django.urls import reverse
 
-from mayan.apps.documents.tests import (
-    GenericDocumentViewTestCase, TEST_SMALL_DOCUMENT_PATH
-)
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 
 from ..links import (
     link_document_version_signature_delete,
@@ -57,7 +56,9 @@ class DocumentSignatureLinksTestCase(
             resolved_link.url,
             reverse(
                 viewname=link_document_version_signature_details.view,
-                args=(self.test_document.latest_version.signatures.first().pk,)
+                kwargs={
+                    'pk': self.test_document.latest_version.signatures.first().pk,
+                }
             )
         )
 
@@ -99,6 +100,8 @@ class DocumentSignatureLinksTestCase(
             resolved_link.url,
             reverse(
                 viewname=link_document_version_signature_delete.view,
-                args=(self.test_document.latest_version.signatures.first().pk,)
+                kwargs={
+                    'pk': self.test_document.latest_version.signatures.first().pk,
+                }
             )
         )

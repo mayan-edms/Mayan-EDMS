@@ -1,1 +1,0 @@
-.. include:: ../chapters/settings.rst

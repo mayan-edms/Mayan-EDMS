@@ -1,0 +1,147 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2019
+# Iliya Georgiev <inactive+iliicho7@transifex.com>, 2019
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-09 00:32-0400\n"
+"PO-Revision-Date: 2019-12-03 05:23+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:30 events.py:8 permissions.py:7
+msgid "File caching"
+msgstr "Кеширане на файлове"
+
+#: events.py:12
+msgid "Cache created"
+msgstr "Кешът е създаден"
+
+#: events.py:15
+msgid "Cache edited"
+msgstr "Кешът е редактиран"
+
+#: events.py:18
+msgid "Cache purged"
+msgstr "Кешът се прочисти"
+
+#: links.py:12
+msgid "File caches"
+msgstr "Файлови кешове"
+
+#: links.py:16 links.py:20
+msgid "Purge cache"
+msgstr "Прочистване на кеша"
+
+#: models.py:28
+msgid "Internal name of the cache."
+msgstr "Вътрешно име на кеша."
+
+#: models.py:29 models.py:122
+msgid "Name"
+msgstr "Име"
+
+#: models.py:32
+msgid "A short text describing the cache."
+msgstr "Кратък текст, описващ кеша."
+
+#: models.py:33
+msgid "Label"
+msgstr "Етикет"
+
+#: models.py:36
+msgid "Maximum size of the cache in bytes."
+msgstr "Максимален размер на кеша в байтове."
+
+#: models.py:37 models.py:61
+msgid "Maximum size"
+msgstr "Максимален размер"
+
+#: models.py:41
+msgid "Dotted path to the actual storage class used for the cache."
+msgstr ""
+"Точкувана пътека към действителния клас за съхранение, използван за кеша."
+
+#: models.py:42
+msgid "Storage instance path"
+msgstr "Пътека към мястото на съхранение"
+
+#: models.py:46 models.py:119
+msgid "Cache"
+msgstr "Кеш"
+
+#: models.py:47
+msgid "Caches"
+msgstr "Кешове"
+
+#: models.py:59
+msgid "Size at which the cache will start deleting old entries."
+msgstr "Размер, при който кешът ще започне да изтрива стари записи."
+
+#: models.py:74
+msgid "Total size"
+msgstr "Общ размер"
+
+#: models.py:75
+msgid "Current size of the cache."
+msgstr "Текущ размер на кеша."
+
+#: models.py:127 models.py:197
+msgid "Cache partition"
+msgstr "Раздел на кеша"
+
+#: models.py:128
+msgid "Cache partitions"
+msgstr "Раздели на кеша"
+
+#: models.py:200
+msgid "Date time"
+msgstr "Дата час"
+
+#: models.py:202
+msgid "Filename"
+msgstr "Име на файл"
+
+#: models.py:204
+msgid "File size"
+msgstr "Размер на файла"
+
+#: models.py:210
+msgid "Cache partition file"
+msgstr "Файл за раздели на кеша"
+
+#: models.py:211
+msgid "Cache partition files"
+msgstr "Флове с раздели на кешове"
+
+#: permissions.py:10 queues.py:9
+msgid "Purge a file cache"
+msgstr "Прочистете кеш на файлове"
+
+#: permissions.py:13
+msgid "View a file cache"
+msgstr "Преглед на файлов кеш"
+
+#: views.py:23
+msgid "File caches list"
+msgstr "Списък на файловите кешове"
+
+#: views.py:39
+msgid "Submit the selected cache for purging?"
+msgid_plural "Submit the selected caches for purging?"
+msgstr[0] "Да изпратите избрания кеш за пречистване?"
+msgstr[1] "Да изпратя ли избраните кешове за прочистване?"

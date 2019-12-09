@@ -1,3 +1,251 @@
+3.3.4 (2019-12-09)
+==================
+- Update the gunicorn worker class to synchronous.
+- Update the way the BaseTransformationType metaclass is passed
+  to work on Python 3.
+- Add locking to the file metadata document processing task.
+- Update devpi-server version to 5.3.1.
+- Add targets to run staging containers using RabbitMQ as
+  broker.
+- Don't set SourceColumn to the attribute name when no help text
+  is defined.
+- Make it clear when a setting is being overridden by an environment
+  variable. Add better text explanation. Change the column to a check
+  mark widget.
+- Add icons to the smart settings links.
+- Fix docker-runtest-all target.
+- Fix the evaluation priority of the bootstrap settings. Closes GitLab issue
+  #702. Thanks to Kevin Pawsey (@kevinpawsey) for the report and the help
+  debugging the issue.
+- Switch from librabbitmq to py-amqp. Closes GitLab issue #699. Thanks to
+  Rob de Canha-Knight (@rssfed23) for the report, research, and debug.
+- Darken content area when opening the mobile menu.
+
+3.3.3 (2019-12-05)
+==================
+- Fix transformation label display in transformation create view.
+- Remove supervisor environment variable expansion.
+- Don't exit GitLab makefile target if the branch to delete doesn't exist.
+- Automatically create transformations from the selection form that
+  doesn't have arguments.
+- Add missing message displays for transformation error creation and
+  not argument transformation creation.
+- Mark missing text for document indexing as translatable.
+
+3.3.2 (2019-12-05)
+==================
+- Improve setting migration method matching. Avoid executing
+  a migrations for settings with similar but shorter names.
+- Fix sources app setting migrations.
+- Add OCR app setting migrations.
+- Improve upgrade and deployment instructions.
+- Update backup chapters to refer to upstream database documentation.
+
+3.3.1 (2019-12-04)
+==================
+- Update Celery broker environment variable in the docker installer.
+- Add preparestatic command to documentation. GitLab issue #692.
+  Thanks to Christopher S. Meiklejohn (@cmeiklejohn2) for the report.
+- Add sources setting migration.
+- Savesettings command fixes.
+- Fix username color on mobile screens.
+- Hide the multi item selection help text on mobile screens.
+- Update Django to version 1.11.26.
+- Remove body spacer HTML and JavaScript. Not needed with the new UI.
+- Change the required permission to view the document parsing error
+  from "View document parsed content" to "Parse document". This way only
+  users with the access to affect the parsed content are the only ones
+  that can view what errors occurred during parsing.
+
+3.3 (2019-12-03)
+================
+- Add support for icon shadows.
+- Add icons and no-result template to the object error log view and
+  links.
+- Use Select2 widget for the document type selection form.
+- Backport the vertical main menu update.
+- Backport workflow preview refactor. GitLab issue #532.
+- Add support for source column inheritance.
+- Add support for source column exclusion.
+- Backport workflow context support.
+- Backport workflow transitions field support.
+- Backport workflow email action.
+- Backport individual index rebuild support.
+- Rename the installjavascript command to installdependencies.
+- Remove database conversion command.
+- Remove support for quoted configuration entries. Support unquoted,
+  nested dictionaries in the configuration. Requires manual
+  update of existing config.yml files.
+- Support user specified locations for the configuration file with the
+  CONFIGURATION_FILEPATH (MAYAN_CONFIGURATION_FILEPATH environment variable),
+  and CONFIGURATION_LAST_GOOD_FILEPATH
+  (MAYAN_CONFIGURATION_LAST_GOOD_FILEPATH environment variable) settings.
+- Move bootstrapped settings code to their own module in the smart_settings
+  apps.
+- Remove individual database configuration options. All database
+  configuration is now done using MAYAN_DATABASES to mirror Django way of
+  doing atabase etup.
+- Added support for YAML encoded environment variables to the platform
+  templates apps.
+- Move YAML code to its own module.
+- Move Django and Celery settings.
+- Backport FakeStorageSubclass from versions/next.
+- Remove django-environ.
+- Support checking in and out multiple documents.
+- Remove encapsulate helper.
+- Add support for menu inheritance.
+- Emphasize source column labels.
+- Backport file cache manager app.
+- Convert document image cache to use file cache manager app.
+  Add setting DOCUMENTS_CACHE_MAXIMUM_SIZE defaults to 500 MB.
+- Replace djcelery and replace it with django-celery-beat.
+- Update Celery to version 4.3.0
+  Thanks to Jakob Haufe (@sur5r) and Jesaja Everling (@jeverling)
+  for much of the research and code updates.
+- Support wildcard MIME type associations for the file metadata drivers.
+- Update Gunicorn to use sync workers.
+- Include devpi-server as a development dependency. Used to speed up
+  local builds of the Docker image.
+- Update default Docker stack file.
+- Remove Redis from the Docker image. A separate container must now
+  be deployed.
+- Add Celery flower to the Docker image.
+- Allow PIP proxying to the Docker image during build. Can be used
+  with the local devpi-server or other similar.
+- Default Celery worker concurrency to 0 (auto).
+- Set DJANGO_SETTINGS_MODULE environment variable to make it
+  available to sub processes.
+- Add entrypoint commands to run single workers, single gunicorn
+  or single celery commands like "flower".
+- Add platform template to return queues for a worker.
+- Update the EXIFTOOL driver to run for all documents
+  regardless of MIME type.
+- Remove task inspection from task manager app.
+- Move pagination navigation inside the toolbar.
+- Remove document image clear link and view.
+  This is now handled by the file caching app.
+- Add web links app.
+- Add support to display column help text
+  as a tooltip.
+- Update numeric dashboard widget to display
+  thousand commas.
+- Add support for disabling document pages.
+- Add support for converter layers.
+- Add redactions app.
+- Unify all line endings to be Linux style.
+- Add support for changing the system messages position.
+  GitLab issue #640. Thanks to Matthias Urhahn (@d4rken).
+- Update Docker deploy script. Use alpine postgres version.
+  Support Docker networks and make it the default.
+  Delete the containers to allow the script to be idempotent.
+  Deploy a Redis container.
+- Improve document version upload form.
+- Use dropzone for document version upload form.
+- Allow the "Execute document tools" permission to be
+  granted via ACL.
+- Update IMAP source to be UID based.
+- Add support for custom IMAP search criteria.
+- Add support for executing custom IMAP STORE commands
+  on processed messages.
+- Add support to execute the IMAP expunge command after each
+  processed message.
+- Add support for specifing a destination IMAP mailbox for
+  processed messages. GitLab issue #399. Thanks to
+  Robert Schöftner (@robert.schoeftner).
+- Support simple search disable via the new
+  SEARCH_DISABLE_SIMPLE_SEARCH setting.
+- Move all generic API classes definitions to the
+  rest_api.generics module.
+- Update API status code on insufficient access for the apps:
+  indexes, parsing, documents, metadata, ocr, permission,
+  user management.
+- Split document app links.
+- Make Postgres container wait delay configurable.
+- Enable the sidebar workflow runtime link when
+  the workflow view permission is granted to at
+  least one workflow.
+- Add ACL support to smart links.
+- Add "no result" template to staging folder files
+  view.
+- Split duplicated document views, links into their
+  own module.
+- Update label and icon of the document sign form
+  Label updated from "Save" to "Sign".
+- Document signatures API views.
+- Add and improve document signatures app tests.
+- Rename document_states/tests/test_workflow_actions.py to
+  document_states/tests/base.py.
+- Added TestServerTestCaseMixin to perform mocked HTTP
+  requests.
+- Authentication and headers added to the workflow
+  HTTP POST action.
+- Update the timeout field of the workflow HTTP POST
+  action to support templates. The timeout field also
+  support integers, float, or empty values.
+- DjangoSMTP mailer password field size increased to 192
+  characters.
+- Improve TestModelTestMixin. Allow specifying a base model.
+  Fix passing the dynamic Meta class to the test model.
+- Support for proxy model permission inheritance. Proxy models
+  now get the permission inheritance from their base models.
+- Update common.http.URL to allow passing a query dictionary.
+- Add the document template sandbox feature.
+- Use the generic TemplateField for the expression field
+  of index tree templates.
+- Add document trashed event. Closes GitLab issue #608
+  Thanks to Vikas Kedia (@vikaskedia) for the report.
+- Add transaction handling to document model events.
+- Add back support for individual database settings
+  for compatibility with version 3.2 settings.
+  These are now a fallback if the new 'DATABASES'
+  setting is not specified.
+- Refactor the initial setting bootstrap code.
+- Use timezone aware date for document statistics
+- Show placeholder label on invalid action classes
+  Instead of throwing an error a sample label of
+  "Unknown action type" will be used and allow users to
+  delete the unknown state action.
+- Add workflow action to sign documents.
+- Support running specific tests inside the Docker container.
+  docker run --rm mayanedms/mayanedms:3.3 run_tests
+- Make the statistics slug field unique.
+- Self-heal statistics results model when multiple
+  results are created using the same slug value.
+  Forum topic 1404.
+- Add "run_command" Docker entrypoint option to run arbitrary
+  Mayan management command.
+- Allow specifying the queue list for the run_worker Docker
+  command.
+- Switch default installation to use two Redis
+  databases. One for the message broker, and the
+  other to store task results.
+- Complete the prefixing of template tags with the
+  app name.
+- Remove unused template tags.
+- Add support for setting migrations.
+- Add setting migrations for the common, converter, documents,
+  file metadata, and document signatures app.
+- Add document type change API endpoint.
+- Change OCR API submit URL from documents/{pk}/submit
+  to documents/{pk}/ocr/submit.
+- Add Redis based distributed lock backend. Requires one
+  argument: "redis_url". Example: redis://127.0.0.1:6379/0
+- Add the setting LOCK_MANAGER_BACKEND_ARGUMENTS.
+- Automate documentation building dependencies.
+- Add sphinx sitemap extension.
+- Move the file patching code from the Dependency class to a
+  generalized utility of the storages app.
+- Add book link to the documentation.
+- Update mayan_statistics migration 0002 to rename
+  duplicate slugs.
+- Add document index reset view.
+
+3.2.12 (2019-XX-XX)
+===================
+- Add Mayan container port environment variable to the
+  docker installer. Thanks to Sergios Kefalas for the patch.
+- Fix off-by-one error in document statistics.
+
 3.2.11 (2019-11-28)
 ===================
 - Backport transaction handling to document model events.

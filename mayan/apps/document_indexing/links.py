@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.navigation.classes import Link
 from mayan.apps.navigation.utils import get_cascade_condition
 
@@ -27,7 +26,7 @@ link_document_index_instance_list = Link(
 link_document_type_index_templates = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.document_indexing.icons.icon_document_type_index_templates',
-    permissions=(permission_document_type_edit,), text=_('Index templates'),
+    permissions=(permission_document_indexing_create,), text=_('Index templates'),
     view='indexing:document_type_index_templates',
 )
 
@@ -37,6 +36,12 @@ link_index_instance_menu = Link(
         object_permission=permission_document_indexing_instance_view,
     ), icon_class_path='mayan.apps.document_indexing.icons.icon_index',
     text=_('Indexes'), view='indexing:index_list'
+)
+link_index_instance_rebuild = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_indexing.icons.icon_index_instances_rebuild',
+    permissions=(permission_document_indexing_rebuild,),
+    text=_('Rebuild index'), view='indexing:index_setup_rebuild'
 )
 link_index_instances_rebuild = Link(
     condition=get_cascade_condition(
@@ -49,11 +54,16 @@ link_index_instances_rebuild = Link(
     ),
     text=_('Rebuild indexes'), view='indexing:rebuild_index_instances'
 )
-link_index_instance_rebuild = Link(
-    args='resolved_object.pk',
-    icon_class_path='mayan.apps.document_indexing.icons.icon_index_instances_rebuild',
-    permissions=(permission_document_indexing_rebuild,),
-    text=_('Rebuild index'), view='indexing:index_setup_rebuild'
+link_index_instances_reset = Link(
+    condition=get_cascade_condition(
+        app_label='document_indexing', model_name='Index',
+        object_permission=permission_document_indexing_rebuild,
+    ),
+    icon_class_path='mayan.apps.document_indexing.icons.icon_index_instances_reset',
+    description=_(
+        'Deletes and creates from scratch all the document indexes.'
+    ),
+    text=_('Reset indexes'), view='indexing:index_instances_reset'
 )
 
 link_index_template_setup = Link(

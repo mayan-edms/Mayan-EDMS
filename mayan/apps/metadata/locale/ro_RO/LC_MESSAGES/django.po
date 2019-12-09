@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:15-0400\n"
-"PO-Revision-Date: 2019-11-21 06:57+0000\n"
+"POT-Creation-Date: 2019-12-09 00:33-0400\n"
+"PO-Revision-Date: 2019-12-03 13:32+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr "Numele tipului de metadate"
 msgid "Metadata type value"
 msgstr "Valoarea tipului de metadate"
 
-#: apps.py:183 apps.py:191 forms.py:123 models.py:93 models.py:304
+#: apps.py:183 apps.py:191 forms.py:123 models.py:96 models.py:307
 msgid "Metadata type"
 msgstr "Tip de metadate"
 
@@ -80,7 +80,7 @@ msgstr "ID-ul"
 msgid "Name"
 msgstr "Nume"
 
-#: forms.py:20 models.py:211
+#: forms.py:20 models.py:214
 msgid "Value"
 msgstr "Valoare"
 
@@ -88,7 +88,7 @@ msgstr "Valoare"
 msgid "Update"
 msgstr "Actualizați"
 
-#: forms.py:46 forms.py:185 models.py:306
+#: forms.py:46 forms.py:185 models.py:309
 msgid "Required"
 msgstr "Necesară"
 
@@ -102,7 +102,7 @@ msgstr "Valoarea erorii de căutare: %s"
 msgid "Default value error: %s"
 msgstr "Valoare eroare standard: %s"
 
-#: forms.py:104 models.py:172
+#: forms.py:104 models.py:175
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "\"%s\" este necesar pentru acest tip de document."
@@ -127,7 +127,7 @@ msgstr "Nici unul"
 msgid "Optional"
 msgstr "Facultativ"
 
-#: forms.py:189 models.py:55 search.py:19
+#: forms.py:189 models.py:57 search.py:19
 msgid "Label"
 msgstr "Etichetă"
 
@@ -147,7 +147,7 @@ msgstr "Editați metadatele"
 msgid "Remove metadata"
 msgstr "Eliminați metadatele"
 
-#: links.py:55 links.py:83 models.py:94 views.py:656
+#: links.py:55 links.py:83 models.py:97 views.py:656
 msgid "Metadata types"
 msgstr "Tipuri de metadate"
 
@@ -173,84 +173,88 @@ msgid ""
 "reserved words, or spaces."
 msgstr "Numele utilizat de alte aplicații pentru a face referire la acest tip de metadate. Nu utilizați cuvinte sau spații rezervate Python."
 
-#: models.py:59
+#: models.py:56
+msgid "Short description of this metadata type."
+msgstr "Scurtă descriere a acestui tip de metadate."
+
+#: models.py:62
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr "Introduceți un șablon pentru a fi afișat. Utilizați limbajul templating implicit al lui Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
-#: models.py:63 search.py:22
+#: models.py:66 search.py:22
 msgid "Default"
 msgstr "Iniţial"
 
-#: models.py:68
+#: models.py:71
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
 "Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
 msgstr "Introduceți un șablon pentru a fi afișat. Trebuie să rezulte un șir delimitat cu virgulă. Utilizați limbajul templating implicit al lui Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
 
-#: models.py:73 search.py:25
+#: models.py:76 search.py:25
 msgid "Lookup"
 msgstr "Căutare"
 
-#: models.py:78
+#: models.py:81
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
 msgstr "Validatorul va respinge introducerea datelor dacă valoarea introdusă nu este conformă cu formatul așteptat."
 
-#: models.py:80 search.py:28
+#: models.py:83 search.py:28
 msgid "Validator"
 msgstr "Validator"
 
-#: models.py:84
+#: models.py:87
 msgid ""
 "The parser will reformat the value entered to conform to the expected "
 "format."
 msgstr "Parserul va reformata valoarea introdusă pentru a se conforma formatului așteptat."
 
-#: models.py:86 search.py:31
+#: models.py:89 search.py:31
 msgid "Parser"
 msgstr "Parser"
 
-#: models.py:180
+#: models.py:183
 msgid "Value is not one of the provided options."
 msgstr "Valoarea nu este una dintre opțiunile furnizate."
 
-#: models.py:202
+#: models.py:205
 msgid "Document"
 msgstr "Document"
 
-#: models.py:205
+#: models.py:208
 msgid "Type"
 msgstr "Tip"
 
-#: models.py:209
+#: models.py:212
 msgid "The actual value stored in the metadata type field for the document."
 msgstr "Valoarea reală stocată în câmpul tip de metadate pentru document."
 
-#: models.py:217 models.py:218
+#: models.py:220 models.py:221
 msgid "Document metadata"
 msgstr "Metadatele documentului"
 
-#: models.py:239
+#: models.py:242
 msgid "Metadata type is required for this document type."
 msgstr "Tipul de metadate este necesar pentru acest tip de document."
 
-#: models.py:269
+#: models.py:272
 msgid "Metadata type is not valid for this document type."
 msgstr "Tipul de metadate nu este valabil pentru acest tip de document."
 
-#: models.py:300
+#: models.py:303
 msgid "Document type"
 msgstr "Tipul documentului"
 
-#: models.py:313
+#: models.py:316
 msgid "Document type metadata type options"
 msgstr "Opțiune tip metadate tip document"
 
-#: models.py:314
+#: models.py:317
 msgid "Document type metadata types options"
 msgstr "Opțiuni tipuri de  metadate tip document"
 

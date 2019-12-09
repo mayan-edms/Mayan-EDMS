@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:13-0400\n"
+"POT-Creation-Date: 2019-12-09 00:31-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -93,6 +93,8 @@ msgid ""
 "Environment used for building the documentation. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Среда, използвана за изграждане на документацията. Крайните потребители "
+"могат да игнорират липсващите зависимости в тази среда."
 
 #: classes.py:83
 msgid "Documentation"
@@ -299,11 +301,11 @@ msgstr ""
 "Разделени със запетаи имена на зависимости, които да се показват в списъка, "
 "като изключват всяка друга."
 
-#: management/commands/installjavascript.py:15
+#: management/commands/installdependencies.py:15
 msgid "Process a specific app."
 msgstr "Обработка на конкретно приложение."
 
-#: management/commands/installjavascript.py:19
+#: management/commands/installdependencies.py:19
 msgid "Force installation even if already installed."
 msgstr "Принудително инсталиране, дори ако вече е инсталирано."
 

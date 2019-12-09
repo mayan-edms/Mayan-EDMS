@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:13-0400\n"
+"POT-Creation-Date: 2019-12-09 00:30-0400\n"
 "PO-Revision-Date: 2019-04-14 03:23+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2019\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -30,6 +30,6 @@ msgstr ""
 msgid "Main"
 msgstr "Główny"
 
-#: templates/dashboards/numeric_widget.html:27
+#: templates/dashboards/numeric_widget.html:29
 msgid "View details"
 msgstr "Pokaż szczegóły"

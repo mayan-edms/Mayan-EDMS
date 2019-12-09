@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:12-0400\n"
+"POT-Creation-Date: 2019-12-09 00:30-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatic4@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -70,8 +70,8 @@ msgid "The username of the automatically created super user account."
 msgstr "O nome de usuário da conta de super-usuário criada automaticamente."
 
 #: templates/autoadmin/credentials.html:11
-msgid "First time login"
-msgstr "Primeiro início de sessão"
+msgid "Automatic credentials"
+msgstr ""
 
 #: templates/autoadmin/credentials.html:16
 #, python-format
@@ -85,22 +85,22 @@ msgstr ""
 msgid "Login using the following credentials:"
 msgstr "Entre usando as seguintes credenciais:"
 
-#: templates/autoadmin/credentials.html:18
+#: templates/autoadmin/credentials.html:19
 #, python-format
 msgid "Username: <strong>%(account)s</strong>"
 msgstr "Nome de usuário: <strong>%(account)s</strong>"
 
-#: templates/autoadmin/credentials.html:19
+#: templates/autoadmin/credentials.html:20
 #, python-format
 msgid "Email: <strong>%(email)s</strong>"
 msgstr "E-mail: <strong>%(email)s</strong>"
 
-#: templates/autoadmin/credentials.html:20
+#: templates/autoadmin/credentials.html:21
 #, python-format
 msgid "Password: <strong>%(password)s</strong>"
 msgstr "Senha: <strong>%(password)s</strong>"
 
-#: templates/autoadmin/credentials.html:21
+#: templates/autoadmin/credentials.html:23
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."

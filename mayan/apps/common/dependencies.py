@@ -36,7 +36,7 @@ PythonDependency(
         ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django', version_string='==1.11.25'
+    ''', module=__name__, name='django', version_string='==1.11.26'
 )
 PythonDependency(
     copyright_text='''
@@ -63,9 +63,6 @@ PythonDependency(
 )
 PythonDependency(
     module=__name__, name='django-downloadview', version_string='==1.9'
-)
-PythonDependency(
-    module=__name__, name='django-environ', version_string='==0.4.5'
 )
 PythonDependency(
     module=__name__, name='django-formtools', version_string='==2.1'
@@ -294,6 +291,10 @@ PythonDependency(
 PythonDependency(
     module=__name__, environment=environment_development, name='Werkzeug',
     version_string='==0.15.4'
+)
+PythonDependency(
+    module=__name__, environment=environment_development, name='devpi-server',
+    version_string='==5.3.1'
 )
 PythonDependency(
     environment=environment_development, module=__name__,

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:16-0400\n"
+"POT-Creation-Date: 2019-12-09 00:35-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -22,90 +22,87 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:23 links.py:12 permissions.py:7
+#: apps.py:19 links.py:12 permissions.py:7
 msgid "Task manager"
 msgstr "Управление на задачите"
 
-#: apps.py:31
+#: apps.py:27
 msgid "Label"
 msgstr "Етикет"
 
-#: apps.py:34
+#: apps.py:30
 msgid "Name"
 msgstr "Име"
 
-#: apps.py:37
+#: apps.py:33
 msgid "Default queue?"
 msgstr "Опашка по подразбиране?"
 
-#: apps.py:41
+#: apps.py:37
 msgid "Is transient?"
 msgstr "Преходен ли е?"
 
-#: apps.py:45
+#: apps.py:41
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:48
+#: apps.py:44
 msgid "Start time"
 msgstr "Начален час"
 
-#: apps.py:51
+#: apps.py:47
 msgid "Host"
 msgstr "Хост"
 
-#: apps.py:55
+#: apps.py:51
 msgid "Arguments"
 msgstr "Аргументи"
 
-#: apps.py:59
+#: apps.py:55
 msgid "Keyword arguments"
 msgstr "Аргументи на ключови думи"
 
-#: apps.py:63
+#: apps.py:59
 msgid "Worker process ID"
 msgstr "Идентификационен номер на работния процес"
-
-#: links.py:16 views.py:15
-msgid "Background task queues"
-msgstr "Опашка на фонови задачи"
-
-#: links.py:20
-msgid "Active tasks"
-msgstr "Активни задачи"
-
-#: links.py:24
-msgid "Reserved tasks"
-msgstr "Запазени задачи"
-
-#: links.py:28
-msgid "Scheduled tasks"
-msgstr "Планирани задачи"
 
 #: permissions.py:10
 msgid "View tasks"
 msgstr "Преглед на задачите"
 
+#: settings.py:10
+msgid "Celery"
+msgstr "Celery"
+
+#: settings.py:15
+msgid ""
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
+msgstr ""
+"По подразбиране: &quot;amqp: //&quot;. URL адрес на брокера по подразбиране "
+"Това трябва да бъде URL под формата на: "
+"transport://userid:password@hostname:port/virtual_host Изисква се само "
+"частта от схемата (transport://), останалото е по избор и по подразбиране "
+"към конкретните стойности на транспортиране по подразбиране."
+
+#: settings.py:24
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
+msgstr ""
+"По подразбиране: По подразбиране не е активиран бекенд. Бекендът, използван "
+"за съхраняване на резултати от задачи (надгробни камъни). Вижте "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
+
 #: tests/literals.py:5
 msgid "Test queue"
 msgstr "Опашка за тестове"
 
-#: views.py:30
-#, python-format
-msgid "Active tasks in queue: %s"
-msgstr "Активни задачи на опашката: %s"
-
-#: views.py:42
-#, python-format
-msgid "Unable to retrieve task list; %s"
-msgstr "Невъзможно извличане на списък със задачи; %s"
-
-#: views.py:56
-#, python-format
-msgid "Scheduled tasks in queue: %s"
-msgstr "Планирани задачи на опашка: %s"
-
-#: views.py:68
-#, python-format
-msgid "Reserved tasks in queue: %s"
-msgstr "Запазени задачи на опашка: %s"
+#: views.py:14
+msgid "Background task queues"
+msgstr "Опашка на фонови задачи"

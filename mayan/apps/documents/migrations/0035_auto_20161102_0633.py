@@ -13,8 +13,17 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DocumentPageCachedImage',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('filename', models.CharField(max_length=128, verbose_name='Filename')),
+                (
+                    'id', models.AutoField(
+                        verbose_name='ID', serialize=False,
+                        auto_created=True, primary_key=True
+                    )
+                ),
+                (
+                    'filename', models.CharField(
+                        max_length=128, verbose_name='Filename'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'Document page cached image',
@@ -36,6 +45,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='documentpagecachedimage',
             name='document_page',
-            field=models.ForeignKey(related_name='cached_images', verbose_name='Document page', to='documents.DocumentPage'),
+            field=models.ForeignKey(
+                related_name='cached_images', verbose_name='Document page',
+                to='documents.DocumentPage'
+            ),
         ),
     ]

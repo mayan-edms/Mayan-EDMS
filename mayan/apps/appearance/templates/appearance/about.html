@@ -56,18 +56,18 @@
 {% endblock stylesheets %}
 
 {% block content %}
-    {% project_information '__build_string__' as build_number %}
+    {% common_project_information '__build_string__' as build_number %}
     {% smart_setting 'COMMON_PROJECT_TITLE' as setting_project_title %}
-    {% project_information '__title__' as project_title %}
+    {% common_project_information '__title__' as project_title %}
 
-    {% get_icon 'mayan.apps.common.icons.icon_documentation' as icon_documentation %}
-    {% get_icon 'mayan.apps.common.icons.icon_forum' as icon_forum %}
-    {% get_icon 'mayan.apps.common.icons.icon_social_facebook' as icon_social_facebook %}
-    {% get_icon 'mayan.apps.common.icons.icon_social_paypal' as icon_social_paypal %}
-    {% get_icon 'mayan.apps.common.icons.icon_social_twitter' as icon_social_twitter %}
-    {% get_icon 'mayan.apps.common.icons.icon_social_instagram' as icon_social_instagram %}
-    {% get_icon 'mayan.apps.common.icons.icon_source_code' as icon_source_code %}
-    {% get_icon 'mayan.apps.common.icons.icon_wiki' as icon_wiki %}
+    {% appearance_get_icon 'mayan.apps.common.icons.icon_documentation' as icon_documentation %}
+    {% appearance_get_icon 'mayan.apps.common.icons.icon_forum' as icon_forum %}
+    {% appearance_get_icon 'mayan.apps.common.icons.icon_social_facebook' as icon_social_facebook %}
+    {% appearance_get_icon 'mayan.apps.common.icons.icon_social_paypal' as icon_social_paypal %}
+    {% appearance_get_icon 'mayan.apps.common.icons.icon_social_twitter' as icon_social_twitter %}
+    {% appearance_get_icon 'mayan.apps.common.icons.icon_social_instagram' as icon_social_instagram %}
+    {% appearance_get_icon 'mayan.apps.common.icons.icon_source_code' as icon_source_code %}
+    {% appearance_get_icon 'mayan.apps.common.icons.icon_wiki' as icon_wiki %}
 
     <div class="well">
         <h3 class="text-center">{{ setting_project_title }}</h3>
@@ -79,25 +79,25 @@
                 {% endblocktrans %}
             </p>
         {% endif %}
-        <p class="text-center">{% trans 'Version' %} {% project_information '__version__' %}</p>
+        <p class="text-center">{% trans 'Version' %} {% common_project_information '__version__' %}</p>
         {% if build_number %}
             <p class='text-center'>{% blocktrans with build_number as build_number %}Build number: {{ build_number }}{% endblocktrans %}</p>
         {% endif %}
         <p class="text-center">
-            {% project_information '__description__' as project_description %}
+            {% common_project_information '__description__' as project_description %}
             {% trans project_description %}
         </p>
 
         <p class="text-center">
-            <i class="fa fa-home"></i><a href="{% project_information '__website__' %}"> {% project_information '__website__' %}</a>
+            <i class="fa fa-home"></i><a href="{% common_project_information '__website__' %}"> {% common_project_information '__website__' %}</a>
         </p>
 
         <p class="text-center">
-            {% project_information '__license__' as license_information %}
+            {% common_project_information '__license__' as license_information %}
             {% trans 'Released under the license:' %} {% trans license_information %}
         </p>
 
-        <p class="text-center mayan-edms-logo"><span class="icon-mayan-edms-logo"></span> {% project_information '__title__' %}</p>
+        <p class="text-center mayan-edms-logo"><span class="icon-mayan-edms-logo"></span> {% common_project_information '__title__' %}</p>
 
         <p class="text-center">
             {% blocktrans with project_title as project_title %}
@@ -160,7 +160,7 @@
         <div class="col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    {% project_information '__copyright__' %}
+                    {% common_project_information '__copyright__' %}
                 </div>
             </div>
         </div>

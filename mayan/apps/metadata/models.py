@@ -52,7 +52,10 @@ class MetadataType(models.Model):
         ),
         unique=True, verbose_name=_('Name')
     )
-    label = models.CharField(max_length=48, verbose_name=_('Label'))
+    label = models.CharField(
+        help_text=_('Short description of this metadata type.'),
+        max_length=48, verbose_name=_('Label')
+    )
     default = models.CharField(
         blank=True, max_length=128, null=True,
         help_text=_(

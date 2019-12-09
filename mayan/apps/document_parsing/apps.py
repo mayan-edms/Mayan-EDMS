@@ -100,7 +100,7 @@ class DocumentParsingApp(MayanAppConfig):
         )
 
         ModelField(
-            model=Document, name='versions__pages__content__content'
+            model=Document, name='versions__version_pages__content__content'
         )
 
         ModelPermission.register(
@@ -132,7 +132,7 @@ class DocumentParsingApp(MayanAppConfig):
         )
 
         document_search.add_model_field(
-            field='versions__pages__content__content', label=_('Content')
+            field='versions__version_pages__content__content', label=_('Content')
         )
 
         document_page_search.add_model_field(

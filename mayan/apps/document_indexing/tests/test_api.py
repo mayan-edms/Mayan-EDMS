@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 
 from rest_framework import status
 
-from mayan.apps.documents.tests import DocumentTestMixin
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models import Index
 from ..permissions import (
@@ -69,7 +69,7 @@ class DocumentIndexingAPITestCase(
         self._create_test_index()
 
         response = self._request_test_index_delete_api_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_index in Index.objects.all())
 
@@ -90,7 +90,7 @@ class DocumentIndexingAPITestCase(
 
         response = self._request_test_index_detail_api_view()
 
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertTrue('id' not in response.data)
 
     def test_index_detail_api_view_with_access(self):

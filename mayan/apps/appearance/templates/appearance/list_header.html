@@ -1,0 +1,28 @@
+{% load i18n %}
+{% load static %}
+
+{% load common_tags %}
+{% load navigation_tags %}
+
+{% if object_list %}
+    <h4>
+        {% if page_obj %}
+            {% if page_obj.paginator.num_pages != 1 %}
+                {% blocktrans with page_obj.start_index as start and page_obj.end_index as end and page_obj.paginator.object_list|length as total and page_obj.number as page_number and page_obj.paginator.num_pages as total_pages %}Total ({{ start }} - {{ end }} out of {{ total }}) (Page {{ page_number }} of {{ total_pages }}){% endblocktrans %}
+            {% else %}
+                {% blocktrans with page_obj.paginator.object_list|length as total %}Total: {{ total }}{% endblocktrans %}
+            {% endif %}
+        {% else %}
+            {% blocktrans with object_list|length as total %}Total: {{ total }}{% endblocktrans %}
+        {% endif %}
+    </h4>
+    <hr>
+
+    {% if not hide_multi_item_actions %}
+        {% navigation_resolve_menu name='multi item' sort_results=True source=object_list.0 as links_multi_menus_results %}
+    {% endif %}
+{% endif %}
+
+<div class="clearfix">
+    {% include 'appearance/list_toolbar.html' %}
+</div>

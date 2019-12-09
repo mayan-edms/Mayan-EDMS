@@ -2,22 +2,18 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 
-import yaml
-try:
-    from yaml import CSafeLoader as SafeLoader
-except ImportError:
-    from yaml import SafeLoader
-
 from django.template import loader
 from django.template.base import Template
 from django.template.context import Context
 from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.settings import (
+from mayan.apps.common.serialization import yaml_dump, yaml_load
+from mayan.apps.task_manager.classes import Worker
+from mayan.apps.task_manager.settings import (
     setting_celery_broker_url, setting_celery_result_backend
 )
-from mayan.apps.task_manager.classes import Worker
 
 
 class Variable(object):
@@ -26,8 +22,24 @@ class Variable(object):
         self.default = default
         self.environment_name = environment_name
 
-    def get_value(self):
+    def _get_value(self):
         return os.environ.get(self.environment_name, self.default)
+
+    def get_value(self):
+        return mark_safe(self._get_value())
+
+
+class YAMLVariable(Variable):
+    def _get_value(self):
+        value = os.environ.get(self.environment_name)
+        if value:
+            value = yaml_load(stream=value)
+        else:
+            value = self.default
+
+        return yaml_dump(
+            data=value, allow_unicode=True, default_flow_style=True, width=999
+        ).replace('...\n', '').replace('\n', '')
 
 
 @python_2_unicode_compatible
@@ -99,9 +111,7 @@ class PlatformTemplate(object):
 
         if context_string:
             context.update(
-                yaml.load(
-                    stream=context_string, Loader=SafeLoader
-                )
+                yaml_load(stream=context_string)
             )
 
         if self.template_string:
@@ -115,10 +125,6 @@ class PlatformTemplate(object):
 
 
 class PlatformTemplateSupervisord(PlatformTemplate):
-    context_defaults = {
-        'BROKER_URL': 'redis://127.0.0.1:6379/0',
-        'CELERY_RESULT_BACKEND': 'redis://127.0.0.1:6379/0',
-    }
     label = _('Template for Supervisord.')
     name = 'supervisord'
     settings = (
@@ -134,34 +140,37 @@ class PlatformTemplateSupervisord(PlatformTemplate):
             environment_name='MAYAN_GUNICORN_TIMEOUT'
         ),
         Variable(
-            name='DATABASE_CONN_MAX_AGE', default=0,
-            environment_name='MAYAN_DATABASE_CONN_MAX_AGE'
-        ),
-        Variable(
-            name='DATABASE_ENGINE', default='django.db.backends.postgresql',
-            environment_name='MAYAN_DATABASE_ENGINE'
-        ),
-        Variable(
-            name='DATABASE_HOST', default='127.0.0.1',
-            environment_name='MAYAN_DATABASE_HOST'
-        ),
-        Variable(
-            name='DATABASE_NAME', default='mayan',
-            environment_name='MAYAN_DATABASE_NAME'
-        ),
-        Variable(
-            name='DATABASE_PASSWORD', default='mayanuserpass',
-            environment_name='MAYAN_DATABASE_PASSWORD'
-        ),
-        Variable(
-            name='DATABASE_USER', default='mayan',
-            environment_name='MAYAN_DATABASE_USER'
-        ),
-        Variable(
             name='INSTALLATION_PATH', default='/opt/mayan-edms',
             environment_name='MAYAN_INSTALLATION_PATH'
         ),
-        Variable(
+        YAMLVariable(
+            name='ALLOWED_HOSTS',
+            default=['*'],
+            environment_name='MAYAN_ALLOWED_HOSTS'
+        ),
+        YAMLVariable(
+            name='CELERY_BROKER_URL',
+            default='redis://127.0.0.1:6379/0',
+            environment_name='MAYAN_CELERY_BROKER_URL'
+        ),
+        YAMLVariable(
+            name='CELERY_RESULT_BACKEND',
+            default='redis://127.0.0.1:6379/1',
+            environment_name='MAYAN_CELERY_RESULT_BACKEND'
+        ),
+        YAMLVariable(
+            name='DATABASES',
+            default={
+                'default': {
+                    'ENGINE': 'django.db.backends.postgresql',
+                    'NAME': 'mayan', 'PASSWORD': 'mayanuserpass',
+                    'USER': 'mayan', 'HOST': '127.0.0.1'
+                }
+            },
+            environment_name='MAYAN_DATABASES'
+        ),
+        YAMLVariable
+        (
             name='MEDIA_ROOT', default='/opt/mayan-edms/media',
             environment_name='MAYAN_MEDIA_ROOT'
         ),
@@ -179,5 +188,28 @@ class PlatformTemplateSupervisordDocker(PlatformTemplate):
         return {'workers': Worker.all()}
 
 
+class PlatformTemplateWorkerQueues(PlatformTemplate):
+    label = _('Template showing the queues of a worker.')
+    name = 'worker_queues'
+
+    variables = (
+        Variable(
+            name='WORKER_NAME', default=None,
+            environment_name='MAYAN_WORKER_NAME'
+        ),
+    )
+
+    def get_context(self):
+        worker_name = self.get_variables_context().get('WORKER_NAME')
+        queues = Worker.get(name=worker_name).queues
+
+        return {
+            'queues': queues, 'queue_names': sorted(
+                map(lambda x: x.name, queues)
+            )
+        }
+
+
 PlatformTemplate.register(klass=PlatformTemplateSupervisord)
 PlatformTemplate.register(klass=PlatformTemplateSupervisordDocker)
+PlatformTemplate.register(klass=PlatformTemplateWorkerQueues)

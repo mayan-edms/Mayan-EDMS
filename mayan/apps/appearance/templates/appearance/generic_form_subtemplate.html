@@ -10,11 +10,10 @@
 
 <div class="well">
     {% if form.is_multipart %}
-        <form action="{{ form_action }}" class="{{ form_css_classes|default:'' }}" enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" name="{{ form.prefix }}" target="{{ submit_target|default:'_self' }}">
+        <form action="{{ form_action }}" class="{{ form_css_classes|default:'' }}" enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" name="{{ form.prefix|default:'' }}" target="{{ submit_target|default:'_self' }}">
     {% else %}
-        <form action="{{ form_action }}" class="{{ form_css_classes|default:'' }}" method="{{ submit_method|default:'post' }}" name="{{ form.prefix }}" target="{{ submit_target|default:'_self' }}">
+        <form action="{{ form_action }}" class="{{ form_css_classes|default:'' }}" method="{{ submit_method|default:'post' }}" name="{{ form.prefix|default:'' }}" target="{{ submit_target|default:'_self' }}">
     {% endif %}
-
         {{ wizard.management_form }}
 
         {% if step_field %}
@@ -83,7 +82,7 @@
                         {% else %}
                             <i class="fa fa-check"></i>
                         {% endif %}
-                        {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
+                        {% if submit_label %}{{ submit_label }}{% else %}{% if form.instance %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
                     </button>
                     {% if previous %}
                           &nbsp;<a class="btn btn-default" onclick='history.back();'>

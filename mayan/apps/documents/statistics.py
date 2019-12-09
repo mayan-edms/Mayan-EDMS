@@ -20,6 +20,10 @@ MONTH_NAMES = [
 ]
 
 
+def get_month_name(month_number):
+    return force_text(MONTH_NAMES[month_number - 1])
+
+
 def new_documents_per_month():
     Document = apps.get_model(app_label='documents', model_name='Document')
 
@@ -31,7 +35,7 @@ def new_documents_per_month():
     return {
         'series': {
             'Documents': map(
-                lambda x: {force_text(MONTH_NAMES[x[0].month]): x[1]},
+                lambda x: {get_month_name(month_number=x[0].month): x[1]},
                 qss.time_series(start=start, end=now, interval='months')
             )
         }
@@ -53,7 +57,7 @@ def new_document_pages_per_month():
     return {
         'series': {
             'Pages': map(
-                lambda x: {force_text(MONTH_NAMES[x[0].month]): x[1]},
+                lambda x: {get_month_name(month_number=x[0].month): x[1]},
                 qss.time_series(start=start, end=now, interval='months')
             )
         }
@@ -93,7 +97,7 @@ def new_document_versions_per_month():
     return {
         'series': {
             'Versions': map(
-                lambda x: {force_text(MONTH_NAMES[x[0].month]): x[1]},
+                lambda x: {get_month_name(month_number=x[0].month): x[1]},
                 qss.time_series(start=start, end=now, interval='months')
             )
         }
@@ -142,9 +146,7 @@ def total_document_per_month():
 
         result.append(
             {
-                force_text(
-                    MONTH_NAMES[month]
-                ): qss.until(
+                get_month_name(month_number=month): qss.until(
                     timezone.datetime(year, next_month, 1, tzinfo=now.tzinfo)
                 )
             }
@@ -181,9 +183,7 @@ def total_document_version_per_month():
 
         result.append(
             {
-                force_text(
-                    MONTH_NAMES[month]
-                ): qss.until(
+                get_month_name(month_number=month): qss.until(
                     timezone.datetime(year, next_month, 1, tzinfo=now.tzinfo)
                 )
             }
@@ -220,9 +220,7 @@ def total_document_page_per_month():
 
         result.append(
             {
-                force_text(
-                    MONTH_NAMES[month]
-                ): qss.until(
+                get_month_name(month_number=month): qss.until(
                     timezone.datetime(year, next_month, 1, tzinfo=now.tzinfo)
                 )
             }

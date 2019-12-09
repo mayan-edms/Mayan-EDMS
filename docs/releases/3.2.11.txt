@@ -1,0 +1,176 @@
+Version 3.2.11
+==============
+
+Released: November 28, 2019
+
+Changes
+-------
+
+
+Checkouts
+^^^^^^^^^
+
+An issue with the request introspection of the API endpoint for checking in
+documents was causing server internal error (HTTP 500 error) has been fixed.
+
+
+Database integrity
+^^^^^^^^^^^^^^^^^^
+
+Database transaction improvements from the version 3.3 branch were backported.
+Document events now trigger inside the same database transaction as document
+changes. This change will ensure the expected behavior of other elements that
+rely on this event even under the most heavy system loads and severe
+database/network infrastructure problems.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+The example LDAP file was improved. This is a community contributed file and
+not officially supported. For LDAP integration be sure to check and select
+one of the official support and/or consultation alternatives
+(https://www.mayan-edms.com/support/).
+
+The LDAP entry of the FAQ was expanded with user feedback.
+
+All the requirements to build the documentation are now generated
+automatically using Mayan's internal dependency system.
+
+The documentation now provides a sitemap to help in indexing and searching for
+information.
+
+A missing detail of the API integration example to upload new documents has
+been added.
+
+The update instructions to upgrade the supervisord configuration file were
+improve to work around some Linux shell differences. This makes the
+instructions work for more users.
+
+
+Permissions
+^^^^^^^^^^^
+
+The index create permission was removed as a possible permission to grant
+for existing indexes, as this is semantically incorrect.
+
+An issue with reverse inheritance permission detection was fixed. It is now
+possible to grant document permissions via the document type under all
+situations and deployment types.
+
+
+Statistics
+^^^^^^^^^^
+
+In some situations where improper horizontal scaling is used, the statistics
+result model could end up with duplicate slug field entries. This field is
+meant to be unique. Although this is a external issue, the situation is now
+prevented by making the field unique at the database level, adding a data
+migration to fix existing installations experiencing this issue, and by
+adding code that will detect and self-heal future occurrences of this.
+
+
+Other changes
+^^^^^^^^^^^^^
+
+The file patching code from the Dependency class to a generalized utility
+of the storages app. This code is now used in several places including the
+documentation global variable substitution.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrading from a previous version
+---------------------------------
+
+If installed via Python's PIP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Remove deprecated requirements::
+
+    sudo -u mayan curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt -o /tmp/removals.txt && sudo -u mayan |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+Type in the console::
+
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.2.11
+
+the requirements will also be updated automatically.
+
+
+Using Git
+^^^^^^^^^
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Remove deprecated requirements::
+
+    $ pip uninstall -y -r removals.txt
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+
+Common steps
+^^^^^^^^^^^^
+
+Perform these steps after updating the code from either step above.
+
+Make a backup of your supervisord file::
+
+    sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+Update the supervisord configuration file. Replace the environment
+variables values show here with your respective settings. This step will refresh
+the supervisord configuration file with the new queues and the latest
+recommended layout::
+
+    sudo sh -c "MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+    MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+    MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+    |MAYAN_BIN| platformtemplate supervisord > |MAYAN_SUPERVISOR_CONF|"
+
+Edit the supervisord configuration file and update any setting the template
+generator missed::
+
+    sudo vi |MAYAN_SUPERVISOR_CONF|
+
+Migrate existing database schema with::
+
+    sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+    MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+    MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+    |MAYAN_BIN| performupgrade
+
+Add new static media::
+
+    sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+    |MAYAN_BIN| preparestatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Bugs fixed or issues closed
+---------------------------
+
+- :gitlab-issue:`688` REST API: Documents are not getting checked in
+- :forum-topic:`880` "permission denied" error executing post-update "Common Steps" for 3.2.6
+- :forum-topic:`1404` Mayan EDMS 3.2.8 statistics error
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

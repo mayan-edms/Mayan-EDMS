@@ -6,21 +6,17 @@ import shutil
 
 import mock
 from pathlib2 import Path
-import yaml
-try:
-    from yaml import CSafeDumper as SafeDumper
-except ImportError:
-    from yaml import SafeDumper
 
 from django.core import mail
 from django.utils.encoding import force_text
 
+from mayan.apps.common.serialization import yaml_dump
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.tests import (
-    GenericDocumentTestCase, TEST_COMPRESSED_DOCUMENT_PATH,
-    TEST_NON_ASCII_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_PATH,
-    TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_FILENAME,
-    TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
+from mayan.apps.documents.tests.literals import (
+    TEST_COMPRESSED_DOCUMENT_PATH, TEST_NON_ASCII_DOCUMENT_FILENAME,
+    TEST_NON_ASCII_DOCUMENT_PATH, TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH,
+    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
 )
 from mayan.apps.metadata.models import MetadataType
 from mayan.apps.storage.utils import mkdtemp
@@ -28,9 +24,6 @@ from mayan.apps.storage.utils import mkdtemp
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models.email_sources import EmailBaseModel, IMAPEmail, POP3Email
 from ..models.watch_folder_sources import WatchFolderSource
-
-from .mocks import MockIMAPServer, MockMailbox
-
 
 from .literals import (
     TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_EMAIL_BASE64_FILENAME,
@@ -40,13 +33,13 @@ from .literals import (
     TEST_WATCHFOLDER_SUBFOLDER
 )
 from .mixins import SourceTestMixin
+from .mocks import MockIMAPServer, MockPOP3Mailbox
 
 
 class CompressedUploadsTestCase(SourceTestMixin, GenericDocumentTestCase):
     auto_upload_document = False
 
     def test_upload_compressed_file(self):
-        self._create_test_source()
         self.test_source.uncompress = SOURCE_UNCOMPRESS_CHOICE_Y
         self.test_source.save()
 
@@ -218,8 +211,8 @@ class EmailBaseTestCase(GenericDocumentTestCase):
             metadata_type=test_metadata_type_2
         )
 
-        test_metadata_yaml = yaml.dump(
-            Dumper=SafeDumper, data={
+        test_metadata_yaml = yaml_dump(
+            data={
                 test_metadata_type_1.name: TEST_METADATA_VALUE_1,
                 test_metadata_type_2.name: TEST_METADATA_VALUE_2,
             }
@@ -290,10 +283,10 @@ class POP3SourceTestCase(GenericDocumentTestCase):
 
     @mock.patch('poplib.POP3_SSL', autospec=True)
     def test_download_document(self, mock_poplib):
-        mock_poplib.return_value = MockMailbox()
+        mock_poplib.return_value = MockPOP3Mailbox()
         self.source = POP3Email.objects.create(
-            document_type=self.test_document_type, label='', host='', password='',
-            username=''
+            document_type=self.test_document_type, label='', host='',
+            password='', username=''
         )
 
         self.source.check_source()

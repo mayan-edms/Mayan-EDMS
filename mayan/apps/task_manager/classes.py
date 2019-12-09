@@ -1,18 +1,13 @@
 from __future__ import absolute_import, unicode_literals
 
-from datetime import timedelta
 from importlib import import_module
 import logging
 
 from kombu import Exchange, Queue
 
-from celery.five import monotonic
-from celery.task.control import inspect
-
 from django.apps import apps
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.module_loading import import_string
-from django.utils.timezone import now
 
 from mayan.celery import app as celery_app
 
@@ -62,18 +57,10 @@ class Task(object):
     def __str__(self):
         return force_text(self.task_type)
 
-    def get_time_started(self):
-        time_start = self.kwargs.get('time_start')
-        if time_start:
-            return now() - timedelta(seconds=monotonic() - self.kwargs['time_start'])
-        else:
-            return None
-
 
 @python_2_unicode_compatible
 class CeleryQueue(object):
     _registry = {}
-    _inspect_instance = inspect()
 
     @staticmethod
     def initialize():
@@ -132,21 +119,6 @@ class CeleryQueue(object):
         self.task_types.append(task_type)
         return task_type
 
-    def get_active_tasks(self):
-        return self._process_task_dictionary(
-            task_dictionary=self.__class__._inspect_instance.active()
-        )
-
-    def get_reserved_tasks(self):
-        return self._process_task_dictionary(
-            task_dictionary=self.__class__._inspect_instance.reserved()
-        )
-
-    def get_scheduled_tasks(self):
-        return self._process_task_dictionary(
-            task_dictionary=self.__class__._inspect_instance.scheduled()
-        )
-
     def _update_celery(self):
         kwargs = {
             'name': self.name, 'exchange': Exchange(self.name),
@@ -156,13 +128,13 @@ class CeleryQueue(object):
         if self.transient:
             kwargs['delivery_mode'] = 1
 
-        celery_app.conf.CELERY_QUEUES.append(Queue(**kwargs))
+        celery_app.conf.task_queues.append(Queue(**kwargs))
 
         if self.default_queue:
-            celery_app.conf.CELERY_DEFAULT_QUEUE = self.name
+            celery_app.conf.task_default_queue = self.name
 
         for task_type in self.task_types:
-            celery_app.conf.CELERY_ROUTES.update(
+            celery_app.conf.task_routes.update(
                 {
                     task_type.dotted_path: {
                         'queue': self.name
@@ -171,7 +143,7 @@ class CeleryQueue(object):
             )
 
             if task_type.schedule:
-                celery_app.conf.CELERYBEAT_SCHEDULE.update(
+                celery_app.conf.beat_schedule.update(
                     {
                         task_type.name: {
                             'task': task_type.dotted_path,
@@ -187,6 +159,10 @@ class Worker(object):
     @classmethod
     def all(cls):
         return cls._registry.values()
+
+    @classmethod
+    def get(cls, name):
+        return cls._registry[name]
 
     def __init__(self, name, label=None, nice_level=0):
         self.name = name

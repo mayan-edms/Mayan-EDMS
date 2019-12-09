@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
 
 from ..classes import Worker, CeleryQueue
 from ..permissions import permission_task_view
@@ -22,27 +22,9 @@ class TaskManagerViewTestCase(TaskManagerTestMixin, GenericViewTestCase):
         super(TaskManagerViewTestCase, self).setUp()
         self._create_test_queue()
 
-    def _request_active_task_list(self):
-        return self.get(
-            viewname='task_manager:queue_active_task_list',
-            kwargs={'queue_name': self.test_queue.name}, follow=True
-        )
-
     def _request_queue_list(self):
         return self.get(
             viewname='task_manager:queue_list', follow=True
-        )
-
-    def _request_reserved_task_list(self):
-        return self.get(
-            viewname='task_manager:queue_reserved_task_list',
-            kwargs={'queue_name': self.test_queue.name}, follow=True
-        )
-
-    def _request_scheduled_task_list(self):
-        return self.get(
-            viewname='task_manager:queue_scheduled_task_list',
-            kwargs={'queue_name': self.test_queue.name}, follow=True
         )
 
     def test_queue_list_view_no_permissions(self):
@@ -57,33 +39,3 @@ class TaskManagerViewTestCase(TaskManagerTestMixin, GenericViewTestCase):
         self.assertContains(
             response, text=self.test_queue.name, status_code=200
         )
-
-    def test_active_task_list_view_no_permissions(self):
-        response = self._request_active_task_list()
-        self.assertEqual(response.status_code, 403)
-
-    def test_active_task_list_view_with_permissions(self):
-        self.grant_permission(permission=permission_task_view)
-
-        response = self._request_active_task_list()
-        self.assertEqual(response.status_code, 200)
-
-    def test_reserved_task_list_view_no_permissions(self):
-        response = self._request_reserved_task_list()
-        self.assertEqual(response.status_code, 403)
-
-    def test_reserved_task_list_view_with_permissions(self):
-        self.grant_permission(permission=permission_task_view)
-
-        response = self._request_reserved_task_list()
-        self.assertEqual(response.status_code, 200)
-
-    def test_scheduled_task_list_view_no_permissions(self):
-        response = self._request_scheduled_task_list()
-        self.assertEqual(response.status_code, 403)
-
-    def test_scheduled_task_list_view_with_permissions(self):
-        self.grant_permission(permission=permission_task_view)
-
-        response = self._request_scheduled_task_list()
-        self.assertEqual(response.status_code, 200)

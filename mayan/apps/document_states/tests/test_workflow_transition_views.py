@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
-from mayan.apps.common.tests import GenericViewTestCase
-from mayan.apps.documents.tests import GenericDocumentViewTestCase
+from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..models import WorkflowTransition
 from ..permissions import (
@@ -10,7 +10,10 @@ from ..permissions import (
 )
 
 from .literals import (
-    TEST_WORKFLOW_TRANSITION_LABEL, TEST_WORKFLOW_TRANSITION_LABEL_EDITED
+    TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT,
+    TEST_WORKFLOW_TRANSITION_FIELD_LABEL, TEST_WORKFLOW_TRANSITION_FIELD_NAME,
+    TEST_WORKFLOW_TRANSITION_FIELD_TYPE, TEST_WORKFLOW_TRANSITION_LABEL,
+    TEST_WORKFLOW_TRANSITION_LABEL_EDITED
 )
 from .mixins import (
     WorkflowTestMixin, WorkflowViewTestMixin, WorkflowTransitionViewTestMixin
@@ -160,7 +163,7 @@ class WorkflowTransitionDocumentViewTestCase(
         permission.
         """
         response = self._request_test_workflow_transition()
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 404)
 
         # Workflow should remain in the same initial state
         self.assertEqual(
@@ -209,7 +212,7 @@ class WorkflowTransitionEventViewTestCase(
 ):
     def _request_test_workflow_transition_event_list_view(self):
         return self.get(
-            viewname='document_states:setup_workflow_transition_events',
+            viewname='document_states:workflow_template_transition_events',
             kwargs={'pk': self.test_workflow_transition.pk}
         )
 
@@ -232,3 +235,125 @@ class WorkflowTransitionEventViewTestCase(
 
         response = self._request_test_workflow_transition_event_list_view()
         self.assertEqual(response.status_code, 200)
+
+
+class WorkflowTransitionFieldViewTestCase(
+    WorkflowTestMixin, WorkflowTransitionViewTestMixin, GenericViewTestCase
+):
+    def setUp(self):
+        super(WorkflowTransitionFieldViewTestCase, self).setUp()
+        self._create_test_workflow()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+
+    def _create_test_workflow_transition_field(self):
+        self.test_workflow_transition_field = self.test_workflow_transition.fields.create(
+            field_type=TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
+            name=TEST_WORKFLOW_TRANSITION_FIELD_NAME,
+            label=TEST_WORKFLOW_TRANSITION_FIELD_LABEL,
+            help_text=TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT
+        )
+
+    def _request_test_workflow_transition_field_list_view(self):
+        return self.get(
+            viewname='document_states:workflow_template_transition_field_list',
+            kwargs={'pk': self.test_workflow_transition.pk}
+        )
+
+    def test_workflow_transition_field_list_view_no_permission(self):
+        self._create_test_workflow_transition_field()
+
+        response = self._request_test_workflow_transition_field_list_view()
+        self.assertNotContains(
+            response=response,
+            text=self.test_workflow_transition_field.label,
+            status_code=404
+        )
+
+    def test_workflow_transition_field_list_view_with_access(self):
+        self._create_test_workflow_transition_field()
+
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
+
+        response = self._request_test_workflow_transition_field_list_view()
+        self.assertContains(
+            response=response,
+            text=self.test_workflow_transition_field.label,
+            status_code=200
+        )
+
+    def _request_workflow_transition_field_create_view(self):
+        return self.post(
+            viewname='document_states:workflow_template_transition_field_create',
+            kwargs={'pk': self.test_workflow_transition.pk},
+            data={
+                'field_type': TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
+                'name': TEST_WORKFLOW_TRANSITION_FIELD_NAME,
+                'label': TEST_WORKFLOW_TRANSITION_FIELD_LABEL,
+                'help_text': TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT
+            }
+        )
+
+    def test_workflow_transition_field_create_view_no_permission(self):
+        workflow_transition_field_count = self.test_workflow_transition.fields.count()
+
+        response = self._request_workflow_transition_field_create_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            self.test_workflow_transition.fields.count(),
+            workflow_transition_field_count
+        )
+
+    def test_workflow_transition_field_create_view_with_access(self):
+        workflow_transition_field_count = self.test_workflow_transition.fields.count()
+
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
+
+        response = self._request_workflow_transition_field_create_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_workflow_transition.fields.count(),
+            workflow_transition_field_count + 1
+        )
+
+    def _request_workflow_transition_field_delete_view(self):
+        return self.post(
+            viewname='document_states:workflow_template_transition_field_delete',
+            kwargs={'pk': self.test_workflow_transition_field.pk},
+        )
+
+    def test_workflow_transition_field_delete_view_no_permission(self):
+        self._create_test_workflow_transition_field()
+
+        workflow_transition_field_count = self.test_workflow_transition.fields.count()
+
+        response = self._request_workflow_transition_field_delete_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            self.test_workflow_transition.fields.count(),
+            workflow_transition_field_count
+        )
+
+    def test_workflow_transition_field_delete_view_with_access(self):
+        self._create_test_workflow_transition_field()
+
+        workflow_transition_field_count = self.test_workflow_transition.fields.count()
+
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
+
+        response = self._request_workflow_transition_field_delete_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_workflow_transition.fields.count(),
+            workflow_transition_field_count - 1
+        )

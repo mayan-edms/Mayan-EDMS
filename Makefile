@@ -1,10 +1,11 @@
 #!make
 include config.env
-.PHONY: clean-pyc clean-build
+
+.PHONY: clean clean-pyc clean-build test
 
 help:
 	@echo "Usage: make <target>\n"
-	@awk 'BEGIN {FS = ":.*##"} /^[a-zA-Z_-]+:.*?## / { printf "  * %-40s -%s\n", $$1, $$2 }' $(MAKEFILE_LIST)|sort
+	@awk 'BEGIN {FS = ":.*##"} /^[0-9a-zA-Z_-]+:.*?## / { printf "  * %-40s -%s\n", $$1, $$2 }' $(MAKEFILE_LIST)|sort
 
 # Cleaning
 
@@ -20,7 +21,7 @@ clean-pyc: ## Remove Python artifacts.
 	find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
-
+	find . -name '__pycache__' -exec rm -R -f {} +
 
 # Testing
 
@@ -43,10 +44,10 @@ test-all-debug: clean-pyc
 test-launch-postgres:
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
-	docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data healthcheck/postgres
+	docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
 	sudo apt-get install -q libpq-dev
 	pip install psycopg2==$(PYTHON_PSYCOPG2_VERSION)
-	while ! docker inspect --format='{{json .State.Health}}' test-postgres|grep 'Status":"healthy"'; do sleep 1; done
+	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 
 test-with-postgres: ## MODULE=<python module name> - Run tests for a single app, module or test class against a Postgres database container.
 test-with-postgres: test-launch-postgres
@@ -63,10 +64,10 @@ test-with-postgres-all: test-launch-postgres
 test-launch-mysql:
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
-	docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan -v test-mysql:/var/lib/mysql healthcheck/mysql
+	docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan -v test-mysql:/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION)
 	sudo apt-get install -q libmysqlclient-dev mysql-client
 	pip install mysqlclient==$(PYTHON_MYSQL_VERSION)
-	while ! docker inspect --format='{{json .State.Health}}' test-mysql|grep 'Status":"healthy"'; do sleep 1; done
+	while ! nc -z 127.0.0.1 3306; do sleep 1; done
 	mysql -h 127.0.0.1 -P 3306 -uroot  -e "set global character_set_server=utf8mb4;"
 
 test-with-mysql: ## MODULE=<python module name> - Run tests for a single app, module or test class against a MySQL database container.
@@ -85,7 +86,7 @@ test-with-mysql-all: test-launch-mysql
 test-launch-oracle:
 	@docker rm -f test-oracle || true
 	@docker volume rm test-oracle || true
-	docker run -d --name test-oracle -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v test-oracle:/u01/app/oracle wnameless/oracle-xe-11g
+	docker run -d --name test-oracle -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v test-oracle:/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
 	# https://gist.github.com/kimus/10012910
 	pip install cx_Oracle==$(PYTHON_ORACLE_VERSION)
 	while ! nc -z 127.0.0.1 49161; do sleep 1; done
@@ -249,44 +250,49 @@ generate-requirements: ## Generate all requirements files from the project deped
 gitlab-release-documentation: ## Trigger the documentation build and publication using GitLab CI
 gitlab-release-documentation:
 	git push
-	git push origin :releases/documentation
+	git push --tags
+	git push origin :releases/documentation || true
 	git push origin HEAD:releases/documentation
 
 gitlab-release-docker: ## Trigger the Docker image build and publication using GitLab CI
 gitlab-release-docker:
 	git push
-	git push origin :releases/docker
+	git push --tags
+	git push origin :releases/docker || true
 	git push origin HEAD:releases/docker
 
 gitlab-release-python: ## Trigger the Python package build and publication using GitLab CI
 gitlab-release-python:
 	git push
-	git push origin :releases/python
+	git push --tags
+	git push origin :releases/python || true
 	git push origin HEAD:releases/python
 
 gitlab-release-all: ## Trigger the Python package, Docker image, and documentation build and publication using GitLab CI
 gitlab-release-all:
 	git push
-	git push origin :releases/all
+	git push --tags
+	git push origin :releases/all || true
 	git push origin HEAD:releases/all
 
 # Dev server
 
 runserver: ## Run the development server.
-	./manage.py runserver --settings=mayan.settings.development $(ADDRPORT)
+	./manage.py runserver --nothreading --settings=mayan.settings.development $(ADDRPORT)
 
 runserver_plus: ## Run the Django extension's development server.
-	./manage.py runserver_plus --settings=mayan.settings.development $(ADDRPORT)
+	./manage.py runserver_plus --nothreading --settings=mayan.settings.development $(ADDRPORT)
 
 shell_plus: ## Run the shell_plus command.
 	./manage.py shell_plus --settings=mayan.settings.development
 
 test-with-docker-services-on: ## Launch and initialize production-like services using Docker (Postgres and Redis).
-	docker run -d --name redis -p 6379:6379 redis
-	docker run -d --name postgres -p 5432:5432 postgres
+	docker run -d --name redis -p 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
+	docker run -d --name postgres -p 5432:5432 $(DOCKER_POSTGRES_IMAGE_VERSION)
 	while ! nc -z 127.0.0.1 6379; do sleep 1; done
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 	sleep 4
+	pip install psycopg2==$(PYTHON_PSYCOPG2_VERSION) redis==$(PYTHON_REDIS_VERSION)
 	./manage.py initialsetup --settings=mayan.settings.staging.docker
 
 test-with-docker-services-off: ## Stop and delete the Docker production-like services.
@@ -297,10 +303,10 @@ test-with-docker-frontend: ## Launch a front end instance that uses the producti
 	./manage.py runserver --settings=mayan.settings.staging.docker
 
 test-with-docker-worker: ## Launch a worker instance that uses the production-like services.
-	./manage.py celery worker --settings=mayan.settings.staging.docker -B -l INFO -O fair
+	DJANGO_SETTINGS_MODULE=mayan.settings.staging.docker ./manage.py celery worker -A mayan -B -l INFO -O fair
 
 docker-mysql-on: ## Launch and initialize a MySQL Docker container.
-	docker run -d --name mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan_edms mysql
+	docker run -d --name mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan_edms $(DOCKER_MYSQL_IMAGE_VERSION)
 	while ! nc -z 127.0.0.1 3306; do sleep 1; done
 
 docker-mysql-off: ## Stop and delete the MySQL Docker container.
@@ -308,7 +314,7 @@ docker-mysql-off: ## Stop and delete the MySQL Docker container.
 	docker rm mysql
 
 docker-postgres-on: ## Launch and initialize a PostgreSQL Docker container.
-	docker run -d --name postgres -p 5432:5432 postgres
+	docker run -d --name postgres -p 5432:5432 $(DOCKER_POSTGRES_IMAGE_VERSION)
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 
 docker-postgres-off: ## Stop and delete the PostgreSQL Docker container.

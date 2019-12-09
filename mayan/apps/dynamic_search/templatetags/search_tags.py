@@ -8,5 +8,5 @@ register = Library()
 
 
 @register.simple_tag
-def get_search_models():
+def search_get_search_models():
     return SearchModel.all()

@@ -14,7 +14,7 @@ from mayan.apps.django_gpg.exceptions import VerificationError
 from mayan.apps.django_gpg.models import Key
 from mayan.apps.documents.models import DocumentVersion
 
-from .managers import EmbeddedSignatureManager
+from .managers import DetachedSignatureManager, EmbeddedSignatureManager
 from .storages import storage_detachedsignature
 
 logger = logging.getLogger(__name__)
@@ -43,7 +43,10 @@ class SignatureBaseModel(models.Model):
     date = models.DateField(
         blank=True, editable=False, null=True, verbose_name=_('Date signed')
     )
-    key_id = models.CharField(max_length=40, verbose_name=_('Key ID'))
+    key_id = models.CharField(
+        help_text=_('ID of the key that will be used to sign the document.'),
+        max_length=40, verbose_name=_('Key ID')
+    )
     # With proper key
     signature_id = models.CharField(
         blank=True, editable=False, null=True, max_length=64,
@@ -57,6 +60,7 @@ class SignatureBaseModel(models.Model):
     objects = InheritanceManager()
 
     class Meta:
+        ordering = ('pk',)
         verbose_name = _('Document version signature')
         verbose_name_plural = _('Document version signatures')
 
@@ -127,12 +131,13 @@ class EmbeddedSignature(SignatureBaseModel):
 @python_2_unicode_compatible
 class DetachedSignature(SignatureBaseModel):
     signature_file = models.FileField(
-        blank=True, null=True, storage=storage_detachedsignature,
+        blank=True, help_text=_(
+            'Signature file previously generated.'
+        ), null=True, storage=storage_detachedsignature,
         upload_to=upload_to, verbose_name=_('Signature file')
     )
 
-    # Don't inherit the SignatureBaseModel manager
-    objects = models.Manager()
+    objects = DetachedSignatureManager()
 
     class Meta:
         verbose_name = _('Document version detached signature')

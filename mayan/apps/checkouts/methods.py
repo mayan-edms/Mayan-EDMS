@@ -8,7 +8,7 @@ def method_check_in(self, user=None):
         app_label='checkouts', model_name='DocumentCheckout'
     )
 
-    return DocumentCheckout.objects.check_in_document(
+    return DocumentCheckout.business_logic.check_in_document(
         document=self, user=user
     )
 

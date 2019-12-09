@@ -1,0 +1,489 @@
+Version 3.3
+===========
+
+Released: December 3, 2019
+
+
+Changes
+-------
+
+Apps
+^^^^
+
+Three new apps are included in this release.
+
+The file cache manager app handles filesystem caching in a reusable way.
+Each file cache collection also has a maximum size limit. Once this limit
+is reached the file cache will automatically delete the oldest entries.
+This ensure file caches don't grow infinitely. The document and workflow apps
+were updated to use the new file caching. The document image cache defaults
+to 500MB and the workflow preview cache defaults to 50MB. These values can be
+changed with the ``DOCUMENTS_CACHE_MAXIMUM_SIZE`` and
+``WORKFLOW_IMAGE_CACHE_MAXIMUM_SIZE`` settings respectively.
+
+The web links app allows creating links from documents to external resources.
+These links are defined using the template language for variable substitution.
+Web links provide a simple and fast to integrate Mayan EDMS with external
+systems.
+
+The document redactions app allows censoring private document information
+in a non destructive way. Redactions are applied interactively for a documents
+page. Once applied, the area will be obscured to every other part of the system.
+This includes the preview and OCR systems.
+
+
+Checkouts
+^^^^^^^^^
+
+Support was added for checking in and out multiple documents at a time.
+
+
+Converter
+^^^^^^^^^
+
+The image converter system was updated to support image layers. The first use
+of this new capacity is the redactions app.
+
+
+Dashboard
+^^^^^^^^^
+
+The numeric dashboard widget was updated to display numbers in local
+format. This applies to decimal and thousands separators.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+The command ``installjavascript`` was been renamed to ``installdependencies``.
+This name better represents the function of the command.
+
+The package ``djcelery`` was replaced by the package ``django-celery-beat``.
+
+Celery was updated to version 4.3.0. This changes some settings:
+
+- ``MAYAN_BROKER_URL`` to ``MAYAN_CELERY_BROKER_URL``
+- ``MAYAN_CELERY_ALWAYS_EAGER`` to ``MAYAN_CELERY_TASK_ALWAYS_EAGER``
+
+
+Documents
+^^^^^^^^^
+
+The dropzone widget is now used for the document version upload form.
+
+The document trashed event was added.
+
+Docker
+^^^^^^
+
+The included Redis server was removed from the Docker image. A separate Redis
+container must now be deployed.
+
+Support for PIP proxying during build was added. Can be used with the local
+devpi-server or other similar to speed up builds.
+
+Celery flower was added to the Docker image. This is Celery's recommended
+task monitor tool.
+
+Several entrypoint commands were added. These are ``run_celery``,
+``run_frontend``, ``run_tests``, ``run_worker``. These commands allow
+running containers with a specific purpose. Adding more containers with the
+``run_worker`` command is a simple way to scale up an existing installation.
+
+All Docker scripts were updated to use the Alpine Linux versions of PostgreSQL
+and Redis.
+
+Added a ``run_command`` to the  Docker entrypoint to run arbitrary Mayan
+management commands. This avoids having to use Docker's ``exec`` command.
+
+It is now possible to specify the queue list for the ``run_worker`` Docker
+command. The command accepts one of two environment variables:
+``MAYAN_WORKER_NAME`` or ``MAYAN_QUEUE_LIST``. These environment variables
+are only read by the ``run_worker`` command. They are not used by the rest of
+the image or other commands.
+
+The installation procedure was updated to use two Redis databases. One for
+the message broker, and the other to store task results.
+
+The default fast and medium worker concurrency was set to 0 (auto scaling).
+
+
+Documentation
+^^^^^^^^^^^^^
+
+The documentation building dependencies are now automated as the rest of the
+system dependencies.
+
+The Sphinx sitemap extension was added to allow search engines to index all
+the pages of the built documentation.
+
+
+File metadata
+^^^^^^^^^^^^^
+
+Support was added for wildcard MIME type associations for the file metadata
+drivers.
+
+The ``EXIFTOOL`` driver was updated to run for all documents regardless of MIME
+type. Even with non image documents, this driver still provides some useful
+file information.
+
+
+Indexing
+^^^^^^^^
+
+An index reset tool was added. This tool erases the entire index instance, and
+allows user to then rebuild a clean index from scratch.
+
+A document template sandbox feature was added. This new feature allow testing
+templates against a specify document.
+
+
+Lock manager
+^^^^^^^^^^^^
+
+A distributed Redis lock backend was added to the lock manager app. This lock
+helps keep multiple Mayan EDMS instances synchronized, even if they are running
+on different hosts. This new lock requires one argument: ``redis_url``.
+
+The ``redis_url`` argument must be added to the new ``LOCK_MANAGER_BACKEND_ARGUMENTS``
+setting.
+
+Example::
+
+    LOCK_MANAGER_BACKEND_ARGUMENTS='{"redis_url": "redis://127.0.0.1:6379/2"}'
+
+
+Mailing
+^^^^^^^
+
+The ``DjangoSMTP`` mailer password field size was increased to 192 characters.
+
+
+Permissions
+^^^^^^^^^^^
+
+The permission "Execute document tools" can now be granted via ACL. This
+allows giving access to roles to document tools without granting the permission
+globally.
+
+
+Python 3
+^^^^^^^^
+
+The Docker image was updated to use Python 3. The documentation was also updated
+to use Python 3.
+
+
+
+REST API
+^^^^^^^^
+
+API endpoints were added to the document signatures app.
+
+An API endpoint to the a document's type was added.
+
+The OCR API submit endpoint URL was changed from::
+
+    documents/{pk}/submit
+
+to::
+
+   documents/{pk}/ocr/submit
+
+
+Search
+^^^^^^
+
+It is now possible to disable the simple search via the new
+``SEARCH_DISABLE_SIMPLE_SEARCH`` setting.
+
+
+Settings
+^^^^^^^^
+
+Support for setting migrations was added. This feature will reduce the number
+of manual configuration file updates needed between upgrades.
+
+Support for quoted configuration entries was removed. Quoted settings must now
+be specified as normal nested dictionaries. Settings affected:
+
+  - ``COMMON_SHARED_STORAGE_ARGUMENTS``
+  - ``CONVERTER_GRAPHICS_BACKEND_ARGUMENTS``
+  - ``DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS``
+  - ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS``
+  - ``FILE_METADATA_DRIVERS_ARGUMENTS``
+  - ``SIGNATURES_STORAGE_BACKEND_ARGUMENTS``
+
+However migrations were added for these settings and most users will not notice
+any change.
+
+Support was added to allow user-specified location for the configuration file
+with the ``CONFIGURATION_FILEPATH`` (``MAYAN_CONFIGURATION_FILEPATH environment variable``),
+and ``CONFIGURATION_LAST_GOOD_FILEPATH`` (``MAYAN_CONFIGURATION_LAST_GOOD_FILEPATH``
+environment variable) settings. This allows setting the location of the
+configuration file independently of the ``MEDIA_ROOT`` setting.
+
+Multi database configuration is now supported. To specify multiple databases,
+use the new ``MAYAN_DATABASES`` environment variable. This new setting more
+closely mirrors the upstream behavior of Django.
+
+Example::
+
+    MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}"
+
+This is the same as passing the environment variables::
+
+    MAYAN_DATABASE_ENGINE=django.db.backends.postgresql
+    MAYAN_DATABASE_NAME=mayan
+    MAYAN_DATABASE_PASSWORD=mayanuserpass
+    MAYAN_DATABASE_NAME=mayan
+    MAYAN_DATABASE_HOST=127.0.0.1
+
+This method allows specifying multiple databases such as when using replication
+or sharding. It also allows for null entries such as when using Linux sockets.
+
+Both methods (``MAYAN_DATABASE_`` prefixed entries, and single ``MAYAN_DATABASES``)
+are supported.
+
+
+Smart links
+^^^^^^^^^^^
+
+Support for ACLs was added to smart links.
+
+
+Sources
+^^^^^^^
+
+The IMAP source was updated to work using message UIDs instead of message index.
+This makes the IMAP email source for resilient and its email processing order
+predictable.
+
+Support was also added for custom IMAP search criteria. By default ``NOT DELETED``
+is used to process non-deleted messages.
+
+The IMAP source can now also execute custom ``IMAP STORE`` commands on processed
+messages. The command defaults to ``+FLAGS (\\Deleted)``.
+
+After processing IMAP message it is now possible to specify a destination
+mailbox. This allows keeping processed email instead of just deleting them.
+
+The IMAP expunge command can now be turned on or off.
+
+
+Storage
+^^^^^^^
+
+The class ``FakeStorageSubclass`` was added. This placeholder class allows
+serializing the real storage subclass. This prevents Django's migration
+system from confusing path changes as requiring a complete database
+migrations.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+A new vertical main menu was added. The previous main menu is now split into
+two menus. One located on the left side for document related links and a new
+top bar menu for system and user links. The vertical main menu remain open
+even when clicking on items for faster access. Upon a browser refresh, the menu
+will also restore its state to match the selected view.
+
+The icon composition system was expanded to support icon shadows.
+
+The Select2 widget is now used for the document type selection form. Autocomplete
+is enabled for this usage.
+
+Support was added to display help texts for view columns. By default the help
+text of the corresponding model field is used and shown as a tool tip.
+
+Is is now possible to change the system messages position using the new
+``DEFAULT_MESSAGE_POSITION`` setting. The default value is ``top-right``.
+
+
+Workflows
+^^^^^^^^^
+
+The workflow preview was improved to provide bigger, more readable previews.
+The workflow state actions are now included in the preview.
+
+Support was added for workflow context. Workflow context allows adding
+variable and values to a running workflow. These variables can then be used
+by the different workflow state actions.
+
+Fields support was added to the workflow transitions. These allow adding
+extra fields to capture user input. The value of the extra fields is added
+to the workflow context and it is available to the workflow state actions.
+
+A new workflow action to send automated emails was added.
+
+The HTTP POST action received several updates. The first, add authentication
+and headers support. The timeout field now supports template for dynamic timeouts.
+It also now supports integers, floats, or empty values.
+
+Another workflow action added is the document sign action. This action will
+perform detached or embedded signing of a document.
+
+
+Other
+^^^^^
+
+- Gunicorn now uses sync workers.
+- Remove document image clear link and view. This is now handled by the file
+  caching app.
+- Unify all line endings to be Linux style.
+- Improve document version upload form.
+- Update label and icon of the document sign form
+  Label updated from "Save" to "Sign".
+- Rename ``document_states/tests/test_workflow_actions.py`` to
+  ``document_states/tests/base.py``.
+- Added ``TestServerTestCaseMixin`` to perform mocked HTTP
+  requests.
+- Improve ``TestModelTestMixin``. Allow specifying a base model.
+  Fix passing the dynamic ``Meta`` class to the test model.
+- Update ``common.http.URL`` to allow passing a query dictionary.
+
+
+Removals
+--------
+
+- Database conversion. Reason for removal: The database conversions support
+  provided by this feature (SQLite to PostgreSQL) was being confused with
+  database migrations and upgrades.
+
+  Database upgrades are the responsibility of the app and the framework.
+  Database conversions however are not the responsibility of the app (Mayan),
+  they are the responsibility of the framework.
+
+  Database conversion is outside the scope of what Mayan does but we added
+  the code, management command, instructions and testing setup to provide
+  this to our users until the framework (Django) decided to add this
+  themselves (like they did with migrations).
+
+  Continued confusion about the purpose of the feature and confusion about
+  how errors with this feature were a reflection of the code quality of
+  Mayan necessitated the removal of the database conversion feature.
+
+- Django environ package.
+- Task inspection was removed from task manager app. This is now provided by the
+  Celery Flower project.
+
+
+
+Upgrading from a previous version
+---------------------------------
+
+If installed via Python's PIP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Update the virtualenv to use Python 3::
+
+    sudo -u mayan virtualenv /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Remove deprecated requirements::
+
+    sudo -u mayan curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u mayan |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+#. Update the Mayan EDMS Python package::
+
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3
+
+the requirements will also be updated automatically.
+
+
+Using Git
+^^^^^^^^^
+
+#. If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    git reset --hard HEAD
+    git pull
+
+   otherwise download the compressed archived and decompress it overriding the
+   existing installation.
+
+#. Remove deprecated requirements::
+
+    pip uninstall -y -r removals.txt
+
+#. Next upgrade/add the new requirements::
+
+    pip install --upgrade -r requirements.txt
+
+
+Common steps
+^^^^^^^^^^^^
+
+Perform these steps after updating the code from either step above.
+
+#. Make a backup of your supervisord file::
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout::
+
+       sudo sh -c "MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord > |MAYAN_SUPERVISOR_CONF|"
+
+   or::
+
+       sudo sh -c "MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord > |MAYAN_SUPERVISOR_CONF|"
+
+#. Edit the supervisord configuration file and update any setting specific to your installation::
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+#. Migrate existing database schema with::
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or::
+
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Add new static media::
+
+       sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| preparestatic --noinput
+
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Bugs fixed or issues closed
+---------------------------
+
+- :gitlab-issue:`399` Archive of processed e-mails
+- :gitlab-issue:`526` RuntimeWarning: Never call result.get() within a task!
+- :gitlab-issue:`532` Workflow preview isn't updated right after transitions are modified
+- :gitlab-issue:`540` hint-outdated/update documentation
+- :gitlab-issue:`594` 3.2b1: Unable to install/run under Python 3.5/3.6/3.7
+- :gitlab-issue:`608` How to know who put a document in trash can? [Video]
+- :gitlab-issue:`634` Failing docker entrypoint when using secret config
+- :gitlab-issue:`635` Build a docker image for Python3
+- :gitlab-issue:`640` UX: "Toast" Popup position prevents access to actions
+- :gitlab-issue:`644` Update sane-utils package in docker image.
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

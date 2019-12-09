@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:12-0400\n"
-"PO-Revision-Date: 2019-11-21 06:56+0000\n"
+"POT-Creation-Date: 2019-12-09 00:29-0400\n"
+"PO-Revision-Date: 2019-12-03 13:22+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -75,6 +75,12 @@ msgstr "URI.js"
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Numărul maxim de caractere care vor fi afișate ca titlu de vizualizare."
 
+#: settings.py:21
+msgid ""
+"Position where the system message will be displayed. Options are: top-left, "
+"top-center, top-right, bottom-left, bottom-center, bottom-right."
+msgstr "Poziția în care va fi afișat mesajul de sistem. Opțiunile sunt: în stânga sus, în centru-sus, în dreapta-sus, în stânga-jos, în jos-centru, în jos-dreapta."
+
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
 msgstr "permisiuni insuficiente"
@@ -91,7 +97,7 @@ msgstr "Pagina nu a fost gasită"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Ne pare rău, dar pagina solicitată nu a putut fi găsit."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:52
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:54
 msgid "Server error"
 msgstr "Eroare la server"
 
@@ -198,25 +204,30 @@ msgid ""
 "            "
 msgstr "\nImprastie vestea. Discutați cu prietenii și colegii despre cât de minunat este %(project_title)s!\nUrmăriți-ne pe <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>,<a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, sau <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>"
 
-#: templates/appearance/base.html:36 templates/appearance/base.html:46
+#: templates/appearance/base.html:37 templates/appearance/base.html:47
 msgid "Warning"
 msgstr "Alertă"
 
-#: templates/appearance/base.html:46
+#: templates/appearance/base.html:47
 msgid ""
-"Settings updated, restart your installation for changes to take proper "
-"effect."
-msgstr "Setările au fost actualizate, reporniți instalarea pentru ca modificările să aibă efectul scontat."
+"Settings updated, restart your installation and refresh your browser for "
+"changes to take effect."
+msgstr "Setările actualizate, reporniți instalarea și reîmprospătați browserul pentru ca modificările să intre în vigoare."
 
 #: templates/appearance/base.html:60
-#: templates/appearance/generic_list_items_subtemplate.html:104
+#: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Acţiuni"
 
 #: templates/appearance/base.html:62
-#: templates/appearance/generic_list_items_subtemplate.html:106
+#: templates/appearance/generic_list_items_subtemplate.html:68
+#: templates/appearance/list_toolbar.html:65
 msgid "Toggle Dropdown"
 msgstr "Comutare  mod listă"
+
+#: templates/appearance/calculate_form_title.html:10
+msgid "Open main menu"
+msgstr "Deschideți meniul principal"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
@@ -232,45 +243,29 @@ msgstr "Nu"
 
 #: templates/appearance/generic_form_instance.html:51
 #: templates/appearance/generic_form_instance.html:57
-#: templates/appearance/generic_form_subtemplate.html:51
+#: templates/appearance/generic_form_subtemplate.html:50
 #: templates/appearance/generic_multiform_subtemplate.html:37
 msgid "required"
 msgstr "necesar"
 
-#: templates/appearance/generic_form_subtemplate.html:86
-#: templates/appearance/generic_form_subtemplate.html:99
+#: templates/appearance/generic_form_subtemplate.html:85
+#: templates/appearance/generic_form_subtemplate.html:98
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Save"
 msgstr "Salvează"
 
-#: templates/appearance/generic_form_subtemplate.html:86
-#: templates/appearance/generic_form_subtemplate.html:99
+#: templates/appearance/generic_form_subtemplate.html:85
+#: templates/appearance/generic_form_subtemplate.html:98
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Submit"
 msgstr "Trimiteţi"
 
-#: templates/appearance/generic_form_subtemplate.html:90
+#: templates/appearance/generic_form_subtemplate.html:89
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Cancel"
 msgstr "Anulează"
 
-#: templates/appearance/generic_list_items_subtemplate.html:17
-#: templates/appearance/generic_list_subtemplate.html:17
-#, python-format
-msgid ""
-"Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
-"%(total_pages)s)"
-msgstr "Total (%(start)s- %(end)s din %(total)s) ( Pagina %(page_number)s din %(total_pages)s )"
-
-#: templates/appearance/generic_list_items_subtemplate.html:19
-#: templates/appearance/generic_list_items_subtemplate.html:22
-#: templates/appearance/generic_list_subtemplate.html:19
-#: templates/appearance/generic_list_subtemplate.html:22
-#, python-format
-msgid "Total: %(total)s"
-msgstr "Total: %(total)s"
-
-#: templates/appearance/generic_list_subtemplate.html:55
+#: templates/appearance/generic_list_subtemplate.html:28
 msgid "Identifier"
 msgstr "ID"
 
@@ -286,7 +281,33 @@ msgstr "Să începem"
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Înainte de a putea utiliza Mayan EDMS în totalitate, trebuie sa faceți următoarele:"
 
-#: templates/appearance/main_menu.html:10
+#: templates/appearance/list_header.html:11
+#, python-format
+msgid ""
+"Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
+"%(total_pages)s)"
+msgstr "Total (%(start)s- %(end)s din %(total)s) ( Pagina %(page_number)s din %(total_pages)s )"
+
+#: templates/appearance/list_header.html:13
+#: templates/appearance/list_header.html:16
+#, python-format
+msgid "Total: %(total)s"
+msgstr "Total: %(total)s"
+
+#: templates/appearance/list_toolbar.html:14
+msgid "Select/Deselect all"
+msgstr "Selectați / Deselectați toate"
+
+#: templates/appearance/list_toolbar.html:58
+msgid ""
+"Select items to activate bulk actions. Use Shift + click to select many."
+msgstr "Selectați elemente pentru a activa acțiuni în vrac. Folosiți Shift + faceți clic pentru a selecta mai multe."
+
+#: templates/appearance/list_toolbar.html:63
+msgid "Bulk actions"
+msgstr "Acțiuni în vrac"
+
+#: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "Comutare navigare"
 
@@ -294,15 +315,15 @@ msgstr "Comutare navigare"
 msgid "No results"
 msgstr "Fără rezultate"
 
-#: templates/appearance/root.html:57
+#: templates/appearance/root.html:59
 msgid "Close"
 msgstr "Închide"
 
-#: templates/appearance/root.html:65
+#: templates/appearance/root.html:67
 msgid "Server communication error"
 msgstr "Eroare de comunicare cu server-ul"
 
-#: templates/appearance/root.html:67
+#: templates/appearance/root.html:69
 msgid "Check you network connection and try again in a few moments."
 msgstr "Verificați conexiunea la rețea și încercați din nou în câteva momente."
 

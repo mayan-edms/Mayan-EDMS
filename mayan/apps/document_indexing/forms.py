@@ -1,12 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
 from django import forms
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.classes import ModelProperty
 from mayan.apps.common.forms import FilteredSelectionForm
 from mayan.apps.documents.models import Document
+from mayan.apps.templating.fields import TemplateField
 
 from .models import Index, IndexTemplateNode
 from .permissions import permission_document_indexing_rebuild
@@ -31,14 +30,9 @@ class IndexTemplateNodeForm(forms.ModelForm):
         super(IndexTemplateNodeForm, self).__init__(*args, **kwargs)
         self.fields['index'].widget = forms.widgets.HiddenInput()
         self.fields['parent'].widget = forms.widgets.HiddenInput()
-        self.fields['expression'].help_text = ' '.join(
-            [
-                force_text(self.fields['expression'].help_text),
-                '<br>',
-                ModelProperty.get_help_text_for(
-                    model=Document, show_name=True
-                ).replace('\n', '<br>')
-            ]
+        self.fields['expression'] = TemplateField(
+            label=_('Template'), model=Document,
+            model_variable='document', required=False
         )
 
     class Meta:

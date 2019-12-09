@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:16-0400\n"
+"POT-Creation-Date: 2019-12-09 00:35-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: kontrabant <kontrabant@gmail.com>, 2017\n"
 "Language-Team: Slovenian (Slovenia) (https://www.transifex.com/rosarior/teams/13584/sl_SI/)\n"
@@ -21,90 +21,78 @@ msgstr ""
 "Language: sl_SI\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:23 links.py:12 permissions.py:7
+#: apps.py:19 links.py:12 permissions.py:7
 msgid "Task manager"
 msgstr ""
 
-#: apps.py:31
+#: apps.py:27
 msgid "Label"
 msgstr "Oznaka"
 
-#: apps.py:34
+#: apps.py:30
 msgid "Name"
 msgstr "Ime"
 
-#: apps.py:37
+#: apps.py:33
 msgid "Default queue?"
 msgstr ""
 
-#: apps.py:41
+#: apps.py:37
 msgid "Is transient?"
 msgstr ""
 
-#: apps.py:45
+#: apps.py:41
 msgid "Type"
 msgstr ""
 
-#: apps.py:48
+#: apps.py:44
 msgid "Start time"
 msgstr ""
 
-#: apps.py:51
+#: apps.py:47
 msgid "Host"
 msgstr ""
 
-#: apps.py:55
+#: apps.py:51
 msgid "Arguments"
 msgstr ""
 
-#: apps.py:59
+#: apps.py:55
 msgid "Keyword arguments"
 msgstr ""
 
-#: apps.py:63
+#: apps.py:59
 msgid "Worker process ID"
-msgstr ""
-
-#: links.py:16 views.py:15
-msgid "Background task queues"
-msgstr ""
-
-#: links.py:20
-msgid "Active tasks"
-msgstr ""
-
-#: links.py:24
-msgid "Reserved tasks"
-msgstr ""
-
-#: links.py:28
-msgid "Scheduled tasks"
 msgstr ""
 
 #: permissions.py:10
 msgid "View tasks"
 msgstr ""
 
+#: settings.py:10
+msgid "Celery"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
+msgstr ""
+
+#: settings.py:24
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
+msgstr ""
+
 #: tests/literals.py:5
 msgid "Test queue"
 msgstr ""
 
-#: views.py:30
-#, python-format
-msgid "Active tasks in queue: %s"
-msgstr ""
-
-#: views.py:42
-#, python-format
-msgid "Unable to retrieve task list; %s"
-msgstr ""
-
-#: views.py:56
-#, python-format
-msgid "Scheduled tasks in queue: %s"
-msgstr ""
-
-#: views.py:68
-#, python-format
-msgid "Reserved tasks in queue: %s"
+#: views.py:14
+msgid "Background task queues"
 msgstr ""

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:14-0400\n"
+"POT-Creation-Date: 2019-12-09 00:32-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -27,7 +27,7 @@ msgid "Label"
 msgstr "Označení"
 
 #: apps.py:52 events.py:8 links.py:18 permissions.py:7 queues.py:9
-#: settings.py:9
+#: settings.py:11
 msgid "File metadata"
 msgstr "Souborová metadata"
 
@@ -37,7 +37,7 @@ msgstr "Vraťte hodnotu konkrétních metadat souboru."
 
 #: apps.py:99
 msgid "File metadata value of"
-msgstr ""
+msgstr "Hodnota metadat souboru"
 
 #: apps.py:110 apps.py:114 apps.py:152 apps.py:161
 msgid "File metadata key"
@@ -54,7 +54,7 @@ msgstr ""
 "Knihovna a program pro čtení a zápis meta informací do multimediálních "
 "souborů."
 
-#: drivers/exiftool.py:26
+#: drivers/exiftool.py:20
 msgid "EXIF Tool"
 msgstr "EXIF Tool"
 
@@ -183,7 +183,7 @@ msgstr "Zobrazit metadata souboru"
 msgid "Process document version"
 msgstr "Zpracovat verzi dokumentu"
 
-#: settings.py:14
+#: settings.py:18
 msgid ""
 "Set new document types to perform file metadata processing automatically by "
 "default."
@@ -191,7 +191,7 @@ msgstr ""
 "Nastavit nové typy dokumentů pro automatické zpracování metadat souborů ve "
 "výchozím nastavení."
 
-#: settings.py:25
+#: settings.py:24
 msgid "Arguments to pass to the drivers."
 msgstr "Argumenty k předání ovladačům."
 

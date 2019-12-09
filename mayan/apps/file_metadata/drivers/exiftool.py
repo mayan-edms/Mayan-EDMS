@@ -4,12 +4,6 @@ import json
 import logging
 
 import sh
-import yaml
-
-try:
-    from yaml import CSafeLoader as SafeLoader
-except ImportError:
-    from yaml import SafeLoader
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -46,8 +40,15 @@ class EXIFToolDriver(FileMetadataDriver):
             try:
                 document_version.save_to_file(file_object=temporary_fileobject)
                 temporary_fileobject.seek(0)
-                result = self.command_exiftool(temporary_fileobject.name)
-                return json.loads(s=result.stdout)[0]
+                try:
+                    result = self.command_exiftool(temporary_fileobject.name)
+                except sh.ErrorReturnCode_1 as exception:
+                    result = json.loads(s=exception.stdout)[0]
+                    if result.get('Error', '') == 'Unknown file type':
+                        # Not a fatal error
+                        return result
+                else:
+                    return json.loads(s=result.stdout)[0]
             finally:
                 temporary_fileobject.close()
         else:
@@ -57,40 +58,9 @@ class EXIFToolDriver(FileMetadataDriver):
             )
 
     def read_settings(self):
-        driver_arguments = yaml.load(
-            stream=setting_drivers_arguments.value, Loader=SafeLoader
-        )
-
-        self.exiftool_path = driver_arguments.get(
+        self.exiftool_path = setting_drivers_arguments.value.get(
             'exif_driver', {}
         ).get('exiftool_path', DEFAULT_EXIF_PATH)
 
 
-EXIFToolDriver.register(
-    mimetypes=(
-        'application/msword',
-        'application/pdf',
-        'application/vnd.oasis.opendocument.text',
-        'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-        'application/x-bittorrent',
-        'application/x-gzip',
-        'application/x-rar-compressed',
-        'application/x-shockwave-flash',
-        'application/zip',
-        'application/zip',
-        'audio/x-pn-realaudio-plugin',
-        'audio/x-wav',
-        'image/jpeg',
-        'image/png',
-        'image/svg+xml',
-        'image/tiff',
-        'image/x-portable-pixmap',
-        'text/html',
-        'text/rtf',
-        'text/x-sh',
-        'video/mp4',
-        'video/webm',
-        'video/x-flv',
-        'video/x-matroska'
-    )
-)
+EXIFToolDriver.register(mimetypes=('*',))

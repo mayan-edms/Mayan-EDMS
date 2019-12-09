@@ -9,64 +9,68 @@ from .api_views import (
 from .views import (
     SetupSourceCheckView, SetupSourceCreateView, SetupSourceDeleteView,
     SetupSourceEditView, SetupSourceListView, SourceLogListView,
-    StagingFileDeleteView, UploadInteractiveVersionView, UploadInteractiveView
+    StagingFileDeleteView, DocumentVersionUploadInteractiveView, UploadInteractiveView
 )
 from .wizards import DocumentCreateWizard
 
 urlpatterns = [
     url(
-        regex=r'^staging_file/(?P<pk>\d+)/(?P<encoded_filename>.+)/delete/$',
+        regex=r'^staging_files/(?P<pk>\d+)/(?P<encoded_filename>.+)/delete/$',
         view=StagingFileDeleteView.as_view(), name='staging_file_delete'
-    ),
-    url(
-        regex=r'^upload/document/new/interactive/(?P<source_id>\d+)/$',
-        view=UploadInteractiveView.as_view(), name='upload_interactive'
-    ),
-    url(
-        regex=r'^upload/document/new/interactive/$',
-        view=UploadInteractiveView.as_view(), name='upload_interactive'
-    ),
-    url(
-        regex=r'^upload/document/(?P<document_pk>\d+)/version/interactive/(?P<source_id>\d+)/$',
-        view=UploadInteractiveVersionView.as_view(), name='upload_version'
-    ),
-    url(
-        regex=r'^upload/document/(?P<document_pk>\d+)/version/interactive/$',
-        view=UploadInteractiveVersionView.as_view(), name='upload_version'
-    ),
-
-    # Setup views
-
-    url(
-        regex=r'^setup/list/$', view=SetupSourceListView.as_view(),
-        name='setup_source_list'
-    ),
-    url(
-        regex=r'^setup/(?P<pk>\d+)/edit/$', view=SetupSourceEditView.as_view(),
-        name='setup_source_edit'
-    ),
-    url(
-        regex=r'^setup/(?P<pk>\d+)/logs/$', view=SourceLogListView.as_view(),
-        name='setup_source_logs'
-    ),
-    url(
-        regex=r'^setup/(?P<pk>\d+)/delete/$',
-        view=SetupSourceDeleteView.as_view(), name='setup_source_delete'
-    ),
-    url(
-        regex=r'^setup/(?P<source_type>\w+)/create/$',
-        view=SetupSourceCreateView.as_view(), name='setup_source_create'
-    ),
-    url(
-        regex=r'^setup/(?P<pk>\d+)/check/$',
-        view=SetupSourceCheckView.as_view(), name='setup_source_check'
     ),
 
     # Document create views
 
     url(
-        regex=r'^create/from/local/multiple/$',
+        regex=r'^documents/create/from/local/multiple/$',
         view=DocumentCreateWizard.as_view(), name='document_create_multiple'
+    ),
+    url(
+        regex=r'^documents/upload/new/interactive/(?P<source_id>\d+)/$',
+        view=UploadInteractiveView.as_view(),
+        name='document_upload_interactive'
+    ),
+    url(
+        regex=r'^documents/upload/new/interactive/$',
+        view=UploadInteractiveView.as_view(),
+        name='document_upload_interactive'
+    ),
+    url(
+        regex=r'^documents/(?P<document_pk>\d+)/versions/upload/interactive/(?P<source_id>\d+)/$',
+        view=DocumentVersionUploadInteractiveView.as_view(),
+        name='document_version_upload'
+    ),
+    url(
+        regex=r'^documents/(?P<document_pk>\d+)/versions/upload/interactive/$',
+        view=DocumentVersionUploadInteractiveView.as_view(),
+        name='document_version_upload'
+    ),
+
+    # Setup views
+
+    url(
+        regex=r'^sources/$', view=SetupSourceListView.as_view(),
+        name='setup_source_list'
+    ),
+    url(
+        regex=r'^sources/(?P<pk>\d+)/edit/$', view=SetupSourceEditView.as_view(),
+        name='setup_source_edit'
+    ),
+    url(
+        regex=r'^sources/(?P<pk>\d+)/logs/$', view=SourceLogListView.as_view(),
+        name='setup_source_logs'
+    ),
+    url(
+        regex=r'^sources/(?P<pk>\d+)/delete/$',
+        view=SetupSourceDeleteView.as_view(), name='setup_source_delete'
+    ),
+    url(
+        regex=r'^sources/(?P<source_type>\w+)/create/$',
+        view=SetupSourceCreateView.as_view(), name='setup_source_create'
+    ),
+    url(
+        regex=r'^sources/(?P<pk>\d+)/check/$',
+        view=SetupSourceCheckView.as_view(), name='setup_source_check'
     ),
 ]
 

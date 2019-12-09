@@ -32,12 +32,12 @@ from .html_widgets import (
 from .links import (
     link_document_index_instance_list, link_document_type_index_templates,
     link_index_instance_menu, link_index_instance_rebuild,
-    link_index_template_setup, link_index_template_create,
-    link_index_template_document_types, link_index_template_delete,
-    link_index_template_edit, link_index_template_list,
-    link_index_template_node_tree_view, link_index_instances_rebuild,
-    link_index_template_node_create, link_index_template_node_delete,
-    link_index_template_node_edit
+    link_index_instances_reset, link_index_template_setup,
+    link_index_template_create, link_index_template_document_types,
+    link_index_template_delete, link_index_template_edit,
+    link_index_template_list, link_index_template_node_tree_view,
+    link_index_instances_rebuild, link_index_template_node_create,
+    link_index_template_node_delete, link_index_template_node_edit
 )
 from .permissions import (
     permission_document_indexing_delete, permission_document_indexing_edit,
@@ -99,17 +99,24 @@ class DocumentIndexingApp(MayanAppConfig):
             model=IndexInstanceNode, related='index_template_node__index'
         )
 
-        SourceColumn(
+        column_index_label = SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=Index
         )
+        column_index_label.add_exclude(source=IndexInstance)
         SourceColumn(
+            attribute='label', is_object_absolute_url=True, is_identifier=True,
+            is_sortable=True, source=IndexInstance
+        )
+        column_index_slug = SourceColumn(
             attribute='slug', is_sortable=True, source=Index
         )
-        SourceColumn(
+        column_index_slug.add_exclude(IndexInstance)
+        column_index_enabled = SourceColumn(
             attribute='enabled', is_sortable=True, source=Index,
             widget=TwoStateWidget
         )
+        column_index_enabled.add_exclude(source=IndexInstance)
 
         SourceColumn(
             func=lambda context: context[
@@ -174,7 +181,9 @@ class DocumentIndexingApp(MayanAppConfig):
         )
 
         menu_facet.bind_links(
-            links=(link_document_index_instance_list,), sources=(Document,)
+            links=(
+                link_document_index_instance_list,
+            ), sources=(Document,)
         )
         menu_list_facet.bind_links(
             links=(link_document_type_index_templates,),
@@ -209,7 +218,9 @@ class DocumentIndexingApp(MayanAppConfig):
             )
         )
         menu_setup.bind_links(links=(link_index_template_setup,))
-        menu_tools.bind_links(links=(link_index_instances_rebuild,))
+        menu_tools.bind_links(
+            links=(link_index_instances_rebuild, link_index_instances_reset)
+        )
 
         post_delete.connect(
             dispatch_uid='document_indexing_handler_delete_empty',

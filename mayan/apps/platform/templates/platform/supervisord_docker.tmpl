@@ -1,7 +1,7 @@
 [program:mayan-gunicorn]
 autorestart = false
 autostart = true
-command = /bin/bash -c "${MAYAN_GUNICORN_BIN} -w ${MAYAN_GUNICORN_WORKERS} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --env DJANGO_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE} --timeout ${MAYAN_GUNICORN_TIMEOUT}"
+command = /bin/bash -c "${MAYAN_GUNICORN_BIN} -w ${MAYAN_GUNICORN_WORKERS} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class sync --bind 0.0.0.0:8000 --env DJANGO_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE} --timeout ${MAYAN_GUNICORN_TIMEOUT}"
 redirect_stderr = true
 stderr_logfile = /dev/fd/2
 stderr_logfile_maxbytes = 0
@@ -9,21 +9,11 @@ stdout_logfile = /dev/fd/1
 stdout_logfile_maxbytes = 0
 user = mayan
 
-[program:redis]
-autorestart = false
-autostart = true
-command = /bin/bash -c "if [ ${MAYAN_BROKER_URL} == ${MAYAN_DEFAULT_BROKER_URL} ] && [ ${MAYAN_CELERY_RESULT_BACKEND} == ${MAYAN_DEFAULT_CELERY_RESULT_BACKEND} ];then /usr/bin/redis-server /etc/redis/;fi"
-stderr_logfile = /dev/fd/2
-stderr_logfile_maxbytes = 0
-stdout_logfile = /dev/fd/1
-stdout_logfile_maxbytes = 0
-user = root
-
 {% for worker in workers %}
 [program:mayan-worker-{{ worker.name }}]
 autorestart = false
 autostart = true
-command = nice -n {{ worker.nice_level }} /bin/bash -c "${MAYAN_BIN} celery --settings=${MAYAN_SETTINGS_MODULE} worker -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} -n mayan-worker-{{ worker.name }}.%%h ${MAYAN_WORKER_{{ worker.name|upper }}_CONCURRENCY}"
+command = nice -n {{ worker.nice_level }} /bin/bash -c "${MAYAN_PYTHON_BIN_DIR}celery worker -A mayan -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} -n mayan-worker-{{ worker.name }}.%%h ${MAYAN_WORKER_{{ worker.name|upper }}_CONCURRENCY}"
 killasgroup = true
 numprocs = 1
 priority = 998
@@ -39,7 +29,7 @@ user = mayan
 [program:mayan-celery-beat]
 autorestart = false
 autostart = true
-command = nice -n 1 /bin/bash -c "${MAYAN_BIN} celery --settings=${MAYAN_SETTINGS_MODULE} beat --pidfile= -l ERROR"
+command = nice -n 1 /bin/bash -c "${MAYAN_PYTHON_BIN_DIR}celery -A mayan beat --pidfile= -l ERROR"
 killasgroup = true
 numprocs = 1
 priority = 998

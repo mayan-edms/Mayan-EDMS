@@ -2,8 +2,9 @@ from __future__ import unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 
-from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
+
+from mayan.apps.rest_api import generics
 
 from .classes import Template
 from .serializers import ContentTypeSerializer, TemplateSerializer

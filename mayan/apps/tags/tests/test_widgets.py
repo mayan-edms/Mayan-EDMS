@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.encoding import force_text
 
-from mayan.apps.documents.tests import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.mixins import DocumentViewTestMixin
 from mayan.apps.documents.permissions import permission_document_view
 
@@ -11,7 +11,9 @@ from ..permissions import permission_tag_view
 from .mixins import TagTestMixin
 
 
-class DocumentTagHTMLWidgetTestCase(DocumentViewTestMixin, TagTestMixin, GenericDocumentViewTestCase):
+class DocumentTagHTMLWidgetTestCase(
+    DocumentViewTestMixin, TagTestMixin, GenericDocumentViewTestCase
+):
     def test_document_tags_widget_no_permissions(self):
         self._create_test_tag()
 

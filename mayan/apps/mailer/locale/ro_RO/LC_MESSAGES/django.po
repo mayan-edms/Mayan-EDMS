@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:15-0400\n"
-"PO-Revision-Date: 2019-10-29 12:27+0000\n"
+"POT-Creation-Date: 2019-12-09 00:33-0400\n"
+"PO-Revision-Date: 2019-12-03 11:01+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Mesaj"
 msgid "Null backend"
 msgstr "Backend vid"
 
-#: events.py:7 permissions.py:7 queues.py:8 settings.py:11
+#: events.py:7 permissions.py:7 queues.py:8 settings.py:12
 msgid "Mailing"
 msgstr "Corespondență electonică"
 
@@ -52,11 +52,11 @@ msgstr "Adresa de e-mail a destinatarului. Pot fi mai multe adrese separate prin
 msgid "Email address"
 msgstr "Adresa de email"
 
-#: forms.py:64
+#: forms.py:64 workflow_actions.py:40
 msgid "Subject"
 msgstr "Subiect"
 
-#: forms.py:66
+#: forms.py:66 workflow_actions.py:49
 msgid "Body"
 msgstr "Corp"
 
@@ -64,7 +64,7 @@ msgstr "Corp"
 msgid "The email profile that will be used to send this email."
 msgstr "Profilul de e-mail care va fi folosit pentru a trimite acest e-mail."
 
-#: forms.py:71 views.py:239
+#: forms.py:71 views.py:239 workflow_actions.py:22
 msgid "Mailing profile"
 msgstr "Profilul de corespondență"
 
@@ -121,6 +121,10 @@ msgid ""
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr "Atașat la acest e-mail este documentul: {{document}}\n\n --------\n Acest e-mail a fost trimis de la %(project_title)s (%(project_website)s)"
 
+#: literals.py:11
+msgid "Document: {{ document }}"
+msgstr "Documentul: {{document}}"
+
 #: literals.py:13
 #, python-format
 msgid ""
@@ -129,6 +133,10 @@ msgid ""
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr "Pentru a accesa acest document, faceți clic pe următorul link: {{link}}\n\n--------\n Acest e-mail a fost trimis de la %(project_title)s (%(project_website)s)"
+
+#: literals.py:17
+msgid "Link for document: {{ document }}"
+msgstr "Link pentru documentul: {{document}}"
 
 #: mailers.py:23 mailers.py:112
 msgid "From"
@@ -315,29 +323,21 @@ msgstr "Utilizați un profil de corespondență"
 msgid "Send document"
 msgstr "Trimiteți un document"
 
-#: settings.py:14
-msgid "Link for document: {{ document }}"
-msgstr "Link pentru documentul: {{document}}"
-
-#: settings.py:15
-msgid "Template for the document link email form subject line."
-msgstr "Șablon pentru subiectul liniei de e-mail a documentului."
-
-#: settings.py:20
-msgid "Template for the document link email form body text. Can include HTML."
-msgstr "Șablon pentru corpul formularul de e-mail pentru link-ul documentului. Poate include HTML."
-
-#: settings.py:24
-msgid "Document: {{ document }}"
-msgstr "Documentul: {{document}}"
-
-#: settings.py:25
+#: settings.py:16
 msgid "Template for the document email form subject line."
 msgstr "Șablon pentru subiectul liniei de subiecte a documentului."
 
-#: settings.py:30
+#: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
 msgstr "Șablon pentru textul corpului mail-ului. Poate include HTML."
+
+#: settings.py:26
+msgid "Template for the document link email form subject line."
+msgstr "Șablon pentru subiectul liniei de e-mail a documentului."
+
+#: settings.py:31
+msgid "Template for the document link email form body text. Can include HTML."
+msgstr "Șablon pentru corpul formularul de e-mail pentru link-ul documentului. Poate include HTML."
 
 #: validators.py:14
 #, python-format
@@ -414,3 +414,45 @@ msgstr "E-mail de testare trimis."
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Testare profil de poștă electronică: %s"
+
+#: workflow_actions.py:24
+msgid "Mailing profile to use when sending the email."
+msgstr "Profil de corespondență pe care îl folosiți la trimiterea e-mailului."
+
+#: workflow_actions.py:29
+msgid "Recipient"
+msgstr "Destinatar"
+
+#: workflow_actions.py:32
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
+msgstr "Adresa de e-mail a destinatarului. Pot fi mai multe adrese separate prin virgulă sau punct și virgulă. Un șablon poate fi utilizat pentru referința proprietăților documentului."
+
+#: workflow_actions.py:43
+msgid "Subject of the email. Can be a string or a template."
+msgstr "Subiectul e-mailului. Poate fi un șir sau un șablon."
+
+#: workflow_actions.py:52
+msgid "Body of the email to send. Can be a string or a template."
+msgstr "Corpul e-mailului de trimis. Poate fi un șir sau un șablon."
+
+#: workflow_actions.py:59
+msgid "Send email"
+msgstr "Trimite email"
+
+#: workflow_actions.py:74
+#, python-format
+msgid "Recipient template error: %s"
+msgstr "Eroarea șablonului destinatarului: %s"
+
+#: workflow_actions.py:85
+#, python-format
+msgid "Subject template error: %s"
+msgstr "Eroare șablon subiect: %s"
+
+#: workflow_actions.py:96
+#, python-format
+msgid "Body template error: %s"
+msgstr "Eroare de model de corp: %s"

@@ -12,10 +12,10 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.forms import DynamicModelForm
 
 from .classes import WorkflowAction
+from .fields import WorfklowImageField
 from .models import (
     Workflow, WorkflowState, WorkflowStateAction, WorkflowTransition
 )
-from .widgets import WorkflowImageWidget
 
 
 class WorkflowActionSelectionForm(forms.Form):
@@ -165,32 +165,25 @@ WorkflowTransitionTriggerEventRelationshipFormSet = formset_factory(
 )
 
 
-class WorkflowInstanceTransitionForm(forms.Form):
+class WorkflowInstanceTransitionSelectForm(forms.Form):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
         workflow_instance = kwargs.pop('workflow_instance')
-        super(WorkflowInstanceTransitionForm, self).__init__(*args, **kwargs)
+        super(WorkflowInstanceTransitionSelectForm, self).__init__(*args, **kwargs)
         self.fields[
             'transition'
         ].queryset = workflow_instance.get_transition_choices(_user=user)
 
     transition = forms.ModelChoiceField(
+        help_text=_('Select a transition to execute in the next step.'),
         label=_('Transition'), queryset=WorkflowTransition.objects.none()
-    )
-    comment = forms.CharField(
-        help_text=_('Optional comment to attach to the transition.'),
-        label=_('Comment'), required=False, widget=forms.widgets.Textarea(
-            attrs={
-                'rows': 3
-            }
-        )
     )
 
 
 class WorkflowPreviewForm(forms.Form):
-    preview = forms.CharField(widget=WorkflowImageWidget())
+    workflow = WorfklowImageField()
 
     def __init__(self, *args, **kwargs):
         instance = kwargs.pop('instance', None)
         super(WorkflowPreviewForm, self).__init__(*args, **kwargs)
-        self.fields['preview'].initial = instance
+        self.fields['workflow'].initial = instance

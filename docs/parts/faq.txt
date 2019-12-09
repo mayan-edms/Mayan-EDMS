@@ -1,0 +1,231 @@
+===
+FAQ
+===
+
+Non technical
+=============
+
+Contact
+-------
+
+Can I contact members of the development team?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Direct access to members of the development team is reserved for clients
+of a support or consultation contract.
+
+
+I can't pay for support/consultation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A community forum is available at https://forum.mayan-edms.com. Members of
+the development team visit the forum on occasions and might answer some
+questions on a voluntary basis.
+
+
+I found a bug
+^^^^^^^^^^^^^
+
+For bugs, open an issue at |SOURCE_CODE_ISSUES|.
+
+
+I found a security issue
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Open an issue at |SOURCE_CODE_ISSUES| and mark it as
+Confidential. Allow us at least 48 hours to find and release a fix
+for the issue before submitting it to the CVE database.
+
+
+I want to join the development team
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Perfect! We need all the help we can get. Tell us where we can see what you've
+done using Mayan EDMS. It could be a fork, a new UI, an API client, a custom app,
+or anything else that you think will be able to evidence your dominion over the
+codebase.
+
+
+I submitted an issue and it has not been fixed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There are many reason an issue might not get resolved and remain open for an
+extended period of time. We document on the issue itself the progress and when
+resolved will reference what commit fixed it and the version or approximate time
+for the code to make it into a production release. Some reason why issues remain
+open with no resolution are:
+
+- It was not an issue with the code. It happens that sometimes the problem lies
+  with the operating system, the filesystem being used, the platform or packaging
+  method.
+- It was not an issue but a question or a comment. The issue system is for reporting
+  problems with the code. That said, we sometimes answer questions submitted as
+  issues. For questions or discussions use the community forum.
+- We are not able to reproduce the issue. We need to be able to recreate the
+  conditions that trigger the issue so that we can pinpoint the cause. After that
+  we create a test to make sure the issue is really fixed. Some issues can
+  be triggered manually easily but are hard to trigger programatically.
+- The issue is not clearly explained. Issue descriptions like: "It doesn't work",
+  or "It showed an error but I forgot to write it down" are almost impossible to
+  resolve.
+- We understand the cause of the problem but don't yet a solution to implement.
+  We have studied the issue and have been able to reproduce it, but have not
+  reached a consensus on how it should be fixed. Could be that the solution is
+  beyond the collective expertise of the development team or that a design
+  decision of big impact is needed before code changes can be implemented.
+- The issue is no real. The issue might be for an obsolete version. It could be
+  for a fork or a program that is not developed by us. Sometimes they are just
+  fake issues.
+
+
+I submitted a merge request and has not been merged
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Merge requests must follow the development standards of the code as close a
+possible. They must also be atomic and as small as possible. The code must also
+not change the behavior of the project. We can't accept merge request that
+customize it in some way based on your own preferences or needs.
+
+
+Distribution
+------------
+
+Can I distribute Mayan EDMS under another name and/or logo?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Yes, the terms of the license allow this. However, the copyright notice must
+remain intact. If you use an alternate name, a notice indicating that yours is
+a derived product from Mayan EDMS must be included. You must indicate to your
+clients that their act of purchasing Mayan EDMS from you is an independent
+action and in no way legally binds Mayan EDMS LLC, the Mayan EDMS copyright
+holders, or the core team in any way.
+
+
+Sale
+----
+
+Can I sell Mayan EDMS as is or under another name?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Yes, selling Mayan EDMS is permitted. However, the copyright notice must
+remain intact. If you use an alternate name, a notice indicating that yours is
+a derived product from Mayan EDMS must be included. You must indicate to your
+clients that their act of purchasing Mayan EDMS from you is an independent
+action and in no way legally binds Mayan EDMS LLC, the Mayan EDMS copyright
+holder, or the core team in any way. Note that when you sell Mayan EDMS,
+you are selling your service and not a license, rights, or privileges of any
+type.
+
+
+Can I get exclusive distribution rights for my region?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+No, the terms of the license make the project freely available to everyone.
+Restricting distribution or sale would conflict with the license terms. This
+would possible for a commercial version of Mayan EDMS with separate licensing
+terms.
+
+
+Is there a commercial partnership program?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There was at one time but was retired. If there is interest it could be
+reinstated in the future.
+
+
+What is an EDMS?
+^^^^^^^^^^^^^^^^
+
+EDMS stands for Electronic Document Management System and it is an more modern
+version of a DMS. A DMS is a Document Management System. A system to store,
+sort, and categorize printed documents. It is an electronic filing system.
+Besides images of scanned documents, an EDMS also support electronic documents,
+documents created in a computer that may or may not have been printed.
+While they may look similar, EDMS/DMS is not to be confused with CMS
+(Content Management System), IM (Information Management), KM
+(Knowledge Management), RM (Record management), ECM (Enterprise Content
+Management). Mayan EDMS started initially as a strict EDMS project but has
+been expanding its feature set and provide some functionality from other
+system types.
+
+
+Technical
+=========
+
+Database managers
+-----------------
+
+PostgreSQL vs. MySQL
+^^^^^^^^^^^^^^^^^^^^
+
+Since Django abstracts database operations from a functional point of view
+Mayan EDMS will behave exactly the same either way. The only concern would be
+that MySQL doesn't support transactions for schema modifying commands. The only
+moment this could cause problems is when running South migrations during
+upgrades, if a migration fails the database structure is left in a transitory
+state and has to be reverted manually before trying again.
+
+
+LDAP
+----
+
+How to do LDAP authentication
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A sample settings file called ldap_connection_settings.py is included in the
+contrib/settings/ folder of the repository showing how to setup LDAP
+authentication. This file can be found on the web at:
+|SOURCE_CODE_REPOSITORY|blob/master/contrib/settings/ldap_connection_settings.py.
+This is a community contributed file. Use the Python settings file method to
+use this file.
+
+
+Operating systems
+-----------------
+
+How to install Mayan EDMS in Windows operating systems?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Mayan EDMS doesn't run natively on Windows. The best way is to use a virtual
+machine product, install Ubuntu or Debian, and proceed with the standard
+deployment instructions or use Docker inside a GNU/Linux virtual machine.
+
+
+Python
+------
+
+Is virtualenv required as specified in the documentation?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is not necessary, but it's a strong recommendation mainly to reduce
+dependency conflicts by isolation from the main Python system install. If not
+using a virtualenv, pip would install Mayan's dependencies globally coming in
+conflict with the distribution's prepackaged Python libraries messing other
+Django projects or Python programs, or another later Python/Django project
+dependencies coming into conflict causing Mayan to stop working for no
+apparent reason.
+
+
+Does Mayan EDMS work with Python 3?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Yes, version 3.3 ships with Python 3.7 support. Support for Python 2 will
+be removed in version 4.0.
+
+
+How to upgrade an existing Python 2 virtualenv
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use::
+
+    virtualenv <existing directory> -p <Python 3 binary path>
+
+If you followed the deployment instructions, the command line would be::
+
+    virtualenv /opt/mayan-edms -p /usr/bin/python3
+
+If using a dedicated user account for Mayan EDMS::
+
+    sudo -u <username> virtualenv /opt/mayan-edms -p /usr/bin/python3
+
+

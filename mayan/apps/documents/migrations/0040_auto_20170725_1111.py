@@ -13,7 +13,8 @@ class Migration(migrations.Migration):
         migrations.AlterModelOptions(
             name='documentversion',
             options={
-                'ordering': ('timestamp',), 'verbose_name': 'Document version',
+                'ordering': ('timestamp',),
+                'verbose_name': 'Document version',
                 'verbose_name_plural': 'Document version'
             },
         ),

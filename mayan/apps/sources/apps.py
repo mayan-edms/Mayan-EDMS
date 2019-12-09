@@ -16,8 +16,8 @@ from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import StagingFile
 from .handlers import (
-    handler_copy_transformations_to_version, handler_create_default_document_source,
-    handler_initialize_periodic_tasks
+    handler_copy_transformations_to_version,
+    handler_create_default_document_source, handler_initialize_periodic_tasks
 )
 from .links import (
     link_document_create_multiple, link_setup_sources,
@@ -144,8 +144,9 @@ class SourcesApp(MayanAppConfig):
         menu_secondary.bind_links(
             links=(link_document_version_upload,),
             sources=(
-                'documents:document_version_list', 'documents:upload_version',
-                'documents:document_version_revert'
+                'documents:document_version_list',
+                'documents:document_version_revert',
+                'sources:document_version_upload'
             )
         )
 

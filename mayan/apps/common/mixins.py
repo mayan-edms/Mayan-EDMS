@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import messages
+from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ImproperlyConfigured, PermissionDenied
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -8,6 +9,7 @@ from django.urls import reverse
 from django.utils.translation import ungettext, ugettext_lazy as _
 from django.views.generic.detail import SingleObjectMixin
 
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.permissions import Permission
 
@@ -15,6 +17,28 @@ from .exceptions import ActionError
 from .forms import DynamicForm
 from .literals import PK_LIST_SEPARATOR
 from .settings import setting_home_view
+
+
+class ContentTypeViewMixin(object):
+    """
+    This mixin makes it easier for views to retrieve a content type from
+    the URL pattern.
+    """
+    content_type_url_kw_args = {
+        'app_label': 'app_label',
+        'model_name': 'model'
+    }
+
+    def get_content_type(self):
+        return get_object_or_404(
+            klass=ContentType,
+            app_label=self.kwargs[
+                self.content_type_url_kw_args['app_label']
+            ],
+            model=self.kwargs[
+                self.content_type_url_kw_args['model_name']
+            ]
+        )
 
 
 class DeleteExtraDataMixin(object):
@@ -103,7 +127,15 @@ class ExternalObjectMixin(object):
                 'get_external_object_queryset() method.'
             )
 
-        return self.external_object_queryset or self.external_object_class.objects.all()
+        queryset = self.external_object_queryset
+
+        if not queryset:
+            manager = ModelPermission.get_manager(
+                model=self.external_object_class
+            )
+            queryset = manager.all()
+
+        return queryset
 
     def get_external_object_queryset_filtered(self):
         queryset = self.get_external_object_queryset()
@@ -116,6 +148,20 @@ class ExternalObjectMixin(object):
             )
 
         return queryset
+
+
+class ExternalContentTypeObjectMixin(ContentTypeViewMixin, ExternalObjectMixin):
+    """
+    Mixin to retrieve an external object by content type from the URL pattern.
+    """
+    external_object_pk_url_kwarg = 'object_id'
+
+    def get_external_object_queryset(self):
+        content_type = self.get_content_type()
+        self.external_object_class = content_type.model_class()
+        return super(
+            ExternalContentTypeObjectMixin, self
+        ).get_external_object_queryset()
 
 
 class FormExtraKwargsMixin(object):
@@ -250,9 +296,9 @@ class ObjectActionMixin(object):
 
     def get_success_message(self, count):
         return ungettext(
-            self.success_message,
-            self.success_message_plural,
-            count
+            singular=self.success_message,
+            plural=self.success_message_plural,
+            number=count
         ) % {
             'count': count,
         }
@@ -271,14 +317,15 @@ class ObjectActionMixin(object):
                 pass
             except ActionError:
                 messages.error(
-                    self.request, self.error_message % {'instance': instance}
+                    message=self.error_message % {'instance': instance},
+                    request=self.request
                 )
             else:
                 self.action_count += 1
 
         messages.success(
-            self.request,
-            self.get_success_message(count=self.action_count)
+            message=self.get_success_message(count=self.action_count),
+            request=self.request
         )
 
 
@@ -383,6 +430,21 @@ class RestrictedQuerysetMixin(object):
     object_permission = None
     source_queryset = None
 
+    def get_object_permission(self):
+        return self.object_permission
+
+    def get_queryset(self):
+        queryset = self.get_source_queryset()
+        object_permission = self.get_object_permission()
+
+        if object_permission:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=object_permission, queryset=queryset,
+                user=self.request.user
+            )
+
+        return queryset
+
     def get_source_queryset(self):
         if self.source_queryset is None:
             if self.model:
@@ -398,17 +460,6 @@ class RestrictedQuerysetMixin(object):
 
         return self.source_queryset.all()
 
-    def get_queryset(self):
-        queryset = self.get_source_queryset()
-
-        if self.object_permission:
-            queryset = AccessControlList.objects.restrict_queryset(
-                permission=self.object_permission, queryset=queryset,
-                user=self.request.user
-            )
-
-        return queryset
-
 
 class ViewPermissionCheckMixin(object):
     """
@@ -420,11 +471,16 @@ class ViewPermissionCheckMixin(object):
     view_permission = None
 
     def dispatch(self, request, *args, **kwargs):
-        if self.view_permission:
+        view_permission = self.get_view_permission()
+        if view_permission:
             Permission.check_user_permissions(
-                permissions=(self.view_permission,), user=self.request.user
+                permissions=(view_permission,),
+                user=self.request.user
             )
 
         return super(
             ViewPermissionCheckMixin, self
         ).dispatch(request, *args, **kwargs)
+
+    def get_view_permission(self):
+        return self.view_permission

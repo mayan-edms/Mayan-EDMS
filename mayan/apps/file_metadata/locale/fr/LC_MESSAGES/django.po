@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:14-0400\n"
+"POT-Creation-Date: 2019-12-09 00:32-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2019\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -31,7 +31,7 @@ msgid "Label"
 msgstr "Libellé"
 
 #: apps.py:52 events.py:8 links.py:18 permissions.py:7 queues.py:9
-#: settings.py:9
+#: settings.py:11
 msgid "File metadata"
 msgstr "Métadonnées du fichier"
 
@@ -58,7 +58,7 @@ msgstr ""
 "Bibliothèque et programme pour lire et écrire des métadonnées dans des "
 "fichiers multimédia."
 
-#: drivers/exiftool.py:26
+#: drivers/exiftool.py:20
 msgid "EXIF Tool"
 msgstr "Outil EXIF"
 
@@ -189,13 +189,13 @@ msgstr "Voir les métadonnées du fichier"
 msgid "Process document version"
 msgstr ""
 
-#: settings.py:14
+#: settings.py:18
 msgid ""
 "Set new document types to perform file metadata processing automatically by "
 "default."
 msgstr ""
 
-#: settings.py:25
+#: settings.py:24
 msgid "Arguments to pass to the drivers."
 msgstr "Arguments à transmettre au pilote."
 

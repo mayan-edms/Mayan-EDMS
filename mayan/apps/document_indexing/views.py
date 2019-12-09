@@ -17,7 +17,7 @@ from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_edit, permission_document_view
 )
-from mayan.apps.documents.views import DocumentListView
+from mayan.apps.documents.views.document_views import DocumentListView
 
 from .events import event_index_template_edited
 from .forms import IndexTemplateFilteredForm, IndexTemplateNodeForm
@@ -176,7 +176,7 @@ class SetupIndexRebuildView(ConfirmView):
         )
 
         messages.success(
-            message='Index queued for rebuild.', request=self.request
+            message=_('Index queued for rebuild.'), request=self.request
         )
 
 
@@ -309,6 +309,7 @@ class IndexListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_links': True,
+            'hide_object': True,
             'no_results_icon': icon_index,
             'no_results_main_link': link_index_template_create.resolve(
                 context=RequestContext(request=self.request)
@@ -468,6 +469,42 @@ class IndexesRebuildView(FormView):
 
     def get_form_extra_kwargs(self):
         return {
+            'user': self.request.user
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(viewname='common:tools_list')
+
+
+class IndexesResetView(FormView):
+    extra_context = {
+        'title': _('Reset indexes'),
+    }
+    form_class = IndexTemplateFilteredForm
+
+    def form_valid(self, form):
+        count = 0
+        for index in form.cleaned_data['index_templates']:
+            index.instance_root.delete()
+            count += 1
+
+        messages.success(
+            message=ungettext(
+                singular='%(count)d index reset.',
+                plural='%(count)d indexes reset.',
+                number=count
+            ) % {
+                'count': count,
+            }, request=self.request
+        )
+
+        return super(IndexesResetView, self).form_valid(form=form)
+
+    def get_form_extra_kwargs(self):
+        return {
+            'help_text': _(
+                'Index templates for which their instances will be deleted.'
+            ),
             'user': self.request.user
         }
 

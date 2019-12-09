@@ -1,0 +1,47 @@
+.. _docker_backups:
+
+==================
+Performing backups
+==================
+
+#. Document files
+
+   To backup the existing data, stop the image and copy the content of the volume.
+   For the example::
+
+       docker run -d --name mayan-edms --restart=always -p 80:8000 \
+       -v /docker-volumes/mayan:/var/lib/mayan \
+       -v /opt/scanned_files:/scanned_files mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
+
+   That would be the ``/docker-volumes/mayan folder``::
+
+       sudo tar -zcvf backup.tar.gz /docker-volumes/mayan
+       sudo chown `whoami` backup.tar.gz
+
+#. Database
+
+   If using an external PostgreSQL or MySQL database or database containers, these
+   too need to be backed up using their respective procedures. A simple solution
+   is to copy the entire database container volume after the container has
+   been stopped.
+
+   - PostgreSQL: https://www.postgresql.org/docs/current/backup-dump.html
+   - MySQL: https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html
+
+
+=======================
+Restoring from a backup
+=======================
+
+
+#. Document files
+
+   Uncompress the backup archive in the original docker volume using::
+
+       sudo tar -xvzf backup.tar.gz -C /
+
+
+#. Database
+
+   - PostgreSQL: https://www.postgresql.org/docs/current/backup-dump.html
+   - MySQL: https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html

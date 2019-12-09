@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 
-from mayan.apps.common.tests import BaseTestCase
-from mayan.apps.documents.tests import DocumentTestMixin, TEST_HYBRID_DOCUMENT
+from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
+from mayan.apps.documents.tests.mixins import DocumentTestMixin
 
 from ..parsers import PopplerParser
 

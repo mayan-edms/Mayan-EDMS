@@ -5,8 +5,8 @@ from django.utils.encoding import force_text
 from rest_framework import status
 
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.tests import DocumentTestMixin
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models import Tag
 from ..permissions import (
@@ -115,7 +115,9 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         self.assertNotEqual(self.test_tag.color, tag_color)
 
 
-class TagDocumentAPIViewTestCase(DocumentTestMixin, TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
+class TagDocumentAPIViewTestCase(
+    DocumentTestMixin, TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase
+):
     auto_upload_document = False
 
     def test_tag_document_list_view_no_access(self):
@@ -199,7 +201,6 @@ class TagDocumentAPIViewTestCase(DocumentTestMixin, TagAPIViewTestMixin, TagTest
         response = self._request_test_document_attach_tag_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        # TODO: This should be false. Update API View.
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
     def test_document_attach_tag_view_with_full_access(self):

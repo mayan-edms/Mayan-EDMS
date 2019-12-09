@@ -16,7 +16,7 @@ from mayan.apps.common.generics import (
 from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.views import DocumentListView
+from mayan.apps.documents.views.document_views import DocumentListView
 
 from .forms import CabinetListForm
 from .icons import icon_cabinet

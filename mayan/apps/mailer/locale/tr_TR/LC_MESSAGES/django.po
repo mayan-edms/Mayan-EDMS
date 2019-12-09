@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:15-0400\n"
-"PO-Revision-Date: 2019-10-27 19:04+0000\n"
+"POT-Creation-Date: 2019-12-09 00:33-0400\n"
+"PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "Mesaj"
 msgid "Null backend"
 msgstr ""
 
-#: events.py:7 permissions.py:7 queues.py:8 settings.py:11
+#: events.py:7 permissions.py:7 queues.py:8 settings.py:12
 msgid "Mailing"
 msgstr "Mail atma"
 
@@ -53,11 +53,11 @@ msgstr "Alıcının e-posta adresi. Virgülle veya noktalı virgülle ayrılmı�
 msgid "Email address"
 msgstr "E-posta adresi"
 
-#: forms.py:64
+#: forms.py:64 workflow_actions.py:40
 msgid "Subject"
 msgstr "Konu"
 
-#: forms.py:66
+#: forms.py:66 workflow_actions.py:49
 msgid "Body"
 msgstr "Gövde"
 
@@ -65,7 +65,7 @@ msgstr "Gövde"
 msgid "The email profile that will be used to send this email."
 msgstr "Bu e-postayı göndermek için kullanılacak e-posta profili."
 
-#: forms.py:71 views.py:239
+#: forms.py:71 views.py:239 workflow_actions.py:22
 msgid "Mailing profile"
 msgstr "Posta profili"
 
@@ -122,6 +122,10 @@ msgid ""
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr "Bu e-postaya şu belge eklenmiştir: {{document}}\n\n --------\n Bu e-posta, %(project_title)s (%(project_website)s) adresinden gönderildi."
 
+#: literals.py:11
+msgid "Document: {{ document }}"
+msgstr "Doküman: {{document}}"
+
 #: literals.py:13
 #, python-format
 msgid ""
@@ -130,6 +134,10 @@ msgid ""
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr "Bu belgeye erişmek için şu bağlantıyı tıklayın: {{link}}\n\n--------\n Bu e-posta, %(project_title)s (%(project_website)s) adresinden gönderildi."
+
+#: literals.py:17
+msgid "Link for document: {{ document }}"
+msgstr "Doküman bağlantısı: {{document}}"
 
 #: mailers.py:23 mailers.py:112
 msgid "From"
@@ -316,28 +324,20 @@ msgstr ""
 msgid "Send document"
 msgstr "Belgeyi gönder"
 
-#: settings.py:14
-msgid "Link for document: {{ document }}"
-msgstr "Doküman bağlantısı: {{document}}"
-
-#: settings.py:15
-msgid "Template for the document link email form subject line."
-msgstr "Belge bağlantı e-posta formu konu satırı için şablon."
-
-#: settings.py:20
-msgid "Template for the document link email form body text. Can include HTML."
-msgstr ""
-
-#: settings.py:24
-msgid "Document: {{ document }}"
-msgstr "Doküman: {{document}}"
-
-#: settings.py:25
+#: settings.py:16
 msgid "Template for the document email form subject line."
 msgstr "Belge e-posta formu konu satırı için şablon."
 
-#: settings.py:30
+#: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
+msgstr ""
+
+#: settings.py:26
+msgid "Template for the document link email form subject line."
+msgstr "Belge bağlantı e-posta formu konu satırı için şablon."
+
+#: settings.py:31
+msgid "Template for the document link email form body text. Can include HTML."
 msgstr ""
 
 #: validators.py:14
@@ -415,3 +415,45 @@ msgstr ""
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Test posta profili: %s"
+
+#: workflow_actions.py:24
+msgid "Mailing profile to use when sending the email."
+msgstr ""
+
+#: workflow_actions.py:29
+msgid "Recipient"
+msgstr ""
+
+#: workflow_actions.py:32
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
+msgstr ""
+
+#: workflow_actions.py:43
+msgid "Subject of the email. Can be a string or a template."
+msgstr ""
+
+#: workflow_actions.py:52
+msgid "Body of the email to send. Can be a string or a template."
+msgstr ""
+
+#: workflow_actions.py:59
+msgid "Send email"
+msgstr ""
+
+#: workflow_actions.py:74
+#, python-format
+msgid "Recipient template error: %s"
+msgstr ""
+
+#: workflow_actions.py:85
+#, python-format
+msgid "Subject template error: %s"
+msgstr ""
+
+#: workflow_actions.py:96
+#, python-format
+msgid "Body template error: %s"
+msgstr ""

@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import logging
 import os
 
+from django.core.files import File
 from django.db import models
 
 from mayan.apps.django_gpg.exceptions import DecryptionError
@@ -11,6 +12,29 @@ from mayan.apps.documents.models import DocumentVersion
 from mayan.apps.storage.utils import mkstemp
 
 logger = logging.getLogger(__name__)
+
+
+class DetachedSignatureManager(models.Manager):
+    def sign_document_version(
+        self, document_version, key, passphrase=None, user=None
+    ):
+        temporary_file_object, temporary_filename = mkstemp()
+
+        try:
+            with document_version.open() as file_object:
+                key.sign_file(
+                    binary=True, detached=True, file_object=file_object,
+                    output=temporary_filename, passphrase=passphrase
+                )
+        except Exception:
+            raise
+        else:
+            return self.create(
+                document_version=document_version,
+                signature_file=File(temporary_file_object)
+            )
+        finally:
+            os.unlink(temporary_filename)
 
 
 class EmbeddedSignatureManager(models.Manager):
@@ -28,7 +52,9 @@ class EmbeddedSignatureManager(models.Manager):
         else:
             return file_object
 
-    def sign_document_version(self, document_version, key, passphrase=None, user=None):
+    def sign_document_version(
+        self, document_version, key, passphrase=None, user=None
+    ):
         temporary_file_object, temporary_filename = mkstemp()
 
         try:
@@ -44,10 +70,12 @@ class EmbeddedSignatureManager(models.Manager):
                 new_version = document_version.document.new_version(
                     file_object=file_object, _user=user
                 )
+            # This is a potential race condition but we have not way
+            # to access the final signature at this point.
+            signature = self.filter(document_version=new_version).first()
+            return signature or self.none()
         finally:
             os.unlink(temporary_filename)
-
-        return new_version
 
     def unsigned_document_versions(self):
         return DocumentVersion.objects.exclude(

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:13-0400\n"
+"POT-Creation-Date: 2019-12-09 00:31-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Adek Lanin, 2019\n"
 "Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
@@ -275,11 +275,11 @@ msgid ""
 "every other one."
 msgstr ""
 
-#: management/commands/installjavascript.py:15
+#: management/commands/installdependencies.py:15
 msgid "Process a specific app."
 msgstr ""
 
-#: management/commands/installjavascript.py:19
+#: management/commands/installdependencies.py:19
 msgid "Force installation even if already installed."
 msgstr ""
 

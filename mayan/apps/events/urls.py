@@ -14,43 +14,54 @@ from .views import (
     VerbEventListView
 )
 
-urlpatterns = [
-    url(regex=r'^all/$', view=EventListView.as_view(), name='events_list'),
+urlpatterns_events = [
+    url(regex=r'^events/$', view=EventListView.as_view(), name='events_list'),
     url(
-        regex=r'^for/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/$',
+        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/events/$',
         view=ObjectEventListView.as_view(), name='events_for_object'
     ),
     url(
-        regex=r'^by_verb/(?P<verb>[\w\-\.]+)/$',
+        regex=r'^verbs/(?P<verb>[\w\-\.]+)/$',
         view=VerbEventListView.as_view(), name='events_by_verb'
-    ),
-    url(
-        regex=r'^notifications/(?P<pk>\d+)/mark_read/$',
-        view=NotificationMarkRead.as_view(), name='notification_mark_read'
-    ),
-    url(
-        regex=r'^notifications/all/mark_read/$',
-        view=NotificationMarkReadAll.as_view(), name='notification_mark_read_all'
     ),
     url(
         regex=r'^user/events/$', name='current_user_events',
         view=CurrentUserEventListView.as_view()
     ),
+]
+
+urlpatterns_notification = [
     url(
-        regex=r'^user/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/subscriptions/$',
-        view=ObjectEventTypeSubscriptionListView.as_view(),
-        name='object_event_types_user_subcriptions_list'
+        regex=r'^user/notifications/$', view=NotificationListView.as_view(),
+        name='user_notifications_list'
     ),
+    url(
+        regex=r'^user/notifications/(?P<pk>\d+)/mark_read/$',
+        view=NotificationMarkRead.as_view(), name='notification_mark_read'
+    ),
+    url(
+        regex=r'^user/notifications/all/mark_read/$',
+        view=NotificationMarkReadAll.as_view(), name='notification_mark_read_all'
+    ),
+]
+
+urlpatterns_subscriptions = [
     url(
         regex=r'^user/event_types/subscriptions/$',
         view=EventTypeSubscriptionListView.as_view(),
         name='event_types_user_subcriptions_list'
     ),
     url(
-        regex=r'^user/notifications/$', view=NotificationListView.as_view(),
-        name='user_notifications_list'
+        regex=r'^user/object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/subscriptions/$',
+        view=ObjectEventTypeSubscriptionListView.as_view(),
+        name='object_event_types_user_subcriptions_list'
     ),
 ]
+
+urlpatterns = []
+urlpatterns.extend(urlpatterns_events)
+urlpatterns.extend(urlpatterns_notification)
+urlpatterns.extend(urlpatterns_subscriptions)
 
 api_urls = [
     url(

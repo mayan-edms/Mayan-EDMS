@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:15-0400\n"
+"POT-Creation-Date: 2019-12-09 00:34-0400\n"
 "PO-Revision-Date: 2019-10-18 09:07+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:15 links.py:21
-#: permissions.py:7 queues.py:8 settings.py:7
+#: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:20 links.py:26
+#: permissions.py:7 queues.py:8 settings.py:10
 msgid "OCR"
 msgstr "OCR"
 
@@ -31,7 +31,7 @@ msgstr "Datum a čas"
 msgid "Result"
 msgstr "Výsledek"
 
-#: backends/tesseract.py:95
+#: backends/tesseract.py:90
 msgid "Tesseract OCR not found."
 msgstr "Tesseract OCR nebyl nalezen."
 
@@ -66,27 +66,27 @@ msgstr "Obsah"
 msgid "Page %(page_number)d"
 msgstr "Strana %(page_number)d"
 
-#: links.py:27 links.py:32
+#: links.py:32 links.py:37
 msgid "Delete OCR content"
 msgstr "Smazat obsah OCR"
 
-#: links.py:38 links.py:43
+#: links.py:43 links.py:48
 msgid "Submit for OCR"
 msgstr "Odeslat do OCR"
 
-#: links.py:48
+#: links.py:53
 msgid "Setup OCR"
 msgstr "Nastavení OCR"
 
-#: links.py:53
+#: links.py:58
 msgid "OCR documents per type"
 msgstr "Dokumenty OCR podle typu"
 
-#: links.py:58 links.py:64 views.py:185
+#: links.py:63 links.py:69 views.py:185
 msgid "OCR errors"
 msgstr "Chyby OCR"
 
-#: links.py:70
+#: links.py:75
 msgid "Download OCR text"
 msgstr "Stáhněte si text OCR"
 
@@ -158,11 +158,11 @@ msgstr "Změna nastavení OCR pro typu dokumentu"
 msgid "Document version OCR"
 msgstr "OCR verze dokumnetu"
 
-#: settings.py:12
+#: settings.py:17
 msgid "Full path to the backend to be used to do OCR."
 msgstr "Úplná cesta k backendu, který se používá k provádění OCR."
 
-#: settings.py:21
+#: settings.py:26
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Nastavte nové typy dokumentů tak, aby standardně prováděly OCR."
 

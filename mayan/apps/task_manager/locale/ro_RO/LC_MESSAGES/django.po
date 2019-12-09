@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 11:16-0400\n"
+"POT-Creation-Date: 2019-12-09 00:35-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,90 +23,87 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:23 links.py:12 permissions.py:7
+#: apps.py:19 links.py:12 permissions.py:7
 msgid "Task manager"
 msgstr "Gestionar de sarcini"
 
-#: apps.py:31
+#: apps.py:27
 msgid "Label"
 msgstr "Etichetă"
 
-#: apps.py:34
+#: apps.py:30
 msgid "Name"
 msgstr "Nume"
 
-#: apps.py:37
+#: apps.py:33
 msgid "Default queue?"
 msgstr "Coadă implicită?"
 
-#: apps.py:41
+#: apps.py:37
 msgid "Is transient?"
 msgstr "Este tranzitorie?"
 
-#: apps.py:45
+#: apps.py:41
 msgid "Type"
 msgstr "Tip"
 
-#: apps.py:48
+#: apps.py:44
 msgid "Start time"
 msgstr "Timpul de începere"
 
-#: apps.py:51
+#: apps.py:47
 msgid "Host"
 msgstr "Gazdă"
 
-#: apps.py:55
+#: apps.py:51
 msgid "Arguments"
 msgstr "Argumente"
 
-#: apps.py:59
+#: apps.py:55
 msgid "Keyword arguments"
 msgstr "Argumentele cuvinte cheie"
 
-#: apps.py:63
+#: apps.py:59
 msgid "Worker process ID"
 msgstr "ID-ul procesului de lucru"
-
-#: links.py:16 views.py:15
-msgid "Background task queues"
-msgstr "Cozi de sarcini în fundal"
-
-#: links.py:20
-msgid "Active tasks"
-msgstr "Sarcini active"
-
-#: links.py:24
-msgid "Reserved tasks"
-msgstr "Sarcini rezervate"
-
-#: links.py:28
-msgid "Scheduled tasks"
-msgstr "Sarcini programate"
 
 #: permissions.py:10
 msgid "View tasks"
 msgstr "Vedeți sarcinile"
 
+#: settings.py:10
+msgid "Celery"
+msgstr "Celery"
+
+#: settings.py:15
+msgid ""
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
+msgstr ""
+"Implicit: \"amqp: //\". Adresa URL a brokerului implicit. Aceasta trebuie să"
+" fie o adresă URL sub forma: "
+"transport://userid:password@hostname:port/virtual_host Este necesar doar "
+"partea sistemului (transport: //), restul este opțional și are implicit "
+"valorile implicite pentru transport."
+
+#: settings.py:24
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
+msgstr ""
+"Implicit: niciun rezultat de backend activat în mod implicit. Backend-ul "
+"folosit pentru a stoca rezultatele sarcinilor (pietre funerare). Consultați "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend "
+
 #: tests/literals.py:5
 msgid "Test queue"
 msgstr "Coadă de așteptare de test"
 
-#: views.py:30
-#, python-format
-msgid "Active tasks in queue: %s"
-msgstr "Sarcini active în coadă: %s"
-
-#: views.py:42
-#, python-format
-msgid "Unable to retrieve task list; %s"
-msgstr "Imposibil de recuperat lista de sarcini; %s"
-
-#: views.py:56
-#, python-format
-msgid "Scheduled tasks in queue: %s"
-msgstr "Sarcinile programate în coadă: %s"
-
-#: views.py:68
-#, python-format
-msgid "Reserved tasks in queue: %s"
-msgstr "Sarcini rezervate în coadă: %s"
+#: views.py:14
+msgid "Background task queues"
+msgstr "Cozi de sarcini în fundal"

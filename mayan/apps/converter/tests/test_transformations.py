@@ -2,9 +2,8 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 
-from mayan.apps.documents.tests import GenericDocumentTestCase
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
 
-from ..models import Transformation
 from ..transformations import (
     BaseTransformation, TransformationCrop, TransformationLineArt,
     TransformationResize, TransformationRotate, TransformationRotate90,
@@ -24,6 +23,7 @@ from .literals import (
     TEST_TRANSFORMATION_ZOOM_CACHE_HASH,
     TEST_TRANSFORMATION_ZOOM_PERCENT,
 )
+from .mixins import LayerTestMixin
 
 
 class TransformationBaseTestCase(TestCase):
@@ -110,90 +110,89 @@ class TransformationBaseTestCase(TestCase):
         )
 
 
-class TransformationTestCase(GenericDocumentTestCase):
+class TransformationTestCase(LayerTestMixin, GenericDocumentTestCase):
     def test_crop_transformation_optional_arguments(self):
         self._silence_logger(name='mayan.apps.converter.managers')
 
         document_page = self.test_document.pages.first()
 
-        Transformation.objects.add_to_object(
-            obj=document_page, transformation=TransformationCrop,
+        self.test_layer.add_transformation_to(
+            obj=document_page, transformation_class=TransformationCrop,
             arguments={'top': '10'}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
     def test_crop_transformation_invalid_arguments(self):
         self._silence_logger(name='mayan.apps.converter.managers')
 
         document_page = self.test_document.pages.first()
 
-        Transformation.objects.add_to_object(
-            obj=document_page, transformation=TransformationCrop,
+        self.test_layer.add_transformation_to(
+            obj=document_page, transformation_class=TransformationCrop,
             arguments={'top': 'x', 'left': '-'}
         )
-
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
     def test_crop_transformation_non_valid_range_arguments(self):
         self._silence_logger(name='mayan.apps.converter.managers')
 
         document_page = self.test_document.pages.first()
 
-        Transformation.objects.add_to_object(
-            obj=document_page, transformation=TransformationCrop,
+        self.test_layer.add_transformation_to(
+            obj=document_page, transformation_class=TransformationCrop,
             arguments={'top': '-1000', 'bottom': '100000000'}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
     def test_crop_transformation_overlapping_ranges_arguments(self):
         self._silence_logger(name='mayan.apps.converter.managers')
 
         document_page = self.test_document.pages.first()
 
-        Transformation.objects.add_to_object(
-            obj=document_page, transformation=TransformationCrop,
+        self.test_layer.add_transformation_to(
+            obj=document_page, transformation_class=TransformationCrop,
             arguments={'top': '1000', 'bottom': '1000'}
         )
 
-        Transformation.objects.add_to_object(
-            obj=document_page, transformation=TransformationCrop,
+        self.test_layer.add_transformation_to(
+            obj=document_page, transformation_class=TransformationCrop,
             arguments={'left': '1000', 'right': '10000'}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
     def test_lineart_transformations(self):
         document_page = self.test_document.pages.first()
 
-        Transformation.objects.add_to_object(
-            obj=document_page, transformation=TransformationLineArt,
+        self.test_layer.add_transformation_to(
+            obj=document_page, transformation_class=TransformationLineArt,
             arguments={}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
     def test_rotate_transformations(self):
         document_page = self.test_document.pages.first()
 
-        Transformation.objects.add_to_object(
-            obj=document_page, transformation=TransformationRotate90,
+        self.test_layer.add_transformation_to(
+            obj=document_page, transformation_class=TransformationRotate90,
             arguments={}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
-        Transformation.objects.add_to_object(
-            obj=document_page, transformation=TransformationRotate180,
+        self.test_layer.add_transformation_to(
+            obj=document_page, transformation_class=TransformationRotate180,
             arguments={}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())
 
-        Transformation.objects.add_to_object(
-            obj=document_page, transformation=TransformationRotate270,
+        self.test_layer.add_transformation_to(
+            obj=document_page, transformation_class=TransformationRotate270,
             arguments={}
         )
 
-        self.assertTrue(document_page.generate_image().startswith('page'))
+        self.assertTrue(document_page.generate_image())

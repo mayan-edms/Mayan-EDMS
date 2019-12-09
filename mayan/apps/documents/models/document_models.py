@@ -13,7 +13,7 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 
 from ..events import (
     event_document_create, event_document_properties_edit,
-    event_document_type_change,
+    event_document_trashed, event_document_type_change,
 )
 from ..managers import DocumentManager, PassthroughManager, TrashCanManager
 from ..settings import setting_language
@@ -69,7 +69,6 @@ class Document(models.Model):
             'Whether or not this document is in the trash.'
         ), editable=False, verbose_name=_('In trash?')
     )
-    # TODO: set editable to False
     deleted_date_time = models.DateTimeField(
         blank=True, editable=True, help_text=_(
             'The server date and time when the document was moved to the '
@@ -102,13 +101,24 @@ class Document(models.Model):
         )
         return RecentDocument.objects.add_document_for_user(user, self)
 
+    @property
+    def checksum(self):
+        return self.latest_version.checksum
+
+    @property
+    def date_updated(self):
+        return self.latest_version.timestamp
+
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
+        _user = kwargs.pop('_user', None)
 
         if not self.in_trash and to_trash:
             self.in_trash = True
             self.deleted_date_time = now()
-            self.save()
+            with transaction.atomic():
+                self.save(_commit_events=False)
+                event_document_trashed.commit(actor=_user, target=self)
         else:
             with transaction.atomic():
                 for version in self.versions.all():
@@ -127,6 +137,14 @@ class Document(models.Model):
         else:
             return False
 
+    @property
+    def file_mime_encoding(self):
+        return self.latest_version.encoding
+
+    @property
+    def file_mimetype(self):
+        return self.latest_version.mimetype
+
     def get_absolute_url(self):
         return reverse(
             viewname='documents:document_preview', kwargs={'pk': self.pk}
@@ -137,13 +155,13 @@ class Document(models.Model):
         if latest_version:
             return latest_version.get_api_image_url(*args, **kwargs)
 
-    def invalidate_cache(self):
-        for document_version in self.versions.all():
-            document_version.invalidate_cache()
-
     @property
     def is_in_trash(self):
         return self.in_trash
+
+    @property
+    def latest_version(self):
+        return self.versions.order_by('timestamp').last()
 
     def natural_key(self):
         return (self.uuid,)
@@ -169,6 +187,34 @@ class Document(models.Model):
         the storage backend
         """
         return self.latest_version.open(*args, **kwargs)
+
+    @property
+    def page_count(self):
+        return self.latest_version.page_count
+
+    @property
+    def pages(self):
+        try:
+            return self.latest_version.pages
+        except AttributeError:
+            # Document has no version yet
+            DocumentPage = apps.get_model(
+                app_label='documents', model_name='DocumentPage'
+            )
+
+            return DocumentPage.objects.none()
+
+    @property
+    def pages_all(self):
+        try:
+            return self.latest_version.pages_all
+        except AttributeError:
+            # Document has no version yet
+            DocumentPage = apps.get_model(
+                app_label='documents', model_name='DocumentPage'
+            )
+
+            return DocumentPage.objects.none()
 
     def restore(self):
         self.in_trash = False
@@ -216,41 +262,3 @@ class Document(models.Model):
     @property
     def size(self):
         return self.latest_version.size
-
-    # Compatibility methods
-
-    @property
-    def checksum(self):
-        return self.latest_version.checksum
-
-    @property
-    def date_updated(self):
-        return self.latest_version.timestamp
-
-    @property
-    def file_mime_encoding(self):
-        return self.latest_version.encoding
-
-    @property
-    def file_mimetype(self):
-        return self.latest_version.mimetype
-
-    @property
-    def latest_version(self):
-        return self.versions.order_by('timestamp').last()
-
-    @property
-    def page_count(self):
-        return self.latest_version.page_count
-
-    @property
-    def pages(self):
-        try:
-            return self.latest_version.pages
-        except AttributeError:
-            # Document has no version yet
-            DocumentPage = apps.get_model(
-                app_label='documents', model_name='DocumentPage'
-            )
-
-            return DocumentPage.objects.none()

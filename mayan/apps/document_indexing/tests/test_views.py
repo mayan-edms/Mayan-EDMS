@@ -1,7 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
-from mayan.apps.common.tests import GenericViewTestCase
-from mayan.apps.documents.tests import GenericDocumentViewTestCase
+from mayan.apps.documents.tests.base import (
+    GenericDocumentViewTestCase, GenericViewTestCase
+)
 
 from ..models import Index, IndexInstanceNode
 from ..permissions import (
@@ -11,10 +12,7 @@ from ..permissions import (
     permission_document_indexing_rebuild
 )
 
-from .literals import (
-    TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED,
-    TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
-)
+from .literals import TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED
 from .mixins import IndexTestMixin, IndexViewTestMixin
 
 
@@ -80,13 +78,6 @@ class IndexViewTestCase(
 
 
 class IndexInstaceViewTestMixin(object):
-    def _create_index_template_node(self):
-        self.test_index.node_templates.create(
-            parent=self.test_index.template_root,
-            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
-            link_documents=True
-        )
-
     def _request_test_index_instance_node_view(self, index_instance_node):
         return self.get(
             viewname='indexing:index_instance_node_view', kwargs={
@@ -102,7 +93,7 @@ class IndexInstaceViewTestCase(
     def test_index_rebuild_view_no_permission(self):
         self.upload_document()
         self._create_test_index()
-        self._create_index_template_node()
+        self._create_test_index_template_node()
 
         response = self._request_test_index_rebuild_view()
         self.assertEqual(response.status_code, 404)
@@ -112,7 +103,7 @@ class IndexInstaceViewTestCase(
     def test_index_rebuild_view_with_access(self):
         self.upload_document()
         self._create_test_index()
-        self._create_index_template_node()
+        self._create_test_index_template_node()
 
         self.grant_access(
             obj=self.test_index,
@@ -159,6 +150,18 @@ class IndexToolsViewTestMixin(object):
             }
         )
 
+    def _request_indexes_reset_get_view(self):
+        return self.get(
+            viewname='indexing:index_instances_reset'
+        )
+
+    def _request_indexes_reset_post_view(self):
+        return self.post(
+            viewname='indexing:index_instances_reset', data={
+                'index_templates': self.test_index.pk
+            }
+        )
+
 
 class IndexToolsViewTestCase(
     IndexTestMixin, IndexViewTestMixin, IndexToolsViewTestMixin,
@@ -198,3 +201,43 @@ class IndexToolsViewTestCase(
 
         # An instance root exists
         self.assertTrue(self.test_index.instance_root.pk)
+
+    def test_indexes_reset_no_permission(self):
+        self._create_test_index(rebuild=False)
+        self._create_test_index_template_node()
+        self.test_index.rebuild()
+
+        response = self._request_indexes_reset_get_view()
+        self.assertNotContains(
+            response=response, text=self.test_index.label, status_code=200
+        )
+
+        response = self._request_indexes_reset_post_view()
+        # No error since we just don't see the index
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(
+            self.test_index.instance_root.get_children_count(), 1
+        )
+
+    def test_indexes_reset_with_access(self):
+        self._create_test_index(rebuild=False)
+        self._create_test_index_template_node()
+        self.test_index.rebuild()
+
+        self.grant_access(
+            obj=self.test_index,
+            permission=permission_document_indexing_rebuild
+        )
+
+        response = self._request_indexes_reset_get_view()
+        self.assertContains(
+            response=response, text=self.test_index.label, status_code=200
+        )
+
+        response = self._request_indexes_reset_post_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_index.instance_root.get_children_count(), 0
+        )

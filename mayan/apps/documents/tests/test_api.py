@@ -7,7 +7,7 @@ from django.utils.encoding import force_text
 from django_downloadview import assert_download_response
 from rest_framework import status
 
-from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models import Document, DocumentType
 from ..permissions import (
@@ -22,7 +22,7 @@ from ..permissions import (
 
 from .literals import (
     TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_PDF_DOCUMENT_FILENAME,
-    TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
+    TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_2_LABEL,
     TEST_DOCUMENT_TYPE_LABEL_EDITED, TEST_DOCUMENT_VERSION_COMMENT_EDITED,
     TEST_SMALL_DOCUMENT_FILENAME
 )
@@ -88,10 +88,9 @@ class DocumentTypeAPIViewTestCase(
         )
 
         response = self._request_test_document_type_api_delete_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_type_api_delete_view_with_access(self):
-        self.expected_content_type = None
         self.test_document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
@@ -111,7 +110,7 @@ class DocumentTypeAPIViewTestCase(
         )
 
         response = self._request_test_document_type_api_patch_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_type_api_edit_via_patch_view_with_access(self):
         self.test_document_type = DocumentType.objects.create(
@@ -134,7 +133,7 @@ class DocumentTypeAPIViewTestCase(
         self._create_document_type()
 
         response = self._request_test_document_type_api_put_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_type_api_edit_via_put_view_with_access(self):
         self.test_document_type = DocumentType.objects.create(
@@ -163,11 +162,11 @@ class DocumentAPIViewTestMixin(object):
         )
 
     def _request_test_document_api_upload_view(self):
-        with open(TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='rest_api:document-list', data={
                     'document_type': self.test_document_type.pk,
-                    'file': file_descriptor
+                    'file': file_object
                 }
             )
 
@@ -185,6 +184,13 @@ class DocumentAPIViewTestMixin(object):
             }, data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
         )
 
+    def _request_test_document_document_type_change_api_view(self):
+        return self.post(
+            viewname='rest_api:document-type-change', kwargs={
+                'pk': self.test_document.pk
+            }, data={'new_document_type': self.test_document_type_2.pk}
+        )
+
 
 class DocumentAPIViewTestCase(
     DocumentAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
@@ -195,7 +201,7 @@ class DocumentAPIViewTestCase(
         self.upload_document()
 
         response = self._request_test_document_api_download_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_api_download_view_with_access(self):
         self.upload_document()
@@ -255,11 +261,45 @@ class DocumentAPIViewTestCase(
         )
         self.assertEqual(document.page_count, 47)
 
+    def test_document_document_type_change_api_via_no_permission(self):
+        self.upload_document()
+        self.test_document_type_2 = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_2_LABEL
+        )
+
+        response = self._request_test_document_document_type_change_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.document_type,
+            self.test_document_type
+        )
+
+    def test_document_document_type_change_api_via_with_access(self):
+        self.upload_document()
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_properties_edit
+        )
+        self.test_document_type_2 = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_2_LABEL
+        )
+
+        response = self._request_test_document_document_type_change_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.document_type,
+            self.test_document_type_2
+        )
+
     def test_document_description_api_edit_via_patch_view_no_permission(self):
         self.upload_document()
 
         response = self._request_test_document_description_api_edit_via_patch_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_description_api_edit_via_patch_view_with_access(self):
         self.upload_document()
@@ -281,7 +321,7 @@ class DocumentAPIViewTestCase(
         self.upload_document()
 
         response = self._request_test_document_description_api_edit_via_put_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_description_api_edit_via_put_view_with_access(self):
         self.upload_document()
@@ -607,11 +647,9 @@ class TrashedDocumentAPIViewTestCase(
         self.upload_document()
 
         response = self._request_test_document_api_trash_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_api_trash_view_with_access(self):
-        self.expected_content_type = None
-
         self.upload_document()
         self.grant_access(
             obj=self.test_document, permission=permission_document_trash
@@ -628,14 +666,12 @@ class TrashedDocumentAPIViewTestCase(
         self.test_document.delete()
 
         response = self._request_test_trashed_document_api_delete_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(Document.objects.count(), 0)
         self.assertEqual(Document.trash.count(), 1)
 
     def test_trashed_document_api_delete_view_with_access(self):
-        self.expected_content_type = None
-
         self.upload_document()
         self.test_document.delete()
         self.grant_access(
@@ -653,7 +689,7 @@ class TrashedDocumentAPIViewTestCase(
         self.test_document.delete()
 
         response = self._request_test_trashed_document_api_detail_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertFalse('uuid' in response.data)
 
     def test_trashed_document_api_detail_view_with_access(self):
@@ -713,7 +749,7 @@ class TrashedDocumentAPIViewTestCase(
         self.test_document.delete()
 
         response = self._request_test_trashed_document_api_restore_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(Document.trash.count(), 1)
         self.assertEqual(Document.objects.count(), 0)

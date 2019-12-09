@@ -1,0 +1,75 @@
+{% load i18n %}
+
+{% load common_tags %}
+{% load navigation_tags %}
+{% load smart_settings_tags %}
+
+{% spaceless %}
+    <div class="panel-group" id="accordion-sidebar" role="tablist" aria-multiselectable="true">
+        <div class="panel-heading" role="tab" id="menu-main-button-close">
+            <h4 class="panel-title">
+                <a class="disabled" href="">
+                    <i class="fa fa-angle-double-left"></i>
+                </a>
+            </h4>
+        </div>
+        {% navigation_resolve_menu name='main' as main_menus_results %}
+        {% for main_menu_results in main_menus_results %}
+            {% for link_group in main_menu_results.link_groups %}
+                {% for link in link_group.links %}
+                    {% with 'active' as li_class_active %}
+                    {% with ' ' as link_classes %}
+                        {% if link|common_get_type == "<class 'mayan.apps.navigation.classes.Menu'>" %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                        <a class="non-ajax collapsed" role="button" data-toggle="collapse" data-parent="#accordion-sidebar" href="#accordion-body-{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseOne">
+                                            <div class="pull-left">
+                                                {% if link.icon %}
+                                                <i class="hidden-xs hidden-sm hidden-md {{ link.icon }}"></i>
+                                                {% endif %}
+                                                {% if link.icon_class %}{{ link.icon_class.render }}{% endif %}
+                                                {{ link.label }}
+                                            </div>
+                                            <div class="accordion-indicator pull-right"><span class="caret"></span></div>
+                                            <div class="clearfix"></div>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="accordion-body-{{ forloop.counter }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                        <ul class="list-unstyled">
+                                            {% navigation_resolve_menu name=link.name as sub_menus_results %}
+                                            {% for sub_menu_results in sub_menus_results %}
+                                                {% for link_group in sub_menu_results.link_groups %}
+                                                    {% with '' as link_class_active %}
+                                                    {% with 'a-main-menu-accordion-link' as link_classes %}
+                                                    {% with 'true' as as_li %}
+                                                    {% with link_group.links as object_navigation_links %}
+                                                        {% include 'navigation/generic_navigation.html' %}
+                                                    {% endwith %}
+                                                    {% endwith %}
+                                                    {% endwith %}
+                                                    {% endwith %}
+                                                {% endfor %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                        {% include 'navigation/generic_link_instance.html' %}
+                                    </h4>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                    {% endwith %}
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endspaceless %}
