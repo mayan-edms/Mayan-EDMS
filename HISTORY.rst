@@ -1,3 +1,11 @@
+3.3.5 (2019-XX-XX)
+=================
+- Pin django-timezone-field to version 3.1. GitLab issue #698.
+  Thanks to Rob de Canha-Knight (@rssfed23) for the report
+  and research.
+- Pin kombu to version 4.6.7. GitLab issue #699. Thanks to
+  Rob de Canha-Knight (@rssfed23) for the report and the research.
+
 3.3.4 (2019-12-09)
 ==================
 - Update the gunicorn worker class to synchronous.
