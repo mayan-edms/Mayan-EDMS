@@ -1,4 +1,4 @@
-3.3.4 (2019-12-XX)
+3.3.4 (2019-12-09)
 ==================
 - Update the gunicorn worker class to synchronous.
 - Update the way the BaseTransformationType metaclass is passed
