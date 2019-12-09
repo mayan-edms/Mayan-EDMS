@@ -15,6 +15,9 @@
   mark widget.
 - Add icons to the smart settings links.
 - Fix docker-runtest-all target.
+- Fix the evaluation priority of the bootstrap settings. Closes GitLab issue
+  #702. Thanks to Kevin Pawsey (@kevinpawsey) for the report and the help
+  debuging the issue.
 
 3.3.3 (2019-12-05)
 ==================
