@@ -66,6 +66,7 @@ docker-staging-container-redis-start:
 	-d \
 	--name mayan-staging-redis \
 	--network=mayan-staging \
+	-v mayan-staging-redis:/data \
 	$(DOCKER_REDIS_IMAGE_VERSION) \
 	redis-server \
 	--databases \
@@ -116,6 +117,7 @@ docker-staging-cleanup: ## Delete the test container and the test volume.
 	@docker volume rm mayan-staging-app || true
 	@docker volume rm mayan-staging-postgres || true
 	@docker volume rm mayan-staging-rabbitmq || true
+	@docker volume rm mayan-staging-redis || true
 	@docker network rm mayan-staging || true
 
 devpi-init:
