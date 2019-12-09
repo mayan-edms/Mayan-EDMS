@@ -293,11 +293,13 @@ class MayanApp {
         // Small screen main menu toggle to open
         $('body').on('click', '#main-menu-button-open', function (event) {
             $('#menu-main').addClass('menu-main-opened');
+            $('#ajax-header').addClass('overlay-gray');
         });
 
         // Small screen main menu toggle to close
         $('body').on('click', '#menu-main-button-close', function (event) {
             $('#menu-main').removeClass('menu-main-opened');
+            $('#ajax-header').removeClass('overlay-gray');
         });
     }
 

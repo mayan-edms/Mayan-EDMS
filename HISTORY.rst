@@ -19,6 +19,7 @@
   debugging the issue.
 - Switch from librabbitmq to py-amqp. Closes GitLab issue #699. Thanks to
   Rob de Canha-Knight (@rssfed23) for the report, research, and debug.
+- Darken content area when opening the mobile menu.
 
 3.3.3 (2019-12-05)
 ==================
