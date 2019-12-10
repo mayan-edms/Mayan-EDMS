@@ -3,12 +3,12 @@ from __future__ import absolute_import, unicode_literals
 from pathlib2 import Path
 
 from django.conf import settings
-from django.utils.encoding import force_bytes, force_text
+from django.utils.encoding import force_text
 
 from mayan.apps.common.settings import setting_paginate_by
 from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.common.tests.mixins import EnvironmentTestCaseMixin
-from mayan.apps.storage.utils import fs_cleanup, NamedTemporaryFile
+from mayan.apps.storage.utils import fs_cleanup
 
 from ..classes import Setting
 
@@ -34,25 +34,16 @@ class ClassesTestCase(
         self._create_test_setting()
 
         self._set_environment_variable(
-            name='MAYAN_{}'.format(TEST_SETTING_GLOBAL_NAME),
+            name='MAYAN_{}'.format(self.test_setting.global_name),
             value=test_environment_value
         )
 
-        with NamedTemporaryFile() as file_object:
-            settings.CONFIGURATION_FILEPATH = file_object.name
-            file_object.write(
-                force_bytes(
-                    '{}: {}'.format(
-                        TEST_SETTING_GLOBAL_NAME, test_file_value
-                    )
-                )
-            )
-            file_object.seek(0)
-            Setting._config_file_cache = None
+        self.test_config_value = test_file_value
+        self._create_test_config_file()
 
-            self.assertEqual(
-                self.test_setting.value, test_environment_value
-            )
+        self.assertEqual(
+            self.test_setting.value, test_environment_value
+        )
 
     def test_environment_variable(self):
         self._set_environment_variable(
@@ -116,19 +107,12 @@ class NamespaceMigrationTestCase(
         )
         self._create_test_setting()
 
-        with NamedTemporaryFile() as file_object:
-            settings.CONFIGURATION_FILEPATH = file_object.name
-            file_object.write(
-                force_bytes(
-                    '{}: {}'.format(TEST_SETTING_GLOBAL_NAME, TEST_SETTING_VALUE)
-                )
-            )
-            file_object.seek(0)
-            Setting._config_file_cache = None
+        self.test_config_value = TEST_SETTING_VALUE
+        self._create_test_config_file()
 
-            self.assertEqual(
-                self.test_setting.value, '{}_0001'.format(TEST_SETTING_VALUE)
-            )
+        self.assertEqual(
+            self.test_setting.value, '{}_0001'.format(TEST_SETTING_VALUE)
+        )
 
     def test_migration_0001_to_0003(self):
         self._create_test_settings_namespace(
@@ -136,19 +120,12 @@ class NamespaceMigrationTestCase(
         )
         self._create_test_setting()
 
-        with NamedTemporaryFile() as file_object:
-            settings.CONFIGURATION_FILEPATH = file_object.name
-            file_object.write(
-                force_bytes(
-                    '{}: {}'.format(TEST_SETTING_GLOBAL_NAME, TEST_SETTING_VALUE)
-                )
-            )
-            file_object.seek(0)
-            Setting._config_file_cache = None
+        self.test_config_value = TEST_SETTING_VALUE
+        self._create_test_config_file()
 
-            self.assertEqual(
-                self.test_setting.value, '{}_0001_0002'.format(TEST_SETTING_VALUE)
-            )
+        self.assertEqual(
+            self.test_setting.value, '{}_0001_0002'.format(TEST_SETTING_VALUE)
+        )
 
     def test_migration_invalid(self):
         self._create_test_settings_namespace(
@@ -156,19 +133,12 @@ class NamespaceMigrationTestCase(
         )
         self._create_test_setting()
 
-        with NamedTemporaryFile() as file_object:
-            settings.CONFIGURATION_FILEPATH = file_object.name
-            file_object.write(
-                force_bytes(
-                    '{}: {}'.format(TEST_SETTING_GLOBAL_NAME, TEST_SETTING_VALUE)
-                )
-            )
-            file_object.seek(0)
-            Setting._config_file_cache = None
+        self.test_config_value = TEST_SETTING_VALUE
+        self._create_test_config_file()
 
-            self.assertEqual(
-                self.test_setting.value, TEST_SETTING_VALUE
-            )
+        self.assertEqual(
+            self.test_setting.value, TEST_SETTING_VALUE
+        )
 
     def test_migration_invalid_dual(self):
         self._create_test_settings_namespace(
@@ -176,16 +146,9 @@ class NamespaceMigrationTestCase(
         )
         self._create_test_setting()
 
-        with NamedTemporaryFile() as file_object:
-            settings.CONFIGURATION_FILEPATH = file_object.name
-            file_object.write(
-                force_bytes(
-                    '{}: {}'.format(TEST_SETTING_GLOBAL_NAME, TEST_SETTING_VALUE)
-                )
-            )
-            file_object.seek(0)
-            Setting._config_file_cache = None
+        self.test_config_value = TEST_SETTING_VALUE
+        self._create_test_config_file()
 
-            self.assertEqual(
-                self.test_setting.value, TEST_SETTING_VALUE
-            )
+        self.assertEqual(
+            self.test_setting.value, TEST_SETTING_VALUE
+        )

@@ -7,11 +7,12 @@ from .literals import (
     TEST_BOOTSTAP_SETTING_NAME, TEST_SETTING_VALUE,
     TEST_SETTING_VALUE_OVERRIDE
 )
-from .mixins import BoostrapSettingTestMixin
+from .mixins import BoostrapSettingTestMixin, SmartSettingTestMixin
 
 
 class BoostrapSettingTestCase(
-    BoostrapSettingTestMixin, EnvironmentTestCaseMixin, BaseTestCase
+    BoostrapSettingTestMixin, EnvironmentTestCaseMixin,
+    SmartSettingTestMixin, BaseTestCase
 ):
     def setUp(self):
         super(BoostrapSettingTestCase, self).setUp()
@@ -24,7 +25,11 @@ class BoostrapSettingTestCase(
             value=TEST_SETTING_VALUE_OVERRIDE
         )
 
-        self._create_test_config_file(value=TEST_SETTING_VALUE)
+        self.test_setting_global_name = TEST_BOOTSTAP_SETTING_NAME
+        self.test_config_value = TEST_SETTING_VALUE
+        self._create_test_config_file(
+            callback=self.test_setting_namespace_singleton.update_globals
+        )
 
         self.assertEqual(
             self.test_globals[TEST_BOOTSTAP_SETTING_NAME],
@@ -34,7 +39,11 @@ class BoostrapSettingTestCase(
     def test_bootstrap_config_overrides_settings(self):
         self.test_globals[TEST_BOOTSTAP_SETTING_NAME] = TEST_SETTING_VALUE
 
-        self._create_test_config_file(value=TEST_SETTING_VALUE_OVERRIDE)
+        self.test_setting_global_name = TEST_BOOTSTAP_SETTING_NAME
+        self.test_config_value = TEST_SETTING_VALUE_OVERRIDE
+        self._create_test_config_file(
+            callback=self.test_setting_namespace_singleton.update_globals
+        )
 
         self.assertEqual(
             self.test_globals[TEST_BOOTSTAP_SETTING_NAME],
@@ -46,7 +55,7 @@ class BoostrapSettingTestCase(
             TEST_BOOTSTAP_SETTING_NAME
         ] = TEST_SETTING_VALUE_OVERRIDE
 
-        self.setting_namespace.update_globals()
+        self.test_setting_namespace_singleton.update_globals()
 
         self.assertEqual(
             self.test_globals[TEST_BOOTSTAP_SETTING_NAME],
@@ -54,7 +63,7 @@ class BoostrapSettingTestCase(
         )
 
     def test_bootstrap_default(self):
-        self.setting_namespace.update_globals()
+        self.test_setting_namespace_singleton.update_globals()
 
         self.assertEqual(
             self.test_globals[TEST_BOOTSTAP_SETTING_NAME], 'value default'

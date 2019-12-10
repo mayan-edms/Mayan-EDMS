@@ -6,6 +6,7 @@
 - Pin kombu to version 4.6.7. GitLab issue #699. Thanks to
   Rob de Canha-Knight (@rssfed23) for the report and the research.
 - Update instances of the word "weblink" to "web link".
+- Unify the creation of the temporary config file used in tests.
 
 3.3.4 (2019-12-09)
 ==================
