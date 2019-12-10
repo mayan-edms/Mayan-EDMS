@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.utils.encoding import force_bytes
 
+from mayan.apps.common.tests.mixins import EnvironmentTestCaseMixin
 from mayan.apps.storage.utils import fs_cleanup, NamedTemporaryFile
 
 from ..classes import Namespace, Setting
@@ -36,7 +37,7 @@ class SmartSettingsTestCaseMixin(object):
         Namespace.invalidate_cache_all()
 
 
-class SmartSettingTestMixin(object):
+class SmartSettingTestMixin(EnvironmentTestCaseMixin):
     test_setting_global_name = None
     test_config_file_object = None
 

@@ -7,6 +7,8 @@
   Rob de Canha-Knight (@rssfed23) for the report and the research.
 - Update instances of the word "weblink" to "web link".
 - Unify the creation of the temporary config file used in tests.
+- Update all 0001 setting migrations to not accept manually migrated
+  settings.
 
 3.3.4 (2019-12-09)
 ==================
