@@ -1,10 +1,10 @@
 # vim:set ft=dockerfile:
 
 ####
-# BASE_IMAGE - Bare bones image with the base packages needed to run Mayan EDMS
+# base_image - Bare bones image with the base packages needed to run Mayan EDMS
 ####
 
-FROM debian:10.0-slim as BASE_IMAGE
+FROM debian:10.0-slim as base_image
 
 LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 
@@ -60,12 +60,12 @@ apt-get update \
 ; fi
 
 ####
-# BUILDER_IMAGE - This image builds the Python package and is discarded afterwards
+# builder_image - This image builds the Python package and is discarded afterwards
 #                 only the build artifact is carried over to the next image.
 ####
 
 # Reuse image
-FROM BASE_IMAGE as BUILDER_IMAGE
+FROM base_image as builder_image
 
 # Python libraries caching
 ARG PIP_INDEX_URL
@@ -136,12 +136,12 @@ RUN set -a \
 COPY --chown=mayan:mayan requirements/testing-base.txt "${PROJECT_INSTALL_DIR}"
 
 ####
-# Final image - BASE_IMAGE + BUILDER_IMAGE artifact (Mayan install directory)
+# Final image - base_image + builder_image artifact (Mayan install directory)
 ####
 
-FROM BASE_IMAGE
+FROM base_image
 
-COPY --from=BUILDER_IMAGE --chown=mayan:mayan "${PROJECT_INSTALL_DIR}/" "${PROJECT_INSTALL_DIR}/"
+COPY --from=builder_image --chown=mayan:mayan "${PROJECT_INSTALL_DIR}/" "${PROJECT_INSTALL_DIR}/"
 
 USER root
 
