@@ -9,6 +9,7 @@
 - Unify the creation of the temporary config file used in tests.
 - Update all 0001 setting migrations to not accept manually migrated
   settings.
+- Update TemplateField to concatenate existing help texts.
 
 3.3.4 (2019-12-09)
 ==================
