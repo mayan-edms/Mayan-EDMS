@@ -18,6 +18,8 @@
 - Use TemplateField for the web link template.
 - Use TemplateField for smart links.
 - Add the ID and the URL to the checkout serializer.
+- Add BaseTransformationType metaclass in a way compatible with
+  Python 2 and Python 3.
 
 3.3.4 (2019-12-09)
 ==================
