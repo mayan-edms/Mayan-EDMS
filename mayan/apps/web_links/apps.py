@@ -112,6 +112,11 @@ class WebLinksApp(MayanAppConfig):
             links=(link_web_link_instance_view,),
             sources=(ResolvedWebLink,)
         )
+        menu_object.unbind_links(
+            links=(
+                link_web_link_delete, link_web_link_edit
+            ), sources=(ResolvedWebLink,)
+        )
         menu_secondary.bind_links(
             links=(link_web_link_list, link_web_link_create),
             sources=(

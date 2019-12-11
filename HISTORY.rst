@@ -10,6 +10,7 @@
 - Update all 0001 setting migrations to not accept manually migrated
   settings.
 - Update TemplateField to concatenate existing help texts.
+- Don't show the edit and delete links for resolved web links.
 
 3.3.4 (2019-12-09)
 ==================
