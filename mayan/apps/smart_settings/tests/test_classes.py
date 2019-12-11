@@ -7,7 +7,6 @@ from django.utils.encoding import force_text
 
 from mayan.apps.common.settings import setting_paginate_by
 from mayan.apps.common.tests.base import BaseTestCase
-from mayan.apps.common.tests.mixins import EnvironmentTestCaseMixin
 from mayan.apps.storage.utils import fs_cleanup
 
 from ..classes import Setting
@@ -23,9 +22,7 @@ from .mocks import (
 )
 
 
-class ClassesTestCase(
-    EnvironmentTestCaseMixin, SmartSettingTestMixin, BaseTestCase
-):
+class ClassesTestCase(SmartSettingTestMixin, BaseTestCase):
     def test_environment_override(self):
         test_environment_value = 'test environment value'
         test_file_value = 'test file value'
@@ -84,9 +81,7 @@ class ClassesTestCase(
         self.assertTrue(Setting.check_changed())
 
 
-class NamespaceMigrationTestCase(
-    EnvironmentTestCaseMixin, SmartSettingTestMixin, BaseTestCase
-):
+class NamespaceMigrationTestCase(SmartSettingTestMixin, BaseTestCase):
     def test_environment_migration(self):
         self._set_environment_variable(
             name='MAYAN_{}'.format(TEST_SETTING_GLOBAL_NAME),

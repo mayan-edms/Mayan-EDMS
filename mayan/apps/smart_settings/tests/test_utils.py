@@ -1,7 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 from mayan.apps.common.tests.base import BaseTestCase
-from mayan.apps.common.tests.mixins import EnvironmentTestCaseMixin
 
 from .literals import (
     TEST_BOOTSTAP_SETTING_NAME, TEST_SETTING_VALUE,
@@ -11,8 +10,7 @@ from .mixins import BoostrapSettingTestMixin, SmartSettingTestMixin
 
 
 class BoostrapSettingTestCase(
-    BoostrapSettingTestMixin, EnvironmentTestCaseMixin,
-    SmartSettingTestMixin, BaseTestCase
+    BoostrapSettingTestMixin, SmartSettingTestMixin, BaseTestCase
 ):
     def setUp(self):
         super(BoostrapSettingTestCase, self).setUp()
