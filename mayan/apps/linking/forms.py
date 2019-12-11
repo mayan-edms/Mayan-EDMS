@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.classes import ModelField, ModelProperty
 from mayan.apps.documents.models import Document
+from mayan.apps.templating.fields import TemplateField
 
 from .models import SmartLink, SmartLinkCondition
 
@@ -13,13 +14,10 @@ from .models import SmartLink, SmartLinkCondition
 class SmartLinkForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(SmartLinkForm, self).__init__(*args, **kwargs)
-        self.fields['dynamic_label'].help_text = ' '.join(
-            [
-                force_text(self.fields['dynamic_label'].help_text),
-                ModelProperty.get_help_text_for(
-                    model=Document, show_name=True
-                ).replace('\n', '<br>')
-            ]
+        self.fields['dynamic_label'] = TemplateField(
+            initial_help_text=self.fields['dynamic_label'].help_text,
+            label=self.fields['dynamic_label'].label, model=Document,
+            model_variable='document', required=False
         )
 
     class Meta:
@@ -35,13 +33,10 @@ class SmartLinkConditionForm(forms.ModelForm):
                 model=Document,
             ), label=_('Foreign document field')
         )
-        self.fields['expression'].help_text = ' '.join(
-            [
-                force_text(self.fields['expression'].help_text),
-                ModelProperty.get_help_text_for(
-                    model=Document, show_name=True
-                ).replace('\n', '<br>')
-            ]
+        self.fields['expression'] = TemplateField(
+            initial_help_text=self.fields['expression'].help_text,
+            label=self.fields['expression'].label, model=Document,
+            model_variable='document', required=False
         )
 
     class Meta:

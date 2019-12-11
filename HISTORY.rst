@@ -16,6 +16,7 @@
 - TemplateField shows the available variable in the help text
   automatically.
 - Use TemplateField for the web link template.
+- Use TemplateField for smart links.
 
 3.3.4 (2019-12-09)
 ==================

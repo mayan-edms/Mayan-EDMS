@@ -28,10 +28,8 @@ class SmartLink(models.Model):
     )
     dynamic_label = models.CharField(
         blank=True, max_length=96, help_text=_(
-            'Enter a template to render. '
-            'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). '
-            'The {{ document }} context variable is available.'
+            'Use this field to show a unique label depending on the '
+            'document from which the smart link is being accessed.'
         ), verbose_name=_('Dynamic label')
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
@@ -155,7 +153,7 @@ class SmartLink(models.Model):
 class ResolvedSmartLink(SmartLink):
     """
     Proxy model to represent an already resolved smart link. Used for easier
-    colums registration.
+    columns registration.
     """
     class Meta:
         proxy = True
@@ -186,10 +184,8 @@ class SmartLinkCondition(models.Model):
     operator = models.CharField(choices=OPERATOR_CHOICES, max_length=16)
     expression = models.TextField(
         help_text=_(
-            'Enter a template to render. '
-            'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). '
-            'The {{ document }} context variable is available.'
+            'The expression using document properties to be evaluated '
+            'against the foreign document field.'
         ), verbose_name=_('Expression')
     )
     negated = models.BooleanField(
