@@ -11,6 +11,8 @@
   settings.
 - Update TemplateField to concatenate existing help texts.
 - Don't show the edit and delete links for resolved web links.
+- Exclude Smart link setup columns and links from the resolved
+  smart link views.
 
 3.3.4 (2019-12-09)
 ==================
