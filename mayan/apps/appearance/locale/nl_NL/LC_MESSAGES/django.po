@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:29-0400\n"
+"POT-Creation-Date: 2019-12-10 23:33-0400\n"
 "PO-Revision-Date: 2019-12-03 05:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
@@ -98,7 +98,7 @@ msgstr "Pagina niet gevonden"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Excuses, maar de opgevraagde pagina kan niet worden gevonden."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:54
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:55
 msgid "Server error"
 msgstr "Server fout"
 
@@ -316,15 +316,15 @@ msgstr "Toggle navigatie"
 msgid "No results"
 msgstr "Geen resultaten"
 
-#: templates/appearance/root.html:59
+#: templates/appearance/root.html:60
 msgid "Close"
 msgstr "Sluiten"
 
-#: templates/appearance/root.html:67
+#: templates/appearance/root.html:68
 msgid "Server communication error"
 msgstr "Server communicatie probleem"
 
-#: templates/appearance/root.html:69
+#: templates/appearance/root.html:70
 msgid "Check you network connection and try again in a few moments."
 msgstr "Controleer uw netwerkverbinding en probeer nog eens een beetje later."
 

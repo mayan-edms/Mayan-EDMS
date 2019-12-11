@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:29-0400\n"
+"POT-Creation-Date: 2019-12-10 23:33-0400\n"
 "PO-Revision-Date: 2019-12-03 05:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
@@ -96,7 +96,7 @@ msgstr "页面未找到"
 msgid "Sorry, but the requested page could not be found."
 msgstr "抱歉，找不到请求的页面。"
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:54
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:55
 msgid "Server error"
 msgstr "服务器错误"
 
@@ -314,15 +314,15 @@ msgstr "切换导航"
 msgid "No results"
 msgstr "没有结果"
 
-#: templates/appearance/root.html:59
+#: templates/appearance/root.html:60
 msgid "Close"
 msgstr "关闭"
 
-#: templates/appearance/root.html:67
+#: templates/appearance/root.html:68
 msgid "Server communication error"
 msgstr "服务器通信错误"
 
-#: templates/appearance/root.html:69
+#: templates/appearance/root.html:70
 msgid "Check you network connection and try again in a few moments."
 msgstr "检查网络连接，并稍后再试。"
 

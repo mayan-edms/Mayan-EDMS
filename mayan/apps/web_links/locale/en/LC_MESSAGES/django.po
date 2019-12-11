@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 00:36-0400\n"
+"POT-Creation-Date: 2019-12-10 23:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,9 +67,7 @@ msgid "Label"
 msgstr ""
 
 #: models.py:28
-msgid ""
-"Template that will be used to craft the final URL of the web link. The "
-"{{ document }} variable is available to the template."
+msgid "Template that will be used to craft the final URL of the web link."
 msgstr ""
 
 #: models.py:30

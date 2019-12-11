@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:29-0400\n"
+"POT-Creation-Date: 2019-12-10 23:33-0400\n"
 "PO-Revision-Date: 2019-12-03 13:22+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -97,7 +97,7 @@ msgstr "Pagina nu a fost gasită"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Ne pare rău, dar pagina solicitată nu a putut fi găsit."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:54
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:55
 msgid "Server error"
 msgstr "Eroare la server"
 
@@ -315,15 +315,15 @@ msgstr "Comutare navigare"
 msgid "No results"
 msgstr "Fără rezultate"
 
-#: templates/appearance/root.html:59
+#: templates/appearance/root.html:60
 msgid "Close"
 msgstr "Închide"
 
-#: templates/appearance/root.html:67
+#: templates/appearance/root.html:68
 msgid "Server communication error"
 msgstr "Eroare de comunicare cu server-ul"
 
-#: templates/appearance/root.html:69
+#: templates/appearance/root.html:70
 msgid "Check you network connection and try again in a few moments."
 msgstr "Verificați conexiunea la rețea și încercați din nou în câteva momente."
 

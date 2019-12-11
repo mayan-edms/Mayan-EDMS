@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:32-0400\n"
-"PO-Revision-Date: 2019-05-03 05:21+0000\n"
+"POT-Creation-Date: 2019-12-10 23:35-0400\n"
+"PO-Revision-Date: 2019-12-11 03:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Label"
 msgstr "Ετικέτα"
 
-#: events.py:8 links.py:20 links.py:79 links.py:84 links.py:89 models.py:48
+#: events.py:8 links.py:20 links.py:79 links.py:84 links.py:89 models.py:46
 #: permissions.py:7 views.py:197
 msgid "Smart links"
 msgstr "Έξυπνοι σύνδεσμοι"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Smart link edited"
 msgstr ""
 
-#: forms.py:36
+#: forms.py:34
 msgid "Foreign document field"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgstr "Προϋποθέσεις"
 msgid "Create new smart link"
 msgstr "Δημιουργία νέου έξυπνου σύνδεσμου"
 
-#: links.py:63 models.py:40
+#: links.py:63 models.py:38
 msgid "Document types"
 msgstr "Τύποι εγγράφων"
 
@@ -138,71 +138,76 @@ msgstr ""
 msgid "is in regular expression (case insensitive)"
 msgstr ""
 
-#: models.py:31 models.py:189
+#: models.py:31
 msgid ""
-"Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The {{ "
-"document }} context variable is available."
+"Use this field to show a unique label depending on the document from which "
+"the smart link is being accessed."
 msgstr ""
 
-#: models.py:35
+#: models.py:33
 msgid "Dynamic label"
 msgstr "Δυναμική ετικέτα"
 
-#: models.py:37 models.py:199
+#: models.py:35 models.py:195
 msgid "Enabled"
 msgstr "Ενεργοποιημένο"
 
-#: models.py:47 models.py:175
+#: models.py:45 models.py:173
 msgid "Smart link"
 msgstr "Έξυπνος συνδεσμός"
 
-#: models.py:87
+#: models.py:85
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr "Σφάλμα κατά την δημιουργία δυναμικής ετικέτας: %s"
 
-#: models.py:102
+#: models.py:100
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "Αυτός ο έξυπνος συνδεσμός δεν επιτρέπεται για τον επιλεγμένο τύπο εγγράφου."
 
-#: models.py:179
+#: models.py:177
 msgid "The inclusion is ignored for the first item."
 msgstr ""
 
-#: models.py:183
+#: models.py:181
 msgid "This represents the metadata of all other documents."
 msgstr ""
 
-#: models.py:184
+#: models.py:182
 msgid "Foreign document attribute"
 msgstr ""
 
-#: models.py:193
+#: models.py:187
+msgid ""
+"The expression using document properties to be evaluated against the foreign"
+" document field."
+msgstr ""
+
+#: models.py:189
 msgid "Expression"
 msgstr "Έκφραση"
 
-#: models.py:196
+#: models.py:192
 msgid "Inverts the logic of the operator."
 msgstr "Αντιστρέφει την κατάσταση του λογικού τελεστή."
 
-#: models.py:197
+#: models.py:193
 msgid "Negated"
 msgstr "Αντιστροφή"
 
-#: models.py:202
+#: models.py:198
 msgid "Link condition"
 msgstr "Συνθήκη συνδέσμου"
 
-#: models.py:203
+#: models.py:199
 msgid "Link conditions"
 msgstr "Συνθήκες συνδέσμου"
 
-#: models.py:211
+#: models.py:207
 msgid "not"
 msgstr ""
 
-#: models.py:215
+#: models.py:211
 msgid "Full label"
 msgstr ""
 
