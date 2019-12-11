@@ -16,7 +16,12 @@ class DocumentCheckoutSerializer(serializers.ModelSerializer):
     document = DocumentSerializer()
 
     class Meta:
-        fields = ('document',)
+        extra_kwargs = {
+            'url': {
+                'view_name': 'rest_api:checkedout-document-view'
+            },
+        }
+        fields = ('document', 'id', 'url')
         model = DocumentCheckout
 
 
@@ -32,7 +37,7 @@ class NewDocumentCheckoutSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
             'block_new_version', 'document', 'document_pk',
-            'expiration_datetime', 'id'
+            'expiration_datetime', 'id',
         )
         model = DocumentCheckout
         read_only_fields = ('document',)
