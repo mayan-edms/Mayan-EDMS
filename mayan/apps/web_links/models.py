@@ -26,7 +26,7 @@ class WebLink(models.Model):
     template = models.TextField(
         help_text=_(
             'Template that will be used to craft the final URL of the '
-            'web link. The {{ document }} variable is available to the template.'
+            'web link.'
         ), verbose_name=_('Template')
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))

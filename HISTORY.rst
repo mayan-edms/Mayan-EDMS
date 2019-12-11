@@ -15,6 +15,7 @@
   smart link views.
 - TemplateField shows the available variable in the help text
   automatically.
+- Use TemplateField for the web link template.
 
 3.3.4 (2019-12-09)
 ==================
