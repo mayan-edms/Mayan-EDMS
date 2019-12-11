@@ -13,6 +13,8 @@
 - Don't show the edit and delete links for resolved web links.
 - Exclude Smart link setup columns and links from the resolved
   smart link views.
+- TemplateField shows the available variable in the help text
+  automatically.
 
 3.3.4 (2019-12-09)
 ==================
