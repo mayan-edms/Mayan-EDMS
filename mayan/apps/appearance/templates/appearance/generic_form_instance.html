@@ -53,7 +53,7 @@
                 {% if field|widget_type == 'checkboxinput' %}
                     <div class="checkbox">
                         <label>
-                            <input {% if field.value %}checked="checked"{% endif %} name="{% if form.prefix %}{{ form.prefix }}-{% endif %}{{ field.name }}" type="checkbox">
+                            <input {% if field.value %}checked="checked"{% endif %} name="{% if form.prefix %}{{ form.prefix }}-{% endif %}{{ field.name }}" type="checkbox" {% include 'django/forms/widgets/attrs.html' with widget=field.field.widget %} />
                             {% if not hide_labels %}{{ field.label }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}{% endif %}
                         </label>
                     </div>
