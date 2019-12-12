@@ -13,6 +13,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.permissions import Permission
 
+from .compat import FileResponse
 from .exceptions import ActionError
 from .forms import DynamicForm
 from .literals import PK_LIST_SEPARATOR
@@ -54,6 +55,29 @@ class DeleteExtraDataMixin(object):
             self.object.delete()
 
         return HttpResponseRedirect(redirect_to=success_url)
+
+
+class DownloadMixin(object):
+    as_attachment = True
+
+    def get_as_attachment(self):
+        return self.as_attachment
+
+    def get_download_file_object(self):
+        raise NotImplementedError(
+            'Class must provide a .get_download_file_object() method that '
+            'return a file like object.'
+        )
+
+    def get_download_filename(self):
+        return None
+
+    def render_to_response(self, **response_kwargs):
+        return FileResponse(
+            as_attachment=self.get_as_attachment(),
+            filename=self.get_download_filename(),
+            streaming_content=self.get_download_file_object()
+        )
 
 
 class DynamicFormViewMixin(object):
@@ -343,26 +367,6 @@ class ObjectNameMixin(object):
                 object_name = _('Object')
 
         return object_name
-
-
-# TODO: Remove this mixin and replace with restricted queryset
-class ObjectPermissionCheckMixin(object):
-    object_permission = None
-
-    def get_permission_object(self):
-        return self.get_object()
-
-    def dispatch(self, request, *args, **kwargs):
-        if self.object_permission:
-            AccessControlList.objects.check_access(
-                obj=self.get_permission_object(),
-                permissions=(self.object_permission,),
-                user=request.user
-            )
-
-        return super(
-            ObjectPermissionCheckMixin, self
-        ).dispatch(request, *args, **kwargs)
 
 
 class RedirectionMixin(object):

@@ -20,6 +20,8 @@
 - Add the ID and the URL to the checkout serializer.
 - Add BaseTransformationType metaclass in a way compatible with
   Python 2 and Python 3.
+- Remove Django DownloadView library. Implement downloads natively
+  using modified port of Django 2.2 FileResponse.
 
 3.3.4 (2019-12-09)
 ==================

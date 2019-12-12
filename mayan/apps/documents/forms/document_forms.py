@@ -45,7 +45,9 @@ class DocumentDownloadForm(forms.Form):
         super(DocumentDownloadForm, self).__init__(*args, **kwargs)
         if self.queryset.count() > 1:
             self.fields['compressed'].initial = True
-            self.fields['compressed'].widget.attrs.update({'disabled': True})
+            self.fields['compressed'].widget.attrs.update(
+                {'disabled': 'disabled'}
+            )
 
 
 class DocumentForm(forms.ModelForm):

@@ -18,11 +18,15 @@ from django.http import HttpResponse
 from django.template import Context, Template
 from django.test.utils import ContextList
 from django.urls import clear_url_caches, reverse
-from django.utils.encoding import force_bytes
+from django.utils.encoding import (
+    DjangoUnicodeDecodeError, force_bytes, force_text
+)
 from django.utils.six import PY3
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.storage.settings import setting_temporary_directory
+
+from ..compat import FileResponse
 
 from .literals import (
     TEST_SERVER_HOST, TEST_SERVER_SCHEME, TEST_VIEW_NAME, TEST_VIEW_URL
@@ -139,6 +143,37 @@ class ContentTypeCheckTestCaseMixin(object):
                 return response
 
         self.client = CustomClient()
+
+
+class DownloadTestCaseMixin(object):
+    def assert_download_response(
+        self, response, content=None, filename=None, is_attachment=None,
+        mime_type=None
+    ):
+        self.assertTrue(isinstance(response, FileResponse))
+
+        if filename:
+            self.assertEqual(
+                response[
+                    'Content-Disposition'
+                ].split('filename="')[1].split('"')[0], filename
+            )
+
+        if content:
+            response_content = b''.join(list(response))
+
+            try:
+                response_content = force_text(response_content)
+            except DjangoUnicodeDecodeError:
+                """Leave as bytes"""
+
+            self.assertEqual(response_content, content)
+
+        if is_attachment is not None:
+            self.assertEqual(response['Content-Disposition'], 'attachment')
+
+        if mime_type:
+            self.assertTrue(response['Content-Type'].startswith(mime_type))
 
 
 class EnvironmentTestCaseMixin(object):

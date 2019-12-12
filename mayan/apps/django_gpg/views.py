@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib import messages
-from django.core.files.base import ContentFile
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -56,10 +55,11 @@ class KeyDownloadView(SingleObjectDownloadView):
     model = Key
     object_permission = permission_key_download
 
-    def get_file(self):
-        key = self.get_object()
+    def get_download_file_object(self):
+        return self.object.key_data
 
-        return ContentFile(key.key_data, name=key.key_id)
+    def get_download_filename(self):
+        return self.object.key_id
 
 
 class KeyReceive(ConfirmView):

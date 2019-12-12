@@ -211,10 +211,8 @@ class DocumentOCRDownloadView(SingleObjectDownloadView):
     model = Document
     object_permission = permission_ocr_content_view
 
-    def get_file(self):
-        file_object = DocumentOCRDownloadView.TextIteratorIO(
-            iterator=get_document_ocr_content(document=self.get_object())
-        )
-        return DocumentOCRDownloadView.VirtualFile(
-            file=file_object, name='{}-OCR'.format(self.get_object())
-        )
+    def get_download_file_object(self):
+        return get_document_ocr_content(document=self.object)
+
+    def get_download_filename(self):
+        return '{}-OCR'.format(self.object)

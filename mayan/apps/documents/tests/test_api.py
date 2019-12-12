@@ -4,7 +4,6 @@ import time
 
 from django.utils.encoding import force_text
 
-from django_downloadview import assert_download_response
 from rest_framework import status
 
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
@@ -213,12 +212,10 @@ class DocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         with self.test_document.open() as file_object:
-            assert_download_response(
-                self, response, content=file_object.read(),
-                basename=TEST_SMALL_DOCUMENT_FILENAME,
-                mime_type='{}; charset=utf-8'.format(
-                    self.test_document.file_mimetype
-                )
+            self.assert_download_response(
+                response=response, content=file_object.read(),
+                filename=TEST_SMALL_DOCUMENT_FILENAME,
+                mime_type=self.test_document.file_mimetype
             )
 
     def test_document_api_upload_view_no_permission(self):
@@ -418,12 +415,10 @@ class DocumentVersionAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         with self.test_document.latest_version.open() as file_object:
-            assert_download_response(
-                self, response, content=file_object.read(),
-                basename=force_text(self.test_document.latest_version),
-                mime_type='{}; charset=utf-8'.format(
-                    self.test_document.file_mimetype
-                )
+            self.assert_download_response(
+                response=response, content=file_object.read(),
+                filename=force_text(self.test_document.latest_version),
+                mime_type=self.test_document.file_mimetype
             )
 
     def test_document_version_api_download_preserve_extension_view(self):
@@ -440,13 +435,11 @@ class DocumentVersionAPIViewTestCase(
         )
 
         with self.test_document.latest_version.open() as file_object:
-            assert_download_response(
-                self, response, content=file_object.read(),
-                basename=self.test_document.latest_version.get_rendered_string(
+            self.assert_download_response(
+                response=response, content=file_object.read(),
+                filename=self.test_document.latest_version.get_rendered_string(
                     preserve_extension=True
-                ), mime_type='{}; charset=utf-8'.format(
-                    self.test_document.file_mimetype
-                )
+                ), mime_type=self.test_document.file_mimetype
             )
 
     def test_document_version_api_list_view_no_permission(self):

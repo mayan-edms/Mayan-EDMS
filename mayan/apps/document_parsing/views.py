@@ -75,13 +75,11 @@ class DocumentContentDownloadView(SingleObjectDownloadView):
     model = Document
     object_permission = permission_content_view
 
-    def get_file(self):
-        file_object = DocumentContentDownloadView.TextIteratorIO(
-            iterator=get_document_content(document=self.get_object())
-        )
-        return DocumentContentDownloadView.VirtualFile(
-            file=file_object, name='{}-content'.format(self.get_object())
-        )
+    def get_download_file_object(self):
+        return get_document_content(document=self.object)
+
+    def get_download_filename(self):
+        return '{}-content'.format(self.object)
 
 
 class DocumentPageContentView(SingleObjectDetailView):
