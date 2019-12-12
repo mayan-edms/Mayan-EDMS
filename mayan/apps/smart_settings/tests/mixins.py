@@ -63,7 +63,6 @@ class SmartSettingTestMixin(EnvironmentTestCaseMixin):
                 name='MAYAN_CONFIGURATION_FILEPATH',
                 value=test_config_file_object.name
             )
-
             test_config_file_object.write(
                 force_bytes(
                     Setting.serialize_value(value=test_config_entry)
