@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:34-0400\n"
+"POT-Creation-Date: 2019-12-13 01:09-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -66,7 +66,7 @@ msgstr "Съдържание"
 msgid "Delete parsed content"
 msgstr "Изтрийте анализираното съдържание"
 
-#: links.py:44 links.py:82 views.py:224
+#: links.py:44 links.py:82 views.py:222
 msgid "Parsing errors"
 msgstr "Грешки при анализ"
 
@@ -191,48 +191,48 @@ msgstr[1] "Да се изтрие ли анализираното съдържа
 msgid "Content for document: %s"
 msgstr "Съдържание за документ: %s"
 
-#: views.py:105
+#: views.py:103
 #, python-format
 msgid "Content for document page: %s"
 msgstr "Съдържание за страница на документ: %s"
 
-#: views.py:120
+#: views.py:118
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "Грешки в анализа на документ: %s"
 
-#: views.py:132
+#: views.py:130
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)d документ е добавен към опашката за анализ"
 
-#: views.py:135
+#: views.py:133
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d документи са добавени към опашката за анализ"
 
-#: views.py:143
+#: views.py:141
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
-msgid_plural "Submit %(count)d documents to the parsing queue"
-msgstr[0] "Да изпратите %(count)d документ на опашката за разбор?"
-msgstr[1] "Изпратете %(count)d документи на опашката за анализ"
+msgid_plural "Submit %(count)d documents to the parsing queue?"
+msgstr[0] ""
+msgstr[1] ""
 
-#: views.py:156
+#: views.py:154
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "Изпратете документ &quot;%s&quot; на опашката за анализ"
 
-#: views.py:181
+#: views.py:179
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr "Редактиране на настройките за анализ на типа документ: %s."
 
-#: views.py:191
-msgid "Submit all documents of a type for parsing."
-msgstr "Изпратете всички документи от типа за анализ."
+#: views.py:189
+msgid "Submit all documents of a type for parsing"
+msgstr ""
 
-#: views.py:212
+#: views.py:210
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d документи са добавени към опашката за анализ."

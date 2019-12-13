@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:34-0400\n"
+"POT-Creation-Date: 2019-12-13 01:09-0400\n"
 "PO-Revision-Date: 2019-12-03 05:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
@@ -107,7 +107,7 @@ msgstr "Τύπος κλειδιού"
 msgid "Verify all documents"
 msgstr "Απολήθευση όλων τωνεγγράφων"
 
-#: links.py:39 links.py:58 queues.py:9
+#: links.py:39 links.py:79 queues.py:9
 msgid "Signatures"
 msgstr "Υπογραφές"
 
@@ -116,24 +116,24 @@ msgid "Delete"
 msgstr "Διαγραφή"
 
 #: links.py:52
-msgid "Details"
-msgstr "Λεπτομέρειες"
-
-#: links.py:63
-msgid "Download"
-msgstr "Κατέβασμα"
-
-#: links.py:69
-msgid "Upload signature"
-msgstr "Ανέβασμα υπογραφής"
-
-#: links.py:76
 msgid "Sign detached"
 msgstr "Υπογραφή με αποσπασμένο κλειδί"
 
-#: links.py:83
+#: links.py:59
+msgid "Details"
+msgstr "Λεπτομέρειες"
+
+#: links.py:66
+msgid "Download"
+msgstr "Κατέβασμα"
+
+#: links.py:72
 msgid "Sign embedded"
 msgstr "Υπογαφή με συμπερίληψη του κελιδιού"
+
+#: links.py:85
+msgid "Upload signature"
+msgstr "Ανέβασμα υπογραφής"
 
 #: models.py:40
 msgid "Document version"
@@ -283,36 +283,36 @@ msgstr "Διαγραφή αποσπασμένης υπογραφής: %s"
 msgid "Details for signature: %s"
 msgstr "Λεπτομέρειες της υπογραφής: %s"
 
-#: views.py:276
+#: views.py:275
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr ""
 
-#: views.py:304
+#: views.py:303
 msgid "There are no signatures for this document."
 msgstr ""
 
-#: views.py:307
+#: views.py:306
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Υπογραφές για την έκδοση του εγγράφου: %s"
 
-#: views.py:337
+#: views.py:336
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Ανέβασμα αποσπασμένης υπογραφής για την έκδοση του εγγράφου: %s"
 
-#: views.py:354
+#: views.py:353
 msgid "On large databases this operation may take some time to execute."
 msgstr "Σε μεγάλες βάσεις δεδομένων αυτή η ενέργεια μπορεί να χρειαστεί αρκετό χρόνο για να ολοκληρωθεί."
 
-#: views.py:355
+#: views.py:354
 msgid "Verify all document for signatures?"
 msgstr "Επαλήθευση όλων των υπογρφών για έγγραφα;"
 
-#: views.py:365
+#: views.py:364
 msgid "Signature verification queued successfully."
 msgstr "Η ενέργεια επαλήθευσης υπογραφών προστέθηκε στην λίστα επιτυχώς."
 

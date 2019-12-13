@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:34-0400\n"
+"POT-Creation-Date: 2019-12-13 01:08-0400\n"
 "PO-Revision-Date: 2019-12-09 09:15+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -170,59 +170,59 @@ msgstr "Използван бекенд за преобразуване на г�
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Опции за конфигуриране на бекенда за графично преобразуване"
 
-#: transformations.py:100
+#: transformations.py:99
 msgid "Crop"
 msgstr "Изрязване"
 
-#: transformations.py:178
+#: transformations.py:177
 msgid "Draw rectangle"
 msgstr "Начертайте правоъгълник"
 
-#: transformations.py:280
+#: transformations.py:279
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Начертайте правоъгълник (процентни координати)"
 
-#: transformations.py:377
+#: transformations.py:376
 msgid "Flip"
 msgstr "Преобръщане"
 
-#: transformations.py:388
+#: transformations.py:387
 msgid "Gaussian blur"
 msgstr "Гаусово замъгляване"
 
-#: transformations.py:398
+#: transformations.py:397
 msgid "Line art"
 msgstr "Графично изкуство"
 
-#: transformations.py:409
+#: transformations.py:408
 msgid "Mirror"
 msgstr "Огледало"
 
-#: transformations.py:420
+#: transformations.py:419
 msgid "Resize"
 msgstr "Преоразмеряване"
 
-#: transformations.py:447
+#: transformations.py:446
 msgid "Rotate"
 msgstr "Завъртане"
 
-#: transformations.py:473
+#: transformations.py:472
 msgid "Rotate 90 degrees"
 msgstr "Завъртане на 90 градуса"
 
-#: transformations.py:484
+#: transformations.py:483
 msgid "Rotate 180 degrees"
 msgstr "Въртене на 180 градуса"
 
-#: transformations.py:495
+#: transformations.py:494
 msgid "Rotate 270 degrees"
 msgstr "Въртене на 270 градуса"
 
-#: transformations.py:505
+#: transformations.py:504
 msgid "Unsharp masking"
 msgstr "Размазващо маскиране"
 
-#: transformations.py:521
+#: transformations.py:520
 msgid "Zoom"
 msgstr "Увеличаване"
 

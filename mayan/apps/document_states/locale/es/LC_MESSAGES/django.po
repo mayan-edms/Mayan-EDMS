@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:35-0400\n"
-"PO-Revision-Date: 2019-12-03 22:26+0000\n"
+"POT-Creation-Date: 2019-12-13 01:09-0400\n"
+"PO-Revision-Date: 2019-12-13 06:52+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:66 events.py:8 links.py:20 links.py:49 links.py:191 links.py:215
-#: models.py:71 settings.py:13 views/workflow_proxy_views.py:66
+#: models.py:72 settings.py:13 views/workflow_proxy_views.py:66
 #: views/workflow_template_views.py:103
 msgid "Workflows"
 msgstr "Flujos de trabajo"
@@ -46,7 +46,7 @@ msgstr "Ninguno"
 msgid "Current state"
 msgstr "Estado actual"
 
-#: apps.py:182 apps.py:209 models.py:670
+#: apps.py:182 apps.py:209 models.py:677
 msgid "User"
 msgstr "Usuario"
 
@@ -58,7 +58,7 @@ msgstr "Última transición"
 msgid "Date and time"
 msgstr "Fecha y hora"
 
-#: apps.py:198 models.py:283
+#: apps.py:198 models.py:287
 msgid "Completion"
 msgstr "Cantidad de completación"
 
@@ -78,7 +78,7 @@ msgstr "Tipo de acción"
 msgid "Triggers"
 msgstr "Disparadores"
 
-#: apps.py:286 models.py:447
+#: apps.py:286 models.py:454
 msgid "Type"
 msgstr "Tipo"
 
@@ -90,7 +90,7 @@ msgstr "Widget"
 msgid "Documents"
 msgstr "Documentos"
 
-#: error_logs.py:8 models.py:374
+#: error_logs.py:8 models.py:378
 msgid "Workflow state actions"
 msgstr "Acciones del estado del flujo de trabajo"
 
@@ -102,36 +102,40 @@ msgstr "Flujo de trabajo creado"
 msgid "Workflow edited"
 msgstr "Flujo de trabajo editado"
 
-#: forms.py:22
+#: forms.py:23
+msgid "The action type for this action entry."
+msgstr "El tipo de acción para esta entrada de acción."
+
+#: forms.py:24
 msgid "Action"
 msgstr "Acción"
 
-#: forms.py:117
+#: forms.py:120
 msgid "Namespace"
 msgstr "Categoría"
 
-#: forms.py:121 models.py:58 models.py:271 models.py:352 models.py:418
-#: models.py:458
+#: forms.py:124 models.py:59 models.py:274 models.py:356 models.py:424
+#: models.py:465
 msgid "Label"
 msgstr "Etiqueta"
 
-#: forms.py:125 models.py:354
+#: forms.py:128 models.py:358
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: forms.py:127
+#: forms.py:130
 msgid "No"
 msgstr "No"
 
-#: forms.py:128
+#: forms.py:131
 msgid "Yes"
 msgstr "Si"
 
-#: forms.py:178
+#: forms.py:181
 msgid "Select a transition to execute in the next step."
 msgstr "Seleccione una transición para ejecutar en el siguiente paso."
 
-#: forms.py:179 links.py:197 models.py:444 models.py:499 models.py:666
+#: forms.py:182 links.py:197 models.py:451 models.py:506 models.py:673
 msgid "Transition"
 msgstr "Transición"
 
@@ -152,7 +156,7 @@ msgstr "Crear flujo de trabajo"
 msgid "Delete"
 msgstr "Borrar"
 
-#: links.py:38 models.py:62
+#: links.py:38 models.py:63
 msgid "Document types"
 msgstr "Tipos de documentos"
 
@@ -242,199 +246,211 @@ msgid ""
 "contain letters, numbers, and underscores."
 msgstr "Este valor será utilizado por otras aplicaciones para hacer referencia a este flujo de trabajo. Sólo puede contener letras, números y subrayados."
 
-#: models.py:55 models.py:453
+#: models.py:55 models.py:460
 msgid "Internal name"
 msgstr "Nombre interno"
 
-#: models.py:70 models.py:269 models.py:416 models.py:518
+#: models.py:58
+msgid "A short text to describe the workflow."
+msgstr "Un texto breve para describir el flujo de trabajo."
+
+#: models.py:71 models.py:270 models.py:420 models.py:525
 msgid "Workflow"
 msgstr "Flujo de trabajo"
 
-#: models.py:146
+#: models.py:147
 msgid "Initial state"
 msgstr "Estado inicial"
 
-#: models.py:275
+#: models.py:273
+msgid "A short text to describe the workflow state."
+msgstr "Un texto breve para describir el estado del flujo de trabajo."
+
+#: models.py:279
 msgid ""
 "The state at which the workflow will start in. Only one state can be the "
 "initial state."
 msgstr "El estado en el que se iniciará el flujo de trabajo. Solo un estado puede ser el estado inicial."
 
-#: models.py:277
+#: models.py:281
 msgid "Initial"
 msgstr "Inicial"
 
-#: models.py:281
+#: models.py:285
 msgid ""
 "The percent of completion that this state represents in relation to the "
 "workflow. Use numbers without the percent sign."
 msgstr "El porcentaje de finalización que este estado representa en relación con el flujo de trabajo. Use números sin el signo de porcentaje."
 
-#: models.py:289 models.py:348
+#: models.py:293 models.py:352
 msgid "Workflow state"
 msgstr "Estado de flujo de trabajo"
 
-#: models.py:290
+#: models.py:294
 msgid "Workflow states"
 msgstr "Estados de flujo de trabajo"
 
-#: models.py:351
-msgid "A simple identifier for this action."
-msgstr "Un identificador simple para esta acción."
+#: models.py:355
+msgid "A short text describing the action."
+msgstr "Un breve texto que describe la acción."
 
-#: models.py:358
+#: models.py:362
 msgid "At which moment of the state this action will execute."
 msgstr "En qué momento del estado se ejecutará esta acción."
 
-#: models.py:359
+#: models.py:363
 msgid "When"
 msgstr "Cuando"
 
-#: models.py:363
+#: models.py:367
 msgid "The dotted Python path to the workflow action class to execute."
 msgstr "La ruta de Python separada por puntos a la clase de acción de flujo de trabajo que se va a ejecutar."
 
-#: models.py:364
+#: models.py:368
 msgid "Entry action path"
 msgstr "Ruta de acceso a la acción"
 
-#: models.py:367
+#: models.py:371
 msgid "Entry action data"
 msgstr "Datos de la acción"
 
-#: models.py:373
+#: models.py:377
 msgid "Workflow state action"
 msgstr "Acción del estado del flujo de trabajo"
 
-#: models.py:406
+#: models.py:410
 msgid "Unknown action type"
 msgstr "Tipo de acción desconocido"
 
-#: models.py:421
+#: models.py:423
+msgid "A short text to describe the transition."
+msgstr "Un breve texto para describir la transición."
+
+#: models.py:428
 msgid "Origin state"
 msgstr "Estado origen"
 
-#: models.py:425
+#: models.py:432
 msgid "Destination state"
 msgstr "Estado destino"
 
-#: models.py:433
+#: models.py:440
 msgid "Workflow transition"
 msgstr "Transición de flujo de trabajo"
 
-#: models.py:434
+#: models.py:441
 msgid "Workflow transitions"
 msgstr "Transiciones de flujo de trabajo"
 
-#: models.py:451
+#: models.py:458
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
 msgstr "El nombre que se usará para identificar este campo en otras partes del sistema de flujo de trabajo."
 
-#: models.py:457
+#: models.py:464
 msgid "The field name that will be shown on the user interface."
 msgstr "El nombre del campo que se mostrará en la interfaz de usuario."
 
-#: models.py:461
+#: models.py:468
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
 msgstr "Un mensaje opcional que ayudará a los usuarios a comprender mejor el propósito del campo y los datos a proporcionar."
 
-#: models.py:463
+#: models.py:470
 msgid "Help text"
 msgstr "Texto de ayuda"
 
-#: models.py:467
+#: models.py:474
 msgid "Whether this fields needs to be filled out or not to proceed."
 msgstr "Si estos campos deben completarse o no para continuar."
 
-#: models.py:468
+#: models.py:475
 msgid "Required"
 msgstr "Requerido"
 
-#: models.py:472
+#: models.py:479
 msgid "An optional class to change the default presentation of the field."
 msgstr "Una clase opcional para cambiar la presentación predeterminada del campo."
 
-#: models.py:473
+#: models.py:480
 msgid "Widget class"
 msgstr "Clase de widget"
 
-#: models.py:477
+#: models.py:484
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
 msgstr "Un grupo de argumentos nombrados para personalizar el widget. Utiliza el formato YAML."
 
-#: models.py:480
+#: models.py:487
 msgid "Widget keyword arguments"
 msgstr "Argumentos nombrados del widget"
 
-#: models.py:485 models.py:507
+#: models.py:492 models.py:514
 msgid "Workflow transition trigger event"
 msgstr "Disparador de transiciones de flujo de trabajo"
 
-#: models.py:486 models.py:508
+#: models.py:493 models.py:515
 msgid "Workflow transitions trigger events"
 msgstr "Disparadores de transiciones de flujo de trabajo"
 
-#: models.py:503
+#: models.py:510
 msgid "Event type"
 msgstr "Tipo de evento"
 
-#: models.py:522
+#: models.py:529
 msgid "Document"
 msgstr "Documento"
 
-#: models.py:525
+#: models.py:532
 msgid "Context"
 msgstr "Contexto"
 
-#: models.py:531 models.py:659
+#: models.py:538 models.py:666
 msgid "Workflow instance"
 msgstr "Instancia de flujo de trabajo"
 
-#: models.py:532
+#: models.py:539
 msgid "Workflow instances"
 msgstr "Instancias de flujo de trabajo"
 
-#: models.py:662
+#: models.py:669
 msgid "Datetime"
 msgstr "Fecha y hora"
 
-#: models.py:672 views/workflow_instance_views.py:139
+#: models.py:679 views/workflow_instance_views.py:139
 msgid "Comment"
 msgstr "Comentario"
 
-#: models.py:673
+#: models.py:680
 msgid "Extra data"
 msgstr "Datos extra"
 
-#: models.py:677
+#: models.py:684
 msgid "Workflow instance log entry"
 msgstr "Entrada de registro de la instancia de flujo de trabajo"
 
-#: models.py:678
+#: models.py:685
 msgid "Workflow instance log entries"
 msgstr "Entradas de registro de las instancias de flujos de trabajo"
 
-#: models.py:685
+#: models.py:692
 msgid "Not a valid transition choice."
 msgstr "No hay opción valida de transición."
 
-#: models.py:732
+#: models.py:739
 msgid "Workflow runtime proxy"
 msgstr "Proxy de tiempo de ejecución de flujo de trabajo"
 
-#: models.py:733
+#: models.py:740
 msgid "Workflow runtime proxies"
 msgstr "Proxies de tiempo de ejecución de flujo de trabajo"
 
-#: models.py:750
+#: models.py:757
 msgid "Workflow state runtime proxy"
 msgstr "Proxy de tiempo de ejecución de estado de flujo de trabajo"
 
-#: models.py:751
+#: models.py:758
 msgid "Workflow state runtime proxies"
 msgstr "Proxies de tiempo de ejecución de estado de flujo de trabajo"
 

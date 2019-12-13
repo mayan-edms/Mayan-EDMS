@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:38-0400\n"
+"POT-Creation-Date: 2019-12-13 01:13-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Roberto Rosario, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -32,6 +32,9 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " The {{ %(variable)s }} variable is available to the template."
 msgstr ""
+"Utilice el lenguaje de plantillas predeterminado de Django "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" La variable {{%(variable)s}} está disponible para la plantilla."
 
 #: forms.py:11
 msgid "Resulting text from the evaluated template."
@@ -43,7 +46,7 @@ msgstr "Resultado"
 
 #: forms.py:22
 msgid "The template string to be evaluated."
-msgstr ""
+msgstr "El texto de plantilla a evaluar."
 
 #: forms.py:23
 msgid "Template"

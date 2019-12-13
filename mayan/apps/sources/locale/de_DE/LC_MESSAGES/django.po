@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:37-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
+"POT-Creation-Date: 2019-12-13 01:12-0400\n"
+"PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:13
+#: apps.py:40 links.py:54 models/base.py:40 queues.py:9 settings.py:13
 #: views.py:650
 msgid "Sources"
 msgstr "Quellen"
@@ -55,11 +55,11 @@ msgstr "Erstellt"
 msgid "Thumbnail"
 msgstr "Bild"
 
-#: apps.py:94 models/base.py:248
+#: apps.py:94 models/base.py:249
 msgid "Date time"
 msgstr "Zeit"
 
-#: apps.py:99 models/base.py:251
+#: apps.py:99 models/base.py:252
 msgid "Message"
 msgstr "Nachricht"
 
@@ -209,72 +209,76 @@ msgstr "Beobachtungs-Ordner"
 msgid "POP3 email"
 msgstr "POP3"
 
-#: literals.py:68 models/email_sources.py:249 models/email_sources.py:250
+#: literals.py:68 models/email_sources.py:251 models/email_sources.py:252
 msgid "IMAP email"
 msgstr "IMAP"
 
 #: models/base.py:30
+msgid "A short text to describe this source."
+msgstr ""
+
+#: models/base.py:31
 msgid "Label"
 msgstr "Bezeichner"
 
-#: models/base.py:32
+#: models/base.py:33
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: models/base.py:38 models/base.py:245
+#: models/base.py:39 models/base.py:246
 msgid "Source"
 msgstr "Quelle"
 
-#: models/base.py:157
+#: models/base.py:158
 msgid "Interactive source"
 msgstr "Interaktive Quelle"
 
-#: models/base.py:158
+#: models/base.py:159
 msgid "Interactive sources"
 msgstr "Interaktive Quellen"
 
-#: models/base.py:167 models/base.py:168
+#: models/base.py:168 models/base.py:169
 msgid "Out of process"
 msgstr "Außer Kontrolle"
 
-#: models/base.py:174
+#: models/base.py:175
 msgid "Interval in seconds between checks for new documents."
 msgstr "Intervall in Sekunden zwischen den Überprüfungen auf neue Dokumente."
 
-#: models/base.py:175
+#: models/base.py:176
 msgid "Interval"
 msgstr "Intervall"
 
-#: models/base.py:180
+#: models/base.py:181
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Ordnen Sie einen Dokumententyp für Dokumente aus dieser Quelle zu."
 
-#: models/base.py:182
+#: models/base.py:183
 msgid "Document type"
 msgstr "Dokumententyp"
 
-#: models/base.py:186
+#: models/base.py:187
 msgid "Whether to expand or not, compressed archives."
 msgstr "Ob komprimierte Archive entpackt werden sollen."
 
-#: models/base.py:187 models/staging_folder_sources.py:56
+#: models/base.py:188 models/staging_folder_sources.py:56
 #: models/webform_sources.py:36
 msgid "Uncompress"
 msgstr "Entpacken"
 
-#: models/base.py:193
+#: models/base.py:194
 msgid "Interval source"
 msgstr "Intarvall Quelle"
 
-#: models/base.py:194
+#: models/base.py:195
 msgid "Interval sources"
 msgstr "Intarvall Quellen"
 
-#: models/base.py:257
+#: models/base.py:258
 msgid "Log entry"
 msgstr "Protokolleintrag"
 
-#: models/base.py:258
+#: models/base.py:259
 msgid "Log entries"
 msgstr "Logeinträge"
 
@@ -316,73 +320,73 @@ msgstr "Name Metadatenattachment"
 
 #: models/email_sources.py:60
 msgid ""
-"Select a metadata type valid for the document type selected in which to "
-"store the email's subject."
-msgstr "Wählen Sie einen Metadatentyp zur Speicherung des E-Mail-Betreffs, der für den ausgewählten Dokumententyp zulässig ist."
+"Select a metadata type to store the email's subject value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
 
-#: models/email_sources.py:63
+#: models/email_sources.py:64
 msgid "Subject metadata type"
 msgstr "Metadatentyp des Betreffs"
 
-#: models/email_sources.py:67
+#: models/email_sources.py:68
 msgid ""
-"Select a metadata type valid for the document type selected in which to "
-"store the email's \"from\" value."
-msgstr "Wählen Sie einen Metadatentyp zur Speicherung des E-Mail-Absenders, der für den ausgewählten Dokumententyp zulässig ist."
+"Select a metadata type to store the email's \"from\" value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
 
-#: models/email_sources.py:70
+#: models/email_sources.py:72
 msgid "From metadata type"
 msgstr "Metadatentyp des Absenders"
 
-#: models/email_sources.py:74
+#: models/email_sources.py:76
 msgid "Store the body of the email as a text document."
 msgstr "Textkörper der Nachricht als Textdokument speichern."
 
-#: models/email_sources.py:75
+#: models/email_sources.py:77
 msgid "Store email body"
 msgstr "Textkörper der E-Mail speichern"
 
-#: models/email_sources.py:81
+#: models/email_sources.py:83
 msgid "Email source"
 msgstr "E-Mail Quelle"
 
-#: models/email_sources.py:82
+#: models/email_sources.py:84
 msgid "Email sources"
 msgstr "E-Mail Quellen"
 
-#: models/email_sources.py:187
+#: models/email_sources.py:189
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "Metadatentyp  \"%(metadata_type)s\" des Betreffs ist für den Dokumententyp \"%(document_type)s\" nicht zulässig"
 
-#: models/email_sources.py:201
+#: models/email_sources.py:203
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "Metadatentyp  \"%(metadata_type)s\" des Absenders ist für den Dokumententyp \"%(document_type)s\" nicht zulässig"
 
-#: models/email_sources.py:216
+#: models/email_sources.py:218
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "IMAP-Mailbox, die auf Nachrichten überprüft werden soll."
 
-#: models/email_sources.py:217
+#: models/email_sources.py:219
 msgid "Mailbox"
 msgstr "Mailbox"
 
-#: models/email_sources.py:221
+#: models/email_sources.py:223
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
 
-#: models/email_sources.py:224
+#: models/email_sources.py:226
 msgid "Search criteria"
 msgstr ""
 
-#: models/email_sources.py:228
+#: models/email_sources.py:230
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
 "command per line. Use the commands specified in "
@@ -390,31 +394,31 @@ msgid ""
 "commands for your IMAP server."
 msgstr ""
 
-#: models/email_sources.py:232
+#: models/email_sources.py:234
 msgid "Store commands"
 msgstr ""
 
-#: models/email_sources.py:236
+#: models/email_sources.py:238
 msgid "Execute the IMAP expunge command after processing each email message."
 msgstr ""
 
-#: models/email_sources.py:238
+#: models/email_sources.py:240
 msgid "Execute expunge"
 msgstr ""
 
-#: models/email_sources.py:242
+#: models/email_sources.py:244
 msgid "IMAP Mailbox to which processed messages will be copied."
 msgstr ""
 
-#: models/email_sources.py:243
+#: models/email_sources.py:245
 msgid "Destination mailbox"
 msgstr ""
 
-#: models/email_sources.py:350
+#: models/email_sources.py:352
 msgid "Timeout"
 msgstr "Timeout"
 
-#: models/email_sources.py:356 models/email_sources.py:357
+#: models/email_sources.py:358 models/email_sources.py:359
 msgid "POP email"
 msgstr "POP email"
 

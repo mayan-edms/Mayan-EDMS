@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:34-0400\n"
+"POT-Creation-Date: 2019-12-13 01:09-0400\n"
 "PO-Revision-Date: 2019-12-03 05:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -109,7 +109,7 @@ msgstr "Тип ключа"
 msgid "Verify all documents"
 msgstr "Проверить все документы"
 
-#: links.py:39 links.py:58 queues.py:9
+#: links.py:39 links.py:79 queues.py:9
 msgid "Signatures"
 msgstr "Подписи"
 
@@ -118,24 +118,24 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: links.py:52
-msgid "Details"
-msgstr "Детали"
-
-#: links.py:63
-msgid "Download"
-msgstr "Скачать"
-
-#: links.py:69
-msgid "Upload signature"
-msgstr "Вгрузить подпись"
-
-#: links.py:76
 msgid "Sign detached"
 msgstr "Подпись отеделена"
 
-#: links.py:83
+#: links.py:59
+msgid "Details"
+msgstr "Детали"
+
+#: links.py:66
+msgid "Download"
+msgstr "Скачать"
+
+#: links.py:72
 msgid "Sign embedded"
 msgstr "Подпись встроена"
+
+#: links.py:85
+msgid "Upload signature"
+msgstr "Вгрузить подпись"
 
 #: models.py:40
 msgid "Document version"
@@ -285,36 +285,36 @@ msgstr "Удалить отделённую подпись: %s"
 msgid "Details for signature: %s"
 msgstr "Подробности для подписи: %s"
 
-#: views.py:276
+#: views.py:275
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr ""
 
-#: views.py:304
+#: views.py:303
 msgid "There are no signatures for this document."
 msgstr ""
 
-#: views.py:307
+#: views.py:306
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Подписи для документа версии: %s"
 
-#: views.py:337
+#: views.py:336
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Выгрузить отделённую подпись для версии документа: %s"
 
-#: views.py:354
+#: views.py:353
 msgid "On large databases this operation may take some time to execute."
 msgstr "В больших базах данных эта операция может занять некоторое время для выполнения."
 
-#: views.py:355
+#: views.py:354
 msgid "Verify all document for signatures?"
 msgstr "Проверить подписи во всех документах?"
 
-#: views.py:365
+#: views.py:364
 msgid "Signature verification queued successfully."
 msgstr "Верификация сигнатуры добавлена в очередь."
 

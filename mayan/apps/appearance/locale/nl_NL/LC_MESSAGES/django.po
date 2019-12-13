@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:33-0400\n"
+"POT-Creation-Date: 2019-12-13 01:07-0400\n"
 "PO-Revision-Date: 2019-12-03 05:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
@@ -234,11 +234,11 @@ msgstr ""
 msgid "Are you sure?"
 msgstr ""
 
-#: templates/appearance/generic_confirm.html:34
+#: templates/appearance/generic_confirm.html:38
 msgid "Yes"
 msgstr "Ja"
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:48
 msgid "No"
 msgstr "Nee"
 
@@ -249,19 +249,19 @@ msgstr "Nee"
 msgid "required"
 msgstr "Verplicht"
 
-#: templates/appearance/generic_form_subtemplate.html:85
-#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Save"
 msgstr "Opslaan"
 
-#: templates/appearance/generic_form_subtemplate.html:85
-#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Submit"
 msgstr "Verstuur"
 
-#: templates/appearance/generic_form_subtemplate.html:89
+#: templates/appearance/generic_form_subtemplate.html:87
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Cancel"
 msgstr "Onderbreek"

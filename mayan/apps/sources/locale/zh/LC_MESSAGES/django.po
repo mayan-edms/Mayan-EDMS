@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:37-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
-"Last-Translator: yulin Gong <540538248@qq.com>\n"
+"POT-Creation-Date: 2019-12-13 01:12-0400\n"
+"PO-Revision-Date: 2019-12-13 05:15+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:13
+#: apps.py:40 links.py:54 models/base.py:40 queues.py:9 settings.py:13
 #: views.py:650
 msgid "Sources"
 msgstr "来源"
@@ -46,11 +46,11 @@ msgstr "已创建"
 msgid "Thumbnail"
 msgstr "缩略图"
 
-#: apps.py:94 models/base.py:248
+#: apps.py:94 models/base.py:249
 msgid "Date time"
 msgstr "日期时间"
 
-#: apps.py:99 models/base.py:251
+#: apps.py:99 models/base.py:252
 msgid "Message"
 msgstr "信息"
 
@@ -200,72 +200,76 @@ msgstr "监视文件夹"
 msgid "POP3 email"
 msgstr "POP3电子邮件"
 
-#: literals.py:68 models/email_sources.py:249 models/email_sources.py:250
+#: literals.py:68 models/email_sources.py:251 models/email_sources.py:252
 msgid "IMAP email"
 msgstr "IMAP电子邮件"
 
 #: models/base.py:30
+msgid "A short text to describe this source."
+msgstr ""
+
+#: models/base.py:31
 msgid "Label"
 msgstr "标签"
 
-#: models/base.py:32
+#: models/base.py:33
 msgid "Enabled"
 msgstr "启用"
 
-#: models/base.py:38 models/base.py:245
+#: models/base.py:39 models/base.py:246
 msgid "Source"
 msgstr "来源"
 
-#: models/base.py:157
+#: models/base.py:158
 msgid "Interactive source"
 msgstr "互动来源"
 
-#: models/base.py:158
+#: models/base.py:159
 msgid "Interactive sources"
 msgstr "互动来源"
 
-#: models/base.py:167 models/base.py:168
+#: models/base.py:168 models/base.py:169
 msgid "Out of process"
 msgstr "进程外"
 
-#: models/base.py:174
+#: models/base.py:175
 msgid "Interval in seconds between checks for new documents."
 msgstr "检查新文档的间隔（秒）。"
 
-#: models/base.py:175
+#: models/base.py:176
 msgid "Interval"
 msgstr "间隔"
 
-#: models/base.py:180
+#: models/base.py:181
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "将文档类型分配给从此源上传的文档。"
 
-#: models/base.py:182
+#: models/base.py:183
 msgid "Document type"
 msgstr "文件类型"
 
-#: models/base.py:186
+#: models/base.py:187
 msgid "Whether to expand or not, compressed archives."
 msgstr "是否解压压缩的档案。"
 
-#: models/base.py:187 models/staging_folder_sources.py:56
+#: models/base.py:188 models/staging_folder_sources.py:56
 #: models/webform_sources.py:36
 msgid "Uncompress"
 msgstr "解压缩"
 
-#: models/base.py:193
+#: models/base.py:194
 msgid "Interval source"
 msgstr "间隔来源"
 
-#: models/base.py:194
+#: models/base.py:195
 msgid "Interval sources"
 msgstr "间隔来源"
 
-#: models/base.py:257
+#: models/base.py:258
 msgid "Log entry"
 msgstr "日志条目"
 
-#: models/base.py:258
+#: models/base.py:259
 msgid "Log entries"
 msgstr "日志条目"
 
@@ -307,73 +311,73 @@ msgstr "元数据附件名称"
 
 #: models/email_sources.py:60
 msgid ""
-"Select a metadata type valid for the document type selected in which to "
-"store the email's subject."
-msgstr "选择对所选文档类型有效的元数据类型，以便存储电子邮件的主题。"
+"Select a metadata type to store the email's subject value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
 
-#: models/email_sources.py:63
+#: models/email_sources.py:64
 msgid "Subject metadata type"
 msgstr "主题元数据类型"
 
-#: models/email_sources.py:67
+#: models/email_sources.py:68
 msgid ""
-"Select a metadata type valid for the document type selected in which to "
-"store the email's \"from\" value."
-msgstr "选择对所选文档类型有效的元数据类型，以存储电子邮件的“发件人”值。"
+"Select a metadata type to store the email's \"from\" value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
 
-#: models/email_sources.py:70
+#: models/email_sources.py:72
 msgid "From metadata type"
 msgstr "发件人元数据类型"
 
-#: models/email_sources.py:74
+#: models/email_sources.py:76
 msgid "Store the body of the email as a text document."
 msgstr "将电子邮件正文存储为文本文档。"
 
-#: models/email_sources.py:75
+#: models/email_sources.py:77
 msgid "Store email body"
 msgstr "存储邮件正文"
 
-#: models/email_sources.py:81
+#: models/email_sources.py:83
 msgid "Email source"
 msgstr "电邮来源"
 
-#: models/email_sources.py:82
+#: models/email_sources.py:84
 msgid "Email sources"
 msgstr "电邮来源"
 
-#: models/email_sources.py:187
+#: models/email_sources.py:189
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "主题元数据类型“%(metadata_type)s”对于文档类型%(document_type)s无效"
 
-#: models/email_sources.py:201
+#: models/email_sources.py:203
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr "“发件人”元数据类型“%(metadata_type)s”对于文档类型%(document_type)s无效"
 
-#: models/email_sources.py:216
+#: models/email_sources.py:218
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "IMAP邮箱，用于检查邮件。"
 
-#: models/email_sources.py:217
+#: models/email_sources.py:219
 msgid "Mailbox"
 msgstr "邮箱"
 
-#: models/email_sources.py:221
+#: models/email_sources.py:223
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
 
-#: models/email_sources.py:224
+#: models/email_sources.py:226
 msgid "Search criteria"
 msgstr ""
 
-#: models/email_sources.py:228
+#: models/email_sources.py:230
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
 "command per line. Use the commands specified in "
@@ -381,31 +385,31 @@ msgid ""
 "commands for your IMAP server."
 msgstr ""
 
-#: models/email_sources.py:232
+#: models/email_sources.py:234
 msgid "Store commands"
 msgstr ""
 
-#: models/email_sources.py:236
+#: models/email_sources.py:238
 msgid "Execute the IMAP expunge command after processing each email message."
 msgstr ""
 
-#: models/email_sources.py:238
+#: models/email_sources.py:240
 msgid "Execute expunge"
 msgstr ""
 
-#: models/email_sources.py:242
+#: models/email_sources.py:244
 msgid "IMAP Mailbox to which processed messages will be copied."
 msgstr ""
 
-#: models/email_sources.py:243
+#: models/email_sources.py:245
 msgid "Destination mailbox"
 msgstr ""
 
-#: models/email_sources.py:350
+#: models/email_sources.py:352
 msgid "Timeout"
 msgstr "超时"
 
-#: models/email_sources.py:356 models/email_sources.py:357
+#: models/email_sources.py:358 models/email_sources.py:359
 msgid "POP email"
 msgstr "POP电子邮件"
 

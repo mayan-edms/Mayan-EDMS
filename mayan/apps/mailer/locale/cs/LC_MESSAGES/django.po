@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:36-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
+"POT-Creation-Date: 2019-12-13 01:10-0400\n"
+"PO-Revision-Date: 2019-12-13 05:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Mailer"
 msgid "Date and time"
 msgstr "Datum a čas"
 
-#: apps.py:66 apps.py:88 models.py:30 models.py:228
+#: apps.py:66 apps.py:88 models.py:30 models.py:229
 msgid "Message"
 msgstr "Zpráva"
 
@@ -42,13 +42,13 @@ msgstr "Mailing"
 msgid "Email sent"
 msgstr "Email odeslán"
 
-#: forms.py:60 forms.py:122
+#: forms.py:60 forms.py:124
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
 msgstr "E-mailová adresa příjemce. Může být více adres oddělených čárkou nebo středníkem."
 
-#: forms.py:62 forms.py:124
+#: forms.py:62 forms.py:126
 msgid "Email address"
 msgstr "Emailová adresa"
 
@@ -64,11 +64,15 @@ msgstr "Tělo"
 msgid "The email profile that will be used to send this email."
 msgstr "E-mailový profil, který bude použit k odeslání tohoto e-mailu."
 
-#: forms.py:71 views.py:239 workflow_actions.py:22
+#: forms.py:71 models.py:71 views.py:239 workflow_actions.py:22
 msgid "Mailing profile"
 msgstr "Poštovní profil"
 
-#: forms.py:76
+#: forms.py:77
+msgid "The driver to use when sending emails."
+msgstr ""
+
+#: forms.py:78
 msgid "Backend"
 msgstr "Backend"
 
@@ -104,7 +108,7 @@ msgstr "Protokol"
 msgid "Mailing profiles list"
 msgstr "Seznam poštovních profilů"
 
-#: links.py:68
+#: links.py:68 models.py:72
 msgid "Mailing profiles"
 msgstr "Poštovní profily"
 
@@ -221,7 +225,7 @@ msgstr "Cesta k souboru"
 msgid "Django file based backend"
 msgstr "Backend založený na souborech Django"
 
-#: models.py:27 models.py:225
+#: models.py:27 models.py:226
 msgid "Date time"
 msgstr "Datum a čas"
 
@@ -234,56 +238,56 @@ msgid "Log entries"
 msgstr "Záznamy protokolu"
 
 #: models.py:48
+msgid "A short text describing the mailing profile."
+msgstr ""
+
+#: models.py:49
 msgid "Label"
 msgstr "Označení"
 
-#: models.py:52
+#: models.py:53
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr "Pokud je výchozí, bude tento poštovní profil předem vybrán ve formuláři pro zasílání dokumentů."
 
-#: models.py:54
+#: models.py:55
 msgid "Default"
 msgstr "Výchozí"
 
-#: models.py:56
+#: models.py:57
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: models.py:59
+#: models.py:60
 msgid "The dotted Python path to the backend class."
 msgstr "Tečkovaná cesta Pythonu ke třídě backendu."
 
-#: models.py:60
+#: models.py:61
 msgid "Backend path"
 msgstr "Backend cesta"
 
-#: models.py:63
+#: models.py:64
 msgid "Backend data"
 msgstr "Backend data"
 
-#: models.py:70 models.py:222
-msgid "User mailer"
-msgstr "Uživatel mailer"
-
-#: models.py:71
-msgid "User mailers"
-msgstr "Poštovní uživatele"
-
-#: models.py:84
+#: models.py:85
 msgid "Backend label"
 msgstr "Backend label"
 
-#: models.py:216
+#: models.py:217
 msgid "Test email from Mayan EDMS"
 msgstr "Vyzkoušejte e-mail od Mayan EDMS"
 
-#: models.py:234
+#: models.py:223
+msgid "User mailer"
+msgstr "Uživatel mailer"
+
+#: models.py:235
 msgid "User mailer log entry"
 msgstr "Záznam protokolu uživatele maileru"
 
-#: models.py:235
+#: models.py:236
 msgid "User mailer log entries"
 msgstr "Položky protokolu uživatele poštovní schránky"
 

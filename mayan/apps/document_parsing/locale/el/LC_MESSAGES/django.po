@@ -4,17 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hmayag Antonian <hmayag@freemail.gr>, 2018
-# Roberto Rosario, 2019
+# Hmayag Antonian <hmayag@freemail.gr>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:34-0400\n"
+"POT-Creation-Date: 2019-12-13 01:09-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
-"Last-Translator: Roberto Rosario, 2019\n"
+"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2019\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,7 +63,7 @@ msgstr "Περιεχόμενα"
 msgid "Delete parsed content"
 msgstr ""
 
-#: links.py:44 links.py:82 views.py:224
+#: links.py:44 links.py:82 views.py:222
 msgid "Parsing errors"
 msgstr "Σφάλμα κατάτην ανάλυση"
 
@@ -184,48 +183,48 @@ msgstr[1] ""
 msgid "Content for document: %s"
 msgstr "Περιεχόμενο του εγγράφου: %s"
 
-#: views.py:105
+#: views.py:103
 #, python-format
 msgid "Content for document page: %s"
 msgstr ""
 
-#: views.py:120
+#: views.py:118
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "Σφάλματα ανάλυσης του εγγράφου: %s"
 
-#: views.py:132
+#: views.py:130
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)d έγγραφο προστέθηκε στην λίστα προς ανάλυση"
 
-#: views.py:135
+#: views.py:133
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d έγγραφα προστέθηκαν στην λίστα προς ανάλυση"
 
-#: views.py:143
+#: views.py:141
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
-msgid_plural "Submit %(count)d documents to the parsing queue"
-msgstr[0] "Υποβάλετε το έγγραφο %(count)d στην ουρά αναλύσεων;"
-msgstr[1] "Υποβολή %(count)d εγγράφων στην λίστα προς ανάλυση;"
+msgid_plural "Submit %(count)d documents to the parsing queue?"
+msgstr[0] ""
+msgstr[1] ""
 
-#: views.py:156
+#: views.py:154
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "Υποβολή εγγράφου \"%s\" στην λίστα προς ανάλυση"
 
-#: views.py:181
+#: views.py:179
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr ""
 
-#: views.py:191
-msgid "Submit all documents of a type for parsing."
-msgstr ""
+#: views.py:189
+msgid "Submit all documents of a type for parsing"
+msgstr "Υποβολή όλων των εγγράφων ενός τύπου προς ανάλυση"
 
-#: views.py:212
+#: views.py:210
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr ""

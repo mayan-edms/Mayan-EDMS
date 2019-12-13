@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:33-0400\n"
+"POT-Creation-Date: 2019-12-13 01:07-0400\n"
 "PO-Revision-Date: 2019-12-08 18:56+0000\n"
 "Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -238,11 +238,11 @@ msgstr "Ouvrir le menu principal"
 msgid "Are you sure?"
 msgstr "Êtes-vous sûr?"
 
-#: templates/appearance/generic_confirm.html:34
+#: templates/appearance/generic_confirm.html:38
 msgid "Yes"
 msgstr "Oui"
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:48
 msgid "No"
 msgstr "Non"
 
@@ -253,19 +253,19 @@ msgstr "Non"
 msgid "required"
 msgstr "Requis"
 
-#: templates/appearance/generic_form_subtemplate.html:85
-#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Save"
 msgstr "Enregistrer"
 
-#: templates/appearance/generic_form_subtemplate.html:85
-#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Submit"
 msgstr "Soumettre"
 
-#: templates/appearance/generic_form_subtemplate.html:89
+#: templates/appearance/generic_form_subtemplate.html:87
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Cancel"
 msgstr "Annuler"

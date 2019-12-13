@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:34-0400\n"
+"POT-Creation-Date: 2019-12-13 01:09-0400\n"
 "PO-Revision-Date: 2019-12-03 05:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
@@ -108,7 +108,7 @@ msgstr ""
 msgid "Verify all documents"
 msgstr ""
 
-#: links.py:39 links.py:58 queues.py:9
+#: links.py:39 links.py:79 queues.py:9
 msgid "Signatures"
 msgstr ""
 
@@ -117,23 +117,23 @@ msgid "Delete"
 msgstr ""
 
 #: links.py:52
-msgid "Details"
-msgstr "Chi tiết"
-
-#: links.py:63
-msgid "Download"
-msgstr ""
-
-#: links.py:69
-msgid "Upload signature"
-msgstr ""
-
-#: links.py:76
 msgid "Sign detached"
 msgstr ""
 
-#: links.py:83
+#: links.py:59
+msgid "Details"
+msgstr "Chi tiết"
+
+#: links.py:66
+msgid "Download"
+msgstr ""
+
+#: links.py:72
 msgid "Sign embedded"
+msgstr ""
+
+#: links.py:85
+msgid "Upload signature"
 msgstr ""
 
 #: models.py:40
@@ -284,36 +284,36 @@ msgstr ""
 msgid "Details for signature: %s"
 msgstr ""
 
-#: views.py:276
+#: views.py:275
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr ""
 
-#: views.py:304
+#: views.py:303
 msgid "There are no signatures for this document."
 msgstr ""
 
-#: views.py:307
+#: views.py:306
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr ""
 
-#: views.py:337
+#: views.py:336
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr ""
 
-#: views.py:354
+#: views.py:353
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 
-#: views.py:355
+#: views.py:354
 msgid "Verify all document for signatures?"
 msgstr ""
 
-#: views.py:365
+#: views.py:364
 msgid "Signature verification queued successfully."
 msgstr ""
 

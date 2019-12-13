@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:37-0400\n"
-"PO-Revision-Date: 2019-06-29 06:22+0000\n"
+"POT-Creation-Date: 2019-12-13 01:11-0400\n"
+"PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:43 events.py:8 models.py:36 models.py:105 permissions.py:7
+#: apps.py:43 events.py:8 models.py:36 models.py:106 permissions.py:7
 msgid "Permissions"
 msgstr "权限"
 
@@ -38,11 +38,11 @@ msgstr ""
 msgid "Role edited"
 msgstr ""
 
-#: links.py:16 links.py:40 models.py:116 views.py:165
+#: links.py:16 links.py:40 models.py:117 views.py:168
 msgid "Roles"
 msgstr "角色"
 
-#: links.py:23
+#: links.py:23 views.py:53
 msgid "Create new role"
 msgstr "创造新角色"
 
@@ -54,7 +54,7 @@ msgstr "删除"
 msgid "Edit"
 msgstr "编辑"
 
-#: links.py:45 models.py:108
+#: links.py:45 models.py:109
 msgid "Groups"
 msgstr "用户组"
 
@@ -74,11 +74,15 @@ msgstr "名称"
 msgid "Permission"
 msgstr "权限"
 
-#: models.py:101 search.py:16
+#: models.py:101
+msgid "A short text describing the role."
+msgstr ""
+
+#: models.py:102 search.py:16
 msgid "Label"
 msgstr "标签"
 
-#: models.py:115
+#: models.py:116
 msgid "Role"
 msgstr "角色"
 
@@ -130,44 +134,44 @@ msgstr "用户组角色"
 msgid "Roles of group: %s"
 msgstr "用户组的角色：%s"
 
-#: views.py:79
+#: views.py:82
 msgid "Available groups"
 msgstr "可用的用户组"
 
-#: views.py:80
+#: views.py:83
 msgid "Role groups"
 msgstr "角色用户组"
 
-#: views.py:89
+#: views.py:92
 #, python-format
 msgid "Groups of role: %s"
 msgstr "角色的用户组：%s"
 
-#: views.py:91
+#: views.py:94
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr "添加用户组以成为角色的一部分。他们将继承角色的权限和访问控制。"
 
-#: views.py:104
+#: views.py:107
 msgid "Available permissions"
 msgstr "可用权限"
 
-#: views.py:105
+#: views.py:108
 msgid "Granted permissions"
 msgstr "授予的权限"
 
-#: views.py:137
+#: views.py:140
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr "此处授予的权限将适用于整个系统和所有对象。"
 
-#: views.py:140
+#: views.py:143
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "角色的权限：%s"
 
-#: views.py:157
+#: views.py:160
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -175,6 +179,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr "角色是授权单位。它们包含继承整个系统的角色权限的用户组。角色也可以是访问控制列表的一部分。访问控制列表是授予其组成员继承的特定对象的角色的权限。"
 
-#: views.py:164
+#: views.py:167
 msgid "There are no roles"
 msgstr "没有角色"

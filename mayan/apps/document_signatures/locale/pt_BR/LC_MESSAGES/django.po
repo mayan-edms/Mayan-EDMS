@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:34-0400\n"
+"POT-Creation-Date: 2019-12-13 01:09-0400\n"
 "PO-Revision-Date: 2019-12-03 05:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -111,7 +111,7 @@ msgstr "Tipo de chave"
 msgid "Verify all documents"
 msgstr "Verificar todos os documentos"
 
-#: links.py:39 links.py:58 queues.py:9
+#: links.py:39 links.py:79 queues.py:9
 msgid "Signatures"
 msgstr "Assinaturas"
 
@@ -120,24 +120,24 @@ msgid "Delete"
 msgstr "Excluir"
 
 #: links.py:52
-msgid "Details"
-msgstr "Detalhes"
-
-#: links.py:63
-msgid "Download"
-msgstr "Baixar"
-
-#: links.py:69
-msgid "Upload signature"
-msgstr "Upload da assinatura"
-
-#: links.py:76
 msgid "Sign detached"
 msgstr "Assinatura destacada"
 
-#: links.py:83
+#: links.py:59
+msgid "Details"
+msgstr "Detalhes"
+
+#: links.py:66
+msgid "Download"
+msgstr "Baixar"
+
+#: links.py:72
 msgid "Sign embedded"
 msgstr "Assinatura integrada"
+
+#: links.py:85
+msgid "Upload signature"
+msgstr "Upload da assinatura"
 
 #: models.py:40
 msgid "Document version"
@@ -287,36 +287,36 @@ msgstr "Excluir assinatura destacada: %s"
 msgid "Details for signature: %s"
 msgstr "Detalhes para a assinatura: %s"
 
-#: views.py:276
+#: views.py:275
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr "Assinaturas ajudam a proporcionar evidência de autoria e detecção de manipulação. São muito seguras e difíceis de falsificar. Uma assinatura pode ser integrada ao próprio documento ou carregada como um arquivo separado."
 
-#: views.py:304
+#: views.py:303
 msgid "There are no signatures for this document."
 msgstr "Não há assinaturas para este documento."
 
-#: views.py:307
+#: views.py:306
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Assinaturas para a versão do documento: %s"
 
-#: views.py:337
+#: views.py:336
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Carregar a assinatura destacada para a versão do documento: %s"
 
-#: views.py:354
+#: views.py:353
 msgid "On large databases this operation may take some time to execute."
 msgstr "Em grandes bases de dados esta operação pode levar algum tempo para executar."
 
-#: views.py:355
+#: views.py:354
 msgid "Verify all document for signatures?"
 msgstr "Verificar todos os documentos para assinaturas?"
 
-#: views.py:365
+#: views.py:364
 msgid "Signature verification queued successfully."
 msgstr "Verificação de assinaturas colocada em fila."
 

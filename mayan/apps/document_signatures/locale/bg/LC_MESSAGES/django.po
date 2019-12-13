@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:34-0400\n"
+"POT-Creation-Date: 2019-12-13 01:09-0400\n"
 "PO-Revision-Date: 2019-12-04 16:58+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -109,7 +109,7 @@ msgstr "Тип ключ"
 msgid "Verify all documents"
 msgstr "Проверете всички документи"
 
-#: links.py:39 links.py:58 queues.py:9
+#: links.py:39 links.py:79 queues.py:9
 msgid "Signatures"
 msgstr "Подписи"
 
@@ -118,24 +118,24 @@ msgid "Delete"
 msgstr "Изтрийте"
 
 #: links.py:52
-msgid "Details"
-msgstr "Детайли"
-
-#: links.py:63
-msgid "Download"
-msgstr "Сваляне"
-
-#: links.py:69
-msgid "Upload signature"
-msgstr "Качване на подпис"
-
-#: links.py:76
 msgid "Sign detached"
 msgstr "Подпис отделен"
 
-#: links.py:83
+#: links.py:59
+msgid "Details"
+msgstr "Детайли"
+
+#: links.py:66
+msgid "Download"
+msgstr "Сваляне"
+
+#: links.py:72
 msgid "Sign embedded"
 msgstr "Подпис вграден"
+
+#: links.py:85
+msgid "Upload signature"
+msgstr "Качване на подпис"
 
 #: models.py:40
 msgid "Document version"
@@ -285,36 +285,36 @@ msgstr "Изтрийте отделен подпис: %s"
 msgid "Details for signature: %s"
 msgstr "Подробности за подпис: %s"
 
-#: views.py:276
+#: views.py:275
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr "Подписите помагат за предоставяне на доказателства за авторство и откриване на подправки. Те са много сигурни и трудно подправящи се. Подписът може да бъде вграден като част от самия документ или качен като отделен файл."
 
-#: views.py:304
+#: views.py:303
 msgid "There are no signatures for this document."
 msgstr "Няма подписи за този документ."
 
-#: views.py:307
+#: views.py:306
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Подписи за версия на документа: %s"
 
-#: views.py:337
+#: views.py:336
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Качете отделен подпис за версия на документа: %s"
 
-#: views.py:354
+#: views.py:353
 msgid "On large databases this operation may take some time to execute."
 msgstr "При големи бази данни тази операция може да отнеме известно време за изпълнение."
 
-#: views.py:355
+#: views.py:354
 msgid "Verify all document for signatures?"
 msgstr "Проверете всички документи за подписи?"
 
-#: views.py:365
+#: views.py:364
 msgid "Signature verification queued successfully."
 msgstr "Проверката на подписа успешно е поставена на опашка."
 

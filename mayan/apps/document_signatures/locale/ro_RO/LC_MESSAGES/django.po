@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:34-0400\n"
+"POT-Creation-Date: 2019-12-13 01:09-0400\n"
 "PO-Revision-Date: 2019-12-03 13:28+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -109,7 +109,7 @@ msgstr "Tipul cheii"
 msgid "Verify all documents"
 msgstr "Verificați toate documentele"
 
-#: links.py:39 links.py:58 queues.py:9
+#: links.py:39 links.py:79 queues.py:9
 msgid "Signatures"
 msgstr "Semnături"
 
@@ -118,24 +118,24 @@ msgid "Delete"
 msgstr "Șterge"
 
 #: links.py:52
-msgid "Details"
-msgstr "Detalii"
-
-#: links.py:63
-msgid "Download"
-msgstr "Descarcă"
-
-#: links.py:69
-msgid "Upload signature"
-msgstr "Încărcați semnătura"
-
-#: links.py:76
 msgid "Sign detached"
 msgstr "Semnează detașat"
 
-#: links.py:83
+#: links.py:59
+msgid "Details"
+msgstr "Detalii"
+
+#: links.py:66
+msgid "Download"
+msgstr "Descarcă"
+
+#: links.py:72
 msgid "Sign embedded"
 msgstr "Semnează încorporat"
+
+#: links.py:85
+msgid "Upload signature"
+msgstr "Încărcați semnătura"
 
 #: models.py:40
 msgid "Document version"
@@ -285,36 +285,36 @@ msgstr "Ștergeți semnătura detașată: %s"
 msgid "Details for signature: %s"
 msgstr "Detalii pentru semnătura: %s"
 
-#: views.py:276
+#: views.py:275
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr "Semnăturile vă ajută să furnizați dovezi de autorizare și detectarea fraudelor. Sunt foarte sigure și greu de falsificat. O semnătură poate fi încorporată ca parte a documentului sau încărcată ca fișier separat."
 
-#: views.py:304
+#: views.py:303
 msgid "There are no signatures for this document."
 msgstr "Nu există semnături pentru acest document."
 
-#: views.py:307
+#: views.py:306
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Semnături pentru versiunea documentului: %s"
 
-#: views.py:337
+#: views.py:336
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Încărcați semnătura detașată pentru versiunea documentului: %s"
 
-#: views.py:354
+#: views.py:353
 msgid "On large databases this operation may take some time to execute."
 msgstr "Pe baze de date mari, această operație poate dura ceva timp pentru a executa."
 
-#: views.py:355
+#: views.py:354
 msgid "Verify all document for signatures?"
 msgstr "Verificați toate documentele pentru semnături?"
 
-#: views.py:365
+#: views.py:364
 msgid "Signature verification queued successfully."
 msgstr "Verificarea semnăturilor a intrat în coada de așteptare."
 

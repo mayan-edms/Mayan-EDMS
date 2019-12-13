@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:34-0400\n"
+"POT-Creation-Date: 2019-12-13 01:09-0400\n"
 "PO-Revision-Date: 2019-12-03 05:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -108,7 +108,7 @@ msgstr "نوع کلید"
 msgid "Verify all documents"
 msgstr "همه اسناد را تأیید کنید"
 
-#: links.py:39 links.py:58 queues.py:9
+#: links.py:39 links.py:79 queues.py:9
 msgid "Signatures"
 msgstr "امضا"
 
@@ -117,24 +117,24 @@ msgid "Delete"
 msgstr "حذف"
 
 #: links.py:52
-msgid "Details"
-msgstr "جزئیات"
-
-#: links.py:63
-msgid "Download"
-msgstr "دانلود"
-
-#: links.py:69
-msgid "Upload signature"
-msgstr "امضا آپلود"
-
-#: links.py:76
 msgid "Sign detached"
 msgstr "مستقل نشوید"
 
-#: links.py:83
+#: links.py:59
+msgid "Details"
+msgstr "جزئیات"
+
+#: links.py:66
+msgid "Download"
+msgstr "دانلود"
+
+#: links.py:72
 msgid "Sign embedded"
 msgstr "ورودی جاسازی شده"
+
+#: links.py:85
+msgid "Upload signature"
+msgstr "امضا آپلود"
 
 #: models.py:40
 msgid "Document version"
@@ -284,36 +284,36 @@ msgstr "امضای جداگانه را حذف کنید: %s"
 msgid "Details for signature: %s"
 msgstr "جزئیات برای امضا: %s"
 
-#: views.py:276
+#: views.py:275
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr ""
 
-#: views.py:304
+#: views.py:303
 msgid "There are no signatures for this document."
 msgstr ""
 
-#: views.py:307
+#: views.py:306
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "امضا برای نسخه سند: %s"
 
-#: views.py:337
+#: views.py:336
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "امضای جداگانه برای نسخه سند آپلود: %s"
 
-#: views.py:354
+#: views.py:353
 msgid "On large databases this operation may take some time to execute."
 msgstr "در پایگاه داده های بزرگ این عملیات ممکن است برای اجرای برخی از زمان ها طول بکشد."
 
-#: views.py:355
+#: views.py:354
 msgid "Verify all document for signatures?"
 msgstr "همه سند را برای امضاء تأیید کنید؟"
 
-#: views.py:365
+#: views.py:364
 msgid "Signature verification queued successfully."
 msgstr "تأیید امضا با موفقیت انجام شد."
 

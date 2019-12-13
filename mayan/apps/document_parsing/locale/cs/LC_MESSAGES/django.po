@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:34-0400\n"
+"POT-Creation-Date: 2019-12-13 01:09-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -65,7 +65,7 @@ msgstr "Obsah"
 msgid "Delete parsed content"
 msgstr "Smazat analyzovaný obsah"
 
-#: links.py:44 links.py:82 views.py:224
+#: links.py:44 links.py:82 views.py:222
 msgid "Parsing errors"
 msgstr "Chyby analýzy"
 
@@ -190,50 +190,50 @@ msgstr[3] "Smazat analyzovaný obsah vybraných dokumentů?"
 msgid "Content for document: %s"
 msgstr "Obsah dokumentu: %s"
 
-#: views.py:105
+#: views.py:103
 #, python-format
 msgid "Content for document page: %s"
 msgstr "Obsah stránky dokumentu: %s"
 
-#: views.py:120
+#: views.py:118
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "Chyby analýzy dokumentu: %s"
 
-#: views.py:132
+#: views.py:130
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)d dokument přidán do fronty pro analýzu"
 
-#: views.py:135
+#: views.py:133
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d dokumenty přidané do fronty pro analýzu"
 
-#: views.py:143
+#: views.py:141
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
-msgid_plural "Submit %(count)d documents to the parsing queue"
-msgstr[0] "Odeslat dokument %(count)d do fronty pro analýzu?"
-msgstr[1] "Odešlete dokumenty %(count)d do fronty pro analýzu"
-msgstr[2] "Odešlete dokumenty %(count)d do fronty pro analýzu"
-msgstr[3] "Odešlete dokumenty %(count)d do fronty pro analýzu"
+msgid_plural "Submit %(count)d documents to the parsing queue?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
-#: views.py:156
+#: views.py:154
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "Zašlete dokument &quot;%s&quot; do fronty pro analýzu"
 
-#: views.py:181
+#: views.py:179
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr "Upravit nastavení analýzy typu dokumentu: %s."
 
-#: views.py:191
-msgid "Submit all documents of a type for parsing."
-msgstr "Odešlete všechny dokumenty daného typu k analýze."
+#: views.py:189
+msgid "Submit all documents of a type for parsing"
+msgstr ""
 
-#: views.py:212
+#: views.py:210
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d dokumenty přidané do fronty pro analýzu."

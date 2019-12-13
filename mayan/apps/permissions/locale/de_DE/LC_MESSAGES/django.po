@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 23:37-0400\n"
-"PO-Revision-Date: 2019-11-08 11:14+0000\n"
-"Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
+"POT-Creation-Date: 2019-12-13 01:11-0400\n"
+"PO-Revision-Date: 2019-12-13 05:15+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:43 events.py:8 models.py:36 models.py:105 permissions.py:7
+#: apps.py:43 events.py:8 models.py:36 models.py:106 permissions.py:7
 msgid "Permissions"
 msgstr "Berechtigungen"
 
@@ -43,11 +43,11 @@ msgstr "Rolle erstellt"
 msgid "Role edited"
 msgstr "Rolle bearbeitet"
 
-#: links.py:16 links.py:40 models.py:116 views.py:165
+#: links.py:16 links.py:40 models.py:117 views.py:168
 msgid "Roles"
 msgstr "Rollen"
 
-#: links.py:23
+#: links.py:23 views.py:53
 msgid "Create new role"
 msgstr "Erstellen"
 
@@ -59,7 +59,7 @@ msgstr "Löschen"
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:45 models.py:108
+#: links.py:45 models.py:109
 msgid "Groups"
 msgstr "Gruppen"
 
@@ -79,11 +79,15 @@ msgstr "Name"
 msgid "Permission"
 msgstr "Berechtigung"
 
-#: models.py:101 search.py:16
+#: models.py:101
+msgid "A short text describing the role."
+msgstr ""
+
+#: models.py:102 search.py:16
 msgid "Label"
 msgstr "Bezeichnung"
 
-#: models.py:115
+#: models.py:116
 msgid "Role"
 msgstr "Rolle"
 
@@ -135,44 +139,44 @@ msgstr "Gruppenrollen"
 msgid "Roles of group: %s"
 msgstr "Rollen von Gruppe %s"
 
-#: views.py:79
+#: views.py:82
 msgid "Available groups"
 msgstr "Verfügbare Gruppen"
 
-#: views.py:80
+#: views.py:83
 msgid "Role groups"
 msgstr "Rollengruppen"
 
-#: views.py:89
+#: views.py:92
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Gruppen für Rolle %s"
 
-#: views.py:91
+#: views.py:94
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr "Fügen Sie Gruppen hinzu um Rollenberechtigungen zu erlangen. Die Berechtigungen werden ererbt von den Berechtigungen und Zugriffsberechtigungen der Rolle."
 
-#: views.py:104
+#: views.py:107
 msgid "Available permissions"
 msgstr "Verfügbare Berechtigungen"
 
-#: views.py:105
+#: views.py:108
 msgid "Granted permissions"
 msgstr "Erteilte Berechtigungen"
 
-#: views.py:137
+#: views.py:140
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr "Hier erteilte Berechtigungen gelten für das gesamte System und sämtliche Objekte."
 
-#: views.py:140
+#: views.py:143
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Berechtigungen der Rolle %s"
 
-#: views.py:157
+#: views.py:160
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -180,6 +184,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr "Rolle sind Autorisierungseinheiten. Sie sind Benutzergruppen zugeordnet, die die Rollenberechtigungen für das gesamte System erben. Rollen können auch Bestandteil von Zugriffsberechtigungslisten sein. Zugriffsberechtigungslisten beinhalten Berechtigungen für spezifische Objekte."
 
-#: views.py:164
+#: views.py:167
 msgid "There are no roles"
 msgstr "Keine Rolle vorhanden"
