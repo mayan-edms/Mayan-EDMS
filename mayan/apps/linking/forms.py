@@ -1,10 +1,9 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.classes import ModelField, ModelProperty
+from mayan.apps.common.classes import ModelField
 from mayan.apps.documents.models import Document
 from mayan.apps.templating.fields import TemplateField
 
