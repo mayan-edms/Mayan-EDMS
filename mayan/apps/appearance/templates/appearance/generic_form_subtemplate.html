@@ -77,8 +77,6 @@
                     <button class="btn btn-primary btn-hotkey-default" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit">
                         {% if submit_icon_class %}
                             {{ submit_icon_class.render }}
-                        {% elif submit_icon %}
-                            <i class="{{ submit_icon }}"></i>
                         {% else %}
                             <i class="fa fa-check"></i>
                         {% endif %}

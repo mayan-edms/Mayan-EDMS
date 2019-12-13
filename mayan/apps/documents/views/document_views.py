@@ -32,8 +32,8 @@ from ..forms import (
     DocumentTypeFilteredSelectForm,
 )
 from ..icons import (
-    icon_document_list, icon_document_list_recent_access,
-    icon_recent_added_document_list
+    icon_document_download, icon_document_list,
+    icon_document_list_recent_access, icon_recent_added_document_list
 )
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
 from ..models import Document, RecentDocument
@@ -193,15 +193,16 @@ class DocumentDownloadFormView(MultipleObjectFormActionView):
                 'context': {
                     'object_list': self.queryset,
                     'hide_links': True,
-                    'hide_multi_item_actions': True,
+                    'hide_multi_item_actions': True
                 }
             }
         ]
 
         context = {
+            'submit_icon_class': icon_document_download,
             'submit_label': _('Download'),
             'subtemplates_list': subtemplates_list,
-            'title': _('Download documents'),
+            'title': _('Download documents')
         }
 
         if self.queryset.count() == 1:
