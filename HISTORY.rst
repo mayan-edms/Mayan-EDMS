@@ -1,5 +1,5 @@
-3.3.5 (2019-XX-XX)
-=================
+3.3.5 (2019-12-13)
+==================
 - Pin django-timezone-field to version 3.1. GitLab issue #698.
   Thanks to Rob de Canha-Knight (@rssfed23) for the report
   and research.
@@ -7,7 +7,7 @@
   Rob de Canha-Knight (@rssfed23) for the report and the research.
 - Update instances of the word "weblink" to "web link".
 - Unify the creation of the temporary config file used in tests.
-- Update all 0001 setting migrations to not accept manually migrated
+- Update all 0001 setting migrations to accept manually migrated
   settings.
 - Update TemplateField to concatenate existing help texts.
 - Don't show the edit and delete links for resolved web links.
@@ -21,7 +21,7 @@
 - Add BaseTransformationType metaclass in a way compatible with
   Python 2 and Python 3.
 - Remove Django DownloadView library. Implement downloads natively
-  using modified port of Django 2.2 FileResponse.
+  using a modified port of Django 2.2 FileResponse.
 - Increase the role label field size from 64 to 128 characters.
 - Increase the smart link label size from 96 to 128 characters.
 - Increase the source label field size from 64 to 128 characters.
