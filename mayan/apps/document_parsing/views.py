@@ -139,7 +139,7 @@ class DocumentSubmitView(MultipleObjectConfirmActionView):
         result = {
             'title': ungettext(
                 singular='Submit %(count)d document to the parsing queue?',
-                plural='Submit %(count)d documents to the parsing queue',
+                plural='Submit %(count)d documents to the parsing queue?',
                 number=queryset.count()
             ) % {
                 'count': queryset.count(),
@@ -186,7 +186,7 @@ class DocumentTypeSettingsEditView(ExternalObjectMixin, SingleObjectEditView):
 
 class DocumentTypeSubmitView(FormView):
     extra_context = {
-        'title': _('Submit all documents of a type for parsing.')
+        'title': _('Submit all documents of a type for parsing')
     }
     form_class = DocumentTypeFilteredSelectForm
     post_action_redirect = reverse_lazy(viewname='common:tools_list')

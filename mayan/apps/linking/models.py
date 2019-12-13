@@ -24,7 +24,8 @@ class SmartLink(models.Model):
     Django's database filter operations.
     """
     label = models.CharField(
-        db_index=True, max_length=96, verbose_name=_('Label')
+        db_index=True, help_text=_('A short text describing the smart link.'),
+        max_length=128, verbose_name=_('Label')
     )
     dynamic_label = models.CharField(
         blank=True, max_length=96, help_text=_(

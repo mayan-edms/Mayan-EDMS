@@ -19,7 +19,10 @@ from .models import (
 
 
 class WorkflowActionSelectionForm(forms.Form):
-    klass = forms.ChoiceField(choices=(), label=_('Action'))
+    klass = forms.ChoiceField(
+        choices=(), help_text=_('The action type for this action entry.'),
+        label=_('Action')
+    )
 
     def __init__(self, *args, **kwargs):
         super(WorkflowActionSelectionForm, self).__init__(*args, **kwargs)

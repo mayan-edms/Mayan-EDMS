@@ -57,15 +57,17 @@ class EmailBaseModel(IntervalBaseModel):
     )
     subject_metadata_type = models.ForeignKey(
         blank=True, help_text=_(
-            'Select a metadata type valid for the document type selected in '
-            'which to store the email\'s subject.'
+            'Select a metadata type to store the email\'s subject value. '
+            'Must be a valid metadata type for the document type selected '
+            'previously.'
         ), on_delete=models.CASCADE, null=True, related_name='email_subject',
         to=MetadataType, verbose_name=_('Subject metadata type')
     )
     from_metadata_type = models.ForeignKey(
         blank=True, help_text=_(
-            'Select a metadata type valid for the document type selected in '
-            'which to store the email\'s "from" value.'
+            'Select a metadata type to store the email\'s "from" value. '
+            'Must be a valid metadata type for the document type selected '
+            'previously.'
         ), on_delete=models.CASCADE, null=True, related_name='email_from',
         to=MetadataType, verbose_name=_('From metadata type')
     )

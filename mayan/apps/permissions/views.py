@@ -49,6 +49,9 @@ class RoleCreateView(SingleObjectCreateView):
     view_permission = permission_role_create
     post_action_redirect = reverse_lazy(viewname='permissions:role_list')
 
+    def get_extra_context(self):
+        return {'title': _('Create new role')}
+
     def get_save_extra_data(self):
         return {'_user': self.request.user}
 

@@ -45,6 +45,7 @@ class UserMailer(models.Model):
     their use.
     """
     label = models.CharField(
+        help_text=_('A short text describing the mailing profile.'),
         max_length=128, unique=True, verbose_name=_('Label')
     )
     default = models.BooleanField(
@@ -67,8 +68,8 @@ class UserMailer(models.Model):
 
     class Meta:
         ordering = ('label',)
-        verbose_name = _('User mailer')
-        verbose_name_plural = _('User mailers')
+        verbose_name = _('Mailing profile')
+        verbose_name_plural = _('Mailing profiles')
 
     def __str__(self):
         return self.label

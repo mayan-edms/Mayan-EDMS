@@ -27,7 +27,8 @@ logger = logging.getLogger(__name__)
 @python_2_unicode_compatible
 class Source(models.Model):
     label = models.CharField(
-        db_index=True, max_length=64, unique=True, verbose_name=_('Label')
+        db_index=True, help_text=_('A short text to describe this source.'),
+        max_length=128, unique=True, verbose_name=_('Label')
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 

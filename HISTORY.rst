@@ -22,6 +22,11 @@
   Python 2 and Python 3.
 - Remove Django DownloadView library. Implement downloads natively
   using modified port of Django 2.2 FileResponse.
+- Increase the role label field size from 64 to 128 characters.
+- Increase the smart link label size from 96 to 128 characters.
+- Increase the source label field size from 64 to 128 characters.
+- Add missing link icons.
+- Add missing field help texts.
 
 3.3.4 (2019-12-09)
 ==================
