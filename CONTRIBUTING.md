@@ -4,21 +4,25 @@ Contributing to Mayan EDMS
 Issues
 ------
 
-- Before submitting a new issue, check for **open issues** first and join the
-discussion.
+- The issue system is for reporting problems with the program code. For
+questions use the forum at: https://forum.mayan-edms.com/
+- Do not open issues asking for **support or consulting**. For paid support
+and consultation visit: https://www.mayan-edms.com/support/
+- The issue must be related to the code only, do not open issues for problems
+with databases, deployments, webservers, cloud providers, etc.
+- Before submitting a new issue, check for **existing issues** first and
+join the discussion.
 - If your issue is not attended in a while, **be patient**, the core team is
 small and the codebase big.
-- Try to reproduce the issue using a **separate, clean installation**, sometimes
-the issue can be caused by an error in a configuration file and not with the
-code itself.
-- **Do not upload** sensitive, private or classified information or files with
-your issue. If the issue is triggered by a user file, create a dummy file with the
-same properties that can trigger the issue and upload that file instead.
+- Try to reproduce the issue using a **separate, clean installation**,
+sometimes the issue can be caused by an error in a configuration file and
+not with the code itself.
+- **Do not upload** sensitive, private or classified information or files
+with your issue. If the issue is triggered by a user file, create a dummy
+file with the same properties that can trigger the issue and upload that
+file instead.
 - Add steps that trigger the issue in a **repeatable manner**.
 - **Screenshots** go a long way in helping understand problems.
-- The issue must be related to the code only, do not open issues for problems
-with deployments, webservers, cloud providers, etc.
-- Do not open issues asking for **support or consulting**.
 
 Code
 ----
