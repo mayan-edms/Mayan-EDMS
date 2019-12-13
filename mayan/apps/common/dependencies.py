@@ -62,9 +62,6 @@ PythonDependency(
     ''', module=__name__, name='PyYAML', version_string='==5.1.2'
 )
 PythonDependency(
-    module=__name__, name='django-downloadview', version_string='==1.9'
-)
-PythonDependency(
     module=__name__, name='django-formtools', version_string='==2.1'
 )
 PythonDependency(
