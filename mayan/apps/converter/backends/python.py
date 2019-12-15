@@ -145,17 +145,7 @@ class Python(ConverterBase):
                         if force_text(exception) == 'only algorithm code 1 and 2 are supported':
                             # PDF uses an unsupported encryption
                             # Try poppler-util's pdfinfo
-                            process = pdfinfo('-', _in=file_object)
-                            page_count = int(
-                                filter(
-                                    lambda line: line.startswith('Pages:'),
-                                    force_text(process.stdout).split('\n')
-                                )[0].replace('Pages:', '')
-                            )
-                            file_object.seek(0)
-                            logger.debug(
-                                'Document contains %d pages', page_count
-                            )
+                            page_count = self.get_pdfinfo_page_count(file_object)
                             return page_count
                         else:
                             error_message = _(
@@ -163,6 +153,13 @@ class Python(ConverterBase):
                             ) % exception
                             logger.error(error_message)
                             raise PageCountError(error_message)
+                elif force_text(exception) == 'EOF marker not found':
+                    # PyPDF2 issue: https://github.com/mstamy2/PyPDF2/issues/177
+                    # Try poppler-util's pdfinfo
+                    logger.debug('PyPDF2 GitHub issue #177 : EOF marker not found')
+                    file_object.seek(0)
+                    page_count = self.get_pdfinfo_page_count(file_object)
+                    return page_count
                 else:
                     error_message = _(
                         'Exception determining PDF page count; %s'
@@ -195,3 +192,17 @@ class Python(ConverterBase):
                 pass
 
             return page_count
+
+    def get_pdfinfo_page_count(self, file_object):
+        process = pdfinfo('-', _in=file_object)
+        page_count = int(
+            list(filter(
+                lambda line: line.startswith('Pages:'),
+                force_text(process.stdout).split('\n')
+            ))[0].replace('Pages:', '')
+        )
+        file_object.seek(0)
+        logger.debug(
+            'Document contains %d pages', page_count
+        )
+        return page_count
