@@ -1,3 +1,7 @@
+3.3.6 (2019-12-XX)
+==================
+- Make list toolbar stick to the top of the view when scrolling.
+
 3.3.5 (2019-12-13)
 ==================
 - Pin django-timezone-field to version 3.1. GitLab issue #698.

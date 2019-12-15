@@ -277,6 +277,53 @@ class MayanApp {
         })
     }
 
+    setupListToolbar () {
+        var $listToolbar = $('#list-toolbar');
+
+        if ($listToolbar.length !== 0) {
+            var $listToolbarClearfix = $listToolbar.closest('.clearfix');
+            var $listToolbarSpacer = $('#list-toolbar-spacer');
+            var navBarOuterHeight = $('.navbar-fixed-top').outerHeight();
+
+            $listToolbarSpacer.height($listToolbarClearfix.height()).hide();
+
+            $listToolbar.css(
+                {
+                    width: $listToolbarClearfix.width(),
+                }
+            );
+
+            $listToolbar.affix({
+                offset: {
+                    top: $listToolbar.offset().top - navBarOuterHeight,
+                },
+            });
+
+            $listToolbar.on('affix.bs.affix', function () {
+                $listToolbarSpacer.show();
+
+                $listToolbar.css(
+                    {
+                        width: $listToolbarClearfix.width(),
+                    }
+                );
+            });
+
+
+            $listToolbar.on('affix-top.bs.affix', function () {
+                $listToolbarSpacer.hide();
+            });
+
+            this.window.on('resize', function () {
+                $listToolbar.css(
+                    {
+                        width: $listToolbarClearfix.width(),
+                    }
+                );
+            });
+        }
+    }
+
     setupNavbarCollapse () {
         $(document).keyup(function(e) {
             if (e.keyCode === 27) {
