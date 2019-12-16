@@ -1,6 +1,12 @@
 3.3.6 (2019-12-XX)
 ==================
 - Make list toolbar stick to the top of the view when scrolling.
+- Fix page count on some PDF files, and fix a Python 3 incompatibility.
+  GitLab merge !64. Thanks to O2 Graphics (@O2Graphics).
+- Improve the executables paths on FreeBSD/OpenBSD. GitLab merge !63.
+  Thanks to O2 Graphics (@O2Graphics).
+- Fix document orientaton detection. GitLab issue #713. Thanks to
+  Rob de Canha-Knight (@rssfed23) for the report and debug information.
 
 3.3.5 (2019-12-13)
 ==================

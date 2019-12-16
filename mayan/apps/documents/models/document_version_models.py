@@ -156,8 +156,8 @@ class DocumentVersion(models.Model):
         for page in self.pages.all():
             degrees = page.detect_orientation()
             if degrees:
-                layer_saved_transformations.add_to_object(
-                    obj=page, transformation=TransformationRotate,
+                layer_saved_transformations.add_transformation_to(
+                    obj=page, transformation_class=TransformationRotate,
                     arguments='{{"degrees": {}}}'.format(360 - degrees)
                 )
 
