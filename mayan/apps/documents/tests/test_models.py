@@ -136,7 +136,7 @@ class DocumentTestCase(GenericDocumentTestCase):
 class PDFAlternateRotationTestCase(GenericDocumentTestCase):
     test_document_filename = TEST_PDF_ROTATE_ALTERNATE_LABEL
 
-    def test_indirect_rotate(self):
+    def test_rotate(self):
         self.assertQuerysetEqual(
             qs=Document.objects.all(), values=(repr(self.test_document),)
         )
@@ -151,7 +151,7 @@ class PDFAlternateRotationTestCase(GenericDocumentTestCase):
 class PDFIndirectRotationTestCase(GenericDocumentTestCase):
     test_document_filename = TEST_PDF_INDIRECT_ROTATE_LABEL
 
-    def test_alternate_rotate(self):
+    def test_rotate(self):
         self.assertQuerysetEqual(
             qs=Document.objects.all(), values=(repr(self.test_document),)
         )
