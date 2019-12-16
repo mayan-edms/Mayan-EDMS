@@ -7,6 +7,9 @@
   Thanks to O2 Graphics (@O2Graphics).
 - Fix document orientaton detection. GitLab issue #713. Thanks to
   Rob de Canha-Knight (@rssfed23) for the report and debug information.
+- Update the Redis lock connection intialization so that is works with Redis
+  versions < 5.0. GitLab issue #709. Rob de Canha-Knight (@rssfed23) for the
+  report and debug information.
 
 3.3.5 (2019-12-13)
 ==================

@@ -18,7 +18,8 @@ class RedisLock(LockingBackend):
     def get_redis_connection(cls):
         redis_url = setting_backend_arguments.value.get('redis_url', None)
         server = redis.from_url(url=redis_url)
-        server.client_id()
+        # Force to initialize the connection
+        server.client()
         return server
 
     @classmethod
