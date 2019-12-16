@@ -10,6 +10,8 @@
 - Update the Redis lock connection intialization so that is works with Redis
   versions < 5.0. GitLab issue #709. Rob de Canha-Knight (@rssfed23) for the
   report and debug information.
+- Update the ZipArchive class to work with badly encoded filenames.
+  GitLab issue #651. Thanks to Fabian (@ruffy91) for the report.
 
 3.3.5 (2019-12-13)
 ==================
