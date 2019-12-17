@@ -15,6 +15,8 @@
 - Delete periodic task on document type delete. Closes Gitlab
   issue #715. Thanks to Rob de Canha-Knight (@rssfed23) for the
   report and research.
+- Add transaction handling to the interval sources delete and save
+  methods.
 
 3.3.5 (2019-12-13)
 ==================
