@@ -176,11 +176,10 @@ class IntervalBaseModel(OutOfProcessSource):
         verbose_name=_('Interval')
     )
     document_type = models.ForeignKey(
-        DocumentType,
         help_text=_(
             'Assign a document type to documents uploaded from this source.'
-        ), on_delete=models.CASCADE,
-        verbose_name=_('Document type')
+        ), on_delete=models.CASCADE, to=DocumentType,
+        related_name='interval_sources', verbose_name=_('Document type')
     )
     uncompress = models.CharField(
         choices=SOURCE_UNCOMPRESS_CHOICES,
