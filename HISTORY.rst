@@ -12,6 +12,9 @@
   report and debug information.
 - Update the ZipArchive class to work with badly encoded filenames.
   GitLab issue #651. Thanks to Fabian (@ruffy91) for the report.
+- Delete periodic task on document type delete. Closes Gitlab
+  issue #715. Thanks to Rob de Canha-Knight (@rssfed23) for the
+  report and research.
 
 3.3.5 (2019-12-13)
 ==================
