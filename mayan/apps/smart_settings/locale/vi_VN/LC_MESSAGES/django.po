@@ -34,11 +34,11 @@ msgid "Value"
 msgstr "Giá trị"
 
 #: classes.py:350
-msgid "Overrided"
+msgid "Overridden"
 msgstr ""
 
 #: classes.py:352
-msgid "Is this settings being overrided by an environment variable?"
+msgid "Is this settings being overridden by an environment variable?"
 msgstr ""
 
 #: forms.py:14

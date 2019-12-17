@@ -39,7 +39,7 @@ class SmartSettingsApp(MayanAppConfig):
             attribute='serialized_value', label=_('Value'), source=Setting
         )
         SourceColumn(
-            attribute='is_overrided', source=Setting, widget=TwoStateWidget
+            attribute='is_overridden', source=Setting, widget=TwoStateWidget
         )
 
         menu_object.bind_links(

@@ -344,12 +344,12 @@ class Setting(object):
     def invalidate_cache(self):
         self.loaded = False
 
-    def is_overrided(self):
+    def is_overridden(self):
         return self.environment_variable
 
-    is_overrided.short_description = _('Overrided')
-    is_overrided.help_text = _(
-        'Is this settings being overrided by an environment variable?'
+    is_overridden.short_description = _('Overridden')
+    is_overridden.help_text = _(
+        'Is this settings being overridden by an environment variable?'
     )
 
     def migrate(self):
