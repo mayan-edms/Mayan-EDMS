@@ -197,7 +197,7 @@ class IntervalBaseModel(OutOfProcessSource):
     def _delete_periodic_task(self, pk=None):
         try:
             periodic_task = PeriodicTask.objects.get(
-                name=self._get_periodic_task_name(pk)
+                name=self._get_periodic_task_name(pk=pk)
             )
 
             interval_instance = periodic_task.interval
@@ -219,7 +219,7 @@ class IntervalBaseModel(OutOfProcessSource):
     def delete(self, *args, **kwargs):
         pk = self.pk
         super(IntervalBaseModel, self).delete(*args, **kwargs)
-        self._delete_periodic_task(pk)
+        self._delete_periodic_task(pk=pk)
 
     def save(self, *args, **kwargs):
         new_source = not self.pk
