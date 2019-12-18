@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 01:08-0400\n"
+"POT-Creation-Date: 2019-12-18 00:26-0400\n"
 "PO-Revision-Date: 2019-12-05 10:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
@@ -26,12 +26,12 @@ msgstr "转换器"
 msgid "Transformation"
 msgstr "转换"
 
-#: backends/python.py:162 backends/python.py:168
+#: backends/python.py:152 backends/python.py:165
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "确定PDF页数时异常; %s"
 
-#: backends/python.py:182
+#: backends/python.py:179
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr "使用Pillow确定页数时异常; %s"

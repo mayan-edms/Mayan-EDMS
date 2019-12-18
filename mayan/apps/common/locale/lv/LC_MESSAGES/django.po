@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 01:08-0400\n"
+"POT-Creation-Date: 2019-12-18 00:26-0400\n"
 "PO-Revision-Date: 2019-12-04 06:49+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -30,19 +30,19 @@ msgstr "Pieejamie atribūti: \n"
 msgid "Available fields: \n"
 msgstr "Pieejamie lauki: \n"
 
-#: dependencies.py:309
+#: dependencies.py:308
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Izmantots, lai atļautu koda teksta virkņu bezsaistes tulkojumu."
 
-#: dependencies.py:314
+#: dependencies.py:313
 msgid "Provides style checking."
 msgstr "Nodrošina stila pārbaudi."
 
-#: dependencies.py:319
+#: dependencies.py:318
 msgid "Command line environment with autocompletion."
 msgstr "Komandrindas vide ar automātisko aizpildi."
 
-#: dependencies.py:324
+#: dependencies.py:323
 msgid "Checks proper formatting of the README file."
 msgstr "Pārbauda README faila pareizu formatēšanu."
 
@@ -171,26 +171,26 @@ msgstr "Atbalsts"
 msgid "Tools"
 msgstr "Rīki"
 
-#: literals.py:13
+#: literals.py:14
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Šī funkcija ir novecojusi un tiks noņemta turpmākajā versijā."
 
-#: literals.py:16
+#: literals.py:17
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "Jūsu datubāzes backend ir iestatīts, lai izmantotu SQLite. SQLite jāizmanto tikai izstrādei un testēšanai, nevis ražošanai."
 
-#: literals.py:34
+#: literals.py:35
 msgid "Days"
 msgstr "Dienas"
 
-#: literals.py:35
+#: literals.py:36
 msgid "Hours"
 msgstr "Stundas"
 
-#: literals.py:36
+#: literals.py:37
 msgid "Minutes"
 msgstr "Minūtes"
 

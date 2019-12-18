@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 01:07-0400\n"
+"POT-Creation-Date: 2019-12-18 00:25-0400\n"
 "PO-Revision-Date: 2019-12-03 22:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:10 settings.py:9
+#: apps.py:11 settings.py:9
 msgid "Appearance"
 msgstr "Apariencia"
 
@@ -220,7 +220,7 @@ msgstr "Acciones"
 
 #: templates/appearance/base.html:62
 #: templates/appearance/generic_list_items_subtemplate.html:68
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Alternar desplegable"
 
@@ -293,16 +293,16 @@ msgstr "Total (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de %(t
 msgid "Total: %(total)s"
 msgstr "Total: %(total)s"
 
-#: templates/appearance/list_toolbar.html:14
+#: templates/appearance/list_toolbar.html:16
 msgid "Select/Deselect all"
 msgstr "Seleccionar / Deseleccionar todo"
 
-#: templates/appearance/list_toolbar.html:58
+#: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr "Seleccione elementos para activar acciones masivas. Use Shift + clic para seleccionar muchos."
 
-#: templates/appearance/list_toolbar.html:63
+#: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "Acciones masivas"
 

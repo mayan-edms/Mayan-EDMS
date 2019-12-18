@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 01:08-0400\n"
+"POT-Creation-Date: 2019-12-18 00:26-0400\n"
 "PO-Revision-Date: 2019-12-03 13:29+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -31,19 +31,19 @@ msgstr "Atributele disponibile:\n"
 msgid "Available fields: \n"
 msgstr "Câmpuri disponibile:\n"
 
-#: dependencies.py:309
+#: dependencies.py:308
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Folosit pentru a permite traducerea offline a șirurilor de text cod."
 
-#: dependencies.py:314
+#: dependencies.py:313
 msgid "Provides style checking."
 msgstr "Oferă verificarea stilului."
 
-#: dependencies.py:319
+#: dependencies.py:318
 msgid "Command line environment with autocompletion."
 msgstr "Mediul liniei de comandă cu autocompletare."
 
-#: dependencies.py:324
+#: dependencies.py:323
 msgid "Checks proper formatting of the README file."
 msgstr "Verifică formatarea corectă a fișierului README."
 
@@ -172,26 +172,26 @@ msgstr "Suport tehnic"
 msgid "Tools"
 msgstr "Unelte"
 
-#: literals.py:13
+#: literals.py:14
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Această caracteristică a fost depreciată și va fi eliminată într-o versiune viitoare."
 
-#: literals.py:16
+#: literals.py:17
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "Backendul bazei de date este setat să utilizeze SQLite. SQLite ar trebui folosit numai pentru dezvoltare și testare, nu pentru producție."
 
-#: literals.py:34
+#: literals.py:35
 msgid "Days"
 msgstr "Zile"
 
-#: literals.py:35
+#: literals.py:36
 msgid "Hours"
 msgstr "Ore"
 
-#: literals.py:36
+#: literals.py:37
 msgid "Minutes"
 msgstr "Minute"
 

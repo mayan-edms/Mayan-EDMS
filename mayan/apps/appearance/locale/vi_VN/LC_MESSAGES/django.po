@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 01:07-0400\n"
+"POT-Creation-Date: 2019-12-18 00:25-0400\n"
 "PO-Revision-Date: 2019-12-03 05:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:10 settings.py:9
+#: apps.py:11 settings.py:9
 msgid "Appearance"
 msgstr ""
 
@@ -219,7 +219,7 @@ msgstr "Các thao tác"
 
 #: templates/appearance/base.html:62
 #: templates/appearance/generic_list_items_subtemplate.html:68
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr ""
 
@@ -292,16 +292,16 @@ msgstr ""
 msgid "Total: %(total)s"
 msgstr ""
 
-#: templates/appearance/list_toolbar.html:14
+#: templates/appearance/list_toolbar.html:16
 msgid "Select/Deselect all"
 msgstr ""
 
-#: templates/appearance/list_toolbar.html:58
+#: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
 
-#: templates/appearance/list_toolbar.html:63
+#: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr ""
 

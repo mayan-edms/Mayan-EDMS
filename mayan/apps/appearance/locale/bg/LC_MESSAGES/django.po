@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 01:07-0400\n"
+"POT-Creation-Date: 2019-12-18 00:25-0400\n"
 "PO-Revision-Date: 2019-12-04 16:35+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:10 settings.py:9
+#: apps.py:11 settings.py:9
 msgid "Appearance"
 msgstr "Изглед"
 
@@ -220,7 +220,7 @@ msgstr "Действия"
 
 #: templates/appearance/base.html:62
 #: templates/appearance/generic_list_items_subtemplate.html:68
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Превключване на плаващо меню"
 
@@ -293,16 +293,16 @@ msgstr "Общо (%(start)s - %(end)s от %(total)s) (Страница %(page_n
 msgid "Total: %(total)s"
 msgstr "Общо: %(total)s"
 
-#: templates/appearance/list_toolbar.html:14
+#: templates/appearance/list_toolbar.html:16
 msgid "Select/Deselect all"
 msgstr "Изберете / премахнете избора на всички"
 
-#: templates/appearance/list_toolbar.html:58
+#: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr "Изберете елементи, за да активирате групови действия. Използвайте Shift + щракване, за да изберете няколко."
 
-#: templates/appearance/list_toolbar.html:63
+#: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "Групови действия"
 

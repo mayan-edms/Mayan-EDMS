@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 01:08-0400\n"
+"POT-Creation-Date: 2019-12-18 00:26-0400\n"
 "PO-Revision-Date: 2019-12-03 05:35+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -33,19 +33,19 @@ msgstr "Atributos disponibles:\n"
 msgid "Available fields: \n"
 msgstr "Campos disponibles:\n"
 
-#: dependencies.py:309
+#: dependencies.py:308
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Se utiliza para permitir la traducción sin conexión de los textos del código."
 
-#: dependencies.py:314
+#: dependencies.py:313
 msgid "Provides style checking."
 msgstr "Proporciona la comprobación de estilo."
 
-#: dependencies.py:319
+#: dependencies.py:318
 msgid "Command line environment with autocompletion."
 msgstr "Entorno de línea de comandos con autocompletado."
 
-#: dependencies.py:324
+#: dependencies.py:323
 msgid "Checks proper formatting of the README file."
 msgstr "Comprueba el formato correcto del archivo README."
 
@@ -174,26 +174,26 @@ msgstr "Apoyo técnico"
 msgid "Tools"
 msgstr "Herramientas"
 
-#: literals.py:13
+#: literals.py:14
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Esta función ha quedado en desuso y se eliminará en una versión futura."
 
-#: literals.py:16
+#: literals.py:17
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "El backend de su base de datos está configurado para usar SQLite. SQLite solo debe usarse para desarrollo y pruebas, no para producción."
 
-#: literals.py:34
+#: literals.py:35
 msgid "Days"
 msgstr "Días"
 
-#: literals.py:35
+#: literals.py:36
 msgid "Hours"
 msgstr "Horas"
 
-#: literals.py:36
+#: literals.py:37
 msgid "Minutes"
 msgstr "Minutos"
 

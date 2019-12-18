@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 01:12-0400\n"
+"POT-Creation-Date: 2019-12-18 00:30-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,39 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:40 links.py:54 models/base.py:40 queues.py:9 settings.py:13
+#: apps.py:44 links.py:54 models/base.py:40 queues.py:9 settings.py:13
 #: views.py:650
 msgid "Sources"
 msgstr ""
 
-#: apps.py:55
+#: apps.py:62
 msgid "Create a document source"
 msgstr ""
 
-#: apps.py:57
+#: apps.py:64
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr ""
 
-#: apps.py:70
+#: apps.py:77
 msgid "Type"
 msgstr ""
 
-#: apps.py:79
+#: apps.py:86
 msgid "Created"
 msgstr ""
 
-#: apps.py:86
+#: apps.py:93
 msgid "Thumbnail"
 msgstr ""
 
-#: apps.py:94 models/base.py:249
+#: apps.py:101 models/base.py:250
 msgid "Date time"
 msgstr ""
 
-#: apps.py:99 models/base.py:252
+#: apps.py:106 models/base.py:253
 msgid "Message"
 msgstr ""
 
@@ -215,7 +215,7 @@ msgstr ""
 msgid "Enabled"
 msgstr ""
 
-#: models/base.py:39 models/base.py:246
+#: models/base.py:39 models/base.py:247
 msgid "Source"
 msgstr ""
 
@@ -239,36 +239,36 @@ msgstr ""
 msgid "Interval"
 msgstr ""
 
-#: models/base.py:181
+#: models/base.py:180
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 
-#: models/base.py:183
+#: models/base.py:182
 msgid "Document type"
 msgstr ""
 
-#: models/base.py:187
+#: models/base.py:186
 msgid "Whether to expand or not, compressed archives."
 msgstr ""
 
-#: models/base.py:188 models/staging_folder_sources.py:56
+#: models/base.py:187 models/staging_folder_sources.py:56
 #: models/webform_sources.py:36
 msgid "Uncompress"
 msgstr ""
 
-#: models/base.py:194
+#: models/base.py:193
 msgid "Interval source"
 msgstr ""
 
-#: models/base.py:195
+#: models/base.py:194
 msgid "Interval sources"
 msgstr ""
 
-#: models/base.py:258
+#: models/base.py:259
 msgid "Log entry"
 msgstr ""
 
-#: models/base.py:259
+#: models/base.py:260
 msgid "Log entries"
 msgstr ""
 

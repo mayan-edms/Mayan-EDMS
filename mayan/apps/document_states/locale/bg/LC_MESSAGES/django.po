@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 01:09-0400\n"
-"PO-Revision-Date: 2019-12-13 05:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-18 00:27-0400\n"
+"PO-Revision-Date: 2019-12-16 20:54+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,7 +103,7 @@ msgstr "Работният поток е редактиран"
 
 #: forms.py:23
 msgid "The action type for this action entry."
-msgstr ""
+msgstr "Тип действие за този запис."
 
 #: forms.py:24
 msgid "Action"
@@ -251,7 +251,7 @@ msgstr "Вътрешно име"
 
 #: models.py:58
 msgid "A short text to describe the workflow."
-msgstr ""
+msgstr "Кратък текст за описание на работния поток."
 
 #: models.py:71 models.py:270 models.py:420 models.py:525
 msgid "Workflow"
@@ -263,7 +263,7 @@ msgstr "Начално състояние"
 
 #: models.py:273
 msgid "A short text to describe the workflow state."
-msgstr ""
+msgstr "Кратък текст за описание на състоянието на работния поток."
 
 #: models.py:279
 msgid ""
@@ -291,7 +291,7 @@ msgstr "Състояния на работния поток"
 
 #: models.py:355
 msgid "A short text describing the action."
-msgstr ""
+msgstr "Кратък текст, описващ действието."
 
 #: models.py:362
 msgid "At which moment of the state this action will execute."
@@ -323,7 +323,7 @@ msgstr "Неизвестен тип действие"
 
 #: models.py:423
 msgid "A short text to describe the transition."
-msgstr ""
+msgstr "Кратък текст за описание на прехода."
 
 #: models.py:428
 msgid "Origin state"

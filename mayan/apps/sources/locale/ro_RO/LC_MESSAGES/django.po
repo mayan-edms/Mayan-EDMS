@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 01:12-0400\n"
+"POT-Creation-Date: 2019-12-18 00:30-0400\n"
 "PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -20,39 +20,39 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:40 links.py:54 models/base.py:40 queues.py:9 settings.py:13
+#: apps.py:44 links.py:54 models/base.py:40 queues.py:9 settings.py:13
 #: views.py:650
 msgid "Sources"
 msgstr "Surse"
 
-#: apps.py:55
+#: apps.py:62
 msgid "Create a document source"
 msgstr "Creați o sursă de documente"
 
-#: apps.py:57
+#: apps.py:64
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr "Sursele de documente sunt modul în care documente noi alimentează Mayan EDMS, creează cel puțin o sursă de formă web pentru a putea încărca documente dintr-un browser."
 
-#: apps.py:70
+#: apps.py:77
 msgid "Type"
 msgstr "Tip"
 
-#: apps.py:79
+#: apps.py:86
 msgid "Created"
 msgstr "Creat"
 
-#: apps.py:86
+#: apps.py:93
 msgid "Thumbnail"
 msgstr "Iconiță"
 
-#: apps.py:94 models/base.py:249
+#: apps.py:101 models/base.py:250
 msgid "Date time"
 msgstr "Data și ora"
 
-#: apps.py:99 models/base.py:252
+#: apps.py:106 models/base.py:253
 msgid "Message"
 msgstr "Mesaj"
 
@@ -218,7 +218,7 @@ msgstr "Etichetă"
 msgid "Enabled"
 msgstr "Activat"
 
-#: models/base.py:39 models/base.py:246
+#: models/base.py:39 models/base.py:247
 msgid "Source"
 msgstr "Sursă"
 
@@ -242,36 +242,36 @@ msgstr "Interval în secunde între verificările pentru documente noi."
 msgid "Interval"
 msgstr "Interval"
 
-#: models/base.py:181
+#: models/base.py:180
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Atribuiți un tip de document documentelor încărcate din această sursă."
 
-#: models/base.py:183
+#: models/base.py:182
 msgid "Document type"
 msgstr "Tip document"
 
-#: models/base.py:187
+#: models/base.py:186
 msgid "Whether to expand or not, compressed archives."
 msgstr "Dacă să decomprim sau nu arhive comprimate."
 
-#: models/base.py:188 models/staging_folder_sources.py:56
+#: models/base.py:187 models/staging_folder_sources.py:56
 #: models/webform_sources.py:36
 msgid "Uncompress"
 msgstr "Decomprimai"
 
-#: models/base.py:194
+#: models/base.py:193
 msgid "Interval source"
 msgstr "Interval pt. sursă"
 
-#: models/base.py:195
+#: models/base.py:194
 msgid "Interval sources"
 msgstr "Intervale pt. surse"
 
-#: models/base.py:258
+#: models/base.py:259
 msgid "Log entry"
 msgstr "Intrare în jurnal"
 
-#: models/base.py:259
+#: models/base.py:260
 msgid "Log entries"
 msgstr "Intrările de jurnal"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 01:12-0400\n"
+"POT-Creation-Date: 2019-12-18 00:30-0400\n"
 "PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -19,39 +19,39 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:40 links.py:54 models/base.py:40 queues.py:9 settings.py:13
+#: apps.py:44 links.py:54 models/base.py:40 queues.py:9 settings.py:13
 #: views.py:650
 msgid "Sources"
 msgstr "Kaynaklar"
 
-#: apps.py:55
+#: apps.py:62
 msgid "Create a document source"
 msgstr "Belge kaynağı oluştur"
 
-#: apps.py:57
+#: apps.py:64
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr "Belge kaynakları, yeni belgelerin JBM EDMS'e gönderilme şeklidir, bir tarayıcıdan belge yükleyebilmek için en az bir web formu kaynağı oluşturmalısınız."
 
-#: apps.py:70
+#: apps.py:77
 msgid "Type"
 msgstr "Tür"
 
-#: apps.py:79
+#: apps.py:86
 msgid "Created"
 msgstr "Oluşturuldu"
 
-#: apps.py:86
+#: apps.py:93
 msgid "Thumbnail"
 msgstr "Küçük Resim"
 
-#: apps.py:94 models/base.py:249
+#: apps.py:101 models/base.py:250
 msgid "Date time"
 msgstr "Tarih saat"
 
-#: apps.py:99 models/base.py:252
+#: apps.py:106 models/base.py:253
 msgid "Message"
 msgstr "Mesaj"
 
@@ -217,7 +217,7 @@ msgstr "Etiket"
 msgid "Enabled"
 msgstr "Etkin"
 
-#: models/base.py:39 models/base.py:246
+#: models/base.py:39 models/base.py:247
 msgid "Source"
 msgstr "Kaynak"
 
@@ -241,36 +241,36 @@ msgstr "Yeni belgeler için kontroller arasındaki saniye cinsinden aralık."
 msgid "Interval"
 msgstr "Aralık"
 
-#: models/base.py:181
+#: models/base.py:180
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Bu kaynaktan yüklenen dokümanlara bir doküman türü atayın."
 
-#: models/base.py:183
+#: models/base.py:182
 msgid "Document type"
 msgstr "Belge Türü"
 
-#: models/base.py:187
+#: models/base.py:186
 msgid "Whether to expand or not, compressed archives."
 msgstr "Sıkıştırılmış arşivleri genişletip genişletmemek."
 
-#: models/base.py:188 models/staging_folder_sources.py:56
+#: models/base.py:187 models/staging_folder_sources.py:56
 #: models/webform_sources.py:36
 msgid "Uncompress"
 msgstr "Sıkıştırılmış"
 
-#: models/base.py:194
+#: models/base.py:193
 msgid "Interval source"
 msgstr "Aralık kaynağı"
 
-#: models/base.py:195
+#: models/base.py:194
 msgid "Interval sources"
 msgstr "Aralık kaynakları"
 
-#: models/base.py:258
+#: models/base.py:259
 msgid "Log entry"
 msgstr "Kayıt girişi"
 
-#: models/base.py:259
+#: models/base.py:260
 msgid "Log entries"
 msgstr "Kayıt girdileri"
 

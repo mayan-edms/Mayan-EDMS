@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 01:09-0400\n"
+"POT-Creation-Date: 2019-12-18 00:27-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -215,8 +215,8 @@ msgstr "%(count)d документи са добавени към опашкат
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Да изпратите %(count)d документ на опашката за разбор?"
+msgstr[1] "Да изпратите ли %(count)d документ(и) на опашката за анализ?"
 
 #: views.py:154
 #, python-format
@@ -230,7 +230,7 @@ msgstr "Редактиране на настройките за анализ н�
 
 #: views.py:189
 msgid "Submit all documents of a type for parsing"
-msgstr ""
+msgstr "Изпратете всички документи от даден тип за анализ"
 
 #: views.py:210
 #, python-format
