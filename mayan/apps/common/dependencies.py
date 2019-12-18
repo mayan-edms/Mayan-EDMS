@@ -4,8 +4,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.dependencies.classes import (
     environment_build, environment_development, environment_documentation,
-    environment_testing, PythonDependency
+    environment_testing, BinaryDependency, PythonDependency
 )
+
+from .literals import DEFAULT_FIREFOX_GECKODRIVER_PATH
 
 PythonDependency(
     copyright_text='''
@@ -332,6 +334,11 @@ PythonDependency(
 
 # Testing
 
+BinaryDependency(
+    environment=environment_testing, label='firefox-geckodriver',
+    module=__name__, name='geckodriver',
+    path=DEFAULT_FIREFOX_GECKODRIVER_PATH
+)
 PythonDependency(
     environment=environment_testing, module=__name__, name='codecov',
     version_string='==2.0.15'
@@ -348,6 +355,10 @@ PythonDependency(
     environment=environment_testing,
     module=__name__, name='django-test-without-migrations',
     version_string='==0.6'
+)
+PythonDependency(
+    environment=environment_testing, module=__name__, name='selenium',
+    version_string='==3.141.0'
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='tox',

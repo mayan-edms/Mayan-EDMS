@@ -17,6 +17,8 @@
   report and research.
 - Add transaction handling to the interval sources delete and save
   methods.
+- Add support for functional tests using selenium.
+- Add test for issue #494.
 
 3.3.5 (2019-12-13)
 ==================
