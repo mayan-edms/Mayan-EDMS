@@ -19,6 +19,8 @@
   methods.
 - Add support for functional tests using selenium.
 - Add test for issue #494.
+- Add support for configurate test view template.
+- Add support for public test views.
 
 3.3.5 (2019-12-13)
 ==================

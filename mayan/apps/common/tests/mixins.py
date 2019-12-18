@@ -23,6 +23,8 @@ from django.utils.encoding import (
 )
 from django.utils.six import PY3
 
+from stronghold.decorators import public
+
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.storage.settings import setting_temporary_directory
 
@@ -497,8 +499,10 @@ class TestServerTestCaseMixin(object):
 class TestViewTestCaseMixin(object):
     auto_add_test_view = False
     has_test_view = False
+    test_view_is_public = False
     test_view_object = None
     test_view_name = TEST_VIEW_NAME
+    test_view_template = '{{ object }}'
     test_view_url = TEST_VIEW_URL
 
     def setUp(self):
@@ -516,13 +520,16 @@ class TestViewTestCaseMixin(object):
 
     def _test_view_factory(self, test_object=None):
         def test_view(request):
-            template = Template('{{ object }}')
+            template = Template(template_string=self.test_view_template)
             context = Context(
-                {'object': test_object, 'resolved_object': test_object}
+                dict_={'object': test_object, 'resolved_object': test_object}
             )
             return HttpResponse(template.render(context=context))
 
-        return test_view
+        if self.test_view_is_public:
+            return public(function=test_view)
+        else:
+            return test_view
 
     def add_test_view(self, test_object=None):
         urlconf = importlib.import_module(settings.ROOT_URLCONF)
