@@ -24,6 +24,8 @@
 - Reapply fix for issue #494. To avoid exploit of cross site scripting in
   login view. Thanks to Lokesh (@lokesh1095) for the report and solution.
   GitLab issue #494.
+- Settings: Display overridden instead of overrided.
+  GitLab merge !65. Thanks to Rob de Canha-Knight (@rssfed23).
 
 3.3.5 (2019-12-13)
 ==================
