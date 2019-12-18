@@ -166,7 +166,7 @@ For another setup that offers more performance and scalability refer to the
 #. Configure Redis:
 
    Configure Redis to discard data when it runs out of memory, not save its
-   database and only keep 1 database:
+   database and only keep 2 database:
 
    .. code-block:: bash
 
