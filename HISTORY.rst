@@ -5,25 +5,26 @@
   GitLab merge !64. Thanks to O2 Graphics (@O2Graphics).
 - Improve the executables paths on FreeBSD/OpenBSD. GitLab merge !63.
   Thanks to O2 Graphics (@O2Graphics).
-- Fix document orientaton detection. GitLab issue #713. Thanks to
+- Fix document orientation detection. GitLab issue #713. Thanks to
   Rob de Canha-Knight (@rssfed23) for the report and debug information.
-- Update the Redis lock connection intialization so that is works with Redis
+- Update the Redis lock connection initialization so that is works with Redis
   versions < 5.0. GitLab issue #709. Rob de Canha-Knight (@rssfed23) for the
   report and debug information.
 - Update the ZipArchive class to work with badly encoded filenames.
   GitLab issue #651. Thanks to Fabian (@ruffy91) for the report.
-- Delete periodic task on document type delete. Closes Gitlab
+- Delete periodic task on document type delete. Closes GitLab
   issue #715. Thanks to Rob de Canha-Knight (@rssfed23) for the
   report and research.
 - Add transaction handling to the interval sources delete and save
   methods.
 - Add support for functional tests using selenium.
 - Add test for issue #494.
-- Add support for configurate test view template.
+- Add support for configurable test view template.
 - Add support for public test views.
 - Reapply fix for issue #494. To avoid exploit of cross site scripting in
-  login view. Thanks to Lokesh (@lokesh1095) for the report and solution.
-  GitLab issue #494.
+  login view. Thanks to the Checkmarx SCA AppSec team for the research
+  regarding this issue for the recent version and thanks to Lokesh
+  (@lokesh1095) for the original report and solution. GitLab issue #494.
 - Settings: Display overridden instead of overrided.
   GitLab merge !65. Thanks to Rob de Canha-Knight (@rssfed23).
 
