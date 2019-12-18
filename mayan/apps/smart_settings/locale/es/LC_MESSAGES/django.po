@@ -37,11 +37,11 @@ msgid "Value"
 msgstr "Valor"
 
 #: classes.py:350
-msgid "Overrided"
+msgid "Overridden"
 msgstr "Anulado"
 
 #: classes.py:352
-msgid "Is this settings being overrided by an environment variable?"
+msgid "Is this settings being overridden by an environment variable?"
 msgstr "¿Esta configuración está siendo anulada por una variable de entorno?"
 
 #: forms.py:14
