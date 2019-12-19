@@ -17,7 +17,8 @@
   report and research.
 - Add transaction handling to the interval sources delete and save
   methods.
-- Add support for functional tests using selenium.
+- Add support for functional tests using selenium. Use TEST_SELENIUM_SKIP
+  to skip these tests.
 - Add test for issue #494.
 - Add support for configurable test view template.
 - Add support for public test views.

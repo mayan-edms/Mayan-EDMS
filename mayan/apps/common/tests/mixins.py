@@ -7,6 +7,7 @@ import os
 import random
 
 from furl import furl
+from selenium.webdriver.firefox.webdriver import WebDriver
 
 from django.apps import apps
 from django.conf import settings
@@ -304,6 +305,34 @@ class RandomPrimaryKeyModelMonkeyPatchMixin(object):
         if self.random_primary_key_enable:
             models.Model.save = self.method_save_original
         super(RandomPrimaryKeyModelMonkeyPatchMixin, self).tearDown()
+
+
+class SeleniumTestMixin(object):
+    @classmethod
+    def setUpClass(cls):
+        super(SeleniumTestMixin, cls).setUpClass()
+        cls.webdriver = None
+        if not getattr(settings, 'TESTS_SELENIUM_SKIP', False):
+            cls.webdriver = WebDriver(log_path='/dev/null')
+
+    @classmethod
+    def tearDownClass(cls):
+        if cls.webdriver:
+            cls.webdriver.quit()
+        super(SeleniumTestMixin, cls).tearDownClass()
+
+    def setUp(self):
+        super(SeleniumTestMixin, self).setUp()
+        if getattr(settings, 'TESTS_SELENIUM_SKIP', False):
+            self.skipTest(reason='Skipping selenium test')
+
+    def _open_url(self, fragment=None, path=None, viewname=None):
+        url = '{}{}{}'.format(
+            self.live_server_url, path or reverse(viewname=viewname),
+            fragment or ''
+        )
+
+        self.webdriver.get(url=url)
 
 
 class SilenceLoggerTestCaseMixin(object):
