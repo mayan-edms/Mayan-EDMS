@@ -33,6 +33,7 @@
   certificate. GitLab issue #717. Thanks to Jordan Wages (@wagesj45)
   for the report.
 - Allow passing TEST_SELENIUM_SKIP as an environment variable.
+- Skip Selenium tests inside the Docker container.
 
 3.3.5 (2019-12-13)
 ==================
