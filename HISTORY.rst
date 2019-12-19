@@ -27,6 +27,10 @@
   (@lokesh1095) for the original report and solution. GitLab issue #494.
 - Settings: Display overridden instead of overrided.
   GitLab merge !65. Thanks to Rob de Canha-Knight (@rssfed23).
+- Update the address of PyPI when checking for new versions to avoid
+  SSL errors from reusing the old address (pypi.python.org/pypi)
+  certificate. GitLab issue #717. Thanks to Jordan Wages (@wagesj45) 
+  for the report.
 
 3.3.5 (2019-12-13)
 ==================
