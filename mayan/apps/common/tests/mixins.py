@@ -308,11 +308,24 @@ class RandomPrimaryKeyModelMonkeyPatchMixin(object):
 
 
 class SeleniumTestMixin(object):
+    SKIP_VARIABLE_NAME = 'TESTS_SELENIUM_SKIP'
+
+    @staticmethod
+    def _get_skip_variable_value():
+        return os.environ.get(
+            SeleniumTestMixin._get_skip_variable_environment_name(),
+            getattr(settings, SeleniumTestMixin.SKIP_VARIABLE_NAME, False)
+        )
+
+    @staticmethod
+    def _get_skip_variable_environment_name():
+        return 'MAYAN_{}'.format(SeleniumTestMixin.SKIP_VARIABLE_NAME)
+
     @classmethod
     def setUpClass(cls):
         super(SeleniumTestMixin, cls).setUpClass()
         cls.webdriver = None
-        if not getattr(settings, 'TESTS_SELENIUM_SKIP', False):
+        if not SeleniumTestMixin._get_skip_variable_value():
             cls.webdriver = WebDriver(log_path='/dev/null')
 
     @classmethod
@@ -322,7 +335,7 @@ class SeleniumTestMixin(object):
         super(SeleniumTestMixin, cls).tearDownClass()
 
     def setUp(self):
-        if getattr(settings, 'TESTS_SELENIUM_SKIP', False):
+        if SeleniumTestMixin._get_skip_variable_value():
             self.skipTest(reason='Skipping selenium test')
         super(SeleniumTestMixin, self).setUp()
 

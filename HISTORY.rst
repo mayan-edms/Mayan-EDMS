@@ -1,4 +1,4 @@
-3.3.6 (2019-12-XX)
+3.3.6 (2019-12-19)
 ==================
 - Make list toolbar stick to the top of the view when scrolling.
 - Fix page count on some PDF files, and fix a Python 3 incompatibility.
@@ -30,8 +30,9 @@
   GitLab merge !65. Thanks to Rob de Canha-Knight (@rssfed23).
 - Update the address of PyPI when checking for new versions to avoid
   SSL errors from reusing the old address (pypi.python.org/pypi)
-  certificate. GitLab issue #717. Thanks to Jordan Wages (@wagesj45) 
+  certificate. GitLab issue #717. Thanks to Jordan Wages (@wagesj45)
   for the report.
+- Allow passing TEST_SELENIUM_SKIP as an environment variable.
 
 3.3.5 (2019-12-13)
 ==================
