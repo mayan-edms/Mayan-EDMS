@@ -237,7 +237,7 @@ class RandomPrimaryKeyModelMonkeyPatchMixin(object):
 
     @staticmethod
     def get_unique_primary_key(model):
-        pk_list = model._meta.default_manager.values_list('pk', flat=True)
+        manager = model._meta.default_manager
 
         attempts = 0
         while True:
@@ -246,7 +246,7 @@ class RandomPrimaryKeyModelMonkeyPatchMixin(object):
                 RandomPrimaryKeyModelMonkeyPatchMixin.random_primary_key_random_ceiling
             )
 
-            if primary_key not in pk_list:
+            if not manager.filter(pk=primary_key).exists():
                 break
 
             attempts = attempts + 1
