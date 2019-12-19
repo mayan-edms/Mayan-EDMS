@@ -322,9 +322,9 @@ class SeleniumTestMixin(object):
         super(SeleniumTestMixin, cls).tearDownClass()
 
     def setUp(self):
-        super(SeleniumTestMixin, self).setUp()
         if getattr(settings, 'TESTS_SELENIUM_SKIP', False):
             self.skipTest(reason='Skipping selenium test')
+        super(SeleniumTestMixin, self).setUp()
 
     def _open_url(self, fragment=None, path=None, viewname=None):
         url = '{}{}{}'.format(
