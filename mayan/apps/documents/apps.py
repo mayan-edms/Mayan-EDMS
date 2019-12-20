@@ -242,7 +242,10 @@ class DocumentsApp(MayanAppConfig):
             model=DocumentPage, manager_name='passthrough'
         )
         ModelPermission.register_inheritance(
-            model=DocumentPageResult, related='document',
+            model=DocumentPageResult, related='document_version',
+        )
+        ModelPermission.register_inheritance(
+            model=DocumentPageResult, related='document_version__document',
         )
         ModelPermission.register_manager(
             model=DocumentPageResult, manager_name='passthrough'
