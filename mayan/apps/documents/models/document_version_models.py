@@ -150,6 +150,15 @@ class DocumentVersion(models.Model):
         """
         return self.file.storage.exists(self.file.name)
 
+    def fix_orientation(self):
+        for page in self.pages.all():
+            degrees = page.detect_orientation()
+            if degrees:
+                layer_saved_transformations.add_transformation_to(
+                    obj=page, transformation_class=TransformationRotate,
+                    arguments='{{"degrees": {}}}'.format(360 - degrees)
+                )
+
     def get_absolute_url(self):
         return reverse(
             viewname='documents:document_version_view', kwargs={

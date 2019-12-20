@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:33-0400\n"
-"PO-Revision-Date: 2019-10-16 08:27+0000\n"
+"POT-Creation-Date: 2019-12-18 00:25-0400\n"
+"PO-Revision-Date: 2019-12-04 16:32+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: apps.py:24 links.py:44
 msgid "ACLs"
-msgstr "ACLs"
+msgstr "ACL"
 
 #: events.py:8 permissions.py:7
 msgid "Access control lists"
@@ -34,7 +34,7 @@ msgstr "Новосъздадени ACL"
 msgid "ACL edited"
 msgstr "Редактирани ACL"
 
-#: forms.py:15 models.py:49
+#: forms.py:15 models.py:48
 msgid "Role"
 msgstr "Роля"
 
@@ -46,29 +46,29 @@ msgstr "Нов ACL"
 msgid "Delete"
 msgstr "Изтрийте"
 
-#: links.py:49 models.py:45 workflow_actions.py:49 workflow_actions.py:164
+#: links.py:49 models.py:44 workflow_actions.py:48 workflow_actions.py:163
 msgid "Permissions"
 msgstr "Разрешения"
 
-#: managers.py:216
+#: managers.py:231
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
 msgstr "Обект \"%s\" не е модел и не може да бъде проверен за достъп"
 
-#: managers.py:236
+#: managers.py:252
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr "Недостатъчен достъп за: %s"
 
-#: models.py:57
+#: models.py:56
 msgid "Access entry"
 msgstr "достъп вписване"
 
-#: models.py:58
+#: models.py:57
 msgid "Access entries"
 msgstr "достъп вписвания"
 
-#: models.py:62
+#: models.py:61
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Роля \"%(role)s\" разрешение за \"%(object)s\""
@@ -157,48 +157,48 @@ msgid ""
 "menu."
 msgstr "Отменени разрешения се наследяват от родителския обект или се дават направо на потребител с определена роля и не могат да бъдат премахнати от този изглед. Наследените разрешения трябва да бъдат премахнати от ACL на родителския обект или от определената роля чрез меню Настройки."
 
-#: workflow_actions.py:26
+#: workflow_actions.py:25
 msgid "Object type"
 msgstr "Тип обект"
 
-#: workflow_actions.py:29
+#: workflow_actions.py:28
 msgid "Type of the object for which the access will be modified."
 msgstr "Тип на обекта за който достъпа ще бъде променен"
 
-#: workflow_actions.py:35
+#: workflow_actions.py:34
 msgid "Object ID"
 msgstr "ID на обекта"
 
-#: workflow_actions.py:38
+#: workflow_actions.py:37
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
 msgstr "Числов показател на обекта, достъпа на който ще бъде променен."
 
-#: workflow_actions.py:43 workflow_actions.py:158
+#: workflow_actions.py:42 workflow_actions.py:157
 msgid "Roles"
 msgstr "Роли"
 
-#: workflow_actions.py:45 workflow_actions.py:160
+#: workflow_actions.py:44 workflow_actions.py:159
 msgid "Roles whose access will be modified."
 msgstr "Роли, за които достъпа ще бъде променен."
 
-#: workflow_actions.py:52 workflow_actions.py:167
+#: workflow_actions.py:51 workflow_actions.py:166
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr "Разрешение за даване/отнемане на/от ролята за обекта избран по-горе."
 
-#: workflow_actions.py:60
-msgid "Grant access"
-msgstr "Даване на достъп"
+#: workflow_actions.py:59
+msgid "Grant object access"
+msgstr "Дайте достъп до обекта"
 
-#: workflow_actions.py:143
-msgid "Revoke access"
-msgstr "Отнемане на достъп"
+#: workflow_actions.py:142
+msgid "Revoke object access"
+msgstr "Отменете достъпа до обекта"
 
-#: workflow_actions.py:175
+#: workflow_actions.py:174
 msgid "Grant document access"
 msgstr "Даване достъп към документа"
 
-#: workflow_actions.py:214
+#: workflow_actions.py:213
 msgid "Revoke document access"
 msgstr "Отнемане достъп към документа"

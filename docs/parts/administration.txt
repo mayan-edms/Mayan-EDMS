@@ -1,0 +1,17 @@
+==============
+Administration
+==============
+
+- :doc:`../chapters/languages`
+- :doc:`../chapters/password_reset`
+- :doc:`../chapters/ocr_backend`
+- :doc:`../chapters/backups`
+
+
+.. toctree::
+    :hidden:
+
+    ../chapters/languages
+    ../chapters/password_reset
+    ../chapters/ocr_backend
+    ../chapters/backups

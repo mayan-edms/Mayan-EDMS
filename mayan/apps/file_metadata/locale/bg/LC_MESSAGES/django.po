@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:37-0400\n"
+"POT-Creation-Date: 2019-12-18 00:28-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -27,7 +27,7 @@ msgid "Label"
 msgstr "Етикет"
 
 #: apps.py:52 events.py:8 links.py:18 permissions.py:7 queues.py:9
-#: settings.py:9
+#: settings.py:11
 msgid "File metadata"
 msgstr "Метаданни на файла"
 
@@ -37,7 +37,7 @@ msgstr "Покажете стойността на определена мета
 
 #: apps.py:99
 msgid "File metadata value of"
-msgstr ""
+msgstr "Метаданни във файл за"
 
 #: apps.py:110 apps.py:114 apps.py:152 apps.py:161
 msgid "File metadata key"
@@ -54,7 +54,7 @@ msgstr ""
 "Библиотека и програма за четене и писане на мета информация в мултимедийни "
 "файлове"
 
-#: drivers/exiftool.py:26
+#: drivers/exiftool.py:20
 msgid "EXIF Tool"
 msgstr "EXIF инструмент"
 
@@ -186,7 +186,7 @@ msgstr "Виж метаданните на файла"
 msgid "Process document version"
 msgstr "Обработи версията на документа"
 
-#: settings.py:14
+#: settings.py:18
 msgid ""
 "Set new document types to perform file metadata processing automatically by "
 "default."
@@ -194,7 +194,7 @@ msgstr ""
 "Настройте новите типове документи да извършват обработка на метаданни на "
 "файл автоматично по подразбиране"
 
-#: settings.py:25
+#: settings.py:24
 msgid "Arguments to pass to the drivers."
 msgstr "Аргументи за подаване към драйверите"
 

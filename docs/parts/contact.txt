@@ -1,0 +1,29 @@
+=======
+Contact
+=======
+
+
+FAQ
+===
+
+* Try the :doc:`FAQ <faq>` -- it's got answers to many common questions.
+
+
+Forum
+=====
+
+Search for information or post a question, report or feature request at:
+https://forum.mayan-edms.com.
+
+Mayan EDMS developers do their best to reply to basic questions.
+Be sure to use the search feature of the forum as some posts may already
+contain the answers to your questions.
+
+
+Bugs/ticket tracker
+===================
+
+Report bugs with Mayan EDMS or search existing ones using GitLab's `ticket tracker`_.
+
+
+.. _ticket tracker: |SOURCE_CODE_ISSUES|

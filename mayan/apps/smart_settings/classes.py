@@ -5,6 +5,7 @@ import hashlib
 from importlib import import_module
 import logging
 import os
+import re
 import sys
 
 import yaml
@@ -15,6 +16,7 @@ from django.utils.functional import Promise
 from django.utils.encoding import (
     force_bytes, force_text, python_2_unicode_compatible
 )
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 
@@ -75,7 +77,7 @@ class Namespace(object):
 
     @classmethod
     def get_namespaces_config(cls):
-        return getattr(settings, SMART_SETTINGS_NAMESPACES_NAME, {})
+        return Setting.get_config_file_content().get(SMART_SETTINGS_NAMESPACES_NAME, {})
 
     @classmethod
     def invalidate_cache_all(cls):
@@ -122,11 +124,12 @@ class Namespace(object):
 
 
 class NamespaceMigration(object):
+    @staticmethod
+    def get_method_name(setting):
+        return setting.global_name.lower()
+
     def __init__(self, namespace):
         self.namespace = namespace
-
-    def get_method_name(self, setting):
-        return setting.global_name.lower()
 
     def get_method_name_full(self, setting, version):
         return '{}_{}'.format(
@@ -136,18 +139,20 @@ class NamespaceMigration(object):
 
     def migrate(self, setting):
         if self.namespace.get_config_version() != self.namespace.version:
-            method_name = self.get_method_name(setting=setting)
+            setting_method_name = NamespaceMigration.get_method_name(
+                setting=setting
+            )
 
             # Get methods for this setting
-            setting_methods = [
-                method for method in dir(self) if method.startswith(
-                    method_name
-                )
-            ]
+            pattern = r'{}_\d{{4}}'.format(setting_method_name)
+            setting_methods = re.findall(
+                pattern=pattern, string='\n'.join(dir(self))
+            )
+
             # Get order of execution of setting methods
             versions = [
                 method.replace(
-                    '{}_'.format(method_name), ''
+                    '{}_'.format(setting_method_name), ''
                 ) for method in setting_methods
             ]
             try:
@@ -253,7 +258,7 @@ class Setting(object):
         if not cls._config_file_cache:
             cls._config_file_cache = read_configuration_file(
                 filepath=settings.CONFIGURATION_FILEPATH
-            )
+            ) or {}
         return cls._config_file_cache
 
     @classmethod
@@ -338,6 +343,14 @@ class Setting(object):
 
     def invalidate_cache(self):
         self.loaded = False
+
+    def is_overridden(self):
+        return self.environment_variable
+
+    is_overridden.short_description = _('Overridden')
+    is_overridden.help_text = _(
+        'Is this settings being overridden by an environment variable?'
+    )
 
     def migrate(self):
         self.namespace.migrate(setting=self)

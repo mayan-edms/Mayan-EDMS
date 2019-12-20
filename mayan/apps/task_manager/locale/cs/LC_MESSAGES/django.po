@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:40-0400\n"
+"POT-Creation-Date: 2019-12-18 00:31-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -22,90 +22,78 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:24 links.py:12 permissions.py:7
+#: apps.py:19 links.py:12 permissions.py:7
 msgid "Task manager"
 msgstr "Správce úloh"
 
-#: apps.py:32
+#: apps.py:27
 msgid "Label"
 msgstr "Označení"
 
-#: apps.py:35
+#: apps.py:30
 msgid "Name"
 msgstr "název"
 
-#: apps.py:38
+#: apps.py:33
 msgid "Default queue?"
 msgstr "Výchozí fronta?"
 
-#: apps.py:42
+#: apps.py:37
 msgid "Is transient?"
 msgstr "Je přechodný?"
 
-#: apps.py:46
+#: apps.py:41
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:49
+#: apps.py:44
 msgid "Start time"
 msgstr "Doba spuštění"
 
-#: apps.py:52
+#: apps.py:47
 msgid "Host"
 msgstr "Hostitel"
 
-#: apps.py:56
+#: apps.py:51
 msgid "Arguments"
 msgstr "Argumenty"
 
-#: apps.py:60
+#: apps.py:55
 msgid "Keyword arguments"
 msgstr "Argumenty klíčových slov"
 
-#: apps.py:64
+#: apps.py:59
 msgid "Worker process ID"
 msgstr "ID pracovního procesu"
-
-#: links.py:16 views.py:15
-msgid "Background task queues"
-msgstr "Fronty úkolů na pozadí"
-
-#: links.py:20
-msgid "Active tasks"
-msgstr "Aktivní úkoly"
-
-#: links.py:24
-msgid "Reserved tasks"
-msgstr "Vyhrazené úkoly"
-
-#: links.py:28
-msgid "Scheduled tasks"
-msgstr "Naplánované úkoly"
 
 #: permissions.py:10
 msgid "View tasks"
 msgstr "Zobrazit úkoly"
 
+#: settings.py:10
+msgid "Celery"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
+msgstr ""
+
+#: settings.py:24
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
+msgstr ""
+
 #: tests/literals.py:5
 msgid "Test queue"
 msgstr "Testovací fronta"
 
-#: views.py:30
-#, python-format
-msgid "Active tasks in queue: %s"
-msgstr "Aktivní úkoly ve frontě: %s"
-
-#: views.py:42
-#, python-format
-msgid "Unable to retrieve task list; %s"
-msgstr "Nelze načíst seznam úkolů; %s"
-
-#: views.py:56
-#, python-format
-msgid "Scheduled tasks in queue: %s"
-msgstr "Naplánované úlohy ve frontě: %s"
-
-#: views.py:68
-#, python-format
-msgid "Reserved tasks in queue: %s"
-msgstr "Rezervované úkoly ve frontě: %s"
+#: views.py:14
+msgid "Background task queues"
+msgstr "Fronty úkolů na pozadí"

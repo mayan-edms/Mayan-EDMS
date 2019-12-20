@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:36-0400\n"
-"PO-Revision-Date: 2019-06-15 07:49+0000\n"
+"POT-Creation-Date: 2019-12-18 00:28-0400\n"
+"PO-Revision-Date: 2019-12-03 13:32+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -37,16 +37,16 @@ msgid ""
 "unchecked results that match at least one field will be returned."
 msgstr "Atunci când este bifată, vor fi returnate numai rezultatele care corespund tuturor câmpurilor. Atunci când rezultatele neconfirmate care corespund cel puțin un câmp vor fi returnate."
 
-#: forms.py:29 templates/dynamic_search/search_box.html:21
+#: forms.py:29 templates/dynamic_search/search_box.html:39
 msgid "Search terms"
 msgstr "Caută termeni"
 
-#: links.py:8 templates/dynamic_search/search_box.html:23 views.py:59
-#: views.py:72
+#: links.py:8 settings.py:7 templates/dynamic_search/search_box.html:43
+#: views.py:59 views.py:72
 msgid "Search"
 msgstr "Căută"
 
-#: links.py:11 views.py:86
+#: links.py:11 templates/dynamic_search/search_box.html:45 views.py:86
 msgid "Advanced search"
 msgstr "Cautare avansată"
 
@@ -54,7 +54,12 @@ msgstr "Cautare avansată"
 msgid "Search again"
 msgstr "Caută din nou"
 
-#: templates/dynamic_search/search_box.html:24
+#: settings.py:12
+msgid ""
+"Disables the single term bar search leaving only the advanced search button."
+msgstr "Dezactivează căutarea în bară cu un singur termen lăsând doar butonul de căutare avansată."
+
+#: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
 msgstr "Avansate"
 

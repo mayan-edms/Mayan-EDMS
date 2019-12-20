@@ -1,5 +1,5 @@
 Werkzeug==0.15.4
-devpi-server==5.0.0
+devpi-server==5.3.1
 django-debug-toolbar==1.11
 django-extensions==2.1.9
 django-rosetta==0.9.3

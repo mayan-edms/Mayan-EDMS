@@ -56,7 +56,9 @@ class DocumentSignatureLinksTestCase(
             resolved_link.url,
             reverse(
                 viewname=link_document_version_signature_details.view,
-                args=(self.test_document.latest_version.signatures.first().pk,)
+                kwargs={
+                    'pk': self.test_document.latest_version.signatures.first().pk,
+                }
             )
         )
 
@@ -98,6 +100,8 @@ class DocumentSignatureLinksTestCase(
             resolved_link.url,
             reverse(
                 viewname=link_document_version_signature_delete.view,
-                args=(self.test_document.latest_version.signatures.first().pk,)
+                kwargs={
+                    'pk': self.test_document.latest_version.signatures.first().pk,
+                }
             )
         )

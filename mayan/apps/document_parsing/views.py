@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
@@ -78,13 +77,11 @@ class DocumentContentDownloadView(SingleObjectDownloadView):
     model = Document
     object_permission = permission_content_view
 
-    def get_file(self):
-        file_object = DocumentContentDownloadView.TextIteratorIO(
-            iterator=get_document_content(document=self.get_object())
-        )
-        return DocumentContentDownloadView.VirtualFile(
-            file=file_object, name='{}-content'.format(self.get_object())
-        )
+    def get_download_file_object(self):
+        return get_document_content(document=self.object)
+
+    def get_download_filename(self):
+        return '{}-content'.format(self.object)
 
 
 class DocumentPageContentView(SingleObjectDetailView):
@@ -133,23 +130,23 @@ class DocumentVersionPageContentView(SingleObjectDetailView):
         }
 
 
-class DocumentParsingErrorsListView(SingleObjectListView):
-    view_permission = permission_content_view
-
-    def get_document(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+class DocumentParsingErrorsListView(
+    ExternalObjectMixin, SingleObjectListView
+):
+    external_object_class = Document
+    external_object_permission = permission_parse_document
 
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'object': self.get_document(),
+            'object': self.external_object,
             'title': _(
                 'Parsing errors for document: %s'
-            ) % self.get_document(),
+            ) % self.external_object,
         }
 
     def get_source_queryset(self):
-        return self.get_document().latest_version.parsing_errors.all()
+        return self.external_object.latest_version.parsing_errors.all()
 
 
 class DocumentSubmitView(MultipleObjectConfirmActionView):
@@ -168,7 +165,7 @@ class DocumentSubmitView(MultipleObjectConfirmActionView):
         result = {
             'title': ungettext(
                 singular='Submit %(count)d document to the parsing queue?',
-                plural='Submit %(count)d documents to the parsing queue',
+                plural='Submit %(count)d documents to the parsing queue?',
                 number=queryset.count()
             ) % {
                 'count': queryset.count(),
@@ -215,7 +212,7 @@ class DocumentTypeSettingsEditView(ExternalObjectMixin, SingleObjectEditView):
 
 class DocumentTypeSubmitView(FormView):
     extra_context = {
-        'title': _('Submit all documents of a type for parsing.')
+        'title': _('Submit all documents of a type for parsing')
     }
     form_class = DocumentTypeFilteredSelectForm
     post_action_redirect = reverse_lazy(viewname='common:tools_list')
@@ -250,7 +247,7 @@ class ParseErrorListView(SingleObjectListView):
         'hide_object': True,
         'title': _('Parsing errors'),
     }
-    view_permission = permission_document_type_parsing_setup
+    view_permission = permission_parse_document
 
     def get_source_queryset(self):
         return DocumentVersionParseError.objects.all()

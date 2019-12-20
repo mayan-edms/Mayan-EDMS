@@ -1,0 +1,15 @@
+=======
+Storage
+=======
+
+Mayan EDMS stores documents in their original file format only changing the
+filename to avoid collision. By default, documents files are stored in the
+same filesystem as the program code but by using different drivers, these
+can also be placed in other storage systems like object storage.
+
+- :doc:`../chapters/file_storage`
+
+.. toctree::
+    :hidden:
+
+    ../chapters/file_storage

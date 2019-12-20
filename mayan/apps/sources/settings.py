@@ -7,7 +7,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings.classes import Namespace
 
-namespace = Namespace(label=_('Sources'), name='sources')
+from .setting_migrations import SourcesSettingMigration
+
+namespace = Namespace(
+    label=_('Sources'), migration_class=SourcesSettingMigration,
+    name='sources', version='0002'
+)
 
 setting_scanimage_path = namespace.add_setting(
     global_name='SOURCES_SCANIMAGE_PATH', default='/usr/bin/scanimage',

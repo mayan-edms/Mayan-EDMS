@@ -254,12 +254,11 @@ class DocumentVersionSignatureDownloadView(SingleObjectDownloadView):
     model = DetachedSignature
     object_permission = permission_document_version_signature_download
 
-    def get_file(self):
-        signature = self.get_object()
+    def get_download_file_object(self):
+        return self.object.signature_file
 
-        return DocumentVersionSignatureDownloadView.VirtualFile(
-            signature.signature_file, name=force_text(signature)
-        )
+    def get_download_filename(self):
+        return force_text(self.object)
 
 
 class DocumentVersionSignatureListView(

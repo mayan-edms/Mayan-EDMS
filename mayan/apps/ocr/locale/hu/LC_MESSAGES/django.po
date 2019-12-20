@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:38-0400\n"
+"POT-Creation-Date: 2019-12-18 00:30-0400\n"
 "PO-Revision-Date: 2019-09-24 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:15 links.py:21
-#: permissions.py:7 queues.py:8 settings.py:7
+#: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:20 links.py:26
+#: permissions.py:7 queues.py:8 settings.py:10
 msgid "OCR"
 msgstr "Karakterfelismerés"
 
@@ -31,7 +31,7 @@ msgstr "Dátum és idő"
 msgid "Result"
 msgstr "Eredmény"
 
-#: backends/tesseract.py:95
+#: backends/tesseract.py:90
 msgid "Tesseract OCR not found."
 msgstr ""
 
@@ -66,27 +66,27 @@ msgstr "Tartalom"
 msgid "Page %(page_number)d"
 msgstr "Oldal %(page_number)d"
 
-#: links.py:27 links.py:32
+#: links.py:32 links.py:37
 msgid "Delete OCR content"
 msgstr ""
 
-#: links.py:38 links.py:43
+#: links.py:43 links.py:48
 msgid "Submit for OCR"
 msgstr "Karakterfelismerőnek feladás"
 
-#: links.py:48
+#: links.py:53
 msgid "Setup OCR"
 msgstr "Karakterfelismeréső beállítása"
 
-#: links.py:53
+#: links.py:58
 msgid "OCR documents per type"
 msgstr "Karakterfelismerés dokumentum típus alapján"
 
-#: links.py:58 links.py:64 views.py:185
+#: links.py:63 links.py:69 views.py:185
 msgid "OCR errors"
 msgstr "Karakterfelismerési hibák"
 
-#: links.py:70
+#: links.py:75
 msgid "Download OCR text"
 msgstr "Felismert szöveg letöltése"
 
@@ -158,11 +158,11 @@ msgstr "A dokumentum típus karakterfelismerő beállításának megváltoztatá
 msgid "Document version OCR"
 msgstr "Dokumentum verzió karakterfelismerés"
 
-#: settings.py:12
+#: settings.py:17
 msgid "Full path to the backend to be used to do OCR."
 msgstr ""
 
-#: settings.py:21
+#: settings.py:26
 msgid "Set new document types to perform OCR automatically by default."
 msgstr ""
 

@@ -11,6 +11,7 @@ except ImportError:
     COMPRESSION = zipfile.ZIP_STORED
 
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.utils.encoding import force_text
 
 from mayan.apps.mimetype.api import get_mimetype
 
@@ -136,9 +137,34 @@ class ZipArchive(Archive):
         return self._archive.read(filename)
 
     def members(self):
-        return [
-            filename for filename in self._archive.namelist() if not filename.endswith('/')
-        ]
+        results = []
+
+        for filename in self._archive.namelist():
+            # Zip files only support UTF-8 and CP437 encodings.
+            # Attempt to decode CP437 to be able to check if it ends
+            # with a slash.
+            # Future improvement that violates the Zip format:
+            # Add chardet.detect to detect the most likely encoding
+            # if other than CP437.
+            try:
+                filename = filename.decode('CP437')
+                is_unicode = False
+            except AttributeError:
+                filename = force_text(filename)
+                is_unicode = True
+            except UnicodeEncodeError:
+                is_unicode = True
+
+            if not filename.endswith('/'):
+                # Re encode in the original encoding
+                if not is_unicode:
+                    filename = filename.encode(
+                        encoding='CP437', errors='strict'
+                    )
+
+                results.append(filename)
+
+        return results
 
     def open_member(self, filename):
         return self._archive.open(filename)

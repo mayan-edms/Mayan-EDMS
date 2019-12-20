@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:39-0400\n"
+"POT-Creation-Date: 2019-12-18 00:31-0400\n"
 "PO-Revision-Date: 2019-05-14 11:35+0000\n"
 "Last-Translator: Adek Lanin\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:9 settings.py:9
+#: apps.py:10 settings.py:9
 msgid "Storage"
 msgstr "Penyimpanan"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:36-0400\n"
+"POT-Creation-Date: 2019-12-18 00:28-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,16 +35,16 @@ msgid ""
 "unchecked results that match at least one field will be returned."
 msgstr ""
 
-#: forms.py:29 templates/dynamic_search/search_box.html:21
+#: forms.py:29 templates/dynamic_search/search_box.html:39
 msgid "Search terms"
 msgstr ""
 
-#: links.py:8 templates/dynamic_search/search_box.html:23 views.py:59
-#: views.py:72
+#: links.py:8 settings.py:7 templates/dynamic_search/search_box.html:43
+#: views.py:59 views.py:72
 msgid "Search"
 msgstr ""
 
-#: links.py:11 views.py:86
+#: links.py:11 templates/dynamic_search/search_box.html:45 views.py:86
 msgid "Advanced search"
 msgstr ""
 
@@ -52,7 +52,12 @@ msgstr ""
 msgid "Search again"
 msgstr ""
 
-#: templates/dynamic_search/search_box.html:24
+#: settings.py:12
+msgid ""
+"Disables the single term bar search leaving only the advanced search button."
+msgstr ""
+
+#: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
 msgstr ""
 

@@ -73,11 +73,13 @@ class DocumentMailForm(forms.Form):
 
 
 class UserMailerBackendSelectionForm(forms.Form):
-    backend = forms.ChoiceField(choices=(), label=_('Backend'))
+    backend = forms.ChoiceField(
+        choices=(), help_text=_('The driver to use when sending emails.'),
+        label=_('Backend')
+    )
 
     def __init__(self, *args, **kwargs):
         super(UserMailerBackendSelectionForm, self).__init__(*args, **kwargs)
-
         self.fields['backend'].choices = [
             (
                 key, backend.label

@@ -1,0 +1,12 @@
+==============
+Nightly images
+==============
+
+The continuous integration pipeline used for testing development builds also
+produces a resulting Docker image. These are build automatically and their
+stability is not guaranteed. They should never be used in production.
+If you want to try out the Docker images the development uses or want a sneak
+peek at the new features being worked on checkout the container registry at:
+|SOURCE_CODE_REPOSITORY|container_registry
+
+

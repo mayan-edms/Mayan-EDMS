@@ -1,0 +1,18 @@
+=======
+Backups
+=======
+
+To backup your install of Mayan EDMS just copy the ``media`` folder and
+the database content.
+
+If you are using the default storage backend, the ``media`` should be located
+at |MAYAN_MEDIA_ROOT|::
+
+    sudo tar -zcvf backup.tar.gz |MAYAN_MEDIA_ROOT|
+
+To dump the content of your database manager refer to the documentation chapter
+regarding database data "dumping".
+
+- PostgreSQL: https://www.postgresql.org/docs/current/backup-dump.html
+- MySQL: https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html
+

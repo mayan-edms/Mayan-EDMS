@@ -31,7 +31,8 @@ class Migration(migrations.Migration):
             name='document_version',
             field=models.ForeignKey(
                 related_name='signatures', editable=False,
-                to='documents.DocumentVersion', verbose_name='Document version'
+                to='documents.DocumentVersion',
+                verbose_name='Document version'
             ),
         ),
         migrations.AlterField(

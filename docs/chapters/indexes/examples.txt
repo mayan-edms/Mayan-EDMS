@@ -1,0 +1,125 @@
+==============
+Index examples
+==============
+
+Index of document types
+=======================
+
+.. admonition:: Permissions required
+    :class: warning
+
+    - The "Create new document indexes" permission is required for this action.
+    - The "Edit document indexes" permission is required for this action, globally
+      of via an ACL for a document index.
+    - The "Edit document types" permission is required for this action, globally
+      of via an ACL for a document type.
+
+
+This index will create one level for each document type in the system and place
+links to the document of each respective type.
+
+#. Go to the :menuselection:`System --> Setup --> Indexes` menu.
+#. Create a new index using :guilabel:`Actions` > :guilabel:`Create new`.
+#. Give it a label to describe it, and an internal name. The internal name is
+   used when referencing this index in other parts of the system.
+#. Press the :guilabel:`Template` link of the newly created index.
+#. Select :guilabel:`New child node` to create a new level in which the
+   following template code will be entered.
+   ::
+
+       {{ document.document_type }}
+
+#. Save the template.
+#. Click on :guilabel:`Document types` and associate this index with
+   existing document types in the system.
+#. Finally go to :menuselection:`Tools --> Rebuild indexes` to execute the
+   index template. The rebuild process is only necessary when changes are
+   made to the index templates. Otherwise they update automatically whenever
+   a new document is uploaded or existing documents properties are modified.
+#. A new index should appear under :menuselection:`Indexes` menu.
+
+You can also program different behavior based on the different document types,
+by use a comparison and a conditional statement. As the document_type itself
+is not a string you cannot directly use that for that comparison. You will have
+to use the label of the document type.
+
+For example::
+
+    {% if document.document_type.label == "Invoice" or document.document_type.label == "Letter" %}
+    Correspondence
+    {% else %}
+    {{ document.document_type }}
+    {% endif %}
+
+This will create and index level for each document type. Except for documents
+of types "Invoice" and "Letter", these will now go into the level "Correspondence".
+
+
+Index document by department, taken from the first character of the invoice number metadata
+===========================================================================================
+
+Requires one index node with the template::
+
+    {% if document.metadata_value_of.invoice_number.0 == "A" %}Accounting
+    {% if document.metadata_value_of.invoice_number.0 == "H" %}Human Resources
+    {% endif %}
+
+
+Nested date index from a date contained in a metadata
+=====================================================
+
+Assuming the metadata type is named **date_issued** with a date format
+of YYYY-MM-DD. The target is to have two levels: one for years and another
+sub level for months.
+
+**First level: Year**
+::
+
+    {{ document.metadata_value_of.date_issued|slice:"0:4" }}
+
+
+**Second level: Months**
+::
+
+    {{ document.metadata_value_of.date_issued|slice:"5:7" }}
+
+
+**Optional: Third level: Day**
+::
+
+    {{ document.metadata_value_of.date_issued|slice:"8:10" }}
+
+
+Index by OCR content
+====================
+
+This example indexes documents in a "quarterly report" level if they have the
+fragment “quarterly report” in the OCR text::
+
+    {% if "quarterly report" in document.latest_version.ocr_content|join:" "|lower %}Quarterly reports{% endif %}
+
+The same applies to text content extracted for the document::
+
+    {% if "quarterly report" in document.latest_version.content|join:" "|lower %}Quarterly reports{% endif %}
+
+
+
+Index documents not found in any cabinet
+========================================
+::
+
+    {% if document.cabinets.count == 0 %}No Cabinets{% endif %}
+
+
+Index documents not tagged
+==========================
+::
+
+    {% if document.tags.count == 0 %}No Tags{% endif %}
+
+
+Index documents specifically, by the year of a metadata field otherwise by their uploaded year
+==============================================================================================
+::
+
+    {% for tag in document.tags.all %}{% if tag.label == "Taxes" %}{% if document.metadata_value_of.tax_year|length_is:"4" %}{{ document.metadata_value_of.tax_year }}{% else %}{{ document.date_added|date:"Y" }}{% endif %}{% endif %}{% endfor %}

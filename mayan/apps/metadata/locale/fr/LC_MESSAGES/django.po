@@ -5,6 +5,7 @@
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016-2017
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Olivier W, 2019
 # PatrickHetu <patrick.hetu@gmail.com>, 2012
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
@@ -14,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:38-0400\n"
-"PO-Revision-Date: 2019-11-19 02:41+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-18 00:29-0400\n"
+"PO-Revision-Date: 2019-12-08 19:20+0000\n"
+"Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,7 +36,7 @@ msgstr "Retourne la valeur de la métadonnée du document spécifié"
 
 #: apps.py:99
 msgid "Metadata value of"
-msgstr ""
+msgstr "Valeur de la métadonnée de"
 
 #: apps.py:104
 msgid "Metadata type name"
@@ -45,7 +46,7 @@ msgstr "Nom du type de métadonnée"
 msgid "Metadata type value"
 msgstr "Valeur du type de métadonnée"
 
-#: apps.py:183 apps.py:191 forms.py:123 models.py:93 models.py:304
+#: apps.py:183 apps.py:191 forms.py:123 models.py:96 models.py:307
 msgid "Metadata type"
 msgstr "Type de métadonnée"
 
@@ -85,7 +86,7 @@ msgstr "ID"
 msgid "Name"
 msgstr "Nom"
 
-#: forms.py:20 models.py:211
+#: forms.py:20 models.py:214
 msgid "Value"
 msgstr "Valeur"
 
@@ -93,7 +94,7 @@ msgstr "Valeur"
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: forms.py:46 forms.py:185 models.py:306
+#: forms.py:46 forms.py:185 models.py:309
 msgid "Required"
 msgstr "Requis"
 
@@ -107,7 +108,7 @@ msgstr "Erreur de recherche de valeur : %s"
 msgid "Default value error: %s"
 msgstr "Erreur de valeur par défaut : %s"
 
-#: forms.py:104 models.py:172
+#: forms.py:104 models.py:175
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "\"%s\" est requis pour ce type de document."
@@ -132,7 +133,7 @@ msgstr "Aucun"
 msgid "Optional"
 msgstr "Optionnel"
 
-#: forms.py:189 models.py:55 search.py:19
+#: forms.py:189 models.py:57 search.py:19
 msgid "Label"
 msgstr "Libellé"
 
@@ -152,7 +153,7 @@ msgstr "Modifier les métadonnées"
 msgid "Remove metadata"
 msgstr "Retirer des métadonnées"
 
-#: links.py:55 links.py:83 models.py:94 views.py:656
+#: links.py:55 links.py:83 models.py:97 views.py:656
 msgid "Metadata types"
 msgstr "Types de métadonnées"
 
@@ -178,84 +179,88 @@ msgid ""
 "reserved words, or spaces."
 msgstr "Nom utilisé par d'autres applications pour faire référence à ce type de métadonnées. N'utilisez pas de mots réservés Python, ni d'espace."
 
-#: models.py:59
+#: models.py:56
+msgid "Short description of this metadata type."
+msgstr ""
+
+#: models.py:62
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr "Entrez un modèle à utiliser. Utilisez le langage de gabarit par défaut de Django (https://docs.djangoproject.com/fr/1.11.11/ref/templates/builtins/)"
 
-#: models.py:63 search.py:22
+#: models.py:66 search.py:22
 msgid "Default"
 msgstr "Par défaut"
 
-#: models.py:68
+#: models.py:71
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
 "Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
 msgstr "Entrez un modèle à afficher. Doit avoir pour résultat une chaîne délimitée par des virgules. Utilisez le langage par défaut de Django pour les modèles (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
 
-#: models.py:73 search.py:25
+#: models.py:76 search.py:25
 msgid "Lookup"
 msgstr "Rechercher"
 
-#: models.py:78
+#: models.py:81
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
 msgstr "Le système de validation rejettera les données saisies si elles ne sont pas conformes au format attendu."
 
-#: models.py:80 search.py:28
+#: models.py:83 search.py:28
 msgid "Validator"
 msgstr "Validateur"
 
-#: models.py:84
+#: models.py:87
 msgid ""
 "The parser will reformat the value entered to conform to the expected "
 "format."
 msgstr "L'analyseur syntaxique reformatera la valeur saisie pour la rendre conforme au format attendu."
 
-#: models.py:86 search.py:31
+#: models.py:89 search.py:31
 msgid "Parser"
 msgstr "Analyseur"
 
-#: models.py:180
+#: models.py:183
 msgid "Value is not one of the provided options."
 msgstr "La valeur saisie ne fait pas partie des options proposées."
 
-#: models.py:202
+#: models.py:205
 msgid "Document"
 msgstr "Document"
 
-#: models.py:205
+#: models.py:208
 msgid "Type"
 msgstr "Type"
 
-#: models.py:209
+#: models.py:212
 msgid "The actual value stored in the metadata type field for the document."
 msgstr "La valeur actuellement enregistrée dans le champ de type de métadonnées du document."
 
-#: models.py:217 models.py:218
+#: models.py:220 models.py:221
 msgid "Document metadata"
 msgstr "Métadonnées du document"
 
-#: models.py:239
+#: models.py:242
 msgid "Metadata type is required for this document type."
 msgstr "Le type de métadonnées est requis pour ce type de document."
 
-#: models.py:269
+#: models.py:272
 msgid "Metadata type is not valid for this document type."
 msgstr "Le type de métadonnées n'est pas valide pour ce type de document."
 
-#: models.py:300
+#: models.py:303
 msgid "Document type"
 msgstr "Type de document"
 
-#: models.py:313
+#: models.py:316
 msgid "Document type metadata type options"
 msgstr "Options de type de métadonnées du type de document "
 
-#: models.py:314
+#: models.py:317
 msgid "Document type metadata types options"
 msgstr "Options de types de métadonnées du type de document"
 

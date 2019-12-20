@@ -1,0 +1,20 @@
+===============
+Advanced topics
+===============
+
+- :doc:`../chapters/workflows`
+- :doc:`../chapters/signatures`
+- :doc:`../chapters/metadata`
+- :doc:`../chapters/transformations`
+- :doc:`../chapters/versioning`
+- :doc:`../chapters/quick_labels`
+
+.. toctree::
+    :hidden:
+
+    ../chapters/workflows
+    ../chapters/signatures
+    ../chapters/metadata
+    ../chapters/transformations
+    ../chapters/versioning
+    ../chapters/quick_labels

@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:33-0400\n"
-"PO-Revision-Date: 2019-11-08 10:26+0000\n"
-"Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
+"POT-Creation-Date: 2019-12-18 00:25-0400\n"
+"PO-Revision-Date: 2019-12-03 05:20+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:10 settings.py:9
+#: apps.py:11 settings.py:9
 msgid "Appearance"
 msgstr "Erscheinungsbild"
 
@@ -78,6 +78,12 @@ msgstr "URI.js"
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Maximale Anzahl der Zeichen, die als Titel einer Ansicht angezeigt werden."
 
+#: settings.py:21
+msgid ""
+"Position where the system message will be displayed. Options are: top-left, "
+"top-center, top-right, bottom-left, bottom-center, bottom-right."
+msgstr ""
+
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
 msgstr "Unzureichende Berechtigungen"
@@ -94,7 +100,7 @@ msgstr "Seite nicht gefunden"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Die angeforderte Seite konnte leider nicht gefunden werden"
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:52
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:55
 msgid "Server error"
 msgstr "Serverfehler"
 
@@ -201,79 +207,68 @@ msgid ""
 "            "
 msgstr "\nMachen Sie dieses Projekt bekannt. Berichten Sie Ihren Freunden und Kollegen, wie angenehm die Arbeit mit %(project_title)s ist!\n Folgen Sie uns auf <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, oder <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n            "
 
-#: templates/appearance/base.html:36 templates/appearance/base.html:46
+#: templates/appearance/base.html:37 templates/appearance/base.html:47
 msgid "Warning"
 msgstr "Warnung"
 
-#: templates/appearance/base.html:46
+#: templates/appearance/base.html:47
 msgid ""
-"Settings updated, restart your installation for changes to take proper "
-"effect."
-msgstr "Einstellungen wurden aktualisiert, starten Sie die Instanz neu, damit die Änderungen wirksam werden."
+"Settings updated, restart your installation and refresh your browser for "
+"changes to take effect."
+msgstr ""
 
 #: templates/appearance/base.html:60
-#: templates/appearance/generic_list_items_subtemplate.html:104
+#: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Aktionen"
 
 #: templates/appearance/base.html:62
-#: templates/appearance/generic_list_items_subtemplate.html:106
+#: templates/appearance/generic_list_items_subtemplate.html:68
+#: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Ausklappmenü ein-/ausschalten"
+
+#: templates/appearance/calculate_form_title.html:10
+msgid "Open main menu"
+msgstr ""
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
 msgstr "Sind Sie sicher?"
 
-#: templates/appearance/generic_confirm.html:34
+#: templates/appearance/generic_confirm.html:38
 msgid "Yes"
 msgstr "Ja"
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:48
 msgid "No"
 msgstr "Nein"
 
 #: templates/appearance/generic_form_instance.html:51
 #: templates/appearance/generic_form_instance.html:57
-#: templates/appearance/generic_form_subtemplate.html:51
+#: templates/appearance/generic_form_subtemplate.html:50
 #: templates/appearance/generic_multiform_subtemplate.html:37
 msgid "required"
 msgstr "erforderlich"
 
-#: templates/appearance/generic_form_subtemplate.html:86
-#: templates/appearance/generic_form_subtemplate.html:99
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Save"
 msgstr "Speichern"
 
-#: templates/appearance/generic_form_subtemplate.html:86
-#: templates/appearance/generic_form_subtemplate.html:99
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Submit"
 msgstr "Absenden"
 
-#: templates/appearance/generic_form_subtemplate.html:90
+#: templates/appearance/generic_form_subtemplate.html:87
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: templates/appearance/generic_list_items_subtemplate.html:17
-#: templates/appearance/generic_list_subtemplate.html:17
-#, python-format
-msgid ""
-"Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
-"%(total_pages)s)"
-msgstr "Gesamt (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von %(total_pages)s)"
-
-#: templates/appearance/generic_list_items_subtemplate.html:19
-#: templates/appearance/generic_list_items_subtemplate.html:22
-#: templates/appearance/generic_list_subtemplate.html:19
-#: templates/appearance/generic_list_subtemplate.html:22
-#, python-format
-msgid "Total: %(total)s"
-msgstr "Gesamt: %(total)s"
-
-#: templates/appearance/generic_list_subtemplate.html:55
+#: templates/appearance/generic_list_subtemplate.html:28
 msgid "Identifier"
 msgstr "Bezeichner"
 
@@ -289,7 +284,33 @@ msgstr "Erste Schritte"
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Bevor Mayan EDMS voll genutzt werden kann, muss folgendes passieren:"
 
-#: templates/appearance/main_menu.html:10
+#: templates/appearance/list_header.html:11
+#, python-format
+msgid ""
+"Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
+"%(total_pages)s)"
+msgstr "Gesamt (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von %(total_pages)s)"
+
+#: templates/appearance/list_header.html:13
+#: templates/appearance/list_header.html:16
+#, python-format
+msgid "Total: %(total)s"
+msgstr "Gesamt: %(total)s"
+
+#: templates/appearance/list_toolbar.html:16
+msgid "Select/Deselect all"
+msgstr ""
+
+#: templates/appearance/list_toolbar.html:60
+msgid ""
+"Select items to activate bulk actions. Use Shift + click to select many."
+msgstr ""
+
+#: templates/appearance/list_toolbar.html:65
+msgid "Bulk actions"
+msgstr ""
+
+#: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "Navigation ein-/ausschalten"
 
@@ -297,15 +318,15 @@ msgstr "Navigation ein-/ausschalten"
 msgid "No results"
 msgstr "Kein Ergebnis"
 
-#: templates/appearance/root.html:57
+#: templates/appearance/root.html:60
 msgid "Close"
 msgstr "Schließen"
 
-#: templates/appearance/root.html:65
+#: templates/appearance/root.html:68
 msgid "Server communication error"
 msgstr "Fehler bei der Verbindung zum Server"
 
-#: templates/appearance/root.html:67
+#: templates/appearance/root.html:70
 msgid "Check you network connection and try again in a few moments."
 msgstr "Prüfen Sie Ihre Netzwerkeinstellungen und versuchen Sie es nochmals."
 

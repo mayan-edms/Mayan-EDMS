@@ -17,9 +17,10 @@ class Migration(migrations.Migration):
                 blank=True, choices=[
                     ('simplex', 'Simples'), ('duplex', 'Duplex')
                 ], default='simplex',
-                help_text='Selects the document feeder mode (simplex/duplex). '
-                'If this option is not supported by your scanner, leave it '
-                'blank.', max_length=16, verbose_name='ADF mode'
+                help_text='Selects the document feeder mode '
+                '(simplex/duplex). If this option is not supported by '
+                'your scanner, leave it blank.', max_length=16,
+                verbose_name='ADF mode'
             ),
         ),
         migrations.AddField(
@@ -30,8 +31,8 @@ class Migration(migrations.Migration):
                     ('flatbed', 'Flatbed'),
                     ('document-feeder', 'Document feeder')
                 ], default='flatbed', help_text='Selects the scan source '
-                '(such as a document-feeder). If this option is not supported '
-                'by your scanner, leave it blank.', max_length=16,
+                '(such as a document-feeder). If this option is not '
+                'supported by your scanner, leave it blank.', max_length=16,
                 verbose_name='Paper source'
             ),
         ),

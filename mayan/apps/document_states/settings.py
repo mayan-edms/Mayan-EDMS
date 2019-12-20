@@ -13,10 +13,10 @@ from .utils import callback_update_workflow_image_cache_size
 namespace = Namespace(label=_('Workflows'), name='document_states')
 
 setting_workflow_image_cache_maximum_size = namespace.add_setting(
-    global_name='WORKFLOW_IMAGE_CACHE_MAXIMUM_SIZE',
+    global_name='WORKFLOWS_IMAGE_CACHE_MAXIMUM_SIZE',
     default=DEFAULT_WORKFLOW_IMAGE_CACHE_MAXIMUM_SIZE,
     help_text=_(
-        'The threshold at which the WORKFLOW_IMAGE_CACHE_STORAGE_BACKEND will '
+        'The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will '
         'start deleting the oldest workflow image cache files. Specify the '
         'size in bytes.'
     ), post_edit_function=callback_update_workflow_image_cache_size

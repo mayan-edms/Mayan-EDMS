@@ -19,6 +19,7 @@ class DocumentTemplateSandboxForm(forms.Form):
         self.model_variable = kwargs.pop('model_variable')
         super(DocumentTemplateSandboxForm, self).__init__(*args, **kwargs)
         self.fields['template'] = TemplateField(
+            initial_help_text=_('The template string to be evaluated.'),
             label=_('Template'), model=self.model,
             model_variable=self.model_variable, required=False
         )

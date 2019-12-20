@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:40-0400\n"
+"POT-Creation-Date: 2019-12-18 00:31-0400\n"
 "PO-Revision-Date: 2019-08-30 21:25+0000\n"
 "Last-Translator: Marcin Lozynski <mlozynski@wp.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -26,19 +26,19 @@ msgstr ""
 msgid "User management"
 msgstr "Zarządzanie użytkownikami"
 
-#: apps.py:100 search.py:36
+#: apps.py:100 search.py:12
 msgid "Group"
 msgstr "Grupa"
 
-#: apps.py:101 links.py:41 links.py:52 links.py:75 search.py:26 views.py:120
+#: apps.py:101 links.py:41 links.py:52 links.py:75 search.py:36 views.py:120
 msgid "Groups"
 msgstr "Grupy"
 
-#: apps.py:102 search.py:42
+#: apps.py:102 search.py:18
 msgid "Name"
 msgstr "Nazwa"
 
-#: apps.py:108 models.py:18 search.py:14
+#: apps.py:108 models.py:18 search.py:24
 msgid "User"
 msgstr "Użytkownik"
 
@@ -50,15 +50,15 @@ msgstr "Użytkownicy"
 msgid "Username"
 msgstr "Nazwa użytkownika"
 
-#: apps.py:113 search.py:20
+#: apps.py:113 search.py:30
 msgid "First name"
 msgstr "Imię"
 
-#: apps.py:114 search.py:29
+#: apps.py:114 search.py:39
 msgid "Last name"
 msgstr "Nazwisko"
 
-#: apps.py:115 search.py:23
+#: apps.py:115 search.py:33
 msgid "Email"
 msgstr "Email"
 
@@ -182,7 +182,7 @@ msgstr "Edytuj istniejących użytkowników"
 msgid "View existing users"
 msgstr "Wyświetl istniejących użytkowników"
 
-#: search.py:32
+#: search.py:42
 msgid "username"
 msgstr "nazwa użytkownika"
 

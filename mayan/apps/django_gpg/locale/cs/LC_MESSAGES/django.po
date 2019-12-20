@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:35-0400\n"
+"POT-Creation-Date: 2019-12-18 00:27-0400\n"
 "PO-Revision-Date: 2019-10-15 17:41+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -70,39 +70,39 @@ msgstr "Termín"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Hledejte jméno, e-mail, ID klíče nebo otisk prstu."
 
-#: links.py:15
+#: links.py:19
 msgid "Delete"
 msgstr "Odstranit"
 
-#: links.py:19
+#: links.py:24
 msgid "Details"
 msgstr "Detail"
 
-#: links.py:23
+#: links.py:29
 msgid "Download"
 msgstr "Stažení"
 
-#: links.py:27 permissions.py:28
+#: links.py:34 permissions.py:28
 msgid "Query keyservers"
 msgstr "Dotazové servery klíčů"
 
-#: links.py:32
+#: links.py:39
 msgid "Import"
 msgstr "Import"
 
-#: links.py:37 permissions.py:7
+#: links.py:44 permissions.py:7
 msgid "Key management"
 msgstr "Správa klíčů"
 
-#: links.py:41
+#: links.py:48
 msgid "Upload key"
 msgstr "Klíč pro nahrávání"
 
-#: links.py:44 views.py:176
+#: links.py:52 views.py:179
 msgid "Private keys"
 msgstr "Soukromé klíče"
 
-#: links.py:48 views.py:200
+#: links.py:56 views.py:203
 msgid "Public keys"
 msgstr "Veřejné klíče"
 
@@ -214,78 +214,78 @@ msgstr "Cesta k binárku GPG."
 msgid "Keyserver used to query for keys."
 msgstr "Keyserver slouží k dotazování na klíče."
 
-#: views.py:35
+#: views.py:37
 #, python-format
 msgid "Delete key: %s"
 msgstr "Smazat klíč: %s"
 
-#: views.py:51
+#: views.py:53
 #, python-format
 msgid "Details for key: %s"
 msgstr "Podrobnosti pro klíč: %s"
 
-#: views.py:71
+#: views.py:74
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "Import klíče ID: %s?"
 
-#: views.py:72
+#: views.py:75
 msgid "Import key"
 msgstr "Importovat klíč"
 
-#: views.py:81
+#: views.py:84
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Nelze importovat klíč: %(key_id)s; %(error)s"
 
-#: views.py:89
+#: views.py:92
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "Klíč byl úspěšně přijat: %(key_id)s"
 
-#: views.py:106
+#: views.py:109
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
 msgstr "Pomocí jmen, příjmení, identifikátorů klíčů nebo e-mailů můžete hledat veřejné klíče, které chcete importovat ze serveru klíčů."
 
-#: views.py:110
+#: views.py:113
 msgid "No results returned"
 msgstr "Nebyly nalezeny žádné výsledky"
 
-#: views.py:112
+#: views.py:115
 msgid "Key query results"
 msgstr "Výsledky dotazu na klíč "
 
-#: views.py:132
+#: views.py:135
 msgid "Search"
 msgstr "Vyhledávání"
 
-#: views.py:134
+#: views.py:137
 msgid "Query key server"
 msgstr "Fronta dotazu na Server klíčů"
 
-#: views.py:153
+#: views.py:156
 msgid "Upload new key"
 msgstr "Nahrajte nový klíč"
 
-#: views.py:169
+#: views.py:172
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user.The view to upload private and public keys is the same."
 msgstr "Soukromé klíče se používají k podepsání dokumentů. Soukromé klíče může nahrávat pouze uživatel. Pohled na nahrávání soukromých a veřejných klíčů je stejný."
 
-#: views.py:174
+#: views.py:177
 msgid "There no private keys"
 msgstr "Neexistují žádné soukromé klíče"
 
-#: views.py:192
+#: views.py:195
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr "Veřejné klíče se používají k ověření podepsaných dokumentů. Veřejné klíče může uživatel nahrát nebo stáhnout ze serverů klíčů. Pohled na nahrávání soukromých a veřejných klíčů je stejný."
 
-#: views.py:198
+#: views.py:201
 msgid "There no public keys"
 msgstr "Neexistují žádné veřejné klíče"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:37-0400\n"
+"POT-Creation-Date: 2019-12-18 00:28-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -28,7 +28,7 @@ msgid "Label"
 msgstr "Conținut etichetă"
 
 #: apps.py:52 events.py:8 links.py:18 permissions.py:7 queues.py:9
-#: settings.py:9
+#: settings.py:11
 msgid "File metadata"
 msgstr "Metadatele fișierului"
 
@@ -38,7 +38,7 @@ msgstr "Returnați valoarea unei metadate de fișier specifice."
 
 #: apps.py:99
 msgid "File metadata value of"
-msgstr ""
+msgstr "Valoarea metadatelor fișierului pentru"
 
 #: apps.py:110 apps.py:114 apps.py:152 apps.py:161
 msgid "File metadata key"
@@ -55,7 +55,7 @@ msgstr ""
 "Bibliotecă și program pentru citirea și scrierea informațiilor meta în "
 "fișierele multimedia."
 
-#: drivers/exiftool.py:26
+#: drivers/exiftool.py:20
 msgid "EXIF Tool"
 msgstr "Instrument EXIF"
 
@@ -188,7 +188,7 @@ msgstr "Vizualizați metadatele fișierelor"
 msgid "Process document version"
 msgstr "Procesează versiunea documentului"
 
-#: settings.py:14
+#: settings.py:18
 msgid ""
 "Set new document types to perform file metadata processing automatically by "
 "default."
@@ -196,7 +196,7 @@ msgstr ""
 "Setați tipuri noi de documente pentru a efectua automat prelucrarea "
 "metadatelor de fișiere în mod implicit."
 
-#: settings.py:25
+#: settings.py:24
 msgid "Arguments to pass to the drivers."
 msgstr "Argumente de transmis driverului"
 

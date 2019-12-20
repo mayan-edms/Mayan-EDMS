@@ -178,7 +178,9 @@ class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
         queryset = AccessControlList.objects.get_inherited_permissions(
             obj=self.test_object, role=self.test_role
         )
-        self.assertTrue(self.test_permission.stored_permission not in queryset)
+        self.assertTrue(
+            self.test_permission.stored_permission not in queryset
+        )
 
     def test_retrieve_inherited_role_permission_model_applicable(self):
         self.TestModel = self._create_test_model()

@@ -754,7 +754,7 @@ class SourceColumn(object):
                             name=name, model=model
                         )
                     except AttributeError:
-                        self._help_text = self.attribute
+                        self._help_text = None
 
         self.help_text = self._help_text
 
@@ -866,6 +866,7 @@ class Text(Link):
     Menu text. Renders to a plain <li> tag
     """
     def __init__(self, *args, **kwargs):
+        self.html_extra_classes = kwargs.get('html_extra_classes')
         self.icon = None
         self.text = kwargs.get('text')
         self.view = None

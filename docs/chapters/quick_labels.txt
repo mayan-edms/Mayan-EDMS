@@ -1,0 +1,18 @@
+============
+Quick labels
+============
+
+Quick labels are predetermined filenames that allow the quick renaming of
+documents as they are uploaded or after they have been uploaded.
+
+Quick labels are added and associated to a document type.
+
+Example of quick label: Invoice, Receipt from X store, Purchase order.
+
+It is possible to preserve the file extension when using quick labels.
+Extensions are required for some operating system to be able to detect the
+correct file type to access the content.
+
+For example if a document file is named "file0001.pdf" and the quick label
+"Receipt from X store" is applied, the resulting document label will be
+"Receipt from X store.pdf".

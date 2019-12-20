@@ -518,7 +518,6 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
             Failing that, check for ACLs for any of the workflow's transitions.
             Failing that, then raise PermissionDenied
             """
-            # TODO: Improvement above
             AccessControlList.objects.check_access(
                 obj=document, permissions=(permission_workflow_view,),
                 user=self.request.user

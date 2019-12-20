@@ -7,14 +7,15 @@
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Olivier W, 2019
 # Yves Dubois <ydubois@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:33-0400\n"
-"PO-Revision-Date: 2019-11-18 21:00+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
+"POT-Creation-Date: 2019-12-18 00:25-0400\n"
+"PO-Revision-Date: 2019-12-08 18:55+0000\n"
+"Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,7 +39,7 @@ msgstr "Droits créé"
 msgid "ACL edited"
 msgstr "Droits modifié"
 
-#: forms.py:15 models.py:49
+#: forms.py:15 models.py:48
 msgid "Role"
 msgstr "Rôle"
 
@@ -50,29 +51,29 @@ msgstr "Nouveau droit"
 msgid "Delete"
 msgstr "Suppression"
 
-#: links.py:49 models.py:45 workflow_actions.py:49 workflow_actions.py:164
+#: links.py:49 models.py:44 workflow_actions.py:48 workflow_actions.py:163
 msgid "Permissions"
 msgstr "Autorisations"
 
-#: managers.py:216
+#: managers.py:231
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
 msgstr "L'objet \"%s\" n'est pas un modèle et l'accès ne peut pas être vérifié."
 
-#: managers.py:236
+#: managers.py:252
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr "Droits d'accès insuffisants pour : %s"
 
-#: models.py:57
+#: models.py:56
 msgid "Access entry"
 msgstr "Autorisation d'accès"
 
-#: models.py:58
+#: models.py:57
 msgid "Access entries"
 msgstr "Autorisations d'accès"
 
-#: models.py:62
+#: models.py:61
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Autorisation du rôle \"%(role)s\" pour \"%(object)s\""
@@ -161,48 +162,48 @@ msgid ""
 "menu."
 msgstr ""
 
-#: workflow_actions.py:26
+#: workflow_actions.py:25
 msgid "Object type"
 msgstr "Type d'objet"
 
-#: workflow_actions.py:29
+#: workflow_actions.py:28
 msgid "Type of the object for which the access will be modified."
 msgstr "Type d'objet pour lequel les droits d'accès vont être modifiés."
 
-#: workflow_actions.py:35
+#: workflow_actions.py:34
 msgid "Object ID"
 msgstr "Identifiant de l'objet"
 
-#: workflow_actions.py:38
+#: workflow_actions.py:37
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
 msgstr "Identifiant numérique de l'objet pour lequel les droits d'accès vont être modifiés."
 
-#: workflow_actions.py:43 workflow_actions.py:158
+#: workflow_actions.py:42 workflow_actions.py:157
 msgid "Roles"
 msgstr "Rôles"
 
-#: workflow_actions.py:45 workflow_actions.py:160
+#: workflow_actions.py:44 workflow_actions.py:159
 msgid "Roles whose access will be modified."
 msgstr "Rôles pour lesquels les droits d'accès vont être modifiés."
 
-#: workflow_actions.py:52 workflow_actions.py:167
+#: workflow_actions.py:51 workflow_actions.py:166
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr "Autorisations à accorder/révoquer au rôle pour l'objet sélectionné ci-dessus."
 
-#: workflow_actions.py:60
-msgid "Grant access"
-msgstr "Accorder le droit d'accès"
+#: workflow_actions.py:59
+msgid "Grant object access"
+msgstr "Accorder l'accès à l'objet"
 
-#: workflow_actions.py:143
-msgid "Revoke access"
-msgstr "Révoquer le droit d'accès"
+#: workflow_actions.py:142
+msgid "Revoke object access"
+msgstr "Révoquer l'accès à l'objet"
 
-#: workflow_actions.py:175
+#: workflow_actions.py:174
 msgid "Grant document access"
 msgstr "Accorder l'accès au document"
 
-#: workflow_actions.py:214
+#: workflow_actions.py:213
 msgid "Revoke document access"
 msgstr "Révoquer l'accès au document"

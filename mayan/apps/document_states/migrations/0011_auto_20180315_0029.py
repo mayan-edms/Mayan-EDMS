@@ -13,7 +13,8 @@ class Migration(migrations.Migration):
         migrations.AlterModelOptions(
             name='workflowinstance',
             options={
-                'ordering': ('workflow',), 'verbose_name': 'Workflow instance',
+                'ordering': ('workflow',),
+                'verbose_name': 'Workflow instance',
                 'verbose_name_plural': 'Workflow instances'
             },
         ),

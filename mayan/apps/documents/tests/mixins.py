@@ -210,8 +210,15 @@ class DocumentViewTestMixin(object):
             }
         )
 
-    def _request_document_download_form_view(self):
+    def _request_document_download_form_get_view(self):
         return self.get(
+            viewname='documents:document_download_form', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_document_download_form_post_view(self):
+        return self.post(
             viewname='documents:document_download_form', kwargs={
                 'pk': self.test_document.pk
             }

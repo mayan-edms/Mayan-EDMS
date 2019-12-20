@@ -1,0 +1,99 @@
+==============
+Source Control
+==============
+
+Mayan EDMS source is controlled with Git_.
+
+The project is publicly accessible, hosted and can be cloned from **GitLab** using::
+
+    $ git clone |SOURCE_CODE_GIT|
+
+
+Git branch structure
+--------------------
+
+Mayan EDMS follows a simplified model layout based on Vincent Driessen's
+`Successful Git Branching Model`_ blog post.
+
+``/versions/micro``
+    Working branch for the next bugfix release. Micro increment (third digit).
+    Only bug fixes, minor features, back-ported urgent features. This
+    branch is stable and safe for production.
+``/versions/minor``
+    Working branch for the next minor release (second digit). New features,
+    occasional breakage. Not for production but should run in test
+    environment most of the time. This is the branch you will want to
+    try out if you want to check out new features.
+``/versions/major``
+    Working branch for the next major release (first digit). New features,
+    incompatible changes to the user facing interfaces. Broken most of the
+    time, not for production and should only be cloned by developers
+    with experience with Mayan's development.
+``master``
+    Current production release (|version|). Points to the latest version of
+    the latest series. Production quality code.
+``features/``
+    Working branches for unfinished and unmerged feature. Likely unstable,
+    don't use in production. Once the feature is complete, it is merged
+    into one of the versions branches and deleted.
+
+Special branches:
+
+``releases/all``
+    Pushing code to this branch will trigger the build and release
+    a new Docker image, Documentation and Python package.
+``releases/docker``
+    Pushing code to this branch will trigger the build and release
+    of a new Docker image to Docker Hub.
+``releases/documentation``
+    Pushing code to this branch will trigger the build and release
+    of new documentation.
+``releases/python``
+    Pushing code to this branch will trigger the build and release
+    of a new Python package to PyPI.
+``nightly``
+    Pushing code to this branch will trigger the build and release
+    of a new Docker image based on development code to the GitLab image
+    repository only. The image will not be published to Docker Hub.
+
+Each release is tagged separately using annotated Git tags.
+
+When submitting patches, please place your code in its own ``feature/`` branch
+prior to opening a Merge Request on |SOURCE_CODE_ISSUES|.
+
+.. _Git: http://git-scm.org
+.. _`Successful Git Branching Model`: http://nvie.com/posts/a-successful-git-branching-model/
+
+
+Commit messages
+---------------
+
+#. Use English as the language for the commit messages.
+#. Provide a subject line composed of a tag and a short explanation::
+
+    Indexing: Add document base property reindex
+
+#. Keep the subject line to 50 or less characters.
+#. Capitalize the subject line.
+#. Don't end the subject line with a period, leave like a phrase in English.
+#. Use active voice in the. Say what the commit will do when applied not what
+   you did::
+
+       Add new properties to the model.
+
+   Vs.
+   ::
+
+       Added new properties to the model.
+
+#. Limit the body of the commit to 72 characters.
+#. When a commit fixes or improves an issue add the issue number in the commit
+   message. Either in the subject or in the body.
+#. Sign commit messages.
+#. Use explicit language even for minor commits. Don't do::
+
+       Fix typo
+
+   Use::
+
+       Document: Fix typo in label description

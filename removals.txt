@@ -2,11 +2,13 @@
 cssmin
 django-autoadmin
 django-celery
+django-downloadview
 django-environ
 django-suit
 django-compressor
 django-filetransfers
 django-rest-swagger
+librabbitmq
 pathlib
 pytesseract
 pdfminer

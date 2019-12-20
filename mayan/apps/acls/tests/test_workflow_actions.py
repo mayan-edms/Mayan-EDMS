@@ -30,7 +30,9 @@ class ACLActionTestCase(ActionTestCase):
             list(self.test_document.acls.first().permissions.all()),
             [permission_document_view.stored_permission]
         )
-        self.assertEqual(self.test_document.acls.first().role, self._test_case_role)
+        self.assertEqual(
+            self.test_document.acls.first().role, self._test_case_role
+        )
 
     def test_grant_document_access_action(self):
         action = GrantDocumentAccessAction(
@@ -46,7 +48,9 @@ class ACLActionTestCase(ActionTestCase):
             list(self.test_document.acls.first().permissions.all()),
             [permission_document_view.stored_permission]
         )
-        self.assertEqual(self.test_document.acls.first().role, self._test_case_role)
+        self.assertEqual(
+            self.test_document.acls.first().role, self._test_case_role
+        )
 
     def test_revoke_access_action(self):
         self.grant_access(

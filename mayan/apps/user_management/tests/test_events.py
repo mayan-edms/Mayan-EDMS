@@ -70,8 +70,6 @@ class GroupEventsAPITestCase(
 
         action = Action.objects.last()
 
-        # TODO: Future improvement, find method to record the user who
-        # commited the event. Will required custom serializer .create method
         self.assertEqual(action.actor, self.test_group)
         self.assertEqual(action.target, self.test_group)
         self.assertEqual(action.verb, event_group_created.id)
@@ -89,8 +87,6 @@ class GroupEventsAPITestCase(
 
         action = Action.objects.last()
 
-        # TODO: Future improvement, find method to record the user who
-        # commited the event. Will required custom serializer .update method
         self.assertEqual(action.actor, self.test_group)
         self.assertEqual(action.target, self.test_group)
         self.assertEqual(action.verb, event_group_edited.id)
@@ -185,8 +181,6 @@ class UserEventsAPITestCase(
 
         action = Action.objects.last()
 
-        # TODO: Future improvement, find method to record the user who
-        # commited the event. Will required custom serializer .create method
         self.assertEqual(action.actor, self.test_user)
         self.assertEqual(action.target, self.test_user)
         self.assertEqual(action.verb, event_user_created.id)
@@ -203,8 +197,6 @@ class UserEventsAPITestCase(
 
         action = Action.objects.last()
 
-        # TODO: Future improvement, find method to record the user who
-        # commited the event. Will required custom serializer .update method
         self.assertEqual(action.actor, self.test_user)
         self.assertEqual(action.target, self.test_user)
         self.assertEqual(action.verb, event_user_edited.id)

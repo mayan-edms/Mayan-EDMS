@@ -78,13 +78,6 @@ class MayanApp {
         }
     }
 
-    doBodyAdjust () {
-        // Adjust the height of the body-spacer to move content elements
-        // up or down when the navbar changes size.
-        const navbarSize = 60;
-        $('.body-spacer').css('height', $('.navbar').height() - navbarSize);
-    }
-
     doRefreshAJAXMenu (options) {
         $.ajax({
             complete: function() {
@@ -180,7 +173,6 @@ class MayanApp {
         var self = this;
 
         this.setupAJAXSpinner();
-        this.setupBodyAdjust();
         this.setupFormHotkeys();
         this.setupFullHeightResizing();
         this.setupItemsSelector();
@@ -213,14 +205,6 @@ class MayanApp {
                 $(self.ajaxSpinnerSeletor).fadeOut();
                 self.ajaxExecuting = false;
             });
-        });
-    }
-
-    setupBodyAdjust () {
-        var self = this;
-
-        this.window.resize(function() {
-            self.doBodyAdjust();
         });
     }
 
@@ -293,6 +277,53 @@ class MayanApp {
         })
     }
 
+    setupListToolbar () {
+        var $listToolbar = $('#list-toolbar');
+
+        if ($listToolbar.length !== 0) {
+            var $listToolbarClearfix = $listToolbar.closest('.clearfix');
+            var $listToolbarSpacer = $('#list-toolbar-spacer');
+            var navBarOuterHeight = $('.navbar-fixed-top').outerHeight();
+
+            $listToolbarSpacer.height($listToolbarClearfix.height()).hide();
+
+            $listToolbar.css(
+                {
+                    width: $listToolbarClearfix.width(),
+                }
+            );
+
+            $listToolbar.affix({
+                offset: {
+                    top: $listToolbar.offset().top - navBarOuterHeight,
+                },
+            });
+
+            $listToolbar.on('affix.bs.affix', function () {
+                $listToolbarSpacer.show();
+
+                $listToolbar.css(
+                    {
+                        width: $listToolbarClearfix.width(),
+                    }
+                );
+            });
+
+
+            $listToolbar.on('affix-top.bs.affix', function () {
+                $listToolbarSpacer.hide();
+            });
+
+            this.window.on('resize', function () {
+                $listToolbar.css(
+                    {
+                        width: $listToolbarClearfix.width(),
+                    }
+                );
+            });
+        }
+    }
+
     setupNavbarCollapse () {
         $(document).keyup(function(e) {
             if (e.keyCode === 27) {
@@ -304,6 +335,18 @@ class MayanApp {
             if (!$(this).hasAnyClass(['dropdown-toggle'])) {
                 $('.navbar-collapse').collapse('hide');
             }
+        });
+
+        // Small screen main menu toggle to open
+        $('body').on('click', '#main-menu-button-open', function (event) {
+            $('#menu-main').addClass('menu-main-opened');
+            $('#ajax-header').addClass('overlay-gray');
+        });
+
+        // Small screen main menu toggle to close
+        $('body').on('click', '#menu-main-button-close', function (event) {
+            $('#menu-main').removeClass('menu-main-opened');
+            $('#ajax-header').removeClass('overlay-gray');
         });
     }
 

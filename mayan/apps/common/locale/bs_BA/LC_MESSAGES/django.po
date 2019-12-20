@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:34-0400\n"
-"PO-Revision-Date: 2019-11-19 02:40+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-18 00:26-0400\n"
+"PO-Revision-Date: 2019-12-03 05:22+0000\n"
+"Last-Translator: Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,31 +19,31 @@ msgstr ""
 "Language: bs_BA\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:88 permissions_runtime.py:7 settings.py:14
+#: apps.py:86 permissions_runtime.py:7 settings.py:15
 msgid "Common"
 msgstr "Zajednicki"
 
-#: classes.py:126
+#: classes.py:85
 msgid "Available attributes: \n"
 msgstr "Raspoloživi atributi:\n"
 
-#: classes.py:166
+#: classes.py:125
 msgid "Available fields: \n"
 msgstr ""
 
-#: dependencies.py:306
+#: dependencies.py:308
 msgid "Used to allow offline translation of the code text strings."
 msgstr ""
 
-#: dependencies.py:311
+#: dependencies.py:313
 msgid "Provides style checking."
 msgstr ""
 
-#: dependencies.py:316
+#: dependencies.py:318
 msgid "Command line environment with autocompletion."
 msgstr ""
 
-#: dependencies.py:321
+#: dependencies.py:323
 msgid "Checks proper formatting of the README file."
 msgstr ""
 
@@ -55,67 +55,67 @@ msgstr "Odabir"
 msgid "None"
 msgstr "Nijedno"
 
-#: generics.py:149
+#: generics.py:148
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:154
+#: generics.py:153
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:287
+#: generics.py:286
 msgid "Add all"
 msgstr ""
 
-#: generics.py:296
+#: generics.py:295
 msgid "Add"
 msgstr "Dodati"
 
-#: generics.py:306
+#: generics.py:305
 msgid "Remove all"
 msgstr ""
 
-#: generics.py:315
+#: generics.py:314
 msgid "Remove"
 msgstr "Ukloniti"
 
-#: generics.py:521
+#: generics.py:524
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr ""
 
-#: generics.py:543
+#: generics.py:546
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s nije kreiran, greška:%(error)s"
 
-#: generics.py:556
+#: generics.py:559
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s kreiran uspešno."
 
-#: generics.py:595
+#: generics.py:598
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s nije izbrisan, greška:%(error)s."
 
-#: generics.py:604
+#: generics.py:607
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s izbrisan uspešno."
 
-#: generics.py:697
+#: generics.py:743
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s nije ažuriran, greška:%(error)s."
 
-#: generics.py:708
+#: generics.py:754
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s ažuriran uspešno."
@@ -140,83 +140,60 @@ msgstr "Uredi lokalni profil"
 msgid "Documentation"
 msgstr "Dokumentacija"
 
-#: links.py:58 links.py:69
+#: links.py:59
 msgid "Errors"
 msgstr "Greške"
 
-#: links.py:63
+#: links.py:65
 msgid "Clear all"
 msgstr "Izbriši sve"
 
-#: links.py:73
+#: links.py:69
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:77 views.py:109
+#: links.py:73 views.py:105
 msgid "License"
 msgstr "Licence"
 
-#: links.py:80
+#: links.py:76
 msgid "Setup"
 msgstr "Setup"
 
-#: links.py:83
+#: links.py:79
 msgid "Source code"
 msgstr "Izvorni kod"
 
-#: links.py:87
+#: links.py:83
 msgid "Support"
 msgstr "Podrška"
 
-#: links.py:91 queues.py:15 views.py:210
+#: links.py:87 queues.py:15 views.py:214
 msgid "Tools"
 msgstr "Alati"
 
-#: literals.py:13
+#: literals.py:14
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr ""
 
-#: literals.py:16
+#: literals.py:17
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "Backend baze podataka je podešeno da koristi SKLite. SKLite treba koristiti samo za razvoj i testiranje, a ne za proizvodnju."
 
-#: literals.py:34
+#: literals.py:35
 msgid "Days"
 msgstr "Dana"
 
-#: literals.py:35
+#: literals.py:36
 msgid "Hours"
 msgstr "Sati"
 
-#: literals.py:36
+#: literals.py:37
 msgid "Minutes"
 msgstr "Minuta"
-
-#: management/commands/convertdb.py:40
-msgid ""
-"Restricts dumped data to the specified app_label or app_label.ModelName."
-msgstr ""
-
-#: management/commands/convertdb.py:47
-msgid ""
-"The database from which data will be exported. If omitted the database named"
-" \"default\" will be used."
-msgstr ""
-
-#: management/commands/convertdb.py:54
-msgid ""
-"The database to which data will be imported. If omitted the database named "
-"\"default\" will be used."
-msgstr ""
-
-#: management/commands/convertdb.py:61
-msgid ""
-"Force the conversion of the database even if the receiving database is not "
-"empty."
-msgstr ""
 
 #: menus.py:10
 msgid "System"
@@ -234,16 +211,16 @@ msgstr "Akcije"
 msgid "Secondary"
 msgstr ""
 
-#: menus.py:21 models.py:93
+#: menus.py:22 models.py:93
 msgid "User"
 msgstr "Korisnik"
 
-#: mixins.py:222
+#: mixins.py:292
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr ""
 
-#: mixins.py:296
+#: mixins.py:367
 msgid "Object"
 msgstr "Objekat"
 
@@ -255,7 +232,7 @@ msgstr "Imenovani prostor"
 msgid "Date time"
 msgstr "Datum vreme"
 
-#: models.py:41 views.py:155
+#: models.py:41 views.py:151
 msgid "Result"
 msgstr "Rezultat"
 
@@ -315,17 +292,17 @@ msgstr "Vremenski zajednički"
 msgid "Delete stale uploads"
 msgstr "Obriši stare otpreme"
 
-#: settings.py:19
+#: settings.py:22
 msgid "Automatically enable logging to all apps."
 msgstr "Automatski omogućite evidenciju za sve aplikacije."
 
-#: settings.py:25
+#: settings.py:28
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr "Vreme za odlaganje pozadinskih zadataka koji zavise od baze podataka obavezuju se da se propagiraju."
 
-#: settings.py:33
+#: settings.py:36
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -333,7 +310,7 @@ msgid ""
 " containing an application."
 msgstr ""
 
-#: settings.py:43
+#: settings.py:46
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -341,370 +318,139 @@ msgid ""
 " containing an application."
 msgstr ""
 
-#: settings.py:52
+#: settings.py:55
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr ""
 
-#: settings.py:61
+#: settings.py:64
 msgid "The number objects that will be displayed per page."
 msgstr ""
 
-#: settings.py:68
+#: settings.py:71
 msgid "Enable error logging outside of the system error logging capabilities."
 msgstr "Omogućite prijavljivanje grešaka izvan sistemskih mogućnosti evidentiranja grešaka."
 
-#: settings.py:75
+#: settings.py:78
 msgid "Path to the logfile that will track errors during production."
 msgstr "Put do log datoteke koja će pratiti greške tokom proizvodnje"
 
-#: settings.py:82
+#: settings.py:85
 msgid "Name to be displayed in the main menu."
 msgstr ""
 
-#: settings.py:88
+#: settings.py:91
 msgid "URL of the installation or homepage of the project."
 msgstr ""
 
-#: settings.py:94
+#: settings.py:97
 msgid "A storage backend that all workers can use to share files."
 msgstr " Backend skladišta koju svi radnici mogu koristiti za dijeljenje datoteka."
 
-#: settings.py:103
-msgid "Django"
-msgstr ""
-
-#: settings.py:108
-msgid ""
-"A list of strings representing the host/domain names that this site can "
-"serve. This is a security measure to prevent HTTP Host header attacks, which"
-" are possible even under many seemingly-safe web server configurations. "
-"Values in this list can be fully qualified names (e.g. 'www.example.com'), "
-"in which case they will be matched against the request's Host header exactly"
-" (case-insensitive, not including port). A value beginning with a period can"
-" be used as a subdomain wildcard: '.example.com' will match example.com, "
-"www.example.com, and any other subdomain of example.com. A value of '*' will"
-" match anything; in this case you are responsible to provide your own "
-"validation of the Host header (perhaps in a middleware; if so this "
-"middleware must be listed first in MIDDLEWARE)."
-msgstr ""
-
-#: settings.py:126
-msgid ""
-"When set to True, if the request URL does not match any of the patterns in "
-"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the"
-" same URL with a slash appended. Note that the redirect may cause any data "
-"submitted in a POST request to be lost. The APPEND_SLASH setting is only "
-"used if CommonMiddleware is installed (see Middleware). See also "
-"PREPEND_WWW."
-msgstr ""
-
-#: settings.py:139
-msgid ""
-"The list of validators that are used to check the strength of user's "
-"passwords."
-msgstr ""
-
-#: settings.py:146
-msgid ""
-"A dictionary containing the settings for all databases to be used with "
-"Django. It is a nested dictionary whose contents map a database alias to a "
-"dictionary containing the options for an individual database. The DATABASES "
-"setting must configure a default database; any number of additional "
-"databases may also be specified."
-msgstr ""
-
-#: settings.py:158
-msgid ""
-"Default: 2621440 (i.e. 2.5 MB). The maximum size in bytes that a request "
-"body may be before a SuspiciousOperation (RequestDataTooBig) is raised. The "
-"check is done when accessing request.body or request.POST and is calculated "
-"against the total request size excluding any file upload data. You can set "
-"this to None to disable the check. Applications that are expected to receive"
-" unusually large form posts should tune this setting. The amount of request "
-"data is correlated to the amount of memory needed to process the request and"
-" populate the GET and POST dictionaries. Large requests could be used as a "
-"denial-of-service attack vector if left unchecked. Since web servers don't "
-"typically perform deep request inspection, it's not possible to perform a "
-"similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
-msgstr ""
-
-#: settings.py:178
-msgid ""
-"Default: 'webmaster@localhost' Default email address to use for various "
-"automated correspondence from the site manager(s). This doesn't include "
-"error messages sent to ADMINS and MANAGERS; for that, see SERVER_EMAIL."
-msgstr ""
-
-#: settings.py:188
-msgid ""
-"Default: [] (Empty list). List of compiled regular expression objects "
-"representing User-Agent strings that are not allowed to visit any page, "
-"systemwide. Use this for bad robots/crawlers. This is only used if "
-"CommonMiddleware is installed (see Middleware)."
-msgstr ""
-
-#: settings.py:199
-msgid ""
-"Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
-"for sending emails."
-msgstr ""
-
-#: settings.py:207
-msgid "Default: 'localhost'. The host to use for sending email."
-msgstr ""
-
-#: settings.py:214
-msgid ""
-"Default: '' (Empty string). Password to use for the SMTP server defined in "
-"EMAIL_HOST. This setting is used in conjunction with EMAIL_HOST_USER when "
-"authenticating to the SMTP server. If either of these settings is empty, "
-"Django won't attempt authentication."
-msgstr ""
-
-#: settings.py:225
-msgid ""
-"Default: '' (Empty string). Username to use for the SMTP server defined in "
-"EMAIL_HOST. If empty, Django won't attempt authentication."
-msgstr ""
-
-#: settings.py:234
-msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
-msgstr ""
-
-#: settings.py:241
-msgid ""
-"Default: None. Specifies a timeout in seconds for blocking operations like "
-"the connection attempt."
-msgstr ""
-
-#: settings.py:249
-msgid ""
-"Default: False. Whether to use a TLS (secure) connection when talking to the"
-" SMTP server. This is used for explicit TLS connections, generally on port "
-"587. If you are experiencing hanging connections, see the implicit TLS "
-"setting EMAIL_USE_SSL."
-msgstr ""
-
-#: settings.py:259
-msgid ""
-"Default: False. Whether to use an implicit TLS (secure) connection when "
-"talking to the SMTP server. In most email documentation this type of TLS "
-"connection is referred to as SSL. It is generally used on port 465. If you "
-"are experiencing problems, see the explicit TLS setting EMAIL_USE_TLS. Note "
-"that EMAIL_USE_TLS/EMAIL_USE_SSL are mutually exclusive, so only set one of "
-"those settings to True."
-msgstr ""
-
-#: settings.py:271
-msgid ""
-"Default: 2621440 (i.e. 2.5 MB). The maximum size (in bytes) that an upload "
-"will be before it gets streamed to the file system. See Managing files for "
-"details. See also DATA_UPLOAD_MAX_MEMORY_SIZE."
-msgstr ""
-
-#: settings.py:281
-msgid ""
-"Default: '/accounts/login/' The URL where requests are redirected for login,"
-" especially when using the login_required() decorator. This setting also "
-"accepts named URL patterns which can be used to reduce configuration "
-"duplication since you don't have to define the URL in two places (settings "
-"and URLconf)."
-msgstr ""
-
-#: settings.py:293
-msgid ""
-"Default: '/accounts/profile/' The URL where requests are redirected after "
-"login when the contrib.auth.login view gets no next parameter. This is used "
-"by the login_required() decorator, for example. This setting also accepts "
-"named URL patterns which can be used to reduce configuration duplication "
-"since you don't have to define the URL in two places (settings and URLconf)."
-msgstr ""
-
-#: settings.py:305
-msgid ""
-"Default: None. The URL where requests are redirected after a user logs out "
-"using LogoutView (if the view doesn't get a next_page argument). If None, no"
-" redirect will be performed and the logout view will be rendered. This "
-"setting also accepts named URL patterns which can be used to reduce "
-"configuration duplication since you don't have to define the URL in two "
-"places (settings and URLconf)."
-msgstr ""
-
-#: settings.py:318
-msgid ""
-"A list of IP addresses, as strings, that: Allow the debug() context "
-"processor to add some variables to the template context. Can use the "
-"admindocs bookmarklets even if not logged in as a staff user. Are marked as "
-"\"internal\" (as opposed to \"EXTERNAL\") in AdminEmailHandler emails."
-msgstr ""
-
-#: settings.py:329
-msgid ""
-"A list of all available languages. The list is a list of two-tuples in the "
-"format (language code, language name) for example, ('ja', 'Japanese'). This "
-"specifies which languages are available for language selection. Generally, "
-"the default value should suffice. Only set this setting if you want to "
-"restrict language selection to a subset of the Django-provided languages. "
-msgstr ""
-
-#: settings.py:342
-msgid ""
-"A string representing the language code for this installation. This should "
-"be in standard language ID format. For example, U.S. English is \"en-us\". "
-"It serves two purposes: If the locale middleware isn't in use, it decides "
-"which translation is served to all users. If the locale middleware is "
-"active, it provides a fallback language in case the user's preferred "
-"language can't be determined or is not supported by the website. It also "
-"provides the fallback translation when a translation for a given literal "
-"doesn't exist for the user's preferred language."
-msgstr ""
-
-#: settings.py:357
-msgid ""
-"URL to use when referring to static files located in STATIC_ROOT. Example: "
-"\"/static/\" or \"http://static.example.com/\" If not None, this will be "
-"used as the base path for asset definitions (the Media class) and the "
-"staticfiles app. It must end in a slash if set to a non-empty value."
-msgstr ""
-
-#: settings.py:368
-msgid ""
-"The file storage engine to use when collecting static files with the "
-"collectstatic management command. A ready-to-use instance of the storage "
-"backend defined in this setting can be found at "
-"django.contrib.staticfiles.storage.staticfiles_storage."
-msgstr ""
-
-#: settings.py:378
-msgid ""
-"A string representing the time zone for this installation. Note that this "
-"isn't necessarily the time zone of the server. For example, one server may "
-"serve multiple Django-powered sites, each with a separate time zone setting."
-msgstr ""
-
-#: settings.py:388
-msgid ""
-"The full Python path of the WSGI application object that Django's built-in "
-"servers (e.g. runserver) will use. The django-admin startproject management "
-"command will create a simple wsgi.py file with an application callable in "
-"it, and point this setting to that application."
-msgstr ""
-
-#: settings.py:396
-msgid "Celery"
-msgstr ""
-
-#: settings.py:401
-msgid ""
-"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
-" transport://userid:password@hostname:port/virtual_host Only the scheme part"
-" (transport://) is required, the rest is optional, and defaults to the "
-"specific transports default values."
-msgstr ""
-
-#: settings.py:411
-msgid ""
-"Default: No result backend enabled by default. The backend used to store "
-"task results (tombstones). Refer to "
-"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
-"backend"
-msgstr ""
-
-#: templatetags/common_tags.py:31
+#: templatetags/common_tags.py:28
 msgid "Confirm delete"
 msgstr "Potvrditi brisanje"
 
-#: templatetags/common_tags.py:36
+#: templatetags/common_tags.py:33
 #, python-format
 msgid "Edit %s"
 msgstr ""
 
-#: templatetags/common_tags.py:39
+#: templatetags/common_tags.py:36
 msgid "Confirm"
 msgstr "Potvrditi"
 
-#: templatetags/common_tags.py:43
+#: templatetags/common_tags.py:40
 #, python-format
 msgid "Details for: %s"
 msgstr ""
 
-#: templatetags/common_tags.py:47
+#: templatetags/common_tags.py:44
 #, python-format
 msgid "Edit: %s"
 msgstr ""
 
-#: templatetags/common_tags.py:50
+#: templatetags/common_tags.py:47
 msgid "Create"
 msgstr "Kreirati"
 
-#: validators.py:29
+#: validators.py:46
+msgid "Enter a valid JSON value."
+msgstr ""
+
+#: validators.py:70
+msgid "Enter a valid YAML value."
+msgstr "Unesite važeći IAML"
+
+#: validators.py:86
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
 msgstr "Unesite važeći 'interni naziv' koji se sastoji od slova, brojeva i podčrtava."
 
-#: views.py:31
+#: views.py:27
 msgid "About"
 msgstr "O "
 
-#: views.py:44
+#: views.py:40
 msgid "Current user locale profile details"
 msgstr "Detalji lokalnog profila trenutnog korisnika"
 
-#: views.py:50
+#: views.py:46
 msgid "Edit current user locale profile details"
 msgstr "Uredi detalje lokalnog profila trenutnog korisnika"
 
-#: views.py:100
+#: views.py:96
 msgid "Dashboard"
 msgstr "Komandna tabla"
 
-#: views.py:118
+#: views.py:114
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr "Obrišite unose evidencije grešaka za:%s"
 
-#: views.py:135
+#: views.py:131
 msgid "Object error log cleared successfully"
 msgstr "Dnevnik grešaka objekata je uspešno obrisan"
 
-#: views.py:154
+#: views.py:150
 msgid "Date and time"
 msgstr "Datum i vreme"
 
-#: views.py:159
+#: views.py:156
+msgid ""
+"This view displays the error log of different object. An empty list is a "
+"good thing."
+msgstr ""
+
+#: views.py:160
+msgid "There are no error log entries"
+msgstr ""
+
+#: views.py:163
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "Unos log grešaka za:%s"
 
-#: views.py:187
+#: views.py:191
 msgid "No setup options available."
 msgstr ""
 
-#: views.py:189
+#: views.py:193
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr ""
 
-#: views.py:195
+#: views.py:199
 msgid "Setup items"
 msgstr "Stavke setup-a"
 
-#: views.py:197
+#: views.py:201
 msgid "Here you can configure all aspects of the system."
 msgstr ""
 
-#: views.py:212
+#: views.py:216
 msgid "These modules are used to do system maintenance."
 msgstr ""
-
-#: views.py:240
-msgid "No action selected."
-msgstr "Nijedna akcija nije odabrana."
-
-#: views.py:250
-msgid "Must select at least one item."
-msgstr "Mora biti izabrana barem jedna stanka."

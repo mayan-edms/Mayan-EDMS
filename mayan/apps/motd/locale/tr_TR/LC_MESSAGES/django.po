@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# emreunal <bywant@gmail.com>, 2019
 # serhatcan77 <serhat_can@yahoo.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:38-0400\n"
-"PO-Revision-Date: 2018-09-12 07:48+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-18 00:29-0400\n"
+"PO-Revision-Date: 2019-12-13 17:22+0000\n"
+"Last-Translator: emreunal <bywant@gmail.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -113,8 +114,8 @@ msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
-msgstr ""
+msgstr "Mesajlar giriş ekranında gösterilir. Mesajları kullanarak organizasyonunuz hakkında bilgi verebilir, kullanıcılarınızı duyurular ve kullanım koşulları gibi konularda bilgilendirebilirsiniz."
 
 #: views.py:79
 msgid "No messages available"
-msgstr ""
+msgstr "Hiçbir mesaj yok"

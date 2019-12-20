@@ -1,0 +1,252 @@
+Version 0.12
+============
+
+*February 2012*
+
+This release commemorates Mayan EDMS first aniversary!
+
+Overview
+--------
+
+Aside from new features, the focus of this release of Mayan EDMS also
+been about improving the code and documentation quality standard
+even further.  The permission system has been completely overhauled to make
+it entire class based.  The other big change is the addition of object
+level permissions, with this new system being applied to documents,
+folder, tags and smart links.  There is also a small batch of navigation
+improvements.  Big code cleanup and lots of changes 'under the hood',
+most of these are not visible to the end user, but make the code cleaner
+and more manageable so that more and better features can be added in future
+releases:
+
+* Absolute imports used throught the code
+* All app permissions have been move to a separate permissions.py file
+  per app
+* Complete permission system refactor.
+* Document signing code moved to it's own app
+* Initial unit tests
+* A lot of logging used throught the entire project.
+* Much functionality moved to model managers.
+* A lot of code converted into classes.
+* Coding style improvements.
+* Template user authentication state logic improvements, for stonger
+  prevention against intrusion or unintentional display or access
+  of restricted data.
+* Removal of remarked code.
+
+
+Changes
+-------
+
+ACL support
+^^^^^^^^^^^
+
+* Object level access control is now in place for documents, folders,
+  tags and smart links.  What this means is that administrators can now
+  grant permissions to users, groups or roles on for specific objects.
+  A more in-depth explanation of how this new ACL system can be found in
+  the :doc:`3 tier access control <../chapters/permissions>` section of the
+  permissions chapter.
+
+* Default class ACL support.  Administrators can setup the access control
+  lists that new documents, folders and tags will automatically inheric
+  when created.  Aside from asigning permission to users, groups and roles
+  to specific objects, there is a special user called `Creator`, use to
+  allow the access control list that the actual creator of an object will
+  inherit.
+
+
+Anonymous user support
+^^^^^^^^^^^^^^^^^^^^^^
+
+Anonymous user support is a two tier function, first is the addition of
+the ``COMMON_ALLOW_ANONYMOUS_ACCESS`` configuration option that
+allows non authenticated user to browse all the pages of a Mayan EDMS
+installation. The second part of this support is the ability to assign
+permissions or individual access to objects to anonymous users.
+
+
+Translations
+^^^^^^^^^^^^
+
+A new Italian translation is available, provided by SeeOpen.IT
+(www.seeopen.it, info@seeopen.it) as well as complete Russian translation
+update by Sergei Glita.  Included in this release also the initial translation
+to Polish by mic.
+
+
+Usability improvements
+^^^^^^^^^^^^^^^^^^^^^^
+
+* Detached signature behavior improved, uploading a new detached signature
+  erases the previous one.
+* Usability improvement in the role member's add/removal form, by using
+  HTML's option groups tag property
+
+
+2 Step download process
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The code for downloading single and multiple document and document versions
+has been merged with compression support also added.  This allows for the
+download of documents in their original format or compressed and well as
+the download of several documents in a single compressed file.
+
+
+Customizable GPG home directory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Addition of the ``SIGNATURES_GPG_HOME`` configuration option to let
+administrators set Mayan EDMS's GPG instance home directory, used to
+store keyrings and other GPG configuration files.
+
+
+Out of process bulk uploading
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A management command has been added to help upload a large number of documents
+from a compressed file.  For information about this new feature check the
+Initial data loading chapter.
+
+
+Out of process user import
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A management command has been added to import a large number users
+from a CSV file.  More information about this new feature can also be found
+in the Initial data loading chapter.
+
+
+Refactored document indexing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:doc:`The document indexing  <../chapters/indexes/index>` functionality has been
+improved and moved from experimental
+stage to beta stage.  Index configuration menus are now available on the
+``Setup`` menu and allows administrators to create skeleton trees that will
+be populated with document links depending on their metadata and properties.
+These populated trees can also be mirrored on the physical filesystem and shared
+using Samba or another filesharing server giving users a structured view
+of the documents contained within Mayan EDMS from the ``Indexes`` tab
+or from a mirrored index shared via the network.  A new configuration option
+has been added, ``DOCUMENT_INDEXING_FILESYSTEM_SERVING``, which maps
+the index internal name with the physical directory where such index will be
+mirrored on disk.
+
+
+Help shape Mayan EDMS's future
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Included in this version is a small feedback application, found under the
+``About`` main menu, where users by just answering some questions can
+help determine the priority of the next planned features on the pipeline,
+or even help add new features if enough requests are received.  All questions
+are optional but answering as many as possible will help greatly understand
+the need of the Mayan EDMS user base.
+
+
+Staging file previews
+^^^^^^^^^^^^^^^^^^^^^
+
+The staging file previews now show the filename for easier
+identification and speedier upload selection.  The staging files previews
+are now treated as a gallery which means that users can preview an entire
+page of staging files without having to click and close each one
+individually.
+
+
+Removals
+--------
+
+* Support for Celery and Sentry has been drop
+  for now.
+* Removed the 'db_index' argument from Text fields definition and
+  migrations as it was causing error messages for MySQL users, thanks to
+  Sergei Glita for reporting this one.
+* Configuration options removed:
+
+  * OCR_CACHE_URI
+  * DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_PATH - Use the newest `DOCUMENT_INDEXING_FILESYSTEM_SERVING`
+  * DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_ENABLE - Use the newest `DOCUMENT_INDEXING_FILESYSTEM_SERVING`
+
+
+Upgrading from a previous version
+---------------------------------
+
+Start off by adding the new requirements::
+
+  $ pip install -r requirements/production.txt
+
+Then create the new database structures with::
+
+    $ ./manage.py syncdb
+
+Afterwards migrate existing database schema with::
+
+    $ ./manage.py migrate permissions 0001 --fake
+    $ ./manage.py migrate permissions
+
+
+When the following message appears
+
+::
+
+    The following content types are stale and need to be deleted:
+
+        permissions | permission
+
+    Any objects related to these content types by a foreign key will also
+    be deleted. Are you sure you want to delete these content types?
+    If you're unsure, answer 'no'.
+
+        Type 'yes' to continue, or 'no' to cancel:
+
+Type ``yes`` and press **Enter**
+
+And continue migrating database schema with::
+
+    $ ./manage.py migrate documents
+    $ ./manage.py migrate document_signatures
+    $ ./manage.py migrate folders 0001 --fake
+    $ ./manage.py migrate folders
+    $ ./manage.py migrate document_indexing 0001 --fake
+    $ ./manage.py migrate document_indexing
+    $ ./manage.py migrate sources 0001 --fake
+    $ ./manage.py migrate sources
+
+Again when a similar messages appears
+::
+
+    The following content types are stale and need to be deleted:
+
+        document_indexing | indexinstance
+
+    Any objects related to these content types by a foreign key will also
+    be deleted. Are you sure you want to delete these content types?
+    If you're unsure, answer 'no'.
+
+        Type 'yes' to continue, or 'no' to cancel:
+
+Type ``yes`` and press **Enter**
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+The permission system has been completely reworked so sadly this is a
+place where even data migration can't help and the permissions assigned
+to roles will be lost during the upgrade to version 0.12. Users, groups
+and roles will be preserved only permissions need to be assigned again,
+so write down your role permission setup before upgrading.
+
+
+Bugs fixed
+----------
+
+* :github-issue:`17` special thanks to Dave Herring for all the help including
+                     access to a machine suffering with the issue, and to Sergei Glita for
+                     his research and eventual find of the core cause.
+* Statistics fixes.
+* Fixed get_image_cache_name regression in the OCR app.

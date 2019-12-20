@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:34-0400\n"
+"POT-Creation-Date: 2019-12-18 00:26-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2018\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:49 apps.py:110 apps.py:118 apps.py:121 events.py:7 forms.py:16
-#: links.py:24 menus.py:16 models.py:47 permissions.py:7 views.py:163
+#: links.py:24 menus.py:16 models.py:50 permissions.py:7 views.py:163
 #: workflow_actions.py:22
 msgid "Cabinets"
 msgstr "Ερμάρια"
@@ -59,32 +59,36 @@ msgstr "Όλα"
 msgid "Details"
 msgstr "Λεπτομέρειες"
 
-#: models.py:35 search.py:16
+#: models.py:36
+msgid "A short text used to identify the cabinet."
+msgstr ""
+
+#: models.py:37 search.py:16
 msgid "Label"
 msgstr "Ετικέτα"
 
-#: models.py:38
+#: models.py:41
 msgid "Documents"
 msgstr "Έγγραφα"
 
-#: models.py:46 models.py:135 serializers.py:138 workflow_actions.py:68
+#: models.py:49 models.py:138 serializers.py:138 workflow_actions.py:68
 msgid "Cabinet"
 msgstr "Ερμάριο"
 
-#: models.py:136 serializers.py:139
+#: models.py:139 serializers.py:139
 msgid "Parent and Label"
 msgstr "Γονέας και ετικέτα"
 
-#: models.py:143 serializers.py:145
+#: models.py:146 serializers.py:145
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr "%(model_name)s με την ετικέτα %(field_labels)s υπάρχει ήδη."
 
-#: models.py:160
+#: models.py:163
 msgid "Document cabinet"
 msgstr "Ερμάριο εγγράφων"
 
-#: models.py:161
+#: models.py:164
 msgid "Document cabinets"
 msgstr "Ερμάρια εγγράφων"
 

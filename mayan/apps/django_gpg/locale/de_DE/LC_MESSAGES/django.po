@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:35-0400\n"
+"POT-Creation-Date: 2019-12-18 00:27-0400\n"
 "PO-Revision-Date: 2019-04-19 09:33+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -75,39 +75,39 @@ msgstr "Begriff"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht wird."
 
-#: links.py:15
+#: links.py:19
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:19
+#: links.py:24
 msgid "Details"
 msgstr "Details"
 
-#: links.py:23
+#: links.py:29
 msgid "Download"
 msgstr "Herunterladen"
 
-#: links.py:27 permissions.py:28
+#: links.py:34 permissions.py:28
 msgid "Query keyservers"
 msgstr "Schlüsselserver abfragen"
 
-#: links.py:32
+#: links.py:39
 msgid "Import"
 msgstr "Importieren"
 
-#: links.py:37 permissions.py:7
+#: links.py:44 permissions.py:7
 msgid "Key management"
 msgstr "Schlüssel-Management"
 
-#: links.py:41
+#: links.py:48
 msgid "Upload key"
 msgstr "Schlüssel hochladen"
 
-#: links.py:44 views.py:176
+#: links.py:52 views.py:179
 msgid "Private keys"
 msgstr "Private Schlüssel"
 
-#: links.py:48 views.py:200
+#: links.py:56 views.py:203
 msgid "Public keys"
 msgstr "Öffentliche Schlüssel"
 
@@ -219,78 +219,78 @@ msgstr "Pfad zum Programm GPG."
 msgid "Keyserver used to query for keys."
 msgstr "Server, der nach unbekannten Schlüsseln durchsucht wird."
 
-#: views.py:35
+#: views.py:37
 #, python-format
 msgid "Delete key: %s"
 msgstr "Schlüssel löschen: %s"
 
-#: views.py:51
+#: views.py:53
 #, python-format
 msgid "Details for key: %s"
 msgstr "Details für Schlüssel %s"
 
-#: views.py:71
+#: views.py:74
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "Schlüssel-ID %s importieren?"
 
-#: views.py:72
+#: views.py:75
 msgid "Import key"
 msgstr "Schlüssel importieren"
 
-#: views.py:81
+#: views.py:84
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Schlüssel-ID %(key_id)s konnte nicht importiert werden: %(error)s"
 
-#: views.py:89
+#: views.py:92
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "Schlüssel %(key_id)s erfolgreich heruntergeladen"
 
-#: views.py:106
+#: views.py:109
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
 msgstr "Namen, Nachnamen, Schlüssel-IDs oder E-Mail-Adressen bei der Suche nach öffentlichen Schlüsseln verwenden, um diese vom Schlüsselserver zu importieren."
 
-#: views.py:110
+#: views.py:113
 msgid "No results returned"
 msgstr "Keine Ergebnisse"
 
-#: views.py:112
+#: views.py:115
 msgid "Key query results"
 msgstr "Ergebnis Schlüsselsuche"
 
-#: views.py:132
+#: views.py:135
 msgid "Search"
 msgstr "Suche"
 
-#: views.py:134
+#: views.py:137
 msgid "Query key server"
 msgstr "Schlüsselserver abfragen"
 
-#: views.py:153
+#: views.py:156
 msgid "Upload new key"
 msgstr "Neuen Schlüssel hochladen"
 
-#: views.py:169
+#: views.py:172
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user.The view to upload private and public keys is the same."
 msgstr "Private Schlüssel werden zum Signieren von Dokumenten benutzt. Sie können ausschließlich von Benutzern hochgeladen werden. Die Ansicht zum Hochladen von privaten und öffentlichen Schlüssel ist identisch."
 
-#: views.py:174
+#: views.py:177
 msgid "There no private keys"
 msgstr "Keine privaten Schlüssel vorhanden"
 
-#: views.py:192
+#: views.py:195
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr "Öffentliche Schlüssel werden zur Verifzierung von signierten Dokumenten benutzt. Sie können von Benutzern hochgeladen oder von Schlüsselservern heruntergeladen werden. Die Ansicht zum Hochladen von privaten und öffentlichen Schlüssel ist identisch."
 
-#: views.py:198
+#: views.py:201
 msgid "There no public keys"
 msgstr "Keine öffentlichen Schlüssel vorhanden"

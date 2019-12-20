@@ -1,0 +1,63 @@
+.. index:: Docker environment variables
+.. _docker_environment_variables:
+
+
+=====================
+Environment Variables
+=====================
+
+The common set of settings can also be modified via environment variables when
+using the Docker image. In addition to the common set of settings, some Docker
+image specific environment variables are available.
+
+``MAYAN_SETTINGS_MODULE``
+
+Optional. Allows loading an alternate settings file.
+
+
+``MAYAN_GUNICORN_TIMEOUT``
+
+Optional. Changes the amount of time the frontend worker will wait for a
+request to finish before raising a timeout error. The default is 120
+seconds.
+
+``MAYAN_GUNICORN_WORKERS``
+
+Optional. This environment variable controls the number of frontend workers
+that will be executed. If not specified the default is 2. For heavier loads,
+user a higher number. A formula recommended for this setting is the number
+of CPU cores + 1.
+
+``MAYAN_WORKER_FAST_CONCURRENCY``
+
+Optional. Changes the concurrency (number of child processes) of the Celery
+worker consuming the queues in the fast (low latency, short tasks) category.
+Default is 1. Use 0 to disable hardcoded concurrency and allow the Celery
+worker to launch its default number of child processes (equal to the number
+of CPUs detected).
+
+``MAYAN_WORKER_MEDIUM_CONCURRENCY``
+
+Optional. Changes the concurrency (number of child processes) of the Celery
+worker consuming the queues in the medium (medium latency, long running tasks)
+category. Default is 1. Use 0 to disable hardcoded concurrency and allow the
+Celery worker to launch its default number of child processes (equal to the
+number of CPUs detected).
+
+``MAYAN_WORKER_SLOW_CONCURRENCY``
+
+Optional. Changes the concurrency (number of child processes) of the Celery
+worker consuming the queues in the slow (high latency, very long running tasks)
+category. Default is 1. Use 0 to disable hardcoded concurrency and allow the
+Celery worker to launch its default number of child processes (equal to the
+number of CPUs detected).
+
+``MAYAN_USER_UID``
+
+Optional. Changes the UID of the ``mayan`` user internal to the Docker
+container. Defaults to 1000.
+
+``MAYAN_USER_GID``
+
+Optional. Changes the GID of the ``mayan`` user internal to the Docker
+container. Defaults to 1000.

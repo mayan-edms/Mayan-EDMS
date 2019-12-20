@@ -20,13 +20,13 @@ class WebLink(models.Model):
     generating links from documents to external resources.
     """
     label = models.CharField(
-        db_index=True, help_text=_('A short text describing the weblink.'),
+        db_index=True, help_text=_('A short text describing the web link.'),
         max_length=96, verbose_name=_('Label')
     )
     template = models.TextField(
         help_text=_(
             'Template that will be used to craft the final URL of the '
-            'weblink. The {{ document }} variable is available to the template.'
+            'web link.'
         ), verbose_name=_('Template')
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))

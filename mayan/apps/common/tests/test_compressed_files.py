@@ -5,6 +5,7 @@ from mayan.apps.common.tests.base import BaseTestCase
 from ..compressed_files import Archive, TarArchive, ZipArchive
 
 from .literals import (
+    TEST_ARCHIVE_ZIP_CP437_MEMBER_PATH,
     TEST_ARCHIVE_ZIP_SPECIAL_CHARACTERS_FILENAME_MEMBER_PATH,
     TEST_COMPRESSED_FILE_CONTENTS, TEST_FILE_CONTENTS_1, TEST_FILE3_PATH,
     TEST_FILENAME1, TEST_FILENAME3, TEST_TAR_BZ2_FILE_PATH,
@@ -61,6 +62,11 @@ class ZipArchiveClassTestCase(TarArchiveClassTestCase):
 
     def test_open_member_with_special_characters_filename(self):
         with open(TEST_ARCHIVE_ZIP_SPECIAL_CHARACTERS_FILENAME_MEMBER_PATH, mode='rb') as file_object:
+            archive = Archive.open(file_object=file_object)
+            list(archive.get_members())
+
+    def test_open_cp437_member(self):
+        with open(TEST_ARCHIVE_ZIP_CP437_MEMBER_PATH, mode='rb') as file_object:
             archive = Archive.open(file_object=file_object)
             list(archive.get_members())
 

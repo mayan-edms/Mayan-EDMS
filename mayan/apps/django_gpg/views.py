@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib import messages
-from django.core.files.base import ContentFile
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -15,7 +14,10 @@ from mayan.apps.common.generics import (
 )
 
 from .forms import KeyDetailForm, KeySearchForm
-from .icons import icon_key_setup, icon_keyserver_search
+from .icons import (
+    icon_key_setup, icon_keyserver_search, icon_private_keys,
+    icon_public_keys
+)
 from .links import link_key_query, link_key_upload
 from .literals import KEY_TYPE_PUBLIC
 from .models import Key
@@ -56,10 +58,11 @@ class KeyDownloadView(SingleObjectDownloadView):
     model = Key
     object_permission = permission_key_download
 
-    def get_file(self):
-        key = self.get_object()
+    def get_download_file_object(self):
+        return self.object.key_data
 
-        return ContentFile(key.key_data, name=key.key_id)
+    def get_download_filename(self):
+        return self.object.key_id
 
 
 class KeyReceive(ConfirmView):
@@ -161,7 +164,7 @@ class PrivateKeyListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'no_results_icon': icon_key_setup,
+            'no_results_icon': icon_private_keys,
             'no_results_main_link': link_key_upload.resolve(
                 context=RequestContext(request=self.request)
             ),
@@ -184,7 +187,7 @@ class PublicKeyListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'no_results_icon': icon_key_setup,
+            'no_results_icon': icon_public_keys,
             'no_results_main_link': link_key_upload.resolve(
                 context=RequestContext(request=self.request)
             ),

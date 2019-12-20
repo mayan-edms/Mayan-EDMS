@@ -1,0 +1,23 @@
+.. index:: Indexes
+
+================
+Document indexes
+================
+
+Document indexes are a multi level structure similar to folder in a filesystem,
+however the hierarchy of the levels is automatically created, updated, or deleted
+based on rules set by the administrator.
+
+- :doc:`indexes`
+- :doc:`examples`
+- :doc:`mirroring`
+
+.. toctree::
+  :hidden:
+
+  indexes
+  mirroring
+  examples
+
+
+

@@ -4,8 +4,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.dependencies.classes import (
     environment_build, environment_development, environment_documentation,
-    environment_testing, PythonDependency
+    environment_testing, BinaryDependency, PythonDependency
 )
+
+from .literals import DEFAULT_FIREFOX_GECKODRIVER_PATH
 
 PythonDependency(
     copyright_text='''
@@ -36,7 +38,7 @@ PythonDependency(
         ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django', version_string='==1.11.25'
+    ''', module=__name__, name='django', version_string='==1.11.26'
 )
 PythonDependency(
     copyright_text='''
@@ -60,9 +62,6 @@ PythonDependency(
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
         SOFTWARE.
     ''', module=__name__, name='PyYAML', version_string='==5.1.2'
-)
-PythonDependency(
-    module=__name__, name='django-downloadview', version_string='==1.9'
 )
 PythonDependency(
     module=__name__, name='django-formtools', version_string='==2.1'
@@ -294,7 +293,7 @@ PythonDependency(
 )
 PythonDependency(
     module=__name__, environment=environment_development, name='devpi-server',
-    version_string='==5.0.0'
+    version_string='==5.3.1'
 )
 PythonDependency(
     environment=environment_development, module=__name__,
@@ -335,6 +334,11 @@ PythonDependency(
 
 # Testing
 
+BinaryDependency(
+    environment=environment_testing, label='firefox-geckodriver',
+    module=__name__, name='geckodriver',
+    path=DEFAULT_FIREFOX_GECKODRIVER_PATH
+)
 PythonDependency(
     environment=environment_testing, module=__name__, name='codecov',
     version_string='==2.0.15'
@@ -351,6 +355,10 @@ PythonDependency(
     environment=environment_testing,
     module=__name__, name='django-test-without-migrations',
     version_string='==0.6'
+)
+PythonDependency(
+    environment=environment_testing, module=__name__, name='selenium',
+    version_string='==3.141.0'
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='tox',

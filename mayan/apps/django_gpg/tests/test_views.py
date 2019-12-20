@@ -1,7 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django_downloadview.test import assert_download_response
-
 from mayan.apps.common.tests.base import GenericViewTestCase
 
 from ..models import Key
@@ -16,10 +14,10 @@ class KeyViewTestCase(KeyTestMixin, KeyViewTestMixin, GenericViewTestCase):
         self._create_test_key_private()
 
         response = self._request_test_key_download_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_key_download_view_with_permission(self):
-        self.expected_content_types = ('application/octet-stream; charset=utf-8',)
+        self.expected_content_types = ('text/html; charset=utf-8',)
 
         self._create_test_key_private()
 
@@ -28,9 +26,9 @@ class KeyViewTestCase(KeyTestMixin, KeyViewTestMixin, GenericViewTestCase):
         )
 
         response = self._request_test_key_download_view()
-        assert_download_response(
-            self, response=response, content=self.test_key_private.key_data,
-            basename=self.test_key_private.key_id,
+        self.assert_download_response(
+            response=response, content=self.test_key_private.key_data,
+            filename=self.test_key_private.key_id,
         )
 
     def test_key_upload_view_no_permission(self):

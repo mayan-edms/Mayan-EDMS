@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:34-0400\n"
+"POT-Creation-Date: 2019-12-18 00:26-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2019\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:49 apps.py:110 apps.py:118 apps.py:121 events.py:7 forms.py:16
-#: links.py:24 menus.py:16 models.py:47 permissions.py:7 views.py:163
+#: links.py:24 menus.py:16 models.py:50 permissions.py:7 views.py:163
 #: workflow_actions.py:22
 msgid "Cabinets"
 msgstr "Szafki"
@@ -61,32 +61,36 @@ msgstr "Wszystkie"
 msgid "Details"
 msgstr "Szczegóły"
 
-#: models.py:35 search.py:16
+#: models.py:36
+msgid "A short text used to identify the cabinet."
+msgstr ""
+
+#: models.py:37 search.py:16
 msgid "Label"
 msgstr "Etykieta"
 
-#: models.py:38
+#: models.py:41
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: models.py:46 models.py:135 serializers.py:138 workflow_actions.py:68
+#: models.py:49 models.py:138 serializers.py:138 workflow_actions.py:68
 msgid "Cabinet"
 msgstr "Szafka"
 
-#: models.py:136 serializers.py:139
+#: models.py:139 serializers.py:139
 msgid "Parent and Label"
 msgstr "Element nadrzędny i etykieta"
 
-#: models.py:143 serializers.py:145
+#: models.py:146 serializers.py:145
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr "%(model_name)s z etykietą %(field_labels)s już istnieje."
 
-#: models.py:160
+#: models.py:163
 msgid "Document cabinet"
 msgstr "Szafka na dokumenty"
 
-#: models.py:161
+#: models.py:164
 msgid "Document cabinets"
 msgstr "Szafki na dokumenty"
 

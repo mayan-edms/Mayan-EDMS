@@ -11,7 +11,7 @@
                 {% include 'appearance/no_results.html' %}
             </div>
         {% else %}
-            {% include "appearance/list_header.html" %}
+            {% include 'appearance/list_header.html' %}
             {% navigation_resolve_menu name='multi item' sort_results=True source=object_list.0 as links_multi_menus_results %}
             <div class="well center-block">
                 <div class="row row-items">
@@ -22,7 +22,7 @@
                                     <div class="form-group">
                                         <div class="checkbox">
                                             <label for="id_indexes_0" style="cursor: auto;">
-                                                {% if links_multi_menus_results %}
+                                                {% if links_multi_menus_results and not hide_multi_item_actions %}
                                                     <input class="form-multi-object-action-checkbox check-all-slave checkbox" name="pk_{{ object.pk }}" style="cursor: pointer;" type="checkbox" />
                                                 {% endif %}
 

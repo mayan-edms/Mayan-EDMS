@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:37-0400\n"
-"PO-Revision-Date: 2019-05-03 05:21+0000\n"
+"POT-Creation-Date: 2019-12-18 00:28-0400\n"
+"PO-Revision-Date: 2019-12-13 05:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Danish (Denmark) (http://www.transifex.com/rosarior/mayan-edms/language/da_DK/)\n"
 "MIME-Version: 1.0\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "Linking"
 msgstr ""
 
-#: apps.py:72 models.py:27
+#: apps.py:72 models.py:28
 msgid "Label"
 msgstr "Etiket"
 
-#: events.py:8 links.py:20 links.py:79 links.py:84 links.py:89 models.py:48
+#: events.py:8 links.py:20 links.py:79 links.py:84 links.py:89 models.py:47
 #: permissions.py:7 views.py:197
 msgid "Smart links"
 msgstr ""
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Smart link edited"
 msgstr ""
 
-#: forms.py:36
+#: forms.py:33
 msgid "Foreign document field"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgstr ""
 msgid "Create new smart link"
 msgstr ""
 
-#: links.py:63 models.py:40
+#: links.py:63 models.py:39
 msgid "Document types"
 msgstr "Dokumenttyper"
 
@@ -138,71 +138,80 @@ msgstr ""
 msgid "is in regular expression (case insensitive)"
 msgstr ""
 
-#: models.py:31 models.py:189
-msgid ""
-"Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The {{ "
-"document }} context variable is available."
+#: models.py:27
+msgid "A short text describing the smart link."
 msgstr ""
 
-#: models.py:35
+#: models.py:32
+msgid ""
+"Use this field to show a unique label depending on the document from which "
+"the smart link is being accessed."
+msgstr ""
+
+#: models.py:34
 msgid "Dynamic label"
 msgstr ""
 
-#: models.py:37 models.py:199
+#: models.py:36 models.py:196
 msgid "Enabled"
 msgstr ""
 
-#: models.py:47 models.py:175
+#: models.py:46 models.py:174
 msgid "Smart link"
 msgstr ""
 
-#: models.py:87
+#: models.py:86
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr ""
 
-#: models.py:102
+#: models.py:101
 msgid "This smart link is not allowed for the selected document's type."
 msgstr ""
 
-#: models.py:179
+#: models.py:178
 msgid "The inclusion is ignored for the first item."
 msgstr ""
 
-#: models.py:183
+#: models.py:182
 msgid "This represents the metadata of all other documents."
 msgstr ""
 
-#: models.py:184
+#: models.py:183
 msgid "Foreign document attribute"
 msgstr ""
 
-#: models.py:193
+#: models.py:188
+msgid ""
+"The expression using document properties to be evaluated against the foreign"
+" document field."
+msgstr ""
+
+#: models.py:190
 msgid "Expression"
 msgstr ""
 
-#: models.py:196
+#: models.py:193
 msgid "Inverts the logic of the operator."
 msgstr ""
 
-#: models.py:197
+#: models.py:194
 msgid "Negated"
 msgstr ""
 
-#: models.py:202
+#: models.py:199
 msgid "Link condition"
 msgstr ""
 
-#: models.py:203
+#: models.py:200
 msgid "Link conditions"
 msgstr ""
 
-#: models.py:211
+#: models.py:208
 msgid "not"
 msgstr ""
 
-#: models.py:215
+#: models.py:212
 msgid "Full label"
 msgstr ""
 

@@ -1,0 +1,243 @@
+==============
+Code structure
+==============
+
+
+Follow PEP8
+-----------
+
+Whenever possible, but don't obsess over things like line length:
+
+.. code-block:: bash
+
+    $ flake8 --ignore=E501,E128,E122 |less
+
+To perform automatic PEP8 checks, install flake8's git hook using:
+
+.. code-block:: bash
+
+    $ flake8 --install-hook git
+
+
+Imports
+-------
+
+Import order should be:
+
+- Standard Python modules
+- Installed Python modules
+- Core Django modules
+- Installed Django modules
+- Mayan EDMS modules
+- Local imports
+
+Example:
+
+.. code-block:: bash
+
+    from __future__ import absolute_import
+
+    # Standard Python library
+    import base64
+
+    # 3rd party installed Python libraries
+    import requests
+
+    # Django core modules
+    from django.db.models import Q
+    from django.template.defaultfilters import slugify
+    from django.utils.translation import ugettext
+    from django.utils.translation import ugettext_lazy as _
+
+    # 3rd party installed Django libraries
+    from rest_framework import APIView
+
+    # Mayan apps
+    from metadata.classes import MetadataClass
+
+    # Local app imports (relative)
+    from .conf.settings import (
+        AVAILABLE_INDEXING_FUNCTIONS,
+        MAX_SUFFIX_COUNT, SLUGIFY_PATHS
+    )
+    from .exceptions import MaxSuffixCountReached
+    from .filesystem import (
+        fs_create_index_directory, fs_create_document_link,
+        fs_delete_document_link, fs_delete_index_directory,
+        assemble_suffixed_filename
+    )
+    from .models import Index, IndexInstanceNode, DocumentRenameCount
+
+All local app module imports are in relative form. Local app module name is to
+be referenced as little as possible, unless required by a specific feature,
+trick, restriction (e.g., Runtime modification of the module's attributes).
+
+Incorrect:
+
+.. code-block:: bash
+
+
+    # documents app views.py model
+    from documents.models import Document
+
+Correct:
+
+.. code-block:: bash
+
+    # documents app views.py model
+    from .models import Document
+
+
+Dependencies
+------------
+
+Mayan EDMS apps follow a hierarchical model of dependency. Apps import from
+their parents or siblings, never from their children. Think plugins. A parent
+app must never assume anything about a possible existing child app. The
+documents app and the Document model are the basic entities; they must never
+import anything else. The common and main apps are the base apps.
+
+
+Variables
+---------
+
+Naming of variables should follow a Major to Minor convention, usually
+including the purpose of the variable as the first piece of the name, using
+underscores as spaces. camelCase is not used in Mayan EDMS.
+
+Examples:
+
+Links:
+
+.. code-block:: bash
+
+    link_document_page_transformation_list = ...
+    link_document_page_transformation_create = ...
+    link_document_page_transformation_edit = ...
+    link_document_page_transformation_delete = ...
+
+Constants:
+
+.. code-block:: bash
+
+    PERMISSION_SMART_LINK_VIEW = ...
+    PERMISSION_SMART_LINK_CREATE = ...
+    PERMISSION_SMART_LINK_DELETE = ...
+    PERMISSION_SMART_LINK_EDIT = ...
+
+Classes:
+
+.. code-block:: bash
+
+    class Document(models.Model):
+    class DocumentPage(models.Model):
+    class DocumentPageTransformation(models.Model):
+    class DocumentType(models.Model):
+    class DocumentTypeFilename(models.Model):
+
+
+Strings
+-------
+
+Quotation character used in Mayan EDMS for strings is the single quote.
+Double quote is used for multiple line comments or HTML markup.
+
+
+Migrations
+----------
+
+Migrations should do only one thing (example: either create a table, move data
+to a new table or remove an old table) to aid retrying on failure.
+
+
+General
+-------
+
+Code should appear in their modules in alphabetic order or in their order of
+importance if it makes more sense for the specific application. This makes
+visual scanning easier on modules with a large number of imports, views or
+classes. Class methods that return a value should be pretended with a
+``get_`` to differentiate from an object’s properties. When a variable refers
+to a file it should be named as follows:
+
+- filename:  The file’s name and extension only.
+- filepath:  The entire path to the file including the filename.
+- path:  A path to a directory.
+
+Flash messages should end with a period as applicable for the language.
+Only exception is when the tail of the message contains an exceptions message
+as passed directly from the exception object.
+
+
+Steps to deploy a development version
+=====================================
+
+.. code-block:: bash
+
+    $ git clone |SOURCE_CODE_GIT|
+    $ cd mayan-edms
+    $ git checkout <Corresponding branch>
+    $ virtualenv venv
+    $ source venv/bin/activate
+    $ pip install -r requirements.txt
+    $ ./manage.py initialsetup
+    $ ./manage.py preparestatic
+    $ ./manage.py runserver
+
+
+
+Debugging
+=========
+
+Mayan EDMS makes extensive use of Django's new
+:django-docs:`logging capabilities <topics/logging>`.
+
+By default debug logging for all apps is turned on. If you wish to customize
+how logging is managed turn off automatic logging by setting
+`COMMON_AUTO_LOGGING` to ``False`` and add the following lines to your
+``settings/local.py`` file::
+
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': True,
+        'formatters': {
+            'verbose': {
+                'format': '%(levelname)s %(asctime)s %(name)s %(process)d %(thread)d %(message)s'
+            },
+            'intermediate': {
+                'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() %(message)s"'
+            },
+            'simple': {
+                'format': '%(levelname)s %(message)s'
+            },
+        },
+        'handlers': {
+            'console':{
+                'level':'DEBUG',
+                'class':'logging.StreamHandler',
+                'formatter': 'intermediate'
+            }
+        },
+        'loggers': {
+            'documents': {
+                'handlers':['console'],
+                'propagate': True,
+                'level':'DEBUG',
+            },
+            'common': {
+                'handlers':['console'],
+                'propagate': True,
+                'level':'DEBUG',
+            },
+        }
+    }
+
+
+Likewise, to see the debug output of the ``tags`` app, just add the following inside the ``loggers`` block::
+
+
+    'tags': {
+        'handlers':['console'],
+        'propagate': True,
+        'level':'DEBUG',
+    },

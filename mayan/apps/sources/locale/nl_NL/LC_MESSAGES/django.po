@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:39-0400\n"
-"PO-Revision-Date: 2019-07-21 20:36+0000\n"
-"Last-Translator: Ben Zweekhorst <bzweekhorst@gmail.com>\n"
+"POT-Creation-Date: 2019-12-18 00:30-0400\n"
+"PO-Revision-Date: 2019-12-13 05:15+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,39 +19,39 @@ msgstr ""
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:40 links.py:54 models/base.py:39 queues.py:9 settings.py:10
-#: views.py:628
+#: apps.py:44 links.py:54 models/base.py:40 queues.py:9 settings.py:13
+#: views.py:650
 msgid "Sources"
 msgstr "Bronnen"
 
-#: apps.py:55
+#: apps.py:62
 msgid "Create a document source"
 msgstr "Maak een documentbron aan"
 
-#: apps.py:57
+#: apps.py:64
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr ""
 
-#: apps.py:70
+#: apps.py:77
 msgid "Type"
 msgstr "Type"
 
-#: apps.py:79
+#: apps.py:86
 msgid "Created"
 msgstr "Aangemaakt"
 
-#: apps.py:86
+#: apps.py:93
 msgid "Thumbnail"
 msgstr "Thumbnail"
 
-#: apps.py:94 models/base.py:248
+#: apps.py:101 models/base.py:250
 msgid "Date time"
 msgstr "Datum en tijd"
 
-#: apps.py:99 models/base.py:251
+#: apps.py:106 models/base.py:253
 msgid "Message"
 msgstr "Bericht"
 
@@ -61,27 +61,31 @@ msgid ""
 "obtained the scanned document image."
 msgstr ""
 
-#: forms.py:30
+#: forms.py:27
+msgid "An optional comment to explain the upload."
+msgstr ""
+
+#: forms.py:28
 msgid "Comment"
 msgstr "Commentaar"
 
-#: forms.py:45
+#: forms.py:42
 msgid "Expand compressed files"
 msgstr "Uitpakken gecomprimeerde bestanden"
 
-#: forms.py:47
+#: forms.py:44
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Upload een gecomprimeerd archief van bestanden als individuele documenten"
 
-#: forms.py:68 views.py:483
+#: forms.py:65 views.py:505
 msgid "Staging file"
 msgstr "Tijdelijk bestand"
 
-#: forms.py:72 forms.py:77
+#: forms.py:69 forms.py:74
 msgid "File"
 msgstr "Bestand"
 
-#: handlers.py:30
+#: handlers.py:27
 msgid "Default"
 msgstr "Verstekwaarde"
 
@@ -137,99 +141,103 @@ msgstr "Logs"
 msgid "Check now"
 msgstr ""
 
-#: literals.py:16
+#: literals.py:18
 msgid "Flatbed"
 msgstr ""
 
-#: literals.py:17
+#: literals.py:19
 msgid "Document feeder"
 msgstr ""
 
-#: literals.py:24
+#: literals.py:26
 msgid "Simplex"
 msgstr ""
 
-#: literals.py:25
+#: literals.py:27
 msgid "Duplex"
 msgstr ""
 
-#: literals.py:33
+#: literals.py:35
 msgid "Lineart"
 msgstr ""
 
-#: literals.py:34
+#: literals.py:36
 msgid "Monochrome"
 msgstr ""
 
-#: literals.py:35
+#: literals.py:37
 msgid "Color"
 msgstr "Kleur"
 
-#: literals.py:43 literals.py:48
+#: literals.py:45 literals.py:50
 msgid "Always"
 msgstr "Altijd"
 
-#: literals.py:44 literals.py:49
+#: literals.py:46 literals.py:51
 msgid "Never"
 msgstr "Nooit"
 
-#: literals.py:50
+#: literals.py:52
 msgid "Ask user"
 msgstr "Vraag gebruiker"
 
-#: literals.py:61
+#: literals.py:63
 msgid "Scanner"
 msgstr ""
 
-#: literals.py:62 models/webform_sources.py:42
+#: literals.py:64 models/webform_sources.py:42
 msgid "Web form"
 msgstr "Webformulier"
 
-#: literals.py:63 models/staging_folder_sources.py:69
+#: literals.py:65 models/staging_folder_sources.py:69
 msgid "Staging folder"
 msgstr ""
 
-#: literals.py:64 models/watch_folder_sources.py:48
+#: literals.py:66 models/watch_folder_sources.py:48
 msgid "Watch folder"
 msgstr ""
 
-#: literals.py:65
+#: literals.py:67
 msgid "POP3 email"
 msgstr "POP3 e-mail"
 
-#: literals.py:66 models/email_sources.py:227 models/email_sources.py:228
+#: literals.py:68 models/email_sources.py:251 models/email_sources.py:252
 msgid "IMAP email"
 msgstr "IMAP e-mail"
 
 #: models/base.py:30
+msgid "A short text to describe this source."
+msgstr ""
+
+#: models/base.py:31
 msgid "Label"
 msgstr "Label"
 
-#: models/base.py:32
+#: models/base.py:33
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: models/base.py:38 models/base.py:245
+#: models/base.py:39 models/base.py:247
 msgid "Source"
 msgstr "BronB"
 
-#: models/base.py:157
+#: models/base.py:158
 msgid "Interactive source"
 msgstr "Interactieve bro"
 
-#: models/base.py:158
+#: models/base.py:159
 msgid "Interactive sources"
 msgstr "Interactieve bronnen"
 
-#: models/base.py:167 models/base.py:168
+#: models/base.py:168 models/base.py:169
 msgid "Out of process"
 msgstr ""
 
-#: models/base.py:174
+#: models/base.py:175
 msgid "Interval in seconds between checks for new documents."
 msgstr ""
 
-#: models/base.py:175
+#: models/base.py:176
 msgid "Interval"
 msgstr ""
 
@@ -258,113 +266,151 @@ msgstr ""
 msgid "Interval sources"
 msgstr ""
 
-#: models/base.py:257
+#: models/base.py:259
 msgid "Log entry"
 msgstr "Loginvoer"
 
-#: models/base.py:258
+#: models/base.py:260
 msgid "Log entries"
 msgstr "Loginvoer"
 
-#: models/email_sources.py:46
+#: models/email_sources.py:42
 msgid "Host"
 msgstr ""
 
-#: models/email_sources.py:47
+#: models/email_sources.py:43
 msgid "SSL"
 msgstr "SSL"
 
-#: models/email_sources.py:49
+#: models/email_sources.py:45
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr ""
 
-#: models/email_sources.py:50
+#: models/email_sources.py:46
 msgid "Port"
 msgstr ""
 
-#: models/email_sources.py:52
+#: models/email_sources.py:48
 msgid "Username"
 msgstr "Gebruikersnaam"
 
-#: models/email_sources.py:53
+#: models/email_sources.py:49
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: models/email_sources.py:57
+#: models/email_sources.py:53
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
 msgstr ""
 
-#: models/email_sources.py:60
+#: models/email_sources.py:56
 msgid "Metadata attachment name"
 msgstr ""
 
-#: models/email_sources.py:64
+#: models/email_sources.py:60
 msgid ""
-"Select a metadata type valid for the document type selected in which to "
-"store the email's subject."
+"Select a metadata type to store the email's subject value. Must be a valid "
+"metadata type for the document type selected previously."
 msgstr ""
 
-#: models/email_sources.py:67
+#: models/email_sources.py:64
 msgid "Subject metadata type"
 msgstr ""
 
-#: models/email_sources.py:71
+#: models/email_sources.py:68
 msgid ""
-"Select a metadata type valid for the document type selected in which to "
-"store the email's \"from\" value."
+"Select a metadata type to store the email's \"from\" value. Must be a valid "
+"metadata type for the document type selected previously."
 msgstr ""
 
-#: models/email_sources.py:74
+#: models/email_sources.py:72
 msgid "From metadata type"
 msgstr ""
 
-#: models/email_sources.py:78
+#: models/email_sources.py:76
 msgid "Store the body of the email as a text document."
 msgstr ""
 
-#: models/email_sources.py:79
+#: models/email_sources.py:77
 msgid "Store email body"
 msgstr ""
 
-#: models/email_sources.py:85
+#: models/email_sources.py:83
 msgid "Email source"
 msgstr ""
 
-#: models/email_sources.py:86
+#: models/email_sources.py:84
 msgid "Email sources"
 msgstr ""
 
-#: models/email_sources.py:191
+#: models/email_sources.py:189
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
 
-#: models/email_sources.py:205
+#: models/email_sources.py:203
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
 
-#: models/email_sources.py:220
+#: models/email_sources.py:218
 msgid "IMAP Mailbox from which to check for messages."
 msgstr ""
 
-#: models/email_sources.py:221
+#: models/email_sources.py:219
 msgid "Mailbox"
 msgstr ""
 
-#: models/email_sources.py:301
+#: models/email_sources.py:223
+msgid ""
+"Criteria to use when searching for messages to process. Use the format "
+"specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
+msgstr ""
+
+#: models/email_sources.py:226
+msgid "Search criteria"
+msgstr ""
+
+#: models/email_sources.py:230
+msgid ""
+"IMAP STORE command to execute on messages after they are processed. One "
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
+msgstr ""
+
+#: models/email_sources.py:234
+msgid "Store commands"
+msgstr ""
+
+#: models/email_sources.py:238
+msgid "Execute the IMAP expunge command after processing each email message."
+msgstr ""
+
+#: models/email_sources.py:240
+msgid "Execute expunge"
+msgstr ""
+
+#: models/email_sources.py:244
+msgid "IMAP Mailbox to which processed messages will be copied."
+msgstr ""
+
+#: models/email_sources.py:245
+msgid "Destination mailbox"
+msgstr ""
+
+#: models/email_sources.py:352
 msgid "Timeout"
 msgstr "Timeout"
 
-#: models/email_sources.py:307 models/email_sources.py:308
+#: models/email_sources.py:358 models/email_sources.py:359
 msgid "POP email"
 msgstr "POP e-mail"
 
@@ -550,17 +596,17 @@ msgstr ""
 msgid "Upload document"
 msgstr ""
 
-#: settings.py:15
+#: settings.py:20
 msgid "File path to the scanimage program used to control image scanners."
 msgstr ""
 
-#: settings.py:22
+#: settings.py:27
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
 msgstr ""
 
-#: settings.py:31
+#: settings.py:36
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr ""
 
@@ -569,102 +615,117 @@ msgstr ""
 msgid "Error processing source: %s"
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:84
+#: templates/sources/dropzone.html:82
 msgid "Cancel upload"
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:85
+#: templates/sources/dropzone.html:83
 msgid "Are you sure you want to cancel this upload?"
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:86
+#: templates/sources/dropzone.html:84
 msgid "Drop files or click here to upload files"
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:87
+#: templates/sources/dropzone.html:85
 msgid "Your browser does not support drag and drop file uploads."
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:88
+#: templates/sources/dropzone.html:86
 msgid "Please use the fallback form below to upload your files."
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:89
+#: templates/sources/dropzone.html:87
 msgid "Clear"
 msgstr ""
 
-#: templates/sources/upload_multiform_subtemplate.html:90
+#: templates/sources/dropzone.html:88
 msgid "Server responded with {{statusCode}} code."
 msgstr ""
 
-#: views.py:63
+#: views.py:66
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr ""
 
-#: views.py:66
+#: views.py:69
 msgid "No log entries available"
 msgstr ""
 
-#: views.py:68
+#: views.py:71
 #, python-format
 msgid "Log entries for source: %s"
 msgstr ""
 
-#: views.py:123 wizards.py:154
+#: views.py:126 wizards.py:154
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr ""
 
-#: views.py:151 views.py:169 views.py:179
+#: views.py:154 views.py:183 views.py:193
 msgid "Document properties"
 msgstr ""
 
-#: views.py:159
-msgid "Files in staging path"
+#: views.py:163
+msgid ""
+"This could mean that the staging folder is empty. It could also mean that "
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 
 #: views.py:170
+msgid "No staging files available"
+msgstr ""
+
+#: views.py:173
+msgid "Files in staging path"
+msgstr ""
+
+#: views.py:184
 msgid "Scan"
 msgstr ""
 
-#: views.py:280
+#: views.py:294
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr ""
 
-#: views.py:291
+#: views.py:305
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:342
+#: views.py:356
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:376
+#: views.py:389
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
-#: views.py:429
+#: views.py:442
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:470
+#: views.py:482
 #, python-format
-msgid "Upload a new version from source: %s"
+msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:484
+#: views.py:485
+msgid "Submit"
+msgstr "Verstuur"
+
+#: views.py:506
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: views.py:505
+#: views.py:527
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -672,31 +733,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:511
+#: views.py:533
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr ""
 
-#: views.py:528
+#: views.py:550
 msgid "Source check queued."
 msgstr ""
 
-#: views.py:545
+#: views.py:567
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Aanmaken van nieuw documentbron van type: %s"
 
-#: views.py:567
+#: views.py:589
 #, python-format
 msgid "Delete the source: %s?"
 msgstr ""
 
-#: views.py:588
+#: views.py:610
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:622
+#: views.py:644
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -704,7 +765,7 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:627
+#: views.py:649
 msgid "No sources available"
 msgstr ""
 

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:39-0400\n"
-"PO-Revision-Date: 2019-06-29 06:22+0000\n"
+"POT-Creation-Date: 2019-12-18 00:30-0400\n"
+"PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:43 events.py:8 models.py:36 models.py:105 permissions.py:7
+#: apps.py:43 events.py:8 models.py:36 models.py:106 permissions.py:7
 msgid "Permissions"
 msgstr "Разрешения"
 
@@ -38,11 +38,11 @@ msgstr ""
 msgid "Role edited"
 msgstr ""
 
-#: links.py:16 links.py:40 models.py:116 views.py:165
+#: links.py:16 links.py:40 models.py:117 views.py:168
 msgid "Roles"
 msgstr "Роли"
 
-#: links.py:23
+#: links.py:23 views.py:53
 msgid "Create new role"
 msgstr "Создать новую роль"
 
@@ -54,7 +54,7 @@ msgstr "Удалить"
 msgid "Edit"
 msgstr "Редактировать"
 
-#: links.py:45 models.py:108
+#: links.py:45 models.py:109
 msgid "Groups"
 msgstr "Группы"
 
@@ -74,11 +74,15 @@ msgstr "Имя"
 msgid "Permission"
 msgstr "Разрешение"
 
-#: models.py:101 search.py:16
+#: models.py:101
+msgid "A short text describing the role."
+msgstr ""
+
+#: models.py:102 search.py:16
 msgid "Label"
 msgstr "Надпись"
 
-#: models.py:115
+#: models.py:116
 msgid "Role"
 msgstr "Роль"
 
@@ -130,44 +134,44 @@ msgstr ""
 msgid "Roles of group: %s"
 msgstr ""
 
-#: views.py:79
+#: views.py:82
 msgid "Available groups"
 msgstr "Доступные группы"
 
-#: views.py:80
+#: views.py:83
 msgid "Role groups"
 msgstr "Группы роли"
 
-#: views.py:89
+#: views.py:92
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Группы роли: %s"
 
-#: views.py:91
+#: views.py:94
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr ""
 
-#: views.py:104
+#: views.py:107
 msgid "Available permissions"
 msgstr "Доступные разрешения"
 
-#: views.py:105
+#: views.py:108
 msgid "Granted permissions"
 msgstr "Предоставленные разрешения"
 
-#: views.py:137
+#: views.py:140
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
 
-#: views.py:140
+#: views.py:143
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Разрешения роли: %s"
 
-#: views.py:157
+#: views.py:160
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -175,6 +179,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr ""
 
-#: views.py:164
+#: views.py:167
 msgid "There are no roles"
 msgstr ""

@@ -28,9 +28,9 @@ class Migration(migrations.Migration):
             name='subject_metadata_type',
             field=models.ForeignKey(
                 related_name='email_subject', blank=True,
-                to='metadata.MetadataType', help_text="Select a metadata "
-                "type valid for the document type selected in which to store "
-                "the email's subject.", null=True,
+                to='metadata.MetadataType', help_text='Select a metadata '
+                'type valid for the document type selected in which to '
+                'store the email\'s subject.', null=True,
                 verbose_name='Subject metadata type'
             ),
             preserve_default=True,

@@ -6,12 +6,12 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.cache import cache_control, patch_cache_control
 
-from django_downloadview import DownloadMixin, VirtualFile
 from rest_framework import status
 from rest_framework.response import Response
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.rest_api import generics
+from mayan.apps.common.generics import DownloadMixin
 
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (
@@ -116,15 +116,11 @@ class APIDocumentDownloadView(DownloadMixin, generics.RetrieveAPIView):
     }
     queryset = Document.objects.all()
 
-    def get_encoding(self):
-        return self.get_object().latest_version.encoding
+    def get_download_file_object(self):
+        return self.get_object().open()
 
-    def get_file(self):
-        instance = self.get_object()
-        return VirtualFile(instance.latest_version.file, name=instance.label)
-
-    def get_mimetype(self):
-        return self.get_object().latest_version.mimetype
+    def get_download_filename(self):
+        return self.get_object().label
 
     def get_serializer(self, *args, **kwargs):
         return None
@@ -463,10 +459,11 @@ class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
         )
         return document
 
-    def get_encoding(self):
-        return self.get_object().encoding
+    def get_download_file_object(self):
+        instance = self.get_object()
+        return instance.open()
 
-    def get_file(self):
+    def get_download_filename(self):
         preserve_extension = self.request.GET.get(
             'preserve_extension', self.request.POST.get(
                 'preserve_extension', False
@@ -476,14 +473,9 @@ class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
         preserve_extension = preserve_extension == 'true' or preserve_extension == 'True'
 
         instance = self.get_object()
-        return VirtualFile(
-            instance.file, name=instance.get_rendered_string(
-                preserve_extension=preserve_extension
-            )
+        return instance.get_rendered_string(
+            preserve_extension=preserve_extension
         )
-
-    def get_mimetype(self):
-        return self.get_object().mimetype
 
     def get_serializer(self, *args, **kwargs):
         return None

@@ -166,33 +166,40 @@ class DocumentViewTestCase(
             Document.objects.first().document_type, document_type_2
         )
 
-    def test_document_download_form_view_no_permission(self):
-        response = self._request_document_download_form_view()
-        self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=200
-        )
+    def test_document_download_form_get_view_no_permission(self):
+        response = self._request_document_download_form_get_view()
+        self.assertEqual(response.status_code, 404)
 
-    def test_document_download_form_view_with_access(self):
+    def test_document_download_form_get_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_download
         )
 
-        response = self._request_document_download_form_view()
+        response = self._request_document_download_form_get_view()
         self.assertContains(
             response=response, text=self.test_document.label, status_code=200
         )
 
+    def test_document_download_form_post_view_no_permission(self):
+        response = self._request_document_download_form_post_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_download_form_post_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_download
+        )
+        response = self._request_document_download_form_post_view()
+        self.assertEqual(response.status_code, 302)
+
     def test_document_download_view_no_permission(self):
         response = self._request_document_download_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_download_view_with_permission(self):
         # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
         self.expected_content_types = (
-            '{}; charset=utf-8'.format(
-                self.test_document.file_mimetype
-            ),
+            self.test_document.file_mimetype,
         )
 
         self.grant_access(
@@ -205,21 +212,19 @@ class DocumentViewTestCase(
         with self.test_document.open() as file_object:
             self.assert_download_response(
                 response=response, content=file_object.read(),
-                basename=TEST_SMALL_DOCUMENT_FILENAME,
+                filename=TEST_SMALL_DOCUMENT_FILENAME,
                 mime_type=self.test_document.file_mimetype
             )
 
     def test_document_multiple_download_view_no_permission(self):
         response = self._request_document_multiple_download_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_multiple_download_view_with_permission(self):
         # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
         self.expected_content_types = (
-            '{}; charset=utf-8'.format(
-                self.test_document.file_mimetype
-            ),
+            self.test_document.file_mimetype,
         )
         self.grant_access(
             obj=self.test_document, permission=permission_document_download
@@ -231,21 +236,19 @@ class DocumentViewTestCase(
         with self.test_document.open() as file_object:
             self.assert_download_response(
                 response=response, content=file_object.read(),
-                basename=TEST_SMALL_DOCUMENT_FILENAME,
+                filename=TEST_SMALL_DOCUMENT_FILENAME,
                 mime_type=self.test_document.file_mimetype
             )
 
     def test_document_version_download_view_no_permission(self):
         response = self._request_document_version_download()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_version_download_view_with_permission(self):
         # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
         self.expected_content_types = (
-            '{}; charset=utf-8'.format(
-                self.test_document.latest_version.mimetype
-            ),
+            self.test_document.latest_version.mimetype,
         )
 
         self.grant_access(
@@ -258,19 +261,15 @@ class DocumentViewTestCase(
         with self.test_document.open() as file_object:
             self.assert_download_response(
                 response=response, content=file_object.read(),
-                basename=force_text(self.test_document.latest_version),
-                mime_type='{}; charset=utf-8'.format(
-                    self.test_document.latest_version.mimetype
-                )
+                filename=force_text(self.test_document.latest_version),
+                mime_type=self.test_document.latest_version.mimetype
             )
 
     def test_document_version_download_preserve_extension_view_with_permission(self):
         # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
         self.expected_content_types = (
-            '{}; charset=utf-8'.format(
-                self.test_document.latest_version.mimetype
-            ),
+            self.test_document.latest_version.mimetype,
         )
 
         self.grant_access(
@@ -285,11 +284,9 @@ class DocumentViewTestCase(
         with self.test_document.open() as file_object:
             self.assert_download_response(
                 response=response, content=file_object.read(),
-                basename=self.test_document.latest_version.get_rendered_string(
+                filename=self.test_document.latest_version.get_rendered_string(
                     preserve_extension=True
-                ), mime_type='{}; charset=utf-8'.format(
-                    self.test_document.latest_version.mimetype
-                )
+                ), mime_type=self.test_document.latest_version.mimetype
             )
 
     def test_document_pages_reset_view_no_permission(self):

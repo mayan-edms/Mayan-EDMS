@@ -11,15 +11,13 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
     FormView as DjangoFormView, DetailView, TemplateView
 )
+from django.views.generic.base import View
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import (
     CreateView, DeleteView, FormMixin, ModelFormMixin, UpdateView
 )
 from django.views.generic.list import ListView
 
-from django_downloadview import (
-    TextIteratorIO, VirtualDownloadView, VirtualFile
-)
 from pure_pagination.mixins import PaginationMixin
 
 from mayan.apps.acls.models import AccessControlList
@@ -36,11 +34,10 @@ from .literals import (
     TEXT_SORT_ORDER_VARIABLE_NAME
 )
 from .mixins import (
-    DeleteExtraDataMixin, DynamicFormViewMixin, ExternalObjectMixin,
-    ExtraContextMixin, FormExtraKwargsMixin, MultipleObjectMixin,
-    ObjectActionMixin, ObjectNameMixin,
-    ObjectPermissionCheckMixin, RedirectionMixin, RestrictedQuerysetMixin,
-    ViewPermissionCheckMixin
+    DeleteExtraDataMixin, DownloadMixin, DynamicFormViewMixin,
+    ExternalObjectMixin, ExtraContextMixin, FormExtraKwargsMixin,
+    MultipleObjectMixin, ObjectActionMixin, ObjectNameMixin,
+    RedirectionMixin, RestrictedQuerysetMixin, ViewPermissionCheckMixin
 )
 
 from .settings import setting_paginate_by
@@ -491,7 +488,9 @@ class MultipleObjectConfirmActionView(
 
 
 class SimpleView(ViewPermissionCheckMixin, ExtraContextMixin, TemplateView):
-    pass
+    """
+    Basic template view class with permission check and extra context
+    """
 
 
 class SingleObjectCreateView(
@@ -657,9 +656,52 @@ class SingleObjectDetailView(
             return super(SingleObjectDetailView, self).get_queryset()
 
 
-class SingleObjectDownloadView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, VirtualDownloadView, SingleObjectMixin):
-    TextIteratorIO = TextIteratorIO
-    VirtualFile = VirtualFile
+class BaseDownloadView(DownloadMixin, ViewPermissionCheckMixin, View):
+    def get(self, request, *args, **kwargs):
+        return self.render_to_response()
+
+
+class SingleObjectDownloadView(
+    RestrictedQuerysetMixin, SingleObjectMixin, BaseDownloadView
+):
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return super(SingleObjectDownloadView, self).get(
+            request, *args, **kwargs
+        )
+
+    def get_download_file_object(self):
+        return self.object.open()
+
+    def get_download_label(self):
+        return force_text(self.object)
+
+
+class MultipleObjectDownloadView(
+    RestrictedQuerysetMixin, MultipleObjectMixin, BaseDownloadView
+):
+    """
+    View that support receiving multiple objects via a pk_list query.
+    """
+    def __init__(self, *args, **kwargs):
+        result = super(MultipleObjectDownloadView, self).__init__(*args, **kwargs)
+
+        if self.__class__.mro()[0].get_queryset != MultipleObjectDownloadView.get_queryset:
+            raise ImproperlyConfigured(
+                '%(cls)s is overloading the get_queryset method. Subclasses '
+                'should implement the get_source_queryset method instead. ' % {
+                    'cls': self.__class__.__name__
+                }
+            )
+
+        return result
+
+    def get_queryset(self):
+        try:
+            return super(MultipleObjectDownloadView, self).get_queryset()
+        except ImproperlyConfigured:
+            self.queryset = self.get_source_queryset()
+            return super(MultipleObjectDownloadView, self).get_queryset()
 
 
 class SingleObjectDynamicFormCreateView(

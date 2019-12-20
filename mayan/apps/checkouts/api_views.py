@@ -76,7 +76,7 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
     def delete(self, request, *args, **kwargs):
         document = self.get_object().document
 
-        if document.checkout_info().user == request.user:
+        if document.get_check_out_info().user == request.user:
             AccessControlList.objects.check_access(
                 obj=document, permissions=(permission_document_check_in,),
                 user=request.user

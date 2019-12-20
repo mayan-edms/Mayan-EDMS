@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:38-0400\n"
-"PO-Revision-Date: 2019-11-19 02:41+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-18 00:29-0400\n"
+"PO-Revision-Date: 2019-12-04 17:40+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr "Получаване стойността на конкретни мет
 
 #: apps.py:99
 msgid "Metadata value of"
-msgstr ""
+msgstr "Метаданни за"
 
 #: apps.py:104
 msgid "Metadata type name"
@@ -40,7 +40,7 @@ msgstr "Име на типа метаданни"
 msgid "Metadata type value"
 msgstr "Стойност на типа метаданни"
 
-#: apps.py:183 apps.py:191 forms.py:123 models.py:93 models.py:304
+#: apps.py:183 apps.py:191 forms.py:123 models.py:96 models.py:307
 msgid "Metadata type"
 msgstr "Тип метаданни"
 
@@ -80,7 +80,7 @@ msgstr "ID"
 msgid "Name"
 msgstr "Име"
 
-#: forms.py:20 models.py:211
+#: forms.py:20 models.py:214
 msgid "Value"
 msgstr "Стойност"
 
@@ -88,7 +88,7 @@ msgstr "Стойност"
 msgid "Update"
 msgstr "Актуализация"
 
-#: forms.py:46 forms.py:185 models.py:306
+#: forms.py:46 forms.py:185 models.py:309
 msgid "Required"
 msgstr "Задължително"
 
@@ -102,7 +102,7 @@ msgstr "Грешка в стойността на търсенето: %s"
 msgid "Default value error: %s"
 msgstr "Грешка в стойността по подразбиране: %s"
 
-#: forms.py:104 models.py:172
+#: forms.py:104 models.py:175
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "&quot;%s&quot; е задължително за този тип документ."
@@ -127,7 +127,7 @@ msgstr "Няма"
 msgid "Optional"
 msgstr "Незадължително"
 
-#: forms.py:189 models.py:55 search.py:19
+#: forms.py:189 models.py:57 search.py:19
 msgid "Label"
 msgstr "Етикет"
 
@@ -147,7 +147,7 @@ msgstr "Редактиране на метаданни"
 msgid "Remove metadata"
 msgstr "Премахване на метаданните"
 
-#: links.py:55 links.py:83 models.py:94 views.py:656
+#: links.py:55 links.py:83 models.py:97 views.py:656
 msgid "Metadata types"
 msgstr "Типове метаданни"
 
@@ -173,84 +173,88 @@ msgid ""
 "reserved words, or spaces."
 msgstr "Име, използвано от други приложения за препратка към този тип метаданни. Не използвайте запазени думи на Python или интервали."
 
-#: models.py:59
+#: models.py:56
+msgid "Short description of this metadata type."
+msgstr "Кратко описание на този тип метаданни."
+
+#: models.py:62
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr "Въведете шаблон за изобразяване. Използвайте езика за шаблони на Django по подразбиране (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
-#: models.py:63 search.py:22
+#: models.py:66 search.py:22
 msgid "Default"
 msgstr "По подразбиране"
 
-#: models.py:68
+#: models.py:71
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
 "Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
 msgstr "Въведете шаблон за изобразяване. Трябва да се получи низ разделен със запетая. Използвайте езика за шаблониране на Django по подразбиране (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
 
-#: models.py:73 search.py:25
+#: models.py:76 search.py:25
 msgid "Lookup"
 msgstr "Справка"
 
-#: models.py:78
+#: models.py:81
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
 msgstr "Валидаторът ще отхвърли въвеждането на данни, ако въведената стойност не съответства на очаквания формат."
 
-#: models.py:80 search.py:28
+#: models.py:83 search.py:28
 msgid "Validator"
 msgstr "Валидатор"
 
-#: models.py:84
+#: models.py:87
 msgid ""
 "The parser will reformat the value entered to conform to the expected "
 "format."
 msgstr "Анализаторът ще преформатира въведената стойност, за да съответства на очаквания формат."
 
-#: models.py:86 search.py:31
+#: models.py:89 search.py:31
 msgid "Parser"
 msgstr "Анализатор"
 
-#: models.py:180
+#: models.py:183
 msgid "Value is not one of the provided options."
 msgstr "Стойността не е една от предоставените опции."
 
-#: models.py:202
+#: models.py:205
 msgid "Document"
 msgstr "Документ"
 
-#: models.py:205
+#: models.py:208
 msgid "Type"
 msgstr "Тип"
 
-#: models.py:209
+#: models.py:212
 msgid "The actual value stored in the metadata type field for the document."
 msgstr "Действителната стойност, съхранена в полето за тип метаданни за документа."
 
-#: models.py:217 models.py:218
+#: models.py:220 models.py:221
 msgid "Document metadata"
 msgstr "Метаданни за документа"
 
-#: models.py:239
+#: models.py:242
 msgid "Metadata type is required for this document type."
 msgstr "Тип метаданни са необходими за този тип документ."
 
-#: models.py:269
+#: models.py:272
 msgid "Metadata type is not valid for this document type."
 msgstr "Типът на метаданните не е валиден за този тип документ."
 
-#: models.py:300
+#: models.py:303
 msgid "Document type"
 msgstr "Вид на документа"
 
-#: models.py:313
+#: models.py:316
 msgid "Document type metadata type options"
 msgstr "Опции за типа метаданни на документа"
 
-#: models.py:314
+#: models.py:317
 msgid "Document type metadata types options"
 msgstr "Опции за типове метаданни за тип документ"
 

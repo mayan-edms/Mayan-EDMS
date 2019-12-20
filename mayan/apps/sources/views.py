@@ -382,7 +382,6 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
             klass=Document, pk=kwargs['document_pk']
         )
 
-        # TODO: Try to remove this new version block check from here
         if NewVersionBlock.objects.is_blocked(self.document):
             messages.error(
                 message=_(

@@ -1,0 +1,30 @@
+.. _docker_compose:
+
+====================
+Using Docker compose
+====================
+
+To deploy a complete production stack using the included Docker compose file
+execute::
+
+    docker-compose -f docker-compose.yml up -d
+
+This Docker compose file will provision four containers:
+
+- Postgres as the database
+- Redis as the Celery result storage
+- RabbitMQ as the Celery broker
+- Mayan EDMS using the above service containers
+
+To stop the stack use::
+
+    docker-compose -f docker-compose.yml stop
+
+The stack will also create four volumes to store the data of each container.
+These are:
+
+- mayan_app - The Mayan EDMS data container, normally called `mayan_data` when not using Docker compose.
+- mayan_broker - The broker volume, in this case RabbitMQ.
+- mayan_db - The database volume, in this case Postgres.
+- mayan_results - The celery result backend volume, in this case Redis.
+

@@ -75,18 +75,20 @@ class LinkingApp(MayanAppConfig):
             )
         )
 
-        SourceColumn(
+        source_column_smart_link_label = SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=SmartLink
         )
-        SourceColumn(
+        source_column_smart_link_label.add_exclude(ResolvedSmartLink)
+        source_column_smart_link_dynamic_label = SourceColumn(
             attribute='dynamic_label', is_sortable=True, source=SmartLink
         )
-        SourceColumn(
+        source_column_smart_link_dynamic_label.add_exclude(ResolvedSmartLink)
+        source_column_smart_link_enabled = SourceColumn(
             attribute='enabled', is_sortable=True, source=SmartLink,
             widget=TwoStateWidget
         )
-
+        source_column_smart_link_enabled.add_exclude(ResolvedSmartLink)
         SourceColumn(
             attribute='get_full_label', is_identifier=True,
             source=SmartLinkCondition
@@ -124,6 +126,10 @@ class LinkingApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(link_smart_link_instance_view,),
+            sources=(ResolvedSmartLink,)
+        )
+        menu_object.unbind_links(
+            links=(link_smart_link_delete, link_smart_link_edit,),
             sources=(ResolvedSmartLink,)
         )
         menu_secondary.bind_links(

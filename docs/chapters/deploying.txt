@@ -1,0 +1,273 @@
+.. _deployment_basic:
+
+=================
+Direct deployment
+=================
+
+Mayan EDMS should be deployed like any other Django_ project and
+preferably using virtualenv_. Below are some ways to deploy and use Mayan EDMS.
+
+Being a Django_ and a Python_ project, familiarity with these technologies is
+recommended to better understand why Mayan EDMS does some of the things it
+does.
+
+Compilers and development libraries will be installed to compile runtime
+libraries. LibreOffice and Poppler utils will also be installed as they are
+used to convert document files. Supervisor (https://supervisord.org/), a
+Process Control System, will be used to monitor and keep all Mayan processes
+running.
+
+
+Basic deployment
+================
+This setup uses less memory and CPU resources at the expense of some speed.
+For another setup that offers more performance and scalability refer to the
+`Advanced deployment`_ below.
+
+#. Install binary dependencies:
+
+   If using a Debian_ or Ubuntu_ based Linux distribution, get the executable
+   requirements using:
+
+   .. code-block:: bash
+
+       sudo apt-get install exiftool g++ gcc ghostscript gnupg1 graphviz \
+       libfuse2 libjpeg-dev libmagic1 libpq-dev libpng-dev libreoffice \
+       libtiff-dev poppler-utils postgresql python3-dev python3-virtualenv
+       redis-server sane-utils supervisor tesseract-ocr zlib1g-dev -y
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo apt-get install libffi-dev libssl-dev -y
+
+
+#. Create the user account for the installation:
+
+   This will create an unprivileged user account that is also unable to login:
+
+   .. code-block:: bash
+
+       sudo adduser mayan --disabled-password --disabled-login --gecos ""
+
+
+#. Create the parent directory where the project will be deployed:
+
+   ``/opt/`` is a good choice as it is meant is for "software and add-on packages
+   that are not part of the default installation". (https://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html).
+   Create the ``/opt`` directory if it doesn't already exists:
+
+   .. code-block:: bash
+
+       sudo mkdir /opt
+
+
+#. Create the Python virtual environment:
+
+   This will keep all the Python packages installed here isolated from the rest
+   of the Python packages in the system:
+
+   .. code-block:: bash
+
+       sudo virtualenv |MAYAN_INSTALLATION_DIRECTORY| -p /usr/bin/python3
+
+
+#. Make the mayan user the owner of the installation directory:
+
+   .. code-block:: bash
+
+       sudo chown mayan:mayan |MAYAN_INSTALLATION_DIRECTORY| -R
+
+
+#. Install Mayan EDMS from PyPI:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 mayan-edms
+
+
+#. Install the Python client for PostgreSQL and Redis:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
+
+
+#. Create the database for the installation:
+
+   .. code-block:: bash
+
+       sudo -u postgres psql -c "CREATE USER mayan WITH password 'mayanuserpass';"
+       sudo -u postgres createdb -O mayan mayan
+
+
+#. Initialize the project:
+
+   This step will create all the database structures, download static media files
+   like JavaScript libraries and HTML frameworks, and create and initial admin
+   account with a random password.
+
+   .. note::
+
+       For simplicity, the ``MAYAN_MEDIA_ROOT`` folder is set to be a subfolder
+       of the installation. If you want to keep your files separated from
+       the installation files, change the value of the ``MAYAN_MEDIA_ROOT``
+       variable in this and all subsequent steps. Be sure to first create the
+       folder and give ownership of it to the ``mayan`` user with the ``chown``
+       command.
+
+   .. warning::
+
+       If this step is interrupted, even if it is later resumed, will
+       cause the automatic admin user to not be created in some cases. Make
+       sure all environment variables and values are correct. If this
+       happens, refer to the troubleshooting chapters:
+       :ref:`troubleshooting-autoadmin-account` and
+       :ref:`troubleshooting-admin-password`.
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| initialsetup
+
+
+#. Collect the static files:
+
+   This step merges and compressed static media files so they can be served more
+   effectively.
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| preparestatic --noinput
+
+
+#. Create the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Configure Redis:
+
+   Configure Redis to discard data when it runs out of memory, not save its
+   database and only keep 2 database:
+
+   .. code-block:: bash
+
+       sudo echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
+       sudo echo "save \"\"" >> /etc/redis/redis.conf
+       sudo echo "databases 2" >> /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+#. Enable and restart the services [1_]:
+
+   .. code-block:: bash
+
+       sudo systemctl enable supervisor
+       sudo systemctl restart supervisor
+
+
+#. Cleaning up:
+
+   The following operating system dependencies are only needed during
+   installation and can be removed.
+
+   .. code-block:: bash
+
+       sudo apt-get remove --purge libjpeg-dev libpq-dev libpng-dev libtiff-dev zlib1g-dev
+
+
+.. _deployment_advanced:
+
+Advanced deployment
+===================
+
+This variation uses RabbitMQ as the message broker. RabbitMQ consumes more
+memory but scales to thousands of messages per second. RabbitMQ messages are also
+persistent by default, this means that pending tasks are not lost in the case
+of a restart or power failure. The Gunicorn workers are increased to 3.
+
+
+#. Install RabbitMQ:
+
+   If using a Debian_ or Ubuntu_ based Linux distribution, get the executable
+   requirements using:
+
+   .. code-block:: bash
+
+       sudo apt-get install rabbitmq-server -y
+
+
+#. Install the Python client for RabbitMQ:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
+
+
+#. Create the RabbitMQ user and vhost:
+
+   .. code-block:: bash
+
+       sudo rabbitmqctl add_user mayan mayanrabbitmqpassword
+       sudo rabbitmqctl add_vhost mayan
+       sudo rabbitmqctl set_permissions -p mayan mayan ".*" ".*" ".*"
+
+
+#. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
+
+   Replace (paying attention to the comma at the end):
+
+   .. code-block:: ini
+
+       MAYAN_CELERY_BROKER_URL="redis://127.0.0.1:6379/0",
+
+   with:
+
+   .. code-block:: ini
+
+       MAYAN_CELERY_BROKER_URL="amqp://mayan:mayanrabbitmqpassword@localhost:5672/mayan",
+
+   increase the number of Gunicorn workers to 3 in the line (``-w 2`` section):
+
+   .. code-block:: ini
+
+       command = |MAYAN_GUNICORN_BIN| -w 2 mayan.wsgi --max-requests 1000 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
+
+   remove the concurrency limit (or increase it) of the fast worker (remove ``--concurrency=1``).
+
+
+#. Restart the services:
+
+   .. code-block:: bash
+
+       sudo supervisorctl reread
+       sudo supervisorctl restart all
+
+
+
+[1]: https://bugs.launchpad.net/ubuntu/+source/supervisor/+bug/1594740
+
+.. _Debian: https://www.debian.org/
+.. _Django: https://www.djangoproject.com/
+.. _Python: https://www.python.org/
+.. _SQLite: https://www.sqlite.org/
+.. _Ubuntu: http://www.ubuntu.com/
+.. _virtualenv: http://www.virtualenv.org/en/latest/index.html
+.. _1: https://bugs.launchpad.net/ubuntu/+source/supervisor/+bug/1594740

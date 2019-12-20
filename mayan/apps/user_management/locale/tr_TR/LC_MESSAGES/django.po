@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# emreunal <bywant@gmail.com>, 2019
 # serhatcan77 <serhat_can@yahoo.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 22:40-0400\n"
-"PO-Revision-Date: 2019-06-29 06:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-18 00:31-0400\n"
+"PO-Revision-Date: 2019-12-13 17:47+0000\n"
+"Last-Translator: emreunal <bywant@gmail.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,19 +23,19 @@ msgstr ""
 msgid "User management"
 msgstr "Kullanıcı yönetimi"
 
-#: apps.py:100 search.py:36
+#: apps.py:100 search.py:12
 msgid "Group"
-msgstr ""
+msgstr "Grup"
 
-#: apps.py:101 links.py:41 links.py:52 links.py:75 search.py:26 views.py:120
+#: apps.py:101 links.py:41 links.py:52 links.py:75 search.py:36 views.py:120
 msgid "Groups"
 msgstr "Gruplar"
 
-#: apps.py:102 search.py:42
+#: apps.py:102 search.py:18
 msgid "Name"
 msgstr "İsim"
 
-#: apps.py:108 models.py:18 search.py:14
+#: apps.py:108 models.py:18 search.py:24
 msgid "User"
 msgstr "Kullanıcı"
 
@@ -46,21 +47,21 @@ msgstr "Kullanıcılar"
 msgid "Username"
 msgstr "Kullanıcı adı"
 
-#: apps.py:113 search.py:20
+#: apps.py:113 search.py:30
 msgid "First name"
 msgstr "Ad"
 
-#: apps.py:114 search.py:29
+#: apps.py:114 search.py:39
 msgid "Last name"
 msgstr "Soyad"
 
-#: apps.py:115 search.py:23
+#: apps.py:115 search.py:33
 msgid "Email"
 msgstr "E-posta"
 
 #: apps.py:116
 msgid "Is active?"
-msgstr ""
+msgstr "Aktif mi?"
 
 #: apps.py:119 apps.py:123
 msgid "Has usable password?"
@@ -76,35 +77,35 @@ msgstr "Tüm kullanıcılar."
 
 #: dashboard_widgets.py:16
 msgid "Total users"
-msgstr ""
+msgstr "Toplam kullanıcılar"
 
 #: dashboard_widgets.py:32
 msgid "Total groups"
-msgstr ""
+msgstr "Toplam gruplar"
 
 #: events.py:12
 msgid "Group created"
-msgstr ""
+msgstr "Grup oluşturuldu"
 
 #: events.py:15
 msgid "Group edited"
-msgstr ""
+msgstr "Grup düzenlendi"
 
 #: events.py:19
 msgid "User created"
-msgstr ""
+msgstr "Kullanıcı oluşturuldu"
 
 #: events.py:22
 msgid "User edited"
-msgstr ""
+msgstr "Kullanıcı düzenlendi"
 
 #: events.py:25
 msgid "User logged in"
-msgstr ""
+msgstr "Giriş yapmış kullanıcı"
 
 #: events.py:28
 msgid "User logged out"
-msgstr ""
+msgstr "Çıkış yapmış kullanıcı"
 
 #: links.py:16
 msgid "User details"
@@ -132,19 +133,19 @@ msgstr "Yeni kullanıcı oluştur"
 
 #: links.py:92
 msgid "User options"
-msgstr ""
+msgstr "Kullanıcı özellikleri"
 
 #: models.py:22
 msgid "Forbid this user from changing their password."
-msgstr ""
+msgstr "Bu kullanıcın şifreyi değiştirmesini yasakla"
 
 #: models.py:28
 msgid "User settings"
-msgstr ""
+msgstr "Kullanıcı ayarları"
 
 #: models.py:29
 msgid "Users settings"
-msgstr ""
+msgstr "Kullanıcıların ayarları"
 
 #: permissions.py:12
 msgid "Create new groups"
@@ -178,7 +179,7 @@ msgstr "Var olan kullanıcıları düzenle"
 msgid "View existing users"
 msgstr "Mevcut kullanıcıları görüntüle"
 
-#: search.py:32
+#: search.py:42
 msgid "username"
 msgstr "kullanıcı adı"
 
@@ -217,11 +218,11 @@ msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr ""
+msgstr "Kullanıcı grupları organizasyonel birimlerdir ve organizasyonunuzun birimlerini yansıtmalıdır. Gruplar erişim kontrolü için kullanılamazlar. Erişim kontrolü ve izin yönetimi için Rolleri kullanarak grupları bu rollere ekleyiniz."
 
 #: views.py:119
 msgid "There are no user groups"
-msgstr ""
+msgstr "Herhangi bir kullanıcı grubu bulunmamaktadır"
 
 #: views.py:132
 msgid "Available users"
@@ -229,12 +230,12 @@ msgstr "Kullanılabilir kullanıcılar"
 
 #: views.py:133
 msgid "Group users"
-msgstr ""
+msgstr "Grup kullanıcıları"
 
 #: views.py:141
 #, python-format
 msgid "Users of group: %s"
-msgstr ""
+msgstr "Grupun kullanıcıları: %s"
 
 #: views.py:173
 #, python-format
@@ -276,7 +277,7 @@ msgstr "\"%(user)s\" kullanıcısı silinirken hata oluştu: %(error)s"
 #: views.py:236
 #, python-format
 msgid "Details of user: %s"
-msgstr ""
+msgstr "Kullanıcı ayrıntıları: %s"
 
 #: views.py:251
 #, python-format
@@ -291,7 +292,7 @@ msgstr "Kullanılabilir gruplar"
 #. user.
 #: views.py:269
 msgid "User groups"
-msgstr ""
+msgstr "Kullanıcı grupları"
 
 #: views.py:277
 #, python-format
@@ -302,13 +303,13 @@ msgstr "Kullanıcının grupları: %s"
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
-msgstr ""
+msgstr "Buradan kullanıcı hesapları oluşturabilirsiniz. Bir kullanıcı hesabı oluşturduktan sonra bu kullanıcı için bir şifre oluşturmanız istenecektir."
 
 #: views.py:301
 msgid "There are no user accounts"
-msgstr ""
+msgstr "Herhangi bir kullanıcı hesabı bulunmamaktadır"
 
 #: views.py:316
 #, python-format
 msgid "Edit options for user: %s"
-msgstr ""
+msgstr "%s kullanıcısı için düzenleme seçenekleri"

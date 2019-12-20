@@ -60,6 +60,7 @@ class Workflow(models.Model):
         verbose_name=_('Internal name')
     )
     label = models.CharField(
+        help_text=_('A short text to describe the workflow.'),
         max_length=255, unique=True, verbose_name=_('Label')
     )
     document_types = models.ManyToManyField(
@@ -273,7 +274,10 @@ class WorkflowState(models.Model):
         on_delete=models.CASCADE, related_name='states', to=Workflow,
         verbose_name=_('Workflow')
     )
-    label = models.CharField(max_length=255, verbose_name=_('Label'))
+    label = models.CharField(
+        help_text=_('A short text to describe the workflow state.'),
+        max_length=255, verbose_name=_('Label')
+    )
     initial = models.BooleanField(
         default=False,
         help_text=_(
@@ -353,7 +357,7 @@ class WorkflowStateAction(models.Model):
         verbose_name=_('Workflow state')
     )
     label = models.CharField(
-        max_length=255, help_text=_('A simple identifier for this action.'),
+        max_length=255, help_text=_('A short text describing the action.'),
         verbose_name=_('Label')
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
@@ -420,7 +424,10 @@ class WorkflowTransition(models.Model):
         on_delete=models.CASCADE, related_name='transitions', to=Workflow,
         verbose_name=_('Workflow')
     )
-    label = models.CharField(max_length=255, verbose_name=_('Label'))
+    label = models.CharField(
+        help_text=_('A short text to describe the transition.'),
+        max_length=255, verbose_name=_('Label')
+    )
     origin_state = models.ForeignKey(
         on_delete=models.CASCADE, related_name='origin_transitions',
         to=WorkflowState, verbose_name=_('Origin state')

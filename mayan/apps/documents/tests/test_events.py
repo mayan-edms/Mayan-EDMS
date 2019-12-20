@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from actstream.models import Action
-from django_downloadview import assert_download_response
 
 from ..events import (
     event_document_download, event_document_trashed, event_document_view
@@ -45,11 +44,11 @@ class DocumentEventsTestCase(
     def test_document_download_event_no_permission(self):
         response = self._request_test_document_download_view()
 
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
         self.assertEqual(list(Action.objects.any(obj=self.test_document)), [])
 
     def test_document_download_event_with_access(self):
-        self.expected_content_types = ('image/png; charset=utf-8',)
+        self.expected_content_types = ('image/png',)
 
         self.grant_access(
             obj=self.test_document, permission=permission_document_download
@@ -59,8 +58,8 @@ class DocumentEventsTestCase(
 
         # Download the file to close the file descriptor
         with self.test_document.open() as file_object:
-            assert_download_response(
-                self, response, content=file_object.read(),
+            self.assert_download_response(
+                response=response, content=file_object.read(),
                 mime_type=self.test_document.file_mimetype
             )
 

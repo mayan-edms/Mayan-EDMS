@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 
-from ..literals import SOURCE_CHOICE_WEB_FORM
-from ..models import WebFormSource
+from ..literals import SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_Y
+from ..models.watch_folder_sources import WatchFolderSource
+from ..models.webform_sources import WebFormSource
 
 from .literals import TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 
@@ -38,4 +39,14 @@ class SourceViewTestMixin(object):
         return self.post(
             viewname='sources:setup_source_delete',
             kwargs={'pk': self.test_source.pk}
+        )
+
+
+class WatchFolderTestMixin(object):
+    def _create_test_watchfolder(self):
+        self.test_watch_folder = WatchFolderSource.objects.create(
+            document_type=self.test_document_type,
+            folder_path=self.temporary_directory,
+            include_subdirectories=False,
+            uncompress=SOURCE_UNCOMPRESS_CHOICE_Y
         )

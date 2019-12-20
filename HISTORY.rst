@@ -1,4 +1,130 @@
-3.3 (2019-XX-XX)
+3.3.6 (2019-12-19)
+==================
+- Make list toolbar stick to the top of the view when scrolling.
+- Fix page count on some PDF files, and fix a Python 3 incompatibility.
+  GitLab merge !64. Thanks to O2 Graphics (@O2Graphics).
+- Improve the executables paths on FreeBSD/OpenBSD. GitLab merge !63.
+  Thanks to O2 Graphics (@O2Graphics).
+- Fix document orientation detection. GitLab issue #713. Thanks to
+  Rob de Canha-Knight (@rssfed23) for the report and debug information.
+- Update the Redis lock connection initialization so that is works with Redis
+  versions < 5.0. GitLab issue #709. Rob de Canha-Knight (@rssfed23) for the
+  report and debug information.
+- Update the ZipArchive class to work with badly encoded filenames.
+  GitLab issue #651. Thanks to Fabian (@ruffy91) for the report.
+- Delete periodic task on document type delete. Closes GitLab
+  issue #715. Thanks to Rob de Canha-Knight (@rssfed23) for the
+  report and research.
+- Add transaction handling to the interval sources delete and save
+  methods.
+- Add support for functional tests using selenium. Use TEST_SELENIUM_SKIP
+  to skip these tests.
+- Add test for issue #494.
+- Add support for configurable test view template.
+- Add support for public test views.
+- Reapply fix for issue #494. To avoid exploit of cross site scripting in
+  login view. Thanks to the Checkmarx SCA AppSec team for the research
+  regarding this issue for the recent version and thanks to Lokesh
+  (@lokesh1095) for the original report and solution. GitLab issue #494.
+- Settings: Display overridden instead of overrided.
+  GitLab merge !65. Thanks to Rob de Canha-Knight (@rssfed23).
+- Update the address of PyPI when checking for new versions to avoid
+  SSL errors from reusing the old address (pypi.python.org/pypi)
+  certificate. GitLab issue #717. Thanks to Jordan Wages (@wagesj45)
+  for the report.
+- Allow passing TEST_SELENIUM_SKIP as an environment variable.
+- Skip Selenium tests inside the Docker container.
+
+3.3.5 (2019-12-13)
+==================
+- Pin django-timezone-field to version 3.1. GitLab issue #698.
+  Thanks to Rob de Canha-Knight (@rssfed23) for the report
+  and research.
+- Pin kombu to version 4.6.7. GitLab issue #699. Thanks to
+  Rob de Canha-Knight (@rssfed23) for the report and the research.
+- Update instances of the word "weblink" to "web link".
+- Unify the creation of the temporary config file used in tests.
+- Update all 0001 setting migrations to accept manually migrated
+  settings.
+- Update TemplateField to concatenate existing help texts.
+- Don't show the edit and delete links for resolved web links.
+- Exclude Smart link setup columns and links from the resolved
+  smart link views.
+- TemplateField shows the available variable in the help text
+  automatically.
+- Use TemplateField for the web link template.
+- Use TemplateField for smart links.
+- Add the ID and the URL to the checkout serializer.
+- Add BaseTransformationType metaclass in a way compatible with
+  Python 2 and Python 3.
+- Remove Django DownloadView library. Implement downloads natively
+  using a modified port of Django 2.2 FileResponse.
+- Increase the role label field size from 64 to 128 characters.
+- Increase the smart link label size from 96 to 128 characters.
+- Increase the source label field size from 64 to 128 characters.
+- Add missing link icons.
+- Add missing field help texts.
+
+3.3.4 (2019-12-09)
+==================
+- Update the gunicorn worker class to synchronous.
+- Update the way the BaseTransformationType metaclass is passed
+  to work on Python 3.
+- Add locking to the file metadata document processing task.
+- Update devpi-server version to 5.3.1.
+- Add targets to run staging containers using RabbitMQ as
+  broker.
+- Don't set SourceColumn to the attribute name when no help text
+  is defined.
+- Make it clear when a setting is being overridden by an environment
+  variable. Add better text explanation. Change the column to a check
+  mark widget.
+- Add icons to the smart settings links.
+- Fix docker-runtest-all target.
+- Fix the evaluation priority of the bootstrap settings. Closes GitLab issue
+  #702. Thanks to Kevin Pawsey (@kevinpawsey) for the report and the help
+  debugging the issue.
+- Switch from librabbitmq to py-amqp. Closes GitLab issue #699. Thanks to
+  Rob de Canha-Knight (@rssfed23) for the report, research, and debug.
+- Darken content area when opening the mobile menu.
+
+3.3.3 (2019-12-05)
+==================
+- Fix transformation label display in transformation create view.
+- Remove supervisor environment variable expansion.
+- Don't exit GitLab makefile target if the branch to delete doesn't exist.
+- Automatically create transformations from the selection form that
+  doesn't have arguments.
+- Add missing message displays for transformation error creation and
+  not argument transformation creation.
+- Mark missing text for document indexing as translatable.
+
+3.3.2 (2019-12-05)
+==================
+- Improve setting migration method matching. Avoid executing
+  a migrations for settings with similar but shorter names.
+- Fix sources app setting migrations.
+- Add OCR app setting migrations.
+- Improve upgrade and deployment instructions.
+- Update backup chapters to refer to upstream database documentation.
+
+3.3.1 (2019-12-04)
+==================
+- Update Celery broker environment variable in the docker installer.
+- Add preparestatic command to documentation. GitLab issue #692.
+  Thanks to Christopher S. Meiklejohn (@cmeiklejohn2) for the report.
+- Add sources setting migration.
+- Savesettings command fixes.
+- Fix username color on mobile screens.
+- Hide the multi item selection help text on mobile screens.
+- Update Django to version 1.11.26.
+- Remove body spacer HTML and JavaScript. Not needed with the new UI.
+- Change the required permission to view the document parsing error
+  from "View document parsed content" to "Parse document". This way only
+  users with the access to affect the parsed content are the only ones
+  that can view what errors occurred during parsing.
+
+3.3 (2019-12-03)
 ================
 - Add support for icon shadows.
 - Add icons and no-result template to the object error log view and
@@ -184,7 +310,13 @@
   duplicate slugs.
 - Add document index reset view.
 
-3.2.11 (2019-XX-XX)
+3.2.12 (2019-XX-XX)
+===================
+- Add Mayan container port environment variable to the
+  docker installer. Thanks to Sergios Kefalas for the patch.
+- Fix off-by-one error in document statistics.
+
+3.2.11 (2019-11-28)
 ===================
 - Backport transaction handling to document model events.
 - Update example LDAP authentication settings file.
@@ -194,6 +326,19 @@
 - Move the file patching code from the Dependency class to a
   generalized utility of the storages app.
 - Add book link to the documentation.
+- Make the statistics slug field unique.
+- Self-heal statistics results model when multiple
+  results are created using the same slug value.
+  Forum topic 1404.
+- Update mayan_statistics migration 0002 to rename
+  duplicate slugs.
+- Fix reverse inheritance permissions.
+- Remove index create permission as an ACL permission
+  for indexes.
+- Fix API example.
+- Fix document check in via the API. GitLab issue #688.
+  Thanks to inam ul haq (@inam.sys) for the report.
+- Improve supervisord upgrade instructions. Forum topic 880.
 
 3.2.10 (2019-11-19)
 ===================

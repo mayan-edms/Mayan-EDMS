@@ -5,6 +5,7 @@ import os
 
 import yaml
 
+from mayan.apps.common.compat import dict_type
 from mayan.apps.common.serialization import yaml_load
 
 from .literals import (
@@ -71,7 +72,7 @@ class SettingNamespaceSingleton(object):
                 name='CONFIGURATION_FILEPATH'
             )
 
-            file_data = self.load_config_file(filepath=filepath)
+            file_data = self.load_config_file(filepath=filepath) or {}
             self._cache_file_data = file_data
 
         try:
@@ -141,12 +142,24 @@ class BaseSetting(object):
         By default will try to get the value from the namespace symbol table,
         then the configuration file, and finally from the environment.
         """
+        # Resolution order
+        # 1 - Environment
+        # 2 - Config
+        # 3 - Global
+        # 4 - Default
         try:
-            return self.namespace.global_symbol_table.get(
-                self.name, self.namespace.get_config_file_setting(name=self.name)
-            )
-        except SettingNamespaceSingleton.SettingNotFound:
             return self.load_environment_value()
+        except SettingNamespaceSingleton.SettingNotFound:
+            try:
+                return self.namespace.get_config_file_setting(name=self.name)
+            except SettingNamespaceSingleton.SettingNotFound:
+                try:
+                    return self.namespace.global_symbol_table[self.name]
+                except KeyError:
+                    if self.has_default:
+                        return self.get_default_value()
+                    else:
+                        raise SettingNamespaceSingleton.SettingNotFound
 
     def load_environment_value(self):
         value = self._get_environment_value()
@@ -161,10 +174,7 @@ class BaseSetting(object):
                     )
                 )
         else:
-            if self.has_default:
-                return self.get_default_value()
-            else:
-                raise SettingNamespaceSingleton.SettingNotFound
+            raise SettingNamespaceSingleton.SettingNotFound
 
 
 class FilesystemBootstrapSetting(BaseSetting):
@@ -190,7 +200,13 @@ class FilesystemBootstrapSetting(BaseSetting):
         because not even the config file setup has completed.
         This setting only supports being set from the environment.
         """
-        return self.load_environment_value()
+        try:
+            return self.load_environment_value()
+        except SettingNamespaceSingleton.SettingNotFound:
+            if self.has_default:
+                return self.get_default_value()
+            else:
+                raise SettingNamespaceSingleton.SettingNotFound
 
 
 class MediaBootstrapSetting(FilesystemBootstrapSetting):
@@ -201,6 +217,15 @@ class MediaBootstrapSetting(FilesystemBootstrapSetting):
         return os.path.join(
             self.namespace.get_setting_value(name='MEDIA_ROOT'),
             *self.path_parts
+        )
+
+
+def smart_yaml_load(value):
+    if isinstance(value, dict_type):
+        return value
+    else:
+        return yaml_load(
+            stream=value or '{}',
         )
 
 

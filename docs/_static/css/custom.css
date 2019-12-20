@@ -3,3 +3,15 @@
     background: #2c3e50;
     padding: 3px;
 }
+
+.document a.internal {
+    text-decoration: none;
+    border-bottom: 1px dotted #707070;
+}
+
+.document a.internal:visited {
+    color: #2980B9;
+    text-decoration: none;
+    border-bottom: 1px dotted #707070;
+}
+

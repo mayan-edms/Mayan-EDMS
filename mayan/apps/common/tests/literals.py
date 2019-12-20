@@ -12,6 +12,7 @@ TEST_VIEW_URL = 'test-view-url'
 
 # Filenames
 TEST_ARCHIVE_ZIP_SPECIAL_CHARACTERS_FILENAME_MEMBER = 'test_archvive_with_special_characters_filename_member.zip'
+TEST_ARCHIVE_ZIP_CP437_MEMBER = 'test_archvive_with_cp437_member.zip'
 TEST_FILENAME1 = 'test_file1.txt'
 TEST_FILENAME2 = 'test_file2.txt'
 TEST_FILENAME3 = 'test_file3.txt'
@@ -27,6 +28,10 @@ TEST_COMPRESSED_FILE_CONTENTS = [TEST_FILENAME1, TEST_FILENAME2]
 TEST_ARCHIVE_ZIP_SPECIAL_CHARACTERS_FILENAME_MEMBER_PATH = os.path.join(
     settings.BASE_DIR, 'apps', 'common', 'tests', 'contrib',
     TEST_ARCHIVE_ZIP_SPECIAL_CHARACTERS_FILENAME_MEMBER
+)
+TEST_ARCHIVE_ZIP_CP437_MEMBER_PATH = os.path.join(
+    settings.BASE_DIR, 'apps', 'common', 'tests', 'contrib',
+    TEST_ARCHIVE_ZIP_CP437_MEMBER
 )
 TEST_FILE3_PATH = os.path.join(
     settings.BASE_DIR, 'apps', 'common', 'tests', 'contrib', TEST_FILENAME3

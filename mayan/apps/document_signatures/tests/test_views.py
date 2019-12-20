@@ -1,7 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django_downloadview.test import assert_download_response
-
 from mayan.apps.django_gpg.permissions import permission_key_sign
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.models import DocumentVersion
@@ -287,7 +285,7 @@ class DetachedSignaturesViewTestCase(
         self._create_test_detached_signature()
 
         response = self._request_test_document_version_signature_download_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_signature_download_view_with_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
@@ -300,13 +298,13 @@ class DetachedSignaturesViewTestCase(
             permission=permission_document_version_signature_download
         )
 
-        self.expected_content_types = ('application/octet-stream; charset=utf-8',)
+        self.expected_content_types = ('application/octet-stream',)
 
         response = self._request_test_document_version_signature_download_view()
 
         with self.test_signature.signature_file as file_object:
-            assert_download_response(
-                self, response=response, content=file_object.read(),
+            self.assert_download_response(
+                response=response, content=file_object.read(),
             )
 
     def test_signature_upload_view_no_permission(self):

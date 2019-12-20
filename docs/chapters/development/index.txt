@@ -1,0 +1,29 @@
+==============
+For developers
+==============
+
+- :doc:`philosophies`
+- :doc:`code_structure`
+- :doc:`documentation`
+- :doc:`source_control`
+- :doc:`contributing`
+- :doc:`releases`
+- :doc:`translations`
+- :doc:`../../mercs/index`
+- :doc:`caa_entity`
+- :doc:`caa_individual`
+
+
+.. toctree::
+    :hidden:
+
+    philosophies
+    code_structure
+    documentation
+    source_control
+    contributing
+    releases
+    translations
+    ../../mercs/index
+    caa_entity
+    caa_individual

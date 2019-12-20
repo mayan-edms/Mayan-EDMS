@@ -50,7 +50,7 @@ class FormOptions(object):
         determined in the following order: as passed via keyword
         arguments during form intialization, as form get_... method or
         finally as static Meta options. This is to allow a form with
-        Meta options or method to be overrided at initialization
+        Meta options or method to be overridden at initialization
         and increase the usability of a single class.
         """
         for name, default_value in self.option_definitions.items():
@@ -124,7 +124,6 @@ class DetailForm(forms.ModelForm):
                         field_object, 'help_text', None
                     )
 
-            # TODO: Add others result types <=> Field types
             if isinstance(result, models.query.QuerySet):
                 self.fields[field] = forms.ModelMultipleChoiceField(
                     queryset=result, label=label

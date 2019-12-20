@@ -1,0 +1,173 @@
+===================
+Installable package
+===================
+
+Source file package
+-------------------
+
+This is the sequence of step used to produce an installable package:
+
+1. Generate the packaged version (will produce dist/mayan-edms-x.y.z.tar.gz)::
+
+    $ make sdist
+
+2. Do a test install::
+
+    $ cd /tmp
+    $ virtualenv venv
+    $ source venv/bin/activate
+    $ pip install <path of the Git repository>/dist/mayan-edms-x.y.z.tar.gz
+    $ mayan-edms.py initialsetup
+    $ mayan-edms.py preparestatic
+    $ mayan-edms.py runserver
+
+
+Wheel package
+-------------
+
+1. Install the development requirements::
+
+    $ pip install -r requirements/development.txt
+
+2. Create wheel package using the makefile::
+
+    $ make wheel
+
+3. Do a test install::
+
+    $ cd /tmp
+    $ virtualenv venv
+    $ source venv/bin/activate
+    $ pip install <path of the Git repository>/dist/mayan_edms-x.y.z-py2-none-any.whl
+    $ mayan-edms.py initialsetup
+    $ mayan-edms.py preparestatic
+    $ mayan-edms.py runserver
+
+
+Version numbering
+=================
+
+Mayan EDMS uses the Semantic Versioning (http://semver.org/) method to choose
+version numbers along with Python's PEP-0440 (https://www.python.org/dev/peps/pep-0440/)
+to format them.
+
+X.YaN   # Alpha release
+X.YbN   # Beta release
+X.YrcN  # Release Candidate
+X.Y     # Final release
+
+
+Release checklist
+=================
+
+#. Check for missing migrations::
+
+    make check-missing-migrations
+
+#. Synchronize translations::
+
+    make translations-pull
+
+#. Compile translations::
+
+    make translations-compile
+
+#. Update changelog.
+#. Write release notes.
+#. Scan the code with flake8 for simple style warnings.
+#. Check README.rst format with::
+
+    python setup.py check -r -s
+
+   or with::
+
+       make check-readme
+
+#. Bump version in ``mayan/__init__.py`` and ``docker/rootfs/version``::
+
+    make increase-version PART=<major, minor or micro>
+
+#. Update requirements version in ``setup.py`` using:
+   ::
+
+       make generate-setup
+
+#. Commit as version bump.
+#. Build source package and test:
+   ::
+
+       make test-sdist-via-docker-ubuntu
+
+#. Build wheel package and test:
+   ::
+
+       make test-wheel-via-docker-ubuntu
+
+#. Tag version:
+   ::
+
+       git tag -a vX.Y.Z -m "Version X.Y.Z"
+
+#. Generate set ``setup.py`` again to update the build number::
+
+    make generate-setup
+
+#. Commit the new ``setup.py`` file as "Update build number".
+
+#. Release the version using one of the two following methods: GitLab CI or
+   manual
+
+
+Release using GitLab CI using the makefile
+------------------------------------------
+
+#. Use of the GitLab makefile targets: ``gitlab-release-all``,
+   ``gitlab-release-docker``, ``gitlab-release-documentation``,
+   ``gitlab-release-python``.
+
+
+Release using GitLab CI manually
+--------------------------------
+
+#. Push the current brach:
+   ::
+
+       git push
+
+
+#. Push the new tags:
+   ::
+
+       git push --tags
+
+
+#. Delete the corresponding ``releases/`` branch:
+   ::
+
+       git push origin :releases/<branch>
+
+#. Push the current branch to the corresponding origin ``releases/`` branch:
+   ::
+
+       git push origin <local branch>:releases/<branch>
+
+
+Manual release
+--------------
+
+#. Build and upload a test release:
+   ::
+
+       make release-test-via-docker-ubuntu
+
+#. Build and upload a final release:
+   ::
+
+       make release-via-docker-ubuntu
+
+Other steps
+-----------
+
+#. Update the contrib/scripts/install/docker.sh values
+
+#. Upload contrib/scripts/install/docker.sh to https://get.mayan-edms.com

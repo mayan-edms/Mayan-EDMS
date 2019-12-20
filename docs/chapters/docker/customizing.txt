@@ -1,0 +1,21 @@
+=====================
+Customizing the image
+=====================
+
+If you just need to add a few Ubuntu or Python packages to your installation,
+you can use the following environment variables:
+
+``MAYAN_APT_INSTALLS``
+
+Specifies a list of Ubuntu .deb packages to be installed via APT when the
+container is first created. The installed packages are not lost when the image
+is stopped. Example: To install the Tesseract OCR language packs for German
+and Spanish add the following in your ``docker start`` command line::
+
+    -e MAYAN_APT_INSTALLS="tesseract-ocr-deu tesseract-ocr-spa"
+
+``MAYAN_PIP_INSTALLS``
+
+Specifies a list of Python packages to be installed via ``pip``. Packages will
+be downloaded from the Python Package Index (https://pypi.python.org) by
+default.
