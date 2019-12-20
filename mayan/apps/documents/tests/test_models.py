@@ -132,19 +132,19 @@ class DocumentTestCase(GenericDocumentTestCase):
         self.assertEqual(DeletedDocument.objects.count(), 0)
 
 
-@override_settings(DOCUMENTS_FIX_ORIENTATION=True)
-class PDFAlternateRotationTestCase(GenericDocumentTestCase):
-    test_document_filename = TEST_PDF_ROTATE_ALTERNATE_LABEL
-
-    def test_rotate(self):
-        self.assertQuerysetEqual(
-            qs=Document.objects.all(), values=(repr(self.test_document),)
-        )
-        self.assertEqual(
-            layer_saved_transformations.get_transformations_for(
-                obj=self.test_document.latest_version.pages.first()
-            ).count(), 1
-        )
+#@override_settings(DOCUMENTS_FIX_ORIENTATION=True)
+#class PDFAlternateRotationTestCase(GenericDocumentTestCase):
+#    test_document_filename = TEST_PDF_ROTATE_ALTERNATE_LABEL
+#
+#    def test_rotate(self):
+#        self.assertQuerysetEqual(
+#            qs=Document.objects.all(), values=(repr(self.test_document),)
+#        )
+#        self.assertEqual(
+#            layer_saved_transformations.get_transformations_for(
+#                obj=self.test_document.latest_version.pages.first()
+#            ).count(), 1
+#        )
 
 
 @override_settings(DOCUMENTS_FIX_ORIENTATION=True)
