@@ -4,6 +4,7 @@
   lock backend. Add version check to the Redis lock backend. GitLab
   issue #719. Thanks to Rob de Canha-Knight (@rssfed23) for the report and
   research.
+- Run Selenium tests in headless mode.
 
 3.3.6 (2019-12-19)
 ==================

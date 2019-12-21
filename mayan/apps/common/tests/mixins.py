@@ -7,6 +7,7 @@ import os
 import random
 
 from furl import furl
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.webdriver import WebDriver
 
 from django.apps import apps
@@ -326,7 +327,11 @@ class SeleniumTestMixin(object):
         super(SeleniumTestMixin, cls).setUpClass()
         cls.webdriver = None
         if not SeleniumTestMixin._get_skip_variable_value():
-            cls.webdriver = WebDriver(log_path='/dev/null')
+            options = Options()
+            options.add_argument('--headless')
+            cls.webdriver = WebDriver(
+                firefox_options=options, log_path='/dev/null'
+            )
 
     @classmethod
     def tearDownClass(cls):
