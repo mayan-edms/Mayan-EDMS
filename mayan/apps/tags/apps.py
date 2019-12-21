@@ -98,9 +98,6 @@ class TagsApp(MayanAppConfig):
             attribute='label', is_identifier=True, is_sortable=True,
             source=DocumentTag
         )
-        SourceColumn(
-            attribute='get_preview_widget', source=DocumentTag
-        )
 
         SourceColumn(
             source=Document, label=_('Tags'),

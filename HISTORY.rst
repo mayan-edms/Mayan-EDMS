@@ -5,6 +5,7 @@
   issue #719. Thanks to Rob de Canha-Knight (@rssfed23) for the report and
   research.
 - Run Selenium tests in headless mode.
+- Remove repeated document tags preview column.
 
 3.3.6 (2019-12-19)
 ==================
