@@ -1,3 +1,10 @@
+3.3.7 (2019-12-XX)
+==================
+- Use Python Redis client 3.3.11 to enable .client() method for the Redis
+  lock backend. Add version check to the Redis lock backend. GitLab
+  issue #719. Thanks to Rob de Canha-Knight (@rssfed23) for the report and
+  research.
+
 3.3.6 (2019-12-19)
 ==================
 - Make list toolbar stick to the top of the view when scrolling.

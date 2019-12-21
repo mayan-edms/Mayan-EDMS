@@ -2,10 +2,15 @@ from __future__ import unicode_literals
 
 import redis
 
+from django.utils.encoding import force_text
+
+from mayan.apps.dependencies.exceptions import DependenciesException
+
 from ..exceptions import LockError
 from ..settings import setting_backend_arguments
 
 from .base import LockingBackend
+from .literals import REDIS_LOCK_VERSION_REQUIRED
 
 
 class RedisLock(LockingBackend):
@@ -27,6 +32,14 @@ class RedisLock(LockingBackend):
         super(RedisLock, cls).purge_locks()
 
     def __init__(self, name, timeout):
+        if redis.VERSION < REDIS_LOCK_VERSION_REQUIRED:
+            raise DependenciesException(
+                'The Redis lock backend requires the Redis Python client '
+                'version {} or later.'.format(
+                    '.'.join(map(force_text, REDIS_LOCK_VERSION_REQUIRED))
+                )
+            )
+
         self.name = name
         redis_lock_instance = self.get_redis_connection().lock(
             name=name, timeout=timeout, sleep=0.1, blocking_timeout=0.1
