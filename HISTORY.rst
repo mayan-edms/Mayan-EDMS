@@ -7,6 +7,7 @@
 - Run Selenium tests in headless mode.
 - Remove repeated document tags preview column.
 - Remove cabinet links from the document cabinet list view.
+- Enable display of MissingItem class instances.
 
 3.3.6 (2019-12-19)
 ==================

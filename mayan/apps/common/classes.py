@@ -39,6 +39,14 @@ class MissingItem(object):
     def get_all(cls):
         return cls._registry
 
+    @classmethod
+    def get_missing(cls):
+        result = []
+        for item in cls.get_all():
+            if item.condition():
+                result.append(item)
+        return result
+
     def __init__(self, label, condition, description, view):
         self.label = label
         self.condition = condition
