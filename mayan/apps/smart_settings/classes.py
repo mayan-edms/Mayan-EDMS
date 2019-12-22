@@ -20,9 +20,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 
+from .literals import (
+    NAMESPACE_VERSION_INITIAL, SMART_SETTINGS_NAMESPACES_NAME
+)
+
 logger = logging.getLogger(__name__)
-NAMESPACE_VERSION_INITIAL = '0001'
-SMART_SETTINGS_NAMESPACES_NAME = 'SMART_SETTINGS_NAMESPACES'
 
 
 def read_configuration_file(filepath):
