@@ -6,13 +6,14 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018-2019
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 00:28-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-22 01:01-0400\n"
+"PO-Revision-Date: 2019-12-20 11:55+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -113,7 +114,7 @@ msgstr "Propriedades do documento editadas"
 
 #: events.py:22
 msgid "Document trashed"
-msgstr ""
+msgstr "Documento na lixeira"
 
 #: events.py:26
 msgid "Document type changed"
@@ -236,7 +237,7 @@ msgstr "Toma e move a extensão do arquivo para o final do seu nome, permitindo 
 
 #: handlers.py:33
 msgid "Document images"
-msgstr ""
+msgstr "Imagens do documento"
 
 #: links/document_links.py:23 links/document_links.py:67
 msgid "Clear transformations"
@@ -297,7 +298,7 @@ msgstr "Excluir"
 
 #: links/document_type_links.py:31
 msgid "Deletion policies"
-msgstr ""
+msgstr "Políticas de deleção"
 
 #: links/document_type_links.py:35 links/document_type_links.py:56
 msgid "Edit"
@@ -335,19 +336,19 @@ msgstr "Reverter"
 
 #: links/document_version_page_links.py:49
 msgid "Disable page"
-msgstr ""
+msgstr "Desabilitar página"
 
 #: links/document_version_page_links.py:54
 msgid "Disable pages"
-msgstr ""
+msgstr "Desabilitar páginas"
 
 #: links/document_version_page_links.py:61
 msgid "Enable page"
-msgstr ""
+msgstr "Habilitar página"
 
 #: links/document_version_page_links.py:66
 msgid "Enable pages"
-msgstr ""
+msgstr "Habilitar páginas"
 
 #: links/document_version_page_links.py:73
 msgid "First page"
@@ -443,7 +444,7 @@ msgstr "Todas as páginas"
 msgid ""
 "UUID of a document, universally Unique ID. An unique identifier generated "
 "for each document."
-msgstr ""
+msgstr "UUID de um documento, Universally Unique Identity - Identidade Universal Única. Um identificador único gerado para cada documento."
 
 #: models/document_models.py:49
 msgid "The name of the document."
@@ -610,7 +611,7 @@ msgstr "MIME type"
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
-msgstr ""
+msgstr "O encoding do arquivo da versão do documento: binary 7-bit, binary 8-bit, text, base64, etc."
 
 #: models/document_version_models.py:97
 msgid "Encoding"
@@ -746,7 +747,7 @@ msgstr "Verificar períodos na lixeira para tipo de documento"
 
 #: queues.py:59
 msgid "Delete document stubs"
-msgstr ""
+msgstr "Excluir rascunhos do documento"
 
 #: queues.py:71
 msgid "Update document page count"
@@ -758,61 +759,61 @@ msgstr "Carregar nova versão do documento"
 
 #: queues.py:79
 msgid "Scan document duplicates"
-msgstr ""
+msgstr "Varrer duplicados do documento"
 
 #: settings.py:26
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
-msgstr ""
+msgstr "O limiar a partir do qual o DOCUMENT_CACHE_STORAGE_BACKEND irá começar a apagar os mais antigos arquivos de imagem de cache de documentos. Especifique o tamanho em bytes."
 
 #: settings.py:34
 msgid ""
 "Path to the Storage subclass to use when storing the cached document image "
 "files."
-msgstr ""
+msgstr "Caminho para a subclasse de Storage que será usada para armazenar os arquivos de imagens de documento em cache."
 
 #: settings.py:42
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumentos a serem passados para DOCUMENT_CACHE_STORAGE_BACKEND."
 
 #: settings.py:48
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
-msgstr ""
+msgstr "Desabilita o primeiro nível de cache, que armazena versões originais e de alta resolução das páginas dos documentos."
 
 #: settings.py:55
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
-msgstr ""
+msgstr "Desabilita o segundo nível de cache que armazena versões de média  ou baixa resolução dos documentos, bem como versões transformadas (giradas, com zoom, etc.)."
 
 #: settings.py:69
 msgid "Maximum number of favorite documents to remember per user."
-msgstr ""
+msgstr "Número máximo de documentos favoritos por usuário."
 
 #: settings.py:75
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
 "corresponding rotation transformation to display it rightside up. This is an"
 " experimental feature and it is disabled by default."
-msgstr ""
+msgstr "Detecta a orientação de cada página do documento e cria uma transformação de rotação correspondente para exibí-lo com a orientação correta. Isso é uma funcionalidade experimental e está desabilitada por padrão."
 
 #: settings.py:84
 msgid ""
 "Size of blocks to use when calculating the document file's checksum. A value"
 " of 0 disables the block calculation and the entire file will be loaded into"
 " memory."
-msgstr ""
+msgstr "Tamanhos dos blocos a serem usados ao se calcular o checksum do arquivo do documento. Um valor 0 irá desabilitar o cálculo em blocos e todo arquivo será carregado na memória."
 
 #: settings.py:91
 msgid "Default documents language (in ISO639-3 format)."
-msgstr ""
+msgstr "Língua padrão do documento (em formato ISO639-3)."
 
 #: settings.py:95
 msgid "List of supported document languages. In ISO639-3 format."
-msgstr ""
+msgstr "Lista de idiomas de documento suportados. Em formato ISO639-3."
 
 #: settings.py:100
 msgid ""
@@ -936,7 +937,7 @@ msgstr "Total de páginas de documentos por mês"
 
 #: templates/documents/document_print.html:12
 msgid "Document page image preview"
-msgstr ""
+msgstr "Previsão da página do documento"
 
 #: templates/documents/forms/widgets/document_page_carousel.html:16
 #, python-format
@@ -948,16 +949,16 @@ msgstr ""
 
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
-msgstr ""
+msgstr "Não há páginas a exibir"
 
 #: templates/documents/forms/widgets/document_page_image.html:13
 msgid "Document image"
-msgstr ""
+msgstr "Imagem do documento"
 
 #: utils.py:26
 #, python-format
 msgid "Unknown language \"%s\""
-msgstr ""
+msgstr "Idioma desconhecido \"%s\""
 
 #: views/document_page_views.py:57
 msgid ""
@@ -1114,7 +1115,7 @@ msgstr ""
 
 #: views/document_views.py:96
 msgid "No documents available"
-msgstr ""
+msgstr "Não há documentos disponíveis"
 
 #: views/document_views.py:109
 #, python-format

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 00:26-0400\n"
+"POT-Creation-Date: 2019-12-22 00:59-0400\n"
 "PO-Revision-Date: 2019-12-04 16:43+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -23,11 +23,11 @@ msgstr ""
 msgid "Common"
 msgstr "Обобщение"
 
-#: classes.py:85
+#: classes.py:93
 msgid "Available attributes: \n"
 msgstr "Налични характеристики: \n"
 
-#: classes.py:125
+#: classes.py:133
 msgid "Available fields: \n"
 msgstr "Налични полета: \n"
 
@@ -348,30 +348,30 @@ msgstr "URL адрес на инсталацията или началната �
 msgid "A storage backend that all workers can use to share files."
 msgstr "Бекенд за съхранение, който всички работници могат да използват за споделяне на файлове."
 
-#: templatetags/common_tags.py:28
+#: templatetags/common_tags.py:29
 msgid "Confirm delete"
 msgstr "Потвърдете изтриване"
 
-#: templatetags/common_tags.py:33
+#: templatetags/common_tags.py:34
 #, python-format
 msgid "Edit %s"
 msgstr "Редактиране %s"
 
-#: templatetags/common_tags.py:36
+#: templatetags/common_tags.py:37
 msgid "Confirm"
 msgstr "Потвърждаване"
 
-#: templatetags/common_tags.py:40
+#: templatetags/common_tags.py:41
 #, python-format
 msgid "Details for: %s"
 msgstr "Подробности за: %s"
 
-#: templatetags/common_tags.py:44
+#: templatetags/common_tags.py:45
 #, python-format
 msgid "Edit: %s"
 msgstr "Редактиране: %s"
 
-#: templatetags/common_tags.py:47
+#: templatetags/common_tags.py:48
 msgid "Create"
 msgstr "Създаване"
 

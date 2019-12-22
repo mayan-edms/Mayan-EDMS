@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 00:27-0400\n"
-"PO-Revision-Date: 2019-12-05 10:07+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-22 01:00-0400\n"
+"PO-Revision-Date: 2019-12-20 12:43+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -308,7 +308,7 @@ msgstr "Reconstruire indice: %s"
 
 #: views.py:179
 msgid "Index queued for rebuild."
-msgstr ""
+msgstr "Index a fost pus în coadă pentru reconstrucție."
 
 #: views.py:191
 msgid "Available document types"

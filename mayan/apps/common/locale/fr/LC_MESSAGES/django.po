@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 00:26-0400\n"
+"POT-Creation-Date: 2019-12-22 00:59-0400\n"
 "PO-Revision-Date: 2019-12-08 19:01+0000\n"
 "Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -31,11 +31,11 @@ msgstr ""
 msgid "Common"
 msgstr "Commun"
 
-#: classes.py:85
+#: classes.py:93
 msgid "Available attributes: \n"
 msgstr "Attributs disponibles: \n"
 
-#: classes.py:125
+#: classes.py:133
 msgid "Available fields: \n"
 msgstr "Champs disponibles: \n"
 
@@ -356,30 +356,30 @@ msgstr "URL de l'installation ou de la page d'accueil du projet."
 msgid "A storage backend that all workers can use to share files."
 msgstr "Un espace de stockage que tous les agents pourront utiliser pour partager des fichiers."
 
-#: templatetags/common_tags.py:28
+#: templatetags/common_tags.py:29
 msgid "Confirm delete"
 msgstr "Confirmer la suppression"
 
-#: templatetags/common_tags.py:33
+#: templatetags/common_tags.py:34
 #, python-format
 msgid "Edit %s"
 msgstr "Modifié %s"
 
-#: templatetags/common_tags.py:36
+#: templatetags/common_tags.py:37
 msgid "Confirm"
 msgstr "Confirmer"
 
-#: templatetags/common_tags.py:40
+#: templatetags/common_tags.py:41
 #, python-format
 msgid "Details for: %s"
 msgstr "Détails pour : %s"
 
-#: templatetags/common_tags.py:44
+#: templatetags/common_tags.py:45
 #, python-format
 msgid "Edit: %s"
 msgstr "Modifier : %s"
 
-#: templatetags/common_tags.py:47
+#: templatetags/common_tags.py:48
 msgid "Create"
 msgstr "Créer"
 

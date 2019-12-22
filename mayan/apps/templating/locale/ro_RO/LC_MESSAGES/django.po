@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 00:31-0400\n"
+"POT-Creation-Date: 2019-12-22 01:04-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -32,6 +32,9 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " The {{ %(variable)s }} variable is available to the template."
 msgstr ""
+"Folosiți limba de șablonizare implicită a lui Django "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" Variabila {{%(variable)s}} este disponibilă pentru șablon."
 
 #: forms.py:11
 msgid "Resulting text from the evaluated template."
@@ -43,7 +46,7 @@ msgstr "Rezultat"
 
 #: forms.py:22
 msgid "The template string to be evaluated."
-msgstr ""
+msgstr "Șirul șablon care trebuie evaluat."
 
 #: forms.py:23
 msgid "Template"

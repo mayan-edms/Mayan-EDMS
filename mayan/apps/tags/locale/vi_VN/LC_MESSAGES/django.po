@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 00:31-0400\n"
+"POT-Creation-Date: 2019-12-22 01:03-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
@@ -18,13 +18,13 @@ msgstr ""
 "Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:51 apps.py:106 apps.py:113 apps.py:135 apps.py:137 events.py:7
+#: apps.py:51 apps.py:103 apps.py:110 apps.py:132 apps.py:134 events.py:7
 #: forms.py:17 links.py:25 menus.py:16 models.py:42 permissions.py:7
 #: views.py:222 workflow_actions.py:20 workflow_actions.py:68
 msgid "Tags"
 msgstr "Tags"
 
-#: apps.py:128 models.py:36
+#: apps.py:125 models.py:36
 msgid "Documents"
 msgstr "Tài liệu"
 

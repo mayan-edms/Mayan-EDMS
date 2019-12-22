@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 00:30-0400\n"
-"PO-Revision-Date: 2019-12-13 05:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-22 01:03-0400\n"
+"PO-Revision-Date: 2019-12-21 18:41+0000\n"
+"Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -212,7 +212,7 @@ msgstr "email IMAP"
 
 #: models/base.py:30
 msgid "A short text to describe this source."
-msgstr ""
+msgstr "Un court texte pour décrire cette source."
 
 #: models/base.py:31
 msgid "Label"
@@ -431,7 +431,7 @@ msgstr "Nom du périphérique"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr "Sélectionne le mode de balayage (par exemple, lineart, monochrome ou couleur). Si cette option n'est pas prise en charge par votre scanner, laissez-la vierge."
+msgstr "Sélectionne le mode de balayage (par exemple, linéaire, monochrome ou couleur). Si cette option n'est pas prise en charge par votre scanner, laissez-la vierge."
 
 #: models/scanner_sources.py:41
 msgid "Mode"

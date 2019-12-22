@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 00:25-0400\n"
-"PO-Revision-Date: 2019-12-03 05:20+0000\n"
+"POT-Creation-Date: 2019-12-22 00:58-0400\n"
+"PO-Revision-Date: 2019-12-22 05:04+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -205,22 +205,26 @@ msgid ""
 "            "
 msgstr "\n\nEspalhe a palavra! Fale com seus amigos e colegas sobre como o %(project_title)s é incrível!\nSiga-nos no <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, ou <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram%(icon_social_instagram)s</a>"
 
-#: templates/appearance/base.html:37 templates/appearance/base.html:47
+#: templates/appearance/base.html:35 templates/appearance/base.html:59
 msgid "Warning"
 msgstr "Advertência"
 
-#: templates/appearance/base.html:47
+#: templates/appearance/base.html:49
+msgid "Click here to fix this."
+msgstr ""
+
+#: templates/appearance/base.html:59
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr ""
 
-#: templates/appearance/base.html:60
+#: templates/appearance/base.html:72
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Ações"
 
-#: templates/appearance/base.html:62
+#: templates/appearance/base.html:74
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"

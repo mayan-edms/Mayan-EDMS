@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 00:30-0400\n"
-"PO-Revision-Date: 2019-12-13 05:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-22 01:03-0400\n"
+"PO-Revision-Date: 2019-12-20 12:48+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -208,7 +208,7 @@ msgstr "E-mail IMAP"
 
 #: models/base.py:30
 msgid "A short text to describe this source."
-msgstr ""
+msgstr "Un text scurt pentru a descrie această sursă."
 
 #: models/base.py:31
 msgid "Label"
@@ -315,7 +315,7 @@ msgstr "Numele atașamentului metadatelor"
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
+msgstr "Selectați un tip de metadate pentru a stoca valoarea subiectului e-mailului. Trebuie să fie un tip de metadată valabil pentru tipul de document selectat anterior."
 
 #: models/email_sources.py:64
 msgid "Subject metadata type"
@@ -325,7 +325,7 @@ msgstr "Tip de metadate subiect"
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
+msgstr "Selectați un tip de metadate pentru a stoca valoarea „de la” a e-mailului. Trebuie să fie un tip de metadată valabil pentru tipul de document selectat anterior."
 
 #: models/email_sources.py:72
 msgid "From metadata type"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 00:31-0400\n"
+"POT-Creation-Date: 2019-12-22 01:03-0400\n"
 "PO-Revision-Date: 2019-08-22 05:05+0000\n"
 "Last-Translator: Daler Abdulloev <abdulloevdaler@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -18,13 +18,13 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:51 apps.py:106 apps.py:113 apps.py:135 apps.py:137 events.py:7
+#: apps.py:51 apps.py:103 apps.py:110 apps.py:132 apps.py:134 events.py:7
 #: forms.py:17 links.py:25 menus.py:16 models.py:42 permissions.py:7
 #: views.py:222 workflow_actions.py:20 workflow_actions.py:68
 msgid "Tags"
 msgstr "Метки"
 
-#: apps.py:128 models.py:36
+#: apps.py:125 models.py:36
 msgid "Documents"
 msgstr "Документы"
 

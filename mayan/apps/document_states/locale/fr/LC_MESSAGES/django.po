@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 00:27-0400\n"
-"PO-Revision-Date: 2019-12-13 05:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-22 01:01-0400\n"
+"PO-Revision-Date: 2019-12-21 18:18+0000\n"
+"Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -201,7 +201,7 @@ msgstr "Transitions"
 
 #: links.py:156
 msgid "Create field"
-msgstr ""
+msgstr "Créer un champ"
 
 #: links.py:176
 msgid "Fields"
@@ -255,7 +255,7 @@ msgstr "Nom interne"
 
 #: models.py:58
 msgid "A short text to describe the workflow."
-msgstr ""
+msgstr "Un court texte pour décrire le flux de travail."
 
 #: models.py:71 models.py:270 models.py:420 models.py:525
 msgid "Workflow"
@@ -267,7 +267,7 @@ msgstr "État initial"
 
 #: models.py:273
 msgid "A short text to describe the workflow state."
-msgstr ""
+msgstr "Un court texte pour décrire l'état du flux de travail."
 
 #: models.py:279
 msgid ""
@@ -295,7 +295,7 @@ msgstr "États du flux de travail"
 
 #: models.py:355
 msgid "A short text describing the action."
-msgstr ""
+msgstr "Un court texte décrivant l'action."
 
 #: models.py:362
 msgid "At which moment of the state this action will execute."
@@ -327,7 +327,7 @@ msgstr "Type d'action inconnu"
 
 #: models.py:423
 msgid "A short text to describe the transition."
-msgstr ""
+msgstr "Un court texte pour décrire la transition."
 
 #: models.py:428
 msgid "Origin state"
@@ -973,7 +973,7 @@ msgstr ""
 
 #: workflow_actions.py:150
 msgid "Headers"
-msgstr ""
+msgstr "En-têtes"
 
 #: workflow_actions.py:153
 msgid ""
@@ -991,9 +991,9 @@ msgstr "Effectuer une requête POST"
 #: workflow_actions.py:193
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
-msgstr ""
+msgstr "%(field_name)s erreur JSON : %(exception)s"
 
 #: workflow_actions.py:209
 #, python-format
 msgid "%(field_name)s template error: %(exception)s"
-msgstr ""
+msgstr "%(field_name)s erreur de modèle : %(exception)s"

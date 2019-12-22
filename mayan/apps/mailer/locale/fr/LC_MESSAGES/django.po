@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-18 00:29-0400\n"
-"PO-Revision-Date: 2019-12-13 05:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-22 01:02-0400\n"
+"PO-Revision-Date: 2019-12-21 18:35+0000\n"
+"Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +74,7 @@ msgstr "Profil de la liste de diffusion"
 
 #: forms.py:77
 msgid "The driver to use when sending emails."
-msgstr ""
+msgstr "Le pilote à utiliser pour envoyer les mails."
 
 #: forms.py:78
 msgid "Backend"
@@ -180,7 +180,7 @@ msgstr "Utiliser TLS"
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr "Faut-li utiliser une connexion TLS (sécurisée) pour dialoguer avec le serveur SMTP. Ce paramètre est utilisé pour les connexions TLS explicites, généralement sur le port 587."
+msgstr "Faut-il utiliser une connexion TLS (sécurisée) pour dialoguer avec le serveur SMTP. Ce paramètre est utilisé pour les connexions TLS explicites, généralement sur le port 587."
 
 #: mailers.py:52
 msgid "Use SSL"
@@ -368,7 +368,7 @@ msgstr "%(count)d documents dans la file d'attente pour envoi par courriel"
 
 #: views.py:63
 msgid "Send"
-msgstr "Envoyé"
+msgstr "Envoyer"
 
 #: views.py:109
 #, python-format
@@ -448,7 +448,7 @@ msgstr ""
 
 #: workflow_actions.py:59
 msgid "Send email"
-msgstr ""
+msgstr "Envoyer le courriel"
 
 #: workflow_actions.py:74
 #, python-format
