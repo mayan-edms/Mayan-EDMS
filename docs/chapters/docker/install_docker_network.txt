@@ -46,7 +46,9 @@ port of 5432 for this installation.
        --maxmemory-policy \
        allkeys-lru \
        --save \
-       ""
+       "" \
+       --requirepass mayanredispassword
+
 
 #. Launch the Mayan EDMS container with the network option and change the
    database hostname to the PostgreSQL container name (``mayan-edms-postgres``)
@@ -61,7 +63,7 @@ port of 5432 for this installation.
        --restart=always \
        -p 80:8000 \
        -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'mayan-edms-postgres'}}" \
-       -e MAYAN_CELERY_BROKER_URL="redis://mayan-edms-redis:6379/0" \
-       -e MAYAN_CELERY_RESULT_BACKEND="redis://mayan-edms-redis:6379/1" \
+       -e MAYAN_CELERY_BROKER_URL="redis://:mayanredispassword@mayan-edms-redis:6379/0" \
+       -e MAYAN_CELERY_RESULT_BACKEND="redis://:mayanredispassword@mayan-edms-redis:6379/1" \
        -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
        mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|

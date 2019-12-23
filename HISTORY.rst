@@ -10,6 +10,9 @@
 - Enable display of MissingItem class instances.
 - Add tests for the common.http.URL class.
 - Update FAQ and troubleshooting chapters.
+- Update Docker installer, sample docker-compose file and documentation to
+  add a password to the Redis container. GitLab issue #712. Thanks to
+  Matthew Thode (@prometheanfire) for the report.
 
 3.3.6 (2019-12-19)
 ==================
