@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+import os
+
 from django.conf import settings
 from django.utils.encoding import force_bytes
 
@@ -35,6 +37,15 @@ class SmartSettingsTestCaseMixin(object):
     def setUp(self):
         super(SmartSettingsTestCaseMixin, self).setUp()
         Namespace.invalidate_cache_all()
+
+        with NamedTemporaryFile(delete=False) as self.test_setting_config_file_object:
+            settings.CONFIGURATION_FILEPATH = self.test_setting_config_file_object.name
+            os.environ['MAYAN_CONFIGURATION_FILEPATH'] = self.test_setting_config_file_object.name
+            Setting._config_file_cache = None
+
+    def tearDown(self):
+        fs_cleanup(filename=self.test_setting_config_file_object.name)
+        super(SmartSettingsTestCaseMixin, self).tearDown()
 
 
 class SmartSettingTestMixin(EnvironmentTestCaseMixin):
