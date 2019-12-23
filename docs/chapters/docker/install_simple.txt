@@ -73,6 +73,7 @@ Simple Docker installation
        --name mayan-edms-redis \
        --restart=always \
        -p 6379:6379 \
+       -v /docker-volumes/mayan-edms/redis:/data \
        |DOCKER_REDIS_IMAGE_VERSION| \
        redis-server \
        --databases \

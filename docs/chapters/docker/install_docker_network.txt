@@ -39,6 +39,7 @@ port of 5432 for this installation.
        -d \
        --name mayan-edms-redis \
        --network=mayan \
+       -v /docker-volumes/mayan-edms/redis:/data \
        |DOCKER_REDIS_IMAGE_VERSION| \
        redis-server \
        --databases \
