@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-22 01:00-0400\n"
-"PO-Revision-Date: 2019-12-05 10:07+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-23 00:38-0400\n"
+"PO-Revision-Date: 2019-12-22 21:52+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: forms.py:34
 msgid "Template"
-msgstr ""
+msgstr "Template"
 
 #: handlers.py:20
 msgid "Creation date"

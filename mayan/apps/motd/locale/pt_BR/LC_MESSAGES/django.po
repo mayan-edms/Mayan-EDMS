@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-22 01:02-0400\n"
-"PO-Revision-Date: 2018-12-28 00:06+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>\n"
+"POT-Creation-Date: 2019-12-23 00:40-0400\n"
+"PO-Revision-Date: 2019-12-22 21:37+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -44,7 +45,7 @@ msgstr "Breve descrição da mensagem"
 
 #: models.py:18
 msgid "Label"
-msgstr "Label"
+msgstr "Rótulo"
 
 #: models.py:21
 msgid "The actual message to be displayed."
@@ -56,7 +57,7 @@ msgstr "Mensagem"
 
 #: models.py:24
 msgid "Enabled"
-msgstr "habilitado"
+msgstr "Habilitado"
 
 #: models.py:27
 msgid "Date and time after which this message will be displayed."
@@ -113,8 +114,8 @@ msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
-msgstr ""
+msgstr "Mensagens são exibidas na tela de login. Você pode usar mensagens para transmitir informações sobre sua organização, anúncios ou orientações para seus usuários."
 
 #: views.py:79
 msgid "No messages available"
-msgstr ""
+msgstr "Nenhuma mensagem disponível"

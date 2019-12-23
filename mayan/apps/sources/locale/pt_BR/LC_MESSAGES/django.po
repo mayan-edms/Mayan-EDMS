@@ -6,14 +6,15 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-22 01:03-0400\n"
-"PO-Revision-Date: 2019-12-13 05:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-23 00:41-0400\n"
+"PO-Revision-Date: 2019-12-22 21:41+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,11 +62,11 @@ msgstr "Mensagem"
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
-msgstr ""
+msgstr "Funcionalidade fornecida pelo pacote SANE. Usada para controlar o scanner e obter a imagem escaneada do documento."
 
 #: forms.py:27
 msgid "An optional comment to explain the upload."
-msgstr ""
+msgstr "Um comentário adicional para explicar o upload.'"
 
 #: forms.py:28
 msgid "Comment"
@@ -117,7 +118,7 @@ msgstr "Adicionar nova fonte webform"
 
 #: links.py:91
 msgid "Add new SANE scanner"
-msgstr ""
+msgstr "Adicionar novo scanner SANE"
 
 #: links.py:97 links.py:114
 msgid "Delete"
@@ -145,27 +146,27 @@ msgstr "Verifique agora"
 
 #: literals.py:18
 msgid "Flatbed"
-msgstr ""
+msgstr "Mesa"
 
 #: literals.py:19
 msgid "Document feeder"
-msgstr ""
+msgstr "Alimentador de documentos"
 
 #: literals.py:26
 msgid "Simplex"
-msgstr ""
+msgstr "Simplex"
 
 #: literals.py:27
 msgid "Duplex"
-msgstr ""
+msgstr "Duplex"
 
 #: literals.py:35
 msgid "Lineart"
-msgstr ""
+msgstr "Lineart"
 
 #: literals.py:36
 msgid "Monochrome"
-msgstr ""
+msgstr "Monocromático"
 
 #: literals.py:37
 msgid "Color"
@@ -185,7 +186,7 @@ msgstr "Pergunte ao usuário"
 
 #: literals.py:63
 msgid "Scanner"
-msgstr ""
+msgstr "Scanner"
 
 #: literals.py:64 models/webform_sources.py:42
 msgid "Web form"
@@ -209,7 +210,7 @@ msgstr "E-mail IMAP"
 
 #: models/base.py:30
 msgid "A short text to describe this source."
-msgstr ""
+msgstr "Um texto curto para descrever essa fonte"
 
 #: models/base.py:31
 msgid "Label"
@@ -306,7 +307,7 @@ msgstr "Senha"
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
-msgstr ""
+msgstr "Nome do anexo que irá conter os nomes dos tipos de metadados e os pares de valor a serem atribuídos aos demais anexos baixados."
 
 #: models/email_sources.py:56
 msgid "Metadata attachment name"
