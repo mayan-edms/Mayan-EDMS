@@ -153,6 +153,25 @@ And then execute the command::
     |MAYAN_BIN| createsuperuser
 
 
+Python
+======
+
+How to upgrade an existing Python 2 virtualenv
+----------------------------------------------
+
+Use::
+
+    virtualenv <existing directory> -p <Python 3 binary path>
+
+If you followed the deployment instructions, the command line would be::
+
+    virtualenv /opt/mayan-edms -p /usr/bin/python3
+
+If using a dedicated user account for Mayan EDMS::
+
+    sudo -u mayan virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
 Watchfolders
 ============
 
@@ -204,6 +223,20 @@ For more information check the
 :django-docs:`howto/static-files/`
 
 
+Text encoding
+=============
+
+Error: ``UnicodeEncodeError: 'ascii' codec can't encode characters in position ...``
+------------------------------------------------------------------------------------
+
+The operating system locale must support the Unicode character set. For Debian
+base distributions, modify the locale file ``/etc/default/locale``:
+
+    LANG="en_US.UTF-8"
+    LC_ALL="en_US.UTF-8"
+
+
+
 Other
 =====
 
@@ -230,3 +263,5 @@ Example::
 Reference:
 
 - http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html
+
+

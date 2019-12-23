@@ -8,6 +8,13 @@ Non technical
 Contact
 -------
 
+I need support/consultation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Support subscriptions plans and information about level three (L3) support
+and consultation contracts is available at: https://www.mayan-edms.com/support/
+
+
 Can I contact members of the development team?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -64,7 +71,7 @@ open with no resolution are:
 - We are not able to reproduce the issue. We need to be able to recreate the
   conditions that trigger the issue so that we can pinpoint the cause. After that
   we create a test to make sure the issue is really fixed. Some issues can
-  be triggered manually easily but are hard to trigger programatically.
+  be triggered manually easily but are hard to trigger in a programmatic manner.
 - The issue is not clearly explained. Issue descriptions like: "It doesn't work",
   or "It showed an error but I forgot to write it down" are almost impossible to
   resolve.
@@ -211,21 +218,3 @@ Does Mayan EDMS work with Python 3?
 
 Yes, version 3.3 ships with Python 3.7 support. Support for Python 2 will
 be removed in version 4.0.
-
-
-How to upgrade an existing Python 2 virtualenv
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Use::
-
-    virtualenv <existing directory> -p <Python 3 binary path>
-
-If you followed the deployment instructions, the command line would be::
-
-    virtualenv /opt/mayan-edms -p /usr/bin/python3
-
-If using a dedicated user account for Mayan EDMS::
-
-    sudo -u <username> virtualenv /opt/mayan-edms -p /usr/bin/python3
-
-

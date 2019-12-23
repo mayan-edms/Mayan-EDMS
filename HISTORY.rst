@@ -9,6 +9,7 @@
 - Remove cabinet links from the document cabinet list view.
 - Enable display of MissingItem class instances.
 - Add tests for the common.http.URL class.
+- Update FAQ and troubleshooting chapters.
 
 3.3.6 (2019-12-19)
 ==================
