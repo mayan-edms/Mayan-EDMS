@@ -4,7 +4,7 @@
 ![license][license]
 [![Docker pulls](https://img.shields.io/docker/pulls/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
 [![Docker Stars](https://img.shields.io/docker/stars/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
-[![Commits][pypicommits]][commits-url]
+[![Commits][commits]][commits-url]
 
 
 [pypi]: https://img.shields.io/pypi/v/mayan-edms.svg
