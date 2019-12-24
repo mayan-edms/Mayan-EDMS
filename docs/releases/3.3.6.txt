@@ -12,8 +12,8 @@ Compressed files
 ^^^^^^^^^^^^^^^^
 
 Zip files only support UTF-8 and CP437 encoding for filenames. This is not
-strongly enforce and some software creates zip files with other text
-encoding. The ZipArchive class was updated to work with badly encoded
+strongly enforced and some software products create Zip files with other
+text encodings. The ZipArchive class was updated to work with badly encoded
 filenames instead of raising an error.
 
 
