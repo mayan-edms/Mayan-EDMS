@@ -4,10 +4,11 @@
 ![license][license]
 [![Docker pulls](https://img.shields.io/docker/pulls/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
 [![Docker Stars](https://img.shields.io/docker/stars/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
+[![Commits][pypicommits]][commits-url]
 
 
-[pypi]: http://img.shields.io/pypi/v/mayan-edms.svg
-[pypi-url]: http://badge.fury.io/py/mayan-edms
+[pypi]: https://img.shields.io/pypi/v/mayan-edms.svg
+[pypi-url]: https://pypi.org/project/mayan-edms/
 
 [builds]: https://gitlab.com/mayan-edms/mayan-edms/badges/master/build.svg
 [builds-url]: https://gitlab.com/mayan-edms/mayan-edms/pipelines
@@ -19,7 +20,10 @@
 [python-url]: https://img.shields.io/pypi/l/mayan-edms.svg?style=flat
 
 [license]: https://img.shields.io/pypi/l/mayan-edms.svg?style=flat
-[license-url]: https://img.shields.io/pypi/l/mayan-edms.svg?style=flat
+[license-url]: https://gitlab.com/mayan-edms/mayan-edms/blob/master/LICENSE
+
+[commits]:  https://img.shields.io/github/commit-activity/y/mayan-edms/mayan-edms.svg
+[commits-url]: https://gitlab.com/mayan-edms/mayan-edms/
 
 
 <div align="center">
