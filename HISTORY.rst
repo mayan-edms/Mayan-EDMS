@@ -15,6 +15,7 @@
   Matthew Thode (@prometheanfire) for the report.
 - Use a fake config file during tests.
 - Update Django to version 1.11.27.
+- Add password to the Redis container for the staging Docker targets.
 
 3.3.6 (2019-12-19)
 ==================
