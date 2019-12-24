@@ -14,6 +14,7 @@
   add a password to the Redis container. GitLab issue #712. Thanks to
   Matthew Thode (@prometheanfire) for the report.
 - Use a fake config file during tests.
+- Update Django to version 1.11.27.
 
 3.3.6 (2019-12-19)
 ==================
