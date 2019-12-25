@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.test import TestCase
+from django.test import TestCase, TransactionTestCase
 
 from mayan.apps.acls.tests.mixins import ACLTestCaseMixin
 from mayan.apps.converter.tests.mixins import LayerTestCaseMixin
@@ -19,16 +19,28 @@ from .mixins import (
 )
 
 
-class BaseTestCase(
+class BaseTestCaseMixin(
     LayerTestCaseMixin, SilenceLoggerTestCaseMixin,
     ConnectionsCheckTestCaseMixin, DownloadTestCaseMixin,
     RandomPrimaryKeyModelMonkeyPatchMixin, ACLTestCaseMixin,
     ModelTestCaseMixin, OpenFileCheckTestCaseMixin, PermissionTestCaseMixin,
     SmartSettingsTestCaseMixin, TempfileCheckTestCasekMixin, UserTestMixin,
-    TestCase
 ):
     """
-    This is the most basic test case class any test in the project should use.
+    This is the most basic test case mixin class any test in the project
+    should use.
+    """
+
+
+class BaseTestCase(BaseTestCaseMixin, TransactionTestCase):
+    """
+    All the project test mixin on top of Django test case class.
+    """
+
+
+class BaseTransactionTestCase(BaseTestCaseMixin, TransactionTestCase):
+    """
+    All the project test mixin on top of Django transaction test case class.
     """
 
 

@@ -16,6 +16,7 @@
 - Use a fake config file during tests.
 - Update Django to version 1.11.27.
 - Add password to the Redis container for the staging Docker targets.
+- Add new test case BaseTransactionTestCase.
 
 3.3.6 (2019-12-19)
 ==================
