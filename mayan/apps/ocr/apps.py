@@ -22,7 +22,7 @@ from .events import (
     event_ocr_document_version_submit
 )
 from .handlers import (
-    handler_index_document, handler_initialize_new_ocr_settings,
+    handler_index_document_version, handler_initialize_new_ocr_settings,
     handler_ocr_document_version,
 )
 from .links import (
@@ -176,7 +176,7 @@ class OCRApp(MayanAppConfig):
 
         post_document_version_ocr.connect(
             dispatch_uid='ocr_handler_index_document',
-            receiver=handler_index_document,
+            receiver=handler_index_document_version,
             sender=DocumentVersion
         )
         post_save.connect(

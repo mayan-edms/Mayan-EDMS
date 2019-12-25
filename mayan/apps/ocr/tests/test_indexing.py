@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.common.tests.base import BaseTransactionTestCase
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.document_indexing.models import Index, IndexInstanceNode
 from mayan.apps.document_indexing.tests.literals import TEST_INDEX_LABEL
@@ -10,16 +10,16 @@ from .literals import (
 )
 
 
-class OCRIndexingTestCase(DocumentTestMixin, BaseTestCase):
+class OCRIndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
     auto_upload_document = False
 
     def test_ocr_indexing(self):
-        index = Index.objects.create(label=TEST_INDEX_LABEL)
+        self.test_index = Index.objects.create(label=TEST_INDEX_LABEL)
 
-        index.document_types.add(self.test_document_type)
+        self.test_index.document_types.add(self.test_document_type)
 
-        root = index.template_root
-        index.node_templates.create(
+        root = self.test_index.template_root
+        self.test_index.node_templates.create(
             parent=root, expression=TEST_OCR_INDEX_NODE_TEMPLATE,
             link_documents=True
         )

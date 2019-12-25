@@ -21,6 +21,8 @@
   based on file metadata properties. Improves GitLab issue #720 on the
   signal commit side of the indexing. Thanks to Rob de Canha-Knight (@rssfed23)
   for the report and debug information.
+- Replicate transaction handling improvements from the file metadata app to
+  the OCR and document parsing apps.
 
 3.3.6 (2019-12-19)
 ==================
