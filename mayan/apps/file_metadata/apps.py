@@ -11,7 +11,6 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
     menu_tools
 )
-from mayan.apps.document_indexing.handlers import handler_index_document
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.events.classes import ModelEventType
@@ -24,6 +23,7 @@ from .events import (
     event_file_metadata_document_version_submit
 )
 from .handlers import (
+    handler_index_document_version,
     handler_initialize_new_document_type_settings,
     handler_process_document_version
 )
@@ -199,6 +199,6 @@ class FileMetadataApp(MayanAppConfig):
         )
         post_document_version_file_metadata_processing.connect(
             dispatch_uid='file_metadata_handler_index_document',
-            receiver=handler_index_document,
+            receiver=handler_index_document_version,
             sender=DocumentVersion
         )

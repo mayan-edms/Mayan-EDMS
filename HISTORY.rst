@@ -17,6 +17,10 @@
 - Update Django to version 1.11.27.
 - Add password to the Redis container for the staging Docker targets.
 - Add new test case BaseTransactionTestCase.
+- Improve file metadata driver database registration. Improve indexing
+  based on file metadata properties. Improves GitLab issue #720 on the
+  signal commit side of the indexing. Thanks to Rob de Canha-Knight (@rssfed23)
+  for the report and debug information.
 
 3.3.6 (2019-12-19)
 ==================
