@@ -32,7 +32,7 @@ class BaseTestCaseMixin(
     """
 
 
-class BaseTestCase(BaseTestCaseMixin, TransactionTestCase):
+class BaseTestCase(BaseTestCaseMixin, TestCase):
     """
     All the project test mixin on top of Django test case class.
     """
