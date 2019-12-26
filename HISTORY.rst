@@ -25,6 +25,9 @@
   the OCR and document parsing apps.
 - Initialize indexes in a predictable way. Solves GitLab issue #720 Thanks
   to Rob de Canha-Knight (@rssfed23) for the report and debug information.
+- Make file metadata StoredDriver fields unique. Relates to GitLab issue #720
+  Thanks to Rob de Canha-Knight (@rssfed23) for the report and debug
+  information.
 
 3.3.6 (2019-12-19)
 ==================
