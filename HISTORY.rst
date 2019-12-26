@@ -23,6 +23,8 @@
   for the report and debug information.
 - Replicate transaction handling improvements from the file metadata app to
   the OCR and document parsing apps.
+- Initialize indexes in a predictable way. Solves GitLab issue #720 Thanks
+  to Rob de Canha-Knight (@rssfed23) for the report and debug information.
 
 3.3.6 (2019-12-19)
 ==================

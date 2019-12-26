@@ -273,8 +273,9 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
             ), ['', '{{ document.metadata_value_of.test }}']
         )
 
-        # There should be no index instances
-        self.assertEqual(list(IndexInstanceNode.objects.all()), [])
+        # There should be only a root index instances nodes
+        self.assertEqual(IndexInstanceNode.objects.count(), 1)
+        self.assertEqual(IndexInstanceNode.objects.first().parent, None)
 
         # Rebuild all indexes
         Index.objects.rebuild()
