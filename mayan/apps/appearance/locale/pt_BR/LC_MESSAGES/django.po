@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:37-0400\n"
-"PO-Revision-Date: 2019-12-22 13:49+0000\n"
+"POT-Creation-Date: 2019-12-30 02:26-0400\n"
+"PO-Revision-Date: 2019-12-26 18:49+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -51,7 +51,7 @@ msgstr "jQuery"
 
 #: dependencies.py:43
 msgid "JQuery Form"
-msgstr "JQuery Form"
+msgstr "jQuery Form"
 
 #: dependencies.py:47
 msgid "jQuery Lazy Load"
@@ -75,7 +75,7 @@ msgstr "URI.js"
 
 #: settings.py:14
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr "Número máximo de caracteres que serão mostrados como o título da vista."
+msgstr "Número máximo de caracteres que serão mostrados como o título da tela ou visualização."
 
 #: settings.py:21
 msgid ""
@@ -128,7 +128,7 @@ msgstr "Versão"
 #: templates/appearance/about.html:84
 #, python-format
 msgid "Build number: %(build_number)s"
-msgstr "Número de compilação: %(build_number)s"
+msgstr "Número de build: %(build_number)s"
 
 #: templates/appearance/about.html:97
 msgid "Released under the license:"
@@ -252,13 +252,13 @@ msgstr "Não"
 #: templates/appearance/generic_form_subtemplate.html:50
 #: templates/appearance/generic_multiform_subtemplate.html:37
 msgid "required"
-msgstr "obirgatório"
+msgstr "obrigatório"
 
 #: templates/appearance/generic_form_subtemplate.html:83
 #: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Save"
-msgstr "Salvar"
+msgstr "Gravar"
 
 #: templates/appearance/generic_form_subtemplate.html:83
 #: templates/appearance/generic_form_subtemplate.html:96

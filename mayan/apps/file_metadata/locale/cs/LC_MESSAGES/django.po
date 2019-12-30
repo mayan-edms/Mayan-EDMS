@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:39-0400\n"
+"POT-Creation-Date: 2019-12-30 02:29-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -98,72 +98,72 @@ msgstr "Vraťte zadanou položku metadat souboru verze dokumentu."
 msgid "Driver path"
 msgstr "Cesta ovladače"
 
-#: models.py:25
+#: models.py:26
 msgid "Internal name"
 msgstr "Vnitřní název"
 
-#: models.py:30 models.py:74
+#: models.py:31 models.py:75
 msgid "Driver"
 msgstr "Ovladač"
 
-#: models.py:31
+#: models.py:32
 msgid "Drivers"
 msgstr "Ovladače"
 
-#: models.py:51
+#: models.py:52
 msgid "Document type"
 msgstr "Typ dokumentu"
 
-#: models.py:55
+#: models.py:56
 msgid "Automatically queue newly created documents for processing."
 msgstr ""
 "Automaticky zařazuje nově vytvořené dokumenty do fronty ke zpracování."
 
-#: models.py:62
+#: models.py:63
 msgid "Document type settings"
 msgstr "Nastavení typu dokumentu"
 
-#: models.py:63
+#: models.py:64
 msgid "Document types settings"
 msgstr "Nastavení typů dokumentů"
 
-#: models.py:78
+#: models.py:79
 msgid "Document version"
 msgstr "Verze dokumentu"
 
-#: models.py:84 models.py:100
+#: models.py:85 models.py:101
 msgid "Document version driver entry"
 msgstr "Záznam ovladače verze dokumentu"
 
-#: models.py:85
+#: models.py:86
 msgid "Document version driver entries"
 msgstr "Položky ovladače verze dokumentu"
 
-#: models.py:92
+#: models.py:93
 msgid "Attribute count"
 msgstr "Počet atributů"
 
-#: models.py:104
+#: models.py:105
 msgid "Name of the file metadata entry."
 msgstr "Název položky metadat souboru."
 
-#: models.py:105
+#: models.py:106
 msgid "Key"
 msgstr "Klíč"
 
-#: models.py:108
+#: models.py:109
 msgid "Value of the file metadata entry."
 msgstr "Hodnota položky metadat souboru."
 
-#: models.py:109
+#: models.py:110
 msgid "Value"
 msgstr "Hodnota"
 
-#: models.py:114
+#: models.py:115
 msgid "File metadata entry"
 msgstr "Položka metadat souboru "
 
-#: models.py:115
+#: models.py:116
 msgid "File metadata entries"
 msgstr "Položky metadat souboru "
 

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:37-0400\n"
+"POT-Creation-Date: 2019-12-30 02:26-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -48,7 +48,7 @@ msgstr "Senha"
 
 #: models.py:21
 msgid "Password hash"
-msgstr "Senha hash"
+msgstr "Hash da senha"
 
 #: models.py:27
 msgid "Autoadmin properties"
@@ -56,7 +56,7 @@ msgstr "Propriedades Autoadmin"
 
 #: settings.py:14
 msgid "Sets the email of the automatically created super user account."
-msgstr "Define o email da conta de super usuário criada automaticamente."
+msgstr "Define o e-mail da conta de super usuário criada automaticamente."
 
 #: settings.py:20
 msgid ""

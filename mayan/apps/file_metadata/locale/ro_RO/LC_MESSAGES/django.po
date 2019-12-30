@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:39-0400\n"
+"POT-Creation-Date: 2019-12-30 02:29-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -104,71 +104,71 @@ msgstr ""
 msgid "Driver path"
 msgstr "Calea driver-ului"
 
-#: models.py:25
+#: models.py:26
 msgid "Internal name"
 msgstr "Nume intern"
 
-#: models.py:30 models.py:74
+#: models.py:31 models.py:75
 msgid "Driver"
 msgstr "Program driver"
 
-#: models.py:31
+#: models.py:32
 msgid "Drivers"
 msgstr "Programe driver"
 
-#: models.py:51
+#: models.py:52
 msgid "Document type"
 msgstr "Tipul documentului"
 
-#: models.py:55
+#: models.py:56
 msgid "Automatically queue newly created documents for processing."
 msgstr "Trimitere automată a documentelor nou create la procesare."
 
-#: models.py:62
+#: models.py:63
 msgid "Document type settings"
 msgstr "Setările tipului de document"
 
-#: models.py:63
+#: models.py:64
 msgid "Document types settings"
 msgstr "Setările pentru tipurile de documente"
 
-#: models.py:78
+#: models.py:79
 msgid "Document version"
 msgstr "Versiune document"
 
-#: models.py:84 models.py:100
+#: models.py:85 models.py:101
 msgid "Document version driver entry"
 msgstr "Înregistrare driver de versiune de document"
 
-#: models.py:85
+#: models.py:86
 msgid "Document version driver entries"
 msgstr "Înregistrări driver de versiune de document"
 
-#: models.py:92
+#: models.py:93
 msgid "Attribute count"
 msgstr "Număr de atribute"
 
-#: models.py:104
+#: models.py:105
 msgid "Name of the file metadata entry."
 msgstr "Numele înregistrării metadatelor fișierului."
 
-#: models.py:105
+#: models.py:106
 msgid "Key"
 msgstr "Cheie"
 
-#: models.py:108
+#: models.py:109
 msgid "Value of the file metadata entry."
 msgstr "Valoarea intrării de metadate a fișierului."
 
-#: models.py:109
+#: models.py:110
 msgid "Value"
 msgstr "Valoare"
 
-#: models.py:114
+#: models.py:115
 msgid "File metadata entry"
 msgstr "Înregistrare metadate fișier"
 
-#: models.py:115
+#: models.py:116
 msgid "File metadata entries"
 msgstr "Înregistrări de metadate în fișier"
 

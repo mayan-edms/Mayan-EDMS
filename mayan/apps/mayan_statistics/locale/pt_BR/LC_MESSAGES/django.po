@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:40-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-30 02:30-0400\n"
+"PO-Revision-Date: 2019-12-26 19:10+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +32,7 @@ msgstr "Programação"
 
 #: apps.py:36
 msgid "Last update"
-msgstr ""
+msgstr "Última atualização"
 
 #: classes.py:150
 msgid "Never"
@@ -39,7 +40,7 @@ msgstr "Nunca"
 
 #: links.py:12
 msgid "Queue"
-msgstr "Programar"
+msgstr "Enfileirar"
 
 #: links.py:17
 msgid "View"
@@ -51,13 +52,13 @@ msgstr "Detalhes da categoria"
 
 #: links.py:27
 msgid "Namespace list"
-msgstr "Lista de categorias"
+msgstr "Lista de namespace"
 
 #. Translators: 'Slug' refers to the URL valid ID of the statistic
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
 #: models.py:14
 msgid "Slug"
-msgstr "Identificador"
+msgstr "Slug"
 
 #: models.py:16
 msgid "Date time"
@@ -81,20 +82,20 @@ msgstr "Visualizar estatísticas"
 
 #: queues.py:13
 msgid "Execute statistic"
-msgstr ""
+msgstr "Exectutar estatísticas"
 
 #: templates/statistics/renderers/chartjs/line.html:14
 msgid "No data available."
-msgstr ""
+msgstr "Não há dados disponíveis"
 
 #: templates/statistics/renderers/chartjs/line.html:16
 #, python-format
 msgid "Last update: %(datetime)s"
-msgstr ""
+msgstr "Última atualização: %(datetime)s"
 
 #: views.py:17
 msgid "Statistics namespaces"
-msgstr "Estatística de categorias"
+msgstr "Namespaces de estatísticas"
 
 #: views.py:33
 #, python-format
@@ -114,9 +115,9 @@ msgstr "Estatística \"%s\" não encontrada."
 #: views.py:80
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
-msgstr "Programar estatística \"%s\" para ser executada?"
+msgstr "Enfileirar estatística \"%s\" para ser executada?"
 
 #: views.py:94
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
-msgstr ""
+msgstr "A estatística \"%s\" foi enfileirada com sucesso para atualização."

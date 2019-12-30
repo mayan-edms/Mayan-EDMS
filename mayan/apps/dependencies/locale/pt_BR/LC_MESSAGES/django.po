@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:38-0400\n"
+"POT-Creation-Date: 2019-12-30 02:27-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -64,7 +64,7 @@ msgstr "Ambiente"
 
 #: apps.py:64 classes.py:195
 msgid "Check"
-msgstr "Checar"
+msgstr "Verificar"
 
 #: classes.py:68
 msgid ""
@@ -134,7 +134,7 @@ msgstr "Nome"
 
 #: classes.py:194
 msgid "App"
-msgstr "Ap"
+msgstr "App"
 
 #: classes.py:295
 msgid "Need to specify at least one: app_label or module."
@@ -184,67 +184,71 @@ msgstr "Executáveis que são chamados diretamente pelo código."
 
 #: classes.py:442
 msgid "Binary"
-msgstr ""
+msgstr "Binary"
 
 #: classes.py:459
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
 msgstr ""
+"As bibliotecas JavaScript são baixadas do registro NPM e são usadas para "
+"funcionalidades de interface de usuário."
 
 #: classes.py:462
 msgid "JavaScript"
-msgstr ""
+msgstr "JavaScript"
 
 #: classes.py:496 classes.py:729
 msgid "Downloading... "
-msgstr ""
+msgstr "Baixando..."
 
 #: classes.py:499
 msgid "Verifying... "
-msgstr ""
+msgstr "Verificando..."
 
 #: classes.py:502 classes.py:732
 msgid "Extracting... "
-msgstr ""
+msgstr "Extraindo..."
 
 #: classes.py:681
 msgid "Python packages downloaded from PyPI."
-msgstr ""
+msgstr "Pacotes Python baixados do PyPi."
 
 #: classes.py:683
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #: classes.py:710
 msgid "Fonts downloaded from fonts.googleapis.com."
-msgstr ""
+msgstr "Fontes baixadas de fonts.googleapis.com."
 
 #: classes.py:712
 msgid "Google font"
-msgstr ""
+msgstr "Fonte do Goole"
 
 #: classes.py:791
 msgid "Declared in app"
-msgstr ""
+msgstr "Declarada no app"
 
 #: classes.py:792
 msgid "Show dependencies by the app that declared them."
-msgstr ""
+msgstr "Mostrar as dependências pelo app que as declarou."
 
 #: classes.py:796
 msgid "Class"
-msgstr "classe"
+msgstr "Classe"
 
 #: classes.py:797
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
+"Mostrar as diferentes classes de dependências. Classes são normalmente "
+"divididas por idioma ou pelos tipos de arquivo da dependência."
 
 #: classes.py:802
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #: classes.py:803
 msgid ""
@@ -252,12 +256,17 @@ msgid ""
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
+"Mostrar os diferentes estados das dependências. True significa que as "
+"dependências estão instaladas e estão na versão correta. False significa que"
+" as dependências não estão instaladas ou estão na versão incorreta."
 
 #: classes.py:810
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
+"Dependências requeridas por um ambiente podem não ser exigidas para outro. "
+"Exempo de ambientes: Produção, Desenvolvimento."
 
 #: links.py:11 views.py:41
 msgid "Check for updates"
@@ -269,7 +278,7 @@ msgstr "Grupos"
 
 #: links.py:25
 msgid "Entries"
-msgstr ""
+msgstr "Entradas"
 
 #: links.py:33
 msgid "Details"
@@ -277,30 +286,34 @@ msgstr "Detalhes"
 
 #: links.py:38
 msgid "Dependencies licenses"
-msgstr ""
+msgstr "Licenças das dependências"
 
 #: management/commands/generaterequirements.py:16
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
+"Lista separada por vírgulas dos nomes das dependências a serem excluídas da "
+"lista gerada."
 
 #: management/commands/generaterequirements.py:22
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
+"Lista separada por vírgulas dos nomes das dependências a serem exibidas na "
+"lista ao se exluir todas as demais."
 
 #: management/commands/installdependencies.py:15
 msgid "Process a specific app."
-msgstr "Processar um aplicativo específico."
+msgstr "Processar um app específico."
 
 #: management/commands/installdependencies.py:19
 msgid "Force installation even if already installed."
-msgstr ""
+msgstr "Forçar a instalação mesmo se já instaladas."
 
 #: permissions.py:10
 msgid "View dependencies"
-msgstr ""
+msgstr "Ver dependências"
 
 #: views.py:23
 #, python-format
@@ -318,6 +331,8 @@ msgid ""
 "Unexpected error trying to determine the latest version available. Make sure"
 " your installation has a connection to the internet; %s"
 msgstr ""
+"Erro inesperado ao tentar determinar a última versão disponível. Certifique-"
+"se que sua instalação possui conexão com a internet; %s"
 
 #: views.py:38
 msgid "Your version is up-to-date."
@@ -326,26 +341,26 @@ msgstr "Sua versão está atualizada."
 #: views.py:55
 #, python-format
 msgid "Entries for dependency group: %s"
-msgstr ""
+msgstr "Entrada para o grupo de dependências: %s"
 
 #: views.py:68 views.py:113
 #, python-format
 msgid "Group %s not found."
-msgstr ""
+msgstr "Grupo %s não encontrado."
 
 #: views.py:81
 msgid "Dependency groups"
-msgstr ""
+msgstr "Grupos de dependências"
 
 #: views.py:101
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
-msgstr ""
+msgstr "Grupo de dependências e entrada: %(group)s, %(entry)s"
 
 #: views.py:125
 #, python-format
 msgid "Entry %s not found."
-msgstr ""
+msgstr "Entrada %s não encontrada."
 
 #: views.py:143
 msgid "Other packages licenses"

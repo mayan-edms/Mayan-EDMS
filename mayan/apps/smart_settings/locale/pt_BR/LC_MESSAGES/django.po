@@ -5,14 +5,15 @@
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:41-0400\n"
-"PO-Revision-Date: 2019-12-18 04:33+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-30 02:31-0400\n"
+"PO-Revision-Date: 2019-12-26 19:07+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,15 +39,15 @@ msgstr "Valor"
 
 #: classes.py:352
 msgid "Overridden"
-msgstr ""
+msgstr "Sobrescrito"
 
 #: classes.py:354
 msgid "Is this settings being overridden by an environment variable?"
-msgstr ""
+msgstr "Estas configurações estão sendo sobrescritas por uma variável de ambiente?"
 
 #: forms.py:14
 msgid "Enter the new setting value."
-msgstr ""
+msgstr "Entre o novo valor de configuração."
 
 #: forms.py:30
 #, python-format
@@ -55,11 +56,11 @@ msgstr "\"%s\" não é uma entrada válida."
 
 #: links.py:14 links.py:18
 msgid "Settings"
-msgstr "Definições"
+msgstr "Configurações"
 
 #: links.py:24
 msgid "Namespaces"
-msgstr ""
+msgstr "Namespaces"
 
 #: links.py:28
 msgid "Edit"
@@ -67,7 +68,7 @@ msgstr "Editar"
 
 #: permissions.py:12
 msgid "Edit settings"
-msgstr ""
+msgstr "Editar configurações"
 
 #: permissions.py:15
 msgid "View settings"
@@ -100,13 +101,13 @@ msgid ""
 "submitted in a POST request to be lost. The APPEND_SLASH setting is only "
 "used if CommonMiddleware is installed (see Middleware). See also "
 "PREPEND_WWW."
-msgstr "Quando indicado como Verdadeiro, caso a URL requisitada não coincida com os padrões na URLconf e não termine com uma barra, haverá um redirecionamento HTTP para a mesma URL com uma barra adicionada. Note que o redirecionamento pode fazer com que quaisquer dados submetidos numa requisição POST sejam perdidos.  A configuração APPEND_SLASH é usada apenas se o CommonMiddleware estiver instalado (veja Middleware). Veja também PREPEND_WWW."
+msgstr "Quando indicado como True, caso a URL requisitada não coincida com os padrões na URLconf e não termine com uma barra, haverá um redirecionamento HTTP para a mesma URL com uma barra adicionada. Note que o redirecionamento pode fazer com que quaisquer dados submetidos numa requisição POST sejam perdidos.  A configuração APPEND_SLASH é usada apenas se o CommonMiddleware estiver instalado (veja Middleware). Veja também PREPEND_WWW."
 
 #: settings.py:47
 msgid ""
 "The list of validators that are used to check the strength of user's "
 "passwords."
-msgstr ""
+msgstr "A lista de validadores que são usados para validar a força das senhas dos usuários."
 
 #: settings.py:54
 msgid ""
@@ -130,14 +131,14 @@ msgid ""
 "denial-of-service attack vector if left unchecked. Since web servers don't "
 "typically perform deep request inspection, it's not possible to perform a "
 "similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
-msgstr "Valor padrão: 2621440 (i.e. 2.5MB). O tamanho máximo em bytes que um corpo de requisição pode atingir antes que se gere uma Operação Suspeita (RequestDataTooBig). A checagem é feita quando se acessa request.body ou request.POST e é calculada em relação ao tamanho total da solicitação, excluindo qualquer arquivo de carga de dados. Você pode configurá-la para \"nenhuma\" para desativar a verificação. Aplicações para as quais se esperam publicações de tamanho muito grande devem ajustar esse parâmetro. A quantidade de dados da requisição está correlacionada com a quantidade de memória necessária para processá-la e povoar os dicionários GET e POST. As requisições grandes podem ser usadas como vetor de ataques de negação de serviço - \"denial-of-service\" - caso o parâmetro não seja preenchido. Dado que os servidores webnormalmente não realizam uma inspeção profunda das requisições, não é possível realizar uma verificação similar nesse nível. Veja também FILE_UPLOAD_MAX_MEMORY_SIZE."
+msgstr "Valor padrão: 2621440 (i.e. 2.5MB). O tamanho máximo em bytes que um corpo de requisição pode atingir antes que se gere uma Operação Suspeita (RequestDataTooBig). A checagem é feita quando se acessa request.body ou request.POST e é calculada em relação ao tamanho total da solicitação, excluindo qualquer arquivo de carga de dados. Você pode configurá-la para None para desativar a verificação. Aplicações para as quais se esperam POSTs de tamanho muito grande devem ajustar esse parâmetro. A quantidade de dados da requisição está correlacionada com a quantidade de memória necessária para processá-la e povoar os dicionários GET e POST. As requisições grandes podem ser usadas como vetor de ataques de negação de serviço - \"denial-of-service\" - caso o parâmetro não seja preenchido. Dado que os servidores web normalmente não realizam uma inspeção profunda das requisições, não é possível realizar uma verificação similar nesse nível. Veja também FILE_UPLOAD_MAX_MEMORY_SIZE."
 
 #: settings.py:86
 msgid ""
 "Default: 'webmaster@localhost' Default email address to use for various "
 "automated correspondence from the site manager(s). This doesn't include "
 "error messages sent to ADMINS and MANAGERS; for that, see SERVER_EMAIL."
-msgstr ""
+msgstr "Padrão: 'webmaster@localhost'. Endereço padrão de e-mail a ser usado para várias correspondências automáticas dos administradores do site. Isto não inclui mensagens de erro enviadas para ADMINS e MANAGERS; para tanto, veja SERVER_EMAIL."
 
 #: settings.py:96
 msgid ""
@@ -179,7 +180,7 @@ msgstr "Valor padrão: 25. Porta usada para o servidor SMTP definido em EMAIL_HO
 msgid ""
 "Default: None. Specifies a timeout in seconds for blocking operations like "
 "the connection attempt."
-msgstr "Valor padrão: Nenhum. Especifica um tempo de espera em segundos para operações de bloqueio, como tentativas de conexão."
+msgstr "Valor padrão: None. Especifica um tempo de espera em segundos para operações de bloqueio, como tentativas de conexão."
 
 #: settings.py:157
 msgid ""
@@ -187,7 +188,7 @@ msgid ""
 " SMTP server. This is used for explicit TLS connections, generally on port "
 "587. If you are experiencing hanging connections, see the implicit TLS "
 "setting EMAIL_USE_SSL."
-msgstr "Valor padrão: Falso. Define se deve ser utilizada uma conexão TLS (segura) quando se comunica com o servidor SMTP. Isto é usado para conexões explícitas de TLS, geralmente na porta 587. Se você está experimentando conexões suspensas, consulte o parâmetro de TLS implícita EMAIL_USE_SSL."
+msgstr "Valor padrão: False. Define se deve ser utilizada uma conexão TLS (segura) quando se comunica com o servidor SMTP. Isto é usado para conexões explícitas de TLS, geralmente na porta 587. Se você está experimentando conexões suspensas, consulte o parâmetro de TLS implícita EMAIL_USE_SSL."
 
 #: settings.py:167
 msgid ""
@@ -197,7 +198,7 @@ msgid ""
 "are experiencing problems, see the explicit TLS setting EMAIL_USE_TLS. Note "
 "that EMAIL_USE_TLS/EMAIL_USE_SSL are mutually exclusive, so only set one of "
 "those settings to True."
-msgstr "Valor padrão: Falso. Define se deve ser utilizada uma conexão implícita TLS (segura) ao comunicar-se com o servidor SMTP. Na maior parte da documentação de e-mail este tipo de conexão TLS é conhecida como SSL. Geralmente é usada a porta 465. Se você está experimentando problemas, veja o parâmetro de TSL explícita EMAIL_USE_TLS. Tenha em mente que EMAIL_USE_TLS / EMAIL_USE_SSL são mutuamente excludentes, razão pela qual apenas um dos parâmetros pode ser Verdadeiro."
+msgstr "Valor padrão: False. Define se deve ser utilizada uma conexão implícita TLS (segura) ao comunicar-se com o servidor SMTP. Na maior parte da documentação de e-mail este tipo de conexão TLS é conhecida como SSL. Geralmente é usada a porta 465. Se você está experimentando problemas, veja o parâmetro de TSL explícita EMAIL_USE_TLS. Tenha em mente que EMAIL_USE_TLS / EMAIL_USE_SSL são mutuamente excludentes, razão pela qual apenas um dos parâmetros pode ser Verdadeiro."
 
 #: settings.py:179
 msgid ""
@@ -232,7 +233,7 @@ msgid ""
 "setting also accepts named URL patterns which can be used to reduce "
 "configuration duplication since you don't have to define the URL in two "
 "places (settings and URLconf)."
-msgstr ""
+msgstr "Padrão: None. A URL para qual as requisições são redirecionadas depois que um usuário sai do sistema (logout) usando LogoutView (se a view não recebe um aregumento next_page). Se None, nenhum redirecionamento será realizado e a tela de logout será renderizada. Esta configuração também aceita padrões nomeados de URL que podem ser usados para reduzir a duplicação de configurações, já que você não precisará de definir a URL em dois lugares (settings e URLconf)."
 
 #: settings.py:226
 msgid ""
@@ -240,7 +241,7 @@ msgid ""
 "processor to add some variables to the template context. Can use the "
 "admindocs bookmarklets even if not logged in as a staff user. Are marked as "
 "\"internal\" (as opposed to \"EXTERNAL\") in AdminEmailHandler emails."
-msgstr ""
+msgstr "Uma lista de endereços de IP, como strings, que: Permite que o processador de contexto debug() adicionar algumas variáveis ao template. Pode usar os livretos admindocs mesmo se não estiver logado como staff user. São marcados como \"interal\" (oposto a \"EXTERNAL\") nos e-mails AdminEmailHandler."
 
 #: settings.py:237
 msgid ""
@@ -249,7 +250,7 @@ msgid ""
 "specifies which languages are available for language selection. Generally, "
 "the default value should suffice. Only set this setting if you want to "
 "restrict language selection to a subset of the Django-provided languages. "
-msgstr ""
+msgstr "Uma lista de todos os idiomas disponíveis. Esta é uma lista de tuplas no formato (código do idioma, código da língua). Por exemplo: ('pt_BR', 'Português do Brasil'). Isso especifica quais idiomas estão disponíveis para seleção. Geralmente, o valor padrão é suficiente. Apenas defina esta configuração se você quiser restringir a seleção de idiomas a um subconjunto daquelas fornecidas pelo Django."
 
 #: settings.py:250
 msgid ""
@@ -261,7 +262,7 @@ msgid ""
 "language can't be determined or is not supported by the website. It also "
 "provides the fallback translation when a translation for a given literal "
 "doesn't exist for the user's preferred language."
-msgstr ""
+msgstr "Uma string representando o código do idioma para esta instalação. Deve estar em formato padrão de ID de idioma. Por exemplo, inglês estadunidense é \"en-us\". Serve a dois propósitos: se o middleware de locale não estiver em uso, decide qual trandução será servida a todos os usuários. Se o middleware de locale estiver ativo, fornece um idioma de fallback caso o idioma do usuário não puder ser prederminado ou não for suportado pelo site. Também fornece uma tradução de fallback quando a tradução de determinada literal não existir para o idioma do usuário."
 
 #: settings.py:265
 msgid ""
@@ -269,7 +270,7 @@ msgid ""
 "\"/static/\" or \"http://static.example.com/\" If not None, this will be "
 "used as the base path for asset definitions (the Media class) and the "
 "staticfiles app. It must end in a slash if set to a non-empty value."
-msgstr ""
+msgstr "URL a ser usada quando se referir aos arquivos estáticos contidos em STATIC_ROOT. Exemplo: \"/static/\" ou \"http://static.example.com/\". Se não for None, será usada como caminho base para definições de recursos (a classe Media) e a app staticfiles. Deve terminar com uma barra se definida para um valor não vazio."
 
 #: settings.py:276
 msgid ""
@@ -277,14 +278,14 @@ msgid ""
 "collectstatic management command. A ready-to-use instance of the storage "
 "backend defined in this setting can be found at "
 "django.contrib.staticfiles.storage.staticfiles_storage."
-msgstr ""
+msgstr "A ferramentde armazenamento de arquivos a ser usada pelo comando collectstatic. Uma instância pronta para uso do backend de storage definida nesta configuração pode ser encontrada em django.contrib.staticfiles.storage.staticfiles_storage."
 
 #: settings.py:286
 msgid ""
 "A string representing the time zone for this installation. Note that this "
 "isn't necessarily the time zone of the server. For example, one server may "
 "serve multiple Django-powered sites, each with a separate time zone setting."
-msgstr ""
+msgstr "Uma string representando a time zone para esta instalação. Note que não necessariamente esta é a time zone do servidor. Por exemplo, um servidor pode servir várias aplicações em Django, cada uma com uma configuração de time zone."
 
 #: settings.py:296
 msgid ""
@@ -292,13 +293,13 @@ msgid ""
 "servers (e.g. runserver) will use. The django-admin startproject management "
 "command will create a simple wsgi.py file with an application callable in "
 "it, and point this setting to that application."
-msgstr ""
+msgstr "O caminho Python completo do objeto de aplicação WSGI que o servidor embutido do Django usa (por exemplo, runserver). O comando django-admin startproject irá criar um arquivo wsgi.py simples com uma applicação callable nele, e apontará esta configuração para aquela aplicação."
 
 #: views.py:23
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
-msgstr ""
+msgstr "Configurações herdadas de uma variável de ambiente têm precedência e não podem ser alteradas nesta tela."
 
 #: views.py:26
 #, python-format
@@ -308,17 +309,17 @@ msgstr "Ajustes na categoria: %s"
 #: views.py:34
 #, python-format
 msgid "Namespace: %s, not found"
-msgstr "Categoria: %s, não encontrada"
+msgstr "Namespace: %s, não encontrad"
 
 #: views.py:44
 msgid "Setting namespaces"
-msgstr "Categoria de ajustes"
+msgstr "Namespaces de configuração"
 
 #: views.py:60
 msgid "Setting updated successfully."
-msgstr ""
+msgstr "Configurações atualizadas com sucesso"
 
 #: views.py:69
 #, python-format
 msgid "Edit setting: %s"
-msgstr ""
+msgstr "Editar a configuração: %s"

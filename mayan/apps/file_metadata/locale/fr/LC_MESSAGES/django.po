@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:39-0400\n"
+"POT-Creation-Date: 2019-12-30 02:29-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2019\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -103,73 +103,73 @@ msgstr ""
 msgid "Driver path"
 msgstr "Emplacement du pilote"
 
-#: models.py:25
+#: models.py:26
 msgid "Internal name"
 msgstr "Nom interne"
 
-#: models.py:30 models.py:74
+#: models.py:31 models.py:75
 msgid "Driver"
 msgstr "Pilote"
 
-#: models.py:31
+#: models.py:32
 msgid "Drivers"
 msgstr "Pilotes"
 
-#: models.py:51
+#: models.py:52
 msgid "Document type"
 msgstr "Type de document"
 
-#: models.py:55
+#: models.py:56
 msgid "Automatically queue newly created documents for processing."
 msgstr ""
 "Mettre automatiquement en file d'attente les documents nouvellement créés "
 "pour traitement."
 
-#: models.py:62
+#: models.py:63
 msgid "Document type settings"
 msgstr "Paramétrages de type de document"
 
-#: models.py:63
+#: models.py:64
 msgid "Document types settings"
 msgstr "Paramétrages de types de documents"
 
-#: models.py:78
+#: models.py:79
 msgid "Document version"
 msgstr "Version du document"
 
-#: models.py:84 models.py:100
+#: models.py:85 models.py:101
 msgid "Document version driver entry"
 msgstr ""
 
-#: models.py:85
+#: models.py:86
 msgid "Document version driver entries"
 msgstr ""
 
-#: models.py:92
+#: models.py:93
 msgid "Attribute count"
 msgstr "Nombre d'attributs"
 
-#: models.py:104
+#: models.py:105
 msgid "Name of the file metadata entry."
 msgstr "Nom de l'entrée de métadonnées du fichier."
 
-#: models.py:105
+#: models.py:106
 msgid "Key"
 msgstr "Clé"
 
-#: models.py:108
+#: models.py:109
 msgid "Value of the file metadata entry."
 msgstr "Valeur de l'entrée de métadonnées de fichier."
 
-#: models.py:109
+#: models.py:110
 msgid "Value"
 msgstr "Valeur"
 
-#: models.py:114
+#: models.py:115
 msgid "File metadata entry"
 msgstr "Entrée de métadonnées de fichier"
 
-#: models.py:115
+#: models.py:116
 msgid "File metadata entries"
 msgstr "Entrées de métadonnées de fichier"
 

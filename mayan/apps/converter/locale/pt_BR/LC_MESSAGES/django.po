@@ -7,14 +7,15 @@
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
 # Renata Oliveira <renatabels@gmail.com>, 2011
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:38-0400\n"
-"PO-Revision-Date: 2019-12-05 10:07+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-30 02:27-0400\n"
+"PO-Revision-Date: 2019-12-26 18:50+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,7 +47,7 @@ msgstr "LibreOffice não instalado ou não encontrado."
 
 #: classes.py:199
 msgid "Not an office file format."
-msgstr "Não é um formato de arquivo de escritório."
+msgstr "Não é um formato de arquivo office."
 
 #: classes.py:327
 msgid ""
@@ -60,17 +61,17 @@ msgstr "transformação"
 
 #: dependencies.py:16
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr ""
+msgstr "Utilidade do pacote poppler-utils usada para inspecionar arquivos PDF."
 
 #: dependencies.py:21
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr ""
+msgstr "Utilidade do pacote poppler-utils usada para extrair páginas dos arquivos PDF em imagens PPM"
 
 #: forms.py:24
 msgid "Available transformations for this layer."
-msgstr ""
+msgstr "Transformações disponíveis para essa camada."
 
 #: forms.py:61
 #, python-format
@@ -79,7 +80,7 @@ msgstr "\"%s\" não é uma entrada válida."
 
 #: layers.py:12
 msgid "Saved transformations"
-msgstr ""
+msgstr "Transformações salvas"
 
 #: links.py:18
 msgid "Delete"
@@ -95,7 +96,7 @@ msgstr "Transformações"
 
 #: links.py:35
 msgid "Select new transformation"
-msgstr ""
+msgstr "Selecionar nova transformação"
 
 #: models.py:23 models.py:85
 msgid "Name"
@@ -107,11 +108,11 @@ msgstr "Ordem"
 
 #: models.py:34 models.py:50
 msgid "Stored layer"
-msgstr ""
+msgstr "Camada armazenada"
 
 #: models.py:35
 msgid "Stored layers"
-msgstr ""
+msgstr "Camadas armazenadas"
 
 #: models.py:47 models.py:93
 msgid "Enabled"
@@ -119,11 +120,11 @@ msgstr "Habilitado"
 
 #: models.py:56 models.py:75
 msgid "Object layer"
-msgstr ""
+msgstr "Camada de objeto"
 
 #: models.py:57
 msgid "Object layers"
-msgstr ""
+msgstr "Camadas de objeto"
 
 #: models.py:79
 msgid ""
@@ -143,11 +144,11 @@ msgstr "Argumentos"
 
 #: models.py:100
 msgid "Layer transformation"
-msgstr ""
+msgstr "Camada de transformação"
 
 #: models.py:101
 msgid "Layer transformations"
-msgstr ""
+msgstr "Camadas de transformação"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -179,11 +180,11 @@ msgstr "Recortar"
 
 #: transformations.py:177
 msgid "Draw rectangle"
-msgstr ""
+msgstr "Desenhar um retângulo"
 
 #: transformations.py:279
 msgid "Draw rectangle (percents coordinates)"
-msgstr ""
+msgstr "Desenhar um retângulo (coordenadas em porcento)"
 
 #: transformations.py:376
 msgid "Flip"
@@ -223,7 +224,7 @@ msgstr "Girar 270 graus"
 
 #: transformations.py:504
 msgid "Unsharp masking"
-msgstr "Unsharp mascaramento"
+msgstr "Unsharp masking"
 
 #: transformations.py:520
 msgid "Zoom"
@@ -236,14 +237,14 @@ msgstr "Entre com um valor YAML válido."
 #: views.py:62
 #, python-format
 msgid "Error creating transforamtion: %s."
-msgstr ""
+msgstr "Erro ao criar a transformação: %s"
 
 #: views.py:79
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr ""
+msgstr "Criar a transformação \"%(transformation)s\" de camada \"%(layer)s\" para: %(object)s"
 
 #: views.py:140
 #, python-format
@@ -258,16 +259,16 @@ msgstr "Editar transformação \"%(transformation)s\" para: %(content_object)s"
 #: views.py:242
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
-msgstr ""
+msgstr "Não existem entradas para a camada \"%(layer_name)s\""
 
 #: views.py:245
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
-msgstr ""
+msgstr "Transformações da camada \"%(layer)s\" para: %(object)s"
 
 #: views.py:293
 msgid "Transformation created successfully."
-msgstr ""
+msgstr "Transformação criada com sucesso"
 
 #: views.py:314
 msgid "Select"
@@ -276,4 +277,4 @@ msgstr "Selecionar"
 #: views.py:316
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr ""
+msgstr "Selecionar nova transformação de camada \"%(layer)s\"  para: %(object)s"

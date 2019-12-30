@@ -6,14 +6,15 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # Roberto Rosario, 2012
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:42-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-30 02:32-0400\n"
+"PO-Revision-Date: 2019-12-26 18:46+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,19 +34,19 @@ msgstr "Documentos"
 
 #: events.py:10
 msgid "Tag attached to document"
-msgstr ""
+msgstr "Etiqueta anexada ao documento"
 
 #: events.py:13
 msgid "Tag created"
-msgstr ""
+msgstr "Etiqueta criada"
 
 #: events.py:16
 msgid "Tag edited"
-msgstr ""
+msgstr "Etiqueta editada"
 
 #: events.py:19
 msgid "Tag removed from document"
-msgstr ""
+msgstr "Etiqueta removida do documento"
 
 #: links.py:16 workflow_actions.py:75
 msgid "Remove tag"
@@ -77,23 +78,23 @@ msgstr "Todos"
 
 #: methods.py:20
 msgid "Return a the tags attached to the document."
-msgstr ""
+msgstr "Retornar as etiquetas anexadas ao documento."
 
 #: methods.py:22
 msgid "get_tags()"
-msgstr ""
+msgstr "get_tags()"
 
 #: models.py:28
 msgid "A short text used as the tag name."
-msgstr ""
+msgstr "Um texto curto usado como nome da etiqueta"
 
 #: models.py:29 search.py:16
 msgid "Label"
-msgstr "Label"
+msgstr "Rótulo"
 
 #: models.py:32
 msgid "The RGB color values for the tag."
-msgstr ""
+msgstr "O valor RGB da etiqueta."
 
 #: models.py:33 search.py:20
 msgid "Color"
@@ -105,7 +106,7 @@ msgstr "Etiqueta"
 
 #: models.py:84
 msgid "Preview"
-msgstr "Visualizar"
+msgstr "Pré-visualizar"
 
 #: models.py:113
 msgid "Document tag"
@@ -149,7 +150,7 @@ msgstr "Lista separada por vírgulas das chaves primárias do documento para as 
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr "API URL que aponta para uma tag em relação ao documento anexado a ela. Esse URL é diferente do URL da etiqueta que está de acordo com as normas estabelecidas."
+msgstr "URL da API que aponta para uma etiqueta em relação ao documento anexado a ela. Essa URL é diferente da etiqueta canônica da URL."
 
 #: serializers.py:106
 msgid "Primary key of the tag to be added."
@@ -173,8 +174,8 @@ msgstr "Anexar"
 #, python-format
 msgid "Attach tags to %(count)d document"
 msgid_plural "Attach tags to %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Anexar etiquetas para %(count)d documento"
+msgstr[1] "Anexar etiquetas para %(count)d documentos"
 
 #: views.py:61
 #, python-format
@@ -243,11 +244,11 @@ msgstr "Editar etiqueta:%s"
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr ""
+msgstr "Etiquetas são propriedades com códigos de cor que podem ser anexadas ou removidas de documentos"
 
 #: views.py:221
 msgid "No tags available"
-msgstr ""
+msgstr "Não há etiquetas disponíveis"
 
 #: views.py:245
 #, python-format
@@ -256,7 +257,7 @@ msgstr "Os documentos com a etiqueta: %s"
 
 #: views.py:269
 msgid "Document has no tags attached"
-msgstr ""
+msgstr "O documento não possui etiquetas anexadas"
 
 #: views.py:272
 #, python-format
@@ -281,8 +282,8 @@ msgstr "Remover"
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Remover as etiquetas de %(count)d documento"
+msgstr[1] "Remover as etiquetas de %(count)d documentos"
 
 #: views.py:312
 #, python-format
@@ -305,11 +306,11 @@ msgstr "Etiqueta \"%(tag)s\" removida com sucesso do documento \"%(document)s\".
 
 #: wizard_steps.py:17
 msgid "Select tags"
-msgstr ""
+msgstr "Selecionar etiquetas"
 
 #: workflow_actions.py:22
 msgid "Tags to attach to the document"
-msgstr ""
+msgstr "Etiquetas a anexar no documento"
 
 #: workflow_actions.py:27
 msgid "Attach tag"
@@ -317,4 +318,4 @@ msgstr "Anexar etiqueta"
 
 #: workflow_actions.py:70
 msgid "Tags to remove from the document"
-msgstr ""
+msgstr "Etiquetas a remover do documento"

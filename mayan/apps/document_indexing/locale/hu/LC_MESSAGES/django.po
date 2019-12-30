@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:38-0400\n"
+"POT-Creation-Date: 2019-12-30 02:28-0400\n"
 "PO-Revision-Date: 2019-12-05 10:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
@@ -46,7 +46,7 @@ msgstr ""
 msgid "Levels"
 msgstr ""
 
-#: apps.py:162 apps.py:180 models.py:360
+#: apps.py:162 apps.py:180 models.py:379
 msgid "Documents"
 msgstr "dokumentumok"
 
@@ -136,86 +136,86 @@ msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr ""
 
-#: models.py:50 models.py:237
+#: models.py:50 models.py:254
 msgid "Enabled"
 msgstr "Bekapcsolt"
 
-#: models.py:61 models.py:221
+#: models.py:61 models.py:238
 msgid "Index"
 msgstr ""
 
-#: models.py:193
+#: models.py:210
 msgid "Index instance"
 msgstr "index instance"
 
-#: models.py:194
+#: models.py:211
 msgid "Index instances"
 msgstr ""
 
-#: models.py:225
+#: models.py:242
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr ""
 
-#: models.py:229
+#: models.py:246
 msgid "Indexing expression"
 msgstr ""
 
-#: models.py:234
+#: models.py:251
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr ""
 
-#: models.py:242
+#: models.py:259
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
 msgstr ""
 
-#: models.py:245
+#: models.py:262
 msgid "Link documents"
 msgstr ""
 
-#: models.py:249
+#: models.py:266
 msgid "Index node template"
 msgstr ""
 
-#: models.py:250
+#: models.py:267
 msgid "Indexes node template"
 msgstr ""
 
-#: models.py:254
+#: models.py:271
 msgid "Root"
 msgstr ""
 
-#: models.py:310
+#: models.py:326
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr ""
 
-#: models.py:353
+#: models.py:372
 msgid "Index template node"
 msgstr ""
 
-#: models.py:356
+#: models.py:375
 msgid "Value"
 msgstr "Érték"
 
-#: models.py:366
+#: models.py:385
 msgid "Index node instance"
 msgstr ""
 
-#: models.py:367
+#: models.py:386
 msgid "Indexes node instances"
 msgstr ""
 
-#: models.py:481
+#: models.py:500
 msgid "Document index node instance"
 msgstr ""
 
-#: models.py:482
+#: models.py:501
 msgid "Document indexes node instances"
 msgstr ""
 

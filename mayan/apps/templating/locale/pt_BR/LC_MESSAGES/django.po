@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:42-0400\n"
+"POT-Creation-Date: 2019-12-30 02:32-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: apps.py:19 permissions.py:7
 msgid "Templating"
-msgstr ""
+msgstr "Templating"
 
 #: fields.py:22
 #, python-format
@@ -33,10 +33,13 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " The {{ %(variable)s }} variable is available to the template."
 msgstr ""
+"Use a linguagem de template padrão do Django "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" A {{ %(variable)s}} está disponível para o template."
 
 #: forms.py:11
 msgid "Resulting text from the evaluated template."
-msgstr ""
+msgstr "Testo resultante do template avaliado."
 
 #: forms.py:12
 msgid "Result"
@@ -44,7 +47,7 @@ msgstr "resultado"
 
 #: forms.py:22
 msgid "The template string to be evaluated."
-msgstr ""
+msgstr "A string do template a ser avaliada."
 
 #: forms.py:23
 msgid "Template"
@@ -52,7 +55,7 @@ msgstr "Template"
 
 #: links.py:14
 msgid "Sandbox"
-msgstr ""
+msgstr "Sandbox"
 
 #: permissions.py:10
 msgid "Use the template sandbox"
@@ -61,13 +64,13 @@ msgstr "Usar a sandbox de template"
 #: views.py:45
 #, python-format
 msgid "Template error; %(exception)s"
-msgstr ""
+msgstr "Erro do template; %(exception)s"
 
 #: views.py:58
 #, python-format
 msgid "Template sandbox for: %s"
-msgstr ""
+msgstr "Sandbox do template para: %s"
 
 #: widgets.py:34
 msgid "<Model property choices>"
-msgstr ""
+msgstr "<Model property choices>"

@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:40-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-12-30 02:29-0400\n"
+"PO-Revision-Date: 2019-12-26 17:55+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +29,7 @@ msgstr "Data e hora de criação"
 
 #: models.py:20
 msgid "Timeout"
-msgstr "Tempo de expiração"
+msgstr "Timeout"
 
 #: models.py:23
 msgid "Name"
@@ -44,14 +45,14 @@ msgstr "Bloqueios"
 
 #: settings.py:14
 msgid "Path to the class to use when to request and release resource locks."
-msgstr ""
+msgstr "Caminho para a classe a ser usada quando da requisição e da liberação de bloqueios de recurso."
 
 #: settings.py:20
 msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
-msgstr ""
+msgstr "Argumento para passar para LOCK_MANAGER_BACKEND."
 
 #: settings.py:26
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."
-msgstr ""
+msgstr "Tempo padrão em segundos depois do qual um bloqueio de recurso será automaticamente liberada."

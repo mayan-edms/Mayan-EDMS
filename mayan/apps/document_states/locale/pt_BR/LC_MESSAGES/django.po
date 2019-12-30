@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:39-0400\n"
-"PO-Revision-Date: 2019-12-20 20:47+0000\n"
+"POT-Creation-Date: 2019-12-30 02:28-0400\n"
+"PO-Revision-Date: 2019-12-26 17:51+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "Tipo de ação"
 
 #: apps.py:272
 msgid "Triggers"
-msgstr "Acionadores"
+msgstr "Triggers"
 
 #: apps.py:286 models.py:454
 msgid "Type"
@@ -91,7 +91,7 @@ msgstr "Widget"
 
 #: apps.py:303 apps.py:309
 msgid "Documents"
-msgstr "Documento"
+msgstr "Documentos"
 
 #: error_logs.py:8 models.py:378
 msgid "Workflow state actions"
@@ -115,7 +115,7 @@ msgstr "Ação"
 
 #: forms.py:120
 msgid "Namespace"
-msgstr "namespace"
+msgstr "Namespace"
 
 #: forms.py:124 models.py:59 models.py:274 models.py:356 models.py:424
 #: models.py:465
@@ -149,7 +149,7 @@ msgstr "Imagens de workflow"
 #: handlers.py:78
 #, python-format
 msgid "Event trigger: %s"
-msgstr "Acionador de evento: %s"
+msgstr "Trigger do evento: %s"
 
 #: links.py:26 views/workflow_template_views.py:108
 msgid "Create workflow"
@@ -169,7 +169,7 @@ msgstr "Editar"
 
 #: links.py:56
 msgid "Preview"
-msgstr "Visualizar"
+msgstr "Pré-visualizar"
 
 #: links.py:78
 msgid "Actions"
@@ -189,11 +189,11 @@ msgstr "Estados"
 
 #: links.py:121
 msgid "Create transition"
-msgstr "Criar Transições"
+msgstr "Criar transição"
 
 #: links.py:141
 msgid "Transition triggers"
-msgstr "Acionadores de transição"
+msgstr "Triggers de transição"
 
 #: links.py:147
 msgid "Transitions"
@@ -217,7 +217,7 @@ msgstr "Documentos de workflow"
 
 #: links.py:221
 msgid "State documents"
-msgstr "Estados dos documentos"
+msgstr "Documentos do estado"
 
 #: links.py:236 queues.py:17
 msgid "Launch all workflows"
@@ -307,7 +307,7 @@ msgstr "Quando"
 
 #: models.py:367
 msgid "The dotted Python path to the workflow action class to execute."
-msgstr "O caminho em Python para a classe de ação do workflow que será executado."
+msgstr "O caminho pontuado em Python para a classe de ação do workflow que será executado."
 
 #: models.py:368
 msgid "Entry action path"
@@ -371,7 +371,7 @@ msgstr "Se este campo precisa ser preenchido para prosseguir."
 
 #: models.py:475
 msgid "Required"
-msgstr "exigido"
+msgstr "Obrigatório"
 
 #: models.py:479
 msgid "An optional class to change the default presentation of the field."
@@ -391,11 +391,11 @@ msgstr "Argumentos keyword do widget"
 
 #: models.py:492 models.py:514
 msgid "Workflow transition trigger event"
-msgstr "Evento acionador de transição do workflow"
+msgstr "Evento trigger de transição do workflow"
 
 #: models.py:493 models.py:515
 msgid "Workflow transitions trigger events"
-msgstr "Eventos acionadores de transições de workflow"
+msgstr "Eventos trigger de transições de workflow"
 
 #: models.py:510
 msgid "Event type"
@@ -431,11 +431,11 @@ msgstr "Dados extra"
 
 #: models.py:684
 msgid "Workflow instance log entry"
-msgstr "Entrada do registro de instâncias do workflow"
+msgstr "Entrada do log de instâncias do workflow"
 
 #: models.py:685
 msgid "Workflow instance log entries"
-msgstr "Entradas do registro de instâncias do workflow"
+msgstr "Entradas do log de instâncias do workflow"
 
 #: models.py:692
 msgid "Not a valid transition choice."
@@ -475,11 +475,11 @@ msgstr "Editar workflows"
 
 #: permissions.py:21
 msgid "View workflows"
-msgstr "Ver workflow"
+msgstr "Ver workflows"
 
 #: permissions.py:27
 msgid "Transition workflows"
-msgstr "Transição de workflows"
+msgstr "Workflows de transição"
 
 #: permissions.py:30
 msgid "Execute workflow tools"
@@ -487,7 +487,7 @@ msgstr "Executar ferramentas de workflow"
 
 #: queues.py:9
 msgid "Document states"
-msgstr "Estados de documentos"
+msgstr "Estados do documento"
 
 #: queues.py:12
 msgid "Document states fast"
@@ -495,7 +495,7 @@ msgstr "Estados rápidos do documento"
 
 #: queues.py:21
 msgid "Generate workflow previews"
-msgstr "Gerar previsão do workflow"
+msgstr "Gerar pré-visualização do workflow"
 
 #: serializers.py:22
 msgid "Primary key of the document type to be added."
@@ -505,7 +505,7 @@ msgstr "Chave primária do tipo de documento a ser adicionado."
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr "API URL que aponta para um tipo de documento em relação ao workflow ao qual está anexado. Esse URL é diferente do URL do tipo de documento canônico."
+msgstr "URL da API que aponta para um tipo de documento em relação ao workflow ao qual está anexado. Essa URL é diferente da URL do tipo de documento canônico."
 
 #: serializers.py:116
 msgid "Primary key of the destination state to be added."
@@ -519,7 +519,7 @@ msgstr "Chave primária do estado de origem a ser adicionado."
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
-msgstr "API URL que aponta para um workflow em relação ao documento ao qual está anexado. Esse URL é diferente do URL de workflow canônico."
+msgstr "URL da API que aponta para um workflow em relação ao documento ao qual está anexado. Essa URL é diferente da URL de workflow canônico."
 
 #: serializers.py:227
 msgid "A link to the entire history of this workflow."
@@ -529,7 +529,7 @@ msgstr "Um link para todo o histórico deste workflow."
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
-msgstr "Lista separada por vírgulas do tipo de documento chaves primárias às quais este workflow será anexado."
+msgstr "Lista separada por vírgulas de chaves primárias de tipo de  documento às quais este workflow será anexado."
 
 #: serializers.py:319
 msgid "Primary key of the transition to be added."
@@ -559,7 +559,7 @@ msgstr "Argumentos a serem passados para WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: templates/document_states/forms/widgets/workflow_image.html:2
 msgid "Workflow preview"
-msgstr "Previsão do workflow"
+msgstr "Pré-visualização do workflow"
 
 #: views/workflow_instance_views.py:43
 msgid ""
@@ -598,7 +598,7 @@ msgstr "Documento \"%s\" transicionado com sucesso"
 
 #: views/workflow_instance_views.py:125
 msgid "Submit"
-msgstr "Submeter"
+msgstr "Enviar"
 
 #: views/workflow_instance_views.py:127
 #, python-format
@@ -607,7 +607,7 @@ msgstr "Execute a transição \"%(transition)s\" para o workflow %(workflow)s"
 
 #: views/workflow_instance_views.py:142
 msgid "Optional comment to attach to the transition."
-msgstr "Comentário adicional a ser anexado à transição."
+msgstr "Comentário opcional a ser anexado à transição."
 
 #: views/workflow_instance_views.py:211
 msgid "Select"
@@ -650,7 +650,7 @@ msgstr "Não há documentos neste estado do workflow"
 #: views/workflow_proxy_views.py:94
 #, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
-msgstr "Documentos no workflow \"%s\", digite \"%s\""
+msgstr "Documentos no workflow \"%s\", estado \"%s\""
 
 #: views/workflow_proxy_views.py:122
 #: views/workflow_template_state_views.py:290
@@ -753,21 +753,21 @@ msgstr "Transições do workflow: %s"
 #: views/workflow_template_transition_views.py:171
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
-msgstr "Erro ao carregar os eventos acionadores de transição do workflow; %s"
+msgstr "Erro ao carregar os eventos trigger de transição do workflow; %s"
 
 #: views/workflow_template_transition_views.py:178
 msgid "Workflow transition trigger events updated successfully"
-msgstr "Eventos acionadores de transição do workflow atualizados com sucesso"
+msgstr "Eventos trigger de transição do workflow atualizados com sucesso"
 
 #: views/workflow_template_transition_views.py:192
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
-msgstr "Acionadores são eventos que fazem esta transição ser executada automaticamente."
+msgstr "Triggers são eventos que fazem esta transição ser executada automaticamente."
 
 #: views/workflow_template_transition_views.py:196
 #, python-format
 msgid "Workflow transition trigger events for: %s"
-msgstr "Eventos acionadores de transição do workflow para: %s"
+msgstr "Trigger de transição do workflow para: %s"
 
 #: views/workflow_template_transition_views.py:246
 #, python-format
@@ -861,7 +861,7 @@ msgstr "Os tipos de documentos atribuídos ao workflow: %s"
 #: views/workflow_template_views.py:219
 #, python-format
 msgid "Preview of: %s"
-msgstr "Prévia de: %s"
+msgstr "Pré-visualização de: %s"
 
 #: views/workflow_template_views.py:225
 msgid "Launch all workflows?"
@@ -894,7 +894,7 @@ msgstr "Descrição do documento"
 msgid ""
 "The new description to be assigned to the document. Can be a string or a "
 "template."
-msgstr "A nova descrição que será associada ao documento. Pode ser uma string ou um modelo."
+msgstr "A nova descrição que será associada ao documento. Pode ser uma string ou um template."
 
 #: workflow_actions.py:39
 msgid "Modify document properties"
@@ -920,11 +920,11 @@ msgid ""
 " log entry instance as part of their context via the variable \"entry_log\"."
 " The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
 " \"transition\", \"user\", and \"comment\" attributes."
-msgstr "Pode ser um endereço de IP, um domínio ou um modelo. Modelos recebem a instância de entrada de registro do workflow como parte de seus contextos através da variável \"entry_log\". A \"entry_log\" por sua vez provê os atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\", e \"comment\"."
+msgstr "Pode ser um endereço de IP, um domínio ou um template. Templates recebem a instância de entrada de log do workflow como parte de seus contextos através da variável \"entry_log\". A \"entry_log\" por sua vez provê os atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\", e \"comment\"."
 
 #: workflow_actions.py:102
 msgid "Timeout"
-msgstr "Tempo de expiração"
+msgstr "Timeout"
 
 #: workflow_actions.py:105
 msgid ""
@@ -943,7 +943,7 @@ msgid ""
 " part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr "Um documento JSON a ser incluído na requisição. Também pode ser um modelo que retorne um documento JSON. Modelos recebem a instância de entrada de registro do workflow como parte de seus contextos através da variável \"entry_log\". A \"entry_log\" por sua vez provê os atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\", e \"comment\"."
+msgstr "Um documento JSON a ser incluído na requisição. Também pode ser um template que retorne um documento JSON. Templates recebem a instância de entrada de log do workflow como parte de seus contextos através da variável \"entry_log\". A \"entry_log\" por sua vez provê os atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\", e \"comment\"."
 
 #: workflow_actions.py:124
 msgid "Username"

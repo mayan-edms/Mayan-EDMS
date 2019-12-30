@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 00:38-0400\n"
+"POT-Creation-Date: 2019-12-30 02:28-0400\n"
 "PO-Revision-Date: 2019-12-20 12:43+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -47,7 +47,7 @@ msgstr "Nivel"
 msgid "Levels"
 msgstr "Niveluri"
 
-#: apps.py:162 apps.py:180 models.py:360
+#: apps.py:162 apps.py:180 models.py:379
 msgid "Documents"
 msgstr "Documente"
 
@@ -137,86 +137,86 @@ msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr "Cauză pentru acest index să fie vizibil și actualizat când documentul suferă schimbări."
 
-#: models.py:50 models.py:237
+#: models.py:50 models.py:254
 msgid "Enabled"
 msgstr "Activat"
 
-#: models.py:61 models.py:221
+#: models.py:61 models.py:238
 msgid "Index"
 msgstr "Index"
 
-#: models.py:193
+#: models.py:210
 msgid "Index instance"
 msgstr "Exemplu de index"
 
-#: models.py:194
+#: models.py:211
 msgid "Index instances"
 msgstr "Exemple de index-uri"
 
-#: models.py:225
+#: models.py:242
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr "Introduceți un șablon pentru a fi afișat. Utilizați limbajul templating implicit al lui Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
-#: models.py:229
+#: models.py:246
 msgid "Indexing expression"
 msgstr "Expresie de indexare"
 
-#: models.py:234
+#: models.py:251
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr "Va face ca acest nod să fie vizibil și actualizat la modificarea datelor documentului."
 
-#: models.py:242
+#: models.py:259
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
 msgstr "Bifați această opțiune pentru a avea acest nod ca un container pentru documente și nu ca un părinte pentru nodurile suplimentare."
 
-#: models.py:245
+#: models.py:262
 msgid "Link documents"
 msgstr "Leagă documente"
 
-#: models.py:249
+#: models.py:266
 msgid "Index node template"
 msgstr "Șablon pt. nod index"
 
-#: models.py:250
+#: models.py:267
 msgid "Indexes node template"
 msgstr "Șabloane pt. noduri index"
 
-#: models.py:254
+#: models.py:271
 msgid "Root"
 msgstr "Rădăcină"
 
-#: models.py:310
+#: models.py:326
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "Eroare la indexarea ducumentuluir: %(document)s; expresie: %(expression)s; %(exception)s"
 
-#: models.py:353
+#: models.py:372
 msgid "Index template node"
 msgstr "Nodul șablonului de index"
 
-#: models.py:356
+#: models.py:375
 msgid "Value"
 msgstr "Valoare"
 
-#: models.py:366
+#: models.py:385
 msgid "Index node instance"
 msgstr "Instanță a  nodului index"
 
-#: models.py:367
+#: models.py:386
 msgid "Indexes node instances"
 msgstr "Instanțele nodurilor index"
 
-#: models.py:481
+#: models.py:500
 msgid "Document index node instance"
 msgstr "Exemplu de nod index document"
 
-#: models.py:482
+#: models.py:501
 msgid "Document indexes node instances"
 msgstr "Documentul indexează instanțele de noduri"
 
