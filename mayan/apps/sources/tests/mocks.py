@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.utils.encoding import force_text
+from django.utils.encoding import force_bytes, force_text
 
 from .literals import TEST_EMAIL_BASE64_FILENAME
 
@@ -10,9 +10,6 @@ class MockIMAPMessage(object):
         self.flags = []
         self.mailbox = None
         self.uid = uid
-
-    def delete(self):
-        self.mailbox.messages.pop(self.uid)
 
     def flags_add(self, flags_string):
         for flag in flags_string.split():
@@ -26,6 +23,9 @@ class MockIMAPMessage(object):
 
     def flags_set(self, flags_string):
         self.flags = flags_string.split()
+
+    def delete(self):
+        self.mailbox.messages.pop(self.uid)
 
     def get_flags(self):
         return ' '.join(self.flags)
@@ -219,28 +219,70 @@ class MockIMAPServer(object):
 
 
 class MockPOP3Mailbox(object):
+    """RFC 1725"""
+    messages = {
+        1: [TEST_EMAIL_BASE64_FILENAME]
+    }
+
     def dele(self, which):
         return
 
     def getwelcome(self):
-        return
+        return force_bytes(
+            '+OK server ready for requests from 127.0.0.0 xxxxxxxxxxxxxxxxx'
+        )
 
     def list(self, which=None):
-        return (None, ['1 test'])
+        # (b'+OK 7 messages (304882 bytes)',
+        # [b'1 4800',
+        #  b'2 16995',
+        #  b'3 12580',
+        #  b'4 196497',
+        #  b'5 48900',
+        #  b'6 12555',
+        #  b'7 12555'],
+        #  63)
+
+        message_list = []
+        message_number = 1
+        messages_total_size = 0
+
+        for key, value in self.messages.items():
+            message_size = 0
+            for line in value:
+                message_size = message_size + len(line)
+
+            messages_total_size = messages_total_size + message_size
+            message_list.append(
+                force_bytes('{} {}'.format(message_number, message_size))
+            )
+
+            message_number = message_number + 1
+
+        # Sum the line sizes in bytes plus 2 (CR+LF)
+        result_size = sum(
+            [len(message_entry) + 2 for message_entry in message_list]
+        )
+
+        return (
+            force_bytes(
+                '+OK {} messages ({} bytes)'.format(
+                    len(self.messages), messages_total_size
+                )
+            ), message_list, result_size
+        )
 
     def user(self, user):
-        return
+        return force_bytes('+OK send PASS')
 
     def pass_(self, pswd):
-        return
+        return force_bytes('+OK Welcome.')
 
     def quit(self):
         return
 
-    def retr(self, which=None):
-        return (
-            1, [TEST_EMAIL_BASE64_FILENAME]
-        )
+    def retr(self, which):
+        return (None, self.messages[which], None)
 
 
 class MockStagingFolder(object):

@@ -7,7 +7,7 @@ import poplib
 from django.core.exceptions import ValidationError
 from django.core.files.base import ContentFile
 from django.db import models
-from django.utils.encoding import force_bytes
+from django.utils.encoding import force_bytes, force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_load
@@ -373,6 +373,7 @@ class POP3Email(EmailBaseModel):
         server.getwelcome()
         server.user(self.username)
         server.pass_(self.password)
+
         messages_info = server.list()
 
         logger.debug(msg='messages_info:')
@@ -381,13 +382,16 @@ class POP3Email(EmailBaseModel):
 
         for message_info in messages_info[1]:
             message_number, message_size = message_info.split()
+            message_number = int(message_number)
+
             logger.debug('message_number: %s', message_number)
             logger.debug('message_size: %s', message_size)
 
-            complete_message = '\n'.join(server.retr(message_number)[1])
+            message_lines = server.retr(which=message_number)[1]
+            message_complete = force_text(b'\n'.join(message_lines))
 
             EmailBaseModel.process_message(
-                source=self, message_text=complete_message
+                source=self, message_text=message_complete
             )
             if not test:
                 server.dele(which=message_number)

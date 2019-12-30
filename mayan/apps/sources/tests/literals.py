@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from django.utils.encoding import force_bytes
+
 TEST_EMAIL_ATTACHMENT_AND_INLINE = '''Subject: Test 03: inline and attachments
 To: Renat Gilmanov
 Content-Type: multipart/mixed; boundary=001a11c24d809f1525051712cc78
@@ -39,7 +41,7 @@ Content-Type: image/png; name="test-02.png"
 Content-Disposition: attachment; filename="test-02.png"
 Content-Transfer-Encoding: base64
 X-Attachment-Id: f_ia6yymei1'''
-TEST_EMAIL_BASE64_FILENAME = '''From: noreply@example.com
+TEST_EMAIL_BASE64_FILENAME = force_bytes('''From: noreply@example.com
 To: test@example.com
 Subject: Scan to E-mail Server Job
 Date: Tue, 23 May 2017 23:03:37 +0200
@@ -63,7 +65,7 @@ Content-Disposition: attachment; filename="=?UTF-8?B?QW1wZWxtw6RubmNoZW4udHh0?="
 
 SGFsbG8gQW1wZWxtw6RubmNoZW4hCg==
 
---RS1tYWlsIENsaWVudA==--'''
+--RS1tYWlsIENsaWVudA==--''')
 TEST_EMAIL_BASE64_FILENAME_FROM = 'noreply@example.com'
 TEST_EMAIL_BASE64_FILENAME_SUBJECT = 'Scan to E-mail Server Job'
 TEST_EMAIL_NO_CONTENT_TYPE = '''MIME-Version: 1.0
