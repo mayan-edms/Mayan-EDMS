@@ -1,8 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
 import hashlib
+import unittest
 
 from fuse import FuseOSError
+
+from django.db import connection
 
 from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.documents.models import Document
@@ -19,6 +22,7 @@ from .literals import (
 )
 
 
+@unittest.skipIf(connection.vendor=='mysql', 'Known to fail due to unsupported feature of database manager.')
 class IndexFilesystemTestCase(
     IndexTestMixin, DocumentTestMixin, BaseTestCase
 ):
