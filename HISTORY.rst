@@ -38,6 +38,10 @@
   the object is appended to the label inside parenthesis. Closes
   GitLab issue #722. Thanks to Rob de Canha-Knight (@rssfed23) for the
   report and research.
+- Fix workflow document signing action. Also add message when trying to use
+  action for an initial state when the created document has no version
+  associated. GitLab issue #726. Thanks to forum user @holzhannes for the
+  report.
 
 3.3.6 (2019-12-19)
 ==================

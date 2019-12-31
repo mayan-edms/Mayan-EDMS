@@ -8,6 +8,7 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.django_gpg.models import Key
 from mayan.apps.django_gpg.permissions import permission_key_sign
 from mayan.apps.document_states.classes import WorkflowAction
+from mayan.apps.document_states.exceptions import WorkflowStateActionError
 
 from .models import DetachedSignature, EmbeddedSignature
 
@@ -42,6 +43,23 @@ class DocumentSignatureDetachedAction(WorkflowAction):
         }
     }
 
+    def get_arguments(self, context):
+        latest_version = context['document'].latest_version
+        if not latest_version:
+            raise WorkflowStateActionError(
+                _(
+                    'Document has no version to sign. You might be trying to '
+                    'use this action in an initial state before the created '
+                    'document is yet to be processed.'
+                )
+            )
+
+        return {
+            'document_version': latest_version,
+            'key': Key.objects.get(pk=self.form_data['key']),
+            'passphrase': self.form_data.get('passphrase')
+        }
+
     def get_form_schema(self, request):
         user = request.user
         logger.debug('user: %s', user)
@@ -58,9 +76,7 @@ class DocumentSignatureDetachedAction(WorkflowAction):
 
     def execute(self, context):
         DetachedSignature.objects.sign_document_version(
-            document_version=context['document'].latest_version,
-            key=self.form_data['key'],
-            passphrase=self.form_data.get('passphrase'),
+            **self.get_arguments(context=context)
         )
 
 
@@ -69,7 +85,5 @@ class DocumentSignatureEmbeddedAction(DocumentSignatureDetachedAction):
 
     def execute(self, context):
         EmbeddedSignature.objects.sign_document_version(
-            document_version=context['document'].latest_version,
-            key=self.form_data['key'],
-            passphrase=self.form_data.get('passphrase'),
+            **self.get_arguments(context=context)
         )
