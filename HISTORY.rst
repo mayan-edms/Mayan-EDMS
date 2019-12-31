@@ -1,4 +1,4 @@
-3.3.7 (2019-12-XX)
+3.3.7 (2019-12-31)
 ==================
 - Use Python Redis client 3.3.11 to enable .client() method for the Redis
   lock backend. Add version check to the Redis lock backend. GitLab
