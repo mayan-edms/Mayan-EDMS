@@ -9,7 +9,10 @@ from time import time
 from fuse import FuseOSError, Operations
 
 from django.core.exceptions import MultipleObjectsReturned
-from django.db.models import Count, F, Func, Transform, Value
+from django.db.models import (
+    Case, CharField, Count, F, Func, Transform, Value, When
+)
+from django.db.models.functions import Concat
 
 from mayan.apps.document_indexing.models import Index, IndexInstanceNode
 from mayan.apps.documents.models import Document
@@ -30,16 +33,90 @@ class Trim(Transform):
 
 class IndexFilesystem(Operations):
     @staticmethod
-    def _clean_queryset(queryset):
+    def _clean_queryset(queryset, source_field_name, destination_field_name):
+        queryset = IndexFilesystem._clean_queryset_end_of_lines(
+            queryset=queryset, source_field_name=source_field_name,
+            destination_field_name='_no_newline'
+        )
+
+        queryset = IndexFilesystem._clean_queryset_slashes(
+            queryset=queryset, source_field_name='_no_newline'
+        )
+
+        return IndexFilesystem._clean_queryset_duplicates(
+            queryset=queryset, destination_field_name=destination_field_name
+        )
+
+    @staticmethod
+    def _clean_queryset_end_of_lines(
+        queryset, source_field_name='value',
+        destination_field_name='clean_value'
+    ):
         # Remove newline carriage returns and the first and last space
-        # to make multiline indexes
-        # valid directoy names
+        # to make multiline indexes valid directoy names
         return queryset.annotate(
-            clean_value=Trim(
-                Func(
-                    F('value'), Value('\r\n'), Value(' '), function='replace'
-                ),
-            )
+            **{
+                destination_field_name: Trim(
+                    Func(
+                        F(source_field_name), Value('\r\n'), Value(' '),
+                        function='replace', output_field=CharField()
+                    ),
+                )
+            }
+        )
+
+    @staticmethod
+    def _clean_queryset_slashes(
+        queryset, source_field_name, destination_field_name='_no_slashes'
+    ):
+        # This is a conditional expression that is executed only for
+        # items in the queryset that contain a slash ('/') in their source
+        # field. The slash ('/') character is replaced with an
+        # underscore ('_').
+        return queryset.annotate(
+            **{
+                destination_field_name: Case(
+                    When(
+                        **{
+                            '{}__contains'.format(source_field_name): '/',
+                            'then': Func(
+                                F(source_field_name), Value('/'), Value('_'),
+                                function='replace', output_field=CharField()
+                            )
+                        }
+                    ),
+                    default=source_field_name
+                )
+            }
+        )
+
+    @staticmethod
+    def _clean_queryset_duplicates(
+        queryset, source_field_name='_no_slashes', destination_field_name='_deduplicated'
+    ):
+        # Make second queryset of all duplicates
+        repeats = queryset.values(source_field_name).annotate(
+            repeated_count=Count(source_field_name)
+        ).filter(repeated_count__gt=1).values(source_field_name)
+
+        # This is a conditional expression that is executed only for
+        # duplicates. The primary key is appended inside a parethesis to
+        # the source field.
+        return queryset.annotate(
+            **{
+                destination_field_name: Case(
+                    When(
+                        **{
+                            '{}__in'.format(source_field_name): repeats,
+                            'then': Concat(
+                                F(source_field_name), Value('('), F('pk'),
+                                Value(')'), output_field=CharField()
+                            )
+                        }
+                    ),
+                    default=source_field_name
+                )
+            }
         )
 
     def _get_next_file_descriptor(self):
@@ -84,7 +161,11 @@ class IndexFilesystem(Operations):
 
             for count, part in enumerate(parts[1:]):
                 try:
-                    node = IndexFilesystem._clean_queryset(node.get_children()).get(clean_value=part)
+                    node = IndexFilesystem._clean_queryset(
+                        queryset=node.get_children(),
+                        source_field_name='value',
+                        destination_field_name='value_clean'
+                    ).get(value_clean=part)
                 except IndexInstanceNode.DoesNotExist:
                     logger.debug('%s does not exists', part)
 
@@ -93,7 +174,12 @@ class IndexFilesystem(Operations):
                     else:
                         try:
                             if node.index_template_node.link_documents:
-                                document = node.documents.get(label=part)
+                                document = IndexFilesystem._clean_queryset(
+                                    queryset=node.documents,
+                                    source_field_name='label',
+                                    destination_field_name='label_clean'
+                                ).get(label_clean=part)
+
                                 logger.debug(
                                     'path %s is a valid file path', path
                                 )
@@ -194,29 +280,24 @@ class IndexFilesystem(Operations):
         yield '..'
 
         # Index instance nodes to directories
-        queryset = IndexFilesystem._clean_queryset(node.get_children()).exclude(
-            clean_value__contains='/'
-        ).values('clean_value')
+        queryset = IndexFilesystem._clean_queryset(
+            queryset=node.get_children(), source_field_name='value',
+            destination_field_name='value_clean'
+        )
 
-        # Find nodes with the same resulting value and remove them
-        for duplicate in queryset.order_by().annotate(count_id=Count('id')).filter(count_id__gt=1):
-            queryset = queryset.exclude(clean_value=duplicate['clean_value'])
-
-        for value in queryset.values_list('clean_value', flat=True):
+        for value in queryset.values_list('value_clean', flat=True):
             yield value
 
         # Documents
         if node.index_template_node.link_documents:
-            queryset = node.documents.values('label').exclude(
-                label__contains='/'
+
+            queryset = IndexFilesystem._clean_queryset(
+                queryset=node.documents, source_field_name='label',
+                destination_field_name='label_clean'
             )
 
-            # Find duplicated document and remove them
-            for duplicate in queryset.order_by().annotate(count_id=Count('id')).filter(count_id__gt=1):
-                queryset = queryset.exclude(label=duplicate['label'])
-
-            for document_label in queryset.values_list('label', flat=True):
-                yield document_label
+            for value in queryset.values_list('label_clean', flat=True):
+                yield value
 
     def release(self, path, fh):
         self.file_descriptors[fh] = None
