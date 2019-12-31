@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-30 02:28-0400\n"
-"PO-Revision-Date: 2019-12-08 19:18+0000\n"
-"Last-Translator: Olivier W\n"
+"POT-Creation-Date: 2019-12-31 04:27-0400\n"
+"PO-Revision-Date: 2019-12-31 08:31+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,17 +48,17 @@ msgstr "Aucune"
 msgid "Type"
 msgstr "Type"
 
-#: forms.py:19 forms.py:33 workflow_actions.py:20
+#: forms.py:19 forms.py:33 workflow_actions.py:21
 msgid "Key"
 msgstr "Clé"
 
-#: forms.py:24 serializers.py:35 workflow_actions.py:31
+#: forms.py:24 serializers.py:35 workflow_actions.py:32
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
 msgstr "La phrase secrète permettant de déverrouiller la clé pour pouvoir signer la version du document."
 
-#: forms.py:26 workflow_actions.py:28
+#: forms.py:26 workflow_actions.py:29
 msgid "Passphrase"
 msgstr "Phrase secrète"
 
@@ -323,14 +323,20 @@ msgstr "Vérifier les signatures de tous les documents ?"
 msgid "Signature verification queued successfully."
 msgstr "Vérification de la signature ajoutée à la file d'attente avec succès."
 
-#: workflow_actions.py:23
+#: workflow_actions.py:24
 msgid "Private key that will be used to sign the document version."
 msgstr "Clé privée qui sera utilisée pour signer la version du document."
 
-#: workflow_actions.py:38
+#: workflow_actions.py:39
 msgid "Sign document (detached)"
 msgstr "Signer le document (détachée)"
 
-#: workflow_actions.py:68
+#: workflow_actions.py:51
+msgid ""
+"Document has no version to sign. You might be trying to use this action in "
+"an initial state before the created document is yet to be processed."
+msgstr ""
+
+#: workflow_actions.py:84
 msgid "Sign document (embedded)"
 msgstr "Signer le document (intégrée)"

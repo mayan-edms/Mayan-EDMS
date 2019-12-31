@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-30 02:28-0400\n"
-"PO-Revision-Date: 2019-12-03 05:22+0000\n"
+"POT-Creation-Date: 2019-12-31 04:27-0400\n"
+"PO-Revision-Date: 2019-12-31 08:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -42,17 +42,17 @@ msgstr "Brak"
 msgid "Type"
 msgstr "Typ"
 
-#: forms.py:19 forms.py:33 workflow_actions.py:20
+#: forms.py:19 forms.py:33 workflow_actions.py:21
 msgid "Key"
 msgstr "Klucz"
 
-#: forms.py:24 serializers.py:35 workflow_actions.py:31
+#: forms.py:24 serializers.py:35 workflow_actions.py:32
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
 msgstr ""
 
-#: forms.py:26 workflow_actions.py:28
+#: forms.py:26 workflow_actions.py:29
 msgid "Passphrase"
 msgstr ""
 
@@ -317,14 +317,20 @@ msgstr ""
 msgid "Signature verification queued successfully."
 msgstr ""
 
-#: workflow_actions.py:23
+#: workflow_actions.py:24
 msgid "Private key that will be used to sign the document version."
 msgstr ""
 
-#: workflow_actions.py:38
+#: workflow_actions.py:39
 msgid "Sign document (detached)"
 msgstr ""
 
-#: workflow_actions.py:68
+#: workflow_actions.py:51
+msgid ""
+"Document has no version to sign. You might be trying to use this action in "
+"an initial state before the created document is yet to be processed."
+msgstr ""
+
+#: workflow_actions.py:84
 msgid "Sign document (embedded)"
 msgstr ""
