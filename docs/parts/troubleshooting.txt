@@ -83,6 +83,39 @@ References:
 - https://www.spinics.net/lists/linux-unionfs/msg06316.html
 
 
+Error: ``IOError: [Errno 37] No locks available`` when using a NFS volume for $MAYAN_MEDIA_ROOT
+-----------------------------------------------------------------------------------------------
+
+This is caused by an upstream Django issue and occurrs when using a NFS volume for $MAYAN_MEDIA_ROOT.
+File lock issues can prevent mayan from generating the static media inside $MAYAN_MEDIA_ROOT.
+
+If you're using NFSv3, ensure that rcp.statd is running on the NFS client (called nfs-lock on some distributions)
+and that ``no_auth_nlm`` is set in ``/etc/exports`` on the NFS Server. 
+NFSv4 has locking built in so does not require rcp.statd, but may require ``no_auth_nlm`` set on the NFS Server.
+
+A workaround if the issue persists after applying the above is to deploy Mayan with a NFS $MAYAN_MEDIA_ROOT with 
+a local-only volume for $MAYAN_MEDIA_ROOT/static. An example volume section inside docker-compose::
+
+    	volumes:
+	  # $MAYAN_MEDIA_ROOT can be mounted to nfs and shared between nodes. Change /mnt/mayan-shared
+          # to the path of the mounted NFS export
+	  - /mnt/mayan-shared/media:/var/lib/mayan
+   
+	  # $MAYAN_MEDIA_ROOT/static must be local to avoid locking issues
+	  - /docker-volume/static:/var/lib/mayan/static
+
+	  # Other mounts (such as watch folder). Must be on a different NFS export to avoid lock issues
+	  - /mnt/watch:/srv/watch_folder
+
+Alternatively, you can use non-NFS backed volumes for the whole $MAYAN_MEDIA_ROOT share where no local 
+static directory is required. Samba and iSCSI are known to work.
+
+References:
+
+- https://gitlab.com/mayan-edms/mayan-edms/issues/493
+- https://gitlab.com/mayan-edms/mayan-edms/issues/551
+- https://code.djangoproject.com/ticket/9400
+
 
 Passwords
 =========
