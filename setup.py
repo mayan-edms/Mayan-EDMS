@@ -56,7 +56,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-django==1.11.26
+django==1.11.27
 Pillow==6.2.1
 PyPDF2==1.26.0
 PyYAML==5.1.2
