@@ -49,7 +49,7 @@ CONVERTER_OFFICE_FILE_MIMETYPES = (
     'text/rtf',
 )
 
-if platform.system() in ('FreeBSD', 'OpenBSD'):
+if platform.system() in ('FreeBSD', 'OpenBSD', 'Darwin'):
     DEFAULT_LIBREOFFICE_PATH = '/usr/local/bin/libreoffice'
     DEFAULT_PDFINFO_PATH = '/usr/local/bin/pdfinfo'
     DEFAULT_PDFTOPPM_PATH = '/usr/local/bin/pdftoppm'
