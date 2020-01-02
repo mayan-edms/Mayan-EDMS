@@ -2,6 +2,8 @@
 ==================
 - Update literals so the correct paths of pdfinfo, pdftoppm, libreoffice,
   exiftool and tesseract are found. Relates to Gitlab issue #308
+- Fix document detached signing. Closes GitLab issue #732. 
+  Thanks to holzhannes(@holzhannes) for the report and debug information.
 
 3.3.7 (2019-12-31)
 ==================
