@@ -1,3 +1,8 @@
+3.3.8 (2020-01-XX)
+==================
+- Update literals so the correct paths of pdfinfo, pdftoppm, libreoffice,
+  exiftool and tesseract are found. Relates to Gitlab issue #308
+
 3.3.7 (2019-12-31)
 ==================
 - Use Python Redis client 3.3.11 to enable .client() method for the Redis
