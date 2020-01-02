@@ -8,7 +8,7 @@ import mock
 from pathlib2 import Path
 
 from django.core import mail
-from django.utils.encoding import force_text
+from django.utils.encoding import force_bytes, force_text
 
 from django_celery_beat.models import PeriodicTask
 
@@ -25,6 +25,7 @@ from mayan.apps.storage.utils import mkdtemp
 
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models.email_sources import EmailBaseModel, IMAPEmail, POP3Email
+from ..models.scanner_sources import SaneScanner
 
 from .literals import (
     TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_EMAIL_BASE64_FILENAME,
@@ -302,6 +303,20 @@ class IntervalSourceTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
 
         self.test_document_type.delete()
         self.assertTrue(PeriodicTask.objects.count() < periodic_task_count)
+
+
+class SANESourceTestCase(GenericDocumentTestCase):
+    auto_upload_document = False
+
+    def _create_test_scanner_source(self):
+        self.test_source = SaneScanner.objects.create(
+            label='', device_name=''
+        )
+
+    def test_command(self):
+        self._create_test_scanner_source()
+        file_object = self.test_source.execute_command(arguments=('-V',))
+        self.assertTrue(force_bytes('sane') in file_object.read())
 
 
 class POP3SourceTestCase(GenericDocumentTestCase):
