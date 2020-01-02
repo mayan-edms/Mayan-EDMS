@@ -63,7 +63,7 @@ class DetachedSignatureDocumentAPIViewTestCase(
 
     def test_document_signature_detached_delete_no_permission(self):
         self.upload_document()
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         signatures = self.test_document.latest_version.signatures.count()
 
@@ -77,7 +77,7 @@ class DetachedSignatureDocumentAPIViewTestCase(
 
     def test_document_signature_detached_delete_with_access(self):
         self.upload_document()
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         signatures = self.test_document.latest_version.signatures.count()
 
@@ -96,14 +96,14 @@ class DetachedSignatureDocumentAPIViewTestCase(
 
     def test_document_signature_detached_detail_no_permission(self):
         self.upload_document()
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         response = self._request_test_document_signature_detached_detail_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_signature_detached_detail_with_access(self):
         self.upload_document()
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         self.grant_access(
             obj=self.test_document,
@@ -119,14 +119,14 @@ class DetachedSignatureDocumentAPIViewTestCase(
 
     def test_document_signature_detached_list_view_no_permission(self):
         self.upload_document()
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         response = self._request_test_document_signature_detached_list_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_signature_detached_list_view_with_access(self):
         self.upload_document()
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         self.grant_access(
             obj=self.test_document,

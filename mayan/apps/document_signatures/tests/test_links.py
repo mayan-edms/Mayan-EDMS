@@ -66,7 +66,7 @@ class DocumentSignatureLinksTestCase(
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         self.add_test_view(
             test_object=self.test_document.latest_version.signatures.first()
@@ -81,7 +81,7 @@ class DocumentSignatureLinksTestCase(
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         self.grant_access(
             obj=self.test_document,

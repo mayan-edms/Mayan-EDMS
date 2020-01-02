@@ -38,7 +38,7 @@ class SignaturesViewTestCase(
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         self.grant_access(
             obj=self.test_document,
@@ -53,7 +53,7 @@ class SignaturesViewTestCase(
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         self.grant_access(
             obj=self.test_document,
@@ -72,7 +72,7 @@ class SignaturesViewTestCase(
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         response = self._request_test_document_version_signature_details_view()
         self.assertEqual(response.status_code, 404)
@@ -81,7 +81,7 @@ class SignaturesViewTestCase(
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         self.grant_access(
             obj=self.test_document,
@@ -98,7 +98,7 @@ class SignaturesViewTestCase(
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         response = self._request_test_document_version_signature_list_view(
             document=self.test_document
@@ -109,7 +109,7 @@ class SignaturesViewTestCase(
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         self.grant_access(
             obj=self.test_document,
@@ -282,7 +282,7 @@ class DetachedSignaturesViewTestCase(
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         response = self._request_test_document_version_signature_download_view()
         self.assertEqual(response.status_code, 404)
@@ -291,7 +291,7 @@ class DetachedSignaturesViewTestCase(
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self.upload_document()
 
-        self._create_test_detached_signature()
+        self._upload_test_detached_signature()
 
         self.grant_access(
             obj=self.test_document,
