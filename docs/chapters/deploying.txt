@@ -31,7 +31,7 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: bash
 
-       sudo apt-get install exiftool g++ gcc ghostscript gnupg1 graphviz \
+       sudo apt-get install exiftool g++ gcc coreutils ghostscript gnupg1 graphviz \
        libfuse2 libjpeg-dev libmagic1 libpq-dev libpng-dev libreoffice \
        libtiff-dev poppler-utils postgresql python3-dev python3-virtualenv
        redis-server sane-utils supervisor tesseract-ocr zlib1g-dev -y
@@ -170,9 +170,9 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: bash
 
-       sudo echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
-       sudo echo "save \"\"" >> /etc/redis/redis.conf
-       sudo echo "databases 2" >> /etc/redis/redis.conf
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
        sudo systemctl restart redis
 
 #. Enable and restart the services [1_]:
