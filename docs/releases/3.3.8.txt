@@ -188,5 +188,7 @@ Bugs fixed or issues closed
 
 - :gitlab-issue:`732`
 - :gitlab-merge:`68`
+- :gitlab-merge:`69`
+- :gitlab-merge:`70`
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

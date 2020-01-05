@@ -4,6 +4,9 @@
   exiftool and tesseract are found. Relates to Gitlab issue #308
 - Fix document detached signing. Closes GitLab issue #732. 
   Thanks to holzhannes(@holzhannes) for the report and debug information.
+- Updated direct deployment documentation to advise users installing
+  in a custom directory to verify the automatically generated
+  supervisor configuration file. Addresses GitLab issue #739
 
 3.3.7 (2019-12-31)
 ==================
