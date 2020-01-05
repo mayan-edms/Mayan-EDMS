@@ -310,13 +310,21 @@ class SANESourceTestCase(GenericDocumentTestCase):
 
     def _create_test_scanner_source(self):
         self.test_source = SaneScanner.objects.create(
-            label='', device_name=''
+            label='', device_name='test'
         )
 
     def test_command(self):
         self._create_test_scanner_source()
         file_object = self.test_source.execute_command(arguments=('-V',))
         self.assertTrue(force_bytes('sane') in file_object.read())
+
+    def test_scan(self):
+        self._create_test_scanner_source()
+
+        file_object = self.test_source.get_upload_file_object(
+            form_data={'document_type': self.test_document_type.pk}
+        )
+        self.assertTrue(file_object.size > 0)
 
 
 class POP3SourceTestCase(GenericDocumentTestCase):
