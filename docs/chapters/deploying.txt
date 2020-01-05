@@ -156,6 +156,14 @@ For another setup that offers more performance and scalability refer to the
 
 #. Create the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
 
+   .. note::
+
+       The generated supervisor file assumes Mayan EDMS is being installed
+       into ``|MAYAN_INSTALLATION_DIRECTORY|``. If you are installing
+       Mayan EDMS in a different location, you must manually review the produced
+       ``|MAYAN_SUPERVISOR_CONF|`` file and update all directory references
+       from ``|MAYAN_INSTALLATION_DIRECTORY|`` to match your custom installation directory.
+
    .. code-block:: bash
 
        sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
