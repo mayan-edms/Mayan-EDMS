@@ -186,6 +186,9 @@ authentication. This file can be found on the web at:
 This is a community contributed file. Use the Python settings file method to
 use this file.
 
+If you get a ``No module named 'ldap.filter'`` error when starting Mayan EDMS
+after enabling LDAP, please see https://gitlab.com/mayan-edms/mayan-edms/issues/743
+
 
 Operating systems
 -----------------

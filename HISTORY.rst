@@ -7,6 +7,8 @@
 - Updated direct deployment documentation to advise users installing
   in a custom directory to verify the automatically generated
   supervisor configuration file. Addresses GitLab issue #739
+- Added a note to the LDAP section of the FAQ to assist users with
+  potential local environment issues
 
 3.3.7 (2019-12-31)
 ==================
