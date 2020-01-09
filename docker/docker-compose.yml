@@ -82,6 +82,7 @@ services:
   # Enable to use RabbitMQ
   # rabbitmq:
   #   container_name: mayan-edms-rabbitmq
+  #   hostname: mayan-edms-rabbitmq
   #   image: healthcheck/rabbitmq
   #   environment:
   #     RABBITMQ_DEFAULT_USER: mayan
