@@ -1,10 +1,15 @@
 ============
-File storage
+File Storage
 ============
 
-The files are stored and placed under Mayan EDMS "control" to avoid
-filename clashes each file gets renamed to its ``UUID`` (Universally Unique ID),
-without extension, and stored in a simple flat arrangement in a directory.
+When a document is imported into Mayan EDMS the files are placed under Mayan EDMS
+"control" and stored in a dedicated location. This prevents filename clashes and
+allows Mayan EDMS to store multible Versions of the same Document without the
+user having to manually resolve filename conflicts.
+
+As part of the upload process, each file gets renamed to its ``UUID`` (Universally
+Unique ID), saved without an extension, and stored in a simple flat arrangement
+in a directory.
 
 .. blockdiag::
 
@@ -17,20 +22,34 @@ without extension, and stored in a simple flat arrangement in a directory.
       file -> document;
    }
 
-This doesn't stop access to the files but renaming, moving or updating
-directly them is not recommended because it would throw the database out
-of sync.
+This process doesn't prevent manual access to the files and preserves the integrity
+of stored documents.
 
-Because Mayan EDMS components are as decoupled from each other as possible,
-storage in this case is decoupled and its behavior is controlled
-not by the project but by the ``Storage`` module class. All the other
-modules don't make any assumptions about how the actual document files are
-stored. This way files can be saved locally, over the network or even across
-the Internet and everything will still operate exactly the same.
+   .. warning::
 
-The default file storage backend: ``storage.backends.filebasedstorage.FileBasedStorage``
-is a simple backend that only supports paths and not IP addresses. In case you
-are interested in using remote volumes to store documents (NFS, SAMBA), first
-mount these volumes so that they appear as a directories to Mayan EDMS. For
-direct support for remote volumes a custom backend would be needed such as those
-provided by the Django Storages project (https://django-storages.readthedocs.org/en/latest/).
+       Avoid renaming, moving or updating documents directly on the 
+       filesystem. Manual changes can cause the database to become
+       out of sync with the actual state of the files. Mayan EDMS provides
+       tools for non-destructive editing of documents through :doc:`../chapters/transformations`
+       and automatic management of document updates through :doc:`../chapters/versioning`
+
+
+Mayan EDMS components are decoupled from each other as much as possible, as such
+storage within Mayan EDMS is also decoupled, and storage behavior is controlled
+not by the project, but by the ``Storage`` module class. All other
+modules make no assumptions about how the actual document files are
+stored. This way, files can be saved locally, over the network or even across
+the Internet and everything will be transparant to Mayan EDMS itself as well
+as users working on the system.
+
+The default file storage backend - ``storage.backends.filebasedstorage.FileBasedStorage`` - 
+is a simple storage backend that only supports paths on the local filesystem, rather than 
+remote or shared storage (such as SMB/NFS).
+If you are interested in using remote storage to store documents (NFS, SMB), first
+mount these volumes so that they appear as standard filesystem directories to Mayan EDMS.
+
+For direct support of remote volumes, a different storage backend would be needed,
+such as those provided by the Django Storages project
+(https://django-storages.readthedocs.org/en/latest/).
+
+A supported example of this is S3 :doc:`../chapters/object_storage`
