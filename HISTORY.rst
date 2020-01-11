@@ -14,7 +14,8 @@
 - Improve the File Storage section of the Documentation
 - Add support and documentation for S3 storage backend
 - Update documenation push CI stage to delete existing files before
-  uploading new content.
+  uploading new content. GitLab issue #721. Thanks to Chris Whitten
+  (@whit1206) for the report.
 
 3.3.7 (2019-12-31)
 ==================
