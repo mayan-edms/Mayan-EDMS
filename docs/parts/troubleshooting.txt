@@ -73,12 +73,12 @@ Docker will create a randomly generated hostname for each container every
 time you deploy a new container instance.
 
 RabbitMQ stores persistent message/queue data using a folder structure
-based off a node's hostname. 
+based off a node's hostname.
 If you do not set a static container hostname, then RabbitMQ will loose
 any unprocessed messages if you launch a new RabbitMQ container or
-do a docker-compose down/up. 
+do a docker-compose down/up.
 
-This happens even if you use a persistent volume (``docker run -v``). 
+This happens even if you use a persistent volume (``docker run -v``).
 
 This will result in tasks being lost and may be the reason a document has
 not been OCR'd or processed completely.
@@ -92,19 +92,19 @@ such as:
 
 For Docker Compose::
 
-		rabbitmq:
-		  container_name: mayan-edms-rabbitmq
-		  image: rabbitmq:3-management
-		  hostname: mayan-edms-rabbitmq
-		  environment:
-		  RABBITMQ_DEFAULT_USER: mayan
-		  RABBITMQ_DEFAULT_PASS: mayanrabbitpass
-		  RABBITMQ_DEFAULT_VHOST: mayan
-		  networks:
-		  - mayan-bridge
-		  restart: unless-stopped
-		  volumes:
-		  - /docker-volumes/mayan-edms/rabbitmq:/var/lib/rabbitmq
+    rabbitmq:
+        container_name: mayan-edms-rabbitmq
+        image: rabbitmq:3-management
+        hostname: mayan-edms-rabbitmq
+        environment:
+        RABBITMQ_DEFAULT_USER: mayan
+        RABBITMQ_DEFAULT_PASS: mayanrabbitpass
+        RABBITMQ_DEFAULT_VHOST: mayan
+        networks:
+        - mayan-bridge
+        restart: unless-stopped
+        volumes:
+        - /docker-volumes/mayan-edms/rabbitmq:/var/lib/rabbitmq
 
 References:
 - https://stackoverflow.com/questions/41330514/docker-rabbitmq-persistency
@@ -135,24 +135,24 @@ This is caused by an upstream Django issue and occurrs when using a NFS volume f
 File lock issues can prevent mayan from generating the static media inside $MAYAN_MEDIA_ROOT.
 
 If you're using NFSv3, ensure that rcp.statd is running on the NFS client (called nfs-lock on some distributions)
-and that ``no_auth_nlm`` is set in ``/etc/exports`` on the NFS Server. 
+and that ``no_auth_nlm`` is set in ``/etc/exports`` on the NFS Server.
 NFSv4 has locking built in so does not require rcp.statd, but may require ``no_auth_nlm`` set on the NFS Server.
 
-A workaround if the issue persists after applying the above is to deploy Mayan with a NFS $MAYAN_MEDIA_ROOT with 
+A workaround if the issue persists after applying the above is to deploy Mayan with a NFS $MAYAN_MEDIA_ROOT with
 a local-only volume for $MAYAN_MEDIA_ROOT/static. An example volume section inside docker-compose::
 
-    	volumes:
-	  # $MAYAN_MEDIA_ROOT can be mounted to nfs and shared between nodes. Change /mnt/mayan-shared
-          # to the path of the mounted NFS export
-	  - /mnt/mayan-shared/media:/var/lib/mayan
-   
-	  # $MAYAN_MEDIA_ROOT/static must be local to avoid locking issues
-	  - /docker-volume/static:/var/lib/mayan/static
+    volumes:
+    # $MAYAN_MEDIA_ROOT can be mounted to nfs and shared between nodes. Change /mnt/mayan-shared
+    # to the path of the mounted NFS export
+    - /mnt/mayan-shared/media:/var/lib/mayan
 
-	  # Other mounts (such as watch folder). Must be on a different NFS export to avoid lock issues
-	  - /mnt/watch:/srv/watch_folder
+    # $MAYAN_MEDIA_ROOT/static must be local to avoid locking issues
+    - /docker-volume/static:/var/lib/mayan/static
 
-Alternatively, you can use non-NFS backed volumes for the whole $MAYAN_MEDIA_ROOT share where no local 
+    # Other mounts (such as watch folder). Must be on a different NFS export to avoid lock issues
+    - /mnt/watch:/srv/watch_folder
+
+Alternatively, you can use non-NFS backed volumes for the whole $MAYAN_MEDIA_ROOT share where no local
 static directory is required. Samba and iSCSI are known to work.
 
 References:
@@ -160,6 +160,18 @@ References:
 - https://gitlab.com/mayan-edms/mayan-edms/issues/493
 - https://gitlab.com/mayan-edms/mayan-edms/issues/551
 - https://code.djangoproject.com/ticket/9400
+
+
+LDAP
+====
+
+If you get a ``No module named 'ldap.filter'`` error when starting Mayan EDMS
+after enabling LDAP, make sure your LDAP settings module is not using
+the same name as a Python or Django library. Instead of using ``ldap.py`` for
+your settings module, use something like ``ldaplogin.py``.
+
+References:
+- https://gitlab.com/mayan-edms/mayan-edms/issues/743
 
 
 Passwords
