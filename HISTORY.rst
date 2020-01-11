@@ -13,6 +13,8 @@
   are persistant
 - Improve the File Storage section of the Documentation
 - Add support and documentation for S3 storage backend
+- Update documenation push CI stage to delete existing files before
+  uploading new content.
 
 3.3.7 (2019-12-31)
 ==================

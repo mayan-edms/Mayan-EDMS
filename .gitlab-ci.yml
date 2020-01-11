@@ -98,6 +98,7 @@ job_documentation_push:
     - eval $(ssh-agent -s)
     - echo "$DOCUMENTATION_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
   script:
+    - ssh mayandocs@docs.mayan-edms.com "rm -Rf /home/rosarior/webapps/mayan_docs/*"
     - rsync -avzP --progress -e ssh docs/_build/html/* mayandocs@docs.mayan-edms.com:/home/rosarior/webapps/mayan_docs
   only:
     - releases/all
