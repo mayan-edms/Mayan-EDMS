@@ -16,6 +16,10 @@
 - Update documenation push CI stage to delete existing files before
   uploading new content. GitLab issue #721. Thanks to Chris Whitten
   (@whit1206) for the report.
+- Ensure that the model property choice field of the template widget
+  is never required, regarless of the required setting of the template
+  field. GitLab issue #748. Thanks to forum user chrimpshrine for the
+  report.
 
 3.3.7 (2019-12-31)
 ==================

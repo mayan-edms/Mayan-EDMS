@@ -26,6 +26,11 @@ class TemplateWidget(NamedMultiWidget):
             widgets=widgets, attrs=attrs, **kwargs
         )
 
+    def get_context(self, name, value, attrs):
+        result = super(TemplateWidget, self).get_context(name, value, attrs)
+        result['widget']['subwidgets'][0]['attrs']['required'] = False
+        return result
+
     def decompress(self, value):
         choices = ModelProperty.get_choices_for(
             model=self.attrs['model']
