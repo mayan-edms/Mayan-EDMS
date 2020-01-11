@@ -8,8 +8,11 @@ same filesystem as the program code but by using different drivers, these
 can also be placed in other storage systems like object storage.
 
 - :doc:`../chapters/file_storage`
+- :doc:`../chapters/object_storage`
 
 .. toctree::
-    :hidden:
+  :hidden:
 
-    ../chapters/file_storage
+  ../chapters/file_storage
+  ../chapters/object_storage
+    
