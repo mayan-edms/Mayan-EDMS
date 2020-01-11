@@ -7,6 +7,7 @@
 - Updated direct deployment documentation to advise users installing
   in a custom directory to verify the automatically generated
   supervisor configuration file. Addresses GitLab issue #739
+- Improve the File Storage section of the Documentation 
 
 3.3.7 (2019-12-31)
 ==================
