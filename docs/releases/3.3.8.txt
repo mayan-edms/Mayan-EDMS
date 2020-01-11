@@ -186,9 +186,12 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
-- :gitlab-issue:`732`
-- :gitlab-merge:`68`
-- :gitlab-merge:`69`
-- :gitlab-merge:`70`
+- :gitlab-issue:`308` MacOS setup documentation additions
+- :gitlab-issue:`721` Amqp connection refused in new docker setup (ErrNo 111)
+- :gitlab-issue:`732` Sign document (detached) is not working, signature file is not created
+- :gitlab-issue:`739` Generated supervisor configuration refers to nonexisting /opt/mayan-edms
+- :gitlab-merge:`68` Add Darwin to the OS prober check so utilities can be found correctly
+- :gitlab-merge:`69` Documentation: Use Tee Instead of Sudo Redirection
+- :gitlab-merge:`70` Documentation: Show a Note When Generating Supervisor Config
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
