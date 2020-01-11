@@ -50,7 +50,7 @@ I want to join the development team
 Perfect! We need all the help we can get. Tell us where we can see what you've
 done using Mayan EDMS. It could be a fork, a new UI, an API client, a custom app,
 or anything else that you think will be able to evidence your dominion over the
-codebase.
+codebase or concepts.
 
 
 I submitted an issue and it has not been fixed
@@ -81,8 +81,7 @@ open with no resolution are:
   beyond the collective expertise of the development team or that a design
   decision of big impact is needed before code changes can be implemented.
 - The issue is no real. The issue might be for an obsolete version. It could be
-  for a fork or a program that is not developed by us. Sometimes they are just
-  fake issues.
+  for a fork or a program that is not developed by us.
 
 
 I submitted a merge request and has not been merged
