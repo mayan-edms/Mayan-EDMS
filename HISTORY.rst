@@ -25,6 +25,7 @@
 - Improve file metadata property label.
 - Improve file metadata property path reading. Will not error out
   whe passed invalid path to the driver as reference.
+- Make the sandbox template field a required field.
 
 3.3.7 (2019-12-31)
 ==================

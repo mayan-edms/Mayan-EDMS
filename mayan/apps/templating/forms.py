@@ -21,6 +21,6 @@ class DocumentTemplateSandboxForm(forms.Form):
         self.fields['template'] = TemplateField(
             initial_help_text=_('The template string to be evaluated.'),
             label=_('Template'), model=self.model,
-            model_variable=self.model_variable, required=False
+            model_variable=self.model_variable, required=True
         )
         self.order_fields(field_order=('template', 'result'))
