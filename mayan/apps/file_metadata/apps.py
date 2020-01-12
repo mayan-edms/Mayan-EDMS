@@ -93,7 +93,7 @@ class FileMetadataApp(MayanAppConfig):
 
         ModelAttribute(
             model=Document,
-            name='file_metadata_value_of.< dotted path to driver and property >',
+            name='file_metadata_value_of.< underscore separated driver name and property name >',
             description=_(
                 'Return the value of a specific file metadata.'
             ), label=_('File metadata value of')
@@ -111,7 +111,7 @@ class FileMetadataApp(MayanAppConfig):
             name='versions__file_metadata_drivers__entries__key',
         )
         ModelField(
-            label=_('File metadata key'), model=Document,
+            label=_('File metadata value'), model=Document,
             name='versions__file_metadata_drivers__entries__value',
         )
 

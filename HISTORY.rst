@@ -20,6 +20,9 @@
   is never required, regarless of the required setting of the template
   field. GitLab issue #748. Thanks to forum user chrimpshrine for the
   report.
+- Remove repeated raise statement that cause HTML markup to show on 
+  upload error display.
+- Improve file metadata property label.
 
 3.3.7 (2019-12-31)
 ==================
