@@ -18,9 +18,9 @@ from .literals import (
 from .mixins import MetadataTypeTestMixin
 
 
-class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
+class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
     def setUp(self):
-        super(MetadataTestCase, self).setUp()
+        super(MetadataTypeTestCase, self).setUp()
         self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type
@@ -297,3 +297,15 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         self.assertEqual(
             self.test_document.metadata.first().metadata_type, self.test_metadata_type
         )
+
+    def test_delete_metadata_type_present_assigned_as_document_metadata(self):
+        # GitLab issue #753
+        document_metadata = DocumentMetadata(
+            document=self.test_document, metadata_type=self.test_metadata_type,
+            value=TEST_DEFAULT_VALUE
+        )
+
+        document_metadata.full_clean()
+        document_metadata.save()
+
+        self.test_metadata_type.delete()
