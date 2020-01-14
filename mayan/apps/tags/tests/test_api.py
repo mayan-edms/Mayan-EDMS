@@ -126,7 +126,7 @@ class TagDocumentAPIViewTestCase(
         self.test_tag.documents.add(self.test_document)
 
         response = self._request_test_tag_document_list_api_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_tag_document_list_view_with_tag_access(self):
         self._create_test_tag()
@@ -149,7 +149,7 @@ class TagDocumentAPIViewTestCase(
             obj=self.test_document, permission=permission_document_view
         )
         response = self._request_test_tag_document_list_api_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_tag_document_list_view_with_access(self):
         self._create_test_tag()
@@ -173,7 +173,7 @@ class TagDocumentAPIViewTestCase(
         self.upload_document()
 
         response = self._request_test_document_attach_tag_api_view()
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
@@ -186,7 +186,7 @@ class TagDocumentAPIViewTestCase(
         )
 
         response = self._request_test_document_attach_tag_api_view()
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
@@ -199,9 +199,9 @@ class TagDocumentAPIViewTestCase(
         )
 
         response = self._request_test_document_attach_tag_api_view()
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
     def test_document_attach_tag_view_with_full_access(self):
         self._create_test_tag()
@@ -225,7 +225,7 @@ class TagDocumentAPIViewTestCase(
         self.test_tag.documents.add(self.test_document)
 
         response = self._request_test_document_tag_detail_api_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_tag_detail_view_with_document_access(self):
         self._create_test_tag()
@@ -247,7 +247,7 @@ class TagDocumentAPIViewTestCase(
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
 
         response = self._request_test_document_tag_detail_api_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_tag_detail_view_with_full_access(self):
         self._create_test_tag()
@@ -256,7 +256,7 @@ class TagDocumentAPIViewTestCase(
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self.test_document, permission=permission_tag_view
         )
 
         response = self._request_test_document_tag_detail_api_view()
@@ -269,7 +269,7 @@ class TagDocumentAPIViewTestCase(
         self.test_tag.documents.add(self.test_document)
 
         response = self._request_test_document_tag_list_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_tag_list_view_with_document_access(self):
         self._create_test_tag()
@@ -277,7 +277,7 @@ class TagDocumentAPIViewTestCase(
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self.test_document, permission=permission_tag_view
         )
 
         response = self._request_test_document_tag_list_view()
@@ -292,15 +292,15 @@ class TagDocumentAPIViewTestCase(
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
 
         response = self._request_test_document_tag_list_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_tag_list_view_with_access(self):
+    def test_document_tag_list_view_with_full_access(self):
         self._create_test_tag()
         self.upload_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self.test_document, permission=permission_tag_view
         )
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
 
@@ -314,7 +314,7 @@ class TagDocumentAPIViewTestCase(
         self.test_tag.documents.add(self.test_document)
 
         response = self._request_test_document_tag_remove_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
@@ -328,7 +328,7 @@ class TagDocumentAPIViewTestCase(
         )
 
         response = self._request_test_document_tag_remove_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
@@ -340,17 +340,17 @@ class TagDocumentAPIViewTestCase(
         self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
 
         response = self._request_test_document_tag_remove_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
-    def test_document_tag_remove_view_with_access(self):
+    def test_document_tag_remove_view_with_full_access(self):
         self._create_test_tag()
         self.upload_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self.test_document, permission=permission_tag_remove
         )
         self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
 

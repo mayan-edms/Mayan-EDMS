@@ -80,11 +80,12 @@ class APITagDocumentListView(generics.ListAPIView):
     serializer_class = DocumentSerializer
 
     def get_queryset(self):
-        tag = get_object_or_404(klass=Tag, pk=self.kwargs['pk'])
-
-        AccessControlList.objects.check_access(
-            obj=tag, permissions=(permission_tag_view,), user=self.request.user
+        queryset = AccessControlList.objects.restrict_queryset(
+            queryset=Tag.objects.all(), permission=permission_tag_view,
+            user=self.request.user
         )
+
+        tag = get_object_or_404(klass=queryset, pk=self.kwargs['pk'])
 
         return tag.documents.all()
 
@@ -100,19 +101,21 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
     }
 
     def get_document(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['document_pk'])
+        if self.request.method == 'GET':
+            permission = permission_tag_view
+        elif self.request.method == 'POST':
+            permission = permission_tag_attach
 
-    def get_queryset(self):
-        document = self.get_document()
-
-        AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_document_view,),
+        queryset = AccessControlList.objects.restrict_queryset(
+            queryset=Document.objects.all(), permission=permission,
             user=self.request.user
         )
+        return get_object_or_404(
+            klass=queryset, pk=self.kwargs['document_pk']
+        )
 
-        return document.get_tags(
-            permission=permission_tag_view, user=self.request.user
-        ).all()
+    def get_queryset(self):
+        return self.get_document().tags.all()
 
     def get_serializer(self, *args, **kwargs):
         if not self.request:
@@ -156,15 +159,18 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
     serializer_class = DocumentTagSerializer
 
     def get_document(self):
-        document = get_object_or_404(
-            klass=Document, pk=self.kwargs['document_pk']
-        )
+        if self.request.method == 'GET':
+            permission = permission_tag_view
+        elif self.request.method == 'DELETE':
+            permission = permission_tag_remove
 
-        AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_document_view,),
+        queryset = AccessControlList.objects.restrict_queryset(
+            queryset=Document.objects.all(), permission=permission,
             user=self.request.user
         )
-        return document
+        return get_object_or_404(
+            klass=queryset, pk=self.kwargs['document_pk']
+        )
 
     def get_queryset(self):
         return self.get_document().tags.all()

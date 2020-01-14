@@ -1,10 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
 from mayan.apps.acls.models import AccessControlList
@@ -107,19 +106,12 @@ class NewDocumentTagSerializer(serializers.Serializer):
     )
 
     def create(self, validated_data):
-        try:
-            tag = Tag.objects.get(pk=validated_data['tag_pk'])
+        queryset = AccessControlList.objects.restrict_queryset(
+            queryset=Tag.objects.all(), permission=permission_tag_attach,
+            user=self.context['request'].user
+        )
+        tag = get_object_or_404(klass=queryset, pk=validated_data['tag_pk'])
 
-            try:
-                AccessControlList.objects.check_access(
-                    obj=tag, permissions=(permission_tag_attach,),
-                    user=self.context['request'].user
-                )
-            except PermissionDenied:
-                pass
-            else:
-                tag.documents.add(validated_data['document'])
-        except Exception as exception:
-            raise ValidationError(exception)
+        tag.documents.add(validated_data['document'])
 
         return {'tag_pk': tag.pk}
