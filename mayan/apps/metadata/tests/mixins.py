@@ -6,11 +6,18 @@ from ..models import MetadataType
 
 from .literals import (
     TEST_METADATA_TYPE_LABEL_EDITED, TEST_METADATA_TYPE_NAME_EDITED,
-    TEST_METADATA_TYPES_FIXTURES
+    TEST_METADATA_TYPES_FIXTURES, TEST_METADATA_VALUE_EDITED
 )
 
 
 class DocumentMetadataViewTestMixin(object):
+    def _request_test_document_metadata_add_get_view(self):
+        return self.get(
+            viewname='metadata:metadata_add', kwargs={
+                'pk': self.test_document.pk
+            }, data={'metadata_type': self.test_metadata_type.pk}
+        )
+
     def _request_test_document_metadata_add_post_view(self):
         return self.post(
             viewname='metadata:metadata_add', kwargs={
@@ -27,6 +34,33 @@ class DocumentMetadataViewTestMixin(object):
                     metadata_type.pk for metadata_type in self.test_metadata_types
                 ],
             }
+        )
+
+    def _request_test_document_metadata_edit_post_view(self):
+        return self.post(
+            viewname='metadata:metadata_edit', kwargs={
+                'pk': self.test_document.pk
+            }, data={
+                'form-0-id': self.test_metadata_type.pk,
+                'form-0-update': True,
+                'form-0-value': TEST_METADATA_VALUE_EDITED,
+                'form-TOTAL_FORMS': '1',
+                'form-INITIAL_FORMS': '0',
+                'form-MAX_NUM_FORMS': '',
+            }
+        )
+
+    def _request_test_document_metadata_list_view(self):
+        return self.get(
+            viewname='metadata:metadata_view', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_metadata_remove_get_view(self):
+        return self.get(
+            viewname='metadata:metadata_remove',
+            kwargs={'pk': self.test_document.pk}
         )
 
     def _request_test_document_metadata_remove_post_view(self, index=0):
@@ -64,6 +98,39 @@ class MetadataTypeAPIViewTestMixin(object):
             viewname='rest_api:metadatatype-list',
             data=self.test_metadata_types_fixtures_api_views.pop()
         )
+
+    def _request_test_metadata_type_delete_view(self):
+        return self.delete(
+            viewname='rest_api:metadatatype-detail',
+            kwargs={'metadata_type_pk': self.test_metadata_type.pk}
+        )
+
+    def _request_test_metadata_type_detail_view(self):
+        return self.get(
+            viewname='rest_api:metadatatype-detail',
+            kwargs={'metadata_type_pk': self.test_metadata_type.pk}
+        )
+
+    def _request_test_metadata_type_edit_view_via_patch(self):
+        return self.patch(
+            viewname='rest_api:metadatatype-detail',
+            kwargs={'metadata_type_pk': self.test_metadata_type.pk}, data={
+                'label': '{} edited'.format(self.test_metadata_type.label),
+                'name': '{}_edited'.format(self.test_metadata_type.name),
+            }
+        )
+
+    def _request_test_metadata_type_edit_view_via_put(self):
+        return self.put(
+            viewname='rest_api:metadatatype-detail',
+            kwargs={'metadata_type_pk': self.test_metadata_type.pk}, data={
+                'label': '{} edited'.format(self.test_metadata_type.label),
+                'name': '{}_edited'.format(self.test_metadata_type.name),
+            }
+        )
+
+    def _request_test_metadata_type_list_view(self):
+        return self.get(viewname='rest_api:metadatatype-list')
 
 
 class MetadataTypeTestMixin(object):

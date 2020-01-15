@@ -1,17 +1,20 @@
 from __future__ import unicode_literals
 
 from django.core.exceptions import ValidationError as DjangoValidationError
+from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
+from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.serializers import (
     DocumentSerializer, DocumentTypeSerializer
 )
 
 from .models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
+from .permissions import permission_document_metadata_add
 
 
 class MetadataTypeSerializer(serializers.HyperlinkedModelSerializer):
@@ -138,6 +141,20 @@ class NewDocumentMetadataSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('id', 'metadata_type_pk', 'url', 'value')
         model = DocumentMetadata
+
+    def create(self, validated_data):
+        queryset = AccessControlList.objects.restrict_queryset(
+            queryset=MetadataType.objects.all(),
+            permission=permission_document_metadata_add,
+            user=self.context['request'].user
+        )
+        get_object_or_404(
+            klass=queryset, pk=validated_data['metadata_type'].pk
+        )
+
+        return super(NewDocumentMetadataSerializer, self).create(
+            validated_data=validated_data
+        )
 
     def get_url(self, instance):
         return reverse(

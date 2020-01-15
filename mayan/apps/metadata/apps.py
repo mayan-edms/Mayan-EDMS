@@ -36,6 +36,7 @@ from .handlers import (
     handler_post_document_type_metadata_type_delete,
     handler_post_document_type_change_metadata
 )
+from .html_widgets import widget_document_metadata
 from .links import (
     link_metadata_add, link_metadata_edit, link_metadata_multiple_add,
     link_metadata_multiple_edit, link_metadata_multiple_remove,
@@ -52,7 +53,6 @@ from .permissions import (
 )
 
 from .search import metadata_type_search  # NOQA
-from .widgets import get_metadata_string
 
 logger = logging.getLogger(__name__)
 
@@ -122,7 +122,7 @@ class MetadataApp(MayanAppConfig):
                 event_document_metadata_edited,
                 event_document_metadata_removed,
                 event_metadata_type_edited,
-                event_metadata_type_relationship,
+                event_metadata_type_relationship
             )
         )
 
@@ -137,27 +137,32 @@ class MetadataApp(MayanAppConfig):
                 permission_document_metadata_add,
                 permission_document_metadata_edit,
                 permission_document_metadata_remove,
-                permission_document_metadata_view,
+                permission_document_metadata_view
             )
         )
         ModelPermission.register(
             model=MetadataType, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_events_view, permission_metadata_type_delete,
+                permission_document_metadata_add,
+                permission_document_metadata_edit,
+                permission_document_metadata_remove,
+                permission_document_metadata_view, permission_events_view,
+                permission_metadata_type_delete,
                 permission_metadata_type_edit, permission_metadata_type_view
             )
+        )
+        ModelPermission.register_inheritance(
+            model=DocumentMetadata, related='metadata_type',
         )
 
         SourceColumn(
             source=Document, label=_('Metadata'),
-            func=lambda context: get_metadata_string(context['object'])
+            func=widget_document_metadata
         )
 
         SourceColumn(
             source=DocumentPageResult, label=_('Metadata'),
-            func=lambda context: get_metadata_string(
-                context['object'].document
-            )
+            func=widget_document_metadata
         )
 
         SourceColumn(

@@ -28,6 +28,10 @@
 - Make the sandbox template field a required field.
 - Fix Tag apps API required permissions. The required permissions
   of the API match those of the view and comply with MERC 0006.
+- Fix metadata app view permissions layout. The metadata add, edit, and
+  remove permissions are now required for both the document and the 
+  the metadata type in order to add, edit or remove a metadata from
+  a document.
 
 3.3.7 (2019-12-31)
 ==================
