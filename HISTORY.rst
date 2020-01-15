@@ -20,7 +20,7 @@
   is never required, regarless of the required setting of the template
   field. GitLab issue #748. Thanks to forum user chrimpshrine for the
   report.
-- Remove repeated raise statement that cause HTML markup to show on 
+- Remove repeated raise statement that cause HTML markup to show on
   upload error display.
 - Improve file metadata property label.
 - Improve file metadata property path reading. Will not error out
@@ -29,9 +29,11 @@
 - Fix Tag apps API required permissions. The required permissions
   of the API match those of the view and comply with MERC 0006.
 - Fix metadata app view permissions layout. The metadata add, edit, and
-  remove permissions are now required for both the document and the 
+  remove permissions are now required for both the document and the
   the metadata type in order to add, edit or remove a metadata from
-  a document.
+  a document. The HTML and API were updated, as well as the document
+  metadata widget to only show metadata types for which the document
+  metadata view permission is granted.
 
 3.3.7 (2019-12-31)
 ==================

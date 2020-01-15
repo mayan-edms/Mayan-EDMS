@@ -544,6 +544,14 @@ class DocumentMetadataRequiredTestCase(
             obj=self.test_document,
             permission=permission_document_metadata_remove
         )
+        self.grant_access(
+            obj=self.test_metadata_types[0],
+            permission=permission_document_metadata_remove
+        )
+        self.grant_access(
+            obj=self.test_metadata_types[1],
+            permission=permission_document_metadata_remove
+        )
 
         response = self._request_test_document_metadata_remove_post_view(index=0)
         self.assertEqual(response.status_code, 302)
@@ -567,6 +575,14 @@ class DocumentMetadataRequiredTestCase(
 
         self.grant_access(
             obj=self.test_document,
+            permission=permission_document_metadata_remove
+        )
+        self.grant_access(
+            obj=self.test_metadata_types[0],
+            permission=permission_document_metadata_remove
+        )
+        self.grant_access(
+            obj=self.test_metadata_types[1],
             permission=permission_document_metadata_remove
         )
 
