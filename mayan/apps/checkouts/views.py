@@ -55,7 +55,7 @@ class DocumentCheckInView(MultipleObjectConfirmActionView):
     def get_post_object_action_url(self):
         if self.action_count == 1:
             return reverse(
-                viewname='checkouts:document_checkout_info',
+                viewname='checkouts:check_out_info',
                 kwargs={'pk': self.action_id_list[0]}
             )
         else:
@@ -122,7 +122,7 @@ class DocumentCheckOutView(MultipleObjectFormActionView):
     def get_post_object_action_url(self):
         if self.action_count == 1:
             return reverse(
-                viewname='checkouts:document_checkout_info',
+                viewname='checkouts:check_out_info',
                 kwargs={'pk': self.action_id_list[0]}
             )
         else:
