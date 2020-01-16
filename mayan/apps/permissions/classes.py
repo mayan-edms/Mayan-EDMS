@@ -6,6 +6,7 @@ import logging
 
 from django.apps import apps
 from django.core.exceptions import PermissionDenied
+from django.db.utils import OperationalError
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -155,10 +156,20 @@ class Permission(object):
                 app_label='permissions', model_name='StoredPermission'
             )
 
-            stored_permission, created = StoredPermission.objects.get_or_create(
-                namespace=self.namespace.name,
-                name=self.name,
-            )
+            try:
+                stored_permission, created = StoredPermission.objects.get_or_create(
+                    namespace=self.namespace.name,
+                    name=self.name,
+                )
 
-            self.__class__._stored_permissions_cache[self.pk] = stored_permission
-            return stored_permission
+                self.__class__._stored_permissions_cache[self.pk] = stored_permission
+                return stored_permission
+            except OperationalError:
+                """
+                This error is expected when trying to initialize the
+                stored permissions during the initial creation of the
+                database. Can be safely ignore under that situation.
+                """
+
+
+
