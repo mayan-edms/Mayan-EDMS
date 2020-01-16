@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
+"POT-Creation-Date: 2020-01-16 05:52-0400\n"
 "PO-Revision-Date: 2019-06-28 11:50+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -136,19 +136,19 @@ msgstr "Pievienojiet tagus dokumentiem"
 msgid "Remove tags from documents"
 msgstr "Noņemiet tagus no dokumentiem"
 
-#: serializers.py:39
+#: serializers.py:38
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
 msgstr "Komatu atdalītu dokumentu primāro atslēgu saraksts, kurām šis tags tiks pievienots."
 
-#: serializers.py:86
+#: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr "API URL, kas norāda uz tagu saistībā ar tam pievienoto dokumentu. Šis URL atšķiras no kanoniskā taga URL."
 
-#: serializers.py:106
+#: serializers.py:105
 msgid "Primary key of the tag to be added."
 msgstr "Pievienojamā taga primārā atslēga."
 

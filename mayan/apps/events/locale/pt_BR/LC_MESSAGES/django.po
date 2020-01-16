@@ -4,14 +4,14 @@
 # 
 # Translators:
 # Roberto Rosario, 2015
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:28-0400\n"
-"PO-Revision-Date: 2019-12-26 19:12+0000\n"
+"POT-Creation-Date: 2020-01-16 05:49-0400\n"
+"PO-Revision-Date: 2020-01-13 22:52+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -147,7 +147,7 @@ msgstr "Inscrições em eventos de objetos"
 
 #: permissions.py:10
 msgid "Access the events of an object"
-msgstr "Acesse os eventos de um objeto"
+msgstr "Acessar os eventos de um objeto"
 
 #: views.py:59
 #, python-format

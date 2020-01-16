@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:28-0400\n"
+"POT-Creation-Date: 2020-01-16 05:50-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2019\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -38,11 +38,11 @@ msgstr ""
 msgid "File metadata value of"
 msgstr ""
 
-#: apps.py:110 apps.py:114 apps.py:152 apps.py:161
+#: apps.py:110 apps.py:152 apps.py:161
 msgid "File metadata key"
 msgstr ""
 
-#: apps.py:156 apps.py:165
+#: apps.py:114 apps.py:156 apps.py:165
 msgid "File metadata value"
 msgstr ""
 
@@ -87,7 +87,7 @@ msgstr ""
 msgid "Return the specified document file metadata entry."
 msgstr ""
 
-#: methods.py:62
+#: methods.py:68
 msgid "Return the specified document version file metadata entry."
 msgstr ""
 

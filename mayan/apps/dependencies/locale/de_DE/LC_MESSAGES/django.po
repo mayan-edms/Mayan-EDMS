@@ -7,18 +7,19 @@
 # Roberto Rosario, 2019
 # Berny <berny@bernhard-marx.de>, 2019
 # Felix <felix.com@gmx.com>, 2019
-# Mathias Behrle <mathiasb@m9s.biz>, 2019
 # Marvin Haschker <marvin@haschker.me>, 2019
 # Jesaja Everling <jeverling@gmail.com>, 2019
+# Mathias Behrle <mathiasb@m9s.biz>, 2020
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:26-0400\n"
+"POT-Creation-Date: 2020-01-16 05:48-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Jesaja Everling <jeverling@gmail.com>, 2019\n"
+"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2020\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -95,6 +96,8 @@ msgid ""
 "Environment used for building the documentation. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Umgebung, in der die Dokumentation erstellt wurde. Endbenutzer können "
+"fehlende Abhängigkeiten in dieser Umgebung ignorieren."
 
 #: classes.py:83
 msgid "Documentation"
@@ -256,7 +259,7 @@ msgid ""
 "dependencies is missing or an incorrect version is present."
 msgstr ""
 "Die unterschiedlichen Zustände von Abhängigkeiten anzeigen. True (Wahr) "
-"bedeutet das eine Abhängigkeit mit der korrekten Version installiert ist. "
+"bedeutet, dass eine Abhängigkeit mit der korrekten Version installiert ist. "
 "False (Falsch) bedeutet eine fehlende oder inkorrekte Version der "
 "Abhängigkeit."
 
@@ -330,6 +333,8 @@ msgid ""
 "Unexpected error trying to determine the latest version available. Make sure"
 " your installation has a connection to the internet; %s"
 msgstr ""
+"Unerwarteter Fehler beim Ermitteln der neuesten verfügbaren Version. Stellen"
+" Sie sicher, dass Ihre Installation eine Verbindung zum Internet hat. %s"
 
 #: views.py:38
 msgid "Your version is up-to-date."

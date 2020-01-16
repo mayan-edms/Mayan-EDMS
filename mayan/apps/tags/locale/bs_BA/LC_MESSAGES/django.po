@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
+"POT-Creation-Date: 2020-01-16 05:52-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
@@ -137,19 +137,19 @@ msgstr "Prikači tagove na dokumente"
 msgid "Remove tags from documents"
 msgstr "Ukloni tagove iz dokumenta"
 
-#: serializers.py:39
+#: serializers.py:38
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
 msgstr "Spisak primarnih ključeva dokumenata koji su odvojeni zarezom na koje će ova oznaka biti pričvršćena."
 
-#: serializers.py:86
+#: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr "API URL koji pokazuje oznaku u odnosu na dokument koji je prikačen na njega. Ova URL adresa se razlikuje od URL kanonskog oznaka."
 
-#: serializers.py:106
+#: serializers.py:105
 msgid "Primary key of the tag to be added."
 msgstr "Primarni ključ oznake koji se dodaju."
 

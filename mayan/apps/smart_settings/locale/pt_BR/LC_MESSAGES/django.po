@@ -5,14 +5,14 @@
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
-"PO-Revision-Date: 2019-12-26 19:07+0000\n"
+"POT-Creation-Date: 2020-01-16 05:52-0400\n"
+"PO-Revision-Date: 2020-01-07 20:27+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -43,11 +43,11 @@ msgstr "Sobrescrito"
 
 #: classes.py:354
 msgid "Is this settings being overridden by an environment variable?"
-msgstr "Estas configurações estão sendo sobrescritas por uma variável de ambiente?"
+msgstr "Estes parâmetros estão sendo sobrescritos por uma variável de ambiente?"
 
 #: forms.py:14
 msgid "Enter the new setting value."
-msgstr "Entre o novo valor de configuração."
+msgstr "Entre o novo valor do parâmetro."
 
 #: forms.py:30
 #, python-format
@@ -56,11 +56,11 @@ msgstr "\"%s\" não é uma entrada válida."
 
 #: links.py:14 links.py:18
 msgid "Settings"
-msgstr "Configurações"
+msgstr "Parâmetros"
 
 #: links.py:24
 msgid "Namespaces"
-msgstr "Namespaces"
+msgstr "Categorias"
 
 #: links.py:28
 msgid "Edit"
@@ -68,11 +68,11 @@ msgstr "Editar"
 
 #: permissions.py:12
 msgid "Edit settings"
-msgstr "Editar configurações"
+msgstr "Editar parâmetros"
 
 #: permissions.py:15
 msgid "View settings"
-msgstr "Ver configurações"
+msgstr "Ver parâmetros"
 
 #: settings.py:11
 msgid "Django"
@@ -101,7 +101,7 @@ msgid ""
 "submitted in a POST request to be lost. The APPEND_SLASH setting is only "
 "used if CommonMiddleware is installed (see Middleware). See also "
 "PREPEND_WWW."
-msgstr "Quando indicado como True, caso a URL requisitada não coincida com os padrões na URLconf e não termine com uma barra, haverá um redirecionamento HTTP para a mesma URL com uma barra adicionada. Note que o redirecionamento pode fazer com que quaisquer dados submetidos numa requisição POST sejam perdidos.  A configuração APPEND_SLASH é usada apenas se o CommonMiddleware estiver instalado (veja Middleware). Veja também PREPEND_WWW."
+msgstr "Quando indicado como True, caso a URL requisitada não coincida com os padrões na URLconf e não termine com uma barra, haverá um redirecionamento HTTP para a mesma URL com uma barra adicionada. Note que o redirecionamento pode fazer com que quaisquer dados submetidos numa requisição POST sejam perdidos.  O parâmetro APPEND_SLASH é usada apenas se o CommonMiddleware estiver instalado (veja Middleware). Veja também PREPEND_WWW."
 
 #: settings.py:47
 msgid ""
@@ -214,7 +214,7 @@ msgid ""
 "accepts named URL patterns which can be used to reduce configuration "
 "duplication since you don't have to define the URL in two places (settings "
 "and URLconf)."
-msgstr "Valor padrão: '/accounts/login/' A URL onde as requisições são redirecionadas para iniciar a sessão, especialmente quando se utiliza o decorador login_required(). Este parâmetro também aceita padrões de URL que podem ser usados para reduzir a duplicação de configuração, uma vez que você não precisa definir a URL em dois lugares (parâmetros e URLconf)."
+msgstr "Valor padrão: '/accounts/login/' A URL onde as requisições são redirecionadas para iniciar a sessão, especialmente quando se utiliza o decorador login_required(). Este parâmetro também aceita padrões de URL que podem ser usados para reduzir a duplicação de parâmetros, uma vez que você não precisa definir a URL em dois lugares (parâmetros e URLconf)."
 
 #: settings.py:201
 msgid ""
@@ -223,7 +223,7 @@ msgid ""
 "by the login_required() decorator, for example. This setting also accepts "
 "named URL patterns which can be used to reduce configuration duplication "
 "since you don't have to define the URL in two places (settings and URLconf)."
-msgstr "Valor padrão: '/accounts/profile/' A URL para onde são redirecionadas as requisições após o início da sessão quando a vista contrib.auth.login não obtêm o próximo parâmetro. Isto é utilizado pelo decorador login_required() , por exemplo. Este parâmetro também aceita padrões de URL que podem ser usados para reduzir a duplicação de configuração, uma vez que você não precisa definir a URL em dois lugares (parâmetros e URLconf)."
+msgstr "Valor padrão: '/accounts/profile/' A URL para onde são redirecionadas as requisições após o início da sessão quando a vista contrib.auth.login não obtêm o próximo parâmetro. Isto é utilizado pelo decorador login_required() , por exemplo. Este parâmetro também aceita padrões de URL que podem ser usados para reduzir a duplicação de parâmetros, uma vez que você não precisa definir a URL em dois lugares (parâmetros e URLconf)."
 
 #: settings.py:213
 msgid ""
@@ -233,7 +233,7 @@ msgid ""
 "setting also accepts named URL patterns which can be used to reduce "
 "configuration duplication since you don't have to define the URL in two "
 "places (settings and URLconf)."
-msgstr "Padrão: None. A URL para qual as requisições são redirecionadas depois que um usuário sai do sistema (logout) usando LogoutView (se a view não recebe um aregumento next_page). Se None, nenhum redirecionamento será realizado e a tela de logout será renderizada. Esta configuração também aceita padrões nomeados de URL que podem ser usados para reduzir a duplicação de configurações, já que você não precisará de definir a URL em dois lugares (settings e URLconf)."
+msgstr "Padrão: None. A URL para qual as requisições são redirecionadas depois que um usuário sai do sistema (logout) usando LogoutView (se a view não recebe um aregumento next_page). Se None, nenhum redirecionamento será realizado e a tela de logout será renderizada. Este parâmetro também aceita padrões nomeados de URL que podem ser usados para reduzir a duplicação de parâmetros, já que você não precisará de definir a URL em dois lugares (settings e URLconf)."
 
 #: settings.py:226
 msgid ""
@@ -250,7 +250,7 @@ msgid ""
 "specifies which languages are available for language selection. Generally, "
 "the default value should suffice. Only set this setting if you want to "
 "restrict language selection to a subset of the Django-provided languages. "
-msgstr "Uma lista de todos os idiomas disponíveis. Esta é uma lista de tuplas no formato (código do idioma, código da língua). Por exemplo: ('pt_BR', 'Português do Brasil'). Isso especifica quais idiomas estão disponíveis para seleção. Geralmente, o valor padrão é suficiente. Apenas defina esta configuração se você quiser restringir a seleção de idiomas a um subconjunto daquelas fornecidas pelo Django."
+msgstr "Uma lista de todos os idiomas disponíveis. Esta é uma lista de tuplas no formato (código do idioma, código da língua). Por exemplo: ('pt_BR', 'Português do Brasil'). Isso especifica quais idiomas estão disponíveis para seleção. Geralmente, o valor padrão é suficiente. Apenas defina este parâmetro se você quiser restringir a seleção de idiomas a um subconjunto daquelas fornecidas pelo Django."
 
 #: settings.py:250
 msgid ""
@@ -262,7 +262,7 @@ msgid ""
 "language can't be determined or is not supported by the website. It also "
 "provides the fallback translation when a translation for a given literal "
 "doesn't exist for the user's preferred language."
-msgstr "Uma string representando o código do idioma para esta instalação. Deve estar em formato padrão de ID de idioma. Por exemplo, inglês estadunidense é \"en-us\". Serve a dois propósitos: se o middleware de locale não estiver em uso, decide qual trandução será servida a todos os usuários. Se o middleware de locale estiver ativo, fornece um idioma de fallback caso o idioma do usuário não puder ser prederminado ou não for suportado pelo site. Também fornece uma tradução de fallback quando a tradução de determinada literal não existir para o idioma do usuário."
+msgstr "Uma string representando o código do idioma para esta instalação. Deve estar em formato padrão de ID de idioma. Por exemplo, inglês estadunidense é \"en-us\". Serve a dois propósitos: se o middleware de locale não estiver em uso, decide qual tradução será servida a todos os usuários. Se o middleware de locale estiver ativo, fornece um idioma de fallback caso o idioma do usuário não puder ser prederminado ou não for suportado pelo site. Também fornece uma tradução de fallback quando a tradução de determinada literal não existir para o idioma do usuário."
 
 #: settings.py:265
 msgid ""
@@ -278,14 +278,14 @@ msgid ""
 "collectstatic management command. A ready-to-use instance of the storage "
 "backend defined in this setting can be found at "
 "django.contrib.staticfiles.storage.staticfiles_storage."
-msgstr "A ferramentde armazenamento de arquivos a ser usada pelo comando collectstatic. Uma instância pronta para uso do backend de storage definida nesta configuração pode ser encontrada em django.contrib.staticfiles.storage.staticfiles_storage."
+msgstr "A ferramenta de armazenamento de arquivos a ser usada pelo comando collectstatic. Uma instância pronta para uso do backend de storage definida neste parâmetro pode ser encontrada em django.contrib.staticfiles.storage.staticfiles_storage."
 
 #: settings.py:286
 msgid ""
 "A string representing the time zone for this installation. Note that this "
 "isn't necessarily the time zone of the server. For example, one server may "
 "serve multiple Django-powered sites, each with a separate time zone setting."
-msgstr "Uma string representando a time zone para esta instalação. Note que não necessariamente esta é a time zone do servidor. Por exemplo, um servidor pode servir várias aplicações em Django, cada uma com uma configuração de time zone."
+msgstr "Uma string representando a time zone para esta instalação. Note que não necessariamente esta é a time zone do servidor. Por exemplo, um servidor pode servir várias aplicações em Django, cada uma com um parâmetro de time zone."
 
 #: settings.py:296
 msgid ""
@@ -293,7 +293,7 @@ msgid ""
 "servers (e.g. runserver) will use. The django-admin startproject management "
 "command will create a simple wsgi.py file with an application callable in "
 "it, and point this setting to that application."
-msgstr "O caminho Python completo do objeto de aplicação WSGI que o servidor embutido do Django usa (por exemplo, runserver). O comando django-admin startproject irá criar um arquivo wsgi.py simples com uma applicação callable nele, e apontará esta configuração para aquela aplicação."
+msgstr "O caminho Python completo do objeto de aplicação WSGI que o servidor embutido do Django usa (por exemplo, runserver). O comando django-admin startproject irá criar um arquivo wsgi.py simples com uma applicação callable nele, e apontará este parâmetro para aquela aplicação."
 
 #: views.py:23
 msgid ""
@@ -313,7 +313,7 @@ msgstr "Namespace: %s, não encontrad"
 
 #: views.py:44
 msgid "Setting namespaces"
-msgstr "Namespaces de configuração"
+msgstr "Categorias de parâmetros"
 
 #: views.py:60
 msgid "Setting updated successfully."
@@ -322,4 +322,4 @@ msgstr "Configurações atualizadas com sucesso"
 #: views.py:69
 #, python-format
 msgid "Edit setting: %s"
-msgstr "Editar a configuração: %s"
+msgstr "Editar o parâmetro: %s"

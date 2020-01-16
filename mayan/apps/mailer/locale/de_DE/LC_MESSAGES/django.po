@@ -3,16 +3,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # Jesaja Everling <jeverling@gmail.com>, 2017
 # Marvin Haschker <marvin@haschker.me>, 2019
-# Mathias Behrle <mathiasb@m9s.biz>, 2018
+# Mathias Behrle <mathiasb@m9s.biz>, 2018,2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:28-0400\n"
-"PO-Revision-Date: 2019-12-13 05:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-01-16 05:50-0400\n"
+"PO-Revision-Date: 2020-01-06 17:49+0000\n"
+"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -72,7 +73,7 @@ msgstr "Mailprofil"
 
 #: forms.py:77
 msgid "The driver to use when sending emails."
-msgstr ""
+msgstr "Der Treiber, der beim Senden von E-Mails verwendet werden soll."
 
 #: forms.py:78
 msgid "Backend"
@@ -241,7 +242,7 @@ msgstr "Protokolleinträge"
 
 #: models.py:48
 msgid "A short text describing the mailing profile."
-msgstr ""
+msgstr "Ein kurzer Text, der das Mailing-Profil beschreibt."
 
 #: models.py:49
 msgid "Label"
@@ -400,7 +401,7 @@ msgstr "Mailprofil %s bearbeiten"
 #: views.py:212
 #, python-format
 msgid "Error log for: %s"
-msgstr "Fehlerprotokoll für: %s"
+msgstr "Fehlerprotokoll für %s"
 
 #: views.py:234
 msgid ""
@@ -423,42 +424,42 @@ msgstr "Mailprofil %s testen"
 
 #: workflow_actions.py:24
 msgid "Mailing profile to use when sending the email."
-msgstr ""
+msgstr "Mailing-Profil, das beim Senden der E-Mail verwendet werden soll."
 
 #: workflow_actions.py:29
 msgid "Recipient"
-msgstr ""
+msgstr "Empfänger"
 
 #: workflow_actions.py:32
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon. A template can be used to reference properties of the "
 "document."
-msgstr ""
+msgstr "E-Mail-Adresse des Empfängers. Kann aus mehreren durch Komma oder Semikolon getrennten Adressen bestehen. Eine Vorlage kann verwendet werden, um auf Eigenschaften des Dokuments zu verweisen."
 
 #: workflow_actions.py:43
 msgid "Subject of the email. Can be a string or a template."
-msgstr ""
+msgstr "Betreff der E-Mail. Kann eine Zeichenfolge oder eine Vorlage sein."
 
 #: workflow_actions.py:52
 msgid "Body of the email to send. Can be a string or a template."
-msgstr ""
+msgstr "Textkörper der zu sendenden E-Mail. Kann eine Zeichenfolge oder eine Vorlage sein."
 
 #: workflow_actions.py:59
 msgid "Send email"
-msgstr ""
+msgstr "E-Mail senden"
 
 #: workflow_actions.py:74
 #, python-format
 msgid "Recipient template error: %s"
-msgstr ""
+msgstr "Empfänger-Vorlagenfehler: %s"
 
 #: workflow_actions.py:85
 #, python-format
 msgid "Subject template error: %s"
-msgstr ""
+msgstr "Betreff Vorlagenfehler: %s"
 
 #: workflow_actions.py:96
 #, python-format
 msgid "Body template error: %s"
-msgstr ""
+msgstr "Body Template Fehler: %s"

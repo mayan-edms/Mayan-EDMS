@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
-"PO-Revision-Date: 2019-12-13 06:54+0000\n"
+"POT-Creation-Date: 2020-01-16 05:52-0400\n"
+"PO-Revision-Date: 2020-01-16 09:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:44 links.py:54 models/base.py:40 queues.py:9 settings.py:13
-#: views.py:650
+#: views.py:649
 msgid "Sources"
 msgstr "Fuentes"
 
@@ -79,7 +79,7 @@ msgstr "Expandir archivos comprimidos"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Subir los archivos de un archivo comprimido como documentos individuales"
 
-#: forms.py:65 views.py:505
+#: forms.py:65 views.py:504
 msgid "Staging file"
 msgstr "Archivo provisional"
 
@@ -473,10 +473,12 @@ msgstr "Escáner SANE"
 msgid "SANE Scanners"
 msgstr "Escáneres SANE"
 
-#: models/scanner_sources.py:115
+#: models/scanner_sources.py:97
 #, python-format
-msgid "Error while scanning; %s"
-msgstr "Error al escanear; %s"
+msgid ""
+"Error while executing scanning command \"%(command_line)s\"; "
+"%(error_message)s"
+msgstr ""
 
 #: models/staging_folder_sources.py:41
 msgid "Server side filesystem path."
@@ -689,45 +691,45 @@ msgstr "Archivos provisionales en la ruta"
 msgid "Scan"
 msgstr "Escanear"
 
-#: views.py:294
+#: views.py:293
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr "Error al ejecutar la tarea de carga de documentos; %(exception)s, %(exception_class)s"
 
-#: views.py:305
+#: views.py:304
 msgid "New document queued for upload and will be available shortly."
 msgstr "Nuevo documento puesto en cola para su carga y estará disponible en breve."
 
-#: views.py:356
+#: views.py:355
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Cargar un documento del tipo \"%(document_type)s\" de la fuente: %(source)s"
 
-#: views.py:389
+#: views.py:388
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "Documento \"%s\" esta bloqueado de crear nuevas versiones."
 
-#: views.py:442
+#: views.py:441
 msgid "New document version queued for upload and will be available shortly."
 msgstr "Nueva versión del documento puesto en cola para su carga y estará disponible en breve."
 
-#: views.py:482
+#: views.py:481
 #, python-format
 msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr "Cargue una nueva versión para el documento \"%(document)s\" de la fuente: %(source)s"
 
-#: views.py:485
+#: views.py:484
 msgid "Submit"
 msgstr "Enviar"
 
-#: views.py:506
+#: views.py:505
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "¿Eliminar archivo provisional \"%s\"?"
 
-#: views.py:527
+#: views.py:526
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -735,31 +737,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr "Esto ejecutará el código de verificación de fuente incluso si la fuente no está habilitada. Las fuentes que eliminan el contenido después de la descarga no lo harán durante la prueba. Verifique el registro de errores de la fuente para obtener información durante la prueba. Una prueba exitosa borrará el registro de errores."
 
-#: views.py:533
+#: views.py:532
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "¿Lanzar chequeo para la fuenta \"%s\"? "
 
-#: views.py:550
+#: views.py:549
 msgid "Source check queued."
 msgstr "Verificación del origen en sometida."
 
-#: views.py:567
+#: views.py:566
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Crear nuevo tipo de fuente: %s"
 
-#: views.py:589
+#: views.py:588
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "¿Eliminar la fuente: %s?"
 
-#: views.py:610
+#: views.py:609
 #, python-format
 msgid "Edit source: %s"
 msgstr "Editar fuente: %s"
 
-#: views.py:644
+#: views.py:643
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -767,7 +769,7 @@ msgid ""
 "intervention."
 msgstr "Las fuentes proporcionan los medios para cargar documentos. Algunas fuentes, como el formulario web, son interactivas y requieren la intervención del usuario para operar. Otros, como las fuentes de correo electrónico, son automáticos y se ejecutan en segundo plano sin la intervención del usuario."
 
-#: views.py:649
+#: views.py:648
 msgid "No sources available"
 msgstr "No hay fuentes disponibles"
 

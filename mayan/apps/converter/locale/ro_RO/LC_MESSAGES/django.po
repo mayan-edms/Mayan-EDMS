@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:26-0400\n"
+"POT-Creation-Date: 2020-01-16 05:48-0400\n"
 "PO-Revision-Date: 2019-12-20 12:42+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:22 permissions.py:7 settings.py:14
+#: apps.py:22 permissions.py:7 settings.py:15
 msgid "Converter"
 msgstr "Convertizor"
 
@@ -27,12 +27,12 @@ msgstr "Convertizor"
 msgid "Transformation"
 msgstr "Transformare"
 
-#: backends/python.py:152 backends/python.py:165
+#: backends/python.py:157 backends/python.py:170
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Excepție determinând numărul de pagini PDF; %s"
 
-#: backends/python.py:179
+#: backends/python.py:184
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Excepție de determinare a numărului de pagini PDF; %s"
@@ -162,11 +162,11 @@ msgstr "Editați transformări"
 msgid "View existing transformations"
 msgstr "Vizualizați transformările existente"
 
-#: settings.py:20
+#: settings.py:21
 msgid "Graphics conversion backend to use."
 msgstr "Back-end de conversie grafică."
 
-#: settings.py:32
+#: settings.py:34
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Opțiuni de configurare pentru backend-ul de conversie grafică."
 

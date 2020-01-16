@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:29-0400\n"
+"POT-Creation-Date: 2020-01-16 05:51-0400\n"
 "PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:43 events.py:8 models.py:36 models.py:106 permissions.py:7
+#: apps.py:47 events.py:8 models.py:36 models.py:106 permissions.py:7
 msgid "Permissions"
 msgstr "Atļaujas"
 
-#: classes.py:84
+#: classes.py:86
 msgid "Insufficient permissions."
 msgstr "Nepietiekamas atļaujas."
 
@@ -38,7 +38,7 @@ msgstr "Izveidota loma"
 msgid "Role edited"
 msgstr "Loma rediģēta"
 
-#: links.py:16 links.py:40 models.py:117 views.py:168
+#: links.py:16 links.py:40 models.py:117 views.py:171
 msgid "Roles"
 msgstr "Lomas"
 
@@ -161,17 +161,17 @@ msgstr "Pieejamās atļaujas"
 msgid "Granted permissions"
 msgstr "Piešķirtās atļaujas"
 
-#: views.py:140
+#: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr "Šeit piešķirtās atļaujas attieksies uz visu sistēmu un visiem objektiem."
 
-#: views.py:143
+#: views.py:146
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Atļaujas lomai: %s"
 
-#: views.py:160
+#: views.py:163
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -179,6 +179,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr "Lomas ir autorizācijas vienības. Tajās ir lietotāju grupas, kas pārņem visas sistēmas lomu atļaujas. Lomas var iekļaut arī piekļuves kontroles sarakstos. Piekļuves kontroles saraksts ir atļaujas, kas piešķirtas konkrētu objektu lomai, ko tās grupas locekļi pārmanto."
 
-#: views.py:167
+#: views.py:170
 msgid "There are no roles"
 msgstr "Nav lomas"

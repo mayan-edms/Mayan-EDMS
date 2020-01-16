@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
+"POT-Creation-Date: 2020-01-16 05:52-0400\n"
 "PO-Revision-Date: 2019-12-21 18:03+0000\n"
 "Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -142,19 +142,19 @@ msgstr "Attacher des étiquettes aux documents"
 msgid "Remove tags from documents"
 msgstr "Retirer des étiquettes des documents"
 
-#: serializers.py:39
+#: serializers.py:38
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
 msgstr "Liste séparée par des virgules des clés primaires de document auxquelles cette étiquette sera jointe."
 
-#: serializers.py:86
+#: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr "URL de l'API pointant vers une étiquette en relation au document qui s'y rattache. Cette URL est différente de l'URL de l'étiquette canonique."
 
-#: serializers.py:106
+#: serializers.py:105
 msgid "Primary key of the tag to be added."
 msgstr "La clé primaire pour l'étiquette sera ajoutée."
 

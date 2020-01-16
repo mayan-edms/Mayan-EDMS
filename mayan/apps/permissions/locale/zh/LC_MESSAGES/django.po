@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:29-0400\n"
+"POT-Creation-Date: 2020-01-16 05:51-0400\n"
 "PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:43 events.py:8 models.py:36 models.py:106 permissions.py:7
+#: apps.py:47 events.py:8 models.py:36 models.py:106 permissions.py:7
 msgid "Permissions"
 msgstr "权限"
 
-#: classes.py:84
+#: classes.py:86
 msgid "Insufficient permissions."
 msgstr "权限不足。"
 
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Role edited"
 msgstr ""
 
-#: links.py:16 links.py:40 models.py:117 views.py:168
+#: links.py:16 links.py:40 models.py:117 views.py:171
 msgid "Roles"
 msgstr "角色"
 
@@ -161,17 +161,17 @@ msgstr "可用权限"
 msgid "Granted permissions"
 msgstr "授予的权限"
 
-#: views.py:140
+#: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr "此处授予的权限将适用于整个系统和所有对象。"
 
-#: views.py:143
+#: views.py:146
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "角色的权限：%s"
 
-#: views.py:160
+#: views.py:163
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -179,6 +179,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr "角色是授权单位。它们包含继承整个系统的角色权限的用户组。角色也可以是访问控制列表的一部分。访问控制列表是授予其组成员继承的特定对象的角色的权限。"
 
-#: views.py:167
+#: views.py:170
 msgid "There are no roles"
 msgstr "没有角色"

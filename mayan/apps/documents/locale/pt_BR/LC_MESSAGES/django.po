@@ -6,13 +6,13 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018-2019
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:27-0400\n"
-"PO-Revision-Date: 2019-12-26 16:45+0000\n"
+"POT-Creation-Date: 2020-01-16 05:49-0400\n"
+"PO-Revision-Date: 2020-01-13 22:50+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -261,7 +261,7 @@ msgstr "Editar propriedades"
 
 #: links/document_links.py:53 views/document_views.py:97
 msgid "All documents"
-msgstr "Todos os Documentos"
+msgstr "Todos os documentos"
 
 #: links/document_links.py:57 views/document_views.py:608
 msgid "Recently accessed"
@@ -476,7 +476,7 @@ msgstr "Adicionado"
 
 #: models/document_models.py:64
 msgid "The dominant language in the document."
-msgstr "O idionam preponderante no documento."
+msgstr "O idioma preponderante no documento."
 
 #: models/document_models.py:69
 msgid "Whether or not this document is in the trash."
@@ -544,11 +544,11 @@ msgstr "O nome do tipo de documento."
 msgid ""
 "Amount of time after which documents of this type will be moved to the "
 "trash."
-msgstr "Tempo após o qual documentos dete tipo serão enviados para a lixeira."
+msgstr "Tempo após o qual documentos deste tipo serão enviados para a lixeira."
 
 #: models/document_type_models.py:38
 msgid "Trash time period"
-msgstr "Tempo na lixeira"
+msgstr "Tempo até o envio para a lixeira"
 
 #: models/document_type_models.py:42
 msgid "Trash time unit"
@@ -679,11 +679,11 @@ msgstr "Imprimir documentos"
 
 #: permissions.py:34
 msgid "Restore trashed document"
-msgstr "Restaurar documento da lixeira"
+msgstr "Restaurar documentos da lixeira"
 
 #: permissions.py:37
 msgid "Execute document modifying tools"
-msgstr "Execute as ferramentas de modificação de documento"
+msgstr "Executar as ferramentas de modificação de documento"
 
 #: permissions.py:40
 msgid "Revert documents to a previous version"

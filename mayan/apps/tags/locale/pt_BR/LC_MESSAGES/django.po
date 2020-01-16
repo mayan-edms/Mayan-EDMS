@@ -6,14 +6,14 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # Roberto Rosario, 2012
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
-"PO-Revision-Date: 2019-12-26 18:46+0000\n"
+"POT-Creation-Date: 2020-01-16 05:52-0400\n"
+"PO-Revision-Date: 2020-01-13 23:04+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgstr "Etiqueta removida do documento"
 
 #: links.py:16 workflow_actions.py:75
 msgid "Remove tag"
-msgstr "Remover Etiqueta"
+msgstr "Remover etiqueta"
 
 #: links.py:20 links.py:37
 msgid "Attach tags"
@@ -58,11 +58,11 @@ msgstr "Anexar etiquetas"
 
 #: links.py:31
 msgid "Remove tags"
-msgstr "Remover Etiquetas"
+msgstr "Remover etiquetas"
 
 #: links.py:44
 msgid "Create new tag"
-msgstr "Criar nova Etiqueta"
+msgstr "Criar etiqueta"
 
 #: links.py:50 links.py:67 views.py:156
 msgid "Delete"
@@ -118,7 +118,7 @@ msgstr "Etiquetas do documento"
 
 #: permissions.py:10
 msgid "Create new tags"
-msgstr "Criar novas etiquetas"
+msgstr "Criar etiquetas"
 
 #: permissions.py:13
 msgid "Delete tags"
@@ -130,29 +130,29 @@ msgstr "Ver etiquetas"
 
 #: permissions.py:19
 msgid "Edit tags"
-msgstr "Editar as etiquetas"
+msgstr "Editar etiquetas"
 
 #: permissions.py:22
 msgid "Attach tags to documents"
-msgstr "Anexar etiquetas para documentos"
+msgstr "Anexar etiquetas a documentos"
 
 #: permissions.py:25
 msgid "Remove tags from documents"
 msgstr "Remover etiquetas de documentos"
 
-#: serializers.py:39
+#: serializers.py:38
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
 msgstr "Lista separada por vírgulas das chaves primárias do documento para as quais essa etiqueta será anexada."
 
-#: serializers.py:86
+#: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr "URL da API que aponta para uma etiqueta em relação ao documento anexado a ela. Essa URL é diferente da etiqueta canônica da URL."
 
-#: serializers.py:106
+#: serializers.py:105
 msgid "Primary key of the tag to be added."
 msgstr "Chave primária da etiqueta a ser adicionada."
 
@@ -198,7 +198,7 @@ msgstr "Etiqueta \"%(tag)s\" anexada com sucesso para o documento \"%(document)s
 
 #: views.py:131
 msgid "Create tag"
-msgstr "Criar Etiqueta"
+msgstr "Criar etiqueta"
 
 #: views.py:145
 #, python-format
@@ -212,7 +212,7 @@ msgstr "Solicitação de exclusão de etiquetas executada em %(count)d etiquetas
 
 #: views.py:154
 msgid "Will be removed from all documents."
-msgstr "Será removido de todos os documentos."
+msgstr "Será removida de todos os documentos."
 
 #: views.py:158
 msgid "Delete the selected tag?"

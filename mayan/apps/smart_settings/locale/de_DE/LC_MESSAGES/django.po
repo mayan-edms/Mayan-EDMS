@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
@@ -10,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
-"PO-Revision-Date: 2019-12-18 04:33+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-01-16 05:52-0400\n"
+"PO-Revision-Date: 2020-01-06 17:48+0000\n"
+"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,11 +39,11 @@ msgstr "Wert"
 
 #: classes.py:352
 msgid "Overridden"
-msgstr ""
+msgstr "Überschrieben"
 
 #: classes.py:354
 msgid "Is this settings being overridden by an environment variable?"
-msgstr ""
+msgstr "Werden diese Einstellungen von einer Umgebungsvariablen überschrieben?"
 
 #: forms.py:14
 msgid "Enter the new setting value."

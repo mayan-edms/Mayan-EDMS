@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:26-0400\n"
+"POT-Creation-Date: 2020-01-16 05:47-0400\n"
 "PO-Revision-Date: 2019-12-03 05:22+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -227,7 +227,7 @@ msgstr "Użytkownik"
 msgid "No %(verbose_name)s found matching the query"
 msgstr "Nie znaleziono %(verbose_name)s pasującego do zapytania"
 
-#: mixins.py:367
+#: mixins.py:405
 msgid "Object"
 msgstr "Obiekt"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
+"POT-Creation-Date: 2020-01-16 05:52-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
@@ -136,19 +136,19 @@ msgstr "将标签附加到文档"
 msgid "Remove tags from documents"
 msgstr "从文档中删除标签"
 
-#: serializers.py:39
+#: serializers.py:38
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
 msgstr "将附加此标签的以逗号分隔的文档主键列表。"
 
-#: serializers.py:86
+#: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr "API URL指向与附加到其上的文档相关的标签。此URL与规范标记URL不同。"
 
-#: serializers.py:106
+#: serializers.py:105
 msgid "Primary key of the tag to be added."
 msgstr "要添加的标签的主键。"
 
