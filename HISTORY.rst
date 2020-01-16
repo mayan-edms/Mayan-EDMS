@@ -34,6 +34,9 @@
   a document. The HTML and API were updated, as well as the document
   metadata widget to only show metadata types for which the document
   metadata view permission is granted.
+- Initialize permissions on every start or installation instead of
+  them being initialized on demand. Closes GitLab issue #757.
+  Thanks to forum user Roberto Novaes (rvnovaes) for the report.
 
 3.3.7 (2019-12-31)
 ==================

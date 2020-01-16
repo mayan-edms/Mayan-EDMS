@@ -56,7 +56,7 @@ class StoredPermission(models.Model):
         instance.
         """
         return Permission.get(
-            pk=self.volatile_permission_id, proxy_only=True
+            pk=self.volatile_permission_id, class_only=True
         )
 
     def natural_key(self):
