@@ -18,9 +18,9 @@ class RolePermissionViewsTestCase(
 ):
     def test_role_permissions_view_with_access(self):
         """
-        Tests that a defined permission is available before it is every used
+        Tests that a defined permission is available before it is ever used
         or referenced. Tests the runtime permission to stored permission
-        cache initalization.
+        cache initialization.
         https://forum.mayan-edms.com/viewtopic.php?f=7&t=1614
         GitLab issue #757 "Permissions list does not show an object until
         one has been created"

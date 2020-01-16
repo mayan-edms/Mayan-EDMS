@@ -98,8 +98,8 @@ class Permission(object):
 
         for app in apps.get_app_configs():
             # Keep track of the apps that have already been imported to
-            # avoid importing them more than one. Does not causes a problem
-            # but it is an optimization.
+            # avoid importing them more than once. Does not causes a problem,
+            # it is an optimization to speed up statups.
             if app not in cls._imported_app:
                 try:
                     import_module('{}.{}'.format(app.name, module_name))
@@ -118,8 +118,8 @@ class Permission(object):
                 finally:
                     cls._imported_app.append(app)
 
-        # Invalidate cache always for tests that build a new memory only
-        # database and cause all cache references build in the .ready()
+        # Invalidate cache always. This is for tests that build a new memory
+        # only database and cause all cache references built in the .ready()
         # method to be invalid.
         cls.invalidate_cache()
 
