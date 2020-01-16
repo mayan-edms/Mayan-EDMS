@@ -122,10 +122,10 @@ class TagsApp(MayanAppConfig):
             attribute='get_preview_widget', source=Tag
         )
         SourceColumn(
-            source=Tag, label=_('Documents'),
             func=lambda context: context['object'].get_document_count(
                 user=context['request'].user
-            )
+            ), include_label=True, label=_('Documents'), source=Tag
+
         )
 
         document_page_search.add_model_field(

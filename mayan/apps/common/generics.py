@@ -36,7 +36,7 @@ from .literals import (
 from .mixins import (
     DeleteExtraDataMixin, DownloadMixin, DynamicFormViewMixin,
     ExternalObjectMixin, ExtraContextMixin, FormExtraKwargsMixin,
-    MultipleObjectMixin, ObjectActionMixin, ObjectNameMixin,
+    ListModeMixin, MultipleObjectMixin, ObjectActionMixin, ObjectNameMixin,
     RedirectionMixin, RestrictedQuerysetMixin, ViewPermissionCheckMixin
 )
 
@@ -774,8 +774,8 @@ class SingleObjectDynamicFormEditView(
 
 
 class SingleObjectListView(
-    PaginationMixin, ViewPermissionCheckMixin, RestrictedQuerysetMixin,
-    ExtraContextMixin, RedirectionMixin, ListView
+    ListModeMixin, PaginationMixin, ViewPermissionCheckMixin,
+    RestrictedQuerysetMixin, ExtraContextMixin, RedirectionMixin, ListView
 ):
     template_name = 'appearance/generic_list.html'
 
