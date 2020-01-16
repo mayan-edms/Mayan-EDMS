@@ -13,7 +13,9 @@ from ..permissions import (
 from .mixins import GroupRoleViewTestMixin, RoleTestMixin, RoleViewTestMixin
 
 
-class RoleViewsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
+class RoleViewsTestCase(
+    RoleTestMixin, RoleViewTestMixin, GenericViewTestCase
+):
     def test_role_creation_view_no_permission(self):
         role_count = Role.objects.count()
 
@@ -43,7 +45,9 @@ class RoleViewsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
 
     def test_role_delete_view_with_access(self):
         self._create_test_role()
-        self.grant_access(obj=self.test_role, permission=permission_role_delete)
+        self.grant_access(
+            obj=self.test_role, permission=permission_role_delete
+        )
 
         role_count = Role.objects.count()
 
@@ -116,13 +120,17 @@ class RoleViewsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
 
     def test_role_groups_view_with_access(self):
         self._create_test_role()
-        self.grant_access(obj=self.test_role, permission=permission_role_edit)
+        self.grant_access(
+            obj=self.test_role, permission=permission_role_edit
+        )
 
         response = self._request_test_role_groups_view()
         self.assertEqual(response.status_code, 200)
 
 
-class GroupRoleViewTestCase(GroupTestMixin, GroupRoleViewTestMixin, RoleTestMixin, GenericViewTestCase):
+class GroupRoleViewTestCase(
+    GroupTestMixin, GroupRoleViewTestMixin, RoleTestMixin, GenericViewTestCase
+):
     def test_group_roles_view_no_permission(self):
         self._create_test_group()
 
@@ -131,7 +139,9 @@ class GroupRoleViewTestCase(GroupTestMixin, GroupRoleViewTestMixin, RoleTestMixi
 
     def test_group_roles_view_with_access(self):
         self._create_test_group()
-        self.grant_access(obj=self.test_group, permission=permission_group_edit)
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
 
         response = self._request_test_group_roles_view()
         self.assertEqual(response.status_code, 200)
