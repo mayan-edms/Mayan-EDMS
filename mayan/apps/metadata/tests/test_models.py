@@ -308,4 +308,24 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
         document_metadata.full_clean()
         document_metadata.save()
 
+        # Must not raise an error
         self.test_metadata_type.delete()
+
+    def test_delete_document_metadata_with_validator(self):
+        """
+        GitLab issue #588 "Cannot delete metadata from document if
+        validator or parser is set"
+        """
+        self.test_metadata_type.validation = TEST_DATE_VALIDATOR
+        self.test_metadata_type.save()
+
+        document_metadata = DocumentMetadata(
+            document=self.test_document, metadata_type=self.test_metadata_type,
+            value=TEST_PARSED_VALID_DATE
+        )
+
+        document_metadata.full_clean()
+        document_metadata.save()
+
+        # Must not raise an error
+        document_metadata.delete()
