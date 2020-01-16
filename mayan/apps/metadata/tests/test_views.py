@@ -1,5 +1,10 @@
 from __future__ import unicode_literals
 
+from furl import furl
+
+from django.urls import reverse
+
+from mayan.apps.common.settings import setting_home_view
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.permissions import (
@@ -106,6 +111,56 @@ class DocumentMetadataViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(self.test_document.metadata.count(), 1)
+
+    def test_document_metadata_add_redirect(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_add
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_add
+        )
+
+        response = self._request_test_document_metadata_add_post_view()
+
+        self.assertRedirects(
+            response=response, expected_url=reverse(
+                viewname='metadata:metadata_edit', kwargs={
+                    'pk': self.test_document.pk
+                }
+            ), status_code=302,
+            target_status_code=404
+        )
+
+    def test_document_multiple_metadata_add_redirect(self):
+        self.upload_document()
+
+        self.grant_access(
+            obj=self.test_documents[0],
+            permission=permission_document_metadata_add
+        )
+        self.grant_access(
+            obj=self.test_documents[1],
+            permission=permission_document_metadata_add
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_add
+        )
+
+        response = self._request_test_document_multiple_metadata_add_post_view()
+
+        url = furl(response.url)
+
+        self.assertEqual(
+            url.path, reverse(viewname='metadata:metadata_multiple_edit')
+        )
+
+        self.assertEqual(
+            set(map(int, url.args['id_list'].split(','))),
+            set([self.test_documents[0].pk, self.test_documents[1].pk])
+        )
 
     def test_document_multiple_metadata_add_post_view_with_document_access(self):
         self.upload_document()
@@ -217,6 +272,7 @@ class DocumentMetadataViewTestCase(
 
         self.grant_permission(permission=permission_document_properties_edit)
         self.grant_permission(permission=permission_document_metadata_edit)
+        self.grant_permission(permission=permission_document_metadata_view)
 
         document_type_2 = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_2_LABEL
@@ -257,6 +313,56 @@ class DocumentMetadataViewTestCase(
         self.assertEqual(
             self.test_document.metadata.get(metadata_type=metadata_type_2).value,
             TEST_DOCUMENT_METADATA_VALUE_2
+        )
+
+    def test_document_metadata_edit_redirect(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_edit
+        )
+
+        response = self._request_test_document_metadata_edit_post_view()
+
+        self.assertRedirects(
+            response=response, expected_url=reverse(
+                viewname='metadata:metadata_view', kwargs={
+                    'pk': self.test_document.pk
+                }
+            ), status_code=302,
+            target_status_code=404
+        )
+
+    def test_document_multiple_metadata_edit_redirect(self):
+        self.upload_document()
+
+        self.grant_access(
+            obj=self.test_documents[0],
+            permission=permission_document_metadata_edit
+        )
+        self.grant_access(
+            obj=self.test_documents[1],
+            permission=permission_document_metadata_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_edit
+        )
+
+        response = self._request_test_document_multiple_metadata_edit_post_view()
+        self.assertEqual(response.status_code, 302)
+
+        url = furl(response.url)
+        self.assertEqual(
+            url.path, reverse(viewname='metadata:metadata_multiple_edit')
+        )
+
+        self.assertEqual(
+            set(map(int, url.args['id_list'].split(','))),
+            set([self.test_documents[0].pk, self.test_documents[1].pk])
         )
 
     def test_document_metadata_list_view_no_access(self):
@@ -427,6 +533,60 @@ class DocumentMetadataViewTestCase(
             self.test_document_metadata not in self.test_document.metadata.all()
         )
 
+    def test_document_metadata_remove_redirect(self):
+        self._create_test_document_metadata()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_remove
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_remove
+        )
+
+        response = self._request_test_document_metadata_remove_post_view()
+
+        self.assertRedirects(
+            response=response, expected_url=reverse(
+                viewname='metadata:metadata_view', kwargs={
+                    'pk': self.test_document.pk
+                }
+            ), status_code=302,
+            target_status_code=404
+        )
+
+    def test_document_multiple_metadata_remove_redirect(self):
+        self.upload_document()
+
+        self.test_documents[0].metadata.create(
+            metadata_type=self.test_metadata_type
+        )
+        self.test_documents[1].metadata.create(
+            metadata_type=self.test_metadata_type
+        )
+
+        self.grant_access(
+            obj=self.test_documents[0],
+            permission=permission_document_metadata_remove
+        )
+        self.grant_access(
+            obj=self.test_documents[1],
+            permission=permission_document_metadata_remove
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_remove
+        )
+
+        response = self._request_test_document_multiple_metadata_remove_post_view()
+        self.assertRedirects(
+            response=response, expected_url=reverse(
+                viewname=setting_home_view.value
+            ), status_code=302,
+            target_status_code=200
+        )
+
     def test_document_multiple_metadata_remove_view_with_access(self):
         self.grant_permission(permission=permission_document_view)
         self.grant_permission(permission=permission_document_metadata_remove)
@@ -436,7 +596,9 @@ class DocumentMetadataViewTestCase(
         document_metadata = self.test_documents[0].metadata.create(
             metadata_type=self.test_metadata_type
         )
-        self.test_documents[1].metadata.create(metadata_type=self.test_metadata_type)
+        self.test_documents[1].metadata.create(
+            metadata_type=self.test_metadata_type
+        )
 
         response = self.get(
             viewname='metadata:metadata_multiple_remove', data={

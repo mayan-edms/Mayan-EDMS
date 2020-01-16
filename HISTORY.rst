@@ -40,6 +40,7 @@
 - Add new entry to the CONVERTER_GRAPHICS_BACKEND_ARGUMENTS setting to 
   allow passing a maximum image pixel count to Pillow. The entry
   is called 'pillow_maximum_image_pixels' and defaults to 89478485.
+- Fix document metadata add, edit, and remove redirects.
 
 3.3.7 (2019-12-31)
 ==================

@@ -85,6 +85,35 @@ class DocumentMetadataViewTestMixin(object):
             }
         )
 
+    def _request_test_document_multiple_metadata_edit_post_view(self):
+        return self.post(
+            viewname='metadata:metadata_multiple_edit', data={
+                'id_list': '{},{}'.format(
+                    self.test_documents[0].pk, self.test_documents[1].pk
+                ),
+                'form-0-id': self.test_metadata_type.pk,
+                'form-0-update': True,
+                'form-0-value': TEST_METADATA_VALUE_EDITED,
+                'form-TOTAL_FORMS': '1',
+                'form-INITIAL_FORMS': '0',
+                'form-MAX_NUM_FORMS': '',
+            }
+        )
+
+    def _request_test_document_multiple_metadata_remove_post_view(self):
+        return self.post(
+            viewname='metadata:metadata_multiple_remove', data={
+                'id_list': '{},{}'.format(
+                    self.test_documents[0].pk, self.test_documents[1].pk
+                ),
+                'form-0-id': self.test_metadata_type.pk,
+                'form-0-update': True,
+                'form-TOTAL_FORMS': '1',
+                'form-INITIAL_FORMS': '0',
+                'form-MAX_NUM_FORMS': '',
+            }
+        )
+
 
 class MetadataTypeAPIViewTestMixin(object):
     def setUp(self):

@@ -19,6 +19,7 @@ from mayan.apps.common.generics import (
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.common.mixins import ExternalObjectMixin
+from mayan.apps.common.utils import convert_to_id_list
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_edit
@@ -143,7 +144,9 @@ class DocumentMetadataAddView(
             url = furl(
                 path=reverse(
                     viewname='metadata:metadata_multiple_edit'
-                ), args={'id_list': self.action_id_list}
+                ), args={
+                    'id_list': convert_to_id_list(items=self.action_id_list)
+                }
             )
 
             return url.tostr()
@@ -308,17 +311,17 @@ class DocumentMetadataEditView(
     def get_post_object_action_url(self):
         if self.action_count == 1:
             return reverse(
-                viewname='metadata:metadata_edit',
+                viewname='metadata:metadata_view',
                 kwargs={'pk': self.action_id_list[0]}
             )
-
         elif self.action_count > 1:
             url = furl(
                 path=reverse(
                     viewname='metadata:metadata_multiple_edit'
-                ), args={'id_list': self.action_id_list}
+                ), args={
+                    'id_list': convert_to_id_list(items=self.action_id_list)
+                }
             )
-
             return url.tostr()
 
     def object_action(self, form, instance):
@@ -473,17 +476,9 @@ class DocumentMetadataRemoveView(
     def get_post_object_action_url(self):
         if self.action_count == 1:
             return reverse(
-                viewname='metadata:metadata_edit',
+                viewname='metadata:metadata_view',
                 kwargs={'pk': self.action_id_list[0]}
             )
-        elif self.action_count > 1:
-            url = furl(
-                path=reverse(
-                    viewname='metadata:metadata_multiple_edit'
-                ), args={'id_list': self.action_id_list}
-            )
-
-            return url.tostr()
 
     def object_action(self, form, instance):
         for form in form.forms:

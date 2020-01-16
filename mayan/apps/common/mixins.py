@@ -412,6 +412,7 @@ class RedirectionMixin(object):
     next_url = None
     previous_url = None
     post_action_redirect = None
+    success_url = None
 
     def get_action_cancel_redirect(self):
         return self.action_cancel_redirect
@@ -459,7 +460,7 @@ class RedirectionMixin(object):
             )
 
     def get_success_url(self):
-        return self.get_next_url() or self.get_previous_url()
+        return self.success_url or self.get_next_url() or self.get_previous_url()
 
 
 class RestrictedQuerysetMixin(object):
