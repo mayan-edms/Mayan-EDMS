@@ -19,9 +19,10 @@ from ..settings import setting_graphics_backend_arguments
 
 from ..literals import (
     DEFAULT_PDFTOPPM_DPI, DEFAULT_PDFTOPPM_FORMAT, DEFAULT_PDFTOPPM_PATH,
-    DEFAULT_PDFINFO_PATH
+    DEFAULT_PDFINFO_PATH, DEFAULT_PILLOW_MAXIMUM_IMAGE_PIXELS
 )
 
+logger = logging.getLogger(__name__)
 pdftoppm_path = setting_graphics_backend_arguments.value.get(
     'pdftoppm_path', DEFAULT_PDFTOPPM_PATH
 )
@@ -54,7 +55,11 @@ try:
 except sh.CommandNotFound:
     pdfinfo = None
 
-logger = logging.getLogger(__name__)
+
+pillow_maximum_image_pixels = setting_graphics_backend_arguments.value.get(
+    'pillow_maximum_image_pixels', DEFAULT_PILLOW_MAXIMUM_IMAGE_PIXELS
+)
+Image.MAX_IMAGE_PIXELS = pillow_maximum_image_pixels
 
 
 class Python(ConverterBase):

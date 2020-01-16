@@ -37,6 +37,9 @@
 - Initialize permissions on every start or installation instead of
   them being initialized on demand. Closes GitLab issue #757.
   Thanks to forum user Roberto Novaes (rvnovaes) for the report.
+- Add new entry to the CONVERTER_GRAPHICS_BACKEND_ARGUMENTS setting to 
+  allow passing a maximum image pixel count to Pillow. The entry
+  is called 'pillow_maximum_image_pixels' and defaults to 89478485.
 
 3.3.7 (2019-12-31)
 ==================
