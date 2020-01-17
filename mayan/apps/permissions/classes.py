@@ -170,6 +170,3 @@ class Permission(object):
                 stored permissions during the initial creation of the
                 database. Can be safely ignore under that situation.
                 """
-
-
-
