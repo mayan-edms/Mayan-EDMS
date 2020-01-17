@@ -1,30 +1,30 @@
-3.3.8 (2020-01-XX)
+3.3.8 (2020-01-17)
 ==================
 - Update literals so the correct paths of pdfinfo, pdftoppm, libreoffice,
   exiftool and tesseract are found. Relates to Gitlab issue #308
 - Fix document detached signing. Closes GitLab issue #732.
-  Thanks to holzhannes(@holzhannes) for the report and debug information.
+  Thanks to holzhannes (@holzhannes) for the report and debug information.
 - Updated direct deployment documentation to advise users installing
   in a custom directory to verify the automatically generated
   supervisor configuration file. Addresses GitLab issue #739
 - Added a note to the LDAP section of the FAQ to assist users with
   potential local environment issues
 - Updated docker-compose.yml and documentation to ensure RabbitMQ messages
-  are persistant
+  are persistent
 - Improve the File Storage section of the Documentation
 - Add support and documentation for S3 storage backend
-- Update documenation push CI stage to delete existing files before
+- Update documentation push CI stage to delete existing files before
   uploading new content. GitLab issue #721. Thanks to Chris Whitten
   (@whit1206) for the report.
 - Ensure that the model property choice field of the template widget
-  is never required, regarless of the required setting of the template
+  is never required, regardless of the required setting of the template
   field. GitLab issue #748. Thanks to forum user chrimpshrine for the
   report.
 - Remove repeated raise statement that cause HTML markup to show on
   upload error display.
 - Improve file metadata property label.
 - Improve file metadata property path reading. Will not error out
-  whe passed invalid path to the driver as reference.
+  when passed invalid path to the driver as reference.
 - Make the sandbox template field a required field.
 - Fix Tag apps API required permissions. The required permissions
   of the API match those of the view and comply with MERC 0006.
@@ -37,7 +37,7 @@
 - Initialize permissions on every start or installation instead of
   them being initialized on demand. Closes GitLab issue #757.
   Thanks to forum user Roberto Novaes (rvnovaes) for the report.
-- Add new entry to the CONVERTER_GRAPHICS_BACKEND_ARGUMENTS setting to 
+- Add new entry to the CONVERTER_GRAPHICS_BACKEND_ARGUMENTS setting to
   allow passing a maximum image pixel count to Pillow. The entry
   is called 'pillow_maximum_image_pixels' and defaults to 89478485.
 - Fix document metadata add, edit, and remove redirects.
