@@ -6,7 +6,7 @@ import logging
 
 from django.apps import apps
 from django.core.exceptions import PermissionDenied
-from django.db.utils import OperationalError
+from django.db.utils import OperationalError, ProgrammingError
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -164,7 +164,7 @@ class Permission(object):
 
                 self.__class__._stored_permissions_cache[self.pk] = stored_permission
                 return stored_permission
-            except OperationalError:
+            except (OperationalError, ProgrammingError):
                 """
                 This error is expected when trying to initialize the
                 stored permissions during the initial creation of the
