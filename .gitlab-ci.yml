@@ -151,6 +151,7 @@ job_push_python:
       - ~/.cache/pip/
       - /var/cache/apt/archives/
   before_script:
+    - set -a && . ./config.env && set +a
     - apt-get -qq update
     - apt-get install -qq locales
     - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
@@ -202,7 +203,7 @@ test_upgrade_postgres:
     POSTGRES_DB: "mayan_edms"
     POSTGRES_PASSWORD: "postgres"
   services:
-    - postgres
+    - postgres:9.6-alpine
   script:
     - apt-get install -qq libpq-dev
     - . venv/bin/activate
