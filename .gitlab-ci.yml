@@ -162,7 +162,7 @@ job_push_python:
     - virtualenv venv -p /usr/bin/python3
     - . venv/bin/activate
     - pip install mayan-edms==`python -c "import xmlrpc.client;pypi = xmlrpc.client.ServerProxy('https://pypi.org');print(pypi.package_releases('mayan-edms')[0])"`
-    - pip install -r requirements/build.txt
+    - pip install -r requirements/build.txt -r requirements/testing-base.txt
     - make python-wheel
   only:
     - releases/all
