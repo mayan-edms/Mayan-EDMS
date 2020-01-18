@@ -7,6 +7,7 @@
 - Add makefile target to make it easier to create the code coverage report.
 - Remove unused Magnum and Travis CI files.
 - Add makefile target to run GitLab CI jobs locally.
+- Add GitLab CI jobs to test upgrading from current to newest version.
 
 3.3.8 (2020-01-17)
 ==================
