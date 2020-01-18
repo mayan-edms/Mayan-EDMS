@@ -1,115 +1,55 @@
-Version 3.3.8
+Version 3.3.9
 =============
 
-Released: January 17, 2020
+Released: January 18, 2020
 
 
 Changes
 -------
 
-Converter
+
+Documents
 ^^^^^^^^^
 
-A new was added to the ``CONVERTER_GRAPHICS_BACKEND_ARGUMENTS`` setting to
-allow passing a maximum image pixel count to Pillow. The entry
-is called ``'pillow_maximum_image_pixels'`` and defaults to 89478485. This
-entry is used to increase the threshold upon which Pillow with trigger the
-Decompression bomb protection.
-(https://pillow.readthedocs.io/en/5.1.x/releasenotes/5.0.0.html#decompression-bombs-now-raise-exceptions)
+The way the default value for the language field of the Document model is
+set, was updated to avoid triggering a new migrations when changing the
+default language for documents.
 
 
-Dependencies
+Lock manager
 ^^^^^^^^^^^^
 
-The OS detection for the paths of ``pdfinfo``, ``pdftoppm``, ``libreoffice``,
-``exiftool`` and ``tesseract`` was improved to work on MacOs.
+The way the default value for the timeout field of the Lock model is set,
+was updated to avoid triggering a new migrations when changing the
+default timeout for locks.
 
 
-Documentation
-^^^^^^^^^^^^^
-
-The direct deployment documentation was updated to advise users installing
-in a custom directory to verify the automatically generated supervisor
-configuration file.
-
-A note was added to the LDAP section of the FAQ to assist users with
-potential local environment issues.
-
-The sample ``docker-compose.yml`` file and documentation were updated to
-ensure RabbitMQ messages are persistent.
-
-The File Storage section of the documentation was improved.
-
-The documentation update script was updated to delete published documentation
-files before uploading new content. Old documentation links will not work
-anymore. For a more complete explanation check forum post: https://forum.mayan-edms.com/viewtopic.php?t=1605
-
-
-File metadata
-^^^^^^^^^^^^^
-
-Fixed typos in the file metadata property label.
-
-Improved the way the file metadata property path was read. Accessing the
-file metadata value from a template will no longer error out when passed
-an invalid path to the driver as reference.
-
-
-Metadata
-^^^^^^^^
-
-Fixed the metadata app view permissions layout. The metadata add, edit, and
-remove permissions are now required for both the document and the the
-metadata type in order to add, edit or remove a metadata from a document.
-The HTML and API were updated, as well as the document metadata widget to
-only show metadata types for which the document metadata view permission was
-been granted.
-
-The redirects after the document metadata add, edit, and remove actions were
-fixed too.
-
-
-Permissions
+Source code
 ^^^^^^^^^^^
 
-The permissions are now initialized on every start or installation instead of
-them being initialized on demand. This fixes the situation where not all
-permissions would show up as available in the role permission assignment view.
+Some helper scripts were moved to the ``contrib/scripts`` folder.
 
 
-Signatures
-^^^^^^^^^^
-
-Document detached signing was fixed as is operating as expected again.
-
-
-Sources
+Testing
 ^^^^^^^
 
-A repeated raise statement was removed that was causing HTML markup to show
-up on the upload error display widget.
+Two makefile targets were added to make it easier to create the code coverage
+report.
 
+The Magnum and Travis CI files and setting modules are no longer used and
+were removed.
 
-Tags
-^^^^
+A makefile target was added to allow running GitLab CI jobs locally.
 
-The Tags apps API required permissions was fixed. The required permissions
-of the API match those of the view and comply with MERC 0006.
-(https://docs.mayan-edms.com/mercs/0006-lower-information-disclose.html)
-
-
-Templating
-^^^^^^^^^^
-
-The model property choice field of the template widget is now never required,
-regardless of the required setting of the template field. This fixes the
-web link creation form.
+GitLab CI jobs were added to test the upgrade process from the current
+releases to newest version being built.
 
 
 Removals
 --------
 
-- None
+- Magnum CI configuration files.
+- Travis CI configuration files.
 
 
 Upgrading process
@@ -200,7 +140,7 @@ Upgrade steps from any previous version of Mayan EDMS
 
    .. code-block:: bash
 
-    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.8
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.9
 
    the requirements will also be updated automatically.
 
@@ -285,17 +225,6 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
-- :gitlab-issue:`308` MacOS setup documentation additions
-- :gitlab-issue:`721` Amqp connection refused in new docker setup (ErrNo 111)
-- :gitlab-issue:`732` Sign document (detached) is not working, signature file is not created
-- :gitlab-issue:`736` Installation Documentation for direct install not fully correct
-- :gitlab-issue:`739` Generated supervisor configuration refers to nonexisting /opt/mayan-edms
-- :gitlab-issue:`748` Web Links: Can't create web link as model property choices box is locked
-- :gitlab-issue:`749` Cant convert document...DOS Bomb attack?
-- :gitlab-issue:`757` Permissions list does not show an object until one has been created
-- :gitlab-merge:`68` Add Darwin to the OS prober check so utilities can be found correctly
-- :gitlab-merge:`69` Documentation: Use Tee Instead of Sudo Redirection
-- :gitlab-merge:`70` Documentation: Show a Note When Generating Supervisor Config
-- :forum-topic:`1581` Can't create Web links
+- :gitlab-issue:`759` Permissions list does not show an object until one has been created
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
