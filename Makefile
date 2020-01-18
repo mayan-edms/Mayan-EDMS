@@ -1,6 +1,8 @@
 #!make
 include config.env
 
+TEST_COMMAND_LINE=./manage.py test --mayan-apps --settings=mayan.settings.testing.development --nomigrations $(ARGUMENTS)
+
 .PHONY: clean clean-pyc clean-build test
 
 help:
@@ -35,7 +37,7 @@ test-debug: ## MODULE=<python module name> - Run tests for a single app, module 
 
 test-all: ## Run all tests.
 test-all: clean-pyc
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --nomigrations $(ARGUMENTS)
+	$(TEST_COMMAND_LINE)
 
 test-all-debug: ## Run all tests in debug mode.
 test-all-debug: clean-pyc
@@ -103,6 +105,16 @@ test-with-oracle-all: test-launch-oracle
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_oracle --nomigrations
 	@docker rm -f test-oracle || true
 	@docker volume rm test-oracle || true
+
+# Coverage
+
+coverage-run: ## Run all tests and measure code execution.
+coverage-run: clean-pyc
+	coverage run $(TEST_COMMAND_LINE)
+
+coverage-html: ## Create the coverage HTML report. Run execute coverage-run first.
+coverage-html:
+	coverage html
 
 # Documentation
 

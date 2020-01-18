@@ -4,6 +4,7 @@
   default document language change and on default lock timeout change.
   Closes GitLab issue #759.
 - Cleanup repository top level. Moved helper scripts to contrib/scripts.
+- Add makefile target to make it easier to create the code coverage report.
 
 3.3.8 (2020-01-17)
 ==================
