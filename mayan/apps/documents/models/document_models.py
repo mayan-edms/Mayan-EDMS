@@ -15,6 +15,7 @@ from ..events import (
     event_document_create, event_document_properties_edit,
     event_document_trashed, event_document_type_change,
 )
+from ..literals import DEFAULT_LANGUAGE
 from ..managers import DocumentManager, PassthroughManager, TrashCanManager
 from ..settings import setting_language
 from ..signals import post_document_type_change
@@ -60,7 +61,7 @@ class Document(models.Model):
         ), verbose_name=_('Added')
     )
     language = models.CharField(
-        blank=True, default=setting_language.value, help_text=_(
+        blank=True, default=DEFAULT_LANGUAGE, help_text=_(
             'The dominant language in the document.'
         ), max_length=8, verbose_name=_('Language')
     )
