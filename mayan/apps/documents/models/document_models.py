@@ -17,7 +17,6 @@ from ..events import (
 )
 from ..literals import DEFAULT_LANGUAGE
 from ..managers import DocumentManager, PassthroughManager, TrashCanManager
-from ..settings import setting_language
 from ..signals import post_document_type_change
 
 from .document_type_models import DocumentType
