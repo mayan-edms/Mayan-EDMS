@@ -78,7 +78,6 @@ test-with-mysql: test-launch-mysql
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
 
-
 test-with-mysql-all: ## Run all tests against a MySQL database container.
 test-with-mysql-all: test-launch-mysql
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --nomigrations
@@ -105,6 +104,16 @@ test-with-oracle-all: test-launch-oracle
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_oracle --nomigrations
 	@docker rm -f test-oracle || true
 	@docker volume rm test-oracle || true
+
+gitlab-ci-run: ## Execute a GitLab CI job locally
+gitlab-ci-run:
+	@if [ -z "$$(docker images gitlab-runner-helper:11.2.0)" ]; then \
+	echo "1) Make sure to download the corresponding helper image from https://hub.docker.com/r/gitlab/gitlab-runner-helper/tags"; \
+	echo "2) Tag the download image as gitlab-runner-helper:11.2.0"; \
+	exit 1; \
+	fi; \
+	if [ -z $(GITLAB_CI_JOB) ]; then echo "Specify the job to execute using GITLAB_CI_JOB."; exit 1; fi; \
+	gitlab-runner exec docker --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
 
 # Coverage
 

@@ -6,6 +6,7 @@
 - Cleanup repository top level. Moved helper scripts to contrib/scripts.
 - Add makefile target to make it easier to create the code coverage report.
 - Remove unused Magnum and Travis CI files.
+- Add makefile target to run GitLab CI jobs locally.
 
 3.3.8 (2020-01-17)
 ==================
