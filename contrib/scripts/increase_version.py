@@ -4,10 +4,13 @@ from __future__ import print_function, unicode_literals
 
 import doctest
 import re
+import os
 import sys
 
-import mayan
+sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(1, os.path.abspath('.'))
 
+import mayan
 
 VERSION_PART_MAJOR = 0
 VERSION_PART_MINOR = 1

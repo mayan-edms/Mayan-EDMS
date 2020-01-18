@@ -132,7 +132,7 @@ translations-all: translations-make translations-push translations-pull translat
 # Releases
 
 increase-version: ## Increase the version number of the entire project's files.
-	@VERSION=`grep "__version__ =" mayan/__init__.py| cut -d\' -f 2|./increase_version.py - $(PART)`; \
+	@VERSION=`grep "__version__ =" mayan/__init__.py| cut -d\' -f 2|./contrib/scripts/increase_version.py - $(PART)`; \
 	BUILD=`echo $$VERSION|awk '{split($$VERSION,a,"."); printf("0x%02d%02d%02d\n", a[1],a[2], a[3])}'`; \
 	sed -i -e "s/__build__ = 0x[0-9]*/__build__ = $${BUILD}/g" mayan/__init__.py; \
 	sed -i -e "s/__version__ = '[0-9\.]*'/__version__ = '$${VERSION}'/g" mayan/__init__.py; \
@@ -235,7 +235,7 @@ python-wheel-test-suit: wheel
 
 generate-setup: ## Create and update the setup.py file.
 generate-setup: generate-requirements
-	@./generate_setup.py
+	@./contrib/scripts/generate_setup.py
 	@echo "Complete."
 
 generate-requirements: ## Generate all requirements files from the project depedency declarations.

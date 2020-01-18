@@ -3,6 +3,10 @@
 from __future__ import unicode_literals
 
 import os
+import sys
+
+sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(1, os.path.abspath('.'))
 
 from dateutil import parser
 import sh
@@ -13,6 +17,7 @@ from django.template import Template, Context
 from django.utils.encoding import force_text
 
 import mayan
+from mayan.settings import BASE_DIR as mayan_base_dir
 
 try:
     BUILD = sh.Command('git').bake('describe', '--tags', '--always', 'HEAD')
@@ -21,8 +26,7 @@ except sh.CommandNotFound:
     BUILD = None
     DATE = None
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
+BASE_DIR = os.path.join(mayan_base_dir, '..')
 REQUIREMENTS_FILE = 'requirements.txt'
 SETUP_TEMPLATE = 'setup.py.tmpl'
 MAYAN_TEMPLATE = '__init__.py.tmpl'

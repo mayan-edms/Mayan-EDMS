@@ -1,3 +1,10 @@
+3.3.9 (2020-01-18)
+==================
+- Update Document and Lock models to avoid triggering a new migrations on
+  default document language change and on default lock timeout change.
+  Closes GitLab issue #759.
+- Cleanup repository top level. Moved helper scripts to contrib/scripts.
+
 3.3.8 (2020-01-17)
 ==================
 - Update literals so the correct paths of pdfinfo, pdftoppm, libreoffice,
