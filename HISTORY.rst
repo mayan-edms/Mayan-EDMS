@@ -1,3 +1,8 @@
+3.3.10 (2020-XX-XX)
+===================
+- Turn TarArchiveClassTestCase in to reusable archive test case class.
+  #MD-10.
+
 3.3.9 (2020-01-18)
 ==================
 - Update Document and Lock models to avoid triggering a new migrations on

@@ -13,9 +13,9 @@ from .literals import (
 )
 
 
-class TarArchiveClassTestCase(BaseTestCase):
-    archive_path = TEST_TAR_FILE_PATH
-    cls = TarArchive
+class ArchiveClassTestCaseMixin(object):
+    archive_path = None
+    cls = None
     filename = TEST_FILENAME3
     file_path = TEST_FILE3_PATH
     members_list = TEST_COMPRESSED_FILE_CONTENTS
@@ -56,7 +56,12 @@ class TarArchiveClassTestCase(BaseTestCase):
             )
 
 
-class ZipArchiveClassTestCase(TarArchiveClassTestCase):
+class TarArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
+    archive_path = TEST_TAR_FILE_PATH
+    cls = TarArchive
+
+
+class ZipArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
     archive_path = TEST_ZIP_FILE_PATH
     cls = ZipArchive
 
@@ -71,11 +76,11 @@ class ZipArchiveClassTestCase(TarArchiveClassTestCase):
             list(archive.get_members())
 
 
-class TarGzArchiveClassTestCase(TarArchiveClassTestCase):
+class TarGzArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
     archive_path = TEST_TAR_GZ_FILE_PATH
     cls = TarArchive
 
 
-class TarBz2ArchiveClassTestCase(TarArchiveClassTestCase):
+class TarBz2ArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
     archive_path = TEST_TAR_BZ2_FILE_PATH
     cls = TarArchive
