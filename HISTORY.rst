@@ -11,6 +11,7 @@
   target.
 - Update the GitLab CI file to use the test makefile target and add
   migration testing.
+- Update the Docker run_tests command to perform migration testing.
 
 3.3.9 (2020-01-18)
 ==================
