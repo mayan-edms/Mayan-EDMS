@@ -3,6 +3,8 @@
 - Turn TarArchiveClassTestCase in to reusable archive test case class.
   #MD-10.
 - Add test runner option for testing excluded tests.
+- Add data operation to file metadata 0002 to remove duplicated entries.
+  Closes GitLab issue #762. Thanks to forum user benaser for the report.
 
 3.3.9 (2020-01-18)
 ==================
