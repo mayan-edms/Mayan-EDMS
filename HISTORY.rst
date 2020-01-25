@@ -9,6 +9,8 @@
   file metadata app for migration 0002.
 - Update make file to remove repeated commands and add migration testing
   target.
+- Update the GitLab CI file to use the test makefile target and add
+  migration testing.
 
 3.3.9 (2020-01-18)
 ==================
