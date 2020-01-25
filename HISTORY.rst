@@ -7,6 +7,8 @@
   Closes GitLab issue #762. Thanks to forum user benaser for the report.
 - Add package django_migration_test and add migration test to the
   file metadata app for migration 0002.
+- Update make file to remove repeated commands and add migration testing
+  target.
 
 3.3.9 (2020-01-18)
 ==================

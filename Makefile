@@ -1,7 +1,17 @@
 #!make
 include config.env
 
-TEST_COMMAND_LINE=./manage.py test --mayan-apps --settings=mayan.settings.testing.development --nomigrations $(ARGUMENTS)
+ifndef MODULE
+override MODULE = --mayan-apps
+endif
+
+ifndef NOMIGRATIONS
+override NOMIGRATIONS = --nomigrations
+endif
+
+ifndef SETTINGS
+override SETTINGS = mayan.settings.testing.development
+endif
 
 .PHONY: clean clean-pyc clean-build test
 
@@ -25,23 +35,30 @@ clean-pyc: ## Remove Python artifacts.
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -R -f {} +
 
+
 # Testing
 
-test: clean-pyc
-test: ## MODULE=<python module name> - Run tests for a single app, module or test class.
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --nomigrations $(ARGUMENTS)
+_test-command:
+	./manage.py test $(MODULE) --settings=$(SETTINGS) $(NOMIGRATIONS) $(DEBUG) $(ARGUMENTS)
 
-test-debug: clean-pyc
+test: ## MODULE=<python module name> - Run tests for a single app, module or test class.
+test: clean-pyc _test-command
+
 test-debug: ## MODULE=<python module name> - Run tests for a single app, module or test class, in debug mode.
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --nomigrations --debug-mode $(ARGUMENTS)
+test-debug: DEBUG=--debug-mode
+test-debug: clean-pyc _test-command
 
 test-all: ## Run all tests.
-test-all: clean-pyc
-	$(TEST_COMMAND_LINE)
+test-all: clean-pyc _test-command
 
 test-all-debug: ## Run all tests in debug mode.
-test-all-debug: clean-pyc
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --nomigrations --debug-mode $(ARGUMENTS)
+test-all-debug: DEBUG=--debug-mode
+test-all-debug: clean-pyc _test-command
+
+test-all-migrations: ## Run all migration tests.
+test-all-migrations: ARGUMENTS=--no-exclude --tag=migration
+test-all-migrations: NOMIGRATIONS=
+test-all-migrations: clean-pyc _test-command
 
 test-launch-postgres:
 	@docker rm -f test-postgres || true
