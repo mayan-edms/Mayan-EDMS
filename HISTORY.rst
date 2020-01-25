@@ -5,6 +5,8 @@
 - Add test runner option for testing excluded tests.
 - Add data operation to file metadata 0002 to remove duplicated entries.
   Closes GitLab issue #762. Thanks to forum user benaser for the report.
+- Add package django_migration_test and add migration test to the
+  file metadata app for migration 0002.
 
 3.3.9 (2020-01-18)
 ==================

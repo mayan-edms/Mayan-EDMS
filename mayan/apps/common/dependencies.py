@@ -352,6 +352,10 @@ PythonDependency(
     version_string='==1.3.0'
 )
 PythonDependency(
+    environment=environment_testing, module=__name__,
+    name='django-test-migrations', version_string='==0.1.0'
+)
+PythonDependency(
     environment=environment_testing,
     module=__name__, name='django-test-without-migrations',
     version_string='==0.6'
