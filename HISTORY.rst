@@ -2,6 +2,7 @@
 ===================
 - Turn TarArchiveClassTestCase in to reusable archive test case class.
   #MD-10.
+- Add test runner option for testing excluded tests.
 
 3.3.9 (2020-01-18)
 ==================
