@@ -10,7 +10,7 @@ from ..permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
 )
-from ..utils import get_document_content
+from ..utils import get_instance_content
 
 from .literals import TEST_DOCUMENT_CONTENT
 
@@ -127,7 +127,7 @@ class DocumentContentViewsTestCase(
 
         self.assert_download_response(
             response=response, content=(
-                ''.join(get_document_content(document=self.test_document))
+                ''.join(get_instance_content(document=self.test_document))
             ),
         )
 
@@ -192,9 +192,9 @@ class DocumentContentToolsViewsTestCase(
     # Ensure we use a PDF file
     test_document_filename = TEST_HYBRID_DOCUMENT
 
-    def _get_document_content(self):
+    def _get_instance_content(self):
         return ''.join(
-            list(get_document_content(document=self.test_document))
+            list(get_instance_content(document=self.test_document))
         )
 
     def test_document_parsing_error_list_view_no_permission(self):
@@ -218,7 +218,7 @@ class DocumentContentToolsViewsTestCase(
         )
 
         self.assertNotEqual(
-            self._get_document_content(), TEST_DOCUMENT_CONTENT
+            self._get_instance_content(), TEST_DOCUMENT_CONTENT
         )
 
     def test_document_parsing_tool_view_with_permission(self):
@@ -230,5 +230,5 @@ class DocumentContentToolsViewsTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self._get_document_content(), TEST_DOCUMENT_CONTENT
+            self._get_instance_content(), TEST_DOCUMENT_CONTENT
         )

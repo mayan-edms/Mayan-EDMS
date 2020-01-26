@@ -13,6 +13,12 @@
   migration testing.
 - Update the Docker run_tests command to perform migration testing.
 - Update translation files.
+- Add support for specifying related fields per model to the templating
+  app.
+- Add grouping to the templating widget. Model attributes are now group
+  into model properties, models fields and the new model related fields.
+- Add document OCR content and parsed content as document model properties
+  for use in templates.
 
 3.3.9 (2020-01-18)
 ==================

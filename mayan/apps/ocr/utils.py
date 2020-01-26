@@ -4,12 +4,12 @@ from django.apps import apps
 from django.utils.encoding import force_text
 
 
-def get_document_ocr_content(document):
+def get_instance_ocr_content(instance):
     DocumentPageOCRContent = apps.get_model(
         app_label='ocr', model_name='DocumentPageOCRContent'
     )
 
-    for page in document.pages.all():
+    for page in instance.pages.all():
         try:
             page_content = page.ocr_content.content
         except DocumentPageOCRContent.DoesNotExist:

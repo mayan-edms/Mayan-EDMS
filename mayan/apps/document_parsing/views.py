@@ -19,7 +19,7 @@ from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
 )
-from .utils import get_document_content
+from .utils import get_instance_content
 
 
 class DocumentContentDeleteView(MultipleObjectConfirmActionView):
@@ -76,7 +76,7 @@ class DocumentContentDownloadView(SingleObjectDownloadView):
     object_permission = permission_content_view
 
     def get_download_file_object(self):
-        return get_document_content(document=self.object)
+        return get_instance_content(document=self.object)
 
     def get_download_filename(self):
         return '{}-content'.format(self.object)

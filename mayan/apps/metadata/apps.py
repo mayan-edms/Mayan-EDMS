@@ -10,7 +10,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelAttribute, ModelField
+from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
@@ -92,18 +92,18 @@ class MetadataApp(MayanAppConfig):
             name='metadata_value_of', value=DocumentMetadataHelper.constructor
         )
 
-        ModelAttribute(
+        ModelProperty(
             model=Document, name='metadata_value_of.< metadata type name >',
             description=_(
-                'Return the value of a specific document metadata'
+                'Return the value of a specific document metadata.'
             ), label=_('Metadata value of')
         )
 
-        ModelField(
+        ModelFieldRelated(
             model=Document, name='metadata__metadata_type__name',
             label=_('Metadata type name')
         )
-        ModelField(
+        ModelFieldRelated(
             model=Document, name='metadata__value',
             label=_('Metadata type value')
         )

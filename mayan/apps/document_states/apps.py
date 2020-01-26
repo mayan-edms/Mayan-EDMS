@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelAttribute
+from mayan.apps.common.classes import ModelProperty
 from mayan.apps.common.links import link_object_error_list
 from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
@@ -103,19 +103,19 @@ class DocumentStatesApp(MayanAppConfig):
 
         WorkflowAction.initialize()
 
-        ModelAttribute(
+        ModelProperty(
             model=Document,
             name='workflow.< workflow internal name >.get_current_state',
             label=_('Current state of a workflow'), description=_(
-                'Return the current state of the selected workflow'
+                'Return the current state of the selected workflow.'
             )
         )
-        ModelAttribute(
+        ModelProperty(
             model=Document,
             name='workflow.< workflow internal name >.get_current_state.completion',
             label=_('Current state of a workflow'), description=_(
                 'Return the completion value of the current state of the '
-                'selected workflow'
+                'selected workflow.'
             )
         )
 
