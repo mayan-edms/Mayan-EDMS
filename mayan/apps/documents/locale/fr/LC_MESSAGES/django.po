@@ -5,7 +5,7 @@
 # Translators:
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016-2018
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
 # Olivier W, 2019
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 # Yves Dubois <ydubois@gmail.com>, 2018
@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:49-0400\n"
-"PO-Revision-Date: 2019-12-08 19:13+0000\n"
-"Last-Translator: Olivier W\n"
+"POT-Creation-Date: 2020-01-25 23:19-0400\n"
+"PO-Revision-Date: 2020-01-22 21:47+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -251,7 +251,7 @@ msgstr "Dupliquer les transformations"
 
 #: links/document_links.py:36 links/document_links.py:71
 msgid "Change type"
-msgstr "Changer le type"
+msgstr "Modifier le type"
 
 #: links/document_links.py:42 links/document_links.py:77
 msgid "Advanced download"
@@ -1113,7 +1113,7 @@ msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
 "document type."
-msgstr "Cela peut signifier qu'aucun document n'a été chargé ou que votre compte d'utilisateur ne dispose pas d'autorisation d'affichage pour aucun document ou type de document."
+msgstr "Cela peut signifier qu'aucun document n'a été téléversé ou que votre compte d'utilisateur ne dispose pas d'autorisation d'affichage pour aucun document ou type de document."
 
 #: views/document_views.py:96
 msgid "No documents available"
@@ -1261,7 +1261,7 @@ msgstr "Il n'y a pas de document récemment consulté"
 
 #: views/document_views.py:628
 msgid "This view will list the latest documents uploaded in the system."
-msgstr "Cette page afficher la liste des derniers documents téléchargés dans le système."
+msgstr "Cette page affiche la liste des derniers documents téléversés dans le système."
 
 #: views/document_views.py:632
 msgid "There are no recently added document"
@@ -1304,7 +1304,7 @@ msgstr "Recherche de documents dupliqués effectuée avec succès."
 msgid ""
 "Favorited documents will be listed in this view. Up to %(count)d documents "
 "can be favorited per user. "
-msgstr "Les documents favoris seront listés dans cette page. Jusqu'à %(count)d documents peuvent être ajoutés par utilisateur."
+msgstr "Les documents favoris seront répertoriés dans cette page. Jusqu'à %(count)d documents peuvent être ajoutés par utilisateur."
 
 #: views/favorite_document_views.py:36
 msgid "There are no favorited documents."

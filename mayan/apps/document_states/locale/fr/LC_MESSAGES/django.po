@@ -5,16 +5,16 @@
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
 # Olivier W, 2019
 # Yves Dubois <ydubois@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:49-0400\n"
-"PO-Revision-Date: 2019-12-21 18:18+0000\n"
-"Last-Translator: Olivier W\n"
+"POT-Creation-Date: 2020-01-25 23:19-0400\n"
+"PO-Revision-Date: 2020-01-22 21:48+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -371,7 +371,7 @@ msgstr ""
 
 #: models.py:475
 msgid "Required"
-msgstr "Requis"
+msgstr "obligatoire"
 
 #: models.py:479
 msgid "An optional class to change the default presentation of the field."
@@ -823,7 +823,7 @@ msgstr "Les flux de travail affecté à ce type de document: %s"
 msgid ""
 "Workflows store a series of states and keep track of the current state of a "
 "document. Transitions are used to change the current state to a new one."
-msgstr "Les flux de travail stockent une série d'états et assurent le suivi de l'état actuel d'un document. Les transitions sont utilisées pour changer l'état actuel en un nouvel état."
+msgstr "Les flux de travail stockent une série d'états et assurent le suivi de l'état actuel d'un document. Les transitions sont utilisées pour modifier l'état actuel en un nouvel état."
 
 #: views/workflow_template_views.py:101
 msgid "No workflows have been defined"

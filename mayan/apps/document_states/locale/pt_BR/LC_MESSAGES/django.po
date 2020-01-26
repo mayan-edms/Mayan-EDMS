@@ -6,14 +6,14 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:49-0400\n"
-"PO-Revision-Date: 2019-12-26 17:51+0000\n"
+"POT-Creation-Date: 2020-01-25 23:19-0400\n"
+"PO-Revision-Date: 2020-01-17 21:46+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +55,7 @@ msgstr "Usuário"
 
 #: apps.py:188
 msgid "Last transition"
-msgstr "Última transação"
+msgstr "Última transição"
 
 #: apps.py:192 apps.py:205
 msgid "Date and time"
@@ -140,7 +140,7 @@ msgstr "Escolha uma transição para ser executada no próximo passo."
 
 #: forms.py:182 links.py:197 models.py:451 models.py:506 models.py:673
 msgid "Transition"
-msgstr "Transações"
+msgstr "Transição"
 
 #: handlers.py:19
 msgid "Workflow images"
