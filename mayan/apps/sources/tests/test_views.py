@@ -1,8 +1,5 @@
 from __future__ import unicode_literals
 
-import os
-import shutil
-
 from mayan.apps.checkouts.models import NewVersionBlock
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.models import Document
@@ -12,20 +9,20 @@ from mayan.apps.documents.tests.literals import (
     TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
     TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
-from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..links import link_document_version_upload
 from ..literals import SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_Y
-from ..models import StagingFolderSource, WebFormSource
+from ..models import WebFormSource
 from ..permissions import (
     permission_sources_setup_create, permission_sources_setup_delete,
     permission_sources_setup_view, permission_staging_file_delete
 )
 
-from .literals import (
-    TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N, TEST_STAGING_PREVIEW_WIDTH
+from .literals import TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
+from .mixins import (
+    StagingFolderTestMixin, StagingFolderViewTestMixin, SourceTestMixin,
+    SourceViewTestMixin
 )
-from .mixins import SourceTestMixin, SourceViewTestMixin
 
 
 class DocumentUploadWizardViewTestMixin(object):
@@ -228,71 +225,6 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(resolved_link, None)
 
 
-class StagingFolderViewTestMixin(object):
-    def _request_staging_file_delete_view(self, staging_folder, staging_file):
-        return self.post(
-            viewname='sources:staging_file_delete', kwargs={
-                'pk': staging_folder.pk,
-                'encoded_filename': staging_file.encoded_filename
-            }
-        )
-
-
-class StagingFolderViewTestCase(
-    StagingFolderViewTestMixin, GenericViewTestCase
-):
-    def setUp(self):
-        super(StagingFolderViewTestCase, self).setUp()
-        self.temporary_directory = mkdtemp()
-        shutil.copy(src=TEST_SMALL_DOCUMENT_PATH, dst=self.temporary_directory)
-
-        self.filename = os.path.basename(TEST_SMALL_DOCUMENT_PATH)
-
-    def tearDown(self):
-        fs_cleanup(filename=self.temporary_directory)
-        super(StagingFolderViewTestCase, self).tearDown()
-
-    def test_staging_file_delete_no_permission(self):
-        staging_folder = StagingFolderSource.objects.create(
-            label=TEST_SOURCE_LABEL,
-            folder_path=self.temporary_directory,
-            preview_width=TEST_STAGING_PREVIEW_WIDTH,
-            uncompress=TEST_SOURCE_UNCOMPRESS_N,
-        )
-
-        self.assertEqual(len(list(staging_folder.get_files())), 1)
-
-        staging_file = list(staging_folder.get_files())[0]
-
-        response = self._request_staging_file_delete_view(
-            staging_folder=staging_folder, staging_file=staging_file
-        )
-        self.assertEqual(response.status_code, 404)
-
-        self.assertEqual(len(list(staging_folder.get_files())), 1)
-
-    def test_staging_file_delete_with_permission(self):
-        self.grant_permission(permission=permission_staging_file_delete)
-
-        staging_folder = StagingFolderSource.objects.create(
-            label=TEST_SOURCE_LABEL,
-            folder_path=self.temporary_directory,
-            preview_width=TEST_STAGING_PREVIEW_WIDTH,
-            uncompress=TEST_SOURCE_UNCOMPRESS_N,
-        )
-
-        self.assertEqual(len(list(staging_folder.get_files())), 1)
-
-        staging_file = list(staging_folder.get_files())[0]
-
-        response = self._request_staging_file_delete_view(
-            staging_folder=staging_folder, staging_file=staging_file
-        )
-        self.assertEqual(response.status_code, 302)
-
-        self.assertEqual(len(list(staging_folder.get_files())), 0)
-
-
 class SourcesViewTestCase(
     SourceTestMixin, SourceViewTestMixin, GenericViewTestCase
 ):
@@ -346,4 +278,43 @@ class SourcesViewTestCase(
         response = self._request_setup_source_list_view()
         self.assertContains(
             response=response, text=self.test_source.label, status_code=200
+        )
+
+
+class StagingFolderViewTestCase(
+    StagingFolderTestMixin, StagingFolderViewTestMixin, GenericViewTestCase
+):
+    def setUp(self):
+        super(StagingFolderViewTestCase, self).setUp()
+        self._create_test_stating_folder()
+        self._copy_test_document()
+
+    def test_staging_file_delete_no_permission(self):
+        staging_file_count = len(list(self.test_staging_folder.get_files()))
+        staging_file = list(self.test_staging_folder.get_files())[0]
+
+        response = self._request_staging_file_delete_view(
+            staging_folder=self.test_staging_folder, staging_file=staging_file
+        )
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            staging_file_count,
+            len(list(self.test_staging_folder.get_files()))
+        )
+
+    def test_staging_file_delete_with_permission(self):
+        self.grant_permission(permission=permission_staging_file_delete)
+
+        staging_file_count = len(list(self.test_staging_folder.get_files()))
+        staging_file = list(self.test_staging_folder.get_files())[0]
+
+        response = self._request_staging_file_delete_view(
+            staging_folder=self.test_staging_folder, staging_file=staging_file
+        )
+        self.assertEqual(response.status_code, 302)
+
+        self.assertNotEqual(
+            staging_file_count,
+            len(list(self.test_staging_folder.get_files()))
         )

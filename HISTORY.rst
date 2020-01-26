@@ -19,6 +19,8 @@
   into model properties, models fields and the new model related fields.
 - Add document OCR content and parsed content as document model properties
   for use in templates.
+- Fix the staging folder file API views. GitLab issue #764. Thanks to
+  David Kowis (@dkowis) for the report, debug, and research.
 
 3.3.9 (2020-01-18)
 ==================
