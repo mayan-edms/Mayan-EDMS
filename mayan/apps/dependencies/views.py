@@ -6,40 +6,18 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.generics import SimpleView, SingleObjectListView
 
 from .classes import DependencyGroup
-from .exceptions import NotLatestVersion, UnknownLatestVersion
 from .forms import DependenciesLicensesForm
 from .permissions import permission_dependencies_view
-from .utils import check_version
+from .utils import PyPIClient
 
 
 class CheckVersionView(SimpleView):
     template_name = 'appearance/generic_template.html'
 
     def get_extra_context(self):
-        try:
-            check_version()
-        except NotLatestVersion as exception:
-            message = _(
-                'The version you are using is outdated. The latest version '
-                'is %s'
-            ) % exception.upstream_version
-        except UnknownLatestVersion:
-            message = _(
-                'It is not possible to determine the latest version '
-                'available.'
-            )
-        except Exception as exception:
-            message = _(
-                'Unexpected error trying to determine the latest version '
-                'available. Make sure your installation has a connection to '
-                'the internet; %s'
-            ) % exception
-        else:
-            message = _('Your version is up-to-date.')
-
         return {
             'title': _('Check for updates'),
-            'content': message
+            'content': PyPIClient().check_version_verbose()
         }
 
 

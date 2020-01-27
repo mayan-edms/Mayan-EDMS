@@ -16,6 +16,6 @@ class Command(management.BaseCommand):
 
     def handle(self, *args, **options):
         if options['build_string']:
-            self.stdout.write(mayan.__build_string__ + '\n')
+            self.stdout.write('{}\n'.format(mayan.__build_string__))
         else:
-            self.stdout.write(mayan.__version__ + '\n')
+            self.stdout.write('{}\n'.format(mayan.__version__))
