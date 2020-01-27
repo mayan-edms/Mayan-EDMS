@@ -184,7 +184,7 @@ class OCRViewsTestCase(OCRViewTestMixin, GenericDocumentViewTestCase):
 
         self.assert_download_response(
             response=response, content=(
-                ''.join(get_instance_ocr_content(document=self.test_document))
+                ''.join(get_instance_ocr_content(instance=self.test_document))
             ),
         )
 
