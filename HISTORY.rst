@@ -21,6 +21,9 @@
   for use in templates.
 - Fix the staging folder file API views. GitLab issue #764. Thanks to
   David Kowis (@dkowis) for the report, debug, and research.
+- Add command to show the current version of Mayan. The command is named
+  ``showversion``. The command has one option `--build-string`` that will
+  show the build string instead. Closes #MD-14.
 
 3.3.9 (2020-01-18)
 ==================
