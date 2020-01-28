@@ -8,7 +8,6 @@ starting a container again. The container will take care of updating the
 database structure to the newest version if necessary.
 
 **IMPORTANT!** Do not delete the volume storing the data, only the container.
-Ensure any environment variables you have changed
 
 Stop the container to be upgraded::
 
