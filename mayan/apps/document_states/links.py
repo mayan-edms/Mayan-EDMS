@@ -44,6 +44,13 @@ link_workflow_template_edit = Link(
     permissions=(permission_workflow_edit,),
     text=_('Edit'), view='document_states:workflow_template_edit',
 )
+link_workflow_template_launch = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_template_launch',
+    permissions=(permission_workflow_tools,),
+    text=_('Launch workflow'),
+    view='document_states:workflow_template_launch'
+)
 link_workflow_template_list = Link(
     icon_class_path='mayan.apps.document_states.icons.icon_workflow_template_list',
     permissions=(permission_workflow_view,), text=_('Workflows'),

@@ -29,7 +29,22 @@ def task_launch_all_workflows():
 
     logger.info('Start launching workflows')
     for document in Document.objects.all():
-        logger.debug('Lauching workflows for document ID: %d', document.pk)
         Workflow.objects.launch_for(document=document)
 
     logger.info('Finished launching workflows')
+
+
+@app.task(ignore_result=True)
+def task_launch_workflow(workflow_id):
+    Document = apps.get_model(app_label='documents', model_name='Document')
+    Workflow = apps.get_model(
+        app_label='document_states', model_name='Workflow'
+    )
+
+    workflow = Workflow.objects.get(pk=workflow_id)
+
+    logger.info('Start launching workflow: %d', workflow_id)
+    for document in Document.objects.filter(document_type__in=workflow.document_types.all()):
+        workflow.launch_for(document=document)
+
+    logger.info('Finished launching workflow: %d', workflow_id)

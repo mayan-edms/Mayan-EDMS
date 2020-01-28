@@ -26,6 +26,8 @@
   show the build string instead. Closes #MD-14.
 - Add command to check if the current version is the latest one. The command
   is named ``checkversion``. Closes issue #MD-28.
+- Add button to launch a specific workflow for existing documents.
+  Issue #MD-171
 
 3.3.9 (2020-01-18)
 ==================

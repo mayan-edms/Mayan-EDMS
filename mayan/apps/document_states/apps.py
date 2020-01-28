@@ -32,7 +32,8 @@ from .links import (
     link_workflow_instance_list, link_document_type_workflow_templates,
     link_workflow_template_document_types, link_workflow_template_create,
     link_workflow_template_delete, link_workflow_template_edit,
-    link_workflow_template_list, link_workflow_template_state_list,
+    link_workflow_template_launch, link_workflow_template_list,
+    link_workflow_template_state_list,
     link_workflow_template_state_action_delete,
     link_workflow_template_state_action_edit,
     link_workflow_template_state_action_list,
@@ -53,7 +54,8 @@ from .links import (
 )
 from .permissions import (
     permission_workflow_delete, permission_workflow_edit,
-    permission_workflow_transition, permission_workflow_view
+    permission_workflow_tools, permission_workflow_transition,
+    permission_workflow_view
 )
 
 
@@ -129,8 +131,8 @@ class DocumentStatesApp(MayanAppConfig):
         ModelPermission.register(
             model=Workflow, permissions=(
                 permission_error_log_view, permission_workflow_delete,
-                permission_workflow_edit, permission_workflow_transition,
-                permission_workflow_view,
+                permission_workflow_edit, permission_workflow_tools,
+                permission_workflow_transition, permission_workflow_view
             )
         )
         ModelPermission.register(
@@ -345,7 +347,8 @@ class DocumentStatesApp(MayanAppConfig):
         menu_main.bind_links(links=(link_workflow_runtime_proxy_list,), position=10)
         menu_object.bind_links(
             links=(
-                link_workflow_template_delete, link_workflow_template_edit
+                link_workflow_template_delete, link_workflow_template_edit,
+                link_workflow_template_launch
             ), sources=(Workflow,)
         )
         menu_object.bind_links(

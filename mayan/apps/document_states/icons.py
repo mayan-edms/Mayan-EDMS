@@ -12,11 +12,14 @@ icon_workflow_template_create = Icon(
     driver_name='fontawesome-dual', primary_symbol='sitemap',
     secondary_symbol='plus'
 )
-icon_workflow_template_delete = Icon(driver_name='fontawesome', symbol='times')
+icon_workflow_template_delete = Icon(
+    driver_name='fontawesome', symbol='times'
+)
 icon_workflow_template_document_type_list = icon_document_type
 icon_workflow_template_edit = Icon(
     driver_name='fontawesome', symbol='pencil-alt'
 )
+icon_workflow_template_launch = Icon(driver_name='fontawesome', symbol='play')
 icon_workflow_template_list = icon_workflow
 icon_workflow_template_preview = Icon(driver_name='fontawesome', symbol='eye')
 
@@ -54,7 +57,9 @@ icon_workflow_state_create = Icon(
     secondary_symbol='plus'
 )
 icon_workflow_state_delete = Icon(driver_name='fontawesome', symbol='times')
-icon_workflow_state_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
+icon_workflow_state_edit = Icon(
+    driver_name='fontawesome', symbol='pencil-alt'
+)
 
 # Workflow transition state actions
 
