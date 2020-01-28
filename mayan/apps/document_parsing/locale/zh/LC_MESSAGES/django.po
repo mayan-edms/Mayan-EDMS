@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 23:19-0400\n"
+"POT-Creation-Date: 2020-01-28 03:53-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: yulin Gong <540538248@qq.com>, 2019\n"
 "Language-Team: Chinese (https://www.transifex.com/rosarior/teams/13584/zh/)\n"
@@ -25,13 +25,17 @@ msgstr ""
 msgid "Document parsing"
 msgstr "文档解析"
 
-#: apps.py:130 models.py:78
-msgid "Result"
-msgstr "结果"
+#: apps.py:108
+msgid "A generator returning the document's pages parsed content."
+msgstr ""
 
-#: apps.py:135 apps.py:139 links.py:21 links.py:38 models.py:27
+#: apps.py:109 apps.py:142 apps.py:146 links.py:21 links.py:38 models.py:27
 msgid "Content"
 msgstr "内容"
+
+#: apps.py:137 models.py:78
+msgid "Result"
+msgstr "结果"
 
 #: dependencies.py:11
 msgid ""

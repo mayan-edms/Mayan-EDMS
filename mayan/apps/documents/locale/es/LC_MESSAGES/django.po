@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 23:19-0400\n"
-"PO-Revision-Date: 2019-12-03 05:51+0000\n"
+"POT-Creation-Date: 2020-01-28 03:53-0400\n"
+"PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,52 +18,60 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:129 apps.py:325 events.py:7 menus.py:10
-#: models/document_models.py:93 permissions.py:7 queues.py:26 settings.py:18
+#: apps.py:131 apps.py:337 events.py:7 menus.py:10
+#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:18
 #: statistics.py:236
 msgid "Documents"
 msgstr "Documentos"
 
-#: apps.py:150
+#: apps.py:152
 msgid "Create a document type"
 msgstr "Crear tipo un tipo de documento"
 
-#: apps.py:152
+#: apps.py:154
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr "Cada documento cargado debe tener asignado un tipo de documento, es la forma básica en que Mayan EDMS clasifica los documentos."
 
-#: apps.py:171
+#: apps.py:178
 msgid "Versions comment"
 msgstr "Comentario de versiones"
 
-#: apps.py:175
+#: apps.py:182
 msgid "Versions encoding"
 msgstr "Codificación de versiones"
 
-#: apps.py:179
+#: apps.py:186
 msgid "Versions mime type"
 msgstr "Tipo MIME de versiones"
 
-#: apps.py:183
+#: apps.py:190
 msgid "Versions timestamp"
 msgstr "Fecha y hora de versiones"
 
-#: apps.py:262 apps.py:292 apps.py:309 apps.py:355
+#: apps.py:195
+msgid "Return the lastest version of the document."
+msgstr ""
+
+#: apps.py:196
+msgid "Latest version"
+msgstr ""
+
+#: apps.py:274 apps.py:304 apps.py:321 apps.py:367
 msgid "Thumbnail"
 msgstr "Foto miniatura"
 
-#: apps.py:270 apps.py:360 forms/document_forms.py:184
+#: apps.py:282 apps.py:372 forms/document_forms.py:184
 #: links/document_version_page_links.py:137
 msgid "Pages"
 msgstr "Páginas"
 
-#: apps.py:279 links/duplicated_document_links.py:14
+#: apps.py:291 links/duplicated_document_links.py:14
 msgid "Duplicates"
 msgstr "Duplicados"
 
-#: apps.py:313
+#: apps.py:325
 msgid "Type"
 msgstr "Tipo"
 
@@ -176,7 +184,7 @@ msgstr "Fecha en que se agregó"
 msgid "UUID"
 msgstr "UUID"
 
-#: forms/document_forms.py:155 models/document_models.py:65
+#: forms/document_forms.py:155 models/document_models.py:66
 msgid "Language"
 msgstr "Lenguaje"
 
@@ -219,7 +227,7 @@ msgid ""
 "transformations will be lost."
 msgstr "Número de página a partir del cual se clonarán todas las transformaciones. Se perderán las transformaciones existentes."
 
-#: forms/document_type_forms.py:42 models/document_models.py:45
+#: forms/document_type_forms.py:42 models/document_models.py:46
 #: models/document_type_models.py:60 models/document_type_models.py:146
 #: search.py:35 search.py:59
 msgid "Document type"
@@ -318,7 +326,7 @@ msgid "Download version"
 msgstr "Descarga de versión"
 
 #: links/document_version_links.py:39 links/document_version_page_links.py:98
-#: models/document_models.py:92 models/document_version_models.py:67
+#: models/document_models.py:93 models/document_version_models.py:67
 #: models/misc_models.py:35 models/misc_models.py:65 models/misc_models.py:94
 msgid "Document"
 msgstr "Documento"
@@ -443,66 +451,70 @@ msgid ""
 "for each document."
 msgstr "UUID de un documento, ID único universalmente. Un identificador único generado para cada documento."
 
-#: models/document_models.py:49
+#: models/document_models.py:44
+msgid "The document type of the document."
+msgstr ""
+
+#: models/document_models.py:50
 msgid "The name of the document."
 msgstr "El nombre del documento."
 
-#: models/document_models.py:49 models/document_page_models.py:256
+#: models/document_models.py:50 models/document_page_models.py:256
 #: models/document_type_models.py:32 models/document_type_models.py:149
 #: search.py:40 search.py:66
 msgid "Label"
 msgstr "Etiqueta"
 
-#: models/document_models.py:53
+#: models/document_models.py:54
 msgid "An optional short text describing a document."
 msgstr "Un texto breve opcional que describe el documento."
 
-#: models/document_models.py:54 search.py:41 search.py:69
+#: models/document_models.py:55 search.py:41 search.py:69
 msgid "Description"
 msgstr "Descripción"
 
-#: models/document_models.py:58
+#: models/document_models.py:59
 msgid ""
 "The server date and time when the document was finally processed and added "
 "to the system."
 msgstr "La fecha y hora del servidor en que finalmente se procesó el documento y se agregó al sistema."
 
-#: models/document_models.py:60 models/misc_models.py:41
+#: models/document_models.py:61 models/misc_models.py:41
 msgid "Added"
 msgstr "Añadido"
 
-#: models/document_models.py:64
+#: models/document_models.py:65
 msgid "The dominant language in the document."
 msgstr "La lengua dominante en el documento."
 
-#: models/document_models.py:69
+#: models/document_models.py:70
 msgid "Whether or not this document is in the trash."
 msgstr "Si este documento está o no en la papelera."
 
-#: models/document_models.py:70
+#: models/document_models.py:71
 msgid "In trash?"
 msgstr "¿En la papelera?"
 
-#: models/document_models.py:74
+#: models/document_models.py:75
 msgid "The server date and time when the document was moved to the trash."
 msgstr "La fecha y hora del servidor cuando el documento fue movido a la papelera."
 
-#: models/document_models.py:76
+#: models/document_models.py:77
 msgid "Date and time trashed"
 msgstr "Fecha y hora de envío a papelera"
 
-#: models/document_models.py:80
+#: models/document_models.py:81
 msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
 msgstr "Un recibo de documento es un documento con una entrada en la base de datos pero ningún archivo subido. Esto podría ser una subida interrumpida o una subida diferida a través de la API."
 
-#: models/document_models.py:83
+#: models/document_models.py:84
 msgid "Is stub?"
 msgstr "¿Es un recibo?"
 
-#: models/document_models.py:96
+#: models/document_models.py:97
 #, python-format
 msgid "Document stub, id: %d"
 msgstr "Recibo de documento, id: %d"

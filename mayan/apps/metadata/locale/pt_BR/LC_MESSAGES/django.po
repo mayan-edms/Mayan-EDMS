@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 23:21-0400\n"
-"PO-Revision-Date: 2019-12-26 18:06+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
+"POT-Creation-Date: 2020-01-28 03:55-0400\n"
+"PO-Revision-Date: 2020-01-28 07:59+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,8 +29,8 @@ msgid "Metadata"
 msgstr "Metadados"
 
 #: apps.py:98
-msgid "Return the value of a specific document metadata"
-msgstr "Devolver o valor dos metadados específicos de um documento"
+msgid "Return the value of a specific document metadata."
+msgstr ""
 
 #: apps.py:99
 msgid "Metadata value of"

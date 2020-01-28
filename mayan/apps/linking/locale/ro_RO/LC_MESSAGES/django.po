@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 23:20-0400\n"
+"POT-Creation-Date: 2020-01-28 03:54-0400\n"
 "PO-Revision-Date: 2019-12-20 12:46+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -40,7 +40,7 @@ msgstr "Legătura inteligentă a fost creată"
 msgid "Smart link edited"
 msgstr "Legătura inteligentă a fost editată"
 
-#: forms.py:33
+#: forms.py:47
 msgid "Foreign document field"
 msgstr "Câmp document străin"
 

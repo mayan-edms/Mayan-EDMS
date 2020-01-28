@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 23:18-0400\n"
-"PO-Revision-Date: 2019-12-03 05:35+0000\n"
+"POT-Creation-Date: 2020-01-28 03:52-0400\n"
+"PO-Revision-Date: 2020-01-28 07:58+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -25,13 +25,17 @@ msgstr ""
 msgid "Common"
 msgstr "Común"
 
-#: classes.py:93
-msgid "Available attributes: \n"
-msgstr "Atributos disponibles:\n"
+#: classes.py:185
+msgid "Model properties"
+msgstr ""
 
-#: classes.py:133
-msgid "Available fields: \n"
-msgstr "Campos disponibles:\n"
+#: classes.py:190
+msgid "Model fields"
+msgstr ""
+
+#: classes.py:233
+msgid "Model related fields"
+msgstr ""
 
 #: dependencies.py:308
 msgid "Used to allow offline translation of the code text strings."
