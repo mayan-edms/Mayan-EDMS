@@ -34,6 +34,10 @@
   for the report, debug information, and test image.
 - Add new setting to disable the API documentation links from the tools menu.
   The setting is named ``REST_API_DISABLE_LINKS`` and defaults to ``false``.
+- Add new setting to disable the password reset link in the login form. This
+  link is not used for third party authentication such as when using LDAP.
+  The setting is named ``AUTHENTICATION_DISABLE_PASSWORD_RESET`` and
+  defaults to ``false``.
 
 
 3.3.9 (2020-01-18)

@@ -21,3 +21,10 @@ setting_maximum_session_length = namespace.add_setting(
         'remain logged in. Value is time in seconds.'
     )
 )
+setting_disable_password_reset = namespace.add_setting(
+    global_name='AUTHENTICATION_DISABLE_PASSWORD_RESET',
+    default=False, help_text=_(
+        'Remove the "Forgot your password?" link on the login form used to '
+        'trigger the password reset.'
+    )
+)
