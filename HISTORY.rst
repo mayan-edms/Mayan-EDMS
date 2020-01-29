@@ -29,6 +29,9 @@
 - Add button to launch a specific workflow for existing documents.
   Issue #MD-171.
 - Update Pillow to version 6.2.2.
+- Improve image page count detection by capturing undocumented Pillow
+  exception. Close GitLab issue #767. Thanks to Frédéric Sheedy (@fsheedy)
+  for the report, debug information, and test image.
 
 3.3.9 (2020-01-18)
 ==================
