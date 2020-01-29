@@ -11,6 +11,7 @@ from mayan.apps.common.menus import menu_tools
 from .links import (
     link_api, link_api_documentation, link_api_documentation_redoc
 )
+from .settings import setting_disable_links
 
 
 class RESTAPIApp(MayanAppConfig):
@@ -24,11 +25,12 @@ class RESTAPIApp(MayanAppConfig):
         from .urls import api_urls
 
         settings.STRONGHOLD_PUBLIC_URLS += (r'^/%s/.+$' % self.app_url,)
-        menu_tools.bind_links(
-            links=(
-                link_api, link_api_documentation, link_api_documentation_redoc
+        if not setting_disable_links.value:
+            menu_tools.bind_links(
+                links=(
+                    link_api, link_api_documentation, link_api_documentation_redoc
+                )
             )
-        )
 
         for app in apps.get_app_configs():
             if getattr(app, 'has_rest_api', False):

@@ -32,6 +32,9 @@
 - Improve image page count detection by capturing undocumented Pillow
   exception. Close GitLab issue #767. Thanks to Frédéric Sheedy (@fsheedy)
   for the report, debug information, and test image.
+- Add new setting to disable the API documentation links from the tools menu.
+  The setting is named ``REST_API_DISABLE_LINKS`` and defaults to ``false``.
+
 
 3.3.9 (2020-01-18)
 ==================
