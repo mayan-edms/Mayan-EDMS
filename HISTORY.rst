@@ -27,7 +27,8 @@
 - Add command to check if the current version is the latest one. The command
   is named ``checkversion``. Closes issue #MD-28.
 - Add button to launch a specific workflow for existing documents.
-  Issue #MD-171
+  Issue #MD-171.
+- Update Pillow to version 6.2.2.
 
 3.3.9 (2020-01-18)
 ==================
