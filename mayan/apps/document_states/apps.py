@@ -428,6 +428,7 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_template_transition_create,
             ), sources=(
                 WorkflowTransition,
+                'document_states:workflow_template_transition_create',
                 'document_states:workflow_template_transition_list',
             )
         )
@@ -436,6 +437,7 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_template_state_create,
             ), sources=(
                 WorkflowState,
+                'document_states:workflow_template_state_create',
                 'document_states:workflow_template_state_list',
             )
         )

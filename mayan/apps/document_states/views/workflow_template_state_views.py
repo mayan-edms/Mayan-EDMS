@@ -204,26 +204,24 @@ class WorkflowTemplateStateCreateView(ExternalObjectMixin, SingleObjectCreateVie
 
     def get_extra_context(self):
         return {
-            'object': self.get_workflow(),
+            'object': self.external_object,
             'title': _(
                 'Create states for workflow: %s'
-            ) % self.get_workflow()
+            ) % self.external_object,
+            'workflow': self.external_object
         }
 
     def get_instance_extra_data(self):
-        return {'workflow': self.get_workflow()}
+        return {'workflow': self.external_object}
 
     def get_source_queryset(self):
-        return self.get_workflow().states.all()
+        return self.external_object.states.all()
 
     def get_success_url(self):
         return reverse(
             viewname='document_states:workflow_template_state_list',
             kwargs={'pk': self.kwargs['pk']}
         )
-
-    def get_workflow(self):
-        return self.external_object
 
 
 class WorkflowTemplateStateDeleteView(SingleObjectDeleteView):
@@ -233,12 +231,12 @@ class WorkflowTemplateStateDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'navigation_object_list': ('object', 'workflow_instance'),
+            'navigation_object_list': ('object', 'workflow'),
             'object': self.get_object(),
             'title': _(
                 'Delete workflow state: %s?'
             ) % self.object,
-            'workflow_instance': self.get_object().workflow,
+            'workflow': self.get_object().workflow,
         }
 
     def get_success_url(self):
@@ -256,12 +254,12 @@ class WorkflowTemplateStateEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'navigation_object_list': ('object', 'workflow_instance'),
+            'navigation_object_list': ('object', 'workflow'),
             'object': self.get_object(),
             'title': _(
                 'Edit workflow state: %s'
             ) % self.object,
-            'workflow_instance': self.get_object().workflow,
+            'workflow': self.get_object().workflow,
         }
 
     def get_success_url(self):
@@ -283,7 +281,7 @@ class WorkflowTemplateStateListView(ExternalObjectMixin, SingleObjectListView):
             'no_results_icon': icon_workflow_state,
             'no_results_main_link': link_workflow_template_state_create.resolve(
                 context=RequestContext(
-                    self.request, {'object': self.get_workflow()}
+                    self.request, {'workflow': self.external_object}
                 )
             ),
             'no_results_text': _(
@@ -292,12 +290,10 @@ class WorkflowTemplateStateListView(ExternalObjectMixin, SingleObjectListView):
             'no_results_title': _(
                 'This workflow doesn\'t have any states'
             ),
-            'object': self.get_workflow(),
-            'title': _('States of workflow: %s') % self.get_workflow()
+            'object': self.external_object,
+            'title': _('States of workflow: %s') % self.external_object,
+            'workflow': self.external_object
         }
 
     def get_source_queryset(self):
-        return self.get_workflow().states.all()
-
-    def get_workflow(self):
-        return self.external_object
+        return self.external_object.states.all()

@@ -38,7 +38,7 @@
   link is not used for third party authentication such as when using LDAP.
   The setting is named ``AUTHENTICATION_DISABLE_PASSWORD_RESET`` and
   defaults to ``false``.
-
+- Improve workflow app navigation.
 
 3.3.9 (2020-01-18)
 ==================
