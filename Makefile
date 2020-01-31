@@ -66,17 +66,24 @@ test-launch-postgres:
 	docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
 	sudo apt-get install -q libpq-dev
 	pip install psycopg2==$(PYTHON_PSYCOPG2_VERSION)
+	sleep 2
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 
-test-with-postgres: ## MODULE=<python module name> - Run tests for a single app, module or test class against a Postgres database container.
+test-with-postgres: ## MODULE=<python module name> - Run tests for a single app, module or test class against a PostgreSQL database container.
 test-with-postgres: test-launch-postgres
 	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_postgres --nomigrations
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
 
-test-with-postgres-all: ## Run all tests against a Postgres database container.
+test-with-postgres-all: ## Run all tests against a PostgreSQL database container.
 test-with-postgres-all: test-launch-postgres
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --nomigrations
+	@docker rm -f test-postgres || true
+	@docker volume rm test-postgres || true
+
+test-with-postgres-all-migrations: ## Run all migration tests against a PostgreSQL database container.
+test-with-postgres-all-migrations: test-launch-postgres
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --no-exclude --tag=migration
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
 
@@ -86,6 +93,7 @@ test-launch-mysql:
 	docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan -v test-mysql:/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION)
 	sudo apt-get install -q libmysqlclient-dev mysql-client
 	pip install mysqlclient==$(PYTHON_MYSQL_VERSION)
+	sleep 2
 	while ! nc -z 127.0.0.1 3306; do sleep 1; done
 	mysql -h 127.0.0.1 -P 3306 -uroot  -e "set global character_set_server=utf8mb4;"
 
@@ -107,8 +115,8 @@ test-launch-oracle:
 	docker run -d --name test-oracle -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v test-oracle:/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
 	# https://gist.github.com/kimus/10012910
 	pip install cx_Oracle==$(PYTHON_ORACLE_VERSION)
-	while ! nc -z 127.0.0.1 49161; do sleep 1; done
 	sleep 10
+	while ! nc -z 127.0.0.1 49161; do sleep 1; done
 
 test-with-oracle: ## MODULE=<python module name> - Run tests for a single app, module or test class against a Oracle database container.
 test-with-oracle: test-launch-oracle
