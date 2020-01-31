@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:50-0400\n"
+"POT-Creation-Date: 2020-01-28 03:54-0400\n"
 "PO-Revision-Date: 2019-12-08 19:22+0000\n"
 "Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -25,23 +25,23 @@ msgstr ""
 msgid "Lock manager"
 msgstr "Gestionnaire de verrou"
 
-#: models.py:17
+#: models.py:18
 msgid "Creation datetime"
 msgstr "Date et heure de création"
 
-#: models.py:20
+#: models.py:21
 msgid "Timeout"
 msgstr "Délai d'attente dépassé"
 
-#: models.py:23
+#: models.py:24
 msgid "Name"
 msgstr "Nom"
 
-#: models.py:29
+#: models.py:30
 msgid "Lock"
 msgstr "Verrou"
 
-#: models.py:30
+#: models.py:31
 msgid "Locks"
 msgstr "Verrous"
 

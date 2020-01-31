@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:50-0400\n"
+"POT-Creation-Date: 2020-01-28 03:54-0400\n"
 "PO-Revision-Date: 2020-01-06 17:49+0000\n"
 "Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -26,23 +26,23 @@ msgstr ""
 msgid "Lock manager"
 msgstr "Sperrverwaltung"
 
-#: models.py:17
+#: models.py:18
 msgid "Creation datetime"
 msgstr "Erstellungsdatum"
 
-#: models.py:20
+#: models.py:21
 msgid "Timeout"
 msgstr "Timeout"
 
-#: models.py:23
+#: models.py:24
 msgid "Name"
 msgstr "Name"
 
-#: models.py:29
+#: models.py:30
 msgid "Lock"
 msgstr "Sperre"
 
-#: models.py:30
+#: models.py:31
 msgid "Locks"
 msgstr "Sperren"
 

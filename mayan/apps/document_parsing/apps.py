@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelField
+from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
@@ -42,7 +42,7 @@ from .permissions import (
     permission_parse_document
 )
 from .signals import post_document_version_parsing
-from .utils import get_document_content
+from .utils import get_instance_content
 
 logger = logging.getLogger(__name__)
 
@@ -78,13 +78,13 @@ class DocumentParsingApp(MayanAppConfig):
         )
 
         Document.add_to_class(
-            name='submit_for_parsing', value=method_document_parsing_submit
+            name='content', value=get_instance_content
         )
         Document.add_to_class(
-            name='content', value=get_document_content
+            name='submit_for_parsing', value=method_document_parsing_submit
         )
         DocumentVersion.add_to_class(
-            name='content', value=get_document_content
+            name='content', value=get_instance_content
         )
         DocumentVersion.add_to_class(
             name='submit_for_parsing',
@@ -99,8 +99,15 @@ class DocumentParsingApp(MayanAppConfig):
             )
         )
 
-        ModelField(
+        ModelFieldRelated(
             model=Document, name='versions__version_pages__content__content'
+        )
+
+        ModelProperty(
+            description=_(
+                'A generator returning the document\'s pages parsed content.'
+            ), label=_('Content'), model=Document,
+            name='content'
         )
 
         ModelPermission.register(

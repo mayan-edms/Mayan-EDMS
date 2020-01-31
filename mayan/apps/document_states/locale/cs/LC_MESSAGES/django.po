@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:49-0400\n"
-"PO-Revision-Date: 2019-12-13 05:14+0000\n"
+"POT-Creation-Date: 2020-01-28 03:53-0400\n"
+"PO-Revision-Date: 2020-01-28 07:58+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -18,74 +18,74 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:66 events.py:8 links.py:20 links.py:49 links.py:191 links.py:215
+#: apps.py:68 events.py:8 links.py:20 links.py:56 links.py:198 links.py:222
 #: models.py:72 settings.py:13 views/workflow_proxy_views.py:66
-#: views/workflow_template_views.py:103
+#: views/workflow_template_views.py:231
 msgid "Workflows"
 msgstr "Workfows"
 
-#: apps.py:109 apps.py:116
+#: apps.py:111 apps.py:118
 msgid "Current state of a workflow"
 msgstr "Aktuální stav workflow"
 
-#: apps.py:110
-msgid "Return the current state of the selected workflow"
-msgstr "Vrátí aktuální stav vybraného workflow"
+#: apps.py:112
+msgid "Return the current state of the selected workflow."
+msgstr ""
 
-#: apps.py:117
+#: apps.py:119
 msgid ""
-"Return the completion value of the current state of the selected workflow"
-msgstr "Vraťte hodnotu dokončení aktuálního stavu vybraného workflow"
+"Return the completion value of the current state of the selected workflow."
+msgstr ""
 
-#: apps.py:173 apps.py:184 apps.py:194 apps.py:200
+#: apps.py:175 apps.py:186 apps.py:196 apps.py:202
 msgid "None"
 msgstr "žádný"
 
-#: apps.py:178
+#: apps.py:180
 msgid "Current state"
 msgstr "Aktuální stav"
 
-#: apps.py:182 apps.py:209 models.py:677
+#: apps.py:184 apps.py:211 models.py:677
 msgid "User"
 msgstr "Uživatel"
 
-#: apps.py:188
+#: apps.py:190
 msgid "Last transition"
 msgstr "Poslední krok"
 
-#: apps.py:192 apps.py:205
+#: apps.py:194 apps.py:207
 msgid "Date and time"
 msgstr "Datum a čas"
 
-#: apps.py:198 models.py:287
+#: apps.py:200 models.py:287
 msgid "Completion"
 msgstr "Dokončení"
 
-#: apps.py:229
+#: apps.py:231
 msgid "Additional details"
 msgstr ""
 
-#: apps.py:252
+#: apps.py:254
 msgid "When?"
 msgstr "Když?"
 
-#: apps.py:256
+#: apps.py:258
 msgid "Action type"
 msgstr "Typ akce"
 
-#: apps.py:272
+#: apps.py:274
 msgid "Triggers"
 msgstr "Spouštěče"
 
-#: apps.py:286 models.py:454
+#: apps.py:288 models.py:454
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:294
+#: apps.py:296
 msgid "Widget"
 msgstr ""
 
-#: apps.py:303 apps.py:309
+#: apps.py:305 apps.py:311
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -134,7 +134,7 @@ msgstr "Ano"
 msgid "Select a transition to execute in the next step."
 msgstr ""
 
-#: forms.py:182 links.py:197 models.py:451 models.py:506 models.py:673
+#: forms.py:182 links.py:204 models.py:451 models.py:506 models.py:673
 msgid "Transition"
 msgstr "Krok"
 
@@ -147,11 +147,11 @@ msgstr ""
 msgid "Event trigger: %s"
 msgstr "Spouštěč událostí: %s"
 
-#: links.py:26 views/workflow_template_views.py:108
+#: links.py:26 views/workflow_template_views.py:86
 msgid "Create workflow"
 msgstr "Vytvořte workflow"
 
-#: links.py:32 links.py:65 links.py:100 links.py:128 links.py:163
+#: links.py:32 links.py:72 links.py:107 links.py:135 links.py:170
 msgid "Delete"
 msgstr "Odstranit"
 
@@ -159,63 +159,67 @@ msgstr "Odstranit"
 msgid "Document types"
 msgstr "Typy dokumentů"
 
-#: links.py:45 links.py:72 links.py:107 links.py:135 links.py:170
+#: links.py:45 links.py:79 links.py:114 links.py:142 links.py:177
 msgid "Edit"
 msgstr "Editovat"
 
-#: links.py:56
+#: links.py:51
+msgid "Launch workflow"
+msgstr ""
+
+#: links.py:63
 msgid "Preview"
 msgstr "Náhled"
 
-#: links.py:78
+#: links.py:85
 msgid "Actions"
 msgstr "Akce"
 
-#: links.py:84
+#: links.py:91
 msgid "Create action"
 msgstr "Vytvořit akci"
 
-#: links.py:93
+#: links.py:100
 msgid "Create state"
 msgstr "Vytvořit stav"
 
-#: links.py:112 links.py:228
+#: links.py:119 links.py:235
 msgid "States"
 msgstr "Stavy"
 
-#: links.py:121
+#: links.py:128
 msgid "Create transition"
 msgstr "Vytvořit krok"
 
-#: links.py:141
+#: links.py:148
 msgid "Transition triggers"
 msgstr "Spouštěče kroku"
 
-#: links.py:147
+#: links.py:154
 msgid "Transitions"
 msgstr "Kroky"
 
-#: links.py:156
+#: links.py:163
 msgid "Create field"
 msgstr ""
 
-#: links.py:176
+#: links.py:183
 msgid "Fields"
 msgstr ""
 
-#: links.py:186
+#: links.py:193
 msgid "Detail"
 msgstr "Detail"
 
-#: links.py:207
+#: links.py:214
 msgid "Workflow documents"
 msgstr "Workflow dokumentů"
 
-#: links.py:221
+#: links.py:228
 msgid "State documents"
 msgstr "Stav dokumentů"
 
-#: links.py:236 queues.py:17
+#: links.py:243 queues.py:17
 msgid "Launch all workflows"
 msgstr "Spusťte všechny workflow"
 
@@ -490,6 +494,10 @@ msgid "Document states fast"
 msgstr ""
 
 #: queues.py:21
+msgid "Launch a workflow"
+msgstr ""
+
+#: queues.py:25
 msgid "Generate workflow previews"
 msgstr ""
 
@@ -796,82 +804,91 @@ msgstr ""
 msgid "Fields for workflow transition: %s"
 msgstr ""
 
-#: views/workflow_template_views.py:36
+#: views/workflow_template_views.py:37
 msgid "Available workflows"
 msgstr "Dostupné workflow"
 
-#: views/workflow_template_views.py:37
+#: views/workflow_template_views.py:38
 msgid "Workflows assigned this document type"
 msgstr "Workflow přiřazené k tomuto typu dokumentu"
 
-#: views/workflow_template_views.py:47
+#: views/workflow_template_views.py:48
 msgid ""
 "Removing a workflow from a document type will also remove all running "
 "instances of that workflow."
 msgstr "Odstranění workflow z typu dokumentu odstraní také všechny spuštěné instance tohoto workflow."
 
-#: views/workflow_template_views.py:51
+#: views/workflow_template_views.py:52
 #, python-format
 msgid "Workflows assigned the document type: %s"
 msgstr "Workflow přiřazené typu dokumentu: %s"
 
-#: views/workflow_template_views.py:96
-msgid ""
-"Workflows store a series of states and keep track of the current state of a "
-"document. Transitions are used to change the current state to a new one."
-msgstr "Workflow ukládají řadu stavů a sledují aktuální stav dokumentu. Kroky se používají ke změně současného stavu na nový."
-
-#: views/workflow_template_views.py:101
-msgid "No workflows have been defined"
-msgstr "Nebyly definovány žádné Workflow "
-
-#: views/workflow_template_views.py:130
+#: views/workflow_template_views.py:108
 #, python-format
 msgid "Delete workflow: %s?"
 msgstr "Odstranit workflow : %s?"
 
-#: views/workflow_template_views.py:146
+#: views/workflow_template_views.py:124
 #, python-format
 msgid "Edit workflow: %s"
 msgstr "Upravit workflow : %s"
 
-#: views/workflow_template_views.py:160
+#: views/workflow_template_views.py:138
 msgid "Available document types"
 msgstr "Dostupné typy dokumentů"
 
-#: views/workflow_template_views.py:161
+#: views/workflow_template_views.py:139
 msgid "Document types assigned this workflow"
 msgstr "Tomuto workflow  byly přiřazeny typy dokumentů"
 
-#: views/workflow_template_views.py:171
+#: views/workflow_template_views.py:149
 msgid ""
 "Removing a document type from a workflow will also remove all running "
 "instances of that workflow for documents of the document type just removed."
 msgstr "Odstranění typu dokumentu zworkflow  odstraní také všechny spuštěné instance tohoto workflow  u dokumentů právě odebraného typu dokumentu."
 
-#: views/workflow_template_views.py:176
+#: views/workflow_template_views.py:154
 #, python-format
 msgid "Document types assigned the workflow: %s"
 msgstr "Typy dokumentů přiřazené k workflow: %s"
 
-#: views/workflow_template_views.py:219
+#: views/workflow_template_views.py:193
+msgid "Launch workflow?"
+msgstr ""
+
+#: views/workflow_template_views.py:195
+msgid ""
+"This will launch the workflow for documents that have already been uploaded."
+msgstr ""
+
+#: views/workflow_template_views.py:207 views/workflow_template_views.py:262
+msgid "Workflow launch queued successfully."
+msgstr "Spuštění workflow bylo úspěšně zařazeno do fronty."
+
+#: views/workflow_template_views.py:224
+msgid ""
+"Workflows store a series of states and keep track of the current state of a "
+"document. Transitions are used to change the current state to a new one."
+msgstr "Workflow ukládají řadu stavů a sledují aktuální stav dokumentu. Kroky se používají ke změně současného stavu na nový."
+
+#: views/workflow_template_views.py:229
+msgid "No workflows have been defined"
+msgstr "Nebyly definovány žádné Workflow "
+
+#: views/workflow_template_views.py:245
 #, python-format
 msgid "Preview of: %s"
 msgstr "Náhled: %s"
 
-#: views/workflow_template_views.py:225
+#: views/workflow_template_views.py:251
 msgid "Launch all workflows?"
 msgstr "Spusťte všechny workflow?"
 
-#: views/workflow_template_views.py:227
+#: views/workflow_template_views.py:253
 msgid ""
 "This will launch all workflows created after documents have already been "
 "uploaded."
 msgstr "Tím se spustí všechny workflow vytvořené po nahrání dokumentů."
-
-#: views/workflow_template_views.py:236
-msgid "Workflow launch queued successfully."
-msgstr "Spuštění workflow bylo úspěšně zařazeno do fronty."
 
 #: workflow_actions.py:21
 msgid "Document label"

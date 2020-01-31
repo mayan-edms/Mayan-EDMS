@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:48-0400\n"
+"POT-Creation-Date: 2020-01-28 03:52-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -268,7 +268,7 @@ msgstr ""
 "Dependências requeridas por um ambiente podem não ser exigidas para outro. "
 "Exempo de ambientes: Produção, Desenvolvimento."
 
-#: links.py:11 views.py:41
+#: links.py:11 views.py:19
 msgid "Check for updates"
 msgstr "Buscar atualizações"
 
@@ -315,53 +315,30 @@ msgstr "Forçar a instalação mesmo se já instaladas."
 msgid "View dependencies"
 msgstr "Ver dependências"
 
-#: views.py:23
-#, python-format
-msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
-"A versão que você está utilizando está desatualizada. A última versão é %s"
-
-#: views.py:28
-msgid "It is not possible to determine the latest version available."
-msgstr "Não é possível determinar a última versão disponível."
-
 #: views.py:33
-#, python-format
-msgid ""
-"Unexpected error trying to determine the latest version available. Make sure"
-" your installation has a connection to the internet; %s"
-msgstr ""
-"Erro inesperado ao tentar determinar a última versão disponível. Certifique-"
-"se que sua instalação possui conexão com a internet; %s"
-
-#: views.py:38
-msgid "Your version is up-to-date."
-msgstr "Sua versão está atualizada."
-
-#: views.py:55
 #, python-format
 msgid "Entries for dependency group: %s"
 msgstr "Entrada para o grupo de dependências: %s"
 
-#: views.py:68 views.py:113
+#: views.py:46 views.py:91
 #, python-format
 msgid "Group %s not found."
 msgstr "Grupo %s não encontrado."
 
-#: views.py:81
+#: views.py:59
 msgid "Dependency groups"
 msgstr "Grupos de dependências"
 
-#: views.py:101
+#: views.py:79
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
 msgstr "Grupo de dependências e entrada: %(group)s, %(entry)s"
 
-#: views.py:125
+#: views.py:103
 #, python-format
 msgid "Entry %s not found."
 msgstr "Entrada %s não encontrada."
 
-#: views.py:143
+#: views.py:121
 msgid "Other packages licenses"
 msgstr "Licenças de outros pacotes"

@@ -1,3 +1,45 @@
+3.3.10 (2020-01-31)
+===================
+- Turn TarArchiveClassTestCase in to reusable archive test case class.
+  #MD-10.
+- Add test runner option for testing excluded tests.
+- Add data operation to file metadata 0002 to remove duplicated entries.
+  Closes GitLab issue #762. Thanks to forum user benaser for the report.
+- Add package django_migration_test and add migration test to the
+  file metadata app for migration 0002.
+- Update make file to remove repeated commands and add migration testing
+  target.
+- Update the GitLab CI file to use the test makefile target and add
+  migration testing.
+- Update the Docker run_tests command to perform migration testing.
+- Update translation files.
+- Add support for specifying related fields per model to the templating
+  app.
+- Add grouping to the templating widget. Model attributes are now group
+  into model properties, models fields and the new model related fields.
+- Add document OCR content and parsed content as document model properties
+  for use in templates.
+- Fix the staging folder file API views. GitLab issue #764. Thanks to
+  David Kowis (@dkowis) for the report, debug, and research.
+- Add command to show the current version of Mayan. The command is named
+  ``showversion``. The command has one option `--build-string`` that will
+  show the build string instead. Closes #MD-14.
+- Add command to check if the current version is the latest one. The command
+  is named ``checkversion``. Closes issue #MD-28.
+- Add button to launch a specific workflow for existing documents.
+  Issue #MD-171.
+- Update Pillow to version 6.2.2.
+- Improve image page count detection by capturing undocumented Pillow
+  exception. Close GitLab issue #767. Thanks to Frédéric Sheedy (@fsheedy)
+  for the report, debug information, and test image.
+- Add new setting to disable the API documentation links from the tools menu.
+  The setting is named ``REST_API_DISABLE_LINKS`` and defaults to ``false``.
+- Add new setting to disable the password reset link in the login form. This
+  link is not used for third party authentication such as when using LDAP.
+  The setting is named ``AUTHENTICATION_DISABLE_PASSWORD_RESET`` and
+  defaults to ``false``.
+- Improve workflow app navigation.
+
 3.3.9 (2020-01-18)
 ==================
 - Update Document and Lock models to avoid triggering a new migrations on

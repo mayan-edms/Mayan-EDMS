@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import io
 import logging
 import shutil
+import struct
 
 from PIL import Image
 import PyPDF2
@@ -188,13 +189,22 @@ class Python(ConverterBase):
             finally:
                 self.file_object.seek(0)
 
+            # Get total page count by attempting to seek to an increasing
+            # page count number until an EOFError or struct.error exception
+            # are raised.
             try:
                 while True:
                     image.seek(image.tell() + 1)
                     page_count += 1
             except EOFError:
-                # end of sequence
-                pass
+                """End of sequence"""
+            except struct.error:
+                """
+                struct.error was raise for a TIFF file converted to JPEG
+                GitLab issue #767 "Upload Error: unpack_from requires a
+                buffer of at least 2 bytes"
+                """
+                logger.debug('image page count detection raised struct.error')
 
             return page_count
 

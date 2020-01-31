@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:53-0400\n"
+"POT-Creation-Date: 2020-01-28 03:57-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Roberto Rosario, 2019\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -65,8 +65,4 @@ msgstr ""
 #: views.py:58
 #, python-format
 msgid "Template sandbox for: %s"
-msgstr ""
-
-#: widgets.py:39
-msgid "<Model property choices>"
 msgstr ""

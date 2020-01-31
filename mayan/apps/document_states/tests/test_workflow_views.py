@@ -111,6 +111,36 @@ class WorkflowViewTestCase(
         self.assertEqual(response.status_code, 200)
 
 
+class WorkflowTemplateDocumentViewTestCase(
+    WorkflowTestMixin, WorkflowViewTestMixin, GenericDocumentViewTestCase
+):
+    def test_workflows_launch_view_no_permission(self):
+        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+
+        response = self._request_test_workflow_launch_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(self.test_document.workflows.count(), 0)
+
+    def test_workflows_launch_view_with_permission(self):
+        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_tools
+        )
+
+        response = self._request_test_workflow_launch_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_document.workflows.first().workflow, self.test_workflow
+        )
+
+
 class WorkflowToolViewTestCase(WorkflowTestMixin, GenericDocumentViewTestCase):
     def _request_workflow_launch_view(self):
         return self.post(

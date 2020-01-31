@@ -253,7 +253,8 @@ test-mysql:
     - . venv/bin/activate
     - pip install mysqlclient==$PYTHON_MYSQL_VERSION
     - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
-    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
+    - make test-all SETTINGS=mayan.settings.testing.gitlab-ci.db_mysql
+    - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci.db_mysql
   tags:
     - mysql
 
@@ -268,7 +269,8 @@ test-postgres:
     - apt-get install -qq libpq-dev
     - . venv/bin/activate
     - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
-    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
+    - make test-all SETTINGS=mayan.settings.testing.gitlab-ci.db_postgres
+    - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci.db_postgres
   tags:
     - postgres
 
@@ -277,6 +279,8 @@ test-sqlite:
   script:
     - . venv/bin/activate
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
+    - make test-all
+    - make test-all-migrations
 
 # Deploy
 deploy_demo:

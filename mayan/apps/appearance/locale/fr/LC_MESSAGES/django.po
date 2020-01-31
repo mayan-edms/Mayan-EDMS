@@ -5,7 +5,7 @@
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Frédéric Escudero <frederic.escudero@gmail.com>, 2017
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
 # Olivier W, 2019
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:46-0400\n"
-"PO-Revision-Date: 2019-12-22 05:04+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-01-28 03:51-0400\n"
+"PO-Revision-Date: 2020-01-22 14:36+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,7 +84,7 @@ msgstr "Nombre maximal de caractères affichés comme titre."
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
+msgstr "Position où le message du système sera affiché. Les options sont: en haut à gauche, en haut au centre, en haut à droite, en bas à gauche, en bas au centre et en bas à droite."
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
@@ -114,7 +114,7 @@ msgstr "Une erreur vient de se produire. Elle a été signalée aux administrate
 
 #: templates/appearance/about.html:10
 msgid "About"
-msgstr "A propos"
+msgstr "À propos"
 
 #: templates/appearance/about.html:77
 #, python-format
@@ -151,7 +151,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is. We need all the help we can get!\n"
 "            "
-msgstr "\n                Beaucoup d'efforts ont été nécessaires pour faire%(project_title)s aussi complet en terme de fonctionnalités. Nous avons besoin de toute l'aide que nous pouvons obtenir!\n            "
+msgstr "\n                Beaucoup d'efforts ont été nécessaires pour faire %(project_title)s aussi complet en terme de fonctionnalités. Nous avons besoin de toute l'aide que nous pouvons obtenir!\n            "
 
 #: templates/appearance/about.html:115
 #, python-format
@@ -215,13 +215,13 @@ msgstr "Avertissement"
 
 #: templates/appearance/base.html:49
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Cliquez ici pour résoudre ce problème."
 
 #: templates/appearance/base.html:59
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
+msgstr "Paramètres mis à jour, redémarrez votre installation et actualisez votre navigateur pour que les modifications prennent effet."
 
 #: templates/appearance/base.html:72
 #: templates/appearance/generic_list_items_subtemplate.html:66
@@ -255,7 +255,7 @@ msgstr "Non"
 #: templates/appearance/generic_form_subtemplate.html:50
 #: templates/appearance/generic_multiform_subtemplate.html:37
 msgid "required"
-msgstr "Requis"
+msgstr "obligatoire"
 
 #: templates/appearance/generic_form_subtemplate.html:83
 #: templates/appearance/generic_form_subtemplate.html:96
@@ -295,7 +295,7 @@ msgstr "Avant d'utiliser pleinement Mayan EDMS, les éléments suivants sont né
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "Total (%(start)s - %(end)s sur %(total)s) (Page %(page_number)s sur %(total_pages)s)"
+msgstr "Total (%(start)s - %(end)s sur %(total)s) (page %(page_number)s sur %(total_pages)s)"
 
 #: templates/appearance/list_header.html:13
 #: templates/appearance/list_header.html:16
@@ -322,7 +322,7 @@ msgstr "Activer la navigation"
 
 #: templates/appearance/no_results.html:18
 msgid "No results"
-msgstr "Pas de résultats"
+msgstr "Aucun résultat"
 
 #: templates/appearance/root.html:60
 msgid "Close"

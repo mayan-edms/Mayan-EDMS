@@ -7,7 +7,7 @@ from django.db import models
 from django.template.response import TemplateResponse
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
-from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy as _
 
 from .settings import setting_home_view
 
@@ -53,160 +53,6 @@ class MissingItem(object):
         self.description = description
         self.view = view
         self.__class__._registry.append(self)
-
-
-@python_2_unicode_compatible
-class ModelAttribute(object):
-    _registry = {}
-
-    @classmethod
-    def get_choices_for(cls, model):
-        return [
-            (attribute.name, attribute) for attribute in cls.get_for(model=model)
-        ]
-
-    @classmethod
-    def get_for(cls, model):
-        try:
-            return cls._registry[model]
-        except KeyError:
-            # We were passed a model instance, try again using the model of
-            # the instance
-
-            # If we are already in the model class, exit with an error
-            if model.__class__ == models.base.ModelBase:
-                raise
-
-            return cls.get_for(model=type(model))
-
-    @classmethod
-    def get_help_text_for(cls, model, show_name=False):
-        result = []
-        for count, attribute in enumerate(cls.get_for(model=model), 1):
-            result.append(
-                '{}) {}'.format(
-                    count, force_text(attribute.get_display(show_name=show_name))
-                )
-            )
-
-        return ' '.join(
-            [ugettext('Available attributes: \n'), '\n'.join(result)]
-        )
-
-    def __init__(self, model, name, label=None, description=None):
-        self.model = model
-        self.label = label
-        self.name = name
-        self.description = description
-        self._registry.setdefault(model, [])
-        self._registry[model].append(self)
-
-    def __str__(self):
-        return self.get_display()
-
-    def get_display(self, show_name=False):
-        if self.description:
-            return '{} - {}'.format(
-                self.name if show_name else self.label, self.description
-            )
-        else:
-            return force_text(self.name if show_name else self.label)
-
-
-class ModelField(ModelAttribute):
-    """Subclass to handle model database fields"""
-    _registry = {}
-
-    @classmethod
-    def get_help_text_for(cls, model, show_name=False):
-        result = []
-        for count, model_field in enumerate(cls.get_for(model=model), 1):
-            result.append(
-                '{}) {} - {}'.format(
-                    count,
-                    model_field.name if show_name else model_field.label,
-                    model_field.description
-                )
-            )
-
-        return ' '.join(
-            [ugettext('Available fields: \n'), '\n'.join(result)]
-        )
-
-    def __init__(self, *args, **kwargs):
-        super(ModelField, self).__init__(*args, **kwargs)
-        self._final_model_verbose_name = None
-
-        if not self.label:
-            self.label = self.get_field_attribute(
-                attribute='verbose_name'
-            )
-            if self.label != self._final_model_verbose_name:
-                self.label = '{} {}'.format(
-                    self._final_model_verbose_name, self.label
-                )
-
-        if not self.description:
-            self.description = self.get_field_attribute(
-                attribute='help_text'
-            )
-
-    def get_field_attribute(self, attribute, model=None, field_name=None):
-        if not model:
-            model = self.model
-
-        if not field_name:
-            field_name = self.name
-
-        parts = field_name.split('__')
-        if len(parts) > 1:
-            return self.get_field_attribute(
-                model=model._meta.get_field(parts[0]).related_model,
-                field_name='__'.join(parts[1:]), attribute=attribute
-            )
-        else:
-            self._final_model_verbose_name = model._meta.verbose_name
-            return getattr(
-                model._meta.get_field(field_name=field_name),
-                attribute
-            )
-
-
-class ModelProperty(object):
-    _registry = []
-
-    @classmethod
-    def get_choices_for(cls, model):
-        result = []
-
-        for klass in cls._registry:
-            result.extend(klass.get_choices_for(model=model))
-
-        return result
-
-    @classmethod
-    def get_for(cls, model):
-        result = []
-
-        for klass in cls._registry:
-            result.extend(klass.get_for(model=model))
-
-        return result
-
-    @classmethod
-    def get_help_text_for(cls, model, show_name=False):
-        result = []
-
-        for klass in cls._registry:
-            result.append(
-                klass.get_help_text_for(model=model, show_name=show_name)
-            )
-
-        return '\n'.join(result)
-
-    @classmethod
-    def register(cls, klass):
-        cls._registry.append(klass)
 
 
 class PropertyHelper(object):
@@ -278,5 +124,116 @@ class Template(object):
         return self
 
 
-ModelProperty.register(klass=ModelAttribute)
-ModelProperty.register(klass=ModelField)
+class ModelAttribute(object):
+    _class_registry = []
+    _model_registry = {}
+
+    @classmethod
+    def get_all_choices_for(cls, model):
+        result = []
+
+        for klass in cls._class_registry:
+            result.append((klass.class_label, klass.get_choices_for(model=model)))
+
+        return result
+
+    @classmethod
+    def get_choices_for(cls, model):
+        return sorted(
+            [
+                (entry.name, entry.get_display()) for entry in cls.get_for(model=model)
+            ], key=lambda x: x[1]
+        )
+
+    @classmethod
+    def get_for(cls, model):
+        try:
+            return cls._model_registry[cls.class_name][model]
+        except KeyError:
+            # We were passed a model instance, try again using the model of
+            # the instance
+
+            # If we are already in the model class, exit with an error
+            if model.__class__ == models.base.ModelBase:
+                raise
+
+            return cls.get_for(model=type(model))
+
+    @classmethod
+    def register(cls, klass):
+        cls._class_registry.append(klass)
+
+    def __init__(self, model, name, label=None, description=None):
+        self.model = model
+        self.label = label
+        self.name = name
+        self.description = description
+        self._model_registry.setdefault(self.class_name, {})
+        self._model_registry[self.class_name].setdefault(model, [])
+        self._model_registry[self.class_name][model].append(self)
+
+    def get_display(self, show_name=False):
+        if self.description:
+            return '{} - {}'.format(
+                self.name if show_name else self.label, self.description
+            )
+        else:
+            return force_text(self.name if show_name else self.label)
+
+
+class ModelProperty(ModelAttribute):
+    class_label = _('Model properties')
+    class_name = 'property'
+
+
+class ModelField(ModelAttribute):
+    class_label = _('Model fields')
+    class_name = 'field'
+
+    def __init__(self, *args, **kwargs):
+        super(ModelField, self).__init__(*args, **kwargs)
+        self._final_model_verbose_name = None
+
+        if not self.label:
+            self.label = self.get_field_attribute(
+                attribute='verbose_name'
+            )
+            if self.label != self._final_model_verbose_name:
+                self.label = '{}, {}'.format(
+                    self._final_model_verbose_name, self.label
+                )
+
+        if not self.description:
+            self.description = self.get_field_attribute(
+                attribute='help_text'
+            )
+
+    def get_field_attribute(self, attribute, model=None, field_name=None):
+        if not model:
+            model = self.model
+
+        if not field_name:
+            field_name = self.name
+
+        parts = field_name.split('__')
+        if len(parts) > 1:
+            return self.get_field_attribute(
+                model=model._meta.get_field(parts[0]).related_model,
+                field_name='__'.join(parts[1:]), attribute=attribute
+            )
+        else:
+            self._final_model_verbose_name = model._meta.verbose_name
+            return getattr(
+                model._meta.get_field(field_name=field_name),
+                attribute
+            )
+
+
+class ModelFieldRelated(ModelField):
+    class_label = _('Model related fields')
+    class_name = 'related_field'
+
+
+ModelAttribute.register(klass=ModelProperty)
+ModelAttribute.register(klass=ModelField)
+ModelAttribute.register(klass=ModelFieldRelated)

@@ -41,6 +41,7 @@ class Document(models.Model):
         ), verbose_name=_('UUID')
     )
     document_type = models.ForeignKey(
+        help_text=_('The document type of the document.'),
         on_delete=models.CASCADE, related_name='documents', to=DocumentType,
         verbose_name=_('Document type')
     )

@@ -33,33 +33,31 @@ class WorkflowTemplateTransitionCreateView(ExternalObjectMixin, SingleObjectCrea
 
     def get_extra_context(self):
         return {
-            'object': self.get_workflow(),
+            'object': self.external_object,
             'title': _(
                 'Create transitions for workflow: %s'
-            ) % self.get_workflow()
+            ) % self.external_object,
+            'workflow': self.external_object
         }
 
     def get_form_kwargs(self):
         kwargs = super(
             WorkflowTemplateTransitionCreateView, self
         ).get_form_kwargs()
-        kwargs['workflow'] = self.get_workflow()
+        kwargs['workflow'] = self.external_object
         return kwargs
 
     def get_instance_extra_data(self):
-        return {'workflow': self.get_workflow()}
+        return {'workflow': self.external_object}
 
     def get_source_queryset(self):
-        return self.get_workflow().transitions.all()
+        return self.external_object.transitions.all()
 
     def get_success_url(self):
         return reverse(
             viewname='document_states:workflow_template_transition_list',
             kwargs={'pk': self.kwargs['pk']}
         )
-
-    def get_workflow(self):
-        return self.external_object
 
 
 class WorkflowTemplateTransitionDeleteView(SingleObjectDeleteView):
@@ -70,11 +68,11 @@ class WorkflowTemplateTransitionDeleteView(SingleObjectDeleteView):
     def get_extra_context(self):
         return {
             'object': self.get_object(),
-            'navigation_object_list': ('object', 'workflow_instance'),
+            'navigation_object_list': ('object', 'workflow'),
             'title': _(
                 'Delete workflow transition: %s?'
             ) % self.object,
-            'workflow_instance': self.get_object().workflow,
+            'workflow': self.get_object().workflow,
         }
 
     def get_success_url(self):
@@ -92,12 +90,12 @@ class WorkflowTemplateTransitionEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'navigation_object_list': ('object', 'workflow_instance'),
+            'navigation_object_list': ('object', 'workflow'),
             'object': self.get_object(),
             'title': _(
                 'Edit workflow transition: %s'
             ) % self.object,
-            'workflow_instance': self.get_object().workflow,
+            'workflow': self.get_object().workflow,
         }
 
     def get_form_kwargs(self):
@@ -126,7 +124,7 @@ class WorkflowTemplateTransitionListView(ExternalObjectMixin, SingleObjectListVi
             'no_results_icon': icon_workflow_transition,
             'no_results_main_link': link_workflow_template_transition_create.resolve(
                 context=RequestContext(
-                    self.request, {'object': self.get_workflow()}
+                    self.request, {'workflow': self.external_object}
                 )
             ),
             'no_results_text': _(
@@ -136,17 +134,15 @@ class WorkflowTemplateTransitionListView(ExternalObjectMixin, SingleObjectListVi
             'no_results_title': _(
                 'This workflow doesn\'t have any transitions'
             ),
-            'object': self.get_workflow(),
+            'object': self.external_object,
             'title': _(
                 'Transitions of workflow: %s'
-            ) % self.get_workflow()
+            ) % self.external_object,
+            'workflow': self.external_object
         }
 
     def get_source_queryset(self):
-        return self.get_workflow().transitions.all()
-
-    def get_workflow(self):
-        return self.external_object
+        return self.external_object.transitions.all()
 
 
 class WorkflowTemplateTransitionTriggerEventListView(ExternalObjectMixin, FormView):

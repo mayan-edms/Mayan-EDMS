@@ -15,15 +15,22 @@ class MayanTestRunner(DiscoverRunner):
             dest='mayan_apps',
             help='Test all Mayan apps that report to have tests.'
         )
+        parser.add_argument(
+            '--no-exclude', action='store_true', default=False,
+            dest='no_exclude',
+            help='Include excluded tests.'
+        )
 
     def __init__(self, *args, **kwargs):
         self.mayan_apps = kwargs.pop('mayan_apps')
+        self.no_exclude = kwargs.pop('no_exclude')
         super(MayanTestRunner, self).__init__(*args, **kwargs)
 
         # Test that should be excluded by default
         # To include then pass --tag=exclude to the test runner invocation
-        if EXCLUDE_TEST_TAG not in self.tags:
-            self.exclude_tags |= set((EXCLUDE_TEST_TAG,))
+        if not self.no_exclude:
+            if EXCLUDE_TEST_TAG not in self.tags:
+                self.exclude_tags |= set((EXCLUDE_TEST_TAG,))
 
     def build_suite(self, *args, **kwargs):
         # Apps that report they have tests

@@ -4,12 +4,26 @@
 Using Docker compose
 ====================
 
-To deploy a complete production stack using the included Docker compose file
+Docker Compose is the recommended way to run Mayan EDMS in production for
+Docker users. Information and installation instructions for Docker Compose
+can be found at https://docs.docker.com/compose/
+
+There is an example Docker Compose file available at
+https://gitlab.com/mayan-edms/mayan-edms/blob/master/docker/docker-compose.yml
+
+   .. note::
+
+       The Docker Compose file is provided as a functioning example.
+       It should be reviewed, understood and customized to suit the
+       needs of the target environment. By default, it does not use
+       mounted filesystem folders for any storage volumes.
+
+To deploy a complete production stack using the included Docker Compose file
 execute::
 
     docker-compose -f docker-compose.yml up -d
 
-This Docker compose file will provision four containers:
+This Docker Compose file will provision four containers:
 
 - Postgres as the database
 - Redis as the Celery result storage
@@ -27,4 +41,3 @@ These are:
 - mayan_broker - The broker volume, in this case RabbitMQ.
 - mayan_db - The database volume, in this case Postgres.
 - mayan_results - The celery result backend volume, in this case Redis.
-

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:51-0400\n"
+"POT-Creation-Date: 2020-01-28 03:56-0400\n"
 "PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Permissions"
 msgstr "Permessi"
 
-#: classes.py:86
+#: classes.py:87
 msgid "Insufficient permissions."
 msgstr "Permessi insufficienti"
 

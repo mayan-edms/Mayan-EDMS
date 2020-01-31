@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:47-0400\n"
-"PO-Revision-Date: 2019-12-03 05:22+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
+"POT-Creation-Date: 2020-01-28 03:52-0400\n"
+"PO-Revision-Date: 2020-01-28 07:58+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,12 +23,16 @@ msgstr ""
 msgid "Common"
 msgstr "مشترک"
 
-#: classes.py:93
-msgid "Available attributes: \n"
-msgstr "ویژگی های موجود:\n"
+#: classes.py:185
+msgid "Model properties"
+msgstr ""
 
-#: classes.py:133
-msgid "Available fields: \n"
+#: classes.py:190
+msgid "Model fields"
+msgstr ""
+
+#: classes.py:233
+msgid "Model related fields"
 msgstr ""
 
 #: dependencies.py:308

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:49-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
+"POT-Creation-Date: 2020-01-28 03:53-0400\n"
+"PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -18,52 +18,60 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:129 apps.py:325 events.py:7 menus.py:10
-#: models/document_models.py:93 permissions.py:7 queues.py:26 settings.py:18
+#: apps.py:131 apps.py:337 events.py:7 menus.py:10
+#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:18
 #: statistics.py:236
 msgid "Documents"
 msgstr "اسناد"
 
-#: apps.py:150
+#: apps.py:152
 msgid "Create a document type"
 msgstr "نوع سند را ایجاد کنید"
 
-#: apps.py:152
+#: apps.py:154
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr "هر سند آپلود شده باید یک نوع سند اختصاص داده شود، این شیوه اصلی Mayan EDMS اسناد را دسته بندی می کند."
 
-#: apps.py:171
+#: apps.py:178
 msgid "Versions comment"
 msgstr ""
 
-#: apps.py:175
+#: apps.py:182
 msgid "Versions encoding"
 msgstr ""
 
-#: apps.py:179
+#: apps.py:186
 msgid "Versions mime type"
 msgstr ""
 
-#: apps.py:183
+#: apps.py:190
 msgid "Versions timestamp"
 msgstr ""
 
-#: apps.py:262 apps.py:292 apps.py:309 apps.py:355
+#: apps.py:195
+msgid "Return the lastest version of the document."
+msgstr ""
+
+#: apps.py:196
+msgid "Latest version"
+msgstr ""
+
+#: apps.py:274 apps.py:304 apps.py:321 apps.py:367
 msgid "Thumbnail"
 msgstr "اندازه کوچک"
 
-#: apps.py:270 apps.py:360 forms/document_forms.py:184
+#: apps.py:282 apps.py:372 forms/document_forms.py:184
 #: links/document_version_page_links.py:137
 msgid "Pages"
 msgstr "صفحات"
 
-#: apps.py:279 links/duplicated_document_links.py:14
+#: apps.py:291 links/duplicated_document_links.py:14
 msgid "Duplicates"
 msgstr "تکراری"
 
-#: apps.py:313
+#: apps.py:325
 msgid "Type"
 msgstr "نوع"
 
@@ -176,7 +184,7 @@ msgstr "تاریخ اضافه شدن"
 msgid "UUID"
 msgstr "UUID"
 
-#: forms/document_forms.py:155 models/document_models.py:65
+#: forms/document_forms.py:155 models/document_models.py:66
 msgid "Language"
 msgstr "زبان"
 
@@ -219,7 +227,7 @@ msgid ""
 "transformations will be lost."
 msgstr ""
 
-#: forms/document_type_forms.py:42 models/document_models.py:45
+#: forms/document_type_forms.py:42 models/document_models.py:46
 #: models/document_type_models.py:60 models/document_type_models.py:146
 #: search.py:35 search.py:59
 msgid "Document type"
@@ -318,7 +326,7 @@ msgid "Download version"
 msgstr "دانلود نسخه"
 
 #: links/document_version_links.py:39 links/document_version_page_links.py:98
-#: models/document_models.py:92 models/document_version_models.py:67
+#: models/document_models.py:93 models/document_version_models.py:67
 #: models/misc_models.py:35 models/misc_models.py:65 models/misc_models.py:94
 msgid "Document"
 msgstr "سند"
@@ -443,66 +451,70 @@ msgid ""
 "for each document."
 msgstr ""
 
-#: models/document_models.py:49
+#: models/document_models.py:44
+msgid "The document type of the document."
+msgstr ""
+
+#: models/document_models.py:50
 msgid "The name of the document."
 msgstr ""
 
-#: models/document_models.py:49 models/document_page_models.py:256
+#: models/document_models.py:50 models/document_page_models.py:256
 #: models/document_type_models.py:32 models/document_type_models.py:149
 #: search.py:40 search.py:66
 msgid "Label"
 msgstr "برچسب"
 
-#: models/document_models.py:53
+#: models/document_models.py:54
 msgid "An optional short text describing a document."
 msgstr ""
 
-#: models/document_models.py:54 search.py:41 search.py:69
+#: models/document_models.py:55 search.py:41 search.py:69
 msgid "Description"
 msgstr "توضیحات"
 
-#: models/document_models.py:58
+#: models/document_models.py:59
 msgid ""
 "The server date and time when the document was finally processed and added "
 "to the system."
 msgstr ""
 
-#: models/document_models.py:60 models/misc_models.py:41
+#: models/document_models.py:61 models/misc_models.py:41
 msgid "Added"
 msgstr "اضافه شده"
 
-#: models/document_models.py:64
+#: models/document_models.py:65
 msgid "The dominant language in the document."
 msgstr ""
 
-#: models/document_models.py:69
+#: models/document_models.py:70
 msgid "Whether or not this document is in the trash."
 msgstr ""
 
-#: models/document_models.py:70
+#: models/document_models.py:71
 msgid "In trash?"
 msgstr "در سطل زباله؟"
 
-#: models/document_models.py:74
+#: models/document_models.py:75
 msgid "The server date and time when the document was moved to the trash."
 msgstr ""
 
-#: models/document_models.py:76
+#: models/document_models.py:77
 msgid "Date and time trashed"
 msgstr "تاریخ و زمان خراب شد"
 
-#: models/document_models.py:80
+#: models/document_models.py:81
 msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
 msgstr "یک مستند سند یک سند با یک ورودی در پایگاه داده است اما هیچ فایل آپلود نشده است. این می تواند آپلود متوقف شده یا آپلود معلق از طریق API باشد."
 
-#: models/document_models.py:83
+#: models/document_models.py:84
 msgid "Is stub?"
 msgstr "آیا خرد است؟"
 
-#: models/document_models.py:96
+#: models/document_models.py:97
 #, python-format
 msgid "Document stub, id: %d"
 msgstr "مستند مستند، شناسه: %d"

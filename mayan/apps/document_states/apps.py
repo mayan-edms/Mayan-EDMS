@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelAttribute
+from mayan.apps.common.classes import ModelProperty
 from mayan.apps.common.links import link_object_error_list
 from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
@@ -32,7 +32,8 @@ from .links import (
     link_workflow_instance_list, link_document_type_workflow_templates,
     link_workflow_template_document_types, link_workflow_template_create,
     link_workflow_template_delete, link_workflow_template_edit,
-    link_workflow_template_list, link_workflow_template_state_list,
+    link_workflow_template_launch, link_workflow_template_list,
+    link_workflow_template_state_list,
     link_workflow_template_state_action_delete,
     link_workflow_template_state_action_edit,
     link_workflow_template_state_action_list,
@@ -53,7 +54,8 @@ from .links import (
 )
 from .permissions import (
     permission_workflow_delete, permission_workflow_edit,
-    permission_workflow_transition, permission_workflow_view
+    permission_workflow_tools, permission_workflow_transition,
+    permission_workflow_view
 )
 
 
@@ -103,19 +105,19 @@ class DocumentStatesApp(MayanAppConfig):
 
         WorkflowAction.initialize()
 
-        ModelAttribute(
+        ModelProperty(
             model=Document,
             name='workflow.< workflow internal name >.get_current_state',
             label=_('Current state of a workflow'), description=_(
-                'Return the current state of the selected workflow'
+                'Return the current state of the selected workflow.'
             )
         )
-        ModelAttribute(
+        ModelProperty(
             model=Document,
             name='workflow.< workflow internal name >.get_current_state.completion',
             label=_('Current state of a workflow'), description=_(
                 'Return the completion value of the current state of the '
-                'selected workflow'
+                'selected workflow.'
             )
         )
 
@@ -129,8 +131,8 @@ class DocumentStatesApp(MayanAppConfig):
         ModelPermission.register(
             model=Workflow, permissions=(
                 permission_error_log_view, permission_workflow_delete,
-                permission_workflow_edit, permission_workflow_transition,
-                permission_workflow_view,
+                permission_workflow_edit, permission_workflow_tools,
+                permission_workflow_transition, permission_workflow_view
             )
         )
         ModelPermission.register(
@@ -345,7 +347,8 @@ class DocumentStatesApp(MayanAppConfig):
         menu_main.bind_links(links=(link_workflow_runtime_proxy_list,), position=10)
         menu_object.bind_links(
             links=(
-                link_workflow_template_delete, link_workflow_template_edit
+                link_workflow_template_delete, link_workflow_template_edit,
+                link_workflow_template_launch
             ), sources=(Workflow,)
         )
         menu_object.bind_links(
@@ -425,6 +428,7 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_template_transition_create,
             ), sources=(
                 WorkflowTransition,
+                'document_states:workflow_template_transition_create',
                 'document_states:workflow_template_transition_list',
             )
         )
@@ -433,6 +437,7 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_template_state_create,
             ), sources=(
                 WorkflowState,
+                'document_states:workflow_template_state_create',
                 'document_states:workflow_template_state_list',
             )
         )

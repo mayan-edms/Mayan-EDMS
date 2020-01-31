@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:50-0400\n"
+"POT-Creation-Date: 2020-01-28 03:54-0400\n"
 "PO-Revision-Date: 2019-12-13 05:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -39,7 +39,7 @@ msgstr "Byl vytvořen chytrý odkaz"
 msgid "Smart link edited"
 msgstr "Chytrý odkaz byl upraven"
 
-#: forms.py:33
+#: forms.py:47
 msgid "Foreign document field"
 msgstr "Pole cizího dokumentu"
 

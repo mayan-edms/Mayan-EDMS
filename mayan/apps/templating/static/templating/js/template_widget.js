@@ -1,7 +1,7 @@
 'use strict';
 
 jQuery(document).ready(function() {
-    var fieldNameID = '[data-template-fields="model_property"]';
+    var fieldNameID = '[data-template-fields="model_attribute"]';
     $(fieldNameID).change(function(event) {
         var $idModelProperty = $(this);
         var $idTemplate = $('[data-template-fields="template"]');

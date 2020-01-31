@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 05:48-0400\n"
+"POT-Creation-Date: 2020-01-28 03:52-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2020\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -271,7 +271,7 @@ msgstr ""
 "Abhängigkeiten für eine Umgebung müssen nicht unbedingt für eine andere "
 "erforderlich sein, z. B. Produktion im Vergleich zu Entwicklung."
 
-#: links.py:11 views.py:41
+#: links.py:11 views.py:19
 msgid "Check for updates"
 msgstr "Nach Updates suchen"
 
@@ -318,52 +318,30 @@ msgstr "Installation erzwingen, obwohl bereits installiert."
 msgid "View dependencies"
 msgstr "Abhängigkeiten ansehen"
 
-#: views.py:23
-#, python-format
-msgid "The version you are using is outdated. The latest version is %s"
-msgstr "Ihre Version ist veraltet. Die neueste Version ist %s"
-
-#: views.py:28
-msgid "It is not possible to determine the latest version available."
-msgstr "Ermittlung der aktuellsten verfügbaren Version nicht möglich."
-
 #: views.py:33
-#, python-format
-msgid ""
-"Unexpected error trying to determine the latest version available. Make sure"
-" your installation has a connection to the internet; %s"
-msgstr ""
-"Unerwarteter Fehler beim Ermitteln der neuesten verfügbaren Version. Stellen"
-" Sie sicher, dass Ihre Installation eine Verbindung zum Internet hat. %s"
-
-#: views.py:38
-msgid "Your version is up-to-date."
-msgstr "Ihre Version ist auf dem neuesten Stand."
-
-#: views.py:55
 #, python-format
 msgid "Entries for dependency group: %s"
 msgstr "Einträge für Abhängigkeitsgruppe %s"
 
-#: views.py:68 views.py:113
+#: views.py:46 views.py:91
 #, python-format
 msgid "Group %s not found."
 msgstr "Gruppe %s nicht gefunden."
 
-#: views.py:81
+#: views.py:59
 msgid "Dependency groups"
 msgstr "Abhängigkeitsgruppen"
 
-#: views.py:101
+#: views.py:79
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
 msgstr "Abhängigkeitsgruppe und Eintrag: %(group)s, %(entry)s"
 
-#: views.py:125
+#: views.py:103
 #, python-format
 msgid "Entry %s not found."
 msgstr "Eintrag %s nicht gefunden."
 
-#: views.py:143
+#: views.py:121
 msgid "Other packages licenses"
 msgstr "Andere Paket-Lizenzen"
