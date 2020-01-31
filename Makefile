@@ -109,6 +109,12 @@ test-with-mysql-all: test-launch-mysql
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
 
+test-with-mysql-all-migrations: ## Run all migration tests against a MySQL database container.
+test-with-mysql-all-migrations: test-launch-mysql
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --no-exclude --tag=migration
+	@docker rm -f test-mysql || true
+	@docker volume rm test-mysql || true
+
 test-launch-oracle:
 	@docker rm -f test-oracle || true
 	@docker volume rm test-oracle || true
