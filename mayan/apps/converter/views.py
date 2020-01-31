@@ -59,7 +59,7 @@ class TransformationCreateView(
         except Exception as exception:
             logger.debug('Invalid form, exception: %s', exception)
             messages.error(
-                message=_('Error creating transforamtion: %s.') % exception,
+                message=_('Error creating transformation: %s.') % exception,
                 request=self.request
             )
             return super(TransformationCreateView, self).form_invalid(form)
