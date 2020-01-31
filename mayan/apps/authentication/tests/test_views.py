@@ -69,7 +69,6 @@ class UserLoginTestCase(GenericViewTestCase):
     def _request_authenticated_view(self):
         return self.get(path=self.authenticated_url)
 
-
     def _request_password_reset_get_view(self):
         return self.get(
             viewname='authentication:password_reset_view', data={
