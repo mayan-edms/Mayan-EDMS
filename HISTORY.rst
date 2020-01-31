@@ -1,4 +1,4 @@
-3.3.10 (2020-XX-XX)
+3.3.10 (2020-01-31)
 ===================
 - Turn TarArchiveClassTestCase in to reusable archive test case class.
   #MD-10.
