@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 03:51-0400\n"
+"POT-Creation-Date: 2020-01-31 00:36-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,6 +67,12 @@ msgid ""
 "in. Value is time in seconds."
 msgstr ""
 
+#: settings.py:27
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr ""
+
 #: templates/authentication/login.html:11
 msgid "Login"
 msgstr ""
@@ -76,7 +82,7 @@ msgstr ""
 msgid "Sign in"
 msgstr ""
 
-#: templates/authentication/login.html:39
+#: templates/authentication/login.html:41
 msgid "Forgot your password?"
 msgstr ""
 
@@ -98,7 +104,7 @@ msgid "Login page"
 msgstr ""
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:154
+#: templates/authentication/password_reset_form.html:29 views.py:167
 msgid "Submit"
 msgstr ""
 
@@ -106,51 +112,51 @@ msgstr ""
 msgid "Password reset email sent!"
 msgstr ""
 
-#: views.py:74
+#: views.py:77
 msgid "Your password has been successfully changed."
 msgstr ""
 
-#: views.py:81
+#: views.py:84
 msgid "Current user password change"
 msgstr ""
 
-#: views.py:89
+#: views.py:92
 msgid "Changing the password is not allowed for this account."
 msgstr ""
 
-#: views.py:145
+#: views.py:158
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr ""
 
-#: views.py:147
+#: views.py:160
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr ""
 
-#: views.py:156
+#: views.py:169
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:166
+#: views.py:179
 #, python-format
 msgid "Change password for user: %s"
 msgstr ""
 
-#: views.py:186
+#: views.py:199
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr ""
 
-#: views.py:196
+#: views.py:209
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr ""
 
-#: views.py:202
+#: views.py:215
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr ""

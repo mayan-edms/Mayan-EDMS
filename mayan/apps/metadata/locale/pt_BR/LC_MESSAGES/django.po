@@ -7,15 +7,15 @@
 # Emerson Soares <on.emersonsoares@gmail.com>, 2013
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # Renata Oliveira <renatabels@gmail.com>, 2011
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 03:55-0400\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-01-31 00:39-0400\n"
+"PO-Revision-Date: 2020-01-29 19:09+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr "Metadados"
 
 #: apps.py:98
 msgid "Return the value of a specific document metadata."
-msgstr ""
+msgstr "Retorna o valor de um metadado específico do documento."
 
 #: apps.py:99
 msgid "Metadata value of"

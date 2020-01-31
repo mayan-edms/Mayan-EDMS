@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 03:51-0400\n"
-"PO-Revision-Date: 2019-06-15 07:48+0000\n"
+"POT-Creation-Date: 2020-01-31 00:36-0400\n"
+"PO-Revision-Date: 2020-01-31 04:42+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -68,6 +68,12 @@ msgid ""
 " in. Value is time in seconds."
 msgstr ""
 
+#: settings.py:27
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr ""
+
 #: templates/authentication/login.html:11
 msgid "Login"
 msgstr "Prijava"
@@ -77,7 +83,7 @@ msgstr "Prijava"
 msgid "Sign in"
 msgstr "Prijavite se"
 
-#: templates/authentication/login.html:39
+#: templates/authentication/login.html:41
 msgid "Forgot your password?"
 msgstr "Zaboravili lozinku?"
 
@@ -99,7 +105,7 @@ msgid "Login page"
 msgstr "Prijava na stranicu"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:154
+#: templates/authentication/password_reset_form.html:29 views.py:167
 msgid "Submit"
 msgstr "Podnijeti"
 
@@ -107,52 +113,52 @@ msgstr "Podnijeti"
 msgid "Password reset email sent!"
 msgstr "Resetovana lozinka poslata na vaš email!"
 
-#: views.py:74
+#: views.py:77
 msgid "Your password has been successfully changed."
 msgstr "Vaš password je uspješno promjenjen"
 
-#: views.py:81
+#: views.py:84
 msgid "Current user password change"
 msgstr "Promjeniti trenutni pasvord"
 
-#: views.py:89
+#: views.py:92
 msgid "Changing the password is not allowed for this account."
 msgstr ""
 
-#: views.py:145
+#: views.py:158
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Zahtev za promjenu lozinke izvršen %(count)d korisnika"
 
-#: views.py:147
+#: views.py:160
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Zahtev za promjenu lozinke izvršen %(count)d korisnika"
 
-#: views.py:156
+#: views.py:169
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views.py:166
+#: views.py:179
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Izmjenite lozinku korisnika: %s"
 
-#: views.py:186
+#: views.py:199
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "Super user i staff user reset lozinke nije dozvoljen, koristite administratorski interface za takve slučajeve"
 
-#: views.py:196
+#: views.py:209
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Uspešno resetovanje lozinke za korisnika: %s"
 
-#: views.py:202
+#: views.py:215
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Greška resetovanja lozinke za korisnika \"%(user)s\": %(error)s"

@@ -5,15 +5,15 @@
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Renata Oliveira <renatabels@gmail.com>, 2011
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 03:56-0400\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-01-31 00:40-0400\n"
+"PO-Revision-Date: 2020-01-29 19:09+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,11 +28,11 @@ msgstr "OCR"
 
 #: apps.py:107
 msgid "A generator returning the document's pages OCR content."
-msgstr ""
+msgstr "Um gerador que retorna o conteúdo OCR das páginas do documento."
 
 #: apps.py:108
 msgid "OCR content"
-msgstr ""
+msgstr "Conteúdo OCR"
 
 #: apps.py:132
 msgid "Date and time"

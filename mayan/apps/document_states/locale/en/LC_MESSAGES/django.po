@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 03:53-0400\n"
+"POT-Creation-Date: 2020-01-31 00:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -388,16 +388,24 @@ msgstr ""
 msgid "Widget keyword arguments"
 msgstr ""
 
-#: models.py:492 models.py:514
-msgid "Workflow transition trigger event"
+#: models.py:492
+msgid "Workflow transition field"
 msgstr ""
 
-#: models.py:493 models.py:515
-msgid "Workflow transitions trigger events"
+#: models.py:493
+msgid "Workflow transition fields"
 msgstr ""
 
 #: models.py:510
 msgid "Event type"
+msgstr ""
+
+#: models.py:514
+msgid "Workflow transition trigger event"
+msgstr ""
+
+#: models.py:515
+msgid "Workflow transitions trigger events"
 msgstr ""
 
 #: models.py:529
@@ -654,7 +662,7 @@ msgstr ""
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr ""
 
-#: views/workflow_proxy_views.py:122 views/workflow_template_state_views.py:290
+#: views/workflow_proxy_views.py:122 views/workflow_template_state_views.py:288
 msgid "Create states and link them using transitions."
 msgstr ""
 
@@ -662,7 +670,7 @@ msgstr ""
 msgid "This workflow doesn't have any state"
 msgstr ""
 
-#: views/workflow_proxy_views.py:128 views/workflow_template_state_views.py:296
+#: views/workflow_proxy_views.py:128 views/workflow_template_state_views.py:294
 #, python-format
 msgid "States of workflow: %s"
 msgstr ""
@@ -706,17 +714,17 @@ msgstr ""
 msgid "Create states for workflow: %s"
 msgstr ""
 
-#: views/workflow_template_state_views.py:239
+#: views/workflow_template_state_views.py:237
 #, python-format
 msgid "Delete workflow state: %s?"
 msgstr ""
 
-#: views/workflow_template_state_views.py:262
+#: views/workflow_template_state_views.py:260
 #, python-format
 msgid "Edit workflow state: %s"
 msgstr ""
 
-#: views/workflow_template_state_views.py:293
+#: views/workflow_template_state_views.py:291
 msgid "This workflow doesn't have any states"
 msgstr ""
 
@@ -725,76 +733,76 @@ msgstr ""
 msgid "Create transitions for workflow: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:75
+#: views/workflow_template_transition_views.py:73
 #, python-format
 msgid "Delete workflow transition: %s?"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:98
+#: views/workflow_template_transition_views.py:96
 #, python-format
 msgid "Edit workflow transition: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:133
+#: views/workflow_template_transition_views.py:131
 msgid ""
 "Create a transition and use it to move a workflow from  one state to another."
 msgstr ""
 
-#: views/workflow_template_transition_views.py:137
+#: views/workflow_template_transition_views.py:135
 msgid "This workflow doesn't have any transitions"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:141
+#: views/workflow_template_transition_views.py:139
 #, python-format
 msgid "Transitions of workflow: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:171
+#: views/workflow_template_transition_views.py:167
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:178
+#: views/workflow_template_transition_views.py:174
 msgid "Workflow transition trigger events updated successfully"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:192
+#: views/workflow_template_transition_views.py:188
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
 msgstr ""
 
-#: views/workflow_template_transition_views.py:196
+#: views/workflow_template_transition_views.py:192
 #, python-format
 msgid "Workflow transition trigger events for: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:246
+#: views/workflow_template_transition_views.py:242
 #, python-format
 msgid "Create a field for workflow transition: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:276
+#: views/workflow_template_transition_views.py:272
 #, python-format
 msgid "Delete workflow transition field: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:302
+#: views/workflow_template_transition_views.py:298
 #, python-format
 msgid "Edit workflow transition field: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:331
+#: views/workflow_template_transition_views.py:327
 msgid ""
 "Workflow transition fields allow adding data to the workflow's context. This "
 "additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr ""
 
-#: views/workflow_template_transition_views.py:337
+#: views/workflow_template_transition_views.py:333
 msgid "There are no fields for this workflow transition"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:341
+#: views/workflow_template_transition_views.py:337
 #, python-format
 msgid "Fields for workflow transition: %s"
 msgstr ""

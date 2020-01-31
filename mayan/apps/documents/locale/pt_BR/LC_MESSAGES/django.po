@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 03:53-0400\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-01-31 00:38-0400\n"
+"PO-Revision-Date: 2020-01-29 19:08+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,11 +55,11 @@ msgstr "Registro de data e hora das versões"
 
 #: apps.py:195
 msgid "Return the lastest version of the document."
-msgstr ""
+msgstr "Retorna a última versão do documento."
 
 #: apps.py:196
 msgid "Latest version"
-msgstr ""
+msgstr "Última versão"
 
 #: apps.py:274 apps.py:304 apps.py:321 apps.py:367
 msgid "Thumbnail"
@@ -456,7 +456,7 @@ msgstr "UUID de um documento, Universally Unique Identity - Identidade Universal
 
 #: models/document_models.py:44
 msgid "The document type of the document."
-msgstr ""
+msgstr "O tipo de documento do documento."
 
 #: models/document_models.py:50
 msgid "The name of the document."

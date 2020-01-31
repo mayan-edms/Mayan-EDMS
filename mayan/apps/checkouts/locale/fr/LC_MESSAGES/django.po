@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 03:52-0400\n"
-"PO-Revision-Date: 2020-01-21 20:43+0000\n"
+"POT-Creation-Date: 2020-01-31 00:36-0400\n"
+"PO-Revision-Date: 2020-01-30 18:47+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgstr "Verrouiller le document"
 
 #: links.py:45
 msgid "Check out"
-msgstr ""
+msgstr "Verrouiller"
 
 #: links.py:52
 msgid "Check in document"
@@ -92,7 +92,7 @@ msgstr "Déverrouiller le document"
 
 #: links.py:56
 msgid "Check in"
-msgstr ""
+msgstr "Déverrouiller"
 
 #: links.py:62
 msgid "Check in/out"
@@ -190,20 +190,20 @@ msgstr "Clé primaire du document devant être verrouillé."
 #, python-format
 msgid "Check in %(count)d document"
 msgid_plural "Check in %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Archiver le document %(count)d"
+msgstr[1] "Déverrouiller %(count)d documents"
 
 #: views.py:48
 #, python-format
 msgid "Check in document: %s"
-msgstr ""
+msgstr "Déverrouiller ce document: %s"
 
 #: views.py:102
 #, python-format
 msgid "Checkout %(count)d document"
 msgid_plural "Checkout %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Commander le document %(count)d"
+msgstr[1] "Déverrouiller%(count)d documents"
 
 #: views.py:115
 #, python-format

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 03:53-0400\n"
-"PO-Revision-Date: 2020-01-28 07:58+0000\n"
+"POT-Creation-Date: 2020-01-31 00:38-0400\n"
+"PO-Revision-Date: 2020-01-31 04:42+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -389,17 +389,25 @@ msgstr "Група от ключови аргументи за персонал�
 msgid "Widget keyword arguments"
 msgstr "Аргументи на ключови думи на управляващия елемент"
 
-#: models.py:492 models.py:514
-msgid "Workflow transition trigger event"
-msgstr "Събитие задействащо прехода на работния поток"
+#: models.py:492
+msgid "Workflow transition field"
+msgstr ""
 
-#: models.py:493 models.py:515
-msgid "Workflow transitions trigger events"
-msgstr "Събития задействащи прехода на работния поток"
+#: models.py:493
+msgid "Workflow transition fields"
+msgstr ""
 
 #: models.py:510
 msgid "Event type"
 msgstr "Тип на събитието"
+
+#: models.py:514
+msgid "Workflow transition trigger event"
+msgstr "Събитие задействащо прехода на работния поток"
+
+#: models.py:515
+msgid "Workflow transitions trigger events"
+msgstr "Събития задействащи прехода на работния поток"
 
 #: models.py:529
 msgid "Document"
@@ -657,7 +665,7 @@ msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Документи в работния поток &quot;%s&quot;, състояние &quot;%s&quot;"
 
 #: views/workflow_proxy_views.py:122
-#: views/workflow_template_state_views.py:290
+#: views/workflow_template_state_views.py:288
 msgid "Create states and link them using transitions."
 msgstr "Създайте състояния и ги свържете с помощта на преходи."
 
@@ -666,7 +674,7 @@ msgid "This workflow doesn't have any state"
 msgstr "Този работен поток няма състояние"
 
 #: views/workflow_proxy_views.py:128
-#: views/workflow_template_state_views.py:296
+#: views/workflow_template_state_views.py:294
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Състояния на работния поток: %s"
@@ -710,17 +718,17 @@ msgstr "Избор на ново действие за състояние на �
 msgid "Create states for workflow: %s"
 msgstr "Създайте състояния за работен поток: %s"
 
-#: views/workflow_template_state_views.py:239
+#: views/workflow_template_state_views.py:237
 #, python-format
 msgid "Delete workflow state: %s?"
 msgstr "Изтриване на състояние на работен поток: %s?"
 
-#: views/workflow_template_state_views.py:262
+#: views/workflow_template_state_views.py:260
 #, python-format
 msgid "Edit workflow state: %s"
 msgstr "Редактиране на състояние на работен поток: %s"
 
-#: views/workflow_template_state_views.py:293
+#: views/workflow_template_state_views.py:291
 msgid "This workflow doesn't have any states"
 msgstr "Този работен поток няма състояния"
 
@@ -729,77 +737,77 @@ msgstr "Този работен поток няма състояния"
 msgid "Create transitions for workflow: %s"
 msgstr "Създайте преходи за работния поток: %s"
 
-#: views/workflow_template_transition_views.py:75
+#: views/workflow_template_transition_views.py:73
 #, python-format
 msgid "Delete workflow transition: %s?"
 msgstr "Изтриване на преход на работния поток: %s?"
 
-#: views/workflow_template_transition_views.py:98
+#: views/workflow_template_transition_views.py:96
 #, python-format
 msgid "Edit workflow transition: %s"
 msgstr "Редактиране на преход на работния поток: %s"
 
-#: views/workflow_template_transition_views.py:133
+#: views/workflow_template_transition_views.py:131
 msgid ""
 "Create a transition and use it to move a workflow from  one state to "
 "another."
 msgstr "Създайте преход и го използвайте за преместване на работен поток от едно състояние в друго."
 
-#: views/workflow_template_transition_views.py:137
+#: views/workflow_template_transition_views.py:135
 msgid "This workflow doesn't have any transitions"
 msgstr "Този работен поток няма преходи"
 
-#: views/workflow_template_transition_views.py:141
+#: views/workflow_template_transition_views.py:139
 #, python-format
 msgid "Transitions of workflow: %s"
 msgstr "Преходи на работния поток: %s"
 
-#: views/workflow_template_transition_views.py:171
+#: views/workflow_template_transition_views.py:167
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
 msgstr "Грешка при актуализиране на събитията задействащи прехода на работния поток; %s"
 
-#: views/workflow_template_transition_views.py:178
+#: views/workflow_template_transition_views.py:174
 msgid "Workflow transition trigger events updated successfully"
 msgstr "Събитията задействащи прехода на работния поток са актуализирани успешно"
 
-#: views/workflow_template_transition_views.py:192
+#: views/workflow_template_transition_views.py:188
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
 msgstr "Тригерите са събития, които предизвикват този преход да се изпълни автоматично."
 
-#: views/workflow_template_transition_views.py:196
+#: views/workflow_template_transition_views.py:192
 #, python-format
 msgid "Workflow transition trigger events for: %s"
 msgstr "Събития задействащи прехода на работния поток за: %s"
 
-#: views/workflow_template_transition_views.py:246
+#: views/workflow_template_transition_views.py:242
 #, python-format
 msgid "Create a field for workflow transition: %s"
 msgstr "Създайте поле за преход на работния поток: %s"
 
-#: views/workflow_template_transition_views.py:276
+#: views/workflow_template_transition_views.py:272
 #, python-format
 msgid "Delete workflow transition field: %s"
 msgstr "Изтрийте полето за преход на работния поток: %s"
 
-#: views/workflow_template_transition_views.py:302
+#: views/workflow_template_transition_views.py:298
 #, python-format
 msgid "Edit workflow transition field: %s"
 msgstr "Редактиране на поле за преход на работния поток: %s"
 
-#: views/workflow_template_transition_views.py:331
+#: views/workflow_template_transition_views.py:327
 msgid ""
 "Workflow transition fields allow adding data to the workflow's context. This"
 " additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr "Полетата за преход на работния поток позволяват добавяне на данни в контекста на работния поток. След това тези допълнителни данни за контекста могат да бъдат използвани от други елементи на системата на работния поток, като действията на състоянието на работния поток."
 
-#: views/workflow_template_transition_views.py:337
+#: views/workflow_template_transition_views.py:333
 msgid "There are no fields for this workflow transition"
 msgstr "Няма полета за този преход на работния поток"
 
-#: views/workflow_template_transition_views.py:341
+#: views/workflow_template_transition_views.py:337
 #, python-format
 msgid "Fields for workflow transition: %s"
 msgstr "Полета за преход на работния поток: %s"

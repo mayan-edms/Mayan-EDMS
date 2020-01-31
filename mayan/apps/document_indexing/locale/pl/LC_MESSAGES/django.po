@@ -4,15 +4,15 @@
 # 
 # Translators:
 # mic <winterfall24@gmail.com>, 2012,2015
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2020
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 03:53-0400\n"
-"PO-Revision-Date: 2019-12-05 10:07+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-01-31 00:37-0400\n"
+"PO-Revision-Date: 2020-01-30 19:15+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,23 +54,23 @@ msgstr "Dokumenty"
 
 #: events.py:12
 msgid "Index created"
-msgstr ""
+msgstr "Utworzono indeks"
 
 #: events.py:15
 msgid "Index edited"
-msgstr ""
+msgstr "Zmodyfikowano indeks"
 
 #: forms.py:18
 msgid "Index templates to be queued for rebuilding."
-msgstr ""
+msgstr "Szablony indeksów w kolejce do przebudowy."
 
 #: forms.py:19 links.py:29
 msgid "Index templates"
-msgstr ""
+msgstr "Szablony indeksów"
 
 #: forms.py:34
 msgid "Template"
-msgstr ""
+msgstr "Szablon"
 
 #: handlers.py:20
 msgid "Creation date"
@@ -95,7 +95,7 @@ msgstr "Przebudowa indeksów"
 
 #: links.py:66 views.py:481
 msgid "Reset indexes"
-msgstr ""
+msgstr "Zresetuj indeksy"
 
 #: links.py:83 views.py:87
 msgid "Create index"
@@ -119,7 +119,7 @@ msgstr "Nowy węzeł potomny"
 
 #: models.py:36
 msgid "Short description of this index."
-msgstr ""
+msgstr "Krótki opis indeksu."
 
 #: models.py:37
 msgid "Label"
@@ -158,7 +158,7 @@ msgstr "Instancje indeksów"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr ""
+msgstr "Wprowadź szablon do renderowania. Użyj domyślnego języka szablonów Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
 #: models.py:246
 msgid "Indexing expression"

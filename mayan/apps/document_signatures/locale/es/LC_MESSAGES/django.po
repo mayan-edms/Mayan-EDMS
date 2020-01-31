@@ -6,13 +6,13 @@
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012,2015
-# Roberto Rosario, 2015-2019
+# Roberto Rosario, 2015-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 03:53-0400\n"
-"PO-Revision-Date: 2019-12-31 08:31+0000\n"
+"POT-Creation-Date: 2020-01-31 00:38-0400\n"
+"PO-Revision-Date: 2020-01-29 07:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -332,7 +332,7 @@ msgstr "Firmar documento (separado)"
 msgid ""
 "Document has no version to sign. You might be trying to use this action in "
 "an initial state before the created document is yet to be processed."
-msgstr ""
+msgstr "El documento no tiene versión para firmar. Puede estar intentando utilizar esta acción en un estado inicial antes de que el documento aún no se ha procesado."
 
 #: workflow_actions.py:84
 msgid "Sign document (embedded)"

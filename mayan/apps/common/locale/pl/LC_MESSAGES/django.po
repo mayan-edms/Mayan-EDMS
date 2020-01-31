@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 03:52-0400\n"
-"PO-Revision-Date: 2020-01-28 07:58+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-01-31 00:37-0400\n"
+"PO-Revision-Date: 2020-01-30 18:56+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,15 +32,15 @@ msgstr "Ustawienia wspólne"
 
 #: classes.py:185
 msgid "Model properties"
-msgstr ""
+msgstr "Właściwości modelu"
 
 #: classes.py:190
 msgid "Model fields"
-msgstr ""
+msgstr "Pola modelu"
 
 #: classes.py:233
 msgid "Model related fields"
-msgstr ""
+msgstr "Pola związane z modelem"
 
 #: dependencies.py:308
 msgid "Used to allow offline translation of the code text strings."

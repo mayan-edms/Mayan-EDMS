@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 03:56-0400\n"
-"PO-Revision-Date: 2020-01-22 15:52+0000\n"
+"POT-Creation-Date: 2020-01-31 00:41-0400\n"
+"PO-Revision-Date: 2020-01-28 14:29+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -702,7 +702,7 @@ msgstr "Tâche en erreur d'exécution lors du téléversement; %(exception)s, %(
 
 #: views.py:304
 msgid "New document queued for upload and will be available shortly."
-msgstr "Nouveau document en attente de téléversement et sera disponible sous peu."
+msgstr "Nouveau document en attente de téléversement, il sera disponible sous peu."
 
 #: views.py:355
 #, python-format

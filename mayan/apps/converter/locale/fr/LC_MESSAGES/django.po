@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 # Yves Dubois <ydubois@gmail.com>, 2018
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 03:52-0400\n"
-"PO-Revision-Date: 2019-12-05 10:07+0000\n"
+"POT-Creation-Date: 2020-01-31 00:37-0400\n"
+"PO-Revision-Date: 2020-01-31 04:42+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -30,12 +30,12 @@ msgstr "Convertisseur"
 msgid "Transformation"
 msgstr "Transformation"
 
-#: backends/python.py:157 backends/python.py:170
+#: backends/python.py:158 backends/python.py:171
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Exception lors de la détermination du nombre de pages du PDF ; %s"
 
-#: backends/python.py:184
+#: backends/python.py:185
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Exception lors de la détermination du nombre de pages à l'aide de Pillow ; %s"
@@ -79,7 +79,7 @@ msgstr "\"%s\" n'est pas une entrée valide."
 
 #: layers.py:12
 msgid "Saved transformations"
-msgstr ""
+msgstr "Transformations enregistrées"
 
 #: links.py:18
 msgid "Delete"
@@ -119,11 +119,11 @@ msgstr "Activé"
 
 #: models.py:56 models.py:75
 msgid "Object layer"
-msgstr ""
+msgstr "Calque d'objet"
 
 #: models.py:57
 msgid "Object layers"
-msgstr ""
+msgstr "Calques d'objets"
 
 #: models.py:79
 msgid ""
@@ -143,11 +143,11 @@ msgstr "Arguments"
 
 #: models.py:100
 msgid "Layer transformation"
-msgstr ""
+msgstr "Transformation de calque"
 
 #: models.py:101
 msgid "Layer transformations"
-msgstr ""
+msgstr "Transformations de calque"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -179,7 +179,7 @@ msgstr "Découper"
 
 #: transformations.py:177
 msgid "Draw rectangle"
-msgstr ""
+msgstr "Dessiner un rectangle"
 
 #: transformations.py:279
 msgid "Draw rectangle (percents coordinates)"
@@ -235,7 +235,7 @@ msgstr "Saisissez une valeur YAML valide."
 
 #: views.py:62
 #, python-format
-msgid "Error creating transforamtion: %s."
+msgid "Error creating transformation: %s."
 msgstr ""
 
 #: views.py:79
