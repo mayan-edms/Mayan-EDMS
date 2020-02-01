@@ -179,6 +179,24 @@ test_upgrade_sqlite:
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade
 
+test_upgrade_mysql:
+  <<: *test_upgrade_base
+  variables:
+    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    MYSQL_DATABASE: "mayan_edms"
+  services:
+    - mysql:8.0.14
+  script:
+    - apt-get install -qq libmysqlclient-dev libssl-dev mysql-client
+    - . venv/bin/activate
+    - pip install mysqlclient==$PYTHON_MYSQL_VERSION
+    - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
+    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci.db_mysql
+    - pip install dist/mayan_edms-*.whl
+    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci.db_mysql
+  tags:
+    - mysql
+
 test_upgrade_postgres:
   <<: *test_upgrade_base
   variables:
@@ -229,7 +247,7 @@ test-mysql:
     MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     MYSQL_DATABASE: "mayan_edms"
   services:
-    - mysql:8.0
+    - mysql:8.0.14
   script:
     - apt-get install -qq libmysqlclient-dev libssl-dev mysql-client
     - . venv/bin/activate

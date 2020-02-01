@@ -63,9 +63,11 @@ test-all-migrations: clean-pyc _test-command
 test-launch-postgres:
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
-	docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
-	sudo apt-get install -q libpq-dev
-	pip install psycopg2==$(PYTHON_PSYCOPG2_VERSION)
+	@docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
+	@echo "* Installing libpq-dev client"
+	@sudo apt-get install -qq libpq-dev
+	@echo "* Installing Python client"
+	@pip install psycopg2==$(PYTHON_PSYCOPG2_VERSION)
 	sleep 2
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 
@@ -90,12 +92,15 @@ test-with-postgres-all-migrations: test-launch-postgres
 test-launch-mysql:
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
-	docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan -v test-mysql:/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION)
-	sudo apt-get install -q libmysqlclient-dev mysql-client
-	pip install mysqlclient==$(PYTHON_MYSQL_VERSION)
-	sleep 2
-	while ! nc -z 127.0.0.1 3306; do sleep 1; done
-	mysql -h 127.0.0.1 -P 3306 -uroot  -e "set global character_set_server=utf8mb4;"
+	@docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan -v test-mysql:/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION)
+	@echo "* Installing MySQL client"
+	@sudo apt-get install -qq libmysqlclient-dev mysql-client
+	@echo "* Installing Python client"
+	@pip install mysqlclient==$(PYTHON_MYSQL_VERSION) > /dev/null
+	@echo -n "* Waiting for server"
+	@while ! mysql -h 127.0.0.1 --user=root --execute "SHOW DATABASES;" > /dev/null 2>&1; do echo -n .;sleep 2; done
+	@echo
+	@mysql -h 127.0.0.1 -P 3306 -uroot  -e "set global character_set_server=utf8mb4;"
 
 test-with-mysql: ## MODULE=<python module name> - Run tests for a single app, module or test class against a MySQL database container.
 test-with-mysql: test-launch-mysql

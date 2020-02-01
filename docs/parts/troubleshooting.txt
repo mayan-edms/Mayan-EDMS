@@ -63,6 +63,22 @@ References:
 - https://github.com/benoitc/gunicorn/issues/996
 
 
+MySQL error: ``ValueError: Found wrong number (0) of constraints for actstream_follow(user_id, content_type_id, object_id)``
+----------------------------------------------------------------------------------------------------------------------------
+
+This is caused by a bug in Django 1.11. The issue has been fixed for Django 2.0
+version which Mayan EDMS will be migrating to for version 4.0.
+
+Mitigation:
+Avoid MySQL versions: 8.0.19, 8.0.18, 8.0.17, 8.0.16, 8.0.15. Use MySQL
+version 8.0.14 or earlier.
+
+References:
+- https://code.djangoproject.com/ticket/27946
+- https://code.djangoproject.com/ticket/29480
+- https://github.com/divio/django-cms/issues/5716
+
+
 Docker
 ======
 
