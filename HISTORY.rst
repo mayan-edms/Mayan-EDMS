@@ -39,6 +39,7 @@
   The setting is named ``AUTHENTICATION_DISABLE_PASSWORD_RESET`` and
   defaults to ``false``.
 - Improve workflow app navigation.
+- Add fall back read-only render for form fields.
 
 3.3.9 (2020-01-18)
 ==================

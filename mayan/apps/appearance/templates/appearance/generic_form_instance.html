@@ -111,7 +111,11 @@
                         {% render_field field class+="form-control" %}
                     {% endif %}
                 {% else %}
-                    {% render_field field class+="form-control" %}
+                    {% if read_only %}
+                        {{ field.value }}
+                    {% else %}
+                        {% render_field field class+="form-control" %}
+                    {% endif %}
                 {% endif %}
                 {% if field.help_text %}<p class="help-block">{{ field.help_text|safe }}</p>{% endif %}
             </div>

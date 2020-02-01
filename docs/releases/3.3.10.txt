@@ -8,6 +8,13 @@ Changes
 -------
 
 
+Appearance
+^^^^^^^^^^
+
+A fall back read-only render was added for form fields. Makes read-only
+decimal fields render as expected.
+
+
 Authentication
 ^^^^^^^^^^^^^^
 
