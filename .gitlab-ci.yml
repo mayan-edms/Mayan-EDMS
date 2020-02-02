@@ -185,7 +185,7 @@ test_upgrade_mysql:
     MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     MYSQL_DATABASE: "mayan_edms"
   services:
-    - mysql:8.0.12
+    - mysql:5.7
   script:
     - apt-get install -qq libmysqlclient-dev libssl-dev mysql-client
     - . venv/bin/activate
@@ -247,7 +247,7 @@ test-mysql:
     MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     MYSQL_DATABASE: "mayan_edms"
   services:
-    - mysql:8.0.12
+    - mysql:5.7
   script:
     - apt-get install -qq libmysqlclient-dev libssl-dev mysql-client
     - . venv/bin/activate
