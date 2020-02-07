@@ -24,11 +24,11 @@ from .mixins import DocumentViewTestMixin
 class DocumentViewTestCase(
     LayerTestMixin, DocumentViewTestMixin, GenericDocumentViewTestCase
 ):
-    def test_document_view_no_permissions(self):
+    def test_document_properties_view_no_permissions(self):
         response = self._request_document_properties_view()
         self.assertEqual(response.status_code, 404)
 
-    def test_document_view_with_permissions(self):
+    def test_document_properties_view_with_permissions(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
@@ -456,3 +456,17 @@ class DocumentViewTestCase(
 
         response = self._request_document_print_view()
         self.assertEqual(response.status_code, 200)
+
+    def test_document_preview_view_no_permission(self):
+        response = self._request_test_document_preview_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_preview_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        response = self._request_test_document_preview_view()
+        self.assertContains(
+            response=response, text=self.test_document.label, status_code=200
+        )

@@ -1,3 +1,10 @@
+3.3.11 (2020-02-07)
+===================
+- Fix document preview rendering issue introduced by the read only
+  decimal field display addition. Closes GitLab issue #771.
+  Thanks to Christoph Roeder (@brightdroid) for the report and
+  investigation.
+
 3.3.10 (2020-01-31)
 ===================
 - Turn TarArchiveClassTestCase in to reusable archive test case class.

@@ -1,8 +1,10 @@
 from __future__ import unicode_literals
 
+from ..permissions import permission_document_view
 from ..widgets import DocumentPageThumbnailWidget
 
-from .test_models import GenericDocumentTestCase
+from .base import GenericDocumentTestCase, GenericDocumentViewTestCase
+from .mixins import DocumentViewTestMixin
 
 
 class DocumentPageWidgetTestCase(GenericDocumentTestCase):
@@ -12,3 +14,17 @@ class DocumentPageWidgetTestCase(GenericDocumentTestCase):
         result = document_thumbnail_widget.render(instance=self.test_document)
 
         self.assertTrue(self.test_document.get_absolute_url() in result)
+
+
+class DocumentPreviewWidgetViewTestCase(
+    DocumentViewTestMixin, GenericDocumentViewTestCase
+):
+    def test_document_preview_page_carousel_widget_render(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        response = self._request_test_document_preview_view()
+        self.assertContains(
+            response=response, text='carousel-container', status_code=200
+        )
