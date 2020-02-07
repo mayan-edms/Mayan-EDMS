@@ -24,7 +24,7 @@ repository for electronic documents.
     parts/access_control
     parts/categorization
     parts/collaboration
-    parts/settings
+    chapters/settings
     parts/storage
     chapters/rest_api
     chapters/docker/index
