@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from mayan.apps.common.tests.base import BaseTestCase
-from mayan.apps.smart_settings.classes import Setting
 from mayan.apps.smart_settings.tests.mixins import SmartSettingTestMixin
 
 from ..settings import setting_language_codes
