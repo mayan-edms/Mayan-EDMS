@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:38-0400\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-07 03:02-0400\n"
+"PO-Revision-Date: 2020-02-06 09:41+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,17 +52,17 @@ msgstr "Časová značka verzí"
 
 #: apps.py:195
 msgid "Return the lastest version of the document."
-msgstr ""
+msgstr "Vraťte poslední verzi dokumentu."
 
 #: apps.py:196
 msgid "Latest version"
-msgstr ""
+msgstr "Poslední verze"
 
 #: apps.py:274 apps.py:304 apps.py:321 apps.py:367
 msgid "Thumbnail"
 msgstr "Náhled"
 
-#: apps.py:282 apps.py:372 forms/document_forms.py:184
+#: apps.py:282 apps.py:372 forms/document_forms.py:187
 #: links/document_version_page_links.py:137
 msgid "Pages"
 msgstr "Strany"
@@ -119,7 +119,7 @@ msgstr "Vlastnosti dokumentu byly upraveny"
 
 #: events.py:22
 msgid "Document trashed"
-msgstr ""
+msgstr "Dokument byl smazán"
 
 #: events.py:26
 msgid "Document type changed"
@@ -141,83 +141,83 @@ msgstr "Dokument se vrátil k předchozí verzi"
 msgid "Document viewed"
 msgstr "Dokument zobrazen"
 
-#: forms/document_forms.py:26
+#: forms/document_forms.py:27
 msgid "Compress"
 msgstr "Komprimovat"
 
-#: forms/document_forms.py:28
+#: forms/document_forms.py:29
 msgid ""
 "Download the document in the original format or in a compressed manner. This"
 " option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr "Stáhněte dokument v původním formátu nebo komprimovaným způsobem. Tuto možnost lze vybrat pouze při stahování jednoho dokumentu, u více dokumentů bude svazek vždy stahován jako komprimovaný soubor."
 
-#: forms/document_forms.py:35
+#: forms/document_forms.py:36
 msgid "Compressed filename"
 msgstr "Komprimovaný název souboru"
 
-#: forms/document_forms.py:38
+#: forms/document_forms.py:39
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
 msgstr "Název komprimovaného souboru, který bude obsahovat dokumenty ke stažení, pokud je vybrána předchozí možnost."
 
-#: forms/document_forms.py:87
+#: forms/document_forms.py:90
 msgid "Quick document rename"
 msgstr "Rychlé přejmenování dokumentu"
 
-#: forms/document_forms.py:95 forms/document_version_forms.py:15
+#: forms/document_forms.py:98 forms/document_version_forms.py:15
 msgid "Preserve extension"
 msgstr "Zachovat rozšíření"
 
-#: forms/document_forms.py:97
+#: forms/document_forms.py:100
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open document correctly."
 msgstr "Vezme příponu souboru a přesune ji na konec názvu souboru, což umožní operačním systémům, které spoléhají na přípony souborů, aby dokument otevřely správně."
 
-#: forms/document_forms.py:149
+#: forms/document_forms.py:152
 msgid "Date added"
 msgstr "Datum přidání"
 
-#: forms/document_forms.py:153 models/document_models.py:41 search.py:43
+#: forms/document_forms.py:156 models/document_models.py:41 search.py:43
 msgid "UUID"
 msgstr "UUID"
 
-#: forms/document_forms.py:155 models/document_models.py:66
+#: forms/document_forms.py:158 models/document_models.py:66
 msgid "Language"
 msgstr "Jazyk"
 
-#: forms/document_forms.py:163
+#: forms/document_forms.py:166
 msgid "File mimetype"
 msgstr "Mimetyp souboru"
 
-#: forms/document_forms.py:164 forms/document_forms.py:169
+#: forms/document_forms.py:167 forms/document_forms.py:172
 msgid "None"
 msgstr "žádný"
 
-#: forms/document_forms.py:167
+#: forms/document_forms.py:170
 msgid "File encoding"
 msgstr "Kódování souborů"
 
-#: forms/document_forms.py:173
+#: forms/document_forms.py:176
 msgid "File size"
 msgstr "Velikost souboru"
 
-#: forms/document_forms.py:178
+#: forms/document_forms.py:181
 msgid "Exists in storage"
 msgstr "Existuje v úložišti"
 
-#: forms/document_forms.py:180
+#: forms/document_forms.py:183
 msgid "File path in storage"
 msgstr "Cesta k souboru v úložišti"
 
-#: forms/document_forms.py:183 models/document_version_models.py:104
+#: forms/document_forms.py:186 models/document_version_models.py:104
 #: search.py:47 search.py:72
 msgid "Checksum"
 msgstr "Kontrolní součet"
 
-#: forms/document_forms.py:200 literals.py:43
+#: forms/document_forms.py:203 literals.py:43
 msgid "Page range"
 msgstr "Rozsah stran"
 
@@ -242,7 +242,7 @@ msgstr "Vezme příponu souboru a přesune ji na konec názvu souboru, což umo�
 
 #: handlers.py:33
 msgid "Document images"
-msgstr ""
+msgstr "Obrázky dokumentů"
 
 #: links/document_links.py:23 links/document_links.py:67
 msgid "Clear transformations"
@@ -341,19 +341,19 @@ msgstr "Vrátit"
 
 #: links/document_version_page_links.py:49
 msgid "Disable page"
-msgstr ""
+msgstr "Zakázat stránku"
 
 #: links/document_version_page_links.py:54
 msgid "Disable pages"
-msgstr ""
+msgstr "Zakázat stránky"
 
 #: links/document_version_page_links.py:61
 msgid "Enable page"
-msgstr ""
+msgstr "Povolit stránku"
 
 #: links/document_version_page_links.py:66
 msgid "Enable pages"
-msgstr ""
+msgstr "Povolit stránky"
 
 #: links/document_version_page_links.py:73
 msgid "First page"
@@ -453,7 +453,7 @@ msgstr "UUID dokumentu, univerzálně jedinečné ID. Jedinečný identifikátor
 
 #: models/document_models.py:44
 msgid "The document type of the document."
-msgstr ""
+msgstr "Typ dokumentu."
 
 #: models/document_models.py:50
 msgid "The name of the document."
@@ -774,7 +774,7 @@ msgstr "Sken dplicitních dokumentů"
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
-msgstr ""
+msgstr "Prahová hodnota, při které DOCUMENT_CACHE_STORAGE_BACKEND začne mazat nejstarší soubory mezipaměti obrázků dokumentu. Zadejte velikost v bajtech."
 
 #: settings.py:34
 msgid ""
@@ -1002,18 +1002,18 @@ msgstr "Obrázek: %s"
 #: views/document_page_views.py:280
 msgid "Disable the selected document page?"
 msgid_plural "Disable the selected document pages?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Zakázat vybranou stránku dokumentu?"
+msgstr[1] "Zakázat vybrané stránky dokumentu?"
+msgstr[2] "Zakázat vybrané stránky dokumentu?"
+msgstr[3] "Zakázat vybrané stránky dokumentu?"
 
 #: views/document_page_views.py:310
 msgid "Enable the selected document page?"
 msgid_plural "Enable the selected document pages?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Povolit vybranou stránku dokumentu?"
+msgstr[1] "Povolit vybrané stránky dokumentu?"
+msgstr[2] "Povolit vybrané stránky dokumentu?"
+msgstr[3] "Povolit vybrané stránky dokumentu?"
 
 #: views/document_type_views.py:52
 #, python-format
@@ -1246,7 +1246,7 @@ msgstr "Chyba při odstraňování transformací stránky pro dokument: %(docume
 msgid ""
 "Error cloning the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
+msgstr "Chyba při klonování transformací stránky pro dokument: %(document)s; %(error)s."
 
 #: views/document_views.py:485
 msgid "Transformations cloned successfully."

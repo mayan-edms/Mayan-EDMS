@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:38-0400\n"
+"POT-Creation-Date: 2020-02-07 03:02-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -225,7 +225,8 @@ msgstr "%(count)d documents ajoutés à la file d'attente d'analyse"
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue?"
 msgstr[0] ""
-msgstr[1] ""
+"Soumettre un document %(count)d à la file d&#39;attente d&#39;analyse?"
+msgstr[1] "Soumettre %(count)d documents à la file d'attente d'analyse?"
 
 #: views.py:154
 #, python-format

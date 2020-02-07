@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:38-0400\n"
-"PO-Revision-Date: 2019-12-31 08:31+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-07 03:02-0400\n"
+"PO-Revision-Date: 2020-02-06 09:51+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -146,7 +146,7 @@ msgstr "Datum podepsání"
 
 #: models.py:47
 msgid "ID of the key that will be used to sign the document."
-msgstr ""
+msgstr "ID klíče, který bude použit k podepsání dokumentu."
 
 #: models.py:57
 msgid "Public key fingerprint"
@@ -178,7 +178,7 @@ msgstr "Vložené podpisy verze dokumentu"
 
 #: models.py:135
 msgid "Signature file previously generated."
-msgstr ""
+msgstr "Soubor podpisu byl dříve vygenerován."
 
 #: models.py:137
 msgid "Signature file"
@@ -262,7 +262,7 @@ msgstr "Verze dokumentu byla úspěšně podepsána."
 
 #: views.py:118 views.py:207
 msgid "Sign"
-msgstr ""
+msgstr "Podepsat"
 
 #: views.py:120
 #, python-format
@@ -319,18 +319,18 @@ msgstr "Ověření podpisu bylo ve frontě úspěšně."
 
 #: workflow_actions.py:24
 msgid "Private key that will be used to sign the document version."
-msgstr ""
+msgstr "Soukromý klíč, který bude použit k podepsání verze dokumentu."
 
 #: workflow_actions.py:39
 msgid "Sign document (detached)"
-msgstr ""
+msgstr "Podepsat dokument (odpojený)"
 
 #: workflow_actions.py:51
 msgid ""
 "Document has no version to sign. You might be trying to use this action in "
 "an initial state before the created document is yet to be processed."
-msgstr ""
+msgstr "Dokument nemá verzi k podpisu. Možná se pokoušíte použít tuto akci v počátečním stavu, než bude vytvořený dokument ještě zpracován."
 
 #: workflow_actions.py:84
 msgid "Sign document (embedded)"
-msgstr ""
+msgstr "Podepsat dokument (vložený)"

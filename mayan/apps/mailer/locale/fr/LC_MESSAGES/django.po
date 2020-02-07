@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:39-0400\n"
-"PO-Revision-Date: 2020-01-21 15:42+0000\n"
+"POT-Creation-Date: 2020-02-07 03:04-0400\n"
+"PO-Revision-Date: 2020-01-31 16:58+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -425,7 +425,7 @@ msgstr "Tester le profil de diffusion: %s"
 
 #: workflow_actions.py:24
 msgid "Mailing profile to use when sending the email."
-msgstr ""
+msgstr "Profil de messagerie à utiliser lors de l'envoi de courriel."
 
 #: workflow_actions.py:29
 msgid "Recipient"
@@ -436,15 +436,15 @@ msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon. A template can be used to reference properties of the "
 "document."
-msgstr ""
+msgstr "Adresse courriel du destinataire. Peut être plusieurs adresses séparées par une virgule ou un point-virgule. Un modèle peut être utilisé pour référencer les propriétés du document."
 
 #: workflow_actions.py:43
 msgid "Subject of the email. Can be a string or a template."
-msgstr ""
+msgstr "Objet du courriel. Peut être une chaîne ou un modèle."
 
 #: workflow_actions.py:52
 msgid "Body of the email to send. Can be a string or a template."
-msgstr ""
+msgstr "Corps du courriel à envoyer. Peut être une chaîne ou un modèle."
 
 #: workflow_actions.py:59
 msgid "Send email"
@@ -453,14 +453,14 @@ msgstr "Envoyer le courriel"
 #: workflow_actions.py:74
 #, python-format
 msgid "Recipient template error: %s"
-msgstr ""
+msgstr "Erreur de modèle \"destinataire\": %s"
 
 #: workflow_actions.py:85
 #, python-format
 msgid "Subject template error: %s"
-msgstr ""
+msgstr "Erreur de modèle \"sujet\": %s"
 
 #: workflow_actions.py:96
 #, python-format
 msgid "Body template error: %s"
-msgstr ""
+msgstr "Erreur de modèle \"corps\": %s"

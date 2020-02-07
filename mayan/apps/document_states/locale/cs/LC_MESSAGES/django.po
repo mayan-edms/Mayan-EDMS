@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:38-0400\n"
-"PO-Revision-Date: 2020-01-31 04:42+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-07 03:02-0400\n"
+"PO-Revision-Date: 2020-02-06 10:07+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,12 +30,12 @@ msgstr "Aktuální stav workflow"
 
 #: apps.py:112
 msgid "Return the current state of the selected workflow."
-msgstr ""
+msgstr "Vrátí aktuální stav vybraného workflow."
 
 #: apps.py:119
 msgid ""
 "Return the completion value of the current state of the selected workflow."
-msgstr ""
+msgstr "Vrátí hodnotu dokončení aktuálního stavu vybraného workflow."
 
 #: apps.py:175 apps.py:186 apps.py:196 apps.py:202
 msgid "None"
@@ -63,7 +63,7 @@ msgstr "Dokončení"
 
 #: apps.py:231
 msgid "Additional details"
-msgstr ""
+msgstr "Další detaily"
 
 #: apps.py:254
 msgid "When?"
@@ -83,7 +83,7 @@ msgstr "Typ"
 
 #: apps.py:296
 msgid "Widget"
-msgstr ""
+msgstr "Widget"
 
 #: apps.py:305 apps.py:311
 msgid "Documents"
@@ -103,7 +103,7 @@ msgstr "workflow upraven"
 
 #: forms.py:23
 msgid "The action type for this action entry."
-msgstr ""
+msgstr "Typ akce pro tuto položku akce."
 
 #: forms.py:24
 msgid "Action"
@@ -132,7 +132,7 @@ msgstr "Ano"
 
 #: forms.py:181
 msgid "Select a transition to execute in the next step."
-msgstr ""
+msgstr "Vyberte přechod, který chcete provést v dalším kroku."
 
 #: forms.py:182 links.py:204 models.py:451 models.py:506 models.py:673
 msgid "Transition"
@@ -140,7 +140,7 @@ msgstr "Krok"
 
 #: handlers.py:19
 msgid "Workflow images"
-msgstr ""
+msgstr "Obrázky workflow"
 
 #: handlers.py:78
 #, python-format
@@ -165,7 +165,7 @@ msgstr "Editovat"
 
 #: links.py:51
 msgid "Launch workflow"
-msgstr ""
+msgstr "Spusťte workflow"
 
 #: links.py:63
 msgid "Preview"
@@ -201,11 +201,11 @@ msgstr "Kroky"
 
 #: links.py:163
 msgid "Create field"
-msgstr ""
+msgstr "Vytvořit pole"
 
 #: links.py:183
 msgid "Fields"
-msgstr ""
+msgstr "Pole"
 
 #: links.py:193
 msgid "Detail"
@@ -225,15 +225,15 @@ msgstr "Spusťte všechny workflow"
 
 #: literals.py:10
 msgid "Character"
-msgstr ""
+msgstr "Charakter"
 
 #: literals.py:11
 msgid "Number (Integer)"
-msgstr ""
+msgstr "Číslo (celé číslo)"
 
 #: literals.py:21
 msgid "Text area"
-msgstr ""
+msgstr "Textová oblast"
 
 #: literals.py:32
 msgid "On entry"
@@ -255,7 +255,7 @@ msgstr "Vnitřní název"
 
 #: models.py:58
 msgid "A short text to describe the workflow."
-msgstr ""
+msgstr "Krátký text popisující workflow."
 
 #: models.py:71 models.py:270 models.py:420 models.py:525
 msgid "Workflow"
@@ -267,13 +267,13 @@ msgstr "Počáteční stav"
 
 #: models.py:273
 msgid "A short text to describe the workflow state."
-msgstr ""
+msgstr "Krátký text popisující stav workflow."
 
 #: models.py:279
 msgid ""
 "The state at which the workflow will start in. Only one state can be the "
 "initial state."
-msgstr ""
+msgstr "Stav, ve kterém se workflow spustí. Počáteční stav může být pouze jeden."
 
 #: models.py:281
 msgid "Initial"
@@ -283,7 +283,7 @@ msgstr "Počáteční"
 msgid ""
 "The percent of completion that this state represents in relation to the "
 "workflow. Use numbers without the percent sign."
-msgstr ""
+msgstr "Procento dokončení, které tento stav představuje ve vztahu k workflow. Používejte čísla bez znaku procenta."
 
 #: models.py:293 models.py:352
 msgid "Workflow state"
@@ -295,11 +295,11 @@ msgstr "Stavy workflow"
 
 #: models.py:355
 msgid "A short text describing the action."
-msgstr ""
+msgstr "Krátký text popisující akci."
 
 #: models.py:362
 msgid "At which moment of the state this action will execute."
-msgstr ""
+msgstr "Ve kterém okamžiku stavu se tato akce provede."
 
 #: models.py:363
 msgid "When"
@@ -323,11 +323,11 @@ msgstr "Akce stavu workflow"
 
 #: models.py:410
 msgid "Unknown action type"
-msgstr ""
+msgstr "Neznámý typ akce"
 
 #: models.py:423
 msgid "A short text to describe the transition."
-msgstr ""
+msgstr "Krátký text popisující přechod."
 
 #: models.py:428
 msgid "Origin state"
@@ -349,25 +349,25 @@ msgstr "Krokz workflow"
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
-msgstr ""
+msgstr "Název, který bude použit k identifikaci tohoto pole v jiných částech systému workflow."
 
 #: models.py:464
 msgid "The field name that will be shown on the user interface."
-msgstr ""
+msgstr "Název pole, které se zobrazí na uživatelském rozhraní."
 
 #: models.py:468
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
-msgstr ""
+msgstr "Volitelná zpráva, která pomůže uživatelům lépe porozumět účelu pole a údajům, které mají poskytovat."
 
 #: models.py:470
 msgid "Help text"
-msgstr ""
+msgstr "Pomocný text"
 
 #: models.py:474
 msgid "Whether this fields needs to be filled out or not to proceed."
-msgstr ""
+msgstr "Zda tato pole musí být vyplněna nebo ne."
 
 #: models.py:475
 msgid "Required"
@@ -375,27 +375,27 @@ msgstr "Požadované"
 
 #: models.py:479
 msgid "An optional class to change the default presentation of the field."
-msgstr ""
+msgstr "Volitelná třída pro změnu výchozí prezentace pole."
 
 #: models.py:480
 msgid "Widget class"
-msgstr ""
+msgstr "Třída widgetů"
 
 #: models.py:484
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
-msgstr ""
+msgstr "Skupina argumentů klíčových slov k přizpůsobení widgetu. Použijte formát YAML."
 
 #: models.py:487
 msgid "Widget keyword arguments"
-msgstr ""
+msgstr "Argumenty klíčových slov pro widgety"
 
 #: models.py:492
 msgid "Workflow transition field"
-msgstr ""
+msgstr "Pole přechodu workflow"
 
 #: models.py:493
 msgid "Workflow transition fields"
-msgstr ""
+msgstr "Pole přechodu workflow"
 
 #: models.py:510
 msgid "Event type"
@@ -415,7 +415,7 @@ msgstr "Dokument"
 
 #: models.py:532
 msgid "Context"
-msgstr ""
+msgstr "Kontext"
 
 #: models.py:538 models.py:666
 msgid "Workflow instance"
@@ -435,7 +435,7 @@ msgstr "Komentář"
 
 #: models.py:680
 msgid "Extra data"
-msgstr ""
+msgstr "Extra data"
 
 #: models.py:684
 msgid "Workflow instance log entry"
@@ -499,15 +499,15 @@ msgstr "Stavy dokumentů"
 
 #: queues.py:12
 msgid "Document states fast"
-msgstr ""
+msgstr "Stavy dokumentu rychle"
 
 #: queues.py:21
 msgid "Launch a workflow"
-msgstr ""
+msgstr "Spusťte workflow"
 
 #: queues.py:25
 msgid "Generate workflow previews"
-msgstr ""
+msgstr "Generujte náhledy workflow"
 
 #: serializers.py:22
 msgid "Primary key of the document type to be added."
@@ -551,23 +551,23 @@ msgstr "Primární klíč kroku, který má být přidán."
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
-msgstr ""
+msgstr "Prahová hodnota, při které WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND začne mazat nejstarší soubory mezipaměti obrázků workflow. Zadejte velikost v bajtech."
 
 #: settings.py:27
 msgid ""
 "Time in seconds that the browser should cache the supplied workflow images. "
 "The default of 31559626 seconds corresponde to 1 year."
-msgstr ""
+msgstr "Čas v sekundách, po který má prohlížeč ukládat do mezipaměti obrázkyworkflow. Výchozí hodnota 31559626 sekund odpovídá 1 roku."
 
 #: settings.py:34
 msgid ""
 "Path to the Storage subclass to use when storing the cached workflow image "
 "files."
-msgstr ""
+msgstr "Cesta k podtřídě Úložiště, která se použije při ukládání obrazových souborů workflow v mezipaměti."
 
 #: settings.py:42
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumenty, které mají být předány na WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: templates/document_states/forms/widgets/workflow_image.html:2
 msgid "Workflow preview"
@@ -615,7 +615,7 @@ msgstr "Odeslat"
 #: views/workflow_instance_views.py:127
 #, python-format
 msgid "Execute transition \"%(transition)s\" for workflow: %(workflow)s"
-msgstr ""
+msgstr "Proveďte přechod &quot;%(transition)s&quot; pro workflow: %(workflow)s"
 
 #: views/workflow_instance_views.py:142
 msgid "Optional comment to attach to the transition."
@@ -623,12 +623,12 @@ msgstr "Volitelný komentář pro připojení ke krok."
 
 #: views/workflow_instance_views.py:211
 msgid "Select"
-msgstr ""
+msgstr "Vybrat"
 
 #: views/workflow_instance_views.py:213
 #, python-format
 msgid "Select transition for workflow: %s"
-msgstr ""
+msgstr "Vyberte přechod pro workflow: %s"
 
 #: views/workflow_proxy_views.py:35
 msgid ""
@@ -784,33 +784,33 @@ msgstr "Spouštěcí události kroku workflow pro: %s"
 #: views/workflow_template_transition_views.py:242
 #, python-format
 msgid "Create a field for workflow transition: %s"
-msgstr ""
+msgstr "Vytvořte pole pro přechod workflow: %s"
 
 #: views/workflow_template_transition_views.py:272
 #, python-format
 msgid "Delete workflow transition field: %s"
-msgstr ""
+msgstr "Odstranit pole přechodu workflow: %s"
 
 #: views/workflow_template_transition_views.py:298
 #, python-format
 msgid "Edit workflow transition field: %s"
-msgstr ""
+msgstr "Upravit pole přechodu workflow: %s"
 
 #: views/workflow_template_transition_views.py:327
 msgid ""
 "Workflow transition fields allow adding data to the workflow's context. This"
 " additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
-msgstr ""
+msgstr "Pole přechodu workflow umožňují přidávat data do kontextu workflow. Tato další kontextová data pak mohou být použita jinými prvky systému workflow, jako jsou akce stavu workflow."
 
 #: views/workflow_template_transition_views.py:333
 msgid "There are no fields for this workflow transition"
-msgstr ""
+msgstr "Pro tento přechod workflow neexistují žádná pole"
 
 #: views/workflow_template_transition_views.py:337
 #, python-format
 msgid "Fields for workflow transition: %s"
-msgstr ""
+msgstr "Pole pro přechod workflow: %s"
 
 #: views/workflow_template_views.py:37
 msgid "Available workflows"
@@ -862,12 +862,12 @@ msgstr "Typy dokumentů přiřazené k workflow: %s"
 
 #: views/workflow_template_views.py:193
 msgid "Launch workflow?"
-msgstr ""
+msgstr "Zahájit workflow?"
 
 #: views/workflow_template_views.py:195
 msgid ""
 "This will launch the workflow for documents that have already been uploaded."
-msgstr ""
+msgstr "Tím se spustí workflow pro dokumenty, které již byly nahrány."
 
 #: views/workflow_template_views.py:207 views/workflow_template_views.py:262
 msgid "Workflow launch queued successfully."
@@ -919,7 +919,7 @@ msgstr "Nový popis, který má být dokumentu přiřazen. Může to být řetě
 
 #: workflow_actions.py:39
 msgid "Modify document properties"
-msgstr ""
+msgstr "Upravit vlastnosti dokumentu"
 
 #: workflow_actions.py:61
 #, python-format
@@ -951,7 +951,7 @@ msgstr "Časový limit"
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
-msgstr ""
+msgstr "Čas čekání v sekundách na odpověď. Může to být statická hodnota nebo šablona."
 
 #: workflow_actions.py:111
 msgid "Payload"
@@ -977,7 +977,7 @@ msgid ""
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Uživatelské jméno, které se má použít k provedení požadavku pomocí HTTP Basic Auth. Může to být statická hodnota nebo šablona. Šablony přijímají instanci záznamu workflowvjako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. &quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;comment&quot;."
 
 #: workflow_actions.py:137
 msgid "Password"
@@ -990,11 +990,11 @@ msgid ""
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Heslo, které se použije pro provedení požadavku s HTTP Basic Auth. Může to být statická hodnota nebo šablona. Šablony přijímají instanci záznamu workflow jako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. &quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;comment&quot;."
 
 #: workflow_actions.py:150
 msgid "Headers"
-msgstr ""
+msgstr "Záhlaví"
 
 #: workflow_actions.py:153
 msgid ""
@@ -1003,7 +1003,7 @@ msgid ""
 "instance as part of their context via the variable \"entry_log\". The "
 "\"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
 "\"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Záhlaví k odeslání s požadavkem HTTP. Musí být ve formátu JSON. Může to být statická hodnota nebo šablona. Šablony přijímají instanci záznamu workflow jako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. &quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;comment&quot;."
 
 #: workflow_actions.py:167
 msgid "Perform a POST request"
@@ -1012,9 +1012,9 @@ msgstr "Provést POST požadavek"
 #: workflow_actions.py:193
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
-msgstr ""
+msgstr "%(field_name)s Chyba JSON: %(exception)s"
 
 #: workflow_actions.py:209
 #, python-format
 msgid "%(field_name)s template error: %(exception)s"
-msgstr ""
+msgstr "Chyba šablony %(field_name)s: %(exception)s"

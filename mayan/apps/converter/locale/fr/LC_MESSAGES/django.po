@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:37-0400\n"
-"PO-Revision-Date: 2020-01-31 04:42+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-07 03:01-0400\n"
+"PO-Revision-Date: 2020-01-31 18:35+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,21 +40,21 @@ msgstr "Exception lors de la détermination du nombre de pages du PDF ; %s"
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Exception lors de la détermination du nombre de pages à l'aide de Pillow ; %s"
 
-#: classes.py:116
+#: classes.py:125
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice n'est pas installé ou introuvable."
 
-#: classes.py:199
+#: classes.py:208
 msgid "Not an office file format."
 msgstr "Format de fichier non reconnu."
 
-#: classes.py:327
+#: classes.py:336
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr "Les transformations permettent de modifier l'apparence visuelle des documents sans apporter de modifications permanentes au fichier."
 
-#: classes.py:375
+#: classes.py:384
 msgid "transformation"
 msgstr "transformation"
 
@@ -70,7 +70,7 @@ msgstr "Utilitaire du paquet popper-utils utilisé pour extraire des pages de fi
 
 #: forms.py:24
 msgid "Available transformations for this layer."
-msgstr ""
+msgstr "Transformations disponibles pour ce calque."
 
 #: forms.py:61
 #, python-format
@@ -95,7 +95,7 @@ msgstr "Transformations"
 
 #: links.py:35
 msgid "Select new transformation"
-msgstr ""
+msgstr "Sélectionnez une nouvelle transformation"
 
 #: models.py:23 models.py:85
 msgid "Name"
@@ -107,11 +107,11 @@ msgstr "Ordre"
 
 #: models.py:34 models.py:50
 msgid "Stored layer"
-msgstr ""
+msgstr "Calque enregistré"
 
 #: models.py:35
 msgid "Stored layers"
-msgstr ""
+msgstr "Calques enregistrés"
 
 #: models.py:47 models.py:93
 msgid "Enabled"
@@ -183,7 +183,7 @@ msgstr "Dessiner un rectangle"
 
 #: transformations.py:279
 msgid "Draw rectangle (percents coordinates)"
-msgstr ""
+msgstr "Dessiner un rectangle (coordonnées en pourcentage)"
 
 #: transformations.py:376
 msgid "Flip"
@@ -236,14 +236,14 @@ msgstr "Saisissez une valeur YAML valide."
 #: views.py:62
 #, python-format
 msgid "Error creating transformation: %s."
-msgstr ""
+msgstr "Erreur lors de la création de la transformation: %s."
 
 #: views.py:79
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr ""
+msgstr "Créer le calque \"%(layer)s\" de transformation \"%(transformation)s\" pour: %(object)s"
 
 #: views.py:140
 #, python-format
@@ -258,16 +258,16 @@ msgstr "Modifier la transformation \"%(transformation)s\" pour : %(content_objec
 #: views.py:242
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
-msgstr ""
+msgstr "Il n'y a aucune entrée pour le calque \"%(layer_name)s\""
 
 #: views.py:245
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
-msgstr ""
+msgstr "Calque \"%(layer)s\" pour la transformation de: %(object)s"
 
 #: views.py:293
 msgid "Transformation created successfully."
-msgstr ""
+msgstr "Transformation créée avec succès."
 
 #: views.py:314
 msgid "Select"
@@ -276,4 +276,4 @@ msgstr "Sélectionner"
 #: views.py:316
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr ""
+msgstr "Sélectionnez un nouveau calque \"%(layer)s\" pour la transformation de: %(object)s"

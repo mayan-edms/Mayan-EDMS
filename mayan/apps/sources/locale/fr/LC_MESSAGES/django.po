@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:41-0400\n"
-"PO-Revision-Date: 2020-01-28 14:29+0000\n"
+"POT-Creation-Date: 2020-02-07 03:05-0400\n"
+"PO-Revision-Date: 2020-01-31 20:43+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -309,7 +309,7 @@ msgstr "Mot de passe"
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
-msgstr ""
+msgstr "Nom de la pièce jointe qui contiendra les noms des types de métadonnées et les paires de valeurs à attribuer aux autres pièces jointes téléversées."
 
 #: models/email_sources.py:56
 msgid "Metadata attachment name"
@@ -397,11 +397,11 @@ msgstr ""
 
 #: models/email_sources.py:238
 msgid "Execute the IMAP expunge command after processing each email message."
-msgstr ""
+msgstr "Exécutez la commande de suppression IMAP après avoir traité chaque courriel."
 
 #: models/email_sources.py:240
 msgid "Execute expunge"
-msgstr ""
+msgstr "Exécuter la suppression"
 
 #: models/email_sources.py:244
 msgid "IMAP Mailbox to which processed messages will be copied."
@@ -640,7 +640,7 @@ msgstr "Votre navigateur ne prend pas en charge le téléversement de fichiers p
 
 #: templates/sources/dropzone.html:86
 msgid "Please use the fallback form below to upload your files."
-msgstr ""
+msgstr "Veuillez utiliser le formulaire alternatif ci-dessous pour téléverser vos fichiers."
 
 #: templates/sources/dropzone.html:87
 msgid "Clear"

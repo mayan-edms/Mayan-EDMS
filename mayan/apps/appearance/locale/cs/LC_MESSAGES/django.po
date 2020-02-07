@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:36-0400\n"
-"PO-Revision-Date: 2019-12-22 05:04+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-07 03:00-0400\n"
+"PO-Revision-Date: 2020-02-06 10:13+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,7 +78,7 @@ msgstr "Maximální počet znaků, které se zobrazí jako název pohledu."
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
+msgstr "Pozice, kde se zobrazí systémová zpráva. Možnosti jsou: nahoře vlevo, nahoře na středu, vpravo nahoře, dole-vlevo, dole-uprostřed, vpravo dole."
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
@@ -168,7 +168,7 @@ msgid ""
 "\n"
 "                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>.\n"
 "            "
-msgstr ""
+msgstr "\nKromě darů můžete také podpořit projekt <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">zakoupením kopie knihy „Prozkoumání mayského EDMS“ od Roberta Rosaria</a> ."
 
 #: templates/appearance/about.html:133
 #, python-format
@@ -209,13 +209,13 @@ msgstr "Varování"
 
 #: templates/appearance/base.html:49
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Klepnutím sem to vyřešíte."
 
 #: templates/appearance/base.html:59
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
+msgstr "Nastavení byla aktualizována, restartujte instalaci a aktualizujte prohlížeč, aby se změny projevily."
 
 #: templates/appearance/base.html:72
 #: templates/appearance/generic_list_items_subtemplate.html:66
@@ -230,7 +230,7 @@ msgstr "Přepnout rozevírací seznam"
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
-msgstr ""
+msgstr "Otevřete hlavní menu"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
@@ -299,16 +299,16 @@ msgstr "Celkem: %(total)s"
 
 #: templates/appearance/list_toolbar.html:16
 msgid "Select/Deselect all"
-msgstr ""
+msgstr "Vyberte / Zrušte výběr všech"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
+msgstr "Vyberte položky pro aktivaci hromadných akcí. Použijte Shift + click pro výběr více položek."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr ""
+msgstr "Hromadné akce"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"

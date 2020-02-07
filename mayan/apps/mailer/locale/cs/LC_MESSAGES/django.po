@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:39-0400\n"
-"PO-Revision-Date: 2019-12-13 05:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-07 03:04-0400\n"
+"PO-Revision-Date: 2020-02-06 09:30+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,7 +70,7 @@ msgstr "Poštovní profil"
 
 #: forms.py:77
 msgid "The driver to use when sending emails."
-msgstr ""
+msgstr "Ovladač, který se použije pro odesílání e-mailů."
 
 #: forms.py:78
 msgid "Backend"
@@ -176,7 +176,7 @@ msgstr "Použijte TLS"
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr "Pokud se má při komunikaci se serverem SMTP používat zabezpečené připojení TLS. Používá se pro explicitní připojení TLS, obvykle na portu 587."
+msgstr "Pokud se má při komunikaci se serverem SMTP používat (zabezpečené) připojení TLS. Používá se pro explicitní připojení TLS, obvykle na portu 587."
 
 #: mailers.py:52
 msgid "Use SSL"
@@ -239,7 +239,7 @@ msgstr "Záznamy protokolu"
 
 #: models.py:48
 msgid "A short text describing the mailing profile."
-msgstr ""
+msgstr "Krátký text popisující poštovní profil."
 
 #: models.py:49
 msgid "Label"
@@ -412,7 +412,7 @@ msgstr "K dispozici nejsou žádné poštovní profily"
 
 #: views.py:253
 msgid "Test email sent."
-msgstr ""
+msgstr "Testovací e-mail byl odeslán."
 
 #: views.py:262
 #, python-format
@@ -421,42 +421,42 @@ msgstr "Vyzkoušejte poštovní profil: %s"
 
 #: workflow_actions.py:24
 msgid "Mailing profile to use when sending the email."
-msgstr ""
+msgstr "Poštovní profil, který se použije k odesílání e-mailu."
 
 #: workflow_actions.py:29
 msgid "Recipient"
-msgstr ""
+msgstr "Příjemce"
 
 #: workflow_actions.py:32
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon. A template can be used to reference properties of the "
 "document."
-msgstr ""
+msgstr "E-mailová adresa příjemce. Může zde být více adres oddělených čárkou nebo středníkem. Šablonu lze použít k odkazu na vlastnosti dokumentu."
 
 #: workflow_actions.py:43
 msgid "Subject of the email. Can be a string or a template."
-msgstr ""
+msgstr "Předmět e-mailu. Může to být řetězec nebo šablona."
 
 #: workflow_actions.py:52
 msgid "Body of the email to send. Can be a string or a template."
-msgstr ""
+msgstr "Text e-mailu, který chcete odeslat. Může to být řetězec nebo šablona."
 
 #: workflow_actions.py:59
 msgid "Send email"
-msgstr ""
+msgstr "Odeslat e-mailem"
 
 #: workflow_actions.py:74
 #, python-format
 msgid "Recipient template error: %s"
-msgstr ""
+msgstr "Chyba šablony příjemce: %s"
 
 #: workflow_actions.py:85
 #, python-format
 msgid "Subject template error: %s"
-msgstr ""
+msgstr "Chyba šablony předmětu: %s"
 
 #: workflow_actions.py:96
 #, python-format
 msgid "Body template error: %s"
-msgstr ""
+msgstr "Chyba šablony těla zprávy: %s"

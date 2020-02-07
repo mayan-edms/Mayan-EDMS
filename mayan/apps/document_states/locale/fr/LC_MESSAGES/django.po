@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:38-0400\n"
-"PO-Revision-Date: 2020-01-31 04:42+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-07 03:02-0400\n"
+"PO-Revision-Date: 2020-01-31 20:37+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,7 +39,7 @@ msgstr "Renvoie l'état actuel du flux de travail sélectionné."
 #: apps.py:119
 msgid ""
 "Return the completion value of the current state of the selected workflow."
-msgstr ""
+msgstr "Renvoie la valeur d'achèvement de l'état actuel du flux de travail sélectionné."
 
 #: apps.py:175 apps.py:186 apps.py:196 apps.py:202
 msgid "None"
@@ -353,17 +353,17 @@ msgstr "Transitions du flux de travail"
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
-msgstr ""
+msgstr "Nom qui sera utilisé pour identifier ce champ dans d'autres parties du système de flux de travail."
 
 #: models.py:464
 msgid "The field name that will be shown on the user interface."
-msgstr ""
+msgstr "Le nom du champ qui sera affiché sur l'interface utilisateur."
 
 #: models.py:468
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
-msgstr ""
+msgstr "Un message facultatif qui aidera les utilisateurs à mieux comprendre l'objectif du champ et les données à fournir."
 
 #: models.py:470
 msgid "Help text"
@@ -395,11 +395,11 @@ msgstr ""
 
 #: models.py:492
 msgid "Workflow transition field"
-msgstr ""
+msgstr "Champ de transition du flux de travail"
 
 #: models.py:493
 msgid "Workflow transition fields"
-msgstr ""
+msgstr "Champs de transition du flux de travail"
 
 #: models.py:510
 msgid "Event type"
@@ -419,7 +419,7 @@ msgstr "Document"
 
 #: models.py:532
 msgid "Context"
-msgstr ""
+msgstr "Contexte"
 
 #: models.py:538 models.py:666
 msgid "Workflow instance"
@@ -561,7 +561,7 @@ msgstr ""
 msgid ""
 "Time in seconds that the browser should cache the supplied workflow images. "
 "The default of 31559626 seconds corresponde to 1 year."
-msgstr ""
+msgstr "Durée en secondes pendant laquelle le navigateur doit mettre en cache les images de flux de travail fournies. La valeur par défaut de 31559626 secondes correspond à 1 an."
 
 #: settings.py:34
 msgid ""
@@ -632,7 +632,7 @@ msgstr "Sélectionner"
 #: views/workflow_instance_views.py:213
 #, python-format
 msgid "Select transition for workflow: %s"
-msgstr ""
+msgstr "Sélectionnez la transition pour le flux de travail: %s"
 
 #: views/workflow_proxy_views.py:35
 msgid ""
@@ -788,7 +788,7 @@ msgstr "Événements déclencheurs de transition du flux de travail : %s"
 #: views/workflow_template_transition_views.py:242
 #, python-format
 msgid "Create a field for workflow transition: %s"
-msgstr ""
+msgstr "Créez un champ pour la transition du flux de travail: %s"
 
 #: views/workflow_template_transition_views.py:272
 #, python-format

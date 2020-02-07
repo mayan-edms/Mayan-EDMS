@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:39-0400\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-07 03:04-0400\n"
+"PO-Revision-Date: 2020-02-06 09:47+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,11 +25,11 @@ msgstr "Metadata"
 
 #: apps.py:98
 msgid "Return the value of a specific document metadata."
-msgstr ""
+msgstr "Vraťte hodnotu konkrétních metadat dokumentu."
 
 #: apps.py:99
 msgid "Metadata value of"
-msgstr ""
+msgstr "Hodnota metadat"
 
 #: apps.py:104
 msgid "Metadata type name"
@@ -174,7 +174,7 @@ msgstr "Název používaný jinými aplikacemi k odkazu na tento typ metadat. Ne
 
 #: models.py:56
 msgid "Short description of this metadata type."
-msgstr ""
+msgstr "Stručný popis tohoto typu metadat."
 
 #: models.py:62
 msgid ""

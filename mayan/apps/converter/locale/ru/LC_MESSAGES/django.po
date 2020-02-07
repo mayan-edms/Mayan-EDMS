@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:37-0400\n"
+"POT-Creation-Date: 2020-02-07 03:01-0400\n"
 "PO-Revision-Date: 2020-01-31 04:42+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -36,21 +36,21 @@ msgstr "Ошибка при определении числа страниц PDF
 msgid "Exception determining page count using Pillow; %s"
 msgstr ""
 
-#: classes.py:116
+#: classes.py:125
 msgid "LibreOffice not installed or not found."
 msgstr ""
 
-#: classes.py:199
+#: classes.py:208
 msgid "Not an office file format."
 msgstr "Не является файлом офисного формата."
 
-#: classes.py:327
+#: classes.py:336
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr ""
 
-#: classes.py:375
+#: classes.py:384
 msgid "transformation"
 msgstr "преобразование"
 

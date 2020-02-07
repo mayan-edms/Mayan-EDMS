@@ -5,16 +5,16 @@
 # 
 # Translators:
 # PatrickHetu <patrick.hetu@gmail.com>, 2019
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Frédéric Sheedy <sheedf@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:40-0400\n"
+"POT-Creation-Date: 2020-02-07 03:05-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2019\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,4 +36,4 @@ msgstr "Modèle pour Supervisord dans une image Docker."
 
 #: classes.py:192
 msgid "Template showing the queues of a worker."
-msgstr ""
+msgstr "Modèle montrant les files d'attente d'un processus de travail."

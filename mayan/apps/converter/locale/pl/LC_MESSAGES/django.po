@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 00:37-0400\n"
-"PO-Revision-Date: 2020-01-31 04:42+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-07 03:01-0400\n"
+"PO-Revision-Date: 2020-02-02 11:29+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,21 +38,21 @@ msgstr "Wyjątek określający liczbę stron PDF: %s"
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Wyjątek określający liczbę stron przy użyciu Pillow; %s"
 
-#: classes.py:116
+#: classes.py:125
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice nie zainstalowano lub nie został zainstalowany."
 
-#: classes.py:199
+#: classes.py:208
 msgid "Not an office file format."
 msgstr "Format niezgodny z formatem plików LibreOffice."
 
-#: classes.py:327
+#: classes.py:336
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr "Przekształcenia umożliwiają zmianę wyglądu dokumentów bez dokonywania trwałych zmian w samym pliku dokumentu."
 
-#: classes.py:375
+#: classes.py:384
 msgid "transformation"
 msgstr "transformacja"
 
@@ -234,7 +234,7 @@ msgstr "Wprowadź poprawną wartość YAML."
 #: views.py:62
 #, python-format
 msgid "Error creating transformation: %s."
-msgstr ""
+msgstr "Błąd podczas przekształcania: %s."
 
 #: views.py:79
 #, python-format
