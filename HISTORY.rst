@@ -13,6 +13,9 @@
   for narrowing down the cause.
 - Add document language codes settings tests. Closes GitLab issue #547.
   Thanks to Bebef (@Bebef) for the report and research.
+- Move the django.contrib.admindocs to be loaded after the Tags app
+  to avoid its translations to take precedence. Closes GitLab issue #734.
+  Thanks to Roberto Novaes (@rvnovaes) for the report.
 
 3.3.10 (2020-01-31)
 ===================
