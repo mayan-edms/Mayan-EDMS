@@ -12,6 +12,7 @@ from mayan.apps.common.forms import DetailForm
 from ..fields import DocumentField
 from ..models import Document
 from ..literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_ALL, PAGE_RANGE_CHOICES
+from ..settings import setting_language
 from ..utils import get_language, get_language_choices
 
 __all__ = (
@@ -52,7 +53,7 @@ class DocumentDownloadForm(forms.Form):
 
 class DocumentForm(forms.ModelForm):
     """
-    Form sub classes from DocumentForm used only when editing a document
+    Base form for the minimal document properties. Meant to be subclassed.
     """
     class Meta:
         fields = ('label', 'description', 'language')
@@ -75,6 +76,8 @@ class DocumentForm(forms.ModelForm):
         # app upload)?
         if self.instance and self.instance.pk:
             document_type = self.instance.document_type
+        else:
+            self.initial.update({'language': setting_language.value})
 
         filenames_queryset = document_type.filenames.filter(enabled=True)
 

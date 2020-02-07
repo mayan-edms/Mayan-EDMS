@@ -179,6 +179,12 @@ class DocumentViewTestMixin(object):
             kwargs={'pk': self.test_document.pk}
         )
 
+    def _request_document_properties_edit_get_view(self):
+        return self.get(
+            viewname='documents:document_edit',
+            kwargs={'pk': self.test_document.pk}
+        )
+
     def _request_test_document_list_view(self):
         return self.get(viewname='documents:document_list')
 

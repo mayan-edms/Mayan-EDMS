@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from django.test import override_settings
+
 from mayan.apps.checkouts.models import NewVersionBlock
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.models import Document
@@ -128,6 +130,18 @@ class DocumentUploadWizardViewTestCase(
         response = self._request_upload_interactive_view()
         self.assertContains(
             response=response, text=self.test_source.label, status_code=200
+        )
+
+    @override_settings(DOCUMENTS_LANGUAGE='fra')
+    def test_default_document_language_setting(self):
+        self.grant_access(
+            permission=permission_document_create, obj=self.test_document_type
+        )
+        response = self._request_upload_interactive_view()
+        self.assertContains(
+            response=response,
+            text='<option value="fra" selected>French</option>',
+            status_code=200
         )
 
 

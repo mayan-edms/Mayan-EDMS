@@ -8,6 +8,9 @@
   how to disable the protection by increasing the allowed image
   size.
 - Optimize lists title item count calculations.
+- Fix document properties form default language selection. Closes GitLab
+  issue #770. Thanks to Albert ARIBAUD (@aaribaud) for the report and
+  for narrowing down the cause.
 
 3.3.10 (2020-01-31)
 ===================

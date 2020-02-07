@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.test import override_settings
 from django.utils.encoding import force_text
 
 from mayan.apps.converter.layers import layer_saved_transformations
@@ -36,6 +37,35 @@ class DocumentViewTestCase(
         response = self._request_document_properties_view()
         self.assertContains(
             response=response, text=self.test_document.label, status_code=200
+        )
+
+    @override_settings(DOCUMENTS_LANGUAGE='fra')
+    def test_document_properties_view_setting_non_us_language_with_permissions(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        response = self._request_document_properties_view()
+        self.assertContains(
+            response=response, text=self.test_document.label, status_code=200
+        )
+        self.assertContains(
+            response=response,
+            text='Language:</label>\n                \n                \n                    English',
+            status_code=200
+        )
+
+    @override_settings(DOCUMENTS_LANGUAGE='fra')
+    def test_document_properties_edit_get_view_setting_non_us_language_with_permissions(self):
+        self.grant_access(
+            permission=permission_document_properties_edit,
+            obj=self.test_document_type
+        )
+        response = self._request_document_properties_edit_get_view()
+        self.assertContains(
+            response=response,
+            text='<option value="eng" selected>English</option>',
+            status_code=200
         )
 
     def test_document_list_view_no_permissions(self):
