@@ -4,6 +4,10 @@
   decimal field display addition. Closes GitLab issue #771.
   Thanks to Christoph Roeder (@brightdroid) for the report and
   investigation.
+- Add message about decompression bomb DOS attacks. Add mention
+  how to disable the protection by increasing the allowed image
+  size.
+- Optimize lists title item count calculations.
 
 3.3.10 (2020-01-31)
 ===================
