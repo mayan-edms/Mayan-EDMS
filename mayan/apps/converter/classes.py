@@ -6,6 +6,7 @@ import logging
 import os
 import shutil
 
+import PIL
 from PIL import Image
 import sh
 
@@ -103,6 +104,14 @@ class ConverterBase(object):
         except IOError:
             # Cannot identify image file
             self.image = self.convert(page_number=page_number)
+        except PIL.Image.DecompressionBombError as exception:
+            logger.error(
+                'Unable to seek document page. increase the value of '
+                'the argument "pillow_maximum_image_pixels" in the '
+                'CONVERTER_GRAPHICS_BACKEND_ARGUMENTS setting; %s',
+                exception
+            )
+            raise
         else:
             self.image.seek(page_number)
             self.image.load()
