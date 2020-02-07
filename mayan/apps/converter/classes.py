@@ -106,7 +106,7 @@ class ConverterBase(object):
             self.image = self.convert(page_number=page_number)
         except PIL.Image.DecompressionBombError as exception:
             logger.error(
-                'Unable to seek document page. increase the value of '
+                'Unable to seek document page. Increase the value of '
                 'the argument "pillow_maximum_image_pixels" in the '
                 'CONVERTER_GRAPHICS_BACKEND_ARGUMENTS setting; %s',
                 exception
