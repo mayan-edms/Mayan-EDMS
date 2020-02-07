@@ -11,6 +11,8 @@
 - Fix document properties form default language selection. Closes GitLab
   issue #770. Thanks to Albert ARIBAUD (@aaribaud) for the report and
   for narrowing down the cause.
+- Add document language codes settings tests. Closes GitLab issue #547.
+  Thanks to Bebef (@Bebef) for the report and research.
 
 3.3.10 (2020-01-31)
 ===================
