@@ -2,25 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2019
 # Michal Švábík <snadno@lehce.cz>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-07 03:01-0400\n"
+"POT-Creation-Date: 2020-02-10 03:49-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:26 links.py:43 permissions.py:7
 msgid "Dependencies"
@@ -67,8 +68,8 @@ msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing dependencies under this environment."
 msgstr ""
-"Prostředí používané k vytváření distribuovatelných balíčků softwaru. Koncoví"
-" uživatelé mohou v tomto prostředí ignorovat chybějící závislosti."
+"Prostředí používané k vytváření distribuovatelných balíčků softwaru. Koncoví "
+"uživatelé mohou v tomto prostředí ignorovat chybějící závislosti."
 
 #: classes.py:71
 msgid "Build"
@@ -91,8 +92,8 @@ msgid ""
 "Environment used for building the documentation. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
-"Prostředí použité pro vytvoření dokumentace. Koncoví uživatelé mohou v tomto"
-" prostředí ignorovat chybějící závislosti."
+"Prostředí použité pro vytvoření dokumentace. Koncoví uživatelé mohou v tomto "
+"prostředí ignorovat chybějící závislosti."
 
 #: classes.py:83
 msgid "Documentation"
@@ -184,8 +185,8 @@ msgstr "Binární"
 
 #: classes.py:459
 msgid ""
-"JavaScript libraries downloaded the from NPM registry and used for front-end"
-" functionality."
+"JavaScript libraries downloaded the from NPM registry and used for front-end "
+"functionality."
 msgstr ""
 "Knihovny JavaScriptu stažené z registru NPM a použily se pro front-end "
 "funkce."
@@ -253,8 +254,8 @@ msgid ""
 "dependencies is missing or an incorrect version is present."
 msgstr ""
 "Zobrazit různé stavy závislostí. True znamená, že jsou nainstalovány "
-"závislosti a mají správnou verzi. False znamená, že chybí závislosti nebo je"
-" přítomna nesprávná verze."
+"závislosti a mají správnou verzi. False znamená, že chybí závislosti nebo je "
+"přítomna nesprávná verze."
 
 #: classes.py:810
 msgid ""
@@ -288,16 +289,16 @@ msgstr "Licence závislostí"
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
-"Čárkami oddělené názvy závislostí, které mají být vyloučeny z vygenerovaného"
-" seznamu."
+"Čárkami oddělené názvy závislostí, které mají být vyloučeny z vygenerovaného "
+"seznamu."
 
 #: management/commands/generaterequirements.py:22
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
-"Čárkami oddělené názvy závislostí, které se mají zobrazit v seznamu, přičemž"
-" vylučují všechny ostatní."
+"Čárkami oddělené názvy závislostí, které se mají zobrazit v seznamu, přičemž "
+"vylučují všechny ostatní."
 
 #: management/commands/installdependencies.py:15
 msgid "Process a specific app."

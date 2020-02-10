@@ -2,6 +2,7 @@
 ===================
 - Fix issue with the template object count logic introduced in the
   last optimization.
+- Fix Chinese translation. Locale cn has been renamed to cn-hans.
 
 3.3.11 (2020-02-07)
 ===================

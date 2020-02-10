@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -9,15 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-07 03:02-0400\n"
+"POT-Creation-Date: 2020-02-10 03:49-0400\n"
 "PO-Revision-Date: 2019-12-05 10:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: admin.py:24
 msgid "None"
@@ -126,16 +128,18 @@ msgstr "Labela"
 
 #: models.py:41
 msgid "This value will be used by other apps to reference this index."
-msgstr "Ova vrijednost će koristiti druge aplikacije za upućivanje na ovaj indeks."
+msgstr ""
+"Ova vrijednost će koristiti druge aplikacije za upućivanje na ovaj indeks."
 
 #: models.py:42
 msgid "Slug"
 msgstr "Slug"
 
 #: models.py:47
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Uzrokuje da će ovaj indeks biti vidljiv i update-ovan kad se promjene podaci dokumenta."
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Uzrokuje da će ovaj indeks biti vidljiv i update-ovan kad se promjene podaci "
+"dokumenta."
 
 #: models.py:50 models.py:254
 msgid "Enabled"
@@ -165,13 +169,17 @@ msgstr "Izraz indeksiranja"
 
 #: models.py:251
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Uzrokuje da će ovaj nod biti vidljiv i update-ovan kad se promjene podaci dokumenta."
+msgstr ""
+"Uzrokuje da će ovaj nod biti vidljiv i update-ovan kad se promjene podaci "
+"dokumenta."
 
 #: models.py:259
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Označite ovu opciju da ovaj nod služi kao kontejner za dokumente a ne kao parent za buduće nodove."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Označite ovu opciju da ovaj nod služi kao kontejner za dokumente a ne kao "
+"parent za buduće nodove."
 
 #: models.py:262
 msgid "Link documents"
@@ -194,7 +202,9 @@ msgstr "Koren"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Greška u indeksiranju dokumenta:%(document)s; izraz:%(expression)s;%(exception)s"
+msgstr ""
+"Greška u indeksiranju dokumenta:%(document)s; izraz:%(expression)s;"
+"%(exception)s"
 
 #: models.py:372
 msgid "Index template node"
@@ -293,8 +303,8 @@ msgstr "Uredi indeks:%s"
 #: views.py:143
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like"
-" label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like "
+"label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views.py:148

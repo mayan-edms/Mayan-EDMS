@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# kicior kicior <kiciorek+github@gmail.com>, 2020
 # Marcin Lozynski <mlozynski@wp.pl>, 2019
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2019
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
@@ -11,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-07 03:00-0400\n"
-"PO-Revision-Date: 2020-01-31 04:42+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"PO-Revision-Date: 2020-02-10 07:41+0000\n"
+"Last-Translator: kicior kicior <kiciorek+github@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -75,7 +76,7 @@ msgstr "Maksymalny czas jaki może minąć aby użytkownik zaznaczył pole \"Zap
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
-msgstr ""
+msgstr "Usuń z formularza logowania link do \"Zapomniałeś hasło?\" używany do resetowania hasła."
 
 #: templates/authentication/login.html:11
 msgid "Login"

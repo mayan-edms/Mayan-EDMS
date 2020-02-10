@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Renata Oliveira <renatabels@gmail.com>, 2011
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-07 03:05-0400\n"
+"POT-Creation-Date: 2020-02-10 03:52-0400\n"
 "PO-Revision-Date: 2020-01-29 19:09+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:55 apps.py:140 apps.py:144 events.py:7 links.py:20 links.py:26
@@ -52,9 +53,11 @@ msgstr "Ferramenta OCR Livre e em Código Aberto"
 
 #: dependencies.py:36
 msgid ""
-"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or"
-" Cuneiform."
-msgstr "PyOCR é uma biblioteca Python que simplifica o uso de ferramentas OCR como Tesseract ou Cuneiform."
+"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or "
+"Cuneiform."
+msgstr ""
+"PyOCR é uma biblioteca Python que simplifica o uso de ferramentas OCR como "
+"Tesseract ou Cuneiform."
 
 #: events.py:10
 msgid "Document OCR content deleted"
@@ -123,7 +126,8 @@ msgstr "Página do documento"
 
 #: models.py:49
 msgid "The actual text content extracted by the OCR backend."
-msgstr "O conteúdo real do texto, conforme extraído pelo backend de OCR do documento."
+msgstr ""
+"O conteúdo real do texto, conforme extraído pelo backend de OCR do documento."
 
 #: models.py:50
 msgid "Content"

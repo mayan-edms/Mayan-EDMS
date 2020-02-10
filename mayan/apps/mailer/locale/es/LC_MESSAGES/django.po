@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2015
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-07 03:04-0400\n"
+"POT-Creation-Date: 2020-02-10 03:51-0400\n"
 "PO-Revision-Date: 2019-12-13 06:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:42
@@ -46,9 +47,11 @@ msgstr "Email enviado"
 
 #: forms.py:60 forms.py:124
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon."
-msgstr "Dirección de correo electrónico del destinatario. Pueden ser varias direcciones separadas por coma o punto y coma."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon."
+msgstr ""
+"Dirección de correo electrónico del destinatario. Pueden ser varias "
+"direcciones separadas por coma o punto y coma."
 
 #: forms.py:62 forms.py:126
 msgid "Email address"
@@ -64,7 +67,9 @@ msgstr "Cuerpo"
 
 #: forms.py:70
 msgid "The email profile that will be used to send this email."
-msgstr "El perfil de correo electrónico que se utilizará para enviar este correo electrónico."
+msgstr ""
+"El perfil de correo electrónico que se utilizará para enviar este correo "
+"electrónico."
 
 #: forms.py:71 models.py:71 views.py:239 workflow_actions.py:22
 msgid "Mailing profile"
@@ -125,7 +130,13 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Se adjunta a este correo electrónico es el documento: {{ document }}\n\n\n--------\nEste correo electrónico ha sido enviado desde %(project_title)s (%(project_website)s)"
+msgstr ""
+"Se adjunta a este correo electrónico es el documento: {{ document }}\n"
+"\n"
+"\n"
+"--------\n"
+"Este correo electrónico ha sido enviado desde %(project_title)s "
+"(%(project_website)s)"
 
 #: literals.py:11
 msgid "Document: {{ document }}"
@@ -138,7 +149,13 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Para acceder a este documento, haga clic en el siguiente enlace: {{ link }}\n\n\n--------\nEste correo electrónico ha sido enviado desde %(project_title)s (%(project_website)s)"
+msgstr ""
+"Para acceder a este documento, haga clic en el siguiente enlace: {{ link }}\n"
+"\n"
+"\n"
+"--------\n"
+"Este correo electrónico ha sido enviado desde %(project_title)s "
+"(%(project_website)s)"
 
 #: literals.py:17
 msgid "Link for document: {{ document }}"
@@ -150,9 +167,11 @@ msgstr "Desde"
 
 #: mailers.py:26 mailers.py:115
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value"
-" is not set."
-msgstr "La dirección del remitente. Algunos sistemas rechazarán enviar mensajes si este valor no está establecido."
+"The sender's address. Some system will refuse to send messages if this value "
+"is not set."
+msgstr ""
+"La dirección del remitente. Algunos sistemas rechazarán enviar mensajes si "
+"este valor no está establecido."
 
 #: mailers.py:32
 msgid "Host"
@@ -178,7 +197,9 @@ msgstr "Utilizar TLS"
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr "Si desea utilizar una conexión TLS (segura) al hablar con el servidor SMTP. Se utiliza para conexiones TLS explícitas, generalmente en el puerto 587."
+msgstr ""
+"Si desea utilizar una conexión TLS (segura) al hablar con el servidor SMTP. "
+"Se utiliza para conexiones TLS explícitas, generalmente en el puerto 587."
 
 #: mailers.py:52
 msgid "Use SSL"
@@ -190,9 +211,15 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
-" True."
-msgstr "Si desea utilizar una conexión implícita TLS (segura) al hablar con el servidor SMTP. En la mayoría de la documentación de correo electrónico, este tipo de conexión TLS se denomina SSL. Generalmente se utiliza en el puerto 465. Si experimenta problemas, consulte la configuración TLS explícita \"Usar TLS\". Tenga en cuenta que \"Usar TLS\" y \"Usar SSL\" son mutuamente excluyentes, por lo que solo debe activar  una de esas configuraciones."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
+"True."
+msgstr ""
+"Si desea utilizar una conexión implícita TLS (segura) al hablar con el "
+"servidor SMTP. En la mayoría de la documentación de correo electrónico, este "
+"tipo de conexión TLS se denomina SSL. Generalmente se utiliza en el puerto "
+"465. Si experimenta problemas, consulte la configuración TLS explícita "
+"\"Usar TLS\". Tenga en cuenta que \"Usar TLS\" y \"Usar SSL\" son mutuamente "
+"excluyentes, por lo que solo debe activar  una de esas configuraciones."
 
 #: mailers.py:64
 msgid "Username"
@@ -202,7 +229,9 @@ msgstr "Usuario"
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
-msgstr "Nombre de usuario para usar para el servidor SMTP. Si está vacío, no se intentará la autenticación."
+msgstr ""
+"Nombre de usuario para usar para el servidor SMTP. Si está vacío, no se "
+"intentará la autenticación."
 
 #: mailers.py:73
 msgid "Password"
@@ -211,9 +240,12 @@ msgstr "Contraseña"
 #: mailers.py:76
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these"
-" settings is empty, authentication won't be attempted."
-msgstr "Contraseña para usar para el servidor SMTP. Esta configuración se utiliza junto con el nombre de usuario al autenticarse en el servidor SMTP. Si cualquiera de estos ajustes está vacío, no se intentará la autenticación."
+"with the username when authenticating to the SMTP server. If either of these "
+"settings is empty, authentication won't be attempted."
+msgstr ""
+"Contraseña para usar para el servidor SMTP. Esta configuración se utiliza "
+"junto con el nombre de usuario al autenticarse en el servidor SMTP. Si "
+"cualquiera de estos ajustes está vacío, no se intentará la autenticación."
 
 #: mailers.py:85
 msgid "Django SMTP backend"
@@ -251,7 +283,9 @@ msgstr "Etiqueta"
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr "Si está predeterminado, este perfil de correo será preseleccionado en el formulario de envío del documento."
+msgstr ""
+"Si está predeterminado, este perfil de correo será preseleccionado en el "
+"formulario de envío del documento."
 
 #: models.py:55
 msgid "Default"
@@ -331,19 +365,27 @@ msgstr "Enviar documento"
 
 #: settings.py:16
 msgid "Template for the document email form subject line."
-msgstr "Plantilla para la línea de sujeto del correo electrónico de envio de documento."
+msgstr ""
+"Plantilla para la línea de sujeto del correo electrónico de envio de "
+"documento."
 
 #: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
-msgstr "Plantilla para el texto del cuerpo del correo electrónico con documento anejado. Puede incluir HTML."
+msgstr ""
+"Plantilla para el texto del cuerpo del correo electrónico con documento "
+"anejado. Puede incluir HTML."
 
 #: settings.py:26
 msgid "Template for the document link email form subject line."
-msgstr "Plantilla para la línea de asunto del correo electrónico para envío de enlace del documento."
+msgstr ""
+"Plantilla para la línea de asunto del correo electrónico para envío de "
+"enlace del documento."
 
 #: settings.py:31
 msgid "Template for the document link email form body text. Can include HTML."
-msgstr "Plantilla para el texto del cuerpo del correo electrónico del enlace del documento. Puede incluir HTML."
+msgstr ""
+"Plantilla para el texto del cuerpo del correo electrónico del enlace del "
+"documento. Puede incluir HTML."
 
 #: validators.py:14
 #, python-format
@@ -371,12 +413,14 @@ msgstr "Enviar"
 #: views.py:109
 #, python-format
 msgid "%(count)d document link queued for email delivery"
-msgstr "%(count)d enlace de documento sometido para entrega por correo electrónico"
+msgstr ""
+"%(count)d enlace de documento sometido para entrega por correo electrónico"
 
 #: views.py:111
 #, python-format
 msgid "%(count)d document links queued for email delivery"
-msgstr "%(count)d enlaces de documento sometido para entrega por correo electrónico"
+msgstr ""
+"%(count)d enlaces de documento sometido para entrega por correo electrónico"
 
 #: views.py:120
 msgid "New mailing profile backend selection"
@@ -406,7 +450,10 @@ msgstr "Registro de errores para: %s"
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
-msgstr "Los perfiles de correo son configuraciones de correo electrónico. Los perfiles de correo permiten enviar documentos como archivos adjuntos o como enlaces por correo electrónico."
+msgstr ""
+"Los perfiles de correo son configuraciones de correo electrónico. Los "
+"perfiles de correo permiten enviar documentos como archivos adjuntos o como "
+"enlaces por correo electrónico."
 
 #: views.py:238
 msgid "No mailing profiles available"
@@ -431,10 +478,12 @@ msgstr "Recipiente"
 
 #: workflow_actions.py:32
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon. A template can be used to reference properties of the "
-"document."
-msgstr "Dirección de correo electrónico del destinatario. Pueden ser múltiples direcciones separadas por coma o punto y coma. Se puede usar una plantilla para hacer referencia a las propiedades del documento."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon. A template can be used to reference properties of the document."
+msgstr ""
+"Dirección de correo electrónico del destinatario. Pueden ser múltiples "
+"direcciones separadas por coma o punto y coma. Se puede usar una plantilla "
+"para hacer referencia a las propiedades del documento."
 
 #: workflow_actions.py:43
 msgid "Subject of the email. Can be a string or a template."
@@ -442,7 +491,8 @@ msgstr "Asunto del correo electrónico. Puede ser un texto o una plantilla."
 
 #: workflow_actions.py:52
 msgid "Body of the email to send. Can be a string or a template."
-msgstr "Cuerpo del correo electrónico a enviar. Puede ser un texto o una plantilla."
+msgstr ""
+"Cuerpo del correo electrónico a enviar. Puede ser un texto o una plantilla."
 
 #: workflow_actions.py:59
 msgid "Send email"

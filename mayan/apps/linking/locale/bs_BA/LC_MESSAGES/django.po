@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -9,15 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-07 03:03-0400\n"
+"POT-Creation-Date: 2020-02-10 03:51-0400\n"
 "PO-Revision-Date: 2019-12-13 05:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:42
 msgid "Linking"
@@ -185,8 +187,8 @@ msgstr "Atribut inostranih dokumenata"
 
 #: models.py:188
 msgid ""
-"The expression using document properties to be evaluated against the foreign"
-" document field."
+"The expression using document properties to be evaluated against the foreign "
+"document field."
 msgstr ""
 
 #: models.py:190
@@ -237,7 +239,9 @@ msgstr "Pogledati postojeće smart linkove"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr "Lista odvojenih primarnih ključeva tipova dokumenata na koje se povezuje ova pametna veza."
+msgstr ""
+"Lista odvojenih primarnih ključeva tipova dokumenata na koje se povezuje ova "
+"pametna veza."
 
 #: serializers.py:141
 #, python-format
@@ -269,8 +273,11 @@ msgstr "Dokumenti u pametnom linku:%s"
 
 #: views.py:135
 #, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr "Dokumenti u pametnom linku \"%(smart_link)s\" koji se odnose na \"%(document)s\""
+msgid ""
+"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr ""
+"Dokumenti u pametnom linku \"%(smart_link)s\" koji se odnose na "
+"\"%(document)s\""
 
 #: views.py:160
 msgid "Available document types"

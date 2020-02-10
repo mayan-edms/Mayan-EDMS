@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
@@ -14,14 +14,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-07 03:06-0400\n"
+"POT-Creation-Date: 2020-02-10 03:53-0400\n"
 "PO-Revision-Date: 2020-01-21 17:21+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:51 apps.py:103 apps.py:110 apps.py:132 apps.py:134 events.py:7
@@ -146,13 +147,17 @@ msgstr "Retirer des étiquettes des documents"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr "Liste séparée par des virgules des clés primaires de document auxquelles cette étiquette sera jointe."
+msgstr ""
+"Liste séparée par des virgules des clés primaires de document auxquelles "
+"cette étiquette sera jointe."
 
 #: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr "URL de l'API pointant vers une étiquette en relation au document qui s'y rattache. Cette URL est différente de l'URL de l'étiquette canonique."
+msgstr ""
+"URL de l'API pointant vers une étiquette en relation au document qui s'y "
+"rattache. Cette URL est différente de l'URL de l'étiquette canonique."
 
 #: serializers.py:105
 msgid "Primary key of the tag to be added."
@@ -166,7 +171,8 @@ msgstr "Demande d'attachement d'une étiquette effectuée sur %(count)d document
 #: views.py:40
 #, python-format
 msgid "Tag attach request performed on %(count)d documents"
-msgstr "Demande d'attachement d'une étiquette effectuée sur %(count)d documents"
+msgstr ""
+"Demande d'attachement d'une étiquette effectuée sur %(count)d documents"
 
 #: views.py:47
 msgid "Attach"
@@ -196,7 +202,9 @@ msgstr "Le document \"%(document)s\" est déjà étiqueté comme \"%(tag)s\""
 #: views.py:122
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr "L'étiquette \"%(tag)s\" a été attachée avec succès au document \"%(document)s\"."
+msgstr ""
+"L'étiquette \"%(tag)s\" a été attachée avec succès au document \"%(document)s"
+"\"."
 
 #: views.py:131
 msgid "Create tag"
@@ -246,7 +254,9 @@ msgstr "Modifier l'étiquette : %s"
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr "Les étiquettes sont des propriétés, avec un code de couleur, pouvant être attachées ou supprimées à des documents."
+msgstr ""
+"Les étiquettes sont des propriétés, avec un code de couleur, pouvant être "
+"attachées ou supprimées à des documents."
 
 #: views.py:221
 msgid "No tags available"
@@ -304,7 +314,9 @@ msgstr "Le document \"%(document)s\" n'a pas été étiquetté comme \"%(tag)s"
 #: views.py:370
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "L'étiquette \"%(tag)s\" à été retirée avec succès du document \"%(document)s\"."
+msgstr ""
+"L'étiquette \"%(tag)s\" à été retirée avec succès du document \"%(document)s"
+"\"."
 
 #: wizard_steps.py:17
 msgid "Select tags"

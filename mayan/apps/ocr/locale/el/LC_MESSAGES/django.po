@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-07 03:05-0400\n"
+"POT-Creation-Date: 2020-02-10 03:52-0400\n"
 "PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:55 apps.py:140 apps.py:144 events.py:7 links.py:20 links.py:26
@@ -48,8 +49,8 @@ msgstr ""
 
 #: dependencies.py:36
 msgid ""
-"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or"
-" Cuneiform."
+"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or "
+"Cuneiform."
 msgstr ""
 
 #: events.py:10
@@ -103,7 +104,8 @@ msgstr "Τύπος εγγράφου"
 
 #: models.py:24
 msgid "Automatically queue newly created documents for OCR."
-msgstr "Αυτόματη προσθήκη προσφάτως δημιουργημένων εγγράφων προς οπτική αναγνώριση."
+msgstr ""
+"Αυτόματη προσθήκη προσφάτως δημιουργημένων εγγράφων προς οπτική αναγνώριση."
 
 #: models.py:30
 msgid "Document type settings"
@@ -167,11 +169,14 @@ msgstr "Οπτική αναγνώριση έκδοσης εγγράφου"
 
 #: settings.py:17
 msgid "Full path to the backend to be used to do OCR."
-msgstr "Πλήρης διαδρομή του προγράμματος που θα χρησιμοποιηθεί για οπτική αναγνώριση."
+msgstr ""
+"Πλήρης διαδρομή του προγράμματος που θα χρησιμοποιηθεί για οπτική αναγνώριση."
 
 #: settings.py:26
 msgid "Set new document types to perform OCR automatically by default."
-msgstr "Ορισμός νέων τύπων εγγράφου στους οποίους θα πραγματοποιείται αυτόματα οπτική αναγνώριση."
+msgstr ""
+"Ορισμός νέων τύπων εγγράφου στους οποίους θα πραγματοποιείται αυτόματα "
+"οπτική αναγνώριση."
 
 #: views.py:37
 msgid "Delete the OCR content of the selected document?"
