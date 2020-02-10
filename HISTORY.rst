@@ -1,3 +1,8 @@
+3.3.12 (2020-02-10)
+===================
+- Fix issue with the template object count logic introduced in the
+  last optimization.
+
 3.3.11 (2020-02-07)
 ===================
 - Fix document preview rendering issue introduced by the read only

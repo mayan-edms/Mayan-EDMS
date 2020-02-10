@@ -30,3 +30,11 @@ def appearance_get_icon(icon_path):
 @register.simple_tag
 def appearance_icon_render(icon_class, enable_shadow=False):
     return icon_class.render(extra_context={'enable_shadow': enable_shadow})
+
+
+@register.filter
+def appearance_object_list_count(object_list):
+    try:
+        return object_list.count()
+    except TypeError:
+        return len(object_list)
