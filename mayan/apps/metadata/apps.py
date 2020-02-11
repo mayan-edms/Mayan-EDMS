@@ -10,7 +10,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelAttribute, ModelField
+from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
@@ -36,6 +36,7 @@ from .handlers import (
     handler_post_document_type_metadata_type_delete,
     handler_post_document_type_change_metadata
 )
+from .html_widgets import widget_document_metadata
 from .links import (
     link_metadata_add, link_metadata_edit, link_metadata_multiple_add,
     link_metadata_multiple_edit, link_metadata_multiple_remove,
@@ -52,7 +53,6 @@ from .permissions import (
 )
 
 from .search import metadata_type_search  # NOQA
-from .widgets import get_metadata_string
 
 logger = logging.getLogger(__name__)
 
@@ -92,18 +92,18 @@ class MetadataApp(MayanAppConfig):
             name='metadata_value_of', value=DocumentMetadataHelper.constructor
         )
 
-        ModelAttribute(
+        ModelProperty(
             model=Document, name='metadata_value_of.< metadata type name >',
             description=_(
-                'Return the value of a specific document metadata'
+                'Return the value of a specific document metadata.'
             ), label=_('Metadata value of')
         )
 
-        ModelField(
+        ModelFieldRelated(
             model=Document, name='metadata__metadata_type__name',
             label=_('Metadata type name')
         )
-        ModelField(
+        ModelFieldRelated(
             model=Document, name='metadata__value',
             label=_('Metadata type value')
         )
@@ -122,7 +122,7 @@ class MetadataApp(MayanAppConfig):
                 event_document_metadata_edited,
                 event_document_metadata_removed,
                 event_metadata_type_edited,
-                event_metadata_type_relationship,
+                event_metadata_type_relationship
             )
         )
 
@@ -137,27 +137,32 @@ class MetadataApp(MayanAppConfig):
                 permission_document_metadata_add,
                 permission_document_metadata_edit,
                 permission_document_metadata_remove,
-                permission_document_metadata_view,
+                permission_document_metadata_view
             )
         )
         ModelPermission.register(
             model=MetadataType, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_events_view, permission_metadata_type_delete,
+                permission_document_metadata_add,
+                permission_document_metadata_edit,
+                permission_document_metadata_remove,
+                permission_document_metadata_view, permission_events_view,
+                permission_metadata_type_delete,
                 permission_metadata_type_edit, permission_metadata_type_view
             )
+        )
+        ModelPermission.register_inheritance(
+            model=DocumentMetadata, related='metadata_type',
         )
 
         SourceColumn(
             source=Document, label=_('Metadata'),
-            func=lambda context: get_metadata_string(context['object'])
+            func=widget_document_metadata
         )
 
         SourceColumn(
             source=DocumentPageResult, label=_('Metadata'),
-            func=lambda context: get_metadata_string(
-                context['object'].document
-            )
+            func=widget_document_metadata
         )
 
         SourceColumn(

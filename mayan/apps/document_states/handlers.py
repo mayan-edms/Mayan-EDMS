@@ -37,7 +37,7 @@ def handler_launch_workflow(sender, instance, created, **kwargs):
     )
 
     if created:
-        Workflow.objects.launch_for(instance)
+        Workflow.objects.launch_for(document=instance)
 
 
 def handler_trigger_transition(sender, **kwargs):

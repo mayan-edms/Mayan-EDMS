@@ -27,7 +27,8 @@ logger = logging.getLogger(__name__)
 @python_2_unicode_compatible
 class Source(models.Model):
     label = models.CharField(
-        db_index=True, max_length=64, unique=True, verbose_name=_('Label')
+        db_index=True, help_text=_('A short text to describe this source.'),
+        max_length=128, unique=True, verbose_name=_('Label')
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
@@ -175,11 +176,10 @@ class IntervalBaseModel(OutOfProcessSource):
         verbose_name=_('Interval')
     )
     document_type = models.ForeignKey(
-        DocumentType,
         help_text=_(
             'Assign a document type to documents uploaded from this source.'
-        ), on_delete=models.CASCADE,
-        verbose_name=_('Document type')
+        ), on_delete=models.CASCADE, to=DocumentType,
+        related_name='interval_sources', verbose_name=_('Document type')
     )
     uncompress = models.CharField(
         choices=SOURCE_UNCOMPRESS_CHOICES,
@@ -196,7 +196,7 @@ class IntervalBaseModel(OutOfProcessSource):
     def _delete_periodic_task(self, pk=None):
         try:
             periodic_task = PeriodicTask.objects.get(
-                name=self._get_periodic_task_name(pk)
+                name=self._get_periodic_task_name(pk=pk)
             )
 
             interval_instance = periodic_task.interval
@@ -217,26 +217,28 @@ class IntervalBaseModel(OutOfProcessSource):
 
     def delete(self, *args, **kwargs):
         pk = self.pk
-        super(IntervalBaseModel, self).delete(*args, **kwargs)
-        self._delete_periodic_task(pk)
+        with transaction.atomic():
+            super(IntervalBaseModel, self).delete(*args, **kwargs)
+            self._delete_periodic_task(pk=pk)
 
     def save(self, *args, **kwargs):
         new_source = not self.pk
-        super(IntervalBaseModel, self).save(*args, **kwargs)
+        with transaction.atomic():
+            super(IntervalBaseModel, self).save(*args, **kwargs)
 
-        if not new_source:
-            self._delete_periodic_task()
+            if not new_source:
+                self._delete_periodic_task()
 
-        interval_instance, created = IntervalSchedule.objects.get_or_create(
-            every=self.interval, period='seconds'
-        )
-        # Create a new interval or reuse someone else's
-        PeriodicTask.objects.create(
-            name=self._get_periodic_task_name(),
-            interval=interval_instance,
-            task='mayan.apps.sources.tasks.task_check_interval_source',
-            kwargs=json.dumps({'source_id': self.pk})
-        )
+            interval_instance, created = IntervalSchedule.objects.get_or_create(
+                every=self.interval, period='seconds'
+            )
+            # Create a new interval or reuse someone else's
+            PeriodicTask.objects.create(
+                name=self._get_periodic_task_name(),
+                interval=interval_instance,
+                task='mayan.apps.sources.tasks.task_check_interval_source',
+                kwargs=json.dumps({'source_id': self.pk})
+            )
 
 
 class SourceLog(models.Model):

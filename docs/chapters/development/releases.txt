@@ -112,7 +112,7 @@ Release checklist
 
     make generate-setup
 
-#. Commit the new ``setup.py`` file.
+#. Commit the new ``setup.py`` file as "Update build number".
 
 #. Release the version using one of the two following methods: GitLab CI or
    manual

@@ -49,6 +49,9 @@ class RoleCreateView(SingleObjectCreateView):
     view_permission = permission_role_create
     post_action_redirect = reverse_lazy(viewname='permissions:role_list')
 
+    def get_extra_context(self):
+        return {'title': _('Create new role')}
+
     def get_save_extra_data(self):
         return {'_user': self.request.user}
 
@@ -111,7 +114,8 @@ class SetupRolePermissionsView(AddRemoveView):
 
         # Sort permissions by their translatable label
         object_list = sorted(
-            queryset, key=lambda permission: permission.volatile_permission.label
+            queryset,
+            key=lambda permission: permission.volatile_permission.label
         )
 
         # Group permissions by namespace
@@ -120,7 +124,9 @@ class SetupRolePermissionsView(AddRemoveView):
                 permission.volatile_permission.namespace.label,
                 []
             )
-            namespaces_dictionary[permission.volatile_permission.namespace.label].append(
+            namespaces_dictionary[
+                permission.volatile_permission.namespace.label
+            ].append(
                 (permission.pk, force_text(permission))
             )
 

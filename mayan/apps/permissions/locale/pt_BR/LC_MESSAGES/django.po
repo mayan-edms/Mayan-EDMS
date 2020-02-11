@@ -1,54 +1,56 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # Roberto Rosario, 2012
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:34-0400\n"
-"PO-Revision-Date: 2019-06-29 06:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"POT-Creation-Date: 2020-02-10 03:52-0400\n"
+"PO-Revision-Date: 2020-01-06 18:40+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:43 events.py:8 models.py:36 models.py:105 permissions.py:7
+#: apps.py:47 events.py:8 models.py:36 models.py:106 permissions.py:7
 msgid "Permissions"
 msgstr "Permissões"
 
-#: classes.py:84
+#: classes.py:87
 msgid "Insufficient permissions."
 msgstr "Permissões insuficientes."
 
 #: dashboard_widgets.py:15
 msgid "Total roles"
-msgstr ""
+msgstr "Total de papéis"
 
 #: events.py:12
 msgid "Role created"
-msgstr ""
+msgstr "Papel criado"
 
 #: events.py:15
 msgid "Role edited"
-msgstr ""
+msgstr "Papel editado"
 
-#: links.py:16 links.py:40 models.py:116 views.py:165
+#: links.py:16 links.py:40 models.py:117 views.py:171
 msgid "Roles"
 msgstr "Regras"
 
-#: links.py:23
+#: links.py:23 views.py:53
 msgid "Create new role"
-msgstr "Criar nova regra"
+msgstr "Criar novo papel"
 
 #: links.py:29
 msgid "Delete"
@@ -58,17 +60,17 @@ msgstr "Excluir"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:45 models.py:108
+#: links.py:45 models.py:109
 msgid "Groups"
 msgstr "Grupos"
 
 #: links.py:52
 msgid "Role permissions"
-msgstr "Regra de permissão"
+msgstr "Permissões do papel"
 
 #: models.py:27
 msgid "Namespace"
-msgstr "namespace"
+msgstr "Namespace"
 
 #: models.py:28
 msgid "Name"
@@ -76,45 +78,53 @@ msgstr "Nome"
 
 #: models.py:35
 msgid "Permission"
-msgstr "permissão"
+msgstr "Permissão"
 
-#: models.py:101 search.py:16
+#: models.py:101
+msgid "A short text describing the role."
+msgstr "Um texto curto descrevendo o papel."
+
+#: models.py:102 search.py:16
 msgid "Label"
-msgstr "Label"
+msgstr "Rótulo"
 
-#: models.py:115
+#: models.py:116
 msgid "Role"
-msgstr "Regras"
+msgstr "Papel"
 
 #: permissions.py:10
 msgid "Create roles"
-msgstr "Criar funções"
+msgstr "Criar papéis"
 
 #: permissions.py:13
 msgid "Delete roles"
-msgstr "Deletar funções"
+msgstr "Excluir papéis"
 
 #: permissions.py:16
 msgid "Edit roles"
-msgstr "Editar funções"
+msgstr "Editar papéis"
 
 #: permissions.py:19
 msgid "View roles"
-msgstr "Ver funções"
+msgstr "Ver papéis"
 
 #: search.py:20
 msgid "Group name"
-msgstr ""
+msgstr "Nome do grupo"
 
 #: serializers.py:46
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "Lista separada por vírgulas de chaves primárias de grupo para adicionar ou substituir nesta função."
+msgstr ""
+"Lista separada por vírgulas de chaves primárias de grupo para adicionar ou "
+"substituir neste papel."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "Lista separada por vírgulas de chaves primárias de permissão para conceder a esta função."
+msgstr ""
+"Lista separada por vírgulas de chaves primárias de permissão para conceder a "
+"este papel."
 
 #: serializers.py:90
 #, python-format
@@ -123,62 +133,71 @@ msgstr "Sem permissão: %s"
 
 #: views.py:32
 msgid "Available roles"
-msgstr ""
+msgstr "Papéis disponíveis"
 
 #: views.py:33
 msgid "Group roles"
-msgstr ""
+msgstr "Papéis do grupo"
 
 #: views.py:42
 #, python-format
 msgid "Roles of group: %s"
-msgstr ""
+msgstr "Papéis do grupo: %s"
 
-#: views.py:79
+#: views.py:82
 msgid "Available groups"
 msgstr "Grupos disponíveis"
 
-#: views.py:80
+#: views.py:83
 msgid "Role groups"
-msgstr "Grupos de papéis"
+msgstr "Grupos do papel"
 
-#: views.py:89
+#: views.py:92
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Grupos do papel: %s"
 
-#: views.py:91
+#: views.py:94
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr ""
+"Adicione grupos para que façam parte de um papel. Eles irão herdar as "
+"permissões do papel e os controles de acesso."
 
-#: views.py:104
+#: views.py:107
 msgid "Available permissions"
 msgstr "Permissões disponíveis"
 
-#: views.py:105
+#: views.py:108
 msgid "Granted permissions"
-msgstr "Permissões outorgadas"
+msgstr "Permissões concedidas"
 
-#: views.py:137
+#: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
+"Permissões concedidas aqui serão aplicadas em todo o sistema e em todos os "
+"objetos."
 
-#: views.py:140
+#: views.py:146
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Permissões para papel: %s"
 
-#: views.py:157
+#: views.py:163
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
 msgstr ""
+"Papéis são unidades de autorização. Eles contém grupos de usuários que "
+"herdam suas permissões de papel para todo sistema. Papeis também podem ser "
+"parte de listas de controle de acesso (ACLs). Listas de controle de acesso "
+"são permissões concedidas a um papel para objetos específicos que seus "
+"membros de grupo herdam."
 
-#: views.py:164
+#: views.py:170
 msgid "There are no roles"
-msgstr ""
+msgstr "Não há papéis"

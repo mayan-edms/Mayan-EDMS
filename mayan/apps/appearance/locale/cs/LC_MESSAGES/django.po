@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:29-0400\n"
-"PO-Revision-Date: 2019-12-03 05:20+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-10 03:47-0400\n"
+"PO-Revision-Date: 2020-02-06 10:13+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:10 settings.py:9
+#: apps.py:11 settings.py:9
 msgid "Appearance"
 msgstr "Vzhled"
 
@@ -78,7 +78,7 @@ msgstr "Maximální počet znaků, které se zobrazí jako název pohledu."
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
+msgstr "Pozice, kde se zobrazí systémová zpráva. Možnosti jsou: nahoře vlevo, nahoře na středu, vpravo nahoře, dole-vlevo, dole-uprostřed, vpravo dole."
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
@@ -96,7 +96,7 @@ msgstr "Stránka nenalezena"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Litujeme, ale požadovanou stránku nelze najít."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:54
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:55
 msgid "Server error"
 msgstr "Chyba serveru"
 
@@ -168,7 +168,7 @@ msgid ""
 "\n"
 "                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>.\n"
 "            "
-msgstr ""
+msgstr "\nKromě darů můžete také podpořit projekt <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">zakoupením kopie knihy „Prozkoumání mayského EDMS“ od Roberta Rosaria</a> ."
 
 #: templates/appearance/about.html:133
 #, python-format
@@ -203,40 +203,44 @@ msgid ""
 "            "
 msgstr "\nŠiřme slovo. Promluvte si se svými přáteli a kolegy o tom, jak úžasný je %(project_title)s! Sledujte nás na <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitteru %(icon_social_twitter)s</a> , <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a> nebo <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>"
 
-#: templates/appearance/base.html:37 templates/appearance/base.html:47
+#: templates/appearance/base.html:35 templates/appearance/base.html:59
 msgid "Warning"
 msgstr "Varování"
 
-#: templates/appearance/base.html:47
+#: templates/appearance/base.html:49
+msgid "Click here to fix this."
+msgstr "Klepnutím sem to vyřešíte."
+
+#: templates/appearance/base.html:59
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
+msgstr "Nastavení byla aktualizována, restartujte instalaci a aktualizujte prohlížeč, aby se změny projevily."
 
-#: templates/appearance/base.html:60
+#: templates/appearance/base.html:72
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Akce"
 
-#: templates/appearance/base.html:62
+#: templates/appearance/base.html:74
 #: templates/appearance/generic_list_items_subtemplate.html:68
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Přepnout rozevírací seznam"
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
-msgstr ""
+msgstr "Otevřete hlavní menu"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
 msgstr "Jsi si jistí?"
 
-#: templates/appearance/generic_confirm.html:34
+#: templates/appearance/generic_confirm.html:38
 msgid "Yes"
 msgstr "Ano"
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:48
 msgid "No"
 msgstr "Ne"
 
@@ -247,19 +251,19 @@ msgstr "Ne"
 msgid "required"
 msgstr "Požadované"
 
-#: templates/appearance/generic_form_subtemplate.html:85
-#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Save"
 msgstr "Uložit"
 
-#: templates/appearance/generic_form_subtemplate.html:85
-#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Submit"
 msgstr "Odeslat"
 
-#: templates/appearance/generic_form_subtemplate.html:89
+#: templates/appearance/generic_form_subtemplate.html:87
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Cancel"
 msgstr "Zrušit"
@@ -280,31 +284,31 @@ msgstr "Začínáme"
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Než začnete plně používat Mayan EDMS, potřebujete následující:"
 
-#: templates/appearance/list_header.html:11
+#: templates/appearance/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr "Celkem (%(start)s - %(end)s z %(total)s) (stránka %(page_number)s z %(total_pages)s)"
 
-#: templates/appearance/list_header.html:13
-#: templates/appearance/list_header.html:16
+#: templates/appearance/list_header.html:14
+#: templates/appearance/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Celkem: %(total)s"
 
-#: templates/appearance/list_toolbar.html:14
+#: templates/appearance/list_toolbar.html:16
 msgid "Select/Deselect all"
-msgstr ""
+msgstr "Vyberte / Zrušte výběr všech"
 
-#: templates/appearance/list_toolbar.html:58
+#: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
+msgstr "Vyberte položky pro aktivaci hromadných akcí. Použijte Shift + click pro výběr více položek."
 
-#: templates/appearance/list_toolbar.html:63
+#: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr ""
+msgstr "Hromadné akce"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
@@ -314,15 +318,15 @@ msgstr "Přepnout navigaci"
 msgid "No results"
 msgstr "Žádné výsledky"
 
-#: templates/appearance/root.html:59
+#: templates/appearance/root.html:60
 msgid "Close"
 msgstr "Zavřít"
 
-#: templates/appearance/root.html:67
+#: templates/appearance/root.html:68
 msgid "Server communication error"
 msgstr "Chyba komunikace se serverem"
 
-#: templates/appearance/root.html:69
+#: templates/appearance/root.html:70
 msgid "Check you network connection and try again in a few moments."
 msgstr "Zkontrolujte připojení k síti a zkuste to znovu za chvíli."
 

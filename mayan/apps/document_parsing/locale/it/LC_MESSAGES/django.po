@@ -2,40 +2,44 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2017
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2018
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2018
 # Daniele Bortoluzzi <daniele@elkos.it>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:31-0400\n"
+"POT-Creation-Date: 2020-02-10 03:49-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2019\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:56 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr "Analisi del documento"
 
-#: apps.py:130 models.py:78
-msgid "Result"
-msgstr "Risultato"
+#: apps.py:108
+msgid "A generator returning the document's pages parsed content."
+msgstr ""
 
-#: apps.py:135 apps.py:139 links.py:21 links.py:38 models.py:27
+#: apps.py:109 apps.py:142 apps.py:146 links.py:21 links.py:38 models.py:27
 msgid "Content"
 msgstr "Contenuto "
+
+#: apps.py:137 models.py:78
+msgid "Result"
+msgstr "Risultato"
 
 #: dependencies.py:11
 msgid ""
@@ -68,7 +72,7 @@ msgstr "Contenuti"
 msgid "Delete parsed content"
 msgstr ""
 
-#: links.py:44 links.py:82 views.py:224
+#: links.py:44 links.py:82 views.py:222
 msgid "Parsing errors"
 msgstr "Errori di analisi"
 
@@ -175,8 +179,7 @@ msgstr ""
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
+"File path to poppler's pdftotext program used to extract text from PDF files."
 msgstr ""
 "Percorso del programma poppler pdftotext.usato per estrarre il testo dai "
 "file PDF."
@@ -192,48 +195,48 @@ msgstr[1] ""
 msgid "Content for document: %s"
 msgstr "Contenuto per il documento: %s"
 
-#: views.py:105
+#: views.py:103
 #, python-format
 msgid "Content for document page: %s"
 msgstr "Contenuto per la pagina %s del documento"
 
-#: views.py:120
+#: views.py:118
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "Errori di analisi per il documento: %s"
 
-#: views.py:132
+#: views.py:130
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)d documento aggiunto alla coda di analisi"
 
-#: views.py:135
+#: views.py:133
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d documenti aggiunti alla coda di analisi"
 
-#: views.py:143
+#: views.py:141
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
-msgid_plural "Submit %(count)d documents to the parsing queue"
-msgstr[0] "Aggiungi %(count)d documenti alla coda di analisi?"
-msgstr[1] "Aggiungi %(count)d documenti alla coda di analisi"
+msgid_plural "Submit %(count)d documents to the parsing queue?"
+msgstr[0] ""
+msgstr[1] ""
 
-#: views.py:156
+#: views.py:154
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "Aggiungi il documento \"%s\" alla coda di analisi"
 
-#: views.py:181
+#: views.py:179
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr "Modifica le impostazioni di analisi per il tipo di documento: %s."
 
-#: views.py:191
-msgid "Submit all documents of a type for parsing."
-msgstr "Sottoponi ad analisi tutti i documenti di un certo tipo."
+#: views.py:189
+msgid "Submit all documents of a type for parsing"
+msgstr ""
 
-#: views.py:212
+#: views.py:210
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d documenti aggiunti alla coda di analisi."

@@ -34,7 +34,7 @@ class WebLinkViewTestMixin(object):
         return self.post(
             viewname='web_links:web_link_create', data={
                 'label': TEST_WEB_LINK_LABEL,
-                'template': TEST_WEB_LINK_TEMPLATE
+                'template_template': TEST_WEB_LINK_TEMPLATE,
             }
         )
 
@@ -51,7 +51,7 @@ class WebLinkViewTestMixin(object):
                 'pk': self.test_web_link.pk
             }, data={
                 'label': TEST_WEB_LINK_LABEL_EDITED,
-                'template': TEST_WEB_LINK_TEMPLATE
+                'template_template': TEST_WEB_LINK_TEMPLATE
             }
         )
 

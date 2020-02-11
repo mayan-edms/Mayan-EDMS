@@ -330,8 +330,13 @@ class MetadataLookupIntegrationTestCase(
         self.test_document.metadata.create(
             metadata_type=self.test_metadata_type
         )
+
         self.grant_access(
             obj=self.test_document,
+            permission=permission_document_metadata_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
             permission=permission_document_metadata_edit
         )
 
@@ -354,6 +359,10 @@ class MetadataLookupIntegrationTestCase(
         )
         self.grant_access(
             obj=self.test_document,
+            permission=permission_document_metadata_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
             permission=permission_document_metadata_edit
         )
 

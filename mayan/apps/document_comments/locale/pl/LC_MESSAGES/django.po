@@ -1,22 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:31-0400\n"
-"PO-Revision-Date: 2019-05-17 05:50+0000\n"
+"POT-Creation-Date: 2020-02-10 03:49-0400\n"
+"PO-Revision-Date: 2020-01-30 19:13+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:39 events.py:8
 msgid "Document comments"
@@ -36,7 +39,7 @@ msgstr "Komentarz do dokumentu został usunięty"
 
 #: events.py:18
 msgid "Document comment edited"
-msgstr ""
+msgstr "Zmodyfikowano komentarz do dokumentu"
 
 #: links.py:18
 msgid "Add comment"
@@ -77,7 +80,7 @@ msgstr "Usuwaj komentarze"
 
 #: permissions.py:16
 msgid "Edit comments"
-msgstr ""
+msgstr "Edytuj komentarze"
 
 #: permissions.py:19
 msgid "View comments"
@@ -96,22 +99,24 @@ msgstr "Usunąć komentarz: %s?"
 #: views.py:92
 #, python-format
 msgid "Details for comment: %s?"
-msgstr ""
+msgstr "Szczegóły dotyczące komentarza: %s?"
 
 #: views.py:110
 #, python-format
 msgid "Edit comment: %s?"
-msgstr ""
+msgstr "Edytuj komentarz: %s?"
 
 #: views.py:135
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
 msgstr ""
+"Komentarze do dokumentów to wpisy tekstowe oznaczone znacznikami czasu od "
+"użytkowników. Świetnie nadają się do współpracy."
 
 #: views.py:138
 msgid "There are no comments"
-msgstr ""
+msgstr "Brak komentarzy"
 
 #: views.py:140
 #, python-format

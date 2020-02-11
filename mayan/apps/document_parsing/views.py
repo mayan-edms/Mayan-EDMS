@@ -19,7 +19,7 @@ from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
 )
-from .utils import get_document_content
+from .utils import get_instance_content
 
 
 class DocumentContentDeleteView(MultipleObjectConfirmActionView):
@@ -75,13 +75,11 @@ class DocumentContentDownloadView(SingleObjectDownloadView):
     model = Document
     object_permission = permission_content_view
 
-    def get_file(self):
-        file_object = DocumentContentDownloadView.TextIteratorIO(
-            iterator=get_document_content(document=self.get_object())
-        )
-        return DocumentContentDownloadView.VirtualFile(
-            file=file_object, name='{}-content'.format(self.get_object())
-        )
+    def get_download_file_object(self):
+        return get_instance_content(document=self.object)
+
+    def get_download_filename(self):
+        return '{}-content'.format(self.object)
 
 
 class DocumentPageContentView(SingleObjectDetailView):
@@ -141,7 +139,7 @@ class DocumentSubmitView(MultipleObjectConfirmActionView):
         result = {
             'title': ungettext(
                 singular='Submit %(count)d document to the parsing queue?',
-                plural='Submit %(count)d documents to the parsing queue',
+                plural='Submit %(count)d documents to the parsing queue?',
                 number=queryset.count()
             ) % {
                 'count': queryset.count(),
@@ -188,7 +186,7 @@ class DocumentTypeSettingsEditView(ExternalObjectMixin, SingleObjectEditView):
 
 class DocumentTypeSubmitView(FormView):
     extra_context = {
-        'title': _('Submit all documents of a type for parsing.')
+        'title': _('Submit all documents of a type for parsing')
     }
     form_class = DocumentTypeFilteredSelectForm
     post_action_redirect = reverse_lazy(viewname='common:tools_list')

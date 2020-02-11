@@ -3,10 +3,11 @@ from __future__ import absolute_import, unicode_literals
 from collections import OrderedDict
 
 from django import forms
-from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.classes import ModelProperty
+from mayan.apps.common.classes import ModelAttribute
 from mayan.apps.common.widgets import NamedMultiWidget
+
+from .literals import EMPTY_LABEL
 
 
 class TemplateWidget(NamedMultiWidget):
@@ -16,8 +17,8 @@ class TemplateWidget(NamedMultiWidget):
     def __init__(self, attrs=None, **kwargs):
         widgets = OrderedDict()
 
-        widgets['model_property'] = forms.widgets.Select(
-            attrs={'data-template-fields': 'model_property'}
+        widgets['model_attribute'] = forms.widgets.Select(
+            attrs={'data-template-fields': 'model_attribute'}
         )
         widgets['template'] = forms.widgets.Textarea(
             attrs={'rows': 5, 'data-template-fields': 'template'}
@@ -26,15 +27,25 @@ class TemplateWidget(NamedMultiWidget):
             widgets=widgets, attrs=attrs, **kwargs
         )
 
+    def get_context(self, name, value, attrs):
+        result = super(TemplateWidget, self).get_context(name, value, attrs)
+        result['widget']['subwidgets'][0]['attrs']['required'] = False
+        return result
+
     def decompress(self, value):
-        choices = ModelProperty.get_choices_for(
+        attribute_choices = ModelAttribute.get_all_choices_for(
             model=self.attrs['model']
         )
-        self.widgets['model_property'].choices = (
-            [('', _('<Model property choices>'))] + choices
+        choices = []
+
+        choices = attribute_choices
+        choices.insert(
+            0, ('', EMPTY_LABEL)
         )
+
+        self.widgets['model_attribute'].choices = choices
         return {
-            'model_property': None, 'template': value
+            'model_attribute': None, 'template': value
         }
 
     def value_from_datadict(self, querydict, files, name):

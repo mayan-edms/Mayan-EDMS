@@ -3,6 +3,241 @@
 - Update Python GNUPG to version 0.4.5.
 - Update Django REST framework to 3.9.4.
 
+3.3.12 (2020-02-10)
+===================
+- Fix issue with the template object count logic introduced in the
+  last optimization.
+- Fix Chinese translation. Locale cn has been renamed to cn-hans.
+
+3.3.11 (2020-02-07)
+===================
+- Fix document preview rendering issue introduced by the read only
+  decimal field display addition. Closes GitLab issue #771.
+  Thanks to Christoph Roeder (@brightdroid) for the report and
+  investigation.
+- Add message about decompression bomb DOS attacks. Add mention
+  how to disable the protection by increasing the allowed image
+  size.
+- Optimize lists title item count calculations.
+- Fix document properties form default language selection. Closes GitLab
+  issue #770. Thanks to Albert ARIBAUD (@aaribaud) for the report and
+  for narrowing down the cause.
+- Add document language codes settings tests. Closes GitLab issue #547.
+  Thanks to Bebef (@Bebef) for the report and research.
+- Move the django.contrib.admindocs to be loaded after the Tags app
+  to avoid its translations to take precedence. Closes GitLab issue #734.
+  Thanks to Roberto Novaes (@rvnovaes) for the report.
+
+3.3.10 (2020-01-31)
+===================
+- Turn TarArchiveClassTestCase in to reusable archive test case class.
+  #MD-10.
+- Add test runner option for testing excluded tests.
+- Add data operation to file metadata 0002 to remove duplicated entries.
+  Closes GitLab issue #762. Thanks to forum user benaser for the report.
+- Add package django_migration_test and add migration test to the
+  file metadata app for migration 0002.
+- Update make file to remove repeated commands and add migration testing
+  target.
+- Update the GitLab CI file to use the test makefile target and add
+  migration testing.
+- Update the Docker run_tests command to perform migration testing.
+- Update translation files.
+- Add support for specifying related fields per model to the templating
+  app.
+- Add grouping to the templating widget. Model attributes are now group
+  into model properties, models fields and the new model related fields.
+- Add document OCR content and parsed content as document model properties
+  for use in templates.
+- Fix the staging folder file API views. GitLab issue #764. Thanks to
+  David Kowis (@dkowis) for the report, debug, and research.
+- Add command to show the current version of Mayan. The command is named
+  ``showversion``. The command has one option `--build-string`` that will
+  show the build string instead. Closes #MD-14.
+- Add command to check if the current version is the latest one. The command
+  is named ``checkversion``. Closes issue #MD-28.
+- Add button to launch a specific workflow for existing documents.
+  Issue #MD-171.
+- Update Pillow to version 6.2.2.
+- Improve image page count detection by capturing undocumented Pillow
+  exception. Close GitLab issue #767. Thanks to Frédéric Sheedy (@fsheedy)
+  for the report, debug information, and test image.
+- Add new setting to disable the API documentation links from the tools menu.
+  The setting is named ``REST_API_DISABLE_LINKS`` and defaults to ``false``.
+- Add new setting to disable the password reset link in the login form. This
+  link is not used for third party authentication such as when using LDAP.
+  The setting is named ``AUTHENTICATION_DISABLE_PASSWORD_RESET`` and
+  defaults to ``false``.
+- Improve workflow app navigation.
+- Add fall back read-only render for form fields.
+
+3.3.9 (2020-01-18)
+==================
+- Update Document and Lock models to avoid triggering a new migrations on
+  default document language change and on default lock timeout change.
+  Closes GitLab issue #759.
+- Cleanup repository top level. Moved helper scripts to contrib/scripts.
+- Add makefile target to make it easier to create the code coverage report.
+- Remove unused Magnum and Travis CI files.
+- Add makefile target to run GitLab CI jobs locally.
+- Add GitLab CI jobs to test upgrading from current to newest version.
+
+3.3.8 (2020-01-17)
+==================
+- Update literals so the correct paths of pdfinfo, pdftoppm, libreoffice,
+  exiftool and tesseract are found. Relates to Gitlab issue #308
+- Fix document detached signing. Closes GitLab issue #732.
+  Thanks to holzhannes (@holzhannes) for the report and debug information.
+- Updated direct deployment documentation to advise users installing
+  in a custom directory to verify the automatically generated
+  supervisor configuration file. Addresses GitLab issue #739
+- Added a note to the LDAP section of the FAQ to assist users with
+  potential local environment issues
+- Updated docker-compose.yml and documentation to ensure RabbitMQ messages
+  are persistent
+- Improve the File Storage section of the Documentation
+- Add support and documentation for S3 storage backend
+- Update documentation push CI stage to delete existing files before
+  uploading new content. GitLab issue #721. Thanks to Chris Whitten
+  (@whit1206) for the report.
+- Ensure that the model property choice field of the template widget
+  is never required, regardless of the required setting of the template
+  field. GitLab issue #748. Thanks to forum user chrimpshrine for the
+  report.
+- Remove repeated raise statement that cause HTML markup to show on
+  upload error display.
+- Improve file metadata property label.
+- Improve file metadata property path reading. Will not error out
+  when passed invalid path to the driver as reference.
+- Make the sandbox template field a required field.
+- Fix Tag apps API required permissions. The required permissions
+  of the API match those of the view and comply with MERC 0006.
+- Fix metadata app view permissions layout. The metadata add, edit, and
+  remove permissions are now required for both the document and the
+  the metadata type in order to add, edit or remove a metadata from
+  a document. The HTML and API were updated, as well as the document
+  metadata widget to only show metadata types for which the document
+  metadata view permission is granted.
+- Initialize permissions on every start or installation instead of
+  them being initialized on demand. Closes GitLab issue #757.
+  Thanks to forum user Roberto Novaes (rvnovaes) for the report.
+- Add new entry to the CONVERTER_GRAPHICS_BACKEND_ARGUMENTS setting to
+  allow passing a maximum image pixel count to Pillow. The entry
+  is called 'pillow_maximum_image_pixels' and defaults to 89478485.
+- Fix document metadata add, edit, and remove redirects.
+
+3.3.7 (2019-12-31)
+==================
+- Use Python Redis client 3.3.11 to enable .client() method for the Redis
+  lock backend. Add version check to the Redis lock backend. GitLab
+  issue #719. Thanks to Rob de Canha-Knight (@rssfed23) for the report and
+  research.
+- Run Selenium tests in headless mode.
+- Remove repeated document tags preview column.
+- Remove cabinet links from the document cabinet list view.
+- Enable display of MissingItem class instances.
+- Add tests for the common.http.URL class.
+- Update FAQ and troubleshooting chapters.
+- Update Docker installer, sample docker-compose file and documentation to
+  add a password to the Redis container. GitLab issue #712. Thanks to
+  Matthew Thode (@prometheanfire) for the report.
+- Use a fake config file during tests.
+- Update Django to version 1.11.27.
+- Add password to the Redis container for the staging Docker targets.
+- Add new test case BaseTransactionTestCase.
+- Improve file metadata driver database registration. Improve indexing
+  based on file metadata properties. Improves GitLab issue #720 on the
+  signal commit side of the indexing. Thanks to Rob de Canha-Knight (@rssfed23)
+  for the report and debug information.
+- Replicate transaction handling improvements from the file metadata app to
+  the OCR and document parsing apps.
+- Initialize indexes in a predictable way. Solves GitLab issue #720 Thanks
+  to Rob de Canha-Knight (@rssfed23) for the report and debug information.
+- Make file metadata StoredDriver fields unique. Relates to GitLab issue #720
+  Thanks to Rob de Canha-Knight (@rssfed23) for the report and debug
+  information.
+- Fix the POP3 source under Python 3. GitLab issue #724. Thanks to Kevin Pawsey
+  (@kevinpawsey) for the report and debug information.
+- Merge NFS troubleshooting section. Thanks to Rob de Canha-Knight (@rssfed23).
+  GitLab merge !67.
+- Improve mirroring code to support slashes in index node values and document
+  labels and also support duplicate nodes values or documents labels. Slashes
+  are replaced with underscores. To handle duplicates, the primary key of
+  the object is appended to the label inside parenthesis. Closes
+  GitLab issue #722. Thanks to Rob de Canha-Knight (@rssfed23) for the
+  report and research.
+- Fix workflow document signing action. Also add message when trying to use
+  action for an initial state when the created document has no version
+  associated. GitLab issue #726. Thanks to forum user @holzhannes for the
+  report.
+
+3.3.6 (2019-12-19)
+==================
+- Make list toolbar stick to the top of the view when scrolling.
+- Fix page count on some PDF files, and fix a Python 3 incompatibility.
+  GitLab merge !64. Thanks to O2 Graphics (@O2Graphics).
+- Improve the executables paths on FreeBSD/OpenBSD. GitLab merge !63.
+  Thanks to O2 Graphics (@O2Graphics).
+- Fix document orientation detection. GitLab issue #713. Thanks to
+  Rob de Canha-Knight (@rssfed23) for the report and debug information.
+- Update the Redis lock connection initialization so that is works with Redis
+  versions < 5.0. GitLab issue #709. Rob de Canha-Knight (@rssfed23) for the
+  report and debug information.
+- Update the ZipArchive class to work with badly encoded filenames.
+  GitLab issue #651. Thanks to Fabian (@ruffy91) for the report.
+- Delete periodic task on document type delete. Closes GitLab
+  issue #715. Thanks to Rob de Canha-Knight (@rssfed23) for the
+  report and research.
+- Add transaction handling to the interval sources delete and save
+  methods.
+- Add support for functional tests using selenium. Use TEST_SELENIUM_SKIP
+  to skip these tests.
+- Add test for issue #494.
+- Add support for configurable test view template.
+- Add support for public test views.
+- Reapply fix for issue #494. To avoid exploit of cross site scripting in
+  login view. Thanks to the Checkmarx SCA AppSec team for the research
+  regarding this issue for the recent version and thanks to Lokesh
+  (@lokesh1095) for the original report and solution. GitLab issue #494.
+- Settings: Display overridden instead of overrided.
+  GitLab merge !65. Thanks to Rob de Canha-Knight (@rssfed23).
+- Update the address of PyPI when checking for new versions to avoid
+  SSL errors from reusing the old address (pypi.python.org/pypi)
+  certificate. GitLab issue #717. Thanks to Jordan Wages (@wagesj45)
+  for the report.
+- Allow passing TEST_SELENIUM_SKIP as an environment variable.
+- Skip Selenium tests inside the Docker container.
+
+3.3.5 (2019-12-13)
+==================
+- Pin django-timezone-field to version 3.1. GitLab issue #698.
+  Thanks to Rob de Canha-Knight (@rssfed23) for the report
+  and research.
+- Pin kombu to version 4.6.7. GitLab issue #699. Thanks to
+  Rob de Canha-Knight (@rssfed23) for the report and the research.
+- Update instances of the word "weblink" to "web link".
+- Unify the creation of the temporary config file used in tests.
+- Update all 0001 setting migrations to accept manually migrated
+  settings.
+- Update TemplateField to concatenate existing help texts.
+- Don't show the edit and delete links for resolved web links.
+- Exclude Smart link setup columns and links from the resolved
+  smart link views.
+- TemplateField shows the available variable in the help text
+  automatically.
+- Use TemplateField for the web link template.
+- Use TemplateField for smart links.
+- Add the ID and the URL to the checkout serializer.
+- Add BaseTransformationType metaclass in a way compatible with
+  Python 2 and Python 3.
+- Remove Django DownloadView library. Implement downloads natively
+  using a modified port of Django 2.2 FileResponse.
+- Increase the role label field size from 64 to 128 characters.
+- Increase the smart link label size from 96 to 128 characters.
+- Increase the source label field size from 64 to 128 characters.
+- Add missing link icons.
+- Add missing field help texts.
+
 3.3.4 (2019-12-09)
 ==================
 - Update the gunicorn worker class to synchronous.

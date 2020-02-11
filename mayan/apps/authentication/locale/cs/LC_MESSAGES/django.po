@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:30-0400\n"
-"PO-Revision-Date: 2019-10-15 16:23+0000\n"
+"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"PO-Revision-Date: 2020-02-06 09:20+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -68,6 +68,12 @@ msgid ""
 " in. Value is time in seconds."
 msgstr "Maximální doba, po kterou uživatel klepnutím na políčko „Zapamatovat si mě“ zůstane přihlášený. Hodnota je čas v sekundách."
 
+#: settings.py:27
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr "Odebrat &quot;Zapomněli jste heslo?&quot; odkaz na přihlašovacím formuláři pro spuštění resetování hesla."
+
 #: templates/authentication/login.html:11
 msgid "Login"
 msgstr "Přihlásit se"
@@ -75,9 +81,9 @@ msgstr "Přihlásit se"
 #: templates/authentication/login.html:26
 #: templates/authentication/login.html:34
 msgid "Sign in"
-msgstr "Registrovat se"
+msgstr "Přihlásit se"
 
-#: templates/authentication/login.html:39
+#: templates/authentication/login.html:41
 msgid "Forgot your password?"
 msgstr "Zapomněli jste heslo?"
 
@@ -99,7 +105,7 @@ msgid "Login page"
 msgstr "Přihlašovací stránka"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:154
+#: templates/authentication/password_reset_form.html:29 views.py:167
 msgid "Submit"
 msgstr "Odeslat"
 
@@ -107,29 +113,29 @@ msgstr "Odeslat"
 msgid "Password reset email sent!"
 msgstr "E-mail pro resetování hesla byl odeslán!"
 
-#: views.py:74
+#: views.py:77
 msgid "Your password has been successfully changed."
 msgstr "Vaše heslo bylo úspěšně změněno."
 
-#: views.py:81
+#: views.py:84
 msgid "Current user password change"
-msgstr "Aktuální změna hesla uživatele"
+msgstr "Změna hesla aktuálního uživatele"
 
-#: views.py:89
+#: views.py:92
 msgid "Changing the password is not allowed for this account."
 msgstr "Změna hesla není pro tento účet povolena."
 
-#: views.py:145
+#: views.py:158
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Žádost o změnu hesla byla provedena uživatelem %(count)d"
 
-#: views.py:147
+#: views.py:160
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Žádost o změnu hesla byla provedena u uživatelů %(count)d"
 
-#: views.py:156
+#: views.py:169
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] "Změnit heslo uživatele"
@@ -137,23 +143,23 @@ msgstr[1] "Změnit hesla uživatelů"
 msgstr[2] "Změnit hesla uživatelů"
 msgstr[3] "Změnit hesla uživatelů"
 
-#: views.py:166
+#: views.py:179
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Změnit heslo pro uživatele: %s"
 
-#: views.py:186
+#: views.py:199
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "Vynulování uživatelského hesla super uživatele a zaměstnanců není povoleno, pro tyto případy použijte rozhraní správce."
+msgstr "Vynulování uživatelského hesla super uživatele  není povoleno, pro tyto případy použijte rozhraní správce."
 
-#: views.py:196
+#: views.py:209
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Úspěšné obnovení hesla pro uživatele: %s."
 
-#: views.py:202
+#: views.py:215
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Chyba při resetování hesla pro uživatele „%(user)s“: %(error)s"

@@ -1,0 +1,271 @@
+Version 3.3.6
+=============
+
+Released: December 19, 2019
+
+
+Changes
+-------
+
+
+Compressed files
+^^^^^^^^^^^^^^^^
+
+Zip files only support UTF-8 and CP437 encoding for filenames. This is not
+strongly enforced and some software products create Zip files with other
+text encodings. The ZipArchive class was updated to work with badly encoded
+filenames instead of raising an error.
+
+
+Converter
+^^^^^^^^^
+
+The page count code was updated to work with more versions of PDF files.
+A Python 3 incompatibility was also fixed.
+
+
+Documents
+^^^^^^^^^
+
+The PDF orientation detection was fixed and updated to work with the new
+converter layer system.
+
+
+Redis
+^^^^^
+
+The Redis lock backend initialization was updated to allow it to also work
+with Redis versions older than 5.0.
+
+
+Security
+^^^^^^^^
+
+A fix for a cross site scripting issues was removed by accident during a
+version merge at some unknown time. The fix was reapplied and more robust
+tests using Selenium added to avoid further regressions.
+
+
+Settings
+^^^^^^^^
+
+FreeBSD is now also detected and the paths of binaries adjusted for easier
+installation.
+
+
+Sources
+^^^^^^^
+
+A issue that left behind periodic task entries for watch folders after
+deleting a document type associated with them was fixed.
+
+Transaction handling was added to the interval sources base class delete
+and save methods. This increases protection against data loss on database
+failure.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+The last update for the user interface planned for series 3.3 is included.
+This update makes the list toolbar "stick" to the top of the view when
+scrolling. This is the new toolbar that encloses the multi-item action menu
+and the pagination controls.
+
+The usage of the incorrect word "overrided" was updated to "overridden".
+
+The address used to check for new versions was updated to the new
+Python Package Index address. This avoids SSL certificate errors when the old
+certificate is reused.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrading process
+-----------------
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+
+Upgrading from Mayan EDMS 3.2.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Update the Redis configuration:
+
+   Configure Redis to discard data when it runs out of memory, not save its
+   database, and only keep 2 database:
+
+   .. code-block:: bash
+
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Install the Python 3 development OS package:
+
+   .. code-block:: bash
+
+    sudo apt-get install python3-dev
+
+
+#. Update the virtualenv to use Python 3:
+
+   .. code-block:: bash
+
+    sudo -u mayan virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Create a home directory for the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    mkdir /home/mayan
+
+
+#. Grant ownership to the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    chown mayan:mayan /home/mayan
+
+#. Reinstall the Python client for PostgreSQL and Redis:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
+
+
+#. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
+
+
+Upgrade steps from any previous version of Mayan EDMS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u mayan curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u mayan |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.6
+
+   the requirements will also be updated automatically.
+
+
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Edit the supervisord configuration file and update any setting specific to your installation:
+
+   .. code-block:: bash
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+
+#. Migrate existing database schema with:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Add new static media:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| preparestatic --noinput
+
+
+#. Start supervisord:
+
+   .. code-block:: bash
+
+       sudo systemctl start supervisor
+
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Bugs fixed or issues closed
+---------------------------
+
+- :gitlab-issue:`494` DOM based Cross Site Scripting
+- :gitlab-issue:`651` Uploading compressed documents fail when compressed file contains special character
+- :gitlab-issue:`709` Redis lock manager backend - exception on connect
+- :gitlab-issue:`713` Unexpected exception while trying to create version for new document - 'Layer' object has no attribute 'add_to_object'
+- :gitlab-issue:`715` Deleting a document type removes a watch folder associated with it without removing the check interval
+- :gitlab-issue:`717` Check For Updates Failure
+- :gitlab-merge:`63` Improve the executables paths on FreeBSD/OpenBSD.
+- :gitlab-merge:`64` Fix page count on some PDF files, and fix a Python 3 incompatibility.
+- :gitlab-merge:`65` Settings: Display overridden instead of overrided
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

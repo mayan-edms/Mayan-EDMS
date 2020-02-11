@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:30-0400\n"
+"POT-Creation-Date: 2020-02-10 03:48-0400\n"
 "PO-Revision-Date: 2019-12-03 05:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
@@ -177,7 +177,7 @@ msgstr ""
 msgid "Check expired checkouts"
 msgstr ""
 
-#: serializers.py:26
+#: serializers.py:31
 msgid "Primary key of the document to be checked out."
 msgstr ""
 

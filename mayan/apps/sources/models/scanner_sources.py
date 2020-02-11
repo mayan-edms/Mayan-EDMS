@@ -70,54 +70,71 @@ class SaneScanner(InteractiveSource):
     def clean_up_upload_file(self, upload_file_object):
         pass
 
-    def get_upload_file_object(self, form_data):
-        temporary_file_object = TemporaryFile()
+    def execute_command(self, arguments):
         command_line = [
-            setting_scanimage_path.value, '-d', self.device_name,
-            '--format', 'tiff',
+            setting_scanimage_path.value
+        ]
+        command_line.extend(arguments)
+
+        with TemporaryFile() as stderr_file_object:
+            stdout_file_object = TemporaryFile()
+
+            try:
+                logger.debug('Scan command line: %s', command_line)
+                subprocess.check_call(
+                    command_line, stdout=stdout_file_object,
+                    stderr=stderr_file_object
+                )
+            except subprocess.CalledProcessError:
+                stderr_file_object.seek(0)
+                error_message = stderr_file_object.read()
+                logger.error(
+                    'Exception while executing scanning command for source:%s ; %s', self,
+                    error_message
+                )
+
+                message = _(
+                    'Error while executing scanning command '
+                    '"%(command_line)s"; %(error_message)s'
+                ) % {
+                    'command_line': ' '.join(command_line),
+                    'error_message': error_message
+                }
+                self.logs.create(message=message)
+                raise SourceException(message)
+            else:
+                stdout_file_object.seek(0)
+                return stdout_file_object
+
+    def get_upload_file_object(self, form_data):
+        arguments = [
+            '-d', self.device_name, '--format', 'tiff',
         ]
 
         if self.resolution:
-            command_line.extend(
+            arguments.extend(
                 ['--resolution', '{}'.format(self.resolution)]
             )
 
         if self.mode:
-            command_line.extend(
+            arguments.extend(
                 ['--mode', self.mode]
             )
 
         if self.source:
-            command_line.extend(
+            arguments.extend(
                 ['--source', self.source]
             )
 
         if self.adf_mode:
-            command_line.extend(
+            arguments.extend(
                 ['--adf-mode', self.adf_mode]
             )
 
-        filestderr = TemporaryFile()
+        file_object = self.execute_command(arguments=arguments)
 
-        try:
-            logger.debug('Scan command line: %s', command_line)
-            subprocess.check_call(
-                command_line, stdout=temporary_file_object, stderr=filestderr
+        return SourceUploadedFile(
+            source=self, file=PseudoFile(
+                file=file_object, name='scan {}'.format(now())
             )
-        except subprocess.CalledProcessError:
-            filestderr.seek(0)
-            error_message = filestderr.read()
-            logger.error(
-                'Exception while scanning from source:%s ; %s', self,
-                error_message
-            )
-
-            message = _('Error while scanning; %s') % error_message
-            self.logs.create(message=message)
-            raise SourceException(message)
-        else:
-            return SourceUploadedFile(
-                source=self, file=PseudoFile(
-                    file=temporary_file_object, name='scan {}'.format(now())
-                )
-            )
+        )

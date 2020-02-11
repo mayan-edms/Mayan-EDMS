@@ -8,6 +8,7 @@ from django.core.exceptions import FieldDoesNotExist
 from django.db.models.constants import LOOKUP_SEP
 from django.urls import resolve as django_resolve
 from django.urls.base import get_script_prefix
+from django.utils.encoding import force_text
 from django.utils.six.moves import reduce as reduce_function
 
 from mayan.apps.common.compat import dict_type, dictionary_type
@@ -19,6 +20,10 @@ logger = logging.getLogger(__name__)
 
 def check_for_sqlite():
     return settings.DATABASES['default']['ENGINE'] == DJANGO_SQLITE_BACKEND and settings.DEBUG is False
+
+
+def convert_to_id_list(items):
+    return ','.join(map(force_text, items))
 
 
 def get_related_field(model, related_field_name):

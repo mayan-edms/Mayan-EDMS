@@ -1,8 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.test import TestCase
-
-from django_downloadview import assert_download_response
+from django.test import TestCase, TransactionTestCase
 
 from mayan.apps.acls.tests.mixins import ACLTestCaseMixin
 from mayan.apps.converter.tests.mixins import LayerTestCaseMixin
@@ -14,24 +12,36 @@ from mayan.apps.user_management.tests.mixins import UserTestMixin
 
 from .mixins import (
     ClientMethodsTestCaseMixin, ConnectionsCheckTestCaseMixin,
-    ContentTypeCheckTestCaseMixin, ModelTestCaseMixin,
+    ContentTypeCheckTestCaseMixin, DownloadTestCaseMixin, ModelTestCaseMixin,
     OpenFileCheckTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin,
     SilenceLoggerTestCaseMixin, TempfileCheckTestCasekMixin,
     TestViewTestCaseMixin
 )
 
 
-class BaseTestCase(
-    LayerTestCaseMixin, SilenceLoggerTestCaseMixin, ConnectionsCheckTestCaseMixin,
+class BaseTestCaseMixin(
+    LayerTestCaseMixin, SilenceLoggerTestCaseMixin,
+    ConnectionsCheckTestCaseMixin, DownloadTestCaseMixin,
     RandomPrimaryKeyModelMonkeyPatchMixin, ACLTestCaseMixin,
     ModelTestCaseMixin, OpenFileCheckTestCaseMixin, PermissionTestCaseMixin,
     SmartSettingsTestCaseMixin, TempfileCheckTestCasekMixin, UserTestMixin,
-    TestCase
 ):
     """
-    This is the most basic test case class any test in the project should use.
+    This is the most basic test case mixin class any test in the project
+    should use.
     """
-    assert_download_response = assert_download_response
+
+
+class BaseTestCase(BaseTestCaseMixin, TestCase):
+    """
+    All the project test mixin on top of Django test case class.
+    """
+
+
+class BaseTransactionTestCase(BaseTestCaseMixin, TransactionTestCase):
+    """
+    All the project test mixin on top of Django transaction test case class.
+    """
 
 
 class GenericViewTestCase(

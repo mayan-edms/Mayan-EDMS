@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:30-0400\n"
-"PO-Revision-Date: 2019-06-27 12:07+0000\n"
-"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"PO-Revision-Date: 2020-01-31 04:42+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,6 +68,12 @@ msgid ""
 " in. Value is time in seconds."
 msgstr "Maksimālais laiks, uz kādu lietotājs, noklikšķinot uz izvēles rūtiņas „Atcerēties mani”, paliks pieteicies. Vērtība ir laiks sekundēs."
 
+#: settings.py:27
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr ""
+
 #: templates/authentication/login.html:11
 msgid "Login"
 msgstr "Pierakstīties"
@@ -77,7 +83,7 @@ msgstr "Pierakstīties"
 msgid "Sign in"
 msgstr "Pierakstīties"
 
-#: templates/authentication/login.html:39
+#: templates/authentication/login.html:41
 msgid "Forgot your password?"
 msgstr "Aizmirsāt savu paroli?"
 
@@ -99,7 +105,7 @@ msgid "Login page"
 msgstr "Pierakstīšanās lapa"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:154
+#: templates/authentication/password_reset_form.html:29 views.py:167
 msgid "Submit"
 msgstr "Iesniegt"
 
@@ -107,52 +113,52 @@ msgstr "Iesniegt"
 msgid "Password reset email sent!"
 msgstr "Paroles atiestatīšanas e-pasts nosūtīts!"
 
-#: views.py:74
+#: views.py:77
 msgid "Your password has been successfully changed."
 msgstr "Jūsu parole ir veiksmīgi mainīta."
 
-#: views.py:81
+#: views.py:84
 msgid "Current user password change"
 msgstr "Pašreizējā lietotāja paroles maiņa"
 
-#: views.py:89
+#: views.py:92
 msgid "Changing the password is not allowed for this account."
 msgstr "Paroles maiņa šim kontam nav atļauta."
 
-#: views.py:145
+#: views.py:158
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "%(count)d lietotājam veikts paroles maiņas pieprasījums"
 
-#: views.py:147
+#: views.py:160
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "%(count)d lietotājiem veikts paroles maiņas pieprasījums"
 
-#: views.py:156
+#: views.py:169
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] "Mainīt lietotāju paroles"
 msgstr[1] "Mainīt lietotāja paroli"
 msgstr[2] "Mainīt lietotāju paroles"
 
-#: views.py:166
+#: views.py:179
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Mainīt paroli lietotājam: %s"
 
-#: views.py:186
+#: views.py:199
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "Super lietotāju un darbinieku lietotāju paroles atiestatīšana nav atļauta, šajos gadījumos izmantojiet admin saskarni."
 
-#: views.py:196
+#: views.py:209
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Veiksmīga paroles atiestatīšana lietotājam: %s."
 
-#: views.py:202
+#: views.py:215
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Atiestatot paroli lietotājam \"%(user)s\", radās kļūda: %(error)s"

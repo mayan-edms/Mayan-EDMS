@@ -49,12 +49,12 @@ INSTALLED_APPS = (
     'mayan.apps.appearance',
     # Django
     'django.contrib.admin',
-    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.forms',
     # Allow using WhiteNoise in development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
@@ -118,6 +118,7 @@ INSTALLED_APPS = (
     'mayan.apps.tags',
     'mayan.apps.web_links',
     # Placed after rest_api to allow template overriding
+    'django.contrib.admindocs',
     'drf_yasg',
 )
 
@@ -225,7 +226,7 @@ LANGUAGES = (
     ('sl', _('Slovenian')),
     ('tr', _('Turkish')),
     ('vi', _('Vietnamese')),
-    ('zh', _('Chinese')),
+    ('zh-hans', _('Chinese (Simplified)')),
 )
 
 SITE_ID = 1

@@ -74,7 +74,8 @@ docker-staging-container-redis-start:
 	--maxmemory-policy \
 	allkeys-lru \
 	--save \
-	""
+	"" \
+	--requirepass mayanredispassword
 
 docker-staging-container-rabbitmq-start:
 	docker run \
@@ -96,14 +97,14 @@ docker-staging-container-mayan-start:
 	-e MAYAN_DATABASE_PASSWORD=mayanuserpass \
 	-e MAYAN_DATABASE_USER=mayan \
 	-e MAYAN_CELERY_BROKER_URL=$(MAYAN_CELERY_BROKER_URL) \
-	-e MAYAN_CELERY_RESULT_BACKEND="redis://mayan-staging-redis:6379/1" \
+	-e MAYAN_CELERY_RESULT_BACKEND="redis://:mayanredispassword@mayan-staging-redis:6379/1" \
 	-v mayan-staging-app:/var/lib/mayan \
 	mayanedms/mayanedms:$(IMAGE_VERSION)
 
 docker-staging-start-with-rabbitmq: MAYAN_CELERY_BROKER_URL="amqp://guest:guest@mayan-staging-rabbitmq:5672/"
 docker-staging-start-with-rabbitmq: docker-staging-start
 
-docker-staging-start-with-redis: MAYAN_CELERY_BROKER_URL="redis://mayan-staging-redis:6379/0"
+docker-staging-start-with-redis: MAYAN_CELERY_BROKER_URL="redis://:mayanredispassword@mayan-staging-redis:6379/0"
 docker-staging-start-with-redis: docker-staging-start
 
 docker-staging-start: docker-staging-cleanup docker-staging-network-create docker-staging-container-postgresql-start docker-staging-container-rabbitmq-start docker-staging-container-redis-start docker-staging-container-mayan-start

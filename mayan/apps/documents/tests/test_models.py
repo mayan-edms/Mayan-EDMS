@@ -3,7 +3,10 @@ from __future__ import unicode_literals
 from datetime import timedelta
 import time
 
+from django.test import override_settings
+
 from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.converter.layers import layer_saved_transformations
 
 from ..literals import STUB_EXPIRATION_INTERVAL
 from ..models import (
@@ -12,18 +15,20 @@ from ..models import (
 
 from .base import GenericDocumentTestCase
 from .literals import (
-    TEST_DOCUMENT_TYPE_LABEL, TEST_MULTI_PAGE_TIFF_PATH,
-    TEST_PDF_INDIRECT_ROTATE_PATH, TEST_OFFICE_DOCUMENT_PATH,
-    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_FILENAME,
-    TEST_SMALL_DOCUMENT_MIMETYPE, TEST_SMALL_DOCUMENT_PATH,
-    TEST_SMALL_DOCUMENT_SIZE
+    TEST_DOCUMENT_TYPE_LABEL, TEST_MULTI_PAGE_TIFF,
+    TEST_OFFICE_DOCUMENT, TEST_PDF_INDIRECT_ROTATE_LABEL,
+    TEST_PDF_ROTATE_ALTERNATE_LABEL, TEST_SMALL_DOCUMENT_CHECKSUM,
+    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_MIMETYPE,
+    TEST_SMALL_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_SIZE
+
 )
-from .mixins import DocumentTestMixin
 
 
-class DocumentTestCase(DocumentTestMixin, BaseTestCase):
+class DocumentTestCase(GenericDocumentTestCase):
     def test_document_creation(self):
-        self.assertEqual(self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL)
+        self.assertEqual(
+            self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL
+        )
 
         self.assertEqual(self.test_document.exists(), True)
         self.assertEqual(self.test_document.size, TEST_SMALL_DOCUMENT_SIZE)
@@ -32,7 +37,9 @@ class DocumentTestCase(DocumentTestMixin, BaseTestCase):
             self.test_document.file_mimetype, TEST_SMALL_DOCUMENT_MIMETYPE
         )
         self.assertEqual(self.test_document.file_mime_encoding, 'binary')
-        self.assertEqual(self.test_document.label, TEST_SMALL_DOCUMENT_FILENAME)
+        self.assertEqual(
+            self.test_document.label, TEST_SMALL_DOCUMENT_FILENAME
+        )
         self.assertEqual(
             self.test_document.checksum, TEST_SMALL_DOCUMENT_CHECKSUM
         )
@@ -125,41 +132,38 @@ class DocumentTestCase(DocumentTestMixin, BaseTestCase):
         self.assertEqual(DeletedDocument.objects.count(), 0)
 
 
-class PDFCompatibilityTestCase(BaseTestCase):
-    def test_indirect_rotate(self):
-        self.test_document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
+@override_settings(DOCUMENTS_FIX_ORIENTATION=True)
+class PDFAlternateRotationTestCase(GenericDocumentTestCase):
+    test_document_filename = TEST_PDF_ROTATE_ALTERNATE_LABEL
+
+    def test_rotate(self):
+        self.assertQuerysetEqual(
+            qs=Document.objects.all(), values=(repr(self.test_document),)
+        )
+        self.assertEqual(
+            layer_saved_transformations.get_transformations_for(
+                obj=self.test_document.latest_version.pages.first()
+            ).count(), 1
         )
 
-        with open(TEST_PDF_INDIRECT_ROTATE_PATH, mode='rb') as file_object:
-            self.test_document = self.test_document_type.new_document(
-                file_object=file_object
-            )
 
+@override_settings(DOCUMENTS_FIX_ORIENTATION=True)
+class PDFIndirectRotationTestCase(GenericDocumentTestCase):
+    test_document_filename = TEST_PDF_INDIRECT_ROTATE_LABEL
+
+    def test_rotate(self):
         self.assertQuerysetEqual(
             qs=Document.objects.all(), values=(repr(self.test_document),)
         )
 
 
-class OfficeDocumentTestCase(BaseTestCase):
-    def setUp(self):
-        super(OfficeDocumentTestCase, self).setUp()
-
-        self.test_document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_OFFICE_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document = self.test_document_type.new_document(
-                file_object=file_object
-            )
-
-    def tearDown(self):
-        self.test_document_type.delete()
-        super(OfficeDocumentTestCase, self).tearDown()
+class OfficeDocumentTestCase(GenericDocumentTestCase):
+    test_document_filename = TEST_OFFICE_DOCUMENT
 
     def test_document_creation(self):
-        self.assertEqual(self.test_document.file_mimetype, 'application/msword')
+        self.assertEqual(
+            self.test_document.file_mimetype, 'application/msword'
+        )
         self.assertEqual(
             self.test_document.file_mime_encoding, 'binary'
         )
@@ -170,21 +174,8 @@ class OfficeDocumentTestCase(BaseTestCase):
         self.assertEqual(self.test_document.page_count, 2)
 
 
-class MultiPageTiffTestCase(BaseTestCase):
-    def setUp(self):
-        super(MultiPageTiffTestCase, self).setUp()
-        self.test_document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_MULTI_PAGE_TIFF_PATH, mode='rb') as file_object:
-            self.test_document = self.test_document_type.new_document(
-                file_object=file_object
-            )
-
-    def tearDown(self):
-        self.test_document_type.delete()
-        super(MultiPageTiffTestCase, self).tearDown()
+class MultiPageTiffTestCase(GenericDocumentTestCase):
+    test_document_filename = TEST_MULTI_PAGE_TIFF
 
     def test_document_creation(self):
         self.assertEqual(self.test_document.file_mimetype, 'image/tiff')

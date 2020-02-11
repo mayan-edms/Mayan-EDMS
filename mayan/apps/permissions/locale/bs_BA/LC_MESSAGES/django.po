@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -9,21 +9,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:34-0400\n"
-"PO-Revision-Date: 2019-06-29 06:22+0000\n"
+"POT-Creation-Date: 2020-02-10 03:52-0400\n"
+"PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:43 events.py:8 models.py:36 models.py:105 permissions.py:7
+#: apps.py:47 events.py:8 models.py:36 models.py:106 permissions.py:7
 msgid "Permissions"
 msgstr "Dozvole"
 
-#: classes.py:84
+#: classes.py:87
 msgid "Insufficient permissions."
 msgstr "Nedovoljne dozvole."
 
@@ -39,11 +41,11 @@ msgstr ""
 msgid "Role edited"
 msgstr ""
 
-#: links.py:16 links.py:40 models.py:116 views.py:165
+#: links.py:16 links.py:40 models.py:117 views.py:171
 msgid "Roles"
 msgstr "Role"
 
-#: links.py:23
+#: links.py:23 views.py:53
 msgid "Create new role"
 msgstr "Kreirajte novu ulogu"
 
@@ -55,7 +57,7 @@ msgstr "Obriši"
 msgid "Edit"
 msgstr "Urediti"
 
-#: links.py:45 models.py:108
+#: links.py:45 models.py:109
 msgid "Groups"
 msgstr "Grupe"
 
@@ -75,11 +77,15 @@ msgstr "Ime"
 msgid "Permission"
 msgstr "Permisija"
 
-#: models.py:101 search.py:16
+#: models.py:101
+msgid "A short text describing the role."
+msgstr ""
+
+#: models.py:102 search.py:16
 msgid "Label"
 msgstr "Labela"
 
-#: models.py:115
+#: models.py:116
 msgid "Role"
 msgstr "Uloga"
 
@@ -107,11 +113,15 @@ msgstr "Ime grupe"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "Lista odvojenih odvojenih grupa primarnih ključeva grupa za dodavanje ili zamjenu u ovoj ulozi."
+msgstr ""
+"Lista odvojenih odvojenih grupa primarnih ključeva grupa za dodavanje ili "
+"zamjenu u ovoj ulozi."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "Lista odvojenih odvojenih primarnih ključeva za odvajanje odvojenih dijelova za dodelu ove uloge."
+msgstr ""
+"Lista odvojenih odvojenih primarnih ključeva za odvajanje odvojenih dijelova "
+"za dodelu ove uloge."
 
 #: serializers.py:90
 #, python-format
@@ -131,44 +141,44 @@ msgstr "Grupne uloge"
 msgid "Roles of group: %s"
 msgstr "Uloge grupe: %s"
 
-#: views.py:79
+#: views.py:82
 msgid "Available groups"
 msgstr "Dostupne grupe"
 
-#: views.py:80
+#: views.py:83
 msgid "Role groups"
 msgstr "Uloge grupa"
 
-#: views.py:89
+#: views.py:92
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Grupe uloge: %s"
 
-#: views.py:91
+#: views.py:94
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr ""
 
-#: views.py:104
+#: views.py:107
 msgid "Available permissions"
 msgstr "Dostupne dozvole"
 
-#: views.py:105
+#: views.py:108
 msgid "Granted permissions"
 msgstr "Dodjeljene dozvole"
 
-#: views.py:137
+#: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
 
-#: views.py:140
+#: views.py:146
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Dozvole za ulogu: %s"
 
-#: views.py:157
+#: views.py:163
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -176,6 +186,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr ""
 
-#: views.py:164
+#: views.py:170
 msgid "There are no roles"
 msgstr ""

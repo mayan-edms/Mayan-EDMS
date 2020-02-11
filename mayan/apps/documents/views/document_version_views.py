@@ -14,8 +14,7 @@ from ..events import event_document_view
 from ..forms import DocumentVersionDownloadForm, DocumentVersionPreviewForm
 from ..models import Document, DocumentVersion
 from ..permissions import (
-    permission_document_download, permission_document_version_revert,
-    permission_document_version_view
+    permission_document_version_revert, permission_document_version_view
 )
 
 from .document_views import DocumentDownloadFormView, DocumentDownloadView
@@ -31,11 +30,11 @@ logger = logging.getLogger(__name__)
 class DocumentVersionDownloadFormView(DocumentDownloadFormView):
     form_class = DocumentVersionDownloadForm
     model = DocumentVersion
-    multiple_download_view = None
+    pk_url_kwarg = 'pk'
     querystring_form_fields = (
         'compressed', 'zip_filename', 'preserve_extension'
     )
-    single_download_view = 'documents:document_version_download'
+    viewname = 'documents:document_multiple_version_download'
 
     def get_extra_context(self):
         result = super(
@@ -48,31 +47,12 @@ class DocumentVersionDownloadFormView(DocumentDownloadFormView):
 
         return result
 
-    def get_document_queryset(self):
-        id_list = self.request.GET.get(
-            'id_list', self.request.POST.get('id_list', '')
-        )
-
-        if not id_list:
-            id_list = self.kwargs['pk']
-
-        return self.model.objects.filter(
-            pk__in=id_list.split(',')
-        )
-
 
 class DocumentVersionDownloadView(DocumentDownloadView):
     model = DocumentVersion
-    object_permission = permission_document_download
+    pk_url_kwarg = 'pk'
 
-    @staticmethod
-    def get_item_file(item):
-        return item.file
-
-    def get_encoding(self):
-        return self.get_object().encoding
-
-    def get_item_label(self, item):
+    def get_item_filename(self, item):
         preserve_extension = self.request.GET.get(
             'preserve_extension', self.request.POST.get(
                 'preserve_extension', False
@@ -82,9 +62,6 @@ class DocumentVersionDownloadView(DocumentDownloadView):
         preserve_extension = preserve_extension == 'true' or preserve_extension == 'True'
 
         return item.get_rendered_string(preserve_extension=preserve_extension)
-
-    def get_mimetype(self):
-        return self.get_object().mimetype
 
 
 class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):

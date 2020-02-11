@@ -18,9 +18,9 @@ from .literals import (
 from .mixins import MetadataTypeTestMixin
 
 
-class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
+class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
     def setUp(self):
-        super(MetadataTestCase, self).setUp()
+        super(MetadataTypeTestCase, self).setUp()
         self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type
@@ -297,3 +297,35 @@ class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
         self.assertEqual(
             self.test_document.metadata.first().metadata_type, self.test_metadata_type
         )
+
+    def test_delete_metadata_type_present_assigned_as_document_metadata(self):
+        # GitLab issue #753
+        document_metadata = DocumentMetadata(
+            document=self.test_document, metadata_type=self.test_metadata_type,
+            value=TEST_DEFAULT_VALUE
+        )
+
+        document_metadata.full_clean()
+        document_metadata.save()
+
+        # Must not raise an error
+        self.test_metadata_type.delete()
+
+    def test_delete_document_metadata_with_validator(self):
+        """
+        GitLab issue #588 "Cannot delete metadata from document if
+        validator or parser is set"
+        """
+        self.test_metadata_type.validation = TEST_DATE_VALIDATOR
+        self.test_metadata_type.save()
+
+        document_metadata = DocumentMetadata(
+            document=self.test_document, metadata_type=self.test_metadata_type,
+            value=TEST_PARSED_VALID_DATE
+        )
+
+        document_metadata.full_clean()
+        document_metadata.save()
+
+        # Must not raise an error
+        document_metadata.delete()

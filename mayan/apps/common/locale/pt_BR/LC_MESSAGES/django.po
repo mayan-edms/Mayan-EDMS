@@ -8,14 +8,15 @@
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
 # Roberto Rosario, 2012
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:30-0400\n"
-"PO-Revision-Date: 2019-12-03 05:22+0000\n"
-"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>\n"
+"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"PO-Revision-Date: 2020-01-29 19:00+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,29 +28,33 @@ msgstr ""
 msgid "Common"
 msgstr "Comum"
 
-#: classes.py:85
-msgid "Available attributes: \n"
-msgstr "Atributos disponíveis:\n"
+#: classes.py:185
+msgid "Model properties"
+msgstr "Propriedades do modelo"
 
-#: classes.py:125
-msgid "Available fields: \n"
-msgstr "Campos disponíveis:\n"
+#: classes.py:190
+msgid "Model fields"
+msgstr "Campos do modelo"
 
-#: dependencies.py:309
+#: classes.py:233
+msgid "Model related fields"
+msgstr "Campos relacionados ao modelo"
+
+#: dependencies.py:308
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Usada para permitir a tradução offline do texto do código"
 
-#: dependencies.py:314
+#: dependencies.py:313
 msgid "Provides style checking."
-msgstr ""
+msgstr "Fornece verificação de estilo"
 
-#: dependencies.py:319
+#: dependencies.py:318
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Ambiente de linha de comando com auto completar."
 
-#: dependencies.py:324
+#: dependencies.py:323
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Verificar a formatação adequada do arquivo de README."
 
 #: forms.py:27
 msgid "Selection"
@@ -59,67 +64,67 @@ msgstr "Seleção"
 msgid "None"
 msgstr "Nenhum"
 
-#: generics.py:151
+#: generics.py:148
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Selecione as entradas a serem removidas. Segure CTRL para selecionar múltiplas entradas. Uma vez completa a seleção, clique no botão abaixo ou dê um duplo clique na lista para ativar a ação."
 
-#: generics.py:156
+#: generics.py:153
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Selecione as entradas a serem adicionadas. Segure CTRL para selecionar múltiplas entradas. Uma vez completa a seleção, clique no botão abaixo ou dê um duplo clique na lista para ativar a ação."
 
-#: generics.py:289
+#: generics.py:286
 msgid "Add all"
-msgstr ""
+msgstr "Adicionar tudo"
 
-#: generics.py:298
+#: generics.py:295
 msgid "Add"
 msgstr "Adicionar"
 
-#: generics.py:308
+#: generics.py:305
 msgid "Remove all"
-msgstr ""
+msgstr "Remover tudo"
 
-#: generics.py:317
+#: generics.py:314
 msgid "Remove"
 msgstr "Remover"
 
-#: generics.py:525
+#: generics.py:524
 #, python-format
 msgid "Duplicate data error: %(error)s"
-msgstr ""
+msgstr "Erro de dados duplicados: %(error)s"
 
-#: generics.py:547
+#: generics.py:546
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s não criado, erro: %(error)s"
 
-#: generics.py:560
+#: generics.py:559
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s criado com sucesso."
 
-#: generics.py:599
+#: generics.py:598
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s não removido, erro: %(error)s."
 
-#: generics.py:608
+#: generics.py:607
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s removido com sucesso."
 
-#: generics.py:701
+#: generics.py:743
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s não atualizado, erro: %(error)s."
 
-#: generics.py:712
+#: generics.py:754
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s atualizado com sucesso."
@@ -130,15 +135,15 @@ msgstr "Sobre isso"
 
 #: links.py:39
 msgid "Get the book"
-msgstr ""
+msgstr "Obter o livro"
 
 #: links.py:44
 msgid "Locale profile"
-msgstr "Perfil Idioma"
+msgstr "Perfil do locale"
 
 #: links.py:49
 msgid "Edit locale profile"
-msgstr "Editar perfil Idioma"
+msgstr "Editar perfil do locale"
 
 #: links.py:54
 msgid "Documentation"
@@ -176,26 +181,26 @@ msgstr "Suporte"
 msgid "Tools"
 msgstr "Ferramentas"
 
-#: literals.py:13
+#: literals.py:14
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "Essa funcionalidade foi deprecada e será removida numa versão futura"
 
-#: literals.py:16
+#: literals.py:17
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr "Sua base de dados de back-end está configurada para utilizar SQLite. SQLite deve ser usado apenas em ambientes de desenvolvimento e testes, não de produção."
-
-#: literals.py:34
-msgid "Days"
-msgstr "Dia"
+msgstr "Sua base de dados está configurada para utilizar SQLite. SQLite deve ser usado apenas em ambientes de desenvolvimento e testes, não de produção."
 
 #: literals.py:35
-msgid "Hours"
-msgstr "Hora"
+msgid "Days"
+msgstr "Dias"
 
 #: literals.py:36
+msgid "Hours"
+msgstr "Horas"
+
+#: literals.py:37
 msgid "Minutes"
 msgstr "Minutos"
 
@@ -205,7 +210,7 @@ msgstr "Sistema"
 
 #: menus.py:12 menus.py:13
 msgid "Facet"
-msgstr ""
+msgstr "Aspecto"
 
 #: menus.py:16
 msgid "Actions"
@@ -213,24 +218,24 @@ msgstr "Ações"
 
 #: menus.py:17
 msgid "Secondary"
-msgstr ""
+msgstr "Secundário"
 
 #: menus.py:22 models.py:93
 msgid "User"
 msgstr "Usuário"
 
-#: mixins.py:268
+#: mixins.py:292
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
-msgstr ""
+msgstr "Nenhum %(verbose_name)s que corresponda à pesquisa foi encontrado."
 
-#: mixins.py:343
+#: mixins.py:405
 msgid "Object"
 msgstr "Objeto"
 
 #: models.py:28
 msgid "Namespace"
-msgstr "namespace"
+msgstr "Namespace"
 
 #: models.py:39 models.py:63
 msgid "Date time"
@@ -238,15 +243,15 @@ msgstr "Data e hora"
 
 #: models.py:41 views.py:151
 msgid "Result"
-msgstr "resultado"
+msgstr "Resultado"
 
 #: models.py:47
 msgid "Error log entry"
-msgstr "Entrada do registro de erros"
+msgstr "Entrada do log de erros"
 
 #: models.py:48
 msgid "Error log entries"
-msgstr "Entradas do registro de erros"
+msgstr "Entradas do log de erros"
 
 #: models.py:59
 msgid "File"
@@ -270,11 +275,11 @@ msgstr "Fuso horário"
 
 #: models.py:100
 msgid "Language"
-msgstr "Linguagem"
+msgstr "Idioma"
 
 #: models.py:106
 msgid "User locale profile"
-msgstr "Perfil de localidade do usuário"
+msgstr "Perfil de locale do usuário"
 
 #: models.py:107
 msgid "User locale profiles"
@@ -282,7 +287,7 @@ msgstr "Perfis de localidade do usuário"
 
 #: permissions_runtime.py:10
 msgid "View error log"
-msgstr "Ver registro de erros"
+msgstr "Ver log de erros"
 
 #: queues.py:13
 msgid "Default"
@@ -294,11 +299,11 @@ msgstr "Comum periódico"
 
 #: queues.py:22
 msgid "Delete stale uploads"
-msgstr "Deletar uploads obsoletos"
+msgstr "Excluir uploads caducos"
 
 #: settings.py:22
 msgid "Automatically enable logging to all apps."
-msgstr "Ativar automaticamente o registro de todos os aplicativos."
+msgstr "Ativar automaticamente o logging de todos as apps."
 
 #: settings.py:28
 msgid ""
@@ -312,7 +317,7 @@ msgid ""
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Uma lista de strings designando todas as aplicações que serão removidas daquelas normamente instaladas pelo Mayan EDMS. Cada string deve ser um caminho Python pontuado para uma classe de configuração da aplicação (preferencialmente) ou um pacote contendo uma aplicação."
 
 #: settings.py:46
 msgid ""
@@ -320,25 +325,25 @@ msgid ""
 "those normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Uma lista de strings designando todas as aplicações que serão instaladas para além daquelas normamente instaladas pelo Mayan EDMS. Cada string deve ser um caminho Python pontuado para uma classe de configuração da aplicação (preferencialmente) ou um pacote contendo uma aplicação."
 
 #: settings.py:55
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Nome da tela associada à âncora da marca no menu principal. Esta é também a tela para qual os usuários serão direcionados após o login."
 
 #: settings.py:64
 msgid "The number objects that will be displayed per page."
-msgstr ""
+msgstr "O número de objetos que será exibido por página."
 
 #: settings.py:71
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr "Habilite registro de erros fora das capacidades do registro de erros do sistema."
+msgstr "Habilite logging de erros fora das capacidades do log de erros do sistema."
 
 #: settings.py:78
 msgid "Path to the logfile that will track errors during production."
-msgstr "Caminho para o arquivo de registro que rastreará erros durante a produção."
+msgstr "Caminho para o arquivo de log que rastreará erros durante a produção."
 
 #: settings.py:85
 msgid "Name to be displayed in the main menu."
@@ -350,38 +355,38 @@ msgstr "URL da instalação ou homepage do projeto."
 
 #: settings.py:97
 msgid "A storage backend that all workers can use to share files."
-msgstr "Um suporte de armazenamento que todos os trabalhadores podem usar para compartilhar arquivos."
+msgstr "Um backend de armazenamento que todos os workers podem usar para compartilhar arquivos."
 
-#: templatetags/common_tags.py:28
+#: templatetags/common_tags.py:29
 msgid "Confirm delete"
-msgstr "Confirmar Exclusão"
+msgstr "Confirmar exclusão"
 
-#: templatetags/common_tags.py:33
+#: templatetags/common_tags.py:34
 #, python-format
 msgid "Edit %s"
-msgstr ""
+msgstr "Editar %s"
 
-#: templatetags/common_tags.py:36
+#: templatetags/common_tags.py:37
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: templatetags/common_tags.py:40
+#: templatetags/common_tags.py:41
 #, python-format
 msgid "Details for: %s"
-msgstr "detalhes para: %s"
+msgstr "Detalhes para: %s"
 
-#: templatetags/common_tags.py:44
+#: templatetags/common_tags.py:45
 #, python-format
 msgid "Edit: %s"
-msgstr "Edita: %s"
+msgstr "Editar: %s"
 
-#: templatetags/common_tags.py:47
+#: templatetags/common_tags.py:48
 msgid "Create"
 msgstr "Criar"
 
 #: validators.py:46
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "Entre um valor JSON válido."
 
 #: validators.py:70
 msgid "Enter a valid YAML value."
@@ -399,11 +404,11 @@ msgstr "Sobre"
 
 #: views.py:40
 msgid "Current user locale profile details"
-msgstr "Detalhes do perfil de localidade do usuário atual"
+msgstr "Detalhes do perfil de locale do usuário atual"
 
 #: views.py:46
 msgid "Edit current user locale profile details"
-msgstr "Editar detalhes do perfil de localização do usuário atual"
+msgstr "Editar detalhes do perfil de locale do usuário atual"
 
 #: views.py:96
 msgid "Dashboard"
@@ -412,11 +417,11 @@ msgstr "Painel de controle"
 #: views.py:114
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr "Limpar entradas de registro de erros para: %s"
+msgstr "Limpar entradas de log de erros para: %s"
 
 #: views.py:131
 msgid "Object error log cleared successfully"
-msgstr "O registro de erros do objeto foi apagado com sucesso."
+msgstr "O log de erros do objeto foi apagado com sucesso."
 
 #: views.py:150
 msgid "Date and time"
@@ -426,16 +431,16 @@ msgstr "Data e hora"
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
-msgstr ""
+msgstr "Esta tela exibe o log de erros de objeto diferente. Uma lista vazia é uma coisa boa"
 
 #: views.py:160
 msgid "There are no error log entries"
-msgstr ""
+msgstr "Não há entradas no log de erros"
 
 #: views.py:163
 #, python-format
 msgid "Error log entries for: %s"
-msgstr "Entradas de registro de erros para: %s"
+msgstr "Entradas de log de erros para: %s"
 
 #: views.py:191
 msgid "No setup options available."
@@ -453,8 +458,8 @@ msgstr "Itens da Configuração"
 
 #: views.py:201
 msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgstr "Aqui você pode configurar todos os aspectos do sistema."
 
 #: views.py:216
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "Estes módulos são usados para a manutenção do sistema."

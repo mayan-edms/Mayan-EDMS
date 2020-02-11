@@ -5,6 +5,7 @@ from mayan.apps.common.tests.base import BaseTestCase
 from ..compressed_files import Archive, TarArchive, ZipArchive
 
 from .literals import (
+    TEST_ARCHIVE_ZIP_CP437_MEMBER_PATH,
     TEST_ARCHIVE_ZIP_SPECIAL_CHARACTERS_FILENAME_MEMBER_PATH,
     TEST_COMPRESSED_FILE_CONTENTS, TEST_FILE_CONTENTS_1, TEST_FILE3_PATH,
     TEST_FILENAME1, TEST_FILENAME3, TEST_TAR_BZ2_FILE_PATH,
@@ -12,9 +13,9 @@ from .literals import (
 )
 
 
-class TarArchiveClassTestCase(BaseTestCase):
-    archive_path = TEST_TAR_FILE_PATH
-    cls = TarArchive
+class ArchiveClassTestCaseMixin(object):
+    archive_path = None
+    cls = None
     filename = TEST_FILENAME3
     file_path = TEST_FILE3_PATH
     members_list = TEST_COMPRESSED_FILE_CONTENTS
@@ -55,7 +56,12 @@ class TarArchiveClassTestCase(BaseTestCase):
             )
 
 
-class ZipArchiveClassTestCase(TarArchiveClassTestCase):
+class TarArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
+    archive_path = TEST_TAR_FILE_PATH
+    cls = TarArchive
+
+
+class ZipArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
     archive_path = TEST_ZIP_FILE_PATH
     cls = ZipArchive
 
@@ -64,12 +70,17 @@ class ZipArchiveClassTestCase(TarArchiveClassTestCase):
             archive = Archive.open(file_object=file_object)
             list(archive.get_members())
 
+    def test_open_cp437_member(self):
+        with open(TEST_ARCHIVE_ZIP_CP437_MEMBER_PATH, mode='rb') as file_object:
+            archive = Archive.open(file_object=file_object)
+            list(archive.get_members())
 
-class TarGzArchiveClassTestCase(TarArchiveClassTestCase):
+
+class TarGzArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
     archive_path = TEST_TAR_GZ_FILE_PATH
     cls = TarArchive
 
 
-class TarBz2ArchiveClassTestCase(TarArchiveClassTestCase):
+class TarBz2ArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
     archive_path = TEST_TAR_BZ2_FILE_PATH
     cls = TarArchive

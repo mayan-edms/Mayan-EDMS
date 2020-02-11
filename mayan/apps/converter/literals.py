@@ -49,7 +49,7 @@ CONVERTER_OFFICE_FILE_MIMETYPES = (
     'text/rtf',
 )
 
-if platform.system() == 'OpenBSD':
+if platform.system() in ('FreeBSD', 'OpenBSD', 'Darwin'):
     DEFAULT_LIBREOFFICE_PATH = '/usr/local/bin/libreoffice'
     DEFAULT_PDFINFO_PATH = '/usr/local/bin/pdfinfo'
     DEFAULT_PDFTOPPM_PATH = '/usr/local/bin/pdftoppm'
@@ -62,6 +62,7 @@ DEFAULT_ZOOM_LEVEL = 100
 DEFAULT_ROTATION = 0
 DEFAULT_PAGE_NUMBER = 1
 DEFAULT_PILLOW_FORMAT = 'JPEG'
+DEFAULT_PILLOW_MAXIMUM_IMAGE_PIXELS = 89478485  # Upstream default as of v6.2.1 (2019-01-16)
 
 DEFAULT_PDFTOPPM_DPI = 300
 DEFAULT_PDFTOPPM_FORMAT = 'jpeg'  # Possible values jpeg, png, tiff

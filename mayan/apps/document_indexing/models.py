@@ -113,6 +113,8 @@ class Index(models.Model):
         """
         logger.debug('Index; Indexing document: %s', document)
 
+        self.initialize_instance_root()
+
         with transaction.atomic():
             # Remove the document from all instance nodes from
             # this index
@@ -124,6 +126,9 @@ class Index(models.Model):
                 index_instance_node.delete_empty()
 
         self.template_root.index_document(document=document)
+
+    def initialize_instance_root(self):
+        return self.template_root.initialize_index_instance_root_node()
 
     @property
     def instance_root(self):
@@ -156,6 +161,16 @@ class Index(models.Model):
             # associated with this index.
             self.index_document(document=document)
 
+    def reset(self):
+        try:
+            self.instance_root.delete()
+        except IndexInstanceNode.DoesNotExist:
+            # Empty index, ignore this exception
+            pass
+
+        # Create the new root index instance node
+        self.template_root.index_instance_nodes.create()
+
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)
 
@@ -173,6 +188,8 @@ class Index(models.Model):
                 event_index_template_edited.commit(
                     actor=_user, target=self
                 )
+
+        self.initialize_instance_root()
 
     @property
     def template_root(self):
@@ -259,8 +276,7 @@ class IndexTemplateNode(MPTTModel):
         return 'indexing:indexing_template_node_{}'.format(self.pk)
 
     def get_instance_root_node(self):
-        index_instance_root_node, create = self.index_instance_nodes.get_or_create(parent=None)
-        return index_instance_root_node
+        return self.index_instance_nodes.get(parent=None)
 
     def index_document(self, document, acquire_lock=True, index_instance_node_parent=None):
         # Start transaction after the lock in case the locking backend uses
@@ -335,6 +351,9 @@ class IndexTemplateNode(MPTTModel):
             finally:
                 if acquire_lock:
                     lock.release()
+
+    def initialize_index_instance_root_node(self):
+        self.index_instance_nodes.get_or_create(parent=None)
 
 
 @python_2_unicode_compatible

@@ -5,6 +5,7 @@ import os
 
 import yaml
 
+from mayan.apps.common.compat import dict_type
 from mayan.apps.common.serialization import yaml_load
 
 from .literals import (
@@ -216,6 +217,15 @@ class MediaBootstrapSetting(FilesystemBootstrapSetting):
         return os.path.join(
             self.namespace.get_setting_value(name='MEDIA_ROOT'),
             *self.path_parts
+        )
+
+
+def smart_yaml_load(value):
+    if isinstance(value, dict_type):
+        return value
+    else:
+        return yaml_load(
+            stream=value or '{}',
         )
 
 

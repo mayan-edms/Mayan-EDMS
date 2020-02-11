@@ -2,24 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:32-0400\n"
+"POT-Creation-Date: 2020-02-10 03:51-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lv\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 
 #: admin.py:15
 msgid "Label"
@@ -38,11 +39,11 @@ msgstr "Atgrieziet konkrēta faila metadatu vērtību."
 msgid "File metadata value of"
 msgstr ""
 
-#: apps.py:110 apps.py:114 apps.py:152 apps.py:161
+#: apps.py:110 apps.py:152 apps.py:161
 msgid "File metadata key"
 msgstr "Faila metadatu atslēga"
 
-#: apps.py:156 apps.py:165
+#: apps.py:114 apps.py:156 apps.py:165
 msgid "File metadata value"
 msgstr "Faila metadatu vērtība"
 
@@ -89,7 +90,7 @@ msgstr "get_file_metadata (&lt;faila metadatu punktēts ceļš&gt;)"
 msgid "Return the specified document file metadata entry."
 msgstr "Atgrieziet norādīto dokumenta faila metadatu ierakstu."
 
-#: methods.py:62
+#: methods.py:68
 msgid "Return the specified document version file metadata entry."
 msgstr "Atgrieziet norādīto dokumentu versijas faila metadatu ierakstu."
 
@@ -97,71 +98,71 @@ msgstr "Atgrieziet norādīto dokumentu versijas faila metadatu ierakstu."
 msgid "Driver path"
 msgstr "Vadītāja ceļš"
 
-#: models.py:25
+#: models.py:26
 msgid "Internal name"
 msgstr "Iekšējais nosaukums"
 
-#: models.py:30 models.py:74
+#: models.py:31 models.py:75
 msgid "Driver"
 msgstr "Vadītājs"
 
-#: models.py:31
+#: models.py:32
 msgid "Drivers"
 msgstr "Draiveri"
 
-#: models.py:51
+#: models.py:52
 msgid "Document type"
 msgstr "Dokumenta veids"
 
-#: models.py:55
+#: models.py:56
 msgid "Automatically queue newly created documents for processing."
 msgstr "Automātiski rindā jaunizveidotos dokumentus apstrādei."
 
-#: models.py:62
+#: models.py:63
 msgid "Document type settings"
 msgstr "Dokumenta tipa iestatījumi"
 
-#: models.py:63
+#: models.py:64
 msgid "Document types settings"
 msgstr "Dokumentu veidu iestatījumi"
 
-#: models.py:78
+#: models.py:79
 msgid "Document version"
 msgstr "Dokumenta versija"
 
-#: models.py:84 models.py:100
+#: models.py:85 models.py:101
 msgid "Document version driver entry"
 msgstr "Dokumenta versijas draivera ieraksts"
 
-#: models.py:85
+#: models.py:86
 msgid "Document version driver entries"
 msgstr "Dokumenta versijas draivera ieraksti"
 
-#: models.py:92
+#: models.py:93
 msgid "Attribute count"
 msgstr "Atribūtu skaits"
 
-#: models.py:104
+#: models.py:105
 msgid "Name of the file metadata entry."
 msgstr "Faila metadatu ieraksta nosaukums."
 
-#: models.py:105
+#: models.py:106
 msgid "Key"
 msgstr "Atslēga"
 
-#: models.py:108
+#: models.py:109
 msgid "Value of the file metadata entry."
 msgstr "Faila metadatu ieraksta vērtība."
 
-#: models.py:109
+#: models.py:110
 msgid "Value"
 msgstr "Vērtība"
 
-#: models.py:114
+#: models.py:115
 msgid "File metadata entry"
 msgstr "Faila metadatu ieraksts"
 
-#: models.py:115
+#: models.py:116
 msgid "File metadata entries"
 msgstr "Failu metadatu ieraksti"
 
@@ -186,8 +187,8 @@ msgid ""
 "Set new document types to perform file metadata processing automatically by "
 "default."
 msgstr ""
-"Iestatiet jaunus dokumentu veidus, lai pēc noklusējuma veiktu failu metadatu"
-" apstrādi."
+"Iestatiet jaunus dokumentu veidus, lai pēc noklusējuma veiktu failu metadatu "
+"apstrādi."
 
 #: settings.py:24
 msgid "Arguments to pass to the drivers."
@@ -195,8 +196,8 @@ msgstr "Argumenti, kas jānodod vadītājiem."
 
 #: views.py:35
 msgid ""
-"File metadata are the attributes of the document's file. They can range from"
-" camera information used to take a photo to the author that created a file. "
+"File metadata are the attributes of the document's file. They can range from "
+"camera information used to take a photo to the author that created a file. "
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."

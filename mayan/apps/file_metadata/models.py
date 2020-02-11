@@ -18,10 +18,11 @@ logger = logging.getLogger(__name__)
 @python_2_unicode_compatible
 class StoredDriver(models.Model):
     driver_path = models.CharField(
-        max_length=255, verbose_name=_('Driver path')
+        max_length=255, unique=True, verbose_name=_('Driver path')
     )
     internal_name = models.CharField(
-        db_index=True, max_length=128, verbose_name=_('Internal name')
+        db_index=True, max_length=128, unique=True,
+        verbose_name=_('Internal name')
     )
 
     class Meta:

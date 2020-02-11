@@ -485,7 +485,7 @@ class IndexesResetView(FormView):
     def form_valid(self, form):
         count = 0
         for index in form.cleaned_data['index_templates']:
-            index.instance_root.delete()
+            index.reset()
             count += 1
 
         messages.success(

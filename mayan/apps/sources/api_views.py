@@ -3,32 +3,35 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 
-from rest_framework.response import Response
-
+from mayan.apps.permissions.classes import Permission
 from mayan.apps.rest_api import generics
 
 from .literals import STAGING_FILE_IMAGE_TASK_TIMEOUT
 from .models import StagingFolderSource
+from .permissions import permission_staging_file_delete
 from .serializers import StagingFolderFileSerializer, StagingFolderSerializer
 from .storages import storage_staging_file_image_cache
 from .tasks import task_generate_staging_file_image
 
 
-class APIStagingSourceFileView(generics.GenericAPIView):
+class APIStagingSourceFileView(generics.RetrieveDestroyAPIView):
     """
     get: Details of the selected staging file.
     """
     serializer_class = StagingFolderFileSerializer
 
-    def get(self, request, staging_folder_pk, encoded_filename):
+    def get_object(self):
+        if self.request.method == 'DELETE':
+            Permission.check_user_permissions(
+                permissions=(permission_staging_file_delete,),
+                user=self.request.user
+            )
+
         staging_folder = get_object_or_404(
-            klass=StagingFolderSource, pk=staging_folder_pk
+            klass=StagingFolderSource, pk=self.kwargs['staging_folder_pk']
         )
-        return Response(
-            StagingFolderFileSerializer(
-                staging_folder.get_file(encoded_filename=encoded_filename),
-                context={'request': request}
-            ).data
+        return staging_folder.get_file(
+            encoded_filename=self.kwargs['encoded_filename']
         )
 
 

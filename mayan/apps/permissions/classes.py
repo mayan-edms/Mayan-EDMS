@@ -1,10 +1,12 @@
 from __future__ import unicode_literals
 
+from importlib import import_module
 import itertools
 import logging
 
 from django.apps import apps
 from django.core.exceptions import PermissionDenied
+from django.db.utils import OperationalError, ProgrammingError
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -49,6 +51,7 @@ class PermissionNamespace(object):
 
 @python_2_unicode_compatible
 class Permission(object):
+    _imported_app = []
     _permissions = {}
     _stored_permissions_cache = {}
 
@@ -67,7 +70,7 @@ class Permission(object):
 
             return results
         else:
-            # Return sorted permisions by namespace.name
+            # Return sorted permissions by namespace.name
             return sorted(
                 cls._permissions.values(), key=lambda x: x.namespace.name
             )
@@ -84,20 +87,49 @@ class Permission(object):
         raise PermissionDenied(_('Insufficient permissions.'))
 
     @classmethod
-    def get(cls, pk, proxy_only=False):
-        if proxy_only:
+    def get(cls, pk, class_only=False):
+        if class_only:
             return cls._permissions[pk]
         else:
             return cls._permissions[pk].stored_permission
 
     @classmethod
-    def invalidate_cache(cls):
-        cls._stored_permissions_cache = {}
+    def initialize(cls):
+        module_name = 'permissions'
 
-    @classmethod
-    def refresh(cls):
+        for app in apps.get_app_configs():
+            # Keep track of the apps that have already been imported to
+            # avoid importing them more than once. Does not causes a problem,
+            # it is an optimization to speed up statups.
+            if app not in cls._imported_app:
+                try:
+                    import_module('{}.{}'.format(app.name, module_name))
+                except ImportError as exception:
+                    non_fatal_messages = (
+                        'No module named {}'.format(module_name),
+                        'No module named \'{}.{}\''.format(app.name, module_name)
+                    )
+
+                    if force_text(exception) not in non_fatal_messages:
+                        logger.error(
+                            'Error importing %s %s.py file; %s', app.name,
+                            module_name, exception
+                        )
+                        raise
+                finally:
+                    cls._imported_app.append(app)
+
+        # Invalidate cache always. This is for tests that build a new memory
+        # only database and cause all cache references built in the .ready()
+        # method to be invalid.
+        cls.invalidate_cache()
+
         for permission in cls.all():
             permission.stored_permission
+
+    @classmethod
+    def invalidate_cache(cls):
+        cls._stored_permissions_cache = {}
 
     def __init__(self, namespace, name, label):
         self.namespace = namespace
@@ -124,10 +156,17 @@ class Permission(object):
                 app_label='permissions', model_name='StoredPermission'
             )
 
-            stored_permission, created = StoredPermission.objects.get_or_create(
-                namespace=self.namespace.name,
-                name=self.name,
-            )
+            try:
+                stored_permission, created = StoredPermission.objects.get_or_create(
+                    namespace=self.namespace.name,
+                    name=self.name,
+                )
 
-            self.__class__._stored_permissions_cache[self.pk] = stored_permission
-            return stored_permission
+                self.__class__._stored_permissions_cache[self.pk] = stored_permission
+                return stored_permission
+            except (OperationalError, ProgrammingError):
+                """
+                This error is expected when trying to initialize the
+                stored permissions during the initial creation of the
+                database. Can be safely ignore under that situation.
+                """

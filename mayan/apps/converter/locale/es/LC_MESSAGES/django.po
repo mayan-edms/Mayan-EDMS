@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2015-2019
+# Roberto Rosario, 2015-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:30-0400\n"
-"PO-Revision-Date: 2019-12-05 18:37+0000\n"
+"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"PO-Revision-Date: 2020-01-31 05:10+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:22 permissions.py:7 settings.py:14
+#: apps.py:22 permissions.py:7 settings.py:15
 msgid "Converter"
 msgstr "Convertidor"
 
@@ -27,31 +27,31 @@ msgstr "Convertidor"
 msgid "Transformation"
 msgstr "Transformación"
 
-#: backends/python.py:162 backends/python.py:168
+#: backends/python.py:158 backends/python.py:171
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Excepción determinando el número de páginas del PDF; %s"
 
-#: backends/python.py:182
+#: backends/python.py:185
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Excepción determinando el número de páginas usando Pillow; %s"
 
-#: classes.py:116
+#: classes.py:125
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice no instalado o no encontrado."
 
-#: classes.py:199
+#: classes.py:208
 msgid "Not an office file format."
 msgstr "No es un formato de archivo de la oficina."
 
-#: classes.py:327
+#: classes.py:336
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr "Las transformaciones permiten cambiar la apariencia visual de los documentos sin realizar cambios permanentes en el archivo del documento."
 
-#: classes.py:375
+#: classes.py:384
 msgid "transformation"
 msgstr "transformación"
 
@@ -162,67 +162,67 @@ msgstr "Editar transformaciones"
 msgid "View existing transformations"
 msgstr "Ver transformaciones existentes"
 
-#: settings.py:20
+#: settings.py:21
 msgid "Graphics conversion backend to use."
 msgstr "Módulo de conversión de gráficos a ser usado."
 
-#: settings.py:32
+#: settings.py:34
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Opciones de configuración para el modulo de conversión de gráficos."
 
-#: transformations.py:100
+#: transformations.py:99
 msgid "Crop"
 msgstr "Recortar"
 
-#: transformations.py:178
+#: transformations.py:177
 msgid "Draw rectangle"
 msgstr "Dibujar rectángulo"
 
-#: transformations.py:280
+#: transformations.py:279
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Dibujar rectángulo (coordenadas de porcentajes)"
 
-#: transformations.py:377
+#: transformations.py:376
 msgid "Flip"
 msgstr "Voltear"
 
-#: transformations.py:388
+#: transformations.py:387
 msgid "Gaussian blur"
 msgstr "Desenfoque gaussiano"
 
-#: transformations.py:398
+#: transformations.py:397
 msgid "Line art"
 msgstr "Arte lineal"
 
-#: transformations.py:409
+#: transformations.py:408
 msgid "Mirror"
 msgstr "Espejo"
 
-#: transformations.py:420
+#: transformations.py:419
 msgid "Resize"
 msgstr "Cambiar el tamaño"
 
-#: transformations.py:447
+#: transformations.py:446
 msgid "Rotate"
 msgstr "Girar"
 
-#: transformations.py:473
+#: transformations.py:472
 msgid "Rotate 90 degrees"
 msgstr "Girar 90 grados"
 
-#: transformations.py:484
+#: transformations.py:483
 msgid "Rotate 180 degrees"
 msgstr "Girar 180 grados"
 
-#: transformations.py:495
+#: transformations.py:494
 msgid "Rotate 270 degrees"
 msgstr "Girar 270 grados"
 
-#: transformations.py:505
+#: transformations.py:504
 msgid "Unsharp masking"
 msgstr "Reenfocar "
 
-#: transformations.py:521
+#: transformations.py:520
 msgid "Zoom"
 msgstr "Ampliar"
 
@@ -232,7 +232,7 @@ msgstr "Entre un valor YAML."
 
 #: views.py:62
 #, python-format
-msgid "Error creating transforamtion: %s."
+msgid "Error creating transformation: %s."
 msgstr "Error al crear la transformación: %s."
 
 #: views.py:79

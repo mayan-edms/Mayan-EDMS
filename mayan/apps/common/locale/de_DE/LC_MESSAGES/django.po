@@ -6,6 +6,7 @@
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
 # Felix <felix.com@gmx.com>, 2018
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # Jesaja Everling <jeverling@gmail.com>, 2017
 # Marvin Haschker <marvin@haschker.me>, 2019
 # Mathias Behrle <mathiasb@m9s.biz>, 2018-2019
@@ -17,9 +18,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:30-0400\n"
-"PO-Revision-Date: 2019-12-03 05:22+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
+"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"PO-Revision-Date: 2020-01-28 07:58+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,27 +32,31 @@ msgstr ""
 msgid "Common"
 msgstr "Allgemein"
 
-#: classes.py:85
-msgid "Available attributes: \n"
-msgstr "Verfügbare Attribute:\n"
+#: classes.py:185
+msgid "Model properties"
+msgstr ""
 
-#: classes.py:125
-msgid "Available fields: \n"
-msgstr "Verfügbare Felder:\n"
+#: classes.py:190
+msgid "Model fields"
+msgstr ""
 
-#: dependencies.py:309
+#: classes.py:233
+msgid "Model related fields"
+msgstr ""
+
+#: dependencies.py:308
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Ermöglicht die Offline Übersetzung von Zeichenketten im Code."
 
-#: dependencies.py:314
+#: dependencies.py:313
 msgid "Provides style checking."
 msgstr "Ermöglicht Stilüberprüfung."
 
-#: dependencies.py:319
+#: dependencies.py:318
 msgid "Command line environment with autocompletion."
 msgstr "Kommandozeilenumgebung mit Autovervollständigung."
 
-#: dependencies.py:324
+#: dependencies.py:323
 msgid "Checks proper formatting of the README file."
 msgstr "Überprüft die korrekte Formatierung der README-Datei."
 
@@ -63,67 +68,67 @@ msgstr "Auswahl"
 msgid "None"
 msgstr "Keine"
 
-#: generics.py:151
+#: generics.py:148
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "Wählen Sie Einträge aus, die entfernt werden sollen. Mit der Steuerungstaste können mehrere Einträge ausgewählt werden. Wenn die Auswahl vollständig ist, klicken Sie den folgenden Button oder doppelklicken Sie auf die Liste um die Aktion durchzuführen."
 
-#: generics.py:156
+#: generics.py:153
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "Wählen Sie Einträge aus, die hinzugefügt werden sollen. Mit der Steuerungstaste können mehrere Einträge ausgewählt werden. Wenn die Auswahl vollständig ist, klicken Sie den folgenden Button oder doppelklicken Sie auf die Liste um die Aktion durchzuführen."
 
-#: generics.py:289
+#: generics.py:286
 msgid "Add all"
 msgstr "Alle hinzufügen"
 
-#: generics.py:298
+#: generics.py:295
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: generics.py:308
+#: generics.py:305
 msgid "Remove all"
 msgstr "Alle entfernen"
 
-#: generics.py:317
+#: generics.py:314
 msgid "Remove"
 msgstr "Entfernen"
 
-#: generics.py:525
+#: generics.py:524
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr "Duplizierte Daten Fehler: %(error)s"
 
-#: generics.py:547
+#: generics.py:546
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s nicht erstellt, Fehler: %(error)s"
 
-#: generics.py:560
+#: generics.py:559
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s erfolgreich erstellt."
 
-#: generics.py:599
+#: generics.py:598
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s nicht gelöscht, Fehler: %(error)s."
 
-#: generics.py:608
+#: generics.py:607
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s erfolgreich gelöscht."
 
-#: generics.py:701
+#: generics.py:743
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s nicht aktualisiert, Fehler: %(error)s."
 
-#: generics.py:712
+#: generics.py:754
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s erfolgreich aktualisiert."
@@ -134,7 +139,7 @@ msgstr "Über Mayan"
 
 #: links.py:39
 msgid "Get the book"
-msgstr ""
+msgstr "Holen Sie sich das Buch"
 
 #: links.py:44
 msgid "Locale profile"
@@ -180,26 +185,26 @@ msgstr "Hilfe"
 msgid "Tools"
 msgstr "Werkzeuge"
 
-#: literals.py:13
+#: literals.py:14
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Diese Funktion ist veraltet und wird in einer zukünftigen Version entfernt."
 
-#: literals.py:16
+#: literals.py:17
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "Sie benutzen SQLite als Datenbank-Backend. SQLite sollte nur für Entwicklungs- und Testzwecke verwendet werden, jedoch nicht in Produktivumgebungen."
 
-#: literals.py:34
+#: literals.py:35
 msgid "Days"
 msgstr "Tage"
 
-#: literals.py:35
+#: literals.py:36
 msgid "Hours"
 msgstr "Stunden"
 
-#: literals.py:36
+#: literals.py:37
 msgid "Minutes"
 msgstr "Minuten"
 
@@ -223,12 +228,12 @@ msgstr "Sekundär"
 msgid "User"
 msgstr "Benutzer"
 
-#: mixins.py:268
+#: mixins.py:292
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr "Es wurden keine %(verbose_name)s passend zu Ihrer Suchanfrage gefunden"
 
-#: mixins.py:343
+#: mixins.py:405
 msgid "Object"
 msgstr "Objekt"
 
@@ -356,36 +361,36 @@ msgstr "Die URL der Installation oder Webseite des Projekts."
 msgid "A storage backend that all workers can use to share files."
 msgstr "Datenbackend, das alle Worker benutzen können, um Dateien zu teilen."
 
-#: templatetags/common_tags.py:28
+#: templatetags/common_tags.py:29
 msgid "Confirm delete"
 msgstr "Löschen bestätigen"
 
-#: templatetags/common_tags.py:33
+#: templatetags/common_tags.py:34
 #, python-format
 msgid "Edit %s"
 msgstr "%s bearbeiten"
 
-#: templatetags/common_tags.py:36
+#: templatetags/common_tags.py:37
 msgid "Confirm"
 msgstr "Bestätigen"
 
-#: templatetags/common_tags.py:40
+#: templatetags/common_tags.py:41
 #, python-format
 msgid "Details for: %s"
 msgstr "Details für: %s"
 
-#: templatetags/common_tags.py:44
+#: templatetags/common_tags.py:45
 #, python-format
 msgid "Edit: %s"
 msgstr "%s bearbeiten"
 
-#: templatetags/common_tags.py:47
+#: templatetags/common_tags.py:48
 msgid "Create"
 msgstr "Erstellen"
 
 #: validators.py:46
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "Geben Sie einen gültigen JSON-Wert ein. "
 
 #: validators.py:70
 msgid "Enter a valid YAML value."
@@ -430,11 +435,11 @@ msgstr "Datum und Uhrzeit"
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
-msgstr ""
+msgstr "Diese Ansicht zeigt das Fehlerprotokoll verschiedener Objekte an. Eine leere Liste ist eine gute Sache. "
 
 #: views.py:160
 msgid "There are no error log entries"
-msgstr ""
+msgstr "Es gibt keine Fehlerlogeinträge "
 
 #: views.py:163
 #, python-format

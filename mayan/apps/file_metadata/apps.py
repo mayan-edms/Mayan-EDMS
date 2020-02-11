@@ -6,12 +6,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelAttribute, ModelField
+from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
     menu_tools
 )
-from mayan.apps.document_indexing.handlers import handler_index_document
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.events.classes import ModelEventType
@@ -24,6 +23,7 @@ from .events import (
     event_file_metadata_document_version_submit
 )
 from .handlers import (
+    handler_index_document_version,
     handler_initialize_new_document_type_settings,
     handler_process_document_version
 )
@@ -91,9 +91,9 @@ class FileMetadataApp(MayanAppConfig):
             value=method_document_version_submit
         )
 
-        ModelAttribute(
+        ModelProperty(
             model=Document,
-            name='file_metadata_value_of.< dotted path to driver and property >',
+            name='file_metadata_value_of.< underscore separated driver name and property name >',
             description=_(
                 'Return the value of a specific file metadata.'
             ), label=_('File metadata value of')
@@ -106,12 +106,12 @@ class FileMetadataApp(MayanAppConfig):
             )
         )
 
-        ModelField(
+        ModelFieldRelated(
             label=_('File metadata key'), model=Document,
             name='versions__file_metadata_drivers__entries__key',
         )
-        ModelField(
-            label=_('File metadata key'), model=Document,
+        ModelFieldRelated(
+            label=_('File metadata value'), model=Document,
             name='versions__file_metadata_drivers__entries__value',
         )
 
@@ -199,6 +199,6 @@ class FileMetadataApp(MayanAppConfig):
         )
         post_document_version_file_metadata_processing.connect(
             dispatch_uid='file_metadata_handler_index_document',
-            receiver=handler_index_document,
+            receiver=handler_index_document_version,
             sender=DocumentVersion
         )

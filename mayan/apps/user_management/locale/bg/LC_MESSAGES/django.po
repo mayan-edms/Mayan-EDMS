@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Iliya Georgiev <inactive+iliicho7@transifex.com>, 2012
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:35-0400\n"
+"POT-Creation-Date: 2020-02-10 03:53-0400\n"
 "PO-Revision-Date: 2019-10-17 12:55+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:82 events.py:8 permissions.py:8
@@ -185,7 +186,9 @@ msgstr "потребителско име"
 
 #: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr "Разделен със запетаи списък на групови основни ключове за усвояване от този потребител."
+msgstr ""
+"Разделен със запетаи списък на групови основни ключове за усвояване от този "
+"потребител."
 
 #: serializers.py:64
 msgid "List of group primary keys to which to add the user."
@@ -218,7 +221,11 @@ msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr "Потребителските групи са организационни звена. Те трябва да отразяват организационните звена на вашата организация. Групите не могат да се използват за контрол на достъпа. Използвайте роли за разрешения и контрол на достъпа, добавете групи към тях."
+msgstr ""
+"Потребителските групи са организационни звена. Те трябва да отразяват "
+"организационните звена на вашата организация. Групите не могат да се "
+"използват за контрол на достъпа. Използвайте роли за разрешения и контрол на "
+"достъпа, добавете групи към тях."
 
 #: views.py:119
 msgid "There are no user groups"
@@ -262,7 +269,9 @@ msgstr "Изтриване на потребителя: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Изтриване на потребители от супер потребител и служител не е разрешено. Използвайте администраторския модул за тези случаи."
+msgstr ""
+"Изтриване на потребители от супер потребител и служител не е разрешено. "
+"Използвайте администраторския модул за тези случаи."
 
 #: views.py:212
 #, python-format
@@ -303,7 +312,10 @@ msgstr "Групи на потребителя: %s"
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
-msgstr "Потребителски акаунти могат да бъдат създадени от този изглед. След създаването на потребителски акаунт ще бъдете подканени да зададете парола за него."
+msgstr ""
+"Потребителски акаунти могат да бъдат създадени от този изглед. След "
+"създаването на потребителски акаунт ще бъдете подканени да зададете парола "
+"за него."
 
 #: views.py:301
 msgid "There are no user accounts"

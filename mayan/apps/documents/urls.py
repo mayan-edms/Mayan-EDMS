@@ -273,6 +273,11 @@ urlpatterns_document_versions = [
         name='document_version_download'
     ),
     url(
+        regex=r'^documents/versions/multiple/download/$',
+        view=DocumentVersionDownloadView.as_view(),
+        name='document_multiple_version_download'
+    ),
+    url(
         regex=r'^documents/versions/(?P<pk>\d+)/revert/$',
         view=DocumentVersionRevertView.as_view(),
         name='document_version_revert'

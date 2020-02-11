@@ -1,33 +1,42 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:34-0400\n"
-"PO-Revision-Date: 2019-09-24 04:46+0000\n"
+"POT-Creation-Date: 2020-02-10 03:52-0400\n"
+"PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:20 links.py:26
+#: apps.py:55 apps.py:140 apps.py:144 events.py:7 links.py:20 links.py:26
 #: permissions.py:7 queues.py:8 settings.py:10
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:122
+#: apps.py:107
+msgid "A generator returning the document's pages OCR content."
+msgstr ""
+
+#: apps.py:108
+msgid "OCR content"
+msgstr ""
+
+#: apps.py:132
 msgid "Date and time"
 msgstr "تاریخ و زمان"
 
-#: apps.py:125 models.py:76
+#: apps.py:135 models.py:76
 msgid "Result"
 msgstr "جواب"
 
@@ -41,8 +50,8 @@ msgstr ""
 
 #: dependencies.py:36
 msgid ""
-"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or"
-" Cuneiform."
+"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or "
+"Cuneiform."
 msgstr ""
 
 #: events.py:10
@@ -164,7 +173,8 @@ msgstr "محل اجرای نرم افزار OCR"
 
 #: settings.py:26
 msgid "Set new document types to perform OCR automatically by default."
-msgstr "انواع سند جدید را برای انجام OCR به طور پیش فرض به صورت خودکار تنظیم کنید."
+msgstr ""
+"انواع سند جدید را برای انجام OCR به طور پیش فرض به صورت خودکار تنظیم کنید."
 
 #: views.py:37
 msgid "Delete the OCR content of the selected document?"

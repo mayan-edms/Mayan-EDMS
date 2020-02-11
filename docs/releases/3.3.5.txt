@@ -1,0 +1,266 @@
+Version 3.3.5
+=============
+
+Released: December 13, 2019
+
+
+Changes
+-------
+
+
+Checkouts
+^^^^^^^^^
+
+The ID and URL of the checkout model was added the serializer. This adds
+these two fields to the entries of the checkout list API view. This change
+makes it easy to determine which checkout resource to delete to check in a
+document.
+
+
+Database
+^^^^^^^^
+
+The size of several fields was increased. These were:
+role label field size from 64 to 128 characters, smart link label size from
+96 to 128 characters, and the source label field size from 64 to 128
+characters.
+
+Migrations were added to all changes and these will me applied automatically
+during upgrade.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+Versions of django-timezone-field and kombu were pinned to specific version
+known to work correctly. This avoids two installations of Mayan EDMS to end
+up with different versions of these two libraries.
+
+
+Downloads
+^^^^^^^^^
+
+The library Django DownloadView was removed. The code to support all
+downloads (document, version, keys, signatures) was been implement natively
+using a modified port of Django 2.2 FileResponse.
+
+
+Settings
+^^^^^^^^
+
+All initial setting migrations have been updated to accept manually migrated
+settings too.
+
+
+Templating
+^^^^^^^^^^
+
+The web link template field and the smart links fields were updated to use
+the new TemplateField form field. This is the same field used in the
+templating sandbox.
+
+
+Testing
+^^^^^^^
+
+The of creating the temporary config file used in setting tests has been
+unified. All setting tests create the test config file in a predictable way
+now.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+Some remaining instances of the word "weblink" were renamed to "web link".
+
+It was a Mayan EDMS anti-pattern to have the resolved web links and smart
+links show their template edit and delete buttons. This has been rectified
+in this version.
+
+Missing link icons were added for several apps. Likewise some missing field
+help texts were also added.
+
+
+Other
+^^^^^
+
+The TemplateField field now shows the available variable in the help text
+automatically. There is no need to modify the help text anymore.
+
+The method to add the BaseTransformationTypemetaclass metaclass to the
+BaseTransformation class, has been updated again to make it compatible with
+Python 2 and Python 3.
+
+
+Removals
+--------
+
+- Django download views library.
+
+
+Upgrading process
+-----------------
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+
+Upgrading from Mayan EDMS 3.2.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Install the Python 3 development OS package:
+
+   .. code-block:: bash
+
+    sudo apt-get install python3-dev
+
+
+#. Update the virtualenv to use Python 3:
+
+   .. code-block:: bash
+
+    sudo -u mayan virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Create a home directory for the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    mkdir /home/mayan
+
+
+#. Grant ownership to the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    chown mayan:mayan /home/mayan
+
+#. Reinstall the Python client for PostgreSQL and Redis:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
+
+
+#. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
+
+
+Upgrade steps from any previous version of Mayan EDMS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u mayan curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u mayan |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.5
+
+   the requirements will also be updated automatically.
+
+
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Edit the supervisord configuration file and update any setting specific to your installation:
+
+   .. code-block:: bash
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+
+#. Migrate existing database schema with:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Add new static media:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| preparestatic --noinput
+
+
+#. Start supervisord:
+
+   .. code-block:: bash
+
+       sudo systemctl start supervisor
+
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Bugs fixed or issues closed
+---------------------------
+
+- :gitlab-issue:`698` 3.3.3 install - ERROR: django-timezone-field 4.0 has requirement django>=2.2, but you'll have django 1.11.26 which is incompatible.
+- :gitlab-issue:`699` 3.3.3 - TypeError: can't pickle memoryview objects
+
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

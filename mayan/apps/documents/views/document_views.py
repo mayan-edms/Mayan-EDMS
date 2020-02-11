@@ -2,22 +2,23 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
+from furl import furl
+
 from django.conf import settings
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
 from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.utils.http import urlencode
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.compressed_files import ZipArchive
 from mayan.apps.common.generics import (
-    FormView, MultipleObjectConfirmActionView, MultipleObjectFormActionView,
-    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
-    SingleObjectListView
+    FormView, MultipleObjectConfirmActionView, MultipleObjectDownloadView,
+    MultipleObjectFormActionView, SingleObjectDetailView,
+    SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.permissions import (
@@ -31,8 +32,8 @@ from ..forms import (
     DocumentTypeFilteredSelectForm,
 )
 from ..icons import (
-    icon_document_list, icon_document_list_recent_access,
-    icon_recent_added_document_list
+    icon_document_download, icon_document_list,
+    icon_document_list_recent_access, icon_recent_added_document_list
 )
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
 from ..models import Document, RecentDocument
@@ -154,55 +155,36 @@ class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
         )
 
 
-class DocumentDownloadFormView(FormView):
+class DocumentDownloadFormView(MultipleObjectFormActionView):
     form_class = DocumentDownloadForm
     model = Document
-    multiple_download_view = 'documents:document_multiple_download'
+    object_permission = permission_document_download
+    pk_url_kwarg = 'pk'
     querystring_form_fields = ('compressed', 'zip_filename')
-    single_download_view = 'documents:document_download'
+    viewname = 'documents:document_multiple_download'
 
     def form_valid(self, form):
-        querystring_dictionary = {}
+        # Turn a queryset into a comma separated list of primary keys
+        id_list = ','.join(
+            [
+                force_text(pk) for pk in self.get_object_list().values_list('pk', flat=True)
+            ]
+        )
 
+        # Construct URL with querystring to pass on to the next view
+        url = furl(
+            args={
+                'id_list': id_list
+            }, path=reverse(viewname=self.viewname)
+        )
+
+        # Pass the form field data as URL querystring to the next view
         for field in self.querystring_form_fields:
             data = form.cleaned_data[field]
             if data:
-                querystring_dictionary[field] = data
+                url.args[field] = data
 
-        querystring_dictionary.update(
-            {
-                'id_list': ','.join(
-                    map(str, self.queryset.values_list('pk', flat=True))
-                )
-            }
-        )
-
-        querystring = urlencode(querystring_dictionary, doseq=True)
-
-        if self.queryset.count() > 1:
-            url = reverse(self.multiple_download_view)
-        else:
-            url = reverse(
-                viewname=self.single_download_view, kwargs={
-                    'pk': self.queryset.first().pk
-                }
-            )
-
-        return HttpResponseRedirect(
-            redirect_to='{}?{}'.format(url, querystring)
-        )
-
-    def get_document_queryset(self):
-        id_list = self.request.GET.get(
-            'id_list', self.request.POST.get('id_list', '')
-        )
-
-        if not id_list:
-            id_list = self.kwargs['pk']
-
-        return self.model.objects.filter(
-            pk__in=id_list.split(',')
-        )
+        return HttpResponseRedirect(redirect_to=url.tostr())
 
     def get_extra_context(self):
         subtemplates_list = [
@@ -210,17 +192,17 @@ class DocumentDownloadFormView(FormView):
                 'name': 'appearance/generic_list_items_subtemplate.html',
                 'context': {
                     'object_list': self.queryset,
-                    'hide_link': True,
                     'hide_links': True,
-                    'hide_multi_item_actions': True,
+                    'hide_multi_item_actions': True
                 }
             }
         ]
 
         context = {
+            'submit_icon_class': icon_document_download,
             'submit_label': _('Download'),
             'subtemplates_list': subtemplates_list,
-            'title': _('Download documents'),
+            'title': _('Download documents')
         }
 
         if self.queryset.count() == 1:
@@ -230,21 +212,14 @@ class DocumentDownloadFormView(FormView):
 
     def get_form_kwargs(self):
         kwargs = super(DocumentDownloadFormView, self).get_form_kwargs()
-        self.queryset = self.get_queryset()
+        self.queryset = self.get_object_list()
         kwargs.update({'queryset': self.queryset})
         return kwargs
 
-    def get_queryset(self):
-        return AccessControlList.objects.restrict_queryset(
-            permission=permission_document_download,
-            queryset=self.get_document_queryset(), user=self.request.user
-        )
 
-
-class DocumentDownloadView(SingleObjectDownloadView):
+class DocumentDownloadView(MultipleObjectDownloadView):
     model = Document
-    # Set to None to disable the .get_object call
-    object_permission = None
+    object_permission = permission_document_download
 
     @staticmethod
     def commit_event(item, request):
@@ -259,39 +234,23 @@ class DocumentDownloadView(SingleObjectDownloadView):
                 target=item.document
             )
 
-    @staticmethod
-    def get_item_file(item):
-        return item.open()
-
-    def get_document_queryset(self):
-        id_list = self.request.GET.get(
-            'id_list', self.request.POST.get('id_list', '')
-        )
-
-        if not id_list:
-            id_list = self.kwargs['pk']
-
-        queryset = self.model.objects.filter(pk__in=id_list.split(','))
-
-        return AccessControlList.objects.restrict_queryset(
-            permission=permission_document_download, queryset=queryset,
-            user=self.request.user
-        )
-
-    def get_file(self):
-        queryset = self.get_document_queryset()
-        zip_filename = self.request.GET.get(
+    def get_archive_filename(self):
+        return self.request.GET.get(
             'zip_filename', DEFAULT_ZIP_FILENAME
         )
+
+    def get_download_file_object(self):
+        queryset = self.get_object_list()
+        zip_filename = self.get_archive_filename()
 
         if self.request.GET.get('compressed') == 'True' or queryset.count() > 1:
             compressed_file = ZipArchive()
             compressed_file.create()
             for item in queryset:
-                with DocumentDownloadView.get_item_file(item=item) as file_object:
+                with item.open() as file_object:
                     compressed_file.add_file(
                         file_object=file_object,
-                        filename=self.get_item_label(item=item)
+                        filename=self.get_item_filename(item=item)
                     )
                     DocumentDownloadView.commit_event(
                         item=item, request=self.request
@@ -299,24 +258,22 @@ class DocumentDownloadView(SingleObjectDownloadView):
 
             compressed_file.close()
 
-            return DocumentDownloadView.VirtualFile(
-                compressed_file.as_file(zip_filename), name=zip_filename
-            )
+            return compressed_file.as_file(zip_filename)
         else:
             item = queryset.first()
-            if item:
-                DocumentDownloadView.commit_event(
-                    item=item, request=self.request
-                )
-            else:
-                raise PermissionDenied
-
-            return DocumentDownloadView.VirtualFile(
-                DocumentDownloadView.get_item_file(item=item),
-                name=self.get_item_label(item=item)
+            DocumentDownloadView.commit_event(
+                item=item, request=self.request
             )
+            return item.open()
 
-    def get_item_label(self, item):
+    def get_download_filename(self):
+        queryset = self.get_object_list()
+        if self.request.GET.get('compressed') == 'True' or queryset.count() > 1:
+            return self.get_archive_filename()
+        else:
+            return self.get_item_filename(item=queryset.first())
+
+    def get_item_filename(self, item):
         return item.label
 
 

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:29-0400\n"
-"PO-Revision-Date: 2019-12-04 16:35+0000\n"
+"POT-Creation-Date: 2020-02-10 03:47-0400\n"
+"PO-Revision-Date: 2019-12-22 06:32+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:10 settings.py:9
+#: apps.py:11 settings.py:9
 msgid "Appearance"
 msgstr "Изглед"
 
@@ -96,7 +96,7 @@ msgstr "Страницата не е намерена"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Съжалявам, но заявената страница не може да бъде намерена."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:54
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:55
 msgid "Server error"
 msgstr "Грешка в сървъра"
 
@@ -203,24 +203,28 @@ msgid ""
 "            "
 msgstr "\n                Разкажете за проекта. Кажете на Вашите приятели и колеги за това какъв прекрасен е  %(project_title)s!\n                Следете ни на <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, или <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n            "
 
-#: templates/appearance/base.html:37 templates/appearance/base.html:47
+#: templates/appearance/base.html:35 templates/appearance/base.html:59
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: templates/appearance/base.html:47
+#: templates/appearance/base.html:49
+msgid "Click here to fix this."
+msgstr "Кликнете тук, за да поправите това."
+
+#: templates/appearance/base.html:59
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr "Настройките са актуализирани, рестартирайте инсталацията и опреснете браузъра си, за да влязат в сила промените."
 
-#: templates/appearance/base.html:60
+#: templates/appearance/base.html:72
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Действия"
 
-#: templates/appearance/base.html:62
+#: templates/appearance/base.html:74
 #: templates/appearance/generic_list_items_subtemplate.html:68
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Превключване на плаващо меню"
 
@@ -232,11 +236,11 @@ msgstr "Отворете главното меню"
 msgid "Are you sure?"
 msgstr "Сигурен ли сте?"
 
-#: templates/appearance/generic_confirm.html:34
+#: templates/appearance/generic_confirm.html:38
 msgid "Yes"
 msgstr "Да"
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:48
 msgid "No"
 msgstr "Не"
 
@@ -247,19 +251,19 @@ msgstr "Не"
 msgid "required"
 msgstr "задължително"
 
-#: templates/appearance/generic_form_subtemplate.html:85
-#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Save"
 msgstr "Запазване"
 
-#: templates/appearance/generic_form_subtemplate.html:85
-#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Submit"
 msgstr "Подаване"
 
-#: templates/appearance/generic_form_subtemplate.html:89
+#: templates/appearance/generic_form_subtemplate.html:87
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Cancel"
 msgstr "Отказ"
@@ -280,29 +284,29 @@ msgstr "Начален етап"
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Преди да можете да ползвате напълно Mayan EDMS необходимо е следното:"
 
-#: templates/appearance/list_header.html:11
+#: templates/appearance/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr "Общо (%(start)s - %(end)s от %(total)s) (Страница %(page_number)s от %(total_pages)s)"
 
-#: templates/appearance/list_header.html:13
-#: templates/appearance/list_header.html:16
+#: templates/appearance/list_header.html:14
+#: templates/appearance/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Общо: %(total)s"
 
-#: templates/appearance/list_toolbar.html:14
+#: templates/appearance/list_toolbar.html:16
 msgid "Select/Deselect all"
 msgstr "Изберете / премахнете избора на всички"
 
-#: templates/appearance/list_toolbar.html:58
+#: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr "Изберете елементи, за да активирате групови действия. Използвайте Shift + щракване, за да изберете няколко."
 
-#: templates/appearance/list_toolbar.html:63
+#: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "Групови действия"
 
@@ -314,15 +318,15 @@ msgstr "Превключване на навигацията"
 msgid "No results"
 msgstr "Няма резултати"
 
-#: templates/appearance/root.html:59
+#: templates/appearance/root.html:60
 msgid "Close"
 msgstr "Затваряне"
 
-#: templates/appearance/root.html:67
+#: templates/appearance/root.html:68
 msgid "Server communication error"
 msgstr "Грешка при свързването със сървъра"
 
-#: templates/appearance/root.html:69
+#: templates/appearance/root.html:70
 msgid "Check you network connection and try again in a few moments."
 msgstr "Проверете връзката с мрежата и опитайте отново след няколко секунди."
 

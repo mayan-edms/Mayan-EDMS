@@ -29,22 +29,24 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
     get: Returns a list of selected document's metadata types and values.
     post: Add an existing metadata type and value to the selected document.
     """
+    mayan_object_permissions = {
+        'GET': (permission_document_metadata_view,),
+    }
+
     def get_document(self):
         if self.request.method == 'GET':
-            permission_required = permission_document_metadata_view
-        else:
-            permission_required = permission_document_metadata_add
+            permission = permission_document_metadata_view
+        elif self.request.method == 'POST':
+            permission = permission_document_metadata_add
 
-        document = get_object_or_404(
-            klass=Document, pk=self.kwargs['document_pk']
-        )
-
-        AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_required,),
+        queryset = AccessControlList.objects.restrict_queryset(
+            queryset=Document.objects.all(), permission=permission,
             user=self.request.user
         )
 
-        return document
+        return get_object_or_404(
+            klass=queryset, pk=self.kwargs['document_pk']
+        )
 
     def get_queryset(self):
         return self.get_document().metadata.all()
@@ -75,6 +77,9 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
 
         return context
 
+    def perform_create(self, serializer):
+        serializer.save(document=self.get_document())
+
 
 class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -84,27 +89,31 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
     put: Edit the selected document metadata type and value.
     """
     lookup_url_kwarg = 'metadata_pk'
+    mayan_object_permissions = {
+        'DELETE': (permission_document_metadata_remove,),
+        'GET': (permission_document_metadata_view,),
+        'PATCH': (permission_document_metadata_edit,),
+        'PUT': (permission_document_metadata_edit,)
+    }
 
     def get_document(self):
         if self.request.method == 'GET':
-            permission_required = permission_document_metadata_view
+            permission = permission_document_metadata_view
         elif self.request.method == 'PUT':
-            permission_required = permission_document_metadata_edit
+            permission = permission_document_metadata_edit
         elif self.request.method == 'PATCH':
-            permission_required = permission_document_metadata_edit
+            permission = permission_document_metadata_edit
         elif self.request.method == 'DELETE':
-            permission_required = permission_document_metadata_remove
+            permission = permission_document_metadata_remove
 
-        document = get_object_or_404(
-            klass=Document, pk=self.kwargs['document_pk']
-        )
-
-        AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_required,),
+        queryset = AccessControlList.objects.restrict_queryset(
+            queryset=Document.objects.all(), permission=permission,
             user=self.request.user
         )
 
-        return document
+        return get_object_or_404(
+            klass=queryset, pk=self.kwargs['document_pk']
+        )
 
     def get_queryset(self):
         return self.get_document().metadata.all()

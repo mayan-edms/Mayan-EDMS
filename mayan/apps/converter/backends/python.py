@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import io
 import logging
 import shutil
+import struct
 
 from PIL import Image
 import PyPDF2
@@ -19,9 +20,10 @@ from ..settings import setting_graphics_backend_arguments
 
 from ..literals import (
     DEFAULT_PDFTOPPM_DPI, DEFAULT_PDFTOPPM_FORMAT, DEFAULT_PDFTOPPM_PATH,
-    DEFAULT_PDFINFO_PATH
+    DEFAULT_PDFINFO_PATH, DEFAULT_PILLOW_MAXIMUM_IMAGE_PIXELS
 )
 
+logger = logging.getLogger(__name__)
 pdftoppm_path = setting_graphics_backend_arguments.value.get(
     'pdftoppm_path', DEFAULT_PDFTOPPM_PATH
 )
@@ -54,7 +56,11 @@ try:
 except sh.CommandNotFound:
     pdfinfo = None
 
-logger = logging.getLogger(__name__)
+
+pillow_maximum_image_pixels = setting_graphics_backend_arguments.value.get(
+    'pillow_maximum_image_pixels', DEFAULT_PILLOW_MAXIMUM_IMAGE_PIXELS
+)
+Image.MAX_IMAGE_PIXELS = pillow_maximum_image_pixels
 
 
 class Python(ConverterBase):
@@ -145,17 +151,7 @@ class Python(ConverterBase):
                         if force_text(exception) == 'only algorithm code 1 and 2 are supported':
                             # PDF uses an unsupported encryption
                             # Try poppler-util's pdfinfo
-                            process = pdfinfo('-', _in=file_object)
-                            page_count = int(
-                                filter(
-                                    lambda line: line.startswith('Pages:'),
-                                    force_text(process.stdout).split('\n')
-                                )[0].replace('Pages:', '')
-                            )
-                            file_object.seek(0)
-                            logger.debug(
-                                'Document contains %d pages', page_count
-                            )
+                            page_count = self.get_pdfinfo_page_count(file_object)
                             return page_count
                         else:
                             error_message = _(
@@ -163,6 +159,13 @@ class Python(ConverterBase):
                             ) % exception
                             logger.error(error_message)
                             raise PageCountError(error_message)
+                elif force_text(exception) == 'EOF marker not found':
+                    # PyPDF2 issue: https://github.com/mstamy2/PyPDF2/issues/177
+                    # Try poppler-util's pdfinfo
+                    logger.debug('PyPDF2 GitHub issue #177 : EOF marker not found')
+                    file_object.seek(0)
+                    page_count = self.get_pdfinfo_page_count(file_object)
+                    return page_count
                 else:
                     error_message = _(
                         'Exception determining PDF page count; %s'
@@ -186,12 +189,35 @@ class Python(ConverterBase):
             finally:
                 self.file_object.seek(0)
 
+            # Get total page count by attempting to seek to an increasing
+            # page count number until an EOFError or struct.error exception
+            # are raised.
             try:
                 while True:
                     image.seek(image.tell() + 1)
                     page_count += 1
             except EOFError:
-                # end of sequence
-                pass
+                """End of sequence"""
+            except struct.error:
+                """
+                struct.error was raise for a TIFF file converted to JPEG
+                GitLab issue #767 "Upload Error: unpack_from requires a
+                buffer of at least 2 bytes"
+                """
+                logger.debug('image page count detection raised struct.error')
 
             return page_count
+
+    def get_pdfinfo_page_count(self, file_object):
+        process = pdfinfo('-', _in=file_object)
+        page_count = int(
+            list(filter(
+                lambda line: line.startswith('Pages:'),
+                force_text(process.stdout).split('\n')
+            ))[0].replace('Pages:', '')
+        )
+        file_object.seek(0)
+        logger.debug(
+            'Document contains %d pages', page_count
+        )
+        return page_count

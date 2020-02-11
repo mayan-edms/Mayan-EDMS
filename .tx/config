@@ -1,5 +1,6 @@
 [main]
 host = https://www.transifex.com
+lang_map: zh-Hans : zh_Hans
 
 [mayan-edms.acls-2-0]
 file_filter = mayan/apps/acls/locale/<lang>/LC_MESSAGES/django.po
@@ -240,4 +241,5 @@ file_filter = mayan/apps/web_links/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
 source_file = mayan/apps/web_links/locale/en/LC_MESSAGES/django.po
 type = PO
+
 

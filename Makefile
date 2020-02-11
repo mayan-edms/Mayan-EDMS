@@ -1,6 +1,18 @@
 #!make
 include config.env
 
+ifndef MODULE
+override MODULE = --mayan-apps
+endif
+
+ifndef NOMIGRATIONS
+override NOMIGRATIONS = --nomigrations
+endif
+
+ifndef SETTINGS
+override SETTINGS = mayan.settings.testing.development
+endif
+
 .PHONY: clean clean-pyc clean-build test
 
 help:
@@ -23,52 +35,72 @@ clean-pyc: ## Remove Python artifacts.
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -R -f {} +
 
+
 # Testing
 
-test: clean-pyc
-test: ## MODULE=<python module name> - Run tests for a single app, module or test class.
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --nomigrations $(ARGUMENTS)
+_test-command:
+	./manage.py test $(MODULE) --settings=$(SETTINGS) $(NOMIGRATIONS) $(DEBUG) $(ARGUMENTS)
 
-test-debug: clean-pyc
+test: ## MODULE=<python module name> - Run tests for a single app, module or test class.
+test: clean-pyc _test-command
+
 test-debug: ## MODULE=<python module name> - Run tests for a single app, module or test class, in debug mode.
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --nomigrations --debug-mode $(ARGUMENTS)
+test-debug: DEBUG=--debug-mode
+test-debug: clean-pyc _test-command
 
 test-all: ## Run all tests.
-test-all: clean-pyc
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --nomigrations $(ARGUMENTS)
+test-all: clean-pyc _test-command
 
 test-all-debug: ## Run all tests in debug mode.
-test-all-debug: clean-pyc
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --nomigrations --debug-mode $(ARGUMENTS)
+test-all-debug: DEBUG=--debug-mode
+test-all-debug: clean-pyc _test-command
+
+test-all-migrations: ## Run all migration tests.
+test-all-migrations: ARGUMENTS=--no-exclude --tag=migration
+test-all-migrations: NOMIGRATIONS=
+test-all-migrations: clean-pyc _test-command
 
 test-launch-postgres:
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
-	docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
-	sudo apt-get install -q libpq-dev
-	pip install psycopg2==$(PYTHON_PSYCOPG2_VERSION)
+	@docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
+	@echo "* Installing libpq-dev client"
+	@sudo apt-get install -qq libpq-dev
+	@echo "* Installing Python client"
+	@pip install psycopg2==$(PYTHON_PSYCOPG2_VERSION)
+	sleep 2
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 
-test-with-postgres: ## MODULE=<python module name> - Run tests for a single app, module or test class against a Postgres database container.
+test-with-postgres: ## MODULE=<python module name> - Run tests for a single app, module or test class against a PostgreSQL database container.
 test-with-postgres: test-launch-postgres
 	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_postgres --nomigrations
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
 
-test-with-postgres-all: ## Run all tests against a Postgres database container.
+test-with-postgres-all: ## Run all tests against a PostgreSQL database container.
 test-with-postgres-all: test-launch-postgres
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --nomigrations
+	@docker rm -f test-postgres || true
+	@docker volume rm test-postgres || true
+
+test-with-postgres-all-migrations: ## Run all migration tests against a PostgreSQL database container.
+test-with-postgres-all-migrations: test-launch-postgres
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --no-exclude --tag=migration
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
 
 test-launch-mysql:
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
-	docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan -v test-mysql:/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION)
-	sudo apt-get install -q libmysqlclient-dev mysql-client
-	pip install mysqlclient==$(PYTHON_MYSQL_VERSION)
-	while ! nc -z 127.0.0.1 3306; do sleep 1; done
-	mysql -h 127.0.0.1 -P 3306 -uroot  -e "set global character_set_server=utf8mb4;"
+	@docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan -v test-mysql:/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION)
+	@echo "* Installing MySQL client"
+	@sudo apt-get install -qq libmysqlclient-dev mysql-client
+	@echo "* Installing Python client"
+	@pip install mysqlclient==$(PYTHON_MYSQL_VERSION) > /dev/null
+	@echo -n "* Waiting for server"
+	@while ! mysql -h 127.0.0.1 --user=root --execute "SHOW DATABASES;" > /dev/null 2>&1; do echo -n .;sleep 2; done
+	@echo
+	@mysql -h 127.0.0.1 -P 3306 -uroot  -e "set global character_set_server=utf8mb4;"
 
 test-with-mysql: ## MODULE=<python module name> - Run tests for a single app, module or test class against a MySQL database container.
 test-with-mysql: test-launch-mysql
@@ -76,10 +108,15 @@ test-with-mysql: test-launch-mysql
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
 
-
 test-with-mysql-all: ## Run all tests against a MySQL database container.
 test-with-mysql-all: test-launch-mysql
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --nomigrations
+	@docker rm -f test-mysql || true
+	@docker volume rm test-mysql || true
+
+test-with-mysql-all-migrations: ## Run all migration tests against a MySQL database container.
+test-with-mysql-all-migrations: test-launch-mysql
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --no-exclude --tag=migration
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
 
@@ -89,8 +126,8 @@ test-launch-oracle:
 	docker run -d --name test-oracle -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v test-oracle:/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
 	# https://gist.github.com/kimus/10012910
 	pip install cx_Oracle==$(PYTHON_ORACLE_VERSION)
-	while ! nc -z 127.0.0.1 49161; do sleep 1; done
 	sleep 10
+	while ! nc -z 127.0.0.1 49161; do sleep 1; done
 
 test-with-oracle: ## MODULE=<python module name> - Run tests for a single app, module or test class against a Oracle database container.
 test-with-oracle: test-launch-oracle
@@ -103,6 +140,26 @@ test-with-oracle-all: test-launch-oracle
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_oracle --nomigrations
 	@docker rm -f test-oracle || true
 	@docker volume rm test-oracle || true
+
+gitlab-ci-run: ## Execute a GitLab CI job locally
+gitlab-ci-run:
+	@if [ -z "$$(docker images gitlab-runner-helper:11.2.0)" ]; then \
+	echo "1) Make sure to download the corresponding helper image from https://hub.docker.com/r/gitlab/gitlab-runner-helper/tags"; \
+	echo "2) Tag the download image as gitlab-runner-helper:11.2.0"; \
+	exit 1; \
+	fi; \
+	if [ -z $(GITLAB_CI_JOB) ]; then echo "Specify the job to execute using GITLAB_CI_JOB."; exit 1; fi; \
+	gitlab-runner exec docker --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
+
+# Coverage
+
+coverage-run: ## Run all tests and measure code execution.
+coverage-run: clean-pyc
+	coverage run $(TEST_COMMAND_LINE)
+
+coverage-html: ## Create the coverage HTML report. Run execute coverage-run first.
+coverage-html:
+	coverage html
 
 # Documentation
 
@@ -132,7 +189,7 @@ translations-all: translations-make translations-push translations-pull translat
 # Releases
 
 increase-version: ## Increase the version number of the entire project's files.
-	@VERSION=`grep "__version__ =" mayan/__init__.py| cut -d\' -f 2|./increase_version.py - $(PART)`; \
+	@VERSION=`grep "__version__ =" mayan/__init__.py| cut -d\' -f 2|./contrib/scripts/increase_version.py - $(PART)`; \
 	BUILD=`echo $$VERSION|awk '{split($$VERSION,a,"."); printf("0x%02d%02d%02d\n", a[1],a[2], a[3])}'`; \
 	sed -i -e "s/__build__ = 0x[0-9]*/__build__ = $${BUILD}/g" mayan/__init__.py; \
 	sed -i -e "s/__version__ = '[0-9\.]*'/__version__ = '$${VERSION}'/g" mayan/__init__.py; \
@@ -235,7 +292,7 @@ python-wheel-test-suit: wheel
 
 generate-setup: ## Create and update the setup.py file.
 generate-setup: generate-requirements
-	@./generate_setup.py
+	@./contrib/scripts/generate_setup.py
 	@echo "Complete."
 
 generate-requirements: ## Generate all requirements files from the project depedency declarations.

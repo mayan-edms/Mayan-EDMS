@@ -1,0 +1,304 @@
+Version 3.3.7
+=============
+
+Released: December 31, 2019
+
+
+Changes
+-------
+
+
+Dependencies
+^^^^^^^^^^^^
+
+The version of Django used has been updated to 1.11.27.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+The FAQ and troubleshooting chapters were updated.
+
+A new troubleshooting section regarding NFS locking issues was added.
+
+
+Docker
+^^^^^^
+
+The Docker installer, Docker makefile, sample docker-compose file, and
+documentation were updated to add a password to the Redis container.
+
+
+Data integrity
+^^^^^^^^^^^^^^
+
+Database transaction handling improvements were added to the file metadata,
+OCR, and document parsing apps.
+
+
+File metadata
+^^^^^^^^^^^^^
+
+The file metadata driver database registration was improved along with the
+database model representation. This change also benefits and make indexing
+based on file metadata properties more reliable.
+
+
+Indexing
+^^^^^^^^
+
+Indexes are now initialized in a predictable way and only once instead of on
+each access. This avoids index updates log messages under heavy load.
+
+
+Mirroring
+^^^^^^^^^
+
+The mirroring code was updated to support slashes in index node values and
+document labels. Support for duplicate nodes values or documents labels was
+also added. Slashes are now replaced with underscores. To handle duplicates,
+the primary key of the object is appended to the label inside parenthesis.
+For example, for two documents named "sample.pdf" in the index level, and
+with the respective primary keys 100 and 101, their mirroring entries
+would appear as "sample.pdf(100)" and "sample.pdf(101)".
+
+
+Redis
+^^^^^
+Python Redis client version 3.3.11 is now used to enable the .client() method
+for the Redis lock backend.
+
+Version checking was also added to the Redis lock backend.
+
+
+Sources
+^^^^^^^
+
+Issues manifesting for the POP3 source under Python 3 were fixed.
+
+
+Testings
+^^^^^^^^
+
+The Selenium tests are now run in headless mode to improve execution speed.
+
+Several new unit tests were added, including an entire test suit for the
+common.http.URL class.
+
+A fake config file is now used during tests.
+
+Add new test case BaseTransactionTestCase was added for tests that rely on
+database transactions.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+The repeated document tags preview column was removed.
+
+The cabinet edit links were removed from the document cabinet list view.
+
+The warning messages template of the MissingItem class was finished. This
+class will warn users via an on screen alert if a crucial element is missing.
+Situations like no document types or no document sources.
+
+
+Workflows
+^^^^^^^^^
+
+The workflow document signing action was fixed. Also a message was added to
+help users when trying to use the action for an initial workflow state. The
+document signing action relies on a document version being available which is
+not the case if the action is executed at the same moment the document is
+created as it has not finished introspection and its initial version
+missing.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrading process
+-----------------
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+
+Upgrading from Mayan EDMS 3.2.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Update the Redis configuration:
+
+   Configure Redis to discard data when it runs out of memory, not save its
+   database, and only keep 2 database:
+
+   .. code-block:: bash
+
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Install the Python 3 development OS package:
+
+   .. code-block:: bash
+
+    sudo apt-get install python3-dev
+
+
+#. Update the virtualenv to use Python 3:
+
+   .. code-block:: bash
+
+    sudo -u mayan virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Create a home directory for the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    mkdir /home/mayan
+
+
+#. Grant ownership to the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    chown mayan:mayan /home/mayan
+
+#. Reinstall the Python client for PostgreSQL and Redis:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
+
+
+#. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
+
+
+Upgrade steps from any previous version of Mayan EDMS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u mayan curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u mayan |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.7
+
+   the requirements will also be updated automatically.
+
+
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Edit the supervisord configuration file and update any setting specific to your installation:
+
+   .. code-block:: bash
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+
+#. Migrate existing database schema with:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Add new static media:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| preparestatic --noinput
+
+
+#. Start supervisord:
+
+   .. code-block:: bash
+
+       sudo systemctl start supervisor
+
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Bugs fixed or issues closed
+---------------------------
+
+- :gitlab-issue:`712` redis lacks support for password authentication (docker)
+- :gitlab-issue:`719` Redis Lock Backend - 'Redis' object has no attribute 'client'
+- :gitlab-issue:`720` Batch metadata processing or parsing will fail the index tasks: IndexInstanceNode matching query does not exist.
+- :gitlab-issue:`722` Mountindex - child nodes containing special characters won't show up in mounted folder
+- :gitlab-issue:`724` Email Source no longer working after upgrade to 3.3.6
+- :gitlab-issue:`726` If I try to add an Sign document (embedded) action on saving it is failing with an Internal Server Error action.
+- :gitlab-merge:`67` Documentation: Added NFS lock to Troubleshooting
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

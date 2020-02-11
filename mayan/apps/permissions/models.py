@@ -56,7 +56,7 @@ class StoredPermission(models.Model):
         instance.
         """
         return Permission.get(
-            pk=self.volatile_permission_id, proxy_only=True
+            pk=self.volatile_permission_id, class_only=True
         )
 
     def natural_key(self):
@@ -98,7 +98,8 @@ class Role(models.Model):
     to a group using a role, are granted for the entire system.
     """
     label = models.CharField(
-        max_length=64, unique=True, verbose_name=_('Label')
+        help_text=_('A short text describing the role.'), max_length=128,
+        unique=True, verbose_name=_('Label')
     )
     permissions = models.ManyToManyField(
         related_name='roles', to=StoredPermission,

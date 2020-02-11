@@ -16,6 +16,7 @@ from .links import (
 class RESTAPIApp(MayanAppConfig):
     app_url = 'api'
     app_namespace = 'rest_api'
+    has_tests = True
     name = 'mayan.apps.rest_api'
     verbose_name = _('REST API')
 

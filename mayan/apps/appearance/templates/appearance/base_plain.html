@@ -28,7 +28,7 @@
             // template.
             var currentHash = window.location.hash;
             if (currentHash.length) {
-                window.location = currentHash.substring(1);
+                window.location.pathname = currentHash.substring(1);
             }
         </script>
     </head>

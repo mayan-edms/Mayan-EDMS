@@ -10,6 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 import mayan
 from mayan.apps.appearance.settings import setting_max_title_length
 
+from ..classes import MissingItem
 from ..literals import MESSAGE_SQLITE_WARNING
 from ..utils import check_for_sqlite, return_attrib
 
@@ -65,6 +66,11 @@ def common_get_object_verbose_name(obj):
             return ''
         else:
             return type(obj)
+
+
+@register.simple_tag
+def common_get_missing_items():
+    return MissingItem.get_missing()
 
 
 @register.filter

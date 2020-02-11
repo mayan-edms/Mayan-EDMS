@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:35-0400\n"
+"POT-Creation-Date: 2020-02-10 03:53-0400\n"
 "PO-Revision-Date: 2019-10-18 12:21+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
+"cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:82 events.py:8 permissions.py:8
 msgid "User management"
@@ -184,7 +186,9 @@ msgstr "uživatelské jméno"
 
 #: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr "Seznam primárních klíčů skupiny, kterým je tento uživatel přiřazen, odděluje čárkami."
+msgstr ""
+"Seznam primárních klíčů skupiny, kterým je tento uživatel přiřazen, odděluje "
+"čárkami."
 
 #: serializers.py:64
 msgid "List of group primary keys to which to add the user."
@@ -217,7 +221,10 @@ msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr "Skupiny uživatelů jsou organizační jednotky. Měly by odrážet organizační jednotky vaší organizace. Skupiny nelze použít pro řízení přístupu. Použijte role pro oprávnění a řízení přístupu, přidejte do nich skupiny."
+msgstr ""
+"Skupiny uživatelů jsou organizační jednotky. Měly by odrážet organizační "
+"jednotky vaší organizace. Skupiny nelze použít pro řízení přístupu. Použijte "
+"role pro oprávnění a řízení přístupu, přidejte do nich skupiny."
 
 #: views.py:119
 msgid "There are no user groups"
@@ -263,7 +270,9 @@ msgstr "Smazat uživatele: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Mazání super uživatelů  není povoleno, v těchto případech použijte rozhraní správce."
+msgstr ""
+"Mazání super uživatelů  není povoleno, v těchto případech použijte rozhraní "
+"správce."
 
 #: views.py:212
 #, python-format
@@ -304,7 +313,9 @@ msgstr "Skupiny uživatelů: %s"
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
-msgstr "Z tohoto pohledu lze vytvořit uživatelské účty. Po vytvoření uživatelského účtu budete vyzváni k zadání hesla."
+msgstr ""
+"Z tohoto pohledu lze vytvořit uživatelské účty. Po vytvoření uživatelského "
+"účtu budete vyzváni k zadání hesla."
 
 #: views.py:301
 msgid "There are no user accounts"

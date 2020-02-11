@@ -23,8 +23,9 @@ from .views.workflow_proxy_views import (
 from .views.workflow_template_views import (
     DocumentTypeWorkflowTemplatesView, ToolLaunchWorkflows,
     WorkflowTemplateCreateView, WorkflowTemplateDeleteView,
-    WorkflowTemplateEditView, WorkflowTemplateListView,
-    WorkflowTemplatePreviewView, WorkflowTemplateDocumentTypesView
+    WorkflowTemplateEditView, WorkflowTemplateLaunchView,
+    WorkflowTemplateListView, WorkflowTemplatePreviewView,
+    WorkflowTemplateDocumentTypesView
 )
 from .views.workflow_template_state_views import (
     WorkflowTemplateStateActionCreateView,
@@ -162,6 +163,11 @@ urlpatterns_workflow_templates = [
     url(
         regex=r'^workflow_templates/(?P<pk>\d+)/edit/$',
         view=WorkflowTemplateEditView.as_view(), name='workflow_template_edit'
+    ),
+    url(
+        regex=r'^workflow_templates/(?P<pk>\d+)/launch/$',
+        view=WorkflowTemplateLaunchView.as_view(),
+        name='workflow_template_launch'
     ),
     url(
         regex=r'^workflow_templates/(?P<pk>\d+)/preview/$',

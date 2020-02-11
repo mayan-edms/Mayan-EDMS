@@ -43,7 +43,13 @@ method_get_document_file_metadata.help_text = _(
 
 
 def method_get_document_version_file_metadata(self, dotted_name):
-    driver_internal_name, key = dotted_name.split('.')
+    parts = dotted_name.split('.', 1)
+
+    if len(parts) < 2:
+        return
+
+    driver_internal_name = parts[0]
+    key = parts[1].replace('.', '_')
 
     try:
         document_driver = self.file_metadata_drivers.get(

@@ -40,6 +40,8 @@ class FileMetadataDriver(object):
             try:
                 driver = driver_class()
 
+                driver.initialize()
+
                 with transaction.atomic():
                     driver.process(document_version=document_version)
                     event_file_metadata_document_version_finish.commit(
@@ -47,9 +49,11 @@ class FileMetadataDriver(object):
                         target=document_version
                     )
 
-                    post_document_version_file_metadata_processing.send(
-                        sender=document_version.__class__,
-                        instance=document_version
+                    transaction.on_commit(
+                        lambda: post_document_version_file_metadata_processing.send(
+                            sender=document_version.__class__,
+                            instance=document_version
+                        )
                     )
             except FileMetadataDriverError:
                 # If driver raises error, try next in the list
@@ -64,28 +68,32 @@ class FileMetadataDriver(object):
         for mimetype in mimetypes:
             cls._registry.setdefault(mimetype, []).append(cls)
 
-    def process(self, document_version):
-        logger.info(
-            'Starting processing document version: %s', document_version
-        )
+    def get_driver_path(self):
+        return '.'.join([self.__module__, self.__class__.__name__])
 
+    def initialize(self):
         StoredDriver = apps.get_model(
             app_label='file_metadata', model_name='StoredDriver'
         )
 
-        driver_path = '.'.join([self.__module__, self.__class__.__name__])
+        driver_path = self.get_driver_path()
 
-        driver, created = StoredDriver.objects.get_or_create(
+        self.driver_model, created = StoredDriver.objects.get_or_create(
             driver_path=driver_path, defaults={
                 'internal_name': self.internal_name
             }
         )
 
-        driver.driver_entries.filter(
+    def process(self, document_version):
+        logger.info(
+            'Starting processing document version: %s', document_version
+        )
+
+        self.driver_model.driver_entries.filter(
             document_version=document_version
         ).delete()
 
-        document_version_driver_entry = driver.driver_entries.create(
+        document_version_driver_entry = self.driver_model.driver_entries.create(
             document_version=document_version
         )
 

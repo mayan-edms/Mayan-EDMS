@@ -1,0 +1,301 @@
+Version 3.3.8
+=============
+
+Released: January 17, 2020
+
+
+Changes
+-------
+
+Converter
+^^^^^^^^^
+
+A new was added to the ``CONVERTER_GRAPHICS_BACKEND_ARGUMENTS`` setting to
+allow passing a maximum image pixel count to Pillow. The entry
+is called ``'pillow_maximum_image_pixels'`` and defaults to 89478485. This
+entry is used to increase the threshold upon which Pillow with trigger the
+Decompression bomb protection.
+(https://pillow.readthedocs.io/en/5.1.x/releasenotes/5.0.0.html#decompression-bombs-now-raise-exceptions)
+
+
+Dependencies
+^^^^^^^^^^^^
+
+The OS detection for the paths of ``pdfinfo``, ``pdftoppm``, ``libreoffice``,
+``exiftool`` and ``tesseract`` was improved to work on MacOs.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+The direct deployment documentation was updated to advise users installing
+in a custom directory to verify the automatically generated supervisor
+configuration file.
+
+A note was added to the LDAP section of the FAQ to assist users with
+potential local environment issues.
+
+The sample ``docker-compose.yml`` file and documentation were updated to
+ensure RabbitMQ messages are persistent.
+
+The File Storage section of the documentation was improved.
+
+The documentation update script was updated to delete published documentation
+files before uploading new content. Old documentation links will not work
+anymore. For a more complete explanation check forum post: https://forum.mayan-edms.com/viewtopic.php?t=1605
+
+
+File metadata
+^^^^^^^^^^^^^
+
+Fixed typos in the file metadata property label.
+
+Improved the way the file metadata property path was read. Accessing the
+file metadata value from a template will no longer error out when passed
+an invalid path to the driver as reference.
+
+
+Metadata
+^^^^^^^^
+
+Fixed the metadata app view permissions layout. The metadata add, edit, and
+remove permissions are now required for both the document and the the
+metadata type in order to add, edit or remove a metadata from a document.
+The HTML and API were updated, as well as the document metadata widget to
+only show metadata types for which the document metadata view permission was
+been granted.
+
+The redirects after the document metadata add, edit, and remove actions were
+fixed too.
+
+
+Permissions
+^^^^^^^^^^^
+
+The permissions are now initialized on every start or installation instead of
+them being initialized on demand. This fixes the situation where not all
+permissions would show up as available in the role permission assignment view.
+
+
+Signatures
+^^^^^^^^^^
+
+Document detached signing was fixed as is operating as expected again.
+
+
+Sources
+^^^^^^^
+
+A repeated raise statement was removed that was causing HTML markup to show
+up on the upload error display widget.
+
+
+Tags
+^^^^
+
+The Tags apps API required permissions was fixed. The required permissions
+of the API match those of the view and comply with MERC 0006.
+(https://docs.mayan-edms.com/mercs/0006-lower-information-disclose.html)
+
+
+Templating
+^^^^^^^^^^
+
+The model property choice field of the template widget is now never required,
+regardless of the required setting of the template field. This fixes the
+web link creation form.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrading process
+-----------------
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+
+Upgrading from Mayan EDMS 3.2.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Update the Redis configuration:
+
+   Configure Redis to discard data when it runs out of memory, not save its
+   database, and only keep 2 database:
+
+   .. code-block:: bash
+
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Install the Python 3 development OS package:
+
+   .. code-block:: bash
+
+    sudo apt-get install python3-dev
+
+
+#. Update the virtualenv to use Python 3:
+
+   .. code-block:: bash
+
+    sudo -u mayan virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Create a home directory for the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    mkdir /home/mayan
+
+
+#. Grant ownership to the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    chown mayan:mayan /home/mayan
+
+#. Reinstall the Python client for PostgreSQL and Redis:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
+
+
+#. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
+
+
+Upgrade steps from any previous version of Mayan EDMS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u mayan curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u mayan |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.8
+
+   the requirements will also be updated automatically.
+
+
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Edit the supervisord configuration file and update any setting specific to your installation:
+
+   .. code-block:: bash
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+
+#. Migrate existing database schema with:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Add new static media:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| preparestatic --noinput
+
+
+#. Start supervisord:
+
+   .. code-block:: bash
+
+       sudo systemctl start supervisor
+
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Bugs fixed or issues closed
+---------------------------
+
+- :gitlab-issue:`308` MacOS setup documentation additions
+- :gitlab-issue:`721` Amqp connection refused in new docker setup (ErrNo 111)
+- :gitlab-issue:`732` Sign document (detached) is not working, signature file is not created
+- :gitlab-issue:`736` Installation Documentation for direct install not fully correct
+- :gitlab-issue:`739` Generated supervisor configuration refers to nonexisting /opt/mayan-edms
+- :gitlab-issue:`748` Web Links: Can't create web link as model property choices box is locked
+- :gitlab-issue:`749` Cant convert document...DOS Bomb attack?
+- :gitlab-issue:`757` Permissions list does not show an object until one has been created
+- :gitlab-merge:`68` Add Darwin to the OS prober check so utilities can be found correctly
+- :gitlab-merge:`69` Documentation: Use Tee Instead of Sudo Redirection
+- :gitlab-merge:`70` Documentation: Show a Note When Generating Supervisor Config
+- :forum-topic:`1581` Can't create Web links
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

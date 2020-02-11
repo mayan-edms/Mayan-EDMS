@@ -5,13 +5,14 @@
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:30-0400\n"
-"PO-Revision-Date: 2019-06-15 07:48+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"PO-Revision-Date: 2020-01-31 14:21+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,7 +34,7 @@ msgstr "Senha"
 
 #: forms.py:22 forms.py:73
 msgid "Remember me"
-msgstr "Lembrar de mim"
+msgstr "Lembrar-me"
 
 #: forms.py:25
 msgid ""
@@ -67,18 +68,24 @@ msgstr "Controla o mecanismo usado para autenticar o usuário. As opções são:
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
-msgstr ""
+msgstr "Tempo máximo que um usuário que selecionou \"Lembrar-me\" ficará logado. O valor é em segundos."
+
+#: settings.py:27
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr "Remover o link \"Esqueceu sua senha\" no formulário de login, usado para disparar a redefinição de senha."
 
 #: templates/authentication/login.html:11
 msgid "Login"
-msgstr "Iniciar sessão"
+msgstr "Login"
 
 #: templates/authentication/login.html:26
 #: templates/authentication/login.html:34
 msgid "Sign in"
 msgstr "Entrar"
 
-#: templates/authentication/login.html:39
+#: templates/authentication/login.html:41
 msgid "Forgot your password?"
 msgstr "Esqueceu sua senha?"
 
@@ -97,10 +104,10 @@ msgstr "Redefinição de senha concluída! Click no link abaixo para entrar."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
-msgstr "Página de entrada"
+msgstr "Página de login"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:154
+#: templates/authentication/password_reset_form.html:29 views.py:167
 msgid "Submit"
 msgstr "Enviar"
 
@@ -108,51 +115,51 @@ msgstr "Enviar"
 msgid "Password reset email sent!"
 msgstr "E-mail de redefinição de senha enviado!"
 
-#: views.py:74
+#: views.py:77
 msgid "Your password has been successfully changed."
 msgstr "Sua senha foi alterada com sucesso"
 
-#: views.py:81
+#: views.py:84
 msgid "Current user password change"
 msgstr "Alteração de senha do usuário atual"
 
-#: views.py:89
+#: views.py:92
 msgid "Changing the password is not allowed for this account."
 msgstr "Alterar a senha não é permitido para esta conta."
 
-#: views.py:145
+#: views.py:158
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Solicitação de alteração de senha executada em %(count)d usuário"
 
-#: views.py:147
+#: views.py:160
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Solicitação de alteração de senha realizada em %(count)d usuários"
 
-#: views.py:156
+#: views.py:169
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Trocar senha de usuário"
+msgstr[1] "Trocar as senhas de usuários"
 
-#: views.py:166
+#: views.py:179
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Alterar senha para o usuário: %s"
 
-#: views.py:186
+#: views.py:199
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "Redefinir senha de super usuário e usuário pessoal não é permitido, use a interface de administração para esses casos."
 
-#: views.py:196
+#: views.py:209
 #, python-format
 msgid "Successful password reset for user: %s."
-msgstr ""
+msgstr "Senha foi alterada com sucesso para o usuário %s."
 
-#: views.py:202
+#: views.py:215
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Erro de redefinição de senha para o usuário \"%(user)s\": %(error)s "

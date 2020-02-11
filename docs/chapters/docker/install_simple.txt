@@ -72,7 +72,8 @@ Simple Docker installation
        -d \
        --name mayan-edms-redis \
        --restart=always \
-       -p 6379:6379
+       -p 6379:6379 \
+       -v /docker-volumes/mayan-edms/redis:/data \
        |DOCKER_REDIS_IMAGE_VERSION| \
        redis-server \
        --databases \
@@ -80,7 +81,8 @@ Simple Docker installation
        --maxmemory-policy \
        allkeys-lru \
        --save \
-       ""
+       "" \
+       --requirepass mayanredispassword
 
    The Redis container will have two databases, one for background task messages,
    and the other to hold the results of those background tasks. Redis is
@@ -97,8 +99,8 @@ Simple Docker installation
        --restart=always \
        -p 80:8000 \
        -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'172.17.0.1'}}" \
-       -e MAYAN_CELERY_BROKER_URL="redis://172.17.0.1:6379/0" \
-       -e MAYAN_CELERY_RESULT_BACKEND="redis://172.17.0.1:6379/1" \
+       -e MAYAN_CELERY_BROKER_URL="redis://:mayanredispassword@172.17.0.1:6379/0" \
+       -e MAYAN_CELERY_RESULT_BACKEND="redis://:mayanredispassword@172.17.0.1:6379/1" \
        -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
        mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
 

@@ -6,13 +6,13 @@
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # jmcainzos <jmcainzos@vodafone.es>, 2015
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2016-2019
+# Roberto Rosario, 2016-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:30-0400\n"
-"PO-Revision-Date: 2019-12-03 05:35+0000\n"
+"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"PO-Revision-Date: 2020-01-29 07:40+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -25,27 +25,31 @@ msgstr ""
 msgid "Common"
 msgstr "Común"
 
-#: classes.py:85
-msgid "Available attributes: \n"
-msgstr "Atributos disponibles:\n"
+#: classes.py:185
+msgid "Model properties"
+msgstr "Propiedades del modelo"
 
-#: classes.py:125
-msgid "Available fields: \n"
-msgstr "Campos disponibles:\n"
+#: classes.py:190
+msgid "Model fields"
+msgstr "Campos del modelo"
 
-#: dependencies.py:309
+#: classes.py:233
+msgid "Model related fields"
+msgstr "Campos relacionados del modelo"
+
+#: dependencies.py:308
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Se utiliza para permitir la traducción sin conexión de los textos del código."
 
-#: dependencies.py:314
+#: dependencies.py:313
 msgid "Provides style checking."
 msgstr "Proporciona la comprobación de estilo."
 
-#: dependencies.py:319
+#: dependencies.py:318
 msgid "Command line environment with autocompletion."
 msgstr "Entorno de línea de comandos con autocompletado."
 
-#: dependencies.py:324
+#: dependencies.py:323
 msgid "Checks proper formatting of the README file."
 msgstr "Comprueba el formato correcto del archivo README."
 
@@ -57,67 +61,67 @@ msgstr "Selección"
 msgid "None"
 msgstr "Ninguno"
 
-#: generics.py:151
+#: generics.py:148
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "Seleccione las entradas que desea eliminar. Mantén pulsado Control para seleccionar varias entradas. Una vez que se complete la selección, haga clic en el botón de abajo o haga doble clic en la lista para activar la acción."
 
-#: generics.py:156
+#: generics.py:153
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "Seleccione las entradas que se añadirán. Mantén pulsado Control para seleccionar varias entradas. Una vez que se complete la selección, haga clic en el botón de abajo o haga doble clic en la lista para activar la acción."
 
-#: generics.py:289
+#: generics.py:286
 msgid "Add all"
 msgstr "Añadir todo"
 
-#: generics.py:298
+#: generics.py:295
 msgid "Add"
 msgstr "Agregar"
 
-#: generics.py:308
+#: generics.py:305
 msgid "Remove all"
 msgstr "Eliminar todo"
 
-#: generics.py:317
+#: generics.py:314
 msgid "Remove"
 msgstr "Eliminar"
 
-#: generics.py:525
+#: generics.py:524
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr "Error de datos duplicados: %(error)s"
 
-#: generics.py:547
+#: generics.py:546
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s no se pudo crear, error: %(error)s"
 
-#: generics.py:560
+#: generics.py:559
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s creado exitosamente."
 
-#: generics.py:599
+#: generics.py:598
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s no se pudo borrar, error: %(error)s."
 
-#: generics.py:608
+#: generics.py:607
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s borrado exitosamente."
 
-#: generics.py:701
+#: generics.py:743
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s no se pudo actualizar, error: %(error)s."
 
-#: generics.py:712
+#: generics.py:754
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s actualizado exitosamente."
@@ -174,26 +178,26 @@ msgstr "Apoyo técnico"
 msgid "Tools"
 msgstr "Herramientas"
 
-#: literals.py:13
+#: literals.py:14
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Esta función ha quedado en desuso y se eliminará en una versión futura."
 
-#: literals.py:16
+#: literals.py:17
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "El backend de su base de datos está configurado para usar SQLite. SQLite solo debe usarse para desarrollo y pruebas, no para producción."
 
-#: literals.py:34
+#: literals.py:35
 msgid "Days"
 msgstr "Días"
 
-#: literals.py:35
+#: literals.py:36
 msgid "Hours"
 msgstr "Horas"
 
-#: literals.py:36
+#: literals.py:37
 msgid "Minutes"
 msgstr "Minutos"
 
@@ -217,12 +221,12 @@ msgstr "Secundario"
 msgid "User"
 msgstr "Usuario"
 
-#: mixins.py:268
+#: mixins.py:292
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr "No se encontró %(verbose_name)s que coincida con la consulta"
 
-#: mixins.py:343
+#: mixins.py:405
 msgid "Object"
 msgstr "Objeto"
 
@@ -350,30 +354,30 @@ msgstr "URL de la instalación o página de inicio del proyecto."
 msgid "A storage backend that all workers can use to share files."
 msgstr "Un soporte de almacenamiento que todos los 'workers' puedan utilizar para compartir archivos."
 
-#: templatetags/common_tags.py:28
+#: templatetags/common_tags.py:29
 msgid "Confirm delete"
 msgstr "Confirmar eliminación"
 
-#: templatetags/common_tags.py:33
+#: templatetags/common_tags.py:34
 #, python-format
 msgid "Edit %s"
 msgstr "Editar %s"
 
-#: templatetags/common_tags.py:36
+#: templatetags/common_tags.py:37
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: templatetags/common_tags.py:40
+#: templatetags/common_tags.py:41
 #, python-format
 msgid "Details for: %s"
 msgstr "Detalles para: %s"
 
-#: templatetags/common_tags.py:44
+#: templatetags/common_tags.py:45
 #, python-format
 msgid "Edit: %s"
 msgstr "Editar: %s"
 
-#: templatetags/common_tags.py:47
+#: templatetags/common_tags.py:48
 msgid "Create"
 msgstr "Crear"
 

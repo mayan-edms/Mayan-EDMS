@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:31-0400\n"
+"POT-Creation-Date: 2020-02-10 03:49-0400\n"
 "PO-Revision-Date: 2019-05-03 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:32
@@ -70,41 +71,43 @@ msgstr "Término"
 
 #: forms.py:48
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Nombre, dirección de correo electrónico, identificador de llave o huella digital de llave a buscar."
+msgstr ""
+"Nombre, dirección de correo electrónico, identificador de llave o huella "
+"digital de llave a buscar."
 
-#: links.py:15
+#: links.py:19
 msgid "Delete"
 msgstr "Eliminar"
 
-#: links.py:19
+#: links.py:24
 msgid "Details"
 msgstr "Detalles"
 
-#: links.py:23
+#: links.py:29
 msgid "Download"
 msgstr "Descargar"
 
-#: links.py:27 permissions.py:28
+#: links.py:34 permissions.py:28
 msgid "Query keyservers"
 msgstr "Hacer búsquedas en servidores de llaves"
 
-#: links.py:32
+#: links.py:39
 msgid "Import"
 msgstr "Importar"
 
-#: links.py:37 permissions.py:7
+#: links.py:44 permissions.py:7
 msgid "Key management"
 msgstr "Gestión de llaves"
 
-#: links.py:41
+#: links.py:48
 msgid "Upload key"
 msgstr "Subir llave"
 
-#: links.py:44 views.py:176
+#: links.py:52 views.py:179
 msgid "Private keys"
 msgstr "Llaves privadas"
 
-#: links.py:48 views.py:200
+#: links.py:56 views.py:203
 msgid "Public keys"
 msgstr "Llaves públicas"
 
@@ -142,7 +145,9 @@ msgstr "Error de firma."
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr "El documento ha sido firmado pero no hay llave pública disponible para verificación."
+msgstr ""
+"El documento ha sido firmado pero no hay llave pública disponible para "
+"verificación."
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
@@ -206,7 +211,9 @@ msgstr "Firmas"
 
 #: settings.py:16
 msgid "Home directory used to store keys as well as configuration files."
-msgstr "Directorio de inicio utilizado para almacenar las llaves, así como los archivos de configuración."
+msgstr ""
+"Directorio de inicio utilizado para almacenar las llaves, así como los "
+"archivos de configuración."
 
 #: settings.py:22
 msgid "Path to the GPG binary."
@@ -216,78 +223,88 @@ msgstr "Ruta al binario GPG."
 msgid "Keyserver used to query for keys."
 msgstr "Servidor usado para buscar llaves."
 
-#: views.py:35
+#: views.py:37
 #, python-format
 msgid "Delete key: %s"
 msgstr "Borrar llave: %s"
 
-#: views.py:51
+#: views.py:53
 #, python-format
 msgid "Details for key: %s"
 msgstr "Detalles para llave: %s"
 
-#: views.py:71
+#: views.py:74
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "¿Importar llave: %s?"
 
-#: views.py:72
+#: views.py:75
 msgid "Import key"
 msgstr "Importar llave"
 
-#: views.py:81
+#: views.py:84
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "No se pudo importar la llave: %(key_id)s; %(error)s "
 
-#: views.py:89
+#: views.py:92
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "Llave: %(key_id)s, recibida con éxito"
 
-#: views.py:106
+#: views.py:109
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr "Utilice nombres, apellidos, identificaciones de llaves o correos electrónicos para buscar llaves públicas para importar desde el servidor de llaves."
+msgstr ""
+"Utilice nombres, apellidos, identificaciones de llaves o correos "
+"electrónicos para buscar llaves públicas para importar desde el servidor de "
+"llaves."
 
-#: views.py:110
+#: views.py:113
 msgid "No results returned"
 msgstr "No hay resultados devueltos"
 
-#: views.py:112
+#: views.py:115
 msgid "Key query results"
 msgstr "Resultado de búsqueda de llaves"
 
-#: views.py:132
+#: views.py:135
 msgid "Search"
 msgstr "Búsqueda"
 
-#: views.py:134
+#: views.py:137
 msgid "Query key server"
 msgstr "Consultar servidor de llaves"
 
-#: views.py:153
+#: views.py:156
 msgid "Upload new key"
 msgstr "Subir una nueva llave"
 
-#: views.py:169
+#: views.py:172
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded"
-" by the user.The view to upload private and public keys is the same."
-msgstr "Las llaves privadas se utilizan para firmar documentos. Las llaves privadas solo pueden ser cargadas por el usuario. La vista para cargar llaves privadas y públicas es la misma."
+"Private keys are used to signed documents. Private keys can only be uploaded "
+"by the user.The view to upload private and public keys is the same."
+msgstr ""
+"Las llaves privadas se utilizan para firmar documentos. Las llaves privadas "
+"solo pueden ser cargadas por el usuario. La vista para cargar llaves "
+"privadas y públicas es la misma."
 
-#: views.py:174
+#: views.py:177
 msgid "There no private keys"
 msgstr "No hay llaves privadas"
 
-#: views.py:192
+#: views.py:195
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded"
-" by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded "
+"by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr "Las llaves públicas se utilizan para verificar documentos firmados. Las llaves públicas pueden ser cargadas por el usuario o descargadas de los servidores de llaves. La vista para subir llaves privadas y públicas es la misma."
+msgstr ""
+"Las llaves públicas se utilizan para verificar documentos firmados. Las "
+"llaves públicas pueden ser cargadas por el usuario o descargadas de los "
+"servidores de llaves. La vista para subir llaves privadas y públicas es la "
+"misma."
 
-#: views.py:198
+#: views.py:201
 msgid "There no public keys"
 msgstr "No hay llaves publicas"

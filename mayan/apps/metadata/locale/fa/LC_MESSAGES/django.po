@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2018
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
@@ -9,24 +9,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:33-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
+"POT-Creation-Date: 2020-02-10 03:51-0400\n"
+"PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:66 apps.py:152 apps.py:157 events.py:7 links.py:48 permissions.py:7
+#: apps.py:66 apps.py:159 apps.py:164 events.py:7 links.py:48 permissions.py:7
 #: queues.py:9 settings.py:10
 msgid "Metadata"
 msgstr "متادیتا"
 
 #: apps.py:98
-msgid "Return the value of a specific document metadata"
-msgstr "مقدار خاص مستندات متا داده"
+msgid "Return the value of a specific document metadata."
+msgstr ""
 
 #: apps.py:99
 msgid "Metadata value of"
@@ -40,11 +41,11 @@ msgstr "نام نوع متا داده"
 msgid "Metadata type value"
 msgstr "مقدار نوع متاداده"
 
-#: apps.py:183 apps.py:191 forms.py:123 models.py:96 models.py:307
+#: apps.py:188 apps.py:196 forms.py:123 models.py:96 models.py:307
 msgid "Metadata type"
 msgstr "نوع متادیتا"
 
-#: apps.py:186 apps.py:195
+#: apps.py:191 apps.py:200
 msgid "Metadata value"
 msgstr "مقدار متادیتا"
 
@@ -111,7 +112,7 @@ msgstr "\"%s\" برای این نوع سند مورد نیاز است."
 msgid "Metadata types to be added to the selected documents."
 msgstr "نوع متاداده برای اضافه شدن به اسناد انتخاب شده."
 
-#: forms.py:148 views.py:506
+#: forms.py:148 views.py:424
 msgid "Remove"
 msgstr "حذف"
 
@@ -147,7 +148,7 @@ msgstr "ویرایش متادیتا"
 msgid "Remove metadata"
 msgstr "حذف کردن متادیتا"
 
-#: links.py:55 links.py:83 models.py:97 views.py:656
+#: links.py:55 links.py:83 models.py:97 views.py:590
 msgid "Metadata types"
 msgstr "انواه متادیتا"
 
@@ -163,7 +164,7 @@ msgstr "ایجاد"
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:78 views.py:311
+#: links.py:78 views.py:260
 msgid "Edit"
 msgstr "ویرایش"
 
@@ -190,8 +191,8 @@ msgstr "پیش فرض"
 #: models.py:71
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
+"Django's default templating language (https://docs.djangoproject.com/en/1.11/"
+"ref/templates/builtins/)."
 msgstr ""
 
 #: models.py:76 search.py:25
@@ -202,7 +203,9 @@ msgstr "بررسی و یا پیدا کردن"
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
-msgstr "اعتبار سنج ورودی داده را رد خواهد کرد اگر مقدار وارد شده با فرمت مورد نظر مطابقت نداشته باشد."
+msgstr ""
+"اعتبار سنج ورودی داده را رد خواهد کرد اگر مقدار وارد شده با فرمت مورد نظر "
+"مطابقت نداشته باشد."
 
 #: models.py:83 search.py:28
 msgid "Validator"
@@ -210,9 +213,10 @@ msgstr "تأیید اعتبار"
 
 #: models.py:87
 msgid ""
-"The parser will reformat the value entered to conform to the expected "
-"format."
-msgstr "تجزیه کننده مقدار ورودی را برای مطابقت با فرمت مورد انتظار بازنویسی خواهد کرد."
+"The parser will reformat the value entered to conform to the expected format."
+msgstr ""
+"تجزیه کننده مقدار ورودی را برای مطابقت با فرمت مورد انتظار بازنویسی خواهد "
+"کرد."
 
 #: models.py:89 search.py:31
 msgid "Parser"
@@ -302,39 +306,39 @@ msgstr "حذف نوع ابرداده"
 msgid "Add required metadata type"
 msgstr "نوع الگوریتم مورد نیاز را اضافه کنید"
 
-#: serializers.py:51
+#: serializers.py:54
 msgid "Primary key of the metadata type to be added."
 msgstr "کلید اولیه برای نوع متا داده اضافه گردد"
 
-#: serializers.py:132
+#: serializers.py:135
 msgid "Primary key of the metadata type to be added to the document."
 msgstr "کلید اولیه نوع متادیت که باید به سند اضافه شود."
 
-#: views.py:51
+#: views.py:65
+msgid "Selected documents must be of the same type."
+msgstr "اسناد انتخاب شده باید همان نوع باشند."
+
+#: views.py:79
 #, python-format
 msgid "Metadata add request performed on %(count)d document"
 msgstr "متادیتا درخواست اضافه شده را بر روی سند %(count)d انجام دهید"
 
-#: views.py:53
+#: views.py:81
 #, python-format
 msgid "Metadata add request performed on %(count)d documents"
 msgstr "متادیتا درخواستی را که در اسناد %(count)d انجام شده است اضافه کنید"
 
-#: views.py:69 views.py:237 views.py:462
-msgid "Selected documents must be of the same type."
-msgstr "اسناد انتخاب شده باید همان نوع باشند."
-
-#: views.py:113
+#: views.py:89
 msgid "Add"
 msgstr "افزودن"
 
-#: views.py:115
+#: views.py:91
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
 msgstr[0] "ًانواع متا داده را به اسناد اضافه کنید"
 msgstr[1] "ًانواع متا داده را به اسناد اضافه کنید"
 
-#: views.py:126
+#: views.py:102
 #, python-format
 msgid "Add metadata types to document: %s"
 msgstr "اضافه کردن انواع فراداده به سند: %s"
@@ -344,13 +348,14 @@ msgstr "اضافه کردن انواع فراداده به سند: %s"
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr "نوع متا داده افزودن خطا \"%(metadata_type)s به سند %(document)s; %(exception)s"
+msgstr ""
+"نوع متا داده افزودن خطا \"%(metadata_type)s به سند %(document)s; "
+"%(exception)s"
 
 #: views.py:194
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document "
-"%(document)s."
+"Metadata type: %(metadata_type)s successfully added to document %(document)s."
 msgstr "جذف موفق متادیتای ندع : %(metadata_type)s برای سند : %(document)s."
 
 #: views.py:204
@@ -359,113 +364,114 @@ msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
 msgstr "متادیتای نوع : %(metadata_type)s  در سند  %(document)s. موجود است."
 
-#: views.py:218
+#: views.py:220
 #, python-format
 msgid "Metadata edit request performed on %(count)d document"
 msgstr "درخواست ویرایش متادیتا در سند %(count)d انجام شده است"
 
-#: views.py:221
+#: views.py:223
 #, python-format
 msgid "Metadata edit request performed on %(count)d documents"
 msgstr "درخواست ویرایش متادیتا در اسناد %(count)d انجام شده است"
 
-#: views.py:306
+#: views.py:255
 msgid ""
 "Add metadata types available for this document's type and assign them "
 "corresponding values."
 msgstr ""
 
-#: views.py:309
+#: views.py:258
 msgid "There is no metadata to edit"
 msgstr ""
 
-#: views.py:313
+#: views.py:262
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
 msgstr[0] "اسناد متاداده را ویرایش کنید"
 msgstr[1] "اسناد متاداده را ویرایش کنید"
 
-#: views.py:324
+#: views.py:273
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr "ویرایش متادیتای سند : %s"
 
-#: views.py:382
+#: views.py:357
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
 msgstr "خطا در ویرایش متادیتا برای سند: %(document)s؛ %(exception)s."
 
-#: views.py:392
+#: views.py:367
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "متادیتای سند %s با موفقیت ویرایش شد."
 
-#: views.py:425
+#: views.py:392
 msgid ""
-"Add metadata types this document's type to be able to add them to individual"
-" documents. Once added to individual document, you can then edit their "
-"values."
+"Add metadata types this document's type to be able to add them to individual "
+"documents. Once added to individual document, you can then edit their values."
 msgstr ""
 
-#: views.py:430
+#: views.py:397
 msgid "This document doesn't have any metadata"
 msgstr ""
 
-#: views.py:431
+#: views.py:398
 #, python-format
 msgid "Metadata for document: %s"
 msgstr "متا داده برای سند : %s"
 
-#: views.py:443
+#: views.py:412
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
 msgstr "درخواست حذف متادیتا بر روی سند %(count)d انجام شده است"
 
-#: views.py:446
+#: views.py:415
 #, python-format
 msgid "Metadata remove request performed on %(count)d documents"
 msgstr "درخواست حذف متادیتا بر روی اسناد %(count)d انجام شده است"
 
-#: views.py:508
+#: views.py:426
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] "انواع متا داده را از اسناد حذف کنید"
 msgstr[1] "انواع متا داده را از اسناد حذف کنید"
 
-#: views.py:519
+#: views.py:437
 #, python-format
 msgid "Remove metadata types from the document: %s"
 msgstr "حذف انواع فراداده از سند: %s"
 
-#: views.py:567
+#: views.py:501
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
 msgstr "حذف موفق متادیتای نوع \"%(metadata_type)s\" از سند  %(document)s."
 
-#: views.py:576
+#: views.py:510
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
-msgstr "خطا در حذف متادیتای نوع\"%(metadata_type)s\" ازسند: %(document)s; %(exception)s"
+msgstr ""
+"خطا در حذف متادیتای نوع\"%(metadata_type)s\" ازسند: %(document)s; "
+"%(exception)s"
 
-#: views.py:587
+#: views.py:521
 msgid "Create metadata type"
 msgstr "ایجاد نوع متا دیتا"
 
-#: views.py:612
+#: views.py:546
 #, python-format
 msgid "Delete the metadata type: %s?"
 msgstr "نوع Metadata را حذف کنید: %s؟"
 
-#: views.py:627
+#: views.py:561
 #, python-format
 msgid "Edit metadata type: %s"
 msgstr "ویرایش نوع متا دیتا : %s"
 
-#: views.py:648
+#: views.py:582
 msgid ""
 "Metadata types are users defined properties that can be assigned values. "
 "Once created they must be associated to document types, either as optional "
@@ -474,34 +480,34 @@ msgid ""
 "is provided."
 msgstr ""
 
-#: views.py:655
+#: views.py:589
 msgid "There are no metadata types"
 msgstr ""
 
-#: views.py:676
+#: views.py:610
 #, python-format
 msgid "Error updating relationship; %s"
 msgstr "خطا در به روز رسانی رابطه؛ %s"
 
-#: views.py:681
+#: views.py:615
 msgid "Relationships updated successfully"
 msgstr "روابط با موفقیت به روز شد"
 
-#: views.py:697
+#: views.py:631
 msgid ""
 "Create metadata types to be able to associate them to this document type."
 msgstr ""
 
-#: views.py:700
+#: views.py:634
 msgid "There are no metadata types available"
 msgstr ""
 
-#: views.py:703
+#: views.py:637
 #, python-format
 msgid "Metadata types for document type: %s"
 msgstr "نوع متاداده برای نوع سند: %s"
 
-#: views.py:754
+#: views.py:688
 #, python-format
 msgid "Document types for metadata type: %s"
 msgstr "نوع سند برای نوع فراداده: %s"

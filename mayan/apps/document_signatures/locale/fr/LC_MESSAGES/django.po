@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
 # Olivier W, 2019
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # Yves Dubois <ydubois@gmail.com>, 2018
@@ -14,14 +14,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:31-0400\n"
-"PO-Revision-Date: 2019-12-08 19:18+0000\n"
-"Last-Translator: Olivier W\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"POT-Creation-Date: 2020-02-10 03:50-0400\n"
+"PO-Revision-Date: 2020-01-07 17:38+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:48 permissions.py:8 settings.py:13
@@ -48,17 +49,19 @@ msgstr "Aucune"
 msgid "Type"
 msgstr "Type"
 
-#: forms.py:19 forms.py:33 workflow_actions.py:20
+#: forms.py:19 forms.py:33 workflow_actions.py:21
 msgid "Key"
 msgstr "Clé"
 
-#: forms.py:24 serializers.py:35 workflow_actions.py:31
+#: forms.py:24 serializers.py:35 workflow_actions.py:32
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
-msgstr "La phrase secrète permettant de déverrouiller la clé pour pouvoir signer la version du document."
+msgstr ""
+"La phrase secrète permettant de déverrouiller la clé pour pouvoir signer la "
+"version du document."
 
-#: forms.py:26 workflow_actions.py:28
+#: forms.py:26 workflow_actions.py:29
 msgid "Passphrase"
 msgstr "Phrase secrète"
 
@@ -114,7 +117,7 @@ msgstr "Type de clé"
 msgid "Verify all documents"
 msgstr "Vérifier tous les documents"
 
-#: links.py:39 links.py:58 queues.py:9
+#: links.py:39 links.py:79 queues.py:9
 msgid "Signatures"
 msgstr "Signatures"
 
@@ -123,24 +126,24 @@ msgid "Delete"
 msgstr "Supprimer"
 
 #: links.py:52
-msgid "Details"
-msgstr "Détails"
-
-#: links.py:63
-msgid "Download"
-msgstr "Télécharger"
-
-#: links.py:69
-msgid "Upload signature"
-msgstr "Transférer une signature"
-
-#: links.py:76
 msgid "Sign detached"
 msgstr "Signature détachée"
 
-#: links.py:83
+#: links.py:59
+msgid "Details"
+msgstr "Détails"
+
+#: links.py:66
+msgid "Download"
+msgstr "Télécharger"
+
+#: links.py:72
 msgid "Sign embedded"
 msgstr "Signature intégrée"
+
+#: links.py:85
+msgid "Upload signature"
+msgstr "Transférer une signature"
 
 #: models.py:40
 msgid "Document version"
@@ -248,7 +251,9 @@ msgstr "Vérifier la signature intégrée manquante"
 
 #: settings.py:21
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr "Emplacement de la sous-classe de stockage à utiliser lors du stockage des signatures détachées."
+msgstr ""
+"Emplacement de la sous-classe de stockage à utiliser lors du stockage des "
+"signatures détachées."
 
 #: settings.py:30
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
@@ -290,47 +295,61 @@ msgstr "Supprimer la signature détachée : %s"
 msgid "Details for signature: %s"
 msgstr "Détails de la signature : %s"
 
-#: views.py:276
+#: views.py:275
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr "Les signatures aident à fournir des preuves d’auteur et la détection d’altération. Ils sont très sécurisés et difficiles à copier. Une signature peut être incorporée dans le document lui-même ou dans un fichier séparé."
+msgstr ""
+"Les signatures aident à fournir des preuves d’auteur et la détection "
+"d’altération. Ils sont très sécurisés et difficiles à copier. Une signature "
+"peut être incorporée dans le document lui-même ou dans un fichier séparé."
 
-#: views.py:304
+#: views.py:303
 msgid "There are no signatures for this document."
 msgstr "Il n'y a pas de signatures pour ce document."
 
-#: views.py:307
+#: views.py:306
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Signatures pour cette version du document : %s"
 
-#: views.py:337
+#: views.py:336
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Transférer une signature détachée pour la version du document : %s"
 
-#: views.py:354
+#: views.py:353
 msgid "On large databases this operation may take some time to execute."
-msgstr "Sur de grosses bases de données, cette opération peut prendre un certain temps."
+msgstr ""
+"Sur de grosses bases de données, cette opération peut prendre un certain "
+"temps."
 
-#: views.py:355
+#: views.py:354
 msgid "Verify all document for signatures?"
 msgstr "Vérifier les signatures de tous les documents ?"
 
-#: views.py:365
+#: views.py:364
 msgid "Signature verification queued successfully."
 msgstr "Vérification de la signature ajoutée à la file d'attente avec succès."
 
-#: workflow_actions.py:23
+#: workflow_actions.py:24
 msgid "Private key that will be used to sign the document version."
 msgstr "Clé privée qui sera utilisée pour signer la version du document."
 
-#: workflow_actions.py:38
+#: workflow_actions.py:39
 msgid "Sign document (detached)"
 msgstr "Signer le document (détachée)"
 
-#: workflow_actions.py:68
+#: workflow_actions.py:51
+msgid ""
+"Document has no version to sign. You might be trying to use this action in "
+"an initial state before the created document is yet to be processed."
+msgstr ""
+"Le document n'a pas de version à signer. Vous essayez peut-être d'utiliser "
+"cette action dans un état initial avant que le document créé n'ait encore "
+"été traité."
+
+#: workflow_actions.py:84
 msgid "Sign document (embedded)"
 msgstr "Signer le document (intégrée)"

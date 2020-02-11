@@ -7,6 +7,8 @@ import os
 import random
 
 from furl import furl
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.webdriver import WebDriver
 
 from django.apps import apps
 from django.conf import settings
@@ -18,11 +20,17 @@ from django.http import HttpResponse
 from django.template import Context, Template
 from django.test.utils import ContextList
 from django.urls import clear_url_caches, reverse
-from django.utils.encoding import force_bytes
+from django.utils.encoding import (
+    DjangoUnicodeDecodeError, force_bytes, force_text
+)
 from django.utils.six import PY3
+
+from stronghold.decorators import public
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.storage.settings import setting_temporary_directory
+
+from ..compat import FileResponse
 
 from .literals import (
     TEST_SERVER_HOST, TEST_SERVER_SCHEME, TEST_VIEW_NAME, TEST_VIEW_URL
@@ -141,6 +149,37 @@ class ContentTypeCheckTestCaseMixin(object):
         self.client = CustomClient()
 
 
+class DownloadTestCaseMixin(object):
+    def assert_download_response(
+        self, response, content=None, filename=None, is_attachment=None,
+        mime_type=None
+    ):
+        self.assertTrue(isinstance(response, FileResponse))
+
+        if filename:
+            self.assertEqual(
+                response[
+                    'Content-Disposition'
+                ].split('filename="')[1].split('"')[0], filename
+            )
+
+        if content:
+            response_content = b''.join(list(response))
+
+            try:
+                response_content = force_text(response_content)
+            except DjangoUnicodeDecodeError:
+                """Leave as bytes"""
+
+            self.assertEqual(response_content, content)
+
+        if is_attachment is not None:
+            self.assertEqual(response['Content-Disposition'], 'attachment')
+
+        if mime_type:
+            self.assertTrue(response['Content-Type'].startswith(mime_type))
+
+
 class EnvironmentTestCaseMixin(object):
     def setUp(self):
         super(EnvironmentTestCaseMixin, self).setUp()
@@ -200,7 +239,7 @@ class RandomPrimaryKeyModelMonkeyPatchMixin(object):
 
     @staticmethod
     def get_unique_primary_key(model):
-        pk_list = model._meta.default_manager.values_list('pk', flat=True)
+        manager = model._meta.default_manager
 
         attempts = 0
         while True:
@@ -209,7 +248,7 @@ class RandomPrimaryKeyModelMonkeyPatchMixin(object):
                 RandomPrimaryKeyModelMonkeyPatchMixin.random_primary_key_random_ceiling
             )
 
-            if primary_key not in pk_list:
+            if not manager.filter(pk=primary_key).exists():
                 break
 
             attempts = attempts + 1
@@ -267,6 +306,51 @@ class RandomPrimaryKeyModelMonkeyPatchMixin(object):
         if self.random_primary_key_enable:
             models.Model.save = self.method_save_original
         super(RandomPrimaryKeyModelMonkeyPatchMixin, self).tearDown()
+
+
+class SeleniumTestMixin(object):
+    SKIP_VARIABLE_NAME = 'TESTS_SELENIUM_SKIP'
+
+    @staticmethod
+    def _get_skip_variable_value():
+        return os.environ.get(
+            SeleniumTestMixin._get_skip_variable_environment_name(),
+            getattr(settings, SeleniumTestMixin.SKIP_VARIABLE_NAME, False)
+        )
+
+    @staticmethod
+    def _get_skip_variable_environment_name():
+        return 'MAYAN_{}'.format(SeleniumTestMixin.SKIP_VARIABLE_NAME)
+
+    @classmethod
+    def setUpClass(cls):
+        super(SeleniumTestMixin, cls).setUpClass()
+        cls.webdriver = None
+        if not SeleniumTestMixin._get_skip_variable_value():
+            options = Options()
+            options.add_argument('--headless')
+            cls.webdriver = WebDriver(
+                firefox_options=options, log_path='/dev/null'
+            )
+
+    @classmethod
+    def tearDownClass(cls):
+        if cls.webdriver:
+            cls.webdriver.quit()
+        super(SeleniumTestMixin, cls).tearDownClass()
+
+    def setUp(self):
+        if SeleniumTestMixin._get_skip_variable_value():
+            self.skipTest(reason='Skipping selenium test')
+        super(SeleniumTestMixin, self).setUp()
+
+    def _open_url(self, fragment=None, path=None, viewname=None):
+        url = '{}{}{}'.format(
+            self.live_server_url, path or reverse(viewname=viewname),
+            fragment or ''
+        )
+
+        self.webdriver.get(url=url)
 
 
 class SilenceLoggerTestCaseMixin(object):
@@ -462,8 +546,10 @@ class TestServerTestCaseMixin(object):
 class TestViewTestCaseMixin(object):
     auto_add_test_view = False
     has_test_view = False
+    test_view_is_public = False
     test_view_object = None
     test_view_name = TEST_VIEW_NAME
+    test_view_template = '{{ object }}'
     test_view_url = TEST_VIEW_URL
 
     def setUp(self):
@@ -481,13 +567,16 @@ class TestViewTestCaseMixin(object):
 
     def _test_view_factory(self, test_object=None):
         def test_view(request):
-            template = Template('{{ object }}')
+            template = Template(template_string=self.test_view_template)
             context = Context(
-                {'object': test_object, 'resolved_object': test_object}
+                dict_={'object': test_object, 'resolved_object': test_object}
             )
             return HttpResponse(template.render(context=context))
 
-        return test_view
+        if self.test_view_is_public:
+            return public(function=test_view)
+        else:
+            return test_view
 
     def add_test_view(self, test_object=None):
         urlconf = importlib.import_module(settings.ROOT_URLCONF)

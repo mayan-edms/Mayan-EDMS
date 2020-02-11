@@ -35,7 +35,25 @@ class DocumentPageContentManager(models.Manager):
         logger.debug('document version: %d', document_version.pk)
 
         try:
-            Parser.parse_document_version(document_version=document_version)
+            with transaction.atomic():
+                Parser.parse_document_version(document_version=document_version)
+
+                logger.info(
+                    'Parsing complete for document version: %s', document_version
+                )
+                document_version.parsing_errors.all().delete()
+
+                event_parsing_document_version_finish.commit(
+                    action_object=document_version.document,
+                    target=document_version
+                )
+
+                transaction.on_commit(
+                    lambda: post_document_version_parsing.send(
+                        sender=document_version.__class__,
+                        instance=document_version
+                    )
+                )
         except Exception as exception:
             logger.error(
                 'Parsing error for document version: %d; %s',
@@ -52,20 +70,6 @@ class DocumentPageContentManager(models.Manager):
                 )
             else:
                 document_version.parsing_errors.create(result=exception)
-        else:
-            logger.info(
-                'Parsing complete for document version: %s', document_version
-            )
-            document_version.parsing_errors.all().delete()
-
-            event_parsing_document_version_finish.commit(
-                action_object=document_version.document,
-                target=document_version
-            )
-
-            post_document_version_parsing.send(
-                sender=document_version.__class__, instance=document_version
-            )
 
 
 class DocumentTypeSettingsManager(models.Manager):

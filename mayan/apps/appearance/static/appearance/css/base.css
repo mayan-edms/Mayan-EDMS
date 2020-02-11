@@ -634,3 +634,9 @@ a i {
 .banner-server-error {
     margin-top: 10px;
 }
+
+/* List toolbar affix */
+#list-toolbar.affix {
+    top: 60px;  /* OuterHeight of navbar */
+    z-index: 90;
+}

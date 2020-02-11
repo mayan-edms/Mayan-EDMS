@@ -157,6 +157,11 @@ class CabinetsApp(MayanAppConfig):
                 link_cabinet_delete, link_cabinet_edit, link_cabinet_child_add
             ), sources=(Cabinet,)
         )
+        menu_object.unbind_links(
+            links=(
+                link_cabinet_delete, link_cabinet_edit, link_cabinet_child_add
+            ), sources=(DocumentCabinet,)
+        )
         menu_secondary.bind_links(
             links=(link_document_cabinet_add, link_document_cabinet_remove),
             sources=(

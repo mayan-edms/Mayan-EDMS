@@ -6,14 +6,15 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatic4@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:30-0400\n"
-"PO-Revision-Date: 2019-12-03 05:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"PO-Revision-Date: 2019-12-26 19:00+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 
 #: apps.py:45 events.py:7 links.py:34
 msgid "Checkouts"
-msgstr "Reservas"
+msgstr "Retiradas"
 
 #: dashboard_widgets.py:16 views.py:172
 msgid "Checked out documents"
@@ -39,7 +40,7 @@ msgstr "Documento devolvido"
 
 #: events.py:17
 msgid "Document checked out"
-msgstr "Documento reservado"
+msgstr "Documento retirado"
 
 #: events.py:20
 msgid "Document forcefully checked in"
@@ -47,7 +48,7 @@ msgstr "Documento devolvido forçosamente"
 
 #: exceptions.py:27
 msgid "Document already checked out."
-msgstr "Documento já está reservado."
+msgstr "Documento já foi retirado"
 
 #: forms.py:28
 msgid "Document status"
@@ -59,11 +60,11 @@ msgstr "Usuário"
 
 #: forms.py:43
 msgid "Check out time"
-msgstr "Hora da reserva"
+msgstr "Hora da retirada"
 
 #: forms.py:48
 msgid "Check out expiration"
-msgstr "Saída da reserva"
+msgstr "Expiração da retirada"
 
 #: forms.py:53
 msgid "New versions allowed?"
@@ -79,11 +80,11 @@ msgstr "Não"
 
 #: links.py:41
 msgid "Check out document"
-msgstr "Reservar documentos"
+msgstr "Retirar documentos"
 
 #: links.py:45
 msgid "Check out"
-msgstr ""
+msgstr "Retirar"
 
 #: links.py:52
 msgid "Check in document"
@@ -91,15 +92,15 @@ msgstr "Devolver documento"
 
 #: links.py:56
 msgid "Check in"
-msgstr ""
+msgstr "Devolver"
 
 #: links.py:62
 msgid "Check in/out"
-msgstr "Reservas"
+msgstr "Devolver / Retirar"
 
 #: literals.py:12
 msgid "Checked out"
-msgstr "Reservado"
+msgstr "Retirado"
 
 #: literals.py:13
 msgid "Checked in/available"
@@ -111,15 +112,15 @@ msgstr "Documento"
 
 #: models.py:34
 msgid "Check out date and time"
-msgstr "Data e hora da reserva"
+msgstr "Data e hora da retirada"
 
 #: models.py:38
 msgid "Amount of time to hold the document checked out in minutes."
-msgstr "Quantidade de tempo para manter o documento reservado em minutos."
+msgstr "Tempo para manter o documento retirado em minutos."
 
 #: models.py:40
 msgid "Check out expiration date and time"
-msgstr "Data e hora da expiração da reserva."
+msgstr "Data e hora da expiração da retirada."
 
 #: models.py:49
 msgid "Do not allow new version of this document to be uploaded."
@@ -135,11 +136,11 @@ msgstr "Reserva de documentos"
 
 #: models.py:60
 msgid "Document checkouts"
-msgstr "Reservas de documentos"
+msgstr "Retiradas de documentos"
 
 #: models.py:68
 msgid "Check out expiration date and time must be in the future."
-msgstr "Data e hora da expiração da reserva deve ser no futuro."
+msgstr "Data e hora da expiração da retirada deve ser no futuro."
 
 #: models.py:120
 msgid "New version block"
@@ -151,11 +152,11 @@ msgstr "Bloqueios de nova versão"
 
 #: models.py:141
 msgid "Checkout time and date"
-msgstr "Data e hora da reserva"
+msgstr "Data e hora da retirada"
 
 #: models.py:146
 msgid "Checkout expiration"
-msgstr "Expiração da reserva"
+msgstr "Expiração da retirada"
 
 #: permissions.py:10
 msgid "Check in documents"
@@ -167,62 +168,62 @@ msgstr "Devolver documentos forçosamente"
 
 #: permissions.py:16
 msgid "Check out documents"
-msgstr "Reservar documentos"
+msgstr "Retirar documentos"
 
 #: permissions.py:19
 msgid "Check out details view"
-msgstr "Detalhes da reserva"
+msgstr "Detalhes da retirada"
 
 #: queues.py:13
 msgid "Checkouts periodic"
-msgstr "Reservas periódicas"
+msgstr "Retiradas periódicas"
 
 #: queues.py:17
 msgid "Check expired checkouts"
-msgstr "Verificar reservas expiradas"
+msgstr "Verificar retiradas expiradas"
 
-#: serializers.py:26
+#: serializers.py:31
 msgid "Primary key of the document to be checked out."
-msgstr "Chave primária do documento que será reservado."
+msgstr "Chave primária do documento que será retirado."
 
 #: views.py:35
 #, python-format
 msgid "Check in %(count)d document"
 msgid_plural "Check in %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Check in %(count)d documentos"
+msgstr[1] "Devolver %(count)d documento(s)"
 
 #: views.py:48
 #, python-format
 msgid "Check in document: %s"
-msgstr ""
+msgstr "Devolver o documento: %s"
 
 #: views.py:102
 #, python-format
 msgid "Checkout %(count)d document"
 msgid_plural "Checkout %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Checkout %(count)d documento(s)"
+msgstr[1] "Retirar %(count)d documentos"
 
 #: views.py:115
 #, python-format
 msgid "Check out document: %s"
-msgstr "Reservar o documento: %s"
+msgstr "Retirar o documento: %s"
 
 #: views.py:149
 #, python-format
 msgid "Check out details for document: %s"
-msgstr "Detalhes da reserva para o documento: %s "
+msgstr "Detalhes da retirada para o documento: %s "
 
 #: views.py:168
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
-msgstr ""
+msgstr "Retirar um documento bloqueia certas operações por uma quantidade de tempo predeterminada."
 
 #: views.py:171
 msgid "No documents have been checked out"
-msgstr "Nenhum documento foi reservado."
+msgstr "Nenhum documento foi retirado."
 
 #: widgets.py:27
 msgid "Amount"

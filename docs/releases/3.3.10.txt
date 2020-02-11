@@ -1,0 +1,310 @@
+Version 3.3.10
+==============
+
+Released: January 31, 2020
+
+
+Changes
+-------
+
+
+Appearance
+^^^^^^^^^^
+
+A fall back read-only render was added for form fields. Makes read-only
+decimal fields render as expected.
+
+
+Authentication
+^^^^^^^^^^^^^^
+
+A new settings was added to allow disabling the password reset link in the
+login form. This can be done for security issues or if the authentication
+backend doesn't support it, such as when using LDAP for authentication.
+The setting is named ``AUTHENTICATION_DISABLE_PASSWORD_RESET`` and
+defaults to ``false``.
+
+
+Converter
+^^^^^^^^^
+
+The page count detection was improved for some obscure JPEG sub format files.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+Two commands were added to aid in batch file integration. The first is the
+``showversion`` command and it displays the current version. This command
+accepts the option ``--build-string`` to show the build string instead.
+
+The second command added is called ``checkversion``. It will check is the
+currently installed version is up to date. This command requires an internet
+connection as it checks the Python package repository.
+
+The version of Pillow, the image processing library was updated to 6.2.2.
+
+
+File metadata
+^^^^^^^^^^^^^
+
+A data migration was added to the file metadata app to deduplicate entries
+before applying the schema change in migration 0002. This data migration
+ensures that the upgrade completes even if there were inconsistencies in the
+tables of the file metadata app.
+
+
+REST API
+^^^^^^^^
+
+A new setting was added to disable the API and API documentation links. This
+setting is useful when Mayan EDMS is used as a frontend solution to avoid
+confusion with users who are not meant to use the API.
+
+This setting only disables the API links for aesthetic improvement but doesn't
+disable the API documentation views or the API itself.
+
+The setting is named ``REST_API_DISABLE_LINKS`` and defaults to ``false``.
+
+
+Sources
+^^^^^^^
+
+Two endpoints of the staging folder file API were fixed and multiple tests
+added to detect future regressions.
+
+
+Templating
+^^^^^^^^^^
+
+Support was added to differentiate how an attribute is related to an object
+class. This is to say that the attributes dropdown will now group entries by
+types. Types supported now are: model properties (actions), model fields
+(database fields), and model related fields (database fields in a sibling
+table).
+
+The OCR content and parsed content were added as model properties for use
+in templates.
+
+
+Testing
+^^^^^^^
+
+The TarArchiveClassTestCase was updated and made in to a reusable archive file
+test case class.
+
+The test runner was a new option for testing excluded tests.
+
+The package django_migration_test was added and migration testing was added
+to the file metadata app for migration 0002.
+
+The test system was updated to support bi-directional testing of migrations.
+
+The makefile was updated to remove repeated commands.
+
+The GitLab CI file was updated to use the new test makefile target and add
+migration testing as part of the release pipeline.
+
+The Docker run_tests command was updated to include migration testing.
+
+
+Workflows
+^^^^^^^^^
+
+A button was added to the workflows to launch a specific one for existing
+documents. This is useful when changes are made that require triggering the
+initial state of existing documents.
+
+The workflow app navigation was improved with adding a new links to jump
+between commonly used views of the app.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrading process
+-----------------
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+
+Upgrading from Mayan EDMS 3.2.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Update the Redis configuration:
+
+   Configure Redis to discard data when it runs out of memory, not save its
+   database, and only keep 2 database:
+
+   .. code-block:: bash
+
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Install the Python 3 development OS package:
+
+   .. code-block:: bash
+
+    sudo apt-get install python3-dev
+
+
+#. Update the virtualenv to use Python 3:
+
+   .. code-block:: bash
+
+    sudo -u mayan virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Create a home directory for the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    mkdir /home/mayan
+
+
+#. Grant ownership to the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    chown mayan:mayan /home/mayan
+
+#. Reinstall the Python client for PostgreSQL and Redis:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
+
+
+#. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
+
+
+Upgrade steps from any previous version of Mayan EDMS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u mayan curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u mayan |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.10
+
+   the requirements will also be updated automatically.
+
+
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Edit the supervisord configuration file and update any setting specific to your installation:
+
+   .. code-block:: bash
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+
+#. Migrate existing database schema with:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Add new static media:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| preparestatic --noinput
+
+
+#. Start supervisord:
+
+   .. code-block:: bash
+
+       sudo systemctl start supervisor
+
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Bugs fixed or issues closed
+---------------------------
+
+- :gitlab-issue:`762` CommandError: Error during pre_upgrade signal: could not create unique index "file_metadata_storeddriver_driver_path_d3d461e4_uniq"
+- :gitlab-issue:`764` /api/staging_files/ does not report any files staged, but they show up in the UI.
+- :gitlab-issue:`767` Upload Error: unpack_from requires a buffer of at least 2 bytesy
+
+- MD-10
+- MD-14
+- MD-28
+- MD-171
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

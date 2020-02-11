@@ -20,9 +20,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 
+from .literals import (
+    NAMESPACE_VERSION_INITIAL, SMART_SETTINGS_NAMESPACES_NAME
+)
+
 logger = logging.getLogger(__name__)
-NAMESPACE_VERSION_INITIAL = '0001'
-SMART_SETTINGS_NAMESPACES_NAME = 'SMART_SETTINGS_NAMESPACES'
 
 
 def read_configuration_file(filepath):
@@ -344,12 +346,12 @@ class Setting(object):
     def invalidate_cache(self):
         self.loaded = False
 
-    def is_overrided(self):
+    def is_overridden(self):
         return self.environment_variable
 
-    is_overrided.short_description = _('Overrided')
-    is_overrided.help_text = _(
-        'Is this settings being overrided by an environment variable?'
+    is_overridden.short_description = _('Overridden')
+    is_overridden.help_text = _(
+        'Is this settings being overridden by an environment variable?'
     )
 
     def migrate(self):

@@ -46,7 +46,9 @@ class DocumentPageOCRContentManager(models.Manager):
             )
         )
 
-        cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT, disable_sync_subtasks=False)
+        cache_filename = task.get(
+            timeout=DOCUMENT_IMAGE_TASK_TIMEOUT, disable_sync_subtasks=False
+        )
 
         with document_page.cache_partition.get_file(filename=cache_filename).open() as file_object:
             document_page_content, created = DocumentPageOCRContent.objects.get_or_create(
@@ -68,8 +70,26 @@ class DocumentPageOCRContentManager(models.Manager):
         logger.debug('document version: %d', document_version.pk)
 
         try:
-            for document_page in document_version.pages.all():
-                self.process_document_page(document_page=document_page)
+            with transaction.atomic():
+                for document_page in document_version.pages.all():
+                    self.process_document_page(document_page=document_page)
+
+                logger.info(
+                    'OCR complete for document version: %s', document_version
+                )
+                document_version.ocr_errors.all().delete()
+
+                event_ocr_document_version_finish.commit(
+                    action_object=document_version.document,
+                    target=document_version
+                )
+
+                transaction.on_commit(
+                    lambda: post_document_version_ocr.send(
+                        sender=document_version.__class__,
+                        instance=document_version
+                    )
+                )
         except Exception as exception:
             logger.error(
                 'OCR error for document version: %d; %s', document_version.pk,
@@ -86,20 +106,6 @@ class DocumentPageOCRContentManager(models.Manager):
                 )
             else:
                 document_version.ocr_errors.create(result=exception)
-        else:
-            logger.info(
-                'OCR complete for document version: %s', document_version
-            )
-            document_version.ocr_errors.all().delete()
-
-            event_ocr_document_version_finish.commit(
-                action_object=document_version.document,
-                target=document_version
-            )
-
-            post_document_version_ocr.send(
-                sender=document_version.__class__, instance=document_version
-            )
 
 
 class DocumentTypeSettingsManager(models.Manager):

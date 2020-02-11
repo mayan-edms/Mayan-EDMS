@@ -98,7 +98,8 @@ class IndexInstaceViewTestCase(
         response = self._request_test_index_rebuild_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertEqual(IndexInstanceNode.objects.count(), 0)
+        self.assertEqual(IndexInstanceNode.objects.count(), 1)
+        self.assertEqual(IndexInstanceNode.objects.first().parent, None)
 
     def test_index_rebuild_view_with_access(self):
         self.upload_document()

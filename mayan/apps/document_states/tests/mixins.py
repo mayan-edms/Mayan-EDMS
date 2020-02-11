@@ -225,6 +225,13 @@ class WorkflowViewTestMixin(object):
             }
         )
 
+    def _request_test_workflow_launch_view(self):
+        return self.post(
+            viewname='document_states:workflow_template_launch', kwargs={
+                'pk': self.test_workflow.pk
+            }
+        )
+
     def _request_test_workflow_list_view(self):
         return self.get(
             viewname='document_states:workflow_template_list',

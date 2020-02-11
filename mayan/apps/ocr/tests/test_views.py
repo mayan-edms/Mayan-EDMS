@@ -7,7 +7,7 @@ from ..permissions import (
     permission_ocr_content_view, permission_ocr_document,
     permission_document_type_ocr_setup
 )
-from ..utils import get_document_ocr_content
+from ..utils import get_instance_ocr_content
 
 from .literals import TEST_DOCUMENT_CONTENT
 
@@ -169,11 +169,11 @@ class OCRViewsTestCase(OCRViewTestMixin, GenericDocumentViewTestCase):
         self.test_document.submit_for_ocr()
 
         response = self._request_document_ocr_download_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_ocr_download_view_with_access(self):
         self.test_document.submit_for_ocr()
-        self.expected_content_types = ('application/octet-stream; charset=utf-8',)
+        self.expected_content_types = ('text/html; charset=utf-8',)
 
         self.grant_access(
             obj=self.test_document, permission=permission_ocr_content_view
@@ -184,7 +184,7 @@ class OCRViewsTestCase(OCRViewTestMixin, GenericDocumentViewTestCase):
 
         self.assert_download_response(
             response=response, content=(
-                ''.join(get_document_ocr_content(document=self.test_document))
+                ''.join(get_instance_ocr_content(instance=self.test_document))
             ),
         )
 

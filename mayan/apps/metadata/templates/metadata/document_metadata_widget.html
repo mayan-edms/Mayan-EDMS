@@ -1,0 +1,5 @@
+{% for entry in queryset %}
+    <div class="metadata-display" style="word-break: break-all; overflow-wrap: break-word;">
+        <b>{{ entry.metadata_type }}: </b><span data-metadata-type="{{ entry.metadata_type_id }}" data-pk="{{ entry.pk }}">{{ entry.value }}</span>
+    </div>
+{% endfor %}

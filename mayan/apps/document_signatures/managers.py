@@ -9,7 +9,7 @@ from django.db import models
 from mayan.apps.django_gpg.exceptions import DecryptionError
 from mayan.apps.django_gpg.models import Key
 from mayan.apps.documents.models import DocumentVersion
-from mayan.apps.storage.utils import mkstemp
+from mayan.apps.storage.utils import NamedTemporaryFile, mkstemp
 
 logger = logging.getLogger(__name__)
 
@@ -18,23 +18,18 @@ class DetachedSignatureManager(models.Manager):
     def sign_document_version(
         self, document_version, key, passphrase=None, user=None
     ):
-        temporary_file_object, temporary_filename = mkstemp()
-
-        try:
+        with NamedTemporaryFile() as temporary_file_object:
             with document_version.open() as file_object:
                 key.sign_file(
                     binary=True, detached=True, file_object=file_object,
-                    output=temporary_filename, passphrase=passphrase
+                    output=temporary_file_object.name,
+                    passphrase=passphrase
                 )
-        except Exception:
-            raise
-        else:
+            temporary_file_object.seek(0)
             return self.create(
                 document_version=document_version,
                 signature_file=File(temporary_file_object)
             )
-        finally:
-            os.unlink(temporary_filename)
 
 
 class EmbeddedSignatureManager(models.Manager):

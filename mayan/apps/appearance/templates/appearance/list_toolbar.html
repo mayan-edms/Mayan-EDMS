@@ -4,6 +4,8 @@
 {% load navigation_tags %}
 
 {% if is_paginated or links_multi_menus_results %}
+<div id="list-toolbar-spacer"></div>
+<nav id="list-toolbar">
     <div class="well center-block toolbar">
 {% endif %}
 
@@ -89,4 +91,5 @@
 {% if is_paginated or links_multi_menus_results %}
     <div class="clearfix"></div>
     </div>
+</nav>
 {% endif %}

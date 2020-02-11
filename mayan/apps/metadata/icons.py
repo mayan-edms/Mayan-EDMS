@@ -34,7 +34,10 @@ icon_document_type_metadata_type_list = Icon(
     driver_name='fontawesome', symbol='database'
 )
 icon_metadata = Icon(driver_name='fontawesome', symbol='database')
-icon_metadata_type_create = Icon(driver_name='fontawesome', symbol='plus')
+icon_metadata_type_create = Icon(
+    driver_name='fontawesome-dual', primary_symbol='database',
+    secondary_symbol='plus'
+)
 icon_metadata_type_delete = Icon(driver_name='fontawesome', symbol='times')
 icon_metadata_type_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
 icon_metadata_type_list = Icon(driver_name='fontawesome', symbol='database')

@@ -29,6 +29,7 @@ TEST_NON_ASCII_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png'
 TEST_OFFICE_DOCUMENT = 'simple_2_page_document.doc'
 TEST_PDF_DOCUMENT_FILENAME = 'mayan_11_1.pdf'
 TEST_PDF_INDIRECT_ROTATE_LABEL = 'indirect_rotate.pdf'
+TEST_PDF_ROTATE_ALTERNATE_LABEL = 'rotate_alternate.pdf'
 TEST_SMALL_DOCUMENT_FILENAME = 'title_page.png'
 TEST_SMALL_DOCUMENT_CHECKSUM = 'efa10e6cc21f83078aaa94d5cbe51de67b51af706143b\
 afc7fd6d4c02124879a'
@@ -70,6 +71,10 @@ TEST_NON_ASCII_DOCUMENT_PATH = os.path.join(
 TEST_PDF_INDIRECT_ROTATE_PATH = os.path.join(
     settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
     'sample_documents', TEST_PDF_INDIRECT_ROTATE_LABEL
+)
+TEST_PDF_ROTATE_ALTERNATE_PATH = os.path.join(
+    settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+    'sample_documents', TEST_PDF_ROTATE_ALTERNATE_LABEL
 )
 TEST_OFFICE_DOCUMENT_PATH = os.path.join(
     settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import ImproperlyConfigured, PermissionDenied
+from django.core.exceptions import ImproperlyConfigured
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
@@ -13,6 +13,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.permissions import Permission
 
+from .compat import FileResponse
 from .exceptions import ActionError
 from .forms import DynamicForm
 from .literals import PK_LIST_SEPARATOR
@@ -54,6 +55,29 @@ class DeleteExtraDataMixin(object):
             self.object.delete()
 
         return HttpResponseRedirect(redirect_to=success_url)
+
+
+class DownloadMixin(object):
+    as_attachment = True
+
+    def get_as_attachment(self):
+        return self.as_attachment
+
+    def get_download_file_object(self):
+        raise NotImplementedError(
+            'Class must provide a .get_download_file_object() method that '
+            'return a file like object.'
+        )
+
+    def get_download_filename(self):
+        return None
+
+    def render_to_response(self, **response_kwargs):
+        return FileResponse(
+            as_attachment=self.get_as_attachment(),
+            filename=self.get_download_filename(),
+            streaming_content=self.get_download_file_object()
+        )
 
 
 class DynamicFormViewMixin(object):
@@ -290,18 +314,49 @@ class ObjectActionMixin(object):
     """
     Mixin that performs a user action to a queryset
     """
-    error_message = 'Unable to perform operation on object %(instance)s.'
-    success_message = 'Operation performed on %(count)d object.'
+    error_message = 'Unable to perform operation on object %(instance)s; %(exception)s.'
+    post_object_action_url = None
+    success_message_single = 'Operation performed on %(object)s.'
+    success_message_singular = 'Operation performed on %(count)d object.'
     success_message_plural = 'Operation performed on %(count)d objects.'
+    title_single = 'Perform operation on %(object)s.'
+    title_singular = 'Perform operation on %(count)d object.'
+    title_plural = 'Perform operation on %(count)d objects.'
+
+    def get_context_data(self, **kwargs):
+        context = super(ObjectActionMixin, self).get_context_data(**kwargs)
+        title = None
+
+        if self.view_mode_single:
+            title = self.title_single % {'object': self.object}
+        elif self.view_mode_multiple:
+            title = ungettext(
+                singular=self.title_singular,
+                plural=self.title_plural,
+                number=self.object_list.count()
+            ) % {
+                'count': self.object_list.count(),
+            }
+
+        context['title'] = title
+
+        return context
+
+    def get_post_object_action_url(self):
+        return self.post_object_action_url
 
     def get_success_message(self, count):
-        return ungettext(
-            singular=self.success_message,
-            plural=self.success_message_plural,
-            number=count
-        ) % {
-            'count': count,
-        }
+        if self.view_mode_single:
+            return self.success_message_single % {'object': self.object}
+
+        if self.view_mode_multiple:
+            return ungettext(
+                singular=self.success_message_singular,
+                plural=self.success_message_plural,
+                number=count
+            ) % {
+                'count': count,
+            }
 
     def object_action(self, instance, form=None):
         # User supplied method
@@ -309,24 +364,31 @@ class ObjectActionMixin(object):
 
     def view_action(self, form=None):
         self.action_count = 0
+        self.action_id_list = []
 
         for instance in self.object_list:
             try:
                 self.object_action(form=form, instance=instance)
-            except PermissionDenied:
-                pass
-            except ActionError:
+            except ActionError as exception:
                 messages.error(
-                    message=self.error_message % {'instance': instance},
-                    request=self.request
+                    message=self.error_message % {
+                        'exception': exception, 'instance': instance
+                    }, request=self.request
                 )
             else:
                 self.action_count += 1
+                self.action_id_list.append(instance.pk)
 
         messages.success(
             message=self.get_success_message(count=self.action_count),
             request=self.request
         )
+
+        # Allow get_post_object_action_url to override the redirect URL with a
+        # calculated URL after all objects are processed.
+        success_url = self.get_post_object_action_url()
+        if success_url:
+            self.success_url = success_url
 
 
 class ObjectNameMixin(object):
@@ -345,31 +407,12 @@ class ObjectNameMixin(object):
         return object_name
 
 
-# TODO: Remove this mixin and replace with restricted queryset
-class ObjectPermissionCheckMixin(object):
-    object_permission = None
-
-    def get_permission_object(self):
-        return self.get_object()
-
-    def dispatch(self, request, *args, **kwargs):
-        if self.object_permission:
-            AccessControlList.objects.check_access(
-                obj=self.get_permission_object(),
-                permissions=(self.object_permission,),
-                user=request.user
-            )
-
-        return super(
-            ObjectPermissionCheckMixin, self
-        ).dispatch(request, *args, **kwargs)
-
-
 class RedirectionMixin(object):
     action_cancel_redirect = None
     next_url = None
     previous_url = None
     post_action_redirect = None
+    success_url = None
 
     def get_action_cancel_redirect(self):
         return self.action_cancel_redirect
@@ -417,7 +460,7 @@ class RedirectionMixin(object):
             )
 
     def get_success_url(self):
-        return self.get_next_url() or self.get_previous_url()
+        return self.success_url or self.get_next_url() or self.get_previous_url()
 
 
 class RestrictedQuerysetMixin(object):

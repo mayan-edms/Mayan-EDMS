@@ -260,6 +260,10 @@ extlinks = {
     ),
     'gitlab-issue': (
         'https://gitlab.com/mayan-edms/mayan-edms/issues/%s', 'GitLab issue #'
+    ),
+    'gitlab-merge': (
+        'https://gitlab.com/mayan-edms/mayan-edms/merge_requests/%s',
+        'GitLab merge request #'
     )
 }
 

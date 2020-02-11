@@ -31,7 +31,7 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: bash
 
-       sudo apt-get install exiftool g++ gcc ghostscript gnupg1 graphviz \
+       sudo apt-get install exiftool g++ gcc coreutils ghostscript gnupg1 graphviz \
        libfuse2 libjpeg-dev libmagic1 libpq-dev libpng-dev libreoffice \
        libtiff-dev poppler-utils postgresql python3-dev python3-virtualenv
        redis-server sane-utils supervisor tesseract-ocr zlib1g-dev -y
@@ -156,6 +156,14 @@ For another setup that offers more performance and scalability refer to the
 
 #. Create the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
 
+   .. note::
+
+       The generated supervisor file assumes Mayan EDMS is being installed
+       into ``|MAYAN_INSTALLATION_DIRECTORY|``. If you are installing
+       Mayan EDMS in a different location, you must manually review the produced
+       ``|MAYAN_SUPERVISOR_CONF|`` file and update all directory references
+       from ``|MAYAN_INSTALLATION_DIRECTORY|`` to match your custom installation directory.
+
    .. code-block:: bash
 
        sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
@@ -166,13 +174,13 @@ For another setup that offers more performance and scalability refer to the
 #. Configure Redis:
 
    Configure Redis to discard data when it runs out of memory, not save its
-   database and only keep 1 database:
+   database and only keep 2 database:
 
    .. code-block:: bash
 
-       sudo echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
-       sudo echo "save \"\"" >> /etc/redis/redis.conf
-       sudo echo "databases 2" >> /etc/redis/redis.conf
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
        sudo systemctl restart redis
 
 #. Enable and restart the services [1_]:

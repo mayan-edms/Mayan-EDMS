@@ -24,7 +24,10 @@ from mayan.apps.common.settings import (
 from mayan.apps.user_management.permissions import permission_user_edit
 
 from .forms import EmailAuthenticationForm, UsernameAuthenticationForm
-from .settings import setting_login_method, setting_maximum_session_length
+from .settings import (
+    setting_disable_password_reset, setting_login_method,
+    setting_maximum_session_length
+)
 
 
 class MayanLoginView(StrongholdPublicMixin, LoginView):
@@ -136,6 +139,16 @@ class MayanPasswordResetView(StrongholdPublicMixin, PasswordResetView):
         viewname='authentication:password_reset_done_view'
     )
     template_name = 'authentication/password_reset_form.html'
+
+    def get(self, *args, **kwargs):
+        if setting_disable_password_reset.value:
+            return redirect(to=setting_home_view.value)
+        return super(MayanPasswordResetView, self).get(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        if setting_disable_password_reset.value:
+            return redirect(to=setting_home_view.value)
+        return super(MayanPasswordResetView, self).post(*args, **kwargs)
 
 
 class UserSetPasswordView(MultipleObjectFormActionView):

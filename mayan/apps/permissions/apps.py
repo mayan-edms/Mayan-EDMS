@@ -1,11 +1,14 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
+from django.db.models.signals import post_migrate
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
-from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.acls.permissions import (
+    permission_acl_edit, permission_acl_view
+)
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
@@ -20,9 +23,10 @@ from mayan.apps.events.links import (
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
+from .classes import Permission
 from .dashboard_widgets import DashboardWidgetRoleTotal
 from .events import event_role_created, event_role_edited
-from .handlers import handler_purge_permissions
+from .handlers import handler_permission_initialize, handler_purge_permissions
 from .links import (
     link_group_roles, link_role_create, link_role_delete, link_role_edit,
     link_role_groups, link_role_list, link_role_permissions
@@ -64,6 +68,10 @@ class PermissionsApp(MayanAppConfig):
             )
         )
 
+        # Initialize the permissions at the ready method for subsequent
+        # restarts.
+        Permission.initialize()
+
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True, source=Role
         )
@@ -92,6 +100,14 @@ class PermissionsApp(MayanAppConfig):
             sources=(Role, 'permissions:role_create', 'permissions:role_list')
         )
         menu_setup.bind_links(links=(link_role_list,))
+
+        # Initialize the permissions post migrate of this app for new
+        # installations
+        post_migrate.connect(
+            dispatch_uid='permissions_handler_permission_initialize',
+            receiver=handler_permission_initialize,
+            sender=self
+        )
 
         perform_upgrade.connect(
             dispatch_uid='permissions_handler_purge_permissions',

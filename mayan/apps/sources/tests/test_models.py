@@ -8,7 +8,9 @@ import mock
 from pathlib2 import Path
 
 from django.core import mail
-from django.utils.encoding import force_text
+from django.utils.encoding import force_bytes, force_text
+
+from django_celery_beat.models import PeriodicTask
 
 from mayan.apps.common.serialization import yaml_dump
 from mayan.apps.documents.models import Document
@@ -23,7 +25,7 @@ from mayan.apps.storage.utils import mkdtemp
 
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models.email_sources import EmailBaseModel, IMAPEmail, POP3Email
-from ..models.watch_folder_sources import WatchFolderSource
+from ..models.scanner_sources import SaneScanner
 
 from .literals import (
     TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_EMAIL_BASE64_FILENAME,
@@ -32,7 +34,7 @@ from .literals import (
     TEST_EMAIL_NO_CONTENT_TYPE_STRING, TEST_EMAIL_ZERO_LENGTH_ATTACHMENT,
     TEST_WATCHFOLDER_SUBFOLDER
 )
-from .mixins import SourceTestMixin
+from .mixins import SourceTestMixin, WatchFolderTestMixin
 from .mocks import MockIMAPServer, MockPOP3Mailbox
 
 
@@ -278,6 +280,53 @@ class IMAPSourceTestCase(GenericDocumentTestCase):
         )
 
 
+class IntervalSourceTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
+    auto_upload_document = False
+
+    def setUp(self):
+        super(IntervalSourceTestCase, self).setUp()
+        self.temporary_directory = mkdtemp()
+
+    def tearDown(self):
+        shutil.rmtree(self.temporary_directory)
+        super(IntervalSourceTestCase, self).tearDown()
+
+    def test_periodic_task_create(self):
+        periodic_task_count = PeriodicTask.objects.count()
+
+        self._create_test_watchfolder()
+        self.assertTrue(PeriodicTask.objects.count() > periodic_task_count)
+
+    def test_periodic_task_delete(self):
+        self._create_test_watchfolder()
+        periodic_task_count = PeriodicTask.objects.count()
+
+        self.test_document_type.delete()
+        self.assertTrue(PeriodicTask.objects.count() < periodic_task_count)
+
+
+class SANESourceTestCase(GenericDocumentTestCase):
+    auto_upload_document = False
+
+    def _create_test_scanner_source(self):
+        self.test_source = SaneScanner.objects.create(
+            label='', device_name='test'
+        )
+
+    def test_command(self):
+        self._create_test_scanner_source()
+        file_object = self.test_source.execute_command(arguments=('-V',))
+        self.assertTrue(force_bytes('sane') in file_object.read())
+
+    def test_scan(self):
+        self._create_test_scanner_source()
+
+        file_object = self.test_source.get_upload_file_object(
+            form_data={'document_type': self.test_document_type.pk}
+        )
+        self.assertTrue(file_object.size > 0)
+
+
 class POP3SourceTestCase(GenericDocumentTestCase):
     auto_upload_document = False
 
@@ -295,16 +344,8 @@ class POP3SourceTestCase(GenericDocumentTestCase):
         )
 
 
-class WatchFolderTestCase(GenericDocumentTestCase):
+class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
     auto_upload_document = False
-
-    def _create_test_watchfolder(self):
-        return WatchFolderSource.objects.create(
-            document_type=self.test_document_type,
-            folder_path=self.temporary_directory,
-            include_subdirectories=False,
-            uncompress=SOURCE_UNCOMPRESS_CHOICE_Y
-        )
 
     def setUp(self):
         super(WatchFolderTestCase, self).setUp()
@@ -315,27 +356,27 @@ class WatchFolderTestCase(GenericDocumentTestCase):
         super(WatchFolderTestCase, self).tearDown()
 
     def test_subfolder_support_disabled(self):
-        watch_folder = self._create_test_watchfolder()
+        self._create_test_watchfolder()
 
         test_path = Path(self.temporary_directory)
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
         shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(test_subfolder))
-        watch_folder.check_source()
+        self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 0)
 
     def test_subfolder_support_enabled(self):
-        watch_folder = self._create_test_watchfolder()
-        watch_folder.include_subdirectories = True
-        watch_folder.save()
+        self._create_test_watchfolder()
+        self.test_watch_folder.include_subdirectories = True
+        self.test_watch_folder.save()
 
         test_path = Path(self.temporary_directory)
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
         shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(test_subfolder))
-        watch_folder.check_source()
+        self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
 
         document = Document.objects.first()
@@ -353,10 +394,10 @@ class WatchFolderTestCase(GenericDocumentTestCase):
         Non-ASCII chars in document name failing in upload via watch folder
         gh-issue #163 https://github.com/mayan-edms/mayan-edms/issues/163
         """
-        watch_folder = self._create_test_watchfolder()
+        self._create_test_watchfolder()
 
         shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, self.temporary_directory)
-        watch_folder.check_source()
+        self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
 
         document = Document.objects.first()
@@ -373,12 +414,12 @@ class WatchFolderTestCase(GenericDocumentTestCase):
         """
         Test Non-ASCII named documents inside Non-ASCII named compressed file
         """
-        watch_folder = self._create_test_watchfolder()
+        self._create_test_watchfolder()
 
         shutil.copy(
             TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH, self.temporary_directory
         )
-        watch_folder.check_source()
+        self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
 
         document = Document.objects.first()
@@ -392,7 +433,7 @@ class WatchFolderTestCase(GenericDocumentTestCase):
         self.assertEqual(document.page_count, 1)
 
     def test_locking_support(self):
-        watch_folder = self._create_test_watchfolder()
+        self._create_test_watchfolder()
 
         shutil.copy(
             TEST_SMALL_DOCUMENT_PATH, self.temporary_directory
@@ -404,7 +445,7 @@ class WatchFolderTestCase(GenericDocumentTestCase):
 
         with path_test_file.open(mode='rb+') as file_object:
             fcntl.lockf(file_object, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            process = Process(target=watch_folder.check_source)
+            process = Process(target=self.test_watch_folder.check_source)
             process.start()
             process.join()
 

@@ -20,7 +20,7 @@ from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
     permission_document_type_ocr_setup
 )
-from .utils import get_document_ocr_content
+from .utils import get_instance_ocr_content
 
 
 class DocumentOCRContentDeleteView(MultipleObjectConfirmActionView):
@@ -211,10 +211,8 @@ class DocumentOCRDownloadView(SingleObjectDownloadView):
     model = Document
     object_permission = permission_ocr_content_view
 
-    def get_file(self):
-        file_object = DocumentOCRDownloadView.TextIteratorIO(
-            iterator=get_document_ocr_content(document=self.get_object())
-        )
-        return DocumentOCRDownloadView.VirtualFile(
-            file=file_object, name='{}-OCR'.format(self.get_object())
-        )
+    def get_download_file_object(self):
+        return get_instance_ocr_content(instance=self.object)
+
+    def get_download_filename(self):
+        return '{}-OCR'.format(self.object)

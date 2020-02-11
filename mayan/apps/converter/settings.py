@@ -6,7 +6,8 @@ from mayan.apps.smart_settings.classes import Namespace
 
 from .literals import (
     DEFAULT_LIBREOFFICE_PATH, DEFAULT_PDFTOPPM_DPI, DEFAULT_PDFTOPPM_FORMAT,
-    DEFAULT_PDFTOPPM_PATH, DEFAULT_PDFINFO_PATH, DEFAULT_PILLOW_FORMAT
+    DEFAULT_PDFTOPPM_PATH, DEFAULT_PDFINFO_PATH, DEFAULT_PILLOW_FORMAT,
+    DEFAULT_PILLOW_MAXIMUM_IMAGE_PIXELS
 )
 from .setting_migrations import ConvertSettingMigration
 
@@ -28,6 +29,7 @@ setting_graphics_backend_arguments = namespace.add_setting(
         'pdftoppm_path': DEFAULT_PDFTOPPM_PATH,
         'pdfinfo_path': DEFAULT_PDFINFO_PATH,
         'pillow_format': DEFAULT_PILLOW_FORMAT,
+        'pillow_maximum_image_pixels': DEFAULT_PILLOW_MAXIMUM_IMAGE_PIXELS,
     }, help_text=_(
         'Configuration options for the graphics conversion backend.'
     ), global_name='CONVERTER_GRAPHICS_BACKEND_ARGUMENTS'

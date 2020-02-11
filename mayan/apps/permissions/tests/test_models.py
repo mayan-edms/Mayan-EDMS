@@ -65,9 +65,13 @@ class StoredPermissionManagerTestCase(BaseTestCase):
             name=TEST_INVALID_PERMISSION_NAME
         )
 
+        permission_count = StoredPermission.objects.count()
+
         StoredPermission.objects.purge_obsolete()
 
-        self.assertEqual(StoredPermission.objects.count(), 0)
+        self.assertEqual(
+            StoredPermission.objects.count(), permission_count - 1
+        )
 
     def test_purge_obsolete_with_valid(self):
         test_permission_namespace = PermissionNamespace(
@@ -79,6 +83,8 @@ class StoredPermissionManagerTestCase(BaseTestCase):
         )
         test_permission.stored_permission
 
+        permission_count = StoredPermission.objects.count()
+
         StoredPermission.objects.purge_obsolete()
 
-        self.assertEqual(StoredPermission.objects.count(), 1)
+        self.assertEqual(StoredPermission.objects.count(), permission_count)

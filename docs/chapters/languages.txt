@@ -31,6 +31,6 @@ Example::
 
 For more information check out the
 :ref:`environment variables <environment_variables>` chapter of the
-:doc:`../parts/settings` topic.
+:doc:`../chapters/settings` chapter.
 
 

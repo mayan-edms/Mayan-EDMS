@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.apps import apps
+from django.db.models.signals import pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
@@ -17,7 +19,9 @@ from mayan.apps.navigation.classes import SourceColumn
 from .classes import StagingFile
 from .handlers import (
     handler_copy_transformations_to_version,
-    handler_create_default_document_source, handler_initialize_periodic_tasks
+    handler_create_default_document_source,
+    handler_delete_interval_source_periodic_task,
+    handler_initialize_periodic_tasks
 )
 from .links import (
     link_document_create_multiple, link_setup_sources,
@@ -41,6 +45,9 @@ class SourcesApp(MayanAppConfig):
 
     def ready(self):
         super(SourcesApp, self).ready()
+        DocumentType = apps.get_model(
+            app_label='documents', model_name='DocumentType'
+        )
 
         POP3Email = self.get_model(model_name='POP3Email')
         IMAPEmail = self.get_model(model_name='IMAPEmail')
@@ -161,4 +168,9 @@ class SourcesApp(MayanAppConfig):
         post_version_upload.connect(
             receiver=handler_copy_transformations_to_version,
             dispatch_uid='sources_handler_copy_transformations_to_version'
+        )
+        pre_delete.connect(
+            receiver=handler_delete_interval_source_periodic_task,
+            sender=DocumentType,
+            dispatch_uid='sources_handler_delete_interval_source_periodic_task'
         )

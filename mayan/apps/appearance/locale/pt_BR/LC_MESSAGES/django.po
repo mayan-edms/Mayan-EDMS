@@ -6,13 +6,14 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:29-0400\n"
-"PO-Revision-Date: 2019-12-03 05:20+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-10 03:47-0400\n"
+"PO-Revision-Date: 2019-12-26 18:49+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,67 +21,67 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:10 settings.py:9
+#: apps.py:11 settings.py:9
 msgid "Appearance"
 msgstr "Aparência"
 
 #: dependencies.py:10
 msgid "Lato font"
-msgstr ""
+msgstr "Lato font"
 
 #: dependencies.py:14
 msgid "Bootstrap"
-msgstr "Inicialização"
+msgstr "Bootstrap"
 
 #: dependencies.py:18
 msgid "Bootswatch"
-msgstr ""
+msgstr "Bootswatch"
 
 #: dependencies.py:32
 msgid "Fancybox"
-msgstr ""
+msgstr "Fancybox"
 
 #: dependencies.py:36
 msgid "FontAwesome"
-msgstr ""
+msgstr "FontAwesome"
 
 #: dependencies.py:40
 msgid "jQuery"
-msgstr ""
+msgstr "jQuery"
 
 #: dependencies.py:43
 msgid "JQuery Form"
-msgstr ""
+msgstr "jQuery Form"
 
 #: dependencies.py:47
 msgid "jQuery Lazy Load"
-msgstr ""
+msgstr "jQuery Lazy Load"
 
 #: dependencies.py:51
 msgid "JQuery Match Height"
-msgstr ""
+msgstr "JQuery Match Height"
 
 #: dependencies.py:55
 msgid "Select 2"
-msgstr ""
+msgstr "Select 2"
 
 #: dependencies.py:59
 msgid "Toastr"
-msgstr ""
+msgstr "Toastr"
 
 #: dependencies.py:62
 msgid "URI.js"
-msgstr ""
+msgstr "URI.js"
 
 #: settings.py:14
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr "Número máximo de caracteres que serão mostrados como o título da vista."
+msgstr "Número máximo de caracteres que serão mostrados como o título da tela ou visualização."
 
 #: settings.py:21
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
+msgstr "Posição na qual a mensagem do sistema será exibida. Opções são: top-left, top-center, top-right, bottom-left, bottom-center, bottom-right."
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
@@ -98,7 +99,7 @@ msgstr "Página não encontrada"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Desculpe, mas a página solicitada não pôde ser encontrada."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:54
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:55
 msgid "Server error"
 msgstr "Erro de servidor"
 
@@ -127,7 +128,7 @@ msgstr "Versão"
 #: templates/appearance/about.html:84
 #, python-format
 msgid "Build number: %(build_number)s"
-msgstr "Número de compilação: %(build_number)s"
+msgstr "Número de build: %(build_number)s"
 
 #: templates/appearance/about.html:97
 msgid "Released under the license:"
@@ -163,14 +164,14 @@ msgid ""
 "\n"
 "                You can also <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">donate directly to the creator and lead developer.  %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\n                Você também pode <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">doar diretamente para o criador e desenvolvedor principal%(icon_social_paypal)s</a>\n            "
 
 #: templates/appearance/about.html:127
 msgid ""
 "\n"
 "                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>.\n"
 "            "
-msgstr ""
+msgstr "\n                Além de doações, você também pode apoiar o projeto  <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">comprando uma cópia do livro \"Exploring Mayan EDMS\" por Roberto Rosario</a>.\n            "
 
 #: templates/appearance/about.html:133
 #, python-format
@@ -205,40 +206,44 @@ msgid ""
 "            "
 msgstr "\n\nEspalhe a palavra! Fale com seus amigos e colegas sobre como o %(project_title)s é incrível!\nSiga-nos no <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, ou <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram%(icon_social_instagram)s</a>"
 
-#: templates/appearance/base.html:37 templates/appearance/base.html:47
+#: templates/appearance/base.html:35 templates/appearance/base.html:59
 msgid "Warning"
 msgstr "Advertência"
 
-#: templates/appearance/base.html:47
+#: templates/appearance/base.html:49
+msgid "Click here to fix this."
+msgstr "Clique aqui para corrigir isso"
+
+#: templates/appearance/base.html:59
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
+msgstr "Settings foram atualizados. Reinicie sua instalação e recarregue seu navegador para que as mudanças sejam aplicadas"
 
-#: templates/appearance/base.html:60
+#: templates/appearance/base.html:72
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Ações"
 
-#: templates/appearance/base.html:62
+#: templates/appearance/base.html:74
 #: templates/appearance/generic_list_items_subtemplate.html:68
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Mostrar/esconder menu"
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
-msgstr ""
+msgstr "Abrir menu principal"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
 msgstr "Tem certeza?"
 
-#: templates/appearance/generic_confirm.html:34
+#: templates/appearance/generic_confirm.html:38
 msgid "Yes"
 msgstr "Sim"
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:48
 msgid "No"
 msgstr "Não"
 
@@ -247,21 +252,21 @@ msgstr "Não"
 #: templates/appearance/generic_form_subtemplate.html:50
 #: templates/appearance/generic_multiform_subtemplate.html:37
 msgid "required"
-msgstr "requerido"
+msgstr "obrigatório"
 
-#: templates/appearance/generic_form_subtemplate.html:85
-#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Save"
-msgstr "Salvar"
+msgstr "Gravar"
 
-#: templates/appearance/generic_form_subtemplate.html:85
-#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Submit"
 msgstr "Enviar"
 
-#: templates/appearance/generic_form_subtemplate.html:89
+#: templates/appearance/generic_form_subtemplate.html:87
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Cancel"
 msgstr "Cancelar"
@@ -282,31 +287,31 @@ msgstr "Iniciando"
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Antes de começar a usar Mayan EDMS você precisa do seguinte:"
 
-#: templates/appearance/list_header.html:11
+#: templates/appearance/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr "Total (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de %(total_pages)s)"
 
-#: templates/appearance/list_header.html:13
-#: templates/appearance/list_header.html:16
+#: templates/appearance/list_header.html:14
+#: templates/appearance/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Total: %(total)s"
 
-#: templates/appearance/list_toolbar.html:14
+#: templates/appearance/list_toolbar.html:16
 msgid "Select/Deselect all"
-msgstr ""
+msgstr "Selecionar/Desmarcar todos"
 
-#: templates/appearance/list_toolbar.html:58
+#: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
+msgstr "Selecione os itens para ativar ações em lote. Use Shift + click para selecionar vários."
 
-#: templates/appearance/list_toolbar.html:63
+#: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr ""
+msgstr "Ações em lote"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
@@ -316,15 +321,15 @@ msgstr "Ativar/desativar navegação"
 msgid "No results"
 msgstr "Nenhum resultado"
 
-#: templates/appearance/root.html:59
+#: templates/appearance/root.html:60
 msgid "Close"
 msgstr "Fechar"
 
-#: templates/appearance/root.html:67
+#: templates/appearance/root.html:68
 msgid "Server communication error"
 msgstr "Erro na comunicação com o servidor"
 
-#: templates/appearance/root.html:69
+#: templates/appearance/root.html:70
 msgid "Check you network connection and try again in a few moments."
 msgstr "Verifique sua conexão de rede e tente novamente em alguns instantes. "
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:30-0400\n"
+"POT-Creation-Date: 2020-02-10 03:48-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,27 +21,31 @@ msgstr ""
 msgid "Common"
 msgstr ""
 
-#: classes.py:85
-msgid "Available attributes: \n"
+#: classes.py:185
+msgid "Model properties"
 msgstr ""
 
-#: classes.py:125
-msgid "Available fields: \n"
+#: classes.py:190
+msgid "Model fields"
 msgstr ""
 
-#: dependencies.py:309
+#: classes.py:233
+msgid "Model related fields"
+msgstr ""
+
+#: dependencies.py:308
 msgid "Used to allow offline translation of the code text strings."
 msgstr ""
 
-#: dependencies.py:314
+#: dependencies.py:313
 msgid "Provides style checking."
 msgstr ""
 
-#: dependencies.py:319
+#: dependencies.py:318
 msgid "Command line environment with autocompletion."
 msgstr ""
 
-#: dependencies.py:324
+#: dependencies.py:323
 msgid "Checks proper formatting of the README file."
 msgstr ""
 
@@ -53,67 +57,67 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: generics.py:151
+#: generics.py:148
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:156
+#: generics.py:153
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:289
+#: generics.py:286
 msgid "Add all"
 msgstr ""
 
-#: generics.py:298
+#: generics.py:295
 msgid "Add"
 msgstr ""
 
-#: generics.py:308
+#: generics.py:305
 msgid "Remove all"
 msgstr ""
 
-#: generics.py:317
+#: generics.py:314
 msgid "Remove"
 msgstr ""
 
-#: generics.py:525
+#: generics.py:524
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr ""
 
-#: generics.py:547
+#: generics.py:546
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr ""
 
-#: generics.py:560
+#: generics.py:559
 #, python-format
 msgid "%(object)s created successfully."
 msgstr ""
 
-#: generics.py:599
+#: generics.py:598
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr ""
 
-#: generics.py:608
+#: generics.py:607
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr ""
 
-#: generics.py:701
+#: generics.py:743
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr ""
 
-#: generics.py:712
+#: generics.py:754
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr ""
@@ -170,26 +174,26 @@ msgstr ""
 msgid "Tools"
 msgstr ""
 
-#: literals.py:13
+#: literals.py:14
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr ""
 
-#: literals.py:16
+#: literals.py:17
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr ""
 
-#: literals.py:34
+#: literals.py:35
 msgid "Days"
 msgstr ""
 
-#: literals.py:35
+#: literals.py:36
 msgid "Hours"
 msgstr ""
 
-#: literals.py:36
+#: literals.py:37
 msgid "Minutes"
 msgstr ""
 
@@ -213,12 +217,12 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: mixins.py:268
+#: mixins.py:292
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr ""
 
-#: mixins.py:343
+#: mixins.py:405
 msgid "Object"
 msgstr ""
 
@@ -345,30 +349,30 @@ msgstr ""
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
-#: templatetags/common_tags.py:28
+#: templatetags/common_tags.py:29
 msgid "Confirm delete"
 msgstr ""
 
-#: templatetags/common_tags.py:33
+#: templatetags/common_tags.py:34
 #, python-format
 msgid "Edit %s"
 msgstr ""
 
-#: templatetags/common_tags.py:36
+#: templatetags/common_tags.py:37
 msgid "Confirm"
 msgstr ""
 
-#: templatetags/common_tags.py:40
+#: templatetags/common_tags.py:41
 #, python-format
 msgid "Details for: %s"
 msgstr ""
 
-#: templatetags/common_tags.py:44
+#: templatetags/common_tags.py:45
 #, python-format
 msgid "Edit: %s"
 msgstr ""
 
-#: templatetags/common_tags.py:47
+#: templatetags/common_tags.py:48
 msgid "Create"
 msgstr ""
 

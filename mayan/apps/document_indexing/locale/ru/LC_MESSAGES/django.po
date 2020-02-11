@@ -1,22 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 00:31-0400\n"
+"POT-Creation-Date: 2020-02-10 03:49-0400\n"
 "PO-Revision-Date: 2019-12-05 10:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: admin.py:24
 msgid "None"
@@ -46,7 +49,7 @@ msgstr "Уровень"
 msgid "Levels"
 msgstr ""
 
-#: apps.py:162 apps.py:180 models.py:360
+#: apps.py:162 apps.py:180 models.py:379
 msgid "Documents"
 msgstr "Документы"
 
@@ -132,90 +135,92 @@ msgid "Slug"
 msgstr ""
 
 #: models.py:47
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Этот индекс должен быть видимым и обновляться при изменении данных документа."
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Этот индекс должен быть видимым и обновляться при изменении данных документа."
 
-#: models.py:50 models.py:237
+#: models.py:50 models.py:254
 msgid "Enabled"
 msgstr "Доступно"
 
-#: models.py:61 models.py:221
+#: models.py:61 models.py:238
 msgid "Index"
 msgstr "Индекс"
 
-#: models.py:193
+#: models.py:210
 msgid "Index instance"
 msgstr "index instance"
 
-#: models.py:194
+#: models.py:211
 msgid "Index instances"
 msgstr "Экземпляры индекса"
 
-#: models.py:225
+#: models.py:242
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr ""
 
-#: models.py:229
+#: models.py:246
 msgid "Indexing expression"
 msgstr ""
 
-#: models.py:234
+#: models.py:251
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Этот узел должен быть видимым и обновляются при изменении данных документа."
+msgstr ""
+"Этот узел должен быть видимым и обновляются при изменении данных документа."
 
-#: models.py:242
+#: models.py:259
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Этот узел будет контейнером для документов и не будет иметь дочерних узлов."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Этот узел будет контейнером для документов и не будет иметь дочерних узлов."
 
-#: models.py:245
+#: models.py:262
 msgid "Link documents"
 msgstr ""
 
-#: models.py:249
+#: models.py:266
 msgid "Index node template"
 msgstr ""
 
-#: models.py:250
+#: models.py:267
 msgid "Indexes node template"
 msgstr ""
 
-#: models.py:254
+#: models.py:271
 msgid "Root"
 msgstr "Корень"
 
-#: models.py:310
+#: models.py:326
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr ""
 
-#: models.py:353
+#: models.py:372
 msgid "Index template node"
 msgstr ""
 
-#: models.py:356
+#: models.py:375
 msgid "Value"
 msgstr "Значение"
 
-#: models.py:366
+#: models.py:385
 msgid "Index node instance"
 msgstr ""
 
-#: models.py:367
+#: models.py:386
 msgid "Indexes node instances"
 msgstr ""
 
-#: models.py:481
+#: models.py:500
 msgid "Document index node instance"
 msgstr ""
 
-#: models.py:482
+#: models.py:501
 msgid "Document indexes node instances"
 msgstr ""
 
@@ -292,8 +297,8 @@ msgstr "Редактировать индекс: %s"
 #: views.py:143
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like"
-" label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like "
+"label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views.py:148
