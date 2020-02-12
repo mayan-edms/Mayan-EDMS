@@ -1,7 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
 from django import forms
-from django.utils.translation import string_concat, ugettext_lazy as _
+from django.utils.text import format_lazy
+from django.utils.translation import ugettext_lazy as _
 
 import mayan
 
@@ -16,8 +17,8 @@ class TemplateField(forms.CharField):
         self.model_variable = kwargs.pop('model_variable')
         self.initial_help_text = kwargs.pop('initial_help_text', '')
         super(TemplateField, self).__init__(*args, **kwargs)
-        self.help_text = string_concat(
-            self.initial_help_text, ' ',
+        self.help_text = format_lazy(
+            '{} {}', self.initial_help_text,
             _(
                 'Use Django\'s default templating language '
                 '(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/). '
