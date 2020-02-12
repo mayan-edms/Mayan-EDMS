@@ -206,4 +206,4 @@ class DocumentCreateWizard(SessionWizardView):
         # urlencode(doseq=True)
         url.args = query_dict
 
-        return HttpResponseRedirect(redirect_to=url)
+        return HttpResponseRedirect(redirect_to=url.tostr())
