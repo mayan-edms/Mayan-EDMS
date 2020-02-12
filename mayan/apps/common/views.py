@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import get_object_or_404
+from django.templatetags.static import static
 from django.urls import reverse_lazy
 from django.utils import timezone, translation
 from django.utils.translation import ugettext_lazy as _
@@ -87,7 +88,6 @@ class FaviconRedirectView(RedirectView):
         Hide the static tag import to avoid errors with static file
         processors
         """
-        from django.templatetags.static import static
         return static(path='appearance/images/favicon.ico')
 
 
