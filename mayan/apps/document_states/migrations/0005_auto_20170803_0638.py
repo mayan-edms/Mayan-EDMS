@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 (
                     'stored_event_type', models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name='trigger_events', to='events.EventType',
+                        related_name='trigger_events', to='events.StoredEventType',
                         verbose_name='Event type'
                     )
                 ),

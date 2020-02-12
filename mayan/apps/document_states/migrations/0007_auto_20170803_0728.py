@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
             name='event_type',
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE,
-                to='events.EventType', verbose_name='Event type'
+                to='events.StoredEventType', verbose_name='Event type'
             ),
         ),
         migrations.AlterField(
