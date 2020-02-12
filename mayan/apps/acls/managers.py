@@ -255,7 +255,7 @@ class AccessControlListManager(models.Manager):
             )
 
     def restrict_queryset(self, permission, queryset, user):
-        if not user.is_authenticated():
+        if not user.is_authenticated:
             return queryset.none()
 
         # Check directly granted permission via a role
