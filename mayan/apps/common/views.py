@@ -87,7 +87,7 @@ class FaviconRedirectView(RedirectView):
         Hide the static tag import to avoid errors with static file
         processors
         """
-        from django.contrib.staticfiles.templatetags.staticfiles import static
+        from django.templatetags.static import static
         return static(path='appearance/images/favicon.ico')
 
 
