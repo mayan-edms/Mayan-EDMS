@@ -38,7 +38,7 @@ PythonDependency(
         ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django', version_string='==2.0.13'
+    ''', module=__name__, name='django', version_string='==2.1.15'
 )
 PythonDependency(
     copyright_text='''
@@ -186,7 +186,7 @@ PythonDependency(
     ''', module=__name__, name='django-qsstats-magic', version_string='==1.0.0'
 )
 PythonDependency(
-    module=__name__, name='django-stronghold', version_string='==0.3.0'
+    module=__name__, name='django-stronghold', version_string='==0.4.0'
 )
 PythonDependency(
     copyright_text='''
@@ -282,7 +282,7 @@ PythonDependency(
     ''', module=__name__, name='sh', version_string='==1.12.14'
 )
 PythonDependency(
-    module=__name__, name='whitenoise', version_string='==4.1.4'
+    module=__name__, name='whitenoise', version_string='==5.0.1'
 )
 
 # Development
