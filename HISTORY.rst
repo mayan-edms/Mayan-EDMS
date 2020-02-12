@@ -1,3 +1,8 @@
+3.3.13 (2020-02-XX)
+===================
+- Update Django to version 1.1.28
+  (https://docs.djangoproject.com/en/3.0/releases/1.11.28/)
+
 3.3.12 (2020-02-10)
 ===================
 - Fix issue with the template object count logic introduced in the
