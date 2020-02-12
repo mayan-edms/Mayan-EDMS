@@ -335,10 +335,10 @@ gitlab-release-all:
 # Dev server
 
 runserver: ## Run the development server.
-	./manage.py runserver --nothreading --settings=mayan.settings.development $(ADDRPORT)
+	./manage.py runserver --settings=mayan.settings.development $(ADDRPORT)
 
 runserver_plus: ## Run the Django extension's development server.
-	./manage.py runserver_plus --nothreading --settings=mayan.settings.development $(ADDRPORT)
+	./manage.py runserver_plus --settings=mayan.settings.development $(ADDRPORT)
 
 shell_plus: ## Run the shell_plus command.
 	./manage.py shell_plus --settings=mayan.settings.development
