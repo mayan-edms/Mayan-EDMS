@@ -2,6 +2,9 @@
 ===================
 - Update Django to version 1.1.28
   (https://docs.djangoproject.com/en/3.0/releases/1.11.28/)
+- Prioritize Mayan's translations over Django's built in ones.
+  Fixes GitLab issue #734. Thanks to Roberto Novaes (@rvnovaes)
+  for the report.
 
 3.3.12 (2020-02-10)
 ===================
