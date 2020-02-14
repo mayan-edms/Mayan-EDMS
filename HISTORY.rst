@@ -14,6 +14,8 @@
   the vi_VN locale to the vi locale.
 - Move the language files for the Dutch language from
   the nl_NL locale to the nl locale.
+- Move the language files for the Danish language from
+  the da_DK locale to the da locale.
 
 3.3.12 (2020-02-10)
 ===================

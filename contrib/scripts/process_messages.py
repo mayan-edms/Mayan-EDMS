@@ -22,7 +22,7 @@ APP_LIST = (
 )
 
 LANGUAGE_LIST = (
-    'ar', 'bg', 'bs', 'cs', 'da_DK', 'de_DE', 'en', 'es', 'el', 'fa', 'fr',
+    'ar', 'bg', 'bs', 'cs', 'da', 'de_DE', 'en', 'es', 'el', 'fa', 'fr',
     'hu', 'id', 'it', 'lv', 'nl', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl',
     'tr_TR', 'vi', 'zh_Hans',
 )
