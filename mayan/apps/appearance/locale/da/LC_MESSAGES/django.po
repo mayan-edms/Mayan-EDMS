@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Allan Møller <it@brandts.dk>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 22:41-0400\n"
+"POT-Creation-Date: 2020-02-14 01:02-0400\n"
 "PO-Revision-Date: 2020-01-29 08:16+0000\n"
 "Last-Translator: Allan Møller <it@brandts.dk>\n"
 "Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
@@ -82,7 +82,7 @@ msgstr ""
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
-msgstr "Utilstrækkelig tilladelse"
+msgstr ""
 
 #: templates/403.html:11
 msgid "You don't have enough permissions for this operation."
@@ -90,15 +90,15 @@ msgstr ""
 
 #: templates/404.html:5 templates/404.html:9
 msgid "Page not found"
-msgstr "Side ikke fundet"
+msgstr ""
 
 #: templates/404.html:11
 msgid "Sorry, but the requested page could not be found."
-msgstr "Beklager, men den ønskede side kunne ikke findes"
+msgstr ""
 
 #: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:55
 msgid "Server error"
-msgstr "Server fejl"
+msgstr ""
 
 #: templates/500.html:11
 msgid ""
@@ -205,7 +205,7 @@ msgstr ""
 
 #: templates/appearance/base.html:35 templates/appearance/base.html:59
 msgid "Warning"
-msgstr "Advarelse"
+msgstr ""
 
 #: templates/appearance/base.html:49
 msgid "Click here to fix this."
@@ -234,39 +234,39 @@ msgstr ""
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
-msgstr "Er du sikker?"
+msgstr ""
 
 #: templates/appearance/generic_confirm.html:38
 msgid "Yes"
-msgstr "Ja"
+msgstr ""
 
 #: templates/appearance/generic_confirm.html:48
 msgid "No"
-msgstr "Nej"
+msgstr ""
 
 #: templates/appearance/generic_form_instance.html:51
 #: templates/appearance/generic_form_instance.html:57
 #: templates/appearance/generic_form_subtemplate.html:50
 #: templates/appearance/generic_multiform_subtemplate.html:37
 msgid "required"
-msgstr "Påkrævet"
+msgstr ""
 
 #: templates/appearance/generic_form_subtemplate.html:83
 #: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Save"
-msgstr "Gem"
+msgstr ""
 
 #: templates/appearance/generic_form_subtemplate.html:83
 #: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Submit"
-msgstr "Indsend"
+msgstr ""
 
 #: templates/appearance/generic_form_subtemplate.html:87
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Cancel"
-msgstr "Fortryd"
+msgstr ""
 
 #: templates/appearance/generic_list_subtemplate.html:28
 msgid "Identifier"
@@ -278,7 +278,7 @@ msgstr ""
 
 #: templates/appearance/home.html:26
 msgid "Getting started"
-msgstr "Kom godt igang"
+msgstr ""
 
 #: templates/appearance/home.html:29
 msgid "Before you can fully use Mayan EDMS you need the following:"
@@ -316,11 +316,11 @@ msgstr ""
 
 #: templates/appearance/no_results.html:18
 msgid "No results"
-msgstr "Ingen resultater"
+msgstr ""
 
 #: templates/appearance/root.html:60
 msgid "Close"
-msgstr "Luk"
+msgstr ""
 
 #: templates/appearance/root.html:68
 msgid "Server communication error"

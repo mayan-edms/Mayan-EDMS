@@ -2,23 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# serhatcan77 <serhat_can@yahoo.com>, 2020
-#
+# serhatcan77 <serhat_can@yahoo.com>, 2017
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 00:32-0400\n"
+"POT-Creation-Date: 2020-02-14 01:15-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2020\n"
-"Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/"
-"teams/13584/tr_TR/)\n"
-"Language: tr_TR\n"
+"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2017\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:49 apps.py:110 apps.py:118 apps.py:121 events.py:7 forms.py:16
@@ -29,19 +28,19 @@ msgstr "Dolaplar"
 
 #: events.py:11
 msgid "Cabinet created"
-msgstr "Dolap"
+msgstr ""
 
 #: events.py:14
 msgid "Cabinet edited"
-msgstr "Dolap"
+msgstr ""
 
 #: events.py:17
 msgid "Document added to cabinet"
-msgstr "Belge dolabı"
+msgstr ""
 
 #: events.py:20
 msgid "Document removed from cabinet"
-msgstr "Dolaplardan Çıkar"
+msgstr ""
 
 #: links.py:30 links.py:44 workflow_actions.py:76
 msgid "Remove from cabinets"
@@ -81,7 +80,7 @@ msgstr ""
 
 #: methods.py:20
 msgid "get_cabinets()"
-msgstr "Dolap oluştur"
+msgstr ""
 
 #: models.py:36
 msgid "A short text used to identify the cabinet."
@@ -153,7 +152,8 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr "Bu dolap seviyesinin adı atalarının adlarına eklendi."
 
 #: serializers.py:32
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "Bu kabin içindeki liste belgelerini gösteren API bitiş noktasının URL'si."
 
@@ -242,12 +242,11 @@ msgid "Add"
 msgstr "Ekle"
 
 #: views.py:235
-#, fuzzy, python-format
-#| msgid "Add documents to cabinets"
+#, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
-msgstr[0] "Dolaplara belge ekle"
-msgstr[1] "Dolaplara belge ekle"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:248
 #, python-format
@@ -283,17 +282,16 @@ msgid "Remove"
 msgstr "Çıkar"
 
 #: views.py:325
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
-msgstr[0] "Dolaplardan belgeleri çıkar"
-msgstr[1] "Dolaplardan belgeleri çıkar"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:338
 #, python-format
 msgid "Remove document \"%s\" from cabinets"
-msgstr "\"%s\" belgeyi dolaptan çıkar"
+msgstr ""
 
 #: views.py:349
 msgid "Cabinets from which the selected documents will be removed."
@@ -315,8 +313,8 @@ msgstr ""
 
 #: wizard_steps.py:31 workflow_actions.py:25
 msgid "Cabinets to which the document will be added."
-msgstr "Seçilen dokümanlar dolaplara eklenecek."
+msgstr ""
 
 #: workflow_actions.py:71
 msgid "Cabinets from which the document will be removed."
-msgstr "Seçilen belgelerin çıkarılacağı dolaplar."
+msgstr ""
