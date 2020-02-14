@@ -25,6 +25,9 @@
 - Add make file target to cleanup source translation files.
 - Cleanup minor but frequent translation files issues accumulated by the
   automatic tools. Many new text string are now available for translation.
+- Update the doToastrMessages to avoid appending new style updated
+  indefinitely on list sort updates. Closes GitLab issue #772. Thanks
+  to Matthias Löblich (@startmat) for the report and debug information.
 
 3.3.12 (2020-02-10)
 ===================
