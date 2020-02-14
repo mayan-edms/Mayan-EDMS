@@ -3,15 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Trung Phan Minh <navmobile@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 20:57-0400\n"
+"POT-Creation-Date: 2020-02-13 22:42-0400\n"
 "PO-Revision-Date: 2019-04-14 03:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
+"Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,7 +23,7 @@ msgstr ""
 
 #: apps.py:47 apps.py:50 forms.py:17
 msgid "Key ID"
-msgstr "Key ID"
+msgstr ""
 
 #: apps.py:51 forms.py:34 models.py:55
 msgid "Type"
@@ -52,7 +51,7 @@ msgstr ""
 
 #: forms.py:28
 msgid "None"
-msgstr "None"
+msgstr ""
 
 #: forms.py:31 models.py:44
 msgid "Fingerprint"
@@ -64,11 +63,11 @@ msgstr ""
 
 #: forms.py:47
 msgid "Term"
-msgstr "Term"
+msgstr ""
 
 #: forms.py:48
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Name, e-mail, key ID or key fingerprint to look for."
+msgstr ""
 
 #: links.py:19
 msgid "Delete"
@@ -76,7 +75,7 @@ msgstr ""
 
 #: links.py:24
 msgid "Details"
-msgstr "Chi tiết"
+msgstr ""
 
 #: links.py:29
 msgid "Download"
@@ -84,7 +83,7 @@ msgstr ""
 
 #: links.py:34 permissions.py:28
 msgid "Query keyservers"
-msgstr "Truy vấn keyservers"
+msgstr ""
 
 #: links.py:39
 msgid "Import"
@@ -92,7 +91,7 @@ msgstr ""
 
 #: links.py:44 permissions.py:7
 msgid "Key management"
-msgstr "Quản lý khóa"
+msgstr ""
 
 #: links.py:48
 msgid "Upload key"
@@ -108,47 +107,47 @@ msgstr ""
 
 #: literals.py:6 literals.py:14
 msgid "Public"
-msgstr "Công cộng"
+msgstr ""
 
 #: literals.py:7 literals.py:15
 msgid "Secret"
-msgstr "Bí mật"
+msgstr ""
 
 #: literals.py:23 literals.py:28
 msgid "RSA"
-msgstr "RSA"
+msgstr ""
 
 #: literals.py:24
 msgid "DSA"
-msgstr "DSA"
+msgstr ""
 
 #: literals.py:29
 msgid "Elgamal"
-msgstr "Elgamal"
+msgstr ""
 
 #: literals.py:43
 msgid "Bad signature."
-msgstr "Bad signature."
+msgstr ""
 
 #: literals.py:46
 msgid "Document not signed or invalid signature."
-msgstr "Tài liệu không được kí hoặc chữ kí không hợp lệ."
+msgstr ""
 
 #: literals.py:49
 msgid "Signature error."
-msgstr "Signature error."
+msgstr ""
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr "Document is signed but no public key is available for verification."
+msgstr ""
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
-msgstr "Document is signed, and signature is good."
+msgstr ""
 
 #: literals.py:61
 msgid "Document is signed with a valid signature."
-msgstr "Document is signed, and signature is good."
+msgstr ""
 
 #: models.py:32
 msgid "ASCII armored version of the key."
@@ -176,7 +175,7 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Delete keys"
-msgstr "Xóa khóa"
+msgstr ""
 
 #: permissions.py:13
 msgid "Download keys"
@@ -184,7 +183,7 @@ msgstr ""
 
 #: permissions.py:16
 msgid "Import keys from keyservers"
-msgstr "Import keys from keyservers"
+msgstr ""
 
 #: permissions.py:19
 msgid "Use keys to sign content"
@@ -196,7 +195,7 @@ msgstr ""
 
 #: permissions.py:25
 msgid "View keys"
-msgstr "Xem các khóa"
+msgstr ""
 
 #: settings.py:10
 msgid "Signatures"
@@ -204,7 +203,7 @@ msgstr ""
 
 #: settings.py:16
 msgid "Home directory used to store keys as well as configuration files."
-msgstr "Home directory used to store keys as well as configuration files."
+msgstr ""
 
 #: settings.py:22
 msgid "Path to the GPG binary."
@@ -231,7 +230,7 @@ msgstr ""
 
 #: views.py:75
 msgid "Import key"
-msgstr "Import key"
+msgstr ""
 
 #: views.py:84
 #, python-format
@@ -259,11 +258,11 @@ msgstr ""
 
 #: views.py:135
 msgid "Search"
-msgstr "Tìm kiếm"
+msgstr ""
 
 #: views.py:137
 msgid "Query key server"
-msgstr "Query key server"
+msgstr ""
 
 #: views.py:156
 msgid "Upload new key"

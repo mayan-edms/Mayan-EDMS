@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 20:59-0400\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (Denmark) (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
+"POT-Creation-Date: 2020-02-13 22:44-0400\n"
+"PO-Revision-Date: 2020-01-29 08:08+0000\n"
+"Last-Translator: Allan Møller <it@brandts.dk>\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -40,11 +41,11 @@ msgstr ""
 
 #: apps.py:188 apps.py:196 forms.py:123 models.py:96 models.py:307
 msgid "Metadata type"
-msgstr ""
+msgstr "Metadata type"
 
 #: apps.py:191 apps.py:200
 msgid "Metadata value"
-msgstr ""
+msgstr "Metadata værdi"
 
 #: events.py:10
 msgid "Document metadata added"
@@ -80,7 +81,7 @@ msgstr "Navn"
 
 #: forms.py:20 models.py:214
 msgid "Value"
-msgstr "Værdi"
+msgstr ""
 
 #: forms.py:25
 msgid "Update"
@@ -111,7 +112,7 @@ msgstr ""
 
 #: forms.py:148 views.py:424
 msgid "Remove"
-msgstr "Fjern"
+msgstr ""
 
 #: forms.py:169
 msgid " Available template context variables: "
@@ -163,7 +164,7 @@ msgstr "Slet"
 
 #: links.py:78 views.py:260
 msgid "Edit"
-msgstr "Rediger"
+msgstr "Redigér"
 
 #: models.py:50
 msgid ""
@@ -222,7 +223,7 @@ msgstr ""
 
 #: models.py:205
 msgid "Document"
-msgstr "Dokument"
+msgstr ""
 
 #: models.py:208
 msgid "Type"
@@ -258,19 +259,19 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Add metadata to a document"
-msgstr ""
+msgstr "Tilføj metadata til et dokument"
 
 #: permissions.py:13
 msgid "Edit a document's metadata"
-msgstr ""
+msgstr "Redigér et dokuments metadata"
 
 #: permissions.py:16
 msgid "Remove metadata from a document"
-msgstr ""
+msgstr "Fjern metadata fra et dokument"
 
 #: permissions.py:20
 msgid "View metadata from a document"
-msgstr ""
+msgstr "Se metadata fra et dokument"
 
 #: permissions.py:24
 msgid "Metadata setup"
@@ -324,7 +325,7 @@ msgstr ""
 
 #: views.py:89
 msgid "Add"
-msgstr "Tilføj"
+msgstr ""
 
 #: views.py:91
 msgid "Add metadata types to document"

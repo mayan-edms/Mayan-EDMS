@@ -3,15 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Trung Phan Minh <navmobile@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 21:01-0400\n"
+"POT-Creation-Date: 2020-02-13 22:45-0400\n"
 "PO-Revision-Date: 2020-01-16 09:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
+"Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -66,15 +65,15 @@ msgstr ""
 
 #: forms.py:28
 msgid "Comment"
-msgstr "Chú thích"
+msgstr ""
 
 #: forms.py:42
 msgid "Expand compressed files"
-msgstr "Giải nén"
+msgstr ""
 
 #: forms.py:44
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr "Upload một file nén chứa các file tài liệu riêng biệt"
+msgstr ""
 
 #: forms.py:65 views.py:504
 msgid "Staging file"
@@ -82,11 +81,11 @@ msgstr ""
 
 #: forms.py:69 forms.py:74
 msgid "File"
-msgstr "File"
+msgstr ""
 
 #: handlers.py:27
 msgid "Default"
-msgstr "Mặc định"
+msgstr ""
 
 #: links.py:49
 msgid "New document"
@@ -122,11 +121,11 @@ msgstr ""
 
 #: links.py:102
 msgid "Edit"
-msgstr "Sửa"
+msgstr ""
 
 #: links.py:107
 msgid "Document sources"
-msgstr "Các nguồn tài liệu"
+msgstr ""
 
 #: links.py:120
 msgid "Upload new version"
@@ -166,19 +165,19 @@ msgstr ""
 
 #: literals.py:37
 msgid "Color"
-msgstr "Màu"
+msgstr ""
 
 #: literals.py:45 literals.py:50
 msgid "Always"
-msgstr "Luôn luôn"
+msgstr ""
 
 #: literals.py:46 literals.py:51
 msgid "Never"
-msgstr "Không bao giờ"
+msgstr ""
 
 #: literals.py:52
 msgid "Ask user"
-msgstr "Hỏi người dùng"
+msgstr ""
 
 #: literals.py:63
 msgid "Scanner"
@@ -246,7 +245,7 @@ msgstr ""
 
 #: models/base.py:182
 msgid "Document type"
-msgstr "Kiểu tài liệu"
+msgstr ""
 
 #: models/base.py:186
 msgid "Whether to expand or not, compressed archives."
@@ -479,7 +478,7 @@ msgstr ""
 
 #: models/staging_folder_sources.py:41
 msgid "Server side filesystem path."
-msgstr "đường dẫn hệ thống phía Server"
+msgstr ""
 
 #: models/staging_folder_sources.py:42 models/watch_folder_sources.py:35
 msgid "Folder path"
@@ -551,23 +550,23 @@ msgstr ""
 
 #: permissions.py:7
 msgid "Sources setup"
-msgstr "Thiết lập nguồn tài liệu"
+msgstr ""
 
 #: permissions.py:10
 msgid "Create new document sources"
-msgstr "Tạo các nguồn tài liệu"
+msgstr ""
 
 #: permissions.py:13
 msgid "Delete document sources"
-msgstr "Xóa các nguồn tài liệu"
+msgstr ""
 
 #: permissions.py:16
 msgid "Edit document sources"
-msgstr "Sửa các nguồn tài liệu"
+msgstr ""
 
 #: permissions.py:19
 msgid "View existing document sources"
-msgstr "Xem các nguồn tài liệu đang tồn tại"
+msgstr ""
 
 #: permissions.py:22
 msgid "Delete staging files"
@@ -781,7 +780,7 @@ msgstr ""
 
 #: wizards.py:183
 msgid "Next step"
-msgstr "Bước tiếp theo"
+msgstr ""
 
 #: wizards.py:185
 msgid "Document upload wizard"

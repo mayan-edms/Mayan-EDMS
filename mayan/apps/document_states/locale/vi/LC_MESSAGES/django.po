@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 20:58-0400\n"
+"POT-Creation-Date: 2020-02-13 22:43-0400\n"
 "PO-Revision-Date: 2020-01-31 04:42+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
+"Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -38,7 +38,7 @@ msgstr ""
 
 #: apps.py:175 apps.py:186 apps.py:196 apps.py:202
 msgid "None"
-msgstr "None"
+msgstr ""
 
 #: apps.py:180
 msgid "Current state"
@@ -46,7 +46,7 @@ msgstr ""
 
 #: apps.py:184 apps.py:211 models.py:677
 msgid "User"
-msgstr "Người dùng"
+msgstr ""
 
 #: apps.py:190
 msgid "Last transition"
@@ -62,7 +62,7 @@ msgstr ""
 
 #: apps.py:231
 msgid "Additional details"
-msgstr "chi tiết bổ sung"
+msgstr ""
 
 #: apps.py:254
 msgid "When?"
@@ -86,7 +86,7 @@ msgstr ""
 
 #: apps.py:305 apps.py:311
 msgid "Documents"
-msgstr "Tài liệu"
+msgstr ""
 
 #: error_logs.py:8 models.py:378
 msgid "Workflow state actions"
@@ -160,7 +160,7 @@ msgstr ""
 
 #: links.py:45 links.py:79 links.py:114 links.py:142 links.py:177
 msgid "Edit"
-msgstr "Sửa"
+msgstr ""
 
 #: links.py:51
 msgid "Launch workflow"
@@ -172,7 +172,7 @@ msgstr ""
 
 #: links.py:85
 msgid "Actions"
-msgstr "Các thao tác"
+msgstr ""
 
 #: links.py:91
 msgid "Create action"
@@ -398,7 +398,7 @@ msgstr ""
 
 #: models.py:510
 msgid "Event type"
-msgstr "Loại sự kiện"
+msgstr ""
 
 #: models.py:514
 msgid "Workflow transition trigger event"
@@ -430,7 +430,7 @@ msgstr ""
 
 #: models.py:679 views/workflow_instance_views.py:139
 msgid "Comment"
-msgstr "Chú thích"
+msgstr ""
 
 #: models.py:680
 msgid "Extra data"
@@ -622,7 +622,7 @@ msgstr ""
 
 #: views/workflow_instance_views.py:211
 msgid "Select"
-msgstr "Chọn"
+msgstr ""
 
 #: views/workflow_instance_views.py:213
 #, python-format

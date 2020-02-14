@@ -3,15 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Rasmus Kierudsen <tebrasso@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 21:01-0400\n"
+"POT-Creation-Date: 2020-02-13 22:45-0400\n"
 "PO-Revision-Date: 2019-12-18 04:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (Denmark) (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,11 +19,11 @@ msgstr ""
 
 #: apps.py:23 permissions.py:8
 msgid "Smart settings"
-msgstr "Smart opsætning"
+msgstr ""
 
 #: apps.py:31
 msgid "Setting count"
-msgstr "Antal indstillinger"
+msgstr ""
 
 #: apps.py:35
 msgid "Name"
@@ -32,7 +31,7 @@ msgstr "Navn"
 
 #: apps.py:39
 msgid "Value"
-msgstr "Værdi"
+msgstr ""
 
 #: classes.py:352
 msgid "Overridden"
@@ -53,7 +52,7 @@ msgstr ""
 
 #: links.py:14 links.py:18
 msgid "Settings"
-msgstr "Indstillinger"
+msgstr ""
 
 #: links.py:24
 msgid "Namespaces"
@@ -61,7 +60,7 @@ msgstr ""
 
 #: links.py:28
 msgid "Edit"
-msgstr "Rediger"
+msgstr "Redigér"
 
 #: permissions.py:12
 msgid "Edit settings"
@@ -69,7 +68,7 @@ msgstr ""
 
 #: permissions.py:15
 msgid "View settings"
-msgstr "Se indstillinger"
+msgstr ""
 
 #: settings.py:11
 msgid "Django"
@@ -301,16 +300,16 @@ msgstr ""
 #: views.py:26
 #, python-format
 msgid "Settings in namespace: %s"
-msgstr "Opsætning af funktionen: %s"
+msgstr ""
 
 #: views.py:34
 #, python-format
 msgid "Namespace: %s, not found"
-msgstr "Funktionen: %s findes ikke"
+msgstr ""
 
 #: views.py:44
 msgid "Setting namespaces"
-msgstr "Opsætning af funktioner"
+msgstr ""
 
 #: views.py:60
 msgid "Setting updated successfully."

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Johan Braeken, 2017
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 20:57-0400\n"
+"POT-Creation-Date: 2020-02-13 22:42-0400\n"
 "PO-Revision-Date: 2020-01-31 04:42+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:22 permissions.py:7 settings.py:15
@@ -128,13 +129,17 @@ msgstr ""
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr "Volgorde waarin de transformaties worden uitgevoerd. Indien ongewijzigd zal automatisch een volgorde toegekend worden."
+msgstr ""
+"Volgorde waarin de transformaties worden uitgevoerd. Indien ongewijzigd zal "
+"automatisch een volgorde toegekend worden."
 
 #: models.py:89
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr "Voer de argumenten voor de transformatie in als een YAML statement, bijvoorbeeld: {\"degrees\": 180}"
+msgstr ""
+"Voer de argumenten voor de transformatie in als een YAML statement, "
+"bijvoorbeeld: {\"degrees\": 180}"
 
 #: models.py:91
 msgid "Arguments"
@@ -247,7 +252,8 @@ msgstr ""
 #: views.py:140
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr "Transformatie verwijderen \"%(transformation)s\" voor: %(content_object)s?"
+msgstr ""
+"Transformatie verwijderen \"%(transformation)s\" voor: %(content_object)s?"
 
 #: views.py:188
 #, python-format

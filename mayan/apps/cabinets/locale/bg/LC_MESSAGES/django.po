@@ -2,25 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
-# Roberto Rosario, 2017
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2017
 # Iliya Georgiev <inactive+iliicho7@transifex.com>, 2017
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2020
-# 
+# Roberto Rosario, 2020
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 20:56-0400\n"
+"POT-Creation-Date: 2020-02-14 00:32-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"Last-Translator: Roberto Rosario, 2020\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
+"bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:49 apps.py:110 apps.py:118 apps.py:121 events.py:7 forms.py:16
@@ -152,14 +153,11 @@ msgstr "Брой документи на това ниво на шкафа."
 
 #: serializers.py:26
 msgid "The name of this cabinet level appended to the names of its ancestors."
-msgstr ""
-"Името на това ниво на шкафа се прибавя към имената на неговите предци."
+msgstr "Името на това ниво на шкафа се прибавя към имената на неговите предци."
 
 #: serializers.py:32
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
-msgstr ""
-"URL на крайната точка на API, показваща списъка документи в този шкаф."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgstr "URL на крайната точка на API, показваща списъка документи в този шкаф."
 
 #: serializers.py:68 serializers.py:179
 msgid "Comma separated list of document primary keys to add to this cabinet."
@@ -172,8 +170,8 @@ msgid ""
 "API URL pointing to a document in relation to the cabinet storing it. This "
 "URL is different than the canonical document URL."
 msgstr ""
-"URL адрес на API, сочещ към документ във връзка с шкафа, който го съхранява."
-" Този URL адрес е различен от основния URL адрес на документа."
+"URL адрес на API, сочещ към документ във връзка с шкафа, който го съхранява. "
+"Този URL адрес е различен от основния URL адрес на документа."
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
@@ -250,6 +248,14 @@ msgstr "Добавяне към заявка за шкаф, изпълнено �
 msgid "Add"
 msgstr "Добави"
 
+#: views.py:235
+#, fuzzy, python-format
+#| msgid "Add documents to cabinets"
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] "Добавете документи в шкафовете"
+msgstr[1] "Добавете документи в шкафовете"
+
 #: views.py:248
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -283,10 +289,18 @@ msgstr "Премахване от заявка за шкаф, изпълнено
 msgid "Remove"
 msgstr "Премахнете"
 
+#: views.py:325
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] "Извадете документи от шкафовете"
+msgstr[1] "Извадете документи от шкафовете"
+
 #: views.py:338
 #, python-format
 msgid "Remove document \"%s\" from cabinets"
-msgstr ""
+msgstr "Извадете документ \"%s\" от шкафовете"
 
 #: views.py:349
 msgid "Cabinets from which the selected documents will be removed."

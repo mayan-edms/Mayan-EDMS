@@ -3,14 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
+# René Rovsing Bach <reroba@outlook.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 21:00-0400\n"
+"POT-Creation-Date: 2020-02-13 22:45-0400\n"
 "PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (Denmark) (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +22,7 @@ msgstr ""
 #: apps.py:55 apps.py:140 apps.py:144 events.py:7 links.py:20 links.py:26
 #: permissions.py:7 queues.py:8 settings.py:10
 msgid "OCR"
-msgstr ""
+msgstr "OCR"
 
 #: apps.py:107
 msgid "A generator returning the document's pages OCR content."
@@ -36,7 +38,7 @@ msgstr ""
 
 #: apps.py:135 models.py:76
 msgid "Result"
-msgstr "Resultat"
+msgstr ""
 
 #: backends/tesseract.py:90
 msgid "Tesseract OCR not found."
@@ -66,12 +68,12 @@ msgstr ""
 
 #: forms.py:16 forms.py:47
 msgid "Contents"
-msgstr "Indeholder"
+msgstr "Indhold"
 
 #: forms.py:76
 #, python-format
 msgid "Page %(page_number)d"
-msgstr "Side %(page_number)d"
+msgstr ""
 
 #: links.py:32 links.py:37
 msgid "Delete OCR content"
@@ -103,19 +105,19 @@ msgstr "Dokumenttype"
 
 #: models.py:24
 msgid "Automatically queue newly created documents for OCR."
-msgstr ""
+msgstr "Automatically queue newly created documents for OCR."
 
 #: models.py:30
 msgid "Document type settings"
-msgstr "Indstillinger for dokumenttype"
+msgstr ""
 
 #: models.py:31
 msgid "Document types settings"
-msgstr "Indstillinger for dokumenttyper"
+msgstr ""
 
 #: models.py:45
 msgid "Document page"
-msgstr "Dokumentside"
+msgstr ""
 
 #: models.py:49
 msgid "The actual text content extracted by the OCR backend."
@@ -135,7 +137,7 @@ msgstr ""
 
 #: models.py:71
 msgid "Document version"
-msgstr "Dokumentversion"
+msgstr ""
 
 #: models.py:74
 msgid "Date time submitted"
@@ -151,7 +153,7 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Submit documents for OCR"
-msgstr ""
+msgstr "Tilmeld dokumenter til OCR"
 
 #: permissions.py:13
 msgid "View the transcribed text from document"

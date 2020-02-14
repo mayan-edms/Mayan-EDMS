@@ -4,19 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2017
-# www.ping.ba <jomer@ping.ba>, 2017
-# Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
-# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
+# Roberto Rosario, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 21:01-0400\n"
+"POT-Creation-Date: 2020-02-13 22:46-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
-"Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>, 2018\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
+"Last-Translator: Roberto Rosario, 2020\n"
+"Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

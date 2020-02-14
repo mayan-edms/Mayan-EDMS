@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 20:57-0400\n"
+"POT-Creation-Date: 2020-02-13 22:42-0400\n"
 "PO-Revision-Date: 2019-12-05 10:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
+"Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: admin.py:24
 msgid "None"
-msgstr "None"
+msgstr ""
 
 #: admin.py:26 links.py:95 models.py:54
 msgid "Document types"
@@ -47,7 +47,7 @@ msgstr ""
 
 #: apps.py:162 apps.py:180 models.py:379
 msgid "Documents"
-msgstr "Tài liệu"
+msgstr ""
 
 #: events.py:12
 msgid "Index created"
@@ -104,7 +104,7 @@ msgstr ""
 
 #: links.py:101 links.py:125
 msgid "Edit"
-msgstr "Sửa"
+msgstr ""
 
 #: links.py:108
 msgid "Tree template"
@@ -145,7 +145,7 @@ msgstr ""
 
 #: models.py:210
 msgid "Index instance"
-msgstr "index instance"
+msgstr ""
 
 #: models.py:211
 msgid "Index instances"
@@ -200,7 +200,7 @@ msgstr ""
 
 #: models.py:375
 msgid "Value"
-msgstr "Giá trị"
+msgstr ""
 
 #: models.py:385
 msgid "Index node instance"

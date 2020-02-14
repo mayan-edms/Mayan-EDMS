@@ -3,15 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Trung Phan Minh <navmobile@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 20:59-0400\n"
+"POT-Creation-Date: 2020-02-13 22:43-0400\n"
 "PO-Revision-Date: 2019-12-13 05:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
+"Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +28,7 @@ msgstr ""
 #: events.py:8 links.py:20 links.py:79 links.py:84 links.py:89 models.py:47
 #: permissions.py:7 views.py:197
 msgid "Smart links"
-msgstr "Liên kết thông minh"
+msgstr ""
 
 #: events.py:12
 msgid "Smart link created"
@@ -53,7 +52,7 @@ msgstr ""
 
 #: links.py:40 links.py:69
 msgid "Edit"
-msgstr "Sửa"
+msgstr ""
 
 #: links.py:46
 msgid "Conditions"
@@ -69,67 +68,67 @@ msgstr ""
 
 #: links.py:73
 msgid "Documents"
-msgstr "Tài liệu"
+msgstr ""
 
 #: literals.py:9
 msgid "and"
-msgstr "và"
+msgstr ""
 
 #: literals.py:10
 msgid "or"
-msgstr "hoặc"
+msgstr ""
 
 #: literals.py:14
 msgid "is equal to"
-msgstr "bằng với"
+msgstr ""
 
 #: literals.py:15
 msgid "is equal to (case insensitive)"
-msgstr "bằng với (CHỮ HOA)"
+msgstr ""
 
 #: literals.py:16
 msgid "contains"
-msgstr "chứa"
+msgstr ""
 
 #: literals.py:17
 msgid "contains (case insensitive)"
-msgstr "chứa (CHỮ HOA)"
+msgstr ""
 
 #: literals.py:18
 msgid "is in"
-msgstr "trong"
+msgstr ""
 
 #: literals.py:19
 msgid "is greater than"
-msgstr "lớn hơn"
+msgstr ""
 
 #: literals.py:20
 msgid "is greater than or equal to"
-msgstr "lớn hơn hoặc bằng"
+msgstr ""
 
 #: literals.py:21
 msgid "is less than"
-msgstr "nhỏ hơn"
+msgstr ""
 
 #: literals.py:22
 msgid "is less than or equal to"
-msgstr "nhỏ hơn hoặc bằng"
+msgstr ""
 
 #: literals.py:23
 msgid "starts with"
-msgstr "bắt đầu với"
+msgstr ""
 
 #: literals.py:24
 msgid "starts with (case insensitive)"
-msgstr "bắt đầu với (CHỮ HOA)"
+msgstr ""
 
 #: literals.py:25
 msgid "ends with"
-msgstr "kết thúc với"
+msgstr ""
 
 #: literals.py:26
 msgid "ends with (case insensitive)"
-msgstr "kết thúc với (CHỮ HOA)"
+msgstr ""
 
 #: literals.py:27
 msgid "is in regular expression"
@@ -218,19 +217,19 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Create new smart links"
-msgstr "Tạo liên kết thông minh mới"
+msgstr ""
 
 #: permissions.py:13
 msgid "Delete smart links"
-msgstr "Xóa liên kết thông minh"
+msgstr ""
 
 #: permissions.py:16
 msgid "Edit smart links"
-msgstr "Sửa liên kết thông minh"
+msgstr ""
 
 #: permissions.py:19
 msgid "View existing smart links"
-msgstr "Xem các liên kết thông minh tồn tại"
+msgstr ""
 
 #: serializers.py:117
 msgid ""
@@ -259,7 +258,7 @@ msgstr ""
 #: views.py:123
 #, python-format
 msgid "Smart link query error: %s"
-msgstr "Lỗi truy vấn liên kết thông minh: %s"
+msgstr ""
 
 #: views.py:132
 #, python-format
@@ -318,7 +317,7 @@ msgstr ""
 #: views.py:279
 #, python-format
 msgid "Edit smart link: %s"
-msgstr "Sửa liên kết thông minh: %s"
+msgstr ""
 
 #: views.py:302
 msgid ""

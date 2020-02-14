@@ -2,25 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2020
 # Sebastian Fait <seba.fait@gmail.com>, 2020
 # Michal Švábík <snadno@lehce.cz>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 20:56-0400\n"
+"POT-Creation-Date: 2020-02-14 00:32-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:49 apps.py:110 apps.py:118 apps.py:121 events.py:7 forms.py:16
 #: links.py:24 menus.py:16 models.py:50 permissions.py:7 views.py:163
@@ -154,8 +155,7 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr "Název této úrovně kabinetu se připojil ke názvu jeho předka."
 
 #: serializers.py:32
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "URL koncového bodu API zobrazující seznam dokumentů uvnitř tohoto kabinetu."
 
@@ -193,8 +193,8 @@ msgid ""
 "documents to a cabinet, select the cabinet view of a document view."
 msgstr ""
 "Úrovně kabinetu mohou obsahovat dokumenty nebo jiné podúrovně kabinetu. "
-"Chcete-li do kabinetu přidat dokumenty, vyberte zobrazení kabinetu v pohledu"
-" na dokument."
+"Chcete-li do kabinetu přidat dokumenty, vyberte zobrazení kabinetu v pohledu "
+"na dokument."
 
 #: views.py:126
 msgid "This cabinet level is empty"
@@ -215,8 +215,8 @@ msgid ""
 "Cabinets are a multi-level method to organize documents. Each cabinet can "
 "contain documents as well as other sub level cabinets."
 msgstr ""
-"Kabinety jsou víceúrovňovou metodou organizace dokumentů. Každý kabinet může"
-" obsahovat dokumenty i jiné kabinety další podúrovně."
+"Kabinety jsou víceúrovňovou metodou organizace dokumentů. Každý kabinet může "
+"obsahovat dokumenty i jiné kabinety další podúrovně."
 
 #: views.py:173
 msgid "No cabinets available"
@@ -248,6 +248,16 @@ msgstr "Přidat do kabinetu na žádost provedené na dokumentech %(count)d"
 #: views.py:233
 msgid "Add"
 msgstr "Přidat"
+
+#: views.py:235
+#, fuzzy, python-format
+#| msgid "Add documents to cabinets"
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] "Přidat dokument do kabinetu"
+msgstr[1] "Přidat dokument do kabinetu"
+msgstr[2] "Přidat dokument do kabinetu"
+msgstr[3] "Přidat dokument do kabinetu"
 
 #: views.py:248
 #, python-format
@@ -281,6 +291,16 @@ msgstr "Odebrat z kabinetu dle požadavku provedeného na dokumentech %(count)d"
 #: views.py:323
 msgid "Remove"
 msgstr "Odstranit"
+
+#: views.py:325
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] "Odstranit dokument z kabinetů"
+msgstr[1] "Odstranit dokument z kabinetů"
+msgstr[2] "Odstranit dokument z kabinetů"
+msgstr[3] "Odstranit dokument z kabinetů"
 
 #: views.py:338
 #, python-format

@@ -1,17 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Rasmus Kierudsen <tebrasso@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 20:55-0400\n"
+"POT-Creation-Date: 2020-02-13 22:40-0400\n"
 "PO-Revision-Date: 2019-12-03 05:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (Denmark) (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: apps.py:24 links.py:44
 msgid "ACLs"
-msgstr "ACL'er"
+msgstr "ACLs"
 
 #: events.py:8 permissions.py:7
 msgid "Access control lists"
@@ -48,7 +48,7 @@ msgstr "Slet"
 
 #: links.py:49 models.py:44 workflow_actions.py:48 workflow_actions.py:163
 msgid "Permissions"
-msgstr "Tilladelser"
+msgstr "Tilladelse"
 
 #: managers.py:231
 #, python-format
@@ -58,7 +58,7 @@ msgstr ""
 #: managers.py:252
 #, python-format
 msgid "Insufficient access for: %s"
-msgstr "Utilstækkelig adgang for: %s"
+msgstr "Utilstrækkelig adgang til: %s"
 
 #: models.py:56
 msgid "Access entry"
@@ -75,11 +75,11 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Edit ACLs"
-msgstr "Editér ACL"
+msgstr "Redigér ACL'er"
 
 #: permissions.py:13
 msgid "View ACLs"
-msgstr "Se ACL"
+msgstr "Se ACL'er"
 
 #: serializers.py:26 serializers.py:136
 msgid ""
@@ -142,7 +142,7 @@ msgstr ""
 
 #: views.py:171
 msgid "Available permissions"
-msgstr ""
+msgstr "Tilgængelige tilladelser"
 
 #: views.py:215
 #, python-format

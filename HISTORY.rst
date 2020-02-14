@@ -16,6 +16,7 @@
   the nl_NL locale to the nl locale.
 - Move the language files for the Danish language from
   the da_DK locale to the da locale.
+- Add make file target to cleanup source translation files.
 
 3.3.12 (2020-02-10)
 ===================

@@ -3,15 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Trung Phan Minh <navmobile@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 20:59-0400\n"
+"POT-Creation-Date: 2020-02-13 22:44-0400\n"
 "PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
+"Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,7 +20,7 @@ msgstr ""
 #: apps.py:66 apps.py:159 apps.py:164 events.py:7 links.py:48 permissions.py:7
 #: queues.py:9 settings.py:10
 msgid "Metadata"
-msgstr "Siêu dữ liệu"
+msgstr ""
 
 #: apps.py:98
 msgid "Return the value of a specific document metadata."
@@ -41,7 +40,7 @@ msgstr ""
 
 #: apps.py:188 apps.py:196 forms.py:123 models.py:96 models.py:307
 msgid "Metadata type"
-msgstr "Loại siêu dữ liệu"
+msgstr ""
 
 #: apps.py:191 apps.py:200
 msgid "Metadata value"
@@ -73,19 +72,19 @@ msgstr ""
 
 #: forms.py:13
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #: forms.py:16 models.py:53 search.py:16
 msgid "Name"
-msgstr "Tên"
+msgstr ""
 
 #: forms.py:20 models.py:214
 msgid "Value"
-msgstr "Giá trị"
+msgstr ""
 
 #: forms.py:25
 msgid "Update"
-msgstr "Cập nhật"
+msgstr ""
 
 #: forms.py:46 forms.py:185 models.py:309
 msgid "Required"
@@ -112,7 +111,7 @@ msgstr ""
 
 #: forms.py:148 views.py:424
 msgid "Remove"
-msgstr "Xóa"
+msgstr ""
 
 #: forms.py:169
 msgid " Available template context variables: "
@@ -120,7 +119,7 @@ msgstr ""
 
 #: forms.py:183
 msgid "None"
-msgstr "None"
+msgstr ""
 
 #: forms.py:184
 msgid "Optional"
@@ -164,7 +163,7 @@ msgstr ""
 
 #: links.py:78 views.py:260
 msgid "Edit"
-msgstr "Sửa"
+msgstr ""
 
 #: models.py:50
 msgid ""
@@ -184,7 +183,7 @@ msgstr ""
 
 #: models.py:66 search.py:22
 msgid "Default"
-msgstr "Mặc định"
+msgstr ""
 
 #: models.py:71
 msgid ""
@@ -247,7 +246,7 @@ msgstr ""
 
 #: models.py:303
 msgid "Document type"
-msgstr "Kiểu tài liệu"
+msgstr ""
 
 #: models.py:316
 msgid "Document type metadata type options"
@@ -259,39 +258,39 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Add metadata to a document"
-msgstr "Thêm  siêu dữ liệu vào tài liệu"
+msgstr ""
 
 #: permissions.py:13
 msgid "Edit a document's metadata"
-msgstr "Sửa siêu dữ liệu của tài liệu"
+msgstr ""
 
 #: permissions.py:16
 msgid "Remove metadata from a document"
-msgstr "Xóa  siêu dữ liệu từ tài liệu"
+msgstr ""
 
 #: permissions.py:20
 msgid "View metadata from a document"
-msgstr "Xem  siêu dữ liệu của tài liệu"
+msgstr ""
 
 #: permissions.py:24
 msgid "Metadata setup"
-msgstr "Cài đặt  siêu dữ liệu"
+msgstr ""
 
 #: permissions.py:28
 msgid "Edit metadata types"
-msgstr "Sửa các loại  siêu dữ liệu"
+msgstr ""
 
 #: permissions.py:31
 msgid "Create new metadata types"
-msgstr "Tạo loại siêu dữ liệu mới"
+msgstr ""
 
 #: permissions.py:34
 msgid "Delete metadata types"
-msgstr "Xóa loại siêu dữ liệu"
+msgstr ""
 
 #: permissions.py:37
 msgid "View metadata types"
-msgstr "Xem các loại siêu dữ liệu"
+msgstr ""
 
 #: queues.py:12
 msgid "Remove metadata type"
@@ -325,7 +324,7 @@ msgstr ""
 
 #: views.py:89
 msgid "Add"
-msgstr "Thêm"
+msgstr ""
 
 #: views.py:91
 msgid "Add metadata types to document"

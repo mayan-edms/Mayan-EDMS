@@ -4,16 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Rasmus Kierudsen <tebrasso@gmail.com>, 2019
+# Roberto Rosario, 2017
+# Mads L. Nielsen <sirlundgaard@gmail.com>, 2018
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 20:57-0400\n"
+"POT-Creation-Date: 2020-02-13 22:42-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
-"Last-Translator: Rasmus Kierudsen <tebrasso@gmail.com>, 2019\n"
-"Language-Team: Danish (Denmark) (https://www.transifex.com/rosarior/teams/13584/da/)\n"
+"Last-Translator: Mads L. Nielsen <sirlundgaard@gmail.com>, 2018\n"
+"Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,7 +35,7 @@ msgstr "Indhold"
 
 #: apps.py:137 models.py:78
 msgid "Result"
-msgstr "Resultat"
+msgstr ""
 
 #: dependencies.py:11
 msgid ""
@@ -56,11 +57,11 @@ msgstr ""
 #: forms.py:39
 #, python-format
 msgid "Page %(page_number)d"
-msgstr "Side %(page_number)d"
+msgstr ""
 
 #: forms.py:47 forms.py:59
 msgid "Contents"
-msgstr "Indeholder"
+msgstr "Indhold"
 
 #: links.py:27 links.py:32
 msgid "Delete parsed content"
@@ -72,7 +73,7 @@ msgstr ""
 
 #: links.py:50
 msgid "Download content"
-msgstr "Download indhold"
+msgstr ""
 
 #: links.py:55 links.py:62
 msgid "Submit for parsing"
@@ -88,7 +89,7 @@ msgstr ""
 
 #: models.py:21
 msgid "Document page"
-msgstr "Dokumentside"
+msgstr ""
 
 #: models.py:25
 msgid "The actual text content as extracted by the document parsing backend."
@@ -96,11 +97,11 @@ msgstr ""
 
 #: models.py:33
 msgid "Document page content"
-msgstr "Indhold i dokumentside"
+msgstr ""
 
 #: models.py:34
 msgid "Document pages contents"
-msgstr "Indhold i dokumentsider"
+msgstr ""
 
 #: models.py:46
 msgid "Document type"
@@ -112,15 +113,15 @@ msgstr ""
 
 #: models.py:61
 msgid "Document type settings"
-msgstr "Indstillinger for dokumenttype"
+msgstr ""
 
 #: models.py:62
 msgid "Document types settings"
-msgstr "Indstillinger for dokumenttyper"
+msgstr ""
 
 #: models.py:73
 msgid "Document version"
-msgstr "Dokumentversion"
+msgstr ""
 
 #: models.py:76
 msgid "Date time submitted"
@@ -146,7 +147,7 @@ msgstr ""
 
 #: permissions.py:12
 msgid "View the content of a document"
-msgstr "Se indholdet i et dokument"
+msgstr ""
 
 #: permissions.py:15
 msgid "Change document type parsing settings"
@@ -154,15 +155,15 @@ msgstr ""
 
 #: permissions.py:19
 msgid "Parse the content of a document"
-msgstr "Gennemse indholdet i et dokument"
+msgstr ""
 
 #: queues.py:8
 msgid "Parsing"
-msgstr "Gennemse"
+msgstr ""
 
 #: queues.py:11
 msgid "Document version parsing"
-msgstr "Gennemse dokumentversion"
+msgstr ""
 
 #: settings.py:12
 msgid "Set new document types to perform parsing automatically by default."
@@ -173,6 +174,8 @@ msgid ""
 "File path to poppler's pdftotext program used to extract text from PDF "
 "files."
 msgstr ""
+"Fil sti til poppler's pdftotext program, brugt til at identificere tekst fra"
+" PDF filer."
 
 #: views.py:36
 msgid "Delete the parsed content of the selected document?"
@@ -183,7 +186,7 @@ msgstr[1] ""
 #: views.py:70
 #, python-format
 msgid "Content for document: %s"
-msgstr "Indhold i dokument: %s"
+msgstr ""
 
 #: views.py:103
 #, python-format
@@ -193,17 +196,17 @@ msgstr ""
 #: views.py:118
 #, python-format
 msgid "Parsing errors for document: %s"
-msgstr "Gennemgår dokument: %s for fejl"
+msgstr ""
 
 #: views.py:130
 #, python-format
 msgid "%(count)d document added to the parsing queue"
-msgstr "%(count)d dokument tilføjet køen for gennemgang"
+msgstr ""
 
 #: views.py:133
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
-msgstr "%(count)d dokumenter tilføjet køen for gennemgang"
+msgstr ""
 
 #: views.py:141
 #, python-format
@@ -215,7 +218,7 @@ msgstr[1] ""
 #: views.py:154
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
-msgstr "Klargør dokumentet \"%s\" til køen for gennegang"
+msgstr ""
 
 #: views.py:179
 #, python-format
@@ -224,7 +227,7 @@ msgstr ""
 
 #: views.py:189
 msgid "Submit all documents of a type for parsing"
-msgstr "Klargør alle dokumenter af en type til gennemgang"
+msgstr ""
 
 #: views.py:210
 #, python-format

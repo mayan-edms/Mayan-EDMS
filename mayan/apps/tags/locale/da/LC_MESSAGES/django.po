@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 21:01-0400\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (Denmark) (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
+"POT-Creation-Date: 2020-02-13 22:46-0400\n"
+"PO-Revision-Date: 2020-01-29 08:08+0000\n"
+"Last-Translator: Allan Møller <it@brandts.dk>\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,7 +22,7 @@ msgstr ""
 #: forms.py:17 links.py:25 menus.py:16 models.py:42 permissions.py:7
 #: views.py:222 workflow_actions.py:20 workflow_actions.py:68
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #: apps.py:125 models.py:36
 msgid "Documents"
@@ -65,11 +66,11 @@ msgstr "Slet"
 
 #: links.py:55
 msgid "Edit"
-msgstr "Rediger"
+msgstr "Redigér"
 
 #: links.py:63
 msgid "All"
-msgstr "Alle"
+msgstr "alle"
 
 #: methods.py:20
 msgid "Return a the tags attached to the document."
@@ -113,27 +114,27 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Create new tags"
-msgstr ""
+msgstr "Opret nye tags"
 
 #: permissions.py:13
 msgid "Delete tags"
-msgstr ""
+msgstr "Slet tags"
 
 #: permissions.py:16
 msgid "View tags"
-msgstr ""
+msgstr "Vis tags"
 
 #: permissions.py:19
 msgid "Edit tags"
-msgstr ""
+msgstr "Redigér tags"
 
 #: permissions.py:22
 msgid "Attach tags to documents"
-msgstr ""
+msgstr "Vedhæft tags til dokumenter"
 
 #: permissions.py:25
 msgid "Remove tags from documents"
-msgstr ""
+msgstr "Fjern tags fra dokumenter"
 
 #: serializers.py:38
 msgid ""
@@ -184,12 +185,12 @@ msgstr ""
 #: views.py:112
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
-msgstr ""
+msgstr "Dokumentet \"%(document)s\" er allerede mærket som \"%(tag)s\""
 
 #: views.py:122
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr ""
+msgstr "Tag \"%(tag)s\" vedhæftet til at dokumentet \"%(document)s\"."
 
 #: views.py:131
 msgid "Create tag"
@@ -207,7 +208,7 @@ msgstr ""
 
 #: views.py:154
 msgid "Will be removed from all documents."
-msgstr ""
+msgstr "Vil blive fjernet fra alle dokumenter."
 
 #: views.py:158
 msgid "Delete the selected tag?"
@@ -223,12 +224,12 @@ msgstr ""
 #: views.py:179
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
-msgstr ""
+msgstr "Tag \"%s\" slettet."
 
 #: views.py:184
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
-msgstr ""
+msgstr "Fejl ved sletning af tag \"%(tag)s\": %(error)s"
 
 #: views.py:199
 #, python-format
@@ -271,7 +272,7 @@ msgstr ""
 
 #: views.py:298
 msgid "Remove"
-msgstr "Fjern"
+msgstr ""
 
 #: views.py:300
 #, python-format
@@ -297,7 +298,7 @@ msgstr ""
 #: views.py:370
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr ""
+msgstr "Tag \"%(tag)s\" blev fjernet fra dokumentet \"%(document)s\"."
 
 #: wizard_steps.py:17
 msgid "Select tags"
