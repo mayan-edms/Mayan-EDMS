@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Carlo Zanatto <>, 2012
 # Daniele Bortoluzzi <daniele@elkos.it>, 2019
@@ -12,15 +12,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:49-0400\n"
+"POT-Creation-Date: 2020-02-13 20:57-0400\n"
 "PO-Revision-Date: 2019-12-05 10:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
@@ -130,18 +129,16 @@ msgstr "etichetta"
 
 #: models.py:41
 msgid "This value will be used by other apps to reference this index."
-msgstr ""
-"Questo valore sarà usato dalle altre app per riferirirsi a questo indice"
+msgstr "Questo valore sarà usato dalle altre app per riferirirsi a questo indice"
 
 #: models.py:42
 msgid "Slug"
 msgstr "Slug"
 
 #: models.py:47
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Fa sì che questo indice possa essere visibile e aggiornato quando i dati del "
-"documento cambiano."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Fa sì che questo indice possa essere visibile e aggiornato quando i dati del documento cambiano."
 
 #: models.py:50 models.py:254
 msgid "Enabled"
@@ -163,10 +160,7 @@ msgstr "Instanze indice"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr ""
-"Inserisci un template da renderizzare. Usa il linguaggio standard dei "
-"template di Django (https://docs.djangoproject.com/en/1.11/ref/templates/"
-"builtins/)"
+msgstr "Inserisci un template da renderizzare. Usa il linguaggio standard dei template di Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
 #: models.py:246
 msgid "Indexing expression"
@@ -174,17 +168,13 @@ msgstr "Espressione di indicizzazione"
 
 #: models.py:251
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Fa sì che questo nodo possa essere visibili e aggiornato quando i dati del "
-"documento cambiano."
+msgstr "Fa sì che questo nodo possa essere visibili e aggiornato quando i dati del documento cambiano."
 
 #: models.py:259
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Selezionare questa opzione per questo specifico nodo quale contenitore per i "
-"documenti e non come un genitore per ulteriori nodi."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Selezionare questa opzione per questo specifico nodo quale contenitore per i documenti e non come un genitore per ulteriori nodi."
 
 #: models.py:262
 msgid "Link documents"
@@ -207,9 +197,7 @@ msgstr "Principale"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
-"Errore nell'ndicizzazione del documento: %(document)s; espressione: "
-"%(expression)s; %(exception)s"
+msgstr "Errore nell'ndicizzazione del documento: %(document)s; espressione: %(expression)s; %(exception)s"
 
 #: models.py:372
 msgid "Index template node"
@@ -288,10 +276,7 @@ msgid ""
 "Documents of this type will appear in the indexes linked when these are "
 "updated. Events of the documents of this type will trigger updates in the "
 "linked indexes."
-msgstr ""
-"Documenti di questo tipo appariranno negli indici collegati quando questi "
-"saranno aggiornati. Eventi accaduti sui documenti di questo tipo "
-"innescheranno aggiornamenti negli indici collegati."
+msgstr "Documenti di questo tipo appariranno negli indici collegati quando questi saranno aggiornati. Eventi accaduti sui documenti di questo tipo innescheranno aggiornamenti negli indici collegati."
 
 #: views.py:81
 #, python-format
@@ -311,8 +296,8 @@ msgstr "Modifica indice: %s"
 #: views.py:143
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views.py:148
@@ -341,10 +326,7 @@ msgid ""
 "Only the documents of the types selected will be shown in the index when "
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
-msgstr ""
-"Solo i documenti del tipo selezionato verranno inclusi nell'indice "
-"costruito. Solo gli eventi dei documenti del tipo selezionato innescheranno "
-"aggiornamenti nell'indice."
+msgstr "Solo i documenti del tipo selezionato verranno inclusi nell'indice costruito. Solo gli eventi dei documenti del tipo selezionato innescheranno aggiornamenti nell'indice."
 
 #: views.py:206
 #, python-format
@@ -375,9 +357,7 @@ msgstr "Modificare il template del nodo indice: %s?"
 msgid ""
 "This could mean that no index templates have been created or that there "
 "index templates but they are no properly defined."
-msgstr ""
-"Questo significa che non sono stati creati template di indice oppure che ci "
-"sono template di indice ma non sono correttamente definiti."
+msgstr "Questo significa che non sono stati creati template di indice oppure che ci sono template di indice ma non sono correttamente definiti."
 
 #: views.py:322
 msgid "There are no index instances available."

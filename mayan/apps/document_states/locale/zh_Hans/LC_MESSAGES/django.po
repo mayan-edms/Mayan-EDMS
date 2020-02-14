@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # yulin Gong <540538248@qq.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:50-0400\n"
-"PO-Revision-Date: 2020-01-31 04:42+0000\n"
+"POT-Creation-Date: 2020-02-13 20:58-0400\n"
+"PO-Revision-Date: 2020-02-10 08:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/zh/)\n"
-"Language: zh\n"
+"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:68 events.py:8 links.py:20 links.py:56 links.py:198 links.py:222
@@ -518,8 +517,7 @@ msgstr "要添加的文档类型的主键。"
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr ""
-"API URL指向与其连接的工作流相关的文档类型。此URL与规范文档类型URL不同。"
+msgstr "API URL指向与其连接的工作流相关的文档类型。此URL与规范文档类型URL不同。"
 
 #: serializers.py:116
 msgid "Primary key of the destination state to be added."
@@ -577,8 +575,8 @@ msgstr ""
 
 #: views/workflow_instance_views.py:43
 msgid ""
-"Assign workflows to the document type of this document to have this document "
-"execute those workflows. "
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
 msgstr "将工作流分配给此文档的文档类型，以使此文档执行这些工作流。"
 
 #: views/workflow_instance_views.py:47
@@ -592,7 +590,8 @@ msgstr "文件：%s的工作流"
 
 #: views/workflow_instance_views.py:82
 msgid ""
-"This view will show the state changes as a workflow instance is transitioned."
+"This view will show the state changes as a workflow instance is "
+"transitioned."
 msgstr ""
 
 #: views/workflow_instance_views.py:86
@@ -650,9 +649,7 @@ msgstr "具有工作流的文档：%s"
 msgid ""
 "Create some workflows and associated them with a document type. Active "
 "workflows will be shown here and the documents for which they are executing."
-msgstr ""
-"创建一些工作流并将其与文档类型相关联。此处将显示活动工作流以及它们正在执行的"
-"文档。"
+msgstr "创建一些工作流并将其与文档类型相关联。此处将显示活动工作流以及它们正在执行的文档。"
 
 #: views/workflow_proxy_views.py:65
 msgid "There are no workflows"
@@ -667,7 +664,8 @@ msgstr ""
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "工作流“%s”中的文档，状态“%s”"
 
-#: views/workflow_proxy_views.py:122 views/workflow_template_state_views.py:288
+#: views/workflow_proxy_views.py:122
+#: views/workflow_template_state_views.py:288
 msgid "Create states and link them using transitions."
 msgstr "创建状态并使用流转链接它们。"
 
@@ -675,7 +673,8 @@ msgstr "创建状态并使用流转链接它们。"
 msgid "This workflow doesn't have any state"
 msgstr "此工作流没有任何状态"
 
-#: views/workflow_proxy_views.py:128 views/workflow_template_state_views.py:294
+#: views/workflow_proxy_views.py:128
+#: views/workflow_template_state_views.py:294
 #, python-format
 msgid "States of workflow: %s"
 msgstr "工作流状态：%s"
@@ -697,8 +696,8 @@ msgstr "编辑工作流状态操作：%s"
 
 #: views/workflow_template_state_views.py:149
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or "
-"leaves the state in which they reside."
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
 msgstr "工作流状态操作是在文档进入或离开它们所处的状态时执行的宏。"
 
 #: views/workflow_template_state_views.py:153
@@ -750,7 +749,8 @@ msgstr ""
 
 #: views/workflow_template_transition_views.py:131
 msgid ""
-"Create a transition and use it to move a workflow from  one state to another."
+"Create a transition and use it to move a workflow from  one state to "
+"another."
 msgstr "创建流转并使用它将工作流从一个状态移至另一个状态。"
 
 #: views/workflow_template_transition_views.py:135
@@ -798,8 +798,8 @@ msgstr ""
 
 #: views/workflow_template_transition_views.py:327
 msgid ""
-"Workflow transition fields allow adding data to the workflow's context. This "
-"additional context data can then be used by other elements of the workflow "
+"Workflow transition fields allow adding data to the workflow's context. This"
+" additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr ""
 
@@ -853,8 +853,7 @@ msgstr "分配此工作流的文档类型"
 msgid ""
 "Removing a document type from a workflow will also remove all running "
 "instances of that workflow for documents of the document type just removed."
-msgstr ""
-"从工作流中删除文档类型还将删除属于其的文档的工作流中所有正在运行的实例。"
+msgstr "从工作流中删除文档类型还将删除属于其的文档的工作流中所有正在运行的实例。"
 
 #: views/workflow_template_views.py:154
 #, python-format
@@ -878,8 +877,7 @@ msgstr "工作流启动成功排队。"
 msgid ""
 "Workflows store a series of states and keep track of the current state of a "
 "document. Transitions are used to change the current state to a new one."
-msgstr ""
-"工作流存储一系列状态并跟踪文档的当前状态。流转用于将当前状态更改为新状态。"
+msgstr "工作流存储一系列状态并跟踪文档的当前状态。流转用于将当前状态更改为新状态。"
 
 #: views/workflow_template_views.py:229
 msgid "No workflows have been defined"
@@ -939,14 +937,11 @@ msgstr "网址"
 
 #: workflow_actions.py:92
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow "
-"log entry instance as part of their context via the variable \"entry_log\". "
-"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
-"可以是IP地址，域或模板。模板通过变量“entry_log”接收工作流日志条目实例作为其上"
-"下文的一部分。 “entry_log”又提"
-"供“workflow_instance”，“datetime”，“transition”，“user”和“comment”属性。"
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
+msgstr "可以是IP地址，域或模板。模板通过变量“entry_log”接收工作流日志条目实例作为其上下文的一部分。 “entry_log”又提供“workflow_instance”，“datetime”，“transition”，“user”和“comment”属性。"
 
 #: workflow_actions.py:102
 msgid "Timeout"
@@ -954,7 +949,8 @@ msgstr "超时"
 
 #: workflow_actions.py:105
 msgid ""
-"Time in seconds to wait for a response. Can be a static value or a template. "
+"Time in seconds to wait for a response. Can be a static value or a template."
+" "
 msgstr ""
 
 #: workflow_actions.py:111
@@ -964,14 +960,11 @@ msgstr "有效载荷"
 #: workflow_actions.py:114
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
-msgstr ""
-"要包含在请求中的JSON文档。也可以是返回JSON文档的模板。模板通过变"
-"量“entry_log”接收工作流日志条目实例作为其上下文的一部分。 “entry_log”又提"
-"供“workflow_instance”，“datetime”，“transition”，“user”和“comment”属性。"
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr "要包含在请求中的JSON文档。也可以是返回JSON文档的模板。模板通过变量“entry_log”接收工作流日志条目实例作为其上下文的一部分。 “entry_log”又提供“workflow_instance”，“datetime”，“transition”，“user”和“comment”属性。"
 
 #: workflow_actions.py:124
 msgid "Username"
@@ -979,11 +972,11 @@ msgstr "用户名"
 
 #: workflow_actions.py:127
 msgid ""
-"Username to use for making the request with HTTP Basic Auth. Can be a static "
-"value or a template. Templates receive the workflow log entry instance as "
+"Username to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:137
@@ -992,11 +985,11 @@ msgstr "密码"
 
 #: workflow_actions.py:140
 msgid ""
-"Password to use for making the request with HTTP Basic Auth. Can be a static "
-"value or a template. Templates receive the workflow log entry instance as "
+"Password to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:150

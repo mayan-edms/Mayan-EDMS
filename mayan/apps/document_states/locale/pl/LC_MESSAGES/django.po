@@ -1,44 +1,42 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:50-0400\n"
-"PO-Revision-Date: 2020-01-31 04:42+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"POT-Creation-Date: 2020-02-13 20:58-0400\n"
+"PO-Revision-Date: 2020-02-08 19:11+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:68 events.py:8 links.py:20 links.py:56 links.py:198 links.py:222
 #: models.py:72 settings.py:13 views/workflow_proxy_views.py:66
 #: views/workflow_template_views.py:231
 msgid "Workflows"
-msgstr ""
+msgstr "Przepływy pracy"
 
 #: apps.py:111 apps.py:118
 msgid "Current state of a workflow"
-msgstr ""
+msgstr "Bieżący stan przepływu pracy"
 
 #: apps.py:112
 msgid "Return the current state of the selected workflow."
-msgstr ""
+msgstr "Zwraca bieżący stan wybranego przepływu pracy."
 
 #: apps.py:119
 msgid ""
 "Return the completion value of the current state of the selected workflow."
-msgstr ""
+msgstr "Zwraca wartość zakończenia bieżącego stanu wybranego przepływu pracy."
 
 #: apps.py:175 apps.py:186 apps.py:196 apps.py:202
 msgid "None"
@@ -54,7 +52,7 @@ msgstr "Użytkownik"
 
 #: apps.py:190
 msgid "Last transition"
-msgstr ""
+msgstr "Ostatnie przejście"
 
 #: apps.py:194 apps.py:207
 msgid "Date and time"
@@ -62,7 +60,7 @@ msgstr "Data i godzina"
 
 #: apps.py:200 models.py:287
 msgid "Completion"
-msgstr ""
+msgstr "Ukończenie"
 
 #: apps.py:231
 msgid "Additional details"
@@ -70,15 +68,15 @@ msgstr "Dodatkowe szczegóły"
 
 #: apps.py:254
 msgid "When?"
-msgstr ""
+msgstr "Kiedy?"
 
 #: apps.py:258
 msgid "Action type"
-msgstr ""
+msgstr "Rodzaj działania"
 
 #: apps.py:274
 msgid "Triggers"
-msgstr ""
+msgstr "Wyzwalacze"
 
 #: apps.py:288 models.py:454
 msgid "Type"
@@ -86,7 +84,7 @@ msgstr "Typ"
 
 #: apps.py:296
 msgid "Widget"
-msgstr ""
+msgstr "Widżet"
 
 #: apps.py:305 apps.py:311
 msgid "Documents"
@@ -94,23 +92,23 @@ msgstr "Dokumenty"
 
 #: error_logs.py:8 models.py:378
 msgid "Workflow state actions"
-msgstr ""
+msgstr "Akcje stanu przepływu pracy"
 
 #: events.py:12
 msgid "Workflow created"
-msgstr ""
+msgstr "Utworzono przepływ pracy"
 
 #: events.py:15
 msgid "Workflow edited"
-msgstr ""
+msgstr "Edytowany przepływ pracy"
 
 #: forms.py:23
 msgid "The action type for this action entry."
-msgstr ""
+msgstr "Typ akcji dla tego wpisu akcji."
 
 #: forms.py:24
 msgid "Action"
-msgstr ""
+msgstr "Akcja"
 
 #: forms.py:120
 msgid "Namespace"
@@ -135,24 +133,24 @@ msgstr "Tak"
 
 #: forms.py:181
 msgid "Select a transition to execute in the next step."
-msgstr ""
+msgstr "Wybierz przejście do wykonania w następnym kroku."
 
 #: forms.py:182 links.py:204 models.py:451 models.py:506 models.py:673
 msgid "Transition"
-msgstr ""
+msgstr "Przejście"
 
 #: handlers.py:19
 msgid "Workflow images"
-msgstr ""
+msgstr "Obrazy przepływu pracy"
 
 #: handlers.py:78
 #, python-format
 msgid "Event trigger: %s"
-msgstr ""
+msgstr "Wyzwalacz zdarzenia: %s"
 
 #: links.py:26 views/workflow_template_views.py:86
 msgid "Create workflow"
-msgstr ""
+msgstr "Utwórz przepływ pracy"
 
 #: links.py:32 links.py:72 links.py:107 links.py:135 links.py:170
 msgid "Delete"
@@ -168,7 +166,7 @@ msgstr "Edytuj"
 
 #: links.py:51
 msgid "Launch workflow"
-msgstr ""
+msgstr "Uruchom przepływ pracy"
 
 #: links.py:63
 msgid "Preview"
@@ -180,7 +178,7 @@ msgstr "Akcje"
 
 #: links.py:91
 msgid "Create action"
-msgstr ""
+msgstr "Utwórz akcję"
 
 #: links.py:100
 msgid "Create state"
@@ -192,23 +190,23 @@ msgstr "Stany"
 
 #: links.py:128
 msgid "Create transition"
-msgstr ""
+msgstr "Utwórz przejście"
 
 #: links.py:148
 msgid "Transition triggers"
-msgstr ""
+msgstr "Wyzwalacze przejścia"
 
 #: links.py:154
 msgid "Transitions"
-msgstr ""
+msgstr "Przejścia"
 
 #: links.py:163
 msgid "Create field"
-msgstr ""
+msgstr "Utwórz pole"
 
 #: links.py:183
 msgid "Fields"
-msgstr ""
+msgstr "Pola"
 
 #: links.py:193
 msgid "Detail"
@@ -216,41 +214,41 @@ msgstr "Szczegół"
 
 #: links.py:214
 msgid "Workflow documents"
-msgstr ""
+msgstr "Przepływ pracy dokumentów"
 
 #: links.py:228
 msgid "State documents"
-msgstr ""
+msgstr "Stan dokumentów"
 
 #: links.py:243 queues.py:17
 msgid "Launch all workflows"
-msgstr ""
+msgstr "Uruchom wszystkie przepływy pracy"
 
 #: literals.py:10
 msgid "Character"
-msgstr ""
+msgstr "Znak"
 
 #: literals.py:11
 msgid "Number (Integer)"
-msgstr ""
+msgstr "Liczba (liczba całkowita)"
 
 #: literals.py:21
 msgid "Text area"
-msgstr ""
+msgstr "Obszar tekstowy"
 
 #: literals.py:32
 msgid "On entry"
-msgstr ""
+msgstr "Przy wejściu"
 
 #: literals.py:33
 msgid "On exit"
-msgstr ""
+msgstr "Przy wyjściu"
 
 #: models.py:52
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
-msgstr ""
+msgstr "Ta wartość będzie używana przez inne aplikacje w odniesieniu do tego przepływu pracy. Może zawierać tylko litery, cyfry i znaki podkreślenia."
 
 #: models.py:55 models.py:460
 msgid "Internal name"
@@ -258,7 +256,7 @@ msgstr "Nazwa wewnętrzna"
 
 #: models.py:58
 msgid "A short text to describe the workflow."
-msgstr ""
+msgstr "Krótki tekst opisujący przepływ pracy."
 
 #: models.py:71 models.py:270 models.py:420 models.py:525
 msgid "Workflow"
@@ -270,13 +268,13 @@ msgstr "Stan początkowy"
 
 #: models.py:273
 msgid "A short text to describe the workflow state."
-msgstr ""
+msgstr "Krótki tekst opisujący stan przepływu pracy."
 
 #: models.py:279
 msgid ""
 "The state at which the workflow will start in. Only one state can be the "
 "initial state."
-msgstr ""
+msgstr "Stan, w którym rozpocznie się przepływ pracy. Tylko jeden stan może być stanem początkowym."
 
 #: models.py:281
 msgid "Initial"
@@ -286,27 +284,27 @@ msgstr "Początkowy"
 msgid ""
 "The percent of completion that this state represents in relation to the "
 "workflow. Use numbers without the percent sign."
-msgstr ""
+msgstr "Procent ukończenia reprezentowany przez ten stan w odniesieniu do przepływu pracy. Używaj liczb bez znaku procentu."
 
 #: models.py:293 models.py:352
 msgid "Workflow state"
-msgstr "Stan obiegu"
+msgstr "Stan przepływu pracy"
 
 #: models.py:294
 msgid "Workflow states"
-msgstr "Stany obiegu"
+msgstr "Stany przepływu pracy"
 
 #: models.py:355
 msgid "A short text describing the action."
-msgstr ""
+msgstr "Krótki tekst opisujący akcję."
 
 #: models.py:362
 msgid "At which moment of the state this action will execute."
-msgstr ""
+msgstr "Moment stanu, w którym akcja zostanie wykonana."
 
 #: models.py:363
 msgid "When"
-msgstr ""
+msgstr "Kiedy"
 
 #: models.py:367
 msgid "The dotted Python path to the workflow action class to execute."
@@ -314,63 +312,63 @@ msgstr ""
 
 #: models.py:368
 msgid "Entry action path"
-msgstr ""
+msgstr "Wejściowa ścieżka akcji"
 
 #: models.py:371
 msgid "Entry action data"
-msgstr ""
+msgstr "Wpis danych działania"
 
 #: models.py:377
 msgid "Workflow state action"
-msgstr ""
+msgstr "Akcja stanu przepływu pracy"
 
 #: models.py:410
 msgid "Unknown action type"
-msgstr ""
+msgstr "Nieznany rodzaj akcji"
 
 #: models.py:423
 msgid "A short text to describe the transition."
-msgstr ""
+msgstr "Krótki tekst opisujący przejście."
 
 #: models.py:428
 msgid "Origin state"
-msgstr ""
+msgstr "Stan pochodzenia"
 
 #: models.py:432
 msgid "Destination state"
-msgstr ""
+msgstr "Stan docelowy"
 
 #: models.py:440
 msgid "Workflow transition"
-msgstr ""
+msgstr "Przejście przepływu pracy"
 
 #: models.py:441
 msgid "Workflow transitions"
-msgstr ""
+msgstr "Przejścia przepływu pracy"
 
 #: models.py:458
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
-msgstr ""
+msgstr "Nazwa, która będzie używana do identyfikacji tego pola w innych częściach systemu przepływu pracy."
 
 #: models.py:464
 msgid "The field name that will be shown on the user interface."
-msgstr ""
+msgstr "Nazwa pola, która będzie wyświetlana w interfejsie użytkownika."
 
 #: models.py:468
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
-msgstr ""
+msgstr "Opcjonalny komunikat, który pomoże użytkownikom lepiej zrozumieć do czego służy pole i dane, które należy podać."
 
 #: models.py:470
 msgid "Help text"
-msgstr ""
+msgstr "Tekst pomocy"
 
 #: models.py:474
 msgid "Whether this fields needs to be filled out or not to proceed."
-msgstr ""
+msgstr "Czy pola te należy wypełnić, aby kontynuować."
 
 #: models.py:475
 msgid "Required"
@@ -378,27 +376,27 @@ msgstr "Wymagane"
 
 #: models.py:479
 msgid "An optional class to change the default presentation of the field."
-msgstr ""
+msgstr "Opcjonalna klasa do zmiany domyślnej prezentacji pola."
 
 #: models.py:480
 msgid "Widget class"
-msgstr ""
+msgstr "Klasa widżetów"
 
 #: models.py:484
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
-msgstr ""
+msgstr "Argumenty słów kluczowych do dostosowania widżetu. Użyj formatu YAML."
 
 #: models.py:487
 msgid "Widget keyword arguments"
-msgstr ""
+msgstr "Argumenty słów kluczowych widgetu"
 
 #: models.py:492
 msgid "Workflow transition field"
-msgstr ""
+msgstr "Pole przejścia przepływu pracy"
 
 #: models.py:493
 msgid "Workflow transition fields"
-msgstr ""
+msgstr "Pola przejściowe przepływu pracy"
 
 #: models.py:510
 msgid "Event type"
@@ -406,11 +404,11 @@ msgstr "Typ zdarzenia"
 
 #: models.py:514
 msgid "Workflow transition trigger event"
-msgstr ""
+msgstr "Zdarzenie uruchamiające przejście przepływu pracy"
 
 #: models.py:515
 msgid "Workflow transitions trigger events"
-msgstr ""
+msgstr "Zdarzenia uruchamiające przejścia przepływu pracy"
 
 #: models.py:529
 msgid "Document"
@@ -418,19 +416,19 @@ msgstr "Dokument"
 
 #: models.py:532
 msgid "Context"
-msgstr ""
+msgstr "Kontekst"
 
 #: models.py:538 models.py:666
 msgid "Workflow instance"
-msgstr ""
+msgstr "Instancja przepływu pracy"
 
 #: models.py:539
 msgid "Workflow instances"
-msgstr ""
+msgstr "Instancje przepływu pracy"
 
 #: models.py:669
 msgid "Datetime"
-msgstr ""
+msgstr "Datetime"
 
 #: models.py:679 views/workflow_instance_views.py:139
 msgid "Comment"
@@ -438,67 +436,67 @@ msgstr "Komentarz"
 
 #: models.py:680
 msgid "Extra data"
-msgstr ""
+msgstr "Dodatkowe dane"
 
 #: models.py:684
 msgid "Workflow instance log entry"
-msgstr ""
+msgstr "Wpis do dziennika instancji przepływu pracy"
 
 #: models.py:685
 msgid "Workflow instance log entries"
-msgstr ""
+msgstr "Wpisy do dziennika instancji przepływu pracy"
 
 #: models.py:692
 msgid "Not a valid transition choice."
-msgstr ""
+msgstr "Nieprawidłowy wybór przejścia."
 
 #: models.py:739
 msgid "Workflow runtime proxy"
-msgstr ""
+msgstr "Serwer proxy środowiska wykonawczego przepływu pracy"
 
 #: models.py:740
 msgid "Workflow runtime proxies"
-msgstr ""
+msgstr "Proxy środowiska uruchomieniowego przepływu pracy"
 
 #: models.py:757
 msgid "Workflow state runtime proxy"
-msgstr ""
+msgstr "Serwer proxy środowiska wykonawczego stanu przepływu pracy"
 
 #: models.py:758
 msgid "Workflow state runtime proxies"
-msgstr ""
+msgstr "Serwery proxy środowiska wykonawczego stanu przepływu pracy"
 
 #: permissions.py:8
 msgid "Document workflows"
-msgstr ""
+msgstr "Przepływy pracy z dokumentami"
 
 #: permissions.py:12
 msgid "Create workflows"
-msgstr "Utwórz obieg"
+msgstr "Utwórz przepływy pracy"
 
 #: permissions.py:15
 msgid "Delete workflows"
-msgstr "Usuń obieg"
+msgstr "Usuń przepływy pracy"
 
 #: permissions.py:18
 msgid "Edit workflows"
-msgstr "Edytuj obieg"
+msgstr "Edytuj przepływy pracy"
 
 #: permissions.py:21
 msgid "View workflows"
-msgstr "Pokaż obieg"
+msgstr "Pokaż przepływy pracy"
 
 #: permissions.py:27
 msgid "Transition workflows"
-msgstr ""
+msgstr "Przejście przepływów pracy"
 
 #: permissions.py:30
 msgid "Execute workflow tools"
-msgstr ""
+msgstr "Uruchom narzędzia przepływu pracy"
 
 #: queues.py:9
 msgid "Document states"
-msgstr ""
+msgstr "Stany dokumentu"
 
 #: queues.py:12
 msgid "Document states fast"
@@ -506,67 +504,67 @@ msgstr ""
 
 #: queues.py:21
 msgid "Launch a workflow"
-msgstr ""
+msgstr "Uruchom przepływ pracy"
 
 #: queues.py:25
 msgid "Generate workflow previews"
-msgstr ""
+msgstr "Generuj podgląd przepływu pracy"
 
 #: serializers.py:22
 msgid "Primary key of the document type to be added."
-msgstr ""
+msgstr "Klucz podstawowy typu dokumentu, który ma zostać dodany."
 
 #: serializers.py:37
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr ""
+msgstr "Adres URL interfejsu API wskazujący na typ dokumentu w odniesieniu do przepływu pracy, do którego jest dołączony. Ten adres URL jest inny niż kanoniczny adres URL typu dokumentu."
 
 #: serializers.py:116
 msgid "Primary key of the destination state to be added."
-msgstr ""
+msgstr "Klucz podstawowy stanu docelowego, który ma zostać dodany."
 
 #: serializers.py:120
 msgid "Primary key of the origin state to be added."
-msgstr ""
+msgstr "Klucz podstawowy stanu początkowego do dodania."
 
 #: serializers.py:218
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
-msgstr ""
+msgstr "Adres URL interfejsu API wskazujący na przepływ pracy dokumentu, do którego jest dołączony. Ten adres URL jest inny niż kanoniczny adres URL przepływu pracy."
 
 #: serializers.py:227
 msgid "A link to the entire history of this workflow."
-msgstr ""
+msgstr "Link do całej historii przepływu pracy."
 
 #: serializers.py:259
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
-msgstr ""
+msgstr "Rozdzielona przecinkami lista kluczy podstawowych typu dokumentu, do których zostanie dołączony przepływ pracy."
 
 #: serializers.py:319
 msgid "Primary key of the transition to be added."
-msgstr ""
+msgstr "Klucz podstawowy przejścia, które należy dodać."
 
 #: settings.py:19
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
-msgstr ""
+msgstr "Próg, poniżej którego WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND rozpocznie usuwanie najstarszych plików pamięci podręcznej obrazów przepływu pracy. Określ rozmiar w bajtach."
 
 #: settings.py:27
 msgid ""
 "Time in seconds that the browser should cache the supplied workflow images. "
 "The default of 31559626 seconds corresponde to 1 year."
-msgstr ""
+msgstr "Czas w sekundach, przez który przeglądarka powinna buforować dostarczone obrazy przepływu pracy. Domyślnie 31559626 sekund odpowiada 1 rokowi."
 
 #: settings.py:34
 msgid ""
 "Path to the Storage subclass to use when storing the cached workflow image "
 "files."
-msgstr ""
+msgstr "Ścieżka do podklasy Storage, która ma być używana podczas przechowywania buforowanych plików obrazów przepływu pracy."
 
 #: settings.py:42
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
@@ -578,8 +576,8 @@ msgstr ""
 
 #: views/workflow_instance_views.py:43
 msgid ""
-"Assign workflows to the document type of this document to have this document "
-"execute those workflows. "
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
 msgstr ""
 
 #: views/workflow_instance_views.py:47
@@ -593,7 +591,8 @@ msgstr "Obiegi dokumentu: %s"
 
 #: views/workflow_instance_views.py:82
 msgid ""
-"This view will show the state changes as a workflow instance is transitioned."
+"This view will show the state changes as a workflow instance is "
+"transitioned."
 msgstr ""
 
 #: views/workflow_instance_views.py:86
@@ -666,7 +665,8 @@ msgstr ""
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr ""
 
-#: views/workflow_proxy_views.py:122 views/workflow_template_state_views.py:288
+#: views/workflow_proxy_views.py:122
+#: views/workflow_template_state_views.py:288
 msgid "Create states and link them using transitions."
 msgstr ""
 
@@ -674,7 +674,8 @@ msgstr ""
 msgid "This workflow doesn't have any state"
 msgstr ""
 
-#: views/workflow_proxy_views.py:128 views/workflow_template_state_views.py:294
+#: views/workflow_proxy_views.py:128
+#: views/workflow_template_state_views.py:294
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Stany obiegu dokumentów: %s"
@@ -696,8 +697,8 @@ msgstr ""
 
 #: views/workflow_template_state_views.py:149
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or "
-"leaves the state in which they reside."
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
 msgstr ""
 
 #: views/workflow_template_state_views.py:153
@@ -749,7 +750,8 @@ msgstr ""
 
 #: views/workflow_template_transition_views.py:131
 msgid ""
-"Create a transition and use it to move a workflow from  one state to another."
+"Create a transition and use it to move a workflow from  one state to "
+"another."
 msgstr ""
 
 #: views/workflow_template_transition_views.py:135
@@ -797,8 +799,8 @@ msgstr ""
 
 #: views/workflow_template_transition_views.py:327
 msgid ""
-"Workflow transition fields allow adding data to the workflow's context. This "
-"additional context data can then be used by other elements of the workflow "
+"Workflow transition fields allow adding data to the workflow's context. This"
+" additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr ""
 
@@ -936,10 +938,10 @@ msgstr ""
 
 #: workflow_actions.py:92
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow "
-"log entry instance as part of their context via the variable \"entry_log\". "
-"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", and \"comment\" attributes."
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:102
@@ -948,7 +950,8 @@ msgstr ""
 
 #: workflow_actions.py:105
 msgid ""
-"Time in seconds to wait for a response. Can be a static value or a template. "
+"Time in seconds to wait for a response. Can be a static value or a template."
+" "
 msgstr ""
 
 #: workflow_actions.py:111
@@ -958,10 +961,10 @@ msgstr ""
 #: workflow_actions.py:114
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:124
@@ -970,11 +973,11 @@ msgstr "Nazwa użytkownika"
 
 #: workflow_actions.py:127
 msgid ""
-"Username to use for making the request with HTTP Basic Auth. Can be a static "
-"value or a template. Templates receive the workflow log entry instance as "
+"Username to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:137
@@ -983,11 +986,11 @@ msgstr "Hasło"
 
 #: workflow_actions.py:140
 msgid ""
-"Password to use for making the request with HTTP Basic Auth. Can be a static "
-"value or a template. Templates receive the workflow log entry instance as "
+"Password to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:150

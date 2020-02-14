@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # emreunal <bywant@gmail.com>, 2019
 # serhatcan77 <serhat_can@yahoo.com>, 2017
@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:54-0400\n"
+"POT-Creation-Date: 2020-02-13 21:02-0400\n"
 "PO-Revision-Date: 2019-12-13 17:47+0000\n"
 "Last-Translator: emreunal <bywant@gmail.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:82 events.py:8 permissions.py:8
@@ -190,8 +189,7 @@ msgstr "Bu kullanıcıya atamak için virgülle ayrılmış birincil gruplar lis
 
 #: serializers.py:64
 msgid "List of group primary keys to which to add the user."
-msgstr ""
-"Kullanıcının hangi gruba ekleneceğini belirten birincil anahtarların listesi."
+msgstr "Kullanıcının hangi gruba ekleneceğini belirten birincil anahtarların listesi."
 
 #: utils.py:8
 msgid "Anonymous"
@@ -220,11 +218,7 @@ msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr ""
-"Kullanıcı grupları organizasyonel birimlerdir ve organizasyonunuzun "
-"birimlerini yansıtmalıdır. Gruplar erişim kontrolü için kullanılamazlar. "
-"Erişim kontrolü ve izin yönetimi için Rolleri kullanarak grupları bu rollere "
-"ekleyiniz."
+msgstr "Kullanıcı grupları organizasyonel birimlerdir ve organizasyonunuzun birimlerini yansıtmalıdır. Gruplar erişim kontrolü için kullanılamazlar. Erişim kontrolü ve izin yönetimi için Rolleri kullanarak grupları bu rollere ekleyiniz."
 
 #: views.py:119
 msgid "There are no user groups"
@@ -268,9 +262,7 @@ msgstr "Kullanıcıyı sil: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Süper kullanıcı ve çalışanların silinmesine izin verilmiyor, bu durumlarda "
-"admin arayüzünü kullanın."
+msgstr "Süper kullanıcı ve çalışanların silinmesine izin verilmiyor, bu durumlarda admin arayüzünü kullanın."
 
 #: views.py:212
 #, python-format
@@ -311,9 +303,7 @@ msgstr "Kullanıcının grupları: %s"
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
-msgstr ""
-"Buradan kullanıcı hesapları oluşturabilirsiniz. Bir kullanıcı hesabı "
-"oluşturduktan sonra bu kullanıcı için bir şifre oluşturmanız istenecektir."
+msgstr "Buradan kullanıcı hesapları oluşturabilirsiniz. Bir kullanıcı hesabı oluşturduktan sonra bu kullanıcı için bir şifre oluşturmanız istenecektir."
 
 #: views.py:301
 msgid "There are no user accounts"

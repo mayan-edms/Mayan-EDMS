@@ -2,27 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2017
-# Jesaja Everling <jeverling@gmail.com>, 2017
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
-# Mathias Behrle <mathiasb@m9s.biz>, 2019
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
-#
+# Mathias Behrle <mathiasb@m9s.biz>, 2020
+# Jesaja Everling <jeverling@gmail.com>, 2020
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 19:51-0400\n"
+"POT-Creation-Date: 2020-02-13 20:56-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2020\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
-"teams/13584/de_DE/)\n"
-"Language: de_DE\n"
+"Last-Translator: Jesaja Everling <jeverling@gmail.com>, 2020\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:49 apps.py:110 apps.py:118 apps.py:121 events.py:7 forms.py:16
@@ -32,24 +31,20 @@ msgid "Cabinets"
 msgstr "Aktenschränke"
 
 #: events.py:11
-#| msgid "Cabinet"
 msgid "Cabinet created"
 msgstr "Aktenschrank"
 
 #: events.py:14
-#| msgid "Cabinet"
 msgid "Cabinet edited"
 msgstr "Aktenschrank"
 
 #: events.py:17
-#| msgid "Document cabinet"
 msgid "Document added to cabinet"
-msgstr "Dokumenten-Aktenschrank"
+msgstr "Dokument zu Aktenschrank hinzugefügt"
 
 #: events.py:20
-#| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
-msgstr "Aus Aktenschrank entfernen"
+msgstr "Dokument aus Aktenschrank entfernt"
 
 #: links.py:30 links.py:44 workflow_actions.py:76
 msgid "Remove from cabinets"
@@ -84,12 +79,10 @@ msgid "Details"
 msgstr "Details"
 
 #: methods.py:18
-#| msgid "Cabinets containing document: %s"
 msgid "Return a list of cabinets containing the document"
 msgstr "Aktenschränke mit Dokument %s"
 
 #: methods.py:20
-#| msgid "Create cabinets"
 msgid "get_cabinets()"
 msgstr "Aktenschränke anlegen"
 
@@ -165,7 +158,8 @@ msgstr ""
 "Elemente."
 
 #: serializers.py:32
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "Die URL dieses API-Endpunkts zeigt eine Liste der Dokumente in diesem "
 "Aktenschrank."
@@ -182,8 +176,8 @@ msgid ""
 "URL is different than the canonical document URL."
 msgstr ""
 "Die auf ein Dokument zeigende API-URL im Verhältnis zum dem Aktenschrank, "
-"der das Dokument speichert. Diese URL unterscheidet sich von der kanonischen "
-"URL des Dokuments."
+"der das Dokument speichert. Diese URL unterscheidet sich von der kanonischen"
+" URL des Dokuments."
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
@@ -262,14 +256,6 @@ msgstr "%(count)d Dokumente zu Aktenschrank hinzugefügt"
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: views.py:235
-#, python-format
-#| msgid "Add documents to cabinets"
-msgid "Add %(count)d document to cabinets"
-msgid_plural "Add %(count)d documents to cabinets"
-msgstr[0] "Dokumente zu Aktenschrank hinzufügen"
-msgstr[1] "Dokumente zu Aktenschrank hinzufügen"
-
 #: views.py:248
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -306,41 +292,33 @@ msgstr "%(count)d Dokumente aus Aktenschrank entfernt"
 msgid "Remove"
 msgstr "Entfernen"
 
-#: views.py:325
-#| msgid "Remove documents from cabinets"
-msgid "Remove %(count)d document from cabinets"
-msgid_plural "Remove %(count)d documents from cabinets"
-msgstr[0] "Dokumente aus Aktenschrank entfernen"
-msgstr[1] "Dokumente aus Aktenschrank entfernen"
-
 #: views.py:338
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove document \"%s\" from cabinets"
-msgstr "Dokumente aus Aktenschrank entfernen"
+msgstr "Dokument \"%s\" aus Aktenschränken entfernen"
 
 #: views.py:349
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Aktenschränke aus denen die ausgewählten Dokumente entfernt werden."
 
 #: views.py:377
+#, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr "Dokument %(document)s ist nicht im Aktenschrank %(cabinet)s."
 
 #: views.py:389
+#, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Dokument %(document)s entfernt aus Aktenschrank %(cabinet)s."
 
 #: wizard_steps.py:17
-#| msgid "Delete cabinets"
 msgid "Select cabinets"
-msgstr "Aktenschränke löschen"
+msgstr "Aktenschränke auswählen"
 
 #: wizard_steps.py:31 workflow_actions.py:25
-#| msgid "Cabinets to which the selected documents will be added."
 msgid "Cabinets to which the document will be added."
 msgstr "Aktenschränke zu denen die ausgewählten Dokumente hinzugefügt werden."
 
 #: workflow_actions.py:71
-#| msgid "Cabinets from which the selected documents will be removed."
 msgid "Cabinets from which the document will be removed."
 msgstr "Aktenschränke aus denen die ausgewählten Dokumente entfernt werden."

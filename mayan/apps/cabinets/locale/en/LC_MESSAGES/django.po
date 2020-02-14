@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 19:51-0400\n"
+"POT-Creation-Date: 2020-02-13 20:56-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,22 +24,18 @@ msgid "Cabinets"
 msgstr "Cabinets"
 
 #: events.py:11
-#| msgid "Cabinet"
 msgid "Cabinet created"
 msgstr "Cabinet"
 
 #: events.py:14
-#| msgid "Cabinet"
 msgid "Cabinet edited"
 msgstr "Cabinet"
 
 #: events.py:17
-#| msgid "Document cabinet"
 msgid "Document added to cabinet"
 msgstr "Document cabinet"
 
 #: events.py:20
-#| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
 msgstr "Remove from cabinets"
 
@@ -76,12 +72,10 @@ msgid "Details"
 msgstr "Details"
 
 #: methods.py:18
-#| msgid "Cabinets containing document: %s"
 msgid "Return a list of cabinets containing the document"
 msgstr "Cabinets containing document: %s"
 
 #: methods.py:20
-#| msgid "Create cabinets"
 msgid "get_cabinets()"
 msgstr "Create cabinets"
 
@@ -247,8 +241,9 @@ msgid "Add"
 msgstr "Add"
 
 #: views.py:235
-#| msgid "Add document to cabinets"
-#| msgid_plural "Add documents to cabinets"
+#, fuzzy, python-format
+#| msgid "Add %(count)d document to cabinets"
+#| msgid_plural "Add %(count)d documents to cabinets"
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Add document to cabinets"
@@ -288,15 +283,16 @@ msgid "Remove"
 msgstr "Remove"
 
 #: views.py:325
-#| msgid "Remove document from cabinets"
-#| msgid_plural "Remove documents from cabinets"
+#, fuzzy, python-format
+#| msgid "Remove %(count)d document from cabinets"
+#| msgid_plural "Remove %(count)d documents from cabinets"
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Remove document from cabinets"
 msgstr[1] "Remove documents from cabinets"
 
 #: views.py:338
-#| msgid "Remove document \"%s\" to cabinets"
+#, python-format
 msgid "Remove document \"%s\" from cabinets"
 msgstr "Remove document \"%s\" to cabinets"
 
@@ -315,16 +311,13 @@ msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Document: %(document)s removed from cabinet: %(cabinet)s."
 
 #: wizard_steps.py:17
-#| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "Delete cabinets"
 
 #: wizard_steps.py:31 workflow_actions.py:25
-#| msgid "Cabinets to which the selected documents will be added."
 msgid "Cabinets to which the document will be added."
 msgstr "Cabinets to which the selected documents will be added."
 
 #: workflow_actions.py:71
-#| msgid "Cabinets from which the selected documents will be removed."
 msgid "Cabinets from which the document will be removed."
 msgstr "Cabinets from which the selected documents will be removed."

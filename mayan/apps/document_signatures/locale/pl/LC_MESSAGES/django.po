@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # mic <winterfall24@gmail.com>, 2012
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
@@ -9,18 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:50-0400\n"
-"PO-Revision-Date: 2020-02-02 21:24+0000\n"
+"POT-Creation-Date: 2020-02-13 20:58-0400\n"
+"PO-Revision-Date: 2020-02-07 19:39+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:48 permissions.py:8 settings.py:13
 msgid "Document signatures"
@@ -54,9 +51,7 @@ msgstr "Klucz"
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
-msgstr ""
-"Hasło do odblokowania klucza i umożliwienia jego użycia do podpisania wersji "
-"dokumentu."
+msgstr "Hasło do odblokowania klucza i umożliwienia jego użycia do podpisania wersji dokumentu."
 
 #: forms.py:26 workflow_actions.py:29
 msgid "Passphrase"
@@ -64,8 +59,7 @@ msgstr "Hasło"
 
 #: forms.py:35
 msgid "Private key that will be used to sign this document version."
-msgstr ""
-"Klucz prywatny, który zostanie użyty do podpisania tej wersji dokumentu."
+msgstr "Klucz prywatny, który zostanie użyty do podpisania tej wersji dokumentu."
 
 #: forms.py:46
 msgid "Signature is embedded?"
@@ -77,43 +71,43 @@ msgstr "Data podpisania"
 
 #: forms.py:51
 msgid "Signature key ID"
-msgstr ""
+msgstr "ID klucza podpisu"
 
 #: forms.py:53
 msgid "Signature key present?"
-msgstr ""
+msgstr "Obecny klucz podpisu?"
 
 #: forms.py:66
 msgid "Key fingerprint"
-msgstr ""
+msgstr "Odcisk klucza"
 
 #: forms.py:70
 msgid "Key creation date"
-msgstr ""
+msgstr "Data utworzenia klucza"
 
 #: forms.py:75
 msgid "Key expiration date"
-msgstr ""
+msgstr "Data ważności klucza"
 
 #: forms.py:80
 msgid "Key length"
-msgstr ""
+msgstr "Długość klucza"
 
 #: forms.py:84
 msgid "Key algorithm"
-msgstr ""
+msgstr "Algorytm klucza"
 
 #: forms.py:88
 msgid "Key user ID"
-msgstr ""
+msgstr "ID użytkownika klucza"
 
 #: forms.py:92
 msgid "Key type"
-msgstr ""
+msgstr "Typ klucza"
 
 #: links.py:32
 msgid "Verify all documents"
-msgstr ""
+msgstr "Zweryfikuj wszystkie dokumenty"
 
 #: links.py:39 links.py:79 queues.py:9
 msgid "Signatures"
@@ -149,31 +143,31 @@ msgstr "Wersja dokumentu"
 
 #: models.py:44
 msgid "Date signed"
-msgstr ""
+msgstr "Data podpisu"
 
 #: models.py:47
 msgid "ID of the key that will be used to sign the document."
-msgstr ""
+msgstr "ID klucza, który będzie używany do podpisania dokumentu."
 
 #: models.py:57
 msgid "Public key fingerprint"
-msgstr ""
+msgstr "Odcisk klucza publicznego"
 
 #: models.py:64
 msgid "Document version signature"
-msgstr ""
+msgstr "Podpis wersji dokumentu"
 
 #: models.py:65
 msgid "Document version signatures"
-msgstr ""
+msgstr "Podpisy wersji dokumentu"
 
 #: models.py:84
 msgid "Detached"
-msgstr ""
+msgstr "Usunięty"
 
 #: models.py:86
 msgid "Embedded"
-msgstr ""
+msgstr "Osadzony"
 
 #: models.py:101
 msgid "Document version embedded signature"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
@@ -11,15 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:50-0400\n"
+"POT-Creation-Date: 2020-02-13 20:58-0400\n"
 "PO-Revision-Date: 2019-12-03 05:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:17
@@ -38,10 +37,7 @@ msgstr "Parear todos"
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr ""
-"Cuando se selecciona, sólo se devolverán los resultados que coincidan con "
-"todos los campos. Si no se selecciona los resultados que coincidan con al "
-"menos un campo se devolverá."
+msgstr "Cuando se selecciona, sólo se devolverán los resultados que coincidan con todos los campos. Si no se selecciona los resultados que coincidan con al menos un campo se devolverá."
 
 #: forms.py:29 templates/dynamic_search/search_box.html:39
 msgid "Search terms"
@@ -63,9 +59,7 @@ msgstr "Volver a buscar"
 #: settings.py:12
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
-msgstr ""
-"Inhabilita la búsqueda de barra de término único dejando solo el botón de "
-"búsqueda avanzada."
+msgstr "Inhabilita la búsqueda de barra de término único dejando solo el botón de búsqueda avanzada."
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"

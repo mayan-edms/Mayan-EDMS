@@ -2,24 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Māris Teivāns <maris.teivans@gmail.com>, 2019
-#
+# Māris Teivāns <maris.teivans@gmail.com>, 2020
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-13 19:51-0400\n"
+"POT-Creation-Date: 2020-02-13 20:56-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2020\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
-"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:49 apps.py:110 apps.py:118 apps.py:121 events.py:7 forms.py:16
 #: links.py:24 menus.py:16 models.py:50 permissions.py:7 views.py:163
@@ -28,22 +27,18 @@ msgid "Cabinets"
 msgstr "Kabineti"
 
 #: events.py:11
-#| msgid "Cabinet"
 msgid "Cabinet created"
 msgstr "Kabinets"
 
 #: events.py:14
-#| msgid "Cabinet"
 msgid "Cabinet edited"
 msgstr "Kabinets"
 
 #: events.py:17
-#| msgid "Document cabinet"
 msgid "Document added to cabinet"
 msgstr "Dokumentu kabinets"
 
 #: events.py:20
-#| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
 msgstr "Noņemiet no kabinetiem"
 
@@ -80,12 +75,10 @@ msgid "Details"
 msgstr "Detaļas"
 
 #: methods.py:18
-#| msgid "Cabinets containing document: %s"
 msgid "Return a list of cabinets containing the document"
 msgstr "Kabineti, kas satur dokumentu: %s"
 
 #: methods.py:20
-#| msgid "Create cabinets"
 msgid "get_cabinets()"
 msgstr "Izveidot kabinetus"
 
@@ -159,7 +152,8 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr "Šī kabineta līmeņa nosaukums pievienots to senču vārdiem."
 
 #: serializers.py:32
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr "API gala punkta URL, kurā redzami saraksta dokumenti šajā kabinetā."
 
 #: serializers.py:68 serializers.py:179
@@ -173,8 +167,8 @@ msgid ""
 "API URL pointing to a document in relation to the cabinet storing it. This "
 "URL is different than the canonical document URL."
 msgstr ""
-"API URL, kas norāda uz dokumentu saistībā ar kabinetu, kas to glabā. Šis URL "
-"atšķiras no kanoniskā dokumenta URL."
+"API URL, kas norāda uz dokumentu saistībā ar kabinetu, kas to glabā. Šis URL"
+" atšķiras no kanoniskā dokumenta URL."
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
@@ -251,14 +245,6 @@ msgstr "Pieprasījums pievienot pie kabineta izpildīts %(count)d dokumentiem"
 msgid "Add"
 msgstr "Pievienot"
 
-#: views.py:235
-#| msgid "Add documents to cabinets"
-msgid "Add %(count)d document to cabinets"
-msgid_plural "Add %(count)d documents to cabinets"
-msgstr[0] "Pievienot dokumentus kabinetiem"
-msgstr[1] "Pievienot dokumentus kabinetiem"
-msgstr[2] "Pievienot dokumentus kabinetiem"
-
 #: views.py:248
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -292,18 +278,10 @@ msgstr "Pieprasījums noņemt no kabineta veikts %(count)d dokumentiem"
 msgid "Remove"
 msgstr "Noņemt"
 
-#: views.py:325
-#| msgid "Remove documents from cabinets"
-msgid "Remove %(count)d document from cabinets"
-msgid_plural "Remove %(count)d documents from cabinets"
-msgstr[0] "Noņemt dokumentus no kabinetiem"
-msgstr[1] "Noņemt dokumentus no kabinetiem"
-msgstr[2] "Noņemt dokumentus no kabinetiem"
-
 #: views.py:338
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove document \"%s\" from cabinets"
-msgstr "Noņemt dokumentus no kabinetiem"
+msgstr ""
 
 #: views.py:349
 msgid "Cabinets from which the selected documents will be removed."
@@ -320,16 +298,13 @@ msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Dokuments: %(document)s ir noņemts no kabineta: %(cabinet)s."
 
 #: wizard_steps.py:17
-#| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "Dzēst kabinetus"
 
 #: wizard_steps.py:31 workflow_actions.py:25
-#| msgid "Cabinets to which the selected documents will be added."
 msgid "Cabinets to which the document will be added."
 msgstr "Kabienti, kuriem iezīmētie dokumenti tiks pievienoti."
 
 #: workflow_actions.py:71
-#| msgid "Cabinets from which the selected documents will be removed."
 msgid "Cabinets from which the document will be removed."
 msgstr "Kabineti, no kuriem tiks izņemti atlasītie dokumenti."

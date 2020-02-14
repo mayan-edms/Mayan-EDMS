@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014,2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014
@@ -14,15 +14,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:54-0400\n"
+"POT-Creation-Date: 2020-02-13 21:02-0400\n"
 "PO-Revision-Date: 2020-01-22 21:48+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:82 events.py:8 permissions.py:8
@@ -191,9 +190,7 @@ msgstr "utilisateur"
 
 #: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
-"Liste séparée par des virgules des clés primaires de groupe pour attribuer "
-"cet utilisateur à."
+msgstr "Liste séparée par des virgules des clés primaires de groupe pour attribuer cet utilisateur à."
 
 #: serializers.py:64
 msgid "List of group primary keys to which to add the user."
@@ -226,11 +223,7 @@ msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr ""
-"Les groupes d'utilisateurs sont des unités d'organisation. Ils doivent "
-"refléter les unités organisationnelles de votre organisation. Les groupes ne "
-"peuvent pas être utilisés pour le contrôle d'accès. Utilisez les rôles pour "
-"les autorisations et le contrôle d'accès, ajoutez-leur des groupes."
+msgstr "Les groupes d'utilisateurs sont des unités d'organisation. Ils doivent refléter les unités organisationnelles de votre organisation. Les groupes ne peuvent pas être utilisés pour le contrôle d'accès. Utilisez les rôles pour les autorisations et le contrôle d'accès, ajoutez-leur des groupes."
 
 #: views.py:119
 msgid "There are no user groups"
@@ -252,14 +245,12 @@ msgstr "Utilisateurs du groupe : %s"
 #: views.py:173
 #, python-format
 msgid "User delete request performed on %(count)d user"
-msgstr ""
-"Requête de suppression d'utilisateur exécutée sur %(count)d utilisateur"
+msgstr "Requête de suppression d'utilisateur exécutée sur %(count)d utilisateur"
 
 #: views.py:175
 #, python-format
 msgid "User delete request performed on %(count)d users"
-msgstr ""
-"Requête de suppression d'utilisateur exécutée sur %(count)d utilisateurs"
+msgstr "Requête de suppression d'utilisateur exécutée sur %(count)d utilisateurs"
 
 #: views.py:183
 msgid "Delete user"
@@ -276,9 +267,7 @@ msgstr "Supprimer l'utilisateur: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"La suppression des comptes super utilisateur et staff n'est pas autorisée "
-"ici, veuillez le faire via l'interface d'administration."
+msgstr "La suppression des comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'administration."
 
 #: views.py:212
 #, python-format
@@ -288,8 +277,7 @@ msgstr "Utilisateur \"%s\" supprimé avec succès."
 #: views.py:218
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr ""
-"Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
+msgstr "Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
 
 #: views.py:236
 #, python-format
@@ -320,10 +308,7 @@ msgstr "Membre des groupes : %s"
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
-msgstr ""
-"Les comptes d'utilisateurs peuvent être créés à partir de cette page. Après "
-"avoir créé un compte d'utilisateur, vous serez invité à définir un mot de "
-"passe pour ce compte."
+msgstr "Les comptes d'utilisateurs peuvent être créés à partir de cette page. Après avoir créé un compte d'utilisateur, vous serez invité à définir un mot de passe pour ce compte."
 
 #: views.py:301
 msgid "There are no user accounts"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 # Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
@@ -9,20 +9,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:50-0400\n"
+"POT-Creation-Date: 2020-02-13 20:58-0400\n"
 "PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"rosarior/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:131 apps.py:337 events.py:7 menus.py:10 models/document_models.py:94
-#: permissions.py:7 queues.py:26 settings.py:18 statistics.py:236
+#: apps.py:131 apps.py:337 events.py:7 menus.py:10
+#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:18
+#: statistics.py:236
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -34,9 +33,7 @@ msgstr "Kreirajte tip dokumenta"
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
-msgstr ""
-"Svaki uploadovani dokument mora biti dodeljen tipu dokumenta, to je osnovni "
-"način koji Maian EDMS kategorizuje dokumente."
+msgstr "Svaki uploadovani dokument mora biti dodeljen tipu dokumenta, to je osnovni način koji Maian EDMS kategorizuje dokumente."
 
 #: apps.py:178
 msgid "Versions comment"
@@ -151,13 +148,10 @@ msgstr "Kompresuj"
 
 #: forms/document_forms.py:29
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
-"Preuzmite dokument u originalnom formatu ili na kompresivan način. Ova "
-"opcija se može izabrati samo prilikom preuzimanja jednog dokumenta, za više "
-"dokumenata, paket će uvek biti preuzet kao komprimirana datoteka."
+msgstr "Preuzmite dokument u originalnom formatu ili na kompresivan način. Ova opcija se može izabrati samo prilikom preuzimanja jednog dokumenta, za više dokumenata, paket će uvek biti preuzet kao komprimirana datoteka."
 
 #: forms/document_forms.py:36
 msgid "Compressed filename"
@@ -167,9 +161,7 @@ msgstr "Naziv kompresovane datoteke"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"Naziv kompresovane datoteke koji sadrži dokumente koji su za download, ako "
-"je ova opcija odabrana."
+msgstr "Naziv kompresovane datoteke koji sadrži dokumente koji su za download, ako je ova opcija odabrana."
 
 #: forms/document_forms.py:90
 msgid "Quick document rename"
@@ -247,10 +239,7 @@ msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open the downloaded "
 "document version correctly."
-msgstr ""
-"Uzima produžetak datoteke i pomera je do kraja imena datoteke koja omogućava "
-"operativne sisteme koji se oslanjaju na produžetak datoteka da bi ispravno "
-"otvorili preuzetu verziju dokumenta."
+msgstr "Uzima produžetak datoteke i pomera je do kraja imena datoteke koja omogućava operativne sisteme koji se oslanjaju na produžetak datoteka da bi ispravno otvorili preuzetu verziju dokumenta."
 
 #: handlers.py:33
 msgid "Document images"
@@ -520,10 +509,7 @@ msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
-msgstr ""
-"Stub dokumenta je dokument sa unosom u bazu podataka, ali datoteka nije "
-"otpremljena. Ovo bi moglo biti prekinuto otpremanje ili odloženo otpremanje "
-"preko API-ja."
+msgstr "Stub dokumenta je dokument sa unosom u bazu podataka, ali datoteka nije otpremljena. Ovo bi moglo biti prekinuto otpremanje ili odloženo otpremanje preko API-ja."
 
 #: models/document_models.py:84
 msgid "Is stub?"
@@ -566,9 +552,9 @@ msgstr ""
 
 #: models/document_type_models.py:36
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
-msgstr ""
-"Količina vremena nakon koje će se dokumenti ove vrste prebaciti u smeće."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
+msgstr "Količina vremena nakon koje će se dokumenti ove vrste prebaciti u smeće."
 
 #: models/document_type_models.py:38
 msgid "Trash time period"
@@ -582,8 +568,7 @@ msgstr "Jedinica za otpatke"
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
-msgstr ""
-"Količina vremena nakon čega će se dokumenti ove vrste u smeću izbrisati."
+msgstr "Količina vremena nakon čega će se dokumenti ove vrste u smeću izbrisati."
 
 #: models/document_type_models.py:48
 msgid "Delete time period"
@@ -624,8 +609,8 @@ msgstr "Datoteka"
 #: models/document_version_models.py:87
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document. "
-"Some examples: \"text/plain\" or \"image/jpeg\". "
+"describe the format of a file, in this case the file format of the document."
+" Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
 #: models/document_version_models.py:91 search.py:38 search.py:63
@@ -806,17 +791,13 @@ msgstr ""
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
-msgstr ""
-"Onemogućava prvu tačku keša koja skladišti visoke rezolucije, nepreformirane "
-"verzije dokumenata."
+msgstr "Onemogućava prvu tačku keša koja skladišti visoke rezolucije, nepreformirane verzije dokumenata."
 
 #: settings.py:55
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
-msgstr ""
-"Onemogućava drugi sloj keša koji čuva medije do niske rezolucije, "
-"transformiše (rotira, zumira, itd.) Verzije stranica dokumenata."
+msgstr "Onemogućava drugi sloj keša koji čuva medije do niske rezolucije, transformiše (rotira, zumira, itd.) Verzije stranica dokumenata."
 
 #: settings.py:69
 msgid "Maximum number of favorite documents to remember per user."
@@ -825,18 +806,15 @@ msgstr ""
 #: settings.py:75
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
-msgstr ""
-"Otkrijte orijentaciju svake stranice dokumenta i kreirajte odgovarajuću "
-"transformaciju rotacije da biste je prikazali. Ovo je eksperimentalna "
-"funkcija i ona je podrazumevano onemogućena."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
+msgstr "Otkrijte orijentaciju svake stranice dokumenta i kreirajte odgovarajuću transformaciju rotacije da biste je prikazali. Ovo je eksperimentalna funkcija i ona je podrazumevano onemogućena."
 
 #: settings.py:84
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value "
-"of 0 disables the block calculation and the entire file will be loaded into "
-"memory."
+"Size of blocks to use when calculating the document file's checksum. A value"
+" of 0 disables the block calculation and the entire file will be loaded into"
+" memory."
 msgstr ""
 
 #: settings.py:91
@@ -883,17 +861,13 @@ msgstr ""
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Maksimalni dozvoljeni iznos u procentima (%)  korisniku da zumira stranicu "
-"dokumenta."
+msgstr "Maksimalni dozvoljeni iznos u procentima (%)  korisniku da zumira stranicu dokumenta."
 
 #: settings.py:167
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Minimalni dozvoljeni iznos u procentima (%) po korisniku da zumira stranicu "
-"dokumenta."
+msgstr "Minimalni dozvoljeni iznos u procentima (%) po korisniku da zumira stranicu dokumenta."
 
 #: settings.py:174
 msgid "Amount in percent zoom in or out a document page per user interaction."
@@ -981,10 +955,7 @@ msgid ""
 "\n"
 "                    Page %(page_number)s of %(total_pages)s\n"
 "                "
-msgstr ""
-"\n"
-"                    Stranica %(page_number)s od %(total_pages)s\n"
-"                "
+msgstr "\n                    Stranica %(page_number)s od %(total_pages)s\n                "
 
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
@@ -1001,9 +972,10 @@ msgstr ""
 
 #: views/document_page_views.py:57
 msgid ""
-"This could mean that the document is of a format that is not supported, that "
-"it is corrupted or that the upload process was interrupted. Use the document "
-"page recalculation action to attempt to introspect the page count again."
+"This could mean that the document is of a format that is not supported, that"
+" it is corrupted or that the upload process was interrupted. Use the "
+"document page recalculation action to attempt to introspect the page count "
+"again."
 msgstr ""
 
 #: views/document_page_views.py:62
@@ -1050,8 +1022,8 @@ msgstr "Dokumenti tipa: %s"
 #: views/document_type_views.py:71
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
@@ -1087,15 +1059,12 @@ msgstr "Kreirajte brzu etiketu za tip dokumenta: %s"
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
-msgstr ""
-"Izbrišite brzu etiketu: %(label)s, iz dokumenta tipa \"%(document_type)s\"?"
+msgstr "Izbrišite brzu etiketu: %(label)s, iz dokumenta tipa \"%(document_type)s\"?"
 
 #: views/document_type_views.py:215
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr ""
-"Izmenite brzi znak \"%(filename)s\" iz dokumenta tipa \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgstr "Izmenite brzi znak \"%(filename)s\" iz dokumenta tipa \"%(document_type)s\""
 
 #: views/document_type_views.py:253
 msgid ""
@@ -1218,8 +1187,7 @@ msgstr "%(count)d dokument stavljen u red za ponovni izračun broja stranica"
 #: views/document_views.py:360
 #, python-format
 msgid "%(count)d documents queued for page count recalculation"
-msgstr ""
-"%(count)d dokumenti postavljeni redom za ponovni izračun broja stranica"
+msgstr "%(count)d dokumenti postavljeni redom za ponovni izračun broja stranica"
 
 #: views/document_views.py:368
 msgid "Recalculate the page count of the selected document?"
@@ -1272,7 +1240,8 @@ msgstr "Greška brisanja transformacija za dokument: %(document)s; %(error)s."
 #: views/document_views.py:477
 #, python-format
 msgid ""
-"Error cloning the page transformations for document: %(document)s; %(error)s."
+"Error cloning the page transformations for document: %(document)s; "
+"%(error)s."
 msgstr ""
 
 #: views/document_views.py:485
@@ -1295,8 +1264,8 @@ msgstr "Štampa: %s"
 
 #: views/document_views.py:602
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 
 #: views/document_views.py:606
@@ -1327,8 +1296,8 @@ msgstr "Duplikati za dokument: %s"
 #: views/duplicated_document_views.py:69
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/duplicated_document_views.py:76
