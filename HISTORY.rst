@@ -10,6 +10,10 @@
   the bs_BA locale to the bs locale.
 - Move the language files for the Slovenian language from
   the sl_SI locale to the sl locale.
+- Move the language files for the Vietnamese language from
+  the vi_VN locale to the vi locale.
+- Move the language files for the Dutch language from
+  the nl_NL locale to the nl locale.
 
 3.3.12 (2020-02-10)
 ===================
