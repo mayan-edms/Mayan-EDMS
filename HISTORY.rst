@@ -6,6 +6,8 @@
   Fixes GitLab issue #734. Thanks to Roberto Novaes (@rvnovaes)
   for the report.
 - Add make file target to remove fuzzy translation markers.
+- Move the language files for the Bosnian language from
+  the bs_BA locale to the bs locale.
 
 3.3.12 (2020-02-10)
 ===================
