@@ -5,6 +5,7 @@
 - Prioritize Mayan's translations over Django's built in ones.
   Fixes GitLab issue #734. Thanks to Roberto Novaes (@rvnovaes)
   for the report.
+- Add make file target to remove fuzzy translation markers.
 
 3.3.12 (2020-02-10)
 ===================

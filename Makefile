@@ -171,6 +171,9 @@ docs-spellcheck: ## Spellcheck the documentation.
 
 # Translations
 
+translations-fuzzy-remove: ## Remove fuzzy makers
+	sed -i  '/#, fuzzy/d' mayan/apps/*/locale/*/LC_MESSAGES/django.po
+
 translations-make: ## Refresh all translation files.
 	contrib/scripts/process_messages.py -m
 
@@ -184,7 +187,7 @@ translations-pull: ## Download all translation files from Transifex.
 	tx pull -f
 
 translations-all: ## Execute all translations targets.
-translations-all: translations-make translations-push translations-pull translations-compile
+translations-all: translations-fuzzy-remove translations-make translations-push translations-pull translations-compile
 
 # Releases
 
