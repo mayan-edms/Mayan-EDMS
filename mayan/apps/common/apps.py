@@ -46,8 +46,6 @@ class MayanAppConfig(apps.AppConfig):
 
     def ready(self):
         logger.debug('Initializing app: %s', self.name)
-        patchDjangoTranslation()
-
         from mayan.urls import urlpatterns as mayan_urlpatterns
 
         if self.app_url:
@@ -90,6 +88,8 @@ class CommonApp(MayanAppConfig):
 
     def ready(self):
         super(CommonApp, self).ready()
+        patchDjangoTranslation()
+
         if check_for_sqlite():
             warnings.warn(
                 category=DatabaseWarning,
