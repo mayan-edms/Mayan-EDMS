@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:51-0400\n"
+"POT-Creation-Date: 2020-02-14 01:05-0400\n"
 "PO-Revision-Date: 2019-12-13 05:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:42
 msgid "Linking"
@@ -186,8 +184,8 @@ msgstr "Ārvalstu dokumentu atribūts"
 
 #: models.py:188
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 
 #: models.py:190
@@ -238,9 +236,7 @@ msgstr "Skatiet esošās viedās saites"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr ""
-"Komatu atdalīts dokumentu tipu primāro atslēgu saraksts, kurām tiks "
-"pievienota šī viedā saite."
+msgstr "Komatu atdalīts dokumentu tipu primāro atslēgu saraksts, kurām tiks pievienota šī viedā saite."
 
 #: serializers.py:141
 #, python-format
@@ -272,10 +268,8 @@ msgstr "Dokumenti viedā saitē: %s"
 
 #: views.py:135
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr ""
-"Dokumenti viedā saite \"%(smart_link)s\", kas saistīti ar \"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "Dokumenti viedā saite \"%(smart_link)s\", kas saistīti ar \"%(document)s\""
 
 #: views.py:160
 msgid "Available document types"
@@ -295,10 +289,7 @@ msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
-msgstr ""
-"Indeksē grupas dokumentus vienībās, parasti ar līdzīgām īpašībām un "
-"vienādiem vai līdzīgiem veidiem. Viedās saites ļauj noteikt attiecības starp "
-"dokumentiem pat tad, ja tās atrodas dažādos indeksos un ir dažāda veida."
+msgstr "Indeksē grupas dokumentus vienībās, parasti ar līdzīgām īpašībām un vienādiem vai līdzīgiem veidiem. Viedās saites ļauj noteikt attiecības starp dokumentiem pat tad, ja tās atrodas dažādos indeksos un ir dažāda veida."
 
 #: views.py:195
 msgid "There are no smart links"
@@ -308,9 +299,7 @@ msgstr "Viedās saites nav"
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
-msgstr ""
-"Viedās saites ļauj noteikt attiecības starp dokumentiem pat tad, ja tās "
-"atrodas dažādos indeksos un ir dažāda veida."
+msgstr "Viedās saites ļauj noteikt attiecības starp dokumentiem pat tad, ja tās atrodas dažādos indeksos un ir dažāda veida."
 
 #: views.py:232
 msgid "There are no smart links for this document"
@@ -335,9 +324,7 @@ msgstr "Rediģēt viedo saiti: %s"
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
-msgstr ""
-"Nosacījumi ir nelielas loģikas vienības, kas, kombinējot, definē, kā viedā "
-"saite darbosies."
+msgstr "Nosacījumi ir nelielas loģikas vienības, kas, kombinējot, definē, kā viedā saite darbosies."
 
 #: views.py:306
 msgid "There are no conditions for this smart link"

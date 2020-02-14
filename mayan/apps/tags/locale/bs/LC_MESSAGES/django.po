@@ -1,0 +1,321 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
+# www.ping.ba <jomer@ping.ba>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:08-0400\n"
+"PO-Revision-Date: 2020-02-14 02:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: apps.py:51 apps.py:103 apps.py:110 apps.py:132 apps.py:134 events.py:7
+#: forms.py:17 links.py:25 menus.py:16 models.py:42 permissions.py:7
+#: views.py:222 workflow_actions.py:20 workflow_actions.py:68
+msgid "Tags"
+msgstr "Tagovi"
+
+#: apps.py:125 models.py:36
+msgid "Documents"
+msgstr "Dokumenti"
+
+#: events.py:10
+msgid "Tag attached to document"
+msgstr "Oznaka je priložena dokumentu"
+
+#: events.py:13
+msgid "Tag created"
+msgstr ""
+
+#: events.py:16
+msgid "Tag edited"
+msgstr ""
+
+#: events.py:19
+msgid "Tag removed from document"
+msgstr "Oznaka je uklonjena iz dokumenta"
+
+#: links.py:16 workflow_actions.py:75
+msgid "Remove tag"
+msgstr "Uklonite oznaku"
+
+#: links.py:20 links.py:37
+msgid "Attach tags"
+msgstr "Priložite oznake"
+
+#: links.py:31
+msgid "Remove tags"
+msgstr "Uklonite oznake"
+
+#: links.py:44
+msgid "Create new tag"
+msgstr "Napravite novu oznaku"
+
+#: links.py:50 links.py:67 views.py:156
+msgid "Delete"
+msgstr "Obriši"
+
+#: links.py:55
+msgid "Edit"
+msgstr "Urediti"
+
+#: links.py:63
+msgid "All"
+msgstr "Sve"
+
+#: methods.py:20
+msgid "Return a the tags attached to the document."
+msgstr ""
+
+#: methods.py:22
+msgid "get_tags()"
+msgstr ""
+
+#: models.py:28
+msgid "A short text used as the tag name."
+msgstr ""
+
+#: models.py:29 search.py:16
+msgid "Label"
+msgstr "Labela"
+
+#: models.py:32
+msgid "The RGB color values for the tag."
+msgstr ""
+
+#: models.py:33 search.py:20
+msgid "Color"
+msgstr "Boja"
+
+#: models.py:41
+msgid "Tag"
+msgstr "Oznaka"
+
+#: models.py:84
+msgid "Preview"
+msgstr "Pregled"
+
+#: models.py:113
+msgid "Document tag"
+msgstr "Oznaka dokumenta"
+
+#: models.py:114
+msgid "Document tags"
+msgstr "Oznake dokumenata"
+
+#: permissions.py:10
+msgid "Create new tags"
+msgstr "Kreiraj nove tagove"
+
+#: permissions.py:13
+msgid "Delete tags"
+msgstr "Obriši tagove"
+
+#: permissions.py:16
+msgid "View tags"
+msgstr "Pregledaj tagove"
+
+#: permissions.py:19
+msgid "Edit tags"
+msgstr "Izmjeni tagove"
+
+#: permissions.py:22
+msgid "Attach tags to documents"
+msgstr "Prikači tagove na dokumente"
+
+#: permissions.py:25
+msgid "Remove tags from documents"
+msgstr "Ukloni tagove iz dokumenta"
+
+#: serializers.py:38
+msgid ""
+"Comma separated list of document primary keys to which this tag will be "
+"attached."
+msgstr "Spisak primarnih ključeva dokumenata koji su odvojeni zarezom na koje će ova oznaka biti pričvršćena."
+
+#: serializers.py:85
+msgid ""
+"API URL pointing to a tag in relation to the document attached to it. This "
+"URL is different than the canonical tag URL."
+msgstr "API URL koji pokazuje oznaku u odnosu na dokument koji je prikačen na njega. Ova URL adresa se razlikuje od URL kanonskog oznaka."
+
+#: serializers.py:105
+msgid "Primary key of the tag to be added."
+msgstr "Primarni ključ oznake koji se dodaju."
+
+#: views.py:38
+#, python-format
+msgid "Tag attach request performed on %(count)d document"
+msgstr "Zahtev za prijenos oznake izveden na dokumentu %(count)d"
+
+#: views.py:40
+#, python-format
+msgid "Tag attach request performed on %(count)d documents"
+msgstr "Zahtev za prijenos oznake izveden na dokumentima %(count)d"
+
+#: views.py:47
+msgid "Attach"
+msgstr "Priloži"
+
+#: views.py:49
+#, python-format
+msgid "Attach tags to %(count)d document"
+msgid_plural "Attach tags to %(count)d documents"
+msgstr[0] "Dodajte oznake na dokument %(count)d"
+msgstr[1] "Dodajte oznake na %(count)d dokumente"
+msgstr[2] "Dodajte oznake na %(count)d dokumente"
+
+#: views.py:61
+#, python-format
+msgid "Attach tags to document: %s"
+msgstr "Priložite oznake za dokument: %s"
+
+#: views.py:70 wizard_steps.py:29
+msgid "Tags to be attached."
+msgstr "Oznake koje treba priložiti."
+
+#: views.py:112
+#, python-format
+msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
+msgstr "Dokument \"%(document)s\" je već tagovan kao \"%(tag)s\""
+
+#: views.py:122
+#, python-format
+msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
+msgstr "Oznaka \"%(tag)s\" uspješno prikačen na dokument \"%(document)s\"."
+
+#: views.py:131
+msgid "Create tag"
+msgstr "Kreiraj oznaku"
+
+#: views.py:145
+#, python-format
+msgid "Tag delete request performed on %(count)d tag"
+msgstr "Zahtev za brisanje oznaka obavlja se %(count)d oznake"
+
+#: views.py:147
+#, python-format
+msgid "Tag delete request performed on %(count)d tags"
+msgstr "Zahtev za brisanje oznaka obavlja se na %(count)d oznaka"
+
+#: views.py:154
+msgid "Will be removed from all documents."
+msgstr "Bit će uklonjen iz svih dokumenata."
+
+#: views.py:158
+msgid "Delete the selected tag?"
+msgid_plural "Delete the selected tags?"
+msgstr[0] "Izbriši izabranu oznaku?"
+msgstr[1] "Obrišite izabrane oznake?"
+msgstr[2] "Obrišite izabrane oznake?"
+
+#: views.py:168
+#, python-format
+msgid "Delete tag: %s"
+msgstr "Izbriši oznaku: %s"
+
+#: views.py:179
+#, python-format
+msgid "Tag \"%s\" deleted successfully."
+msgstr "Tag \"%s\" uspješno izbrisan."
+
+#: views.py:184
+#, python-format
+msgid "Error deleting tag \"%(tag)s\": %(error)s"
+msgstr "Greška brisanja taga \"%(tag)s\": %(error)s"
+
+#: views.py:199
+#, python-format
+msgid "Edit tag: %s"
+msgstr "Izmeni oznaku: %s"
+
+#: views.py:218
+msgid ""
+"Tags are color coded properties that can be attached or removed from "
+"documents."
+msgstr ""
+
+#: views.py:221
+msgid "No tags available"
+msgstr ""
+
+#: views.py:245
+#, python-format
+msgid "Documents with the tag: %s"
+msgstr "Dokumenti sa oznakom: %s"
+
+#: views.py:269
+msgid "Document has no tags attached"
+msgstr ""
+
+#: views.py:272
+#, python-format
+msgid "Tags for document: %s"
+msgstr "Oznake za dokument: %s"
+
+#: views.py:288
+#, python-format
+msgid "Tag remove request performed on %(count)d document"
+msgstr "Zahtev za uklanjanje oznaka izveden na dokumentu %(count)d"
+
+#: views.py:290
+#, python-format
+msgid "Tag remove request performed on %(count)d documents"
+msgstr "Zahtev za uklanjanje oznaka izveden na dokumentima %(count)d"
+
+#: views.py:298
+msgid "Remove"
+msgstr "Ukloniti"
+
+#: views.py:300
+#, python-format
+msgid "Remove tags to %(count)d document"
+msgid_plural "Remove tags to %(count)d documents"
+msgstr[0] "Uklonite oznake na dokument %(count)d"
+msgstr[1] "Uklonite oznake na %(count)d dokumente"
+msgstr[2] "Uklonite oznake na %(count)d dokumente"
+
+#: views.py:312
+#, python-format
+msgid "Remove tags from document: %s"
+msgstr "Uklonite oznake iz dokumenta: %s"
+
+#: views.py:321
+msgid "Tags to be removed."
+msgstr "Oznake koje treba ukloniti."
+
+#: views.py:361
+#, python-format
+msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
+msgstr "Dokument \"%(document)s\" nije označen kao \"%(tag)s"
+
+#: views.py:370
+#, python-format
+msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
+msgstr "Tag \"%(tag)s\" uspješno uklonjen iz dokumenta \"%(document)s\"."
+
+#: wizard_steps.py:17
+msgid "Select tags"
+msgstr "Izaberite oznake"
+
+#: workflow_actions.py:22
+msgid "Tags to attach to the document"
+msgstr "Oznake koje treba priložiti dokumentu"
+
+#: workflow_actions.py:27
+msgid "Attach tag"
+msgstr "Priloži oznaku"
+
+#: workflow_actions.py:70
+msgid "Tags to remove from the document"
+msgstr "Oznake koje treba ukloniti iz dokumenta"

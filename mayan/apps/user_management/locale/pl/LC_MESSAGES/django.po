@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2016
@@ -12,18 +12,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:54-0400\n"
+"POT-Creation-Date: 2020-02-14 01:08-0400\n"
 "PO-Revision-Date: 2019-08-30 21:25+0000\n"
 "Last-Translator: Marcin Lozynski <mlozynski@wp.pl>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:82 events.py:8 permissions.py:8
 msgid "User management"
@@ -191,9 +188,7 @@ msgstr "nazwa użytkownika"
 
 #: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
-"Rozdzielona przecinkami lista kluczy głównych grup, do których użytkownik "
-"zostanie przydzielony."
+msgstr "Rozdzielona przecinkami lista kluczy głównych grup, do których użytkownik zostanie przydzielony."
 
 #: serializers.py:64
 msgid "List of group primary keys to which to add the user."
@@ -226,10 +221,7 @@ msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr ""
-"Grupy użytkowników są elementem organizacyjnym. Nie muszą być kopią "
-"struktury Twojej organizacji. Potrzebne są do określenia praw dostępu. Użyj "
-"ról do nadawania uprawnień i kontroli dostępu, a grupy przypisz do nich."
+msgstr "Grupy użytkowników są elementem organizacyjnym. Nie muszą być kopią struktury Twojej organizacji. Potrzebne są do określenia praw dostępu. Użyj ról do nadawania uprawnień i kontroli dostępu, a grupy przypisz do nich."
 
 #: views.py:119
 msgid "There are no user groups"
@@ -275,9 +267,7 @@ msgstr "Usuń użytkownika: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Usuwanie nie jest dozwolone na kontach \"Super user\" i \"Staff user\", aby "
-"to zrobić użyj interfejsu Administratora"
+msgstr "Usuwanie nie jest dozwolone na kontach \"Super user\" i \"Staff user\", aby to zrobić użyj interfejsu Administratora"
 
 #: views.py:212
 #, python-format
@@ -318,9 +308,7 @@ msgstr "Grupy użytkownika: %s"
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
-msgstr ""
-"Tutaj możesz utworzyć konto użytkownika, następnie zostaniesz poproszony o "
-"uzupełnienie hasła dla utworzonego konta."
+msgstr "Tutaj możesz utworzyć konto użytkownika, następnie zostaniesz poproszony o uzupełnienie hasła dla utworzonego konta."
 
 #: views.py:301
 msgid "There are no user accounts"

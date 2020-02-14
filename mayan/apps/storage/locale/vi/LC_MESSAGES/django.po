@@ -1,0 +1,28 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:08-0400\n"
+"PO-Revision-Date: 2019-04-27 22:54+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:10 settings.py:9
+msgid "Storage"
+msgstr ""
+
+#: settings.py:14
+msgid ""
+"Temporary directory used site wide to store thumbnails, previews and "
+"temporary files."
+msgstr ""

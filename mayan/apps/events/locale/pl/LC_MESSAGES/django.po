@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:50-0400\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"POT-Creation-Date: 2020-02-14 01:05-0400\n"
+"PO-Revision-Date: 2020-02-13 19:04+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:29 links.py:49 links.py:54 links.py:59 permissions.py:7 views.py:36
 msgid "Events"
@@ -35,7 +33,7 @@ msgstr "Czynnik"
 
 #: apps.py:47 apps.py:74
 msgid "Event"
-msgstr ""
+msgstr "Zdarzenie"
 
 #: apps.py:50 apps.py:78
 msgid "Target"
@@ -43,7 +41,7 @@ msgstr "Cel"
 
 #: apps.py:54
 msgid "Action object"
-msgstr ""
+msgstr "Obiekt akcji"
 
 #: apps.py:59 forms.py:12 forms.py:69
 msgid "Namespace"
@@ -55,16 +53,16 @@ msgstr "Etykieta"
 
 #: apps.py:83
 msgid "Seen"
-msgstr ""
+msgstr "Widziane"
 
 #: classes.py:71
 #, python-format
 msgid "Unknown or obsolete event type: %s"
-msgstr ""
+msgstr "Nieznany lub nieaktualny typ zdarzenia: %s"
 
 #: forms.py:20 forms.py:77
 msgid "Subscription"
-msgstr ""
+msgstr "Subskrypcja"
 
 #: forms.py:22 forms.py:79
 msgid "No"
@@ -72,7 +70,7 @@ msgstr "Nie"
 
 #: forms.py:23 forms.py:80
 msgid "Subscribed"
-msgstr ""
+msgstr "Subskrybowany"
 
 #: html_widgets.py:57
 msgid "System"
@@ -80,23 +78,23 @@ msgstr "System"
 
 #: links.py:45
 msgid "My events"
-msgstr ""
+msgstr "Moje zdarzenia"
 
 #: links.py:63 models.py:66 views.py:80
 msgid "Event subscriptions"
-msgstr ""
+msgstr "Subskrypcje zdarzeń"
 
 #: links.py:67
 msgid "Mark as seen"
-msgstr ""
+msgstr "Oznacz jako widziane"
 
 #: links.py:71
 msgid "Mark all as seen"
-msgstr ""
+msgstr "Oznacz wszystkie jako widziane"
 
 #: links.py:76
 msgid "Subscriptions"
-msgstr ""
+msgstr "Subskrypcje"
 
 #: models.py:24
 msgid "Name"
@@ -104,11 +102,11 @@ msgstr "Nazwa"
 
 #: models.py:28
 msgid "Stored event type"
-msgstr ""
+msgstr "Przechowywany typ zdarzenia"
 
 #: models.py:29
 msgid "Stored event types"
-msgstr ""
+msgstr "Przechowywane typy zdarzeń"
 
 #: models.py:55 models.py:82 models.py:112
 msgid "User"
@@ -120,31 +118,31 @@ msgstr "Typ zdarzenia"
 
 #: models.py:65
 msgid "Event subscription"
-msgstr ""
+msgstr "Subskrypcja zdarzeń"
 
 #: models.py:86
 msgid "Action"
-msgstr ""
+msgstr "Akcja"
 
 #: models.py:88
 msgid "Read"
-msgstr ""
+msgstr "Przeczytane"
 
 #: models.py:92
 msgid "Notification"
-msgstr ""
+msgstr "Powiadomienie"
 
 #: models.py:93 views.py:119
 msgid "Notifications"
-msgstr ""
+msgstr "Powiadomienia"
 
 #: models.py:122
 msgid "Object event subscription"
-msgstr ""
+msgstr "Subskrypcja zdarzeń obiektowych"
 
 #: models.py:123
 msgid "Object event subscriptions"
-msgstr ""
+msgstr "Subskrypcje zdarzeń obiektowych"
 
 #: permissions.py:10
 msgid "Access the events of an object"
@@ -153,29 +151,29 @@ msgstr "Dostęp do zdarzeń obiektu"
 #: views.py:59
 #, python-format
 msgid "Error updating event subscription; %s"
-msgstr ""
+msgstr "Błąd podczas aktualizacji subskrypcji zdarzenia; %s"
 
 #: views.py:64
 msgid "Event subscriptions updated successfully"
-msgstr ""
+msgstr "Subskrypcje zdarzeń zostały zaktualizowane pomyślnie"
 
 #: views.py:114
 msgid "Subscribe to global or object events to receive notifications."
-msgstr ""
+msgstr "Subskrybuj globalne lub obiektowe zdarzenia, aby otrzymywać powiadomienia."
 
 #: views.py:117
 msgid "There are no notifications"
-msgstr ""
+msgstr "Brak powiadomień"
 
 #: views.py:164
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr ""
+msgstr "Zdarzenia to akcje, które zostały wykonane na tym obiekcie lub przy użyciu tego obiektu."
 
 #: views.py:167
 msgid "There are no events for this object"
-msgstr ""
+msgstr "Brak zdarzeń dla tego obiektu"
 
 #: views.py:169
 #, python-format
@@ -185,16 +183,16 @@ msgstr "Zdarzenia dla: %s"
 #: views.py:209
 #, python-format
 msgid "Error updating object event subscription; %s"
-msgstr ""
+msgstr "Błąd podczas aktualizowania subskrypcji zdarzenia obiektowego; %s"
 
 #: views.py:215
 msgid "Object event subscriptions updated successfully"
-msgstr ""
+msgstr "Subskrypcje zdarzeń obiektowych zostały pomyślnie zaktualizowane"
 
 #: views.py:248
 #, python-format
 msgid "Event subscriptions for: %s"
-msgstr ""
+msgstr "Subskrypcje zdarzeń dla: %s"
 
 #: views.py:280
 #, python-format

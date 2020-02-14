@@ -27,6 +27,7 @@ from .links import (
 
 from .literals import MESSAGE_SQLITE_WARNING
 from .menus import menu_about, menu_secondary, menu_topbar, menu_user
+from .patches import patchDjangoTranslation
 from .settings import (
     setting_auto_logging, setting_production_error_log_path,
     setting_production_error_logging
@@ -45,6 +46,8 @@ class MayanAppConfig(apps.AppConfig):
 
     def ready(self):
         logger.debug('Initializing app: %s', self.name)
+        patchDjangoTranslation()
+
         from mayan.urls import urlpatterns as mayan_urlpatterns
 
         if self.app_url:

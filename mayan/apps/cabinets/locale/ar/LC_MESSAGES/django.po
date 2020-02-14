@@ -8,12 +8,11 @@
 # Mohammed ALDOUB <voulnet@gmail.com>, 2017
 # Yaman Sanobar <yman.snober@gmail.com>, 2019
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"POT-Creation-Date: 2020-02-14 01:15-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Yaman Sanobar <yman.snober@gmail.com>, 2019\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -28,6 +27,22 @@ msgstr ""
 #: workflow_actions.py:22
 msgid "Cabinets"
 msgstr "الخزائن"
+
+#: events.py:11
+msgid "Cabinet created"
+msgstr ""
+
+#: events.py:14
+msgid "Cabinet edited"
+msgstr ""
+
+#: events.py:17
+msgid "Document added to cabinet"
+msgstr ""
+
+#: events.py:20
+msgid "Document removed from cabinet"
+msgstr ""
 
 #: links.py:30 links.py:44 workflow_actions.py:76
 msgid "Remove from cabinets"
@@ -60,6 +75,14 @@ msgstr "الكل"
 #: links.py:92
 msgid "Details"
 msgstr "التفاصيل"
+
+#: methods.py:18
+msgid "Return a list of cabinets containing the document"
+msgstr ""
+
+#: methods.py:20
+msgid "get_cabinets()"
+msgstr ""
 
 #: models.py:36
 msgid "A short text used to identify the cabinet."
@@ -216,6 +239,17 @@ msgstr ""
 msgid "Add"
 msgstr "إضافة"
 
+#: views.py:235
+#, python-format
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
 #: views.py:248
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -249,6 +283,22 @@ msgstr ""
 msgid "Remove"
 msgstr "إزالة"
 
+#: views.py:325
+#, python-format
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: views.py:338
+#, python-format
+msgid "Remove document \"%s\" from cabinets"
+msgstr ""
+
 #: views.py:349
 msgid "Cabinets from which the selected documents will be removed."
 msgstr ""
@@ -261,4 +311,16 @@ msgstr ""
 #: views.py:389
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+msgstr ""
+
+#: wizard_steps.py:17
+msgid "Select cabinets"
+msgstr ""
+
+#: wizard_steps.py:31 workflow_actions.py:25
+msgid "Cabinets to which the document will be added."
+msgstr ""
+
+#: workflow_actions.py:71
+msgid "Cabinets from which the document will be removed."
 msgstr ""

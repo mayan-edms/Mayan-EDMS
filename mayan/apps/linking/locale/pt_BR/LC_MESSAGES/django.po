@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
@@ -13,15 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:51-0400\n"
+"POT-Creation-Date: 2020-02-14 01:05-0400\n"
 "PO-Revision-Date: 2019-12-26 18:33+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:42
@@ -153,9 +152,7 @@ msgstr "Um texto curto descrevendo o link inteligente"
 msgid ""
 "Use this field to show a unique label depending on the document from which "
 "the smart link is being accessed."
-msgstr ""
-"Use este campo para mostrar um rótulo único dependendo do documento para o "
-"qual o link inteligente está sendo acessado."
+msgstr "Use este campo para mostrar um rótulo único dependendo do documento para o qual o link inteligente está sendo acessado."
 
 #: models.py:34
 msgid "Dynamic label"
@@ -176,8 +173,7 @@ msgstr "Erro gerando rótulo dinâmico; %s"
 
 #: models.py:101
 msgid "This smart link is not allowed for the selected document's type."
-msgstr ""
-"Este link inteligente não é permitido para o tipo de documento selecionado. "
+msgstr "Este link inteligente não é permitido para o tipo de documento selecionado. "
 
 #: models.py:178
 msgid "The inclusion is ignored for the first item."
@@ -193,11 +189,9 @@ msgstr "Atributo documento externo"
 
 #: models.py:188
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
-msgstr ""
-"A expressão usando propriedades de documento a ser avaliada contra o campo "
-"de documento externo."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
+msgstr "A expressão usando propriedades de documento a ser avaliada contra o campo de documento externo."
 
 #: models.py:190
 msgid "Expression"
@@ -247,9 +241,7 @@ msgstr "Ver os links inteligentes"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr ""
-"Lista separada por vírgulas do tipo de documento chaves primárias às quais "
-"este link inteligente será anexado."
+msgstr "Lista separada por vírgulas do tipo de documento chaves primárias às quais este link inteligente será anexado."
 
 #: serializers.py:141
 #, python-format
@@ -281,11 +273,8 @@ msgstr "Os documentos em links inteligente: %s "
 
 #: views.py:135
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr ""
-"Os documentos em link inteligente \"%(smart_link)s\" em relação com "
-"\"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "Os documentos em link inteligente \"%(smart_link)s\" em relação com \"%(document)s\""
 
 #: views.py:160
 msgid "Available document types"
@@ -305,11 +294,7 @@ msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
-msgstr ""
-"Índices agrupam documentos em unidades, normalmente com propriedades e tipos "
-"similares. Links inteligentes permitem a definição de relações entre "
-"documentos mesmo se eles estiverem em índices diferentes e forem de tipos "
-"diferentes."
+msgstr "Índices agrupam documentos em unidades, normalmente com propriedades e tipos similares. Links inteligentes permitem a definição de relações entre documentos mesmo se eles estiverem em índices diferentes e forem de tipos diferentes."
 
 #: views.py:195
 msgid "There are no smart links"
@@ -319,9 +304,7 @@ msgstr "Não há links inteligentes"
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
-msgstr ""
-"Links inteligentes permitem a definição de relações entre documentos mesmo "
-"se eles estiverem em índices diferentes e forem de tipos diferentes."
+msgstr "Links inteligentes permitem a definição de relações entre documentos mesmo se eles estiverem em índices diferentes e forem de tipos diferentes."
 
 #: views.py:232
 msgid "There are no smart links for this document"
@@ -346,9 +329,7 @@ msgstr "Editar link inteligente: %s"
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
-msgstr ""
-"Condições são pequenas unidades lógicas que quando combinadas definem como "
-"um link inteligente irá se comportar."
+msgstr "Condições são pequenas unidades lógicas que quando combinadas definem como um link inteligente irá se comportar."
 
 #: views.py:306
 msgid "There are no conditions for this smart link"

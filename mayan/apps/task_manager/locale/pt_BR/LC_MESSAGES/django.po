@@ -2,28 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # Aline Freitas <aline@alinefreitas.com.br>, 2017
 # Roberto Rosario, 2017
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2019
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
-#
-#, fuzzy
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:53-0400\n"
+"POT-Creation-Date: 2020-02-14 01:08-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
-"teams/13584/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:19 links.py:12 permissions.py:7
@@ -80,25 +78,26 @@ msgstr "Celery"
 
 #: settings.py:15
 msgid ""
-"Default: \"amqp://\". Default broker URL. This must be a URL in the form of: "
-"transport://userid:password@hostname:port/virtual_host Only the scheme part "
-"(transport://) is required, the rest is optional, and defaults to the "
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
 msgstr ""
 "Valor padrão: \"amqp://\". URL do intermediário padrão. Deve ser uma URL em "
-"forma de: \"transport://userid:password@hostname:port/virtual_host\". Apenas "
-"a parte de esquema (transport://) é requerida, o resto é opcional e "
+"forma de: \"transport://userid:password@hostname:port/virtual_host\". Apenas"
+" a parte de esquema (transport://) é requerida, o resto é opcional e "
 "determina os valores padrão específicos de transportes."
 
 #: settings.py:24
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
-"task results (tombstones). Refer to http://docs.celeryproject.org/en/v4.1.0/"
-"userguide/configuration.html#result-backend"
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
 msgstr ""
 "Valor padrão: Sem back-end de resultado habilitado por padrão. O back-end "
-"usado para armazenar resultados de tarefas (tombstones). Consulte http://"
-"docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"usado para armazenar resultados de tarefas (tombstones). Consulte "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
 "backend. "
 
 #: tests/literals.py:5

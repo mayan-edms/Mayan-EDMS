@@ -3,6 +3,37 @@
 - Update Python GNUPG to version 0.4.5.
 - Update Django REST framework to 3.9.4.
 
+3.3.13 (2020-02-XX)
+===================
+- Update management command interface. Subclasses of BaseCommand no longer
+  have an 'interactive' option.
+- Update usage of is_authenticated as it is now only a property. This is
+  and recommended for Django 1.11 and will be requred in Django 2.0.
+- Convert URL to string before redirect in the sources app wizard.
+  Recommened for Django 1.11 and required for Django 2.0.
+- Update Django to version 1.1.28
+  (https://docs.djangoproject.com/en/3.0/releases/1.11.28/)
+- Prioritize Mayan's translations over Django's built in ones.
+  Fixes GitLab issue #734. Thanks to Roberto Novaes (@rvnovaes)
+  for the report.
+- Add make file target to remove fuzzy translation markers.
+- Move the language files for the Bosnian language from
+  the bs_BA locale to the bs locale.
+- Move the language files for the Slovenian language from
+  the sl_SI locale to the sl locale.
+- Move the language files for the Vietnamese language from
+  the vi_VN locale to the vi locale.
+- Move the language files for the Dutch language from
+  the nl_NL locale to the nl locale.
+- Move the language files for the Danish language from
+  the da_DK locale to the da locale.
+- Add make file target to cleanup source translation files.
+- Cleanup minor but frequent translation files issues accumulated by the
+  automatic tools. Many new text string are now available for translation.
+- Update the doToastrMessages to avoid appending new style updated
+  indefinitely on list sort updates. Closes GitLab issue #772. Thanks
+  to Matthias Löblich (@startmat) for the report and debug information.
+
 3.3.12 (2020-02-10)
 ===================
 - Fix issue with the template object count logic introduced in the

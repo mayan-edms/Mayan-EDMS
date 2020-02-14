@@ -1,0 +1,183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:07-0400\n"
+"PO-Revision-Date: 2020-01-29 08:08+0000\n"
+"Last-Translator: Allan Møller <it@brandts.dk>\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:47 events.py:8 models.py:36 models.py:106 permissions.py:7
+msgid "Permissions"
+msgstr "Tilladelse"
+
+#: classes.py:87
+msgid "Insufficient permissions."
+msgstr ""
+
+#: dashboard_widgets.py:15
+msgid "Total roles"
+msgstr ""
+
+#: events.py:12
+msgid "Role created"
+msgstr ""
+
+#: events.py:15
+msgid "Role edited"
+msgstr ""
+
+#: links.py:16 links.py:40 models.py:117 views.py:171
+msgid "Roles"
+msgstr "Roller"
+
+#: links.py:23 views.py:53
+msgid "Create new role"
+msgstr ""
+
+#: links.py:29
+msgid "Delete"
+msgstr "Slet"
+
+#: links.py:34
+msgid "Edit"
+msgstr "Redigér"
+
+#: links.py:45 models.py:109
+msgid "Groups"
+msgstr ""
+
+#: links.py:52
+msgid "Role permissions"
+msgstr ""
+
+#: models.py:27
+msgid "Namespace"
+msgstr ""
+
+#: models.py:28
+msgid "Name"
+msgstr "Navn"
+
+#: models.py:35
+msgid "Permission"
+msgstr ""
+
+#: models.py:101
+msgid "A short text describing the role."
+msgstr ""
+
+#: models.py:102 search.py:16
+msgid "Label"
+msgstr "Etiket"
+
+#: models.py:116
+msgid "Role"
+msgstr "Rolle"
+
+#: permissions.py:10
+msgid "Create roles"
+msgstr ""
+
+#: permissions.py:13
+msgid "Delete roles"
+msgstr ""
+
+#: permissions.py:16
+msgid "Edit roles"
+msgstr ""
+
+#: permissions.py:19
+msgid "View roles"
+msgstr ""
+
+#: search.py:20
+msgid "Group name"
+msgstr ""
+
+#: serializers.py:46
+msgid ""
+"Comma separated list of groups primary keys to add to, or replace in this "
+"role."
+msgstr ""
+
+#: serializers.py:53
+msgid "Comma separated list of permission primary keys to grant to this role."
+msgstr ""
+
+#: serializers.py:90
+#, python-format
+msgid "No such permission: %s"
+msgstr ""
+
+#: views.py:32
+msgid "Available roles"
+msgstr ""
+
+#: views.py:33
+msgid "Group roles"
+msgstr ""
+
+#: views.py:42
+#, python-format
+msgid "Roles of group: %s"
+msgstr ""
+
+#: views.py:82
+msgid "Available groups"
+msgstr ""
+
+#: views.py:83
+msgid "Role groups"
+msgstr ""
+
+#: views.py:92
+#, python-format
+msgid "Groups of role: %s"
+msgstr ""
+
+#: views.py:94
+msgid ""
+"Add groups to be part of a role. They will inherit the role's permissions "
+"and access controls."
+msgstr ""
+
+#: views.py:107
+msgid "Available permissions"
+msgstr "Tilgængelige tilladelser"
+
+#: views.py:108
+msgid "Granted permissions"
+msgstr ""
+
+#: views.py:143
+msgid ""
+"Permissions granted here will apply to the entire system and all objects."
+msgstr ""
+
+#: views.py:146
+#, python-format
+msgid "Permissions for role: %s"
+msgstr ""
+
+#: views.py:163
+msgid ""
+"Roles are authorization units. They contain user groups which inherit the "
+"role permissions for the entire system. Roles can also part of access "
+"controls lists. Access controls list are permissions granted to a role for "
+"specific objects which its group members inherit."
+msgstr ""
+
+#: views.py:170
+msgid "There are no roles"
+msgstr ""
