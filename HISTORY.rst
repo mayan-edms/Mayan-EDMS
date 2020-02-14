@@ -8,6 +8,8 @@
 - Add make file target to remove fuzzy translation markers.
 - Move the language files for the Bosnian language from
   the bs_BA locale to the bs locale.
+- Move the language files for the Slovenian language from
+  the sl_SI locale to the sl locale.
 
 3.3.12 (2020-02-10)
 ===================
