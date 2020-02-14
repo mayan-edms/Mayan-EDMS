@@ -2,23 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Rasmus Kierudsen <tebrasso@gmail.com>, 2018
-# 
-#, fuzzy
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"POT-Creation-Date: 2020-02-13 19:51-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Rasmus Kierudsen <tebrasso@gmail.com>, 2018\n"
-"Language-Team: Danish (Denmark) (https://www.transifex.com/rosarior/teams/13584/da_DK/)\n"
+"Language-Team: Danish (Denmark) (https://www.transifex.com/rosarior/"
+"teams/13584/da_DK/)\n"
+"Language: da_DK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da_DK\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:49 apps.py:110 apps.py:118 apps.py:121 events.py:7 forms.py:16
@@ -26,6 +26,26 @@ msgstr ""
 #: workflow_actions.py:22
 msgid "Cabinets"
 msgstr "Samlesager"
+
+#: events.py:11
+#| msgid "Cabinet"
+msgid "Cabinet created"
+msgstr "Samlesag"
+
+#: events.py:14
+#| msgid "Cabinet"
+msgid "Cabinet edited"
+msgstr "Samlesag"
+
+#: events.py:17
+#| msgid "Documents can be added to many cabinets."
+msgid "Document added to cabinet"
+msgstr "Dokumenter kan tilføjes flere samlesager"
+
+#: events.py:20
+#| msgid "Remove from cabinets"
+msgid "Document removed from cabinet"
+msgstr "Fjern fra samlesag"
 
 #: links.py:30 links.py:44 workflow_actions.py:76
 msgid "Remove from cabinets"
@@ -58,6 +78,15 @@ msgstr "Alle"
 #: links.py:92
 msgid "Details"
 msgstr "Detaljer"
+
+#: methods.py:18
+msgid "Return a list of cabinets containing the document"
+msgstr ""
+
+#: methods.py:20
+#| msgid "Create cabinets"
+msgid "get_cabinets()"
+msgstr "Opret samlesager"
 
 #: models.py:36
 msgid "A short text used to identify the cabinet."
@@ -129,8 +158,7 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr ""
 
 #: serializers.py:32
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 
 #: serializers.py:68 serializers.py:179
@@ -214,6 +242,13 @@ msgstr ""
 msgid "Add"
 msgstr "Tilføj"
 
+#: views.py:235
+#| msgid "Add documents to cabinets"
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] "Tilføj dokumenter til samlesag"
+msgstr[1] "Tilføj dokumenter til samlesag"
+
 #: views.py:248
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -247,6 +282,18 @@ msgstr ""
 msgid "Remove"
 msgstr "Fjern"
 
+#: views.py:325
+#| msgid "Remove documents from cabinets"
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] "Fjern dokumenter fra samlesager"
+msgstr[1] "Fjern dokumenter fra samlesager"
+
+#: views.py:338
+#| msgid "Remove documents from cabinets"
+msgid "Remove document \"%s\" from cabinets"
+msgstr "Fjern dokumenter fra samlesager"
+
 #: views.py:349
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Samlesager hvorfra dokumentet bliver fjernet"
@@ -260,3 +307,18 @@ msgstr "Dokumentet: %(document)s er ikke i samlesagen: %(cabinet)s."
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Dokumentet: %(document)s er fjernet fra samlesagen: %(cabinet)s"
+
+#: wizard_steps.py:17
+#| msgid "Delete cabinets"
+msgid "Select cabinets"
+msgstr "Slet samlesager"
+
+#: wizard_steps.py:31 workflow_actions.py:25
+#| msgid "Cabinets from which the selected documents will be removed."
+msgid "Cabinets to which the document will be added."
+msgstr "Samlesager hvorfra dokumentet bliver fjernet"
+
+#: workflow_actions.py:71
+#| msgid "Cabinets from which the selected documents will be removed."
+msgid "Cabinets from which the document will be removed."
+msgstr "Samlesager hvorfra dokumentet bliver fjernet"

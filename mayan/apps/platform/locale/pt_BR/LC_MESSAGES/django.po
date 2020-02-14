@@ -7,7 +7,6 @@
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2019
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

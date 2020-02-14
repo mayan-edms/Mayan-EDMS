@@ -9,7 +9,6 @@
 # Przemysław Bodio <przemyslawbodio.dev@gmail.com>, 2019
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

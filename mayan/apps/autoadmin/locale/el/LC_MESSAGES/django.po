@@ -6,7 +6,6 @@
 # Translators:
 # Hmayag Antonian <hmayag@freemail.gr>, 2019
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

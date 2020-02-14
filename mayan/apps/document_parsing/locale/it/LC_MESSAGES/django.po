@@ -10,7 +10,6 @@
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2018
 # Daniele Bortoluzzi <daniele@elkos.it>, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

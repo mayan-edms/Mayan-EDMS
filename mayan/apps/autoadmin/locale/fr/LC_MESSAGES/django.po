@@ -9,7 +9,6 @@
 # Yves Dubois <ydubois@gmail.com>, 2019
 # Frédéric Sheedy <sheedf@gmail.com>, 2020
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

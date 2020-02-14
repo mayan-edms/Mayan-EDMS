@@ -9,7 +9,6 @@
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2019
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

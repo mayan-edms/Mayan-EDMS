@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2017
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2017
@@ -10,20 +10,19 @@
 # Yves Dubois <ydubois@gmail.com>, 2018
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
 # Olivier W, 2019
-# 
-#, fuzzy
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"POT-Creation-Date: 2020-02-13 19:51-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Olivier W, 2019\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:49 apps.py:110 apps.py:118 apps.py:121 events.py:7 forms.py:16
@@ -31,6 +30,26 @@ msgstr ""
 #: workflow_actions.py:22
 msgid "Cabinets"
 msgstr "Classeurs"
+
+#: events.py:11
+#| msgid "Cabinet"
+msgid "Cabinet created"
+msgstr "Classeur"
+
+#: events.py:14
+#| msgid "Cabinet"
+msgid "Cabinet edited"
+msgstr "Classeur"
+
+#: events.py:17
+#| msgid "Document cabinet"
+msgid "Document added to cabinet"
+msgstr "Classeur de document"
+
+#: events.py:20
+#| msgid "Remove from cabinets"
+msgid "Document removed from cabinet"
+msgstr "Retirer des classeurs"
 
 #: links.py:30 links.py:44 workflow_actions.py:76
 msgid "Remove from cabinets"
@@ -63,6 +82,16 @@ msgstr "Tout"
 #: links.py:92
 msgid "Details"
 msgstr "Détails"
+
+#: methods.py:18
+#| msgid "Cabinets containing document: %s"
+msgid "Return a list of cabinets containing the document"
+msgstr "Classeurs contenant le document : %s"
+
+#: methods.py:20
+#| msgid "Create cabinets"
+msgid "get_cabinets()"
+msgstr "Créer des classeurs"
 
 #: models.py:36
 msgid "A short text used to identify the cabinet."
@@ -134,8 +163,7 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr "Le nom de ce niveau de classeur a été ajouté au nom de ses ancêtres."
 
 #: serializers.py:32
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "URL du point de terminaison de l'API listant les documents contenus dans ce "
 "classeur."
@@ -196,8 +224,8 @@ msgid ""
 "Cabinets are a multi-level method to organize documents. Each cabinet can "
 "contain documents as well as other sub level cabinets."
 msgstr ""
-"L'utilisation des classeurs est une méthode multi-niveaux pour organiser vos"
-" documents. Chaque classeur peut contenir autant des documents que d'autres "
+"L'utilisation des classeurs est une méthode multi-niveaux pour organiser vos "
+"documents. Chaque classeur peut contenir autant des documents que d'autres "
 "sous-niveaux de classeurs."
 
 #: views.py:173
@@ -230,6 +258,13 @@ msgstr "Demande d'ajout au classeur effectuée sur %(count)d documents"
 #: views.py:233
 msgid "Add"
 msgstr "Ajouter"
+
+#: views.py:235
+#| msgid "Add documents to cabinets"
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] "Ajouter des documents au classeur"
+msgstr[1] "Ajouter des documents au classeur"
 
 #: views.py:248
 #, python-format
@@ -266,6 +301,18 @@ msgstr "Demande de retrait du classeur effectuée sur %(count)d documents"
 msgid "Remove"
 msgstr "Retirer"
 
+#: views.py:325
+#| msgid "Remove documents from cabinets"
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] "Supprimer des documents des classeurs"
+msgstr[1] "Supprimer des documents des classeurs"
+
+#: views.py:338
+#| msgid "Remove documents from cabinets"
+msgid "Remove document \"%s\" from cabinets"
+msgstr "Supprimer des documents des classeurs"
+
 #: views.py:349
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Classeurs desquels les documents sélectionnés seront retirés."
@@ -279,3 +326,18 @@ msgstr "Le document : %(document)s n'est pas dans le classeur : %(cabinet)s."
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Le document : %(document)s a été retiré du classeur : %(cabinet)s."
+
+#: wizard_steps.py:17
+#| msgid "Delete cabinets"
+msgid "Select cabinets"
+msgstr "Supprimer des classeurs"
+
+#: wizard_steps.py:31 workflow_actions.py:25
+#| msgid "Cabinets to which the selected documents will be added."
+msgid "Cabinets to which the document will be added."
+msgstr "Classeurs auxquels les documents sélectionnés seront ajoutés."
+
+#: workflow_actions.py:71
+#| msgid "Cabinets from which the selected documents will be removed."
+msgid "Cabinets from which the document will be removed."
+msgstr "Classeurs desquels les documents sélectionnés seront retirés."

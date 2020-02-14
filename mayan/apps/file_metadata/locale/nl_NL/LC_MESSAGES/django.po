@@ -7,7 +7,6 @@
 # Lucas Weel <ljj.weel@gmail.com>, 2019
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

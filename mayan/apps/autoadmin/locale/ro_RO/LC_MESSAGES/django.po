@@ -8,7 +8,6 @@
 # Stefaniu Criste <gupi@hangar.ro>, 2019
 # Harald Ersch, 2019
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

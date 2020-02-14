@@ -11,7 +11,6 @@
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatic4@gmail.com>, 2019
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

@@ -9,7 +9,6 @@
 # Andrea Evangelisti <Andrea.Evangelisti@gmail.com>, 2019
 # Daniele Bortoluzzi <daniele@elkos.it>, 2019
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

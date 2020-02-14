@@ -7,7 +7,6 @@
 # Roberto Rosario, 2017
 # Mohammed ALDOUB <voulnet@gmail.com>, 2018
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

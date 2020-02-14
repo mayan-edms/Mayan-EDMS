@@ -8,7 +8,6 @@
 # Lory977 <helga.carrero@gmail.com>, 2019
 # Roberto Rosario, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

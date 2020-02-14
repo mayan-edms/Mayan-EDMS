@@ -8,7 +8,6 @@
 # Yaman Sanobar <yman.snober@gmail.com>, 2019
 # Ali Alahnomy <ashari@open-alt.com>, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

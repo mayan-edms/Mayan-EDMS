@@ -7,7 +7,6 @@
 # Roberto Rosario, 2019
 # Trung Phan Minh <navmobile@gmail.com>, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

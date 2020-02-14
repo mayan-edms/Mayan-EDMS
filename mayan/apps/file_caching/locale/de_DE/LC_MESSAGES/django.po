@@ -9,7 +9,6 @@
 # Berny <berny@bernhard-marx.de>, 2019
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

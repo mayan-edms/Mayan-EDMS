@@ -7,7 +7,6 @@
 # Dezső József <dejo60@gmail.com>, 2019
 # molnars <szabolcs.molnar@gmail.com>, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

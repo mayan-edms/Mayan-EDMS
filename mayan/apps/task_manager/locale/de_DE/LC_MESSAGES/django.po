@@ -9,7 +9,6 @@
 # Mathias Behrle <mathiasb@m9s.biz>, 2019
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

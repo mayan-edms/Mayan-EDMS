@@ -12,7 +12,6 @@
 # Mathias Behrle <mathiasb@m9s.biz>, 2020
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

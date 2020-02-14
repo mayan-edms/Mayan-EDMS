@@ -9,7 +9,6 @@
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2019
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

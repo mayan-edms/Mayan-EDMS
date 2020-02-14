@@ -7,7 +7,6 @@
 # Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2019
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

@@ -6,7 +6,6 @@
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2018
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

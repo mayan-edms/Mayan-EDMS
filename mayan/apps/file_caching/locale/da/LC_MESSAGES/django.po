@@ -7,7 +7,6 @@
 # Mads L. Nielsen <sirlundgaard@gmail.com>, 2019
 # Allan Møller <it@brandts.dk>, 2020
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

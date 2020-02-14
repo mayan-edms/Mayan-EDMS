@@ -6,12 +6,11 @@
 # Translators:
 # yulin Gong <540538248@qq.com>, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"POT-Creation-Date: 2020-02-13 19:51-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: yulin Gong <540538248@qq.com>, 2019\n"
 "Language-Team: Chinese (https://www.transifex.com/rosarior/teams/13584/zh/)\n"
@@ -28,25 +27,21 @@ msgid "Cabinets"
 msgstr "文档柜"
 
 #: events.py:11
-#, fuzzy
 #| msgid "Cabinet"
 msgid "Cabinet created"
 msgstr "文档柜"
 
 #: events.py:14
-#, fuzzy
 #| msgid "Cabinet"
 msgid "Cabinet edited"
 msgstr "文档柜"
 
 #: events.py:17
-#, fuzzy
 #| msgid "Document cabinet"
 msgid "Document added to cabinet"
 msgstr "文档柜"
 
 #: events.py:20
-#, fuzzy
 #| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
 msgstr "从文档柜中删除"
@@ -84,13 +79,11 @@ msgid "Details"
 msgstr "细节"
 
 #: methods.py:18
-#, fuzzy
 #| msgid "Cabinets containing document: %s"
 msgid "Return a list of cabinets containing the document"
 msgstr "文档柜包含文档：%s"
 
 #: methods.py:20
-#, fuzzy
 #| msgid "Create cabinets"
 msgid "get_cabinets()"
 msgstr "创建文档柜"
@@ -253,7 +246,6 @@ msgid "Add"
 msgstr "添加"
 
 #: views.py:235
-#, fuzzy, python-format
 #| msgid "Add documents to cabinets"
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
@@ -293,14 +285,12 @@ msgid "Remove"
 msgstr "移除"
 
 #: views.py:325
-#, fuzzy, python-format
 #| msgid "Remove documents from cabinets"
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "将文档从文档柜中删除"
 
 #: views.py:338
-#, fuzzy, python-format
 #| msgid "Remove documents from cabinets"
 msgid "Remove document \"%s\" from cabinets"
 msgstr "将文档从文档柜中删除"
@@ -320,19 +310,16 @@ msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "文档：%(document)s从文档柜中删除：%(cabinet)s。"
 
 #: wizard_steps.py:17
-#, fuzzy
 #| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "删除文档柜"
 
 #: wizard_steps.py:31 workflow_actions.py:25
-#, fuzzy
 #| msgid "Cabinets to which the selected documents will be added."
 msgid "Cabinets to which the document will be added."
 msgstr "将添加所选文档的文档柜。"
 
 #: workflow_actions.py:71
-#, fuzzy
 #| msgid "Cabinets from which the selected documents will be removed."
 msgid "Cabinets from which the document will be removed."
 msgstr "将从中删除所选文档的文档柜。"

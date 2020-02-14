@@ -6,7 +6,6 @@
 # Translators:
 # Roberto Rosario, 2020
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

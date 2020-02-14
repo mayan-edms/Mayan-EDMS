@@ -7,7 +7,6 @@
 # Sehat <sehat75@yahoo.com>, 2019
 # Adek Lanin, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

@@ -8,7 +8,6 @@
 # Lucas Weel <ljj.weel@gmail.com>, 2017
 # Ben Zweekhorst <bzweekhorst@gmail.com>, 2019
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

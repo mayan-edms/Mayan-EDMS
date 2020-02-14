@@ -9,7 +9,6 @@
 # Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
