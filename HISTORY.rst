@@ -1,11 +1,11 @@
-3.3.13 (2020-02-XX)
+3.3.13 (2020-02-14)
 ===================
 - Update management command interface. Subclasses of BaseCommand no longer
   have an 'interactive' option.
 - Update usage of is_authenticated as it is now only a property. This is
-  and recommended for Django 1.11 and will be requred in Django 2.0.
+  recommended for Django 1.11 and will be required in Django 2.0.
 - Convert URL to string before redirect in the sources app wizard.
-  Recommened for Django 1.11 and required for Django 2.0.
+  Recommend for Django 1.11 and required for Django 2.0.
 - Update Django to version 1.1.28
   (https://docs.djangoproject.com/en/3.0/releases/1.11.28/)
 - Prioritize Mayan's translations over Django's built in ones.
