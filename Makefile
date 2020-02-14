@@ -172,7 +172,7 @@ docs-spellcheck: ## Spellcheck the documentation.
 # Translations
 
 translations-source-clear: ## Clear the msgstr of the source file
-	sed -i -E  's/msgstr ".+"/msgstr ""/g' `grep -E 'msgstr ".+"' */locale/en/*/django.po | cut -d: -f 1`
+	@sed -i -E  's/msgstr ".+"/msgstr ""/g' `grep -E 'msgstr ".+"' mayan/apps/*/locale/en/*/django.po | cut -d: -f 1` > /dev/null 2>&1  || true
 
 translations-fuzzy-remove: ## Remove fuzzy makers
 	sed -i  '/#, fuzzy/d' mayan/apps/*/locale/*/LC_MESSAGES/django.po
