@@ -1,3 +1,9 @@
+3.3.14 (2020-XX-XX)
+===================
+- Add missing backslash in the deployment instructions.
+  Closes GitLab issue #780. Thanks to Steve Palmer (@steverpalmer)
+  for the report.
+
 3.3.13 (2020-02-14)
 ===================
 - Update management command interface. Subclasses of BaseCommand no longer
