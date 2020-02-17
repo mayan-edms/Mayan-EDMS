@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+from unittest import skip
+
 from selenium.common.exceptions import NoAlertPresentException
 
 from django.conf import settings
@@ -9,6 +11,7 @@ from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.common.tests.mixins import SeleniumTestMixin
 
 
+@skip('Skip until a single threaded live servers is implemented.')
 class BasePlainViewTestCase(
     SeleniumTestMixin, StaticLiveServerTestCase, GenericViewTestCase
 ):
