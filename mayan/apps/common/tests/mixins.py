@@ -424,6 +424,13 @@ class TempfileCheckTestCasekMixin(object):
 class TestModelTestMixin(object):
     _test_models = []
 
+    @classmethod
+    def setUpClass(cls):
+        if connection.vendor == 'sqlite':
+            connection.disable_constraint_checking()
+
+        super().setUpClass()
+
     def tearDown(self):
         # Delete the test models' content type entries and deregister the
         # permissions, this avoids their Content Type from being looked up
