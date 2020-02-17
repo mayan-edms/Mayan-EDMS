@@ -30,6 +30,12 @@ icon_forum = Icon(
 icon_license = Icon(
     driver_name='fontawesome', symbol='certificate'
 )
+icon_list_mode_list = Icon(
+    driver_name='fontawesome', symbol='list'
+)
+icon_list_mode_items = Icon(
+    driver_name='fontawesome', symbol='th-large'
+)
 icon_menu_about = Icon(
     driver_name='fontawesome', symbol='info'
 )

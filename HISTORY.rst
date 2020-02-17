@@ -6,3 +6,4 @@
 - Disable nested task check in debug mode.
 - Disable constraing checking for SQLite.
 - Expose Django's ``AUTHENTICATION_BACKENDS`` setting.
+- Add support for list modes.
