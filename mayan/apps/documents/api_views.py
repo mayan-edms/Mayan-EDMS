@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
+from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.cache import cache_control, patch_cache_control
@@ -218,7 +219,14 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
             )
         )
 
-        cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
+        kwargs = {'timeout': DOCUMENT_IMAGE_TASK_TIMEOUT}
+        if settings.DEBUG:
+            # In debug more, task are run synchronously, causing this method
+            # to be called inside another task. Disable the check of nested
+            # tasks when using debug mode.
+            kwargs['disable_sync_subtasks'] = False
+
+        cache_filename = task.get(**kwargs)
         cache_file = self.get_object().cache_partition.get_file(filename=cache_filename)
         with cache_file.open() as file_object:
             response = HttpResponse(file_object.read(), content_type='image')
