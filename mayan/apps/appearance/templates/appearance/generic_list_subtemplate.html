@@ -108,7 +108,7 @@
                                         {% navigation_get_source_columns source=object exclude_identifier=True as source_columns %}
                                         {% for column in source_columns %}
                                             <td>
-                                                <div class="{{ table_cell_container_classes }}">
+                                                <div class="{{ table_cell_container_classes }} {{ column.html_extra_classes }}">
                                                     {% navigation_source_column_resolve column=column as column_value %}{{ column_value }}
                                                     {# Use explicit 'as column_value ' to force date rendering #}
                                                 </div>

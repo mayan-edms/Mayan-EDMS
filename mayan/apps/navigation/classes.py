@@ -703,10 +703,11 @@ class SourceColumn(object):
 
     def __init__(
         self, source, attribute=None, empty_value=None, func=None,
-        help_text=None, include_label=False, is_attribute_absolute_url=False,
-        is_object_absolute_url=False, is_identifier=False, is_sortable=False,
-        kwargs=None, label=None, order=None, sort_field=None, views=None,
-        widget=None, widget_condition=None
+        help_text=None, html_extra_classes=None, include_label=False,
+        is_attribute_absolute_url=False, is_object_absolute_url=False,
+        is_identifier=False, is_sortable=False, kwargs=None, label=None,
+        order=None, sort_field=None, views=None, widget=None,
+        widget_condition=None
     ):
         self._label = label
         self._help_text = help_text
@@ -715,6 +716,7 @@ class SourceColumn(object):
         self.empty_value = empty_value
         self.exclude = ()
         self.func = func
+        self.html_extra_classes = html_extra_classes
         self.is_attribute_absolute_url = is_attribute_absolute_url
         self.is_object_absolute_url = is_object_absolute_url
         self.is_identifier = is_identifier

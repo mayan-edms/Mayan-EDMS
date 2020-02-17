@@ -109,27 +109,29 @@ class DocumentIndexingApp(MayanAppConfig):
             is_sortable=True, source=IndexInstance
         )
         column_index_slug = SourceColumn(
-            attribute='slug', is_sortable=True, source=Index
+            attribute='slug', include_label=True, is_sortable=True,
+            source=Index
         )
         column_index_slug.add_exclude(IndexInstance)
         column_index_enabled = SourceColumn(
-            attribute='enabled', is_sortable=True, source=Index,
-            widget=TwoStateWidget
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=Index, widget=TwoStateWidget
         )
         column_index_enabled.add_exclude(source=IndexInstance)
 
         SourceColumn(
             func=lambda context: context[
                 'object'
-            ].instance_root.get_descendants_count(), label=_('Total levels'),
-            source=IndexInstance
+            ].instance_root.get_descendants_count(), include_label=True,
+            label=_('Total levels'), source=IndexInstance
         )
         SourceColumn(
             func=lambda context: context[
                 'object'
             ].instance_root.get_descendants_document_count(
                 user=context['request'].user
-            ), label=_('Total documents'), source=IndexInstance
+            ), include_label=True, label=_('Total documents'),
+            source=IndexInstance
         )
 
         SourceColumn(
@@ -137,11 +139,11 @@ class DocumentIndexingApp(MayanAppConfig):
             label=_('Level'), source=IndexTemplateNode
         )
         SourceColumn(
-            attribute='enabled', is_sortable=True, source=IndexTemplateNode,
-            widget=TwoStateWidget
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=IndexTemplateNode, widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='link_documents', is_sortable=True,
+            attribute='link_documents', include_label=True, is_sortable=True,
             source=IndexTemplateNode, widget=TwoStateWidget
         )
         SourceColumn(

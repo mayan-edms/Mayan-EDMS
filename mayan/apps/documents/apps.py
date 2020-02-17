@@ -271,7 +271,8 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
-            ), label=_('Thumbnail'), source=Document
+            ), html_extra_classes='text-center', label=_('Thumbnail'),
+            source=Document
         )
         SourceColumn(
             attribute='document_type', is_sortable=True, source=Document,
