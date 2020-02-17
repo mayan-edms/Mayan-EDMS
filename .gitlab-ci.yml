@@ -18,13 +18,10 @@ job_docker_build:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
-    - VERSION=`cat docker/rootfs/version`
-    - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$VERSION"
-    - docker run --rm "$CI_REGISTRY_IMAGE:$VERSION" run_tests
-    - docker push "$CI_REGISTRY_IMAGE:$VERSION"
-    - docker push "$CI_REGISTRY_IMAGE:latest"
-    - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
-    - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
+    - DOCKER_VERSION=`cat docker/rootfs/version`
+    - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
+    - docker run --rm "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
+    - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout
   only:
     - releases/all
@@ -38,14 +35,21 @@ job_docker_push:
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    - VERSION=`cat docker/rootfs/version`
-    - docker pull "$CI_REGISTRY_IMAGE:$VERSION"
-    - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
-    - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
+    - DOCKER_VERSION=`cat docker/rootfs/version`
+    - docker pull "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
+    - VERSION_SCRIPT_BIN=contrib/scripts/version.py
+    - MAJOR_VERSION=$($VERSION_SCRIPT_BIN $DOCKER_VERSION major);
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$MAJOR_VERSION"
+    - MINOR_VERSION=$($VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
+    - if [ -z MINOR_VERSION ]; then docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION";fi
     - docker logout
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
-    - docker push registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
+    - docker push registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
+    - docker push registry-1.docker.io/mayanedms/mayanedms:"$MAJOR_VERSION"
+    - if [ -z MINOR_VERSION ]; then docker push registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION";fi
   only:
     - releases/all
     - releases/docker
