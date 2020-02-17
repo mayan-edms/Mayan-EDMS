@@ -80,7 +80,8 @@ class Version(object):
         return self.major
 
     def as_minor(self):
-        return '{}.{}'.format(self.major, self.minor)
+        if self.minor:
+            return '{}.{}'.format(self.major, self.minor)
 
     def as_micro(self):
         if self.micro:
@@ -169,11 +170,11 @@ if __name__ == '__main__':
     if part == 'major':
         output = version.as_major()
     elif part == 'minor':
-        output = version.as_minor()
+        output = version.as_minor() or ''
     elif part == 'micro':
-        output = version.as_micro()
+        output = version.as_micro() or ''
     else:
-        print('Unknown psart')
+        print('Unknown part')
         exit(1)
 
     print(output)
