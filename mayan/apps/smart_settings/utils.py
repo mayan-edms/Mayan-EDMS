@@ -266,6 +266,9 @@ SettingNamespaceSingleton.register_setting(
     name='AUTH_PASSWORD_VALIDATORS', klass=BaseSetting,
 )
 SettingNamespaceSingleton.register_setting(
+    name='AUTHENTICATION_BACKENDS', klass=BaseSetting,
+)
+SettingNamespaceSingleton.register_setting(
     name='DATA_UPLOAD_MAX_MEMORY_SIZE', klass=BaseSetting,
 )
 SettingNamespaceSingleton.register_setting(

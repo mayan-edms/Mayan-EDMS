@@ -48,6 +48,14 @@ setting_django_auth_password_validators = namespace.add_setting(
         'user\'s passwords.'
     )
 )
+setting_django_authentication_backends = namespace.add_setting(
+    global_name='AUTHENTICATION_BACKENDS',
+    default=settings.AUTHENTICATION_BACKENDS,
+    help_text=_(
+        'A list of authentication backend classes (as strings) to use when '
+        'attempting to authenticate a user.'
+    )
+)
 setting_django_databases = namespace.add_setting(
     global_name='DATABASES', default=settings.DATABASES,
     help_text=_(
