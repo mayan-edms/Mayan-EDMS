@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.classes import ModelField
+from mayan.apps.common.classes import ModelField, ModelFieldRelated
 from mayan.apps.documents.models import Document
 from mayan.apps.templating.fields import TemplateField
 
@@ -27,10 +27,24 @@ class SmartLinkForm(forms.ModelForm):
 class SmartLinkConditionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(SmartLinkConditionForm, self).__init__(*args, **kwargs)
+        choices = []
+        choices.append(
+            (
+                ModelField.class_label, ModelField.get_choices_for(
+                    model=Document,
+                )
+            )
+        )
+        choices.append(
+            (
+                ModelFieldRelated.class_label, ModelFieldRelated.get_choices_for(
+                    model=Document,
+                )
+            )
+        )
+
         self.fields['foreign_document_data'] = forms.ChoiceField(
-            choices=ModelField.get_choices_for(
-                model=Document,
-            ), label=_('Foreign document field')
+            choices=choices, label=_('Foreign document field')
         )
         self.fields['expression'] = TemplateField(
             initial_help_text=self.fields['expression'].help_text,

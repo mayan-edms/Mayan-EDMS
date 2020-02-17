@@ -10,6 +10,7 @@ from mayan.apps.common.generics import (
     AddRemoveView, ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_edit
@@ -24,7 +25,7 @@ from ..permissions import (
     permission_workflow_edit, permission_workflow_tools,
     permission_workflow_view,
 )
-from ..tasks import task_launch_all_workflows
+from ..tasks import task_launch_all_workflows, task_launch_workflow
 
 
 class DocumentTypeWorkflowTemplatesView(AddRemoveView):
@@ -79,29 +80,6 @@ class DocumentTypeWorkflowTemplatesView(AddRemoveView):
                 obj.instances.filter(
                     document__document_type=self.main_object
                 ).delete()
-
-
-class WorkflowTemplateListView(SingleObjectListView):
-    model = Workflow
-    object_permission = permission_workflow_view
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'no_results_icon': icon_workflow_template_list,
-            'no_results_main_link': link_workflow_template_create.resolve(
-                context=RequestContext(request=self.request)
-            ),
-            'no_results_text': _(
-                'Workflows store a series of states and keep track of the '
-                'current state of a document. Transitions are used to change the '
-                'current state to a new one.'
-            ),
-            'no_results_title': _(
-                'No workflows have been defined'
-            ),
-            'title': _('Workflows'),
-        }
 
 
 class WorkflowTemplateCreateView(SingleObjectCreateView):
@@ -204,6 +182,54 @@ class WorkflowTemplateDocumentTypesView(AddRemoveView):
                 self.main_object.instances.filter(
                     document__document_type=obj
                 ).delete()
+
+
+class WorkflowTemplateLaunchView(ExternalObjectMixin, ConfirmView):
+    external_object_class = Workflow
+    external_object_permission = permission_workflow_tools
+
+    def get_extra_context(self):
+        return {
+            'title': _('Launch workflow?'),
+            'subtitle': _(
+                'This will launch the workflow for documents that have '
+                'already been uploaded.'
+            )
+        }
+
+    def view_action(self):
+        task_launch_workflow.apply_async(
+            kwargs={
+                'workflow_id': self.external_object.pk,
+            }
+        )
+        messages.success(
+            message=_('Workflow launch queued successfully.'),
+            request=self.request
+        )
+
+
+class WorkflowTemplateListView(SingleObjectListView):
+    model = Workflow
+    object_permission = permission_workflow_view
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'no_results_icon': icon_workflow_template_list,
+            'no_results_main_link': link_workflow_template_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Workflows store a series of states and keep track of the '
+                'current state of a document. Transitions are used to change the '
+                'current state to a new one.'
+            ),
+            'no_results_title': _(
+                'No workflows have been defined'
+            ),
+            'title': _('Workflows'),
+        }
 
 
 class WorkflowTemplatePreviewView(SingleObjectDetailView):

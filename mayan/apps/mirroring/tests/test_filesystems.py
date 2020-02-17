@@ -22,7 +22,7 @@ from .literals import (
 )
 
 
-@unittest.skipIf(connection.vendor=='mysql', 'Known to fail due to unsupported feature of database manager.')
+@unittest.skipIf(connection.vendor == 'mysql', 'Known to fail due to unsupported feature of database manager.')
 class IndexFilesystemTestCase(
     IndexTestMixin, DocumentTestMixin, BaseTestCase
 ):

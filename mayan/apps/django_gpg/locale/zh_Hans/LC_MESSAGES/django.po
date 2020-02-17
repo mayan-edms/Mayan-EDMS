@@ -1,0 +1,291 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:04-0400\n"
+"PO-Revision-Date: 2020-02-10 08:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:32
+msgid "Django GPG"
+msgstr "Django GPG"
+
+#: apps.py:47 apps.py:50 forms.py:17
+msgid "Key ID"
+msgstr "密钥ID"
+
+#: apps.py:51 forms.py:34 models.py:55
+msgid "Type"
+msgstr "类型"
+
+#: apps.py:53 forms.py:23 models.py:36
+msgid "Creation date"
+msgstr "创立日期"
+
+#: apps.py:56
+msgid "No expiration"
+msgstr "没有过期"
+
+#: apps.py:57 forms.py:27 models.py:40
+msgid "Expiration date"
+msgstr "过期日期"
+
+#: apps.py:59 forms.py:32 models.py:47
+msgid "Length"
+msgstr "长度"
+
+#: apps.py:62 forms.py:19 models.py:52
+msgid "User ID"
+msgstr "用户ID"
+
+#: forms.py:28
+msgid "None"
+msgstr "没有"
+
+#: forms.py:31 models.py:44
+msgid "Fingerprint"
+msgstr "指纹"
+
+#: forms.py:33 models.py:50
+msgid "Algorithm"
+msgstr "算法"
+
+#: forms.py:47
+msgid "Term"
+msgstr "术语"
+
+#: forms.py:48
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "要查找的姓名，电子邮件，密钥ID或密钥指纹。"
+
+#: links.py:19
+msgid "Delete"
+msgstr "删除"
+
+#: links.py:24
+msgid "Details"
+msgstr "细节"
+
+#: links.py:29
+msgid "Download"
+msgstr "下载"
+
+#: links.py:34 permissions.py:28
+msgid "Query keyservers"
+msgstr "查询密钥服务器"
+
+#: links.py:39
+msgid "Import"
+msgstr "导入"
+
+#: links.py:44 permissions.py:7
+msgid "Key management"
+msgstr "密钥管理"
+
+#: links.py:48
+msgid "Upload key"
+msgstr "上传密钥"
+
+#: links.py:52 views.py:179
+msgid "Private keys"
+msgstr "私钥"
+
+#: links.py:56 views.py:203
+msgid "Public keys"
+msgstr "公钥"
+
+#: literals.py:6 literals.py:14
+msgid "Public"
+msgstr "公共的"
+
+#: literals.py:7 literals.py:15
+msgid "Secret"
+msgstr "私人的"
+
+#: literals.py:23 literals.py:28
+msgid "RSA"
+msgstr "RSA"
+
+#: literals.py:24
+msgid "DSA"
+msgstr "DSA"
+
+#: literals.py:29
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: literals.py:43
+msgid "Bad signature."
+msgstr "坏的签名。"
+
+#: literals.py:46
+msgid "Document not signed or invalid signature."
+msgstr "文档未签名或无效的签名。"
+
+#: literals.py:49
+msgid "Signature error."
+msgstr "签名错误。"
+
+#: literals.py:53
+msgid "Document is signed but no public key is available for verification."
+msgstr "文档已签名，但没有公钥可用于验证。"
+
+#: literals.py:58
+msgid "Document is signed, and signature is good."
+msgstr "文档已签名，签名正常。"
+
+#: literals.py:61
+msgid "Document is signed with a valid signature."
+msgstr "文档已使用有效签名进行签名。"
+
+#: models.py:32
+msgid "ASCII armored version of the key."
+msgstr "ASCII防护版的密钥。"
+
+#: models.py:33
+msgid "Key data"
+msgstr "密钥数据"
+
+#: models.py:61
+msgid "Key"
+msgstr "密钥"
+
+#: models.py:62
+msgid "Keys"
+msgstr "密钥"
+
+#: models.py:74
+msgid "Invalid key data"
+msgstr "密钥数据无效"
+
+#: models.py:77
+msgid "Key already exists."
+msgstr "密钥已经存在。"
+
+#: permissions.py:10
+msgid "Delete keys"
+msgstr "删除密钥"
+
+#: permissions.py:13
+msgid "Download keys"
+msgstr "下载密钥"
+
+#: permissions.py:16
+msgid "Import keys from keyservers"
+msgstr "从密钥服务器导入密钥"
+
+#: permissions.py:19
+msgid "Use keys to sign content"
+msgstr "使用密钥来签署内容"
+
+#: permissions.py:22
+msgid "Upload keys"
+msgstr "上传密钥"
+
+#: permissions.py:25
+msgid "View keys"
+msgstr "查看密钥"
+
+#: settings.py:10
+msgid "Signatures"
+msgstr "签名"
+
+#: settings.py:16
+msgid "Home directory used to store keys as well as configuration files."
+msgstr "主目录用于存储密钥和配置文件。"
+
+#: settings.py:22
+msgid "Path to the GPG binary."
+msgstr "GPG二进制文件的路径。"
+
+#: settings.py:26
+msgid "Keyserver used to query for keys."
+msgstr "用于查询密钥的密钥服务器。"
+
+#: views.py:37
+#, python-format
+msgid "Delete key: %s"
+msgstr "删除密钥：%s"
+
+#: views.py:53
+#, python-format
+msgid "Details for key: %s"
+msgstr "密钥详情：%s"
+
+#: views.py:74
+#, python-format
+msgid "Import key ID: %s?"
+msgstr "导入密钥ID：%s？"
+
+#: views.py:75
+msgid "Import key"
+msgstr "导入密钥"
+
+#: views.py:84
+#, python-format
+msgid "Unable to import key: %(key_id)s; %(error)s"
+msgstr "无法导入密钥：%(key_id)s; %(error)s"
+
+#: views.py:92
+#, python-format
+msgid "Successfully received key: %(key_id)s"
+msgstr "成功接收密钥：%(key_id)s"
+
+#: views.py:109
+msgid ""
+"Use names, last names, key ids or emails to search public keys to import "
+"from the keyserver."
+msgstr "使用名字，姓氏，密钥ID或电子邮件来搜索要从密钥服务器导入的公钥。"
+
+#: views.py:113
+msgid "No results returned"
+msgstr "没有结果返回"
+
+#: views.py:115
+msgid "Key query results"
+msgstr "密钥查询结果"
+
+#: views.py:135
+msgid "Search"
+msgstr "搜索"
+
+#: views.py:137
+msgid "Query key server"
+msgstr "查询密钥服务器"
+
+#: views.py:156
+msgid "Upload new key"
+msgstr "上传新密钥"
+
+#: views.py:172
+msgid ""
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user.The view to upload private and public keys is the same."
+msgstr "私钥用于签名文档。私钥只能由用户上传。上传私钥和公钥的视图是相同的。"
+
+#: views.py:177
+msgid "There no private keys"
+msgstr "没有私钥"
+
+#: views.py:195
+msgid ""
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
+"public keys is the same."
+msgstr "公钥用于验证签名文档。公钥可以由用户上传或从密钥服务器下载。上传私钥和公钥的视图是相同的。"
+
+#: views.py:201
+msgid "There no public keys"
+msgstr "没有公钥"

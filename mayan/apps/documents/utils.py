@@ -27,6 +27,7 @@ def get_language(language_code):
 
 
 def get_language_choices():
+    # Hide import as this function is called early in the bootstrap process
     from .settings import setting_language_codes
 
     return sorted(

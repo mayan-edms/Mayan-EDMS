@@ -5,7 +5,7 @@ from django.utils.encoding import force_text
 from django.utils.html import conditional_escape
 
 
-def get_document_content(document):
+def get_instance_content(document):
     DocumentPageContent = apps.get_model(
         app_label='document_parsing', model_name='DocumentPageContent'
     )

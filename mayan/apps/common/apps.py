@@ -27,6 +27,7 @@ from .links import (
 
 from .literals import MESSAGE_SQLITE_WARNING
 from .menus import menu_about, menu_secondary, menu_topbar, menu_user
+from .patches import patchDjangoTranslation
 from .settings import (
     setting_auto_logging, setting_production_error_log_path,
     setting_production_error_logging
@@ -87,6 +88,8 @@ class CommonApp(MayanAppConfig):
 
     def ready(self):
         super(CommonApp, self).ready()
+        patchDjangoTranslation()
+
         if check_for_sqlite():
             warnings.warn(
                 category=DatabaseWarning,

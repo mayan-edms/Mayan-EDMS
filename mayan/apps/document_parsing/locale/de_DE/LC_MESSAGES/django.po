@@ -10,12 +10,11 @@
 # Marvin Haschker <marvin@haschker.me>, 2019
 # Mathias Behrle <mathiasb@m9s.biz>, 2019
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:27-0400\n"
+"POT-Creation-Date: 2020-02-14 01:04-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2019\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -29,13 +28,17 @@ msgstr ""
 msgid "Document parsing"
 msgstr "Dokument parsen"
 
-#: apps.py:130 models.py:78
-msgid "Result"
-msgstr "Ergebnis"
+#: apps.py:108
+msgid "A generator returning the document's pages parsed content."
+msgstr ""
 
-#: apps.py:135 apps.py:139 links.py:21 links.py:38 models.py:27
+#: apps.py:109 apps.py:142 apps.py:146 links.py:21 links.py:38 models.py:27
 msgid "Content"
 msgstr "Inhalt"
+
+#: apps.py:137 models.py:78
+msgid "Result"
+msgstr "Ergebnis"
 
 #: dependencies.py:11
 msgid ""

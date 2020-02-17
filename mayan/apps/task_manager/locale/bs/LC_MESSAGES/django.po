@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:08-0400\n"
+"PO-Revision-Date: 2017-06-30 22:04+0000\n"
+"Last-Translator: Roberto Rosario, 2020\n"
+"Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: apps.py:19 links.py:12 permissions.py:7
+msgid "Task manager"
+msgstr "Menadzer rada"
+
+#: apps.py:27
+msgid "Label"
+msgstr "Labela"
+
+#: apps.py:30
+msgid "Name"
+msgstr "Ime"
+
+#: apps.py:33
+msgid "Default queue?"
+msgstr "Default queue?"
+
+#: apps.py:37
+msgid "Is transient?"
+msgstr "Da li je prolazan?"
+
+#: apps.py:41
+msgid "Type"
+msgstr "Tip"
+
+#: apps.py:44
+msgid "Start time"
+msgstr "Početno vrijeme"
+
+#: apps.py:47
+msgid "Host"
+msgstr "Domaćin"
+
+#: apps.py:51
+msgid "Arguments"
+msgstr "Argumenti"
+
+#: apps.py:55
+msgid "Keyword arguments"
+msgstr "Argumenti ključnih riječi"
+
+#: apps.py:59
+msgid "Worker process ID"
+msgstr "Id procesa rada"
+
+#: permissions.py:10
+msgid "View tasks"
+msgstr "Pogledati zadatke"
+
+#: settings.py:10
+msgid "Celery"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
+msgstr ""
+
+#: settings.py:24
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
+msgstr ""
+
+#: tests/literals.py:5
+msgid "Test queue"
+msgstr "Ispitni red"
+
+#: views.py:14
+msgid "Background task queues"
+msgstr "Rad u pozadini"

@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
-"PO-Revision-Date: 2019-12-18 04:33+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-14 01:07-0400\n"
+"PO-Revision-Date: 2020-02-06 10:20+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,11 +36,11 @@ msgstr "Hodnota"
 
 #: classes.py:352
 msgid "Overridden"
-msgstr ""
+msgstr "Přepsáno"
 
 #: classes.py:354
 msgid "Is this settings being overridden by an environment variable?"
-msgstr ""
+msgstr "Je toto nastavení potlačeno proměnnou prostředí?"
 
 #: forms.py:14
 msgid "Enter the new setting value."

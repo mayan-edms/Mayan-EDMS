@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:05-0400\n"
+"PO-Revision-Date: 2020-02-10 08:23+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:17
+msgid "Dynamic search"
+msgstr "动态搜索"
+
+#: classes.py:100
+msgid "No search model matching the query"
+msgstr "没有与查询匹配的搜索模型"
+
+#: forms.py:9
+msgid "Match all"
+msgstr "匹配所有"
+
+#: forms.py:10
+msgid ""
+"When checked, only results that match all fields will be returned. When "
+"unchecked results that match at least one field will be returned."
+msgstr "选中后，将仅返回与所有字段匹配的结果。未选中时，将返回与至少一个字段匹配的结果。"
+
+#: forms.py:29 templates/dynamic_search/search_box.html:39
+msgid "Search terms"
+msgstr "搜索项"
+
+#: links.py:8 settings.py:7 templates/dynamic_search/search_box.html:43
+#: views.py:59 views.py:72
+msgid "Search"
+msgstr "搜索"
+
+#: links.py:11 templates/dynamic_search/search_box.html:45 views.py:86
+msgid "Advanced search"
+msgstr "高级搜索"
+
+#: links.py:15
+msgid "Search again"
+msgstr "再次搜索"
+
+#: settings.py:12
+msgid ""
+"Disables the single term bar search leaving only the advanced search button."
+msgstr ""
+
+#: templates/dynamic_search/search_box.html:45
+msgid "Advanced"
+msgstr "高级"
+
+#: views.py:25
+msgid "Try again using different terms. "
+msgstr "请尝试使用不同的搜索项。"
+
+#: views.py:27
+msgid "No search results"
+msgstr "没有搜索结果"
+
+#: views.py:29
+#, python-format
+msgid "Search results for: %s"
+msgstr "搜索结果：%s"
+
+#: views.py:74
+#, python-format
+msgid "Search for: %s"
+msgstr "搜索：%s"

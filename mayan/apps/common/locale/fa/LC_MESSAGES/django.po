@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:26-0400\n"
-"PO-Revision-Date: 2019-12-03 05:22+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
+"POT-Creation-Date: 2020-02-14 01:03-0400\n"
+"PO-Revision-Date: 2020-01-28 07:58+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,16 +19,20 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:86 permissions_runtime.py:7 settings.py:15
+#: apps.py:89 permissions_runtime.py:7 settings.py:15
 msgid "Common"
 msgstr "مشترک"
 
-#: classes.py:93
-msgid "Available attributes: \n"
-msgstr "ویژگی های موجود:\n"
+#: classes.py:185
+msgid "Model properties"
+msgstr ""
 
-#: classes.py:133
-msgid "Available fields: \n"
+#: classes.py:190
+msgid "Model fields"
+msgstr ""
+
+#: classes.py:233
+msgid "Model related fields"
 msgstr ""
 
 #: dependencies.py:308
@@ -220,7 +224,7 @@ msgstr "کاربر"
 msgid "No %(verbose_name)s found matching the query"
 msgstr ""
 
-#: mixins.py:367
+#: mixins.py:405
 msgid "Object"
 msgstr "شیئ"
 

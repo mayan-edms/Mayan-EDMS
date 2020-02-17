@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
+"POT-Creation-Date: 2020-02-14 01:08-0400\n"
 "PO-Revision-Date: 2019-10-17 12:36+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -137,19 +137,19 @@ msgstr "Закачане на маркер към документи"
 msgid "Remove tags from documents"
 msgstr "Премахване на маркери от документи"
 
-#: serializers.py:39
+#: serializers.py:38
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
 msgstr "Разделен със запетаи списък на основни ключове за документ, към които ще бъде прикачен този маркер."
 
-#: serializers.py:86
+#: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr "URL адрес на API, сочещ към маркер във връзка с прикачения към него документ. Този URL адрес е различен от основния URL адрес на маркера."
 
-#: serializers.py:106
+#: serializers.py:105
 msgid "Primary key of the tag to be added."
 msgstr "Основен ключ на маркера, който трябва да се добави."
 

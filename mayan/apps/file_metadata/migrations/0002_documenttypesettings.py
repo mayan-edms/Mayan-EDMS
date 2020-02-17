@@ -38,7 +38,6 @@ def operation_delete_file_metadata_setting_for_existing_document_types(apps, sch
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0047_auto_20180917_0737'),
         ('file_metadata', '0001_initial'),

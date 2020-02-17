@@ -104,7 +104,7 @@
                             {{ option }}
                         </div>
                     {% endfor %}
-                {% elif field|widget_type == 'datetimeinput' or field|widget_type == 'dateinput' %}
+                {% elif field|widget_type in 'datetimeinput,dateinput,numberinput' %}
                     {% if read_only %}
                         {{ field.value }}
                     {% else %}

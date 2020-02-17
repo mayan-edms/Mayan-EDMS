@@ -8,6 +8,7 @@ stages:
   - push_documentation
   - deploy
 
+# Docker
 job_docker_build:
   stage: build_docker
   image: docker:latest
@@ -17,13 +18,10 @@ job_docker_build:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
-    - VERSION=`cat docker/rootfs/version`
-    - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$VERSION"
-    - docker run --rm "$CI_REGISTRY_IMAGE:$VERSION" run_tests
-    - docker push "$CI_REGISTRY_IMAGE:$VERSION"
-    - docker push "$CI_REGISTRY_IMAGE:latest"
-    - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
-    - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
+    - DOCKER_VERSION=`cat docker/rootfs/version`
+    - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
+    - docker run --rm "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
+    - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout
   only:
     - releases/all
@@ -37,14 +35,21 @@ job_docker_push:
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    - VERSION=`cat docker/rootfs/version`
-    - docker pull "$CI_REGISTRY_IMAGE:$VERSION"
-    - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
-    - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
+    - DOCKER_VERSION=`cat docker/rootfs/version`
+    - docker pull "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
+    - VERSION_SCRIPT_BIN=contrib/scripts/version.py
+    - MAJOR_VERSION=$($VERSION_SCRIPT_BIN $DOCKER_VERSION major);
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$MAJOR_VERSION"
+    - MINOR_VERSION=$($VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
+    - if [ -z MINOR_VERSION ]; then docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION";fi
     - docker logout
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
-    - docker push registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
+    - docker push registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
+    - docker push registry-1.docker.io/mayanedms/mayanedms:"$MAJOR_VERSION"
+    - if [ -z MINOR_VERSION ]; then docker push registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION";fi
   only:
     - releases/all
     - releases/docker
@@ -64,6 +69,7 @@ job_docker_nightly:
     - nightly
     - staging
 
+# Documentation
 job_documentation_build:
   stage: build_documentation
   image: ubuntu:18.04
@@ -104,6 +110,7 @@ job_documentation_push:
     - releases/all
     - releases/documentation
 
+# Python
 job_build_python:
   stage: build_python
   image: ubuntu:18.04
@@ -139,6 +146,79 @@ job_push_python:
     - releases/all
     - releases/python
 
+# Test upgrade from the latest public version to the local version
+.test_upgrade_base: &test_upgrade_base
+  stage: test
+  image: ubuntu:18.04
+  cache:
+    paths:
+      - ~/.cache/pip/
+      - /var/cache/apt/archives/
+  before_script:
+    - set -a && . ./config.env && set +a
+    - apt-get -qq update
+    - apt-get install -qq locales
+    - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
+    - locale-gen en_US.UTF-8
+    - update-locale LANG=en_US.UTF-8
+    - export LC_ALL=en_US.UTF-8
+    - apt-get install -qq curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils python-dev python-virtualenv python3-dev tesseract-ocr
+    - virtualenv venv -p /usr/bin/python3
+    - . venv/bin/activate
+    - pip install mayan-edms==`python -c "import xmlrpc.client;pypi = xmlrpc.client.ServerProxy('https://pypi.org');print(pypi.package_releases('mayan-edms')[0])"`
+    - pip install -r requirements/build.txt -r requirements/testing-base.txt
+    - make python-wheel
+  only:
+    - releases/all
+    - releases/docker
+    - releases/python
+    - staging
+    - nightly
+
+test_upgrade_sqlite:
+  <<: *test_upgrade_base
+  script:
+    - . venv/bin/activate
+    - mayan-edms.py initialsetup
+    - pip install dist/mayan_edms-*.whl
+    - mayan-edms.py performupgrade
+
+test_upgrade_mysql:
+  <<: *test_upgrade_base
+  variables:
+    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    MYSQL_DATABASE: "mayan_edms"
+  services:
+    - mysql:5.7
+  script:
+    - apt-get install -qq libmysqlclient-dev libssl-dev mysql-client
+    - . venv/bin/activate
+    - pip install mysqlclient==$PYTHON_MYSQL_VERSION
+    - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
+    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci.db_mysql
+    - pip install dist/mayan_edms-*.whl
+    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci.db_mysql
+  tags:
+    - mysql
+
+test_upgrade_postgres:
+  <<: *test_upgrade_base
+  variables:
+    POSTGRES_DB: "mayan_edms"
+    POSTGRES_PASSWORD: "postgres"
+  services:
+    - postgres:9.6-alpine
+  script:
+    - apt-get install -qq libpq-dev
+    - . venv/bin/activate
+    - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
+    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci.db_postgres
+    - pip install dist/mayan_edms-*.whl
+    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci.db_postgres
+  tags:
+    - postgres
+
+# Run the test suit
 .test_base: &test_base
   stage: test
   image: ubuntu:18.04
@@ -147,13 +227,14 @@ job_push_python:
       - ~/.cache/pip/
       - /var/cache/apt/archives/
   before_script:
+    - set -a && . ./config.env && set +a
     - apt-get -qq update
     - apt-get install -qq locales
     - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
     - locale-gen en_US.UTF-8
     - update-locale LANG=en_US.UTF-8
     - export LC_ALL=en_US.UTF-8
-    - apt-get install -qq curl exiftool firefox-geckodriver gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils libreoffice poppler-utils python-dev python-virtualenv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
+    - apt-get install -qq curl exiftool firefox-geckodriver gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev libreoffice poppler-utils python-dev python-virtualenv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
     - virtualenv venv -p /usr/bin/python3
     - . venv/bin/activate
     - pip install -r requirements.txt -r requirements/testing-base.txt
@@ -170,14 +251,14 @@ test-mysql:
     MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     MYSQL_DATABASE: "mayan_edms"
   services:
-    - mysql:8.0.3
+    - mysql:5.7
   script:
     - apt-get install -qq libmysqlclient-dev libssl-dev mysql-client
     - . venv/bin/activate
-    - set -a && . ./config.env && set +a
     - pip install mysqlclient==$PYTHON_MYSQL_VERSION
     - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
-    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
+    - make test-all SETTINGS=mayan.settings.testing.gitlab-ci.db_mysql
+    - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci.db_mysql
   tags:
     - mysql
 
@@ -187,13 +268,13 @@ test-postgres:
     POSTGRES_DB: "mayan_edms"
     POSTGRES_PASSWORD: "postgres"
   services:
-    - postgres
+    - postgres:9.6-alpine
   script:
     - apt-get install -qq libpq-dev
     - . venv/bin/activate
-    - set -a && . ./config.env && set +a
     - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
-    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
+    - make test-all SETTINGS=mayan.settings.testing.gitlab-ci.db_postgres
+    - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci.db_postgres
   tags:
     - postgres
 
@@ -202,7 +283,10 @@ test-sqlite:
   script:
     - . venv/bin/activate
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
+    - make test-all
+    - make test-all-migrations
 
+# Deploy
 deploy_demo:
   environment:
     name: demo

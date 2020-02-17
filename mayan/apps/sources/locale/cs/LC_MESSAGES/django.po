@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
-"PO-Revision-Date: 2019-12-13 05:15+0000\n"
+"POT-Creation-Date: 2020-02-14 01:07-0400\n"
+"PO-Revision-Date: 2020-01-16 09:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:44 links.py:54 models/base.py:40 queues.py:9 settings.py:13
-#: views.py:650
+#: views.py:649
 msgid "Sources"
 msgstr "Zdroje"
 
@@ -76,7 +76,7 @@ msgstr "Rozbal komprimované soubory"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Nahraj soubory obsahující komprimovaný soubor jako jednotlivé dokumenty"
 
-#: forms.py:65 views.py:505
+#: forms.py:65 views.py:504
 msgid "Staging file"
 msgstr "Pracovní soubor"
 
@@ -470,10 +470,12 @@ msgstr "Skener SANE"
 msgid "SANE Scanners"
 msgstr "Skenery SANE"
 
-#: models/scanner_sources.py:115
+#: models/scanner_sources.py:97
 #, python-format
-msgid "Error while scanning; %s"
-msgstr "Chyba při skenování; %s"
+msgid ""
+"Error while executing scanning command \"%(command_line)s\"; "
+"%(error_message)s"
+msgstr ""
 
 #: models/staging_folder_sources.py:41
 msgid "Server side filesystem path."
@@ -686,45 +688,45 @@ msgstr "Soubory v pracovní cestě"
 msgid "Scan"
 msgstr "Skenovat"
 
-#: views.py:294
+#: views.py:293
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr "Při provádění úlohy nahrávání dokumentu došlo k chybě; %(exception)s, %(exception_class)s"
 
-#: views.py:305
+#: views.py:304
 msgid "New document queued for upload and will be available shortly."
 msgstr "Nový dokument zařazený do fronty k nahrání bude brzy k dispozici."
 
-#: views.py:356
+#: views.py:355
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Nahrajte dokument typu \"%(document_type)s\" ze zdroje: %(source)s"
 
-#: views.py:389
+#: views.py:388
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "Dokument \"%s\" je blokován z nahrávání nových verzí."
 
-#: views.py:442
+#: views.py:441
 msgid "New document version queued for upload and will be available shortly."
 msgstr "Nová verze dokumentu zařazená do fronty k nahrání a brzy bude k dispozici."
 
-#: views.py:482
+#: views.py:481
 #, python-format
 msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:485
+#: views.py:484
 msgid "Submit"
 msgstr "Odeslat"
 
-#: views.py:506
+#: views.py:505
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Odstranit pracovní soubor \"%s\"?"
 
-#: views.py:527
+#: views.py:526
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -732,31 +734,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr "Tím se spustí kontrola kódu zdroje, i když zdroj není povolen. Zdroje, které odstraní obsah po stažení, tak během testování neučiní. Během testování zkontrolujte informace o chybách zdrojů. Úspěšný test vymaže protokol chyb."
 
-#: views.py:533
+#: views.py:532
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Spustit kontrolu zdroje \"%s\"?"
 
-#: views.py:550
+#: views.py:549
 msgid "Source check queued."
 msgstr "Kontrola zdroje ve frontě."
 
-#: views.py:567
+#: views.py:566
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Vytvořit nový zdroj typu: %s"
 
-#: views.py:589
+#: views.py:588
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Odstranit zdroj: %s?"
 
-#: views.py:610
+#: views.py:609
 #, python-format
 msgid "Edit source: %s"
 msgstr "Upravit zdroj: %s"
 
-#: views.py:644
+#: views.py:643
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -764,7 +766,7 @@ msgid ""
 "intervention."
 msgstr "Zdroje poskytují prostředky pro nahrávání dokumentů. Některé zdroje, jako je webový formulář, jsou interaktivní a vyžadují součinnost uživatele. Ostatní, jako jsou e-mailové zdroje, jsou automatické a běží na pozadí bez zásahu uživatele."
 
-#: views.py:649
+#: views.py:648
 msgid "No sources available"
 msgstr "Nejsou k dispozici žádné zdroje"
 

@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:27-0400\n"
-"PO-Revision-Date: 2019-12-05 10:07+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-14 01:04-0400\n"
+"PO-Revision-Date: 2020-02-06 09:37+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -93,7 +93,7 @@ msgstr "Znovu setsavit rejstříky"
 
 #: links.py:66 views.py:481
 msgid "Reset indexes"
-msgstr ""
+msgstr "Resetujte indexy"
 
 #: links.py:83 views.py:87
 msgid "Create index"
@@ -117,7 +117,7 @@ msgstr "Nový podřízený uzel"
 
 #: models.py:36
 msgid "Short description of this index."
-msgstr ""
+msgstr "Stručný popis tohoto indexu."
 
 #: models.py:37
 msgid "Label"
@@ -174,7 +174,7 @@ msgstr "Zaškrtněte tuto možnost, chcete-li, aby tento uzel fungoval jako kont
 
 #: models.py:262
 msgid "Link documents"
-msgstr ""
+msgstr "Propojte dokumenty"
 
 #: models.py:266
 msgid "Index node template"
@@ -307,7 +307,7 @@ msgstr "Znovu sestavit index: %s"
 
 #: views.py:179
 msgid "Index queued for rebuild."
-msgstr ""
+msgstr "Index zařazen do fronty pro nové sestavení."
 
 #: views.py:191
 msgid "Available document types"
@@ -397,11 +397,11 @@ msgstr[3] "%(count)d Rejstříky ve frontě k novému sestavení."
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Vynulování indexu %(count)d."
+msgstr[1] "Vynulování indexů %(count)d."
+msgstr[2] "Vynulování indexů %(count)d."
+msgstr[3] "%(count)d indexů resetováno."
 
 #: views.py:506
 msgid "Index templates for which their instances will be deleted."
-msgstr ""
+msgstr "Šablony indexů, pro které budou jejich instance odstraněny."

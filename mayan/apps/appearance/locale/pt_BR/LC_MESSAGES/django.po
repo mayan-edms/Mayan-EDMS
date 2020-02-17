@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:25-0400\n"
+"POT-Creation-Date: 2020-02-14 01:02-0400\n"
 "PO-Revision-Date: 2019-12-26 18:49+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -287,15 +287,15 @@ msgstr "Iniciando"
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Antes de começar a usar Mayan EDMS você precisa do seguinte:"
 
-#: templates/appearance/list_header.html:11
+#: templates/appearance/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr "Total (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de %(total_pages)s)"
 
-#: templates/appearance/list_header.html:13
-#: templates/appearance/list_header.html:16
+#: templates/appearance/list_header.html:14
+#: templates/appearance/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Total: %(total)s"

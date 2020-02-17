@@ -1,0 +1,462 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:06-0400\n"
+"PO-Revision-Date: 2020-02-10 08:23+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:42
+msgid "Mailer"
+msgstr "邮件程序"
+
+#: apps.py:63 apps.py:84
+msgid "Date and time"
+msgstr "日期和时间"
+
+#: apps.py:66 apps.py:88 models.py:30 models.py:229
+msgid "Message"
+msgstr "信息"
+
+#: classes.py:81
+msgid "Null backend"
+msgstr ""
+
+#: events.py:7 permissions.py:7 queues.py:8 settings.py:12
+msgid "Mailing"
+msgstr "邮件"
+
+#: events.py:10
+msgid "Email sent"
+msgstr ""
+
+#: forms.py:60 forms.py:124
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
+msgstr "收件人的电子邮件地址。可以是以逗号或分号分隔的多个地址。"
+
+#: forms.py:62 forms.py:126
+msgid "Email address"
+msgstr "电子邮件地址"
+
+#: forms.py:64 workflow_actions.py:40
+msgid "Subject"
+msgstr "主题"
+
+#: forms.py:66 workflow_actions.py:49
+msgid "Body"
+msgstr "正文"
+
+#: forms.py:70
+msgid "The email profile that will be used to send this email."
+msgstr "将用于发送此电子邮件的电子邮件配置文件。"
+
+#: forms.py:71 models.py:71 views.py:239 workflow_actions.py:22
+msgid "Mailing profile"
+msgstr "邮件配置文件"
+
+#: forms.py:77
+msgid "The driver to use when sending emails."
+msgstr ""
+
+#: forms.py:78
+msgid "Backend"
+msgstr "后端"
+
+#: links.py:18 links.py:28
+msgid "Email document"
+msgstr "电子邮件文档"
+
+#: links.py:24 links.py:32
+msgid "Email link"
+msgstr "电子邮件链接"
+
+#: links.py:37
+msgid "System mailer error log"
+msgstr "系统邮件程序错误日志"
+
+#: links.py:42
+msgid "Create mailing profile "
+msgstr ""
+
+#: links.py:48
+msgid "Delete"
+msgstr "删除"
+
+#: links.py:54
+msgid "Edit"
+msgstr "编辑"
+
+#: links.py:58
+msgid "Log"
+msgstr "日志"
+
+#: links.py:63
+msgid "Mailing profiles list"
+msgstr "邮件配置文件列表"
+
+#: links.py:68 models.py:72
+msgid "Mailing profiles"
+msgstr "邮件配置文件"
+
+#: links.py:74 views.py:261
+msgid "Test"
+msgstr "测试"
+
+#: literals.py:7
+#, python-format
+msgid ""
+"Attached to this email is the document: {{ document }}\n"
+"\n"
+" --------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr "该电子邮件附有以下文件：{{document}}\n\n --------\n 此电子邮件地址是%(project_title)s（%(project_website)s）"
+
+#: literals.py:11
+msgid "Document: {{ document }}"
+msgstr "文档：{{document}}"
+
+#: literals.py:13
+#, python-format
+msgid ""
+"To access this document click on the following link: {{ link }}\n"
+"\n"
+"--------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr "要访问此文档，请单击以下链接：{{link}}\n\n--------\n 此电子邮件地址是%(project_title)s（%(project_website)s）"
+
+#: literals.py:17
+msgid "Link for document: {{ document }}"
+msgstr "文档链接：{{document}}"
+
+#: mailers.py:23 mailers.py:112
+msgid "From"
+msgstr ""
+
+#: mailers.py:26 mailers.py:115
+msgid ""
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
+msgstr ""
+
+#: mailers.py:32
+msgid "Host"
+msgstr "主机"
+
+#: mailers.py:34
+msgid "The host to use for sending email."
+msgstr "用于发送电子邮件的主机。"
+
+#: mailers.py:39
+msgid "Port"
+msgstr "端口"
+
+#: mailers.py:41
+msgid "Port to use for the SMTP server."
+msgstr "用于SMTP服务器的端口。"
+
+#: mailers.py:44
+msgid "Use TLS"
+msgstr "使用TLS"
+
+#: mailers.py:47
+msgid ""
+"Whether to use a TLS (secure) connection when talking to the SMTP server. "
+"This is used for explicit TLS connections, generally on port 587."
+msgstr "与SMTP服务器通信时是否使用TLS（安全）连接。这用于显式TLS连接，通常在端口587上。"
+
+#: mailers.py:52
+msgid "Use SSL"
+msgstr "使用SSL"
+
+#: mailers.py:55
+msgid ""
+"Whether to use an implicit TLS (secure) connection when talking to the SMTP "
+"server. In most email documentation this type of TLS connection is referred "
+"to as SSL. It is generally used on port 465. If you are experiencing "
+"problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
+msgstr "与SMTP服务器通信时是否使用隐式TLS（安全）连接。在大多数电子邮件文档中，此类型的TLS连接称为SSL。它通常用于端口465.如果遇到问题，请参阅显式TLS设置中“使用TLS”。请注意，“使用TLS”和“使用SSL”是互斥的，因此只将其中一个设置为True。"
+
+#: mailers.py:64
+msgid "Username"
+msgstr "用户名"
+
+#: mailers.py:67
+msgid ""
+"Username to use for the SMTP server. If empty, authentication won't "
+"attempted."
+msgstr "用于SMTP服务器的用户名。如果为空，则不会尝试身份验证。"
+
+#: mailers.py:73
+msgid "Password"
+msgstr "密码"
+
+#: mailers.py:76
+msgid ""
+"Password to use for the SMTP server. This setting is used in conjunction "
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
+msgstr "用于SMTP服务器的密码。在向SMTP服务器进行身份验证时，此设置与用户名一起使用。如果这些设置中的任何一个为空，则不会尝试进行身份验证。"
+
+#: mailers.py:85
+msgid "Django SMTP backend"
+msgstr "Django SMTP后端"
+
+#: mailers.py:107
+msgid "File path"
+msgstr "文件路径"
+
+#: mailers.py:122
+msgid "Django file based backend"
+msgstr "基于Django文件的后端"
+
+#: models.py:27 models.py:226
+msgid "Date time"
+msgstr "日期时间"
+
+#: models.py:36
+msgid "Log entry"
+msgstr "日志条目"
+
+#: models.py:37
+msgid "Log entries"
+msgstr "日志条目"
+
+#: models.py:48
+msgid "A short text describing the mailing profile."
+msgstr ""
+
+#: models.py:49
+msgid "Label"
+msgstr "标签"
+
+#: models.py:53
+msgid ""
+"If default, this mailing profile will be pre-selected on the document "
+"mailing form."
+msgstr "如果是默认值，则会在文档邮件表单上预先选择此邮件配置文件。"
+
+#: models.py:55
+msgid "Default"
+msgstr "默认"
+
+#: models.py:57
+msgid "Enabled"
+msgstr "启用"
+
+#: models.py:60
+msgid "The dotted Python path to the backend class."
+msgstr ""
+
+#: models.py:61
+msgid "Backend path"
+msgstr "后端路径"
+
+#: models.py:64
+msgid "Backend data"
+msgstr "后端数据"
+
+#: models.py:85
+msgid "Backend label"
+msgstr ""
+
+#: models.py:217
+msgid "Test email from Mayan EDMS"
+msgstr "测试来自Mayan EDMS的电子邮件"
+
+#: models.py:223
+msgid "User mailer"
+msgstr "用户邮件程序"
+
+#: models.py:235
+msgid "User mailer log entry"
+msgstr "用户邮件程序日志条目"
+
+#: models.py:236
+msgid "User mailer log entries"
+msgstr "用户邮件程序日志条目"
+
+#: permissions.py:10
+msgid "Send document link via email"
+msgstr "通过电子邮件发送文档链接"
+
+#: permissions.py:13
+msgid "Send document via email"
+msgstr "通过电子邮件发送文档"
+
+#: permissions.py:16
+msgid "View system mailing error log"
+msgstr "查看系统邮件错误日志"
+
+#: permissions.py:19
+msgid "Create a mailing profile"
+msgstr "创建邮件配置文件"
+
+#: permissions.py:22
+msgid "Delete a mailing profile"
+msgstr "删除邮件配置文件"
+
+#: permissions.py:25
+msgid "Edit a mailing profile"
+msgstr "编辑邮件配置文件"
+
+#: permissions.py:28
+msgid "View a mailing profile"
+msgstr "查看邮件配置文件"
+
+#: permissions.py:31
+msgid "Use a mailing profile"
+msgstr "使用邮件配置文件"
+
+#: queues.py:10
+msgid "Send document"
+msgstr "发送文档"
+
+#: settings.py:16
+msgid "Template for the document email form subject line."
+msgstr "文档电子邮件表单主题行的模板。"
+
+#: settings.py:21
+msgid "Template for the document email form body text. Can include HTML."
+msgstr "文档电子邮件表单正文文本的模板。可以包含HTML。"
+
+#: settings.py:26
+msgid "Template for the document link email form subject line."
+msgstr "文档链接电子邮件表单主题行的模板。"
+
+#: settings.py:31
+msgid "Template for the document link email form body text. Can include HTML."
+msgstr "文档链接电子邮件表单正文文本的模板。可以包含HTML。"
+
+#: validators.py:14
+#, python-format
+msgid "%(email)s is not a valid email address."
+msgstr "%(email)s不是有效的电子邮件地址。"
+
+#: views.py:38
+msgid "Document mailing error log"
+msgstr "文档邮件错误日志"
+
+#: views.py:50
+#, python-format
+msgid "%(count)d document queued for email delivery"
+msgstr "%(count)d文档排队等待电子邮件递送"
+
+#: views.py:52
+#, python-format
+msgid "%(count)d documents queued for email delivery"
+msgstr "%(count)d文档排队等待电子邮件递送"
+
+#: views.py:63
+msgid "Send"
+msgstr "发送"
+
+#: views.py:109
+#, python-format
+msgid "%(count)d document link queued for email delivery"
+msgstr "%(count)d文档链接排队等待电子邮件递送"
+
+#: views.py:111
+#, python-format
+msgid "%(count)d document links queued for email delivery"
+msgstr "%(count)d文档链接排队等待电子邮件递送"
+
+#: views.py:120
+msgid "New mailing profile backend selection"
+msgstr "新的邮件配置文件后端选择"
+
+#: views.py:152
+#, python-format
+msgid "Create a \"%s\" mailing profile"
+msgstr "创建“%s”邮件配置文件"
+
+#: views.py:178
+#, python-format
+msgid "Delete mailing profile: %s"
+msgstr "删除邮件配置文件：%s"
+
+#: views.py:189
+#, python-format
+msgid "Edit mailing profile: %s"
+msgstr "编辑邮件配置文件：%s"
+
+#: views.py:212
+#, python-format
+msgid "Error log for: %s"
+msgstr ""
+
+#: views.py:234
+msgid ""
+"Mailing profiles are email configurations. Mailing profiles allow sending "
+"documents as attachments or as links via email."
+msgstr ""
+
+#: views.py:238
+msgid "No mailing profiles available"
+msgstr "没有可用的邮件配置文件"
+
+#: views.py:253
+msgid "Test email sent."
+msgstr ""
+
+#: views.py:262
+#, python-format
+msgid "Test mailing profile: %s"
+msgstr "测试邮件配置文件：%s"
+
+#: workflow_actions.py:24
+msgid "Mailing profile to use when sending the email."
+msgstr ""
+
+#: workflow_actions.py:29
+msgid "Recipient"
+msgstr ""
+
+#: workflow_actions.py:32
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
+msgstr ""
+
+#: workflow_actions.py:43
+msgid "Subject of the email. Can be a string or a template."
+msgstr ""
+
+#: workflow_actions.py:52
+msgid "Body of the email to send. Can be a string or a template."
+msgstr ""
+
+#: workflow_actions.py:59
+msgid "Send email"
+msgstr ""
+
+#: workflow_actions.py:74
+#, python-format
+msgid "Recipient template error: %s"
+msgstr ""
+
+#: workflow_actions.py:85
+#, python-format
+msgid "Subject template error: %s"
+msgstr ""
+
+#: workflow_actions.py:96
+#, python-format
+msgid "Body template error: %s"
+msgstr ""

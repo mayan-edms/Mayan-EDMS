@@ -1,0 +1,205 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Haiyuan Zhang <zhanghaiyuan@gmail.com>, 2019
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:02-0400\n"
+"PO-Revision-Date: 2020-02-10 08:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:24 links.py:44
+msgid "ACLs"
+msgstr "访问控制列表"
+
+#: events.py:8 permissions.py:7
+msgid "Access control lists"
+msgstr "访问控制列表"
+
+#: events.py:12
+msgid "ACL created"
+msgstr "ACL已创建"
+
+#: events.py:15
+msgid "ACL edited"
+msgstr "ACL已编辑"
+
+#: forms.py:15 models.py:48
+msgid "Role"
+msgstr "角色"
+
+#: links.py:34
+msgid "New ACL"
+msgstr "新的访问控制列表"
+
+#: links.py:39
+msgid "Delete"
+msgstr "删除"
+
+#: links.py:49 models.py:44 workflow_actions.py:48 workflow_actions.py:163
+msgid "Permissions"
+msgstr "权限"
+
+#: managers.py:231
+#, python-format
+msgid "Object \"%s\" is not a model and cannot be checked for access."
+msgstr "对象 \"%s\"不是模型并无法被检查可否访问"
+
+#: managers.py:252
+#, python-format
+msgid "Insufficient access for: %s"
+msgstr "访问权限不足：%s"
+
+#: models.py:56
+msgid "Access entry"
+msgstr "访问条目"
+
+#: models.py:57
+msgid "Access entries"
+msgstr "访问条目"
+
+#: models.py:61
+#, python-format
+msgid "Role \"%(role)s\" permission's for \"%(object)s\""
+msgstr "%(object)s的角色“%(role)s”的权限"
+
+#: permissions.py:10
+msgid "Edit ACLs"
+msgstr "编辑访问控制列表"
+
+#: permissions.py:13
+msgid "View ACLs"
+msgstr "查看访问控制列表"
+
+#: serializers.py:26 serializers.py:136
+msgid ""
+"API URL pointing to the list of permissions for this access control list."
+msgstr "API URL指向此访问控制列表的权限列表。"
+
+#: serializers.py:59
+msgid ""
+"API URL pointing to a permission in relation to the access control list to "
+"which it is attached. This URL is different than the canonical workflow URL."
+msgstr "API URL指向与其附加的访问控制列表相关的权限。此URL与规范工作流URL不同。"
+
+#: serializers.py:91
+msgid "Primary key of the new permission to grant to the access control list."
+msgstr "授予访问控制列表的新权限的主键。"
+
+#: serializers.py:115 serializers.py:191
+#, python-format
+msgid "No such permission: %s"
+msgstr "没有这样的权限：%s"
+
+#: serializers.py:130
+msgid ""
+"Comma separated list of permission primary keys to grant to this access "
+"control list."
+msgstr "逗号分隔的权限主键列表，用于授予此访问控制列表。"
+
+#: serializers.py:142
+msgid "Primary keys of the role to which this access control list binds to."
+msgstr "此访问控制列表绑定到的角色的主键。"
+
+#: views.py:62
+#, python-format
+msgid "New access control lists for: %s"
+msgstr "新的访问控制列表：%s"
+
+#: views.py:100
+#, python-format
+msgid "Delete ACL: %s"
+msgstr "删除访问控制列表：%s"
+
+#: views.py:147
+msgid "There are no ACLs for this object"
+msgstr "此对象没有访问控制列表"
+
+#: views.py:150
+msgid ""
+"ACL stands for Access Control List and is a precise method  to control user "
+"access to objects in the system."
+msgstr "ACL代表访问控制列表，是控制用户访问系统中对象的精确方法。"
+
+#: views.py:154
+#, python-format
+msgid "Access control lists for: %s"
+msgstr "访问控制列表：%s"
+
+#: views.py:170
+msgid "Granted permissions"
+msgstr "授予的权限"
+
+#: views.py:171
+msgid "Available permissions"
+msgstr "可用权限"
+
+#: views.py:215
+#, python-format
+msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
+msgstr "为\"%(object)s\"的角色 \"%(role)s\" 权限"
+
+#: views.py:224
+msgid ""
+"Disabled permissions are inherited from a parent object or directly granted "
+"to the role and can't be removed from this view. Inherited permissions need "
+"to be removed from the parent object's ACL or from them role via the Setup "
+"menu."
+msgstr ""
+
+#: workflow_actions.py:25
+msgid "Object type"
+msgstr "对象类型"
+
+#: workflow_actions.py:28
+msgid "Type of the object for which the access will be modified."
+msgstr "要为其修改访问权限的对象的类型。"
+
+#: workflow_actions.py:34
+msgid "Object ID"
+msgstr "对象ID"
+
+#: workflow_actions.py:37
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
+msgstr "要为其修改访问权限的对象的数字标识符。"
+
+#: workflow_actions.py:42 workflow_actions.py:157
+msgid "Roles"
+msgstr "角色"
+
+#: workflow_actions.py:44 workflow_actions.py:159
+msgid "Roles whose access will be modified."
+msgstr "访问权限将被修改的角色。"
+
+#: workflow_actions.py:51 workflow_actions.py:166
+msgid ""
+"Permissions to grant/revoke to/from the role for the object selected above."
+msgstr "授予/撤销给上述选定对象角色的权限。"
+
+#: workflow_actions.py:59
+msgid "Grant object access"
+msgstr "授予对象访问权限"
+
+#: workflow_actions.py:142
+msgid "Revoke object access"
+msgstr "收回对象访问权限"
+
+#: workflow_actions.py:174
+msgid "Grant document access"
+msgstr "授予文档访问权限"
+
+#: workflow_actions.py:213
+msgid "Revoke document access"
+msgstr "收回文档访问权限"

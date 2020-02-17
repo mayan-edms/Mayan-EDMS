@@ -4,8 +4,9 @@
 # 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # Marvin Haschker <marvin@haschker.me>, 2019
-# Mathias Behrle <mathiasb@m9s.biz>, 2019
+# Mathias Behrle <mathiasb@m9s.biz>, 2019-2020
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Robin Schubert <robin.schubert@gmx.de>, 2019
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -15,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:27-0400\n"
-"PO-Revision-Date: 2019-12-05 10:07+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-14 01:04-0400\n"
+"PO-Revision-Date: 2020-01-06 17:31+0000\n"
+"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -75,7 +76,7 @@ msgstr "Indexvorlagen"
 
 #: forms.py:34
 msgid "Template"
-msgstr ""
+msgstr "Vorlage"
 
 #: handlers.py:20
 msgid "Creation date"
@@ -100,7 +101,7 @@ msgstr "Indices wiederaufbauen"
 
 #: links.py:66 views.py:481
 msgid "Reset indexes"
-msgstr ""
+msgstr "Indizes zurücksetzen"
 
 #: links.py:83 views.py:87
 msgid "Create index"
@@ -124,7 +125,7 @@ msgstr "Neuer Unterknoten"
 
 #: models.py:36
 msgid "Short description of this index."
-msgstr ""
+msgstr "Kurze Beschreibung dieses Indexes."
 
 #: models.py:37
 msgid "Label"
@@ -310,11 +311,11 @@ msgstr "Keine Indizes vorhanden."
 #: views.py:161
 #, python-format
 msgid "Rebuild index: %s"
-msgstr "Indices wiederaufbauen: %s"
+msgstr "Index %s neu erstellen"
 
 #: views.py:179
 msgid "Index queued for rebuild."
-msgstr ""
+msgstr "Index zur Neuerstellung in die Warteschlange gestellt."
 
 #: views.py:191
 msgid "Available document types"
@@ -402,9 +403,9 @@ msgstr[1] "%(count)d Indizes zur Neuerstellung vorgemerkt."
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d Index zurückgesetzt."
+msgstr[1] "%(count)d Indizes zurückgesetzt."
 
 #: views.py:506
 msgid "Index templates for which their instances will be deleted."
-msgstr ""
+msgstr "Indexvorlagen, deren Instanzen gelöscht werden."

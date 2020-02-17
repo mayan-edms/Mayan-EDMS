@@ -1,0 +1,225 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:03-0400\n"
+"PO-Revision-Date: 2019-12-03 05:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:45 events.py:7 links.py:34
+msgid "Checkouts"
+msgstr ""
+
+#: dashboard_widgets.py:16 views.py:172
+msgid "Checked out documents"
+msgstr ""
+
+#: events.py:10
+msgid "Document automatically checked in"
+msgstr ""
+
+#: events.py:14
+msgid "Document checked in"
+msgstr ""
+
+#: events.py:17
+msgid "Document checked out"
+msgstr ""
+
+#: events.py:20
+msgid "Document forcefully checked in"
+msgstr ""
+
+#: exceptions.py:27
+msgid "Document already checked out."
+msgstr ""
+
+#: forms.py:28
+msgid "Document status"
+msgstr ""
+
+#: forms.py:39 models.py:44 models.py:136
+msgid "User"
+msgstr "Bruger"
+
+#: forms.py:43
+msgid "Check out time"
+msgstr ""
+
+#: forms.py:48
+msgid "Check out expiration"
+msgstr ""
+
+#: forms.py:53
+msgid "New versions allowed?"
+msgstr ""
+
+#: forms.py:54
+msgid "Yes"
+msgstr ""
+
+#: forms.py:54
+msgid "No"
+msgstr ""
+
+#: links.py:41
+msgid "Check out document"
+msgstr ""
+
+#: links.py:45
+msgid "Check out"
+msgstr ""
+
+#: links.py:52
+msgid "Check in document"
+msgstr ""
+
+#: links.py:56
+msgid "Check in"
+msgstr ""
+
+#: links.py:62
+msgid "Check in/out"
+msgstr ""
+
+#: literals.py:12
+msgid "Checked out"
+msgstr ""
+
+#: literals.py:13
+msgid "Checked in/available"
+msgstr ""
+
+#: models.py:31 models.py:114
+msgid "Document"
+msgstr ""
+
+#: models.py:34
+msgid "Check out date and time"
+msgstr ""
+
+#: models.py:38
+msgid "Amount of time to hold the document checked out in minutes."
+msgstr ""
+
+#: models.py:40
+msgid "Check out expiration date and time"
+msgstr ""
+
+#: models.py:49
+msgid "Do not allow new version of this document to be uploaded."
+msgstr ""
+
+#: models.py:51
+msgid "Block new version upload"
+msgstr ""
+
+#: models.py:59 permissions.py:7
+msgid "Document checkout"
+msgstr ""
+
+#: models.py:60
+msgid "Document checkouts"
+msgstr ""
+
+#: models.py:68
+msgid "Check out expiration date and time must be in the future."
+msgstr ""
+
+#: models.py:120
+msgid "New version block"
+msgstr ""
+
+#: models.py:121
+msgid "New version blocks"
+msgstr ""
+
+#: models.py:141
+msgid "Checkout time and date"
+msgstr ""
+
+#: models.py:146
+msgid "Checkout expiration"
+msgstr ""
+
+#: permissions.py:10
+msgid "Check in documents"
+msgstr ""
+
+#: permissions.py:13
+msgid "Forcefully check in documents"
+msgstr ""
+
+#: permissions.py:16
+msgid "Check out documents"
+msgstr ""
+
+#: permissions.py:19
+msgid "Check out details view"
+msgstr ""
+
+#: queues.py:13
+msgid "Checkouts periodic"
+msgstr ""
+
+#: queues.py:17
+msgid "Check expired checkouts"
+msgstr ""
+
+#: serializers.py:31
+msgid "Primary key of the document to be checked out."
+msgstr ""
+
+#: views.py:35
+#, python-format
+msgid "Check in %(count)d document"
+msgid_plural "Check in %(count)d documents"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:48
+#, python-format
+msgid "Check in document: %s"
+msgstr ""
+
+#: views.py:102
+#, python-format
+msgid "Checkout %(count)d document"
+msgid_plural "Checkout %(count)d documents"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:115
+#, python-format
+msgid "Check out document: %s"
+msgstr ""
+
+#: views.py:149
+#, python-format
+msgid "Check out details for document: %s"
+msgstr ""
+
+#: views.py:168
+msgid ""
+"Checking out a document, blocks certain operations for a predetermined "
+"amount of time."
+msgstr ""
+
+#: views.py:171
+msgid "No documents have been checked out"
+msgstr ""
+
+#: widgets.py:27
+msgid "Amount"
+msgstr ""

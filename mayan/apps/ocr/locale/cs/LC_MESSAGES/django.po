@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:29-0400\n"
-"PO-Revision-Date: 2019-10-18 09:07+0000\n"
+"POT-Creation-Date: 2020-02-14 01:07-0400\n"
+"PO-Revision-Date: 2020-02-06 09:49+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -18,16 +18,24 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:55 apps.py:130 apps.py:134 events.py:7 links.py:20 links.py:26
+#: apps.py:55 apps.py:140 apps.py:144 events.py:7 links.py:20 links.py:26
 #: permissions.py:7 queues.py:8 settings.py:10
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:122
+#: apps.py:107
+msgid "A generator returning the document's pages OCR content."
+msgstr "Generátor vracející obsah OCR stránek dokumentu."
+
+#: apps.py:108
+msgid "OCR content"
+msgstr "Obsah OCR"
+
+#: apps.py:132
 msgid "Date and time"
 msgstr "Datum a čas"
 
-#: apps.py:125 models.py:76
+#: apps.py:135 models.py:76
 msgid "Result"
 msgstr "Výsledek"
 

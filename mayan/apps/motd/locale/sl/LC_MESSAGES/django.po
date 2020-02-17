@@ -1,0 +1,119 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:06-0400\n"
+"PO-Revision-Date: 2020-02-14 02:29+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#: apps.py:35 links.py:36 permissions.py:7
+msgid "Message of the day"
+msgstr ""
+
+#: apps.py:57 apps.py:61
+msgid "None"
+msgstr "Brez"
+
+#: links.py:16 views.py:32
+msgid "Create message"
+msgstr ""
+
+#: links.py:22
+msgid "Delete"
+msgstr "Izbriši"
+
+#: links.py:27
+msgid "Edit"
+msgstr ""
+
+#: models.py:17
+msgid "Short description of this message."
+msgstr ""
+
+#: models.py:18
+msgid "Label"
+msgstr "Oznaka"
+
+#: models.py:21
+msgid "The actual message to be displayed."
+msgstr ""
+
+#: models.py:22 models.py:39
+msgid "Message"
+msgstr ""
+
+#: models.py:24
+msgid "Enabled"
+msgstr ""
+
+#: models.py:27
+msgid "Date and time after which this message will be displayed."
+msgstr ""
+
+#: models.py:28
+msgid "Start date time"
+msgstr ""
+
+#: models.py:32
+msgid "Date and time until when this message is to be displayed."
+msgstr ""
+
+#: models.py:33
+msgid "End date time"
+msgstr ""
+
+#: models.py:40 views.py:80
+msgid "Messages"
+msgstr ""
+
+#: permissions.py:10
+msgid "Create messages"
+msgstr ""
+
+#: permissions.py:13
+msgid "Delete messages"
+msgstr ""
+
+#: permissions.py:16
+msgid "Edit messages"
+msgstr ""
+
+#: permissions.py:19
+msgid "View messages"
+msgstr ""
+
+#: templates/motd/messages.html:8
+msgid "Messages of the day"
+msgstr ""
+
+#: views.py:45
+#, python-format
+msgid "Delete the message: %s?"
+msgstr ""
+
+#: views.py:58
+#, python-format
+msgid "Edit message: %s"
+msgstr ""
+
+#: views.py:75
+msgid ""
+"Messages are displayed in the login view. You can use messages to convery "
+"information about your organzation, announcements or usage guidelines for "
+"your users."
+msgstr ""
+
+#: views.py:79
+msgid "No messages available"
+msgstr ""

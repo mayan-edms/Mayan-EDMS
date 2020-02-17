@@ -7,17 +7,16 @@
 # Roberto Rosario, 2019
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2019
 # Yves Dubois <ydubois@gmail.com>, 2019
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2019
+# Frédéric Sheedy <sheedf@gmail.com>, 2020
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:26-0400\n"
+"POT-Creation-Date: 2020-02-14 01:03-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>, 2019\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,6 +69,9 @@ msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing dependencies under this environment."
 msgstr ""
+"Environnement utilisé pour créer des paquets distribuables du logiciel. Les "
+"utilisateurs finaux peuvent ignorer les dépendances manquantes dans cet "
+"environnement."
 
 #: classes.py:71
 msgid "Build"
@@ -240,6 +242,8 @@ msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
+"Affiche les différentes classes de dépendances. Les classes sont "
+"généralement divisées par langue ou par type de fichier de la dépendance."
 
 #: classes.py:802
 msgid "State"
@@ -260,7 +264,7 @@ msgstr ""
 "Les dépendances requises pour un environnement peuvent ne pas l'être pour un"
 " autre. Exemples d'environnements: production, développement."
 
-#: links.py:11 views.py:41
+#: links.py:11 views.py:19
 msgid "Check for updates"
 msgstr "Vérifier les mises à jour"
 
@@ -306,50 +310,30 @@ msgstr "Forcer l'installation même s'il est déjà installé."
 msgid "View dependencies"
 msgstr "Voir les dépendances"
 
-#: views.py:23
-#, python-format
-msgid "The version you are using is outdated. The latest version is %s"
-msgstr "La version que vous utilisez est obsolète. La dernière version est %s"
-
-#: views.py:28
-msgid "It is not possible to determine the latest version available."
-msgstr "Il n'est pas possible de déterminer la dernière disponible"
-
 #: views.py:33
-#, python-format
-msgid ""
-"Unexpected error trying to determine the latest version available. Make sure"
-" your installation has a connection to the internet; %s"
-msgstr ""
-
-#: views.py:38
-msgid "Your version is up-to-date."
-msgstr "Votre version est à jour"
-
-#: views.py:55
 #, python-format
 msgid "Entries for dependency group: %s"
 msgstr "Entrées pour le groupe de dépendance: %s"
 
-#: views.py:68 views.py:113
+#: views.py:46 views.py:91
 #, python-format
 msgid "Group %s not found."
 msgstr "Groupe %s introuvable."
 
-#: views.py:81
+#: views.py:59
 msgid "Dependency groups"
 msgstr "Groupes de dépendance"
 
-#: views.py:101
+#: views.py:79
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
 msgstr "Groupe de dépendance et entrée: %(group)s, %(entry)s"
 
-#: views.py:125
+#: views.py:103
 #, python-format
 msgid "Entry %s not found."
 msgstr "Entrée %s introuvable."
 
-#: views.py:143
+#: views.py:121
 msgid "Other packages licenses"
 msgstr "Licences des bibliothèques tierces"

@@ -4,6 +4,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from .literals import DEFAULT_LOCK_TIMEOUT_VALUE
 from .managers import LockManager
 from .settings import setting_default_lock_timeout
 
@@ -17,7 +18,7 @@ class Lock(models.Model):
         auto_now_add=True, verbose_name=_('Creation datetime')
     )
     timeout = models.IntegerField(
-        default=setting_default_lock_timeout.value, verbose_name=_('Timeout')
+        default=DEFAULT_LOCK_TIMEOUT_VALUE, verbose_name=_('Timeout')
     )
     name = models.CharField(
         max_length=64, unique=True, verbose_name=_('Name')

@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:15-0400\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
+"Last-Translator: Roberto Rosario, 2020\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#: apps.py:49 apps.py:110 apps.py:118 apps.py:121 events.py:7 forms.py:16
+#: links.py:24 menus.py:16 models.py:50 permissions.py:7 views.py:163
+#: workflow_actions.py:22
+msgid "Cabinets"
+msgstr ""
+
+#: events.py:11
+msgid "Cabinet created"
+msgstr ""
+
+#: events.py:14
+msgid "Cabinet edited"
+msgstr ""
+
+#: events.py:17
+msgid "Document added to cabinet"
+msgstr ""
+
+#: events.py:20
+msgid "Document removed from cabinet"
+msgstr ""
+
+#: links.py:30 links.py:44 workflow_actions.py:76
+msgid "Remove from cabinets"
+msgstr ""
+
+#: links.py:35 links.py:40 workflow_actions.py:31
+msgid "Add to cabinets"
+msgstr ""
+
+#: links.py:63
+msgid "Add new level"
+msgstr ""
+
+#: links.py:69 views.py:45
+msgid "Create cabinet"
+msgstr ""
+
+#: links.py:75
+msgid "Delete"
+msgstr "Izbriši"
+
+#: links.py:80
+msgid "Edit"
+msgstr ""
+
+#: links.py:88
+msgid "All"
+msgstr ""
+
+#: links.py:92
+msgid "Details"
+msgstr "Podrobnosti"
+
+#: methods.py:18
+msgid "Return a list of cabinets containing the document"
+msgstr ""
+
+#: methods.py:20
+msgid "get_cabinets()"
+msgstr ""
+
+#: models.py:36
+msgid "A short text used to identify the cabinet."
+msgstr ""
+
+#: models.py:37 search.py:16
+msgid "Label"
+msgstr "Oznaka"
+
+#: models.py:41
+msgid "Documents"
+msgstr "Dokumenti"
+
+#: models.py:49 models.py:138 serializers.py:138 workflow_actions.py:68
+msgid "Cabinet"
+msgstr ""
+
+#: models.py:139 serializers.py:139
+msgid "Parent and Label"
+msgstr ""
+
+#: models.py:146 serializers.py:145
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: models.py:163
+msgid "Document cabinet"
+msgstr ""
+
+#: models.py:164
+msgid "Document cabinets"
+msgstr ""
+
+#: permissions.py:12
+msgid "Add documents to cabinets"
+msgstr ""
+
+#: permissions.py:15
+msgid "Create cabinets"
+msgstr ""
+
+#: permissions.py:18
+msgid "Delete cabinets"
+msgstr ""
+
+#: permissions.py:21
+msgid "Edit cabinets"
+msgstr ""
+
+#: permissions.py:24
+msgid "Remove documents from cabinets"
+msgstr ""
+
+#: permissions.py:27
+msgid "View cabinets"
+msgstr ""
+
+#: serializers.py:19
+msgid "List of children cabinets."
+msgstr ""
+
+#: serializers.py:22
+msgid "Number of documents on this cabinet level."
+msgstr ""
+
+#: serializers.py:26
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr ""
+
+#: serializers.py:32
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
+msgstr ""
+
+#: serializers.py:68 serializers.py:179
+msgid "Comma separated list of document primary keys to add to this cabinet."
+msgstr ""
+
+#: serializers.py:158
+msgid ""
+"API URL pointing to a document in relation to the cabinet storing it. This "
+"URL is different than the canonical document URL."
+msgstr ""
+
+#: templates/cabinets/cabinet_details.html:17
+msgid "Navigation:"
+msgstr ""
+
+#: views.py:60
+#, python-format
+msgid "Add new level to: %s"
+msgstr ""
+
+#: views.py:87
+#, python-format
+msgid "Delete the cabinet: %s?"
+msgstr ""
+
+#: views.py:122
+msgid ""
+"Cabinet levels can contain documents or other cabinet sub levels. To add "
+"documents to a cabinet, select the cabinet view of a document view."
+msgstr ""
+
+#: views.py:126
+msgid "This cabinet level is empty"
+msgstr ""
+
+#: views.py:129
+#, python-format
+msgid "Details of cabinet: %s"
+msgstr ""
+
+#: views.py:149
+#, python-format
+msgid "Edit cabinet: %s"
+msgstr ""
+
+#: views.py:169
+msgid ""
+"Cabinets are a multi-level method to organize documents. Each cabinet can "
+"contain documents as well as other sub level cabinets."
+msgstr ""
+
+#: views.py:173
+msgid "No cabinets available"
+msgstr ""
+
+#: views.py:205
+msgid "Documents can be added to many cabinets."
+msgstr ""
+
+#: views.py:208
+msgid "This document is not in any cabinet"
+msgstr ""
+
+#: views.py:211
+#, python-format
+msgid "Cabinets containing document: %s"
+msgstr ""
+
+#: views.py:223
+#, python-format
+msgid "Add to cabinet request performed on %(count)d document"
+msgstr ""
+
+#: views.py:226
+#, python-format
+msgid "Add to cabinet request performed on %(count)d documents"
+msgstr ""
+
+#: views.py:233
+msgid "Add"
+msgstr ""
+
+#: views.py:235
+#, python-format
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: views.py:248
+#, python-format
+msgid "Add document \"%s\" to cabinets"
+msgstr ""
+
+#: views.py:259
+msgid "Cabinets to which the selected documents will be added."
+msgstr ""
+
+#: views.py:288
+#, python-format
+msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
+msgstr ""
+
+#: views.py:300
+#, python-format
+msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+msgstr ""
+
+#: views.py:313
+#, python-format
+msgid "Remove from cabinet request performed on %(count)d document"
+msgstr ""
+
+#: views.py:316
+#, python-format
+msgid "Remove from cabinet request performed on %(count)d documents"
+msgstr ""
+
+#: views.py:323
+msgid "Remove"
+msgstr ""
+
+#: views.py:325
+#, python-format
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: views.py:338
+#, python-format
+msgid "Remove document \"%s\" from cabinets"
+msgstr ""
+
+#: views.py:349
+msgid "Cabinets from which the selected documents will be removed."
+msgstr ""
+
+#: views.py:377
+#, python-format
+msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
+msgstr ""
+
+#: views.py:389
+#, python-format
+msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+msgstr ""
+
+#: wizard_steps.py:17
+msgid "Select cabinets"
+msgstr ""
+
+#: wizard_steps.py:31 workflow_actions.py:25
+msgid "Cabinets to which the document will be added."
+msgstr ""
+
+#: workflow_actions.py:71
+msgid "Cabinets from which the document will be removed."
+msgstr ""

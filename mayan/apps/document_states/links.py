@@ -44,6 +44,13 @@ link_workflow_template_edit = Link(
     permissions=(permission_workflow_edit,),
     text=_('Edit'), view='document_states:workflow_template_edit',
 )
+link_workflow_template_launch = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_template_launch',
+    permissions=(permission_workflow_tools,),
+    text=_('Launch workflow'),
+    view='document_states:workflow_template_launch'
+)
 link_workflow_template_list = Link(
     icon_class_path='mayan.apps.document_states.icons.icon_workflow_template_list',
     permissions=(permission_workflow_view,), text=_('Workflows'),
@@ -88,13 +95,13 @@ link_workflow_template_state_action_selection = Link(
 # Workflow template states
 
 link_workflow_template_state_create = Link(
-    args='resolved_object.pk',
+    args='workflow.pk',
     icon_class_path='mayan.apps.document_states.icons.icon_workflow_state_create',
     permissions=(permission_workflow_edit,), text=_('Create state'),
     view='document_states:workflow_template_state_create',
 )
 link_workflow_template_state_delete = Link(
-    args='object.pk',
+    args='resolved_object.pk',
     icon_class_path='mayan.apps.document_states.icons.icon_workflow_state_delete',
     permissions=(permission_workflow_edit,),
     tags='dangerous', text=_('Delete'),
@@ -116,7 +123,7 @@ link_workflow_template_state_list = Link(
 # Workflow template transitions
 
 link_workflow_template_transition_create = Link(
-    args='resolved_object.pk',
+    args='workflow.pk',
     icon_class_path='mayan.apps.document_states.icons.icon_workflow_transition_create',
     permissions=(permission_workflow_edit,), text=_('Create transition'),
     view='document_states:workflow_template_transition_create',

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:29-0400\n"
+"POT-Creation-Date: 2020-02-14 01:07-0400\n"
 "PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:43 events.py:8 models.py:36 models.py:106 permissions.py:7
+#: apps.py:47 events.py:8 models.py:36 models.py:106 permissions.py:7
 msgid "Permissions"
 msgstr "Uprawnienia"
 
-#: classes.py:84
+#: classes.py:87
 msgid "Insufficient permissions."
 msgstr "Niewystarczające uprawnienia."
 
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Role edited"
 msgstr ""
 
-#: links.py:16 links.py:40 models.py:117 views.py:168
+#: links.py:16 links.py:40 models.py:117 views.py:171
 msgid "Roles"
 msgstr "Role"
 
@@ -162,17 +162,17 @@ msgstr "Dostępne uprawnienia"
 msgid "Granted permissions"
 msgstr "Przyznane uprawnienia"
 
-#: views.py:140
+#: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
 
-#: views.py:143
+#: views.py:146
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Uprawnienia dla roli: %s"
 
-#: views.py:160
+#: views.py:163
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -180,6 +180,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr ""
 
-#: views.py:167
+#: views.py:170
 msgid "There are no roles"
 msgstr ""

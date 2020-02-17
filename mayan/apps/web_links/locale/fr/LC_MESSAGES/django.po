@@ -6,16 +6,15 @@
 # Translators:
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2019
 # Yves Dubois <ydubois@gmail.com>, 2019
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Frédéric Sheedy <sheedf@gmail.com>, 2020
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:31-0400\n"
+"POT-Creation-Date: 2020-02-14 01:09-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2019\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +65,7 @@ msgstr "Consulter"
 
 #: models.py:23
 msgid "A short text describing the web link."
-msgstr ""
+msgstr "Un court texte décrivant le lien Web."
 
 #: models.py:24
 msgid "Label"
@@ -74,7 +73,7 @@ msgstr "Libellé"
 
 #: models.py:28
 msgid "Template that will be used to craft the final URL of the web link."
-msgstr ""
+msgstr "Modèle qui sera utilisé pour créer l'URL finale du lien Web."
 
 #: models.py:30
 msgid "Template"
@@ -106,7 +105,7 @@ msgstr "Afficher les liens web existants"
 
 #: permissions.py:22
 msgid "View web link instances"
-msgstr ""
+msgstr "Afficher les instances de lien Web"
 
 #: views.py:44
 msgid "Available web links"
@@ -132,7 +131,7 @@ msgstr "Types de documents actifs"
 #: views.py:130
 #, python-format
 msgid "Document type for which to enable web link: %s"
-msgstr ""
+msgstr "Type de document pour lequel vous activez le lien Web: %s"
 
 #: views.py:147 views.py:176
 msgid ""

@@ -5,6 +5,7 @@
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # Mathias Behrle <mathiasb@m9s.biz>, 2018-2019
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -14,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:27-0400\n"
-"PO-Revision-Date: 2019-12-31 08:31+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-14 01:04-0400\n"
+"PO-Revision-Date: 2020-01-06 17:34+0000\n"
+"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -152,7 +153,7 @@ msgstr "Datum der Signierung"
 
 #: models.py:47
 msgid "ID of the key that will be used to sign the document."
-msgstr ""
+msgstr "ID des Schlüssels, mit dem das Dokument signiert wird."
 
 #: models.py:57
 msgid "Public key fingerprint"
@@ -184,7 +185,7 @@ msgstr "Dokumentenversion der eingebetteten Unterschriften"
 
 #: models.py:135
 msgid "Signature file previously generated."
-msgstr ""
+msgstr "Signaturdatei, die zuvor generiert wurde."
 
 #: models.py:137
 msgid "Signature file"
@@ -268,7 +269,7 @@ msgstr "Dokumentenversion wurde erfolgreich signiert."
 
 #: views.py:118 views.py:207
 msgid "Sign"
-msgstr ""
+msgstr "Signieren"
 
 #: views.py:120
 #, python-format
@@ -325,18 +326,18 @@ msgstr "Überprüfung der Unterschriften erfolgreich eingereiht."
 
 #: workflow_actions.py:24
 msgid "Private key that will be used to sign the document version."
-msgstr ""
+msgstr "Privater Schlüssel, der zum Signieren der Dokumentversion verwendet wird."
 
 #: workflow_actions.py:39
 msgid "Sign document (detached)"
-msgstr ""
+msgstr "Dokument signieren (abgetrennt)"
 
 #: workflow_actions.py:51
 msgid ""
 "Document has no version to sign. You might be trying to use this action in "
 "an initial state before the created document is yet to be processed."
-msgstr ""
+msgstr "Dokument hat keine Version zum Signieren. Möglicherweise versuchen Sie, diese Aktion in einem Anfangszustand zu verwenden, bevor das erstellte Dokument noch verarbeitet werden muss."
 
 #: workflow_actions.py:84
 msgid "Sign document (embedded)"
-msgstr ""
+msgstr "Dokument signieren (eingebettet)"

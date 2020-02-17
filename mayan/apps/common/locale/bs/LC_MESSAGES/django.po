@@ -1,0 +1,460 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
+# www.ping.ba <jomer@ping.ba>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:03-0400\n"
+"PO-Revision-Date: 2020-02-14 02:20+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: apps.py:89 permissions_runtime.py:7 settings.py:15
+msgid "Common"
+msgstr "Zajednicki"
+
+#: classes.py:185
+msgid "Model properties"
+msgstr ""
+
+#: classes.py:190
+msgid "Model fields"
+msgstr ""
+
+#: classes.py:233
+msgid "Model related fields"
+msgstr ""
+
+#: dependencies.py:308
+msgid "Used to allow offline translation of the code text strings."
+msgstr ""
+
+#: dependencies.py:313
+msgid "Provides style checking."
+msgstr ""
+
+#: dependencies.py:318
+msgid "Command line environment with autocompletion."
+msgstr ""
+
+#: dependencies.py:323
+msgid "Checks proper formatting of the README file."
+msgstr ""
+
+#: forms.py:27
+msgid "Selection"
+msgstr "Odabir"
+
+#: forms.py:103
+msgid "None"
+msgstr "Nijedno"
+
+#: generics.py:148
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:153
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:286
+msgid "Add all"
+msgstr ""
+
+#: generics.py:295
+msgid "Add"
+msgstr "Dodati"
+
+#: generics.py:305
+msgid "Remove all"
+msgstr ""
+
+#: generics.py:314
+msgid "Remove"
+msgstr "Ukloniti"
+
+#: generics.py:524
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr ""
+
+#: generics.py:546
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "%(object)s nije kreiran, greška:%(error)s"
+
+#: generics.py:559
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "%(object)s kreiran uspešno."
+
+#: generics.py:598
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "%(object)s nije izbrisan, greška:%(error)s."
+
+#: generics.py:607
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "%(object)s izbrisan uspešno."
+
+#: generics.py:743
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "%(object)s nije ažuriran, greška:%(error)s."
+
+#: generics.py:754
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "%(object)s ažuriran uspešno."
+
+#: links.py:36
+msgid "About this"
+msgstr "O ovome"
+
+#: links.py:39
+msgid "Get the book"
+msgstr ""
+
+#: links.py:44
+msgid "Locale profile"
+msgstr "Lokalni profil"
+
+#: links.py:49
+msgid "Edit locale profile"
+msgstr "Uredi lokalni profil"
+
+#: links.py:54
+msgid "Documentation"
+msgstr "Dokumentacija"
+
+#: links.py:59
+msgid "Errors"
+msgstr "Greške"
+
+#: links.py:65
+msgid "Clear all"
+msgstr "Izbriši sve"
+
+#: links.py:69
+msgid "Forum"
+msgstr "Forum"
+
+#: links.py:73 views.py:105
+msgid "License"
+msgstr "Licence"
+
+#: links.py:76
+msgid "Setup"
+msgstr "Setup"
+
+#: links.py:79
+msgid "Source code"
+msgstr "Izvorni kod"
+
+#: links.py:83
+msgid "Support"
+msgstr "Podrška"
+
+#: links.py:87 queues.py:15 views.py:214
+msgid "Tools"
+msgstr "Alati"
+
+#: literals.py:14
+msgid ""
+"This feature has been deprecated and will be removed in a future version."
+msgstr ""
+
+#: literals.py:17
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr "Backend baze podataka je podešeno da koristi SKLite. SKLite treba koristiti samo za razvoj i testiranje, a ne za proizvodnju."
+
+#: literals.py:35
+msgid "Days"
+msgstr "Dana"
+
+#: literals.py:36
+msgid "Hours"
+msgstr "Sati"
+
+#: literals.py:37
+msgid "Minutes"
+msgstr "Minuta"
+
+#: menus.py:10
+msgid "System"
+msgstr "Sistem"
+
+#: menus.py:12 menus.py:13
+msgid "Facet"
+msgstr ""
+
+#: menus.py:16
+msgid "Actions"
+msgstr "Akcije"
+
+#: menus.py:17
+msgid "Secondary"
+msgstr ""
+
+#: menus.py:22 models.py:93
+msgid "User"
+msgstr "Korisnik"
+
+#: mixins.py:292
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: mixins.py:405
+msgid "Object"
+msgstr "Objekat"
+
+#: models.py:28
+msgid "Namespace"
+msgstr "Imenovani prostor"
+
+#: models.py:39 models.py:63
+msgid "Date time"
+msgstr "Datum vreme"
+
+#: models.py:41 views.py:151
+msgid "Result"
+msgstr "Rezultat"
+
+#: models.py:47
+msgid "Error log entry"
+msgstr "Greška u unosu dnevnika"
+
+#: models.py:48
+msgid "Error log entries"
+msgstr "Greška u unosima dnevnika"
+
+#: models.py:59
+msgid "File"
+msgstr "Datoteka"
+
+#: models.py:61
+msgid "Filename"
+msgstr "Naziv datoteke"
+
+#: models.py:67
+msgid "Shared uploaded file"
+msgstr "Deljeni otpremljeni fajl"
+
+#: models.py:68
+msgid "Shared uploaded files"
+msgstr "Deljeni otpremljeni fajlovi"
+
+#: models.py:97
+msgid "Timezone"
+msgstr "Vremenska zona"
+
+#: models.py:100
+msgid "Language"
+msgstr "Jezik"
+
+#: models.py:106
+msgid "User locale profile"
+msgstr "Koristnički lokalni profil"
+
+#: models.py:107
+msgid "User locale profiles"
+msgstr "Koristnički lokalni profili"
+
+#: permissions_runtime.py:10
+msgid "View error log"
+msgstr "Pogledajte dnevnik grešaka"
+
+#: queues.py:13
+msgid "Default"
+msgstr "default"
+
+#: queues.py:17
+msgid "Common periodic"
+msgstr "Vremenski zajednički"
+
+#: queues.py:22
+msgid "Delete stale uploads"
+msgstr "Obriši stare otpreme"
+
+#: settings.py:22
+msgid "Automatically enable logging to all apps."
+msgstr "Automatski omogućite evidenciju za sve aplikacije."
+
+#: settings.py:28
+msgid ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Vreme za odlaganje pozadinskih zadataka koji zavise od baze podataka obavezuju se da se propagiraju."
+
+#: settings.py:36
+msgid ""
+"A list of strings designating all applications that are to be removed from "
+"the list normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr ""
+
+#: settings.py:46
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr ""
+
+#: settings.py:55
+msgid ""
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr ""
+
+#: settings.py:64
+msgid "The number objects that will be displayed per page."
+msgstr ""
+
+#: settings.py:71
+msgid "Enable error logging outside of the system error logging capabilities."
+msgstr "Omogućite prijavljivanje grešaka izvan sistemskih mogućnosti evidentiranja grešaka."
+
+#: settings.py:78
+msgid "Path to the logfile that will track errors during production."
+msgstr "Put do log datoteke koja će pratiti greške tokom proizvodnje"
+
+#: settings.py:85
+msgid "Name to be displayed in the main menu."
+msgstr ""
+
+#: settings.py:91
+msgid "URL of the installation or homepage of the project."
+msgstr ""
+
+#: settings.py:97
+msgid "A storage backend that all workers can use to share files."
+msgstr " Backend skladišta koju svi radnici mogu koristiti za dijeljenje datoteka."
+
+#: templatetags/common_tags.py:29
+msgid "Confirm delete"
+msgstr "Potvrditi brisanje"
+
+#: templatetags/common_tags.py:34
+#, python-format
+msgid "Edit %s"
+msgstr ""
+
+#: templatetags/common_tags.py:37
+msgid "Confirm"
+msgstr "Potvrditi"
+
+#: templatetags/common_tags.py:41
+#, python-format
+msgid "Details for: %s"
+msgstr ""
+
+#: templatetags/common_tags.py:45
+#, python-format
+msgid "Edit: %s"
+msgstr ""
+
+#: templatetags/common_tags.py:48
+msgid "Create"
+msgstr "Kreirati"
+
+#: validators.py:46
+msgid "Enter a valid JSON value."
+msgstr ""
+
+#: validators.py:70
+msgid "Enter a valid YAML value."
+msgstr "Unesite važeći IAML"
+
+#: validators.py:86
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
+msgstr "Unesite važeći 'interni naziv' koji se sastoji od slova, brojeva i podčrtava."
+
+#: views.py:27
+msgid "About"
+msgstr "O "
+
+#: views.py:40
+msgid "Current user locale profile details"
+msgstr "Detalji lokalnog profila trenutnog korisnika"
+
+#: views.py:46
+msgid "Edit current user locale profile details"
+msgstr "Uredi detalje lokalnog profila trenutnog korisnika"
+
+#: views.py:96
+msgid "Dashboard"
+msgstr "Komandna tabla"
+
+#: views.py:114
+#, python-format
+msgid "Clear error log entries for: %s"
+msgstr "Obrišite unose evidencije grešaka za:%s"
+
+#: views.py:131
+msgid "Object error log cleared successfully"
+msgstr "Dnevnik grešaka objekata je uspešno obrisan"
+
+#: views.py:150
+msgid "Date and time"
+msgstr "Datum i vreme"
+
+#: views.py:156
+msgid ""
+"This view displays the error log of different object. An empty list is a "
+"good thing."
+msgstr ""
+
+#: views.py:160
+msgid "There are no error log entries"
+msgstr ""
+
+#: views.py:163
+#, python-format
+msgid "Error log entries for: %s"
+msgstr "Unos log grešaka za:%s"
+
+#: views.py:191
+msgid "No setup options available."
+msgstr ""
+
+#: views.py:193
+msgid ""
+"No results here means that don't have the required permissions to perform "
+"administrative task."
+msgstr ""
+
+#: views.py:199
+msgid "Setup items"
+msgstr "Stavke setup-a"
+
+#: views.py:201
+msgid "Here you can configure all aspects of the system."
+msgstr ""
+
+#: views.py:216
+msgid "These modules are used to do system maintenance."
+msgstr ""

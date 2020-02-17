@@ -12,6 +12,7 @@ from django.urls import reverse
 from django.utils.http import urlunquote_plus
 
 from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.common.settings import setting_home_view
 from mayan.apps.smart_settings.classes import Namespace
 from mayan.apps.user_management.permissions import permission_user_edit
 from mayan.apps.user_management.tests.literals import TEST_USER_PASSWORD_EDITED
@@ -67,6 +68,20 @@ class UserLoginTestCase(GenericViewTestCase):
 
     def _request_authenticated_view(self):
         return self.get(path=self.authenticated_url)
+
+    def _request_password_reset_get_view(self):
+        return self.get(
+            viewname='authentication:password_reset_view', data={
+                'email': self._test_case_superuser.email,
+            }
+        )
+
+    def _request_password_reset_post_view(self):
+        return self.post(
+            viewname='authentication:password_reset_view', data={
+                'email': self._test_case_superuser.email,
+            }
+        )
 
     @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_non_authenticated_request(self):
@@ -194,7 +209,9 @@ class UserLoginTestCase(GenericViewTestCase):
                 self.client.session.get_expiry_age(),
                 setting_maximum_session_length.value
             )
-            self.assertFalse(self.client.session.get_expire_at_browser_close())
+            self.assertFalse(
+                self.client.session.get_expire_at_browser_close()
+            )
 
     @override_settings(AUTHENTICATION_LOGIN_METHOD='email')
     def test_email_dont_remember_me(self):
@@ -215,11 +232,7 @@ class UserLoginTestCase(GenericViewTestCase):
     @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_password_reset(self):
         self.logout()
-        response = self.post(
-            viewname='authentication:password_reset_view', data={
-                'email': self._test_case_superuser.email,
-            }
-        )
+        response = self._request_password_reset_post_view()
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(len(mail.outbox), 1)
@@ -236,7 +249,8 @@ class UserLoginTestCase(GenericViewTestCase):
         new_password = 'new_password_123'
         response = self.post(
             viewname='authentication:password_reset_confirm_view',
-            kwargs={'uidb64': uidb64, 'token': INTERNAL_RESET_URL_TOKEN}, data={
+            kwargs={'uidb64': uidb64, 'token': INTERNAL_RESET_URL_TOKEN},
+            data={
                 'new_password1': new_password,
                 'new_password2': new_password
             }
@@ -245,7 +259,9 @@ class UserLoginTestCase(GenericViewTestCase):
         self.assertNotIn(INTERNAL_RESET_SESSION_TOKEN, self.client.session)
 
         self._test_case_superuser.refresh_from_db()
-        self.assertTrue(self._test_case_superuser.check_password(new_password))
+        self.assertTrue(
+            self._test_case_superuser.check_password(new_password)
+        )
 
     def test_username_login_redirect(self):
         TEST_REDIRECT_URL = reverse(viewname='common:about_view')
@@ -261,6 +277,49 @@ class UserLoginTestCase(GenericViewTestCase):
         )
 
         self.assertEqual(response.redirect_chain, [(TEST_REDIRECT_URL, 302)])
+
+    @override_settings(AUTHENTICATION_DISABLE_PASSWORD_RESET=False)
+    def test_password_reset_disable_false_get_view(self):
+        self.logout()
+        response = self._request_password_reset_get_view()
+
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(len(mail.outbox), 0)
+
+    @override_settings(AUTHENTICATION_DISABLE_PASSWORD_RESET=True)
+    def test_password_reset_disable_true_get_view(self):
+        self.logout()
+        response = self._request_password_reset_get_view()
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            response.url, reverse(viewname=setting_home_view.value)
+        )
+
+        self.assertEqual(len(mail.outbox), 0)
+
+    @override_settings(AUTHENTICATION_DISABLE_PASSWORD_RESET=False)
+    def test_password_reset_disable_false_post_view(self):
+        self.logout()
+        response = self._request_password_reset_post_view()
+
+        self.assertEqual(response.status_code, 302)
+        self.assertNotEqual(response.url, setting_home_view.value)
+
+        self.assertEqual(len(mail.outbox), 1)
+
+    @override_settings(AUTHENTICATION_DISABLE_PASSWORD_RESET=True)
+    def test_password_reset_disable_true_post_view(self):
+        self.logout()
+        response = self._request_password_reset_post_view()
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            response.url, reverse(viewname=setting_home_view.value)
+        )
+
+        self.assertEqual(len(mail.outbox), 0)
 
 
 class UserViewTestCase(UserPasswordViewTestMixin, GenericViewTestCase):

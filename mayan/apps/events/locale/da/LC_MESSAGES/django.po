@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:05-0400\n"
+"PO-Revision-Date: 2020-01-29 08:08+0000\n"
+"Last-Translator: Allan Møller <it@brandts.dk>\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:29 links.py:49 links.py:54 links.py:59 permissions.py:7 views.py:36
+msgid "Events"
+msgstr ""
+
+#: apps.py:41 apps.py:67
+msgid "Date and time"
+msgstr ""
+
+#: apps.py:44 apps.py:70
+msgid "Actor"
+msgstr ""
+
+#: apps.py:47 apps.py:74
+msgid "Event"
+msgstr ""
+
+#: apps.py:50 apps.py:78
+msgid "Target"
+msgstr ""
+
+#: apps.py:54
+msgid "Action object"
+msgstr ""
+
+#: apps.py:59 forms.py:12 forms.py:69
+msgid "Namespace"
+msgstr ""
+
+#: apps.py:62 forms.py:16 forms.py:73
+msgid "Label"
+msgstr "Etiket"
+
+#: apps.py:83
+msgid "Seen"
+msgstr ""
+
+#: classes.py:71
+#, python-format
+msgid "Unknown or obsolete event type: %s"
+msgstr ""
+
+#: forms.py:20 forms.py:77
+msgid "Subscription"
+msgstr ""
+
+#: forms.py:22 forms.py:79
+msgid "No"
+msgstr ""
+
+#: forms.py:23 forms.py:80
+msgid "Subscribed"
+msgstr ""
+
+#: html_widgets.py:57
+msgid "System"
+msgstr ""
+
+#: links.py:45
+msgid "My events"
+msgstr ""
+
+#: links.py:63 models.py:66 views.py:80
+msgid "Event subscriptions"
+msgstr ""
+
+#: links.py:67
+msgid "Mark as seen"
+msgstr ""
+
+#: links.py:71
+msgid "Mark all as seen"
+msgstr ""
+
+#: links.py:76
+msgid "Subscriptions"
+msgstr ""
+
+#: models.py:24
+msgid "Name"
+msgstr "Navn"
+
+#: models.py:28
+msgid "Stored event type"
+msgstr ""
+
+#: models.py:29
+msgid "Stored event types"
+msgstr ""
+
+#: models.py:55 models.py:82 models.py:112
+msgid "User"
+msgstr "Bruger"
+
+#: models.py:59 models.py:116
+msgid "Event type"
+msgstr "Hændelsestype"
+
+#: models.py:65
+msgid "Event subscription"
+msgstr ""
+
+#: models.py:86
+msgid "Action"
+msgstr ""
+
+#: models.py:88
+msgid "Read"
+msgstr ""
+
+#: models.py:92
+msgid "Notification"
+msgstr ""
+
+#: models.py:93 views.py:119
+msgid "Notifications"
+msgstr ""
+
+#: models.py:122
+msgid "Object event subscription"
+msgstr ""
+
+#: models.py:123
+msgid "Object event subscriptions"
+msgstr ""
+
+#: permissions.py:10
+msgid "Access the events of an object"
+msgstr ""
+
+#: views.py:59
+#, python-format
+msgid "Error updating event subscription; %s"
+msgstr ""
+
+#: views.py:64
+msgid "Event subscriptions updated successfully"
+msgstr ""
+
+#: views.py:114
+msgid "Subscribe to global or object events to receive notifications."
+msgstr ""
+
+#: views.py:117
+msgid "There are no notifications"
+msgstr ""
+
+#: views.py:164
+msgid ""
+"Events are actions that have been performed to this object or using this "
+"object."
+msgstr ""
+
+#: views.py:167
+msgid "There are no events for this object"
+msgstr ""
+
+#: views.py:169
+#, python-format
+msgid "Events for: %s"
+msgstr ""
+
+#: views.py:209
+#, python-format
+msgid "Error updating object event subscription; %s"
+msgstr ""
+
+#: views.py:215
+msgid "Object event subscriptions updated successfully"
+msgstr ""
+
+#: views.py:248
+#, python-format
+msgid "Event subscriptions for: %s"
+msgstr ""
+
+#: views.py:280
+#, python-format
+msgid "Events of type: %s"
+msgstr ""

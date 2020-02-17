@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
-"PO-Revision-Date: 2019-12-18 04:33+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-14 01:07-0400\n"
+"PO-Revision-Date: 2020-01-31 18:34+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,11 +39,11 @@ msgstr "Valeur"
 
 #: classes.py:352
 msgid "Overridden"
-msgstr ""
+msgstr "Remplacé"
 
 #: classes.py:354
 msgid "Is this settings being overridden by an environment variable?"
-msgstr ""
+msgstr "Est-ce que ces paramètres sont remplacés par une variable d'environnement?"
 
 #: forms.py:14
 msgid "Enter the new setting value."
@@ -116,7 +116,7 @@ msgid ""
 "dictionary containing the options for an individual database. The DATABASES "
 "setting must configure a default database; any number of additional "
 "databases may also be specified."
-msgstr ""
+msgstr "Un dictionnaire contenant les paramètres de toutes les bases de données à utiliser avec Django. Il s'agit d'un dictionnaire imbriqué dont le contenu associe un alias de base de données à un dictionnaire contenant les options d'une base de données individuelle. Le paramètre DATABASES doit configurer une base de données par défaut; un certain nombre de bases de données supplémentaires peuvent également être spécifiées."
 
 #: settings.py:66
 msgid ""
@@ -188,7 +188,7 @@ msgid ""
 " SMTP server. This is used for explicit TLS connections, generally on port "
 "587. If you are experiencing hanging connections, see the implicit TLS "
 "setting EMAIL_USE_SSL."
-msgstr ""
+msgstr "Par défaut: False. Indique s'il faut utiliser une connexion TLS (sécurisée) lors des connexions au serveur SMTP. Ceci est utilisé pour les connexions TLS explicites, généralement sur le port 587. Si vous rencontrez des connexions suspendues, consultez le paramètre TLS implicite EMAIL_USE_SSL."
 
 #: settings.py:167
 msgid ""
@@ -205,7 +205,7 @@ msgid ""
 "Default: 2621440 (i.e. 2.5 MB). The maximum size (in bytes) that an upload "
 "will be before it gets streamed to the file system. See Managing files for "
 "details. See also DATA_UPLOAD_MAX_MEMORY_SIZE."
-msgstr ""
+msgstr "Par défaut: 2621440 (soit 2,5 Mo). La taille maximale (en octets) d'un téléchargement avant qu'il ne soit diffusé sur le système de fichiers. Voir Gestion des fichiers pour plus de détails. Voir aussi DATA_UPLOAD_MAX_MEMORY_SIZE."
 
 #: settings.py:189
 msgid ""
@@ -214,7 +214,7 @@ msgid ""
 "accepts named URL patterns which can be used to reduce configuration "
 "duplication since you don't have to define the URL in two places (settings "
 "and URLconf)."
-msgstr ""
+msgstr "Par défaut: '/accounts/login/' L'URL où les demandes sont redirigées pour la connexion, en particulier lors de l'utilisation de login_required(). Ce paramètre accepte également les modèles d'URL qui peuvent être utilisés pour réduire la duplication de la configuration, car vous n'avez pas à définir l'URL à deux endroits (paramètres et configuration d'URL)."
 
 #: settings.py:201
 msgid ""
@@ -250,7 +250,7 @@ msgid ""
 "specifies which languages are available for language selection. Generally, "
 "the default value should suffice. Only set this setting if you want to "
 "restrict language selection to a subset of the Django-provided languages. "
-msgstr ""
+msgstr "Une liste de toutes les langues disponibles. Elle contient la liste des langues au format (code de langue, nom de langue) par exemple ('ja', 'japonais'). Ceci spécifie les langues disponibles pour la sélection de la langue. Généralement, la valeur par défaut devrait suffire. Définissez ce paramètre uniquement si vous souhaitez restreindre la sélection de la langue à un sous-ensemble des langues fournies par Django."
 
 #: settings.py:250
 msgid ""

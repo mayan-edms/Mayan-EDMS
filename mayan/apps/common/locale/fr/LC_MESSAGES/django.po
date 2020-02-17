@@ -6,7 +6,7 @@
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016-2018
 # Franck Boucher <boucher.fk@gmail.com>, 2016
 # Frédéric Escudero <frederic.escudero@gmail.com>, 2017
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
 # Olivier W, 2019
 # PatrickHetu <patrick.hetu@gmail.com>, 2012
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:26-0400\n"
-"PO-Revision-Date: 2019-12-08 19:01+0000\n"
-"Last-Translator: Olivier W\n"
+"POT-Creation-Date: 2020-02-14 01:03-0400\n"
+"PO-Revision-Date: 2020-01-31 20:36+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,17 +27,21 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:86 permissions_runtime.py:7 settings.py:15
+#: apps.py:89 permissions_runtime.py:7 settings.py:15
 msgid "Common"
 msgstr "Commun"
 
-#: classes.py:93
-msgid "Available attributes: \n"
-msgstr "Attributs disponibles: \n"
+#: classes.py:185
+msgid "Model properties"
+msgstr "Propriétés du modèle"
 
-#: classes.py:133
-msgid "Available fields: \n"
-msgstr "Champs disponibles: \n"
+#: classes.py:190
+msgid "Model fields"
+msgstr "Champs de modèle"
+
+#: classes.py:233
+msgid "Model related fields"
+msgstr "Champs liés au modèle"
 
 #: dependencies.py:308
 msgid "Used to allow offline translation of the code text strings."
@@ -228,7 +232,7 @@ msgstr "Uitlisateur"
 msgid "No %(verbose_name)s found matching the query"
 msgstr "Aucun %(verbose_name)s trouvé correspondant à la requête"
 
-#: mixins.py:367
+#: mixins.py:405
 msgid "Object"
 msgstr "Objet"
 
@@ -316,7 +320,7 @@ msgid ""
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Une liste de chaînes désignant toutes les applications qui doivent être supprimées de la liste normalement installée par Mayan EDMS. Chaque chaîne doit être un chemin d'accès Python en pointillé vers: une classe de configuration d'application (à privilégier) ou un paquet contenant une application."
 
 #: settings.py:46
 msgid ""
@@ -324,7 +328,7 @@ msgid ""
 "those normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Une liste de chaînes désignant toutes les applications installées au-delà de celles normalement installées par Mayan EDMS. Chaque chaîne doit être un chemin d'accès Python en pointillé vers: une classe de configuration d'application (à privilégier) ou un paquet contenant une application."
 
 #: settings.py:55
 msgid ""
@@ -430,7 +434,7 @@ msgstr "Date et heure"
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
-msgstr ""
+msgstr "Cette page affiche le journal des erreurs de différents objets. Une liste vide est une bonne chose."
 
 #: views.py:160
 msgid "There are no error log entries"

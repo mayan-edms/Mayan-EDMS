@@ -1,0 +1,219 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
+# www.ping.ba <jomer@ping.ba>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:07-0400\n"
+"PO-Revision-Date: 2020-02-14 02:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: apps.py:55 apps.py:140 apps.py:144 events.py:7 links.py:20 links.py:26
+#: permissions.py:7 queues.py:8 settings.py:10
+msgid "OCR"
+msgstr "OCR"
+
+#: apps.py:107
+msgid "A generator returning the document's pages OCR content."
+msgstr ""
+
+#: apps.py:108
+msgid "OCR content"
+msgstr ""
+
+#: apps.py:132
+msgid "Date and time"
+msgstr "Datum i vreme"
+
+#: apps.py:135 models.py:76
+msgid "Result"
+msgstr "Rezultat"
+
+#: backends/tesseract.py:90
+msgid "Tesseract OCR not found."
+msgstr ""
+
+#: dependencies.py:25
+msgid "Free Open Source OCR Engine"
+msgstr ""
+
+#: dependencies.py:36
+msgid ""
+"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or"
+" Cuneiform."
+msgstr ""
+
+#: events.py:10
+msgid "Document OCR content deleted"
+msgstr ""
+
+#: events.py:14
+msgid "Document version submitted for OCR"
+msgstr "Verzija dokumenta dostavljena za OCR"
+
+#: events.py:18
+msgid "Document version OCR finished"
+msgstr "OCR dokumentacije je završen"
+
+#: forms.py:16 forms.py:47
+msgid "Contents"
+msgstr "Sadržaj"
+
+#: forms.py:76
+#, python-format
+msgid "Page %(page_number)d"
+msgstr "Strana %(page_number)d"
+
+#: links.py:32 links.py:37
+msgid "Delete OCR content"
+msgstr ""
+
+#: links.py:43 links.py:48
+msgid "Submit for OCR"
+msgstr "Podnesite za OCR"
+
+#: links.py:53
+msgid "Setup OCR"
+msgstr "Setup OCR"
+
+#: links.py:58
+msgid "OCR documents per type"
+msgstr "OCR dokumenti po tipu"
+
+#: links.py:63 links.py:69 views.py:185
+msgid "OCR errors"
+msgstr "OCR greške"
+
+#: links.py:75
+msgid "Download OCR text"
+msgstr "Preuzmite OCR tekst"
+
+#: models.py:20
+msgid "Document type"
+msgstr "Tip dokumenta"
+
+#: models.py:24
+msgid "Automatically queue newly created documents for OCR."
+msgstr "Automatically queue newly created documents for OCR."
+
+#: models.py:30
+msgid "Document type settings"
+msgstr "Podešavanja tipa dokumenta"
+
+#: models.py:31
+msgid "Document types settings"
+msgstr "Podešavanja tipova dokumenata"
+
+#: models.py:45
+msgid "Document page"
+msgstr "Strnica dokumenta"
+
+#: models.py:49
+msgid "The actual text content extracted by the OCR backend."
+msgstr ""
+
+#: models.py:50
+msgid "Content"
+msgstr "Sadržaj"
+
+#: models.py:56
+msgid "Document page OCR content"
+msgstr "OCR sadržaj dokumenta"
+
+#: models.py:57
+msgid "Document pages OCR contents"
+msgstr "Dokumenti stranica OCR sadržaj"
+
+#: models.py:71
+msgid "Document version"
+msgstr "Verzija dokumenta"
+
+#: models.py:74
+msgid "Date time submitted"
+msgstr "Datum podnošenja vremena"
+
+#: models.py:80
+msgid "Document version OCR error"
+msgstr "Verzija dokumenta OCR greška"
+
+#: models.py:81
+msgid "Document version OCR errors"
+msgstr "OCR greške o verziji dokumenta"
+
+#: permissions.py:10
+msgid "Submit documents for OCR"
+msgstr "Predati dokumente za OCR"
+
+#: permissions.py:13
+msgid "View the transcribed text from document"
+msgstr "Pogledajte transkribovani tekst iz dokumenta"
+
+#: permissions.py:17
+msgid "Change document type OCR settings"
+msgstr "Promenite postavke OCR dokumenta tipa"
+
+#: queues.py:11
+msgid "Document version OCR"
+msgstr "Verzija dokumenta OCR"
+
+#: settings.py:17
+msgid "Full path to the backend to be used to do OCR."
+msgstr "Puni put do baze koja se koristi za izvršenje OCR-a."
+
+#: settings.py:26
+msgid "Set new document types to perform OCR automatically by default."
+msgstr "Podesite nove tipove dokumenata koji automatski podrazumevaju OCR."
+
+#: views.py:37
+msgid "Delete the OCR content of the selected document?"
+msgid_plural "Delete the OCR content of the selected documents?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: views.py:71
+#, python-format
+msgid "OCR result for document: %s"
+msgstr "OCR rezultat za dokument: %s"
+
+#: views.py:93
+#, python-format
+msgid "OCR result for document page: %s"
+msgstr ""
+
+#: views.py:108
+msgid "Submit the selected document to the OCR queue?"
+msgid_plural "Submit the selected documents to the OCR queue?"
+msgstr[0] "Podnesite odabrani dokument u OCR redosled?"
+msgstr[1] "Pošaljite odabrane dokumente u redosled OCR-a?"
+msgstr[2] "Pošaljite odabrane dokumente u redosled OCR-a?"
+
+#: views.py:125
+msgid "Submit all documents of a type for OCR"
+msgstr "Pošaljite sve dokumente vrste za OCR"
+
+#: views.py:139
+#, python-format
+msgid "%(count)d documents added to the OCR queue."
+msgstr ""
+
+#: views.py:174
+#, python-format
+msgid "Edit OCR settings for document type: %s."
+msgstr ""
+
+#: views.py:203
+#, python-format
+msgid "OCR errors for document: %s"
+msgstr "OCR greške za dokument: %s"

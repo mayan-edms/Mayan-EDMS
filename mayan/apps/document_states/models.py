@@ -489,8 +489,8 @@ class WorkflowTransitionField(models.Model):
 
     class Meta:
         unique_together = ('transition', 'name')
-        verbose_name = _('Workflow transition trigger event')
-        verbose_name_plural = _('Workflow transitions trigger events')
+        verbose_name = _('Workflow transition field')
+        verbose_name_plural = _('Workflow transition fields')
 
     def __str__(self):
         return self.label

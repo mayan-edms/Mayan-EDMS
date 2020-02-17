@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:25-0400\n"
+"POT-Creation-Date: 2020-02-14 01:02-0400\n"
 "PO-Revision-Date: 2019-12-22 05:04+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
@@ -283,15 +283,15 @@ msgstr "Ξεκινώντας"
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Προτού μπορέσετε να χρησιμοποιήσετε πλήρως το Mayan EDMS χρειάζεστε τα εξής:"
 
-#: templates/appearance/list_header.html:11
+#: templates/appearance/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr "Σύνολο (%(start)s - %(end)s από %(total)s) (Σελίδα %(page_number)s από %(total_pages)s)"
 
-#: templates/appearance/list_header.html:13
-#: templates/appearance/list_header.html:16
+#: templates/appearance/list_header.html:14
+#: templates/appearance/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Σύνολο: %(total)s"

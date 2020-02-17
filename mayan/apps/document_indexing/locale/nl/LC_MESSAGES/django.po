@@ -1,0 +1,405 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# Johan Braeken, 2017
+# Lucas Weel <ljj.weel@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:04-0400\n"
+"PO-Revision-Date: 2020-02-14 04:18+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin.py:24
+msgid "None"
+msgstr "Geen"
+
+#: admin.py:26 links.py:95 models.py:54
+msgid "Document types"
+msgstr "Documentsoorten"
+
+#: apps.py:55 events.py:8
+msgid "Document indexing"
+msgstr "Documentindexering"
+
+#: apps.py:124
+msgid "Total levels"
+msgstr ""
+
+#: apps.py:132
+msgid "Total documents"
+msgstr ""
+
+#: apps.py:137 apps.py:149 apps.py:168
+msgid "Level"
+msgstr "Niveau"
+
+#: apps.py:154 apps.py:173
+msgid "Levels"
+msgstr ""
+
+#: apps.py:162 apps.py:180 models.py:379
+msgid "Documents"
+msgstr "Documenten"
+
+#: events.py:12
+msgid "Index created"
+msgstr ""
+
+#: events.py:15
+msgid "Index edited"
+msgstr ""
+
+#: forms.py:18
+msgid "Index templates to be queued for rebuilding."
+msgstr ""
+
+#: forms.py:19 links.py:29
+msgid "Index templates"
+msgstr ""
+
+#: forms.py:34
+msgid "Template"
+msgstr ""
+
+#: handlers.py:20
+msgid "Creation date"
+msgstr "Aanmaakdatum"
+
+#: links.py:23 links.py:38 links.py:75 links.py:79 models.py:62 views.py:149
+#: views.py:323
+msgid "Indexes"
+msgstr "Indexeringen"
+
+#: links.py:44 queues.py:24
+msgid "Rebuild index"
+msgstr ""
+
+#: links.py:53 links.py:64
+msgid "Deletes and creates from scratch all the document indexes."
+msgstr "Documentindexeringen vanaf nul vernieuwen"
+
+#: links.py:55 views.py:446
+msgid "Rebuild indexes"
+msgstr "Opnieuw indexeren"
+
+#: links.py:66 views.py:481
+msgid "Reset indexes"
+msgstr ""
+
+#: links.py:83 views.py:87
+msgid "Create index"
+msgstr "Indexering aanmaken"
+
+#: links.py:90 links.py:120
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: links.py:101 links.py:125
+msgid "Edit"
+msgstr "Bewerken"
+
+#: links.py:108
+msgid "Tree template"
+msgstr "Sjabloon boomstructuur"
+
+#: links.py:114
+msgid "New child node"
+msgstr "Nieuwe node"
+
+#: models.py:36
+msgid "Short description of this index."
+msgstr ""
+
+#: models.py:37
+msgid "Label"
+msgstr "Label"
+
+#: models.py:41
+msgid "This value will be used by other apps to reference this index."
+msgstr ""
+
+#: models.py:42
+msgid "Slug"
+msgstr ""
+
+#: models.py:47
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Maakt deze index zichtbaar en 'up-to-date' wanneer document gegevens wijzigd."
+
+#: models.py:50 models.py:254
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: models.py:61 models.py:238
+msgid "Index"
+msgstr "Index"
+
+#: models.py:210
+msgid "Index instance"
+msgstr "index instance"
+
+#: models.py:211
+msgid "Index instances"
+msgstr ""
+
+#: models.py:242
+msgid ""
+"Enter a template to render. Use Django's default templating language "
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr ""
+
+#: models.py:246
+msgid "Indexing expression"
+msgstr "Indexeringsexpressie"
+
+#: models.py:251
+msgid "Causes this node to be visible and updated when document data changes."
+msgstr "Maakt deze node zichtbaar en 'up-to-date' wanneer document gegevens wijzigen"
+
+#: models.py:259
+msgid ""
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Selecteer deze optie, wanneer deze node alleen documenten dient te bevatten. "
+
+#: models.py:262
+msgid "Link documents"
+msgstr "Koppel documenten"
+
+#: models.py:266
+msgid "Index node template"
+msgstr ""
+
+#: models.py:267
+msgid "Indexes node template"
+msgstr ""
+
+#: models.py:271
+msgid "Root"
+msgstr ""
+
+#: models.py:326
+#, python-format
+msgid ""
+"Error indexing document: %(document)s; expression: %(expression)s; "
+"%(exception)s"
+msgstr "Fout bij het indexeren van document: %(document)s; uitdrukking: %(expression)s; %(exception)s"
+
+#: models.py:372
+msgid "Index template node"
+msgstr ""
+
+#: models.py:375
+msgid "Value"
+msgstr "Waarde"
+
+#: models.py:385
+msgid "Index node instance"
+msgstr ""
+
+#: models.py:386
+msgid "Indexes node instances"
+msgstr ""
+
+#: models.py:500
+msgid "Document index node instance"
+msgstr ""
+
+#: models.py:501
+msgid "Document indexes node instances"
+msgstr ""
+
+#: permissions.py:7 queues.py:9
+msgid "Indexing"
+msgstr "Indexering bezig"
+
+#: permissions.py:10
+msgid "Create new document indexes"
+msgstr "Aanmaken van nieuw document-indexeringen"
+
+#: permissions.py:13
+msgid "Edit document indexes"
+msgstr "Wijzig document-indexeringen"
+
+#: permissions.py:16
+msgid "Delete document indexes"
+msgstr "Verwijder document-indexeringen"
+
+#: permissions.py:19
+msgid "View document index instances"
+msgstr ""
+
+#: permissions.py:23
+msgid "View document indexes"
+msgstr "Bekijk document-indexeringen"
+
+#: permissions.py:26
+msgid "Rebuild document indexes"
+msgstr "documenten opnieuw indexeren"
+
+#: queues.py:12
+msgid "Delete empty index nodes"
+msgstr ""
+
+#: queues.py:16
+msgid "Remove document"
+msgstr ""
+
+#: queues.py:20
+msgid "Index document"
+msgstr ""
+
+#: views.py:46
+msgid "Available indexes"
+msgstr ""
+
+#: views.py:47
+msgid "Indexes linked"
+msgstr ""
+
+#: views.py:77
+msgid ""
+"Documents of this type will appear in the indexes linked when these are "
+"updated. Events of the documents of this type will trigger updates in the "
+"linked indexes."
+msgstr ""
+
+#: views.py:81
+#, python-format
+msgid "Indexes linked to document type: %s"
+msgstr ""
+
+#: views.py:109
+#, python-format
+msgid "Delete the index: %s?"
+msgstr ""
+
+#: views.py:124
+#, python-format
+msgid "Edit index: %s"
+msgstr ""
+
+#: views.py:143
+msgid ""
+"Indexes group document automatically into levels. Indexe are defined using "
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
+msgstr ""
+
+#: views.py:148
+msgid "There are no indexes."
+msgstr ""
+
+#: views.py:161
+#, python-format
+msgid "Rebuild index: %s"
+msgstr ""
+
+#: views.py:179
+msgid "Index queued for rebuild."
+msgstr ""
+
+#: views.py:191
+msgid "Available document types"
+msgstr "Beschikbare documentsoorten"
+
+#: views.py:192
+msgid "Document types linked"
+msgstr ""
+
+#: views.py:202
+msgid ""
+"Only the documents of the types selected will be shown in the index when "
+"built. Only the events of the documents of the types select will trigger "
+"updates in the index."
+msgstr ""
+
+#: views.py:206
+#, python-format
+msgid "Document types linked to index: %s"
+msgstr ""
+
+#: views.py:218
+#, python-format
+msgid "Tree template nodes for index: %s"
+msgstr ""
+
+#: views.py:248
+#, python-format
+msgid "Create child node of: %s"
+msgstr ""
+
+#: views.py:271
+#, python-format
+msgid "Delete the index template node: %s?"
+msgstr ""
+
+#: views.py:294
+#, python-format
+msgid "Edit the index template node: %s?"
+msgstr ""
+
+#: views.py:318
+msgid ""
+"This could mean that no index templates have been created or that there "
+"index templates but they are no properly defined."
+msgstr ""
+
+#: views.py:322
+msgid "There are no index instances available."
+msgstr ""
+
+#: views.py:367
+#, python-format
+msgid "Navigation: %s"
+msgstr ""
+
+#: views.py:372
+#, python-format
+msgid "Contents for index: %s"
+msgstr ""
+
+#: views.py:425
+msgid ""
+"Assign the document type of this document to an index to have it appear in "
+"instances of those indexes organization units. "
+msgstr ""
+
+#: views.py:430
+msgid "This document is not in any index"
+msgstr ""
+
+#: views.py:434
+#, python-format
+msgid "Indexes nodes containing document: %s"
+msgstr ""
+
+#: views.py:460
+#, python-format
+msgid "%(count)d index queued for rebuild."
+msgid_plural "%(count)d indexes queued for rebuild."
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:493
+#, python-format
+msgid "%(count)d index reset."
+msgid_plural "%(count)d indexes reset."
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:506
+msgid "Index templates for which their instances will be deleted."
+msgstr ""

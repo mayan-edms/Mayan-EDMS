@@ -1,0 +1,459 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:03-0400\n"
+"PO-Revision-Date: 2020-02-10 08:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:89 permissions_runtime.py:7 settings.py:15
+msgid "Common"
+msgstr "常用"
+
+#: classes.py:185
+msgid "Model properties"
+msgstr ""
+
+#: classes.py:190
+msgid "Model fields"
+msgstr ""
+
+#: classes.py:233
+msgid "Model related fields"
+msgstr ""
+
+#: dependencies.py:308
+msgid "Used to allow offline translation of the code text strings."
+msgstr ""
+
+#: dependencies.py:313
+msgid "Provides style checking."
+msgstr ""
+
+#: dependencies.py:318
+msgid "Command line environment with autocompletion."
+msgstr ""
+
+#: dependencies.py:323
+msgid "Checks proper formatting of the README file."
+msgstr ""
+
+#: forms.py:27
+msgid "Selection"
+msgstr "选择"
+
+#: forms.py:103
+msgid "None"
+msgstr "没有"
+
+#: generics.py:148
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:153
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:286
+msgid "Add all"
+msgstr ""
+
+#: generics.py:295
+msgid "Add"
+msgstr "添加"
+
+#: generics.py:305
+msgid "Remove all"
+msgstr ""
+
+#: generics.py:314
+msgid "Remove"
+msgstr "移除"
+
+#: generics.py:524
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr ""
+
+#: generics.py:546
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "%(object)s未创建，错误：%(error)s"
+
+#: generics.py:559
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "%(object)s创建成功。"
+
+#: generics.py:598
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "%(object)s未删除，错误：%(error)s。"
+
+#: generics.py:607
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "%(object)s已成功删除。"
+
+#: generics.py:743
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "%(object)s未更新，错误：%(error)s。"
+
+#: generics.py:754
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "%(object)s已成功更新。"
+
+#: links.py:36
+msgid "About this"
+msgstr "关于这个"
+
+#: links.py:39
+msgid "Get the book"
+msgstr ""
+
+#: links.py:44
+msgid "Locale profile"
+msgstr "区域配置文件"
+
+#: links.py:49
+msgid "Edit locale profile"
+msgstr "编辑区域配置文件"
+
+#: links.py:54
+msgid "Documentation"
+msgstr "文档"
+
+#: links.py:59
+msgid "Errors"
+msgstr "错误"
+
+#: links.py:65
+msgid "Clear all"
+msgstr "清除所有"
+
+#: links.py:69
+msgid "Forum"
+msgstr "论坛"
+
+#: links.py:73 views.py:105
+msgid "License"
+msgstr "许可"
+
+#: links.py:76
+msgid "Setup"
+msgstr "设置"
+
+#: links.py:79
+msgid "Source code"
+msgstr "源代码"
+
+#: links.py:83
+msgid "Support"
+msgstr "支持"
+
+#: links.py:87 queues.py:15 views.py:214
+msgid "Tools"
+msgstr "工具"
+
+#: literals.py:14
+msgid ""
+"This feature has been deprecated and will be removed in a future version."
+msgstr ""
+
+#: literals.py:17
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr "您的数据库后端设置为使用SQLite。 SQLite只应用于开发和测试，而不能用于生产。"
+
+#: literals.py:35
+msgid "Days"
+msgstr "天"
+
+#: literals.py:36
+msgid "Hours"
+msgstr "时"
+
+#: literals.py:37
+msgid "Minutes"
+msgstr "分"
+
+#: menus.py:10
+msgid "System"
+msgstr "系统"
+
+#: menus.py:12 menus.py:13
+msgid "Facet"
+msgstr ""
+
+#: menus.py:16
+msgid "Actions"
+msgstr "操作"
+
+#: menus.py:17
+msgid "Secondary"
+msgstr ""
+
+#: menus.py:22 models.py:93
+msgid "User"
+msgstr "用户"
+
+#: mixins.py:292
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: mixins.py:405
+msgid "Object"
+msgstr "对象"
+
+#: models.py:28
+msgid "Namespace"
+msgstr "命名空间"
+
+#: models.py:39 models.py:63
+msgid "Date time"
+msgstr "日期时间"
+
+#: models.py:41 views.py:151
+msgid "Result"
+msgstr "结果"
+
+#: models.py:47
+msgid "Error log entry"
+msgstr "错误日志条目"
+
+#: models.py:48
+msgid "Error log entries"
+msgstr "错误日志条目"
+
+#: models.py:59
+msgid "File"
+msgstr "文件"
+
+#: models.py:61
+msgid "Filename"
+msgstr "文件名"
+
+#: models.py:67
+msgid "Shared uploaded file"
+msgstr "共享的上传文件"
+
+#: models.py:68
+msgid "Shared uploaded files"
+msgstr "共享的上传文件"
+
+#: models.py:97
+msgid "Timezone"
+msgstr "时区"
+
+#: models.py:100
+msgid "Language"
+msgstr "语言"
+
+#: models.py:106
+msgid "User locale profile"
+msgstr "用户区域配置文件"
+
+#: models.py:107
+msgid "User locale profiles"
+msgstr "用户区域配置文件"
+
+#: permissions_runtime.py:10
+msgid "View error log"
+msgstr "查看错误日志"
+
+#: queues.py:13
+msgid "Default"
+msgstr "默认"
+
+#: queues.py:17
+msgid "Common periodic"
+msgstr ""
+
+#: queues.py:22
+msgid "Delete stale uploads"
+msgstr "删除旧的上传"
+
+#: settings.py:22
+msgid "Automatically enable logging to all apps."
+msgstr "自动启用所有应用程序的日志记录。"
+
+#: settings.py:28
+msgid ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "是时候延迟依赖于数据库提交传播的后台任务了。"
+
+#: settings.py:36
+msgid ""
+"A list of strings designating all applications that are to be removed from "
+"the list normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr ""
+
+#: settings.py:46
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr ""
+
+#: settings.py:55
+msgid ""
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr ""
+
+#: settings.py:64
+msgid "The number objects that will be displayed per page."
+msgstr ""
+
+#: settings.py:71
+msgid "Enable error logging outside of the system error logging capabilities."
+msgstr "在系统错误日志记录功能之外启用错误日志记录。"
+
+#: settings.py:78
+msgid "Path to the logfile that will track errors during production."
+msgstr "日志文件的路径，用于跟踪生产期间的错误。"
+
+#: settings.py:85
+msgid "Name to be displayed in the main menu."
+msgstr "要在主菜单中显示的名称。"
+
+#: settings.py:91
+msgid "URL of the installation or homepage of the project."
+msgstr "项目的安装或主页的URL。"
+
+#: settings.py:97
+msgid "A storage backend that all workers can use to share files."
+msgstr "所有工作人员可用于共享文件的存储后端。"
+
+#: templatetags/common_tags.py:29
+msgid "Confirm delete"
+msgstr "确认删除"
+
+#: templatetags/common_tags.py:34
+#, python-format
+msgid "Edit %s"
+msgstr ""
+
+#: templatetags/common_tags.py:37
+msgid "Confirm"
+msgstr "确认"
+
+#: templatetags/common_tags.py:41
+#, python-format
+msgid "Details for: %s"
+msgstr ""
+
+#: templatetags/common_tags.py:45
+#, python-format
+msgid "Edit: %s"
+msgstr ""
+
+#: templatetags/common_tags.py:48
+msgid "Create"
+msgstr "创建"
+
+#: validators.py:46
+msgid "Enter a valid JSON value."
+msgstr ""
+
+#: validators.py:70
+msgid "Enter a valid YAML value."
+msgstr "输入有效的YAML值。"
+
+#: validators.py:86
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
+msgstr "输入由字母，数字和下划线组成的有效“内部名称”。"
+
+#: views.py:27
+msgid "About"
+msgstr "关于"
+
+#: views.py:40
+msgid "Current user locale profile details"
+msgstr "当前用户区域配置文件详情"
+
+#: views.py:46
+msgid "Edit current user locale profile details"
+msgstr "编辑当前用户区域配置文件"
+
+#: views.py:96
+msgid "Dashboard"
+msgstr "仪表板"
+
+#: views.py:114
+#, python-format
+msgid "Clear error log entries for: %s"
+msgstr "清除错误日志条目：%s"
+
+#: views.py:131
+msgid "Object error log cleared successfully"
+msgstr "对象错误日志已成功清除"
+
+#: views.py:150
+msgid "Date and time"
+msgstr "日期和时间"
+
+#: views.py:156
+msgid ""
+"This view displays the error log of different object. An empty list is a "
+"good thing."
+msgstr ""
+
+#: views.py:160
+msgid "There are no error log entries"
+msgstr ""
+
+#: views.py:163
+#, python-format
+msgid "Error log entries for: %s"
+msgstr "错误日志条目：%s"
+
+#: views.py:191
+msgid "No setup options available."
+msgstr "没有可用的设置选项。"
+
+#: views.py:193
+msgid ""
+"No results here means that don't have the required permissions to perform "
+"administrative task."
+msgstr "此处没有结果表示没有执行管理任务所需的权限。"
+
+#: views.py:199
+msgid "Setup items"
+msgstr "设置项目"
+
+#: views.py:201
+msgid "Here you can configure all aspects of the system."
+msgstr ""
+
+#: views.py:216
+msgid "These modules are used to do system maintenance."
+msgstr ""

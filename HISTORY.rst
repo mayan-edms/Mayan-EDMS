@@ -1,30 +1,147 @@
-3.3.8 (2020-01-XX)
+3.3.14 (2020-XX-XX)
+===================
+- Add missing backslash in the deployment instructions.
+  Closes GitLab issue #780. Thanks to Steve Palmer (@steverpalmer)
+  for the report.
+- Update CI script to push multiple tags.
+
+3.3.13 (2020-02-14)
+===================
+- Update management command interface. Subclasses of BaseCommand no longer
+  have an 'interactive' option.
+- Update usage of is_authenticated as it is now only a property. This is
+  recommended for Django 1.11 and will be required in Django 2.0.
+- Convert URL to string before redirect in the sources app wizard.
+  Recommend for Django 1.11 and required for Django 2.0.
+- Update Django to version 1.1.28
+  (https://docs.djangoproject.com/en/3.0/releases/1.11.28/)
+- Prioritize Mayan's translations over Django's built in ones.
+  Fixes GitLab issue #734. Thanks to Roberto Novaes (@rvnovaes)
+  for the report.
+- Add make file target to remove fuzzy translation markers.
+- Move the language files for the Bosnian language from
+  the bs_BA locale to the bs locale.
+- Move the language files for the Slovenian language from
+  the sl_SI locale to the sl locale.
+- Move the language files for the Vietnamese language from
+  the vi_VN locale to the vi locale.
+- Move the language files for the Dutch language from
+  the nl_NL locale to the nl locale.
+- Move the language files for the Danish language from
+  the da_DK locale to the da locale.
+- Add make file target to cleanup source translation files.
+- Cleanup minor but frequent translation files issues accumulated by the
+  automatic tools. Many new text string are now available for translation.
+- Update the doToastrMessages to avoid appending new style updated
+  indefinitely on list sort updates. Closes GitLab issue #772. Thanks
+  to Matthias Löblich (@startmat) for the report and debug information.
+
+3.3.12 (2020-02-10)
+===================
+- Fix issue with the template object count logic introduced in the
+  last optimization.
+- Fix Chinese translation. Locale cn has been renamed to cn-hans.
+
+3.3.11 (2020-02-07)
+===================
+- Fix document preview rendering issue introduced by the read only
+  decimal field display addition. Closes GitLab issue #771.
+  Thanks to Christoph Roeder (@brightdroid) for the report and
+  investigation.
+- Add message about decompression bomb DOS attacks. Add mention
+  how to disable the protection by increasing the allowed image
+  size.
+- Optimize lists title item count calculations.
+- Fix document properties form default language selection. Closes GitLab
+  issue #770. Thanks to Albert ARIBAUD (@aaribaud) for the report and
+  for narrowing down the cause.
+- Add document language codes settings tests. Closes GitLab issue #547.
+  Thanks to Bebef (@Bebef) for the report and research.
+- Move the django.contrib.admindocs to be loaded after the Tags app
+  to avoid its translations to take precedence. Closes GitLab issue #734.
+  Thanks to Roberto Novaes (@rvnovaes) for the report.
+
+3.3.10 (2020-01-31)
+===================
+- Turn TarArchiveClassTestCase in to reusable archive test case class.
+  #MD-10.
+- Add test runner option for testing excluded tests.
+- Add data operation to file metadata 0002 to remove duplicated entries.
+  Closes GitLab issue #762. Thanks to forum user benaser for the report.
+- Add package django_migration_test and add migration test to the
+  file metadata app for migration 0002.
+- Update make file to remove repeated commands and add migration testing
+  target.
+- Update the GitLab CI file to use the test makefile target and add
+  migration testing.
+- Update the Docker run_tests command to perform migration testing.
+- Update translation files.
+- Add support for specifying related fields per model to the templating
+  app.
+- Add grouping to the templating widget. Model attributes are now group
+  into model properties, models fields and the new model related fields.
+- Add document OCR content and parsed content as document model properties
+  for use in templates.
+- Fix the staging folder file API views. GitLab issue #764. Thanks to
+  David Kowis (@dkowis) for the report, debug, and research.
+- Add command to show the current version of Mayan. The command is named
+  ``showversion``. The command has one option `--build-string`` that will
+  show the build string instead. Closes #MD-14.
+- Add command to check if the current version is the latest one. The command
+  is named ``checkversion``. Closes issue #MD-28.
+- Add button to launch a specific workflow for existing documents.
+  Issue #MD-171.
+- Update Pillow to version 6.2.2.
+- Improve image page count detection by capturing undocumented Pillow
+  exception. Close GitLab issue #767. Thanks to Frédéric Sheedy (@fsheedy)
+  for the report, debug information, and test image.
+- Add new setting to disable the API documentation links from the tools menu.
+  The setting is named ``REST_API_DISABLE_LINKS`` and defaults to ``false``.
+- Add new setting to disable the password reset link in the login form. This
+  link is not used for third party authentication such as when using LDAP.
+  The setting is named ``AUTHENTICATION_DISABLE_PASSWORD_RESET`` and
+  defaults to ``false``.
+- Improve workflow app navigation.
+- Add fall back read-only render for form fields.
+
+3.3.9 (2020-01-18)
+==================
+- Update Document and Lock models to avoid triggering a new migrations on
+  default document language change and on default lock timeout change.
+  Closes GitLab issue #759.
+- Cleanup repository top level. Moved helper scripts to contrib/scripts.
+- Add makefile target to make it easier to create the code coverage report.
+- Remove unused Magnum and Travis CI files.
+- Add makefile target to run GitLab CI jobs locally.
+- Add GitLab CI jobs to test upgrading from current to newest version.
+
+3.3.8 (2020-01-17)
 ==================
 - Update literals so the correct paths of pdfinfo, pdftoppm, libreoffice,
   exiftool and tesseract are found. Relates to Gitlab issue #308
 - Fix document detached signing. Closes GitLab issue #732.
-  Thanks to holzhannes(@holzhannes) for the report and debug information.
+  Thanks to holzhannes (@holzhannes) for the report and debug information.
 - Updated direct deployment documentation to advise users installing
   in a custom directory to verify the automatically generated
   supervisor configuration file. Addresses GitLab issue #739
 - Added a note to the LDAP section of the FAQ to assist users with
   potential local environment issues
 - Updated docker-compose.yml and documentation to ensure RabbitMQ messages
-  are persistant
+  are persistent
 - Improve the File Storage section of the Documentation
 - Add support and documentation for S3 storage backend
-- Update documenation push CI stage to delete existing files before
+- Update documentation push CI stage to delete existing files before
   uploading new content. GitLab issue #721. Thanks to Chris Whitten
   (@whit1206) for the report.
 - Ensure that the model property choice field of the template widget
-  is never required, regarless of the required setting of the template
+  is never required, regardless of the required setting of the template
   field. GitLab issue #748. Thanks to forum user chrimpshrine for the
   report.
 - Remove repeated raise statement that cause HTML markup to show on
   upload error display.
 - Improve file metadata property label.
 - Improve file metadata property path reading. Will not error out
-  whe passed invalid path to the driver as reference.
+  when passed invalid path to the driver as reference.
 - Make the sandbox template field a required field.
 - Fix Tag apps API required permissions. The required permissions
   of the API match those of the view and comply with MERC 0006.
@@ -37,7 +154,7 @@
 - Initialize permissions on every start or installation instead of
   them being initialized on demand. Closes GitLab issue #757.
   Thanks to forum user Roberto Novaes (rvnovaes) for the report.
-- Add new entry to the CONVERTER_GRAPHICS_BACKEND_ARGUMENTS setting to 
+- Add new entry to the CONVERTER_GRAPHICS_BACKEND_ARGUMENTS setting to
   allow passing a maximum image pixel count to Pillow. The entry
   is called 'pillow_maximum_image_pixels' and defaults to 89478485.
 - Fix document metadata add, edit, and remove redirects.

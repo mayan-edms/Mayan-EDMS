@@ -226,7 +226,7 @@ LANGUAGES = (
     ('sl', _('Slovenian')),
     ('tr', _('Turkish')),
     ('vi', _('Vietnamese')),
-    ('zh', _('Chinese')),
+    ('zh-hans', _('Chinese (Simplified)')),
 )
 
 SITE_ID = 1

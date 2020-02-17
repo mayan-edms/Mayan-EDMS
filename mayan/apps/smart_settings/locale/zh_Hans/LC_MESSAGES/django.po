@@ -1,0 +1,322 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:07-0400\n"
+"PO-Revision-Date: 2020-02-10 08:24+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:23 permissions.py:8
+msgid "Smart settings"
+msgstr "智能设置"
+
+#: apps.py:31
+msgid "Setting count"
+msgstr "设定计数"
+
+#: apps.py:35
+msgid "Name"
+msgstr "名称"
+
+#: apps.py:39
+msgid "Value"
+msgstr "值"
+
+#: classes.py:352
+msgid "Overridden"
+msgstr ""
+
+#: classes.py:354
+msgid "Is this settings being overridden by an environment variable?"
+msgstr ""
+
+#: forms.py:14
+msgid "Enter the new setting value."
+msgstr "输入新的设定值。"
+
+#: forms.py:30
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr "“%s”不是有效的许可。"
+
+#: links.py:14 links.py:18
+msgid "Settings"
+msgstr "设置"
+
+#: links.py:24
+msgid "Namespaces"
+msgstr "命名空间"
+
+#: links.py:28
+msgid "Edit"
+msgstr "编辑"
+
+#: permissions.py:12
+msgid "Edit settings"
+msgstr "编辑设置"
+
+#: permissions.py:15
+msgid "View settings"
+msgstr "查看设置"
+
+#: settings.py:11
+msgid "Django"
+msgstr "Django"
+
+#: settings.py:16
+msgid ""
+"A list of strings representing the host/domain names that this site can "
+"serve. This is a security measure to prevent HTTP Host header attacks, which"
+" are possible even under many seemingly-safe web server configurations. "
+"Values in this list can be fully qualified names (e.g. 'www.example.com'), "
+"in which case they will be matched against the request's Host header exactly"
+" (case-insensitive, not including port). A value beginning with a period can"
+" be used as a subdomain wildcard: '.example.com' will match example.com, "
+"www.example.com, and any other subdomain of example.com. A value of '*' will"
+" match anything; in this case you are responsible to provide your own "
+"validation of the Host header (perhaps in a middleware; if so this "
+"middleware must be listed first in MIDDLEWARE)."
+msgstr "表示此站点可以提供的主机/域名的字符串列表。这是一种防止HTTP主机头攻击的安全措施，即使在许多看似安全的Web服务器配置下也是如此。此列表中的值可以是完全限定名称（例如“www.example.com”），在这种情况下，它们将与请求的主机标头完全匹配（不区分大小写，不包括端口）。以句点开头的值可用作子域通配符：'.example.com'将匹配example.com，www.example.com和example.com的任何其他子域。值'*'将匹配任何内容;在这种情况下，您有责任提供自己的主机头验证（可能在中间件中;如果是这样，则必须首先在MIDDLEWARE中列出此中间件）。"
+
+#: settings.py:34
+msgid ""
+"When set to True, if the request URL does not match any of the patterns in "
+"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the"
+" same URL with a slash appended. Note that the redirect may cause any data "
+"submitted in a POST request to be lost. The APPEND_SLASH setting is only "
+"used if CommonMiddleware is installed (see Middleware). See also "
+"PREPEND_WWW."
+msgstr "设置为True时，如果请求URL与URLconf中的任何模式都不匹配，并且不以斜杠结尾，则会向相同的URL发出HTTP重定向，并附加斜杠。请注意，重定向可能导致POST请求中提交的任何数据丢失。 APPEND_SLASH设置仅在安装了CommonMiddleware时使用（请参阅Middleware）。另见PREPEND_WWW。"
+
+#: settings.py:47
+msgid ""
+"The list of validators that are used to check the strength of user's "
+"passwords."
+msgstr ""
+
+#: settings.py:54
+msgid ""
+"A dictionary containing the settings for all databases to be used with "
+"Django. It is a nested dictionary whose contents map a database alias to a "
+"dictionary containing the options for an individual database. The DATABASES "
+"setting must configure a default database; any number of additional "
+"databases may also be specified."
+msgstr "包含要与Django一起使用的所有数据库的设置的字典。它是一个嵌套字典，其内容将数据库别名映射到包含单个数据库选项的字典。 DATABASES设置必须配置默认数据库;还可以指定任意数量的附加数据库。"
+
+#: settings.py:66
+msgid ""
+"Default: 2621440 (i.e. 2.5 MB). The maximum size in bytes that a request "
+"body may be before a SuspiciousOperation (RequestDataTooBig) is raised. The "
+"check is done when accessing request.body or request.POST and is calculated "
+"against the total request size excluding any file upload data. You can set "
+"this to None to disable the check. Applications that are expected to receive"
+" unusually large form posts should tune this setting. The amount of request "
+"data is correlated to the amount of memory needed to process the request and"
+" populate the GET and POST dictionaries. Large requests could be used as a "
+"denial-of-service attack vector if left unchecked. Since web servers don't "
+"typically perform deep request inspection, it's not possible to perform a "
+"similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
+msgstr "默认值：2621440（即2.5 MB）。引发可疑操作（请求数据太大）之前请求正文的最大大小（以字节为单位）。在访问request.body或request.POST时完成检查，并根据不包括任何文件上传数据的总请求大小计算。您可以将其设置为“无”以禁用检查。预计会收到异常大型表单提交的应用程序应调整此设置。请求数据量与处理请求和填充GET和POST词典所需的内存量相关联。如果不加以检查，大请求可以用作拒绝服务攻击载体。由于Web服务器通常不执行深度请求检查，因此无法在该级别执行类似检查。另请参见FILE_UPLOAD_MAX_MEMORY_SIZE。"
+
+#: settings.py:86
+msgid ""
+"Default: 'webmaster@localhost' Default email address to use for various "
+"automated correspondence from the site manager(s). This doesn't include "
+"error messages sent to ADMINS and MANAGERS; for that, see SERVER_EMAIL."
+msgstr ""
+
+#: settings.py:96
+msgid ""
+"Default: [] (Empty list). List of compiled regular expression objects "
+"representing User-Agent strings that are not allowed to visit any page, "
+"systemwide. Use this for bad robots/crawlers. This is only used if "
+"CommonMiddleware is installed (see Middleware)."
+msgstr "默认值：[]（空列表）。在系统范围内表示不允许访问任何页面的用户代理字符串的已编译正则表达式对象的列表。用于防范恶意的机器人/爬虫。这仅在安装了CommonMiddleware时使用（请参阅Middleware）。"
+
+#: settings.py:107
+msgid ""
+"Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
+"for sending emails."
+msgstr "默认值：'django.core.mail.backends.smtp.EmailBackend'。用于发送电子邮件的后端。"
+
+#: settings.py:115
+msgid "Default: 'localhost'. The host to use for sending email."
+msgstr "默认值：'localhost'。用于发送电子邮件的主机。"
+
+#: settings.py:122
+msgid ""
+"Default: '' (Empty string). Password to use for the SMTP server defined in "
+"EMAIL_HOST. This setting is used in conjunction with EMAIL_HOST_USER when "
+"authenticating to the SMTP server. If either of these settings is empty, "
+"Django won't attempt authentication."
+msgstr "默认值：''（空字符串）。用于EMAIL_HOST中定义的SMTP服务器的密码。在向SMTP服务器进行身份验证时，此设置与EMAIL_HOST_USER结合使用。如果这些设置中的任何一个为空，Django将不会尝试身份验证。"
+
+#: settings.py:133
+msgid ""
+"Default: '' (Empty string). Username to use for the SMTP server defined in "
+"EMAIL_HOST. If empty, Django won't attempt authentication."
+msgstr "默认值：''（空字符串）。用于EMAIL_HOST中定义的SMTP服务器的用户名。如果为空，Django将不会尝试身份验证。"
+
+#: settings.py:142
+msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
+msgstr "默认值：25。用于EMAIL_HOST中定义的SMTP服务器的端口。"
+
+#: settings.py:149
+msgid ""
+"Default: None. Specifies a timeout in seconds for blocking operations like "
+"the connection attempt."
+msgstr "默认值：无。指定阻塞操作（如连接尝试）的超时（以秒为单位）。"
+
+#: settings.py:157
+msgid ""
+"Default: False. Whether to use a TLS (secure) connection when talking to the"
+" SMTP server. This is used for explicit TLS connections, generally on port "
+"587. If you are experiencing hanging connections, see the implicit TLS "
+"setting EMAIL_USE_SSL."
+msgstr "默认值：False。与SMTP服务器通信时是否使用TLS（安全）连接。这用于显式TLS连接，通常在端口587上。如果遇到挂起连接，请参阅隐式TLS设置EMAIL_USE_SSL。"
+
+#: settings.py:167
+msgid ""
+"Default: False. Whether to use an implicit TLS (secure) connection when "
+"talking to the SMTP server. In most email documentation this type of TLS "
+"connection is referred to as SSL. It is generally used on port 465. If you "
+"are experiencing problems, see the explicit TLS setting EMAIL_USE_TLS. Note "
+"that EMAIL_USE_TLS/EMAIL_USE_SSL are mutually exclusive, so only set one of "
+"those settings to True."
+msgstr "默认值：False。与SMTP服务器通信时是否使用隐式TLS（安全）连接。在大多数电子邮件文档中，此类型的TLS连接称为SSL。它通常用于端口465.如果遇到问题，请参阅显式TLS设置EMAIL_USE_TLS。请注意，EMAIL_USE_TLS / EMAIL_USE_SSL是互斥的，因此只将其中一个设置为True。"
+
+#: settings.py:179
+msgid ""
+"Default: 2621440 (i.e. 2.5 MB). The maximum size (in bytes) that an upload "
+"will be before it gets streamed to the file system. See Managing files for "
+"details. See also DATA_UPLOAD_MAX_MEMORY_SIZE."
+msgstr "默认值：2621440（即2.5 MB）。上传在流式传输到文件系统之前的最大大小（以字节为单位）。有关详情，请参阅管理文件。另请参见DATA_UPLOAD_MAX_MEMORY_SIZE。"
+
+#: settings.py:189
+msgid ""
+"Default: '/accounts/login/' The URL where requests are redirected for login,"
+" especially when using the login_required() decorator. This setting also "
+"accepts named URL patterns which can be used to reduce configuration "
+"duplication since you don't have to define the URL in two places (settings "
+"and URLconf)."
+msgstr "默认值：'/ accounts / login /'，重定向请求以进行登录的URL，尤其是在使用login_required（）装饰器时。此设置还接受命名的URL模式，可用于减少配置重复，因为您不必在两个位置（设置和URLconf）定义URL。"
+
+#: settings.py:201
+msgid ""
+"Default: '/accounts/profile/' The URL where requests are redirected after "
+"login when the contrib.auth.login view gets no next parameter. This is used "
+"by the login_required() decorator, for example. This setting also accepts "
+"named URL patterns which can be used to reduce configuration duplication "
+"since you don't have to define the URL in two places (settings and URLconf)."
+msgstr "默认值：'/ accounts / profile /'，当contrib.auth.login视图没有下一个参数时，登录后重定向请求的URL。例如，login_required（）装饰器使用它。此设置还接受命名的URL模式，可用于减少重复配置，因此您不必在两个位置（设置和URLconf）定义URL。"
+
+#: settings.py:213
+msgid ""
+"Default: None. The URL where requests are redirected after a user logs out "
+"using LogoutView (if the view doesn't get a next_page argument). If None, no"
+" redirect will be performed and the logout view will be rendered. This "
+"setting also accepts named URL patterns which can be used to reduce "
+"configuration duplication since you don't have to define the URL in two "
+"places (settings and URLconf)."
+msgstr ""
+
+#: settings.py:226
+msgid ""
+"A list of IP addresses, as strings, that: Allow the debug() context "
+"processor to add some variables to the template context. Can use the "
+"admindocs bookmarklets even if not logged in as a staff user. Are marked as "
+"\"internal\" (as opposed to \"EXTERNAL\") in AdminEmailHandler emails."
+msgstr ""
+
+#: settings.py:237
+msgid ""
+"A list of all available languages. The list is a list of two-tuples in the "
+"format (language code, language name) for example, ('ja', 'Japanese'). This "
+"specifies which languages are available for language selection. Generally, "
+"the default value should suffice. Only set this setting if you want to "
+"restrict language selection to a subset of the Django-provided languages. "
+msgstr ""
+
+#: settings.py:250
+msgid ""
+"A string representing the language code for this installation. This should "
+"be in standard language ID format. For example, U.S. English is \"en-us\". "
+"It serves two purposes: If the locale middleware isn't in use, it decides "
+"which translation is served to all users. If the locale middleware is "
+"active, it provides a fallback language in case the user's preferred "
+"language can't be determined or is not supported by the website. It also "
+"provides the fallback translation when a translation for a given literal "
+"doesn't exist for the user's preferred language."
+msgstr ""
+
+#: settings.py:265
+msgid ""
+"URL to use when referring to static files located in STATIC_ROOT. Example: "
+"\"/static/\" or \"http://static.example.com/\" If not None, this will be "
+"used as the base path for asset definitions (the Media class) and the "
+"staticfiles app. It must end in a slash if set to a non-empty value."
+msgstr ""
+
+#: settings.py:276
+msgid ""
+"The file storage engine to use when collecting static files with the "
+"collectstatic management command. A ready-to-use instance of the storage "
+"backend defined in this setting can be found at "
+"django.contrib.staticfiles.storage.staticfiles_storage."
+msgstr ""
+
+#: settings.py:286
+msgid ""
+"A string representing the time zone for this installation. Note that this "
+"isn't necessarily the time zone of the server. For example, one server may "
+"serve multiple Django-powered sites, each with a separate time zone setting."
+msgstr ""
+
+#: settings.py:296
+msgid ""
+"The full Python path of the WSGI application object that Django's built-in "
+"servers (e.g. runserver) will use. The django-admin startproject management "
+"command will create a simple wsgi.py file with an application callable in "
+"it, and point this setting to that application."
+msgstr ""
+
+#: views.py:23
+msgid ""
+"Settings inherited from an environment variable take precedence and cannot "
+"be changed in this view. "
+msgstr "从环境变量继承的设置优先，在此视图中无法更改。"
+
+#: views.py:26
+#, python-format
+msgid "Settings in namespace: %s"
+msgstr "命名空间中的设置：%s"
+
+#: views.py:34
+#, python-format
+msgid "Namespace: %s, not found"
+msgstr "命名空间：%s，未找到"
+
+#: views.py:44
+msgid "Setting namespaces"
+msgstr "设置命名空间"
+
+#: views.py:60
+msgid "Setting updated successfully."
+msgstr "设置已成功更新。"
+
+#: views.py:69
+#, python-format
+msgid "Edit setting: %s"
+msgstr "编辑设定：%s"

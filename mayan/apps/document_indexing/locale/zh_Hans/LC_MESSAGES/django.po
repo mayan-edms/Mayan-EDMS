@@ -1,0 +1,401 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:04-0400\n"
+"PO-Revision-Date: 2020-02-10 08:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: admin.py:24
+msgid "None"
+msgstr "没有"
+
+#: admin.py:26 links.py:95 models.py:54
+msgid "Document types"
+msgstr "文件类型"
+
+#: apps.py:55 events.py:8
+msgid "Document indexing"
+msgstr "文档索引"
+
+#: apps.py:124
+msgid "Total levels"
+msgstr "总级别"
+
+#: apps.py:132
+msgid "Total documents"
+msgstr "文档总数"
+
+#: apps.py:137 apps.py:149 apps.py:168
+msgid "Level"
+msgstr "级别"
+
+#: apps.py:154 apps.py:173
+msgid "Levels"
+msgstr "级别"
+
+#: apps.py:162 apps.py:180 models.py:379
+msgid "Documents"
+msgstr "文档"
+
+#: events.py:12
+msgid "Index created"
+msgstr ""
+
+#: events.py:15
+msgid "Index edited"
+msgstr ""
+
+#: forms.py:18
+msgid "Index templates to be queued for rebuilding."
+msgstr ""
+
+#: forms.py:19 links.py:29
+msgid "Index templates"
+msgstr ""
+
+#: forms.py:34
+msgid "Template"
+msgstr ""
+
+#: handlers.py:20
+msgid "Creation date"
+msgstr "创立日期"
+
+#: links.py:23 links.py:38 links.py:75 links.py:79 models.py:62 views.py:149
+#: views.py:323
+msgid "Indexes"
+msgstr "索引"
+
+#: links.py:44 queues.py:24
+msgid "Rebuild index"
+msgstr "重建索引"
+
+#: links.py:53 links.py:64
+msgid "Deletes and creates from scratch all the document indexes."
+msgstr "删除并从头开始创建所有文档索引。"
+
+#: links.py:55 views.py:446
+msgid "Rebuild indexes"
+msgstr "重建索引"
+
+#: links.py:66 views.py:481
+msgid "Reset indexes"
+msgstr ""
+
+#: links.py:83 views.py:87
+msgid "Create index"
+msgstr "创建索引"
+
+#: links.py:90 links.py:120
+msgid "Delete"
+msgstr "删除"
+
+#: links.py:101 links.py:125
+msgid "Edit"
+msgstr "编辑"
+
+#: links.py:108
+msgid "Tree template"
+msgstr "树模板"
+
+#: links.py:114
+msgid "New child node"
+msgstr "新的子节点"
+
+#: models.py:36
+msgid "Short description of this index."
+msgstr ""
+
+#: models.py:37
+msgid "Label"
+msgstr "标签"
+
+#: models.py:41
+msgid "This value will be used by other apps to reference this index."
+msgstr "其他应用程序将使用此值来引用此索引。"
+
+#: models.py:42
+msgid "Slug"
+msgstr "标称"
+
+#: models.py:47
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "使文档数据更改时，此索引可见并更新。"
+
+#: models.py:50 models.py:254
+msgid "Enabled"
+msgstr "启用"
+
+#: models.py:61 models.py:238
+msgid "Index"
+msgstr "索引"
+
+#: models.py:210
+msgid "Index instance"
+msgstr "索引实例"
+
+#: models.py:211
+msgid "Index instances"
+msgstr "索引实例"
+
+#: models.py:242
+msgid ""
+"Enter a template to render. Use Django's default templating language "
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr "输入要渲染的模板。使用Django的默认模板语言（https://docs.djangoproject.com/en/1.11/ref/templates/builtins/）"
+
+#: models.py:246
+msgid "Indexing expression"
+msgstr "索引表达式"
+
+#: models.py:251
+msgid "Causes this node to be visible and updated when document data changes."
+msgstr "使文档数据更改时，此节点可见并更新。"
+
+#: models.py:259
+msgid ""
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "选中此选项可使此节点充当文档的容器，而不是其他节点的父节点。"
+
+#: models.py:262
+msgid "Link documents"
+msgstr "链接文件"
+
+#: models.py:266
+msgid "Index node template"
+msgstr "索引节点模板"
+
+#: models.py:267
+msgid "Indexes node template"
+msgstr "索引节点模板"
+
+#: models.py:271
+msgid "Root"
+msgstr "根"
+
+#: models.py:326
+#, python-format
+msgid ""
+"Error indexing document: %(document)s; expression: %(expression)s; "
+"%(exception)s"
+msgstr "错误索引文档：%(document)s;表达式：%(expression)s; %(exception)s"
+
+#: models.py:372
+msgid "Index template node"
+msgstr "索引模板节点"
+
+#: models.py:375
+msgid "Value"
+msgstr "值"
+
+#: models.py:385
+msgid "Index node instance"
+msgstr "索引节点实例"
+
+#: models.py:386
+msgid "Indexes node instances"
+msgstr "索引节点实例"
+
+#: models.py:500
+msgid "Document index node instance"
+msgstr "文档索引节点实例"
+
+#: models.py:501
+msgid "Document indexes node instances"
+msgstr "文档索引节点实例"
+
+#: permissions.py:7 queues.py:9
+msgid "Indexing"
+msgstr "索引"
+
+#: permissions.py:10
+msgid "Create new document indexes"
+msgstr "创建新的文档索引"
+
+#: permissions.py:13
+msgid "Edit document indexes"
+msgstr "编辑文档索引"
+
+#: permissions.py:16
+msgid "Delete document indexes"
+msgstr "删除文档索引"
+
+#: permissions.py:19
+msgid "View document index instances"
+msgstr "查看文档索引实例"
+
+#: permissions.py:23
+msgid "View document indexes"
+msgstr "查看文档索引"
+
+#: permissions.py:26
+msgid "Rebuild document indexes"
+msgstr "重建文档索引"
+
+#: queues.py:12
+msgid "Delete empty index nodes"
+msgstr "删除空索引节点"
+
+#: queues.py:16
+msgid "Remove document"
+msgstr "删除文档"
+
+#: queues.py:20
+msgid "Index document"
+msgstr "索引文件"
+
+#: views.py:46
+msgid "Available indexes"
+msgstr ""
+
+#: views.py:47
+msgid "Indexes linked"
+msgstr ""
+
+#: views.py:77
+msgid ""
+"Documents of this type will appear in the indexes linked when these are "
+"updated. Events of the documents of this type will trigger updates in the "
+"linked indexes."
+msgstr ""
+
+#: views.py:81
+#, python-format
+msgid "Indexes linked to document type: %s"
+msgstr ""
+
+#: views.py:109
+#, python-format
+msgid "Delete the index: %s?"
+msgstr "删除索引：%s？"
+
+#: views.py:124
+#, python-format
+msgid "Edit index: %s"
+msgstr "编辑索引：%s"
+
+#: views.py:143
+msgid ""
+"Indexes group document automatically into levels. Indexe are defined using "
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
+msgstr "索引将文档自动分组到级别。 索引是使用模板定义的，其标记被替换为标签或描述等文档的直接属性，或者像元数据等的扩展属性。"
+
+#: views.py:148
+msgid "There are no indexes."
+msgstr "没有索引。"
+
+#: views.py:161
+#, python-format
+msgid "Rebuild index: %s"
+msgstr ""
+
+#: views.py:179
+msgid "Index queued for rebuild."
+msgstr ""
+
+#: views.py:191
+msgid "Available document types"
+msgstr "可用的文档类型"
+
+#: views.py:192
+msgid "Document types linked"
+msgstr "链接的文档类型"
+
+#: views.py:202
+msgid ""
+"Only the documents of the types selected will be shown in the index when "
+"built. Only the events of the documents of the types select will trigger "
+"updates in the index."
+msgstr "构建时，只有所选类型的文档才会显示在索引中。只有所选类型的文档的事件才会触发索引中的更新。"
+
+#: views.py:206
+#, python-format
+msgid "Document types linked to index: %s"
+msgstr "链接到索引的文档类型：%s"
+
+#: views.py:218
+#, python-format
+msgid "Tree template nodes for index: %s"
+msgstr "索引的树模板节点：%s"
+
+#: views.py:248
+#, python-format
+msgid "Create child node of: %s"
+msgstr "创建%s的子节点"
+
+#: views.py:271
+#, python-format
+msgid "Delete the index template node: %s?"
+msgstr "删除索引模板节点：%s？"
+
+#: views.py:294
+#, python-format
+msgid "Edit the index template node: %s?"
+msgstr "编辑索引模板节点：%s？"
+
+#: views.py:318
+msgid ""
+"This could mean that no index templates have been created or that there "
+"index templates but they are no properly defined."
+msgstr "这可能意味着没有创建索引模板或索引模板没有正确定义。"
+
+#: views.py:322
+msgid "There are no index instances available."
+msgstr "没有可用的索引实例。"
+
+#: views.py:367
+#, python-format
+msgid "Navigation: %s"
+msgstr "导航：%s"
+
+#: views.py:372
+#, python-format
+msgid "Contents for index: %s"
+msgstr "索引目录：%s"
+
+#: views.py:425
+msgid ""
+"Assign the document type of this document to an index to have it appear in "
+"instances of those indexes organization units. "
+msgstr "将此文档的文档类型分配给索引，使其显示在这些索引组织单位的实例中。"
+
+#: views.py:430
+msgid "This document is not in any index"
+msgstr "此文档不在任何索引中"
+
+#: views.py:434
+#, python-format
+msgid "Indexes nodes containing document: %s"
+msgstr "包含文档的索引节点：%s"
+
+#: views.py:460
+#, python-format
+msgid "%(count)d index queued for rebuild."
+msgid_plural "%(count)d indexes queued for rebuild."
+msgstr[0] "%(count)d索引排队等待重建。"
+
+#: views.py:493
+#, python-format
+msgid "%(count)d index reset."
+msgid_plural "%(count)d indexes reset."
+msgstr[0] ""
+
+#: views.py:506
+msgid "Index templates for which their instances will be deleted."
+msgstr ""

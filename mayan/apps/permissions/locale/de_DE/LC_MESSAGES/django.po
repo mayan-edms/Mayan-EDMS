@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # Jesaja Everling <jeverling@gmail.com>, 2017
 # Marvin Haschker <marvin@haschker.me>, 2019
 # Mathias Behrle <mathiasb@m9s.biz>, 2018
@@ -13,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:29-0400\n"
-"PO-Revision-Date: 2019-12-13 05:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-14 01:07-0400\n"
+"PO-Revision-Date: 2020-01-06 17:47+0000\n"
+"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,11 +24,11 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:43 events.py:8 models.py:36 models.py:106 permissions.py:7
+#: apps.py:47 events.py:8 models.py:36 models.py:106 permissions.py:7
 msgid "Permissions"
 msgstr "Berechtigungen"
 
-#: classes.py:84
+#: classes.py:87
 msgid "Insufficient permissions."
 msgstr "Unzureichende Berechtigungen."
 
@@ -43,7 +44,7 @@ msgstr "Rolle erstellt"
 msgid "Role edited"
 msgstr "Rolle bearbeitet"
 
-#: links.py:16 links.py:40 models.py:117 views.py:168
+#: links.py:16 links.py:40 models.py:117 views.py:171
 msgid "Roles"
 msgstr "Rollen"
 
@@ -81,7 +82,7 @@ msgstr "Berechtigung"
 
 #: models.py:101
 msgid "A short text describing the role."
-msgstr ""
+msgstr "Ein kurzer Text, der die Rolle beschreibt."
 
 #: models.py:102 search.py:16
 msgid "Label"
@@ -166,17 +167,17 @@ msgstr "Verfügbare Berechtigungen"
 msgid "Granted permissions"
 msgstr "Erteilte Berechtigungen"
 
-#: views.py:140
+#: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr "Hier erteilte Berechtigungen gelten für das gesamte System und sämtliche Objekte."
 
-#: views.py:143
+#: views.py:146
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Berechtigungen der Rolle %s"
 
-#: views.py:160
+#: views.py:163
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -184,6 +185,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr "Rolle sind Autorisierungseinheiten. Sie sind Benutzergruppen zugeordnet, die die Rollenberechtigungen für das gesamte System erben. Rollen können auch Bestandteil von Zugriffsberechtigungslisten sein. Zugriffsberechtigungslisten beinhalten Berechtigungen für spezifische Objekte."
 
-#: views.py:167
+#: views.py:170
 msgid "There are no roles"
 msgstr "Keine Rolle vorhanden"

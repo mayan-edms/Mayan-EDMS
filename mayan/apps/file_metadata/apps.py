@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelAttribute, ModelField
+from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
     menu_tools
@@ -91,7 +91,7 @@ class FileMetadataApp(MayanAppConfig):
             value=method_document_version_submit
         )
 
-        ModelAttribute(
+        ModelProperty(
             model=Document,
             name='file_metadata_value_of.< underscore separated driver name and property name >',
             description=_(
@@ -106,11 +106,11 @@ class FileMetadataApp(MayanAppConfig):
             )
         )
 
-        ModelField(
+        ModelFieldRelated(
             label=_('File metadata key'), model=Document,
             name='versions__file_metadata_drivers__entries__key',
         )
-        ModelField(
+        ModelFieldRelated(
             label=_('File metadata value'), model=Document,
             name='versions__file_metadata_drivers__entries__value',
         )

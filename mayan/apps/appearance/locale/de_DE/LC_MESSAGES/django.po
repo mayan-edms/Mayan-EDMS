@@ -5,6 +5,7 @@
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # Jesaja Everling <jeverling@gmail.com>, 2017
 # Marvin Haschker <marvin@haschker.me>, 2019
 # Mathias Behrle <mathiasb@m9s.biz>, 2018
@@ -12,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:25-0400\n"
-"PO-Revision-Date: 2019-12-22 05:04+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-14 01:02-0400\n"
+"PO-Revision-Date: 2020-01-06 15:09+0000\n"
+"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,7 +83,7 @@ msgstr "Maximale Anzahl der Zeichen, die als Titel einer Ansicht angezeigt werde
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
+msgstr "Position, an der die Systemmeldung angezeigt wird. Optionen sind: top-left, top-center, top-right, bottom-left, bottom-center, bottom-right."
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
@@ -213,13 +214,13 @@ msgstr "Warnung"
 
 #: templates/appearance/base.html:49
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Klicken Sie hier, um dies zu beheben."
 
 #: templates/appearance/base.html:59
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
+msgstr "Einstellungen aktualisiert, starten Sie Ihre Installation neu und aktualisieren Sie Ihren Browser, damit die Änderungen wirksam werden."
 
 #: templates/appearance/base.html:72
 #: templates/appearance/generic_list_items_subtemplate.html:66
@@ -234,7 +235,7 @@ msgstr "Ausklappmenü ein-/ausschalten"
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
-msgstr ""
+msgstr "Hauptmenü öffnen"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
@@ -288,31 +289,31 @@ msgstr "Erste Schritte"
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Bevor Mayan EDMS voll genutzt werden kann, muss folgendes passieren:"
 
-#: templates/appearance/list_header.html:11
+#: templates/appearance/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr "Gesamt (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von %(total_pages)s)"
 
-#: templates/appearance/list_header.html:13
-#: templates/appearance/list_header.html:16
+#: templates/appearance/list_header.html:14
+#: templates/appearance/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Gesamt: %(total)s"
 
 #: templates/appearance/list_toolbar.html:16
 msgid "Select/Deselect all"
-msgstr ""
+msgstr "Alle auswählen/abwählen"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
+msgstr "Wählen Sie Elemente aus, um Massenaktionen zu aktivieren. Verwenden Sie die Umschalttaste + Klick, um viele auszuwählen."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr ""
+msgstr "Massenaktionen"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"

@@ -6,12 +6,11 @@
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:26-0400\n"
+"POT-Creation-Date: 2020-02-14 01:03-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -260,7 +259,7 @@ msgstr ""
 "Atkarības, kas nepieciešamas vienai videi, var nebūt nepieciešama citai. "
 "Vides paraugi: Produkcijas vide, Izstrādes vide."
 
-#: links.py:11 views.py:41
+#: links.py:11 views.py:19
 msgid "Check for updates"
 msgstr "Meklēt atjauninājumus"
 
@@ -306,50 +305,30 @@ msgstr "Piespiediet instalāciju, pat ja tā jau ir instalēta."
 msgid "View dependencies"
 msgstr "Skatīt atkarības"
 
-#: views.py:23
-#, python-format
-msgid "The version you are using is outdated. The latest version is %s"
-msgstr "Lietotā versija ir novecojusi. Jaunākā versija ir %s"
-
-#: views.py:28
-msgid "It is not possible to determine the latest version available."
-msgstr "Nav iespējams noteikt jaunāko pieejamo versiju."
-
 #: views.py:33
-#, python-format
-msgid ""
-"Unexpected error trying to determine the latest version available. Make sure"
-" your installation has a connection to the internet; %s"
-msgstr ""
-
-#: views.py:38
-msgid "Your version is up-to-date."
-msgstr "Jūsu versija ir atjaunināta."
-
-#: views.py:55
 #, python-format
 msgid "Entries for dependency group: %s"
 msgstr "Ieraksti atkarības grupai: %s"
 
-#: views.py:68 views.py:113
+#: views.py:46 views.py:91
 #, python-format
 msgid "Group %s not found."
 msgstr "Grupa %s nav atrasta."
 
-#: views.py:81
+#: views.py:59
 msgid "Dependency groups"
 msgstr "Atkarības grupas"
 
-#: views.py:101
+#: views.py:79
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
 msgstr "Atkarības grupa un ieraksts: %(group)s, %(entry)s"
 
-#: views.py:125
+#: views.py:103
 #, python-format
 msgid "Entry %s not found."
 msgstr "Ieraksts %s nav atrasts."
 
-#: views.py:143
+#: views.py:121
 msgid "Other packages licenses"
 msgstr "Citas paketes licences"

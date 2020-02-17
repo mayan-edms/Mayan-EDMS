@@ -7,7 +7,9 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import MissingItem, ModelField, Template
+from mayan.apps.common.classes import (
+    MissingItem, ModelField, ModelFieldRelated, ModelProperty, Template
+)
 from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
@@ -158,30 +160,40 @@ class DocumentsApp(MayanAppConfig):
         ModelField(model=Document, name='description')
         ModelField(model=Document, name='date_added')
         ModelField(model=Document, name='deleted_date_time')
-        ModelField(model=Document, name='document_type__label')
+        ModelField(
+            model=Document, name='document_type'
+        )
         ModelField(model=Document, name='in_trash')
         ModelField(model=Document, name='is_stub')
         ModelField(model=Document, name='label')
         ModelField(model=Document, name='language')
         ModelField(model=Document, name='uuid')
-        ModelField(
-            model=Document, name='versions__checksum'
+
+        ModelFieldRelated(model=Document, name='document_type__label')
+        ModelFieldRelated(
+            model=Document,
+            name='versions__checksum'
         )
-        ModelField(
+        ModelFieldRelated(
             model=Document, label=_('Versions comment'),
             name='versions__comment'
         )
-        ModelField(
+        ModelFieldRelated(
             model=Document, label=_('Versions encoding'),
             name='versions__encoding'
         )
-        ModelField(
+        ModelFieldRelated(
             model=Document, label=_('Versions mime type'),
             name='versions__mimetype'
         )
-        ModelField(
+        ModelFieldRelated(
             model=Document, label=_('Versions timestamp'),
             name='versions__timestamp'
+        )
+
+        ModelProperty(
+            description=_('Return the lastest version of the document.'),
+            model=Document, label=_('Latest version'), name='latest_version'
         )
 
         ModelEventType.register(

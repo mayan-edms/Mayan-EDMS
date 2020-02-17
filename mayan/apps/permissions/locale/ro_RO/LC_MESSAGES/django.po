@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:29-0400\n"
+"POT-Creation-Date: 2020-02-14 01:07-0400\n"
 "PO-Revision-Date: 2019-12-20 12:47+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:43 events.py:8 models.py:36 models.py:106 permissions.py:7
+#: apps.py:47 events.py:8 models.py:36 models.py:106 permissions.py:7
 msgid "Permissions"
 msgstr "Permisiuni"
 
-#: classes.py:84
+#: classes.py:87
 msgid "Insufficient permissions."
 msgstr "Permisiuni insuficiente."
 
@@ -39,7 +39,7 @@ msgstr "Rolul a fost creat"
 msgid "Role edited"
 msgstr "Rolul a fost editat"
 
-#: links.py:16 links.py:40 models.py:117 views.py:168
+#: links.py:16 links.py:40 models.py:117 views.py:171
 msgid "Roles"
 msgstr "Roluri"
 
@@ -162,17 +162,17 @@ msgstr "Permisiuni disponibile"
 msgid "Granted permissions"
 msgstr "Permisiuni acordate"
 
-#: views.py:140
+#: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr "Permisiunile acordate aici se vor aplica întregului sistem și tuturor obiectelor."
 
-#: views.py:143
+#: views.py:146
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Permisiuni pentru rolul: %s"
 
-#: views.py:160
+#: views.py:163
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -180,6 +180,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr "Rolurile sunt unități de autorizare. Acestea conțin grupuri de utilizatori care moștenesc permisiunile de rol pentru întregul sistem. Rolurile pot fi, de asemenea, parte din listele de control al accesului. Lista de control de acces ACL conține permisiunile acordate unui rol pentru anumite obiecte pe care membrii grupului îi moștenesc."
 
-#: views.py:167
+#: views.py:170
 msgid "There are no roles"
 msgstr "Nu există roluri"

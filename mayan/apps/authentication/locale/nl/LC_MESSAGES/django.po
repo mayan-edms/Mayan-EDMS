@@ -1,0 +1,164 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
+# Martin Horseling <martin.horseling@gmail.com>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:02-0400\n"
+"PO-Revision-Date: 2020-02-14 04:17+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:25 settings.py:9
+msgid "Authentication"
+msgstr "Authenticatie"
+
+#: forms.py:17
+msgid "Email"
+msgstr "Email"
+
+#: forms.py:20
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: forms.py:22 forms.py:73
+msgid "Remember me"
+msgstr "Onthoud mij"
+
+#: forms.py:25
+msgid ""
+"Please enter a correct email and password. Note that the password field is "
+"case-sensitive."
+msgstr "Vul het juiste email adres en wachtwoord in. Houd er rekening mee dat het wachtwoord-invulveld hoofdlettergevoelig is."
+
+#: forms.py:27
+msgid "This account is inactive."
+msgstr "Deze gebruiker is in-actief."
+
+#: links.py:22
+msgid "Logout"
+msgstr "Afmelden"
+
+#: links.py:27
+msgid "Change password"
+msgstr "Pas wachtwoord aan"
+
+#: links.py:32 links.py:39
+msgid "Set password"
+msgstr "Stel paswoord in"
+
+#: settings.py:13
+msgid ""
+"Controls the mechanism used to authenticated user. Options are: username, "
+"email"
+msgstr "Beinvloed de manier waarop gebruikers worden geauthenticeerd. Opties zijn: gebruikersnaam, email"
+
+#: settings.py:20
+msgid ""
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr ""
+
+#: settings.py:27
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr ""
+
+#: templates/authentication/login.html:11
+msgid "Login"
+msgstr "Aanmelden"
+
+#: templates/authentication/login.html:26
+#: templates/authentication/login.html:34
+msgid "Sign in"
+msgstr "Meld u aan"
+
+#: templates/authentication/login.html:41
+msgid "Forgot your password?"
+msgstr "Paswoord vergeten?"
+
+#: templates/authentication/password_reset_complete.html:8
+#: templates/authentication/password_reset_confirm.html:8
+#: templates/authentication/password_reset_confirm.html:20
+#: templates/authentication/password_reset_done.html:8
+#: templates/authentication/password_reset_form.html:8
+#: templates/authentication/password_reset_form.html:20
+msgid "Password reset"
+msgstr "Paswoord opnieuw instellen"
+
+#: templates/authentication/password_reset_complete.html:15
+msgid "Password reset complete! Click the link below to login."
+msgstr "Paswoord opnieuw ingesteld! Klik op de link hieronder om in te loggen."
+
+#: templates/authentication/password_reset_complete.html:17
+msgid "Login page"
+msgstr "Aanmeld pagina"
+
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29 views.py:167
+msgid "Submit"
+msgstr "Verstuur"
+
+#: templates/authentication/password_reset_done.html:15
+msgid "Password reset email sent!"
+msgstr "Paswoord instel email verstuurd!"
+
+#: views.py:77
+msgid "Your password has been successfully changed."
+msgstr "Uw wachtwoord is succesvol aangepast,"
+
+#: views.py:84
+msgid "Current user password change"
+msgstr "Pas wachtwoord aan van huidige gebruiker"
+
+#: views.py:92
+msgid "Changing the password is not allowed for this account."
+msgstr ""
+
+#: views.py:158
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr ""
+
+#: views.py:160
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr ""
+
+#: views.py:169
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:179
+#, python-format
+msgid "Change password for user: %s"
+msgstr ""
+
+#: views.py:199
+msgid ""
+"Super user and staff user password reseting is not allowed, use the admin "
+"interface for these cases."
+msgstr "Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
+
+#: views.py:209
+#, python-format
+msgid "Successful password reset for user: %s."
+msgstr ""
+
+#: views.py:215
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": %(error)s"

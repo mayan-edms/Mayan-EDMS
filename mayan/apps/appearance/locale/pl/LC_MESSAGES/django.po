@@ -5,16 +5,16 @@
 # Translators:
 # Marcin Lozynski <mlozynski@wp.pl>, 2019
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2019
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2018
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2018,2020
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:25-0400\n"
-"PO-Revision-Date: 2019-12-22 05:04+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-14 01:02-0400\n"
+"PO-Revision-Date: 2020-01-25 09:19+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,7 +82,7 @@ msgstr "Wyświetlono maksymalną liczbę znaków"
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
+msgstr "Pozycja na ekranie, w której będzie wyświetlany komunikat systemowy. Dostępne opcje: top-left (góra-lewy róg), top-center (góra-środek), top-right (góra-prawy róg), bottom-left (dół-lewy róg), bottom-center (dół-środek), bottom-right (dół-prawy róg)."
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
@@ -172,7 +172,7 @@ msgid ""
 "\n"
 "                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>.\n"
 "            "
-msgstr ""
+msgstr "\nOprócz datków możesz również wesprzeć projekt poprzez <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">zakup książki \"Exploring Mayan EDMS\"  Roberta Rosario</a>."
 
 #: templates/appearance/about.html:133
 #, python-format
@@ -213,13 +213,13 @@ msgstr "Ostrzeżenie"
 
 #: templates/appearance/base.html:49
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Kliknij, aby to naprawić."
 
 #: templates/appearance/base.html:59
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
+msgstr "Ustawienia zostały zaktualizowane. Uruchom ponownie instalację i odśwież przeglądarkę internetową, aby zmiany przyniosły efekt."
 
 #: templates/appearance/base.html:72
 #: templates/appearance/generic_list_items_subtemplate.html:66
@@ -234,7 +234,7 @@ msgstr "Rozwiń listę"
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
-msgstr ""
+msgstr "Otwórz główne menu"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
@@ -288,31 +288,31 @@ msgstr "Rozpoczynamy"
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Zanim w pełni zaczniesz używać Mayan EDMS musisz:"
 
-#: templates/appearance/list_header.html:11
+#: templates/appearance/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr "Razem (%(start)s - %(end)s z %(total)s) (Strona %(page_number)s z %(total_pages)s)"
 
-#: templates/appearance/list_header.html:13
-#: templates/appearance/list_header.html:16
+#: templates/appearance/list_header.html:14
+#: templates/appearance/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Razem: %(total)s"
 
 #: templates/appearance/list_toolbar.html:16
 msgid "Select/Deselect all"
-msgstr ""
+msgstr "Zaznacz/Odznacz wszystko"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
+msgstr "Zaznacz elementy, aby uaktywnić akcję masową. Użyj Shift + click, aby zaznaczyć wiele elementów."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr ""
+msgstr "Akcje masowe"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"

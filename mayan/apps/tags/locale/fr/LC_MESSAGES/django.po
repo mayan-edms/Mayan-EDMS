@@ -5,7 +5,7 @@
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
+# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
 # Olivier W, 2019
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
-"PO-Revision-Date: 2019-12-21 18:03+0000\n"
-"Last-Translator: Olivier W\n"
+"POT-Creation-Date: 2020-02-14 01:08-0400\n"
+"PO-Revision-Date: 2020-01-21 17:21+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,7 +64,7 @@ msgstr "Retirer des étiquettes"
 
 #: links.py:44
 msgid "Create new tag"
-msgstr "Créer une nouvelle étiquette"
+msgstr "Créer une étiquette"
 
 #: links.py:50 links.py:67 views.py:156
 msgid "Delete"
@@ -120,7 +120,7 @@ msgstr "Étiquettes de document"
 
 #: permissions.py:10
 msgid "Create new tags"
-msgstr "Créer de nouvelles étiquettes"
+msgstr "Créer des étiquettes"
 
 #: permissions.py:13
 msgid "Delete tags"
@@ -142,19 +142,19 @@ msgstr "Attacher des étiquettes aux documents"
 msgid "Remove tags from documents"
 msgstr "Retirer des étiquettes des documents"
 
-#: serializers.py:39
+#: serializers.py:38
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
 msgstr "Liste séparée par des virgules des clés primaires de document auxquelles cette étiquette sera jointe."
 
-#: serializers.py:86
+#: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr "URL de l'API pointant vers une étiquette en relation au document qui s'y rattache. Cette URL est différente de l'URL de l'étiquette canonique."
 
-#: serializers.py:106
+#: serializers.py:105
 msgid "Primary key of the tag to be added."
 msgstr "La clé primaire pour l'étiquette sera ajoutée."
 

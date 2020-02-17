@@ -1,0 +1,224 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:03-0400\n"
+"PO-Revision-Date: 2020-02-10 08:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:45 events.py:7 links.py:34
+msgid "Checkouts"
+msgstr "签出"
+
+#: dashboard_widgets.py:16 views.py:172
+msgid "Checked out documents"
+msgstr "已签出的文档"
+
+#: events.py:10
+msgid "Document automatically checked in"
+msgstr "自动签入的文档"
+
+#: events.py:14
+msgid "Document checked in"
+msgstr "签入的文档"
+
+#: events.py:17
+msgid "Document checked out"
+msgstr "签出的文档"
+
+#: events.py:20
+msgid "Document forcefully checked in"
+msgstr "强制签入文档"
+
+#: exceptions.py:27
+msgid "Document already checked out."
+msgstr "文档已经签出。"
+
+#: forms.py:28
+msgid "Document status"
+msgstr "文档状态"
+
+#: forms.py:39 models.py:44 models.py:136
+msgid "User"
+msgstr "用户"
+
+#: forms.py:43
+msgid "Check out time"
+msgstr "签出时间"
+
+#: forms.py:48
+msgid "Check out expiration"
+msgstr "签出到期"
+
+#: forms.py:53
+msgid "New versions allowed?"
+msgstr "允许新版本？"
+
+#: forms.py:54
+msgid "Yes"
+msgstr "是"
+
+#: forms.py:54
+msgid "No"
+msgstr "否"
+
+#: links.py:41
+msgid "Check out document"
+msgstr "签出文档"
+
+#: links.py:45
+msgid "Check out"
+msgstr ""
+
+#: links.py:52
+msgid "Check in document"
+msgstr "签入文档"
+
+#: links.py:56
+msgid "Check in"
+msgstr ""
+
+#: links.py:62
+msgid "Check in/out"
+msgstr "签入/签出"
+
+#: literals.py:12
+msgid "Checked out"
+msgstr "签出"
+
+#: literals.py:13
+msgid "Checked in/available"
+msgstr "签入/可用"
+
+#: models.py:31 models.py:114
+msgid "Document"
+msgstr "文档"
+
+#: models.py:34
+msgid "Check out date and time"
+msgstr "查看日期和时间"
+
+#: models.py:38
+msgid "Amount of time to hold the document checked out in minutes."
+msgstr "签出文件需要几分钟的时间"
+
+#: models.py:40
+msgid "Check out expiration date and time"
+msgstr "查看到期日期和时间"
+
+#: models.py:49
+msgid "Do not allow new version of this document to be uploaded."
+msgstr "不允许上传此文档的新版本。"
+
+#: models.py:51
+msgid "Block new version upload"
+msgstr "阻止新版本上传"
+
+#: models.py:59 permissions.py:7
+msgid "Document checkout"
+msgstr "文档签出"
+
+#: models.py:60
+msgid "Document checkouts"
+msgstr "文档签出"
+
+#: models.py:68
+msgid "Check out expiration date and time must be in the future."
+msgstr "签出到期时间必须是当前时间之后"
+
+#: models.py:120
+msgid "New version block"
+msgstr "新版本阻止"
+
+#: models.py:121
+msgid "New version blocks"
+msgstr "新版本阻止"
+
+#: models.py:141
+msgid "Checkout time and date"
+msgstr "签出时间和日期"
+
+#: models.py:146
+msgid "Checkout expiration"
+msgstr "签出到期时间"
+
+#: permissions.py:10
+msgid "Check in documents"
+msgstr "签入文档"
+
+#: permissions.py:13
+msgid "Forcefully check in documents"
+msgstr "强行签入文件"
+
+#: permissions.py:16
+msgid "Check out documents"
+msgstr "签出的文档"
+
+#: permissions.py:19
+msgid "Check out details view"
+msgstr "签出详细信息"
+
+#: queues.py:13
+msgid "Checkouts periodic"
+msgstr "签出到期时间"
+
+#: queues.py:17
+msgid "Check expired checkouts"
+msgstr "检查过期的签出"
+
+#: serializers.py:31
+msgid "Primary key of the document to be checked out."
+msgstr "要检出的文件的主键。"
+
+#: views.py:35
+#, python-format
+msgid "Check in %(count)d document"
+msgid_plural "Check in %(count)d documents"
+msgstr[0] ""
+
+#: views.py:48
+#, python-format
+msgid "Check in document: %s"
+msgstr ""
+
+#: views.py:102
+#, python-format
+msgid "Checkout %(count)d document"
+msgid_plural "Checkout %(count)d documents"
+msgstr[0] ""
+
+#: views.py:115
+#, python-format
+msgid "Check out document: %s"
+msgstr "签出文档: %s"
+
+#: views.py:149
+#, python-format
+msgid "Check out details for document: %s"
+msgstr "%s 签出详情"
+
+#: views.py:168
+msgid ""
+"Checking out a document, blocks certain operations for a predetermined "
+"amount of time."
+msgstr ""
+
+#: views.py:171
+msgid "No documents have been checked out"
+msgstr "文档未被签出"
+
+#: widgets.py:27
+msgid "Amount"
+msgstr ""

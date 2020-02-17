@@ -138,9 +138,9 @@ Upgrading from Mayan EDMS 3.2.x
 
    .. code-block:: bash
 
-       sudo echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
-       sudo echo "save \"\"" >> /etc/redis/redis.conf
-       sudo echo "databases 2" >> /etc/redis/redis.conf
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
        sudo systemctl restart redis
 
 

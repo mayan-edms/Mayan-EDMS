@@ -1,0 +1,184 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:07-0400\n"
+"PO-Revision-Date: 2020-02-10 08:24+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:47 events.py:8 models.py:36 models.py:106 permissions.py:7
+msgid "Permissions"
+msgstr "权限"
+
+#: classes.py:87
+msgid "Insufficient permissions."
+msgstr "权限不足。"
+
+#: dashboard_widgets.py:15
+msgid "Total roles"
+msgstr ""
+
+#: events.py:12
+msgid "Role created"
+msgstr ""
+
+#: events.py:15
+msgid "Role edited"
+msgstr ""
+
+#: links.py:16 links.py:40 models.py:117 views.py:171
+msgid "Roles"
+msgstr "角色"
+
+#: links.py:23 views.py:53
+msgid "Create new role"
+msgstr "创造新角色"
+
+#: links.py:29
+msgid "Delete"
+msgstr "删除"
+
+#: links.py:34
+msgid "Edit"
+msgstr "编辑"
+
+#: links.py:45 models.py:109
+msgid "Groups"
+msgstr "用户组"
+
+#: links.py:52
+msgid "Role permissions"
+msgstr "角色权限"
+
+#: models.py:27
+msgid "Namespace"
+msgstr "命名空间"
+
+#: models.py:28
+msgid "Name"
+msgstr "名称"
+
+#: models.py:35
+msgid "Permission"
+msgstr "权限"
+
+#: models.py:101
+msgid "A short text describing the role."
+msgstr ""
+
+#: models.py:102 search.py:16
+msgid "Label"
+msgstr "标签"
+
+#: models.py:116
+msgid "Role"
+msgstr "角色"
+
+#: permissions.py:10
+msgid "Create roles"
+msgstr "创建角色"
+
+#: permissions.py:13
+msgid "Delete roles"
+msgstr "删除角色"
+
+#: permissions.py:16
+msgid "Edit roles"
+msgstr "编辑角色"
+
+#: permissions.py:19
+msgid "View roles"
+msgstr "查看角色"
+
+#: search.py:20
+msgid "Group name"
+msgstr "用户组名称"
+
+#: serializers.py:46
+msgid ""
+"Comma separated list of groups primary keys to add to, or replace in this "
+"role."
+msgstr "逗号分隔的用户组主键列表，可添加或替换至此角色。"
+
+#: serializers.py:53
+msgid "Comma separated list of permission primary keys to grant to this role."
+msgstr "逗号分隔的权限主键列表，可授予此角色。"
+
+#: serializers.py:90
+#, python-format
+msgid "No such permission: %s"
+msgstr "没有这样的权限：%s"
+
+#: views.py:32
+msgid "Available roles"
+msgstr "可用角色"
+
+#: views.py:33
+msgid "Group roles"
+msgstr "用户组角色"
+
+#: views.py:42
+#, python-format
+msgid "Roles of group: %s"
+msgstr "用户组的角色：%s"
+
+#: views.py:82
+msgid "Available groups"
+msgstr "可用的用户组"
+
+#: views.py:83
+msgid "Role groups"
+msgstr "角色用户组"
+
+#: views.py:92
+#, python-format
+msgid "Groups of role: %s"
+msgstr "角色的用户组：%s"
+
+#: views.py:94
+msgid ""
+"Add groups to be part of a role. They will inherit the role's permissions "
+"and access controls."
+msgstr "添加用户组以成为角色的一部分。他们将继承角色的权限和访问控制。"
+
+#: views.py:107
+msgid "Available permissions"
+msgstr "可用权限"
+
+#: views.py:108
+msgid "Granted permissions"
+msgstr "授予的权限"
+
+#: views.py:143
+msgid ""
+"Permissions granted here will apply to the entire system and all objects."
+msgstr "此处授予的权限将适用于整个系统和所有对象。"
+
+#: views.py:146
+#, python-format
+msgid "Permissions for role: %s"
+msgstr "角色的权限：%s"
+
+#: views.py:163
+msgid ""
+"Roles are authorization units. They contain user groups which inherit the "
+"role permissions for the entire system. Roles can also part of access "
+"controls lists. Access controls list are permissions granted to a role for "
+"specific objects which its group members inherit."
+msgstr "角色是授权单位。它们包含继承整个系统的角色权限的用户组。角色也可以是访问控制列表的一部分。访问控制列表是授予其组成员继承的特定对象的角色的权限。"
+
+#: views.py:170
+msgid "There are no roles"
+msgstr "没有角色"

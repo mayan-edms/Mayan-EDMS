@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:02-0400\n"
+"PO-Revision-Date: 2020-02-10 08:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:25 settings.py:9
+msgid "Authentication"
+msgstr "认证"
+
+#: forms.py:17
+msgid "Email"
+msgstr "电子邮件"
+
+#: forms.py:20
+msgid "Password"
+msgstr "密码"
+
+#: forms.py:22 forms.py:73
+msgid "Remember me"
+msgstr "记住账号"
+
+#: forms.py:25
+msgid ""
+"Please enter a correct email and password. Note that the password field is "
+"case-sensitive."
+msgstr "请输入正确的电子邮件和密码。请注意，密码字段区分大小写。"
+
+#: forms.py:27
+msgid "This account is inactive."
+msgstr "此账号未激活。"
+
+#: links.py:22
+msgid "Logout"
+msgstr "登出"
+
+#: links.py:27
+msgid "Change password"
+msgstr "更改密码"
+
+#: links.py:32 links.py:39
+msgid "Set password"
+msgstr "设置密码"
+
+#: settings.py:13
+msgid ""
+"Controls the mechanism used to authenticated user. Options are: username, "
+"email"
+msgstr "控制用于经过身份验证的用户的机制。选项包括：用户名，电子邮件"
+
+#: settings.py:20
+msgid ""
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr ""
+
+#: settings.py:27
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr ""
+
+#: templates/authentication/login.html:11
+msgid "Login"
+msgstr "登录"
+
+#: templates/authentication/login.html:26
+#: templates/authentication/login.html:34
+msgid "Sign in"
+msgstr "登入"
+
+#: templates/authentication/login.html:41
+msgid "Forgot your password?"
+msgstr "忘记密码了吗？"
+
+#: templates/authentication/password_reset_complete.html:8
+#: templates/authentication/password_reset_confirm.html:8
+#: templates/authentication/password_reset_confirm.html:20
+#: templates/authentication/password_reset_done.html:8
+#: templates/authentication/password_reset_form.html:8
+#: templates/authentication/password_reset_form.html:20
+msgid "Password reset"
+msgstr "重置密码"
+
+#: templates/authentication/password_reset_complete.html:15
+msgid "Password reset complete! Click the link below to login."
+msgstr "密码重置完成！点击下面的链接登录。"
+
+#: templates/authentication/password_reset_complete.html:17
+msgid "Login page"
+msgstr "登录页面"
+
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29 views.py:167
+msgid "Submit"
+msgstr "提交"
+
+#: templates/authentication/password_reset_done.html:15
+msgid "Password reset email sent!"
+msgstr "密码重置邮件已发送！"
+
+#: views.py:77
+msgid "Your password has been successfully changed."
+msgstr "你的密码已成功更改。"
+
+#: views.py:84
+msgid "Current user password change"
+msgstr "当前用户密码更改"
+
+#: views.py:92
+msgid "Changing the password is not allowed for this account."
+msgstr "此帐户不允许更改密码。"
+
+#: views.py:158
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr "在%(count)d用户上执行的密码更改请求"
+
+#: views.py:160
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr "在%(count)d用户上执行的密码更改请求"
+
+#: views.py:169
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] ""
+
+#: views.py:179
+#, python-format
+msgid "Change password for user: %s"
+msgstr "更改用户密码：%s"
+
+#: views.py:199
+msgid ""
+"Super user and staff user password reseting is not allowed, use the admin "
+"interface for these cases."
+msgstr "不允许超级用户和员工用户的密码重置，在这些情况下请使用管理界面。"
+
+#: views.py:209
+#, python-format
+msgid "Successful password reset for user: %s."
+msgstr "用户成功重置密码：%s。"
+
+#: views.py:215
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "重置用户“%(user)s”的密码时出错：%(error)s"

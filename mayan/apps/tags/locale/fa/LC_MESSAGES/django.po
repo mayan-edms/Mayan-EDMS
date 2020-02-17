@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
+"POT-Creation-Date: 2020-02-14 01:08-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -137,19 +137,19 @@ msgstr "برچسب ها را به اسناد اضافه کنید"
 msgid "Remove tags from documents"
 msgstr "برچسب ها را از اسناد حذف کنید"
 
-#: serializers.py:39
+#: serializers.py:38
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
 msgstr "لیست کاملی از کلیدهای اصلی اسناد که این برچسب به آن متصل می شوند جدا شده است."
 
-#: serializers.py:86
+#: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr "URL API اشاره به یک برچسب در رابطه با سند متصل به آن. این URL متفاوت از URL تگ های کانونی است."
 
-#: serializers.py:106
+#: serializers.py:105
 msgid "Primary key of the tag to be added."
 msgstr "کلید اولیه تگ اضافه شده است"
 

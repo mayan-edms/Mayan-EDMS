@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.test import override_settings
 from django.utils.encoding import force_text
 
 from mayan.apps.converter.layers import layer_saved_transformations
@@ -24,11 +25,11 @@ from .mixins import DocumentViewTestMixin
 class DocumentViewTestCase(
     LayerTestMixin, DocumentViewTestMixin, GenericDocumentViewTestCase
 ):
-    def test_document_view_no_permissions(self):
+    def test_document_properties_view_no_permissions(self):
         response = self._request_document_properties_view()
         self.assertEqual(response.status_code, 404)
 
-    def test_document_view_with_permissions(self):
+    def test_document_properties_view_with_permissions(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
@@ -36,6 +37,35 @@ class DocumentViewTestCase(
         response = self._request_document_properties_view()
         self.assertContains(
             response=response, text=self.test_document.label, status_code=200
+        )
+
+    @override_settings(DOCUMENTS_LANGUAGE='fra')
+    def test_document_properties_view_setting_non_us_language_with_permissions(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        response = self._request_document_properties_view()
+        self.assertContains(
+            response=response, text=self.test_document.label, status_code=200
+        )
+        self.assertContains(
+            response=response,
+            text='Language:</label>\n                \n                \n                    English',
+            status_code=200
+        )
+
+    @override_settings(DOCUMENTS_LANGUAGE='fra')
+    def test_document_properties_edit_get_view_setting_non_us_language_with_permissions(self):
+        self.grant_access(
+            permission=permission_document_properties_edit,
+            obj=self.test_document_type
+        )
+        response = self._request_document_properties_edit_get_view()
+        self.assertContains(
+            response=response,
+            text='<option value="eng" selected>English</option>',
+            status_code=200
         )
 
     def test_document_list_view_no_permissions(self):
@@ -456,3 +486,17 @@ class DocumentViewTestCase(
 
         response = self._request_document_print_view()
         self.assertEqual(response.status_code, 200)
+
+    def test_document_preview_view_no_permission(self):
+        response = self._request_test_document_preview_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_preview_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        response = self._request_test_document_preview_view()
+        self.assertContains(
+            response=response, text=self.test_document.label, status_code=200
+        )

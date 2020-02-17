@@ -1,0 +1,31 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:06-0400\n"
+"PO-Revision-Date: 2020-02-14 02:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: apps.py:15 settings.py:7
+msgid "Mirroring"
+msgstr "Mirenje"
+
+#: settings.py:11
+msgid "Time in seconds to cache the path lookup to a document."
+msgstr "Vreme u sekundi za keširanje traženja putanja do dokumenta."
+
+#: settings.py:15
+msgid "Time in seconds to cache the path lookup to an index node."
+msgstr "Vrijeme je u sekundi da se cekira pretraga putanje do indeksnog čvora."

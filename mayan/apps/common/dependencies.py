@@ -38,7 +38,7 @@ PythonDependency(
         ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django', version_string='==1.11.27'
+    ''', module=__name__, name='django', version_string='==1.11.28'
 )
 PythonDependency(
     copyright_text='''
@@ -350,6 +350,10 @@ PythonDependency(
 PythonDependency(
     environment=environment_testing, module=__name__, name='coveralls',
     version_string='==1.3.0'
+)
+PythonDependency(
+    environment=environment_testing, module=__name__,
+    name='django-test-migrations', version_string='==0.1.0'
 )
 PythonDependency(
     environment=environment_testing,

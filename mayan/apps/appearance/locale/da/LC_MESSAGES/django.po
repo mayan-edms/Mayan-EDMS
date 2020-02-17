@@ -1,0 +1,335 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Allan Møller <it@brandts.dk>, 2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:02-0400\n"
+"PO-Revision-Date: 2020-01-29 08:16+0000\n"
+"Last-Translator: Allan Møller <it@brandts.dk>\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:11 settings.py:9
+msgid "Appearance"
+msgstr "Udseende"
+
+#: dependencies.py:10
+msgid "Lato font"
+msgstr "Lato skrifttype"
+
+#: dependencies.py:14
+msgid "Bootstrap"
+msgstr ""
+
+#: dependencies.py:18
+msgid "Bootswatch"
+msgstr ""
+
+#: dependencies.py:32
+msgid "Fancybox"
+msgstr ""
+
+#: dependencies.py:36
+msgid "FontAwesome"
+msgstr ""
+
+#: dependencies.py:40
+msgid "jQuery"
+msgstr ""
+
+#: dependencies.py:43
+msgid "JQuery Form"
+msgstr ""
+
+#: dependencies.py:47
+msgid "jQuery Lazy Load"
+msgstr ""
+
+#: dependencies.py:51
+msgid "JQuery Match Height"
+msgstr ""
+
+#: dependencies.py:55
+msgid "Select 2"
+msgstr ""
+
+#: dependencies.py:59
+msgid "Toastr"
+msgstr ""
+
+#: dependencies.py:62
+msgid "URI.js"
+msgstr ""
+
+#: settings.py:14
+msgid "Maximum number of characters that will be displayed as the view title."
+msgstr ""
+
+#: settings.py:21
+msgid ""
+"Position where the system message will be displayed. Options are: top-left, "
+"top-center, top-right, bottom-left, bottom-center, bottom-right."
+msgstr ""
+
+#: templates/403.html:5 templates/403.html:9
+msgid "Insufficient permissions"
+msgstr ""
+
+#: templates/403.html:11
+msgid "You don't have enough permissions for this operation."
+msgstr ""
+
+#: templates/404.html:5 templates/404.html:9
+msgid "Page not found"
+msgstr ""
+
+#: templates/404.html:11
+msgid "Sorry, but the requested page could not be found."
+msgstr ""
+
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:55
+msgid "Server error"
+msgstr ""
+
+#: templates/500.html:11
+msgid ""
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+
+#: templates/appearance/about.html:10
+msgid "About"
+msgstr "Om"
+
+#: templates/appearance/about.html:77
+#, python-format
+msgid ""
+"\n"
+"                    %(setting_project_title)s is based on %(project_title)s\n"
+"                "
+msgstr ""
+
+#: templates/appearance/about.html:82
+msgid "Version"
+msgstr "Version"
+
+#: templates/appearance/about.html:84
+#, python-format
+msgid "Build number: %(build_number)s"
+msgstr ""
+
+#: templates/appearance/about.html:97
+msgid "Released under the license:"
+msgstr ""
+
+#: templates/appearance/about.html:103
+#, python-format
+msgid ""
+"\n"
+"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:109
+#, python-format
+msgid ""
+"\n"
+"                It takes great effort to make %(project_title)s as feature-rich as it is. We need all the help we can get!\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:115
+#, python-format
+msgid ""
+"\n"
+"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">consider making a donation %(icon_social_paypal)s</a>\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:121
+#, python-format
+msgid ""
+"\n"
+"                You can also <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">donate directly to the creator and lead developer.  %(icon_social_paypal)s</a>\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:127
+msgid ""
+"\n"
+"                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:133
+#, python-format
+msgid ""
+"\n"
+"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:139
+#, python-format
+msgid ""
+"\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a> or the <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki %(icon_wiki)s</a>.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:145
+#, python-format
+msgid ""
+"\n"
+"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:150
+#, python-format
+msgid ""
+"\n"
+"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
+"                Follow us on <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, or <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n"
+"            "
+msgstr ""
+
+#: templates/appearance/base.html:35 templates/appearance/base.html:59
+msgid "Warning"
+msgstr ""
+
+#: templates/appearance/base.html:49
+msgid "Click here to fix this."
+msgstr ""
+
+#: templates/appearance/base.html:59
+msgid ""
+"Settings updated, restart your installation and refresh your browser for "
+"changes to take effect."
+msgstr ""
+
+#: templates/appearance/base.html:72
+#: templates/appearance/generic_list_items_subtemplate.html:66
+msgid "Actions"
+msgstr "Handlinger"
+
+#: templates/appearance/base.html:74
+#: templates/appearance/generic_list_items_subtemplate.html:68
+#: templates/appearance/list_toolbar.html:67
+msgid "Toggle Dropdown"
+msgstr ""
+
+#: templates/appearance/calculate_form_title.html:10
+msgid "Open main menu"
+msgstr ""
+
+#: templates/appearance/generic_confirm.html:14
+msgid "Are you sure?"
+msgstr ""
+
+#: templates/appearance/generic_confirm.html:38
+msgid "Yes"
+msgstr ""
+
+#: templates/appearance/generic_confirm.html:48
+msgid "No"
+msgstr ""
+
+#: templates/appearance/generic_form_instance.html:51
+#: templates/appearance/generic_form_instance.html:57
+#: templates/appearance/generic_form_subtemplate.html:50
+#: templates/appearance/generic_multiform_subtemplate.html:37
+msgid "required"
+msgstr ""
+
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
+#: templates/appearance/generic_multiform_subtemplate.html:59
+msgid "Save"
+msgstr ""
+
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
+#: templates/appearance/generic_multiform_subtemplate.html:59
+msgid "Submit"
+msgstr ""
+
+#: templates/appearance/generic_form_subtemplate.html:87
+#: templates/appearance/generic_multiform_subtemplate.html:63
+msgid "Cancel"
+msgstr ""
+
+#: templates/appearance/generic_list_subtemplate.html:28
+msgid "Identifier"
+msgstr ""
+
+#: templates/appearance/home.html:10
+msgid "Dashboard"
+msgstr ""
+
+#: templates/appearance/home.html:26
+msgid "Getting started"
+msgstr ""
+
+#: templates/appearance/home.html:29
+msgid "Before you can fully use Mayan EDMS you need the following:"
+msgstr ""
+
+#: templates/appearance/list_header.html:12
+#, python-format
+msgid ""
+"Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
+"%(total_pages)s)"
+msgstr ""
+
+#: templates/appearance/list_header.html:14
+#: templates/appearance/list_header.html:17
+#, python-format
+msgid "Total: %(total)s"
+msgstr ""
+
+#: templates/appearance/list_toolbar.html:16
+msgid "Select/Deselect all"
+msgstr ""
+
+#: templates/appearance/list_toolbar.html:60
+msgid ""
+"Select items to activate bulk actions. Use Shift + click to select many."
+msgstr ""
+
+#: templates/appearance/list_toolbar.html:65
+msgid "Bulk actions"
+msgstr ""
+
+#: templates/appearance/menu_topbar.html:11
+msgid "Toggle navigation"
+msgstr ""
+
+#: templates/appearance/no_results.html:18
+msgid "No results"
+msgstr ""
+
+#: templates/appearance/root.html:60
+msgid "Close"
+msgstr ""
+
+#: templates/appearance/root.html:68
+msgid "Server communication error"
+msgstr ""
+
+#: templates/appearance/root.html:70
+msgid "Check you network connection and try again in a few moments."
+msgstr ""
+
+#: templatetags/appearance_tags.py:17
+msgid "None"
+msgstr "Ingen"

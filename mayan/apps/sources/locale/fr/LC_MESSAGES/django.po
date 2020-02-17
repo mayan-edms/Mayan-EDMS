@@ -6,17 +6,17 @@
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017-2018
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
-# Olivier W, 2019
+# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
+# Olivier W, 2019-2020
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # Yves Dubois <ydubois@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:30-0400\n"
-"PO-Revision-Date: 2019-12-21 18:41+0000\n"
-"Last-Translator: Olivier W\n"
+"POT-Creation-Date: 2020-02-14 01:07-0400\n"
+"PO-Revision-Date: 2020-01-31 20:43+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:44 links.py:54 models/base.py:40 queues.py:9 settings.py:13
-#: views.py:650
+#: views.py:649
 msgid "Sources"
 msgstr "Sources"
 
@@ -68,7 +68,7 @@ msgstr ""
 
 #: forms.py:27
 msgid "An optional comment to explain the upload."
-msgstr ""
+msgstr "Un commentaire facultatif pour expliquer le téléchargement."
 
 #: forms.py:28
 msgid "Comment"
@@ -82,7 +82,7 @@ msgstr "Décompresser les fichiers"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Importer le contenu d'un ensemble de fichiers compressés comme fichiers individuels"
 
-#: forms.py:65 views.py:505
+#: forms.py:65 views.py:504
 msgid "Staging file"
 msgstr "Fichier en pré-validation"
 
@@ -100,11 +100,11 @@ msgstr "Nouveau document"
 
 #: links.py:61
 msgid "Add new IMAP email"
-msgstr "Ajouter un nouveau compte mail IMAP"
+msgstr "Ajouter un nouveau compte courriel IMAP"
 
 #: links.py:67
 msgid "Add new POP3 email"
-msgstr "Ajouter un nouveau compte mail POP3"
+msgstr "Ajouter un nouveau compte courriel POP3"
 
 #: links.py:73
 msgid "Add new staging folder"
@@ -309,7 +309,7 @@ msgstr "Mot de passe"
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
-msgstr ""
+msgstr "Nom de la pièce jointe qui contiendra les noms des types de métadonnées et les paires de valeurs à attribuer aux autres pièces jointes téléversées."
 
 #: models/email_sources.py:56
 msgid "Metadata attachment name"
@@ -397,15 +397,15 @@ msgstr ""
 
 #: models/email_sources.py:238
 msgid "Execute the IMAP expunge command after processing each email message."
-msgstr ""
+msgstr "Exécutez la commande de suppression IMAP après avoir traité chaque courriel."
 
 #: models/email_sources.py:240
 msgid "Execute expunge"
-msgstr ""
+msgstr "Exécuter la suppression"
 
 #: models/email_sources.py:244
 msgid "IMAP Mailbox to which processed messages will be copied."
-msgstr ""
+msgstr "Boîte de courriel IMAP dans laquelle les messages traités seront copiés."
 
 #: models/email_sources.py:245
 msgid "Destination mailbox"
@@ -476,10 +476,12 @@ msgstr "Scanner SANE"
 msgid "SANE Scanners"
 msgstr "Scanners SANE"
 
-#: models/scanner_sources.py:115
+#: models/scanner_sources.py:97
 #, python-format
-msgid "Error while scanning; %s"
-msgstr "Erreur pendant la numérisation; %s"
+msgid ""
+"Error while executing scanning command \"%(command_line)s\"; "
+"%(error_message)s"
+msgstr ""
 
 #: models/staging_folder_sources.py:41
 msgid "Server side filesystem path."
@@ -638,7 +640,7 @@ msgstr "Votre navigateur ne prend pas en charge le téléversement de fichiers p
 
 #: templates/sources/dropzone.html:86
 msgid "Please use the fallback form below to upload your files."
-msgstr ""
+msgstr "Veuillez utiliser le formulaire alternatif ci-dessous pour téléverser vos fichiers."
 
 #: templates/sources/dropzone.html:87
 msgid "Clear"
@@ -652,7 +654,7 @@ msgstr "Le serveur a répondu avec le code {{statusCode}}."
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
-msgstr ""
+msgstr "Toute erreur produite lors de l'utilisation d'une source sera répertoriée ici pour faciliter le débogage."
 
 #: views.py:69
 msgid "No log entries available"
@@ -692,45 +694,45 @@ msgstr "Fichiers en cours de pré-validation"
 msgid "Scan"
 msgstr "Numériser"
 
-#: views.py:294
+#: views.py:293
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr "Tâche en erreur d'exécution lors du téléversement; %(exception)s, %(exception_class)s"
 
-#: views.py:305
+#: views.py:304
 msgid "New document queued for upload and will be available shortly."
-msgstr ""
+msgstr "Nouveau document en attente de téléversement, il sera disponible sous peu."
 
-#: views.py:356
+#: views.py:355
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:389
+#: views.py:388
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "L'ajout de nouvelles versions du document \"%s\" est bloqué."
 
-#: views.py:442
+#: views.py:441
 msgid "New document version queued for upload and will be available shortly."
-msgstr ""
+msgstr "La nouvelle version du document est en attente de téléversement et sera disponible sous peu."
 
-#: views.py:482
+#: views.py:481
 #, python-format
 msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:485
+#: views.py:484
 msgid "Submit"
 msgstr "Soumettre"
 
-#: views.py:506
+#: views.py:505
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: views.py:527
+#: views.py:526
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -738,31 +740,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:533
+#: views.py:532
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Vérification de déclenchement pour la source \"%s\"?"
 
-#: views.py:550
+#: views.py:549
 msgid "Source check queued."
 msgstr "Vérification de la source ajoutée à la file d'attente."
 
-#: views.py:567
+#: views.py:566
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Créer une nouvelle source de type : %s"
 
-#: views.py:589
+#: views.py:588
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Supprimer la source: %s?"
 
-#: views.py:610
+#: views.py:609
 #, python-format
 msgid "Edit source: %s"
 msgstr "Modifier la source: %s"
 
-#: views.py:644
+#: views.py:643
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -770,7 +772,7 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:649
+#: views.py:648
 msgid "No sources available"
 msgstr "Aucune source disponible"
 

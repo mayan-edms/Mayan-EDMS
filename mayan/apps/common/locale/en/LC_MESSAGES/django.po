@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:26-0400\n"
+"POT-Creation-Date: 2020-02-14 01:03-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +16,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:86 permissions_runtime.py:7 settings.py:15
+#: apps.py:89 permissions_runtime.py:7 settings.py:15
 msgid "Common"
 msgstr ""
 
-#: classes.py:93
-msgid "Available attributes: \n"
+#: classes.py:185
+msgid "Model properties"
 msgstr ""
 
-#: classes.py:133
-msgid "Available fields: \n"
+#: classes.py:190
+msgid "Model fields"
+msgstr ""
+
+#: classes.py:233
+msgid "Model related fields"
 msgstr ""
 
 #: dependencies.py:308
@@ -218,7 +221,7 @@ msgstr ""
 msgid "No %(verbose_name)s found matching the query"
 msgstr ""
 
-#: mixins.py:367
+#: mixins.py:405
 msgid "Object"
 msgstr ""
 

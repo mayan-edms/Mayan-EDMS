@@ -1,0 +1,243 @@
+Version 3.3.11
+==============
+
+Released: February 7, 2020
+
+
+Changes
+-------
+
+
+Appearance
+^^^^^^^^^^
+
+The way the list title item count calculation is done was optimized.
+The code will attempt to obtain the total count from the database as a
+query. Failing that, in the case where the item list is not the result
+of a database query, it will fallback to calculating the total using Python.
+
+This optimization is most notable in views that display a large number of
+items resulting from a database query.
+
+
+Converter
+^^^^^^^^^
+
+A help message was added in cases where the image library raises a
+decompression bomb DOS attacks. The message explains the reason for the error
+and show how to increasing the allowed image size.
+
+
+Documents
+^^^^^^^^^
+
+The document multi page preview rendering issue introduced by the read only
+decimal field display addition was fixed. The read only decimal field display
+support was re-implemented.
+
+Document language codes settings tests were added, closing a long standing
+report.
+
+The form for selecting the document default language selection was fixed.
+Passing different values to the setting ``DOCUMENTS_LANGUAGE`` now has
+the intended result.
+
+
+Tags
+^^^^
+
+The "Tags" text is now correctly translated. The issue was caused not by
+a code error but by the way translation are prioritized by Django.
+Translations for apps defined first in the app list setting are prioritized.
+Since several Django apps form the basis of some Mayan functionality, they
+are defined first. They translation therefore are prioritized over
+translations in Mayan's apps. In this case the word "Tags" (and a few others)
+were already translated by Django's admindocs app, causing Mayan's translation
+for the same word to be ignored.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrading process
+-----------------
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+
+Upgrading from Mayan EDMS 3.2.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Update the Redis configuration:
+
+   Configure Redis to discard data when it runs out of memory, not save its
+   database, and only keep 2 database:
+
+   .. code-block:: bash
+
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Install the Python 3 development OS package:
+
+   .. code-block:: bash
+
+    sudo apt-get install python3-dev
+
+
+#. Update the virtualenv to use Python 3:
+
+   .. code-block:: bash
+
+    sudo -u mayan virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Create a home directory for the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    mkdir /home/mayan
+
+
+#. Grant ownership to the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    chown mayan:mayan /home/mayan
+
+#. Reinstall the Python client for PostgreSQL and Redis:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
+
+
+#. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
+
+
+Upgrade steps from any previous version of Mayan EDMS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u mayan curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u mayan |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.11
+
+   the requirements will also be updated automatically.
+
+
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Edit the supervisord configuration file and update any setting specific to your installation:
+
+   .. code-block:: bash
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+
+#. Migrate existing database schema with:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Add new static media:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| preparestatic --noinput
+
+
+#. Start supervisord:
+
+   .. code-block:: bash
+
+       sudo systemctl start supervisor
+
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Bugs fixed or issues closed
+---------------------------
+
+- :gitlab-issue:`547` Docker: KeyError in mayan-edms.py because of -e MAYAN_DOCUMENTS_LANGUAGE_CODES versions > 3.1.6
+- :gitlab-issue:`734` Translation not being applied to dashboard menu item - Tag
+- :gitlab-issue:`770` Unable to set default document language to anything other than English if English is in the list of language codes
+- :gitlab-issue:`771` Full-page preview not working
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

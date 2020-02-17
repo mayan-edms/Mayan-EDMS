@@ -1,0 +1,185 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
+# www.ping.ba <jomer@ping.ba>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-14 01:07-0400\n"
+"PO-Revision-Date: 2020-02-14 02:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: apps.py:47 events.py:8 models.py:36 models.py:106 permissions.py:7
+msgid "Permissions"
+msgstr "Dozvole"
+
+#: classes.py:87
+msgid "Insufficient permissions."
+msgstr "Nedovoljne dozvole."
+
+#: dashboard_widgets.py:15
+msgid "Total roles"
+msgstr ""
+
+#: events.py:12
+msgid "Role created"
+msgstr ""
+
+#: events.py:15
+msgid "Role edited"
+msgstr ""
+
+#: links.py:16 links.py:40 models.py:117 views.py:171
+msgid "Roles"
+msgstr "Role"
+
+#: links.py:23 views.py:53
+msgid "Create new role"
+msgstr "Kreirajte novu ulogu"
+
+#: links.py:29
+msgid "Delete"
+msgstr "Obriši"
+
+#: links.py:34
+msgid "Edit"
+msgstr "Urediti"
+
+#: links.py:45 models.py:109
+msgid "Groups"
+msgstr "Grupe"
+
+#: links.py:52
+msgid "Role permissions"
+msgstr "Dozvole za ulogu"
+
+#: models.py:27
+msgid "Namespace"
+msgstr "Imenovani prostor"
+
+#: models.py:28
+msgid "Name"
+msgstr "Ime"
+
+#: models.py:35
+msgid "Permission"
+msgstr "Permisija"
+
+#: models.py:101
+msgid "A short text describing the role."
+msgstr ""
+
+#: models.py:102 search.py:16
+msgid "Label"
+msgstr "Labela"
+
+#: models.py:116
+msgid "Role"
+msgstr "Uloga"
+
+#: permissions.py:10
+msgid "Create roles"
+msgstr "Kreiraj role"
+
+#: permissions.py:13
+msgid "Delete roles"
+msgstr "Izbriši role"
+
+#: permissions.py:16
+msgid "Edit roles"
+msgstr "Izmjeni role"
+
+#: permissions.py:19
+msgid "View roles"
+msgstr "Pregledaj role"
+
+#: search.py:20
+msgid "Group name"
+msgstr "Ime grupe"
+
+#: serializers.py:46
+msgid ""
+"Comma separated list of groups primary keys to add to, or replace in this "
+"role."
+msgstr "Lista odvojenih odvojenih grupa primarnih ključeva grupa za dodavanje ili zamjenu u ovoj ulozi."
+
+#: serializers.py:53
+msgid "Comma separated list of permission primary keys to grant to this role."
+msgstr "Lista odvojenih odvojenih primarnih ključeva za odvajanje odvojenih dijelova za dodelu ove uloge."
+
+#: serializers.py:90
+#, python-format
+msgid "No such permission: %s"
+msgstr "Nema takve dozvole: %s"
+
+#: views.py:32
+msgid "Available roles"
+msgstr "Dostupne uloge"
+
+#: views.py:33
+msgid "Group roles"
+msgstr "Grupne uloge"
+
+#: views.py:42
+#, python-format
+msgid "Roles of group: %s"
+msgstr "Uloge grupe: %s"
+
+#: views.py:82
+msgid "Available groups"
+msgstr "Dostupne grupe"
+
+#: views.py:83
+msgid "Role groups"
+msgstr "Uloge grupa"
+
+#: views.py:92
+#, python-format
+msgid "Groups of role: %s"
+msgstr "Grupe uloge: %s"
+
+#: views.py:94
+msgid ""
+"Add groups to be part of a role. They will inherit the role's permissions "
+"and access controls."
+msgstr ""
+
+#: views.py:107
+msgid "Available permissions"
+msgstr "Dostupne dozvole"
+
+#: views.py:108
+msgid "Granted permissions"
+msgstr "Dodjeljene dozvole"
+
+#: views.py:143
+msgid ""
+"Permissions granted here will apply to the entire system and all objects."
+msgstr ""
+
+#: views.py:146
+#, python-format
+msgid "Permissions for role: %s"
+msgstr "Dozvole za ulogu: %s"
+
+#: views.py:163
+msgid ""
+"Roles are authorization units. They contain user groups which inherit the "
+"role permissions for the entire system. Roles can also part of access "
+"controls lists. Access controls list are permissions granted to a role for "
+"specific objects which its group members inherit."
+msgstr ""
+
+#: views.py:170
+msgid "There are no roles"
+msgstr ""

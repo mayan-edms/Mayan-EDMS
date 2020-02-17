@@ -8,12 +8,11 @@
 # Stefaniu Criste <gupi@hangar.ro>, 2019
 # Harald Ersch, 2019
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-31 04:25-0400\n"
+"POT-Creation-Date: 2020-02-14 01:03-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
