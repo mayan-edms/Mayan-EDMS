@@ -9,8 +9,7 @@ class EmailAuthBackend(ModelBackend):
     Allows a user to sign in using an email/password pair rather than
     a username/password pair.
     """
-
-    def authenticate(self, email=None, password=None):
+    def authenticate(self, request, email=None, password=None):
         UserModel = get_user_model()
         try:
             user = UserModel.objects.get(email=email)
