@@ -22,7 +22,6 @@ job_docker_build:
     - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$VERSION"
     - docker run --rm "$CI_REGISTRY_IMAGE:$VERSION" run_tests
     - docker push "$CI_REGISTRY_IMAGE:$VERSION"
-    - docker push "$CI_REGISTRY_IMAGE:latest"
     - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
     - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
     - docker logout
