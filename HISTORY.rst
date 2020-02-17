@@ -3,6 +3,7 @@
 - Add missing backslash in the deployment instructions.
   Closes GitLab issue #780. Thanks to Steve Palmer (@steverpalmer)
   for the report.
+- Update CI script to push multiple tags.
 
 3.3.13 (2020-02-14)
 ===================
