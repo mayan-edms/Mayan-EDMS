@@ -58,7 +58,7 @@ PythonDependency(
         Celery under the GPL license.  The BSD license, unlike the GPL,
         let you distribute a modified version without making your
         changes open source.
-    ''', module=__name__, name='celery', version_string='==4.3.0'
+    ''', module=__name__, name='celery', version_string='==4.4.0'
 )
 PythonDependency(
     copyright_text='''
@@ -108,8 +108,9 @@ PythonDependency(
             django-celery-beat under the GPL license.  The BSD license, unlike the GPL,
             let you distribute a modified version without making your
             changes open source.
-    ''', module=__name__, name='django-celery-beat', version_string='==1.5.0'
+    ''', module=__name__, name='django-celery-beat', version_string='==1.6.0'
 )
+# django-celery-beat required django-timezone-field-3.1
 PythonDependency(
     module=__name__, name='django-timezone-field', version_string='==3.1'
 )

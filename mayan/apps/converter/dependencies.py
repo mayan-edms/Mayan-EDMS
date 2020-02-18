@@ -24,7 +24,7 @@ BinaryDependency(
 )
 PythonDependency(
     copyright_attribute='PIL.__doc__', module=__name__, name='Pillow',
-    version_string='==6.2.2',
+    version_string='==7.0.0',
 )
 PythonDependency(
     module=__name__, name='PyPDF2', version_string='==1.26.0'

@@ -1,8 +1,8 @@
-Sphinx==1.8.5
+Sphinx==2.4.1
 sphinx-autobuild==0.7.1
-sphinx-sitemap==1.0.2
+sphinx-sitemap==1.1.0
 sphinx_rtd_theme==0.4.3
-sphinxcontrib-blockdiag==1.5.5
-sphinxcontrib-spelling==4.2.1
-tornado<6.0
+sphinxcontrib-blockdiag==2.0.0
+sphinxcontrib-spelling==4.3.0
+tornado==6.0.3
 pathlib2==2.3.5

@@ -35,5 +35,5 @@ PythonDependency(
     ''', help_text=_(
         'PyOCR is a Python library simplifying the use of OCR tools like '
         'Tesseract or Cuneiform.'
-    ), module=__name__, name='pyocr', version_string='==0.6'
+    ), module=__name__, name='pyocr', version_string='==0.7.2'
 )
