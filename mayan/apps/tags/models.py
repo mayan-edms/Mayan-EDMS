@@ -17,8 +17,48 @@ from .events import (
 from .html_widgets import widget_single_tag
 
 
+class TagBusinessLogicMixin(object):
+    def documents_attach(self, queryset, _user=None):
+        """
+        Attach a tag to a document and commit the corresponding event.
+        """
+        with transaction.atomic():
+            for document in queryset:
+                self.documents.add(document)
+                event_tag_attach.commit(
+                    action_object=self, actor=_user, target=document
+                )
+
+    def documents_remove(self, queryset, _user=None):
+        """
+        Remove a tag from a document and commit the corresponding event.
+        """
+        with transaction.atomic():
+            for document in queryset:
+                self.documents.remove(document)
+                event_tag_remove.commit(
+                    action_object=self, actor=_user, target=document
+                )
+
+    def get_document_count(self, user):
+        return self.get_documents(user=user).count()
+
+    def get_documents(self, user):
+        """
+        Return a filtered queryset documents that have this tag attached.
+        """
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_document_view, queryset=self.documents.all(),
+            user=user
+        )
+
+    def get_preview_widget(self):
+        return widget_single_tag(tag=self)
+    get_preview_widget.short_description = _('Preview')
+
+
 @python_2_unicode_compatible
-class Tag(models.Model):
+class Tag(models.Model, TagBusinessLogicMixin):
     """
     This model represents a binary property that can be applied to a document.
     The tag can have a label and a color.
@@ -44,52 +84,9 @@ class Tag(models.Model):
     def __str__(self):
         return self.label
 
-    def attach_to(self, document, user=None):
-        """
-        Attach a tag to a document and commit the corresponding event.
-        """
-        self.documents.add(document)
-        event_tag_attach.commit(
-            action_object=self, actor=user, target=document
-        )
-
     def get_absolute_url(self):
         return reverse(
-            viewname='tags:tag_document_list', kwargs={'pk': self.pk}
-        )
-
-    def get_document_count(self, user):
-        """
-        Return the numeric count of documents that have this tag attached.
-        The count is filtered by access.
-        """
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_document_view, queryset=self.documents,
-            user=user
-        )
-
-        return queryset.count()
-
-    def get_documents(self, user):
-        """
-        Return a filtered queryset documents that have this tag attached.
-        """
-        return AccessControlList.objects.restrict_queryset(
-            permission=permission_document_view, queryset=self.documents.all(),
-            user=user
-        )
-
-    def get_preview_widget(self):
-        return widget_single_tag(tag=self)
-    get_preview_widget.short_description = _('Preview')
-
-    def remove_from(self, document, user=None):
-        """
-        Remove a tag from a document and commit the corresponding event.
-        """
-        self.documents.remove(document)
-        event_tag_remove.commit(
-            action_object=self, actor=user, target=document
+            viewname='tags:tag_document_list', kwargs={'tag_id': self.pk}
         )
 
     def save(self, *args, **kwargs):

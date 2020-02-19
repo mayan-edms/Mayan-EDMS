@@ -13,11 +13,11 @@ from .permissions import (
 
 link_document_multiple_tag_multiple_remove = Link(
     icon_class_path='mayan.apps.tags.icons.icon_document_tag_multiple_remove',
-    text=_('Remove tag'), view='tags:multiple_documents_selection_tag_remove'
+    text=_('Remove tag'), view='tags:documents_multiple_tag_multiple_remove'
 )
 link_document_multiple_attach_multiple_tag = Link(
     icon_class_path='mayan.apps.tags.icons.icon_document_tag_multiple_attach',
-    text=_('Attach tags'), view='tags:multiple_documents_tag_attach'
+    text=_('Attach tags'), view='tags:documents_multiple_tag_multiple_attach'
 )
 link_document_tag_list = Link(
     args='resolved_object.pk',
@@ -29,13 +29,13 @@ link_document_tag_multiple_remove = Link(
     args='object.id',
     icon_class_path='mayan.apps.tags.icons.icon_document_tag_multiple_remove',
     permissions=(permission_tag_remove,), text=_('Remove tags'),
-    view='tags:single_document_multiple_tag_remove'
+    view='tags:document_multiple_tag_multiple_remove'
 )
 link_document_tag_multiple_attach = Link(
     args='object.pk',
     icon_class_path='mayan.apps.tags.icons.icon_document_tag_multiple_attach',
     permissions=(permission_tag_attach,), text=_('Attach tags'),
-    view='tags:tag_attach'
+    view='tags:documents_multiple_tag_multiple_attach'
 )
 
 link_tag_create = Link(

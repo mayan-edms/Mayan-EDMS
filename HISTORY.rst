@@ -11,3 +11,4 @@
 - Move django-qsstats-magic to the mayan_statistics app.
 - Remove codecov from the dependencies.
 - Update REST API app to support viewsets.
+- Update Tags app to use API viewsets.

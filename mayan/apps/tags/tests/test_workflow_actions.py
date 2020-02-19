@@ -10,9 +10,9 @@ from ..workflow_actions import AttachTagAction, RemoveTagAction
 from .mixins import TagTestMixin
 
 
-class TagActionTestCase(TagTestMixin, ActionTestCase):
+class TagWorkflowActionTestCase(TagTestMixin, ActionTestCase):
     def setUp(self):
-        super(TagActionTestCase, self).setUp()
+        super(TagWorkflowActionTestCase, self).setUp()
         self._create_test_tag()
 
     def test_tag_attach_action(self):
@@ -23,7 +23,7 @@ class TagActionTestCase(TagTestMixin, ActionTestCase):
         self.assertTrue(self.test_document in self.test_tag.documents.all())
 
     def test_tag_remove_action(self):
-        self.test_tag.attach_to(document=self.test_document)
+        self.test_tag.documents.add(self.test_document)
 
         action = RemoveTagAction(form_data={'tags': Tag.objects.all()})
         action.execute(context={'document': self.test_document})
@@ -31,7 +31,7 @@ class TagActionTestCase(TagTestMixin, ActionTestCase):
         self.assertEqual(self.test_tag.documents.count(), 0)
 
 
-class TagActionViewTestCase(WorkflowTestMixin, GenericViewTestCase):
+class TagWorkflowActionViewTestCase(WorkflowTestMixin, GenericViewTestCase):
     def test_tag_attach_action_create_view(self):
         self._create_test_workflow()
         self._create_test_workflow_state()

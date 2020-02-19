@@ -120,7 +120,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
         )
 
 
-class TagDocumentViewTestCase(
+class DocumentTagViewTestCase(
     TagTestMixin, TagViewTestMixin, GenericDocumentViewTestCase
 ):
     def test_document_tags_list_no_permissions(self):
@@ -176,7 +176,7 @@ class TagDocumentViewTestCase(
             response=response, text=force_text(self.test_tag), status_code=200
         )
 
-    def test_document_attach_tag_view_no_permission(self):
+    def test_document_tag_attach_view_no_permission(self):
         self._create_test_tag()
 
         response = self._request_test_document_tag_attach_view()
@@ -184,7 +184,7 @@ class TagDocumentViewTestCase(
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
-    def test_document_attach_tag_view_with_tag_access(self):
+    def test_document_tag_attach_view_with_tag_access(self):
         self._create_test_tag()
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
@@ -194,7 +194,7 @@ class TagDocumentViewTestCase(
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
-    def test_document_attach_tag_view_with_document_access(self):
+    def test_document_tag_attach_view_with_document_access(self):
         self._create_test_tag()
 
         self.grant_access(obj=self.test_document, permission=permission_tag_attach)
@@ -204,7 +204,7 @@ class TagDocumentViewTestCase(
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
-    def test_document_attach_tag_view_with_full_access(self):
+    def test_document_tag_attach_view_with_full_access(self):
         self._create_test_tag()
 
         self.grant_access(obj=self.test_document, permission=permission_tag_attach)

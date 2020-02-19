@@ -6,6 +6,8 @@ from rest_framework import serializers
 from rest_framework.reverse import reverse
 
 from mayan.apps.common.models import SharedUploadedFile
+from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
+from mayan.apps.rest_api.serializers import LazyExtraFieldsHyperlinkedModelSerializer
 
 from .models import (
     Document, DocumentVersion, DocumentPage, DocumentType,
@@ -15,7 +17,7 @@ from .settings import setting_language
 from .tasks import task_upload_new_version
 
 
-class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
+class DocumentPageSerializer(LazyExtraFieldsHyperlinkedModelSerializer):
     document_version_url = serializers.SerializerMethodField()
     image_url = serializers.SerializerMethodField()
     url = serializers.SerializerMethodField()
@@ -97,7 +99,7 @@ class WritableDocumentTypeSerializer(serializers.ModelSerializer):
         return obj.documents.count()
 
 
-class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
+class DocumentVersionSerializer(LazyExtraFieldsHyperlinkedModelSerializer):
     document_url = serializers.SerializerMethodField()
     download_url = serializers.SerializerMethodField()
     pages_url = serializers.SerializerMethodField()
@@ -236,7 +238,7 @@ class DeletedDocumentSerializer(serializers.HyperlinkedModelSerializer):
         return instance.document_type.label
 
 
-class DocumentSerializer(serializers.HyperlinkedModelSerializer):
+class DocumentSerializer(LazyExtraFieldsHyperlinkedModelSerializer):
     document_type = DocumentTypeSerializer(read_only=True)
     document_type_change_url = serializers.HyperlinkedIdentityField(
         view_name='rest_api:document-type-change',
