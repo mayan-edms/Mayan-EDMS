@@ -164,9 +164,9 @@ class ExternalObjectMixin(object):
 
         return queryset
 
-    def get_external_object_queryset_filtered(self):
+    def get_external_object_queryset_filtered(self, permission=None):
         queryset = self.get_external_object_queryset()
-        permission = self.get_external_object_permission()
+        permission = permission or self.get_external_object_permission()
 
         if permission:
             queryset = AccessControlList.objects.restrict_queryset(

@@ -89,6 +89,14 @@ def resolve_attribute(attribute, obj, kwargs=None):
     if not kwargs:
         kwargs = {}
 
+    if '.' in attribute:
+        result = resolve_attribute(
+            obj=obj, attribute=attribute.split('.')[0], kwargs=kwargs
+        )
+        return resolve_attribute(
+            obj=result, attribute=attribute.split('.', 1)[1], kwargs=kwargs
+        )
+
     # Try as a callable
     try:
         return attribute(obj, **kwargs)
@@ -97,17 +105,13 @@ def resolve_attribute(attribute, obj, kwargs=None):
         try:
             return obj[attribute]
         except (TypeError, ValueError):
+            # Try as property
             try:
-                # If there are dots in the attribute name, traverse them
-                # to the final attribute
-                result = reduce_function(getattr, attribute.split('.'), obj)
-                try:
-                    # Try it as a method
-                    return result(**kwargs)
-                except (TypeError, ValueError):
-                    # Try it as a property
-                    return result
-            except AttributeError:
+                return getattr(obj, attribute)
+                ## Try it as a method
+                ##return obj(**kwargs)
+
+            except TypeError:###AttributeError, :
                 # Try as a related model field
                 if LOOKUP_SEP in attribute:
                     attribute_replaced = attribute.replace(LOOKUP_SEP, '.')

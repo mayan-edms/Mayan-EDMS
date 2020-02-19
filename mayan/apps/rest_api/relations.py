@@ -82,9 +82,15 @@ class MultiKwargHyperlinkedIdentityField(HyperlinkedIdentityField):
 
         kwargs = {}
         for entry in self.view_kwargs:
-            kwargs[entry['lookup_url_kwarg']] = resolve_attribute(
-                obj=obj, attribute=entry['lookup_field']
-            )
+            if 'lookup_field' in entry:
+                kwargs[entry['lookup_url_kwarg']] = resolve_attribute(
+                    obj=obj, attribute=entry['lookup_field']
+                )
+
+            if 'field_attribute' in entry:
+                kwargs[entry['lookup_url_kwarg']] = resolve_attribute(
+                    obj=self, attribute=entry['field_attribute']
+                )
 
         return self.reverse(
             viewname=view_name, kwargs=kwargs, request=request, format=format
