@@ -5,6 +5,8 @@
   for the report.
 - Update CI script to push multiple tags.
 - Remove Wiki link in the about view.
+- Remove social media links.
+- Add support link.
 
 3.3.13 (2020-02-14)
 ===================
