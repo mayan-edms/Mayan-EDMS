@@ -78,4 +78,3 @@ icon_support = Icon(
 icon_tools = Icon(
     driver_name='fontawesome', symbol='wrench'
 )
-icon_wiki = Icon(driver_name='fontawesome', symbol='book')
