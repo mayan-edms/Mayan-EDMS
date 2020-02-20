@@ -7,6 +7,8 @@
 - Remove Wiki link in the about view.
 - Remove social media links.
 - Add support link.
+- Add more expressive error message when an invalid storage argument
+  setting is encountered. 
 
 3.3.13 (2020-02-14)
 ===================
