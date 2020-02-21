@@ -8,7 +8,12 @@
 - Remove social media links.
 - Add support link.
 - Add more expressive error message when an invalid storage argument
-  setting is encountered. 
+  setting is encountered.
+- Make document language field a lazy field. This allows starting Mayan
+  even when there are invalid language codes in the DOCUMENTS_LANGUAGE_CODES
+  setting.
+- Warn about invalid document language codes in the DOCUMENTS_LANGUAGE_CODES
+  setting. Thanks to forum user @j_arquimbau for the report.
 
 3.3.13 (2020-02-14)
 ===================
@@ -185,8 +190,8 @@
 - Add new test case BaseTransactionTestCase.
 - Improve file metadata driver database registration. Improve indexing
   based on file metadata properties. Improves GitLab issue #720 on the
-  signal commit side of the indexing. Thanks to Rob de Canha-Knight (@rssfed23)
-  for the report and debug information.
+  signal commit side of the indexing. Thanks to Rob de Canha-Knight
+  (@rssfed23) for the report and debug information.
 - Replicate transaction handling improvements from the file metadata app to
   the OCR and document parsing apps.
 - Initialize indexes in a predictable way. Solves GitLab issue #720 Thanks
@@ -194,10 +199,10 @@
 - Make file metadata StoredDriver fields unique. Relates to GitLab issue #720
   Thanks to Rob de Canha-Knight (@rssfed23) for the report and debug
   information.
-- Fix the POP3 source under Python 3. GitLab issue #724. Thanks to Kevin Pawsey
-  (@kevinpawsey) for the report and debug information.
-- Merge NFS troubleshooting section. Thanks to Rob de Canha-Knight (@rssfed23).
-  GitLab merge !67.
+- Fix the POP3 source under Python 3. GitLab issue #724. Thanks to Kevin
+  Pawsey (@kevinpawsey) for the report and debug information.
+- Merge NFS troubleshooting section. Thanks to Rob de Canha-Knight
+  (@rssfed23). GitLab merge !67.
 - Improve mirroring code to support slashes in index node values and document
   labels and also support duplicate nodes values or documents labels. Slashes
   are replaced with underscores. To handle duplicates, the primary key of
@@ -1670,8 +1675,10 @@
 - Only show the new document link if the user has access to create documents
   of at least one document type. GitLab Issue #302. Thanks to kg @kgraves.
 - Support passing arguments to the document, document cache and document
-  signatures storage backends. New settings: DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,
-  DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS, SIGNATURES_STORAGE_BACKEND_ARGUMENTS
+  signatures storage backends. New settings:
+  DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,
+  DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS,
+  SIGNATURES_STORAGE_BACKEND_ARGUMENTS.
 - Remove the setting STORAGE_FILESTORAGE_LOCATION. Document storage
   location for the storage.backend.filebasedstorage.FileBasedStorage
   backdend must now passed via the DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,

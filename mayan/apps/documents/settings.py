@@ -11,8 +11,8 @@ from .literals import (
     DEFAULT_DOCUMENTS_CACHE_MAXIMUM_SIZE, DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE,
     DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES
 )
+from .setting_callbacks import callback_update_cache_size
 from .setting_migrations import DocumentsSettingMigration
-from .utils import callback_update_cache_size
 
 namespace = Namespace(
     label=_('Documents'), migration_class=DocumentsSettingMigration,
