@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 01:07-0400\n"
-"PO-Revision-Date: 2020-01-31 20:43+0000\n"
+"POT-Creation-Date: 2020-02-21 01:38-0400\n"
+"PO-Revision-Date: 2020-02-19 14:23+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgstr "Message"
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
-msgstr ""
+msgstr "Utilitaire fourni par le package SANE. Utilisé pour contrôler le scanner et obtenir l'image du document numérisé."
 
 #: forms.py:27
 msgid "An optional comment to explain the upload."
@@ -319,7 +319,7 @@ msgstr "Nom de la pièce jointe de métadonnées"
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
+msgstr "Sélectionnez un type de métadonnée pour stocker la valeur de l'objet du courriel. Doit être un type de métadonnée valide pour le type de document sélectionné précédemment."
 
 #: models/email_sources.py:64
 msgid "Subject metadata type"
@@ -329,7 +329,7 @@ msgstr "Type de métadonnée du sujet"
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
+msgstr "Sélectionnez un type de métadonnée pour stocker la valeur \"De\" du courriel. Doit être un type de métadonnée valide pour le type de document sélectionné précédemment."
 
 #: models/email_sources.py:72
 msgid "From metadata type"
@@ -377,7 +377,7 @@ msgstr "Boîte de courriel"
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
-msgstr ""
+msgstr "Critères à utiliser lors de la recherche de messages à traiter. Utilisez le format spécifié dans https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: models/email_sources.py:226
 msgid "Search criteria"
@@ -389,11 +389,11 @@ msgid ""
 "command per line. Use the commands specified in "
 "https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
 "commands for your IMAP server."
-msgstr ""
+msgstr "Commande IMAP STORE à exécuter sur les messages après leur traitement. Une commande par ligne. Utilisez les commandes spécifiées dans https://tools.ietf.org/html/rfc2060.html#section-6.4.6 ou les commandes personnalisées pour votre serveur IMAP."
 
 #: models/email_sources.py:234
 msgid "Store commands"
-msgstr ""
+msgstr "Commandes de stockage"
 
 #: models/email_sources.py:238
 msgid "Execute the IMAP expunge command after processing each email message."
@@ -481,7 +481,7 @@ msgstr "Scanners SANE"
 msgid ""
 "Error while executing scanning command \"%(command_line)s\"; "
 "%(error_message)s"
-msgstr ""
+msgstr "Erreur lors de l'exécution de la commande de numérisation \"%(command_line)s\"; %(error_message)s"
 
 #: models/staging_folder_sources.py:41
 msgid "Server side filesystem path."
@@ -541,7 +541,7 @@ msgstr "Chemin du système de fichiers côté serveur pour rechercher des fichie
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
-msgstr ""
+msgstr "Si cette case est cochée, non seulement le chemin du dossier sera analysé pour les fichiers, mais aussi ses sous-répertoires."
 
 #: models/watch_folder_sources.py:42
 msgid "Include subdirectories?"
@@ -707,7 +707,7 @@ msgstr "Nouveau document en attente de téléversement, il sera disponible sous 
 #: views.py:355
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr ""
+msgstr "Téléversez un document de type \"%(document_type)s\" à partir de la source: %(source)s"
 
 #: views.py:388
 #, python-format
@@ -721,7 +721,7 @@ msgstr "La nouvelle version du document est en attente de téléversement et ser
 #: views.py:481
 #, python-format
 msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
-msgstr ""
+msgstr "Téléversez une nouvelle version pour le document \"%(document)s\" à partir de la source: %(source)s"
 
 #: views.py:484
 msgid "Submit"
@@ -738,7 +738,7 @@ msgid ""
 "Sources that delete content after downloading will not do so while being "
 "tested. Check the source's error log for information during testing. A "
 "successful test will clear the error log."
-msgstr ""
+msgstr "Cela exécutera le code de vérification de la source même si la source n'est pas activée. Les sources qui suppriment du contenu après le téléchargement ne le feront pas pendant le test. Consultez le journal des erreurs de la source pour obtenir des informations pendant les tests. Un test réussi effacera le journal des erreurs."
 
 #: views.py:532
 #, python-format

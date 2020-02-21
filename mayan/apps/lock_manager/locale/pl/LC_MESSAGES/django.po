@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 01:05-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-02-21 01:37-0400\n"
+"PO-Revision-Date: 2020-02-20 16:33+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +27,7 @@ msgstr ""
 
 #: models.py:21
 msgid "Timeout"
-msgstr ""
+msgstr "Koniec czasu"
 
 #: models.py:24
 msgid "Name"
