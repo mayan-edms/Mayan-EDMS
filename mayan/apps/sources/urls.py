@@ -4,7 +4,8 @@ from django.conf.urls import url
 
 from .api_views import (
     APIStagingSourceFileView, APIStagingSourceFileImageView,
-    APIStagingSourceListView, APIStagingSourceView
+    APIStagingSourceFileUploadView, APIStagingSourceListView,
+    APIStagingSourceView
 )
 from .views import (
     SetupSourceCheckView, SetupSourceCreateView, SetupSourceDeleteView,
@@ -79,6 +80,11 @@ api_urls = [
         regex=r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/image/$',
         view=APIStagingSourceFileImageView.as_view(),
         name='stagingfolderfile-image-view'
+    ),
+    url(
+        regex=r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/upload/$',
+        view=APIStagingSourceFileUploadView.as_view(),
+        name='stagingfolderfile-upload-view'
     ),
     url(
         regex=r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/$',

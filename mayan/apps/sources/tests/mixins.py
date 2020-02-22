@@ -11,8 +11,81 @@ from ..models.watch_folder_sources import WatchFolderSource
 from ..models.webform_sources import WebFormSource
 
 from .literals import (
-    TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N, TEST_STAGING_PREVIEW_WIDTH
+    TEST_SOURCE_LABEL, TEST_SOURCE_LABEL_EDITED, TEST_SOURCE_UNCOMPRESS_N,
+    TEST_STAGING_PREVIEW_WIDTH
 )
+
+
+class StagingFolderAPIViewTestMixin(object):
+    def setUp(self):
+        super(StagingFolderTestMixin, self).setUp()
+        self.test_staging_folders = []
+
+    def tearDown(self):
+        for test_staging_folder in self.test_staging_folders:
+            fs_cleanup(filename=test_staging_folder.folder_path)
+            self.test_staging_folders.remove(test_staging_folder)
+
+        super(StagingFolderAPIViewTestMixin, self).tearDown()
+
+    def _request_test_staging_folder_create_api_view(self):
+        return self.post(
+            viewname='rest_api:stagingfolder-list', data={
+                'label': TEST_SOURCE_LABEL,
+                'folder_path': mkdtemp(),
+                'preview_width': TEST_STAGING_PREVIEW_WIDTH,
+                'uncompress': TEST_SOURCE_UNCOMPRESS_N,
+            }
+        )
+
+        self.test_staging_folder = StagingFolderSource.objects.first()
+        self.test_staging_folders.append(self.test_staging_folder)
+
+    def _request_test_staging_folder_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:stagingfolder-detail', kwargs={
+                'pk': self.test_staging_folder.pk
+            }
+        )
+
+    def _request_staging_folder_edit_view(self, extra_data=None, verb='patch'):
+        data = {
+            'label': TEST_SOURCE_LABEL_EDITED,
+        }
+
+        if extra_data:
+            data.update(extra_data)
+
+        return getattr(self, verb)(
+            viewname='rest_api:stagingfolder-detail', kwargs={
+                'pk': self.test_staging_folder.pk
+            }, data=data
+        )
+
+    def _request_staging_folder_list_view(self):
+        return self.get(viewname='rest_api:stagingfolder-list')
+
+
+class StagingFolderFileAPIViewTestMixin(object):
+    def _request_staging_folder_file_delete_api_view(self):
+        staging_file = list(self.test_staging_folder.get_files())[0]
+
+        return self.delete(
+            viewname='rest_api:stagingfolderfile-detail', kwargs={
+                'staging_folder_pk': self.test_staging_folder.pk,
+                'encoded_filename': staging_file.encoded_filename
+            }
+        )
+
+    def _request_staging_folder_file_detail_api_view(self):
+        staging_file = list(self.test_staging_folder.get_files())[0]
+
+        return self.get(
+            viewname='rest_api:stagingfolderfile-detail', kwargs={
+                'staging_folder_pk': self.test_staging_folder.pk,
+                'encoded_filename': staging_file.encoded_filename
+            }
+        )
 
 
 class StagingFolderTestMixin(object):
@@ -20,7 +93,14 @@ class StagingFolderTestMixin(object):
         super(StagingFolderTestMixin, self).setUp()
         self.test_staging_folders = []
 
-    def _create_test_stating_folder(self):
+    def tearDown(self):
+        for test_staging_folder in self.test_staging_folders:
+            fs_cleanup(filename=test_staging_folder.folder_path)
+            self.test_staging_folders.remove(test_staging_folder)
+
+        super(StagingFolderTestMixin, self).tearDown()
+
+    def _create_test_staging_folder(self):
         self.test_staging_folder = StagingFolderSource.objects.create(
             label=TEST_SOURCE_LABEL,
             folder_path=mkdtemp(),
@@ -34,12 +114,6 @@ class StagingFolderTestMixin(object):
             src=TEST_SMALL_DOCUMENT_PATH,
             dst=self.test_staging_folder.folder_path
         )
-
-    def tearDown(self):
-        for test_staging_folder in self.test_staging_folders:
-            fs_cleanup(filename=test_staging_folder.folder_path)
-
-        super(StagingFolderTestMixin, self).tearDown()
 
 
 class StagingFolderViewTestMixin(object):

@@ -14,6 +14,7 @@
   setting.
 - Warn about invalid document language codes in the DOCUMENTS_LANGUAGE_CODES
   setting. Thanks to forum user @j_arquimbau for the report.
+- Add complete staging folder REST API.
 
 3.3.13 (2020-02-14)
 ===================
