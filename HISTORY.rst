@@ -16,6 +16,7 @@
   setting. Thanks to forum user @j_arquimbau for the report.
 - Add complete staging folder REST API.
 - Add the selenium Firefox geckodriver to the setup-dev-environment target.
+- Move the ``purgeperiodictasks`` command to the task manager app.
 
 3.3.13 (2020-02-14)
 ===================
