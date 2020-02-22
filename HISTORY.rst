@@ -20,7 +20,9 @@
 - Remove left over ``interactive`` option usage for the ``purgeperiodictasks``
   command. Closes GitLab issue #785. Thanks to Matthias Löblich (@startmat)
   for the report.
-  
+- Exclude ``/favicon.ico`` from the authenticated URL list. Closes GitLab
+  issue #786. Thanks to Matthias Löblich (@startmat) for the report.
+
 3.3.13 (2020-02-14)
 ===================
 - Update management command interface. Subclasses of BaseCommand no longer
