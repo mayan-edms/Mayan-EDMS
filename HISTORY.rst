@@ -17,7 +17,10 @@
 - Add complete staging folder REST API.
 - Add the selenium Firefox geckodriver to the setup-dev-environment target.
 - Move the ``purgeperiodictasks`` command to the task manager app.
-
+- Remove left over ``interactive`` option usage for the ``purgeperiodictasks``
+  command. Closes GitLab issue #785. Thanks to Matthias Löblich (@startmat)
+  for the report.
+  
 3.3.13 (2020-02-14)
 ===================
 - Update management command interface. Subclasses of BaseCommand no longer
