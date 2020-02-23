@@ -20,9 +20,9 @@ class StagingFolderFileUploadSerializer(serializers.Serializer):
         queryset=DocumentType.objects.all(), read_only=False
     )
     expand = serializers.BooleanField(
-        default=False, label=_('Expand'), help_text=_(
+        default=False, label=_('Expand compressed files'), help_text=_(
             'Upload a compressed file\'s contained files as individual '
-            'documents'
+            'documents.'
         )
     )
 
