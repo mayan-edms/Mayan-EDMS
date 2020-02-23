@@ -158,7 +158,7 @@ class StagingFolderFileAPIViewTestCase(
     DocumentTestMixin, StagingFolderFileAPIViewTestMixin,
     StagingFolderTestMixin, BaseAPITestCase
 ):
-    auto_create_document_type = False
+    auto_create_test_document_type = False
     auto_upload_document = False
 
     def test_staging_folder_file_delete_api_view_no_permission(self):
@@ -202,7 +202,7 @@ class StagingFolderFileAPIViewTestCase(
         )
 
     def test_staging_folder_file_upload_api_view_no_permission(self):
-        self._create_document_type()
+        self._create_test_document_type()
         self._create_test_staging_folder()
         self._copy_test_document()
         document_count = Document.objects.count()
@@ -212,7 +212,7 @@ class StagingFolderFileAPIViewTestCase(
         self.assertEqual(Document.objects.count(), document_count)
 
     def test_staging_folder_file_upload_api_view_document_access(self):
-        self._create_document_type()
+        self._create_test_document_type()
         self._create_test_staging_folder()
         self._copy_test_document()
         document_count = Document.objects.count()
