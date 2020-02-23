@@ -14,7 +14,8 @@
   setting.
 - Warn about invalid document language codes in the DOCUMENTS_LANGUAGE_CODES
   setting. Thanks to forum user @j_arquimbau for the report.
-- Add complete staging folder REST API.
+- Add complete staging folder and staging folder file REST API. Closes GitLab
+  issue #778. Thanks to David Kowis (@dkowis) for the request.
 - Add the selenium Firefox geckodriver to the setup-dev-environment target.
 - Move the ``purgeperiodictasks`` command to the task manager app.
 - Remove left over ``interactive`` option usage for the ``purgeperiodictasks``

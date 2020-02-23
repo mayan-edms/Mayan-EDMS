@@ -68,23 +68,27 @@ class StagingFolderAPIViewTestMixin(object):
 
 class StagingFolderFileAPIViewTestMixin(object):
     def _request_staging_folder_file_delete_api_view(self):
-        staging_file = list(self.test_staging_folder.get_files())[0]
-
         return self.delete(
             viewname='rest_api:stagingfolderfile-detail', kwargs={
                 'staging_folder_pk': self.test_staging_folder.pk,
-                'encoded_filename': staging_file.encoded_filename
+                'encoded_filename': self.test_staging_folder_file.encoded_filename
             }
         )
 
     def _request_staging_folder_file_detail_api_view(self):
-        staging_file = list(self.test_staging_folder.get_files())[0]
-
         return self.get(
             viewname='rest_api:stagingfolderfile-detail', kwargs={
                 'staging_folder_pk': self.test_staging_folder.pk,
-                'encoded_filename': staging_file.encoded_filename
+                'encoded_filename': self.test_staging_folder_file.encoded_filename
             }
+        )
+
+    def _request_staging_folder_file_upload_api_view(self):
+        return self.post(
+            viewname='rest_api:stagingfolderfile-upload', kwargs={
+                'staging_folder_pk': self.test_staging_folder.pk,
+                'encoded_filename': self.test_staging_folder_file.encoded_filename
+            }, data={'document_type': self.test_document_type.pk}
         )
 
 
@@ -114,6 +118,9 @@ class StagingFolderTestMixin(object):
             src=TEST_SMALL_DOCUMENT_PATH,
             dst=self.test_staging_folder.folder_path
         )
+        self.test_staging_folder_file = list(
+            self.test_staging_folder.get_files()
+        )[0]
 
 
 class StagingFolderViewTestMixin(object):

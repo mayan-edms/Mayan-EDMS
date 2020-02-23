@@ -79,12 +79,12 @@ api_urls = [
     url(
         regex=r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/image/$',
         view=APIStagingSourceFileImageView.as_view(),
-        name='stagingfolderfile-image-view'
+        name='stagingfolderfile-image'
     ),
     url(
         regex=r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/upload/$',
         view=APIStagingSourceFileUploadView.as_view(),
-        name='stagingfolderfile-upload-view'
+        name='stagingfolderfile-upload'
     ),
     url(
         regex=r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/$',

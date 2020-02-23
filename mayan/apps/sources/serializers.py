@@ -36,23 +36,29 @@ class StagingFolderFileSerializer(serializers.Serializer):
 
     def get_image_url(self, obj):
         return reverse(
-            viewname='rest_api:stagingfolderfile-image-view',
-            args=(obj.staging_folder.pk, obj.encoded_filename,),
-            request=self.context.get('request')
+            viewname='rest_api:stagingfolderfile-image',
+            kwargs={
+                'staging_folder_pk': obj.staging_folder.pk,
+                'encoded_filename': obj.encoded_filename
+            }, request=self.context.get('request')
         )
 
     def get_upload_url(self, obj):
         return reverse(
-            viewname='rest_api:stagingfolderfile-upload-view',
-            args=(obj.staging_folder.pk, obj.encoded_filename,),
-            request=self.context.get('request')
+            viewname='rest_api:stagingfolderfile-upload',
+            kwargs={
+                'staging_folder_pk': obj.staging_folder.pk,
+                'encoded_filename': obj.encoded_filename,
+            }, request=self.context.get('request')
         )
 
     def get_url(self, obj):
         return reverse(
             viewname='rest_api:stagingfolderfile-detail',
-            args=(obj.staging_folder.pk, obj.encoded_filename,),
-            request=self.context.get('request')
+            kwargs={
+                'staging_folder_pk': obj.staging_folder.pk,
+                'encoded_filename': obj.encoded_filename
+            }, request=self.context.get('request')
         )
 
 

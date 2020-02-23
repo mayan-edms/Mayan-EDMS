@@ -2,6 +2,9 @@ from __future__ import unicode_literals
 
 from rest_framework import status
 
+from mayan.apps.documents.models.document_models import Document
+from mayan.apps.documents.permissions import permission_document_create
+from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models.staging_folder_sources import StagingFolderSource
@@ -152,8 +155,12 @@ class StagingFolderAPIViewTestCase(
 
 
 class StagingFolderFileAPIViewTestCase(
-    StagingFolderFileAPIViewTestMixin, StagingFolderTestMixin, BaseAPITestCase
+    DocumentTestMixin, StagingFolderFileAPIViewTestMixin,
+    StagingFolderTestMixin, BaseAPITestCase
 ):
+    auto_create_document_type = False
+    auto_upload_document = False
+
     def test_staging_folder_file_delete_api_view_no_permission(self):
         self._create_test_staging_folder()
         self._copy_test_document()
@@ -185,12 +192,35 @@ class StagingFolderFileAPIViewTestCase(
     def test_staging_folder_file_detail_api_view(self):
         self._create_test_staging_folder()
         self._copy_test_document()
-        staging_file = list(self.test_staging_folder.get_files())[0]
 
         response = self._request_staging_folder_file_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(
             response.data['image_url'].endswith(
-                staging_file.get_api_image_url()
+                self.test_staging_folder_file.get_api_image_url()
             )
         )
+
+    def test_staging_folder_file_upload_api_view_no_permission(self):
+        self._create_document_type()
+        self._create_test_staging_folder()
+        self._copy_test_document()
+        document_count = Document.objects.count()
+
+        response = self._request_staging_folder_file_upload_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        self.assertEqual(Document.objects.count(), document_count)
+
+    def test_staging_folder_file_upload_api_view_document_access(self):
+        self._create_document_type()
+        self._create_test_staging_folder()
+        self._copy_test_document()
+        document_count = Document.objects.count()
+
+        self.grant_access(
+            obj=self.test_document_type, permission=permission_document_create
+        )
+
+        response = self._request_staging_folder_file_upload_api_view()
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+        self.assertEqual(Document.objects.count(), document_count + 1)
