@@ -10,13 +10,13 @@
 # Marvin Haschker <marvin@haschker.me>, 2019
 # Mathias Behrle <mathiasb@m9s.biz>, 2015,2018,2020
 # Stefan Rempe, 2018
-# Stefan Rempe, 2018
+# 847f3f05406324d125c568a4b098bddb, 2018
 # Tobias Paepke <tobias.paepke@paepke.net>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-21 01:36-0400\n"
+"POT-Creation-Date: 2020-02-23 02:13-0400\n"
 "PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"

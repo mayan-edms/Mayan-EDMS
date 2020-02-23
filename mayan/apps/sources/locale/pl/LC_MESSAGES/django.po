@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-21 01:38-0400\n"
-"PO-Revision-Date: 2020-02-20 16:33+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
+"POT-Creation-Date: 2020-02-23 02:16-0400\n"
+"PO-Revision-Date: 2020-02-23 06:19+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,12 +70,12 @@ msgstr ""
 msgid "Comment"
 msgstr "Komentarz"
 
-#: forms.py:42
+#: forms.py:42 serializers.py:23
 msgid "Expand compressed files"
 msgstr "Rozpakuj skompresowane pliki"
 
-#: forms.py:44
-msgid "Upload a compressed file's contained files as individual documents"
+#: forms.py:44 serializers.py:24
+msgid "Upload a compressed file's contained files as individual documents."
 msgstr ""
 
 #: forms.py:65 views.py:504
@@ -246,7 +246,7 @@ msgstr ""
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 
-#: models/base.py:182
+#: models/base.py:182 serializers.py:19
 msgid "Document type"
 msgstr "Typ dokumentów"
 
