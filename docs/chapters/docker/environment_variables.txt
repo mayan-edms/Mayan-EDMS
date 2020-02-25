@@ -28,6 +28,12 @@ that will be executed. If not specified the default is 2. For heavier loads,
 user a higher number. A formula recommended for this setting is the number
 of CPU cores + 1.
 
+``MAYAN_SKIP_CHOWN_ON_STARTUP``
+
+Optional. Setting this environment variable to ``true``, will make the
+entrypoint script, skip the initial chwon command on the media folder
+at `/var/lib/mayan`.
+
 ``MAYAN_WORKER_FAST_CONCURRENCY``
 
 Optional. Changes the concurrency (number of child processes) of the Celery

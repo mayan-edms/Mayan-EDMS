@@ -124,7 +124,12 @@ set_uid_guid() {
 
 os_package_installs || true
 pip_installs || true
-chown mayan:mayan /var/lib/mayan -R
+if [ "${MAYAN_SKIP_CHOWN_ON_STARTUP}" = "true" ]; then
+    echo "mayan: skipping chown on startup"
+else
+    chown mayan:mayan /var/lib/mayan -R
+fi
+
 
 case "$1" in
 

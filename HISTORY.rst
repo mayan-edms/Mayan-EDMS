@@ -1,3 +1,9 @@
+3.3.15 (2020-XX-XX)
+===================
+- Add Docker environment setting ``MAYAN_SKIP_CHOWN_ON_STARTUP`` to skip
+  performing the initial chown on the media folder at `/var/lib/mayan`.
+  This command is slow on non native block storage backends.
+
 3.3.14 (2020-02-23)
 ===================
 - Add missing backslash in deployment instructions.
