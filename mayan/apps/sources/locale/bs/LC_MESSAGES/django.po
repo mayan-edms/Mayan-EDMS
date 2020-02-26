@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 01:07-0400\n"
-"PO-Revision-Date: 2020-02-14 02:21+0000\n"
+"POT-Creation-Date: 2020-02-23 02:16-0400\n"
+"PO-Revision-Date: 2020-02-23 06:19+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
 "MIME-Version: 1.0\n"
@@ -69,13 +69,13 @@ msgstr ""
 msgid "Comment"
 msgstr "Komentar"
 
-#: forms.py:42
+#: forms.py:42 serializers.py:23
 msgid "Expand compressed files"
 msgstr "Otpakuj kompresovane datoteke"
 
-#: forms.py:44
-msgid "Upload a compressed file's contained files as individual documents"
-msgstr "Upload kompresovane datoteke koja sadrži individualne dokumente"
+#: forms.py:44 serializers.py:24
+msgid "Upload a compressed file's contained files as individual documents."
+msgstr ""
 
 #: forms.py:65 views.py:504
 msgid "Staging file"
@@ -245,7 +245,7 @@ msgstr "Interval"
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Dodeli vrstu dokumenta dokumentima koji su postavljeni iz ovog izvora."
 
-#: models/base.py:182
+#: models/base.py:182 serializers.py:19
 msgid "Document type"
 msgstr "Tip dokumenta"
 

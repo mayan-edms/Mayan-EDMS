@@ -56,7 +56,7 @@ logger = logging.getLogger(__name__)
 
 
 class SourceLogListView(SingleObjectListView):
-    view_permission = permission_sources_setup_view
+    object_permission = permission_sources_setup_view
 
     def get_extra_context(self):
         return {
@@ -611,8 +611,8 @@ class SetupSourceEditView(SingleObjectEditView):
 
 
 class SetupSourceListView(SingleObjectListView):
+    object_permission = permission_sources_setup_view
     source_queryset = Source.objects.select_subclasses()
-    view_permission = permission_sources_setup_view
 
     def get_extra_context(self):
         return {

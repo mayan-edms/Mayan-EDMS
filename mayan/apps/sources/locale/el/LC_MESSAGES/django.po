@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 01:07-0400\n"
-"PO-Revision-Date: 2020-01-16 09:54+0000\n"
+"POT-Creation-Date: 2020-02-23 02:16-0400\n"
+"PO-Revision-Date: 2020-02-23 06:19+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -67,13 +67,13 @@ msgstr ""
 msgid "Comment"
 msgstr "Σχόλιο"
 
-#: forms.py:42
+#: forms.py:42 serializers.py:23
 msgid "Expand compressed files"
 msgstr "Αποσυμπίεση αρχείου"
 
-#: forms.py:44
-msgid "Upload a compressed file's contained files as individual documents"
-msgstr "Ανέβασμα των περιεχομένων ενός συμπιεσμένου αρχείου ως αυτόνομα έγγραφα."
+#: forms.py:44 serializers.py:24
+msgid "Upload a compressed file's contained files as individual documents."
+msgstr ""
 
 #: forms.py:65 views.py:504
 msgid "Staging file"
@@ -243,7 +243,7 @@ msgstr "Χρονικό διάστημα"
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Ορισμός ενός τύπου εγγράφου για τα έγγραφα που μεταφορτώθηκαν από αυτή την πηγή."
 
-#: models/base.py:182
+#: models/base.py:182 serializers.py:19
 msgid "Document type"
 msgstr "Τύπος εγγράφου"
 

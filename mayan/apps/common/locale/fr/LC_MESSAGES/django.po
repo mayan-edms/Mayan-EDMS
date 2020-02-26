@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 01:03-0400\n"
-"PO-Revision-Date: 2020-01-31 20:36+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
+"POT-Creation-Date: 2020-02-23 02:12-0400\n"
+"PO-Revision-Date: 2020-02-21 05:40+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:89 permissions_runtime.py:7 settings.py:15
+#: apps.py:87 permissions_runtime.py:7 settings.py:15
 msgid "Common"
 msgstr "Commun"
 
@@ -177,8 +177,8 @@ msgid "Source code"
 msgstr "Code source"
 
 #: links.py:83
-msgid "Support"
-msgstr "Support"
+msgid "Get support"
+msgstr ""
 
 #: links.py:87 queues.py:15 views.py:214
 msgid "Tools"
@@ -334,7 +334,7 @@ msgstr "Une liste de chaînes désignant toutes les applications installées au-
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Nom de la page attaché au lien de marque dans le menu principal. C'est également la page vers laquelle les utilisateurs seront redirigés après la connexion."
 
 #: settings.py:64
 msgid "The number objects that will be displayed per page."

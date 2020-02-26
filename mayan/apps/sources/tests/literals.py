@@ -137,6 +137,7 @@ Content-MD5: 1B2M2Y8AsgTpgAmY7PhCfg==
 
 -----'''
 TEST_SOURCE_LABEL = 'test source'
+TEST_SOURCE_LABEL_EDITED = 'test source edited'
 TEST_SOURCE_UNCOMPRESS_N = 'n'
 TEST_STAGING_PREVIEW_WIDTH = 640
 TEST_WATCHFOLDER_SUBFOLDER = 'test_subfolder'

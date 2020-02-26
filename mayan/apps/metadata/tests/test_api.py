@@ -175,7 +175,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         super(DocumentTypeMetadataTypeAPITestCase, self).setUp()
         self._create_test_metadata_type()
 
-    def _create_document_type_metadata_type(self):
+    def _create_test_document_type_metadata_type(self):
         self.test_document_type_metadata_type = self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type, required=False
         )
@@ -207,7 +207,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         self.assertEqual(response.data['id'], document_type_metadata_type.pk)
 
     def test_document_type_metadata_type_create_dupicate_view(self):
-        self._create_document_type_metadata_type()
+        self._create_test_document_type_metadata_type()
         self.grant_permission(permission=permission_document_type_edit)
         response = self._request_document_type_metadata_type_create_view()
 
@@ -224,7 +224,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         )
 
     def test_document_type_metadata_type_delete_view_no_access(self):
-        self._create_document_type_metadata_type()
+        self._create_test_document_type_metadata_type()
 
         response = self._request_document_type_metadata_type_delete_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -232,7 +232,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         self.assertEqual(self.test_document_type.metadata.count(), 1)
 
     def test_document_type_metadata_type_delete_view_with_access(self):
-        self._create_document_type_metadata_type()
+        self._create_test_document_type_metadata_type()
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
@@ -251,13 +251,13 @@ class DocumentTypeMetadataTypeAPITestCase(
         )
 
     def test_document_type_metadata_type_list_view_no_access(self):
-        self._create_document_type_metadata_type()
+        self._create_test_document_type_metadata_type()
 
         response = self._request_document_type_metadata_type_list_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_document_type_metadata_type_list_view_with_access(self):
-        self._create_document_type_metadata_type()
+        self._create_test_document_type_metadata_type()
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_view
@@ -282,7 +282,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         )
 
     def test_document_type_metadata_type_patch_view_no_access(self):
-        self._create_document_type_metadata_type()
+        self._create_test_document_type_metadata_type()
 
         response = self._request_document_type_metadata_type_edit_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -291,7 +291,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         self.assertFalse(document_type_metadata_type.required, True)
 
     def test_document_type_metadata_type_patch_view_with_access(self):
-        self._create_document_type_metadata_type()
+        self._create_test_document_type_metadata_type()
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
@@ -315,7 +315,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         )
 
     def test_document_type_metadata_type_put_view_no_access(self):
-        self._create_document_type_metadata_type()
+        self._create_test_document_type_metadata_type()
 
         response = self._request_document_type_metadata_type_edit_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -324,7 +324,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         self.assertFalse(document_type_metadata_type.required, True)
 
     def test_document_type_metadata_type_put_view_with_access(self):
-        self._create_document_type_metadata_type()
+        self._create_test_document_type_metadata_type()
         self.grant_access(
             obj=self.test_document_type, permission=permission_document_type_edit
         )

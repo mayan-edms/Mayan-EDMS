@@ -63,17 +63,8 @@ icon_remove_all = Icon(
 icon_setup = Icon(
     driver_name='fontawesome', symbol='cog'
 )
-icon_social_facebook = Icon(
-    driver_name='fontawesomecss', css_classes='fab fa-facebook'
-)
-icon_social_instagram = Icon(
-    driver_name='fontawesomecss', css_classes='fab fa-instagram'
-)
 icon_social_paypal = Icon(
     driver_name='fontawesomecss', css_classes='fab fa-paypal'
-)
-icon_social_twitter = Icon(
-    driver_name='fontawesomecss', css_classes='fab fa-twitter'
 )
 icon_sort_down = Icon(driver_name='fontawesome', symbol='sort-down')
 icon_sort_up = Icon(driver_name='fontawesome', symbol='sort-up')
@@ -84,4 +75,3 @@ icon_support = Icon(
 icon_tools = Icon(
     driver_name='fontawesome', symbol='wrench'
 )
-icon_wiki = Icon(driver_name='fontawesome', symbol='book')

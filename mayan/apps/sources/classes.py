@@ -96,7 +96,7 @@ class StagingFile(object):
         final_url = furl()
         final_url.args = kwargs
         final_url.path = reverse(
-            'rest_api:stagingfolderfile-image-view', kwargs={
+            'rest_api:stagingfolderfile-image', kwargs={
                 'staging_folder_pk': self.staging_folder.pk,
                 'encoded_filename': self.encoded_filename
             }

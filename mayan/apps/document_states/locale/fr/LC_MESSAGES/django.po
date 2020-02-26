@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 01:04-0400\n"
-"PO-Revision-Date: 2020-01-31 20:37+0000\n"
+"POT-Creation-Date: 2020-02-23 02:13-0400\n"
+"PO-Revision-Date: 2020-02-19 13:52+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -87,7 +87,7 @@ msgstr "Type"
 
 #: apps.py:296
 msgid "Widget"
-msgstr ""
+msgstr "Composant"
 
 #: apps.py:305 apps.py:311
 msgid "Documents"
@@ -136,7 +136,7 @@ msgstr "Oui"
 
 #: forms.py:181
 msgid "Select a transition to execute in the next step."
-msgstr ""
+msgstr "Sélectionnez une transition à exécuter à l'étape suivante."
 
 #: forms.py:182 links.py:204 models.py:451 models.py:506 models.py:673
 msgid "Transition"
@@ -277,7 +277,7 @@ msgstr "Un court texte pour décrire l'état du flux de travail."
 msgid ""
 "The state at which the workflow will start in. Only one state can be the "
 "initial state."
-msgstr ""
+msgstr "État dans lequel le flux de travail commencera. Un seul état peut être l'état initial."
 
 #: models.py:281
 msgid "Initial"
@@ -287,7 +287,7 @@ msgstr "Initial"
 msgid ""
 "The percent of completion that this state represents in relation to the "
 "workflow. Use numbers without the percent sign."
-msgstr ""
+msgstr "Pourcentage d'achèvement que cet état représente par rapport au flux de travail. Utilisez des chiffres sans le signe de pourcentage."
 
 #: models.py:293 models.py:352
 msgid "Workflow state"
@@ -303,7 +303,7 @@ msgstr "Un court texte décrivant l'action."
 
 #: models.py:362
 msgid "At which moment of the state this action will execute."
-msgstr ""
+msgstr "Moment que cette action s'exécutera."
 
 #: models.py:363
 msgid "When"
@@ -371,7 +371,7 @@ msgstr "Texte d'aide"
 
 #: models.py:474
 msgid "Whether this fields needs to be filled out or not to proceed."
-msgstr ""
+msgstr "Que ces champs doivent être remplis ou non pour continuer."
 
 #: models.py:475
 msgid "Required"
@@ -379,19 +379,19 @@ msgstr "obligatoire"
 
 #: models.py:479
 msgid "An optional class to change the default presentation of the field."
-msgstr ""
+msgstr "Une classe facultative pour modifier la présentation par défaut du champ."
 
 #: models.py:480
 msgid "Widget class"
-msgstr ""
+msgstr "Classe du composant"
 
 #: models.py:484
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
-msgstr ""
+msgstr "Un groupe d'arguments de mots clés pour personnaliser le composant. Utilisez le format YAML."
 
 #: models.py:487
 msgid "Widget keyword arguments"
-msgstr ""
+msgstr "Arguments de mot clé du composant"
 
 #: models.py:492
 msgid "Workflow transition field"
@@ -439,7 +439,7 @@ msgstr "Commentaire"
 
 #: models.py:680
 msgid "Extra data"
-msgstr ""
+msgstr "Données supplémentaires"
 
 #: models.py:684
 msgid "Workflow instance log entry"
@@ -555,7 +555,7 @@ msgstr "Clé principale de la transition à ajouter."
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
-msgstr ""
+msgstr "Le seuil auquel WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND commencera à supprimer les fichiers de cache d'image de flux de travail les plus anciens. Spécifiez la taille en octets."
 
 #: settings.py:27
 msgid ""
@@ -567,11 +567,11 @@ msgstr "Durée en secondes pendant laquelle le navigateur doit mettre en cache l
 msgid ""
 "Path to the Storage subclass to use when storing the cached workflow image "
 "files."
-msgstr ""
+msgstr "Chemin d'accès à la sous-classe de stockage à utiliser lors du stockage des fichiers d'image de flux de travail mis en cache."
 
 #: settings.py:42
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Arguments à transmettre à WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: templates/document_states/forms/widgets/workflow_image.html:2
 msgid "Workflow preview"
@@ -585,7 +585,7 @@ msgstr "Assigner des flux de travail au type de document de ce document pour que
 
 #: views/workflow_instance_views.py:47
 msgid "There are no workflow for this document"
-msgstr "Il n'y a pas de workflow pour ce document"
+msgstr "Il n'y a pas de flux de travail pour ce document"
 
 #: views/workflow_instance_views.py:51
 #, python-format
@@ -600,7 +600,7 @@ msgstr "Cette page affiche les changements d'état lors de la transition d'une i
 
 #: views/workflow_instance_views.py:86
 msgid "There are no details for this workflow instance"
-msgstr "Il n'y a pas de détails pour cette instance de workflow"
+msgstr "Il n'y a pas de détails pour cette instance de flux de travail"
 
 #: views/workflow_instance_views.py:89
 #, python-format
@@ -619,7 +619,7 @@ msgstr "Soumettre"
 #: views/workflow_instance_views.py:127
 #, python-format
 msgid "Execute transition \"%(transition)s\" for workflow: %(workflow)s"
-msgstr ""
+msgstr "Exécutez la transition \"%(transition)s\" pour le flux de travail: %(workflow)s"
 
 #: views/workflow_instance_views.py:142
 msgid "Optional comment to attach to the transition."
@@ -793,23 +793,23 @@ msgstr "Créez un champ pour la transition du flux de travail: %s"
 #: views/workflow_template_transition_views.py:272
 #, python-format
 msgid "Delete workflow transition field: %s"
-msgstr ""
+msgstr "Supprimer le champ de transition du flux de travail: %s"
 
 #: views/workflow_template_transition_views.py:298
 #, python-format
 msgid "Edit workflow transition field: %s"
-msgstr ""
+msgstr "Modifier le champ de transition du flux de travail: %s"
 
 #: views/workflow_template_transition_views.py:327
 msgid ""
 "Workflow transition fields allow adding data to the workflow's context. This"
 " additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
-msgstr ""
+msgstr "Les champs de transition du flux de travail permettent d'ajouter des données au contexte du  flux de travail. Ces données de contexte supplémentaires peuvent ensuite être utilisées par d'autres éléments du système du flux de travail comme les actions d'état du flux de travail."
 
 #: views/workflow_template_transition_views.py:333
 msgid "There are no fields for this workflow transition"
-msgstr ""
+msgstr "Il n'y a aucun champ pour cette transition de flux de travail"
 
 #: views/workflow_template_transition_views.py:337
 #, python-format
@@ -955,7 +955,7 @@ msgstr "Délai d'attente dépassé"
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
-msgstr ""
+msgstr "Temps en secondes pour attendre une réponse. Peut être une valeur statique ou un modèle."
 
 #: workflow_actions.py:111
 msgid "Payload"
@@ -981,7 +981,7 @@ msgid ""
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Nom d'utilisateur à utiliser pour effectuer la demande avec l'authentification HTTP de base. Peut être une valeur statique ou un modèle. Les modèles reçoivent l'instance d'entrée du journal du flux de travail dans le cadre de leur contexte via la variable \"entry_log\". La variable \"entry_log\" fournie à son tour les attributs \"workflow_instance\", \"datetime\", \"transition\", \"user\" et \"comment\"."
 
 #: workflow_actions.py:137
 msgid "Password"
@@ -994,7 +994,7 @@ msgid ""
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Mot de passe à utiliser pour effectuer la demande avec l'authentification HTTP de base. Peut être une valeur statique ou un modèle. Les modèles reçoivent l'instance d'entrée du journal du flux de travail dans le cadre de leur contexte via la variable \"entry_log\". La variable \"entry_log\" fournie à son tour les attributs \"workflow_instance\", \"datetime\", \"transition\", \"user\" et \"comment\"."
 
 #: workflow_actions.py:150
 msgid "Headers"
@@ -1007,7 +1007,7 @@ msgid ""
 "instance as part of their context via the variable \"entry_log\". The "
 "\"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
 "\"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "En-têtes à envoyer avec la requête HTTP. Doit être au format JSON. Peut être une valeur statique ou un modèle. Les modèles reçoivent l'instance d'entrée du journal du flux de travail dans le cadre de leur contexte via la variable \"entry_log\". La variable \"entry_log\" fournie à son tour les attributs \"workflow_instance\", \"datetime\", \"transition\", \"user\" et \"comment\"."
 
 #: workflow_actions.py:167
 msgid "Perform a POST request"

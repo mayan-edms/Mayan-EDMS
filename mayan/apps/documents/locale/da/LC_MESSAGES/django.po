@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 01:05-0400\n"
+"POT-Creation-Date: 2020-02-23 02:13-0400\n"
 "PO-Revision-Date: 2020-01-29 08:18+0000\n"
 "Last-Translator: Allan Møller <it@brandts.dk>\n"
 "Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
@@ -63,7 +63,7 @@ msgstr "Seneste version"
 msgid "Thumbnail"
 msgstr ""
 
-#: apps.py:282 apps.py:372 forms/document_forms.py:187
+#: apps.py:282 apps.py:372 forms/document_forms.py:185
 #: links/document_version_page_links.py:137
 msgid "Pages"
 msgstr "Sider"
@@ -163,62 +163,62 @@ msgid ""
 "downloaded, if the previous option is selected."
 msgstr "Filnavnet for den pakkede fil, der vil indeholde dokumenterne til download. Dette hvis den tidligere mulighed er valg."
 
-#: forms/document_forms.py:90
+#: forms/document_forms.py:82
 msgid "Quick document rename"
 msgstr "Hurtig dokument omdøbning"
 
-#: forms/document_forms.py:98 forms/document_version_forms.py:15
+#: forms/document_forms.py:90 forms/document_version_forms.py:15
 msgid "Preserve extension"
 msgstr ""
 
-#: forms/document_forms.py:100
+#: forms/document_forms.py:92
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open document correctly."
 msgstr ""
 
-#: forms/document_forms.py:152
+#: forms/document_forms.py:150
 msgid "Date added"
 msgstr "Dato tilføjet"
 
-#: forms/document_forms.py:156 models/document_models.py:41 search.py:43
+#: forms/document_forms.py:154 models/document_models.py:41 search.py:43
 msgid "UUID"
 msgstr "UUID"
 
-#: forms/document_forms.py:158 models/document_models.py:66
+#: forms/document_forms.py:156 models/document_models.py:66
 msgid "Language"
 msgstr ""
 
-#: forms/document_forms.py:166
+#: forms/document_forms.py:164
 msgid "File mimetype"
 msgstr "File MIME-type"
 
-#: forms/document_forms.py:167 forms/document_forms.py:172
+#: forms/document_forms.py:165 forms/document_forms.py:170
 msgid "None"
 msgstr "Ingen"
 
-#: forms/document_forms.py:170
+#: forms/document_forms.py:168
 msgid "File encoding"
 msgstr ""
 
-#: forms/document_forms.py:176
+#: forms/document_forms.py:174
 msgid "File size"
 msgstr "Fil størrelse"
 
-#: forms/document_forms.py:181
+#: forms/document_forms.py:179
 msgid "Exists in storage"
 msgstr "Eksisterer i opbevaring"
 
-#: forms/document_forms.py:183
+#: forms/document_forms.py:181
 msgid "File path in storage"
 msgstr "Filsti i opbevaring"
 
-#: forms/document_forms.py:186 models/document_version_models.py:104
+#: forms/document_forms.py:184 models/document_version_models.py:104
 #: search.py:47 search.py:72
 msgid "Checksum"
 msgstr "Checksum"
 
-#: forms/document_forms.py:203 literals.py:43
+#: forms/document_forms.py:201 literals.py:43
 msgid "Page range"
 msgstr "Sideinterval"
 
@@ -965,7 +965,7 @@ msgstr ""
 msgid "Document image"
 msgstr ""
 
-#: utils.py:26
+#: utils.py:22
 #, python-format
 msgid "Unknown language \"%s\""
 msgstr ""

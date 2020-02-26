@@ -62,7 +62,7 @@ class DocumentTypeAPIViewTestCase(
     DocumentTypeAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
     auto_upload_document = False
-    auto_create_document_type = False
+    auto_create_test_document_type = False
 
     def test_document_type_api_create_view_no_permission(self):
         response = self._request_test_document_type_api_create_view()
@@ -129,7 +129,7 @@ class DocumentTypeAPIViewTestCase(
         )
 
     def test_document_type_api_edit_via_put_view_no_permission(self):
-        self._create_document_type()
+        self._create_test_document_type()
 
         response = self._request_test_document_type_api_put_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)

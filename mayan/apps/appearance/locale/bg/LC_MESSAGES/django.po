@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 01:02-0400\n"
-"PO-Revision-Date: 2019-12-22 06:32+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
+"POT-Creation-Date: 2020-02-23 02:11-0400\n"
+"PO-Revision-Date: 2020-02-21 05:39+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -96,7 +96,7 @@ msgstr "Страницата не е намерена"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Съжалявам, но заявената страница не може да бъде намерена."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:55
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:56
 msgid "Server error"
 msgstr "Грешка в сървъра"
 
@@ -110,7 +110,7 @@ msgstr "Има грешка. Тя е съобщена на администра�
 msgid "About"
 msgstr "Относно"
 
-#: templates/appearance/about.html:77
+#: templates/appearance/about.html:73
 #, python-format
 msgid ""
 "\n"
@@ -118,20 +118,20 @@ msgid ""
 "                "
 msgstr "\n                    %(setting_project_title)s се основава на%(project_title)s\n                "
 
-#: templates/appearance/about.html:82
+#: templates/appearance/about.html:78
 msgid "Version"
 msgstr "Версия"
 
-#: templates/appearance/about.html:84
+#: templates/appearance/about.html:80
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr "Номер на конструкцията: %(build_number)s"
 
-#: templates/appearance/about.html:97
+#: templates/appearance/about.html:93
 msgid "Released under the license:"
 msgstr "Издаден под лиценз:"
 
-#: templates/appearance/about.html:103
+#: templates/appearance/about.html:99
 #, python-format
 msgid ""
 "\n"
@@ -139,38 +139,23 @@ msgid ""
 "            "
 msgstr "\n                %(project_title)s е безплатен софтуер с отворен код предоставен Ви <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> от Роберто Росарио и сътрудници.\n            "
 
-#: templates/appearance/about.html:109
+#: templates/appearance/about.html:105
 #, python-format
 msgid ""
 "\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is. We need all the help we can get!\n"
+"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr "\n                Необходими са големи усилия за да се направи %(project_title)s с толкова много функции както е сега. Необходима ни е цялата помощ, която можем да получим!\n            "
+msgstr ""
 
-#: templates/appearance/about.html:115
+#: templates/appearance/about.html:111
 #, python-format
 msgid ""
 "\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">consider making a donation %(icon_social_paypal)s</a>\n"
+"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr "\n                Ако използвате %(project_title)s молим <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\"> помислете си дали да направите дарение %(icon_social_paypal)s</a>\n            "
+msgstr ""
 
-#: templates/appearance/about.html:121
-#, python-format
-msgid ""
-"\n"
-"                You can also <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">donate directly to the creator and lead developer.  %(icon_social_paypal)s</a>\n"
-"            "
-msgstr "\n                Може също <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">да направите дарение направо на създателя и главен разработчик.  %(icon_social_paypal)s</a>\n            "
-
-#: templates/appearance/about.html:127
-msgid ""
-"\n"
-"                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>.\n"
-"            "
-msgstr "\n                Освен с дарения може също така да подкрепите проекта като <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">закупите екземпляр от книгата \"Изследване на Mayan EDMS\" от Роберто Росарио</a>.\n            "
-
-#: templates/appearance/about.html:133
+#: templates/appearance/about.html:117
 #, python-format
 msgid ""
 "\n"
@@ -178,15 +163,15 @@ msgid ""
 "            "
 msgstr "\n                Пълният списък на промените е наличен чрез <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Бележки към версията %(icon_documentation)s</a> или кратката версия <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Дневник на промените%(icon_documentation)s</a>.\n            "
 
-#: templates/appearance/about.html:139
+#: templates/appearance/about.html:123
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a> or the <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki %(icon_wiki)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr "\n                За въпроси проверете <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Документация %(icon_documentation)s</a> или <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Уики %(icon_wiki)s</a>.\n            "
+msgstr ""
 
-#: templates/appearance/about.html:145
+#: templates/appearance/about.html:129
 #, python-format
 msgid ""
 "\n"
@@ -194,14 +179,13 @@ msgid ""
 "            "
 msgstr "\n                Ако намерите бъг или имате идея за прибавка, посетете <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Форум %(icon_forum)s</a> или направете заявка в <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Хранилище на изходен код %(icon_source_code)s</a>.\n            "
 
-#: templates/appearance/about.html:150
+#: templates/appearance/about.html:134
 #, python-format
 msgid ""
 "\n"
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
-"                Follow us on <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, or <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n"
 "            "
-msgstr "\n                Разкажете за проекта. Кажете на Вашите приятели и колеги за това какъв прекрасен е  %(project_title)s!\n                Следете ни на <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, или <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n            "
+msgstr ""
 
 #: templates/appearance/base.html:35 templates/appearance/base.html:59
 msgid "Warning"
@@ -318,15 +302,15 @@ msgstr "Превключване на навигацията"
 msgid "No results"
 msgstr "Няма резултати"
 
-#: templates/appearance/root.html:60
+#: templates/appearance/root.html:61
 msgid "Close"
 msgstr "Затваряне"
 
-#: templates/appearance/root.html:68
+#: templates/appearance/root.html:71
 msgid "Server communication error"
 msgstr "Грешка при свързването със сървъра"
 
-#: templates/appearance/root.html:70
+#: templates/appearance/root.html:73
 msgid "Check you network connection and try again in a few moments."
 msgstr "Проверете връзката с мрежата и опитайте отново след няколко секунди."
 
