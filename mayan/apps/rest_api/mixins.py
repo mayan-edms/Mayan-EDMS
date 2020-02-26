@@ -10,6 +10,14 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.mixins import ExternalObjectMixin
 
 
+class CreateOnlyFieldSerializerMixin(object):
+    def __init__(self, *args, **kwargs):
+        super(CreateOnlyFieldSerializerMixin, self).__init__(*args, **kwargs)
+        if self.context['view'].action != 'create':
+            for field in getattr(self.Meta, 'create_only_fields', ()):
+                self.fields.pop(field)
+
+
 class ExternalObjectAPIViewSetMixin(ExternalObjectMixin):
     """
     Override get_external_object to use REST API get_object_or_404.
