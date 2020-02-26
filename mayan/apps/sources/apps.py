@@ -49,8 +49,8 @@ class SourcesApp(MayanAppConfig):
             app_label='documents', model_name='DocumentType'
         )
 
-        POP3Email = self.get_model(model_name='POP3Email')
         IMAPEmail = self.get_model(model_name='IMAPEmail')
+        POP3Email = self.get_model(model_name='POP3Email')
         Source = self.get_model(model_name='Source')
         SourceLog = self.get_model(model_name='SourceLog')
         SaneScanner = self.get_model(model_name='SaneScanner')

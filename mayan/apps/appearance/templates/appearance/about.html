@@ -62,12 +62,8 @@
 
     {% appearance_get_icon 'mayan.apps.common.icons.icon_documentation' as icon_documentation %}
     {% appearance_get_icon 'mayan.apps.common.icons.icon_forum' as icon_forum %}
-    {% appearance_get_icon 'mayan.apps.common.icons.icon_social_facebook' as icon_social_facebook %}
     {% appearance_get_icon 'mayan.apps.common.icons.icon_social_paypal' as icon_social_paypal %}
-    {% appearance_get_icon 'mayan.apps.common.icons.icon_social_twitter' as icon_social_twitter %}
-    {% appearance_get_icon 'mayan.apps.common.icons.icon_social_instagram' as icon_social_instagram %}
     {% appearance_get_icon 'mayan.apps.common.icons.icon_source_code' as icon_source_code %}
-    {% appearance_get_icon 'mayan.apps.common.icons.icon_wiki' as icon_wiki %}
 
     <div class="well">
         <h3 class="text-center">{{ setting_project_title }}</h3>
@@ -107,25 +103,13 @@
 
         <p class="text-center">
             {% blocktrans with project_title as project_title %}
-                It takes great effort to make {{ project_title }} as feature-rich as it is. We need all the help we can get!
+                It takes great effort to make {{ project_title }} as feature-rich as it is.
             {% endblocktrans %}
         </p>
 
         <p class="text-center">
             {% blocktrans with project_title as project_title and icon_social_paypal as icon_social_paypal%}
-                If you use {{ project_title }} please <a class="new_window" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN">consider making a donation {{ icon_social_paypal }}</a>
-            {% endblocktrans %}
-        </p>
-
-        <p class="text-center">
-            {% blocktrans with icon_social_paypal as icon_social_paypal%}
-                You can also <a class="new_window" href="https://www.paypal.com/paypalme2/RobertoRosario">donate directly to the creator and lead developer.  {{ icon_social_paypal }}</a>
-            {% endblocktrans %}
-        </p>
-
-        <p class="text-center">
-            {% blocktrans with icon_social_paypal as icon_social_paypal%}
-                Besides donations you can also support the project by <a class="new_window" href="https://sellfy.com/p/um2fkx/">purchasing a copy of the book "Exploring Mayan EDMS" by Roberto Rosario</a>.
+                If you use {{ project_title }} please <a class="new_window" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN">make a donation {{ icon_social_paypal }}</a>
             {% endblocktrans %}
         </p>
 
@@ -136,8 +120,8 @@
         </p>
 
         <p class="text-center">
-            {% blocktrans with icon_documentation as icon_documentation and icon_wiki as icon_wiki %}
-                For questions check the <a class="new_window" href="https://docs.mayan-edms.com">Documentation {{ icon_documentation }}</a> or the <a class="new_window" href="https://wiki.mayan-edms.com">Wiki {{ icon_wiki }}</a>.
+            {% blocktrans with icon_documentation as icon_documentation %}
+                For questions check the <a class="new_window" href="https://docs.mayan-edms.com">Documentation {{ icon_documentation }}</a>.
             {% endblocktrans %}
         </p>
 
@@ -149,7 +133,6 @@
         <p class="text-center">
             {% blocktrans with project_title as project_title and icon_twitter as icon_twitter and icon_facebook as icon_facebook and icon_instagram as icon_instagram %}
                 Spread the word. Talk to your friends and colleagues about how awesome {{ project_title }} is!
-                Follow us on <a class="new_window" href="https://twitter.com/mayanedms">Twitter {{ icon_social_twitter }}</a>, <a class="new_window" href="https://www.facebook.com/MayanEDMS/">Facebook {{ icon_social_facebook }}</a>, or <a class="new_window" href="https://www.instagram.com/mayan_edms/">Instagram {{ icon_social_instagram }}</a>
             {% endblocktrans %}
         </p>
     </div>

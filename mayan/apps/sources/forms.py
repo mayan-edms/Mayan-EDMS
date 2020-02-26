@@ -42,7 +42,7 @@ class UploadBaseForm(forms.Form):
                 label=_('Expand compressed files'), required=False,
                 help_text=ugettext(
                     'Upload a compressed file\'s contained files as '
-                    'individual documents'
+                    'individual documents.'
                 )
             )
 

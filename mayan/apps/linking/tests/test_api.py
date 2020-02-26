@@ -75,7 +75,7 @@ class SmartLinkAPIViewTestCase(
     DocumentTestMixin, SmartLinkTestMixin, SmartLinkAPIViewTestMixin,
     BaseAPITestCase
 ):
-    auto_create_document_type = False
+    auto_create_test_document_type = False
     auto_upload_document = False
 
     def test_smart_link_create_view_no_permission(self):
@@ -98,7 +98,7 @@ class SmartLinkAPIViewTestCase(
         self.assertEqual(smart_link.label, TEST_SMART_LINK_LABEL)
 
     def test_smart_link_create_with_document_types_view_no_permission(self):
-        self._create_document_type()
+        self._create_test_document_type()
 
         response = self._request_test_smart_link_create_with_document_type_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -106,7 +106,7 @@ class SmartLinkAPIViewTestCase(
         self.assertEqual(SmartLink.objects.count(), 0)
 
     def test_smart_link_create_with_document_types_view_with_permission(self):
-        self._create_document_type()
+        self._create_test_document_type()
         self.grant_permission(permission=permission_smart_link_create)
 
         response = self._request_test_smart_link_create_with_document_type_api_view()
@@ -163,7 +163,7 @@ class SmartLinkAPIViewTestCase(
         )
 
     def test_smart_link_edit_view_via_patch_no_permission(self):
-        self._create_document_type()
+        self._create_test_document_type()
         self._create_test_smart_link()
 
         response = self._request_test_smart_link_edit_patch_api_view()
@@ -173,7 +173,7 @@ class SmartLinkAPIViewTestCase(
         self.assertEqual(self.test_smart_link.label, TEST_SMART_LINK_LABEL)
 
     def test_smart_link_edit_view_via_patch_with_access(self):
-        self._create_document_type()
+        self._create_test_document_type()
         self._create_test_smart_link()
         self.grant_access(
             obj=self.test_smart_link, permission=permission_smart_link_edit
@@ -188,7 +188,7 @@ class SmartLinkAPIViewTestCase(
         )
 
     def test_smart_link_edit_view_via_put_no_permission(self):
-        self._create_document_type()
+        self._create_test_document_type()
         self._create_test_smart_link()
 
         response = self._request_test_smart_link_edit_put_api_view()
@@ -198,7 +198,7 @@ class SmartLinkAPIViewTestCase(
         self.assertEqual(self.test_smart_link.label, TEST_SMART_LINK_LABEL)
 
     def test_smart_link_edit_view_via_put_with_access(self):
-        self._create_document_type()
+        self._create_test_document_type()
         self._create_test_smart_link()
         self.grant_access(
             obj=self.test_smart_link, permission=permission_smart_link_edit

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 01:08-0400\n"
+"POT-Creation-Date: 2020-02-23 02:17-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -32,6 +32,9 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " The {{ %(variable)s }} variable is available to the template."
 msgstr ""
+"Utilisez le langage de modèle par défaut de Django "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" La variable {{%(variable)s}} est disponible pour le modèle."
 
 #: forms.py:11
 msgid "Resulting text from the evaluated template."
@@ -55,7 +58,7 @@ msgstr "Bac à sable"
 
 #: permissions.py:10
 msgid "Use the template sandbox"
-msgstr ""
+msgstr "Utilisez le modèle bac à sable"
 
 #: views.py:45
 #, python-format
@@ -65,4 +68,4 @@ msgstr "Erreur de modèle; %(exception)s"
 #: views.py:58
 #, python-format
 msgid "Template sandbox for: %s"
-msgstr ""
+msgstr "Modèle bac à sable pour: %s"

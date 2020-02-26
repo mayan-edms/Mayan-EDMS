@@ -80,7 +80,7 @@ link_source_code = Link(
     url='https://gitlab.com/mayan-edms/mayan-edms'
 )
 link_support = Link(
-    icon_class=icon_support, tags='new_window', text=_('Support'),
+    icon_class=icon_support, tags='new_window', text=_('Get support'),
     url='http://www.mayan-edms.com/providers/'
 )
 link_tools = Link(

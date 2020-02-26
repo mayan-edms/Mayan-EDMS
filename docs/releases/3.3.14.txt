@@ -1,0 +1,280 @@
+Version 3.3.14
+==============
+
+Released: February 23, 2020
+
+
+Changes
+-------
+
+Continuous integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+The CI script was updated to push multiple tags of the Docker image. Normally,
+two images are tagged with the latest version and the tag ``latest``.
+Now for version 3.3.14, four images will be tagged and pushed. These tags are:
+``latest``, ``3.3.14``, ``3.3`` and ``3``. This way users have now more
+control over which level of release to pin their deployments.
+
+
+Development
+^^^^^^^^^^^
+
+The selenium Firefox geckodriver was added to the setup-dev-environment
+target that spins up a development environment with a single command.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+A missing backslash was added to the deployment instructions.
+
+
+Documents
+^^^^^^^^^
+
+The document language field is now a "lazy" field. This means that the field
+is evaluated on demand and not during start up. This allows starting Mayan
+even when there are invalid language codes in the DOCUMENTS_LANGUAGE_CODES
+setting.
+
+A warning was added when there are invalid document language codes in the
+DOCUMENTS_LANGUAGE_CODES setting.
+
+
+Error reporting
+^^^^^^^^^^^^^^^
+
+A more expressive error message was added when an invalid storage argument
+setting is encountered, providing more context about the source of the
+configuration error.
+
+
+Sources
+^^^^^^^
+
+The staging folder API is now feature complete. The staging folder API was
+expanded to allow creating, editing, and deleting staging folders.
+
+The staging folder file sub resource endpoint now has an upload URL.
+Doing a POST to this URL uploads that staging folder file and creates
+a new document.
+
+
+Tasks
+^^^^^
+
+The ``purgeperiodictasks`` command was moved from the common app to the task
+manager app.
+
+A left over ``interactive`` option usage for the ``purgeperiodictasks``
+command was removed.
+
+
+Testing
+^^^^^^^
+
+The test method to create a test document type instance was renamed from
+``_create_documen_type`` to ``_create_test_document_type``. This method name
+now follows the same naming pattern for all the methods that create test
+instances.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+Several links were removed or updated. The Wiki link was removed from the
+about view. So too were the social media links removed.
+
+A new link for direct access to the support page was added to the ``system``
+menu.
+
+The ``/favicon.ico`` URL was excluded from the authenticated URL list. This
+allows browsers to show the correct icon even when not authenticated.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrading process
+-----------------
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+
+Upgrading from Mayan EDMS 3.2.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Update the Redis configuration:
+
+   Configure Redis to discard data when it runs out of memory, not save its
+   database, and only keep 2 database:
+
+   .. code-block:: bash
+
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Install the Python 3 development OS package:
+
+   .. code-block:: bash
+
+    sudo apt-get install python3-dev
+
+
+#. Update the virtualenv to use Python 3:
+
+   .. code-block:: bash
+
+    sudo -u mayan virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Create a home directory for the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    mkdir /home/mayan
+
+
+#. Grant ownership to the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    chown mayan:mayan /home/mayan
+
+#. Reinstall the Python client for PostgreSQL and Redis:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
+
+
+#. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
+
+   .. code-block:: bash
+
+       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
+
+
+Upgrade steps from any previous version of Mayan EDMS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u mayan curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u mayan |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.14
+
+   the requirements will also be updated automatically.
+
+
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Edit the supervisord configuration file and update any setting specific to your installation:
+
+   .. code-block:: bash
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+
+#. Migrate existing database schema with:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=mayan \
+       MAYAN_DATABASE_PASSWORD=mayanuserpass MAYAN_DATABASE_USER=mayan \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Add new static media:
+
+   .. code-block:: bash
+
+       sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| preparestatic --noinput
+
+
+#. Start supervisord:
+
+   .. code-block:: bash
+
+       sudo systemctl start supervisor
+
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`778` Feature Request: An api to promote a staging file into a document
+- :gitlab-issue:`780` Direct Deployment web page missing a "\" on inital `apt-get install`
+- :gitlab-issue:`785` management.call_command - > interactive=False leftover
+- :gitlab-issue:`786` exclude favicon.ico from Stronghold
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

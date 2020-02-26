@@ -1,18 +1,14 @@
 from __future__ import unicode_literals
 
+import logging
+
 import pycountry
 
-from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from .literals import DOCUMENT_IMAGES_CACHE_NAME
+from .settings import setting_language_codes
 
-
-def callback_update_cache_size(setting):
-    Cache = apps.get_model(app_label='file_caching', model_name='Cache')
-    cache = Cache.objects.get(name=DOCUMENT_IMAGES_CACHE_NAME)
-    cache.maximum_size = setting.value
-    cache.save()
+logger = logging.getLogger(__name__)
 
 
 def get_language(language_code):
@@ -27,16 +23,19 @@ def get_language(language_code):
 
 
 def get_language_choices():
-    # Hide import as this function is called early in the bootstrap process
-    from .settings import setting_language_codes
+    result = []
 
-    return sorted(
-        [
-            (
-                iso639_3, _(pycountry.languages.get(alpha_3=iso639_3).name)
-            ) for iso639_3 in setting_language_codes.value
-        ], key=lambda x: x[1]
-    )
+    for iso639_3 in setting_language_codes.value:
+        entry = pycountry.languages.get(alpha_3=iso639_3)
+        if entry:
+            label = _(entry.name)
+            result.append(
+                (iso639_3, label)
+            )
+        else:
+            logger.warning('Unknown language code "%s".', iso639_3)
+
+    return sorted(result, key=lambda x: x[1])
 
 
 def parse_range(astr):

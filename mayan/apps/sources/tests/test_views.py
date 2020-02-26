@@ -260,6 +260,14 @@ class SourcesViewTestCase(
         self.assertEqual(webform_source.label, TEST_SOURCE_LABEL)
         self.assertEqual(webform_source.uncompress, TEST_SOURCE_UNCOMPRESS_N)
 
+    def test_source_delete_view_no_permission(self):
+        self._create_test_source()
+
+        response = self._request_setup_source_delete_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(WebFormSource.objects.count(), 1)
+
     def test_source_delete_view_with_permission(self):
         self._create_test_source()
 
@@ -270,19 +278,11 @@ class SourcesViewTestCase(
 
         self.assertEqual(WebFormSource.objects.count(), 0)
 
-    def test_source_delete_view_no_permission(self):
-        self._create_test_source()
-
-        response = self._request_setup_source_delete_view()
-        self.assertEqual(response.status_code, 403)
-
-        self.assertEqual(WebFormSource.objects.count(), 1)
-
     def test_source_list_view_no_permission(self):
         self._create_test_source()
 
         response = self._request_setup_source_list_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 200)
 
     def test_source_list_view_with_permission(self):
         self._create_test_source()
@@ -300,7 +300,7 @@ class StagingFolderViewTestCase(
 ):
     def setUp(self):
         super(StagingFolderViewTestCase, self).setUp()
-        self._create_test_stating_folder()
+        self._create_test_staging_folder()
         self._copy_test_document()
 
     def test_staging_file_delete_no_permission(self):
