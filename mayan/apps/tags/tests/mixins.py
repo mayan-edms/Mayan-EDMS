@@ -15,7 +15,7 @@ class DocumentTagAPIViewTestMixin(object):
         return self.post(
             viewname='rest_api:document-tag-attach', kwargs={
                 'document_id': self.test_document.pk
-            }, data={'tag_id_list': self.test_tag.pk}
+            }, data={'tag_id': self.test_tag.pk}
         )
 
     def _request_test_document_tag_list_api_view(self):
@@ -29,7 +29,7 @@ class DocumentTagAPIViewTestMixin(object):
         return self.post(
             viewname='rest_api:document-tag-remove', kwargs={
                 'document_id': self.test_document.pk
-            }, data={'tag_id_list': self.test_tag.pk}
+            }, data={'tag_id': self.test_tag.pk}
         )
 
 
@@ -69,7 +69,7 @@ class TagDocumentAPIViewTestMixin(object):
         return self.post(
             viewname='rest_api:tag-document-attach', kwargs={
                 'tag_id': self.test_tag.pk
-            }, data={'document_id_list': self.test_document.pk}
+            }, data={'document_id': self.test_document.pk}
         )
 
     def _request_test_tag_document_list_api_view(self):
@@ -83,7 +83,7 @@ class TagDocumentAPIViewTestMixin(object):
         return self.post(
             viewname='rest_api:tag-document-remove', kwargs={
                 'tag_id': self.test_tag.pk
-            }, data={'document_id_list': self.test_document.pk}
+            }, data={'document_id': self.test_document.pk}
         )
 
 

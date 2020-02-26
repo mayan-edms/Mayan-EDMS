@@ -174,10 +174,10 @@ class ExternalObjectSerializerMixin(object):
         super(ExternalObjectSerializerMixin, self).__init__(*args, **kwargs)
         self.external_object_options = getattr(self, 'Meta', None)
 
-    def get_external_object(self):
+    def get_external_object(self, as_queryset=False, permission=None):
         queryset = self.get_external_object_queryset()
 
-        permission = self.get_external_object_permission()
+        permission = self.get_external_object_permission() or permission
         if permission:
             queryset = AccessControlList.objects.restrict_queryset(
                 permission=permission, queryset=queryset,
@@ -211,7 +211,13 @@ class ExternalObjectSerializerMixin(object):
                     )
 
             try:
-                return queryset.get(pk=pk_field_value)
+                # Test and trigger 404
+                result = queryset.get(pk=pk_field_value)
+
+                if as_queryset:
+                    return queryset.filter(pk=pk_field_value)
+                else:
+                    return result
             except Exception as exception:
                 raise ValidationError(
                     {

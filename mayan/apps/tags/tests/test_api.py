@@ -140,7 +140,7 @@ class TagDocumentAPIViewTestCase(
         )
 
         response = self._request_test_tag_document_attach_api_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
         self.assertTrue(
             self.test_document not in self.test_tag.documents.all()
@@ -239,7 +239,7 @@ class TagDocumentAPIViewTestCase(
         )
 
         response = self._request_test_tag_document_remove_api_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
         self.assertTrue(
             self.test_document in self.test_tag.documents.all()
@@ -300,7 +300,7 @@ class DocumentTagAPIViewTestCase(
         )
 
         response = self._request_test_document_tag_attach_api_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
@@ -398,7 +398,7 @@ class DocumentTagAPIViewTestCase(
         )
 
         response = self._request_test_document_tag_remove_api_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
