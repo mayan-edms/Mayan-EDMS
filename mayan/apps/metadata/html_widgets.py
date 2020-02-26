@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.apps import apps
 from django.template.loader import render_to_string
 
-from .permissions import permission_document_metadata_view
+from .permissions import permission_metadata_view
 
 
 def widget_document_metadata(context):
@@ -15,7 +15,7 @@ def widget_document_metadata(context):
     )
     queryset = AccessControlList.objects.restrict_queryset(
         queryset=context['object'].metadata.all(),
-        permission=permission_document_metadata_view,
+        permission=permission_metadata_view,
         user=context['user']
     )
 

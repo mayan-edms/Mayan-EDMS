@@ -17,27 +17,23 @@ class ExternalObjectAPIViewSetMixin(ExternalObjectMixin):
     def dispatch(self, *args, **kwargs):
         return super(ExternalObjectMixin, self).dispatch(*args, **kwargs)
 
+    def get_serializer_extra_context(self):
+        """
+        Add the external object to the serializer context. Useful for the
+        create action when there is no instance available.
+        """
+        result = {}
+        if self.kwargs:
+            result['external_object'] = self.get_external_object()
+
+        return result
+
     def get_external_object(self, permission=None):
         return get_object_or_404(
             queryset=self.get_external_object_queryset_filtered(
                 permission=permission
             ), **self.get_pk_url_kwargs()
         )
-
-    def get_serializer_context(self):
-        """
-        Add the external object to the serializer context. Useful for the
-        create action when there is no instance available.
-        """
-        context = super(ExternalObjectAPIViewSetMixin, self).get_serializer_context()
-        if self.kwargs:
-            context.update(
-                {
-                    'external_object': self.get_external_object(),
-                }
-            )
-
-        return context
 
 
 class ExternalObjectListSerializerMixin(object):
@@ -251,6 +247,16 @@ class ExternalObjectSerializerMixin(object):
             )
 
         return queryset
+
+
+class SerializerExtraContextMixin(object):
+    def get_serializer_extra_context(self):
+        return {}
+
+    def get_serializer_context(self):
+        context = super(SerializerExtraContextMixin, self).get_serializer_context()
+        context.update(self.get_serializer_extra_context())
+        return context
 
 
 class SuccessHeadersMixin(object):

@@ -59,7 +59,9 @@ urlpatterns = [
 ]
 
 api_router_entries = (
-    {'prefix': r'tags', 'viewset': TagAPIViewSet, 'basename': 'tag'},
+    {
+        'prefix': r'tags', 'viewset': TagAPIViewSet, 'basename': 'tag'
+    },
     {
         'prefix': r'documents', 'viewset': DocumentTagAPIViewSet,
         'basename': 'document'

@@ -59,14 +59,19 @@ class DocumentMetadataForm(forms.Form):
 
             if self.metadata_type.lookup:
                 try:
+
                     self.fields['value'] = forms.ChoiceField(
                         label=self.fields['value'].label
                     )
-                    choices = self.metadata_type.get_lookup_values()
-                    choices = list(zip(choices, choices))
+
                     if not required:
-                        choices.insert(0, ('', '------'))
-                    self.fields['value'].choices = choices
+                        first_choice = ('', '------')
+                    else:
+                        first_choice = None
+
+                    self.fields['value'].choices = self.metadata_type.get_lookup_choices(
+                        first_choice=first_choice
+                    )
                     self.fields['value'].required = required
                     self.fields['value'].widget.attrs.update(
                         {'class': 'metadata-value'}
@@ -162,21 +167,6 @@ DocumentMetadataRemoveFormSet = formset_factory(
 )
 
 
-class MetadataTypeForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super(MetadataTypeForm, self).__init__(*args, **kwargs)
-        self.fields['lookup'].help_text = format_lazy(
-            '{}{}{}',
-            self.fields['lookup'].help_text,
-            _(' Available template context variables: '),
-            MetadataLookup.get_as_help_text()
-        )
-
-    class Meta:
-        fields = ('name', 'label', 'default', 'lookup', 'validation', 'parser')
-        model = MetadataType
-
-
 class DocumentTypeMetadataTypeRelationshipForm(forms.Form):
     RELATIONSHIP_TYPE_NONE = 'none'
     RELATIONSHIP_TYPE_OPTIONAL = 'optional'
@@ -212,12 +202,12 @@ class DocumentTypeMetadataTypeRelationshipForm(forms.Form):
             self.fields['relationship_type'].initial = self.initial_relationship_type
 
     def get_relationship(self):
-        return self.initial['document_type'].metadata.filter(
+        return self.initial['document_type'].metadata_type_relations.filter(
             metadata_type=self.initial['metadata_type']
         )
 
     def get_relationship_choices(self):
-        return self.initial['document_type'].metadata.filter(
+        return self.initial['document_type'].metadata_type_relations.filter(
             metadata_type=self.initial['metadata_type']
         )
 
@@ -281,3 +271,18 @@ class DocumentTypeMetadataTypeRelationshipFormSet(DocumentTypeMetadataTypeRelati
         _user = kwargs.pop('_user')
         super(DocumentTypeMetadataTypeRelationshipFormSet, self).__init__(*args, **kwargs)
         self.form_kwargs.update({'_user': _user})
+
+
+class MetadataTypeForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(MetadataTypeForm, self).__init__(*args, **kwargs)
+        self.fields['lookup'].help_text = format_lazy(
+            '{}{}{}',
+            self.fields['lookup'].help_text,
+            _(' Available template context variables: '),
+            MetadataLookup.get_as_help_text()
+        )
+
+    class Meta:
+        fields = ('name', 'label', 'default', 'lookup', 'validation', 'parser')
+        model = MetadataType

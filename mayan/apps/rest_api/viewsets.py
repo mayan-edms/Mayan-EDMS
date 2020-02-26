@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from rest_framework import mixins, viewsets
 
 from .filters import MayanViewSetObjectPermissionsFilter
-from .mixins import SuccessHeadersMixin
+from .mixins import SerializerExtraContextMixin, SuccessHeadersMixin
 from .permissions import MayanViewSetPermission
 
 
@@ -12,7 +12,9 @@ class MayanGenericAPIViewSet(SuccessHeadersMixin, viewsets.GenericViewSet):
     permission_classes = (MayanViewSetPermission,)
 
 
-class MayanModelAPIViewSet(SuccessHeadersMixin, viewsets.ModelViewSet):
+class MayanModelAPIViewSet(
+    SerializerExtraContextMixin, SuccessHeadersMixin, viewsets.ModelViewSet
+):
     filter_backends = (MayanViewSetObjectPermissionsFilter,)
     permission_classes = (MayanViewSetPermission,)
 

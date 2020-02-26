@@ -58,7 +58,7 @@ class TagBusinessLogicMixin(object):
 
 
 @python_2_unicode_compatible
-class Tag(models.Model, TagBusinessLogicMixin):
+class Tag(TagBusinessLogicMixin, models.Model):
     """
     This model represents a binary property that can be applied to a document.
     The tag can have a label and a color.

@@ -24,8 +24,10 @@ from mayan.apps.events.links import (
 )
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.rest_api.fields import HyperlinkField
+from mayan.apps.rest_api.serializers import LazyExtraFieldsSerializerMixin
 
-from .classes import DocumentMetadataHelper
+#from .classes import DocumentMetadataHelper
 from .events import (
     event_document_metadata_added, event_document_metadata_edited,
     event_document_metadata_removed, event_metadata_type_edited,
@@ -45,9 +47,10 @@ from .links import (
     link_setup_metadata_type_delete, link_setup_metadata_type_document_types,
     link_setup_metadata_type_edit, link_setup_metadata_type_list,
 )
+from .methods import method_get_metadata
 from .permissions import (
-    permission_document_metadata_add, permission_document_metadata_edit,
-    permission_document_metadata_remove, permission_document_metadata_view,
+    permission_metadata_add, permission_metadata_edit,
+    permission_metadata_remove, permission_metadata_view,
     permission_metadata_type_delete, permission_metadata_type_edit,
     permission_metadata_type_view
 )
@@ -88,9 +91,23 @@ class MetadataApp(MayanAppConfig):
         )
         MetadataType = self.get_model(model_name='MetadataType')
 
+        #Document.add_to_class(
+        #    name='metadata_value_of', value=DocumentMetadataHelper.constructor
+        #)
         Document.add_to_class(
-            name='metadata_value_of', value=DocumentMetadataHelper.constructor
+            name='get_metadata', value=method_get_metadata
         )
+
+        LazyExtraFieldsSerializerMixin.add_field(
+            dotted_path='mayan.apps.documents.serializers.DocumentSerializer',
+            field_name='metadata_list_url',
+            field=HyperlinkField(
+                lookup_url_kwarg='document_id',
+                view_name='rest_api:document-metadata-list'
+            )
+        )
+
+        #ModelAttribute(model=Document, name='get_metadata')
 
         ModelProperty(
             model=Document, name='metadata_value_of.< metadata type name >',
@@ -134,20 +151,16 @@ class MetadataApp(MayanAppConfig):
 
         ModelPermission.register(
             model=Document, permissions=(
-                permission_document_metadata_add,
-                permission_document_metadata_edit,
-                permission_document_metadata_remove,
-                permission_document_metadata_view
+                permission_metadata_add, permission_metadata_edit,
+                permission_metadata_remove, permission_metadata_view
             )
         )
         ModelPermission.register(
             model=MetadataType, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_document_metadata_add,
-                permission_document_metadata_edit,
-                permission_document_metadata_remove,
-                permission_document_metadata_view, permission_events_view,
-                permission_metadata_type_delete,
+                permission_metadata_add, permission_metadata_edit,
+                permission_metadata_remove, permission_metadata_view,
+                permission_events_view, permission_metadata_type_delete,
                 permission_metadata_type_edit, permission_metadata_type_view
             )
         )

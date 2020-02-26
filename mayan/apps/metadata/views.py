@@ -39,35 +39,14 @@ from .links import (
     link_metadata_add, link_metadata_multiple_add,
     link_setup_metadata_type_create
 )
+from .mixins import DocumentMetadataSameTypeMixin
 from .models import DocumentMetadata, MetadataType
 from .permissions import (
-    permission_document_metadata_add, permission_document_metadata_edit,
-    permission_document_metadata_remove, permission_document_metadata_view,
+    permission_metadata_add, permission_metadata_edit,
+    permission_metadata_remove, permission_metadata_view,
     permission_metadata_type_create, permission_metadata_type_delete,
     permission_metadata_type_edit, permission_metadata_type_view
 )
-
-
-class DocumentMetadataSameTypeMixin(object):
-    def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentMetadataSameTypeMixin, self).dispatch(
-            request, *args, **kwargs
-        )
-
-        queryset = self.get_object_list()
-
-        for document in queryset:
-            document.add_as_recent_document_for_user(user=request.user)
-
-        if queryset.values('document_type').distinct().aggregate(Count('document_type'))['document_type__count'] > 1:
-            messages.error(
-                message=_(
-                    'Selected documents must be of the same type.'
-                ), request=request
-            )
-            return HttpResponseRedirect(redirect_to=self.previous_url)
-
-        return result
 
 
 class DocumentMetadataAddView(
@@ -75,10 +54,13 @@ class DocumentMetadataAddView(
 ):
     form_class = DocumentMetadataAddForm
     model = Document
-    object_permission = permission_document_metadata_add
-    success_message = _('Metadata add request performed on %(count)d document')
+    object_permission = permission_metadata_add
+    pk_url_kwarg = 'document_id'
+    success_message = _(
+        'Metadata add request performed on %(count)d document.'
+    )
     success_message_plural = _(
-        'Metadata add request performed on %(count)d documents'
+        'Metadata add request performed on %(count)d documents.'
     )
 
     def get_extra_context(self):
@@ -137,7 +119,7 @@ class DocumentMetadataAddView(
         if self.action_count == 1:
             return reverse(
                 viewname='metadata:metadata_edit',
-                kwargs={'pk': self.action_id_list[0]}
+                kwargs={'document_id': self.action_id_list[0]}
             )
 
         elif self.action_count > 1:
@@ -154,7 +136,7 @@ class DocumentMetadataAddView(
     def object_action(self, form, instance):
         queryset = AccessControlList.objects.restrict_queryset(
             queryset=form.cleaned_data['metadata_type'],
-            permission=permission_document_metadata_add,
+            permission=permission_metadata_add,
             user=self.request.user
         )
 
@@ -215,12 +197,13 @@ class DocumentMetadataEditView(
 ):
     form_class = DocumentMetadataFormSet
     model = Document
-    object_permission = permission_document_metadata_edit
+    object_permission = permission_metadata_edit
+    pk_url_kwarg = 'document_id'
     success_message = _(
-        'Metadata edit request performed on %(count)d document'
+        'Metadata edit request performed on %(count)d document.'
     )
     success_message_plural = _(
-        'Metadata edit request performed on %(count)d documents'
+        'Metadata edit request performed on %(count)d documents.'
     )
 
     def get_extra_context(self):
@@ -286,7 +269,7 @@ class DocumentMetadataEditView(
         for document in queryset:
             document_metadata_queryset = AccessControlList.objects.restrict_queryset(
                 queryset=document.metadata.all(),
-                permission=permission_document_metadata_edit,
+                permission=permission_metadata_edit,
                 user=self.request.user
             )
             for document_metadata in document_metadata_queryset:
@@ -312,7 +295,7 @@ class DocumentMetadataEditView(
         if self.action_count == 1:
             return reverse(
                 viewname='metadata:metadata_view',
-                kwargs={'pk': self.action_id_list[0]}
+                kwargs={'document_id': self.action_id_list[0]}
             )
         elif self.action_count > 1:
             url = furl(
@@ -327,7 +310,7 @@ class DocumentMetadataEditView(
     def object_action(self, form, instance):
         document_metadata_queryset = AccessControlList.objects.restrict_queryset(
             queryset=instance.metadata.all(),
-            permission=permission_document_metadata_edit,
+            permission=permission_metadata_edit,
             user=self.request.user
         )
 
@@ -371,9 +354,9 @@ class DocumentMetadataEditView(
 
 class DocumentMetadataListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = Document
-    external_object_permission = permission_document_metadata_view
-    external_object_pk_url_kwarg = 'pk'
-    object_permission = permission_document_metadata_view
+    external_object_permission = permission_metadata_view
+    external_object_pk_url_kwarg = 'document_id'
+    object_permission = permission_metadata_view
 
     def get_extra_context(self):
         return {
@@ -407,12 +390,13 @@ class DocumentMetadataRemoveView(
 ):
     form_class = DocumentMetadataRemoveFormSet
     model = Document
-    object_permission = permission_document_metadata_remove
+    object_permission = permission_metadata_remove
+    pk_url_kwarg = 'document_id'
     success_message = _(
-        'Metadata remove request performed on %(count)d document'
+        'Metadata remove request performed on %(count)d document.'
     )
     success_message_plural = _(
-        'Metadata remove request performed on %(count)d documents'
+        'Metadata remove request performed on %(count)d documents.'
     )
 
     def get_extra_context(self):
@@ -423,8 +407,8 @@ class DocumentMetadataRemoveView(
             'submit_icon_class': icon_document_metadata_remove,
             'submit_label': _('Remove'),
             'title': ungettext(
-                singular='Remove metadata types from the document',
-                plural='Remove metadata types from the documents',
+                singular='Remove metadata types from the document.',
+                plural='Remove metadata types from the documents.',
                 number=queryset.count()
             )
         }
@@ -448,7 +432,7 @@ class DocumentMetadataRemoveView(
         for document in queryset:
             document_metadata_queryset = AccessControlList.objects.restrict_queryset(
                 queryset=document.metadata.all(),
-                permission=permission_document_metadata_remove,
+                permission=permission_metadata_remove,
                 user=self.request.user
             )
 
@@ -477,7 +461,7 @@ class DocumentMetadataRemoveView(
         if self.action_count == 1:
             return reverse(
                 viewname='metadata:metadata_view',
-                kwargs={'pk': self.action_id_list[0]}
+                kwargs={'document_id': self.action_id_list[0]}
             )
 
     def object_action(self, form, instance):
@@ -485,7 +469,7 @@ class DocumentMetadataRemoveView(
             if form.cleaned_data['update']:
                 queryset = AccessControlList.objects.restrict_queryset(
                     queryset=MetadataType.objects.all(),
-                    permission=permission_document_metadata_remove,
+                    permission=permission_metadata_remove,
                     user=self.request.user
                 )
                 metadata_type = get_object_or_404(
@@ -535,6 +519,7 @@ class MetadataTypeCreateView(SingleObjectCreateView):
 class MetadataTypeDeleteView(SingleObjectDeleteView):
     model = MetadataType
     object_permission = permission_metadata_type_delete
+    pk_url_kwarg = 'metadata_type_id'
     post_action_redirect = reverse_lazy(
         viewname='metadata:setup_metadata_type_list'
     )
@@ -551,6 +536,7 @@ class MetadataTypeEditView(SingleObjectEditView):
     form_class = MetadataTypeForm
     model = MetadataType
     object_permission = permission_metadata_type_edit
+    pk_url_kwarg = 'metadata_type_id'
     post_action_redirect = reverse_lazy(
         viewname='metadata:setup_metadata_type_list'
     )
@@ -656,7 +642,9 @@ class SetupDocumentTypeMetadataTypes(FormView):
         return initial
 
     def get_object(self):
-        obj = get_object_or_404(klass=self.model, pk=self.kwargs['pk'])
+        obj = get_object_or_404(
+            klass=self.model, pk=self.kwargs['document_type_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=obj, permissions=(permission_metadata_type_edit,),
@@ -671,7 +659,7 @@ class SetupDocumentTypeMetadataTypes(FormView):
         queryset = self.submodel.objects.all()
         return AccessControlList.objects.restrict_queryset(
             permission=permission_document_type_edit,
-            user=self.request.user, queryset=queryset
+            queryset=queryset, user=self.request.user
         )
 
 

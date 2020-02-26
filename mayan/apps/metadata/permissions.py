@@ -6,17 +6,17 @@ from mayan.apps.permissions import PermissionNamespace
 
 namespace = PermissionNamespace(label=_('Metadata'), name='metadata')
 
-permission_document_metadata_add = namespace.add_permission(
+permission_metadata_add = namespace.add_permission(
     label=_('Add metadata to a document'), name='metadata_document_add'
 )
-permission_document_metadata_edit = namespace.add_permission(
+permission_metadata_edit = namespace.add_permission(
     label=_('Edit a document\'s metadata'), name='metadata_document_edit'
 )
-permission_document_metadata_remove = namespace.add_permission(
+permission_metadata_remove = namespace.add_permission(
     label=_('Remove metadata from a document'),
     name='metadata_document_remove'
 )
-permission_document_metadata_view = namespace.add_permission(
+permission_metadata_view = namespace.add_permission(
     label=_('View metadata from a document'), name='metadata_document_view'
 )
 
