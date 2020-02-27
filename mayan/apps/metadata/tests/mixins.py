@@ -180,7 +180,7 @@ class DocumentTypeMetadataTypeAPITestMixin(object):
             viewname='rest_api:documenttypemetadatatype-detail',
             kwargs={
                 'document_type_id': self.test_document_type.pk,
-                'metadata_type_id': self.test_document_type_metadata_type.pk
+                'metadata_type_id': self.test_document_type_metadata_type_relation.pk
             }
         )
 
@@ -189,7 +189,7 @@ class DocumentTypeMetadataTypeAPITestMixin(object):
             viewname='rest_api:documenttypemetadatatype-detail',
             kwargs={
                 'document_type_id': self.test_document_type.pk,
-                'metadata_type_id': self.test_document_type_metadata_type.pk
+                'metadata_type_id': self.test_document_type_metadata_type_relation.pk
             }, data={
                 'required': True
             }
@@ -207,7 +207,7 @@ class DocumentTypeMetadataTypeAPITestMixin(object):
             viewname='rest_api:documenttypemetadatatype-detail',
             kwargs={
                 'document_type_id': self.test_document_type.pk,
-                'metadata_type_id': self.test_document_type_metadata_type.pk
+                'metadata_type_id': self.test_document_type_metadata_type_relation.pk
             }, data={
                 'required': True
             }
@@ -273,6 +273,54 @@ class MetadataTypeDocumentTypeRelationAPITestMixin(object):
             }
         )
 
+    def _request_test_metadata_type_document_type_relation_destroy_api_view(self):
+        return self.delete(
+            viewname='rest_api:metadata_type-document_type_relation-detail',
+            kwargs={
+                'metadata_type_id': self.test_metadata_type.pk,
+                'metadata_type_document_type_relation_id': self.test_document_type_metadata_type_relation.pk
+            }
+        )
+
+    def _request_test_metadata_type_document_type_relation_list_api_view(self):
+        return self.get(
+            viewname='rest_api:metadata_type-document_type_relation-list',
+            kwargs={
+                'metadata_type_id': self.test_metadata_type.pk,
+            }
+        )
+
+    def _request_test_metadata_type_document_type_relation_partial_update_api_view(self):
+        return self.patch(
+            viewname='rest_api:metadata_type-document_type_relation-detail',
+            kwargs={
+                'metadata_type_id': self.test_metadata_type.pk,
+                'metadata_type_document_type_relation_id': self.test_document_type_metadata_type_relation.pk
+            }, data={
+                'required': True
+            }
+        )
+
+    def _request_test_metadata_type_document_type_relation_retrieve_api_view(self):
+        return self.get(
+            viewname='rest_api:metadata_type-document_type_relation-detail',
+            kwargs={
+                'metadata_type_id': self.test_metadata_type.pk,
+                'metadata_type_document_type_relation_id': self.test_document_type_metadata_type_relation.pk
+            }
+        )
+
+    def _request_test_metadata_type_document_type_relation_update_api_view(self):
+        return self.put(
+            viewname='rest_api:metadata_type-document_type_relation-detail',
+            kwargs={
+                'metadata_type_id': self.test_metadata_type.pk,
+                'metadata_type_document_type_relation_id': self.test_document_type_metadata_type_relation.pk
+            }, data={
+                'required': True
+            }
+        )
+
 
 class MetadataTypeTestMixin(object):
     def setUp(self):
@@ -282,11 +330,9 @@ class MetadataTypeTestMixin(object):
         )
         self.test_metadata_types = []
 
-    def _get_test_metadata_type_queryset(self):
-        return MetadataType.objects.filter(
-            pk__in=[
-                metadata_type.pk for metadata_type in self.test_metadata_types
-            ]
+    def _create_test_document_type_metadata_type_relation(self):
+        self.test_document_type_metadata_type_relation = self.test_document_type.metadata_type_relations.create(
+            metadata_type=self.test_metadata_type, required=False
         )
 
     def _create_test_metadata_type(self):
@@ -294,6 +340,13 @@ class MetadataTypeTestMixin(object):
             **self.test_metadata_types_fixtures_models.pop()
         )
         self.test_metadata_types.append(self.test_metadata_type)
+
+    def _get_test_metadata_type_queryset(self):
+        return MetadataType.objects.filter(
+            pk__in=[
+                metadata_type.pk for metadata_type in self.test_metadata_types
+            ]
+        )
 
 
 class MetadataTypeViewTestMixin(object):

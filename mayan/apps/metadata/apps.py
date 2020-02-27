@@ -168,6 +168,13 @@ class MetadataApp(MayanAppConfig):
             model=DocumentMetadata, related='metadata_type',
         )
 
+        ModelPermission.register_inheritance(
+            model=DocumentTypeMetadataType, related='document_type',
+        )
+        #ModelPermission.register_inheritance(
+        #    model=DocumentTypeMetadataType, related='metadata_type',
+        #)
+
         SourceColumn(
             source=Document, label=_('Metadata'),
             func=widget_document_metadata

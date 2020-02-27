@@ -97,9 +97,9 @@ class MetadataTypeDocumentTypeRelationAPIViewSet(
     external_object_pk_url_kwarg = 'metadata_type_id'
     lookup_url_kwarg = 'metadata_type_document_type_relation_id'
     object_permission_map = {
+        'destroy': permission_document_type_edit,
         'list': permission_document_type_view,
         'partial_update': permission_document_type_edit,
-        'delete': permission_metadata_type_edit,
         'retrieve': permission_document_type_view,
         'update': permission_document_type_edit,
     }
@@ -116,10 +116,4 @@ class MetadataTypeDocumentTypeRelationAPIViewSet(
             return permission_metadata_type_edit
 
     def get_queryset(self):
-        action = getattr(self, 'action', None)
-        if action in ['create', 'delete']:
-            # Return metadata types
-            return self.get_external_object_queryset()
-        else:
-            # Return relations
-            return self.get_external_object().document_type_relations.all()
+        return self.get_external_object().document_type_relations.all()
