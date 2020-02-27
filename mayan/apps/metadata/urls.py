@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 from django.conf.urls import url
 
 from .api_views import (
-    MetadataTypeAPIViewSet, MetadataTypeDocumentTypeRelationAPIViewSet
+    DocumentTypeMetadataTypeRelationAPIViewSet, MetadataTypeAPIViewSet,
+    MetadataTypeDocumentTypeRelationAPIViewSet
 )
 from .views import (
     DocumentMetadataAddView, DocumentMetadataEditView,
@@ -75,24 +76,6 @@ urlpatterns = [
 '''
 api_urls = [
     url(
-        regex=r'^metadata_types/$', view=APIMetadataTypeListView.as_view(),
-        name='metadatatype-list'
-    ),
-    url(
-        regex=r'^metadata_types/(?P<metadata_type_pk>\d+)/$',
-        view=APIMetadataTypeView.as_view(), name='metadatatype-detail'
-    ),
-    url(
-        regex=r'^document_types/(?P<document_type_pk>\d+)/metadata_types/$',
-        view=APIDocumentTypeMetadataTypeListView.as_view(),
-        name='documenttypemetadatatype-list'
-    ),
-    url(
-        regex=r'^document_types/(?P<document_type_pk>\d+)/metadata_types/(?P<metadata_type_pk>\d+)/$',
-        view=APIDocumentTypeMetadataTypeView.as_view(),
-        name='documenttypemetadatatype-detail'
-    ),
-    url(
         regex=r'^documents/(?P<document_pk>\d+)/metadata/$',
         view=APIDocumentMetadataListView.as_view(), name='documentmetadata-list'
     ),
@@ -103,6 +86,11 @@ api_urls = [
 ]
 '''
 api_router_entries = (
+    {
+        'prefix': r'document_types/(?P<document_type_id>[^/.]+)/metadata_type_relations',
+        'viewset': DocumentTypeMetadataTypeRelationAPIViewSet,
+        'basename': 'document_type-metadata_type_relation'
+    },
     {
         'prefix': r'metadata_types', 'viewset': MetadataTypeAPIViewSet,
         'basename': 'metadata_type'

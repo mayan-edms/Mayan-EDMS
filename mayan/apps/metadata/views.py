@@ -5,8 +5,6 @@ from furl import furl
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import ValidationError
-from django.db.models import Count
-from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy

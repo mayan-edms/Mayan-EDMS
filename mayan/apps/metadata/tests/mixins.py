@@ -165,49 +165,58 @@ class DocumentMetadataViewTestMixin(object):
         )
 
 
-class DocumentTypeMetadataTypeAPITestMixin(object):
-    def _request_document_type_metadata_type_create_view(self):
+class DocumentTypeMetadataTypeRelationAPITestMixin(object):
+    def _request_test_document_type_metadata_type_relation_create_api_view(self):
         return self.post(
-            viewname='rest_api:documenttypemetadatatype-list',
+            viewname='rest_api:document_type-metadata_type_relation-list',
             kwargs={'document_type_id': self.test_document_type.pk}, data={
                 'metadata_type_id': self.test_metadata_type.pk,
                 'required': False
             }
         )
 
-    def _request_document_type_metadata_type_delete_view(self):
+    def _request_test_document_type_metadata_type_relation_destroy_api_view(self):
         return self.delete(
-            viewname='rest_api:documenttypemetadatatype-detail',
+            viewname='rest_api:document_type-metadata_type_relation-detail',
             kwargs={
                 'document_type_id': self.test_document_type.pk,
-                'metadata_type_id': self.test_document_type_metadata_type_relation.pk
+                'document_type_metadata_type_relation_id': self.test_document_type_metadata_type_relation.pk
             }
         )
 
-    def _request_document_type_metadata_type_edit_view_via_patch(self):
+    def _request_test_document_type_metadata_type_relation_list_api_view(self):
+        return self.get(
+            viewname='rest_api:document_type-metadata_type_relation-list', kwargs={
+                'document_type_id': self.test_document_type.pk
+            }
+        )
+
+    def _request_test_document_type_metadata_type_relation_partial_update_api_view(self):
         return self.patch(
-            viewname='rest_api:documenttypemetadatatype-detail',
+            viewname='rest_api:document_type-metadata_type_relation-detail',
             kwargs={
                 'document_type_id': self.test_document_type.pk,
-                'metadata_type_id': self.test_document_type_metadata_type_relation.pk
+                'document_type_metadata_type_relation_id': self.test_document_type_metadata_type_relation.pk
             }, data={
                 'required': True
             }
         )
 
-    def _request_document_type_metadata_type_list_view(self):
+    def _request_test_document_type_metadata_type_relation_retrieve_api_view(self):
         return self.get(
-            viewname='rest_api:documenttypemetadatatype-list', kwargs={
-                'document_type_id': self.test_document_type.pk
+            viewname='rest_api:document_type-metadata_type_relation-detail',
+            kwargs={
+                'document_type_id': self.test_document_type.pk,
+                'document_type_metadata_type_relation_id': self.test_document_type_metadata_type_relation.pk
             }
         )
 
-    def _request_document_type_metadata_type_edit_view_via_put(self):
+    def _request_test_document_type_metadata_type_relation_update_api_view(self):
         return self.put(
-            viewname='rest_api:documenttypemetadatatype-detail',
+            viewname='rest_api:document_type-metadata_type_relation-detail',
             kwargs={
                 'document_type_id': self.test_document_type.pk,
-                'metadata_type_id': self.test_document_type_metadata_type_relation.pk
+                'document_type_metadata_type_relation_id': self.test_document_type_metadata_type_relation.pk
             }, data={
                 'required': True
             }

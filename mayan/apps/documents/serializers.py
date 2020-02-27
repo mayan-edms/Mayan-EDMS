@@ -56,7 +56,7 @@ class DocumentTypeFilenameSerializer(serializers.ModelSerializer):
         fields = ('filename',)
 
 
-class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
+class DocumentTypeSerializer(LazyExtraFieldsHyperlinkedModelSerializer):
     documents_url = serializers.HyperlinkedIdentityField(
         view_name='rest_api:documenttype-document-list',
     )

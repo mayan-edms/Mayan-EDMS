@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
+from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_view, permission_document_type_edit
 )
@@ -16,7 +17,8 @@ from .permissions import (
 )
 
 from .serializers import (
-    MetadataTypeSerializer, MetadataTypeDocumentTypeRelationSerializer,
+    DocumentTypeMetadataTypeRelationSerializer, MetadataTypeSerializer,
+    MetadataTypeDocumentTypeRelationSerializer,
 )
 
 
@@ -72,6 +74,35 @@ class DocumentMetadataAPIViewSet(ExternalObjectAPIViewSetMixin, MayanModelAPIVie
 
         return context
 '''
+
+
+class DocumentTypeMetadataTypeRelationAPIViewSet(
+    ExternalObjectAPIViewSetMixin, MayanModelAPIViewSet
+):
+    external_object_class = DocumentType
+    external_object_pk_url_kwarg = 'document_type_id'
+    lookup_url_kwarg = 'document_type_metadata_type_relation_id'
+    object_permission_map = {
+        'destroy': permission_metadata_type_edit,
+        'list': permission_metadata_type_view,
+        'partial_update': permission_metadata_type_edit,
+        'retrieve': permission_metadata_type_view,
+        'update': permission_metadata_type_edit,
+    }
+    serializer_class = DocumentTypeMetadataTypeRelationSerializer
+
+    def get_external_object_permission(self):
+        # Extenal object permissions: Document type
+        action = getattr(self, 'action', None)
+        if action is None:
+            return None
+        elif action in ['list', 'retrieve']:
+            return permission_document_type_view
+        else:
+            return permission_document_type_edit
+
+    def get_queryset(self):
+        return self.get_external_object().metadata_type_relations.all()
 
 
 class MetadataTypeAPIViewSet(MayanModelAPIViewSet):
