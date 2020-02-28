@@ -77,7 +77,6 @@ at: https://docs.mayan-edms.com/topics/installation.html
 
 - [Homepage](http://www.mayan-edms.com)
 - [Documentation](https://docs.mayan-edms.com)
-- [Wiki](https://wiki.mayan-edms.com/)
 - [Contributing](https://gitlab.com/mayan-edms/mayan-edms/blob/master/CONTRIBUTING.md)
 - [Forum](https://forum.mayan-edms.com/)
 - [Source code, issues, bugs](https://gitlab.com/mayan-edms/mayan-edms)
