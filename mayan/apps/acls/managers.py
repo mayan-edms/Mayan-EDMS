@@ -120,9 +120,9 @@ class AccessControlListManager(models.Manager):
                 # TODO: AND for new cabinet levels ACLs
                 try:
                     related_field_model_related_fields = (
-                        ModelPermission.get_inheritance(
+                        ModelPermission.get_inheritances(
                             model=related_field.related_model
-                        ),
+                        )
                     )
                 except KeyError:
                     pass
@@ -160,9 +160,9 @@ class AccessControlListManager(models.Manager):
             # Case 4: Original model, has an inherited related field
             try:
                 related_fields = (
-                    ModelPermission.get_inheritance(
+                    ModelPermission.get_inheritances(
                         model=queryset.model
-                    ),
+                    )
                 )
             except KeyError:
                 pass
@@ -305,40 +305,41 @@ class AccessControlListManager(models.Manager):
             return queryset
 
         try:
-            related_field = ModelPermission.get_inheritance(
+            related_fields = ModelPermission.get_inheritances(
                 model=type(obj)
             )
         except KeyError:
             pass
         else:
-            try:
-                parent_object = resolve_attribute(
-                    obj=obj, attribute=related_field
+            for related_field_name in related_fields:
+                try:
+                    parent_object = resolve_attribute(
+                        obj=obj, attribute=related_field_name
+                    )
+                except AttributeError:
+                    # Parent accessor is not an attribute, try it as a related
+                    # field.
+                    parent_object = return_related(
+                        instance=obj, related_field=related_field_name
+                    )
+                content_type = ContentType.objects.get_for_model(
+                    model=parent_object
                 )
-            except AttributeError:
-                # Parent accessor is not an attribute, try it as a related
-                # field.
-                parent_object = return_related(
-                    instance=obj, related_field=related_field
-                )
-            content_type = ContentType.objects.get_for_model(
-                model=parent_object
-            )
-            try:
-                queryset = queryset | self.get(
-                    content_type=content_type, object_id=parent_object.pk,
-                    role=role
-                ).permissions.all()
-            except self.model.DoesNotExist:
-                pass
+                try:
+                    queryset = queryset | self.get(
+                        content_type=content_type, object_id=parent_object.pk,
+                        role=role
+                    ).permissions.all()
+                except self.model.DoesNotExist:
+                    pass
 
-            if type(parent_object) == type(obj):
-                # Object and parent are of the same type. Break recursion
-                return queryset
-            else:
-                queryset = queryset | self._get_inherited_object_permissions(
-                    obj=parent_object, role=role
-                )
+                if type(parent_object) == type(obj):
+                    # Object and parent are of the same type. Break recursion
+                    return queryset
+                else:
+                    queryset = queryset | self._get_inherited_object_permissions(
+                        obj=parent_object, role=role
+                    )
 
         return queryset
 

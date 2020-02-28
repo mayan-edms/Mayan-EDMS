@@ -12,6 +12,7 @@
 - Remove codecov from the dependencies.
 - Update REST API app to support viewsets.
 - Update Tags app to use API viewsets.
+- Update ACLs to support multiple inheritance.
 
 3.3.15 (2020-XX-XX)
 ===================
