@@ -44,7 +44,6 @@ Important links
 
 - `Homepage <http://www.mayan-edms.com>`__
 - `Documentation <https://docs.mayan-edms.com>`__
-- `Wiki <https://wiki.mayan-edms.com>`__
 - `Contributing <https://gitlab.com/mayan-edms/mayan-edms/blob/master/CONTRIBUTING.md>`__
 - `Forum <https://forum.mayan-edms.com>`__
 - `Source code, issues, bugs <https://gitlab.com/mayan-edms/mayan-edms>`__
