@@ -10,30 +10,24 @@ from ..permissions import (
     permission_message_edit, permission_message_view
 )
 
-from .literals import (
-    TEST_LABEL, TEST_LABEL_EDITED, TEST_MESSAGE, TEST_MESSAGE_EDITED
-)
-from .mixins import MOTDTestMixin
+from .literals import TEST_LABEL, TEST_MESSAGE
+from .mixins import MOTDAPITestMixin, MOTDTestMixin
 
 
-class MOTDAPITestCase(MOTDTestMixin, BaseAPITestCase):
-    def _request_message_create_view(self):
-        return self.post(
-            viewname='rest_api:message-list', data={
-                'label': TEST_LABEL, 'message': TEST_MESSAGE
-            }
-        )
+class MOTDAPITestCase(MOTDAPITestMixin, MOTDTestMixin, BaseAPITestCase):
+    def test_message_create_api_view_no_permission(self):
+        message_count = Message.objects.count()
 
-    def test_message_create_view_no_permission(self):
-        response = self._request_message_create_view()
+        response = self._request_test_message_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-        self.assertEqual(Message.objects.count(), 0)
+        self.assertEqual(Message.objects.count(), message_count)
 
-    def test_message_create_view_with_permission(self):
+    def test_message_create_api_view_with_permission(self):
         self.grant_permission(permission=permission_message_create)
+        message_count = Message.objects.count()
 
-        response = self._request_message_create_view()
+        response = self._request_test_message_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         message = Message.objects.first()
@@ -41,124 +35,132 @@ class MOTDAPITestCase(MOTDTestMixin, BaseAPITestCase):
         self.assertEqual(response.data['label'], TEST_LABEL)
         self.assertEqual(response.data['message'], TEST_MESSAGE)
 
-        self.assertEqual(Message.objects.count(), 1)
+        self.assertEqual(Message.objects.count(), message_count + 1)
         self.assertEqual(message.label, TEST_LABEL)
         self.assertEqual(message.message, TEST_MESSAGE)
 
-    def _request_message_delete_view(self):
-        return self.delete(
-            viewname='rest_api:message-detail', kwargs={
-                'pk': self.test_message.pk
-            }
-        )
-
-    def test_message_delete_view_no_access(self):
+    def test_message_destroy_api_view_no_permission(self):
         self._create_test_message()
+        message_count = Message.objects.count()
 
-        response = self._request_message_delete_view()
+        response = self._request_test_message_destroy_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.assertEqual(Message.objects.count(), 1)
+        self.assertEqual(Message.objects.count(), message_count)
 
-    def test_message_delete_view_with_access(self):
+    def test_message_destroy_api_view_with_access(self):
         self._create_test_message()
         self.grant_access(
             obj=self.test_message, permission=permission_message_delete
         )
+        message_count = Message.objects.count()
 
-        response = self._request_message_delete_view()
+        response = self._request_test_message_destroy_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-        self.assertEqual(Message.objects.count(), 0)
+        self.assertEqual(Message.objects.count(), message_count - 1)
 
-    def _request_message_detail_view(self):
-        return self.get(
-            viewname='rest_api:message-detail', kwargs={
-                'pk': self.test_message.pk
-            }
+    def test_message_partial_update_api_view_no_permission(self):
+        self._create_test_message()
+        message_values = self._model_instance_to_dictionary(
+            instance=self.test_message
         )
 
-    def test_message_detail_view_no_access(self):
-        self._create_test_message()
-
-        response = self._request_message_detail_view()
+        response = self._request_test_message_partial_update_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_message_detail_view_with_access(self):
+        self.test_message.refresh_from_db()
+        self.assertEqual(
+            self._model_instance_to_dictionary(
+                instance=self.test_message
+            ), message_values
+        )
+
+    def test_message_partial_update_api_view_with_access(self):
+        self._create_test_message()
+        self.grant_access(
+            obj=self.test_message, permission=permission_message_edit
+        )
+        message_values = self._model_instance_to_dictionary(
+            instance=self.test_message
+        )
+
+        response = self._request_test_message_partial_update_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_message.refresh_from_db()
+        self.assertNotEqual(
+            self._model_instance_to_dictionary(
+                instance=self.test_message
+            ), message_values
+        )
+
+    def test_message_list_api_view_no_permission(self):
+        self._create_test_message()
+        response = self._request_test_message_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 0)
+
+    def test_message_list_api_view_with_access(self):
         self._create_test_message()
         self.grant_access(
             obj=self.test_message, permission=permission_message_view
         )
 
-        response = self._request_message_detail_view()
+        response = self._request_test_message_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-        self.assertEqual(response.data['label'], TEST_LABEL)
-
-    def _request_message_edit_via_patch_view(self):
-        return self.patch(
-            viewname='rest_api:message-detail', kwargs={
-                'pk': self.test_message.pk
-            }, data={
-                'label': TEST_LABEL_EDITED,
-                'message': TEST_MESSAGE_EDITED
-            }
+        self.assertEqual(
+            response.data['results'][0]['label'],
+            self.test_message.label
         )
 
-    def test_message_edit_via_patch_view_no_access(self):
+    def test_message_retrive_api_view_no_permission(self):
         self._create_test_message()
 
-        response = self._request_message_edit_via_patch_view()
+        response = self._request_test_message_retrieve_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_message_retrive_view_api_with_access(self):
+        self._create_test_message()
+        self.grant_access(
+            obj=self.test_message, permission=permission_message_view
+        )
+
+        response = self._request_test_message_retrieve_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(response.data['label'], self.test_message.label)
+
+    def test_message_update_api_view_no_permission(self):
+        self._create_test_message()
+        message_values = self._model_instance_to_dictionary(
+            instance=self.test_message
+        )
+        response = self._request_test_message_update_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_message.refresh_from_db()
+        self.assertEqual(
+            self._model_instance_to_dictionary(
+                instance=self.test_message
+            ), message_values
+        )
 
-        self.assertEqual(self.test_message.label, TEST_LABEL)
-        self.assertEqual(self.test_message.message, TEST_MESSAGE)
-
-    def test_message_edit_via_patch_view_with_access(self):
+    def test_message_update_api_view_with_access(self):
         self._create_test_message()
         self.grant_access(
             obj=self.test_message, permission=permission_message_edit
         )
+        message_values = self._model_instance_to_dictionary(
+            instance=self.test_message
+        )
 
-        response = self._request_message_edit_via_patch_view()
+        response = self._request_test_message_update_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_message.refresh_from_db()
-        self.assertEqual(self.test_message.label, TEST_LABEL_EDITED)
-        self.assertEqual(self.test_message.message, TEST_MESSAGE_EDITED)
-
-    def _request_message_edit_via_put_view(self):
-        return self.put(
-            viewname='rest_api:message-detail', kwargs={
-                'pk': self.test_message.pk
-            }, data={
-                'label': TEST_LABEL_EDITED,
-                'message': TEST_MESSAGE_EDITED
-            }
+        self.assertNotEqual(
+            self._model_instance_to_dictionary(
+                instance=self.test_message
+            ), message_values
         )
-
-    def test_message_edit_via_put_view_no_access(self):
-        self._create_test_message()
-
-        response = self._request_message_edit_via_put_view()
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-
-        self.test_message.refresh_from_db()
-
-        self.assertEqual(self.test_message.label, TEST_LABEL)
-        self.assertEqual(self.test_message.message, TEST_MESSAGE)
-
-    def test_message_edit_via_put_view_with_access(self):
-        self._create_test_message()
-        self.grant_access(
-            obj=self.test_message, permission=permission_message_edit
-        )
-
-        response = self._request_message_edit_via_put_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-        self.test_message.refresh_from_db()
-        self.assertEqual(self.test_message.label, TEST_LABEL_EDITED)
-        self.assertEqual(self.test_message.message, TEST_MESSAGE_EDITED)

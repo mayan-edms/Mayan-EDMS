@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf.urls import url
 
-from .api_views import APIMessageListView, APIMessageView
+from .api_views import MessageAPIViewSet
 from .views import (
     MessageCreateView, MessageDeleteView, MessageEditView, MessageListView
 )
@@ -23,13 +23,10 @@ urlpatterns = [
     ),
 ]
 
-api_urls = [
-    url(
-        regex=r'^messages/$', view=APIMessageListView.as_view(),
-        name='message-list'
-    ),
-    url(
-        regex=r'^messages/(?P<pk>[0-9]+)/$', view=APIMessageView.as_view(),
-        name='message-detail'
-    ),
-]
+
+api_router_entries = (
+    {
+        'prefix': r'messages', 'viewset': MessageAPIViewSet,
+        'basename': 'message'
+    },
+)
