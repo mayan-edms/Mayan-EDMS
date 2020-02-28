@@ -197,7 +197,7 @@ class ExternalObjectSerializerMixin(object):
             )
 
         if pk_field:
-            pk_field_value = self.validated_data.get(pk_field)
+            pk_field_value = self.get_initial().get(pk_field)
         else:
             pk_field_value = None
 
