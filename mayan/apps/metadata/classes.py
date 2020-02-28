@@ -3,16 +3,6 @@ from __future__ import unicode_literals
 #from mayan.apps.common.classes import PropertyHelper
 
 
-#class DocumentMetadataHelper(PropertyHelper):
-#    @staticmethod
-#    @property
-#    def constructor(*args, **kwargs):
-#        return DocumentMetadataHelper(*args, **kwargs)
-
-#    def get_result(self, name):
-#        return self.instance.metadata.get(metadata_type__name=name).value
-
-
 class MetadataLookup(object):
     _registry = []
 

@@ -17,13 +17,14 @@ from .permissions import (
 )
 
 from .serializers import (
-    DocumentTypeMetadataTypeRelationSerializer, MetadataTypeSerializer,
-    MetadataTypeDocumentTypeRelationSerializer,
+    DocumentMetadataSerializer, DocumentTypeMetadataTypeRelationSerializer,
+    MetadataTypeSerializer, MetadataTypeDocumentTypeRelationSerializer
 )
 
 
-'''
-class DocumentMetadataAPIViewSet(ExternalObjectAPIViewSetMixin, MayanModelAPIViewSet):
+class DocumentMetadataAPIViewSet(
+    ExternalObjectAPIViewSetMixin, MayanModelAPIViewSet
+):
     external_object_class = Document
     external_object_pk_url_kwarg = 'document_id'
     lookup_url_kwarg = 'document_metadata_id'
@@ -34,8 +35,10 @@ class DocumentMetadataAPIViewSet(ExternalObjectAPIViewSetMixin, MayanModelAPIVie
         'retrieve': permission_metadata_view,
         'update': permission_metadata_edit,
     }
+    serializer_class = DocumentMetadataSerializer
 
     def get_external_object_permission(self):
+        # Custom permission map for the Document instance
         action = getattr(self, 'action', None)
         if action is None:
             return None
@@ -50,30 +53,6 @@ class DocumentMetadataAPIViewSet(ExternalObjectAPIViewSetMixin, MayanModelAPIVie
 
     def get_queryset(self):
         return self.get_external_object().metadata.all()
-
-    def get_serializer_class(self):
-        action = getattr(self, 'action', None)
-        if action is None:
-            return None
-        if action == 'create':
-            return DocumentMetadataAddSerializer
-        else:
-            return DocumentMetadataSerializer
-
-    def get_serializer_context(self):
-        """
-        Extra context provided to the serializer class.
-        """
-        context = super(DocumentMetadataAPIViewSet, self).get_serializer_context()
-        if self.kwargs:
-            context.update(
-                {
-                    'document': self.get_external_object(),
-                }
-            )
-
-        return context
-'''
 
 
 class DocumentTypeMetadataTypeRelationAPIViewSet(

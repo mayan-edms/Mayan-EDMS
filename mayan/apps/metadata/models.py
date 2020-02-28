@@ -87,9 +87,8 @@ class MetadataTypeBusinessLogicMixin(object):
 
     def get_default_value(self):
         template = Template(self.default)
-        #context = Context()
-        #return template.render(context=context)
-        return template.render()
+        context = Context()
+        return template.render(context=context)
 
     def get_document_type_relations(self, permission, user):
         return AccessControlList.objects.restrict_queryset(
@@ -109,10 +108,8 @@ class MetadataTypeBusinessLogicMixin(object):
 
     def get_lookup_values(self):
         template = Template(self.lookup)
-        #context = Context(MetadataLookup.get_as_context())
-        context = MetadataLookup.get_as_context()
-        #return MetadataType.comma_splitter(template.render(context=context))
-        return MetadataType.comma_splitter(template.render(**context))
+        context = Context(MetadataLookup.get_as_context())
+        return MetadataType.comma_splitter(template.render(context=context))
 
     def get_required_for(self, document_type):
         """
@@ -229,7 +226,12 @@ class MetadataType(MetadataTypeBusinessLogicMixin, models.Model):
 
             if value and value not in lookup_options:
                 raise ValidationError(
-                    _('Value is not one of the provided options.')
+                    {
+                        'value': _(
+                            'Value is not one of the metadata type lookup '
+                            'options.'
+                        )
+                    }
                 )
 
         if self.validation:

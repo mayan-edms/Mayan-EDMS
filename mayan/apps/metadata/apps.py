@@ -27,7 +27,6 @@ from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.rest_api.fields import HyperlinkField
 from mayan.apps.rest_api.serializers import LazyExtraFieldsSerializerMixin
 
-#from .classes import DocumentMetadataHelper
 from .events import (
     event_document_metadata_added, event_document_metadata_edited,
     event_document_metadata_removed, event_metadata_type_edited,
@@ -91,9 +90,6 @@ class MetadataApp(MayanAppConfig):
         )
         MetadataType = self.get_model(model_name='MetadataType')
 
-        #Document.add_to_class(
-        #    name='metadata_value_of', value=DocumentMetadataHelper.constructor
-        #)
         Document.add_to_class(
             name='get_metadata', value=method_get_metadata
         )
@@ -107,14 +103,14 @@ class MetadataApp(MayanAppConfig):
             )
         )
 
-        #LazyExtraFieldsSerializerMixin.add_field(
-        #    dotted_path='mayan.apps.documents.serializers.DocumentSerializer',
-        #    field_name='metadata_list_url',
-        #    field=HyperlinkField(
-        #        lookup_url_kwarg='document_id',
-        #        view_name='rest_api:document-metadata-list'
-        #    )
-        #)
+        LazyExtraFieldsSerializerMixin.add_field(
+            dotted_path='mayan.apps.documents.serializers.DocumentSerializer',
+            field_name='metadata_list_url',
+            field=HyperlinkField(
+                lookup_url_kwarg='document_id',
+                view_name='rest_api:document_metadata-list'
+            )
+        )
 
         #ModelAttribute(model=Document, name='get_metadata')
 
@@ -176,7 +172,6 @@ class MetadataApp(MayanAppConfig):
         ModelPermission.register_inheritance(
             model=DocumentMetadata, related='metadata_type',
         )
-
         ModelPermission.register_inheritance(
             model=DocumentTypeMetadataType, related='document_type',
         )

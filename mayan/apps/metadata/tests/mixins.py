@@ -12,50 +12,59 @@ from .literals import (
 
 
 class DocumentMetadataAPITestMixin(object):
-    def _request_document_metadata_create_view(self):
+    def _request_test_document_metadata_create_api_view(self):
         return self.post(
-            viewname='rest_api:documentmetadata-list',
+            viewname='rest_api:document_metadata-list',
             kwargs={'document_id': self.test_document.pk}, data={
                 'metadata_type_id': self.test_metadata_type.pk,
                 'value': TEST_METADATA_VALUE
             }
         )
 
-    def _request_document_metadata_delete_view(self):
+    def _request_test_document_metadata_destroy_api_view(self):
         return self.delete(
-            viewname='rest_api:documentmetadata-detail',
+            viewname='rest_api:document_metadata-detail',
             kwargs={
                 'document_id': self.test_document.pk,
-                'metadata_id': self.test_document_metadata.pk
+                'document_metadata_id': self.test_document_metadata.pk
             }
         )
 
-    def _request_document_metadata_edit_view_via_patch(self):
-        return self.patch(
-            viewname='rest_api:documentmetadata-detail',
-            kwargs={
-                'document_id': self.test_document.pk,
-                'metadata_id': self.test_document_metadata.pk
-            }, data={
-                'value': TEST_METADATA_VALUE_EDITED
-            }
-        )
-
-    def _request_document_metadata_edit_view_via_put(self):
-        return self.put(
-            viewname='rest_api:documentmetadata-detail',
-            kwargs={
-                'document_id': self.test_document.pk,
-                'metadata_id': self.test_document_metadata.pk
-            }, data={
-                'value': TEST_METADATA_VALUE_EDITED
-            }
-        )
-
-    def _request_document_metadata_list_view(self):
+    def _request_test_document_metadata_list_api_view(self):
         return self.get(
-            viewname='rest_api:documentmetadata-list', kwargs={
+            viewname='rest_api:document_metadata-list', kwargs={
                 'document_id': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_metadata_partial_update_api_view(self):
+        return self.patch(
+            viewname='rest_api:document_metadata-detail',
+            kwargs={
+                'document_id': self.test_document.pk,
+                'document_metadata_id': self.test_document_metadata.pk
+            }, data={
+                'value': TEST_METADATA_VALUE_EDITED
+            }
+        )
+
+    def _request_test_document_metadata_retrieve_api_view(self):
+        return self.get(
+            viewname='rest_api:document_metadata-detail',
+            kwargs={
+                'document_id': self.test_document.pk,
+                'document_metadata_id': self.test_document_metadata.pk
+            }
+        )
+
+    def _request_test_document_metadata_update_api_view(self):
+        return self.put(
+            viewname='rest_api:document_metadata-detail',
+            kwargs={
+                'document_id': self.test_document.pk,
+                'document_metadata_id': self.test_document_metadata.pk
+            }, data={
+                'value': TEST_METADATA_VALUE_EDITED
             }
         )
 
