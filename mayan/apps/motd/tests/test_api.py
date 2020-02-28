@@ -11,10 +11,10 @@ from ..permissions import (
 )
 
 from .literals import TEST_LABEL, TEST_MESSAGE
-from .mixins import MOTDAPITestMixin, MOTDTestMixin
+from .mixins import MessageAPITestMixin, MessageTestMixin
 
 
-class MOTDAPITestCase(MOTDAPITestMixin, MOTDTestMixin, BaseAPITestCase):
+class MOTDAPITestCase(MessageAPITestMixin, MessageTestMixin, BaseAPITestCase):
     def test_message_create_api_view_no_permission(self):
         message_count = Message.objects.count()
 
