@@ -100,8 +100,9 @@ class GroupViewTestMixin(object):
 
     def _request_test_group_members_view(self):
         return self.get(
-            viewname='user_management:group_members',
-            kwargs={'group_id': self.test_group.pk}
+            viewname='user_management:group_members', kwargs={
+                'group_id': self.test_group.pk
+            }
         )
 
 
@@ -128,50 +129,58 @@ class UserAPIViewTestMixin(object):
         )
 
         if 'id' in result.json():
-            self.test_user = get_user_model().objects.get(pk=result.json()['id'])
+            self.test_user = get_user_model().objects.get(
+                pk=result.json()['id']
+            )
 
         return result
 
-    def _request_test_user_delete_api_view(self):
+    def _request_test_user_destroy_api_view(self):
         return self.delete(
-            viewname='rest_api:user-detail',
-            kwargs={'pk': self.test_user.pk}
-        )
-
-    def _request_test_user_edit_patch_api_view(self):
-        return self.patch(
-            viewname='rest_api:user-detail',
-            kwargs={'pk': self.test_user.pk},
-            data={'username': TEST_USER_USERNAME_EDITED}
-        )
-
-    def _request_test_user_edit_put_api_view(self):
-        return self.put(
-            viewname='rest_api:user-detail',
-            kwargs={'pk': self.test_user.pk},
-            data={'username': TEST_USER_USERNAME_EDITED}
+            viewname='rest_api:user-detail', kwargs={
+                'user_id': self.test_user.pk
+            }
         )
 
     def _request_test_user_group_add_api_view(self):
         return self.post(
-            viewname='rest_api:users-group-list', kwargs={
-                'pk': self.test_user.pk
+            viewname='rest_api:user-group-add', kwargs={
+                'user_id': self.test_user.pk
             }, data={
-                'group_pk_list': '{}'.format(self.test_group.pk)
+                'group_id': self.test_group.pk
             }
         )
 
     def _request_test_user_group_list_api_view(self):
         return self.get(
-            viewname='rest_api:users-group-list', kwargs={
-                'pk': self.test_user.pk
+            viewname='rest_api:user-group-list', kwargs={
+                'user_id': self.test_user.pk
             }
+        )
+
+    def _request_test_user_group_remove_api_view(self):
+        return self.post(
+            viewname='rest_api:user-group-remove', kwargs={
+                'user_id': self.test_user.pk
+            }, data={
+                'group_id': self.test_group.pk
+            }
+        )
+
+    def _request_test_user_list_api_view(self):
+        return self.get(viewname='rest_api:user-list')
+
+    def _request_test_user_partial_update_api_view(self):
+        return self.patch(
+            viewname='rest_api:user-detail',
+            kwargs={'user_id': self.test_user.pk},
+            data={'username': TEST_USER_USERNAME_EDITED}
         )
 
     def _request_test_user_password_change_api_view(self):
         result = self.patch(
             viewname='rest_api:user-detail', kwargs={
-                'pk': self.test_user.pk
+                'user_id': self.test_user.pk
             }, data={
                 'password': TEST_USER_PASSWORD_EDITED,
             }
@@ -180,6 +189,24 @@ class UserAPIViewTestMixin(object):
         self.test_user.cleartext_password = TEST_USER_PASSWORD_EDITED
 
         return result
+
+    def _request_test_user_retrieve_api_view(self, extra_kwargs=None):
+        kwargs = {
+            'user_id': self.test_user.pk
+        }
+        if extra_kwargs:
+            kwargs.update(**extra_kwargs)
+
+        return self.get(
+            viewname='rest_api:user-detail', kwargs=kwargs
+        )
+
+    def _request_test_user_update_api_view(self):
+        return self.put(
+            viewname='rest_api:user-detail', kwargs={
+                'user_id': self.test_user.pk
+            }, data={'username': TEST_USER_USERNAME_EDITED}
+        )
 
 
 class UserTestCaseMixin(object):
@@ -257,8 +284,9 @@ class UserTestCaseMixin(object):
 class UserTestMixin(object):
     def _create_test_superuser(self):
         self.test_superuser = get_user_model().objects.create_superuser(
-            username=TEST_CASE_SUPERUSER_USERNAME, email=TEST_CASE_SUPERUSER_EMAIL,
-            password=TEST_CASE_SUPERUSER_PASSWORD
+            email=TEST_CASE_SUPERUSER_EMAIL,
+            password=TEST_CASE_SUPERUSER_PASSWORD,
+            username=TEST_CASE_SUPERUSER_USERNAME
         )
         self.test_superuser.cleartext_password = TEST_USER_PASSWORD
 

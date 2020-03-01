@@ -192,7 +192,7 @@ class UserEventsAPITestCase(
         )
         Action.objects.all().delete()
 
-        response = self._request_test_user_edit_patch_api_view()
+        response = self._request_test_user_partial_update_api_view()
         self.assertEqual(response.status_code, 200)
 
         action = Action.objects.last()

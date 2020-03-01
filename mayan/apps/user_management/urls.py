@@ -2,10 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf.urls import url
 
-from .api_views import (
-    APICurrentUserView, GroupAPIViewSet, APIUserGroupList, APIUserListView,
-    APIUserView
-)
+from .api_views import CurrentUserAPIView, GroupAPIViewSet, UserAPIViewSet
 from .views import (
     CurrentUserDetailsView, CurrentUserEditView, GroupCreateView,
     GroupDeleteView, GroupEditView, GroupListView, GroupUsersView,
@@ -84,21 +81,12 @@ urlpatterns.extend(urlpatterns_current_user)
 urlpatterns.extend(urlpatterns_users)
 
 api_urls = [
-    url(regex=r'^users/$', name='user-list', view=APIUserListView.as_view()),
-    url(
-        regex=r'^users/(?P<user_id>[0-9]+)/$', name='user-detail',
-        view=APIUserView.as_view()
-    ),
     url(
         regex=r'^users/current/$', name='user-current',
-        view=APICurrentUserView.as_view()
+        view=CurrentUserAPIView.as_view()
     ),
-    url(
-        regex=r'^users/(?P<user_id>[0-9]+)/groups/$', name='users-group-list',
-        view=APIUserGroupList.as_view()
-    )
 ]
 api_router_entries = (
     {'prefix': r'groups', 'viewset': GroupAPIViewSet, 'basename': 'group'},
-    #{'prefix': r'users', 'viewset': UserAPIViewSet, 'basename': 'user'},
+    {'prefix': r'users', 'viewset': UserAPIViewSet, 'basename': 'user'},
 )
