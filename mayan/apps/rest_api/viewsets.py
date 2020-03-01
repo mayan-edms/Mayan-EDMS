@@ -7,6 +7,14 @@ from .mixins import SerializerExtraContextMixin, SuccessHeadersMixin
 from .permissions import MayanViewSetPermission
 
 
+class MayanCreateDestroyListRetrieveAPIViewSet(
+    SuccessHeadersMixin, mixins.CreateModelMixin, mixins.DestroyModelMixin,
+    mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet
+):
+    filter_backends = (MayanViewSetObjectPermissionsFilter,)
+    permission_classes = (MayanViewSetPermission,)
+
+
 class MayanGenericAPIViewSet(SuccessHeadersMixin, viewsets.GenericViewSet):
     filter_backends = (MayanViewSetObjectPermissionsFilter,)
     permission_classes = (MayanViewSetPermission,)
