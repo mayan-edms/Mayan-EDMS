@@ -3,6 +3,8 @@
 - Add Docker environment setting ``MAYAN_SKIP_CHOWN_ON_STARTUP`` to skip
   performing the initial chown on the media folder at `/var/lib/mayan`.
   This command is slow on non native block storage backends.
+- Remove Wiki links from README files. GitLab Merge request !78.
+  Thanks Steffen Raisin (@zintor) for the merge request.
 
 3.3.14 (2020-02-23)
 ===================
