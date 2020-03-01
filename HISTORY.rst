@@ -13,6 +13,8 @@
 - Update REST API app to support viewsets.
 - Update Tags app to use API viewsets.
 - Update ACLs to support multiple inheritance.
+- Add validation to Keys creation API.
+- Remove Keys API update and partial update.
 
 3.3.15 (2020-XX-XX)
 ===================
