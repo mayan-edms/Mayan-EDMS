@@ -41,7 +41,7 @@ class TagAPIViewTestMixin(object):
             }
         )
 
-    def _request_test_tag_delete_api_view(self):
+    def _request_test_tag_destroy_api_view(self):
         return self.delete(
             viewname='rest_api:tag-detail', kwargs={
                 'tag_id': self.test_tag.pk
@@ -61,6 +61,16 @@ class TagAPIViewTestMixin(object):
             viewname='rest_api:tag-detail', kwargs={
                 'tag_id': self.test_tag.pk
             }, data=data
+        )
+
+    def _request_test_tag_list_api_view(self):
+        return self.get(viewname='rest_api:tag-list')
+
+    def _request_test_tag_retrieve_api_view(self):
+        return self.get(
+            viewname='rest_api:tag-detail', kwargs={
+                'tag_id': self.test_tag.pk
+            }
         )
 
 
@@ -150,13 +160,13 @@ class TagViewTestMixin(object):
             }
         )
 
-    def _request_test_tag_delete_multiple_view(self):
+    def _request_test_tag_destroy_multiple_view(self):
         return self.post(
             viewname='tags:tag_multiple_delete',
             data={'id_list': self.test_tag.pk},
         )
 
-    def _request_test_tag_delete_view(self):
+    def _request_test_tag_destroy_view(self):
         return self.post(
             viewname='tags:tag_delete', kwargs={'tag_id': self.test_tag.pk}
         )

@@ -39,29 +39,48 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
 
         self.assertEqual(Tag.objects.count(), tag_count + 1)
 
-    def test_tag_delete_api_view_no_access(self):
+    def test_tag_destroy_api_view_no_permission(self):
         self._create_test_tag()
 
         tag_count = Tag.objects.count()
 
-        response = self._request_test_tag_delete_api_view()
+        response = self._request_test_tag_destroy_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(Tag.objects.count(), tag_count)
 
-    def test_tag_delete_api_view_with_access(self):
+    def test_tag_destroy_api_view_with_access(self):
         self._create_test_tag()
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_delete)
 
         tag_count = Tag.objects.count()
 
-        response = self._request_test_tag_delete_api_view()
+        response = self._request_test_tag_destroy_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertEqual(Tag.objects.count(), tag_count - 1)
 
-    def test_tag_edit_via_patch_api_view_no_access(self):
+    def test_tag_list_api_view_no_permission(self):
+        self._create_test_tag()
+        response = self._request_test_tag_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 0)
+
+    def test_tag_list_api_view_with_access(self):
+        self._create_test_tag()
+        self.grant_access(
+            obj=self.test_tag, permission=permission_tag_view
+        )
+
+        response = self._request_test_tag_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.data['results'][0]['label'],
+            self.test_tag.label
+        )
+
+    def test_tag_partial_update_api_view_no_permission(self):
         self._create_test_tag()
 
         tag_label = self.test_tag.label
@@ -74,7 +93,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         self.assertEqual(self.test_tag.label, tag_label)
         self.assertEqual(self.test_tag.color, tag_color)
 
-    def test_tag_edit_via_patch_api_view_with_access(self):
+    def test_tag_partial_update_api_view_with_access(self):
         self._create_test_tag()
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_edit)
@@ -89,7 +108,24 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         self.assertNotEqual(self.test_tag.label, tag_label)
         self.assertNotEqual(self.test_tag.color, tag_color)
 
-    def test_tag_edit_via_put_api_view_no_access(self):
+    def test_tag_retrive_api_view_no_permission(self):
+        self._create_test_tag()
+
+        response = self._request_test_tag_retrieve_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_tag_retrive_view_api_with_access(self):
+        self._create_test_tag()
+        self.grant_access(
+            obj=self.test_tag, permission=permission_tag_view
+        )
+
+        response = self._request_test_tag_retrieve_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(response.data['label'], self.test_tag.label)
+
+    def test_tag_update_api_view_no_permission(self):
         self._create_test_tag()
 
         tag_label = self.test_tag.label
@@ -102,7 +138,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         self.assertEqual(self.test_tag.label, tag_label)
         self.assertEqual(self.test_tag.color, tag_color)
 
-    def test_tag_edit_via_put_api_view_with_access(self):
+    def test_tag_update_api_view_with_access(self):
         self._create_test_tag()
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_edit)
@@ -122,7 +158,7 @@ class TagDocumentAPIViewTestCase(
     DocumentTestMixin, TagDocumentAPIViewTestMixin, TagTestMixin,
     BaseAPITestCase
 ):
-    def test_tag_document_attach_api_view_no_access(self):
+    def test_tag_document_attach_api_view_no_permission(self):
         self._create_test_tag()
 
         response = self._request_test_tag_document_attach_api_view()
@@ -175,7 +211,7 @@ class TagDocumentAPIViewTestCase(
 
         self.assertTrue(self.test_document in self.test_tag.documents.all())
 
-    def test_tag_document_list_api_view_no_access(self):
+    def test_tag_document_list_api_view_no_permission(self):
         self._create_test_tag()
         self.test_tag.documents.add(self.test_document)
 
@@ -219,7 +255,7 @@ class TagDocumentAPIViewTestCase(
             force_text(self.test_document.uuid)
         )
 
-    def test_tag_document_remove_api_view_no_access(self):
+    def test_tag_document_remove_api_view_no_permission(self):
         self._create_test_tag()
         self.test_tag.documents.add(self.test_document)
 
@@ -282,7 +318,7 @@ class TagDocumentAPIViewTestCase(
 class DocumentTagAPIViewTestCase(
     DocumentTestMixin, DocumentTagAPIViewTestMixin, TagTestMixin, BaseAPITestCase
 ):
-    def test_document_tag_attach_api_view_no_access(self):
+    def test_document_tag_attach_api_view_no_permission(self):
         self._create_test_tag()
         self.upload_document()
 
@@ -333,7 +369,7 @@ class DocumentTagAPIViewTestCase(
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
-    def test_document_tag_list_api_view_no_access(self):
+    def test_document_tag_list_api_view_no_permission(self):
         self._create_test_tag()
         self.upload_document()
         self.test_tag.documents.add(self.test_document)
@@ -378,7 +414,7 @@ class DocumentTagAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['results'][0]['label'], self.test_tag.label)
 
-    def test_document_tag_remove_api_view_no_access(self):
+    def test_document_tag_remove_api_view_no_permission(self):
         self._create_test_tag()
         self.upload_document()
         self.test_tag.documents.add(self.test_document)

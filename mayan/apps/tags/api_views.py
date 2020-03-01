@@ -90,6 +90,7 @@ class TagAPIViewSet(MayanModelAPIViewSet):
         'document_remove': permission_tag_remove,
         'list': permission_tag_view,
         'partial_update': permission_tag_edit,
+        'retrieve': permission_tag_view,
         'update': permission_tag_edit
     }
     queryset = Tag.objects.all()
