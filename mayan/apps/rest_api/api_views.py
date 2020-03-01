@@ -16,8 +16,6 @@ class BrowseableObtainAuthToken(ObtainAuthToken):
 
 
 schema_view = get_schema_view(
-    openapi_info,
-    validators=['flex', 'ssv'],
-    public=True,
+    info=openapi_info, validators=['flex', 'ssv'], public=True,
     permission_classes=(permissions.AllowAny,),
 )
