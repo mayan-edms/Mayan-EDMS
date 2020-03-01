@@ -89,13 +89,16 @@ def resolve_attribute(attribute, obj, kwargs=None):
     if not kwargs:
         kwargs = {}
 
-    if '.' in attribute:
-        result = resolve_attribute(
-            obj=obj, attribute=attribute.split('.')[0], kwargs=kwargs
-        )
-        return resolve_attribute(
-            obj=result, attribute=attribute.split('.', 1)[1], kwargs=kwargs
-        )
+    try:
+        if '.' in attribute:
+            result = resolve_attribute(
+                obj=obj, attribute=attribute.split('.')[0], kwargs=kwargs
+            )
+            return resolve_attribute(
+                obj=result, attribute=attribute.split('.', 1)[1], kwargs=kwargs
+            )
+    except TypeError:
+        """Attribute is not a string"""
 
     # Try as a callable
     try:
