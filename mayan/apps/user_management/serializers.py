@@ -10,22 +10,66 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.rest_api.mixins import ExternalObjectSerializerMixin
 
-from .permissions import permission_group_view
+from .permissions import (
+    permission_group_edit, permission_group_view, permission_user_edit
+)
+from .querysets import get_user_queryset
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
-    users_count = serializers.SerializerMethodField()
+    user_add_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='group_id', view_name='rest_api:group-user-add'
+    )
+
+    user_list_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='group_id', view_name='rest_api:group-user-list'
+    )
+
+    user_remove_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='group_id', view_name='rest_api:group-user-remove'
+    )
 
     class Meta:
         extra_kwargs = {
-            'url': {'view_name': 'rest_api:group-detail'}
+            'url': {
+                'lookup_url_kwarg': 'group_id',
+                'view_name': 'rest_api:group-detail'
+            }
         }
-        fields = ('id', 'name', 'url', 'users_count')
+        fields = (
+            'id', 'name', 'url', 'user_add_url', 'user_list_url',
+            'user_remove_url'
+        )
         model = Group
 
-    def get_users_count(self, instance):
-        return instance.user_set.count()
+
+class GroupUserAddRemoveSerializer(
+    ExternalObjectSerializerMixin, serializers.Serializer
+):
+    user_id = serializers.CharField(
+        label=_('User ID'), help_text=_(
+            'Primary key of the user that will be added or removed.'
+        ), required=False, write_only=True
+    )
+
+    class Meta:
+        external_object_queryset = get_user_queryset()
+        external_object_permission = permission_user_edit
+        external_object_pk_field = 'user_id'
+
+    def users_add(self, instance):
+        instance.users_add(
+            queryset=self.get_external_object(as_queryset=True),
+            _user=self.context['request'].user
+        )
+
+    def users_remove(self, instance):
+        instance.users_remove(
+            queryset=self.get_external_object(as_queryset=True),
+            _user=self.context['request'].user
+        )
 
 
 class UserGroupListSerializer(serializers.Serializer):
@@ -77,6 +121,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             'id', 'is_active', 'last_login', 'last_name', 'password', 'url',
             'username'
         )
+        #TODO: block_password_change
         model = get_user_model()
         read_only_fields = ('groups', 'is_active', 'last_login', 'date_joined')
         write_only_fields = ('password', 'group_pk_list')

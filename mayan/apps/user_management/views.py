@@ -68,6 +68,7 @@ class GroupCreateView(SingleObjectCreateView):
 class GroupDeleteView(SingleObjectDeleteView):
     model = Group
     object_permission = permission_group_delete
+    pk_url_kwarg = 'group_id'
     post_action_redirect = reverse_lazy(
         viewname='user_management:group_list'
     )
@@ -83,6 +84,7 @@ class GroupEditView(SingleObjectEditView):
     fields = ('name',)
     model = Group
     object_permission = permission_group_edit
+    pk_url_kwarg = 'group_id'
     post_action_redirect = reverse_lazy(
         viewname='user_management:group_list'
     )
@@ -126,7 +128,7 @@ class GroupUsersView(AddRemoveView):
     main_object_method_remove = 'users_remove'
     main_object_model = Group
     main_object_permission = permission_group_edit
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'group_id'
     secondary_object_permission = permission_user_edit
     secondary_object_source_queryset = get_user_queryset()
     list_available_title = _('Available users')

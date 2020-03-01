@@ -24,23 +24,37 @@ class GroupAPIViewTestMixin(object):
 
         return result
 
-    def _request_test_group_delete_api_view(self):
+    def _request_test_group_destroy_api_view(self):
         return self.delete(
-            viewname='rest_api:group-detail', kwargs={'pk': self.test_group.pk}
+            viewname='rest_api:group-detail', kwargs={
+                'group_id': self.test_group.pk
+            }
         )
 
-    def _request_test_group_edit_patch_api_view(self):
+    def _request_test_group_list_api_view(self):
+        return self.get(viewname='rest_api:group-list')
+
+    def _request_test_group_partial_update_api_view(self):
         return self.patch(
-            viewname='rest_api:group-detail', kwargs={'pk': self.test_group.pk},
-            data={
+            viewname='rest_api:group-detail', kwargs={
+                'group_id': self.test_group.pk
+            }, data={
                 'name': TEST_GROUP_NAME_EDITED
             }
         )
 
-    def _request_test_group_edit_put_api_view(self):
+    def _request_test_group_retrieve_api_view(self):
+        return self.get(
+            viewname='rest_api:group-detail', kwargs={
+                'group_id': self.test_group.pk
+            }
+        )
+
+    def _request_test_group_update_api_view(self):
         return self.put(
-            viewname='rest_api:group-detail', kwargs={'pk': self.test_group.pk},
-            data={
+            viewname='rest_api:group-detail', kwargs={
+                'group_id': self.test_group.pk
+            }, data={
                 'name': TEST_GROUP_NAME_EDITED
             }
         )
@@ -68,14 +82,14 @@ class GroupViewTestMixin(object):
     def _request_test_group_delete_view(self):
         return self.post(
             viewname='user_management:group_delete', kwargs={
-                'pk': self.test_group.pk
+                'group_id': self.test_group.pk
             }
         )
 
     def _request_test_group_edit_view(self):
         return self.post(
             viewname='user_management:group_edit', kwargs={
-                'pk': self.test_group.pk
+                'group_id': self.test_group.pk
             }, data={
                 'name': TEST_GROUP_NAME_EDITED
             }
@@ -87,7 +101,7 @@ class GroupViewTestMixin(object):
     def _request_test_group_members_view(self):
         return self.get(
             viewname='user_management:group_members',
-            kwargs={'pk': self.test_group.pk}
+            kwargs={'group_id': self.test_group.pk}
         )
 
 

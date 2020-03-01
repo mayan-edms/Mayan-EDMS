@@ -4,8 +4,15 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.shortcuts import get_object_or_404
 
+from rest_framework import status
+from rest_framework.decorators import action
+from rest_framework.response import Response
+
+from drf_yasg.utils import swagger_auto_schema
+
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.rest_api import generics
+from mayan.apps.rest_api.viewsets import MayanModelAPIViewSet
 
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
@@ -13,8 +20,128 @@ from .permissions import (
     permission_user_edit, permission_user_view
 )
 from .serializers import (
-    GroupSerializer, UserSerializer, UserGroupListSerializer
+    GroupSerializer, GroupUserAddRemoveSerializer, UserSerializer,
+    UserGroupListSerializer
 )
+
+
+class GroupAPIViewSet(MayanModelAPIViewSet):
+    lookup_url_kwarg = 'group_id'
+    object_permission_map = {
+        'destroy': permission_group_delete,
+        'list': permission_group_view,
+        'partial_update': permission_group_edit,
+        'retrieve': permission_group_view,
+        'update': permission_group_edit,
+        'user_add': permission_group_edit,
+        'user_list': permission_group_view,
+        'user_remove': permission_group_edit
+    }
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    view_permission_map = {
+        'create': permission_group_create
+    }
+
+    @swagger_auto_schema(
+        operation_description='Create a new group.'
+    )
+    def create(self, *args, **kwargs):
+        return super(GroupAPIViewSet, self).create(*args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_description='Delete the selected group.', responses={
+            204: '',
+        }
+    )
+    def destroy(self, *args, **kwargs):
+        return super(GroupAPIViewSet, self).destroy(*args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_description='Retrieve the list of all the groups.',
+    )
+    def list(self, *args, **kwargs):
+        return super(GroupAPIViewSet, self).list(*args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_description='Update the selected group.',
+    )
+    def partial_update(self, *args, **kwargs):
+        return super(GroupAPIViewSet, self).partial_update(*args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_description='Retrieve the details of the selected group.',
+    )
+    def retrieve(self, *args, **kwargs):
+        return super(GroupAPIViewSet, self).retrieve(*args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_description='Update the selected group.',
+    )
+    def update(self, *args, **kwargs):
+        return super(GroupAPIViewSet, self).update(*args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_description='Add a user to the selected group.', responses={
+            200: '',
+        }
+    )
+    @action(
+        detail=True, lookup_url_kwarg='group_id', methods=('post',),
+        serializer_class=GroupUserAddRemoveSerializer,
+        url_name='user-add', url_path='users/add'
+    )
+    def user_add(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.users_add(instance=instance)
+        headers = self.get_success_headers(data=serializer.data)
+        return Response(
+            serializer.data, status=status.HTTP_200_OK, headers=headers
+        )
+
+    @swagger_auto_schema(
+        operation_description='Retrieve the list of users in the selected group.'
+    )
+    @action(
+        detail=True, lookup_url_kwarg='group_id',
+        serializer_class=UserSerializer, url_name='user-list',
+        url_path='users'
+    )
+    def user_list(self, request, *args, **kwargs):
+        queryset = self.get_object().get_users(user=self.request.user)
+        page = self.paginate_queryset(queryset)
+
+        serializer = self.get_serializer(
+            queryset, many=True, context={'request': request}
+        )
+
+        if page is not None:
+            return self.get_paginated_response(serializer.data)
+
+        return Response(serializer.data)
+
+    @swagger_auto_schema(
+        operation_description='Remove a user to the selected group.',
+        responses={
+            200: '',
+        }
+    )
+    @action(
+        detail=True, lookup_url_kwarg='group_id',
+        methods=('post',), serializer_class=GroupUserAddRemoveSerializer,
+        url_name='user-remove', url_path='users/remove'
+    )
+    def user_remove(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.users_remove(instance=instance)
+        headers = self.get_success_headers(data=serializer.data)
+        return Response(
+            serializer.data, status=status.HTTP_200_OK, headers=headers
+        )
 
 
 class APICurrentUserView(generics.RetrieveUpdateDestroyAPIView):
@@ -28,34 +155,6 @@ class APICurrentUserView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_object(self):
         return self.request.user
-
-
-class APIGroupListView(generics.ListCreateAPIView):
-    """
-    get: Returns a list of all the groups.
-    post: Create a new group.
-    """
-    mayan_object_permissions = {'GET': (permission_group_view,)}
-    mayan_view_permissions = {'POST': (permission_group_create,)}
-    queryset = Group.objects.order_by('id')
-    serializer_class = GroupSerializer
-
-
-class APIGroupView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    delete: Delete the selected group.
-    get: Return the details of the selected group.
-    patch: Partially edit the selected group.
-    put: Edit the selected group.
-    """
-    mayan_object_permissions = {
-        'GET': (permission_group_view,),
-        'PUT': (permission_group_edit,),
-        'PATCH': (permission_group_edit,),
-        'DELETE': (permission_group_delete,)
-    }
-    queryset = Group.objects.order_by('id')
-    serializer_class = GroupSerializer
 
 
 class APIUserListView(generics.ListCreateAPIView):

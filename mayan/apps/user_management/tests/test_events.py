@@ -82,7 +82,7 @@ class GroupEventsAPITestCase(
         )
         Action.objects.all().delete()
 
-        response = self._request_test_group_edit_patch_api_view()
+        response = self._request_test_group_partial_update_api_view()
         self.assertEqual(response.status_code, 200)
 
         action = Action.objects.last()
