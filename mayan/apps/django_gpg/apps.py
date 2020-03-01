@@ -44,7 +44,10 @@ class DjangoGPGApp(MayanAppConfig):
             )
         )
 
-        SourceColumn(attribute='key_id', label=_('Key ID'), source=Key)
+        SourceColumn(
+            attribute='key_id', is_identifier=True, label=_('Key ID'),
+            source=Key
+        )
         SourceColumn(attribute='user_id', source=Key)
 
         SourceColumn(attribute='key_id', label=_('Key ID'), source=KeyStub)

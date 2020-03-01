@@ -32,6 +32,7 @@ logger = logging.getLogger(__name__)
 class KeyDeleteView(SingleObjectDeleteView):
     model = Key
     object_permission = permission_key_delete
+    pk_url_kwarg = 'key_id'
 
     def get_extra_context(self):
         return {'title': _('Delete key: %s') % self.get_object()}
@@ -47,6 +48,7 @@ class KeyDetailView(SingleObjectDetailView):
     form_class = KeyDetailForm
     model = Key
     object_permission = permission_key_view
+    pk_url_kwarg = 'key_id'
 
     def get_extra_context(self):
         return {
@@ -57,6 +59,7 @@ class KeyDetailView(SingleObjectDetailView):
 class KeyDownloadView(SingleObjectDownloadView):
     model = Key
     object_permission = permission_key_download
+    pk_url_kwarg = 'key_id'
 
     def get_download_file_object(self):
         return self.object.key_data
@@ -170,7 +173,7 @@ class PrivateKeyListView(SingleObjectListView):
             ),
             'no_results_text': _(
                 'Private keys are used to signed documents. '
-                'Private keys can only be uploaded by the user.'
+                'Private keys can only be uploaded by the user. '
                 'The view to upload private and public keys is the same.'
             ),
             'no_results_title': _(

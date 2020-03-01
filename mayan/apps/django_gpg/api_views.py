@@ -1,6 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
-from mayan.apps.rest_api import generics
+from mayan.apps.rest_api.viewsets import (
+    MayanCreateDestroyListRetrieveAPIViewSet
+)
 
 from .models import Key
 from .permissions import (
@@ -9,25 +11,21 @@ from .permissions import (
 from .serializers import KeySerializer
 
 
-class APIKeyListView(generics.ListCreateAPIView):
+class KeyAPIViewSet(MayanCreateDestroyListRetrieveAPIViewSet):
     """
-    get: Returns a list of all the keys.
-    post: Upload a new key.
+    create: Upload a new key.
+    destroy: Delete the selected key.
+    list: Returns a list of all the keys.
+    retrieve: Return the details of the selected key.
     """
-    mayan_object_permissions = {'GET': (permission_key_view,)}
-    mayan_view_permissions = {'POST': (permission_key_upload,)}
-    queryset = Key.objects.all()
-    serializer_class = KeySerializer
-
-
-class APIKeyView(generics.RetrieveDestroyAPIView):
-    """
-    delete: Delete the selected key.
-    get: Return the details of the selected key.
-    """
-    mayan_object_permissions = {
-        'DELETE': (permission_key_delete,),
-        'GET': (permission_key_view,),
+    lookup_url_kwarg = 'key_id'
+    object_permission_map = {
+        'destroy': permission_key_delete,
+        'list': permission_key_view,
+        'retrieve': permission_key_view,
     }
     queryset = Key.objects.all()
     serializer_class = KeySerializer
+    view_permission_map = {
+        'create': permission_key_upload
+    }

@@ -31,7 +31,10 @@ class KeyDetailForm(DetailForm):
             {'label': _('Fingerprint'), 'field': 'fingerprint'},
             {'label': _('Length'), 'field': 'length'},
             {'label': _('Algorithm'), 'field': 'algorithm'},
-            {'label': _('Type'), 'field': lambda x: instance.get_key_type_display()},
+            {
+                'label': _('Type'),
+                'field': lambda x: instance.get_key_type_display()
+            },
         )
 
         kwargs['extra_fields'] = extra_fields

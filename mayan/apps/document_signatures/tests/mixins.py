@@ -7,7 +7,7 @@ from mayan.apps.django_gpg.tests.literals import TEST_KEY_PRIVATE_PASSPHRASE
 
 from ..models import DetachedSignature
 
-from .literals import TEST_KEY_FILE_PATH, TEST_SIGNATURE_FILE_PATH
+from .literals import TEST_SIGNATURE_FILE_PATH
 
 
 class DetachedSignatureAPIViewTestMixin(object):
@@ -138,12 +138,6 @@ class SignatureTestMixin(object):
             self.test_signature = DetachedSignature.objects.create(
                 document_version=self.test_document.latest_version,
                 signature_file=File(file_object)
-            )
-
-    def _create_test_key_public(self):
-        with open(TEST_KEY_FILE_PATH, mode='rb') as file_object:
-            self.test_key_public = Key.objects.create(
-                key_data=file_object.read()
             )
 
 
