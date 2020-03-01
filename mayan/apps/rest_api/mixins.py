@@ -151,7 +151,7 @@ class ExternalObjectListSerializerMixin(object):
 
         if model:
             queryset = model._meta.default_manager.all()
-        elif queryset:
+        elif queryset is not None:
             return queryset
         else:
             raise ImproperlyConfigured(
@@ -246,7 +246,7 @@ class ExternalObjectSerializerMixin(object):
 
         if model:
             queryset = model._meta.default_manager.all()
-        elif queryset:
+        elif queryset is not None:
             return queryset
         else:
             raise ImproperlyConfigured(
