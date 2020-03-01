@@ -15,7 +15,8 @@ from ..permissions import (
 )
 
 from .mixins import (
-    GroupAPIViewTestMixin, GroupTestMixin, UserAPIViewTestMixin
+    GroupAPIViewTestMixin, GroupTestMixin, UserGroupAPIViewTestMixin,
+    UserAPIViewTestMixin
 )
 
 
@@ -150,7 +151,167 @@ class GroupAPITestCase(
         self.assertNotEqual(self.test_group.name, group_name)
 
 
-###TODO:class GroupUserAPIViewTestCase()
+class GroupUserAPIViewTestCase(
+    UserGroupAPIViewTestMixin, GroupAPIViewTestMixin, GroupTestMixin,
+    BaseAPITestCase
+):
+    def test_group_user_add_api_view_no_permission(self):
+        self._create_test_group()
+        self._create_test_user()
+
+        group_user_count = self.test_group.user_set.count()
+
+        response = self._request_test_group_user_add_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.test_group.refresh_from_db()
+        self.assertEqual(self.test_group.user_set.count(), group_user_count)
+
+    def test_group_user_add_api_view_with_group_access(self):
+        self._create_test_group()
+        self._create_test_user()
+
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+
+        group_user_count = self.test_group.user_set.count()
+
+        response = self._request_test_group_user_add_api_view()
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.test_group.refresh_from_db()
+
+        self.assertEqual(self.test_group.user_set.count(), group_user_count)
+
+    def test_group_user_add_api_view_with_user_access(self):
+        self._create_test_group()
+        self._create_test_user()
+
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
+
+        group_user_count = self.test_group.user_set.count()
+
+        response = self._request_test_group_user_add_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.test_group.refresh_from_db()
+        self.assertEqual(self.test_group.user_set.count(), group_user_count)
+
+    def test_group_user_add_api_view_with_full_access(self):
+        self._create_test_group()
+        self._create_test_user()
+
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
+
+        group_user_count = self.test_group.user_set.count()
+
+        response = self._request_test_group_user_add_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_group.refresh_from_db()
+        self.assertEqual(self.test_group.user_set.count(), group_user_count + 1)
+
+    def test_group_user_list_no_permission(self):
+        self._create_test_user_with_test_group()
+
+        response = self._request_test_group_user_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_group_user_list_with_group_access(self):
+        self._create_test_user_with_test_group()
+
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_view
+        )
+        response = self._request_test_group_user_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 0)
+
+    def test_group_user_list_with_user_access(self):
+        self._create_test_user_with_test_group()
+
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_view
+        )
+        response = self._request_test_group_user_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_group_user_list_with_full_access(self):
+        self._create_test_user_with_test_group()
+
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_view
+        )
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_view
+        )
+        response = self._request_test_group_user_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 1)
+
+    def test_group_user_remove_api_view_no_permission(self):
+        self._create_test_user_with_test_group()
+        group_user_count = self.test_group.user_set.count()
+
+        response = self._request_test_group_user_remove_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.test_group.refresh_from_db()
+        self.assertEqual(self.test_group.user_set.count(), group_user_count)
+
+    def test_group_user_remove_api_view_with_group_access(self):
+        self._create_test_user_with_test_group()
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+
+        group_user_count = self.test_group.user_set.count()
+
+        response = self._request_test_group_user_remove_api_view()
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.test_group.refresh_from_db()
+
+        self.assertEqual(self.test_group.user_set.count(), group_user_count)
+
+    def test_group_user_remove_api_view_with_user_access(self):
+        self._create_test_user_with_test_group()
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
+
+        group_user_count = self.test_group.user_set.count()
+
+        response = self._request_test_group_user_remove_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.test_group.refresh_from_db()
+        self.assertEqual(self.test_group.user_set.count(), group_user_count)
+
+    def test_group_user_remove_api_view_with_full_access(self):
+        self._create_test_user_with_test_group()
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
+
+        group_user_count = self.test_group.user_set.count()
+
+        response = self._request_test_group_user_remove_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_group.refresh_from_db()
+        self.assertEqual(
+            self.test_group.user_set.count(), group_user_count - 1
+        )
 
 
 class UserAPIViewTestCase(UserAPIViewTestMixin, BaseAPITestCase):
@@ -352,13 +513,6 @@ class UserAPIViewTestCase(UserAPIViewTestMixin, BaseAPITestCase):
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
 
-class UserGroupAPIViewTestMixin(object):
-    def _create_test_user_with_test_group(self):
-        self._create_test_group()
-        self._create_test_user()
-        self.test_user.groups.add(self.test_group)
-
-
 class UserGroupAPIViewTestCase(
     UserGroupAPIViewTestMixin, GroupTestMixin, UserAPIViewTestMixin,
     BaseAPITestCase
@@ -465,11 +619,7 @@ class UserGroupAPIViewTestCase(
         self.assertEqual(response.data['count'], 1)
 
     def test_user_group_remove_api_view_no_permission(self):
-        self._create_test_user()
-        self._create_test_group()
-        self.test_user.groups.add(self.test_group)
-        self.test_user.save()
-
+        self._create_test_user_with_test_group()
         user_group_count = self.test_user.groups.count()
 
         response = self._request_test_user_group_remove_api_view()
@@ -479,11 +629,7 @@ class UserGroupAPIViewTestCase(
         self.assertEqual(self.test_user.groups.count(), user_group_count)
 
     def test_user_group_remove_api_view_with_user_access(self):
-        self._create_test_user()
-        self._create_test_group()
-        self.test_user.groups.add(self.test_group)
-        self.test_user.save()
-
+        self._create_test_user_with_test_group()
         self.grant_access(
             obj=self.test_user, permission=permission_user_edit
         )
@@ -497,11 +643,7 @@ class UserGroupAPIViewTestCase(
         self.assertEqual(self.test_user.groups.count(), user_group_count)
 
     def test_user_group_remove_api_view_with_group_access(self):
-        self._create_test_user()
-        self._create_test_group()
-        self.test_user.groups.add(self.test_group)
-        self.test_user.save()
-
+        self._create_test_user_with_test_group()
         self.grant_access(
             obj=self.test_group, permission=permission_group_edit
         )
@@ -515,11 +657,7 @@ class UserGroupAPIViewTestCase(
         self.assertEqual(self.test_user.groups.count(), user_group_count)
 
     def test_user_group_remove_api_view_with_full_access(self):
-        self._create_test_user()
-        self._create_test_group()
-        self.test_user.groups.add(self.test_group)
-        self.test_user.save()
-
+        self._create_test_user_with_test_group()
         self.grant_access(
             obj=self.test_user, permission=permission_user_edit
         )

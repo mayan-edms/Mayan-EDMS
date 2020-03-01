@@ -59,6 +59,31 @@ class GroupAPIViewTestMixin(object):
             }
         )
 
+    def _request_test_group_user_add_api_view(self):
+        return self.post(
+            viewname='rest_api:group-user-add', kwargs={
+                'group_id': self.test_group.pk
+            }, data={
+                'user_id': self.test_user.pk
+            }
+        )
+
+    def _request_test_group_user_list_api_view(self):
+        return self.get(
+            viewname='rest_api:group-user-list', kwargs={
+                'group_id': self.test_group.pk
+            }
+        )
+
+    def _request_test_group_user_remove_api_view(self):
+        return self.post(
+            viewname='rest_api:group-user-remove', kwargs={
+                'group_id': self.test_group.pk
+            }, data={
+                'user_id': self.test_user.pk
+            }
+        )
+
 
 class GroupTestMixin(object):
     def _create_test_group(self):
@@ -207,6 +232,13 @@ class UserAPIViewTestMixin(object):
                 'user_id': self.test_user.pk
             }, data={'username': TEST_USER_USERNAME_EDITED}
         )
+
+
+class UserGroupAPIViewTestMixin(object):
+    def _create_test_user_with_test_group(self):
+        self._create_test_group()
+        self._create_test_user()
+        self.test_user.groups.add(self.test_group)
 
 
 class UserTestCaseMixin(object):
