@@ -104,7 +104,9 @@ class Template(object):
 
     def get_absolute_url(self):
         return reverse(
-            kwargs={'name': self.name}, viewname='rest_api:template-detail'
+            kwargs={
+                'template_name': self.name
+            }, viewname='rest_api:template-detail'
         )
 
     def render(self, request):
