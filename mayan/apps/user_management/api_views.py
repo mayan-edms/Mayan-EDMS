@@ -4,12 +4,12 @@ from django.contrib.auth.models import Group
 
 from rest_framework import status
 from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from drf_yasg.utils import swagger_auto_schema
 
-from mayan.apps.rest_api import generics
-from mayan.apps.rest_api.viewsets import MayanModelAPIViewSet
+from mayan.apps.rest_api import generics, viewsets
 
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
@@ -18,25 +18,25 @@ from .permissions import (
 )
 from .querysets import get_user_queryset
 from .serializers import (
-    GroupSerializer, GroupUserAddRemoveSerializer, UserSerializer,
-    UserGroupAddRemoveSerializer
+    GroupSerializer, GroupUserAddRemoveSerializer,
+    UserGroupAddRemoveSerializer, UserSerializer
 )
 
 
-class CurrentUserAPIView(generics.RetrieveUpdateDestroyAPIView):
+class CurrentUserAPIView(generics.RetrieveUpdateAPIView):
     """
-    delete: Delete the current user.
     get: Return the details of the current user.
     patch: Partially edit the current user.
     put: Edit the current user.
     """
+    permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer
 
     def get_object(self):
         return self.request.user
 
 
-class GroupAPIViewSet(MayanModelAPIViewSet):
+class GroupAPIViewSet(viewsets.MayanModelAPIViewSet):
     lookup_url_kwarg = 'group_id'
     object_permission_map = {
         'destroy': permission_group_delete,
@@ -153,7 +153,7 @@ class GroupAPIViewSet(MayanModelAPIViewSet):
         )
 
 
-class UserAPIViewSet(MayanModelAPIViewSet):
+class UserAPIViewSet(viewsets.MayanModelAPIViewSet):
     lookup_url_kwarg = 'user_id'
     object_permission_map = {
         'destroy': permission_user_delete,

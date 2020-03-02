@@ -15,7 +15,24 @@ class MayanCreateDestroyListRetrieveAPIViewSet(
     permission_classes = (MayanViewSetPermission,)
 
 
+class MayanDestroyListRetrieveUpdateAPIViewSet(
+    mixins.DestroyModelMixin, mixins.ListModelMixin,
+    mixins.RetrieveModelMixin, mixins.UpdateModelMixin,
+    viewsets.GenericViewSet
+):
+    filter_backends = (MayanViewSetObjectPermissionsFilter,)
+    permission_classes = (MayanViewSetPermission,)
+
+
 class MayanGenericAPIViewSet(SuccessHeadersMixin, viewsets.GenericViewSet):
+    filter_backends = (MayanViewSetObjectPermissionsFilter,)
+    permission_classes = (MayanViewSetPermission,)
+
+
+class MayanListRetrieveUpdateAPIViewSet(
+    SuccessHeadersMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin, viewsets.GenericViewSet
+):
     filter_backends = (MayanViewSetObjectPermissionsFilter,)
     permission_classes = (MayanViewSetPermission,)
 
@@ -29,22 +46,6 @@ class MayanModelAPIViewSet(
 
 class MayanReadOnlyModelAPIViewSet(
     SuccessHeadersMixin, viewsets.ReadOnlyModelViewSet
-):
-    filter_backends = (MayanViewSetObjectPermissionsFilter,)
-    permission_classes = (MayanViewSetPermission,)
-
-
-class MayanRetrieveUpdateAPIViewSet(
-    SuccessHeadersMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin,
-    mixins.UpdateModelMixin, viewsets.GenericViewSet
-):
-    filter_backends = (MayanViewSetObjectPermissionsFilter,)
-    permission_classes = (MayanViewSetPermission,)
-
-
-class MayanRetrieveUpdateDestroyAPIViewSet(
-    mixins.ListModelMixin, mixins.RetrieveModelMixin,
-    mixins.UpdateModelMixin, viewsets.GenericViewSet
 ):
     filter_backends = (MayanViewSetObjectPermissionsFilter,)
     permission_classes = (MayanViewSetPermission,)
