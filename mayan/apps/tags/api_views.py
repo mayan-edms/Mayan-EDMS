@@ -6,9 +6,7 @@ from rest_framework.response import Response
 
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.serializers import DocumentSerializer
-from mayan.apps.rest_api.viewsets import (
-    MayanGenericAPIViewSet, MayanModelAPIViewSet
-)
+from mayan.apps.rest_api import viewsets
 
 from .models import Tag
 from .permissions import (
@@ -21,7 +19,7 @@ from .serializers import (
 )
 
 
-class DocumentTagAPIViewSet(MayanGenericAPIViewSet):
+class DocumentTagAPIViewSet(viewsets.MayanGenericAPIViewSet):
     lookup_url_kwarg = 'document_id'
     object_permission_map = {
         'tag_attach': permission_tag_attach,
@@ -81,7 +79,7 @@ class DocumentTagAPIViewSet(MayanGenericAPIViewSet):
         )
 
 
-class TagAPIViewSet(MayanModelAPIViewSet):
+class TagAPIViewSet(viewsets.MayanModelAPIViewSet):
     lookup_url_kwarg = 'tag_id'
     object_permission_map = {
         'destroy': permission_tag_delete,
