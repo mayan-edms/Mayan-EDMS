@@ -2,12 +2,11 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import Group
 
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
-from drf_yasg.utils import swagger_auto_schema
 
 from mayan.apps.rest_api import generics, viewsets
 
