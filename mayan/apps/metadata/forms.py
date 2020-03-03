@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 from django import forms
 from django.core.exceptions import ValidationError
 from django.forms.formsets import formset_factory
-from django.utils.translation import string_concat, ugettext_lazy as _
+from django.utils.text import format_lazy
+from django.utils.translation import ugettext_lazy as _
 
 from .classes import MetadataLookup
 from .models import DocumentTypeMetadataType, MetadataType
@@ -164,7 +165,8 @@ DocumentMetadataRemoveFormSet = formset_factory(
 class MetadataTypeForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(MetadataTypeForm, self).__init__(*args, **kwargs)
-        self.fields['lookup'].help_text = string_concat(
+        self.fields['lookup'].help_text = format_lazy(
+            '{}{}{}',
             self.fields['lookup'].help_text,
             _(' Available template context variables: '),
             MetadataLookup.get_as_help_text()

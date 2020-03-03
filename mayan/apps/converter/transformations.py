@@ -7,7 +7,8 @@ from PIL import Image, ImageColor, ImageDraw, ImageFilter
 
 from django.utils.encoding import force_bytes, force_text
 from django.utils.six import with_metaclass
-from django.utils.translation import string_concat, ugettext_lazy as _
+from django.utils.text import format_lazy
+from django.utils.translation import ugettext_lazy as _
 
 from .layers import layer_saved_transformations
 
@@ -48,7 +49,7 @@ class BaseTransformation(with_metaclass(meta=BaseTransformationType)):
     @classmethod
     def get_label(cls):
         if cls.arguments:
-            return string_concat(cls.label, ': ', ', '.join(cls.arguments))
+            return format_lazy('{}: {}', cls.label, ', '.join(cls.arguments))
         else:
             return cls.label
 
