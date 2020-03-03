@@ -22,7 +22,7 @@ def common_calculate_title(context):
     if context.get('title'):
         title_full = context.get('title')
         title = truncatechars(
-            value=title_full, arg=setting_max_title_length.value
+            title_full, arg=setting_max_title_length.value
         )
     else:
         if context.get('delete_view'):
