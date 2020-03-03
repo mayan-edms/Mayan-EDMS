@@ -11,39 +11,6 @@ from .literals import (
 
 
 class TagAPIViewTestMixin(object):
-    def _request_test_tag_create_api_view(self):
-        return self.post(
-            viewname='rest_api:tag-list', data={
-                'label': TEST_TAG_LABEL, 'color': TEST_TAG_COLOR
-            }
-        )
-
-    def _request_test_tag_delete_api_view(self):
-        return self.delete(
-            viewname='rest_api:tag-detail', kwargs={'pk': self.test_tag.pk}
-        )
-
-    def _request_tag_edit_view(self, extra_data=None, verb='patch'):
-        data = {
-            'label': TEST_TAG_LABEL_EDITED,
-            'color': TEST_TAG_COLOR_EDITED
-        }
-
-        if extra_data:
-            data.update(extra_data)
-
-        return getattr(self, verb)(
-            viewname='rest_api:tag-detail', kwargs={'pk': self.test_tag.pk},
-            data=data
-        )
-
-    def _request_test_tag_document_list_api_view(self):
-        return self.get(
-            viewname='rest_api:tag-document-list', kwargs={
-                'pk': self.test_tag.pk
-            }
-        )
-
     def _request_test_document_attach_tag_api_view(self):
         return self.post(
             viewname='rest_api:document-tag-list', kwargs={
@@ -71,6 +38,47 @@ class TagAPIViewTestMixin(object):
                 'document_pk': self.test_document.pk, 'pk': self.test_tag.pk
             }
         )
+
+    def _request_test_tag_create_api_view(self):
+        return self.post(
+            viewname='rest_api:tag-list', data={
+                'label': TEST_TAG_LABEL, 'color': TEST_TAG_COLOR
+            }
+        )
+
+    def _request_test_tag_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:tag-detail', kwargs={'pk': self.test_tag.pk}
+        )
+
+    def _request_test_tag_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:tag-detail', kwargs={'pk': self.test_tag.pk}
+        )
+
+    def _request_test_tag_document_list_api_view(self):
+        return self.get(
+            viewname='rest_api:tag-document-list', kwargs={
+                'pk': self.test_tag.pk
+            }
+        )
+
+    def _request_test_tag_edit_view(self, extra_data=None, verb='patch'):
+        data = {
+            'label': TEST_TAG_LABEL_EDITED,
+            'color': TEST_TAG_COLOR_EDITED
+        }
+
+        if extra_data:
+            data.update(extra_data)
+
+        return getattr(self, verb)(
+            viewname='rest_api:tag-detail', kwargs={'pk': self.test_tag.pk},
+            data=data
+        )
+
+    def _request_test_tag_list_api_view(self):
+        return self.get(viewname='rest_api:tag-list')
 
 
 class TagTestMixin(object):

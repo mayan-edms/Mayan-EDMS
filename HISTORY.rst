@@ -5,6 +5,7 @@
   This command is slow on non native block storage backends.
 - Remove Wiki links from README files. GitLab Merge request !78.
   Thanks Steffen Raisin (@zintor) for the merge request.
+- Add more API tests to the Tags app.
 
 3.3.14 (2020-02-23)
 ===================

@@ -58,13 +58,30 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
 
         self.assertEqual(Tag.objects.count(), tag_count - 1)
 
+    def test_tag_detail_api_view_no_permission(self):
+        self._create_test_tag()
+
+        response = self._request_test_tag_detail_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_tag_detail_view_api_with_access(self):
+        self._create_test_tag()
+        self.grant_access(
+            obj=self.test_tag, permission=permission_tag_view
+        )
+
+        response = self._request_test_tag_detail_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(response.data['label'], self.test_tag.label)
+
     def test_tag_edit_via_patch_no_access(self):
         self._create_test_tag()
 
         tag_label = self.test_tag.label
         tag_color = self.test_tag.color
 
-        response = self._request_tag_edit_view(verb='patch')
+        response = self._request_test_tag_edit_view(verb='patch')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_tag.refresh_from_db()
@@ -79,7 +96,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         tag_label = self.test_tag.label
         tag_color = self.test_tag.color
 
-        response = self._request_tag_edit_view(verb='patch')
+        response = self._request_test_tag_edit_view(verb='patch')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_tag.refresh_from_db()
@@ -92,7 +109,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         tag_label = self.test_tag.label
         tag_color = self.test_tag.color
 
-        response = self._request_tag_edit_view(verb='put')
+        response = self._request_test_tag_edit_view(verb='put')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_tag.refresh_from_db()
@@ -107,12 +124,31 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         tag_label = self.test_tag.label
         tag_color = self.test_tag.color
 
-        response = self._request_tag_edit_view(verb='put')
+        response = self._request_test_tag_edit_view(verb='put')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_tag.refresh_from_db()
         self.assertNotEqual(self.test_tag.label, tag_label)
         self.assertNotEqual(self.test_tag.color, tag_color)
+
+    def test_tag_list_api_view_no_permission(self):
+        self._create_test_tag()
+        response = self._request_test_tag_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 0)
+
+    def test_tag_list_api_view_with_access(self):
+        self._create_test_tag()
+        self.grant_access(
+            obj=self.test_tag, permission=permission_tag_view
+        )
+
+        response = self._request_test_tag_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.data['results'][0]['label'],
+            self.test_tag.label
+        )
 
 
 class TagDocumentAPIViewTestCase(
