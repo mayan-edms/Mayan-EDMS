@@ -1,3 +1,7 @@
+3.4 (2020-XX-XX)
+================
+- Update Django to version 2.2.10
+
 3.3.15 (2020-XX-XX)
 ===================
 - Add Docker environment setting ``MAYAN_SKIP_CHOWN_ON_STARTUP`` to skip
