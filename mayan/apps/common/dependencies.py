@@ -186,7 +186,7 @@ PythonDependency(
     ''', module=__name__, name='django-qsstats-magic', version_string='==1.0.0'
 )
 PythonDependency(
-    module=__name__, name='django-stronghold', version_string='==0.3.0'
+    module=__name__, name='django-stronghold', version_string='==0.4.0'
 )
 PythonDependency(
     copyright_text='''
