@@ -104,7 +104,7 @@ def resolve_attribute(attribute, obj, kwargs=None):
                 try:
                     # Try it as a method
                     return result(**kwargs)
-                except TypeError:
+                except (TypeError, ValueError):
                     # Try it as a property
                     return result
             except AttributeError:
