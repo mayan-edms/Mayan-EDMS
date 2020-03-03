@@ -14,7 +14,8 @@ class Migration(migrations.Migration):
             model_name='documentcheckout',
             name='document',
             field=models.OneToOneField(
-                verbose_name='Document', to='documents.Document'
+                on_delete=models.CASCADE, to='documents.Document',
+                verbose_name='Document'
             ),
         ),
     ]

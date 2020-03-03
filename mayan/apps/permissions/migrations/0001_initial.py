@@ -22,6 +22,7 @@ class Migration(migrations.Migration):
                 ('holder_id', models.PositiveIntegerField()),
                 (
                     'holder_type', models.ForeignKey(
+                        on_delete=models.CASCADE,
                         related_name='permission_holder',
                         to='contenttypes.ContentType'
                     )
@@ -68,13 +69,14 @@ class Migration(migrations.Migration):
                 ('member_id', models.PositiveIntegerField()),
                 (
                     'member_type', models.ForeignKey(
-                        related_name='role_member',
+                        on_delete=models.CASCADE, related_name='role_member',
                         to='contenttypes.ContentType'
                     )
                 ),
                 (
                     'role', models.ForeignKey(
-                        verbose_name='Role', to='permissions.Role'
+                        on_delete=models.CASCADE, to='permissions.Role',
+                        verbose_name='Role'
                     )
                 ),
             ],
@@ -115,7 +117,8 @@ class Migration(migrations.Migration):
             model_name='permissionholder',
             name='permission',
             field=models.ForeignKey(
-                verbose_name='Permission', to='permissions.StoredPermission'
+                on_delete=models.CASCADE, to='permissions.StoredPermission',
+                verbose_name='Permission'
             ),
             preserve_default=True,
         ),

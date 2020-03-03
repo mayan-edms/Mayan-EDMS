@@ -154,14 +154,15 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'index', models.ForeignKey(
-                        related_name='node_templates', verbose_name='Index',
-                        to='document_indexing.Index'
+                        on_delete=models.CASCADE,
+                        related_name='node_templates',
+                        to='document_indexing.Index', verbose_name='Index'
                     )
                 ),
                 (
                     'parent', mptt.fields.TreeForeignKey(
-                        blank=True, to='document_indexing.IndexTemplateNode',
-                        null=True
+                        blank=True, null=True, on_delete=models.CASCADE,
+                        to='document_indexing.IndexTemplateNode'
                     )
                 ),
             ],
@@ -175,9 +176,9 @@ class Migration(migrations.Migration):
             model_name='indexinstancenode',
             name='index_template_node',
             field=models.ForeignKey(
-                related_name='node_instance',
-                verbose_name='Index template node',
-                to='document_indexing.IndexTemplateNode'
+                on_delete=models.CASCADE, related_name='node_instance',
+                to='document_indexing.IndexTemplateNode',
+                verbose_name='Index template node'
             ),
             preserve_default=True,
         ),
@@ -185,8 +186,8 @@ class Migration(migrations.Migration):
             model_name='indexinstancenode',
             name='parent',
             field=mptt.fields.TreeForeignKey(
-                blank=True, to='document_indexing.IndexInstanceNode',
-                null=True
+                blank=True, null=True, on_delete=models.CASCADE,
+                to='document_indexing.IndexInstanceNode'
             ),
             preserve_default=True,
         ),

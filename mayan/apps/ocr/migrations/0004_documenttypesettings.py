@@ -46,9 +46,10 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'document_type', models.OneToOneField(
+                        on_delete=models.CASCADE,
                         related_name='ocr_settings',
-                        verbose_name='Document type',
-                        to='documents.DocumentType'
+                        to='documents.DocumentType',
+                        verbose_name='Document type'
                     )
                 ),
             ],

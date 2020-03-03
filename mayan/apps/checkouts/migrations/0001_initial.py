@@ -51,14 +51,15 @@ class Migration(migrations.Migration):
                 (
                     'document',
                     models.ForeignKey(
-                        verbose_name='Document', to='documents.Document',
-                        unique=True
+                        on_delete=models.CASCADE, to='documents.Document',
+                        unique=True, verbose_name='Document'
                     )
                 ),
                 (
                     'user_content_type',
                     models.ForeignKey(
-                        blank=True, to='contenttypes.ContentType', null=True
+                        blank=True, null=True, on_delete=models.CASCADE,
+                        to='contenttypes.ContentType'
                     )
                 ),
             ],

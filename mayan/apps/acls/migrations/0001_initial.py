@@ -26,18 +26,21 @@ class Migration(migrations.Migration):
                 ('object_id', models.PositiveIntegerField()),
                 (
                     'content_type', models.ForeignKey(
+                        on_delete=models.CASCADE,
                         related_name='object_content_type',
                         to='contenttypes.ContentType'
                     )
                 ),
                 (
                     'holder_type', models.ForeignKey(
+                        on_delete=models.CASCADE,
                         related_name='access_holder',
                         to='contenttypes.ContentType'
                     )
                 ),
                 (
                     'permission', models.ForeignKey(
+                        on_delete=models.CASCADE,
                         verbose_name='Permission',
                         to='permissions.StoredPermission'
                     )
@@ -77,18 +80,21 @@ class Migration(migrations.Migration):
                 ('holder_id', models.PositiveIntegerField()),
                 (
                     'content_type', models.ForeignKey(
+                        on_delete=models.CASCADE,
                         related_name='default_access_entry_class',
                         to='contenttypes.ContentType'
                     )
                 ),
                 (
                     'holder_type', models.ForeignKey(
+                        on_delete=models.CASCADE,
                         related_name='default_access_entry_holder',
                         to='contenttypes.ContentType'
                     )
                 ),
                 (
                     'permission', models.ForeignKey(
+                        on_delete=models.CASCADE,
                         verbose_name='Permission',
                         to='permissions.StoredPermission'
                     )

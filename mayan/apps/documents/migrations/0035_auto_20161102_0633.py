@@ -46,8 +46,8 @@ class Migration(migrations.Migration):
             model_name='documentpagecachedimage',
             name='document_page',
             field=models.ForeignKey(
-                related_name='cached_images', verbose_name='Document page',
-                to='documents.DocumentPage'
+                on_delete=models.CASCADE, related_name='cached_images',
+                to='documents.DocumentPage', verbose_name='Document page'
             ),
         ),
     ]

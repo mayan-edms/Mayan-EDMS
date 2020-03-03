@@ -51,14 +51,15 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'document', models.ForeignKey(
-                        related_name='workflows', verbose_name='Document',
-                        to='documents.Document'
+                        on_delete=models.CASCADE, related_name='workflows',
+                        to='documents.Document', verbose_name='Document'
                     )
                 ),
                 (
                     'workflow', models.ForeignKey(
-                        related_name='instances', verbose_name='Workflow',
-                        to='document_states.Workflow'
+                        on_delete=models.CASCADE, related_name='instances',
+                        to='document_states.Workflow',
+                        verbose_name='Workflow'
                     )
                 ),
             ],
@@ -119,8 +120,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'workflow', models.ForeignKey(
-                        related_name='states', verbose_name='Workflow',
-                        to='document_states.Workflow'
+                        on_delete=models.CASCADE, related_name='states',
+                        to='document_states.Workflow',
+                        verbose_name='Workflow'
                     )
                 ),
             ],
@@ -146,22 +148,25 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'destination_state', models.ForeignKey(
+                        on_delete=models.CASCADE,
                         related_name='destination_transitions',
-                        verbose_name='Destination state',
-                        to='document_states.WorkflowState'
+                        to='document_states.WorkflowState',
+                        verbose_name='Destination state'
                     )
                 ),
                 (
                     'origin_state', models.ForeignKey(
+                        on_delete=models.CASCADE,
                         related_name='origin_transitions',
-                        verbose_name='Origin state',
-                        to='document_states.WorkflowState'
+                        to='document_states.WorkflowState',
+                        verbose_name='Origin state'
                     )
                 ),
                 (
                     'workflow', models.ForeignKey(
-                        related_name='transitions', verbose_name='Workflow',
-                        to='document_states.Workflow'
+                        on_delete=models.CASCADE, related_name='transitions',
+                        to='document_states.Workflow',
+                        verbose_name='Workflow'
                     )
                 ),
             ],
@@ -185,8 +190,9 @@ class Migration(migrations.Migration):
             model_name='workflowinstancelogentry',
             name='transition',
             field=models.ForeignKey(
-                verbose_name='Transition',
-                to='document_states.WorkflowTransition'
+                on_delete=models.CASCADE,
+                to='document_states.WorkflowTransition',
+                verbose_name='Transition'
             ),
             preserve_default=True,
         ),
@@ -194,7 +200,8 @@ class Migration(migrations.Migration):
             model_name='workflowinstancelogentry',
             name='user',
             field=models.ForeignKey(
-                verbose_name='User', to=settings.AUTH_USER_MODEL
+                on_delete=models.CASCADE, to=settings.AUTH_USER_MODEL,
+                verbose_name='User'
             ),
             preserve_default=True,
         ),
@@ -202,8 +209,9 @@ class Migration(migrations.Migration):
             model_name='workflowinstancelogentry',
             name='workflow_instance',
             field=models.ForeignKey(
-                related_name='log_entries', verbose_name='Workflow instance',
-                to='document_states.WorkflowInstance'
+                on_delete=models.CASCADE, related_name='log_entries',
+                to='document_states.WorkflowInstance',
+                verbose_name='Workflow instance'
             ),
             preserve_default=True,
         ),

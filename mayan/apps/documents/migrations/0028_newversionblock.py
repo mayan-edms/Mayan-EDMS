@@ -21,7 +21,8 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'document', models.ForeignKey(
-                        verbose_name='Document', to='documents.Document'
+                        on_delete=models.CASCADE, to='documents.Document',
+                        verbose_name='Document'
                     )
                 ),
             ],

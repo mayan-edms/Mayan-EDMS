@@ -47,7 +47,10 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'content_type',
-                    models.ForeignKey(to='contenttypes.ContentType')
+                    models.ForeignKey(
+                        on_delete=models.CASCADE,
+                        to='contenttypes.ContentType'
+                    )
                 ),
             ],
             options={
