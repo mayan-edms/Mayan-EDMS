@@ -2,6 +2,8 @@
 ================
 - Update Django to version 2.2.10.
 - Update Django stronghold to version 0.4.0.
+- The ``runserver`` make file target now runs the command with
+  ``--nothreading`` to work around issues serving static files in development.
 
 3.3.15 (2020-XX-XX)
 ===================
