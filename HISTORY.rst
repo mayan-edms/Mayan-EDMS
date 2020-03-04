@@ -6,6 +6,8 @@
 - Remove Wiki links from README files. GitLab Merge request !78.
   Thanks Steffen Raisin (@zintor) for the merge request.
 - Add more API tests to the Tags app.
+- Expose Django settings: ``SECURE_PROXY_SSL_HEADER``,
+  ``USE_X_FORWARDED_HOST``, and ``USE_X_FORWARDED_PORT``.
 
 3.3.14 (2020-02-23)
 ===================
