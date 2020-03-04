@@ -36,7 +36,7 @@ link_document_cabinet_add = Link(
     view='cabinets:document_cabinet_add',
 )
 link_document_multiple_cabinet_add = Link(
-    icon_class_path='mayan.apps.cabinets.icons.icon_document_multiple_cabinet_remove',
+    icon_class_path='mayan.apps.cabinets.icons.icon_document_multiple_cabinet_add',
     text=_('Add to cabinets'), view='cabinets:document_multiple_cabinet_add'
 )
 link_multiple_document_cabinet_remove = Link(
