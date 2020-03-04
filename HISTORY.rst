@@ -11,6 +11,10 @@
 - Change the default of DATABASE_CONN_MAX_AGE to 0 which is the
   safest value. https://docs.djangoproject.com/en/3.0/ref/settings/#conn-max-age
 - Update default Docker Compose file.
+- Correct the icon used for multi document cabinet add action.
+  GitLab merge !79. Thanks to  Giacomo Catenazzi (@cateee).
+- Add environment variable ``MAYAN_DOCKER_WAIT`` to have the Docker image
+  wait for a host and port to become available.
 
 3.3.14 (2020-02-23)
 ===================

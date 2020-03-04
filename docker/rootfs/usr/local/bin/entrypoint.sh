@@ -43,8 +43,6 @@ update_uid_gid() {
     fi
 }
 
-update_uid_gid
-
 if [ "$MAYAN_WORKER_FAST_CONCURRENCY" -eq 0 ]; then
     MAYAN_WORKER_FAST_CONCURRENCY=
 else
@@ -122,6 +120,9 @@ set_uid_guid() {
     groupmod mayan -g ${MAYAN_USER_GID:-${DEFAULT_USER_GID}}
 }
 
+# Start execution here
+wait.sh ${MAYAN_DOCKER_WAIT}
+update_uid_gid
 os_package_installs || true
 pip_installs || true
 if [ "${MAYAN_SKIP_CHOWN_ON_STARTUP}" = "true" ]; then
