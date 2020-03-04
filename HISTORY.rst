@@ -10,6 +10,7 @@
   ``USE_X_FORWARDED_HOST``, and ``USE_X_FORWARDED_PORT``.
 - Change the default of DATABASE_CONN_MAX_AGE to 0 which is the
   safest value. https://docs.djangoproject.com/en/3.0/ref/settings/#conn-max-age
+- Update default Docker Compose file.
 
 3.3.14 (2020-02-23)
 ===================
