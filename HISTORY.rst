@@ -15,6 +15,9 @@
   GitLab merge !79. Thanks to  Giacomo Catenazzi (@cateee).
 - Add environment variable ``MAYAN_DOCKER_WAIT`` to have the Docker image
   wait for a host and port to become available.
+- Turn hard-coded constant STUB_EXPIRATION_INTERVAL into a user setting named
+  ``DOCUMENTS_STUB_EXPIRATION_INTERVAL``. Defaults to previous value of 24
+  hours to preserve existing behavior.
 
 3.3.14 (2020-02-23)
 ===================
