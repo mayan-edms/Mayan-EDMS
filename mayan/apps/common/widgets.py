@@ -107,7 +107,7 @@ class PlainWidget(forms.widgets.Widget):
     Class to define a form widget that effectively nulls the htmls of a
     widget and reduces the output to only it's value
     """
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         return mark_safe(s='%s' % value)
 
 
