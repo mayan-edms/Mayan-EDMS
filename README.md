@@ -5,6 +5,7 @@
 [![Docker pulls](https://img.shields.io/docker/pulls/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
 [![Docker Stars](https://img.shields.io/docker/stars/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
 [![Commits][commits]][commits-url]
+[![Support][support]][support-url]
 
 
 [pypi]: https://img.shields.io/pypi/v/mayan-edms.svg
@@ -25,6 +26,8 @@
 [commits]:  https://img.shields.io/github/commit-activity/y/mayan-edms/mayan-edms.svg
 [commits-url]: https://gitlab.com/mayan-edms/mayan-edms/
 
+[support]: https://img.shields.io/badge/Get_support-brightgreen
+[support-url]: https://www.mayan-edms.com/support/
 
 <div align="center">
   <a href="http://www.mayan-edms.com">

@@ -8,10 +8,10 @@ from django.test import override_settings
 from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.converter.layers import layer_saved_transformations
 
-from ..literals import STUB_EXPIRATION_INTERVAL
 from ..models import (
     DeletedDocument, Document, DocumentType, DuplicatedDocument
 )
+from ..settings import setting_stub_expiration_interval
 
 from .base import GenericDocumentTestCase
 from .literals import (
@@ -20,7 +20,6 @@ from .literals import (
     TEST_PDF_ROTATE_ALTERNATE_LABEL, TEST_SMALL_DOCUMENT_CHECKSUM,
     TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_MIMETYPE,
     TEST_SMALL_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_SIZE
-
 )
 
 
@@ -243,7 +242,7 @@ class DocumentManagerTestCase(BaseTestCase):
         self.assertEqual(Document.passthrough.count(), 1)
 
         document_stub.date_added = document_stub.date_added - timedelta(
-            seconds=STUB_EXPIRATION_INTERVAL + 1
+            seconds=setting_stub_expiration_interval.value + 1
         )
         document_stub.save()
 

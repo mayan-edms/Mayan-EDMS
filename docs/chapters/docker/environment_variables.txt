@@ -10,10 +10,17 @@ The common set of settings can also be modified via environment variables when
 using the Docker image. In addition to the common set of settings, some Docker
 image specific environment variables are available.
 
+
+``MAYAN_DOCKER_WAIT``
+
+Optional. Make the Docker container wait for a host and port to become
+available. Multiple hosts and port combinations are supported.
+
+Example: MAYAN_DOCKER_WAIT=db:5432 redis:6379
+
 ``MAYAN_SETTINGS_MODULE``
 
 Optional. Allows loading an alternate settings file.
-
 
 ``MAYAN_GUNICORN_TIMEOUT``
 

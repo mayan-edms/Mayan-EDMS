@@ -5,7 +5,7 @@
 - The ``runserver`` make file target now runs the command with
   ``--nothreading`` to work around issues serving static files in development.
 
-3.3.15 (2020-XX-XX)
+3.3.15 (2020-03-05)
 ===================
 - Add Docker environment setting ``MAYAN_SKIP_CHOWN_ON_STARTUP`` to skip
   performing the initial chown on the media folder at `/var/lib/mayan`.
@@ -13,6 +13,18 @@
 - Remove Wiki links from README files. GitLab Merge request !78.
   Thanks Steffen Raisin (@zintor) for the merge request.
 - Add more API tests to the Tags app.
+- Expose Django settings: ``SECURE_PROXY_SSL_HEADER``,
+  ``USE_X_FORWARDED_HOST``, and ``USE_X_FORWARDED_PORT``.
+- Change the default of DATABASE_CONN_MAX_AGE to 0 which is the
+  safest value. https://docs.djangoproject.com/en/3.0/ref/settings/#conn-max-age
+- Update default Docker Compose file.
+- Correct the icon used for multi document cabinet add action.
+  GitLab merge !79. Thanks to  Giacomo Catenazzi (@cateee).
+- Add environment variable ``MAYAN_DOCKER_WAIT`` to have the Docker image
+  wait for a host and port to become available.
+- Turn hard-coded constant STUB_EXPIRATION_INTERVAL into a user setting named
+  ``DOCUMENTS_STUB_EXPIRATION_INTERVAL``. Defaults to previous value of 24
+  hours to preserve existing behavior.
 
 3.3.14 (2020-02-23)
 ===================
