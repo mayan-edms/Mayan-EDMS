@@ -1,4 +1,4 @@
-|donation| |pypi| |python| |license| |docker_pulls| |docker_stars| |commit_activity|
+|donation| |pypi| |python| |license| |docker_pulls| |docker_stars| |commit_activity| |support|
 
 
 .. image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
@@ -71,3 +71,5 @@ Important links
    :target: https://microbadger.com/images/mayanedms/mayanedms
 .. |commit_activity| image:: https://img.shields.io/github/commit-activity/y/mayan-edms/mayan-edms.svg
    :target: https://gitlab.com/mayan-edms/mayan-edms/
+.. |support| image:: https://img.shields.io/badge/Get_support-brightgreen
+   :target: https://www.mayan-edms.com/support/
