@@ -264,7 +264,9 @@ setting_django_static_url = namespace.add_setting(
     help_text=_(
         'A tuple representing a HTTP header/value combination that '
         'signifies a request is secure. This controls the behavior of the '
-        'request object’s is_secure() method.'
+        'request object’s is_secure() method. Warning: Modifying this '
+        'setting can compromise your site’s security. Ensure you fully '
+        'understand your setup before changing it.'
     ),
 )
 setting_django_static_url = namespace.add_setting(
