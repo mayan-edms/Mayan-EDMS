@@ -3,23 +3,20 @@
 {% load common_tags %}
 {% load navigation_tags %}
 
-{% if is_paginated or links_multi_menus_results %}
 <div id="list-toolbar-spacer"></div>
 <nav id="list-toolbar">
     <div class="well center-block toolbar">
-{% endif %}
-
-    {% if links_multi_menus_results %}
         <div class="pull-left">
             <div class="btn-toolbar" role="toolbar" style="margin-right: 10px;">
                 <div class="btn-group">
+                    {% if links_multi_menus_results %}
                         <a class="btn btn-default btn-sm check-all" data-checked=false data-icon-checked="fa fa-check-square" data-icon-unchecked="far fa-square" title="{% trans 'Select/Deselect all' %}">
                             <i class="far fa-square"></i>
                         </a>
+                    {% endif %}
                 </div>
             </div>
         </div>
-    {% endif %}
 
     {% if is_paginated %}
         <div class="pull-left">
@@ -88,8 +85,6 @@
         </div>
     {% endif %}
 
-{% if is_paginated or links_multi_menus_results %}
     <div class="clearfix"></div>
     </div>
 </nav>
-{% endif %}
