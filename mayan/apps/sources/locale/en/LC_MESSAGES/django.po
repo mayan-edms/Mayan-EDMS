@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:53-0400\n"
+"POT-Creation-Date: 2020-03-01 01:42-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,12 +66,12 @@ msgstr ""
 msgid "Comment"
 msgstr ""
 
-#: forms.py:42
+#: forms.py:42 serializers.py:23
 msgid "Expand compressed files"
 msgstr ""
 
-#: forms.py:44
-msgid "Upload a compressed file's contained files as individual documents"
+#: forms.py:44 serializers.py:24
+msgid "Upload a compressed file's contained files as individual documents."
 msgstr ""
 
 #: forms.py:65 views.py:504
@@ -243,7 +242,7 @@ msgstr ""
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 
-#: models/base.py:182
+#: models/base.py:182 serializers.py:19
 msgid "Document type"
 msgstr ""
 

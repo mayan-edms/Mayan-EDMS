@@ -2,26 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2019
 # Michal Švábík <snadno@lehce.cz>, 2019
-#
-#, fuzzy
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:51-0400\n"
+"POT-Creation-Date: 2020-03-01 01:40-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
-"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: admin.py:15
 msgid "Label"
@@ -117,7 +115,8 @@ msgstr "Typ dokumentu"
 
 #: models.py:56
 msgid "Automatically queue newly created documents for processing."
-msgstr "Automaticky zařazuje nově vytvořené dokumenty do fronty ke zpracování."
+msgstr ""
+"Automaticky zařazuje nově vytvořené dokumenty do fronty ke zpracování."
 
 #: models.py:63
 msgid "Document type settings"
@@ -197,8 +196,8 @@ msgstr "Argumenty k předání ovladačům."
 
 #: views.py:35
 msgid ""
-"File metadata are the attributes of the document's file. They can range from "
-"camera information used to take a photo to the author that created a file. "
+"File metadata are the attributes of the document's file. They can range from"
+" camera information used to take a photo to the author that created a file. "
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
@@ -206,8 +205,8 @@ msgstr ""
 "Metadata souboru jsou atributy souboru dokumentu. Mohou se pohybovat od "
 "informací o fotoaparátu používaných k pořízení fotografie až po autora, "
 "který vytvořil soubor. Metadata souboru se nastavují při prvním vytvoření "
-"souboru dokumentu. Atributy metadat souboru se nacházejí v samotném souboru. "
-"Nejsou stejné jako metadata dokumentu, která jsou definována uživatelem a "
+"souboru dokumentu. Atributy metadat souboru se nacházejí v samotném souboru."
+" Nejsou stejné jako metadata dokumentu, která jsou definována uživatelem a "
 "jsou umístěna v databázi."
 
 #: views.py:43 views.py:62

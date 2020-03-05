@@ -1,0 +1,204 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-01 01:37-0400\n"
+"PO-Revision-Date: 2020-02-14 02:17+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: apps.py:24 links.py:44
+msgid "ACLs"
+msgstr "ACLs"
+
+#: events.py:8 permissions.py:7
+msgid "Access control lists"
+msgstr "Liste kontrole pristupa (ACLs)"
+
+#: events.py:12
+msgid "ACL created"
+msgstr ""
+
+#: events.py:15
+msgid "ACL edited"
+msgstr ""
+
+#: forms.py:15 models.py:48
+msgid "Role"
+msgstr "Uloga"
+
+#: links.py:34
+msgid "New ACL"
+msgstr "Novi ACL"
+
+#: links.py:39
+msgid "Delete"
+msgstr "Obriši"
+
+#: links.py:49 models.py:44 workflow_actions.py:48 workflow_actions.py:163
+msgid "Permissions"
+msgstr "Dozvole"
+
+#: managers.py:231
+#, python-format
+msgid "Object \"%s\" is not a model and cannot be checked for access."
+msgstr ""
+
+#: managers.py:252
+#, python-format
+msgid "Insufficient access for: %s"
+msgstr "Nedovoljan pristup za:%s"
+
+#: models.py:56
+msgid "Access entry"
+msgstr "Pristupni unos"
+
+#: models.py:57
+msgid "Access entries"
+msgstr "Pristupni unosi"
+
+#: models.py:61
+#, python-format
+msgid "Role \"%(role)s\" permission's for \"%(object)s\""
+msgstr "Uloga \"%(role)s\" dozvole za \"%(object)s\""
+
+#: permissions.py:10
+msgid "Edit ACLs"
+msgstr "Izmjeniti ACLs"
+
+#: permissions.py:13
+msgid "View ACLs"
+msgstr "Pregledati ACLs"
+
+#: serializers.py:26 serializers.py:136
+msgid ""
+"API URL pointing to the list of permissions for this access control list."
+msgstr "API URL ukazujući na listu dozvola za ovu listu kontrole pristupa."
+
+#: serializers.py:59
+msgid ""
+"API URL pointing to a permission in relation to the access control list to "
+"which it is attached. This URL is different than the canonical workflow URL."
+msgstr "URL API koji ukazuje na dozvolu u vezi sa listom kontrole pristupa kojoj je priložena. Ova URL adresa se razlikuje od kanonskog URL-a za radni tok."
+
+#: serializers.py:91
+msgid "Primary key of the new permission to grant to the access control list."
+msgstr "Primarni ključ za novu dozvolu za dodjelu listi kontrole pristupa."
+
+#: serializers.py:115 serializers.py:191
+#, python-format
+msgid "No such permission: %s"
+msgstr "Nema takve dozvole: %s"
+
+#: serializers.py:130
+msgid ""
+"Comma separated list of permission primary keys to grant to this access "
+"control list."
+msgstr "Lista odvojenih primarnih ključeva za razdvajanje sa komandom dodeljuje se ovoj listi kontrola pristupa."
+
+#: serializers.py:142
+msgid "Primary keys of the role to which this access control list binds to."
+msgstr "Primarni ključevi uloge na koje se ova lista kontrole pristupa vezuje."
+
+#: views.py:62
+#, python-format
+msgid "New access control lists for: %s"
+msgstr "Nove kontrole pristupa za:%s"
+
+#: views.py:100
+#, python-format
+msgid "Delete ACL: %s"
+msgstr "Obriši ACL:%s"
+
+#: views.py:147
+msgid "There are no ACLs for this object"
+msgstr ""
+
+#: views.py:150
+msgid ""
+"ACL stands for Access Control List and is a precise method  to control user "
+"access to objects in the system."
+msgstr ""
+
+#: views.py:154
+#, python-format
+msgid "Access control lists for: %s"
+msgstr "Liste kontrole pristupa (ACL) za: %s"
+
+#: views.py:170
+msgid "Granted permissions"
+msgstr "Dodjeljene dozvole"
+
+#: views.py:171
+msgid "Available permissions"
+msgstr "Dostupne dozvole"
+
+#: views.py:215
+#, python-format
+msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
+msgstr ""
+
+#: views.py:224
+msgid ""
+"Disabled permissions are inherited from a parent object or directly granted "
+"to the role and can't be removed from this view. Inherited permissions need "
+"to be removed from the parent object's ACL or from them role via the Setup "
+"menu."
+msgstr ""
+
+#: workflow_actions.py:25
+msgid "Object type"
+msgstr "Tip objekta"
+
+#: workflow_actions.py:28
+msgid "Type of the object for which the access will be modified."
+msgstr "Tip objekta za koji će se pristup mijenjati."
+
+#: workflow_actions.py:34
+msgid "Object ID"
+msgstr "ID objekta"
+
+#: workflow_actions.py:37
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
+msgstr "Numerički identifikator objekta za koji će se pristup mijenjati."
+
+#: workflow_actions.py:42 workflow_actions.py:157
+msgid "Roles"
+msgstr "Role"
+
+#: workflow_actions.py:44 workflow_actions.py:159
+msgid "Roles whose access will be modified."
+msgstr "Uloge čiji će pristup biti modifikovan."
+
+#: workflow_actions.py:51 workflow_actions.py:166
+msgid ""
+"Permissions to grant/revoke to/from the role for the object selected above."
+msgstr "Dozvole za dodeljivanje / poništavanje / od uloge za gore izabrani objekat."
+
+#: workflow_actions.py:59
+msgid "Grant object access"
+msgstr ""
+
+#: workflow_actions.py:142
+msgid "Revoke object access"
+msgstr ""
+
+#: workflow_actions.py:174
+msgid "Grant document access"
+msgstr ""
+
+#: workflow_actions.py:213
+msgid "Revoke document access"
+msgstr ""

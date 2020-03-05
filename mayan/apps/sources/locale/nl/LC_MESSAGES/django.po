@@ -1,0 +1,789 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# Lucas Weel <ljj.weel@gmail.com>, 2012
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-01 01:42-0400\n"
+"PO-Revision-Date: 2020-02-23 06:19+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:44 links.py:54 models/base.py:40 queues.py:9 settings.py:13
+#: views.py:649
+msgid "Sources"
+msgstr "Bronnen"
+
+#: apps.py:62
+msgid "Create a document source"
+msgstr "Maak een documentbron aan"
+
+#: apps.py:64
+msgid ""
+"Document sources are the way in which new documents are feed to Mayan EDMS, "
+"create at least a web form source to be able to upload documents from a "
+"browser."
+msgstr ""
+
+#: apps.py:77
+msgid "Type"
+msgstr "Type"
+
+#: apps.py:86
+msgid "Created"
+msgstr "Aangemaakt"
+
+#: apps.py:93
+msgid "Thumbnail"
+msgstr "Thumbnail"
+
+#: apps.py:101 models/base.py:250
+msgid "Date time"
+msgstr "Datum en tijd"
+
+#: apps.py:106 models/base.py:253
+msgid "Message"
+msgstr "Bericht"
+
+#: dependencies.py:13
+msgid ""
+"Utility provided by the SANE package. Used to control the scanner and "
+"obtained the scanned document image."
+msgstr ""
+
+#: forms.py:27
+msgid "An optional comment to explain the upload."
+msgstr ""
+
+#: forms.py:28
+msgid "Comment"
+msgstr "Commentaar"
+
+#: forms.py:42 serializers.py:23
+msgid "Expand compressed files"
+msgstr "Uitpakken gecomprimeerde bestanden"
+
+#: forms.py:44 serializers.py:24
+msgid "Upload a compressed file's contained files as individual documents."
+msgstr ""
+
+#: forms.py:65 views.py:504
+msgid "Staging file"
+msgstr "Tijdelijk bestand"
+
+#: forms.py:69 forms.py:74
+msgid "File"
+msgstr "Bestand"
+
+#: handlers.py:27
+msgid "Default"
+msgstr "Verstekwaarde"
+
+#: links.py:49
+msgid "New document"
+msgstr "Nieuw document"
+
+#: links.py:61
+msgid "Add new IMAP email"
+msgstr "Voeg nieuwe IMAP-email toe."
+
+#: links.py:67
+msgid "Add new POP3 email"
+msgstr ""
+
+#: links.py:73
+msgid "Add new staging folder"
+msgstr ""
+
+#: links.py:79
+msgid "Add new watch folder"
+msgstr ""
+
+#: links.py:85
+msgid "Add new webform source"
+msgstr ""
+
+#: links.py:91
+msgid "Add new SANE scanner"
+msgstr ""
+
+#: links.py:97 links.py:114
+msgid "Delete"
+msgstr "Verwijder"
+
+#: links.py:102
+msgid "Edit"
+msgstr "bewerken"
+
+#: links.py:107
+msgid "Document sources"
+msgstr "Documentbronnen"
+
+#: links.py:120
+msgid "Upload new version"
+msgstr "Nieuwe versie uploaden"
+
+#: links.py:124
+msgid "Logs"
+msgstr "Logs"
+
+#: links.py:130
+msgid "Check now"
+msgstr ""
+
+#: literals.py:18
+msgid "Flatbed"
+msgstr ""
+
+#: literals.py:19
+msgid "Document feeder"
+msgstr ""
+
+#: literals.py:26
+msgid "Simplex"
+msgstr ""
+
+#: literals.py:27
+msgid "Duplex"
+msgstr ""
+
+#: literals.py:35
+msgid "Lineart"
+msgstr ""
+
+#: literals.py:36
+msgid "Monochrome"
+msgstr ""
+
+#: literals.py:37
+msgid "Color"
+msgstr "Kleur"
+
+#: literals.py:45 literals.py:50
+msgid "Always"
+msgstr "Altijd"
+
+#: literals.py:46 literals.py:51
+msgid "Never"
+msgstr "Nooit"
+
+#: literals.py:52
+msgid "Ask user"
+msgstr "Vraag gebruiker"
+
+#: literals.py:63
+msgid "Scanner"
+msgstr ""
+
+#: literals.py:64 models/webform_sources.py:42
+msgid "Web form"
+msgstr "Webformulier"
+
+#: literals.py:65 models/staging_folder_sources.py:69
+msgid "Staging folder"
+msgstr ""
+
+#: literals.py:66 models/watch_folder_sources.py:48
+msgid "Watch folder"
+msgstr ""
+
+#: literals.py:67
+msgid "POP3 email"
+msgstr "POP3 e-mail"
+
+#: literals.py:68 models/email_sources.py:251 models/email_sources.py:252
+msgid "IMAP email"
+msgstr "IMAP e-mail"
+
+#: models/base.py:30
+msgid "A short text to describe this source."
+msgstr ""
+
+#: models/base.py:31
+msgid "Label"
+msgstr "Label"
+
+#: models/base.py:33
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: models/base.py:39 models/base.py:247
+msgid "Source"
+msgstr "BronB"
+
+#: models/base.py:158
+msgid "Interactive source"
+msgstr "Interactieve bro"
+
+#: models/base.py:159
+msgid "Interactive sources"
+msgstr "Interactieve bronnen"
+
+#: models/base.py:168 models/base.py:169
+msgid "Out of process"
+msgstr ""
+
+#: models/base.py:175
+msgid "Interval in seconds between checks for new documents."
+msgstr ""
+
+#: models/base.py:176
+msgid "Interval"
+msgstr ""
+
+#: models/base.py:180
+msgid "Assign a document type to documents uploaded from this source."
+msgstr "Wijs een documentsoort toe voor documenten die worden geüpload van deze bron."
+
+#: models/base.py:182 serializers.py:19
+msgid "Document type"
+msgstr "Documentsoort"
+
+#: models/base.py:186
+msgid "Whether to expand or not, compressed archives."
+msgstr "Al of niet uitpakken van gecomprimeerde archieven."
+
+#: models/base.py:187 models/staging_folder_sources.py:56
+#: models/webform_sources.py:36
+msgid "Uncompress"
+msgstr "Uitpakken"
+
+#: models/base.py:193
+msgid "Interval source"
+msgstr ""
+
+#: models/base.py:194
+msgid "Interval sources"
+msgstr ""
+
+#: models/base.py:259
+msgid "Log entry"
+msgstr "Loginvoer"
+
+#: models/base.py:260
+msgid "Log entries"
+msgstr "Loginvoer"
+
+#: models/email_sources.py:42
+msgid "Host"
+msgstr ""
+
+#: models/email_sources.py:43
+msgid "SSL"
+msgstr "SSL"
+
+#: models/email_sources.py:45
+msgid ""
+"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
+"for IMAP over SSL."
+msgstr ""
+
+#: models/email_sources.py:46
+msgid "Port"
+msgstr ""
+
+#: models/email_sources.py:48
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: models/email_sources.py:49
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: models/email_sources.py:53
+msgid ""
+"Name of the attachment that will contains the metadata type names and value "
+"pairs to be assigned to the rest of the downloaded attachments."
+msgstr ""
+
+#: models/email_sources.py:56
+msgid "Metadata attachment name"
+msgstr ""
+
+#: models/email_sources.py:60
+msgid ""
+"Select a metadata type to store the email's subject value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
+
+#: models/email_sources.py:64
+msgid "Subject metadata type"
+msgstr ""
+
+#: models/email_sources.py:68
+msgid ""
+"Select a metadata type to store the email's \"from\" value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
+
+#: models/email_sources.py:72
+msgid "From metadata type"
+msgstr ""
+
+#: models/email_sources.py:76
+msgid "Store the body of the email as a text document."
+msgstr ""
+
+#: models/email_sources.py:77
+msgid "Store email body"
+msgstr ""
+
+#: models/email_sources.py:83
+msgid "Email source"
+msgstr ""
+
+#: models/email_sources.py:84
+msgid "Email sources"
+msgstr ""
+
+#: models/email_sources.py:189
+#, python-format
+msgid ""
+"Subject metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+
+#: models/email_sources.py:203
+#, python-format
+msgid ""
+"\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+
+#: models/email_sources.py:218
+msgid "IMAP Mailbox from which to check for messages."
+msgstr ""
+
+#: models/email_sources.py:219
+msgid "Mailbox"
+msgstr ""
+
+#: models/email_sources.py:223
+msgid ""
+"Criteria to use when searching for messages to process. Use the format "
+"specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
+msgstr ""
+
+#: models/email_sources.py:226
+msgid "Search criteria"
+msgstr ""
+
+#: models/email_sources.py:230
+msgid ""
+"IMAP STORE command to execute on messages after they are processed. One "
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
+msgstr ""
+
+#: models/email_sources.py:234
+msgid "Store commands"
+msgstr ""
+
+#: models/email_sources.py:238
+msgid "Execute the IMAP expunge command after processing each email message."
+msgstr ""
+
+#: models/email_sources.py:240
+msgid "Execute expunge"
+msgstr ""
+
+#: models/email_sources.py:244
+msgid "IMAP Mailbox to which processed messages will be copied."
+msgstr ""
+
+#: models/email_sources.py:245
+msgid "Destination mailbox"
+msgstr ""
+
+#: models/email_sources.py:352
+msgid "Timeout"
+msgstr "Timeout"
+
+#: models/email_sources.py:358 models/email_sources.py:359
+msgid "POP email"
+msgstr "POP e-mail"
+
+#: models/scanner_sources.py:33
+msgid "Device name as returned by the SANE backend."
+msgstr ""
+
+#: models/scanner_sources.py:34
+msgid "Device name"
+msgstr ""
+
+#: models/scanner_sources.py:39
+msgid ""
+"Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
+"is not supported by your scanner, leave it blank."
+msgstr ""
+
+#: models/scanner_sources.py:41
+msgid "Mode"
+msgstr ""
+
+#: models/scanner_sources.py:45
+msgid ""
+"Sets the resolution of the scanned image in DPI (dots per inch). Typical "
+"value is 200. If this option is not supported by your scanner, leave it "
+"blank."
+msgstr ""
+
+#: models/scanner_sources.py:48
+msgid "Resolution"
+msgstr ""
+
+#: models/scanner_sources.py:52
+msgid ""
+"Selects the scan source (such as a document-feeder). If this option is not "
+"supported by your scanner, leave it blank."
+msgstr ""
+
+#: models/scanner_sources.py:54
+msgid "Paper source"
+msgstr ""
+
+#: models/scanner_sources.py:59
+msgid ""
+"Selects the document feeder mode (simplex/duplex). If this option is not "
+"supported by your scanner, leave it blank."
+msgstr ""
+
+#: models/scanner_sources.py:61
+msgid "ADF mode"
+msgstr ""
+
+#: models/scanner_sources.py:67
+msgid "SANE Scanner"
+msgstr ""
+
+#: models/scanner_sources.py:68
+msgid "SANE Scanners"
+msgstr ""
+
+#: models/scanner_sources.py:97
+#, python-format
+msgid ""
+"Error while executing scanning command \"%(command_line)s\"; "
+"%(error_message)s"
+msgstr ""
+
+#: models/staging_folder_sources.py:41
+msgid "Server side filesystem path."
+msgstr "pad naar filesysteem server"
+
+#: models/staging_folder_sources.py:42 models/watch_folder_sources.py:35
+msgid "Folder path"
+msgstr "Mappad"
+
+#: models/staging_folder_sources.py:45
+msgid "Width value to be passed to the converter backend."
+msgstr "Breedte waarde die moet worden doorgegeven aan de converter backend."
+
+#: models/staging_folder_sources.py:46
+msgid "Preview width"
+msgstr ""
+
+#: models/staging_folder_sources.py:50
+msgid "Height value to be passed to the converter backend."
+msgstr "Hoogte waarde die moet worden doorgegeven aan de converter backend."
+
+#: models/staging_folder_sources.py:51
+msgid "Preview height"
+msgstr ""
+
+#: models/staging_folder_sources.py:55 models/webform_sources.py:35
+msgid "Whether to expand or not compressed archives."
+msgstr "Keuze om te expanderen of uitpakken van archief. (TODO: review this)"
+
+#: models/staging_folder_sources.py:61
+msgid "Delete the file after is has been successfully uploaded."
+msgstr "Verwijder het bestand nadat de 'upload' succesvol is voltooid."
+
+#: models/staging_folder_sources.py:63
+msgid "Delete after upload"
+msgstr ""
+
+#: models/staging_folder_sources.py:70
+msgid "Staging folders"
+msgstr ""
+
+#: models/staging_folder_sources.py:82
+#, python-format
+msgid "Error deleting staging file; %s"
+msgstr ""
+
+#: models/staging_folder_sources.py:98
+#, python-format
+msgid "Unable get list of staging files: %s"
+msgstr "Het is niet mogelijk om een lijst met tijdelijke bestanden aan te maken. Foutmelding: %s"
+
+#: models/watch_folder_sources.py:34
+msgid "Server side filesystem path to scan for files."
+msgstr ""
+
+#: models/watch_folder_sources.py:39
+msgid ""
+"If checked, not only will the folder path be scanned for files but also its "
+"subdirectories."
+msgstr ""
+
+#: models/watch_folder_sources.py:42
+msgid "Include subdirectories?"
+msgstr ""
+
+#: models/watch_folder_sources.py:49
+msgid "Watch folders"
+msgstr ""
+
+#: models/webform_sources.py:43
+msgid "Web forms"
+msgstr ""
+
+#: permissions.py:7
+msgid "Sources setup"
+msgstr "Bron instellen"
+
+#: permissions.py:10
+msgid "Create new document sources"
+msgstr "Aanmaken van een nieuwe documentbron"
+
+#: permissions.py:13
+msgid "Delete document sources"
+msgstr "Verwijder documentbronnen"
+
+#: permissions.py:16
+msgid "Edit document sources"
+msgstr "Bewerk documentbronnen"
+
+#: permissions.py:19
+msgid "View existing document sources"
+msgstr "Bekijk bestaande documentbronnen"
+
+#: permissions.py:22
+msgid "Delete staging files"
+msgstr ""
+
+#: queues.py:12
+msgid "Sources periodic"
+msgstr ""
+
+#: queues.py:16
+msgid "Sources fast"
+msgstr ""
+
+#: queues.py:21
+msgid "Generate staging file image"
+msgstr ""
+
+#: queues.py:25
+msgid "Check interval source"
+msgstr ""
+
+#: queues.py:29
+msgid "Handle upload"
+msgstr ""
+
+#: queues.py:33
+msgid "Upload document"
+msgstr ""
+
+#: settings.py:20
+msgid "File path to the scanimage program used to control image scanners."
+msgstr ""
+
+#: settings.py:27
+msgid ""
+"Path to the Storage subclass to use when storing the cached staging_file "
+"image files."
+msgstr ""
+
+#: settings.py:36
+msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
+msgstr ""
+
+#: tasks.py:46
+#, python-format
+msgid "Error processing source: %s"
+msgstr ""
+
+#: templates/sources/dropzone.html:82
+msgid "Cancel upload"
+msgstr ""
+
+#: templates/sources/dropzone.html:83
+msgid "Are you sure you want to cancel this upload?"
+msgstr ""
+
+#: templates/sources/dropzone.html:84
+msgid "Drop files or click here to upload files"
+msgstr ""
+
+#: templates/sources/dropzone.html:85
+msgid "Your browser does not support drag and drop file uploads."
+msgstr ""
+
+#: templates/sources/dropzone.html:86
+msgid "Please use the fallback form below to upload your files."
+msgstr ""
+
+#: templates/sources/dropzone.html:87
+msgid "Clear"
+msgstr ""
+
+#: templates/sources/dropzone.html:88
+msgid "Server responded with {{statusCode}} code."
+msgstr ""
+
+#: views.py:66
+msgid ""
+"Any error produced during the usage of a source will be listed here to "
+"assist in debugging."
+msgstr ""
+
+#: views.py:69
+msgid "No log entries available"
+msgstr ""
+
+#: views.py:71
+#, python-format
+msgid "Log entries for source: %s"
+msgstr ""
+
+#: views.py:126 wizards.py:154
+msgid ""
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr ""
+
+#: views.py:154 views.py:183 views.py:193
+msgid "Document properties"
+msgstr ""
+
+#: views.py:163
+msgid ""
+"This could mean that the staging folder is empty. It could also mean that "
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
+msgstr ""
+
+#: views.py:170
+msgid "No staging files available"
+msgstr ""
+
+#: views.py:173
+msgid "Files in staging path"
+msgstr ""
+
+#: views.py:184
+msgid "Scan"
+msgstr ""
+
+#: views.py:293
+#, python-format
+msgid ""
+"Error executing document upload task; %(exception)s, %(exception_class)s"
+msgstr ""
+
+#: views.py:304
+msgid "New document queued for upload and will be available shortly."
+msgstr ""
+
+#: views.py:355
+#, python-format
+msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
+msgstr ""
+
+#: views.py:388
+#, python-format
+msgid "Document \"%s\" is blocked from uploading new versions."
+msgstr ""
+
+#: views.py:441
+msgid "New document version queued for upload and will be available shortly."
+msgstr ""
+
+#: views.py:481
+#, python-format
+msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgstr ""
+
+#: views.py:484
+msgid "Submit"
+msgstr "Verstuur"
+
+#: views.py:505
+#, python-format
+msgid "Delete staging file \"%s\"?"
+msgstr ""
+
+#: views.py:526
+msgid ""
+"This will execute the source check code even if the source is not enabled. "
+"Sources that delete content after downloading will not do so while being "
+"tested. Check the source's error log for information during testing. A "
+"successful test will clear the error log."
+msgstr ""
+
+#: views.py:532
+#, python-format
+msgid "Trigger check for source \"%s\"?"
+msgstr ""
+
+#: views.py:549
+msgid "Source check queued."
+msgstr ""
+
+#: views.py:566
+#, python-format
+msgid "Create new source of type: %s"
+msgstr "Aanmaken van nieuw documentbron van type: %s"
+
+#: views.py:588
+#, python-format
+msgid "Delete the source: %s?"
+msgstr ""
+
+#: views.py:609
+#, python-format
+msgid "Edit source: %s"
+msgstr ""
+
+#: views.py:643
+msgid ""
+"Sources provide the means to upload documents. Some sources like the "
+"webform, are interactive and require user input to operate. Others like the "
+"email sources, are automatic and run on the background without user "
+"intervention."
+msgstr ""
+
+#: views.py:648
+msgid "No sources available"
+msgstr ""
+
+#: wizards.py:97
+msgid "Select document type"
+msgstr ""
+
+#: wizards.py:178
+#, python-format
+msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
+msgstr ""
+
+#: wizards.py:183
+msgid "Next step"
+msgstr "Volgende stap"
+
+#: wizards.py:185
+msgid "Document upload wizard"
+msgstr ""

@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:50-0400\n"
+"POT-Creation-Date: 2020-03-01 01:39-0400\n"
 "PO-Revision-Date: 2020-01-31 04:42+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:68 events.py:8 links.py:20 links.py:56 links.py:198 links.py:222
@@ -247,10 +246,7 @@ msgstr "Κατά την έξοδο"
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
-msgstr ""
-"Αυτή η τιμή θα χρησιμοποιείτε από τις άλλες εφαρμογές σαν αναφορά γι' αυτή "
-"την ροή εργασίας. Χρησιμοποιήστε μόνο γράμματα,αριθμούς και τον χαρακτήρα "
-"υπογράμμισης."
+msgstr "Αυτή η τιμή θα χρησιμοποιείτε από τις άλλες εφαρμογές σαν αναφορά γι' αυτή την ροή εργασίας. Χρησιμοποιήστε μόνο γράμματα,αριθμούς και τον χαρακτήρα υπογράμμισης."
 
 #: models.py:55 models.py:460
 msgid "Internal name"
@@ -578,8 +574,8 @@ msgstr ""
 
 #: views/workflow_instance_views.py:43
 msgid ""
-"Assign workflows to the document type of this document to have this document "
-"execute those workflows. "
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
 msgstr ""
 
 #: views/workflow_instance_views.py:47
@@ -593,7 +589,8 @@ msgstr "Ροή εργασίας για το έγγραφο: %s"
 
 #: views/workflow_instance_views.py:82
 msgid ""
-"This view will show the state changes as a workflow instance is transitioned."
+"This view will show the state changes as a workflow instance is "
+"transitioned."
 msgstr ""
 
 #: views/workflow_instance_views.py:86
@@ -666,7 +663,8 @@ msgstr ""
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Έγραφα στην ροή εργασίας \"%s\", κατάσταση \"%s\""
 
-#: views/workflow_proxy_views.py:122 views/workflow_template_state_views.py:288
+#: views/workflow_proxy_views.py:122
+#: views/workflow_template_state_views.py:288
 msgid "Create states and link them using transitions."
 msgstr ""
 
@@ -674,7 +672,8 @@ msgstr ""
 msgid "This workflow doesn't have any state"
 msgstr ""
 
-#: views/workflow_proxy_views.py:128 views/workflow_template_state_views.py:294
+#: views/workflow_proxy_views.py:128
+#: views/workflow_template_state_views.py:294
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Κατάσταση της ροής εργασίας: %s"
@@ -696,8 +695,8 @@ msgstr "Τροποποίηση ενέργειας κατάστασης ροής 
 
 #: views/workflow_template_state_views.py:149
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or "
-"leaves the state in which they reside."
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
 msgstr ""
 
 #: views/workflow_template_state_views.py:153
@@ -749,7 +748,8 @@ msgstr ""
 
 #: views/workflow_template_transition_views.py:131
 msgid ""
-"Create a transition and use it to move a workflow from  one state to another."
+"Create a transition and use it to move a workflow from  one state to "
+"another."
 msgstr ""
 
 #: views/workflow_template_transition_views.py:135
@@ -764,9 +764,7 @@ msgstr "Μεταβάσεις της ροής εργασίας: %s"
 #: views/workflow_template_transition_views.py:167
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
-msgstr ""
-"Σφάλμα κατά την τροποποίηση του συμβάντος ενεργοποίησης μετάβασης ροής "
-"εργασίας: %s"
+msgstr "Σφάλμα κατά την τροποποίηση του συμβάντος ενεργοποίησης μετάβασης ροής εργασίας: %s"
 
 #: views/workflow_template_transition_views.py:174
 msgid "Workflow transition trigger events updated successfully"
@@ -799,8 +797,8 @@ msgstr ""
 
 #: views/workflow_template_transition_views.py:327
 msgid ""
-"Workflow transition fields allow adding data to the workflow's context. This "
-"additional context data can then be used by other elements of the workflow "
+"Workflow transition fields allow adding data to the workflow's context. This"
+" additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr ""
 
@@ -938,10 +936,10 @@ msgstr ""
 
 #: workflow_actions.py:92
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow "
-"log entry instance as part of their context via the variable \"entry_log\". "
-"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", and \"comment\" attributes."
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:102
@@ -950,7 +948,8 @@ msgstr "Λήξη χρόνου"
 
 #: workflow_actions.py:105
 msgid ""
-"Time in seconds to wait for a response. Can be a static value or a template. "
+"Time in seconds to wait for a response. Can be a static value or a template."
+" "
 msgstr ""
 
 #: workflow_actions.py:111
@@ -960,10 +959,10 @@ msgstr ""
 #: workflow_actions.py:114
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:124
@@ -972,11 +971,11 @@ msgstr "Όνομα χρήστη"
 
 #: workflow_actions.py:127
 msgid ""
-"Username to use for making the request with HTTP Basic Auth. Can be a static "
-"value or a template. Templates receive the workflow log entry instance as "
+"Username to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:137
@@ -985,11 +984,11 @@ msgstr "Κωδικός πρόσβασης"
 
 #: workflow_actions.py:140
 msgid ""
-"Password to use for making the request with HTTP Basic Auth. Can be a static "
-"value or a template. Templates receive the workflow log entry instance as "
+"Password to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:150

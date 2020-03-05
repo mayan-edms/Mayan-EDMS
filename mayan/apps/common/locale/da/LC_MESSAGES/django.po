@@ -1,0 +1,458 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-01 01:38-0400\n"
+"PO-Revision-Date: 2020-02-21 05:40+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:87 permissions_runtime.py:7 settings.py:15
+msgid "Common"
+msgstr ""
+
+#: classes.py:185
+msgid "Model properties"
+msgstr ""
+
+#: classes.py:190
+msgid "Model fields"
+msgstr ""
+
+#: classes.py:233
+msgid "Model related fields"
+msgstr ""
+
+#: dependencies.py:308
+msgid "Used to allow offline translation of the code text strings."
+msgstr ""
+
+#: dependencies.py:313
+msgid "Provides style checking."
+msgstr ""
+
+#: dependencies.py:318
+msgid "Command line environment with autocompletion."
+msgstr ""
+
+#: dependencies.py:323
+msgid "Checks proper formatting of the README file."
+msgstr ""
+
+#: forms.py:27
+msgid "Selection"
+msgstr ""
+
+#: forms.py:103
+msgid "None"
+msgstr "Ingen"
+
+#: generics.py:148
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:153
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:286
+msgid "Add all"
+msgstr ""
+
+#: generics.py:295
+msgid "Add"
+msgstr ""
+
+#: generics.py:305
+msgid "Remove all"
+msgstr ""
+
+#: generics.py:314
+msgid "Remove"
+msgstr ""
+
+#: generics.py:524
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr ""
+
+#: generics.py:546
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr ""
+
+#: generics.py:559
+#, python-format
+msgid "%(object)s created successfully."
+msgstr ""
+
+#: generics.py:598
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr ""
+
+#: generics.py:607
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr ""
+
+#: generics.py:743
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr ""
+
+#: generics.py:754
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr ""
+
+#: links.py:36
+msgid "About this"
+msgstr ""
+
+#: links.py:39
+msgid "Get the book"
+msgstr ""
+
+#: links.py:44
+msgid "Locale profile"
+msgstr ""
+
+#: links.py:49
+msgid "Edit locale profile"
+msgstr ""
+
+#: links.py:54
+msgid "Documentation"
+msgstr ""
+
+#: links.py:59
+msgid "Errors"
+msgstr ""
+
+#: links.py:65
+msgid "Clear all"
+msgstr ""
+
+#: links.py:69
+msgid "Forum"
+msgstr ""
+
+#: links.py:73 views.py:105
+msgid "License"
+msgstr ""
+
+#: links.py:76
+msgid "Setup"
+msgstr ""
+
+#: links.py:79
+msgid "Source code"
+msgstr ""
+
+#: links.py:83
+msgid "Get support"
+msgstr ""
+
+#: links.py:87 queues.py:15 views.py:214
+msgid "Tools"
+msgstr ""
+
+#: literals.py:14
+msgid ""
+"This feature has been deprecated and will be removed in a future version."
+msgstr ""
+
+#: literals.py:17
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr ""
+
+#: literals.py:35
+msgid "Days"
+msgstr ""
+
+#: literals.py:36
+msgid "Hours"
+msgstr ""
+
+#: literals.py:37
+msgid "Minutes"
+msgstr ""
+
+#: menus.py:10
+msgid "System"
+msgstr ""
+
+#: menus.py:12 menus.py:13
+msgid "Facet"
+msgstr ""
+
+#: menus.py:16
+msgid "Actions"
+msgstr "Handlinger"
+
+#: menus.py:17
+msgid "Secondary"
+msgstr ""
+
+#: menus.py:22 models.py:93
+msgid "User"
+msgstr "Bruger"
+
+#: mixins.py:292
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: mixins.py:405
+msgid "Object"
+msgstr "Objekt"
+
+#: models.py:28
+msgid "Namespace"
+msgstr ""
+
+#: models.py:39 models.py:63
+msgid "Date time"
+msgstr ""
+
+#: models.py:41 views.py:151
+msgid "Result"
+msgstr ""
+
+#: models.py:47
+msgid "Error log entry"
+msgstr ""
+
+#: models.py:48
+msgid "Error log entries"
+msgstr ""
+
+#: models.py:59
+msgid "File"
+msgstr "Fil"
+
+#: models.py:61
+msgid "Filename"
+msgstr "Filnavn"
+
+#: models.py:67
+msgid "Shared uploaded file"
+msgstr ""
+
+#: models.py:68
+msgid "Shared uploaded files"
+msgstr ""
+
+#: models.py:97
+msgid "Timezone"
+msgstr ""
+
+#: models.py:100
+msgid "Language"
+msgstr ""
+
+#: models.py:106
+msgid "User locale profile"
+msgstr ""
+
+#: models.py:107
+msgid "User locale profiles"
+msgstr ""
+
+#: permissions_runtime.py:10
+msgid "View error log"
+msgstr ""
+
+#: queues.py:13
+msgid "Default"
+msgstr "Standard"
+
+#: queues.py:17
+msgid "Common periodic"
+msgstr ""
+
+#: queues.py:22
+msgid "Delete stale uploads"
+msgstr ""
+
+#: settings.py:22
+msgid "Automatically enable logging to all apps."
+msgstr ""
+
+#: settings.py:28
+msgid ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr ""
+
+#: settings.py:36
+msgid ""
+"A list of strings designating all applications that are to be removed from "
+"the list normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr ""
+
+#: settings.py:46
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr ""
+
+#: settings.py:55
+msgid ""
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr ""
+
+#: settings.py:64
+msgid "The number objects that will be displayed per page."
+msgstr ""
+
+#: settings.py:71
+msgid "Enable error logging outside of the system error logging capabilities."
+msgstr ""
+
+#: settings.py:78
+msgid "Path to the logfile that will track errors during production."
+msgstr ""
+
+#: settings.py:85
+msgid "Name to be displayed in the main menu."
+msgstr ""
+
+#: settings.py:91
+msgid "URL of the installation or homepage of the project."
+msgstr ""
+
+#: settings.py:97
+msgid "A storage backend that all workers can use to share files."
+msgstr ""
+
+#: templatetags/common_tags.py:29
+msgid "Confirm delete"
+msgstr ""
+
+#: templatetags/common_tags.py:34
+#, python-format
+msgid "Edit %s"
+msgstr ""
+
+#: templatetags/common_tags.py:37
+msgid "Confirm"
+msgstr ""
+
+#: templatetags/common_tags.py:41
+#, python-format
+msgid "Details for: %s"
+msgstr ""
+
+#: templatetags/common_tags.py:45
+#, python-format
+msgid "Edit: %s"
+msgstr ""
+
+#: templatetags/common_tags.py:48
+msgid "Create"
+msgstr ""
+
+#: validators.py:46
+msgid "Enter a valid JSON value."
+msgstr ""
+
+#: validators.py:70
+msgid "Enter a valid YAML value."
+msgstr ""
+
+#: validators.py:86
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
+msgstr ""
+
+#: views.py:27
+msgid "About"
+msgstr "Om"
+
+#: views.py:40
+msgid "Current user locale profile details"
+msgstr ""
+
+#: views.py:46
+msgid "Edit current user locale profile details"
+msgstr ""
+
+#: views.py:96
+msgid "Dashboard"
+msgstr ""
+
+#: views.py:114
+#, python-format
+msgid "Clear error log entries for: %s"
+msgstr ""
+
+#: views.py:131
+msgid "Object error log cleared successfully"
+msgstr ""
+
+#: views.py:150
+msgid "Date and time"
+msgstr ""
+
+#: views.py:156
+msgid ""
+"This view displays the error log of different object. An empty list is a "
+"good thing."
+msgstr ""
+
+#: views.py:160
+msgid "There are no error log entries"
+msgstr ""
+
+#: views.py:163
+#, python-format
+msgid "Error log entries for: %s"
+msgstr ""
+
+#: views.py:191
+msgid "No setup options available."
+msgstr ""
+
+#: views.py:193
+msgid ""
+"No results here means that don't have the required permissions to perform "
+"administrative task."
+msgstr ""
+
+#: views.py:199
+msgid "Setup items"
+msgstr ""
+
+#: views.py:201
+msgid "Here you can configure all aspects of the system."
+msgstr ""
+
+#: views.py:216
+msgid "These modules are used to do system maintenance."
+msgstr ""

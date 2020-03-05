@@ -1,0 +1,314 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-01 01:38-0400\n"
+"PO-Revision-Date: 2019-04-27 22:53+0000\n"
+"Last-Translator: Roberto Rosario, 2020\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:26 links.py:43 permissions.py:7
+msgid "Dependencies"
+msgstr ""
+
+#: apps.py:34 apps.py:69 apps.py:77
+msgid "Label"
+msgstr "Label"
+
+#: apps.py:37
+msgid "Internal name"
+msgstr ""
+
+#: apps.py:40 apps.py:72 apps.py:81
+msgid "Description"
+msgstr "Omschrijving"
+
+#: apps.py:44 classes.py:193
+msgid "Type"
+msgstr "Soort"
+
+#: apps.py:48 classes.py:195
+msgid "Other data"
+msgstr ""
+
+#: apps.py:52
+msgid "Declared by"
+msgstr ""
+
+#: apps.py:56 classes.py:193
+msgid "Version"
+msgstr "Versie"
+
+#: apps.py:60 classes.py:194 classes.py:809
+msgid "Environment"
+msgstr ""
+
+#: apps.py:64 classes.py:195
+msgid "Check"
+msgstr ""
+
+#: classes.py:68
+msgid ""
+"Environment used for building distributable packages of the software. End "
+"users can ignore missing dependencies under this environment."
+msgstr ""
+
+#: classes.py:71
+msgid "Build"
+msgstr ""
+
+#: classes.py:75
+msgid ""
+"Environment used for developers to make code changes. End users can ignore "
+"missing dependencies under this environment."
+msgstr ""
+
+#: classes.py:77
+msgid "Development"
+msgstr ""
+
+#: classes.py:81
+msgid ""
+"Environment used for building the documentation. End users can ignore "
+"missing dependencies under this environment."
+msgstr ""
+
+#: classes.py:83
+msgid "Documentation"
+msgstr ""
+
+#: classes.py:87
+msgid ""
+"Normal environment for end users. A missing dependency under this "
+"environment will result in issues and errors during normal use."
+msgstr ""
+
+#: classes.py:89
+msgid "Production"
+msgstr ""
+
+#: classes.py:93
+msgid ""
+"Environment used running the test suit to verify the functionality of the "
+"code. Dependencies in this environment are not needed for normal production "
+"usage."
+msgstr ""
+
+#: classes.py:96
+msgid "Testing"
+msgstr ""
+
+#: classes.py:193
+msgid "Name"
+msgstr "Naam"
+
+#: classes.py:194
+msgid "App"
+msgstr ""
+
+#: classes.py:295
+msgid "Need to specify at least one: app_label or module."
+msgstr ""
+
+#: classes.py:300
+#, python-format
+msgid "Dependency \"%s\" already registered."
+msgstr ""
+
+#: classes.py:326
+#, python-format
+msgid "Installing package: %s... "
+msgstr ""
+
+#: classes.py:331
+msgid "Already installed."
+msgstr ""
+
+#: classes.py:334 classes.py:339 classes.py:343
+msgid "Complete."
+msgstr ""
+
+#: classes.py:369
+msgid "Installed and correct version"
+msgstr ""
+
+#: classes.py:371
+msgid "Missing or incorrect version"
+msgstr ""
+
+#: classes.py:400
+msgid "None"
+msgstr "Geen"
+
+#: classes.py:409
+msgid "Not specified"
+msgstr ""
+
+#: classes.py:412
+msgid "Patching files... "
+msgstr ""
+
+#: classes.py:440
+msgid "Executables that are called directly by the code."
+msgstr ""
+
+#: classes.py:442
+msgid "Binary"
+msgstr ""
+
+#: classes.py:459
+msgid ""
+"JavaScript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
+msgstr ""
+
+#: classes.py:462
+msgid "JavaScript"
+msgstr ""
+
+#: classes.py:496 classes.py:729
+msgid "Downloading... "
+msgstr ""
+
+#: classes.py:499
+msgid "Verifying... "
+msgstr ""
+
+#: classes.py:502 classes.py:732
+msgid "Extracting... "
+msgstr ""
+
+#: classes.py:681
+msgid "Python packages downloaded from PyPI."
+msgstr ""
+
+#: classes.py:683
+msgid "Python"
+msgstr ""
+
+#: classes.py:710
+msgid "Fonts downloaded from fonts.googleapis.com."
+msgstr ""
+
+#: classes.py:712
+msgid "Google font"
+msgstr ""
+
+#: classes.py:791
+msgid "Declared in app"
+msgstr ""
+
+#: classes.py:792
+msgid "Show dependencies by the app that declared them."
+msgstr ""
+
+#: classes.py:796
+msgid "Class"
+msgstr "Klasse"
+
+#: classes.py:797
+msgid ""
+"Show the different classes of dependencies. Classes are usually divided by "
+"language or the file types of the dependency."
+msgstr ""
+
+#: classes.py:802
+msgid "State"
+msgstr ""
+
+#: classes.py:803
+msgid ""
+"Show the different states of the dependencies. True means that the "
+"dependencies is installed and is of a correct version. False means the "
+"dependencies is missing or an incorrect version is present."
+msgstr ""
+
+#: classes.py:810
+msgid ""
+"Dependencies required for an environment might not be required for another. "
+"Example environments: Production, Development."
+msgstr ""
+
+#: links.py:11 views.py:19
+msgid "Check for updates"
+msgstr ""
+
+#: links.py:17
+msgid "Groups"
+msgstr "Groepen"
+
+#: links.py:25
+msgid "Entries"
+msgstr ""
+
+#: links.py:33
+msgid "Details"
+msgstr "Gegevens"
+
+#: links.py:38
+msgid "Dependencies licenses"
+msgstr ""
+
+#: management/commands/generaterequirements.py:16
+msgid ""
+"Comma separated names of dependencies to exclude from the list generated."
+msgstr ""
+
+#: management/commands/generaterequirements.py:22
+msgid ""
+"Comma separated names of dependencies to show in the list while excluding "
+"every other one."
+msgstr ""
+
+#: management/commands/installdependencies.py:15
+msgid "Process a specific app."
+msgstr ""
+
+#: management/commands/installdependencies.py:19
+msgid "Force installation even if already installed."
+msgstr ""
+
+#: permissions.py:10
+msgid "View dependencies"
+msgstr ""
+
+#: views.py:33
+#, python-format
+msgid "Entries for dependency group: %s"
+msgstr ""
+
+#: views.py:46 views.py:91
+#, python-format
+msgid "Group %s not found."
+msgstr ""
+
+#: views.py:59
+msgid "Dependency groups"
+msgstr ""
+
+#: views.py:79
+#, python-format
+msgid "Dependency group and entry: %(group)s, %(entry)s"
+msgstr ""
+
+#: views.py:103
+#, python-format
+msgid "Entry %s not found."
+msgstr ""
+
+#: views.py:121
+msgid "Other packages licenses"
+msgstr "Andere pakketlicensies"

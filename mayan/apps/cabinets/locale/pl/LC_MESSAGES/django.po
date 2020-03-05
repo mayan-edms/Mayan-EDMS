@@ -8,12 +8,11 @@
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2019
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"POT-Creation-Date: 2020-03-01 01:38-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -28,6 +27,22 @@ msgstr ""
 #: workflow_actions.py:22
 msgid "Cabinets"
 msgstr "Szafki"
+
+#: events.py:11
+msgid "Cabinet created"
+msgstr "Utworzono szafkę"
+
+#: events.py:14
+msgid "Cabinet edited"
+msgstr "Zmodyfikowano szafkę"
+
+#: events.py:17
+msgid "Document added to cabinet"
+msgstr "Dokument został dodany do szafki"
+
+#: events.py:20
+msgid "Document removed from cabinet"
+msgstr "Dokument został usunięty z szafki"
 
 #: links.py:30 links.py:44 workflow_actions.py:76
 msgid "Remove from cabinets"
@@ -60,6 +75,14 @@ msgstr "Wszystkie"
 #: links.py:92
 msgid "Details"
 msgstr "Szczegóły"
+
+#: methods.py:18
+msgid "Return a list of cabinets containing the document"
+msgstr "Zwróć listę szafek zawierających dokument"
+
+#: methods.py:20
+msgid "get_cabinets()"
+msgstr "get_cabinets ()"
 
 #: models.py:36
 msgid "A short text used to identify the cabinet."
@@ -227,6 +250,15 @@ msgstr "Żądanie dodania do szafki wykonano na ilości dokumentów: %(count)d"
 msgid "Add"
 msgstr "Dodaj"
 
+#: views.py:235
+#, python-format
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] "Dodaj dokument %(count)d do szaf"
+msgstr[1] "Dodaj dokumenty %(count)d do szaf"
+msgstr[2] "Dodaj dokumenty %(count)d do szaf"
+msgstr[3] "Dodaj dokumenty %(count)d do szafek"
+
 #: views.py:248
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -260,6 +292,20 @@ msgstr "Żądanie usunięcia z szafki wykonano na ilości dokumentów: %(count)d
 msgid "Remove"
 msgstr "Usuń"
 
+#: views.py:325
+#, python-format
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] "Usuń dokument %(count)d z szaf"
+msgstr[1] "Usuń dokumenty %(count)d z szaf"
+msgstr[2] "Usuń dokumenty %(count)d z szaf"
+msgstr[3] "Usuń dokumenty %(count)d z szafek"
+
+#: views.py:338
+#, python-format
+msgid "Remove document \"%s\" from cabinets"
+msgstr "Usuń dokument „%s” z szafek"
+
 #: views.py:349
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Szafki, z których wybrane dokumenty zostaną usunięte."
@@ -273,3 +319,15 @@ msgstr "Dokument %(document)s nie znajduje się w szafce %(cabinet)s."
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Dokument %(document)s usunięto z szafki %(cabinet)s."
+
+#: wizard_steps.py:17
+msgid "Select cabinets"
+msgstr "Wybierz szafki"
+
+#: wizard_steps.py:31 workflow_actions.py:25
+msgid "Cabinets to which the document will be added."
+msgstr "Szafki, do których dokument zostanie dodany."
+
+#: workflow_actions.py:71
+msgid "Cabinets from which the document will be removed."
+msgstr "Szafki, z których dokument zostanie usunięty."

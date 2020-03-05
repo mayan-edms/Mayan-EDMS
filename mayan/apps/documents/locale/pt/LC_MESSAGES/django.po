@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:50-0400\n"
+"POT-Creation-Date: 2020-03-01 01:39-0400\n"
 "PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:131 apps.py:337 events.py:7 menus.py:10 models/document_models.py:94
-#: permissions.py:7 queues.py:26 settings.py:18 statistics.py:236
+#: apps.py:131 apps.py:337 events.py:7 menus.py:10
+#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:18
+#: statistics.py:236
 msgid "Documents"
 msgstr "Documentos"
 
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Thumbnail"
 msgstr ""
 
-#: apps.py:282 apps.py:372 forms/document_forms.py:187
+#: apps.py:282 apps.py:372 forms/document_forms.py:185
 #: links/document_version_page_links.py:137
 msgid "Pages"
 msgstr "Páginas"
@@ -146,8 +146,8 @@ msgstr "Comprimir"
 
 #: forms/document_forms.py:29
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
@@ -161,62 +161,62 @@ msgid ""
 "downloaded, if the previous option is selected."
 msgstr ""
 
-#: forms/document_forms.py:90
+#: forms/document_forms.py:82
 msgid "Quick document rename"
 msgstr "Renomeação rápida de documento"
 
-#: forms/document_forms.py:98 forms/document_version_forms.py:15
+#: forms/document_forms.py:90 forms/document_version_forms.py:15
 msgid "Preserve extension"
 msgstr ""
 
-#: forms/document_forms.py:100
+#: forms/document_forms.py:92
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open document correctly."
 msgstr ""
 
-#: forms/document_forms.py:152
+#: forms/document_forms.py:150
 msgid "Date added"
 msgstr "Data de adição"
 
-#: forms/document_forms.py:156 models/document_models.py:41 search.py:43
+#: forms/document_forms.py:154 models/document_models.py:41 search.py:43
 msgid "UUID"
 msgstr "UUID"
 
-#: forms/document_forms.py:158 models/document_models.py:66
+#: forms/document_forms.py:156 models/document_models.py:66
 msgid "Language"
 msgstr ""
 
-#: forms/document_forms.py:166
+#: forms/document_forms.py:164
 msgid "File mimetype"
 msgstr "Tipo MIME do ficheiro"
 
-#: forms/document_forms.py:167 forms/document_forms.py:172
+#: forms/document_forms.py:165 forms/document_forms.py:170
 msgid "None"
 msgstr "Nenhum"
 
-#: forms/document_forms.py:170
+#: forms/document_forms.py:168
 msgid "File encoding"
 msgstr ""
 
-#: forms/document_forms.py:176
+#: forms/document_forms.py:174
 msgid "File size"
 msgstr "Tamanho do ficheiro"
 
-#: forms/document_forms.py:181
+#: forms/document_forms.py:179
 msgid "Exists in storage"
 msgstr "Existe no armazenamento"
 
-#: forms/document_forms.py:183
+#: forms/document_forms.py:181
 msgid "File path in storage"
 msgstr "Caminho do ficheiro no armazenamento"
 
-#: forms/document_forms.py:186 models/document_version_models.py:104
+#: forms/document_forms.py:184 models/document_version_models.py:104
 #: search.py:47 search.py:72
 msgid "Checksum"
 msgstr "Soma de verificação"
 
-#: forms/document_forms.py:203 literals.py:43
+#: forms/document_forms.py:201 literals.py:43
 msgid "Page range"
 msgstr "Intervalo de páginas"
 
@@ -550,7 +550,8 @@ msgstr ""
 
 #: models/document_type_models.py:36
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
 msgstr ""
 
 #: models/document_type_models.py:38
@@ -606,8 +607,8 @@ msgstr "Ficheiro"
 #: models/document_version_models.py:87
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document. "
-"Some examples: \"text/plain\" or \"image/jpeg\". "
+"describe the format of a file, in this case the file format of the document."
+" Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
 #: models/document_version_models.py:91 search.py:38 search.py:63
@@ -803,15 +804,15 @@ msgstr ""
 #: settings.py:75
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
 msgstr ""
 
 #: settings.py:84
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value "
-"of 0 disables the block calculation and the entire file will be loaded into "
-"memory."
+"Size of blocks to use when calculating the document file's checksum. A value"
+" of 0 disables the block calculation and the entire file will be loaded into"
+" memory."
 msgstr ""
 
 #: settings.py:91
@@ -840,9 +841,7 @@ msgstr ""
 
 #: settings.py:132
 msgid "Amount in degrees to rotate a document page per user interaction."
-msgstr ""
-"Valor em graus para rodar uma página de documento por interação do "
-"utilizador."
+msgstr "Valor em graus para rodar uma página de documento por interação do utilizador."
 
 #: settings.py:138
 msgid "Path to the Storage subclass to use when storing document files."
@@ -860,17 +859,13 @@ msgstr ""
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Percentagem (%) máxima para o utilizador aumentar o zoom de uma página de "
-"documento de forma interativa."
+msgstr "Percentagem (%) máxima para o utilizador aumentar o zoom de uma página de documento de forma interativa."
 
 #: settings.py:167
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Percentagem (%) mínima para o utilizador diminuir o zoom de uma página de "
-"documento de forma interativa."
+msgstr "Percentagem (%) mínima para o utilizador diminuir o zoom de uma página de documento de forma interativa."
 
 #: settings.py:174
 msgid "Amount in percent zoom in or out a document page per user interaction."
@@ -968,16 +963,17 @@ msgstr ""
 msgid "Document image"
 msgstr ""
 
-#: utils.py:26
+#: utils.py:22
 #, python-format
 msgid "Unknown language \"%s\""
 msgstr ""
 
 #: views/document_page_views.py:57
 msgid ""
-"This could mean that the document is of a format that is not supported, that "
-"it is corrupted or that the upload process was interrupted. Use the document "
-"page recalculation action to attempt to introspect the page count again."
+"This could mean that the document is of a format that is not supported, that"
+" it is corrupted or that the upload process was interrupted. Use the "
+"document page recalculation action to attempt to introspect the page count "
+"again."
 msgstr ""
 
 #: views/document_page_views.py:62
@@ -1022,8 +1018,8 @@ msgstr ""
 #: views/document_type_views.py:71
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
@@ -1063,8 +1059,7 @@ msgstr ""
 
 #: views/document_type_views.py:215
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 
 #: views/document_type_views.py:253
@@ -1233,14 +1228,13 @@ msgstr ""
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Erro ao excluir as transformações de página para o documento: %(document)s; "
-"%(error)s ."
+msgstr "Erro ao excluir as transformações de página para o documento: %(document)s; %(error)s ."
 
 #: views/document_views.py:477
 #, python-format
 msgid ""
-"Error cloning the page transformations for document: %(document)s; %(error)s."
+"Error cloning the page transformations for document: %(document)s; "
+"%(error)s."
 msgstr ""
 
 #: views/document_views.py:485
@@ -1263,8 +1257,8 @@ msgstr ""
 
 #: views/document_views.py:602
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 
 #: views/document_views.py:606
@@ -1295,8 +1289,8 @@ msgstr ""
 #: views/duplicated_document_views.py:69
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/duplicated_document_views.py:76

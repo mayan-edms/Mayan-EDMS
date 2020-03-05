@@ -1,0 +1,406 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
+# www.ping.ba <jomer@ping.ba>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-01 01:39-0400\n"
+"PO-Revision-Date: 2020-02-14 02:20+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: admin.py:24
+msgid "None"
+msgstr "Nijedno"
+
+#: admin.py:26 links.py:95 models.py:54
+msgid "Document types"
+msgstr "Tipovi dokumenta"
+
+#: apps.py:55 events.py:8
+msgid "Document indexing"
+msgstr "Indeksiranje dokumenata"
+
+#: apps.py:124
+msgid "Total levels"
+msgstr "Ukupni nivoi"
+
+#: apps.py:132
+msgid "Total documents"
+msgstr "Ukupni dokumenti"
+
+#: apps.py:137 apps.py:149 apps.py:168
+msgid "Level"
+msgstr "Nivo"
+
+#: apps.py:154 apps.py:173
+msgid "Levels"
+msgstr "Nivoa"
+
+#: apps.py:162 apps.py:180 models.py:379
+msgid "Documents"
+msgstr "Dokumenti"
+
+#: events.py:12
+msgid "Index created"
+msgstr ""
+
+#: events.py:15
+msgid "Index edited"
+msgstr ""
+
+#: forms.py:18
+msgid "Index templates to be queued for rebuilding."
+msgstr ""
+
+#: forms.py:19 links.py:29
+msgid "Index templates"
+msgstr ""
+
+#: forms.py:34
+msgid "Template"
+msgstr ""
+
+#: handlers.py:20
+msgid "Creation date"
+msgstr "Datum kreiranja"
+
+#: links.py:23 links.py:38 links.py:75 links.py:79 models.py:62 views.py:149
+#: views.py:323
+msgid "Indexes"
+msgstr "Indeksi"
+
+#: links.py:44 queues.py:24
+msgid "Rebuild index"
+msgstr "Obnoviti indeks"
+
+#: links.py:53 links.py:64
+msgid "Deletes and creates from scratch all the document indexes."
+msgstr "Briše i nanovo kreira indekse svih dokumenata."
+
+#: links.py:55 views.py:446
+msgid "Rebuild indexes"
+msgstr "Obnoviti indekse"
+
+#: links.py:66 views.py:481
+msgid "Reset indexes"
+msgstr ""
+
+#: links.py:83 views.py:87
+msgid "Create index"
+msgstr "Kreiraj indeks"
+
+#: links.py:90 links.py:120
+msgid "Delete"
+msgstr "Obriši"
+
+#: links.py:101 links.py:125
+msgid "Edit"
+msgstr "Urediti"
+
+#: links.py:108
+msgid "Tree template"
+msgstr "Template drveta"
+
+#: links.py:114
+msgid "New child node"
+msgstr "Novi child node"
+
+#: models.py:36
+msgid "Short description of this index."
+msgstr ""
+
+#: models.py:37
+msgid "Label"
+msgstr "Labela"
+
+#: models.py:41
+msgid "This value will be used by other apps to reference this index."
+msgstr "Ova vrijednost će koristiti druge aplikacije za upućivanje na ovaj indeks."
+
+#: models.py:42
+msgid "Slug"
+msgstr "Slug"
+
+#: models.py:47
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Uzrokuje da će ovaj indeks biti vidljiv i update-ovan kad se promjene podaci dokumenta."
+
+#: models.py:50 models.py:254
+msgid "Enabled"
+msgstr "Omogućeno"
+
+#: models.py:61 models.py:238
+msgid "Index"
+msgstr "Indeks"
+
+#: models.py:210
+msgid "Index instance"
+msgstr "index instance"
+
+#: models.py:211
+msgid "Index instances"
+msgstr "Indeks instanci"
+
+#: models.py:242
+msgid ""
+"Enter a template to render. Use Django's default templating language "
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr ""
+
+#: models.py:246
+msgid "Indexing expression"
+msgstr "Izraz indeksiranja"
+
+#: models.py:251
+msgid "Causes this node to be visible and updated when document data changes."
+msgstr "Uzrokuje da će ovaj nod biti vidljiv i update-ovan kad se promjene podaci dokumenta."
+
+#: models.py:259
+msgid ""
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Označite ovu opciju da ovaj nod služi kao kontejner za dokumente a ne kao parent za buduće nodove."
+
+#: models.py:262
+msgid "Link documents"
+msgstr "Povezite dokumente"
+
+#: models.py:266
+msgid "Index node template"
+msgstr "Šablon indeksnog čvora"
+
+#: models.py:267
+msgid "Indexes node template"
+msgstr "Šablon indeksnih čvora"
+
+#: models.py:271
+msgid "Root"
+msgstr "Koren"
+
+#: models.py:326
+#, python-format
+msgid ""
+"Error indexing document: %(document)s; expression: %(expression)s; "
+"%(exception)s"
+msgstr "Greška u indeksiranju dokumenta:%(document)s; izraz:%(expression)s;%(exception)s"
+
+#: models.py:372
+msgid "Index template node"
+msgstr "Index template node"
+
+#: models.py:375
+msgid "Value"
+msgstr "Vrijednost"
+
+#: models.py:385
+msgid "Index node instance"
+msgstr "Indeks čvora instance"
+
+#: models.py:386
+msgid "Indexes node instances"
+msgstr "Indeks čvorova indeksa"
+
+#: models.py:500
+msgid "Document index node instance"
+msgstr "Indeks čvora instance dokumenta"
+
+#: models.py:501
+msgid "Document indexes node instances"
+msgstr "Indeks čvorova indeksa dokummenata"
+
+#: permissions.py:7 queues.py:9
+msgid "Indexing"
+msgstr "Indeksiranje"
+
+#: permissions.py:10
+msgid "Create new document indexes"
+msgstr "Kreiraj nove indekse dokumenata"
+
+#: permissions.py:13
+msgid "Edit document indexes"
+msgstr "Izmjeni indekse dokumenata"
+
+#: permissions.py:16
+msgid "Delete document indexes"
+msgstr "Obriši indekse dokumenata"
+
+#: permissions.py:19
+msgid "View document index instances"
+msgstr ""
+
+#: permissions.py:23
+msgid "View document indexes"
+msgstr "Pregledaj indekse dokumenata"
+
+#: permissions.py:26
+msgid "Rebuild document indexes"
+msgstr " Obnovi indekse dokumenata"
+
+#: queues.py:12
+msgid "Delete empty index nodes"
+msgstr "Obrišite prazne indeksne čvorove"
+
+#: queues.py:16
+msgid "Remove document"
+msgstr "Ukloni dokument"
+
+#: queues.py:20
+msgid "Index document"
+msgstr "Indeksni dokument"
+
+#: views.py:46
+msgid "Available indexes"
+msgstr ""
+
+#: views.py:47
+msgid "Indexes linked"
+msgstr ""
+
+#: views.py:77
+msgid ""
+"Documents of this type will appear in the indexes linked when these are "
+"updated. Events of the documents of this type will trigger updates in the "
+"linked indexes."
+msgstr ""
+
+#: views.py:81
+#, python-format
+msgid "Indexes linked to document type: %s"
+msgstr ""
+
+#: views.py:109
+#, python-format
+msgid "Delete the index: %s?"
+msgstr "Izbriši index:%s?"
+
+#: views.py:124
+#, python-format
+msgid "Edit index: %s"
+msgstr "Uredi indeks:%s"
+
+#: views.py:143
+msgid ""
+"Indexes group document automatically into levels. Indexe are defined using "
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
+msgstr ""
+
+#: views.py:148
+msgid "There are no indexes."
+msgstr ""
+
+#: views.py:161
+#, python-format
+msgid "Rebuild index: %s"
+msgstr ""
+
+#: views.py:179
+msgid "Index queued for rebuild."
+msgstr ""
+
+#: views.py:191
+msgid "Available document types"
+msgstr "Dostupni tipovi dokumenta"
+
+#: views.py:192
+msgid "Document types linked"
+msgstr "Povezani tipovi dokumenata"
+
+#: views.py:202
+msgid ""
+"Only the documents of the types selected will be shown in the index when "
+"built. Only the events of the documents of the types select will trigger "
+"updates in the index."
+msgstr ""
+
+#: views.py:206
+#, python-format
+msgid "Document types linked to index: %s"
+msgstr "Tipovi dokumenata povezani sa indeksom:%s"
+
+#: views.py:218
+#, python-format
+msgid "Tree template nodes for index: %s"
+msgstr "Čvorovi šablona za indeks:%s"
+
+#: views.py:248
+#, python-format
+msgid "Create child node of: %s"
+msgstr "Kreirajte child node od:%s"
+
+#: views.py:271
+#, python-format
+msgid "Delete the index template node: %s?"
+msgstr "Obrišite čvor indeksa :%s?"
+
+#: views.py:294
+#, python-format
+msgid "Edit the index template node: %s?"
+msgstr "Uredi čvor indeksa indeksa:%s?"
+
+#: views.py:318
+msgid ""
+"This could mean that no index templates have been created or that there "
+"index templates but they are no properly defined."
+msgstr ""
+
+#: views.py:322
+msgid "There are no index instances available."
+msgstr ""
+
+#: views.py:367
+#, python-format
+msgid "Navigation: %s"
+msgstr "Navigacija:%s"
+
+#: views.py:372
+#, python-format
+msgid "Contents for index: %s"
+msgstr "Sadržaj za indeks:%s"
+
+#: views.py:425
+msgid ""
+"Assign the document type of this document to an index to have it appear in "
+"instances of those indexes organization units. "
+msgstr ""
+
+#: views.py:430
+msgid "This document is not in any index"
+msgstr ""
+
+#: views.py:434
+#, python-format
+msgid "Indexes nodes containing document: %s"
+msgstr "Indeksni čvorovi koji sadrže dokument:%s"
+
+#: views.py:460
+#, python-format
+msgid "%(count)d index queued for rebuild."
+msgid_plural "%(count)d indexes queued for rebuild."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: views.py:493
+#, python-format
+msgid "%(count)d index reset."
+msgid_plural "%(count)d indexes reset."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: views.py:506
+msgid "Index templates for which their instances will be deleted."
+msgstr ""

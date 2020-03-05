@@ -8,12 +8,12 @@
 # Mathias Behrle <mathiasb@m9s.biz>, 2019-2020
 # Robin Schubert <robin.schubert@gmx.de>, 2019
 # Stefan Rempe, 2018
-# Stefan Rempe, 2018
+# 847f3f05406324d125c568a4b098bddb, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:48-0400\n"
+"POT-Creation-Date: 2020-03-01 01:37-0400\n"
 "PO-Revision-Date: 2020-01-31 04:42+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"

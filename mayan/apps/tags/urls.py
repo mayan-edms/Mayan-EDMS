@@ -56,15 +56,15 @@ urlpatterns = [
 ]
 
 api_urls = [
-    url(
-        regex=r'^tags/(?P<pk>[0-9]+)/documents/$',
-        view=APITagDocumentListView.as_view(), name='tag-document-list'
-    ),
+    url(regex=r'^tags/$', view=APITagListView.as_view(), name='tag-list'),
     url(
         regex=r'^tags/(?P<pk>[0-9]+)/$', view=APITagView.as_view(),
         name='tag-detail'
     ),
-    url(regex=r'^tags/$', view=APITagListView.as_view(), name='tag-list'),
+    url(
+        regex=r'^tags/(?P<pk>[0-9]+)/documents/$',
+        view=APITagDocumentListView.as_view(), name='tag-document-list'
+    ),
     url(
         regex=r'^documents/(?P<document_pk>[0-9]+)/tags/$',
         view=APIDocumentTagListView.as_view(), name='document-tag-list'

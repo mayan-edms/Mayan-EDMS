@@ -2,28 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2017
 # mic <winterfall24@gmail.com>, 2017
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
-#
-#, fuzzy
+# kicior kicior <kiciorek+github@gmail.com>, 2020
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:50-0400\n"
+"POT-Creation-Date: 2020-03-01 01:39-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020\n"
+"Last-Translator: kicior kicior <kiciorek+github@gmail.com>, 2020\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
-"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:56 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
@@ -45,6 +43,8 @@ msgstr "Wynik"
 msgid ""
 "Utility from the poppler-utils package used to text content from PDF files."
 msgstr ""
+"Narzędzie z pakietu poppler-utils używane do zawartości tekstowej plików "
+"PDF."
 
 #: events.py:12
 msgid "Document parsed content deleted"
@@ -142,7 +142,7 @@ msgstr "Błędy analizy wersji dokumentu"
 #: parsers.py:91
 #, python-format
 msgid "Exception parsing page; %s"
-msgstr ""
+msgstr "Wyjątek podczas analizowania strony; %s"
 
 #: parsers.py:117
 #, python-format
@@ -177,7 +177,8 @@ msgstr ""
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 "Ścieżka do programu pdftotext popplera służącego do wyodrębniania tekstu z "
 "plików PDF."

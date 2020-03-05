@@ -118,7 +118,7 @@ class MayanApp {
 
         // Add invisible bootstrap messages to copy the styles to toastr.js
 
-        $('body').append('\
+        $('#div-javascript-dynamic-content').html('\
             <div class="hidden alert alert-success">\
                 <p>text</p>\
             </div>\
@@ -136,7 +136,7 @@ class MayanApp {
         // Copy the bootstrap style from the sample alerts to toaster.js via
         // dynamic document style tag
 
-        $('head').append('\
+        $('#style-javascript').html('\
             <style>\
                 .toast-success {\
                     background-color: ' + $('.alert-success').css('background-color') +'\

@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
+# www.ping.ba <jomer@ping.ba>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-01 01:41-0400\n"
+"PO-Revision-Date: 2020-02-14 02:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: apps.py:22 links.py:33 permissions.py:7 queues.py:9
+msgid "Statistics"
+msgstr "Statistika"
+
+#. Translators: Schedule here is a noun, the 'schedule' at
+#. which the statistic will be updated
+#: apps.py:31
+msgid "Schedule"
+msgstr "Raspored"
+
+#: apps.py:36
+msgid "Last update"
+msgstr ""
+
+#: classes.py:150
+msgid "Never"
+msgstr "Nikada"
+
+#: links.py:12
+msgid "Queue"
+msgstr "Vreme"
+
+#: links.py:17
+msgid "View"
+msgstr "Pogled"
+
+#: links.py:22
+msgid "Namespace details"
+msgstr "Detalji o prostoru imena"
+
+#: links.py:27
+msgid "Namespace list"
+msgstr "Spisak prostora sa imenima"
+
+#. Translators: 'Slug' refers to the URL valid ID of the statistic
+#. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
+#: models.py:14
+msgid "Slug"
+msgstr "Slug"
+
+#: models.py:16
+msgid "Date time"
+msgstr "Datum vreme"
+
+#: models.py:18
+msgid "Data"
+msgstr "Podaci"
+
+#: models.py:21
+msgid "Statistics result"
+msgstr "Statistički rezultat"
+
+#: models.py:22
+msgid "Statistics results"
+msgstr "Rezultati statistike"
+
+#: permissions.py:10
+msgid "View statistics"
+msgstr "Pregled statistike"
+
+#: queues.py:13
+msgid "Execute statistic"
+msgstr "Izvrši statistiku"
+
+#: templates/statistics/renderers/chartjs/line.html:14
+msgid "No data available."
+msgstr ""
+
+#: templates/statistics/renderers/chartjs/line.html:16
+#, python-format
+msgid "Last update: %(datetime)s"
+msgstr ""
+
+#: views.py:17
+msgid "Statistics namespaces"
+msgstr "Statistike o prostoru imena"
+
+#: views.py:33
+#, python-format
+msgid "Namespace details for: %s"
+msgstr "Detalji o prostoru imena: %s"
+
+#: views.py:55
+#, python-format
+msgid "Results for: %s"
+msgstr "Rezultati za: %s"
+
+#: views.py:62 views.py:88
+#, python-format
+msgid "Statistic \"%s\" not found."
+msgstr "Statistika \"%s\" nije nađena."
+
+#: views.py:80
+#, python-format
+msgid "Queue statistic \"%s\" to be updated?"
+msgstr "Da li će se ažurirati statistika redova \"%s\"?"
+
+#: views.py:94
+#, python-format
+msgid "Statistic \"%s\" queued successfully for update."
+msgstr "Statistika \"%s\" je uspešno stavila u red za ažuriranje."

@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:53-0400\n"
-"PO-Revision-Date: 2020-01-16 09:54+0000\n"
+"POT-Creation-Date: 2020-03-01 01:42-0400\n"
+"PO-Revision-Date: 2020-02-23 06:19+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:44 links.py:54 models/base.py:40 queues.py:9 settings.py:13
@@ -32,10 +31,7 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
-"Οι πηγές εγγράφων είναι ο τρόπος με τον οποίο τροφοδοτούμε το Mayan EDMS με "
-"νέα έγγραφα. Δημιουργήστε τουλάχιστον μία φόρμα ιστού ώστε να μπορείτε να "
-"ανεβάσετε έγγραφα με την χρήση ενός web browser. "
+msgstr "Οι πηγές εγγράφων είναι ο τρόπος με τον οποίο τροφοδοτούμε το Mayan EDMS με νέα έγγραφα. Δημιουργήστε τουλάχιστον μία φόρμα ιστού ώστε να μπορείτε να ανεβάσετε έγγραφα με την χρήση ενός web browser. "
 
 #: apps.py:77
 msgid "Type"
@@ -71,14 +67,13 @@ msgstr ""
 msgid "Comment"
 msgstr "Σχόλιο"
 
-#: forms.py:42
+#: forms.py:42 serializers.py:23
 msgid "Expand compressed files"
 msgstr "Αποσυμπίεση αρχείου"
 
-#: forms.py:44
-msgid "Upload a compressed file's contained files as individual documents"
+#: forms.py:44 serializers.py:24
+msgid "Upload a compressed file's contained files as individual documents."
 msgstr ""
-"Ανέβασμα των περιεχομένων ενός συμπιεσμένου αρχείου ως αυτόνομα έγγραφα."
 
 #: forms.py:65 views.py:504
 msgid "Staging file"
@@ -246,11 +241,9 @@ msgstr "Χρονικό διάστημα"
 
 #: models/base.py:180
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
-"Ορισμός ενός τύπου εγγράφου για τα έγγραφα που μεταφορτώθηκαν από αυτή την "
-"πηγή."
+msgstr "Ορισμός ενός τύπου εγγράφου για τα έγγραφα που μεταφορτώθηκαν από αυτή την πηγή."
 
-#: models/base.py:182
+#: models/base.py:182 serializers.py:19
 msgid "Document type"
 msgstr "Τύπος εγγράφου"
 
@@ -291,9 +284,7 @@ msgstr ""
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Τυπικές τιμές είναι 110 για POP3, 995 για POP3 με χρήση SSL, 143 για IMAP, "
-"993 για IMAP με χρήση SSL."
+msgstr "Τυπικές τιμές είναι 110 για POP3, 995 για POP3 με χρήση SSL, 143 για IMAP, 993 για IMAP με χρήση SSL."
 
 #: models/email_sources.py:46
 msgid "Port"
@@ -388,8 +379,9 @@ msgstr ""
 #: models/email_sources.py:230
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 
 #: models/email_sources.py:234
@@ -432,9 +424,7 @@ msgstr "Όνομα συσκευής"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr ""
-"Επιλέξτε τρόπο ανάγνωσης (πχ lineart, μονόχρωμη, έγχρωμη.) Αφήστε κενό αν "
-"δεν υποστηρίζεται από την συσκευή σας."
+msgstr "Επιλέξτε τρόπο ανάγνωσης (πχ lineart, μονόχρωμη, έγχρωμη.) Αφήστε κενό αν δεν υποστηρίζεται από την συσκευή σας."
 
 #: models/scanner_sources.py:41
 msgid "Mode"
@@ -445,9 +435,7 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr ""
-"Ορίστε την ανάλυση της εικόνας σε DPI (στιγμές ανά ίντσα). Μια τυπική τιμή "
-"είναι 200. Αφήστε κενό αν δεν υποστηρίζεται από την συσκευή σας."
+msgstr "Ορίστε την ανάλυση της εικόνας σε DPI (στιγμές ανά ίντσα). Μια τυπική τιμή είναι 200. Αφήστε κενό αν δεν υποστηρίζεται από την συσκευή σας."
 
 #: models/scanner_sources.py:48
 msgid "Resolution"
@@ -457,9 +445,7 @@ msgstr "Ανάλυση"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"Επιλέξτε την πηγή ανάγνωσης (πχ document-feeder.) Αφήστε κενό αν δεν "
-"υποστηρίζεται από την συσκευή σας."
+msgstr "Επιλέξτε την πηγή ανάγνωσης (πχ document-feeder.) Αφήστε κενό αν δεν υποστηρίζεται από την συσκευή σας."
 
 #: models/scanner_sources.py:54
 msgid "Paper source"
@@ -469,9 +455,7 @@ msgstr "Πηγή χαρτιού"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"Επιλέξτε τον τρόπο τροφοδοσίας χαρτιών (simplex / duplex.) Αφήστε κενό ανδεν "
-"υποστηρίζεται από την συσκευή σας."
+msgstr "Επιλέξτε τον τρόπο τροφοδοσίας χαρτιών (simplex / duplex.) Αφήστε κενό ανδεν υποστηρίζεται από την συσκευή σας."
 
 #: models/scanner_sources.py:61
 msgid "ADF mode"
@@ -614,9 +598,7 @@ msgstr "Ανέβασμα εγγράφου"
 
 #: settings.py:20
 msgid "File path to the scanimage program used to control image scanners."
-msgstr ""
-"Διαδρομή του προγράμματος που θα χρησιμοποιηθεί για τον έλεγχο των οπτικών "
-"αναγνωστών."
+msgstr "Διαδρομή του προγράμματος που θα χρησιμοποιηθεί για τον έλεγχο των οπτικών αναγνωστών."
 
 #: settings.py:27
 msgid ""
@@ -678,8 +660,8 @@ msgstr ""
 
 #: views.py:126 wizards.py:154
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 
 #: views.py:154 views.py:183 views.py:193
@@ -689,8 +671,8 @@ msgstr "Ιδιότητες εγγράφου"
 #: views.py:163
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 
 #: views.py:170
@@ -723,9 +705,7 @@ msgstr ""
 #: views.py:388
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
-msgstr ""
-"Η δυνατότητα ανεβάσματος νέας έκδοσης έχει απενεργοποιηθεί για το έγγραφο "
-"\"%s\""
+msgstr "Η δυνατότητα ανεβάσματος νέας έκδοσης έχει απενεργοποιηθεί για το έγγραφο \"%s\""
 
 #: views.py:441
 msgid "New document version queued for upload and will be available shortly."
@@ -733,8 +713,7 @@ msgstr ""
 
 #: views.py:481
 #, python-format
-msgid ""
-"Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
 #: views.py:484

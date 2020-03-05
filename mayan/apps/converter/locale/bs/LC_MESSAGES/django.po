@@ -1,0 +1,276 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
+# www.ping.ba <jomer@ping.ba>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-01 01:38-0400\n"
+"PO-Revision-Date: 2020-02-14 02:20+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: apps.py:22 permissions.py:7 settings.py:15
+msgid "Converter"
+msgstr "Konverter"
+
+#: apps.py:36 forms.py:25
+msgid "Transformation"
+msgstr "Transformacija"
+
+#: backends/python.py:158 backends/python.py:171
+#, python-format
+msgid "Exception determining PDF page count; %s"
+msgstr "Izuzetak određivanje broja stranice PDF-a;%s"
+
+#: backends/python.py:185
+#, python-format
+msgid "Exception determining page count using Pillow; %s"
+msgstr "Izuzetak određivanje broja stranice koristeć1 Pillow;%s"
+
+#: classes.py:125
+msgid "LibreOffice not installed or not found."
+msgstr "LibreOffice nije instaliran ili nije pronađen."
+
+#: classes.py:208
+msgid "Not an office file format."
+msgstr "Nije format kancelarijskog fajla."
+
+#: classes.py:336
+msgid ""
+"Transformations allow changing the visual appearance of documents without "
+"making permanent changes to the document file themselves."
+msgstr ""
+
+#: classes.py:384
+msgid "transformation"
+msgstr "transformacija"
+
+#: dependencies.py:16
+msgid "Utility from the poppler-utils package used to inspect PDF files."
+msgstr ""
+
+#: dependencies.py:21
+msgid ""
+"Utility from the popper-utils package used to extract pages from PDF files "
+"into PPM format images."
+msgstr ""
+
+#: forms.py:24
+msgid "Available transformations for this layer."
+msgstr ""
+
+#: forms.py:61
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr ""
+
+#: layers.py:12
+msgid "Saved transformations"
+msgstr ""
+
+#: links.py:18
+msgid "Delete"
+msgstr "Obriši"
+
+#: links.py:25
+msgid "Edit"
+msgstr "Urediti"
+
+#: links.py:29
+msgid "Transformations"
+msgstr "Transformacije"
+
+#: links.py:35
+msgid "Select new transformation"
+msgstr ""
+
+#: models.py:23 models.py:85
+msgid "Name"
+msgstr "Ime"
+
+#: models.py:26 models.py:81
+msgid "Order"
+msgstr "Sortiraj"
+
+#: models.py:34 models.py:50
+msgid "Stored layer"
+msgstr ""
+
+#: models.py:35
+msgid "Stored layers"
+msgstr ""
+
+#: models.py:47 models.py:93
+msgid "Enabled"
+msgstr "Omogućeno"
+
+#: models.py:56 models.py:75
+msgid "Object layer"
+msgstr ""
+
+#: models.py:57
+msgid "Object layers"
+msgstr ""
+
+#: models.py:79
+msgid ""
+"Order in which the transformations will be executed. If left unchanged, an "
+"automatic order value will be assigned."
+msgstr "Red u kojem će se transformacije izvršiti. Ako je ostalo nepromenjeno, biće dodeljena automatska vrijednost porudžbine."
+
+#: models.py:89
+msgid ""
+"Enter the arguments for the transformation as a YAML dictionary. ie: "
+"{\"degrees\": 180}"
+msgstr "Unesite argumente za transformaciju kao IAML rečnik. npr .: {\"stepeni\": 180}"
+
+#: models.py:91
+msgid "Arguments"
+msgstr "Argumenti"
+
+#: models.py:100
+msgid "Layer transformation"
+msgstr ""
+
+#: models.py:101
+msgid "Layer transformations"
+msgstr ""
+
+#: permissions.py:10
+msgid "Create new transformations"
+msgstr "Kreiraj nove transformacije"
+
+#: permissions.py:13
+msgid "Delete transformations"
+msgstr "Izbriši transformacije"
+
+#: permissions.py:16
+msgid "Edit transformations"
+msgstr "Edituj transformacije"
+
+#: permissions.py:19
+msgid "View existing transformations"
+msgstr "Pogledajte postojeće transformacije"
+
+#: settings.py:21
+msgid "Graphics conversion backend to use."
+msgstr "Grafička pretvorba grafike za upotrebu."
+
+#: settings.py:34
+msgid "Configuration options for the graphics conversion backend."
+msgstr "Opcije konfiguracije za backend konverziju grafike."
+
+#: transformations.py:99
+msgid "Crop"
+msgstr "Crop"
+
+#: transformations.py:177
+msgid "Draw rectangle"
+msgstr ""
+
+#: transformations.py:279
+msgid "Draw rectangle (percents coordinates)"
+msgstr ""
+
+#: transformations.py:376
+msgid "Flip"
+msgstr "Flip"
+
+#: transformations.py:387
+msgid "Gaussian blur"
+msgstr "Gaussian blur"
+
+#: transformations.py:397
+msgid "Line art"
+msgstr "Line art"
+
+#: transformations.py:408
+msgid "Mirror"
+msgstr "Ogledalo"
+
+#: transformations.py:419
+msgid "Resize"
+msgstr "Promjeni veličinu"
+
+#: transformations.py:446
+msgid "Rotate"
+msgstr "Rotiraj"
+
+#: transformations.py:472
+msgid "Rotate 90 degrees"
+msgstr "Rotirati 90 stepeni"
+
+#: transformations.py:483
+msgid "Rotate 180 degrees"
+msgstr "Rotirati 180 stepeni"
+
+#: transformations.py:494
+msgid "Rotate 270 degrees"
+msgstr "Rotirati 270 stepeni"
+
+#: transformations.py:504
+msgid "Unsharp masking"
+msgstr "Neoštećeno maskiranje"
+
+#: transformations.py:520
+msgid "Zoom"
+msgstr "Uvećaj"
+
+#: validators.py:23
+msgid "Enter a valid YAML value."
+msgstr "Unesite važeći IAML"
+
+#: views.py:62
+#, python-format
+msgid "Error creating transformation: %s."
+msgstr ""
+
+#: views.py:79
+#, python-format
+msgid ""
+"Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
+"%(object)s"
+msgstr ""
+
+#: views.py:140
+#, python-format
+msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
+msgstr "Izbriši transformaciju \"%(transformation)s\" za:%(content_object)s?"
+
+#: views.py:188
+#, python-format
+msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
+msgstr "Edituj transformaciju \"%(transformation)s\" za:%(content_object)s"
+
+#: views.py:242
+#, python-format
+msgid "There are no entries for layer \"%(layer_name)s\""
+msgstr ""
+
+#: views.py:245
+#, python-format
+msgid "Layer \"%(layer)s\" transformations for: %(object)s"
+msgstr ""
+
+#: views.py:293
+msgid "Transformation created successfully."
+msgstr ""
+
+#: views.py:314
+msgid "Select"
+msgstr "Odabrati"
+
+#: views.py:316
+#, python-format
+msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
+msgstr ""

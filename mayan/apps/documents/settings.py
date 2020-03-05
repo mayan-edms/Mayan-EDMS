@@ -9,10 +9,11 @@ from mayan.apps.smart_settings.classes import Namespace
 
 from .literals import (
     DEFAULT_DOCUMENTS_CACHE_MAXIMUM_SIZE, DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE,
-    DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES
+    DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES,
+    DEFAULT_STUB_EXPIRATION_INTERVAL
 )
+from .setting_callbacks import callback_update_cache_size
 from .setting_migrations import DocumentsSettingMigration
-from .utils import callback_update_cache_size
 
 namespace = Namespace(
     label=_('Documents'), migration_class=DocumentsSettingMigration,
@@ -143,6 +144,14 @@ setting_storage_backend_arguments = namespace.add_setting(
     global_name='DOCUMENTS_STORAGE_BACKEND_ARGUMENTS',
     default={'location': os.path.join(settings.MEDIA_ROOT, 'document_storage')},
     help_text=_('Arguments to pass to the DOCUMENT_STORAGE_BACKEND.')
+)
+setting_stub_expiration_interval = namespace.add_setting(
+    global_name='DOCUMENTS_STUB_EXPIRATION_INTERVAL',
+    default=DEFAULT_STUB_EXPIRATION_INTERVAL,
+    help_text=_(
+        'Time after which a document stub will be considered invalid and '
+        'deleted.'
+    )
 )
 setting_thumbnail_height = namespace.add_setting(
     global_name='DOCUMENTS_THUMBNAIL_HEIGHT', default='', help_text=_(

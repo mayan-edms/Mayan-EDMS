@@ -1,3 +1,82 @@
+3.3.15 (2020-03-05)
+===================
+- Add Docker environment setting ``MAYAN_SKIP_CHOWN_ON_STARTUP`` to skip
+  performing the initial chown on the media folder at `/var/lib/mayan`.
+  This command is slow on non native block storage backends.
+- Remove Wiki links from README files. GitLab Merge request !78.
+  Thanks Steffen Raisin (@zintor) for the merge request.
+- Add more API tests to the Tags app.
+- Expose Django settings: ``SECURE_PROXY_SSL_HEADER``,
+  ``USE_X_FORWARDED_HOST``, and ``USE_X_FORWARDED_PORT``.
+- Change the default of DATABASE_CONN_MAX_AGE to 0 which is the
+  safest value. https://docs.djangoproject.com/en/3.0/ref/settings/#conn-max-age
+- Update default Docker Compose file.
+- Correct the icon used for multi document cabinet add action.
+  GitLab merge !79. Thanks to  Giacomo Catenazzi (@cateee).
+- Add environment variable ``MAYAN_DOCKER_WAIT`` to have the Docker image
+  wait for a host and port to become available.
+- Turn hard-coded constant STUB_EXPIRATION_INTERVAL into a user setting named
+  ``DOCUMENTS_STUB_EXPIRATION_INTERVAL``. Defaults to previous value of 24
+  hours to preserve existing behavior.
+
+3.3.14 (2020-02-23)
+===================
+- Add missing backslash in deployment instructions.
+  Closes GitLab issue #780. Thanks to Steve Palmer (@steverpalmer)
+  for the report.
+- Update CI script to push multiple tags.
+- Remove Wiki link in the about view.
+- Remove social media links.
+- Add support link.
+- Add more expressive error message when an invalid storage argument
+  setting is encountered.
+- Make document language field a lazy field. This allows starting Mayan
+  even when there are invalid language codes in the DOCUMENTS_LANGUAGE_CODES
+  setting.
+- Warn about invalid document language codes in the DOCUMENTS_LANGUAGE_CODES
+  setting. Thanks to forum user @j_arquimbau for the report.
+- Add complete staging folder and staging folder file REST API. Closes GitLab
+  issue #778. Thanks to David Kowis (@dkowis) for the request.
+- Add the selenium Firefox geckodriver to the setup-dev-environment target.
+- Move the ``purgeperiodictasks`` command to the task manager app.
+- Remove left over ``interactive`` option usage for the ``purgeperiodictasks``
+  command. Closes GitLab issue #785. Thanks to Matthias Löblich (@startmat)
+  for the report.
+- Exclude ``/favicon.ico`` from the authenticated URL list. Closes GitLab
+  issue #786. Thanks to Matthias Löblich (@startmat) for the report.
+- Rename test document creation method for clarity.
+
+3.3.13 (2020-02-14)
+===================
+- Update management command interface. Subclasses of BaseCommand no longer
+  have an 'interactive' option.
+- Update usage of is_authenticated as it is now only a property. This is
+  recommended for Django 1.11 and will be required in Django 2.0.
+- Convert URL to string before redirect in the sources app wizard.
+  Recommend for Django 1.11 and required for Django 2.0.
+- Update Django to version 1.1.28
+  (https://docs.djangoproject.com/en/3.0/releases/1.11.28/)
+- Prioritize Mayan's translations over Django's built in ones.
+  Fixes GitLab issue #734. Thanks to Roberto Novaes (@rvnovaes)
+  for the report.
+- Add make file target to remove fuzzy translation markers.
+- Move the language files for the Bosnian language from
+  the bs_BA locale to the bs locale.
+- Move the language files for the Slovenian language from
+  the sl_SI locale to the sl locale.
+- Move the language files for the Vietnamese language from
+  the vi_VN locale to the vi locale.
+- Move the language files for the Dutch language from
+  the nl_NL locale to the nl locale.
+- Move the language files for the Danish language from
+  the da_DK locale to the da locale.
+- Add make file target to cleanup source translation files.
+- Cleanup minor but frequent translation files issues accumulated by the
+  automatic tools. Many new text string are now available for translation.
+- Update the doToastrMessages to avoid appending new style updated
+  indefinitely on list sort updates. Closes GitLab issue #772. Thanks
+  to Matthias Löblich (@startmat) for the report and debug information.
+
 3.3.12 (2020-02-10)
 ===================
 - Fix issue with the template object count logic introduced in the
@@ -142,8 +221,8 @@
 - Add new test case BaseTransactionTestCase.
 - Improve file metadata driver database registration. Improve indexing
   based on file metadata properties. Improves GitLab issue #720 on the
-  signal commit side of the indexing. Thanks to Rob de Canha-Knight (@rssfed23)
-  for the report and debug information.
+  signal commit side of the indexing. Thanks to Rob de Canha-Knight
+  (@rssfed23) for the report and debug information.
 - Replicate transaction handling improvements from the file metadata app to
   the OCR and document parsing apps.
 - Initialize indexes in a predictable way. Solves GitLab issue #720 Thanks
@@ -151,10 +230,10 @@
 - Make file metadata StoredDriver fields unique. Relates to GitLab issue #720
   Thanks to Rob de Canha-Knight (@rssfed23) for the report and debug
   information.
-- Fix the POP3 source under Python 3. GitLab issue #724. Thanks to Kevin Pawsey
-  (@kevinpawsey) for the report and debug information.
-- Merge NFS troubleshooting section. Thanks to Rob de Canha-Knight (@rssfed23).
-  GitLab merge !67.
+- Fix the POP3 source under Python 3. GitLab issue #724. Thanks to Kevin
+  Pawsey (@kevinpawsey) for the report and debug information.
+- Merge NFS troubleshooting section. Thanks to Rob de Canha-Knight
+  (@rssfed23). GitLab merge !67.
 - Improve mirroring code to support slashes in index node values and document
   labels and also support duplicate nodes values or documents labels. Slashes
   are replaced with underscores. To handle duplicates, the primary key of
@@ -1627,8 +1706,10 @@
 - Only show the new document link if the user has access to create documents
   of at least one document type. GitLab Issue #302. Thanks to kg @kgraves.
 - Support passing arguments to the document, document cache and document
-  signatures storage backends. New settings: DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,
-  DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS, SIGNATURES_STORAGE_BACKEND_ARGUMENTS
+  signatures storage backends. New settings:
+  DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,
+  DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS,
+  SIGNATURES_STORAGE_BACKEND_ARGUMENTS.
 - Remove the setting STORAGE_FILESTORAGE_LOCATION. Document storage
   location for the storage.backend.filebasedstorage.FileBasedStorage
   backdend must now passed via the DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,

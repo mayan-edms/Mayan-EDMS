@@ -408,6 +408,6 @@ SettingNamespaceSingleton.register_setting(
 )
 SettingNamespaceSingleton.register_setting(
     name='DATABASE_CONN_MAX_AGE', klass=BaseSetting, kwargs={
-        'has_default': True, 'default_value': None
+        'has_default': True, 'default_value': 0
     }
 )

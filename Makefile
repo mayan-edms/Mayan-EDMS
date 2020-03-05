@@ -171,6 +171,12 @@ docs-spellcheck: ## Spellcheck the documentation.
 
 # Translations
 
+translations-source-clear: ## Clear the msgstr of the source file
+	@sed -i -E  's/msgstr ".+"/msgstr ""/g' `grep -E 'msgstr ".+"' mayan/apps/*/locale/en/*/django.po | cut -d: -f 1` > /dev/null 2>&1  || true
+
+translations-fuzzy-remove: ## Remove fuzzy makers
+	sed -i  '/#, fuzzy/d' mayan/apps/*/locale/*/LC_MESSAGES/django.po
+
 translations-make: ## Refresh all translation files.
 	contrib/scripts/process_messages.py -m
 
@@ -184,7 +190,7 @@ translations-pull: ## Download all translation files from Transifex.
 	tx pull -f
 
 translations-all: ## Execute all translations targets.
-translations-all: translations-make translations-push translations-pull translations-compile
+translations-all: translations-source-clear translations-fuzzy-remove translations-make translations-push translations-pull translations-compile
 
 # Releases
 
@@ -411,5 +417,6 @@ check-missing-migrations: ## Make sure all models have proper migrations.
 
 setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
 	pip install -r requirements.txt -r requirements/development.txt -r requirements/testing-base.txt -r requirements/documentation.txt -r requirements/build.txt
+	sudo apt-get install -y firefox-geckodriver
 
 -include docker/Makefile

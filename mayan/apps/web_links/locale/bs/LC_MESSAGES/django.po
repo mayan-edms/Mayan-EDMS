@@ -1,0 +1,161 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-01 01:43-0400\n"
+"PO-Revision-Date: 2019-12-03 05:24+0000\n"
+"Last-Translator: Roberto Rosario, 2020\n"
+"Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: apps.py:39
+msgid "Links"
+msgstr ""
+
+#: events.py:8 links.py:16 links.py:51 links.py:56 links.py:60 models.py:43
+#: permissions.py:7 views.py:154
+msgid "Web links"
+msgstr ""
+
+#: events.py:12
+msgid "Web link created"
+msgstr ""
+
+#: events.py:15
+msgid "Web link edited"
+msgstr ""
+
+#: events.py:18
+msgid "Web link navigated"
+msgstr ""
+
+#: links.py:22 views.py:194
+msgid "Create new web link"
+msgstr ""
+
+#: links.py:28
+msgid "Delete"
+msgstr "Obriši"
+
+#: links.py:34 models.py:35
+msgid "Document types"
+msgstr "Tipovi dokumenta"
+
+#: links.py:40
+msgid "Edit"
+msgstr "Urediti"
+
+#: links.py:46
+msgid "Navigate"
+msgstr ""
+
+#: models.py:23
+msgid "A short text describing the web link."
+msgstr ""
+
+#: models.py:24
+msgid "Label"
+msgstr "Labela"
+
+#: models.py:28
+msgid "Template that will be used to craft the final URL of the web link."
+msgstr ""
+
+#: models.py:30
+msgid "Template"
+msgstr ""
+
+#: models.py:32
+msgid "Enabled"
+msgstr "Omogućeno"
+
+#: models.py:42
+msgid "Web link"
+msgstr ""
+
+#: permissions.py:10
+msgid "Create new web links"
+msgstr ""
+
+#: permissions.py:13
+msgid "Delete web links"
+msgstr ""
+
+#: permissions.py:16
+msgid "Edit web links"
+msgstr ""
+
+#: permissions.py:19
+msgid "View existing web links"
+msgstr ""
+
+#: permissions.py:22
+msgid "View web link instances"
+msgstr ""
+
+#: views.py:44
+msgid "Available web links"
+msgstr ""
+
+#: views.py:45
+msgid "Web links enabled"
+msgstr ""
+
+#: views.py:77
+#, python-format
+msgid "Web links to enable for document type: %s"
+msgstr ""
+
+#: views.py:119
+msgid "Available document types"
+msgstr "Dostupni tipovi dokumenta"
+
+#: views.py:120
+msgid "Document types enabled"
+msgstr "Tipovi dokumenata su omogućeni"
+
+#: views.py:130
+#, python-format
+msgid "Document type for which to enable web link: %s"
+msgstr ""
+
+#: views.py:147 views.py:176
+msgid ""
+"Web links allow generating HTTP links from documents to external resources. "
+"The link URL's can contain document properties values."
+msgstr ""
+
+#: views.py:152
+msgid "There are no web links"
+msgstr ""
+
+#: views.py:181
+msgid "There are no web links for this document"
+msgstr ""
+
+#: views.py:184
+#, python-format
+msgid "Web links for document: %s"
+msgstr ""
+
+#: views.py:215
+#, python-format
+msgid "Delete web link: %s"
+msgstr ""
+
+#: views.py:230
+#, python-format
+msgid "Edit web link: %s"
+msgstr ""

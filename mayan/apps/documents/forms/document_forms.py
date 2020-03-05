@@ -58,14 +58,6 @@ class DocumentForm(forms.ModelForm):
     class Meta:
         fields = ('label', 'description', 'language')
         model = Document
-        widgets = {
-            'language': forms.Select(
-                choices=get_language_choices(), attrs={
-                    'class': 'select2'
-                }
-            )
-
-        }
 
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type', None)
@@ -102,6 +94,12 @@ class DocumentForm(forms.ModelForm):
                     'extensions to open document correctly.'
                 )
             )
+
+        self.fields['language'].widget = forms.Select(
+            choices=get_language_choices(), attrs={
+                'class': 'select2'
+            }
+        )
 
     def clean(self):
         self.cleaned_data['label'] = self.get_final_label(

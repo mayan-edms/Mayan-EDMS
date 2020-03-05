@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:51-0400\n"
+"POT-Creation-Date: 2020-03-01 01:40-0400\n"
 "PO-Revision-Date: 2019-12-13 05:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:42
@@ -170,8 +169,7 @@ msgstr "Errore generando l'etichetta dinamica; %s"
 
 #: models.py:101
 msgid "This smart link is not allowed for the selected document's type."
-msgstr ""
-"Questo link intelligente non è consentito per questo tipo di documento."
+msgstr "Questo link intelligente non è consentito per questo tipo di documento."
 
 #: models.py:178
 msgid "The inclusion is ignored for the first item."
@@ -187,8 +185,8 @@ msgstr "Attributo documento esterno"
 
 #: models.py:188
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 
 #: models.py:190
@@ -239,9 +237,7 @@ msgstr "Vista  intelligente dei link esistenti"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr ""
-"Lista separata da virgole di chiavi primarie di tipi documento da allegare a "
-"questo smart link."
+msgstr "Lista separata da virgole di chiavi primarie di tipi documento da allegare a questo smart link."
 
 #: serializers.py:141
 #, python-format
@@ -273,11 +269,8 @@ msgstr "Documenti nel link intelligente: %s"
 
 #: views.py:135
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr ""
-"Documenti nel link intelligente: \"%(smart_link)s\" è correlato con "
-"\"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "Documenti nel link intelligente: \"%(smart_link)s\" è correlato con \"%(document)s\""
 
 #: views.py:160
 msgid "Available document types"

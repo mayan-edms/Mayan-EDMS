@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:47-0400\n"
-"PO-Revision-Date: 2019-12-22 05:04+0000\n"
+"POT-Creation-Date: 2020-03-01 01:37-0400\n"
+"PO-Revision-Date: 2020-02-21 05:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -98,7 +98,7 @@ msgstr "Pagina non trovata"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Scusa ma la pagina richiesta non è disponibile"
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:55
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:56
 msgid "Server error"
 msgstr "Errore del server"
 
@@ -112,7 +112,7 @@ msgstr "C'è stato un errore. Questo è stato riportato all'amministratore del s
 msgid "About"
 msgstr "Informazioni"
 
-#: templates/appearance/about.html:77
+#: templates/appearance/about.html:73
 #, python-format
 msgid ""
 "\n"
@@ -120,20 +120,20 @@ msgid ""
 "                "
 msgstr "\n%(setting_project_title)s è basato su %(project_title)s"
 
-#: templates/appearance/about.html:82
+#: templates/appearance/about.html:78
 msgid "Version"
 msgstr "Versione"
 
-#: templates/appearance/about.html:84
+#: templates/appearance/about.html:80
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr "Build numbero: %(build_number)s"
 
-#: templates/appearance/about.html:97
+#: templates/appearance/about.html:93
 msgid "Released under the license:"
 msgstr "Rilasciato sotto la licenza:"
 
-#: templates/appearance/about.html:103
+#: templates/appearance/about.html:99
 #, python-format
 msgid ""
 "\n"
@@ -141,38 +141,23 @@ msgid ""
 "            "
 msgstr "\n%(project_title)s è un software libero e open-source fatto con <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> da Roberto Rosario e altri collaboratori."
 
-#: templates/appearance/about.html:109
+#: templates/appearance/about.html:105
 #, python-format
 msgid ""
 "\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is. We need all the help we can get!\n"
-"            "
-msgstr "\nServe un grande sforzo per rendere %(project_title)s così ricco di funzionalità. Abbiamo bisogno di tutto l'aiuto possibie!"
-
-#: templates/appearance/about.html:115
-#, python-format
-msgid ""
-"\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">consider making a donation %(icon_social_paypal)s</a>\n"
-"            "
-msgstr "\nSe usi %(project_title)s puoi <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">pensare di fare una donazione %(icon_social_paypal)s</a>"
-
-#: templates/appearance/about.html:121
-#, python-format
-msgid ""
-"\n"
-"                You can also <a class=\"new_window\" href=\"https://www.paypal.com/paypalme2/RobertoRosario\">donate directly to the creator and lead developer.  %(icon_social_paypal)s</a>\n"
+"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
 msgstr ""
 
-#: templates/appearance/about.html:127
+#: templates/appearance/about.html:111
+#, python-format
 msgid ""
 "\n"
-"                Besides donations you can also support the project by <a class=\"new_window\" href=\"https://sellfy.com/p/um2fkx/\">purchasing a copy of the book \"Exploring Mayan EDMS\" by Roberto Rosario</a>.\n"
+"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
 msgstr ""
 
-#: templates/appearance/about.html:133
+#: templates/appearance/about.html:117
 #, python-format
 msgid ""
 "\n"
@@ -180,15 +165,15 @@ msgid ""
 "            "
 msgstr "\nLa lista completa dei cambiamenti è disponibile nelle <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Note di rilascio %(icon_documentation)s</a> o in versione più breve nel <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>."
 
-#: templates/appearance/about.html:139
+#: templates/appearance/about.html:123
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a> or the <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki %(icon_wiki)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr "\nPer dubbi o domande guarda la <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">documentazione %(icon_documentation)s</a> o il <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki %(icon_wiki)s</a>."
+msgstr ""
 
-#: templates/appearance/about.html:145
+#: templates/appearance/about.html:129
 #, python-format
 msgid ""
 "\n"
@@ -196,14 +181,13 @@ msgid ""
 "            "
 msgstr "\nSe trovi un bug o hai un'idea per una nuova funzionalità, visita il <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> o apri un ticket nel <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">repository del codice %(icon_source_code)s</a>."
 
-#: templates/appearance/about.html:150
+#: templates/appearance/about.html:134
 #, python-format
 msgid ""
 "\n"
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
-"                Follow us on <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, or <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n"
 "            "
-msgstr "\nDiffondi il verbo. Dillo ai tuoi amici e colleghi quanto è bello %(project_title)s!\nSeguici su <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>,  <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a> o <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>"
+msgstr ""
 
 #: templates/appearance/base.html:35 templates/appearance/base.html:59
 msgid "Warning"
@@ -320,15 +304,15 @@ msgstr "Cambia navigazione"
 msgid "No results"
 msgstr "Nessun risultato"
 
-#: templates/appearance/root.html:60
+#: templates/appearance/root.html:61
 msgid "Close"
 msgstr "Chiudi"
 
-#: templates/appearance/root.html:68
+#: templates/appearance/root.html:71
 msgid "Server communication error"
 msgstr "Errore di comunicazione del Server"
 
-#: templates/appearance/root.html:70
+#: templates/appearance/root.html:73
 msgid "Check you network connection and try again in a few moments."
 msgstr "Controlla la connessione di rete e riprova"
 

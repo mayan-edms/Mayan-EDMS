@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:53-0400\n"
+"POT-Creation-Date: 2020-03-01 01:43-0400\n"
 "PO-Revision-Date: 2019-10-18 11:58+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:51 apps.py:103 apps.py:110 apps.py:132 apps.py:134 events.py:7
 #: forms.py:17 links.py:25 menus.py:16 models.py:42 permissions.py:7
@@ -142,17 +140,13 @@ msgstr "Odebrat značky z dokumentů"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr ""
-"Čárkami oddělený seznam primárních klíčů dokumentu, ke kterým bude tato "
-"značka připojena."
+msgstr "Čárkami oddělený seznam primárních klíčů dokumentu, ke kterým bude tato značka připojena."
 
 #: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr ""
-"URL API směřující ke značce ve vztahu k dokumentu k ní připojenému. Tato "
-"adresa URL je jiná než kanonická adresa značky."
+msgstr "URL API směřující ke značce ve vztahu k dokumentu k ní připojenému. Tato adresa URL je jiná než kanonická adresa značky."
 
 #: serializers.py:105
 msgid "Primary key of the tag to be added."
@@ -250,9 +244,7 @@ msgstr "Upravit značku: %s"
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr ""
-"Značky jsou barevně označené vlastnosti, které lze připojit nebo odebrat z "
-"dokumentů."
+msgstr "Značky jsou barevně označené vlastnosti, které lze připojit nebo odebrat z dokumentů."
 
 #: views.py:221
 msgid "No tags available"
@@ -312,8 +304,7 @@ msgstr "Dokument „%(document)s“ nebyl označen jako „%(tag)s"
 #: views.py:370
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr ""
-"Značka \"%(tag)s\" byla úspěšně odstraněna z dokumentu \"%(document)s\"."
+msgstr "Značka \"%(tag)s\" byla úspěšně odstraněna z dokumentu \"%(document)s\"."
 
 #: wizard_steps.py:17
 msgid "Select tags"

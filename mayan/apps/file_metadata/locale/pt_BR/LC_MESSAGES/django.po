@@ -2,27 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2019
 # Aline Freitas <aline@alinefreitas.com.br>, 2019
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2019
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
-#
-#, fuzzy
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:51-0400\n"
+"POT-Creation-Date: 2020-03-01 01:40-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
-"teams/13584/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin.py:15
@@ -202,18 +200,18 @@ msgstr "Argumentos para os drivers"
 
 #: views.py:35
 msgid ""
-"File metadata are the attributes of the document's file. They can range from "
-"camera information used to take a photo to the author that created a file. "
+"File metadata are the attributes of the document's file. They can range from"
+" camera information used to take a photo to the author that created a file. "
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
 msgstr ""
 "Metadados do arquivo são atributos do arquivo do documento. Eles podem ser "
-"desde informações da câmera usada para tirar a foto até o author que criou o "
-"arquivo. Metadados do arquivos são inicialmente definidos quando o documento "
-"é inicialmente criado. Os atributos de metadados residem no arquivo em si. "
-"Eles não são a mesma coisa que os metadados do documento, que são definidos "
-"pelo usuário e são armazenados no banco de dados."
+"desde informações da câmera usada para tirar a foto até o author que criou o"
+" arquivo. Metadados do arquivos são inicialmente definidos quando o "
+"documento é inicialmente criado. Os atributos de metadados residem no "
+"arquivo em si. Eles não são a mesma coisa que os metadados do documento, que"
+" são definidos pelo usuário e são armazenados no banco de dados."
 
 #: views.py:43 views.py:62
 msgid "No file metadata available."
@@ -233,7 +231,8 @@ msgstr ""
 #: views.py:88
 msgid "Submit the selected document to the file metadata queue?"
 msgid_plural "Submit the selected documents to the file metadata queue?"
-msgstr[0] "Enviar o documento selecionado para a fila de metadados de arquivo?"
+msgstr[0] ""
+"Enviar o documento selecionado para a fila de metadados de arquivo?"
 msgstr[1] ""
 "Enviar os documentos selecionados para a fila de metadados de arquivo?"
 

@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:51-0400\n"
+"POT-Creation-Date: 2020-03-01 01:40-0400\n"
 "PO-Revision-Date: 2019-12-04 17:35+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:10 settings.py:9
@@ -45,9 +44,7 @@ msgstr "Заключвания"
 
 #: settings.py:14
 msgid "Path to the class to use when to request and release resource locks."
-msgstr ""
-"Път към класа, който да се използва, при заявка и освобождаване заключването "
-"на ресурси."
+msgstr "Път към класа, който да се използва, при заявка и освобождаване заключването на ресурси."
 
 #: settings.py:20
 msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
@@ -57,6 +54,4 @@ msgstr "Аргументи за предаване към LOCK_MANAGER_BACKEND."
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."
-msgstr ""
-"Период по подразбиране в секунди, след което заключването на ресурсите ще "
-"бъде автоматично освободено."
+msgstr "Период по подразбиране в секунди, след което заключването на ресурсите ще бъде автоматично освободено."

@@ -1,0 +1,319 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# kontrabant <kontrabant@gmail.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-01 01:37-0400\n"
+"PO-Revision-Date: 2020-02-21 05:39+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#: apps.py:11 settings.py:9
+msgid "Appearance"
+msgstr "Videz"
+
+#: dependencies.py:10
+msgid "Lato font"
+msgstr ""
+
+#: dependencies.py:14
+msgid "Bootstrap"
+msgstr ""
+
+#: dependencies.py:18
+msgid "Bootswatch"
+msgstr ""
+
+#: dependencies.py:32
+msgid "Fancybox"
+msgstr ""
+
+#: dependencies.py:36
+msgid "FontAwesome"
+msgstr ""
+
+#: dependencies.py:40
+msgid "jQuery"
+msgstr ""
+
+#: dependencies.py:43
+msgid "JQuery Form"
+msgstr ""
+
+#: dependencies.py:47
+msgid "jQuery Lazy Load"
+msgstr ""
+
+#: dependencies.py:51
+msgid "JQuery Match Height"
+msgstr ""
+
+#: dependencies.py:55
+msgid "Select 2"
+msgstr ""
+
+#: dependencies.py:59
+msgid "Toastr"
+msgstr ""
+
+#: dependencies.py:62
+msgid "URI.js"
+msgstr ""
+
+#: settings.py:14
+msgid "Maximum number of characters that will be displayed as the view title."
+msgstr ""
+
+#: settings.py:21
+msgid ""
+"Position where the system message will be displayed. Options are: top-left, "
+"top-center, top-right, bottom-left, bottom-center, bottom-right."
+msgstr ""
+
+#: templates/403.html:5 templates/403.html:9
+msgid "Insufficient permissions"
+msgstr "Nezadostna dovoljenja"
+
+#: templates/403.html:11
+msgid "You don't have enough permissions for this operation."
+msgstr "Za to operacijo nimate dovolj pravic."
+
+#: templates/404.html:5 templates/404.html:9
+msgid "Page not found"
+msgstr "Stran ni najdena"
+
+#: templates/404.html:11
+msgid "Sorry, but the requested page could not be found."
+msgstr "Žal, toda zahtevane strani ni bilo mogoče najti."
+
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:56
+msgid "Server error"
+msgstr "Napaka strežnika"
+
+#: templates/500.html:11
+msgid ""
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr "Prišlo je do napake. Sporočena je administratorjem spletnega mesta po elektronski pošti in naj bi bila kmalu odpravljena. Hvala za potrpljenje."
+
+#: templates/appearance/about.html:10
+msgid "About"
+msgstr " O programu"
+
+#: templates/appearance/about.html:73
+#, python-format
+msgid ""
+"\n"
+"                    %(setting_project_title)s is based on %(project_title)s\n"
+"                "
+msgstr ""
+
+#: templates/appearance/about.html:78
+msgid "Version"
+msgstr "Različica"
+
+#: templates/appearance/about.html:80
+#, python-format
+msgid "Build number: %(build_number)s"
+msgstr "Številka izgradnje: %(build_number)s"
+
+#: templates/appearance/about.html:93
+msgid "Released under the license:"
+msgstr ""
+
+#: templates/appearance/about.html:99
+#, python-format
+msgid ""
+"\n"
+"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:105
+#, python-format
+msgid ""
+"\n"
+"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:111
+#, python-format
+msgid ""
+"\n"
+"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:117
+#, python-format
+msgid ""
+"\n"
+"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:123
+#, python-format
+msgid ""
+"\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:129
+#, python-format
+msgid ""
+"\n"
+"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:134
+#, python-format
+msgid ""
+"\n"
+"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
+"            "
+msgstr ""
+
+#: templates/appearance/base.html:35 templates/appearance/base.html:59
+msgid "Warning"
+msgstr ""
+
+#: templates/appearance/base.html:49
+msgid "Click here to fix this."
+msgstr ""
+
+#: templates/appearance/base.html:59
+msgid ""
+"Settings updated, restart your installation and refresh your browser for "
+"changes to take effect."
+msgstr ""
+
+#: templates/appearance/base.html:72
+#: templates/appearance/generic_list_items_subtemplate.html:66
+msgid "Actions"
+msgstr "Akcije"
+
+#: templates/appearance/base.html:74
+#: templates/appearance/generic_list_items_subtemplate.html:68
+#: templates/appearance/list_toolbar.html:67
+msgid "Toggle Dropdown"
+msgstr "Preklopi spustni seznam"
+
+#: templates/appearance/calculate_form_title.html:10
+msgid "Open main menu"
+msgstr ""
+
+#: templates/appearance/generic_confirm.html:14
+msgid "Are you sure?"
+msgstr ""
+
+#: templates/appearance/generic_confirm.html:38
+msgid "Yes"
+msgstr "Da"
+
+#: templates/appearance/generic_confirm.html:48
+msgid "No"
+msgstr "Ne"
+
+#: templates/appearance/generic_form_instance.html:51
+#: templates/appearance/generic_form_instance.html:57
+#: templates/appearance/generic_form_subtemplate.html:50
+#: templates/appearance/generic_multiform_subtemplate.html:37
+msgid "required"
+msgstr "zahtevano"
+
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
+#: templates/appearance/generic_multiform_subtemplate.html:59
+msgid "Save"
+msgstr "Shrani"
+
+#: templates/appearance/generic_form_subtemplate.html:83
+#: templates/appearance/generic_form_subtemplate.html:96
+#: templates/appearance/generic_multiform_subtemplate.html:59
+msgid "Submit"
+msgstr "Pošlji"
+
+#: templates/appearance/generic_form_subtemplate.html:87
+#: templates/appearance/generic_multiform_subtemplate.html:63
+msgid "Cancel"
+msgstr "Prekliči"
+
+#: templates/appearance/generic_list_subtemplate.html:28
+msgid "Identifier"
+msgstr "Identifikator"
+
+#: templates/appearance/home.html:10
+msgid "Dashboard"
+msgstr "Nadzorna plošča"
+
+#: templates/appearance/home.html:26
+msgid "Getting started"
+msgstr ""
+
+#: templates/appearance/home.html:29
+msgid "Before you can fully use Mayan EDMS you need the following:"
+msgstr ""
+
+#: templates/appearance/list_header.html:12
+#, python-format
+msgid ""
+"Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
+"%(total_pages)s)"
+msgstr "Skupaj (%(start)s - %(end)s od %(total)s) (Stran %(page_number)s od %(total_pages)s)"
+
+#: templates/appearance/list_header.html:14
+#: templates/appearance/list_header.html:17
+#, python-format
+msgid "Total: %(total)s"
+msgstr "Skupaj: %(total)s"
+
+#: templates/appearance/list_toolbar.html:16
+msgid "Select/Deselect all"
+msgstr ""
+
+#: templates/appearance/list_toolbar.html:60
+msgid ""
+"Select items to activate bulk actions. Use Shift + click to select many."
+msgstr ""
+
+#: templates/appearance/list_toolbar.html:65
+msgid "Bulk actions"
+msgstr ""
+
+#: templates/appearance/menu_topbar.html:11
+msgid "Toggle navigation"
+msgstr "Preklopi navigacijo"
+
+#: templates/appearance/no_results.html:18
+msgid "No results"
+msgstr "Ni rezultatov"
+
+#: templates/appearance/root.html:61
+msgid "Close"
+msgstr ""
+
+#: templates/appearance/root.html:71
+msgid "Server communication error"
+msgstr ""
+
+#: templates/appearance/root.html:73
+msgid "Check you network connection and try again in a few moments."
+msgstr ""
+
+#: templatetags/appearance_tags.py:17
+msgid "None"
+msgstr "Brez"

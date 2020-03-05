@@ -22,9 +22,9 @@ APP_LIST = (
 )
 
 LANGUAGE_LIST = (
-    'ar', 'bg', 'bs_BA', 'cs', 'da_DK', 'de_DE', 'en', 'es', 'el', 'fa', 'fr',
-    'hu', 'id', 'it', 'lv', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl_SI',
-    'tr_TR', 'vi_VN', 'zh_Hans',
+    'ar', 'bg', 'bs', 'cs', 'da', 'de_DE', 'en', 'es', 'el', 'fa', 'fr',
+    'hu', 'id', 'it', 'lv', 'nl', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl',
+    'tr_TR', 'vi', 'zh_Hans',
 )
 
 makemessages = sh.Command('django-admin.py')

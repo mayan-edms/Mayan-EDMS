@@ -23,7 +23,7 @@ __all__ = ('DocumentTestMixin',)
 
 
 class DocumentTestMixin(object):
-    auto_create_document_type = True
+    auto_create_test_document_type = True
     auto_upload_document = True
     test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
     test_document_path = None
@@ -34,8 +34,8 @@ class DocumentTestMixin(object):
 
         self.test_documents = []
 
-        if self.auto_create_document_type:
-            self._create_document_type()
+        if self.auto_create_test_document_type:
+            self._create_test_document_type()
 
             if self.auto_upload_document:
                 self.upload_document()
@@ -45,7 +45,7 @@ class DocumentTestMixin(object):
             document_type.delete()
         super(DocumentTestMixin, self).tearDown()
 
-    def _create_document_type(self):
+    def _create_test_document_type(self):
         self.test_document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:48-0400\n"
-"PO-Revision-Date: 2020-02-06 10:18+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
+"POT-Creation-Date: 2020-03-01 01:38-0400\n"
+"PO-Revision-Date: 2020-02-21 05:40+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:86 permissions_runtime.py:7 settings.py:15
+#: apps.py:87 permissions_runtime.py:7 settings.py:15
 msgid "Common"
 msgstr "Společný"
 
@@ -168,8 +168,8 @@ msgid "Source code"
 msgstr "Zdrojový kód"
 
 #: links.py:83
-msgid "Support"
-msgstr "Podpora"
+msgid "Get support"
+msgstr ""
 
 #: links.py:87 queues.py:15 views.py:214
 msgid "Tools"

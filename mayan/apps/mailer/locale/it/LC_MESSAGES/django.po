@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:51-0400\n"
+"POT-Creation-Date: 2020-03-01 01:41-0400\n"
 "PO-Revision-Date: 2019-12-13 05:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:42
@@ -45,8 +44,8 @@ msgstr ""
 
 #: forms.py:60 forms.py:124
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
 msgstr ""
 
 #: forms.py:62 forms.py:126
@@ -124,11 +123,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Allegato a questa mail è il documento: {{ document }}\n"
-"\n"
-" --------\n"
-"Questa mail è stata inviata da %(project_title)s (%(project_website)s)"
+msgstr "Allegato a questa mail è il documento: {{ document }}\n\n --------\nQuesta mail è stata inviata da %(project_title)s (%(project_website)s)"
 
 #: literals.py:11
 msgid "Document: {{ document }}"
@@ -141,11 +136,7 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Per accedere al documento fai click sul seguente link: {{ link }}\n"
-"\n"
-"--------\n"
-"Questa mail è stata inviata da %(project_title)s (%(project_website)s)"
+msgstr "Per accedere al documento fai click sul seguente link: {{ link }}\n\n--------\nQuesta mail è stata inviata da %(project_title)s (%(project_website)s)"
 
 #: literals.py:17
 msgid "Link for document: {{ document }}"
@@ -157,8 +148,8 @@ msgstr ""
 
 #: mailers.py:26 mailers.py:115
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value "
-"is not set."
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
 msgstr ""
 
 #: mailers.py:32
@@ -197,8 +188,8 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
 msgstr ""
 
 #: mailers.py:64
@@ -218,8 +209,8 @@ msgstr "Password"
 #: mailers.py:76
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
 msgstr ""
 
 #: mailers.py:85
@@ -346,9 +337,7 @@ msgstr ""
 
 #: settings.py:26
 msgid "Template for the document link email form subject line."
-msgstr ""
-"Template per l'oggetto del modulo e-mail per l'invio del collegamento al "
-"documento."
+msgstr "Template per l'oggetto del modulo e-mail per l'invio del collegamento al documento."
 
 #: settings.py:31
 msgid "Template for the document link email form body text. Can include HTML."
@@ -440,8 +429,9 @@ msgstr ""
 
 #: workflow_actions.py:32
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon. A template can be used to reference properties of the document."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
 msgstr ""
 
 #: workflow_actions.py:43

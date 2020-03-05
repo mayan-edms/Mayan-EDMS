@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-01 01:39-0400\n"
+"PO-Revision-Date: 2019-05-17 05:50+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:39 events.py:8
+msgid "Document comments"
+msgstr ""
+
+#: apps.py:84 apps.py:88 links.py:33 models.py:45 permissions.py:7
+msgid "Comments"
+msgstr ""
+
+#: events.py:12
+msgid "Document comment created"
+msgstr ""
+
+#: events.py:15
+msgid "Document comment deleted"
+msgstr ""
+
+#: events.py:18
+msgid "Document comment edited"
+msgstr ""
+
+#: links.py:18
+msgid "Add comment"
+msgstr ""
+
+#: links.py:24
+msgid "Delete"
+msgstr ""
+
+#: links.py:29
+msgid "Edit"
+msgstr ""
+
+#: models.py:28
+msgid "Document"
+msgstr ""
+
+#: models.py:32 models.py:68
+msgid "User"
+msgstr ""
+
+#. Translators: Comment here is a noun and refers to the actual text stored
+#: models.py:35 models.py:44
+msgid "Comment"
+msgstr ""
+
+#: models.py:38
+msgid "Date time submitted"
+msgstr ""
+
+#: permissions.py:10
+msgid "Create new comments"
+msgstr ""
+
+#: permissions.py:13
+msgid "Delete comments"
+msgstr ""
+
+#: permissions.py:16
+msgid "Edit comments"
+msgstr ""
+
+#: permissions.py:19
+msgid "View comments"
+msgstr ""
+
+#: views.py:33
+#, python-format
+msgid "Add comment to document: %s"
+msgstr ""
+
+#: views.py:70
+#, python-format
+msgid "Delete comment: %s?"
+msgstr ""
+
+#: views.py:92
+#, python-format
+msgid "Details for comment: %s?"
+msgstr ""
+
+#: views.py:110
+#, python-format
+msgid "Edit comment: %s?"
+msgstr ""
+
+#: views.py:135
+msgid ""
+"Document comments are timestamped text entries from users. They are great "
+"for collaboration."
+msgstr ""
+
+#: views.py:138
+msgid "There are no comments"
+msgstr ""
+
+#: views.py:140
+#, python-format
+msgid "Comments for document: %s"
+msgstr ""

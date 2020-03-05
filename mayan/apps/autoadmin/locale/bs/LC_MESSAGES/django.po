@@ -1,0 +1,101 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-01 01:37-0400\n"
+"PO-Revision-Date: 2019-04-14 04:06+0000\n"
+"Last-Translator: Roberto Rosario, 2020\n"
+"Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: apps.py:15 settings.py:9
+msgid "Auto administrator"
+msgstr ""
+
+#: auth/allauth.py:54
+msgid ""
+"Welcome Admin! You have been given superuser privileges. Use them with "
+"caution."
+msgstr ""
+
+#: models.py:15
+msgid "Account"
+msgstr ""
+
+#: models.py:18
+msgid "Password"
+msgstr "Lozinka"
+
+#: models.py:21
+msgid "Password hash"
+msgstr ""
+
+#: models.py:27
+msgid "Autoadmin properties"
+msgstr ""
+
+#: settings.py:14
+msgid "Sets the email of the automatically created super user account."
+msgstr ""
+
+#: settings.py:20
+msgid ""
+"The password of the automatically created super user account. If it is equal"
+" to None, the password is randomly generated."
+msgstr ""
+
+#: settings.py:27
+msgid "The username of the automatically created super user account."
+msgstr ""
+
+#: templates/autoadmin/credentials.html:11
+msgid "Automatic credentials"
+msgstr ""
+
+#: templates/autoadmin/credentials.html:16
+#, python-format
+msgid ""
+"You have just finished installing <strong>%(project_title)s</strong>, "
+"congratulations!"
+msgstr ""
+"Upravo ste završili instalaciju <strong>%(project_title)s</strong>, "
+"čestitam!"
+
+#: templates/autoadmin/credentials.html:17
+msgid "Login using the following credentials:"
+msgstr "Prijava korištenjem sljedećih podataka:"
+
+#: templates/autoadmin/credentials.html:19
+#, python-format
+msgid "Username: <strong>%(account)s</strong>"
+msgstr "Korisnik: <strong>%(account)s</strong>"
+
+#: templates/autoadmin/credentials.html:20
+#, python-format
+msgid "Email: <strong>%(email)s</strong>"
+msgstr "Email: <strong>%(email)s</strong>"
+
+#: templates/autoadmin/credentials.html:21
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr "Pasvord: <strong>%(password)s</strong>"
+
+#: templates/autoadmin/credentials.html:23
+msgid ""
+"Be sure to change the password to increase security and to disable this "
+"message."
+msgstr ""
+"Ne zaboravite promijeniti pasvord da pojačate sigurnost i onemogućite dalje "
+"prikazivanje ove poruke."

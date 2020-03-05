@@ -1,0 +1,316 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
+# Martin Horseling <martin.horseling@gmail.com>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-01 01:43-0400\n"
+"PO-Revision-Date: 2020-02-14 04:20+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:82 events.py:8 permissions.py:8
+msgid "User management"
+msgstr "Gebruikersbeheer"
+
+#: apps.py:100 search.py:12
+msgid "Group"
+msgstr ""
+
+#: apps.py:101 links.py:41 links.py:52 links.py:75 search.py:36 views.py:120
+msgid "Groups"
+msgstr "Groepen"
+
+#: apps.py:102 search.py:18
+msgid "Name"
+msgstr "Naam"
+
+#: apps.py:108 models.py:18 search.py:24
+msgid "User"
+msgstr "Gebruiker"
+
+#: apps.py:109 apps.py:174 links.py:47 links.py:80 links.py:96 views.py:302
+msgid "Users"
+msgstr "Gebruikers"
+
+#: apps.py:112
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: apps.py:113 search.py:30
+msgid "First name"
+msgstr "Voornaam"
+
+#: apps.py:114 search.py:39
+msgid "Last name"
+msgstr "Achternaam"
+
+#: apps.py:115 search.py:33
+msgid "Email"
+msgstr "Email"
+
+#: apps.py:116
+msgid "Is active?"
+msgstr ""
+
+#: apps.py:119 apps.py:123
+msgid "Has usable password?"
+msgstr "Heeft bruikbaar wachtwoord?"
+
+#: apps.py:138
+msgid "All the groups."
+msgstr "Alle groepen."
+
+#: apps.py:142
+msgid "All the users."
+msgstr "Alle gebruikers."
+
+#: dashboard_widgets.py:16
+msgid "Total users"
+msgstr ""
+
+#: dashboard_widgets.py:32
+msgid "Total groups"
+msgstr ""
+
+#: events.py:12
+msgid "Group created"
+msgstr ""
+
+#: events.py:15
+msgid "Group edited"
+msgstr ""
+
+#: events.py:19
+msgid "User created"
+msgstr ""
+
+#: events.py:22
+msgid "User edited"
+msgstr ""
+
+#: events.py:25
+msgid "User logged in"
+msgstr ""
+
+#: events.py:28
+msgid "User logged out"
+msgstr ""
+
+#: links.py:16
+msgid "User details"
+msgstr "Gebruikersprofiel"
+
+#: links.py:20
+msgid "Edit details"
+msgstr "Bewerk details"
+
+#: links.py:24 views.py:56
+msgid "Create new group"
+msgstr " Maak nieuwe groep aan"
+
+#: links.py:31 links.py:64 links.py:85
+msgid "Delete"
+msgstr "Verwijder"
+
+#: links.py:36 links.py:69
+msgid "Edit"
+msgstr "Bewerken"
+
+#: links.py:57 views.py:152
+msgid "Create new user"
+msgstr "Maak nieuwe gebruiker aan"
+
+#: links.py:92
+msgid "User options"
+msgstr ""
+
+#: models.py:22
+msgid "Forbid this user from changing their password."
+msgstr ""
+
+#: models.py:28
+msgid "User settings"
+msgstr ""
+
+#: models.py:29
+msgid "Users settings"
+msgstr ""
+
+#: permissions.py:12
+msgid "Create new groups"
+msgstr "Maak nieuwe groepen aan"
+
+#: permissions.py:15
+msgid "Delete existing groups"
+msgstr "Verwijder bestaande groepen"
+
+#: permissions.py:18
+msgid "Edit existing groups"
+msgstr "Bewerk bestaande groepen"
+
+#: permissions.py:21
+msgid "View existing groups"
+msgstr "Bekijk bestaande groepen"
+
+#: permissions.py:24
+msgid "Create new users"
+msgstr "Maak nieuwe gebruikers aan"
+
+#: permissions.py:27
+msgid "Delete existing users"
+msgstr "Verwijder bestaande gebruikers"
+
+#: permissions.py:30
+msgid "Edit existing users"
+msgstr "Bewerk bestaande gebruikers"
+
+#: permissions.py:33
+msgid "View existing users"
+msgstr "Bekijk bestaande gebruikers"
+
+#: search.py:42
+msgid "username"
+msgstr "gebruikersnaam"
+
+#: serializers.py:34
+msgid "Comma separated list of group primary keys to assign this user to."
+msgstr ""
+
+#: serializers.py:64
+msgid "List of group primary keys to which to add the user."
+msgstr ""
+
+#: utils.py:8
+msgid "Anonymous"
+msgstr "Anoniem"
+
+#: views.py:37
+msgid "Current user details"
+msgstr "Gegevens van huidige gebruiker"
+
+#: views.py:45
+msgid "Edit current user details"
+msgstr "Bewerk gegevens van huidige gebruiker"
+
+#: views.py:78
+#, python-format
+msgid "Delete the group: %s?"
+msgstr "Verwijder de groep:  %s?"
+
+#: views.py:93
+#, python-format
+msgid "Edit group: %s"
+msgstr "Bewerk groep: %s"
+
+#: views.py:113
+msgid ""
+"User groups are organizational units. They should mirror the organizational "
+"units of your organization. Groups can't be used for access control. Use "
+"roles for permissions and access control, add groups to them."
+msgstr ""
+
+#: views.py:119
+msgid "There are no user groups"
+msgstr ""
+
+#: views.py:132
+msgid "Available users"
+msgstr "Beschikbare gebruikers"
+
+#: views.py:133
+msgid "Group users"
+msgstr ""
+
+#: views.py:141
+#, python-format
+msgid "Users of group: %s"
+msgstr "Gebruikers van groep %s"
+
+#: views.py:173
+#, python-format
+msgid "User delete request performed on %(count)d user"
+msgstr ""
+
+#: views.py:175
+#, python-format
+msgid "User delete request performed on %(count)d users"
+msgstr ""
+
+#: views.py:183
+msgid "Delete user"
+msgid_plural "Delete users"
+msgstr[0] "Verwijder gebruiker"
+msgstr[1] "Verwijder gebruikers"
+
+#: views.py:193
+#, python-format
+msgid "Delete user: %s"
+msgstr "Verwijder gebruiker: %s"
+
+#: views.py:204
+msgid ""
+"Super user and staff user deleting is not allowed, use the admin interface "
+"for these cases."
+msgstr "Super gebruiker en medewerker verwijderen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
+
+#: views.py:212
+#, python-format
+msgid "User \"%s\" deleted successfully."
+msgstr "Gebruiker \"%s\" succesvol verwijderd."
+
+#: views.py:218
+#, python-format
+msgid "Error deleting user \"%(user)s\": %(error)s"
+msgstr "Fout tijdens het verwijderen van gebruiker \"%(user)s\": %(error)s"
+
+#: views.py:236
+#, python-format
+msgid "Details of user: %s"
+msgstr ""
+
+#: views.py:251
+#, python-format
+msgid "Edit user: %s"
+msgstr "Bewerk gebruiker: %s"
+
+#: views.py:266
+msgid "Available groups"
+msgstr "Beschikbare groepen"
+
+#. Translators: "User groups" here refer to the group list of a specific
+#. user.
+#: views.py:269
+msgid "User groups"
+msgstr ""
+
+#: views.py:277
+#, python-format
+msgid "Groups of user: %s"
+msgstr "Groepen van gebruiker: %s"
+
+#: views.py:298
+msgid ""
+"User accounts can be create from this view. After creating a user account "
+"you will prompted to set a password for it. "
+msgstr ""
+
+#: views.py:301
+msgid "There are no user accounts"
+msgstr ""
+
+#: views.py:316
+#, python-format
+msgid "Edit options for user: %s"
+msgstr ""

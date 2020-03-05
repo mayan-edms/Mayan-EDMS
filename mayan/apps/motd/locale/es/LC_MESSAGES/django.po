@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roberto Rosario, 2016,2018-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-10 03:52-0400\n"
+"POT-Creation-Date: 2020-03-01 01:41-0400\n"
 "PO-Revision-Date: 2019-04-14 03:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:35 links.py:36 permissions.py:7
@@ -61,8 +60,7 @@ msgstr "Habilitado"
 
 #: models.py:27
 msgid "Date and time after which this message will be displayed."
-msgstr ""
-"Fecha y hora después de la cual este mensaje comenzara a ser desplegado."
+msgstr "Fecha y hora después de la cual este mensaje comenzara a ser desplegado."
 
 #: models.py:28
 msgid "Start date time"
@@ -115,10 +113,7 @@ msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
-msgstr ""
-"Los mensajes se muestran en la vista de inicio de sesión. Puede usar "
-"mensajes para recopilar información acerca de su organzación, anuncios o "
-"pautas de uso para sus usuarios."
+msgstr "Los mensajes se muestran en la vista de inicio de sesión. Puede usar mensajes para recopilar información acerca de su organzación, anuncios o pautas de uso para sus usuarios."
 
 #: views.py:79
 msgid "No messages available"

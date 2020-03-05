@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'mayan.apps.appearance',
     # Django
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
@@ -118,7 +119,6 @@ INSTALLED_APPS = (
     'mayan.apps.tags',
     'mayan.apps.web_links',
     # Placed after rest_api to allow template overriding
-    'django.contrib.admindocs',
     'drf_yasg',
 )
 
@@ -290,7 +290,7 @@ TIMEZONE_SESSION_KEY = 'django_timezone'
 
 # ----- Stronghold -------
 
-STRONGHOLD_PUBLIC_URLS = (r'^/docs/.+$',)
+STRONGHOLD_PUBLIC_URLS = (r'^/docs/.+$', r'^/favicon\.ico$')
 
 # ----- Swagger --------
 
