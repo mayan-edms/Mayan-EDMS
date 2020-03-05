@@ -1,4 +1,4 @@
-3.3.15 (2020-XX-XX)
+3.3.15 (2020-03-05)
 ===================
 - Add Docker environment setting ``MAYAN_SKIP_CHOWN_ON_STARTUP`` to skip
   performing the initial chown on the media folder at `/var/lib/mayan`.
