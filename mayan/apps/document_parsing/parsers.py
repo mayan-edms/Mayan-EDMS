@@ -6,6 +6,7 @@ from shutil import copyfileobj
 import subprocess
 
 from django.apps import apps
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.storage.utils import NamedTemporaryFile
@@ -156,9 +157,9 @@ class PopplerParser(Parser):
             return ''
 
         if output[-3:] == b'\x0a\x0a\x0c':
-            return output[:-3]
+            return force_text(output[:-3])
 
-        return output
+        return force_text(output)
 
 
 Parser.register(
