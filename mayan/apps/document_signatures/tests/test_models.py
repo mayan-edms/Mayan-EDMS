@@ -3,7 +3,9 @@ from __future__ import unicode_literals
 import hashlib
 import time
 
-from mayan.apps.django_gpg.tests.literals import TEST_KEY_PRIVATE_PASSPHRASE
+from mayan.apps.django_gpg.tests.literals import (
+    TEST_KEY_PRIVATE_PASSPHRASE, TEST_KEY_PUBLIC_ID
+)
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.models import DocumentVersion
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
@@ -14,9 +16,7 @@ from mayan.apps.documents.tests.literals import (
 from ..models import DetachedSignature, EmbeddedSignature
 from ..tasks import task_verify_missing_embedded_signature
 
-from .literals import (
-    TEST_SIGNED_DOCUMENT_PATH, TEST_KEY_PUBLIC_ID, TEST_SIGNATURE_ID
-)
+from .literals import TEST_SIGNED_DOCUMENT_PATH, TEST_SIGNATURE_ID
 from .mixins import SignatureTestMixin
 
 

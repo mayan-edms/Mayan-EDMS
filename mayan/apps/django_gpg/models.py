@@ -6,7 +6,7 @@ import logging
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from .exceptions import NeedPassphrase, PassphraseError
@@ -87,6 +87,8 @@ class Key(models.Model):
         return self.fingerprint[-8:]
 
     def save(self, *args, **kwargs):
+        # Fix the encoding of the key data stream.
+        self.key_data = force_text(self.key_data)
         import_results, key_info = gpg_backend.import_and_list_keys(
             key_data=self.key_data
         )
