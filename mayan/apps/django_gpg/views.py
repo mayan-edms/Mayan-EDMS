@@ -170,7 +170,7 @@ class PrivateKeyListView(SingleObjectListView):
             ),
             'no_results_text': _(
                 'Private keys are used to signed documents. '
-                'Private keys can only be uploaded by the user.'
+                'Private keys can only be uploaded by the user. '
                 'The view to upload private and public keys is the same.'
             ),
             'no_results_title': _(
