@@ -148,7 +148,9 @@ class Document(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='documents:document_preview', kwargs={'pk': self.pk}
+            viewname='documents:document_preview', kwargs={
+                'document_id': self.pk
+            }
         )
 
     def get_api_image_url(self, *args, **kwargs):

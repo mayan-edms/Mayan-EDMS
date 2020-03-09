@@ -164,7 +164,7 @@ class DocumentVersion(models.Model):
     def get_absolute_url(self):
         return reverse(
             viewname='documents:document_version_view', kwargs={
-                'pk': self.pk
+                'document_version_id': self.pk
             }
         )
 

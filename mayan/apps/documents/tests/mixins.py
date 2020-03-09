@@ -8,7 +8,7 @@ from mayan.apps.converter.classes import Layer
 from mayan.apps.converter.layers import layer_saved_transformations
 
 from ..literals import PAGE_RANGE_ALL
-from ..models import DocumentType
+from ..models import DocumentType, FavoriteDocument
 
 from .literals import (
     TEST_DOCUMENT_TYPE_DELETE_PERIOD, TEST_DOCUMENT_TYPE_DELETE_TIME_UNIT,
@@ -20,6 +20,56 @@ from .literals import (
 )
 
 __all__ = ('DocumentTestMixin',)
+
+
+class DocumentPageDisableViewTestMixin(object):
+    def _disable_test_document_page(self):
+        self.test_document_page.enabled = False
+        self.test_document_page.save()
+
+    def _request_test_document_page_disable_view(self):
+        return self.post(
+            viewname='documents:document_page_disable', kwargs={
+                'document_page_id': self.test_document_page.pk
+            }
+        )
+
+    def _request_test_document_page_enable_view(self):
+        return self.post(
+            viewname='documents:document_page_enable', kwargs={
+                'document_page_id': self.test_document_page.pk
+            }
+        )
+
+    def _request_test_document_page_multiple_disable_view(self):
+        return self.post(
+            viewname='documents:document_page_multiple_disable', data={
+                'id_list': self.test_document_page.pk
+            }
+        )
+
+    def _request_test_document_page_multiple_enable_view(self):
+        return self.post(
+            viewname='documents:document_page_multiple_enable', data={
+                'id_list': self.test_document_page.pk
+            }
+        )
+
+
+class DocumentPageViewTestMixin(object):
+    def _request_test_document_page_list_view(self):
+        return self.get(
+            viewname='documents:document_pages', kwargs={
+                'document_id': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_page_view(self, document_page):
+        return self.get(
+            viewname='documents:document_page_view', kwargs={
+                'document_page_id': document_page.pk,
+            }
+        )
 
 
 class DocumentTestMixin(object):
@@ -87,15 +137,16 @@ class DocumentTypeViewTestMixin(object):
 
     def _request_test_document_type_delete_view(self):
         return self.post(
-            viewname='documents:document_type_delete',
-            kwargs={'pk': self.test_document_type.pk}
+            viewname='documents:document_type_delete', kwargs={
+                'document_type_id': self.test_document_type.pk
+            }
         )
 
     def _request_test_document_type_edit_view(self):
         return self.post(
-            viewname='documents:document_type_edit',
-            kwargs={'pk': self.test_document_type.pk},
-            data={
+            viewname='documents:document_type_edit', kwargs={
+                'document_type_id': self.test_document_type.pk
+            }, data={
                 'label': TEST_DOCUMENT_TYPE_LABEL_EDITED,
             }
         )
@@ -107,32 +158,34 @@ class DocumentTypeViewTestMixin(object):
 class DocumentTypeQuickLabelViewTestMixin(object):
     def _request_quick_label_create(self):
         return self.post(
-            viewname='documents:document_type_filename_create',
-            kwargs={'pk': self.test_document_type.pk},
-            data={
+            viewname='documents:document_type_filename_create', kwargs={
+                'document_type_id': self.test_document_type.pk
+            }, data={
                 'filename': TEST_DOCUMENT_TYPE_QUICK_LABEL,
             }
         )
 
     def _request_quick_label_delete(self):
         return self.post(
-            viewname='documents:document_type_filename_delete',
-            kwargs={'pk': self.test_document_type_filename.pk}
+            viewname='documents:document_type_filename_delete', kwargs={
+                'document_type_filename_id': self.test_document_type_filename.pk
+            }
         )
 
     def _request_quick_label_edit(self):
         return self.post(
-            viewname='documents:document_type_filename_edit',
-            kwargs={'pk': self.test_document_type_filename.pk},
-            data={
+            viewname='documents:document_type_filename_edit', kwargs={
+                'document_type_filename_id': self.test_document_type_filename.pk
+            }, data={
                 'filename': TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED,
             }
         )
 
     def _request_quick_label_list_view(self):
         return self.get(
-            viewname='documents:document_type_filename_list',
-            kwargs={'pk': self.test_document_type.pk}
+            viewname='documents:document_type_filename_list', kwargs={
+                'document_type_id': self.test_document_type.pk
+            }
         )
 
 
@@ -152,16 +205,26 @@ class DocumentVersionTestMixin(object):
 
 
 class DocumentVersionViewTestMixin(object):
+    def _request_document_version_download(self, data=None):
+        data = data or {}
+        return self.get(
+            viewname='documents:document_version_download', kwargs={
+                'document_version_id': self.test_document.latest_version.pk
+            }, data=data
+        )
+
     def _request_document_version_list_view(self):
         return self.get(
-            viewname='documents:document_version_list',
-            kwargs={'pk': self.test_document.pk}
+            viewname='documents:document_version_list', kwargs={
+                'document_id': self.test_document.pk
+            }
         )
 
     def _request_document_version_revert_view(self, document_version):
         return self.post(
-            viewname='documents:document_version_revert',
-            kwargs={'pk': document_version.pk}
+            viewname='documents:document_version_revert', kwargs={
+                'document_version_id': document_version.pk
+            }
         )
 
 
@@ -173,16 +236,37 @@ class DocumentViewTestMixin(object):
             arguments=TEST_TRANSFORMATION_ARGUMENT
         )
 
-    def _request_document_properties_view(self):
-        return self.get(
-            viewname='documents:document_properties',
-            kwargs={'pk': self.test_document.pk}
+    def _request_test_document_clear_transformations_view(self):
+        return self.post(
+            viewname='documents:document_clear_transformations',
+            kwargs={'document_id': self.test_document.pk}
         )
 
-    def _request_document_properties_edit_get_view(self):
+    def _request_test_document_download_form_get_view(self):
         return self.get(
-            viewname='documents:document_edit',
-            kwargs={'pk': self.test_document.pk}
+            viewname='documents:document_download_form', kwargs={
+                'document_id': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_download_form_post_view(self):
+        return self.post(
+            viewname='documents:document_download_form', kwargs={
+                'document_id': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_download_view(self):
+        return self.get(
+            viewname='documents:document_download', kwargs={
+                'document_id': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_multiple_download_view(self):
+        return self.get(
+            viewname='documents:document_multiple_download',
+            data={'id_list': self.test_document.pk}
         )
 
     def _request_test_document_list_view(self):
@@ -191,24 +275,48 @@ class DocumentViewTestMixin(object):
     def _request_test_document_preview_view(self):
         return self.get(
             viewname='documents:document_preview', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_print_view(self):
+        return self.get(
+            viewname='documents:document_print', kwargs={
+                'document_id': self.test_document.pk,
+            }, data={
+                'page_group': PAGE_RANGE_ALL
+            }
+        )
+
+    def _request_test_document_properties_view(self):
+        return self.get(
+            viewname='documents:document_properties', kwargs={
+                'document_id': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_properties_edit_get_view(self):
+        return self.get(
+            viewname='documents:document_edit', kwargs={
+                'document_id': self.test_document.pk
             }
         )
 
     def _request_test_document_type_edit_get_view(self):
         return self.get(
-            viewname='documents:document_document_type_edit',
-            kwargs={'pk': self.test_document.pk}
+            viewname='documents:document_document_type_edit', kwargs={
+                'document_id': self.test_document.pk
+            }
         )
 
     def _request_test_document_type_edit_post_view(self, document_type):
         return self.post(
-            viewname='documents:document_document_type_edit',
-            kwargs={'pk': self.test_document.pk},
-            data={'document_type': document_type.pk}
+            viewname='documents:document_document_type_edit', kwargs={
+                'document_id': self.test_document.pk
+            }, data={'document_type': document_type.pk}
         )
 
-    def _request_multiple_document_type_edit(self, document_type):
+    def _request_test_document_multiple_type_edit(self, document_type):
         return self.post(
             viewname='documents:document_multiple_document_type_edit',
             data={
@@ -217,118 +325,92 @@ class DocumentViewTestMixin(object):
             }
         )
 
-    def _request_document_download_form_get_view(self):
-        return self.get(
-            viewname='documents:document_download_form', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_document_download_form_post_view(self):
-        return self.post(
-            viewname='documents:document_download_form', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_document_download_view(self):
-        return self.get(
-            viewname='documents:document_download', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_document_multiple_download_view(self):
-        return self.get(
-            viewname='documents:document_multiple_download',
-            data={'id_list': self.test_document.pk}
-        )
-
-    def _request_document_version_download(self, data=None):
-        data = data or {}
-        return self.get(
-            viewname='documents:document_version_download', kwargs={
-                'pk': self.test_document.latest_version.pk
-            }, data=data
-        )
-
-    def _request_document_update_page_count_view(self):
+    def _request_test_document_update_page_count_view(self):
         return self.post(
             viewname='documents:document_update_page_count',
-            kwargs={'pk': self.test_document.pk}
+            kwargs={'document_id': self.test_document.pk}
         )
 
-    def _request_document_multiple_update_page_count_view(self):
+    def _request_test_document_multiple_update_page_count_view(self):
         return self.post(
             viewname='documents:document_multiple_update_page_count',
             data={'id_list': self.test_document.pk}
         )
 
-    def _request_document_clear_transformations_view(self):
-        return self.post(
-            viewname='documents:document_clear_transformations',
-            kwargs={'pk': self.test_document.pk}
-        )
-
-    def _request_document_multiple_clear_transformations(self):
+    def _request_test_document_multiple_clear_transformations(self):
         return self.post(
             viewname='documents:document_multiple_clear_transformations',
             data={'id_list': self.test_document.pk}
-        )
-
-    def _request_document_print_view(self):
-        return self.get(
-            viewname='documents:document_print', kwargs={
-                'pk': self.test_document.pk,
-            }, data={
-                'page_group': PAGE_RANGE_ALL
-            }
         )
 
     def _request_empty_trash_view(self):
         return self.post(viewname='documents:trash_can_empty')
 
 
+class FavoriteDocumentsTestMixin(object):
+    def _request_document_add_to_favorites_view(self):
+        return self.post(
+            viewname='documents:document_add_to_favorites',
+            kwargs={'document_id': self.test_document.pk}
+        )
+
+    def _document_add_to_favorites(self):
+        FavoriteDocument.objects.add_for_user(
+            document=self.test_document, user=self._test_case_user
+        )
+
+    def _request_document_list_favorites(self):
+        return self.get(
+            viewname='documents:document_list_favorites',
+        )
+
+    def _request_document_remove_from_favorites(self):
+        return self.post(
+            viewname='documents:document_remove_from_favorites',
+            kwargs={'document_id': self.test_document.pk}
+        )
+
+
 class TrashedDocumentViewTestMixin(object):
     def _request_document_trash_get_view(self):
         return self.get(
             viewname='documents:document_trash', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
     def _request_document_trash_post_view(self):
         return self.post(
             viewname='documents:document_trash', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
     def _request_trashed_document_restore_get_view(self):
         return self.get(
             viewname='documents:document_restore', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
     def _request_trashed_document_restore_post_view(self):
         return self.post(
             viewname='documents:document_restore', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
     def _request_trashed_document_delete_get_view(self):
         return self.get(
             viewname='documents:document_delete', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
     def _request_trashed_document_delete_post_view(self):
         return self.post(
             viewname='documents:document_delete', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 

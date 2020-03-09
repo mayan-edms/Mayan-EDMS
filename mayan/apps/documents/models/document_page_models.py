@@ -106,7 +106,9 @@ class DocumentPage(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='documents:document_page_view', kwargs={'pk': self.pk}
+            viewname='documents:document_page_view', kwargs={
+                'document_page_id': self.pk
+            }
         )
 
     def get_api_image_url(self, *args, **kwargs):

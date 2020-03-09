@@ -43,7 +43,7 @@ logger = logging.getLogger(__name__)
 class DocumentPageListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = Document
     external_object_permission = permission_document_view
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'document_id'
 
     def get_extra_context(self):
         return {
@@ -71,7 +71,7 @@ class DocumentPageListView(ExternalObjectMixin, SingleObjectListView):
 class DocumentPageNavigationBase(ExternalObjectMixin, RedirectView):
     external_object_class = DocumentPage
     external_object_permission = permission_document_view
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'document_page_id'
 
     def get_object(self):
         return self.external_object
@@ -117,14 +117,14 @@ class DocumentPageNavigationFirst(DocumentPageNavigationBase):
     def get_new_kwargs(self):
         document_page = self.get_object()
 
-        return {'pk': document_page.siblings.first().pk}
+        return {'document_page_id': document_page.siblings.first().pk}
 
 
 class DocumentPageNavigationLast(DocumentPageNavigationBase):
     def get_new_kwargs(self):
         document_page = self.get_object()
 
-        return {'pk': document_page.siblings.last().pk}
+        return {'document_page_id': document_page.siblings.last().pk}
 
 
 class DocumentPageNavigationNext(DocumentPageNavigationBase):
@@ -135,14 +135,14 @@ class DocumentPageNavigationNext(DocumentPageNavigationBase):
             page_number__gt=document_page.page_number
         ).first()
         if new_document_page:
-            return {'pk': new_document_page.pk}
+            return {'document_page_id': new_document_page.pk}
         else:
             messages.warning(
                 message=_(
                     'There are no more pages in this document'
                 ), request=self.request
             )
-            return {'pk': document_page.pk}
+            return {'document_page_id': document_page.pk}
 
 
 class DocumentPageNavigationPrevious(DocumentPageNavigationBase):
@@ -153,20 +153,20 @@ class DocumentPageNavigationPrevious(DocumentPageNavigationBase):
             page_number__lt=document_page.page_number
         ).last()
         if new_document_page:
-            return {'pk': new_document_page.pk}
+            return {'document_page_id': new_document_page.pk}
         else:
             messages.warning(
                 message=_(
                     'You are already at the first page of this document'
                 ), request=self.request
             )
-            return {'pk': document_page.pk}
+            return {'document_page_id': document_page.pk}
 
 
 class DocumentPageView(ExternalObjectMixin, SimpleView):
     external_object_class = DocumentPage
     external_object_permission = permission_document_view
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'document_page_id'
     template_name = 'appearance/generic_form.html'
 
     def get_extra_context(self):
@@ -206,7 +206,7 @@ class DocumentPageViewResetView(RedirectView):
 class DocumentPageInteractiveTransformation(ExternalObjectMixin, RedirectView):
     external_object_class = DocumentPage
     external_object_permission = permission_document_view
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'document_page_id'
 
     def get_object(self):
         return self.external_object
@@ -219,8 +219,9 @@ class DocumentPageInteractiveTransformation(ExternalObjectMixin, RedirectView):
 
         url = furl(
             args=query_dict, path=reverse(
-                viewname='documents:document_page_view',
-                kwargs={'pk': self.kwargs['pk']}
+                viewname='documents:document_page_view', kwargs={
+                    'document_page_id': self.kwargs['pk']
+                }
             )
 
         )
@@ -268,7 +269,7 @@ class DocumentPageRotateRightView(DocumentPageInteractiveTransformation):
 
 class DocumentPageDisable(MultipleObjectConfirmActionView):
     object_permission = permission_document_edit
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'document_page_id'
     success_message_singular = '%(count)d document page disabled.'
     success_message_plural = '%(count)d document pages disabled.'
 
@@ -298,7 +299,7 @@ class DocumentPageDisable(MultipleObjectConfirmActionView):
 
 class DocumentPageEnable(MultipleObjectConfirmActionView):
     object_permission = permission_document_edit
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'document_page_id'
     success_message_singular = '%(count)d document page enabled.'
     success_message_plural = '%(count)d document pages enabled.'
 

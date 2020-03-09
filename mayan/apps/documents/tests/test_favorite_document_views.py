@@ -4,30 +4,7 @@ from ..models import FavoriteDocument
 from ..permissions import permission_document_view
 
 from .base import GenericDocumentViewTestCase
-
-
-class FavoriteDocumentsTestMixin(object):
-    def _request_document_add_to_favorites_view(self):
-        return self.post(
-            viewname='documents:document_add_to_favorites',
-            kwargs={'pk': self.test_document.pk}
-        )
-
-    def _document_add_to_favorites(self):
-        FavoriteDocument.objects.add_for_user(
-            document=self.test_document, user=self._test_case_user
-        )
-
-    def _request_document_list_favorites(self):
-        return self.get(
-            viewname='documents:document_list_favorites',
-        )
-
-    def _request_document_remove_from_favorites(self):
-        return self.post(
-            viewname='documents:document_remove_from_favorites',
-            kwargs={'pk': self.test_document.pk}
-        )
+from .mixins import FavoriteDocumentsTestMixin
 
 
 class FavoriteDocumentsTestCase(

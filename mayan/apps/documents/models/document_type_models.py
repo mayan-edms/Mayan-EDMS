@@ -82,7 +82,7 @@ class DocumentType(models.Model):
     def get_absolute_url(self):
         return reverse(
             viewname='documents:document_type_document_list', kwargs={
-                'pk': self.pk
+                'document_type_id': self.pk
             }
         )
 

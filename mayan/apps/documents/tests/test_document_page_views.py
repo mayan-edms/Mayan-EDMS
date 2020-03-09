@@ -7,40 +7,9 @@ from ..permissions import (
 )
 
 from .base import GenericDocumentViewTestCase
-
-
-class DocumentPageDisableViewTestMixin(object):
-    def _disable_test_document_page(self):
-        self.test_document_page.enabled = False
-        self.test_document_page.save()
-
-    def _request_test_document_page_disable_view(self):
-        return self.post(
-            viewname='documents:document_page_disable', kwargs={
-                'pk': self.test_document_page.pk
-            }
-        )
-
-    def _request_test_document_page_enable_view(self):
-        return self.post(
-            viewname='documents:document_page_enable', kwargs={
-                'pk': self.test_document_page.pk
-            }
-        )
-
-    def _request_test_document_page_multiple_disable_view(self):
-        return self.post(
-            viewname='documents:document_page_multiple_disable', data={
-                'id_list': self.test_document_page.pk
-            }
-        )
-
-    def _request_test_document_page_multiple_enable_view(self):
-        return self.post(
-            viewname='documents:document_page_multiple_enable', data={
-                'id_list': self.test_document_page.pk
-            }
-        )
+from .mixins import (
+    DocumentPageDisableViewTestMixin, DocumentPageViewTestMixin
+)
 
 
 class DocumentPageDisableViewTestCase(
@@ -148,22 +117,6 @@ class DocumentPageDisableViewTestCase(
         )
 
 
-class DocumentPageViewTestMixin(object):
-    def _request_test_document_page_list_view(self):
-        return self.get(
-            viewname='documents:document_pages', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_test_document_page_view(self, document_page):
-        return self.get(
-            viewname='documents:document_page_view', kwargs={
-                'pk': document_page.pk,
-            }
-        )
-
-
 class DocumentPageViewTestCase(
     DocumentPageViewTestMixin, GenericDocumentViewTestCase
 ):
@@ -178,7 +131,7 @@ class DocumentPageViewTestCase(
 
         response = self._request_test_document_page_list_view()
         self.assertContains(
-            response=response, text=self.test_document.label, status_code=200
+            response=response, status_code=200, text=self.test_document.label
         )
 
     def test_document_page_view_no_permissions(self):
@@ -196,7 +149,7 @@ class DocumentPageViewTestCase(
             document_page=self.test_document.pages.first()
         )
         self.assertContains(
-            response=response, text=force_text(
+            response=response, status_code=200, text=force_text(
                 self.test_document.pages.first()
-            ), status_code=200
+            )
         )

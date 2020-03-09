@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 class DocumentVersionDownloadFormView(DocumentDownloadFormView):
     form_class = DocumentVersionDownloadForm
     model = DocumentVersion
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'document_version_id'
     querystring_form_fields = (
         'compressed', 'zip_filename', 'preserve_extension'
     )
@@ -50,7 +50,7 @@ class DocumentVersionDownloadFormView(DocumentDownloadFormView):
 
 class DocumentVersionDownloadView(DocumentDownloadView):
     model = DocumentVersion
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'document_version_id'
 
     def get_item_filename(self, item):
         preserve_extension = self.request.GET.get(
@@ -67,7 +67,7 @@ class DocumentVersionDownloadView(DocumentDownloadView):
 class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = Document
     external_object_permission = permission_document_version_view
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'document_id'
 
     def get_document(self):
         document = self.external_object
@@ -90,7 +90,7 @@ class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):
 class DocumentVersionRevertView(ExternalObjectMixin, ConfirmView):
     external_object_class = DocumentVersion
     external_object_permission = permission_document_version_revert
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'document_version_id'
 
     def get_extra_context(self):
         return {
@@ -123,6 +123,7 @@ class DocumentVersionView(SingleObjectDetailView):
     form_class = DocumentVersionPreviewForm
     model = DocumentVersion
     object_permission = permission_document_version_view
+    pk_url_kwarg = 'document_version_id'
 
     def dispatch(self, request, *args, **kwargs):
         result = super(
