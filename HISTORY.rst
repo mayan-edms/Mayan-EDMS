@@ -4,6 +4,7 @@
 - Update Django stronghold to version 0.4.0.
 - The ``runserver`` make file target now runs the command with
   ``--nothreading`` to work around issues serving static files in development.
+- Backport list display mode. Support switching between item and list mode.
 
 3.3.15 (2020-03-05)
 ===================

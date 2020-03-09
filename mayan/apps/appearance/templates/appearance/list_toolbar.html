@@ -14,6 +14,9 @@
                             <i class="far fa-square"></i>
                         </a>
                     {% endif %}
+                    <a class="btn btn-default btn-sm" href="{% common_get_list_mode_querystring %}" title="{% trans 'Toggle list display mode' %}">
+                        {% common_get_list_mode_icon as list_mode_icon %}{{ list_mode_icon.render }}
+                    </a>
                 </div>
             </div>
         </div>
