@@ -16,6 +16,26 @@ from .literals import (
 )
 
 
+class DocumentUploadWizardViewTestMixin(object):
+    def _request_upload_wizard_view(self, document_path=TEST_SMALL_DOCUMENT_PATH):
+        with open(document_path, mode='rb') as file_object:
+            return self.post(
+                viewname='sources:document_upload_interactive', kwargs={
+                    'source_id': self.test_source.pk
+                }, data={
+                    'source-file': file_object,
+                    'document_type_id': self.test_document_type.pk,
+                }
+            )
+
+    def _request_upload_interactive_view(self):
+        return self.get(
+            viewname='sources:document_upload_interactive', data={
+                'document_type_id': self.test_document_type.pk,
+            }
+        )
+
+
 class StagingFolderAPIViewTestMixin(object):
     def setUp(self):
         super(StagingFolderTestMixin, self).setUp()
@@ -48,7 +68,7 @@ class StagingFolderAPIViewTestMixin(object):
             }
         )
 
-    def _request_staging_folder_edit_view(self, extra_data=None, verb='patch'):
+    def _request_test_staging_folder_edit_api_view(self, extra_data=None, verb='patch'):
         data = {
             'label': TEST_SOURCE_LABEL_EDITED,
         }
@@ -62,12 +82,12 @@ class StagingFolderAPIViewTestMixin(object):
             }, data=data
         )
 
-    def _request_staging_folder_list_view(self):
+    def _request_test_staging_folder_list_api_view(self):
         return self.get(viewname='rest_api:stagingfolder-list')
 
 
 class StagingFolderFileAPIViewTestMixin(object):
-    def _request_staging_folder_file_delete_api_view(self):
+    def _request_test_staging_folder_file_delete_api_view(self):
         return self.delete(
             viewname='rest_api:stagingfolderfile-detail', kwargs={
                 'staging_folder_pk': self.test_staging_folder.pk,
@@ -75,7 +95,7 @@ class StagingFolderFileAPIViewTestMixin(object):
             }
         )
 
-    def _request_staging_folder_file_detail_api_view(self):
+    def _request_test_staging_folder_file_detail_api_view(self):
         return self.get(
             viewname='rest_api:stagingfolderfile-detail', kwargs={
                 'staging_folder_pk': self.test_staging_folder.pk,
@@ -83,7 +103,7 @@ class StagingFolderFileAPIViewTestMixin(object):
             }
         )
 
-    def _request_staging_folder_file_upload_api_view(self):
+    def _request_test_staging_folder_file_upload_api_view(self):
         return self.post(
             viewname='rest_api:stagingfolderfile-upload', kwargs={
                 'staging_folder_pk': self.test_staging_folder.pk,
@@ -124,10 +144,10 @@ class StagingFolderTestMixin(object):
 
 
 class StagingFolderViewTestMixin(object):
-    def _request_staging_file_delete_view(self, staging_folder, staging_file):
+    def _request_test_staging_file_delete_view(self, staging_folder, staging_file):
         return self.post(
             viewname='sources:staging_file_delete', kwargs={
-                'pk': staging_folder.pk,
+                'staging_folder_id': staging_folder.pk,
                 'encoded_filename': staging_file.encoded_filename
             }
         )
@@ -152,10 +172,18 @@ class SourceViewTestMixin(object):
     def _request_setup_source_list_view(self):
         return self.get(viewname='sources:setup_source_list')
 
+    def _request_setup_source_check_get_view(self):
+        return self.get(
+            viewname='sources:setup_source_check', kwargs={
+                'source_id': self.test_source.pk
+            }
+        )
+
     def _request_setup_source_create_view(self):
         return self.post(
-            kwargs={'source_type': SOURCE_CHOICE_WEB_FORM},
-            viewname='sources:setup_source_create', data={
+            kwargs={
+                'source_type_name': SOURCE_CHOICE_WEB_FORM
+            }, viewname='sources:setup_source_create', data={
                 'enabled': True, 'label': TEST_SOURCE_LABEL,
                 'uncompress': TEST_SOURCE_UNCOMPRESS_N
             }
@@ -163,8 +191,19 @@ class SourceViewTestMixin(object):
 
     def _request_setup_source_delete_view(self):
         return self.post(
-            viewname='sources:setup_source_delete',
-            kwargs={'pk': self.test_source.pk}
+            viewname='sources:setup_source_delete', kwargs={
+                'source_id': self.test_source.pk
+            }
+        )
+
+    def _request_setup_source_edit_view(self):
+        return self.post(
+            viewname='sources:setup_source_edit', kwargs={
+                'source_id': self.test_source.pk
+            }, data={
+                'label': TEST_SOURCE_LABEL_EDITED,
+                'uncompress': self.test_source.uncompress
+            }
         )
 
 
