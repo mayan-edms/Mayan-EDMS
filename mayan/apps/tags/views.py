@@ -297,8 +297,8 @@ class TagRemoveActionView(MultipleObjectFormActionView):
             'submit_icon_class': icon_document_tag_remove_submit,
             'submit_label': _('Remove'),
             'title': ungettext(
-                singular='Remove tags to %(count)d document',
-                plural='Remove tags to %(count)d documents',
+                singular='Remove tags from %(count)d document',
+                plural='Remove tags from %(count)d documents',
                 number=queryset.count()
             ) % {
                 'count': queryset.count(),
