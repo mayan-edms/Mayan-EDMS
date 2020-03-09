@@ -51,14 +51,15 @@ class DocumentPageOCRContentManager(models.Manager):
         )
 
         with document_page.cache_partition.get_file(filename=cache_filename).open() as file_object:
-            document_page_content, created = DocumentPageOCRContent.objects.get_or_create(
-                document_page=document_page
-            )
-            document_page_content.content = ocr_backend.execute(
+            ocr_content = ocr_backend.execute(
                 file_object=file_object,
                 language=document_page.document.language
             )
-            document_page_content.save()
+            DocumentPageOCRContent.objects.update_or_create(
+                document_page=document_page, defaults={
+                    'content': ocr_content
+                }
+            )
 
         logger.info(
             'Finished processing page: %d of document version: %s',
@@ -70,15 +71,15 @@ class DocumentPageOCRContentManager(models.Manager):
         logger.debug('document version: %d', document_version.pk)
 
         try:
+            for document_page in document_version.pages.all():
+                self.process_document_page(document_page=document_page)
+
+            logger.info(
+                'OCR complete for document version: %s', document_version
+            )
+            document_version.ocr_errors.all().delete()
+
             with transaction.atomic():
-                for document_page in document_version.pages.all():
-                    self.process_document_page(document_page=document_page)
-
-                logger.info(
-                    'OCR complete for document version: %s', document_version
-                )
-                document_version.ocr_errors.all().delete()
-
                 event_ocr_document_version_finish.commit(
                     action_object=document_version.document,
                     target=document_version
