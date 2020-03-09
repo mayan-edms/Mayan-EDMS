@@ -139,6 +139,9 @@ There was at one time but was retired. If there is interest it could be
 reinstated in the future.
 
 
+Other
+-----
+
 What is an EDMS?
 ^^^^^^^^^^^^^^^^
 
@@ -153,6 +156,15 @@ While they may look similar, EDMS/DMS is not to be confused with CMS
 Management). Mayan EDMS started initially as a strict EDMS project but has
 been expanding its feature set and provide some functionality from other
 system types.
+
+
+Can I use Mayan EDMS for things other than documents?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Yes. With the exception of the image previewer, every aspect of Mayan is
+file format agnostic. This means the your can upload video and music files
+and still use tagging, indexing, workflows, and digital signatures on those
+files.
 
 
 Technical
