@@ -81,7 +81,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         tag_label = self.test_tag.label
         tag_color = self.test_tag.color
 
-        response = self._request_test_tag_edit_view(verb='patch')
+        response = self._request_test_tag_edit_api_view(verb='patch')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_tag.refresh_from_db()
@@ -96,7 +96,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         tag_label = self.test_tag.label
         tag_color = self.test_tag.color
 
-        response = self._request_test_tag_edit_view(verb='patch')
+        response = self._request_test_tag_edit_api_view(verb='patch')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_tag.refresh_from_db()
@@ -109,7 +109,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         tag_label = self.test_tag.label
         tag_color = self.test_tag.color
 
-        response = self._request_test_tag_edit_view(verb='put')
+        response = self._request_test_tag_edit_api_view(verb='put')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_tag.refresh_from_db()
@@ -124,7 +124,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         tag_label = self.test_tag.label
         tag_color = self.test_tag.color
 
-        response = self._request_test_tag_edit_view(verb='put')
+        response = self._request_test_tag_edit_api_view(verb='put')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_tag.refresh_from_db()
@@ -304,7 +304,7 @@ class TagDocumentAPIViewTestCase(
         self.upload_document()
         self.test_tag.documents.add(self.test_document)
 
-        response = self._request_test_document_tag_list_view()
+        response = self._request_test_document_tag_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_tag_list_view_with_document_access(self):
@@ -316,7 +316,7 @@ class TagDocumentAPIViewTestCase(
             obj=self.test_document, permission=permission_tag_view
         )
 
-        response = self._request_test_document_tag_list_view()
+        response = self._request_test_document_tag_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
@@ -327,7 +327,7 @@ class TagDocumentAPIViewTestCase(
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
 
-        response = self._request_test_document_tag_list_view()
+        response = self._request_test_document_tag_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_tag_list_view_with_full_access(self):
@@ -340,7 +340,7 @@ class TagDocumentAPIViewTestCase(
         )
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
 
-        response = self._request_test_document_tag_list_view()
+        response = self._request_test_document_tag_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['results'][0]['label'], self.test_tag.label)
 
@@ -349,7 +349,7 @@ class TagDocumentAPIViewTestCase(
         self.upload_document()
         self.test_tag.documents.add(self.test_document)
 
-        response = self._request_test_document_tag_remove_view()
+        response = self._request_test_document_tag_remove_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
@@ -363,7 +363,7 @@ class TagDocumentAPIViewTestCase(
             obj=self.test_document, permission=permission_tag_remove
         )
 
-        response = self._request_test_document_tag_remove_view()
+        response = self._request_test_document_tag_remove_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
@@ -375,7 +375,7 @@ class TagDocumentAPIViewTestCase(
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
 
-        response = self._request_test_document_tag_remove_view()
+        response = self._request_test_document_tag_remove_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
@@ -390,7 +390,7 @@ class TagDocumentAPIViewTestCase(
         )
         self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
 
-        response = self._request_test_document_tag_remove_view()
+        response = self._request_test_document_tag_remove_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertFalse(self.test_tag in self.test_document.tags.all())

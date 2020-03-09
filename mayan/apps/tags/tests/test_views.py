@@ -11,7 +11,244 @@ from ..permissions import (
     permission_tag_edit, permission_tag_remove, permission_tag_view
 )
 
-from .mixins import TagTestMixin, TagViewTestMixin
+from .mixins import DocumentTagViewTestMixin, TagTestMixin, TagViewTestMixin
+
+
+class DocumentTagViewTestCase(
+    DocumentTagViewTestMixin, TagTestMixin, GenericDocumentViewTestCase
+):
+    def test_document_tags_list_no_permissions(self):
+        self._create_test_tag()
+
+        self.test_tag.documents.add(self.test_document)
+
+        response = self._request_test_document_tag_list_view()
+        self.assertNotContains(
+            response=response, text=force_text(self.test_tag), status_code=404
+        )
+
+    def test_document_tags_list_with_document_access(self):
+        self._create_test_tag()
+
+        self.test_tag.documents.add(self.test_document)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_view
+        )
+
+        response = self._request_test_document_tag_list_view()
+        self.assertNotContains(
+            response=response, text=force_text(self.test_tag), status_code=200
+        )
+
+    def test_document_tags_list_with_tag_access(self):
+        self._create_test_tag()
+
+        self.test_tag.documents.add(self.test_document)
+
+        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
+
+        response = self._request_test_document_tag_list_view()
+        self.assertNotContains(
+            response=response, text=force_text(self.test_tag), status_code=404
+        )
+
+    def test_document_tags_list_with_full_access(self):
+        self._create_test_tag()
+
+        self.test_tag.documents.add(self.test_document)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_view
+        )
+        self.grant_access(
+            obj=self.test_tag, permission=permission_tag_view
+        )
+
+        response = self._request_test_document_tag_list_view()
+        self.assertContains(
+            response=response, text=force_text(self.test_tag), status_code=200
+        )
+
+    def test_document_attach_tag_view_no_permission(self):
+        self._create_test_tag()
+
+        response = self._request_test_document_tag_attach_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+
+    def test_document_attach_tag_view_with_tag_access(self):
+        self._create_test_tag()
+
+        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
+
+        response = self._request_test_document_tag_attach_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+
+    def test_document_attach_tag_view_with_document_access(self):
+        self._create_test_tag()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_attach
+        )
+
+        response = self._request_test_document_tag_attach_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+
+    def test_document_attach_tag_view_with_full_access(self):
+        self._create_test_tag()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_attach
+        )
+        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
+
+        response = self._request_test_document_tag_attach_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_document_multiple_attach_tag_view_no_permission(self):
+        self._create_test_tag()
+
+        response = self._request_test_document_multiple_tag_multiple_attach_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+
+    def test_document_multiple_attach_tag_view_with_tag_access(self):
+        self._create_test_tag()
+
+        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
+
+        response = self._request_test_document_multiple_tag_multiple_attach_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+
+    def test_document_multiple_attach_tag_view_with_document_access(self):
+        self._create_test_tag()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_attach
+        )
+
+        response = self._request_test_document_multiple_tag_multiple_attach_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+
+    def test_document_multiple_attach_tag_view_with_full_access(self):
+        self._create_test_tag()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_attach
+        )
+        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
+
+        response = self._request_test_document_multiple_tag_multiple_attach_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_document_tag_multiple_remove_view_no_permissions(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        response = self._request_test_document_tag_multiple_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_document_tag_multiple_remove_view_with_tag_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+
+        response = self._request_test_document_tag_multiple_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_document_tag_multiple_remove_view_with_document_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_remove
+        )
+
+        response = self._request_test_document_tag_multiple_remove_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_document_tag_multiple_remove_view_with_full_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_remove
+        )
+        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+
+        response = self._request_test_document_tag_multiple_remove_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+
+    def test_document_multiple_tag_multiple_remove_view_no_permissions(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        response = self._request_test_document_multiple_tag_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_document_multiple_tag_remove_view_with_tag_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+
+        response = self._request_test_document_multiple_tag_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_document_multiple_tag_remove_view_with_document_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_remove
+        )
+
+        response = self._request_test_document_multiple_tag_remove_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_document_multiple_tag_remove_view_with_full_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_remove
+        )
+        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+
+        response = self._request_test_document_multiple_tag_remove_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
 
 class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
@@ -118,224 +355,3 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
         self.assertContains(
             response=response, text=self.test_tag.label, status_code=200
         )
-
-
-class TagDocumentViewTestCase(
-    TagTestMixin, TagViewTestMixin, GenericDocumentViewTestCase
-):
-    def test_document_tags_list_no_permissions(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
-
-        response = self._request_test_document_tag_list_view()
-        self.assertNotContains(
-            response=response, text=force_text(self.test_tag), status_code=404
-        )
-
-    def test_document_tags_list_with_document_access(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
-
-        self.grant_access(
-            obj=self.test_document, permission=permission_tag_view
-        )
-
-        response = self._request_test_document_tag_list_view()
-        self.assertNotContains(
-            response=response, text=force_text(self.test_tag), status_code=200
-        )
-
-    def test_document_tags_list_with_tag_access(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
-
-        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
-
-        response = self._request_test_document_tag_list_view()
-        self.assertNotContains(
-            response=response, text=force_text(self.test_tag), status_code=404
-        )
-
-    def test_document_tags_list_with_full_access(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
-
-        self.grant_access(
-            obj=self.test_document, permission=permission_tag_view
-        )
-        self.grant_access(
-            obj=self.test_tag, permission=permission_tag_view
-        )
-
-        response = self._request_test_document_tag_list_view()
-        self.assertContains(
-            response=response, text=force_text(self.test_tag), status_code=200
-        )
-
-    def test_document_attach_tag_view_no_permission(self):
-        self._create_test_tag()
-
-        response = self._request_test_document_tag_attach_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
-
-    def test_document_attach_tag_view_with_tag_access(self):
-        self._create_test_tag()
-
-        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
-
-        response = self._request_test_document_tag_attach_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
-
-    def test_document_attach_tag_view_with_document_access(self):
-        self._create_test_tag()
-
-        self.grant_access(obj=self.test_document, permission=permission_tag_attach)
-
-        response = self._request_test_document_tag_attach_view()
-        self.assertEqual(response.status_code, 200)
-
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
-
-    def test_document_attach_tag_view_with_full_access(self):
-        self._create_test_tag()
-
-        self.grant_access(obj=self.test_document, permission=permission_tag_attach)
-        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
-
-        response = self._request_test_document_tag_attach_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
-
-    def test_document_multiple_attach_tag_view_no_permission(self):
-        self._create_test_tag()
-
-        response = self._request_test_document_multiple_tag_multiple_attach_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
-
-    def test_document_multiple_attach_tag_view_with_tag_access(self):
-        self._create_test_tag()
-
-        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
-
-        response = self._request_test_document_multiple_tag_multiple_attach_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
-
-    def test_document_multiple_attach_tag_view_with_document_access(self):
-        self._create_test_tag()
-
-        self.grant_access(obj=self.test_document, permission=permission_tag_attach)
-
-        response = self._request_test_document_multiple_tag_multiple_attach_view()
-        self.assertEqual(response.status_code, 200)
-
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
-
-    def test_document_multiple_attach_tag_view_with_full_access(self):
-        self._create_test_tag()
-
-        self.grant_access(obj=self.test_document, permission=permission_tag_attach)
-        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
-
-        response = self._request_test_document_multiple_tag_multiple_attach_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
-
-    def test_document_tag_multiple_remove_view_no_permissions(self):
-        self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
-
-        response = self._request_test_document_tag_multiple_remove_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
-
-    def test_document_tag_multiple_remove_view_with_tag_access(self):
-        self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
-
-        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
-
-        response = self._request_test_document_tag_multiple_remove_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
-
-    def test_document_tag_multiple_remove_view_with_document_access(self):
-        self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
-
-        self.grant_access(obj=self.test_document, permission=permission_tag_remove)
-
-        response = self._request_test_document_tag_multiple_remove_view()
-        self.assertEqual(response.status_code, 200)
-
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
-
-    def test_document_tag_multiple_remove_view_with_full_access(self):
-        self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
-
-        self.grant_access(obj=self.test_document, permission=permission_tag_remove)
-        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
-
-        response = self._request_test_document_tag_multiple_remove_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
-
-    def test_document_multiple_tag_multiple_remove_view_no_permissions(self):
-        self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
-
-        response = self._request_test_document_multiple_tag_remove_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
-
-    def test_document_multiple_tag_remove_view_with_tag_access(self):
-        self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
-
-        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
-
-        response = self._request_test_document_multiple_tag_remove_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
-
-    def test_document_multiple_tag_remove_view_with_document_access(self):
-        self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
-
-        self.grant_access(obj=self.test_document, permission=permission_tag_remove)
-
-        response = self._request_test_document_multiple_tag_remove_view()
-        self.assertEqual(response.status_code, 200)
-
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
-
-    def test_document_multiple_tag_remove_view_with_full_access(self):
-        self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
-
-        self.grant_access(obj=self.test_document, permission=permission_tag_remove)
-        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
-
-        response = self._request_test_document_multiple_tag_remove_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
