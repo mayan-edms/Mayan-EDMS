@@ -5,6 +5,9 @@
 - The ``runserver`` make file target now runs the command with
   ``--nothreading`` to work around issues serving static files in development.
 - Backport list display mode. Support switching between item and list mode.
+- Update app URLs to use explicit parameters.
+- Move dependencies environments to their own module called
+  ``dependencies.environments.py``.
 
 3.3.15 (2020-03-05)
 ===================

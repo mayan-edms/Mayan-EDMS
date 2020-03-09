@@ -3,8 +3,11 @@ from __future__ import absolute_import, unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.dependencies.classes import (
+    BinaryDependency, PythonDependency
+)
+from mayan.apps.dependencies.environments import (
     environment_build, environment_development, environment_documentation,
-    environment_testing, BinaryDependency, PythonDependency
+    environment_testing
 )
 
 from .literals import DEFAULT_FIREFOX_GECKODRIVER_PATH
