@@ -8,6 +8,7 @@
 - Update app URLs to use explicit parameters.
 - Move dependencies environments to their own module called
   ``dependencies.environments.py``.
+- Increase the size of the file cache maximum size field.
 
 3.3.15 (2020-03-05)
 ===================

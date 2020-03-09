@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from contextlib import contextmanager
 import logging
 
+from django.core import validators
 from django.core.files.base import ContentFile
 from django.db import models, transaction
 from django.db.models import Sum
@@ -32,9 +33,10 @@ class Cache(models.Model):
         help_text=_('A short text describing the cache.'), max_length=128,
         verbose_name=_('Label')
     )
-    maximum_size = models.PositiveIntegerField(
-        help_text=_('Maximum size of the cache in bytes.'),
-        verbose_name=_('Maximum size')
+    maximum_size = models.BigIntegerField(
+        help_text=_('Maximum size of the cache in bytes.'), validators=[
+            validators.MinValueValidator(limit_value=1)
+        ], verbose_name=_('Maximum size')
     )
     storage_instance_path = models.CharField(
         help_text=_(
