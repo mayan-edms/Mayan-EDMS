@@ -49,7 +49,7 @@ from ..tasks import task_update_page_count
 from ..utils import parse_range
 
 __all__ = (
-    'DocumentListView', 'DocumentDocumentTypeEditView', 'DocumentEditView',
+    'DocumentListView', 'DocumentDocumentTypeEditView', 'DocumentPropertiesEditView',
     'DocumentPreviewView', 'DocumentView', 'DocumentDownloadFormView',
     'DocumentDownloadView', 'DocumentUpdatePageCountView',
     'DocumentTransformationsClearView', 'DocumentTransformationsCloneView',
@@ -279,38 +279,6 @@ class DocumentDownloadView(MultipleObjectDownloadView):
         return item.label
 
 
-class DocumentEditView(SingleObjectEditView):
-    form_class = DocumentForm
-    model = Document
-    object_permission = permission_document_properties_edit
-    pk_url_kwarg = 'document_id'
-
-    def dispatch(self, request, *args, **kwargs):
-        result = super(
-            DocumentEditView, self
-        ).dispatch(request, *args, **kwargs)
-        self.get_object().add_as_recent_document_for_user(request.user)
-        return result
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Edit properties of document: %s') % self.get_object(),
-        }
-
-    def get_save_extra_data(self):
-        return {
-            '_user': self.request.user
-        }
-
-    def get_post_action_redirect(self):
-        return reverse(
-            viewname='documents:document_properties', kwargs={
-                'document_id': self.get_object().pk
-            }
-        )
-
-
 class DocumentPreviewView(SingleObjectDetailView):
     form_class = DocumentPreviewForm
     model = Document
@@ -334,6 +302,38 @@ class DocumentPreviewView(SingleObjectDetailView):
             'object': self.get_object(),
             'title': _('Preview of document: %s') % self.get_object(),
         }
+
+
+class DocumentPropertiesEditView(SingleObjectEditView):
+    form_class = DocumentForm
+    model = Document
+    object_permission = permission_document_properties_edit
+    pk_url_kwarg = 'document_id'
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(
+            DocumentPropertiesEditView, self
+        ).dispatch(request, *args, **kwargs)
+        self.get_object().add_as_recent_document_for_user(request.user)
+        return result
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit properties of document: %s') % self.get_object(),
+        }
+
+    def get_save_extra_data(self):
+        return {
+            '_user': self.request.user
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='documents:document_properties', kwargs={
+                'document_id': self.get_object().pk
+            }
+        )
 
 
 class DocumentView(SingleObjectDetailView):

@@ -33,10 +33,11 @@ from .views.document_version_views import (
 )
 from .views.document_views import (
     DocumentDocumentTypeEditView, DocumentDownloadFormView,
-    DocumentDownloadView, DocumentEditView, DocumentListView,
-    DocumentPreviewView, DocumentPrint, DocumentTransformationsClearView,
-    DocumentTransformationsCloneView, DocumentUpdatePageCountView,
-    DocumentView, RecentAccessDocumentListView, RecentAddedDocumentListView
+    DocumentDownloadView, DocumentListView, DocumentPreviewView,
+    DocumentPrint, DocumentPropertiesEditView,
+    DocumentTransformationsClearView, DocumentTransformationsCloneView,
+    DocumentUpdatePageCountView, DocumentView, RecentAccessDocumentListView,
+    RecentAddedDocumentListView
 )
 from .views.duplicated_document_views import (
     DocumentDuplicatesListView, DuplicatedDocumentListView,
@@ -123,6 +124,10 @@ urlpatterns_documents = [
         name='document_properties', view=DocumentView.as_view()
     ),
     url(
+        regex=r'^documents/(?P<document_id>\d+)/properties/edit/$',
+        name='document_edit', view=DocumentPropertiesEditView.as_view()
+    ),
+    url(
         regex=r'^documents/(?P<document_id>\d+)/type/$',
         name='document_document_type_edit',
         view=DocumentDocumentTypeEditView.as_view()
@@ -131,10 +136,6 @@ urlpatterns_documents = [
         regex=r'^documents/multiple/type/$',
         name='document_multiple_document_type_edit',
         view=DocumentDocumentTypeEditView.as_view()
-    ),
-    url(
-        regex=r'^documents/(?P<document_id>\d+)/edit/$', name='document_edit',
-        view=DocumentEditView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/print/$',
