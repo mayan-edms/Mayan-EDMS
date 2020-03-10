@@ -9,6 +9,8 @@
 - Move dependencies environments to their own module called
   ``dependencies.environments.py``.
 - Increase the size of the file cache maximum size field.
+- Remove codecov dependency.
+- Remove pathlib2 dependency, it is now part of the standard Python library.
 
 3.3.15 (2020-03-05)
 ===================

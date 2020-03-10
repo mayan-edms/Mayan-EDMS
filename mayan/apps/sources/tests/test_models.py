@@ -2,10 +2,10 @@ from __future__ import unicode_literals
 
 import fcntl
 from multiprocessing import Process
+from pathlib import Path
 import shutil
 
 import mock
-from pathlib2 import Path
 
 from django.core import mail
 from django.utils.encoding import force_bytes, force_text

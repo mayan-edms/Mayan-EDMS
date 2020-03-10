@@ -3,13 +3,13 @@ from __future__ import print_function, unicode_literals
 import json
 from importlib import import_module
 import logging
+from pathlib import Path
 import pkg_resources
 import shutil
 import sys
 import tarfile
 
 from furl import furl
-from pathlib2 import Path
 import requests
 from semver import max_satisfying
 

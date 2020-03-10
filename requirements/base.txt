@@ -29,7 +29,6 @@ gunicorn==19.9.0
 kombu==4.6.7
 mock==2.0.0
 node-semver==0.6.1
-pathlib2==2.3.5
 pycountry==18.12.8
 pyocr==0.6
 python-dateutil==2.8.0

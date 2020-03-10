@@ -2,10 +2,9 @@ from __future__ import unicode_literals
 
 import logging
 import os
+from pathlib import Path
 import shutil
 import tempfile
-
-from pathlib2 import Path
 
 try:
     from django.utils.module_loading import import_string

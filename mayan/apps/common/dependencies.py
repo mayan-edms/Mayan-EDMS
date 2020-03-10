@@ -227,9 +227,6 @@ PythonDependency(
     module=__name__, name='mock', version_string='==2.0.0'
 )
 PythonDependency(
-    module=__name__, name='pathlib2', version_string='==2.3.5'
-)
-PythonDependency(
     copyright_text='''
         Author: Christian Theune
         License: LGPL 2.1

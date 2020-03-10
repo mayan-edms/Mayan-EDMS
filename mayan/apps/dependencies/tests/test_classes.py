@@ -1,6 +1,7 @@
 from __future__ import print_function, unicode_literals
 
-from pathlib2 import Path
+from pathlib import Path
+
 import shutil
 
 from mayan.apps.common.tests.base import BaseTestCase

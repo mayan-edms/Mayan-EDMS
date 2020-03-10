@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 
-import shutil
+from pathlib import Path
 
-from pathlib2 import Path
+import shutil
 import sphinx_rtd_theme
 
 from mayan.apps.storage.utils import patch_files

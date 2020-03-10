@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from pathlib2 import Path
+from pathlib import Path
 
 from django.conf import settings
 from django.utils.encoding import force_text

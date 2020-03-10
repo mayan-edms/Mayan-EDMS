@@ -5,4 +5,3 @@ sphinx_rtd_theme==0.4.3
 sphinxcontrib-blockdiag==1.5.5
 sphinxcontrib-spelling==4.2.1
 tornado<6.0
-pathlib2==2.3.5
