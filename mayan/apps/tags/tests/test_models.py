@@ -23,4 +23,11 @@ class TagTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
 
         self.test_tag.documents.remove(self.test_document)
 
-        self.assertTrue(self.test_document not in self.test_tag.documents.all())
+        self.assertTrue(
+            self.test_document not in self.test_tag.documents.all()
+        )
+
+    def test_method_get_absolute_url(self):
+        self._create_test_tag()
+
+        self.assertTrue(self.test_tag.get_absolute_url())
