@@ -184,7 +184,7 @@ class AccessControlListManager(models.Manager):
 
             # Case 7: Has a function
             try:
-                field_query_function = ModelPermission.get_function(
+                field_query_function = ModelPermission.get_field_query_function(
                     model=queryset.model
                 )
             except KeyError:

@@ -97,7 +97,7 @@ class CabinetsApp(MayanAppConfig):
                 'field_lookup': 'tree_id__in'
             }
 
-        ModelPermission.register_function(
+        ModelPermission.register_field_query_function(
             model=Cabinet, function=get_root_filter
         )
 

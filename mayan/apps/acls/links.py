@@ -22,7 +22,7 @@ def get_kwargs_factory(variable_name):
         )
         return {
             'app_label': '"{}"'.format(content_type.app_label),
-            'model': '"{}"'.format(content_type.model),
+            'model_name': '"{}"'.format(content_type.model),
             'object_id': '{}.pk'.format(variable_name)
         }
 

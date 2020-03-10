@@ -66,7 +66,7 @@ class AccessControlList(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='acls:acl_permissions', kwargs={'pk': self.pk}
+            viewname='acls:acl_permissions', kwargs={'acl_id': self.pk}
         )
 
     def get_inherited_permissions(self):

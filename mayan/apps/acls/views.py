@@ -2,9 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.contrib.contenttypes.models import ContentType
-from django.http import Http404
-from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse
 from django.utils.encoding import force_text
@@ -13,6 +10,9 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.generics import (
     AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectListView
+)
+from mayan.apps.common.mixins import (
+    ContentTypeViewMixin, ExternalObjectMixin
 )
 from mayan.apps.permissions.models import Role
 
@@ -26,54 +26,59 @@ from .permissions import permission_acl_edit, permission_acl_view
 logger = logging.getLogger(__name__)
 
 
-class ACLCreateView(SingleObjectCreateView):
+class ACLCreateView(
+    ContentTypeViewMixin, ExternalObjectMixin, SingleObjectCreateView
+):
+    content_type_url_kw_args = {
+        'app_label': 'app_label',
+        'model_name': 'model_name'
+    }
+    external_object_permission = permission_acl_edit
+    external_object_pk_url_kwarg = 'object_id'
     form_class = ACLCreateForm
-    model = AccessControlList
 
-    def dispatch(self, request, *args, **kwargs):
-        self.object_content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model']
-        )
+    def get_error_message_duplicate(self):
+        return _(
+            'An ACL for "%(object)s" using role "%(role)s" already exists. '
+            'Edit that ACL entry instead.'
+        ) % {'object': self.get_external_object(), 'role': self.object.role}
 
-        try:
-            self.content_object = self.object_content_type.get_object_for_this_type(
-                pk=self.kwargs['object_id']
-            )
-        except self.object_content_type.model_class().DoesNotExist:
-            raise Http404
-
-        AccessControlList.objects.check_access(
-            obj=self.content_object, permissions=(permission_acl_edit,),
-            user=request.user
-        )
-
-        return super(ACLCreateView, self).dispatch(request, *args, **kwargs)
-
-    def get_instance_extra_data(self):
-        return {
-            'content_object': self.content_object
-        }
+    def get_external_object_queryset(self):
+        # Here we get a queryset the object model for which an ACL will be
+        # created.
+        return self.get_content_type().get_all_objects_for_this_type()
 
     def get_extra_context(self):
         return {
-            'object': self.content_object,
+            'object': self.external_object,
             'title': _(
                 'New access control lists for: %s'
-            ) % self.content_object
+            ) % self.external_object
         }
 
     def get_form_extra_kwargs(self):
-        acls = AccessControlList.objects.filter(
-            content_type=self.content_type, object_id=self.content_object.pk
-        )
+        try:
+            roles = self.external_object.acls.values('role')
+        except AttributeError:
+            # Fallback when attempting to access the ACLs generic relation
+            # field of models that have not been registered.
+            roles = Role.objects.none()
 
         return {
-            'queryset': Role.objects.exclude(
-                pk__in=acls.values('role')
-            ),
+            'field_name': 'role',
+            'label': _('Role'),
+            'queryset': Role.objects.exclude(pk__in=roles),
+            'widget_attributes': {'class': 'select2'},
             'user': self.request.user
         }
+
+    def get_instance_extra_data(self):
+        return {
+            'content_object': self.external_object
+        }
+
+    def get_queryset(self):
+        self.external_object.acls.all()
 
     def get_success_url(self):
         return self.object.get_absolute_url()
@@ -81,56 +86,39 @@ class ACLCreateView(SingleObjectCreateView):
 
 class ACLDeleteView(SingleObjectDeleteView):
     model = AccessControlList
-
-    def dispatch(self, request, *args, **kwargs):
-        acl = get_object_or_404(klass=AccessControlList, pk=self.kwargs['pk'])
-
-        AccessControlList.objects.check_access(
-            obj=acl.content_object, permissions=(permission_acl_edit,),
-            user=request.user
-        )
-
-        return super(ACLDeleteView, self).dispatch(request, *args, **kwargs)
+    object_permission = permission_acl_edit
+    pk_url_kwarg = 'acl_id'
 
     def get_extra_context(self):
         return {
-            'acl': self.get_object(),
+            'acl': self.object,
             'navigation_object_list': ('object', 'acl'),
-            'object': self.get_object().content_object,
-            'title': _('Delete ACL: %s') % self.get_object(),
+            'object': self.object.content_object,
+            'title': _('Delete ACL: %s') % self.object,
         }
 
     def get_post_action_redirect(self):
-        instance = self.get_object()
         return reverse(
             viewname='acls:acl_list', kwargs={
-                'app_label': instance.content_type.app_label,
-                'model': instance.content_type.model,
-                'object_id': instance.object_id
+                'app_label': self.object.content_type.app_label,
+                'model_name': self.object.content_type.model,
+                'object_id': self.object.object_id
             }
         )
 
 
-class ACLListView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        self.object_content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model']
-        )
+class ACLListView(ContentTypeViewMixin, ExternalObjectMixin, SingleObjectListView):
+    content_type_url_kw_args = {
+        'app_label': 'app_label',
+        'model_name': 'model_name'
+    }
+    external_object_permission = permission_acl_view
+    external_object_pk_url_kwarg = 'object_id'
 
-        try:
-            self.content_object = self.object_content_type.get_object_for_this_type(
-                pk=self.kwargs['object_id']
-            )
-        except self.object_content_type.model_class().DoesNotExist:
-            raise Http404
-
-        AccessControlList.objects.check_access(
-            obj=self.content_object, permissions=(permission_acl_view,),
-            user=request.user
-        )
-
-        return super(ACLListView, self).dispatch(request, *args, **kwargs)
+    def get_external_object_queryset(self):
+        # Here we get a queryset the object model for which an ACL will be
+        # created.
+        return self.get_content_type().get_all_objects_for_this_type()
 
     def get_extra_context(self):
         return {
@@ -138,8 +126,8 @@ class ACLListView(SingleObjectListView):
             'no_results_icon': icon_acl_list,
             'no_results_main_link': link_acl_create.resolve(
                 context=RequestContext(
-                    request=self.request, dict_={
-                        'resolved_object': self.content_object
+                    self.request, {
+                        'resolved_object': self.external_object
                     }
                 )
             ),
@@ -148,17 +136,18 @@ class ACLListView(SingleObjectListView):
             ),
             'no_results_text': _(
                 'ACL stands for Access Control List and is a precise method '
-                ' to control user access to objects in the system.'
+                'to control user access to objects in the system. ACLs '
+                'allow granting a permission to a role but only for a '
+                'specific object or set of objects.'
             ),
-            'object': self.content_object,
-            'title': _('Access control lists for: %s' % self.content_object),
+            'object': self.external_object,
+            'title': _(
+                'Access control lists for: %s' % self.external_object
+            ),
         }
 
     def get_source_queryset(self):
-        return AccessControlList.objects.filter(
-            content_type=self.object_content_type,
-            object_id=self.content_object.pk
-        )
+        return self.external_object.acls.all()
 
 
 class ACLPermissionsView(AddRemoveView):
@@ -166,7 +155,7 @@ class ACLPermissionsView(AddRemoveView):
     main_object_method_remove = 'permissions_remove'
     main_object_model = AccessControlList
     main_object_permission = permission_acl_edit
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'acl_id'
     list_added_title = _('Granted permissions')
     list_available_title = _('Available permissions')
     related_field = 'permissions'
