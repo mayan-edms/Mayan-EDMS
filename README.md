@@ -14,9 +14,6 @@
 [builds]: https://gitlab.com/mayan-edms/mayan-edms/badges/master/build.svg
 [builds-url]: https://gitlab.com/mayan-edms/mayan-edms/pipelines
 
-[cover]: https://codecov.io/gitlab/mayan-edms/mayan-edms/coverage.svg?branch=master
-[cover-url]: https://codecov.io/gitlab/mayan-edms/mayan-edms?branch=master
-
 [python]: https://img.shields.io/pypi/pyversions/mayan-edms.svg
 [python-url]: https://img.shields.io/pypi/l/mayan-edms.svg?style=flat
 

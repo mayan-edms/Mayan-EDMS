@@ -58,8 +58,6 @@ Important links
    :target: https://pypi.org/project/mayan-edms/
 .. |builds| image:: https://gitlab.com/mayan-edms/mayan-edms/badges/master/build.svg
    :target: https://gitlab.com/mayan-edms/mayan-edms/pipelines
-.. |coverage| image:: https://codecov.io/gitlab/mayan-edms/mayan-edms/coverage.svg?branch=master
-   :target: https://codecov.io/gitlab/mayan-edms/mayan-edms?branch=master
 .. |python| image:: https://img.shields.io/pypi/pyversions/mayan-edms.svg
 .. |license| image:: https://img.shields.io/pypi/l/mayan-edms.svg?style=flat
    :target: https://gitlab.com/mayan-edms/mayan-edms/blob/master/LICENSE

@@ -343,10 +343,6 @@ BinaryDependency(
     path=DEFAULT_FIREFOX_GECKODRIVER_PATH
 )
 PythonDependency(
-    environment=environment_testing, module=__name__, name='codecov',
-    version_string='==2.0.15'
-)
-PythonDependency(
     environment=environment_testing, module=__name__, name='coverage',
     version_string='==4.4.1'
 )
