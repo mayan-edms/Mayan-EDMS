@@ -1,12 +1,17 @@
 from __future__ import unicode_literals
 
 from django.http import QueryDict
+from django.urls import reverse
 from django.utils.encoding import force_bytes
 from django.utils.six import PY3
 
 
 class URL(object):
-    def __init__(self, path=None, query_string=None, query=None):
+    def __init__(
+        self, path=None, query_string=None, query=None, viewname=None
+    ):
+        if viewname:
+            path = reverse(viewname=viewname)
         self._path = path
         self._query_string = query_string
         self._query = query

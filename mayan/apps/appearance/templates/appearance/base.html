@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load static %}
 
+{% load authentication_tags %}
 {% load common_tags %}
 {% load navigation_tags %}
 {% load smart_settings_tags %}
@@ -57,6 +58,18 @@
                             <div class="alert alert-dismissible alert-warning">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                                 <p><strong>{% trans 'Warning' %}</strong> {% trans 'Settings updated, restart your installation and refresh your browser for changes to take effect.' %}</p>
+                            </div>
+                        {% endif %}
+
+                        {% authentication_impersonation_check as impersonated_user %}
+                        {% if impersonated_user %}
+                            <div class="alert alert-warning">
+                                <p>
+                                    {% blocktrans with impersonated_user.full_name|default:impersonated_user as user %}
+                                        Impersonating user "{{ user }}".
+                                    {% endblocktrans %}
+                                    <a class="btn btn-primary" href="{% url 'authentication:impersonate_end' %}">{% trans 'Click here when finished' %}</a>
+                                </p>
                             </div>
                         {% endif %}
                     </div>

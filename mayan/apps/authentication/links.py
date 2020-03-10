@@ -5,6 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 from mayan.apps.user_management.permissions import permission_user_edit
 
+from .permissions import permission_users_impersonate
+
 
 def has_usable_password_and_can_change_password(context):
     return (
@@ -26,6 +28,11 @@ link_password_change = Link(
     icon_class_path='mayan.apps.authentication.icons.icon_password_change',
     text=_('Change password'),
     view='authentication:password_change_view'
+)
+link_user_impersonate_start = Link(
+    icon_class_path='mayan.apps.authentication.icons.icon_impersonate_start',
+    permissions=(permission_users_impersonate,), text=_('Impersonate user'),
+    view='authentication:impersonate_start'
 )
 link_user_multiple_set_password = Link(
     icon_class_path='mayan.apps.authentication.icons.icon_password_change',

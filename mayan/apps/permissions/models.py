@@ -165,6 +165,9 @@ class Role(models.Model):
             )
             self.permissions.remove(*queryset)
 
+    def revoke(self, permission):
+        self.permissions.remove(permission.stored_permission)
+
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)
 
