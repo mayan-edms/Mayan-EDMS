@@ -13,6 +13,8 @@
 - Remove pathlib2 dependency, it is now part of the standard Python library.
 - Remove Django's admindocs app
 - Add user impersonation support.
+- Add support for uncompressing Outlook .msg files. Adds dependecy
+  ``extract-msg``.
 
 3.3.15 (2020-03-05)
 ===================

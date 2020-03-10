@@ -1,8 +1,9 @@
 from __future__ import unicode_literals
 
-from io import BytesIO
 import tarfile
 import zipfile
+
+import extract_msg
 
 try:
     import zlib  # NOQA
@@ -11,11 +12,13 @@ except ImportError:
     COMPRESSION = zipfile.ZIP_STORED
 
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.utils.encoding import force_text
+from django.utils.encoding import force_bytes, force_text
+from django.utils.six import BytesIO
 
 from mayan.apps.mimetype.api import get_mimetype
 
 from .exceptions import NoMIMETypeMatch
+from .literals import MSG_MIME_TYPES
 
 
 class Archive(object):
@@ -85,6 +88,37 @@ class Archive(object):
         Return a file-like object to a member of the archive
         """
         raise NotImplementedError
+
+
+class MsgArchive(Archive):
+    def _open(self, file_object):
+        self._archive = extract_msg.Message(file_object)
+
+    def member_contents(self, filename):
+        if filename == 'message.txt':
+            return force_bytes(self._archive.body)
+
+        for member in self._archive.attachments:
+            if member.longFilename == filename:
+                return force_bytes(member.data)
+
+    def members(self):
+        results = []
+        for attachments in self._archive.attachments:
+            results.append(attachments.longFilename)
+
+        if self._archive.body:
+            results.append('message.txt')
+
+        return results
+
+    def open_member(self, filename):
+        if filename == 'message.txt':
+            return BytesIO(force_bytes(self._archive.body))
+
+        for member in self._archive.attachments:
+            if member.longFilename == filename:
+                return BytesIO(force_bytes(member.data))
 
 
 class TarArchive(Archive):
@@ -186,6 +220,9 @@ class ZipArchive(Archive):
         return SimpleUploadedFile(name=filename, content=self.write().read())
 
 
+Archive.register(
+    archive_classes=(MsgArchive,), mime_types=MSG_MIME_TYPES
+)
 Archive.register(
     archive_classes=(ZipArchive,), mime_types=('application/zip',)
 )
