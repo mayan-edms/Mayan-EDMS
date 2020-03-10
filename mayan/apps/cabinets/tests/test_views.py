@@ -14,7 +14,9 @@ from .literals import TEST_CABINET_LABEL, TEST_CABINET_LABEL_EDITED
 from .mixins import CabinetTestMixin, CabinetViewTestMixin
 
 
-class CabinetViewTestCase(CabinetTestMixin, CabinetViewTestMixin, GenericViewTestCase):
+class CabinetViewTestCase(
+    CabinetTestMixin, CabinetViewTestMixin, GenericViewTestCase
+):
     def test_cabinet_create_view_no_permission(self):
         response = self._request_test_cabinet_create_view()
         self.assertEqual(response.status_code, 403)
@@ -105,7 +107,9 @@ class CabinetViewTestCase(CabinetTestMixin, CabinetViewTestMixin, GenericViewTes
         )
 
 
-class CabinetChildViewTestCase(CabinetTestMixin, CabinetViewTestMixin, GenericViewTestCase):
+class CabinetChildViewTestCase(
+    CabinetTestMixin, CabinetViewTestMixin, GenericViewTestCase
+):
     def setUp(self):
         super(CabinetChildViewTestCase, self).setUp()
         self._create_test_cabinet()
@@ -157,22 +161,15 @@ class CabinetChildViewTestCase(CabinetTestMixin, CabinetViewTestMixin, GenericVi
         self.assertEqual(Cabinet.objects.count(), cabinet_count - 1)
 
 
-class CabinetDocumentViewTestCase(CabinetTestMixin, CabinetViewTestMixin, GenericDocumentViewTestCase):
-    def _add_document_to_cabinet(self):
-        return self.post(
-            viewname='cabinets:document_cabinet_add', kwargs={
-                'pk': self.test_document.pk
-            }, data={
-                'cabinets': self.test_cabinet.pk
-            }
-        )
-
+class CabinetDocumentViewTestCase(
+    CabinetTestMixin, CabinetViewTestMixin, GenericDocumentViewTestCase
+):
     def test_cabinet_add_document_view_no_permission(self):
         self._create_test_cabinet()
 
         self.grant_permission(permission=permission_cabinet_view)
 
-        response = self._add_document_to_cabinet()
+        response = self._request_test_document_cabinet_add_view()
         self.assertEqual(response.status_code, 404)
 
         self.test_cabinet.refresh_from_db()
@@ -191,7 +188,7 @@ class CabinetDocumentViewTestCase(CabinetTestMixin, CabinetViewTestMixin, Generi
             obj=self.test_document, permission=permission_cabinet_add_document
         )
 
-        response = self._add_document_to_cabinet()
+        response = self._request_test_document_cabinet_add_view()
         self.assertEqual(response.status_code, 302)
 
         self.test_cabinet.refresh_from_db()
@@ -260,13 +257,6 @@ class CabinetDocumentViewTestCase(CabinetTestMixin, CabinetViewTestMixin, Generi
 
         self.test_cabinet.refresh_from_db()
         self.assertEqual(self.test_cabinet.documents.count(), 0)
-
-    def _request_test_cabinet_document_list_view(self):
-        return self.get(
-            viewname='cabinets:cabinet_view', kwargs={
-                'pk': self.test_cabinet.pk
-            }
-        )
 
     def test_cabinet_document_list_view_no_permission(self):
         self._create_test_cabinet()

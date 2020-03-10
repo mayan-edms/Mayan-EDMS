@@ -16,7 +16,27 @@ from ..wizard_steps import WizardStepCabinets
 from .mixins import CabinetTestMixin
 
 
-class CabinetDocumentUploadTestCase(CabinetTestMixin, GenericDocumentViewTestCase):
+class CabinetDocumentUploadTestMixin(object):
+    def _request_upload_interactive_document_create_view(self):
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            return self.post(
+                viewname='sources:document_upload_interactive', kwargs={
+                    'source_id': self.test_source.pk
+                }, data={
+                    'document_type_id': self.test_document_type.pk,
+                    'source-file': file_object,
+                    'cabinets': Cabinet.objects.values_list('pk', flat=True)
+                }
+            )
+
+    def _request_wizard_view(self):
+        return self.get(viewname='sources:document_create_multiple')
+
+
+class CabinetDocumentUploadTestCase(
+    CabinetTestMixin, CabinetDocumentUploadTestMixin,
+    GenericDocumentViewTestCase
+):
     auto_upload_document = False
 
     def setUp(self):
@@ -29,18 +49,6 @@ class CabinetDocumentUploadTestCase(CabinetTestMixin, GenericDocumentViewTestCas
     def tearDown(self):
         super(CabinetDocumentUploadTestCase, self).tearDown()
         WizardStep.reregister_all()
-
-    def _request_upload_interactive_document_create_view(self):
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            return self.post(
-                viewname='sources:document_upload_interactive', kwargs={
-                    'source_id': self.test_source.pk
-                }, data={
-                    'document_type_id': self.test_document_type.pk,
-                    'source-file': file_object,
-                    'cabinets': Cabinet.objects.values_list('pk', flat=True)
-                }
-            )
 
     def test_upload_interactive_view_with_access(self):
         self._create_test_cabinet()
@@ -57,9 +65,6 @@ class CabinetDocumentUploadTestCase(CabinetTestMixin, GenericDocumentViewTestCas
         self.assertTrue(
             self.test_cabinets[1] in Document.objects.first().cabinets.all()
         )
-
-    def _request_wizard_view(self):
-        return self.get(viewname='sources:document_create_multiple')
 
     def test_upload_interactive_cabinet_selection_view_with_access(self):
         WizardStep.deregister_all()

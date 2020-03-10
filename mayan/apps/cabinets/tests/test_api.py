@@ -16,7 +16,8 @@ from ..permissions import (
 )
 
 from .mixins import (
-    CabinetAPIViewTestMixin, CabinetTestMixin, DocumentCabinetAPIViewTestMixin
+    CabinetAPIViewTestMixin, CabinetTestMixin,
+    DocumentCabinetAPIViewTestMixin
 )
 
 
@@ -140,7 +141,8 @@ class CabinetAPITestCase(
 
 
 class CabinetDocumentAPITestCase(
-    CabinetAPIViewTestMixin, CabinetTestMixin, DocumentTestMixin, BaseAPITestCase
+    CabinetAPIViewTestMixin, CabinetTestMixin, DocumentTestMixin,
+    BaseAPITestCase
 ):
     auto_upload_document = False
 
@@ -221,7 +223,8 @@ class CabinetDocumentAPITestCase(
         )
         response = self.get(
             viewname='rest_api:cabinet-document', kwargs={
-                'pk': self.test_cabinet.pk, 'document_pk': self.test_document.pk
+                'pk': self.test_cabinet.pk,
+                'document_pk': self.test_document.pk
             }
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)

@@ -95,14 +95,14 @@ class CabinetViewTestMixin(object):
     def _request_test_cabinet_delete_view(self):
         return self.post(
             viewname='cabinets:cabinet_delete', kwargs={
-                'pk': self.test_cabinet.pk
+                'cabinet_id': self.test_cabinet.pk
             }
         )
 
     def _request_test_cabinet_edit_view(self):
         return self.post(
             viewname='cabinets:cabinet_edit', kwargs={
-                'pk': self.test_cabinet.pk
+                'cabinet_id': self.test_cabinet.pk
             }, data={
                 'label': TEST_CABINET_LABEL_EDITED
             }
@@ -114,7 +114,7 @@ class CabinetViewTestMixin(object):
 
         response = self.post(
             viewname='cabinets:cabinet_child_add', kwargs={
-                'pk': self.test_cabinet.pk
+                'cabinet_id': self.test_cabinet.pk
             }, data={'label': TEST_CABINET_CHILD_LABEL}
         )
 
@@ -126,17 +126,33 @@ class CabinetViewTestMixin(object):
     def _request_test_cabinet_child_delete_view(self):
         return self.post(
             viewname='cabinets:cabinet_delete', kwargs={
-                'pk': self.test_cabinet_child.pk
+                'cabinet_id': self.test_cabinet_child.pk
+            }
+        )
+
+    def _request_test_cabinet_document_list_view(self):
+        return self.get(
+            viewname='cabinets:cabinet_view', kwargs={
+                'cabinet_id': self.test_cabinet.pk
             }
         )
 
     def _request_test_cabinet_list_view(self):
         return self.get(viewname='cabinets:cabinet_list')
 
+    def _request_test_document_cabinet_add_view(self):
+        return self.post(
+            viewname='cabinets:document_cabinet_add', kwargs={
+                'document_id': self.test_document.pk
+            }, data={
+                'cabinets': self.test_cabinet.pk
+            }
+        )
+
     def _request_test_document_cabinet_multiple_remove_view(self):
         return self.post(
             viewname='cabinets:document_cabinet_remove', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data={
                 'cabinets': (self.test_cabinet.pk,),
             }

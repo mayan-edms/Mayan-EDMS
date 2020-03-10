@@ -16,7 +16,9 @@ class CabinetTestCase(CabinetTestMixin, BaseTestCase):
         self._create_test_cabinet()
 
         self.assertEqual(Cabinet.objects.all().count(), 1)
-        self.assertQuerysetEqual(Cabinet.objects.all(), (repr(self.test_cabinet),))
+        self.assertQuerysetEqual(
+            Cabinet.objects.all(), (repr(self.test_cabinet),)
+        )
 
     def test_cabinet_duplicate_creation(self):
         self._create_test_cabinet()
@@ -27,7 +29,9 @@ class CabinetTestCase(CabinetTestMixin, BaseTestCase):
             cabinet_2.save()
 
         self.assertEqual(Cabinet.objects.all().count(), 1)
-        self.assertQuerysetEqual(Cabinet.objects.all(), (repr(self.test_cabinet),))
+        self.assertQuerysetEqual(
+            Cabinet.objects.all(), (repr(self.test_cabinet),)
+        )
 
     def test_inner_cabinet_creation(self):
         self._create_test_cabinet()
@@ -38,11 +42,14 @@ class CabinetTestCase(CabinetTestMixin, BaseTestCase):
 
         self.assertEqual(Cabinet.objects.all().count(), 2)
         self.assertQuerysetEqual(
-            Cabinet.objects.all(), map(repr, (self.test_cabinet, inner_cabinet))
+            Cabinet.objects.all(),
+            map(repr, (self.test_cabinet, inner_cabinet))
         )
 
 
-class CabinetDocumentTestCase(CabinetTestMixin, DocumentTestMixin, BaseTestCase):
+class CabinetDocumentTestCase(
+    CabinetTestMixin, DocumentTestMixin, BaseTestCase
+):
     def setUp(self):
         super(CabinetDocumentTestCase, self).setUp()
         self._create_test_cabinet()

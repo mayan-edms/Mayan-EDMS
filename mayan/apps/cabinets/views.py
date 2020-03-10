@@ -53,6 +53,7 @@ class CabinetChildAddView(ExternalObjectMixin, SingleObjectCreateView):
     fields = ('label',)
     external_object_class = Cabinet
     external_object_permission = permission_cabinet_edit
+    external_object_pk_url_kwarg = 'cabinet_id'
 
     def get_extra_context(self):
         return {
@@ -80,6 +81,7 @@ class CabinetDeleteView(SingleObjectDeleteView):
     model = Cabinet
     object_permission = permission_cabinet_delete
     post_action_redirect = reverse_lazy(viewname='cabinets:cabinet_list')
+    pk_url_kwarg = 'cabinet_id'
 
     def get_extra_context(self):
         return {
@@ -91,6 +93,7 @@ class CabinetDeleteView(SingleObjectDeleteView):
 class CabinetDetailView(ExternalObjectMixin, DocumentListView):
     external_object_class = Cabinet
     external_object_permission = permission_cabinet_view
+    external_object_pk_url_kwarg = 'cabinet_id'
     template_name = 'cabinets/cabinet_details.html'
 
     def get_document_queryset(self):
@@ -142,6 +145,7 @@ class CabinetEditView(SingleObjectEditView):
     model = Cabinet
     object_permission = permission_cabinet_edit
     post_action_redirect = reverse_lazy(viewname='cabinets:cabinet_list')
+    pk_url_kwarg = 'cabinet_id'
 
     def get_extra_context(self):
         return {
@@ -219,11 +223,12 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
     form_class = CabinetListForm
     model = Document
     object_permission = permission_cabinet_add_document
+    pk_url_kwarg = 'document_id'
     success_message = _(
-        'Add to cabinet request performed on %(count)d document'
+        'Add to cabinet request performed on %(count)d document.'
     )
     success_message_plural = _(
-        'Add to cabinet request performed on %(count)d documents'
+        'Add to cabinet request performed on %(count)d documents.'
     )
 
     def get_extra_context(self):
@@ -309,11 +314,12 @@ class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
     form_class = CabinetListForm
     model = Document
     object_permission = permission_cabinet_remove_document
+    pk_url_kwarg = 'document_id'
     success_message = _(
-        'Remove from cabinet request performed on %(count)d document'
+        'Remove from cabinet request performed on %(count)d document.'
     )
     success_message_plural = _(
-        'Remove from cabinet request performed on %(count)d documents'
+        'Remove from cabinet request performed on %(count)d documents.'
     )
 
     def get_extra_context(self):
