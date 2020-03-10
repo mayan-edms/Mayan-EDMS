@@ -15,7 +15,7 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_multi_item, menu_tools
 )
-from mayan.apps.common.signals import post_initial_setup
+from mayan.apps.common.signals import database_ready, post_initial_setup
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.converter.permissions import (
@@ -110,6 +110,8 @@ from .permissions import (
 )
 # Just import to initialize the search models
 from .search import document_search, document_page_search  # NOQA
+from .setting_callbacks import callback_update_cache_size
+from .settings import setting_document_cache_maximum_size
 from .signals import post_version_upload
 from .statistics import *  # NOQA
 from .widgets import (
@@ -570,6 +572,10 @@ class DocumentsApp(MayanAppConfig):
             links=(link_document_version_view,), sources=(DocumentVersion,)
         )
 
+        database_ready.connect(
+            dispatch_uid='documents_handler_create_document_cache_database_ready',
+            receiver=handler_create_document_cache,
+        )
         post_delete.connect(
             dispatch_uid='documents_handler_remove_empty_duplicates_lists',
             receiver=handler_remove_empty_duplicates_lists,
@@ -580,7 +586,7 @@ class DocumentsApp(MayanAppConfig):
             receiver=handler_create_default_document_type
         )
         post_migrate.connect(
-            dispatch_uid='documents_handler_create_document_cache',
+            dispatch_uid='documents_handler_create_document_cache_post_migrate',
             receiver=handler_create_document_cache,
         )
         post_version_upload.connect(

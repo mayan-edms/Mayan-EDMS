@@ -11,6 +11,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
+from django.db.utils import OperationalError
 from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
@@ -32,7 +33,7 @@ from .settings import (
     setting_auto_logging, setting_production_error_log_path,
     setting_production_error_logging
 )
-from .signals import pre_initial_setup, pre_upgrade
+from .signals import database_ready, pre_initial_setup, pre_upgrade
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
 from .utils import check_for_sqlite
 from .warnings import DatabaseWarning
@@ -43,6 +44,22 @@ logger = logging.getLogger(__name__)
 class MayanAppConfig(apps.AppConfig):
     app_namespace = None
     app_url = None
+
+    @staticmethod
+    def _get_mayan_apps():
+        return [
+            app for app in apps.apps.get_app_configs() if isinstance(app, MayanAppConfig)
+        ]
+
+    @staticmethod
+    def _are_apps_ready():
+        return all(
+            [
+                getattr(
+                    app, 'app_ready', False
+                ) for app in MayanAppConfig._get_mayan_apps()
+            ]
+        )
 
     def ready(self):
         logger.debug('Initializing app: %s', self.name)
@@ -76,6 +93,18 @@ class MayanAppConfig(apps.AppConfig):
                     )
                 ),
             )
+        self.app_ready = True
+
+        if MayanAppConfig._are_apps_ready():
+            SharedUploadedFile = apps.apps.get_model(
+                app_label='contenttypes', model_name='ContentType'
+            )
+            try:
+                SharedUploadedFile.objects.first()
+            except OperationalError:
+                """Expected when the database is not yet ready"""
+            #else:
+            #    database_ready.send(sender=self)
 
 
 class CommonApp(MayanAppConfig):
