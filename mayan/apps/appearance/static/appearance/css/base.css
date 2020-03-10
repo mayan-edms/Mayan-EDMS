@@ -194,6 +194,7 @@ a i {
 
 .panel-item {
     box-shadow: 2px 2px 18px rgba(0, 0, 0, .2);
+    transition: all .2s ease;
 }
 
 .panel-item > .panel-heading {
