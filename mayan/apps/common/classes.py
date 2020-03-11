@@ -133,7 +133,11 @@ class ModelAttribute(object):
         result = []
 
         for klass in cls._class_registry:
-            result.append((klass.class_label, klass.get_choices_for(model=model)))
+            klass_choices = klass.get_choices_for(model=model)
+            if klass_choices:
+                result.append(
+                    (klass.class_label, klass_choices)
+                )
 
         return result
 
@@ -155,7 +159,7 @@ class ModelAttribute(object):
 
             # If we are already in the model class, exit with an error
             if model.__class__ == models.base.ModelBase:
-                raise
+                return []
 
             return cls.get_for(model=type(model))
 
@@ -234,6 +238,33 @@ class ModelFieldRelated(ModelField):
     class_name = 'related_field'
 
 
+class ModelReverseField(ModelField):
+    class_label = _('Model reverse fields')
+    class_name = 'reverse_field'
+
+    def __init__(self, *args, **kwargs):
+        super(ModelField, self).__init__(*args, **kwargs)
+        self._final_model_verbose_name = None
+
+        if not self.label:
+            self.label = self.get_field_attribute(
+                attribute='verbose_name_plural'
+            )
+
+    def get_field_attribute(self, attribute, model=None, field_name=None):
+        if not model:
+            model = self.model
+
+        if not field_name:
+            field_name = self.name
+
+        return getattr(
+            model._meta.get_field(field_name=field_name).related_model._meta,
+            attribute
+        )
+
+
 ModelAttribute.register(klass=ModelProperty)
 ModelAttribute.register(klass=ModelField)
 ModelAttribute.register(klass=ModelFieldRelated)
+ModelAttribute.register(klass=ModelReverseField)
