@@ -157,6 +157,21 @@ class DocumentsApp(MayanAppConfig):
             view='documents:document_type_list'
         )
 
+        ModelEventType.register(
+            model=DocumentType, event_types=(
+                event_document_create,
+                event_document_type_created,
+                event_document_type_edited,
+            )
+        )
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_document_download, event_document_properties_edit,
+                event_document_type_change, event_document_new_version,
+                event_document_version_revert, event_document_view
+            )
+        )
+
         ModelField(model=Document, name='description')
         ModelField(model=Document, name='date_added')
         ModelField(model=Document, name='deleted_date_time')
@@ -194,21 +209,6 @@ class DocumentsApp(MayanAppConfig):
         ModelProperty(
             description=_('Return the lastest version of the document.'),
             model=Document, label=_('Latest version'), name='latest_version'
-        )
-
-        ModelEventType.register(
-            model=DocumentType, event_types=(
-                event_document_create,
-                event_document_type_created,
-                event_document_type_edited,
-            )
-        )
-        ModelEventType.register(
-            model=Document, event_types=(
-                event_document_download, event_document_properties_edit,
-                event_document_type_change, event_document_new_version,
-                event_document_version_revert, event_document_view
-            )
         )
 
         ModelPermission.register(
