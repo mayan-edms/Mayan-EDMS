@@ -66,7 +66,6 @@ class DocumentSignaturesApp(MayanAppConfig):
         )
 
         DetachedSignature = self.get_model(model_name='DetachedSignature')
-        EmbeddedSignature = self.get_model(model_name='EmbeddedSignature')
 
         SignatureBaseModel = self.get_model(model_name='SignatureBaseModel')
 
