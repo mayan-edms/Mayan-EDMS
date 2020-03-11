@@ -173,15 +173,20 @@ class DynamicFormMixin(object):
 
     @property
     def media(self):
-        return forms.Media(**self.schema.get('media', {}))
+        """
+        Append the media of the dynamic fields to the normal fields' media.
+        """
+        media = super(DynamicFormMixin, self).media
+        media = media + forms.Media(**self.schema.get('media', {}))
+        return media
 
 
 class DynamicForm(DynamicFormMixin, forms.Form):
-    pass
+    """Normal dynamic form"""
 
 
 class DynamicModelForm(DynamicFormMixin, forms.ModelForm):
-    pass
+    """Dynamic model form"""
 
 
 class FileDisplayForm(forms.Form):
