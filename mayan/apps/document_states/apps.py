@@ -291,6 +291,10 @@ class DocumentStatesApp(MayanAppConfig):
             attribute='get_class_label', include_label=True,
             label=_('Action type'), source=WorkflowStateAction
         )
+        SourceColumn(
+            attribute='has_condition', include_label=True,
+            source=WorkflowStateAction, widget=TwoStateWidget
+        )
 
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,

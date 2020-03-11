@@ -39,6 +39,7 @@ from .literals import (
 from .managers import WorkflowManager
 from .permissions import permission_workflow_transition
 
+SYMBOL_MATH_CONDITIONAL = '&rarr;'
 logger = logging.getLogger(__name__)
 
 
@@ -154,10 +155,12 @@ class Workflow(models.Model):
             )
             workflow_instance = self.instances.create(document=document)
             initial_state = self.get_initial_state()
-
             if initial_state:
                 for action in initial_state.entry_actions.filter(enabled=True):
-                    action.execute(context=workflow_instance.get_context())
+                    action.execute(
+                        context=workflow_instance.get_context(),
+                        workflow_instance=workflow_instance
+                    )
         except IntegrityError:
             logger.info(
                 'Workflow %s already launched for document %s', self, document
@@ -188,19 +191,33 @@ class Workflow(models.Model):
             }
 
             for action in state.actions.all():
+                if action.has_condition():
+                    action_label = '{} {}'.format(
+                        SYMBOL_MATH_CONDITIONAL, action.label
+                    )
+                else:
+                    action_label = action.label
+
                 action_cache['a{}'.format(action.pk)] = {
                     'name': 'a{}'.format(action.pk),
-                    'label': action.label,
+                    'label': action_label,
                     'state': 's{}'.format(state.pk),
                     'when': action.when,
                 }
 
         for transition in self.transitions.all():
+            if transition.has_condition():
+                transition_label = '{} {}'.format(
+                    SYMBOL_MATH_CONDITIONAL, transition.label
+                )
+            else:
+                transition_label = transition.label
+
             transition_cache.append(
                 {
                     'tail_name': 's{}'.format(transition.origin_state.pk),
                     'head_name': 's{}'.format(transition.destination_state.pk),
-                    'label': transition.label
+                    'label': transition_label
                 }
             )
             state_cache['s{}'.format(transition.origin_state.pk)]['connections']['origin'] = state_cache['s{}'.format(transition.origin_state.pk)]['connections']['origin'] + 1
@@ -253,296 +270,6 @@ class Workflow(models.Model):
                 event_workflow_edited.commit(actor=_user, target=self)
 
             return result
-
-
-@python_2_unicode_compatible
-class WorkflowState(models.Model):
-    """
-    Fields:
-    * completion - Completion Amount - A user defined numerical value to help
-    determine if the workflow of the document is nearing completion (100%).
-    The Completion Amount will be determined by the completion value of the
-    Actual State. Example: If the workflow has 3 states: registered, approved,
-    archived; the admin could give the follow completion values to the
-    states: 33%, 66%, 100%. If the Actual State of the document if approved,
-    the Completion Amount will show 66%.
-    """
-    workflow = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='states', to=Workflow,
-        verbose_name=_('Workflow')
-    )
-    label = models.CharField(
-        help_text=_('A short text to describe the workflow state.'),
-        max_length=255, verbose_name=_('Label')
-    )
-    initial = models.BooleanField(
-        default=False,
-        help_text=_(
-            'The state at which the workflow will start in. Only one state '
-            'can be the initial state.'
-        ), verbose_name=_('Initial')
-    )
-    completion = models.IntegerField(
-        blank=True, default=0, help_text=_(
-            'The percent of completion that this state represents in '
-            'relation to the workflow. Use numbers without the percent sign.'
-        ), verbose_name=_('Completion')
-    )
-
-    class Meta:
-        ordering = ('label',)
-        unique_together = ('workflow', 'label')
-        verbose_name = _('Workflow state')
-        verbose_name_plural = _('Workflow states')
-
-    def __str__(self):
-        return self.label
-
-    @property
-    def entry_actions(self):
-        return self.actions.filter(when=WORKFLOW_ACTION_ON_ENTRY)
-
-    @property
-    def exit_actions(self):
-        return self.actions.filter(when=WORKFLOW_ACTION_ON_EXIT)
-
-    def get_documents(self):
-        latest_entries = WorkflowInstanceLogEntry.objects.annotate(
-            max_datetime=Max(
-                'workflow_instance__log_entries__datetime'
-            )
-        ).filter(
-            datetime=F('max_datetime')
-        )
-
-        state_latest_entries = latest_entries.filter(
-            transition__destination_state=self
-        )
-
-        return Document.objects.filter(
-            Q(
-                workflows__pk__in=state_latest_entries.values_list(
-                    'workflow_instance', flat=True
-                )
-            ) | Q(
-                workflows__log_entries__isnull=True,
-                workflows__workflow__states=self,
-                workflows__workflow__states__initial=True
-            )
-        ).distinct()
-
-    def save(self, *args, **kwargs):
-        # Solve issue #557 "Break workflows with invalid input"
-        # without using a migration.
-        # Remove blank=True, remove this, and create a migration in the next
-        # minor version.
-
-        try:
-            self.completion = int(self.completion)
-        except (TypeError, ValueError):
-            self.completion = 0
-
-        if self.initial:
-            self.workflow.states.all().update(initial=False)
-        return super(WorkflowState, self).save(*args, **kwargs)
-
-
-@python_2_unicode_compatible
-class WorkflowStateAction(models.Model):
-    state = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='actions', to=WorkflowState,
-        verbose_name=_('Workflow state')
-    )
-    label = models.CharField(
-        max_length=255, help_text=_('A short text describing the action.'),
-        verbose_name=_('Label')
-    )
-    enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
-    when = models.PositiveIntegerField(
-        choices=WORKFLOW_ACTION_WHEN_CHOICES,
-        default=WORKFLOW_ACTION_ON_ENTRY, help_text=_(
-            'At which moment of the state this action will execute.'
-        ), verbose_name=_('When')
-    )
-    action_path = models.CharField(
-        max_length=128, help_text=_(
-            'The dotted Python path to the workflow action class to execute.'
-        ), verbose_name=_('Entry action path')
-    )
-    action_data = models.TextField(
-        blank=True, verbose_name=_('Entry action data')
-    )
-
-    class Meta:
-        ordering = ('label',)
-        unique_together = ('state', 'label')
-        verbose_name = _('Workflow state action')
-        verbose_name_plural = _('Workflow state actions')
-
-    def __str__(self):
-        return self.label
-
-    def dumps(self, data):
-        self.action_data = json.dumps(data)
-        self.save()
-
-    def execute(self, context):
-        try:
-            self.get_class_instance().execute(context=context)
-        except Exception as exception:
-            error_log_state_actions.create(
-                obj=self, result='{}; {}'.format(
-                    exception.__class__.__name__, exception
-                )
-            )
-
-            if settings.DEBUG:
-                raise
-
-    def get_class(self):
-        return import_string(self.action_path)
-
-    def get_class_instance(self):
-        return self.get_class()(form_data=self.loads())
-
-    def get_class_label(self):
-        try:
-            return self.get_class().label
-        except ImportError:
-            return _('Unknown action type')
-
-    def loads(self):
-        return json.loads(self.action_data)
-
-
-@python_2_unicode_compatible
-class WorkflowTransition(models.Model):
-    workflow = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='transitions', to=Workflow,
-        verbose_name=_('Workflow')
-    )
-    label = models.CharField(
-        help_text=_('A short text to describe the transition.'),
-        max_length=255, verbose_name=_('Label')
-    )
-    origin_state = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='origin_transitions',
-        to=WorkflowState, verbose_name=_('Origin state')
-    )
-    destination_state = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='destination_transitions',
-        to=WorkflowState, verbose_name=_('Destination state')
-    )
-    condition = models.TextField(
-        blank=True, help_text=_(
-            'The condition that will determine if this transition '
-            'is enabled or not. The condition is evaluated against the '
-            'workflow instance. Condition that return None or an empty '
-            'string (\'\') are considered to be logical false, any other '
-            'value is considered to be the logical true.'
-        ), verbose_name=_('Condition')
-    )
-
-    class Meta:
-        ordering = ('label',)
-        unique_together = (
-            'workflow', 'label', 'origin_state', 'destination_state'
-        )
-        verbose_name = _('Workflow transition')
-        verbose_name_plural = _('Workflow transitions')
-
-    def __str__(self):
-        return self.label
-
-    def execute_condition(self, workflow_instance):
-        if self.has_condition():
-            return Template(template_string=self.condition).render(
-                context=Context({'workflow_instance': workflow_instance})
-            ).strip()
-        else:
-            return True
-
-    def has_condition(self):
-        return self.condition.strip()
-    has_condition.help_text = _(
-        'The transition will be available, depending on the condition '
-        'return value.'
-    )
-    has_condition.short_description = _('Has a condition?')
-
-
-@python_2_unicode_compatible
-class WorkflowTransitionField(models.Model):
-    transition = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='fields',
-        to=WorkflowTransition, verbose_name=_('Transition')
-    )
-    field_type = models.PositiveIntegerField(
-        choices=FIELD_TYPE_CHOICES, verbose_name=_('Type')
-    )
-    name = models.CharField(
-        help_text=_(
-            'The name that will be used to identify this field in other parts '
-            'of the workflow system.'
-        ), max_length=128, verbose_name=_('Internal name')
-    )
-    label = models.CharField(
-        help_text=_(
-            'The field name that will be shown on the user interface.'
-        ), max_length=128, verbose_name=_('Label'))
-    help_text = models.TextField(
-        blank=True, help_text=_(
-            'An optional message that will help users better understand the '
-            'purpose of the field and data to provide.'
-        ), verbose_name=_('Help text')
-    )
-    required = models.BooleanField(
-        default=False, help_text=_(
-            'Whether this fields needs to be filled out or not to proceed.'
-        ), verbose_name=_('Required')
-    )
-    widget = models.PositiveIntegerField(
-        blank=True, choices=WIDGET_CLASS_CHOICES, help_text=_(
-            'An optional class to change the default presentation of the field.'
-        ), null=True, verbose_name=_('Widget class')
-    )
-    widget_kwargs = models.TextField(
-        blank=True, help_text=_(
-            'A group of keyword arguments to customize the widget. '
-            'Use YAML format.'
-        ), validators=[YAMLValidator()],
-        verbose_name=_('Widget keyword arguments')
-    )
-
-    class Meta:
-        unique_together = ('transition', 'name')
-        verbose_name = _('Workflow transition field')
-        verbose_name_plural = _('Workflow transition fields')
-
-    def __str__(self):
-        return self.label
-
-    def get_widget_kwargs(self):
-        return yaml_load(stream=self.widget_kwargs)
-
-
-@python_2_unicode_compatible
-class WorkflowTransitionTriggerEvent(models.Model):
-    transition = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='trigger_events',
-        to=WorkflowTransition, verbose_name=_('Transition')
-    )
-    event_type = models.ForeignKey(
-        on_delete=models.CASCADE, to=StoredEventType,
-        verbose_name=_('Event type')
-    )
-
-    class Meta:
-        verbose_name = _('Workflow transition trigger event')
-        verbose_name_plural = _('Workflow transitions trigger events')
-
-    def __str__(self):
-        return force_text(self.transition)
 
 
 @python_2_unicode_compatible
@@ -673,7 +400,7 @@ class WorkflowInstance(models.Model):
 
             # Remove the transitions with a false return value
             for entry in queryset:
-                if not entry.execute_condition(workflow_instance=self):
+                if not entry.evaluate_condition(workflow_instance=self):
                     queryset = queryset.exclude(id=entry.pk)
 
             return queryset
@@ -709,7 +436,7 @@ class WorkflowInstanceLogEntry(models.Model):
         auto_now_add=True, db_index=True, verbose_name=_('Datetime')
     )
     transition = models.ForeignKey(
-        on_delete=models.CASCADE, to=WorkflowTransition,
+        on_delete=models.CASCADE, to='WorkflowTransition',
         verbose_name=_('Transition')
     )
     user = models.ForeignKey(
@@ -760,7 +487,9 @@ class WorkflowInstanceLogEntry(models.Model):
                         'action': action,
                     }
                 )
-                action.execute(context=context)
+                action.execute(
+                    context=context, workflow_instance=self.workflow_instance
+                )
 
             for action in self.transition.destination_state.entry_actions.filter(enabled=True):
                 context.update(
@@ -768,9 +497,327 @@ class WorkflowInstanceLogEntry(models.Model):
                         'action': action,
                     }
                 )
-                action.execute(context=context)
+                action.execute(
+                    context=context, workflow_instance=self.workflow_instance
+                )
 
             return result
+
+
+@python_2_unicode_compatible
+class WorkflowState(models.Model):
+    """
+    Fields:
+    * completion - Completion Amount - A user defined numerical value to help
+    determine if the workflow of the document is nearing completion (100%).
+    The Completion Amount will be determined by the completion value of the
+    Actual State. Example: If the workflow has 3 states: registered, approved,
+    archived; the admin could give the follow completion values to the
+    states: 33%, 66%, 100%. If the Actual State of the document if approved,
+    the Completion Amount will show 66%.
+    """
+    workflow = models.ForeignKey(
+        on_delete=models.CASCADE, related_name='states', to=Workflow,
+        verbose_name=_('Workflow')
+    )
+    label = models.CharField(
+        help_text=_('A short text to describe the workflow state.'),
+        max_length=255, verbose_name=_('Label')
+    )
+    initial = models.BooleanField(
+        default=False,
+        help_text=_(
+            'The state at which the workflow will start in. Only one state '
+            'can be the initial state.'
+        ), verbose_name=_('Initial')
+    )
+    completion = models.IntegerField(
+        blank=True, default=0, help_text=_(
+            'The percent of completion that this state represents in '
+            'relation to the workflow. Use numbers without the percent sign.'
+        ), verbose_name=_('Completion')
+    )
+
+    class Meta:
+        ordering = ('label',)
+        unique_together = ('workflow', 'label')
+        verbose_name = _('Workflow state')
+        verbose_name_plural = _('Workflow states')
+
+    def __str__(self):
+        return self.label
+
+    @property
+    def entry_actions(self):
+        return self.actions.filter(when=WORKFLOW_ACTION_ON_ENTRY)
+
+    @property
+    def exit_actions(self):
+        return self.actions.filter(when=WORKFLOW_ACTION_ON_EXIT)
+
+    def get_documents(self):
+        latest_entries = WorkflowInstanceLogEntry.objects.annotate(
+            max_datetime=Max(
+                'workflow_instance__log_entries__datetime'
+            )
+        ).filter(
+            datetime=F('max_datetime')
+        )
+
+        state_latest_entries = latest_entries.filter(
+            transition__destination_state=self
+        )
+
+        return Document.objects.filter(
+            Q(
+                workflows__pk__in=state_latest_entries.values_list(
+                    'workflow_instance', flat=True
+                )
+            ) | Q(
+                workflows__log_entries__isnull=True,
+                workflows__workflow__states=self,
+                workflows__workflow__states__initial=True
+            )
+        ).distinct()
+
+    def save(self, *args, **kwargs):
+        # Solve issue #557 "Break workflows with invalid input"
+        # without using a migration.
+        # Remove blank=True, remove this, and create a migration in the next
+        # minor version.
+
+        try:
+            self.completion = int(self.completion)
+        except (TypeError, ValueError):
+            self.completion = 0
+
+        if self.initial:
+            self.workflow.states.all().update(initial=False)
+        return super(WorkflowState, self).save(*args, **kwargs)
+
+
+@python_2_unicode_compatible
+class WorkflowStateAction(models.Model):
+    state = models.ForeignKey(
+        on_delete=models.CASCADE, related_name='actions', to=WorkflowState,
+        verbose_name=_('Workflow state')
+    )
+    label = models.CharField(
+        max_length=255, help_text=_('A short text describing the action.'),
+        verbose_name=_('Label')
+    )
+    enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
+    when = models.PositiveIntegerField(
+        choices=WORKFLOW_ACTION_WHEN_CHOICES,
+        default=WORKFLOW_ACTION_ON_ENTRY, help_text=_(
+            'At which moment of the state this action will execute.'
+        ), verbose_name=_('When')
+    )
+    action_path = models.CharField(
+        max_length=128, help_text=_(
+            'The dotted Python path to the workflow action class to execute.'
+        ), verbose_name=_('Entry action path')
+    )
+    action_data = models.TextField(
+        blank=True, verbose_name=_('Entry action data')
+    )
+    condition = models.TextField(
+        blank=True, help_text=_(
+            'The condition that will determine if this state action '
+            'is executed or not. The condition is evaluated against the '
+            'workflow instance. Conditions that return None or an empty '
+            'string (\'\') are considered to be logical false, any other '
+            'value is considered to be the logical true.'
+        ), verbose_name=_('Condition')
+    )
+
+    class Meta:
+        ordering = ('label',)
+        unique_together = ('state', 'label')
+        verbose_name = _('Workflow state action')
+        verbose_name_plural = _('Workflow state actions')
+
+    def __str__(self):
+        return self.label
+
+    def dumps(self, data):
+        self.action_data = json.dumps(data)
+        self.save()
+
+    def evaluate_condition(self, workflow_instance):
+        if self.has_condition():
+            return Template(template_string=self.condition).render(
+                context=Context({'workflow_instance': workflow_instance})
+            ).strip()
+        else:
+            return True
+
+    def execute(self, context, workflow_instance):
+        if self.evaluate_condition(workflow_instance=workflow_instance):
+            try:
+                self.get_class_instance().execute(context=context)
+            except Exception as exception:
+                error_log_state_actions.create(
+                    obj=self, result='{}; {}'.format(
+                        exception.__class__.__name__, exception
+                    )
+                )
+
+                if settings.DEBUG:
+                    raise
+
+    def get_class(self):
+        return import_string(self.action_path)
+
+    def get_class_instance(self):
+        return self.get_class()(form_data=self.loads())
+
+    def get_class_label(self):
+        try:
+            return self.get_class().label
+        except ImportError:
+            return _('Unknown action type')
+
+    def has_condition(self):
+        return self.condition.strip()
+    has_condition.help_text = _(
+        'The state action will be executed, depending on the condition '
+        'return value.'
+    )
+    has_condition.short_description = _('Has a condition?')
+
+    def loads(self):
+        return json.loads(self.action_data or '{}')
+
+
+@python_2_unicode_compatible
+class WorkflowTransition(models.Model):
+    workflow = models.ForeignKey(
+        on_delete=models.CASCADE, related_name='transitions', to=Workflow,
+        verbose_name=_('Workflow')
+    )
+    label = models.CharField(
+        help_text=_('A short text to describe the transition.'),
+        max_length=255, verbose_name=_('Label')
+    )
+    origin_state = models.ForeignKey(
+        on_delete=models.CASCADE, related_name='origin_transitions',
+        to=WorkflowState, verbose_name=_('Origin state')
+    )
+    destination_state = models.ForeignKey(
+        on_delete=models.CASCADE, related_name='destination_transitions',
+        to=WorkflowState, verbose_name=_('Destination state')
+    )
+    condition = models.TextField(
+        blank=True, help_text=_(
+            'The condition that will determine if this transition '
+            'is enabled or not. The condition is evaluated against the '
+            'workflow instance. Conditions that return None or an empty '
+            'string (\'\') are considered to be logical false, any other '
+            'value is considered to be the logical true.'
+        ), verbose_name=_('Condition')
+    )
+
+    class Meta:
+        ordering = ('label',)
+        unique_together = (
+            'workflow', 'label', 'origin_state', 'destination_state'
+        )
+        verbose_name = _('Workflow transition')
+        verbose_name_plural = _('Workflow transitions')
+
+    def __str__(self):
+        return self.label
+
+    def evaluate_condition(self, workflow_instance):
+        if self.has_condition():
+            return Template(template_string=self.condition).render(
+                context=Context({'workflow_instance': workflow_instance})
+            ).strip()
+        else:
+            return True
+
+    def has_condition(self):
+        return self.condition.strip()
+    has_condition.help_text = _(
+        'The transition will be available, depending on the condition '
+        'return value.'
+    )
+    has_condition.short_description = _('Has a condition?')
+
+
+@python_2_unicode_compatible
+class WorkflowTransitionField(models.Model):
+    transition = models.ForeignKey(
+        on_delete=models.CASCADE, related_name='fields',
+        to=WorkflowTransition, verbose_name=_('Transition')
+    )
+    field_type = models.PositiveIntegerField(
+        choices=FIELD_TYPE_CHOICES, verbose_name=_('Type')
+    )
+    name = models.CharField(
+        help_text=_(
+            'The name that will be used to identify this field in other parts '
+            'of the workflow system.'
+        ), max_length=128, verbose_name=_('Internal name')
+    )
+    label = models.CharField(
+        help_text=_(
+            'The field name that will be shown on the user interface.'
+        ), max_length=128, verbose_name=_('Label'))
+    help_text = models.TextField(
+        blank=True, help_text=_(
+            'An optional message that will help users better understand the '
+            'purpose of the field and data to provide.'
+        ), verbose_name=_('Help text')
+    )
+    required = models.BooleanField(
+        default=False, help_text=_(
+            'Whether this fields needs to be filled out or not to proceed.'
+        ), verbose_name=_('Required')
+    )
+    widget = models.PositiveIntegerField(
+        blank=True, choices=WIDGET_CLASS_CHOICES, help_text=_(
+            'An optional class to change the default presentation of the field.'
+        ), null=True, verbose_name=_('Widget class')
+    )
+    widget_kwargs = models.TextField(
+        blank=True, help_text=_(
+            'A group of keyword arguments to customize the widget. '
+            'Use YAML format.'
+        ), validators=[YAMLValidator()],
+        verbose_name=_('Widget keyword arguments')
+    )
+
+    class Meta:
+        unique_together = ('transition', 'name')
+        verbose_name = _('Workflow transition field')
+        verbose_name_plural = _('Workflow transition fields')
+
+    def __str__(self):
+        return self.label
+
+    def get_widget_kwargs(self):
+        return yaml_load(stream=self.widget_kwargs)
+
+
+@python_2_unicode_compatible
+class WorkflowTransitionTriggerEvent(models.Model):
+    transition = models.ForeignKey(
+        on_delete=models.CASCADE, related_name='trigger_events',
+        to=WorkflowTransition, verbose_name=_('Transition')
+    )
+    event_type = models.ForeignKey(
+        on_delete=models.CASCADE, to=StoredEventType,
+        verbose_name=_('Event type')
+    )
+
+    class Meta:
+        verbose_name = _('Workflow transition trigger event')
+        verbose_name_plural = _('Workflow transitions trigger events')
+
+    def __str__(self):
+        return force_text(self.transition)
 
 
 class WorkflowRuntimeProxy(Workflow):
