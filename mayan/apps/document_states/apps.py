@@ -233,48 +233,52 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='label', is_sortable=True, source=WorkflowState
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=WorkflowState
         )
         SourceColumn(
-            attribute='initial', is_sortable=True, source=WorkflowState,
-            widget=TwoStateWidget
+            attribute='initial', include_label=True, is_sortable=True,
+            source=WorkflowState, widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='completion', source=WorkflowState, is_sortable=True,
-        )
-
-        SourceColumn(
-            attribute='label', is_sortable=True, source=WorkflowStateAction
-        )
-        SourceColumn(
-            attribute='enabled', is_sortable=True, source=WorkflowStateAction,
-            widget=TwoStateWidget
-        )
-        SourceColumn(
-            attribute='get_when_display', label=_('When?'),
-            source=WorkflowStateAction
-        )
-        SourceColumn(
-            attribute='get_class_label', label=_('Action type'),
-            source=WorkflowStateAction
+            attribute='completion', include_label=True, is_sortable=True,
+            source=WorkflowState
         )
 
         SourceColumn(
-            attribute='label', is_sortable=True, source=WorkflowTransition,
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=WorkflowStateAction
         )
         SourceColumn(
-            attribute='origin_state', is_sortable=True,
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=WorkflowStateAction, widget=TwoStateWidget
+        )
+        SourceColumn(
+            attribute='get_when_display', include_label=True,
+            label=_('When?'), source=WorkflowStateAction
+        )
+        SourceColumn(
+            attribute='get_class_label', include_label=True,
+            label=_('Action type'), source=WorkflowStateAction
+        )
+
+        SourceColumn(
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=WorkflowTransition,
+        )
+        SourceColumn(
+            attribute='origin_state', include_label=True, is_sortable=True,
             source=WorkflowTransition
         )
         SourceColumn(
-            attribute='destination_state', is_sortable=True,
+            attribute='destination_state', include_label=True, is_sortable=True,
             source=WorkflowTransition
         )
         SourceColumn(
-            source=WorkflowTransition, label=_('Triggers'),
             func=lambda context: widget_transition_events(
                 transition=context['object']
-            )
+            ), include_label=True, label=_('Triggers'),
+            source=WorkflowTransition
         )
 
         SourceColumn(
@@ -282,22 +286,24 @@ class DocumentStatesApp(MayanAppConfig):
             source=WorkflowTransitionField
         )
         SourceColumn(
-            attribute='label', is_sortable=True, source=WorkflowTransitionField
-        )
-        SourceColumn(
-            attribute='get_field_type_display', label=_('Type'),
+            attribute='label', include_label=True, is_sortable=True,
             source=WorkflowTransitionField
         )
         SourceColumn(
-            attribute='required', is_sortable=True,
+            attribute='get_field_type_display', include_label=True,
+            label=_('Type'), source=WorkflowTransitionField
+        )
+        SourceColumn(
+            attribute='required', include_label=True, is_sortable=True,
             source=WorkflowTransitionField, widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='get_widget_display', label=_('Widget'),
-            is_sortable=False, source=WorkflowTransitionField
+            attribute='get_widget_display', include_label=True,
+            label=_('Widget'), is_sortable=False,
+            source=WorkflowTransitionField
         )
         SourceColumn(
-            attribute='widget_kwargs', is_sortable=True,
+            attribute='widget_kwargs', include_label=True, is_sortable=True,
             source=WorkflowTransitionField
         )
 
