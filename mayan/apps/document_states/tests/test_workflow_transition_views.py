@@ -146,7 +146,7 @@ class WorkflowTransitionDocumentViewTestCase(
     WorkflowTestMixin, WorkflowViewTestMixin, WorkflowTransitionViewTestMixin,
     GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
         super(WorkflowTransitionDocumentViewTestCase, self).setUp()
@@ -154,7 +154,7 @@ class WorkflowTransitionDocumentViewTestCase(
         self.test_workflow.document_types.add(self.test_document_type)
         self._create_test_workflow_states()
         self._create_test_workflow_transitions()
-        self.upload_document()
+        self._upload_test_document()
         self.test_workflow_instance = self.test_document.workflows.first()
 
     def test_transition_workflow_no_access(self):

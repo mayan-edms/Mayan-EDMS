@@ -154,11 +154,11 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
 class TagDocumentAPIViewTestCase(
     DocumentTestMixin, TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_tag_document_list_view_no_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         response = self._request_test_tag_document_list_api_view()
@@ -166,7 +166,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_tag_document_list_view_with_tag_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -178,7 +178,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_tag_document_list_view_with_document_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -189,7 +189,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_tag_document_list_view_with_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -206,7 +206,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_attach_tag_view_no_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_test_document_attach_tag_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -215,7 +215,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_attach_tag_view_with_document_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_document, permission=permission_tag_attach
@@ -228,7 +228,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_attach_tag_view_with_tag_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_tag, permission=permission_tag_attach
@@ -241,7 +241,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_attach_tag_view_with_full_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_document, permission=permission_tag_attach
@@ -257,7 +257,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_tag_detail_view_no_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         response = self._request_test_document_tag_detail_api_view()
@@ -265,7 +265,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_tag_detail_view_with_document_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -277,7 +277,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_tag_detail_view_with_tag_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -287,7 +287,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_tag_detail_view_with_full_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -301,7 +301,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_tag_list_view_no_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         response = self._request_test_document_tag_list_api_view()
@@ -309,7 +309,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_tag_list_view_with_document_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -322,7 +322,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_tag_list_view_with_tag_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -332,7 +332,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_tag_list_view_with_full_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -346,7 +346,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_tag_remove_view_no_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         response = self._request_test_document_tag_remove_api_view()
@@ -356,7 +356,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_tag_remove_view_with_document_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -370,7 +370,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_tag_remove_view_with_tag_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
@@ -382,7 +382,7 @@ class TagDocumentAPIViewTestCase(
 
     def test_document_tag_remove_view_with_full_access(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(

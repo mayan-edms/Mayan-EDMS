@@ -253,7 +253,7 @@ class DocumentManagerTestCase(BaseTestCase):
 
 class DuplicatedDocumentsTestCase(GenericDocumentTestCase):
     def test_duplicates_after_delete(self):
-        self.upload_document()
+        self._upload_test_document()
         self.test_documents[1].delete()
         self.test_documents[1].delete()
 
@@ -264,7 +264,7 @@ class DuplicatedDocumentsTestCase(GenericDocumentTestCase):
         )
 
     def test_duplicates_after_trash(self):
-        self.upload_document()
+        self._upload_test_document()
         self.test_documents[1].delete()
 
         self.assertFalse(
@@ -274,7 +274,7 @@ class DuplicatedDocumentsTestCase(GenericDocumentTestCase):
         )
 
     def test_duplicate_scan(self):
-        self.upload_document()
+        self._upload_test_document()
 
         self.assertTrue(
             self.test_documents[1] in DuplicatedDocument.objects.get(

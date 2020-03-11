@@ -156,6 +156,13 @@ class WorkflowTestMixin(object):
         )
 
 
+class WorkflowToolViewTestMixin(object):
+    def _request_workflow_launch_view(self):
+        return self.post(
+            viewname='document_states:tool_launch_workflows',
+        )
+
+
 class WorkflowTransitionViewTestMixin(object):
     def _request_test_workflow_transition_create_view(self):
         return self.post(

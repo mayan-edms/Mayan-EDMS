@@ -37,7 +37,7 @@ class EventTypeNamespaceAPITestCase(EventTypeTestMixin, BaseAPITestCase):
 
 
 class ObjectEventAPITestCase(DocumentTestMixin, BaseAPITestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
         super(ObjectEventAPITestCase, self).setUp()

@@ -74,7 +74,7 @@ class DocumentPageViewTestMixin(object):
 
 class DocumentTestMixin(object):
     auto_create_test_document_type = True
-    auto_upload_document = True
+    auto_upload_test_document = True
     test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
     test_document_path = None
 
@@ -87,8 +87,8 @@ class DocumentTestMixin(object):
         if self.auto_create_test_document_type:
             self._create_test_document_type()
 
-            if self.auto_upload_document:
-                self.upload_document()
+            if self.auto_upload_test_document:
+                self._upload_test_document()
 
     def tearDown(self):
         for document_type in DocumentType.objects.all():
@@ -107,7 +107,7 @@ class DocumentTestMixin(object):
                 'sample_documents', self.test_document_filename
             )
 
-    def upload_document(self, label=None):
+    def _upload_test_document(self, label=None):
         self._calculate_test_document_path()
 
         if not label:

@@ -159,7 +159,7 @@ class StagingFolderFileAPIViewTestCase(
     StagingFolderTestMixin, BaseAPITestCase
 ):
     auto_create_test_document_type = False
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_staging_folder_file_delete_api_view_no_permission(self):
         self._create_test_staging_folder()

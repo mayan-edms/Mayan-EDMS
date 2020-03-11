@@ -15,7 +15,7 @@ from .mixins import IndexTestMixin, IndexViewTestMixin
 
 
 class IndexTemplateEventsTestCase(DocumentTestMixin, IndexTestMixin, IndexViewTestMixin, GenericViewTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_index_template_create_event(self):
         Action.objects.all().delete()

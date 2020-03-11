@@ -61,7 +61,7 @@ class DocumentTypeAPIViewTestMixin(object):
 class DocumentTypeAPIViewTestCase(
     DocumentTypeAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
     auto_create_test_document_type = False
 
     def test_document_type_api_create_view_no_permission(self):
@@ -194,16 +194,16 @@ class DocumentAPIViewTestMixin(object):
 class DocumentAPIViewTestCase(
     DocumentAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_document_api_download_view_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_test_document_api_download_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_api_download_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.grant_access(
             obj=self.test_document, permission=permission_document_download
         )
@@ -259,7 +259,7 @@ class DocumentAPIViewTestCase(
         self.assertEqual(document.page_count, 47)
 
     def test_document_document_type_change_api_via_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
         self.test_document_type_2 = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
@@ -274,7 +274,7 @@ class DocumentAPIViewTestCase(
         )
 
     def test_document_document_type_change_api_via_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_properties_edit
@@ -293,13 +293,13 @@ class DocumentAPIViewTestCase(
         )
 
     def test_document_description_api_edit_via_patch_view_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_test_document_description_api_edit_via_patch_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_description_api_edit_via_patch_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_properties_edit
@@ -315,13 +315,13 @@ class DocumentAPIViewTestCase(
         )
 
     def test_document_description_api_edit_via_put_view_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_test_document_description_api_edit_via_put_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_description_api_edit_via_put_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_properties_edit
@@ -397,16 +397,16 @@ class DocumentVersionAPIViewTestCase(
     DocumentVersionAPIViewTestMixin, DocumentTestMixin,
     DocumentVersionTestMixin, BaseAPITestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_document_version_api_download_view_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_test_document_version_api_download_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_document_version_api_download_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.grant_access(
             obj=self.test_document, permission=permission_document_download
         )
@@ -422,7 +422,7 @@ class DocumentVersionAPIViewTestCase(
             )
 
     def test_document_version_api_download_preserve_extension_view(self):
-        self.upload_document()
+        self._upload_test_document()
         self.grant_access(
             obj=self.test_document, permission=permission_document_download
         )
@@ -443,7 +443,7 @@ class DocumentVersionAPIViewTestCase(
             )
 
     def test_document_version_api_list_view_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
         self._upload_new_version()
 
         response = self._request_test_document_version_api_list_view()
@@ -452,7 +452,7 @@ class DocumentVersionAPIViewTestCase(
         self.assertEqual(response.data['count'], 0)
 
     def test_document_version_api_list_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self._upload_new_version()
 
         self.grant_access(
@@ -467,13 +467,13 @@ class DocumentVersionAPIViewTestCase(
         )
 
     def test_document_version_api_edit_via_patch_view_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_test_document_version_api_edit_via_patch_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_document_version_api_edit_via_patch_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.grant_access(
             obj=self.test_document, permission=permission_document_edit
         )
@@ -487,13 +487,13 @@ class DocumentVersionAPIViewTestCase(
         )
 
     def test_document_version_api_edit_via_put_view_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_test_document_version_api_edit_via_put_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_document_version_api_edit_via_put_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.grant_access(
             obj=self.test_document, permission=permission_document_edit
         )
@@ -509,14 +509,14 @@ class DocumentVersionAPIViewTestCase(
         )
 
     def test_document_version_api_revert_view_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
         self._upload_new_version()
 
         response = self._request_test_document_version_api_revert_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_document_version_api_revert_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self._upload_new_version()
         self.grant_access(
             obj=self.test_document,
@@ -532,13 +532,13 @@ class DocumentVersionAPIViewTestCase(
         )
 
     def test_document_version_api_upload_view_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_test_document_version_api_upload_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_document_version_api_upload_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.grant_access(
             obj=self.test_document, permission=permission_document_new_version
         )
@@ -634,16 +634,16 @@ class TrashedDocumentAPIViewTestMixin(object):
 class TrashedDocumentAPIViewTestCase(
     TrashedDocumentAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_document_api_trash_view_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_test_document_api_trash_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_api_trash_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.grant_access(
             obj=self.test_document, permission=permission_document_trash
         )
@@ -655,7 +655,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(Document.trash.count(), 1)
 
     def test_trashed_document_api_delete_view_no_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.test_document.delete()
 
         response = self._request_test_trashed_document_api_delete_view()
@@ -665,7 +665,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(Document.trash.count(), 1)
 
     def test_trashed_document_api_delete_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.test_document.delete()
         self.grant_access(
             obj=self.test_document, permission=permission_document_delete
@@ -678,7 +678,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(Document.trash.count(), 0)
 
     def test_trashed_document_api_detail_view_no_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.test_document.delete()
 
         response = self._request_test_trashed_document_api_detail_view()
@@ -686,7 +686,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertFalse('uuid' in response.data)
 
     def test_trashed_document_api_detail_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.test_document.delete()
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
@@ -699,14 +699,14 @@ class TrashedDocumentAPIViewTestCase(
         )
 
     def test_trashed_document_api_image_view_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
         self.test_document.delete()
 
         response = self._request_test_trashed_document_api_image_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_trashed_document_api_image_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.test_document.delete()
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
@@ -716,7 +716,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_trashed_document_api_list_view_no_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.test_document.delete()
 
         response = self._request_test_trashed_document_api_list_view()
@@ -724,7 +724,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(response.data['count'], 0)
 
     def test_trashed_document_api_list_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.test_document.delete()
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
@@ -738,7 +738,7 @@ class TrashedDocumentAPIViewTestCase(
         )
 
     def test_trashed_document_api_restore_view_no_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.test_document.delete()
 
         response = self._request_test_trashed_document_api_restore_view()
@@ -748,7 +748,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(Document.objects.count(), 0)
 
     def test_trashed_document_api_restore_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self.test_document.delete()
 
         self.grant_access(

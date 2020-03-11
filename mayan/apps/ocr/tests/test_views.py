@@ -150,7 +150,7 @@ class DocumentOCRViewsTestCase(
 class DocumentTypeOCRViewsTestCase(
     DocumentTypeOCRViewTestMixin, GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_document_type_ocr_settings_view_no_permission(self):
         response = self._request_document_type_ocr_settings_view()

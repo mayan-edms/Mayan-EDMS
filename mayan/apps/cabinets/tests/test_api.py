@@ -144,10 +144,10 @@ class CabinetDocumentAPITestCase(
     CabinetAPIViewTestMixin, CabinetTestMixin, DocumentTestMixin,
     BaseAPITestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_cabinet_create_with_single_document(self):
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_permission(permission=permission_cabinet_create)
 
@@ -168,8 +168,8 @@ class CabinetDocumentAPITestCase(
         )
 
     def test_cabinet_create_with_multiple_documents(self):
-        self.upload_document()
-        self.upload_document()
+        self._upload_test_document()
+        self._upload_test_document()
 
         documents_pk_list = ','.join(
             [force_text(document.pk) for document in self.test_documents]
@@ -194,7 +194,7 @@ class CabinetDocumentAPITestCase(
         )
 
     def test_cabinet_document_remove_api_view(self):
-        self.upload_document()
+        self._upload_test_document()
 
         self._create_test_cabinet()
         self.test_cabinet.documents.add(self.test_document)
@@ -209,7 +209,7 @@ class CabinetDocumentAPITestCase(
         self.assertEqual(self.test_cabinet.documents.count(), 0)
 
     def test_cabinet_document_detail_api_view(self):
-        self.upload_document()
+        self._upload_test_document()
 
         self._create_test_cabinet()
 
@@ -234,7 +234,7 @@ class CabinetDocumentAPITestCase(
         )
 
     def test_cabinet_document_list_api_view(self):
-        self.upload_document()
+        self._upload_test_document()
 
         self._create_test_cabinet()
 
@@ -256,7 +256,7 @@ class CabinetDocumentAPITestCase(
         )
 
     def test_cabinet_add_document_api_view(self):
-        self.upload_document()
+        self._upload_test_document()
 
         self._create_test_cabinet()
 
@@ -274,8 +274,8 @@ class CabinetDocumentAPITestCase(
         )
 
     def test_cabinet_add_multiple_documents_api_view(self):
-        self.upload_document()
-        self.upload_document()
+        self._upload_test_document()
+        self._upload_test_document()
 
         documents_pk_list = ','.join(
             [force_text(document.pk) for document in self.test_documents]
@@ -303,11 +303,11 @@ class DocumentCabinetAPITestCase(
     CabinetAPIViewTestMixin, CabinetTestMixin,
     DocumentCabinetAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
         super(DocumentCabinetAPITestCase, self).setUp()
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_cabinet()
         self.test_cabinet.documents.add(self.test_document)
 

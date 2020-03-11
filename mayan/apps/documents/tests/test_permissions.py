@@ -20,7 +20,7 @@ class DocumentTypeACLPermissionsTestCase(BaseTestCase):
 class DocumentTypeACLPermissionsViewTestCase(
     ACLTestMixin, GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_document_type_acl_permission_view_test(self):
         self.test_object = self.test_document_type

@@ -30,7 +30,7 @@ class DocumentUploadWizardViewTestCase(
     SourceTestMixin, DocumentUploadWizardViewTestMixin,
     GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_upload_compressed_file(self):
         self.test_source.uncompress = SOURCE_UNCOMPRESS_CHOICE_Y
@@ -125,7 +125,7 @@ class DocumentUploadWizardViewTestCase(
 
 
 class DocumentUploadIssueTestCase(GenericDocumentViewTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
     auto_login_superuser = True
     auto_login_user = False
     create_test_case_superuser = True

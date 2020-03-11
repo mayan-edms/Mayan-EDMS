@@ -17,7 +17,7 @@ class DuplicatedDocumentsViewsTestMixin(object):
         return self.get(viewname='documents:duplicated_document_list')
 
     def _upload_duplicate_document(self):
-        self.upload_document()
+        self._upload_test_document()
 
 
 class DuplicatedDocumentsViewsTestCase(

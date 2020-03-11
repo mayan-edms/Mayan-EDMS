@@ -32,11 +32,11 @@ TEST_SIGNED_DOCUMENT_COUNT = 2
 class SignaturesViewTestCase(
     SignatureTestMixin, SignatureViewTestMixin, GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_signature_delete_view_no_permission(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
 
         self._upload_test_detached_signature()
 
@@ -51,7 +51,7 @@ class SignaturesViewTestCase(
 
     def test_signature_delete_view_with_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
 
         self._upload_test_detached_signature()
 
@@ -70,7 +70,7 @@ class SignaturesViewTestCase(
 
     def test_signature_detail_view_no_permission(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
 
         self._upload_test_detached_signature()
 
@@ -79,7 +79,7 @@ class SignaturesViewTestCase(
 
     def test_signature_detail_view_with_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
 
         self._upload_test_detached_signature()
 
@@ -96,7 +96,7 @@ class SignaturesViewTestCase(
 
     def test_signature_list_view_no_permission(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
 
         self._upload_test_detached_signature()
 
@@ -107,7 +107,7 @@ class SignaturesViewTestCase(
 
     def test_signature_list_view_with_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
 
         self._upload_test_detached_signature()
 
@@ -134,11 +134,11 @@ class SignaturesViewTestCase(
 
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
-            self.upload_document()
+            self._upload_test_document()
 
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
         for count in range(TEST_SIGNED_DOCUMENT_COUNT):
-            self.upload_document()
+            self._upload_test_document()
 
         self.assertEqual(
             EmbeddedSignature.objects.unsigned_document_versions().count(),
@@ -167,11 +167,11 @@ class SignaturesViewTestCase(
 
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
-            self.upload_document()
+            self._upload_test_document()
 
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
         for count in range(TEST_SIGNED_DOCUMENT_COUNT):
-            self.upload_document()
+            self._upload_test_document()
 
         self.assertEqual(
             EmbeddedSignature.objects.unsigned_document_versions().count(),
@@ -197,11 +197,11 @@ class DetachedSignaturesViewTestCase(
     KeyTestMixin, SignatureTestMixin, DetachedSignatureViewTestMixin,
     GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_detached_signature_create_view_with_no_permission(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_key_private()
 
         signatures = self.test_document.latest_version.signatures.count()
@@ -216,7 +216,7 @@ class DetachedSignaturesViewTestCase(
 
     def test_detached_signature_create_view_with_document_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_key_private()
 
         signatures = self.test_document.latest_version.signatures.count()
@@ -236,7 +236,7 @@ class DetachedSignaturesViewTestCase(
 
     def test_detached_signature_create_view_with_key_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_key_private()
 
         signatures = self.test_document.latest_version.signatures.count()
@@ -256,7 +256,7 @@ class DetachedSignaturesViewTestCase(
 
     def test_detached_signature_create_view_with_full_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_key_private()
 
         signatures = self.test_document.latest_version.signatures.count()
@@ -280,7 +280,7 @@ class DetachedSignaturesViewTestCase(
 
     def test_signature_download_view_no_permission(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
 
         self._upload_test_detached_signature()
 
@@ -289,7 +289,7 @@ class DetachedSignaturesViewTestCase(
 
     def test_signature_download_view_with_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
 
         self._upload_test_detached_signature()
 
@@ -310,7 +310,7 @@ class DetachedSignaturesViewTestCase(
     def test_signature_upload_view_no_permission(self):
         self.test_document_path = TEST_DOCUMENT_PATH
 
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_test_document_version_signature_upload_view()
         self.assertEqual(response.status_code, 403)
@@ -319,7 +319,7 @@ class DetachedSignaturesViewTestCase(
 
     def test_signature_upload_view_with_access(self):
         self.test_document_path = TEST_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_document,
@@ -335,11 +335,11 @@ class DetachedSignaturesViewTestCase(
 class EmbeddedSignaturesViewTestCase(
     KeyTestMixin, EmbeddedSignatureViewTestMixin, GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_embedded_signature_create_view_with_no_permission(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_key_private()
 
         signatures = self.test_document.latest_version.signatures.count()
@@ -354,7 +354,7 @@ class EmbeddedSignaturesViewTestCase(
 
     def test_embedded_signature_create_view_with_document_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_key_private()
 
         signatures = self.test_document.latest_version.signatures.count()
@@ -374,7 +374,7 @@ class EmbeddedSignaturesViewTestCase(
 
     def test_embedded_signature_create_view_with_key_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_key_private()
 
         signatures = self.test_document.latest_version.signatures.count()
@@ -394,7 +394,7 @@ class EmbeddedSignaturesViewTestCase(
 
     def test_embedded_signature_create_view_with_full_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_key_private()
 
         signatures = self.test_document.latest_version.signatures.count()

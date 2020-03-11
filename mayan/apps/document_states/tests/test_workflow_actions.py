@@ -22,7 +22,7 @@ from .literals import (
 class HTTPPostWorkflowActionTestCase(
     TestServerTestCaseMixin, GenericDocumentViewTestCase, WorkflowTestMixin,
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
     auto_add_test_view = True
 
     @mock.patch('requests.api.request')
@@ -57,7 +57,7 @@ class HTTPPostWorkflowActionTestCase(
 
     @mock.patch('requests.api.request')
     def test_http_post_action_payload_template(self, mock_object):
-        self.upload_document()
+        self._upload_test_document()
         mock_object.side_effect = request_method_factory(test_case=self)
 
         action = HTTPPostAction(
@@ -94,7 +94,7 @@ class HTTPPostWorkflowActionTestCase(
 
     @mock.patch('requests.api.request')
     def test_http_post_action_headers_template(self, mock_object):
-        self.upload_document()
+        self._upload_test_document()
         mock_object.side_effect = request_method_factory(test_case=self)
 
         action = HTTPPostAction(

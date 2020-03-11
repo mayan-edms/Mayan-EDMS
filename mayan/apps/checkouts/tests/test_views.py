@@ -72,7 +72,7 @@ class DocumentCheckoutViewTestCase(
 
     def test_document_multiple_check_in_post_view_no_permission(self):
         # Upload second document
-        self.upload_document()
+        self._upload_test_document()
 
         self._check_out_test_document(document=self.test_documents[0])
         self._check_out_test_document(document=self.test_documents[1])
@@ -95,7 +95,7 @@ class DocumentCheckoutViewTestCase(
 
     def test_document_multiple_check_in_post_view_with_document_0_access(self):
         # Upload second document
-        self.upload_document()
+        self._upload_test_document()
 
         self._check_out_test_document(document=self.test_documents[0])
         self._check_out_test_document(document=self.test_documents[1])
@@ -122,7 +122,7 @@ class DocumentCheckoutViewTestCase(
 
     def test_document_multiple_check_in_post_view_with_access(self):
         # Upload second document
-        self.upload_document()
+        self._upload_test_document()
 
         self._check_out_test_document(document=self.test_documents[0])
         self._check_out_test_document(document=self.test_documents[1])
@@ -188,7 +188,7 @@ class DocumentCheckoutViewTestCase(
 
     def test_document_multiple_check_out_post_view_no_permission(self):
         # Upload second document
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_documents[0],
@@ -217,7 +217,7 @@ class DocumentCheckoutViewTestCase(
 
     def test_document_multiple_check_out_post_view_with_document_access(self):
         # Upload second document
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_documents[0], permission=permission_document_check_out
@@ -249,7 +249,7 @@ class DocumentCheckoutViewTestCase(
 
     def test_document_multiple_check_out_post_view_with_access(self):
         # Upload second document
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_documents[0], permission=permission_document_check_out

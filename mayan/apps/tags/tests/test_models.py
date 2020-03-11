@@ -7,11 +7,11 @@ from .mixins import TagTestMixin
 
 
 class TagTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_document_addition(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
 
         self.test_tag.documents.add(self.test_document)
 
@@ -19,7 +19,7 @@ class TagTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
 
     def test_document_remove(self):
         self._create_test_tag()
-        self.upload_document()
+        self._upload_test_document()
 
         self.test_tag.documents.remove(self.test_document)
 

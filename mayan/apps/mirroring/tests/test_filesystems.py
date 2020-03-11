@@ -26,7 +26,7 @@ from .literals import (
 class IndexFilesystemTestCase(
     IndexTestMixin, DocumentTestMixin, BaseTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_document_access(self):
         self._create_test_index()
@@ -36,7 +36,7 @@ class IndexFilesystemTestCase(
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         self.assertEqual(
@@ -55,7 +55,7 @@ class IndexFilesystemTestCase(
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         with self.assertRaises(FuseOSError):
@@ -73,7 +73,7 @@ class IndexFilesystemTestCase(
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         file_handle = index_filesystem.open(
@@ -100,7 +100,7 @@ class IndexFilesystemTestCase(
             link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         self.assertEqual(
@@ -117,7 +117,7 @@ class IndexFilesystemTestCase(
             link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         self.assertEqual(
@@ -137,7 +137,7 @@ class IndexFilesystemTestCase(
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         self.assertTrue(
@@ -180,8 +180,8 @@ class IndexFilesystemTestCase(
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
-        self.upload_document()
-        self.upload_document()
+        self._upload_test_document()
+        self._upload_test_document()
 
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
@@ -206,8 +206,8 @@ class IndexFilesystemTestCase(
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
-        self.upload_document()
-        self.upload_document()
+        self._upload_test_document()
+        self._upload_test_document()
 
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
@@ -252,7 +252,7 @@ class IndexFilesystemTestCase(
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
 
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
@@ -283,7 +283,7 @@ class IndexFilesystemTestCase(
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
 
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
@@ -306,7 +306,7 @@ class IndexFilesystemTestCase(
             expression=TEST_NODE_EXPRESSION_INVALID, link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
 
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
@@ -334,7 +334,7 @@ class IndexFilesystemTestCase(
             expression=TEST_NODE_EXPRESSION_INVALID, link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
 
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 

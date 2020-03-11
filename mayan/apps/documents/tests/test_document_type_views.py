@@ -23,7 +23,7 @@ from .mixins import (
 class DocumentTypeViewsTestCase(
     DocumentTypeViewTestMixin, GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_document_type_create_view_no_permission(self):
         self.test_document_type.delete()
@@ -108,7 +108,7 @@ class DocumentTypeQuickLabelViewsTestCase(
     DocumentTypeQuickLabelTestMixin, DocumentTypeQuickLabelViewTestMixin,
     GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_document_type_quick_label_create_no_access(self):
         self.grant_access(

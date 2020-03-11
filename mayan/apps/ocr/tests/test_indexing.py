@@ -11,7 +11,7 @@ from .literals import (
 
 
 class OCRIndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_ocr_indexing(self):
         self.test_index = Index.objects.create(label=TEST_INDEX_LABEL)
@@ -24,7 +24,7 @@ class OCRIndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
             link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
         self.test_document.submit_for_ocr()
 
         self.assertTrue(

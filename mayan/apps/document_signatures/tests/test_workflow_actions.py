@@ -17,10 +17,10 @@ from ..workflow_actions import (
 class DocumentSignatureWorkflowActionTestCase(
     GenericDocumentViewTestCase, KeyTestMixin, WorkflowTestMixin,
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_document_signature_detached_action(self):
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_key_private()
         signature_count = DetachedSignature.objects.count()
 
@@ -34,7 +34,7 @@ class DocumentSignatureWorkflowActionTestCase(
         self.assertNotEqual(signature_count, DetachedSignature.objects.count())
 
     def test_document_signature_embedded_action(self):
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_key_private()
         signature_count = EmbeddedSignature.objects.count()
 
@@ -66,7 +66,7 @@ class DocumentSignatureWorkflowActionTestCase(
             ),
         )
 
-        self.upload_document()
+        self._upload_test_document()
         self.test_workflow_instance = self.test_document.workflows.first()
 
         signature_count = DetachedSignature.objects.count()
@@ -95,7 +95,7 @@ class DocumentSignatureWorkflowActionTestCase(
             ),
         )
 
-        self.upload_document()
+        self._upload_test_document()
         self.test_workflow_instance = self.test_document.workflows.first()
 
         signature_count = EmbeddedSignature.objects.count()

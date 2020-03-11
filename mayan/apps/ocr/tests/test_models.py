@@ -29,7 +29,7 @@ class GermanOCRSupportTestCase(DocumentTestMixin, BaseTestCase):
     # Disable descriptor leak test until fixed in upstream
     _skip_file_descriptor_test = True
 
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
         super(GermanOCRSupportTestCase, self).setUp()

@@ -15,7 +15,7 @@ from .literals import (
 
 
 class DocumentStateIndexingTestCase(GenericDocumentTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def _create_test_workflow(self):
         self.test_workflow = Workflow.objects.create(
@@ -60,7 +60,7 @@ class DocumentStateIndexingTestCase(GenericDocumentTestCase):
     def test_workflow_indexing_initial_state(self):
         self._create_test_workflow_transition()
         self._create_test_index()
-        self.upload_document()
+        self._upload_test_document()
 
         self.assertEqual(
             list(
@@ -71,7 +71,7 @@ class DocumentStateIndexingTestCase(GenericDocumentTestCase):
     def test_workflow_indexing_transition(self):
         self._create_test_workflow_transition()
         self._create_test_index()
-        self.upload_document()
+        self._upload_test_document()
 
         self.test_document.workflows.first().do_transition(
             transition=self.test_workflow_transition,
@@ -87,7 +87,7 @@ class DocumentStateIndexingTestCase(GenericDocumentTestCase):
     def test_workflow_indexing_document_delete(self):
         self._create_test_workflow_transition()
         self._create_test_index()
-        self.upload_document()
+        self._upload_test_document()
 
         self.test_document.workflows.first().do_transition(
             transition=self.test_workflow_transition,

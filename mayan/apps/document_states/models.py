@@ -166,6 +166,7 @@ class Workflow(models.Model):
             logger.info(
                 'Workflow %s launched for document %s', self, document
             )
+            return workflow_instance
 
     def render(self):
         diagram = Digraph(

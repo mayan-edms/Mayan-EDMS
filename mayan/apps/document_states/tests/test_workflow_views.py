@@ -11,7 +11,9 @@ from ..permissions import (
 )
 
 from .literals import TEST_WORKFLOW_LABEL, TEST_WORKFLOW_LABEL_EDITED
-from .mixins import WorkflowTestMixin, WorkflowViewTestMixin
+from .mixins import (
+    WorkflowTestMixin, WorkflowToolViewTestMixin, WorkflowViewTestMixin
+)
 
 
 class WorkflowViewTestCase(
@@ -141,12 +143,9 @@ class WorkflowTemplateDocumentViewTestCase(
         )
 
 
-class WorkflowToolViewTestCase(WorkflowTestMixin, GenericDocumentViewTestCase):
-    def _request_workflow_launch_view(self):
-        return self.post(
-            viewname='document_states:tool_launch_workflows',
-        )
-
+class WorkflowToolViewTestCase(
+    WorkflowTestMixin, WorkflowToolViewTestMixin, GenericDocumentViewTestCase
+):
     def test_tool_launch_workflows_view_no_permission(self):
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()

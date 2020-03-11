@@ -39,7 +39,7 @@ from .mocks import MockIMAPServer, MockPOP3Mailbox
 
 
 class CompressedUploadsTestCase(SourceTestMixin, GenericDocumentTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_upload_compressed_file(self):
         self.test_source.uncompress = SOURCE_UNCOMPRESS_CHOICE_Y
@@ -68,7 +68,7 @@ class CompressedUploadsTestCase(SourceTestMixin, GenericDocumentTestCase):
 
 
 class EmailBaseTestCase(GenericDocumentTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def _create_email_source(self):
         self.source = EmailBaseModel(
@@ -264,7 +264,7 @@ class EmailBaseTestCase(GenericDocumentTestCase):
 
 
 class IMAPSourceTestCase(GenericDocumentTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     @mock.patch('imaplib.IMAP4_SSL', autospec=True)
     def test_download_document(self, mock_imaplib):
@@ -281,7 +281,7 @@ class IMAPSourceTestCase(GenericDocumentTestCase):
 
 
 class IntervalSourceTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
         super(IntervalSourceTestCase, self).setUp()
@@ -306,7 +306,7 @@ class IntervalSourceTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
 
 
 class SANESourceTestCase(GenericDocumentTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def _create_test_scanner_source(self):
         self.test_source = SaneScanner.objects.create(
@@ -328,7 +328,7 @@ class SANESourceTestCase(GenericDocumentTestCase):
 
 
 class POP3SourceTestCase(GenericDocumentTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     @mock.patch('poplib.POP3_SSL', autospec=True)
     def test_download_document(self, mock_poplib):
@@ -345,7 +345,7 @@ class POP3SourceTestCase(GenericDocumentTestCase):
 
 
 class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
         super(WatchFolderTestCase, self).setUp()
