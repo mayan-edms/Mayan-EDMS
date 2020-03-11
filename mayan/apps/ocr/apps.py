@@ -106,7 +106,7 @@ class OCRApp(MayanAppConfig):
             description=_(
                 'A generator returning the document\'s pages OCR content.'
             ), label=_('OCR content'), model=Document,
-            name='content'
+            name='ocr_content'
         )
 
         ModelPermission.register(
