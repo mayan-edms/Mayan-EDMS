@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+import logging
+
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
@@ -17,8 +19,10 @@ from .permissions import (
     permission_sources_setup_edit, permission_sources_setup_view
 )
 
+logger = logging.getLogger(__name__)
 
-def condition_check_document_creation_acls(context):
+
+def condition_document_creation_access(context):
     AccessControlList = apps.get_model(
         app_label='acls', model_name='AccessControlList'
     )
@@ -26,25 +30,25 @@ def condition_check_document_creation_acls(context):
         app_label='documents', model_name='DocumentType'
     )
 
-    queryset = AccessControlList.objects.restrict_queryset(
+    return AccessControlList.objects.restrict_queryset(
         permission=permission_document_create,
         queryset=DocumentType.objects.all(), user=context['user']
-    )
+    ).exists()
 
-    if queryset:
+
+def condition_document_new_versions_allowed(context):
+    try:
+        context['object'].latest_version.execute_pre_save_hooks()
+    except Exception as exception:
+        logger.debug(
+            'execute_pre_save_hooks raised and exception: %s', exception
+        )
+    else:
         return True
 
 
-def document_new_version_not_blocked(context):
-    NewVersionBlock = apps.get_model(
-        app_label='checkouts', model_name='NewVersionBlock'
-    )
-
-    return not NewVersionBlock.objects.is_blocked(context['object'])
-
-
 link_document_create_multiple = Link(
-    condition=condition_check_document_creation_acls,
+    condition=condition_document_creation_access,
     icon_class_path='mayan.apps.sources.icons.icon_document_create_multiple',
     text=_('New document'),
     view='sources:document_create_multiple'
@@ -114,7 +118,8 @@ link_staging_file_delete = Link(
     tags='dangerous', text=_('Delete'), view='sources:staging_file_delete',
 )
 link_document_version_upload = Link(
-    args='resolved_object.pk', condition=document_new_version_not_blocked,
+    condition=condition_document_new_versions_allowed,
+    kwargs={'document_id': 'resolved_object.pk'},
     icon_class_path='mayan.apps.sources.icons.icon_document_version_upload',
     permissions=(permission_document_new_version,),
     text=_('Upload new version'), view='sources:document_version_upload',

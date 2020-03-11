@@ -33,7 +33,7 @@ class DetachedSignatureManager(models.Manager):
 
 
 class EmbeddedSignatureManager(models.Manager):
-    def open_signed(self, file_object, document_version):
+    def open_signed(self, document_version, file_object):
         for signature in self.filter(document_version=document_version):
             try:
                 return self.open_signed(
@@ -65,7 +65,7 @@ class EmbeddedSignatureManager(models.Manager):
                 new_version = document_version.document.new_version(
                     file_object=file_object, _user=user
                 )
-            # This is a potential race condition but we have not way
+            # This is a potential race condition but we have no way
             # to access the final signature at this point.
             signature = self.filter(document_version=new_version).first()
             return signature or self.none()

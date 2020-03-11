@@ -16,6 +16,9 @@
 - Add support for uncompressing Outlook .msg files. Adds dependecy
   ``extract-msg``.
 - Updated converter to show preview of the text part of .msg files.
+- Decouple the Checkouts and Sources apps. It is now possible to disable
+  the Checkouts app.
+- Add new document version pre save hooks.
 
 3.3.15 (2020-03-05)
 ===================

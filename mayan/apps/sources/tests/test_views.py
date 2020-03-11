@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from mayan.apps.checkouts.models import NewVersionBlock
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
@@ -12,7 +11,6 @@ from mayan.apps.documents.tests.literals import (
     TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
 
-from ..links import link_document_version_upload
 from ..literals import SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models import WebFormSource
 from ..permissions import (
@@ -185,53 +183,6 @@ class DocumentUploadIssueTestCase(GenericDocumentViewTestCase):
         # Fetch document again and test description
         self.test_document = Document.objects.first()
         self.assertEqual(self.test_document.description, TEST_DOCUMENT_DESCRIPTION)
-
-
-class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
-    auto_login_superuser = True
-    auto_login_user = False
-    create_test_case_superuser = True
-    create_test_case_user = False
-
-    def _request_test_document_version_upload_view(self):
-        return self.post(
-            viewname='sources:document_version_upload', kwargs={
-                'document_id': self.test_document.pk
-            }, follow=True
-        )
-
-    def test_new_version_block(self):
-        """
-        Gitlab issue #231
-        User shown option to upload new version of a document even though it
-        is blocked by checkout - v2.0.0b2
-
-        Expected results:
-            - Link to upload version view should not resolve
-            - Upload version view should reject request
-        """
-        NewVersionBlock.objects.block(self.test_document)
-
-        response = self._request_test_document_version_upload_view()
-
-        self.assertContains(
-            response=response, text='blocked from uploading',
-            status_code=200
-        )
-
-        response = self.get(
-            viewname='documents:document_version_list', kwargs={
-                'document_id': self.test_document.pk
-            }, follow=True
-        )
-
-        # Needed by the url view resolver
-        response.context.current_app = None
-        resolved_link = link_document_version_upload.resolve(
-            context=response.context
-        )
-
-        self.assertEqual(resolved_link, None)
 
 
 class SourcesViewTestCase(

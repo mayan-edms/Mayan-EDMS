@@ -11,7 +11,6 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.checkouts.models import NewVersionBlock
 from mayan.apps.common.generics import (
     ConfirmView, MultiFormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
@@ -373,31 +372,33 @@ class UploadInteractiveView(UploadBaseView):
 
 class DocumentVersionUploadInteractiveView(UploadBaseView):
     def dispatch(self, request, *args, **kwargs):
-
         self.subtemplates_list = []
 
         self.document = get_object_or_404(
             klass=Document, pk=kwargs['document_id']
         )
 
-        if NewVersionBlock.objects.is_blocked(self.document):
-            messages.error(
-                message=_(
-                    'Document "%s" is blocked from uploading new versions.'
-                ) % self.document, request=self.request
-            )
-            return HttpResponseRedirect(
-                redirect_to=reverse(
-                    viewname='documents:document_version_list', kwargs={
-                        'document_id': self.document.pk
-                    }
-                )
-            )
-
         AccessControlList.objects.check_access(
             obj=self.document, permissions=(permission_document_new_version,),
             user=self.request.user
         )
+
+        try:
+            self.document.latest_version.execute_pre_save_hooks()
+        except Exception as exception:
+            messages.error(
+                message=_(
+                    'Unable to upload new versions for document '
+                    '"%(document)s". %(exception)s'
+                ) % {'document': self.document, 'exception': exception},
+                request=self.request
+            )
+            return HttpResponseRedirect(
+                redirect_to=reverse(
+                    viewname='documents:document_version_list',
+                    kwargs={'document_id': self.document.pk}
+                )
+            )
 
         self.tab_links = UploadBaseView.get_active_tab_links(self.document)
 

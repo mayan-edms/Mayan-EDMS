@@ -16,6 +16,9 @@ from mayan.apps.navigation.classes import SourceColumn
 from .handlers import (
     handler_unverify_key_signatures, handler_verify_key_signatures
 )
+from .hooks import (
+    hook_create_embedded_signature, hook_decrypt_document_version
+)
 from .links import (
     link_document_version_all_signature_verify,
     link_document_signature_list,
@@ -68,10 +71,10 @@ class DocumentSignaturesApp(MayanAppConfig):
         SignatureBaseModel = self.get_model(model_name='SignatureBaseModel')
 
         DocumentVersion.register_post_save_hook(
-            order=1, func=EmbeddedSignature.objects.create
+            func=hook_create_embedded_signature, order=1
         )
         DocumentVersion.register_pre_open_hook(
-            order=1, func=EmbeddedSignature.objects.open_signed
+            func=hook_decrypt_document_version, order=1
         )
 
         ModelPermission.register(

@@ -59,8 +59,9 @@ class DocumentVersion(models.Model):
     document is modified after upload it's checksum will not match, used for
     detecting file tampering among other things.
     """
-    _pre_open_hooks = {}
-    _post_save_hooks = {}
+    _pre_open_hooks = []
+    _pre_save_hooks = []
+    _post_save_hooks = []
 
     document = models.ForeignKey(
         on_delete=models.CASCADE, related_name='versions', to=Document,
@@ -112,12 +113,38 @@ class DocumentVersion(models.Model):
     objects = DocumentVersionManager()
 
     @classmethod
-    def register_pre_open_hook(cls, order, func):
-        cls._pre_open_hooks[order] = func
+    def _execute_hooks(cls, hook_list, instance, **kwargs):
+        result = None
+
+        for hook in hook_list:
+            result = hook(document_version=instance, **kwargs)
+            if result:
+                kwargs.update(result)
+
+        return result
 
     @classmethod
-    def register_post_save_hook(cls, order, func):
-        cls._post_save_hooks[order] = func
+    def _insert_hook_entry(cls, hook_list, func, order=None):
+        order = order or len(hook_list)
+        hook_list.insert(order, func)
+
+    @classmethod
+    def register_post_save_hook(cls, func, order=None):
+        cls._insert_hook_entry(
+            hook_list=cls._post_save_hooks, func=func, order=order
+        )
+
+    @classmethod
+    def register_pre_open_hook(cls, func, order=None):
+        cls._insert_hook_entry(
+            hook_list=cls._pre_open_hooks, func=func, order=order
+        )
+
+    @classmethod
+    def register_pre_save_hook(cls, func, order=None):
+        cls._insert_hook_entry(
+            hook_list=cls._pre_save_hooks, func=func, order=order
+        )
 
     def __str__(self):
         return self.get_rendered_string()
@@ -142,6 +169,16 @@ class DocumentVersion(models.Model):
         self.cache_partition.delete()
 
         return super(DocumentVersion, self).delete(*args, **kwargs)
+
+    def execute_pre_save_hooks(self):
+        """
+        Helper method to allow checking if new versions are possible from
+        outside the model. Currently used by the document version upload link
+        condition.
+        """
+        DocumentVersion._execute_hooks(
+            hook_list=DocumentVersion._pre_save_hooks, instance=self
+        )
 
     def exists(self):
         """
@@ -236,15 +273,16 @@ class DocumentVersion(models.Model):
         the storage backend
         """
         if raw:
-            return self.file.storage.open(self.file.name)
+            return self.file.storage.open(name=self.file.name)
         else:
-            result = self.file.storage.open(self.file.name)
-            for key in sorted(DocumentVersion._pre_open_hooks):
-                result = DocumentVersion._pre_open_hooks[key](
-                    file_object=result, document_version=self
-                )
+            file_object = self.file.storage.open(name=self.file.name)
 
-            return result
+            result = DocumentVersion._execute_hooks(
+                hook_list=DocumentVersion._pre_open_hooks,
+                instance=self, file_object=file_object
+            )
+
+            return result['file_object']
 
     @property
     def pages_all(self):
@@ -293,12 +331,14 @@ class DocumentVersion(models.Model):
 
         try:
             with transaction.atomic():
+                self.execute_pre_save_hooks()
+
                 super(DocumentVersion, self).save(*args, **kwargs)
 
-                for key in sorted(DocumentVersion._post_save_hooks):
-                    DocumentVersion._post_save_hooks[key](
-                        document_version=self
-                    )
+                DocumentVersion._execute_hooks(
+                    hook_list=DocumentVersion._post_save_hooks,
+                    instance=self
+                )
 
                 if new_document_version:
                     # Only do this for new documents
