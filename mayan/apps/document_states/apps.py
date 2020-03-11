@@ -7,7 +7,9 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelProperty
+from mayan.apps.common.classes import (
+    ModelField, ModelProperty, ModelReverseField
+)
 from mayan.apps.common.links import link_object_error_list
 from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
@@ -164,6 +166,34 @@ class DocumentStatesApp(MayanAppConfig):
             related='transition__workflow',
         )
 
+        ModelField(model=WorkflowInstance, name='document')
+        ModelField(model=WorkflowInstance, name='workflow')
+        ModelReverseField(model=WorkflowInstance, name='log_entries')
+
+        ModelProperty(
+            description=_(
+                'Return the last workflow instance log entry. The '
+                'log entry itself has the following fields: datetime, '
+                'transition, user, and comment.'
+            ), label=_('Get last log entry'), model=WorkflowInstance,
+            name='get_last_log_entry'
+        )
+
+        ModelProperty(
+            description=_(
+                'Return the current context dictionary which includes '
+                'runtime data from the workflow transition fields.'
+            ), label=_('Get the context'), model=WorkflowInstance,
+            name='get_runtime_context'
+        )
+
+        ModelProperty(
+            description=_(
+                'Return the transition of the workflow instance.'
+            ), label=_('Get last transition'), model=WorkflowInstance,
+            name='get_last_transition'
+        )
+
         SourceColumn(
             attribute='label', is_sortable=True, source=Workflow
         )
@@ -275,8 +305,15 @@ class DocumentStatesApp(MayanAppConfig):
             source=WorkflowTransition
         )
         SourceColumn(
+            attribute='has_condition', include_label=True,
+            source=WorkflowTransition, widget=TwoStateWidget
+        )
+        SourceColumn(
             func=lambda context: widget_transition_events(
                 transition=context['object']
+            ), help_text=_(
+                'Triggers are system events that will cause the transition '
+                'to be applied.'
             ), include_label=True, label=_('Triggers'),
             source=WorkflowTransition
         )

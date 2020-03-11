@@ -10,11 +10,13 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.forms import DynamicModelForm
+from mayan.apps.templating.fields import TemplateField
 
 from .classes import WorkflowAction
 from .fields import WorfklowImageField
 from .models import (
-    Workflow, WorkflowState, WorkflowStateAction, WorkflowTransition
+    Workflow, WorkflowInstance, WorkflowState, WorkflowStateAction,
+    WorkflowTransition
 )
 
 
@@ -110,8 +112,14 @@ class WorkflowTransitionForm(forms.ModelForm):
             'destination_state'
         ].queryset.filter(workflow=workflow)
 
+        self.fields['condition'] = TemplateField(
+            initial_help_text=self.fields['condition'].help_text,
+            label=self.fields['condition'].label, model=WorkflowInstance,
+            model_variable='workflow_instance', required=False
+        )
+
     class Meta:
-        fields = ('label', 'origin_state', 'destination_state')
+        fields = ('label', 'origin_state', 'destination_state', 'condition')
         model = WorkflowTransition
 
 

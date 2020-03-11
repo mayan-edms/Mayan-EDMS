@@ -13,6 +13,7 @@ from django.core import serializers
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import IntegrityError, models, transaction
 from django.db.models import F, Max, Q
+from django.template import Context, Template
 from django.urls import reverse
 from django.utils.encoding import (
     force_bytes, force_text, python_2_unicode_compatible
@@ -431,6 +432,15 @@ class WorkflowTransition(models.Model):
         on_delete=models.CASCADE, related_name='destination_transitions',
         to=WorkflowState, verbose_name=_('Destination state')
     )
+    condition = models.TextField(
+        blank=True, help_text=_(
+            'The condition that will determine if this transition '
+            'is enabled or not. The condition is evaluated against the '
+            'workflow instance. Condition that return None or an empty '
+            'string (\'\') are considered to be logical false, any other '
+            'value is considered to be the logical true.'
+        ), verbose_name=_('Condition')
+    )
 
     class Meta:
         ordering = ('label',)
@@ -442,6 +452,22 @@ class WorkflowTransition(models.Model):
 
     def __str__(self):
         return self.label
+
+    def execute_condition(self, workflow_instance):
+        if self.has_condition():
+            return Template(template_string=self.condition).render(
+                context=Context({'workflow_instance': workflow_instance})
+            ).strip()
+        else:
+            return True
+
+    def has_condition(self):
+        return self.condition.strip()
+    has_condition.help_text = _(
+        'The transition will be available, depending on the condition '
+        'return value.'
+    )
+    has_condition.short_description = _('Has a condition?')
 
 
 @python_2_unicode_compatible
@@ -539,7 +565,7 @@ class WorkflowInstance(models.Model):
         verbose_name_plural = _('Workflow instances')
 
     def __str__(self):
-        return force_text(self.workflow)
+        return force_text(getattr(self, 'workflow', 'WI'))
 
     def do_transition(self, transition, extra_data=None, user=None, comment=None):
         with transaction.atomic():
@@ -609,6 +635,13 @@ class WorkflowInstance(models.Model):
         except AttributeError:
             return None
 
+    def get_runtime_context(self):
+        """
+        Alias of self.load() to get just the runtime context of the instance
+        for ease of use in the condition template.
+        """
+        return self.loads()
+
     def get_transition_choices(self, _user=None):
         current_state = self.get_current_state()
 
@@ -636,6 +669,12 @@ class WorkflowInstance(models.Model):
                         queryset=queryset,
                         user=_user
                     )
+
+            # Remove the transitions with a false return value
+            for entry in queryset:
+                if not entry.execute_condition(workflow_instance=self):
+                    queryset = queryset.exclude(id=entry.pk)
+
             return queryset
         else:
             """

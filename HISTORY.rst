@@ -19,6 +19,8 @@
 - Decouple the Checkouts and Sources apps. It is now possible to disable
   the Checkouts app.
 - Add new document version pre save hooks.
+- Fix OCR model property.
+- Add document transition conditionals.
 
 3.3.15 (2020-03-05)
 ===================
