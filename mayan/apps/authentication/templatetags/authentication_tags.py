@@ -11,10 +11,15 @@ register = Library()
 
 @register.simple_tag(takes_context=True)
 def authentication_impersonation_check(context):
-    user_id = context.request.session.get(IMPERSONATE_VARIABLE_ID)
-    impersonate_permanent_session = IMPERSONATE_VARIABLE_PERMANENT in context.request.session
+    request = getattr(context, 'request', None)
 
-    if user_id and not impersonate_permanent_session:
-        return context.request.user
+    if request:
+        user_id = request.session.get(IMPERSONATE_VARIABLE_ID)
+        impersonate_permanent_session = IMPERSONATE_VARIABLE_PERMANENT in request.session
+
+        if user_id and not impersonate_permanent_session:
+            return context.request.user
+        else:
+            return False
     else:
         return False
