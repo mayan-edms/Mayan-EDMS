@@ -82,7 +82,8 @@ class UserMailer(models.Model):
         """
         return self.get_backend().label
 
-    backend_label.short_description = _('Backend label')
+    backend_label.short_description = _('Backend')
+    backend_label.help_text = _('The backend class for this entry.')
 
     def dumps(self, data):
         """
@@ -93,7 +94,7 @@ class UserMailer(models.Model):
 
     def get_class_data(self):
         """
-        Return the actual mailing class initialization data
+        Return the actual mailing class initialization data.
         """
         backend = self.get_backend()
         return {
@@ -102,7 +103,7 @@ class UserMailer(models.Model):
 
     def get_backend(self):
         """
-        Retrieves the backend by importing the module and the class
+        Retrieves the backend by importing the module and the class.
         """
         try:
             return import_string(dotted_path=self.backend_path)

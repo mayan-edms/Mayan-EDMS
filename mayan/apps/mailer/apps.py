@@ -70,15 +70,15 @@ class MailerApp(MayanAppConfig):
             source=UserMailer
         )
         SourceColumn(
-            attribute='default', is_sortable=True, source=UserMailer,
-            widget=TwoStateWidget
+            attribute='default', include_label=True, is_sortable=True,
+            source=UserMailer, widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='enabled', is_sortable=True, source=UserMailer,
-            widget=TwoStateWidget
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=UserMailer, widget=TwoStateWidget
         )
         SourceColumn(
-            source=UserMailer, attribute='backend_label'
+            attribute='backend_label', include_label=True, source=UserMailer
         )
         SourceColumn(
             attribute='datetime', label=_('Date and time'),
