@@ -514,6 +514,7 @@ class SingleObjectCreateView(
         else:
             save_extra_data = {}
 
+        # Validate duplicates first
         try:
             self.object.validate_unique()
         except ValidationError as exception:
