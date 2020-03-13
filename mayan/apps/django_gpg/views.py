@@ -26,7 +26,7 @@ from .permissions import (
     permission_key_upload, permission_key_view, permission_keyserver_query
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class KeyDeleteView(SingleObjectDeleteView):

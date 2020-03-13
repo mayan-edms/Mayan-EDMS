@@ -18,7 +18,7 @@ from .literals import (
 from .managers import KeyManager
 from .runtime import gpg_backend
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible

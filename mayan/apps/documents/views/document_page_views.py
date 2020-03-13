@@ -37,7 +37,7 @@ __all__ = (
     'DocumentPageZoomOutView', 'DocumentPageRotateLeftView',
     'DocumentPageRotateRightView'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentPageListView(ExternalObjectMixin, SingleObjectListView):

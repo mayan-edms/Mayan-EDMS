@@ -18,7 +18,7 @@ from mayan.apps.converter.utils import get_converter_class
 
 from .storages import storage_staging_file_image_cache
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class PseudoFile(File):

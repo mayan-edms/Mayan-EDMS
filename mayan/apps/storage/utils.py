@@ -17,7 +17,7 @@ except ImportError:
 else:
     from .settings import setting_temporary_directory
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def TemporaryFile(*args, **kwargs):

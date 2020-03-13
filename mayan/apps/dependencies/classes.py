@@ -29,7 +29,7 @@ from mayan.apps.storage.utils import mkdtemp, patch_files as storage_patch_files
 from .algorithms import HashAlgorithm
 from .exceptions import DependenciesException
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class Provider(object):

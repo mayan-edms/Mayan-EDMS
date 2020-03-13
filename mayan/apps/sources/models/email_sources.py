@@ -26,7 +26,7 @@ from ..literals import (
 from .base import IntervalBaseModel
 
 __all__ = ('IMAPEmail', 'POP3Email')
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class EmailBaseModel(IntervalBaseModel):

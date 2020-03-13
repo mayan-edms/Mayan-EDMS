@@ -15,7 +15,7 @@ from .settings import (
     setting_stub_expiration_interval
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentManager(models.Manager):

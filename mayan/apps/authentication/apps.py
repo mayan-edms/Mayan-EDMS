@@ -14,7 +14,7 @@ from .links import (
     link_user_set_password
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class AuthenticationApp(MayanAppConfig):

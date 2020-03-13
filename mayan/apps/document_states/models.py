@@ -38,7 +38,7 @@ from .literals import (
 from .managers import WorkflowManager
 from .permissions import permission_workflow_transition
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible

@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from .classes import WorkflowAction
 from .exceptions import WorkflowStateActionError
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 DEFAULT_TIMEOUT = 4  # 4 seconds
 
 

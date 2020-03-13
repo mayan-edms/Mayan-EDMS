@@ -11,7 +11,7 @@ from mayan.apps.django_gpg.permissions import permission_key_sign
 
 from .models import SignatureBaseModel
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentVersionSignatureCreateForm(FilteredSelectionForm):

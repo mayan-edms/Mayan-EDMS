@@ -20,7 +20,7 @@ from ..settings import setting_default_lock_timeout
 from .base import LockingBackend
 
 lock = threading.Lock()
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 lock_file = os.path.join(
     setting_temporary_directory.value, hashlib.sha256(

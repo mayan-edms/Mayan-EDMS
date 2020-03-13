@@ -16,7 +16,7 @@ from .literals import KEY_TYPE_PUBLIC, KEY_TYPE_SECRET
 from .runtime import gpg_backend
 from .settings import setting_keyserver
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class KeyManager(models.Manager):

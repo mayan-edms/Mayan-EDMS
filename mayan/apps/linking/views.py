@@ -32,7 +32,7 @@ from .permissions import (
     permission_smart_link_edit, permission_smart_link_view
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentTypeSmartLinksView(AddRemoveView):

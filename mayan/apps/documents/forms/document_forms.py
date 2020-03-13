@@ -19,7 +19,7 @@ __all__ = (
     'DocumentDownloadForm', 'DocumentForm', 'DocumentPreviewForm',
     'DocumentPropertiesForm', 'DocumentPrintForm'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentDownloadForm(forms.Form):

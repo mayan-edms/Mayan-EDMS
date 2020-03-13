@@ -38,7 +38,7 @@ from .serializers import (
 from .settings import settings_document_page_image_cache_time
 from .tasks import task_generate_document_page_image
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class APITrashedDocumentListView(generics.ListAPIView):

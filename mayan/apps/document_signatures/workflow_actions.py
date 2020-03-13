@@ -12,7 +12,7 @@ from mayan.apps.document_states.exceptions import WorkflowStateActionError
 
 from .models import DetachedSignature, EmbeddedSignature
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentSignatureDetachedAction(WorkflowAction):

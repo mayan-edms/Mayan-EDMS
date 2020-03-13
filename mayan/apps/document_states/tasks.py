@@ -6,7 +6,7 @@ from django.apps import apps
 
 from mayan.celery import app
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @app.task()

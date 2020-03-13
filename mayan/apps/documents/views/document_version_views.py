@@ -24,7 +24,7 @@ __all__ = (
     'DocumentVersionListView', 'DocumentVersionRevertView',
     'DocumentVersionView'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentVersionDownloadFormView(DocumentDownloadFormView):

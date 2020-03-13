@@ -54,7 +54,7 @@ from .permissions import (
 
 from .search import metadata_type_search  # NOQA
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class MetadataApp(MayanAppConfig):

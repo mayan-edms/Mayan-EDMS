@@ -15,7 +15,7 @@ from .events import (
 from .parsers import Parser
 from .signals import post_document_version_parsing
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentPageContentManager(models.Manager):

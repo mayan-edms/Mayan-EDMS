@@ -23,7 +23,7 @@ from .permissions import (
     permission_message_view
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class MOTDApp(MayanAppConfig):

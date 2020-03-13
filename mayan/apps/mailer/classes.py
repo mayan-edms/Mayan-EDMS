@@ -8,7 +8,7 @@ from django.utils import six
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 __all__ = ('MailerBackend',)

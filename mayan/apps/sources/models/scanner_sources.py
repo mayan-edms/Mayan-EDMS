@@ -20,7 +20,7 @@ from ..settings import setting_scanimage_path
 from .base import InteractiveSource
 
 __all__ = ('SaneScanner',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class SaneScanner(InteractiveSource):

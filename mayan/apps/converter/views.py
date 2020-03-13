@@ -20,7 +20,7 @@ from .links import link_transformation_select
 from .models import LayerTransformation, ObjectLayer
 from .transformations import BaseTransformation
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class LayerViewMixin(object):

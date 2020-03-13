@@ -32,7 +32,7 @@ from mayan.apps.permissions import Permission
 from .html_widgets import SourceColumnLinkWidget
 from .utils import get_current_view_name
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class Link(object):

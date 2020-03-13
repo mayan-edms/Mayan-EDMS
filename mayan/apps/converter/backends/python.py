@@ -23,7 +23,7 @@ from ..literals import (
     DEFAULT_PDFINFO_PATH, DEFAULT_PILLOW_MAXIMUM_IMAGE_PIXELS
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 pdftoppm_path = setting_graphics_backend_arguments.value.get(
     'pdftoppm_path', DEFAULT_PDFTOPPM_PATH
 )

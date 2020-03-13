@@ -6,7 +6,7 @@ from django.apps import apps
 
 from .literals import DOCUMENT_IMAGES_CACHE_NAME
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def callback_update_cache_size(setting):

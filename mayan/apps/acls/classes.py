@@ -8,7 +8,7 @@ from django.utils.encoding import force_text
 
 from mayan.apps.common.utils import get_related_field
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class ModelPermission(object):

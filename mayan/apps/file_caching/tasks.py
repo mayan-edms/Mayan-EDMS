@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model
 
 from mayan.celery import app
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @app.task(ignore_result=True)

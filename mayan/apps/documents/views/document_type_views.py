@@ -34,7 +34,7 @@ __all__ = (
     'DocumentTypeFilenameCreateView', 'DocumentTypeFilenameEditView',
     'DocumentTypeFilenameDeleteView', 'DocumentTypeFilenameListView'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentTypeDocumentListView(DocumentListView):

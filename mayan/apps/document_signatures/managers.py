@@ -11,7 +11,7 @@ from mayan.apps.django_gpg.models import Key
 from mayan.apps.documents.models import DocumentVersion
 from mayan.apps.storage.utils import NamedTemporaryFile, mkstemp
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DetachedSignatureManager(models.Manager):

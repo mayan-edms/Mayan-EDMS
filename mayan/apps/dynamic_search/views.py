@@ -13,7 +13,7 @@ from .forms import SearchForm, AdvancedSearchForm
 from .icons import icon_search_submit
 from .mixins import SearchModelMixin
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class ResultsView(SearchModelMixin, SingleObjectListView):

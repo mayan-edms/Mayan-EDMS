@@ -27,7 +27,7 @@ __all__ = (
     'DocumentTrashView', 'EmptyTrashCanView', 'TrashedDocumentDeleteView',
     'TrashedDocumentListView', 'TrashedDocumentRestoreView'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentTrashView(MultipleObjectConfirmActionView):

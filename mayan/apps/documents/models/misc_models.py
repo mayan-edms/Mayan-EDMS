@@ -18,7 +18,7 @@ __all__ = (
     'DeletedDocument', 'DuplicatedDocument', 'FavoriteDocument',
     'RecentDocument'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DeletedDocument(Document):
