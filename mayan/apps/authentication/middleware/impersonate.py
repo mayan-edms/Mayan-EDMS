@@ -16,7 +16,7 @@ from ..literals import (
 )
 from ..permissions import permission_users_impersonate
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class ImpersonateMiddleware(MiddlewareMixin):

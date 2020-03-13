@@ -19,7 +19,7 @@ from .permissions import (
     permission_sources_setup_edit, permission_sources_setup_view
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def condition_document_creation_access(context):
