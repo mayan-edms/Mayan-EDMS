@@ -184,11 +184,11 @@ class MetadataType(models.Model):
                 )
 
         if self.validation:
-            validator = import_string(self.validation)()
+            validator = import_string(dotted_path=self.validation)()
             validator.validate(value)
 
         if self.parser:
-            parser = import_string(self.parser)()
+            parser = import_string(dotted_path=self.parser)()
             value = parser.parse(value)
 
         return value

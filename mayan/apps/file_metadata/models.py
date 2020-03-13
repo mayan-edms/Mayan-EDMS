@@ -35,7 +35,7 @@ class StoredDriver(models.Model):
 
     @cached_property
     def driver_class(self):
-        return import_string(self.driver_path)
+        return import_string(dotted_path=self.driver_path)
 
     @cached_property
     def driver_label(self):
