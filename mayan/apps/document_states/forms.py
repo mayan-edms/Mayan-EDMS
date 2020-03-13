@@ -85,7 +85,7 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
                 action_data[field_name] = action_data[field_name].pk
 
         data['action_data'] = action_data
-        data = import_string(self.action_path).clean(
+        data = import_string(dotted_path=self.action_path).clean(
             form_data=data, request=self.request
         )
         self.action_path

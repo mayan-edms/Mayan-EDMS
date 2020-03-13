@@ -112,7 +112,7 @@ class Cache(models.Model):
 
     @cached_property
     def storage(self):
-        return import_string(self.storage_instance_path)
+        return import_string(dotted_path=self.storage_instance_path)
 
 
 class CachePartition(models.Model):

@@ -99,7 +99,7 @@ class SearchModel(object):
         except KeyError:
             raise KeyError(_('No search model matching the query'))
         if not hasattr(result, 'serializer'):
-            result.serializer = import_string(result.serializer_path)
+            result.serializer = import_string(dotted_path=result.serializer_path)
 
         return result
 

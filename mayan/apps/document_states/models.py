@@ -667,7 +667,7 @@ class WorkflowStateAction(models.Model):
                     raise
 
     def get_class(self):
-        return import_string(self.action_path)
+        return import_string(dotted_path=self.action_path)
 
     def get_class_instance(self):
         return self.get_class()(form_data=self.loads())
