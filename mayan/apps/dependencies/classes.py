@@ -30,7 +30,7 @@ from .algorithms import HashAlgorithm
 from .environments import environment_production
 from .exceptions import DependenciesException
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class Provider(object):

@@ -23,7 +23,7 @@ from .links import link_acl_create
 from .models import AccessControlList
 from .permissions import permission_acl_edit, permission_acl_view
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class ACLCreateView(

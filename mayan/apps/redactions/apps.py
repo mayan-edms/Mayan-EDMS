@@ -12,7 +12,7 @@ from mayan.apps.common.menus import menu_list_facet
 from .layers import layer_redactions
 from .transformations import *  # NOQA
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class RedactionsApp(MayanAppConfig):

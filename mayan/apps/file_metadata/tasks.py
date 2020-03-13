@@ -12,7 +12,7 @@ from .literals import LOCK_EXPIRE
 
 from .classes import FileMetadataDriver
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @app.task(ignore_result=True)

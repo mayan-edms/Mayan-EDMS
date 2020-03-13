@@ -28,7 +28,7 @@ from .permissions import (
     permission_tag_edit, permission_tag_remove, permission_tag_view
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class TagAttachActionView(MultipleObjectFormActionView):

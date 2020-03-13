@@ -18,7 +18,7 @@ from ..permissions import permission_document_view
 from ..settings import setting_language
 
 __all__ = ('DocumentType', 'DocumentTypeFilename')
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible

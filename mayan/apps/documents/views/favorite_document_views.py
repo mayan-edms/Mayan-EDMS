@@ -17,7 +17,7 @@ from .document_views import DocumentListView
 __all__ = (
     'FavoriteDocumentListView', 'FavoriteAddView', 'FavoriteRemoveView'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class FavoriteDocumentListView(DocumentListView):

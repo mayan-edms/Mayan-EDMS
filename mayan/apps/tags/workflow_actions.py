@@ -11,7 +11,7 @@ from .models import Tag
 from .permissions import permission_tag_attach, permission_tag_remove
 
 __all__ = ('AttachTagAction', 'RemoveTagAction')
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class AttachTagAction(WorkflowAction):

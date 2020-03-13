@@ -19,7 +19,7 @@ from .permissions import (
     permission_document_check_in, permission_document_check_in_override
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentCheckoutBusinessLogicManager(models.Manager):

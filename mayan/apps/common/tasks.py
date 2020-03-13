@@ -10,7 +10,7 @@ from mayan.celery import app
 
 from .literals import UPLOAD_EXPIRATION_INTERVAL
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @app.task(ignore_result=True)

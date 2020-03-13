@@ -15,7 +15,7 @@ from mayan.apps.common.compat import dict_type, dictionary_type
 
 from .literals import DJANGO_SQLITE_BACKEND
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def check_for_sqlite():

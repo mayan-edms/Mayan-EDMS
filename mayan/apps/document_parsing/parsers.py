@@ -14,7 +14,7 @@ from mayan.apps.storage.utils import NamedTemporaryFile
 from .exceptions import ParserError
 from .settings import setting_pdftotext_path
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class Parser(object):

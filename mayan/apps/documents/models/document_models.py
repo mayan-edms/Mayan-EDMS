@@ -22,7 +22,7 @@ from ..signals import post_document_type_change
 from .document_type_models import DocumentType
 
 __all__ = ('Document',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible

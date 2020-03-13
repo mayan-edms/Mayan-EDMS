@@ -11,7 +11,7 @@ from mayan.apps.documents.models.document_models import DocumentType
 
 from .models import StagingFolderSource, WebFormSource
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class StagingFolderFileUploadSerializer(serializers.Serializer):

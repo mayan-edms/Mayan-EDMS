@@ -20,7 +20,7 @@ from .events import (
     event_cache_created, event_cache_edited, event_cache_purged
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible

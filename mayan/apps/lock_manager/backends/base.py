@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class LockingBackend(object):

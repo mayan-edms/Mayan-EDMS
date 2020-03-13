@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.forms import FilteredSelectionForm
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class CabinetListForm(FilteredSelectionForm):

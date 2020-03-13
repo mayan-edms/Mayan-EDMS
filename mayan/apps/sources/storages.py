@@ -11,7 +11,7 @@ from .settings import (
     setting_staging_file_image_cache_storage_arguments,
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 try:
     storage_staging_file_image_cache = get_storage_subclass(

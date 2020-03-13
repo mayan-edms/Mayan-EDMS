@@ -13,7 +13,7 @@ from .models import UserMailer
 from .permissions import permission_user_mailer_use
 
 __all__ = ('EmailAction',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class EmailAction(WorkflowAction):

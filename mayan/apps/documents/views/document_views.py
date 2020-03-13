@@ -56,7 +56,7 @@ __all__ = (
     'DocumentPrint', 'RecentAccessDocumentListView',
     'RecentAddedDocumentListView'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentListView(SingleObjectListView):

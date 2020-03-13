@@ -24,7 +24,7 @@ from .literals import (
     NAMESPACE_VERSION_INITIAL, SMART_SETTINGS_NAMESPACES_NAME
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def read_configuration_file(filepath):

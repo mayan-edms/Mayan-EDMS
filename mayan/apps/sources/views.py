@@ -51,7 +51,7 @@ from .permissions import (
 from .tasks import task_check_interval_source, task_source_handle_upload
 from .utils import get_class, get_form_class, get_upload_form_class
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class SourceLogListView(ExternalObjectMixin, SingleObjectListView):

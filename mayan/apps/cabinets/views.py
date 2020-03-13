@@ -31,7 +31,7 @@ from .permissions import (
 )
 from .widgets import jstree_data
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class CabinetCreateView(SingleObjectCreateView):

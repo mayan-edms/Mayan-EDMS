@@ -29,7 +29,7 @@ from ..settings import (
 from .document_version_models import DocumentVersion
 
 __all__ = ('DocumentPage', 'DocumentPageResult')
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible

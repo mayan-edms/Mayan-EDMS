@@ -6,7 +6,7 @@ from django.utils.module_loading import import_string
 
 from .settings import setting_graphics_backend
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def get_converter_class():

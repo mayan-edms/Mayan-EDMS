@@ -10,7 +10,7 @@ from django.utils.encoding import force_text
 from mayan.apps.common.classes import PropertyHelper
 
 __all__ = ('WorkflowAction',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentStateHelper(PropertyHelper):

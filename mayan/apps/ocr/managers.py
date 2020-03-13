@@ -17,7 +17,7 @@ from .events import (
 from .runtime import ocr_backend
 from .signals import post_document_version_ocr
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentPageOCRContentManager(models.Manager):

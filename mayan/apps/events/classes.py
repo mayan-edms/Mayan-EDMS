@@ -12,7 +12,7 @@ from actstream import action
 
 from .permissions import permission_events_view
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible

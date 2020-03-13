@@ -19,7 +19,7 @@ from .events import event_email_sent
 from .managers import UserMailerManager
 from .utils import split_recipient_list
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class LogEntry(models.Model):

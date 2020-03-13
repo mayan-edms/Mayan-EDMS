@@ -39,7 +39,7 @@ from .permissions import (
     permission_document_version_signature_view,
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentSignaturesApp(MayanAppConfig):

@@ -30,7 +30,7 @@ from ..storages import storage_documentversion
 from .document_models import Document
 
 __all__ = ('DocumentVersion',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 # document image cache name hash function

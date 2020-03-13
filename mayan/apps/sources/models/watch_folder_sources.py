@@ -13,7 +13,7 @@ from ..literals import SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICE_Y
 from .base import IntervalBaseModel
 
 __all__ = ('WatchFolderSource',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class WatchFolderSource(IntervalBaseModel):

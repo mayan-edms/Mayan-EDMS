@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from .exceptions import InvalidNamespace
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible

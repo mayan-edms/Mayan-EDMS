@@ -10,7 +10,7 @@ from .settings import (
     setting_storage_backend, setting_storage_backend_arguments
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 try:
     storage_detachedsignature = get_storage_subclass(

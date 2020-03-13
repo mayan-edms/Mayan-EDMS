@@ -22,7 +22,7 @@ from mayan.apps.permissions.models import StoredPermission
 from .exceptions import PermissionNotValidForClass
 from .classes import ModelPermission
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class AccessControlListManager(models.Manager):

@@ -11,7 +11,7 @@ import pyocr.builders
 from ..classes import OCRBackendBase
 from ..exceptions import OCRError
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @contextmanager
