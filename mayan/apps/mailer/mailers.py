@@ -4,8 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from .classes import MailerBackend
 
-__all__ = ('DjangoFileBased', 'DjangoSMTP')
-
 
 class DjangoSMTP(MailerBackend):
     """
