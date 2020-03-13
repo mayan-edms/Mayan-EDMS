@@ -4,6 +4,7 @@ import itertools
 import logging
 
 from django.apps import apps
+from django.core.exceptions import ImproperlyConfigured
 from django.utils.encoding import force_text
 
 from mayan.apps.common.utils import get_related_field
@@ -121,8 +122,16 @@ class ModelPermission(object):
         from django.contrib.contenttypes.fields import GenericRelation
 
         cls._model_permissions.setdefault(model, [])
-        for permission in permissions:
-            cls._model_permissions[model].append(permission)
+        try:
+            for permission in permissions:
+                cls._model_permissions[model].append(permission)
+        except TypeError as exception:
+            raise ImproperlyConfigured(
+                'Make sure the permissions argument to .the register() '
+                'method is an iterable. Current value: "{}"'.format(
+                    permissions
+                )
+            ) from exception
 
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
