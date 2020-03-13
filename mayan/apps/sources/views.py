@@ -286,10 +286,9 @@ class UploadInteractiveView(UploadBaseView):
             except Exception as exception:
                 message = _(
                     'Error executing document upload task; '
-                    '%(exception)s, %(exception_class)s'
+                    '%(exception)s'
                 ) % {
                     'exception': exception,
-                    'exception_class': type(exception),
                 }
                 logger.critical(msg=message, exc_info=True)
                 raise type(exception)(message)
