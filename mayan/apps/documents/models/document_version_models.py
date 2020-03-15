@@ -14,6 +14,7 @@ from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.converter.exceptions import InvalidOfficeFormat, PageCountError
 from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.transformations import TransformationRotate
@@ -332,6 +333,10 @@ class DocumentVersion(models.Model):
         try:
             with transaction.atomic():
                 self.execute_pre_save_hooks()
+
+                signal_mayan_pre_save.send(
+                    instance=self, sender=DocumentVersion, user=user
+                )
 
                 super(DocumentVersion, self).save(*args, **kwargs)
 

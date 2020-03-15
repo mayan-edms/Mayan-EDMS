@@ -11,6 +11,8 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
+from mayan.apps.common.signals import signal_mayan_pre_save
+
 from ..events import (
     event_document_create, event_document_properties_edit,
     event_document_trashed, event_document_type_change,
@@ -228,6 +230,10 @@ class Document(models.Model):
         _commit_events = kwargs.pop('_commit_events', True)
         new_document = not self.pk
         with transaction.atomic():
+            signal_mayan_pre_save.send(
+                sender=Document, instance=self, user=user
+            )
+
             super(Document, self).save(*args, **kwargs)
 
             if new_document:
