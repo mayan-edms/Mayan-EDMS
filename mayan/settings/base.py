@@ -89,6 +89,7 @@ INSTALLED_APPS = (
     'mayan.apps.navigation',
     'mayan.apps.permissions',
     'mayan.apps.platform',
+    'mayan.apps.quotas',
     'mayan.apps.rest_api',
     'mayan.apps.smart_settings',
     'mayan.apps.task_manager',

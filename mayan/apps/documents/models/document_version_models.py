@@ -21,7 +21,7 @@ from mayan.apps.converter.transformations import TransformationRotate
 from mayan.apps.converter.utils import get_converter_class
 from mayan.apps.mimetype.api import get_mimetype
 
-from ..events import event_document_new_version, event_document_version_revert
+from ..events import event_document_version_new, event_document_version_revert
 from ..literals import DOCUMENT_IMAGES_CACHE_NAME
 from ..managers import DocumentVersionManager
 from ..settings import setting_fix_orientation, setting_hash_block_size
@@ -372,14 +372,14 @@ class DocumentVersion(models.Model):
             raise
         else:
             if new_document_version:
-                event_document_new_version.commit(
+                event_document_version_new.commit(
                     actor=user, target=self, action_object=self.document
                 )
                 post_version_upload.send(sender=DocumentVersion, instance=self)
 
                 if tuple(self.document.versions.all()) == (self,):
                     post_document_created.send(
-                        sender=Document, instance=self.document
+                        instance=self.document, sender=Document
                     )
 
     def save_to_file(self, file_object):

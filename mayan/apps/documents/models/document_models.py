@@ -15,7 +15,7 @@ from mayan.apps.common.signals import signal_mayan_pre_save
 
 from ..events import (
     event_document_create, event_document_properties_edit,
-    event_document_trashed, event_document_type_change,
+    event_document_trashed, event_document_type_changed,
 )
 from ..literals import DEFAULT_LANGUAGE
 from ..managers import DocumentManager, PassthroughManager, TrashCanManager
@@ -264,7 +264,7 @@ class Document(models.Model):
                     sender=self.__class__, instance=self
                 )
 
-                event_document_type_change.commit(actor=_user, target=self)
+                event_document_type_changed.commit(actor=_user, target=self)
                 if _user:
                     self.add_as_recent_document_for_user(user=_user)
 

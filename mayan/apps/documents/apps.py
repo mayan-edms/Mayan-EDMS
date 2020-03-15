@@ -39,9 +39,9 @@ from .dashboard_widgets import (
 )
 from .events import (
     event_document_create, event_document_download,
-    event_document_properties_edit, event_document_type_change,
+    event_document_properties_edit, event_document_type_changed,
     event_document_type_created, event_document_type_edited,
-    event_document_new_version, event_document_version_revert,
+    event_document_version_new, event_document_version_revert,
     event_document_view
 )
 from .handlers import (
@@ -167,7 +167,7 @@ class DocumentsApp(MayanAppConfig):
         ModelEventType.register(
             model=Document, event_types=(
                 event_document_download, event_document_properties_edit,
-                event_document_type_change, event_document_new_version,
+                event_document_type_changed, event_document_version_new,
                 event_document_version_revert, event_document_view
             )
         )

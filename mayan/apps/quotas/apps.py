@@ -1,0 +1,117 @@
+from __future__ import unicode_literals
+
+from django.apps import apps
+from django.contrib.auth import get_user_model
+from django.db.utils import OperationalError, ProgrammingError
+from django.utils.translation import ugettext_lazy as _
+
+from mayan.apps.acls.classes import ModelPermission
+from mayan.apps.acls.links import link_acl_list
+from mayan.apps.acls.permissions import (
+    permission_acl_edit, permission_acl_view
+)
+from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.html_widgets import TwoStateWidget
+from mayan.apps.common.menus import menu_object, menu_secondary, menu_setup
+from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list
+)
+from mayan.apps.navigation.classes import SourceColumn
+
+from .classes import QuotaBackend
+from .events import event_quota_created, event_quota_edited
+from .links import (
+    link_quota_create, link_quota_delete, link_quota_edit, link_quota_list,
+    link_quota_setup
+)
+from .permissions import (
+    permission_quota_delete, permission_quota_edit, permission_quota_view
+)
+
+
+class QuotasApp(MayanAppConfig):
+    app_namespace = 'quotas'
+    app_url = 'quotas'
+    has_rest_api = False
+    has_tests = True
+    name = 'mayan.apps.quotas'
+    verbose_name = _('Quotas')
+
+    def ready(self, *args, **kwargs):
+        super(QuotasApp, self).ready(*args, **kwargs)
+        from actstream import registry
+
+        Group = apps.get_model(app_label='auth', model_name='Group')
+        DocumentType = apps.get_model(
+            app_label='documents', model_name='DocumentType'
+        )
+        Quota = self.get_model(model_name='Quota')
+        User = get_user_model()
+
+        QuotaBackend.initialize()
+
+        try:
+            for quota in Quota.objects.all():
+                quota.update_receiver()
+        except (OperationalError, ProgrammingError):
+            """Ignore errors during migration"""
+
+        ModelEventType.register(
+            event_types=(event_quota_created, event_quota_edited),
+            model=Quota
+        )
+
+        ModelPermission.register(
+            model=Group, permissions=(permission_quota_edit,)
+        )
+        ModelPermission.register(
+            model=DocumentType, permissions=(permission_quota_edit,)
+        )
+
+        ModelPermission.register(
+            model=Quota, permissions=(
+                permission_acl_edit, permission_acl_view,
+                permission_quota_delete, permission_quota_edit,
+                permission_quota_view
+            )
+        )
+
+        ModelPermission.register(
+            model=User, permissions=(permission_quota_edit,)
+        )
+
+        SourceColumn(
+            attribute='backend_label', include_label=True, source=Quota
+        )
+        SourceColumn(
+            attribute='backend_filters', include_label=True, source=Quota
+        )
+        SourceColumn(
+            attribute='backend_usage', include_label=True, source=Quota
+        )
+        SourceColumn(
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=Quota, widget=TwoStateWidget
+        )
+
+        menu_object.bind_links(
+            links=(
+                link_quota_edit, link_acl_list, link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
+                link_quota_delete,
+            ), sources=(Quota,)
+        )
+
+        menu_secondary.bind_links(
+            links=(
+                link_quota_list, link_quota_create,
+            ), sources=(
+                Quota, 'quotas:quota_backend_selection',
+                'quotas:quota_create', 'quotas:quota_list'
+            )
+        )
+
+        menu_setup.bind_links(links=(link_quota_setup,))
+
+        registry.register(Quota)

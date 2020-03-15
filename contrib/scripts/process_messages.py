@@ -16,7 +16,7 @@ APP_LIST = (
     'documents', 'dynamic_search', 'events', 'file_caching',
     'file_metadata', 'linking', 'lock_manager', 'mailer',
     'mayan_statistics', 'metadata', 'mirroring', 'motd', 'navigation',
-    'ocr', 'permissions', 'platform', 'rest_api', 'smart_settings',
+    'ocr', 'permissions', 'platform', 'quotas', 'rest_api', 'smart_settings',
     'sources', 'storage', 'tags', 'task_manager', 'templating',
     'user_management', 'web_links'
 )
