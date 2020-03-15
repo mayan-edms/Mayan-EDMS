@@ -107,7 +107,7 @@ class DocumentTestMixin(object):
                 'sample_documents', self.test_document_filename
             )
 
-    def _upload_test_document(self, label=None):
+    def _upload_test_document(self, label=None, _user=None):
         self._calculate_test_document_path()
 
         if not label:
@@ -115,7 +115,7 @@ class DocumentTestMixin(object):
 
         with open(self.test_document_path, mode='rb') as file_object:
             document = self.test_document_type.new_document(
-                file_object=file_object, label=label
+                file_object=file_object, label=label, _user=_user
             )
 
         self.test_document = document
