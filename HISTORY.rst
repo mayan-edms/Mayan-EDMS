@@ -22,6 +22,9 @@
 - Fix OCR model property.
 - Add workflow transition conditionals.
 - Add workflow state action conditionals.
+- Add document version pre save signal.
+- Update the document type and document models to avoid a double save
+  when creating a new document.
 
 3.3.15 (2020-03-05)
 ===================

@@ -64,7 +64,9 @@ class DocumentType(models.Model):
         return self.label
 
     def delete(self, *args, **kwargs):
-        Document = apps.get_model(app_label='documents', model_name='Document')
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
 
         for document in Document.passthrough.filter(document_type=self):
             document.delete(to_trash=False)
@@ -97,11 +99,18 @@ class DocumentType(models.Model):
     def natural_key(self):
         return (self.label,)
 
-    def new_document(self, file_object, label=None, description=None, language=None, _user=None):
+    def new_document(
+        self, file_object, label=None, description=None, language=None,
+        _user=None
+    ):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
         try:
             with transaction.atomic():
-                document = self.documents.create(
-                    description=description or '',
+                document = Document(
+                    description=description or '', document_type=self,
                     label=label or file_object.name,
                     language=language or setting_language.value
                 )
