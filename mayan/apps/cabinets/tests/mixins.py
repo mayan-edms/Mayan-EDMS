@@ -174,3 +174,12 @@ class DocumentCabinetAPIViewTestMixin(object):
                 'pk': self.test_document.pk
             }
         )
+
+
+class DocumentCabinetViewTestMixin(object):
+    def _request_test_document_cabinet_list_view(self):
+        return self.get(
+            viewname='cabinets:document_cabinet_list', kwargs={
+                'document_id': self.test_document.pk
+            }
+        )

@@ -11,7 +11,10 @@ from ..permissions import (
     permission_cabinet_remove_document, permission_cabinet_view
 )
 from .literals import TEST_CABINET_LABEL, TEST_CABINET_LABEL_EDITED
-from .mixins import CabinetTestMixin, CabinetViewTestMixin
+from .mixins import (
+    CabinetTestMixin, CabinetViewTestMixin,
+    DocumentCabinetViewTestMixin
+)
 
 
 class CabinetViewTestCase(
@@ -319,4 +322,72 @@ class CabinetDocumentViewTestCase(
         )
         self.assertContains(
             response, text=self.test_document.label, status_code=200
+        )
+
+
+class DocumentCabinetViewTestCase(
+    CabinetTestMixin, DocumentCabinetViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    def test_document_cabinet_list_view_no_permission(self):
+        self._create_test_cabinet()
+        self.test_document.cabinets.add(self.test_cabinet)
+
+        response = self._request_test_document_cabinet_list_view()
+        self.assertNotContains(
+            response, text=self.test_document.label, status_code=404
+        )
+        self.assertNotContains(
+            response, text=self.test_cabinet.label, status_code=404
+        )
+
+    def test_document_cabinet_list_view_with_document_access(self):
+        self._create_test_cabinet()
+        self.test_document.cabinets.add(self.test_cabinet)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        response = self._request_test_document_cabinet_list_view()
+        self.assertContains(
+            response, text=self.test_document.label, status_code=200
+        )
+        self.assertNotContains(
+            response, text=self.test_cabinet.label, status_code=200
+        )
+
+    def test_document_cabinet_list_view_with_cabinet_access(self):
+        self._create_test_cabinet()
+        self.test_document.cabinets.add(self.test_cabinet)
+
+        self.grant_access(
+            obj=self.test_cabinet, permission=permission_cabinet_view
+        )
+
+        response = self._request_test_document_cabinet_list_view()
+        self.assertNotContains(
+            response, text=self.test_document.label, status_code=404
+        )
+        self.assertNotContains(
+            response, text=self.test_cabinet.label, status_code=404
+        )
+
+    def test_document_cabinet_list_view_with_full_access(self):
+        self._create_test_cabinet()
+        self.test_document.cabinets.add(self.test_cabinet)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self.test_cabinet, permission=permission_cabinet_view
+        )
+
+        response = self._request_test_document_cabinet_list_view()
+        self.assertContains(
+            response, text=self.test_document.label, status_code=200
+        )
+        self.assertContains(
+            response, text=self.test_cabinet.label, status_code=200
         )

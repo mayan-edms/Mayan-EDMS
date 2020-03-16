@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib import messages
-from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -183,20 +182,10 @@ class CabinetListView(SingleObjectListView):
         return Cabinet.objects.root_nodes().order_by('label')
 
 
-class DocumentCabinetListView(CabinetListView):
-    def dispatch(self, request, *args, **kwargs):
-        self.document = get_object_or_404(
-            klass=Document, pk=self.kwargs['pk']
-        )
-
-        AccessControlList.objects.check_access(
-            obj=self.document, permissions=(permission_document_view,),
-            user=request.user
-        )
-
-        return super(DocumentCabinetListView, self).dispatch(
-            request, *args, **kwargs
-        )
+class DocumentCabinetListView(ExternalObjectMixin, CabinetListView):
+    external_object_class = Document
+    external_object_permission = permission_document_view
+    external_object_pk_url_kwarg = 'document_id'
 
     def get_extra_context(self):
         return {
@@ -204,7 +193,9 @@ class DocumentCabinetListView(CabinetListView):
             'no_results_icon': icon_cabinet,
             'no_results_main_link': link_document_cabinet_add.resolve(
                 context=RequestContext(
-                    request=self.request, dict_={'object': self.document}
+                    request=self.request, dict_={
+                        'object': self.external_object
+                    }
                 )
             ),
             'no_results_text': _(
@@ -213,12 +204,14 @@ class DocumentCabinetListView(CabinetListView):
             'no_results_title': _(
                 'This document is not in any cabinet'
             ),
-            'object': self.document,
-            'title': _('Cabinets containing document: %s') % self.document,
+            'object': self.external_object,
+            'title': _(
+                'Cabinets containing document: %s'
+            ) % self.external_object,
         }
 
     def get_source_queryset(self):
-        return self.document.document_cabinets()
+        return self.external_object.document_cabinets()
 
 
 class DocumentAddToCabinetView(MultipleObjectFormActionView):
