@@ -5,7 +5,6 @@ import json
 
 import requests
 
-from django.template import Template, Context
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import WorkflowAction
@@ -52,28 +51,14 @@ class DocumentPropertiesEditAction(WorkflowAction):
         new_description = None
 
         if self.document_label:
-            try:
-                new_label = Template(self.document_label).render(
-                    context=Context(context)
-                )
-            except Exception as exception:
-                raise WorkflowStateActionError(
-                    _('Document label template error: %s') % exception
-                )
-
-            logger.debug('Document label result: %s', new_label)
+            new_label = self.render_field(
+                field_name='document_label', context=context
+            )
 
         if self.document_description:
-            try:
-                new_description = Template(self.document_description or '{}').render(
-                    context=Context(context)
-                )
-            except Exception as exception:
-                raise WorkflowStateActionError(
-                    _('Document description template error: %s') % exception
-                )
-
-            logger.debug('Document description template result: %s', new_description)
+            new_description = self.render_field(
+                field_name='document_description', context=context
+            )
 
         if new_label or new_description:
             document = context['document']
@@ -195,11 +180,11 @@ class HTTPAction(WorkflowAction):
         }
     }
 
-    def render_load(self, field_name, context):
+    def render_field_load(self, field_name, context):
         """
         Method to perform a template render and subsequent JSON load.
         """
-        render_result = self.render(
+        render_result = self.render_field(
             field_name=field_name, context=context
         ) or '{}'
 
@@ -216,30 +201,14 @@ class HTTPAction(WorkflowAction):
 
         return load_result
 
-    def render(self, field_name, context):
-        try:
-            result = Template(self.form_data.get(field_name, '')).render(
-                context=Context(context)
-            )
-        except Exception as exception:
-            raise WorkflowStateActionError(
-                _('%(field_name)s template error: %(exception)s') % {
-                    'field_name': field_name, 'exception': exception
-                }
-            )
-
-        logger.debug('%s template result: %s', field_name, result)
-
-        return result
-
     def execute(self, context):
-        headers = self.render_load(field_name='headers', context=context)
-        method = self.render(field_name='method', context=context)
-        password = self.render(field_name='password', context=context)
-        payload = self.render_load(field_name='payload', context=context)
-        timeout = self.render(field_name='timeout', context=context)
-        url = self.render(field_name='url', context=context)
-        username = self.render(field_name='username', context=context)
+        headers = self.render_field_load(field_name='headers', context=context)
+        method = self.render_field(field_name='method', context=context)
+        password = self.render_field(field_name='password', context=context)
+        payload = self.render_field_load(field_name='payload', context=context)
+        timeout = self.render_field(field_name='timeout', context=context)
+        url = self.render_field(field_name='url', context=context)
+        username = self.render_field(field_name='username', context=context)
 
         if '.' in timeout:
             timeout = float(timeout)

@@ -4,10 +4,14 @@ from importlib import import_module
 import logging
 
 from django.apps import apps
+from django.template import Context, Template
 from django.utils import six
 from django.utils.encoding import force_text
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.classes import PropertyHelper
+
+from .exceptions import WorkflowStateActionError
 
 __all__ = ('WorkflowAction',)
 logger = logging.getLogger(name=__name__)
@@ -101,5 +105,21 @@ class WorkflowAction(
 
         if hasattr(self, 'field_order'):
             result['field_order'] = self.field_order
+
+        return result
+
+    def render_field(self, field_name, context):
+        try:
+            result = Template(self.form_data.get(field_name, '')).render(
+                context=Context(context)
+            )
+        except Exception as exception:
+            raise WorkflowStateActionError(
+                _('%(field_name)s template error: %(exception)s') % {
+                    'field_name': field_name, 'exception': exception
+                }
+            )
+
+        logger.debug('%s template result: %s', field_name, result)
 
         return result

@@ -7,10 +7,16 @@ from mayan.apps.common.tests.mixins import TestServerTestCaseMixin
 from mayan.apps.common.tests.mocks import request_method_factory
 from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
 
-from ..workflow_actions import HTTPAction
+from ..workflow_actions import DocumentPropertiesEditAction, HTTPAction
 
 from .literals import (
+    TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
+    TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_LABEL,
+    TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DESCRIPTION,
+    TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DATA,
+    TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEMPLATE_DATA,
     TEST_HEADERS_AUTHENTICATION_KEY, TEST_HEADERS_AUTHENTICATION_VALUE,
     TEST_HEADERS_KEY, TEST_HEADERS_JSON, TEST_HEADERS_JSON_TEMPLATE,
     TEST_HEADERS_JSON_TEMPLATE_KEY, TEST_HEADERS_VALUE, TEST_PAYLOAD_JSON,
@@ -183,3 +189,75 @@ class HTTPWorkflowActionTestCase(
         action.execute(context={})
 
         self.assertEqual(self.timeout, None)
+
+
+class DocumentPropertiesEditActionTestCase(
+    WorkflowTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def test_document_properties_edit_action_field_literas(self):
+        self._upload_test_document()
+
+        action = DocumentPropertiesEditAction(
+            form_data=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DATA
+        )
+
+        test_values = self._model_instance_to_dictionary(
+            instance=self.test_document
+        )
+
+        action.execute(context={'document': self.test_document})
+        self.test_document.refresh_from_db()
+
+        self.assertNotEqual(
+            test_values, self._model_instance_to_dictionary(
+                instance=self.test_document
+            )
+        )
+
+    def test_document_properties_edit_action_field_templates(self):
+        self._upload_test_document()
+
+        label = self.test_document.label
+
+        action = DocumentPropertiesEditAction(
+            form_data=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEMPLATE_DATA
+        )
+        action.execute(context={'document': self.test_document})
+
+        self.assertEqual(
+            self.test_document.label,
+            '{} new'.format(label)
+        )
+        self.assertEqual(
+            self.test_document.description,
+            label
+        )
+
+    def test_document_properties_edit_action_workflow_execute(self):
+        self._create_test_workflow()
+        self._create_test_workflow_state()
+
+        self.test_workflow_state.actions.create(
+            action_data=json.dumps(
+                obj=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DATA
+            ),
+            action_path=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
+            label='', when=WORKFLOW_ACTION_ON_ENTRY,
+        )
+
+        self.test_workflow_state.initial = True
+        self.test_workflow_state.save()
+        self.test_workflow.document_types.add(self.test_document_type)
+
+        self._upload_test_document()
+
+        self.assertEqual(
+            self.test_document.label,
+            TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_LABEL
+        )
+        self.assertEqual(
+            self.test_document.description,
+            TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DESCRIPTION
+        )
