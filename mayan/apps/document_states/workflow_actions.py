@@ -187,7 +187,7 @@ class HTTPPostAction(WorkflowAction):
         ) or '{}'
 
         try:
-            load_result = json.loads(render_result, strict=False)
+            load_result = json.loads(s=render_result, strict=False)
         except Exception as exception:
             raise WorkflowStateActionError(
                 _('%(field_name)s JSON error: %(exception)s') % {

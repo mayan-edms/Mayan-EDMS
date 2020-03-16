@@ -110,7 +110,7 @@ class QuotaBackend(
         Quota = apps.get_model(app_label='quotas', model_name='Quota')
         dotted_path = '{}.{}'.format(cls.__module__, cls.__name__)
         return Quota.objects.create(
-            backend_path=dotted_path, backend_data=json.dumps(kwargs)
+            backend_path=dotted_path, backend_data=json.dumps(obj=kwargs)
         )
 
     def _allowed_filter_display(self):

@@ -59,7 +59,7 @@ class DocumentSignatureWorkflowActionTestCase(
             enabled=True,
             action_path='mayan.apps.document_signatures.workflow_actions.DocumentSignatureDetachedAction',
             action_data=json.dumps(
-                {
+                obj={
                     'key': self.test_key_private.pk,
                     'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
                 }
@@ -88,7 +88,7 @@ class DocumentSignatureWorkflowActionTestCase(
             enabled=True,
             action_path='mayan.apps.document_signatures.workflow_actions.DocumentSignatureEmbeddedAction',
             action_data=json.dumps(
-                {
+                obj={
                     'key': self.test_key_private.pk,
                     'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
                 }

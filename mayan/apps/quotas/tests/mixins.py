@@ -13,7 +13,7 @@ from .literals import (
 class QuotaTestMixin(object):
     def _create_test_quota(self):
         self.test_quota = Quota.objects.create(
-            backend_data=json.dumps({'test_limit': TEST_QUOTA_TEST_LIMIT}),
+            backend_data=json.dumps(obj={'test_limit': TEST_QUOTA_TEST_LIMIT}),
             backend_path=TEST_QUOTA_DOTTED_PATH
         )
 

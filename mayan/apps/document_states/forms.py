@@ -55,7 +55,7 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
             WorkflowStateActionDynamicForm, self
         ).__init__(*args, **kwargs)
         if self.instance.action_data:
-            for key, value in json.loads(self.instance.action_data).items():
+            for key, value in json.loads(s=self.instance.action_data).items():
                 self.fields[key].initial = value
 
         self.fields['condition'] = TemplateField(
@@ -89,7 +89,7 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
             form_data=data, request=self.request
         )
         self.action_path
-        data['action_data'] = json.dumps(action_data)
+        data['action_data'] = json.dumps(obj=action_data)
 
         return data
 

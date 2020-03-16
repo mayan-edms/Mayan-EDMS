@@ -45,7 +45,7 @@ class EmailActionTestCase(MailerTestMixin, WorkflowTestMixin, ActionTestCase):
 
         self.test_workflow_state.actions.create(
             action_data=json.dumps(
-                {
+                obj={
                     'mailing_profile': self.test_user_mailer.pk,
                     'recipient': TEST_EMAIL_ADDRESS,
                     'subject': TEST_EMAIL_SUBJECT,

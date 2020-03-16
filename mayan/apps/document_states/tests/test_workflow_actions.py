@@ -51,7 +51,7 @@ class HTTPPostWorkflowActionTestCase(
         action.execute(context={})
 
         self.assertEqual(
-            json.loads(self.test_view_request.body),
+            json.loads(s=self.test_view_request.body),
             {'label': 'label'}
         )
 
@@ -69,7 +69,7 @@ class HTTPPostWorkflowActionTestCase(
         action.execute(context={'document': self.test_document})
 
         self.assertEqual(
-            json.loads(self.test_view_request.body),
+            json.loads(s=self.test_view_request.body),
             {'label': self.test_document.label}
         )
 

@@ -40,7 +40,7 @@ class JSONValidator(object):
     def __call__(self, value):
         value = value.strip()
         try:
-            json.loads(stream=value)
+            json.loads(s=value)
         except ValueError:
             raise ValidationError(
                 _('Enter a valid JSON value.'),

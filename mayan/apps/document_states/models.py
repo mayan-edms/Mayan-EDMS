@@ -306,7 +306,7 @@ class WorkflowInstance(models.Model):
 
                     self.log_entries.create(
                         comment=comment or '',
-                        extra_data=json.dumps(extra_data or {}),
+                        extra_data=json.dumps(obj=extra_data or {}),
                         transition=transition, user=user
                     )
             except AttributeError:
@@ -317,7 +317,7 @@ class WorkflowInstance(models.Model):
         """
         Serialize the context data.
         """
-        self.context = json.dumps(context)
+        self.context = json.dumps(obj=context)
         self.save()
 
     def get_absolute_url(self):
@@ -416,7 +416,7 @@ class WorkflowInstance(models.Model):
         """
         Deserialize the context data.
         """
-        return json.loads(self.context or '{}')
+        return json.loads(s=self.context or '{}')
 
 
 @python_2_unicode_compatible
@@ -469,7 +469,7 @@ class WorkflowInstanceLogEntry(models.Model):
         """
         Deserialize the context data.
         """
-        return json.loads(self.extra_data or '{}')
+        return json.loads(s=self.extra_data or '{}')
 
     def save(self, *args, **kwargs):
         with transaction.atomic():
@@ -641,7 +641,7 @@ class WorkflowStateAction(models.Model):
         return self.label
 
     def dumps(self, data):
-        self.action_data = json.dumps(data)
+        self.action_data = json.dumps(obj=data)
         self.save()
 
     def evaluate_condition(self, workflow_instance):
@@ -687,7 +687,7 @@ class WorkflowStateAction(models.Model):
     has_condition.short_description = _('Has a condition?')
 
     def loads(self):
-        return json.loads(self.action_data or '{}')
+        return json.loads(s=self.action_data or '{}')
 
 
 @python_2_unicode_compatible

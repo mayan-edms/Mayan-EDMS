@@ -58,4 +58,4 @@ class ChartJSLine(ChartRenderer):
 
         }
 
-        return json.dumps(data)
+        return json.dumps(obj=data)

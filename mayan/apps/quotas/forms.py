@@ -41,7 +41,7 @@ class QuotaDynamicForm(DynamicModelForm):
                 self.fields[field].reload()
 
         if self.instance.backend_data:
-            for key, value in json.loads(self.instance.backend_data).items():
+            for key, value in json.loads(s=self.instance.backend_data).items():
                 self.fields[key].initial = value
 
         return result
@@ -67,5 +67,5 @@ class QuotaDynamicForm(DynamicModelForm):
 
             backend_data[field_name] = field_data
 
-        data['backend_data'] = json.dumps(backend_data)
+        data['backend_data'] = json.dumps(obj=backend_data)
         return data

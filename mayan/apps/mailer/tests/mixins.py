@@ -20,7 +20,7 @@ class MailerTestMixin(object):
             label=TEST_USER_MAILER_LABEL,
             backend_path=TEST_USER_MAILER_BACKEND_PATH,
             backend_data=json.dumps(
-                {
+                obj={
                     'from': TEST_EMAIL_FROM_ADDRESS
                 }
             )

@@ -89,7 +89,7 @@ class UserMailer(models.Model):
         """
         Serialize the backend configuration data.
         """
-        self.backend_data = json.dumps(data)
+        self.backend_data = json.dumps(obj=data)
         self.save()
 
     def get_class_data(self):
@@ -124,7 +124,7 @@ class UserMailer(models.Model):
         """
         Deserialize the stored backend data.
         """
-        return json.loads(self.backend_data)
+        return json.loads(s=self.backend_data)
 
     def natural_key(self):
         return (self.label,)
