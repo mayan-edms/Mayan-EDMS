@@ -23,7 +23,7 @@ class CabinetTestCase(CabinetTestMixin, BaseTestCase):
     def test_cabinet_duplicate_creation(self):
         self._create_test_cabinet()
 
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(expected_exception=ValidationError):
             cabinet_2 = Cabinet(label=TEST_CABINET_LABEL)
             cabinet_2.validate_unique()
             cabinet_2.save()

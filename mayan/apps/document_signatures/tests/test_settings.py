@@ -21,7 +21,7 @@ class SignatureStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
 
         self._silence_logger(name='mayan.apps.document_signatures.storages')
 
-        with self.assertRaises(TypeError) as assertion:
+        with self.assertRaises(expected_exception=TypeError) as assertion:
             importlib.reload(storages)
 
         self.assertTrue('Unable to initialize' in str(assertion.exception))

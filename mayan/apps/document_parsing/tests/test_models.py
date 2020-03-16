@@ -15,7 +15,7 @@ class DocumentAutoParsingTestCase(GenericDocumentTestCase):
     def test_disable_auto_parsing(self):
         self._create_test_document_type()
         self._upload_test_document()
-        with self.assertRaises(StopIteration):
+        with self.assertRaises(expected_exception=StopIteration):
             next(self.test_document.latest_version.content())
 
     @override_settings(DOCUMENT_PARSING_AUTO_PARSING=True)

@@ -13,13 +13,13 @@ class PyPIClientTestCase(BaseTestCase):
     @mock.patch('mayan.apps.dependencies.utils.PyPIClient.get_versions', autospec=True)
     def test_check_version_not_latest_version(self, mock_package_releases):
         mock_package_releases.return_value = ('0.0.0',)
-        with self.assertRaises(PyPIClient.NotLatestVersion):
+        with self.assertRaises(expected_exception=PyPIClient.NotLatestVersion):
             PyPIClient().check_version()
 
     @mock.patch('mayan.apps.dependencies.utils.PyPIClient.get_versions', autospec=True)
     def test_check_version_unknown_version(self, mock_package_releases):
         mock_package_releases.return_value = None
-        with self.assertRaises(PyPIClient.UnknownLatestVersion):
+        with self.assertRaises(expected_exception=PyPIClient.UnknownLatestVersion):
             PyPIClient().check_version()
 
     @mock.patch('mayan.apps.dependencies.utils.PyPIClient.get_versions', autospec=True)

@@ -27,7 +27,7 @@ class MIMETypeTestCase(DocumentTestMixin, BaseTestCase):
         resource.setrlimit(resource.RLIMIT_DATA, (MAXIMUM_HEAP_MEMORY, -1))
 
     def test_little_memory_full_file(self):
-        with self.assertRaises(Exception):
+        with self.assertRaises(expected_exception=Exception):
             self._upload_test_document()
 
         self.assertEqual(Document.objects.count(), 0)

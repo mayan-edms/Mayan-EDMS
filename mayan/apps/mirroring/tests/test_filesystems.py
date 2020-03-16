@@ -58,7 +58,7 @@ class IndexFilesystemTestCase(
         self._upload_test_document()
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
-        with self.assertRaises(FuseOSError):
+        with self.assertRaises(expected_exception=FuseOSError):
             index_filesystem.access(
                 '/{}/{}_non_valid'.format(
                     TEST_NODE_EXPRESSION, self.test_document.label

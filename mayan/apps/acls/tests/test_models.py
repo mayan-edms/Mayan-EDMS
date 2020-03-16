@@ -17,7 +17,7 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
     def test_check_access_without_permissions(self):
         self._setup_test_object()
 
-        with self.assertRaises(PermissionDenied):
+        with self.assertRaises(expected_exception=PermissionDenied):
             AccessControlList.objects.check_access(
                 obj=self.test_object,
                 permissions=(self.test_permission,),
