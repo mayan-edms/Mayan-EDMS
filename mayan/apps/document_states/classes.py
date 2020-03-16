@@ -4,6 +4,7 @@ from importlib import import_module
 import logging
 
 from django.apps import apps
+from django.db.utils import OperationalError
 from django.template import Context, Template
 from django.utils import six
 from django.utils.encoding import force_text
@@ -89,9 +90,14 @@ class WorkflowAction(
             app_label='document_states', model_name='WorkflowStateAction'
         )
         for previous_dotted_path in cls.previous_dotted_paths:
-            WorkflowStateAction.objects.filter(
-                action_path=previous_dotted_path
-            ).update(action_path=cls.id())
+            try:
+                WorkflowStateAction.objects.filter(
+                    action_path=previous_dotted_path
+                ).update(action_path=cls.id())
+            except OperationalError:
+                # Ignore errors during the database migration and
+                # quit further attempts.
+                return
 
     def __init__(self, form_data=None):
         self.form_data = form_data
