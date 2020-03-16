@@ -8,7 +8,7 @@ import uuid
 
 from django.apps import apps
 from django.db import models, transaction
-from django.template import Template, Context
+from django.template import Context, Template
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.functional import cached_property
