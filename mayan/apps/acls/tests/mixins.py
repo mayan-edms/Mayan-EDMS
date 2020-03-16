@@ -207,3 +207,10 @@ class AccessControlListViewTestMixin(object):
             viewname='acls:acl_list',
             kwargs=self.test_content_object_view_kwargs
         )
+
+    def _request_test_acl_permission_list_get_view(self):
+        return self.get(
+            viewname='acls:acl_permissions', kwargs={
+                'acl_id': self.test_acl.pk
+            }
+        )

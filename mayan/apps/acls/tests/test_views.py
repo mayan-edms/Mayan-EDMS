@@ -103,7 +103,7 @@ class AccessControlListViewTestCase(
             status_code=404
         )
 
-    def test_acl_list_view_with_permission(self):
+    def test_acl_list_view_with_access(self):
         self._setup_test_object()
 
         self._create_test_acl()
@@ -113,6 +113,34 @@ class AccessControlListViewTestCase(
         )
 
         response = self._request_test_acl_list_view()
+
+        self.assertContains(
+            response=response, text=force_text(self.test_object),
+            status_code=200
+        )
+
+    def test_acl_permission_get_no_permission(self):
+        self._setup_test_object()
+
+        self._create_test_acl()
+
+        response = self._request_test_acl_permission_list_get_view()
+
+        self.assertNotContains(
+            response=response, text=force_text(self.test_object),
+            status_code=404
+        )
+
+    def test_acl_permission_get_with_access(self):
+        self._setup_test_object()
+
+        self._create_test_acl()
+
+        self.grant_access(
+            obj=self.test_object, permission=permission_acl_edit
+        )
+
+        response = self._request_test_acl_permission_list_get_view()
 
         self.assertContains(
             response=response, text=force_text(self.test_object),
