@@ -26,6 +26,7 @@
 - Update the document type and document models to avoid a double save
   when creating a new document.
 - Add quotas app.
+- Add support for HTTP methods to the workflow HTTP request state action.
 
 3.3.15 (2020-03-05)
 ===================

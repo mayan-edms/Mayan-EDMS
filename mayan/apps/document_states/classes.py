@@ -43,7 +43,26 @@ class WorkflowActionBase(object):
     fields = ()
 
 
-class WorkflowAction(six.with_metaclass(WorkflowActionMetaclass, WorkflowActionBase)):
+class WorkflowAction(
+    six.with_metaclass(WorkflowActionMetaclass, WorkflowActionBase)
+):
+    previous_dotted_paths = ()
+
+    @staticmethod
+    def initialize():
+        for app in apps.get_app_configs():
+            try:
+                import_module('{}.workflow_actions'.format(app.name))
+            except ImportError as exception:
+                if force_text(exception) not in ('No module named workflow_actions', 'No module named \'{}.workflow_actions\''.format(app.name)):
+                    logger.error(
+                        'Error importing %s workflow_actions.py file; %s',
+                        app.name, exception
+                    )
+
+        for action_class in WorkflowAction.get_all():
+            action_class.migrate()
+
     @classmethod
     def clean(cls, request, form_data=None):
         return form_data
@@ -60,17 +79,15 @@ class WorkflowAction(six.with_metaclass(WorkflowActionMetaclass, WorkflowActionB
     def id(cls):
         return '{}.{}'.format(cls.__module__, cls.__name__)
 
-    @staticmethod
-    def initialize():
-        for app in apps.get_app_configs():
-            try:
-                import_module('{}.workflow_actions'.format(app.name))
-            except ImportError as exception:
-                if force_text(exception) not in ('No module named workflow_actions', 'No module named \'{}.workflow_actions\''.format(app.name)):
-                    logger.error(
-                        'Error importing %s workflow_actions.py file; %s',
-                        app.name, exception
-                    )
+    @classmethod
+    def migrate(cls):
+        WorkflowStateAction = apps.get_model(
+            app_label='document_states', model_name='WorkflowStateAction'
+        )
+        for previous_dotted_path in cls.previous_dotted_paths:
+            WorkflowStateAction.objects.filter(
+                action_path=previous_dotted_path
+            ).update(action_path=cls.id())
 
     def __init__(self, form_data=None):
         self.form_data = form_data

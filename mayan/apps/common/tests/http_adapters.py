@@ -63,6 +63,9 @@ class TestClientAdapter(requests.adapters.BaseAdapter):
         """Craft a Django request based on the attribute of
         requests' request object.
         """
+        # Expose the timeout value so that the test case can assert it.
+        self.test_case.timeout = timeout
+
         return self.build_response(
             request=request, django_response=self.test_case.generic(
                 data=request.body,
