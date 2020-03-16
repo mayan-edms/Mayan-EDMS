@@ -69,10 +69,10 @@ class LinkingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=ResolvedSmartLink, label=_('Label'),
             func=lambda context: context['object'].get_label_for(
                 document=context['document']
-            )
+            ), is_identifier=True, label=_('Label'),
+            source=ResolvedSmartLink
         )
 
         source_column_smart_link_label = SourceColumn(
@@ -81,12 +81,13 @@ class LinkingApp(MayanAppConfig):
         )
         source_column_smart_link_label.add_exclude(ResolvedSmartLink)
         source_column_smart_link_dynamic_label = SourceColumn(
-            attribute='dynamic_label', is_sortable=True, source=SmartLink
+            attribute='dynamic_label', include_label=True, is_sortable=True,
+            source=SmartLink
         )
         source_column_smart_link_dynamic_label.add_exclude(ResolvedSmartLink)
         source_column_smart_link_enabled = SourceColumn(
-            attribute='enabled', is_sortable=True, source=SmartLink,
-            widget=TwoStateWidget
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=SmartLink, widget=TwoStateWidget
         )
         source_column_smart_link_enabled.add_exclude(ResolvedSmartLink)
         SourceColumn(
@@ -94,8 +95,8 @@ class LinkingApp(MayanAppConfig):
             source=SmartLinkCondition
         )
         SourceColumn(
-            attribute='enabled', is_sortable=True, source=SmartLinkCondition,
-            widget=TwoStateWidget
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=SmartLinkCondition, widget=TwoStateWidget
         )
 
         menu_facet.bind_links(

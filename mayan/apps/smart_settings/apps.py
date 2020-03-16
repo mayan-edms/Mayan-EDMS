@@ -28,18 +28,20 @@ class SmartSettingsApp(MayanAppConfig):
         Namespace.initialize()
 
         SourceColumn(
-            source=Namespace, label=_('Setting count'),
-            func=lambda context: len(context['object'].settings)
+            func=lambda context: len(context['object'].settings),
+            label=_('Setting count'), include_label=True, source=Namespace
         )
         SourceColumn(
-            source=Setting, label=_('Name'),
-            func=lambda context: setting_widget(context['object'])
+            func=lambda context: setting_widget(context['object']),
+            label=_('Name'), is_identifier=True, source=Setting
         )
         SourceColumn(
-            attribute='serialized_value', label=_('Value'), source=Setting
+            attribute='serialized_value', include_label=True,
+            label=_('Value'), source=Setting
         )
         SourceColumn(
-            attribute='is_overridden', source=Setting, widget=TwoStateWidget
+            attribute='is_overridden', include_label=True, source=Setting,
+            widget=TwoStateWidget
         )
 
         menu_object.bind_links(

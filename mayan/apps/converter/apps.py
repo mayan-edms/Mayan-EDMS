@@ -31,13 +31,17 @@ class ConverterApp(MayanAppConfig):
             related='object_layer__content_object',
         )
 
-        SourceColumn(attribute='order', source=LayerTransformation)
         SourceColumn(
-            source=LayerTransformation, label=_('Transformation'),
-            func=lambda context: force_text(context['object'])
+            attribute='order', is_identifier=True, source=LayerTransformation
         )
         SourceColumn(
-            attribute='arguments', source=LayerTransformation
+            func=lambda context: force_text(context['object']),
+            include_label=True, label=_('Transformation'),
+            source=LayerTransformation
+        )
+        SourceColumn(
+            attribute='arguments', include_label=True,
+            source=LayerTransformation
         )
 
         menu_object.bind_links(

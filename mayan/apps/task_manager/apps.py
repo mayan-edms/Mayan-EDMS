@@ -24,40 +24,46 @@ class TaskManagerApp(MayanAppConfig):
         CeleryQueue.initialize()
 
         SourceColumn(
-            source=CeleryQueue, label=_('Label'), attribute='label'
+            attribute='label', is_identifier=True, label=_('Label'),
+            source=CeleryQueue
         )
         SourceColumn(
-            source=CeleryQueue, label=_('Name'), attribute='name'
+            attribute='name', include_label=True, label=_('Name'),
+            source=CeleryQueue
         )
         SourceColumn(
-            attribute='default_queue', label=_('Default queue?'),
-            source=CeleryQueue, widget=TwoStateWidget
+            attribute='default_queue', include_label=True,
+            label=_('Default queue?'), source=CeleryQueue,
+            widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='transient', label=_('Is transient?'),
-            source=CeleryQueue, widget=TwoStateWidget
+            attribute='transient', include_label=True,
+            label=_('Is transient?'), source=CeleryQueue,
+            widget=TwoStateWidget
         )
         SourceColumn(
-            source=Task, label=_('Type'), attribute='task_type'
+            attribute='task_type', include_label=True, label=_('Type'),
+            source=Task
         )
         SourceColumn(
-            source=Task, label=_('Start time'), attribute='get_time_started'
+            attribute='get_time_started', include_label=True,
+            label=_('Start time'), source=Task
         )
         SourceColumn(
-            source=Task, label=_('Host'),
-            func=lambda context: context['object'].kwargs['hostname']
+            func=lambda context: context['object'].kwargs['hostname'],
+            include_label=True, label=_('Host'), source=Task
         )
         SourceColumn(
-            source=Task, label=_('Arguments'),
-            func=lambda context: context['object'].kwargs['args']
+            func=lambda context: context['object'].kwargs['args'],
+            include_label=True, label=_('Arguments'), source=Task
         )
         SourceColumn(
-            source=Task, label=_('Keyword arguments'),
-            func=lambda context: context['object'].kwargs['kwargs']
+            func=lambda context: context['object'].kwargs['kwargs'],
+            include_label=True, label=_('Keyword arguments'), source=Task
         )
         SourceColumn(
-            source=Task, label=_('Worker process ID'),
-            func=lambda context: context['object'].kwargs['worker_pid']
+            func=lambda context: context['object'].kwargs['worker_pid'],
+            include_label=True, label=_('Worker process ID'), source=Task
         )
 
         menu_tools.bind_links(links=(link_task_manager,))

@@ -100,18 +100,16 @@ class TagsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=Document, label=_('Tags'),
             func=lambda context: widget_document_tags(
                 document=context['object'], user=context['request'].user
-            )
+            ), label=_('Tags'), source=Document
         )
 
         SourceColumn(
-            source=DocumentPageResult, label=_('Tags'),
             func=lambda context: widget_document_tags(
                 document=context['object'].document,
                 user=context['request'].user
-            )
+            ), label=_('Tags'), source=DocumentPageResult
         )
 
         SourceColumn(
@@ -119,13 +117,12 @@ class TagsApp(MayanAppConfig):
             source=Tag
         )
         SourceColumn(
-            attribute='get_preview_widget', source=Tag
+            attribute='get_preview_widget', include_label=True, source=Tag
         )
         SourceColumn(
-            source=Tag, label=_('Documents'),
             func=lambda context: context['object'].get_document_count(
                 user=context['request'].user
-            )
+            ), include_label=True, label=_('Documents'), source=Tag
         )
 
         document_page_search.add_model_field(

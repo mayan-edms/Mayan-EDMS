@@ -185,7 +185,9 @@ class CabinetListView(SingleObjectListView):
 
 class DocumentCabinetListView(CabinetListView):
     def dispatch(self, request, *args, **kwargs):
-        self.document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+        self.document = get_object_or_404(
+            klass=Document, pk=self.kwargs['pk']
+        )
 
         AccessControlList.objects.check_access(
             obj=self.document, permissions=(permission_document_view,),

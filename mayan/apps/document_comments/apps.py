@@ -75,9 +75,13 @@ class DocumentCommentsApp(MayanAppConfig):
             )
         )
 
-        SourceColumn(attribute='submit_date', source=Comment)
-        SourceColumn(attribute='get_user_label', source=Comment)
-        SourceColumn(attribute='comment', source=Comment)
+        SourceColumn(
+            attribute='submit_date', is_identifier=True, source=Comment
+        )
+        SourceColumn(
+            attribute='get_user_label', include_label=True, source=Comment
+        )
+        SourceColumn(attribute='comment', include_label=True, source=Comment)
 
         document_page_search.add_model_field(
             field='document_version__document__comments__comment',

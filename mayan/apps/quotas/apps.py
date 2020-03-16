@@ -82,7 +82,8 @@ class QuotasApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='backend_label', include_label=True, source=Quota
+            attribute='backend_label', include_label=True, is_identifier=True,
+            source=Quota
         )
         SourceColumn(
             attribute='backend_filters', include_label=True, source=Quota

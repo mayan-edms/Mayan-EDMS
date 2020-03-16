@@ -28,13 +28,13 @@ class StatisticsApp(MayanAppConfig):
             attribute='schedule',
             # Translators: Schedule here is a noun, the 'schedule' at
             # which the statistic will be updated
-            label=_('Schedule'),
-            source=StatisticLineChart,
+            include_label=True, label=_('Schedule'),
+            source=StatisticLineChart
         )
 
         SourceColumn(
-            attribute='get_last_update', label=_('Last update'),
-            source=StatisticLineChart,
+            attribute='get_last_update', include_label=True,
+            label=_('Last update'), source=StatisticLineChart
         )
 
         menu_object.bind_links(

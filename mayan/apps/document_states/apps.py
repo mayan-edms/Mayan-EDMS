@@ -195,70 +195,72 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='label', is_sortable=True, source=Workflow
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=Workflow
         )
         column_workflow_internal_name = SourceColumn(
-            attribute='internal_name', is_sortable=True, source=Workflow
+            attribute='internal_name', include_label=True, is_sortable=True,
+            source=Workflow
         )
         column_workflow_internal_name.add_exclude(source=WorkflowRuntimeProxy)
         SourceColumn(
             attribute='get_initial_state', empty_value=_('None'),
-            source=Workflow
+            include_label=True, source=Workflow
         )
 
         SourceColumn(
-            source=WorkflowInstance, label=_('Current state'),
-            attribute='get_current_state'
+            attribute='get_current_state', include_label=True,
+            label=_('Current state'), source=WorkflowInstance,
         )
         SourceColumn(
-            source=WorkflowInstance, label=_('User'),
             func=lambda context: getattr(
                 context['object'].get_last_log_entry(), 'user', _('None')
-            )
+            ), include_label=True, label=_('User'), source=WorkflowInstance
         )
         SourceColumn(
-            source=WorkflowInstance, label=_('Last transition'),
-            attribute='get_last_transition'
+            attribute='get_last_transition', include_label=True,
+            label=_('Last transition'), source=WorkflowInstance
         )
         SourceColumn(
-            source=WorkflowInstance, label=_('Date and time'),
             func=lambda context: getattr(
                 context['object'].get_last_log_entry(), 'datetime', _('None')
-            )
+            ), include_label=True, label=_('Date and time'),
+            source=WorkflowInstance
         )
         SourceColumn(
-            source=WorkflowInstance, label=_('Completion'),
             func=lambda context: getattr(
                 context['object'].get_current_state(), 'completion', _('None')
-            )
+            ), include_label=True, label=_('Completion'),
+            source=WorkflowInstance
         )
 
         SourceColumn(
-            source=WorkflowInstanceLogEntry, label=_('Date and time'),
-            attribute='datetime'
+            attribute='datetime', is_identifier=True, label=_('Date and time'),
+            source=WorkflowInstanceLogEntry
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry, label=_('User'), attribute='user'
+            attribute='user', include_label=True, label=_('User'),
+            source=WorkflowInstanceLogEntry
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry,
-            attribute='transition__origin_state', is_sortable=True
+            attribute='transition__origin_state', include_label=True,
+            is_sortable=True, source=WorkflowInstanceLogEntry
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry,
-            attribute='transition', is_sortable=True
+            attribute='transition', include_label=True, is_sortable=True,
+            source=WorkflowInstanceLogEntry
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry,
-            attribute='transition__destination_state', is_sortable=True
+            attribute='transition__destination_state', include_label=True,
+            is_sortable=True, source=WorkflowInstanceLogEntry
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry,
-            attribute='comment', is_sortable=True
+            attribute='comment', include_label=True, is_sortable=True,
+            source=WorkflowInstanceLogEntry
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry,
-            attribute='get_extra_data', label=_('Additional details'),
+            attribute='get_extra_data', include_label=True,
+            label=_('Additional details'), source=WorkflowInstanceLogEntry,
             widget=WorkflowLogExtraDataWidget
         )
 
@@ -349,16 +351,16 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=WorkflowRuntimeProxy, label=_('Documents'),
             func=lambda context: context['object'].get_document_count(
                 user=context['request'].user
-            ), order=99
+            ), include_label=True, label=_('Documents'), order=99,
+            source=WorkflowRuntimeProxy
         )
         SourceColumn(
-            source=WorkflowStateRuntimeProxy, label=_('Documents'),
             func=lambda context: context['object'].get_document_count(
                 user=context['request'].user
-            ), order=99
+            ), include_label=True, label=_('Documents'), order=99,
+            source=WorkflowStateRuntimeProxy
         )
 
         menu_facet.bind_links(

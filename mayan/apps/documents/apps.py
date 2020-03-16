@@ -335,7 +335,7 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             func=lambda context: context['object'].get_document_count(
                 user=context['request'].user
-            ), label=_('Documents'), source=DocumentType
+            ), include_label=True, label=_('Documents'), source=DocumentType
         )
 
         SourceColumn(
@@ -343,8 +343,8 @@ class DocumentsApp(MayanAppConfig):
             source=DocumentTypeFilename
         )
         SourceColumn(
-            attribute='enabled', is_sortable=True, source=DocumentTypeFilename,
-            widget=TwoStateWidget
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=DocumentTypeFilename, widget=TwoStateWidget
         )
 
         # DeletedDocument
