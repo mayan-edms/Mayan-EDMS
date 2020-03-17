@@ -36,8 +36,8 @@ that can view what errors occurred during parsing.
 
 
 Settings
-
 ^^^^^^^^
+
 Fix error with the command ``savesettings`` when there are no existing config
 files.
 

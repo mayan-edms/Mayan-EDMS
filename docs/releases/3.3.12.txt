@@ -17,7 +17,7 @@ last optimization was fixed.
 Translations
 ^^^^^^^^^^^^
 
-The Chinese translation was been fixes. The Chinese translation locale was
+The Chinese translation was been fixed. The Chinese translation locale was
 updated from zh to zh-Hans.
 
 
