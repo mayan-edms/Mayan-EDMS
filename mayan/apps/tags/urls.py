@@ -13,58 +13,62 @@ from .views import (
 )
 
 urlpatterns = [
-    url(regex=r'^tags/$', view=TagListView.as_view(), name='tag_list'),
-    url(regex=r'^tags/create/$', view=TagCreateView.as_view(), name='tag_create'),
     url(
-        regex=r'^tags/(?P<pk>\d+)/delete/$', view=TagDeleteActionView.as_view(),
-        name='tag_delete'
+        regex=r'^documents/(?P<document_id>\d+)/tags/$',
+        name='document_tag_list', view=DocumentTagListView.as_view()
     ),
     url(
-        regex=r'^tags/(?P<pk>\d+)/edit/$', view=TagEditView.as_view(),
-        name='tag_edit'
+        regex=r'^documents/(?P<document_id>\d+)/tags/multiple/attach/$',
+        name='tag_attach', view=TagAttachActionView.as_view()
     ),
     url(
-        regex=r'^tags/(?P<pk>\d+)/documents/$', view=TagDocumentListView.as_view(),
-        name='tag_document_list'
+        regex=r'^documents/(?P<document_id>\d+)/tags/multiple/remove/$',
+        name='single_document_multiple_tag_remove',
+        view=TagRemoveActionView.as_view()
     ),
     url(
-        regex=r'^tags/multiple/delete/$', view=TagDeleteActionView.as_view(),
-        name='tag_multiple_delete'
+        regex=r'^documents/multiple/tags/multiple/remove/$',
+        name='multiple_documents_selection_tag_remove',
+        view=TagRemoveActionView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>\d+)/tags/remove/$',
-        view=TagRemoveActionView.as_view(),
-        name='single_document_multiple_tag_remove'
+        regex=r'^documents/multiple/tags/multiple/attach/$',
+        name='multiple_documents_tag_attach',
+        view=TagAttachActionView.as_view()
+    ),
+    url(regex=r'^tags/$', name='tag_list', view=TagListView.as_view()),
+    url(
+        regex=r'^tags/create/$', name='tag_create',
+        view=TagCreateView.as_view()
     ),
     url(
-        regex=r'^documents/multiple/tags/remove/$',
-        view=TagRemoveActionView.as_view(),
-        name='multiple_documents_selection_tag_remove'
+        regex=r'^tags/(?P<tag_id>\d+)/delete/$', name='tag_delete',
+        view=TagDeleteActionView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>\d+)/tags/attach/$',
-        view=TagAttachActionView.as_view(), name='tag_attach'
+        regex=r'^tags/(?P<tag_id>\d+)/edit/$', name='tag_edit',
+        view=TagEditView.as_view()
     ),
     url(
-        regex=r'^documents/multiple/tags/attach/$',
-        view=TagAttachActionView.as_view(), name='multiple_documents_tag_attach'
+        regex=r'^tags/(?P<tag_id>\d+)/documents/$', name='tag_document_list',
+        view=TagDocumentListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>\d+)/tags/$',
-        view=DocumentTagListView.as_view(), name='document_tag_list'
-    ),
+        regex=r'^tags/multiple/delete/$', name='tag_multiple_delete',
+        view=TagDeleteActionView.as_view()
+    )
 ]
 
 api_urls = [
-    url(
-        regex=r'^tags/(?P<pk>[0-9]+)/documents/$',
-        view=APITagDocumentListView.as_view(), name='tag-document-list'
-    ),
+    url(regex=r'^tags/$', view=APITagListView.as_view(), name='tag-list'),
     url(
         regex=r'^tags/(?P<pk>[0-9]+)/$', view=APITagView.as_view(),
         name='tag-detail'
     ),
-    url(regex=r'^tags/$', view=APITagListView.as_view(), name='tag-list'),
+    url(
+        regex=r'^tags/(?P<pk>[0-9]+)/documents/$',
+        view=APITagDocumentListView.as_view(), name='tag-document-list'
+    ),
     url(
         regex=r'^documents/(?P<document_pk>[0-9]+)/tags/$',
         view=APIDocumentTagListView.as_view(), name='document-tag-list'

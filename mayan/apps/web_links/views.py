@@ -30,7 +30,7 @@ from .permissions import (
     permission_web_link_view
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentTypeWebLinksView(AddRemoveView):

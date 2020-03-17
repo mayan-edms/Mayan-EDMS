@@ -19,7 +19,7 @@ __all__ = (
     'DocumentDuplicatesListView', 'DuplicatedDocumentListView',
     'ScanDuplicatedDocuments'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentDuplicatesListView(ExternalObjectMixin, DocumentListView):

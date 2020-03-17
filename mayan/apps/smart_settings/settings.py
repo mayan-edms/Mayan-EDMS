@@ -267,6 +267,17 @@ setting_django_language_code = namespace.add_setting(
     ),
 )
 setting_django_static_url = namespace.add_setting(
+    global_name='SECURE_PROXY_SSL_HEADER',
+    default=settings.SECURE_PROXY_SSL_HEADER,
+    help_text=_(
+        'A tuple representing a HTTP header/value combination that '
+        'signifies a request is secure. This controls the behavior of the '
+        'request object’s is_secure() method. Warning: Modifying this '
+        'setting can compromise your site’s security. Ensure you fully '
+        'understand your setup before changing it.'
+    ),
+)
+setting_django_static_url = namespace.add_setting(
     global_name='STATIC_URL',
     default=settings.STATIC_URL,
     help_text=_(
@@ -295,6 +306,25 @@ setting_django_time_zone = namespace.add_setting(
         'Note that this isn\'t necessarily the time zone of the server. '
         'For example, one server may serve multiple Django-powered sites, '
         'each with a separate time zone setting.'
+    ),
+)
+setting_django_wsgi_application = namespace.add_setting(
+    global_name='USE_X_FORWARDED_HOST',
+    default=settings.USE_X_FORWARDED_HOST,
+    help_text=_(
+        'A boolean that specifies whether to use the X-Forwarded-Host '
+        'header in preference to the Host header. This should only be '
+        'enabled if a proxy which sets this header is in use.'
+    ),
+)
+setting_django_wsgi_application = namespace.add_setting(
+    global_name='USE_X_FORWARDED_PORT',
+    default=settings.USE_X_FORWARDED_PORT,
+    help_text=_(
+        'A boolean that specifies whether to use the X-Forwarded-Port '
+        'header in preference to the SERVER_PORT META variable. This '
+        'should only be enabled if a proxy which sets this header is in '
+        'use. USE_X_FORWARDED_HOST takes priority over this setting.'
     ),
 )
 setting_django_wsgi_application = namespace.add_setting(

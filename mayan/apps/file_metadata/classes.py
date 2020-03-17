@@ -11,7 +11,7 @@ from .events import event_file_metadata_document_version_finish
 from .exceptions import FileMetadataDriverError
 from .signals import post_document_version_file_metadata_processing
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class FileMetadataHelper(PropertyHelper):

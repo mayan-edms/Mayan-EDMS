@@ -108,9 +108,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'signaturebasemodel_ptr', models.OneToOneField(
-                        auto_created=True, parent_link=True,
-                        primary_key=True, on_delete=models.CASCADE,
-                        serialize=False,
+                        auto_created=True, on_delete=models.CASCADE,
+                        parent_link=True, primary_key=True, serialize=False,
                         to='document_signatures.SignatureBaseModel'
                     )
                 ),

@@ -14,7 +14,7 @@ from mayan.apps.permissions.models import Role, StoredPermission
 from .events import event_acl_created, event_acl_edited
 from .managers import AccessControlListManager
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible
@@ -66,7 +66,7 @@ class AccessControlList(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='acls:acl_permissions', kwargs={'pk': self.pk}
+            viewname='acls:acl_permissions', kwargs={'acl_id': self.pk}
         )
 
     def get_inherited_permissions(self):

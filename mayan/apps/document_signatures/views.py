@@ -46,7 +46,7 @@ from .permissions import (
 )
 from .tasks import task_verify_missing_embedded_signature
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentVersionDetachedSignatureCreateView(FormView):

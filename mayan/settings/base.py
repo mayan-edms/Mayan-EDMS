@@ -49,7 +49,6 @@ INSTALLED_APPS = (
     'mayan.apps.appearance',
     # Django
     'django.contrib.admin',
-    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
@@ -90,6 +89,7 @@ INSTALLED_APPS = (
     'mayan.apps.navigation',
     'mayan.apps.permissions',
     'mayan.apps.platform',
+    'mayan.apps.quotas',
     'mayan.apps.rest_api',
     'mayan.apps.smart_settings',
     'mayan.apps.task_manager',
@@ -131,6 +131,7 @@ MIDDLEWARE = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'mayan.apps.authentication.middleware.impersonate.ImpersonateMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',

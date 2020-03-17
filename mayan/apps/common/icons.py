@@ -27,6 +27,12 @@ icon_fail = Icon(
 icon_forum = Icon(
     driver_name='fontawesome', symbol='life-ring'
 )
+icon_list_mode_list = Icon(
+    driver_name='fontawesome', symbol='list'
+)
+icon_list_mode_items = Icon(
+    driver_name='fontawesome', symbol='th-large'
+)
 icon_license = Icon(
     driver_name='fontawesome', symbol='certificate'
 )

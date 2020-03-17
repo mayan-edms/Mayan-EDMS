@@ -9,7 +9,7 @@ from django.core.management.base import CommandError
 
 from ...filesystems import IndexFilesystem
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class Command(management.BaseCommand):

@@ -75,7 +75,11 @@ class Cabinet(MPTTModel):
             )
 
     def get_absolute_url(self):
-        return reverse(viewname='cabinets:cabinet_view', kwargs={'pk': self.pk})
+        return reverse(
+            viewname='cabinets:cabinet_view', kwargs={
+                'cabinet_id': self.pk
+            }
+        )
 
     def get_document_count(self, user):
         """

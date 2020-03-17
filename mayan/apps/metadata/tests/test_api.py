@@ -169,7 +169,7 @@ class MetadataTypeAPITestCase(
 class DocumentTypeMetadataTypeAPITestCase(
     DocumentTestMixin, MetadataTypeTestMixin, BaseAPITestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
         super(DocumentTypeMetadataTypeAPITestCase, self).setUp()

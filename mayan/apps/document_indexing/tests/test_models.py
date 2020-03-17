@@ -87,7 +87,7 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         self.test_document.delete()
 
         # Uploading a new should not trigger an error
-        self.upload_document()
+        self._upload_test_document()
 
         self.assertEqual(
             list(IndexInstanceNode.objects.values_list('value', flat=True)),

@@ -26,7 +26,7 @@ class BasePlainViewTestCase(
             fragment='#javascript:alert("XSS")', viewname=settings.LOGIN_URL
         )
 
-        with self.assertRaises(NoAlertPresentException):
+        with self.assertRaises(expected_exception=NoAlertPresentException):
             self.webdriver.switch_to_alert()
 
     def test_login_view_url_redirect(self):

@@ -17,7 +17,7 @@ from .document_views import DocumentListView
 __all__ = (
     'FavoriteDocumentListView', 'FavoriteAddView', 'FavoriteRemoveView'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class FavoriteDocumentListView(DocumentListView):
@@ -43,6 +43,7 @@ class FavoriteDocumentListView(DocumentListView):
 class FavoriteAddView(MultipleObjectConfirmActionView):
     model = Document
     object_permission = permission_document_view
+    pk_url_kwarg = 'document_id'
     success_message = _(
         '%(count)d document added to favorites.'
     )
@@ -73,6 +74,7 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
     error_message = _('Document "%(instance)s" is not in favorites.')
     model = Document
     object_permission = permission_document_view
+    pk_url_kwarg = 'document_id'
     success_message = _(
         '%(count)d document removed from favorites.'
     )

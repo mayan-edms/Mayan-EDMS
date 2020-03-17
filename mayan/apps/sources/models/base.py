@@ -21,7 +21,7 @@ from ..literals import (
 )
 from ..wizards import WizardStep
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible
@@ -237,7 +237,7 @@ class IntervalBaseModel(OutOfProcessSource):
                 name=self._get_periodic_task_name(),
                 interval=interval_instance,
                 task='mayan.apps.sources.tasks.task_check_interval_source',
-                kwargs=json.dumps({'source_id': self.pk})
+                kwargs=json.dumps(obj={'source_id': self.pk})
             )
 
 

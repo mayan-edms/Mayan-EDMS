@@ -29,7 +29,7 @@ from ..settings import (
 from .document_version_models import DocumentVersion
 
 __all__ = ('DocumentPage', 'DocumentPageResult')
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible
@@ -106,7 +106,9 @@ class DocumentPage(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='documents:document_page_view', kwargs={'pk': self.pk}
+            viewname='documents:document_page_view', kwargs={
+                'document_page_id': self.pk
+            }
         )
 
     def get_api_image_url(self, *args, **kwargs):

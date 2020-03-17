@@ -8,19 +8,20 @@ import uuid
 
 from django.apps import apps
 from django.db import models, transaction
-from django.template import Template, Context
+from django.template import Context, Template
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.converter.exceptions import InvalidOfficeFormat, PageCountError
 from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.transformations import TransformationRotate
 from mayan.apps.converter.utils import get_converter_class
 from mayan.apps.mimetype.api import get_mimetype
 
-from ..events import event_document_new_version, event_document_version_revert
+from ..events import event_document_version_new, event_document_version_revert
 from ..literals import DOCUMENT_IMAGES_CACHE_NAME
 from ..managers import DocumentVersionManager
 from ..settings import setting_fix_orientation, setting_hash_block_size
@@ -30,7 +31,7 @@ from ..storages import storage_documentversion
 from .document_models import Document
 
 __all__ = ('DocumentVersion',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 # document image cache name hash function
@@ -59,8 +60,9 @@ class DocumentVersion(models.Model):
     document is modified after upload it's checksum will not match, used for
     detecting file tampering among other things.
     """
-    _pre_open_hooks = {}
-    _post_save_hooks = {}
+    _pre_open_hooks = []
+    _pre_save_hooks = []
+    _post_save_hooks = []
 
     document = models.ForeignKey(
         on_delete=models.CASCADE, related_name='versions', to=Document,
@@ -112,12 +114,38 @@ class DocumentVersion(models.Model):
     objects = DocumentVersionManager()
 
     @classmethod
-    def register_pre_open_hook(cls, order, func):
-        cls._pre_open_hooks[order] = func
+    def _execute_hooks(cls, hook_list, instance, **kwargs):
+        result = None
+
+        for hook in hook_list:
+            result = hook(document_version=instance, **kwargs)
+            if result:
+                kwargs.update(result)
+
+        return result
 
     @classmethod
-    def register_post_save_hook(cls, order, func):
-        cls._post_save_hooks[order] = func
+    def _insert_hook_entry(cls, hook_list, func, order=None):
+        order = order or len(hook_list)
+        hook_list.insert(order, func)
+
+    @classmethod
+    def register_post_save_hook(cls, func, order=None):
+        cls._insert_hook_entry(
+            hook_list=cls._post_save_hooks, func=func, order=order
+        )
+
+    @classmethod
+    def register_pre_open_hook(cls, func, order=None):
+        cls._insert_hook_entry(
+            hook_list=cls._pre_open_hooks, func=func, order=order
+        )
+
+    @classmethod
+    def register_pre_save_hook(cls, func, order=None):
+        cls._insert_hook_entry(
+            hook_list=cls._pre_save_hooks, func=func, order=order
+        )
 
     def __str__(self):
         return self.get_rendered_string()
@@ -143,6 +171,16 @@ class DocumentVersion(models.Model):
 
         return super(DocumentVersion, self).delete(*args, **kwargs)
 
+    def execute_pre_save_hooks(self):
+        """
+        Helper method to allow checking if new versions are possible from
+        outside the model. Currently used by the document version upload link
+        condition.
+        """
+        DocumentVersion._execute_hooks(
+            hook_list=DocumentVersion._pre_save_hooks, instance=self
+        )
+
     def exists(self):
         """
         Returns a boolean value that indicates if the document's file
@@ -164,7 +202,7 @@ class DocumentVersion(models.Model):
     def get_absolute_url(self):
         return reverse(
             viewname='documents:document_version_view', kwargs={
-                'pk': self.pk
+                'document_version_id': self.pk
             }
         )
 
@@ -236,15 +274,16 @@ class DocumentVersion(models.Model):
         the storage backend
         """
         if raw:
-            return self.file.storage.open(self.file.name)
+            return self.file.storage.open(name=self.file.name)
         else:
-            result = self.file.storage.open(self.file.name)
-            for key in sorted(DocumentVersion._pre_open_hooks):
-                result = DocumentVersion._pre_open_hooks[key](
-                    file_object=result, document_version=self
-                )
+            file_object = self.file.storage.open(name=self.file.name)
 
-            return result
+            result = DocumentVersion._execute_hooks(
+                hook_list=DocumentVersion._pre_open_hooks,
+                instance=self, file_object=file_object
+            )
+
+            return result['file_object']
 
     @property
     def pages_all(self):
@@ -293,12 +332,18 @@ class DocumentVersion(models.Model):
 
         try:
             with transaction.atomic():
+                self.execute_pre_save_hooks()
+
+                signal_mayan_pre_save.send(
+                    instance=self, sender=DocumentVersion, user=user
+                )
+
                 super(DocumentVersion, self).save(*args, **kwargs)
 
-                for key in sorted(DocumentVersion._post_save_hooks):
-                    DocumentVersion._post_save_hooks[key](
-                        document_version=self
-                    )
+                DocumentVersion._execute_hooks(
+                    hook_list=DocumentVersion._post_save_hooks,
+                    instance=self
+                )
 
                 if new_document_version:
                     # Only do this for new documents
@@ -327,14 +372,14 @@ class DocumentVersion(models.Model):
             raise
         else:
             if new_document_version:
-                event_document_new_version.commit(
+                event_document_version_new.commit(
                     actor=user, target=self, action_object=self.document
                 )
                 post_version_upload.send(sender=DocumentVersion, instance=self)
 
                 if tuple(self.document.versions.all()) == (self,):
                     post_document_created.send(
-                        sender=Document, instance=self.document
+                        instance=self.document, sender=Document
                     )
 
     def save_to_file(self, file_object):

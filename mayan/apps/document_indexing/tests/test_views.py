@@ -91,7 +91,7 @@ class IndexInstaceViewTestCase(
     GenericDocumentViewTestCase
 ):
     def test_index_rebuild_view_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_index()
         self._create_test_index_template_node()
 
@@ -102,7 +102,7 @@ class IndexInstaceViewTestCase(
         self.assertEqual(IndexInstanceNode.objects.first().parent, None)
 
     def test_index_rebuild_view_with_access(self):
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_index()
         self._create_test_index_template_node()
 

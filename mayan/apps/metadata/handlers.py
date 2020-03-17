@@ -8,7 +8,7 @@ from mayan.apps.document_indexing.tasks import task_index_document
 
 from .tasks import task_add_required_metadata_type, task_remove_metadata_type
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def handler_index_document(sender, **kwargs):

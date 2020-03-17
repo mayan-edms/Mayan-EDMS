@@ -18,11 +18,11 @@ class FileLockTestCase(BaseTestCase):
 
     def setUp(self):
         super(FileLockTestCase, self).setUp()
-        self.locking_backend = import_string(self.backend_string)
+        self.locking_backend = import_string(dotted_path=self.backend_string)
 
     def test_exclusive(self):
         lock_1 = self.locking_backend.acquire_lock(name=TEST_LOCK_1)
-        with self.assertRaises(LockError):
+        with self.assertRaises(expected_exception=LockError):
             self.locking_backend.acquire_lock(name=TEST_LOCK_1)
 
         # Cleanup
@@ -40,7 +40,7 @@ class FileLockTestCase(BaseTestCase):
         self.locking_backend.acquire_lock(name=TEST_LOCK_1, timeout=1)
 
         # lock_1 not release and not expired, should raise LockError
-        with self.assertRaises(LockError):
+        with self.assertRaises(expected_exception=LockError):
             self.locking_backend.acquire_lock(name=TEST_LOCK_1)
 
         time.sleep(1.01)

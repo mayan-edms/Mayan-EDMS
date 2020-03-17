@@ -15,7 +15,7 @@ from .literals import (
     TERM_OPERATION_OR, TERM_OPERATIONS, TERM_QUOTES, TERM_SPACE_CHARACTER
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible
@@ -99,7 +99,7 @@ class SearchModel(object):
         except KeyError:
             raise KeyError(_('No search model matching the query'))
         if not hasattr(result, 'serializer'):
-            result.serializer = import_string(result.serializer_path)
+            result.serializer = import_string(dotted_path=result.serializer_path)
 
         return result
 

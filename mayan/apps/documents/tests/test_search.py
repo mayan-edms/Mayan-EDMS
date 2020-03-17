@@ -9,12 +9,14 @@ from .base import GenericDocumentViewTestCase
 class DocumentSearchTestMixin(object):
     def _perform_document_page_search(self):
         return document_page_search.search(
-            query_string={'q': self.test_document.label}, user=self._test_case_user
+            query_string={'q': self.test_document.label},
+            user=self._test_case_user
         )
 
     def _perform_document_search(self):
         return document_search.search(
-            query_string={'q': self.test_document.label}, user=self._test_case_user
+            query_string={'q': self.test_document.label},
+            user=self._test_case_user
         )
 
 

@@ -3,13 +3,13 @@ from __future__ import print_function, unicode_literals
 import json
 from importlib import import_module
 import logging
+from pathlib import Path
 import pkg_resources
 import shutil
 import sys
 import tarfile
 
 from furl import furl
-from pathlib2 import Path
 import requests
 from semver import max_satisfying
 
@@ -27,9 +27,10 @@ from mayan.apps.common.utils import resolve_attribute
 from mayan.apps.storage.utils import mkdtemp, patch_files as storage_patch_files
 
 from .algorithms import HashAlgorithm
+from .environments import environment_production
 from .exceptions import DependenciesException
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class Provider(object):
@@ -50,51 +51,6 @@ class NPMRegistryRespository(Provider):
 
 class OperatingSystemProvider(Provider):
     """Placeholder for the OS provider"""
-
-
-@python_2_unicode_compatible
-class DependencyEnvironment(object):
-    def __init__(self, label, name, help_text=None):
-        self.label = label
-        self.help_text = help_text
-        self.name = name
-
-    def __str__(self):
-        return force_text(self.label)
-
-
-environment_build = DependencyEnvironment(
-    help_text=_(
-        'Environment used for building distributable packages of the '
-        'software. End users can ignore missing dependencies under this '
-        'environment.'
-    ), label=_('Build'), name='build'
-)
-environment_development = DependencyEnvironment(
-    help_text=_(
-        'Environment used for developers to make code changes. End users '
-        'can ignore missing dependencies under this environment.'
-    ), label=_('Development'), name='development'
-)
-environment_documentation = DependencyEnvironment(
-    help_text=_(
-        'Environment used for building the documentation. End users '
-        'can ignore missing dependencies under this environment.'
-    ), label=_('Documentation'), name='documentation'
-)
-environment_production = DependencyEnvironment(
-    help_text=_(
-        'Normal environment for end users. A missing dependency under this '
-        'environment will result in issues and errors during normal use.'
-    ), label=_('Production'), name='production'
-)
-environment_testing = DependencyEnvironment(
-    help_text=_(
-        'Environment used running the test suit to verify the functionality '
-        'of the code. Dependencies in this environment are not needed for '
-        'normal production usage.'
-    ), label=_('Testing'), name='testing'
-)
 
 
 @python_2_unicode_compatible

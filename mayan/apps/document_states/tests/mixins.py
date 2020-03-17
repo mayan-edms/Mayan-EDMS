@@ -16,6 +16,9 @@ from .literals import (
 class TestWorkflowAction(WorkflowAction):
     label = 'test workflow state action'
 
+    def execute(self, context):
+        context['workflow_instance']._workflow_state_action_executed = True
+
 
 class WorkflowRuntimeProxyStateViewTestMixin(object):
     def _request_test_workflow_runtime_proxy_state_list_view(self):
@@ -48,10 +51,20 @@ class WorkflowStateActionTestMixin(object):
     TestWorkflowAction = TestWorkflowAction
     test_workflow_state_action_path = 'mayan.apps.document_states.tests.mixins.TestWorkflowAction'
 
-    def _create_test_workflow_state_action(self):
-        self.test_workflow_state.actions.create(
+    def _create_test_workflow_state_action(self, workflow_state_index=0):
+        self.test_workflow_state_action = self.test_workflow_states[
+            workflow_state_index
+        ].actions.create(
             label=self.TestWorkflowAction.label,
             action_path=self.test_workflow_state_action_path
+        )
+
+
+class WorkflowStateActionViewTestMixin(object):
+    def _request_test_document_state_action_view(self):
+        return self.get(
+            viewname='document_states:workflow_template_state_action_list',
+            kwargs={'pk': self.test_workflow_state.pk}
         )
 
 
@@ -104,23 +117,28 @@ class WorkflowTestMixin(object):
             self.test_workflow.document_types.add(self.test_document_type)
 
     def _create_test_workflow_state(self):
+        self.test_workflow_states = []
         self.test_workflow_state = self.test_workflow.states.create(
-            completion=TEST_WORKFLOW_STATE_COMPLETION,
+            completion=TEST_WORKFLOW_STATE_COMPLETION, initial=True,
             label=TEST_WORKFLOW_STATE_LABEL
         )
+        self.test_workflow_states.append(self.test_workflow_state)
         self.test_workflow_state_runtime_proxy = WorkflowStateRuntimeProxy.objects.get(
             pk=self.test_workflow_state.pk
         )
 
     def _create_test_workflow_states(self):
+        self.test_workflow_states = []
         self.test_workflow_state_1 = self.test_workflow.states.create(
             completion=TEST_WORKFLOW_INITIAL_STATE_COMPLETION,
             initial=True, label=TEST_WORKFLOW_INITIAL_STATE_LABEL
         )
+        self.test_workflow_states.append(self.test_workflow_state_1)
         self.test_workflow_state_2 = self.test_workflow.states.create(
             completion=TEST_WORKFLOW_STATE_COMPLETION,
             label=TEST_WORKFLOW_STATE_LABEL
         )
+        self.test_workflow_states.append(self.test_workflow_state_2)
         self.test_workflow_state_runtime_proxy_1 = WorkflowStateRuntimeProxy.objects.get(
             pk=self.test_workflow_state_1.pk
         )
@@ -153,6 +171,13 @@ class WorkflowTestMixin(object):
             comment=TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT,
             transition=self.test_workflow_transition,
             user=self._test_case_user
+        )
+
+
+class WorkflowToolViewTestMixin(object):
+    def _request_workflow_launch_view(self):
+        return self.post(
+            viewname='document_states:tool_launch_workflows',
         )
 
 

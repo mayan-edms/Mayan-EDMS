@@ -10,10 +10,12 @@ from django.db.models import F, Max
 from django.utils.encoding import force_text
 from django.utils.timezone import now
 
-from .literals import STUB_EXPIRATION_INTERVAL
-from .settings import setting_favorite_count, setting_recent_access_count
+from .settings import (
+    setting_favorite_count, setting_recent_access_count,
+    setting_stub_expiration_interval
+)
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentManager(models.Manager):
@@ -220,7 +222,7 @@ class FavoriteDocumentManager(models.Manager):
 
 class PassthroughManager(models.Manager):
     def delete_stubs(self):
-        for stale_stub_document in self.filter(is_stub=True, date_added__lt=now() - timedelta(seconds=STUB_EXPIRATION_INTERVAL)):
+        for stale_stub_document in self.filter(is_stub=True, date_added__lt=now() - timedelta(seconds=setting_stub_expiration_interval.value)):
             stale_stub_document.delete(to_trash=False)
 
 

@@ -20,7 +20,7 @@ from ..settings import setting_default_lock_timeout
 from .base import LockingBackend
 
 lock = threading.Lock()
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 lock_file = os.path.join(
     setting_temporary_directory.value, hashlib.sha256(
@@ -78,7 +78,7 @@ class FileLock(LockingBackend):
             data = file_object.read()
 
             if data:
-                file_locks = json.loads(data)
+                file_locks = json.loads(s=data)
             else:
                 file_locks = {}
 
@@ -95,7 +95,7 @@ class FileLock(LockingBackend):
 
             file_object.seek(0)
             file_object.truncate()
-            file_object.write(json.dumps(file_locks))
+            file_object.write(json.dumps(obj=file_locks))
             lock.release()
 
     def release(self):
@@ -105,7 +105,7 @@ class FileLock(LockingBackend):
         with open(self.__class__.lock_file, 'r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)
             try:
-                file_locks = json.loads(file_object.read())
+                file_locks = json.loads(s=file_object.read())
             except EOFError:
                 file_locks = {}
 
@@ -121,5 +121,5 @@ class FileLock(LockingBackend):
 
             file_object.seek(0)
             file_object.truncate()
-            file_object.write(json.dumps(file_locks))
+            file_object.write(json.dumps(obj=file_locks))
             lock.release()

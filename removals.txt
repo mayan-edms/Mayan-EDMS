@@ -10,6 +10,6 @@ django-compressor
 django-filetransfers
 django-rest-swagger
 librabbitmq
-pathlib
+pathlib2
 pytesseract
 pdfminer

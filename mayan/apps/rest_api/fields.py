@@ -13,10 +13,10 @@ class DynamicSerializerField(serializers.ReadOnlyField):
     @classmethod
     def add_serializer(cls, klass, serializer_class):
         if isinstance(klass, string_types):
-            klass = import_string(klass)
+            klass = import_string(dotted_path=klass)
 
         if isinstance(serializer_class, string_types):
-            serializer_class = import_string(serializer_class)
+            serializer_class = import_string(dotted_path=serializer_class)
 
         cls.serializers[klass] = serializer_class
 

@@ -85,7 +85,8 @@ class WebLinksApp(MayanAppConfig):
             source=WebLink
         )
         SourceColumn(
-            attribute='enabled', is_sortable=True, source=WebLink,
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=WebLink,
             widget=TwoStateWidget
         )
 

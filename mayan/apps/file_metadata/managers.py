@@ -5,7 +5,7 @@ import logging
 from django.apps import apps
 from django.db import models
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentTypeSettingsManager(models.Manager):

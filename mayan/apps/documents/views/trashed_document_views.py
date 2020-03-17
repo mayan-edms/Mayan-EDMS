@@ -27,13 +27,13 @@ __all__ = (
     'DocumentTrashView', 'EmptyTrashCanView', 'TrashedDocumentDeleteView',
     'TrashedDocumentListView', 'TrashedDocumentRestoreView'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentTrashView(MultipleObjectConfirmActionView):
     model = Document
     object_permission = permission_document_trash
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'document_id'
     post_action_redirect = reverse_lazy(viewname=setting_home_view.value)
     success_message_singular = _(
         '%(count)d document moved to the trash.'
@@ -82,7 +82,7 @@ class EmptyTrashCanView(ConfirmView):
 class TrashedDocumentDeleteView(MultipleObjectConfirmActionView):
     model = DeletedDocument
     object_permission = permission_document_delete
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'document_id'
     success_message_singular = _(
         '%(count)d trashed document deleted.'
     )
@@ -142,7 +142,7 @@ class TrashedDocumentListView(DocumentListView):
 class TrashedDocumentRestoreView(MultipleObjectConfirmActionView):
     model = DeletedDocument
     object_permission = permission_document_restore
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'document_id'
     success_message_singular = _(
         '%(count)d trashed document restored.'
     )

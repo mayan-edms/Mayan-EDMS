@@ -14,7 +14,7 @@ from .classes import Permission
 from .events import event_role_created, event_role_edited
 from .managers import RoleManager, StoredPermissionManager
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible
@@ -164,6 +164,9 @@ class Role(models.Model):
                 actor=_user, target=self
             )
             self.permissions.remove(*queryset)
+
+    def revoke(self, permission):
+        self.permissions.remove(permission.stored_permission)
 
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)

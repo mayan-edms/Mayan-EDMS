@@ -11,11 +11,57 @@
 - Move django-qsstats-magic to the mayan_statistics app.
 - Remove codecov from the dependencies.
 
-3.3.15 (2020-XX-XX)
+3.4 (2020-XX-XX)
+================
+- Update Django to version 2.2.10.
+- Update Django stronghold to version 0.4.0.
+- The ``runserver`` make file target now runs the command with
+  ``--nothreading`` to work around issues serving static files in development.
+- Backport list display mode. Support switching between item and list mode.
+- Update app URLs to use explicit parameters.
+- Move dependencies environments to their own module called
+  ``dependencies.environments.py``.
+- Increase the size of the file cache maximum size field.
+- Remove codecov dependency.
+- Remove pathlib2 dependency, it is now part of the standard Python library.
+- Remove Django's admindocs app
+- Add user impersonation support.
+- Add support for uncompressing Outlook .msg files. Adds dependecy
+  ``extract-msg``.
+- Updated converter to show preview of the text part of .msg files.
+- Decouple the Checkouts and Sources apps. It is now possible to disable
+  the Checkouts app.
+- Add new document version pre save hooks.
+- Fix OCR model property.
+- Add workflow transition conditionals.
+- Add workflow state action conditionals.
+- Add document version pre save signal.
+- Update the document type and document models to avoid a double save
+  when creating a new document.
+- Add quotas app.
+- Add support for HTTP methods to the workflow HTTP request state action.
+- Update python-gnupg from version 0.3.9 to 0.4.5.
+
+3.3.15 (2020-03-05)
 ===================
 - Add Docker environment setting ``MAYAN_SKIP_CHOWN_ON_STARTUP`` to skip
   performing the initial chown on the media folder at `/var/lib/mayan`.
   This command is slow on non native block storage backends.
+- Remove Wiki links from README files. GitLab Merge request !78.
+  Thanks Steffen Raisin (@zintor) for the merge request.
+- Add more API tests to the Tags app.
+- Expose Django settings: ``SECURE_PROXY_SSL_HEADER``,
+  ``USE_X_FORWARDED_HOST``, and ``USE_X_FORWARDED_PORT``.
+- Change the default of DATABASE_CONN_MAX_AGE to 0 which is the
+  safest value. https://docs.djangoproject.com/en/3.0/ref/settings/#conn-max-age
+- Update default Docker Compose file.
+- Correct the icon used for multi document cabinet add action.
+  GitLab merge !79. Thanks to  Giacomo Catenazzi (@cateee).
+- Add environment variable ``MAYAN_DOCKER_WAIT`` to have the Docker image
+  wait for a host and port to become available.
+- Turn hard-coded constant STUB_EXPIRATION_INTERVAL into a user setting named
+  ``DOCUMENTS_STUB_EXPIRATION_INTERVAL``. Defaults to previous value of 24
+  hours to preserve existing behavior.
 
 3.3.14 (2020-02-23)
 ===================

@@ -305,7 +305,6 @@ generate-requirements: ## Generate all requirements files from the project deped
 	@./manage.py generaterequirements build > requirements/build.txt
 	@./manage.py generaterequirements development > requirements/development.txt
 	@./manage.py generaterequirements documentation > requirements/documentation.txt
-	@./manage.py generaterequirements production --only=pathlib2 >> requirements/documentation.txt
 	@./manage.py generaterequirements testing > requirements/testing-base.txt
 	@./manage.py generaterequirements production --exclude=django > requirements/base.txt
 	@./manage.py generaterequirements production --only=django > requirements/common.txt

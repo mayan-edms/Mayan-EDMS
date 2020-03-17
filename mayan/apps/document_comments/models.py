@@ -15,7 +15,7 @@ from .events import (
     event_document_comment_edited
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible

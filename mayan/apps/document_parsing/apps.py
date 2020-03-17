@@ -44,7 +44,7 @@ from .permissions import (
 from .signals import post_document_version_parsing
 from .utils import get_instance_content
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentParsingApp(MayanAppConfig):

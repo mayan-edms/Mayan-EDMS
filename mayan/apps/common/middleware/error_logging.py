@@ -6,7 +6,7 @@ from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.utils.deprecation import MiddlewareMixin
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class ErrorLoggingMiddleware(MiddlewareMixin):

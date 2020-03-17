@@ -5,29 +5,75 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.views import (
     LoginView, LogoutView, PasswordChangeDoneView, PasswordChangeView,
-    PasswordResetCompleteView, PasswordResetConfirmView, PasswordResetDoneView,
-    PasswordResetView
+    PasswordResetCompleteView, PasswordResetConfirmView,
+    PasswordResetDoneView, PasswordResetView
 )
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ungettext, ugettext_lazy as _
+from django.views.generic.base import View
 
 from stronghold.views import StrongholdPublicMixin
 
 import mayan
-from mayan.apps.common.generics import MultipleObjectFormActionView
+from mayan.apps.common.http import URL
+from mayan.apps.common.generics import FormView, MultipleObjectFormActionView
+from mayan.apps.common.mixins import RedirectionMixin
 from mayan.apps.common.settings import (
     setting_home_view, setting_project_title, setting_project_url
 )
 from mayan.apps.user_management.permissions import permission_user_edit
 
-from .forms import EmailAuthenticationForm, UsernameAuthenticationForm
+from .forms import (
+    EmailAuthenticationForm, UserListForm, UsernameAuthenticationForm
+)
+from .literals import (
+    IMPERSONATE_VARIABLE_ID, IMPERSONATE_VARIABLE_DISABLE,
+    IMPERSONATE_VARIABLE_PERMANENT
+)
+from .permissions import permission_users_impersonate
 from .settings import (
     setting_disable_password_reset, setting_login_method,
     setting_maximum_session_length
 )
+
+
+class ImpersonateEndView(RedirectionMixin, View):
+    def get(self, request, *args, **kwargs):
+        url = URL(
+            viewname=setting_home_view.value, query={
+                IMPERSONATE_VARIABLE_DISABLE: ''
+            }
+        )
+        return HttpResponseRedirect(redirect_to=url.to_string())
+
+
+class ImpersonateStartView(FormView):
+    form_class = UserListForm
+    view_permission = permission_users_impersonate
+
+    def form_valid(self, form):
+        query = {IMPERSONATE_VARIABLE_ID: form.cleaned_data['user'].pk}
+        if form.cleaned_data['permanent']:
+            query[IMPERSONATE_VARIABLE_PERMANENT] = ''
+
+        IMPERSONATE_VARIABLE_PERMANENT
+        url = URL(
+            viewname=setting_home_view.value, query=query
+        )
+        return HttpResponseRedirect(redirect_to=url.to_string())
+
+    def get_extra_context(self):
+        return {
+            'title': _('Impersonate user')
+        }
+
+    def get_form_extra_kwargs(self):
+        return {
+            'user': self.request.user
+        }
 
 
 class MayanLoginView(StrongholdPublicMixin, LoginView):

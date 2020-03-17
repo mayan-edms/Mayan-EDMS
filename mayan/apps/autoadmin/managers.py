@@ -8,7 +8,7 @@ from django.db import models
 
 from .settings import setting_email, setting_password, setting_username
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class AutoAdminSingletonManager(models.Manager):

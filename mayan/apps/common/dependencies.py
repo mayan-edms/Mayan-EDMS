@@ -3,8 +3,11 @@ from __future__ import absolute_import, unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.dependencies.classes import (
+    BinaryDependency, PythonDependency
+)
+from mayan.apps.dependencies.environments import (
     environment_build, environment_development, environment_documentation,
-    environment_testing, BinaryDependency, PythonDependency
+    environment_testing
 )
 
 from .literals import DEFAULT_FIREFOX_GECKODRIVER_PATH
@@ -187,6 +190,9 @@ PythonDependency(
     module=__name__, name='furl', version_string='==2.1.0'
 )
 PythonDependency(
+    module=__name__, name='extract-msg', version_string='==0.23.3'
+)
+PythonDependency(
     module=__name__, name='gevent', version_string='==1.4.0'
 )
 PythonDependency(
@@ -194,9 +200,6 @@ PythonDependency(
 )
 PythonDependency(
     module=__name__, name='mock', version_string='==4.0.1'
-)
-PythonDependency(
-    module=__name__, name='pathlib2', version_string='==2.3.5'
 )
 PythonDependency(
     copyright_text='''
@@ -310,10 +313,6 @@ BinaryDependency(
     environment=environment_testing, label='firefox-geckodriver',
     module=__name__, name='geckodriver',
     path=DEFAULT_FIREFOX_GECKODRIVER_PATH
-)
-PythonDependency(
-    environment=environment_testing, module=__name__, name='codecov',
-    version_string='==2.0.15'
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='coverage',

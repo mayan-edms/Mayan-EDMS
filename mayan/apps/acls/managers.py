@@ -22,7 +22,7 @@ from mayan.apps.permissions.models import StoredPermission
 from .exceptions import PermissionNotValidForClass
 from .classes import ModelPermission
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class AccessControlListManager(models.Manager):
@@ -184,7 +184,7 @@ class AccessControlListManager(models.Manager):
 
             # Case 7: Has a function
             try:
-                field_query_function = ModelPermission.get_function(
+                field_query_function = ModelPermission.get_field_query_function(
                     model=queryset.model
                 )
             except KeyError:

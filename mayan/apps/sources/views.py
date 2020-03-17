@@ -11,7 +11,6 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.checkouts.models import NewVersionBlock
 from mayan.apps.common.generics import (
     ConfirmView, MultiFormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
@@ -52,11 +51,13 @@ from .permissions import (
 from .tasks import task_check_interval_source, task_source_handle_upload
 from .utils import get_class, get_form_class, get_upload_form_class
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
-class SourceLogListView(SingleObjectListView):
-    object_permission = permission_sources_setup_view
+class SourceLogListView(ExternalObjectMixin, SingleObjectListView):
+    external_object_queryset = Source.objects.select_subclasses()
+    external_object_permission = permission_sources_setup_view
+    external_object_pk_url_kwarg = 'source_id'
 
     def get_extra_context(self):
         return {
@@ -67,17 +68,12 @@ class SourceLogListView(SingleObjectListView):
                 'listed here to assist in debugging.'
             ),
             'no_results_title': _('No log entries available'),
-            'object': self.get_source(),
-            'title': _('Log entries for source: %s') % self.get_source(),
+            'object': self.external_object,
+            'title': _('Log entries for source: %s') % self.external_object,
         }
 
     def get_source_queryset(self):
-        return self.get_source().logs.all()
-
-    def get_source(self):
-        return get_object_or_404(
-            klass=Source.objects.select_subclasses(), pk=self.kwargs['pk']
-        )
+        return self.external_object.logs.all()
 
 
 class UploadBaseView(MultiFormView):
@@ -211,8 +207,7 @@ class UploadInteractiveView(UploadBaseView):
         self.subtemplates_list = []
 
         self.document_type = get_object_or_404(
-            klass=DocumentType,
-            pk=self.request.GET.get(
+            klass=DocumentType, pk=self.request.GET.get(
                 'document_type_id', self.request.POST.get('document_type_id')
             )
         )
@@ -291,10 +286,9 @@ class UploadInteractiveView(UploadBaseView):
             except Exception as exception:
                 message = _(
                     'Error executing document upload task; '
-                    '%(exception)s, %(exception_class)s'
+                    '%(exception)s'
                 ) % {
                     'exception': exception,
-                    'exception_class': type(exception),
                 }
                 logger.critical(msg=message, exc_info=True)
                 raise type(exception)(message)
@@ -338,7 +332,9 @@ class UploadInteractiveView(UploadBaseView):
         )
 
     def get_form_classes(self):
-        source_form_class = get_upload_form_class(self.source.source_type)
+        source_form_class = get_upload_form_class(
+            source_type_name=self.source.source_type
+        )
 
         # Override source form class to enable the HTML5 file uploader
         if source_form_class == WebFormUploadForm:
@@ -375,31 +371,33 @@ class UploadInteractiveView(UploadBaseView):
 
 class DocumentVersionUploadInteractiveView(UploadBaseView):
     def dispatch(self, request, *args, **kwargs):
-
         self.subtemplates_list = []
 
         self.document = get_object_or_404(
-            klass=Document, pk=kwargs['document_pk']
+            klass=Document, pk=kwargs['document_id']
         )
-
-        if NewVersionBlock.objects.is_blocked(self.document):
-            messages.error(
-                message=_(
-                    'Document "%s" is blocked from uploading new versions.'
-                ) % self.document, request=self.request
-            )
-            return HttpResponseRedirect(
-                redirect_to=reverse(
-                    viewname='documents:document_version_list', kwargs={
-                        'pk': self.document.pk
-                    }
-                )
-            )
 
         AccessControlList.objects.check_access(
             obj=self.document, permissions=(permission_document_new_version,),
             user=self.request.user
         )
+
+        try:
+            self.document.latest_version.execute_pre_save_hooks()
+        except Exception as exception:
+            messages.error(
+                message=_(
+                    'Unable to upload new versions for document '
+                    '"%(document)s". %(exception)s'
+                ) % {'document': self.document, 'exception': exception},
+                request=self.request
+            )
+            return HttpResponseRedirect(
+                redirect_to=reverse(
+                    viewname='documents:document_version_list',
+                    kwargs={'document_id': self.document.pk}
+                )
+            )
 
         self.tab_links = UploadBaseView.get_active_tab_links(self.document)
 
@@ -446,7 +444,7 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
         return HttpResponseRedirect(
             redirect_to=reverse(
                 viewname='documents:document_version_list', kwargs={
-                    'pk': self.document.pk
+                    'document_id': self.document.pk
                 }
             )
         )
@@ -461,7 +459,9 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
         )
 
     def get_form_classes(self):
-        source_form_class = get_upload_form_class(self.source.source_type)
+        source_form_class = get_upload_form_class(
+            source_type_name=self.source.source_type
+        )
 
         # Override source form class to enable the HTML5 file uploader
         if source_form_class == WebFormUploadForm:
@@ -497,6 +497,7 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
 class StagingFileDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
     external_object_class = StagingFolderSource
     external_object_permission = permission_staging_file_delete
+    external_object_pk_url_kwarg = 'staging_folder_id'
 
     def get_extra_context(self):
         return {
@@ -512,16 +513,18 @@ class StagingFileDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
 
 
 # Setup views
-class SetupSourceCheckView(ConfirmView):
+class SetupSourceCheckView(ExternalObjectMixin, ConfirmView):
     """
     Trigger the task_check_interval_source task for a given source to
     test/debug their configuration irrespective of the schedule task setup.
     """
-    view_permission = permission_sources_setup_create
+    external_object_pk_url_kwarg = 'source_id'
+    external_object_queryset = Source.objects.select_subclasses()
+    external_object_permission = permission_sources_setup_create
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
+            'object': self.external_object,
             'subtitle': _(
                 'This will execute the source check code even if the source '
                 'is not enabled. Sources that delete content after '
@@ -530,18 +533,13 @@ class SetupSourceCheckView(ConfirmView):
                 'successful test will clear the error log.'
             ), 'title': _(
                 'Trigger check for source "%s"?'
-            ) % self.get_object(),
+            ) % self.external_object,
         }
-
-    def get_object(self):
-        return get_object_or_404(
-            klass=Source.objects.select_subclasses(), pk=self.kwargs['pk']
-        )
 
     def view_action(self):
         task_check_interval_source.apply_async(
             kwargs={
-                'source_id': self.get_object().pk, 'test': True
+                'source_id': self.external_object.pk, 'test': True
             }
         )
 
@@ -557,30 +555,31 @@ class SetupSourceCreateView(SingleObjectCreateView):
     view_permission = permission_sources_setup_create
 
     def get_form_class(self):
-        return get_form_class(self.kwargs['source_type'])
+        return get_form_class(
+            source_type_name=self.kwargs['source_type_name']
+        )
 
     def get_extra_context(self):
         return {
-            'object': self.kwargs['source_type'],
+            'object': self.kwargs['source_type_name'],
             'title': _(
                 'Create new source of type: %s'
-            ) % get_class(self.kwargs['source_type']).class_fullname(),
+            ) % get_class(
+                source_type_name=self.kwargs['source_type_name']
+            ).class_fullname(),
         }
 
 
-class SetupSourceDeleteView(SingleObjectDeleteView):
+class SetupSourceDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
+    external_object_queryset = Source.objects.select_subclasses()
+    external_object_permission = permission_sources_setup_delete
+    external_object_pk_url_kwarg = 'source_id'
     post_action_redirect = reverse_lazy(
         viewname='sources:setup_source_list'
     )
-    view_permission = permission_sources_setup_delete
-
-    def get_object(self):
-        return get_object_or_404(
-            klass=Source.objects.select_subclasses(), pk=self.kwargs['pk']
-        )
 
     def get_form_class(self):
-        return get_form_class(self.get_object().source_type)
+        return get_form_class(source_type_name=self.get_object().source_type)
 
     def get_extra_context(self):
         return {
@@ -588,26 +587,30 @@ class SetupSourceDeleteView(SingleObjectDeleteView):
             'title': _('Delete the source: %s?') % self.get_object(),
         }
 
+    def get_object(self):
+        return self.external_object
 
-class SetupSourceEditView(SingleObjectEditView):
+
+class SetupSourceEditView(ExternalObjectMixin, SingleObjectEditView):
+    external_object_queryset = Source.objects.select_subclasses()
+    external_object_permission = permission_sources_setup_edit
+    external_object_pk_url_kwarg = 'source_id'
     post_action_redirect = reverse_lazy(
         viewname='sources:setup_source_list'
     )
     view_permission = permission_sources_setup_edit
 
-    def get_object(self):
-        return get_object_or_404(
-            klass=Source.objects.select_subclasses(), pk=self.kwargs['pk']
-        )
-
     def get_form_class(self):
-        return get_form_class(self.get_object().source_type)
+        return get_form_class(source_type_name=self.get_object().source_type)
 
     def get_extra_context(self):
         return {
             'object': self.get_object(),
             'title': _('Edit source: %s') % self.get_object(),
         }
+
+    def get_object(self):
+        return self.external_object
 
 
 class SetupSourceListView(SingleObjectListView):

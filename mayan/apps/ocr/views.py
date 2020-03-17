@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
@@ -26,6 +25,7 @@ from .utils import get_instance_ocr_content
 class DocumentOCRContentDeleteView(MultipleObjectConfirmActionView):
     model = Document
     object_permission = permission_ocr_document
+    pk_url_kwarg = 'document_id'
     success_message = 'Deleted OCR content of %(count)d document.'
     success_message_plural = 'Deleted OCR content of %(count)d documents.'
 
@@ -55,27 +55,57 @@ class DocumentOCRContentView(SingleObjectDetailView):
     form_class = DocumentOCRContentForm
     model = Document
     object_permission = permission_ocr_content_view
+    pk_url_kwarg = 'document_id'
 
     def dispatch(self, request, *args, **kwargs):
         result = super(DocumentOCRContentView, self).dispatch(
             request, *args, **kwargs
         )
-        self.get_object().add_as_recent_document_for_user(user=request.user)
+        self.object.add_as_recent_document_for_user(user=request.user)
         return result
 
     def get_extra_context(self):
         return {
-            'document': self.get_object(),
+            'document': self.object,
             'hide_labels': True,
-            'object': self.get_object(),
-            'title': _('OCR result for document: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('OCR result for document: %s') % self.object,
         }
+
+
+class DocumentOCRDownloadView(SingleObjectDownloadView):
+    model = Document
+    object_permission = permission_ocr_content_view
+    pk_url_kwarg = 'document_id'
+
+    def get_download_file_object(self):
+        return get_instance_ocr_content(instance=self.object)
+
+    def get_download_filename(self):
+        return '{}-OCR'.format(self.object)
+
+
+class DocumentOCRErrorsListView(ExternalObjectMixin, SingleObjectListView):
+    external_object_class = Document
+    external_object_permission = permission_ocr_document
+    external_object_pk_url_kwarg = 'document_id'
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'object': self.external_object,
+            'title': _('OCR errors for document: %s') % self.external_object,
+        }
+
+    def get_source_queryset(self):
+        return self.external_object.latest_version.ocr_errors.all()
 
 
 class DocumentPageOCRContentView(SingleObjectDetailView):
     form_class = DocumentPageOCRContentForm
     model = DocumentPage
     object_permission = permission_ocr_content_view
+    pk_url_kwarg = 'document_page_id'
 
     def dispatch(self, request, *args, **kwargs):
         result = super(DocumentPageOCRContentView, self).dispatch(
@@ -97,6 +127,7 @@ class DocumentPageOCRContentView(SingleObjectDetailView):
 class DocumentSubmitView(MultipleObjectConfirmActionView):
     model = Document
     object_permission = permission_ocr_document
+    pk_url_kwarg = 'document_id'
     success_message = '%(count)d document submitted to the OCR queue.'
     success_message_plural = '%(count)d documents submitted to the OCR queue.'
 
@@ -158,7 +189,7 @@ class DocumentTypeSubmitView(FormView):
 class DocumentTypeSettingsEditView(ExternalObjectMixin, SingleObjectEditView):
     external_object_class = DocumentType
     external_object_permission = permission_document_type_ocr_setup
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'document_type_id'
     fields = ('auto_ocr',)
     post_action_redirect = reverse_lazy(
         viewname='documents:document_type_list'
@@ -188,31 +219,3 @@ class EntryListView(SingleObjectListView):
 
     def get_source_queryset(self):
         return DocumentVersionOCRError.objects.all()
-
-
-class DocumentOCRErrorsListView(SingleObjectListView):
-    object_permission = permission_ocr_document
-
-    def get_document(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'object': self.get_document(),
-            'title': _('OCR errors for document: %s') % self.get_document(),
-        }
-
-    def get_source_queryset(self):
-        return self.get_document().latest_version.ocr_errors.all()
-
-
-class DocumentOCRDownloadView(SingleObjectDownloadView):
-    model = Document
-    object_permission = permission_ocr_content_view
-
-    def get_download_file_object(self):
-        return get_instance_ocr_content(instance=self.object)
-
-    def get_download_filename(self):
-        return '{}-OCR'.format(self.object)

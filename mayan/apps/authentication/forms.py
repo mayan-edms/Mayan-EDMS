@@ -8,6 +8,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.forms.widgets import EmailInput
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.user_management.querysets import get_user_queryset
+
 
 class EmailAuthenticationForm(forms.Form):
     """
@@ -67,6 +69,22 @@ class EmailAuthenticationForm(forms.Form):
 
     def get_user(self):
         return self.user_cache
+
+
+class UserListForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(UserListForm, self).__init__(*args, **kwargs)
+        queryset = get_user_queryset().exclude(pk=user.pk)
+        self.fields['user'] = forms.ModelChoiceField(
+            label=_('User'), help_text=_('User to be impersonated.'),
+            queryset=queryset
+        )
+        self.fields['permanent'] = forms.BooleanField(
+            label=_('Permanent'), help_text=_(
+                'If selected, disables ending impersonation.'
+            ), required=False
+        )
 
 
 class UsernameAuthenticationForm(AuthenticationForm):

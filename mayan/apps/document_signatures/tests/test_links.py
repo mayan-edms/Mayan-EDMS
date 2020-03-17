@@ -22,7 +22,7 @@ class DocumentSignatureLinksTestCase(
 ):
     def test_document_version_signature_detail_link_no_permission(self):
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
 
         self.add_test_view(
             test_object=self.test_document.latest_version.signatures.first()
@@ -36,7 +36,7 @@ class DocumentSignatureLinksTestCase(
 
     def test_document_version_signature_detail_link_with_permission(self):
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_document,
@@ -64,7 +64,7 @@ class DocumentSignatureLinksTestCase(
 
     def test_document_version_signature_delete_link_no_permission(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
 
         self._upload_test_detached_signature()
 
@@ -79,7 +79,7 @@ class DocumentSignatureLinksTestCase(
 
     def test_document_version_signature_delete_link_with_permission(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
-        self.upload_document()
+        self._upload_test_document()
 
         self._upload_test_detached_signature()
 

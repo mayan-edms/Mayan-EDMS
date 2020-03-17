@@ -3,18 +3,20 @@ from __future__ import unicode_literals
 from django.conf.urls import url
 
 from .views import (
-    MayanLoginView, MayanLogoutView, MayanPasswordChangeDoneView,
-    MayanPasswordChangeView, MayanPasswordResetCompleteView,
-    MayanPasswordResetConfirmView, MayanPasswordResetDoneView,
-    MayanPasswordResetView, UserSetPasswordView
+    ImpersonateEndView, ImpersonateStartView, MayanLoginView, MayanLogoutView,
+    MayanPasswordChangeDoneView, MayanPasswordChangeView,
+    MayanPasswordResetCompleteView, MayanPasswordResetConfirmView,
+    MayanPasswordResetDoneView, MayanPasswordResetView, UserSetPasswordView
 )
 
-
-urlpatterns = [
+urlpatterns_authenticattion = [
     url(regex=r'^login/$', view=MayanLoginView.as_view(), name='login_view'),
     url(
         regex=r'^logout/$', view=MayanLogoutView.as_view(), name='logout_view'
     ),
+]
+
+urlpatterns_password = [
     url(
         regex=r'^password/change/done/$',
         view=MayanPasswordChangeDoneView.as_view(), name='password_change_done'
@@ -51,3 +53,19 @@ urlpatterns = [
         view=UserSetPasswordView.as_view(), name='user_multiple_set_password'
     ),
 ]
+
+urlpatterns_user_impersonation = [
+    url(
+        regex=r'^impersonate/end/$', view=ImpersonateEndView.as_view(),
+        name='impersonate_end'
+    ),
+    url(
+        regex=r'^impersonate/start/$', view=ImpersonateStartView.as_view(),
+        name='impersonate_start'
+    )
+]
+
+urlpatterns = []
+urlpatterns.extend(urlpatterns_authenticattion)
+urlpatterns.extend(urlpatterns_password)
+urlpatterns.extend(urlpatterns_user_impersonation)

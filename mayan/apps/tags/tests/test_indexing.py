@@ -12,7 +12,7 @@ from .mixins import TagTestMixin
 
 
 class TagSignalIndexingTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_tag_indexing(self):
         self._create_test_tag()
@@ -25,7 +25,7 @@ class TagSignalIndexingTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
             link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
 
         self.assertTrue(
             self.test_document in IndexInstanceNode.objects.get(

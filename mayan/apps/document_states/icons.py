@@ -5,7 +5,10 @@ from mayan.apps.documents.icons import icon_document, icon_document_type
 
 icon_workflow = Icon(driver_name='fontawesome', symbol='sitemap')
 
-icon_tool_launch_workflows = icon_workflow
+icon_tool_launch_workflows = Icon(
+    driver_name='fontawesome-dual', primary_symbol='sitemap',
+    secondary_symbol='play'
+)
 
 icon_document_type_workflow_list = icon_workflow
 icon_workflow_template_create = Icon(

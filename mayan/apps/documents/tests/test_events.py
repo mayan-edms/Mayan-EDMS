@@ -11,7 +11,7 @@ from ..permissions import (
 )
 
 from .base import GenericDocumentViewTestCase
-from .mixins import TrashedDocumentViewTestMixin
+from .mixins import DocumentViewTestMixin, TrashedDocumentViewTestMixin
 
 TEST_DOCUMENT_TYPE_EDITED_LABEL = 'test document type edited label'
 TEST_DOCUMENT_TYPE_2_LABEL = 'test document type 2 label'
@@ -19,22 +19,8 @@ TEST_TRANSFORMATION_NAME = 'rotate'
 TEST_TRANSFORMATION_ARGUMENT = 'degrees: 180'
 
 
-class DocumentEventsTestMixin(object):
-    def _request_test_document_download_view(self):
-        return self.get(
-            'documents:document_download', kwargs={'pk': self.test_document.pk}
-        )
-
-    def _request_test_document_preview_view(self):
-        return self.get(
-            viewname='documents:document_preview', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-
 class DocumentEventsTestCase(
-    DocumentEventsTestMixin, TrashedDocumentViewTestMixin,
+    DocumentViewTestMixin, TrashedDocumentViewTestMixin,
     GenericDocumentViewTestCase
 ):
     def setUp(self):

@@ -90,6 +90,12 @@ TEST_KEY_PRIVATE_ID = '4125E9C571F378AC'
 TEST_KEY_PRIVATE_FINGERPRINT = '6A24574E0A35004CDDFD22704125E9C571F378AC'
 TEST_KEY_PRIVATE_PASSPHRASE = 'testpassphrase'
 
+TEST_KEY_PUBLIC_FILE_PATH = os.path.join(
+    settings.BASE_DIR, 'apps', 'django_gpg', 'tests', 'contrib',
+    'test_files', 'key0x5F3F7F75D210724D.asc'
+)
+TEST_KEY_PUBLIC_ID = '5F3F7F75D210724D'
+
 TEST_KEYSERVERS = ['pool.sks-keyservers.net']
 
 TEST_SEARCH_UID = 'Roberto Rosario'

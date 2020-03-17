@@ -28,7 +28,7 @@ class PermissionTestCase(
         self._create_test_permission()
 
     def test_no_permissions(self):
-        with self.assertRaises(PermissionDenied):
+        with self.assertRaises(expected_exception=PermissionDenied):
             Permission.check_user_permissions(
                 permissions=(self.test_permission,), user=self.test_user
             )
@@ -49,7 +49,7 @@ class PermissionTestCase(
         self.auto_login_user = False
         test_anonymous_user = AnonymousUser()
 
-        with self.assertRaises(PermissionDenied):
+        with self.assertRaises(expected_exception=PermissionDenied):
             Permission.check_user_permissions(
                 permissions=(self.test_permission,), user=test_anonymous_user
             )

@@ -155,7 +155,7 @@ class DocumentTypeContentViewsTestMixin(object):
 class DocumentTypeContentViewsTestCase(
     DocumentTypeContentViewsTestMixin, GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_document_type_parsing_settings_view_no_permission(self):
         response = self._request_test_document_type_parsing_settings()
@@ -187,7 +187,7 @@ class DocumentContentToolsViewsTestCase(
     DocumentContentToolsViewsTestMixin, GenericDocumentViewTestCase
 ):
     _skip_file_descriptor_test = True
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     # Ensure we use a PDF file
     test_document_filename = TEST_HYBRID_DOCUMENT
@@ -208,7 +208,7 @@ class DocumentContentToolsViewsTestCase(
         self.assertEqual(response.status_code, 200)
 
     def test_document_parsing_tool_view_no_permission(self):
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_document_parsing_tool_view()
         self.assertEqual(response.status_code, 200)
@@ -224,7 +224,7 @@ class DocumentContentToolsViewsTestCase(
     def test_document_parsing_tool_view_with_permission(self):
         self.grant_permission(permission=permission_parse_document)
 
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_document_parsing_tool_view()
         self.assertEqual(response.status_code, 302)

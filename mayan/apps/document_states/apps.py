@@ -7,7 +7,9 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelProperty
+from mayan.apps.common.classes import (
+    ModelField, ModelProperty, ModelReverseField
+)
 from mayan.apps.common.links import link_object_error_list
 from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
@@ -164,117 +166,162 @@ class DocumentStatesApp(MayanAppConfig):
             related='transition__workflow',
         )
 
+        ModelField(model=WorkflowInstance, name='document')
+        ModelField(model=WorkflowInstance, name='workflow')
+        ModelReverseField(model=WorkflowInstance, name='log_entries')
+
+        ModelProperty(
+            description=_(
+                'Return the last workflow instance log entry. The '
+                'log entry itself has the following fields: datetime, '
+                'transition, user, and comment.'
+            ), label=_('Get last log entry'), model=WorkflowInstance,
+            name='get_last_log_entry'
+        )
+
+        ModelProperty(
+            description=_(
+                'Return the current context dictionary which includes '
+                'runtime data from the workflow transition fields.'
+            ), label=_('Get the context'), model=WorkflowInstance,
+            name='get_runtime_context'
+        )
+
+        ModelProperty(
+            description=_(
+                'Return the transition of the workflow instance.'
+            ), label=_('Get last transition'), model=WorkflowInstance,
+            name='get_last_transition'
+        )
+
         SourceColumn(
-            attribute='label', is_sortable=True, source=Workflow
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=Workflow
         )
         column_workflow_internal_name = SourceColumn(
-            attribute='internal_name', is_sortable=True, source=Workflow
+            attribute='internal_name', include_label=True, is_sortable=True,
+            source=Workflow
         )
         column_workflow_internal_name.add_exclude(source=WorkflowRuntimeProxy)
         SourceColumn(
             attribute='get_initial_state', empty_value=_('None'),
-            source=Workflow
+            include_label=True, source=Workflow
         )
 
         SourceColumn(
-            source=WorkflowInstance, label=_('Current state'),
-            attribute='get_current_state'
+            attribute='get_current_state', include_label=True,
+            label=_('Current state'), source=WorkflowInstance,
         )
         SourceColumn(
-            source=WorkflowInstance, label=_('User'),
             func=lambda context: getattr(
                 context['object'].get_last_log_entry(), 'user', _('None')
-            )
+            ), include_label=True, label=_('User'), source=WorkflowInstance
         )
         SourceColumn(
-            source=WorkflowInstance, label=_('Last transition'),
-            attribute='get_last_transition'
+            attribute='get_last_transition', include_label=True,
+            label=_('Last transition'), source=WorkflowInstance
         )
         SourceColumn(
-            source=WorkflowInstance, label=_('Date and time'),
             func=lambda context: getattr(
                 context['object'].get_last_log_entry(), 'datetime', _('None')
-            )
+            ), include_label=True, label=_('Date and time'),
+            source=WorkflowInstance
         )
         SourceColumn(
-            source=WorkflowInstance, label=_('Completion'),
             func=lambda context: getattr(
                 context['object'].get_current_state(), 'completion', _('None')
-            )
+            ), include_label=True, label=_('Completion'),
+            source=WorkflowInstance
         )
 
         SourceColumn(
-            source=WorkflowInstanceLogEntry, label=_('Date and time'),
-            attribute='datetime'
+            attribute='datetime', is_identifier=True, label=_('Date and time'),
+            source=WorkflowInstanceLogEntry
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry, label=_('User'), attribute='user'
+            attribute='user', include_label=True, label=_('User'),
+            source=WorkflowInstanceLogEntry
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry,
-            attribute='transition__origin_state', is_sortable=True
+            attribute='transition__origin_state', include_label=True,
+            is_sortable=True, source=WorkflowInstanceLogEntry
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry,
-            attribute='transition', is_sortable=True
+            attribute='transition', include_label=True, is_sortable=True,
+            source=WorkflowInstanceLogEntry
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry,
-            attribute='transition__destination_state', is_sortable=True
+            attribute='transition__destination_state', include_label=True,
+            is_sortable=True, source=WorkflowInstanceLogEntry
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry,
-            attribute='comment', is_sortable=True
+            attribute='comment', include_label=True, is_sortable=True,
+            source=WorkflowInstanceLogEntry
         )
         SourceColumn(
-            source=WorkflowInstanceLogEntry,
-            attribute='get_extra_data', label=_('Additional details'),
+            attribute='get_extra_data', include_label=True,
+            label=_('Additional details'), source=WorkflowInstanceLogEntry,
             widget=WorkflowLogExtraDataWidget
         )
 
         SourceColumn(
-            attribute='label', is_sortable=True, source=WorkflowState
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=WorkflowState
         )
         SourceColumn(
-            attribute='initial', is_sortable=True, source=WorkflowState,
-            widget=TwoStateWidget
+            attribute='initial', include_label=True, is_sortable=True,
+            source=WorkflowState, widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='completion', source=WorkflowState, is_sortable=True,
-        )
-
-        SourceColumn(
-            attribute='label', is_sortable=True, source=WorkflowStateAction
-        )
-        SourceColumn(
-            attribute='enabled', is_sortable=True, source=WorkflowStateAction,
-            widget=TwoStateWidget
-        )
-        SourceColumn(
-            attribute='get_when_display', label=_('When?'),
-            source=WorkflowStateAction
-        )
-        SourceColumn(
-            attribute='get_class_label', label=_('Action type'),
-            source=WorkflowStateAction
+            attribute='completion', include_label=True, is_sortable=True,
+            source=WorkflowState
         )
 
         SourceColumn(
-            attribute='label', is_sortable=True, source=WorkflowTransition,
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=WorkflowStateAction
         )
         SourceColumn(
-            attribute='origin_state', is_sortable=True,
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=WorkflowStateAction, widget=TwoStateWidget
+        )
+        SourceColumn(
+            attribute='get_when_display', include_label=True,
+            label=_('When?'), source=WorkflowStateAction
+        )
+        SourceColumn(
+            attribute='get_class_label', include_label=True,
+            label=_('Action type'), source=WorkflowStateAction
+        )
+        SourceColumn(
+            attribute='has_condition', include_label=True,
+            source=WorkflowStateAction, widget=TwoStateWidget
+        )
+
+        SourceColumn(
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=WorkflowTransition,
+        )
+        SourceColumn(
+            attribute='origin_state', include_label=True, is_sortable=True,
             source=WorkflowTransition
         )
         SourceColumn(
-            attribute='destination_state', is_sortable=True,
+            attribute='destination_state', include_label=True, is_sortable=True,
             source=WorkflowTransition
         )
         SourceColumn(
-            source=WorkflowTransition, label=_('Triggers'),
+            attribute='has_condition', include_label=True,
+            source=WorkflowTransition, widget=TwoStateWidget
+        )
+        SourceColumn(
             func=lambda context: widget_transition_events(
                 transition=context['object']
-            )
+            ), help_text=_(
+                'Triggers are system events that will cause the transition '
+                'to be applied.'
+            ), include_label=True, label=_('Triggers'),
+            source=WorkflowTransition
         )
 
         SourceColumn(
@@ -282,36 +329,38 @@ class DocumentStatesApp(MayanAppConfig):
             source=WorkflowTransitionField
         )
         SourceColumn(
-            attribute='label', is_sortable=True, source=WorkflowTransitionField
-        )
-        SourceColumn(
-            attribute='get_field_type_display', label=_('Type'),
+            attribute='label', include_label=True, is_sortable=True,
             source=WorkflowTransitionField
         )
         SourceColumn(
-            attribute='required', is_sortable=True,
+            attribute='get_field_type_display', include_label=True,
+            label=_('Type'), source=WorkflowTransitionField
+        )
+        SourceColumn(
+            attribute='required', include_label=True, is_sortable=True,
             source=WorkflowTransitionField, widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='get_widget_display', label=_('Widget'),
-            is_sortable=False, source=WorkflowTransitionField
+            attribute='get_widget_display', include_label=True,
+            label=_('Widget'), is_sortable=False,
+            source=WorkflowTransitionField
         )
         SourceColumn(
-            attribute='widget_kwargs', is_sortable=True,
+            attribute='widget_kwargs', include_label=True, is_sortable=True,
             source=WorkflowTransitionField
         )
 
         SourceColumn(
-            source=WorkflowRuntimeProxy, label=_('Documents'),
             func=lambda context: context['object'].get_document_count(
                 user=context['request'].user
-            ), order=99
+            ), include_label=True, label=_('Documents'), order=99,
+            source=WorkflowRuntimeProxy
         )
         SourceColumn(
-            source=WorkflowStateRuntimeProxy, label=_('Documents'),
             func=lambda context: context['object'].get_document_count(
                 user=context['request'].user
-            ), order=99
+            ), include_label=True, label=_('Documents'), order=99,
+            source=WorkflowStateRuntimeProxy
         )
 
         menu_facet.bind_links(

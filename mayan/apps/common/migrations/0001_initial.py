@@ -676,7 +676,8 @@ class Migration(migrations.Migration):
                     'user', models.OneToOneField(
                         on_delete=models.CASCADE,
                         related_name='locale_profile',
-                        to=settings.AUTH_USER_MODEL, verbose_name='User'
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name='User',
                     )
                 ),
             ],

@@ -11,7 +11,7 @@ from mayan.celery import app
 
 from .literals import DO_OCR_RETRY_DELAY, LOCK_EXPIRE
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @app.task(bind=True, default_retry_delay=DO_OCR_RETRY_DELAY, ignore_result=True)

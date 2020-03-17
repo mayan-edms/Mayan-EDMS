@@ -10,7 +10,7 @@ from mayan.celery import app
 
 from .literals import RETRY_DELAY
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @app.task(bind=True, default_retry_delay=RETRY_DELAY, max_retries=None, ignore_result=True)

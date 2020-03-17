@@ -6,7 +6,7 @@ from mayan.celery import app
 
 from .classes import Statistic
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @app.task(ignore_result=True)

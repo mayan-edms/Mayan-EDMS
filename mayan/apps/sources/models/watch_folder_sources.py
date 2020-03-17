@@ -3,8 +3,7 @@ from __future__ import unicode_literals
 import errno
 import fcntl
 import logging
-
-from pathlib2 import Path
+from pathlib import Path
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -14,7 +13,7 @@ from ..literals import SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICE_Y
 from .base import IntervalBaseModel
 
 __all__ = ('WatchFolderSource',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class WatchFolderSource(IntervalBaseModel):

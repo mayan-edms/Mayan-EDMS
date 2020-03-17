@@ -5,13 +5,12 @@ import json
 
 import requests
 
-from django.template import Template, Context
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import WorkflowAction
 from .exceptions import WorkflowStateActionError
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 DEFAULT_TIMEOUT = 4  # 4 seconds
 
 
@@ -52,28 +51,14 @@ class DocumentPropertiesEditAction(WorkflowAction):
         new_description = None
 
         if self.document_label:
-            try:
-                new_label = Template(self.document_label).render(
-                    context=Context(context)
-                )
-            except Exception as exception:
-                raise WorkflowStateActionError(
-                    _('Document label template error: %s') % exception
-                )
-
-            logger.debug('Document label result: %s', new_label)
+            new_label = self.render_field(
+                field_name='document_label', context=context
+            )
 
         if self.document_description:
-            try:
-                new_description = Template(self.document_description or '{}').render(
-                    context=Context(context)
-                )
-            except Exception as exception:
-                raise WorkflowStateActionError(
-                    _('Document description template error: %s') % exception
-                )
-
-            logger.debug('Document description template result: %s', new_description)
+            new_description = self.render_field(
+                field_name='document_description', context=context
+            )
 
         if new_label or new_description:
             document = context['document']
@@ -83,7 +68,7 @@ class DocumentPropertiesEditAction(WorkflowAction):
             document.save()
 
 
-class HTTPPostAction(WorkflowAction):
+class HTTPAction(WorkflowAction):
     fields = {
         'url': {
             'label': _('URL'),
@@ -146,6 +131,20 @@ class HTTPPostAction(WorkflowAction):
                     'and "comment" attributes.'
                 ), 'max_length': 192, 'required': False
             },
+        }, 'method': {
+            'label': _('Method'),
+            'class': 'django.forms.CharField', 'kwargs': {
+                'help_text': _(
+                    'The HTTP method to use for the request. Typical choices '
+                    'are OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. '
+                    'Can be a static value or a template that returns the '
+                    'method text. Templates receive the workflow log entry '
+                    'instance as part of their context via the '
+                    'variable "entry_log". The "entry_log" in turn '
+                    'provides the "workflow_instance", "datetime", '
+                    '"transition", "user", and "comment" attributes.'
+                ), 'required': True
+            }
         }, 'headers': {
             'label': _('Headers'),
             'class': 'django.forms.CharField', 'kwargs': {
@@ -162,9 +161,12 @@ class HTTPPostAction(WorkflowAction):
         }
     }
     field_order = (
-        'url', 'username', 'password', 'headers', 'timeout', 'payload'
+        'url', 'username', 'password', 'headers', 'timeout', 'verb', 'payload'
     )
-    label = _('Perform a POST request')
+    label = _('Perform an HTTP request')
+    previous_dotted_paths = (
+        'mayan.apps.document_states.workflow_actions.HTTPPostAction',
+    )
     widgets = {
         'payload': {
             'class': 'django.forms.widgets.Textarea', 'kwargs': {
@@ -178,16 +180,16 @@ class HTTPPostAction(WorkflowAction):
         }
     }
 
-    def render_load(self, field_name, context):
+    def render_field_load(self, field_name, context):
         """
         Method to perform a template render and subsequent JSON load.
         """
-        render_result = self.render(
+        render_result = self.render_field(
             field_name=field_name, context=context
         ) or '{}'
 
         try:
-            load_result = json.loads(render_result, strict=False)
+            load_result = json.loads(s=render_result, strict=False)
         except Exception as exception:
             raise WorkflowStateActionError(
                 _('%(field_name)s JSON error: %(exception)s') % {
@@ -199,29 +201,14 @@ class HTTPPostAction(WorkflowAction):
 
         return load_result
 
-    def render(self, field_name, context):
-        try:
-            result = Template(self.form_data.get(field_name, '')).render(
-                context=Context(context)
-            )
-        except Exception as exception:
-            raise WorkflowStateActionError(
-                _('%(field_name)s template error: %(exception)s') % {
-                    'field_name': field_name, 'exception': exception
-                }
-            )
-
-        logger.debug('%s template result: %s', field_name, result)
-
-        return result
-
     def execute(self, context):
-        url = self.render(field_name='url', context=context)
-        username = self.render(field_name='username', context=context)
-        password = self.render(field_name='password', context=context)
-        timeout = self.render(field_name='timeout', context=context)
-        headers = self.render_load(field_name='headers', context=context)
-        payload = self.render_load(field_name='payload', context=context)
+        headers = self.render_field_load(field_name='headers', context=context)
+        method = self.render_field(field_name='method', context=context)
+        password = self.render_field(field_name='password', context=context)
+        payload = self.render_field_load(field_name='payload', context=context)
+        timeout = self.render_field(field_name='timeout', context=context)
+        url = self.render_field(field_name='url', context=context)
+        username = self.render_field(field_name='username', context=context)
 
         if '.' in timeout:
             timeout = float(timeout)
@@ -236,7 +223,7 @@ class HTTPPostAction(WorkflowAction):
                 username=username, password=password
             )
 
-        requests.post(
-            url=url, json=payload, timeout=timeout,
+        requests.request(
+            method=method, url=url, json=payload, timeout=timeout,
             auth=authentication, headers=headers
         )

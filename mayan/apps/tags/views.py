@@ -28,13 +28,14 @@ from .permissions import (
     permission_tag_edit, permission_tag_remove, permission_tag_view
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class TagAttachActionView(MultipleObjectFormActionView):
     form_class = TagMultipleSelectionForm
     model = Document
     object_permission = permission_tag_attach
+    pk_url_kwarg = 'document_id'
     success_message = _('Tag attach request performed on %(count)d document')
     success_message_plural = _(
         'Tag attach request performed on %(count)d documents'
@@ -89,7 +90,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
         if queryset.count() == 1:
             return reverse(
                 viewname='tags:document_tag_list', kwargs={
-                    'pk': queryset.first().pk
+                    'document_id': queryset.first().pk
                 }
             )
         else:
@@ -140,8 +141,9 @@ class TagCreateView(SingleObjectCreateView):
 
 class TagDeleteActionView(MultipleObjectConfirmActionView):
     model = Tag
-    post_action_redirect = reverse_lazy(viewname='tags:tag_list')
     object_permission = permission_tag_delete
+    pk_url_kwarg = 'tag_id'
+    post_action_redirect = reverse_lazy(viewname='tags:tag_list')
     success_message = _('Tag delete request performed on %(count)d tag')
     success_message_plural = _(
         'Tag delete request performed on %(count)d tags'
@@ -191,6 +193,7 @@ class TagEditView(SingleObjectEditView):
     fields = ('label', 'color')
     model = Tag
     object_permission = permission_tag_edit
+    pk_url_kwarg = 'tag_id'
     post_action_redirect = reverse_lazy(viewname='tags:tag_list')
 
     def get_extra_context(self):
@@ -232,7 +235,7 @@ class TagListView(SingleObjectListView):
 class TagDocumentListView(ExternalObjectMixin, DocumentListView):
     external_object_class = Tag
     external_object_permission = permission_tag_view
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'tag_id'
 
     def get_document_queryset(self):
         return self.get_tag().get_documents(user=self.request.user).all()
@@ -254,7 +257,7 @@ class TagDocumentListView(ExternalObjectMixin, DocumentListView):
 class DocumentTagListView(ExternalObjectMixin, TagListView):
     external_object_class = Document
     external_object_permission = permission_tag_view
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'document_id'
 
     def get_extra_context(self):
         context = super(DocumentTagListView, self).get_extra_context()
@@ -285,6 +288,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
     form_class = TagMultipleSelectionForm
     model = Document
     object_permission = permission_tag_remove
+    pk_url_kwarg = 'document_id'
     success_message = _('Tag remove request performed on %(count)d document')
     success_message_plural = _(
         'Tag remove request performed on %(count)d documents'
@@ -297,8 +301,8 @@ class TagRemoveActionView(MultipleObjectFormActionView):
             'submit_icon_class': icon_document_tag_remove_submit,
             'submit_label': _('Remove'),
             'title': ungettext(
-                singular='Remove tags to %(count)d document',
-                plural='Remove tags to %(count)d documents',
+                singular='Remove tags from %(count)d document',
+                plural='Remove tags from %(count)d documents',
                 number=queryset.count()
             ) % {
                 'count': queryset.count(),
@@ -338,7 +342,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
         if queryset.count() == 1:
             return reverse(
                 viewname='tags:document_tag_list', kwargs={
-                    'pk': queryset.first().pk
+                    'document_id': queryset.first().pk
                 }
             )
         else:

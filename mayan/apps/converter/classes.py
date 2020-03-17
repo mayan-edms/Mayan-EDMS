@@ -18,6 +18,8 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.appearance.classes import Icon
+from mayan.apps.common.compressed_files import MsgArchive
+from mayan.apps.common.literals import MSG_MIME_TYPES
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.navigation.classes import Link
 from mayan.apps.storage.settings import setting_temporary_directory
@@ -36,7 +38,7 @@ libreoffice_path = setting_graphics_backend_arguments.value.get(
     'libreoffice_path', DEFAULT_LIBREOFFICE_PATH
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class ConverterBase(object):
@@ -202,6 +204,24 @@ class ConverterBase(object):
         return temporary_converted_file_object
 
     def to_pdf(self):
+        # Handle .msg files
+        if self.mime_type in MSG_MIME_TYPES:
+            archive = MsgArchive.open(file_object=self.file_object)
+            members = archive.members()
+            if len(members):
+                if 'message.txt' in members:
+                    self.file_object = archive.open_member(
+                        filename='message.txt'
+                    )
+                else:
+                    self.file_object = archive.open_member(
+                        filename=members[0]
+                    )
+
+                self.mime_type = get_mimetype(
+                    file_object=self.file_object, mimetype_only=True
+                )[0]
+
         if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
             return self.soffice()
         else:

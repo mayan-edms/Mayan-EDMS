@@ -33,5 +33,5 @@ class RESTAPIApp(MayanAppConfig):
 
         for app in apps.get_app_configs():
             if getattr(app, 'has_rest_api', False):
-                app_api_urls = import_string('{}.urls.api_urls'.format(app.name))
+                app_api_urls = import_string(dotted_path='{}.urls.api_urls'.format(app.name))
                 api_urls.extend(app_api_urls)

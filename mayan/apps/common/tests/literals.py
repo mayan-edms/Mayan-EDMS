@@ -11,6 +11,7 @@ TEST_VIEW_NAME = 'test view name'
 TEST_VIEW_URL = 'test-view-url'
 
 # Filenames
+TEST_ARCHIVE_MSG_STRANGE_DATE_FILENAME = 'strangeDate.msg'
 TEST_ARCHIVE_ZIP_SPECIAL_CHARACTERS_FILENAME_MEMBER = 'test_archvive_with_special_characters_filename_member.zip'
 TEST_ARCHIVE_ZIP_CP437_MEMBER = 'test_archvive_with_cp437_member.zip'
 TEST_FILENAME1 = 'test_file1.txt'
@@ -25,6 +26,10 @@ TEST_ZIP_FILE = 'test_file.zip'
 TEST_COMPRESSED_FILE_CONTENTS = [TEST_FILENAME1, TEST_FILENAME2]
 
 # File paths
+TEST_ARCHIVE_MSG_STRANGE_DATE_PATH = os.path.join(
+    settings.BASE_DIR, 'apps', 'common', 'tests', 'contrib',
+    TEST_ARCHIVE_MSG_STRANGE_DATE_FILENAME
+)
 TEST_ARCHIVE_ZIP_SPECIAL_CHARACTERS_FILENAME_MEMBER_PATH = os.path.join(
     settings.BASE_DIR, 'apps', 'common', 'tests', 'contrib',
     TEST_ARCHIVE_ZIP_SPECIAL_CHARACTERS_FILENAME_MEMBER

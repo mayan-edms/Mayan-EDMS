@@ -7,6 +7,10 @@ DEFAULT_FIREFOX_GECKODRIVER_PATH = '/usr/bin/geckodriver'
 DELETE_STALE_UPLOADS_INTERVAL = 60 * 10  # 10 minutes
 DJANGO_SQLITE_BACKEND = 'django.db.backends.sqlite3'
 
+MSG_MIME_TYPES = (
+    'application/vnd.ms-outlook', 'application/vnd.ms-office'
+)
+
 LIST_MODE_CHOICE_LIST = 'list'
 LIST_MODE_CHOICE_ITEM = 'item'
 

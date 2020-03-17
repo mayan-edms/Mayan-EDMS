@@ -155,7 +155,7 @@ class DynamicFormMixin(object):
 
         for field_name in field_order:
             field_data = self.schema['fields'][field_name]
-            field_class = import_string(field_data['class'])
+            field_class = import_string(dotted_path=field_data['class'])
             kwargs = {
                 'label': field_data['label'],
                 'required': field_data.get('required', True),
@@ -165,7 +165,7 @@ class DynamicFormMixin(object):
             if widgets and field_name in widgets:
                 widget = widgets[field_name]
                 kwargs['widget'] = import_string(
-                    widget['class']
+                    dotted_path=widget['class']
                 )(**widget.get('kwargs', {}))
 
             kwargs.update(field_data.get('kwargs', {}))
@@ -173,15 +173,20 @@ class DynamicFormMixin(object):
 
     @property
     def media(self):
-        return forms.Media(**self.schema.get('media', {}))
+        """
+        Append the media of the dynamic fields to the normal fields' media.
+        """
+        media = super(DynamicFormMixin, self).media
+        media = media + forms.Media(**self.schema.get('media', {}))
+        return media
 
 
 class DynamicForm(DynamicFormMixin, forms.Form):
-    pass
+    """Normal dynamic form"""
 
 
 class DynamicModelForm(DynamicFormMixin, forms.ModelForm):
-    pass
+    """Dynamic model form"""
 
 
 class FileDisplayForm(forms.Form):

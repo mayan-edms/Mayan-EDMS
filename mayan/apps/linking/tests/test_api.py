@@ -76,7 +76,7 @@ class SmartLinkAPIViewTestCase(
     BaseAPITestCase
 ):
     auto_create_test_document_type = False
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_smart_link_create_view_no_permission(self):
         response = self._request_test_smart_link_create_api_view()
@@ -300,7 +300,7 @@ class SmartLinkConditionAPIViewTestCase(
     DocumentTestMixin, SmartLinkTestMixin,
     SmartLinkConditionAPIViewTestMixin, BaseAPITestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
         super(SmartLinkConditionAPIViewTestCase, self).setUp()

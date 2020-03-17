@@ -11,9 +11,11 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
+from mayan.apps.common.signals import signal_mayan_pre_save
+
 from ..events import (
     event_document_create, event_document_properties_edit,
-    event_document_trashed, event_document_type_change,
+    event_document_trashed, event_document_type_changed,
 )
 from ..literals import DEFAULT_LANGUAGE
 from ..managers import DocumentManager, PassthroughManager, TrashCanManager
@@ -22,7 +24,7 @@ from ..signals import post_document_type_change
 from .document_type_models import DocumentType
 
 __all__ = ('Document',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible
@@ -148,7 +150,9 @@ class Document(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='documents:document_preview', kwargs={'pk': self.pk}
+            viewname='documents:document_preview', kwargs={
+                'document_id': self.pk
+            }
         )
 
     def get_api_image_url(self, *args, **kwargs):
@@ -226,6 +230,10 @@ class Document(models.Model):
         _commit_events = kwargs.pop('_commit_events', True)
         new_document = not self.pk
         with transaction.atomic():
+            signal_mayan_pre_save.send(
+                sender=Document, instance=self, user=user
+            )
+
             super(Document, self).save(*args, **kwargs)
 
             if new_document:
@@ -256,7 +264,7 @@ class Document(models.Model):
                     sender=self.__class__, instance=self
                 )
 
-                event_document_type_change.commit(actor=_user, target=self)
+                event_document_type_changed.commit(actor=_user, target=self)
                 if _user:
                     self.add_as_recent_document_for_user(user=_user)
 

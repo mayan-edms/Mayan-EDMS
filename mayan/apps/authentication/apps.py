@@ -6,15 +6,17 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_multi_item, menu_object, menu_user
+from mayan.apps.common.menus import (
+    menu_multi_item, menu_object, menu_tools, menu_user
+)
 from mayan.apps.navigation.classes import Separator
 
 from .links import (
-    link_logout, link_password_change, link_user_multiple_set_password,
-    link_user_set_password
+    link_logout, link_password_change, link_user_impersonate_start,
+    link_user_multiple_set_password, link_user_set_password
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class AuthenticationApp(MayanAppConfig):
@@ -36,6 +38,10 @@ class AuthenticationApp(MayanAppConfig):
 
         menu_object.bind_links(
             links=(link_user_set_password,), sources=(User,)
+        )
+
+        menu_tools.bind_links(
+            links=(link_user_impersonate_start,)
         )
 
         menu_user.bind_links(

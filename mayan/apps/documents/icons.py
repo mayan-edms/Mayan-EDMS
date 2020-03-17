@@ -60,28 +60,6 @@ icon_document_transformations_clone = Icon(
 )
 
 icon_document_type_change = icon_document_type
-icon_document_type_create = Icon(driver_name='fontawesome', symbol='plus')
-icon_document_type_delete = Icon(driver_name='fontawesome', symbol='times')
-icon_document_type_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
-icon_document_type_setup = icon_document_type
-
-icon_document_type_filename = Icon(
-    driver_name='fontawesome', symbol='keyboard'
-)
-icon_document_type_filename_create = Icon(
-    driver_name='fontawesome', symbol='plus'
-)
-icon_document_type_filename_delete = Icon(
-    driver_name='fontawesome', symbol='times'
-)
-icon_document_type_filename_edit = Icon(
-    driver_name='fontawesome', symbol='pencil-alt'
-)
-icon_document_type_filename_list = Icon(
-    driver_name='fontawesome', symbol='keyboard'
-)
-
-icon_document_type_list = icon_document_type
 
 icon_favorite_document_add = Icon(
     driver_name='fontawesome-dual', primary_symbol='star',
@@ -143,19 +121,40 @@ icon_document_page_zoom_out = Icon(
 )
 icon_document_pages = Icon(driver_name='fontawesome', symbol='copy')
 
+# Document types
 
-icon_document_type_create = Icon(driver_name='fontawesome', symbol='plus')
+icon_document_type_create = Icon(
+    driver_name='fontawesome-dual', primary_symbol='book',
+    secondary_symbol='plus'
+)
 icon_document_type_delete = Icon(driver_name='fontawesome', symbol='times')
 icon_document_type_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
+icon_document_type_setup = icon_document_type
+
+
+icon_document_type_list = icon_document_type
+
 icon_document_type_filename = Icon(
     driver_name='fontawesome', symbol='keyboard'
 )
 icon_document_type_filename_create = Icon(
-    driver_name='fontawesome', symbol='plus'
+    driver_name='fontawesome-dual', primary_symbol='keyboard',
+    secondary_symbol='plus'
 )
+icon_document_type_filename_delete = Icon(
+    driver_name='fontawesome', symbol='times'
+)
+icon_document_type_filename_edit = Icon(
+    driver_name='fontawesome', symbol='pencil-alt'
+)
+icon_document_type_filename_list = Icon(
+    driver_name='fontawesome', symbol='keyboard'
+)
+
 icon_document_type_policies = Icon(driver_name='fontawesome', symbol='times')
 icon_document_type_setup = icon_document_type
 
+# Document versions
 
 icon_document_version_download = Icon(
     driver_name='fontawesome', symbol='download'
@@ -178,13 +177,13 @@ icon_duplicated_document_list = Icon(
     driver_name='fontawesome', symbol='clone'
 )
 icon_duplicated_document_scan = Icon(
-    driver_name='fontawesome', symbol='clone'
+    driver_name='fontawesome-dual-classes', primary_class='fas fa-clone',
+    secondary_class='far fa-eye'
 )
 
 icon_recent_added_document_list = Icon(
     driver_name='fontawesome', symbol='asterisk'
 )
-
 
 icon_trash_can_empty = Icon(
     driver_name='fontawesome', symbol='trash-alt'

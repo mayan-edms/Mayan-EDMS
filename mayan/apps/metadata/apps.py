@@ -54,7 +54,7 @@ from .permissions import (
 
 from .search import metadata_type_search  # NOQA
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class MetadataApp(MayanAppConfig):
@@ -170,19 +170,23 @@ class MetadataApp(MayanAppConfig):
             is_sortable=True, source=DocumentMetadata
         )
         SourceColumn(
-            attribute='value', is_sortable=True, source=DocumentMetadata
+            attribute='value', include_label=True, is_sortable=True,
+            source=DocumentMetadata
         )
 
         SourceColumn(
-            attribute='is_required', source=DocumentMetadata,
-            widget=TwoStateWidget
+            attribute='is_required', include_label=True,
+            source=DocumentMetadata, widget=TwoStateWidget
         )
 
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=MetadataType
         )
-        SourceColumn(attribute='name', is_sortable=True, source=MetadataType)
+        SourceColumn(
+            attribute='name', include_label=True, is_sortable=True,
+            source=MetadataType
+        )
 
         document_search.add_model_field(
             field='metadata__metadata_type__name', label=_('Metadata type')

@@ -514,10 +514,10 @@ class SingleObjectCreateView(
         else:
             save_extra_data = {}
 
+        # Validate duplicates first
         try:
             self.object.validate_unique()
         except ValidationError as exception:
-            raise
             context = self.get_context_data()
 
             error_message = self.get_error_message_duplicate() or _(
@@ -536,7 +536,6 @@ class SingleObjectCreateView(
         try:
             self.object.save(**save_extra_data)
         except Exception as exception:
-            raise
             if settings.DEBUG:
                 raise
             else:

@@ -8,7 +8,7 @@ from mayan.apps.document_indexing.tasks import task_index_document
 
 from .settings import setting_auto_ocr
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def handler_index_document_version(sender, **kwargs):

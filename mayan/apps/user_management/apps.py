@@ -171,7 +171,8 @@ class UserManagementApp(MayanAppConfig):
             source=Group
         )
         SourceColumn(
-            attribute='user_set.count', label=_('Users'), source=Group
+            attribute='user_set.count', include_label=True, label=_('Users'),
+            source=Group
         )
 
         SourceColumn(
@@ -179,20 +180,24 @@ class UserManagementApp(MayanAppConfig):
             is_identifier=True, is_sortable=True, source=User
         )
         SourceColumn(
-            attribute='first_name', is_sortable=True, source=User
+            attribute='first_name', include_label=True, is_sortable=True,
+            source=User
         )
         SourceColumn(
-            attribute='last_name', is_sortable=True, source=User
+            attribute='last_name', include_label=True, is_sortable=True,
+            source=User
         )
         SourceColumn(
-            attribute='email', is_sortable=True, source=User
+            attribute='email', include_label=True, is_sortable=True,
+            source=User
         )
         SourceColumn(
-            attribute='is_active', is_sortable=True, source=User,
+            attribute='is_active', include_label=True, is_sortable=True,
+            source=User,
             widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='has_usable_password', source=User,
+            attribute='has_usable_password', include_label=True, source=User,
             widget=TwoStateWidget
         )
 

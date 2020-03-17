@@ -17,7 +17,7 @@ from .mixins import MailerTestMixin, MailerViewTestMixin
 
 
 class MailerEventsTestCase(DocumentTestMixin, MailerTestMixin, MailerViewTestMixin, GenericViewTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
         super(MailerEventsTestCase, self).setUp()
@@ -42,7 +42,7 @@ class MailerEventsTestCase(DocumentTestMixin, MailerTestMixin, MailerViewTestMix
         self.assertEqual(action.action_object, None)
 
     def test_document_email_send_event(self):
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use

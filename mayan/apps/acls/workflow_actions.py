@@ -16,7 +16,7 @@ from mayan.apps.permissions.models import Role
 from .classes import ModelPermission
 from .permissions import permission_acl_edit
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class GrantAccessAction(WorkflowAction):

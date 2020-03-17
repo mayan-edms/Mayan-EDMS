@@ -13,13 +13,13 @@ from .events import (
     event_document_auto_check_in, event_document_check_in,
     event_document_forceful_check_in
 )
-from .exceptions import DocumentNotCheckedOut
+from .exceptions import DocumentNotCheckedOut, NewDocumentVersionNotAllowed
 from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN
 from .permissions import (
     permission_document_check_in, permission_document_check_in_override
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentCheckoutBusinessLogicManager(models.Manager):
@@ -136,9 +136,6 @@ class NewVersionBlockManager(models.Manager):
     def block(self, document):
         self.get_or_create(document=document)
 
-    def is_blocked(self, document):
-        return self.filter(document=document).exists()
-
     def get_by_natural_key(self, document_natural_key):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -149,6 +146,13 @@ class NewVersionBlockManager(models.Manager):
             raise self.model.DoesNotExist
 
         return self.get(document__pk=document.pk)
+
+    def is_blocked(self, document):
+        return self.filter(document=document).exists()
+
+    def new_versions_allowed(self, document):
+        if self.filter(document=document).exists():
+            raise NewDocumentVersionNotAllowed
 
     def unblock(self, document):
         self.filter(document=document).delete()

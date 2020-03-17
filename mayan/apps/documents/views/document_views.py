@@ -49,14 +49,14 @@ from ..tasks import task_update_page_count
 from ..utils import parse_range
 
 __all__ = (
-    'DocumentListView', 'DocumentDocumentTypeEditView', 'DocumentEditView',
+    'DocumentListView', 'DocumentDocumentTypeEditView', 'DocumentPropertiesEditView',
     'DocumentPreviewView', 'DocumentView', 'DocumentDownloadFormView',
     'DocumentDownloadView', 'DocumentUpdatePageCountView',
     'DocumentTransformationsClearView', 'DocumentTransformationsCloneView',
     'DocumentPrint', 'RecentAccessDocumentListView',
     'RecentAddedDocumentListView'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentListView(SingleObjectListView):
@@ -105,6 +105,7 @@ class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
     form_class = DocumentTypeFilteredSelectForm
     model = Document
     object_permission = permission_document_properties_edit
+    pk_url_kwarg = 'document_id'
     success_message = _(
         'Document type change request performed on %(count)d document'
     )
@@ -159,7 +160,7 @@ class DocumentDownloadFormView(MultipleObjectFormActionView):
     form_class = DocumentDownloadForm
     model = Document
     object_permission = permission_document_download
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'document_id'
     querystring_form_fields = ('compressed', 'zip_filename')
     viewname = 'documents:document_multiple_download'
 
@@ -220,6 +221,7 @@ class DocumentDownloadFormView(MultipleObjectFormActionView):
 class DocumentDownloadView(MultipleObjectDownloadView):
     model = Document
     object_permission = permission_document_download
+    pk_url_kwarg = 'document_id'
 
     @staticmethod
     def commit_event(item, request):
@@ -277,41 +279,11 @@ class DocumentDownloadView(MultipleObjectDownloadView):
         return item.label
 
 
-class DocumentEditView(SingleObjectEditView):
-    form_class = DocumentForm
-    model = Document
-    object_permission = permission_document_properties_edit
-
-    def dispatch(self, request, *args, **kwargs):
-        result = super(
-            DocumentEditView, self
-        ).dispatch(request, *args, **kwargs)
-        self.get_object().add_as_recent_document_for_user(request.user)
-        return result
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Edit properties of document: %s') % self.get_object(),
-        }
-
-    def get_save_extra_data(self):
-        return {
-            '_user': self.request.user
-        }
-
-    def get_post_action_redirect(self):
-        return reverse(
-            viewname='documents:document_properties', kwargs={
-                'pk': self.get_object().pk
-            }
-        )
-
-
 class DocumentPreviewView(SingleObjectDetailView):
     form_class = DocumentPreviewForm
     model = Document
     object_permission = permission_document_view
+    pk_url_kwarg = 'document_id'
 
     def dispatch(self, request, *args, **kwargs):
         result = super(
@@ -332,10 +304,43 @@ class DocumentPreviewView(SingleObjectDetailView):
         }
 
 
+class DocumentPropertiesEditView(SingleObjectEditView):
+    form_class = DocumentForm
+    model = Document
+    object_permission = permission_document_properties_edit
+    pk_url_kwarg = 'document_id'
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(
+            DocumentPropertiesEditView, self
+        ).dispatch(request, *args, **kwargs)
+        self.get_object().add_as_recent_document_for_user(request.user)
+        return result
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit properties of document: %s') % self.get_object(),
+        }
+
+    def get_save_extra_data(self):
+        return {
+            '_user': self.request.user
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='documents:document_properties', kwargs={
+                'document_id': self.get_object().pk
+            }
+        )
+
+
 class DocumentView(SingleObjectDetailView):
     form_class = DocumentPropertiesForm
     model = Document
     object_permission = permission_document_view
+    pk_url_kwarg = 'document_id'
 
     def dispatch(self, request, *args, **kwargs):
         result = super(DocumentView, self).dispatch(request, *args, **kwargs)
@@ -353,6 +358,7 @@ class DocumentView(SingleObjectDetailView):
 class DocumentUpdatePageCountView(MultipleObjectConfirmActionView):
     model = Document
     object_permission = permission_document_tools
+    pk_url_kwarg = 'document_id'
     success_message = _(
         '%(count)d document queued for page count recalculation'
     )
@@ -404,6 +410,7 @@ class DocumentUpdatePageCountView(MultipleObjectConfirmActionView):
 class DocumentTransformationsClearView(MultipleObjectConfirmActionView):
     model = Document
     object_permission = permission_transformation_delete
+    pk_url_kwarg = 'document_id'
     success_message = _(
         'Transformation clear request processed for %(count)d document'
     )
@@ -507,7 +514,9 @@ class DocumentTransformationsCloneView(FormView):
         return context
 
     def get_object(self):
-        instance = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+        instance = get_object_or_404(
+            klass=Document, pk=self.kwargs['document_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=instance, permissions=(permission_transformation_edit,),
@@ -568,7 +577,9 @@ class DocumentPrint(FormView):
 
         context = {
             'form_action': reverse(
-                viewname='documents:document_print', kwargs={'pk': instance.pk}
+                viewname='documents:document_print', kwargs={
+                    'document_id': instance.pk
+                }
             ),
             'object': instance,
             'submit_label': _('Submit'),
@@ -580,7 +591,9 @@ class DocumentPrint(FormView):
         return context
 
     def get_object(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            klass=Document, pk=self.kwargs['document_id']
+        )
 
     def get_template_names(self):
         if self.page_group or self.page_range:

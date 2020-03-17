@@ -43,7 +43,7 @@ from .permissions import (
 from .signals import post_document_version_ocr
 from .utils import get_instance_ocr_content
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class OCRApp(MayanAppConfig):
@@ -106,7 +106,7 @@ class OCRApp(MayanAppConfig):
             description=_(
                 'A generator returning the document\'s pages OCR content.'
             ), label=_('OCR content'), model=Document,
-            name='content'
+            name='ocr_content'
         )
 
         ModelPermission.register(

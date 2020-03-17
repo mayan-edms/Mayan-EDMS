@@ -11,7 +11,7 @@ from django.utils.module_loading import import_string
 
 from mayan.celery import app as celery_app
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible

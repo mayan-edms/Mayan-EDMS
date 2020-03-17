@@ -134,7 +134,7 @@ class DocumentMetadataViewTestCase(
         )
 
     def test_document_multiple_metadata_add_redirect(self):
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_documents[0],
@@ -163,7 +163,7 @@ class DocumentMetadataViewTestCase(
         )
 
     def test_document_multiple_metadata_add_post_view_with_document_access(self):
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_documents[0],
@@ -337,7 +337,7 @@ class DocumentMetadataViewTestCase(
         )
 
     def test_document_multiple_metadata_edit_redirect(self):
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_documents[0],
@@ -557,7 +557,7 @@ class DocumentMetadataViewTestCase(
         )
 
     def test_document_multiple_metadata_remove_redirect(self):
-        self.upload_document()
+        self._upload_test_document()
 
         self.test_documents[0].metadata.create(
             metadata_type=self.test_metadata_type
@@ -591,7 +591,7 @@ class DocumentMetadataViewTestCase(
         self.grant_permission(permission=permission_document_view)
         self.grant_permission(permission=permission_document_metadata_remove)
 
-        self.upload_document()
+        self._upload_test_document()
 
         document_metadata = self.test_documents[0].metadata.create(
             metadata_type=self.test_metadata_type
@@ -628,7 +628,7 @@ class DocumentMetadataViewTestCase(
         self.assertEqual(self.test_documents[1].metadata.count(), 0)
 
     def test_multiple_document_metadata_edit(self):
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_permission(permission=permission_document_view)
         self.grant_permission(permission=permission_document_metadata_add)
@@ -878,11 +878,11 @@ class MetadataTypeDocumentTypeViewTestCase(
     MetadataTypeViewTestMixin, MetadataTypeTestMixin,
     GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_metadata_type_relationship_view_no_permission(self):
         self._create_test_metadata_type()
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_test_metadata_type_relationship_edit_view()
         self.assertEqual(response.status_code, 403)
@@ -892,7 +892,7 @@ class MetadataTypeDocumentTypeViewTestCase(
 
     def test_metadata_type_relationship_view_with_document_type_access(self):
         self._create_test_metadata_type()
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_document_type,
@@ -907,7 +907,7 @@ class MetadataTypeDocumentTypeViewTestCase(
 
     def test_metadata_type_relationship_view_with_metadata_type_access(self):
         self._create_test_metadata_type()
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_metadata_type, permission=permission_metadata_type_edit
@@ -921,7 +921,7 @@ class MetadataTypeDocumentTypeViewTestCase(
 
     def test_metadata_type_relationship_view_with_metadata_type_and_document_type_access(self):
         self._create_test_metadata_type()
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_metadata_type, permission=permission_metadata_type_edit

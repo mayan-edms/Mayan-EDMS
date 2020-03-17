@@ -13,7 +13,7 @@ from mayan.apps.common.serialization import yaml_load
 from .classes import Layer
 from .transformations import BaseTransformation
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class LayerTransformationManager(models.Manager):

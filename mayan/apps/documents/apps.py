@@ -39,9 +39,9 @@ from .dashboard_widgets import (
 )
 from .events import (
     event_document_create, event_document_download,
-    event_document_properties_edit, event_document_type_change,
+    event_document_properties_edit, event_document_type_changed,
     event_document_type_created, event_document_type_edited,
-    event_document_new_version, event_document_version_revert,
+    event_document_version_new, event_document_version_revert,
     event_document_view
 )
 from .handlers import (
@@ -157,6 +157,21 @@ class DocumentsApp(MayanAppConfig):
             view='documents:document_type_list'
         )
 
+        ModelEventType.register(
+            model=DocumentType, event_types=(
+                event_document_create,
+                event_document_type_created,
+                event_document_type_edited,
+            )
+        )
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_document_download, event_document_properties_edit,
+                event_document_type_changed, event_document_version_new,
+                event_document_version_revert, event_document_view
+            )
+        )
+
         ModelField(model=Document, name='description')
         ModelField(model=Document, name='date_added')
         ModelField(model=Document, name='deleted_date_time')
@@ -194,21 +209,6 @@ class DocumentsApp(MayanAppConfig):
         ModelProperty(
             description=_('Return the lastest version of the document.'),
             model=Document, label=_('Latest version'), name='latest_version'
-        )
-
-        ModelEventType.register(
-            model=DocumentType, event_types=(
-                event_document_create,
-                event_document_type_created,
-                event_document_type_edited,
-            )
-        )
-        ModelEventType.register(
-            model=Document, event_types=(
-                event_document_download, event_document_properties_edit,
-                event_document_type_change, event_document_new_version,
-                event_document_version_revert, event_document_view
-            )
         )
 
         ModelPermission.register(
@@ -271,8 +271,8 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
-            ), html_extra_classes='text-center', label=_('Thumbnail'),
-            source=Document
+            ), html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), source=Document
         )
         SourceColumn(
             attribute='document_type', is_sortable=True, source=Document,
@@ -335,7 +335,7 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             func=lambda context: context['object'].get_document_count(
                 user=context['request'].user
-            ), label=_('Documents'), source=DocumentType
+            ), include_label=True, label=_('Documents'), source=DocumentType
         )
 
         SourceColumn(
@@ -343,8 +343,8 @@ class DocumentsApp(MayanAppConfig):
             source=DocumentTypeFilename
         )
         SourceColumn(
-            attribute='enabled', is_sortable=True, source=DocumentTypeFilename,
-            widget=TwoStateWidget
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=DocumentTypeFilename, widget=TwoStateWidget
         )
 
         # DeletedDocument

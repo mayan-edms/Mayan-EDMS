@@ -10,7 +10,7 @@ from .literals import TEST_PARSING_INDEX_NODE_TEMPLATE
 
 
 class ParsingIndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
     test_document_filename = TEST_HYBRID_DOCUMENT
 
     def test_parsing_indexing(self):
@@ -24,7 +24,7 @@ class ParsingIndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
             link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
         self.test_document.submit_for_parsing()
 
         self.assertTrue(

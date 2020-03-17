@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.template import Template, Context
+from django.template import Context, Template
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
@@ -13,7 +13,7 @@ from .models import UserMailer
 from .permissions import permission_user_mailer_use
 
 __all__ = ('EmailAction',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class EmailAction(WorkflowAction):
@@ -65,38 +65,17 @@ class EmailAction(WorkflowAction):
     permission = permission_user_mailer_use
 
     def execute(self, context):
-        try:
-            recipient = Template(self.form_data['recipient']).render(
-                context=Context(context)
-            )
-        except Exception as exception:
-            raise WorkflowStateActionError(
-                _('Recipient template error: %s') % exception
-            )
-        else:
-            logger.debug('Recipient result: %s', recipient)
+        recipient = self.render_field(
+            field_name='recipient', context=context
+        )
 
-        try:
-            subject = Template(self.form_data['subject']).render(
-                context=Context(context)
-            )
-        except Exception as exception:
-            raise WorkflowStateActionError(
-                _('Subject template error: %s') % exception
-            )
-        else:
-            logger.debug('Subject result: %s', subject)
+        subject = self.render_field(
+            field_name='subject', context=context
+        )
 
-        try:
-            body = Template(self.form_data['body']).render(
-                context=Context(context)
-            )
-        except Exception as exception:
-            raise WorkflowStateActionError(
-                _('Body template error: %s') % exception
-            )
-        else:
-            logger.debug('Body result: %s', body)
+        body = self.render_field(
+            field_name='body', context=context
+        )
 
         user_mailer = self.get_user_mailer()
         user_mailer.send(

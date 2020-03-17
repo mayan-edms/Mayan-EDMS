@@ -45,7 +45,7 @@ class EmailActionTestCase(MailerTestMixin, WorkflowTestMixin, ActionTestCase):
 
         self.test_workflow_state.actions.create(
             action_data=json.dumps(
-                {
+                obj={
                     'mailing_profile': self.test_user_mailer.pk,
                     'recipient': TEST_EMAIL_ADDRESS,
                     'subject': TEST_EMAIL_SUBJECT,
@@ -60,7 +60,7 @@ class EmailActionTestCase(MailerTestMixin, WorkflowTestMixin, ActionTestCase):
         self.test_workflow_state.save()
         self.test_workflow.document_types.add(self.test_document_type)
 
-        self.upload_document()
+        self._upload_test_document()
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -136,7 +136,7 @@ class EmailActionTemplateTestCase(MetadataTypeTestMixin, MailerTestMixin, Workfl
 
 
 class EmailActionViewTestCase(DocumentTestMixin, MailerTestMixin, WorkflowTestMixin, GenericViewTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_email_action_create_get_view(self):
         self._create_test_workflow()

@@ -10,11 +10,13 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.forms import DynamicModelForm
+from mayan.apps.templating.fields import TemplateField
 
 from .classes import WorkflowAction
 from .fields import WorfklowImageField
 from .models import (
-    Workflow, WorkflowState, WorkflowStateAction, WorkflowTransition
+    Workflow, WorkflowInstance, WorkflowState, WorkflowStateAction,
+    WorkflowTransition
 )
 
 
@@ -42,21 +44,25 @@ class WorkflowForm(forms.ModelForm):
 
 class WorkflowStateActionDynamicForm(DynamicModelForm):
     class Meta:
-        fields = ('label', 'when', 'enabled', 'action_data')
+        fields = ('label', 'when', 'enabled', 'condition', 'action_data')
         model = WorkflowStateAction
         widgets = {'action_data': forms.widgets.HiddenInput}
 
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request')
         self.action_path = kwargs.pop('action_path')
-        result = super(
+        super(
             WorkflowStateActionDynamicForm, self
         ).__init__(*args, **kwargs)
         if self.instance.action_data:
-            for key, value in json.loads(self.instance.action_data).items():
+            for key, value in json.loads(s=self.instance.action_data).items():
                 self.fields[key].initial = value
 
-        return result
+        self.fields['condition'] = TemplateField(
+            initial_help_text=self.fields['condition'].help_text,
+            label=self.fields['condition'].label, model=WorkflowInstance,
+            model_variable='workflow_instance', required=False
+        )
 
     def clean(self):
         data = super(WorkflowStateActionDynamicForm, self).clean()
@@ -79,11 +85,11 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
                 action_data[field_name] = action_data[field_name].pk
 
         data['action_data'] = action_data
-        data = import_string(self.action_path).clean(
+        data = import_string(dotted_path=self.action_path).clean(
             form_data=data, request=self.request
         )
         self.action_path
-        data['action_data'] = json.dumps(action_data)
+        data['action_data'] = json.dumps(obj=action_data)
 
         return data
 
@@ -110,8 +116,14 @@ class WorkflowTransitionForm(forms.ModelForm):
             'destination_state'
         ].queryset.filter(workflow=workflow)
 
+        self.fields['condition'] = TemplateField(
+            initial_help_text=self.fields['condition'].help_text,
+            label=self.fields['condition'].label, model=WorkflowInstance,
+            model_variable='workflow_instance', required=False
+        )
+
     class Meta:
-        fields = ('label', 'origin_state', 'destination_state')
+        fields = ('label', 'origin_state', 'destination_state', 'condition')
         model = WorkflowTransition
 
 

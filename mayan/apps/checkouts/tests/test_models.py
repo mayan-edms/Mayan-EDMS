@@ -44,7 +44,7 @@ class DocumentCheckoutTestCase(
         self._create_test_case_superuser()
         self._check_out_test_document()
 
-        with self.assertRaises(DocumentAlreadyCheckedOut):
+        with self.assertRaises(expected_exception=DocumentAlreadyCheckedOut):
             DocumentCheckout.objects.check_out_document(
                 document=self.test_document,
                 expiration_datetime=self._check_out_expiration_datetime,
@@ -53,7 +53,7 @@ class DocumentCheckoutTestCase(
             )
 
     def test_document_check_in_without_check_out(self):
-        with self.assertRaises(DocumentNotCheckedOut):
+        with self.assertRaises(expected_exception=DocumentNotCheckedOut):
             self.test_document.check_in()
 
     def test_document_auto_check_in(self):
@@ -84,7 +84,7 @@ class NewVersionBlockTestCase(
 
         NewVersionBlock.objects.block(document=self.test_document)
 
-        with self.assertRaises(NewDocumentVersionNotAllowed):
+        with self.assertRaises(expected_exception=NewDocumentVersionNotAllowed):
             with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
                 self.test_document.new_version(file_object=file_object)
 
@@ -116,6 +116,6 @@ class NewVersionBlockTestCase(
 
         self._check_out_test_document()
 
-        with self.assertRaises(NewDocumentVersionNotAllowed):
+        with self.assertRaises(expected_exception=NewDocumentVersionNotAllowed):
             with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
                 self.test_document.new_version(file_object=file_object)

@@ -1,4 +1,4 @@
-|donation| |pypi| |python| |license| |docker_pulls| |docker_stars| |commit_activity|
+|donation| |pypi| |python| |license| |docker_pulls| |docker_stars| |commit_activity| |support|
 
 
 .. image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
@@ -44,7 +44,6 @@ Important links
 
 - `Homepage <http://www.mayan-edms.com>`__
 - `Documentation <https://docs.mayan-edms.com>`__
-- `Wiki <https://wiki.mayan-edms.com>`__
 - `Contributing <https://gitlab.com/mayan-edms/mayan-edms/blob/master/CONTRIBUTING.md>`__
 - `Forum <https://forum.mayan-edms.com>`__
 - `Source code, issues, bugs <https://gitlab.com/mayan-edms/mayan-edms>`__
@@ -59,8 +58,6 @@ Important links
    :target: https://pypi.org/project/mayan-edms/
 .. |builds| image:: https://gitlab.com/mayan-edms/mayan-edms/badges/master/build.svg
    :target: https://gitlab.com/mayan-edms/mayan-edms/pipelines
-.. |coverage| image:: https://codecov.io/gitlab/mayan-edms/mayan-edms/coverage.svg?branch=master
-   :target: https://codecov.io/gitlab/mayan-edms/mayan-edms?branch=master
 .. |python| image:: https://img.shields.io/pypi/pyversions/mayan-edms.svg
 .. |license| image:: https://img.shields.io/pypi/l/mayan-edms.svg?style=flat
    :target: https://gitlab.com/mayan-edms/mayan-edms/blob/master/LICENSE
@@ -72,3 +69,5 @@ Important links
    :target: https://microbadger.com/images/mayanedms/mayanedms
 .. |commit_activity| image:: https://img.shields.io/github/commit-activity/y/mayan-edms/mayan-edms.svg
    :target: https://gitlab.com/mayan-edms/mayan-edms/
+.. |support| image:: https://img.shields.io/badge/Get_support-brightgreen
+   :target: https://www.mayan-edms.com/support/

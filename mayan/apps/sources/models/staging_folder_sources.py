@@ -14,7 +14,7 @@ from ..literals import (
 from .base import InteractiveSource
 
 __all__ = ('StagingFolderSource',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class StagingFolderSource(InteractiveSource):

@@ -4,23 +4,24 @@ import itertools
 import logging
 
 from django.apps import apps
+from django.core.exceptions import ImproperlyConfigured
 from django.utils.encoding import force_text
 
 from mayan.apps.common.utils import get_related_field
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class ModelPermission(object):
-    _functions = {}
+    _field_query_functions = {}
     _inheritances = {}
     _inheritances_reverse = {}
     _manager_names = {}
-    _registry = {}
+    _model_permissions = {}
 
     @classmethod
     def deregister(cls, model):
-        cls._registry.pop(model, None)
+        cls._model_permissions.pop(model, None)
 
     @classmethod
     def get_classes(cls, as_content_type=False):
@@ -30,7 +31,7 @@ class ModelPermission(object):
 
         if as_content_type:
             content_type_dictionary = ContentType.objects.get_for_models(
-                *cls._registry.keys()
+                *cls._model_permissions.keys()
             )
             content_type_ids = [
                 content_type.pk for content_type in content_type_dictionary.values()
@@ -38,7 +39,11 @@ class ModelPermission(object):
 
             return ContentType.objects.filter(pk__in=content_type_ids)
         else:
-            return cls._registry.keys()
+            return cls._model_permissions.keys()
+
+    @classmethod
+    def get_field_query_function(cls, model):
+        return cls._field_query_functions[model]
 
     @classmethod
     def get_for_class(cls, klass, as_choices=False):
@@ -58,9 +63,9 @@ class ModelPermission(object):
             # Return the permissions for the klass and the models that
             # inherit from it.
             result = []
-            result.extend(cls._registry.get(klass, ()))
+            result.extend(cls._model_permissions.get(klass, ()))
             for model in cls._inheritances_reverse.get(klass, ()):
-                result.extend(cls._registry.get(model, ()))
+                result.extend(cls._model_permissions.get(model, ()))
 
             return result
 
@@ -81,10 +86,6 @@ class ModelPermission(object):
             permission.stored_permission.pk for permission in set(permissions)
         ]
         return StoredPermission.objects.filter(pk__in=pks)
-
-    @classmethod
-    def get_function(cls, model):
-        return cls._functions[model]
 
     @classmethod
     def get_inheritance(cls, model):
@@ -114,11 +115,23 @@ class ModelPermission(object):
 
     @classmethod
     def register(cls, model, permissions):
+        """
+        Match a model class to a set of permissions. And connect the model
+        to the ACLs via a GenericRelation field.
+        """
         from django.contrib.contenttypes.fields import GenericRelation
 
-        cls._registry.setdefault(model, [])
-        for permission in permissions:
-            cls._registry[model].append(permission)
+        cls._model_permissions.setdefault(model, [])
+        try:
+            for permission in permissions:
+                cls._model_permissions[model].append(permission)
+        except TypeError as exception:
+            raise ImproperlyConfigured(
+                'Make sure the permissions argument to .the register() '
+                'method is an iterable. Current value: "{}"'.format(
+                    permissions
+                )
+            ) from exception
 
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
@@ -129,8 +142,8 @@ class ModelPermission(object):
         )
 
     @classmethod
-    def register_function(cls, model, function):
-        cls._functions[model] = function
+    def register_field_query_function(cls, model, function):
+        cls._field_query_functions[model] = function
 
     @classmethod
     def register_inheritance(cls, model, related):

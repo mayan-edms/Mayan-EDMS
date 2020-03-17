@@ -2,10 +2,9 @@ from __future__ import unicode_literals
 
 import logging
 import os
+from pathlib import Path
 import shutil
 import tempfile
-
-from pathlib2 import Path
 
 try:
     from django.utils.module_loading import import_string
@@ -17,7 +16,7 @@ except ImportError:
 else:
     from .settings import setting_temporary_directory
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def TemporaryFile(*args, **kwargs):

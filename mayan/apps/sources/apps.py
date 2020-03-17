@@ -74,17 +74,18 @@ class SourcesApp(MayanAppConfig):
             source=Source
         )
         SourceColumn(
-            attribute='class_fullname', label=_('Type'), source=Source
+            attribute='class_fullname', include_label=True, label=_('Type'),
+            source=Source
         )
         SourceColumn(
-            attribute='enabled', is_sortable=True, source=Source,
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=Source,
             widget=TwoStateWidget
         )
 
         SourceColumn(
-            source=StagingFile,
-            label=_('Created'),
-            func=lambda context: context['object'].get_date_time_created()
+            func=lambda context: context['object'].get_date_time_created(),
+            label=_('Created'), source=StagingFile,
         )
 
         html_widget = StagingFileThumbnailWidget()

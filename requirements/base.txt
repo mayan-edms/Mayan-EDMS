@@ -22,6 +22,7 @@ drf-yasg==1.17.1
 flanker==0.9.11
 flex==6.14.1
 furl==2.1.0
+extract-msg==0.23.3
 fusepy==3.0.1
 gevent==1.4.0
 graphviz==0.13.2

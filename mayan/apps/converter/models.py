@@ -14,7 +14,7 @@ from .managers import LayerTransformationManager
 from .transformations import BaseTransformation
 from .validators import YAMLValidator
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible

@@ -13,7 +13,7 @@ from .permissions import (
 )
 
 __all__ = ('CabinetAddAction', 'CabinetRemoveAction')
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class CabinetAddAction(WorkflowAction):

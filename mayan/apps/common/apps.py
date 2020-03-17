@@ -37,7 +37,7 @@ from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
 from .utils import check_for_sqlite
 from .warnings import DatabaseWarning
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class MayanAppConfig(apps.AppConfig):

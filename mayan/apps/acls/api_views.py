@@ -22,7 +22,7 @@ class APIObjectACLListView(generics.ListCreateAPIView):
     def get_content_object(self):
         content_type = get_object_or_404(
             klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model']
+            model=self.kwargs['model_name']
         )
 
         content_object = get_object_or_404(
@@ -88,7 +88,7 @@ class APIObjectACLView(generics.RetrieveDestroyAPIView):
 
         content_type = get_object_or_404(
             klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model']
+            model=self.kwargs['model_name']
         )
 
         content_object = get_object_or_404(
@@ -119,7 +119,7 @@ class APIObjectACLPermissionListView(generics.ListCreateAPIView):
     def get_content_object(self):
         content_type = get_object_or_404(
             klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model']
+            model=self.kwargs['model_name']
         )
 
         content_object = get_object_or_404(
@@ -183,7 +183,7 @@ class APIObjectACLPermissionView(generics.RetrieveDestroyAPIView):
     def get_content_object(self):
         content_type = get_object_or_404(
             klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model']
+            model=self.kwargs['model_name']
         )
 
         content_object = get_object_or_404(

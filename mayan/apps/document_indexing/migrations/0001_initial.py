@@ -177,8 +177,8 @@ class Migration(migrations.Migration):
             name='index_template_node',
             field=models.ForeignKey(
                 on_delete=models.CASCADE, related_name='node_instance',
-                verbose_name='Index template node',
-                to='document_indexing.IndexTemplateNode'
+                to='document_indexing.IndexTemplateNode',
+                verbose_name='Index template node'
             ),
             preserve_default=True,
         ),

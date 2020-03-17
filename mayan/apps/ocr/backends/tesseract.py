@@ -16,7 +16,7 @@ from ..settings import setting_ocr_backend_arguments
 
 from .literals import DEFAULT_TESSERACT_BINARY_PATH, DEFAULT_TESSERACT_TIMEOUT
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class Tesseract(OCRBackendBase):

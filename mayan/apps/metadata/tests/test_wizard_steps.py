@@ -19,7 +19,7 @@ from .mixins import MetadataTypeTestMixin
 
 
 class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
         super(DocumentUploadMetadataTestCase, self).setUp()

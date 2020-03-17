@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from contextlib import contextmanager
 import logging
 
+from django.core import validators
 from django.core.files.base import ContentFile
 from django.db import models, transaction
 from django.db.models import Sum
@@ -19,7 +20,7 @@ from .events import (
     event_cache_created, event_cache_edited, event_cache_purged
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @python_2_unicode_compatible
@@ -32,9 +33,10 @@ class Cache(models.Model):
         help_text=_('A short text describing the cache.'), max_length=128,
         verbose_name=_('Label')
     )
-    maximum_size = models.PositiveIntegerField(
-        help_text=_('Maximum size of the cache in bytes.'),
-        verbose_name=_('Maximum size')
+    maximum_size = models.BigIntegerField(
+        help_text=_('Maximum size of the cache in bytes.'), validators=[
+            validators.MinValueValidator(limit_value=1)
+        ], verbose_name=_('Maximum size')
     )
     storage_instance_path = models.CharField(
         help_text=_(
@@ -110,7 +112,7 @@ class Cache(models.Model):
 
     @cached_property
     def storage(self):
-        return import_string(self.storage_instance_path)
+        return import_string(dotted_path=self.storage_instance_path)
 
 
 class CachePartition(models.Model):

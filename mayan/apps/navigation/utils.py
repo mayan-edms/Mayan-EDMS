@@ -9,7 +9,7 @@ from django.urls import Resolver404, resolve
 
 from mayan.apps.permissions import Permission
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def get_cascade_condition(

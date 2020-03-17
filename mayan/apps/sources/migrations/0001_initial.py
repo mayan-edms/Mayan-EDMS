@@ -245,8 +245,13 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'interactivesource_ptr', models.OneToOneField(
+<<<<<<< HEAD
                         auto_created=True, parent_link=True,
                         primary_key=True, on_delete=models.CASCADE,
+=======
+                        auto_created=True, on_delete=models.CASCADE,
+                        parent_link=True, primary_key=True,
+>>>>>>> origin/versions/minor
                         serialize=False, to='sources.InteractiveSource'
                     )
                 ),
@@ -297,8 +302,13 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'intervalbasemodel_ptr', models.OneToOneField(
+<<<<<<< HEAD
                         auto_created=True, parent_link=True,
                         primary_key=True, on_delete=models.CASCADE,
+=======
+                        auto_created=True, on_delete=models.CASCADE,
+                        parent_link=True, primary_key=True,
+>>>>>>> origin/versions/minor
                         serialize=False, to='sources.IntervalBaseModel'
                     )
                 ),
@@ -345,10 +355,16 @@ class Migration(migrations.Migration):
             model_name='intervalbasemodel',
             name='document_type',
             field=models.ForeignKey(
+<<<<<<< HEAD
                 on_delete=models.CASCADE,
                 help_text='Assign a document type to documents uploaded from '
                 'this source.', to='documents.DocumentType',
                 verbose_name='Document type'
+=======
+                help_text='Assign a document type to documents uploaded from '
+                'this source.', on_delete=models.CASCADE,
+                to='documents.DocumentType', verbose_name='Document type'
+>>>>>>> origin/versions/minor
             ),
             preserve_default=True,
         ),

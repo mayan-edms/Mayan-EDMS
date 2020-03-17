@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             name='document',
             field=models.OneToOneField(
                 on_delete=models.CASCADE, to='documents.Document',
-                verbose_name='Document',
+                verbose_name='Document'
             ),
         ),
     ]

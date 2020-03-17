@@ -41,17 +41,29 @@ class CabinetWorkflowActionTestCase(CabinetTestMixin, ActionTestCase):
 class CabinetWorkflowActionViewTestCase(
     CabinetTestMixin, WorkflowTestMixin, GenericViewTestCase
 ):
-    def test_cabinet_add_action_create_get_view(self):
-        self._create_test_workflow()
-        self._create_test_workflow_state()
-
-        response = self.get(
+    def _request_test_workflow_template_state_cabinet_add_action_get_view(self):
+        return self.get(
             viewname='document_states:workflow_template_state_action_create',
             kwargs={
                 'pk': self.test_workflow_state.pk,
                 'class_path': 'mayan.apps.cabinets.workflow_actions.CabinetAddAction'
             }
         )
+
+    def _request_test_workflow_template_state_cabinet_remove_action_get_view(self):
+        return self.get(
+            viewname='document_states:workflow_template_state_action_create',
+            kwargs={
+                'pk': self.test_workflow_state.pk,
+                'class_path': 'mayan.apps.cabinets.workflow_actions.CabinetRemoveAction'
+            }
+        )
+
+    def test_cabinet_add_action_create_get_view(self):
+        self._create_test_workflow()
+        self._create_test_workflow_state()
+
+        response = self._request_test_workflow_template_state_cabinet_add_action_get_view()
 
         self.assertEqual(response.status_code, 200)
 
@@ -60,12 +72,6 @@ class CabinetWorkflowActionViewTestCase(
         self._create_test_workflow_state()
         self._create_test_cabinet()
 
-        response = self.get(
-            viewname='document_states:workflow_template_state_action_create',
-            kwargs={
-                'pk': self.test_workflow_state.pk,
-                'class_path': 'mayan.apps.cabinets.workflow_actions.CabinetRemoveAction'
-            }
-        )
+        response = self._request_test_workflow_template_state_cabinet_remove_action_get_view()
 
         self.assertEqual(response.status_code, 200)

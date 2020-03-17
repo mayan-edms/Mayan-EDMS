@@ -26,5 +26,5 @@ class DocumentPreviewWidgetViewTestCase(
 
         response = self._request_test_document_preview_view()
         self.assertContains(
-            response=response, text='carousel-container', status_code=200
+            response=response, status_code=200, text='carousel-container'
         )

@@ -60,7 +60,7 @@ class KeyTestCase(BaseTestCase):
         cleartext_file.write(b'test')
         cleartext_file.seek(0)
 
-        with self.assertRaises(VerificationError):
+        with self.assertRaises(expected_exception=VerificationError):
             Key.objects.verify_file(file_object=cleartext_file)
 
         cleartext_file.close()
@@ -94,7 +94,7 @@ class KeyTestCase(BaseTestCase):
         Key.objects.create(key_data=TEST_KEY_PRIVATE_DATA)
 
         with open(TEST_SIGNED_FILE, mode='rb') as signed_file:
-            with self.assertRaises(KeyDoesNotExist):
+            with self.assertRaises(expected_exception=KeyDoesNotExist):
                 Key.objects.verify_file(signed_file, key_fingerprint='999')
 
     def test_signed_file_decryption(self):
@@ -110,7 +110,7 @@ class KeyTestCase(BaseTestCase):
         cleartext_file.write(b'test')
         cleartext_file.seek(0)
 
-        with self.assertRaises(DecryptionError):
+        with self.assertRaises(expected_exception=DecryptionError):
             Key.objects.decrypt_file(file_object=cleartext_file)
 
         cleartext_file.close()
@@ -139,7 +139,7 @@ class KeyTestCase(BaseTestCase):
     def test_detached_signing_no_passphrase(self):
         key = Key.objects.create(key_data=TEST_KEY_PRIVATE_DATA)
 
-        with self.assertRaises(NeedPassphrase):
+        with self.assertRaises(expected_exception=NeedPassphrase):
             with open(TEST_FILE, mode='rb') as test_file:
                 key.sign_file(
                     file_object=test_file, detached=True,
@@ -148,7 +148,7 @@ class KeyTestCase(BaseTestCase):
     def test_detached_signing_bad_passphrase(self):
         key = Key.objects.create(key_data=TEST_KEY_PRIVATE_DATA)
 
-        with self.assertRaises(PassphraseError):
+        with self.assertRaises(expected_exception=PassphraseError):
             with open(TEST_FILE, mode='rb') as test_file:
                 key.sign_file(
                     file_object=test_file, detached=True,

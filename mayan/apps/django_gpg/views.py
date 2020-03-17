@@ -26,7 +26,7 @@ from .permissions import (
     permission_key_upload, permission_key_view, permission_keyserver_query
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class KeyDeleteView(SingleObjectDeleteView):
@@ -170,7 +170,7 @@ class PrivateKeyListView(SingleObjectListView):
             ),
             'no_results_text': _(
                 'Private keys are used to signed documents. '
-                'Private keys can only be uploaded by the user.'
+                'Private keys can only be uploaded by the user. '
                 'The view to upload private and public keys is the same.'
             ),
             'no_results_title': _(

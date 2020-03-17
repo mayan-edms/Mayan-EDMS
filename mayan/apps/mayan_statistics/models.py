@@ -25,8 +25,8 @@ class StatisticResult(models.Model):
         return self.slug
 
     def get_data(self):
-        return json.loads(self.serialize_data)
+        return json.loads(s=self.serialize_data)
 
     def store_data(self, data):
-        self.serialize_data = json.dumps(data)
+        self.serialize_data = json.dumps(obj=data)
         self.save()

@@ -17,7 +17,7 @@ from mayan.apps.documents.models import DocumentVersion
 from .managers import DetachedSignatureManager, EmbeddedSignatureManager
 from .storages import storage_detachedsignature
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def upload_to(*args, **kwargs):

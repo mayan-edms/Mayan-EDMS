@@ -41,18 +41,20 @@ class EventsApp(MayanAppConfig):
             is_sortable=True, label=_('Date and time'), source=Action
         )
         SourceColumn(
-            func=widget_event_actor_link, label=_('Actor'), source=Action
+            func=widget_event_actor_link, label=_('Actor'),
+            include_label=True, source=Action
         )
         SourceColumn(
-            func=widget_event_type_link, label=_('Event'), source=Action
+            func=widget_event_type_link, label=_('Event'),
+            include_label=True, source=Action
         )
         SourceColumn(
-            attribute='target', label=_('Target'), source=Action,
-            widget=ObjectLinkWidget
+            attribute='target', label=_('Target'), include_label=True,
+            source=Action, widget=ObjectLinkWidget
         )
         SourceColumn(
-            attribute='action_object', label=_('Action object'), source=Action,
-            widget=ObjectLinkWidget
+            attribute='action_object', label=_('Action object'),
+            include_label=True, source=Action, widget=ObjectLinkWidget
         )
 
         SourceColumn(
@@ -68,20 +70,22 @@ class EventsApp(MayanAppConfig):
         )
         SourceColumn(
             func=widget_event_actor_link, label=_('Actor'),
-            kwargs={'attribute': 'action'}, source=Notification
+            include_label=True, kwargs={'attribute': 'action'},
+            source=Notification
         )
         SourceColumn(
             func=widget_event_type_link, label=_('Event'),
-            kwargs={'attribute': 'action'}, source=Notification
+            include_label=True, kwargs={'attribute': 'action'},
+            source=Notification
         )
         SourceColumn(
-            attribute='action.target', label=_('Target'), source=Notification,
-            widget=ObjectLinkWidget
+            attribute='action.target', label=_('Target'), include_label=True,
+            source=Notification, widget=ObjectLinkWidget
         )
 
         SourceColumn(
-            attribute='read', is_sortable=True, label=_('Seen'),
-            source=Notification, widget=TwoStateWidget
+            attribute='read', include_label=True, is_sortable=True,
+            label=_('Seen'), source=Notification, widget=TwoStateWidget
         )
 
         menu_topbar.bind_links(

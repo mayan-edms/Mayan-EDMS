@@ -23,7 +23,7 @@ from .mixins import (
 class DocumentTypeViewsTestCase(
     DocumentTypeViewTestMixin, GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_document_type_create_view_no_permission(self):
         self.test_document_type.delete()
@@ -89,7 +89,7 @@ class DocumentTypeViewsTestCase(
     def test_document_type_list_view_no_permission(self):
         response = self._request_test_document_type_list_view()
         self.assertNotContains(
-            response=response, text=self.test_document_type, status_code=200
+            response=response, status_code=200, text=self.test_document_type
         )
 
     def test_document_type_list_view_with_access(self):
@@ -100,7 +100,7 @@ class DocumentTypeViewsTestCase(
 
         response = self._request_test_document_type_list_view()
         self.assertContains(
-            response=response, text=self.test_document_type, status_code=200
+            response=response, status_code=200, text=self.test_document_type
         )
 
 
@@ -108,7 +108,7 @@ class DocumentTypeQuickLabelViewsTestCase(
     DocumentTypeQuickLabelTestMixin, DocumentTypeQuickLabelViewTestMixin,
     GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_document_type_quick_label_create_no_access(self):
         self.grant_access(
@@ -199,7 +199,7 @@ class DocumentTypeQuickLabelViewsTestCase(
 
         response = self._request_quick_label_list_view()
         self.assertContains(
-            response, text=self.test_document_type_filename, status_code=200
+            response, status_code=200, text=self.test_document_type_filename
         )
 
 
@@ -215,7 +215,7 @@ class DocumentsQuickLabelViewTestMixin(object):
 
         return self.post(
             viewname='documents:document_edit', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data=data
         )
 

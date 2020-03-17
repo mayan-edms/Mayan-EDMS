@@ -32,11 +32,12 @@ class ConverterApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='order', include_label=True, source=LayerTransformation
+            attribute='order', is_identifier=True, source=LayerTransformation
         )
         SourceColumn(
-            source=LayerTransformation, label=_('Transformation'),
-            func=lambda context: force_text(context['object'])
+            func=lambda context: force_text(context['object']),
+            include_label=True, label=_('Transformation'),
+            source=LayerTransformation
         )
         SourceColumn(
             attribute='arguments', include_label=True,

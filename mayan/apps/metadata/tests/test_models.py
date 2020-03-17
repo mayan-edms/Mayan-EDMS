@@ -68,7 +68,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
             value=TEST_INCORRECT_LOOKUP_VALUE
         )
 
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(expected_exception=ValidationError):
             # Should return error
             document_metadata.full_clean()
             document_metadata.save()
@@ -115,7 +115,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
             value=TEST_INVALID_DATE
         )
 
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(expected_exception=ValidationError):
             # Should return error
             document_metadata.full_clean()
             document_metadata.save()
@@ -140,7 +140,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
             value=TEST_INVALID_DATE
         )
 
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(expected_exception=ValidationError):
             # Should return error
             document_metadata.full_clean()
             document_metadata.save()

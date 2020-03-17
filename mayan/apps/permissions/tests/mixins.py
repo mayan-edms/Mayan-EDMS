@@ -98,6 +98,9 @@ class RoleTestCaseMixin(object):
     def grant_permission(self, permission):
         self._test_case_role.grant(permission=permission)
 
+    def revoke_permission(self, permission):
+        self._test_case_role.revoke(permission=permission)
+
 
 class RoleTestMixin(object):
     def _create_test_role(self):

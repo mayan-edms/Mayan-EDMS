@@ -19,7 +19,7 @@ from .events import event_email_sent
 from .managers import UserMailerManager
 from .utils import split_recipient_list
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class LogEntry(models.Model):
@@ -82,18 +82,19 @@ class UserMailer(models.Model):
         """
         return self.get_backend().label
 
-    backend_label.short_description = _('Backend label')
+    backend_label.short_description = _('Backend')
+    backend_label.help_text = _('The backend class for this entry.')
 
     def dumps(self, data):
         """
         Serialize the backend configuration data.
         """
-        self.backend_data = json.dumps(data)
+        self.backend_data = json.dumps(obj=data)
         self.save()
 
     def get_class_data(self):
         """
-        Return the actual mailing class initialization data
+        Return the actual mailing class initialization data.
         """
         backend = self.get_backend()
         return {
@@ -102,10 +103,10 @@ class UserMailer(models.Model):
 
     def get_backend(self):
         """
-        Retrieves the backend by importing the module and the class
+        Retrieves the backend by importing the module and the class.
         """
         try:
-            return import_string(self.backend_path)
+            return import_string(dotted_path=self.backend_path)
         except ImportError:
             return NullBackend
 
@@ -123,7 +124,7 @@ class UserMailer(models.Model):
         """
         Deserialize the stored backend data.
         """
-        return json.loads(self.backend_data)
+        return json.loads(s=self.backend_data)
 
     def natural_key(self):
         return (self.label,)

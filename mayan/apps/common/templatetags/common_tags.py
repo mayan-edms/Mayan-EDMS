@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 
-from django.template import Context, Library
+import logging
+
+from django.template import Context, Library, Variable, VariableDoesNotExist
 from django.template.defaultfilters import truncatechars
 from django.template.loader import get_template
 from django.utils.encoding import force_text
@@ -15,6 +17,7 @@ from ..icons import icon_list_mode_items, icon_list_mode_list
 from ..literals import MESSAGE_SQLITE_WARNING
 from ..utils import check_for_sqlite, return_attrib
 
+logger = logging.getLogger(name=__name__)
 register = Library()
 
 
@@ -95,6 +98,11 @@ def common_get_list_mode_querystring(context):
 
 
 @register.simple_tag
+def common_get_missing_items():
+    return MissingItem.get_missing()
+
+
+@register.simple_tag
 def common_get_object_verbose_name(obj):
     try:
         return obj._meta.verbose_name
@@ -103,11 +111,6 @@ def common_get_object_verbose_name(obj):
             return ''
         else:
             return type(obj)
-
-
-@register.simple_tag
-def common_get_missing_items():
-    return MissingItem.get_missing()
 
 
 @register.filter

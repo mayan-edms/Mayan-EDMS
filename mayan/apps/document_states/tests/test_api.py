@@ -115,7 +115,7 @@ class WorkflowAPIViewTestCase(
     WorkflowAPIViewTestMixin, DocumentTestMixin, WorkflowTestMixin,
     BaseAPITestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_workflow_create_view_no_permission(self):
         response = self._request_test_workflow_create_api_view()
@@ -509,7 +509,7 @@ class WorkflowStatesAPIViewTestCase(
     WorkflowStateAPIViewTestMixin, DocumentTestMixin, WorkflowTestMixin,
     BaseAPITestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_workflow_state_create_view_no_access(self):
         self._create_test_workflow()
@@ -721,7 +721,7 @@ class WorkflowTransitionsAPIViewTestCase(
     WorkflowTransitionAPIViewTestMixin, DocumentTestMixin, WorkflowTestMixin,
     BaseAPITestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_workflow_transition_create_view_no_access(self):
         self._create_test_workflow()
@@ -957,13 +957,13 @@ class DocumentWorkflowsAPIViewTestCase(
     DocumentWorkflowAPIViewTestMixin, DocumentTestMixin, WorkflowTestMixin,
     BaseAPITestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_workflow_instance_detail_view_no_access(self):
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_test_workflow_instance_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -973,7 +973,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -987,7 +987,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_document, permission=permission_workflow_view
@@ -1001,7 +1001,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -1021,7 +1021,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self.upload_document()
+        self._upload_test_document()
 
         response = self._request_test_workflow_instance_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -1031,7 +1031,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_document, permission=permission_workflow_view
@@ -1045,7 +1045,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -1059,7 +1059,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -1079,7 +1079,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self.upload_document()
+        self._upload_test_document()
 
         workflow_instance = self.test_document.workflows.first()
         response = self._request_test_workflow_instance_log_entry_create_api_view(
@@ -1095,7 +1095,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_transition
@@ -1117,7 +1117,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_workflow_instance_log_entry()
 
         response = self._request_test_workflow_instance_log_entry_list_api_view()
@@ -1128,7 +1128,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self.upload_document()
+        self._upload_test_document()
         self._create_test_workflow_instance_log_entry()
 
         self.grant_access(

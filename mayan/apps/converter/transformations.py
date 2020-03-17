@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from .layers import layer_saved_transformations
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class BaseTransformationType(type):

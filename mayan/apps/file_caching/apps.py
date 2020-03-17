@@ -47,16 +47,26 @@ class FileCachingConfig(MayanAppConfig):
             )
         )
 
-        SourceColumn(attribute='label', is_sortable=True, source=Cache)
-        SourceColumn(attribute='name', is_sortable=True, source=Cache)
         SourceColumn(
-            attribute='storage_instance_path', is_sortable=True, source=Cache
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=Cache
         )
         SourceColumn(
-            attribute='get_maximum_size_display', is_sortable=True,
-            sort_field='maximum_size', source=Cache
+            attribute='name', include_label=True, is_sortable=True,
+            source=Cache
         )
-        SourceColumn(attribute='get_total_size_display', source=Cache)
+        SourceColumn(
+            attribute='storage_instance_path', include_label=True,
+            is_sortable=True, source=Cache
+        )
+        SourceColumn(
+            attribute='get_maximum_size_display', include_label=True,
+            is_sortable=True, sort_field='maximum_size', source=Cache
+        )
+        SourceColumn(
+            attribute='get_total_size_display', include_label=True,
+            source=Cache
+        )
 
         menu_list_facet.bind_links(
             links=(

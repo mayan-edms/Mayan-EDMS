@@ -15,7 +15,7 @@ from .mixins import SmartLinkTestMixin, SmartLinkViewTestMixin
 
 
 class SmartLinkTemplateEventsTestCase(DocumentTestMixin, SmartLinkTestMixin, SmartLinkViewTestMixin, GenericViewTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_smart_link_create_event(self):
         self.grant_permission(

@@ -134,17 +134,23 @@ class FileMetadataApp(MayanAppConfig):
             model=DocumentVersionDriverEntry, related='document_version',
         )
 
-        SourceColumn(attribute='key', source=FileMetadataEntry)
-        SourceColumn(attribute='value', source=FileMetadataEntry)
         SourceColumn(
-            attribute='driver', source=DocumentVersionDriverEntry
+            attribute='key', is_identifier=True, source=FileMetadataEntry
         )
         SourceColumn(
-            attribute='driver__internal_name',
+            attribute='value', include_label=True, source=FileMetadataEntry
+        )
+        SourceColumn(
+            attribute='driver', is_identifier=True,
             source=DocumentVersionDriverEntry
         )
         SourceColumn(
-            attribute='get_attribute_count', source=DocumentVersionDriverEntry
+            attribute='driver__internal_name', include_label=True,
+            source=DocumentVersionDriverEntry
+        )
+        SourceColumn(
+            attribute='get_attribute_count', include_label=True,
+            source=DocumentVersionDriverEntry
         )
 
         document_search.add_model_field(

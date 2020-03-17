@@ -13,7 +13,7 @@ from ..literals import DEFAULT_EXIF_PATH
 from ..classes import FileMetadataDriver
 from ..settings import setting_drivers_arguments
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class EXIFToolDriver(FileMetadataDriver):
