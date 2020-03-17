@@ -192,6 +192,7 @@ PythonDependency(
 PythonDependency(
     module=__name__, name='extract-msg', version_string='==0.23.3'
 )
+)
 PythonDependency(
     module=__name__, name='gevent', version_string='==1.4.0'
 )

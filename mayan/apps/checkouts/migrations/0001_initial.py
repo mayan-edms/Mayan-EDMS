@@ -58,8 +58,8 @@ class Migration(migrations.Migration):
                 (
                     'user_content_type',
                     models.ForeignKey(
-                        blank=True, on_delete=models.CASCADE,
-                        null=True, to='contenttypes.ContentType',
+                        blank=True, null=True, on_delete=models.CASCADE,
+                        to='contenttypes.ContentType'
                     )
                 ),
             ],
