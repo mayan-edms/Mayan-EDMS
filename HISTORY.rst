@@ -7,6 +7,11 @@
   (https://nvd.nist.gov/vuln/detail/CVE-2019-6690)
 - Update django from version 1.11.28 to 1.11.29. CVE-2020-9402
   (https://nvd.nist.gov/vuln/detail/CVE-2020-9402)
+- Decrease the code and data inside the transaction. Removes a file caching
+  creation from inside a database transaction. Attempted fix for
+  GitLab issues #782 and #735.
+- Fix OCR model property. It was listed as document.content instead of
+  document.ocr_content.
 
 3.3.15 (2020-03-05)
 ===================
