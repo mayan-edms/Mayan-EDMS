@@ -5,6 +5,8 @@
   (https://nvd.nist.gov/vuln/detail/CVE-2019-18874)
 - Update python-gnupg from version 0.3.9 to 0.4.5. CVE-2019-6690
   (https://nvd.nist.gov/vuln/detail/CVE-2019-6690)
+- Update django from version 1.11.28 to 1.11.29. CVE-2020-9402
+  (https://nvd.nist.gov/vuln/detail/CVE-2020-9402)
 
 3.3.15 (2020-03-05)
 ===================
