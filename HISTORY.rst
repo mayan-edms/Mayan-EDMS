@@ -1,4 +1,4 @@
-3.3.16 (2020-03-XX)
+3.3.16 (2020-03-17)
 ===================
 - Fix minor release notes typographical errors.
 - Update psutil from version 5.6.3 to 5.7.0. CVE-2019-18874
@@ -12,6 +12,9 @@
   GitLab issues #782 and #735.
 - Fix OCR model property. It was listed as document.content instead of
   document.ocr_content.
+- Revert an API permission change for the EventList API view.
+  Fixes GitLab issue #794. Thanks to Matthew Grady (@FlowerCoffeeCup)
+  for the report and investigation.
 
 3.3.15 (2020-03-05)
 ===================
