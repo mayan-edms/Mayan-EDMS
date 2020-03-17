@@ -1,3 +1,8 @@
+3.3.16 (2020-03-XX)
+===================
+- Fix minor release notes typographical errors.
+- Upgrade psutil from version 5.6.3 to 5.7.0.
+
 3.3.15 (2020-03-05)
 ===================
 - Add Docker environment setting ``MAYAN_SKIP_CHOWN_ON_STARTUP`` to skip
