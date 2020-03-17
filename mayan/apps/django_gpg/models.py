@@ -11,8 +11,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from .exceptions import NeedPassphrase, PassphraseError
 from .literals import (
-    ERROR_MSG_NEED_PASSPHRASE, ERROR_MSG_BAD_PASSPHRASE,
-    ERROR_MSG_GOOD_PASSPHRASE, KEY_TYPE_CHOICES, KEY_TYPE_SECRET,
+    ERROR_MSG_BAD_PASSPHRASE, ERROR_MSG_GOOD_PASSPHRASE,
+    ERROR_MSG_MISSING_PASSPHRASE, KEY_TYPE_CHOICES, KEY_TYPE_SECRET,
     OUTPUT_MESSAGE_CONTAINS_PRIVATE_KEY
 )
 from .managers import KeyManager
@@ -124,10 +124,11 @@ class Key(models.Model):
 
         logger.debug('file_sign_results.stderr: %s', file_sign_results.stderr)
 
-        if ERROR_MSG_NEED_PASSPHRASE in file_sign_results.stderr:
-            if ERROR_MSG_BAD_PASSPHRASE in file_sign_results.stderr:
-                raise PassphraseError
-            elif ERROR_MSG_GOOD_PASSPHRASE not in file_sign_results.stderr:
+        if ERROR_MSG_MISSING_PASSPHRASE in file_sign_results.stderr:
+            if ERROR_MSG_GOOD_PASSPHRASE not in file_sign_results.stderr:
                 raise NeedPassphrase
+
+        if ERROR_MSG_BAD_PASSPHRASE in file_sign_results.stderr:
+            raise PassphraseError
 
         return file_sign_results

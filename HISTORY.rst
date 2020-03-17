@@ -1,7 +1,10 @@
 3.3.16 (2020-03-XX)
 ===================
 - Fix minor release notes typographical errors.
-- Upgrade psutil from version 5.6.3 to 5.7.0.
+- Update psutil from version 5.6.3 to 5.7.0. CVE-2019-18874
+  (https://nvd.nist.gov/vuln/detail/CVE-2019-18874)
+- Update python-gnupg from version 0.3.9 to 0.4.5. CVE-2019-6690
+  (https://nvd.nist.gov/vuln/detail/CVE-2019-6690)
 
 3.3.15 (2020-03-05)
 ===================
