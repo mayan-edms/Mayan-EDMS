@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:39-0400\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
+"POT-Creation-Date: 2020-03-18 01:28-0400\n"
+"PO-Revision-Date: 2020-03-18 05:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:131 apps.py:337 events.py:7 menus.py:10
-#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:18
+#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:19
 #: statistics.py:236
 msgid "Documents"
 msgstr "Dokumenti"
@@ -437,7 +437,7 @@ msgstr "Atjaunot"
 msgid "Empty trash"
 msgstr "Iztukšojiet miskasti"
 
-#: literals.py:32
+#: literals.py:12
 msgid "Default"
 msgstr "Noklusējums"
 
@@ -770,105 +770,110 @@ msgstr "Augšupielādējiet jaunu dokumenta versiju"
 msgid "Scan document duplicates"
 msgstr "Skenēt dokumentu dublikātus"
 
-#: settings.py:26
+#: settings.py:27
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
 msgstr ""
 
-#: settings.py:34
+#: settings.py:35
 msgid ""
 "Path to the Storage subclass to use when storing the cached document image "
 "files."
 msgstr "Ceļš uz glabāšanas apakšklasi, ko izmanto, saglabājot kešatmiņā saglabāto dokumentu attēlu failus."
 
-#: settings.py:42
+#: settings.py:43
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
 msgstr "Argumenti, kas jānodod DOCUMENT_CACHE_STORAGE_BACKEND."
 
-#: settings.py:48
+#: settings.py:49
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
 msgstr "Atspējo pirmo kešatmiņas pakāpi, kurā tiek glabātas augstas izšķirtspējas, pārveidotu dokumentu lapu versijas."
 
-#: settings.py:55
+#: settings.py:56
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
 msgstr "Atspējo otro kešatmiņas pakāpi, kurā tiek saglabātas vidēja līdz zema izšķirtspēja, pārveidotas (pagrieztas, tālinātas utt.) Dokumentu lapu versijas."
 
-#: settings.py:69
+#: settings.py:70
 msgid "Maximum number of favorite documents to remember per user."
 msgstr "Maksimālais iecienīto dokumentu skaits, kas jāatceras katram lietotājam."
 
-#: settings.py:75
+#: settings.py:76
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
 "corresponding rotation transformation to display it rightside up. This is an"
 " experimental feature and it is disabled by default."
 msgstr "Atklājiet katra dokumenta lapas orientāciju un izveidojiet atbilstošu rotācijas transformāciju, lai parādītu to tiesības uz augšu. Šī ir eksperimentāla funkcija un pēc noklusējuma tā ir atspējota."
 
-#: settings.py:84
+#: settings.py:85
 msgid ""
 "Size of blocks to use when calculating the document file's checksum. A value"
 " of 0 disables the block calculation and the entire file will be loaded into"
 " memory."
 msgstr "Datu faila kontrolsummas aprēķināšanai izmantojamo bloku lielums. Vērtība 0 atspējo bloku aprēķinu un viss fails tiks ielādēts atmiņā."
 
-#: settings.py:91
+#: settings.py:92
 msgid "Default documents language (in ISO639-3 format)."
 msgstr "Noklusējuma dokumentu valoda (ISO639-3 formātā)."
 
-#: settings.py:95
+#: settings.py:96
 msgid "List of supported document languages. In ISO639-3 format."
 msgstr "Atbalstīto dokumentu valodu saraksts. ISO639-3 formātā."
 
-#: settings.py:100
+#: settings.py:101
 msgid ""
 "Time in seconds that the browser should cache the supplied document images. "
 "The default of 31559626 seconds corresponde to 1 year."
 msgstr "Laiks sekundēs, kad pārlūkam ir jāsniedz piegādāto dokumentu attēlu kešatmiņa. Noklusējuma vērtība 31559626 sekundes atbilst 1 gadam."
 
-#: settings.py:119
+#: settings.py:120
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
 msgstr "Maksimālais skaits nesen piekļūto (izveidoto, rediģēto, skatīto) dokumentu, kas jāatceras katram lietotājam."
 
-#: settings.py:126
+#: settings.py:127
 msgid "Maximum number of recently created documents to show."
 msgstr "Maksimālais nesen izveidoto dokumentu skaits."
 
-#: settings.py:132
+#: settings.py:133
 msgid "Amount in degrees to rotate a document page per user interaction."
 msgstr "Summa grādos, lai pagrieztu dokumenta lapu katrai lietotāja mijiedarbībai."
 
-#: settings.py:138
+#: settings.py:139
 msgid "Path to the Storage subclass to use when storing document files."
 msgstr "Ceļš uz glabāšanas apakšklasi, ko var izmantot, glabājot dokumentu failus."
 
-#: settings.py:145
+#: settings.py:146
 msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
 msgstr "Argumenti, kas jānodod DOCUMENT_STORAGE_BACKEND."
 
-#: settings.py:149
+#: settings.py:152
+msgid ""
+"Time after which a document stub will be considered invalid and deleted."
+msgstr ""
+
+#: settings.py:158
 msgid "Height in pixels of the document thumbnail image."
 msgstr "Dokumenta sīktēla attēla pikseļu augstums."
 
-#: settings.py:160
+#: settings.py:169
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
 msgstr "Maksimālā summa procentos (%), lai ļautu lietotājam interaktīvi tuvināt dokumenta lapu."
 
-#: settings.py:167
+#: settings.py:176
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
 msgstr "Minimālā summa procentos (%), lai ļautu lietotājam interaktīvi attālināt dokumentu lapu."
 
-#: settings.py:174
+#: settings.py:183
 msgid "Amount in percent zoom in or out a document page per user interaction."
 msgstr "Summa, kas procentos palielināta vai samazināta dokumenta lappusē katrai lietotāja mijiedarbībai."
 

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:42-0400\n"
-"PO-Revision-Date: 2019-12-20 12:48+0000\n"
-"Last-Translator: Harald Ersch\n"
+"POT-Creation-Date: 2020-03-18 01:31-0400\n"
+"PO-Revision-Date: 2020-03-18 05:34+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -263,13 +263,21 @@ msgstr "Un șir reprezentând codul de limbă pentru această instalare. Aceasta
 
 #: settings.py:265
 msgid ""
+"A tuple representing a HTTP header/value combination that signifies a "
+"request is secure. This controls the behavior of the request object’s "
+"is_secure() method. Warning: Modifying this setting can compromise your "
+"site’s security. Ensure you fully understand your setup before changing it."
+msgstr ""
+
+#: settings.py:276
+msgid ""
 "URL to use when referring to static files located in STATIC_ROOT. Example: "
 "\"/static/\" or \"http://static.example.com/\" If not None, this will be "
 "used as the base path for asset definitions (the Media class) and the "
 "staticfiles app. It must end in a slash if set to a non-empty value."
 msgstr "Adresa URL care trebuie utilizată atunci când se face referire la fișiere statice situate în STATIC_ROOT. Exemplu: \"/static /\" sau \"http://static.example.com/\" Dacă nu este niciunul, acesta va fi folosit ca și cale de bază pentru definirea activelor (clasa Media) și aplicația staticfiles. Trebuie să se încheie într-o bară, dacă este setată la o valoare care nu este goală."
 
-#: settings.py:276
+#: settings.py:287
 msgid ""
 "The file storage engine to use when collecting static files with the "
 "collectstatic management command. A ready-to-use instance of the storage "
@@ -277,14 +285,29 @@ msgid ""
 "django.contrib.staticfiles.storage.staticfiles_storage."
 msgstr "Motorul de stocare a fișierelor utilizat la colectarea fișierelor statice cu comanda de gestionare collectstatic. O instanță gata de utilizare a backend-ului de stocare definită în această setare poate fi găsită la django.contrib.staticfiles.storage.staticfiles_storage."
 
-#: settings.py:286
+#: settings.py:297
 msgid ""
 "A string representing the time zone for this installation. Note that this "
 "isn't necessarily the time zone of the server. For example, one server may "
 "serve multiple Django-powered sites, each with a separate time zone setting."
 msgstr "Un șir reprezentând fusul orar pentru această instalare. Rețineți că acest lucru nu este neapărat fusul orar al serverului. De exemplu, un server poate servi mai multe site-uri cu putere Django, fiecare având o setare de fus orar separată."
 
-#: settings.py:296
+#: settings.py:307
+msgid ""
+"A boolean that specifies whether to use the X-Forwarded-Host header in "
+"preference to the Host header. This should only be enabled if a proxy which "
+"sets this header is in use."
+msgstr ""
+
+#: settings.py:316
+msgid ""
+"A boolean that specifies whether to use the X-Forwarded-Port header in "
+"preference to the SERVER_PORT META variable. This should only be enabled if "
+"a proxy which sets this header is in use. USE_X_FORWARDED_HOST takes "
+"priority over this setting."
+msgstr ""
+
+#: settings.py:326
 msgid ""
 "The full Python path of the WSGI application object that Django's built-in "
 "servers (e.g. runserver) will use. The django-admin startproject management "

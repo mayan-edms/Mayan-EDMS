@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:40-0400\n"
+"POT-Creation-Date: 2020-03-18 01:29-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -97,76 +97,76 @@ msgstr "Retorne a entrada dos metadados do documento especificado."
 msgid "Return the specified document version file metadata entry."
 msgstr "Retorne a entrada dos metadados da versão do documento especificado."
 
-#: models.py:22
+#: models.py:21
 msgid "Driver path"
 msgstr "Caminho do driver"
 
-#: models.py:26
+#: models.py:25
 msgid "Internal name"
 msgstr "Nome interno"
 
-#: models.py:31 models.py:75
+#: models.py:30 models.py:74
 msgid "Driver"
 msgstr "Driver"
 
-#: models.py:32
+#: models.py:31
 msgid "Drivers"
 msgstr "Drivers"
 
-#: models.py:52
+#: models.py:51
 msgid "Document type"
 msgstr "Tipo de Documento"
 
-#: models.py:56
+#: models.py:55
 msgid "Automatically queue newly created documents for processing."
 msgstr ""
 "Enfileirar automaticamente os documentos recém criados para  processamento."
 
-#: models.py:63
+#: models.py:62
 msgid "Document type settings"
 msgstr "Configuração do tipo de documento"
 
-#: models.py:64
+#: models.py:63
 msgid "Document types settings"
 msgstr "Configurações de tipos de documentos"
 
-#: models.py:79
+#: models.py:78
 msgid "Document version"
 msgstr "Versão do Documento"
 
-#: models.py:85 models.py:101
+#: models.py:84 models.py:100
 msgid "Document version driver entry"
 msgstr "Entrada do driver da versão do documento"
 
-#: models.py:86
+#: models.py:85
 msgid "Document version driver entries"
 msgstr "Entradas do drivers da versão do documento"
 
-#: models.py:93
+#: models.py:92
 msgid "Attribute count"
 msgstr "Contagem de atributos"
 
-#: models.py:105
+#: models.py:104
 msgid "Name of the file metadata entry."
 msgstr "Nome da entrada de metadados do arquivo."
 
-#: models.py:106
+#: models.py:105
 msgid "Key"
 msgstr "Chave"
 
-#: models.py:109
+#: models.py:108
 msgid "Value of the file metadata entry."
 msgstr "Valor da entrada de metadados do arquivo"
 
-#: models.py:110
+#: models.py:109
 msgid "Value"
 msgstr "Valor"
 
-#: models.py:115
+#: models.py:114
 msgid "File metadata entry"
 msgstr "Entrada de metadados do arquivo"
 
-#: models.py:116
+#: models.py:115
 msgid "File metadata entries"
 msgstr "Entradas de metadados do arquivo"
 

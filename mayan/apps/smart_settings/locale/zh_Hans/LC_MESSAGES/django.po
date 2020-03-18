@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:42-0400\n"
-"PO-Revision-Date: 2020-02-10 08:24+0000\n"
+"POT-Creation-Date: 2020-03-18 01:31-0400\n"
+"PO-Revision-Date: 2020-03-18 05:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
@@ -263,13 +263,21 @@ msgstr ""
 
 #: settings.py:265
 msgid ""
+"A tuple representing a HTTP header/value combination that signifies a "
+"request is secure. This controls the behavior of the request object’s "
+"is_secure() method. Warning: Modifying this setting can compromise your "
+"site’s security. Ensure you fully understand your setup before changing it."
+msgstr ""
+
+#: settings.py:276
+msgid ""
 "URL to use when referring to static files located in STATIC_ROOT. Example: "
 "\"/static/\" or \"http://static.example.com/\" If not None, this will be "
 "used as the base path for asset definitions (the Media class) and the "
 "staticfiles app. It must end in a slash if set to a non-empty value."
 msgstr ""
 
-#: settings.py:276
+#: settings.py:287
 msgid ""
 "The file storage engine to use when collecting static files with the "
 "collectstatic management command. A ready-to-use instance of the storage "
@@ -277,14 +285,29 @@ msgid ""
 "django.contrib.staticfiles.storage.staticfiles_storage."
 msgstr ""
 
-#: settings.py:286
+#: settings.py:297
 msgid ""
 "A string representing the time zone for this installation. Note that this "
 "isn't necessarily the time zone of the server. For example, one server may "
 "serve multiple Django-powered sites, each with a separate time zone setting."
 msgstr ""
 
-#: settings.py:296
+#: settings.py:307
+msgid ""
+"A boolean that specifies whether to use the X-Forwarded-Host header in "
+"preference to the Host header. This should only be enabled if a proxy which "
+"sets this header is in use."
+msgstr ""
+
+#: settings.py:316
+msgid ""
+"A boolean that specifies whether to use the X-Forwarded-Port header in "
+"preference to the SERVER_PORT META variable. This should only be enabled if "
+"a proxy which sets this header is in use. USE_X_FORWARDED_HOST takes "
+"priority over this setting."
+msgstr ""
+
+#: settings.py:326
 msgid ""
 "The full Python path of the WSGI application object that Django's built-in "
 "servers (e.g. runserver) will use. The django-admin startproject management "
