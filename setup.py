@@ -56,7 +56,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-django==1.11.28
+django==1.11.29
 Pillow==6.2.2
 PyPDF2==1.26.0
 PyYAML==5.1.2
@@ -93,7 +93,7 @@ pycountry==18.12.8
 pyocr==0.6
 python-dateutil==2.8.0
 python-magic==0.4.15
-python_gnupg==0.3.9
+python_gnupg==0.4.5
 pytz==2019.1
 requests==2.21.0
 sh==1.12.14
