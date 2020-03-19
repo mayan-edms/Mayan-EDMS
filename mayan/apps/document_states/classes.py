@@ -104,7 +104,7 @@ class WorkflowAction(
 
     def get_form_schema(self, request=None):
         result = {
-            'fields': self.fields or (),
+            'fields': self.fields or {},
             'media': getattr(self, 'media', {}),
             'widgets': getattr(self, 'widgets', {}),
         }

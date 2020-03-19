@@ -84,4 +84,8 @@ TEST_SMALL_DOCUMENT_PATH = os.path.join(
     settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
     'sample_documents', TEST_SMALL_DOCUMENT_FILENAME
 )
+
+# Other
+
+TEST_TRASH_DOCUMENT_WORKFLOW_ACTION_DOTTED_PATH = 'mayan.apps.documents.workflow_actions.TrashDocumentAction'
 TEST_VERSION_COMMENT = 'test version comment'

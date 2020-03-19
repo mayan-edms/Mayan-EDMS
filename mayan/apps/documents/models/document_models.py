@@ -271,3 +271,10 @@ class Document(models.Model):
     @property
     def size(self):
         return self.latest_version.size
+
+
+class TrashedDocument(Document):
+    objects = TrashCanManager()
+
+    class Meta:
+        proxy = True

@@ -28,6 +28,7 @@
 - Add quotas app.
 - Add support for HTTP methods to the workflow HTTP request state action.
 - Update python-gnupg from version 0.3.9 to 0.4.5.
+- Add the trash document workflow state action.
 
 3.3.16 (2020-03-17)
 ===================

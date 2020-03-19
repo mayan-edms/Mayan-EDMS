@@ -196,7 +196,7 @@ class DocumentPropertiesEditActionTestCase(
 ):
     auto_upload_test_document = False
 
-    def test_document_properties_edit_action_field_literas(self):
+    def test_document_properties_edit_action_field_literals(self):
         self._upload_test_document()
 
         action = DocumentPropertiesEditAction(
