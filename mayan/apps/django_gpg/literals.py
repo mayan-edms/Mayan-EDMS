@@ -1,6 +1,14 @@
 from __future__ import unicode_literals
 
+import platform
+
 from django.utils.translation import ugettext_lazy as _
+
+if platform.system() in ('FreeBSD', 'OpenBSD', 'Darwin'):
+    DEFAULT_GPG_PATH = '/usr/local/bin/gpg1'
+else:
+    DEFAULT_GPG_PATH = '/usr/bin/gpg1'
+
 
 KEY_TYPES = {
     'pub': _('Public'),

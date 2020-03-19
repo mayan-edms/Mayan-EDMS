@@ -29,6 +29,12 @@
 - Add support for HTTP methods to the workflow HTTP request state action.
 - Update python-gnupg from version 0.3.9 to 0.4.5.
 - Add the trash document workflow state action.
+- Add support for GPG backends. Add two new settings ``SIGNATURES_BACKEND`` and
+  ``SIGNATURES_BACKEND_ARGUMENTS``. This change also removes two settings:
+  ``SIGNATURES_GPG_HOME`` and ``SIGNATURES_GPG_PATH``. ``SIGNATURES_GPG_HOME``
+  had already been deprecated and was innactive. ``SIGNATURES_GPG_PATH`` is now
+  component ``gpg_path`` of the setting ``SIGNATURES_BACKEND_ARGUMENTS``.
+- Add sane default paths for the GPG binary for Linux, FreeBSD, OpenBSD, and MaCOS.
 
 3.3.16 (2020-03-17)
 ===================
