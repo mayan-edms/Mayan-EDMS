@@ -12,6 +12,7 @@ from mayan.apps.common.literals import LIST_MODE_CHOICE_ITEM
 from .forms import SearchForm, AdvancedSearchForm
 from .icons import icon_search_submit
 from .mixins import SearchModelMixin
+from .runtime import search_backend
 
 logger = logging.getLogger(name=__name__)
 
@@ -46,8 +47,9 @@ class ResultsView(SearchModelMixin, SingleObjectListView):
             else:
                 global_and_search = False
 
-            queryset = self.search_model.search(
+            queryset = search_backend.search(
                 global_and_search=global_and_search,
+                search_model=self.search_model,
                 query_string=self.request.GET, user=self.request.user
             )
 

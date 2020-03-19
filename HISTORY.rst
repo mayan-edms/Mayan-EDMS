@@ -35,6 +35,9 @@
   had already been deprecated and was innactive. ``SIGNATURES_GPG_PATH`` is now
   component ``gpg_path`` of the setting ``SIGNATURES_BACKEND_ARGUMENTS``.
 - Add sane default paths for the GPG binary for Linux, FreeBSD, OpenBSD, and MaCOS.
+- Refactor the search app to support backends. Adds two new settings:
+  ``SEARCH_BACKEND`` (which defaults to ``mayan.apps.dynamic_search.backends.django.DjangoSearchBackend``)
+  and ``SEARCH_BACKEND_ARGUMENTS``.
 
 3.3.16 (2020-03-17)
 ===================

@@ -5,6 +5,8 @@ from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 
+from ..backends.django import DjangoSearchBackend
+
 
 class Issue46TestCase(DocumentTestMixin, GenericViewTestCase):
     """
@@ -20,6 +22,8 @@ class Issue46TestCase(DocumentTestMixin, GenericViewTestCase):
         for i in range(self.test_document_count):
             self._upload_test_document()
 
+        self.search_backend = DjangoSearchBackend()
+
     def test_advanced_search_past_first_page(self):
         test_document_label = self.test_documents[0].label
 
@@ -29,8 +33,10 @@ class Issue46TestCase(DocumentTestMixin, GenericViewTestCase):
             )
 
         # Make sure all documents are returned by the search
-        queryset = document_search.search(
-            {'label': test_document_label}, user=self._test_case_user
+        queryset = self.search_backend.search(
+            search_model=document_search,
+            query_string={'label': test_document_label},
+            user=self._test_case_user
         )
         self.assertEqual(queryset.count(), self.test_document_count)
 
