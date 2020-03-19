@@ -416,6 +416,6 @@ check-missing-migrations: ## Make sure all models have proper migrations.
 
 setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
 	pip install -r requirements.txt -r requirements/development.txt -r requirements/testing-base.txt -r requirements/documentation.txt -r requirements/build.txt
-	sudo apt-get install -y firefox-geckodriver
+	sudo apt-get install -y firefox-geckodriver gettext
 
 -include docker/Makefile

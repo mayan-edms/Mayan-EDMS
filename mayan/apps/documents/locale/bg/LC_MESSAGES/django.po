@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:39-0400\n"
-"PO-Revision-Date: 2020-02-11 14:42+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
+"POT-Creation-Date: 2020-03-18 01:28-0400\n"
+"PO-Revision-Date: 2020-03-18 05:33+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:131 apps.py:337 events.py:7 menus.py:10
-#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:18
+#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:19
 #: statistics.py:236
 msgid "Documents"
 msgstr "Документи"
@@ -437,7 +437,7 @@ msgstr "Възстанови"
 msgid "Empty trash"
 msgstr "Изпразни кошчето"
 
-#: literals.py:32
+#: literals.py:12
 msgid "Default"
 msgstr "По подразбиране"
 
@@ -770,105 +770,110 @@ msgstr "Качете нова версия на документа"
 msgid "Scan document duplicates"
 msgstr "Дублирания на сканове на документи"
 
-#: settings.py:26
+#: settings.py:27
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
 msgstr "Прагът, при който DOCUMENT_CACHE_STORAGE_BACKEND ще започне да изтрива най-старите файлове за кеш на изображение на документ. Посочете размера в байтове."
 
-#: settings.py:34
+#: settings.py:35
 msgid ""
 "Path to the Storage subclass to use when storing the cached document image "
 "files."
 msgstr "Път към подклас Storage, който да се използва при съхранение на кешираните файлове с изображения на документи."
 
-#: settings.py:42
+#: settings.py:43
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
 msgstr "Аргументи за подаване към DOCUMENT_CACHE_STORAGE_BACKEND."
 
-#: settings.py:48
+#: settings.py:49
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
 msgstr "Деактивира първия слой на кеша, който съхранява нетрансформирани версии на страниците на документи с висока разделителна способност."
 
-#: settings.py:55
+#: settings.py:56
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
 msgstr "Деактивира втория кеш слой, който съхранява средни до ниски разделителни способности, трансформирани (завъртяни, увеличени и т.н.) версии на страниците на документи."
 
-#: settings.py:69
+#: settings.py:70
 msgid "Maximum number of favorite documents to remember per user."
 msgstr "Максимален брой любими документи за запомняне на потребител."
 
-#: settings.py:75
+#: settings.py:76
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
 "corresponding rotation transformation to display it rightside up. This is an"
 " experimental feature and it is disabled by default."
 msgstr "Открийте ориентацията на всяка от страниците на документа и създайте съответна ротационна трансформация, за да я покажете с дясната страна отгоре. Това е експериментална функция и е деактивирана по подразбиране."
 
-#: settings.py:84
+#: settings.py:85
 msgid ""
 "Size of blocks to use when calculating the document file's checksum. A value"
 " of 0 disables the block calculation and the entire file will be loaded into"
 " memory."
 msgstr "Размер на блоковете, които да се използват при изчисляване на контролната сума на файла на документа. Стойност 0 деактивира изчислението на блока и целият файл ще бъде зареден в паметта."
 
-#: settings.py:91
+#: settings.py:92
 msgid "Default documents language (in ISO639-3 format)."
 msgstr "Език на документи по подразбиране (във формат ISO639-3)."
 
-#: settings.py:95
+#: settings.py:96
 msgid "List of supported document languages. In ISO639-3 format."
 msgstr "Списък на поддържаните езици на документи. Във формат ISO639-3"
 
-#: settings.py:100
+#: settings.py:101
 msgid ""
 "Time in seconds that the browser should cache the supplied document images. "
 "The default of 31559626 seconds corresponde to 1 year."
 msgstr "Време за секунди за което браузърът трябва да кешира предоставените изображения на документи. По подразбиране 31559626 секунди съответства на 1 година."
 
-#: settings.py:119
+#: settings.py:120
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
 msgstr "Максимален брой наскоро ползвани (създадени, редактирани, прегледани) документи, които да се запомнят на потребител."
 
-#: settings.py:126
+#: settings.py:127
 msgid "Maximum number of recently created documents to show."
 msgstr "Максимален брой наскоро създадени документи за показване."
 
-#: settings.py:132
+#: settings.py:133
 msgid "Amount in degrees to rotate a document page per user interaction."
 msgstr "Градуси на завъртане на страница от документ, при потребителско действие"
 
-#: settings.py:138
+#: settings.py:139
 msgid "Path to the Storage subclass to use when storing document files."
 msgstr "Път към подклас Storage, който да се използва при съхранение на файлове с документи."
 
-#: settings.py:145
+#: settings.py:146
 msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
 msgstr "Аргументи за подаване към DOCUMENT_STORAGE_BACKEND."
 
-#: settings.py:149
+#: settings.py:152
+msgid ""
+"Time after which a document stub will be considered invalid and deleted."
+msgstr ""
+
+#: settings.py:158
 msgid "Height in pixels of the document thumbnail image."
 msgstr "Височина в пиксели на миниатюрното изображение на документа."
 
-#: settings.py:160
+#: settings.py:169
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
 msgstr "Максимален процент (%) допустим за интерактивно увеличаване страницата от потребителя"
 
-#: settings.py:167
+#: settings.py:176
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
 msgstr "Минимален процент (%) допустим за интерактивно смаляване страницата от потребителя"
 
-#: settings.py:174
+#: settings.py:183
 msgid "Amount in percent zoom in or out a document page per user interaction."
 msgstr "Процент приближаване или отдалечаване на страницата на документа, приложен за потребителя"
 

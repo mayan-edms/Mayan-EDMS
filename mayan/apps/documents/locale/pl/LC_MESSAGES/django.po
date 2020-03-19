@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:39-0400\n"
-"PO-Revision-Date: 2020-02-13 18:48+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
+"POT-Creation-Date: 2020-03-18 01:28-0400\n"
+"PO-Revision-Date: 2020-03-18 05:33+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:131 apps.py:337 events.py:7 menus.py:10
-#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:18
+#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:19
 #: statistics.py:236
 msgid "Documents"
 msgstr "Dokumenty"
@@ -440,7 +440,7 @@ msgstr "Odtwórz"
 msgid "Empty trash"
 msgstr "Opróżnij kosz"
 
-#: literals.py:32
+#: literals.py:12
 msgid "Default"
 msgstr "Domyślne"
 
@@ -773,105 +773,110 @@ msgstr "Prześlij nową wersję dokumentu"
 msgid "Scan document duplicates"
 msgstr "Wyszukaj duplikatów dokumentów."
 
-#: settings.py:26
+#: settings.py:27
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
 msgstr ""
 
-#: settings.py:34
+#: settings.py:35
 msgid ""
 "Path to the Storage subclass to use when storing the cached document image "
 "files."
 msgstr "Ścieżka na dysku do zapamiętywania tymczasowych obrazów dokumentu. "
 
-#: settings.py:42
+#: settings.py:43
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
 msgstr "Argumenty do przekazania do DOCUMENT_CACHE_STORAGE_BACKEND."
 
-#: settings.py:48
+#: settings.py:49
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
 msgstr "Wyłącza pierwszy poziom pamięci podręcznej, która przechowuje strony dokumentu w wersjach o wysokiej rozdzielczości, nieprzekształcone."
 
-#: settings.py:55
+#: settings.py:56
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
 msgstr "Wyłącza drugi poziom pamięci podręcznej, która przechowuje strony dokumentu w wersjach od średniej do niskiej rozdzielczości, przekształcone (obrócone, powiększone, itp.)."
 
-#: settings.py:69
+#: settings.py:70
 msgid "Maximum number of favorite documents to remember per user."
 msgstr "Maksymalna liczba ulubionych dokumentów do zapamiętania na użytkownika."
 
-#: settings.py:75
+#: settings.py:76
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
 "corresponding rotation transformation to display it rightside up. This is an"
 " experimental feature and it is disabled by default."
 msgstr ""
 
-#: settings.py:84
+#: settings.py:85
 msgid ""
 "Size of blocks to use when calculating the document file's checksum. A value"
 " of 0 disables the block calculation and the entire file will be loaded into"
 " memory."
 msgstr ""
 
-#: settings.py:91
+#: settings.py:92
 msgid "Default documents language (in ISO639-3 format)."
 msgstr "Domyślny język dokumentów (w formacie ISO639-3)."
 
-#: settings.py:95
+#: settings.py:96
 msgid "List of supported document languages. In ISO639-3 format."
 msgstr "Lista wspieranych języków dokumentu w formacie ISO639-3."
 
-#: settings.py:100
+#: settings.py:101
 msgid ""
 "Time in seconds that the browser should cache the supplied document images. "
 "The default of 31559626 seconds corresponde to 1 year."
 msgstr "Czas w sekundach, przez który przeglądarka powinna buforować dostarczone obrazy dokumentów. Domyślnie 31559626 sekund odpowiada 1 rokowi."
 
-#: settings.py:119
+#: settings.py:120
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
 msgstr "Maksymalna liczba ostatnio otwieranych (tworzonych, edytowanych, przeglądanych) dokumentów do zapamiętania na użytkownika."
 
-#: settings.py:126
+#: settings.py:127
 msgid "Maximum number of recently created documents to show."
 msgstr "Maksymalna liczba ostatnio utworzonych dokumentów do wyświetlenia."
 
-#: settings.py:132
+#: settings.py:133
 msgid "Amount in degrees to rotate a document page per user interaction."
 msgstr "Kąt obrotu strony dokumentu przez użytkownika."
 
-#: settings.py:138
+#: settings.py:139
 msgid "Path to the Storage subclass to use when storing document files."
 msgstr "Ścieżka do podklasy Storage używana podczas przechowywania plików dokumentów."
 
-#: settings.py:145
+#: settings.py:146
 msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
 msgstr "Argumenty do przekazania do DOCUMENT_STORAGE_BACKEND."
 
-#: settings.py:149
+#: settings.py:152
+msgid ""
+"Time after which a document stub will be considered invalid and deleted."
+msgstr ""
+
+#: settings.py:158
 msgid "Height in pixels of the document thumbnail image."
 msgstr "Wysokość miniatury dokumentu w pikselach."
 
-#: settings.py:160
+#: settings.py:169
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
 msgstr "Maksymalna, procentowa (%) skala powiększenia strony dokumentu przez użytkownika."
 
-#: settings.py:167
+#: settings.py:176
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
 msgstr "Minimalna, procentowa (%) skala pomniejszenia strony dokumentu przez użytkownika."
 
-#: settings.py:174
+#: settings.py:183
 msgid "Amount in percent zoom in or out a document page per user interaction."
 msgstr "Liczba punktów procentowych powiększenia lub pomniejszenia strony dokumentu przez użytkownika."
 

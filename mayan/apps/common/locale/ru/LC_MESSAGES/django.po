@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:38-0400\n"
+"POT-Creation-Date: 2020-03-18 01:26-0400\n"
 "PO-Revision-Date: 2020-02-21 05:40+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -89,37 +89,37 @@ msgstr ""
 msgid "Remove"
 msgstr "Удалить"
 
-#: generics.py:524
+#: generics.py:523
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr ""
 
-#: generics.py:546
+#: generics.py:544
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s не создан, ошибка: %(error)s"
 
-#: generics.py:559
+#: generics.py:557
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s успешно создан."
 
-#: generics.py:598
+#: generics.py:596
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s не удалён, ошибка: %(error)s."
 
-#: generics.py:607
+#: generics.py:605
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s успешно удалён."
 
-#: generics.py:743
+#: generics.py:741
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s не обновлён, ошибка: %(error)s."
 
-#: generics.py:754
+#: generics.py:752
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s успешно обновлён."

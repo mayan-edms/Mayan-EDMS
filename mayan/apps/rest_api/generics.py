@@ -17,6 +17,10 @@ class ListAPIView(generics.ListAPIView):
         object_permission = {'GET': ...}
     """
     filter_backends = (MayanObjectPermissionsFilter,)
+    # permission_classes is required for the EventListAPIView
+    # when Actions objects support ACLs then this can be removed
+    # as was intented.
+    permission_classes = (MayanPermission,)
 
 
 class ListCreateAPIView(generics.ListCreateAPIView):

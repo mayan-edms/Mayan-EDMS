@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2020
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:41-0400\n"
-"PO-Revision-Date: 2019-12-13 05:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-18 01:29-0400\n"
+"PO-Revision-Date: 2020-03-05 19:16+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,17 +42,17 @@ msgstr "Wysyłanie"
 
 #: events.py:10
 msgid "Email sent"
-msgstr ""
+msgstr "E-mail został wysłany"
 
 #: forms.py:60 forms.py:124
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
-msgstr ""
+msgstr "Adres e-mail odbiorcy. Możesz podać wiele adresów oddzielonych przecinkiem lub średnikiem."
 
 #: forms.py:62 forms.py:126
 msgid "Email address"
-msgstr "Adres e-mail:"
+msgstr "Adres e-mail"
 
 #: forms.py:64 workflow_actions.py:40
 msgid "Subject"
@@ -64,19 +64,19 @@ msgstr "Treść"
 
 #: forms.py:70
 msgid "The email profile that will be used to send this email."
-msgstr ""
+msgstr "Profil e-mail, który zostanie użyty do wysłania tego e-maila."
 
 #: forms.py:71 models.py:71 views.py:239 workflow_actions.py:22
 msgid "Mailing profile"
-msgstr ""
+msgstr "Profil pocztowy"
 
 #: forms.py:77
 msgid "The driver to use when sending emails."
-msgstr ""
+msgstr "Sterownik używany podczas wysyłania wiadomości e-mail."
 
 #: forms.py:78
 msgid "Backend"
-msgstr ""
+msgstr "Backend"
 
 #: links.py:18 links.py:28
 msgid "Email document"
@@ -88,11 +88,11 @@ msgstr "Link e-mail"
 
 #: links.py:37
 msgid "System mailer error log"
-msgstr ""
+msgstr "Systemowy dziennik błędów mailera"
 
 #: links.py:42
 msgid "Create mailing profile "
-msgstr ""
+msgstr "Utwórz profil pocztowy"
 
 #: links.py:48
 msgid "Delete"
@@ -104,15 +104,15 @@ msgstr "Edytuj"
 
 #: links.py:58
 msgid "Log"
-msgstr ""
+msgstr "Dziennik zdarzeń"
 
 #: links.py:63
 msgid "Mailing profiles list"
-msgstr ""
+msgstr "Lista profili mailingowych"
 
 #: links.py:68 models.py:72
 msgid "Mailing profiles"
-msgstr ""
+msgstr "Profile mailingowe"
 
 #: links.py:74 views.py:261
 msgid "Test"
@@ -125,7 +125,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "Do tego e-maila dołączono dokument: {{document}} -------- Ten e-mail został wysłany z %(project_title)s (%(project_website)s)"
 
 #: literals.py:11
 msgid "Document: {{ document }}"
@@ -138,7 +138,7 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "Aby uzyskać dostęp do tego dokumentu, kliknij następujący link: {{link}} -------- Ten e-mail został wysłany z %(project_title)s (%(project_website)s)"
 
 #: literals.py:17
 msgid "Link for document: {{ document }}"
@@ -146,13 +146,13 @@ msgstr "Link dla dokumentu: {{ document }}"
 
 #: mailers.py:23 mailers.py:112
 msgid "From"
-msgstr ""
+msgstr "Od"
 
 #: mailers.py:26 mailers.py:115
 msgid ""
 "The sender's address. Some system will refuse to send messages if this value"
 " is not set."
-msgstr ""
+msgstr "Adres nadawcy. Niektóre systemy odmówią wysłania wiadomości, jeśli ta wartość nie zostanie ustawiona."
 
 #: mailers.py:32
 msgid "Host"
@@ -225,7 +225,7 @@ msgstr "Ścieżka pliku"
 
 #: mailers.py:122
 msgid "Django file based backend"
-msgstr ""
+msgstr "Backend oparty na pliku Django"
 
 #: models.py:27 models.py:226
 msgid "Date time"
@@ -241,7 +241,7 @@ msgstr "Wpisy do dziennika"
 
 #: models.py:48
 msgid "A short text describing the mailing profile."
-msgstr ""
+msgstr "Krótki tekst opisujący profil pocztowy."
 
 #: models.py:49
 msgid "Label"
@@ -251,7 +251,7 @@ msgstr "Etykieta"
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr ""
+msgstr "Domyślnie ten profil pocztowy zostanie wstępnie wybrany w formularzu wysyłkowym dokumentu."
 
 #: models.py:55
 msgid "Default"
@@ -283,15 +283,15 @@ msgstr "Test wiadomości e-mail z Mayan EDMS"
 
 #: models.py:223
 msgid "User mailer"
-msgstr ""
+msgstr "Mailer użytkownika"
 
 #: models.py:235
 msgid "User mailer log entry"
-msgstr ""
+msgstr "Wpis dziennika użytkownika"
 
 #: models.py:236
 msgid "User mailer log entries"
-msgstr ""
+msgstr "Wpisy dziennika użytkownika poczty"
 
 #: permissions.py:10
 msgid "Send document link via email"
@@ -303,27 +303,27 @@ msgstr "Wyślij dokument za pomocą e-mail"
 
 #: permissions.py:16
 msgid "View system mailing error log"
-msgstr ""
+msgstr "Wyświetl dziennik błędów wysyłania wiadomości systemowych"
 
 #: permissions.py:19
 msgid "Create a mailing profile"
-msgstr ""
+msgstr "Utwórz profil pocztowy"
 
 #: permissions.py:22
 msgid "Delete a mailing profile"
-msgstr ""
+msgstr "Usuń profil pocztowy"
 
 #: permissions.py:25
 msgid "Edit a mailing profile"
-msgstr ""
+msgstr "Edytuj profil pocztowy"
 
 #: permissions.py:28
 msgid "View a mailing profile"
-msgstr ""
+msgstr "Wyświetl profil pocztowy"
 
 #: permissions.py:31
 msgid "Use a mailing profile"
-msgstr ""
+msgstr "Użyj profilu pocztowego"
 
 #: queues.py:10
 msgid "Send document"
@@ -335,7 +335,7 @@ msgstr "Szablon tematu wiadomości email"
 
 #: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
-msgstr ""
+msgstr "Szablon tekstu e-maila formularza dokumentu. Może zawierać HTML."
 
 #: settings.py:26
 msgid "Template for the document link email form subject line."
@@ -343,12 +343,12 @@ msgstr "Szablon tematu wiadomości - link"
 
 #: settings.py:31
 msgid "Template for the document link email form body text. Can include HTML."
-msgstr ""
+msgstr "Szablon tekstu wiadomości e-mail z linkiem do dokumentu. Może zawierać HTML."
 
 #: validators.py:14
 #, python-format
 msgid "%(email)s is not a valid email address."
-msgstr ""
+msgstr "%(email)s nie jest prawidłowym adresem e-mail."
 
 #: views.py:38
 msgid "Document mailing error log"
@@ -357,12 +357,12 @@ msgstr "Błędy wysyłania dokumentów"
 #: views.py:50
 #, python-format
 msgid "%(count)d document queued for email delivery"
-msgstr ""
+msgstr "Dokument %(count)d w kolejce do dostarczenia wiadomości e-mail"
 
 #: views.py:52
 #, python-format
 msgid "%(count)d documents queued for email delivery"
-msgstr ""
+msgstr "Dokumenty %(count)d w kolejce do dostarczenia wiadomości e-mail"
 
 #: views.py:63
 msgid "Send"
@@ -385,22 +385,22 @@ msgstr ""
 #: views.py:152
 #, python-format
 msgid "Create a \"%s\" mailing profile"
-msgstr ""
+msgstr "Utwórz profil pocztowy „%s”"
 
 #: views.py:178
 #, python-format
 msgid "Delete mailing profile: %s"
-msgstr ""
+msgstr "Usuń profil pocztowy: %s"
 
 #: views.py:189
 #, python-format
 msgid "Edit mailing profile: %s"
-msgstr ""
+msgstr "Edytuj profil pocztowy: %s"
 
 #: views.py:212
 #, python-format
 msgid "Error log for: %s"
-msgstr ""
+msgstr "Dziennik błędów dla: %s"
 
 #: views.py:234
 msgid ""
@@ -410,24 +410,24 @@ msgstr ""
 
 #: views.py:238
 msgid "No mailing profiles available"
-msgstr ""
+msgstr "Brak dostępnych profili mailingowych"
 
 #: views.py:253
 msgid "Test email sent."
-msgstr ""
+msgstr "Wysłano testowy e-mail."
 
 #: views.py:262
 #, python-format
 msgid "Test mailing profile: %s"
-msgstr ""
+msgstr "Testowy profil pocztowy: %s"
 
 #: workflow_actions.py:24
 msgid "Mailing profile to use when sending the email."
-msgstr ""
+msgstr "Profil pocztowy używany podczas wysyłania wiadomości e-mail."
 
 #: workflow_actions.py:29
 msgid "Recipient"
-msgstr ""
+msgstr "Odbiorca"
 
 #: workflow_actions.py:32
 msgid ""
@@ -438,27 +438,27 @@ msgstr ""
 
 #: workflow_actions.py:43
 msgid "Subject of the email. Can be a string or a template."
-msgstr ""
+msgstr "Temat wiadomości e-mail. Może być ciągiem lub szablonem."
 
 #: workflow_actions.py:52
 msgid "Body of the email to send. Can be a string or a template."
-msgstr ""
+msgstr "Treść wiadomości e-mail do wysłania. Może być ciągiem lub szablonem."
 
 #: workflow_actions.py:59
 msgid "Send email"
-msgstr ""
+msgstr "Wyślij email"
 
 #: workflow_actions.py:74
 #, python-format
 msgid "Recipient template error: %s"
-msgstr ""
+msgstr "Błąd szablonu adresata: %s"
 
 #: workflow_actions.py:85
 #, python-format
 msgid "Subject template error: %s"
-msgstr ""
+msgstr "Błąd szablonu tematu: %s"
 
 #: workflow_actions.py:96
 #, python-format
 msgid "Body template error: %s"
-msgstr ""
+msgstr "Błąd szablonu treści: %s"

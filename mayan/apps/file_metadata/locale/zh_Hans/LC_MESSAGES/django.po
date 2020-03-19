@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:40-0400\n"
+"POT-Creation-Date: 2020-03-18 01:29-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -90,75 +90,75 @@ msgstr ""
 msgid "Return the specified document version file metadata entry."
 msgstr ""
 
-#: models.py:22
+#: models.py:21
 msgid "Driver path"
 msgstr ""
 
-#: models.py:26
+#: models.py:25
 msgid "Internal name"
 msgstr "内部名称"
 
-#: models.py:31 models.py:75
+#: models.py:30 models.py:74
 msgid "Driver"
 msgstr ""
 
-#: models.py:32
+#: models.py:31
 msgid "Drivers"
 msgstr ""
 
-#: models.py:52
+#: models.py:51
 msgid "Document type"
 msgstr "文档类型"
 
-#: models.py:56
+#: models.py:55
 msgid "Automatically queue newly created documents for processing."
 msgstr ""
 
-#: models.py:63
+#: models.py:62
 msgid "Document type settings"
 msgstr "文档类型设置"
 
-#: models.py:64
+#: models.py:63
 msgid "Document types settings"
 msgstr "文档类型设置"
 
-#: models.py:79
+#: models.py:78
 msgid "Document version"
 msgstr "文档版本"
 
-#: models.py:85 models.py:101
+#: models.py:84 models.py:100
 msgid "Document version driver entry"
 msgstr ""
 
-#: models.py:86
+#: models.py:85
 msgid "Document version driver entries"
 msgstr ""
 
-#: models.py:93
+#: models.py:92
 msgid "Attribute count"
 msgstr ""
 
-#: models.py:105
+#: models.py:104
 msgid "Name of the file metadata entry."
 msgstr ""
 
-#: models.py:106
+#: models.py:105
 msgid "Key"
 msgstr "密钥"
 
-#: models.py:109
+#: models.py:108
 msgid "Value of the file metadata entry."
 msgstr ""
 
-#: models.py:110
+#: models.py:109
 msgid "Value"
 msgstr "值"
 
-#: models.py:115
+#: models.py:114
 msgid "File metadata entry"
 msgstr ""
 
-#: models.py:116
+#: models.py:115
 msgid "File metadata entries"
 msgstr ""
 

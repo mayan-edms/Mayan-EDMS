@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:39-0400\n"
-"PO-Revision-Date: 2020-01-29 07:43+0000\n"
+"POT-Creation-Date: 2020-03-18 01:28-0400\n"
+"PO-Revision-Date: 2020-03-18 05:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:131 apps.py:337 events.py:7 menus.py:10
-#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:18
+#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:19
 #: statistics.py:236
 msgid "Documents"
 msgstr "Documentos"
@@ -437,7 +437,7 @@ msgstr "Restaurar"
 msgid "Empty trash"
 msgstr "Vaciar papelera"
 
-#: literals.py:32
+#: literals.py:12
 msgid "Default"
 msgstr "Por defecto"
 
@@ -770,105 +770,110 @@ msgstr "Subir nueva versión del documento"
 msgid "Scan document duplicates"
 msgstr "Escanear documentos duplicados"
 
-#: settings.py:26
+#: settings.py:27
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
 msgstr "El umbral en el que DOCUMENT_CACHE_STORAGE_BACKEND comenzará a eliminar los archivos de caché de imágenes de documentos más antiguos. Especifique el tamaño en bytes."
 
-#: settings.py:34
+#: settings.py:35
 msgid ""
 "Path to the Storage subclass to use when storing the cached document image "
 "files."
 msgstr "Ruta a la subclase Storage para usar cuando se almacenan los archivos de imagen del documento en caché."
 
-#: settings.py:42
+#: settings.py:43
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
 msgstr "Argumentos para pasar al DOCUMENT_CACHE_STORAGE_BACKEND."
 
-#: settings.py:48
+#: settings.py:49
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
 msgstr "Deshabilita el primer nivel de caché que almacena las versiones de las páginas de documentos que no son transformadas de alta resolución."
 
-#: settings.py:55
+#: settings.py:56
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
 msgstr "Deshabilita el segundo nivel de memoria caché que almacena versiones de páginas de documentos de media a baja resolución, transformadas (giradas, ampliadas, etc.)."
 
-#: settings.py:69
+#: settings.py:70
 msgid "Maximum number of favorite documents to remember per user."
 msgstr "Número máximo de documentos favoritos para recordar por usuario."
 
-#: settings.py:75
+#: settings.py:76
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
 "corresponding rotation transformation to display it rightside up. This is an"
 " experimental feature and it is disabled by default."
 msgstr "Detecta la orientación de cada una de las páginas del documento y crea una transformación de rotación correspondiente para mostrarla a la derecha. Esta es una función experimental y está deshabilitada por defecto."
 
-#: settings.py:84
+#: settings.py:85
 msgid ""
 "Size of blocks to use when calculating the document file's checksum. A value"
 " of 0 disables the block calculation and the entire file will be loaded into"
 " memory."
 msgstr "Tamaño de los bloques que se utilizarán al calcular la suma de comprobación del archivo de documento. Un valor de 0 desactiva el cálculo de bloque y todo el archivo se cargará en la memoria."
 
-#: settings.py:91
+#: settings.py:92
 msgid "Default documents language (in ISO639-3 format)."
 msgstr "Idioma predeterminado de los documentos (en formato ISO639-3)."
 
-#: settings.py:95
+#: settings.py:96
 msgid "List of supported document languages. In ISO639-3 format."
 msgstr "Lista de idiomas de documentos apoyados. En formato ISO639-3."
 
-#: settings.py:100
+#: settings.py:101
 msgid ""
 "Time in seconds that the browser should cache the supplied document images. "
 "The default of 31559626 seconds corresponde to 1 year."
 msgstr "Tiempo en segundos que el navegador debe almacenar en caché las imágenes del documento suministradas. El valor predeterminado de 31559626 segundos corresponde a 1 año."
 
-#: settings.py:119
+#: settings.py:120
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
 msgstr "Número máximo de documentos recientemente accedidos (creados, editados, vistos) para recordar por usuario."
 
-#: settings.py:126
+#: settings.py:127
 msgid "Maximum number of recently created documents to show."
 msgstr "Número máximo de documentos creados recientemente para mostrar."
 
-#: settings.py:132
+#: settings.py:133
 msgid "Amount in degrees to rotate a document page per user interaction."
 msgstr "Cantidad de grados que se va a girar una página de documento por cada acción del usuario."
 
-#: settings.py:138
+#: settings.py:139
 msgid "Path to the Storage subclass to use when storing document files."
 msgstr "Ruta a la subclase Storage para usar cuando se almacenan archivos de documentos."
 
-#: settings.py:145
+#: settings.py:146
 msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
 msgstr "Argumentos para pasar a DOCUMENT_STORAGE_BACKEND."
 
-#: settings.py:149
+#: settings.py:152
+msgid ""
+"Time after which a document stub will be considered invalid and deleted."
+msgstr ""
+
+#: settings.py:158
 msgid "Height in pixels of the document thumbnail image."
 msgstr "Altura en píxeles de la imagen en miniatura del documento."
 
-#: settings.py:160
+#: settings.py:169
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
 msgstr "Cantidad máxima en porcentaje (%) a permitir al usuario aumentar la página del documento de forma interactiva."
 
-#: settings.py:167
+#: settings.py:176
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
 msgstr "Cantidad mínima en porcentaje (%) a permitir al usuario disminuir la página del documento de forma interactiva."
 
-#: settings.py:174
+#: settings.py:183
 msgid "Amount in percent zoom in or out a document page per user interaction."
 msgstr "Cantidad en porcentaje a acercar o alejar una página de documento por cada interacción del usuario."
 

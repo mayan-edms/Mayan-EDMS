@@ -29,6 +29,24 @@
 - Add support for HTTP methods to the workflow HTTP request state action.
 - Update python-gnupg from version 0.3.9 to 0.4.5.
 
+3.3.16 (2020-03-17)
+===================
+- Fix minor release notes typographical errors.
+- Update psutil from version 5.6.3 to 5.7.0. CVE-2019-18874
+  (https://nvd.nist.gov/vuln/detail/CVE-2019-18874)
+- Update python-gnupg from version 0.3.9 to 0.4.5. CVE-2019-6690
+  (https://nvd.nist.gov/vuln/detail/CVE-2019-6690)
+- Update django from version 1.11.28 to 1.11.29. CVE-2020-9402
+  (https://nvd.nist.gov/vuln/detail/CVE-2020-9402)
+- Decrease the code and data inside the transaction. Removes a file caching
+  creation from inside a database transaction. Attempted fix for
+  GitLab issues #782 and #735.
+- Fix OCR model property. It was listed as document.content instead of
+  document.ocr_content.
+- Revert an API permission change for the EventList API view.
+  Fixes GitLab issue #794. Thanks to Matthew Grady (@FlowerCoffeeCup)
+  for the report and investigation.
+
 3.3.15 (2020-03-05)
 ===================
 - Add Docker environment setting ``MAYAN_SKIP_CHOWN_ON_STARTUP`` to skip

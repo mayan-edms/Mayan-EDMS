@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:43-0400\n"
-"PO-Revision-Date: 2019-06-28 11:50+0000\n"
-"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"POT-Creation-Date: 2020-03-18 01:31-0400\n"
+"PO-Revision-Date: 2020-03-18 05:34+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -278,11 +278,11 @@ msgstr "Noņemt"
 
 #: views.py:300
 #, python-format
-msgid "Remove tags to %(count)d document"
-msgid_plural "Remove tags to %(count)d documents"
-msgstr[0] "Noņemiet tagus dokumentiem %(count)d"
-msgstr[1] "Noņemiet tagus dokumentam %(count)d"
-msgstr[2] "Noņemiet tagus dokumentiem %(count)d"
+msgid "Remove tags from %(count)d document"
+msgid_plural "Remove tags from %(count)d documents"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: views.py:312
 #, python-format

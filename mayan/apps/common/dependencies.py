@@ -369,7 +369,7 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='psutil',
-    version_string='==5.6.3'
+    version_string='==5.7.0'
 )
 
 # Build
