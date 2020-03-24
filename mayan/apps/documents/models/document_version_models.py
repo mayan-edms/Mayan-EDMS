@@ -20,13 +20,15 @@ from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.transformations import TransformationRotate
 from mayan.apps.converter.utils import get_converter_class
 from mayan.apps.mimetype.api import get_mimetype
+from mayan.apps.storage.classes import DefinedStorageLazy
 
 from ..events import event_document_version_new, event_document_version_revert
-from ..literals import DOCUMENT_IMAGES_CACHE_NAME
+from ..literals import (
+    STORAGE_NAME_DOCUMENT_IMAGE, STORAGE_NAME_DOCUMENT_VERSION
+)
 from ..managers import DocumentVersionManager
 from ..settings import setting_fix_orientation, setting_hash_block_size
 from ..signals import post_document_created, post_version_upload
-from ..storages import storage_documentversion
 
 from .document_models import Document
 
@@ -78,11 +80,10 @@ class DocumentVersion(models.Model):
             'An optional short text describing the document version.'
         ), verbose_name=_('Comment')
     )
-
     # File related fields
     file = models.FileField(
-        storage=storage_documentversion, upload_to=UUID_FUNCTION,
-        verbose_name=_('File')
+        storage=DefinedStorageLazy(name=STORAGE_NAME_DOCUMENT_VERSION),
+        upload_to=UUID_FUNCTION, verbose_name=_('File')
     )
     mimetype = models.CharField(
         blank=True, editable=False, help_text=_(
@@ -153,7 +154,9 @@ class DocumentVersion(models.Model):
     @cached_property
     def cache(self):
         Cache = apps.get_model(app_label='file_caching', model_name='Cache')
-        return Cache.objects.get(name=DOCUMENT_IMAGES_CACHE_NAME)
+        return Cache.objects.get(
+            defined_storage_name=STORAGE_NAME_DOCUMENT_IMAGE
+        )
 
     @cached_property
     def cache_partition(self):
@@ -423,6 +426,8 @@ class DocumentVersion(models.Model):
             self.checksum = force_text(hash_object.hexdigest())
             if save:
                 self.save()
+
+            return self.checksum
 
     def update_mimetype(self, save=True):
         """

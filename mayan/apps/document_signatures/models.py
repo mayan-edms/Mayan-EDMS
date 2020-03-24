@@ -13,9 +13,10 @@ from model_utils.managers import InheritanceManager
 from mayan.apps.django_gpg.exceptions import VerificationError
 from mayan.apps.django_gpg.models import Key
 from mayan.apps.documents.models import DocumentVersion
+from mayan.apps.storage.classes import DefinedStorageLazy
 
+from .literals import STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE
 from .managers import DetachedSignatureManager, EmbeddedSignatureManager
-from .storages import storage_detachedsignature
 
 logger = logging.getLogger(name=__name__)
 
@@ -133,8 +134,9 @@ class DetachedSignature(SignatureBaseModel):
     signature_file = models.FileField(
         blank=True, help_text=_(
             'Signature file previously generated.'
-        ), null=True, storage=storage_detachedsignature,
-        upload_to=upload_to, verbose_name=_('Signature file')
+        ), null=True, storage=DefinedStorageLazy(
+            name=STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE
+        ), upload_to=upload_to, verbose_name=_('Signature file')
     )
 
     objects = DetachedSignatureManager()

@@ -1,29 +1,26 @@
 from __future__ import unicode_literals
 
-import logging
+from django.utils.translation import ugettext_lazy as _
 
-from django.utils.six import raise_from
+from mayan.apps.storage.classes import DefinedStorage
 
-from mayan.apps.storage.utils import get_storage_subclass
-
+from .literals import STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE
 from .settings import (
     setting_storage_backend, setting_storage_backend_arguments
 )
 
-logger = logging.getLogger(name=__name__)
 
-try:
-    storage_detachedsignature = get_storage_subclass(
-        dotted_path=setting_storage_backend.value
-    )(**setting_storage_backend_arguments.value)
-except Exception as exception:
-    message = (
-        'Unable to initialize the detached signature storage. Check the '
-        'settings {} and {} for formatting errors.'.format(
+storage_document_signatures_detached = DefinedStorage(
+    dotted_path=setting_storage_backend.value,
+    error_message=_(
+        'Unable to initialize the detached signatures '
+        'storage. Check the settings {} and {} for formatting '
+        'errors.'.format(
             setting_storage_backend.global_name,
             setting_storage_backend_arguments.global_name
         )
-    )
-
-    logger.fatal(message)
-    raise_from(value=TypeError(message), from_value=exception)
+    ),
+    label=_('Detached signatures'),
+    name=STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE,
+    kwargs=setting_storage_backend_arguments.value
+)

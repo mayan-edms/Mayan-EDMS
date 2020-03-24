@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from django.utils.module_loading import import_string
+
 from ..permissions import permission_document_view
 from ..search import document_search, document_page_search
 
@@ -7,15 +9,19 @@ from .base import GenericDocumentViewTestCase
 
 
 class DocumentSearchTestMixin(object):
+    search_backend = import_string(
+        dotted_path='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
+    )()
+
     def _perform_document_page_search(self):
-        return document_page_search.search(
-            query_string={'q': self.test_document.label},
+        return self.search_backend.search(
+            search_model=document_page_search, query_string={'q': self.test_document.label},
             user=self._test_case_user
         )
 
     def _perform_document_search(self):
-        return document_search.search(
-            query_string={'q': self.test_document.label},
+        return self.search_backend.search(
+            search_model=document_search, query_string={'q': self.test_document.label},
             user=self._test_case_user
         )
 

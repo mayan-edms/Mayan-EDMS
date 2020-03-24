@@ -32,9 +32,9 @@ from mayan.apps.events.models import StoredEventType
 from .error_logs import error_log_state_actions
 from .events import event_workflow_created, event_workflow_edited
 from .literals import (
-    FIELD_TYPE_CHOICES, WIDGET_CLASS_CHOICES, WORKFLOW_ACTION_WHEN_CHOICES,
-    WORKFLOW_ACTION_ON_ENTRY, WORKFLOW_ACTION_ON_EXIT,
-    WORKFLOW_IMAGE_CACHE_NAME
+    FIELD_TYPE_CHOICES, STORAGE_NAME_WORKFLOW_CACHE, WIDGET_CLASS_CHOICES,
+    WORKFLOW_ACTION_WHEN_CHOICES, WORKFLOW_ACTION_ON_ENTRY,
+    WORKFLOW_ACTION_ON_EXIT,
 )
 from .managers import WorkflowManager
 from .permissions import permission_workflow_transition
@@ -79,7 +79,9 @@ class Workflow(models.Model):
     @cached_property
     def cache(self):
         Cache = apps.get_model(app_label='file_caching', model_name='Cache')
-        return Cache.objects.get(name=WORKFLOW_IMAGE_CACHE_NAME)
+        return Cache.objects.get(
+            defined_storage_name=STORAGE_NAME_WORKFLOW_CACHE
+        )
 
     @cached_property
     def cache_partition(self):

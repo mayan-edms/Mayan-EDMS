@@ -5,13 +5,16 @@ import logging
 
 from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.documents import storages
-from mayan.apps.documents.settings import (
-    setting_documentimagecache_storage_arguments,
+from mayan.apps.smart_settings.tests.mixins import SmartSettingTestMixin
+from mayan.apps.storage.classes import DefinedStorage
+
+from ..literals import (
+    STORAGE_NAME_DOCUMENT_IMAGE, STORAGE_NAME_DOCUMENT_VERSION
+)
+from ..settings import (
+    setting_documentimagecache_storage_arguments, setting_language_codes,
     setting_storage_backend_arguments
 )
-from mayan.apps.smart_settings.tests.mixins import SmartSettingTestMixin
-
-from ..settings import setting_language_codes
 
 
 class DocumentSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
@@ -39,6 +42,10 @@ class DocumentSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
 
 
 class DocumentStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
+    def tearDown(self):
+        super(DocumentStorageSettingsTestCase, self).tearDown()
+        importlib.reload(storages)
+
     def test_setting_documentimagecache_storage_arguments_invalid_value(self):
         self._set_environment_variable(
             name='MAYAN_{}'.format(
@@ -46,13 +53,15 @@ class DocumentStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
             ), value="invalid_value"
         )
         self.test_case_silenced_logger_new_level = logging.FATAL + 10
-
-        self._silence_logger(name='mayan.apps.documents.storages')
+        self._silence_logger(name='mayan.apps.storage.classes')
 
         with self.assertRaises(expected_exception=TypeError) as assertion:
             importlib.reload(storages)
-
+            DefinedStorage.get(
+                name=STORAGE_NAME_DOCUMENT_IMAGE
+            ).get_storage_instance()
         self.assertTrue('Unable to initialize' in str(assertion.exception))
+        self.assertTrue('document image' in str(assertion.exception))
 
     def test_setting_storage_backend_arguments_invalid_value(self):
         self._set_environment_variable(
@@ -61,10 +70,12 @@ class DocumentStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
             ), value="invalid_value"
         )
         self.test_case_silenced_logger_new_level = logging.FATAL + 10
-
-        self._silence_logger(name='mayan.apps.documents.storages')
+        self._silence_logger(name='mayan.apps.storage.classes')
 
         with self.assertRaises(expected_exception=TypeError) as assertion:
             importlib.reload(storages)
-
+            DefinedStorage.get(
+                name=STORAGE_NAME_DOCUMENT_VERSION
+            ).get_storage_instance()
         self.assertTrue('Unable to initialize' in str(assertion.exception))
+        self.assertTrue('document version' in str(assertion.exception))

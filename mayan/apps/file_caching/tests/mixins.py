@@ -1,27 +1,30 @@
 from __future__ import unicode_literals
 
-from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import force_bytes
 
+from mayan.apps.storage.classes import DefinedStorage
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..models import Cache
 
 from .literals import (
-    TEST_CACHE_LABEL, TEST_CACHE_MAXIMUM_SIZE, TEST_CACHE_NAME,
-    TEST_CACHE_PARTITION_FILE_FILENAME, TEST_CACHE_PARTITION_FILE_SIZE,
-    TEST_CACHE_PARTITION_NAME, TEST_CACHE_STORAGE_INSTANCE_PATH
+    TEST_CACHE_MAXIMUM_SIZE, TEST_CACHE_PARTITION_FILE_FILENAME,
+    TEST_CACHE_PARTITION_FILE_SIZE, TEST_CACHE_PARTITION_NAME
 )
 
-test_storage = None
+STORAGE_NAME_FILE_CACHING_TEST_STORAGE = 'file_caching__test_storage'
 
 
 class CacheTestMixin(object):
     def setUp(self):
         super(CacheTestMixin, self).setUp()
-        global test_storage
         self.temporary_directory = mkdtemp()
-        test_storage = FileSystemStorage(location=self.temporary_directory)
+        DefinedStorage(
+            dotted_path='django.core.files.storage.FileSystemStorage',
+            label='File caching test storage',
+            name=STORAGE_NAME_FILE_CACHING_TEST_STORAGE,
+            kwargs={'location': self.temporary_directory}
+        )
 
     def tearDown(self):
         fs_cleanup(filename=self.temporary_directory)
@@ -29,10 +32,8 @@ class CacheTestMixin(object):
 
     def _create_test_cache(self):
         self.test_cache = Cache.objects.create(
-            label=TEST_CACHE_LABEL,
-            storage_instance_path=TEST_CACHE_STORAGE_INSTANCE_PATH,
             maximum_size=TEST_CACHE_MAXIMUM_SIZE,
-            name=TEST_CACHE_NAME,
+            defined_storage_name=STORAGE_NAME_FILE_CACHING_TEST_STORAGE,
         )
 
     def _create_test_cache_partition(self):

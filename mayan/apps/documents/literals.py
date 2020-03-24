@@ -32,8 +32,6 @@ DEFAULT_LANGUAGE_CODES = (
 DEFAULT_STUB_EXPIRATION_INTERVAL = 60 * 60 * 24  # 24 hours
 DEFAULT_ZIP_FILENAME = 'document_bundle.zip'
 DOCUMENT_IMAGE_TASK_TIMEOUT = 120
-DOCUMENT_IMAGES_CACHE_NAME = 'document_images'
-DOCUMENT_CACHE_STORAGE_INSTANCE_PATH = 'mayan.apps.documents.storages.storage_documentimagecache'
 UPDATE_PAGE_COUNT_RETRY_DELAY = 10
 UPLOAD_NEW_VERSION_RETRY_DELAY = 10
 
@@ -42,3 +40,5 @@ PAGE_RANGE_RANGE = 'range'
 PAGE_RANGE_CHOICES = (
     (PAGE_RANGE_ALL, _('All pages')), (PAGE_RANGE_RANGE, _('Page range'))
 )
+STORAGE_NAME_DOCUMENT_IMAGE = 'documents__documentimagecache'
+STORAGE_NAME_DOCUMENT_VERSION = 'documents__documentversion'

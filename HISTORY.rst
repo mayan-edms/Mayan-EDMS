@@ -39,6 +39,9 @@
   ``SEARCH_BACKEND`` (which defaults to ``mayan.apps.dynamic_search.backends.django.DjangoSearchBackend``)
   and ``SEARCH_BACKEND_ARGUMENTS``.
 - Update interface of the CompressedStorage backend.
+- Add defined storage class.
+- Convert the file caching app to used defined storage.
+- Show percetage of usage for file caches.
 
 3.3.16 (2020-03-17)
 ===================

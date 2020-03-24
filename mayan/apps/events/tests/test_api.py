@@ -53,7 +53,9 @@ class EventTypeNamespaceAPITestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
-class ObjectEventAPITestCase(DocumentTestMixin, BaseAPITestCase):
+class ObjectEventAPITestCase(
+    DocumentTestMixin, ObjectEventAPITestMixin, BaseAPITestCase
+):
     auto_upload_test_document = False
 
     def setUp(self):

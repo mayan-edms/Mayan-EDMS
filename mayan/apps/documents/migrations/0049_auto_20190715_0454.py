@@ -1,11 +1,37 @@
 from __future__ import unicode_literals
 
-from django.db import migrations
+import logging
 
-from ..storages import storage_documentimagecache
+from django.db import migrations
+from django.utils.six import raise_from
+
+from mayan.apps.storage.utils import get_storage_subclass
+
+from ..settings import (
+    setting_documentimagecache_storage,
+    setting_documentimagecache_storage_arguments,
+)
+
+logger = logging.getLogger(name=__name__)
 
 
 def operation_clear_old_cache(apps, schema_editor):
+    try:
+        storage_documentimagecache = get_storage_subclass(
+            dotted_path=setting_documentimagecache_storage.value
+        )(**setting_documentimagecache_storage_arguments.value)
+    except Exception as exception:
+        message = (
+            'Unable to initialize the document image cache storage. '
+            'Check the settings {} and {} for formatting errors.'.format(
+                setting_documentimagecache_storage.global_name,
+                setting_documentimagecache_storage_arguments.global_name
+            )
+        )
+
+        logger.fatal(message)
+        raise_from(value=TypeError(message), from_value=exception)
+
     DocumentPageCachedImage = apps.get_model(
         app_label='documents', model_name='DocumentPageCachedImage'
     )

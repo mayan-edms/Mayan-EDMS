@@ -11,12 +11,14 @@ from django.core.files import File
 from django.core.files.base import ContentFile
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.functional import cached_property
 from django.utils.six.moves.urllib.parse import quote_plus, unquote_plus
 
 from mayan.apps.converter.transformations import TransformationResize
 from mayan.apps.converter.utils import get_converter_class
+from mayan.apps.storage.classes import DefinedStorage
 
-from .storages import storage_staging_file_image_cache
+from .literals import STORAGE_NAME_SOURCE_STAGING_FOLDER_FILE
 
 logger = logging.getLogger(name=__name__)
 
@@ -69,7 +71,7 @@ class StagingFile(object):
         return '{}{}'.format(self.staging_folder.pk, self.encoded_filename)
 
     def delete(self):
-        storage_staging_file_image_cache.delete(self.cache_filename)
+        self.storage.delete(self.cache_filename)
         os.unlink(self.get_full_path())
 
     def generate_image(self, *args, **kwargs):
@@ -78,7 +80,7 @@ class StagingFile(object):
         # Check is transformed image is available
         logger.debug('transformations cache filename: %s', self.cache_filename)
 
-        if storage_staging_file_image_cache.exists(self.cache_filename):
+        if self.storage.exists(self.cache_filename):
             logger.debug(
                 'staging file cache file "%s" found', self.cache_filename
             )
@@ -87,7 +89,7 @@ class StagingFile(object):
                 'staging file cache file "%s" not found', self.cache_filename
             )
             image = self.get_image(transformations=transformation_list)
-            with storage_staging_file_image_cache.open(self.cache_filename, 'wb+') as file_object:
+            with self.storage.open(self.cache_filename, 'wb+') as file_object:
                 file_object.write(image.getvalue())
 
         return self.cache_filename
@@ -150,10 +152,10 @@ class StagingFile(object):
 
             # Since open "wb+" doesn't create files, check if the file
             # exists, if not then create it
-            if not storage_staging_file_image_cache.exists(cache_filename):
-                storage_staging_file_image_cache.save(name=cache_filename, content=ContentFile(content=''))
+            if not self.storage.exists(cache_filename):
+                self.storage.save(name=cache_filename, content=ContentFile(content=''))
 
-            with storage_staging_file_image_cache.open(cache_filename, 'wb+') as file_object:
+            with self.storage.open(cache_filename, 'wb+') as file_object:
                 file_object.write(page_image.getvalue())
         except Exception as exception:
             # Cleanup in case of error
@@ -161,7 +163,7 @@ class StagingFile(object):
                 'Error creating staging file cache "%s"; %s',
                 cache_filename, exception
             )
-            storage_staging_file_image_cache.delete(cache_filename)
+            self.storage.delete(cache_filename)
             if file_object:
                 file_object.close()
             raise
@@ -172,3 +174,9 @@ class StagingFile(object):
         result = converter.get_page()
         file_object.close()
         return result
+
+    @cached_property
+    def storage(self):
+        return DefinedStorage.get(
+            name=STORAGE_NAME_SOURCE_STAGING_FOLDER_FILE
+        ).get_storage_instance()

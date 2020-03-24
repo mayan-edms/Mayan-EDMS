@@ -97,6 +97,7 @@ from .links.trashed_document_links import (
     link_document_multiple_trash, link_document_restore, link_document_trash,
     link_trash_can_empty
 )
+
 from .menus import menu_documents
 from .permissions import (
     permission_document_create, permission_document_delete,

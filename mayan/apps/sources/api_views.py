@@ -13,8 +13,9 @@ from mayan.apps.documents.models.document_models import DocumentType
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.permissions.classes import Permission
 from mayan.apps.rest_api import generics
+from mayan.apps.storage.classes import DefinedStorage
 
-from .literals import STAGING_FILE_IMAGE_TASK_TIMEOUT
+from .literals import STAGING_FILE_IMAGE_TASK_TIMEOUT, STORAGE_NAME_SOURCE_STAGING_FOLDER_FILE
 from .models import StagingFolderSource
 from .permissions import (
     permission_sources_setup_create, permission_sources_setup_delete,
@@ -25,7 +26,6 @@ from .serializers import (
     StagingFolderFileSerializer, StagingFolderFileUploadSerializer,
     StagingFolderSerializer
 )
-from .storages import storage_staging_file_image_cache
 from .tasks import (
     task_generate_staging_file_image, task_source_handle_upload
 )
@@ -105,6 +105,10 @@ class APIStagingSourceFileImageView(generics.RetrieveAPIView):
         )
 
         cache_filename = task.get(timeout=STAGING_FILE_IMAGE_TASK_TIMEOUT)
+
+        storage_staging_file_image_cache = DefinedStorage.get(
+            name=STORAGE_NAME_SOURCE_STAGING_FOLDER_FILE
+        ).get_storage_instance()
 
         with storage_staging_file_image_cache.open(cache_filename) as file_object:
             response = HttpResponse(file_object.read(), content_type='image')

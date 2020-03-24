@@ -11,8 +11,10 @@ from django.db import models
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.storage.classes import DefinedStorageLazy
+
+from .literals import STORAGE_NAME_COMMON_SHARED_UPLOADED_FILE
 from .managers import ErrorLogEntryManager, UserLocaleProfileManager
-from .storages import storage_sharedupload
 
 
 def upload_to(instance, filename):
@@ -55,8 +57,9 @@ class SharedUploadedFile(models.Model):
     that runs out of process.
     """
     file = models.FileField(
-        storage=storage_sharedupload, upload_to=upload_to,
-        verbose_name=_('File')
+        storage=DefinedStorageLazy(
+            name=STORAGE_NAME_COMMON_SHARED_UPLOADED_FILE
+        ), upload_to=upload_to, verbose_name=_('File')
     )
     filename = models.CharField(max_length=255, verbose_name=_('Filename'))
     datetime = models.DateTimeField(

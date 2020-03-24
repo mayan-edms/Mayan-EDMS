@@ -1,11 +1,9 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
-from django.utils.translation import ugettext_lazy as _
 
 from .literals import (
-    DEFAULT_DOCUMENT_TYPE_LABEL, DOCUMENT_CACHE_STORAGE_INSTANCE_PATH,
-    DOCUMENT_IMAGES_CACHE_NAME
+    DEFAULT_DOCUMENT_TYPE_LABEL, STORAGE_NAME_DOCUMENT_IMAGE
 )
 from .settings import setting_document_cache_maximum_size
 from .signals import post_initial_document_type
@@ -30,10 +28,8 @@ def handler_create_document_cache(sender, **kwargs):
     Cache = apps.get_model(app_label='file_caching', model_name='Cache')
     Cache.objects.update_or_create(
         defaults={
-            'label': _('Document images'),
-            'storage_instance_path': DOCUMENT_CACHE_STORAGE_INSTANCE_PATH,
             'maximum_size': setting_document_cache_maximum_size.value,
-        }, name=DOCUMENT_IMAGES_CACHE_NAME,
+        }, defined_storage_name=STORAGE_NAME_DOCUMENT_IMAGE,
     )
 
 

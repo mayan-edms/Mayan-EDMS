@@ -6,9 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.document_indexing.tasks import task_index_document
 from mayan.apps.events.classes import EventType
 
-from .literals import (
-    WORKFLOW_IMAGE_CACHE_STORAGE_INSTANCE_PATH, WORKFLOW_IMAGE_CACHE_NAME
-)
+from .literals import STORAGE_NAME_WORKFLOW_CACHE
 from .settings import setting_workflow_image_cache_maximum_size
 
 
@@ -16,10 +14,8 @@ def handler_create_workflow_image_cache(sender, **kwargs):
     Cache = apps.get_model(app_label='file_caching', model_name='Cache')
     Cache.objects.update_or_create(
         defaults={
-            'label': _('Workflow images'),
-            'storage_instance_path': WORKFLOW_IMAGE_CACHE_STORAGE_INSTANCE_PATH,
             'maximum_size': setting_workflow_image_cache_maximum_size.value,
-        }, name=WORKFLOW_IMAGE_CACHE_NAME,
+        }, defined_storage_name=STORAGE_NAME_WORKFLOW_CACHE,
     )
 
 

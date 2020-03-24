@@ -32,6 +32,5 @@ WORKFLOW_ACTION_WHEN_CHOICES = (
     (WORKFLOW_ACTION_ON_ENTRY, _('On entry')),
     (WORKFLOW_ACTION_ON_EXIT, _('On exit')),
 )
-WORKFLOW_IMAGE_CACHE_NAME = 'workflow_images'
-WORKFLOW_IMAGE_CACHE_STORAGE_INSTANCE_PATH = 'mayan.apps.document_states.storages.storage_workflowimagecache'
 WORKFLOW_IMAGE_TASK_TIMEOUT = 60
+STORAGE_NAME_WORKFLOW_CACHE = 'document_states__workflowimagecache'

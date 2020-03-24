@@ -8,13 +8,14 @@ from django.core.files.base import ContentFile
 from django.db import models, transaction
 from django.db.models import Sum
 from django.template.defaultfilters import filesizeformat
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.functional import cached_property
-from django.utils.module_loading import import_string
+from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.apps.lock_manager.runtime import locking_backend
+from mayan.apps.storage.classes import DefinedStorage
 
 from .events import (
     event_cache_created, event_cache_edited, event_cache_purged
@@ -25,23 +26,15 @@ logger = logging.getLogger(name=__name__)
 
 @python_2_unicode_compatible
 class Cache(models.Model):
-    name = models.CharField(
-        db_index=True, help_text=_('Internal name of the cache.'),
-        max_length=128, unique=True, verbose_name=_('Name')
-    )
-    label = models.CharField(
-        help_text=_('A short text describing the cache.'), max_length=128,
-        verbose_name=_('Label')
+    defined_storage_name = models.CharField(
+        db_index=True, help_text=_(
+            'Internal name of the defined storage for this cache.'
+        ), max_length=96, unique=True, verbose_name=_('Defined storage name')
     )
     maximum_size = models.BigIntegerField(
         help_text=_('Maximum size of the cache in bytes.'), validators=[
             validators.MinValueValidator(limit_value=1)
         ], verbose_name=_('Maximum size')
-    )
-    storage_instance_path = models.CharField(
-        help_text=_(
-            'Dotted path to the actual storage class used for the cache.'
-        ), max_length=255, unique=True, verbose_name=_('Storage instance path')
     )
 
     class Meta:
@@ -49,7 +42,7 @@ class Cache(models.Model):
         verbose_name_plural = _('Caches')
 
     def __str__(self):
-        return self.label
+        return force_text(self.label)
 
     def get_files(self):
         return CachePartitionFile.objects.filter(partition__cache__id=self.pk)
@@ -62,6 +55,9 @@ class Cache(models.Model):
     )
     get_maximum_size_display.short_description = _('Maximum size')
 
+    def get_defined_storage(self):
+        return DefinedStorage.get(name=self.defined_storage_name)
+
     def get_total_size(self):
         """
         Return the actual usage of the cache.
@@ -71,10 +67,18 @@ class Cache(models.Model):
         )['file_size__sum'] or 0
 
     def get_total_size_display(self):
-        return filesizeformat(bytes_=self.get_total_size())
+        return format_lazy(
+            '{} ({:0.1f}%)',
+            filesizeformat(bytes_=self.get_total_size()),
+            self.get_total_size() / self.maximum_size * 100
+        )
 
-    get_total_size_display.short_description = _('Total size')
+    get_total_size_display.short_description = _('Current size')
     get_total_size_display.help_text = _('Current size of the cache.')
+
+    @cached_property
+    def label(self):
+        return self.get_defined_storage().label
 
     def prune(self):
         """
@@ -112,7 +116,7 @@ class Cache(models.Model):
 
     @cached_property
     def storage(self):
-        return import_string(dotted_path=self.storage_instance_path)
+        return self.get_defined_storage().get_storage_instance()
 
 
 class CachePartition(models.Model):
