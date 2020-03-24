@@ -45,21 +45,21 @@ class BufferedZipFile(BufferedFile):
 
 class ZipCompressedPassthroughStorage(PassthroughStorage):
     def open(self, name, mode='rb', _direct=False):
-        upstream_kwargs = {'name': name}
+        next_kwargs = {'name': name}
         if _direct:
-            upstream_kwargs['mode'] = mode
+            next_kwargs['mode'] = mode
 
-            if issubclass(self.upstream_storage_class, PassthroughStorage):
-                upstream_kwargs.update({'_direct': _direct})
+            if issubclass(self.next_storage_class, PassthroughStorage):
+                next_kwargs.update({'_direct': _direct})
 
             return self._call_backend_method(
-                method_name='open', kwargs=upstream_kwargs
+                method_name='open', kwargs=next_kwargs
             )
         else:
             # Mode is always 'rb' when reading the zip file
-            upstream_kwargs['mode'] = 'rb'
+            next_kwargs['mode'] = 'rb'
             storage_file = self._call_backend_method(
-                method_name='open', kwargs=upstream_kwargs
+                method_name='open', kwargs=next_kwargs
             )
             return BufferedZipFile(
                 file_object=storage_file, member_name=ZIP_MEMBER_FILENAME,
@@ -67,15 +67,15 @@ class ZipCompressedPassthroughStorage(PassthroughStorage):
             )
 
     def save(self, name, content, max_length=None, _direct=False):
-        upstream_kwargs = {'max_length': max_length, 'name': name}
+        next_kwargs = {'max_length': max_length, 'name': name}
         if _direct:
-            upstream_kwargs['content'] = content
+            next_kwargs['content'] = content
 
-            if issubclass(self.upstream_storage_class, PassthroughStorage):
-                upstream_kwargs.update({'_direct': _direct})
+            if issubclass(self.next_storage_class, PassthroughStorage):
+                next_kwargs.update({'_direct': _direct})
 
             return self._call_backend_method(
-                method_name='save', kwargs=upstream_kwargs
+                method_name='save', kwargs=next_kwargs
             )
         else:
             name = self._call_backend_method(

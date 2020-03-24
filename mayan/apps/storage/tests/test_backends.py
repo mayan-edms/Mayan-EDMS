@@ -27,7 +27,7 @@ class EncryptedPassthroughStorageTestCase(BaseTestCase):
     def test_file_save_and_load(self):
         storage = EncryptedPassthroughStorage(
             password='testpassword',
-            storage_backend_arguments={
+            next_storage_backend_arguments={
                 'location': self.temporary_directory,
             }
         )
@@ -67,7 +67,7 @@ class ZipCompressedPassthroughStorageTestCase(BaseTestCase):
 
     def test_file_save_and_load(self):
         storage = ZipCompressedPassthroughStorage(
-            storage_backend_arguments={
+            next_storage_backend_arguments={
                 'location': self.temporary_directory
             }
         )

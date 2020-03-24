@@ -166,33 +166,33 @@ class PassthroughStorage(Storage):
         logger.debug(
             'initializing passthrought storage with: %s, %s', args, kwargs
         )
-        storage_backend = kwargs.pop(
-            'storage_backend', DEFAULT_STORAGE_BACKEND
+        next_storage_backend = kwargs.pop(
+            'next_storage_backend', DEFAULT_STORAGE_BACKEND
         )
-        storage_backend_arguments = kwargs.pop(
-            'storage_backend_arguments', {}
-        )
-
-        self.upstream_storage_class = import_string(
-            dotted_path=storage_backend
+        next_storage_backend_arguments = kwargs.pop(
+            'next_storage_backend_arguments', {}
         )
 
-        self.upstream_storage_backend = self.upstream_storage_class(
-            **storage_backend_arguments
+        self.next_storage_class = import_string(
+            dotted_path=next_storage_backend
+        )
+
+        self.next_storage_backend = self.next_storage_class(
+            **next_storage_backend_arguments
         )
         super(PassthroughStorage, self).__init__(*args, **kwargs)
 
     def _call_backend_method(self, method_name, kwargs):
-        return getattr(self.upstream_storage_backend, method_name)(**kwargs)
+        return getattr(self.next_storage_backend, method_name)(**kwargs)
 
     def delete(self, *args, **kwargs):
-        return self.upstream_storage_backend.delete(*args, **kwargs)
+        return self.next_storage_backend.delete(*args, **kwargs)
 
     def exists(self, *args, **kwargs):
-        return self.upstream_storage_backend.exists(*args, **kwargs)
+        return self.next_storage_backend.exists(*args, **kwargs)
 
     def path(self, *args, **kwargs):
-        return self.upstream_storage_backend.path(*args, **kwargs)
+        return self.next_storage_backend.path(*args, **kwargs)
 
     def size(self, *args, **kwargs):
-        return self.upstream_storage_backend.size(*args, **kwargs)
+        return self.next_storage_backend.size(*args, **kwargs)

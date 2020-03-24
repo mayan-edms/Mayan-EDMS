@@ -108,8 +108,8 @@ class StorageProcessorTestCase(
 
         self.defined_storage.dotted_path = 'mayan.apps.storage.backends.compressedstorage.ZipCompressedPassthroughStorage'
         self.defined_storage.kwargs = {
-            'storage_backend': 'django.core.files.storage.FileSystemStorage',
-            'storage_backend_arguments': {
+            'next_storage_backend': 'django.core.files.storage.FileSystemStorage',
+            'next_storage_backend_arguments': {
                 'location': self.document_storage_kwargs['location']
             }
         }
