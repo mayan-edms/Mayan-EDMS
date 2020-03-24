@@ -42,6 +42,12 @@
 - Add defined storage class.
 - Convert the file caching app to used defined storage.
 - Show percetage of usage for file caches.
+- Add Passthrough storages.
+- Add encrypted storage backend.
+- Add compressed storage backend.
+- Add management command to process storage.
+- Automatic storage module loading.
+- Convert file caching app to use defined storage.
 
 3.3.16 (2020-03-17)
 ===================
