@@ -2,12 +2,10 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.template import Context, Template
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.document_states.classes import WorkflowAction
-from mayan.apps.document_states.exceptions import WorkflowStateActionError
 
 from .models import UserMailer
 from .permissions import permission_user_mailer_use

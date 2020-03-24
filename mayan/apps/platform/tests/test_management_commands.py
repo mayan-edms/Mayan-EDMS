@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 from django.utils.six import StringIO
 
 from django.core import management
-from django.test import TestCase
+
+from mayan.apps.common.tests.base import BaseTestCase
 
 from ..classes import PlatformTemplate
 
@@ -35,8 +36,7 @@ class TestPlatformTemplate(PlatformTemplate):
 PlatformTemplate.register(klass=TestPlatformTemplate)
 
 
-class PlatformTemplateManagementCommandTestCase(TestCase):
-
+class PlatformTemplateManagementCommandTestCase(BaseTestCase):
     def test_platform_template_simple(self):
         output = StringIO()
         args = (TEST_TEMPLATE_NAME,)

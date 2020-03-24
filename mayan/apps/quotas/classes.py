@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from .exceptions import QuotaExceeded
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 __ALL__ = ('QuotaBackend',)
