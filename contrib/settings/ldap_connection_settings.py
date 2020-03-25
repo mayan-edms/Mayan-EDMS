@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 # Ensure this file is not saved as "ldap.py" or you will run
 # into name conflicts (https://gitlab.com/mayan-edms/mayan-edms/issues/743)
 # Install Python LDAP with:

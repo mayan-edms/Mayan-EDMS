@@ -1,6 +1,3 @@
-from __future__ import unicode_literals
-
-
 def get_source_read_callback(substitutions):
     def global_substitution_function(app, docname, source):
         for old, new in substitutions:

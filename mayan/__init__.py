@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 __title__ = 'Mayan EDMS'
 __version__ = '3.4a1'
 __build__ = 0x030400

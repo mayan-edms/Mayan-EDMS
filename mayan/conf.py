@@ -2,8 +2,6 @@
 This module should be called settings.py but is named conf.py to avoid a
 clash with the mayan/settings/* module
 """
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings.classes import Namespace

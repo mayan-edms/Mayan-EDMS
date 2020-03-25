@@ -35,8 +35,6 @@ Example:
 
 .. code-block:: bash
 
-    from __future__ import absolute_import
-
     # Standard Python library
     import base64
 
