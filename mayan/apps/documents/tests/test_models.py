@@ -128,6 +128,11 @@ class DocumentTestCase(GenericDocumentTestCase):
         self.assertEqual(Document.objects.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 0)
 
+    def test_method_get_absolute_url(self):
+        self._upload_test_document()
+
+        self.assertTrue(self.test_document.get_absolute_url())
+
 
 @override_settings(DOCUMENTS_FIX_ORIENTATION=True)
 class PDFAlternateRotationTestCase(GenericDocumentTestCase):
@@ -218,6 +223,11 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
 
         self.assertEqual(self.test_document.versions.count(), 1)
 
+    def test_method_get_absolute_url(self):
+        self._upload_test_document()
+
+        self.assertTrue(self.test_document.latest_version.get_absolute_url())
+
 
 class DocumentManagerTestCase(BaseTestCase):
     def setUp(self):
@@ -247,6 +257,13 @@ class DocumentManagerTestCase(BaseTestCase):
         Document.passthrough.delete_stubs()
 
         self.assertEqual(Document.passthrough.count(), 0)
+
+
+class DocumentTypeModelTestCase(GenericDocumentTestCase):
+    auto_upload_test_document = False
+
+    def test_method_get_absolute_url(self):
+        self.assertTrue(self.test_document_type.get_absolute_url())
 
 
 class DuplicatedDocumentsTestCase(GenericDocumentTestCase):

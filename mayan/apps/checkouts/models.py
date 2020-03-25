@@ -73,7 +73,7 @@ class DocumentCheckout(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='checkout:checkout_info', kwargs={
+            viewname='checkouts:checkout_info', kwargs={
                 'pk': self.document.pk
             }
         )

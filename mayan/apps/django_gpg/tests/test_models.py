@@ -174,3 +174,8 @@ class KeyTestCase(BaseTestCase):
         signature_file.close()
         self.assertTrue(result)
         self.assertEqual(result.fingerprint, TEST_KEY_PRIVATE_FINGERPRINT)
+
+    def test_method_get_absolute_url(self):
+        key = Key.objects.create(key_data=TEST_KEY_PRIVATE_DATA)
+
+        self.assertTrue(key.get_absolute_url())

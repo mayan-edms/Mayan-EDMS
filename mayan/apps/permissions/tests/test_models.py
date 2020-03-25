@@ -53,6 +53,13 @@ class PermissionTestCase(
             )
 
 
+class RoleModelTestCase(RoleTestMixin, BaseTestCase):
+    def test_method_get_absolute_url(self):
+        self._create_test_role()
+
+        self.assertTrue(self.test_role.get_absolute_url())
+
+
 class StoredPermissionManagerTestCase(BaseTestCase):
     create_test_case_superuser = False
     create_test_case_user = False

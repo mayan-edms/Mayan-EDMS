@@ -283,3 +283,8 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         self.assertQuerysetEqual(
             instance_node.documents.all(), [repr(self.test_document)]
         )
+
+    def test_method_get_absolute_url(self):
+        self._create_test_index()
+
+        self.assertTrue(self.test_index.get_absolute_url())

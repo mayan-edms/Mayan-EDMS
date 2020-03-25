@@ -44,6 +44,11 @@ class CabinetTestCase(CabinetTestMixin, BaseTestCase):
             map(repr, (self.test_cabinet, inner_cabinet))
         )
 
+    def test_method_get_absolute_url(self):
+        self._create_test_cabinet()
+
+        self.assertTrue(self.test_cabinet.get_absolute_url())
+
 
 class CabinetDocumentTestCase(
     CabinetTestMixin, DocumentTestMixin, BaseTestCase
