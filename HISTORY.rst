@@ -51,6 +51,8 @@
 - Removed a possible race condition when returning the signature of just
   signed document using embedded signatures.
 - Updated version of the development and documentation dependencies.
+- Execute the ``preparestatic`` as part of the ``initialsetup`` and
+  ``performupgrade`` commands.
 
 3.3.16 (2020-03-17)
 ===================

@@ -120,9 +120,9 @@ For another setup that offers more performance and scalability refer to the
 
 #. Initialize the project:
 
-   This step will create all the database structures, download static media files
-   like JavaScript libraries and HTML frameworks, and create and initial admin
-   account with a random password.
+   This step will create all the database structures, download and compress
+   static media files like JavaScript libraries and HTML frameworks, and
+   create and initial admin account with a random password.
 
    .. note::
 
@@ -147,17 +147,6 @@ For another setup that offers more performance and scalability refer to the
        sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
        MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
        |MAYAN_BIN| initialsetup
-
-
-#. Collect the static files:
-
-   This step merges and compressed static media files so they can be served more
-   effectively.
-
-   .. code-block:: bash
-
-       sudo -u mayan MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
-       |MAYAN_BIN| preparestatic --noinput
 
 
 #. Create the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:

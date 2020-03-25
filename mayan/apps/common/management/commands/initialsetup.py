@@ -88,6 +88,9 @@ class Command(management.BaseCommand):
 
         if not options.get('no_dependencies', False):
             management.call_command(command_name='installdependencies')
+            management.call_command(
+                command_name='preparestatic', interactive=False
+            )
 
         management.call_command(command_name='createautoadmin')
         post_initial_setup.send(sender=self)

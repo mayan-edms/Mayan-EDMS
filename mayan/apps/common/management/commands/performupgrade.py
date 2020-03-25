@@ -25,7 +25,10 @@ class Command(management.BaseCommand):
 
         if not options.get('no_dependencies', False):
             management.call_command(
-                command_name='installdependencies', interactive=False
+                command_name='installdependencies'
+            )
+            management.call_command(
+                command_name='preparestatic', interactive=False
             )
 
         try:
