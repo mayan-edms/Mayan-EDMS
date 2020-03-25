@@ -61,14 +61,25 @@ class EmbeddedSignatureManager(models.Manager):
         except Exception:
             raise
         else:
+            # The result of key.sign_file does not contain the signtarure ID.
+            # Verify the signed file to obtain the signature ID.
+            with open(temporary_filename, mode='rb') as file_object:
+                result = Key.objects.verify_file(
+                    file_object=file_object
+                )
+
             with open(temporary_filename, mode='rb') as file_object:
                 new_version = document_version.document.new_version(
                     file_object=file_object, _user=user
                 )
+<<<<<<< HEAD
             # This is a potential race condition but we have not way
             # to access the final signature at this point.
             signature = self.filter(document_version=new_version).first()
             return signature or self.none()
+=======
+            return self.get(signature_id=result.signature_id)
+>>>>>>> 1413bad4b5... Remove a possible signature race condition
         finally:
             os.unlink(temporary_filename)
 

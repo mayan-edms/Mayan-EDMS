@@ -1,3 +1,8 @@
+3.3.17 (2020-XX-XX)
+===================
+- Removed a possible race condition when returning the signature of just
+  signed document using embedded signatures.
+
 3.3.16 (2020-03-17)
 ===================
 - Fix minor release notes typographical errors.
