@@ -1,10 +1,10 @@
-Werkzeug==0.15.4
-devpi-server==5.3.1
-django-debug-toolbar==1.11
-django-extensions==2.1.9
+Werkzeug==1.0.0
+devpi-server==5.4.0
+django-debug-toolbar==2.2
+django-extensions==2.2.8
 django-rosetta==0.9.3
 flake8==3.7.9
-ipython==5.8.0
+ipython==7.13.0
 readme==0.7.1
-safety==1.8.5
-transifex-client==0.13.6
+safety==1.8.7
+transifex-client==0.13.8

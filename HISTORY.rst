@@ -50,6 +50,7 @@
 - Convert file caching app to use defined storage.
 - Removed a possible race condition when returning the signature of just
   signed document using embedded signatures.
+- Updated version of the development and documentation dependencies.
 
 3.3.16 (2020-03-17)
 ===================

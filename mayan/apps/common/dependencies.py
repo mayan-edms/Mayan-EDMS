@@ -290,19 +290,19 @@ PythonDependency(
 
 PythonDependency(
     module=__name__, environment=environment_development, name='Werkzeug',
-    version_string='==0.15.4'
+    version_string='==1.0.0'
 )
 PythonDependency(
     module=__name__, environment=environment_development, name='devpi-server',
-    version_string='==5.3.1'
+    version_string='==5.4.0'
 )
 PythonDependency(
     environment=environment_development, module=__name__,
-    name='django-debug-toolbar', version_string='==1.11'
+    name='django-debug-toolbar', version_string='==2.2'
 )
 PythonDependency(
     environment=environment_development, module=__name__,
-    name='django-extensions', version_string='==2.1.9'
+    name='django-extensions', version_string='==2.2.8'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
@@ -317,7 +317,7 @@ PythonDependency(
 PythonDependency(
     environment=environment_development, help_text=_(
         'Command line environment with autocompletion.'
-    ), module=__name__, name='ipython', version_string='==5.8.0'
+    ), module=__name__, name='ipython', version_string='==7.13.0'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
@@ -326,11 +326,11 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_development,
-    module=__name__, name='safety', version_string='==1.8.5'
+    module=__name__, name='safety', version_string='==1.8.7'
 )
 PythonDependency(
     environment=environment_development,
-    module=__name__, name='transifex-client', version_string='==0.13.6'
+    module=__name__, name='transifex-client', version_string='==0.13.8'
 )
 
 # Testing
@@ -342,15 +342,15 @@ BinaryDependency(
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='coverage',
-    version_string='==4.4.1'
+    version_string='==5.0.4'
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='coveralls',
-    version_string='==1.3.0'
+    version_string='==1.11.1'
 )
 PythonDependency(
     environment=environment_testing, module=__name__,
-    name='django-test-migrations', version_string='==0.1.0'
+    name='django-test-migrations', version_string='==0.2.0'
 )
 PythonDependency(
     environment=environment_testing,
@@ -363,7 +363,7 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='tox',
-    version_string='==3.8.6'
+    version_string='==3.14.5'
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='psutil',
@@ -374,18 +374,18 @@ PythonDependency(
 
 PythonDependency(
     environment=environment_build, module=__name__, name='twine',
-    version_string='==1.9.1'
+    version_string='==3.1.1'
 )
 PythonDependency(
     environment=environment_build, module=__name__, name='wheel',
-    version_string='==0.30.0'
+    version_string='==0.34.2'
 )
 
 # Documentation
 
 PythonDependency(
     environment=environment_documentation, module=__name__, name='Sphinx',
-    version_string='==1.8.5'
+    version_string='==2.4.4'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
@@ -395,7 +395,7 @@ PythonDependency(
 PythonDependency(
     environment=environment_documentation, module=__name__,
     name='sphinx-sitemap',
-    version_string='==1.0.2'
+    version_string='==2.1.0'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
@@ -405,16 +405,16 @@ PythonDependency(
 PythonDependency(
     environment=environment_documentation, module=__name__,
     name='sphinxcontrib-blockdiag',
-    version_string='==1.5.5'
+    version_string='==2.0.0.'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
     name='sphinxcontrib-spelling',
-    version_string='==4.2.1'
+    version_string='==4.3.0'
 )
 # sphinx-autobuild has a dependency on Tornado,
 # but Tornado 6.0 dropped support for Python 2.7
 PythonDependency(
     environment=environment_documentation, module=__name__, name='tornado',
-    version_string='<6.0'
+    version_string='==6.0.4'
 )
