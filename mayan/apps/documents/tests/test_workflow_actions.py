@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY

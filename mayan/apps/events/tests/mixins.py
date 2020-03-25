@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from ..classes import EventTypeNamespace
 
 from .literals import (

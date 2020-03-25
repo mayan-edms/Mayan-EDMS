@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.contrib.humanize.templatetags.humanize import intcomma
 from django.template import loader
 

@@ -1,5 +1,3 @@
-from __future__ import print_function, unicode_literals
-
 from pathlib import Path
 
 from django.core.files.base import ContentFile

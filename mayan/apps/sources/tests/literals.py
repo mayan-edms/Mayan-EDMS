@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.encoding import force_bytes
 
 TEST_EMAIL_ATTACHMENT_AND_INLINE = '''Subject: Test 03: inline and attachments

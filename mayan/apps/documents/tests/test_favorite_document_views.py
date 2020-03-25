@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from ..models import FavoriteDocument
 from ..permissions import permission_document_view
 

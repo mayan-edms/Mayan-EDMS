@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
 from django.db import connection, models, transaction
 from django.urls import reverse

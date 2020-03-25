@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.core import mail
 
 from mayan.apps.documents.tests.base import GenericDocumentTestCase

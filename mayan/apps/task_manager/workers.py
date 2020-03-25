@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from .classes import Worker
 
 worker_fast = Worker(name='fast', nice_level=1)

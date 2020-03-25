@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from .literals import TEST_COMMENT_TEXT, TEST_COMMENT_TEXT_EDITED
 
 

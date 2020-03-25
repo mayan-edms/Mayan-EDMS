@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from rest_framework import status
 
 from mayan.apps.documents.search import document_search

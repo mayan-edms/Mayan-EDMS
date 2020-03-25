@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.test import TestCase
 
 from mayan.apps.documents.tests.base import GenericDocumentTestCase

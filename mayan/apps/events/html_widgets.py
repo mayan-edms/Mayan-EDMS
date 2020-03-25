@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.template import Context, Template
 from django.urls import reverse

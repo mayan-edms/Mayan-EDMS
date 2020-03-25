@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.apps import apps
 from django.db.models.signals import pre_delete
 from django.utils.translation import ugettext_lazy as _

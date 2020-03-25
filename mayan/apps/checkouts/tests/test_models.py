@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import time
 
 from mayan.apps.common.tests.base import BaseTestCase

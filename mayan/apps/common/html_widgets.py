@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.template.loader import render_to_string
 
 from .icons import icon_fail as default_icon_fail

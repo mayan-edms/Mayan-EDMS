@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from dateutil.parser import parse
 
 from django.core.exceptions import ValidationError

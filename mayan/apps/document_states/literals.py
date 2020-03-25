@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 DEFAULT_WORKFLOW_IMAGE_CACHE_MAXIMUM_SIZE = 50 * 2 ** 20  # 50 Megabytes

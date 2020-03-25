@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.test import override_settings
 
 from mayan.apps.converter.layers import layer_saved_transformations

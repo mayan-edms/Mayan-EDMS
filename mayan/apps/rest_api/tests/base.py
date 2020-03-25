@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from rest_framework.test import APITestCase
 
 from mayan.apps.common.tests.base import GenericViewTestCase

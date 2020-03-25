@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 CONFIGURATION_FILENAME = 'config.yml'
 CONFIGURATION_LAST_GOOD_FILENAME = 'config_backup.yml'
 NAMESPACE_VERSION_INITIAL = '0001'

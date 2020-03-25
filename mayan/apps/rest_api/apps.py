@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.conf import settings
 from django.utils.module_loading import import_string

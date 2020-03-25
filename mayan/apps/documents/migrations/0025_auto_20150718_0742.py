@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import pycountry
 
 from django.db import migrations

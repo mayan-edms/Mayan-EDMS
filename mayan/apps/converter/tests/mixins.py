@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.contrib.contenttypes.models import ContentType
 
 from mayan.apps.acls.classes import ModelPermission

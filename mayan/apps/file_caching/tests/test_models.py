@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.common.tests.base import BaseTestCase
 
 from .mixins import CacheTestMixin

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.documents.models import DocumentVersion
 from mayan.apps.documents.permissions import (
     permission_document_new_version, permission_document_version_view,

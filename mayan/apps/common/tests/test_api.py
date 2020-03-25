@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.test import override_settings
 
 from mayan.apps.rest_api.tests.base import BaseAPITestCase

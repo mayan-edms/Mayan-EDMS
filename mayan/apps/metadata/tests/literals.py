@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 
 TEST_CORRECT_LOOKUP_VALUE = '1'
 TEST_DATE_PARSER = 'mayan.apps.metadata.parsers.DateParser'

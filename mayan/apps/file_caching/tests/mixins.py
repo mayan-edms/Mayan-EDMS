@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.encoding import force_bytes
 
 from mayan.apps.storage.classes import DefinedStorage

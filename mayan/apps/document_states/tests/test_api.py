@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from rest_framework import status
 
 from mayan.apps.documents.permissions import permission_document_type_view

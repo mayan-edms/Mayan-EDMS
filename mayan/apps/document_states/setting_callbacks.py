@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 
 from .literals import STORAGE_NAME_WORKFLOW_CACHE

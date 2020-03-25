@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.contrib.auth.models import Group
 from django.template import RequestContext
 from django.urls import reverse_lazy

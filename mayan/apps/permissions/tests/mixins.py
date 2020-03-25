@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from ..classes import Permission, PermissionNamespace
 from ..models import Role
 

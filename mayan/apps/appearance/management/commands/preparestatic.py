@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.core import management
 
 # '*.html*', removed. It is required by drf-yasg/ to serve oauth2-redirect.html

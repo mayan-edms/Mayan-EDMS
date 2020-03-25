@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import mayan.apps.common.models
 import django.core.files.storage
 from django.db import migrations, models

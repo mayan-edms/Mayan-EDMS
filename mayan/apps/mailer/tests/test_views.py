@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.core import mail
 
 from mayan.apps.common.tests.base import GenericViewTestCase

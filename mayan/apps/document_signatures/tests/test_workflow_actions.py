@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import json
 
 from mayan.apps.django_gpg.tests.literals import TEST_KEY_PRIVATE_PASSPHRASE

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 
 from mayan.apps.document_indexing.tasks import task_index_document

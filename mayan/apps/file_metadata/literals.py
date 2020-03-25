@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import platform
 
 if platform.system() in ('FreeBSD', 'OpenBSD', 'Darwin'):

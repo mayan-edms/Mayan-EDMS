@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import time
 
 from django.utils.encoding import force_text

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import platform
 
 CONVERTER_OFFICE_FILE_MIMETYPES = (

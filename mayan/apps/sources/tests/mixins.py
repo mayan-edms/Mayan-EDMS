@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import shutil
 
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import, unicode_literals
 
 TEST_CACHE_KEY_BAD_CHARACTERS = ' \r\n!@#$%^&*()+_{}|:"<>?-=[];\',./'
 TEST_DOCUMENT_PK = 99

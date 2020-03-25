@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from mayan.apps.appearance.classes import Icon
 
 icon_event_types_subscriptions_list = Icon(

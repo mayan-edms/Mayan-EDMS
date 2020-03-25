@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from ..permissions import permission_document_view
 
 from .base import GenericDocumentViewTestCase

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from drf_yasg.views import get_schema_view
 
 from rest_framework import permissions, renderers

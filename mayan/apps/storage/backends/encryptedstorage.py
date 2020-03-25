@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from Crypto.Cipher import AES
 from Crypto.Hash import SHA256
 from Crypto.Protocol.KDF import PBKDF2

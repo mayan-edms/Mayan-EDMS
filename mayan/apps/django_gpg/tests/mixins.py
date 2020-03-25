@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from ..models import Key
 
 from .literals import TEST_KEY_PRIVATE_DATA, TEST_KEY_PUBLIC_FILE_PATH

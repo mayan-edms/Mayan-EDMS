@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from ..classes import WorkflowAction
 from ..models import Workflow, WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
 

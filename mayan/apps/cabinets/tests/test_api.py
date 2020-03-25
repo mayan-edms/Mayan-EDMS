@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.encoding import force_text
 
 from rest_framework import status

@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.contrib import messages
 from django.template import RequestContext
 from django.urls import reverse

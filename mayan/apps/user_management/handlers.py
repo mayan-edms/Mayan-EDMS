@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 
 from .events import event_user_logged_in, event_user_logged_out

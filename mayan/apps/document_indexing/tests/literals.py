@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 TEST_INDEX_LABEL = 'test label'
 TEST_INDEX_LABEL_EDITED = 'test edited label'
 TEST_INDEX_SLUG = 'test_slug'

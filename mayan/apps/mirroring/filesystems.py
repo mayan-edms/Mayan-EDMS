@@ -1,5 +1,3 @@
-from __future__ import print_function, unicode_literals
-
 import datetime
 from errno import ENOENT
 import logging

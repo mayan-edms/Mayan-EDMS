@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.encoding import force_bytes, force_text
 
 from .literals import TEST_EMAIL_BASE64_FILENAME

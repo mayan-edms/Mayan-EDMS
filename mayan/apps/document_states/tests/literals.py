@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from ..literals import FIELD_TYPE_CHOICE_CHAR
 
 TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH = 'mayan.apps.document_states.workflow_actions.DocumentPropertiesEditAction'

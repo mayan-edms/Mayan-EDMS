@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from mayan.apps.django_gpg.permissions import permission_key_sign
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.models import DocumentVersion

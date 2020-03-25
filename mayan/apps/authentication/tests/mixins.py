@@ -1,6 +1,3 @@
-from __future__ import unicode_literals
-
-
 class UserPasswordViewTestMixin(object):
     def _request_test_user_password_set_view(self, password):
         return self.post(

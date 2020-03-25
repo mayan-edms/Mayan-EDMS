@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.dispatch import Signal
 
 perform_upgrade = Signal(use_caching=True)

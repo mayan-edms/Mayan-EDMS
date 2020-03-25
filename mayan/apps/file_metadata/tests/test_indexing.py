@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.common.tests.base import BaseTransactionTestCase
 from mayan.apps.document_indexing.models import Index, IndexInstanceNode
 from mayan.apps.document_indexing.tests.literals import TEST_INDEX_LABEL

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.common.tests.base import BaseTransactionTestCase
 from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
 from mayan.apps.documents.tests.mixins import DocumentTestMixin

@@ -1,6 +1,3 @@
-from __future__ import unicode_literals
-
-
 class ConvertError(Exception):
     """
     Base exception for all coverter app exceptions

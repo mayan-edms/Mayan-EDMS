@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.core import management
 from django.utils.encoding import force_text
 

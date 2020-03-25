@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 
 class Endpoint(object):
     def __init__(self, label):

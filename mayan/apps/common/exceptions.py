@@ -1,6 +1,3 @@
-from __future__ import unicode_literals
-
-
 class BaseCommonException(Exception):
     """
     Base exception for the common app

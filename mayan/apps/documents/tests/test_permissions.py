@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.permissions import permission_acl_edit
 from mayan.apps.acls.tests.mixins import (

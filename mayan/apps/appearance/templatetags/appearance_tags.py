@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.template import Library
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _

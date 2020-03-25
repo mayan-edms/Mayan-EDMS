@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from rest_framework import status
 
 from mayan.apps.rest_api.tests.base import BaseAPITestCase

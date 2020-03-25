@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 TEST_SMART_LINK_CONDITION_FOREIGN_DOCUMENT_DATA = 'label'
 TEST_SMART_LINK_CONDITION_EXPRESSION = 'title'
 TEST_SMART_LINK_CONDITION_EXPRESSION_EDITED = '\'test edited\''

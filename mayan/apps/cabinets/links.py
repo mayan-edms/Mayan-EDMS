@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import copy
 
 from django.utils.translation import ugettext_lazy as _

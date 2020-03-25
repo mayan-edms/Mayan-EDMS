@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 import mayan.apps.documents.models.document_version_models
 import mayan.apps.storage.classes

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search

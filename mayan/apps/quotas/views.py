@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.http import Http404, HttpResponseRedirect
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy

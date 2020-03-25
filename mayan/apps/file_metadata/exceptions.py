@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 
 class FileMetadataError(Exception):
     """Base file metadata driver exception"""

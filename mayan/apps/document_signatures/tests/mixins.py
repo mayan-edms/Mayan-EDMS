@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.core.files import File
 
 from mayan.apps.django_gpg.tests.literals import TEST_KEY_PRIVATE_PASSPHRASE
