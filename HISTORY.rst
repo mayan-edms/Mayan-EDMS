@@ -48,6 +48,8 @@
 - Add management command to process storage.
 - Automatic storage module loading.
 - Convert file caching app to use defined storage.
+- Removed a possible race condition when returning the signature of just
+  signed document using embedded signatures.
 
 3.3.16 (2020-03-17)
 ===================
