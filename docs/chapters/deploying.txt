@@ -88,6 +88,12 @@ For another setup that offers more performance and scalability refer to the
 
        sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 mayan-edms
 
+   .. note::
+
+       There have been reports of users experiencing errors when using
+       ``--no-use-pep517`` on systems with ARM CPUs. Leaving out this option
+       does not seem to have any negative effect.
+
 
 #. Install the Python client for PostgreSQL and Redis:
 
