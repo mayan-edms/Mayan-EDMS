@@ -31,6 +31,7 @@ kombu==4.6.7
 mock==2.0.0
 node-semver==0.6.1
 pycountry==18.12.8
+pycryptodome==3.9.7
 pyocr==0.6
 python-dateutil==2.8.0
 python-magic==0.4.15
