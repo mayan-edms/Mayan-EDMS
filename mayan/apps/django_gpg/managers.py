@@ -43,7 +43,9 @@ class KeyManager(models.Manager):
 
         return keys
 
-    def decrypt_file(self, file_object, all_keys=False, key_fingerprint=None, key_id=None):
+    def decrypt_file(
+        self, file_object, all_keys=False, key_fingerprint=None, key_id=None
+    ):
         keys = self._preload_keys(
             all_keys=all_keys, key_fingerprint=key_fingerprint, key_id=key_id
         )
@@ -88,7 +90,10 @@ class KeyManager(models.Manager):
 
         return result
 
-    def verify_file(self, file_object, signature_file=None, all_keys=False, key_fingerprint=None, key_id=None):
+    def verify_file(
+        self, file_object, signature_file=None, all_keys=False,
+        key_fingerprint=None, key_id=None
+    ):
         keys = self._preload_keys(
             all_keys=all_keys, key_fingerprint=key_fingerprint, key_id=key_id
         )
@@ -126,7 +131,10 @@ class KeyManager(models.Manager):
             # Signed but key not present, retry with key fetch
             logger.debug(msg='no public key')
             file_object.seek(0)
-            return self.verify_file(file_object=file_object, signature_file=signature_file, key_id=verify_result.key_id)
+            return self.verify_file(
+                file_object=file_object, signature_file=signature_file,
+                key_id=verify_result.key_id
+            )
         elif verify_result.key_id:
             # Signed, retried and key still not found
             logger.debug(msg='signed, retried and key still not found')
