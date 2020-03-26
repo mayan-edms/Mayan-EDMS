@@ -53,6 +53,7 @@
 - Updated version of the development and documentation dependencies.
 - Execute the ``preparestatic`` as part of the ``initialsetup`` and
   ``performupgrade`` commands.
+- Detect redirect loops when attempting to escape the AJAX container.
 
 3.3.16 (2020-03-17)
 ===================
