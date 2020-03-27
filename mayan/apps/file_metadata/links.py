@@ -3,7 +3,8 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 
 from .icons import (
-    icon_document_submit, icon_document_multiple_submit, icon_file_metadata
+    icon_document_submit, icon_document_multiple_submit,
+    icon_document_type_submit, icon_file_metadata
 )
 from .permissions import (
     permission_document_type_file_metadata_setup,
@@ -39,7 +40,7 @@ link_document_type_file_metadata_settings = Link(
     text=_('Setup file metadata'), view='file_metadata:document_type_settings'
 )
 link_document_type_submit = Link(
-    icon_class=icon_file_metadata,
+    icon_class=icon_document_type_submit,
     permissions=(permission_file_metadata_submit,),
     text=_('File metadata processing per type'),
     view='file_metadata:document_type_submit'

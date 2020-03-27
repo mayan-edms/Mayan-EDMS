@@ -54,6 +54,7 @@
 - Execute the ``preparestatic`` as part of the ``initialsetup`` and
   ``performupgrade`` commands.
 - Detect redirect loops when attempting to escape the AJAX container.
+- Improve icons of the OCR, file metadata, and document parsing apps.
 
 3.3.16 (2020-03-17)
 ===================
