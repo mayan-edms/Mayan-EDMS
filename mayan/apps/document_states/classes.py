@@ -2,7 +2,7 @@ from importlib import import_module
 import logging
 
 from django.apps import apps
-from django.db.utils import OperationalError
+from django.db.utils import OperationalError, ProgrammingError
 from django.template import Context, Template
 from django.utils import six
 from django.utils.encoding import force_text
@@ -92,7 +92,7 @@ class WorkflowAction(
                 WorkflowStateAction.objects.filter(
                     action_path=previous_dotted_path
                 ).update(action_path=cls.id())
-            except OperationalError:
+            except (OperationalError, ProgrammingError):
                 # Ignore errors during the database migration and
                 # quit further attempts.
                 return
