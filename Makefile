@@ -376,7 +376,7 @@ docker-mysql-off: ## Stop and delete the MySQL Docker container.
 	docker rm mysql
 
 docker-postgres-on: ## Launch and initialize a PostgreSQL Docker container.
-	docker run -d --name postgres -p 5432:5432 $(DOCKER_POSTGRES_IMAGE_VERSION)
+	docker run -d --name postgres -e=POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -p 5432:5432 $(DOCKER_POSTGRES_IMAGE_VERSION)
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 
 docker-postgres-off: ## Stop and delete the PostgreSQL Docker container.

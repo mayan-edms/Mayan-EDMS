@@ -51,7 +51,7 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: bash
 
-       sudo adduser mayan --disabled-password --disabled-login --gecos ""
+       sudo adduser |DEFAULT_OS_USERNAME| --disabled-password --disabled-login --gecos ""
 
 
 #. Create the parent directory where the project will be deployed:
@@ -79,14 +79,14 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: bash
 
-       sudo chown mayan:mayan |MAYAN_INSTALLATION_DIRECTORY| -R
+       sudo chown |DEFAULT_OS_USERNAME|:|DEFAULT_OS_GROUP| |MAYAN_INSTALLATION_DIRECTORY| -R
 
 
 #. Install Mayan EDMS from PyPI:
 
    .. code-block:: bash
 
-       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 mayan-edms
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 mayan-edms
 
    .. note::
 
@@ -99,7 +99,7 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: bash
 
-       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
 
    .. note::
 
@@ -107,15 +107,15 @@ For another setup that offers more performance and scalability refer to the
 
        .. code-block:: bash
 
-           sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
+           sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
 
 
 #. Create the database for the installation:
 
    .. code-block:: bash
 
-       sudo -u postgres psql -c "CREATE USER mayan WITH password 'mayanuserpass';"
-       sudo -u postgres createdb -O mayan mayan
+       sudo -u postgres psql -c "CREATE USER |DEFAULT_DATABASE_USER| WITH password '|DEFAULT_DATABASE_PASSWORD|';"
+       sudo -u postgres createdb -O |DEFAULT_DATABASE_USER| |DEFAULT_DATABASE_NAME|
 
 
 #. Initialize the project:
@@ -130,8 +130,8 @@ For another setup that offers more performance and scalability refer to the
        of the installation. If you want to keep your files separated from
        the installation files, change the value of the ``MAYAN_MEDIA_ROOT``
        variable in this and all subsequent steps. Be sure to first create the
-       folder and give ownership of it to the ``mayan`` user with the ``chown``
-       command.
+       folder and give ownership of it to the ``|DEFAULT_OS_USERNAME|`` user
+       with the ``chown`` command.
 
    .. warning::
 
@@ -144,7 +144,7 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: bash
 
-       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}" \
        MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
        |MAYAN_BIN| initialsetup
 
@@ -161,7 +161,7 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: bash
 
-       sudo -u mayan MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'127.0.0.1'}}" \
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}" \
        MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
        |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
 
@@ -169,13 +169,14 @@ For another setup that offers more performance and scalability refer to the
 #. Configure Redis:
 
    Configure Redis to discard data when it runs out of memory, not save its
-   database and only keep 2 database:
+   database, keep 2 database, and be password protected:
 
    .. code-block:: bash
 
        echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
        echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
        echo "databases 2" | sudo tee -a /etc/redis/redis.conf
+       echo "requirepass |DEFAULT_REDIS_PASSWORD|" | sudo tee -a /etc/redis/redis.conf
        sudo systemctl restart redis
 
 #. Enable and restart the services [1_]:
@@ -221,16 +222,16 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 
    .. code-block:: bash
 
-       sudo -u mayan |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
 
 
 #. Create the RabbitMQ user and vhost:
 
    .. code-block:: bash
 
-       sudo rabbitmqctl add_user mayan mayanrabbitmqpassword
-       sudo rabbitmqctl add_vhost mayan
-       sudo rabbitmqctl set_permissions -p mayan mayan ".*" ".*" ".*"
+       sudo rabbitmqctl add_user |DEFAULT_RABBITMQ_USER| |DEFAULT_RABBITMQ_PASSWORD|
+       sudo rabbitmqctl add_vhost |DEFAULT_RABBITMQ_VHOST|
+       sudo rabbitmqctl set_permissions -p |DEFAULT_RABBITMQ_VHOST| |DEFAULT_RABBITMQ_USER| ".*" ".*" ".*"
 
 
 #. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
@@ -245,7 +246,7 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 
    .. code-block:: ini
 
-       MAYAN_CELERY_BROKER_URL="amqp://mayan:mayanrabbitmqpassword@localhost:5672/mayan",
+       MAYAN_CELERY_BROKER_URL="amqp://|DEFAULT_RABBITMQ_USER|:|DEFAULT_RABBITMQ_PASSWORD|@localhost:5672/|DEFAULT_RABBITMQ_VHOST|",
 
    increase the number of Gunicorn workers to 3 in the line (``-w 2`` section):
 

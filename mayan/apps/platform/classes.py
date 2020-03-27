@@ -148,12 +148,12 @@ class PlatformTemplateSupervisord(PlatformTemplate):
         ),
         YAMLVariable(
             name='CELERY_BROKER_URL',
-            default='redis://127.0.0.1:6379/0',
+            default='redis://:mayanredispassword@127.0.0.1:6379/0',
             environment_name='MAYAN_CELERY_BROKER_URL'
         ),
         YAMLVariable(
             name='CELERY_RESULT_BACKEND',
-            default='redis://127.0.0.1:6379/1',
+            default='redis://:mayanredispassword@127.0.0.1:6379/1',
             environment_name='MAYAN_CELERY_RESULT_BACKEND'
         ),
         YAMLVariable(
