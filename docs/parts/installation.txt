@@ -26,11 +26,20 @@ virtualization also known as containerization. It allows independent
 "containers" to run within a single Linux instance, avoiding the overhead
 of starting and maintaining virtual machines (VMs).
 
+.. note::
+
+   Starting with version 3.4, the preferred method of installation when using
+   Docker is with Docker Compose. The installation script at
+   ``https://get.mayan-edms.com`` and the :ref:`docker_install` are
+   deprecated and will be removed in the future.
+
+- :ref:`docker_compose_install`
 - :ref:`docker_install`
 
 .. toctree::
     :hidden:
 
+    ../chapters/docker/install_docker_compose
     ../chapters/docker/install_simple
 
 

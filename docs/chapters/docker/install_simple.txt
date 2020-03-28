@@ -11,7 +11,7 @@ Simple Docker installation
 
        wget -qO- https://get.docker.com/ | sh
 
-   If you don't want run an automated script, follow the instructions outlined
+   If you don't want to run an automated script, follow the instructions outlined
    in their documentation: https://docs.docker.com/install/
 
    Once the Docker installation is finished, proceed to the link below to install
