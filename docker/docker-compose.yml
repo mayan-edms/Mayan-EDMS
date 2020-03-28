@@ -15,12 +15,12 @@ services:
       # Enable to use RabbitMQ
       # MAYAN_CELERY_BROKER_URL: amqp://${MAYAN_RABBITMQ_USER:-mayan}:${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}@rabbitmq:5672/${MAYAN_RABBITMQ_VHOST:-mayan}
       # To use RabbitMQ as broker, disable Redis as broker
-      MAYAN_CELERY_BROKER_URL: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@results:6379/0
-      MAYAN_CELERY_RESULT_BACKEND: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@results:6379/1
-      MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'${MAYAN_DATABASE_DB:-mayan}','PASSWORD':'${MAYAN_DATABASE_PASSWORD:-mayandbpass}','USER':'${MAYAN_DATABSE_USER:-mayan}','HOST':'db'}}"
-      MAYAN_DOCKER_WAIT: "db:5432 results:6379"
+      MAYAN_CELERY_BROKER_URL: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/0
+      MAYAN_CELERY_RESULT_BACKEND: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/1
+      MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'${MAYAN_DATABASE_DB:-mayan}','PASSWORD':'${MAYAN_DATABASE_PASSWORD:-mayandbpass}','USER':'${MAYAN_DATABSE_USER:-mayan}','HOST':'postgresql'}}"
+      MAYAN_DOCKER_WAIT: "postgresql:5432 redis:6379"
       # Replace with the line below when using RabbitMQ
-      # MAYAN_DOCKER_WAIT: "db:5432 results:6379 rabbitmq:5672"
+      # MAYAN_DOCKER_WAIT: "postgresql:5432 redis:6379 rabbitmq:5672"
       # To add operating system packages, like additional OCR language,
       # packages, put then in the variable below.
       # MAYAN_APT_INSTALLS: "tesseract-ocr-deu tesseract-ocr-nld"
@@ -35,7 +35,7 @@ services:
     volumes:
       - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
 
-  db:
+  postgresql:
     environment:
       POSTGRES_DB: ${MAYAN_DATABASE_DB:-mayan}
       POSTGRES_PASSWORD: ${MAYAN_DATABASE_PASSWORD:-mayandbpass}
@@ -47,7 +47,7 @@ services:
     volumes:
       - ${MAYAN_POSTGRES_VOLUME:-postgres}:/var/lib/postgresql/data
 
-  results:
+  redis:
     command:
       - redis-server
       - --appendonly
