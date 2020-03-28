@@ -37,7 +37,6 @@ def operation_convert_color_names_to_rgb(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('tags', '0001_initial'),
     ]

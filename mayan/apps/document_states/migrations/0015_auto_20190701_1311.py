@@ -3,7 +3,6 @@ import mayan.apps.common.validators
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('document_states', '0014_auto_20190701_0454'),
     ]

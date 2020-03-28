@@ -4,7 +4,6 @@ import mayan.apps.converter.models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('converter', '0005_auto_20150708_0118'),
     ]

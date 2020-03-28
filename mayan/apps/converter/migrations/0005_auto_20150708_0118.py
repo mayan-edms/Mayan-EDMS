@@ -4,7 +4,6 @@ import mayan.apps.converter.validators
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('converter', '0004_auto_20150704_0753'),
     ]

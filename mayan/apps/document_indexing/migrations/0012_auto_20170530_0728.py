@@ -3,7 +3,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('document_indexing', '0011_auto_20170524_0456'),
     ]

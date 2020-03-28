@@ -26,7 +26,6 @@ def operation_remove_full_path(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('document_states', '0012_auto_20180823_2353'),
     ]

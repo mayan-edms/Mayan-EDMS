@@ -4,7 +4,6 @@ import mayan.apps.storage.classes
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0047_auto_20180917_0737'),
     ]

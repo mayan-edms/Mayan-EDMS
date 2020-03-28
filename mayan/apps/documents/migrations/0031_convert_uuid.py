@@ -12,7 +12,6 @@ def operation_convert_uuid_to_hex(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0030_auto_20160309_1837'),
     ]

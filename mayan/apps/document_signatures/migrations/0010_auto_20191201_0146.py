@@ -1,10 +1,10 @@
 from django.db import migrations, models
+
 import mayan.apps.document_signatures.models
 import mayan.apps.storage.classes
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('document_signatures', '0009_auto_20190711_0544'),
     ]

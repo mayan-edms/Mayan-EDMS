@@ -2,7 +2,6 @@ from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('sources', '0007_emailbasemodel_metadata_attachment_name'),
     ]

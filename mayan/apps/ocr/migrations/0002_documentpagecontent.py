@@ -2,7 +2,6 @@ from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0005_auto_20150617_0358'),
         ('ocr', '0001_initial'),

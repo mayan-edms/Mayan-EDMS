@@ -2,7 +2,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('document_signatures', '0003_auto_20160325_0052'),
     ]

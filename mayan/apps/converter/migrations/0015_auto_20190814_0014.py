@@ -14,8 +14,12 @@ def code_copy_transformations(apps, schema_editor):
         app_label='converter', model_name='Transformation'
     )
 
-    stored_layer, created = StoredLayer.objects.using(schema_editor.connection.alias).update_or_create(
-        name=layer_saved_transformations.name, defaults={'order': layer_saved_transformations.order}
+    stored_layer, created = StoredLayer.objects.using(
+        schema_editor.connection.alias
+    ).update_or_create(
+        name=layer_saved_transformations.name, defaults={
+            'order': layer_saved_transformations.order
+        }
     )
 
     for transformation in Transformation.objects.using(schema_editor.connection.alias).all():
@@ -45,8 +49,12 @@ def code_copy_transformations_reverse(apps, schema_editor):
         app_label='converter', model_name='Transformation'
     )
 
-    stored_layer, created = StoredLayer.objects.using(schema_editor.connection.alias).update_or_create(
-        name=layer_saved_transformations.name, defaults={'order': layer_saved_transformations.order}
+    stored_layer, created = StoredLayer.objects.using(
+        schema_editor.connection.alias
+    ).update_or_create(
+        name=layer_saved_transformations.name, defaults={
+            'order': layer_saved_transformations.order
+        }
     )
 
     for object_layer in ObjectLayer.objects.using(schema_editor.connection.alias).filter(stored_layer=stored_layer):
@@ -61,7 +69,6 @@ def code_copy_transformations_reverse(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('converter', '0014_auto_20190814_0013'),
     ]

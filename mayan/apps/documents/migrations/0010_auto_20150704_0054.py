@@ -1,10 +1,10 @@
-from django.db import models, migrations
 import datetime
+
+from django.db import models, migrations
 from django.utils.timezone import utc
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0009_document_in_trash'),
     ]

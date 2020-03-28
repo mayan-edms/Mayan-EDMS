@@ -5,7 +5,6 @@ import mayan.apps.document_signatures.models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('document_signatures', '0007_auto_20180403_0702'),
     ]

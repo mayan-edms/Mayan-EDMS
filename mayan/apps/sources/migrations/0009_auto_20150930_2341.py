@@ -2,7 +2,6 @@ from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('metadata', '0007_auto_20150918_0800'),
         ('sources', '0008_auto_20150815_0351'),

@@ -1,10 +1,10 @@
 from django.db import migrations, models
 import django.db.models.deletion
+
 import mptt.fields
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [

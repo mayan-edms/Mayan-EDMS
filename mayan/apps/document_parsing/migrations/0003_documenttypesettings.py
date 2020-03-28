@@ -37,7 +37,6 @@ def operation_delete_parsing_setting_for_existing_document_types(apps, schema_ed
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0042_auto_20180403_0702'),
         ('document_parsing', '0002_auto_20170827_1617'),

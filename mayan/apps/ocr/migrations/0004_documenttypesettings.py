@@ -19,7 +19,6 @@ def operation_create_ocr_setting_for_existing_document_types(apps, schema_editor
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0016_auto_20150708_0325'),
         ('ocr', '0003_auto_20150617_0401'),

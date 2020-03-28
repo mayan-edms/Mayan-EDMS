@@ -6,7 +6,6 @@ from django.utils.encoding import force_text
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0041_auto_20170823_1855'),
     ]

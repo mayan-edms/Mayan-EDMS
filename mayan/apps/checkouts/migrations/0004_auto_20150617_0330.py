@@ -3,7 +3,6 @@ from django.conf import settings
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('checkouts', '0003_auto_20150617_0325'),
     ]

@@ -1,9 +1,9 @@
-import colorful.fields
 from django.db import migrations, models
+
+import colorful.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('tags', '0007_auto_20170118_1758'),
     ]

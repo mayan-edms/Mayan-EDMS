@@ -2,7 +2,6 @@ from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('document_indexing', '0008_auto_20150729_1515'),
     ]

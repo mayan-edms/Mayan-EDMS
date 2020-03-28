@@ -35,7 +35,6 @@ def operation_migrate_old_comments(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('document_comments', '0002_auto_20150729_2144'),
         ('documents', '0001_initial'),

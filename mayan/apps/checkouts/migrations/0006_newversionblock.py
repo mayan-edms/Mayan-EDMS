@@ -3,7 +3,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0036_auto_20161222_0534'),
         ('checkouts', '0005_auto_20160122_0756'),

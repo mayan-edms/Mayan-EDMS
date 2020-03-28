@@ -10,7 +10,6 @@ def operation_make_existing_documents_not_stubs(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0012_auto_20150705_0347'),
     ]
