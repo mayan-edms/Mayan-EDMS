@@ -67,7 +67,7 @@ class DocumentTypesQuotaMixin(object):
             document_type_filter_text = _('all document types')
         else:
             document_type_filter_text = _(
-                'document_types: %(document_types)s'
+                'document types: %(document_types)s'
             ) % {
                 'document_types': QuotaBackend._queryset_to_text_list(
                     queryset=self._get_document_types()
@@ -106,7 +106,7 @@ class GroupsUsersQuotaMixin(object):
                     'class': 'django.forms.BooleanField', 'default': False,
                     'help_text': _(
                         'Apply the quota to all users in the system, '
-                        'including admins and staff. '
+                        'excluding admins and staff. '
                         'Enabling this option, the quota will ignore the '
                         'indiviual user and group selection.'
                     ), 'required': False,
