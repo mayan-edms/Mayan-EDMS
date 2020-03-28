@@ -56,6 +56,19 @@
 - Detect redirect loops when attempting to escape the AJAX container.
 - Improve icons of the OCR, file metadata, and document parsing apps.
 - Detect is a SourceColumn can be made sortable.
+- Update Python libraries versions: Python Redis version from 3.3.11 to 3.4.1,
+  PyYAML from 5.1.2 to 5.3.1, django-formtools from 2.1 to 2.2,
+  django-mathfilters from 0.4.0 to 1.0.0, django-model-utils from 3.1.2 to
+  4.0.0, django-mptt from 0.9.1 to 0.11.0, django-qsstats-magic from
+  1.0.0 to 1.1.0, django-widget-tweaks from 1.4.5 to 1.4.8, furl from 2.0.0
+  to 2.1.0, gunicorn from 19.9.0 to 20.0.4, mock from 2.0.0 to 4.0.2,
+  pycountry from 18.12.8 to 19.8.18, requests from 2.21.0 to 2.23.0,
+  whitenoise from 4.1.4 to 5.0.1, devpi-server from 5.4.0 to 5.4.1,
+  Pillow from 6.2.2 to 7.0.0, node-semver from 0.6.1 to 0.8.0, graphviz from
+  0.10.1 to 0.13.2, python-dateutil from 2.8.0 to 2.8.1, flanker from 0.9.0
+  to 0.9.11.
+- Removal of Python library django-timezone-field.
+
 
 3.3.16 (2020-03-17)
 ===================

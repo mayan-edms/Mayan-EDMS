@@ -3,13 +3,14 @@ codecov
 cssmin
 django-autoadmin
 django-celery
+django-compressor
 django-downloadview
 django-environ
-django-suit
-django-compressor
 django-filetransfers
 django-rest-swagger
+django-suit
+django-timezone-field
 librabbitmq
 pathlib2
-pytesseract
 pdfminer
+pytesseract

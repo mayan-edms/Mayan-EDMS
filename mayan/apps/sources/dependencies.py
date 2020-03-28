@@ -16,5 +16,5 @@ JavaScriptDependency(
     module=__name__, name='dropzone', version_string='=5.4.0'
 )
 PythonDependency(
-    module=__name__, name='flanker', version_string='==0.9.0'
+    module=__name__, name='flanker', version_string='==0.9.11'
 )

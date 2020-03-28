@@ -109,8 +109,5 @@ PythonDependency(
     ''', module=__name__, name='django-celery-beat', version_string='==1.5.0'
 )
 PythonDependency(
-    module=__name__, name='django-timezone-field', version_string='==3.1'
-)
-PythonDependency(
     module=__name__, name='kombu', version_string='==4.6.7'
 )

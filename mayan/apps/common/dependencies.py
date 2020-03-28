@@ -62,10 +62,10 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
         SOFTWARE.
-    ''', module=__name__, name='PyYAML', version_string='==5.1.2'
+    ''', module=__name__, name='PyYAML', version_string='==5.3.1'
 )
 PythonDependency(
-    module=__name__, name='django-formtools', version_string='==2.1'
+    module=__name__, name='django-formtools', version_string='==2.2'
 )
 PythonDependency(
     copyright_text='''
@@ -99,7 +99,7 @@ PythonDependency(
     ''', module=__name__, name='django-pure-pagination', version_string='==0.3.0'
 )
 PythonDependency(
-    module=__name__, name='django-mathfilters', version_string='==0.4.0'
+    module=__name__, name='django-mathfilters', version_string='==1.0.0'
 )
 PythonDependency(
     copyright_text='''
@@ -131,7 +131,7 @@ PythonDependency(
         THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django-model-utils', version_string='==3.1.2'
+    ''', module=__name__, name='django-model-utils', version_string='==4.0.0'
 )
 PythonDependency(
     copyright_text='''
@@ -156,7 +156,7 @@ PythonDependency(
         COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
         IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
         CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-    ''', module=__name__, name='django-mptt', version_string='==0.9.1'
+    ''', module=__name__, name='django-mptt', version_string='==0.11.0'
 )
 PythonDependency(
     copyright_text='''
@@ -184,7 +184,7 @@ PythonDependency(
         ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django-qsstats-magic', version_string='==1.0.0'
+    ''', module=__name__, name='django-qsstats-magic', version_string='==1.1.0'
 )
 PythonDependency(
     module=__name__, name='django-stronghold', version_string='==0.4.0'
@@ -210,10 +210,10 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
         THE SOFTWARE.
-    ''', module=__name__, name='django-widget-tweaks', version_string='==1.4.5'
+    ''', module=__name__, name='django-widget-tweaks', version_string='==1.4.8'
 )
 PythonDependency(
-    module=__name__, name='furl', version_string='==2.0.0'
+    module=__name__, name='furl', version_string='==2.1.0'
 )
 PythonDependency(
     module=__name__, name='extract-msg', version_string='==0.23.3'
@@ -222,16 +222,16 @@ PythonDependency(
     module=__name__, name='gevent', version_string='==1.4.0'
 )
 PythonDependency(
-    module=__name__, name='gunicorn', version_string='==19.9.0'
+    module=__name__, name='gunicorn', version_string='==20.0.4'
 )
 PythonDependency(
-    module=__name__, name='mock', version_string='==2.0.0'
+    module=__name__, name='mock', version_string='==4.0.2'
 )
 PythonDependency(
     copyright_text='''
         Author: Christian Theune
         License: LGPL 2.1
-    ''', module=__name__, name='pycountry', version_string='==18.12.8'
+    ''', module=__name__, name='pycountry', version_string='==19.8.18'
 )
 PythonDependency(
     copyright_text='''
@@ -257,7 +257,7 @@ PythonDependency(
     ''', module=__name__, name='pytz', version_string='==2019.1'
 )
 PythonDependency(
-    module=__name__, name='requests', version_string='==2.21.0'
+    module=__name__, name='requests', version_string='==2.23.0'
 )
 PythonDependency(
     copyright_text='''
@@ -283,7 +283,7 @@ PythonDependency(
     ''', module=__name__, name='sh', version_string='==1.12.14'
 )
 PythonDependency(
-    module=__name__, name='whitenoise', version_string='==4.1.4'
+    module=__name__, name='whitenoise', version_string='==5.0.1'
 )
 
 # Development
@@ -294,7 +294,7 @@ PythonDependency(
 )
 PythonDependency(
     module=__name__, environment=environment_development, name='devpi-server',
-    version_string='==5.4.0'
+    version_string='==5.4.1'
 )
 PythonDependency(
     environment=environment_development, module=__name__,
