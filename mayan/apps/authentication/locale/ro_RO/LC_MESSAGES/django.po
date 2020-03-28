@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:05-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"POT-Creation-Date: 2020-03-28 18:31-0400\n"
+"PO-Revision-Date: 2020-03-28 21:26+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -24,11 +24,11 @@ msgstr "Autentificare"
 
 #: events.py:10
 msgid "User impersonation ended"
-msgstr ""
+msgstr "Schimbul de rol a utilizatorului s-a încheiat"
 
 #: events.py:13
 msgid "User impersonation started"
-msgstr ""
+msgstr "A început schimbul de rol a utilizatorului"
 
 #: forms.py:17
 msgid "Email"
@@ -58,15 +58,15 @@ msgstr "Utilizator"
 
 #: forms.py:78
 msgid "User to be impersonated."
-msgstr ""
+msgstr "Utilizator care urmează să fie preluat."
 
 #: forms.py:82
 msgid "Permanent"
-msgstr ""
+msgstr "Permanent"
 
 #: forms.py:83
 msgid "If selected, disables ending impersonation."
-msgstr ""
+msgstr "Dacă este selectat, dezactivează încetarea preluării rolului."
 
 #: links.py:22
 msgid "Logout"
@@ -78,7 +78,7 @@ msgstr "Schimbați parola"
 
 #: links.py:32 views.py:68
 msgid "Impersonate user"
-msgstr ""
+msgstr "Schimb de rol a utilizatorului"
 
 #: links.py:37 links.py:44
 msgid "Set password"
@@ -86,7 +86,7 @@ msgstr "Seteaza parola"
 
 #: permissions.py:10
 msgid "Impersonate users"
-msgstr ""
+msgstr "Schimb de rol pentru utilizatori"
 
 #: settings.py:11
 msgid ""

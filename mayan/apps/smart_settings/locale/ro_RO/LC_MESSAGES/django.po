@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Harald Ersch, 2019
+# Harald Ersch, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:07-0400\n"
-"PO-Revision-Date: 2020-03-18 05:34+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"PO-Revision-Date: 2020-03-28 21:12+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -267,7 +267,7 @@ msgid ""
 "request is secure. This controls the behavior of the request object’s "
 "is_secure() method. Warning: Modifying this setting can compromise your "
 "site’s security. Ensure you fully understand your setup before changing it."
-msgstr ""
+msgstr "O pereche reprezentând o combinație antet / valoare HTTP care semnifică o solicitare sigură. Aceasta controlează comportamentul metodei is_secure () a obiectului de solicitare. Avertisment: modificarea acestei setări poate compromite securitatea site-ului. Asigurați-vă că înțelegeți complet configurarea dvs. înainte de a o schimba."
 
 #: settings.py:274
 msgid ""
@@ -297,7 +297,7 @@ msgid ""
 "A boolean that specifies whether to use the X-Forwarded-Host header in "
 "preference to the Host header. This should only be enabled if a proxy which "
 "sets this header is in use."
-msgstr ""
+msgstr "Un boolean care specifică dacă se utilizează antetul X-Forwarded-Host, în preferință pentru antetul gazdă. Acest lucru ar trebui să fie activat numai dacă este utilizat un proxy care stabilește acest antet."
 
 #: settings.py:314
 msgid ""
@@ -305,7 +305,7 @@ msgid ""
 "preference to the SERVER_PORT META variable. This should only be enabled if "
 "a proxy which sets this header is in use. USE_X_FORWARDED_HOST takes "
 "priority over this setting."
-msgstr ""
+msgstr "Un boolean care specifică dacă trebuie să utilizați antetul portului X-Forwarded-Port, în preferință pentru variabila SERVER_PORT META. Acest lucru ar trebui să fie activat numai dacă este utilizat un proxy care stabilește acest antet. USE_X_FORWARDED_HOST are prioritate față de această setare."
 
 #: settings.py:324
 msgid ""

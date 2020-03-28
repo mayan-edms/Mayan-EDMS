@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:08-0400\n"
-"PO-Revision-Date: 2020-03-28 07:24+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"PO-Revision-Date: 2020-03-28 12:41+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,30 +28,30 @@ msgstr "Armazenamento"
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
 "path and arguments."
-msgstr ""
+msgstr "Não foi possível iniciar o armazenamento: %(name)s. Verifique o caminho  e os argumentos do backend de armazenamento."
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."
-msgstr ""
+msgstr "Nome do aplicativo a ser processado."
 
 #: management/commands/storage_process.py:19
 msgid ""
 "Path of the database (.dbm) file that will be created/read to keep track of "
 "items processed."
-msgstr ""
+msgstr "Caminho do arquivo de banco de dados (.dbm) que será criado / lido para acompanhar os itens processados."
 
 #: management/commands/storage_process.py:26
 msgid "Process a specific model."
-msgstr ""
+msgstr "Processar um modelo específico."
 
 #: management/commands/storage_process.py:32
 msgid ""
 "Process the files in reverse to undo the storage pipeline transformations."
-msgstr ""
+msgstr "Processar os arquivos no sentido inverso para desfazer as transformações do pipeline de armazenamento."
 
 #: management/commands/storage_process.py:38
 msgid "Name of the storage to process."
-msgstr ""
+msgstr "Nome do armazenamento a processar."
 
 #: settings.py:12
 msgid ""

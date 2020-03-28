@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:08-0400\n"
-"PO-Revision-Date: 2020-03-28 07:24+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"PO-Revision-Date: 2020-03-28 14:17+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,30 +27,30 @@ msgstr "Съхранение"
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
 "path and arguments."
-msgstr ""
+msgstr "Съхранението не може да бъде инициализирано: %(name)s. Проверете пътя и аргументите на бекенд скрипта на съхранението."
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."
-msgstr ""
+msgstr "Име на приложението за обработка."
 
 #: management/commands/storage_process.py:19
 msgid ""
 "Path of the database (.dbm) file that will be created/read to keep track of "
 "items processed."
-msgstr ""
+msgstr "Път на файла с база данни (.dbm), който ще бъде създаден / прочетен, за да следи обработените елементи."
 
 #: management/commands/storage_process.py:26
 msgid "Process a specific model."
-msgstr ""
+msgstr "Обработка на конкретен модел."
 
 #: management/commands/storage_process.py:32
 msgid ""
 "Process the files in reverse to undo the storage pipeline transformations."
-msgstr ""
+msgstr "Обработете файловете обратно, за да отмените трансформациите на тръбата за съхранение."
 
 #: management/commands/storage_process.py:38
 msgid "Name of the storage to process."
-msgstr ""
+msgstr "Име на съхранението, което ще се обработва."
 
 #: settings.py:12
 msgid ""

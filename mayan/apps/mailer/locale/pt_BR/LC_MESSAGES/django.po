@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:06-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-28 18:33-0400\n"
+"PO-Revision-Date: 2020-03-28 12:50+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -276,7 +276,7 @@ msgstr "Dados do backend"
 
 #: models.py:84
 msgid "The backend class for this entry."
-msgstr ""
+msgstr "A classe de backend para esta entrada."
 
 #: models.py:216
 msgid "Test email from Mayan EDMS"

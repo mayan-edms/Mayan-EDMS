@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:06-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-28 18:32-0400\n"
+"PO-Revision-Date: 2020-03-28 13:59+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -114,7 +114,7 @@ msgstr "Качена нова версия"
 
 #: events.py:17
 msgid "New version created"
-msgstr ""
+msgstr "Създадена е нова версия"
 
 #: events.py:20
 msgid "Document properties edited"
@@ -854,7 +854,7 @@ msgstr "Аргументи за подаване към DOCUMENT_STORAGE_BACKEND
 #: settings.py:150
 msgid ""
 "Time after which a document stub will be considered invalid and deleted."
-msgstr ""
+msgstr "Време, след което кочана на документа ще бъде считан за невалиден и изтрит."
 
 #: settings.py:156
 msgid "Height in pixels of the document thumbnail image."
@@ -952,7 +952,7 @@ msgstr "Общо страници от документи на всеки мес
 msgid ""
 "Unable to initialize the document image storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
+msgstr "Съхраняването на изображението в документа не може да се инициализира. Проверете настройките {} и {} за грешки във форматирането."
 
 #: storages.py:23
 msgid "Document images"
@@ -962,11 +962,11 @@ msgstr "Документни изображения"
 msgid ""
 "Unable to initialize the document version storage. Check the settings {} and"
 " {} for formatting errors."
-msgstr ""
+msgstr "Не може да се инициализира съхранението на версията на документа. Проверете настройките {} и {} за грешки във форматирането."
 
 #: storages.py:37
 msgid "Document version files"
-msgstr ""
+msgstr "Файлове с версии на документа"
 
 #: templates/documents/document_print.html:12
 msgid "Document page image preview"
@@ -1460,4 +1460,4 @@ msgstr "Страници: %d"
 
 #: workflow_actions.py:7
 msgid "Send document to trash"
-msgstr ""
+msgstr "Изпращане на документ в кошчето"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:05-0400\n"
+"POT-Creation-Date: 2020-03-28 18:31-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Harald Ersch, 2020\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -242,12 +242,13 @@ msgstr "Fișete care conțin documentul: %s"
 #: views.py:221
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document."
-msgstr ""
+msgstr "Solicitarea de adăugare la fișet efectuată pe%(count)d document."
 
 #: views.py:224
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents."
 msgstr ""
+"Solicitarea de adăugare la fișet efectuată pentru %(count)d documente."
 
 #: views.py:231
 msgid "Add"
@@ -283,12 +284,12 @@ msgstr "Document: %(document)s adăugat la fișetul: %(cabinet)s cu succes."
 #: views.py:312
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document."
-msgstr ""
+msgstr "Solicitarea de ștergere din fișet efectuată pe %(count)d document ."
 
 #: views.py:315
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents."
-msgstr ""
+msgstr "Solicitarea de ștergere din fișet efectuată pe %(count)d documente."
 
 #: views.py:322
 msgid "Remove"

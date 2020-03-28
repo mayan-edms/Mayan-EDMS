@@ -4,14 +4,14 @@
 # 
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
-# Harald Ersch, 2019
+# Harald Ersch, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:05-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-28 18:32-0400\n"
+"PO-Revision-Date: 2020-03-28 21:04+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -205,7 +205,7 @@ msgstr "Semnături"
 
 #: settings.py:14
 msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr ""
+msgstr "Calea completă către backend pentru a fi folosită pentru a gestiona tastele și semnăturile."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
@@ -270,7 +270,7 @@ msgstr "Încărcați o cheie nouă"
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
-msgstr ""
+msgstr "Cheile private sunt folosite pentru a semna documente. Cheile private pot fi încărcate doar de către utilizator. Vizualizarea pentru a încărca cheile private și publice este aceeași."
 
 #: views.py:175
 msgid "There no private keys"

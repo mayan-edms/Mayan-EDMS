@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:06-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-28 18:32-0400\n"
+"PO-Revision-Date: 2020-03-28 12:42+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -117,7 +117,7 @@ msgstr "Nova versão carregada"
 
 #: events.py:17
 msgid "New version created"
-msgstr ""
+msgstr "Nova versão criada"
 
 #: events.py:20
 msgid "Document properties edited"
@@ -955,7 +955,7 @@ msgstr "Total de páginas de documentos por mês"
 msgid ""
 "Unable to initialize the document image storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
+msgstr "Não foi possível inicializar o armazenamento da imagem do documento. Verifique as configurações {} e {} para erros de formatação."
 
 #: storages.py:23
 msgid "Document images"
@@ -965,11 +965,11 @@ msgstr "Imagens do documento"
 msgid ""
 "Unable to initialize the document version storage. Check the settings {} and"
 " {} for formatting errors."
-msgstr ""
+msgstr "Não foi possível inicializar o armazenamento da versão do documento. Verifique as configurações {} e {} para erros de formatação."
 
 #: storages.py:37
 msgid "Document version files"
-msgstr ""
+msgstr "Arquivos de versão do documento"
 
 #: templates/documents/document_print.html:12
 msgid "Document page image preview"
@@ -1463,4 +1463,4 @@ msgstr "Páginas: %d"
 
 #: workflow_actions.py:7
 msgid "Send document to trash"
-msgstr ""
+msgstr "Enviar documento para a lixeira"

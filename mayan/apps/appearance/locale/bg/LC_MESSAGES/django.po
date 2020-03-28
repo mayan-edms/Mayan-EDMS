@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:05-0400\n"
-"PO-Revision-Date: 2020-03-28 07:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-28 18:30-0400\n"
+"PO-Revision-Date: 2020-03-28 13:02+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -207,11 +207,11 @@ msgid ""
 "\n"
 "                                        Impersonating user \"%(user)s\".\n"
 "                                    "
-msgstr ""
+msgstr "\nПредставляващ се потребител „%(user)s“."
 
 #: templates/appearance/base.html:71
 msgid "Click here when finished"
-msgstr ""
+msgstr "Щракнете тук, когато приключите"
 
 #: templates/appearance/base.html:85
 #: templates/appearance/generic_list_items_subtemplate.html:66
@@ -299,7 +299,7 @@ msgstr "Изберете / премахнете избора на всички"
 
 #: templates/appearance/list_toolbar.html:17
 msgid "Toggle list display mode"
-msgstr ""
+msgstr "Превключване на режима на показване на списък"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""

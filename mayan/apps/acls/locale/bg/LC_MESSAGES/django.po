@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:04-0400\n"
-"PO-Revision-Date: 2020-03-28 07:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-28 18:30-0400\n"
+"PO-Revision-Date: 2020-03-28 14:44+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,11 +62,11 @@ msgstr "Недостатъчен достъп за: %s"
 
 #: models.py:54
 msgid "Access entry"
-msgstr "достъп вписване"
+msgstr "Запис на достъп"
 
 #: models.py:55
 msgid "Access entries"
-msgstr "достъп вписвания"
+msgstr "Записи на достъп"
 
 #: models.py:59
 #, python-format
@@ -90,7 +90,7 @@ msgstr "API URL посочва списък с разрешения за кон�
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr "API URL посочва разрешение във връзка с контролен списък на достъп към който е прикачено. Този URL е различен от основния URL на работния поток."
+msgstr "API URL посочва разрешение във връзка с контролен списък на достъп, към който е прикачено. Този URL е различен от основния URL на работния поток."
 
 #: serializers.py:89
 msgid "Primary key of the new permission to grant to the access control list."
@@ -116,7 +116,7 @@ msgstr "Основни ключове на ролята, към която е с
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
-msgstr ""
+msgstr "ACL за „%(object)s“, използващ роля „%(role)s“, вече съществува. Редактирайте този ACL запис вместо това."
 
 #: views.py:53
 #, python-format
@@ -137,7 +137,7 @@ msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr ""
+msgstr "ACL означава Списък за контрол на достъпа и е точен метод за контрол на достъпа на потребителите до обекти в системата. ACL позволява предоставяне на разрешение за роля, но само за конкретен обект или набор от обекти."
 
 #: views.py:143
 #, python-format
@@ -171,11 +171,11 @@ msgstr "Тип обект"
 
 #: workflow_actions.py:26
 msgid "Type of the object for which the access will be modified."
-msgstr "Тип на обекта за който достъпа ще бъде променен"
+msgstr "Тип на обекта, за който достъпа ще бъде променен"
 
 #: workflow_actions.py:32
 msgid "Object ID"
-msgstr "ID на обекта"
+msgstr "Идентификатор на обекта"
 
 #: workflow_actions.py:35
 msgid ""

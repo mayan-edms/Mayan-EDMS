@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:06-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-28 18:32-0400\n"
+"PO-Revision-Date: 2020-03-28 13:53+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,29 +41,29 @@ msgstr "Връща стойността на завършване на теку�
 msgid ""
 "Return the last workflow instance log entry. The log entry itself has the "
 "following fields: datetime, transition, user, and comment."
-msgstr ""
+msgstr "Върнете последния запис в дневника с етапа на работния поток. Самият запис в дневника има следните полета: дата, преход, потребител и коментар."
 
 #: apps.py:176
 msgid "Get last log entry"
-msgstr ""
+msgstr "Вземете последния запис в дневника"
 
 #: apps.py:182
 msgid ""
 "Return the current context dictionary which includes runtime data from the "
 "workflow transition fields."
-msgstr ""
+msgstr "Върнете текущия контекстов речник, който включва данни за изпълнение от полета за преход на работния поток."
 
 #: apps.py:184
 msgid "Get the context"
-msgstr ""
+msgstr "Вземете контекста"
 
 #: apps.py:190
 msgid "Return the transition of the workflow instance."
-msgstr ""
+msgstr "Връща прехода от етапа на работния поток."
 
 #: apps.py:191
 msgid "Get last transition"
-msgstr ""
+msgstr "Получава последен преход"
 
 #: apps.py:205 apps.py:215 apps.py:224 apps.py:230
 msgid "None"
@@ -104,7 +104,7 @@ msgstr "Тип на действието"
 #: apps.py:319
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
-msgstr ""
+msgstr "Тригерите са системни събития, които ще причиняват започване на прехода."
 
 #: apps.py:321
 msgid "Triggers"
@@ -397,11 +397,11 @@ msgid ""
 "The condition is evaluated against the workflow instance. Conditions that "
 "return None or an empty string ('') are considered to be logical false, any "
 "other value is considered to be the logical true."
-msgstr ""
+msgstr "Условието, което ще определи дали това действие на състояние се изпълнява или не. Условието се оценява спрямо етапа на работния поток. Условията, които връщат None или празен низ (&#39;&#39;), се считат за логически неверни, всяка друга стойност се счита за логически вярна."
 
 #: models.py:631 models.py:718
 msgid "Condition"
-msgstr ""
+msgstr "Условие"
 
 #: models.py:637
 msgid "Workflow state action"
@@ -414,11 +414,11 @@ msgstr "Неизвестен тип действие"
 #: models.py:684
 msgid ""
 "The state action will be executed, depending on the condition return value."
-msgstr ""
+msgstr "Действието на състоянието ще бъде изпълнено в зависимост от върнатата стойност на условието."
 
 #: models.py:687 models.py:746
 msgid "Has a condition?"
-msgstr ""
+msgstr "Има ли условие?"
 
 #: models.py:700
 msgid "A short text to describe the transition."
@@ -438,7 +438,7 @@ msgid ""
 "condition is evaluated against the workflow instance. Conditions that return"
 " None or an empty string ('') are considered to be logical false, any other "
 "value is considered to be the logical true."
-msgstr ""
+msgstr "Условието, което ще определи дали този преход е активиран или не. Условието се оценява спрямо етапа на работния поток. Условията, които връщат None или празен низ (&#39;&#39;), се считат за логически неверни, всяка друга стойност се счита за логически вярна."
 
 #: models.py:726
 msgid "Workflow transition"
@@ -451,7 +451,7 @@ msgstr "Преходи на работния поток"
 #: models.py:743
 msgid ""
 "The transition will be available, depending on the condition return value."
-msgstr ""
+msgstr "Преходът ще бъде наличен в зависимост от върнатата стойност на условието."
 
 #: models.py:760
 msgid ""
@@ -641,11 +641,11 @@ msgstr "Аргументи предавани към WORKFLOWS_IMAGE_CACHE_STORA
 msgid ""
 "Unable to initialize the workflow preview storage. Check the settings {} and"
 " {} for formatting errors."
-msgstr ""
+msgstr "Не може да се инициализира съхранението на визуализация на работния поток. Проверете настройките {} и {} за грешки във форматирането."
 
 #: storages.py:21
 msgid "Workflow preview images"
-msgstr ""
+msgstr "Визуализации на работния поток"
 
 #: templates/document_states/forms/widgets/workflow_image.html:2
 msgid "Workflow preview"
@@ -1062,7 +1062,7 @@ msgstr "Парола, която да използвате за отправян
 
 #: workflow_actions.py:133
 msgid "Method"
-msgstr ""
+msgstr "Метод"
 
 #: workflow_actions.py:136
 msgid ""
@@ -1072,7 +1072,7 @@ msgid ""
 "as part of their context via the variable \"entry_log\". The \"entry_log\" "
 "in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Методът HTTP, който да се използва за заявката. Типичен избор са OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Може да бъде статична стойност или шаблон, който връща текста на метода. Шаблоните получават етапа за въвеждане в дневника на работния поток като част от техния контекст чрез променливата &quot;entry_log&quot;. На свой ред „entry_log“ предоставя атрибутите „workflow_instance“, „datetime“, „transition“, „user“ и „comment“."
 
 #: workflow_actions.py:147
 msgid "Headers"
@@ -1089,7 +1089,7 @@ msgstr "Заглавки за изпращане с HTTP заявката. Тр�
 
 #: workflow_actions.py:164
 msgid "Perform an HTTP request"
-msgstr ""
+msgstr "Извършете HTTP заявка"
 
 #: workflow_actions.py:193
 #, python-format

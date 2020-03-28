@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:05-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-28 18:31-0400\n"
+"PO-Revision-Date: 2020-03-28 12:39+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,11 +26,11 @@ msgstr "Autenticação"
 
 #: events.py:10
 msgid "User impersonation ended"
-msgstr ""
+msgstr "Uso de outro usuário começou"
 
 #: events.py:13
 msgid "User impersonation started"
-msgstr ""
+msgstr "Uso de outro usuário terminou"
 
 #: forms.py:17
 msgid "Email"
@@ -60,15 +60,15 @@ msgstr "Usuário"
 
 #: forms.py:78
 msgid "User to be impersonated."
-msgstr ""
+msgstr "Usuário a ser utilizado."
 
 #: forms.py:82
 msgid "Permanent"
-msgstr ""
+msgstr "Permanente"
 
 #: forms.py:83
 msgid "If selected, disables ending impersonation."
-msgstr ""
+msgstr "Se selecionado, desabilita o uso de outro usuário."
 
 #: links.py:22
 msgid "Logout"
@@ -80,7 +80,7 @@ msgstr "Alterar a senha"
 
 #: links.py:32 views.py:68
 msgid "Impersonate user"
-msgstr ""
+msgstr "Usar o usuário"
 
 #: links.py:37 links.py:44
 msgid "Set password"
@@ -88,7 +88,7 @@ msgstr "Configurar senha"
 
 #: permissions.py:10
 msgid "Impersonate users"
-msgstr ""
+msgstr "Usar os usuários"
 
 #: settings.py:11
 msgid ""

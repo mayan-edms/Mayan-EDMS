@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:07-0400\n"
+"POT-Creation-Date: 2020-03-28 18:34-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -26,15 +26,15 @@ msgstr ""
 #: apps.py:37 events.py:6 links.py:33 models.py:33 permissions.py:5
 #: views.py:134
 msgid "Quotas"
-msgstr ""
+msgstr "Квоти"
 
 #: classes.py:62
 msgid "none"
-msgstr ""
+msgstr "няма"
 
 #: classes.py:134
 msgid "Does not apply"
-msgstr ""
+msgstr "Не се прилага"
 
 #: classes.py:138 classes.py:145
 msgid "Null backend"
@@ -42,11 +42,11 @@ msgstr "Нулев бекенд"
 
 #: events.py:10
 msgid "Quota created"
-msgstr ""
+msgstr "Квотата е създадена"
 
 #: events.py:13
 msgid "Quota edited"
-msgstr ""
+msgstr "Квотата е редактирана"
 
 #: forms.py:15 models.py:58
 msgid "Backend"
@@ -54,11 +54,11 @@ msgstr "Бекенд"
 
 #: forms.py:16
 msgid "The quota driver for this entry."
-msgstr ""
+msgstr "Драйвер за квотите за този запис."
 
 #: links.py:13
 msgid "Create quota"
-msgstr ""
+msgstr "Създайте квота"
 
 #: links.py:18
 msgid "Delete"
@@ -70,17 +70,19 @@ msgstr "Редактиране"
 
 #: links.py:28
 msgid "Quotas list"
-msgstr ""
+msgstr "Списък с квоти"
 
 #: mixins.py:17
 msgid "All document types"
-msgstr ""
+msgstr "Всички видове документи"
 
 #: mixins.py:20
 msgid ""
 "Apply to all document types. Enabling this, the quota will ignore the "
 "indiviual document type selection."
 msgstr ""
+"Прилага се за всички типове документи. Ако активирате това, квотата ще "
+"игнорира индивидуалния избор на тип документ."
 
 #: mixins.py:26
 msgid "Document types"
@@ -88,16 +90,16 @@ msgstr "Типове документи"
 
 #: mixins.py:33
 msgid "Document types to which the quota will be applied."
-msgstr ""
+msgstr "Видове документи, към които ще се прилага квотата."
 
 #: mixins.py:67
 msgid "all document types"
-msgstr ""
+msgstr "всички видове документи"
 
 #: mixins.py:70
 #, python-format
 msgid "document types: %(document_types)s"
-msgstr ""
+msgstr "типове документи: %(document_types)s"
 
 #: mixins.py:94
 msgid "Groups"
@@ -105,11 +107,11 @@ msgstr "Групи"
 
 #: mixins.py:101
 msgid "Groups to which the quota will be applied."
-msgstr ""
+msgstr "Групи, към които ще се прилага квотата."
 
 #: mixins.py:105
 msgid "All users"
-msgstr ""
+msgstr "Всички потребители"
 
 #: mixins.py:108
 msgid ""
@@ -117,6 +119,9 @@ msgid ""
 "Enabling this option, the quota will ignore the indiviual user and group "
 "selection."
 msgstr ""
+"Приложете квотата за всички потребители в системата, без администраторите и "
+"персонала. Ако активирате тази опция, квотата ще игнорира индивидуалния "
+"избор на потребители и групи."
 
 #: mixins.py:115
 msgid "Users"
@@ -124,16 +129,16 @@ msgstr "Потребители"
 
 #: mixins.py:122
 msgid "Users to which the quota will be applied."
-msgstr ""
+msgstr "Потребители, към които ще се прилага квотата."
 
 #: mixins.py:160
 msgid "all users"
-msgstr ""
+msgstr "всички потребители"
 
 #: mixins.py:162
 #, python-format
 msgid "groups: %(groups)s, users: %(users)s"
-msgstr ""
+msgstr "групи: %(groups)s, потребители: %(users)s"
 
 #: models.py:19
 msgid "The dotted Python path to the backend class."
@@ -149,7 +154,7 @@ msgstr "Данни за бекенда"
 
 #: models.py:27
 msgid "Allow quick disable or enable of the quota."
-msgstr ""
+msgstr "Разрешаване на бързото изключване или активиране на квотата."
 
 #: models.py:28
 msgid "Enabled"
@@ -157,11 +162,11 @@ msgstr "Активиран"
 
 #: models.py:32
 msgid "Quota"
-msgstr ""
+msgstr "Квота"
 
 #: models.py:57
 msgid "Driver used for this quota entry."
-msgstr ""
+msgstr "Драйвер, използван за това въвеждане на квота."
 
 #: models.py:62
 msgid "Arguments"
@@ -169,85 +174,85 @@ msgstr "Аргументи"
 
 #: models.py:66
 msgid "Usage"
-msgstr ""
+msgstr "Употреба"
 
 #: permissions.py:8
 msgid "Create a quota"
-msgstr ""
+msgstr "Създайте квота"
 
 #: permissions.py:11
 msgid "Delete a quota"
-msgstr ""
+msgstr "Изтрийте квота"
 
 #: permissions.py:14
 msgid "Edit a quota"
-msgstr ""
+msgstr "Редактиране на квота"
 
 #: permissions.py:17
 msgid "View a quota"
-msgstr ""
+msgstr "Вижте квота"
 
 #: quota_backends.py:19
 msgid "Document count quota exceeded."
-msgstr ""
+msgstr "Превишена квота за брой документи."
 
 #: quota_backends.py:23
 msgid "Documents limit"
-msgstr ""
+msgstr "Ограничение на документи"
 
 #: quota_backends.py:26
 msgid "Maximum number of documents."
-msgstr ""
+msgstr "Максимален брой документи."
 
 #: quota_backends.py:30
 msgid "Document count limit"
-msgstr ""
+msgstr "Ограничение на броя на документите"
 
 #: quota_backends.py:49
 #, python-format
 msgid "document count: %(document_count)s"
-msgstr ""
+msgstr "брой на документите: %(document_count)s"
 
 #: quota_backends.py:98 quota_backends.py:152
 msgid "Document size quota exceeded."
-msgstr ""
+msgstr "Квотата за размер на документа е надвишена."
 
 #: quota_backends.py:108 quota_backends.py:113
 msgid "Document size limit"
-msgstr ""
+msgstr "Ограничение на размера на документа"
 
 #: quota_backends.py:110
 msgid "Maximum document size in megabytes (MB)."
-msgstr ""
+msgstr "Максимален размер на документа в мегабайти (MB)."
 
 #: quota_backends.py:132
 #, python-format
 msgid "document size: %(formatted_file_size)s"
-msgstr ""
+msgstr "размер на документа: %(formatted_file_size)s"
 
 #: views.py:24
 msgid "New quota backend selection"
-msgstr ""
+msgstr "Избор на бекенд за нова квота"
 
 #: views.py:52
 #, python-format
 msgid "Create a \"%s\" quota"
-msgstr ""
+msgstr "Създайте &quot;%s&quot; квота"
 
 #: views.py:84
 #, python-format
 msgid "Delete quota: %s"
-msgstr ""
+msgstr "Изтрийте квотата: %s"
 
 #: views.py:99
 #, python-format
 msgid "Edit quota: %s"
-msgstr ""
+msgstr "Редактиране на квота: %s"
 
 #: views.py:131
 msgid "Quotas restrict usage of system resources. "
-msgstr ""
+msgstr "Квотите ограничават използването на системните ресурси."
 
 #: views.py:133
 msgid "No quotas available"
-msgstr ""
+msgstr "Няма налични квоти"

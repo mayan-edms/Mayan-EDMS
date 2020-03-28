@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:06-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
+"POT-Creation-Date: 2020-03-28 18:32-0400\n"
+"PO-Revision-Date: 2020-03-28 12:38+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,29 +45,29 @@ msgstr "Retorna o valor final do estado atual do workflow selecionado."
 msgid ""
 "Return the last workflow instance log entry. The log entry itself has the "
 "following fields: datetime, transition, user, and comment."
-msgstr ""
+msgstr "Retorna o último registro do log do workflow. O registro possui os seguintes campos: datetime, transição, usuário e comentário."
 
 #: apps.py:176
 msgid "Get last log entry"
-msgstr ""
+msgstr "Obter a última entrada do log"
 
 #: apps.py:182
 msgid ""
 "Return the current context dictionary which includes runtime data from the "
 "workflow transition fields."
-msgstr ""
+msgstr "Retorna o dicionário de contexto atual que inclui dados de execuçãos campos de transição do workflow."
 
 #: apps.py:184
 msgid "Get the context"
-msgstr ""
+msgstr "Obter contexto"
 
 #: apps.py:190
 msgid "Return the transition of the workflow instance."
-msgstr ""
+msgstr "Retorna a transição da instância do workflow."
 
 #: apps.py:191
 msgid "Get last transition"
-msgstr ""
+msgstr "Obter a última transição"
 
 #: apps.py:205 apps.py:215 apps.py:224 apps.py:230
 msgid "None"
@@ -108,7 +108,7 @@ msgstr "Tipo de ação"
 #: apps.py:319
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
-msgstr ""
+msgstr "Triggers são eventos do sistema que fazem com que essa transição seja aplicada."
 
 #: apps.py:321
 msgid "Triggers"
@@ -401,7 +401,7 @@ msgid ""
 "The condition is evaluated against the workflow instance. Conditions that "
 "return None or an empty string ('') are considered to be logical false, any "
 "other value is considered to be the logical true."
-msgstr ""
+msgstr "A condição que irá determinar se esta ação de estado será executada ou não. A condição é avaliada em relação à instância de workflow. Condições que retornam None ou uma string vazia ('') são consideradas logicamente falsas. Qualquer outro valor é considerado logicamente verdadeiro."
 
 #: models.py:631 models.py:718
 msgid "Condition"
@@ -418,11 +418,11 @@ msgstr "Tipo de ação desconhecido"
 #: models.py:684
 msgid ""
 "The state action will be executed, depending on the condition return value."
-msgstr ""
+msgstr "A ação de estado será executada dependendo o valor de retorno da condição."
 
 #: models.py:687 models.py:746
 msgid "Has a condition?"
-msgstr ""
+msgstr "Possui uma condição?"
 
 #: models.py:700
 msgid "A short text to describe the transition."
@@ -442,7 +442,7 @@ msgid ""
 "condition is evaluated against the workflow instance. Conditions that return"
 " None or an empty string ('') are considered to be logical false, any other "
 "value is considered to be the logical true."
-msgstr ""
+msgstr "A condição irá determinar se esta transição  está ou não habilitada. A condição é avaliada em relação à instância de workflow. Condições que retornam None ou uma string vazia ('') são consideradas logicamente falsas. Qualquer outro valor é considerado logicamente verdadeiro."
 
 #: models.py:726
 msgid "Workflow transition"
@@ -455,7 +455,7 @@ msgstr "Transições do workflow"
 #: models.py:743
 msgid ""
 "The transition will be available, depending on the condition return value."
-msgstr ""
+msgstr "A condição estará disponível, dependendo do valor de retorno da condição."
 
 #: models.py:760
 msgid ""
@@ -645,11 +645,11 @@ msgstr "Argumentos a serem passados para WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 msgid ""
 "Unable to initialize the workflow preview storage. Check the settings {} and"
 " {} for formatting errors."
-msgstr ""
+msgstr "Não foi possível iniciar o armazenamento de preview de workflow. Verifique os parâmetros {} e {} para erros de formatação."
 
 #: storages.py:21
 msgid "Workflow preview images"
-msgstr ""
+msgstr "Imagens de preview de workflow."
 
 #: templates/document_states/forms/widgets/workflow_image.html:2
 msgid "Workflow preview"
@@ -1066,7 +1066,7 @@ msgstr "Senha a ser usada para fazer uma requisição com HTTP Basic Auth. Pode 
 
 #: workflow_actions.py:133
 msgid "Method"
-msgstr ""
+msgstr "Método"
 
 #: workflow_actions.py:136
 msgid ""
@@ -1076,7 +1076,7 @@ msgid ""
 "as part of their context via the variable \"entry_log\". The \"entry_log\" "
 "in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "O método HTTP a ser usado para a solicitação. As opções típicas são OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Pode ser um valor estático ou um template que retorna o texto do método. Os templates recebem a instância de entrada do log do fluxo de trabalho como parte de seu contexto por meio da variável \"entry_log\". O \"entry_log\", por sua vez, fornece os atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\"; e \"comment\";."
 
 #: workflow_actions.py:147
 msgid "Headers"
@@ -1093,7 +1093,7 @@ msgstr "Cabeçalhos a serem enviados com a requisição HTTP. Devem estar em for
 
 #: workflow_actions.py:164
 msgid "Perform an HTTP request"
-msgstr ""
+msgstr "Realizar uma requisição HTTP"
 
 #: workflow_actions.py:193
 #, python-format

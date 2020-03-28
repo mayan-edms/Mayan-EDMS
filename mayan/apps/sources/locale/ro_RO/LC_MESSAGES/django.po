@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:07-0400\n"
-"PO-Revision-Date: 2020-03-28 07:24+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"PO-Revision-Date: 2020-03-28 21:20+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -617,11 +617,11 @@ msgstr "Argumentele care trebuie transmise către SOURCES_STAGING_FILE_CACHE_STO
 msgid ""
 "Unable to initialize the staging folder file image storage. Check the "
 "settings {} and {} for formatting errors."
-msgstr ""
+msgstr "Imposibil de inițializat stocarea folderului de aşteptare pentru fișierul de imagine. Verificați setările {} și {} pentru erori de formatare."
 
 #: storages.py:23
 msgid "Staging folder files"
-msgstr ""
+msgstr "Stabilirea  dosarului de așteptare a fișierelor. "
 
 #: tasks.py:46
 #, python-format
@@ -703,7 +703,7 @@ msgstr "Scanează"
 #: views.py:286
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
-msgstr ""
+msgstr "Eroare la executarea sarcinii de încărcare a documentelor; %(exception)s"
 
 #: views.py:296
 msgid "New document queued for upload and will be available shortly."
@@ -717,7 +717,7 @@ msgstr "Încărcați un document de tipul \"%(document_type)s\" din sursa: %(sou
 #: views.py:388
 #, python-format
 msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
-msgstr ""
+msgstr "Nu se pot încărca versiuni noi pentru documentul \"%(document)s\". %(exception)s"
 
 #: views.py:437
 msgid "New document version queued for upload and will be available shortly."

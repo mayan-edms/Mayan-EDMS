@@ -7,15 +7,15 @@
 # Roberto Rosario, 2019
 # Badea Gabriel <gcbadea@gmail.com>, 2019
 # Stefaniu Criste <gupi@hangar.ro>, 2019
-# Harald Ersch, 2019
+# Harald Ersch, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:06-0400\n"
+"POT-Creation-Date: 2020-03-28 18:33-0400\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
-"Last-Translator: Harald Ersch, 2019\n"
+"Last-Translator: Harald Ersch, 2020\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,11 +49,11 @@ msgstr "Purjare cache"
 
 #: models.py:29
 msgid "Internal name of the defined storage for this cache."
-msgstr ""
+msgstr "Numele intern al stocării definite pentru acest cache."
 
 #: models.py:30
 msgid "Defined storage name"
-msgstr ""
+msgstr "Numele de stocare definit"
 
 #: models.py:33
 msgid "Maximum size of the cache in bytes."
@@ -77,7 +77,7 @@ msgstr "Mărimea la care cache-ul va începe să șteargă intrări vechi."
 
 #: models.py:74
 msgid "Current size"
-msgstr ""
+msgstr "Dimensiunea curentă"
 
 #: models.py:75
 msgid "Current size of the cache."

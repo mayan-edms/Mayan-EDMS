@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:05-0400\n"
+"POT-Creation-Date: 2020-03-28 18:31-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -239,12 +239,12 @@ msgstr "Шкафове, съдържащи документ: %s"
 #: views.py:221
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document."
-msgstr ""
+msgstr "Добавете към заявката на шкафа, изпълнена на %(count)dдокумент."
 
 #: views.py:224
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents."
-msgstr ""
+msgstr "Добавете към заявката на шкафа, изпълнена на %(count)dдокумента."
 
 #: views.py:231
 msgid "Add"
@@ -279,12 +279,12 @@ msgstr "Документ: %(document)s добавен към шкафа: %(cabin
 #: views.py:312
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document."
-msgstr ""
+msgstr "Премахване от заявка на шкафа, изпълнена на документ %(count)d."
 
 #: views.py:315
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents."
-msgstr ""
+msgstr "Премахване от заявка на шкафа, изпълнена на документи %(count)d."
 
 #: views.py:322
 msgid "Remove"

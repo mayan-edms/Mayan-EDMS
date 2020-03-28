@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 05:07-0400\n"
-"PO-Revision-Date: 2020-03-18 05:34+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"PO-Revision-Date: 2020-03-28 14:05+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -267,7 +267,7 @@ msgid ""
 "request is secure. This controls the behavior of the request object’s "
 "is_secure() method. Warning: Modifying this setting can compromise your "
 "site’s security. Ensure you fully understand your setup before changing it."
-msgstr ""
+msgstr "Поредицата, представляваща комбинация от HTTP заглавка / стойност, която представлява заявка, е защитена. Това контролира поведението на метода is_secure () на обекта на заявка. Предупреждение: Промяната на тази настройка може да компрометира сигурността на вашия сайт. Уверете се, че напълно разбирате вашата настройка, преди да я промените."
 
 #: settings.py:274
 msgid ""
@@ -297,7 +297,7 @@ msgid ""
 "A boolean that specifies whether to use the X-Forwarded-Host header in "
 "preference to the Host header. This should only be enabled if a proxy which "
 "sets this header is in use."
-msgstr ""
+msgstr "Булева стойност, която определя дали да се използва заглавката на X-Forwarded-Host за предпочитане пред заглавката на Host. Това трябва да бъде активирано само ако се използва прокси, който задава, че това заглавие се използва."
 
 #: settings.py:314
 msgid ""
@@ -305,7 +305,7 @@ msgid ""
 "preference to the SERVER_PORT META variable. This should only be enabled if "
 "a proxy which sets this header is in use. USE_X_FORWARDED_HOST takes "
 "priority over this setting."
-msgstr ""
+msgstr "Булева стойност, която определя дали да се използва заглавката на X-Forwarded-Port за предпочитане пред променливата SERVER_PORT META. Това трябва да бъде активирано само ако се използва прокси, който задава това заглавие. USE_X_FORWARDED_HOST има приоритет пред тази настройка."
 
 #: settings.py:324
 msgid ""
