@@ -55,6 +55,7 @@
   ``performupgrade`` commands.
 - Detect redirect loops when attempting to escape the AJAX container.
 - Improve icons of the OCR, file metadata, and document parsing apps.
+- Detect is a SourceColumn can be made sortable.
 
 3.3.16 (2020-03-17)
 ===================
