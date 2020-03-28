@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:29-0400\n"
-"PO-Revision-Date: 2019-12-13 05:14+0000\n"
+"POT-Creation-Date: 2020-03-28 05:06-0400\n"
+"PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
@@ -19,105 +19,105 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:42
+#: apps.py:40
 msgid "Mailer"
 msgstr "Posta gönderici"
 
-#: apps.py:63 apps.py:84
+#: apps.py:61 apps.py:82
 msgid "Date and time"
 msgstr "Tarih ve saat"
 
-#: apps.py:66 apps.py:88 models.py:30 models.py:229
+#: apps.py:64 apps.py:86 models.py:28 models.py:228
 msgid "Message"
 msgstr "Mesaj"
 
-#: classes.py:81
+#: classes.py:79
 msgid "Null backend"
 msgstr ""
 
-#: events.py:7 permissions.py:7 queues.py:8 settings.py:12
+#: events.py:5 permissions.py:5 queues.py:6 settings.py:10
 msgid "Mailing"
 msgstr "Mail atma"
 
-#: events.py:10
+#: events.py:8
 msgid "Email sent"
 msgstr ""
 
-#: forms.py:60 forms.py:124
+#: forms.py:58 forms.py:122
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
 msgstr "Alıcının e-posta adresi. Virgülle veya noktalı virgülle ayrılmış birden çok adres olabilir."
 
-#: forms.py:62 forms.py:126
+#: forms.py:60 forms.py:124
 msgid "Email address"
 msgstr "E-posta adresi"
 
-#: forms.py:64 workflow_actions.py:40
+#: forms.py:62 workflow_actions.py:36
 msgid "Subject"
 msgstr "Konu"
 
-#: forms.py:66 workflow_actions.py:49
+#: forms.py:64 workflow_actions.py:45
 msgid "Body"
 msgstr "Gövde"
 
-#: forms.py:70
+#: forms.py:68
 msgid "The email profile that will be used to send this email."
 msgstr "Bu e-postayı göndermek için kullanılacak e-posta profili."
 
-#: forms.py:71 models.py:71 views.py:239 workflow_actions.py:22
+#: forms.py:69 models.py:69 views.py:237 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "Posta profili"
 
-#: forms.py:77
+#: forms.py:75
 msgid "The driver to use when sending emails."
 msgstr ""
 
-#: forms.py:78
+#: forms.py:76 models.py:83
 msgid "Backend"
 msgstr "Arka Ucu"
 
-#: links.py:18 links.py:28
+#: links.py:16 links.py:26
 msgid "Email document"
 msgstr "E-posta belgesi"
 
-#: links.py:24 links.py:32
+#: links.py:22 links.py:30
 msgid "Email link"
 msgstr "E-posta bağlantısı"
 
-#: links.py:37
+#: links.py:35
 msgid "System mailer error log"
 msgstr "Sistem postası hata günlüğü"
 
-#: links.py:42
+#: links.py:40
 msgid "Create mailing profile "
 msgstr ""
 
-#: links.py:48
+#: links.py:46
 msgid "Delete"
 msgstr "Sil"
 
-#: links.py:54
+#: links.py:52
 msgid "Edit"
 msgstr "Düzenle"
 
-#: links.py:58
+#: links.py:56
 msgid "Log"
 msgstr "Günlük"
 
-#: links.py:63
+#: links.py:61
 msgid "Mailing profiles list"
 msgstr "Posta profilleri listesi"
 
-#: links.py:68 models.py:72
+#: links.py:66 models.py:70
 msgid "Mailing profiles"
 msgstr "Posta profilleri"
 
-#: links.py:74 views.py:261
+#: links.py:72 views.py:259
 msgid "Test"
 msgstr "Test"
 
-#: literals.py:7
+#: literals.py:5
 #, python-format
 msgid ""
 "Attached to this email is the document: {{ document }}\n"
@@ -126,11 +126,11 @@ msgid ""
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr "Bu e-postaya şu belge eklenmiştir: {{document}}\n\n --------\n Bu e-posta, %(project_title)s (%(project_website)s) adresinden gönderildi."
 
-#: literals.py:11
+#: literals.py:9
 msgid "Document: {{ document }}"
 msgstr "Doküman: {{document}}"
 
-#: literals.py:13
+#: literals.py:11
 #, python-format
 msgid ""
 "To access this document click on the following link: {{ link }}\n"
@@ -139,51 +139,51 @@ msgid ""
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr "Bu belgeye erişmek için şu bağlantıyı tıklayın: {{link}}\n\n--------\n Bu e-posta, %(project_title)s (%(project_website)s) adresinden gönderildi."
 
-#: literals.py:17
+#: literals.py:15
 msgid "Link for document: {{ document }}"
 msgstr "Doküman bağlantısı: {{document}}"
 
-#: mailers.py:23 mailers.py:112
+#: mailers.py:19 mailers.py:108
 msgid "From"
 msgstr ""
 
-#: mailers.py:26 mailers.py:115
+#: mailers.py:22 mailers.py:111
 msgid ""
 "The sender's address. Some system will refuse to send messages if this value"
 " is not set."
 msgstr ""
 
-#: mailers.py:32
+#: mailers.py:28
 msgid "Host"
 msgstr "Sunucu"
 
-#: mailers.py:34
+#: mailers.py:30
 msgid "The host to use for sending email."
 msgstr "E-posta göndermek için kullanılacak sunucu."
 
-#: mailers.py:39
+#: mailers.py:35
 msgid "Port"
 msgstr "Port"
 
-#: mailers.py:41
+#: mailers.py:37
 msgid "Port to use for the SMTP server."
 msgstr "SMTP sunucusu için kullanılacak bağlantı noktası."
 
-#: mailers.py:44
+#: mailers.py:40
 msgid "Use TLS"
 msgstr "TLS kullanın"
 
-#: mailers.py:47
+#: mailers.py:43
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
 msgstr "SMTP sunucusuyla konuşurken bir TLS (güvenli) bağlantı kullanıp kullanmamak. Bu, genellikle 587 numaralı bağlantı noktasındaki açık TLS bağlantıları için kullanılır."
 
-#: mailers.py:52
+#: mailers.py:48
 msgid "Use SSL"
 msgstr "SSL'yi kullan"
 
-#: mailers.py:55
+#: mailers.py:51
 msgid ""
 "Whether to use an implicit TLS (secure) connection when talking to the SMTP "
 "server. In most email documentation this type of TLS connection is referred "
@@ -193,271 +193,256 @@ msgid ""
 " True."
 msgstr "SMTP sunucusuyla konuşurken kapalı bir TLS (güvenli) bağlantı kullanıp kullanmamak. Çoğu e-posta belgelerinde bu TLS bağlantı tipine SSL adı verilir. Genellikle port 465'te kullanılır. Sorun yaşıyorsanız açık TLS ayarı \"TLS Kullan\" konusuna bakın. \"Use TLS\" (TLS Kullan) ve \"Use SSL\" (SSL Kullan) seçenekleri karşılıklı olarak hariçtir, bu nedenle bu ayarlardan birini yalnızca True olarak ayarlayın."
 
-#: mailers.py:64
+#: mailers.py:60
 msgid "Username"
 msgstr "Kullanıcı adı"
 
-#: mailers.py:67
+#: mailers.py:63
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
 msgstr "SMTP sunucusu için kullanılacak kullanıcı adı. Boş ise, kimlik doğrulama denenmeyecektir."
 
-#: mailers.py:73
+#: mailers.py:69
 msgid "Password"
 msgstr "Parola"
 
-#: mailers.py:76
+#: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
 "with the username when authenticating to the SMTP server. If either of these"
 " settings is empty, authentication won't be attempted."
 msgstr "SMTP sunucusu için kullanılacak şifre. Bu ayar, SMTP sunucusuna kimlik doğrulaması yaparken kullanıcı adı ile birlikte kullanılır. Bu ayarlardan herhangi biri boşsa, kimlik doğrulama denenmeyecektir."
 
-#: mailers.py:85
+#: mailers.py:81
 msgid "Django SMTP backend"
 msgstr "Django SMTP arka uç"
 
-#: mailers.py:107
+#: mailers.py:103
 msgid "File path"
 msgstr "Dosya yolu"
 
-#: mailers.py:122
+#: mailers.py:118
 msgid "Django file based backend"
 msgstr "Django dosya tabanlı arka uç"
 
-#: models.py:27 models.py:226
+#: models.py:25 models.py:225
 msgid "Date time"
 msgstr "Tarih saat"
 
-#: models.py:36
+#: models.py:34
 msgid "Log entry"
 msgstr "Kayıt girişi"
 
-#: models.py:37
+#: models.py:35
 msgid "Log entries"
 msgstr "Kayıt girdileri"
 
-#: models.py:48
+#: models.py:46
 msgid "A short text describing the mailing profile."
 msgstr ""
 
-#: models.py:49
+#: models.py:47
 msgid "Label"
 msgstr "Etiket"
 
-#: models.py:53
+#: models.py:51
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr "Varsayılan olarak, bu posta profili, belge posta formunda önceden seçilecektir."
 
-#: models.py:55
+#: models.py:53
 msgid "Default"
 msgstr "Varsayılan"
 
-#: models.py:57
+#: models.py:55
 msgid "Enabled"
 msgstr "Etkin"
 
-#: models.py:60
+#: models.py:58
 msgid "The dotted Python path to the backend class."
 msgstr "Arka plan sınıfının noktalı Python yolu."
 
-#: models.py:61
+#: models.py:59
 msgid "Backend path"
 msgstr "Arka plan yolu"
 
-#: models.py:64
+#: models.py:62
 msgid "Backend data"
 msgstr "Verileri yedekle"
 
-#: models.py:85
-msgid "Backend label"
+#: models.py:84
+msgid "The backend class for this entry."
 msgstr ""
 
-#: models.py:217
+#: models.py:216
 msgid "Test email from Mayan EDMS"
 msgstr "e-postayı test edin"
 
-#: models.py:223
+#: models.py:222
 msgid "User mailer"
 msgstr "Kullanıcı postası"
 
-#: models.py:235
+#: models.py:234
 msgid "User mailer log entry"
 msgstr "Kullanıcı postacı günlük girişi"
 
-#: models.py:236
+#: models.py:235
 msgid "User mailer log entries"
 msgstr "Kullanıcı postacı günlük kaydı"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Send document link via email"
 msgstr "Belge bağlantısını e-posta ile gönder"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Send document via email"
 msgstr "Belgeyi e-posta ile gönder"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "View system mailing error log"
 msgstr "Sistem posta hata günlüğünü görüntüle"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "Create a mailing profile"
 msgstr ""
 
-#: permissions.py:22
+#: permissions.py:20
 msgid "Delete a mailing profile"
 msgstr ""
 
-#: permissions.py:25
+#: permissions.py:23
 msgid "Edit a mailing profile"
 msgstr ""
 
-#: permissions.py:28
+#: permissions.py:26
 msgid "View a mailing profile"
 msgstr ""
 
-#: permissions.py:31
+#: permissions.py:29
 msgid "Use a mailing profile"
 msgstr ""
 
-#: queues.py:10
+#: queues.py:8
 msgid "Send document"
 msgstr "Belgeyi gönder"
 
-#: settings.py:16
+#: settings.py:14
 msgid "Template for the document email form subject line."
 msgstr "Belge e-posta formu konu satırı için şablon."
 
-#: settings.py:21
+#: settings.py:19
 msgid "Template for the document email form body text. Can include HTML."
 msgstr ""
 
-#: settings.py:26
+#: settings.py:24
 msgid "Template for the document link email form subject line."
 msgstr "Belge bağlantı e-posta formu konu satırı için şablon."
 
-#: settings.py:31
+#: settings.py:29
 msgid "Template for the document link email form body text. Can include HTML."
 msgstr ""
 
-#: validators.py:14
+#: validators.py:12
 #, python-format
 msgid "%(email)s is not a valid email address."
 msgstr ""
 
-#: views.py:38
+#: views.py:36
 msgid "Document mailing error log"
 msgstr "Belge postalama hata günlüğü"
 
-#: views.py:50
+#: views.py:48
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "%(count)d belge, e-posta teslimatı için sıraya girdi"
 
-#: views.py:52
+#: views.py:50
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "%(count)d belgeler e-posta teslimatı için sıraya alındı"
 
-#: views.py:63
+#: views.py:61
 msgid "Send"
 msgstr "Gönder"
 
-#: views.py:109
+#: views.py:107
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "%(count)d belge bağlantısı e-posta teslimatı için sıraya alındı"
 
-#: views.py:111
+#: views.py:109
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "%(count)d belge bağlantıları e-posta teslimatı için sıraya alındı"
 
-#: views.py:120
+#: views.py:118
 msgid "New mailing profile backend selection"
 msgstr "Yeni posta profili arka uç seçimi"
 
-#: views.py:152
+#: views.py:150
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "\"%s\" posta profili oluşturma"
 
-#: views.py:178
+#: views.py:176
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Posta profilini silin: %s"
 
-#: views.py:189
+#: views.py:187
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Posta profilini düzenleme: %s"
 
-#: views.py:212
+#: views.py:210
 #, python-format
 msgid "Error log for: %s"
 msgstr ""
 
-#: views.py:234
+#: views.py:232
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
 msgstr ""
 
-#: views.py:238
+#: views.py:236
 msgid "No mailing profiles available"
 msgstr ""
 
-#: views.py:253
+#: views.py:251
 msgid "Test email sent."
 msgstr ""
 
-#: views.py:262
+#: views.py:260
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Test posta profili: %s"
 
-#: workflow_actions.py:24
+#: workflow_actions.py:20
 msgid "Mailing profile to use when sending the email."
 msgstr ""
 
-#: workflow_actions.py:29
+#: workflow_actions.py:25
 msgid "Recipient"
 msgstr ""
 
-#: workflow_actions.py:32
+#: workflow_actions.py:28
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon. A template can be used to reference properties of the "
 "document."
 msgstr ""
 
-#: workflow_actions.py:43
+#: workflow_actions.py:39
 msgid "Subject of the email. Can be a string or a template."
 msgstr ""
 
-#: workflow_actions.py:52
+#: workflow_actions.py:48
 msgid "Body of the email to send. Can be a string or a template."
 msgstr ""
 
-#: workflow_actions.py:59
+#: workflow_actions.py:55
 msgid "Send email"
-msgstr ""
-
-#: workflow_actions.py:74
-#, python-format
-msgid "Recipient template error: %s"
-msgstr ""
-
-#: workflow_actions.py:85
-#, python-format
-msgid "Subject template error: %s"
-msgstr ""
-
-#: workflow_actions.py:96
-#, python-format
-msgid "Body template error: %s"
 msgstr ""

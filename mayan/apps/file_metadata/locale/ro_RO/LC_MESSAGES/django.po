@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:29-0400\n"
+"POT-Creation-Date: 2020-03-28 05:06-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -22,172 +22,172 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: admin.py:15
+#: admin.py:13
 msgid "Label"
 msgstr "Conținut etichetă"
 
-#: apps.py:52 events.py:8 links.py:18 permissions.py:7 queues.py:9
-#: settings.py:11
+#: apps.py:50 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: settings.py:9
 msgid "File metadata"
 msgstr "Metadatele fișierului"
 
-#: apps.py:98
+#: apps.py:96
 msgid "Return the value of a specific file metadata."
 msgstr "Returnați valoarea unei metadate de fișier specifice."
 
-#: apps.py:99
+#: apps.py:97
 msgid "File metadata value of"
 msgstr "Valoarea metadatelor fișierului pentru"
 
-#: apps.py:110 apps.py:152 apps.py:161
+#: apps.py:108 apps.py:156 apps.py:165
 msgid "File metadata key"
 msgstr "Cheia metadatelor fișierului"
 
-#: apps.py:114 apps.py:156 apps.py:165
+#: apps.py:112 apps.py:160 apps.py:169
 msgid "File metadata value"
 msgstr "Valoarea metadatelor fișierului"
 
-#: dependencies.py:14
+#: dependencies.py:12
 msgid ""
 "Library and program to read and write meta information in multimedia files."
 msgstr ""
 "Bibliotecă și program pentru citirea și scrierea informațiilor meta în "
 "fișierele multimedia."
 
-#: drivers/exiftool.py:20
+#: drivers/exiftool.py:18
 msgid "EXIF Tool"
 msgstr "Instrument EXIF"
 
-#: events.py:12
+#: events.py:10
 msgid "Document version submitted for file metadata processing"
 msgstr ""
 "Versiunea de document a fost trimisă pentru procesarea metadatelor de "
 "fișiere"
 
-#: events.py:16
+#: events.py:14
 msgid "Document version file metadata processing finished"
 msgstr ""
 "Procesarea metadatelor fișierului de versiune a documentelor a fost terminat"
 
-#: links.py:24
+#: links.py:23
 msgid "Attributes"
 msgstr "Atribute"
 
-#: links.py:31 links.py:34
+#: links.py:30 links.py:33
 msgid "Submit for file metadata"
 msgstr "Trimiteți pentru metadatele fișierului"
 
-#: links.py:41
+#: links.py:40
 msgid "Setup file metadata"
 msgstr "Setarea metadatelor fișierelor "
 
-#: links.py:46
+#: links.py:45
 msgid "File metadata processing per type"
 msgstr "Procesarea metadatelor de fișiere pe tip"
 
-#: methods.py:38
+#: methods.py:36
 msgid "get_file_metadata(< file metadata dotted path >)"
 msgstr "get_file_metadata (<fișier metadate punctat path>)"
 
-#: methods.py:41
+#: methods.py:39
 msgid "Return the specified document file metadata entry."
 msgstr "Returnați intrarea specificată a metadatelor fișierului ."
 
-#: methods.py:68
+#: methods.py:66
 msgid "Return the specified document version file metadata entry."
 msgstr ""
 "Returnați intrarea specificată a metadatelor pentru fișierul de versiune a "
 "documentului."
 
-#: models.py:21
+#: models.py:19
 msgid "Driver path"
 msgstr "Calea driver-ului"
 
-#: models.py:25
+#: models.py:23
 msgid "Internal name"
 msgstr "Nume intern"
 
-#: models.py:30 models.py:74
+#: models.py:28 models.py:72
 msgid "Driver"
 msgstr "Program driver"
 
-#: models.py:31
+#: models.py:29
 msgid "Drivers"
 msgstr "Programe driver"
 
-#: models.py:51
+#: models.py:49
 msgid "Document type"
 msgstr "Tipul documentului"
 
-#: models.py:55
+#: models.py:53
 msgid "Automatically queue newly created documents for processing."
 msgstr "Trimitere automată a documentelor nou create la procesare."
 
-#: models.py:62
+#: models.py:60
 msgid "Document type settings"
 msgstr "Setările tipului de document"
 
-#: models.py:63
+#: models.py:61
 msgid "Document types settings"
 msgstr "Setările pentru tipurile de documente"
 
-#: models.py:78
+#: models.py:76
 msgid "Document version"
 msgstr "Versiune document"
 
-#: models.py:84 models.py:100
+#: models.py:82 models.py:98
 msgid "Document version driver entry"
 msgstr "Înregistrare driver de versiune de document"
 
-#: models.py:85
+#: models.py:83
 msgid "Document version driver entries"
 msgstr "Înregistrări driver de versiune de document"
 
-#: models.py:92
+#: models.py:90
 msgid "Attribute count"
 msgstr "Număr de atribute"
 
-#: models.py:104
+#: models.py:102
 msgid "Name of the file metadata entry."
 msgstr "Numele înregistrării metadatelor fișierului."
 
-#: models.py:105
+#: models.py:103
 msgid "Key"
 msgstr "Cheie"
 
-#: models.py:108
+#: models.py:106
 msgid "Value of the file metadata entry."
 msgstr "Valoarea intrării de metadate a fișierului."
 
-#: models.py:109
+#: models.py:107
 msgid "Value"
 msgstr "Valoare"
 
-#: models.py:114
+#: models.py:112
 msgid "File metadata entry"
 msgstr "Înregistrare metadate fișier"
 
-#: models.py:115
+#: models.py:113
 msgid "File metadata entries"
 msgstr "Înregistrări de metadate în fișier"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Change document type file metadata settings"
 msgstr "Modificați setările pentru metadatele fișierului de tip document"
 
-#: permissions.py:15
+#: permissions.py:13
 msgid "Submit document for file metadata processing"
 msgstr "Trimiteți documentul pentru procesarea metadatelor de fișiere"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "View file metadata"
 msgstr "Vizualizați metadatele fișierelor"
 
-#: queues.py:12
+#: queues.py:10
 msgid "Process document version"
 msgstr "Procesează versiunea documentului"
 
-#: settings.py:18
+#: settings.py:16
 msgid ""
 "Set new document types to perform file metadata processing automatically by "
 "default."
@@ -195,11 +195,11 @@ msgstr ""
 "Setați tipuri noi de documente pentru a efectua automat prelucrarea "
 "metadatelor de fișiere în mod implicit."
 
-#: settings.py:24
+#: settings.py:22
 msgid "Arguments to pass to the drivers."
 msgstr "Argumente de transmis driverului"
 
-#: views.py:35
+#: views.py:33
 msgid ""
 "File metadata are the attributes of the document's file. They can range from"
 " camera information used to take a photo to the author that created a file. "
@@ -215,22 +215,22 @@ msgstr ""
 "metadatele documentului, care sunt definite de utilizator și se află în baza"
 " de date."
 
-#: views.py:43 views.py:62
+#: views.py:41 views.py:60
 msgid "No file metadata available."
 msgstr "Nu sunt disponibile metadate în fișier."
 
-#: views.py:46
+#: views.py:44
 #, python-format
 msgid "File metadata drivers for: %s"
 msgstr "Drivere de metadate de fișiere pentru: %s"
 
-#: views.py:65
+#: views.py:63
 #, python-format
 msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
 msgstr ""
 "Atribute metadate fișier pentru: %(document)s, pentru driver: %(driver)s"
 
-#: views.py:88
+#: views.py:86
 msgid "Submit the selected document to the file metadata queue?"
 msgid_plural "Submit the selected documents to the file metadata queue?"
 msgstr[0] "Trimiteți documentul selectat la coada de metadate a fișierului?"
@@ -239,18 +239,18 @@ msgstr[1] ""
 msgstr[2] ""
 "Trimiteți documentele selectate în coada de metadate pentru fișiere?"
 
-#: views.py:114
+#: views.py:112
 #, python-format
 msgid "Edit file metadata settings for document type: %s"
 msgstr "Editați setările metadatelor fișierului pentru tipul de document: %s"
 
-#: views.py:125
+#: views.py:123
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
 "Trimiteți toate documentele un anume tip pentru procesarea metadatelor de "
 "fișiere."
 
-#: views.py:147
+#: views.py:145
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr ""

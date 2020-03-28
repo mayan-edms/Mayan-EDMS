@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:25-0400\n"
-"PO-Revision-Date: 2020-02-10 08:21+0000\n"
+"POT-Creation-Date: 2020-03-28 05:05-0400\n"
+"PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
@@ -18,9 +18,17 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:25 settings.py:9
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
 msgid "Authentication"
 msgstr "认证"
+
+#: events.py:10
+msgid "User impersonation ended"
+msgstr ""
+
+#: events.py:13
+msgid "User impersonation started"
+msgstr ""
 
 #: forms.py:17
 msgid "Email"
@@ -30,7 +38,7 @@ msgstr "电子邮件"
 msgid "Password"
 msgstr "密码"
 
-#: forms.py:22 forms.py:73
+#: forms.py:22 forms.py:89
 msgid "Remember me"
 msgstr "记住账号"
 
@@ -44,6 +52,22 @@ msgstr "请输入正确的电子邮件和密码。请注意，密码字段区分
 msgid "This account is inactive."
 msgstr "此账号未激活。"
 
+#: forms.py:78
+msgid "User"
+msgstr "用户"
+
+#: forms.py:78
+msgid "User to be impersonated."
+msgstr ""
+
+#: forms.py:82
+msgid "Permanent"
+msgstr ""
+
+#: forms.py:83
+msgid "If selected, disables ending impersonation."
+msgstr ""
+
 #: links.py:22
 msgid "Logout"
 msgstr "登出"
@@ -52,23 +76,31 @@ msgstr "登出"
 msgid "Change password"
 msgstr "更改密码"
 
-#: links.py:32 links.py:39
+#: links.py:32 views.py:68
+msgid "Impersonate user"
+msgstr ""
+
+#: links.py:37 links.py:44
 msgid "Set password"
 msgstr "设置密码"
 
-#: settings.py:13
+#: permissions.py:10
+msgid "Impersonate users"
+msgstr ""
+
+#: settings.py:11
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr "控制用于经过身份验证的用户的机制。选项包括：用户名，电子邮件"
 
-#: settings.py:20
+#: settings.py:18
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
 msgstr ""
 
-#: settings.py:27
+#: settings.py:25
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
@@ -78,12 +110,12 @@ msgstr ""
 msgid "Login"
 msgstr "登录"
 
-#: templates/authentication/login.html:26
-#: templates/authentication/login.html:34
+#: templates/authentication/login.html:23
+#: templates/authentication/login.html:32
 msgid "Sign in"
 msgstr "登入"
 
-#: templates/authentication/login.html:41
+#: templates/authentication/login.html:39
 msgid "Forgot your password?"
 msgstr "忘记密码了吗？"
 
@@ -105,7 +137,7 @@ msgid "Login page"
 msgstr "登录页面"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:167
+#: templates/authentication/password_reset_form.html:29 views.py:211
 msgid "Submit"
 msgstr "提交"
 
@@ -113,50 +145,50 @@ msgstr "提交"
 msgid "Password reset email sent!"
 msgstr "密码重置邮件已发送！"
 
-#: views.py:77
+#: views.py:121
 msgid "Your password has been successfully changed."
 msgstr "你的密码已成功更改。"
 
-#: views.py:84
+#: views.py:128
 msgid "Current user password change"
 msgstr "当前用户密码更改"
 
-#: views.py:92
+#: views.py:136
 msgid "Changing the password is not allowed for this account."
 msgstr "此帐户不允许更改密码。"
 
-#: views.py:158
+#: views.py:202
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "在%(count)d用户上执行的密码更改请求"
 
-#: views.py:160
+#: views.py:204
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "在%(count)d用户上执行的密码更改请求"
 
-#: views.py:169
+#: views.py:213
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 
-#: views.py:179
+#: views.py:223
 #, python-format
 msgid "Change password for user: %s"
 msgstr "更改用户密码：%s"
 
-#: views.py:199
+#: views.py:243
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "不允许超级用户和员工用户的密码重置，在这些情况下请使用管理界面。"
 
-#: views.py:209
+#: views.py:253
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "用户成功重置密码：%s。"
 
-#: views.py:215
+#: views.py:259
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "重置用户“%(user)s”的密码时出错：%(error)s"

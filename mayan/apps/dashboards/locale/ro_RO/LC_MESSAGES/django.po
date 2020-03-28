@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:26-0400\n"
+"POT-Creation-Date: 2020-03-28 05:05-0400\n"
 "PO-Revision-Date: 2019-04-14 03:23+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -20,11 +20,11 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:14
+#: apps.py:12
 msgid "Dashboards"
 msgstr "Tablouri de bord"
 
-#: dashboards.py:7
+#: dashboards.py:5
 msgid "Main"
 msgstr "Principal"
 

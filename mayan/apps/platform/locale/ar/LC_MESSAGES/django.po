@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:30-0400\n"
+"POT-Creation-Date: 2020-03-28 05:07-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>, 2019\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -20,18 +20,18 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:14
+#: apps.py:12
 msgid "Platform"
 msgstr "Platform"
 
-#: classes.py:128
+#: classes.py:126
 msgid "Template for Supervisord."
 msgstr ""
 
-#: classes.py:184
+#: classes.py:182
 msgid "Template for Supervisord inside a Docker image."
 msgstr ""
 
-#: classes.py:192
+#: classes.py:190
 msgid "Template showing the queues of a worker."
 msgstr ""

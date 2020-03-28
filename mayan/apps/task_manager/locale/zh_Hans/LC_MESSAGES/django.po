@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:31-0400\n"
+"POT-Creation-Date: 2020-03-28 05:08-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -20,59 +20,59 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:19 links.py:12 permissions.py:7
+#: apps.py:17 links.py:10 permissions.py:5
 msgid "Task manager"
 msgstr "任务管理器"
 
-#: apps.py:27
+#: apps.py:25
 msgid "Label"
 msgstr "标签"
 
-#: apps.py:30
+#: apps.py:29
 msgid "Name"
 msgstr "名称"
 
-#: apps.py:33
+#: apps.py:34
 msgid "Default queue?"
 msgstr "默认队列？"
 
-#: apps.py:37
+#: apps.py:39
 msgid "Is transient?"
 msgstr "是临时的吗？"
 
-#: apps.py:41
+#: apps.py:43
 msgid "Type"
 msgstr "类型"
 
-#: apps.py:44
+#: apps.py:48
 msgid "Start time"
 msgstr "开始时间"
 
-#: apps.py:47
+#: apps.py:52
 msgid "Host"
 msgstr "主机"
 
-#: apps.py:51
+#: apps.py:56
 msgid "Arguments"
 msgstr "参数"
 
-#: apps.py:55
+#: apps.py:60
 msgid "Keyword arguments"
 msgstr "关键字参数"
 
-#: apps.py:59
+#: apps.py:64
 msgid "Worker process ID"
 msgstr "工作进程ID"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "View tasks"
 msgstr "查看任务"
 
-#: settings.py:10
+#: settings.py:8
 msgid "Celery"
 msgstr "Celery"
 
-#: settings.py:15
+#: settings.py:13
 msgid ""
 "Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
 " transport://userid:password@hostname:port/virtual_host Only the scheme part"
@@ -82,7 +82,7 @@ msgstr ""
 "默认值：“amqp：//”。默认代理URL。这必须是以下形式的URL：transport:// userid:password @ "
 "hostname:port / virtual_host只需要方案部分（transport://），其余部分是可选的，默认为特定传输的默认值。"
 
-#: settings.py:24
+#: settings.py:22
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
 "task results (tombstones). Refer to "
@@ -92,10 +92,10 @@ msgstr ""
 "默认值：默认情况下未启用结果后端。后端用于存储任务结果（墓碑）。请参阅http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html"
 "#result-backend"
 
-#: tests/literals.py:5
+#: tests/literals.py:3
 msgid "Test queue"
 msgstr "测试队列"
 
-#: views.py:14
+#: views.py:12
 msgid "Background task queues"
 msgstr "后台任务队列"

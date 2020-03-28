@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:30-0400\n"
+"POT-Creation-Date: 2020-03-28 05:07-0400\n"
 "PO-Revision-Date: 2019-05-31 12:38+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -18,79 +18,79 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:35 links.py:36 permissions.py:7
+#: apps.py:33 links.py:34 permissions.py:5
 msgid "Message of the day"
 msgstr "Dienas ziņojums"
 
-#: apps.py:57 apps.py:61
+#: apps.py:55 apps.py:59
 msgid "None"
 msgstr "Nav neviens"
 
-#: links.py:16 views.py:32
+#: links.py:14 views.py:30
 msgid "Create message"
 msgstr "Izveidot ziņu"
 
-#: links.py:22
+#: links.py:20
 msgid "Delete"
 msgstr "Dzēst"
 
-#: links.py:27
+#: links.py:25
 msgid "Edit"
 msgstr "Rediģēt"
 
-#: models.py:17
+#: models.py:15
 msgid "Short description of this message."
 msgstr "Īss šī ziņojuma apraksts."
 
-#: models.py:18
+#: models.py:16
 msgid "Label"
 msgstr "Etiķete"
 
-#: models.py:21
+#: models.py:19
 msgid "The actual message to be displayed."
 msgstr "Faktiskais ziņojums, kas tiks parādīts."
 
-#: models.py:22 models.py:39
+#: models.py:20 models.py:37
 msgid "Message"
 msgstr "Ziņojums"
 
-#: models.py:24
+#: models.py:22
 msgid "Enabled"
 msgstr "Iespējots"
 
-#: models.py:27
+#: models.py:25
 msgid "Date and time after which this message will be displayed."
 msgstr "Datums un laiks, pēc kura tiks parādīts šis ziņojums."
 
-#: models.py:28
+#: models.py:26
 msgid "Start date time"
 msgstr "Sākuma datums"
 
-#: models.py:32
+#: models.py:30
 msgid "Date and time until when this message is to be displayed."
 msgstr "Datums un laiks, līdz tiek parādīts šis ziņojums."
 
-#: models.py:33
+#: models.py:31
 msgid "End date time"
 msgstr "Beigu datuma laiks"
 
-#: models.py:40 views.py:80
+#: models.py:38 views.py:78
 msgid "Messages"
 msgstr "Ziņas"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Create messages"
 msgstr "Izveidojiet ziņas"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Delete messages"
 msgstr "Dzēst ziņas"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Edit messages"
 msgstr "Rediģējiet ziņas"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "View messages"
 msgstr "Skatiet ziņas"
 
@@ -98,23 +98,23 @@ msgstr "Skatiet ziņas"
 msgid "Messages of the day"
 msgstr "Dienas ziņojumi"
 
-#: views.py:45
+#: views.py:43
 #, python-format
 msgid "Delete the message: %s?"
 msgstr "Dzēsiet ziņojumu: %s?"
 
-#: views.py:58
+#: views.py:56
 #, python-format
 msgid "Edit message: %s"
 msgstr "Ziņas rediģēšana: %s"
 
-#: views.py:75
+#: views.py:73
 msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
 msgstr "Ziņojumi tiek parādīti pieteikšanās skatā. Jūs varat izmantot ziņojumus, lai pārliecinātu informāciju par jūsu organizāciju, paziņojumiem vai lietošanas vadlīnijām lietotājiem."
 
-#: views.py:79
+#: views.py:77
 msgid "No messages available"
 msgstr "Nav pieejams neviens ziņojums"

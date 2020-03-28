@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:31-0400\n"
+"POT-Creation-Date: 2020-03-28 05:07-0400\n"
 "PO-Revision-Date: 2020-01-31 14:22+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -21,28 +21,28 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:21 links.py:19 settings.py:8
+#: apps.py:19 links.py:17 settings.py:6
 msgid "REST API"
 msgstr "REST API"
 
-#: fields.py:33
+#: fields.py:31
 #, python-format
 msgid "Unable to find serializer class for: %s"
 msgstr "Não foi possível encontrar a classe do serializador para: %s"
 
-#: links.py:23
+#: links.py:21
 msgid "API Documentation (Swagger)"
 msgstr "Documentação da API (Swagger)"
 
-#: links.py:29
+#: links.py:27
 msgid "API Documentation (ReDoc)"
 msgstr "Documentação da API (ReDoc)"
 
-#: schemas.py:11
+#: schemas.py:9
 #, python-format
 msgid "%s API"
 msgstr "API %s"
 
-#: settings.py:14
+#: settings.py:12
 msgid "Disable the REST API links in the tools menu."
 msgstr "Desabilitar os links de API Rest no menu de ferramentas."

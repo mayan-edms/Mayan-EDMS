@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:31-0400\n"
+"POT-Creation-Date: 2020-03-28 05:08-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -20,59 +20,59 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:19 links.py:12 permissions.py:7
+#: apps.py:17 links.py:10 permissions.py:5
 msgid "Task manager"
 msgstr "Uzdevumu pārvaldnieks"
 
-#: apps.py:27
+#: apps.py:25
 msgid "Label"
 msgstr "Etiķete"
 
-#: apps.py:30
+#: apps.py:29
 msgid "Name"
 msgstr "Nosaukums"
 
-#: apps.py:33
+#: apps.py:34
 msgid "Default queue?"
 msgstr "Noklusējuma rinda?"
 
-#: apps.py:37
+#: apps.py:39
 msgid "Is transient?"
 msgstr "Vai tas ir pārejošs?"
 
-#: apps.py:41
+#: apps.py:43
 msgid "Type"
 msgstr "Tips"
 
-#: apps.py:44
+#: apps.py:48
 msgid "Start time"
 msgstr "Sākuma laiks"
 
-#: apps.py:47
+#: apps.py:52
 msgid "Host"
 msgstr "Saimnieks"
 
-#: apps.py:51
+#: apps.py:56
 msgid "Arguments"
 msgstr "Argumenti"
 
-#: apps.py:55
+#: apps.py:60
 msgid "Keyword arguments"
 msgstr "Atslēgvārdu argumenti"
 
-#: apps.py:59
+#: apps.py:64
 msgid "Worker process ID"
 msgstr "Darbinieku procesa ID"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "View tasks"
 msgstr "Skatīt uzdevumus"
 
-#: settings.py:10
+#: settings.py:8
 msgid "Celery"
 msgstr ""
 
-#: settings.py:15
+#: settings.py:13
 msgid ""
 "Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
 " transport://userid:password@hostname:port/virtual_host Only the scheme part"
@@ -84,7 +84,7 @@ msgstr ""
 "tikai shēmas daļa (transport://), pārējais ir neobligāts, un pēc noklusējuma"
 " konkrētās transportēšanas noklusējuma vērtības."
 
-#: settings.py:24
+#: settings.py:22
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
 "task results (tombstones). Refer to "
@@ -92,10 +92,10 @@ msgid ""
 "backend"
 msgstr ""
 
-#: tests/literals.py:5
+#: tests/literals.py:3
 msgid "Test queue"
 msgstr "Pārbaudes rinda"
 
-#: views.py:14
+#: views.py:12
 msgid "Background task queues"
 msgstr "Fona uzdevumu rindas"

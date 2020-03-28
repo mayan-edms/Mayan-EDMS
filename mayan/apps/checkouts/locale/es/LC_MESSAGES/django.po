@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:26-0400\n"
+"POT-Creation-Date: 2020-03-28 05:05-0400\n"
 "PO-Revision-Date: 2019-12-03 22:19+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -18,209 +18,209 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:45 events.py:7 links.py:34
+#: apps.py:44 events.py:5 links.py:32
 msgid "Checkouts"
 msgstr "Reservaciones"
 
-#: dashboard_widgets.py:16 views.py:172
+#: dashboard_widgets.py:14 views.py:170
 msgid "Checked out documents"
 msgstr "Documentos reservados"
 
-#: events.py:10
+#: events.py:8
 msgid "Document automatically checked in"
 msgstr "Documento devuelto automáticamente"
 
-#: events.py:14
+#: events.py:12
 msgid "Document checked in"
 msgstr "Documento devuelto"
 
-#: events.py:17
+#: events.py:15
 msgid "Document checked out"
 msgstr "Documento reservado"
 
-#: events.py:20
+#: events.py:18
 msgid "Document forcefully checked in"
 msgstr "Documento devuelto forzosamente"
 
-#: exceptions.py:27
+#: exceptions.py:25
 msgid "Document already checked out."
 msgstr "El documento ya está reservado."
 
-#: forms.py:28
+#: forms.py:26
 msgid "Document status"
 msgstr "Estatus del documento"
 
-#: forms.py:39 models.py:44 models.py:136
+#: forms.py:37 models.py:42 models.py:134
 msgid "User"
 msgstr "Usuario"
 
-#: forms.py:43
+#: forms.py:41
 msgid "Check out time"
 msgstr "Hora de reserva"
 
-#: forms.py:48
+#: forms.py:46
 msgid "Check out expiration"
 msgstr "Salida de la reserva"
 
-#: forms.py:53
+#: forms.py:51
 msgid "New versions allowed?"
 msgstr "¿Nuevas versiones permitidas?"
 
-#: forms.py:54
+#: forms.py:52
 msgid "Yes"
 msgstr "Si"
 
-#: forms.py:54
+#: forms.py:52
 msgid "No"
 msgstr "No"
 
-#: links.py:41
+#: links.py:39
 msgid "Check out document"
 msgstr "Reservar documento"
 
-#: links.py:45
+#: links.py:43
 msgid "Check out"
 msgstr "Reservar"
 
-#: links.py:52
+#: links.py:50
 msgid "Check in document"
 msgstr "Devolver documento"
 
-#: links.py:56
+#: links.py:54
 msgid "Check in"
 msgstr "Devolver"
 
-#: links.py:62
+#: links.py:60
 msgid "Check in/out"
 msgstr "Reservas"
 
-#: literals.py:12
+#: literals.py:10
 msgid "Checked out"
 msgstr "Reservado"
 
-#: literals.py:13
+#: literals.py:11
 msgid "Checked in/available"
 msgstr "Devuelto/disponible"
 
-#: models.py:31 models.py:114
+#: models.py:29 models.py:112
 msgid "Document"
 msgstr "Documento"
 
-#: models.py:34
+#: models.py:32
 msgid "Check out date and time"
 msgstr "Fecha y hora de la reservación"
 
-#: models.py:38
+#: models.py:36
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Cantidad de tiempo para mantener el documento reservado, en minutos."
 
-#: models.py:40
+#: models.py:38
 msgid "Check out expiration date and time"
 msgstr "Fecha y hora de la expiración de la reserva."
 
-#: models.py:49
+#: models.py:47
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "No permitir que nuevas versiones de este documento sean cargadas."
 
-#: models.py:51
+#: models.py:49
 msgid "Block new version upload"
 msgstr "Restringir la subida de nuevas versiones"
 
-#: models.py:59 permissions.py:7
+#: models.py:57 permissions.py:5
 msgid "Document checkout"
 msgstr "Reserva de documentos"
 
-#: models.py:60
+#: models.py:58
 msgid "Document checkouts"
 msgstr "Reservaciones de documentos"
 
-#: models.py:68
+#: models.py:66
 msgid "Check out expiration date and time must be in the future."
 msgstr "Fecha y hora de la expiración de la reserva deben ser en el futuro."
 
-#: models.py:120
+#: models.py:118
 msgid "New version block"
 msgstr "Bloquear nueva version"
 
-#: models.py:121
+#: models.py:119
 msgid "New version blocks"
 msgstr "Bloquear nuevas versiones"
 
-#: models.py:141
+#: models.py:139
 msgid "Checkout time and date"
 msgstr "Fecha y hora de reservación"
 
-#: models.py:146
+#: models.py:144
 msgid "Checkout expiration"
 msgstr "Expiración de la reservación"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Check in documents"
 msgstr "Devolver documentos"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Forcefully check in documents"
 msgstr "Devolver documentos forzosamente"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Check out documents"
 msgstr "Reservar documentos"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "Check out details view"
 msgstr "Detalles de la reserva"
 
-#: queues.py:13
+#: queues.py:11
 msgid "Checkouts periodic"
 msgstr "Reservas periódicas"
 
-#: queues.py:17
+#: queues.py:15
 msgid "Check expired checkouts"
 msgstr "Comprobar reservaciones caducadas"
 
-#: serializers.py:31
+#: serializers.py:29
 msgid "Primary key of the document to be checked out."
 msgstr "Llave primaria del documento que se va a reservar."
 
-#: views.py:35
+#: views.py:33
 #, python-format
 msgid "Check in %(count)d document"
 msgid_plural "Check in %(count)d documents"
 msgstr[0] "Devolver %(count)d documento"
 msgstr[1] "Devolver %(count)ddocumentos"
 
-#: views.py:48
+#: views.py:46
 #, python-format
 msgid "Check in document: %s"
 msgstr "Devolver documento: %s"
 
-#: views.py:102
+#: views.py:100
 #, python-format
 msgid "Checkout %(count)d document"
 msgid_plural "Checkout %(count)d documents"
 msgstr[0] "Reservar %(count)d documento"
 msgstr[1] "Reservar %(count)d documentos"
 
-#: views.py:115
+#: views.py:113
 #, python-format
 msgid "Check out document: %s"
 msgstr "Reservar el documento: %s"
 
-#: views.py:149
+#: views.py:147
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Detalles de la reserva para el documento: %s"
 
-#: views.py:168
+#: views.py:166
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr "Al retirar un documento, bloquea ciertas operaciones durante un período de tiempo predeterminado."
 
-#: views.py:171
+#: views.py:169
 msgid "No documents have been checked out"
 msgstr "No se han reservado documentos"
 
-#: widgets.py:27
+#: widgets.py:25
 msgid "Amount"
 msgstr "Cantidad"

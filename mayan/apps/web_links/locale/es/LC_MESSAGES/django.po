@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:32-0400\n"
+"POT-Creation-Date: 2020-03-28 05:08-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Roberto Rosario, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -20,118 +20,118 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:39
+#: apps.py:37
 msgid "Links"
 msgstr "Enlaces"
 
-#: events.py:8 links.py:16 links.py:51 links.py:56 links.py:60 models.py:43
-#: permissions.py:7 views.py:154
+#: events.py:6 links.py:14 links.py:49 links.py:54 links.py:58 models.py:41
+#: permissions.py:5 views.py:152
 msgid "Web links"
 msgstr "Enlaces web"
 
-#: events.py:12
+#: events.py:10
 msgid "Web link created"
 msgstr "Enlace web creado"
 
-#: events.py:15
+#: events.py:13
 msgid "Web link edited"
 msgstr "Enlace web editado"
 
-#: events.py:18
+#: events.py:16
 msgid "Web link navigated"
 msgstr "Enlace web navegado"
 
-#: links.py:22 views.py:194
+#: links.py:20 views.py:192
 msgid "Create new web link"
 msgstr "Crear nuevo enlace web"
 
-#: links.py:28
+#: links.py:26
 msgid "Delete"
 msgstr "Borrar"
 
-#: links.py:34 models.py:35
+#: links.py:32 models.py:33
 msgid "Document types"
 msgstr "Tipos de documento"
 
-#: links.py:40
+#: links.py:38
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:46
+#: links.py:44
 msgid "Navigate"
 msgstr "Navegar"
 
-#: models.py:23
+#: models.py:21
 msgid "A short text describing the web link."
 msgstr "Un breve texto que describe el enlace web."
 
-#: models.py:24
+#: models.py:22
 msgid "Label"
 msgstr "Etiqueta"
 
-#: models.py:28
+#: models.py:26
 msgid "Template that will be used to craft the final URL of the web link."
 msgstr "Plantilla que se utilizará para crear la URL final del enlace web."
 
-#: models.py:30
+#: models.py:28
 msgid "Template"
 msgstr "Plantilla"
 
-#: models.py:32
+#: models.py:30
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: models.py:42
+#: models.py:40
 msgid "Web link"
 msgstr "Enlace web"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Create new web links"
 msgstr "Crear nuevos enlaces web"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Delete web links"
 msgstr "Eliminar enlaces web"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Edit web links"
 msgstr "Editar enlaces web"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "View existing web links"
 msgstr "Ver enlaces web existentes"
 
-#: permissions.py:22
+#: permissions.py:20
 msgid "View web link instances"
 msgstr "Ver instancias de enlaces web"
 
-#: views.py:44
+#: views.py:42
 msgid "Available web links"
 msgstr "Enlaces web disponibles"
 
-#: views.py:45
+#: views.py:43
 msgid "Web links enabled"
 msgstr "Enlaces web habilitados"
 
-#: views.py:77
+#: views.py:75
 #, python-format
 msgid "Web links to enable for document type: %s"
 msgstr "Enlaces web para habilitar para el tipo de documento: %s"
 
-#: views.py:119
+#: views.py:117
 msgid "Available document types"
 msgstr "Tipos de documentos disponibles"
 
-#: views.py:120
+#: views.py:118
 msgid "Document types enabled"
 msgstr "Tipos de documentos seleccionados"
 
-#: views.py:130
+#: views.py:128
 #, python-format
 msgid "Document type for which to enable web link: %s"
 msgstr "Tipo de documento para el cual habilitar el enlace web: %s"
 
-#: views.py:147 views.py:176
+#: views.py:145 views.py:174
 msgid ""
 "Web links allow generating HTTP links from documents to external resources. "
 "The link URL's can contain document properties values."
@@ -140,25 +140,25 @@ msgstr ""
 "externos. Las URL de enlace pueden contener valores de propiedades del "
 "documento."
 
-#: views.py:152
+#: views.py:150
 msgid "There are no web links"
 msgstr "No hay enlaces web"
 
-#: views.py:181
+#: views.py:179
 msgid "There are no web links for this document"
 msgstr "No hay enlaces web para este documento"
 
-#: views.py:184
+#: views.py:182
 #, python-format
 msgid "Web links for document: %s"
 msgstr "Enlaces web para el documento: %s"
 
-#: views.py:215
+#: views.py:213
 #, python-format
 msgid "Delete web link: %s"
 msgstr "Eliminar enlace web: %s"
 
-#: views.py:230
+#: views.py:228
 #, python-format
 msgid "Edit web link: %s"
 msgstr "Editar enlace web: %s"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:26-0400\n"
+"POT-Creation-Date: 2020-03-28 05:05-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:15 settings.py:9
+#: apps.py:13 settings.py:7
 msgid "Auto administrator"
 msgstr "Auto administrateur"
 
@@ -35,27 +35,27 @@ msgstr ""
 "Bienvenue Admin! Vous avez reçu des privilèges de superutilisateur. "
 "Utilisez-les avec prudence."
 
-#: models.py:15
+#: models.py:13
 msgid "Account"
 msgstr "Compte"
 
-#: models.py:18
+#: models.py:16
 msgid "Password"
 msgstr "Mot de passe"
 
-#: models.py:21
+#: models.py:19
 msgid "Password hash"
 msgstr "Hachage de mot de passe"
 
-#: models.py:27
+#: models.py:25
 msgid "Autoadmin properties"
 msgstr "Propriétés Autoadmin"
 
-#: settings.py:14
+#: settings.py:12
 msgid "Sets the email of the automatically created super user account."
 msgstr "Définit le courriel du compte superutilisateur créé automatiquement."
 
-#: settings.py:20
+#: settings.py:18
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
@@ -63,7 +63,7 @@ msgstr ""
 "Le mot de passe du compte superutilisateur créé automatiquement. S'il est "
 "vide, le mot de passe est généré de manière aléatoire."
 
-#: settings.py:27
+#: settings.py:25
 msgid "The username of the automatically created super user account."
 msgstr "Le nom d'utilisateur du compte superutilisateur créé automatiquement."
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:29-0400\n"
+"POT-Creation-Date: 2020-03-28 05:06-0400\n"
 "PO-Revision-Date: 2020-02-10 08:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
@@ -18,39 +18,39 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:10 settings.py:9
+#: apps.py:8 settings.py:7
 msgid "Lock manager"
 msgstr "锁管理器"
 
-#: models.py:18
+#: models.py:16
 msgid "Creation datetime"
 msgstr "创建日期时间"
 
-#: models.py:21
+#: models.py:19
 msgid "Timeout"
 msgstr "超时"
 
-#: models.py:24
+#: models.py:22
 msgid "Name"
 msgstr "名称"
 
-#: models.py:30
+#: models.py:28
 msgid "Lock"
 msgstr "锁"
 
-#: models.py:31
+#: models.py:29
 msgid "Locks"
 msgstr "锁"
 
-#: settings.py:14
+#: settings.py:12
 msgid "Path to the class to use when to request and release resource locks."
 msgstr "在请求和释放资源锁时使用的类的路径。"
 
-#: settings.py:20
+#: settings.py:18
 msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
 msgstr ""
 
-#: settings.py:26
+#: settings.py:24
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."

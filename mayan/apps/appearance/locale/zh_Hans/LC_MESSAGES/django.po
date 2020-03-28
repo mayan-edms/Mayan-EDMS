@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:25-0400\n"
-"PO-Revision-Date: 2020-02-21 05:39+0000\n"
+"POT-Creation-Date: 2020-03-28 05:05-0400\n"
+"PO-Revision-Date: 2020-03-28 07:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
@@ -19,63 +19,63 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:9 settings.py:7
 msgid "Appearance"
 msgstr "外观"
 
-#: dependencies.py:10
+#: dependencies.py:8
 msgid "Lato font"
 msgstr "Lato字体"
 
-#: dependencies.py:14
+#: dependencies.py:12
 msgid "Bootstrap"
 msgstr ""
 
-#: dependencies.py:18
+#: dependencies.py:16
 msgid "Bootswatch"
 msgstr ""
 
-#: dependencies.py:32
+#: dependencies.py:30
 msgid "Fancybox"
 msgstr ""
 
-#: dependencies.py:36
+#: dependencies.py:34
 msgid "FontAwesome"
 msgstr ""
 
-#: dependencies.py:40
+#: dependencies.py:38
 msgid "jQuery"
 msgstr ""
 
-#: dependencies.py:43
+#: dependencies.py:41
 msgid "JQuery Form"
 msgstr ""
 
-#: dependencies.py:47
+#: dependencies.py:45
 msgid "jQuery Lazy Load"
 msgstr ""
 
-#: dependencies.py:51
+#: dependencies.py:49
 msgid "JQuery Match Height"
 msgstr ""
 
-#: dependencies.py:55
+#: dependencies.py:53
 msgid "Select 2"
 msgstr ""
 
-#: dependencies.py:59
+#: dependencies.py:57
 msgid "Toastr"
 msgstr ""
 
-#: dependencies.py:62
+#: dependencies.py:60
 msgid "URI.js"
 msgstr ""
 
-#: settings.py:14
+#: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "将显示为视图标题的最大字符数。"
 
-#: settings.py:21
+#: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
@@ -188,26 +188,38 @@ msgid ""
 "            "
 msgstr ""
 
-#: templates/appearance/base.html:35 templates/appearance/base.html:59
+#: templates/appearance/base.html:36 templates/appearance/base.html:60
 msgid "Warning"
 msgstr "警告"
 
-#: templates/appearance/base.html:49
+#: templates/appearance/base.html:50
 msgid "Click here to fix this."
 msgstr ""
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:60
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr ""
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:68
+#, python-format
+msgid ""
+"\n"
+"                                        Impersonating user \"%(user)s\".\n"
+"                                    "
+msgstr ""
+
+#: templates/appearance/base.html:71
+msgid "Click here when finished"
+msgstr ""
+
+#: templates/appearance/base.html:85
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "操作"
 
-#: templates/appearance/base.html:74
+#: templates/appearance/base.html:87
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -282,9 +294,13 @@ msgstr "总计（%(start)s  -  %(end)s，%(total)s）（第%(page_number)s页，
 msgid "Total: %(total)s"
 msgstr "总计：%(total)s"
 
-#: templates/appearance/list_toolbar.html:16
+#: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "全选/全不选"
+
+#: templates/appearance/list_toolbar.html:17
+msgid "Toggle list display mode"
+msgstr ""
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
@@ -315,6 +331,6 @@ msgstr "服务器通信错误"
 msgid "Check you network connection and try again in a few moments."
 msgstr "检查网络连接，并稍后再试。"
 
-#: templatetags/appearance_tags.py:17
+#: templatetags/appearance_tags.py:15
 msgid "None"
 msgstr "没有"

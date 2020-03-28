@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:30-0400\n"
+"POT-Creation-Date: 2020-03-28 05:07-0400\n"
 "PO-Revision-Date: 2020-02-10 08:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
@@ -18,79 +18,79 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:35 links.py:36 permissions.py:7
+#: apps.py:33 links.py:34 permissions.py:5
 msgid "Message of the day"
 msgstr "当天的消息"
 
-#: apps.py:57 apps.py:61
+#: apps.py:55 apps.py:59
 msgid "None"
 msgstr "没有"
 
-#: links.py:16 views.py:32
+#: links.py:14 views.py:30
 msgid "Create message"
 msgstr "创建消息"
 
-#: links.py:22
+#: links.py:20
 msgid "Delete"
 msgstr "删除"
 
-#: links.py:27
+#: links.py:25
 msgid "Edit"
 msgstr "编辑"
 
-#: models.py:17
+#: models.py:15
 msgid "Short description of this message."
 msgstr "此消息的简短描述。"
 
-#: models.py:18
+#: models.py:16
 msgid "Label"
 msgstr "标签"
 
-#: models.py:21
+#: models.py:19
 msgid "The actual message to be displayed."
 msgstr "要显示的实际消息。"
 
-#: models.py:22 models.py:39
+#: models.py:20 models.py:37
 msgid "Message"
 msgstr "消息"
 
-#: models.py:24
+#: models.py:22
 msgid "Enabled"
 msgstr "启用"
 
-#: models.py:27
+#: models.py:25
 msgid "Date and time after which this message will be displayed."
 msgstr "开始显示此消息的日期和时间。"
 
-#: models.py:28
+#: models.py:26
 msgid "Start date time"
 msgstr "开始日期时间"
 
-#: models.py:32
+#: models.py:30
 msgid "Date and time until when this message is to be displayed."
 msgstr "停止显示此消息的日期和时间。"
 
-#: models.py:33
+#: models.py:31
 msgid "End date time"
 msgstr "结束日期时间"
 
-#: models.py:40 views.py:80
+#: models.py:38 views.py:78
 msgid "Messages"
 msgstr "消息"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Create messages"
 msgstr "创建消息"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Delete messages"
 msgstr "删除消息"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Edit messages"
 msgstr "编辑消息"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "View messages"
 msgstr "查看消息"
 
@@ -98,23 +98,23 @@ msgstr "查看消息"
 msgid "Messages of the day"
 msgstr "当天的消息"
 
-#: views.py:45
+#: views.py:43
 #, python-format
 msgid "Delete the message: %s?"
 msgstr "删除消息：%s？"
 
-#: views.py:58
+#: views.py:56
 #, python-format
 msgid "Edit message: %s"
 msgstr "编辑消息：%s"
 
-#: views.py:75
+#: views.py:73
 msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
 msgstr "消息显示在登录视图中。您可以使用消息向您的用户传达有关您组织，公告或使用指南的信息。"
 
-#: views.py:79
+#: views.py:77
 msgid "No messages available"
 msgstr "没有可用的消息"

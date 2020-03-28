@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:28-0400\n"
-"PO-Revision-Date: 2020-02-13 18:50+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
+"POT-Creation-Date: 2020-03-28 05:06-0400\n"
+"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,42 +22,46 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:17
+#: apps.py:15
 msgid "Dynamic search"
 msgstr "Dynamiczne wyszukiwanie"
 
-#: classes.py:100
+#: classes.py:52
 msgid "No search model matching the query"
 msgstr "Brak modelu wyszukiwania pasującego do zapytania"
 
-#: forms.py:9
+#: forms.py:7
 msgid "Match all"
 msgstr "Dopasuj wszystko"
 
-#: forms.py:10
+#: forms.py:8
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
 msgstr "Zaznaczone oznacza, że zostaną zwrócone wyniki jedynie w przypadku dopasowania wszystkich pól. Niezaznaczone oznacza, że zostaną zwrócone wyniki jeśli wartość z przynajmniej jednego pola zostanie dopasowane."
 
-#: forms.py:29 templates/dynamic_search/search_box.html:39
+#: forms.py:27 templates/dynamic_search/search_box.html:39
 msgid "Search terms"
 msgstr "Słowa do wyszukania"
 
-#: links.py:8 settings.py:7 templates/dynamic_search/search_box.html:43
+#: links.py:6 settings.py:5 templates/dynamic_search/search_box.html:43
 #: views.py:59 views.py:72
 msgid "Search"
 msgstr "Szukaj"
 
-#: links.py:11 templates/dynamic_search/search_box.html:45 views.py:86
+#: links.py:9 templates/dynamic_search/search_box.html:45 views.py:86
 msgid "Advanced search"
 msgstr "Zaawansowane wyszukiwanie"
 
-#: links.py:15
+#: links.py:13
 msgid "Search again"
 msgstr "Wyszukać ponownie"
 
-#: settings.py:12
+#: settings.py:11
+msgid "Full path to the backend to be used to handle keys and signatures."
+msgstr ""
+
+#: settings.py:21
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr "Wyłącza wyszukiwanie paska pojedynczego hasła, pozostawiając tylko przycisk wyszukiwania zaawansowanego."
@@ -66,15 +70,15 @@ msgstr "Wyłącza wyszukiwanie paska pojedynczego hasła, pozostawiając tylko p
 msgid "Advanced"
 msgstr "Zaawansowane"
 
-#: views.py:25
+#: views.py:24
 msgid "Try again using different terms. "
 msgstr "Spróbuj ponownie, używając innych terminów."
 
-#: views.py:27
+#: views.py:26
 msgid "No search results"
 msgstr "Brak wyników wyszukiwania"
 
-#: views.py:29
+#: views.py:28
 #, python-format
 msgid "Search results for: %s"
 msgstr "Wyniki wyszukiwania dla: %s"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:25-0400\n"
-"PO-Revision-Date: 2020-02-14 02:19+0000\n"
+"POT-Creation-Date: 2020-03-28 05:05-0400\n"
+"PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
 "MIME-Version: 1.0\n"
@@ -18,9 +18,17 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:25 settings.py:9
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
 msgid "Authentication"
 msgstr "Autentikacija"
+
+#: events.py:10
+msgid "User impersonation ended"
+msgstr ""
+
+#: events.py:13
+msgid "User impersonation started"
+msgstr ""
 
 #: forms.py:17
 msgid "Email"
@@ -30,7 +38,7 @@ msgstr "Email"
 msgid "Password"
 msgstr "Lozinka"
 
-#: forms.py:22 forms.py:73
+#: forms.py:22 forms.py:89
 msgid "Remember me"
 msgstr "Zapamti"
 
@@ -44,6 +52,22 @@ msgstr "Molimo unesite ispravan e-mail i lozinku. Imajte na umu da je polje za l
 msgid "This account is inactive."
 msgstr "Ovaj account nije aktivan."
 
+#: forms.py:78
+msgid "User"
+msgstr "Korisnik"
+
+#: forms.py:78
+msgid "User to be impersonated."
+msgstr ""
+
+#: forms.py:82
+msgid "Permanent"
+msgstr ""
+
+#: forms.py:83
+msgid "If selected, disables ending impersonation."
+msgstr ""
+
 #: links.py:22
 msgid "Logout"
 msgstr "Logout"
@@ -52,23 +76,31 @@ msgstr "Logout"
 msgid "Change password"
 msgstr "Promijeni lozinku"
 
-#: links.py:32 links.py:39
+#: links.py:32 views.py:68
+msgid "Impersonate user"
+msgstr ""
+
+#: links.py:37 links.py:44
 msgid "Set password"
 msgstr "Postavite lozinku"
 
-#: settings.py:13
+#: permissions.py:10
+msgid "Impersonate users"
+msgstr ""
+
+#: settings.py:11
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr "Kontroliše mehanizam koji se koristi za autentifikaciju korisnika. Opcije su: korisničko ime, e-pošta"
 
-#: settings.py:20
+#: settings.py:18
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
 msgstr ""
 
-#: settings.py:27
+#: settings.py:25
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
@@ -78,12 +110,12 @@ msgstr ""
 msgid "Login"
 msgstr "Prijava"
 
-#: templates/authentication/login.html:26
-#: templates/authentication/login.html:34
+#: templates/authentication/login.html:23
+#: templates/authentication/login.html:32
 msgid "Sign in"
 msgstr "Prijavite se"
 
-#: templates/authentication/login.html:41
+#: templates/authentication/login.html:39
 msgid "Forgot your password?"
 msgstr "Zaboravili lozinku?"
 
@@ -105,7 +137,7 @@ msgid "Login page"
 msgstr "Prijava na stranicu"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:167
+#: templates/authentication/password_reset_form.html:29 views.py:211
 msgid "Submit"
 msgstr "Podnijeti"
 
@@ -113,52 +145,52 @@ msgstr "Podnijeti"
 msgid "Password reset email sent!"
 msgstr "Resetovana lozinka poslata na vaš email!"
 
-#: views.py:77
+#: views.py:121
 msgid "Your password has been successfully changed."
 msgstr "Vaš password je uspješno promjenjen"
 
-#: views.py:84
+#: views.py:128
 msgid "Current user password change"
 msgstr "Promjeniti trenutni pasvord"
 
-#: views.py:92
+#: views.py:136
 msgid "Changing the password is not allowed for this account."
 msgstr ""
 
-#: views.py:158
+#: views.py:202
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Zahtev za promjenu lozinke izvršen %(count)d korisnika"
 
-#: views.py:160
+#: views.py:204
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Zahtev za promjenu lozinke izvršen %(count)d korisnika"
 
-#: views.py:169
+#: views.py:213
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views.py:179
+#: views.py:223
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Izmjenite lozinku korisnika: %s"
 
-#: views.py:199
+#: views.py:243
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "Super user i staff user reset lozinke nije dozvoljen, koristite administratorski interface za takve slučajeve"
 
-#: views.py:209
+#: views.py:253
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Uspešno resetovanje lozinke za korisnika: %s"
 
-#: views.py:215
+#: views.py:259
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Greška resetovanja lozinke za korisnika \"%(user)s\": %(error)s"

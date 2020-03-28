@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:26-0400\n"
+"POT-Creation-Date: 2020-03-28 05:05-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:15 settings.py:9
+#: apps.py:13 settings.py:7
 msgid "Auto administrator"
 msgstr "Automatyczny administrator"
 
@@ -33,28 +33,28 @@ msgid ""
 msgstr ""
 "Witamy Admin! Otrzymałeś uprawnienia administratora. Używaj ich z rozwagą."
 
-#: models.py:15
+#: models.py:13
 msgid "Account"
 msgstr "Konto"
 
-#: models.py:18
+#: models.py:16
 msgid "Password"
 msgstr "Hasło"
 
-#: models.py:21
+#: models.py:19
 msgid "Password hash"
 msgstr "Hasło hash"
 
-#: models.py:27
+#: models.py:25
 msgid "Autoadmin properties"
 msgstr "Właściwości automatycznego administratora"
 
-#: settings.py:14
+#: settings.py:12
 msgid "Sets the email of the automatically created super user account."
 msgstr ""
 "Ustawia adres e-mail automatycznie utworzonego konta superużytkownika."
 
-#: settings.py:20
+#: settings.py:18
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
@@ -62,7 +62,7 @@ msgstr ""
 "Hasło automatycznie utworzonego konta superużytkownika. Jeśli jest równy "
 "Brak, hasło jest generowane losowo."
 
-#: settings.py:27
+#: settings.py:25
 msgid "The username of the automatically created super user account."
 msgstr "Nazwa użytkownika automatycznie utworzonego konta superużytkownika."
 

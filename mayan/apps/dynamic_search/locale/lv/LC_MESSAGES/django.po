@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:28-0400\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
+"POT-Creation-Date: 2020-03-28 05:06-0400\n"
+"PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -18,42 +18,46 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:17
+#: apps.py:15
 msgid "Dynamic search"
 msgstr "Dinamiskā meklēšana"
 
-#: classes.py:100
+#: classes.py:52
 msgid "No search model matching the query"
 msgstr "Meklēšanas vaicājumam neatbilstošais modelis"
 
-#: forms.py:9
+#: forms.py:7
 msgid "Match all"
 msgstr "Saskaņot visus"
 
-#: forms.py:10
+#: forms.py:8
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
 msgstr "Pēc izvēles tiek atgriezti tikai rezultāti, kas atbilst visiem laukiem. Kad tiks atdoti nekontrolēti rezultāti, kas atbilst vismaz vienam laukam, tiks atgriezti."
 
-#: forms.py:29 templates/dynamic_search/search_box.html:39
+#: forms.py:27 templates/dynamic_search/search_box.html:39
 msgid "Search terms"
 msgstr "Meklēšanas vārdi"
 
-#: links.py:8 settings.py:7 templates/dynamic_search/search_box.html:43
+#: links.py:6 settings.py:5 templates/dynamic_search/search_box.html:43
 #: views.py:59 views.py:72
 msgid "Search"
 msgstr "Meklēt"
 
-#: links.py:11 templates/dynamic_search/search_box.html:45 views.py:86
+#: links.py:9 templates/dynamic_search/search_box.html:45 views.py:86
 msgid "Advanced search"
 msgstr "Izvērstā meklēšana"
 
-#: links.py:15
+#: links.py:13
 msgid "Search again"
 msgstr "Meklēt vēlreiz"
 
-#: settings.py:12
+#: settings.py:11
+msgid "Full path to the backend to be used to handle keys and signatures."
+msgstr ""
+
+#: settings.py:21
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr ""
@@ -62,15 +66,15 @@ msgstr ""
 msgid "Advanced"
 msgstr "Papildus"
 
-#: views.py:25
+#: views.py:24
 msgid "Try again using different terms. "
 msgstr "Mēģiniet vēlreiz, izmantojot dažādus terminus."
 
-#: views.py:27
+#: views.py:26
 msgid "No search results"
 msgstr "Nav meklēšanas rezultātu"
 
-#: views.py:29
+#: views.py:28
 #, python-format
 msgid "Search results for: %s"
 msgstr "Meklēšanas rezultāti priekš: %s"

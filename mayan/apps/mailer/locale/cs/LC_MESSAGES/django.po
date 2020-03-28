@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:29-0400\n"
-"PO-Revision-Date: 2020-02-06 09:30+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
+"POT-Creation-Date: 2020-03-28 05:06-0400\n"
+"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,105 +18,105 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:42
+#: apps.py:40
 msgid "Mailer"
 msgstr "Mailer"
 
-#: apps.py:63 apps.py:84
+#: apps.py:61 apps.py:82
 msgid "Date and time"
 msgstr "Datum a čas"
 
-#: apps.py:66 apps.py:88 models.py:30 models.py:229
+#: apps.py:64 apps.py:86 models.py:28 models.py:228
 msgid "Message"
 msgstr "Zpráva"
 
-#: classes.py:81
+#: classes.py:79
 msgid "Null backend"
 msgstr "Null backend"
 
-#: events.py:7 permissions.py:7 queues.py:8 settings.py:12
+#: events.py:5 permissions.py:5 queues.py:6 settings.py:10
 msgid "Mailing"
 msgstr "Mailing"
 
-#: events.py:10
+#: events.py:8
 msgid "Email sent"
 msgstr "Email odeslán"
 
-#: forms.py:60 forms.py:124
+#: forms.py:58 forms.py:122
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
 msgstr "E-mailová adresa příjemce. Může být více adres oddělených čárkou nebo středníkem."
 
-#: forms.py:62 forms.py:126
+#: forms.py:60 forms.py:124
 msgid "Email address"
 msgstr "Emailová adresa"
 
-#: forms.py:64 workflow_actions.py:40
+#: forms.py:62 workflow_actions.py:36
 msgid "Subject"
 msgstr "Předmět"
 
-#: forms.py:66 workflow_actions.py:49
+#: forms.py:64 workflow_actions.py:45
 msgid "Body"
 msgstr "Tělo"
 
-#: forms.py:70
+#: forms.py:68
 msgid "The email profile that will be used to send this email."
 msgstr "E-mailový profil, který bude použit k odeslání tohoto e-mailu."
 
-#: forms.py:71 models.py:71 views.py:239 workflow_actions.py:22
+#: forms.py:69 models.py:69 views.py:237 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "Poštovní profil"
 
-#: forms.py:77
+#: forms.py:75
 msgid "The driver to use when sending emails."
 msgstr "Ovladač, který se použije pro odesílání e-mailů."
 
-#: forms.py:78
+#: forms.py:76 models.py:83
 msgid "Backend"
 msgstr "Backend"
 
-#: links.py:18 links.py:28
+#: links.py:16 links.py:26
 msgid "Email document"
 msgstr "E-mailový dokument"
 
-#: links.py:24 links.py:32
+#: links.py:22 links.py:30
 msgid "Email link"
 msgstr "E-mailový odkaz"
 
-#: links.py:37
+#: links.py:35
 msgid "System mailer error log"
 msgstr "Protokol chyb systémového mailera"
 
-#: links.py:42
+#: links.py:40
 msgid "Create mailing profile "
 msgstr "Vytvořte poštovní profil"
 
-#: links.py:48
+#: links.py:46
 msgid "Delete"
 msgstr "Odstranit"
 
-#: links.py:54
+#: links.py:52
 msgid "Edit"
 msgstr "Editovat"
 
-#: links.py:58
+#: links.py:56
 msgid "Log"
 msgstr "Protokol"
 
-#: links.py:63
+#: links.py:61
 msgid "Mailing profiles list"
 msgstr "Seznam poštovních profilů"
 
-#: links.py:68 models.py:72
+#: links.py:66 models.py:70
 msgid "Mailing profiles"
 msgstr "Poštovní profily"
 
-#: links.py:74 views.py:261
+#: links.py:72 views.py:259
 msgid "Test"
 msgstr "Test"
 
-#: literals.py:7
+#: literals.py:5
 #, python-format
 msgid ""
 "Attached to this email is the document: {{ document }}\n"
@@ -125,11 +125,11 @@ msgid ""
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr "K tomuto e-mailu je připojen dokument: {{document}} \n-------- \nTento e-mail byl odeslán z %(project_title)s (%(project_website)s)"
 
-#: literals.py:11
+#: literals.py:9
 msgid "Document: {{ document }}"
 msgstr "Dokument: {{document}}"
 
-#: literals.py:13
+#: literals.py:11
 #, python-format
 msgid ""
 "To access this document click on the following link: {{ link }}\n"
@@ -138,51 +138,51 @@ msgid ""
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr "Pro přístup k tomuto dokumentu klikněte na následující odkaz: {{link}}\n\n -------- \nTento e-mail byl odeslán z %(project_title)s (%(project_website)s)"
 
-#: literals.py:17
+#: literals.py:15
 msgid "Link for document: {{ document }}"
 msgstr "Odkaz na dokument: {{document}}"
 
-#: mailers.py:23 mailers.py:112
+#: mailers.py:19 mailers.py:108
 msgid "From"
 msgstr "Z"
 
-#: mailers.py:26 mailers.py:115
+#: mailers.py:22 mailers.py:111
 msgid ""
 "The sender's address. Some system will refuse to send messages if this value"
 " is not set."
 msgstr "Adresa odesílatele. Pokud není tato hodnota nastavena, některé systémy odmítnou odesílat zprávy."
 
-#: mailers.py:32
+#: mailers.py:28
 msgid "Host"
 msgstr "Hostitel"
 
-#: mailers.py:34
+#: mailers.py:30
 msgid "The host to use for sending email."
 msgstr "Hostitel, který má být použit pro odesílání e-mailů."
 
-#: mailers.py:39
+#: mailers.py:35
 msgid "Port"
 msgstr "Port"
 
-#: mailers.py:41
+#: mailers.py:37
 msgid "Port to use for the SMTP server."
 msgstr "Port, který se použije pro server SMTP."
 
-#: mailers.py:44
+#: mailers.py:40
 msgid "Use TLS"
 msgstr "Použijte TLS"
 
-#: mailers.py:47
+#: mailers.py:43
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
 msgstr "Pokud se má při komunikaci se serverem SMTP používat (zabezpečené) připojení TLS. Používá se pro explicitní připojení TLS, obvykle na portu 587."
 
-#: mailers.py:52
+#: mailers.py:48
 msgid "Use SSL"
 msgstr "Použijte SSL"
 
-#: mailers.py:55
+#: mailers.py:51
 msgid ""
 "Whether to use an implicit TLS (secure) connection when talking to the SMTP "
 "server. In most email documentation this type of TLS connection is referred "
@@ -192,271 +192,256 @@ msgid ""
 " True."
 msgstr "Pokud se použije implicitní TLS (zabezpečené) připojení při rozhovoru se serverem SMTP. Ve většině e-mailové dokumentace se tento typ připojení TLS označuje jako SSL. Obvykle se používá na portu 465. Pokud máte problémy, podívejte se na explicitní nastavení TLS „Use TLS“. Upozorňujeme, že možnosti „Použít TLS“ a „Použít SSL“ se vzájemně vylučují, takže pouze jedno z těchto nastavení nastavte na hodnotu TRUE."
 
-#: mailers.py:64
+#: mailers.py:60
 msgid "Username"
 msgstr "Uživatelské jméno"
 
-#: mailers.py:67
+#: mailers.py:63
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
 msgstr "Uživatelské jméno pro server SMTP. Pokud je prázdné, o ověření se nepokusí."
 
-#: mailers.py:73
+#: mailers.py:69
 msgid "Password"
 msgstr "Heslo"
 
-#: mailers.py:76
+#: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
 "with the username when authenticating to the SMTP server. If either of these"
 " settings is empty, authentication won't be attempted."
 msgstr "Heslo pro server SMTP. Toto nastavení se používá ve spojení s uživatelským jménem při autentizaci na server SMTP. Pokud je některé z těchto nastavení prázdné, nebude ověřování provedeno."
 
-#: mailers.py:85
+#: mailers.py:81
 msgid "Django SMTP backend"
 msgstr "Backend SMTP Django"
 
-#: mailers.py:107
+#: mailers.py:103
 msgid "File path"
 msgstr "Cesta k souboru"
 
-#: mailers.py:122
+#: mailers.py:118
 msgid "Django file based backend"
 msgstr "Backend založený na souborech Django"
 
-#: models.py:27 models.py:226
+#: models.py:25 models.py:225
 msgid "Date time"
 msgstr "Datum a čas"
 
-#: models.py:36
+#: models.py:34
 msgid "Log entry"
 msgstr "Záznam protokolu"
 
-#: models.py:37
+#: models.py:35
 msgid "Log entries"
 msgstr "Záznamy protokolu"
 
-#: models.py:48
+#: models.py:46
 msgid "A short text describing the mailing profile."
 msgstr "Krátký text popisující poštovní profil."
 
-#: models.py:49
+#: models.py:47
 msgid "Label"
 msgstr "Označení"
 
-#: models.py:53
+#: models.py:51
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr "Pokud je výchozí, bude tento poštovní profil předem vybrán ve formuláři pro zasílání dokumentů."
 
-#: models.py:55
+#: models.py:53
 msgid "Default"
 msgstr "Výchozí"
 
-#: models.py:57
+#: models.py:55
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: models.py:60
+#: models.py:58
 msgid "The dotted Python path to the backend class."
 msgstr "Tečkovaná cesta Pythonu ke třídě backendu."
 
-#: models.py:61
+#: models.py:59
 msgid "Backend path"
 msgstr "Backend cesta"
 
-#: models.py:64
+#: models.py:62
 msgid "Backend data"
 msgstr "Backend data"
 
-#: models.py:85
-msgid "Backend label"
-msgstr "Backend label"
+#: models.py:84
+msgid "The backend class for this entry."
+msgstr ""
 
-#: models.py:217
+#: models.py:216
 msgid "Test email from Mayan EDMS"
 msgstr "Vyzkoušejte e-mail od Mayan EDMS"
 
-#: models.py:223
+#: models.py:222
 msgid "User mailer"
 msgstr "Uživatel mailer"
 
-#: models.py:235
+#: models.py:234
 msgid "User mailer log entry"
 msgstr "Záznam protokolu uživatele maileru"
 
-#: models.py:236
+#: models.py:235
 msgid "User mailer log entries"
 msgstr "Položky protokolu uživatele poštovní schránky"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Send document link via email"
 msgstr "Odeslat odkaz na dokument e-mailem"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Send document via email"
 msgstr "Odeslat dokument e-mailem"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "View system mailing error log"
 msgstr "Zobrazit protokol chyb systémového maileru"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "Create a mailing profile"
 msgstr "Vytvořte poštovní profil"
 
-#: permissions.py:22
+#: permissions.py:20
 msgid "Delete a mailing profile"
 msgstr "Odstra%n poštovního profilu"
 
-#: permissions.py:25
+#: permissions.py:23
 msgid "Edit a mailing profile"
 msgstr "Upravit poštovní profil"
 
-#: permissions.py:28
+#: permissions.py:26
 msgid "View a mailing profile"
 msgstr "Zobrazit poštovní profil"
 
-#: permissions.py:31
+#: permissions.py:29
 msgid "Use a mailing profile"
 msgstr "Použijte poštovní profil"
 
-#: queues.py:10
+#: queues.py:8
 msgid "Send document"
 msgstr "Odeslat dokument"
 
-#: settings.py:16
+#: settings.py:14
 msgid "Template for the document email form subject line."
 msgstr "Šablona pro řádek předmětu e-mailu formuláře."
 
-#: settings.py:21
+#: settings.py:19
 msgid "Template for the document email form body text. Can include HTML."
 msgstr "Šablona pro text textu formuláře elektronické pošty. Může obsahovat HTML."
 
-#: settings.py:26
+#: settings.py:24
 msgid "Template for the document link email form subject line."
 msgstr "Šablona pro řádek s předmětem odkazu na dokument e-mailového formuláře"
 
-#: settings.py:31
+#: settings.py:29
 msgid "Template for the document link email form body text. Can include HTML."
 msgstr "Šablona textového textu odkazu na e-mail formuláře. Může obsahovat HTML."
 
-#: validators.py:14
+#: validators.py:12
 #, python-format
 msgid "%(email)s is not a valid email address."
 msgstr "%(email)s není platná e-mailová adresa."
 
-#: views.py:38
+#: views.py:36
 msgid "Document mailing error log"
 msgstr "Protokol chyb odesílání dokumentů"
 
-#: views.py:50
+#: views.py:48
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "dokument %(count)d zařazený do fronty pro doručení e-mailem"
 
-#: views.py:52
+#: views.py:50
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "%(count)d dokumenty zařazené do fronty pro doručení e-mailem"
 
-#: views.py:63
+#: views.py:61
 msgid "Send"
 msgstr "Poslat"
 
-#: views.py:109
+#: views.py:107
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "Odkaz na dokument %(count)d zařazený do fronty pro doručování e-mailů"
 
-#: views.py:111
+#: views.py:109
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "Odkazy na dokument %(count)d zařazené do fronty pro doručování e-mailů"
 
-#: views.py:120
+#: views.py:118
 msgid "New mailing profile backend selection"
 msgstr "Výběr backend nového poštovního profilu"
 
-#: views.py:152
+#: views.py:150
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Vytvořit poštovní profil „%s“"
 
-#: views.py:178
+#: views.py:176
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Smazat poštovní profil: %s"
 
-#: views.py:189
+#: views.py:187
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Upravit poštovní profil: %s"
 
-#: views.py:212
+#: views.py:210
 #, python-format
 msgid "Error log for: %s"
 msgstr "Protokol chyb pro: %s"
 
-#: views.py:234
+#: views.py:232
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
 msgstr "Poštovní profily jsou e-mailové konfigurace. Poštovní profily umožňují odesílání dokumentů jako přílohy nebo jako odkazy prostřednictvím e-mailu."
 
-#: views.py:238
+#: views.py:236
 msgid "No mailing profiles available"
 msgstr "K dispozici nejsou žádné poštovní profily"
 
-#: views.py:253
+#: views.py:251
 msgid "Test email sent."
 msgstr "Testovací e-mail byl odeslán."
 
-#: views.py:262
+#: views.py:260
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Vyzkoušejte poštovní profil: %s"
 
-#: workflow_actions.py:24
+#: workflow_actions.py:20
 msgid "Mailing profile to use when sending the email."
 msgstr "Poštovní profil, který se použije k odesílání e-mailu."
 
-#: workflow_actions.py:29
+#: workflow_actions.py:25
 msgid "Recipient"
 msgstr "Příjemce"
 
-#: workflow_actions.py:32
+#: workflow_actions.py:28
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon. A template can be used to reference properties of the "
 "document."
 msgstr "E-mailová adresa příjemce. Může zde být více adres oddělených čárkou nebo středníkem. Šablonu lze použít k odkazu na vlastnosti dokumentu."
 
-#: workflow_actions.py:43
+#: workflow_actions.py:39
 msgid "Subject of the email. Can be a string or a template."
 msgstr "Předmět e-mailu. Může to být řetězec nebo šablona."
 
-#: workflow_actions.py:52
+#: workflow_actions.py:48
 msgid "Body of the email to send. Can be a string or a template."
 msgstr "Text e-mailu, který chcete odeslat. Může to být řetězec nebo šablona."
 
-#: workflow_actions.py:59
+#: workflow_actions.py:55
 msgid "Send email"
 msgstr "Odeslat e-mailem"
-
-#: workflow_actions.py:74
-#, python-format
-msgid "Recipient template error: %s"
-msgstr "Chyba šablony příjemce: %s"
-
-#: workflow_actions.py:85
-#, python-format
-msgid "Subject template error: %s"
-msgstr "Chyba šablony předmětu: %s"
-
-#: workflow_actions.py:96
-#, python-format
-msgid "Body template error: %s"
-msgstr "Chyba šablony těla zprávy: %s"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:27-0400\n"
+"POT-Creation-Date: 2020-03-28 05:05-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2019\n"
 "Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
@@ -21,295 +21,295 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:26 links.py:43 permissions.py:7
+#: apps.py:24 links.py:41 permissions.py:5
 msgid "Dependencies"
 msgstr ""
 
-#: apps.py:34 apps.py:69 apps.py:77
+#: apps.py:32 apps.py:69 apps.py:78
 msgid "Label"
 msgstr "Cimke"
 
-#: apps.py:37
+#: apps.py:36
 msgid "Internal name"
 msgstr ""
 
-#: apps.py:40 apps.py:72 apps.py:81
+#: apps.py:41 apps.py:74 apps.py:83
 msgid "Description"
 msgstr "Leírás"
 
-#: apps.py:44 classes.py:193
+#: apps.py:45 classes.py:147
 msgid "Type"
 msgstr "Típus"
 
-#: apps.py:48 classes.py:195
+#: apps.py:49 classes.py:149
 msgid "Other data"
 msgstr ""
 
-#: apps.py:52
+#: apps.py:53
 msgid "Declared by"
 msgstr ""
 
-#: apps.py:56 classes.py:193
+#: apps.py:57 classes.py:147
 msgid "Version"
 msgstr "Verzió"
 
-#: apps.py:60 classes.py:194 classes.py:809
+#: apps.py:61 classes.py:148 classes.py:763
 msgid "Environment"
 msgstr ""
 
-#: apps.py:64 classes.py:195
+#: apps.py:64 classes.py:149
 msgid "Check"
 msgstr ""
 
-#: classes.py:68
-msgid ""
-"Environment used for building distributable packages of the software. End "
-"users can ignore missing dependencies under this environment."
-msgstr ""
-
-#: classes.py:71
-msgid "Build"
-msgstr ""
-
-#: classes.py:75
-msgid ""
-"Environment used for developers to make code changes. End users can ignore "
-"missing dependencies under this environment."
-msgstr ""
-
-#: classes.py:77
-msgid "Development"
-msgstr ""
-
-#: classes.py:81
-msgid ""
-"Environment used for building the documentation. End users can ignore "
-"missing dependencies under this environment."
-msgstr ""
-
-#: classes.py:83
-msgid "Documentation"
-msgstr ""
-
-#: classes.py:87
-msgid ""
-"Normal environment for end users. A missing dependency under this "
-"environment will result in issues and errors during normal use."
-msgstr ""
-
-#: classes.py:89
-msgid "Production"
-msgstr ""
-
-#: classes.py:93
-msgid ""
-"Environment used running the test suit to verify the functionality of the "
-"code. Dependencies in this environment are not needed for normal production "
-"usage."
-msgstr ""
-
-#: classes.py:96
-msgid "Testing"
-msgstr ""
-
-#: classes.py:193
+#: classes.py:147
 msgid "Name"
 msgstr "Név"
 
-#: classes.py:194
+#: classes.py:148
 msgid "App"
 msgstr ""
 
-#: classes.py:295
+#: classes.py:249
 msgid "Need to specify at least one: app_label or module."
 msgstr ""
 
-#: classes.py:300
+#: classes.py:254
 #, python-format
 msgid "Dependency \"%s\" already registered."
 msgstr ""
 
-#: classes.py:326
+#: classes.py:280
 #, python-format
 msgid "Installing package: %s... "
 msgstr ""
 
-#: classes.py:331
+#: classes.py:285
 msgid "Already installed."
 msgstr ""
 
-#: classes.py:334 classes.py:339 classes.py:343
+#: classes.py:288 classes.py:293 classes.py:297
 msgid "Complete."
 msgstr ""
 
-#: classes.py:369
+#: classes.py:323
 msgid "Installed and correct version"
 msgstr ""
 
-#: classes.py:371
+#: classes.py:325
 msgid "Missing or incorrect version"
 msgstr ""
 
-#: classes.py:400
+#: classes.py:354
 msgid "None"
 msgstr "Semmi"
 
-#: classes.py:409
+#: classes.py:363
 msgid "Not specified"
 msgstr ""
 
-#: classes.py:412
+#: classes.py:366
 msgid "Patching files... "
 msgstr ""
 
-#: classes.py:440
+#: classes.py:394
 msgid "Executables that are called directly by the code."
 msgstr ""
 
-#: classes.py:442
+#: classes.py:396
 msgid "Binary"
 msgstr ""
 
-#: classes.py:459
+#: classes.py:413
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
 msgstr ""
 
-#: classes.py:462
+#: classes.py:416
 msgid "JavaScript"
 msgstr ""
 
-#: classes.py:496 classes.py:729
+#: classes.py:450 classes.py:683
 msgid "Downloading... "
 msgstr ""
 
-#: classes.py:499
+#: classes.py:453
 msgid "Verifying... "
 msgstr ""
 
-#: classes.py:502 classes.py:732
+#: classes.py:456 classes.py:686
 msgid "Extracting... "
 msgstr ""
 
-#: classes.py:681
+#: classes.py:635
 msgid "Python packages downloaded from PyPI."
 msgstr ""
 
-#: classes.py:683
+#: classes.py:637
 msgid "Python"
 msgstr ""
 
-#: classes.py:710
+#: classes.py:664
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr ""
 
-#: classes.py:712
+#: classes.py:666
 msgid "Google font"
 msgstr ""
 
-#: classes.py:791
+#: classes.py:745
 msgid "Declared in app"
 msgstr ""
 
-#: classes.py:792
+#: classes.py:746
 msgid "Show dependencies by the app that declared them."
 msgstr ""
 
-#: classes.py:796
+#: classes.py:750
 msgid "Class"
 msgstr "Osztály"
 
-#: classes.py:797
+#: classes.py:751
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
 
-#: classes.py:802
+#: classes.py:756
 msgid "State"
 msgstr ""
 
-#: classes.py:803
+#: classes.py:757
 msgid ""
 "Show the different states of the dependencies. True means that the "
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
 
-#: classes.py:810
+#: classes.py:764
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
 
-#: links.py:11 views.py:19
+#: environments.py:18
+msgid ""
+"Environment used for building distributable packages of the software. End "
+"users can ignore missing dependencies under this environment."
+msgstr ""
+
+#: environments.py:21
+msgid "Build"
+msgstr ""
+
+#: environments.py:25
+msgid ""
+"Environment used for developers to make code changes. End users can ignore "
+"missing dependencies under this environment."
+msgstr ""
+
+#: environments.py:27
+msgid "Development"
+msgstr ""
+
+#: environments.py:31
+msgid ""
+"Environment used for building the documentation. End users can ignore "
+"missing dependencies under this environment."
+msgstr ""
+
+#: environments.py:33
+msgid "Documentation"
+msgstr ""
+
+#: environments.py:37
+msgid ""
+"Normal environment for end users. A missing dependency under this "
+"environment will result in issues and errors during normal use."
+msgstr ""
+
+#: environments.py:39
+msgid "Production"
+msgstr ""
+
+#: environments.py:43
+msgid ""
+"Environment used running the test suit to verify the functionality of the "
+"code. Dependencies in this environment are not needed for normal production "
+"usage."
+msgstr ""
+
+#: environments.py:46
+msgid "Testing"
+msgstr ""
+
+#: links.py:9 views.py:17
 msgid "Check for updates"
 msgstr ""
 
-#: links.py:17
+#: links.py:15
 msgid "Groups"
 msgstr "Csoportok"
 
-#: links.py:25
+#: links.py:23
 msgid "Entries"
 msgstr ""
 
-#: links.py:33
+#: links.py:31
 msgid "Details"
 msgstr "Részletek"
 
-#: links.py:38
+#: links.py:36
 msgid "Dependencies licenses"
 msgstr ""
 
-#: management/commands/generaterequirements.py:16
+#: management/commands/generaterequirements.py:14
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
 
-#: management/commands/generaterequirements.py:22
+#: management/commands/generaterequirements.py:20
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
 
-#: management/commands/installdependencies.py:15
+#: management/commands/installdependencies.py:13
 msgid "Process a specific app."
 msgstr ""
 
-#: management/commands/installdependencies.py:19
+#: management/commands/installdependencies.py:17
 msgid "Force installation even if already installed."
 msgstr ""
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "View dependencies"
 msgstr ""
 
-#: views.py:33
+#: views.py:31
 #, python-format
 msgid "Entries for dependency group: %s"
 msgstr ""
 
-#: views.py:46 views.py:91
+#: views.py:44 views.py:89
 #, python-format
 msgid "Group %s not found."
 msgstr ""
 
-#: views.py:59
+#: views.py:57
 msgid "Dependency groups"
 msgstr ""
 
-#: views.py:79
+#: views.py:77
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
 msgstr ""
 
-#: views.py:103
+#: views.py:101
 #, python-format
 msgid "Entry %s not found."
 msgstr ""
 
-#: views.py:121
+#: views.py:119
 msgid "Other packages licenses"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:30-0400\n"
+"POT-Creation-Date: 2020-03-28 05:07-0400\n"
 "PO-Revision-Date: 2019-10-17 09:52+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -18,14 +18,14 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:15 settings.py:7
+#: apps.py:13 settings.py:5
 msgid "Mirroring"
 msgstr "Огледално отразяване"
 
-#: settings.py:11
+#: settings.py:9
 msgid "Time in seconds to cache the path lookup to a document."
 msgstr "Време в секунди, за да кеширате търсенето на пътя към документ."
 
-#: settings.py:15
+#: settings.py:13
 msgid "Time in seconds to cache the path lookup to an index node."
 msgstr "Време в секунди, за да кеширате търсенето на пътя към възел на индекс."

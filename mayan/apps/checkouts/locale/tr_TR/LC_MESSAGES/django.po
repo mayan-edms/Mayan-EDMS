@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:26-0400\n"
+"POT-Creation-Date: 2020-03-28 05:05-0400\n"
 "PO-Revision-Date: 2019-12-03 05:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -18,209 +18,209 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:45 events.py:7 links.py:34
+#: apps.py:44 events.py:5 links.py:32
 msgid "Checkouts"
 msgstr "Teslim alınmışlar"
 
-#: dashboard_widgets.py:16 views.py:172
+#: dashboard_widgets.py:14 views.py:170
 msgid "Checked out documents"
 msgstr ""
 
-#: events.py:10
+#: events.py:8
 msgid "Document automatically checked in"
 msgstr "Belge otomatik olarak teslim edildi"
 
-#: events.py:14
+#: events.py:12
 msgid "Document checked in"
 msgstr "Belge teslim edildi"
 
-#: events.py:17
+#: events.py:15
 msgid "Document checked out"
 msgstr "Belge teslim alındı"
 
-#: events.py:20
+#: events.py:18
 msgid "Document forcefully checked in"
 msgstr "Belge zorla teslim edildi"
 
-#: exceptions.py:27
+#: exceptions.py:25
 msgid "Document already checked out."
 msgstr "Belge zaten teslim alınmış."
 
-#: forms.py:28
+#: forms.py:26
 msgid "Document status"
 msgstr "Belge durumu"
 
-#: forms.py:39 models.py:44 models.py:136
+#: forms.py:37 models.py:42 models.py:134
 msgid "User"
 msgstr "Kullanıcı"
 
-#: forms.py:43
+#: forms.py:41
 msgid "Check out time"
 msgstr "Teslim alma zamanı"
 
-#: forms.py:48
+#: forms.py:46
 msgid "Check out expiration"
 msgstr "Teslim alma son kullanma tarihi"
 
-#: forms.py:53
+#: forms.py:51
 msgid "New versions allowed?"
 msgstr "Yeni versiyonlara izin verilsin mi?"
 
-#: forms.py:54
+#: forms.py:52
 msgid "Yes"
 msgstr "Evet"
 
-#: forms.py:54
+#: forms.py:52
 msgid "No"
 msgstr "Hayır"
 
-#: links.py:41
+#: links.py:39
 msgid "Check out document"
 msgstr "Belgeyi teslim al"
 
-#: links.py:45
+#: links.py:43
 msgid "Check out"
 msgstr ""
 
-#: links.py:52
+#: links.py:50
 msgid "Check in document"
 msgstr "Belgeyi teslim et"
 
-#: links.py:56
+#: links.py:54
 msgid "Check in"
 msgstr ""
 
-#: links.py:62
+#: links.py:60
 msgid "Check in/out"
 msgstr "Teslim al / et"
 
-#: literals.py:12
+#: literals.py:10
 msgid "Checked out"
 msgstr "Teslim alındı"
 
-#: literals.py:13
+#: literals.py:11
 msgid "Checked in/available"
 msgstr "Teslim etme aktif"
 
-#: models.py:31 models.py:114
+#: models.py:29 models.py:112
 msgid "Document"
 msgstr "Belge"
 
-#: models.py:34
+#: models.py:32
 msgid "Check out date and time"
 msgstr "Teslim alma tarih ve saati"
 
-#: models.py:38
+#: models.py:36
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Belgeyi elde tutma zamanı /dakika."
 
-#: models.py:40
+#: models.py:38
 msgid "Check out expiration date and time"
 msgstr "Teslim alma son kullanma tarihi ve saati"
 
-#: models.py:49
+#: models.py:47
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Bu belgenin yeni sürümünün yüklenmesine izin vermeyin."
 
-#: models.py:51
+#: models.py:49
 msgid "Block new version upload"
 msgstr "Yeni sürümü yüklemeyi engelle"
 
-#: models.py:59 permissions.py:7
+#: models.py:57 permissions.py:5
 msgid "Document checkout"
 msgstr "Belge teslim alma"
 
-#: models.py:60
+#: models.py:58
 msgid "Document checkouts"
 msgstr "Belge teslim alma kayıtları"
 
-#: models.py:68
+#: models.py:66
 msgid "Check out expiration date and time must be in the future."
 msgstr "Teslim alma son kullanma tarihini gelecekte olmalıdır."
 
-#: models.py:120
+#: models.py:118
 msgid "New version block"
 msgstr "Yeni sürüm engelleme"
 
-#: models.py:121
+#: models.py:119
 msgid "New version blocks"
 msgstr "Yeni sürüm engellemeleri"
 
-#: models.py:141
+#: models.py:139
 msgid "Checkout time and date"
 msgstr "Teslim alma zamanı ve tarihi"
 
-#: models.py:146
+#: models.py:144
 msgid "Checkout expiration"
 msgstr "Teslim alma kullanımının sona erme tarihi"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Check in documents"
 msgstr "Belgeleri teslim et"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Forcefully check in documents"
 msgstr "Zorla teslim edilen belgeler"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Check out documents"
 msgstr "Belgeleri teslim alın"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "Check out details view"
 msgstr "Teslim alma ayrıntıları"
 
-#: queues.py:13
+#: queues.py:11
 msgid "Checkouts periodic"
 msgstr "Periyodik teslim alma"
 
-#: queues.py:17
+#: queues.py:15
 msgid "Check expired checkouts"
 msgstr "Süresi geçen teslim alma kayıt kontrolü"
 
-#: serializers.py:31
+#: serializers.py:29
 msgid "Primary key of the document to be checked out."
 msgstr ""
 
-#: views.py:35
+#: views.py:33
 #, python-format
 msgid "Check in %(count)d document"
 msgid_plural "Check in %(count)d documents"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:48
+#: views.py:46
 #, python-format
 msgid "Check in document: %s"
 msgstr ""
 
-#: views.py:102
+#: views.py:100
 #, python-format
 msgid "Checkout %(count)d document"
 msgid_plural "Checkout %(count)d documents"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:115
+#: views.py:113
 #, python-format
 msgid "Check out document: %s"
 msgstr "Belgeye teslim alın: %s"
 
-#: views.py:149
+#: views.py:147
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "%s Belge ayrıntılarını kontrol edin: "
 
-#: views.py:168
+#: views.py:166
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr ""
 
-#: views.py:171
+#: views.py:169
 msgid "No documents have been checked out"
 msgstr ""
 
-#: widgets.py:27
+#: widgets.py:25
 msgid "Amount"
 msgstr ""

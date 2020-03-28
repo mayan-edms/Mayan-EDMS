@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:30-0400\n"
+"POT-Creation-Date: 2020-03-28 05:07-0400\n"
 "PO-Revision-Date: 2016-03-21 20:55+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
@@ -17,79 +17,79 @@ msgstr ""
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:35 links.py:36 permissions.py:7
+#: apps.py:33 links.py:34 permissions.py:5
 msgid "Message of the day"
 msgstr ""
 
-#: apps.py:57 apps.py:61
+#: apps.py:55 apps.py:59
 msgid "None"
 msgstr ""
 
-#: links.py:16 views.py:32
+#: links.py:14 views.py:30
 msgid "Create message"
 msgstr ""
 
-#: links.py:22
+#: links.py:20
 msgid "Delete"
 msgstr ""
 
-#: links.py:27
+#: links.py:25
 msgid "Edit"
 msgstr ""
 
-#: models.py:17
+#: models.py:15
 msgid "Short description of this message."
 msgstr ""
 
-#: models.py:18
+#: models.py:16
 msgid "Label"
 msgstr ""
 
-#: models.py:21
+#: models.py:19
 msgid "The actual message to be displayed."
 msgstr ""
 
-#: models.py:22 models.py:39
+#: models.py:20 models.py:37
 msgid "Message"
 msgstr ""
 
-#: models.py:24
+#: models.py:22
 msgid "Enabled"
 msgstr ""
 
-#: models.py:27
+#: models.py:25
 msgid "Date and time after which this message will be displayed."
 msgstr ""
 
-#: models.py:28
+#: models.py:26
 msgid "Start date time"
 msgstr ""
 
-#: models.py:32
+#: models.py:30
 msgid "Date and time until when this message is to be displayed."
 msgstr ""
 
-#: models.py:33
+#: models.py:31
 msgid "End date time"
 msgstr ""
 
-#: models.py:40 views.py:80
+#: models.py:38 views.py:78
 msgid "Messages"
 msgstr ""
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Create messages"
 msgstr ""
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Delete messages"
 msgstr ""
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Edit messages"
 msgstr ""
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "View messages"
 msgstr ""
 
@@ -97,23 +97,23 @@ msgstr ""
 msgid "Messages of the day"
 msgstr ""
 
-#: views.py:45
+#: views.py:43
 #, python-format
 msgid "Delete the message: %s?"
 msgstr ""
 
-#: views.py:58
+#: views.py:56
 #, python-format
 msgid "Edit message: %s"
 msgstr ""
 
-#: views.py:75
+#: views.py:73
 msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
 msgstr ""
 
-#: views.py:79
+#: views.py:77
 msgid "No messages available"
 msgstr ""

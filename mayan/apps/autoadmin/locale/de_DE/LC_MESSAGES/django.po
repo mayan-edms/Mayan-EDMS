@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:26-0400\n"
+"POT-Creation-Date: 2020-03-28 05:05-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2020\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:15 settings.py:9
+#: apps.py:13 settings.py:7
 msgid "Auto administrator"
 msgstr "Automatischer Administrator"
 
@@ -34,28 +34,28 @@ msgstr ""
 "Willkommen Adminstrator! Sie haben Superuser-Berechtigungen. Verwenden Sie "
 "sie mit Bedacht."
 
-#: models.py:15
+#: models.py:13
 msgid "Account"
 msgstr "Konto"
 
-#: models.py:18
+#: models.py:16
 msgid "Password"
 msgstr "Passwort"
 
-#: models.py:21
+#: models.py:19
 msgid "Password hash"
 msgstr "Passworthash"
 
-#: models.py:27
+#: models.py:25
 msgid "Autoadmin properties"
 msgstr "Auto-Admin Eigenschaften"
 
-#: settings.py:14
+#: settings.py:12
 msgid "Sets the email of the automatically created super user account."
 msgstr ""
 "Setzt die E-Mailadresse für das automatisch erstellte Superuser-Konto."
 
-#: settings.py:20
+#: settings.py:18
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
@@ -63,7 +63,7 @@ msgstr ""
 "Das Passwort für das automatisch erstellte Superuser-Konto. Wenn Sie das "
 "Feld leer lassen, wird ein Zufallspasswort erstellt."
 
-#: settings.py:27
+#: settings.py:25
 msgid "The username of the automatically created super user account."
 msgstr "Der Benutzername für das automatisch erstellte Superuser-Konto."
 

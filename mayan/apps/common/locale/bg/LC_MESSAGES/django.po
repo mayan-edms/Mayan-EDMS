@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:26-0400\n"
-"PO-Revision-Date: 2020-02-24 13:23+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
+"POT-Creation-Date: 2020-03-28 05:05-0400\n"
+"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,212 +19,216 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:87 permissions_runtime.py:7 settings.py:15
+#: apps.py:85 permissions_runtime.py:5 settings.py:13
 msgid "Common"
 msgstr "Обобщение"
 
-#: classes.py:185
+#: classes.py:187
 msgid "Model properties"
 msgstr "Свойства на модела"
 
-#: classes.py:190
+#: classes.py:192
 msgid "Model fields"
 msgstr "Полета на модела"
 
-#: classes.py:233
+#: classes.py:235
 msgid "Model related fields"
 msgstr "Свързани с модела полета"
 
-#: dependencies.py:308
+#: classes.py:240
+msgid "Model reverse fields"
+msgstr ""
+
+#: dependencies.py:309
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Използва се за разрешаване на офлайн превод на текстови низове в код."
 
-#: dependencies.py:313
+#: dependencies.py:314
 msgid "Provides style checking."
 msgstr "Осигурява проверка на стила."
 
-#: dependencies.py:318
+#: dependencies.py:319
 msgid "Command line environment with autocompletion."
 msgstr "Команден ред с автоматично довършване."
 
-#: dependencies.py:323
+#: dependencies.py:324
 msgid "Checks proper formatting of the README file."
 msgstr "Проверява правилното форматиране на файла README."
 
-#: forms.py:27
+#: forms.py:25
 msgid "Selection"
 msgstr "Избиране"
 
-#: forms.py:103
+#: forms.py:101
 msgid "None"
 msgstr "Няма"
 
-#: generics.py:148
+#: generics.py:146
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "Изберете записи, които ще бъдат премахнати. Задръжте Control, за да изберете няколко записа. След като избирането приключи, щракнете върху бутона по-долу или щракнете двукратно върху списъка, за да активирате действието."
 
-#: generics.py:153
+#: generics.py:151
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "Изберете записи за добавяне. Задръжте Control, за да изберете няколко записа. След като избирането приключи, щракнете върху бутона по-долу или щракнете двукратно върху списъка, за да активирате действието."
 
-#: generics.py:286
+#: generics.py:284
 msgid "Add all"
 msgstr "Добавете всички"
 
-#: generics.py:295
+#: generics.py:293
 msgid "Add"
 msgstr "Добавете"
 
-#: generics.py:305
+#: generics.py:303
 msgid "Remove all"
 msgstr "Премахнете всички"
 
-#: generics.py:314
+#: generics.py:312
 msgid "Remove"
 msgstr "Премахнете"
 
-#: generics.py:523
+#: generics.py:522
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr "Грешка в дублиращи данни: %(error)s"
 
-#: generics.py:544
+#: generics.py:543
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s не е създаден, грешка: %(error)s"
 
-#: generics.py:557
+#: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s е създаден успешно."
 
-#: generics.py:596
+#: generics.py:595
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s не е изтрит, грешка: %(error)s."
 
-#: generics.py:605
+#: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s изтрит успешно."
 
-#: generics.py:741
+#: generics.py:740
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s не е актуализиран, грешка: %(error)s."
 
-#: generics.py:752
+#: generics.py:751
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s актуализиран успешно."
 
-#: links.py:36
+#: links.py:34
 msgid "About this"
 msgstr "Относно това"
 
-#: links.py:39
+#: links.py:37
 msgid "Get the book"
 msgstr "Вземете книгата"
 
-#: links.py:44
+#: links.py:42
 msgid "Locale profile"
 msgstr "Локален профил"
 
-#: links.py:49
+#: links.py:47
 msgid "Edit locale profile"
 msgstr "Редактиране на локален профил"
 
-#: links.py:54
+#: links.py:52
 msgid "Documentation"
 msgstr "Документация"
 
-#: links.py:59
+#: links.py:57
 msgid "Errors"
 msgstr "Грешки"
 
-#: links.py:65
+#: links.py:63
 msgid "Clear all"
 msgstr "Изчисти всичко"
 
-#: links.py:69
+#: links.py:67
 msgid "Forum"
 msgstr "Форум"
 
-#: links.py:73 views.py:105
+#: links.py:71 views.py:103
 msgid "License"
 msgstr "Лиценз"
 
-#: links.py:76
+#: links.py:74
 msgid "Setup"
 msgstr "Настройка"
 
-#: links.py:79
+#: links.py:77
 msgid "Source code"
 msgstr "Изходен код"
 
-#: links.py:83
+#: links.py:81
 msgid "Get support"
 msgstr "Поддръжка"
 
-#: links.py:87 queues.py:15 views.py:214
+#: links.py:85 queues.py:13 views.py:212
 msgid "Tools"
 msgstr "Инструменти"
 
-#: literals.py:14
+#: literals.py:16
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Тази функция е оттеглена и ще бъде премахната в бъдеща версия."
 
-#: literals.py:17
+#: literals.py:19
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "Вашата база данни е настроена да използва SQLite. SQLite трябва да се използва само за разработка и тестване, а не за производство."
 
-#: literals.py:35
+#: literals.py:44
 msgid "Days"
 msgstr "Дни"
 
-#: literals.py:36
+#: literals.py:45
 msgid "Hours"
 msgstr "Часове"
 
-#: literals.py:37
+#: literals.py:46
 msgid "Minutes"
 msgstr "Минути"
 
-#: menus.py:10
+#: menus.py:8
 msgid "System"
 msgstr "Система"
 
-#: menus.py:12 menus.py:13
+#: menus.py:10 menus.py:11
 msgid "Facet"
 msgstr "Аспект"
 
-#: menus.py:16
+#: menus.py:14
 msgid "Actions"
 msgstr "Действия"
 
-#: menus.py:17
+#: menus.py:15
 msgid "Secondary"
 msgstr "Допълнително"
 
-#: menus.py:22 models.py:93
+#: menus.py:20 models.py:94
 msgid "User"
 msgstr "Потребител"
 
-#: mixins.py:292
+#: mixins.py:314
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr "Не е намерен %(verbose_name)s, отговарящ на заявката"
 
-#: mixins.py:405
+#: mixins.py:427
 msgid "Object"
 msgstr "Обект"
 
@@ -232,11 +236,11 @@ msgstr "Обект"
 msgid "Namespace"
 msgstr "Именно пространство"
 
-#: models.py:39 models.py:63
+#: models.py:39 models.py:64
 msgid "Date time"
 msgstr "Дата час"
 
-#: models.py:41 views.py:151
+#: models.py:41 views.py:149
 msgid "Result"
 msgstr "Резултат"
 
@@ -248,65 +252,65 @@ msgstr "Запис в дневника за грешки"
 msgid "Error log entries"
 msgstr "Записи в дневника за грешки"
 
-#: models.py:59
+#: models.py:60
 msgid "File"
 msgstr "Файл"
 
-#: models.py:61
+#: models.py:62
 msgid "Filename"
 msgstr "Име на файл"
 
-#: models.py:67
+#: models.py:68
 msgid "Shared uploaded file"
 msgstr "Споделен качен файл"
 
-#: models.py:68
+#: models.py:69 storages.py:20
 msgid "Shared uploaded files"
 msgstr "Споделени качени файлове"
 
-#: models.py:97
+#: models.py:98
 msgid "Timezone"
 msgstr "Часова зона"
 
-#: models.py:100
+#: models.py:101
 msgid "Language"
 msgstr "Език"
 
-#: models.py:106
+#: models.py:107
 msgid "User locale profile"
 msgstr "Профил на местоположението на потребителя"
 
-#: models.py:107
+#: models.py:108
 msgid "User locale profiles"
 msgstr "Профили на местоположението на потребителя"
 
-#: permissions_runtime.py:10
+#: permissions_runtime.py:8
 msgid "View error log"
 msgstr "Преглед на дневника за грешки"
 
-#: queues.py:13
+#: queues.py:11
 msgid "Default"
 msgstr "По подразбиране"
 
-#: queues.py:17
+#: queues.py:15
 msgid "Common periodic"
 msgstr "Обща периодичност"
 
-#: queues.py:22
+#: queues.py:20
 msgid "Delete stale uploads"
 msgstr "Изтриване на застояли качвания"
 
-#: settings.py:22
+#: settings.py:20
 msgid "Automatically enable logging to all apps."
 msgstr "Автоматично активиране на регистрацията във всички приложения."
 
-#: settings.py:28
+#: settings.py:26
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr "Време за забавяне на фоновите задачи, които зависят от запис в базата данни, за да се изпълнят."
 
-#: settings.py:36
+#: settings.py:34
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -314,7 +318,7 @@ msgid ""
 " containing an application."
 msgstr "Списък с низове, обозначаващи всички приложения, които трябва да бъдат премахнати от списъка, обикновено инсталиран от Mayan EDMS. Всеки низ трябва да бъде пунктиран Python път към: клас на конфигурация на приложението (предпочитан) или пакет, съдържащ приложение."
 
-#: settings.py:46
+#: settings.py:44
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -322,139 +326,145 @@ msgid ""
 " containing an application."
 msgstr "Списък на низове, обозначаващи всички приложения, които са инсталирани извън тези, които обикновено се инсталират от Mayan EDMS. Всеки низ трябва да бъде пунктиран Python път към: клас на конфигурация на приложението (предпочитан) или пакет, съдържащ приложение."
 
-#: settings.py:55
+#: settings.py:53
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr "Име на изгледа, прикрепен към котвата на марката в главното меню. Това е и изгледът, към който потребителите ще бъдат пренасочени след влизане."
 
-#: settings.py:64
+#: settings.py:62
 msgid "The number objects that will be displayed per page."
 msgstr "Брой на обектите, които ще бъдат показани на страница."
 
-#: settings.py:71
+#: settings.py:69
 msgid "Enable error logging outside of the system error logging capabilities."
 msgstr "Активирайте регистрирането на грешки извън възможностите за регистриране на грешки в системата."
 
-#: settings.py:78
+#: settings.py:76
 msgid "Path to the logfile that will track errors during production."
 msgstr "Път към файла на дневника, който ще проследява грешките по време на производството."
 
-#: settings.py:85
+#: settings.py:83
 msgid "Name to be displayed in the main menu."
 msgstr "Име, което се показва в главното меню."
 
-#: settings.py:91
+#: settings.py:89
 msgid "URL of the installation or homepage of the project."
 msgstr "URL адрес на инсталацията или началната страница на проекта."
 
-#: settings.py:97
+#: settings.py:95
 msgid "A storage backend that all workers can use to share files."
 msgstr "Бекенд за съхранение, който всички работници могат да използват за споделяне на файлове."
 
-#: templatetags/common_tags.py:29
+#: storages.py:13
+msgid ""
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
+msgstr ""
+
+#: templatetags/common_tags.py:31
 msgid "Confirm delete"
 msgstr "Потвърдете изтриване"
 
-#: templatetags/common_tags.py:34
+#: templatetags/common_tags.py:36
 #, python-format
 msgid "Edit %s"
 msgstr "Редактиране %s"
 
-#: templatetags/common_tags.py:37
+#: templatetags/common_tags.py:39
 msgid "Confirm"
 msgstr "Потвърждаване"
 
-#: templatetags/common_tags.py:41
+#: templatetags/common_tags.py:43
 #, python-format
 msgid "Details for: %s"
 msgstr "Подробности за: %s"
 
-#: templatetags/common_tags.py:45
+#: templatetags/common_tags.py:47
 #, python-format
 msgid "Edit: %s"
 msgstr "Редактиране: %s"
 
-#: templatetags/common_tags.py:48
+#: templatetags/common_tags.py:50
 msgid "Create"
 msgstr "Създаване"
 
-#: validators.py:46
+#: validators.py:44
 msgid "Enter a valid JSON value."
 msgstr "Въведете валидна JSON стойност."
 
-#: validators.py:70
+#: validators.py:68
 msgid "Enter a valid YAML value."
 msgstr "Въведете валидна YAML стойност."
 
-#: validators.py:86
+#: validators.py:84
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
 msgstr "Въведете валидно „вътрешно име“, състоящо се от букви, цифри и подчертавания."
 
-#: views.py:27
+#: views.py:26
 msgid "About"
 msgstr "Относно"
 
-#: views.py:40
+#: views.py:39
 msgid "Current user locale profile details"
 msgstr "Данни от текущия локален потребителски профил "
 
-#: views.py:46
+#: views.py:45
 msgid "Edit current user locale profile details"
 msgstr "Редактиране на данни за текущия локален потребителски профил"
 
-#: views.py:96
+#: views.py:94
 msgid "Dashboard"
 msgstr "Контролно табло"
 
-#: views.py:114
+#: views.py:112
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr "Изчистване на записите в дневника за грешки за: %s"
 
-#: views.py:131
+#: views.py:129
 msgid "Object error log cleared successfully"
 msgstr "Дневникът за грешки в обекта е изчистен успешно"
 
-#: views.py:150
+#: views.py:148
 msgid "Date and time"
 msgstr "Дата и час"
 
-#: views.py:156
+#: views.py:154
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
 msgstr "Този изглед показва дневника на грешките на различен обект. Празен списък е нещо добро."
 
-#: views.py:160
+#: views.py:158
 msgid "There are no error log entries"
 msgstr "Няма записи в дневника за грешки"
 
-#: views.py:163
+#: views.py:161
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "Записи в дневника за грешки за: %s"
 
-#: views.py:191
+#: views.py:189
 msgid "No setup options available."
 msgstr "Няма опции за настройка."
 
-#: views.py:193
+#: views.py:191
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "Липса на резултати тук означава, че нямате необходимите разрешения за изпълнение на административна задача."
 
-#: views.py:199
+#: views.py:197
 msgid "Setup items"
 msgstr "Елементи за настройка"
 
-#: views.py:201
+#: views.py:199
 msgid "Here you can configure all aspects of the system."
 msgstr "Тук можете да конфигурирате всички аспекти на системата."
 
-#: views.py:216
+#: views.py:214
 msgid "These modules are used to do system maintenance."
 msgstr "Тези модули се използват за поддръжка на системата."

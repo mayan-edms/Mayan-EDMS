@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:29-0400\n"
+"POT-Creation-Date: 2020-03-28 05:06-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -20,167 +20,167 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: admin.py:15
+#: admin.py:13
 msgid "Label"
 msgstr "Etiķete"
 
-#: apps.py:52 events.py:8 links.py:18 permissions.py:7 queues.py:9
-#: settings.py:11
+#: apps.py:50 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: settings.py:9
 msgid "File metadata"
 msgstr "Failu metadati"
 
-#: apps.py:98
+#: apps.py:96
 msgid "Return the value of a specific file metadata."
 msgstr "Atgrieziet konkrēta faila metadatu vērtību."
 
-#: apps.py:99
+#: apps.py:97
 msgid "File metadata value of"
 msgstr ""
 
-#: apps.py:110 apps.py:152 apps.py:161
+#: apps.py:108 apps.py:156 apps.py:165
 msgid "File metadata key"
 msgstr "Faila metadatu atslēga"
 
-#: apps.py:114 apps.py:156 apps.py:165
+#: apps.py:112 apps.py:160 apps.py:169
 msgid "File metadata value"
 msgstr "Faila metadatu vērtība"
 
-#: dependencies.py:14
+#: dependencies.py:12
 msgid ""
 "Library and program to read and write meta information in multimedia files."
 msgstr ""
 "Bibliotēka un programma, lai lasītu un rakstītu meta informāciju multivides "
 "failos."
 
-#: drivers/exiftool.py:20
+#: drivers/exiftool.py:18
 msgid "EXIF Tool"
 msgstr "EXIF rīks"
 
-#: events.py:12
+#: events.py:10
 msgid "Document version submitted for file metadata processing"
 msgstr "Dokumenta versija iesniegta failu metadatu apstrādei"
 
-#: events.py:16
+#: events.py:14
 msgid "Document version file metadata processing finished"
 msgstr "Pabeigta dokumentu versijas faila metadatu apstrāde"
 
-#: links.py:24
+#: links.py:23
 msgid "Attributes"
 msgstr "Atribūti"
 
-#: links.py:31 links.py:34
+#: links.py:30 links.py:33
 msgid "Submit for file metadata"
 msgstr "Iesniegt faila metadatiem"
 
-#: links.py:41
+#: links.py:40
 msgid "Setup file metadata"
 msgstr "Iestatīt faila metadatus"
 
-#: links.py:46
+#: links.py:45
 msgid "File metadata processing per type"
 msgstr "Failu metadatu apstrāde katram tipam"
 
-#: methods.py:38
+#: methods.py:36
 msgid "get_file_metadata(< file metadata dotted path >)"
 msgstr "get_file_metadata (&lt;faila metadatu punktēts ceļš&gt;)"
 
-#: methods.py:41
+#: methods.py:39
 msgid "Return the specified document file metadata entry."
 msgstr "Atgrieziet norādīto dokumenta faila metadatu ierakstu."
 
-#: methods.py:68
+#: methods.py:66
 msgid "Return the specified document version file metadata entry."
 msgstr "Atgrieziet norādīto dokumentu versijas faila metadatu ierakstu."
 
-#: models.py:21
+#: models.py:19
 msgid "Driver path"
 msgstr "Vadītāja ceļš"
 
-#: models.py:25
+#: models.py:23
 msgid "Internal name"
 msgstr "Iekšējais nosaukums"
 
-#: models.py:30 models.py:74
+#: models.py:28 models.py:72
 msgid "Driver"
 msgstr "Vadītājs"
 
-#: models.py:31
+#: models.py:29
 msgid "Drivers"
 msgstr "Draiveri"
 
-#: models.py:51
+#: models.py:49
 msgid "Document type"
 msgstr "Dokumenta veids"
 
-#: models.py:55
+#: models.py:53
 msgid "Automatically queue newly created documents for processing."
 msgstr "Automātiski rindā jaunizveidotos dokumentus apstrādei."
 
-#: models.py:62
+#: models.py:60
 msgid "Document type settings"
 msgstr "Dokumenta tipa iestatījumi"
 
-#: models.py:63
+#: models.py:61
 msgid "Document types settings"
 msgstr "Dokumentu veidu iestatījumi"
 
-#: models.py:78
+#: models.py:76
 msgid "Document version"
 msgstr "Dokumenta versija"
 
-#: models.py:84 models.py:100
+#: models.py:82 models.py:98
 msgid "Document version driver entry"
 msgstr "Dokumenta versijas draivera ieraksts"
 
-#: models.py:85
+#: models.py:83
 msgid "Document version driver entries"
 msgstr "Dokumenta versijas draivera ieraksti"
 
-#: models.py:92
+#: models.py:90
 msgid "Attribute count"
 msgstr "Atribūtu skaits"
 
-#: models.py:104
+#: models.py:102
 msgid "Name of the file metadata entry."
 msgstr "Faila metadatu ieraksta nosaukums."
 
-#: models.py:105
+#: models.py:103
 msgid "Key"
 msgstr "Atslēga"
 
-#: models.py:108
+#: models.py:106
 msgid "Value of the file metadata entry."
 msgstr "Faila metadatu ieraksta vērtība."
 
-#: models.py:109
+#: models.py:107
 msgid "Value"
 msgstr "Vērtība"
 
-#: models.py:114
+#: models.py:112
 msgid "File metadata entry"
 msgstr "Faila metadatu ieraksts"
 
-#: models.py:115
+#: models.py:113
 msgid "File metadata entries"
 msgstr "Failu metadatu ieraksti"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Change document type file metadata settings"
 msgstr "Mainīt dokumenta tipa failu metadatu iestatījumus"
 
-#: permissions.py:15
+#: permissions.py:13
 msgid "Submit document for file metadata processing"
 msgstr "Iesniegt dokumentu failu metadatu apstrādei"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "View file metadata"
 msgstr "Skatīt faila metadatus"
 
-#: queues.py:12
+#: queues.py:10
 msgid "Process document version"
 msgstr "Apstrādāt dokumenta versiju"
 
-#: settings.py:18
+#: settings.py:16
 msgid ""
 "Set new document types to perform file metadata processing automatically by "
 "default."
@@ -188,11 +188,11 @@ msgstr ""
 "Iestatiet jaunus dokumentu veidus, lai pēc noklusējuma veiktu failu metadatu"
 " apstrādi."
 
-#: settings.py:24
+#: settings.py:22
 msgid "Arguments to pass to the drivers."
 msgstr "Argumenti, kas jānodod vadītājiem."
 
-#: views.py:35
+#: views.py:33
 msgid ""
 "File metadata are the attributes of the document's file. They can range from"
 " camera information used to take a photo to the author that created a file. "
@@ -206,39 +206,39 @@ msgstr ""
 "izveidots. Faila metadatu atribūti atrodas pašā failā. Tie nav tādi paši kā "
 "dokumenta metadati, kurus lietotājs definē un uzturas datu bāzē."
 
-#: views.py:43 views.py:62
+#: views.py:41 views.py:60
 msgid "No file metadata available."
 msgstr "Failu metadati nav pieejami."
 
-#: views.py:46
+#: views.py:44
 #, python-format
 msgid "File metadata drivers for: %s"
 msgstr "Failu metadatu draiveri: %s"
 
-#: views.py:65
+#: views.py:63
 #, python-format
 msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
 msgstr "Failu metadatu atribūti: %(document)s, vadītājam: %(driver)s"
 
-#: views.py:88
+#: views.py:86
 msgid "Submit the selected document to the file metadata queue?"
 msgid_plural "Submit the selected documents to the file metadata queue?"
 msgstr[0] "Iesniegt atlasītos dokumentus faila metadatu rindā?"
 msgstr[1] "Iesniegt atlasīto dokumentu faila metadatu rindā?"
 msgstr[2] "Iesniegt atlasītos dokumentus faila metadatu rindā?"
 
-#: views.py:114
+#: views.py:112
 #, python-format
 msgid "Edit file metadata settings for document type: %s"
 msgstr "Dokumenta tipa metadatu iestatījumu rediģēšana: %s"
 
-#: views.py:125
+#: views.py:123
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
 "Iesniedziet visus dokumenta dokumentus, kas paredzēti failu metadatu "
 "apstrādei."
 
-#: views.py:147
+#: views.py:145
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr "%(count)d dokumenti, kas pievienoti faila metadatu apstrādes rindai."

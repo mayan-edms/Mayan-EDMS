@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:30-0400\n"
+"POT-Creation-Date: 2020-03-28 05:07-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -20,18 +20,18 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:14
+#: apps.py:12
 msgid "Platform"
 msgstr "Platforma"
 
-#: classes.py:128
+#: classes.py:126
 msgid "Template for Supervisord."
 msgstr "Veidne priekš Supervisord."
 
-#: classes.py:184
+#: classes.py:182
 msgid "Template for Supervisord inside a Docker image."
 msgstr "Supervisord veidne Docker attēla iekšpusē."
 
-#: classes.py:192
+#: classes.py:190
 msgid "Template showing the queues of a worker."
 msgstr ""

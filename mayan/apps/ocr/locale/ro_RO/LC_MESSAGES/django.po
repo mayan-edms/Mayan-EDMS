@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:30-0400\n"
+"POT-Creation-Date: 2020-03-28 05:07-0400\n"
 "PO-Revision-Date: 2020-02-29 06:12+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -19,201 +19,201 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:55 apps.py:140 apps.py:144 events.py:7 links.py:20 links.py:26
-#: permissions.py:7 queues.py:8 settings.py:10
+#: apps.py:53 apps.py:138 apps.py:142 events.py:5 links.py:18 links.py:24
+#: permissions.py:5 queues.py:6 settings.py:8
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:107
+#: apps.py:105
 msgid "A generator returning the document's pages OCR content."
 msgstr "Un generator care returnează conținutul OCR al paginilor documentului."
 
-#: apps.py:108
+#: apps.py:106
 msgid "OCR content"
 msgstr "Conținut OCR"
 
-#: apps.py:132
+#: apps.py:130
 msgid "Date and time"
 msgstr "Data și ora"
 
-#: apps.py:135 models.py:76
+#: apps.py:133 models.py:74
 msgid "Result"
 msgstr "Rezultat"
 
-#: backends/tesseract.py:90
+#: backends/tesseract.py:88
 msgid "Tesseract OCR not found."
 msgstr "OCR Tesseract nu a fost găsit."
 
-#: dependencies.py:25
+#: dependencies.py:23
 msgid "Free Open Source OCR Engine"
 msgstr "Motor OCR Open Source"
 
-#: dependencies.py:36
+#: dependencies.py:34
 msgid ""
 "PyOCR is a Python library simplifying the use of OCR tools like Tesseract or"
 " Cuneiform."
 msgstr "PyOCR este o bibliotecă Python care simplifică utilizarea instrumentelor OCR cum ar fi Tesseract sau Cuneiform."
 
-#: events.py:10
+#: events.py:8
 msgid "Document OCR content deleted"
 msgstr "Conținutul OCR al documentului a fost șters"
 
-#: events.py:14
+#: events.py:12
 msgid "Document version submitted for OCR"
 msgstr "Versiunea documentului trimisă pentru OCR"
 
-#: events.py:18
+#: events.py:16
 msgid "Document version OCR finished"
 msgstr "Versiunea documentului OCR terminată"
 
-#: forms.py:16 forms.py:47
+#: forms.py:14 forms.py:45
 msgid "Contents"
 msgstr "Conţinut"
 
-#: forms.py:76
+#: forms.py:74
 #, python-format
 msgid "Page %(page_number)d"
 msgstr "Pagina %(page_number)d"
 
-#: links.py:32 links.py:37
+#: links.py:30 links.py:35
 msgid "Delete OCR content"
 msgstr "Ștergeți conținutul OCR"
 
-#: links.py:43 links.py:48
+#: links.py:41 links.py:46
 msgid "Submit for OCR"
 msgstr "Trimiteți pentru OCR"
 
-#: links.py:53
+#: links.py:51
 msgid "Setup OCR"
 msgstr "Configurare OCR"
 
-#: links.py:58
+#: links.py:56
 msgid "OCR documents per type"
 msgstr "Documente OCR pe tip"
 
-#: links.py:63 links.py:69 views.py:185
+#: links.py:61 links.py:67 views.py:214
 msgid "OCR errors"
 msgstr "Erori OCR"
 
-#: links.py:75
+#: links.py:73
 msgid "Download OCR text"
 msgstr "Descărcați text OCR"
 
-#: models.py:20
+#: models.py:18
 msgid "Document type"
 msgstr "Tip document"
 
-#: models.py:24
+#: models.py:22
 msgid "Automatically queue newly created documents for OCR."
 msgstr "Automatically queue newly created documents for OCR."
 
-#: models.py:30
+#: models.py:28
 msgid "Document type settings"
 msgstr "Setările tipului de document"
 
-#: models.py:31
+#: models.py:29
 msgid "Document types settings"
 msgstr "Setările pentru tipurile de documente"
 
-#: models.py:45
+#: models.py:43
 msgid "Document page"
 msgstr "Pagina documentului"
 
-#: models.py:49
+#: models.py:47
 msgid "The actual text content extracted by the OCR backend."
 msgstr "Conținutul real de text extras de backend-ul OCR."
 
-#: models.py:50
+#: models.py:48
 msgid "Content"
 msgstr "Conținut"
 
-#: models.py:56
+#: models.py:54
 msgid "Document page OCR content"
 msgstr "Conținutul OCR al paginii de document"
 
-#: models.py:57
+#: models.py:55
 msgid "Document pages OCR contents"
 msgstr "Conținutul OCR al paginilor documentului"
 
-#: models.py:71
+#: models.py:69
 msgid "Document version"
 msgstr "Versiune document"
 
-#: models.py:74
+#: models.py:72
 msgid "Date time submitted"
 msgstr "Marcaj temporal al trimiterii"
 
-#: models.py:80
+#: models.py:78
 msgid "Document version OCR error"
 msgstr "Eroare OCR la versiunea documentului"
 
-#: models.py:81
+#: models.py:79
 msgid "Document version OCR errors"
 msgstr "Erori OCR de versiune a documentului"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Submit documents for OCR"
 msgstr "Trimiteti documentele pentru OCR"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "View the transcribed text from document"
 msgstr "Vizualizați textul transcris din document"
 
-#: permissions.py:17
+#: permissions.py:15
 msgid "Change document type OCR settings"
 msgstr "Modificați setările OCR de tip document"
 
-#: queues.py:11
+#: queues.py:9
 msgid "Document version OCR"
 msgstr "OCR pe versiunea documentului "
 
-#: settings.py:17
+#: settings.py:15
 msgid "Full path to the backend to be used to do OCR."
 msgstr "Calea completă spre backend-ul care trebuie utilizat pentru a face OCR."
 
-#: settings.py:26
+#: settings.py:24
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Setați tipuri noi de documente pentru a efectua automat funcția OCR în mod implicit."
 
-#: views.py:37
+#: views.py:35
 msgid "Delete the OCR content of the selected document?"
 msgid_plural "Delete the OCR content of the selected documents?"
 msgstr[0] "Ștergeți conținutul OCR al documentului selectat?"
 msgstr[1] "Ștergeți conținutul OCR al documentelor selectate?"
 msgstr[2] "Ștergeți conținutul OCR al documentelor selectate?"
 
-#: views.py:71
+#: views.py:70
 #, python-format
 msgid "OCR result for document: %s"
 msgstr "Rezultatul OCR pentru document: %s"
 
-#: views.py:93
+#: views.py:95
+#, python-format
+msgid "OCR errors for document: %s"
+msgstr "Erori OCR pentru document: %s"
+
+#: views.py:121
 #, python-format
 msgid "OCR result for document page: %s"
 msgstr "Rezultatul OCR pentru pagina documentului: %s"
 
-#: views.py:108
+#: views.py:137
 msgid "Submit the selected document to the OCR queue?"
 msgid_plural "Submit the selected documents to the OCR queue?"
 msgstr[0] "Trimiteți documentul selectat în coada de corespondență?"
 msgstr[1] "Trimiteți documentele selectate în coada de corespondență?"
 msgstr[2] "Trimiteți documentele selectate în coada de OCR?"
 
-#: views.py:125
+#: views.py:154
 msgid "Submit all documents of a type for OCR"
 msgstr "Trimiteți toate documentele de acest tip la OCR"
 
-#: views.py:139
+#: views.py:168
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr "%(count)d documente adăugate în coada OCR."
 
-#: views.py:174
+#: views.py:203
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr "Editați setările OCR pentru tipul de document: %s."
-
-#: views.py:203
-#, python-format
-msgid "OCR errors for document: %s"
-msgstr "Erori OCR pentru document: %s"

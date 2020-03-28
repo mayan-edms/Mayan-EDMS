@@ -7,7 +7,6 @@
 # Roberto Rosario, 2019
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2019
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2019
-# Yves Dubois <ydubois@gmail.com>, 2019
 # Olivier W, 2019
 # Frédéric Sheedy <sheedf@gmail.com>, 2020
 # 
@@ -15,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:28-0400\n"
+"POT-Creation-Date: 2020-03-28 05:06-0400\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -25,124 +24,112 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:30 events.py:8 permissions.py:7
+#: apps.py:28 events.py:6 permissions.py:5
 msgid "File caching"
 msgstr "Mise en cache de fichiers"
 
-#: events.py:12
+#: events.py:10
 msgid "Cache created"
 msgstr "Cache créé"
 
-#: events.py:15
+#: events.py:13
 msgid "Cache edited"
 msgstr "Cache modifié"
 
-#: events.py:18
+#: events.py:16
 msgid "Cache purged"
 msgstr "Cache vidé"
 
-#: links.py:12
+#: links.py:10
 msgid "File caches"
 msgstr "Fichiers caches"
 
-#: links.py:16 links.py:20
+#: links.py:14 links.py:18
 msgid "Purge cache"
 msgstr "Vider le cache"
 
-#: models.py:28
-msgid "Internal name of the cache."
-msgstr "Nom interne du cache."
+#: models.py:29
+msgid "Internal name of the defined storage for this cache."
+msgstr ""
 
-#: models.py:29 models.py:122
-msgid "Name"
-msgstr "Nom"
-
-#: models.py:32
-msgid "A short text describing the cache."
-msgstr "Un court texte décrivant le cache."
+#: models.py:30
+msgid "Defined storage name"
+msgstr ""
 
 #: models.py:33
-msgid "Label"
-msgstr "Libellé"
-
-#: models.py:36
 msgid "Maximum size of the cache in bytes."
 msgstr ""
 
-#: models.py:37 models.py:61
+#: models.py:35 models.py:54
 msgid "Maximum size"
 msgstr "Taille maximale"
 
-#: models.py:41
-msgid "Dotted path to the actual storage class used for the cache."
-msgstr ""
-
-#: models.py:42
-msgid "Storage instance path"
-msgstr ""
-
-#: models.py:46 models.py:119
+#: models.py:39 models.py:123
 msgid "Cache"
 msgstr "Cache"
 
-#: models.py:47
+#: models.py:40
 msgid "Caches"
 msgstr "Caches"
 
-#: models.py:59
+#: models.py:52
 msgid "Size at which the cache will start deleting old entries."
 msgstr ""
 "Taille à laquelle le cache commencera à supprimer les anciennes entrées."
 
 #: models.py:74
-msgid "Total size"
-msgstr "Taille totale"
+msgid "Current size"
+msgstr ""
 
 #: models.py:75
 msgid "Current size of the cache."
 msgstr "Taille actuelle du cache."
 
-#: models.py:127 models.py:197
+#: models.py:126
+msgid "Name"
+msgstr "Nom"
+
+#: models.py:131 models.py:201
 msgid "Cache partition"
 msgstr "Partition du cache"
 
-#: models.py:128
+#: models.py:132
 msgid "Cache partitions"
 msgstr "Partitions du cache"
 
-#: models.py:200
+#: models.py:204
 msgid "Date time"
 msgstr "Date et heure"
 
-#: models.py:202
+#: models.py:206
 msgid "Filename"
 msgstr "Nom de fichier"
 
-#: models.py:204
+#: models.py:208
 msgid "File size"
 msgstr "Taille du fichier"
 
-#: models.py:210
+#: models.py:214
 msgid "Cache partition file"
 msgstr ""
 
-#: models.py:211
+#: models.py:215
 msgid "Cache partition files"
 msgstr ""
 
-#: permissions.py:10 queues.py:9
+#: permissions.py:8 queues.py:7
 msgid "Purge a file cache"
 msgstr "Purger un fichier cache"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "View a file cache"
 msgstr "Afficher un fichier cache"
 
-#: views.py:23
+#: views.py:21
 msgid "File caches list"
 msgstr "Liste des fichiers caches"
 
-#: views.py:39
+#: views.py:37
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
 msgstr[0] ""

@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:27-0400\n"
-"PO-Revision-Date: 2020-01-05 19:22+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
+"POT-Creation-Date: 2020-03-28 05:06-0400\n"
+"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:48 permissions.py:8 settings.py:13
+#: apps.py:49 permissions.py:6 settings.py:11
 msgid "Document signatures"
 msgstr "Подписване на документи"
 
@@ -27,15 +27,15 @@ msgstr "Подписване на документи"
 msgid "Date"
 msgstr "Дата"
 
-#: apps.py:98 models.py:48
+#: apps.py:98 models.py:47
 msgid "Key ID"
 msgstr "Ключ №"
 
-#: apps.py:102 forms.py:64 models.py:53
+#: apps.py:102 forms.py:62 models.py:52
 msgid "Signature ID"
 msgstr "Подпис №"
 
-#: apps.py:103 forms.py:76
+#: apps.py:103 forms.py:74
 msgid "None"
 msgstr "Няма"
 
@@ -43,141 +43,141 @@ msgstr "Няма"
 msgid "Type"
 msgstr "Тип"
 
-#: forms.py:19 forms.py:33 workflow_actions.py:21
+#: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
 msgstr "Ключ"
 
-#: forms.py:24 serializers.py:35 workflow_actions.py:32
+#: forms.py:22 serializers.py:33 workflow_actions.py:30
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
 msgstr "Фраза парола за отключване на ключа и разрешаване на използването му за подписване на версията на документа."
 
-#: forms.py:26 workflow_actions.py:29
+#: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
 msgstr "Фраза парола"
 
-#: forms.py:35
+#: forms.py:33
 msgid "Private key that will be used to sign this document version."
 msgstr "Частен ключ, който ще се използва за подписване на тази версия на документа."
 
-#: forms.py:46
+#: forms.py:44
 msgid "Signature is embedded?"
 msgstr "Подписът е вграден?"
 
-#: forms.py:48
+#: forms.py:46
 msgid "Signature date"
 msgstr "Дата на подписване"
 
-#: forms.py:51
+#: forms.py:49
 msgid "Signature key ID"
 msgstr "Ключ на подписа №"
 
-#: forms.py:53
+#: forms.py:51
 msgid "Signature key present?"
 msgstr "Има ли ключ за подпис?"
 
-#: forms.py:66
+#: forms.py:64
 msgid "Key fingerprint"
 msgstr "Ключов отпечатък"
 
-#: forms.py:70
+#: forms.py:68
 msgid "Key creation date"
 msgstr "Дата на създаване на ключа"
 
-#: forms.py:75
+#: forms.py:73
 msgid "Key expiration date"
 msgstr "Дата на валидност за ключа"
 
-#: forms.py:80
+#: forms.py:78
 msgid "Key length"
 msgstr "Дължина на ключа"
 
-#: forms.py:84
+#: forms.py:82
 msgid "Key algorithm"
 msgstr "Алгоритъм на ключа"
 
-#: forms.py:88
+#: forms.py:86
 msgid "Key user ID"
 msgstr "Номер на потребителя на ключа"
 
-#: forms.py:92
+#: forms.py:90
 msgid "Key type"
 msgstr "Тип ключ"
 
-#: links.py:32
+#: links.py:30
 msgid "Verify all documents"
 msgstr "Проверете всички документи"
 
-#: links.py:39 links.py:79 queues.py:9
+#: links.py:37 links.py:77 queues.py:8
 msgid "Signatures"
 msgstr "Подписи"
 
-#: links.py:45
+#: links.py:43
 msgid "Delete"
 msgstr "Изтрийте"
 
-#: links.py:52
+#: links.py:50
 msgid "Sign detached"
 msgstr "Подпис отделен"
 
-#: links.py:59
+#: links.py:57
 msgid "Details"
 msgstr "Детайли"
 
-#: links.py:66
+#: links.py:64
 msgid "Download"
 msgstr "Сваляне"
 
-#: links.py:72
+#: links.py:70
 msgid "Sign embedded"
 msgstr "Подпис вграден"
 
-#: links.py:85
+#: links.py:83
 msgid "Upload signature"
 msgstr "Качване на подпис"
 
-#: models.py:40
+#: models.py:39
 msgid "Document version"
 msgstr "Версия на документа"
 
-#: models.py:44
+#: models.py:43
 msgid "Date signed"
 msgstr "Дата на подписване"
 
-#: models.py:47
+#: models.py:46
 msgid "ID of the key that will be used to sign the document."
 msgstr "Идентификационен номер на ключа, който ще бъде използван за подписване на документа."
 
-#: models.py:57
+#: models.py:56
 msgid "Public key fingerprint"
 msgstr "Отпечатък на публичния ключ"
 
-#: models.py:64
+#: models.py:63
 msgid "Document version signature"
 msgstr "Подпис на версията на документа"
 
-#: models.py:65
+#: models.py:64
 msgid "Document version signatures"
 msgstr "Подписи на версията на документа"
 
-#: models.py:84
+#: models.py:83
 msgid "Detached"
 msgstr "Отделен"
 
-#: models.py:86
+#: models.py:85
 msgid "Embedded"
 msgstr "Вграден"
 
-#: models.py:101
+#: models.py:100
 msgid "Document version embedded signature"
 msgstr "Вграден подпис на версия на документа"
 
-#: models.py:102
+#: models.py:101
 msgid "Document version embedded signatures"
 msgstr "Вградени подписи на версия на документа"
 
-#: models.py:135
+#: models.py:134
 msgid "Signature file previously generated."
 msgstr "Предварително създаден файл с подпис."
 
@@ -197,141 +197,151 @@ msgstr "Отделени подписи на версия на документ�
 msgid "signature"
 msgstr "подпис"
 
-#: permissions.py:12
+#: permissions.py:10
 msgid "Sign documents with detached signatures"
 msgstr "Подписвайте документи с отделени подписи"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Sign documents with embedded signatures"
 msgstr "Подписвайте документи с вградени подписи"
 
-#: permissions.py:20
+#: permissions.py:18
 msgid "Delete detached signatures"
 msgstr "Изтриване на отделени подписи"
 
-#: permissions.py:24
+#: permissions.py:22
 msgid "Download detached document signatures"
 msgstr "Изтегляне на отделени подписи на документи"
 
-#: permissions.py:28
+#: permissions.py:26
 msgid "Upload detached document signatures"
 msgstr "Качване на отделени подписи на документи"
 
-#: permissions.py:32
+#: permissions.py:30
 msgid "Verify document signatures"
 msgstr "Проверете подписите на документа"
 
-#: permissions.py:36
+#: permissions.py:34
 msgid "View details of document signatures"
 msgstr "Вижте подробности за подписите на документи"
 
-#: queues.py:12
+#: queues.py:13
 msgid "Verify key signatures"
 msgstr "Проверете подписите с ключ"
 
-#: queues.py:16
+#: queues.py:17
 msgid "Unverify key signatures"
 msgstr "Откажете проверка на подписите с ключ"
 
-#: queues.py:20
+#: queues.py:21
 msgid "Verify document version"
 msgstr "Проверете версията на документа"
 
-#: queues.py:25
+#: queues.py:26
 msgid "Verify missing embedded signature"
 msgstr "Проверете за липсващ вграден подпис"
 
-#: settings.py:21
+#: settings.py:19
 msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr "Път към подклас Storage, който да се използва при съхранение на отделени подписи."
 
-#: settings.py:30
+#: settings.py:28
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
 msgstr "Аргументи за подаване към SIGNATURE_STORAGE_BACKEND."
 
-#: views.py:70 views.py:152
+#: storages.py:14
+msgid ""
+"Unable to initialize the detached signatures storage. Check the settings {} "
+"and {} for formatting errors."
+msgstr ""
+
+#: storages.py:21
+msgid "Detached signatures"
+msgstr ""
+
+#: views.py:68 views.py:150
 msgid "Passphrase is needed to unlock this key."
 msgstr "За отключване на този ключ е необходима фраза парола."
 
-#: views.py:81 views.py:163
+#: views.py:79 views.py:161
 msgid "Passphrase is incorrect."
 msgstr "Фразата парола е неправилна."
 
-#: views.py:92 views.py:174
+#: views.py:90 views.py:172
 msgid "Document version signed successfully."
 msgstr "Версията на документа е подписана успешно."
 
-#: views.py:118 views.py:207
+#: views.py:116 views.py:205
 msgid "Sign"
 msgstr "Подпишете"
 
-#: views.py:120
+#: views.py:118
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
 msgstr "Подпишете версия на документа &quot;%s&quot; с отделен подпис"
 
-#: views.py:209
+#: views.py:207
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr "Подпишете версия на документа &quot;%s&quot; с вграден подпис"
 
-#: views.py:225
+#: views.py:223
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Изтрийте отделен подпис: %s"
 
-#: views.py:245
+#: views.py:243
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Подробности за подпис: %s"
 
-#: views.py:275
+#: views.py:273
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr "Подписите помагат за предоставяне на доказателства за авторство и откриване на подправки. Те са много сигурни и трудно подправящи се. Подписът може да бъде вграден като част от самия документ или качен като отделен файл."
 
-#: views.py:303
+#: views.py:301
 msgid "There are no signatures for this document."
 msgstr "Няма подписи за този документ."
 
-#: views.py:306
+#: views.py:304
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Подписи за версия на документа: %s"
 
-#: views.py:336
+#: views.py:334
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Качете отделен подпис за версия на документа: %s"
 
-#: views.py:353
+#: views.py:351
 msgid "On large databases this operation may take some time to execute."
 msgstr "При големи бази данни тази операция може да отнеме известно време за изпълнение."
 
-#: views.py:354
+#: views.py:352
 msgid "Verify all document for signatures?"
 msgstr "Проверете всички документи за подписи?"
 
-#: views.py:364
+#: views.py:362
 msgid "Signature verification queued successfully."
 msgstr "Проверката на подписа успешно е поставена на опашка."
 
-#: workflow_actions.py:24
+#: workflow_actions.py:22
 msgid "Private key that will be used to sign the document version."
 msgstr "Личен ключ, който ще се използва за подписване на версията на документа."
 
-#: workflow_actions.py:39
+#: workflow_actions.py:37
 msgid "Sign document (detached)"
 msgstr "Документ за подписване (отделен)"
 
-#: workflow_actions.py:51
+#: workflow_actions.py:49
 msgid ""
 "Document has no version to sign. You might be trying to use this action in "
 "an initial state before the created document is yet to be processed."
 msgstr "Документът няма версия за подписване. Може да се опитвате да използвате това действие в първоначално състояние, преди създадения документ да бъде обработен."
 
-#: workflow_actions.py:84
+#: workflow_actions.py:82
 msgid "Sign document (embedded)"
 msgstr "Документ за подписване (вграден)"

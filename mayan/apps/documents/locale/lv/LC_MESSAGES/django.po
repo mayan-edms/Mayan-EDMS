@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:28-0400\n"
-"PO-Revision-Date: 2020-03-18 05:33+0000\n"
+"POT-Creation-Date: 2020-03-28 05:06-0400\n"
+"PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -18,43 +18,42 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:131 apps.py:337 events.py:7 menus.py:10
-#: models/document_models.py:94 permissions.py:7 queues.py:26 settings.py:19
-#: statistics.py:236
+#: apps.py:130 apps.py:337 events.py:5 menus.py:8 models/document_models.py:94
+#: permissions.py:5 queues.py:25 settings.py:17 statistics.py:234
 msgid "Documents"
 msgstr "Dokumenti"
 
-#: apps.py:152
+#: apps.py:151
 msgid "Create a document type"
 msgstr "Izveidojiet dokumenta veidu"
 
-#: apps.py:154
+#: apps.py:153
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr "Katram augšupielādētajam dokumentam ir jāpiešķir dokumenta veids, tas ir galvenais veids, kā Mayan EDMS kategorizē dokumentus."
 
-#: apps.py:178
+#: apps.py:192
 msgid "Versions comment"
 msgstr "Versiju komentāri"
 
-#: apps.py:182
+#: apps.py:196
 msgid "Versions encoding"
 msgstr "Versiju kodēšana"
 
-#: apps.py:186
+#: apps.py:200
 msgid "Versions mime type"
 msgstr "Versiju mime tips"
 
-#: apps.py:190
+#: apps.py:204
 msgid "Versions timestamp"
 msgstr "Versiju laika zīmogs"
 
-#: apps.py:195
+#: apps.py:209
 msgid "Return the lastest version of the document."
 msgstr ""
 
-#: apps.py:196
+#: apps.py:210
 msgid "Latest version"
 msgstr ""
 
@@ -62,12 +61,12 @@ msgstr ""
 msgid "Thumbnail"
 msgstr "Sīktēls"
 
-#: apps.py:282 apps.py:372 forms/document_forms.py:185
-#: links/document_version_page_links.py:137
+#: apps.py:282 apps.py:372 forms/document_forms.py:183
+#: links/document_version_page_links.py:135
 msgid "Pages"
 msgstr "Lapas"
 
-#: apps.py:291 links/duplicated_document_links.py:14
+#: apps.py:291 links/duplicated_document_links.py:12
 msgid "Duplicates"
 msgstr "Dublikāti"
 
@@ -75,373 +74,373 @@ msgstr "Dublikāti"
 msgid "Type"
 msgstr "Tips"
 
-#: dashboard_widgets.py:24
+#: dashboard_widgets.py:22
 msgid "Total pages"
 msgstr "Kopā lapas"
 
-#: dashboard_widgets.py:47
+#: dashboard_widgets.py:45
 msgid "Total documents"
 msgstr "Kopā dokumenti"
 
-#: dashboard_widgets.py:66 views/trashed_document_views.py:136
+#: dashboard_widgets.py:64 views/trashed_document_views.py:134
 msgid "Documents in trash"
 msgstr "Dokumenti miskastē"
 
-#: dashboard_widgets.py:85 links/document_type_links.py:66
-#: links/document_type_links.py:71 permissions.py:55
-#: views/document_type_views.py:78
+#: dashboard_widgets.py:83 links/document_type_links.py:64
+#: links/document_type_links.py:69 permissions.py:53
+#: views/document_type_views.py:76
 msgid "Document types"
 msgstr "Dokumentu veidi"
 
-#: dashboard_widgets.py:104
+#: dashboard_widgets.py:102
 msgid "New documents this month"
 msgstr "Jauni dokumenti šajā mēnesī"
 
-#: dashboard_widgets.py:118
+#: dashboard_widgets.py:116
 msgid "New pages this month"
 msgstr "Šomēnes jaunās lapas"
 
-#: events.py:10
+#: events.py:8
 msgid "Document created"
 msgstr "Dokuments izveidots"
 
-#: events.py:13
+#: events.py:11
 msgid "Document downloaded"
 msgstr "Dokumenta lejupielāde"
 
-#: events.py:16
+#: events.py:14
 msgid "New version uploaded"
 msgstr "Augšupielādēta jauna versija"
 
-#: events.py:19
+#: events.py:17
+msgid "New version created"
+msgstr ""
+
+#: events.py:20
 msgid "Document properties edited"
 msgstr "Rediģēti dokumentu rekvizīti"
 
-#: events.py:22
+#: events.py:23
 msgid "Document trashed"
 msgstr ""
 
-#: events.py:26
+#: events.py:27
 msgid "Document type changed"
 msgstr "Dokumenta veids mainīts"
 
-#: events.py:30
+#: events.py:31
 msgid "Document type created"
 msgstr "Izveidots dokumenta veids"
 
-#: events.py:34
+#: events.py:35
 msgid "Document type edited"
 msgstr "Rediģēts dokumenta veids"
 
-#: events.py:37
+#: events.py:38
 msgid "Document version reverted"
 msgstr "Atjaunota dokumenta versija"
 
-#: events.py:40
+#: events.py:41
 msgid "Document viewed"
 msgstr "Skatīts dokuments"
 
-#: forms/document_forms.py:27
+#: forms/document_forms.py:25
 msgid "Compress"
 msgstr "Saspiest"
 
-#: forms/document_forms.py:29
+#: forms/document_forms.py:27
 msgid ""
 "Download the document in the original format or in a compressed manner. This"
 " option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr "Lejupielādējiet dokumentu oriģinālā formātā vai saspiestā veidā. Šī opcija ir pieejama tikai tad, ja lejupielādējat vienu dokumentu, vairākiem dokumentiem pakete vienmēr būs lejupielādēta kā saspiests fails."
 
-#: forms/document_forms.py:36
+#: forms/document_forms.py:34
 msgid "Compressed filename"
 msgstr "Saspiests faila nosaukums"
 
-#: forms/document_forms.py:39
+#: forms/document_forms.py:37
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
 msgstr "Saspiestā faila nosaukums, kurā būs lejupielādējami dokumenti, ja ir izvēlēta iepriekšējā opcija."
 
-#: forms/document_forms.py:82
+#: forms/document_forms.py:80
 msgid "Quick document rename"
 msgstr "Ātra dokumenta pārdēvēšana"
 
-#: forms/document_forms.py:90 forms/document_version_forms.py:15
+#: forms/document_forms.py:88 forms/document_version_forms.py:13
 msgid "Preserve extension"
 msgstr "Saglabāt paplašinājumu"
 
-#: forms/document_forms.py:92
+#: forms/document_forms.py:90
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open document correctly."
 msgstr "Veic faila paplašinājumu un pārvieto to līdz faila nosaukuma beigām, ļaujot operētājsistēmām, kas balstās uz failu paplašinājumiem, pareizi atvērt dokumentu."
 
-#: forms/document_forms.py:150
+#: forms/document_forms.py:148
 msgid "Date added"
 msgstr "Pievienošanas datums"
 
-#: forms/document_forms.py:154 models/document_models.py:41 search.py:43
+#: forms/document_forms.py:152 models/document_models.py:41 search.py:41
 msgid "UUID"
 msgstr "UUID"
 
-#: forms/document_forms.py:156 models/document_models.py:66
+#: forms/document_forms.py:154 models/document_models.py:66
 msgid "Language"
 msgstr "Valoda"
 
-#: forms/document_forms.py:164
+#: forms/document_forms.py:162
 msgid "File mimetype"
 msgstr "Fails mimetype"
 
-#: forms/document_forms.py:165 forms/document_forms.py:170
+#: forms/document_forms.py:163 forms/document_forms.py:168
 msgid "None"
 msgstr "Nav neviens"
 
-#: forms/document_forms.py:168
+#: forms/document_forms.py:166
 msgid "File encoding"
 msgstr "Failu kodēšana"
 
-#: forms/document_forms.py:174
+#: forms/document_forms.py:172
 msgid "File size"
 msgstr "Faila lielums"
 
-#: forms/document_forms.py:179
+#: forms/document_forms.py:177
 msgid "Exists in storage"
 msgstr "Pastāv glabāšanā"
 
-#: forms/document_forms.py:181
+#: forms/document_forms.py:179
 msgid "File path in storage"
 msgstr "Failu ceļš glabāšanā"
 
-#: forms/document_forms.py:184 models/document_version_models.py:104
-#: search.py:47 search.py:72
+#: forms/document_forms.py:182 models/document_version_models.py:105
+#: search.py:45 search.py:70
 msgid "Checksum"
 msgstr "Kontrolsumma"
 
-#: forms/document_forms.py:201 literals.py:43
+#: forms/document_forms.py:199 literals.py:39
 msgid "Page range"
 msgstr "Lapu diapazons"
 
-#: forms/document_page_forms.py:29
+#: forms/document_page_forms.py:27
 msgid ""
 "Page number from which all the transformations will be cloned. Existing "
 "transformations will be lost."
 msgstr "Lapas numurs, no kura tiks klonēti visi pārveidojumi. Esošās transformācijas tiks zaudētas."
 
-#: forms/document_type_forms.py:42 models/document_models.py:46
-#: models/document_type_models.py:60 models/document_type_models.py:146
-#: search.py:35 search.py:59
+#: forms/document_type_forms.py:40 models/document_models.py:46
+#: models/document_type_models.py:58 models/document_type_models.py:153
+#: search.py:33 search.py:57
 msgid "Document type"
 msgstr "Dokumenta veids"
 
-#: forms/document_version_forms.py:17
+#: forms/document_version_forms.py:15
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open the downloaded "
 "document version correctly."
 msgstr "Veic faila paplašinājumu un pārvieto to faila nosaukuma beigās, ļaujot operētājsistēmām, kas balstās uz failu paplašinājumiem, pareizi lejupielādēt lejupielādēto dokumentu versiju."
 
-#: handlers.py:33
-msgid "Document images"
-msgstr ""
-
-#: links/document_links.py:23 links/document_links.py:67
+#: links/document_links.py:21 links/document_links.py:65
 msgid "Clear transformations"
 msgstr "Skaidras transformācijas"
 
-#: links/document_links.py:30
+#: links/document_links.py:28
 msgid "Clone transformations"
 msgstr "Klonu transformācijas"
 
-#: links/document_links.py:36 links/document_links.py:71
+#: links/document_links.py:34 links/document_links.py:69
 msgid "Change type"
 msgstr "Mainīt veidu"
 
-#: links/document_links.py:42 links/document_links.py:77
+#: links/document_links.py:40 links/document_links.py:75
 msgid "Advanced download"
 msgstr "Izvērstā lejupielāde"
 
-#: links/document_links.py:49
+#: links/document_links.py:47
 msgid "Edit properties"
 msgstr "Rediģējiet rekvizītus"
 
-#: links/document_links.py:53 views/document_views.py:97
+#: links/document_links.py:51 views/document_views.py:95
 msgid "All documents"
 msgstr "Visi dokumenti"
 
-#: links/document_links.py:57 views/document_views.py:608
+#: links/document_links.py:55 views/document_views.py:619
 msgid "Recently accessed"
 msgstr "Nesen piekļuva"
 
-#: links/document_links.py:61 views/document_views.py:634
+#: links/document_links.py:59 views/document_views.py:645
 msgid "Recently added"
 msgstr "Nesen pievienotās"
 
-#: links/document_links.py:84
+#: links/document_links.py:82
 msgid "Preview"
 msgstr "Priekšskatījums"
 
-#: links/document_links.py:90
+#: links/document_links.py:88
 msgid "Properties"
 msgstr "Rekvizīti"
 
-#: links/document_links.py:96
+#: links/document_links.py:94
 msgid "Print"
 msgstr "Drukāt"
 
-#: links/document_links.py:101
+#: links/document_links.py:99
 msgid "Quick download"
 msgstr "Ātra lejupielāde"
 
-#: links/document_type_links.py:20 views/document_type_views.py:90
+#: links/document_type_links.py:18 views/document_type_views.py:88
 msgid "Create document type"
 msgstr "Izveidot dokumenta veidu"
 
-#: links/document_type_links.py:25 links/document_type_links.py:49
-#: links/trashed_document_links.py:17 links/trashed_document_links.py:43
+#: links/document_type_links.py:23 links/document_type_links.py:47
+#: links/trashed_document_links.py:15 links/trashed_document_links.py:41
 msgid "Delete"
 msgstr "Dzēst"
 
-#: links/document_type_links.py:31
+#: links/document_type_links.py:29
 msgid "Deletion policies"
 msgstr "Dzēšanas politika"
 
-#: links/document_type_links.py:35 links/document_type_links.py:56
+#: links/document_type_links.py:33 links/document_type_links.py:54
 msgid "Edit"
 msgstr "Rediģēt"
 
-#: links/document_type_links.py:42
+#: links/document_type_links.py:40
 msgid "Add quick label to document type"
 msgstr "Pievienojiet dokumenta tipam ātru etiķeti"
 
-#: links/document_type_links.py:62 models/document_type_models.py:157
+#: links/document_type_links.py:60 models/document_type_models.py:164
 msgid "Quick labels"
 msgstr "Ātrās uzlīmes"
 
-#: links/document_version_links.py:28 links/document_version_links.py:45
+#: links/document_version_links.py:26 links/document_version_links.py:43
 msgid "Versions"
 msgstr "Versijas"
 
-#: links/document_version_links.py:33
+#: links/document_version_links.py:31
 msgid "Download version"
 msgstr "Lejupielādēt versiju"
 
-#: links/document_version_links.py:39 links/document_version_page_links.py:98
-#: models/document_models.py:93 models/document_version_models.py:67
-#: models/misc_models.py:35 models/misc_models.py:65 models/misc_models.py:94
+#: links/document_version_links.py:37 links/document_version_page_links.py:96
+#: models/document_models.py:93 models/document_version_models.py:69
+#: models/misc_models.py:33 models/misc_models.py:63 models/misc_models.py:92
 msgid "Document"
 msgstr "Dokuments"
 
-#: links/document_version_links.py:52
+#: links/document_version_links.py:50
 msgid "Details"
 msgstr "Detaļas"
 
-#: links/document_version_links.py:58
+#: links/document_version_links.py:56
 msgid "Revert"
 msgstr "Atgriezties"
 
-#: links/document_version_page_links.py:49
+#: links/document_version_page_links.py:47
 msgid "Disable page"
 msgstr ""
 
-#: links/document_version_page_links.py:54
+#: links/document_version_page_links.py:52
 msgid "Disable pages"
 msgstr ""
 
-#: links/document_version_page_links.py:61
+#: links/document_version_page_links.py:59
 msgid "Enable page"
 msgstr ""
 
-#: links/document_version_page_links.py:66
+#: links/document_version_page_links.py:64
 msgid "Enable pages"
 msgstr ""
 
-#: links/document_version_page_links.py:73
+#: links/document_version_page_links.py:71
 msgid "First page"
 msgstr "Pirmā lapa"
 
-#: links/document_version_page_links.py:78
+#: links/document_version_page_links.py:76
 msgid "Last page"
 msgstr "Pēdējā lapa"
 
-#: links/document_version_page_links.py:86
+#: links/document_version_page_links.py:84
 msgid "Previous page"
 msgstr "Iepriekšējā lapa"
 
-#: links/document_version_page_links.py:92
+#: links/document_version_page_links.py:90
 msgid "Next page"
 msgstr "Nākamā lapaspuse"
 
-#: links/document_version_page_links.py:104
+#: links/document_version_page_links.py:102
 msgid "Rotate left"
 msgstr "Pagrieziet pa kreisi"
 
-#: links/document_version_page_links.py:109
+#: links/document_version_page_links.py:107
 msgid "Rotate right"
 msgstr "Pagrieziet pa labi"
 
-#: links/document_version_page_links.py:114
+#: links/document_version_page_links.py:112
 msgid "Page image"
 msgstr "Lapas attēls"
 
-#: links/document_version_page_links.py:119
+#: links/document_version_page_links.py:117
 msgid "Reset view"
 msgstr "Atjaunot skatu"
 
-#: links/document_version_page_links.py:125
+#: links/document_version_page_links.py:123
 msgid "Zoom in"
 msgstr "Pietuvināt"
 
-#: links/document_version_page_links.py:131
+#: links/document_version_page_links.py:129
 msgid "Zoom out"
 msgstr "Attālināt"
 
-#: links/document_version_page_links.py:142
-#: links/document_version_page_links.py:149
+#: links/document_version_page_links.py:140
+#: links/document_version_page_links.py:147
 msgid "Recalculate page count"
 msgstr "Pārrēķiniet lapu skaitu"
 
-#: links/duplicated_document_links.py:18 models/misc_models.py:38
-#: models/misc_models.py:48 views/duplicated_document_views.py:78
+#: links/duplicated_document_links.py:16 models/misc_models.py:36
+#: models/misc_models.py:46 views/duplicated_document_views.py:76
 msgid "Duplicated documents"
 msgstr "Dublētie dokumenti"
 
-#: links/duplicated_document_links.py:24 queues.py:66
+#: links/duplicated_document_links.py:22 queues.py:65
 msgid "Duplicated document scan"
 msgstr "Dokumentu dublēšana"
 
-#: links/favorite_links.py:12 views/favorite_document_views.py:37
+#: links/favorite_links.py:10 views/favorite_document_views.py:35
 msgid "Favorites"
 msgstr "Izlase"
 
-#: links/favorite_links.py:18 links/favorite_links.py:28
+#: links/favorite_links.py:16 links/favorite_links.py:26
 msgid "Add to favorites"
 msgstr "Pievienot pie favorītiem"
 
-#: links/favorite_links.py:24 links/favorite_links.py:33
+#: links/favorite_links.py:22 links/favorite_links.py:31
 msgid "Remove from favorites"
 msgstr "Noņemt no izlases"
 
-#: links/trashed_document_links.py:23 links/trashed_document_links.py:38
+#: links/trashed_document_links.py:21 links/trashed_document_links.py:36
 msgid "Move to trash"
 msgstr "Pārvietot uz miskasti"
 
-#: links/trashed_document_links.py:28
+#: links/trashed_document_links.py:26
 msgid "Trash can"
 msgstr "Miskaste"
 
-#: links/trashed_document_links.py:33 links/trashed_document_links.py:48
+#: links/trashed_document_links.py:31 links/trashed_document_links.py:46
 msgid "Restore"
 msgstr "Atjaunot"
 
-#: links/trashed_document_links.py:51 permissions.py:51
+#: links/trashed_document_links.py:49 permissions.py:49
 msgid "Empty trash"
 msgstr "Iztukšojiet miskasti"
 
-#: literals.py:12
+#: literals.py:10
 msgid "Default"
 msgstr "Noklusējums"
 
-#: literals.py:43
+#: literals.py:39
 msgid "All pages"
 msgstr "Visas lapas"
 
@@ -460,8 +459,8 @@ msgid "The name of the document."
 msgstr "Dokumenta nosaukums."
 
 #: models/document_models.py:50 models/document_page_models.py:256
-#: models/document_type_models.py:32 models/document_type_models.py:149
-#: search.py:40 search.py:66
+#: models/document_type_models.py:30 models/document_type_models.py:156
+#: search.py:38 search.py:64
 msgid "Label"
 msgstr "Etiķete"
 
@@ -469,7 +468,7 @@ msgstr "Etiķete"
 msgid "An optional short text describing a document."
 msgstr "Izvēles īss teksts, kas apraksta dokumentu."
 
-#: models/document_models.py:55 search.py:41 search.py:69
+#: models/document_models.py:55 search.py:39 search.py:67
 msgid "Description"
 msgstr "Apraksts"
 
@@ -479,7 +478,7 @@ msgid ""
 "to the system."
 msgstr "Servera datums un laiks, kad dokuments beidzot tika apstrādāts un pievienots sistēmai."
 
-#: models/document_models.py:61 models/misc_models.py:41
+#: models/document_models.py:61 models/misc_models.py:39
 msgid "Added"
 msgstr "Pievienots"
 
@@ -519,24 +518,24 @@ msgstr "Vai stubs?"
 msgid "Document stub, id: %d"
 msgstr "Dokumenta papīrs, id: %d"
 
-#: models/document_page_models.py:42 models/document_version_models.py:109
-#: models/document_version_models.py:110
+#: models/document_page_models.py:40 models/document_version_models.py:110
+#: models/document_version_models.py:111
 msgid "Document version"
 msgstr "Dokumenta versija"
 
-#: models/document_page_models.py:44 models/document_type_models.py:151
+#: models/document_page_models.py:42 models/document_type_models.py:158
 msgid "Enabled"
 msgstr "Iespējots"
 
-#: models/document_page_models.py:47
+#: models/document_page_models.py:45
 msgid "Page number"
 msgstr "Lapas numurs"
 
-#: models/document_page_models.py:55 models/document_page_models.py:281
+#: models/document_page_models.py:53 models/document_page_models.py:281
 msgid "Document page"
 msgstr "Dokumenta lapa"
 
-#: models/document_page_models.py:56 models/document_page_models.py:282
+#: models/document_page_models.py:54 models/document_page_models.py:282
 msgid "Document pages"
 msgstr "Dokumenta lapas"
 
@@ -545,409 +544,429 @@ msgstr "Dokumenta lapas"
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Lapa %(page_num)d no %(total_pages)d no %(document)s"
 
-#: models/document_type_models.py:31
+#: models/document_type_models.py:29
 msgid "The name of the document type."
 msgstr "Dokumenta veida nosaukums."
 
-#: models/document_type_models.py:36
+#: models/document_type_models.py:34
 msgid ""
 "Amount of time after which documents of this type will be moved to the "
 "trash."
 msgstr "Laiks, pēc kura šāda veida dokumenti tiks pārvietoti uz miskasti."
 
-#: models/document_type_models.py:38
+#: models/document_type_models.py:36
 msgid "Trash time period"
 msgstr "Trash laika periods"
 
-#: models/document_type_models.py:42
+#: models/document_type_models.py:40
 msgid "Trash time unit"
 msgstr "Atkritumu laika vienība"
 
-#: models/document_type_models.py:46
+#: models/document_type_models.py:44
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
 msgstr "Laiks, pēc kura tiks izdzēsti šāda veida dokumenti miskastē."
 
-#: models/document_type_models.py:48
+#: models/document_type_models.py:46
 msgid "Delete time period"
 msgstr "Dzēst laika periodu"
 
-#: models/document_type_models.py:53
+#: models/document_type_models.py:51
 msgid "Delete time unit"
 msgstr "Dzēst laika vienību"
 
-#: models/document_type_models.py:61
+#: models/document_type_models.py:59
 msgid "Documents types"
 msgstr "Dokumentu veidi"
 
-#: models/document_type_models.py:156
+#: models/document_type_models.py:163
 msgid "Quick label"
 msgstr "Ātra uzlīme"
 
-#: models/document_version_models.py:71
+#: models/document_version_models.py:73
 msgid "The server date and time when the document version was processed."
 msgstr "Servera datums un laiks, kad dokumenta versija tika apstrādāta."
 
-#: models/document_version_models.py:72
+#: models/document_version_models.py:74
 msgid "Timestamp"
 msgstr "Laika zīmogs"
 
-#: models/document_version_models.py:76
+#: models/document_version_models.py:78
 msgid "An optional short text describing the document version."
 msgstr "Izvēles īss teksts, kas apraksta dokumenta versiju."
 
-#: models/document_version_models.py:77
+#: models/document_version_models.py:79
 msgid "Comment"
 msgstr "Komentārs"
 
-#: models/document_version_models.py:83
+#: models/document_version_models.py:84
 msgid "File"
 msgstr "Fails"
 
-#: models/document_version_models.py:87
+#: models/document_version_models.py:88
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
 "describe the format of a file, in this case the file format of the document."
 " Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr "Dokumenta versijas fails ir mimetype. MIME veidi ir standarta veids, kā aprakstīt faila formātu, šajā gadījumā dokumenta faila formātu. Daži piemēri: \"text/plain\" vai \"image/jpeg\"."
 
-#: models/document_version_models.py:91 search.py:38 search.py:63
+#: models/document_version_models.py:92 search.py:36 search.py:61
 msgid "MIME type"
 msgstr "MIME tips"
 
-#: models/document_version_models.py:95
+#: models/document_version_models.py:96
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
 msgstr "Dokumenta versijas faila kodējums. binārā 7 bitu, binārā 8 bitu, teksta, bāzes64 utt."
 
-#: models/document_version_models.py:97
+#: models/document_version_models.py:98
 msgid "Encoding"
 msgstr "Kodēšana"
 
-#: models/misc_models.py:47
+#: models/misc_models.py:45
 msgid "Duplicated document"
 msgstr "Dublēts dokuments"
 
-#: models/misc_models.py:61 models/misc_models.py:90
+#: models/misc_models.py:59 models/misc_models.py:88
 msgid "User"
 msgstr "Lietotājs"
 
-#: models/misc_models.py:71
+#: models/misc_models.py:69
 msgid "Favorite document"
 msgstr "Iecienītākais dokuments"
 
-#: models/misc_models.py:72
+#: models/misc_models.py:70
 msgid "Favorite documents"
 msgstr "Iecienītākie dokumenti"
 
-#: models/misc_models.py:97
+#: models/misc_models.py:95
 msgid "Accessed"
 msgstr "Piekļuve"
 
-#: models/misc_models.py:104
+#: models/misc_models.py:102
 msgid "Recent document"
 msgstr "Pēdējais dokuments"
 
-#: models/misc_models.py:105
+#: models/misc_models.py:103
 msgid "Recent documents"
 msgstr "Jaunākie dokumenti"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Create documents"
 msgstr "Izveidojiet dokumentus"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Delete documents"
 msgstr "Dzēst dokumentus"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Trash documents"
 msgstr "Atkritumu dokumenti"
 
-#: permissions.py:19 views/document_views.py:205
+#: permissions.py:17 views/document_views.py:204
 msgid "Download documents"
 msgstr "Lejupielādējiet dokumentus"
 
-#: permissions.py:22
+#: permissions.py:20
 msgid "Edit documents"
 msgstr "Rediģēt dokumentus"
 
-#: permissions.py:25
+#: permissions.py:23
 msgid "Create new document versions"
 msgstr "Izveidojiet jaunas dokumentu versijas"
 
-#: permissions.py:28
+#: permissions.py:26
 msgid "Edit document properties"
 msgstr "Rediģējiet dokumenta rekvizītus"
 
-#: permissions.py:31
+#: permissions.py:29
 msgid "Print documents"
 msgstr "Drukājiet dokumentus"
 
-#: permissions.py:34
+#: permissions.py:32
 msgid "Restore trashed document"
 msgstr "Atjaunot drukāto dokumentu"
 
-#: permissions.py:37
+#: permissions.py:35
 msgid "Execute document modifying tools"
 msgstr "Izpildiet dokumentu modificēšanas rīkus"
 
-#: permissions.py:40
+#: permissions.py:38
 msgid "Revert documents to a previous version"
 msgstr "Atgrieziet dokumentus uz iepriekšējo versiju"
 
-#: permissions.py:44
+#: permissions.py:42
 msgid "View documents' versions list"
 msgstr "Skatīt dokumentu versiju sarakstu"
 
-#: permissions.py:48
+#: permissions.py:46
 msgid "View documents"
 msgstr "Skatīt dokumentus"
 
-#: permissions.py:59
+#: permissions.py:57
 msgid "Create document types"
 msgstr "Izveidot dokumentu veidus"
 
-#: permissions.py:62
+#: permissions.py:60
 msgid "Delete document types"
 msgstr "Dzēst dokumentu veidus"
 
-#: permissions.py:65
+#: permissions.py:63
 msgid "Edit document types"
 msgstr "Rediģēt dokumentu veidus"
 
-#: permissions.py:68
+#: permissions.py:66
 msgid "View document types"
 msgstr "Skatīt dokumentu veidus"
 
-#: queues.py:17
+#: queues.py:15
 msgid "Converter"
 msgstr "Pārveidotājs"
 
-#: queues.py:20
+#: queues.py:18
 msgid "Documents periodic"
 msgstr "Dokumenti periodiski"
 
-#: queues.py:23
+#: queues.py:22
 msgid "Uploads"
 msgstr "Augšupielādes"
 
-#: queues.py:31
+#: queues.py:30
 msgid "Generate document page image"
 msgstr "Izveidot dokumenta lapas attēlu"
 
-#: queues.py:36
+#: queues.py:35
 msgid "Delete a document"
 msgstr "Izdzēsiet dokumentu"
 
-#: queues.py:40
+#: queues.py:39
 msgid "Clean empty duplicate lists"
 msgstr "Notīriet tukšu dublikātu sarakstus"
 
-#: queues.py:45
+#: queues.py:44
 msgid "Check document type delete periods"
 msgstr "Pārbaudiet dokumentu tipa dzēšanas periodus"
 
-#: queues.py:53
+#: queues.py:52
 msgid "Check document type trash periods"
 msgstr "Pārbaudiet dokumentu veida miskasti"
 
-#: queues.py:59
+#: queues.py:58
 msgid "Delete document stubs"
 msgstr "Dzēsiet dokumenta gabalus"
 
-#: queues.py:71
+#: queues.py:70
 msgid "Update document page count"
 msgstr "Atjauniniet dokumenta lapas skaitu"
 
-#: queues.py:75
+#: queues.py:74
 msgid "Upload new document version"
 msgstr "Augšupielādējiet jaunu dokumenta versiju"
 
-#: queues.py:79
+#: queues.py:78
 msgid "Scan document duplicates"
 msgstr "Skenēt dokumentu dublikātus"
 
-#: settings.py:27
+#: settings.py:25
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
 msgstr ""
 
-#: settings.py:35
+#: settings.py:33
 msgid ""
 "Path to the Storage subclass to use when storing the cached document image "
 "files."
 msgstr "Ceļš uz glabāšanas apakšklasi, ko izmanto, saglabājot kešatmiņā saglabāto dokumentu attēlu failus."
 
-#: settings.py:43
+#: settings.py:41
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
 msgstr "Argumenti, kas jānodod DOCUMENT_CACHE_STORAGE_BACKEND."
 
-#: settings.py:49
+#: settings.py:47
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
 msgstr "Atspējo pirmo kešatmiņas pakāpi, kurā tiek glabātas augstas izšķirtspējas, pārveidotu dokumentu lapu versijas."
 
-#: settings.py:56
+#: settings.py:54
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
 msgstr "Atspējo otro kešatmiņas pakāpi, kurā tiek saglabātas vidēja līdz zema izšķirtspēja, pārveidotas (pagrieztas, tālinātas utt.) Dokumentu lapu versijas."
 
-#: settings.py:70
+#: settings.py:68
 msgid "Maximum number of favorite documents to remember per user."
 msgstr "Maksimālais iecienīto dokumentu skaits, kas jāatceras katram lietotājam."
 
-#: settings.py:76
+#: settings.py:74
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
 "corresponding rotation transformation to display it rightside up. This is an"
 " experimental feature and it is disabled by default."
 msgstr "Atklājiet katra dokumenta lapas orientāciju un izveidojiet atbilstošu rotācijas transformāciju, lai parādītu to tiesības uz augšu. Šī ir eksperimentāla funkcija un pēc noklusējuma tā ir atspējota."
 
-#: settings.py:85
+#: settings.py:83
 msgid ""
 "Size of blocks to use when calculating the document file's checksum. A value"
 " of 0 disables the block calculation and the entire file will be loaded into"
 " memory."
 msgstr "Datu faila kontrolsummas aprēķināšanai izmantojamo bloku lielums. Vērtība 0 atspējo bloku aprēķinu un viss fails tiks ielādēts atmiņā."
 
-#: settings.py:92
+#: settings.py:90
 msgid "Default documents language (in ISO639-3 format)."
 msgstr "Noklusējuma dokumentu valoda (ISO639-3 formātā)."
 
-#: settings.py:96
+#: settings.py:94
 msgid "List of supported document languages. In ISO639-3 format."
 msgstr "Atbalstīto dokumentu valodu saraksts. ISO639-3 formātā."
 
-#: settings.py:101
+#: settings.py:99
 msgid ""
 "Time in seconds that the browser should cache the supplied document images. "
 "The default of 31559626 seconds corresponde to 1 year."
 msgstr "Laiks sekundēs, kad pārlūkam ir jāsniedz piegādāto dokumentu attēlu kešatmiņa. Noklusējuma vērtība 31559626 sekundes atbilst 1 gadam."
 
-#: settings.py:120
+#: settings.py:118
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
 msgstr "Maksimālais skaits nesen piekļūto (izveidoto, rediģēto, skatīto) dokumentu, kas jāatceras katram lietotājam."
 
-#: settings.py:127
+#: settings.py:125
 msgid "Maximum number of recently created documents to show."
 msgstr "Maksimālais nesen izveidoto dokumentu skaits."
 
-#: settings.py:133
+#: settings.py:131
 msgid "Amount in degrees to rotate a document page per user interaction."
 msgstr "Summa grādos, lai pagrieztu dokumenta lapu katrai lietotāja mijiedarbībai."
 
-#: settings.py:139
+#: settings.py:137
 msgid "Path to the Storage subclass to use when storing document files."
 msgstr "Ceļš uz glabāšanas apakšklasi, ko var izmantot, glabājot dokumentu failus."
 
-#: settings.py:146
+#: settings.py:144
 msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
 msgstr "Argumenti, kas jānodod DOCUMENT_STORAGE_BACKEND."
 
-#: settings.py:152
+#: settings.py:150
 msgid ""
 "Time after which a document stub will be considered invalid and deleted."
 msgstr ""
 
-#: settings.py:158
+#: settings.py:156
 msgid "Height in pixels of the document thumbnail image."
 msgstr "Dokumenta sīktēla attēla pikseļu augstums."
 
-#: settings.py:169
+#: settings.py:167
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
 msgstr "Maksimālā summa procentos (%), lai ļautu lietotājam interaktīvi tuvināt dokumenta lapu."
 
-#: settings.py:176
+#: settings.py:174
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
 msgstr "Minimālā summa procentos (%), lai ļautu lietotājam interaktīvi attālināt dokumentu lapu."
 
-#: settings.py:183
+#: settings.py:181
 msgid "Amount in percent zoom in or out a document page per user interaction."
 msgstr "Summa, kas procentos palielināta vai samazināta dokumenta lappusē katrai lietotāja mijiedarbībai."
 
-#: statistics.py:17
+#: statistics.py:15
 msgid "January"
 msgstr "Janvāris"
 
-#: statistics.py:17
+#: statistics.py:15
 msgid "February"
 msgstr "Februārī"
 
-#: statistics.py:17
+#: statistics.py:15
 msgid "March"
 msgstr "Marts"
 
-#: statistics.py:17
+#: statistics.py:15
 msgid "April"
 msgstr "Aprīlis"
 
-#: statistics.py:17
+#: statistics.py:15
 msgid "May"
 msgstr "Maijs"
 
-#: statistics.py:18
+#: statistics.py:16
 msgid "June"
 msgstr "jūnijs"
 
-#: statistics.py:18
+#: statistics.py:16
 msgid "July"
 msgstr "Jūlijs"
 
-#: statistics.py:18
+#: statistics.py:16
 msgid "August"
 msgstr "augusts"
 
-#: statistics.py:18
+#: statistics.py:16
 msgid "September"
 msgstr "Septembris"
 
-#: statistics.py:18
+#: statistics.py:16
 msgid "October"
 msgstr "Oktobris"
 
-#: statistics.py:19
+#: statistics.py:17
 msgid "November"
 msgstr "Novembris"
 
-#: statistics.py:19
+#: statistics.py:17
 msgid "December"
 msgstr "Decembrī"
 
-#: statistics.py:240
+#: statistics.py:238
 msgid "New documents per month"
 msgstr "Jauni dokumenti mēnesī"
 
-#: statistics.py:247
+#: statistics.py:245
 msgid "New document versions per month"
 msgstr "Jaunas dokumentu versijas mēnesī"
 
-#: statistics.py:254
+#: statistics.py:252
 msgid "New document pages per month"
 msgstr "Jaunas dokumentu lapas mēnesī"
 
-#: statistics.py:261
+#: statistics.py:259
 msgid "Total documents at each month"
 msgstr "Kopējie dokumenti katru mēnesi"
 
-#: statistics.py:268
+#: statistics.py:266
 msgid "Total document versions at each month"
 msgstr "Kopējais dokumentu skaits katrā mēnesī"
 
-#: statistics.py:275
+#: statistics.py:273
 msgid "Total document pages at each month"
 msgstr "Kopā dokumentu lapas katru mēnesi"
+
+#: storages.py:17
+msgid ""
+"Unable to initialize the document image storage. Check the settings {} and "
+"{} for formatting errors."
+msgstr ""
+
+#: storages.py:23
+msgid "Document images"
+msgstr ""
+
+#: storages.py:31
+msgid ""
+"Unable to initialize the document version storage. Check the settings {} and"
+" {} for formatting errors."
+msgstr ""
+
+#: storages.py:37
+msgid "Document version files"
+msgstr ""
 
 #: templates/documents/document_print.html:12
 msgid "Document page image preview"
@@ -969,12 +988,12 @@ msgstr "Parādāmās lapas nav"
 msgid "Document image"
 msgstr ""
 
-#: utils.py:22
+#: utils.py:20
 #, python-format
 msgid "Unknown language \"%s\""
 msgstr "Nezināma valoda \"%s\""
 
-#: views/document_page_views.py:57
+#: views/document_page_views.py:55
 msgid ""
 "This could mean that the document is of a format that is not supported, that"
 " it is corrupted or that the upload process was interrupted. Use the "
@@ -982,48 +1001,48 @@ msgid ""
 "again."
 msgstr "Tas varētu nozīmēt, ka dokuments ir tādā formātā, kas netiek atbalstīts, vai tas ir bojāts vai augšupielādes process tika pārtraukts. Izmantojiet dokumenta lapas pārrēķināšanas darbību, lai mēģinātu atkārtoti apskatīt lapu skaitu."
 
-#: views/document_page_views.py:62
+#: views/document_page_views.py:60
 msgid "No document pages available"
 msgstr "Dokumentu lapas nav pieejamas"
 
-#: views/document_page_views.py:64
+#: views/document_page_views.py:62
 #, python-format
 msgid "Pages for document: %s"
 msgstr "Dokumenta lapas: %s"
 
-#: views/document_page_views.py:142
+#: views/document_page_views.py:140
 msgid "There are no more pages in this document"
 msgstr "Šajā dokumentā vairs nav lapu"
 
-#: views/document_page_views.py:160
+#: views/document_page_views.py:158
 msgid "You are already at the first page of this document"
 msgstr "Jūs jau atrodaties šī dokumenta pirmajā lapā"
 
-#: views/document_page_views.py:180
+#: views/document_page_views.py:178
 #, python-format
 msgid "Image of: %s"
 msgstr "Attēls no: %s"
 
-#: views/document_page_views.py:280
+#: views/document_page_views.py:279
 msgid "Disable the selected document page?"
 msgid_plural "Disable the selected document pages?"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views/document_page_views.py:310
+#: views/document_page_views.py:309
 msgid "Enable the selected document page?"
 msgid_plural "Enable the selected document pages?"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views/document_type_views.py:52
+#: views/document_type_views.py:50
 #, python-format
 msgid "Documents of type: %s"
 msgstr "Dokumenta dokumenti: %s"
 
-#: views/document_type_views.py:71
+#: views/document_type_views.py:69
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
 "system will depend on them. Define a document type for each type of physical"
@@ -1031,15 +1050,15 @@ msgid ""
 "manual, prescription, balance sheet."
 msgstr "Dokumentu veidi ir visvienkāršākās konfigurācijas vienības. Viss sistēmā būs atkarīgs no tiem. Definējiet dokumenta veidu katram fiziskā dokumenta tipam, kuru plānojat augšupielādēt. Dokumentu tipu piemērs: rēķins, kvīts, rokasgrāmata, recepte, bilance."
 
-#: views/document_type_views.py:77
+#: views/document_type_views.py:75
 msgid "No document types available"
 msgstr "Dokumentu veidi nav pieejami"
 
-#: views/document_type_views.py:106
+#: views/document_type_views.py:105
 msgid "All documents of this type will be deleted too."
 msgstr "Visi šī tipa dokumenti tiks dzēsti arī."
 
-#: views/document_type_views.py:108
+#: views/document_type_views.py:107
 #, python-format
 msgid "Delete the document type: %s?"
 msgstr "Vai izdzēst dokumenta veidu: %s?"
@@ -1049,306 +1068,306 @@ msgstr "Vai izdzēst dokumenta veidu: %s?"
 msgid "Deletion policies for document type: %s"
 msgstr "Dokumentu veida dzēšanas politika: %s"
 
-#: views/document_type_views.py:144
+#: views/document_type_views.py:145
 #, python-format
 msgid "Edit document type: %s"
 msgstr "Rediģēt dokumenta veidu: %s"
 
-#: views/document_type_views.py:167
+#: views/document_type_views.py:165
 #, python-format
 msgid "Create quick label for document type: %s"
 msgstr "Izveidojiet ātru uzlīmi dokumenta tipam: %s"
 
-#: views/document_type_views.py:186
+#: views/document_type_views.py:184
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
 msgstr "Izdzēsiet ātrās iezīmes: %(label)s, no dokumenta tipa \"%(document_type)s\"?"
 
-#: views/document_type_views.py:215
+#: views/document_type_views.py:212
 #, python-format
 msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr "Ātra uzlīmes \"%(filename)s\" rediģēšana no dokumenta tipa \"%(document_type)s\""
 
-#: views/document_type_views.py:253
+#: views/document_type_views.py:248
 msgid ""
 "Quick labels are predetermined filenames that allow the quick renaming of "
 "documents as they are uploaded by selecting them from a list. Quick labels "
 "can also be used after the documents have been uploaded."
 msgstr "Ātrās uzlīmes ir iepriekš noteikti failu nosaukumi, kas ļauj ātri pārdēvēt dokumentus, tos augšupielādējot, atlasot tos no saraksta. Ātrās uzlīmes var izmantot arī pēc tam, kad dokumenti ir augšupielādēti."
 
-#: views/document_type_views.py:259
+#: views/document_type_views.py:254
 msgid "There are no quick labels for this document type"
 msgstr "Šim dokumenta tipam nav ātrās uzlīmes"
 
-#: views/document_type_views.py:262
+#: views/document_type_views.py:257
 #, python-format
 msgid "Quick labels for document type: %s"
 msgstr "Ātrās uzlīmes dokumenta tipam: %s"
 
-#: views/document_version_views.py:45
+#: views/document_version_views.py:43
 msgid "Download document version"
 msgstr "Lejupielādējiet dokumenta versiju"
 
-#: views/document_version_views.py:83
+#: views/document_version_views.py:81
 #, python-format
 msgid "Versions of document: %s"
 msgstr "Dokumenta versijas: %s"
 
-#: views/document_version_views.py:98
+#: views/document_version_views.py:96
 msgid "All later version after this one will be deleted too."
 msgstr "Vēlākā versija pēc šīs versijas tiks izdzēsta arī."
 
-#: views/document_version_views.py:101
+#: views/document_version_views.py:99
 msgid "Revert to this version?"
 msgstr "Vai atgriezties pie šīs versijas?"
 
-#: views/document_version_views.py:112
+#: views/document_version_views.py:110
 msgid "Document version reverted successfully"
 msgstr "Dokumenta versija ir veiksmīgi atjaunota"
 
-#: views/document_version_views.py:117
+#: views/document_version_views.py:115
 #, python-format
 msgid "Error reverting document version; %s"
 msgstr "Atgriežot dokumenta versiju, radās kļūda; %s"
 
-#: views/document_version_views.py:144
+#: views/document_version_views.py:143
 #, python-format
 msgid "Preview of document version: %s"
 msgstr "Dokumenta versijas priekšskatījums: %s"
 
-#: views/document_views.py:71
+#: views/document_views.py:69
 #, python-format
 msgid "Error retrieving document list: %(exception)s."
 msgstr "Ielādējot dokumentu sarakstu, radās kļūda: %(exception)s."
 
-#: views/document_views.py:92
+#: views/document_views.py:90
 msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
 "document type."
 msgstr "Tas varētu nozīmēt, ka neviens dokuments nav augšupielādēts vai ka jūsu lietotāja kontam nav piešķirta neviena dokumenta vai dokumenta veida skatījuma atļauja."
 
-#: views/document_views.py:96
+#: views/document_views.py:94
 msgid "No documents available"
 msgstr "Nav pieejami dokumenti"
 
-#: views/document_views.py:109
+#: views/document_views.py:108
 #, python-format
 msgid "Document type change request performed on %(count)d document"
 msgstr "Dokumenta tipa maiņas pieprasījums, kas veikts dokumentā %(count)d"
 
-#: views/document_views.py:112
+#: views/document_views.py:111
 #, python-format
 msgid "Document type change request performed on %(count)d documents"
 msgstr "Dokumenta tipa maiņas pieprasījums, kas veikts dokumentos %(count)d"
 
-#: views/document_views.py:119
+#: views/document_views.py:118
 msgid "Change"
 msgstr "Mainīt"
 
-#: views/document_views.py:121
+#: views/document_views.py:120
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
 msgstr[0] "Mainiet atlasīto dokumentu veidu"
 msgstr[1] "Mainiet izvēlētā dokumenta veidu"
 msgstr[2] "Mainiet atlasīto dokumentu veidu"
 
-#: views/document_views.py:132
+#: views/document_views.py:131
 #, python-format
 msgid "Change the type of the document: %s"
 msgstr "Mainiet dokumenta veidu: %s"
 
-#: views/document_views.py:153
+#: views/document_views.py:152
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
 msgstr "Dokumenta tips \"%s\" veiksmīgi mainīts."
 
-#: views/document_views.py:203
+#: views/document_views.py:202
 msgid "Download"
 msgstr "Lejupielādēt"
 
-#: views/document_views.py:295
-#, python-format
-msgid "Edit properties of document: %s"
-msgstr "Dokumenta rekvizītu rediģēšana: %s"
-
-#: views/document_views.py:331
+#: views/document_views.py:301
 #, python-format
 msgid "Preview of document: %s"
 msgstr "Dokumenta priekšskatījums: %s"
 
-#: views/document_views.py:349
+#: views/document_views.py:321
+#, python-format
+msgid "Edit properties of document: %s"
+msgstr "Dokumenta rekvizītu rediģēšana: %s"
+
+#: views/document_views.py:352
 #, python-format
 msgid "Properties for document: %s"
 msgstr "Dokumenta rekvizīti: %s"
 
-#: views/document_views.py:357
+#: views/document_views.py:361
 #, python-format
 msgid "%(count)d document queued for page count recalculation"
 msgstr "%(count)d dokuments, kas ir rindā, lai pārrēķinātu lapas"
 
-#: views/document_views.py:360
+#: views/document_views.py:364
 #, python-format
 msgid "%(count)d documents queued for page count recalculation"
 msgstr "%(count)d dokumenti, kas ir rindā, lai pārrēķinātu lapas"
 
-#: views/document_views.py:368
+#: views/document_views.py:372
 msgid "Recalculate the page count of the selected document?"
 msgid_plural "Recalculate the page count of the selected documents?"
 msgstr[0] "Vai pārrēķināt atlasīto dokumentu lapu skaitu?"
 msgstr[1] "Vai pārrēķināt izvēlētā dokumenta lapu skaitu?"
 msgstr[2] "Vai pārrēķināt atlasīto dokumentu lapu skaitu?"
 
-#: views/document_views.py:379
+#: views/document_views.py:383
 #, python-format
 msgid "Recalculate the page count of the document: %s?"
 msgstr "Pārrēķināt dokumenta lapu skaitu: %s?"
 
-#: views/document_views.py:395
+#: views/document_views.py:399
 #, python-format
 msgid ""
 "Document \"%(document)s\" is empty. Upload at least one document version "
 "before attempting to detect the page count."
 msgstr "Dokuments \"%(document)s\" ir tukšs. Pirms mēģināt atklāt lapas skaitu, augšupielādējiet vismaz vienu dokumentu versiju."
 
-#: views/document_views.py:408
+#: views/document_views.py:413
 #, python-format
 msgid "Transformation clear request processed for %(count)d document"
 msgstr "Transformācijas skaidrs pieprasījums, kas apstrādāts dokumentā %(count)d"
 
-#: views/document_views.py:411
+#: views/document_views.py:416
 #, python-format
 msgid "Transformation clear request processed for %(count)d documents"
 msgstr "Transformācijas skaidrais pieprasījums, kas apstrādāts dokumentiem %(count)d"
 
-#: views/document_views.py:419
+#: views/document_views.py:424
 msgid "Clear all the page transformations for the selected document?"
 msgid_plural "Clear all the page transformations for the selected document?"
 msgstr[0] "Vai izdzēst visas atlasītās dokumenta lapas transformācijas?"
 msgstr[1] "Vai izdzēst visas atlasītās dokumenta lapas transformācijas?"
 msgstr[2] "Vai izdzēst visas atlasītās dokumenta lapas transformācijas?"
 
-#: views/document_views.py:430
+#: views/document_views.py:435
 #, python-format
 msgid "Clear all the page transformations for the document: %s?"
 msgstr "Notīriet visas dokumenta lapas transformācijas: %s?"
 
-#: views/document_views.py:445
+#: views/document_views.py:450
 #, python-format
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
 msgstr "Kļūda, izdzēšot lapas pārveidojumus dokumentam: %(document)s; %(error)s."
 
-#: views/document_views.py:477
+#: views/document_views.py:482
 #, python-format
 msgid ""
 "Error cloning the page transformations for document: %(document)s; "
 "%(error)s."
 msgstr ""
 
-#: views/document_views.py:485
+#: views/document_views.py:490
 msgid "Transformations cloned successfully."
 msgstr "Transformācijas veiksmīgi klonēja."
 
-#: views/document_views.py:501 views/document_views.py:574
+#: views/document_views.py:506 views/document_views.py:583
 msgid "Submit"
 msgstr "Iesniegt"
 
-#: views/document_views.py:503
+#: views/document_views.py:508
 #, python-format
 msgid "Clone page transformations for document: %s"
 msgstr "Klonēšanas lapu pārveidojumi dokumentam: %s"
 
-#: views/document_views.py:577
+#: views/document_views.py:586
 #, python-format
 msgid "Print: %s"
 msgstr "Drukāt: %s"
 
-#: views/document_views.py:602
+#: views/document_views.py:613
 msgid ""
 "This view will list the latest documents viewed or manipulated in any way by"
 " this user account."
 msgstr "Šajā skatā tiks uzskaitīti jaunākie dokumenti, kurus šī lietotāja konts jebkādā veidā skatījis vai manipulē."
 
-#: views/document_views.py:606
+#: views/document_views.py:617
 msgid "There are no recently accessed document"
 msgstr "Pēdējā laikā nav pieejams dokuments"
 
-#: views/document_views.py:628
+#: views/document_views.py:639
 msgid "This view will list the latest documents uploaded in the system."
 msgstr "Šajā skatā tiks uzskaitīti jaunākie sistēmā augšupielādētie dokumenti."
 
-#: views/document_views.py:632
+#: views/document_views.py:643
 msgid "There are no recently added document"
 msgstr "Nav nesen pievienota dokumenta"
 
-#: views/duplicated_document_views.py:36
+#: views/duplicated_document_views.py:34
 msgid "Only exact copies of this document will be shown in the this list."
 msgstr "Šajā sarakstā būs redzamas tikai precīzas šī dokumenta kopijas."
 
-#: views/duplicated_document_views.py:40
+#: views/duplicated_document_views.py:38
 msgid "There are no duplicates for this document"
 msgstr "Šim dokumentam nav dublikātu"
 
-#: views/duplicated_document_views.py:44
+#: views/duplicated_document_views.py:42
 #, python-format
 msgid "Duplicates for document: %s"
 msgstr "Dokumenta dublikāti: %s"
 
-#: views/duplicated_document_views.py:69
+#: views/duplicated_document_views.py:67
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or"
 " were saved using a different file format will not appear as duplicates."
 msgstr "Dublikāti ir dokumenti, kas sastāv no tā paša faila līdz pēdējam baitam. Faili, kuriem ir tāds pats teksts vai OCR, bet nav identiski vai tika saglabāti, izmantojot citu failu formātu, netiks parādīti kā dublikāti."
 
-#: views/duplicated_document_views.py:76
+#: views/duplicated_document_views.py:74
 msgid "There are no duplicated documents"
 msgstr "Nav dublētu dokumentu"
 
-#: views/duplicated_document_views.py:86
+#: views/duplicated_document_views.py:84
 msgid "Scan for duplicated documents?"
 msgstr "Meklējiet dublētus dokumentus?"
 
-#: views/duplicated_document_views.py:93
+#: views/duplicated_document_views.py:91
 msgid "Duplicated document scan queued successfully."
 msgstr "Dublētais dokumenta skenēšana veiksmīgi tika rindā."
 
-#: views/favorite_document_views.py:33
+#: views/favorite_document_views.py:31
 #, python-format
 msgid ""
 "Favorited documents will be listed in this view. Up to %(count)d documents "
 "can be favorited per user. "
 msgstr "Šajā skatā tiks iekļauti iecienītie dokumenti. Katram lietotājam var būt iecienīts līdz %(count)d dokumentiem."
 
-#: views/favorite_document_views.py:36
+#: views/favorite_document_views.py:34
 msgid "There are no favorited documents."
 msgstr "Nav iecienītu dokumentu."
 
-#: views/favorite_document_views.py:47
+#: views/favorite_document_views.py:46
 #, python-format
 msgid "%(count)d document added to favorites."
 msgstr "%(count)d dokuments pievienots favorītiem."
 
-#: views/favorite_document_views.py:50
+#: views/favorite_document_views.py:49
 #, python-format
 msgid "%(count)d documents added to favorites."
 msgstr "%(count)d dokumenti pievienoti favorītiem."
 
-#: views/favorite_document_views.py:57
+#: views/favorite_document_views.py:56
 msgid "Add"
 msgstr "Pievienot"
 
-#: views/favorite_document_views.py:60
+#: views/favorite_document_views.py:59
 msgid "Add the selected document to favorites"
 msgid_plural "Add the selected documents to favorites"
 msgstr[0] "Pievienojiet atlasītos dokumentus favorītiem"
 msgstr[1] "Pievienojiet izvēlēto dokumentu favorītiem"
 msgstr[2] "Pievienojiet atlasītos dokumentus favorītiem"
 
-#: views/favorite_document_views.py:73
+#: views/favorite_document_views.py:72
 #, python-format
 msgid "Document \"%(instance)s\" is not in favorites."
 msgstr "Dokuments \"%(instance)s\" nav izlasē."
@@ -1374,77 +1393,81 @@ msgstr[0] "Noņemiet atlasītos dokumentus no izlases"
 msgstr[1] "Noņemiet izvēlēto dokumentu no izlases"
 msgstr[2] "Noņemiet atlasītos dokumentus no izlases"
 
-#: views/trashed_document_views.py:39
+#: views/trashed_document_views.py:37
 #, python-format
 msgid "%(count)d document moved to the trash."
 msgstr "%(count)d dokuments pārvietots uz miskasti."
 
-#: views/trashed_document_views.py:42
+#: views/trashed_document_views.py:40
 #, python-format
 msgid "%(count)d documents moved to the trash."
 msgstr "%(count)d dokumenti pārvietoti uz miskasti."
 
-#: views/trashed_document_views.py:50
+#: views/trashed_document_views.py:48
 msgid "Move the selected document to the trash?"
 msgid_plural "Move the selected documents to the trash?"
 msgstr[0] "Pārvietojiet atlasītos dokumentus uz miskasti?"
 msgstr[1] "Vai pārvietot atlasīto dokumentu uz miskasti?"
 msgstr[2] "Pārvietojiet atlasītos dokumentus uz miskasti?"
 
-#: views/trashed_document_views.py:64
+#: views/trashed_document_views.py:62
 msgid "Empty trash?"
 msgstr "Vai iztukšot miskasti?"
 
-#: views/trashed_document_views.py:78
+#: views/trashed_document_views.py:76
 msgid "Trash emptied successfully"
 msgstr "Miskaste iztukšota veiksmīgi"
 
-#: views/trashed_document_views.py:87
+#: views/trashed_document_views.py:85
 #, python-format
 msgid "%(count)d trashed document deleted."
 msgstr "%(count)d izdzēsts dokuments."
 
-#: views/trashed_document_views.py:90
+#: views/trashed_document_views.py:88
 #, python-format
 msgid "%(count)d trashed documents deleted."
 msgstr "%(count)d izdzēstie dokumenti izdzēsti."
 
-#: views/trashed_document_views.py:98
+#: views/trashed_document_views.py:96
 msgid "Delete the selected trashed document?"
 msgid_plural "Delete the selected trashed documents?"
 msgstr[0] "Vai izdzēst atlasītos atkritumus?"
 msgstr[1] "Vai izdzēst izvēlēto izgāztos dokumentus?"
 msgstr[2] "Vai izdzēst atlasītos atkritumus?"
 
-#: views/trashed_document_views.py:129
+#: views/trashed_document_views.py:127
 msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
 msgstr "Lai izvairītos no datu zuduma, dokumenti netiek nekavējoties dzēsti. Pirmkārt, tie tiek ievietoti miskastē. No šejienes tos pēc tam var beidzot dzēst vai atjaunot."
 
-#: views/trashed_document_views.py:134
+#: views/trashed_document_views.py:132
 msgid "There are no documents in the trash can"
 msgstr "Atkritumu kastē nav dokumentu"
 
-#: views/trashed_document_views.py:147
+#: views/trashed_document_views.py:145
 #, python-format
 msgid "%(count)d trashed document restored."
 msgstr "%(count)d atjaunotais atkritnes dokuments."
 
-#: views/trashed_document_views.py:150
+#: views/trashed_document_views.py:148
 #, python-format
 msgid "%(count)d trashed documents restored."
 msgstr "atjaunoti %(count)d izgāztie dokumenti."
 
-#: views/trashed_document_views.py:158
+#: views/trashed_document_views.py:156
 msgid "Restore the selected trashed document?"
 msgid_plural "Restore the selected trashed documents?"
 msgstr[0] "Vai atjaunot atlasītos atkritumus?"
 msgstr[1] "Vai atjaunot atlasīto miskasti dokumentu?"
 msgstr[2] "Vai atjaunot atlasītos atkritumus?"
 
-#: widgets.py:81 widgets.py:85
+#: widgets.py:79 widgets.py:83
 #, python-format
 msgid "Pages: %d"
 msgstr "Lapas: %d"
+
+#: workflow_actions.py:7
+msgid "Send document to trash"
+msgstr ""

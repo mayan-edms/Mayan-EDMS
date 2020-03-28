@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:30-0400\n"
+"POT-Creation-Date: 2020-03-28 05:07-0400\n"
 "PO-Revision-Date: 2019-10-17 12:13+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -18,79 +18,79 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:35 links.py:36 permissions.py:7
+#: apps.py:33 links.py:34 permissions.py:5
 msgid "Message of the day"
 msgstr "Zpráva dne"
 
-#: apps.py:57 apps.py:61
+#: apps.py:55 apps.py:59
 msgid "None"
 msgstr "žádný"
 
-#: links.py:16 views.py:32
+#: links.py:14 views.py:30
 msgid "Create message"
 msgstr "Vytvořit zprávu"
 
-#: links.py:22
+#: links.py:20
 msgid "Delete"
 msgstr "Odstranit"
 
-#: links.py:27
+#: links.py:25
 msgid "Edit"
 msgstr "Editovat"
 
-#: models.py:17
+#: models.py:15
 msgid "Short description of this message."
 msgstr "Stručný popis této zprávy."
 
-#: models.py:18
+#: models.py:16
 msgid "Label"
 msgstr "Označení"
 
-#: models.py:21
+#: models.py:19
 msgid "The actual message to be displayed."
 msgstr "Skutečná zpráva, která se má zobrazit."
 
-#: models.py:22 models.py:39
+#: models.py:20 models.py:37
 msgid "Message"
 msgstr "Zpráva"
 
-#: models.py:24
+#: models.py:22
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: models.py:27
+#: models.py:25
 msgid "Date and time after which this message will be displayed."
 msgstr "Datum a čas, po kterém se tato zpráva zobrazí."
 
-#: models.py:28
+#: models.py:26
 msgid "Start date time"
 msgstr "Počáteční datum"
 
-#: models.py:32
+#: models.py:30
 msgid "Date and time until when this message is to be displayed."
 msgstr "Datum a čas, do kdy se má tato zpráva zobrazit."
 
-#: models.py:33
+#: models.py:31
 msgid "End date time"
 msgstr "Datum ukončení"
 
-#: models.py:40 views.py:80
+#: models.py:38 views.py:78
 msgid "Messages"
 msgstr "Zprávy"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Create messages"
 msgstr "Vytvořit zprávy"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Delete messages"
 msgstr "Mazat zprávy"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Edit messages"
 msgstr "Upravovat zprávy"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "View messages"
 msgstr "Zobrazit zprávy"
 
@@ -98,23 +98,23 @@ msgstr "Zobrazit zprávy"
 msgid "Messages of the day"
 msgstr "Zprávy dne"
 
-#: views.py:45
+#: views.py:43
 #, python-format
 msgid "Delete the message: %s?"
 msgstr "Odstranit zprávu: %s?"
 
-#: views.py:58
+#: views.py:56
 #, python-format
 msgid "Edit message: %s"
 msgstr "Upravit zprávu: %s"
 
-#: views.py:75
+#: views.py:73
 msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
 msgstr "Zprávy se zobrazují v přihlašovacím zobrazení. Pomocí zpráv můžete zdělit informace o své organizaci, oznámeních nebo pokynech pro použití pro vaše uživatele."
 
-#: views.py:79
+#: views.py:77
 msgid "No messages available"
 msgstr "Nejsou k dispozici žádné zprávy"

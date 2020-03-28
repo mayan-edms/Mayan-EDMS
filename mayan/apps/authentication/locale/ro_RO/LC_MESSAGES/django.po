@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:25-0400\n"
-"PO-Revision-Date: 2020-02-29 06:02+0000\n"
+"POT-Creation-Date: 2020-03-28 05:05-0400\n"
+"PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -18,9 +18,17 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:25 settings.py:9
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
 msgid "Authentication"
 msgstr "Autentificare"
+
+#: events.py:10
+msgid "User impersonation ended"
+msgstr ""
+
+#: events.py:13
+msgid "User impersonation started"
+msgstr ""
 
 #: forms.py:17
 msgid "Email"
@@ -30,7 +38,7 @@ msgstr "email"
 msgid "Password"
 msgstr "Parola"
 
-#: forms.py:22 forms.py:73
+#: forms.py:22 forms.py:89
 msgid "Remember me"
 msgstr "Amintește-ți de mine"
 
@@ -44,6 +52,22 @@ msgstr "Introduceți un e-mail și o parolă corecte. Rețineți!  Câmpul parol
 msgid "This account is inactive."
 msgstr "Acest cont este inactiv."
 
+#: forms.py:78
+msgid "User"
+msgstr "Utilizator"
+
+#: forms.py:78
+msgid "User to be impersonated."
+msgstr ""
+
+#: forms.py:82
+msgid "Permanent"
+msgstr ""
+
+#: forms.py:83
+msgid "If selected, disables ending impersonation."
+msgstr ""
+
 #: links.py:22
 msgid "Logout"
 msgstr "Deconectare"
@@ -52,23 +76,31 @@ msgstr "Deconectare"
 msgid "Change password"
 msgstr "Schimbați parola"
 
-#: links.py:32 links.py:39
+#: links.py:32 views.py:68
+msgid "Impersonate user"
+msgstr ""
+
+#: links.py:37 links.py:44
 msgid "Set password"
 msgstr "Seteaza parola"
 
-#: settings.py:13
+#: permissions.py:10
+msgid "Impersonate users"
+msgstr ""
+
+#: settings.py:11
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr "Controlează mecanismul utilizat pentru utilizatorul autentificat. Opțiunile sunt: numele de utilizator, e-mailul"
 
-#: settings.py:20
+#: settings.py:18
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
 msgstr "Timpul maxim pe care un utilizator îl dă clic pe caseta de selectare \"Reține-mă\" va rămâne logat. Valoarea este timpul în secunde."
 
-#: settings.py:27
+#: settings.py:25
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
@@ -78,12 +110,12 @@ msgstr "Eliminați link-ul „Ați uitat parola?” de pe formularul de conectar
 msgid "Login"
 msgstr "Conectare"
 
-#: templates/authentication/login.html:26
-#: templates/authentication/login.html:34
+#: templates/authentication/login.html:23
+#: templates/authentication/login.html:32
 msgid "Sign in"
 msgstr "Înscriere"
 
-#: templates/authentication/login.html:41
+#: templates/authentication/login.html:39
 msgid "Forgot your password?"
 msgstr "Ați uitat parola?"
 
@@ -105,7 +137,7 @@ msgid "Login page"
 msgstr "Pagina de conectare"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:167
+#: templates/authentication/password_reset_form.html:29 views.py:211
 msgid "Submit"
 msgstr "Trimiteţi"
 
@@ -113,52 +145,52 @@ msgstr "Trimiteţi"
 msgid "Password reset email sent!"
 msgstr "Email-ul de reinițializare a parolei a fost trimis!"
 
-#: views.py:77
+#: views.py:121
 msgid "Your password has been successfully changed."
 msgstr "Parola dvs. a fost schimbată cu succes"
 
-#: views.py:84
+#: views.py:128
 msgid "Current user password change"
 msgstr "Schimbare parolă pentru utilizatorul curent"
 
-#: views.py:92
+#: views.py:136
 msgid "Changing the password is not allowed for this account."
 msgstr "Schimbarea parolei nu este permisă pentru acest cont."
 
-#: views.py:158
+#: views.py:202
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Solicitarea de schimbare a parolei efectuată pe %(count)dutilizator "
 
-#: views.py:160
+#: views.py:204
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Solicitarea de modificare a parolei efectuată pe %(count)dutilizatori "
 
-#: views.py:169
+#: views.py:213
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] "Schimbați parola de utilizator"
 msgstr[1] "Schimbați parolele utilizatorilor"
 msgstr[2] "Schimbați parolele utilizatorilor"
 
-#: views.py:179
+#: views.py:223
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Schimbați parola pentru utilizatorul: %s"
 
-#: views.py:199
+#: views.py:243
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "Super utilizator și parola de utilizator personalul resetarea nu este permisă, utilizați interfata de administrare pentru aceste cazuri."
 
-#: views.py:209
+#: views.py:253
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Resetarea reușită a parolei pentru utilizatorul: %s."
 
-#: views.py:215
+#: views.py:259
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Eroare resetarea parola pentru utilizatorul %(user)s\": %(error)s"

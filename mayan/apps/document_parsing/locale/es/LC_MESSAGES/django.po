@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:27-0400\n"
+"POT-Creation-Date: 2020-03-28 05:06-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -20,164 +20,164 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:56 events.py:8 permissions.py:8 settings.py:7
+#: apps.py:54 events.py:6 permissions.py:6 settings.py:5
 msgid "Document parsing"
 msgstr "Análisis de documentos"
 
-#: apps.py:108
+#: apps.py:106
 msgid "A generator returning the document's pages parsed content."
 msgstr ""
 "Un generador que devuelve el contenido analizado de las páginas del "
 "documento."
 
-#: apps.py:109 apps.py:142 apps.py:146 links.py:21 links.py:38 models.py:27
+#: apps.py:107 apps.py:140 apps.py:144 links.py:19 links.py:36 models.py:25
 msgid "Content"
 msgstr "Contenido"
 
-#: apps.py:137 models.py:78
+#: apps.py:135 models.py:76
 msgid "Result"
 msgstr "Resultado"
 
-#: dependencies.py:11
+#: dependencies.py:9
 msgid ""
 "Utility from the poppler-utils package used to text content from PDF files."
 msgstr ""
 "Utilidad del paquete poppler-utils que se utiliza para enviar texto desde "
 "archivos PDF."
 
-#: events.py:12
+#: events.py:10
 msgid "Document parsed content deleted"
 msgstr "Contenido analizado del documento eliminado"
 
-#: events.py:16
+#: events.py:14
 msgid "Document version submitted for parsing"
 msgstr "Versión de documento enviada para análisis"
 
-#: events.py:19
+#: events.py:17
 msgid "Document version parsing finished"
 msgstr "Se terminó el análisis de la versión del documento"
 
-#: forms.py:39
+#: forms.py:37
 #, python-format
 msgid "Page %(page_number)d"
 msgstr "Página %(page_number)d"
 
-#: forms.py:47 forms.py:59
+#: forms.py:45 forms.py:57
 msgid "Contents"
 msgstr "Contenido"
 
-#: links.py:27 links.py:32
+#: links.py:25 links.py:30
 msgid "Delete parsed content"
 msgstr "Eliminar contenido analizado"
 
-#: links.py:44 links.py:82 views.py:222
+#: links.py:42 links.py:80 views.py:220
 msgid "Parsing errors"
 msgstr "Errores de análisis"
 
-#: links.py:50
+#: links.py:48
 msgid "Download content"
 msgstr "Descargar contenido"
 
-#: links.py:55 links.py:62
+#: links.py:53 links.py:60
 msgid "Submit for parsing"
 msgstr "Enviar para analizar"
 
-#: links.py:68
+#: links.py:66
 msgid "Setup parsing"
 msgstr "Configurar extracción de texto"
 
-#: links.py:77
+#: links.py:75
 msgid "Parse documents per type"
 msgstr "Analizar documentos por tipo"
 
-#: models.py:21
+#: models.py:19
 msgid "Document page"
 msgstr "Página del documento"
 
-#: models.py:25
+#: models.py:23
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
 "El contenido de texto real extraído por el documento que analiza el "
 "servidor."
 
-#: models.py:33
+#: models.py:31
 msgid "Document page content"
 msgstr "Contenido de página de documento"
 
-#: models.py:34
+#: models.py:32
 msgid "Document pages contents"
 msgstr "Contenido de página de documento"
 
-#: models.py:46
+#: models.py:44
 msgid "Document type"
 msgstr "Tipo de documento"
 
-#: models.py:50
+#: models.py:48
 msgid "Automatically queue newly created documents for parsing."
 msgstr ""
 "Someter automática de documentos recién creados para extracción de texto."
 
-#: models.py:61
+#: models.py:59
 msgid "Document type settings"
 msgstr "Configuración del tipo de documento"
 
-#: models.py:62
+#: models.py:60
 msgid "Document types settings"
 msgstr "Configuraciones de tipos de documento"
 
-#: models.py:73
+#: models.py:71
 msgid "Document version"
 msgstr "Versión del documento"
 
-#: models.py:76
+#: models.py:74
 msgid "Date time submitted"
 msgstr "Fecha y hora sometido"
 
-#: models.py:82
+#: models.py:80
 msgid "Document version parse error"
 msgstr "Error de análisis de la versión del documento"
 
-#: models.py:83
+#: models.py:81
 msgid "Document version parse errors"
 msgstr "Errores de análisis de la versión del documento"
 
-#: parsers.py:91
+#: parsers.py:90
 #, python-format
 msgid "Exception parsing page; %s"
 msgstr "Error interpretando página: %s "
 
-#: parsers.py:117
+#: parsers.py:116
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
 msgstr "Si no encontró el ejecutable pdftotext en: %s"
 
-#: permissions.py:12
+#: permissions.py:10
 msgid "View the content of a document"
 msgstr "Ver el contenido de un documento"
 
-#: permissions.py:15
+#: permissions.py:13
 msgid "Change document type parsing settings"
 msgstr "Cambiar la configuración de extracción de texto del tipo de documento"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "Parse the content of a document"
 msgstr "Analizar el contenido de un documento"
 
-#: queues.py:8
+#: queues.py:6
 msgid "Parsing"
 msgstr "Análisis"
 
-#: queues.py:11
+#: queues.py:9
 msgid "Document version parsing"
 msgstr "Análisis de la versión del documento"
 
-#: settings.py:12
+#: settings.py:10
 msgid "Set new document types to perform parsing automatically by default."
 msgstr ""
 "Establezca nuevos tipos de documentos para realizar la extracción de texto "
 "de forma automática de forma predeterminada."
 
-#: settings.py:19
+#: settings.py:17
 msgid ""
 "File path to poppler's pdftotext program used to extract text from PDF "
 "files."
@@ -185,59 +185,59 @@ msgstr ""
 "Ruta de acceso al programa de poppler llamado pdftotext utilizado para "
 "extraer texto de archivos PDF."
 
-#: views.py:36
+#: views.py:34
 msgid "Delete the parsed content of the selected document?"
 msgid_plural "Delete the parsed content of the selected documents?"
 msgstr[0] "¿Eliminar el contenido analizado del documento seleccionado?"
 msgstr[1] "¿Eliminar el contenido analizado de los documentos seleccionados?"
 
-#: views.py:70
+#: views.py:68
 #, python-format
 msgid "Content for document: %s"
 msgstr "Contenido del documento: %s"
 
-#: views.py:103
+#: views.py:101
 #, python-format
 msgid "Content for document page: %s"
 msgstr "Contenido de la página del documento: %s"
 
-#: views.py:118
+#: views.py:116
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "Errores de análisis del documento: %s"
 
-#: views.py:130
+#: views.py:128
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)d documento añadido a la lista de análisis"
 
-#: views.py:133
+#: views.py:131
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d documentos añadidos a la lista de análisis"
 
-#: views.py:141
+#: views.py:139
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue?"
 msgstr[0] "¿Enviar el documento %(count)d a la cola de análisis?"
 msgstr[1] "¿Enviar documentos %(count)d a la cola de análisis?"
 
-#: views.py:154
+#: views.py:152
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "Enviar el documento \"%s\" a la lista de análisis"
 
-#: views.py:179
+#: views.py:177
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr "Edite la configuración de análisis para el tipo de documento: %s."
 
-#: views.py:189
+#: views.py:187
 msgid "Submit all documents of a type for parsing"
 msgstr "Enviar todos los documentos de un tipo para analizar"
 
-#: views.py:210
+#: views.py:208
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d documentos agregados a la lista de análisis."

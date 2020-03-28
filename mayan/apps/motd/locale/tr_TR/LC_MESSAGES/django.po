@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:30-0400\n"
+"POT-Creation-Date: 2020-03-28 05:07-0400\n"
 "PO-Revision-Date: 2019-12-13 17:22+0000\n"
 "Last-Translator: emreunal <bywant@gmail.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -19,79 +19,79 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:35 links.py:36 permissions.py:7
+#: apps.py:33 links.py:34 permissions.py:5
 msgid "Message of the day"
 msgstr "Günün mesajı"
 
-#: apps.py:57 apps.py:61
+#: apps.py:55 apps.py:59
 msgid "None"
 msgstr "Yok"
 
-#: links.py:16 views.py:32
+#: links.py:14 views.py:30
 msgid "Create message"
 msgstr "Mesaj oluştur"
 
-#: links.py:22
+#: links.py:20
 msgid "Delete"
 msgstr "Sil"
 
-#: links.py:27
+#: links.py:25
 msgid "Edit"
 msgstr "Düzenle"
 
-#: models.py:17
+#: models.py:15
 msgid "Short description of this message."
 msgstr "Bu mesajın kısa açıklaması."
 
-#: models.py:18
+#: models.py:16
 msgid "Label"
 msgstr "Etiket"
 
-#: models.py:21
+#: models.py:19
 msgid "The actual message to be displayed."
 msgstr "Görüntülenecek gerçek mesaj."
 
-#: models.py:22 models.py:39
+#: models.py:20 models.py:37
 msgid "Message"
 msgstr "Mesaj"
 
-#: models.py:24
+#: models.py:22
 msgid "Enabled"
 msgstr "Açık"
 
-#: models.py:27
+#: models.py:25
 msgid "Date and time after which this message will be displayed."
 msgstr "Bu mesajın görüntüleneceği tarih ve saat."
 
-#: models.py:28
+#: models.py:26
 msgid "Start date time"
 msgstr "Başlangıç ​​tarihi saati"
 
-#: models.py:32
+#: models.py:30
 msgid "Date and time until when this message is to be displayed."
 msgstr "Bu mesajın ne zamana kadar görüntüleneceği tarih ve saat."
 
-#: models.py:33
+#: models.py:31
 msgid "End date time"
 msgstr "Bitiş tarihi saati"
 
-#: models.py:40 views.py:80
+#: models.py:38 views.py:78
 msgid "Messages"
 msgstr "Mesajlar"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Create messages"
 msgstr "Mesajlar oluştur"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Delete messages"
 msgstr "Mesajları sil"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Edit messages"
 msgstr "Mesajları düzenle"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "View messages"
 msgstr "Mesajları görüntüle"
 
@@ -99,23 +99,23 @@ msgstr "Mesajları görüntüle"
 msgid "Messages of the day"
 msgstr "Günün mesajları"
 
-#: views.py:45
+#: views.py:43
 #, python-format
 msgid "Delete the message: %s?"
 msgstr "Mesajı sil: %s?"
 
-#: views.py:58
+#: views.py:56
 #, python-format
 msgid "Edit message: %s"
 msgstr "Mesajı düzenle: %s"
 
-#: views.py:75
+#: views.py:73
 msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
 msgstr "Mesajlar giriş ekranında gösterilir. Mesajları kullanarak organizasyonunuz hakkında bilgi verebilir, kullanıcılarınızı duyurular ve kullanım koşulları gibi konularda bilgilendirebilirsiniz."
 
-#: views.py:79
+#: views.py:77
 msgid "No messages available"
 msgstr "Hiçbir mesaj yok"

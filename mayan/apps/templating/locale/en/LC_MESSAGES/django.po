@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:32-0400\n"
+"POT-Creation-Date: 2020-03-28 05:08-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:19 permissions.py:7
+#: apps.py:17 permissions.py:5
 msgid "Templating"
 msgstr ""
 
-#: fields.py:22
+#: fields.py:21
 #, python-format
 msgid ""
 "Use Django's default templating language (https://docs.djangoproject.com/en/"
@@ -28,36 +28,36 @@ msgid ""
 "is available to the template."
 msgstr ""
 
-#: forms.py:11
+#: forms.py:9
 msgid "Resulting text from the evaluated template."
 msgstr ""
 
-#: forms.py:12
+#: forms.py:10
 msgid "Result"
 msgstr ""
 
-#: forms.py:22
+#: forms.py:20
 msgid "The template string to be evaluated."
 msgstr ""
 
-#: forms.py:23
+#: forms.py:21
 msgid "Template"
 msgstr ""
 
-#: links.py:14
+#: links.py:12
 msgid "Sandbox"
 msgstr ""
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Use the template sandbox"
 msgstr ""
 
-#: views.py:45
+#: views.py:43
 #, python-format
 msgid "Template error; %(exception)s"
 msgstr ""
 
-#: views.py:58
+#: views.py:56
 #, python-format
 msgid "Template sandbox for: %s"
 msgstr ""

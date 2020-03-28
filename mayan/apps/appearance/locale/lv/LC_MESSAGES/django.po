@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 01:25-0400\n"
-"PO-Revision-Date: 2020-02-21 05:39+0000\n"
+"POT-Creation-Date: 2020-03-28 05:05-0400\n"
+"PO-Revision-Date: 2020-03-28 07:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -18,63 +18,63 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:9 settings.py:7
 msgid "Appearance"
 msgstr "Izskats"
 
-#: dependencies.py:10
+#: dependencies.py:8
 msgid "Lato font"
 msgstr "Lato fonts"
 
-#: dependencies.py:14
+#: dependencies.py:12
 msgid "Bootstrap"
 msgstr "Bootstrap"
 
-#: dependencies.py:18
+#: dependencies.py:16
 msgid "Bootswatch"
 msgstr "Bootswatch"
 
-#: dependencies.py:32
+#: dependencies.py:30
 msgid "Fancybox"
 msgstr "Fancybox"
 
-#: dependencies.py:36
+#: dependencies.py:34
 msgid "FontAwesome"
 msgstr "FontAwesome"
 
-#: dependencies.py:40
+#: dependencies.py:38
 msgid "jQuery"
 msgstr "jQuery"
 
-#: dependencies.py:43
+#: dependencies.py:41
 msgid "JQuery Form"
 msgstr "JQuery veidlapa"
 
-#: dependencies.py:47
+#: dependencies.py:45
 msgid "jQuery Lazy Load"
 msgstr "jQuery Lazy Load"
 
-#: dependencies.py:51
+#: dependencies.py:49
 msgid "JQuery Match Height"
 msgstr "JQuery Match Height"
 
-#: dependencies.py:55
+#: dependencies.py:53
 msgid "Select 2"
 msgstr "Select 2"
 
-#: dependencies.py:59
+#: dependencies.py:57
 msgid "Toastr"
 msgstr "Toastr"
 
-#: dependencies.py:62
+#: dependencies.py:60
 msgid "URI.js"
 msgstr "URI.js"
 
-#: settings.py:14
+#: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Maksimālais rakstzīmju skaits, kas tiks attēlots kā skata nosaukums."
 
-#: settings.py:21
+#: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
@@ -187,26 +187,38 @@ msgid ""
 "            "
 msgstr ""
 
-#: templates/appearance/base.html:35 templates/appearance/base.html:59
+#: templates/appearance/base.html:36 templates/appearance/base.html:60
 msgid "Warning"
 msgstr "Brīdinājums"
 
-#: templates/appearance/base.html:49
+#: templates/appearance/base.html:50
 msgid "Click here to fix this."
 msgstr ""
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:60
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr "Iestatījumi ir atjaunināti, restartējiet instalēšanu un atsvaidziniet pārlūku, lai izmaiņas stātos spēkā."
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:68
+#, python-format
+msgid ""
+"\n"
+"                                        Impersonating user \"%(user)s\".\n"
+"                                    "
+msgstr ""
+
+#: templates/appearance/base.html:71
+msgid "Click here when finished"
+msgstr ""
+
+#: templates/appearance/base.html:85
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Darbības"
 
-#: templates/appearance/base.html:74
+#: templates/appearance/base.html:87
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -281,9 +293,13 @@ msgstr "Kopā (%(start)s - %(end)s no %(total)s) (lappuse %(page_number)s no %(t
 msgid "Total: %(total)s"
 msgstr "Kopā: %(total)s"
 
-#: templates/appearance/list_toolbar.html:16
+#: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Atlasīt / noņemt atlasi visiem"
+
+#: templates/appearance/list_toolbar.html:17
+msgid "Toggle list display mode"
+msgstr ""
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
@@ -314,6 +330,6 @@ msgstr "Servera sakaru kļūda"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Pārbaudiet tīkla savienojumu un pēc brīža mēģiniet vēlreiz."
 
-#: templatetags/appearance_tags.py:17
+#: templatetags/appearance_tags.py:15
 msgid "None"
 msgstr "Nav neviens"
