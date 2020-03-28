@@ -46,8 +46,7 @@ class FileCachingConfig(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='label', is_identifier=True, is_sortable=True,
-            source=Cache
+            attribute='label', is_identifier=True, source=Cache
         )
         SourceColumn(
             attribute='get_maximum_size_display', include_label=True,
