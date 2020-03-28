@@ -182,7 +182,7 @@ source_lang = en
 source_file = mayan/apps/platform/locale/en/LC_MESSAGES/django.po
 type = PO
 
-[mayan-edms.quotas-2-0]
+[mayan-edms.quotas-3-0]
 file_filter = mayan/apps/quotas/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
 source_file = mayan/apps/quotas/locale/en/LC_MESSAGES/django.po
