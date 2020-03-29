@@ -10,17 +10,43 @@ from ..permissions import (
 from .literals import TEST_FILE_METADATA_KEY
 
 
-@override_settings(FILE_METADATA_AUTO_PROCESS=True)
-class FileMetadataViewsTestCase(GenericDocumentViewTestCase):
-    def setUp(self):
-        super(FileMetadataViewsTestCase, self).setUp()
-        self.test_driver = self.test_document.latest_version.file_metadata_drivers.first()
-
+class FileMetadataViewsTestMixin(object):
     def _request_document_version_driver_list_view(self):
         return self.get(
             viewname='file_metadata:document_driver_list',
             kwargs={'document_id': self.test_document.pk}
         )
+
+    def _request_document_version_file_metadata_list_view(self):
+        return self.get(
+            viewname='file_metadata:document_version_driver_file_metadata_list',
+            kwargs={
+                'document_version_driver_id': self.test_driver.pk
+            }
+        )
+
+    def _request_document_submit_view(self):
+        return self.post(
+            viewname='file_metadata:document_submit',
+            kwargs={'document_id': self.test_document.pk}
+        )
+
+    def _request_multiple_document_submit_view(self):
+        return self.post(
+            viewname='file_metadata:document_multiple_submit',
+            data={
+                'id_list': self.test_document.pk,
+            }
+        )
+
+
+@override_settings(FILE_METADATA_AUTO_PROCESS=True)
+class FileMetadataViewsTestCase(
+    FileMetadataViewsTestMixin, GenericDocumentViewTestCase
+):
+    def setUp(self):
+        super(FileMetadataViewsTestCase, self).setUp()
+        self.test_driver = self.test_document.latest_version.file_metadata_drivers.first()
 
     def test_document_version_driver_list_view_no_permission(self):
         response = self._request_document_version_driver_list_view()
@@ -34,14 +60,6 @@ class FileMetadataViewsTestCase(GenericDocumentViewTestCase):
         response = self._request_document_version_driver_list_view()
         self.assertContains(
             response=response, text=self.test_document.label, status_code=200
-        )
-
-    def _request_document_version_file_metadata_list_view(self):
-        return self.get(
-            viewname='file_metadata:document_version_driver_file_metadata_list',
-            kwargs={
-                'document_version_driver_id': self.test_driver.pk
-            }
         )
 
     def test_document_version_file_metadata_list_view_no_permission(self):
@@ -58,12 +76,6 @@ class FileMetadataViewsTestCase(GenericDocumentViewTestCase):
         response = self._request_document_version_file_metadata_list_view()
         self.assertContains(
             response=response, text=TEST_FILE_METADATA_KEY, status_code=200
-        )
-
-    def _request_document_submit_view(self):
-        return self.post(
-            viewname='file_metadata:document_submit',
-            kwargs={'document_id': self.test_document.pk}
         )
 
     def test_document_submit_view_no_permission(self):
@@ -87,14 +99,6 @@ class FileMetadataViewsTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(
             self.test_document.latest_version.file_metadata_drivers.count(), 1
-        )
-
-    def _request_multiple_document_submit_view(self):
-        return self.post(
-            viewname='file_metadata:document_multiple_submit',
-            data={
-                'id_list': self.test_document.pk,
-            }
         )
 
     def test_multiple_document_submit_view_no_permission(self):
@@ -121,13 +125,24 @@ class FileMetadataViewsTestCase(GenericDocumentViewTestCase):
         )
 
 
-class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
+class DocumentTypeViewsTestMixin(object):
     def _request_document_type_settings_view(self):
         return self.get(
             viewname='file_metadata:document_type_settings',
             kwargs={'document_type_id': self.test_document.document_type.pk}
         )
 
+    def _request_document_type_submit_view(self):
+        return self.post(
+            viewname='file_metadata:document_type_submit', data={
+                'document_type': self.test_document_type.pk,
+            }
+        )
+
+
+class DocumentTypeViewsTestCase(
+    DocumentTypeViewsTestMixin, GenericDocumentViewTestCase
+):
     def test_document_type_settings_view_no_permission(self):
         response = self._request_document_type_settings_view()
         self.assertEqual(response.status_code, 404)
@@ -140,13 +155,6 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
 
         response = self._request_document_type_settings_view()
         self.assertEqual(response.status_code, 200)
-
-    def _request_document_type_submit_view(self):
-        return self.post(
-            viewname='file_metadata:document_type_submit', data={
-                'document_type': self.test_document_type.pk,
-            }
-        )
 
     def test_document_type_submit_view_no_permission(self):
         response = self._request_document_type_submit_view()

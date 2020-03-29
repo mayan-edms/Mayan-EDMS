@@ -312,6 +312,32 @@ class UserGroupViewTestCase(
         )
 
 
+class UserOptionsViewTestCase(
+    UserViewTestMixin, GenericViewTestCase
+):
+    def test_user_options_view_no_permission(self):
+        self._create_test_user()
+
+        response = self._request_test_user_options_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_user.user_options.refresh_from_db()
+        self.assertFalse(self.test_user.user_options.block_password_change)
+
+    def test_user_options_view_with_access(self):
+        self._create_test_user()
+
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
+
+        response = self._request_test_user_options_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_user.user_options.refresh_from_db()
+        self.assertTrue(self.test_user.user_options.block_password_change)
+
+
 class MetadataLookupIntegrationTestCase(
     MetadataTypeTestMixin, GenericDocumentViewTestCase
 ):
@@ -340,7 +366,7 @@ class MetadataLookupIntegrationTestCase(
 
         response = self.get(
             viewname='metadata:metadata_edit', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
         self.assertContains(
@@ -366,7 +392,7 @@ class MetadataLookupIntegrationTestCase(
 
         response = self.get(
             viewname='metadata:metadata_edit', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 

@@ -3,10 +3,22 @@ from django.contrib.contenttypes.models import ContentType
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
+from ..models import Notification
 from ..permissions import permission_events_view
 
+from .mixins import (
+    NotificationTestMixin, NotificationViewTestMixin, UserEventViewsTestMixin
+)
 
-class EventsViewTestCase(GenericDocumentViewTestCase):
+
+class EventsViewTestMixin(object):
+    def _request_events_for_object_view(self):
+        return self.get(
+            viewname='events:events_for_object', kwargs=self.view_arguments
+        )
+
+
+class EventsViewTestCase(EventsViewTestMixin, GenericDocumentViewTestCase):
     auto_upload_test_document = False
 
     def setUp(self):
@@ -20,11 +32,6 @@ class EventsViewTestCase(GenericDocumentViewTestCase):
             'model': content_type.model,
             'object_id': self.test_object.pk
         }
-
-    def _request_events_for_object_view(self):
-        return self.get(
-            viewname='events:events_for_object', kwargs=self.view_arguments
-        )
 
     def test_events_for_object_view_no_permission(self):
         response = self._request_events_for_object_view()
@@ -43,9 +50,39 @@ class EventsViewTestCase(GenericDocumentViewTestCase):
         )
 
 
-class UserEventViewsTestCase(GenericViewTestCase):
-    def test_user_event_type_subscription_list_view(self):
-        response = self.get(
-            viewname='events:event_types_user_subcriptions_list'
+class NotificationViewTestCase(
+    NotificationTestMixin, NotificationViewTestMixin, GenericViewTestCase
+):
+    def test_notification_list_view(self):
+        response = self._request_test_notification_list_view()
+        self.assertEqual(response.status_code, 200)
+
+    def test_notification_mark_read_all_view(self):
+        self._create_test_notification()
+        notification_count = Notification.objects.get_unread().count()
+
+        response = self._request_test_notification_mark_read_all_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            Notification.objects.get_unread().count(),
+            notification_count - 1
         )
+
+    def test_notification_mark_read_view(self):
+        self._create_test_notification()
+        notification_count = Notification.objects.get_unread().count()
+
+        response = self._request_test_notification_mark_read()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            Notification.objects.get_unread().count(),
+            notification_count - 1
+        )
+
+
+class UserEventViewsTestCase(UserEventViewsTestMixin, GenericViewTestCase):
+    def test_user_event_type_subscription_list_view(self):
+        response = self._request_test_user_event_type_subscription_list_view()
         self.assertEqual(response.status_code, 200)

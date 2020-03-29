@@ -89,14 +89,6 @@ class FileMetadataApp(MayanAppConfig):
             value=method_document_version_submit
         )
 
-        ModelProperty(
-            model=Document,
-            name='file_metadata_value_of.< underscore separated driver name and property name >',
-            description=_(
-                'Return the value of a specific file metadata.'
-            ), label=_('File metadata value of')
-        )
-
         ModelEventType.register(
             model=Document, event_types=(
                 event_file_metadata_document_version_finish,
@@ -130,6 +122,14 @@ class FileMetadataApp(MayanAppConfig):
         )
         ModelPermission.register_inheritance(
             model=DocumentVersionDriverEntry, related='document_version',
+        )
+
+        ModelProperty(
+            model=Document,
+            name='file_metadata_value_of.< underscore separated driver name and property name >',
+            description=_(
+                'Return the value of a specific file metadata.'
+            ), label=_('File metadata value of')
         )
 
         SourceColumn(

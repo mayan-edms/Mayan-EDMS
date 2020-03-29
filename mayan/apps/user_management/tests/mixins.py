@@ -24,21 +24,25 @@ class GroupAPIViewTestMixin(object):
 
     def _request_test_group_delete_api_view(self):
         return self.delete(
-            viewname='rest_api:group-detail', kwargs={'pk': self.test_group.pk}
+            viewname='rest_api:group-detail', kwargs={
+                'pk': self.test_group.pk
+            }
         )
 
     def _request_test_group_edit_patch_api_view(self):
         return self.patch(
-            viewname='rest_api:group-detail', kwargs={'pk': self.test_group.pk},
-            data={
+            viewname='rest_api:group-detail', kwargs={
+                'pk': self.test_group.pk
+            }, data={
                 'name': TEST_GROUP_NAME_EDITED
             }
         )
 
     def _request_test_group_edit_put_api_view(self):
         return self.put(
-            viewname='rest_api:group-detail', kwargs={'pk': self.test_group.pk},
-            data={
+            viewname='rest_api:group-detail', kwargs={
+                'pk': self.test_group.pk
+            }, data={
                 'name': TEST_GROUP_NAME_EDITED
             }
         )
@@ -66,14 +70,14 @@ class GroupViewTestMixin(object):
     def _request_test_group_delete_view(self):
         return self.post(
             viewname='user_management:group_delete', kwargs={
-                'pk': self.test_group.pk
+                'group_id': self.test_group.pk
             }
         )
 
     def _request_test_group_edit_view(self):
         return self.post(
             viewname='user_management:group_edit', kwargs={
-                'pk': self.test_group.pk
+                'group_id': self.test_group.pk
             }, data={
                 'name': TEST_GROUP_NAME_EDITED
             }
@@ -84,8 +88,9 @@ class GroupViewTestMixin(object):
 
     def _request_test_group_members_view(self):
         return self.get(
-            viewname='user_management:group_members',
-            kwargs={'pk': self.test_group.pk}
+            viewname='user_management:group_members', kwargs={
+                'group_id': self.test_group.pk
+            }
         )
 
 
@@ -98,7 +103,9 @@ class UserAPIViewTestMixin(object):
             }
         )
         if 'id' in result.json():
-            self.test_user = get_user_model().objects.get(pk=result.json()['id'])
+            self.test_user = get_user_model().objects.get(
+                pk=result.json()['id']
+            )
 
         return result
 
@@ -112,28 +119,31 @@ class UserAPIViewTestMixin(object):
         )
 
         if 'id' in result.json():
-            self.test_user = get_user_model().objects.get(pk=result.json()['id'])
+            self.test_user = get_user_model().objects.get(
+                pk=result.json()['id']
+            )
 
         return result
 
     def _request_test_user_delete_api_view(self):
         return self.delete(
-            viewname='rest_api:user-detail',
-            kwargs={'pk': self.test_user.pk}
+            viewname='rest_api:user-detail', kwargs={
+                'pk': self.test_user.pk
+            }
         )
 
     def _request_test_user_edit_patch_api_view(self):
         return self.patch(
-            viewname='rest_api:user-detail',
-            kwargs={'pk': self.test_user.pk},
-            data={'username': TEST_USER_USERNAME_EDITED}
+            viewname='rest_api:user-detail', kwargs={
+                'pk': self.test_user.pk
+            }, data={'username': TEST_USER_USERNAME_EDITED}
         )
 
     def _request_test_user_edit_put_api_view(self):
         return self.put(
-            viewname='rest_api:user-detail',
-            kwargs={'pk': self.test_user.pk},
-            data={'username': TEST_USER_USERNAME_EDITED}
+            viewname='rest_api:user-detail', kwargs={
+                'pk': self.test_user.pk
+            }, data={'username': TEST_USER_USERNAME_EDITED}
         )
 
     def _request_test_user_group_add_api_view(self):
@@ -204,11 +214,14 @@ class UserTestCaseMixin(object):
         super(UserTestCaseMixin, self).tearDown()
 
     def _create_test_case_group(self):
-        self._test_case_group = Group.objects.create(name=TEST_CASE_GROUP_NAME)
+        self._test_case_group = Group.objects.create(
+            name=TEST_CASE_GROUP_NAME
+        )
 
     def _create_test_case_superuser(self):
         self._test_case_superuser = get_user_model().objects.create_superuser(
-            username=TEST_CASE_SUPERUSER_USERNAME, email=TEST_CASE_SUPERUSER_EMAIL,
+            username=TEST_CASE_SUPERUSER_USERNAME,
+            email=TEST_CASE_SUPERUSER_EMAIL,
             password=TEST_CASE_SUPERUSER_PASSWORD
         )
         self._test_case_superuser.cleartext_password = TEST_CASE_SUPERUSER_PASSWORD
@@ -241,7 +254,8 @@ class UserTestCaseMixin(object):
 class UserTestMixin(object):
     def _create_test_superuser(self):
         self.test_superuser = get_user_model().objects.create_superuser(
-            username=TEST_CASE_SUPERUSER_USERNAME, email=TEST_CASE_SUPERUSER_EMAIL,
+            username=TEST_CASE_SUPERUSER_USERNAME,
+            email=TEST_CASE_SUPERUSER_EMAIL,
             password=TEST_CASE_SUPERUSER_PASSWORD
         )
         self.test_superuser.cleartext_password = TEST_USER_PASSWORD
@@ -269,13 +283,13 @@ class UserViewTestMixin(object):
     def _request_test_superuser_delete_view(self):
         return self.post(
             viewname='user_management:user_delete',
-            kwargs={'pk': self.test_superuser.pk}
+            kwargs={'user_id': self.test_superuser.pk}
         )
 
     def _request_test_superuser_detail_view(self):
         return self.get(
             viewname='user_management:user_details',
-            kwargs={'pk': self.test_superuser.pk}
+            kwargs={'user_id': self.test_superuser.pk}
         )
 
     def _request_test_user_create_view(self):
@@ -294,7 +308,7 @@ class UserViewTestMixin(object):
     def _request_test_user_delete_view(self):
         return self.post(
             viewname='user_management:user_delete',
-            kwargs={'pk': self.test_user.pk}
+            kwargs={'user_id': self.test_user.pk}
         )
 
     def _request_test_user_delete_multiple_view(self):
@@ -307,14 +321,14 @@ class UserViewTestMixin(object):
     def _request_test_user_detail_view(self):
         return self.get(
             viewname='user_management:user_details', kwargs={
-                'pk': self.test_user.pk
+                'user_id': self.test_user.pk
             }
         )
 
     def _request_test_user_edit_view(self):
         return self.post(
             viewname='user_management:user_edit', kwargs={
-                'pk': self.test_user.pk
+                'user_id': self.test_user.pk
             }, data={
                 'username': TEST_USER_USERNAME_EDITED
             }
@@ -322,6 +336,16 @@ class UserViewTestMixin(object):
 
     def _request_test_user_groups_view(self):
         return self.get(
-            viewname='user_management:user_groups',
-            kwargs={'pk': self.test_user.pk}
+            viewname='user_management:user_groups', kwargs={
+                'user_id': self.test_user.pk
+            }
+        )
+
+    def _request_test_user_options_view(self):
+        return self.post(
+            viewname='user_management:user_options', kwargs={
+                'user_id': self.test_user.pk
+            }, data={
+                'block_password_change': True
+            }
         )

@@ -24,7 +24,7 @@ class GroupRolesView(AddRemoveView):
     main_object_method_remove = 'roles_remove'
     main_object_model = Group
     main_object_permission = permission_group_edit
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'group_id'
     secondary_object_model = Role
     secondary_object_permission = permission_role_edit
     list_available_title = _('Available roles')
@@ -57,6 +57,7 @@ class RoleCreateView(SingleObjectCreateView):
 class RoleDeleteView(SingleObjectDeleteView):
     model = Role
     object_permission = permission_role_delete
+    pk_url_kwarg = 'role_id'
     post_action_redirect = reverse_lazy(viewname='permissions:role_list')
 
 
@@ -64,6 +65,7 @@ class RoleEditView(SingleObjectEditView):
     fields = ('label',)
     model = Role
     object_permission = permission_role_edit
+    pk_url_kwarg = 'role_id'
 
     def get_save_extra_data(self):
         return {'_user': self.request.user}
@@ -74,7 +76,7 @@ class SetupRoleMembersView(AddRemoveView):
     main_object_method_remove = 'groups_remove'
     main_object_model = Role
     main_object_permission = permission_role_edit
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'role_id'
     secondary_object_model = Group
     secondary_object_permission = permission_group_edit
     list_available_title = _('Available groups')
@@ -96,12 +98,12 @@ class SetupRoleMembersView(AddRemoveView):
 
 
 class SetupRolePermissionsView(AddRemoveView):
+    grouped = True
     main_object_method_add = 'permissions_add'
     main_object_method_remove = 'permissions_remove'
-    grouped = True
     main_object_model = Role
     main_object_permission = permission_role_edit
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'role_id'
     list_available_title = _('Available permissions')
     list_added_title = _('Granted permissions')
     related_field = 'permissions'

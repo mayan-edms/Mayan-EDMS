@@ -65,6 +65,9 @@ class LinkingApp(MayanAppConfig):
                 permission_smart_link_view
             )
         )
+        ModelPermission.register_inheritance(
+            model=SmartLinkCondition, related='smart_link',
+        )
 
         SourceColumn(
             func=lambda context: context['object'].get_label_for(

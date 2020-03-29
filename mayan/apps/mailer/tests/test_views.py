@@ -97,11 +97,26 @@ class MailerViewsTestCase(MailerTestMixin, MailerViewTestMixin, GenericViewTestC
             response=response, text=self.test_user_mailer.label, status_code=200
         )
 
+    def test_user_mailer_log_entry_list_view_no_permission(self):
+        self._create_test_user_mailer()
+
+        response = self._request_test_user_mailer_log_entry_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_user_mailer_log_entry_list_view_with_access(self):
+        self._create_test_user_mailer()
+        self.grant_access(
+            obj=self.test_user_mailer, permission=permission_user_mailer_view
+        )
+
+        response = self._request_test_user_mailer_log_entry_view()
+        self.assertEqual(response.status_code, 200)
+
     def test_user_mailer_test_view_no_permissions(self):
         self._create_test_user_mailer()
 
         response = self._request_test_user_mailer_test_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(mail.outbox), 0)
 

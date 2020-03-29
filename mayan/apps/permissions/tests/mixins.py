@@ -12,7 +12,9 @@ from .literals import (
 class GroupRoleViewTestMixin(object):
     def _request_test_group_roles_view(self):
         return self.get(
-            viewname='permissions:group_roles', kwargs={'pk': self.test_group.pk}
+            viewname='permissions:group_roles', kwargs={
+                'group_id': self.test_group.pk
+            }
         )
 
 
@@ -67,7 +69,9 @@ class RoleAPIViewTestMixin(object):
             viewname='rest_api:role-detail', kwargs={'pk': self.test_role.pk}
         )
 
-    def _request_test_role_edit_api_view(self, extra_data=None, request_type='patch'):
+    def _request_test_role_edit_api_view(
+        self, extra_data=None, request_type='patch'
+    ):
         data = {
             'label': TEST_ROLE_LABEL_EDITED
         }
@@ -76,8 +80,9 @@ class RoleAPIViewTestMixin(object):
             data.update(extra_data)
 
         return getattr(self, request_type)(
-            viewname='rest_api:role-detail', kwargs={'pk': self.test_role.pk},
-            data=data
+            viewname='rest_api:role-detail', kwargs={
+                'pk': self.test_role.pk
+            }, data=data
         )
 
     def _request_role_list_api_view(self):
@@ -122,20 +127,25 @@ class RoleViewTestMixin(object):
 
     def _request_test_role_delete_view(self):
         return self.post(
-            viewname='permissions:role_delete', kwargs={'pk': self.test_role.pk}
+            viewname='permissions:role_delete', kwargs={
+                'role_id': self.test_role.pk
+            }
         )
 
     def _request_test_role_edit_view(self):
         return self.post(
-            viewname='permissions:role_edit', kwargs={'pk': self.test_role.pk},
-            data={
+            viewname='permissions:role_edit', kwargs={
+                'role_id': self.test_role.pk
+            }, data={
                 'label': TEST_ROLE_LABEL_EDITED,
             }
         )
 
     def _request_test_role_groups_view(self):
         return self.get(
-            viewname='permissions:role_groups', kwargs={'pk': self.test_role.pk}
+            viewname='permissions:role_groups', kwargs={
+                'role_id': self.test_role.pk
+            }
         )
 
     def _request_test_role_list_view(self):
@@ -144,6 +154,6 @@ class RoleViewTestMixin(object):
     def _request_test_role_permissions_view(self):
         return self.get(
             viewname='permissions:role_permissions', kwargs={
-                'pk': self.test_role.pk
+                'role_id': self.test_role.pk
             }
         )

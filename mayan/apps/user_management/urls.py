@@ -13,67 +13,67 @@ from .views import (
 
 urlpatterns_current_user = [
     url(
-        regex=r'^user/$', view=CurrentUserDetailsView.as_view(),
-        name='current_user_details'
+        regex=r'^user/$', name='current_user_details',
+        view=CurrentUserDetailsView.as_view()
     ),
     url(
-        regex=r'^user/edit/$', view=CurrentUserEditView.as_view(),
-        name='current_user_edit'
+        regex=r'^user/edit/$', name='current_user_edit',
+        view=CurrentUserEditView.as_view()
     )
 ]
 
 urlpatterns_groups = [
     url(
-        regex=r'^groups/$', view=GroupListView.as_view(), name='group_list'
+        regex=r'^groups/$', name='group_list', view=GroupListView.as_view()
     ),
     url(
-        regex=r'^groups/create/$', view=GroupCreateView.as_view(),
-        name='group_create'
+        regex=r'^groups/create/$', name='group_create',
+        view=GroupCreateView.as_view()
     ),
     url(
-        regex=r'^groups/(?P<pk>\d+)/delete/$', view=GroupDeleteView.as_view(),
-        name='group_delete'
+        regex=r'^groups/(?P<group_id>\d+)/delete/$', name='group_delete',
+        view=GroupDeleteView.as_view()
     ),
     url(
-        regex=r'^groups/(?P<pk>\d+)/edit/$', view=GroupEditView.as_view(),
-        name='group_edit'
+        regex=r'^groups/(?P<group_id>\d+)/edit/$', name='group_edit',
+        view=GroupEditView.as_view()
     ),
     url(
-        regex=r'^groups/(?P<pk>\d+)/users/$', view=GroupUsersView.as_view(),
-        name='group_members'
+        regex=r'^groups/(?P<group_id>\d+)/users/$', name='group_members',
+        view=GroupUsersView.as_view()
     )
 ]
 
 urlpatterns_users = [
-    url(regex=r'^users/$', view=UserListView.as_view(), name='user_list'),
+    url(regex=r'^users/$', name='user_list', view=UserListView.as_view()),
     url(
-        regex=r'^users/create/$', view=UserCreateView.as_view(),
-        name='user_create'
+        regex=r'^users/create/$', name='user_create',
+        view=UserCreateView.as_view()
     ),
     url(
-        regex=r'^users/(?P<pk>\d+)/delete/$', view=UserDeleteView.as_view(),
-        name='user_delete'
+        regex=r'^users/(?P<user_id>\d+)/delete/$', name='user_delete',
+        view=UserDeleteView.as_view()
     ),
     url(
-        regex=r'^users/multiple/delete/$', view=UserDeleteView.as_view(),
-        name='user_multiple_delete'
+        regex=r'^users/multiple/delete/$', name='user_multiple_delete',
+        view=UserDeleteView.as_view()
     ),
     url(
-        regex=r'^users/(?P<pk>\d+)/$', view=UserDetailsView.as_view(),
-        name='user_details'
+        regex=r'^users/(?P<user_id>\d+)/$', name='user_details',
+        view=UserDetailsView.as_view()
     ),
     url(
-        regex=r'^users/(?P<pk>\d+)/edit/$', view=UserEditView.as_view(),
-        name='user_edit'
+        regex=r'^users/(?P<user_id>\d+)/edit/$', name='user_edit',
+        view=UserEditView.as_view()
     ),
     url(
-        regex=r'^users/(?P<pk>\d+)/groups/$', view=UserGroupsView.as_view(),
-        name='user_groups'
+        regex=r'^users/(?P<user_id>\d+)/groups/$', name='user_groups',
+        view=UserGroupsView.as_view()
     ),
     url(
-        regex=r'^users/(?P<pk>\d+)/options/$',
-        view=UserOptionsEditView.as_view(), name='user_options'
-    ),
+        regex=r'^users/(?P<user_id>\d+)/options/$', name='user_options',
+        view=UserOptionsEditView.as_view()
+    )
 ]
 
 urlpatterns = []

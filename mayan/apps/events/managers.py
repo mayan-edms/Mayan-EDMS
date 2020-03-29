@@ -14,6 +14,11 @@ class EventSubscriptionManager(models.Manager):
         )
 
 
+class NotificationManager(models.Manager):
+    def get_unread(self):
+        return self.filter(read=False)
+
+
 class ObjectEventSubscriptionManager(models.Manager):
     def create_for(self, obj, stored_event_type, user):
         content_type = ContentType.objects.get_for_model(model=obj)

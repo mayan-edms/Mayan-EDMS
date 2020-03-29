@@ -1,7 +1,6 @@
 3.4 (2020-XX-XX)
 ================
 - Update Django to version 2.2.10.
-- Update Django stronghold to version 0.4.0.
 - The ``runserver`` make file target now runs the command with
   ``--nothreading`` to work around issues serving static files in development.
 - Backport list display mode. Support switching between item and list mode.
@@ -9,9 +8,6 @@
 - Move dependencies environments to their own module called
   ``dependencies.environments.py``.
 - Increase the size of the file cache maximum size field.
-- Remove codecov dependency.
-- Remove pathlib2 dependency, it is now part of the standard Python library.
-- Remove Django's admindocs app
 - Add user impersonation support.
 - Add support for uncompressing Outlook .msg files. Adds dependecy
   ``extract-msg``.
@@ -27,14 +23,14 @@
   when creating a new document.
 - Add quotas app.
 - Add support for HTTP methods to the workflow HTTP request state action.
-- Update python-gnupg from version 0.3.9 to 0.4.5.
 - Add the trash document workflow state action.
 - Add support for GPG backends. Add two new settings ``SIGNATURES_BACKEND`` and
   ``SIGNATURES_BACKEND_ARGUMENTS``. This change also removes two settings:
   ``SIGNATURES_GPG_HOME`` and ``SIGNATURES_GPG_PATH``. ``SIGNATURES_GPG_HOME``
   had already been deprecated and was innactive. ``SIGNATURES_GPG_PATH`` is now
   component ``gpg_path`` of the setting ``SIGNATURES_BACKEND_ARGUMENTS``.
-- Add sane default paths for the GPG binary for Linux, FreeBSD, OpenBSD, and MaCOS.
+- Add sane default paths for the GPG binary for Linux, FreeBSD, OpenBSD, and
+  MaCOS.
 - Refactor the search app to support backends. Adds two new settings:
   ``SEARCH_BACKEND`` (which defaults to ``mayan.apps.dynamic_search.backends.django.DjangoSearchBackend``)
   and ``SEARCH_BACKEND_ARGUMENTS``.
@@ -56,6 +52,8 @@
 - Detect redirect loops when attempting to escape the AJAX container.
 - Improve icons of the OCR, file metadata, and document parsing apps.
 - Detect is a SourceColumn can be made sortable.
+- Update python-gnupg from version 0.3.9 to 0.4.5.
+- Update Django stronghold to version 0.4.0.
 - Update Python libraries versions: Python Redis version from 3.3.11 to 3.4.1,
   PyYAML from 5.1.2 to 5.3.1, django-formtools from 2.1 to 2.2,
   django-mathfilters from 0.4.0 to 1.0.0, django-model-utils from 3.1.2 to
@@ -66,8 +64,11 @@
   whitenoise from 4.1.4 to 5.0.1, devpi-server from 5.4.0 to 5.4.1,
   Pillow from 6.2.2 to 7.0.0, node-semver from 0.6.1 to 0.8.0, graphviz from
   0.10.1 to 0.13.2, python-dateutil from 2.8.0 to 2.8.1, flanker from 0.9.0
-  to 0.9.11.
+  to 0.9.11, django-activity-stream from 0.7.0 to 0.8.0.
 - Removal of Python library django-timezone-field.
+- Remove codecov dependency.
+- Remove pathlib2 dependency, it is now part of the standard Python library.
+- Remove Django's admindocs app
 
 
 3.3.16 (2020-03-17)

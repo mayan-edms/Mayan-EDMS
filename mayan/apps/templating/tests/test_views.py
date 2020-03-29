@@ -2,13 +2,7 @@ from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..permissions import permission_template_sandbox
 
-
-class DocumentTemplateSandboxViewTestMixin(object):
-    def _request_document_template_sandbox_view(self):
-        return self.get(
-            viewname='templating:document_template_sandbox',
-            kwargs={'pk': self.test_document.pk}
-        )
+from .mixins import DocumentTemplateSandboxViewTestMixin
 
 
 class DocumentTemplateSandboxViewTestCase(

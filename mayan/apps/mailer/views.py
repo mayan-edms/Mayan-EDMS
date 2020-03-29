@@ -1,6 +1,5 @@
 from django.contrib import messages
 from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ungettext, ugettext_lazy as _
@@ -11,6 +10,7 @@ from mayan.apps.common.generics import (
     SingleObjectDynamicFormCreateView, SingleObjectDynamicFormEditView,
     SingleObjectListView
 )
+from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.models import Document
 
 from .classes import MailerBackend
@@ -44,7 +44,7 @@ class MailDocumentView(MultipleObjectFormActionView):
     form_class = DocumentMailForm
     model = Document
     object_permission = permission_mailing_send_document
-
+    pk_url_kwarg = 'document_id'
     success_message = _('%(count)d document queued for email delivery')
     success_message_plural = _(
         '%(count)d documents queued for email delivery'
@@ -169,6 +169,7 @@ class UserMailingCreateView(SingleObjectDynamicFormCreateView):
 class UserMailingDeleteView(SingleObjectDeleteView):
     model = UserMailer
     object_permission = permission_user_mailer_delete
+    pk_url_kwarg = 'mailer_id'
     post_action_redirect = reverse_lazy(viewname='mailer:user_mailer_list')
 
     def get_extra_context(self):
@@ -181,6 +182,7 @@ class UserMailingEditView(SingleObjectDynamicFormEditView):
     form_class = UserMailerDynamicForm
     model = UserMailer
     object_permission = permission_user_mailer_edit
+    pk_url_kwarg = 'mailer_id'
 
     def get_extra_context(self):
         return {
@@ -199,22 +201,20 @@ class UserMailingEditView(SingleObjectDynamicFormEditView):
         return result
 
 
-class UserMailerLogEntryListView(SingleObjectListView):
-    model = LogEntry
-    view_permission = permission_user_mailer_view
+class UserMailerLogEntryListView(ExternalObjectMixin, SingleObjectListView):
+    external_object_class = UserMailer
+    external_object_permission = permission_user_mailer_view
+    external_object_pk_url_kwarg = 'mailer_id'
 
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'object': self.get_user_mailer(),
-            'title': _('Error log for: %s') % self.get_user_mailer(),
+            'object': self.external_object,
+            'title': _('Error log for: %s') % self.external_object,
         }
 
     def get_source_queryset(self):
-        return self.get_user_mailer().error_log.all()
-
-    def get_user_mailer(self):
-        return get_object_or_404(klass=UserMailer, pk=self.kwargs['pk'])
+        return self.external_object.error_log.all()
 
 
 class UserMailerListView(SingleObjectListView):
@@ -241,12 +241,14 @@ class UserMailerListView(SingleObjectListView):
         return {'fields': self.get_backend().fields}
 
 
-class UserMailerTestView(FormView):
+class UserMailerTestView(ExternalObjectMixin, FormView):
+    external_object_class = UserMailer
+    external_object_permission = permission_user_mailer_use
+    external_object_pk_url_kwarg = 'mailer_id'
     form_class = UserMailerTestForm
-    object_permission = permission_user_mailer_edit
 
     def form_valid(self, form):
-        self.get_object().test(to=form.cleaned_data['email'])
+        self.external_object.test(to=form.cleaned_data['email'])
         messages.success(
             message=_('Test email sent.'), request=self.request
         )
@@ -255,16 +257,7 @@ class UserMailerTestView(FormView):
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'object': self.get_object(),
+            'object': self.external_object,
             'submit_label': _('Test'),
-            'title': _('Test mailing profile: %s') % self.get_object(),
+            'title': _('Test mailing profile: %s') % self.external_object,
         }
-
-    def get_object(self):
-        user_mailer = get_object_or_404(klass=UserMailer, pk=self.kwargs['pk'])
-        AccessControlList.objects.check_access(
-            obj=user_mailer, permissions=(permission_user_mailer_use,),
-            user=self.request.user
-        )
-
-        return user_mailer

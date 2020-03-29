@@ -68,7 +68,7 @@ class WebLink(models.Model):
     def get_absolute_url(self):
         return reverse(
             viewname='web_links:web_link_edit', kwargs={
-                'pk': self.pk
+                'web_link_id': self.pk
             }
         )
 

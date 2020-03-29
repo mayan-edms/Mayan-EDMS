@@ -16,6 +16,7 @@ from .permissions import permission_template_sandbox
 class DocumentTemplateSandboxView(ExternalObjectMixin, FormView):
     external_object_class = Document
     external_object_permission = permission_template_sandbox
+    external_object_pk_url_kwarg = 'document_id'
     form_class = DocumentTemplateSandboxForm
 
     def form_valid(self, form):

@@ -36,7 +36,7 @@ class DocumentTypeWebLinksView(AddRemoveView):
     main_object_method_remove = 'web_link_remove'
     main_object_permission = permission_document_type_edit
     main_object_model = DocumentType
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'document_type_id'
     secondary_object_model = WebLink
     secondary_object_permission = permission_web_link_edit
     list_available_title = _('Available web links')
@@ -79,7 +79,7 @@ class DocumentTypeWebLinksView(AddRemoveView):
 
 class ResolvedWebLinkView(ExternalObjectMixin, RedirectView):
     external_object_class = Document
-    external_object_pk_url_kwarg = 'document_pk'
+    external_object_pk_url_kwarg = 'document_id'
     external_object_permission = permission_web_link_instance_view
 
     def get_redirect_url(self, *args, **kwargs):
@@ -93,7 +93,7 @@ class ResolvedWebLinkView(ExternalObjectMixin, RedirectView):
 
     def get_web_link(self):
         return get_object_or_404(
-            klass=self.get_web_link_queryset(), pk=self.kwargs['web_link_pk']
+            klass=self.get_web_link_queryset(), pk=self.kwargs['web_link_id']
         )
 
     def get_web_link_queryset(self):
@@ -111,7 +111,7 @@ class WebLinkDocumentTypesView(AddRemoveView):
     main_object_method_remove = 'document_types_remove'
     main_object_permission = permission_web_link_edit
     main_object_model = WebLink
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'web_link_id'
     secondary_object_model = DocumentType
     secondary_object_permission = permission_document_type_edit
     list_available_title = _('Available document types')
@@ -131,6 +131,7 @@ class WebLinkDocumentTypesView(AddRemoveView):
 
 
 class WebLinkListView(SingleObjectListView):
+    model = WebLink
     object_permission = permission_web_link_view
 
     def get_extra_context(self):
@@ -152,16 +153,11 @@ class WebLinkListView(SingleObjectListView):
             'title': _('Web links'),
         }
 
-    def get_source_queryset(self):
-        return self.get_web_link_queryset()
-
-    def get_web_link_queryset(self):
-        return WebLink.objects.all()
-
 
 class DocumentWebLinkListView(ExternalObjectMixin, WebLinkListView):
     external_object_class = Document
     external_object_permission = permission_web_link_instance_view
+    external_object_pk_url_kwarg = 'document_id'
     object_permission = permission_web_link_instance_view
 
     def get_extra_context(self):
@@ -203,14 +199,15 @@ class WebLinkCreateView(SingleObjectCreateView):
 class WebLinkDeleteView(SingleObjectDeleteView):
     model = WebLink
     object_permission = permission_web_link_delete
+    pk_url_kwarg = 'web_link_id'
     post_action_redirect = reverse_lazy(
         viewname='web_links:web_link_list'
     )
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Delete web link: %s') % self.get_object()
+            'object': self.object,
+            'title': _('Delete web link: %s') % self.object
         }
 
 
@@ -218,14 +215,15 @@ class WebLinkEditView(SingleObjectEditView):
     form_class = WebLinkForm
     model = WebLink
     object_permission = permission_web_link_edit
+    pk_url_kwarg = 'web_link_id'
     post_action_redirect = reverse_lazy(
         viewname='web_links:web_link_list'
     )
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit web link: %s') % self.get_object()
+            'object': self.object,
+            'title': _('Edit web link: %s') % self.object
         }
 
     def get_save_extra_data(self):

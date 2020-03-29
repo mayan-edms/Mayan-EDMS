@@ -8,40 +8,40 @@ from .views import (
 
 urlpatterns = [
     url(
-        regex=r'^groups/(?P<pk>\d+)/roles/$',
-        view=GroupRolesView.as_view(), name='group_roles'
+        regex=r'^groups/(?P<group_id>\d+)/roles/$', name='group_roles',
+        view=GroupRolesView.as_view()
     ),
-    url(regex=r'^roles/$', view=RoleListView.as_view(), name='role_list'),
+    url(regex=r'^roles/$', name='role_list', view=RoleListView.as_view()),
     url(
-        regex=r'^roles/create/$', view=RoleCreateView.as_view(),
-        name='role_create'
-    ),
-    url(
-        regex=r'^roles/(?P<pk>\d+)/delete/$', view=RoleDeleteView.as_view(),
-        name='role_delete'
+        regex=r'^roles/create/$', name='role_create',
+        view=RoleCreateView.as_view()
     ),
     url(
-        regex=r'^roles/(?P<pk>\d+)/edit/$', view=RoleEditView.as_view(),
-        name='role_edit'
+        regex=r'^roles/(?P<role_id>\d+)/delete/$', name='role_delete',
+        view=RoleDeleteView.as_view()
     ),
     url(
-        regex=r'^roles/(?P<pk>\d+)/groups/$',
-        view=SetupRoleMembersView.as_view(), name='role_groups'
+        regex=r'^roles/(?P<role_id>\d+)/edit/$', name='role_edit',
+        view=RoleEditView.as_view()
     ),
     url(
-        regex=r'^roles/(?P<pk>\d+)/permissions/$',
-        view=SetupRolePermissionsView.as_view(), name='role_permissions'
+        regex=r'^roles/(?P<role_id>\d+)/groups/$', name='role_groups',
+        view=SetupRoleMembersView.as_view()
     ),
+    url(
+        regex=r'^roles/(?P<role_id>\d+)/permissions/$',
+        name='role_permissions', view=SetupRolePermissionsView.as_view()
+    )
 ]
 
 api_urls = [
     url(
-        regex=r'^permissions/$', view=APIPermissionList.as_view(),
-        name='permission-list'
+        regex=r'^permissions/$', name='permission-list',
+        view=APIPermissionList.as_view()
     ),
-    url(regex=r'^roles/$', view=APIRoleListView.as_view(), name='role-list'),
+    url(regex=r'^roles/$', name='role-list', view=APIRoleListView.as_view()),
     url(
-        regex=r'^roles/(?P<pk>[0-9]+)/$', view=APIRoleView.as_view(),
-        name='role-detail'
-    ),
+        regex=r'^roles/(?P<pk>[0-9]+)/$', name='role-detail',
+        view=APIRoleView.as_view()
+    )
 ]

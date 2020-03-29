@@ -29,7 +29,7 @@ class MailerViewTestMixin(object):
     def _request_test_document_link_send_view(self):
         return self.post(
             viewname='mailer:send_document_link', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data={
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS
@@ -41,7 +41,7 @@ class MailerViewTestMixin(object):
     def _request_test_document_send_view(self):
         return self.post(
             viewname='mailer:send_document', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data={
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS
@@ -64,19 +64,26 @@ class MailerViewTestMixin(object):
     def _request_test_user_mailer_delete_view(self):
         return self.post(
             viewname='mailer:user_mailer_delete', kwargs={
-                'pk': self.test_user_mailer.pk
+                'mailer_id': self.test_user_mailer.pk
             }
         )
 
     def _request_test_user_mailer_list_view(self):
         return self.get(
-            viewname='mailer:user_mailer_list',
+            viewname='mailer:user_mailer_list'
+        )
+
+    def _request_test_user_mailer_log_entry_view(self):
+        return self.get(
+            viewname='mailer:user_mailer_log', kwargs={
+                'mailer_id': self.test_user_mailer.pk
+            }
         )
 
     def _request_test_user_mailer_test_view(self):
         return self.post(
             viewname='mailer:user_mailer_test', kwargs={
-                'pk': self.test_user_mailer.pk
+                'mailer_id': self.test_user_mailer.pk
             }, data={
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS

@@ -16,94 +16,94 @@ from .views import (
 
 urlpatterns = [
     url(
-        regex=r'^documents/(?P<pk>\d+)/smart_links/$',
-        view=DocumentSmartLinkListView.as_view(),
-        name='smart_link_instances_for_document'
+        regex=r'^documents/(?P<document_id>\d+)/smart_links/$',
+        name='smart_link_instances_for_document',
+        view=DocumentSmartLinkListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_pk>\d+)/smart_links/(?P<smart_link_pk>\d+)/$',
-        view=ResolvedSmartLinkView.as_view(), name='smart_link_instance_view'
+        regex=r'^documents/(?P<document_id>\d+)/smart_links/(?P<smart_link_pk>\d+)/$',
+        name='smart_link_instance_view', view=ResolvedSmartLinkView.as_view()
     ),
     url(
-        regex=r'^document_types/(?P<pk>\d+)/smart_links/$',
-        view=DocumentTypeSmartLinksView.as_view(),
-        name='document_type_smart_links'
+        regex=r'^document_types/(?P<document_type_id>\d+)/smart_links/$',
+        name='document_type_smart_links',
+        view=DocumentTypeSmartLinksView.as_view()
     ),
     url(
-        regex=r'^smart_links/$', view=SmartLinkListView.as_view(),
-        name='smart_link_list'
+        regex=r'^smart_links/$', name='smart_link_list',
+        view=SmartLinkListView.as_view()
     ),
     url(
-        regex=r'^smart_links/create/$', view=SmartLinkCreateView.as_view(),
-        name='smart_link_create'
+        regex=r'^smart_links/create/$', name='smart_link_create',
+        view=SmartLinkCreateView.as_view()
     ),
     url(
-        regex=r'^smart_links/(?P<pk>\d+)/delete/$',
-        view=SmartLinkDeleteView.as_view(), name='smart_link_delete'
+        regex=r'^smart_links/(?P<smart_link_id>\d+)/delete/$',
+        name='smart_link_delete', view=SmartLinkDeleteView.as_view()
     ),
     url(
-        regex=r'^smart_links/(?P<pk>\d+)/edit/$', view=SmartLinkEditView.as_view(),
-        name='smart_link_edit'
+        regex=r'^smart_links/(?P<smart_link_id>\d+)/edit/$',
+        name='smart_link_edit', view=SmartLinkEditView.as_view()
     ),
     url(
-        regex=r'^smart_links/(?P<pk>\d+)/document_types/$',
-        view=SetupSmartLinkDocumentTypesView.as_view(),
-        name='smart_link_document_types'
+        regex=r'^smart_links/(?P<smart_link_id>\d+)/document_types/$',
+        name='smart_link_document_types',
+        view=SetupSmartLinkDocumentTypesView.as_view()
     ),
     url(
-        regex=r'^smart_links/(?P<pk>\d+)/conditions/$',
-        view=SmartLinkConditionListView.as_view(),
-        name='smart_link_condition_list'
+        regex=r'^smart_links/(?P<smart_link_id>\d+)/conditions/$',
+        name='smart_link_condition_list',
+        view=SmartLinkConditionListView.as_view()
     ),
     url(
-        regex=r'^smart_links/(?P<pk>\d+)/conditions/create/$',
-        view=SmartLinkConditionCreateView.as_view(),
-        name='smart_link_condition_create'
+        regex=r'^smart_links/(?P<smart_link_id>\d+)/conditions/create/$',
+        name='smart_link_condition_create',
+        view=SmartLinkConditionCreateView.as_view()
     ),
     url(
-        regex=r'^smart_links/conditions/(?P<pk>\d+)/delete/$',
-        view=SmartLinkConditionDeleteView.as_view(),
-        name='smart_link_condition_delete'
+        regex=r'^smart_links/conditions/(?P<smart_link_condition_id>\d+)/delete/$',
+        name='smart_link_condition_delete',
+        view=SmartLinkConditionDeleteView.as_view()
     ),
     url(
-        regex=r'^smart_links/conditions/(?P<pk>\d+)/edit/$',
-        view=SmartLinkConditionEditView.as_view(),
-        name='smart_link_condition_edit'
-    ),
+        regex=r'^smart_links/conditions/(?P<smart_link_condition_id>\d+)/edit/$',
+        name='smart_link_condition_edit',
+        view=SmartLinkConditionEditView.as_view()
+    )
 ]
 
 api_urls = [
     url(
-        regex=r'^smart_links/$', view=APISmartLinkListView.as_view(),
-        name='smartlink-list'
+        regex=r'^smart_links/$', name='smartlink-list',
+        view=APISmartLinkListView.as_view()
     ),
     url(
-        regex=r'^smart_links/(?P<pk>[0-9]+)/$',
-        view=APISmartLinkView.as_view(), name='smartlink-detail'
+        regex=r'^smart_links/(?P<pk>[0-9]+)/$', name='smartlink-detail',
+        view=APISmartLinkView.as_view()
     ),
     url(
         regex=r'^smart_links/(?P<pk>[0-9]+)/conditions/$',
-        view=APISmartLinkConditionListView.as_view(),
-        name='smartlinkcondition-list'
+        name='smartlinkcondition-list',
+        view=APISmartLinkConditionListView.as_view()
     ),
     url(
         regex=r'^smart_links/(?P<pk>[0-9]+)/conditions/(?P<condition_pk>[0-9]+)/$',
-        view=APISmartLinkConditionView.as_view(),
-        name='smartlinkcondition-detail'
+        name='smartlinkcondition-detail',
+        view=APISmartLinkConditionView.as_view()
     ),
     url(
         regex=r'^documents/(?P<pk>[0-9]+)/resolved_smart_links/$',
-        view=APIResolvedSmartLinkListView.as_view(),
-        name='resolvedsmartlink-list'
+        name='resolvedsmartlink-list',
+        view=APIResolvedSmartLinkListView.as_view()
     ),
     url(
         regex=r'^documents/(?P<pk>[0-9]+)/resolved_smart_links/(?P<smart_link_pk>[0-9]+)/$',
-        view=APIResolvedSmartLinkView.as_view(),
-        name='resolvedsmartlink-detail'
+        name='resolvedsmartlink-detail',
+        view=APIResolvedSmartLinkView.as_view()
     ),
     url(
         regex=r'^documents/(?P<pk>[0-9]+)/resolved_smart_links/(?P<smart_link_pk>[0-9]+)/documents/$',
-        view=APIResolvedSmartLinkDocumentListView.as_view(),
-        name='resolvedsmartlinkdocument-list'
-    ),
+        name='resolvedsmartlinkdocument-list',
+        view=APIResolvedSmartLinkDocumentListView.as_view()
+    )
 ]

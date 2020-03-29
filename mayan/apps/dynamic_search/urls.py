@@ -9,42 +9,41 @@ from .views import (
 
 urlpatterns = [
     url(
-        regex=r'^search/(?P<search_model>[\.\w]+)/$', view=SearchView.as_view(),
-        name='search'
+        regex=r'^again/(?P<search_model_name>[\.\w]+)/$', name='search_again',
+        view=SearchAgainView.as_view()
     ),
     url(
-        regex=r'^advanced/(?P<search_model>[\.\w]+)/$',
-        view=AdvancedSearchView.as_view(), name='search_advanced'
+        regex=r'^advanced/(?P<search_model_name>[\.\w]+)/$',
+        name='search_advanced', view=AdvancedSearchView.as_view()
     ),
     url(
-        regex=r'^advanced/$',
-        view=AdvancedSearchView.as_view(), name='search_advanced'
+        regex=r'^advanced/$', name='search_advanced',
+        view=AdvancedSearchView.as_view()
     ),
     url(
-        regex=r'^again/(?P<search_model>[\.\w]+)/$',
-        view=SearchAgainView.as_view(), name='search_again'
+        regex=r'^results/$', name='results', view=ResultsView.as_view()
     ),
     url(
-        regex=r'^results/$',
-        view=ResultsView.as_view(), name='results'
+        regex=r'^results/(?P<search_model_name>[\.\w]+)/$', name='results',
+        view=ResultsView.as_view()
     ),
     url(
-        regex=r'^results/(?P<search_model>[\.\w]+)/$',
-        view=ResultsView.as_view(), name='results'
-    ),
+        regex=r'^search/(?P<search_model_name>[\.\w]+)/$', name='search',
+        view=SearchView.as_view()
+    )
 ]
 
 api_urls = [
     url(
-        regex=r'^search_models/$', view=APISearchModelList.as_view(),
-        name='searchmodel-list'
-    ),
-    url(
-        regex=r'^search/(?P<search_model>[\.\w]+)/$',
-        view=APISearchView.as_view(), name='search-view'
+        regex=r'^search/(?P<search_model>[\.\w]+)/$', name='search-view',
+        view=APISearchView.as_view()
     ),
     url(
         regex=r'^search/advanced/(?P<search_model>[\.\w]+)/$',
-        view=APIAdvancedSearchView.as_view(), name='advanced-search-view'
+        name='advanced-search-view', view=APIAdvancedSearchView.as_view()
     ),
+    url(
+        regex=r'^search_models/$', name='searchmodel-list',
+        view=APISearchModelList.as_view()
+    )
 ]

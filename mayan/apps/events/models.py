@@ -9,7 +9,8 @@ from actstream.models import Action
 
 from .classes import EventType
 from .managers import (
-    EventSubscriptionManager, ObjectEventSubscriptionManager
+    EventSubscriptionManager, NotificationManager,
+    ObjectEventSubscriptionManager
 )
 
 
@@ -84,6 +85,8 @@ class Notification(models.Model):
         verbose_name=_('Action')
     )
     read = models.BooleanField(default=False, verbose_name=_('Read'))
+
+    objects = NotificationManager()
 
     class Meta:
         ordering = ('-action__timestamp',)

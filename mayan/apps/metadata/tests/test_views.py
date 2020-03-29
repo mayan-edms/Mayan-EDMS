@@ -125,7 +125,7 @@ class DocumentMetadataViewTestCase(
         self.assertRedirects(
             response=response, expected_url=reverse(
                 viewname='metadata:metadata_edit', kwargs={
-                    'pk': self.test_document.pk
+                    'document_id': self.test_document.pk
                 }
             ), status_code=302,
             target_status_code=404
@@ -288,13 +288,13 @@ class DocumentMetadataViewTestCase(
 
         response = self.get(
             viewname='metadata:metadata_edit', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, follow=True
         )
         self.assertContains(response=response, text='Edit', status_code=200)
 
         response = self.post(
-            'metadata:metadata_edit', kwargs={'pk': self.test_document.pk},
+            'metadata:metadata_edit', kwargs={'document_id': self.test_document.pk},
             data={
                 'form-0-id': document_metadata_2.metadata_type.pk,
                 'form-0-update': True,
@@ -328,7 +328,7 @@ class DocumentMetadataViewTestCase(
         self.assertRedirects(
             response=response, expected_url=reverse(
                 viewname='metadata:metadata_view', kwargs={
-                    'pk': self.test_document.pk
+                    'document_id': self.test_document.pk
                 }
             ), status_code=302,
             target_status_code=404
@@ -548,7 +548,7 @@ class DocumentMetadataViewTestCase(
         self.assertRedirects(
             response=response, expected_url=reverse(
                 viewname='metadata:metadata_view', kwargs={
-                    'pk': self.test_document.pk
+                    'document_id': self.test_document.pk
                 }
             ), status_code=302,
             target_status_code=404

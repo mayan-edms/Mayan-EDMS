@@ -5,12 +5,12 @@ from rest_framework.exceptions import ParseError
 from mayan.apps.rest_api import generics
 
 from .classes import SearchModel
-from .mixins import SearchModelMixin
+from .mixins import SearchModelAPIMixin
 from .serializers import SearchModelSerializer
 from .runtime import search_backend
 
 
-class APISearchView(SearchModelMixin, generics.ListAPIView):
+class APISearchView(SearchModelAPIMixin, generics.ListAPIView):
     """
     get: Perform a search operation
     """
@@ -41,7 +41,7 @@ class APISearchView(SearchModelMixin, generics.ListAPIView):
             return None
 
 
-class APIAdvancedSearchView(SearchModelMixin, generics.ListAPIView):
+class APIAdvancedSearchView(SearchModelAPIMixin, generics.ListAPIView):
     """
     get: Perform an advanced search operation
     """

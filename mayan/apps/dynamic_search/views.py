@@ -64,7 +64,7 @@ class SearchView(SearchModelMixin, SimpleView):
             'form': self.get_form(),
             'form_action': reverse(
                 viewname='search:results', kwargs={
-                    'search_model': self.search_model.get_full_name()
+                    'search_model_name': self.search_model.get_full_name()
                 }
             ),
             'search_model': self.search_model,

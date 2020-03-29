@@ -41,10 +41,10 @@ if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
 
 class ClientMethodsTestCaseMixin(object):
     def _build_verb_kwargs(self, viewname=None, path=None, *args, **kwargs):
-        data = kwargs.pop('data', {})
+        data = kwargs.pop('data', None) or {}
         follow = kwargs.pop('follow', False)
-        query = kwargs.pop('query', {})
-        headers = kwargs.pop('headers', {})
+        query = kwargs.pop('query', None) or {}
+        headers = kwargs.pop('headers', None) or {}
 
         if viewname:
             path = reverse(viewname=viewname, *args, **kwargs)
