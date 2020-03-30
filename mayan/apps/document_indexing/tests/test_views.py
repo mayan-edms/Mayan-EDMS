@@ -55,6 +55,21 @@ class IndexViewTestCase(
 
         self.assertEqual(Index.objects.count(), 0)
 
+    def test_index_document_types_view_no_permission(self):
+        self._create_test_index()
+
+        response = self._request_test_index_document_type_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_index_document_types_view_with_access(self):
+        self._create_test_index()
+        self.grant_access(
+            obj=self.test_index, permission=permission_document_indexing_edit
+        )
+
+        response = self._request_test_index_document_type_view()
+        self.assertEqual(response.status_code, 200)
+
     def test_index_edit_view_no_permission(self):
         self._create_test_index()
 

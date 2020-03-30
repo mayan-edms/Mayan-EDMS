@@ -84,6 +84,13 @@ class IndexViewTestMixin(object):
             }
         )
 
+    def _request_test_index_document_type_view(self):
+        return self.get(
+            viewname='indexing:index_setup_document_types', kwargs={
+                'index_template_id': self.test_index.pk
+            }
+        )
+
     def _request_test_index_edit_view(self):
         return self.post(
             viewname='indexing:index_setup_edit', kwargs={

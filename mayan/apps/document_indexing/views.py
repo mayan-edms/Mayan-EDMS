@@ -188,7 +188,7 @@ class SetupIndexDocumentTypesView(AddRemoveView):
     main_object_method_remove = 'document_types_remove'
     main_object_permission = permission_document_indexing_edit
     main_object_model = Index
-    main_object_pk_url_kwarg = 'document_type_id'
+    main_object_pk_url_kwarg = 'index_template_id'
     secondary_object_model = DocumentType
     secondary_object_permission = permission_document_type_edit
     list_available_title = _('Available document types')
