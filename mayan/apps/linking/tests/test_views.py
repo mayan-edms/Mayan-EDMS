@@ -207,14 +207,14 @@ class SmartLinkDocumentViewTestCase(
 ):
     def setUp(self):
         super(SmartLinkDocumentViewTestCase, self).setUp()
-        self._create_test_smart_link()
-        self.test_smart_link.document_types.add(self.test_document_type)
+        self._create_test_smart_links()
+        #self.test_smart_link.document_types.add(self.test_document_type)
 
-        self.test_smart_link_2 = SmartLink.objects.create(
-            label=TEST_SMART_LINK_LABEL,
-            dynamic_label=TEST_SMART_LINK_DYNAMIC_LABEL
-        )
-        self.test_smart_link_2.document_types.add(self.test_document_type)
+        #self.test_smart_link_2 = SmartLink.objects.create(
+        #    label=TEST_SMART_LINK_LABEL,
+        #    dynamic_label=TEST_SMART_LINK_DYNAMIC_LABEL
+        #)
+        #self.test_smart_link_2.document_types.add(self.test_document_type)
 
     def test_document_smart_link_list_view_no_permission(self):
         self.grant_access(
@@ -229,12 +229,14 @@ class SmartLinkDocumentViewTestCase(
             status_code=200
         )
 
-    def test_document_smart_link_list_view_with_permission(self):
+    def test_document_smart_link_list_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_view
+            obj=self.test_smart_links[0],
+            permission=permission_smart_link_view
         )
         self.grant_access(
-            obj=self.test_smart_link_2, permission=permission_smart_link_view
+            obj=self.test_smart_links[1],
+            permission=permission_smart_link_view
         )
         self.grant_access(
             obj=self.test_document, permission=permission_document_view

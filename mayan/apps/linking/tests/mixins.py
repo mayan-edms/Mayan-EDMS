@@ -68,6 +68,28 @@ class SmartLinkTestMixin(object):
         if add_test_document_type:
             self.test_smart_link.document_types.add(self.test_document_type)
 
+    def _create_test_smart_links(self, add_test_document_type=False):
+        self.test_smart_links = []
+        self.test_smart_links.append(
+            SmartLink.objects.create(
+                label=TEST_SMART_LINK_LABEL,
+                dynamic_label=TEST_SMART_LINK_DYNAMIC_LABEL
+            )
+        )
+        self.test_smart_links.append(
+            SmartLink.objects.create(
+                label=TEST_SMART_LINK_LABEL,
+                dynamic_label=TEST_SMART_LINK_DYNAMIC_LABEL
+            )
+        )
+        if add_test_document_type:
+            self.test_smart_links[0].document_types.add(
+                self.test_document_type
+            )
+            self.test_smart_links[1].document_types.add(
+                self.test_document_type
+            )
+
     def _create_test_smart_link_condition(self):
         self.test_smart_link_condition = SmartLinkCondition.objects.create(
             smart_link=self.test_smart_link,
