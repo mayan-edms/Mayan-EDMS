@@ -169,6 +169,7 @@ class WorkflowInstanceTransitionExecuteView(FormView):
 
 class WorkflowInstanceTransitionSelectView(ExternalObjectMixin, FormView):
     external_object_class = WorkflowInstance
+    external_object_pk_url_kwarg = 'workflow_instance_id'
     form_class = WorkflowInstanceTransitionSelectForm
     template_name = 'appearance/generic_form.html'
 

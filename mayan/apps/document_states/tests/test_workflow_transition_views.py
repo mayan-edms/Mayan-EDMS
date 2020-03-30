@@ -157,12 +157,36 @@ class WorkflowTransitionDocumentViewTestCase(
         self._upload_test_document()
         self.test_workflow_instance = self.test_document.workflows.first()
 
-    def test_transition_workflow_no_access(self):
+    def test_workflow_transition_selection_get_view_with_workflow_access(self):
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_transition
+        )
+        response = self._request_test_workflow_transition_selection_get_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(
+            self.test_workflow_instance.get_current_state(),
+            self.test_workflow_state_1
+        )
+
+    def test_workflow_transition_selection_post_view_with_workflow_access(self):
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_transition
+        )
+        response = self._request_test_workflow_transition_selection_post_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_workflow_instance.get_current_state(),
+            self.test_workflow_state_1
+        )
+
+    def test_workflow_transition_execute_view_no_access(self):
         """
         Test transitioning a workflow without the transition workflow
         permission.
         """
-        response = self._request_test_workflow_transition()
+        response = self._request_test_workflow_transition_execute_view()
         self.assertEqual(response.status_code, 404)
 
         # Workflow should remain in the same initial state
@@ -171,7 +195,7 @@ class WorkflowTransitionDocumentViewTestCase(
             self.test_workflow_state_1
         )
 
-    def test_transition_workflow_with_workflow_access(self):
+    def test_workflow_transition_execute_view_with_workflow_access(self):
         """
         Test transitioning a workflow by granting the transition workflow
         permission to the role.
@@ -180,7 +204,7 @@ class WorkflowTransitionDocumentViewTestCase(
             obj=self.test_workflow, permission=permission_workflow_transition
         )
 
-        response = self._request_test_workflow_transition()
+        response = self._request_test_workflow_transition_execute_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
@@ -188,7 +212,7 @@ class WorkflowTransitionDocumentViewTestCase(
             self.test_workflow_state_2
         )
 
-    def test_transition_workflow_with_transition_access(self):
+    def test_workflow_transition_execute_view_with_transition_access(self):
         """
         Test transitioning a workflow by granting the transition workflow
         permission to the role.
@@ -198,7 +222,7 @@ class WorkflowTransitionDocumentViewTestCase(
             permission=permission_workflow_transition
         )
 
-        response = self._request_test_workflow_transition()
+        response = self._request_test_workflow_transition_execute_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
