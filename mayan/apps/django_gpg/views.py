@@ -30,6 +30,7 @@ logger = logging.getLogger(name=__name__)
 class KeyDeleteView(SingleObjectDeleteView):
     model = Key
     object_permission = permission_key_delete
+    pk_url_kwarg = 'key_id'
 
     def get_extra_context(self):
         return {'title': _('Delete key: %s') % self.get_object()}
@@ -45,6 +46,7 @@ class KeyDetailView(SingleObjectDetailView):
     form_class = KeyDetailForm
     model = Key
     object_permission = permission_key_view
+    pk_url_kwarg = 'key_id'
 
     def get_extra_context(self):
         return {
@@ -55,6 +57,7 @@ class KeyDetailView(SingleObjectDetailView):
 class KeyDownloadView(SingleObjectDownloadView):
     model = Key
     object_permission = permission_key_download
+    pk_url_kwarg = 'key_id'
 
     def get_download_file_object(self):
         return self.object.key_data

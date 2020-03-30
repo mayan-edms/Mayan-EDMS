@@ -71,7 +71,9 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
             return HttpResponseRedirect(
                 redirect_to=reverse(
                     viewname='signatures:document_version_signature_detached_create',
-                    kwargs={'pk': self.get_document_version().pk}
+                    kwargs={
+                        'document_version_id': self.get_document_version().pk
+                    }
                 )
             )
         except PassphraseError:
@@ -82,7 +84,9 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
             return HttpResponseRedirect(
                 redirect_to=reverse(
                     viewname='signatures:document_version_signature_detached_create',
-                    kwargs={'pk': self.get_document_version().pk}
+                    kwargs={
+                        'document_version_id': self.get_document_version().pk
+                    }
                 )
             )
         else:
@@ -107,7 +111,9 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document_version(self):
-        return get_object_or_404(klass=DocumentVersion, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            klass=DocumentVersion, pk=self.kwargs['document_version_id']
+        )
 
     def get_extra_context(self):
         return {
@@ -125,7 +131,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
     def get_post_action_redirect(self):
         return reverse(
             viewname='signatures:document_version_signature_list',
-            kwargs={'pk': self.get_document_version().pk}
+            kwargs={'document_version_id': self.get_document_version().pk}
         )
 
 
@@ -153,7 +159,9 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
             return HttpResponseRedirect(
                 redirect_to=reverse(
                     viewname='signatures:document_version_signature_embedded_create',
-                    kwargs={'pk': self.get_document_version().pk}
+                    kwargs={
+                        'document_version_id': self.get_document_version().pk
+                    }
                 )
             )
         except PassphraseError:
@@ -164,7 +172,9 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
             return HttpResponseRedirect(
                 redirect_to=reverse(
                     viewname='signatures:document_version_signature_embedded_create',
-                    kwargs={'pk': self.get_document_version().pk}
+                    kwargs={
+                        'document_version_id': self.get_document_version().pk
+                    }
                 )
             )
         else:
@@ -176,7 +186,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
             return HttpResponseRedirect(
                 redirect_to=reverse(
                     viewname='signatures:document_version_signature_list',
-                    kwargs={'pk': new_version.pk}
+                    kwargs={'document_version_id': new_version.pk}
                 )
             )
 
@@ -196,7 +206,9 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document_version(self):
-        return get_object_or_404(klass=DocumentVersion, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            klass=DocumentVersion, pk=self.kwargs['document_version_id']
+        )
 
     def get_extra_context(self):
         return {
@@ -215,6 +227,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
 class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):
     model = DetachedSignature
     object_permission = permission_document_version_signature_delete
+    pk_url_kwarg = 'signature_id'
 
     def get_extra_context(self):
         return {
@@ -226,13 +239,16 @@ class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):
     def get_post_action_redirect(self):
         return reverse(
             viewname='signatures:document_version_signature_list',
-            kwargs={'pk': self.get_object().document_version.pk}
+            kwargs={
+                'document_version_id': self.get_object().document_version.pk
+            }
         )
 
 
 class DocumentVersionSignatureDetailView(SingleObjectDetailView):
     form_class = DocumentVersionSignatureDetailForm
     object_permission = permission_document_version_signature_view
+    pk_url_kwarg = 'signature_id'
 
     def get_extra_context(self):
         return {
@@ -251,6 +267,7 @@ class DocumentVersionSignatureDetailView(SingleObjectDetailView):
 class DocumentVersionSignatureDownloadView(SingleObjectDownloadView):
     model = DetachedSignature
     object_permission = permission_document_version_signature_download
+    pk_url_kwarg = 'signature_id'
 
     def get_download_file_object(self):
         return self.object.signature_file
@@ -264,6 +281,7 @@ class DocumentVersionSignatureListView(
 ):
     external_object_class = DocumentVersion
     external_object_permission = permission_document_version_signature_view
+    external_object_pk_url_kwarg = 'document_version_id'
 
     def get_extra_context(self):
         return {
@@ -298,7 +316,9 @@ class DocumentVersionSignatureListView(
                     )
                 ),
             ],
-            'no_results_title': _('There are no signatures for this document.'),
+            'no_results_title': _(
+                'There are no signatures for this document.'
+            ),
             'object': self.external_object,
             'title': _(
                 'Signatures for document version: %s'
@@ -325,7 +345,9 @@ class DocumentVersionSignatureUploadView(SingleObjectCreateView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document_version(self):
-        return get_object_or_404(klass=DocumentVersion, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            klass=DocumentVersion, pk=self.kwargs['document_version_id']
+        )
 
     def get_extra_context(self):
         return {
@@ -340,8 +362,9 @@ class DocumentVersionSignatureUploadView(SingleObjectCreateView):
 
     def get_post_action_redirect(self):
         return reverse(
-            viewname='signatures:document_version_signature_list',
-            kwargs={'pk': self.get_document_version().pk}
+            viewname='signatures:document_version_signature_list', kwargs={
+                'document_version_id': self.get_document_version().pk
+            }
         )
 
 

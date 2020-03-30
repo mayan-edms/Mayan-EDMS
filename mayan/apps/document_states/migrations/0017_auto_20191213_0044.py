@@ -21,8 +21,9 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='workflowstateaction', name='label',
-            field=models.CharField(help_text='A short text describing the '
-                'action.', max_length=255, verbose_name='Label'
+            field=models.CharField(
+                help_text='A short text describing the action.',
+                max_length=255, verbose_name='Label'
             ),
         ),
         migrations.AlterField(

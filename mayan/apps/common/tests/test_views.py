@@ -10,10 +10,23 @@ from .base import GenericViewTestCase
 from .literals import TEST_ERROR_LOG_ENTRY_RESULT
 
 
-class CommonViewTestCase(GenericViewTestCase):
+class CommonViewTestMixin(object):
     def _request_about_view(self):
         return self.get(viewname='common:about_view')
 
+    def _request_object_error_log_list(self):
+        content_type = ContentType.objects.get_for_model(model=self.test_user)
+
+        return self.get(
+            viewname='common:object_error_list', kwargs={
+                'app_label': content_type.app_label,
+                'model_name': content_type.model,
+                'object_id': self.test_user.pk
+            }
+        )
+
+
+class CommonViewTestCase(CommonViewTestMixin, GenericViewTestCase):
     def test_about_view(self):
         response = self._request_about_view()
         self.assertContains(response=response, text='About', status_code=200)
@@ -26,17 +39,6 @@ class CommonViewTestCase(GenericViewTestCase):
 
         self.error_log_entry = self.test_user.error_logs.create(
             result=TEST_ERROR_LOG_ENTRY_RESULT
-        )
-
-    def _request_object_error_log_list(self):
-        content_type = ContentType.objects.get_for_model(model=self.test_user)
-
-        return self.get(
-            viewname='common:object_error_list', kwargs={
-                'app_label': content_type.app_label,
-                'model': content_type.model,
-                'object_id': self.test_user.pk
-            }
         )
 
     def test_object_error_list_view_no_permissions(self):

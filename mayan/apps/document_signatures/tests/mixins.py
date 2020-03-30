@@ -64,7 +64,9 @@ class DetachedSignatureViewTestMixin(object):
     def _request_test_document_version_signature_create_view(self):
         return self.post(
             viewname='signatures:document_version_signature_detached_create',
-            kwargs={'pk': self.test_document_version.pk}, data={
+            kwargs={
+                'document_version_id': self.test_document_version.pk
+            }, data={
                 'key': self.test_key_private.pk,
                 'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
             }
@@ -73,15 +75,16 @@ class DetachedSignatureViewTestMixin(object):
     def _request_test_document_version_signature_download_view(self):
         return self.get(
             viewname='signatures:document_version_signature_download',
-            kwargs={'pk': self.test_signature.pk}
+            kwargs={'signature_id': self.test_signature.pk}
         )
 
     def _request_test_document_version_signature_upload_view(self):
         with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='signatures:document_version_signature_upload',
-                kwargs={'pk': self.test_document.latest_version.pk},
-                data={'signature_file': file_object}
+                kwargs={
+                    'document_version_id': self.test_document.latest_version.pk
+                }, data={'signature_file': file_object}
             )
 
 
@@ -122,7 +125,9 @@ class EmbeddedSignatureViewTestMixin(object):
     def _request_test_document_version_signature_create_view(self):
         return self.post(
             viewname='signatures:document_version_signature_embedded_create',
-            kwargs={'pk': self.test_document_version.pk}, data={
+            kwargs={
+                'document_version_id': self.test_document_version.pk
+            }, data={
                 'key': self.test_key_private.pk,
                 'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
             }
@@ -141,20 +146,23 @@ class SignatureTestMixin(object):
 class SignatureViewTestMixin(object):
     def _request_test_document_version_signature_delete_view(self):
         return self.post(
-            viewname='signatures:document_version_signature_delete',
-            kwargs={'pk': self.test_signature.pk}
+            viewname='signatures:document_version_signature_delete', kwargs={
+                'signature_id': self.test_signature.pk
+            }
         )
 
     def _request_test_document_version_signature_details_view(self):
         return self.get(
             viewname='signatures:document_version_signature_details',
-            kwargs={'pk': self.test_signature.pk}
+            kwargs={'signature_id': self.test_signature.pk}
         )
 
     def _request_test_document_version_signature_list_view(self, document):
         return self.get(
             viewname='signatures:document_version_signature_list',
-            kwargs={'pk': self.test_document.latest_version.pk}
+            kwargs={
+                'document_version_id': self.test_document.latest_version.pk
+            }
         )
 
     def _request_all_test_document_version_signature_verify_view(self):

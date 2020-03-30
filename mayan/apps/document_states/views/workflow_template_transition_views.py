@@ -26,7 +26,7 @@ from ..permissions import permission_workflow_edit, permission_workflow_view
 class WorkflowTemplateTransitionCreateView(ExternalObjectMixin, SingleObjectCreateView):
     external_object_class = Workflow
     external_object_permission = permission_workflow_edit
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'workflow_template_id'
     form_class = WorkflowTransitionForm
 
     def get_extra_context(self):
@@ -54,14 +54,18 @@ class WorkflowTemplateTransitionCreateView(ExternalObjectMixin, SingleObjectCrea
     def get_success_url(self):
         return reverse(
             viewname='document_states:workflow_template_transition_list',
-            kwargs={'pk': self.kwargs['pk']}
+            kwargs={
+                'workflow_template_id': self.kwargs[
+                    'workflow_template_id'
+                ]
+            }
         )
 
 
 class WorkflowTemplateTransitionDeleteView(SingleObjectDeleteView):
     model = WorkflowTransition
     object_permission = permission_workflow_edit
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'workflow_template_transition_id'
 
     def get_extra_context(self):
         return {
@@ -76,7 +80,7 @@ class WorkflowTemplateTransitionDeleteView(SingleObjectDeleteView):
     def get_success_url(self):
         return reverse(
             viewname='document_states:workflow_template_transition_list',
-            kwargs={'pk': self.get_object().workflow.pk}
+            kwargs={'workflow_template_id': self.get_object().workflow.pk}
         )
 
 
@@ -84,7 +88,7 @@ class WorkflowTemplateTransitionEditView(SingleObjectEditView):
     form_class = WorkflowTransitionForm
     model = WorkflowTransition
     object_permission = permission_workflow_edit
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'workflow_template_transition_id'
 
     def get_extra_context(self):
         return {
@@ -106,14 +110,14 @@ class WorkflowTemplateTransitionEditView(SingleObjectEditView):
     def get_success_url(self):
         return reverse(
             viewname='document_states:workflow_template_transition_list',
-            kwargs={'pk': self.get_object().workflow.pk}
+            kwargs={'workflow_template_id': self.get_object().workflow.pk}
         )
 
 
 class WorkflowTemplateTransitionListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = Workflow
     external_object_permission = permission_workflow_view
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'workflow_template_id'
     object_permission = permission_workflow_view
 
     def get_extra_context(self):
@@ -146,7 +150,7 @@ class WorkflowTemplateTransitionListView(ExternalObjectMixin, SingleObjectListVi
 class WorkflowTemplateTransitionTriggerEventListView(ExternalObjectMixin, FormView):
     external_object_class = WorkflowTransition
     external_object_permission = permission_workflow_edit
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'workflow_template_transition_id'
     form_class = WorkflowTransitionTriggerEventRelationshipFormSet
 
     def dispatch(self, *args, **kwargs):
@@ -220,13 +224,16 @@ class WorkflowTemplateTransitionTriggerEventListView(ExternalObjectMixin, FormVi
     def get_post_action_redirect(self):
         return reverse(
             viewname='document_states:workflow_template_transition_list',
-            kwargs={'pk': self.get_object().workflow.pk}
+            kwargs={'workflow_template_id': self.get_object().workflow.pk}
         )
 
 
-class WorkflowTemplateTransitionFieldCreateView(ExternalObjectMixin, SingleObjectCreateView):
+class WorkflowTemplateTransitionFieldCreateView(
+    ExternalObjectMixin, SingleObjectCreateView
+):
     external_object_class = WorkflowTransition
     external_object_permission = permission_workflow_edit
+    external_object_pk_url_kwarg = 'workflow_template_transition_id'
     fields = (
         'name', 'label', 'field_type', 'help_text', 'required', 'widget',
         'widget_kwargs'
@@ -253,13 +260,16 @@ class WorkflowTemplateTransitionFieldCreateView(ExternalObjectMixin, SingleObjec
     def get_post_action_redirect(self):
         return reverse(
             viewname='document_states:workflow_template_transition_field_list',
-            kwargs={'pk': self.external_object.pk}
+            kwargs={
+                'workflow_template_transition_id': self.external_object.pk
+            }
         )
 
 
 class WorkflowTemplateTransitionFieldDeleteView(SingleObjectDeleteView):
     model = WorkflowTransitionField
     object_permission = permission_workflow_edit
+    pk_url_kwarg = 'workflow_template_transition_field_id'
 
     def get_extra_context(self):
         return {
@@ -275,7 +285,9 @@ class WorkflowTemplateTransitionFieldDeleteView(SingleObjectDeleteView):
     def get_post_action_redirect(self):
         return reverse(
             viewname='document_states:workflow_template_transition_field_list',
-            kwargs={'pk': self.object.transition.pk}
+            kwargs={
+                'workflow_template_transition_id': self.object.transition.pk
+            }
         )
 
 
@@ -286,6 +298,7 @@ class WorkflowTemplateTransitionFieldEditView(SingleObjectEditView):
     )
     model = WorkflowTransitionField
     object_permission = permission_workflow_edit
+    pk_url_kwarg = 'workflow_template_transition_field_id'
 
     def get_extra_context(self):
         return {
@@ -301,13 +314,16 @@ class WorkflowTemplateTransitionFieldEditView(SingleObjectEditView):
     def get_post_action_redirect(self):
         return reverse(
             viewname='document_states:workflow_template_transition_field_list',
-            kwargs={'pk': self.object.transition.pk}
+            kwargs={
+                'workflow_template_transition_id': self.object.transition.pk
+            }
         )
 
 
 class WorkflowTemplateTransitionFieldListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = WorkflowTransition
     external_object_permission = permission_workflow_edit
+    external_object_pk_url_kwarg = 'workflow_template_transition_id'
 
     def get_extra_context(self):
         return {

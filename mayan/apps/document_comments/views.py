@@ -22,7 +22,7 @@ from .permissions import (
 class DocumentCommentCreateView(ExternalObjectMixin, SingleObjectCreateView):
     external_object_class = Document
     external_object_permission = permission_document_comment_create
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'document_id'
     fields = ('comment',)
 
     def get_extra_context(self):
@@ -39,7 +39,7 @@ class DocumentCommentCreateView(ExternalObjectMixin, SingleObjectCreateView):
     def get_post_action_redirect(self):
         return reverse(
             viewname='comments:comments_for_document', kwargs={
-                'pk': self.kwargs['pk']
+                'document_id': self.kwargs['document_id']
             }
         )
 
@@ -54,8 +54,8 @@ class DocumentCommentCreateView(ExternalObjectMixin, SingleObjectCreateView):
 
 class DocumentCommentDeleteView(SingleObjectDeleteView):
     model = Comment
-    pk_url_kwarg = 'pk'
     object_permission = permission_document_comment_delete
+    pk_url_kwarg = 'comment_id'
 
     def get_delete_extra_data(self):
         return {'_user': self.request.user}
@@ -71,7 +71,7 @@ class DocumentCommentDeleteView(SingleObjectDeleteView):
     def get_post_action_redirect(self):
         return reverse(
             viewname='comments:comments_for_document', kwargs={
-                'pk': self.object.document.pk
+                'document_id': self.object.document.pk
             }
         )
 
@@ -79,7 +79,7 @@ class DocumentCommentDeleteView(SingleObjectDeleteView):
 class DocumentCommentDetailView(SingleObjectDetailView):
     form_class = DocumentCommentDetailForm
     model = Comment
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'comment_id'
     object_permission = permission_document_comment_view
 
     def get_extra_context(self):
@@ -94,7 +94,7 @@ class DocumentCommentDetailView(SingleObjectDetailView):
 class DocumentCommentEditView(SingleObjectEditView):
     fields = ('comment',)
     model = Comment
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'comment_id'
     object_permission = permission_document_comment_edit
 
     def get_save_extra_data(self):
@@ -111,7 +111,7 @@ class DocumentCommentEditView(SingleObjectEditView):
     def get_post_action_redirect(self):
         return reverse(
             viewname='comments:comments_for_document', kwargs={
-                'pk': self.object.document.pk
+                'document_id': self.object.document.pk
             }
         )
 
@@ -119,7 +119,7 @@ class DocumentCommentEditView(SingleObjectEditView):
 class DocumentCommentListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = Document
     external_object_permission = permission_document_comment_view
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'document_id'
 
     def get_extra_context(self):
         return {

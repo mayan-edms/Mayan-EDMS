@@ -1,6 +1,8 @@
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.document_states.tests.base import ActionTestCase
-from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
+from mayan.apps.document_states.tests.mixins import (
+    WorkflowStateActionViewTestMixin, WorkflowTestMixin
+)
 
 from ..models import Tag
 from ..workflow_actions import AttachTagAction, RemoveTagAction
@@ -29,31 +31,23 @@ class TagActionTestCase(TagTestMixin, ActionTestCase):
         self.assertEqual(self.test_tag.documents.count(), 0)
 
 
-class TagActionViewTestCase(WorkflowTestMixin, GenericViewTestCase):
+class TagActionViewTestCase(
+    WorkflowStateActionViewTestMixin, WorkflowTestMixin, GenericViewTestCase
+):
     def test_tag_attach_action_create_view(self):
         self._create_test_workflow()
         self._create_test_workflow_state()
 
-        response = self.get(
-            viewname='document_states:workflow_template_state_action_create',
-            kwargs={
-                'pk': self.test_workflow_state.pk,
-                'class_path': 'mayan.apps.tags.workflow_actions.AttachTagAction'
-            }
+        response = self._request_test_workflow_template_state_action_create_post_view(
+            class_path='mayan.apps.tags.workflow_actions.AttachTagAction'
         )
-
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
     def test_tag_remove_action_create_view(self):
         self._create_test_workflow()
         self._create_test_workflow_state()
 
-        response = self.get(
-            viewname='document_states:workflow_template_state_action_create',
-            kwargs={
-                'pk': self.test_workflow_state.pk,
-                'class_path': 'mayan.apps.tags.workflow_actions.RemoveTagAction'
-            }
+        response = self._request_test_workflow_template_state_action_create_post_view(
+            class_path='mayan.apps.tags.workflow_actions.RemoveTagAction'
         )
-
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)

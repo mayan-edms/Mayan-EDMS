@@ -20,10 +20,10 @@ class WorkflowStateActionViewTestCase(
     def test_workflow_state_action_list_view_no_permission(self):
         self._create_test_workflow_state_action()
 
-        response = self._request_test_document_state_action_view()
+        response = self._request_test_worflow_template_state_action_view()
         self.assertNotContains(
             response=response, text=self.TestWorkflowAction.label,
-            status_code=200
+            status_code=404
         )
 
     def test_workflow_state_action_list_view_with_access(self):
@@ -33,7 +33,7 @@ class WorkflowStateActionViewTestCase(
             obj=self.test_workflow, permission=permission_workflow_edit
         )
 
-        response = self._request_test_document_state_action_view()
+        response = self._request_test_worflow_template_state_action_view()
         self.assertContains(
             response=response, text=self.TestWorkflowAction.label,
             status_code=200

@@ -17,6 +17,7 @@ class WorkflowRuntimeProxyDocumentListView(
 ):
     external_object_class = WorkflowRuntimeProxy
     external_object_permission = permission_workflow_view
+    external_object_pk_url_kwarg = 'workflow_runtime_proxy_id'
 
     def get_document_queryset(self):
         return Document.objects.filter(
@@ -46,6 +47,7 @@ class WorkflowRuntimeProxyDocumentListView(
 
 
 class WorkflowRuntimeProxyListView(SingleObjectListView):
+    model = WorkflowRuntimeProxy
     object_permission = permission_workflow_view
 
     def get_extra_context(self):
@@ -64,15 +66,13 @@ class WorkflowRuntimeProxyListView(SingleObjectListView):
             'title': _('Workflows'),
         }
 
-    def get_source_queryset(self):
-        return WorkflowRuntimeProxy.objects.all()
-
 
 class WorkflowRuntimeProxyStateDocumentListView(
     ExternalObjectMixin, DocumentListView
 ):
     external_object_class = WorkflowStateRuntimeProxy
     external_object_permission = permission_workflow_view
+    external_object_pk_url_kwarg = 'workflow_runtime_proxy_state_id'
 
     def get_document_queryset(self):
         return self.external_object.get_documents()
@@ -106,6 +106,7 @@ class WorkflowRuntimeProxyStateListView(
 ):
     external_object_class = WorkflowRuntimeProxy
     external_object_permission = permission_workflow_view
+    external_object_pk_url_kwarg = 'workflow_runtime_proxy_id'
 
     def get_extra_context(self):
         return {

@@ -6,6 +6,15 @@ from .literals import (
 )
 
 
+class IndexInstaceViewTestMixin(object):
+    def _request_test_index_instance_node_view(self, index_instance_node):
+        return self.get(
+            viewname='indexing:index_instance_node_view', kwargs={
+                'index_instance_node_id': index_instance_node.pk
+            }
+        )
+
+
 class IndexTestMixin(object):
     def _create_test_index(self, rebuild=False):
         # Create empty index
@@ -27,6 +36,32 @@ class IndexTestMixin(object):
         )
 
 
+class IndexToolsViewTestMixin(object):
+    def _request_indexes_rebuild_get_view(self):
+        return self.get(
+            viewname='indexing:rebuild_index_instances'
+        )
+
+    def _request_indexes_rebuild_post_view(self):
+        return self.post(
+            viewname='indexing:rebuild_index_instances', data={
+                'index_templates': self.test_index.pk
+            }
+        )
+
+    def _request_indexes_reset_get_view(self):
+        return self.get(
+            viewname='indexing:index_instances_reset'
+        )
+
+    def _request_indexes_reset_post_view(self):
+        return self.post(
+            viewname='indexing:index_instances_reset', data={
+                'index_templates': self.test_index.pk
+            }
+        )
+
+
 class IndexViewTestMixin(object):
     def _request_test_index_create_view(self):
         # Typecast to list to force queryset evaluation
@@ -45,14 +80,14 @@ class IndexViewTestMixin(object):
     def _request_test_index_delete_view(self):
         return self.post(
             viewname='indexing:index_setup_delete', kwargs={
-                'pk': self.test_index.pk
+                'index_template_id': self.test_index.pk
             }
         )
 
     def _request_test_index_edit_view(self):
         return self.post(
             viewname='indexing:index_setup_edit', kwargs={
-                'pk': self.test_index.pk
+                'index_template_id': self.test_index.pk
             }, data={
                 'label': TEST_INDEX_LABEL_EDITED, 'slug': TEST_INDEX_SLUG
             }
@@ -61,6 +96,6 @@ class IndexViewTestMixin(object):
     def _request_test_index_rebuild_view(self):
         return self.post(
             viewname='indexing:index_setup_rebuild', kwargs={
-                'pk': self.test_index.pk
+                'index_template_id': self.test_index.pk
             }
         )

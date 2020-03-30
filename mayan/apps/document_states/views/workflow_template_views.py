@@ -29,7 +29,7 @@ from ..tasks import task_launch_all_workflows, task_launch_workflow
 class DocumentTypeWorkflowTemplatesView(AddRemoveView):
     main_object_permission = permission_document_type_edit
     main_object_model = DocumentType
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'document_type_id'
     secondary_object_model = Workflow
     secondary_object_permission = permission_workflow_edit
     list_available_title = _('Available workflows')
@@ -96,6 +96,7 @@ class WorkflowTemplateCreateView(SingleObjectCreateView):
 class WorkflowTemplateDeleteView(SingleObjectDeleteView):
     model = Workflow
     object_permission = permission_workflow_delete
+    pk_url_kwarg = 'workflow_template_id'
     post_action_redirect = reverse_lazy(
         viewname='document_states:workflow_template_list'
     )
@@ -112,6 +113,7 @@ class WorkflowTemplateEditView(SingleObjectEditView):
     form_class = WorkflowForm
     model = Workflow
     object_permission = permission_workflow_edit
+    pk_url_kwarg = 'workflow_template_id'
     post_action_redirect = reverse_lazy(
         viewname='document_states:workflow_template_list'
     )
@@ -130,7 +132,7 @@ class WorkflowTemplateEditView(SingleObjectEditView):
 class WorkflowTemplateDocumentTypesView(AddRemoveView):
     main_object_permission = permission_workflow_edit
     main_object_model = Workflow
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'workflow_template_id'
     secondary_object_model = DocumentType
     secondary_object_permission = permission_document_type_edit
     list_available_title = _('Available document types')
@@ -185,6 +187,7 @@ class WorkflowTemplateDocumentTypesView(AddRemoveView):
 class WorkflowTemplateLaunchView(ExternalObjectMixin, ConfirmView):
     external_object_class = Workflow
     external_object_permission = permission_workflow_tools
+    external_object_pk_url_kwarg = 'workflow_template_id'
 
     def get_extra_context(self):
         return {
@@ -234,7 +237,7 @@ class WorkflowTemplatePreviewView(SingleObjectDetailView):
     form_class = WorkflowPreviewForm
     model = Workflow
     object_permission = permission_workflow_view
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'workflow_template_id'
 
     def get_extra_context(self):
         return {

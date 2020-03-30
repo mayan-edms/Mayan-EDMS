@@ -10,60 +10,60 @@ from .views import (
 
 urlpatterns = [
     url(
-        regex=r'^documents/(?P<pk>\d+)/content/$',
-        view=DocumentContentView.as_view(), name='document_content'
+        regex=r'^documents/(?P<document_id>\d+)/content/$',
+        name='document_content', view=DocumentContentView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>\d+)/content/delete/$',
-        view=DocumentContentDeleteView.as_view(),
-        name='document_content_delete'
+        regex=r'^documents/(?P<document_id>\d+)/content/delete/$',
+        name='document_content_delete',
+        view=DocumentContentDeleteView.as_view()
     ),
     url(
         regex=r'^documents/multiple/content/delete/$',
-        view=DocumentContentDeleteView.as_view(),
-        name='document_content_delete_multiple'
+        name='document_content_delete_multiple',
+        view=DocumentContentDeleteView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>\d+)/content/download/$',
-        view=DocumentContentDownloadView.as_view(),
-        name='document_content_download'
+        regex=r'^documents/(?P<document_id>\d+)/content/download/$',
+        name='document_content_download',
+        view=DocumentContentDownloadView.as_view()
     ),
     url(
-        regex=r'^documents/pages/(?P<pk>\d+)/content/$',
-        view=DocumentPageContentView.as_view(), name='document_page_content'
-    ),
-    url(
-        regex=r'^documents/(?P<pk>\d+)/submit/$',
-        view=DocumentSubmitView.as_view(), name='document_submit'
+        regex=r'^documents/(?P<document_id>\d+)/submit/$',
+        name='document_submit', view=DocumentSubmitView.as_view()
     ),
     url(
         regex=r'^documents/multiple/submit/$',
-        view=DocumentSubmitView.as_view(), name='document_submit_multiple'
+        name='document_submit_multiple', view=DocumentSubmitView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>\d+)/errors/$',
-        view=DocumentParsingErrorsListView.as_view(),
-        name='document_parsing_error_list'
+        regex=r'^documents/(?P<document_id>\d+)/errors/$',
+        name='document_parsing_error_list',
+        view=DocumentParsingErrorsListView.as_view()
     ),
     url(
-        regex=r'^document_types/submit/$',
-        view=DocumentTypeSubmitView.as_view(), name='document_type_submit'
+        regex=r'^documents/pages/(?P<document_page_id>\d+)/content/$',
+        name='document_page_content', view=DocumentPageContentView.as_view()
     ),
     url(
-        regex=r'^document_types/(?P<pk>\d+)/parsing/settings/$',
-        view=DocumentTypeSettingsEditView.as_view(),
-        name='document_type_parsing_settings'
+        regex=r'^document_types/submit/$', name='document_type_submit',
+        view=DocumentTypeSubmitView.as_view()
     ),
     url(
-        regex=r'^errors/all/$', view=ParseErrorListView.as_view(),
-        name='error_list'
+        regex=r'^document_types/(?P<document_type_id>\d+)/parsing/settings/$',
+        name='document_type_parsing_settings',
+        view=DocumentTypeSettingsEditView.as_view()
     ),
+    url(
+        regex=r'^errors/all/$', name='error_list',
+        view=ParseErrorListView.as_view()
+    )
 ]
 
 api_urls = [
     url(
         regex=r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/pages/(?P<page_pk>\d+)/content/$',
-        view=APIDocumentPageContentView.as_view(),
-        name='document-page-content-view'
-    ),
+        name='document-page-content-view',
+        view=APIDocumentPageContentView.as_view()
+    )
 ]

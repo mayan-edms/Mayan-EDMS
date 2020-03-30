@@ -344,11 +344,7 @@ class DocumentCheckoutViewTestCase(
             obj=self.test_document, permission=permission_document_check_in
         )
 
-        response = self.post(
-            viewname='checkouts:check_in_document', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
+        response = self._request_test_document_check_in_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(self.test_document.is_checked_out())
@@ -364,11 +360,7 @@ class DocumentCheckoutViewTestCase(
         )
 
         # Check in document as test_case_user
-        response = self.post(
-            viewname='checkouts:check_in_document', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
+        response = self._request_test_document_check_in_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertFalse(self.test_document.is_checked_out())
@@ -397,8 +389,8 @@ class NewVersionBlockViewTestCase(
             }, follow=True
         )
         self.assertContains(
-            response=response, text='Unable to upload new versions',
-            status_code=200
+            response=response, status_code=200,
+            text='Unable to upload new versions'
         )
 
         self.assertEqual(DocumentVersion.objects.count(), version_count)

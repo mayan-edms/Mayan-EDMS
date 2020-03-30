@@ -87,8 +87,9 @@ class Index(models.Model):
     def get_absolute_url(self):
         try:
             return reverse(
-                viewname='indexing:index_instance_node_view',
-                kwargs={'pk': self.instance_root.pk}
+                viewname='indexing:index_instance_node_view', kwargs={
+                    'index_instance_node_id': self.instance_root.pk
+                }
             )
         except IndexInstanceNode.DoesNotExist:
             return '#'
@@ -413,7 +414,7 @@ class IndexInstanceNode(MPTTModel):
     def get_absolute_url(self):
         return reverse(
             viewname='indexing:index_instance_node_view', kwargs={
-                'pk': self.pk
+                'index_instance_node_id': self.pk
             }
         )
 

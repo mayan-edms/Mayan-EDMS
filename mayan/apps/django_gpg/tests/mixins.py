@@ -43,7 +43,7 @@ class KeyViewTestMixin(object):
     def _request_test_key_download_view(self):
         return self.get(
             viewname='django_gpg:key_download', kwargs={
-                'pk': self.test_key_private.pk
+                'key_id': self.test_key_private.pk
             }
         )
 

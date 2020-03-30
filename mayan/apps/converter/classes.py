@@ -452,7 +452,7 @@ class LayerLinkKwargsFactory(object):
             default_layer = Layer.get_by_value(key='default', value=True)
             return {
                 'app_label': '"{}"'.format(content_type.app_label),
-                'model': '"{}"'.format(content_type.model),
+                'model_name': '"{}"'.format(content_type.model),
                 'object_id': '{}.pk'.format(self.variable_name),
                 'layer_name': '"{}"'.format(
                     self.layer_name or context.get(

@@ -9,16 +9,17 @@ def conditional_active(context, resolved_link):
 
 
 link_transformation_delete = LayerLink(
-    action='delete',
-    kwargs={'layer_name': 'layer_name', 'pk': 'resolved_object.pk'},
+    action='delete', kwargs={
+        'layer_name': 'layer_name', 'transformation_id': 'resolved_object.pk'
+    },
     icon_class_path='mayan.apps.converter.icons.icon_transformation_delete',
     layer=layer_saved_transformations,
     tags='dangerous', text=_('Delete'), view='converter:transformation_delete'
 )
 link_transformation_edit = LayerLink(
-    action='edit',
-    kwargs={'layer_name': 'layer_name', 'pk': 'resolved_object.pk'},
-    icon_class_path='mayan.apps.converter.icons.icon_transformation_edit',
+    action='edit', kwargs={
+        'layer_name': 'layer_name', 'transformation_id': 'resolved_object.pk'
+    }, icon_class_path='mayan.apps.converter.icons.icon_transformation_edit',
     layer=layer_saved_transformations,
     text=_('Edit'), view='converter:transformation_edit'
 )

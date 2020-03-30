@@ -37,6 +37,10 @@ class LayerViewMixin(object):
 class TransformationCreateView(
     LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectCreateView
 ):
+    content_type_url_kw_args = {
+        'app_label': 'app_label',
+        'model_name': 'model_name'
+    }
     form_class = LayerTransformationForm
 
     def form_valid(self, form):
@@ -95,7 +99,7 @@ class TransformationCreateView(
         return reverse(
             viewname='converter:transformation_list', kwargs={
                 'app_label': self.kwargs['app_label'],
-                'model': self.kwargs['model'],
+                'model_name': self.kwargs['model_name'],
                 'object_id': self.kwargs['object_id'],
                 'layer_name': self.kwargs['layer_name']
             }
@@ -120,20 +124,14 @@ class TransformationCreateView(
 
 class TransformationDeleteView(LayerViewMixin, SingleObjectDeleteView):
     model = LayerTransformation
+    pk_url_kwarg = 'transformation_id'
 
     def get_extra_context(self):
         return {
             'content_object': self.object.object_layer.content_object,
             'layer_name': self.layer.name,
             'navigation_object_list': ('content_object', 'transformation'),
-            'previous': reverse(
-                viewname='converter:transformation_list', kwargs={
-                    'app_label': self.object.object_layer.content_type.app_label,
-                    'model': self.object.object_layer.content_type.model,
-                    'object_id': self.object.object_layer.object_id,
-                    'layer_name': self.object.object_layer.stored_layer.name
-                }
-            ),
+            'previous': self.get_post_action_redirect(),
             'title': _(
                 'Delete transformation "%(transformation)s" for: '
                 '%(content_object)s?'
@@ -151,7 +149,7 @@ class TransformationDeleteView(LayerViewMixin, SingleObjectDeleteView):
         return reverse(
             viewname='converter:transformation_list', kwargs={
                 'app_label': self.object.object_layer.content_type.app_label,
-                'model': self.object.object_layer.content_type.model,
+                'model_name': self.object.object_layer.content_type.model,
                 'object_id': self.object.object_layer.object_id,
                 'layer_name': self.object.object_layer.stored_layer.name
             }
@@ -161,6 +159,7 @@ class TransformationDeleteView(LayerViewMixin, SingleObjectDeleteView):
 class TransformationEditView(LayerViewMixin, SingleObjectEditView):
     form_class = LayerTransformationForm
     model = LayerTransformation
+    pk_url_kwarg = 'transformation_id'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -199,7 +198,7 @@ class TransformationEditView(LayerViewMixin, SingleObjectEditView):
         return reverse(
             viewname='converter:transformation_list', kwargs={
                 'app_label': self.object.object_layer.content_type.app_label,
-                'model': self.object.object_layer.content_type.model,
+                'model_name': self.object.object_layer.content_type.model,
                 'object_id': self.object.object_layer.object_id,
                 'layer_name': self.object.object_layer.stored_layer.name
             }
@@ -217,6 +216,11 @@ class TransformationEditView(LayerViewMixin, SingleObjectEditView):
 class TransformationListView(
     LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectListView
 ):
+    content_type_url_kw_args = {
+        'app_label': 'app_label',
+        'model_name': 'model_name'
+    }
+
     def get_external_object_permission(self):
         return self.layer.permissions.get('view', None)
 
@@ -267,7 +271,7 @@ class TransformationSelectView(
                     viewname='converter:transformation_create',
                     kwargs={
                         'app_label': self.kwargs['app_label'],
-                        'model': self.kwargs['model'],
+                        'model_name': self.kwargs['model_name'],
                         'object_id': self.kwargs['object_id'],
                         'layer_name': self.kwargs['layer_name'],
                         'transformation_name': form.cleaned_data[
@@ -296,7 +300,7 @@ class TransformationSelectView(
                 redirect_to=reverse(
                     viewname='converter:transformation_list', kwargs={
                         'app_label': self.kwargs['app_label'],
-                        'model': self.kwargs['model'],
+                        'model_name': self.kwargs['model_name'],
                         'object_id': self.kwargs['object_id'],
                         'layer_name': self.kwargs['layer_name']
                     }

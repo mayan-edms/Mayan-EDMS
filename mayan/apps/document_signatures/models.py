@@ -68,8 +68,8 @@ class SignatureBaseModel(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='document_signatures:document_version_signature_detail',
-            kwargs={'pk': self.pk}
+            viewname='signatures:document_version_signature_details',
+            kwargs={'signature_id': self.pk}
         )
 
     def get_key_id(self):

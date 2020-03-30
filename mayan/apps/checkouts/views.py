@@ -21,7 +21,7 @@ from .permissions import (
 class DocumentCheckInView(MultipleObjectConfirmActionView):
     error_message = 'Unable to check in document "%(instance)s". %(exception)s'
     model = Document
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'document_id'
     success_message_singular = '%(count)d document checked in.'
     success_message_plural = '%(count)d documents checked in.'
 
@@ -53,8 +53,9 @@ class DocumentCheckInView(MultipleObjectConfirmActionView):
     def get_post_object_action_url(self):
         if self.action_count == 1:
             return reverse(
-                viewname='checkouts:check_out_info',
-                kwargs={'pk': self.action_id_list[0]}
+                viewname='checkouts:check_out_info', kwargs={
+                    'document_id': self.action_id_list[0]
+                }
             )
         else:
             super(DocumentCheckInView, self).get_post_action_redirect()
@@ -88,7 +89,7 @@ class DocumentCheckOutView(MultipleObjectFormActionView):
     form_class = DocumentCheckOutForm
     model = Document
     object_permission = permission_document_check_out
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'document_id'
     success_message_singular = '%(count)d document checked out.'
     success_message_plural = '%(count)d documents checked out.'
 
@@ -120,8 +121,9 @@ class DocumentCheckOutView(MultipleObjectFormActionView):
     def get_post_object_action_url(self):
         if self.action_count == 1:
             return reverse(
-                viewname='checkouts:check_out_info',
-                kwargs={'pk': self.action_id_list[0]}
+                viewname='checkouts:check_out_info', kwargs={
+                    'document_id': self.action_id_list[0]
+                }
             )
         else:
             super(DocumentCheckOutView, self).get_post_action_redirect()
@@ -139,6 +141,7 @@ class DocumentCheckOutDetailView(SingleObjectDetailView):
     form_class = DocumentCheckOutDetailForm
     model = Document
     object_permission = permission_document_check_out_detail_view
+    pk_url_kwarg = 'document_id'
 
     def get_extra_context(self):
         return {

@@ -199,6 +199,7 @@ class UserSetPasswordView(MultipleObjectFormActionView):
     form_class = SetPasswordForm
     model = get_user_model()
     object_permission = permission_user_edit
+    pk_url_kwarg = 'user_id'
     success_message = _('Password change request performed on %(count)d user')
     success_message_plural = _(
         'Password change request performed on %(count)d users'

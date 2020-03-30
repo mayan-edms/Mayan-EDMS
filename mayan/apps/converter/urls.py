@@ -7,23 +7,23 @@ from .views import (
 
 urlpatterns = [
     url(
-        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/layers/(?P<layer_name>[-_\w]+)/transformations/$',
-        view=TransformationListView.as_view(), name='transformation_list'
+        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/layers/(?P<layer_name>[-_\w]+)/transformations/$',
+        name='transformation_list', view=TransformationListView.as_view()
     ),
     url(
-        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/layers/(?P<layer_name>[-_\w]+)/transformations/select/$',
-        view=TransformationSelectView.as_view(), name='transformation_select'
+        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/layers/(?P<layer_name>[-_\w]+)/transformations/select/$',
+        name='transformation_select', view=TransformationSelectView.as_view()
     ),
     url(
-        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/layers/(?P<layer_name>[-_\w]+)/transformations/(?P<transformation_name>[-_\w]+)/create/$',
-        view=TransformationCreateView.as_view(), name='transformation_create'
+        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/layers/(?P<layer_name>[-_\w]+)/transformations/(?P<transformation_name>[-_\w]+)/create/$',
+        name='transformation_create', view=TransformationCreateView.as_view()
     ),
     url(
-        regex=r'^layers/(?P<layer_name>[-_\w]+)/transformations/(?P<pk>\d+)/delete/$',
-        view=TransformationDeleteView.as_view(), name='transformation_delete'
+        regex=r'^layers/(?P<layer_name>[-_\w]+)/transformations/(?P<transformation_id>\d+)/delete/$',
+        name='transformation_delete', view=TransformationDeleteView.as_view()
     ),
     url(
-        regex=r'^layers/(?P<layer_name>[-_\w]+)/transformations/(?P<pk>\d+)/edit/$',
-        view=TransformationEditView.as_view(), name='transformation_edit'
+        regex=r'^layers/(?P<layer_name>[-_\w]+)/transformations/(?P<transformation_id>\d+)/edit/$',
+        name='transformation_edit', view=TransformationEditView.as_view()
     ),
 ]

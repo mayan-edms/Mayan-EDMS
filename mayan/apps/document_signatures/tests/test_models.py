@@ -140,6 +140,12 @@ class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
             TEST_UNSIGNED_DOCUMENT_COUNT
         )
 
+    def test_method_get_absolute_url(self):
+        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
+        self._upload_test_document()
+
+        EmbeddedSignature.objects.first().get_absolute_url()
+
 
 class EmbeddedSignaturesTestCase(
     KeyTestMixin, SignatureTestMixin, GenericDocumentTestCase

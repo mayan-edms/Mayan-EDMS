@@ -46,7 +46,7 @@ class WorkflowRuntimeProxyLinkTestCase(
             self.resolved_test_link.url,
             reverse(
                 viewname=self.test_link.view, kwargs={
-                    'pk': self.test_workflow_runtime_proxy.pk
+                    'workflow_runtime_proxy_id': self.test_workflow_runtime_proxy.pk
                 }
             )
         )
@@ -105,7 +105,7 @@ class WorkflowRuntimeProxyLinkTestCase(
             self.resolved_test_link.url,
             reverse(
                 viewname=self.test_link.view, kwargs={
-                    'pk': self.test_workflow_state_runtime_proxy.pk
+                    'workflow_runtime_proxy_state_id': self.test_workflow_state_runtime_proxy.pk
                 }
             )
         )
@@ -134,7 +134,7 @@ class WorkflowRuntimeProxyLinkTestCase(
             self.resolved_test_link.url,
             reverse(
                 viewname=self.test_link.view, kwargs={
-                    'pk': self.test_workflow_runtime_proxy.pk
+                    'workflow_runtime_proxy_id': self.test_workflow_runtime_proxy.pk
                 }
             )
         )

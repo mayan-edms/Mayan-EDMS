@@ -10,6 +10,7 @@ from mayan.apps.common.generics import (
     AddRemoveView, ConfirmView, FormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
@@ -38,7 +39,7 @@ from .tasks import task_rebuild_index
 class DocumentTypeIndexesView(AddRemoveView):
     main_object_permission = permission_document_indexing_edit
     main_object_model = DocumentType
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'document_type_id'
     secondary_object_model = Index
     secondary_object_permission = permission_document_type_edit
     list_available_title = _('Available indexes')
@@ -97,6 +98,7 @@ class SetupIndexCreateView(SingleObjectCreateView):
 class SetupIndexDeleteView(SingleObjectDeleteView):
     model = Index
     object_permission = permission_document_indexing_delete
+    pk_url_kwarg = 'index_template_id'
     post_action_redirect = reverse_lazy(
         viewname='indexing:index_setup_list'
     )
@@ -112,6 +114,7 @@ class SetupIndexEditView(SingleObjectEditView):
     fields = ('label', 'slug', 'enabled')
     model = Index
     object_permission = permission_document_indexing_edit
+    pk_url_kwarg = 'index_template_id'
     post_action_redirect = reverse_lazy(
         viewname='indexing:index_setup_list'
     )
@@ -160,7 +163,9 @@ class SetupIndexRebuildView(ConfirmView):
         }
 
     def get_object(self):
-        return get_object_or_404(klass=self.get_queryset(), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            klass=self.get_queryset(), pk=self.kwargs['index_template_id']
+        )
 
     def get_queryset(self):
         return AccessControlList.objects.restrict_queryset(
@@ -183,7 +188,7 @@ class SetupIndexDocumentTypesView(AddRemoveView):
     main_object_method_remove = 'document_types_remove'
     main_object_permission = permission_document_indexing_edit
     main_object_model = Index
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'document_type_id'
     secondary_object_model = DocumentType
     secondary_object_permission = permission_document_type_edit
     list_available_title = _('Available document types')
@@ -217,7 +222,9 @@ class SetupIndexTreeTemplateListView(SingleObjectListView):
         }
 
     def get_index(self):
-        return get_object_or_404(klass=Index, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            klass=Index, pk=self.kwargs['index_template_node_id']
+        )
 
     def get_source_queryset(self):
         return self.get_index().template_root.get_descendants(
@@ -253,7 +260,9 @@ class TemplateNodeCreateView(SingleObjectCreateView):
         }
 
     def get_parent_node(self):
-        return get_object_or_404(klass=IndexTemplateNode, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            klass=IndexTemplateNode, pk=self.kwargs['index_template_node_id']
+        )
 
 
 class TemplateNodeDeleteView(SingleObjectDeleteView):
@@ -273,7 +282,7 @@ class TemplateNodeDeleteView(SingleObjectDeleteView):
     def get_post_action_redirect(self):
         return reverse(
             viewname='indexing:index_setup_view', kwargs={
-                'pk': self.get_object().index.pk
+                'index_template_id': self.get_object().index.pk
             }
         )
 
@@ -296,7 +305,7 @@ class TemplateNodeEditView(SingleObjectEditView):
     def get_post_action_redirect(self):
         return reverse(
             viewname='indexing:index_setup_view', kwargs={
-                'pk': self.get_object().index.pk
+                'index_template_id': self.get_object().index.pk
             }
         )
 
@@ -333,7 +342,7 @@ class IndexInstanceNodeView(DocumentListView):
 
     def dispatch(self, request, *args, **kwargs):
         self.index_instance_node = get_object_or_404(
-            klass=IndexInstanceNode, pk=self.kwargs['pk']
+            klass=IndexInstanceNode, pk=self.kwargs['index_instance_node_id']
         )
 
         AccessControlList.objects.check_access(
@@ -396,24 +405,14 @@ class IndexInstanceNodeView(DocumentListView):
             return IndexInstanceNode.objects.none()
 
 
-class DocumentIndexNodeListView(SingleObjectListView):
+class DocumentIndexNodeListView(ExternalObjectMixin, SingleObjectListView):
     """
     Show a list of indexes where the current document can be found
     """
+    external_object_class = Document
+    external_object_permission = permission_document_view
+    external_object_pk_url_kwarg = 'document_id'
     object_permission = permission_document_indexing_instance_view
-
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_document(), permissions=(permission_document_view,),
-            user=request.user
-        )
-
-        return super(
-            DocumentIndexNodeListView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_document(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
@@ -427,15 +426,15 @@ class DocumentIndexNodeListView(SingleObjectListView):
             'no_results_title': _(
                 'This document is not in any index'
             ),
-            'object': self.get_document(),
+            'object': self.external_object,
             'title': _(
                 'Indexes nodes containing document: %s'
-            ) % self.get_document(),
+            ) % self.external_object,
         }
 
     def get_source_queryset(self):
         return DocumentIndexInstanceNode.objects.get_for(
-            document=self.get_document()
+            document=self.external_object
         )
 
 

@@ -11,7 +11,10 @@ from ..permissions import (
 )
 
 from .literals import TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED
-from .mixins import IndexTestMixin, IndexViewTestMixin
+from .mixins import (
+    IndexInstaceViewTestMixin, IndexTestMixin, IndexToolsViewTestMixin,
+    IndexViewTestMixin
+)
 
 
 class IndexViewTestCase(
@@ -75,15 +78,6 @@ class IndexViewTestCase(
         self.assertEqual(self.test_index.label, TEST_INDEX_LABEL_EDITED)
 
 
-class IndexInstaceViewTestMixin(object):
-    def _request_test_index_instance_node_view(self, index_instance_node):
-        return self.get(
-            viewname='indexing:index_instance_node_view', kwargs={
-                'pk': index_instance_node.pk
-            }
-        )
-
-
 class IndexInstaceViewTestCase(
     IndexTestMixin, IndexViewTestMixin, IndexInstaceViewTestMixin,
     GenericDocumentViewTestCase
@@ -134,32 +128,6 @@ class IndexInstaceViewTestCase(
             index_instance_node=self.test_index.instance_root
         )
         self.assertContains(response, text=TEST_INDEX_LABEL, status_code=200)
-
-
-class IndexToolsViewTestMixin(object):
-    def _request_indexes_rebuild_get_view(self):
-        return self.get(
-            viewname='indexing:rebuild_index_instances'
-        )
-
-    def _request_indexes_rebuild_post_view(self):
-        return self.post(
-            viewname='indexing:rebuild_index_instances', data={
-                'index_templates': self.test_index.pk
-            }
-        )
-
-    def _request_indexes_reset_get_view(self):
-        return self.get(
-            viewname='indexing:index_instances_reset'
-        )
-
-    def _request_indexes_reset_post_view(self):
-        return self.post(
-            viewname='indexing:index_instances_reset', data={
-                'index_templates': self.test_index.pk
-            }
-        )
 
 
 class IndexToolsViewTestCase(

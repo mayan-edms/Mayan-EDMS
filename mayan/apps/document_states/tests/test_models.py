@@ -52,6 +52,17 @@ class WorkflowInstanceModelTestCase(
             self.test_workflow_instance.get_transition_choices().count(), 1
         )
 
+    def test_workflow_method_get_absolute_url(self):
+        self._create_test_workflow()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+
+        self.test_workflow_instance = self.test_workflow.launch_for(
+            document=self.test_document
+        )
+
+        self.test_workflow_instance.get_absolute_url()
+
 
 class WorkflowModelTestCase(WorkflowTestMixin, BaseTestCase):
     def test_workflow_template_preview(self):

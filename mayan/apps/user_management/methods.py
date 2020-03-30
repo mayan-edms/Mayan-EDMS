@@ -71,7 +71,7 @@ def method_group_users_remove(self, queryset, _user):
 
 def method_user_get_absolute_url(self):
     return reverse(
-        viewname='user_management:user_details', kwargs={'pk': self.pk}
+        viewname='user_management:user_details', kwargs={'user_id': self.pk}
     )
 
 

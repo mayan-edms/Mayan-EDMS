@@ -1,4 +1,4 @@
-from ..literals import FIELD_TYPE_CHOICE_CHAR
+from ..literals import FIELD_TYPE_CHOICE_CHAR, WORKFLOW_ACTION_ON_ENTRY
 
 TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH = 'mayan.apps.document_states.workflow_actions.DocumentPropertiesEditAction'
 TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_LABEL = 'new document label'
@@ -39,6 +39,8 @@ TEST_WORKFLOW_LABEL_EDITED = 'test workflow label edited'
 TEST_WORKFLOW_INITIAL_STATE_LABEL = 'test initial state'
 TEST_WORKFLOW_INITIAL_STATE_COMPLETION = 33
 TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT = 'test workflow instance log entry comment'
+TEST_WORKFLOW_STATE_ACTION_LABEL = 'test state action label'
+TEST_WORKFLOW_STATE_ACTION_WHEN = WORKFLOW_ACTION_ON_ENTRY
 TEST_WORKFLOW_STATE_LABEL = 'test state label'
 TEST_WORKFLOW_STATE_LABEL_EDITED = 'test state label edited'
 TEST_WORKFLOW_STATE_COMPLETION = 66

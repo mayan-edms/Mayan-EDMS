@@ -22,13 +22,22 @@ class DocumentTemplateSandboxView(ExternalObjectMixin, FormView):
     def form_valid(self, form):
         path = reverse(
             viewname='templating:document_template_sandbox',
-            kwargs={'pk': self.external_object.pk}
+            kwargs={'document_id': self.external_object.pk}
         )
         url = URL(
             path=path, query={'template': form.cleaned_data['template']}
         )
 
         return HttpResponseRedirect(redirect_to=url.to_string())
+
+    def get_extra_context(self):
+        return {
+            'object': self.external_object,
+            'title': _('Template sandbox for: %s') % self.external_object
+        }
+
+    def get_form_extra_kwargs(self):
+        return {'model': Document, 'model_variable': 'document'}
 
     def get_initial(self):
         template_string = self.request.GET.get('template', '')
@@ -50,12 +59,3 @@ class DocumentTemplateSandboxView(ExternalObjectMixin, FormView):
         return {
             'template': template_string, 'result': result
         }
-
-    def get_extra_context(self):
-        return {
-            'object': self.external_object,
-            'title': _('Template sandbox for: %s') % self.external_object
-        }
-
-    def get_form_extra_kwargs(self):
-        return {'model': Document, 'model_variable': 'document'}

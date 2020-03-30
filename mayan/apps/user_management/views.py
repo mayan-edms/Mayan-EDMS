@@ -158,8 +158,9 @@ class UserCreateView(SingleObjectCreateView):
         super(UserCreateView, self).form_valid(form=form)
         return HttpResponseRedirect(
             reverse(
-                viewname='authentication:user_set_password',
-                kwargs={'pk': self.object.pk}
+                viewname='authentication:user_set_password', kwargs={
+                    'user_id': self.object.pk
+                }
             )
         )
 

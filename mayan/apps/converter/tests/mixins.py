@@ -62,7 +62,7 @@ class TransformationViewsTestMixin(object):
     def _request_transformation_create_view(self):
         return self.post(
             viewname='converter:transformation_create', kwargs={
-                'app_label': 'documents', 'model': 'document',
+                'app_label': 'documents', 'model_name': 'document',
                 'object_id': self.test_document.pk,
                 'layer_name': self.test_layer.name,
                 'transformation_name': TEST_TRANSFORMATION_NAME,
@@ -75,7 +75,7 @@ class TransformationViewsTestMixin(object):
         return self.post(
             viewname='converter:transformation_delete', kwargs={
                 'layer_name': self.test_layer.name,
-                'pk': self.test_transformation.pk
+                'transformation_id': self.test_transformation.pk
             }
         )
 
@@ -83,7 +83,7 @@ class TransformationViewsTestMixin(object):
         return self.post(
             viewname='converter:transformation_edit', kwargs={
                 'layer_name': self.test_layer.name,
-                'pk': self.test_transformation.pk
+                'transformation_id': self.test_transformation.pk
             }, data={
                 'arguments': TEST_TRANSFORMATION_ARGUMENT_EDITED
             }
@@ -92,7 +92,7 @@ class TransformationViewsTestMixin(object):
     def _request_transformation_list_view(self):
         return self.get(
             viewname='converter:transformation_list', kwargs={
-                'app_label': 'documents', 'model': 'document',
+                'app_label': 'documents', 'model_name': 'document',
                 'object_id': self.test_document.pk,
                 'layer_name': self.test_layer.name
             }
