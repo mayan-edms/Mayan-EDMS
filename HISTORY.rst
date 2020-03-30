@@ -1,15 +1,13 @@
 3.4 (2020-XX-XX)
 ================
 - Update Django to version 2.2.10.
-- The ``runserver`` make file target now runs the command with
-  ``--nothreading`` to work around issues serving static files in development.
 - Backport list display mode. Support switching between item and list mode.
 - Update app URLs to use explicit parameters.
 - Move dependencies environments to their own module called
   ``dependencies.environments.py``.
 - Increase the size of the file cache maximum size field.
 - Add user impersonation support.
-- Add support for uncompressing Outlook .msg files. Adds dependecy
+- Add support for uncompressing Outlook .msg files. Adds dependency
   ``extract-msg``.
 - Updated converter to show preview of the text part of .msg files.
 - Decouple the Checkouts and Sources apps. It is now possible to disable
@@ -37,7 +35,7 @@
 - Update interface of the CompressedStorage backend.
 - Add defined storage class.
 - Convert the file caching app to used defined storage.
-- Show percetage of usage for file caches.
+- Show percentage of usage for file caches.
 - Add Passthrough storages.
 - Add encrypted storage backend.
 - Add compressed storage backend.
