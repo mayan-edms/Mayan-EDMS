@@ -190,6 +190,19 @@ class MetadataTypeViewTestMixin(object):
             TEST_METADATA_TYPES_FIXTURES
         )
 
+    def _request_test_document_type_relationship_edit_view(self):
+        # This request assumes there is only one document type and
+        # blindly sets the first form of the formset.
+
+        return self.post(
+            viewname='metadata:setup_document_type_metadata_types',
+            kwargs={'document_type_id': self.test_document_type.pk}, data={
+                'form-TOTAL_FORMS': '1',
+                'form-INITIAL_FORMS': '0',
+                'form-0-relationship_type': 'required'
+            }
+        )
+
     def _request_test_metadata_type_create_view(self):
         return self.post(
             viewname='metadata:setup_metadata_type_create',

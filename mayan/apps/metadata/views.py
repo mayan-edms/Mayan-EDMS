@@ -578,8 +578,10 @@ class SetupDocumentTypeMetadataTypes(FormView):
     form_class = DocumentTypeMetadataTypeRelationshipFormSet
     main_model = 'document_type'
     model = DocumentType
-    pk_url_kwarg = 'document_id'
+    model_permission = permission_document_type_edit
+    pk_url_kwarg = 'document_type_id'
     submodel = MetadataType
+    submodel_permission = permission_metadata_type_edit
 
     def form_valid(self, form):
         try:
@@ -642,8 +644,8 @@ class SetupDocumentTypeMetadataTypes(FormView):
         )
 
         AccessControlList.objects.check_access(
-            obj=obj, permissions=(permission_metadata_type_edit,),
-            user=self.request.user
+            obj=obj, permissions=(self.model_permission,),
+           user=self.request.user
         )
         return obj
 
@@ -653,7 +655,7 @@ class SetupDocumentTypeMetadataTypes(FormView):
     def get_queryset(self):
         queryset = self.submodel.objects.all()
         return AccessControlList.objects.restrict_queryset(
-            permission=permission_document_type_edit,
+            permission=self.submodel_permission,
             user=self.request.user, queryset=queryset
         )
 
@@ -661,8 +663,10 @@ class SetupDocumentTypeMetadataTypes(FormView):
 class SetupMetadataTypesDocumentTypes(SetupDocumentTypeMetadataTypes):
     main_model = 'metadata_type'
     model = MetadataType
+    model_permission = permission_metadata_type_edit
     pk_url_kwarg = 'metadata_type_id'
     submodel = DocumentType
+    submodel_permission = permission_document_type_edit
 
     def get_extra_context(self):
         return {
