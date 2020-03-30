@@ -221,7 +221,9 @@ class DocumentSmartLinkListView(ExternalObjectMixin, SmartLinkListView):
             'title': _('Smart links for document: %s') % self.external_object,
         }
 
-    def get_smart_link_queryset(self):
+    def get_source_queryset(self):
+        # Override SingleObjectListView source queryset from SmartLink to
+        # ResolvedSmartLink.
         return ResolvedSmartLink.objects.get_for(
             document=self.external_object
         )
