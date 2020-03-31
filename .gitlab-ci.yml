@@ -218,7 +218,7 @@ test_upgrade_postgres:
   before_script:
     - set -a && . ./config.env && set +a
     - apt-get -qq update
-    - apt-get install -qq curl exiftool firefox-geckodriver gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev libreoffice poppler-utils python-dev python-virtualenv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
+    - apt-get install -qq curl exiftool firefox-geckodriver gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev libreoffice make poppler-utils python-dev python-virtualenv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
     - virtualenv venv -p /usr/bin/python3
     - . venv/bin/activate
     - pip install -r requirements.txt -r requirements/testing-base.txt
