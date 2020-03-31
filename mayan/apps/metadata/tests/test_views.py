@@ -760,7 +760,7 @@ class DocumentMetadataRequiredTestCase(
             ).exists()
         )
 
-###
+
 class DocumentTypeMetadataTypeViewTestCase(
     MetadataTypeViewTestMixin, MetadataTypeTestMixin,
     GenericDocumentViewTestCase

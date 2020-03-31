@@ -645,7 +645,7 @@ class SetupDocumentTypeMetadataTypes(FormView):
 
         AccessControlList.objects.check_access(
             obj=obj, permissions=(self.model_permission,),
-           user=self.request.user
+            user=self.request.user
         )
         return obj
 
