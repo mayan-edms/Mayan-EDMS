@@ -1,4 +1,4 @@
-3.4 (2020-XX-XX)
+3.4 (2020-03-30)
 ================
 - Update Django to version 2.2.10.
 - Backport list display mode. Support switching between item and list mode.
