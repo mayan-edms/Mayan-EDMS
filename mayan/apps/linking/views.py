@@ -148,7 +148,7 @@ class ResolvedSmartLinkView(DocumentListView):
         return context
 
 
-class SetupSmartLinkDocumentTypesView(AddRemoveView):
+class SmartLinkDocumentTypesView(AddRemoveView):
     main_object_method_add = 'document_types_add'
     main_object_method_remove = 'document_types_remove'
     main_object_permission = permission_smart_link_edit
