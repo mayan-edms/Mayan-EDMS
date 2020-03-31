@@ -5,7 +5,8 @@ from .literals import (
     TEST_WORKFLOW_INITIAL_STATE_LABEL, TEST_WORKFLOW_INITIAL_STATE_COMPLETION,
     TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT, TEST_WORKFLOW_INTERNAL_NAME,
     TEST_WORKFLOW_LABEL, TEST_WORKFLOW_LABEL_EDITED,
-    TEST_WORKFLOW_STATE_ACTION_LABEL, TEST_WORKFLOW_STATE_ACTION_WHEN,
+    TEST_WORKFLOW_STATE_ACTION_LABEL, TEST_WORKFLOW_STATE_ACTION_LABEL_EDITED,
+    TEST_WORKFLOW_STATE_ACTION_DOTTED_PATH, TEST_WORKFLOW_STATE_ACTION_WHEN,
     TEST_WORKFLOW_STATE_COMPLETION, TEST_WORKFLOW_STATE_LABEL,
     TEST_WORKFLOW_STATE_LABEL_EDITED,
     TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT,
@@ -66,12 +67,6 @@ class WorkflowStateActionTestMixin(object):
 
 
 class WorkflowStateActionViewTestMixin(object):
-    def _request_test_worflow_template_state_action_view(self):
-        return self.get(
-            viewname='document_states:workflow_template_state_action_list',
-            kwargs={'workflow_template_state_id': self.test_workflow_state.pk}
-        )
-
     def _request_test_workflow_template_state_action_create_get_view(self, class_path):
         return self.get(
             viewname='document_states:workflow_template_state_action_create',
@@ -97,6 +92,39 @@ class WorkflowStateActionViewTestMixin(object):
                 'workflow_template_state_id': self.test_workflow_state.pk,
                 'class_path': class_path
             }, data=data
+        )
+
+    def _request_test_worflow_template_state_action_delete_view(self):
+        return self.post(
+            viewname='document_states:workflow_template_state_action_delete',
+            kwargs={
+                'workflow_template_state_action_id': self.test_workflow_state_action.pk
+            }
+        )
+
+    def _request_test_worflow_template_state_action_edit_view(self):
+        return self.post(
+            viewname='document_states:workflow_template_state_action_edit',
+            kwargs={
+                'workflow_template_state_action_id': self.test_workflow_state_action.pk
+            }, data={
+                'label': TEST_WORKFLOW_STATE_ACTION_LABEL_EDITED,
+                'when': self.test_workflow_state_action.when
+            }
+        )
+
+    def _request_test_worflow_template_state_action_list_view(self):
+        return self.get(
+            viewname='document_states:workflow_template_state_action_list',
+            kwargs={'workflow_template_state_id': self.test_workflow_state.pk}
+        )
+
+    def _request_test_workflow_state_action_selection_view(self):
+        return self.post(
+            viewname='document_states:workflow_template_state_action_selection',
+            kwargs={
+                'workflow_template_state_id': self.test_workflow_state.pk
+            }, data={'klass': TEST_WORKFLOW_STATE_ACTION_DOTTED_PATH}
         )
 
 
