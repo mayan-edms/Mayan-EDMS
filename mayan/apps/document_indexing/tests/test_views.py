@@ -12,8 +12,8 @@ from ..permissions import (
 
 from .literals import TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED
 from .mixins import (
-    IndexInstaceViewTestMixin, IndexTestMixin, IndexToolsViewTestMixin,
-    IndexViewTestMixin
+    IndexInstaceViewTestMixin, IndexTemplateNodeViewTestMixin,
+    IndexTestMixin, IndexToolsViewTestMixin, IndexViewTestMixin
 )
 
 
@@ -143,6 +143,106 @@ class IndexInstaceViewTestCase(
             index_instance_node=self.test_index.instance_root
         )
         self.assertContains(response, text=TEST_INDEX_LABEL, status_code=200)
+
+
+class IndexTemplateNodeViewTestCase(
+    IndexTestMixin, IndexTemplateNodeViewTestMixin, GenericViewTestCase
+):
+    def test_index_template_node_create_view_no_permission(self):
+        self._create_test_index()
+        node_count = self.test_index.node_templates.count()
+
+        response = self._request_test_index_node_create_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(
+            self.test_index.node_templates.count(), node_count
+        )
+
+    def test_index_template_node_create_view_with_access(self):
+        self._create_test_index()
+        self.grant_access(
+            obj=self.test_index, permission=permission_document_indexing_edit
+        )
+        node_count = self.test_index.node_templates.count()
+
+        response = self._request_test_index_node_create_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_index.node_templates.count(), node_count + 1
+        )
+
+    def test_index_template_node_delete_view_no_permission(self):
+        self._create_test_index()
+        self._create_test_index_template_node()
+        node_count = self.test_index.node_templates.count()
+
+        response = self._request_test_index_node_delete_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            self.test_index.node_templates.count(), node_count
+        )
+
+    def test_index_template_node_delete_view_with_access(self):
+        self._create_test_index()
+        self._create_test_index_template_node()
+        self.grant_access(
+            obj=self.test_index, permission=permission_document_indexing_edit
+        )
+        node_count = self.test_index.node_templates.count()
+
+        response = self._request_test_index_node_delete_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_index.node_templates.count(), node_count - 1
+        )
+
+    def test_index_template_node_edit_view_no_permission(self):
+        self._create_test_index()
+        self._create_test_index_template_node()
+        node_expression = self.test_index_template_node.expression
+
+        response = self._request_test_index_node_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_index_template_node.refresh_from_db()
+        self.assertEqual(
+            self.test_index_template_node.expression, node_expression
+        )
+
+    def test_index_template_node_edit_view_with_access(self):
+        self._create_test_index()
+        self._create_test_index_template_node()
+        self.grant_access(
+            obj=self.test_index, permission=permission_document_indexing_edit
+        )
+        node_expression = self.test_index_template_node.expression
+
+        response = self._request_test_index_node_edit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_index_template_node.refresh_from_db()
+        self.assertNotEqual(
+            self.test_index_template_node.expression, node_expression
+        )
+
+    def test_index_template_node_list_get_view_no_permission(self):
+        self._create_test_index()
+
+        response = self._request_test_index_node_list_get_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_index_template_node_list_get_view_with_access(self):
+        self._create_test_index()
+        self.grant_access(
+            obj=self.test_index, permission=permission_document_indexing_edit
+        )
+
+        response = self._request_test_index_node_list_get_view()
+        self.assertEqual(response.status_code, 200)
 
 
 class IndexToolsViewTestCase(

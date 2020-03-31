@@ -210,24 +210,25 @@ class SetupIndexDocumentTypesView(AddRemoveView):
         }
 
 
-class SetupIndexTreeTemplateListView(SingleObjectListView):
-    object_permission = permission_document_indexing_edit
+class SetupIndexTreeTemplateListView(
+    ExternalObjectMixin, SingleObjectListView
+):
+    external_object_class = Index
+    external_object_permission = permission_document_indexing_edit
+    external_object_pk_url_kwarg = 'index_template_id'
 
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'index': self.get_index(),
+            'index': self.external_object,
             'navigation_object_list': ('index',),
-            'title': _('Tree template nodes for index: %s') % self.get_index(),
+            'title': _(
+                'Tree template nodes for index: %s'
+            ) % self.external_object,
         }
 
-    def get_index(self):
-        return get_object_or_404(
-            klass=Index, pk=self.kwargs['index_template_node_id']
-        )
-
     def get_source_queryset(self):
-        return self.get_index().template_root.get_descendants(
+        return self.external_object.template_root.get_descendants(
             include_self=True
         )
 
@@ -268,6 +269,7 @@ class TemplateNodeCreateView(SingleObjectCreateView):
 class TemplateNodeDeleteView(SingleObjectDeleteView):
     model = IndexTemplateNode
     object_permission = permission_document_indexing_edit
+    pk_url_kwarg = 'index_template_node_id'
 
     def get_extra_context(self):
         return {
@@ -291,6 +293,7 @@ class TemplateNodeEditView(SingleObjectEditView):
     form_class = IndexTemplateNodeForm
     model = IndexTemplateNode
     object_permission = permission_document_indexing_edit
+    pk_url_kwarg = 'index_template_node_id'
 
     def get_extra_context(self):
         return {

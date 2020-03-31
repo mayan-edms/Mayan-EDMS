@@ -2,7 +2,9 @@ from ..models import Index
 
 from .literals import (
     TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED, TEST_INDEX_SLUG,
-    TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
+    TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
+    TEST_INDEX_TEMPLATE_NODE_TEMPLATE_EDITED,
+    TEST_INDEX_TEMPLATE_NODE_TEMPLATE
 )
 
 
@@ -11,6 +13,43 @@ class IndexInstaceViewTestMixin(object):
         return self.get(
             viewname='indexing:index_instance_node_view', kwargs={
                 'index_instance_node_id': index_instance_node.pk
+            }
+        )
+
+
+class IndexTemplateNodeViewTestMixin(object):
+    def _request_test_index_node_create_view(self):
+        return self.post(
+            viewname='indexing:template_node_create', kwargs={
+                'index_template_node_id': self.test_index.template_root.pk
+            }, data={
+                'expression_template': TEST_INDEX_TEMPLATE_NODE_TEMPLATE,
+                'index': self.test_index.pk,
+                'link_document': True
+            }
+        )
+
+    def _request_test_index_node_delete_view(self):
+        return self.post(
+            viewname='indexing:template_node_delete', kwargs={
+                'index_template_node_id': self.test_index_template_node.pk
+            }
+        )
+
+    def _request_test_index_node_edit_view(self):
+        return self.post(
+            viewname='indexing:template_node_edit', kwargs={
+                'index_template_node_id': self.test_index_template_node.pk
+            }, data={
+                'expression_template': TEST_INDEX_TEMPLATE_NODE_TEMPLATE_EDITED,
+                'index': self.test_index.pk
+            }
+        )
+
+    def _request_test_index_node_list_get_view(self):
+        return self.get(
+            viewname='indexing:index_setup_view', kwargs={
+                'index_template_id': self.test_index.pk
             }
         )
 
@@ -29,7 +68,7 @@ class IndexTestMixin(object):
             Index.objects.rebuild()
 
     def _create_test_index_template_node(self):
-        self.test_index.node_templates.create(
+        self.test_index_template_node = self.test_index.node_templates.create(
             parent=self.test_index.template_root,
             expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
             link_documents=True
