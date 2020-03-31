@@ -151,7 +151,7 @@ job_push_python:
   before_script:
     - set -a && . ./config.env && set +a
     - apt-get -qq update
-    - apt-get install -qq curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils python-dev python-virtualenv python3-dev tesseract-ocr
+    - apt-get install -qq curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python-dev python-virtualenv python3-dev tesseract-ocr
     - virtualenv venv -p /usr/bin/python3
     - . venv/bin/activate
     - pip install mayan-edms==`python -c "import xmlrpc.client;pypi = xmlrpc.client.ServerProxy('https://pypi.org');print(pypi.package_releases('mayan-edms')[0])"`
