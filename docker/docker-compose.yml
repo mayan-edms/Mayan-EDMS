@@ -7,8 +7,8 @@ networks:
 services:
   app:
     depends_on:
-      - db
-      - results
+      - postgresql
+      - redis
       # Enable to use RabbitMQ
       #- rabbitmq
     environment: &mayan_env
@@ -37,6 +37,7 @@ services:
       # Optional volumes to access external data like staging or watch folders
       # - /opt/staging_files:/staging_files
       # - /opt/watch_folder:/watch_folder
+
   postgresql:
     environment:
       POSTGRES_DB: ${MAYAN_DATABASE_DB:-mayan}
