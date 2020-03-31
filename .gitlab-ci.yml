@@ -74,18 +74,14 @@ job_docker_nightly:
 # Documentation
 job_documentation_build:
   stage: build_documentation
-  image: ubuntu:18.04
+  image: ubuntu:19.10
   artifacts:
     expire_in: 1 hr
     paths:
     - docs
   before_script:
     - apt-get -qq update
-    - apt-get install -qq locales make python-pip enchant
-    - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
-    - locale-gen en_US.UTF-8
-    - update-locale LANG=en_US.UTF-8
-    - export LC_ALL=en_US.UTF-8
+    - apt-get install -qq make python-pip enchant
   script:
     - pip install -r requirements/documentation.txt
     - cd docs
@@ -96,7 +92,7 @@ job_documentation_build:
 
 job_documentation_push:
   stage: push_documentation
-  image: ubuntu:18.04
+  image: ubuntu:19.10
   before_script:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
@@ -115,19 +111,15 @@ job_documentation_push:
 # Python
 job_build_python:
   stage: build_python
-  image: ubuntu:18.04
+  image: ubuntu:19.10
   artifacts:
     expire_in: 1 hr
     paths:
     - dist
   before_script:
     - apt-get -qq update
-    - apt-get install -qq locales make python-pip
+    - apt-get install -qq make python-pip
   script:
-    - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
-    - locale-gen en_US.UTF-8
-    - update-locale LANG=en_US.UTF-8
-    - export LC_ALL=en_US.UTF-8
     - pip install -r requirements/build.txt
     - make python-wheel
   only:
@@ -136,7 +128,7 @@ job_build_python:
 
 job_push_python:
   stage: push_python
-  image: ubuntu:18.04
+  image: ubuntu:19.10
   before_script:
     - apt-get -qq update
     - apt-get install -qq python-pip
@@ -151,7 +143,7 @@ job_push_python:
 # Test upgrade from the latest public version to the local version
 .test_upgrade_base: &test_upgrade_base
   stage: test
-  image: ubuntu:18.04
+  image: ubuntu:19.10
   cache:
     paths:
       - ~/.cache/pip/
@@ -159,11 +151,6 @@ job_push_python:
   before_script:
     - set -a && . ./config.env && set +a
     - apt-get -qq update
-    - apt-get install -qq locales
-    - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
-    - locale-gen en_US.UTF-8
-    - update-locale LANG=en_US.UTF-8
-    - export LC_ALL=en_US.UTF-8
     - apt-get install -qq curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils python-dev python-virtualenv python3-dev tesseract-ocr
     - virtualenv venv -p /usr/bin/python3
     - . venv/bin/activate
@@ -223,7 +210,7 @@ test_upgrade_postgres:
 # Run the test suit
 .test_base: &test_base
   stage: test
-  image: ubuntu:18.04
+  image: ubuntu:19.10
   cache:
     paths:
       - ~/.cache/pip/
@@ -231,11 +218,6 @@ test_upgrade_postgres:
   before_script:
     - set -a && . ./config.env && set +a
     - apt-get -qq update
-    - apt-get install -qq locales
-    - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
-    - locale-gen en_US.UTF-8
-    - update-locale LANG=en_US.UTF-8
-    - export LC_ALL=en_US.UTF-8
     - apt-get install -qq curl exiftool firefox-geckodriver gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev libreoffice poppler-utils python-dev python-virtualenv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
     - virtualenv venv -p /usr/bin/python3
     - . venv/bin/activate
