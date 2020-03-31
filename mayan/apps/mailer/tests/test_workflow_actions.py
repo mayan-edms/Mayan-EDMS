@@ -5,6 +5,7 @@ from django.core import mail
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
+from mayan.apps.document_states.permissions import permission_workflow_edit
 from mayan.apps.document_states.tests.base import ActionTestCase
 from mayan.apps.document_states.tests.mixins import (
     WorkflowStateActionViewTestMixin, WorkflowTestMixin
@@ -165,6 +166,9 @@ class EmailActionViewTestCase(
         self._create_test_workflow()
         self._create_test_workflow_state()
         self._create_test_user_mailer()
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
 
         response = self._request_test_workflow_template_state_action_create_get_view(
             class_path='mayan.apps.mailer.workflow_actions.EmailAction'
@@ -177,9 +181,11 @@ class EmailActionViewTestCase(
         self._create_test_workflow()
         self._create_test_workflow_state()
         self._create_test_user_mailer()
-
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use
+        )
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
         )
 
         response = self._request_test_workflow_template_state_action_create_post_view(
