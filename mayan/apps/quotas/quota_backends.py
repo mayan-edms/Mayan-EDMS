@@ -1,7 +1,11 @@
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
+from django.db.models import IntegerField
+from django.db.models.functions import Cast
 from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
+
+from actstream.models import Action
 
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.documents.events import event_document_create
@@ -51,12 +55,18 @@ class DocumentCountQuota(
         }
 
     def _get_user_document_count(self, user):
-        filter_kwargs = {
-            'target_actions__verb': event_document_create.id
+        action_queryset = Action.objects.annotate(
+            target_object_id_int=Cast(
+                'target_object_id', output_field=IntegerField()
+            ),
+        )
+        action_filter_kwargs = {
+            'verb': event_document_create.id
         }
+        document_filter_kwargs = {}
 
         if not self.document_type_all:
-            filter_kwargs.update(
+            document_filter_kwargs.update(
                 {
                     'document_type_id__in': self._get_document_types().values(
                         'pk'
@@ -81,14 +91,22 @@ class DocumentCountQuota(
                 model=get_user_model()
             )
 
-            filter_kwargs.update(
+            action_filter_kwargs.update(
                 {
-                    'target_actions__actor_object_id': user.pk,
-                    'target_actions__actor_content_type': content_type,
+                    'actor_object_id': user.pk,
+                    'actor_content_type': content_type,
                 }
             )
 
-        return Document.objects.filter(**filter_kwargs).count()
+        action_queryset = action_queryset.filter(**action_filter_kwargs)
+
+        document_filter_kwargs.update(
+            {
+                'pk__in': action_queryset.values('target_object_id_int')
+            }
+        )
+
+        return Document.objects.filter(**document_filter_kwargs).count()
 
     def process(self, **kwargs):
         # Only for new documents
