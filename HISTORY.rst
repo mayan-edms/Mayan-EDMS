@@ -14,6 +14,8 @@
   to 65535 and backup from 3 to 5.
 - Detect if devpi-server is installed before building
   the Docker image.
+- Add git-core to the Docker image to allow installing
+  development Python libraries.
 
 3.3.16 (2020-03-17)
 ===================
