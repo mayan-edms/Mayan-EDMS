@@ -2,6 +2,8 @@
 ==================
 - Add development setting for Docker databases.
 - Add manage target against Docker databases.
+- Add git-core to the Docker image to allow installing
+  development Python libraries.
 
 3.4 (2020-03-30)
 ================

@@ -29,6 +29,7 @@ apt-get update \
     fonts-arphic-uming \
     fonts-arphic-ukai \
     ghostscript \
+    git-core \
     gpgv \
     gnupg1 \
     graphviz \
