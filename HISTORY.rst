@@ -2,6 +2,8 @@
 ===================
 - Removed a possible race condition when returning the signature of just
   signed document using embedded signatures.
+- Add development setting for Docker databases.
+- Add manage target against Docker databases.
 
 3.3.16 (2020-03-17)
 ===================
