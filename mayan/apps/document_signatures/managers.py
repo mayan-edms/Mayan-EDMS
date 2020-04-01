@@ -72,14 +72,7 @@ class EmbeddedSignatureManager(models.Manager):
                 new_version = document_version.document.new_version(
                     file_object=file_object, _user=user
                 )
-<<<<<<< HEAD
-            # This is a potential race condition but we have not way
-            # to access the final signature at this point.
-            signature = self.filter(document_version=new_version).first()
-            return signature or self.none()
-=======
             return self.get(signature_id=result.signature_id)
->>>>>>> 1413bad4b5... Remove a possible signature race condition
         finally:
             os.unlink(temporary_filename)
 
