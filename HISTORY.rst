@@ -76,6 +76,12 @@
 - Remove pathlib2 dependency, it is now part of the standard Python library.
 - Remove Django's admindocs app
 
+3.3.17 (2020-XX-XX)
+===================
+- [Backport] Removed a possible race condition when returning the signature of just
+  signed document using embedded signatures.
+- [Backport] Add development setting for Docker databases.
+- [Backport] Add manage target against Docker databases.
 
 3.3.16 (2020-03-17)
 ===================
