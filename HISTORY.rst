@@ -1,3 +1,8 @@
+3.4.1 (2020-04-01)
+==================
+- Add development setting for Docker databases.
+- Add manage target against Docker databases.
+
 3.4 (2020-03-30)
 ================
 - Update Django to version 2.2.10.

@@ -1,4 +1,4 @@
-from . import *  # NOQA
+from .. import *  # NOQA
 
 ALLOWED_HOSTS = ['*']
 
