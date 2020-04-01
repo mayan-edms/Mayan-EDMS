@@ -18,6 +18,8 @@
   development Python libraries.
 - Send all exception to the log system and let the log system
   perform the filtering.
+- Add development setting for Docker databases.
+- Add manage target against Docker databases.
 
 3.3.16 (2020-03-17)
 ===================
