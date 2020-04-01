@@ -1,9 +1,8 @@
 from pathlib import Path
-
+import tempfile
 import shutil
-import sphinx_rtd_theme
 
-from mayan.apps.storage.utils import patch_files
+import sphinx_rtd_theme
 
 
 def load_env_file(filename='../config.env'):
@@ -24,6 +23,65 @@ def generate_substitutions(dictionary):
         result.append(('|{}|'.format(key), value))
 
     return result
+
+
+def patch_files(path=None, replace_list=None):
+    """
+    Search and replace content from a list of file based on a pattern
+    replace_list[
+        {
+            'filename_pattern': '*.css',
+            'content_patterns': [
+                {
+                    'search': '',
+                    'replace': '',
+                }
+            ]
+        }
+    ]
+    """
+    file_open_mode = 'r+'
+
+    path_object = Path(path)
+    for replace_entry in replace_list or []:
+        for path_entry in path_object.glob('**/{}'.format(replace_entry['filename_pattern'])):
+            if path_entry.is_file():
+                for pattern in replace_entry['content_patterns']:
+                    with path_entry.open(mode=file_open_mode) as source_file_object:
+                        with tempfile.TemporaryFile(mode=file_open_mode) as temporary_file_object:
+                            source_position = 0
+                            destination_position = 0
+
+                            while(True):
+                                source_file_object.seek(source_position)
+                                letter = source_file_object.read(1)
+
+                                if len(letter) == 0:
+                                    break
+                                else:
+                                    if letter == pattern['search'][0]:
+                                        text = '{}{}'.format(letter, source_file_object.read(len(pattern['search']) - 1))
+
+                                        temporary_file_object.seek(destination_position)
+                                        if text == pattern['search']:
+                                            text = pattern['replace']
+                                            source_position = source_position + len(pattern['search'])
+                                            destination_position = destination_position + len(pattern['replace'])
+                                            temporary_file_object.write(text)
+
+                                        else:
+                                            source_position = source_position + 1
+                                            destination_position = destination_position + 1
+                                            temporary_file_object.write(letter)
+                                    else:
+                                        source_position = source_position + 1
+                                        destination_position = destination_position + 1
+                                        temporary_file_object.write(letter)
+
+                            source_file_object.seek(0)
+                            source_file_object.truncate()
+                            temporary_file_object.seek(0)
+                            shutil.copyfileobj(fsrc=temporary_file_object, fdst=source_file_object)
 
 
 def patch_theme_template(app, templates_path):
