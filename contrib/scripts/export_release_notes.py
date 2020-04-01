@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 import os
+from pathlib import Path
 import sys
 
 from docutils import core
 from lxml import etree, html
-from pathlib2 import Path
 
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(1, os.path.abspath('.'))
