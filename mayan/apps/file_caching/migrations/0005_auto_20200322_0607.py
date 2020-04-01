@@ -20,7 +20,9 @@ def operation_purge_and_delete_caches(apps, schema_editor):
 
     cache_storages = {}
     for cache in Cache.objects.using(schema_editor.connection.alias).all():
-        cache_storages[cache.pk] = import_string(dotted_path=cache.storage_instance_path)
+        cache_storages[cache.pk] = import_string(
+            dotted_path=cache.storage_instance_path
+        ).get_storage_instance()
 
     for cache_partition_file in CachePartitionFile.objects.using(schema_editor.connection.alias).all():
         cache_storages[
