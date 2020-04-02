@@ -12,6 +12,8 @@
 - Improve the design of the 404, 403 and 500 error pages.
 - Update production error log settings. Max bytes from 1024
   to 65535 and backup from 3 to 5.
+- Detect if devpi-server is installed before building
+  the Docker image.
 
 3.3.16 (2020-03-17)
 ===================
