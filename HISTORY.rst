@@ -6,6 +6,8 @@
 - Update document deletion message to say the documents
   were submitted for deletion and not actually deleted at
   the moment of the request.
+- Detect if devpi-server is installed before building 
+  the Docker image.
 
 3.4.1 (2020-04-01)
 ==================

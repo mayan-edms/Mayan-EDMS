@@ -122,6 +122,7 @@ docker-staging-cleanup: ## Delete the test container and the test volume.
 	@docker network rm mayan-staging || true
 
 devpi-init:
+	@if [ -z "$$(pip list | grep devpi-server)" ]; then echo "devpi-server not installed"; exit 1;fi
 	devpi-server --init || true
 
 devpi-start: devpi-init
