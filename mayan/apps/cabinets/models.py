@@ -106,6 +106,10 @@ class Cabinet(MPTTModel):
             result.append(node.label)
 
         return ' / '.join(result)
+    get_full_path.help_text = _(
+        'The path to the cabinet including all ancestors.'
+    )
+    get_full_path.short_description = _('Full path')
 
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)
@@ -152,6 +156,13 @@ class Cabinet(MPTTModel):
                         ],
                     },
                 )
+
+
+class CabinetSearchResult(Cabinet):
+    class Meta:
+        proxy = True
+        verbose_name = _('Cabinet')
+        verbose_name_plural = _('Cabinets')
 
 
 class DocumentCabinet(Cabinet):

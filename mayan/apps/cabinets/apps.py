@@ -51,12 +51,13 @@ class CabinetsApp(MayanAppConfig):
         from actstream import registry
         from .wizard_steps import WizardStepCabinets  # NOQA
 
+        Cabinet = self.get_model(model_name='Cabinet')
+        CabinetSearchResult = self.get_model(model_name='CabinetSearchResult')
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
 
         DocumentCabinet = self.get_model(model_name='DocumentCabinet')
-        Cabinet = self.get_model(model_name='Cabinet')
 
         # Add explicit order_by as DocumentCabinet ordering Meta option has no
         # effect.
@@ -103,12 +104,19 @@ class CabinetsApp(MayanAppConfig):
             attribute='label', is_identifier=True, is_sortable=True,
             source=Cabinet
         )
-
         SourceColumn(
             source=Document, label=_('Cabinets'),
             func=lambda context: widget_document_cabinets(
                 document=context['object'], user=context['request'].user
             ), order=1
+        )
+
+        SourceColumn(
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=CabinetSearchResult
+        )
+        SourceColumn(
+            attribute='get_full_path', source=CabinetSearchResult
         )
 
         document_page_search.add_model_field(
@@ -134,7 +142,7 @@ class CabinetsApp(MayanAppConfig):
                 link_events_for_object,
                 link_object_event_types_user_subcriptions_list,
             ),
-            sources=(Cabinet,)
+            sources=(Cabinet, CabinetSearchResult)
         )
 
         menu_main.bind_links(links=(menu_cabinets,), position=98)
@@ -153,7 +161,7 @@ class CabinetsApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_cabinet_delete, link_cabinet_edit, link_cabinet_child_add
-            ), sources=(Cabinet,)
+            ), sources=(Cabinet, CabinetSearchResult)
         )
         menu_object.unbind_links(
             links=(

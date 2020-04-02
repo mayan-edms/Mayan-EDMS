@@ -16,6 +16,7 @@
   the size of the thumbnails on list view mode.
 - Added document head template to inject the DOCUMENTS_LIST_THUMBNAIL_WIDTH
   as a CSS style.
+- Show the full path to the cabinet on cabinet search results.
 
 3.4.1 (2020-04-01)
 ==================
