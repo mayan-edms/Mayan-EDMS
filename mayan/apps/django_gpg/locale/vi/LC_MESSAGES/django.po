@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:32-0400\n"
+"POT-Creation-Date: 2020-04-02 02:52-0400\n"
 "PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
@@ -97,11 +97,11 @@ msgstr ""
 msgid "Upload key"
 msgstr ""
 
-#: links.py:50 views.py:177
+#: links.py:50 views.py:180
 msgid "Private keys"
 msgstr ""
 
-#: links.py:54 views.py:201
+#: links.py:54 views.py:204
 msgid "Public keys"
 msgstr ""
 
@@ -209,78 +209,78 @@ msgstr ""
 msgid "Keyserver used to query for keys."
 msgstr ""
 
-#: views.py:35
+#: views.py:36
 #, python-format
 msgid "Delete key: %s"
 msgstr ""
 
-#: views.py:51
+#: views.py:53
 #, python-format
 msgid "Details for key: %s"
 msgstr ""
 
-#: views.py:72
+#: views.py:75
 #, python-format
 msgid "Import key ID: %s?"
 msgstr ""
 
-#: views.py:73
+#: views.py:76
 msgid "Import key"
 msgstr ""
 
-#: views.py:82
+#: views.py:85
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
-#: views.py:90
+#: views.py:93
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
-#: views.py:107
+#: views.py:110
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
 msgstr ""
 
-#: views.py:111
+#: views.py:114
 msgid "No results returned"
 msgstr ""
 
-#: views.py:113
+#: views.py:116
 msgid "Key query results"
 msgstr ""
 
-#: views.py:133
+#: views.py:136
 msgid "Search"
 msgstr ""
 
-#: views.py:135
+#: views.py:138
 msgid "Query key server"
 msgstr ""
 
-#: views.py:154
+#: views.py:157
 msgid "Upload new key"
 msgstr ""
 
-#: views.py:170
+#: views.py:173
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
 msgstr ""
 
-#: views.py:175
+#: views.py:178
 msgid "There no private keys"
 msgstr ""
 
-#: views.py:193
+#: views.py:196
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
 
-#: views.py:199
+#: views.py:202
 msgid "There no public keys"
 msgstr ""

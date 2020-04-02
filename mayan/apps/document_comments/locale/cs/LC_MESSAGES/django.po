@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:32-0400\n"
+"POT-Creation-Date: 2020-04-02 02:52-0400\n"
 "PO-Revision-Date: 2020-02-06 09:23+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -54,7 +54,7 @@ msgstr "Editovat"
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:30 models.py:66
+#: models.py:30 models.py:68
 msgid "User"
 msgstr "Uživatel"
 

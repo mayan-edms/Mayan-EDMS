@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:33-0400\n"
+"POT-Creation-Date: 2020-04-02 02:53-0400\n"
 "PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -116,7 +116,7 @@ msgstr "Liste des profils de diffusion"
 msgid "Mailing profiles"
 msgstr "Profil de diffusion"
 
-#: links.py:72 views.py:259
+#: links.py:72 views.py:261
 msgid "Test"
 msgstr "Test"
 
@@ -389,17 +389,17 @@ msgstr "Sélection du backend de nouveau profil de liste de diffusion"
 msgid "Create a \"%s\" mailing profile"
 msgstr "Créer un profil de diffusion \"%s\""
 
-#: views.py:176
+#: views.py:177
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Supprimer un profil de diffusion %s"
 
-#: views.py:187
+#: views.py:189
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Modifier un profile de liste de diffusion %s"
 
-#: views.py:210
+#: views.py:213
 #, python-format
 msgid "Error log for: %s"
 msgstr "Journal des erreurs pour: %s"
@@ -414,11 +414,11 @@ msgstr "Les profils de courriel sont des configurations de messagerie. Les profi
 msgid "No mailing profiles available"
 msgstr "Aucun profil d'envoi de courriels disponible"
 
-#: views.py:251
+#: views.py:253
 msgid "Test email sent."
 msgstr "Courriel de test envoyé."
 
-#: views.py:260
+#: views.py:262
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Tester le profil de diffusion: %s"

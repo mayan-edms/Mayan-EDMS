@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:33-0400\n"
+"POT-Creation-Date: 2020-04-02 02:53-0400\n"
 "PO-Revision-Date: 2019-12-13 05:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -22,12 +22,12 @@ msgstr ""
 msgid "Linking"
 msgstr "Saistīšana"
 
-#: apps.py:72 models.py:26
+#: apps.py:75 models.py:26
 msgid "Label"
 msgstr "Etiķete"
 
 #: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:45
-#: permissions.py:5 views.py:195
+#: permissions.py:5 views.py:197
 msgid "Smart links"
 msgstr "Viedās saites"
 
@@ -59,7 +59,7 @@ msgstr "Rediģēt"
 msgid "Conditions"
 msgstr "Nosacījumi"
 
-#: links.py:49 views.py:241
+#: links.py:49 views.py:233
 msgid "Create new smart link"
 msgstr "Izveidojiet jaunu viedo saiti"
 
@@ -243,108 +243,108 @@ msgstr "Komatu atdalīts dokumentu tipu primāro atslēgu saraksts, kurām tiks 
 msgid "No such document type: %s"
 msgstr "Nav šāda veida dokumenta: %s"
 
-#: views.py:44
+#: views.py:45
 msgid "Available smart links"
 msgstr "Pieejamās viedās saites"
 
-#: views.py:45
+#: views.py:46
 msgid "Smart links enabled"
 msgstr "Viedās saites ir iespējotas"
 
-#: views.py:77
+#: views.py:78
 #, python-format
 msgid "Smart links to enable for document type: %s"
 msgstr "Viedās saites, lai iespējotu dokumenta tipu: %s"
 
-#: views.py:121
+#: views.py:122
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Smart saites vaicājuma kļūda: %s"
 
-#: views.py:130
+#: views.py:131
 #, python-format
 msgid "Documents in smart link: %s"
 msgstr "Dokumenti viedā saitē: %s"
 
-#: views.py:133
+#: views.py:134
 #, python-format
 msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr "Dokumenti viedā saite \"%(smart_link)s\", kas saistīti ar \"%(document)s\""
 
-#: views.py:158
+#: views.py:159
 msgid "Available document types"
 msgstr "Pieejamie dokumentu veidi"
 
-#: views.py:159
+#: views.py:160
 msgid "Document types enabled"
 msgstr "Iespējami dokumentu veidi"
 
-#: views.py:169
+#: views.py:170
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr "Dokumenta veids, kam jāļauj viedā saite: %s"
 
-#: views.py:186
+#: views.py:188
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
 msgstr "Indeksē grupas dokumentus vienībās, parasti ar līdzīgām īpašībām un vienādiem vai līdzīgiem veidiem. Viedās saites ļauj noteikt attiecības starp dokumentiem pat tad, ja tās atrodas dažādos indeksos un ir dažāda veida."
 
-#: views.py:193
+#: views.py:195
 msgid "There are no smart links"
 msgstr "Viedās saites nav"
 
-#: views.py:225
+#: views.py:213
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
 msgstr "Viedās saites ļauj noteikt attiecības starp dokumentiem pat tad, ja tās atrodas dažādos indeksos un ir dažāda veida."
 
-#: views.py:230
+#: views.py:218
 msgid "There are no smart links for this document"
 msgstr "Šim dokumentam nav inteliģentas saites"
 
-#: views.py:233
+#: views.py:221
 #, python-format
 msgid "Smart links for document: %s"
 msgstr "Viedās saites dokumentam: %s"
 
-#: views.py:262
+#: views.py:255
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "Dzēst viedo saiti: %s"
 
-#: views.py:277
+#: views.py:271
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Rediģēt viedo saiti: %s"
 
-#: views.py:300
+#: views.py:296
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
 msgstr "Nosacījumi ir nelielas loģikas vienības, kas, kombinējot, definē, kā viedā saite darbosies."
 
-#: views.py:304
+#: views.py:300
 msgid "There are no conditions for this smart link"
 msgstr "Šai viedajai saitei nav nekādu nosacījumu"
 
-#: views.py:308
+#: views.py:304
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr "Nosacījumi viedai saitei: %s"
 
-#: views.py:336
+#: views.py:323
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Pievienot jaunus nosacījumus viedajai saitei: \"%s\""
 
-#: views.py:377
-msgid "Edit smart link condition"
-msgstr "Rediģējiet viedās saites stāvokli"
-
-#: views.py:407
+#: views.py:353
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Dzēst smart saite nosacījums: \"%s\"?"
+
+#: views.py:376
+msgid "Edit smart link condition"
+msgstr "Rediģējiet viedās saites stāvokli"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:32-0400\n"
+"POT-Creation-Date: 2020-04-02 02:52-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -66,7 +66,7 @@ msgstr "内容"
 msgid "Delete parsed content"
 msgstr ""
 
-#: links.py:42 links.py:80 views.py:220
+#: links.py:42 links.py:80 views.py:228
 msgid "Parsing errors"
 msgstr "解析错误"
 
@@ -174,57 +174,57 @@ msgid ""
 "files."
 msgstr "poppler的pdftotext程序的文件路径，用于从PDF文件中提取文本。"
 
-#: views.py:34
+#: views.py:35
 msgid "Delete the parsed content of the selected document?"
 msgid_plural "Delete the parsed content of the selected documents?"
 msgstr[0] ""
 
-#: views.py:68
+#: views.py:70
 #, python-format
 msgid "Content for document: %s"
 msgstr "文件内容：%s"
 
-#: views.py:101
+#: views.py:105
 #, python-format
 msgid "Content for document page: %s"
 msgstr "文档页面的内容：%s"
 
-#: views.py:116
+#: views.py:121
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "解析文档错误：%s"
 
-#: views.py:128
+#: views.py:134
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)d文档已添加到解析队列中"
 
-#: views.py:131
+#: views.py:137
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d文档已添加到解析队列中"
 
-#: views.py:139
+#: views.py:145
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue?"
 msgstr[0] ""
 
-#: views.py:152
+#: views.py:158
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "将文档“%s”提交到解析队列"
 
-#: views.py:177
+#: views.py:185
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr ""
 
-#: views.py:187
+#: views.py:195
 msgid "Submit all documents of a type for parsing"
 msgstr "提交某类型的所有文档进行解析"
 
-#: views.py:208
+#: views.py:216
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr ""

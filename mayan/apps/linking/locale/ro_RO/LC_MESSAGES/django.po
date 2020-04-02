@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:33-0400\n"
+"POT-Creation-Date: 2020-04-02 02:53-0400\n"
 "PO-Revision-Date: 2019-12-20 12:46+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -23,12 +23,12 @@ msgstr ""
 msgid "Linking"
 msgstr "Legare"
 
-#: apps.py:72 models.py:26
+#: apps.py:75 models.py:26
 msgid "Label"
 msgstr "Etichetă"
 
 #: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:45
-#: permissions.py:5 views.py:195
+#: permissions.py:5 views.py:197
 msgid "Smart links"
 msgstr "Link-uri inteligente"
 
@@ -60,7 +60,7 @@ msgstr "Editează"
 msgid "Conditions"
 msgstr "Condiții"
 
-#: links.py:49 views.py:241
+#: links.py:49 views.py:233
 msgid "Create new smart link"
 msgstr "Creați un nou link inteligent"
 
@@ -244,108 +244,108 @@ msgstr "Listă separată prin virgule de chei primare de documente la care va fi
 msgid "No such document type: %s"
 msgstr "Nu există un astfel de tip de document: %s"
 
-#: views.py:44
+#: views.py:45
 msgid "Available smart links"
 msgstr "Legături inteligente disponibile"
 
-#: views.py:45
+#: views.py:46
 msgid "Smart links enabled"
 msgstr "Legături inteligente activate"
 
-#: views.py:77
+#: views.py:78
 #, python-format
 msgid "Smart links to enable for document type: %s"
 msgstr "Legături inteligente de activat pentru tipul de document: %s"
 
-#: views.py:121
+#: views.py:122
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Eroare interogare  link-ul:% s"
 
-#: views.py:130
+#: views.py:131
 #, python-format
 msgid "Documents in smart link: %s"
 msgstr "Documente în legătura inteligentă: %s"
 
-#: views.py:133
+#: views.py:134
 #, python-format
 msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr "Documentele din legătura inteligentă \"%(smart_link)s\" în legătură cu \"%(document)s\""
 
-#: views.py:158
+#: views.py:159
 msgid "Available document types"
 msgstr "Tipuri de documente disponibile"
 
-#: views.py:159
+#: views.py:160
 msgid "Document types enabled"
 msgstr "Tipuri de documente activate"
 
-#: views.py:169
+#: views.py:170
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr "Tipul de document pentru care să se permită legătura inteligentă: %s"
 
-#: views.py:186
+#: views.py:188
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
 msgstr "Inexurile grupează documente în unități, de obicei cu proprietăți similare și de tipuri egale sau similare. Legăturile inteligente permit definirea relațiilor dintre documente chiar dacă sunt în indecți diferiți și sunt de diferite tipuri."
 
-#: views.py:193
+#: views.py:195
 msgid "There are no smart links"
 msgstr "Nu există legături inteligente"
 
-#: views.py:225
+#: views.py:213
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
 msgstr "Legăturile inteligente permit definirea relațiilor dintre documente chiar dacă sunt în indecși diferiți și sunt de diferite tipuri."
 
-#: views.py:230
+#: views.py:218
 msgid "There are no smart links for this document"
 msgstr "Nu există legături inteligente pentru acest document"
 
-#: views.py:233
+#: views.py:221
 #, python-format
 msgid "Smart links for document: %s"
 msgstr "Legături inteligente pentru documentul: %s"
 
-#: views.py:262
+#: views.py:255
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "Ștergeți legătura inteligentă: %s"
 
-#: views.py:277
+#: views.py:271
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Editare legătură inteligentă:% s"
 
-#: views.py:300
+#: views.py:296
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
 msgstr "Condițiile sunt unități logice mici care, atunci când sunt combinate, definesc modul în care se va comporta legătura inteligentă."
 
-#: views.py:304
+#: views.py:300
 msgid "There are no conditions for this smart link"
 msgstr "Nu există condiții pentru această legătură inteligentă"
 
-#: views.py:308
+#: views.py:304
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr "Condiții pentru legătura inteligentă: %s"
 
-#: views.py:336
+#: views.py:323
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Adauga la noile condiții de legătură inteligentă: \"%s\""
 
-#: views.py:377
-msgid "Edit smart link condition"
-msgstr "Editați condiția de legătură inteligentă"
-
-#: views.py:407
+#: views.py:353
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Ștergeți condiția de legătură inteligentă: \"%s\"?"
+
+#: views.py:376
+msgid "Edit smart link condition"
+msgstr "Editați condiția de legătură inteligentă"

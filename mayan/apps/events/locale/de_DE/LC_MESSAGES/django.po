@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:32-0400\n"
+"POT-Creation-Date: 2020-04-02 02:53-0400\n"
 "PO-Revision-Date: 2019-04-28 21:18+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -79,7 +79,7 @@ msgstr "System"
 msgid "My events"
 msgstr "Meine Ereignisse"
 
-#: links.py:61 models.py:64 views.py:78
+#: links.py:61 models.py:65 views.py:78
 msgid "Event subscriptions"
 msgstr "Ereignissubskriptionen"
 
@@ -95,51 +95,51 @@ msgstr "Alle als gesehen markieren"
 msgid "Subscriptions"
 msgstr "Subskriptionen"
 
-#: models.py:22
+#: models.py:23
 msgid "Name"
 msgstr "Name"
 
-#: models.py:26
+#: models.py:27
 msgid "Stored event type"
 msgstr "Gespeicherter Ereignistyp"
 
-#: models.py:27
+#: models.py:28
 msgid "Stored event types"
 msgstr "Gespeicherte Ereignistypen"
 
-#: models.py:53 models.py:80 models.py:110
+#: models.py:54 models.py:81 models.py:113
 msgid "User"
 msgstr "Benutzer"
 
-#: models.py:57 models.py:114
+#: models.py:58 models.py:117
 msgid "Event type"
 msgstr "Ereignistyp"
 
-#: models.py:63
+#: models.py:64
 msgid "Event subscription"
 msgstr "Ereignissubskription"
 
-#: models.py:84
+#: models.py:85
 msgid "Action"
 msgstr "Aktion"
 
-#: models.py:86
+#: models.py:87
 msgid "Read"
 msgstr "Gelesen"
 
-#: models.py:90
+#: models.py:93
 msgid "Notification"
 msgstr "Benachrichtigung"
 
-#: models.py:91 views.py:117
+#: models.py:94 views.py:117
 msgid "Notifications"
 msgstr "Benachrichtigungen"
 
-#: models.py:120
+#: models.py:123
 msgid "Object event subscription"
 msgstr "Objektereignissubskription"
 
-#: models.py:121
+#: models.py:124
 msgid "Object event subscriptions"
 msgstr "Objektereignissubskriptionen"
 
@@ -164,36 +164,36 @@ msgstr "Subskription für globale oder Objektereignisse um Benachrichtigungen zu
 msgid "There are no notifications"
 msgstr "Keine Benachrichtigungen vorhanden"
 
-#: views.py:162
+#: views.py:164
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
 msgstr "Ereignisse sind Aktionen, die an diesem Objekt vorgenommen wurden oder durch die Benutzung des Objekts hervorgerufen werden."
 
-#: views.py:165
+#: views.py:167
 msgid "There are no events for this object"
 msgstr "Keine Ereignisse für dieses Objekt vorhanden"
 
-#: views.py:167
+#: views.py:169
 #, python-format
 msgid "Events for: %s"
 msgstr "Ereignisse für %s"
 
-#: views.py:207
+#: views.py:209
 #, python-format
 msgid "Error updating object event subscription; %s"
 msgstr "Fehler bei der Aktualisierung der Objektereignissubskription; %s"
 
-#: views.py:213
+#: views.py:215
 msgid "Object event subscriptions updated successfully"
 msgstr "Objektereignissubskriptionen erfolgreich aktualisiert"
 
-#: views.py:246
+#: views.py:248
 #, python-format
 msgid "Event subscriptions for: %s"
 msgstr "Ereignissubskriptionen für %s"
 
-#: views.py:278
+#: views.py:280
 #, python-format
 msgid "Events of type: %s"
 msgstr "Ereignisse des Typs %s"

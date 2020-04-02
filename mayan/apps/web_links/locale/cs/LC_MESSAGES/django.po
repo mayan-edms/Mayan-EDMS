@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"POT-Creation-Date: 2020-04-02 02:55-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -26,7 +26,7 @@ msgid "Links"
 msgstr "Odkazy"
 
 #: events.py:6 links.py:14 links.py:49 links.py:54 links.py:58 models.py:41
-#: permissions.py:5 views.py:152
+#: permissions.py:5 views.py:153
 msgid "Web links"
 msgstr "webové odkazy"
 
@@ -42,7 +42,7 @@ msgstr "Webový odkaz byl upraven"
 msgid "Web link navigated"
 msgstr "Navigace webovým odkazem"
 
-#: links.py:20 views.py:192
+#: links.py:20 views.py:188
 msgid "Create new web link"
 msgstr "Vytvořit nový webový odkaz"
 
@@ -133,7 +133,7 @@ msgstr "Typy dokumentů povoleny"
 msgid "Document type for which to enable web link: %s"
 msgstr "Typ dokumentu, pro který chcete povolit webový odkaz: %s"
 
-#: views.py:145 views.py:174
+#: views.py:146 views.py:170
 msgid ""
 "Web links allow generating HTTP links from documents to external resources. "
 "The link URL's can contain document properties values."
@@ -141,25 +141,25 @@ msgstr ""
 "Webové odkazy umožňují generovat HTTP odkazy z dokumentů na externí zdroje. "
 "URL odkazu mohou obsahovat hodnoty vlastností dokumentu."
 
-#: views.py:150
+#: views.py:151
 msgid "There are no web links"
 msgstr "Žádné webové odkazy"
 
-#: views.py:179
+#: views.py:175
 msgid "There are no web links for this document"
 msgstr "Na tento dokument nejsou žádné odkazy"
 
-#: views.py:182
+#: views.py:178
 #, python-format
 msgid "Web links for document: %s"
 msgstr "Webové odkazy na dokument: %s"
 
-#: views.py:213
+#: views.py:210
 #, python-format
 msgid "Delete web link: %s"
 msgstr "Smazat webový odkaz: %s"
 
-#: views.py:228
+#: views.py:226
 #, python-format
 msgid "Edit web link: %s"
 msgstr "Upravit webový odkaz: %s"

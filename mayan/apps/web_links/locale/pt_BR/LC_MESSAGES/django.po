@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"POT-Creation-Date: 2020-04-02 02:55-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -28,7 +28,7 @@ msgid "Links"
 msgstr "Links"
 
 #: events.py:6 links.py:14 links.py:49 links.py:54 links.py:58 models.py:41
-#: permissions.py:5 views.py:152
+#: permissions.py:5 views.py:153
 msgid "Web links"
 msgstr "Web links"
 
@@ -44,7 +44,7 @@ msgstr "Web link editado"
 msgid "Web link navigated"
 msgstr "Web link navegado"
 
-#: links.py:20 views.py:192
+#: links.py:20 views.py:188
 msgid "Create new web link"
 msgstr "Criar novo web link"
 
@@ -134,7 +134,7 @@ msgstr "Tipos de documentos habilitados"
 msgid "Document type for which to enable web link: %s"
 msgstr "Tipo de documento para o qual habilitar o link web: %s"
 
-#: views.py:145 views.py:174
+#: views.py:146 views.py:170
 msgid ""
 "Web links allow generating HTTP links from documents to external resources. "
 "The link URL's can contain document properties values."
@@ -142,25 +142,25 @@ msgstr ""
 "Web links permitem a geração de links HTTP de documentos para fontes "
 "externas. A URL do link pode conter propriedades dos documentos."
 
-#: views.py:150
+#: views.py:151
 msgid "There are no web links"
 msgstr "Não há web links"
 
-#: views.py:179
+#: views.py:175
 msgid "There are no web links for this document"
 msgstr "Não há web links para este documento"
 
-#: views.py:182
+#: views.py:178
 #, python-format
 msgid "Web links for document: %s"
 msgstr "Web links para o documento: %s"
 
-#: views.py:213
+#: views.py:210
 #, python-format
 msgid "Delete web link: %s"
 msgstr "Excluir web link: %s"
 
-#: views.py:228
+#: views.py:226
 #, python-format
 msgid "Edit web link: %s"
 msgstr "Editar web link: %s"

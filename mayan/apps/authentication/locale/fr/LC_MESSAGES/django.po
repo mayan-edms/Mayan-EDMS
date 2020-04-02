@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:31-0400\n"
+"POT-Creation-Date: 2020-04-02 02:51-0400\n"
 "PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -141,7 +141,7 @@ msgid "Login page"
 msgstr "Page de connexion"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:211
+#: templates/authentication/password_reset_form.html:29 views.py:212
 msgid "Submit"
 msgstr "Soumettre"
 
@@ -161,39 +161,39 @@ msgstr "Modifier le mot de passe de l'utilisateur actuel"
 msgid "Changing the password is not allowed for this account."
 msgstr "Le changement de mot de passe n'est pas autorisé pour ce compte."
 
-#: views.py:202
+#: views.py:203
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Demande de changement de mot de passe exécutée sur %(count)d utilisateur"
 
-#: views.py:204
+#: views.py:205
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Demande de changement de mot de passe exécutée sur %(count)d utilisateurs"
 
-#: views.py:213
+#: views.py:214
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] "Changer le mot de passe de l&#39;utilisateur"
 msgstr[1] "Modifier les mots de passe des utilisateurs"
 
-#: views.py:223
+#: views.py:224
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Modifier le mot de passe pour l'utilisateur: %s"
 
-#: views.py:243
+#: views.py:244
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "La réinitialisation des mots de passe pour les comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'administration."
 
-#: views.py:253
+#: views.py:254
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Le mot de passe de l'utilisateur : %s a été ré-initialisé avec succès."
 
-#: views.py:259
+#: views.py:260
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur \"%(user)s\" : %(error)s"

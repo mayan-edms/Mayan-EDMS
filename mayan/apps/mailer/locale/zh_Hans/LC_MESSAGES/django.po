@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:33-0400\n"
+"POT-Creation-Date: 2020-04-02 02:53-0400\n"
 "PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
@@ -112,7 +112,7 @@ msgstr "邮件配置文件列表"
 msgid "Mailing profiles"
 msgstr "邮件配置文件"
 
-#: links.py:72 views.py:259
+#: links.py:72 views.py:261
 msgid "Test"
 msgstr "测试"
 
@@ -385,17 +385,17 @@ msgstr "新的邮件配置文件后端选择"
 msgid "Create a \"%s\" mailing profile"
 msgstr "创建“%s”邮件配置文件"
 
-#: views.py:176
+#: views.py:177
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "删除邮件配置文件：%s"
 
-#: views.py:187
+#: views.py:189
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "编辑邮件配置文件：%s"
 
-#: views.py:210
+#: views.py:213
 #, python-format
 msgid "Error log for: %s"
 msgstr ""
@@ -410,11 +410,11 @@ msgstr ""
 msgid "No mailing profiles available"
 msgstr "没有可用的邮件配置文件"
 
-#: views.py:251
+#: views.py:253
 msgid "Test email sent."
 msgstr ""
 
-#: views.py:260
+#: views.py:262
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "测试邮件配置文件：%s"

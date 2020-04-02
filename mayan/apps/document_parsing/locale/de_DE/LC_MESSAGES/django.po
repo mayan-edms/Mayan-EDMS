@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:32-0400\n"
+"POT-Creation-Date: 2020-04-02 02:52-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2020\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -73,7 +73,7 @@ msgstr "Inhalte"
 msgid "Delete parsed content"
 msgstr "Geparsten Inhalt löschen"
 
-#: links.py:42 links.py:80 views.py:220
+#: links.py:42 links.py:80 views.py:228
 msgid "Parsing errors"
 msgstr "Fehler beim Parsen"
 
@@ -185,59 +185,59 @@ msgstr ""
 "Pfad zum \"pdftotext\"-Programm (bereitgestellt von poppler), das benutzt "
 "wird, um Text aus PDF-Dateien zu extrahieren."
 
-#: views.py:34
+#: views.py:35
 msgid "Delete the parsed content of the selected document?"
 msgid_plural "Delete the parsed content of the selected documents?"
 msgstr[0] "Den OCR-Inhalt des auswählten Dokumentes löschen?"
 msgstr[1] "Den geparsten Inhalt der ausgewählten Dokumente löschen?"
 
-#: views.py:68
+#: views.py:70
 #, python-format
 msgid "Content for document: %s"
 msgstr "Inhalt von Dokument: %s"
 
-#: views.py:101
+#: views.py:105
 #, python-format
 msgid "Content for document page: %s"
 msgstr "Inhalt von Dokument Seite: %s"
 
-#: views.py:116
+#: views.py:121
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "Parsing Fehler für Dokument: %s"
 
-#: views.py:128
+#: views.py:134
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)d Dokument zur Parsing-Warteschlange hinzugefügt"
 
-#: views.py:131
+#: views.py:137
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d Dokumente zur Parsing-Warteschlange hinzugefügt"
 
-#: views.py:139
+#: views.py:145
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue?"
 msgstr[0] "%(count)d Dokument in die Parsing-Warteschlange einstellen?"
 msgstr[1] "%(count)d Dokumente in die Parsing-Warteschlange einstellen?"
 
-#: views.py:152
+#: views.py:158
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "Dokument \"%s\" in die Parsing-Warteschlange einreihen"
 
-#: views.py:177
+#: views.py:185
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr "Parsereinstellungen für Dokumententyp %s bearbeiten."
 
-#: views.py:187
+#: views.py:195
 msgid "Submit all documents of a type for parsing"
 msgstr "Alle Dokumente eines Typs zum Parsen einreichen"
 
-#: views.py:208
+#: views.py:216
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d Dokumente zur Parsing-Warteschlange hinzugefügt."

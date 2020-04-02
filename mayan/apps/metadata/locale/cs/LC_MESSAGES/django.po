@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:33-0400\n"
+"POT-Creation-Date: 2020-04-02 02:54-0400\n"
 "PO-Revision-Date: 2020-02-06 09:47+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -110,7 +110,7 @@ msgstr "&quot;%s&quot; je vyžadován pro tento typ dokumentu."
 msgid "Metadata types to be added to the selected documents."
 msgstr "Typy metadat, které se mohou přidat do vybraných dokumentů."
 
-#: forms.py:147 views.py:422
+#: forms.py:147 views.py:403
 msgid "Remove"
 msgstr "Odstranit"
 
@@ -146,7 +146,7 @@ msgstr "Upravit metadata"
 msgid "Remove metadata"
 msgstr "Odebrat metadata"
 
-#: links.py:53 links.py:81 models.py:95 views.py:588
+#: links.py:53 links.py:81 models.py:95 views.py:573
 msgid "Metadata types"
 msgstr "Typy metadat"
 
@@ -162,9 +162,13 @@ msgstr "Vytvořit nový"
 msgid "Delete"
 msgstr "Odstranit"
 
-#: links.py:76 views.py:258
+#: links.py:76 views.py:237
 msgid "Edit"
 msgstr "Editovat"
+
+#: mixins.py:21
+msgid "Selected documents must be of the same type."
+msgstr "Vybrané dokumenty musí být stejného typu."
 
 #: models.py:48
 msgid ""
@@ -309,25 +313,21 @@ msgstr "Primární klíč typu metadat, který se má přidat."
 msgid "Primary key of the metadata type to be added to the document."
 msgstr "Primární klíč typu metadat, který se má přidat do dokumentu."
 
-#: views.py:63
-msgid "Selected documents must be of the same type."
-msgstr "Vybrané dokumenty musí být stejného typu."
-
-#: views.py:77
+#: views.py:55
 #, python-format
 msgid "Metadata add request performed on %(count)d document"
 msgstr "Žádost o přidání metadat byla provedena v dokumentu %(count)d"
 
-#: views.py:79
+#: views.py:57
 #, python-format
 msgid "Metadata add request performed on %(count)d documents"
 msgstr "Žádost o přidání metadat byla provedena na dokumentech %(count)d"
 
-#: views.py:87
+#: views.py:65
 msgid "Add"
 msgstr "Přidat"
 
-#: views.py:89
+#: views.py:67
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
 msgstr[0] "Přidejte do dokumentu typy metadat"
@@ -335,52 +335,52 @@ msgstr[1] "Přidejte do dokumentů typy metadat"
 msgstr[2] "Přidejte do dokumentů typy metadat"
 msgstr[3] "Přidejte do dokumentů typy metadat"
 
-#: views.py:100
+#: views.py:78
 #, python-format
 msgid "Add metadata types to document: %s"
 msgstr "Přidejte do dokumentu typy metadat: %s"
 
-#: views.py:177
+#: views.py:156
 #, python-format
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
 msgstr "Chyba při přidávání metadat typu „%(metadata_type)s“ do dokumentu: %(document)s; %(exception)s"
 
-#: views.py:192
+#: views.py:171
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
 msgstr "Typ metadat: %(metadata_type)s byl úspěšně přidán do dokumentu %(document)s."
 
-#: views.py:202
+#: views.py:181
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
 msgstr "Typ metadat: %(metadata_type)s již v dokumentu %(document)s existuje."
 
-#: views.py:218
+#: views.py:198
 #, python-format
 msgid "Metadata edit request performed on %(count)d document"
 msgstr "Žádost o úpravu metadat byla provedena v dokumentu %(count)d"
 
-#: views.py:221
+#: views.py:201
 #, python-format
 msgid "Metadata edit request performed on %(count)d documents"
 msgstr "Žádost o úpravu metadat byla provedena na dokumentech %(count)d"
 
-#: views.py:253
+#: views.py:232
 msgid ""
 "Add metadata types available for this document's type and assign them "
 "corresponding values."
 msgstr "Přidejte typy metadat dostupných pro typ tohoto dokumentu a přiřaďte jim odpovídající hodnoty."
 
-#: views.py:256
+#: views.py:235
 msgid "There is no metadata to edit"
 msgstr "Neexistují žádná metadata pro úpravy"
 
-#: views.py:260
+#: views.py:239
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
 msgstr[0] "Upravit metadata dokumentu"
@@ -388,48 +388,48 @@ msgstr[1] "Upravit metadata dokumentů"
 msgstr[2] "Upravit metadata dokumentů"
 msgstr[3] "Upravit metadata dokumentů"
 
-#: views.py:271
+#: views.py:250
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr "Upravit metadata pro dokument: %s"
 
-#: views.py:355
+#: views.py:335
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
 msgstr "Chyba při editaci metadat pro dokument: %(document)s; %(exception)s."
 
-#: views.py:365
+#: views.py:345
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "Metadata pro dokument %s byla úspěšně upravena."
 
-#: views.py:390
+#: views.py:370
 msgid ""
 "Add metadata types this document's type to be able to add them to individual"
 " documents. Once added to individual document, you can then edit their "
 "values."
 msgstr "Přidat typy metadat tohoto typu dokumentů, abyste je mohli přidat do jednotlivých dokumentů. Po přidání do samostatného dokumentu můžete upravit jejich hodnoty."
 
-#: views.py:395
+#: views.py:375
 msgid "This document doesn't have any metadata"
 msgstr "Tento dokument neobsahuje žádná metadata"
 
-#: views.py:396
+#: views.py:376
 #, python-format
 msgid "Metadata for document: %s"
 msgstr "Metadata pro dokument: %s"
 
-#: views.py:410
+#: views.py:391
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
 msgstr "Žádost o odstranění metadat provedená v dokumentu %(count)d"
 
-#: views.py:413
+#: views.py:394
 #, python-format
 msgid "Metadata remove request performed on %(count)d documents"
 msgstr "Žádost o odstranění metadat provedená v dokumentech %(count)d"
 
-#: views.py:424
+#: views.py:405
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] "Odeberte z dokumentu typy metadat"
@@ -437,40 +437,40 @@ msgstr[1] "Odstraňte z dokumentů typy metadat"
 msgstr[2] "Odstraňte z dokumentů typy metadat"
 msgstr[3] "Odstraňte z dokumentů typy metadat"
 
-#: views.py:435
+#: views.py:416
 #, python-format
 msgid "Remove metadata types from the document: %s"
 msgstr "Odeberte z dokumentu typy metadat: %s"
 
-#: views.py:499
+#: views.py:481
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
 msgstr "Metadata typu „%(metadata_type)s“ byla úspěšně odstraněna z dokumentu: %(document)s."
 
-#: views.py:508
+#: views.py:490
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
 msgstr "Chyba při odstraňování typu metadat „%(metadata_type)s“ z dokumentu: %(document)s; %(exception)s"
 
-#: views.py:519
+#: views.py:501
 msgid "Create metadata type"
 msgstr "Vytvořit typ metadat"
 
-#: views.py:544
+#: views.py:527
 #, python-format
 msgid "Delete the metadata type: %s?"
 msgstr "Odstranit typ metadat: %s?"
 
-#: views.py:559
+#: views.py:543
 #, python-format
 msgid "Edit metadata type: %s"
 msgstr "Upravit typ metadat: %s"
 
-#: views.py:580
+#: views.py:565
 msgid ""
 "Metadata types are users defined properties that can be assigned values. "
 "Once created they must be associated to document types, either as optional "
@@ -479,34 +479,34 @@ msgid ""
 "is provided."
 msgstr "Typy metadat jsou uživatelem definované vlastnosti, kterým lze přiřadit hodnoty. Jakmile jsou vytvořeny, musí být přiřazeny k typům dokumentů, buď jako volitelné nebo požadované, pro každý z nich. Nastavení typu metadat podle potřeby pro typ dokumentu bude blokovat nahrávání dokumentů tohoto typu, dokud nebude poskytnuta hodnota metadat."
 
-#: views.py:587
+#: views.py:572
 msgid "There are no metadata types"
 msgstr "Nejsou žádné typy metadat"
 
-#: views.py:608
+#: views.py:593
 #, python-format
 msgid "Error updating relationship; %s"
 msgstr "Chyba při aktualizaci vztahu; %s"
 
-#: views.py:613
+#: views.py:598
 msgid "Relationships updated successfully"
 msgstr "Vztahy byly úspěšně aktualizovány"
 
-#: views.py:629
+#: views.py:614
 msgid ""
 "Create metadata types to be able to associate them to this document type."
 msgstr "Vytvořte typy metadat, abyste je mohli přiřadit k tomuto typu dokumentu."
 
-#: views.py:632
+#: views.py:617
 msgid "There are no metadata types available"
 msgstr "Nejsou k dispozici žádné typy metadat"
 
-#: views.py:635
+#: views.py:620
 #, python-format
 msgid "Metadata types for document type: %s"
 msgstr "Typy metadat pro typ dokumentu: %s"
 
-#: views.py:686
+#: views.py:676
 #, python-format
 msgid "Document types for metadata type: %s"
 msgstr "Typy dokumentů pro typ metadat: %s"

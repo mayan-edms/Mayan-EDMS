@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:32-0400\n"
+"POT-Creation-Date: 2020-04-02 02:52-0400\n"
 "PO-Revision-Date: 2020-03-28 21:05+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -259,72 +259,72 @@ msgstr "Imposibil de inițializat stocarea de semnături detașate. Verificați 
 msgid "Detached signatures"
 msgstr "Semnături detașate"
 
-#: views.py:68 views.py:150
+#: views.py:68 views.py:156
 msgid "Passphrase is needed to unlock this key."
 msgstr "Fraza de acces este necesară pentru a debloca această cheie."
 
-#: views.py:79 views.py:161
+#: views.py:81 views.py:169
 msgid "Passphrase is incorrect."
 msgstr "Fraza de acces este incorectă."
 
-#: views.py:90 views.py:172
+#: views.py:94 views.py:182
 msgid "Document version signed successfully."
 msgstr "Versiunea de document a fost semnată cu succes."
 
-#: views.py:116 views.py:205
+#: views.py:122 views.py:217
 msgid "Sign"
 msgstr "Semnați"
 
-#: views.py:118
+#: views.py:124
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
 msgstr "Semnează versiunea documentului \"%s\" cu semnătura detașată"
 
-#: views.py:207
+#: views.py:219
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr "Semnează versiunea documentului \"%s\" cu o semnătura încorporată"
 
-#: views.py:223
+#: views.py:236
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Ștergeți semnătura detașată: %s"
 
-#: views.py:243
+#: views.py:259
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Detalii pentru semnătura: %s"
 
-#: views.py:273
+#: views.py:291
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr "Semnăturile vă ajută să furnizați dovezi de autorizare și detectarea fraudelor. Sunt foarte sigure și greu de falsificat. O semnătură poate fi încorporată ca parte a documentului sau încărcată ca fișier separat."
 
-#: views.py:301
+#: views.py:320
 msgid "There are no signatures for this document."
 msgstr "Nu există semnături pentru acest document."
 
-#: views.py:304
+#: views.py:324
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Semnături pentru versiunea documentului: %s"
 
-#: views.py:334
+#: views.py:356
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Încărcați semnătura detașată pentru versiunea documentului: %s"
 
-#: views.py:351
+#: views.py:374
 msgid "On large databases this operation may take some time to execute."
 msgstr "Pe baze de date mari, această operație poate dura ceva timp pentru a executa."
 
-#: views.py:352
+#: views.py:375
 msgid "Verify all document for signatures?"
 msgstr "Verificați toate documentele pentru semnături?"
 
-#: views.py:362
+#: views.py:385
 msgid "Signature verification queued successfully."
 msgstr "Verificarea semnăturilor a intrat în coada de așteptare."
 

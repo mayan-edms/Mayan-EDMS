@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:31-0400\n"
+"POT-Creation-Date: 2020-04-02 02:52-0400\n"
 "PO-Revision-Date: 2020-01-30 18:47+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Checkouts"
 msgstr "Verrouillages"
 
-#: dashboard_widgets.py:14 views.py:170
+#: dashboard_widgets.py:14 views.py:173
 msgid "Checked out documents"
 msgstr "Documents verrouillés"
 
@@ -198,30 +198,30 @@ msgstr[1] "Déverrouiller %(count)d documents"
 msgid "Check in document: %s"
 msgstr "Déverrouiller ce document: %s"
 
-#: views.py:100
+#: views.py:101
 #, python-format
 msgid "Checkout %(count)d document"
 msgid_plural "Checkout %(count)d documents"
 msgstr[0] "Commander le document %(count)d"
 msgstr[1] "Déverrouiller%(count)d documents"
 
-#: views.py:113
+#: views.py:114
 #, python-format
 msgid "Check out document: %s"
 msgstr "Verrouiller le document : %s"
 
-#: views.py:147
+#: views.py:150
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Détails du verrouillage pour le document : %s"
 
-#: views.py:166
+#: views.py:169
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr "Le verrouillage d'un document bloque certaines opérations pendant une durée prédéterminée."
 
-#: views.py:169
+#: views.py:172
 msgid "No documents have been checked out"
 msgstr "Aucun document n'a été verrouillé"
 

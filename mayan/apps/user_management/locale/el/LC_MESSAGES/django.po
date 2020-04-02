@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"POT-Creation-Date: 2020-04-02 02:55-0400\n"
 "PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
@@ -25,7 +25,7 @@ msgstr "Διαχείριση χρηστών"
 msgid "Group"
 msgstr ""
 
-#: apps.py:99 links.py:39 links.py:50 links.py:73 search.py:34 views.py:118
+#: apps.py:99 links.py:39 links.py:50 links.py:73 search.py:34 views.py:120
 msgid "Groups"
 msgstr "Ομάδες"
 
@@ -37,7 +37,7 @@ msgstr "Όνομα"
 msgid "User"
 msgstr "Χρήστης"
 
-#: apps.py:107 apps.py:172 links.py:45 links.py:78 links.py:94 views.py:300
+#: apps.py:107 apps.py:172 links.py:45 links.py:78 links.py:94 views.py:305
 msgid "Users"
 msgstr "Χρήστες"
 
@@ -125,7 +125,7 @@ msgstr "Διαγραφή"
 msgid "Edit"
 msgstr "Τροποποίηση"
 
-#: links.py:55 views.py:150
+#: links.py:55 views.py:152
 msgid "Create new user"
 msgstr "Δημιουργία νέου χρήστη"
 
@@ -201,113 +201,113 @@ msgstr "Λεπτομέρειες τρέχοντος χρήστη"
 msgid "Edit current user details"
 msgstr "Τροποποίηση λεπτομερειών τρέχοντος χρήστη."
 
-#: views.py:76
+#: views.py:77
 #, python-format
 msgid "Delete the group: %s?"
 msgstr "Διαγραφή της ομάδας: %s"
 
-#: views.py:91
+#: views.py:93
 #, python-format
 msgid "Edit group: %s"
 msgstr "Τροποποίηση ομάδας: %s"
 
-#: views.py:111
+#: views.py:113
 msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
 msgstr ""
 
-#: views.py:117
+#: views.py:119
 msgid "There are no user groups"
 msgstr ""
 
-#: views.py:130
+#: views.py:132
 msgid "Available users"
 msgstr "Διαθέσιμοι χρήστες"
 
-#: views.py:131
+#: views.py:133
 msgid "Group users"
 msgstr ""
 
-#: views.py:139
+#: views.py:141
 #, python-format
 msgid "Users of group: %s"
 msgstr ""
 
-#: views.py:171
+#: views.py:175
 #, python-format
 msgid "User delete request performed on %(count)d user"
 msgstr "Αίτημα διαγραφής πραγματοποιήθηκε για %(count)d χρήστη"
 
-#: views.py:173
+#: views.py:177
 #, python-format
 msgid "User delete request performed on %(count)d users"
 msgstr "Αίτημα διαγραφής πραγματοποιήθηκε για %(count)d χρήστες"
 
-#: views.py:181
+#: views.py:185
 msgid "Delete user"
 msgid_plural "Delete users"
 msgstr[0] "Διαγραφή χρήστη"
 msgstr[1] "Διαγραφή χρηστών"
 
-#: views.py:191
+#: views.py:195
 #, python-format
 msgid "Delete user: %s"
 msgstr "Διαγραφή χρήστη: %s"
 
-#: views.py:202
+#: views.py:206
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
 msgstr "Η διαγραφή υπερχρήστη και προσωπικού δενεπιτρέπεται. Χρησιμοποιήστε το περιβάλλον διαχείρησης γι' αυτές τις περιπτώσεις."
 
-#: views.py:210
+#: views.py:214
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Ο χρήστης \"%s\" διαγράφηκε επιτυχώς."
 
-#: views.py:216
+#: views.py:220
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Σφάλμα κατά την διαγραφή του χρήστη \"%(user)s\": %(error)s"
 
-#: views.py:234
+#: views.py:238
 #, python-format
 msgid "Details of user: %s"
 msgstr ""
 
-#: views.py:249
+#: views.py:254
 #, python-format
 msgid "Edit user: %s"
 msgstr "Τροποποίηση χρήστη: %s"
 
-#: views.py:264
+#: views.py:269
 msgid "Available groups"
 msgstr "Διαθέσιμες ομάδες"
 
 #. Translators: "User groups" here refer to the group list of a specific
 #. user.
-#: views.py:267
+#: views.py:272
 msgid "User groups"
 msgstr ""
 
-#: views.py:275
+#: views.py:280
 #, python-format
 msgid "Groups of user: %s"
 msgstr "Ομάδες που ανήκει ο χρήστης: %s"
 
-#: views.py:296
+#: views.py:301
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
 msgstr ""
 
-#: views.py:299
+#: views.py:304
 msgid "There are no user accounts"
 msgstr ""
 
-#: views.py:314
+#: views.py:323
 #, python-format
 msgid "Edit options for user: %s"
 msgstr ""

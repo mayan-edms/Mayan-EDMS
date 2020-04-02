@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"POT-Creation-Date: 2020-04-02 02:55-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -26,7 +26,7 @@ msgid "Links"
 msgstr "Link-uri"
 
 #: events.py:6 links.py:14 links.py:49 links.py:54 links.py:58 models.py:41
-#: permissions.py:5 views.py:152
+#: permissions.py:5 views.py:153
 msgid "Web links"
 msgstr "Link-uri web"
 
@@ -42,7 +42,7 @@ msgstr "Link web modificat"
 msgid "Web link navigated"
 msgstr "Link-ul web a fost navigat"
 
-#: links.py:20 views.py:192
+#: links.py:20 views.py:188
 msgid "Create new web link"
 msgstr "Creați un nou link web"
 
@@ -133,7 +133,7 @@ msgstr "Tipuri de documente activate"
 msgid "Document type for which to enable web link: %s"
 msgstr "Tipul de document pentru care să activați legătura web: %s"
 
-#: views.py:145 views.py:174
+#: views.py:146 views.py:170
 msgid ""
 "Web links allow generating HTTP links from documents to external resources. "
 "The link URL's can contain document properties values."
@@ -142,25 +142,25 @@ msgstr ""
 "externe. Adresa URL a linkului poate conține valori ale proprietăților "
 "documentului."
 
-#: views.py:150
+#: views.py:151
 msgid "There are no web links"
 msgstr "Nu există legături web"
 
-#: views.py:179
+#: views.py:175
 msgid "There are no web links for this document"
 msgstr "Nu există legături web pentru acest document"
 
-#: views.py:182
+#: views.py:178
 #, python-format
 msgid "Web links for document: %s"
 msgstr "Link-uri web pentru document: %s"
 
-#: views.py:213
+#: views.py:210
 #, python-format
 msgid "Delete web link: %s"
 msgstr "Ștergeți linkul web: %s"
 
-#: views.py:228
+#: views.py:226
 #, python-format
 msgid "Edit web link: %s"
 msgstr "Editați link-ul web: %s"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:33-0400\n"
+"POT-Creation-Date: 2020-04-02 02:53-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Rosario, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -29,21 +29,21 @@ msgstr "Etiqueta"
 msgid "File metadata"
 msgstr "Metadatos de archivo"
 
-#: apps.py:96
-msgid "Return the value of a specific file metadata."
-msgstr "Devuelve el valor de un metadato de archivo específico."
-
-#: apps.py:97
-msgid "File metadata value of"
-msgstr "Valor de metadatos de archivo de"
-
-#: apps.py:108 apps.py:156 apps.py:165
+#: apps.py:100 apps.py:156 apps.py:165
 msgid "File metadata key"
 msgstr "Atributo de metadatos del archivo"
 
-#: apps.py:112 apps.py:160 apps.py:169
+#: apps.py:104 apps.py:160 apps.py:169
 msgid "File metadata value"
 msgstr "Valor de metadatos del archivo"
+
+#: apps.py:131
+msgid "Return the value of a specific file metadata."
+msgstr "Devuelve el valor de un metadato de archivo específico."
+
+#: apps.py:132
+msgid "File metadata value of"
+msgstr "Valor de metadatos de archivo de"
 
 #: dependencies.py:12
 msgid ""

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:31-0400\n"
-"PO-Revision-Date: 2020-03-28 13:07+0000\n"
+"POT-Creation-Date: 2020-04-02 02:51-0400\n"
+"PO-Revision-Date: 2020-03-31 10:53+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -108,12 +108,12 @@ msgstr "Премахнете връзката „Забравена парола
 
 #: templates/authentication/login.html:11
 msgid "Login"
-msgstr "Влез"
+msgstr "Влизане"
 
 #: templates/authentication/login.html:23
 #: templates/authentication/login.html:32
 msgid "Sign in"
-msgstr "Впиши се"
+msgstr "Вписване"
 
 #: templates/authentication/login.html:39
 msgid "Forgot your password?"
@@ -137,7 +137,7 @@ msgid "Login page"
 msgstr "Страница за вход"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:211
+#: templates/authentication/password_reset_form.html:29 views.py:212
 msgid "Submit"
 msgstr "Подаване"
 
@@ -157,39 +157,39 @@ msgstr "Промяна паролата на текущия потребител
 msgid "Changing the password is not allowed for this account."
 msgstr "Промяната на паролата не е разрешена за този акаунт."
 
-#: views.py:202
+#: views.py:203
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Заявка за промяна на парола, изпълнена за%(count)d потребител"
 
-#: views.py:204
+#: views.py:205
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Заявка за промяна на парола, изпълнена за %(count)d потребител"
 
-#: views.py:213
+#: views.py:214
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] "Промяна на паролата на потребителя"
 msgstr[1] "Промяна на паролите на потребителите"
 
-#: views.py:223
+#: views.py:224
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Промяна на паролата за потребителя: %s"
 
-#: views.py:243
+#: views.py:244
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "Промяна на парола на потребители от супер потребител и служител не е разрешено. Използвайте администраторския модул за тези случаи."
 
-#: views.py:253
+#: views.py:254
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Успешно нулиране на паролата за потребителя: %s."
 
-#: views.py:259
+#: views.py:260
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Грешка при промяна на парола на потребител \"%(user)s\": %(error)s"

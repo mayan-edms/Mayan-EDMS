@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"POT-Creation-Date: 2020-04-02 02:54-0400\n"
 "PO-Revision-Date: 2019-12-20 12:47+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -39,7 +39,7 @@ msgstr "Rolul a fost creat"
 msgid "Role edited"
 msgstr "Rolul a fost editat"
 
-#: links.py:14 links.py:38 models.py:115 views.py:169
+#: links.py:14 links.py:38 models.py:115 views.py:171
 msgid "Roles"
 msgstr "Roluri"
 
@@ -135,44 +135,44 @@ msgstr "Rolurile grupului"
 msgid "Roles of group: %s"
 msgstr "Rolurile grupului: %s"
 
-#: views.py:80
+#: views.py:82
 msgid "Available groups"
 msgstr "Grupuri disponibile"
 
-#: views.py:81
+#: views.py:83
 msgid "Role groups"
 msgstr "Grupuri de roluri"
 
-#: views.py:90
+#: views.py:92
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Grupuri pentru rolul: %s"
 
-#: views.py:92
+#: views.py:94
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr "Adăugați grupuri ce vor avea un anumit rol. Ele vor moșteni permisiunile și drepturile de acces ale rolului."
 
-#: views.py:105
+#: views.py:107
 msgid "Available permissions"
 msgstr "Permisiuni disponibile"
 
-#: views.py:106
+#: views.py:108
 msgid "Granted permissions"
 msgstr "Permisiuni acordate"
 
-#: views.py:141
+#: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr "Permisiunile acordate aici se vor aplica întregului sistem și tuturor obiectelor."
 
-#: views.py:144
+#: views.py:146
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Permisiuni pentru rolul: %s"
 
-#: views.py:161
+#: views.py:163
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -180,6 +180,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr "Rolurile sunt unități de autorizare. Acestea conțin grupuri de utilizatori care moștenesc permisiunile de rol pentru întregul sistem. Rolurile pot fi, de asemenea, parte din listele de control al accesului. Lista de control de acces ACL conține permisiunile acordate unui rol pentru anumite obiecte pe care membrii grupului îi moștenesc."
 
-#: views.py:168
+#: views.py:170
 msgid "There are no roles"
 msgstr "Nu există roluri"

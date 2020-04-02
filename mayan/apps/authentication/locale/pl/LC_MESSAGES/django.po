@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:31-0400\n"
+"POT-Creation-Date: 2020-04-02 02:51-0400\n"
 "PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -141,7 +141,7 @@ msgid "Login page"
 msgstr "Strona logowania"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:211
+#: templates/authentication/password_reset_form.html:29 views.py:212
 msgid "Submit"
 msgstr "Wykonaj"
 
@@ -161,17 +161,17 @@ msgstr "Zmiana hasła użytkownika"
 msgid "Changing the password is not allowed for this account."
 msgstr "Dla tego konta zmiana hasła jest zabroniona."
 
-#: views.py:202
+#: views.py:203
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Zmieniono hasło dla %(count)d użytkownika"
 
-#: views.py:204
+#: views.py:205
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Zmieniono hasła dla %(count)d użytkowników"
 
-#: views.py:213
+#: views.py:214
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] "Zmień hasło użytkownika"
@@ -179,23 +179,23 @@ msgstr[1] "Zmień hasła użytkowników"
 msgstr[2] "Zmień hasła użytkowników"
 msgstr[3] "Zmień hasła użytkowników"
 
-#: views.py:223
+#: views.py:224
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Zmień hasło użytkownika: %s"
 
-#: views.py:243
+#: views.py:244
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "Super user oraz staff user reset nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
 
-#: views.py:253
+#: views.py:254
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Hasło użytkownika %s zostało pomyślnie zresetowane."
 
-#: views.py:259
+#: views.py:260
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Błąd podczas resetowania hasło użytkownika \" %(user)s \": %(error)s "

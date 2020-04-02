@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:31-0400\n"
+"POT-Creation-Date: 2020-04-02 02:52-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -22,9 +22,9 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:47 apps.py:108 apps.py:116 apps.py:119 events.py:5 forms.py:14
-#: links.py:22 menus.py:14 models.py:48 permissions.py:5 views.py:164
-#: workflow_actions.py:20
+#: apps.py:47 apps.py:108 apps.py:124 apps.py:127 events.py:5 forms.py:14
+#: links.py:22 menus.py:14 models.py:48 models.py:165 permissions.py:5
+#: views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Kabinety"
 
@@ -88,7 +88,7 @@ msgstr ""
 msgid "A short text used to identify the cabinet."
 msgstr "Krátký text používaný k identifikaci kabinetu."
 
-#: models.py:35 search.py:14
+#: models.py:35 search.py:22
 msgid "Label"
 msgstr "Označení"
 
@@ -96,24 +96,33 @@ msgstr "Označení"
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: models.py:47 models.py:140 serializers.py:136 workflow_actions.py:66
+#: models.py:47 models.py:144 models.py:164 serializers.py:136
+#: workflow_actions.py:66
 msgid "Cabinet"
 msgstr "Kabinet"
 
-#: models.py:141 serializers.py:137
+#: models.py:110
+msgid "The path to the cabinet including all ancestors."
+msgstr ""
+
+#: models.py:112
+msgid "Full path"
+msgstr ""
+
+#: models.py:145 serializers.py:137
 msgid "Parent and Label"
 msgstr "Nadřízený a označení"
 
-#: models.py:148 serializers.py:143
+#: models.py:152 serializers.py:143
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr "%(model_name)s s tímto %(field_labels)s již existuje."
 
-#: models.py:165
+#: models.py:176
 msgid "Document cabinet"
 msgstr "Kabinet dokumentu"
 
-#: models.py:166
+#: models.py:177
 msgid "Document cabinets"
 msgstr "Kabinety dokumentů"
 
@@ -140,6 +149,30 @@ msgstr "Odstranit dokument z kabinetů"
 #: permissions.py:25
 msgid "View cabinets"
 msgstr "Prohlížet kabinety"
+
+#: search.py:26
+msgid "Document type"
+msgstr "Typ dokumentu"
+
+#: search.py:29
+msgid "Document MIME type"
+msgstr ""
+
+#: search.py:32
+msgid "Document label"
+msgstr "Štítek dokumentu"
+
+#: search.py:35
+msgid "Document description"
+msgstr "Popis dokumentu"
+
+#: search.py:38
+msgid "Document UUID"
+msgstr ""
+
+#: search.py:42
+msgid "Document checksum"
+msgstr ""
 
 #: serializers.py:17
 msgid "List of children cabinets."

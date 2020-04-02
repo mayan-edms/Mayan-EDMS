@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"POT-Creation-Date: 2020-04-02 02:55-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -60,12 +60,12 @@ msgstr "Sandbox"
 msgid "Use the template sandbox"
 msgstr "Usar a sandbox de template"
 
-#: views.py:43
-#, python-format
-msgid "Template error; %(exception)s"
-msgstr "Erro do template; %(exception)s"
-
-#: views.py:56
+#: views.py:36
 #, python-format
 msgid "Template sandbox for: %s"
 msgstr "Sandbox do template para: %s"
+
+#: views.py:53
+#, python-format
+msgid "Template error; %(exception)s"
+msgstr "Erro do template; %(exception)s"

@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2017
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2017
+# Roberto Rosario, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:31-0400\n"
+"POT-Creation-Date: 2020-04-02 02:52-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2017\n"
+"Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,9 +21,9 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:47 apps.py:108 apps.py:116 apps.py:119 events.py:5 forms.py:14
-#: links.py:22 menus.py:14 models.py:48 permissions.py:5 views.py:164
-#: workflow_actions.py:20
+#: apps.py:47 apps.py:108 apps.py:124 apps.py:127 events.py:5 forms.py:14
+#: links.py:22 menus.py:14 models.py:48 models.py:165 permissions.py:5
+#: views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "کابینت"
 
@@ -87,7 +87,7 @@ msgstr ""
 msgid "A short text used to identify the cabinet."
 msgstr ""
 
-#: models.py:35 search.py:14
+#: models.py:35 search.py:22
 msgid "Label"
 msgstr "برچسب"
 
@@ -95,24 +95,33 @@ msgstr "برچسب"
 msgid "Documents"
 msgstr "اسناد"
 
-#: models.py:47 models.py:140 serializers.py:136 workflow_actions.py:66
+#: models.py:47 models.py:144 models.py:164 serializers.py:136
+#: workflow_actions.py:66
 msgid "Cabinet"
 msgstr "کابینه"
 
-#: models.py:141 serializers.py:137
+#: models.py:110
+msgid "The path to the cabinet including all ancestors."
+msgstr ""
+
+#: models.py:112
+msgid "Full path"
+msgstr ""
+
+#: models.py:145 serializers.py:137
 msgid "Parent and Label"
 msgstr "پدر و مادر و برچسب"
 
-#: models.py:148 serializers.py:143
+#: models.py:152 serializers.py:143
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr "%(model_name)s با این %(field_labels)s موجود است."
 
-#: models.py:165
+#: models.py:176
 msgid "Document cabinet"
 msgstr "کابینه سند"
 
-#: models.py:166
+#: models.py:177
 msgid "Document cabinets"
 msgstr "کابینت سند"
 
@@ -139,6 +148,30 @@ msgstr "اسناد را از کابینت حذف کنید"
 #: permissions.py:25
 msgid "View cabinets"
 msgstr "کابینت ها را مشاهده کنید"
+
+#: search.py:26
+msgid "Document type"
+msgstr "نوع سند"
+
+#: search.py:29
+msgid "Document MIME type"
+msgstr ""
+
+#: search.py:32
+msgid "Document label"
+msgstr ""
+
+#: search.py:35
+msgid "Document description"
+msgstr ""
+
+#: search.py:38
+msgid "Document UUID"
+msgstr ""
+
+#: search.py:42
+msgid "Document checksum"
+msgstr ""
 
 #: serializers.py:17
 msgid "List of children cabinets."

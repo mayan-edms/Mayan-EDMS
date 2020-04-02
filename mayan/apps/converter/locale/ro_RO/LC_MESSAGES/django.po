@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:31-0400\n"
+"POT-Creation-Date: 2020-04-02 02:52-0400\n"
 "PO-Revision-Date: 2020-02-29 06:08+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -78,19 +78,19 @@ msgstr "\"%s\" nu este o intrare validă."
 msgid "Saved transformations"
 msgstr "Transformări salvate"
 
-#: links.py:16
+#: links.py:17
 msgid "Delete"
 msgstr "Șterge"
 
-#: links.py:23
+#: links.py:24
 msgid "Edit"
 msgstr "Editează"
 
-#: links.py:27
+#: links.py:28
 msgid "Transformations"
 msgstr "Transformări"
 
-#: links.py:33
+#: links.py:34
 msgid "Select new transformation"
 msgstr "Selectați o nouă transformare"
 
@@ -230,47 +230,47 @@ msgstr "Zoom"
 msgid "Enter a valid YAML value."
 msgstr "Introduceți o valoare validă YAML."
 
-#: views.py:60
+#: views.py:64
 #, python-format
 msgid "Error creating transformation: %s."
 msgstr "Eroare la crearea transformării: %s."
 
-#: views.py:77
+#: views.py:81
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
 msgstr "Creați stratul \"%(layer)s\" transformare \"%(transformation)s\" pentru: %(object)s"
 
-#: views.py:138
+#: views.py:136
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "Ștergeți transformarea \"%(transformation)s\" pentru: %(content_object)s?"
 
-#: views.py:186
+#: views.py:185
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "Editați transformarea \"%(transformation)s\" pentru: %(content_object)s"
 
-#: views.py:240
+#: views.py:244
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
 msgstr "Nu există înregistrări pentru stratul \"%(layer_name)s\""
 
-#: views.py:243
+#: views.py:247
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
 msgstr "Transformări la stratul \"%(layer)s\" pentru: %(object)s"
 
-#: views.py:291
+#: views.py:295
 msgid "Transformation created successfully."
 msgstr "Transformare creată cu succes."
 
-#: views.py:312
+#: views.py:316
 msgid "Select"
 msgstr "Selecta"
 
-#: views.py:314
+#: views.py:318
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
 msgstr "Selectați noul strat de transformare \"%(layer)s\" pentru: %(object)s"

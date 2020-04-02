@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:30-0400\n"
+"POT-Creation-Date: 2020-04-02 02:51-0400\n"
 "PO-Revision-Date: 2020-03-28 07:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -102,7 +102,7 @@ msgstr "Page non trouvée"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Désolé, la page demandée n'a pu être trouvée."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:56
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Erreur du serveur"
 
@@ -324,18 +324,18 @@ msgstr "Activer la navigation"
 msgid "No results"
 msgstr "Aucun résultat"
 
-#: templates/appearance/root.html:61
+#: templates/appearance/root.html:63
 msgid "Close"
 msgstr "Fermer"
 
-#: templates/appearance/root.html:71
+#: templates/appearance/root.html:73
 msgid "Server communication error"
 msgstr "Erreur de communication serveur"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
 msgstr "Vérifiez votre connexion réseau et réessayez dans quelques instants."
 
-#: templatetags/appearance_tags.py:15
+#: templatetags/appearance_tags.py:42
 msgid "None"
 msgstr "Aucun"

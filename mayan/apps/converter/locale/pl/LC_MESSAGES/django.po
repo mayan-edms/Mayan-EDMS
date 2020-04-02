@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:31-0400\n"
+"POT-Creation-Date: 2020-04-02 02:52-0400\n"
 "PO-Revision-Date: 2020-02-02 11:29+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -79,19 +79,19 @@ msgstr "„%s” nie jest prawidłowym wpisem."
 msgid "Saved transformations"
 msgstr "Zapisane przekształcenia."
 
-#: links.py:16
+#: links.py:17
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:23
+#: links.py:24
 msgid "Edit"
 msgstr "Edytuj"
 
-#: links.py:27
+#: links.py:28
 msgid "Transformations"
 msgstr "Przekształcenia"
 
-#: links.py:33
+#: links.py:34
 msgid "Select new transformation"
 msgstr "Wybierz nowe przekształcenie."
 
@@ -231,47 +231,47 @@ msgstr "Powiększenie"
 msgid "Enter a valid YAML value."
 msgstr "Wprowadź poprawną wartość YAML."
 
-#: views.py:60
+#: views.py:64
 #, python-format
 msgid "Error creating transformation: %s."
 msgstr "Błąd podczas przekształcania: %s."
 
-#: views.py:77
+#: views.py:81
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
 msgstr "Utwórz warstwę %(layer)s przekształcenia „%(transformation)s” dla: %(object)s"
 
-#: views.py:138
+#: views.py:136
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "Usunąć przekształcenie \"%(transformation)s\" dla %(content_object)s?"
 
-#: views.py:186
+#: views.py:185
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "Edycja przekształcenia \"%(transformation)s\" dla %(content_object)s"
 
-#: views.py:240
+#: views.py:244
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
 msgstr "Brak wpisów dla warstwy „%(layer_name)s”"
 
-#: views.py:243
+#: views.py:247
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
 msgstr "Przekształcenia warstwy „%(layer)s” dla: %(object)s"
 
-#: views.py:291
+#: views.py:295
 msgid "Transformation created successfully."
 msgstr "Pomyślnie utworzono przekształcenie."
 
-#: views.py:312
+#: views.py:316
 msgid "Select"
 msgstr "Wybierz"
 
-#: views.py:314
+#: views.py:318
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
 msgstr "Wybierz nową warstwę „%(layer)s” przekształcenia dla: %(object)s"

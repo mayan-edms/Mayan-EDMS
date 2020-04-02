@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"POT-Creation-Date: 2020-04-02 02:54-0400\n"
 "PO-Revision-Date: 2020-02-14 04:19+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Role edited"
 msgstr ""
 
-#: links.py:14 links.py:38 models.py:115 views.py:169
+#: links.py:14 links.py:38 models.py:115 views.py:171
 msgid "Roles"
 msgstr "gebruikersrollen"
 
@@ -135,44 +135,44 @@ msgstr ""
 msgid "Roles of group: %s"
 msgstr ""
 
-#: views.py:80
+#: views.py:82
 msgid "Available groups"
 msgstr "Beschikbare groepen"
 
-#: views.py:81
+#: views.py:83
 msgid "Role groups"
 msgstr "Gebruikersrolgroepen"
 
-#: views.py:90
+#: views.py:92
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Groepen van gebruikersrollen: %s"
 
-#: views.py:92
+#: views.py:94
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr ""
 
-#: views.py:105
+#: views.py:107
 msgid "Available permissions"
 msgstr "Beschikbare permissies"
 
-#: views.py:106
+#: views.py:108
 msgid "Granted permissions"
 msgstr "Toegekende permissies"
 
-#: views.py:141
+#: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
 
-#: views.py:144
+#: views.py:146
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Permissies voor gebruikersrol: %s"
 
-#: views.py:161
+#: views.py:163
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -180,6 +180,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr ""
 
-#: views.py:168
+#: views.py:170
 msgid "There are no roles"
 msgstr ""

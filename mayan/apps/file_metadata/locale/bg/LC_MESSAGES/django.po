@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:33-0400\n"
+"POT-Creation-Date: 2020-04-02 02:53-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -30,21 +30,21 @@ msgstr "Етикет"
 msgid "File metadata"
 msgstr "Метаданни на файла"
 
-#: apps.py:96
-msgid "Return the value of a specific file metadata."
-msgstr "Покажете стойността на определена метаданна на файла"
-
-#: apps.py:97
-msgid "File metadata value of"
-msgstr "Метаданни във файл за"
-
-#: apps.py:108 apps.py:156 apps.py:165
+#: apps.py:100 apps.py:156 apps.py:165
 msgid "File metadata key"
 msgstr "Ключ за метаданна на файл"
 
-#: apps.py:112 apps.py:160 apps.py:169
+#: apps.py:104 apps.py:160 apps.py:169
 msgid "File metadata value"
 msgstr "Стойност на метаданна на файл"
+
+#: apps.py:131
+msgid "Return the value of a specific file metadata."
+msgstr "Покажете стойността на определена метаданна на файла"
+
+#: apps.py:132
+msgid "File metadata value of"
+msgstr "Метаданни във файл за"
 
 #: dependencies.py:12
 msgid ""

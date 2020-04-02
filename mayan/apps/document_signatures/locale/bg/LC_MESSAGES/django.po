@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:32-0400\n"
+"POT-Creation-Date: 2020-04-02 02:52-0400\n"
 "PO-Revision-Date: 2020-03-28 13:35+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -259,72 +259,72 @@ msgstr "Не може да се инициализира съхранениет�
 msgid "Detached signatures"
 msgstr "Обособени подписи"
 
-#: views.py:68 views.py:150
+#: views.py:68 views.py:156
 msgid "Passphrase is needed to unlock this key."
 msgstr "За отключване на този ключ е необходима фраза парола."
 
-#: views.py:79 views.py:161
+#: views.py:81 views.py:169
 msgid "Passphrase is incorrect."
 msgstr "Фразата парола е неправилна."
 
-#: views.py:90 views.py:172
+#: views.py:94 views.py:182
 msgid "Document version signed successfully."
 msgstr "Версията на документа е подписана успешно."
 
-#: views.py:116 views.py:205
+#: views.py:122 views.py:217
 msgid "Sign"
 msgstr "Подпишете"
 
-#: views.py:118
+#: views.py:124
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
 msgstr "Подпишете версия на документа &quot;%s&quot; с отделен подпис"
 
-#: views.py:207
+#: views.py:219
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr "Подпишете версия на документа &quot;%s&quot; с вграден подпис"
 
-#: views.py:223
+#: views.py:236
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Изтрийте отделен подпис: %s"
 
-#: views.py:243
+#: views.py:259
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Подробности за подпис: %s"
 
-#: views.py:273
+#: views.py:291
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr "Подписите помагат за предоставяне на доказателства за авторство и откриване на подправки. Те са много сигурни и трудно подправящи се. Подписът може да бъде вграден като част от самия документ или качен като отделен файл."
 
-#: views.py:301
+#: views.py:320
 msgid "There are no signatures for this document."
 msgstr "Няма подписи за този документ."
 
-#: views.py:304
+#: views.py:324
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Подписи за версия на документа: %s"
 
-#: views.py:334
+#: views.py:356
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Качете отделен подпис за версия на документа: %s"
 
-#: views.py:351
+#: views.py:374
 msgid "On large databases this operation may take some time to execute."
 msgstr "При големи бази данни тази операция може да отнеме известно време за изпълнение."
 
-#: views.py:352
+#: views.py:375
 msgid "Verify all document for signatures?"
 msgstr "Проверете всички документи за подписи?"
 
-#: views.py:362
+#: views.py:385
 msgid "Signature verification queued successfully."
 msgstr "Проверката на подписа успешно е поставена на опашка."
 

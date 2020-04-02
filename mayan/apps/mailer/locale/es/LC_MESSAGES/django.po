@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:33-0400\n"
+"POT-Creation-Date: 2020-04-02 02:53-0400\n"
 "PO-Revision-Date: 2020-03-28 07:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -114,7 +114,7 @@ msgstr "Lista de perfiles de correo"
 msgid "Mailing profiles"
 msgstr "Perfiles de correo"
 
-#: links.py:72 views.py:259
+#: links.py:72 views.py:261
 msgid "Test"
 msgstr "Probar"
 
@@ -387,17 +387,17 @@ msgstr "Nueva selección de backend de perfil de correo"
 msgid "Create a \"%s\" mailing profile"
 msgstr "Crear un perfil de correo tipo \"%s\""
 
-#: views.py:176
+#: views.py:177
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Eliminar el perfil de correo: %s"
 
-#: views.py:187
+#: views.py:189
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Editar perfil de publicación: %s"
 
-#: views.py:210
+#: views.py:213
 #, python-format
 msgid "Error log for: %s"
 msgstr "Registro de errores para: %s"
@@ -412,11 +412,11 @@ msgstr "Los perfiles de correo son configuraciones de correo electrónico. Los p
 msgid "No mailing profiles available"
 msgstr "No hay perfiles de correo disponibles"
 
-#: views.py:251
+#: views.py:253
 msgid "Test email sent."
 msgstr "Correo electrónico de prueba enviado."
 
-#: views.py:260
+#: views.py:262
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Probar perfil de correo: %s"

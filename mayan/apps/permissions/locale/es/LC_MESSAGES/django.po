@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"POT-Creation-Date: 2020-04-02 02:54-0400\n"
 "PO-Revision-Date: 2019-12-13 06:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -40,7 +40,7 @@ msgstr "Rol creado"
 msgid "Role edited"
 msgstr "Rol editado"
 
-#: links.py:14 links.py:38 models.py:115 views.py:169
+#: links.py:14 links.py:38 models.py:115 views.py:171
 msgid "Roles"
 msgstr "Roles"
 
@@ -136,44 +136,44 @@ msgstr "Roles de grupo"
 msgid "Roles of group: %s"
 msgstr "Roles del grupo: %s"
 
-#: views.py:80
+#: views.py:82
 msgid "Available groups"
 msgstr "Grupos disponibles"
 
-#: views.py:81
+#: views.py:83
 msgid "Role groups"
 msgstr "Grupos del rol"
 
-#: views.py:90
+#: views.py:92
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Grupos del rol: %s"
 
-#: views.py:92
+#: views.py:94
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr "Agregue grupos para ser parte de un rol. Ellos heredarán los permisos de la función y los controles de acceso."
 
-#: views.py:105
+#: views.py:107
 msgid "Available permissions"
 msgstr "Permisos disponibles"
 
-#: views.py:106
+#: views.py:108
 msgid "Granted permissions"
 msgstr "Permisos otorgados"
 
-#: views.py:141
+#: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr "Los permisos otorgados aquí se aplicarán a todo el sistema y a todos los objetos."
 
-#: views.py:144
+#: views.py:146
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Permisos para el rol: %s"
 
-#: views.py:161
+#: views.py:163
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -181,6 +181,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr "Los roles son unidades de autorización. Contienen grupos de usuarios que heredan los permisos de roles para todo el sistema. Los roles también pueden formar parte de las listas de control de acceso. La lista de controles de acceso son permisos otorgados por función para objetos específicos que heredan los miembros de su grupo."
 
-#: views.py:168
+#: views.py:170
 msgid "There are no roles"
 msgstr "No hay roles"

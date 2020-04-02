@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:32-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"POT-Creation-Date: 2020-04-02 02:53-0400\n"
+"PO-Revision-Date: 2020-04-02 06:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -863,19 +863,19 @@ msgstr ""
 msgid "Height in pixels of the document thumbnail image."
 msgstr "Wysokość miniatury dokumentu w pikselach."
 
-#: settings.py:167
+#: settings.py:173
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
 msgstr "Maksymalna, procentowa (%) skala powiększenia strony dokumentu przez użytkownika."
 
-#: settings.py:174
+#: settings.py:180
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
 msgstr "Minimalna, procentowa (%) skala pomniejszenia strony dokumentu przez użytkownika."
 
-#: settings.py:181
+#: settings.py:187
 msgid "Amount in percent zoom in or out a document page per user interaction."
 msgstr "Liczba punktów procentowych powiększenia lub pomniejszenia strony dokumentu przez użytkownika."
 
@@ -1431,13 +1431,13 @@ msgstr "Opróżnienie kosza wykonano pomyślnie"
 
 #: views/trashed_document_views.py:85
 #, python-format
-msgid "%(count)d trashed document deleted."
-msgstr "Dokument %(count)d został trwale usunięty z kosza."
+msgid "%(count)d trashed document submitted for deletion."
+msgstr ""
 
 #: views/trashed_document_views.py:88
 #, python-format
-msgid "%(count)d trashed documents deleted."
-msgstr "Dokumenty %(count)d zostały trwale usunięte z kosza."
+msgid "%(count)d trashed documents submitted for deletion."
+msgstr ""
 
 #: views/trashed_document_views.py:96
 msgid "Delete the selected trashed document?"

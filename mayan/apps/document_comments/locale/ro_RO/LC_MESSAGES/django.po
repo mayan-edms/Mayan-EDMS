@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:32-0400\n"
+"POT-Creation-Date: 2020-04-02 02:52-0400\n"
 "PO-Revision-Date: 2019-05-17 18:46+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -54,7 +54,7 @@ msgstr "Editați"
 msgid "Document"
 msgstr "Document"
 
-#: models.py:30 models.py:66
+#: models.py:30 models.py:68
 msgid "User"
 msgstr "utilizator"
 

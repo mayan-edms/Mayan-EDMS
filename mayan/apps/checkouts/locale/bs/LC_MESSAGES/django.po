@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:31-0400\n"
+"POT-Creation-Date: 2020-04-02 02:52-0400\n"
 "PO-Revision-Date: 2020-02-14 02:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Checkouts"
 msgstr "Odjave"
 
-#: dashboard_widgets.py:14 views.py:170
+#: dashboard_widgets.py:14 views.py:173
 msgid "Checked out documents"
 msgstr ""
 
@@ -195,7 +195,7 @@ msgstr[2] ""
 msgid "Check in document: %s"
 msgstr ""
 
-#: views.py:100
+#: views.py:101
 #, python-format
 msgid "Checkout %(count)d document"
 msgid_plural "Checkout %(count)d documents"
@@ -203,23 +203,23 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views.py:113
+#: views.py:114
 #, python-format
 msgid "Check out document: %s"
 msgstr "Odjaviti dokument: %s"
 
-#: views.py:147
+#: views.py:150
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Odjavni detalji za dokument: %s"
 
-#: views.py:166
+#: views.py:169
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr ""
 
-#: views.py:169
+#: views.py:172
 msgid "No documents have been checked out"
 msgstr ""
 

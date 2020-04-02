@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:33-0400\n"
+"POT-Creation-Date: 2020-04-02 02:53-0400\n"
 "PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -112,7 +112,7 @@ msgstr "Pasta profilu profils"
 msgid "Mailing profiles"
 msgstr "Pasta profili"
 
-#: links.py:72 views.py:259
+#: links.py:72 views.py:261
 msgid "Test"
 msgstr "Pārbaude"
 
@@ -385,17 +385,17 @@ msgstr "Jauna pasta profila backend izvēle"
 msgid "Create a \"%s\" mailing profile"
 msgstr "Izveidojiet adreses profilu \"%s\""
 
-#: views.py:176
+#: views.py:177
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Dzēst pasta profilu: %s"
 
-#: views.py:187
+#: views.py:189
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Rediģēt pasta profilu: %s"
 
-#: views.py:210
+#: views.py:213
 #, python-format
 msgid "Error log for: %s"
 msgstr "Kļūdu žurnāls priekš: %s"
@@ -410,11 +410,11 @@ msgstr "Pasta profili ir e-pasta konfigurācijas. Pasta profili ļauj sūtīt do
 msgid "No mailing profiles available"
 msgstr "Nav pieejams neviens pasta profils"
 
-#: views.py:251
+#: views.py:253
 msgid "Test email sent."
 msgstr ""
 
-#: views.py:260
+#: views.py:262
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Testa pasta profils: %s"

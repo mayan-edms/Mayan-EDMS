@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:33-0400\n"
+"POT-Creation-Date: 2020-04-02 02:53-0400\n"
 "PO-Revision-Date: 2020-03-28 14:00+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -113,7 +113,7 @@ msgstr "Списък с пощенски профили"
 msgid "Mailing profiles"
 msgstr "Пощенски профили"
 
-#: links.py:72 views.py:259
+#: links.py:72 views.py:261
 msgid "Test"
 msgstr "Тест"
 
@@ -386,17 +386,17 @@ msgstr "Избор на бекенд за нов пощенски профил"
 msgid "Create a \"%s\" mailing profile"
 msgstr "Създаване на пощенски профил &quot;%s&quot;"
 
-#: views.py:176
+#: views.py:177
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Изтриване на пощенски профил: %s"
 
-#: views.py:187
+#: views.py:189
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Редактиране на пощенски профил: %s"
 
-#: views.py:210
+#: views.py:213
 #, python-format
 msgid "Error log for: %s"
 msgstr "Дневник на грешки за: %s"
@@ -411,11 +411,11 @@ msgstr "Пощенските профили са конфигурации на �
 msgid "No mailing profiles available"
 msgstr "Няма налични пощенски профили"
 
-#: views.py:251
+#: views.py:253
 msgid "Test email sent."
 msgstr "Изпратен тестов имейл."
 
-#: views.py:260
+#: views.py:262
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Тест на пощенския профил: %s"

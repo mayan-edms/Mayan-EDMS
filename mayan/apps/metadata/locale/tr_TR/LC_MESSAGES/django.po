@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:33-0400\n"
+"POT-Creation-Date: 2020-04-02 02:54-0400\n"
 "PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -111,7 +111,7 @@ msgstr "Bu belge türü için \"%s\" gerekiyor."
 msgid "Metadata types to be added to the selected documents."
 msgstr "Seçilen belgelere eklenecek meta veri türleri."
 
-#: forms.py:147 views.py:422
+#: forms.py:147 views.py:403
 msgid "Remove"
 msgstr "Kaldır"
 
@@ -147,7 +147,7 @@ msgstr "Meta verileri düzenle"
 msgid "Remove metadata"
 msgstr "Meta verileri kaldır"
 
-#: links.py:53 links.py:81 models.py:95 views.py:588
+#: links.py:53 links.py:81 models.py:95 views.py:573
 msgid "Metadata types"
 msgstr "Meta veri türleri"
 
@@ -163,9 +163,13 @@ msgstr "Yeni oluştur"
 msgid "Delete"
 msgstr "Sil"
 
-#: links.py:76 views.py:258
+#: links.py:76 views.py:237
 msgid "Edit"
 msgstr "Düzenle"
+
+#: mixins.py:21
+msgid "Selected documents must be of the same type."
+msgstr "Seçilen belgeler aynı türde olmalıdır."
 
 #: models.py:48
 msgid ""
@@ -310,162 +314,158 @@ msgstr "Eklenecek meta veri türünün birincil anahtarı."
 msgid "Primary key of the metadata type to be added to the document."
 msgstr "Belgeye eklenecek meta veri türünün birincil anahtarı."
 
-#: views.py:63
-msgid "Selected documents must be of the same type."
-msgstr "Seçilen belgeler aynı türde olmalıdır."
-
-#: views.py:77
+#: views.py:55
 #, python-format
 msgid "Metadata add request performed on %(count)d document"
 msgstr "%(count)d belge üzerinde gerçekleştirilen meta veri ekleme isteği"
 
-#: views.py:79
+#: views.py:57
 #, python-format
 msgid "Metadata add request performed on %(count)d documents"
 msgstr "%(count)d belgeler üzerinde gerçekleştirilen meta veri ekleme isteği"
 
-#: views.py:87
+#: views.py:65
 msgid "Add"
 msgstr "Ekle"
 
-#: views.py:89
+#: views.py:67
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
 msgstr[0] "Belgeye meta veri türleri ekleme"
 msgstr[1] "Belgelere meta veri türleri ekleme"
 
-#: views.py:100
+#: views.py:78
 #, python-format
 msgid "Add metadata types to document: %s"
 msgstr "Belgeye meta veri türleri ekleyin: %s"
 
-#: views.py:177
+#: views.py:156
 #, python-format
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
 msgstr "Belgeye \"%(metadata_type)s\" meta veri türü eklenirken hata oluştu: %(document)s; %(exception)s"
 
-#: views.py:192
+#: views.py:171
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
 msgstr "Meta veri türü: %(metadata_type)s belgeye başarıyla eklendi %(document)s."
 
-#: views.py:202
+#: views.py:181
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
 msgstr "Meta veri türü: %(metadata_type)s zaten belgede mevcut %(document)s."
 
-#: views.py:218
+#: views.py:198
 #, python-format
 msgid "Metadata edit request performed on %(count)d document"
 msgstr "%(count)d doküman üzerinde gerçekleştirilen meta veri düzenleme isteği"
 
-#: views.py:221
+#: views.py:201
 #, python-format
 msgid "Metadata edit request performed on %(count)d documents"
 msgstr "%(count)d dokümanları üzerinde yapılan meta veri düzenleme isteği"
 
-#: views.py:253
+#: views.py:232
 msgid ""
 "Add metadata types available for this document's type and assign them "
 "corresponding values."
 msgstr ""
 
-#: views.py:256
+#: views.py:235
 msgid "There is no metadata to edit"
 msgstr ""
 
-#: views.py:260
+#: views.py:239
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
 msgstr[0] "Belge meta verilerini düzenleme"
 msgstr[1] "Belge meta verilerini düzenleme"
 
-#: views.py:271
+#: views.py:250
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr "Dokümanın meta verilerini düzenleme: %s"
 
-#: views.py:355
+#: views.py:335
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
 msgstr "Dokümanın meta verilerini düzenleme hatası: %(document)s; %(exception)s."
 
-#: views.py:365
+#: views.py:345
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "%s dokümanı için meta veri başarıyla düzenlendi."
 
-#: views.py:390
+#: views.py:370
 msgid ""
 "Add metadata types this document's type to be able to add them to individual"
 " documents. Once added to individual document, you can then edit their "
 "values."
 msgstr ""
 
-#: views.py:395
+#: views.py:375
 msgid "This document doesn't have any metadata"
 msgstr ""
 
-#: views.py:396
+#: views.py:376
 #, python-format
 msgid "Metadata for document: %s"
 msgstr "Dokümanın meta verileri: %s"
 
-#: views.py:410
+#: views.py:391
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
 msgstr "%(count)d doküman üzerinde gerçekleştirilen meta veri kaldırma isteği"
 
-#: views.py:413
+#: views.py:394
 #, python-format
 msgid "Metadata remove request performed on %(count)d documents"
 msgstr "%(count)d belgeler üzerinde gerçekleştirilen meta veri kaldırma isteği"
 
-#: views.py:424
+#: views.py:405
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] "Meta veri türlerini belgeden kaldır"
 msgstr[1] "Meta veri türlerini belgelerden kaldır"
 
-#: views.py:435
+#: views.py:416
 #, python-format
 msgid "Remove metadata types from the document: %s"
 msgstr "Metadaki veri türlerini belgeden kaldırın: %s"
 
-#: views.py:499
+#: views.py:481
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
 msgstr "\"%(metadata_type)s\" meta veri türünü belgeden başarıyla kaldırın: %(document)s."
 
-#: views.py:508
+#: views.py:490
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
 msgstr "\"%(metadata_type)s\" meta veri türünü belgeden kaldırma hatası: %(document)s; %(exception)s"
 
-#: views.py:519
+#: views.py:501
 msgid "Create metadata type"
 msgstr "Meta veri türü oluştur"
 
-#: views.py:544
+#: views.py:527
 #, python-format
 msgid "Delete the metadata type: %s?"
 msgstr "Metadata türünü silin: %s?"
 
-#: views.py:559
+#: views.py:543
 #, python-format
 msgid "Edit metadata type: %s"
 msgstr "Meta veri türü düzenleme: %s"
 
-#: views.py:580
+#: views.py:565
 msgid ""
 "Metadata types are users defined properties that can be assigned values. "
 "Once created they must be associated to document types, either as optional "
@@ -474,34 +474,34 @@ msgid ""
 "is provided."
 msgstr ""
 
-#: views.py:587
+#: views.py:572
 msgid "There are no metadata types"
 msgstr ""
 
-#: views.py:608
+#: views.py:593
 #, python-format
 msgid "Error updating relationship; %s"
 msgstr "İlişki güncelleme hatası; %s"
 
-#: views.py:613
+#: views.py:598
 msgid "Relationships updated successfully"
 msgstr "İlişkiler başarıyla güncellendi"
 
-#: views.py:629
+#: views.py:614
 msgid ""
 "Create metadata types to be able to associate them to this document type."
 msgstr ""
 
-#: views.py:632
+#: views.py:617
 msgid "There are no metadata types available"
 msgstr ""
 
-#: views.py:635
+#: views.py:620
 #, python-format
 msgid "Metadata types for document type: %s"
 msgstr "Doküman türü için meta veri türleri: %s"
 
-#: views.py:686
+#: views.py:676
 #, python-format
 msgid "Document types for metadata type: %s"
 msgstr "Meta veri türü için doküman türleri: %s"

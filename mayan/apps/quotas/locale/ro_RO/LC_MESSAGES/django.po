@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:34-0400\n"
+"POT-Creation-Date: 2020-04-02 02:54-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Harald Ersch, 2020\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -192,40 +192,40 @@ msgstr "Editați o cotă"
 msgid "View a quota"
 msgstr "Vizualizați o cotă"
 
-#: quota_backends.py:19
+#: quota_backends.py:23
 msgid "Document count quota exceeded."
 msgstr "Cota numărului de documente a fost depășită."
 
-#: quota_backends.py:23
+#: quota_backends.py:27
 msgid "Documents limit"
 msgstr "Limita documentelor"
 
-#: quota_backends.py:26
+#: quota_backends.py:30
 msgid "Maximum number of documents."
 msgstr "Numărul maxim de documente."
 
-#: quota_backends.py:30
+#: quota_backends.py:34
 msgid "Document count limit"
 msgstr "Limita numărului de documente"
 
-#: quota_backends.py:49
+#: quota_backends.py:53
 #, python-format
 msgid "document count: %(document_count)s"
 msgstr "număr de documente: %(document_count)s"
 
-#: quota_backends.py:98 quota_backends.py:152
+#: quota_backends.py:116 quota_backends.py:170
 msgid "Document size quota exceeded."
 msgstr "Cota dimensiunii documentului a fost depășită."
 
-#: quota_backends.py:108 quota_backends.py:113
+#: quota_backends.py:126 quota_backends.py:131
 msgid "Document size limit"
 msgstr "Dimensiunea documentului limită"
 
-#: quota_backends.py:110
+#: quota_backends.py:128
 msgid "Maximum document size in megabytes (MB)."
 msgstr "Dimensiunea maximă a documentului în megabyte (MB)."
 
-#: quota_backends.py:132
+#: quota_backends.py:150
 #, python-format
 msgid "document size: %(formatted_file_size)s"
 msgstr "dimensiunea documentului: %(formatted_file_size)s"

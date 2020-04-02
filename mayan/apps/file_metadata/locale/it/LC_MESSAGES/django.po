@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 18:33-0400\n"
+"POT-Creation-Date: 2020-04-02 02:53-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2019\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -31,20 +31,20 @@ msgstr "Etichetta"
 msgid "File metadata"
 msgstr ""
 
-#: apps.py:96
-msgid "Return the value of a specific file metadata."
-msgstr ""
-
-#: apps.py:97
-msgid "File metadata value of"
-msgstr ""
-
-#: apps.py:108 apps.py:156 apps.py:165
+#: apps.py:100 apps.py:156 apps.py:165
 msgid "File metadata key"
 msgstr ""
 
-#: apps.py:112 apps.py:160 apps.py:169
+#: apps.py:104 apps.py:160 apps.py:169
 msgid "File metadata value"
+msgstr ""
+
+#: apps.py:131
+msgid "Return the value of a specific file metadata."
+msgstr ""
+
+#: apps.py:132
+msgid "File metadata value of"
 msgstr ""
 
 #: dependencies.py:12
