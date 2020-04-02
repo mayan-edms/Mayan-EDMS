@@ -20,6 +20,7 @@
 - Add support for index instance search.
 - Add support for search for cabinets by their document basic
   attributes.
+- Add support for app passthru URL patterns.
 
 3.4.1 (2020-04-01)
 ==================

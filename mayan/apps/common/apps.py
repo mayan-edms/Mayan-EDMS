@@ -75,6 +75,33 @@ class MayanAppConfig(apps.AppConfig):
                 ),
             )
 
+        try:
+            passthru_urlpatterns = import_string(
+                dotted_path='{}.urls.passthru_urlpatterns'.format(self.name)
+            )
+        except ImportError as exception:
+            non_critical_error_list = (
+                'No module named urls',
+                'No module named \'{}.urls\''.format(self.name),
+                'Module "{}.urls" does not define a "passthru_urlpatterns" attribute/class'.format(self.name),
+            )
+            if force_text(exception) not in non_critical_error_list:
+                logger.exception(
+                    'Import time error when running AppConfig.ready() of app '
+                    '"%s".', self.name
+                )
+                exc_info = sys.exc_info()
+                traceback.print_exception(*exc_info)
+                raise exception
+        else:
+            mayan_urlpatterns += (
+                url(
+                    regex=r'^{}'.format(top_url), view=include(
+                        (passthru_urlpatterns)
+                    )
+                ),
+            )
+
 
 class CommonApp(MayanAppConfig):
     app_namespace = 'common'
