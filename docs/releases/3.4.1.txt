@@ -18,7 +18,7 @@ install Python libraries from Git sources.
 File caching
 ^^^^^^^^^^^^
 
-A bug in the code that performed a cleanup of cached files in migration 0006
+A bug in the code that performed a cleanup of cached files in migration 0005
 of the file caching app was fixed.
 
 
