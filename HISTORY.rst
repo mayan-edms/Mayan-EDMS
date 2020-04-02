@@ -17,6 +17,7 @@
 - Added document head template to inject the DOCUMENTS_LIST_THUMBNAIL_WIDTH
   as a CSS style.
 - Show the full path to the cabinet on cabinet search results.
+- Add support for index instance search.
 
 3.4.1 (2020-04-01)
 ==================
