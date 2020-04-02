@@ -3,6 +3,9 @@
 - Fix search forms action URLs. Closes GitLab issue #802.
   Thanks to holzhannes (@holzhannes) for the report and
   debug information.
+- Update document deletion message to say the documents
+  were submitted for deletion and not actually deleted at
+  the moment of the request.
 
 3.4.1 (2020-04-01)
 ==================

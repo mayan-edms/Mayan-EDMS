@@ -82,10 +82,10 @@ class TrashedDocumentDeleteView(MultipleObjectConfirmActionView):
     object_permission = permission_document_delete
     pk_url_kwarg = 'document_id'
     success_message_singular = _(
-        '%(count)d trashed document deleted.'
+        '%(count)d trashed document submitted for deletion.'
     )
     success_message_plural = _(
-        '%(count)d trashed documents deleted.'
+        '%(count)d trashed documents submitted for deletion.'
     )
 
     def get_extra_context(self):
