@@ -1,8 +1,35 @@
+from django.apps import apps
+from django.conf import settings
 from django.template import Library
+from django.template.exceptions import TemplateDoesNotExist
+from django.template.loader import get_template
 from django.utils.module_loading import import_string
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
+app_templates_cache = {}
 register = Library()
+
+
+@register.simple_tag
+def appearance_app_templates(template_name):
+    result = []
+
+    for app in apps.get_app_configs():
+        template_id = '{}.{}'.format(app.label, template_name)
+
+        if settings.DEBUG or template_id not in app_templates_cache:
+            try:
+                app_templates_cache[template_id] = get_template(
+                    '{}/app/{}.html'.format(app.label, template_name)
+                ).render()
+            except TemplateDoesNotExist:
+                """Non fatal"""
+                app_templates_cache[template_id] = ''
+
+        result.append(app_templates_cache[template_id])
+
+    return mark_safe('\n'.join(result))
 
 
 @register.filter

@@ -10,6 +10,8 @@
   the Docker image.
 - Re-add SQLite3 upgrade test now that the code upgrades
   from two Django 2.2 versions.
+- Allow apps to inject their own head or foot templates 
+  to the root template.
 
 3.4.1 (2020-04-01)
 ==================

@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load static %}
 
+{% load appearance_tags %}
 {% load common_tags %}
 {% load navigation_tags %}
 {% load smart_settings_tags %}
@@ -25,6 +26,7 @@
         <link href="{% static 'appearance/node_modules/toastr/build/toastr.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
         <link href="{% static 'appearance/css/base.css' %}" media="screen" rel="stylesheet" type="text/css" />
         <style id="style-javascript"></style>
+        {% appearance_app_templates template_name='head' %}
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -139,8 +141,8 @@
             jQuery(document).ready(function() {
                 app.initialize();
             });
-
         </script>
+        {% appearance_app_templates template_name='foot' %}
     </body>
 </html>
 {% endspaceless %}
