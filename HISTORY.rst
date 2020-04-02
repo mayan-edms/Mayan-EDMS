@@ -1,3 +1,9 @@
+3.4.2 (2020-04-02)
+==================
+- Fix search forms action URLs. Closes GitLab issue #802.
+  Thanks to holzhannes (@holzhannes) for the report and
+  debug information.
+
 3.4.1 (2020-04-01)
 ==================
 - Add development setting for Docker databases.
