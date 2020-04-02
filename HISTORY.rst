@@ -18,6 +18,8 @@
   as a CSS style.
 - Show the full path to the cabinet on cabinet search results.
 - Add support for index instance search.
+- Add support for search for cabinets by their document basic
+  attributes.
 
 3.4.1 (2020-04-01)
 ==================
