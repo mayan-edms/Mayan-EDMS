@@ -444,7 +444,7 @@ class IndexInstanceNode(MPTTModel):
 
         return ' / '.join(result)
     get_full_path.help_text = _(
-        'The path to the cabinet including all ancestors.'
+        'The path to the index including all ancestors.'
     )
     get_full_path.short_description = _('Full path')
 
