@@ -161,6 +161,12 @@ setting_thumbnail_width = namespace.add_setting(
         'Width in pixels of the document thumbnail image.'
     )
 )
+setting_list_thumbnail_width = namespace.add_setting(
+    global_name='DOCUMENTS_LIST_THUMBNAIL_WIDTH', default='50', help_text=(
+        'Width in pixels of the document thumbnail image when shown in list '
+        'view mode.'
+    )
+)
 setting_zoom_max_level = namespace.add_setting(
     global_name='DOCUMENTS_ZOOM_MAX_LEVEL', default=300,
     help_text=_(

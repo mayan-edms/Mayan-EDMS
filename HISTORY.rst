@@ -6,12 +6,16 @@
 - Update document deletion message to say the documents
   were submitted for deletion and not actually deleted at
   the moment of the request.
-- Detect if devpi-server is installed before building 
+- Detect if devpi-server is installed before building
   the Docker image.
 - Re-add SQLite3 upgrade test now that the code upgrades
   from two Django 2.2 versions.
-- Allow apps to inject their own head or foot templates 
+- Allow apps to inject their own head or foot templates
   to the root template.
+- Added new document setting ``DOCUMENTS_LIST_THUMBNAIL_WIDTH`` to control
+  the size of the thumbnails on list view mode.
+- Added document head template to inject the DOCUMENTS_LIST_THUMBNAIL_WIDTH
+  as a CSS style.
 
 3.4.1 (2020-04-01)
 ==================
