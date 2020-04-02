@@ -8,6 +8,8 @@
   the moment of the request.
 - Detect if devpi-server is installed before building 
   the Docker image.
+- Re-add SQLite3 upgrade test now that the code upgrades
+  from two Django 2.2 versions.
 
 3.4.1 (2020-04-01)
 ==================
