@@ -103,7 +103,10 @@ class TransformationBaseTestCase(TestCase):
 
         self.assertEqual(
             BaseTransformation.combine(
-                (transformation_rotate, transformation_resize, transformation_zoom)
+                (
+                    transformation_rotate, transformation_resize,
+                    transformation_zoom
+                )
             ), TEST_TRANSFORMATION_COMBINED_CACHE_HASH
         )
 

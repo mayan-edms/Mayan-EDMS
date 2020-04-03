@@ -271,10 +271,6 @@ class Layer(object):
         self, label, name, order, permissions, default=False,
         empty_results_text=None, symbol=None,
     ):
-        """
-        access_permission is the permission necessary to view the layer.
-        exclude_permission is the permission necessary to discard the layer.
-        """
         self.default = default
         self.empty_results_text = empty_results_text
         self.label = label
@@ -305,8 +301,8 @@ class Layer(object):
 
         self.__class__._registry[name] = self
 
-    def get_permission(self, name):
-        return self.permissions.get(name, None)
+    def get_permission(self, action):
+        return self.permissions.get(action, None)
 
     def __str__(self):
         return force_text(self.label)
@@ -401,7 +397,7 @@ class LayerLink(Link):
         self.layer = layer
         self.object_name = object_name or _('transformation')
 
-        permission = layer.permissions.get(action, None)
+        permission = layer.get_permission(action=action)
         if permission:
             self.permissions = (permission,)
 

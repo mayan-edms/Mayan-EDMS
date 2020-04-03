@@ -1,6 +1,9 @@
 3.4.3 (2020-04-03)
 ==================
 - Fix document page interactive transformation pages.
+- Fix layer transformation selection view.
+- Improve permission checking of the layer transformation
+  selection view.
 
 3.4.2 (2020-04-02)
 ==================
