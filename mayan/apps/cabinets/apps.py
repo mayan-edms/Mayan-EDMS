@@ -20,6 +20,7 @@ from .events import (
     event_cabinet_edited, event_cabinet_add_document,
     event_cabinet_remove_document
 )
+from .html_widgets import widget_document_cabinets
 from .links import (
     link_cabinet_list, link_document_cabinet_list,
     link_document_cabinet_remove, link_document_cabinet_add,
@@ -29,13 +30,12 @@ from .links import (
     link_multiple_document_cabinet_remove
 )
 from .menus import menu_cabinets
-from .methods import method_get_document_cabinets
+from .methods import method_document_get_cabinets
 from .permissions import (
     permission_cabinet_add_document, permission_cabinet_delete,
     permission_cabinet_edit, permission_cabinet_remove_document,
     permission_cabinet_view
 )
-from .widgets import widget_document_cabinets
 
 
 class CabinetsApp(MayanAppConfig):
@@ -56,13 +56,15 @@ class CabinetsApp(MayanAppConfig):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
-
         DocumentCabinet = self.get_model(model_name='DocumentCabinet')
+        DocumentPageResult = apps.get_model(
+            app_label='documents', model_name='DocumentPageResult'
+        )
 
         # Add explicit order_by as DocumentCabinet ordering Meta option has no
         # effect.
         Document.add_to_class(
-            name='document_cabinets', value=method_get_document_cabinets
+            name='get_cabinets', value=method_document_get_cabinets
         )
 
         ModelEventType.register(
@@ -104,12 +106,6 @@ class CabinetsApp(MayanAppConfig):
             attribute='label', is_identifier=True, is_sortable=True,
             source=Cabinet
         )
-        SourceColumn(
-            source=Document, label=_('Cabinets'),
-            func=lambda context: widget_document_cabinets(
-                document=context['object'], user=context['request'].user
-            ), order=1
-        )
 
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
@@ -117,6 +113,19 @@ class CabinetsApp(MayanAppConfig):
         )
         SourceColumn(
             attribute='get_full_path', source=CabinetSearchResult
+        )
+
+        SourceColumn(
+            func=lambda context: widget_document_cabinets(
+                document=context['object'], user=context['request'].user
+            ), label=_('Cabinets'), order=1, source=Document
+        )
+
+        SourceColumn(
+            func=lambda context: widget_document_cabinets(
+                document=context['object'].document,
+                user=context['request'].user
+            ), label=_('Cabinets'), order=1, source=DocumentPageResult
         )
 
         document_page_search.add_model_field(

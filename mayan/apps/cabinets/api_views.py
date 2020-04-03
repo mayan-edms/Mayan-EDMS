@@ -33,8 +33,9 @@ class APIDocumentCabinetListView(generics.ListAPIView):
             user=self.request.user
         )
 
-        queryset = document.document_cabinets()
-        return queryset
+        return document.get_cabinets(
+            permission=permission_cabinet_view, user=self.request.user
+        )
 
 
 class APICabinetListView(generics.ListCreateAPIView):
@@ -101,7 +102,9 @@ class APICabinetDocumentListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APICabinetDocumentListView, self).get_serializer(*args, **kwargs)
+        return super(
+            APICabinetDocumentListView, self
+        ).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -113,7 +116,9 @@ class APICabinetDocumentListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APICabinetDocumentListView, self).get_serializer_context()
+        context = super(
+            APICabinetDocumentListView, self
+        ).get_serializer_context()
         if self.kwargs:
             context.update(
                 {

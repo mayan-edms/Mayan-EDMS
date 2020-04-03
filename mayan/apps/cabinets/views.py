@@ -209,7 +209,9 @@ class DocumentCabinetListView(ExternalObjectMixin, CabinetListView):
         }
 
     def get_source_queryset(self):
-        return self.external_object.document_cabinets()
+        return self.external_object.get_cabinets(
+            permission=permission_cabinet_view, user=self.request.user
+        )
 
 
 class DocumentAddToCabinetView(MultipleObjectFormActionView):
