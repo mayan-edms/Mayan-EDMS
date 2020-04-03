@@ -8,6 +8,8 @@
 - Make document cabinet widget clickable.
 - Apply the ``DOCUMENTS_LIST_THUMBNAIL_WIDTH`` setting value to
   document pages and document version thumbnails too.
+- Send all exception to the log system and let the log system
+  perform the filtering.
 
 3.4.2 (2020-04-02)
 ==================
