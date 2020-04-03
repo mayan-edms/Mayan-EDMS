@@ -16,6 +16,8 @@
   the Docker image.
 - Add git-core to the Docker image to allow installing
   development Python libraries.
+- Send all exception to the log system and let the log system
+  perform the filtering.
 
 3.3.16 (2020-03-17)
 ===================
