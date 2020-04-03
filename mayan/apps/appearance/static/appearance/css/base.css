@@ -235,11 +235,6 @@ a i {
     margin-top: 3px;
 }
 
-/* Cabinets */
-.cabinet-display {
-    font-style: italic;
-}
-
 .staging-file-thumbnail-container {
     width: 150px;
     margin: auto;
@@ -611,15 +606,6 @@ a i {
 #body-plain {
     padding-top: 0px;
     margin-top: 10px;
-}
-
-/* jstree - cabinets */
-#jstree {
-    max-width: 100%;
-    overflow: auto;
-    font: 11px Verdana, sans-serif;
-    padding: 0px;
-    padding-bottom: 10px; /* Padding for scrollbar */
 }
 
 /* appearance - JavaScript server error */
