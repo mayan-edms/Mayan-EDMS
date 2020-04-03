@@ -4,6 +4,7 @@
 - Fix layer transformation selection view.
 - Improve permission checking of the layer transformation
   selection view.
+- Make tag widget clickable.
 
 3.4.2 (2020-04-02)
 ==================

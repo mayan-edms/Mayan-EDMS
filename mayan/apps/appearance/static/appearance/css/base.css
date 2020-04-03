@@ -69,11 +69,6 @@ img.lazy-load-carousel {
     text-align: center;
 }
 
-.label-tag {
-    text-shadow: 0px 0px 2px #000;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-}
-
 .fancybox-nav span {
     visibility: visible;
 }
@@ -117,14 +112,6 @@ a i {
 
 .dashboard-widget-icon {
     font-size: 200%;
-}
-
-.select2-container--default .select2-selection--multiple .select2-selection__choice .label {
-    padding-bottom: 1px;
-}
-
-.tag-container .label {
-    margin-right: 2px;
 }
 
 /* Notifications */
