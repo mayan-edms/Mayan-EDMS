@@ -62,10 +62,38 @@ class DocumentPageViewTestMixin(object):
             }
         )
 
+    def _request_test_document_page_rotate_left_view(self):
+        return self.post(
+            viewname='documents:document_page_rotate_left', kwargs={
+                'document_page_id': self.test_document_page.pk
+            }
+        )
+
+    def _request_test_document_page_rotate_right_view(self):
+        return self.post(
+            viewname='documents:document_page_rotate_right', kwargs={
+                'document_page_id': self.test_document_page.pk
+            }
+        )
+
     def _request_test_document_page_view(self, document_page):
         return self.get(
             viewname='documents:document_page_view', kwargs={
                 'document_page_id': document_page.pk,
+            }
+        )
+
+    def _request_test_document_page_zoom_in_view(self):
+        return self.post(
+            viewname='documents:document_page_zoom_in', kwargs={
+                'document_page_id': self.test_document_page.pk
+            }
+        )
+
+    def _request_test_document_page_zoom_out_view(self):
+        return self.post(
+            viewname='documents:document_page_zoom_out', kwargs={
+                'document_page_id': self.test_document_page.pk
             }
         )
 

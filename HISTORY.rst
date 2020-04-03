@@ -1,3 +1,7 @@
+3.4.3 (2020-04-03)
+==================
+- Fix document page interactive transformation pages.
+
 3.4.2 (2020-04-02)
 ==================
 - Fix search forms action URLs. Closes GitLab issue #802.
