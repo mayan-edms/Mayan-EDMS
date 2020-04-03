@@ -366,7 +366,7 @@ Example::
 
         ...
 
-    [digitalizacion]
+    [digitalization]
         path = /var/local/mayan
         guest ok = yes
         read only = yes
