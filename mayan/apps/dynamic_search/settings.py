@@ -8,7 +8,7 @@ setting_search_backend = namespace.add_setting(
     global_name='SEARCH_BACKEND',
     default='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend',
     help_text=_(
-        'Full path to the backend to be used to handle keys and signatures.'
+        'Full path to the backend to be used to handle the search.'
     )
 )
 setting_search_backend_arguments = namespace.add_setting(
