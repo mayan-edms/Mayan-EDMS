@@ -11,7 +11,7 @@ Changes
 Appearance
 ^^^^^^^^^^
 
-The appearance of the 404, 403, and 500 error pages was improved in both
+The appearance of the 404, 403, and 500 error pages were improved in both
 visual and practical aspects. The 500 error page now includes a direct
 link to the issue tracker.
 
