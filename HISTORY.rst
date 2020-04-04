@@ -11,6 +11,8 @@
 - Send all exception to the log system and let the log system
   perform the filtering.
 - Improve the design of the 404, 403 and 500 error pages.
+- Update production error log settings. Max bytes from 1024
+  to 65535 and backup from 3 to 5.
 
 3.4.2 (2020-04-02)
 ==================
