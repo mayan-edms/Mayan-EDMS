@@ -10,6 +10,7 @@
   document pages and document version thumbnails too.
 - Send all exception to the log system and let the log system
   perform the filtering.
+- Improve the design of the 404, 403 and 500 error pages.
 
 3.4.2 (2020-04-02)
 ==================
