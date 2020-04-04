@@ -7,5 +7,3 @@ register = Library()
 def templating_set(context, name, value):
     context[name] = value
     return ''
-
-

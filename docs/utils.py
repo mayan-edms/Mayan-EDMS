@@ -87,7 +87,7 @@ def patch_files(path=None, replace_list=None):
 def patch_theme_template(app, templates_path):
     package_path = Path(sphinx_rtd_theme.__file__)
     template_files = ('footer.html', 'layout.html',)
-    replace_list=[
+    replace_list = [
         {
             'filename_pattern': 'footer.html',
             'content_patterns': [
@@ -113,16 +113,15 @@ def patch_theme_template(app, templates_path):
     ]
 
     for template_file in template_files:
-        source_file_path = package_path.parent / template_file#'layout.html'
+        source_file_path = package_path.parent / template_file
         destination_path = Path(app.srcdir) / templates_path
-        destination_file_path = destination_path / template_file#'layout.html'
+        destination_file_path = destination_path / template_file
 
         with source_file_path.open(mode='r') as source_file_object:
             with destination_file_path.open(mode='w+') as destination_file_object:
                 shutil.copyfileobj(
                     fsrc=source_file_object, fdst=destination_file_object
                 )
-
 
     patch_files(
         path=destination_path, replace_list=replace_list
