@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:52-0400\n"
+"POT-Creation-Date: 2020-04-04 02:05-0400\n"
 "PO-Revision-Date: 2020-02-10 08:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
@@ -44,13 +44,13 @@ msgstr "未安装或未找到LibreOffice。"
 msgid "Not an office file format."
 msgstr "不是办公文件格式。"
 
-#: classes.py:354
+#: classes.py:350
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr "转换允许更改文档的可视外观，而无需对文档文件本身进行永久更改。"
 
-#: classes.py:402
+#: classes.py:398
 msgid "transformation"
 msgstr ""
 
@@ -229,47 +229,47 @@ msgstr "放大"
 msgid "Enter a valid YAML value."
 msgstr "输入有效的YAML值。"
 
-#: views.py:64
+#: views.py:51
 #, python-format
 msgid "Error creating transformation: %s."
 msgstr ""
 
-#: views.py:81
+#: views.py:68
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
 msgstr ""
 
-#: views.py:136
+#: views.py:123
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "对%(content_object)s删除转换“%(transformation)s”？"
 
-#: views.py:185
+#: views.py:172
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "对%(content_object)s编辑转换“%(transformation)s”"
 
-#: views.py:244
+#: views.py:231
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
 msgstr ""
 
-#: views.py:247
+#: views.py:234
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
 msgstr ""
 
-#: views.py:295
+#: views.py:286
 msgid "Transformation created successfully."
 msgstr ""
 
-#: views.py:316
+#: views.py:310
 msgid "Select"
 msgstr ""
 
-#: views.py:318
+#: views.py:312
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
 msgstr ""

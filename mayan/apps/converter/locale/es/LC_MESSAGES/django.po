@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:52-0400\n"
+"POT-Creation-Date: 2020-04-04 02:05-0400\n"
 "PO-Revision-Date: 2020-01-31 05:10+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -45,13 +45,13 @@ msgstr "LibreOffice no instalado o no encontrado."
 msgid "Not an office file format."
 msgstr "No es un formato de archivo de la oficina."
 
-#: classes.py:354
+#: classes.py:350
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr "Las transformaciones permiten cambiar la apariencia visual de los documentos sin realizar cambios permanentes en el archivo del documento."
 
-#: classes.py:402
+#: classes.py:398
 msgid "transformation"
 msgstr "transformación"
 
@@ -230,47 +230,47 @@ msgstr "Ampliar"
 msgid "Enter a valid YAML value."
 msgstr "Entre un valor YAML."
 
-#: views.py:64
+#: views.py:51
 #, python-format
 msgid "Error creating transformation: %s."
 msgstr "Error al crear la transformación: %s."
 
-#: views.py:81
+#: views.py:68
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
 msgstr "Cree transformación \"%(transformation)s\" en la capa \"%(layer)s\" para: %(object)s"
 
-#: views.py:136
+#: views.py:123
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "¿Borrar transformación \"%(transformation)s\" para: %(content_object)s?"
 
-#: views.py:185
+#: views.py:172
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "Editar transformación \"%(transformation)s\" para: %(content_object)s"
 
-#: views.py:244
+#: views.py:231
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
 msgstr "No hay entradas para la capa \"%(layer_name)s\""
 
-#: views.py:247
+#: views.py:234
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
 msgstr "Transformaciones de capa \"%(layer)s\" para: %(object)s"
 
-#: views.py:295
+#: views.py:286
 msgid "Transformation created successfully."
 msgstr "Transformación creada con éxito."
 
-#: views.py:316
+#: views.py:310
 msgid "Select"
 msgstr "Seleccionar"
 
-#: views.py:318
+#: views.py:312
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
 msgstr "Seleccione la nueva transformación de capa \"%(layer)s\" para: %(object)s"

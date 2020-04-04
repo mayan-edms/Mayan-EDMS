@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2020
+# xisafe <root@xisafe.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:55-0400\n"
+"POT-Creation-Date: 2020-04-04 02:08-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"Last-Translator: xisafe <root@xisafe.com>, 2020\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,6 +32,8 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " The {{ %(variable)s }} variable is available to the template."
 msgstr ""
+"使用Django的默认模板语言（https://docs.djangoproject.com/en/1%(django_version)s/ref/templates/builtins/）。{{%(variable)s"
+" }}这个变量可用于模板。"
 
 #: forms.py:9
 msgid "Resulting text from the evaluated template."
@@ -46,22 +49,22 @@ msgstr ""
 
 #: forms.py:21
 msgid "Template"
-msgstr ""
+msgstr "模板"
 
 #: links.py:12
 msgid "Sandbox"
-msgstr ""
+msgstr "沙箱"
 
 #: permissions.py:8
 msgid "Use the template sandbox"
-msgstr ""
+msgstr "使用沙箱模板"
 
 #: views.py:36
 #, python-format
 msgid "Template sandbox for: %s"
-msgstr ""
+msgstr "沙箱模板%s"
 
 #: views.py:53
 #, python-format
 msgid "Template error; %(exception)s"
-msgstr ""
+msgstr "模板错误%(exception)s"

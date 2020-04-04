@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:52-0400\n"
+"POT-Creation-Date: 2020-04-04 02:05-0400\n"
 "PO-Revision-Date: 2020-03-28 13:18+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -362,30 +362,30 @@ msgid ""
 " and {} for formatting errors."
 msgstr "Не може да се инициализира съхраняването на качени файлове. Проверете настройките {} и {} за форматиране на грешки."
 
-#: templatetags/common_tags.py:31
+#: templatetags/common_tags.py:34
 msgid "Confirm delete"
 msgstr "Потвърдете изтриване"
 
-#: templatetags/common_tags.py:36
+#: templatetags/common_tags.py:39
 #, python-format
 msgid "Edit %s"
 msgstr "Редактиране %s"
 
-#: templatetags/common_tags.py:39
+#: templatetags/common_tags.py:42
 msgid "Confirm"
 msgstr "Потвърждаване"
 
-#: templatetags/common_tags.py:43
+#: templatetags/common_tags.py:46
 #, python-format
 msgid "Details for: %s"
 msgstr "Подробности за: %s"
 
-#: templatetags/common_tags.py:47
+#: templatetags/common_tags.py:50
 #, python-format
 msgid "Edit: %s"
 msgstr "Редактиране: %s"
 
-#: templatetags/common_tags.py:50
+#: templatetags/common_tags.py:54
 msgid "Create"
 msgstr "Създаване"
 

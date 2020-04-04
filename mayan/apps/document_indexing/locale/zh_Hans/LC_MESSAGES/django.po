@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# xisafe <root@xisafe.com>, 2020
 # yulin Gong <540538248@qq.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 03:08-0400\n"
-"PO-Revision-Date: 2020-04-02 07:08+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-04 02:05-0400\n"
+"PO-Revision-Date: 2020-04-02 07:32+0000\n"
+"Last-Translator: xisafe <root@xisafe.com>\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,7 +53,7 @@ msgstr "文档"
 
 #: events.py:10
 msgid "Index created"
-msgstr ""
+msgstr "创建索引"
 
 #: events.py:13
 msgid "Index edited"
@@ -64,11 +65,11 @@ msgstr ""
 
 #: forms.py:17 links.py:27
 msgid "Index templates"
-msgstr ""
+msgstr "索引模板"
 
 #: forms.py:32
 msgid "Template"
-msgstr ""
+msgstr "模板"
 
 #: handlers.py:18
 msgid "Creation date"
@@ -93,7 +94,7 @@ msgstr "重建索引"
 
 #: links.py:64 views.py:481
 msgid "Reset indexes"
-msgstr ""
+msgstr "重置索引"
 
 #: links.py:81 views.py:86
 msgid "Create index"
@@ -339,7 +340,7 @@ msgstr "没有索引。"
 #: views.py:162
 #, python-format
 msgid "Rebuild index: %s"
-msgstr ""
+msgstr "重建索引%s"
 
 #: views.py:182
 msgid "Index queued for rebuild."
@@ -430,7 +431,7 @@ msgstr[0] "%(count)d索引排队等待重建。"
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
+msgstr[0] " %(count)d重置索引"
 
 #: views.py:506
 msgid "Index templates for which their instances will be deleted."

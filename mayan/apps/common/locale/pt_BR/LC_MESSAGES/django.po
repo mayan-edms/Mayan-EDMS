@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:52-0400\n"
+"POT-Creation-Date: 2020-04-04 02:05-0400\n"
 "PO-Revision-Date: 2020-03-28 12:49+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -367,30 +367,30 @@ msgid ""
 " and {} for formatting errors."
 msgstr "Não foi possível inicializar o storage compartilhado de arquivos enviados. Verifique as configurações {} e {} para erros de formatação."
 
-#: templatetags/common_tags.py:31
+#: templatetags/common_tags.py:34
 msgid "Confirm delete"
 msgstr "Confirmar exclusão"
 
-#: templatetags/common_tags.py:36
+#: templatetags/common_tags.py:39
 #, python-format
 msgid "Edit %s"
 msgstr "Editar %s"
 
-#: templatetags/common_tags.py:39
+#: templatetags/common_tags.py:42
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: templatetags/common_tags.py:43
+#: templatetags/common_tags.py:46
 #, python-format
 msgid "Details for: %s"
 msgstr "Detalhes para: %s"
 
-#: templatetags/common_tags.py:47
+#: templatetags/common_tags.py:50
 #, python-format
 msgid "Edit: %s"
 msgstr "Editar: %s"
 
-#: templatetags/common_tags.py:50
+#: templatetags/common_tags.py:54
 msgid "Create"
 msgstr "Criar"
 

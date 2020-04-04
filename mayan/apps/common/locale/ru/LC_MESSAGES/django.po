@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:52-0400\n"
+"POT-Creation-Date: 2020-04-04 02:05-0400\n"
 "PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -362,30 +362,30 @@ msgid ""
 " and {} for formatting errors."
 msgstr ""
 
-#: templatetags/common_tags.py:31
+#: templatetags/common_tags.py:34
 msgid "Confirm delete"
 msgstr "Подтвердить удаление"
 
-#: templatetags/common_tags.py:36
+#: templatetags/common_tags.py:39
 #, python-format
 msgid "Edit %s"
 msgstr ""
 
-#: templatetags/common_tags.py:39
+#: templatetags/common_tags.py:42
 msgid "Confirm"
 msgstr "Подтверждать"
 
-#: templatetags/common_tags.py:43
+#: templatetags/common_tags.py:46
 #, python-format
 msgid "Details for: %s"
 msgstr ""
 
-#: templatetags/common_tags.py:47
+#: templatetags/common_tags.py:50
 #, python-format
 msgid "Edit: %s"
 msgstr ""
 
-#: templatetags/common_tags.py:50
+#: templatetags/common_tags.py:54
 msgid "Create"
 msgstr "Создать"
 

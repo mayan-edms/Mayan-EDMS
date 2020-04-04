@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# xisafe <root@xisafe.com>, 2020
 # yulin Gong <540538248@qq.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:53-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"POT-Creation-Date: 2020-04-04 02:06-0400\n"
+"PO-Revision-Date: 2020-04-04 05:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
@@ -54,13 +55,13 @@ msgid "Search again"
 msgstr "再次搜索"
 
 #: settings.py:11
-msgid "Full path to the backend to be used to handle keys and signatures."
+msgid "Full path to the backend to be used to handle the search."
 msgstr ""
 
 #: settings.py:21
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
-msgstr ""
+msgstr "禁用单个词条搜索，仅保留高级搜索按钮"
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
