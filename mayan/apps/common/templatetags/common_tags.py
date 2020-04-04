@@ -19,6 +19,9 @@ register = Library()
 
 @register.simple_tag(takes_context=True)
 def common_calculate_title(context):
+    title = ''
+    title_full = ''
+
     if context.get('title'):
         title_full = context.get('title')
         title = truncatechars(
@@ -45,8 +48,9 @@ def common_calculate_title(context):
                         title = _('Edit: %s') % context.get('object')
                         title_full = title
                     else:
-                        title = _('Create')
-                        title_full = title
+                        if context.get('create_view') or context.get('form'):
+                            title = _('Create')
+                            title_full = title
 
     return {'title': title, 'title_full': title_full}
 
