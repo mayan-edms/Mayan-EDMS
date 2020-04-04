@@ -1,12 +1,66 @@
 Version 3.4.3
 =============
 
-Released: April 3, 2020
-
+Released: April 4, 2020
 
 
 Changes
 -------
+
+
+Appearance
+^^^^^^^^^^
+
+The appearance of the 404, 403, and 500 error pages was improved in both
+visual and practical aspects. The 500 error page now includes a direct
+link to the issue tracker.
+
+
+Common
+^^^^^^
+
+The settings of the production debug logger where updated to increase the
+size of the log files from 1024 to 65,535 bytes and retain 5 backups instead
+of 3.
+
+All exceptions are now captured by the middleware and sent to the log system.
+The log system is now the party responsible to perform the log filtering.
+This change increases the amount of technical information in the logs in the
+event of unexpected errors.
+
+
+Cabinets
+^^^^^^^^
+
+The cabinet widgets badges that are added to the document card are now
+clickable. Clicking on a cabinet badge will redirect to the cabinet
+detail view.
+
+
+Converter
+^^^^^^^^^
+
+An error in the layer transformation selection view was fixed.
+
+The permission checking of the layer transformation selection view was
+improved.
+
+
+Documents
+^^^^^^^^^
+
+An error in the document page interactive transformation view was fixed.
+
+The setting ``DOCUMENTS_LIST_THUMBNAIL_WIDTH`` is now also applied to document
+pages and document version thumbnails.
+
+
+Tags
+^^^^
+
+Like the cabinet widgets badges, the tag badges that are added to the
+document card are now also clickable. Clicking on a tag badge will redirect
+to the tag detail view.
 
 
 Removals
@@ -190,7 +244,7 @@ Backward incompatible changes
 Issues closed
 -------------
 
-- :gitlab-issue:`802` Search not working in 3.4.1 always showing "Not Found"
+- None
 
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

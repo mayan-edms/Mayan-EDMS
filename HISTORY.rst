@@ -1,4 +1,4 @@
-3.4.3 (2020-04-03)
+3.4.3 (2020-04-04)
 ==================
 - Fix document page interactive transformation pages.
 - Fix layer transformation selection view.
