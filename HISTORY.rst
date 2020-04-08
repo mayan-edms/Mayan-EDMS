@@ -1,3 +1,9 @@
+3.4.4 (2020-04-08)
+==================
+- Add a custom app static media finder to workaround Django's
+  AppDirectoriesFinder limitation that caused the missing
+  staticfiles manifest entry error.
+
 3.4.3 (2020-04-04)
 ==================
 - Fix document page interactive transformation pages.

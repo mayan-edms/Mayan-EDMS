@@ -42,6 +42,7 @@ class CabinetsApp(MayanAppConfig):
     app_namespace = 'cabinets'
     app_url = 'cabinets'
     has_rest_api = True
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.cabinets'
     verbose_name = _('Cabinets')

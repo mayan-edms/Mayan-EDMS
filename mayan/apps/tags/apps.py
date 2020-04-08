@@ -44,6 +44,7 @@ class TagsApp(MayanAppConfig):
     app_namespace = 'tags'
     app_url = 'tags'
     has_rest_api = True
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.tags'
     verbose_name = _('Tags')
