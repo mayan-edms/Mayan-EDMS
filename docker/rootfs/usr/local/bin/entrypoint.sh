@@ -64,7 +64,7 @@ else
 fi
 export MAYAN_WORKER_SLOW_CONCURRENCY
 
-if mount | grep '/dev/shm' > /dev/null;
+if mount | grep '/dev/shm' > /dev/null; then
     MAYAN_GUNICORN_TEMPORARY_DIRECTORY="--worker-tmp-dir /dev/shm"
 else
     MAYAN_GUNICORN_TEMPORARY_DIRECTORY=
