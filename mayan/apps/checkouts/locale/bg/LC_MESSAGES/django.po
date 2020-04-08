@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-04 02:05-0400\n"
-"PO-Revision-Date: 2019-12-04 16:41+0000\n"
+"POT-Creation-Date: 2020-04-08 00:03-0400\n"
+"PO-Revision-Date: 2020-04-04 14:54+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -88,7 +88,7 @@ msgstr "Регистриране на документ"
 
 #: links.py:54
 msgid "Check in"
-msgstr "Вписване"
+msgstr "Регистриране"
 
 #: links.py:60
 msgid "Check in/out"
@@ -116,7 +116,7 @@ msgstr "Време за задържане на изписания докуме�
 
 #: models.py:38
 msgid "Check out expiration date and time"
-msgstr "Срока на изписване - дата и час"
+msgstr "Срок на изписване - дата и час"
 
 #: models.py:47
 msgid "Do not allow new version of this document to be uploaded."
@@ -156,11 +156,11 @@ msgstr "Срок на изписване"
 
 #: permissions.py:8
 msgid "Check in documents"
-msgstr "Регистрирай документи"
+msgstr "Регистриране на документи"
 
 #: permissions.py:11
 msgid "Forcefully check in documents"
-msgstr "Регистрирай принудилтелно документи"
+msgstr "Принудително регистриране на документи"
 
 #: permissions.py:14
 msgid "Check out documents"

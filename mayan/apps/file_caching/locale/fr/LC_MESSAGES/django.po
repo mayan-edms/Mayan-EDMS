@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-04 02:06-0400\n"
+"POT-Creation-Date: 2020-04-08 00:04-0400\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -54,7 +54,7 @@ msgstr ""
 
 #: models.py:30
 msgid "Defined storage name"
-msgstr ""
+msgstr "Nom de stockage défini"
 
 #: models.py:33
 msgid "Maximum size of the cache in bytes."
@@ -79,7 +79,7 @@ msgstr ""
 
 #: models.py:74
 msgid "Current size"
-msgstr ""
+msgstr "Taille actuelle"
 
 #: models.py:75
 msgid "Current size of the cache."

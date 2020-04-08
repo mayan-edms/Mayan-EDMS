@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-04 02:06-0400\n"
+"POT-Creation-Date: 2020-04-08 00:04-0400\n"
 "PO-Revision-Date: 2019-10-18 11:50+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -18,17 +18,17 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:20 links.py:31 permissions.py:5 queues.py:7
+#: apps.py:21 links.py:31 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Statistika"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:29
+#: apps.py:30
 msgid "Schedule"
 msgstr "Plán"
 
-#: apps.py:35
+#: apps.py:36
 msgid "Last update"
 msgstr "Poslední aktualizace"
 

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-04 02:04-0400\n"
-"PO-Revision-Date: 2020-04-04 05:45+0000\n"
+"POT-Creation-Date: 2020-04-08 00:02-0400\n"
+"PO-Revision-Date: 2020-04-08 04:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:10 settings.py:7
+#: apps.py:11 settings.py:7
 msgid "Appearance"
 msgstr "Apariencia"
 
@@ -140,8 +140,8 @@ msgid "Contact your system administrator."
 msgstr "Póngase en contacto con el administrador de su sistema."
 
 #: templates/500.html:47
-msgid "Check the logs for messages with the tags \"ERROR\", \"CRITITCAL\" or \"FATAL\"."
-msgstr "Verifique los registros de mensajes con las etiquetas \"ERROR\", \"CRÍTICO\" o \"FATAL\"."
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr ""
 
 #: templates/500.html:48
 #, python-format

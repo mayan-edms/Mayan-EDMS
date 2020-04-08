@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-04 02:07-0400\n"
-"PO-Revision-Date: 2020-03-23 20:56+0000\n"
+"POT-Creation-Date: 2020-04-08 00:06-0400\n"
+"PO-Revision-Date: 2020-04-07 14:25+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -24,13 +24,13 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:49 apps.py:103 apps.py:110 apps.py:127 apps.py:129 events.py:5
+#: apps.py:50 apps.py:104 apps.py:111 apps.py:128 apps.py:130 events.py:5
 #: forms.py:15 links.py:23 menus.py:14 models.py:40 permissions.py:5
 #: views.py:223 workflow_actions.py:18 workflow_actions.py:66
 msgid "Tags"
 msgstr "Étiquettes"
 
-#: apps.py:123 models.py:34
+#: apps.py:124 models.py:34
 msgid "Documents"
 msgstr "Documents"
 
@@ -64,7 +64,7 @@ msgstr "Retirer des étiquettes"
 
 #: links.py:42
 msgid "Create new tag"
-msgstr "Créer une étiquette"
+msgstr "Nouvelle étiquette"
 
 #: links.py:48 links.py:65 views.py:156
 msgid "Delete"

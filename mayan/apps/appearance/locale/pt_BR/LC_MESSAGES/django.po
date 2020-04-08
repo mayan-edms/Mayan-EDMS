@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-04 02:04-0400\n"
-"PO-Revision-Date: 2020-04-04 05:20+0000\n"
+"POT-Creation-Date: 2020-04-08 00:02-0400\n"
+"PO-Revision-Date: 2020-04-08 04:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:10 settings.py:7
+#: apps.py:11 settings.py:7
 msgid "Appearance"
 msgstr "Aparência"
 
@@ -85,7 +85,7 @@ msgstr "Posição na qual a mensagem do sistema será exibida. Opções são: to
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
-msgstr ""
+msgstr "Permissão insuficiente"
 
 #: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
@@ -97,25 +97,25 @@ msgstr "Página não encontrada"
 
 #: templates/404.html:32
 msgid "The requested page could not be found."
-msgstr ""
+msgstr "A página solicitada não pôde ser encontrada."
 
 #: templates/404.html:40
 msgid "Possible reasons"
-msgstr ""
+msgstr "Razões possíveis"
 
 #: templates/404.html:44
 msgid "The location of the item is incorrect."
-msgstr ""
+msgstr "A localização do item está incorreta."
 
 #: templates/404.html:45
 msgid "The location is correct, but the item no longer exists."
-msgstr ""
+msgstr "A localização está correta, mas o item não existe mais."
 
 #: templates/404.html:46
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr ""
+msgstr "O local está correto, mas sua conta não tem a permissão necessária para acessá-lo."
 
 #: templates/500.html:5 templates/500.html:30
 #: templates/appearance/root.html:58
@@ -124,32 +124,32 @@ msgstr "Erro de servidor"
 
 #: templates/500.html:32
 msgid "There's been an unexpected error."
-msgstr ""
+msgstr "Ocorreu um erro inesperado."
 
 #: templates/500.html:40
 msgid "What to do next?"
-msgstr ""
+msgstr "o que fazer a seguir?"
 
 #: templates/500.html:44
 msgid "Refresh the page."
-msgstr ""
+msgstr "Recarregue a página."
 
 #: templates/500.html:45
 msgid "Wait a bit. The system might be overloaded."
-msgstr ""
+msgstr "Espere um pouco. O sistema pode estar sobrecarregado."
 
 #: templates/500.html:46
 msgid "Contact your system administrator."
-msgstr ""
+msgstr "Entre em contato com o administrador do sistema."
 
 #: templates/500.html:47
-msgid "Check the logs for messages with the tags \"ERROR\", \"CRITITCAL\" or \"FATAL\"."
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
 msgstr ""
 
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
-msgstr ""
+msgstr "Abra um ticket usando o <a href=\"%(issue_url)s\">rastreador de problemas</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"

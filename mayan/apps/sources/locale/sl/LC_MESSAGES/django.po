@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-04 02:07-0400\n"
+"POT-Creation-Date: 2020-04-08 00:05-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
@@ -17,39 +17,39 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:42 links.py:56 models/base.py:38 queues.py:7 settings.py:11
+#: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
 #: views.py:650
 msgid "Sources"
 msgstr ""
 
-#: apps.py:60
+#: apps.py:61
 msgid "Create a document source"
 msgstr ""
 
-#: apps.py:62
+#: apps.py:63
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr ""
 
-#: apps.py:75
+#: apps.py:76
 msgid "Type"
 msgstr ""
 
-#: apps.py:86
+#: apps.py:87
 msgid "Created"
 msgstr ""
 
-#: apps.py:92
+#: apps.py:93
 msgid "Thumbnail"
 msgstr ""
 
-#: apps.py:100 models/base.py:248
+#: apps.py:101 models/base.py:248
 msgid "Date time"
 msgstr ""
 
-#: apps.py:105 models/base.py:251
+#: apps.py:106 models/base.py:251
 msgid "Message"
 msgstr ""
 

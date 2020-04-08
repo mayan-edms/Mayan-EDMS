@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-04 02:04-0400\n"
-"PO-Revision-Date: 2020-04-04 05:20+0000\n"
+"POT-Creation-Date: 2020-04-08 00:02-0400\n"
+"PO-Revision-Date: 2020-04-08 04:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:10 settings.py:7
+#: apps.py:11 settings.py:7
 msgid "Appearance"
 msgstr "Изглед"
 
@@ -82,7 +82,7 @@ msgstr "Позиция, където ще се показва системнот
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
-msgstr ""
+msgstr "Недостатъчно разрешение"
 
 #: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
@@ -94,25 +94,25 @@ msgstr "Страницата не е намерена"
 
 #: templates/404.html:32
 msgid "The requested page could not be found."
-msgstr ""
+msgstr "Заявената страница не можа да бъде намерена."
 
 #: templates/404.html:40
 msgid "Possible reasons"
-msgstr ""
+msgstr "Възможни причини"
 
 #: templates/404.html:44
 msgid "The location of the item is incorrect."
-msgstr ""
+msgstr "Местоположението на обекта е неправилно."
 
 #: templates/404.html:45
 msgid "The location is correct, but the item no longer exists."
-msgstr ""
+msgstr "Местоположението е правилно, но обектът вече не съществува."
 
 #: templates/404.html:46
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr ""
+msgstr "Местоположението е правилно, но акаунтът ви няма необходимото разрешение за достъп до него."
 
 #: templates/500.html:5 templates/500.html:30
 #: templates/appearance/root.html:58
@@ -121,32 +121,32 @@ msgstr "Грешка в сървъра"
 
 #: templates/500.html:32
 msgid "There's been an unexpected error."
-msgstr ""
+msgstr "Възникна неочаквана грешка."
 
 #: templates/500.html:40
 msgid "What to do next?"
-msgstr ""
+msgstr "Какво да правя след това?"
 
 #: templates/500.html:44
 msgid "Refresh the page."
-msgstr ""
+msgstr "Обновете страницата."
 
 #: templates/500.html:45
 msgid "Wait a bit. The system might be overloaded."
-msgstr ""
+msgstr "Изчакай малко. Системата може да е претоварена."
 
 #: templates/500.html:46
 msgid "Contact your system administrator."
-msgstr ""
+msgstr "Свържете се с вашия системен администратор."
 
 #: templates/500.html:47
-msgid "Check the logs for messages with the tags \"ERROR\", \"CRITITCAL\" or \"FATAL\"."
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
 msgstr ""
 
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
-msgstr ""
+msgstr "Отворете билет с помощта на <a href=\"%(issue_url)s\">проследяване на проблем</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"

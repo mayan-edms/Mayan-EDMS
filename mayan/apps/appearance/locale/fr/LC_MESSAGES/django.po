@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-04 02:04-0400\n"
-"PO-Revision-Date: 2020-04-04 05:20+0000\n"
+"POT-Creation-Date: 2020-04-08 00:02-0400\n"
+"PO-Revision-Date: 2020-04-08 04:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:10 settings.py:7
+#: apps.py:11 settings.py:7
 msgid "Appearance"
 msgstr "Apparence"
 
@@ -88,7 +88,7 @@ msgstr "Position où le message du système sera affiché. Les options sont: en 
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
-msgstr ""
+msgstr "Permission insuffisante"
 
 #: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
@@ -100,25 +100,25 @@ msgstr "Page non trouvée"
 
 #: templates/404.html:32
 msgid "The requested page could not be found."
-msgstr ""
+msgstr "La page demandée est introuvable."
 
 #: templates/404.html:40
 msgid "Possible reasons"
-msgstr ""
+msgstr "Raisons possibles"
 
 #: templates/404.html:44
 msgid "The location of the item is incorrect."
-msgstr ""
+msgstr "L'emplacement de l'élément est incorrect."
 
 #: templates/404.html:45
 msgid "The location is correct, but the item no longer exists."
-msgstr ""
+msgstr "L'emplacement est correct, mais l'élément n'existe plus."
 
 #: templates/404.html:46
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr ""
+msgstr "L'emplacement est correct, mais votre compte ne dispose pas de l'autorisation requise pour y accéder."
 
 #: templates/500.html:5 templates/500.html:30
 #: templates/appearance/root.html:58
@@ -127,32 +127,32 @@ msgstr "Erreur du serveur"
 
 #: templates/500.html:32
 msgid "There's been an unexpected error."
-msgstr ""
+msgstr "Il y a eu une erreur inattendue."
 
 #: templates/500.html:40
 msgid "What to do next?"
-msgstr ""
+msgstr "Que faire ensuite?"
 
 #: templates/500.html:44
 msgid "Refresh the page."
-msgstr ""
+msgstr "Actualiser la page."
 
 #: templates/500.html:45
 msgid "Wait a bit. The system might be overloaded."
-msgstr ""
+msgstr "Attendez un peu. Le système est peut-être surchargé."
 
 #: templates/500.html:46
 msgid "Contact your system administrator."
-msgstr ""
+msgstr "Contactez votre administrateur système."
 
 #: templates/500.html:47
-msgid "Check the logs for messages with the tags \"ERROR\", \"CRITITCAL\" or \"FATAL\"."
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
 msgstr ""
 
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
-msgstr ""
+msgstr "Créez un nouveau rapport à l'aide du <a href=\"%(issue_url)s\">système de suivi des problèmes</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -193,7 +193,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr ""
+msgstr "\n                Il faut beaucoup d'efforts pour rendre %(project_title)s aussi riche en fonctionnalités qu'il l'est.\n            "
 
 #: templates/appearance/about.html:111
 #, python-format
@@ -217,7 +217,7 @@ msgid ""
 "\n"
 "                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\n                Pour des questions, consulter la <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n            "
 
 #: templates/appearance/about.html:129
 #, python-format
@@ -233,7 +233,7 @@ msgid ""
 "\n"
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr ""
+msgstr "\n                Faire connaitre notre logiciel. Parlez à vos amis et collègues à quel point %(project_title)s est génial!\n            "
 
 #: templates/appearance/base.html:36 templates/appearance/base.html:60
 msgid "Warning"
@@ -259,7 +259,7 @@ msgstr ""
 
 #: templates/appearance/base.html:71
 msgid "Click here when finished"
-msgstr ""
+msgstr "Cliquez ici lorsque vous avez terminé"
 
 #: templates/appearance/base.html:85
 #: templates/appearance/generic_list_items_subtemplate.html:66
@@ -347,7 +347,7 @@ msgstr "Tout sélectionner/Désélectionner"
 
 #: templates/appearance/list_toolbar.html:17
 msgid "Toggle list display mode"
-msgstr ""
+msgstr "Basculer en mode d'affichage liste"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
