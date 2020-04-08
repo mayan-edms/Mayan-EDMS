@@ -409,3 +409,8 @@ SettingNamespaceSingleton.register_setting(
         'has_default': True, 'default_value': 0
     }
 )
+SettingNamespaceSingleton.register_setting(
+    name='TESTING', klass=BaseSetting, kwargs={
+        'has_default': True, 'default_value': False
+    }
+)

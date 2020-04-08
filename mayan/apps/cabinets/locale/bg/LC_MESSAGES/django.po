@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:52-0400\n"
+"POT-Creation-Date: 2020-04-08 01:21-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -23,9 +23,9 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:47 apps.py:108 apps.py:124 apps.py:127 events.py:5 forms.py:14
-#: links.py:22 menus.py:14 models.py:48 models.py:165 permissions.py:5
-#: views.py:164 workflow_actions.py:20
+#: apps.py:48 apps.py:122 apps.py:129 apps.py:134 apps.py:137 events.py:5
+#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:165
+#: permissions.py:5 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Шкафове"
 
@@ -77,11 +77,11 @@ msgstr "Всичко"
 msgid "Details"
 msgstr "Детайли"
 
-#: methods.py:16
-msgid "Return a list of cabinets containing the document"
-msgstr "Връща списък със шкафове, съдържащи документа"
+#: methods.py:20
+msgid "Return a list of cabinets containing the document."
+msgstr "Връща списък със шкафове, съдържащи документа."
 
-#: methods.py:18
+#: methods.py:22
 msgid "get_cabinets()"
 msgstr "get_cabinets()"
 
@@ -104,11 +104,11 @@ msgstr "Шкаф"
 
 #: models.py:110
 msgid "The path to the cabinet including all ancestors."
-msgstr ""
+msgstr "Път до шкафа, включващ всички предци."
 
 #: models.py:112
 msgid "Full path"
-msgstr ""
+msgstr "Пълен път"
 
 #: models.py:145 serializers.py:137
 msgid "Parent and Label"
@@ -157,7 +157,7 @@ msgstr "Тип документ"
 
 #: search.py:29
 msgid "Document MIME type"
-msgstr ""
+msgstr "MIME тип на документа"
 
 #: search.py:32
 msgid "Document label"
@@ -169,11 +169,11 @@ msgstr "Описание на документа"
 
 #: search.py:38
 msgid "Document UUID"
-msgstr ""
+msgstr "UUID на документ"
 
 #: search.py:42
 msgid "Document checksum"
-msgstr ""
+msgstr "Контролна сума за документ"
 
 #: serializers.py:17
 msgid "List of children cabinets."
@@ -197,8 +197,8 @@ msgstr ""
 #: serializers.py:66 serializers.py:177
 msgid "Comma separated list of document primary keys to add to this cabinet."
 msgstr ""
-"Разделен със запетаи списък на основни ключове за документ, които да "
-"добавите към този шкаф."
+"Разделен със запетаи списък на основни ключове за документ за добавяне към "
+"този шкаф."
 
 #: serializers.py:156
 msgid ""
@@ -269,82 +269,82 @@ msgstr "Този документ не е в нито един шкаф"
 msgid "Cabinets containing document: %s"
 msgstr "Шкафове, съдържащи документ: %s"
 
-#: views.py:221
+#: views.py:223
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document."
 msgstr "Добавете към заявката на шкафа, изпълнена на %(count)dдокумент."
 
-#: views.py:224
+#: views.py:226
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents."
 msgstr "Добавете към заявката на шкафа, изпълнена на %(count)dдокумента."
 
-#: views.py:231
+#: views.py:233
 msgid "Add"
 msgstr "Добави"
 
-#: views.py:233
+#: views.py:235
 #, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Добавете документ %(count)d в шкафовете"
 msgstr[1] "Добавете %(count)d документа към шкафовете"
 
-#: views.py:246
+#: views.py:248
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr "Добавете документ &quot;%s&quot; към шкафове"
 
-#: views.py:257
+#: views.py:259
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Шкафове, към които ще бъдат добавени избраните документи."
 
-#: views.py:286
+#: views.py:288
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr "Документ: %(document)s вече е в шкафа: %(cabinet)s."
 
-#: views.py:298
+#: views.py:300
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr "Документ: %(document)s добавен към шкафа: %(cabinet)s успешно."
 
-#: views.py:312
+#: views.py:314
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document."
 msgstr "Премахване от заявка на шкафа, изпълнена на документ %(count)d."
 
-#: views.py:315
+#: views.py:317
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents."
-msgstr "Премахване от заявка на шкафа, изпълнена на документи %(count)d."
+msgstr "Премахване от заявка на шкафа, изпълнена на %(count)dдокумента."
 
-#: views.py:322
+#: views.py:324
 msgid "Remove"
 msgstr "Премахнете"
 
-#: views.py:324
+#: views.py:326
 #, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Извадете документа %(count)d от шкафовете"
 msgstr[1] "Извадете %(count)d документа от шкафовете"
 
-#: views.py:337
+#: views.py:339
 #, python-format
 msgid "Remove document \"%s\" from cabinets"
 msgstr "Извадете документа &quot;%s&quot; от шкафовете"
 
-#: views.py:348
+#: views.py:350
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Шкафове, от които ще бъдат премахнати избраните документи."
 
-#: views.py:376
+#: views.py:378
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr "Документ: %(document)s не е в шкаф: %(cabinet)s."
 
-#: views.py:388
+#: views.py:390
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Документ: %(document)s премахнат от шкаф: %(cabinet)s."

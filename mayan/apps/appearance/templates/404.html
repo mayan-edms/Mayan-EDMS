@@ -4,11 +4,52 @@
 
 {% block title %}{% blocktrans %}Page not found{% endblocktrans %}{% endblock %}
 
+{% block stylesheets %}
+    <style>
+        .icon-error {
+            margin-left: -75px; margin-bottom: 30px; margin-top: 50px
+        }
+
+        .div-error {
+            margin-top: 50px;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
-    <div class="content">
-        <h3 class="title">{% blocktrans %}Page not found{% endblocktrans %}</h3>
-        <div class="inner">
-            <p>{% blocktrans %}Sorry, but the requested page could not be found.{% endblocktrans %}</p>
+    <div class="div-error">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="text-center">
+                    <span class="fa-stack fa-2x icon-error">
+                        <i class="fas fa-desktop fa-stack-2x"></i>
+                        <i class="fas fa-question fa-stack-1x fa-2x" data-fa-transform="right-10 up-3"></i>
+                    </span>
+                </div>
+
+                <h3 class="title text-center">{% trans 'Page not found' %}</h3>
+                <div class="inner text-center">
+                    <p>{% blocktrans %}The requested page could not be found.{% endblocktrans %}</p>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-center">{% trans 'Possible reasons' %}</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="fa-ul">
+                                  <li><span class="fa-li"><i class="fas fa-question"></i></span>{% blocktrans %}The location of the item is incorrect.{% endblocktrans %}</li>
+                                  <li><span class="fa-li"><i class="fas fa-times"></i></span>{% blocktrans %}The location is correct, but the item no longer exists.{% endblocktrans %}</li>
+                                  <li><span class="fa-li"><i class="fas fa-lock"></i></span>{% blocktrans %}The location is be correct, but your account does not have the required permission to access it.{% endblocktrans %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

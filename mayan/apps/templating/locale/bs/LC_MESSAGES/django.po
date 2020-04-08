@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:55-0400\n"
+"POT-Creation-Date: 2020-04-08 01:24-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:17 permissions.py:5
+#: apps.py:18 permissions.py:5
 msgid "Templating"
 msgstr ""
 

@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
+# Roberto Rosario, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:51-0400\n"
-"PO-Revision-Date: 2020-03-30 08:30+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
+"POT-Creation-Date: 2020-04-08 01:21-0400\n"
+"PO-Revision-Date: 2020-04-08 05:05+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:9 settings.py:7
+#: apps.py:11 settings.py:7
 msgid "Appearance"
 msgstr "Изглед"
 
@@ -80,31 +81,73 @@ msgid ""
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr "Позиция, където ще се показва системното съобщение. Опциите са: горе вляво, горе в центъра, горе вдясно, отдолу вляво, отдолу в центъра, отдолу вдясно."
 
-#: templates/403.html:5 templates/403.html:9
-msgid "Insufficient permissions"
-msgstr "Недостатъчни разрешения"
+#: templates/403.html:5 templates/403.html:30
+msgid "Insufficient permission"
+msgstr "Недостатъчно разрешение"
 
-#: templates/403.html:11
+#: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
 msgstr "Нямате достатъчни разрешения за тази операция."
 
-#: templates/404.html:5 templates/404.html:9
+#: templates/404.html:5 templates/404.html:30
 msgid "Page not found"
 msgstr "Страницата не е намерена"
 
-#: templates/404.html:11
-msgid "Sorry, but the requested page could not be found."
-msgstr "Съжалявам, но заявената страница не може да бъде намерена."
+#: templates/404.html:32
+msgid "The requested page could not be found."
+msgstr "Заявената страница не можа да бъде намерена."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:58
+#: templates/404.html:40
+msgid "Possible reasons"
+msgstr "Възможни причини"
+
+#: templates/404.html:44
+msgid "The location of the item is incorrect."
+msgstr "Местоположението на обекта е неправилно."
+
+#: templates/404.html:45
+msgid "The location is correct, but the item no longer exists."
+msgstr "Местоположението е правилно, но обектът вече не съществува."
+
+#: templates/404.html:46
+msgid ""
+"The location is be correct, but your account does not have the required "
+"permission to access it."
+msgstr "Местоположението е правилно, но акаунтът ви няма необходимото разрешение за достъп до него."
+
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Грешка в сървъра"
 
-#: templates/500.html:11
-msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Има грешка. Тя е съобщена на администраторите на сайта чрез електронно съобщение и ще бъде отстранена скоро. Благодарим за търпението."
+#: templates/500.html:32
+msgid "There's been an unexpected error."
+msgstr "Възникна неочаквана грешка."
+
+#: templates/500.html:40
+msgid "What to do next?"
+msgstr "Какво да правя след това?"
+
+#: templates/500.html:44
+msgid "Refresh the page."
+msgstr "Обновете страницата."
+
+#: templates/500.html:45
+msgid "Wait a bit. The system might be overloaded."
+msgstr "Изчакай малко. Системата може да е претоварена."
+
+#: templates/500.html:46
+msgid "Contact your system administrator."
+msgstr "Свържете се с вашия системен администратор."
+
+#: templates/500.html:47
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr "Проверете дневниците за съобщения с тагове \"ERROR\", \"CRITICAL\" или \"FATAL\"."
+
+#: templates/500.html:48
+#, python-format
+msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
+msgstr "Отворете билет с помощта на <a href=\"%(issue_url)s\">проследяване на проблем</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"

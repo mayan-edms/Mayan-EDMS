@@ -236,7 +236,7 @@ STATIC_ROOT = os.environ.get(
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'mayan.apps.common.finders.MayanAppDirectoriesFinder',
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

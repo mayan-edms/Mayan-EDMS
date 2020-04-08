@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:52-0400\n"
+"POT-Creation-Date: 2020-04-08 01:21-0400\n"
 "PO-Revision-Date: 2020-02-14 02:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
@@ -45,13 +45,13 @@ msgstr "LibreOffice nije instaliran ili nije pronađen."
 msgid "Not an office file format."
 msgstr "Nije format kancelarijskog fajla."
 
-#: classes.py:354
+#: classes.py:350
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr ""
 
-#: classes.py:402
+#: classes.py:398
 msgid "transformation"
 msgstr "transformacija"
 
@@ -230,47 +230,47 @@ msgstr "Uvećaj"
 msgid "Enter a valid YAML value."
 msgstr "Unesite važeći IAML"
 
-#: views.py:64
+#: views.py:51
 #, python-format
 msgid "Error creating transformation: %s."
 msgstr ""
 
-#: views.py:81
+#: views.py:68
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
 msgstr ""
 
-#: views.py:136
+#: views.py:123
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "Izbriši transformaciju \"%(transformation)s\" za:%(content_object)s?"
 
-#: views.py:185
+#: views.py:172
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "Edituj transformaciju \"%(transformation)s\" za:%(content_object)s"
 
-#: views.py:244
+#: views.py:231
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
 msgstr ""
 
-#: views.py:247
+#: views.py:234
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
 msgstr ""
 
-#: views.py:295
+#: views.py:286
 msgid "Transformation created successfully."
 msgstr ""
 
-#: views.py:316
+#: views.py:310
 msgid "Select"
 msgstr "Odabrati"
 
-#: views.py:318
+#: views.py:312
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
 msgstr ""

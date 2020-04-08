@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:55-0400\n"
+"POT-Creation-Date: 2020-04-08 01:24-0400\n"
 "PO-Revision-Date: 2020-03-18 05:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
@@ -19,13 +19,13 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:49 apps.py:103 apps.py:110 apps.py:127 apps.py:129 events.py:5
+#: apps.py:50 apps.py:104 apps.py:111 apps.py:128 apps.py:130 events.py:5
 #: forms.py:15 links.py:23 menus.py:14 models.py:40 permissions.py:5
 #: views.py:223 workflow_actions.py:18 workflow_actions.py:66
 msgid "Tags"
 msgstr "Tagovi"
 
-#: apps.py:123 models.py:34
+#: apps.py:124 models.py:34
 msgid "Documents"
 msgstr "Dokumenti"
 

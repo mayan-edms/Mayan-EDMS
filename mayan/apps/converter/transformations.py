@@ -534,19 +534,49 @@ class TransformationZoom(BaseTransformation):
         )
 
 
-BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationCrop)
-BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationDrawRectangle)
 BaseTransformation.register(
-    layer=layer_saved_transformations, transformation=TransformationDrawRectanglePercent
+    layer=layer_saved_transformations, transformation=TransformationCrop
 )
-BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationFlip)
-BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationGaussianBlur)
-BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationLineArt)
-BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationMirror)
-BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationResize)
-BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationRotate)
-BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationRotate90)
-BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationRotate180)
-BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationRotate270)
-BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationUnsharpMask)
-BaseTransformation.register(layer=layer_saved_transformations, transformation=TransformationZoom)
+BaseTransformation.register(
+    layer=layer_saved_transformations,
+    transformation=TransformationDrawRectangle
+)
+BaseTransformation.register(
+    layer=layer_saved_transformations,
+    transformation=TransformationDrawRectanglePercent
+)
+BaseTransformation.register(
+    layer=layer_saved_transformations, transformation=TransformationFlip
+)
+BaseTransformation.register(
+    layer=layer_saved_transformations,
+    transformation=TransformationGaussianBlur
+)
+BaseTransformation.register(
+    layer=layer_saved_transformations, transformation=TransformationLineArt
+)
+BaseTransformation.register(
+    layer=layer_saved_transformations, transformation=TransformationMirror
+)
+BaseTransformation.register(
+    layer=layer_saved_transformations, transformation=TransformationResize
+)
+BaseTransformation.register(
+    layer=layer_saved_transformations, transformation=TransformationRotate
+)
+BaseTransformation.register(
+    layer=layer_saved_transformations, transformation=TransformationRotate90
+)
+BaseTransformation.register(
+    layer=layer_saved_transformations, transformation=TransformationRotate180
+)
+BaseTransformation.register(
+    layer=layer_saved_transformations, transformation=TransformationRotate270
+)
+BaseTransformation.register(
+    layer=layer_saved_transformations,
+    transformation=TransformationUnsharpMask
+)
+BaseTransformation.register(
+    layer=layer_saved_transformations, transformation=TransformationZoom
+)

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:53-0400\n"
+"POT-Creation-Date: 2020-04-08 01:23-0400\n"
 "PO-Revision-Date: 2019-12-26 19:10+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -20,17 +20,17 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:20 links.py:31 permissions.py:5 queues.py:7
+#: apps.py:21 links.py:31 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Estatísticas"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:29
+#: apps.py:30
 msgid "Schedule"
 msgstr "Programação"
 
-#: apps.py:35
+#: apps.py:36
 msgid "Last update"
 msgstr "Última atualização"
 

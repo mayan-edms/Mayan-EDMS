@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:54-0400\n"
+"POT-Creation-Date: 2020-04-08 01:24-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
@@ -18,39 +18,39 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:42 links.py:56 models/base.py:38 queues.py:7 settings.py:11
+#: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
 #: views.py:650
 msgid "Sources"
 msgstr "来源"
 
-#: apps.py:60
+#: apps.py:61
 msgid "Create a document source"
 msgstr "创建文档源"
 
-#: apps.py:62
+#: apps.py:63
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr "文档源是将新文档提供给Mayan EDMS的方式，至少创建一个网页表单源以便能够从浏览器上传文档。"
 
-#: apps.py:75
+#: apps.py:76
 msgid "Type"
 msgstr "类型"
 
-#: apps.py:86
+#: apps.py:87
 msgid "Created"
 msgstr "已创建"
 
-#: apps.py:92
+#: apps.py:93
 msgid "Thumbnail"
 msgstr "缩略图"
 
-#: apps.py:100 models/base.py:248
+#: apps.py:101 models/base.py:248
 msgid "Date time"
 msgstr "日期时间"
 
-#: apps.py:105 models/base.py:251
+#: apps.py:106 models/base.py:251
 msgid "Message"
 msgstr "信息"
 

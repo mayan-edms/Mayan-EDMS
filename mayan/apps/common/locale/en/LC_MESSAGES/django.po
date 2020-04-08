@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:52-0400\n"
+"POT-Creation-Date: 2020-04-08 01:21-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -358,30 +358,30 @@ msgid ""
 "and {} for formatting errors."
 msgstr ""
 
-#: templatetags/common_tags.py:31
+#: templatetags/common_tags.py:34
 msgid "Confirm delete"
 msgstr ""
 
-#: templatetags/common_tags.py:36
+#: templatetags/common_tags.py:39
 #, python-format
 msgid "Edit %s"
 msgstr ""
 
-#: templatetags/common_tags.py:39
+#: templatetags/common_tags.py:42
 msgid "Confirm"
 msgstr ""
 
-#: templatetags/common_tags.py:43
+#: templatetags/common_tags.py:46
 #, python-format
 msgid "Details for: %s"
 msgstr ""
 
-#: templatetags/common_tags.py:47
+#: templatetags/common_tags.py:50
 #, python-format
 msgid "Edit: %s"
 msgstr ""
 
-#: templatetags/common_tags.py:50
+#: templatetags/common_tags.py:54
 msgid "Create"
 msgstr ""
 

@@ -64,6 +64,12 @@ else
 fi
 export MAYAN_WORKER_SLOW_CONCURRENCY
 
+if mount | grep '/dev/shm' > /dev/null; then
+    MAYAN_GUNICORN_TEMPORARY_DIRECTORY="--worker-tmp-dir /dev/shm"
+else
+    MAYAN_GUNICORN_TEMPORARY_DIRECTORY=
+fi
+
 # Allow importing of user setting modules
 export PYTHONPATH=$PYTHONPATH:$MAYAN_MEDIA_ROOT
 

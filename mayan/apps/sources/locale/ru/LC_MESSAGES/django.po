@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:54-0400\n"
+"POT-Creation-Date: 2020-04-08 01:24-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -19,39 +19,39 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:42 links.py:56 models/base.py:38 queues.py:7 settings.py:11
+#: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
 #: views.py:650
 msgid "Sources"
 msgstr "Источники"
 
-#: apps.py:60
+#: apps.py:61
 msgid "Create a document source"
 msgstr "Создать источник документов"
 
-#: apps.py:62
+#: apps.py:63
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr "Источники документов - это способы получения Mayan EDMS новых документов. Как минимум, чтобы можно было загружать документы из браузера, создайте веб-форму."
 
-#: apps.py:75
+#: apps.py:76
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:86
+#: apps.py:87
 msgid "Created"
 msgstr "Создано"
 
-#: apps.py:92
+#: apps.py:93
 msgid "Thumbnail"
 msgstr "Миниатюра"
 
-#: apps.py:100 models/base.py:248
+#: apps.py:101 models/base.py:248
 msgid "Date time"
 msgstr "Дата и время"
 
-#: apps.py:105 models/base.py:251
+#: apps.py:106 models/base.py:251
 msgid "Message"
 msgstr "Сообщение"
 

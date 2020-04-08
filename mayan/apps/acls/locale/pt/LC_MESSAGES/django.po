@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:51-0400\n"
-"PO-Revision-Date: 2020-03-28 07:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-08 01:21-0400\n"
+"PO-Revision-Date: 2020-04-06 13:25+0000\n"
+"Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,19 +28,19 @@ msgstr "Listas de controlo de acesso"
 
 #: events.py:10
 msgid "ACL created"
-msgstr ""
+msgstr "ACL criada "
 
 #: events.py:13
 msgid "ACL edited"
-msgstr ""
+msgstr "ACL editada"
 
 #: forms.py:13 models.py:46 views.py:67
 msgid "Role"
-msgstr ""
+msgstr "Função"
 
 #: links.py:32
 msgid "New ACL"
-msgstr ""
+msgstr "Nova ACL"
 
 #: links.py:37
 msgid "Delete"
@@ -52,25 +53,25 @@ msgstr "Permissões"
 #: managers.py:229
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
-msgstr ""
+msgstr "O objecto \"%s\" não é um modelo e não é possível testar o acesso"
 
 #: managers.py:250
 #, python-format
 msgid "Insufficient access for: %s"
-msgstr ""
+msgstr "Acesso insuficiente para: \"%s\""
 
 #: models.py:54
 msgid "Access entry"
-msgstr ""
+msgstr "Registo de Acesso"
 
 #: models.py:55
 msgid "Access entries"
-msgstr ""
+msgstr "Registos de Acesso"
 
 #: models.py:59
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
-msgstr ""
+msgstr "Permissões da função \"%(role)s\" para o objecto \"%(object)s\""
 
 #: permissions.py:8
 msgid "Edit ACLs"
@@ -83,53 +84,53 @@ msgstr "Ver ACL's"
 #: serializers.py:24 serializers.py:134
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
-msgstr ""
+msgstr "URL do API que aponta para a lista de permissões para esta lista de controlo de acesso."
 
 #: serializers.py:57
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
+msgstr "URL do API que aponta para uma permissão em relação à lista de controlo de acesso à qual se encontra associada. Este URL é diferente do URL regular do workflow."
 
 #: serializers.py:89
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr ""
+msgstr "Chave primária da nova permissão a adicionar à lista de controlo de acesso."
 
 #: serializers.py:113 serializers.py:189
 #, python-format
 msgid "No such permission: %s"
-msgstr ""
+msgstr "Permissão não existente: \"%s\""
 
 #: serializers.py:128
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr ""
+msgstr "Lista de chaves primárias de permissões a adicionar a esta lista de controlo de acesso, separadas por vírgulas."
 
 #: serializers.py:140
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr ""
+msgstr "Chaves primárias da função à qual esta lista de controlo de acesso é vinculada."
 
 #: views.py:40
 #, python-format
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
-msgstr ""
+msgstr "Uma ACL para \"%(object)s\" que utiliza a função \"%(role)s\" já existe. Edite essa ACL em vez de criar uma nova."
 
 #: views.py:53
 #, python-format
 msgid "New access control lists for: %s"
-msgstr ""
+msgstr "Novas listas de controlo de acesso para: \"%s\""
 
 #: views.py:95
 #, python-format
 msgid "Delete ACL: %s"
-msgstr ""
+msgstr "Eliminar ACL: \"%s\""
 
 #: views.py:133
 msgid "There are no ACLs for this object"
-msgstr ""
+msgstr "Não existem ACLs definidas para este objeto."
 
 #: views.py:136
 msgid ""

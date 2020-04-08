@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:52-0400\n"
+"POT-Creation-Date: 2020-04-08 01:21-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
@@ -21,9 +21,9 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:47 apps.py:108 apps.py:124 apps.py:127 events.py:5 forms.py:14
-#: links.py:22 menus.py:14 models.py:48 models.py:165 permissions.py:5
-#: views.py:164 workflow_actions.py:20
+#: apps.py:48 apps.py:122 apps.py:129 apps.py:134 apps.py:137 events.py:5
+#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:165
+#: permissions.py:5 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "کابینت"
 
@@ -75,11 +75,11 @@ msgstr "همه"
 msgid "Details"
 msgstr "جزئیات"
 
-#: methods.py:16
-msgid "Return a list of cabinets containing the document"
+#: methods.py:20
+msgid "Return a list of cabinets containing the document."
 msgstr ""
 
-#: methods.py:18
+#: methods.py:22
 msgid "get_cabinets()"
 msgstr ""
 
@@ -260,82 +260,82 @@ msgstr ""
 msgid "Cabinets containing document: %s"
 msgstr "کابینت حاوی اسناد: %s"
 
-#: views.py:221
+#: views.py:223
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document."
 msgstr ""
 
-#: views.py:224
+#: views.py:226
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents."
 msgstr ""
 
-#: views.py:231
+#: views.py:233
 msgid "Add"
 msgstr "افزودن"
 
-#: views.py:233
+#: views.py:235
 #, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:246
+#: views.py:248
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr "سند %s را به کابینت اضافه کنید"
 
-#: views.py:257
+#: views.py:259
 msgid "Cabinets to which the selected documents will be added."
 msgstr "کابینت هایی که اسناد انتخاب شده اضافه خواهند شد."
 
-#: views.py:286
+#: views.py:288
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr "سند: %(document)s در حال حاضر در کابینه است: %(cabinet)s."
 
-#: views.py:298
+#: views.py:300
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr "سند: %(document)s به کابینه اضافه شده: %(cabinet)s با موفقیت."
 
-#: views.py:312
+#: views.py:314
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document."
 msgstr ""
 
-#: views.py:315
+#: views.py:317
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents."
 msgstr ""
 
-#: views.py:322
+#: views.py:324
 msgid "Remove"
 msgstr "حذف"
 
-#: views.py:324
+#: views.py:326
 #, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:337
+#: views.py:339
 #, python-format
 msgid "Remove document \"%s\" from cabinets"
 msgstr ""
 
-#: views.py:348
+#: views.py:350
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "کابینت هایی که اسناد انتخاب شده حذف خواهند شد."
 
-#: views.py:376
+#: views.py:378
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr "سند: %(document)s در کابینه نیست: %(cabinet)s."
 
-#: views.py:388
+#: views.py:390
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "سند: %(document)s حذف شده از کابینه: %(cabinet)s."

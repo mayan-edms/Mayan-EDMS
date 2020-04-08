@@ -98,7 +98,7 @@ class PartialNavigation {
                     }
                 }
             },
-            error: function (jqXHR, textStatus, errorThrown){
+            error: function (jqXHR, textStatus, errorThrown) {
                 app.processAjaxRequestError(jqXHR);
             },
             dataType: 'html',
@@ -158,7 +158,6 @@ class PartialNavigation {
          * Method to process an AJAX request and make it presentable to the
          * user.
          */
-
         if (djangoDEBUG) {
             var errorMessage = null;
 
@@ -182,15 +181,19 @@ class PartialNavigation {
                 '
             );
         } else {
-          if (jqXHR.status == 0) {
-              $('#modal-server-error .modal-body').html($('#template-error').html());
-              $('#modal-server-error').modal('show')
-          } else {
-              $('#ajax-content').html(jqXHR.statusText);
-          }
+            if (jqXHR.status == 0) {
+                $('#modal-server-error .modal-body').html($('#template-error').html());
+                $('#modal-server-error').modal('show')
+            } else {
+                console.log([403, 404, 500].indexOf(jqXHR.status));
+                if ([403, 404, 500].indexOf(jqXHR.status !== -1)) {
+                    $('#ajax-content').html(jqXHR.responseText);
+                } else {
+                    $('#ajax-content').html(jqXHR.statusText);
+                }
+            }
         }
     }
-
 
     setLocation (newLocation, pushState) {
         /*

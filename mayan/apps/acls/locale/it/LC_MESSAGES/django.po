@@ -5,12 +5,14 @@
 # Translators:
 # Daniele Bortoluzzi <daniele@elkos.it>, 2019
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
+# Paul Audhep <audhep@gmail.com>, 2020
+# Roberto Rosario, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:51-0400\n"
-"PO-Revision-Date: 2020-03-28 07:22+0000\n"
+"POT-Creation-Date: 2020-04-08 01:21-0400\n"
+"PO-Revision-Date: 2020-04-08 05:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -138,7 +140,7 @@ msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr ""
+msgstr "ACL sta per Access Control List ed è un metodo preciso per controllare l'accesso degli utenti agli oggetti nel sistema. Gli ACL consentono di concedere un'autorizzazione a un ruolo ma solo per un specifico oggetto o un set di oggetti."
 
 #: views.py:143
 #, python-format
@@ -198,11 +200,11 @@ msgstr "Permessi da concedere/revocare al ruolo per l'oggetto selezionato"
 
 #: workflow_actions.py:57
 msgid "Grant object access"
-msgstr ""
+msgstr "Concedi l'accesso agli oggetti"
 
 #: workflow_actions.py:140
 msgid "Revoke object access"
-msgstr ""
+msgstr "Revoca l'accesso agli oggetti"
 
 #: workflow_actions.py:172
 msgid "Grant document access"

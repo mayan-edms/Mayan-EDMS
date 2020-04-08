@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:53-0400\n"
+"POT-Creation-Date: 2020-04-08 01:23-0400\n"
 "PO-Revision-Date: 2019-05-31 12:50+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -18,17 +18,17 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:20 links.py:31 permissions.py:5 queues.py:7
+#: apps.py:21 links.py:31 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Statistika"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:29
+#: apps.py:30
 msgid "Schedule"
 msgstr "Grafiks"
 
-#: apps.py:35
+#: apps.py:36
 msgid "Last update"
 msgstr "Pēdējā atjaunošana"
 

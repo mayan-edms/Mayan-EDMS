@@ -29,7 +29,7 @@ class ReleaseNoteExporter(object):
             else:
                 if not element.attrib.get('id') in ignore_ids_list:
                     result.append(
-                        etree.tostring(element).replace(b'\n', b'')
+                        etree.tostring(element).replace(b'\n', b' ')
                     )
 
         return result

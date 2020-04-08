@@ -6,14 +6,14 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:53-0400\n"
-"PO-Revision-Date: 2020-03-28 12:51+0000\n"
+"POT-Creation-Date: 2020-04-08 01:22-0400\n"
+"PO-Revision-Date: 2020-04-04 12:47+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -58,8 +58,8 @@ msgid "Search again"
 msgstr "Buscar novamente"
 
 #: settings.py:11
-msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr "Caminho completo para o backend a ser usado para manipular chaves e assinaturas."
+msgid "Full path to the backend to be used to handle the search."
+msgstr "Caminho completo do backend usado para manipular a busca."
 
 #: settings.py:21
 msgid ""

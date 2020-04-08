@@ -279,7 +279,7 @@ class DocumentTagListView(ExternalObjectMixin, TagListView):
     def get_source_queryset(self):
         return self.external_object.get_tags(
             permission=permission_tag_view, user=self.request.user
-        ).all()
+        )
 
 
 class TagRemoveActionView(MultipleObjectFormActionView):

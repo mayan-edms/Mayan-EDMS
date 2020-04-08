@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:52-0400\n"
+"POT-Creation-Date: 2020-04-08 01:21-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Harald Ersch, 2020\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,9 +23,9 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:47 apps.py:108 apps.py:124 apps.py:127 events.py:5 forms.py:14
-#: links.py:22 menus.py:14 models.py:48 models.py:165 permissions.py:5
-#: views.py:164 workflow_actions.py:20
+#: apps.py:48 apps.py:122 apps.py:129 apps.py:134 apps.py:137 events.py:5
+#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:165
+#: permissions.py:5 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Fișete"
 
@@ -77,11 +77,11 @@ msgstr "Toate"
 msgid "Details"
 msgstr "Detalii"
 
-#: methods.py:16
-msgid "Return a list of cabinets containing the document"
-msgstr "Returnați lista fișetelor ce conțin documentul"
+#: methods.py:20
+msgid "Return a list of cabinets containing the document."
+msgstr ""
 
-#: methods.py:18
+#: methods.py:22
 msgid "get_cabinets()"
 msgstr "get_cabinets ()"
 
@@ -272,22 +272,22 @@ msgstr "Acest document nu se află în nici un fișet"
 msgid "Cabinets containing document: %s"
 msgstr "Fișete care conțin documentul: %s"
 
-#: views.py:221
+#: views.py:223
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document."
 msgstr "Solicitarea de adăugare la fișet efectuată pe%(count)d document."
 
-#: views.py:224
+#: views.py:226
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents."
 msgstr ""
 "Solicitarea de adăugare la fișet efectuată pentru %(count)d documente."
 
-#: views.py:231
+#: views.py:233
 msgid "Add"
 msgstr "Adaugă"
 
-#: views.py:233
+#: views.py:235
 #, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
@@ -295,40 +295,40 @@ msgstr[0] "Adăugați un document %(count)d în dulapuri"
 msgstr[1] "Adăugați documente %(count)d în dulapuri"
 msgstr[2] "Adăugați %(count)d documente  în fișete"
 
-#: views.py:246
+#: views.py:248
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr "Adăugați documentul \"%s\" în fișete"
 
-#: views.py:257
+#: views.py:259
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Fișetele la care vor fi adăugate documentele selectate."
 
-#: views.py:286
+#: views.py:288
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr "Document: %(document)s este deja în fișetul: %(cabinet)s."
 
-#: views.py:298
+#: views.py:300
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr "Document: %(document)s adăugat la fișetul: %(cabinet)s cu succes."
 
-#: views.py:312
+#: views.py:314
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document."
 msgstr "Solicitarea de ștergere din fișet efectuată pe %(count)d document ."
 
-#: views.py:315
+#: views.py:317
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents."
 msgstr "Solicitarea de ștergere din fișet efectuată pe %(count)d documente."
 
-#: views.py:322
+#: views.py:324
 msgid "Remove"
 msgstr "Elimină"
 
-#: views.py:324
+#: views.py:326
 #, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
@@ -336,21 +336,21 @@ msgstr[0] "Scoateți un document %(count)d din dulapuri"
 msgstr[1] "Ștergeți documentele %(count)d din dulapuri"
 msgstr[2] "Ștergeți %(count)d documente  din fișete"
 
-#: views.py:337
+#: views.py:339
 #, python-format
 msgid "Remove document \"%s\" from cabinets"
 msgstr "Scoateți documentul \"%s\" din fișete"
 
-#: views.py:348
+#: views.py:350
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Fișetele din care vor fi eliminate documentele selectate."
 
-#: views.py:376
+#: views.py:378
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr "Documentul: %(document)s nu este în fișetul: %(cabinet)s."
 
-#: views.py:388
+#: views.py:390
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Documentul: %(document)sa fost scos din fișetul: %(cabinet)s."

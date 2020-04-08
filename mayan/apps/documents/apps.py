@@ -301,7 +301,8 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
-            ), label=_('Thumbnail'), source=DocumentPage
+            ), html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), source=DocumentPage
         )
         SourceColumn(
             attribute='enabled', include_label=True, source=DocumentPage,
@@ -318,7 +319,8 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
-            ), label=_('Thumbnail'), source=DocumentPageResult
+            ), html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), source=DocumentPageResult
         )
         SourceColumn(
             attribute='document_version.document.document_type',
@@ -364,7 +366,8 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
-            ), label=_('Thumbnail'), source=DocumentVersion
+            ), html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), source=DocumentVersion
         )
         SourceColumn(
             func=lambda context: widget_document_version_page_number(

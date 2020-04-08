@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:52-0400\n"
+"POT-Creation-Date: 2020-04-08 01:21-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -25,9 +25,9 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:47 apps.py:108 apps.py:124 apps.py:127 events.py:5 forms.py:14
-#: links.py:22 menus.py:14 models.py:48 models.py:165 permissions.py:5
-#: views.py:164 workflow_actions.py:20
+#: apps.py:48 apps.py:122 apps.py:129 apps.py:134 apps.py:137 events.py:5
+#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:165
+#: permissions.py:5 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Classeurs"
 
@@ -61,7 +61,7 @@ msgstr "Ajouter un nouveau niveau"
 
 #: links.py:67 views.py:42
 msgid "Create cabinet"
-msgstr "Créer un classeur"
+msgstr "Nouveau classeur"
 
 #: links.py:73
 msgid "Delete"
@@ -79,11 +79,11 @@ msgstr "Tout"
 msgid "Details"
 msgstr "Détails"
 
-#: methods.py:16
-msgid "Return a list of cabinets containing the document"
-msgstr "Renvoi une liste des classeurs contenant le document"
+#: methods.py:20
+msgid "Return a list of cabinets containing the document."
+msgstr "Renvoie une liste des classeurs contenant le document."
 
-#: methods.py:18
+#: methods.py:22
 msgid "get_cabinets()"
 msgstr "get_cabinets()"
 
@@ -110,7 +110,7 @@ msgstr ""
 
 #: models.py:112
 msgid "Full path"
-msgstr ""
+msgstr "Chemin complet"
 
 #: models.py:145 serializers.py:137
 msgid "Parent and Label"
@@ -159,7 +159,7 @@ msgstr "Type de document"
 
 #: search.py:29
 msgid "Document MIME type"
-msgstr ""
+msgstr "Type de document MIME"
 
 #: search.py:32
 msgid "Document label"
@@ -171,11 +171,11 @@ msgstr "Description du document"
 
 #: search.py:38
 msgid "Document UUID"
-msgstr ""
+msgstr "UUID du document"
 
 #: search.py:42
 msgid "Document checksum"
-msgstr ""
+msgstr "Somme de contrôle du document"
 
 #: serializers.py:17
 msgid "List of children cabinets."
@@ -273,84 +273,84 @@ msgstr "Ce document n'est dans aucun classeur."
 msgid "Cabinets containing document: %s"
 msgstr "Classeurs contenant le document : %s"
 
-#: views.py:221
+#: views.py:223
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document."
 msgstr ""
 
-#: views.py:224
+#: views.py:226
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents."
 msgstr ""
 
-#: views.py:231
+#: views.py:233
 msgid "Add"
 msgstr "Ajouter"
 
-#: views.py:233
+#: views.py:235
 #, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Ajouter le document %(count)d aux armoires"
 msgstr[1] "Ajouter %(count)d documents aux classeurs"
 
-#: views.py:246
+#: views.py:248
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr "Ajouter le document \"%s\" aux classeurs"
 
-#: views.py:257
+#: views.py:259
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Classeurs auxquels les documents sélectionnés seront ajoutés."
 
-#: views.py:286
+#: views.py:288
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr "Le document : %(document)s est déjà dans le classeur : %(cabinet)s."
 
-#: views.py:298
+#: views.py:300
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr ""
 "Le document : %(document)s a été ajouté au classeur : %(cabinet)s avec "
 "succès."
 
-#: views.py:312
+#: views.py:314
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document."
 msgstr ""
 
-#: views.py:315
+#: views.py:317
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents."
 msgstr ""
 
-#: views.py:322
+#: views.py:324
 msgid "Remove"
 msgstr "Retirer"
 
-#: views.py:324
+#: views.py:326
 #, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Retirer le document %(count)d des armoires"
 msgstr[1] "Retirer %(count)d documents des classeurs"
 
-#: views.py:337
+#: views.py:339
 #, python-format
 msgid "Remove document \"%s\" from cabinets"
 msgstr "Retirer le document \"%s\" des classerurs"
 
-#: views.py:348
+#: views.py:350
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Classeurs desquels les documents sélectionnés seront retirés."
 
-#: views.py:376
+#: views.py:378
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr "Le document : %(document)s n'est pas dans le classeur : %(cabinet)s."
 
-#: views.py:388
+#: views.py:390
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Le document : %(document)s a été retiré du classeur : %(cabinet)s."

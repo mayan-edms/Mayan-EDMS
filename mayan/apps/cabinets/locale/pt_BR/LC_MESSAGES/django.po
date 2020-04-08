@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:52-0400\n"
+"POT-Creation-Date: 2020-04-08 01:21-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -23,9 +23,9 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:47 apps.py:108 apps.py:124 apps.py:127 events.py:5 forms.py:14
-#: links.py:22 menus.py:14 models.py:48 models.py:165 permissions.py:5
-#: views.py:164 workflow_actions.py:20
+#: apps.py:48 apps.py:122 apps.py:129 apps.py:134 apps.py:137 events.py:5
+#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:165
+#: permissions.py:5 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Pastas"
 
@@ -77,11 +77,11 @@ msgstr "Todas"
 msgid "Details"
 msgstr "Detalhes"
 
-#: methods.py:16
-msgid "Return a list of cabinets containing the document"
-msgstr "Retorna uma lista das pastas que contém o documento"
+#: methods.py:20
+msgid "Return a list of cabinets containing the document."
+msgstr "Retorna uma lista de pastas que contém o documento."
 
-#: methods.py:18
+#: methods.py:22
 msgid "get_cabinets()"
 msgstr "get_cabinets()"
 
@@ -104,11 +104,11 @@ msgstr "Pasta"
 
 #: models.py:110
 msgid "The path to the cabinet including all ancestors."
-msgstr ""
+msgstr "O caminho para a pasta, incluindo todos os ancestrais."
 
 #: models.py:112
 msgid "Full path"
-msgstr ""
+msgstr "Caminho completo"
 
 #: models.py:145 serializers.py:137
 msgid "Parent and Label"
@@ -157,7 +157,7 @@ msgstr "Tipo de documento"
 
 #: search.py:29
 msgid "Document MIME type"
-msgstr ""
+msgstr "MIME type do documento"
 
 #: search.py:32
 msgid "Document label"
@@ -169,11 +169,11 @@ msgstr "Descrição do documento"
 
 #: search.py:38
 msgid "Document UUID"
-msgstr ""
+msgstr "UUID do documento"
 
 #: search.py:42
 msgid "Document checksum"
-msgstr ""
+msgstr "Checksum do documento"
 
 #: serializers.py:17
 msgid "List of children cabinets."
@@ -271,82 +271,82 @@ msgstr "Este documento não está em nenhuma pasta"
 msgid "Cabinets containing document: %s"
 msgstr "Pasta com documento: %s"
 
-#: views.py:221
+#: views.py:223
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document."
 msgstr "Adicione à pasta a requisição realizada no documento %(count)d."
 
-#: views.py:224
+#: views.py:226
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents."
 msgstr "Adicione à pasta a requisição realizada nos documentos %(count)d."
 
-#: views.py:231
+#: views.py:233
 msgid "Add"
 msgstr "Adicionar"
 
-#: views.py:233
+#: views.py:235
 #, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Adiciona %(count)d documento às pastas"
 msgstr[1] "Adiciona %(count)d documentos às pastas"
 
-#: views.py:246
+#: views.py:248
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr "Adicionar documento \"%s\" à uma pasta"
 
-#: views.py:257
+#: views.py:259
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Pastas às quais os documentos selecionados serão adicionados."
 
-#: views.py:286
+#: views.py:288
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s  já está na pasta: %(cabinet)s ."
 
-#: views.py:298
+#: views.py:300
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr "Documento: %(document)s  adicionado à pasta: %(cabinet)s com sucesso."
 
-#: views.py:312
+#: views.py:314
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document."
 msgstr "Remover da pasta a requisição realizada no documento %(count)d"
 
-#: views.py:315
+#: views.py:317
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents."
 msgstr "Remover da pasta a requisição realizada nos documentos %(count)d"
 
-#: views.py:322
+#: views.py:324
 msgid "Remove"
 msgstr "Remover"
 
-#: views.py:324
+#: views.py:326
 #, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Remove %(count)d documento das pastas"
 msgstr[1] "Remove %(count)d documentos das pastas"
 
-#: views.py:337
+#: views.py:339
 #, python-format
 msgid "Remove document \"%s\" from cabinets"
 msgstr "Remove o documento \"%s\"  das pastas"
 
-#: views.py:348
+#: views.py:350
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Pastas das quais os documentos selecionados serão removidos."
 
-#: views.py:376
+#: views.py:378
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s não está na pasta: %(cabinet)s"
 
-#: views.py:388
+#: views.py:390
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s removido da pasta: %(cabinet)s."

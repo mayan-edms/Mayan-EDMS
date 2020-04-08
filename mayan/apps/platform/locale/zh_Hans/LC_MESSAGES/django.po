@@ -3,12 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# xisafe <root@xisafe.com>, 2020
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:54-0400\n"
+"POT-Creation-Date: 2020-04-08 01:24-0400\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
+"Last-Translator: xisafe <root@xisafe.com>, 2020\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,16 +22,16 @@ msgstr ""
 
 #: apps.py:12
 msgid "Platform"
-msgstr ""
+msgstr "平台"
 
 #: classes.py:126
 msgid "Template for Supervisord."
-msgstr ""
+msgstr "Supervisord的模板"
 
 #: classes.py:182
 msgid "Template for Supervisord inside a Docker image."
-msgstr ""
+msgstr "Docker镜像中的Supervisord模板。"
 
 #: classes.py:190
 msgid "Template showing the queues of a worker."
-msgstr ""
+msgstr "显示工作队列模板。"

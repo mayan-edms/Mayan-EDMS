@@ -218,7 +218,7 @@ class DocumentPageInteractiveTransformation(ExternalObjectMixin, RedirectView):
         url = furl(
             args=query_dict, path=reverse(
                 viewname='documents:document_page_view', kwargs={
-                    'document_page_id': self.kwargs['pk']
+                    'document_page_id': self.external_object.pk
                 }
             )
 

@@ -12,26 +12,13 @@ from mayan.apps.common.generics import (
 )
 from mayan.apps.common.mixins import ExternalContentTypeObjectMixin
 
-from .classes import Layer
 from .forms import LayerTransformationForm, LayerTransformationSelectForm
 from .links import link_transformation_select
 from .models import LayerTransformation, ObjectLayer
 from .transformations import BaseTransformation
+from .view_mixins import LayerViewMixin
 
 logger = logging.getLogger(name=__name__)
-
-
-class LayerViewMixin(object):
-    def dispatch(self, request, *args, **kwargs):
-        self.layer = self.get_layer()
-        return super(LayerViewMixin, self).dispatch(
-            request=request, *args, **kwargs
-        )
-
-    def get_layer(self):
-        return Layer.get(
-            name=self.kwargs['layer_name']
-        )
 
 
 class TransformationCreateView(
@@ -93,7 +80,7 @@ class TransformationCreateView(
         }
 
     def get_external_object_permission(self):
-        return self.layer.permissions.get('create', None)
+        return self.layer.get_permission(action='create')
 
     def get_post_action_redirect(self):
         return reverse(
@@ -143,7 +130,7 @@ class TransformationDeleteView(LayerViewMixin, SingleObjectDeleteView):
         }
 
     def get_object_permission(self):
-        return self.layer.permissions.get('delete', None)
+        return self.layer.get_permission(action='delete')
 
     def get_post_action_redirect(self):
         return reverse(
@@ -192,7 +179,7 @@ class TransformationEditView(LayerViewMixin, SingleObjectEditView):
         }
 
     def get_object_permission(self):
-        return self.layer.permissions.get('edit', None)
+        return self.layer.get_permission(action='edit')
 
     def get_post_action_redirect(self):
         return reverse(
@@ -222,7 +209,7 @@ class TransformationListView(
     }
 
     def get_external_object_permission(self):
-        return self.layer.permissions.get('view', None)
+        return self.layer.get_permission(action='view')
 
     def get_extra_context(self):
         return {
@@ -256,8 +243,12 @@ class TransformationListView(
 
 
 class TransformationSelectView(
-    ExternalContentTypeObjectMixin, LayerViewMixin, FormView
+    LayerViewMixin, ExternalContentTypeObjectMixin, FormView
 ):
+    content_type_url_kw_args = {
+        'app_label': 'app_label',
+        'model_name': 'model_name'
+    }
     form_class = LayerTransformationSelectForm
     template_name = 'appearance/generic_form.html'
 
@@ -306,6 +297,9 @@ class TransformationSelectView(
                     }
                 )
             )
+
+    def get_external_object_permission(self):
+        return self.layer.get_permission(action='select')
 
     def get_extra_context(self):
         return {

@@ -37,6 +37,7 @@ class SourcesApp(MayanAppConfig):
     app_namespace = 'sources'
     app_url = 'sources'
     has_rest_api = True
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.sources'
     verbose_name = _('Sources')

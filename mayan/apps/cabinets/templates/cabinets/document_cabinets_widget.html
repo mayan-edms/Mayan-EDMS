@@ -1,0 +1,5 @@
+<div class="cabinet-display">
+    {% for cabinet in cabinets %}
+        {% include 'cabinets/cabinet_widget.html' with cabinet=cabinet %}
+    {% endfor %}
+</div>

@@ -1,3 +1,29 @@
+3.4.4 (2020-04-08)
+==================
+- Add a custom app static media finder to workaround Django's
+  AppDirectoriesFinder limitation that caused the missing
+  staticfiles manifest entry error.
+- Use tmpfs for gunicorn's heartbeat file under Docker. Closes GitLab issue
+  #754. References: https://pythonspeed.com/articles/gunicorn-in-docker/,
+  https://docs.gunicorn.org/en/latest/settings.html#worker-tmp-dir and
+  https://docs.gunicorn.org/en/latest/faq.html#how-do-i-avoid-gunicorn-excessively-blocking-in-os-fchmod
+
+3.4.3 (2020-04-04)
+==================
+- Fix document page interactive transformation pages.
+- Fix layer transformation selection view.
+- Improve permission checking of the layer transformation
+  selection view.
+- Make document tag widget clickable.
+- Make document cabinet widget clickable.
+- Apply the ``DOCUMENTS_LIST_THUMBNAIL_WIDTH`` setting value to
+  document pages and document version thumbnails too.
+- Send all exception to the log system and let the log system
+  perform the filtering.
+- Improve the design of the 404, 403 and 500 error pages.
+- Update production error log settings. Max bytes from 1024
+  to 65535 and backup from 3 to 5.
+
 3.4.2 (2020-04-02)
 ==================
 - Fix search forms action URLs. Closes GitLab issue #802.

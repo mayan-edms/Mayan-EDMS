@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 02:54-0400\n"
+"POT-Creation-Date: 2020-04-08 01:24-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -35,7 +35,7 @@ msgstr "No aplica"
 
 #: classes.py:138 classes.py:145
 msgid "Null backend"
-msgstr "Backend nulo"
+msgstr "Controlador nulo"
 
 #: events.py:10
 msgid "Quota created"
@@ -47,7 +47,7 @@ msgstr "Cuota editada"
 
 #: forms.py:15 models.py:58
 msgid "Backend"
-msgstr "Backend"
+msgstr "Controlador"
 
 #: forms.py:16
 msgid "The quota driver for this entry."
@@ -139,15 +139,15 @@ msgstr "grupos: %(groups)s, usuarios: %(users)s"
 
 #: models.py:19
 msgid "The dotted Python path to the backend class."
-msgstr "La ruta punteada de Python a la clase backend."
+msgstr "La ruta de Python separada por puntos a la clase del controlador."
 
 #: models.py:20
 msgid "Backend path"
-msgstr "Ruta del backend"
+msgstr "Ruta del controlador"
 
 #: models.py:23
 msgid "Backend data"
-msgstr "Datos del backend"
+msgstr "Datos del controlador"
 
 #: models.py:27
 msgid "Allow quick disable or enable of the quota."

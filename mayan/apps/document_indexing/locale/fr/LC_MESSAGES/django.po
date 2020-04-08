@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 03:08-0400\n"
-"PO-Revision-Date: 2020-04-02 07:08+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-08 01:22-0400\n"
+"PO-Revision-Date: 2020-04-07 14:13+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -223,7 +223,7 @@ msgstr ""
 
 #: models.py:449
 msgid "Full path"
-msgstr ""
+msgstr "Chemin complet"
 
 #: models.py:503
 msgid "Document index node instance"
@@ -283,7 +283,7 @@ msgstr "Type de document"
 
 #: search.py:30
 msgid "Document MIME type"
-msgstr ""
+msgstr "Type de document MIME"
 
 #: search.py:33
 msgid "Document label"
@@ -295,11 +295,11 @@ msgstr "Description du document"
 
 #: search.py:39
 msgid "Document UUID"
-msgstr ""
+msgstr "UUID du document"
 
 #: search.py:43
 msgid "Document checksum"
-msgstr ""
+msgstr "Somme de contrôle du document"
 
 #: views.py:45
 msgid "Available indexes"
