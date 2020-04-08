@@ -7,6 +7,20 @@ Released: April 8, 2020
 Changes
 -------
 
+Common
+^^^^^^
+
+A custom app static media finder was added to work around Django's
+``AppDirectoriesFinder`` limitation that caused the missing staticfiles
+manifest entry error.
+
+
+Docker
+^^^^^^
+
+The Docker entrypoint now checks for the existance of ``/dev/shm`` and if
+found, uses it for gunicorn's heartbeat file.
+
 
 Removals
 --------
@@ -189,8 +203,8 @@ Backward incompatible changes
 Issues closed
 -------------
 
-- :gitlab-issue:`805` [Docker] Search not working in 3.4.1
-- :gitlab-issue:`803` Exception caught by request middleware; <WSGIRequest: GET '/source
 - :gitlab-issue:`754` Feature: Consider gunicorn optimisations for Docker
+- :gitlab-issue:`803` Exception caught by request middleware; <WSGIRequest: GET '/source
+- :gitlab-issue:`805` [Docker] Search not working in 3.4.1
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
