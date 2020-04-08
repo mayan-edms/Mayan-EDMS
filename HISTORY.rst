@@ -3,6 +3,10 @@
 - Add a custom app static media finder to workaround Django's
   AppDirectoriesFinder limitation that caused the missing
   staticfiles manifest entry error.
+- Use tmpfs for gunicorn's heartbeat file under Docker. Closes GitLab issue
+  #754. References: https://pythonspeed.com/articles/gunicorn-in-docker/,
+  https://docs.gunicorn.org/en/latest/settings.html#worker-tmp-dir and
+  https://docs.gunicorn.org/en/latest/faq.html#how-do-i-avoid-gunicorn-excessively-blocking-in-os-fchmod
 
 3.4.3 (2020-04-04)
 ==================
