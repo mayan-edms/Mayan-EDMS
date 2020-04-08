@@ -18,7 +18,7 @@ manifest entry error.
 Docker
 ^^^^^^
 
-The Docker entrypoint now checks for the existance of ``/dev/shm`` and if
+The Docker entrypoint now checks for the existence of ``/dev/shm`` and if
 found, uses it for gunicorn's heartbeat file.
 
 
