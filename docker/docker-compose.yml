@@ -21,6 +21,11 @@ services:
       MAYAN_DOCKER_WAIT: "db:5432 results:6379"
       # Replace with the line below when using RabbitMQ
       # MAYAN_DOCKER_WAIT: "db:5432 results:6379 rabbitmq:5672"
+      # To add operating system packages, like additional OCR language,
+      # packages, put then in the variable below.
+      # MAYAN_APT_INSTALLS: "tesseract-ocr-deu tesseract-ocr-nld"
+      # To add Python libraries, like LDAP, put then in the variable below.
+      # MAYAN_PIP_INSTALLS: "python-ldap"
     image: mayanedms/mayanedms:3
     networks:
       - bridge
@@ -29,6 +34,9 @@ services:
     restart: unless-stopped
     volumes:
       - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
+      # Optional volumes to access external data like staging or watch folders
+      # - /opt/staging_files:/staging_files
+      # - /opt/watch_folder:/watch_folder
 
   db:
     environment:
