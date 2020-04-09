@@ -4,6 +4,10 @@
   signed document using embedded signatures.
 - Add development setting for Docker databases.
 - Add manage target against Docker databases.
+- Use tmpfs for gunicorn's heartbeat file under Docker. Closes GitLab issue
+  #754. References: https://pythonspeed.com/articles/gunicorn-in-docker/,
+  https://docs.gunicorn.org/en/latest/settings.html#worker-tmp-dir and
+  https://docs.gunicorn.org/en/latest/faq.html#how-do-i-avoid-gunicorn-excessively-blocking-in-os-fchmod
 
 3.3.16 (2020-03-17)
 ===================
