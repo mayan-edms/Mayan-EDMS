@@ -211,6 +211,9 @@ Upgrade steps from any previous version of Mayan EDMS
        sudo systemctl start supervisor
 
 
+#. Clear the browser cache to avoid loading old web assets.
+
+
 The upgrade procedure is now complete.
 
 

@@ -341,6 +341,15 @@ base distributions, modify the locale file ``/etc/default/locale``:
     LC_ALL="en_US.UTF-8"
 
 
+User interface
+==============
+
+Error: ``Missing staticfiles manifest entry for ...``
+-----------------------------------------------------
+
+Your browser is attempting to use web asserts in the cache. Clear the
+entire cache of your browser to force it to load the new web assets.
+
 
 Other
 =====
