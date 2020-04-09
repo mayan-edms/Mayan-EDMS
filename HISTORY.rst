@@ -9,6 +9,7 @@
   https://docs.gunicorn.org/en/latest/settings.html#worker-tmp-dir and
   https://docs.gunicorn.org/en/latest/faq.html#how-do-i-avoid-gunicorn-excessively-blocking-in-os-fchmod
 - Update contributed LDAP setting file.
+- Update templates for error 403, 404, 500.
 
 3.3.16 (2020-03-17)
 ===================
