@@ -40,17 +40,12 @@ job_docker_push:
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker pull "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
-    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
     - VERSION_SCRIPT_BIN=contrib/scripts/version.py
-    - MAJOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION major);
-    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$MAJOR_VERSION"
     - MINOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
     - if [ -z MINOR_VERSION ]; then docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION";fi
     - docker logout
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
     - docker push registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
-    - docker push registry-1.docker.io/mayanedms/mayanedms:latest
-    - docker push registry-1.docker.io/mayanedms/mayanedms:"$MAJOR_VERSION"
     - if [ -z MINOR_VERSION ]; then docker push registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION";fi
   only:
     - releases/all
