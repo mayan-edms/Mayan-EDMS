@@ -295,7 +295,7 @@ class PartialNavigation {
          * URL in the location when the app first launches. Registers
          * a callback to send an emulated HTTP_REFERER so that the backends
          * code will still work without change.
-         */c
+         */
         var app = this;
 
         // Load ajax content when the hash changes
