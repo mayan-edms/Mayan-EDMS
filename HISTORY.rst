@@ -1,4 +1,4 @@
-3.3.17 (2020-XX-XX)
+3.3.17 (2020-04-09)
 ===================
 - Removed a possible race condition when returning the signature of just
   signed document using embedded signatures.
