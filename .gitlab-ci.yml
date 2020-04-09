@@ -81,7 +81,7 @@ job_documentation_build:
     - docs
   before_script:
     - apt-get -qq update
-    - apt-get install -qq make enchant make python-dev python-virtualenv python3-dev
+    - apt-get install -qq enchant make python-dev python-virtualenv python3-dev
     - virtualenv venv -p /usr/bin/python3
     - . venv/bin/activate
   script:
