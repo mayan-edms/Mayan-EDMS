@@ -339,6 +339,9 @@ gitlab-release-all:
 
 # Dev server
 
+manage: ## Run a command with the development settings.
+	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development
+
 manage-docker-mysql: ## Run the development server using a Docker PostgreSQL container.
 	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development.docker.db_mysql
 
