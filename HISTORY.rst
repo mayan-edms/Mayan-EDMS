@@ -126,12 +126,29 @@
 - Remove pathlib2 dependency, it is now part of the standard Python library.
 - Remove Django's admindocs app
 
-3.3.17 (2020-XX-XX)
+3.3.17 (2020-04-09)
 ===================
-- [Backport] Removed a possible race condition when returning the signature of just
+- Removed a possible race condition when returning the signature of just
   signed document using embedded signatures.
-- [Backport] Add development setting for Docker databases.
-- [Backport] Add manage target against Docker databases.
+- Add development setting for Docker databases.
+- Add manage target against Docker databases.
+- Use tmpfs for gunicorn's heartbeat file under Docker. Closes GitLab issue
+  #754. References: https://pythonspeed.com/articles/gunicorn-in-docker/,
+  https://docs.gunicorn.org/en/latest/settings.html#worker-tmp-dir and
+  https://docs.gunicorn.org/en/latest/faq.html#how-do-i-avoid-gunicorn-excessively-blocking-in-os-fchmod
+- Update contributed LDAP setting file.
+- Improve the design of the 404, 403 and 500 error pages.
+- Update production error log settings. Max bytes from 1024
+  to 65535 and backup from 3 to 5.
+- Detect if devpi-server is installed before building
+  the Docker image.
+- Add git-core to the Docker image to allow installing
+  development Python libraries.
+- Send all exception to the log system and let the log system
+  perform the filtering.
+- Add development setting for Docker databases.
+- Add manage target against Docker databases.
+- Copy minor improvements to the default Docker Compose file.
 
 3.3.16 (2020-03-17)
 ===================

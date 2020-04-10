@@ -1,47 +1,67 @@
-Version 3.3.16
+Version 3.3.17
 ==============
 
-Released: March 17, 2020
+Released: April 9, 2020
 
 
 Changes
 -------
 
 
-Documentation
-^^^^^^^^^^^^^
+Appearance
+^^^^^^^^^^
 
-Several minor release notes typographical errors were fixed.
-
-
-Dependencies
-^^^^^^^^^^^^
-
-Multiple dependencies were updated following security advisories:
-
-- psutil was updated from version 5.6.3 to 5.7.0 due to CVE-2019-18874
-  (https://nvd.nist.gov/vuln/detail/CVE-2019-18874)
-- python-gnupg was updated from version 0.3.9 to 0.4.5 due to CVE-2019-6690
-  (https://nvd.nist.gov/vuln/detail/CVE-2019-6690)
-- Django was updated from version 1.11.28 to 1.11.29 due to CVE-2020-9402
-  (https://nvd.nist.gov/vuln/detail/CVE-2020-9402)
+The design of the 404, 403 and 500 error pages was improved to be more
+informative and provide some alternatives.
 
 
-Events
+Common
 ^^^^^^
 
-An API permission change for the EventList API view was reverted.
+The production debug log settings were improve. The Max bytes settings was
+incread from 1024 to 65535 and the backup count from 3 to 5.
+
+All exceptions are now sent to the log system and it is up to the log system
+to perform the filtering. This improves the information provided by the error
+logger when searching for the root of an issue.
 
 
-OCR
-^^^
+Development
+^^^^^^^^^^^
 
-The code and data inside the OCR transaction was reduced. The creation
-of a file cache entry was also removed from the database transaction.
-This is an attempted fix GitLab issues #782 and #735.
+The Docker build target now detects if devpi-server is installed.
 
-The OCR model property entry was corrected. It was listed as
-``document.content`` instead of ``document.ocr_content``.
+A new set of development settings and make file targets were added to
+allow easier execution of the test suit against different databases.
+
+
+Document signatures
+^^^^^^^^^^^^^^^^^^^
+
+A possible race condition was removed when returning the signature document
+version signed using an embedded signature.
+
+
+Docker
+^^^^^^
+
+The Docker image was updated to have gunicorn use the ``/dev/shm`` device for
+the heartbeat file if it is available. References:
+https://pythonspeed.com/articles/gunicorn-in-docker/,
+https://docs.gunicorn.org/en/latest/settings.html#worker-tmp-dir and
+https://docs.gunicorn.org/en/latest/faq.html#how-do-i-avoid-gunicorn-excessively-blocking-in-os-fchmod
+
+The package ``git-core`` was added to the Docker image to allow installing
+Python libraries from development locations.
+
+Some minor improvements to the default Docker Compose file were copied from the
+3.4 series.
+
+
+Other
+^^^^^
+
+Update contributed LDAP setting file.
 
 
 Removals
@@ -138,7 +158,7 @@ Upgrade steps from any previous version of Mayan EDMS
 
    .. code-block:: bash
 
-    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.16
+    sudo -u mayan |MAYAN_PIP_BIN| install mayan-edms==3.3.17
 
    the requirements will also be updated automatically.
 
@@ -226,7 +246,7 @@ Backward incompatible changes
 Issues closed
 -------------
 
-- :gitlab-issue:`794` Auth for API Calls
+- None
 
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
