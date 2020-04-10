@@ -9,6 +9,7 @@ from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.document_indexing.tests.mixins import IndexTestMixin
+from mayan.apps.storage.utils import fs_cleanup
 
 from ..filesystems import IndexFilesystem
 
@@ -62,6 +63,25 @@ class IndexFilesystemTestCase(
                     TEST_NODE_EXPRESSION, self.test_document.label
                 )
             )
+
+    def test_document_empty(self):
+        self._create_test_index()
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
+            expression=TEST_NODE_EXPRESSION, link_documents=True
+        )
+        index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
+
+        self._upload_test_document()
+        fs_cleanup(filename=self.test_document.latest_version.file.file.name)
+
+        self.assertEqual(
+            index_filesystem.getattr(
+                path='/{}/{}'.format(
+                    TEST_NODE_EXPRESSION, self.test_document.label
+                )
+            )['st_size'], 0
+        )
 
     def test_document_open(self):
         self._create_test_index()

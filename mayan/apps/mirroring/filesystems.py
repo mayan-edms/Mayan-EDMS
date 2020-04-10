@@ -234,12 +234,12 @@ class IndexFilesystem(Operations):
         # Must be 2 for directories and at least 1 for files
         # https://www.gnu.org/software/libc/manual/html_node/Attribute-Meanings.html
         if isinstance(result, IndexInstanceNode):
-            return {
+            function_result = {
                 'st_mode': (S_IFDIR | DIRECTORY_MODE), 'st_ctime': now,
                 'st_mtime': now, 'st_atime': now, 'st_nlink': 2
             }
         else:
-            return {
+            function_result = {
                 'st_mode': (S_IFREG | FILE_MODE),
                 'st_ctime': (
                     result.date_added.replace(tzinfo=None) - result.date_added.utcoffset() - datetime.datetime(1970, 1, 1)
@@ -248,9 +248,12 @@ class IndexFilesystem(Operations):
                     result.latest_version.timestamp.replace(tzinfo=None) - result.latest_version.timestamp.utcoffset() - datetime.datetime(1970, 1, 1)
                 ).total_seconds(),
                 'st_atime': now,
-                'st_size': result.size,
+                'st_size': result.size or 0,
                 'st_nlink': 1
             }
+
+        logger.debug('function_result: %s', function_result)
+        return function_result
 
     def open(self, path, flags):
         result = self._path_to_node(path=path, directory_only=False)
