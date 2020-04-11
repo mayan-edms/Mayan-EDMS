@@ -3,7 +3,9 @@
 - Make sure FUSE's getattr.st_size always return a 0 and not None when the
   document is invalid. Close GitLab issue #797. Thanks to telsch (@telsch)
   for the report and debug information.
-
+- Add the Un series Korean TrueType fonts (fonts-unfonts-core) to the Docker
+  image.
+  
 3.4.4 (2020-04-08)
 ==================
 - Add a custom app static media finder to workaround Django's

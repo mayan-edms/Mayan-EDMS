@@ -28,6 +28,7 @@ apt-get update \
     exiftool \
     fonts-arphic-uming \
     fonts-arphic-ukai \
+    fonts-unfonts-core \
     ghostscript \
     git-core \
     gpgv \
