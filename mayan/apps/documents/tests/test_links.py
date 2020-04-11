@@ -6,10 +6,13 @@ from ..links.document_version_links import (
     link_document_version_download, link_document_version_revert
 )
 from ..links.trashed_document_links import link_document_restore
+from ..links.document_version_page_links import (
+    link_document_page_disable, link_document_page_enable
+)
 from ..models import DeletedDocument
 from ..permissions import (
-    permission_document_download, permission_document_restore,
-    permission_document_version_revert
+    permission_document_download, permission_document_edit,
+    permission_document_restore, permission_document_version_revert
 )
 
 from .base import GenericDocumentViewTestCase
@@ -80,6 +83,46 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
             reverse(
                 viewname=link_document_version_download.view,
                 args=(self.test_document.latest_version.pk,)
+            )
+        )
+
+
+class DocumentPageLinkTestCase(GenericDocumentViewTestCase):
+    def test_document_page_disable_link_with_permission(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_edit
+        )
+
+        self.add_test_view(test_object=self.test_document_page)
+        context = self.get_test_view()
+        resolved_link = link_document_page_disable.resolve(context=context)
+
+        self.assertNotEqual(resolved_link, None)
+        self.assertEqual(
+            resolved_link.url,
+            reverse(
+                viewname=link_document_page_disable.view,
+                kwargs={'document_page_id': self.test_document_page.pk}
+            )
+        )
+
+    def test_document_page_enable_link_with_permission(self):
+        self.test_document_page.enabled = False
+        self.test_document_page.save()
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_edit
+        )
+
+        self.add_test_view(test_object=self.test_document_page)
+        context = self.get_test_view()
+        resolved_link = link_document_page_enable.resolve(context=context)
+
+        self.assertNotEqual(resolved_link, None)
+        self.assertEqual(
+            resolved_link.url,
+            reverse(
+                viewname=link_document_page_enable.view,
+                kwargs={'document_page_id': self.test_document_page.pk}
             )
         )
 

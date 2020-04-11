@@ -5,7 +5,9 @@
   for the report and debug information.
 - Add the Un series Korean TrueType fonts (fonts-unfonts-core) to the Docker
   image.
-  
+- Fix the document page disable and enable links. Close GitLab issue #809.
+  Thanks to Kalloritis (@Kalloritis) for the report and research.
+
 3.4.4 (2020-04-08)
 ==================
 - Add a custom app static media finder to workaround Django's
