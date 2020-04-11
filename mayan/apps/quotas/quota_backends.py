@@ -85,18 +85,19 @@ class DocumentCountQuota(
                 )
 
                 if not users.filter(pk=user.pk).exists():
+                    # User is not in the restricted list of users and groups
                     return 0
+                else:
+                    content_type = ContentType.objects.get_for_model(
+                        model=get_user_model()
+                    )
 
-            content_type = ContentType.objects.get_for_model(
-                model=get_user_model()
-            )
-
-            action_filter_kwargs.update(
-                {
-                    'actor_object_id': user.pk,
-                    'actor_content_type': content_type,
-                }
-            )
+                    action_filter_kwargs.update(
+                        {
+                            'actor_object_id': user.pk,
+                            'actor_content_type': content_type,
+                        }
+                    )
 
         action_queryset = action_queryset.filter(**action_filter_kwargs)
 
