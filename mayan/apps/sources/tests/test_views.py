@@ -222,6 +222,38 @@ class DocumentVersionUploadViewTestCase(
             self.test_document.versions.count(), version_count + 1
         )
 
+    def test_document_version_upload_no_source_view_no_permission(self):
+        version_count = self.test_document.versions.count()
+
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            response = self._request_document_version_upload_no_source_view(
+                source_file=file_object
+            )
+
+        self.assertEqual(response.status_code, 403)
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.versions.count(), version_count
+        )
+
+    def test_document_version_upload_no_source_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_new_version
+        )
+        version_count = self.test_document.versions.count()
+
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            response = self._request_document_version_upload_no_source_view(
+                source_file=file_object
+            )
+
+        self.assertEqual(response.status_code, 302)
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.versions.count(), version_count + 1
+        )
+
 
 class SourcesViewTestCase(
     SourceTestMixin, SourceViewTestMixin, GenericViewTestCase
