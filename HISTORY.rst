@@ -13,6 +13,8 @@
 - Standardize the icon for returning to the document from child views.
 - Make sure the return to document is always the first icon to be shown
   for proper UX flow.
+- Fix a typo in the resolved smart link URL parameter.
+- Improve resolved smart link access filtering.
 
 3.4.4 (2020-04-08)
 ==================

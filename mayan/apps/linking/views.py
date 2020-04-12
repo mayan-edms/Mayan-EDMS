@@ -80,24 +80,13 @@ class DocumentTypeSmartLinksView(AddRemoveView):
         }
 
 
-class ResolvedSmartLinkView(DocumentListView):
+class ResolvedSmartLinkView(ExternalObjectMixin, DocumentListView):
+    external_object_class = Document
+    external_object_permission = permission_document_view
+    external_object_pk_url_kwarg = 'document_id'
+
     def dispatch(self, request, *args, **kwargs):
-        self.document = get_object_or_404(
-            klass=Document, pk=self.kwargs['document_id']
-        )
-        self.smart_link = get_object_or_404(
-            klass=SmartLink, pk=self.kwargs['smart_link_id']
-        )
-
-        AccessControlList.objects.check_access(
-            obj=self.document, permissions=(permission_document_view,),
-            user=request.user
-        )
-
-        AccessControlList.objects.check_access(
-            obj=self.smart_link, permissions=(permission_smart_link_view,),
-            user=request.user
-        )
+        self.smart_link = self.get_smart_link()
 
         return super(
             ResolvedSmartLinkView, self
@@ -105,10 +94,14 @@ class ResolvedSmartLinkView(DocumentListView):
 
     def get_document_queryset(self):
         try:
-            queryset = self.smart_link.get_linked_document_for(self.document)
+            queryset = self.smart_link.get_linked_document_for(
+                document=self.external_object
+            )
         except Exception as exception:
             queryset = Document.objects.none()
 
+            # Check if the user has the smart link edit permission before
+            # showing the exception text.
             try:
                 AccessControlList.objects.check_access(
                     obj=self.smart_link,
@@ -116,7 +109,7 @@ class ResolvedSmartLinkView(DocumentListView):
                     user=self.request.user
                 )
             except PermissionDenied:
-                pass
+                """User doesn't have the required permission."""
             else:
                 messages.error(
                     message=_('Smart link query error: %s' % exception),
@@ -126,7 +119,9 @@ class ResolvedSmartLinkView(DocumentListView):
         return queryset
 
     def get_extra_context(self):
-        dynamic_label = self.smart_link.get_dynamic_label(self.document)
+        dynamic_label = self.smart_link.get_dynamic_label(
+            document=self.external_object
+        )
         if dynamic_label:
             title = _('Documents in smart link: %s') % dynamic_label
         else:
@@ -134,18 +129,29 @@ class ResolvedSmartLinkView(DocumentListView):
                 'Documents in smart link "%(smart_link)s" as related to '
                 '"%(document)s"'
             ) % {
-                'document': self.document,
+                'document': self.external_object,
                 'smart_link': self.smart_link.label,
             }
 
         context = super(ResolvedSmartLinkView, self).get_extra_context()
         context.update(
             {
-                'object': self.document,
+                'object': self.external_object,
                 'title': title,
             }
         )
         return context
+
+    def get_smart_link(self):
+        queryset = AccessControlList.objects.restrict_queryset(
+            permission=permission_smart_link_view,
+            queryset=SmartLink.objects.filter(enabled=True),
+            user=self.request.user
+        )
+
+        return get_object_or_404(
+            klass=queryset, pk=self.kwargs['smart_link_id']
+        )
 
 
 class SmartLinkDocumentTypesView(AddRemoveView):

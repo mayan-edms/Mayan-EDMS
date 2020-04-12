@@ -51,6 +51,14 @@ class SmartLinkConditionViewTestMixin(object):
 
 
 class SmartLinkDocumentViewTestMixin(object):
+    def _request_test_document_resolved_smart_link_view(self):
+        return self.get(
+            viewname='linking:smart_link_instance_view', kwargs={
+                'document_id': self.test_document.pk,
+                'smart_link_id': self.test_smart_link.pk
+            }
+        )
+
     def _request_test_smart_link_document_instances_view(self):
         return self.get(
             viewname='linking:smart_link_instances_for_document', kwargs={
@@ -82,6 +90,7 @@ class SmartLinkTestMixin(object):
                 dynamic_label=TEST_SMART_LINK_DYNAMIC_LABEL
             )
         )
+        self.test_smart_link = self.test_smart_links[0]
         if add_test_document_type:
             self.test_smart_links[0].document_types.add(
                 self.test_document_type
