@@ -2,7 +2,9 @@ from django.test import override_settings
 
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.permissions import permission_document_create
+from mayan.apps.documents.permissions import (
+    permission_document_create, permission_document_new_version
+)
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import (
     TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
@@ -19,8 +21,9 @@ from ..permissions import (
 
 from .literals import TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 from .mixins import (
-    DocumentUploadWizardViewTestMixin, StagingFolderTestMixin,
-    StagingFolderViewTestMixin, SourceTestMixin, SourceViewTestMixin
+    DocumentUploadWizardViewTestMixin, DocumentVersionUploadViewTestMixin,
+    StagingFolderTestMixin, StagingFolderViewTestMixin, SourceTestMixin,
+    SourceViewTestMixin
 )
 
 
@@ -181,6 +184,43 @@ class DocumentUploadIssueTestCase(GenericDocumentViewTestCase):
         # Fetch document again and test description
         self.test_document = Document.objects.first()
         self.assertEqual(self.test_document.description, TEST_DOCUMENT_DESCRIPTION)
+
+
+class DocumentVersionUploadViewTestCase(
+    DocumentVersionUploadViewTestMixin, SourceTestMixin,
+    GenericDocumentViewTestCase
+):
+    def test_document_version_upload_view_no_permission(self):
+        version_count = self.test_document.versions.count()
+
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            response = self._request_document_version_upload_view(
+                source_file=file_object
+            )
+
+        self.assertEqual(response.status_code, 403)
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.versions.count(), version_count
+        )
+
+    def test_document_version_upload_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_new_version
+        )
+        version_count = self.test_document.versions.count()
+
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            response = self._request_document_version_upload_view(
+                source_file=file_object
+            )
+
+        self.assertEqual(response.status_code, 302)
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.versions.count(), version_count + 1
+        )
 
 
 class SourcesViewTestCase(

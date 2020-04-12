@@ -9,6 +9,7 @@
   Thanks to Kalloritis (@Kalloritis) for the report and research.
 - Fix a specific scenario with the document count limit quota backend where
   a user might still be able to upload a new document past the quota limit.
+- Fix typo in the document version upload URL pattern.
 
 3.4.4 (2020-04-08)
 ==================

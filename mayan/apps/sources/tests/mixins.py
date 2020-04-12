@@ -14,6 +14,16 @@ from .literals import (
 )
 
 
+class DocumentVersionUploadViewTestMixin(object):
+    def _request_document_version_upload_view(self, source_file):
+        return self.post(
+            viewname='sources:document_version_upload', kwargs={
+                'document_id': self.test_document.pk,
+                'source_id': self.test_source.pk,
+            }, data={'source-file': source_file}
+        )
+
+
 class DocumentUploadWizardViewTestMixin(object):
     def _request_upload_wizard_view(self, document_path=TEST_SMALL_DOCUMENT_PATH):
         with open(document_path, mode='rb') as file_object:

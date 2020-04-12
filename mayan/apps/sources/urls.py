@@ -35,7 +35,7 @@ urlpatterns = [
         view=UploadInteractiveView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_pk>\d+)/versions/upload/interactive/(?P<source_id>\d+)/$',
+        regex=r'^documents/(?P<document_id>\d+)/versions/upload/interactive/(?P<source_id>\d+)/$',
         name='document_version_upload',
         view=DocumentVersionUploadInteractiveView.as_view()
     ),
