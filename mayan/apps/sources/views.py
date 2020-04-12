@@ -397,7 +397,9 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
                 )
             )
 
-        self.tab_links = UploadBaseView.get_active_tab_links(self.document)
+        self.tab_links = UploadBaseView.get_active_tab_links(
+            document=self.document
+        )
 
         return super(
             DocumentVersionUploadInteractiveView, self
