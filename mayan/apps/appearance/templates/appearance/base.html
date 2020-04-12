@@ -6,6 +6,8 @@
 {% load navigation_tags %}
 {% load smart_settings_tags %}
 
+{% spaceless %}
+
 <script>
     if (typeof partialNavigation === 'undefined') {
         /* Check if the template was not loaded via AJAX
@@ -174,3 +176,4 @@
     document.title = document.title.replace(/&(?:[a-z\d]+|#\d+|#x[a-f\d]+);/ig, '');
     afterBaseLoad();
 </script>
+{% endspaceless %}
