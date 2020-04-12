@@ -103,9 +103,14 @@ Ensure you run the RabbitMQ container with the ``--hostname`` option when
 starting, ensuring RabbitMQ uses a static folder name every time it starts,
 such as:
 
-``docker run -d --name mayan-rabbitmq --hostname mayan-rabbitmq --restart=always...``
+.. code-block:: console
 
-For Docker Compose::
+    docker run -d --name mayan-rabbitmq --hostname mayan-rabbitmq --restart=always...
+
+
+For Docker Compose:
+
+.. code-block:: docker
 
     rabbitmq:
         container_name: mayan-edms-rabbitmq
@@ -133,7 +138,9 @@ This is caused by a change from kernel 4.18 - 4.19. Metacopy on these kernels
 is set to yes in archlinux kernels (/sys/module/overlay/parameters/metacopy)
 and overlayfs should override this which it does not at the moment.
 
-The workaround is to disable metacopy::
+The workaround is to disable metacopy:
+
+.. code-block:: console
 
     echo N | sudo tee /sys/module/overlay/parameters/metacopy
 
@@ -154,7 +161,9 @@ and that ``no_auth_nlm`` is set in ``/etc/exports`` on the NFS Server.
 NFSv4 has locking built in so does not require rcp.statd, but may require ``no_auth_nlm`` set on the NFS Server.
 
 A workaround if the issue persists after applying the above is to deploy Mayan with a NFS $MAYAN_MEDIA_ROOT with
-a local-only volume for $MAYAN_MEDIA_ROOT/static. An example volume section inside docker-compose::
+a local-only volume for $MAYAN_MEDIA_ROOT/static. An example volume section inside docker-compose:
+
+.. code-block:: docker
 
     volumes:
     # $MAYAN_MEDIA_ROOT can be mounted to nfs and shared between nodes. Change /mnt/mayan-shared
@@ -197,7 +206,9 @@ Passwords
 Admin password reset
 --------------------
 
-To reset the password of the admin account use the following command::
+To reset the password of the admin account use the following command:
+
+.. code-block:: console
 
     MAYAN_MEDIA_ROOT=<your Mayan media root setting> <installation directory>/bin/mayan-edms.py changepassword admin
 
@@ -206,20 +217,28 @@ If you followed the deploying instructions from the documentation your
 
 If using a Docker image, execute the command inside the container. First you
 need to know the name of the Docker container running Mayan EDMS on your setup
-with::
+with:
+
+.. code-block:: console
 
     docker ps
 
-Then execute the password reset command inside the Docker container::
+Then execute the password reset command inside the Docker container:
+
+.. code-block:: console
 
     docker exec -ti <your docker container name> |MAYAN_BIN| changepassword admin
 
 Another way to do this is to execute a shell inside the container to get a
-command prompt::
+command prompt:
+
+.. code-block:: console
 
     docker exec -ti <your docker container name> /bin/bash
 
-And then execute the command::
+And then execute the command:
+
+.. code-block:: console
 
     |MAYAN_BIN| changepassword admin
 
@@ -232,7 +251,9 @@ Missing automatic admin account after installation
 This is caused when the ``initialsetup`` command is interrupted as the admin
 user is created outside of the database migrations.
 
-To create an admin super user account manually use the command::
+To create an admin super user account manually use the command:
+
+.. code-block:: console
 
     MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| |MAYAN_BIN| createsuperuser
 
@@ -240,20 +261,28 @@ If you followed the deploying instructions from the documentation your
 ``MAYAN_MEDIA_ROOT`` will be ``|MAYAN_MEDIA_ROOT|``.
 
 If using a Docker image, execute the command inside the container. First
-find you container name with::
+find you container name with:
+
+.. code-block:: console
 
     docker ps
 
-Then execute the command inside the container::
+Then execute the command inside the container:
+
+.. code-block:: console
 
     docker exec -ti <your docker container name> |MAYAN_BIN| createsuperuser
 
 Another way to do this is to execute a shell inside the container to get a
-command prompt::
+command prompt:
+
+.. code-block:: console
 
     docker exec -ti <your docker container name> /bin/bash
 
-And then execute the command::
+And then execute the command:
+
+.. code-block:: console
 
     |MAYAN_BIN| createsuperuser
 
@@ -264,15 +293,21 @@ Python
 How to upgrade an existing Python 2 virtualenv
 ----------------------------------------------
 
-Use::
+Use:
+
+.. code-block:: console
 
     virtualenv <existing directory> -p <Python 3 binary path>
 
-If you followed the deployment instructions, the command line would be::
+If you followed the deployment instructions, the command line would be:
+
+.. code-block:: console
 
     virtualenv /opt/mayan-edms -p /usr/bin/python3
 
-If using a dedicated user account for Mayan EDMS::
+If using a dedicated user account for Mayan EDMS:
+
+.. code-block:: console
 
     sudo -u mayan virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
 
@@ -311,17 +346,49 @@ This happens when using the ``MAYAN_APT_INSTALLS`` feature. It means that the
 Solution: Include ``gcc`` in the list of packages specified with ``MAYAN_APT_INSTALLS``.
 
 
+
+OCR
+===
+
+OCR is not working for my specific language
+-------------------------------------------
+
+Not all Tesseract OCR language files are included to avoid increasing
+the size of the Docker image.
+
+To see which languages are supported, use the command:
+
+.. code-block:: console
+
+    apt-cache search tesseract-ocr
+
+and install the language file with (German in this example):
+
+.. code-block:: console
+
+    apt-get install tesseract-ocr-deu
+
+If using the Docker image, pass the environment variable ``MAYAN_APT_INSTALLS``
+with the corresponding Tesseract language option. Example:
+
+.. code-block:: console
+
+    -e MAYAN_APT_INSTALLS='tesseract-ocr-deu'
+
+
 Static files
 ============
 
 Mayan EDMS installed correctly and works, but static files are not served
 -------------------------------------------------------------------------
 
-Django's development server doesn't serve static files unless the DEBUG option
-is set to True, this mode of operation should only be used for development or
-testing. For production deployments the management command::
+Django's development server doesn't serve static files unless the ``DEBUG``
+option is set to ``True``, this mode of operation should only be used for
+development or testing. For production deployments the management command:
 
-    $ mayan-edms.py preparestatic
+.. code-block:: console
+
+    mayan-edms.py preparestatic
 
 should be used and the resulting static folder served from a webserver.
 For more information check the
@@ -336,6 +403,8 @@ Error: ``UnicodeEncodeError: 'ascii' codec can't encode characters in position .
 
 The operating system locale must support the Unicode character set. For Debian
 based distributions, modify the locale file ``/etc/default/locale``:
+
+.. code-block:: console
 
     LANG="en_US.UTF-8"
     LC_ALL="en_US.UTF-8"
@@ -357,9 +426,12 @@ Other
 File system links not showing when serving content with ``Samba``
 -----------------------------------------------------------------
 
-Disable unix extensions in the [global] section and enable wide links for the file serving share
+Disable unix extensions in the [global] section and enable wide links for
+the file serving share.
 
-Example::
+Example:
+
+.. code-block:: ini
 
     [global]
         unix extensions = no
@@ -372,6 +444,7 @@ Example::
         read only = yes
         wide links = yes
         follow symlinks = yes
+
 
 
 Reference:
