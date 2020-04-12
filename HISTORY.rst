@@ -11,8 +11,9 @@
   a user might still be able to upload a new document past the quota limit.
 - Fix typo in the document version upload URL pattern.
 - Standardize the icon for returning to the document from child views.
-- Make sure the return to document is always the first icon to be shown
-  for proper UX flow.
+- Move the links to return to the document from the page list, version detail
+  and page image, from the facet menu to the secondary menu for proper UX
+  flow.
 - Fix a typo in the resolved smart link URL parameter.
 - Improve resolved smart link access filtering.
 
