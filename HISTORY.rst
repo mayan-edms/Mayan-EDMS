@@ -11,6 +11,8 @@
   a user might still be able to upload a new document past the quota limit.
 - Fix typo in the document version upload URL pattern.
 - Standardize the icon for returning to the document from child views.
+- Make sure the return to document is always the first icon to be shown
+  for proper UX flow.
 
 3.4.4 (2020-04-08)
 ==================

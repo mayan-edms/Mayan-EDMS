@@ -536,7 +536,11 @@ class DocumentsApp(MayanAppConfig):
             ), sources=('documents:document_page_view',)
         )
         menu_facet.bind_links(
-            links=(link_document_page_return, link_document_page_view),
+            links=(link_document_page_return,), position=-1,
+            sources=(DocumentPage,)
+        )
+        menu_facet.bind_links(
+            links=(link_document_page_view,),
             sources=(DocumentPage,)
         )
         menu_facet.bind_links(
@@ -563,10 +567,12 @@ class DocumentsApp(MayanAppConfig):
 
         # Document versions
         menu_facet.bind_links(
-            links=(
-                link_document_version_return_document,
-                link_document_version_return_list
-            ), sources=(DocumentVersion,)
+            links=(link_document_version_return_document,), position=-1,
+            sources=(DocumentVersion,)
+        )
+        menu_facet.bind_links(
+            links=(link_document_version_return_list,),
+            sources=(DocumentVersion,)
         )
         menu_list_facet.bind_links(
             links=(link_document_version_view,), sources=(DocumentVersion,)
