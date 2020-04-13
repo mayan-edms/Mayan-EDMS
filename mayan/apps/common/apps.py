@@ -46,6 +46,7 @@ class MayanAppConfig(apps.AppConfig):
         logger.debug('Initializing app: %s', self.name)
         from mayan.urls import urlpatterns as mayan_urlpatterns
 
+
         if self.app_url:
             top_url = '{}/'.format(self.app_url)
         elif self.app_url is not None:
@@ -58,7 +59,11 @@ class MayanAppConfig(apps.AppConfig):
                 dotted_path='{}.urls.urlpatterns'.format(self.name)
             )
         except ImportError as exception:
-            if force_text(exception) not in ('No module named urls', 'No module named \'{}.urls\''.format(self.name)):
+            non_critical_error_list = (
+                'No module named urls',
+                'No module named \'{}.urls\''.format(self.name),
+            )
+            if force_text(exception) not in non_critical_error_list:
                 logger.exception(
                     'Import time error when running AppConfig.ready() of app '
                     '"%s".', self.name
