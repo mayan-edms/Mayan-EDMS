@@ -4,7 +4,7 @@
 # base_image - Bare bones image with the base packages needed to run Mayan EDMS
 ####
 
-FROM debian:10.0-slim as base_image
+FROM debian:10.3-slim as base_image
 
 LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 

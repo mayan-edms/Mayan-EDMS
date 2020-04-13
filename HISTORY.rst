@@ -17,6 +17,7 @@
 - Fix a typo in the resolved smart link URL parameter.
 - Improve resolved smart link access filtering.
 - Allow apps without an urlpatterns entry.
+- Update the Docker image to use Debian 10.3.
 
 3.4.4 (2020-04-08)
 ==================
