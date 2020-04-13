@@ -18,6 +18,7 @@
 - Improve resolved smart link access filtering.
 - Allow apps without an urlpatterns entry.
 - Update the Docker image to use Debian 10.3.
+- Update the quota app to work with more deployment types.
 
 3.4.4 (2020-04-08)
 ==================

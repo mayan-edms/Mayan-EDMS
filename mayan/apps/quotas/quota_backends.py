@@ -114,7 +114,7 @@ class DocumentCountQuota(
         if not kwargs['instance'].pk:
             if self._get_user_document_count(user=kwargs.get('user')) >= self._allowed():
                 raise QuotaExceeded(
-                    _('Document size quota exceeded.')
+                    _('Document count quota exceeded.')
                 )
 
 

@@ -9,6 +9,7 @@ from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from .exceptions import QuotaExceeded
+from .handlers import handler_process_quota_signal
 
 logger = logging.getLogger(name=__name__)
 
@@ -72,6 +73,14 @@ class QuotaBackend(
                         'Error importing %s quota_backends.py file; %s',
                         app.name, exception
                     )
+
+        for backend in QuotaBackend.get_all():
+            if backend.signal:
+                backend.signal.connect(
+                    dispatch_uid='quotas_handler_process_signal',
+                    receiver=handler_process_quota_signal,
+                    sender=backend.sender
+                )
 
     @classmethod
     def get(cls, name):

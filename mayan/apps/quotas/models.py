@@ -8,7 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from .classes import NullBackend
 from .events import event_quota_created, event_quota_edited
-from .handlers import handler_process_signal
 
 logger = logging.getLogger(__name__)
 
@@ -50,8 +49,6 @@ class Quota(models.Model):
                     actor=_user, target=self
                 )
 
-        self.update_receiver()
-
     def backend_label(self):
         return self.get_backend_instance().label
     backend_label.help_text = _('Driver used for this quota entry.')
@@ -64,9 +61,6 @@ class Quota(models.Model):
     def backend_usage(self):
         return self.get_backend_instance().usage()
     backend_usage.short_description = _('Usage')
-
-    def dispatch_uid(self):
-        return 'quote_{}'.format(self.pk)
 
     def dumps(self, data):
         self.backend_data = json.dumps(obj=data)
@@ -93,23 +87,3 @@ class Quota(models.Model):
 
     def loads(self):
         return json.loads(s=self.backend_data)
-
-    def update_receiver(self):
-        backend_instance = self.get_backend_instance()
-
-        if backend_instance.signal:
-            if self.enabled:
-                backend_instance.signal.disconnect(
-                    dispatch_uid=self.dispatch_uid(),
-                    sender=backend_instance.sender
-                )
-                backend_instance.signal.connect(
-                    handler_process_signal,
-                    dispatch_uid=self.dispatch_uid(),
-                    sender=backend_instance.sender
-                )
-            else:
-                backend_instance.signal.disconnect(
-                    dispatch_uid=self.dispatch_uid(),
-                    sender=backend_instance.sender
-                )
