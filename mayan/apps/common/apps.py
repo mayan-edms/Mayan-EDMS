@@ -62,6 +62,7 @@ class MayanAppConfig(apps.AppConfig):
             non_critical_error_list = (
                 'No module named urls',
                 'No module named \'{}.urls\''.format(self.name),
+                'Module "{}.urls" does not define a "urlpatterns" attribute/class'.format(self.name),
             )
             if force_text(exception) not in non_critical_error_list:
                 logger.exception(
