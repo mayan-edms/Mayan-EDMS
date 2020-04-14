@@ -32,7 +32,7 @@
     {% endif %}
 
     {% if no_results_secondary_links %}
-        <div class="container-btn-secondary">
+        <div class="btn-list container-btn-secondary">
             {% for link in no_results_secondary_links %}
                 {% with 'btn btn-default btn-sm' as link_classes %}
                     {% include 'navigation/generic_subnavigation.html' %}
