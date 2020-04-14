@@ -75,8 +75,15 @@ class SourceLogListView(ExternalObjectMixin, SingleObjectListView):
 
 
 class UploadBaseView(MultiFormView):
-    template_name = 'appearance/generic_form.html'
     prefixes = {'source_form': 'source', 'document_form': 'document'}
+    template_name = 'appearance/generic_form.html'
+
+    @staticmethod
+    def get_active_tab_links(document=None):
+        return [
+            UploadBaseView.get_tab_link_for_source(source, document)
+            for source in InteractiveSource.objects.filter(enabled=True).select_subclasses()
+        ]
 
     @staticmethod
     def get_tab_link_for_source(source, document=None):
@@ -95,13 +102,6 @@ class UploadBaseView(MultiFormView):
             text=source.label,
             view=view,
         )
-
-    @staticmethod
-    def get_active_tab_links(document=None):
-        return [
-            UploadBaseView.get_tab_link_for_source(source, document)
-            for source in InteractiveSource.objects.filter(enabled=True).select_subclasses()
-        ]
 
     def dispatch(self, request, *args, **kwargs):
         if 'source_id' in kwargs:
@@ -201,6 +201,28 @@ class UploadBaseView(MultiFormView):
 
 
 class UploadInteractiveView(UploadBaseView):
+    def create_source_form_form(self, **kwargs):
+        if hasattr(self.source, 'uncompress'):
+            show_expand = self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK
+        else:
+            show_expand = False
+
+        return self.get_form_classes()['source_form'](
+            prefix=kwargs['prefix'],
+            source=self.source,
+            show_expand=show_expand,
+            data=kwargs.get('data', None),
+            files=kwargs.get('files', None),
+        )
+
+    def create_document_form_form(self, **kwargs):
+        return self.get_form_classes()['document_form'](
+            prefix=kwargs['prefix'],
+            document_type=self.document_type,
+            data=kwargs.get('data', None),
+            files=kwargs.get('files', None),
+        )
+
     def dispatch(self, request, *args, **kwargs):
         self.subtemplates_list = []
 
@@ -307,42 +329,6 @@ class UploadInteractiveView(UploadBaseView):
             ),
         )
 
-    def create_source_form_form(self, **kwargs):
-        if hasattr(self.source, 'uncompress'):
-            show_expand = self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK
-        else:
-            show_expand = False
-
-        return self.get_form_classes()['source_form'](
-            prefix=kwargs['prefix'],
-            source=self.source,
-            show_expand=show_expand,
-            data=kwargs.get('data', None),
-            files=kwargs.get('files', None),
-        )
-
-    def create_document_form_form(self, **kwargs):
-        return self.get_form_classes()['document_form'](
-            prefix=kwargs['prefix'],
-            document_type=self.document_type,
-            data=kwargs.get('data', None),
-            files=kwargs.get('files', None),
-        )
-
-    def get_form_classes(self):
-        source_form_class = get_upload_form_class(
-            source_type_name=self.source.source_type
-        )
-
-        # Override source form class to enable the HTML5 file uploader
-        if source_form_class == WebFormUploadForm:
-            source_form_class = WebFormUploadFormHTML5
-
-        return {
-            'document_form': NewDocumentForm,
-            'source_form': source_form_class
-        }
-
     def get_context_data(self, **kwargs):
         context = super(UploadInteractiveView, self).get_context_data(**kwargs)
         context['title'] = _(
@@ -366,8 +352,31 @@ class UploadInteractiveView(UploadBaseView):
             )
         return context
 
+    def get_form_classes(self):
+        source_form_class = get_upload_form_class(
+            source_type_name=self.source.source_type
+        )
+
+        # Override source form class to enable the HTML5 file uploader
+        if source_form_class == WebFormUploadForm:
+            source_form_class = WebFormUploadFormHTML5
+
+        return {
+            'document_form': NewDocumentForm,
+            'source_form': source_form_class
+        }
+
 
 class DocumentVersionUploadInteractiveView(UploadBaseView):
+    def create_source_form_form(self, **kwargs):
+        return self.get_form_classes()['source_form'](
+            prefix=kwargs['prefix'],
+            source=self.source,
+            show_expand=False,
+            data=kwargs.get('data', None),
+            files=kwargs.get('files', None),
+        )
+
     def dispatch(self, request, *args, **kwargs):
         self.subtemplates_list = []
 
@@ -449,29 +458,6 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
             )
         )
 
-    def create_source_form_form(self, **kwargs):
-        return self.get_form_classes()['source_form'](
-            prefix=kwargs['prefix'],
-            source=self.source,
-            show_expand=False,
-            data=kwargs.get('data', None),
-            files=kwargs.get('files', None),
-        )
-
-    def get_form_classes(self):
-        source_form_class = get_upload_form_class(
-            source_type_name=self.source.source_type
-        )
-
-        # Override source form class to enable the HTML5 file uploader
-        if source_form_class == WebFormUploadForm:
-            source_form_class = WebFormUploadFormHTML5
-
-        return {
-            'document_form': NewVersionForm,
-            'source_form': source_form_class
-        }
-
     def get_context_data(self, **kwargs):
         context = super(
             DocumentVersionUploadInteractiveView, self
@@ -492,6 +478,20 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
         )
 
         return context
+
+    def get_form_classes(self):
+        source_form_class = get_upload_form_class(
+            source_type_name=self.source.source_type
+        )
+
+        # Override source form class to enable the HTML5 file uploader
+        if source_form_class == WebFormUploadForm:
+            source_form_class = WebFormUploadFormHTML5
+
+        return {
+            'document_form': NewVersionForm,
+            'source_form': source_form_class
+        }
 
 
 class StagingFileDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
@@ -554,11 +554,6 @@ class SetupSourceCreateView(SingleObjectCreateView):
     )
     view_permission = permission_sources_setup_create
 
-    def get_form_class(self):
-        return get_form_class(
-            source_type_name=self.kwargs['source_type_name']
-        )
-
     def get_extra_context(self):
         return {
             'object': self.kwargs['source_type_name'],
@@ -569,6 +564,11 @@ class SetupSourceCreateView(SingleObjectCreateView):
             ).class_fullname(),
         }
 
+    def get_form_class(self):
+        return get_form_class(
+            source_type_name=self.kwargs['source_type_name']
+        )
+
 
 class SetupSourceDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
     external_object_queryset = Source.objects.select_subclasses()
@@ -578,14 +578,14 @@ class SetupSourceDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
         viewname='sources:setup_source_list'
     )
 
-    def get_form_class(self):
-        return get_form_class(source_type_name=self.get_object().source_type)
-
     def get_extra_context(self):
         return {
             'object': self.get_object(),
             'title': _('Delete the source: %s?') % self.get_object(),
         }
+
+    def get_form_class(self):
+        return get_form_class(source_type_name=self.get_object().source_type)
 
     def get_object(self):
         return self.external_object
@@ -600,14 +600,14 @@ class SetupSourceEditView(ExternalObjectMixin, SingleObjectEditView):
     )
     view_permission = permission_sources_setup_edit
 
-    def get_form_class(self):
-        return get_form_class(source_type_name=self.get_object().source_type)
-
     def get_extra_context(self):
         return {
             'object': self.get_object(),
             'title': _('Edit source: %s') % self.get_object(),
         }
+
+    def get_form_class(self):
+        return get_form_class(source_type_name=self.get_object().source_type)
 
     def get_object(self):
         return self.external_object
