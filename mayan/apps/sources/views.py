@@ -650,4 +650,3 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
             'document_form': NewVersionForm,
             'source_form': source_form_class
         }
-

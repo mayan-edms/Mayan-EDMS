@@ -46,7 +46,6 @@ class MayanAppConfig(apps.AppConfig):
         logger.debug('Initializing app: %s', self.name)
         from mayan.urls import urlpatterns as mayan_urlpatterns
 
-
         if self.app_url:
             top_url = '{}/'.format(self.app_url)
         elif self.app_url is not None:
