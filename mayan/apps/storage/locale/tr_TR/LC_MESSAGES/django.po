@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:24-0400\n"
+"POT-Creation-Date: 2020-04-14 04:30-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:10 settings.py:7
+#: apps.py:11 settings.py:7
 msgid "Storage"
 msgstr "Depolama"
 

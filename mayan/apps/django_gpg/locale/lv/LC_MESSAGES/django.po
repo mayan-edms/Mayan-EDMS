@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:22-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"POT-Creation-Date: 2020-04-14 04:28-0400\n"
+"PO-Revision-Date: 2020-04-14 08:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -49,6 +49,10 @@ msgstr "Garums"
 #: apps.py:73 forms.py:17 models.py:51
 msgid "User ID"
 msgstr "Lietotāja ID"
+
+#: dependencies.py:10
+msgid "GNU privacy guard - a PGP implementation."
+msgstr ""
 
 #: forms.py:26
 msgid "None"

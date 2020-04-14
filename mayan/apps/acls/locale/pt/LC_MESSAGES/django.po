@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:21-0400\n"
-"PO-Revision-Date: 2020-04-06 13:25+0000\n"
+"POT-Creation-Date: 2020-04-14 04:27-0400\n"
+"PO-Revision-Date: 2020-04-08 16:43+0000\n"
 "Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -137,25 +137,25 @@ msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr ""
+msgstr "ACL significa Access Control List (Lista de controlo de acesso) e é um método preciso de controlar o acesso de utilizadores a objetos no sistema. As ACLs permitem atribuir uma permissão a uma função mas para um objeto ou conjunto de objetos especifico."
 
 #: views.py:143
 #, python-format
 msgid "Access control lists for: %s"
-msgstr ""
+msgstr "Listas de controlo de acesso para: \"%s\""
 
 #: views.py:157
 msgid "Granted permissions"
-msgstr ""
+msgstr "Permissões atribuídas"
 
 #: views.py:158
 msgid "Available permissions"
-msgstr ""
+msgstr "Permissões disponíveis"
 
 #: views.py:202
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
-msgstr ""
+msgstr "Permissões da função \"%(role)s\" para \"%(object)s\""
 
 #: views.py:211
 msgid ""
@@ -163,24 +163,24 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr ""
+msgstr "Permissões desativadas são herdadas de um objeto pai ou atribuídas diretamente à função e não podem ser removidas. Permissões herdadas têm que ser removidas da ACL do objeto pai ou da função associada ao mesmo via o meno Definições."
 
 #: workflow_actions.py:23
 msgid "Object type"
-msgstr ""
+msgstr "Tipo de Objeto"
 
 #: workflow_actions.py:26
 msgid "Type of the object for which the access will be modified."
-msgstr ""
+msgstr "Tipo de objeto para qual o acesso será modificado."
 
 #: workflow_actions.py:32
 msgid "Object ID"
-msgstr ""
+msgstr "ID do Objeto"
 
 #: workflow_actions.py:35
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
-msgstr ""
+msgstr "Identificador numérico do objeto para qual o acesso será modificado."
 
 #: workflow_actions.py:40 workflow_actions.py:155
 msgid "Roles"
@@ -188,25 +188,25 @@ msgstr "Funções"
 
 #: workflow_actions.py:42 workflow_actions.py:157
 msgid "Roles whose access will be modified."
-msgstr ""
+msgstr "Funções das quais o acesso será modificado."
 
 #: workflow_actions.py:49 workflow_actions.py:164
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr ""
+msgstr "Permissões para atribuir/revogar à/da função para o objeto selecionado acima. "
 
 #: workflow_actions.py:57
 msgid "Grant object access"
-msgstr ""
+msgstr "Atribuír acesso ao objeto"
 
 #: workflow_actions.py:140
 msgid "Revoke object access"
-msgstr ""
+msgstr "Revogar acesso ao objeto"
 
 #: workflow_actions.py:172
 msgid "Grant document access"
-msgstr ""
+msgstr "Atribuir acesso ao documento"
 
 #: workflow_actions.py:211
 msgid "Revoke document access"
-msgstr ""
+msgstr "Revogar acesso ao documento"

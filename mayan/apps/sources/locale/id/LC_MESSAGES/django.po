@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:24-0400\n"
+"POT-Creation-Date: 2020-04-14 04:30-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
-#: views.py:650
+#: views.py:191
 msgid "Sources"
 msgstr ""
 
@@ -76,7 +76,7 @@ msgstr "Kembangkan berkas-berkas terkompresi"
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr ""
 
-#: forms.py:63 views.py:503
+#: forms.py:63 views.py:225
 msgid "Staging file"
 msgstr ""
 
@@ -654,88 +654,7 @@ msgstr ""
 msgid "Server responded with {{statusCode}} code."
 msgstr ""
 
-#: views.py:65
-msgid ""
-"Any error produced during the usage of a source will be listed here to "
-"assist in debugging."
-msgstr ""
-
 #: views.py:68
-msgid "No log entries available"
-msgstr ""
-
-#: views.py:70
-#, python-format
-msgid "Log entries for source: %s"
-msgstr ""
-
-#: views.py:120 wizards.py:152
-msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr ""
-
-#: views.py:148 views.py:177 views.py:187
-msgid "Document properties"
-msgstr ""
-
-#: views.py:157
-msgid ""
-"This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
-msgstr ""
-
-#: views.py:164
-msgid "No staging files available"
-msgstr ""
-
-#: views.py:167
-msgid "Files in staging path"
-msgstr ""
-
-#: views.py:178
-msgid "Scan"
-msgstr ""
-
-#: views.py:286
-#, python-format
-msgid "Error executing document upload task; %(exception)s"
-msgstr ""
-
-#: views.py:296
-msgid "New document queued for upload and will be available shortly."
-msgstr ""
-
-#: views.py:349
-#, python-format
-msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr ""
-
-#: views.py:388
-#, python-format
-msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
-msgstr ""
-
-#: views.py:437
-msgid "New document version queued for upload and will be available shortly."
-msgstr ""
-
-#: views.py:479
-#, python-format
-msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
-msgstr ""
-
-#: views.py:482
-msgid "Submit"
-msgstr ""
-
-#: views.py:504
-#, python-format
-msgid "Delete staging file \"%s\"?"
-msgstr ""
-
-#: views.py:527
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -743,31 +662,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:533
+#: views.py:74
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr ""
 
-#: views.py:545
+#: views.py:86
 msgid "Source check queued."
 msgstr ""
 
-#: views.py:564
+#: views.py:100
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Membuat sumber baru dengan jenis: %s"
 
-#: views.py:585
+#: views.py:123
 #, python-format
 msgid "Delete the source: %s?"
 msgstr ""
 
-#: views.py:607
+#: views.py:145
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:644
+#: views.py:185
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -775,8 +694,89 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:649
+#: views.py:190
 msgid "No sources available"
+msgstr ""
+
+#: views.py:205
+msgid ""
+"Any error produced during the usage of a source will be listed here to "
+"assist in debugging."
+msgstr ""
+
+#: views.py:208
+msgid "No log entries available"
+msgstr ""
+
+#: views.py:210
+#, python-format
+msgid "Log entries for source: %s"
+msgstr ""
+
+#: views.py:226
+#, python-format
+msgid "Delete staging file \"%s\"?"
+msgstr ""
+
+#: views.py:278 wizards.py:152
+msgid ""
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr ""
+
+#: views.py:306 views.py:335 views.py:345
+msgid "Document properties"
+msgstr ""
+
+#: views.py:315
+msgid ""
+"This could mean that the staging folder is empty. It could also mean that "
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
+msgstr ""
+
+#: views.py:322
+msgid "No staging files available"
+msgstr ""
+
+#: views.py:325
+msgid "Files in staging path"
+msgstr ""
+
+#: views.py:336
+msgid "Scan"
+msgstr ""
+
+#: views.py:466
+#, python-format
+msgid "Error executing document upload task; %(exception)s"
+msgstr ""
+
+#: views.py:476
+msgid "New document queued for upload and will be available shortly."
+msgstr ""
+
+#: views.py:493
+#, python-format
+msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
+msgstr ""
+
+#: views.py:555
+#, python-format
+msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+msgstr ""
+
+#: views.py:606
+msgid "New document version queued for upload and will be available shortly."
+msgstr ""
+
+#: views.py:625
+#, python-format
+msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgstr ""
+
+#: views.py:628
+msgid "Submit"
 msgstr ""
 
 #: wizards.py:95

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:24-0400\n"
-"PO-Revision-Date: 2020-04-06 13:21+0000\n"
+"POT-Creation-Date: 2020-04-14 04:30-0400\n"
+"PO-Revision-Date: 2020-04-08 16:36+0000\n"
 "Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -157,11 +157,11 @@ msgstr ""
 
 #: views.py:107
 msgid "Available permissions"
-msgstr ""
+msgstr "Permissões disponíveis"
 
 #: views.py:108
 msgid "Granted permissions"
-msgstr ""
+msgstr "Permissões atribuídas"
 
 #: views.py:143
 msgid ""

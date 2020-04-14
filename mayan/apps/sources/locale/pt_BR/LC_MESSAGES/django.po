@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:24-0400\n"
+"POT-Creation-Date: 2020-04-14 04:30-0400\n"
 "PO-Revision-Date: 2020-03-28 12:45+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
-#: views.py:650
+#: views.py:191
 msgid "Sources"
 msgstr "Fontes"
 
@@ -80,7 +80,7 @@ msgstr "Expandir arquivos compactados"
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr "Carrega os arquivos contidos em um arquivo compactado como documentos individuais."
 
-#: forms.py:63 views.py:503
+#: forms.py:63 views.py:225
 msgid "Staging file"
 msgstr "Arquivo temporário"
 
@@ -658,88 +658,7 @@ msgstr "Limpar"
 msgid "Server responded with {{statusCode}} code."
 msgstr "O servidor responder com o código {{statusCode}}."
 
-#: views.py:65
-msgid ""
-"Any error produced during the usage of a source will be listed here to "
-"assist in debugging."
-msgstr "Qualquer erro produzido durante o uso de uma fonte será listado aqui para auxiliar no debugging."
-
 #: views.py:68
-msgid "No log entries available"
-msgstr "Não há entradas de log disponíveis"
-
-#: views.py:70
-#, python-format
-msgid "Log entries for source: %s"
-msgstr "Registrar entradas para fonte: %s"
-
-#: views.py:120 wizards.py:152
-msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Nenhuma fonte interativa de documentos fora definida ou nenhum foi ativada. Criar uma antes de prosseguir."
-
-#: views.py:148 views.py:177 views.py:187
-msgid "Document properties"
-msgstr "Propriedades do documento"
-
-#: views.py:157
-msgid ""
-"This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
-msgstr "Isso pode significar que a pasta temporária está vazia. Também pode significar que o usuário do sistema operacional usado para o Mayan EDMS nao possui permissões nesta pasta."
-
-#: views.py:164
-msgid "No staging files available"
-msgstr "Não há arquivos temporários disponíveis."
-
-#: views.py:167
-msgid "Files in staging path"
-msgstr "Os arquivos no caminho de arquivos temporários"
-
-#: views.py:178
-msgid "Scan"
-msgstr "Escanear"
-
-#: views.py:286
-#, python-format
-msgid "Error executing document upload task; %(exception)s"
-msgstr "Erro ao executar a tarefa de upload de documentos; %(exception)s"
-
-#: views.py:296
-msgid "New document queued for upload and will be available shortly."
-msgstr "O novo documento enfileirado para upload estará disponível em breve."
-
-#: views.py:349
-#, python-format
-msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr "Carregue um documento do tipo \"%(document_type)s\" da fonte: %(source)s"
-
-#: views.py:388
-#, python-format
-msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
-msgstr "Não foi possível fazer o upload de novas versões para o documento \"%(document)s\". %(exception)s"
-
-#: views.py:437
-msgid "New document version queued for upload and will be available shortly."
-msgstr "Nova versão do documento enfileirada para upload e estará disponível em breve."
-
-#: views.py:479
-#, python-format
-msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
-msgstr "Carregue uma nova versão do documento \"%(document)s\" da fonte: %(source)s"
-
-#: views.py:482
-msgid "Submit"
-msgstr "Enviar"
-
-#: views.py:504
-#, python-format
-msgid "Delete staging file \"%s\"?"
-msgstr "Excluir o arquivo temporário \"%s\"?"
-
-#: views.py:527
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -747,31 +666,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr "Isso irá executar o código de verificação de fonte mesmo se a fonte não estiver habilitada. Fontes que excluem conteúdo após o download não o farão enquanto são testadas. Verifique o log de erros da fonte para informações durante o teste. Um teste bem sucedido irá limpar o log de erros."
 
-#: views.py:533
+#: views.py:74
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Verificar a origem \"%s\"?"
 
-#: views.py:545
+#: views.py:86
 msgid "Source check queued."
 msgstr "Verificação de fonte enfileirada"
 
-#: views.py:564
+#: views.py:100
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Criar nova fonte do tipo: %s"
 
-#: views.py:585
+#: views.py:123
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Apagar a fonte: %s?"
 
-#: views.py:607
+#: views.py:145
 #, python-format
 msgid "Edit source: %s"
 msgstr "Editar fonte: %s"
 
-#: views.py:644
+#: views.py:185
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -779,9 +698,90 @@ msgid ""
 "intervention."
 msgstr "Fontes são meios de carregar documentos. Algumas fontes como o webform são interativas e demandam entradas do usuário para funcionar. Outras, como a fonte em e-mail, são automáticas e são executadas sem intervenção do usuário."
 
-#: views.py:649
+#: views.py:190
 msgid "No sources available"
 msgstr "Não há fontes disponíveis"
+
+#: views.py:205
+msgid ""
+"Any error produced during the usage of a source will be listed here to "
+"assist in debugging."
+msgstr "Qualquer erro produzido durante o uso de uma fonte será listado aqui para auxiliar no debugging."
+
+#: views.py:208
+msgid "No log entries available"
+msgstr "Não há entradas de log disponíveis"
+
+#: views.py:210
+#, python-format
+msgid "Log entries for source: %s"
+msgstr "Registrar entradas para fonte: %s"
+
+#: views.py:226
+#, python-format
+msgid "Delete staging file \"%s\"?"
+msgstr "Excluir o arquivo temporário \"%s\"?"
+
+#: views.py:278 wizards.py:152
+msgid ""
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Nenhuma fonte interativa de documentos fora definida ou nenhum foi ativada. Criar uma antes de prosseguir."
+
+#: views.py:306 views.py:335 views.py:345
+msgid "Document properties"
+msgstr "Propriedades do documento"
+
+#: views.py:315
+msgid ""
+"This could mean that the staging folder is empty. It could also mean that "
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
+msgstr "Isso pode significar que a pasta temporária está vazia. Também pode significar que o usuário do sistema operacional usado para o Mayan EDMS nao possui permissões nesta pasta."
+
+#: views.py:322
+msgid "No staging files available"
+msgstr "Não há arquivos temporários disponíveis."
+
+#: views.py:325
+msgid "Files in staging path"
+msgstr "Os arquivos no caminho de arquivos temporários"
+
+#: views.py:336
+msgid "Scan"
+msgstr "Escanear"
+
+#: views.py:466
+#, python-format
+msgid "Error executing document upload task; %(exception)s"
+msgstr "Erro ao executar a tarefa de upload de documentos; %(exception)s"
+
+#: views.py:476
+msgid "New document queued for upload and will be available shortly."
+msgstr "O novo documento enfileirado para upload estará disponível em breve."
+
+#: views.py:493
+#, python-format
+msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
+msgstr "Carregue um documento do tipo \"%(document_type)s\" da fonte: %(source)s"
+
+#: views.py:555
+#, python-format
+msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+msgstr "Não foi possível fazer o upload de novas versões para o documento \"%(document)s\". %(exception)s"
+
+#: views.py:606
+msgid "New document version queued for upload and will be available shortly."
+msgstr "Nova versão do documento enfileirada para upload e estará disponível em breve."
+
+#: views.py:625
+#, python-format
+msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgstr "Carregue uma nova versão do documento \"%(document)s\" da fonte: %(source)s"
+
+#: views.py:628
+msgid "Submit"
+msgstr "Enviar"
 
 #: wizards.py:95
 msgid "Select document type"

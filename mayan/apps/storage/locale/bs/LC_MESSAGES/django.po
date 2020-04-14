@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:24-0400\n"
+"POT-Creation-Date: 2020-04-14 04:30-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:10 settings.py:7
+#: apps.py:11 settings.py:7
 msgid "Storage"
 msgstr "Skladište"
 

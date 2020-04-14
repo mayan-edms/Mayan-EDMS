@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:21-0400\n"
+"POT-Creation-Date: 2020-04-14 04:27-0400\n"
 "PO-Revision-Date: 2020-04-08 04:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -236,21 +236,21 @@ msgid ""
 "            "
 msgstr "\nGeben Sie den Tipp weiter. Erzählen Sie Ihren Freunden und Kollegen, wie toll %(project_title)s ist!"
 
-#: templates/appearance/base.html:36 templates/appearance/base.html:60
+#: templates/appearance/base.html:38 templates/appearance/base.html:62
 msgid "Warning"
 msgstr "Warnung"
 
-#: templates/appearance/base.html:50
+#: templates/appearance/base.html:52
 msgid "Click here to fix this."
 msgstr "Klicken Sie hier, um dies zu beheben."
 
-#: templates/appearance/base.html:60
+#: templates/appearance/base.html:62
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr "Einstellungen aktualisiert, starten Sie Ihre Installation neu und aktualisieren Sie Ihren Browser, damit die Änderungen wirksam werden."
 
-#: templates/appearance/base.html:68
+#: templates/appearance/base.html:70
 #, python-format
 msgid ""
 "\n"
@@ -258,16 +258,16 @@ msgid ""
 "                                    "
 msgstr ""
 
-#: templates/appearance/base.html:71
+#: templates/appearance/base.html:73
 msgid "Click here when finished"
 msgstr ""
 
-#: templates/appearance/base.html:85
+#: templates/appearance/base.html:87
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Aktionen"
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:89
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"

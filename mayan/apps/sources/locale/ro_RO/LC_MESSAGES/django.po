@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:24-0400\n"
+"POT-Creation-Date: 2020-04-14 04:30-0400\n"
 "PO-Revision-Date: 2020-03-28 21:20+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
-#: views.py:650
+#: views.py:191
 msgid "Sources"
 msgstr "Surse"
 
@@ -78,7 +78,7 @@ msgstr "Dezarhivare fișiere comprimate"
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr "Încărcați fișierele conținute ale unui fișier comprimat ca documente individuale."
 
-#: forms.py:63 views.py:503
+#: forms.py:63 views.py:225
 msgid "Staging file"
 msgstr "Structura fisier"
 
@@ -656,88 +656,7 @@ msgstr "Golire"
 msgid "Server responded with {{statusCode}} code."
 msgstr "Serverul a răspuns cu codul {{statusCode}}."
 
-#: views.py:65
-msgid ""
-"Any error produced during the usage of a source will be listed here to "
-"assist in debugging."
-msgstr "Orice eroare produsă în timpul utilizării unei surse va fi listată aici pentru a ajuta la depanare."
-
 #: views.py:68
-msgid "No log entries available"
-msgstr "Nu sunt disponibile înregistrări din jurnal"
-
-#: views.py:70
-#, python-format
-msgid "Log entries for source: %s"
-msgstr "Înregistrări de intrări pentru sursă: %s"
-
-#: views.py:120 wizards.py:152
-msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Nu s-au definit surse de documente interactive sau nici una nu a fost activată, creați una înainte de a continua."
-
-#: views.py:148 views.py:177 views.py:187
-msgid "Document properties"
-msgstr "Proprietățile documentului"
-
-#: views.py:157
-msgid ""
-"This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
-msgstr "Aceasta ar putea însemna că folderul tampon este gol. Poate însemna, de asemenea, că contul de utilizator al sistemului de operare utilizat pentru Mayn EDMS nu are permisiunile necesare în sistemul de fișiere pentru folder."
-
-#: views.py:164
-msgid "No staging files available"
-msgstr "Nu sunt disponibile fișiere intermediare"
-
-#: views.py:167
-msgid "Files in staging path"
-msgstr "Fișiere în calea de așteptare"
-
-#: views.py:178
-msgid "Scan"
-msgstr "Scanează"
-
-#: views.py:286
-#, python-format
-msgid "Error executing document upload task; %(exception)s"
-msgstr "Eroare la executarea sarcinii de încărcare a documentelor; %(exception)s"
-
-#: views.py:296
-msgid "New document queued for upload and will be available shortly."
-msgstr "Documentul cel nou este în coada de așteptare pentru încărcare și va fi disponibil în scurt timp."
-
-#: views.py:349
-#, python-format
-msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr "Încărcați un document de tipul \"%(document_type)s\" din sursa: %(source)s"
-
-#: views.py:388
-#, python-format
-msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
-msgstr "Nu se pot încărca versiuni noi pentru documentul \"%(document)s\". %(exception)s"
-
-#: views.py:437
-msgid "New document version queued for upload and will be available shortly."
-msgstr "Versiunea nouă a documentului este în coada de așteptare pentru încărcare și va fi disponibilă în scurt timp."
-
-#: views.py:479
-#, python-format
-msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
-msgstr "Încărcați o nouă versiune pentru documentul \"%(document)s\"; din sursa: %(source)s"
-
-#: views.py:482
-msgid "Submit"
-msgstr "Trimiteţi"
-
-#: views.py:504
-#, python-format
-msgid "Delete staging file \"%s\"?"
-msgstr "Ștergeți fișierul de așteptare \"%s\"?"
-
-#: views.py:527
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -745,31 +664,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr "Aceasta va executa codul de verificare sursă, chiar dacă sursa nu este activată. Sursele care șterg conținutul după descărcare nu vor face acest lucru în timp ce sunt testate. Verificați jurnalul de erori al sursei pentru informații în timpul testelor. Un test cu succes va elimina jurnalul de erori."
 
-#: views.py:533
+#: views.py:74
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Declanșați verificarea pentru sursa \"%s\"?"
 
-#: views.py:545
+#: views.py:86
 msgid "Source check queued."
 msgstr "Verificarea sursei a fost pusă în coada de așteptare"
 
-#: views.py:564
+#: views.py:100
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Creați o nouă sursă de tipul:% s"
 
-#: views.py:585
+#: views.py:123
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Ștergeți sursa: %s?"
 
-#: views.py:607
+#: views.py:145
 #, python-format
 msgid "Edit source: %s"
 msgstr "Editați sursa: %s"
 
-#: views.py:644
+#: views.py:185
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -777,9 +696,90 @@ msgid ""
 "intervention."
 msgstr "Sursele oferă mijloacele de încărcare a documentelor. Unele surse, cum ar fi formularul web, sunt interactive și necesită introducerea manuală de la utilizatori pentru a funcționa. Altele, precum sursele de e-mail, sunt automate și rulează în fundal. fără intervenția utilizatorului."
 
-#: views.py:649
+#: views.py:190
 msgid "No sources available"
 msgstr "Nu există surse disponibile"
+
+#: views.py:205
+msgid ""
+"Any error produced during the usage of a source will be listed here to "
+"assist in debugging."
+msgstr "Orice eroare produsă în timpul utilizării unei surse va fi listată aici pentru a ajuta la depanare."
+
+#: views.py:208
+msgid "No log entries available"
+msgstr "Nu sunt disponibile înregistrări din jurnal"
+
+#: views.py:210
+#, python-format
+msgid "Log entries for source: %s"
+msgstr "Înregistrări de intrări pentru sursă: %s"
+
+#: views.py:226
+#, python-format
+msgid "Delete staging file \"%s\"?"
+msgstr "Ștergeți fișierul de așteptare \"%s\"?"
+
+#: views.py:278 wizards.py:152
+msgid ""
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Nu s-au definit surse de documente interactive sau nici una nu a fost activată, creați una înainte de a continua."
+
+#: views.py:306 views.py:335 views.py:345
+msgid "Document properties"
+msgstr "Proprietățile documentului"
+
+#: views.py:315
+msgid ""
+"This could mean that the staging folder is empty. It could also mean that "
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
+msgstr "Aceasta ar putea însemna că folderul tampon este gol. Poate însemna, de asemenea, că contul de utilizator al sistemului de operare utilizat pentru Mayn EDMS nu are permisiunile necesare în sistemul de fișiere pentru folder."
+
+#: views.py:322
+msgid "No staging files available"
+msgstr "Nu sunt disponibile fișiere intermediare"
+
+#: views.py:325
+msgid "Files in staging path"
+msgstr "Fișiere în calea de așteptare"
+
+#: views.py:336
+msgid "Scan"
+msgstr "Scanează"
+
+#: views.py:466
+#, python-format
+msgid "Error executing document upload task; %(exception)s"
+msgstr "Eroare la executarea sarcinii de încărcare a documentelor; %(exception)s"
+
+#: views.py:476
+msgid "New document queued for upload and will be available shortly."
+msgstr "Documentul cel nou este în coada de așteptare pentru încărcare și va fi disponibil în scurt timp."
+
+#: views.py:493
+#, python-format
+msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
+msgstr "Încărcați un document de tipul \"%(document_type)s\" din sursa: %(source)s"
+
+#: views.py:555
+#, python-format
+msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+msgstr "Nu se pot încărca versiuni noi pentru documentul \"%(document)s\". %(exception)s"
+
+#: views.py:606
+msgid "New document version queued for upload and will be available shortly."
+msgstr "Versiunea nouă a documentului este în coada de așteptare pentru încărcare și va fi disponibilă în scurt timp."
+
+#: views.py:625
+#, python-format
+msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgstr "Încărcați o nouă versiune pentru documentul \"%(document)s\"; din sursa: %(source)s"
+
+#: views.py:628
+msgid "Submit"
+msgstr "Trimiteţi"
 
 #: wizards.py:95
 msgid "Select document type"

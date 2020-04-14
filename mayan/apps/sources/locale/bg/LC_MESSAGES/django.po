@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:24-0400\n"
+"POT-Creation-Date: 2020-04-14 04:30-0400\n"
 "PO-Revision-Date: 2020-03-28 14:09+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
-#: views.py:650
+#: views.py:191
 msgid "Sources"
 msgstr "Източници"
 
@@ -77,7 +77,7 @@ msgstr "Разархивиране на компресирани файлове"
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr "Качване съдържанието на  компресиран файл като отделни документи."
 
-#: forms.py:63 views.py:503
+#: forms.py:63 views.py:225
 msgid "Staging file"
 msgstr "Изходен файл"
 
@@ -655,88 +655,7 @@ msgstr "Изчистване"
 msgid "Server responded with {{statusCode}} code."
 msgstr "Сървърът отговори с {{statusCode}} код."
 
-#: views.py:65
-msgid ""
-"Any error produced during the usage of a source will be listed here to "
-"assist in debugging."
-msgstr "Всяка грешка, възникнала по време на използването на източник, ще бъде посочена тук, за да помогне при отстраняване на грешки."
-
 #: views.py:68
-msgid "No log entries available"
-msgstr "Няма налични записи в дневника"
-
-#: views.py:70
-#, python-format
-msgid "Log entries for source: %s"
-msgstr "Записи в дневника за източник: %s"
-
-#: views.py:120 wizards.py:152
-msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Не са дефинирани интерактивни източници на документи или никой не е активиран, създайте такъв преди да продължите."
-
-#: views.py:148 views.py:177 views.py:187
-msgid "Document properties"
-msgstr "Свойства на документа"
-
-#: views.py:157
-msgid ""
-"This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
-msgstr "Това може да означава, че папката за поставяне е празна. Това също може да означава, че потребителският акаунт на операционната система, използвана за Mayan EDMS няма необходимите разрешения във файлова система за папката."
-
-#: views.py:164
-msgid "No staging files available"
-msgstr "Няма налични изходни файлове"
-
-#: views.py:167
-msgid "Files in staging path"
-msgstr "Файлове в изходната пътека"
-
-#: views.py:178
-msgid "Scan"
-msgstr "Сканиране"
-
-#: views.py:286
-#, python-format
-msgid "Error executing document upload task; %(exception)s"
-msgstr "Грешка при изпълнение на задача за качване на документи; %(exception)s"
-
-#: views.py:296
-msgid "New document queued for upload and will be available shortly."
-msgstr "Нов документ е на опашка за качване и ще бъде наличен скоро."
-
-#: views.py:349
-#, python-format
-msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr "Качете документ от тип &quot;%(document_type)s&quot; от източник: %(source)s"
-
-#: views.py:388
-#, python-format
-msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
-msgstr "Не може да се качат нови версии за документ &quot;%(document)s&quot;. %(exception)s"
-
-#: views.py:437
-msgid "New document version queued for upload and will be available shortly."
-msgstr "Нова версия на документа е на опашка за качване и ще бъде налична скоро."
-
-#: views.py:479
-#, python-format
-msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
-msgstr "Качете нова версия за документ &quot;%(document)s&quot; от източник: %(source)s"
-
-#: views.py:482
-msgid "Submit"
-msgstr "Подаване"
-
-#: views.py:504
-#, python-format
-msgid "Delete staging file \"%s\"?"
-msgstr "Да се изтрие ли изходния файл &quot;%s&quot;?"
-
-#: views.py:527
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -744,31 +663,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr "Това ще изпълни контролния код за източник, дори ако източникът не е активиран. Източниците, които изтриват съдържание след изтеглянето, няма да го правят, докато се тестват. Проверете дневника за грешки на източника за информация по време на тестване. Успешен тест ще изчисти дневника на грешките."
 
-#: views.py:533
+#: views.py:74
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Започнете проверка за източник &quot;%s&quot;?"
 
-#: views.py:545
+#: views.py:86
 msgid "Source check queued."
 msgstr "Проверката на източника е поставена на опашка."
 
-#: views.py:564
+#: views.py:100
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Създайте нов източник от тип: %s"
 
-#: views.py:585
+#: views.py:123
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Да се изтрие източникът: %s?"
 
-#: views.py:607
+#: views.py:145
 #, python-format
 msgid "Edit source: %s"
 msgstr "Редактиране на източник: %s"
 
-#: views.py:644
+#: views.py:185
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -776,9 +695,90 @@ msgid ""
 "intervention."
 msgstr "Източниците осигуряват средства за качване на документи. Някои източници като уеб формуляра са интерактивни и изискват потребителско въвеждане за да работят. Други като източниците на имейл са автоматични и се изпълняват на заден план без намеса на потребителя."
 
-#: views.py:649
+#: views.py:190
 msgid "No sources available"
 msgstr "Няма налични източници"
+
+#: views.py:205
+msgid ""
+"Any error produced during the usage of a source will be listed here to "
+"assist in debugging."
+msgstr "Всяка грешка, възникнала по време на използването на източник, ще бъде посочена тук, за да помогне при отстраняване на грешки."
+
+#: views.py:208
+msgid "No log entries available"
+msgstr "Няма налични записи в дневника"
+
+#: views.py:210
+#, python-format
+msgid "Log entries for source: %s"
+msgstr "Записи в дневника за източник: %s"
+
+#: views.py:226
+#, python-format
+msgid "Delete staging file \"%s\"?"
+msgstr "Да се изтрие ли изходния файл &quot;%s&quot;?"
+
+#: views.py:278 wizards.py:152
+msgid ""
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Не са дефинирани интерактивни източници на документи или никой не е активиран, създайте такъв преди да продължите."
+
+#: views.py:306 views.py:335 views.py:345
+msgid "Document properties"
+msgstr "Свойства на документа"
+
+#: views.py:315
+msgid ""
+"This could mean that the staging folder is empty. It could also mean that "
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
+msgstr "Това може да означава, че папката за поставяне е празна. Това също може да означава, че потребителският акаунт на операционната система, използвана за Mayan EDMS няма необходимите разрешения във файлова система за папката."
+
+#: views.py:322
+msgid "No staging files available"
+msgstr "Няма налични изходни файлове"
+
+#: views.py:325
+msgid "Files in staging path"
+msgstr "Файлове в изходната пътека"
+
+#: views.py:336
+msgid "Scan"
+msgstr "Сканиране"
+
+#: views.py:466
+#, python-format
+msgid "Error executing document upload task; %(exception)s"
+msgstr "Грешка при изпълнение на задача за качване на документи; %(exception)s"
+
+#: views.py:476
+msgid "New document queued for upload and will be available shortly."
+msgstr "Нов документ е на опашка за качване и ще бъде наличен скоро."
+
+#: views.py:493
+#, python-format
+msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
+msgstr "Качете документ от тип &quot;%(document_type)s&quot; от източник: %(source)s"
+
+#: views.py:555
+#, python-format
+msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+msgstr "Не може да се качат нови версии за документ &quot;%(document)s&quot;. %(exception)s"
+
+#: views.py:606
+msgid "New document version queued for upload and will be available shortly."
+msgstr "Нова версия на документа е на опашка за качване и ще бъде налична скоро."
+
+#: views.py:625
+#, python-format
+msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgstr "Качете нова версия за документ &quot;%(document)s&quot; от източник: %(source)s"
+
+#: views.py:628
+msgid "Submit"
+msgstr "Подаване"
 
 #: wizards.py:95
 msgid "Select document type"

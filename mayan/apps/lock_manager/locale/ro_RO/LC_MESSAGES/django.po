@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:23-0400\n"
+"POT-Creation-Date: 2020-04-14 04:29-0400\n"
 "PO-Revision-Date: 2019-12-03 13:32+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:8 settings.py:7
+#: apps.py:9 settings.py:7
 msgid "Lock manager"
 msgstr "Manager de blocare"
 

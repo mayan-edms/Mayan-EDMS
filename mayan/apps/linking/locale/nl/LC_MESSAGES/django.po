@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:23-0400\n"
+"POT-Creation-Date: 2020-04-14 04:29-0400\n"
 "PO-Revision-Date: 2020-02-14 04:19+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -28,7 +28,7 @@ msgid "Label"
 msgstr "Label"
 
 #: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:45
-#: permissions.py:5 views.py:197
+#: permissions.py:5 views.py:203
 msgid "Smart links"
 msgstr "'Smartlinks'"
 
@@ -60,7 +60,7 @@ msgstr "bewerken"
 msgid "Conditions"
 msgstr "Conditie"
 
-#: links.py:49 views.py:233
+#: links.py:49 views.py:239
 msgid "Create new smart link"
 msgstr "Nieuwe 'smartlink' aanmaken"
 
@@ -257,95 +257,95 @@ msgstr ""
 msgid "Smart links to enable for document type: %s"
 msgstr ""
 
-#: views.py:122
+#: views.py:115
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "'smartlink' zoek fout: %s"
 
-#: views.py:131
+#: views.py:126
 #, python-format
 msgid "Documents in smart link: %s"
 msgstr ""
 
-#: views.py:134
+#: views.py:129
 #, python-format
 msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr ""
 
-#: views.py:159
+#: views.py:165
 msgid "Available document types"
 msgstr "Beschikbare documentsoorten"
 
-#: views.py:160
+#: views.py:166
 msgid "Document types enabled"
 msgstr ""
 
-#: views.py:170
+#: views.py:176
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr ""
 
-#: views.py:188
+#: views.py:194
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
 msgstr ""
 
-#: views.py:195
+#: views.py:201
 msgid "There are no smart links"
 msgstr ""
 
-#: views.py:213
+#: views.py:219
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
 msgstr ""
 
-#: views.py:218
+#: views.py:224
 msgid "There are no smart links for this document"
 msgstr ""
 
-#: views.py:221
+#: views.py:227
 #, python-format
 msgid "Smart links for document: %s"
 msgstr ""
 
-#: views.py:255
+#: views.py:261
 #, python-format
 msgid "Delete smart link: %s"
 msgstr ""
 
-#: views.py:271
+#: views.py:277
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "'smartlink': %s bewerken."
 
-#: views.py:296
+#: views.py:302
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
 msgstr ""
 
-#: views.py:300
+#: views.py:306
 msgid "There are no conditions for this smart link"
 msgstr ""
 
-#: views.py:304
+#: views.py:310
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr ""
 
-#: views.py:323
+#: views.py:329
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Nieuwe condities aan 'smartlink': \"%s\" toevoegen."
 
-#: views.py:353
+#: views.py:359
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr ""
 
-#: views.py:376
+#: views.py:382
 msgid "Edit smart link condition"
 msgstr "Bewerk 'smartlink' conditie."

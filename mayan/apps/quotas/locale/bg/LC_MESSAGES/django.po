@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:24-0400\n"
+"POT-Creation-Date: 2020-04-14 04:30-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -23,20 +23,20 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:37 events.py:6 links.py:33 models.py:33 permissions.py:5
+#: apps.py:36 events.py:6 links.py:33 models.py:32 permissions.py:5
 #: views.py:134
 msgid "Quotas"
 msgstr "Квоти"
 
-#: classes.py:62
+#: classes.py:63
 msgid "none"
 msgstr "няма"
 
-#: classes.py:134
+#: classes.py:143
 msgid "Does not apply"
 msgstr "Не се прилага"
 
-#: classes.py:138 classes.py:145
+#: classes.py:147 classes.py:154
 msgid "Null backend"
 msgstr "Нулев бекенд"
 
@@ -48,7 +48,7 @@ msgstr "Квотата е създадена"
 msgid "Quota edited"
 msgstr "Квотата е редактирана"
 
-#: forms.py:15 models.py:58
+#: forms.py:15 models.py:55
 msgid "Backend"
 msgstr "Бекенд"
 
@@ -140,39 +140,39 @@ msgstr "всички потребители"
 msgid "groups: %(groups)s, users: %(users)s"
 msgstr "групи: %(groups)s, потребители: %(users)s"
 
-#: models.py:19
+#: models.py:18
 msgid "The dotted Python path to the backend class."
 msgstr "Пунктирания Python път към бекенда."
 
-#: models.py:20
+#: models.py:19
 msgid "Backend path"
 msgstr "Път към бекенда"
 
-#: models.py:23
+#: models.py:22
 msgid "Backend data"
 msgstr "Данни за бекенда"
 
-#: models.py:27
+#: models.py:26
 msgid "Allow quick disable or enable of the quota."
 msgstr "Разрешаване на бързото изключване или активиране на квотата."
 
-#: models.py:28
+#: models.py:27
 msgid "Enabled"
 msgstr "Активиран"
 
-#: models.py:32
+#: models.py:31
 msgid "Quota"
 msgstr "Квота"
 
-#: models.py:57
+#: models.py:54
 msgid "Driver used for this quota entry."
 msgstr "Драйвер, използван за това въвеждане на квота."
 
-#: models.py:62
+#: models.py:59
 msgid "Arguments"
 msgstr "Аргументи"
 
-#: models.py:66
+#: models.py:63
 msgid "Usage"
 msgstr "Употреба"
 
@@ -213,19 +213,19 @@ msgstr "Ограничение на броя на документите"
 msgid "document count: %(document_count)s"
 msgstr "брой на документите: %(document_count)s"
 
-#: quota_backends.py:116 quota_backends.py:170
+#: quota_backends.py:117 quota_backends.py:171
 msgid "Document size quota exceeded."
 msgstr "Квотата за размер на документа е надвишена."
 
-#: quota_backends.py:126 quota_backends.py:131
+#: quota_backends.py:127 quota_backends.py:132
 msgid "Document size limit"
 msgstr "Ограничение на размера на документа"
 
-#: quota_backends.py:128
+#: quota_backends.py:129
 msgid "Maximum document size in megabytes (MB)."
 msgstr "Максимален размер на документа в мегабайти (MB)."
 
-#: quota_backends.py:150
+#: quota_backends.py:151
 #, python-format
 msgid "document size: %(formatted_file_size)s"
 msgstr "размер на документа: %(formatted_file_size)s"
