@@ -1,4 +1,4 @@
-3.4.5 (2020-XX-XX)
+3.4.5 (2020-04-14)
 ==================
 - Make sure FUSE's getattr.st_size always return a 0 and not None when the
   document is invalid. Close GitLab issue #797. Thanks to telsch (@telsch)
