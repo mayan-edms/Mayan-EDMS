@@ -96,8 +96,8 @@ class CabinetDetailView(ExternalObjectMixin, DocumentListView):
     def get_document_queryset(self):
         return self.external_object.documents.all()
 
-    def get_context_data(self, **kwargs):
-        context = super(CabinetDetailView, self).get_context_data(**kwargs)
+    def get_extra_context(self, **kwargs):
+        context = super(CabinetDetailView, self).get_extra_context(**kwargs)
 
         context.update(
             {
