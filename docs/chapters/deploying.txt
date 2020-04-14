@@ -82,6 +82,13 @@ For another setup that offers more performance and scalability refer to the
        sudo chown |DEFAULT_OS_USERNAME|:|DEFAULT_OS_GROUP| |MAYAN_INSTALLATION_DIRECTORY| -R
 
 
+#. Upgrade to the latest pip version:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install -U pip
+
+
 #. Install Mayan EDMS from PyPI:
 
    .. code-block:: bash
