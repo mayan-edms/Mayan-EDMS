@@ -124,30 +124,26 @@
 
                                     {% if not hide_links %}
                                         <td class="last">
-                                            {% navigation_resolve_menu name='list facet' sort_results=True source=object as facet_menus_results %}
-                                            {% for facet_menu_results in facet_menus_results %}
-                                                {% for link_group in facet_menu_results.link_groups %}
-                                                    {% with link_group.links as object_navigation_links %}
-                                                    {% with 'true' as horizontal %}
-                                                    {% with 'btn btn-default btn-outline btn-xs btn-list' as link_classes %}
-                                                        {% include 'navigation/generic_navigation.html' %}
-                                                    {% endwith %}
-                                                    {% endwith %}
-                                                    {% endwith %}
+                                            <div class="btn-list">
+                                                {% navigation_resolve_menu name='list facet' sort_results=True source=object as facet_menus_results %}
+                                                {% for facet_menu_results in facet_menus_results %}
+                                                    {% for link_group in facet_menu_results.link_groups %}
+                                                        {% with link_group.links as object_navigation_links %}
+                                                        {% with 'btn btn-default btn-outline btn-xs' as link_classes %}
+                                                            {% include 'navigation/generic_navigation.html' %}
+                                                        {% endwith %}
+                                                        {% endwith %}
+                                                    {% endfor %}
                                                 {% endfor %}
-                                            {% endfor %}
-                                            {% navigation_resolve_menu name='object' source=object as object_menus_results %}
-                                            {% for object_menu_results in object_menus_results %}
-                                                {% for link_group in object_menu_results.link_groups %}
-                                                    {% with link_group.links as object_navigation_links %}
-                                                    {% with 'btn-list' as link_extra_classes %}
-                                                    {% with 'true' as horizontal %}
-                                                        {% include 'navigation/generic_navigation.html' %}
-                                                    {% endwith %}
-                                                    {% endwith %}
-                                                    {% endwith %}
+                                                {% navigation_resolve_menu name='object' source=object as object_menus_results %}
+                                                {% for object_menu_results in object_menus_results %}
+                                                    {% for link_group in object_menu_results.link_groups %}
+                                                        {% with link_group.links as object_navigation_links %}
+                                                            {% include 'navigation/generic_navigation.html' %}
+                                                        {% endwith %}
+                                                    {% endfor %}
                                                 {% endfor %}
-                                            {% endfor %}
+                                            </div>
                                         </td>
                                     {% endif %}
                                 </tr>

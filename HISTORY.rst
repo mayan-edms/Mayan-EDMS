@@ -21,6 +21,9 @@
 - Update the quota app to work with more deployment types.
 - Add a dependency definition for the gpg binary used by the Django GPG app.
 - Fix document list mode on the cabinet detail view.
+- Fine tune extra small button appearance and space usage.
+- Move some of the extra small button presentation from the template to the
+  stylesheet.
 
 3.4.4 (2020-04-08)
 ==================

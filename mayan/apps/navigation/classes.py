@@ -551,7 +551,7 @@ class ResolvedLink(object):
 
     @property
     def html_extra_classes(self):
-        return self.link.html_extra_classes
+        return self.link.html_extra_classes or ''
 
     @property
     def icon_class(self):
@@ -877,7 +877,7 @@ class Text(Link):
     Menu text. Renders to a plain <li> tag
     """
     def __init__(self, *args, **kwargs):
-        self.html_extra_classes = kwargs.get('html_extra_classes')
+        self.html_extra_classes = kwargs.get('html_extra_classes', '')
         self.icon = None
         self.text = kwargs.get('text')
         self.view = None

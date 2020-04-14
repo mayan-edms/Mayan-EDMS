@@ -405,8 +405,16 @@ a i {
     color: #fff;
 }
 
-.btn-list {
+.btn-list > .btn {
     margin-bottom: 2px;
+}
+
+.btn-list > .btn:not(:last-child) {
+    margin-right: 4px;
+}
+
+.btn-xs {
+    padding: 1px 5px 0px;
 }
 
 /*
