@@ -1,5 +1,15 @@
-from mayan.apps.dependencies.classes import PythonDependency
+from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.dependencies.classes import BinaryDependency, PythonDependency
+
+from .backends.python_gnupg import gpg_path
+
+
+BinaryDependency(
+    label='GNU privacy guard', help_text=_(
+        'GNU privacy guard - a PGP implementation.'
+    ), module=__name__, name='gnupg1', path=gpg_path
+)
 PythonDependency(
     copyright_text='''
         Copyright (c) 2008-2014 by Vinay Sajip.

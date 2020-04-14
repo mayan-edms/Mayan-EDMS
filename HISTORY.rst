@@ -19,6 +19,7 @@
 - Allow apps without an urlpatterns entry.
 - Update the Docker image to use Debian 10.3.
 - Update the quota app to work with more deployment types.
+- Add a dependency definition for the gpg binary used by the Django GPG app.
 
 3.4.4 (2020-04-08)
 ==================
