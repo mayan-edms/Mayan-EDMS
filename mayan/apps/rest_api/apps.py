@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_tools
+from mayan.apps.common.settings import setting_url_base_path
 
 from .links import (
     link_api, link_api_documentation, link_api_documentation_redoc
@@ -21,6 +22,12 @@ class RESTAPIApp(MayanAppConfig):
     def ready(self):
         super(RESTAPIApp, self).ready()
         from .urls import api_urls
+
+        installation_base_url = setting_url_base_path.value
+        if installation_base_url:
+            installation_base_url = '{}/'.format(installation_base_url)
+        else:
+            installation_base_url = ''
 
         settings.STRONGHOLD_PUBLIC_URLS += (r'^/%s/.+$' % self.app_url,)
         menu_tools.bind_links(
