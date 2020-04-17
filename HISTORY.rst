@@ -1,6 +1,8 @@
 3.4.6 (2020-04-16)
 ==================
 - Update Django to version 2.2.12.
+- Support custom URL base paths. Add the new setting
+  ``COMMON_URL_BASE_PATH``.
 
 3.4.5 (2020-04-14)
 ==================

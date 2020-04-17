@@ -28,7 +28,7 @@ from .menus import menu_about, menu_secondary, menu_topbar, menu_user
 from .patches import patchDjangoTranslation
 from .settings import (
     setting_auto_logging, setting_production_error_log_path,
-    setting_production_error_logging
+    setting_production_error_logging, setting_url_base_path
 )
 from .signals import pre_initial_setup, pre_upgrade
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
@@ -46,12 +46,22 @@ class MayanAppConfig(apps.AppConfig):
         logger.debug('Initializing app: %s', self.name)
         from mayan.urls import urlpatterns as mayan_urlpatterns
 
+        installation_base_url = setting_url_base_path.value
+
         if self.app_url:
-            top_url = '{}/'.format(self.app_url)
-        elif self.app_url is not None:
-            top_url = ''
+            top_url = '{installation_base_url}/{app_urls}/'.format(
+                installation_base_url=installation_base_url,
+                app_urls=self.app_url
+            )
+        elif self.app_url is not None:\
+            # When using app_url as '' to register a top of URL view.
+            top_url = '{}/'.format(installation_base_url)
         else:
-            top_url = '{}/'.format(self.name)
+            # If app_url is None, use the app's name for the URL base.
+            top_url = '{installation_base_url}/{app_name}/'.format(
+                installation_base_url=installation_base_url,
+                app_name=self.name
+            )
 
         try:
             app_urlpatterns = import_string(
