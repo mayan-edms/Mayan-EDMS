@@ -25,6 +25,6 @@ automatically available. Use the same procedure to mount host folders to be
 used as staging folders. In this example ``/scanned_files`` was used as the
 container directory, but any path can be used as long as:
 
-- the path not an already existing path
+- the path is an already existing path
 - the path is not used by any other program
 - the path is a single level path
