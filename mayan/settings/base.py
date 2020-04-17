@@ -289,7 +289,7 @@ TIMEZONE_SESSION_KEY = 'django_timezone'
 
 # ----- Stronghold -------
 
-STRONGHOLD_PUBLIC_URLS = (r'^/docs/.+$', r'^/favicon\.ico$')
+STRONGHOLD_PUBLIC_URLS = (r'^/favicon\.ico$',)
 
 # ----- Swagger --------
 
