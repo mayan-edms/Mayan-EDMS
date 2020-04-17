@@ -7,7 +7,7 @@ from mayan.apps.smart_settings.tests.mixins import SmartSettingTestMixin
 from mayan.apps.storage.classes import DefinedStorage
 
 from ..literals import STORAGE_NAME_COMMON_SHARED_UPLOADED_FILE
-from ..settings import setting_shared_storage_arguments, setting_url_base_path
+from ..settings import setting_shared_storage_arguments
 
 
 class CommonStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):

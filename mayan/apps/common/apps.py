@@ -47,18 +47,22 @@ class MayanAppConfig(apps.AppConfig):
         from mayan.urls import urlpatterns as mayan_urlpatterns
 
         installation_base_url = setting_url_base_path.value
+        if installation_base_url:
+            installation_base_url = '{}/'.format(installation_base_url)
+        else:
+            installation_base_url = ''
 
         if self.app_url:
-            top_url = '{installation_base_url}/{app_urls}/'.format(
+            top_url = '{installation_base_url}{app_urls}/'.format(
                 installation_base_url=installation_base_url,
                 app_urls=self.app_url
             )
-        elif self.app_url is not None:\
+        elif self.app_url is not None:
             # When using app_url as '' to register a top of URL view.
-            top_url = '{}/'.format(installation_base_url)
+            top_url = installation_base_url
         else:
             # If app_url is None, use the app's name for the URL base.
-            top_url = '{installation_base_url}/{app_name}/'.format(
+            top_url = '{installation_base_url}{app_name}/'.format(
                 installation_base_url=installation_base_url,
                 app_name=self.name
             )
