@@ -1,5 +1,5 @@
 from django.urls import resolve
-from django.urls.exceptions import NoReverseMatch
+from django.urls.exceptions import Resolver404
 
 from mayan.apps.common.settings import setting_url_base_path
 
@@ -18,5 +18,5 @@ class Endpoint(object):
 
         try:
             self.viewname = resolve(path=url).view_name
-        except NoReverseMatch:
+        except Resolver404:
             self.viewname = None
