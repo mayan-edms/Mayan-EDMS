@@ -7,7 +7,7 @@ Docker Compose installation
 
 #. Install Docker:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        wget -qO- https://get.docker.com/ | sh
 
@@ -21,7 +21,7 @@ Docker Compose installation
 
    For GNU/Linux based operating systems, this is usually:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
@@ -29,7 +29,7 @@ Docker Compose installation
 
    Verify Docker Compose is working with:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        docker-compose -v
 
@@ -38,7 +38,7 @@ Docker Compose installation
 
    The file is located at: https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/docker-compose.yml
 
-   .. code-block:: bash
+   .. code-block:: console
 
        curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/docker-compose.yml -O
 
@@ -71,7 +71,7 @@ Docker Compose installation
 
 #. Verify the configuration changes:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        docker-compose --file docker-compose.yml --project-name mayan config
 
@@ -87,7 +87,7 @@ Docker Compose installation
        where the file ``docker-compose.yml`` resides, there is no need to
        add the ``--file docker-compose.yml`` option.
 
-   .. code-block:: bash
+   .. code-block:: console
 
        docker-compose --file docker-compose.yml --project-name mayan up --detach
 
@@ -102,14 +102,14 @@ Additional commands
 
 - To view the logs of the containers:
 
-  .. code-block:: bash
+  .. code-block:: console
 
       docker-compose --file docker-compose.yml --project-name mayan logs
 
 
 - To list the containers:
 
-  .. code-block:: bash
+  .. code-block:: console
 
       docker-compose --file docker-compose.yml --project-name mayan ps --all
 
@@ -120,6 +120,6 @@ Additional commands
 
       Once terminated, the containers are removed and only the data volumes remain.
 
-  .. code-block:: bash
+  .. code-block:: console
 
       docker-compose --file docker-compose.yml --project-name mayan down

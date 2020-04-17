@@ -3,10 +3,13 @@ Mailing documents
 =================
 
 Sending emails in Mayan EDMS is controlled by two different system depending on
-the type of email being sent. These are administrative emails like password
-reset emails and user emails sent from the application. To configure
-administrative email for things like password reset check the topic:
-:doc:`../parts/administration`
+the type of email being sent. These are:
+
+- administrative emails like password reset emails
+- application emails to allow users to send documents and messages
+
+To configure administrative email for things like password reset check the topic:
+:doc:`../chapters/password_reset`
 
 Application emails
 ==================
@@ -19,3 +22,5 @@ email backends.
 Once created mailing profiles allow users to send email messages from
 within the user interface containing either an URL link to the document or
 the actual document as an attachment.
+
+

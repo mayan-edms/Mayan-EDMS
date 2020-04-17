@@ -2,12 +2,16 @@
 Stopping and starting the container
 ===================================
 
-To stop the container use::
+To stop the container use:
+
+.. code-block:: console
 
     docker stop mayan-edms
 
 
-To start the container again::
+To start the container again:
+
+.. code-block:: console
 
     docker start mayan-edms
 

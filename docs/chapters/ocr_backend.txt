@@ -9,18 +9,27 @@ use other engines. To support other engines create a wrapper that subclasses the
 expose the ``execute`` method. For an example of how the Tesseract backend
 is implemented take a look at the file ``mayan/apps/ocr/backends/tesseract.py``
 
-Once you create you own backend, in your local.py settings add the option
-OCR_BACKEND and point it to your new OCR backend class path.
+Once you create you own backend, in your ``local.py`` settings add the option
+``OCR_BACKEND`` and point it to your new OCR backend class path.
 
-The default value of OCR_BACKEND is ``"ocr.backends.tesseract.Tesseract"``
+The default value of ``OCR_BACKEND`` is ``"ocr.backends.tesseract.Tesseract"``
+
+.. note::
+
+   Refer to the :doc:`../chapters/settings` topic for information on how to
+   create your own Python settings files.
 
 To add support to OCR more languages when using Tesseract, install the
 corresponding language file. If using a Debian based OS, this command will
 display the available language files:
 
+.. code-block:: console
+
     apt-cache search tesseract-ocr
 
 If using the Docker image, pass the environment variable MAYAN_APT_INSTALLS
-with the corresponding Tesseract language option. Example::
+with the corresponding Tesseract language option. Example:
+
+.. code-block:: console
 
     -e MAYAN_APT_INSTALLS='tesseract-ocr-deu'

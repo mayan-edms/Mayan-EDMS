@@ -11,66 +11,88 @@ using the Docker image. In addition to the common set of settings, some Docker
 image specific environment variables are available.
 
 
-``MAYAN_DOCKER_WAIT``
+- ``MAYAN_APT_INSTALLS``
 
-Optional. Make the Docker container wait for a host and port to become
-available. Multiple hosts and port combinations are supported.
+  Specifies a list of Ubuntu .deb packages to be installed via APT when the
+  container is first created. The installed packages are not lost when the image
+  is stopped. Example: To install the Tesseract OCR language packs for German
+  and Spanish add the following in your ``docker start`` command line:
 
-Example: MAYAN_DOCKER_WAIT=db:5432 redis:6379
+  .. code-block:: console
 
-``MAYAN_SETTINGS_MODULE``
+      -e MAYAN_APT_INSTALLS="tesseract-ocr-deu tesseract-ocr-spa"
 
-Optional. Allows loading an alternate settings file.
 
-``MAYAN_GUNICORN_TIMEOUT``
+- ``MAYAN_DOCKER_WAIT``
 
-Optional. Changes the amount of time the frontend worker will wait for a
-request to finish before raising a timeout error. The default is 120
-seconds.
+  Optional. Make the Docker container wait for a host and port to become
+  available. Multiple hosts and port combinations are supported.
 
-``MAYAN_GUNICORN_WORKERS``
+  Example:
 
-Optional. This environment variable controls the number of frontend workers
-that will be executed. If not specified the default is 2. For heavier loads,
-user a higher number. A formula recommended for this setting is the number
-of CPU cores + 1.
+  .. code-block:: console
 
-``MAYAN_SKIP_CHOWN_ON_STARTUP``
+      -e MAYAN_DOCKER_WAIT="db:5432 redis:6379"
 
-Optional. Setting this environment variable to ``true``, will make the
-entrypoint script, skip the initial chwon command on the media folder
-at `/var/lib/mayan`.
+- ``MAYAN_SETTINGS_MODULE``
 
-``MAYAN_WORKER_FAST_CONCURRENCY``
+  Optional. Allows loading an alternate settings file.
 
-Optional. Changes the concurrency (number of child processes) of the Celery
-worker consuming the queues in the fast (low latency, short tasks) category.
-Default is 1. Use 0 to disable hardcoded concurrency and allow the Celery
-worker to launch its default number of child processes (equal to the number
-of CPUs detected).
+- ``MAYAN_GUNICORN_TIMEOUT``
 
-``MAYAN_WORKER_MEDIUM_CONCURRENCY``
+  Optional. Changes the amount of time the frontend worker will wait for a
+  request to finish before raising a timeout error. The default is 120
+  seconds.
 
-Optional. Changes the concurrency (number of child processes) of the Celery
-worker consuming the queues in the medium (medium latency, long running tasks)
-category. Default is 1. Use 0 to disable hardcoded concurrency and allow the
-Celery worker to launch its default number of child processes (equal to the
-number of CPUs detected).
+- ``MAYAN_GUNICORN_WORKERS``
 
-``MAYAN_WORKER_SLOW_CONCURRENCY``
+  Optional. This environment variable controls the number of frontend workers
+  that will be executed. If not specified the default is 2. For heavier loads,
+  user a higher number. A formula recommended for this setting is the number
+  of CPU cores + 1.
 
-Optional. Changes the concurrency (number of child processes) of the Celery
-worker consuming the queues in the slow (high latency, very long running tasks)
-category. Default is 1. Use 0 to disable hardcoded concurrency and allow the
-Celery worker to launch its default number of child processes (equal to the
-number of CPUs detected).
+- ``MAYAN_PIP_INSTALLS``
 
-``MAYAN_USER_UID``
+  Specifies a list of Python packages to be installed via ``pip``. Packages will
+  be downloaded from the Python Package Index (https://pypi.python.org) by
+  default.
 
-Optional. Changes the UID of the ``mayan`` user internal to the Docker
-container. Defaults to 1000.
+- ``MAYAN_SKIP_CHOWN_ON_STARTUP``
 
-``MAYAN_USER_GID``
+  Optional. Setting this environment variable to ``true``, will make the
+  entrypoint script, skip the initial chwon command on the media folder
+  at ``/var/lib/mayan``.
 
-Optional. Changes the GID of the ``mayan`` user internal to the Docker
-container. Defaults to 1000.
+- ``MAYAN_WORKER_FAST_CONCURRENCY``
+
+  Optional. Changes the concurrency (number of child processes) of the Celery
+  worker consuming the queues in the fast (low latency, short tasks) category.
+  Default is 1. Use 0 to disable hardcoded concurrency and allow the Celery
+  worker to launch its default number of child processes (equal to the number
+  of CPUs detected).
+
+- ``MAYAN_WORKER_MEDIUM_CONCURRENCY``
+
+  Optional. Changes the concurrency (number of child processes) of the Celery
+  worker consuming the queues in the medium (medium latency, long running tasks)
+  category. Default is 1. Use 0 to disable hardcoded concurrency and allow the
+  Celery worker to launch its default number of child processes (equal to the
+  number of CPUs detected).
+
+- ``MAYAN_WORKER_SLOW_CONCURRENCY``
+
+  Optional. Changes the concurrency (number of child processes) of the Celery
+  worker consuming the queues in the slow (high latency, very long running tasks)
+  category. Default is 1. Use 0 to disable hardcoded concurrency and allow the
+  Celery worker to launch its default number of child processes (equal to the
+  number of CPUs detected).
+
+- ``MAYAN_USER_UID``
+
+  Optional. Changes the UID of the ``mayan`` user internal to the Docker
+  container. Defaults to 1000.
+
+- ``MAYAN_USER_GID``
+
+  Optional. Changes the GID of the ``mayan`` user internal to the Docker
+  container. Defaults to 1000.

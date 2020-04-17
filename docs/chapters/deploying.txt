@@ -29,7 +29,7 @@ For another setup that offers more performance and scalability refer to the
    If using a Debian_ or Ubuntu_ based Linux distribution, get the executable
    requirements using:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo apt-get install exiftool g++ gcc coreutils ghostscript gnupg1 graphviz \
        libfuse2 libjpeg-dev libmagic1 libpq-dev libpng-dev libreoffice \
@@ -40,7 +40,7 @@ For another setup that offers more performance and scalability refer to the
 
        Platforms with the ARM CPU might also need additional requirements:
 
-       .. code-block:: bash
+       .. code-block:: console
 
            sudo apt-get install libffi-dev libssl-dev -y
 
@@ -49,7 +49,7 @@ For another setup that offers more performance and scalability refer to the
 
    This will create an unprivileged user account that is also unable to login:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo adduser |DEFAULT_OS_USERNAME| --disabled-password --disabled-login --gecos ""
 
@@ -60,7 +60,7 @@ For another setup that offers more performance and scalability refer to the
    that are not part of the default installation". (https://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html).
    Create the ``/opt`` directory if it doesn't already exists:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo mkdir /opt
 
@@ -70,28 +70,28 @@ For another setup that offers more performance and scalability refer to the
    This will keep all the Python packages installed here isolated from the rest
    of the Python packages in the system:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo virtualenv |MAYAN_INSTALLATION_DIRECTORY| -p /usr/bin/python3
 
 
 #. Make the mayan user the owner of the installation directory:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo chown |DEFAULT_OS_USERNAME|:|DEFAULT_OS_GROUP| |MAYAN_INSTALLATION_DIRECTORY| -R
 
 
 #. Upgrade to the latest pip version:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install -U pip
 
 
 #. Install Mayan EDMS from PyPI:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 mayan-edms
 
@@ -104,7 +104,7 @@ For another setup that offers more performance and scalability refer to the
 
 #. Install the Python client for PostgreSQL and Redis:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
 
@@ -112,14 +112,14 @@ For another setup that offers more performance and scalability refer to the
 
        Platforms with the ARM CPU might also need additional requirements:
 
-       .. code-block:: bash
+       .. code-block:: console
 
            sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
 
 
 #. Create the database for the installation:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo -u postgres psql -c "CREATE USER |DEFAULT_DATABASE_USER| WITH password '|DEFAULT_DATABASE_PASSWORD|';"
        sudo -u postgres createdb -O |DEFAULT_DATABASE_USER| |DEFAULT_DATABASE_NAME|
@@ -149,7 +149,7 @@ For another setup that offers more performance and scalability refer to the
        :ref:`troubleshooting-autoadmin-account` and
        :ref:`troubleshooting-admin-password`.
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}" \
        MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
@@ -166,7 +166,7 @@ For another setup that offers more performance and scalability refer to the
        ``|MAYAN_SUPERVISOR_CONF|`` file and update all directory references
        from ``|MAYAN_INSTALLATION_DIRECTORY|`` to match your custom installation directory.
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}" \
        MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
@@ -178,7 +178,7 @@ For another setup that offers more performance and scalability refer to the
    Configure Redis to discard data when it runs out of memory, not save its
    database, keep 2 database, and be password protected:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
        echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
@@ -188,7 +188,7 @@ For another setup that offers more performance and scalability refer to the
 
 #. Enable and restart the services [1_]:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo systemctl enable supervisor
        sudo systemctl restart supervisor
@@ -199,7 +199,7 @@ For another setup that offers more performance and scalability refer to the
    The following operating system dependencies are only needed during
    installation and can be removed.
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo apt-get remove --purge libjpeg-dev libpq-dev libpng-dev libtiff-dev zlib1g-dev
 
@@ -220,21 +220,21 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
    If using a Debian_ or Ubuntu_ based Linux distribution, get the executable
    requirements using:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo apt-get install rabbitmq-server -y
 
 
 #. Install the Python client for RabbitMQ:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
 
 
 #. Create the RabbitMQ user and vhost:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo rabbitmqctl add_user |DEFAULT_RABBITMQ_USER| |DEFAULT_RABBITMQ_PASSWORD|
        sudo rabbitmqctl add_vhost |DEFAULT_RABBITMQ_VHOST|
@@ -266,7 +266,7 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 
 #. Restart the services:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        sudo supervisorctl reread
        sudo supervisorctl restart all

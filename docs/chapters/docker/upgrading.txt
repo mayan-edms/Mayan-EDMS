@@ -7,41 +7,57 @@ deleting the container, downloading the most recent version of the image and
 starting a container again. The container will take care of updating the
 database structure to the newest version if necessary.
 
-**IMPORTANT!** Do not delete the volume storing the data, only the container.
+.. important::
 
-Stop the container to be upgraded::
-
-    docker stop mayan-edms
-
-
-Remove the container::
-
-    docker rm mayan-edms
+    Do not delete the volume storing the data, only the container.
+    Deleting the volume will delete all the document files.
 
 
-Pull the new image version::
+#. Stop the container to be upgraded:
 
-    docker pull mayanedms/mayanedms:latest
+  .. code-block:: console
+
+      docker stop mayan-edms
 
 
-Start the container again with the new image version:
+#. Remove the container:
 
-   .. code-block:: bash
+  .. code-block:: console
 
-       docker run \
-       -d \
-       --name mayan-edms \
-       --restart=always \
-       -p 80:8000 \
-       -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'172.17.0.1'}}" \
-       -e MAYAN_CELERY_BROKER_URL="redis://:mayanredispassword@172.17.0.1:6379/0" \
-       -e MAYAN_CELERY_RESULT_BACKEND="redis://:mayanredispassword@172.17.0.1:6379/1" \
-       -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
-       mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
+      docker rm mayan-edms
 
-   .. note::
 
-       Ensure any customized environment variables used when launching the old version
-       of the container match the variables used to launch the new version 
-       (e.g database password). If Mayan loads but login fails post upgrade, 
-       this could be a cause.
+#. Pull the new image version:
+
+  .. code-block:: console
+
+      docker pull mayanedms/mayanedms:latest
+
+  or a specific version:
+
+  .. code-block:: console
+
+      docker pull mayanedms/mayanedms:<version>
+
+
+#. Start the container again with the new image version:
+
+     .. code-block:: console
+
+         docker run \
+         -d \
+         --name mayan-edms \
+         --restart=always \
+         -p 80:8000 \
+         -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'172.17.0.1'}}" \
+         -e MAYAN_CELERY_BROKER_URL="redis://:mayanredispassword@172.17.0.1:6379/0" \
+         -e MAYAN_CELERY_RESULT_BACKEND="redis://:mayanredispassword@172.17.0.1:6379/1" \
+         -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
+         mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
+
+     .. note::
+
+         Ensure any customized environment variables used when launching the old version
+         of the container match the variables used to launch the new version
+         (e.g database password). If Mayan loads but login fails post upgrade,
+         this could be a cause.

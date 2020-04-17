@@ -10,7 +10,9 @@ you can use the following environment variables:
 Specifies a list of Ubuntu .deb packages to be installed via APT when the
 container is first created. The installed packages are not lost when the image
 is stopped. Example: To install the Tesseract OCR language packs for German
-and Spanish add the following in your ``docker start`` command line::
+and Spanish add the following in your ``docker start`` command line:
+
+.. code-block:: console
 
     -e MAYAN_APT_INSTALLS="tesseract-ocr-deu tesseract-ocr-spa"
 

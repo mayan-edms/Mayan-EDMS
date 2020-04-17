@@ -7,6 +7,17 @@ filename to avoid collision. By default, documents files are stored in the
 same filesystem as the program code but by using different drivers, these
 can also be placed in other storage systems like object storage.
 
+.. important::
+
+   Sometimes this method of controlling documents files is caraterized as
+   being "destructive". However, that is not the case as the actual files
+   are never destroyed or modified in anyway. This method is only used
+   to avoid the operating system filesystem's inability to save two or more
+   files using the same filename and to be able to assing a label to a
+   document using characters that go beyond those normally supported by the
+   filesystem.
+
+
 - :doc:`../chapters/file_storage`
 - :doc:`../chapters/object_storage`
 
@@ -15,4 +26,3 @@ can also be placed in other storage systems like object storage.
 
   ../chapters/file_storage
   ../chapters/object_storage
-    

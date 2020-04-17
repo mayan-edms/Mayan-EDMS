@@ -107,10 +107,9 @@ such as:
 
     docker run -d --name mayan-rabbitmq --hostname mayan-rabbitmq --restart=always...
 
-
 For Docker Compose:
 
-.. code-block:: docker
+.. code-block:: yaml
 
     rabbitmq:
         container_name: mayan-edms-rabbitmq
@@ -150,20 +149,25 @@ References:
 - https://www.spinics.net/lists/linux-unionfs/msg06316.html
 
 
-Error: ``IOError: [Errno 37] No locks available`` when using a NFS volume for $MAYAN_MEDIA_ROOT
------------------------------------------------------------------------------------------------
+Error: ``IOError: [Errno 37] No locks available`` when using a NFS volume for ``MAYAN_MEDIA_ROOT``
+--------------------------------------------------------------------------------------------------
 
-This is caused by an upstream Django issue and occurrs when using a NFS volume for $MAYAN_MEDIA_ROOT.
-File lock issues can prevent mayan from generating the static media inside $MAYAN_MEDIA_ROOT.
+This is caused by an upstream Django issue and occurrs when using a NFS
+volume for ``MAYAN_MEDIA_ROOT``. File lock issues can prevent Mayan from
+generating the static media inside ``MAYAN_MEDIA_ROOT``.
 
-If you're using NFSv3, ensure that rcp.statd is running on the NFS client (called nfs-lock on some distributions)
-and that ``no_auth_nlm`` is set in ``/etc/exports`` on the NFS Server.
-NFSv4 has locking built in so does not require rcp.statd, but may require ``no_auth_nlm`` set on the NFS Server.
+If you're using NFSv3, ensure that ``rcp.statd`` is running on the NFS
+client (called ``nfs-lock`` on some distributions) and that ``no_auth_nlm``
+is set in ``/etc/exports`` on the NFS Server. NFSv4 has locking built in so
+does not require ``rcp.statd``, but may require ``no_auth_nlm`` set on
+the NFS Server.
 
-A workaround if the issue persists after applying the above is to deploy Mayan with a NFS $MAYAN_MEDIA_ROOT with
-a local-only volume for $MAYAN_MEDIA_ROOT/static. An example volume section inside docker-compose:
+A workaround if the issue persists after applying the above is to deploy
+Mayan with a NFS ``MAYAN_MEDIA_ROOT`` with a local-only volume
+for ``MAYAN_MEDIA_ROOT/static``. An example volume section
+inside ``docker-compose``:
 
-.. code-block:: docker
+.. code-block:: yaml
 
     volumes:
     # $MAYAN_MEDIA_ROOT can be mounted to nfs and shared between nodes. Change /mnt/mayan-shared
@@ -176,8 +180,9 @@ a local-only volume for $MAYAN_MEDIA_ROOT/static. An example volume section insi
     # Other mounts (such as watch folder). Must be on a different NFS export to avoid lock issues
     - /mnt/watch:/srv/watch_folder
 
-Alternatively, you can use non-NFS backed volumes for the whole $MAYAN_MEDIA_ROOT share where no local
-static directory is required. Samba and iSCSI are known to work.
+Alternatively, you can use non-NFS backed volumes for the whole
+``MAYAN_MEDIA_ROOT`` share where no local static directory is required.
+Samba and iSCSI are known to work.
 
 References:
 

@@ -27,6 +27,6 @@ A smart link with the following condition, will automatically links patient
 records to the prescription information sheets based on the value of the
 metadata type of the patient record.
 
-.. code-block:: bash
+.. code-block:: console
 
     foreign label is equal to {{ document.metadata_value_of.prescription }}
