@@ -336,6 +336,12 @@ SettingNamespaceSingleton.register_setting(
     name='LANGUAGE_CODE', klass=BaseSetting,
 )
 SettingNamespaceSingleton.register_setting(
+    name='SESSION_COOKIE_NAME', klass=BaseSetting,
+)
+SettingNamespaceSingleton.register_setting(
+    name='SESSION_ENGINE', klass=BaseSetting,
+)
+SettingNamespaceSingleton.register_setting(
     name='STATIC_URL', klass=BaseSetting,
 )
 SettingNamespaceSingleton.register_setting(

@@ -256,7 +256,24 @@ setting_django_language_code = namespace.add_setting(
         'doesn\'t exist for the user\'s preferred language.'
     ),
 )
-setting_django_static_url = namespace.add_setting(
+setting_django_cookie_name = namespace.add_setting(
+    global_name='SESSION_COOKIE_NAME',
+    default=settings.SESSION_COOKIE_NAME,
+    help_text=_(
+        'Default: \'sessionid\'. The name of the cookie to use for sessions.'
+        'This can be whatever you want (as long as it\'s different from the '
+        'other cookie names in your application).'
+    ),
+)
+setting_django_session_engine = namespace.add_setting(
+    global_name='SESSION_ENGINE',
+    default=settings.SESSION_ENGINE,
+    help_text=_(
+        'Default: \'django.contrib.sessions.backends.db\'. Controls where '
+        'Django stores session data.'
+    ),
+)
+setting_django_secure_proxy_ssl_header = namespace.add_setting(
     global_name='SECURE_PROXY_SSL_HEADER',
     default=settings.SECURE_PROXY_SSL_HEADER,
     help_text=_(

@@ -1,8 +1,9 @@
-3.4.6 (2020-04-16)
+3.4.6 (2020-04-XX)
 ==================
 - Update Django to version 2.2.12.
 - Support custom URL base paths. Add the new setting
   ``COMMON_URL_BASE_PATH``.
+- Expose Django's ``SESSION_COOKIE_NAME`` and ``SESSION_ENGINE`` settings.
 
 3.4.5 (2020-04-14)
 ==================
