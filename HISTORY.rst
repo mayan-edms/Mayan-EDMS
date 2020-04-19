@@ -4,6 +4,10 @@
 - Support custom URL base paths. Add the new setting
   ``COMMON_URL_BASE_PATH``.
 - Expose Django's ``SESSION_COOKIE_NAME`` and ``SESSION_ENGINE`` settings.
+- The ``checkdependencies`` command will now mark missing production
+  dependencies with a symbol and an ANSI coloration.
+- Add ``--csv`` option to the  ``checkdependencies`` command to output the
+  result as comma delimited values.
 
 3.4.5 (2020-04-14)
 ==================

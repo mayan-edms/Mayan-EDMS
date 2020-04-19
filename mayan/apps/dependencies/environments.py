@@ -4,10 +4,11 @@ from django.utils.translation import ugettext_lazy as _
 
 @python_2_unicode_compatible
 class DependencyEnvironment(object):
-    def __init__(self, label, name, help_text=None):
+    def __init__(self, label, name, help_text=None, mark_missing=False):
         self.label = label
         self.help_text = help_text
         self.name = name
+        self.mark_missing = mark_missing
 
     def __str__(self):
         return force_text(self.label)
@@ -36,7 +37,7 @@ environment_production = DependencyEnvironment(
     help_text=_(
         'Normal environment for end users. A missing dependency under this '
         'environment will result in issues and errors during normal use.'
-    ), label=_('Production'), name='production'
+    ), label=_('Production'), mark_missing=True, name='production'
 )
 environment_testing = DependencyEnvironment(
     help_text=_(
