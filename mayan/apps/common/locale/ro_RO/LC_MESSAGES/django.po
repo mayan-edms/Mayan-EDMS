@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-14 04:28-0400\n"
-"PO-Revision-Date: 2020-03-28 21:06+0000\n"
-"Last-Translator: Harald Ersch\n"
+"POT-Creation-Date: 2020-04-19 00:42-0400\n"
+"PO-Revision-Date: 2020-04-19 04:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:118 permissions_runtime.py:5 settings.py:13
+#: apps.py:132 permissions_runtime.py:5 settings.py:13
 msgid "Common"
 msgstr "Comune"
 
@@ -355,6 +355,10 @@ msgstr "Adresa URL a instalării sau a paginii de pornire a proiectului."
 #: settings.py:95
 msgid "A storage backend that all workers can use to share files."
 msgstr "Un backend de stocare pe care toți lucrătorii îl pot folosi pentru partajarea fișierelor."
+
+#: settings.py:103
+msgid "Base URL path to use for all views."
+msgstr ""
 
 #: storages.py:13
 msgid ""

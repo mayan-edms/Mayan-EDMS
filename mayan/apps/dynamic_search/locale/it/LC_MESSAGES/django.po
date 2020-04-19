@@ -7,12 +7,13 @@
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011
+# Roberto Rosario, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-14 04:29-0400\n"
-"PO-Revision-Date: 2020-04-04 05:54+0000\n"
+"POT-Creation-Date: 2020-04-19 00:43-0400\n"
+"PO-Revision-Date: 2020-04-15 02:40+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +38,7 @@ msgstr "Corrisponde a tutti"
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr ""
+msgstr "Se selezionato, verranno restituiti solo i risultati che corrispondono a tutti i campi. Quando i risultati non selezionati che corrispondono ad almeno un campo verranno restituiti."
 
 #: forms.py:27 templates/dynamic_search/search_box.html:39
 msgid "Search terms"
@@ -58,12 +59,12 @@ msgstr "Cerca ancora"
 
 #: settings.py:11
 msgid "Full path to the backend to be used to handle the search."
-msgstr ""
+msgstr "Percorso completo per il backend da utilizzare per gestire la ricerca."
 
 #: settings.py:21
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
-msgstr ""
+msgstr "Disabilita la ricerca della barra a termine singolo lasciando solo il pulsante di ricerca avanzata."
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
@@ -71,11 +72,11 @@ msgstr "Avanzato"
 
 #: views.py:24
 msgid "Try again using different terms. "
-msgstr ""
+msgstr "Riprova usando termini diversi."
 
 #: views.py:26
 msgid "No search results"
-msgstr ""
+msgstr "Nessun risultato trovato"
 
 #: views.py:28
 #, python-format

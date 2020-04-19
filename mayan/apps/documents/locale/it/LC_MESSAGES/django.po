@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-14 04:29-0400\n"
-"PO-Revision-Date: 2020-04-08 05:20+0000\n"
+"POT-Creation-Date: 2020-04-19 00:43-0400\n"
+"PO-Revision-Date: 2020-04-15 02:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -1146,7 +1146,7 @@ msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
 "document type."
-msgstr ""
+msgstr "Ciò potrebbe significare che nessun documento è stato caricato o che al tuo account utente non è stata concessa l'autorizzazione di visualizzazione per alcun documento o tipo di documento."
 
 #: views/document_views.py:94
 msgid "No documents available"
@@ -1346,12 +1346,12 @@ msgstr "Non ci sono documenti preferiti."
 #: views/favorite_document_views.py:46
 #, python-format
 msgid "%(count)d document added to favorites."
-msgstr ""
+msgstr "%(count)d documento aggiunto ai preferiti."
 
 #: views/favorite_document_views.py:49
 #, python-format
 msgid "%(count)d documents added to favorites."
-msgstr ""
+msgstr "%(count)d documenti aggiunti ai preferiti."
 
 #: views/favorite_document_views.py:56
 msgid "Add"
@@ -1360,23 +1360,23 @@ msgstr "Aggiungi"
 #: views/favorite_document_views.py:59
 msgid "Add the selected document to favorites"
 msgid_plural "Add the selected documents to favorites"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Aggiungi il documento selezionato ai preferiti"
+msgstr[1] "Aggiungi i documenti selezionati ai preferiti"
 
 #: views/favorite_document_views.py:72
 #, python-format
 msgid "Document \"%(instance)s\" is not in favorites."
-msgstr ""
+msgstr "Il documento \"%(instance)s\" non è tra i preferiti."
 
 #: views/favorite_document_views.py:77
 #, python-format
 msgid "%(count)d document removed from favorites."
-msgstr ""
+msgstr "%(count)d documento rimosso dai preferiti."
 
 #: views/favorite_document_views.py:80
 #, python-format
 msgid "%(count)d documents removed from favorites."
-msgstr ""
+msgstr "%(count)d documenti rimossi dai preferiti."
 
 #: views/favorite_document_views.py:87
 msgid "Remove"
@@ -1385,24 +1385,24 @@ msgstr "Rimuovi"
 #: views/favorite_document_views.py:90
 msgid "Remove the selected document from favorites"
 msgid_plural "Remove the selected documents from favorites"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Rimuovi il documento selezionato dai preferiti"
+msgstr[1] "Rimuovi i documenti selezionati dai preferiti"
 
 #: views/trashed_document_views.py:37
 #, python-format
 msgid "%(count)d document moved to the trash."
-msgstr ""
+msgstr "%(count)d documento spostato nel cestino."
 
 #: views/trashed_document_views.py:40
 #, python-format
 msgid "%(count)d documents moved to the trash."
-msgstr ""
+msgstr "%(count)d documenti spostati nel cestino."
 
 #: views/trashed_document_views.py:48
 msgid "Move the selected document to the trash?"
 msgid_plural "Move the selected documents to the trash?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Sposta il documento selezionato nel cestino?"
+msgstr[1] "Spostare i documenti selezionati nel cestino?"
 
 #: views/trashed_document_views.py:62
 msgid "Empty trash?"
