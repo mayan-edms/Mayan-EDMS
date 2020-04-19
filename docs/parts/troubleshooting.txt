@@ -393,7 +393,7 @@ development or testing. For production deployments the management command:
 
 .. code-block:: console
 
-    mayan-edms.py preparestatic
+    /opt/mayan-edms/bin/mayan-edms.py preparestatic
 
 should be used and the resulting static folder served from a webserver.
 For more information check the
@@ -457,3 +457,20 @@ Reference:
 - http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html
 
 
+The system fails to start or some features are not working
+----------------------------------------------------------
+
+Execute the ``checkdependencies`` command to verify that all the dependencies
+needed for a production installation are present and accessible to the system.
+
+.. code-block:: console
+
+    MAYAN_MEDIA_ROOT=<your Mayan media root setting> /<installation directory>mayan-edms.py checkdependencies
+
+If installed using the :doc:`../chapters/deploying` method, this would be:
+
+.. code-block:: console
+
+    MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| |MAYAN_BIN| checkdependencies
+
+The Docker image includes all dependencies and this process is not required.
