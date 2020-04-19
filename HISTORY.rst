@@ -1,4 +1,4 @@
-3.4.6 (2020-04-XX)
+3.4.6 (2020-04-19)
 ==================
 - Update Django to version 2.2.12.
 - Support custom URL base paths. Add the new setting
