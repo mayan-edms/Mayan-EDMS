@@ -7,6 +7,7 @@ import warnings
 from django import apps
 from django.conf import settings
 from django.conf.urls import include, url
+from django.contrib import admin
 from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
 from django.utils.encoding import force_text
@@ -133,6 +134,8 @@ class CommonApp(MayanAppConfig):
     def ready(self):
         super(CommonApp, self).ready()
         patchDjangoTranslation()
+
+        admin.autodiscover()
 
         if check_for_sqlite():
             warnings.warn(
