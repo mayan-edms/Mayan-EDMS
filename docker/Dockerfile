@@ -36,8 +36,8 @@ apt-get update \
     libfuse2 \
     libmagic1 \
     libmariadb3 \
-    libreoffice \
     libpq5 \
+    libreoffice \
     poppler-utils \
     python3-distutils \
     sane-utils \
