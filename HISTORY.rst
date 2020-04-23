@@ -4,6 +4,9 @@
 - Capture and display double check in and non checked out document
   checkout attempts. Closes GitLab issue #820. Thanks to Gerald Fuchs
   (@geraldf) for the report and debug information.
+- The Docker volume change owner command is now only run if there is a change
+  in the UID or GID of the container's user. Merge request !81. Thanks to
+  Matthias Bilger (@m42e) for the patch.
 
 3.4.6 (2020-04-19)
 ==================
