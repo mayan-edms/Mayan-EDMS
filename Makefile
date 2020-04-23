@@ -222,7 +222,7 @@ python-wheel: clean python-sdist
 	ls -l dist
 
 python-release-test-via-docker-ubuntu: ## Package (sdist and wheel) and upload to the PyPI test server using an Ubuntu Docker builder.
-	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
+	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
 	update-locale LANG=en_US.UTF-8 && \
@@ -235,7 +235,7 @@ python-release-test-via-docker-ubuntu: ## Package (sdist and wheel) and upload t
 	make test-release"
 
 python-release-via-docker-ubuntu: ## Package (sdist and wheel) and upload to PyPI using an Ubuntu Docker builder.
-	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
+	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
 	apt-get update && \
 	apt-get -y install locales && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
@@ -249,7 +249,7 @@ python-release-via-docker-ubuntu: ## Package (sdist and wheel) and upload to PyP
 	make release"
 
 test-sdist-via-docker-ubuntu: ## Make an sdist package and test it using an Ubuntu Docker container.
-	docker run --rm --name mayan_sdist_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
+	docker run --rm --name mayan_sdist_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
 	cp -r /host_source/* . && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
@@ -258,11 +258,12 @@ test-sdist-via-docker-ubuntu: ## Make an sdist package and test it using an Ubun
 	apt-get update && \
 	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && \
 	pip install -r requirements/development.txt && \
+        pip install -r requirements/testing.txt && \
 	make sdist-test-suit \
 	"
 
 test-wheel-via-docker-ubuntu: ## Make a wheel package and test it using an Ubuntu Docker container.
-	docker run --rm --name mayan_wheel_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
+	docker run --rm --name mayan_wheel_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
 	cp -r /host_source/* . && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
@@ -271,17 +272,18 @@ test-wheel-via-docker-ubuntu: ## Make a wheel package and test it using an Ubunt
 	apt-get update && \
 	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && \
 	pip install -r requirements/development.txt && \
+        pip install -r requirements/testing.txt && \
 	make wheel-test-suit \
 	"
 
-python-sdist-test-suit: sdist
+python-sdist-test-suit: python-sdist
 	rm -f -R _virtualenv
 	virtualenv _virtualenv
 	sh -c '\
 	. _virtualenv/bin/activate; \
 	pip install `ls dist/*.gz`; \
 	_virtualenv/bin/mayan-edms.py initialsetup; \
-	pip install mock==2.0.0; \
+        pip install -r requirements/testing.txt; \
 	_virtualenv/bin/mayan-edms.py test --mayan-apps \
 	'
 
@@ -406,7 +408,7 @@ find-gitignores: ## Find stray .gitignore files.
 
 python-build:
 	docker rm -f mayan-edms-build || true && \
-	docker run --rm --name mayan-edms-build -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source python:2-slim sh -c "\
+	docker run --rm --name mayan-edms-build -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_PYTHON_IMAGE_VERSION) sh -c "\
 	rm /host_source/dist -R || true && \
 	mkdir /host_source/dist || true && \
 	export LC_ALL=C.UTF-8 && \
