@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.exceptions import ActionError
 from mayan.apps.common.generics import (
     MultipleObjectConfirmActionView, MultipleObjectFormActionView,
     SingleObjectDetailView
@@ -9,6 +10,7 @@ from mayan.apps.common.generics import (
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.views.document_views import DocumentListView
 
+from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from .forms import DocumentCheckOutForm, DocumentCheckOutDetailForm
 from .icons import icon_check_out_info
 from .models import DocumentCheckout
@@ -79,9 +81,12 @@ class DocumentCheckInView(MultipleObjectConfirmActionView):
         return check_in_queryset | check_in_override_queryset
 
     def object_action(self, form, instance):
-        DocumentCheckout.business_logic.check_in_document(
-            document=instance, user=self.request.user
-        )
+        try:
+            DocumentCheckout.business_logic.check_in_document(
+                document=instance, user=self.request.user
+            )
+        except DocumentNotCheckedOut as exception:
+            raise ActionError(exception)
 
 
 class DocumentCheckOutView(MultipleObjectFormActionView):
@@ -129,12 +134,15 @@ class DocumentCheckOutView(MultipleObjectFormActionView):
             super(DocumentCheckOutView, self).get_post_action_redirect()
 
     def object_action(self, form, instance):
-        DocumentCheckout.objects.check_out_document(
-            block_new_version=form.cleaned_data['block_new_version'],
-            document=instance,
-            expiration_datetime=form.cleaned_data['expiration_datetime'],
-            user=self.request.user,
-        )
+        try:
+            DocumentCheckout.objects.check_out_document(
+                block_new_version=form.cleaned_data['block_new_version'],
+                document=instance,
+                expiration_datetime=form.cleaned_data['expiration_datetime'],
+                user=self.request.user,
+            )
+        except DocumentAlreadyCheckedOut as exception:
+            raise ActionError(exception)
 
 
 class DocumentCheckOutDetailView(SingleObjectDetailView):

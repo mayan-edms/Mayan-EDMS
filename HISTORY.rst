@@ -1,6 +1,9 @@
 3.4.7 (2020-XX-XX)
 ==================
 - Darken dropdown menu text to increase contrast and legibility.
+- Capture and display double check in and non checked out document
+  checkout attempts. Closes GitLab issue #820. Thanks to Gerald Fuchs
+  (@geraldf) for the report and debug information.
 
 3.4.6 (2020-04-19)
 ==================
