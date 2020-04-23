@@ -73,8 +73,8 @@ class GroupDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Delete the group: %s?') % self.get_object(),
+            'object': self.object,
+            'title': _('Delete the group: %s?') % self.object,
         }
 
 
@@ -89,8 +89,8 @@ class GroupEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit group: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Edit group: %s') % self.object,
         }
 
     def get_save_extra_data(self):
@@ -234,8 +234,8 @@ class UserDetailsView(SingleObjectDetailView):
 
     def get_extra_context(self, **kwargs):
         return {
-            'object': self.get_object(),
-            'title': _('Details of user: %s') % self.get_object()
+            'object': self.object,
+            'title': _('Details of user: %s') % self.object
         }
 
 
@@ -250,8 +250,8 @@ class UserEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit user: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Edit user: %s') % self.object,
         }
 
     def get_save_extra_data(self):

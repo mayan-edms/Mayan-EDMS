@@ -84,17 +84,17 @@ class WorkflowTemplateStateActionDeleteView(SingleObjectDeleteView):
             'navigation_object_list': (
                 'object', 'workflow_state', 'workflow'
             ),
-            'object': self.get_object(),
-            'title': _('Delete workflow state action: %s') % self.get_object(),
-            'workflow': self.get_object().state.workflow,
-            'workflow_state': self.get_object().state,
+            'object': self.object,
+            'title': _('Delete workflow state action: %s') % self.object,
+            'workflow': self.object.state.workflow,
+            'workflow_state': self.object.state,
         }
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='document_states:workflow_template_state_action_list',
             kwargs={
-                'workflow_template_state_id': self.get_object().state.pk
+                'workflow_template_state_id': self.object.state.pk
             }
         )
 
@@ -110,20 +110,20 @@ class WorkflowTemplateStateActionEditView(SingleObjectDynamicFormEditView):
             'navigation_object_list': (
                 'object', 'workflow_state', 'workflow'
             ),
-            'object': self.get_object(),
-            'title': _('Edit workflow state action: %s') % self.get_object(),
-            'workflow': self.get_object().state.workflow,
-            'workflow_state': self.get_object().state,
+            'object': self.object,
+            'title': _('Edit workflow state action: %s') % self.object,
+            'workflow': self.object.state.workflow,
+            'workflow_state': self.object.state,
         }
 
     def get_form_extra_kwargs(self):
         return {
             'request': self.request,
-            'action_path': self.get_object().action_path,
+            'action_path': self.object.action_path,
         }
 
     def get_form_schema(self):
-        return self.get_object().get_class_instance().get_form_schema(
+        return self.object.get_class_instance().get_form_schema(
             request=self.request
         )
 
@@ -131,7 +131,7 @@ class WorkflowTemplateStateActionEditView(SingleObjectDynamicFormEditView):
         return reverse(
             viewname='document_states:workflow_template_state_action_list',
             kwargs={
-                'workflow_template_state_id': self.get_object().state.pk
+                'workflow_template_state_id': self.object.state.pk
             }
         )
 
@@ -243,18 +243,18 @@ class WorkflowTemplateStateDeleteView(SingleObjectDeleteView):
     def get_extra_context(self):
         return {
             'navigation_object_list': ('object', 'workflow'),
-            'object': self.get_object(),
+            'object': self.object,
             'title': _(
                 'Delete workflow state: %s?'
             ) % self.object,
-            'workflow': self.get_object().workflow,
+            'workflow': self.object.workflow,
         }
 
     def get_success_url(self):
         return reverse(
             viewname='document_states:workflow_template_state_list',
             kwargs={
-                'workflow_template_id': self.get_object().workflow.pk
+                'workflow_template_id': self.object.workflow.pk
             }
         )
 
@@ -268,17 +268,17 @@ class WorkflowTemplateStateEditView(SingleObjectEditView):
     def get_extra_context(self):
         return {
             'navigation_object_list': ('object', 'workflow'),
-            'object': self.get_object(),
+            'object': self.object,
             'title': _(
                 'Edit workflow state: %s'
             ) % self.object,
-            'workflow': self.get_object().workflow,
+            'workflow': self.object.workflow,
         }
 
     def get_success_url(self):
         return reverse(
             viewname='document_states:workflow_template_state_list',
-            kwargs={'workflow_template_id': self.get_object().workflow.pk}
+            kwargs={'workflow_template_id': self.object.workflow.pk}
         )
 
 

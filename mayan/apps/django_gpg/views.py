@@ -33,10 +33,10 @@ class KeyDeleteView(SingleObjectDeleteView):
     pk_url_kwarg = 'key_id'
 
     def get_extra_context(self):
-        return {'title': _('Delete key: %s') % self.get_object()}
+        return {'title': _('Delete key: %s') % self.object}
 
     def get_post_action_redirect(self):
-        if self.get_object().key_type == KEY_TYPE_PUBLIC:
+        if self.object.key_type == KEY_TYPE_PUBLIC:
             return reverse_lazy(viewname='django_gpg:key_public_list')
         else:
             return reverse_lazy(viewname='django_gpg:key_private_list')
@@ -50,7 +50,7 @@ class KeyDetailView(SingleObjectDetailView):
 
     def get_extra_context(self):
         return {
-            'title': _('Details for key: %s') % self.get_object(),
+            'title': _('Details for key: %s') % self.object,
         }
 
 

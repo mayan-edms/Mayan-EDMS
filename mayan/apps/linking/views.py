@@ -257,8 +257,8 @@ class SmartLinkDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Delete smart link: %s') % self.get_object()
+            'object': self.object,
+            'title': _('Delete smart link: %s') % self.object
         }
 
 
@@ -273,8 +273,8 @@ class SmartLinkEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit smart link: %s') % self.get_object()
+            'object': self.object,
+            'title': _('Edit smart link: %s') % self.object
         }
 
     def get_save_extra_data(self):

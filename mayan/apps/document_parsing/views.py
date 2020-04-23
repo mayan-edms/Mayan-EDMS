@@ -59,15 +59,15 @@ class DocumentContentView(SingleObjectDetailView):
         result = super(DocumentContentView, self).dispatch(
             request, *args, **kwargs
         )
-        self.get_object().add_as_recent_document_for_user(request.user)
+        self.object.add_as_recent_document_for_user(request.user)
         return result
 
     def get_extra_context(self):
         return {
-            'document': self.get_object(),
+            'document': self.object,
             'hide_labels': True,
-            'object': self.get_object(),
-            'title': _('Content for document: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Content for document: %s') % self.object,
         }
 
 
@@ -93,7 +93,7 @@ class DocumentPageContentView(SingleObjectDetailView):
         result = super(DocumentPageContentView, self).dispatch(
             request, *args, **kwargs
         )
-        self.get_object().document.add_as_recent_document_for_user(
+        self.object.document.add_as_recent_document_for_user(
             request.user
         )
         return result
@@ -101,8 +101,8 @@ class DocumentPageContentView(SingleObjectDetailView):
     def get_extra_context(self):
         return {
             'hide_labels': True,
-            'object': self.get_object(),
-            'title': _('Content for document page: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Content for document page: %s') % self.object,
         }
 
 

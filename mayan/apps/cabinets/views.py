@@ -82,8 +82,8 @@ class CabinetDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Delete the cabinet: %s?') % self.get_object(),
+            'object': self.object,
+            'title': _('Delete the cabinet: %s?') % self.object,
         }
 
 
@@ -146,8 +146,8 @@ class CabinetEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit cabinet: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Edit cabinet: %s') % self.object,
         }
 
     def get_save_extra_data(self):

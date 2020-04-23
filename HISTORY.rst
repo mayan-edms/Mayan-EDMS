@@ -10,6 +10,7 @@
 - The pip option ``--no-use-pep517`` has been removed from the installation
   and version 3.4 upgrade documents. Closes GitLab issue #810. Thanks to
   jhayn49 (@jhayn49) for the report.
+- Replace self.get_object() with self.object where applicable.
 
 3.4.6 (2020-04-19)
 ==================

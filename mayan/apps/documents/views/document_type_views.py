@@ -103,8 +103,8 @@ class DocumentTypeDeleteView(SingleObjectDeleteView):
     def get_extra_context(self):
         return {
             'message': _('All documents of this type will be deleted too.'),
-            'object': self.get_object(),
-            'title': _('Delete the document type: %s?') % self.get_object(),
+            'object': self.object,
+            'title': _('Delete the document type: %s?') % self.object,
         }
 
 
@@ -120,10 +120,10 @@ class DocumentTypeDeletionPoliciesEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
+            'object': self.object,
             'title': _(
                 'Deletion policies for document type: %s'
-            ) % self.get_object(),
+            ) % self.object,
         }
 
     def get_save_extra_data(self):
@@ -141,8 +141,8 @@ class DocumentTypeEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit document type: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Edit document type: %s') % self.object,
         }
 
     def get_save_extra_data(self):

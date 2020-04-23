@@ -231,16 +231,16 @@ class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object().document_version,
-            'signature': self.get_object(),
-            'title': _('Delete detached signature: %s') % self.get_object()
+            'object': self.object.document_version,
+            'signature': self.object,
+            'title': _('Delete detached signature: %s') % self.object
         }
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='signatures:document_version_signature_list',
             kwargs={
-                'document_version_id': self.get_object().document_version.pk
+                'document_version_id': self.object.document_version.pk
             }
         )
 
@@ -253,11 +253,11 @@ class DocumentVersionSignatureDetailView(SingleObjectDetailView):
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'object': self.get_object().document_version,
-            'signature': self.get_object(),
+            'object': self.object.document_version,
+            'signature': self.object,
             'title': _(
                 'Details for signature: %s'
-            ) % self.get_object(),
+            ) % self.object,
         }
 
     def get_source_queryset(self):
