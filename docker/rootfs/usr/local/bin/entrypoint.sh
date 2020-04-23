@@ -39,7 +39,7 @@ update_uid_gid() {
 
     if [ ${MAYAN_USER_UID} -ne ${DEFAULT_USER_UID} ] || [ ${MAYAN_USER_GID} -ne ${DEFAULT_USER_GID} ]; then
         echo "mayan: Updating file ownership. This might take a while if there are many documents."
-        chown -R mayan:mayan ${MAYAN_INSTALL_DIR} ${MAYAN_STATIC_ROOT} 
+        chown -R mayan:mayan ${MAYAN_INSTALL_DIR} ${MAYAN_STATIC_ROOT}
         if [ "${MAYAN_SKIP_CHOWN_ON_STARTUP}" = "true" ]; then
             echo "mayan: skipping chown on startup"
         else
@@ -123,12 +123,6 @@ make_ready() {
     else
         performupgrade
     fi
-}
-
-set_uid_guid() {
-    echo "mayan: changing uid/guid"
-    usermod mayan -u ${MAYAN_USER_UID:-${DEFAULT_USER_UID}}
-    groupmod mayan -g ${MAYAN_USER_GID:-${DEFAULT_USER_GID}}
 }
 
 # Start execution here
