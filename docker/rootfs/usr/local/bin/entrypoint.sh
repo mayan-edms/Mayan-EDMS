@@ -39,7 +39,12 @@ update_uid_gid() {
 
     if [ ${MAYAN_USER_UID} -ne ${DEFAULT_USER_UID} ] || [ ${MAYAN_USER_GID} -ne ${DEFAULT_USER_GID} ]; then
         echo "mayan: Updating file ownership. This might take a while if there are many documents."
-        chown -R mayan:mayan ${MAYAN_INSTALL_DIR} ${MAYAN_STATIC_ROOT} ${MAYAN_MEDIA_ROOT}
+        chown -R mayan:mayan ${MAYAN_INSTALL_DIR} ${MAYAN_STATIC_ROOT} 
+        if [ "${MAYAN_SKIP_CHOWN_ON_STARTUP}" = "true" ]; then
+            echo "mayan: skipping chown on startup"
+        else
+            chown -R mayan:mayan ${MAYAN_MEDIA_ROOT}
+        fi
     fi
 }
 
@@ -131,11 +136,6 @@ wait.sh ${MAYAN_DOCKER_WAIT}
 update_uid_gid
 os_package_installs || true
 pip_installs || true
-if [ "${MAYAN_SKIP_CHOWN_ON_STARTUP}" = "true" ]; then
-    echo "mayan: skipping chown on startup"
-else
-    chown mayan:mayan /var/lib/mayan -R
-fi
 
 
 case "$1" in
