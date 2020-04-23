@@ -7,6 +7,9 @@
 - The Docker volume change owner command is now only run if there is a change
   in the UID or GID of the container's user. Merge request !81. Thanks to
   Matthias Bilger (@m42e) for the patch.
+- The pip option ``--no-use-pep517`` has been removed from the installation
+  and version 3.4 upgrade documents. Closes GitLab issue #810. Thanks to
+  jhayn49 (@jhayn49) for the report.
 
 3.4.6 (2020-04-19)
 ==================

@@ -93,20 +93,14 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: console
 
-       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 mayan-edms
-
-   .. note::
-
-       There have been reports of users experiencing errors when using
-       ``--no-use-pep517`` on systems with ARM CPUs. Leaving out this option
-       does not seem to have any negative effect.
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms
 
 
 #. Install the Python client for PostgreSQL and Redis:
 
    .. code-block:: console
 
-       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
 
    .. note::
 
@@ -114,7 +108,7 @@ For another setup that offers more performance and scalability refer to the
 
        .. code-block:: console
 
-           sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
+           sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psutil==|PYTHON_PSUTIL_VERSION|
 
 
 #. Create the database for the installation:
@@ -229,7 +223,7 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 
    .. code-block:: console
 
-       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install amqp==|PYTHON_AMQP_VERSION|
 
 
 #. Create the RabbitMQ user and vhost:
