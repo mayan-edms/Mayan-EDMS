@@ -1,3 +1,7 @@
+3.4.7 (2020-XX-XX)
+==================
+- Darken dropdown menu text to increase contrast and legibility.
+
 3.4.6 (2020-04-19)
 ==================
 - Update Django to version 2.2.12.

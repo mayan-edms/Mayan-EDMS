@@ -626,3 +626,7 @@ a i {
     top: 60px;  /* OuterHeight of navbar */
     z-index: 90;
 }
+
+.dropdown-menu > li > a {
+    color: #585e5e;
+}
