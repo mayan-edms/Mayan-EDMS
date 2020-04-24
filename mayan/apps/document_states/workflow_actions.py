@@ -159,7 +159,7 @@ class HTTPAction(WorkflowAction):
         }
     }
     field_order = (
-        'url', 'username', 'password', 'headers', 'timeout', 'verb', 'payload'
+        'url', 'username', 'password', 'headers', 'timeout', 'method', 'payload'
     )
     label = _('Perform an HTTP request')
     previous_dotted_paths = (
