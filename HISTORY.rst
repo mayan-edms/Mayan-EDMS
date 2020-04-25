@@ -11,6 +11,8 @@
   and version 3.4 upgrade documents. Closes GitLab issue #810. Thanks to
   jhayn49 (@jhayn49) for the report.
 - Replace self.get_object() with self.object where applicable.
+- Fixed HTTP workflow action field_order. Merge request !82. Thanks to
+  Matthias Bilger (@m42e) for the report and the patch.
 
 3.4.6 (2020-04-19)
 ==================
