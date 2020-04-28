@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:22-0400\n"
+"POT-Creation-Date: 2020-04-27 23:35-0400\n"
 "PO-Revision-Date: 2020-04-07 14:20+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -863,33 +863,33 @@ msgstr "Les déclencheurs sont des événements qui entraînent l'exécution aut
 msgid "Workflow transition trigger events for: %s"
 msgstr "Événements déclencheurs de transition du flux de travail : %s"
 
-#: views/workflow_template_transition_views.py:247
+#: views/workflow_template_transition_views.py:244
 #, python-format
 msgid "Create a field for workflow transition: %s"
 msgstr "Créez un champ pour la transition du flux de travail: %s"
 
-#: views/workflow_template_transition_views.py:280
+#: views/workflow_template_transition_views.py:277
 #, python-format
 msgid "Delete workflow transition field: %s"
 msgstr "Supprimer le champ de transition du flux de travail: %s"
 
-#: views/workflow_template_transition_views.py:309
+#: views/workflow_template_transition_views.py:306
 #, python-format
 msgid "Edit workflow transition field: %s"
 msgstr "Modifier le champ de transition du flux de travail: %s"
 
-#: views/workflow_template_transition_views.py:341
+#: views/workflow_template_transition_views.py:338
 msgid ""
 "Workflow transition fields allow adding data to the workflow's context. This"
 " additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr "Les champs de transition du flux de travail permettent d'ajouter des données au contexte du  flux de travail. Ces données de contexte supplémentaires peuvent ensuite être utilisées par d'autres éléments du système du flux de travail comme les actions d'état du flux de travail."
 
-#: views/workflow_template_transition_views.py:347
+#: views/workflow_template_transition_views.py:344
 msgid "There are no fields for this workflow transition"
 msgstr "Il n'y a aucun champ pour cette transition de flux de travail"
 
-#: views/workflow_template_transition_views.py:351
+#: views/workflow_template_transition_views.py:348
 #, python-format
 msgid "Fields for workflow transition: %s"
 msgstr "Champs pour la transition du flux de travail: %s"

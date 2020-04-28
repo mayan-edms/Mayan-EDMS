@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Johan Braeken, 2017
 # woei <root@ipaddr.nl>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:21-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"PO-Revision-Date: 2020-04-26 09:26+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:112 permissions_runtime.py:5 settings.py:13
+#: apps.py:132 permissions_runtime.py:5 settings.py:13
 msgid "Common"
 msgstr "Gemeenschappelijk"
 
@@ -80,19 +81,19 @@ msgstr ""
 
 #: generics.py:284
 msgid "Add all"
-msgstr ""
+msgstr "Alle toevoegen"
 
 #: generics.py:293
 msgid "Add"
-msgstr "Voeg toe"
+msgstr "Toevoegen"
 
 #: generics.py:303
 msgid "Remove all"
-msgstr ""
+msgstr "Alle verwijderen"
 
 #: generics.py:312
 msgid "Remove"
-msgstr "Verwijder"
+msgstr "Verwijderen"
 
 #: generics.py:522
 #, python-format
@@ -107,7 +108,7 @@ msgstr "%(object)s niet aangemaakt, foutmelding: %(error)s."
 #: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
-msgstr "%(object)s succesvol aangemaakt."
+msgstr "%(object)s met succes aangemaakt."
 
 #: generics.py:595
 #, python-format
@@ -117,7 +118,7 @@ msgstr "%(object)s niet verwijderd, foutmelding: %(error)s."
 #: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr "%(object)s succesbol verwijderd."
+msgstr "%(object)s met succes verwijderd."
 
 #: generics.py:740
 #, python-format
@@ -127,7 +128,7 @@ msgstr "%(object)s niet geupdate, foutmelding: %(error)s."
 #: generics.py:751
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr "%(object)s werden succesvol geupdate."
+msgstr "%(object)s werden met succes geupdate."
 
 #: links.py:34
 msgid "About this"
@@ -147,19 +148,19 @@ msgstr "Wijzig landsinstellingen"
 
 #: links.py:52
 msgid "Documentation"
-msgstr ""
+msgstr "Documentatie"
 
 #: links.py:57
 msgid "Errors"
-msgstr ""
+msgstr "Fouten"
 
 #: links.py:63
 msgid "Clear all"
-msgstr ""
+msgstr "Alle wissen"
 
 #: links.py:67
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
 #: links.py:71 views.py:103
 msgid "License"
@@ -171,11 +172,11 @@ msgstr "Setup"
 
 #: links.py:77
 msgid "Source code"
-msgstr ""
+msgstr "Broncode"
 
 #: links.py:81
 msgid "Get support"
-msgstr ""
+msgstr "Ondersteuning"
 
 #: links.py:85 queues.py:13 views.py:212
 msgid "Tools"
@@ -190,7 +191,7 @@ msgstr ""
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
+msgstr "Uw database backend is ingesteld op SQLite. SQLite dient alleen gebruikt te worden voor ontwikkeling en testen, niet voor productie-omgevingen. "
 
 #: literals.py:44
 msgid "Days"
@@ -206,7 +207,7 @@ msgstr "Minuten"
 
 #: menus.py:8
 msgid "System"
-msgstr ""
+msgstr "Systeem"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
@@ -247,11 +248,11 @@ msgstr "Resultaat"
 
 #: models.py:47
 msgid "Error log entry"
-msgstr ""
+msgstr "Foutenlog invoer"
 
 #: models.py:48
 msgid "Error log entries"
-msgstr ""
+msgstr "Foutenlog invoer"
 
 #: models.py:60
 msgid "File"
@@ -263,11 +264,11 @@ msgstr "Bestandsnaam"
 
 #: models.py:68
 msgid "Shared uploaded file"
-msgstr "Deel geüpload document"
+msgstr "Gedeeld geüpload document"
 
 #: models.py:69 storages.py:20
 msgid "Shared uploaded files"
-msgstr "Deel geüploade bestanden"
+msgstr "Gedeelde geüploade bestanden"
 
 #: models.py:98
 msgid "Timezone"
@@ -287,11 +288,11 @@ msgstr "Gebruikerslandinstellingen"
 
 #: permissions_runtime.py:8
 msgid "View error log"
-msgstr ""
+msgstr "Foutenlog bekijken"
 
 #: queues.py:11
 msgid "Default"
-msgstr "Verstekwaarde"
+msgstr "Standaard"
 
 #: queues.py:15
 msgid "Common periodic"
@@ -357,6 +358,10 @@ msgstr ""
 msgid "A storage backend that all workers can use to share files."
 msgstr "Een opslagbackend die alle werkers kunnen gebruiken om bestanden te delen."
 
+#: settings.py:103
+msgid "Base URL path to use for all views."
+msgstr ""
+
 #: storages.py:13
 msgid ""
 "Unable to initialize the shared uploaded file storage. Check the settings {}"
@@ -365,21 +370,21 @@ msgstr ""
 
 #: templatetags/common_tags.py:34
 msgid "Confirm delete"
-msgstr "Bevestig verwijdering"
+msgstr "Verwijderen bevestigen"
 
 #: templatetags/common_tags.py:39
 #, python-format
 msgid "Edit %s"
-msgstr ""
+msgstr "Bewerken %s"
 
 #: templatetags/common_tags.py:42
 msgid "Confirm"
-msgstr "Bevestig"
+msgstr "Bevestigen"
 
 #: templatetags/common_tags.py:46
 #, python-format
 msgid "Details for: %s"
-msgstr ""
+msgstr "Details voor: %s"
 
 #: templatetags/common_tags.py:50
 #, python-format
@@ -388,11 +393,11 @@ msgstr "Bewerken: %s"
 
 #: templatetags/common_tags.py:54
 msgid "Create"
-msgstr "Maak aan"
+msgstr "Aanmaken"
 
 #: validators.py:44
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "Voer een geldige JSON-waarde in."
 
 #: validators.py:68
 msgid "Enter a valid YAML value."
@@ -402,11 +407,11 @@ msgstr "Voer een geldige YAML-waarde in."
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Voer een geldige 'interne naam' in die bestaat uit letter, cijfers en underscores."
 
 #: views.py:26
 msgid "About"
-msgstr "Informatie"
+msgstr "Over"
 
 #: views.py:39
 msgid "Current user locale profile details"
@@ -414,7 +419,7 @@ msgstr "Details landinstellingen huidige gebruiker"
 
 #: views.py:45
 msgid "Edit current user locale profile details"
-msgstr "Wijzig landsinstellingen van de huidige gebruiker"
+msgstr "Details landinstellingen huidige gebruiker bewerken"
 
 #: views.py:94
 msgid "Dashboard"
@@ -423,7 +428,7 @@ msgstr "Dashboard"
 #: views.py:112
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Foutenlog invoer wissen voor: %s"
 
 #: views.py:129
 msgid "Object error log cleared successfully"
@@ -441,16 +446,16 @@ msgstr ""
 
 #: views.py:158
 msgid "There are no error log entries"
-msgstr ""
+msgstr "Er is geen foutenlog invoer."
 
 #: views.py:161
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Foutenlog invoer voor: %s"
 
 #: views.py:189
 msgid "No setup options available."
-msgstr ""
+msgstr "Geen instellingsopties beschikbaar."
 
 #: views.py:191
 msgid ""
@@ -468,4 +473,4 @@ msgstr ""
 
 #: views.py:214
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "Deze modules worden gebruikt voor systeemonderhoud."

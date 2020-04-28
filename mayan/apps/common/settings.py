@@ -98,3 +98,7 @@ setting_shared_storage_arguments = namespace.add_setting(
     global_name='COMMON_SHARED_STORAGE_ARGUMENTS',
     default={'location': os.path.join(settings.MEDIA_ROOT, 'shared_files')}
 )
+setting_url_base_path = namespace.add_setting(
+    global_name='COMMON_URL_BASE_PATH', default='',
+    help_text=_('Base URL path to use for all views.')
+)

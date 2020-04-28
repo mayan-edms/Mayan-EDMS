@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:22-0400\n"
-"PO-Revision-Date: 2020-04-04 11:34+0000\n"
+"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"PO-Revision-Date: 2020-04-25 15:33+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -61,7 +61,7 @@ msgstr "Пълен път към бекенда, който да се изпол
 #: settings.py:21
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
-msgstr "Деактивира еднопосочното търсене в лентата, оставяйки само бутона за разширено търсене."
+msgstr "Деактивира лентата за търсене на единични термини, оставяйки само бутона за разширено търсене."
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"

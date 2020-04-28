@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:21-0400\n"
-"PO-Revision-Date: 2020-03-28 12:49+0000\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"PO-Revision-Date: 2020-04-20 13:07+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:112 permissions_runtime.py:5 settings.py:13
+#: apps.py:132 permissions_runtime.py:5 settings.py:13
 msgid "Common"
 msgstr "Comum"
 
@@ -360,6 +360,10 @@ msgstr "URL da instalação ou homepage do projeto."
 #: settings.py:95
 msgid "A storage backend that all workers can use to share files."
 msgstr "Um backend de armazenamento que todos os workers podem usar para compartilhar arquivos."
+
+#: settings.py:103
+msgid "Base URL path to use for all views."
+msgstr "Caminho do URL base a ser usado em todas as visualizações."
 
 #: storages.py:13
 msgid ""

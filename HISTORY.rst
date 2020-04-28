@@ -1,3 +1,60 @@
+3.4.7 (2020-04-28)
+==================
+- Darken dropdown menu text to increase contrast and legibility.
+- Capture and display double check in and non checked out document
+  checkout attempts. Closes GitLab issue #820. Thanks to Gerald Fuchs
+  (@geraldf) for the report and debug information.
+- The Docker volume change owner command is now only run if there is a change
+  in the UID or GID of the container's user. Merge request !81. Thanks to
+  Matthias Bilger (@m42e) for the patch.
+- The pip option ``--no-use-pep517`` has been removed from the installation
+  and version 3.4 upgrade documents. Closes GitLab issue #810. Thanks to
+  jhayn49 (@jhayn49) for the report.
+- Replace self.get_object() with self.object where applicable.
+- Fixed HTTP workflow action field_order. Merge request !82. Thanks to
+  Matthias Bilger (@m42e) for the report and the patch.
+- Add MERC 0007 defining the new repository branch layout.
+- Remove outdated development version deployment instructions. Closes GitLab
+  issue #821. Thanks to Gerald Fuchs (@geraldf) for the report.
+
+3.4.6 (2020-04-19)
+==================
+- Update Django to version 2.2.12.
+- Support custom URL base paths. Add the new setting
+  ``COMMON_URL_BASE_PATH``.
+- Expose Django's ``SESSION_COOKIE_NAME`` and ``SESSION_ENGINE`` settings.
+- The ``checkdependencies`` command will now mark missing production
+  dependencies with a symbol and an ANSI coloration.
+- Add ``--csv`` option to the  ``checkdependencies`` command to output the
+  result as comma delimited values.
+
+3.4.5 (2020-04-14)
+==================
+- Make sure FUSE's getattr.st_size always return a 0 and not None when the
+  document is invalid. Close GitLab issue #797. Thanks to telsch (@telsch)
+  for the report and debug information.
+- Add the Un series Korean TrueType fonts (fonts-unfonts-core) to the Docker
+  image.
+- Fix the document page disable and enable links. Close GitLab issue #809.
+  Thanks to Kalloritis (@Kalloritis) for the report and research.
+- Fix a specific scenario with the document count limit quota backend where
+  a user might still be able to upload a new document past the quota limit.
+- Fix typo in the document version upload URL pattern.
+- Standardize the icon for returning to the document from child views.
+- Move the links to return to the document from the page list, version detail
+  and page image, from the facet menu to the secondary menu for proper UX
+  flow.
+- Fix a typo in the resolved smart link URL parameter.
+- Improve resolved smart link access filtering.
+- Allow apps without an urlpatterns entry.
+- Update the Docker image to use Debian 10.3.
+- Update the quota app to work with more deployment types.
+- Add a dependency definition for the gpg binary used by the Django GPG app.
+- Fix document list mode on the cabinet detail view.
+- Fine tune extra small button appearance and space usage.
+- Move some of the extra small button presentation from the template to the
+  stylesheet.
+
 3.4.4 (2020-04-08)
 ==================
 - Add a custom app static media finder to workaround Django's
@@ -126,12 +183,29 @@
 - Remove pathlib2 dependency, it is now part of the standard Python library.
 - Remove Django's admindocs app
 
-3.3.17 (2020-XX-XX)
+3.3.17 (2020-04-09)
 ===================
-- [Backport] Removed a possible race condition when returning the signature of just
+- Removed a possible race condition when returning the signature of just
   signed document using embedded signatures.
-- [Backport] Add development setting for Docker databases.
-- [Backport] Add manage target against Docker databases.
+- Add development setting for Docker databases.
+- Add manage target against Docker databases.
+- Use tmpfs for gunicorn's heartbeat file under Docker. Closes GitLab issue
+  #754. References: https://pythonspeed.com/articles/gunicorn-in-docker/,
+  https://docs.gunicorn.org/en/latest/settings.html#worker-tmp-dir and
+  https://docs.gunicorn.org/en/latest/faq.html#how-do-i-avoid-gunicorn-excessively-blocking-in-os-fchmod
+- Update contributed LDAP setting file.
+- Improve the design of the 404, 403 and 500 error pages.
+- Update production error log settings. Max bytes from 1024
+  to 65535 and backup from 3 to 5.
+- Detect if devpi-server is installed before building
+  the Docker image.
+- Add git-core to the Docker image to allow installing
+  development Python libraries.
+- Send all exception to the log system and let the log system
+  perform the filtering.
+- Add development setting for Docker databases.
+- Add manage target against Docker databases.
+- Copy minor improvements to the default Docker Compose file.
 
 3.3.16 (2020-03-17)
 ===================

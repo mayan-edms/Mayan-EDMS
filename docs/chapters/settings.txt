@@ -10,16 +10,23 @@ Mayan EDMS can be configure via environment variables or by setting files.
 Via environment variables
 =========================
 
+
+#. Go to the :menuselection:`System --> Setup --> Indexes` menu.
+#. Create a new index using :guilabel:`Actions` > :guilabel:`Create new`.
+
+
 To use environment variables, lookup the name of the setting you want to
-override in the "Settings" menu. The "Settings" menu is located inside the
-"Setup" main menu. To pass a value via an environment variable append
+override in the :menuselection:`System --> Setup --> Settings` menu.
+To pass a value via an environment variable append
 ``"MAYAN_"`` to the name of the settings option. For example, to change
 the number of documents displayed per page (``COMMON_PAGINATE_BY``, by default 40),
-use::
+use:
+
+.. code-block:: console
 
     export MAYAN_COMMON_PAGINATE_BY=10
 
-Restart Mayan EDMS and the new value will take effect. The "Settings" menu
+Restart Mayan EDMS and the new value will take effect. The Settings menu
 can be used to verify if the overridden setting value is being interpreted
 correctly.
 
@@ -33,7 +40,9 @@ Via YAML configuration file
 
 It is possible to modify the different settings by creating or editing the
 ``media/config.yml`` file. This file is formatted in the YAML markup language
-(http://yaml.org/). Here is an example of what the looks like::
+(http://yaml.org/). Here is an example of what the looks like:
+
+.. code-block:: yaml
 
     DOCUMENT_PARSING_AUTO_PARSING: true
     DOCUMENT_PARSING_PDFTOTEXT_PATH: /usr/bin/pdftotext
@@ -75,7 +84,9 @@ documentation your ``mayan_settings`` folder should be located in the directory:
 
 Create a file with any valid name and a ``.py`` extension in the
 ``mayan_settings`` folder. The file must starts with a global import of
-``mayan.settings.production``. In the form::
+``mayan.settings.production``. In the form:
+
+.. code-block:: python
 
     from mayan.settings.production import *
 
@@ -83,11 +94,15 @@ Now add the corresponding lines to override the default settings.
 In the settings file, it is not necessary to prepend the string ``MAYAN_`` to
 the setting option. For example, to change the number of documents displayed
 per page (``COMMON_PAGINATE_BY``, by default 40),
-use::
+use:
+
+.. code-block:: python
 
     COMMON_PAGINATE_BY=10
 
-versus::
+versus:
+
+.. code-block:: python
 
     export MAYAN_COMMON_PAGINATE_BY=10
 
@@ -100,11 +115,15 @@ installation method.
 
 For the :doc:`../chapters/deploying` method, the full import path will be
 ``mayan.media.mayan_settings.mysettings`` and can be passed via the
-``--settings`` command line argument like this::
+``--settings`` command line argument like this:
+
+.. code-block:: console
 
     |MAYAN_BIN| runserver --settings=mayan.media.mayan_settings.mysettings
 
-or via the ``DJANGO_SETTINGS_MODULE`` environment variable like this::
+or via the ``DJANGO_SETTINGS_MODULE`` environment variable like this:
+
+.. code-block:: console
 
     export DJANGO_SETTINGS_MODULE=mayan.media.mayan_settings.mysettings
 
@@ -114,13 +133,17 @@ file. In the ``[supervisord]`` section, update the ``environment=`` value of
 ``mayan.media.mayan_settings.mysettings``. Pay attention to the indentation of
 the ``environment=`` entries.
 
-Force supervisor to read the changes and restart using::
+Force supervisor to read the changes and restart using:
+
+.. code-block:: console
 
     sudo supervisorctl reread
     sudo supervisorctl restart all
 
 For the :doc:`../chapters/docker/index` installation method, the full import path will be
 ``mayan_settings.mysettings`` and can only be passed via the
-``MAYAN_SETTINGS_MODULE`` environment variable like this::
+``MAYAN_SETTINGS_MODULE`` environment variable like this:
+
+.. code-block:: console
 
     docker run <...> -e MAYAN_SETTINGS_MODULE=mayan_settings.mysettings

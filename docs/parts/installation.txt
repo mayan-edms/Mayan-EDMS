@@ -6,13 +6,39 @@ The easiest way to use Mayan EDMS is by using the official Docker_ image.
 Make sure Docker is properly installed and working before attempting to install
 Mayan EDMS.
 
-Minimum hardware requirements
-=============================
+Requirements
+============
 
-- 2 Gigabytes of RAM (1 Gigabyte if OCR is turned off).
-- Multiple core CPU (64 bit, faster than 1 GHz recommended).
-- Unix-like operating system like GNU/Linux. For other operating systems
-  user container technologies like Docker or virtual machines.
+Minimum
+-------
+
+- RAM: 1 GB with OCR turned off.
+- CPU: dual core, 64 bit, 1 GHz, Intel Core 2 Duo or similar.
+- Debian GNU/Linux, or a derivative distribution for direct operating system
+  installations. Other operating system can serve as host if the Docker
+  image is used.
+
+
+.. note::
+
+   Installation in hardware with even lower specifications, like single
+   board computer with ARM CPUs is possible with below minimal performance
+   and user experience expectations.
+
+.. note::
+
+   Due to the way container and virtualization technologies work, expected
+   a performance reduction if these are used, with the performance reduction
+   being greater with virtualization. Use hardware that includes hardware
+   level optimizations for virtualization for best results.
+
+
+Recommended
+-----------
+
+- RAM: 2 GB or more.
+- CPU: more than 2 cores, 2 GHz or faster, Intel Core i3 or better.
+- Storage: solid state storage.
 
 
 Installation methods

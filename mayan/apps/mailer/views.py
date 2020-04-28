@@ -174,7 +174,7 @@ class UserMailingDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'title': _('Delete mailing profile: %s') % self.get_object(),
+            'title': _('Delete mailing profile: %s') % self.object,
         }
 
 
@@ -186,11 +186,11 @@ class UserMailingEditView(SingleObjectDynamicFormEditView):
 
     def get_extra_context(self):
         return {
-            'title': _('Edit mailing profile: %s') % self.get_object(),
+            'title': _('Edit mailing profile: %s') % self.object,
         }
 
     def get_form_schema(self):
-        backend = self.get_object().get_backend()
+        backend = self.object.get_backend()
         result = {
             'fields': backend.fields,
             'widgets': getattr(backend, 'widgets', {})

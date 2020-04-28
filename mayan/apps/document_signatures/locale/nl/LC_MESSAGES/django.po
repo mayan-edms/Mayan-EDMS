@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:22-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"PO-Revision-Date: 2020-04-25 21:37+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +75,7 @@ msgstr "Handtekening sleutel-ID"
 
 #: forms.py:51
 msgid "Signature key present?"
-msgstr ""
+msgstr "Handtekening sleutel aanwezig?"
 
 #: forms.py:64
 msgid "Key fingerprint"
@@ -86,7 +87,7 @@ msgstr ""
 
 #: forms.py:73
 msgid "Key expiration date"
-msgstr "Sleutelverloopdatu"
+msgstr "Sleutelverloopdatum"
 
 #: forms.py:78
 msgid "Key length"
@@ -106,7 +107,7 @@ msgstr "Sleutelsoort"
 
 #: links.py:30
 msgid "Verify all documents"
-msgstr "Verifieer alle documenten"
+msgstr "Alle documenten verifiëren"
 
 #: links.py:37 links.py:77 queues.py:8
 msgid "Signatures"
@@ -114,7 +115,7 @@ msgstr "Handtekeningen"
 
 #: links.py:43
 msgid "Delete"
-msgstr "Verwijder"
+msgstr "Verwijderen"
 
 #: links.py:50
 msgid "Sign detached"
@@ -126,7 +127,7 @@ msgstr "Gegevens"
 
 #: links.py:64
 msgid "Download"
-msgstr "Download"
+msgstr "Downloaden"
 
 #: links.py:70
 msgid "Sign embedded"
@@ -142,7 +143,7 @@ msgstr "Documentversie"
 
 #: models.py:43
 msgid "Date signed"
-msgstr ""
+msgstr "Datum ondertekend"
 
 #: models.py:46
 msgid "ID of the key that will be used to sign the document."
@@ -194,15 +195,15 @@ msgstr ""
 
 #: models.py:147
 msgid "signature"
-msgstr "Handtekening"
+msgstr "handtekening"
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
-msgstr ""
+msgstr "Documenten tekenen met gekoppelde handtekeningen"
 
 #: permissions.py:14
 msgid "Sign documents with embedded signatures"
-msgstr ""
+msgstr "Documenten tekenen met ingesloten handtekeningen"
 
 #: permissions.py:18
 msgid "Delete detached signatures"
@@ -218,11 +219,11 @@ msgstr ""
 
 #: permissions.py:30
 msgid "Verify document signatures"
-msgstr ""
+msgstr "Document handtekeningen verifiëren"
 
 #: permissions.py:34
 msgid "View details of document signatures"
-msgstr ""
+msgstr "Details bekijken van document handtekeningen"
 
 #: queues.py:13
 msgid "Verify key signatures"
@@ -234,11 +235,11 @@ msgstr ""
 
 #: queues.py:21
 msgid "Verify document version"
-msgstr ""
+msgstr "Document versie verifiëren"
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
-msgstr ""
+msgstr "Ontbrekende ingesloten handtekening verifiëren"
 
 #: settings.py:19
 msgid "Path to the Storage subclass to use when storing detached signatures."
@@ -268,11 +269,11 @@ msgstr ""
 
 #: views.py:94 views.py:182
 msgid "Document version signed successfully."
-msgstr ""
+msgstr "Documentversie met succes ondertekend."
 
 #: views.py:122 views.py:217
 msgid "Sign"
-msgstr ""
+msgstr "Tekenen"
 
 #: views.py:124
 #, python-format
@@ -292,7 +293,7 @@ msgstr ""
 #: views.py:259
 #, python-format
 msgid "Details for signature: %s"
-msgstr ""
+msgstr "Details voor handtekening: %s"
 
 #: views.py:291
 msgid ""
@@ -303,12 +304,12 @@ msgstr ""
 
 #: views.py:320
 msgid "There are no signatures for this document."
-msgstr ""
+msgstr "Er zijn geen handtekeningen voor dit document."
 
 #: views.py:324
 #, python-format
 msgid "Signatures for document version: %s"
-msgstr ""
+msgstr "Handtekeningen voor documentversie: %s"
 
 #: views.py:356
 #, python-format
@@ -321,11 +322,11 @@ msgstr "Voor een grote database kan deze operatie lang duren."
 
 #: views.py:375
 msgid "Verify all document for signatures?"
-msgstr ""
+msgstr "Alle documenten op handtekeningen verifiëren?"
 
 #: views.py:385
 msgid "Signature verification queued successfully."
-msgstr ""
+msgstr "Handtekeningverificatie met succes in wachtrij."
 
 #: workflow_actions.py:22
 msgid "Private key that will be used to sign the document version."
@@ -339,8 +340,8 @@ msgstr ""
 msgid ""
 "Document has no version to sign. You might be trying to use this action in "
 "an initial state before the created document is yet to be processed."
-msgstr ""
+msgstr "Document heeft geen versie om te tekenen. Misschien probeert u deze actie te gebruiken op een initiële status voordat het aangemaakte document is verwerkt."
 
 #: workflow_actions.py:82
 msgid "Sign document (embedded)"
-msgstr ""
+msgstr "Document tekenen (ingesloten)"

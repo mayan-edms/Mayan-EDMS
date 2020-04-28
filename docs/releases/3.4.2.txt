@@ -130,7 +130,7 @@ Upgrading from Mayan EDMS 3.2.x or earlier
 
    .. code-block:: bash
 
-       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
 
    .. note::
 
@@ -138,14 +138,14 @@ Upgrading from Mayan EDMS 3.2.x or earlier
 
        .. code-block:: bash
 
-           sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 psutil==|PYTHON_PSUTIL_VERSION|
+           sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psutil==|PYTHON_PSUTIL_VERSION|
 
 
 #. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
 
    .. code-block:: bash
 
-       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --no-use-pep517 amqp==|PYTHON_AMQP_VERSION|
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install amqp==|PYTHON_AMQP_VERSION|
 
 
 Upgrading from Mayan EDMS 3.3.x

@@ -185,7 +185,6 @@ class PartialNavigation {
                 $('#modal-server-error .modal-body').html($('#template-error').html());
                 $('#modal-server-error').modal('show')
             } else {
-                console.log([403, 404, 500].indexOf(jqXHR.status));
                 if ([403, 404, 500].indexOf(jqXHR.status !== -1)) {
                     $('#ajax-content').html(jqXHR.responseText);
                 } else {

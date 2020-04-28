@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:21-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"PO-Revision-Date: 2020-04-19 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:112 permissions_runtime.py:5 settings.py:13
+#: apps.py:132 permissions_runtime.py:5 settings.py:13
 msgid "Common"
 msgstr ""
 
@@ -147,7 +147,7 @@ msgstr ""
 
 #: links.py:52
 msgid "Documentation"
-msgstr ""
+msgstr "Documentação"
 
 #: links.py:57
 msgid "Errors"
@@ -357,6 +357,10 @@ msgstr ""
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
+#: settings.py:103
+msgid "Base URL path to use for all views."
+msgstr ""
+
 #: storages.py:13
 msgid ""
 "Unable to initialize the shared uploaded file storage. Check the settings {}"
@@ -406,7 +410,7 @@ msgstr ""
 
 #: views.py:26
 msgid "About"
-msgstr ""
+msgstr "Sobre"
 
 #: views.py:39
 msgid "Current user locale profile details"
@@ -418,7 +422,7 @@ msgstr ""
 
 #: views.py:94
 msgid "Dashboard"
-msgstr ""
+msgstr "Painel de Instrumentos"
 
 #: views.py:112
 #, python-format

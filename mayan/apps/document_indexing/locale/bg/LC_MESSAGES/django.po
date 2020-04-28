@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:22-0400\n"
-"PO-Revision-Date: 2020-04-04 11:31+0000\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"PO-Revision-Date: 2020-04-19 13:00+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -210,7 +210,7 @@ msgstr "Индексира възел за събитие"
 
 #: models.py:385
 msgid "Indexes instances node"
-msgstr "Индексира възел за събитие"
+msgstr "Индексира възел за събития"
 
 #: models.py:447
 msgid "The path to the index including all ancestors."
@@ -258,7 +258,7 @@ msgstr "Преглед на индекси на документи"
 
 #: permissions.py:24
 msgid "Rebuild document indexes"
-msgstr "Възстановете индексите на документи"
+msgstr "Възстановете индекси на документи"
 
 #: queues.py:10
 msgid "Delete empty index nodes"
@@ -390,7 +390,7 @@ msgstr "Редактиране на възела на шаблон за инде
 msgid ""
 "This could mean that no index templates have been created or that there "
 "index templates but they are no properly defined."
-msgstr "Това може да означава, че не са създадени индексни шаблони или че има шаблони за индекс, но те не са дефинирани правилно."
+msgstr "Това може да означава, че не са създадени индексни шаблони или че има такива шаблони, но те не са дефинирани правилно."
 
 #: views.py:332
 msgid "There are no index instances available."

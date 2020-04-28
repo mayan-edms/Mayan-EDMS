@@ -32,22 +32,6 @@ MAYAN_WORKER_FAST_CONCURRENCY=${MAYAN_WORKER_FAST_CONCURRENCY:-0}
 MAYAN_WORKER_MEDIUM_CONCURRENCY=${MAYAN_WORKER_MEDIUM_CONCURRENCY:-0}
 MAYAN_WORKER_SLOW_CONCURRENCY=${MAYAN_WORKER_SLOW_CONCURRENCY:-1}
 
-update_uid_gid() {
-    echo "mayan: update_uid_gid()"
-    groupmod mayan -g ${MAYAN_USER_GID} 2>/dev/null || true
-    usermod mayan -u ${MAYAN_USER_UID} -g ${MAYAN_USER_GID} 2>/dev/null
-
-    if [ ${MAYAN_USER_UID} -ne ${DEFAULT_USER_UID} ] || [ ${MAYAN_USER_GID} -ne ${DEFAULT_USER_GID} ]; then
-        echo "mayan: Updating file ownership. This might take a while if there are many documents."
-        chown -R mayan:mayan ${MAYAN_INSTALL_DIR} ${MAYAN_STATIC_ROOT} 
-        if [ "${MAYAN_SKIP_CHOWN_ON_STARTUP}" = "true" ]; then
-            echo "mayan: skipping chown on startup"
-        else
-            chown -R mayan:mayan ${MAYAN_MEDIA_ROOT}
-        fi
-    fi
-}
-
 if [ "$MAYAN_WORKER_FAST_CONCURRENCY" -eq 0 ]; then
     MAYAN_WORKER_FAST_CONCURRENCY=
 else
@@ -90,31 +74,6 @@ initialsetup() {
     su mayan -c "${MAYAN_BIN} initialsetup --force --no-dependencies"
 }
 
-os_package_installs() {
-    echo "mayan: os_package_installs()"
-    if [ "${MAYAN_APT_INSTALLS}" ]; then
-        DEBIAN_FRONTEND=noninteractive apt_get_install $MAYAN_APT_INSTALLS
-    fi
-}
-
-pip_installs() {
-    echo "mayan: pip_installs()"
-    if [ "${MAYAN_PIP_INSTALLS}" ]; then
-        su mayan -c "${MAYAN_PIP_BIN} install $MAYAN_PIP_INSTALLS"
-    fi
-}
-
-run_all() {
-    echo "mayan: start()"
-    rm -rf /var/run/supervisor.sock
-    exec /usr/bin/supervisord -nc /etc/supervisor/supervisord.conf
-}
-
-performupgrade() {
-    echo "mayan: performupgrade()"
-    su mayan -c "${MAYAN_BIN} performupgrade --no-dependencies"
-}
-
 make_ready() {
     # Check if this is a new install, otherwise try to upgrade the existing
     # installation on subsequent starts
@@ -125,10 +84,45 @@ make_ready() {
     fi
 }
 
-set_uid_guid() {
-    echo "mayan: changing uid/guid"
-    usermod mayan -u ${MAYAN_USER_UID:-${DEFAULT_USER_UID}}
-    groupmod mayan -g ${MAYAN_USER_GID:-${DEFAULT_USER_GID}}
+run_all() {
+    echo "mayan: start()"
+    rm -rf /var/run/supervisor.sock
+    exec /usr/bin/supervisord -nc /etc/supervisor/supervisord.conf
+}
+
+os_package_installs() {
+    echo "mayan: os_package_installs()"
+    if [ "${MAYAN_APT_INSTALLS}" ]; then
+        DEBIAN_FRONTEND=noninteractive apt_get_install $MAYAN_APT_INSTALLS
+    fi
+}
+
+performupgrade() {
+    echo "mayan: performupgrade()"
+    su mayan -c "${MAYAN_BIN} performupgrade --no-dependencies"
+}
+
+pip_installs() {
+    echo "mayan: pip_installs()"
+    if [ "${MAYAN_PIP_INSTALLS}" ]; then
+        su mayan -c "${MAYAN_PIP_BIN} install $MAYAN_PIP_INSTALLS"
+    fi
+}
+
+update_uid_gid() {
+    echo "mayan: update_uid_gid()"
+    groupmod mayan -g ${MAYAN_USER_GID} 2>/dev/null || true
+    usermod mayan -u ${MAYAN_USER_UID} -g ${MAYAN_USER_GID} 2>/dev/null
+
+    if [ ${MAYAN_USER_UID} -ne ${DEFAULT_USER_UID} ] || [ ${MAYAN_USER_GID} -ne ${DEFAULT_USER_GID} ]; then
+        echo "mayan: Updating file ownership. This might take a while if there are many documents."
+        chown -R mayan:mayan ${MAYAN_INSTALL_DIR} ${MAYAN_STATIC_ROOT}
+        if [ "${MAYAN_SKIP_CHOWN_ON_STARTUP}" = "true" ]; then
+            echo "mayan: skipping chown on startup"
+        else
+            chown -R mayan:mayan ${MAYAN_MEDIA_ROOT}
+        fi
+    fi
 }
 
 # Start execution here

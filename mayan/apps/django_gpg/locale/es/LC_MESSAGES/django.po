@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:22-0400\n"
-"PO-Revision-Date: 2020-03-28 07:51+0000\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"PO-Revision-Date: 2020-04-15 02:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -51,6 +51,10 @@ msgstr "Tamaño"
 #: apps.py:73 forms.py:17 models.py:51
 msgid "User ID"
 msgstr "ID de usuario"
+
+#: dependencies.py:10
+msgid "GNU privacy guard - a PGP implementation."
+msgstr "GNU Privacy Guard: una implementación de PGP."
 
 #: forms.py:26
 msgid "None"

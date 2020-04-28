@@ -405,8 +405,16 @@ a i {
     color: #fff;
 }
 
-.btn-list {
+.btn-list > .btn {
     margin-bottom: 2px;
+}
+
+.btn-list > .btn:not(:last-child) {
+    margin-right: 4px;
+}
+
+.btn-xs {
+    padding: 1px 5px 0px;
 }
 
 /*
@@ -617,4 +625,8 @@ a i {
 #list-toolbar.affix {
     top: 60px;  /* OuterHeight of navbar */
     z-index: 90;
+}
+
+.dropdown-menu > li > a {
+    color: #585e5e;
 }

@@ -39,8 +39,8 @@ class MessageDeleteView(SingleObjectDeleteView):
     def get_extra_context(self):
         return {
             'message': None,
-            'object': self.get_object(),
-            'title': _('Delete the message: %s?') % self.get_object(),
+            'object': self.object,
+            'title': _('Delete the message: %s?') % self.object,
         }
 
 
@@ -52,8 +52,8 @@ class MessageEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit message: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Edit message: %s') % self.object,
         }
 
 

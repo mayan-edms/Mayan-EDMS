@@ -6,6 +6,12 @@ import gnupg
 from mayan.apps.storage.utils import mkdtemp
 
 from ..classes import GPGBackend
+from ..literals import DEFAULT_GPG_PATH
+from ..settings import setting_gpg_backend_arguments
+
+gpg_path = setting_gpg_backend_arguments.value.get(
+    'gpg_path', DEFAULT_GPG_PATH
+)
 
 
 class PythonGNUPGBackend(GPGBackend):

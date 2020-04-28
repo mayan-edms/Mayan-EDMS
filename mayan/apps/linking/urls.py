@@ -20,7 +20,7 @@ urlpatterns = [
         view=DocumentSmartLinkListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>\d+)/smart_links/(?P<smart_link_pk>\d+)/$',
+        regex=r'^documents/(?P<document_id>\d+)/smart_links/(?P<smart_link_id>\d+)/$',
         name='smart_link_instance_view', view=ResolvedSmartLinkView.as_view()
     ),
     url(

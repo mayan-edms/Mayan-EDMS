@@ -71,6 +71,10 @@ icon_document_list_deleted = Icon(driver_name='fontawesome', symbol='trash')
 icon_document_list_recent_access = Icon(
     driver_name='fontawesome', symbol='clock'
 )
+icon_document_return = icon_favorite_document_add = Icon(
+    driver_name='fontawesome-dual', primary_symbol='book',
+    secondary_symbol='chevron-left'
+)
 
 icon_favorite_document_list = Icon(driver_name='fontawesome', symbol='star')
 icon_favorite_document_remove = Icon(
@@ -98,7 +102,7 @@ icon_document_page_navigation_next = Icon(
 icon_document_page_navigation_previous = Icon(
     driver_name='fontawesome', symbol='arrow-left'
 )
-icon_document_page_return = icon_document
+icon_document_page_return = icon_document_return
 icon_document_page_rotate_left = Icon(
     driver_name='fontawesome', symbol='undo'
 )
@@ -160,7 +164,7 @@ icon_document_version_download = Icon(
 icon_document_version_list = Icon(
     driver_name='fontawesome', symbol='code-branch'
 )
-icon_document_version_return_document = icon_document
+icon_document_version_return_document = icon_document_return
 icon_document_version_return_list = Icon(
     driver_name='fontawesome', symbol='code-branch'
 )

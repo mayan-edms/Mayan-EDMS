@@ -9,12 +9,13 @@
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
 # Roberto Rosario, 2012
+# Roberto Rosario, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:21-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"PO-Revision-Date: 2020-04-19 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +24,7 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:112 permissions_runtime.py:5 settings.py:13
+#: apps.py:132 permissions_runtime.py:5 settings.py:13
 msgid "Common"
 msgstr "Comune"
 
@@ -33,15 +34,15 @@ msgstr ""
 
 #: classes.py:192
 msgid "Model fields"
-msgstr ""
+msgstr "Campi del modello"
 
 #: classes.py:235
 msgid "Model related fields"
-msgstr ""
+msgstr "Campi relativi al modello"
 
 #: classes.py:240
 msgid "Model reverse fields"
-msgstr ""
+msgstr "Modello campi inversi"
 
 #: dependencies.py:309
 msgid "Used to allow offline translation of the code text strings."
@@ -49,7 +50,7 @@ msgstr "Usato per consentire la traduzione offline delle stringhe di testo nel c
 
 #: dependencies.py:314
 msgid "Provides style checking."
-msgstr ""
+msgstr "Fornisce controllo dello stile."
 
 #: dependencies.py:319
 msgid "Command line environment with autocompletion."
@@ -138,7 +139,7 @@ msgstr "A questo proposito"
 
 #: links.py:37
 msgid "Get the book"
-msgstr ""
+msgstr "Prendi il libro"
 
 #: links.py:42
 msgid "Locale profile"
@@ -178,7 +179,7 @@ msgstr "Codice sorgente"
 
 #: links.py:81
 msgid "Get support"
-msgstr ""
+msgstr "Ottieni supporto"
 
 #: links.py:85 queues.py:13 views.py:212
 msgid "Tools"
@@ -213,7 +214,7 @@ msgstr "Sistema"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
-msgstr ""
+msgstr "Sfaccettatura"
 
 #: menus.py:14
 msgid "Actions"
@@ -221,7 +222,7 @@ msgstr "Azioni "
 
 #: menus.py:15
 msgid "Secondary"
-msgstr ""
+msgstr "Secondario"
 
 #: menus.py:20 models.py:94
 msgid "User"
@@ -298,7 +299,7 @@ msgstr "Default"
 
 #: queues.py:15
 msgid "Common periodic"
-msgstr ""
+msgstr "Comune periodici"
 
 #: queues.py:20
 msgid "Delete stale uploads"
@@ -360,6 +361,10 @@ msgstr "URL dell'installazione o pagina home del progetto."
 msgid "A storage backend that all workers can use to share files."
 msgstr "Un backend di memorizzazione che tutti i lavoratori possono utilizzare per condividere i file."
 
+#: settings.py:103
+msgid "Base URL path to use for all views."
+msgstr ""
+
 #: storages.py:13
 msgid ""
 "Unable to initialize the shared uploaded file storage. Check the settings {}"
@@ -373,7 +378,7 @@ msgstr "Conferma la cancellazione"
 #: templatetags/common_tags.py:39
 #, python-format
 msgid "Edit %s"
-msgstr ""
+msgstr "Modifica %s"
 
 #: templatetags/common_tags.py:42
 msgid "Confirm"
@@ -395,7 +400,7 @@ msgstr "Crea"
 
 #: validators.py:44
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "Immettere un valore JSON valido."
 
 #: validators.py:68
 msgid "Enter a valid YAML value."
@@ -426,11 +431,11 @@ msgstr "Dashboard"
 #: views.py:112
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Cancella le voci del registro errori per: %s"
 
 #: views.py:129
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "Registro errori oggetto cancellato correttamente"
 
 #: views.py:148
 msgid "Date and time"
@@ -444,22 +449,22 @@ msgstr ""
 
 #: views.py:158
 msgid "There are no error log entries"
-msgstr ""
+msgstr "Non ci sono voci nel registro degli errori"
 
 #: views.py:161
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Voci del registro errori per: %s"
 
 #: views.py:189
 msgid "No setup options available."
-msgstr ""
+msgstr "Nessuna opzione di configurazione disponibile."
 
 #: views.py:191
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
+msgstr "Nessun risultato qui significa che non dispongono delle autorizzazioni necessarie per eseguire l'attività amministrativa."
 
 #: views.py:197
 msgid "Setup items"

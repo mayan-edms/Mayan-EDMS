@@ -1,4 +1,6 @@
 from django.conf.urls import url
+from django.contrib import admin
+
 from django.views.i18n import JavaScriptCatalog
 
 from .api_views import (
@@ -56,6 +58,10 @@ urlpatterns = [
 urlpatterns.extend(urlpatterns_error_logs)
 urlpatterns.extend(urlpatterns_misc)
 urlpatterns.extend(urlpatterns_user_locale)
+
+passthru_urlpatterns = [
+    url(regex=r'^admin/', view=admin.site.urls),
+]
 
 api_urls = [
     url(

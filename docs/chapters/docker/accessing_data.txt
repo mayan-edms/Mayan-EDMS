@@ -7,24 +7,38 @@ Accessing outside data
 
 To use Mayan EDMS's staging folders or watch folders from Docker, the data
 for these source must be made accessible to the container. This is done by
-mounting the folders in the host computer to folders inside the container.
+mounting the folders in the host computer to folders inside the container by
+via Docker volumes (https://docs.docker.com/storage/volumes/).
+
 This is necessary because Docker containers do not have access to host data
-on purpose. For example, to make a folder in the host accessible as a watch
-folder, add the following to the Docker command line when starting the
-container::
+on purpose.
+
+The format for the volume option is:
+
+.. code-block:: console
+
+    -v <Host folder>:<Container folder>
+
+For example, to make a host folder named ``/opt/scanned_files`` accessible
+to the container as ``/scanned_files``, use:
+
+.. code-block:: console
 
     -v /opt/scanned_files:/scanned_files
 
-The command line would look like this::
+Now create a watch folder source in Mayan EDMS and use the container path
+``/scanned_files``. The documents from the host folder ``/opt/scanned_files``
+will be automatically available.
 
-    docker run ... -v /opt/scanned_files:/scanned_files mayanedms/mayanedms:latest
+Use the same procedure to mount host folders to be used as staging folders.
+In this example ``/scanned_files`` was used as the container directory, but
+any path can be used as long as:
 
-Now create a watch folder in Mayan EDMS using the path ``/scanned_files``
-and the documents from the host folder ``/opt/scanned_files`` will be
-automatically available. Use the same procedure to mount host folders to be
-used as staging folders. In this example ``/scanned_files`` was used as the
-container directory, but any path can be used as long as:
-
-- the path not an already existing path
+- the path is not an already existing path
 - the path is not used by any other program
 - the path is a single level path
+
+.. note::
+
+   For the changes in the volume configuration to become active, it is necessary
+   to restart the container.

@@ -1,3 +1,5 @@
+from unittest import skip
+
 from mayan.apps.django_gpg.permissions import permission_key_sign
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.models import DocumentVersion
@@ -28,7 +30,8 @@ TEST_SIGNED_DOCUMENT_COUNT = 2
 
 
 class SignaturesViewTestCase(
-    SignatureTestMixin, SignatureViewTestMixin, GenericDocumentViewTestCase
+    KeyTestMixin, SignatureTestMixin, SignatureViewTestMixin,
+    GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 
@@ -69,16 +72,17 @@ class SignaturesViewTestCase(
     def test_signature_detail_view_no_permission(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self._upload_test_document()
-
         self._upload_test_detached_signature()
 
         response = self._request_test_document_version_signature_details_view()
         self.assertEqual(response.status_code, 404)
 
+    @skip('Skip until a new test key is produced.')
     def test_signature_detail_view_with_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self._upload_test_document()
 
+        self._create_test_key_public()
         self._upload_test_detached_signature()
 
         self.grant_access(

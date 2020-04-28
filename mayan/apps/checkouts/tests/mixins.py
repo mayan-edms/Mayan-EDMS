@@ -62,11 +62,11 @@ class DocumentCheckoutViewTestMixin(object):
             }
         )
 
-    def _request_test_document_check_in_post_view(self):
+    def _request_test_document_check_in_post_view(self, follow=False):
         return self.post(
             viewname='checkouts:check_in_document', kwargs={
                 'document_id': self.test_document.pk
-            }
+            }, follow=follow
         )
 
     def _request_test_document_multiple_check_in_post_view(self):
@@ -83,7 +83,7 @@ class DocumentCheckoutViewTestMixin(object):
             },
         )
 
-    def _request_test_document_check_out_post_view(self):
+    def _request_test_document_check_out_post_view(self, follow=False):
         return self.post(
             viewname='checkouts:check_out_document', kwargs={
                 'document_id': self.test_document.pk
@@ -91,7 +91,7 @@ class DocumentCheckoutViewTestMixin(object):
                 'expiration_datetime_unit': TIME_DELTA_UNIT_DAYS,
                 'expiration_datetime_amount': 99,
                 'block_new_version': True
-            }
+            }, follow=follow
         )
 
     def _request_test_document_multiple_check_out_post_view(self):

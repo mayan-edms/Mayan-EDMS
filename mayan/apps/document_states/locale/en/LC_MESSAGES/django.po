@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:22-0400\n"
+"POT-Creation-Date: 2020-04-27 23:35-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -853,33 +853,33 @@ msgstr ""
 msgid "Workflow transition trigger events for: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:247
+#: views/workflow_template_transition_views.py:244
 #, python-format
 msgid "Create a field for workflow transition: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:280
+#: views/workflow_template_transition_views.py:277
 #, python-format
 msgid "Delete workflow transition field: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:309
+#: views/workflow_template_transition_views.py:306
 #, python-format
 msgid "Edit workflow transition field: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:341
+#: views/workflow_template_transition_views.py:338
 msgid ""
 "Workflow transition fields allow adding data to the workflow's context. This "
 "additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr ""
 
-#: views/workflow_template_transition_views.py:347
+#: views/workflow_template_transition_views.py:344
 msgid "There are no fields for this workflow transition"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:351
+#: views/workflow_template_transition_views.py:348
 #, python-format
 msgid "Fields for workflow transition: %s"
 msgstr ""

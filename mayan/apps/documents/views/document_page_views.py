@@ -71,9 +71,6 @@ class DocumentPageNavigationBase(ExternalObjectMixin, RedirectView):
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_page_id'
 
-    def get_object(self):
-        return self.external_object
-
     def get_redirect_url(self, *args, **kwargs):
         """
         Attempt to jump to the same kind of view but resolved to a new
@@ -83,7 +80,7 @@ class DocumentPageNavigationBase(ExternalObjectMixin, RedirectView):
 
         if not previous_url:
             try:
-                previous_url = self.get_object().get_absolute_url()
+                previous_url = self.external_object.get_absolute_url()
             except AttributeError:
                 previous_url = reverse(viewname=setting_home_view.value)
 
@@ -113,24 +110,18 @@ class DocumentPageNavigationBase(ExternalObjectMixin, RedirectView):
 
 class DocumentPageNavigationFirst(DocumentPageNavigationBase):
     def get_new_kwargs(self):
-        document_page = self.get_object()
-
-        return {'document_page_id': document_page.siblings.first().pk}
+        return {'document_page_id': self.external_object.siblings.first().pk}
 
 
 class DocumentPageNavigationLast(DocumentPageNavigationBase):
     def get_new_kwargs(self):
-        document_page = self.get_object()
-
-        return {'document_page_id': document_page.siblings.last().pk}
+        return {'document_page_id': self.external_object.siblings.last().pk}
 
 
 class DocumentPageNavigationNext(DocumentPageNavigationBase):
     def get_new_kwargs(self):
-        document_page = self.get_object()
-
-        new_document_page = document_page.siblings.filter(
-            page_number__gt=document_page.page_number
+        new_document_page = self.external_object.siblings.filter(
+            page_number__gt=self.external_object.page_number
         ).first()
         if new_document_page:
             return {'document_page_id': new_document_page.pk}
@@ -140,15 +131,13 @@ class DocumentPageNavigationNext(DocumentPageNavigationBase):
                     'There are no more pages in this document'
                 ), request=self.request
             )
-            return {'document_page_id': document_page.pk}
+            return {'document_page_id': self.external_object.pk}
 
 
 class DocumentPageNavigationPrevious(DocumentPageNavigationBase):
     def get_new_kwargs(self):
-        document_page = self.get_object()
-
-        new_document_page = document_page.siblings.filter(
-            page_number__lt=document_page.page_number
+        new_document_page = self.external_object.siblings.filter(
+            page_number__lt=self.external_object.page_number
         ).last()
         if new_document_page:
             return {'document_page_id': new_document_page.pk}
@@ -158,7 +147,7 @@ class DocumentPageNavigationPrevious(DocumentPageNavigationBase):
                     'You are already at the first page of this document'
                 ), request=self.request
             )
-            return {'document_page_id': document_page.pk}
+            return {'document_page_id': self.external_object.pk}
 
 
 class DocumentPageView(ExternalObjectMixin, SimpleView):
@@ -172,10 +161,10 @@ class DocumentPageView(ExternalObjectMixin, SimpleView):
         rotation = int(self.request.GET.get('rotation', DEFAULT_ROTATION))
 
         document_page_form = DocumentPageForm(
-            instance=self.get_object(), rotation=rotation, zoom=zoom
+            instance=self.external_object, rotation=rotation, zoom=zoom
         )
 
-        base_title = _('Image of: %s') % self.get_object()
+        base_title = _('Image of: %s') % self.external_object
 
         if zoom != DEFAULT_ZOOM_LEVEL:
             zoom_text = '({}%)'.format(zoom)
@@ -186,15 +175,12 @@ class DocumentPageView(ExternalObjectMixin, SimpleView):
             'form': document_page_form,
             'hide_labels': True,
             'navigation_object_list': ('page',),
-            'page': self.get_object(),
+            'page': self.external_object,
             'rotation': rotation,
             'title': ' '.join((base_title, zoom_text)),
             'read_only': True,
             'zoom': zoom,
         }
-
-    def get_object(self):
-        return self.external_object
 
 
 class DocumentPageViewResetView(RedirectView):

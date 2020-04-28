@@ -105,8 +105,8 @@ class SetupIndexDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Delete the index: %s?') % self.get_object(),
+            'object': self.object,
+            'title': _('Delete the index: %s?') % self.object,
         }
 
 
@@ -121,8 +121,8 @@ class SetupIndexEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit index: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Edit index: %s') % self.object,
         }
 
     def get_save_extra_data(self):
@@ -273,18 +273,18 @@ class TemplateNodeDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'index': self.get_object().index,
+            'index': self.object.index,
             'navigation_object_list': ('index', 'node'),
-            'node': self.get_object(),
+            'node': self.object,
             'title': _(
                 'Delete the index template node: %s?'
-            ) % self.get_object(),
+            ) % self.object,
         }
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='indexing:index_setup_view', kwargs={
-                'index_template_id': self.get_object().index.pk
+                'index_template_id': self.object.index.pk
             }
         )
 
@@ -297,18 +297,18 @@ class TemplateNodeEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'index': self.get_object().index,
+            'index': self.object.index,
             'navigation_object_list': ('index', 'node'),
-            'node': self.get_object(),
+            'node': self.object,
             'title': _(
                 'Edit the index template node: %s?'
-            ) % self.get_object(),
+            ) % self.object,
         }
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='indexing:index_setup_view', kwargs={
-                'index_template_id': self.get_object().index.pk
+                'index_template_id': self.object.index.pk
             }
         )
 

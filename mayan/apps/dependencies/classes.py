@@ -18,6 +18,7 @@ from django.utils.encoding import (
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.six import PY3
+from django.utils.termcolors import colorize
 from django.utils.translation import ugettext_lazy as _, ugettext
 
 from mayan.apps.common.compat import FileNotFoundErrorException
@@ -138,10 +139,15 @@ class Dependency(object):
         return sorted(dependencies, key=lambda x: x.get_label())
 
     @classmethod
-    def check_all(cls):
-        template = '{:<35}{:<11} {:<15} {:<20} {:<15} {:<30} {:<10}'
+    def check_all(cls, as_csv=False, use_color=False):
+        if as_csv:
+            template = '{},{},{},{},{},{},{}'
+        else:
+            template = '{:<35}{:<11} {:<15} {:<20} {:<15} {:<30} {:<10}'
 
-        print('\n  ', end='')
+        if not as_csv:
+            print('\n  ', end='')
+
         print(
             template.format(
                 ugettext('Name'), ugettext('Type'), ugettext('Version'),
@@ -149,10 +155,23 @@ class Dependency(object):
                 ugettext('Other data'), ugettext('Check')
             )
         )
-        print('-' * 140)
+        if not as_csv:
+            print('-' * 140)
 
         for dependency in cls.get_all():
-            print('* ', end='')
+            check = dependency.check()
+
+            if not as_csv and not check and dependency.environment.mark_missing:
+                check = '* {} *'.format(check)
+
+                if use_color:
+                    check = colorize(
+                        text=check, fg='red', opts=('bold', 'blink', 'reverse')
+                    )
+
+            if not as_csv:
+                print('* ', end='')
+
             print(
                 template.format(
                     dependency.name,
@@ -161,9 +180,10 @@ class Dependency(object):
                     force_text(dependency.app_label_verbose_name()),
                     force_text(dependency.get_environment_verbose_name()),
                     force_text(dependency.get_other_data()),
-                    force_text(dependency.check()),
+                    force_text(check),
                 )
             )
+
             sys.stdout.flush()
 
     @classmethod

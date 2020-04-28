@@ -7,7 +7,7 @@ Simple Docker installation
 
 #. Install Docker:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        wget -qO- https://get.docker.com/ | sh
 
@@ -23,28 +23,28 @@ Simple Docker installation
    With Docker properly installed, proceed to download the Mayan EDMS Docker
    image using the command:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        docker pull mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
 
 
 #. Download the PostgreSQL Docker image:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        docker pull |DOCKER_POSTGRES_IMAGE_VERSION|
 
 
 #. Download the Redis Docker image:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        docker pull |DOCKER_REDIS_IMAGE_VERSION|
 
 
 #. Create and run a PostgreSQL container:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        docker run \
        -d \
@@ -66,7 +66,7 @@ Simple Docker installation
 
 #. Create and run a Redis container:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        docker run \
        -d \
@@ -91,7 +91,7 @@ Simple Docker installation
 
 #. Create and run a Mayan EDMS container:
 
-   .. code-block:: bash
+   .. code-block:: console
 
        docker run \
        -d \

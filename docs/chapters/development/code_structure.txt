@@ -167,22 +167,6 @@ Only exception is when the tail of the message contains an exceptions message
 as passed directly from the exception object.
 
 
-Steps to deploy a development version
-=====================================
-
-.. code-block:: bash
-
-    $ git clone |SOURCE_CODE_GIT|
-    $ cd mayan-edms
-    $ git checkout <Corresponding branch>
-    $ virtualenv venv
-    $ source venv/bin/activate
-    $ pip install -r requirements.txt
-    $ ./manage.py initialsetup
-    $ ./manage.py runserver
-
-
-
 Debugging
 =========
 

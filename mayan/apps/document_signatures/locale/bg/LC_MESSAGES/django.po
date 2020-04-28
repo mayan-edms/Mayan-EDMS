@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:22-0400\n"
-"PO-Revision-Date: 2020-03-28 13:35+0000\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"PO-Revision-Date: 2020-04-22 08:43+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -253,11 +253,11 @@ msgstr "Аргументи за подаване към SIGNATURE_STORAGE_BACKEN
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
-msgstr "Не може да се инициализира съхранението на обособени подписи. Проверете настройките {} и {} за грешки във форматирането."
+msgstr "Не може да се инициализира съхранението на отделени подписи. Проверете настройките {} и {} за грешки във форматирането."
 
 #: storages.py:21
 msgid "Detached signatures"
-msgstr "Обособени подписи"
+msgstr "Отделени подписи"
 
 #: views.py:68 views.py:156
 msgid "Passphrase is needed to unlock this key."
@@ -293,7 +293,7 @@ msgstr "Изтрийте отделен подпис: %s"
 #: views.py:259
 #, python-format
 msgid "Details for signature: %s"
-msgstr "Подробности за подпис: %s"
+msgstr "Данни за подпис: %s"
 
 #: views.py:291
 msgid ""
@@ -322,7 +322,7 @@ msgstr "При големи бази данни тази операция мож
 
 #: views.py:375
 msgid "Verify all document for signatures?"
-msgstr "Проверете всички документи за подписи?"
+msgstr "Да проверите ли всички документи за подписи?"
 
 #: views.py:385
 msgid "Signature verification queued successfully."

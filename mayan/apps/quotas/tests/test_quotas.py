@@ -31,6 +31,20 @@ class DocumentCountQuotaTestCase(GroupTestMixin, GenericDocumentTestCase):
         with self.assertRaises(expected_exception=QuotaExceeded):
             self._upload_test_document()
 
+    def test_user_all_document_type_all_two_users(self):
+        self.test_quota = DocumentCountQuota.create(
+            documents_limit=1,
+            document_type_all=True,
+            document_type_ids=(),
+            group_ids=(),
+            user_all=True,
+            user_ids=(),
+        )
+        self._create_test_user()
+
+        with self.assertRaises(expected_exception=QuotaExceeded):
+            self._upload_test_document(_user=self.test_user)
+
     def test_user_all_document_type_test(self):
         self.test_quota = DocumentCountQuota.create(
             documents_limit=1,

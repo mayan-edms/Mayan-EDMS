@@ -1,0 +1,52 @@
+#!/bin/bash
+#
+# An example hook script to check the commit log message.
+# Called by "git commit" with one argument, the name of the file
+# that has the commit message.  The hook should exit with non-zero
+# status after issuing an appropriate message if it wants to stop the
+# commit.  The hook is allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "commit-msg".
+
+# Uncomment the below to add a Signed-off-by line to the message.
+# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
+# hook is more suited to it.
+#
+# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+
+# This example catches duplicate Signed-off-by lines.
+
+test "" = "$(grep '^Signed-off-by: ' "$1" |
+     sort | uniq -c | sed -e '/^[   ]*1[    ]/d')" || {
+    echo >&2 Duplicate Signed-off-by lines.
+    exit 1
+}
+
+# Make sure the first line is not longer than 50 characters
+count=0
+while IFS= read -r line; do
+    if (( $count == 0 )); then
+        if (( $(echo $line| wc -m) > 50 )); then
+            echo >&2 First line is longer than 50 characters.
+            exit 1;
+        fi
+    fi
+    count=$((count+1))
+done <<< `cat $1`
+
+
+# Make sure the first line is not longer than 50 characters
+count=0
+while IFS= read -r line; do
+    if (( $count > 0 )); then
+        if [[ $line != "#"* ]]; then
+            echo $line
+            if (( $(echo $line| wc -m) > 79 )); then
+                echo >&2 Body line $count is longer than 79 characters.
+                exit 1;
+            fi
+        fi
+    fi
+    count=$((count+1))
+done <<< `cat $1`

@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:22-0400\n"
-"PO-Revision-Date: 2020-02-14 04:18+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"PO-Revision-Date: 2020-04-26 17:00+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,7 +33,7 @@ msgstr "Acteur"
 
 #: apps.py:46 apps.py:75
 msgid "Event"
-msgstr ""
+msgstr "Gebeurtenis"
 
 #: apps.py:50 apps.py:80
 msgid "Target"
@@ -52,12 +53,12 @@ msgstr "Label"
 
 #: apps.py:86
 msgid "Seen"
-msgstr ""
+msgstr "Gezien"
 
 #: classes.py:69
 #, python-format
 msgid "Unknown or obsolete event type: %s"
-msgstr ""
+msgstr "Onbekend of overbodig gebeurtenistype: %s"
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
@@ -73,11 +74,11 @@ msgstr ""
 
 #: html_widgets.py:55
 msgid "System"
-msgstr ""
+msgstr "Systeem"
 
 #: links.py:43
 msgid "My events"
-msgstr ""
+msgstr "Mijn gebeurtenissen"
 
 #: links.py:61 models.py:65 views.py:78
 msgid "Event subscriptions"
@@ -85,11 +86,11 @@ msgstr ""
 
 #: links.py:65
 msgid "Mark as seen"
-msgstr ""
+msgstr "Markeren als gezien"
 
 #: links.py:69
 msgid "Mark all as seen"
-msgstr ""
+msgstr "Alle markeren als gezien"
 
 #: links.py:74
 msgid "Subscriptions"
@@ -101,11 +102,11 @@ msgstr "Naam"
 
 #: models.py:27
 msgid "Stored event type"
-msgstr ""
+msgstr "Opgeslagen gebeurtenistype"
 
 #: models.py:28
 msgid "Stored event types"
-msgstr ""
+msgstr "Opgeslagen gebeurtenistypes"
 
 #: models.py:54 models.py:81 models.py:113
 msgid "User"
@@ -125,15 +126,15 @@ msgstr "Actie"
 
 #: models.py:87
 msgid "Read"
-msgstr ""
+msgstr "Lezen"
 
 #: models.py:93
 msgid "Notification"
-msgstr ""
+msgstr "Melding"
 
 #: models.py:94 views.py:117
 msgid "Notifications"
-msgstr ""
+msgstr "Meldingen"
 
 #: models.py:123
 msgid "Object event subscription"
@@ -162,17 +163,17 @@ msgstr ""
 
 #: views.py:115
 msgid "There are no notifications"
-msgstr ""
+msgstr "Er zijn geen meldingen"
 
 #: views.py:164
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr ""
+msgstr "Gebeurtenissen zijn acties die zijn uitgevoerd op dit object of door gebruik van dit object."
 
 #: views.py:167
 msgid "There are no events for this object"
-msgstr ""
+msgstr "Er zijn geen gebeurtenissen voor dit object"
 
 #: views.py:169
 #, python-format

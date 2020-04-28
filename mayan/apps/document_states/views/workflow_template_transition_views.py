@@ -69,18 +69,18 @@ class WorkflowTemplateTransitionDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
+            'object': self.object,
             'navigation_object_list': ('object', 'workflow'),
             'title': _(
                 'Delete workflow transition: %s?'
             ) % self.object,
-            'workflow': self.get_object().workflow,
+            'workflow': self.object.workflow,
         }
 
     def get_success_url(self):
         return reverse(
             viewname='document_states:workflow_template_transition_list',
-            kwargs={'workflow_template_id': self.get_object().workflow.pk}
+            kwargs={'workflow_template_id': self.object.workflow.pk}
         )
 
 
@@ -93,24 +93,24 @@ class WorkflowTemplateTransitionEditView(SingleObjectEditView):
     def get_extra_context(self):
         return {
             'navigation_object_list': ('object', 'workflow'),
-            'object': self.get_object(),
+            'object': self.object,
             'title': _(
                 'Edit workflow transition: %s'
             ) % self.object,
-            'workflow': self.get_object().workflow,
+            'workflow': self.object.workflow,
         }
 
     def get_form_kwargs(self):
         kwargs = super(
             WorkflowTemplateTransitionEditView, self
         ).get_form_kwargs()
-        kwargs['workflow'] = self.get_object().workflow
+        kwargs['workflow'] = self.object.workflow
         return kwargs
 
     def get_success_url(self):
         return reverse(
             viewname='document_states:workflow_template_transition_list',
-            kwargs={'workflow_template_id': self.get_object().workflow.pk}
+            kwargs={'workflow_template_id': self.object.workflow.pk}
         )
 
 
@@ -185,19 +185,19 @@ class WorkflowTemplateTransitionTriggerEventListView(ExternalObjectMixin, FormVi
         return {
             'form_display_mode_table': True,
             'navigation_object_list': ('object', 'workflow'),
-            'object': self.get_object(),
+            'object': self.external_object,
             'subtitle': _(
                 'Triggers are events that cause this transition to execute '
                 'automatically.'
             ),
             'title': _(
                 'Workflow transition trigger events for: %s'
-            ) % self.get_object(),
-            'workflow': self.get_object().workflow,
+            ) % self.external_object,
+            'workflow': self.external_object.workflow,
         }
 
     def get_initial(self):
-        obj = self.get_object()
+        obj = self.external_object
         initial = []
 
         # Return the queryset by name from the sorted list of the class
@@ -218,13 +218,10 @@ class WorkflowTemplateTransitionTriggerEventListView(ExternalObjectMixin, FormVi
             })
         return initial
 
-    def get_object(self):
-        return self.external_object
-
     def get_post_action_redirect(self):
         return reverse(
             viewname='document_states:workflow_template_transition_list',
-            kwargs={'workflow_template_id': self.get_object().workflow.pk}
+            kwargs={'workflow_template_id': self.external_object.workflow.pk}
         )
 
 

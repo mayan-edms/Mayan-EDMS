@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:22-0400\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -36,11 +36,11 @@ msgstr "Iekšējais nosaukums"
 msgid "Description"
 msgstr "Apraksts"
 
-#: apps.py:45 classes.py:147
+#: apps.py:45 classes.py:153
 msgid "Type"
 msgstr "Tips"
 
-#: apps.py:49 classes.py:149
+#: apps.py:49 classes.py:155
 msgid "Other data"
 msgstr "Citi dati"
 
@@ -48,77 +48,77 @@ msgstr "Citi dati"
 msgid "Declared by"
 msgstr "Deklarēja"
 
-#: apps.py:57 classes.py:147
+#: apps.py:57 classes.py:153
 msgid "Version"
 msgstr "Versija"
 
-#: apps.py:61 classes.py:148 classes.py:763
+#: apps.py:61 classes.py:154 classes.py:783
 msgid "Environment"
 msgstr "Vide"
 
-#: apps.py:64 classes.py:149
+#: apps.py:64 classes.py:155
 msgid "Check"
 msgstr "Pārbaudiet"
 
-#: classes.py:147
+#: classes.py:153
 msgid "Name"
 msgstr "Nosaukums"
 
-#: classes.py:148
+#: classes.py:154
 msgid "App"
 msgstr "App"
 
-#: classes.py:249
+#: classes.py:269
 msgid "Need to specify at least one: app_label or module."
 msgstr "Nepieciešams norādīt vismaz vienu: app_label vai moduli."
 
-#: classes.py:254
+#: classes.py:274
 #, python-format
 msgid "Dependency \"%s\" already registered."
 msgstr "Atkarība \"%s\" jau ir reģistrēta."
 
-#: classes.py:280
+#: classes.py:300
 #, python-format
 msgid "Installing package: %s... "
 msgstr "Pakotnes instalēšana: %s ..."
 
-#: classes.py:285
+#: classes.py:305
 msgid "Already installed."
 msgstr "Jau instalēta."
 
-#: classes.py:288 classes.py:293 classes.py:297
+#: classes.py:308 classes.py:313 classes.py:317
 msgid "Complete."
 msgstr "Pabeigts."
 
-#: classes.py:323
+#: classes.py:343
 msgid "Installed and correct version"
 msgstr "Instalēta un pareiza versija"
 
-#: classes.py:325
+#: classes.py:345
 msgid "Missing or incorrect version"
 msgstr "Trūkst vai ir nepareiza versija"
 
-#: classes.py:354
+#: classes.py:374
 msgid "None"
 msgstr "Nav neviens"
 
-#: classes.py:363
+#: classes.py:383
 msgid "Not specified"
 msgstr "Nav precizēts"
 
-#: classes.py:366
+#: classes.py:386
 msgid "Patching files... "
 msgstr "Notiek failu lāpīšana ..."
 
-#: classes.py:394
+#: classes.py:414
 msgid "Executables that are called directly by the code."
 msgstr "Izpildāms, ko tieši sauc par kodu."
 
-#: classes.py:396
+#: classes.py:416
 msgid "Binary"
 msgstr "Binārs"
 
-#: classes.py:413
+#: classes.py:433
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
@@ -126,51 +126,51 @@ msgstr ""
 "JavaScript bibliotēkas lejupielādēja no NPM reģistra un tika izmantotas "
 "front-end funkcionalitātei."
 
-#: classes.py:416
+#: classes.py:436
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: classes.py:450 classes.py:683
+#: classes.py:470 classes.py:703
 msgid "Downloading... "
 msgstr "Notiek lejupielāde ..."
 
-#: classes.py:453
+#: classes.py:473
 msgid "Verifying... "
 msgstr "Verificēšana ..."
 
-#: classes.py:456 classes.py:686
+#: classes.py:476 classes.py:706
 msgid "Extracting... "
 msgstr "Izvilkšana ..."
 
-#: classes.py:635
+#: classes.py:655
 msgid "Python packages downloaded from PyPI."
 msgstr "Python paketes lejupielādētas no PyPI."
 
-#: classes.py:637
+#: classes.py:657
 msgid "Python"
 msgstr "Python"
 
-#: classes.py:664
+#: classes.py:684
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr "Fonti, kas lejupielādēti no fonts.googleapis.com."
 
-#: classes.py:666
+#: classes.py:686
 msgid "Google font"
 msgstr "Google fonti"
 
-#: classes.py:745
+#: classes.py:765
 msgid "Declared in app"
 msgstr "Paziņots lietotnē"
 
-#: classes.py:746
+#: classes.py:766
 msgid "Show dependencies by the app that declared them."
 msgstr "Rādīt atkarības pēc lietotnēm, kas tās deklarēja."
 
-#: classes.py:750
+#: classes.py:770
 msgid "Class"
 msgstr "Klase"
 
-#: classes.py:751
+#: classes.py:771
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
@@ -178,11 +178,11 @@ msgstr ""
 "Rādīt dažādu atkarību klases. Klases parasti tiek sadalītas pēc valodas vai "
 "atkarības faila veidiem."
 
-#: classes.py:756
+#: classes.py:776
 msgid "State"
 msgstr "Valsts"
 
-#: classes.py:757
+#: classes.py:777
 msgid ""
 "Show the different states of the dependencies. True means that the "
 "dependencies is installed and is of a correct version. False means the "
@@ -191,7 +191,7 @@ msgstr ""
 "Rādīt dažādos atkarību stāvokļus. True nozīmē, ka atkarības ir instalētas un"
 " ir pareizas. False nozīmē, ka trūkst atkarību vai ir nepareiza versija."
 
-#: classes.py:764
+#: classes.py:784
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
@@ -199,7 +199,7 @@ msgstr ""
 "Atkarības, kas nepieciešamas vienai videi, var nebūt nepieciešama citai. "
 "Vides paraugi: Produkcijas vide, Izstrādes vide."
 
-#: environments.py:18
+#: environments.py:19
 msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing dependencies under this environment."
@@ -207,11 +207,11 @@ msgstr ""
 "Vide, ko izmanto programmatūras izplatāmo pakešu veidošanai. Gala lietotāji "
 "var ignorēt trūkstošās atkarības šajā vidē."
 
-#: environments.py:21
+#: environments.py:22
 msgid "Build"
 msgstr "Būvēt"
 
-#: environments.py:25
+#: environments.py:26
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing dependencies under this environment."
@@ -219,21 +219,21 @@ msgstr ""
 "Vide, ko izstrādātāji izmanto, lai veiktu izmaiņas kodā. Gala lietotāji var "
 "ignorēt trūkstošās atkarības šajā vidē."
 
-#: environments.py:27
+#: environments.py:28
 msgid "Development"
 msgstr "Attīstība"
 
-#: environments.py:31
+#: environments.py:32
 msgid ""
 "Environment used for building the documentation. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
 
-#: environments.py:33
+#: environments.py:34
 msgid "Documentation"
 msgstr "Dokumentācija"
 
-#: environments.py:37
+#: environments.py:38
 msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
@@ -241,11 +241,11 @@ msgstr ""
 "Normāla vide gala lietotājiem. Trūkstošas atkarības šajā vidē radīs "
 "problēmas un kļūdas normālas lietošanas laikā."
 
-#: environments.py:39
+#: environments.py:40
 msgid "Production"
 msgstr "Ražošana"
 
-#: environments.py:43
+#: environments.py:44
 msgid ""
 "Environment used running the test suit to verify the functionality of the "
 "code. Dependencies in this environment are not needed for normal production "
@@ -255,7 +255,7 @@ msgstr ""
 "funkcionalitāti. Atšķirības šajā vidē nav nepieciešamas normālai ražošanas "
 "izmantošanai."
 
-#: environments.py:46
+#: environments.py:47
 msgid "Testing"
 msgstr "Testēšana"
 
@@ -278,6 +278,10 @@ msgstr "Detaļas"
 #: links.py:36
 msgid "Dependencies licenses"
 msgstr "Atkarības licences"
+
+#: management/commands/checkdependencies.py:13
+msgid "Outputs the dependencies as a comma delimited values list."
+msgstr ""
 
 #: management/commands/generaterequirements.py:14
 msgid ""

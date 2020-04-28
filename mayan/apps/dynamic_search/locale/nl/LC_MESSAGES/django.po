@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Johan Braeken, 2017
 # Lucas Weel <ljj.weel@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:22-0400\n"
-"PO-Revision-Date: 2020-04-04 05:54+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"PO-Revision-Date: 2020-04-25 22:24+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,7 +46,7 @@ msgstr "Zoektermen"
 #: links.py:6 settings.py:5 templates/dynamic_search/search_box.html:43
 #: views.py:59 views.py:72
 msgid "Search"
-msgstr "Zoek"
+msgstr "Zoeken"
 
 #: links.py:9 templates/dynamic_search/search_box.html:45 views.py:86
 msgid "Advanced search"
@@ -53,7 +54,7 @@ msgstr "Geavanceerd zoeken"
 
 #: links.py:13
 msgid "Search again"
-msgstr "Zoek nog een keer"
+msgstr "Opnieuw zoeken"
 
 #: settings.py:11
 msgid "Full path to the backend to be used to handle the search."
@@ -70,18 +71,18 @@ msgstr "Geavanceerd"
 
 #: views.py:24
 msgid "Try again using different terms. "
-msgstr ""
+msgstr "Opnieuw proberen met andere zoektermen."
 
 #: views.py:26
 msgid "No search results"
-msgstr ""
+msgstr "Geen zoekresultaten"
 
 #: views.py:28
 #, python-format
 msgid "Search results for: %s"
-msgstr ""
+msgstr "Zoekresultaten voor: %s"
 
 #: views.py:74
 #, python-format
 msgid "Search for: %s"
-msgstr ""
+msgstr "Zoeken naar: %s"

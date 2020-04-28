@@ -82,8 +82,8 @@ class CabinetDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Delete the cabinet: %s?') % self.get_object(),
+            'object': self.object,
+            'title': _('Delete the cabinet: %s?') % self.object,
         }
 
 
@@ -96,8 +96,8 @@ class CabinetDetailView(ExternalObjectMixin, DocumentListView):
     def get_document_queryset(self):
         return self.external_object.documents.all()
 
-    def get_context_data(self, **kwargs):
-        context = super(CabinetDetailView, self).get_context_data(**kwargs)
+    def get_extra_context(self, **kwargs):
+        context = super(CabinetDetailView, self).get_extra_context(**kwargs)
 
         context.update(
             {
@@ -146,8 +146,8 @@ class CabinetEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit cabinet: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Edit cabinet: %s') % self.object,
         }
 
     def get_save_extra_data(self):

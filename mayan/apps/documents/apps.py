@@ -536,7 +536,7 @@ class DocumentsApp(MayanAppConfig):
             ), sources=('documents:document_page_view',)
         )
         menu_facet.bind_links(
-            links=(link_document_page_return, link_document_page_view),
+            links=(link_document_page_view,),
             sources=(DocumentPage,)
         )
         menu_facet.bind_links(
@@ -546,6 +546,9 @@ class DocumentsApp(MayanAppConfig):
                 link_document_page_navigation_next,
                 link_document_page_navigation_last
             ), sources=(DocumentPage,)
+        )
+        menu_list_facet.bind_links(
+            links=(link_transformation_list,), sources=(DocumentPage,)
         )
         menu_multi_item.bind_links(
             links=(
@@ -557,19 +560,20 @@ class DocumentsApp(MayanAppConfig):
             links=(link_document_page_disable, link_document_page_enable),
             sources=(DocumentPage,)
         )
-        menu_list_facet.bind_links(
-            links=(link_transformation_list,), sources=(DocumentPage,)
+        menu_secondary.bind_links(
+            links=(link_document_page_return,),
+            sources=(DocumentPage,)
         )
 
         # Document versions
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
+            links=(link_document_version_view,), sources=(DocumentVersion,)
+        )
+        menu_secondary.bind_links(
             links=(
                 link_document_version_return_document,
                 link_document_version_return_list
             ), sources=(DocumentVersion,)
-        )
-        menu_list_facet.bind_links(
-            links=(link_document_version_view,), sources=(DocumentVersion,)
         )
 
         post_delete.connect(

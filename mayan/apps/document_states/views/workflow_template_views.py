@@ -242,8 +242,8 @@ class WorkflowTemplatePreviewView(SingleObjectDetailView):
     def get_extra_context(self):
         return {
             'hide_labels': True,
-            'object': self.get_object(),
-            'title': _('Preview of: %s') % self.get_object()
+            'object': self.object,
+            'title': _('Preview of: %s') % self.object
         }
 
 

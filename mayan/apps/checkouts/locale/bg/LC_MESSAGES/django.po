@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:21-0400\n"
-"PO-Revision-Date: 2020-04-04 14:54+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"PO-Revision-Date: 2020-04-28 03:38+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Checkouts"
 msgstr "Изписване"
 
-#: dashboard_widgets.py:14 views.py:173
+#: dashboard_widgets.py:14 views.py:181
 msgid "Checked out documents"
 msgstr "Изписани документи"
 
@@ -41,6 +41,10 @@ msgstr "Документът е изписан"
 #: events.py:18
 msgid "Document forcefully checked in"
 msgstr "Документът е принудително регистриран"
+
+#: exceptions.py:16
+msgid "Document not checked out."
+msgstr ""
 
 #: exceptions.py:25
 msgid "Document already checked out."
@@ -182,42 +186,42 @@ msgstr "Провери изписванията с изтекъл срок"
 msgid "Primary key of the document to be checked out."
 msgstr "Основен ключ на документа, който трябва да бъде изписан."
 
-#: views.py:33
+#: views.py:35
 #, python-format
 msgid "Check in %(count)d document"
 msgid_plural "Check in %(count)d documents"
 msgstr[0] "Проверете в документа %(count)d"
 msgstr[1] "Впишете %(count)d документа"
 
-#: views.py:46
+#: views.py:48
 #, python-format
 msgid "Check in document: %s"
 msgstr "Впишете документ: %s"
 
-#: views.py:101
+#: views.py:106
 #, python-format
 msgid "Checkout %(count)d document"
 msgid_plural "Checkout %(count)d documents"
 msgstr[0] "Checkout %(count)d документ"
 msgstr[1] "Изпишете %(count)d документа"
 
-#: views.py:114
+#: views.py:119
 #, python-format
 msgid "Check out document: %s"
 msgstr "Изпиши документ: %s"
 
-#: views.py:150
+#: views.py:158
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Данни за изписването на документ: %s"
 
-#: views.py:169
+#: views.py:177
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr "Изписването на документ блокира някои операции за предварително определен период от време."
 
-#: views.py:172
+#: views.py:180
 msgid "No documents have been checked out"
 msgstr "Не са изписани документи"
 

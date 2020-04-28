@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:21-0400\n"
-"PO-Revision-Date: 2019-12-04 06:48+0000\n"
-"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"PO-Revision-Date: 2020-04-28 03:38+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Checkouts"
 msgstr "Izraksti"
 
-#: dashboard_widgets.py:14 views.py:173
+#: dashboard_widgets.py:14 views.py:181
 msgid "Checked out documents"
 msgstr "Izrakstītie dokumenti"
 
@@ -41,6 +41,10 @@ msgstr "Dokuments izrakstīts"
 #: events.py:18
 msgid "Document forcefully checked in"
 msgstr "Dokuments piespiedus pierakstīts"
+
+#: exceptions.py:16
+msgid "Document not checked out."
+msgstr ""
 
 #: exceptions.py:25
 msgid "Document already checked out."
@@ -182,7 +186,7 @@ msgstr "Pārbaudiet izbeigušos izrakstus"
 msgid "Primary key of the document to be checked out."
 msgstr "Izrakstāmā dokumenta primārā atslēga."
 
-#: views.py:33
+#: views.py:35
 #, python-format
 msgid "Check in %(count)d document"
 msgid_plural "Check in %(count)d documents"
@@ -190,12 +194,12 @@ msgstr[0] "Pierakstīt %(count)d dokumentus"
 msgstr[1] "Pierakstīt %(count)d dokumentu"
 msgstr[2] "Pierakstīt %(count)d dokumentus"
 
-#: views.py:46
+#: views.py:48
 #, python-format
 msgid "Check in document: %s"
 msgstr "Pierakstīt dokumentu: %s"
 
-#: views.py:101
+#: views.py:106
 #, python-format
 msgid "Checkout %(count)d document"
 msgid_plural "Checkout %(count)d documents"
@@ -203,23 +207,23 @@ msgstr[0] "Izrakstīt %(count)d dokumentus"
 msgstr[1] "Izrakstīt %(count)d dokumentu"
 msgstr[2] "Izrakstīt %(count)d dokumentus"
 
-#: views.py:114
+#: views.py:119
 #, python-format
 msgid "Check out document: %s"
 msgstr "Izrakstīt dokumentu: %s"
 
-#: views.py:150
+#: views.py:158
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Izraksta detaļas dokumentam: %s"
 
-#: views.py:169
+#: views.py:177
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr "Izrakstot dokumentu, noteiktas darbības tiek bloķētas uz noteiktu laiku."
 
-#: views.py:172
+#: views.py:180
 msgid "No documents have been checked out"
 msgstr "Neviens dokuments nav izrakstīts"
 

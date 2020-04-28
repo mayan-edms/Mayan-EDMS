@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:22-0400\n"
-"PO-Revision-Date: 2020-03-28 13:20+0000\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"PO-Revision-Date: 2020-04-19 12:21+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -51,6 +51,10 @@ msgstr "Дължина"
 msgid "User ID"
 msgstr "Потребител №"
 
+#: dependencies.py:10
+msgid "GNU privacy guard - a PGP implementation."
+msgstr "GNU защита на поверителността - PGP изпълнение."
+
 #: forms.py:26
 msgid "None"
 msgstr "Няма"
@@ -69,7 +73,7 @@ msgstr "Условие"
 
 #: forms.py:46
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Име, е-мейл, ключ № или отпечатък от ключ, за преглед."
+msgstr "Име, е-мейл, ключ № или ключов отпечатък, за преглед."
 
 #: links.py:17
 msgid "Delete"
@@ -85,7 +89,7 @@ msgstr "Сваляне"
 
 #: links.py:32 permissions.py:26
 msgid "Query keyservers"
-msgstr "Запитване към сървъри за ключове"
+msgstr "Ключови сървъри за търсене"
 
 #: links.py:37
 msgid "Import"
@@ -125,7 +129,7 @@ msgstr "DSA"
 
 #: literals.py:35
 msgid "Elgamal"
-msgstr "Elgamal"
+msgstr "ElGamal (асиметричен алгоритъм за криптиране)"
 
 #: literals.py:49
 msgid "Bad signature."

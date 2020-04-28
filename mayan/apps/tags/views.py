@@ -196,8 +196,8 @@ class TagEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit tag: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Edit tag: %s') % self.object,
         }
 
     def get_save_extra_data(self):

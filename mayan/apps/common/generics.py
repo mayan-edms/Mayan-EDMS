@@ -64,6 +64,9 @@ class MultiFormView(DjangoFormView):
         self.forms = self.get_forms(form_classes=form_classes)
         return super(MultiFormView, self).dispatch(request, *args, **kwargs)
 
+    def forms_invalid(self, forms):
+        return self.render_to_response(self.get_context_data(forms=forms))
+
     def forms_valid(self, forms):
         for form_name, form in forms.items():
             form_valid_method = '{}_form_valid'.format(form_name)
@@ -74,9 +77,6 @@ class MultiFormView(DjangoFormView):
         self.all_forms_valid(forms=forms)
 
         return HttpResponseRedirect(redirect_to=self.get_success_url())
-
-    def forms_invalid(self, forms):
-        return self.render_to_response(self.get_context_data(forms=forms))
 
     def get_context_data(self, **kwargs):
         """
@@ -90,6 +90,9 @@ class MultiFormView(DjangoFormView):
 
     def get_form_classes(self):
         return self.form_classes
+
+    def get_form_extra_kwargs(self, form_name):
+        return None
 
     def get_form_kwargs(self, form_name):
         kwargs = {}
@@ -107,9 +110,6 @@ class MultiFormView(DjangoFormView):
         kwargs.update(self.get_form_extra_kwargs(form_name=form_name) or {})
 
         return kwargs
-
-    def get_form_extra_kwargs(self, form_name):
-        return None
 
     def get_forms(self, form_classes):
         return dict(

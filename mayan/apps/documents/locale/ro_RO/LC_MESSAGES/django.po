@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:22-0400\n"
-"PO-Revision-Date: 2020-04-02 06:56+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"PO-Revision-Date: 2020-04-21 07:42+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1011,27 +1011,27 @@ msgstr "Nu sunt disponibile pagini în document"
 msgid "Pages for document: %s"
 msgstr "Pagini pentru document: %s"
 
-#: views/document_page_views.py:140
+#: views/document_page_views.py:131
 msgid "There are no more pages in this document"
 msgstr "Nu mai sunt pagini în acest document."
 
-#: views/document_page_views.py:158
+#: views/document_page_views.py:147
 msgid "You are already at the first page of this document"
 msgstr "Sunteți deja la prima pagină a acestui document"
 
-#: views/document_page_views.py:178
+#: views/document_page_views.py:167
 #, python-format
 msgid "Image of: %s"
 msgstr "Imaginea: %s"
 
-#: views/document_page_views.py:279
+#: views/document_page_views.py:265
 msgid "Disable the selected document page?"
 msgid_plural "Disable the selected document pages?"
 msgstr[0] "Dezactivați pagina documentului selectat?"
 msgstr[1] "Dezactivați paginile de document selectate?"
 msgstr[2] "Dezactivați paginile de document selectate?"
 
-#: views/document_page_views.py:309
+#: views/document_page_views.py:295
 msgid "Enable the selected document page?"
 msgid_plural "Enable the selected document pages?"
 msgstr[0] "Activați pagina documentului selectat?"
@@ -1123,16 +1123,16 @@ msgstr "Toate versiune de dupa aceasta, vor fi şterse de asemenea."
 msgid "Revert to this version?"
 msgstr "Reveniți la această versiune?"
 
-#: views/document_version_views.py:110
+#: views/document_version_views.py:107
 msgid "Document version reverted successfully"
 msgstr "Versiunea documentului refacută cu succes"
 
-#: views/document_version_views.py:115
+#: views/document_version_views.py:112
 #, python-format
 msgid "Error reverting document version; %s"
 msgstr "Eroare la revenirea la versiunea documentului; %s"
 
-#: views/document_version_views.py:143
+#: views/document_version_views.py:140
 #, python-format
 msgid "Preview of document version: %s"
 msgstr "Previzualizarea versiunii de document: %s"
@@ -1422,12 +1422,12 @@ msgstr "Coșul de gunoi a fost golit cu succes"
 #: views/trashed_document_views.py:85
 #, python-format
 msgid "%(count)d trashed document submitted for deletion."
-msgstr ""
+msgstr "%(count)d document din gunoi trimis pentru ștergere."
 
 #: views/trashed_document_views.py:88
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
-msgstr ""
+msgstr "%(count)d documente din gunoi trimise pentru ștergere."
 
 #: views/trashed_document_views.py:96
 msgid "Delete the selected trashed document?"

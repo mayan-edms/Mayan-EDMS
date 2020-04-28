@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 01:21-0400\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Harald Ersch, 2020\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -79,7 +79,7 @@ msgstr "Detalii"
 
 #: methods.py:20
 msgid "Return a list of cabinets containing the document."
-msgstr ""
+msgstr "Returnează o listă de fişete ce conțin documentul."
 
 #: methods.py:22
 msgid "get_cabinets()"
@@ -104,11 +104,11 @@ msgstr "Fișet"
 
 #: models.py:110
 msgid "The path to the cabinet including all ancestors."
-msgstr ""
+msgstr "Calea către fişet, inclusiv toți strămoșii."
 
 #: models.py:112
 msgid "Full path"
-msgstr ""
+msgstr "Calea completă"
 
 #: models.py:145 serializers.py:137
 msgid "Parent and Label"
@@ -157,7 +157,7 @@ msgstr "Tipul documentului"
 
 #: search.py:29
 msgid "Document MIME type"
-msgstr ""
+msgstr "Tip MIME al documentului"
 
 #: search.py:32
 msgid "Document label"
@@ -169,11 +169,11 @@ msgstr "Descrierea documentului"
 
 #: search.py:38
 msgid "Document UUID"
-msgstr ""
+msgstr "UUID al documentului"
 
 #: search.py:42
 msgid "Document checksum"
-msgstr ""
+msgstr "Suma de control a documentului"
 
 #: serializers.py:17
 msgid "List of children cabinets."

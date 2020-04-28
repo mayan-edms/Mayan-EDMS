@@ -1,0 +1,101 @@
+============================
+MERC 7: Git branch structure
+============================
+
+:MERC: 7
+:Author: Michael Price
+:Status: Accepted
+:Type: Feature
+:Created: 2020-04-02
+:Last-Modified: 2020-04-25
+
+.. contents:: Table of Contents
+   :depth: 3
+   :local:
+
+Abstract
+========
+
+This MERC proposes a new branch structure for the code repository.
+
+
+Motivation
+==========
+
+Currently the project is using modified Git Flow. After several years
+of growth, Git Flow is no longer the best fit to organize the code base.
+
+For example, Git Flow uses a ``features`` for working code that is not
+yet merged into the main tree. After time, this ``features`` branch can fill
+up with unfinished experiments.
+
+The ``features`` branch on its own doesn't contain enough contextual
+information about the base branch of its entries. When attempting to merge
+a feature, it is often found that the code is based on an older release
+which requires further updates to bring up to standard of the latest release.
+
+Git Flow works best for single release and rolling release projects.
+Mayan EDMS uses a combination of those two methods plus a third one where a
+past release may be kept active because customized forks depend on it.
+
+The current ``versions`` branch is not static, but a moving branch tree
+that changes as a new major release happens. This makes it more difficult
+to keep track of whether a merge requests is against an active release or a
+past release.
+
+More scenarios need to be taken into consideration like: client customized
+branches, CI branches that trigger a release or a build.
+
+
+Specification
+=============
+
+This MERC proposes the new branch layout:
+
+- ``master`` branch pointing to the latest active branch. This is a dynamic
+  branch which is not desirable. Although the master branch can be deleted or
+  any other branch made the main branch, a good amount of software that
+  interacts with Git doesn't support this and assume the master branch to
+  always be present and to be the main branch of the repository.
+- ``series`` nested branch. This ``series`` branch already exists and this
+  MERC proposes expanding its use. Not just for past releases but for working
+  releases. Example: ``series/3.3``.
+  The ``series`` sub branch should point to the latest release. There should be
+  individual sub branches for each release. Example: ``series/3.3`` points to
+  3.3.10. There should not be ``series/3.3.1``, ``series/3.3.2``, etc.
+  The ``series`` branch makes it easy to publish fixes for older versions.
+- An ``unreleased`` sub branch for working code.
+  Example: ``series/3.3/unreleased``. If the effort to build the next version
+  of the 3.3 series is abandoned, the branch remains for historical purposes
+  and there is no need to perform the branch shift of the ``versions``
+  branch as it currently the case.
+- Move the ``features`` branch to reside underneath the ``series`` branch.
+  This provides contextual information about the base code and base release
+  of an non merged feature. Example: ``series/3.3/features/super_feature``.
+  This shows that the ``super_feature`` branch merges directly to the latest
+  version of the 3.3 series code.
+- A temporary branch for merges called ``merges``. When performing recursive
+  merges, the names of the branches are visible in the commit message. Using
+  a ``merges`` branch will make it clear the source and destination branch
+  of a merge. The ``merges`` branch itself will be located in the ``series``
+  branch of the corresponding releases that will received the code from the
+  merge. For example, to marge the latest 3.3 maintenance series code to
+  a current 3.4 series, the following branch is created:
+  ``series/3.4/merges/3.3``. This makes it easy to know where the code comes
+  from and which series is the destination.
+- A ``builds`` branch for interaction with the CI. Pushing to this branch
+  will trigger a build but not publication. This is a top level branch.
+  Used for custom builds or one-off builds. Can also be used to push to trigger
+  a deployment.
+- A ``releases`` branch. This branch already exists and its current iteration
+  works very well. The current layout of ``releases/documentation``,
+  ``releases/docker``, and ``releases/python`` make is very clear to
+  understand the purpose of each. No changes are proposed for this branch.
+
+Any branch that contains sub branches should use the plural form.
+
+
+Backwards Compatibility
+=======================
+
+No backwards compatibility issues are expected.

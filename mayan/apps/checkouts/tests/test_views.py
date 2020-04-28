@@ -1,3 +1,5 @@
+from django.utils.encoding import force_text
+
 from mayan.apps.documents.models import DocumentVersion
 from mayan.apps.documents.permissions import (
     permission_document_new_version, permission_document_version_view,
@@ -5,6 +7,7 @@ from mayan.apps.documents.permissions import (
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
+from ..exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from ..literals import STATE_CHECKED_OUT, STATE_LABELS
 from ..models import DocumentCheckout
 from ..permissions import (
@@ -364,6 +367,34 @@ class DocumentCheckoutViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertFalse(self.test_document.is_checked_out())
+
+    def test_check_in_of_non_checked_out_document(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_check_in
+        )
+
+        response = self._request_test_document_check_in_post_view(follow=True)
+        self.assertContains(
+            response=response, status_code=200,
+            text=force_text(DocumentNotCheckedOut())
+        )
+
+    def test_check_out_of_checked_out_document(self):
+        self._create_test_user()
+        self._check_out_test_document(user=self.test_user)
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_check_out
+        )
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_check_out_detail_view
+        )
+
+        response = self._request_test_document_check_out_post_view(follow=True)
+        self.assertContains(
+            response=response, status_code=200,
+            text=force_text(DocumentAlreadyCheckedOut())
+        )
 
 
 class NewVersionBlockViewTestCase(

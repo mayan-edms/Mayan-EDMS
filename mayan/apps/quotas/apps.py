@@ -1,6 +1,5 @@
 from django.apps import apps
 from django.contrib.auth import get_user_model
-from django.db.utils import OperationalError, ProgrammingError
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -48,12 +47,6 @@ class QuotasApp(MayanAppConfig):
         User = get_user_model()
 
         QuotaBackend.initialize()
-
-        try:
-            for quota in Quota.objects.all():
-                quota.update_receiver()
-        except (OperationalError, ProgrammingError):
-            """Ignore errors during migration"""
 
         ModelEventType.register(
             event_types=(event_quota_created, event_quota_edited),
