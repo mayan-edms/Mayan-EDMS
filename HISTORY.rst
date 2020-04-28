@@ -1,4 +1,4 @@
-3.4.7 (2020-XX-XX)
+3.4.7 (2020-04-28)
 ==================
 - Darken dropdown menu text to increase contrast and legibility.
 - Capture and display double check in and non checked out document
