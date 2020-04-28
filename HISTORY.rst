@@ -14,6 +14,9 @@
 - Fixed HTTP workflow action field_order. Merge request !82. Thanks to
   Matthias Bilger (@m42e) for the report and the patch.
 - Add MERC 0007 defining the new repository branch layout.
+- Remove outdated development version deployment instructions. Closes GitLab
+  issue #821. Thanks to Gerald Fuchs (@geraldf) for the report.
+
 
 3.4.6 (2020-04-19)
 ==================
