@@ -17,7 +17,6 @@
 - Remove outdated development version deployment instructions. Closes GitLab
   issue #821. Thanks to Gerald Fuchs (@geraldf) for the report.
 
-
 3.4.6 (2020-04-19)
 ==================
 - Update Django to version 2.2.12.
