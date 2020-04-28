@@ -22,6 +22,7 @@ Accepted
    ../mercs/0003-using-javascript-libraries
    ../mercs/0005-explicit-arguments
    ../mercs/0006-lower-information-disclose
+   ../mercs/0007-git-branch-structure
 
 Draft
 -----
@@ -53,3 +54,4 @@ Feature
    ../mercs/0003-using-javascript-libraries
    ../mercs/0005-explicit-arguments
    ../mercs/0006-lower-information-disclose
+   ../mercs/0007-git-branch-structure

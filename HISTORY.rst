@@ -13,6 +13,7 @@
 - Replace self.get_object() with self.object where applicable.
 - Fixed HTTP workflow action field_order. Merge request !82. Thanks to
   Matthias Bilger (@m42e) for the report and the patch.
+- Add MERC 0007 defining the new repository branch layout.
 
 3.4.6 (2020-04-19)
 ==================
