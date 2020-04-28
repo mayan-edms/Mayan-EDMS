@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Johan Braeken, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:44-0400\n"
-"PO-Revision-Date: 2020-02-14 04:19+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-27 23:36-0400\n"
+"PO-Revision-Date: 2020-04-26 21:06+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -86,7 +87,7 @@ msgstr "Waarde"
 
 #: forms.py:24
 msgid "Update"
-msgstr "Updaten"
+msgstr "Bijwerken"
 
 #: forms.py:45 forms.py:185 models.py:307
 msgid "Required"
@@ -113,7 +114,7 @@ msgstr ""
 
 #: forms.py:147 views.py:403
 msgid "Remove"
-msgstr "Verwijder"
+msgstr "Verwijderen"
 
 #: forms.py:169
 msgid " Available template context variables: "
@@ -125,7 +126,7 @@ msgstr "Geen"
 
 #: forms.py:184
 msgid "Optional"
-msgstr ""
+msgstr "Optioneel"
 
 #: forms.py:189 models.py:55 search.py:17
 msgid "Label"

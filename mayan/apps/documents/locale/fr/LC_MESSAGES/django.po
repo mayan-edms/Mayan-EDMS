@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:43-0400\n"
+"POT-Creation-Date: 2020-04-27 23:35-0400\n"
 "PO-Revision-Date: 2020-04-07 15:26+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -1015,26 +1015,26 @@ msgstr "Aucune page de document disponible"
 msgid "Pages for document: %s"
 msgstr "Pages du document : %s"
 
-#: views/document_page_views.py:140
+#: views/document_page_views.py:131
 msgid "There are no more pages in this document"
 msgstr "Il n'y a pas d'autres pages dans ce document"
 
-#: views/document_page_views.py:158
+#: views/document_page_views.py:147
 msgid "You are already at the first page of this document"
 msgstr "Vous êtes déjà sur la première page du document"
 
-#: views/document_page_views.py:178
+#: views/document_page_views.py:167
 #, python-format
 msgid "Image of: %s"
 msgstr "Image de : %s"
 
-#: views/document_page_views.py:279
+#: views/document_page_views.py:265
 msgid "Disable the selected document page?"
 msgid_plural "Disable the selected document pages?"
 msgstr[0] "Désactiver la page de document sélectionnée?"
 msgstr[1] "Êtes-vous sûr de vouloir désactiver les pages sélectionnées du document ?"
 
-#: views/document_page_views.py:309
+#: views/document_page_views.py:295
 msgid "Enable the selected document page?"
 msgid_plural "Enable the selected document pages?"
 msgstr[0] "Activer la page de document sélectionnée?"
@@ -1125,16 +1125,16 @@ msgstr "Toutes les versions postérieures à celle-ci seront également supprim�
 msgid "Revert to this version?"
 msgstr "Êtes vous certain de vouloir revenir à cette version ?"
 
-#: views/document_version_views.py:110
+#: views/document_version_views.py:107
 msgid "Document version reverted successfully"
 msgstr "Retour à la version précédente du document effectuée avec succès"
 
-#: views/document_version_views.py:115
+#: views/document_version_views.py:112
 #, python-format
 msgid "Error reverting document version; %s"
 msgstr "Erreur lors du retour à une version précédente du document ; %s"
 
-#: views/document_version_views.py:143
+#: views/document_version_views.py:140
 #, python-format
 msgid "Preview of document version: %s"
 msgstr "Prévisualiser la version du document : %s"

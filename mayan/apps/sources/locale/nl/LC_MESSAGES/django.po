@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Lucas Weel <ljj.weel@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:45-0400\n"
-"PO-Revision-Date: 2020-03-28 07:24+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-27 23:37-0400\n"
+"PO-Revision-Date: 2020-04-27 15:07+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,7 +34,7 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
+msgstr "Documentbronnen zijn de manier waarop nieuwe documenten aan Mayan EDMS worden aangeboden. Maak ten minste een webformulier aan om documenten te kunnen uploaden via een webbrowser."
 
 #: apps.py:76
 msgid "Type"
@@ -59,11 +60,11 @@ msgstr "Bericht"
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
-msgstr ""
+msgstr "Hulpmiddel van het SANE-pakket. Gebruikt om de scanner te beheren en de scanafbeelding te verkrijgen."
 
 #: forms.py:25
 msgid "An optional comment to explain the upload."
-msgstr ""
+msgstr "Een optioneel commentaar om de upload toe te lichten."
 
 #: forms.py:26
 msgid "Comment"
@@ -71,11 +72,11 @@ msgstr "Commentaar"
 
 #: forms.py:40 serializers.py:21
 msgid "Expand compressed files"
-msgstr "Uitpakken gecomprimeerde bestanden"
+msgstr "Gecomprimeerde bestanden uitpakken"
 
 #: forms.py:42 serializers.py:22
 msgid "Upload a compressed file's contained files as individual documents."
-msgstr ""
+msgstr "Een gecomprimeerde bestand uploaden dat individuele documenten bevat."
 
 #: forms.py:63 views.py:225
 msgid "Staging file"
@@ -87,7 +88,7 @@ msgstr "Bestand"
 
 #: handlers.py:25
 msgid "Default"
-msgstr "Verstekwaarde"
+msgstr "Standaardwaarde"
 
 #: links.py:51
 msgid "New document"
@@ -95,35 +96,35 @@ msgstr "Nieuw document"
 
 #: links.py:63
 msgid "Add new IMAP email"
-msgstr "Voeg nieuwe IMAP-email toe."
+msgstr "Nieuwe IMAP-email toevoegen"
 
 #: links.py:69
 msgid "Add new POP3 email"
-msgstr ""
+msgstr "Nieuwe POP3 email toevoegen"
 
 #: links.py:75
 msgid "Add new staging folder"
-msgstr ""
+msgstr "Nieuwe tijdelijke map toevoegen"
 
 #: links.py:81
 msgid "Add new watch folder"
-msgstr ""
+msgstr "Nieuwe bewaakte map toevoegen"
 
 #: links.py:87
 msgid "Add new webform source"
-msgstr ""
+msgstr "Nieuwe webformulier bron toevoegen"
 
 #: links.py:93
 msgid "Add new SANE scanner"
-msgstr ""
+msgstr "Nieuwe SANE scanner toevoegen"
 
 #: links.py:99 links.py:116
 msgid "Delete"
-msgstr "Verwijder"
+msgstr "Verwijderen"
 
 #: links.py:104
 msgid "Edit"
-msgstr "bewerken"
+msgstr "Bewerken"
 
 #: links.py:109
 msgid "Document sources"
@@ -139,23 +140,23 @@ msgstr "Logs"
 
 #: links.py:133
 msgid "Check now"
-msgstr ""
+msgstr "Nu controleren"
 
 #: literals.py:16
 msgid "Flatbed"
-msgstr ""
+msgstr "Flatbed"
 
 #: literals.py:17
 msgid "Document feeder"
-msgstr ""
+msgstr "Documentinvoer"
 
 #: literals.py:24
 msgid "Simplex"
-msgstr ""
+msgstr "Enkelzijdig"
 
 #: literals.py:25
 msgid "Duplex"
-msgstr ""
+msgstr "Dubbelzijdig"
 
 #: literals.py:33
 msgid "Lineart"
@@ -163,7 +164,7 @@ msgstr ""
 
 #: literals.py:34
 msgid "Monochrome"
-msgstr ""
+msgstr "Grijswaarden"
 
 #: literals.py:35
 msgid "Color"
@@ -183,7 +184,7 @@ msgstr "Vraag gebruiker"
 
 #: literals.py:61
 msgid "Scanner"
-msgstr ""
+msgstr "Scanner"
 
 #: literals.py:62 models/webform_sources.py:40
 msgid "Web form"
@@ -191,11 +192,11 @@ msgstr "Webformulier"
 
 #: literals.py:63 models/staging_folder_sources.py:67
 msgid "Staging folder"
-msgstr ""
+msgstr "Tijdelijke folder"
 
 #: literals.py:64 models/watch_folder_sources.py:45
 msgid "Watch folder"
-msgstr ""
+msgstr "Bewaakte map"
 
 #: literals.py:65
 msgid "POP3 email"
@@ -207,7 +208,7 @@ msgstr "IMAP e-mail"
 
 #: models/base.py:28
 msgid "A short text to describe this source."
-msgstr ""
+msgstr "Een korte tekst die de bron beschrijft."
 
 #: models/base.py:29
 msgid "Label"
@@ -219,11 +220,11 @@ msgstr "Ingeschakeld"
 
 #: models/base.py:37 models/base.py:245
 msgid "Source"
-msgstr "BronB"
+msgstr "Bron"
 
 #: models/base.py:156
 msgid "Interactive source"
-msgstr "Interactieve bro"
+msgstr "Interactieve bron"
 
 #: models/base.py:157
 msgid "Interactive sources"
@@ -231,19 +232,19 @@ msgstr "Interactieve bronnen"
 
 #: models/base.py:166 models/base.py:167
 msgid "Out of process"
-msgstr ""
+msgstr "Buiten werking"
 
 #: models/base.py:173
 msgid "Interval in seconds between checks for new documents."
-msgstr ""
+msgstr "Interval in seconden tussen controle op nieuwe documenten."
 
 #: models/base.py:174
 msgid "Interval"
-msgstr ""
+msgstr "Interval"
 
 #: models/base.py:178
 msgid "Assign a document type to documents uploaded from this source."
-msgstr "Wijs een documentsoort toe voor documenten die worden geüpload van deze bron."
+msgstr "Een documentsoort toewijzen voor documenten die worden geüpload van deze bron."
 
 #: models/base.py:180 serializers.py:17
 msgid "Document type"
@@ -251,7 +252,7 @@ msgstr "Documentsoort"
 
 #: models/base.py:184
 msgid "Whether to expand or not, compressed archives."
-msgstr "Al of niet uitpakken van gecomprimeerde archieven."
+msgstr "Of gecomprimeerde archieven moeten worden uitgepakt of niet."
 
 #: models/base.py:185 models/staging_folder_sources.py:54
 #: models/webform_sources.py:34
@@ -260,11 +261,11 @@ msgstr "Uitpakken"
 
 #: models/base.py:191
 msgid "Interval source"
-msgstr ""
+msgstr "Interval bron"
 
 #: models/base.py:192
 msgid "Interval sources"
-msgstr ""
+msgstr "Interval bronnen"
 
 #: models/base.py:257
 msgid "Log entry"
@@ -276,7 +277,7 @@ msgstr "Loginvoer"
 
 #: models/email_sources.py:40
 msgid "Host"
-msgstr ""
+msgstr "Host"
 
 #: models/email_sources.py:41
 msgid "SSL"
@@ -286,11 +287,11 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
+msgstr "Typische keuzes zijn 110 voor POP3, 995 voor POP3 over SSL, 143 voor IMAP, 993 voor IMAP over SSL."
 
 #: models/email_sources.py:44
 msgid "Port"
-msgstr ""
+msgstr "Poort"
 
 #: models/email_sources.py:46
 msgid "Username"
@@ -332,19 +333,19 @@ msgstr ""
 
 #: models/email_sources.py:74
 msgid "Store the body of the email as a text document."
-msgstr ""
+msgstr "De inhoud van de e-mail opslaan als een tekstdocument."
 
 #: models/email_sources.py:75
 msgid "Store email body"
-msgstr ""
+msgstr "E-mail inhoud opslaan"
 
 #: models/email_sources.py:81
 msgid "Email source"
-msgstr ""
+msgstr "E-mail bron"
 
 #: models/email_sources.py:82
 msgid "Email sources"
-msgstr ""
+msgstr "E-mail bronnen"
 
 #: models/email_sources.py:187
 #, python-format
@@ -362,21 +363,21 @@ msgstr ""
 
 #: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
-msgstr ""
+msgstr "IMAP Mailbox die op berichten gecontroleerd moet worden."
 
 #: models/email_sources.py:217
 msgid "Mailbox"
-msgstr ""
+msgstr "Mailbox"
 
 #: models/email_sources.py:221
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
-msgstr ""
+msgstr "Criteria om te gebruiken wanneer gezocht wordt op berichten om te verwerken. Gebruik opmaak zoals vastgelegd in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
-msgstr ""
+msgstr "Zoekcriteria"
 
 #: models/email_sources.py:228
 msgid ""
@@ -400,11 +401,11 @@ msgstr ""
 
 #: models/email_sources.py:242
 msgid "IMAP Mailbox to which processed messages will be copied."
-msgstr ""
+msgstr "IMAP Mailbox waar verwerkte berichten naartoe worden gekopieerd."
 
 #: models/email_sources.py:243
 msgid "Destination mailbox"
-msgstr ""
+msgstr "Bestemming mailbox"
 
 #: models/email_sources.py:350
 msgid "Timeout"
@@ -416,11 +417,11 @@ msgstr "POP e-mail"
 
 #: models/scanner_sources.py:31
 msgid "Device name as returned by the SANE backend."
-msgstr ""
+msgstr "Apparaatnaam zoals opgegeven door de SANE backend."
 
 #: models/scanner_sources.py:32
 msgid "Device name"
-msgstr ""
+msgstr "Apparaatnaam"
 
 #: models/scanner_sources.py:37
 msgid ""
@@ -430,7 +431,7 @@ msgstr ""
 
 #: models/scanner_sources.py:39
 msgid "Mode"
-msgstr ""
+msgstr "Modus"
 
 #: models/scanner_sources.py:43
 msgid ""
@@ -441,7 +442,7 @@ msgstr ""
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
-msgstr ""
+msgstr "Resolutie"
 
 #: models/scanner_sources.py:50
 msgid ""
@@ -451,7 +452,7 @@ msgstr ""
 
 #: models/scanner_sources.py:52
 msgid "Paper source"
-msgstr ""
+msgstr "Papierbron"
 
 #: models/scanner_sources.py:57
 msgid ""
@@ -461,26 +462,26 @@ msgstr ""
 
 #: models/scanner_sources.py:59
 msgid "ADF mode"
-msgstr ""
+msgstr "ADF modus"
 
 #: models/scanner_sources.py:65
 msgid "SANE Scanner"
-msgstr ""
+msgstr "SANE Scanner"
 
 #: models/scanner_sources.py:66
 msgid "SANE Scanners"
-msgstr ""
+msgstr "SANE Scanners"
 
 #: models/scanner_sources.py:95
 #, python-format
 msgid ""
 "Error while executing scanning command \"%(command_line)s\"; "
 "%(error_message)s"
-msgstr ""
+msgstr "Fout tijdens het uitvoeren van de scanopdracht \"%(command_line)s\"; %(error_message)s"
 
 #: models/staging_folder_sources.py:39
 msgid "Server side filesystem path."
-msgstr "pad naar filesysteem server"
+msgstr "Pad naar filesysteem server"
 
 #: models/staging_folder_sources.py:40 models/watch_folder_sources.py:32
 msgid "Folder path"
@@ -492,7 +493,7 @@ msgstr "Breedte waarde die moet worden doorgegeven aan de converter backend."
 
 #: models/staging_folder_sources.py:44
 msgid "Preview width"
-msgstr ""
+msgstr "Breedte voorbeeldweergave"
 
 #: models/staging_folder_sources.py:48
 msgid "Height value to be passed to the converter backend."
@@ -500,19 +501,19 @@ msgstr "Hoogte waarde die moet worden doorgegeven aan de converter backend."
 
 #: models/staging_folder_sources.py:49
 msgid "Preview height"
-msgstr ""
+msgstr "Hoogte voorbeeldweergave"
 
 #: models/staging_folder_sources.py:53 models/webform_sources.py:33
 msgid "Whether to expand or not compressed archives."
-msgstr "Keuze om te expanderen of uitpakken van archief. (TODO: review this)"
+msgstr "Of gecomprimeerde archieven moet worden uitgepakt of niet."
 
 #: models/staging_folder_sources.py:59
 msgid "Delete the file after is has been successfully uploaded."
-msgstr "Verwijder het bestand nadat de 'upload' succesvol is voltooid."
+msgstr "Het bestand verwijderen nadat de upload is voltooid."
 
 #: models/staging_folder_sources.py:61
 msgid "Delete after upload"
-msgstr ""
+msgstr "Na upload verwijderen"
 
 #: models/staging_folder_sources.py:68
 msgid "Staging folders"
@@ -530,49 +531,49 @@ msgstr "Het is niet mogelijk om een lijst met tijdelijke bestanden aan te maken.
 
 #: models/watch_folder_sources.py:31
 msgid "Server side filesystem path to scan for files."
-msgstr ""
+msgstr "Bestandspad op server om te scannen op bestanden."
 
 #: models/watch_folder_sources.py:36
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
-msgstr ""
+msgstr "Indien aangevinkt, wordt niet alleen het mappad gescand op bestanden, maar ook de submappen."
 
 #: models/watch_folder_sources.py:39
 msgid "Include subdirectories?"
-msgstr ""
+msgstr "Inclusief submappen?"
 
 #: models/watch_folder_sources.py:46
 msgid "Watch folders"
-msgstr ""
+msgstr "Bewaakte mappen"
 
 #: models/webform_sources.py:41
 msgid "Web forms"
-msgstr ""
+msgstr "Webformulieren"
 
 #: permissions.py:5
 msgid "Sources setup"
-msgstr "Bron instellen"
+msgstr "Bronnen instellen"
 
 #: permissions.py:8
 msgid "Create new document sources"
-msgstr "Aanmaken van een nieuwe documentbron"
+msgstr "Nieuwe documentbronnen aanmaken"
 
 #: permissions.py:11
 msgid "Delete document sources"
-msgstr "Verwijder documentbronnen"
+msgstr "Documentbronnen verwijderen"
 
 #: permissions.py:14
 msgid "Edit document sources"
-msgstr "Bewerk documentbronnen"
+msgstr "Documentbronnen bewerken"
 
 #: permissions.py:17
 msgid "View existing document sources"
-msgstr "Bekijk bestaande documentbronnen"
+msgstr "Bestaande documentbronnen bekijken"
 
 #: permissions.py:20
 msgid "Delete staging files"
-msgstr ""
+msgstr "Tijdelijke bestanden verwijderen"
 
 #: queues.py:10
 msgid "Sources periodic"
@@ -596,7 +597,7 @@ msgstr ""
 
 #: queues.py:31
 msgid "Upload document"
-msgstr ""
+msgstr "Document uploaden"
 
 #: settings.py:18
 msgid "File path to the scanimage program used to control image scanners."
@@ -625,35 +626,35 @@ msgstr ""
 #: tasks.py:46
 #, python-format
 msgid "Error processing source: %s"
-msgstr ""
+msgstr "Fout bij verwerken bron: %s"
 
 #: templates/sources/dropzone.html:82
 msgid "Cancel upload"
-msgstr ""
+msgstr "Upload annuleren"
 
 #: templates/sources/dropzone.html:83
 msgid "Are you sure you want to cancel this upload?"
-msgstr ""
+msgstr "Weet u zeker dat u deze upload wilt annuleren?"
 
 #: templates/sources/dropzone.html:84
 msgid "Drop files or click here to upload files"
-msgstr ""
+msgstr "Drag-and-drop bestanden of klik hier om bestanden te uploaden"
 
 #: templates/sources/dropzone.html:85
 msgid "Your browser does not support drag and drop file uploads."
-msgstr ""
+msgstr "Uw browser ondersteunt geen drag-and-drop bestandsuploads."
 
 #: templates/sources/dropzone.html:86
 msgid "Please use the fallback form below to upload your files."
-msgstr ""
+msgstr "Gebruik het formulier hieronder om uw bestanden te uploaden."
 
 #: templates/sources/dropzone.html:87
 msgid "Clear"
-msgstr ""
+msgstr "Wissen"
 
 #: templates/sources/dropzone.html:88
 msgid "Server responded with {{statusCode}} code."
-msgstr ""
+msgstr "Server antwoordde met {{statusCode}} code."
 
 #: views.py:68
 msgid ""
@@ -670,22 +671,22 @@ msgstr ""
 
 #: views.py:86
 msgid "Source check queued."
-msgstr ""
+msgstr "Broncontrole in wachtrij geplaatst."
 
 #: views.py:100
 #, python-format
 msgid "Create new source of type: %s"
-msgstr "Aanmaken van nieuw documentbron van type: %s"
+msgstr "Nieuwe bron aanmaken van type: %s"
 
 #: views.py:123
 #, python-format
 msgid "Delete the source: %s?"
-msgstr ""
+msgstr "Verwijder de bron: %s?"
 
 #: views.py:145
 #, python-format
 msgid "Edit source: %s"
-msgstr ""
+msgstr "Bewerk bron: %s"
 
 #: views.py:185
 msgid ""
@@ -697,27 +698,27 @@ msgstr ""
 
 #: views.py:190
 msgid "No sources available"
-msgstr ""
+msgstr "Geen bronnen beschikbaar"
 
 #: views.py:205
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
-msgstr ""
+msgstr "Elke opgetreden fout bij gebruik van een bron wordt hier opgesomd om te helpen bij debugging. "
 
 #: views.py:208
 msgid "No log entries available"
-msgstr ""
+msgstr "Geen loginvoer beschikbaar."
 
 #: views.py:210
 #, python-format
 msgid "Log entries for source: %s"
-msgstr ""
+msgstr "Loginvoer voor bron: %s"
 
 #: views.py:226
 #, python-format
 msgid "Delete staging file \"%s\"?"
-msgstr ""
+msgstr "Verwijder tijdelijk bestand \"%s\"?"
 
 #: views.py:278 wizards.py:152
 msgid ""
@@ -727,7 +728,7 @@ msgstr ""
 
 #: views.py:306 views.py:335 views.py:345
 msgid "Document properties"
-msgstr ""
+msgstr "Document-eigenschappen"
 
 #: views.py:315
 msgid ""
@@ -738,7 +739,7 @@ msgstr ""
 
 #: views.py:322
 msgid "No staging files available"
-msgstr ""
+msgstr "Geen tijdelijke bestanden beschikbaar"
 
 #: views.py:325
 msgid "Files in staging path"
@@ -746,48 +747,48 @@ msgstr ""
 
 #: views.py:336
 msgid "Scan"
-msgstr ""
+msgstr "Scan"
 
 #: views.py:466
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
-msgstr ""
+msgstr "Fout bij uitvoeren document upload taak; %(exception)s"
 
 #: views.py:476
 msgid "New document queued for upload and will be available shortly."
-msgstr ""
+msgstr "Nieuw document in wachtrij voor upload en zal spoedig beschikbaar zijn."
 
 #: views.py:493
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr ""
+msgstr "Een document upload van soort \"%(document_type)s\" van bron: %(source)s"
 
 #: views.py:555
 #, python-format
 msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
-msgstr ""
+msgstr "Niet mogelijk om nieuwe versies te uploaden voor document \"%(document)s\". %(exception)s"
 
 #: views.py:606
 msgid "New document version queued for upload and will be available shortly."
-msgstr ""
+msgstr "Nieuwe versie document in wachtrij voor upload en zal spoedig beschikbaar zijn."
 
 #: views.py:625
 #, python-format
 msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
-msgstr ""
+msgstr "Een nieuwe versie uploaden voor document \"%(document)s\" van bron: %(source)s"
 
 #: views.py:628
 msgid "Submit"
-msgstr "Verstuur"
+msgstr "Versturen"
 
 #: wizards.py:95
 msgid "Select document type"
-msgstr ""
+msgstr "Documentsoort selecteren"
 
 #: wizards.py:176
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
-msgstr ""
+msgstr "Stap %(step)d van %(total_steps)d: %(step_label)s"
 
 #: wizards.py:181
 msgid "Next step"
@@ -795,4 +796,4 @@ msgstr "Volgende stap"
 
 #: wizards.py:183
 msgid "Document upload wizard"
-msgstr ""
+msgstr "Document uploadwizard"

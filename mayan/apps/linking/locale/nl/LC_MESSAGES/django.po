@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Lucas Weel <ljj.weel@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:44-0400\n"
-"PO-Revision-Date: 2020-02-14 04:19+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"PO-Revision-Date: 2020-04-26 17:24+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,11 +35,11 @@ msgstr "'Smartlinks'"
 
 #: events.py:10
 msgid "Smart link created"
-msgstr ""
+msgstr "'Smartlink' aangemaakt"
 
 #: events.py:13
 msgid "Smart link edited"
-msgstr ""
+msgstr "'Smartlink' bewerkt"
 
 #: forms.py:45
 msgid "Foreign document field"
@@ -50,15 +51,15 @@ msgstr "Voorwaarde aanmaken"
 
 #: links.py:31 links.py:55
 msgid "Delete"
-msgstr "Verwijder"
+msgstr "Verwijderen"
 
 #: links.py:38 links.py:67
 msgid "Edit"
-msgstr "bewerken"
+msgstr "Bewerken"
 
 #: links.py:44
 msgid "Conditions"
-msgstr "Conditie"
+msgstr "Voorwaarde"
 
 #: links.py:49 views.py:239
 msgid "Create new smart link"
@@ -82,11 +83,11 @@ msgstr "of"
 
 #: literals.py:12
 msgid "is equal to"
-msgstr "is geleik aan"
+msgstr "is gelijk aan"
 
 #: literals.py:13
 msgid "is equal to (case insensitive)"
-msgstr "is geleik aan (hoofdletter ongevoelig)"
+msgstr "is gelijk aan (hoofdletter ongevoelig)"
 
 #: literals.py:14
 msgid "contains"
@@ -106,7 +107,7 @@ msgstr "is groter dan"
 
 #: literals.py:18
 msgid "is greater than or equal to"
-msgstr "is groter dan of is geleik aan"
+msgstr "is groter dan of is gelijk aan"
 
 #: literals.py:19
 msgid "is less than"
@@ -114,7 +115,7 @@ msgstr "is kleiner dan"
 
 #: literals.py:20
 msgid "is less than or equal to"
-msgstr "is kleiner dan of is geleik aan"
+msgstr "is kleiner dan of is gelijk aan"
 
 #: literals.py:21
 msgid "starts with"
@@ -126,11 +127,11 @@ msgstr "begint met (hoofdletter ongevoelig)"
 
 #: literals.py:23
 msgid "ends with"
-msgstr "eindigd met"
+msgstr "eindigt met"
 
 #: literals.py:24
 msgid "ends with (case insensitive)"
-msgstr "eindigd met (hoofdletter ongevoelig)"
+msgstr "eindigt met (hoofdletter ongevoelig)"
 
 #: literals.py:25
 msgid "is in regular expression"
@@ -142,13 +143,13 @@ msgstr "komt overeen met 'reguliere expressie (hoofdletter ongevoelig)"
 
 #: models.py:25
 msgid "A short text describing the smart link."
-msgstr ""
+msgstr "Een korte tekst die de smartlink beschrijft."
 
 #: models.py:30
 msgid ""
 "Use this field to show a unique label depending on the document from which "
 "the smart link is being accessed."
-msgstr ""
+msgstr "Gebruik dit veld om een uniek label te tonen dat afhankelijk is van het document waar de smartlink toegang toe biedt."
 
 #: models.py:32
 msgid "Dynamic label"
@@ -160,16 +161,16 @@ msgstr "Ingeschakeld"
 
 #: models.py:44 models.py:172
 msgid "Smart link"
-msgstr "Slimme link"
+msgstr "Smartlink"
 
 #: models.py:84
 #, python-format
 msgid "Error generating dynamic label; %s"
-msgstr ""
+msgstr "Fout bij genereren dynamisch label; %s"
 
 #: models.py:99
 msgid "This smart link is not allowed for the selected document's type."
-msgstr ""
+msgstr "Deze smartlink is niet toegestaan voor het geselecteerde documenttype."
 
 #: models.py:176
 msgid "The inclusion is ignored for the first item."
@@ -195,19 +196,19 @@ msgstr "Uitdrukking"
 
 #: models.py:191
 msgid "Inverts the logic of the operator."
-msgstr "Inverteerd de operatorlogica"
+msgstr "Inverteert de operatorlogica"
 
 #: models.py:192
 msgid "Negated"
-msgstr ""
+msgstr "Omgekeerd"
 
 #: models.py:197
 msgid "Link condition"
-msgstr ""
+msgstr "Linkvoorwaarde"
 
 #: models.py:198
 msgid "Link conditions"
-msgstr ""
+msgstr "Linkvoorwaarden"
 
 #: models.py:206
 msgid "not"
@@ -215,47 +216,47 @@ msgstr "niet"
 
 #: models.py:210
 msgid "Full label"
-msgstr ""
+msgstr "Volledig label"
 
 #: permissions.py:8
 msgid "Create new smart links"
-msgstr "Aanmaken van een nieuwe 'smartlink'"
+msgstr "Nieuwe 'smartlinks' aanmaken"
 
 #: permissions.py:11
 msgid "Delete smart links"
-msgstr "Verwijderen 'smartlinks'"
+msgstr "'Smartlinks' verwijderen"
 
 #: permissions.py:14
 msgid "Edit smart links"
-msgstr "Verwijderen 'smartlinks'"
+msgstr "'Smartlinks' bewerken"
 
 #: permissions.py:17
 msgid "View existing smart links"
-msgstr "Bekijk bestaande 'smartlinks'"
+msgstr "Bestaande 'smartlinks' bekijken"
 
 #: serializers.py:115
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr ""
+msgstr "Kommagescheiden lijst van primaire sleutels voor documenttype waaraan deze smartlink wordt toegevoegd."
 
 #: serializers.py:139
 #, python-format
 msgid "No such document type: %s"
-msgstr ""
+msgstr "Er is geen documenttype: %s"
 
 #: views.py:45
 msgid "Available smart links"
-msgstr ""
+msgstr "Beschikbare smartlinks"
 
 #: views.py:46
 msgid "Smart links enabled"
-msgstr ""
+msgstr "Smartlinks ingeschakeld"
 
 #: views.py:78
 #, python-format
 msgid "Smart links to enable for document type: %s"
-msgstr ""
+msgstr "Smartlinks om in te schakelen voor documenttype: %s"
 
 #: views.py:115
 #, python-format
@@ -265,25 +266,25 @@ msgstr "'smartlink' zoek fout: %s"
 #: views.py:126
 #, python-format
 msgid "Documents in smart link: %s"
-msgstr ""
+msgstr "Documenten in smartlink: %s"
 
 #: views.py:129
 #, python-format
 msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr ""
+msgstr "Documenten in smartlink \"%(smart_link)s\" in relatie tot \"%(document)s\""
 
 #: views.py:165
 msgid "Available document types"
-msgstr "Beschikbare documentsoorten"
+msgstr "Beschikbare documenttypen"
 
 #: views.py:166
 msgid "Document types enabled"
-msgstr ""
+msgstr "Documenttypes ingeschakeld"
 
 #: views.py:176
 #, python-format
 msgid "Document type for which to enable smart link: %s"
-msgstr ""
+msgstr "Documenttype waarvoor smartlink wordt ingeschakeld: %s"
 
 #: views.py:194
 msgid ""
@@ -294,32 +295,32 @@ msgstr ""
 
 #: views.py:201
 msgid "There are no smart links"
-msgstr ""
+msgstr "Er zijn geen smartlinks"
 
 #: views.py:219
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
-msgstr ""
+msgstr "Smartlinks maken het mogelijk verbanden tussen documenten vats te leggen zelfs als deze zich in verschillende indexen bevinden of van een verschillende type zijn."
 
 #: views.py:224
 msgid "There are no smart links for this document"
-msgstr ""
+msgstr "Er zijn geen smartlinks voor dit document"
 
 #: views.py:227
 #, python-format
 msgid "Smart links for document: %s"
-msgstr ""
+msgstr "Smartlinks voor document: %s"
 
 #: views.py:261
 #, python-format
 msgid "Delete smart link: %s"
-msgstr ""
+msgstr "Verwijder smartlink: %s"
 
 #: views.py:277
 #, python-format
 msgid "Edit smart link: %s"
-msgstr "'smartlink': %s bewerken."
+msgstr "Bewerk smartlink: %s"
 
 #: views.py:302
 msgid ""
@@ -329,23 +330,23 @@ msgstr ""
 
 #: views.py:306
 msgid "There are no conditions for this smart link"
-msgstr ""
+msgstr "Er zijn geen voorwaarden voor deze smartlink"
 
 #: views.py:310
 #, python-format
 msgid "Conditions for smart link: %s"
-msgstr ""
+msgstr "Voorwaarden voor smartlink: %s"
 
 #: views.py:329
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
-msgstr "Nieuwe condities aan 'smartlink': \"%s\" toevoegen."
+msgstr "Nieuwe voorwaarden toevoegen aan smartlink: \"%s\""
 
 #: views.py:359
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
-msgstr ""
+msgstr "Verwijder smartlink voorwaarde: \"%s\"?"
 
 #: views.py:382
 msgid "Edit smart link condition"
-msgstr "Bewerk 'smartlink' conditie."
+msgstr "Smartlink voorwaarde bewerken"

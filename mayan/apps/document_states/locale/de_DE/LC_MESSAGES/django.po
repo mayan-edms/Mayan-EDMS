@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:43-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"PO-Revision-Date: 2020-04-21 18:43+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -863,33 +863,33 @@ msgstr "Trigger sind Ereignisse, die für eine automatische Ausführung dieses �
 msgid "Workflow transition trigger events for: %s"
 msgstr "Workflowübergangstriggerereignisse für %s"
 
-#: views/workflow_template_transition_views.py:247
+#: views/workflow_template_transition_views.py:244
 #, python-format
 msgid "Create a field for workflow transition: %s"
 msgstr "Ein Feld für Workflow-Übergang %s erstellen"
 
-#: views/workflow_template_transition_views.py:280
+#: views/workflow_template_transition_views.py:277
 #, python-format
 msgid "Delete workflow transition field: %s"
 msgstr "Workflow-Übergangsfeld  %s löschen"
 
-#: views/workflow_template_transition_views.py:309
+#: views/workflow_template_transition_views.py:306
 #, python-format
 msgid "Edit workflow transition field: %s"
 msgstr "Workflow-Übergangsfeld %s bearbeiten"
 
-#: views/workflow_template_transition_views.py:341
+#: views/workflow_template_transition_views.py:338
 msgid ""
 "Workflow transition fields allow adding data to the workflow's context. This"
 " additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr "Workflow-Übergangsfelder ermöglichen das Hinzufügen von Daten zum Workflow-Kontext. Diese zusätzlichen Kontextdaten können dann von anderen Elementen des Workflow-Systems wie den Workflow-Statusaktionen verwendet werden."
 
-#: views/workflow_template_transition_views.py:347
+#: views/workflow_template_transition_views.py:344
 msgid "There are no fields for this workflow transition"
 msgstr "Für diesen Workflow-Übergang sind keine Felder vorhanden"
 
-#: views/workflow_template_transition_views.py:351
+#: views/workflow_template_transition_views.py:348
 #, python-format
 msgid "Fields for workflow transition: %s"
 msgstr "Felder für den Workflow-Übergang %s"

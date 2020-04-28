@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2020
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:43-0400\n"
+"POT-Creation-Date: 2020-04-27 23:35-0400\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,63 +23,63 @@ msgstr ""
 
 #: apps.py:28 events.py:6 permissions.py:5
 msgid "File caching"
-msgstr ""
+msgstr "Bestandscaching"
 
 #: events.py:10
 msgid "Cache created"
-msgstr ""
+msgstr "Cache aangemaakt"
 
 #: events.py:13
 msgid "Cache edited"
-msgstr ""
+msgstr "Cache bewerkt"
 
 #: events.py:16
 msgid "Cache purged"
-msgstr ""
+msgstr "Cache geleegd"
 
 #: links.py:10
 msgid "File caches"
-msgstr ""
+msgstr "Bestandscaches"
 
 #: links.py:14 links.py:18
 msgid "Purge cache"
-msgstr ""
+msgstr "Cache legen"
 
 #: models.py:29
 msgid "Internal name of the defined storage for this cache."
-msgstr ""
+msgstr "Interne naam van de vastgestelde opslag voor deze cache."
 
 #: models.py:30
 msgid "Defined storage name"
-msgstr ""
+msgstr "Vastgestelde naam opslag"
 
 #: models.py:33
 msgid "Maximum size of the cache in bytes."
-msgstr ""
+msgstr "Maximale omvang van de cache in bytes."
 
 #: models.py:35 models.py:54
 msgid "Maximum size"
-msgstr ""
+msgstr "Maximale omvang"
 
 #: models.py:39 models.py:123
 msgid "Cache"
-msgstr ""
+msgstr "Cache"
 
 #: models.py:40
 msgid "Caches"
-msgstr ""
+msgstr "Caches"
 
 #: models.py:52
 msgid "Size at which the cache will start deleting old entries."
-msgstr ""
+msgstr "Omvang waarbij de cache begint met verwijderen van oude bestanddelen."
 
 #: models.py:74
 msgid "Current size"
-msgstr ""
+msgstr "Huidige omvang"
 
 #: models.py:75
 msgid "Current size of the cache."
-msgstr ""
+msgstr "Huidige omvang van de cache."
 
 #: models.py:126
 msgid "Name"
@@ -86,11 +87,11 @@ msgstr "Naam"
 
 #: models.py:131 models.py:201
 msgid "Cache partition"
-msgstr ""
+msgstr "Partitie cachen"
 
 #: models.py:132
 msgid "Cache partitions"
-msgstr ""
+msgstr "Partities cachen"
 
 #: models.py:204
 msgid "Date time"
@@ -106,26 +107,26 @@ msgstr "Bestandgrootte"
 
 #: models.py:214
 msgid "Cache partition file"
-msgstr ""
+msgstr "Partitiebestand cachen"
 
 #: models.py:215
 msgid "Cache partition files"
-msgstr ""
+msgstr "Partitiebestanden cachen"
 
 #: permissions.py:8 queues.py:7
 msgid "Purge a file cache"
-msgstr ""
+msgstr "Een bestandscache legen"
 
 #: permissions.py:11
 msgid "View a file cache"
-msgstr ""
+msgstr "Een bestandscache bekijken"
 
 #: views.py:21
 msgid "File caches list"
-msgstr ""
+msgstr "Bestandscache lijst"
 
 #: views.py:37
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "De geselecteerde cache voor legen indienen?"
+msgstr[1] "De geselecteerde chaches voor legen indienen?"

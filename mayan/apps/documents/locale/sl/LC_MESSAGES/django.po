@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:43-0400\n"
+"POT-Creation-Date: 2020-04-27 23:35-0400\n"
 "PO-Revision-Date: 2020-04-02 06:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
@@ -1009,20 +1009,20 @@ msgstr ""
 msgid "Pages for document: %s"
 msgstr ""
 
-#: views/document_page_views.py:140
+#: views/document_page_views.py:131
 msgid "There are no more pages in this document"
 msgstr "Ni več strani v tem dokumentu"
 
-#: views/document_page_views.py:158
+#: views/document_page_views.py:147
 msgid "You are already at the first page of this document"
 msgstr "Ste že na prvi strani dokumenta"
 
-#: views/document_page_views.py:178
+#: views/document_page_views.py:167
 #, python-format
 msgid "Image of: %s"
 msgstr ""
 
-#: views/document_page_views.py:279
+#: views/document_page_views.py:265
 msgid "Disable the selected document page?"
 msgid_plural "Disable the selected document pages?"
 msgstr[0] ""
@@ -1030,7 +1030,7 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: views/document_page_views.py:309
+#: views/document_page_views.py:295
 msgid "Enable the selected document page?"
 msgid_plural "Enable the selected document pages?"
 msgstr[0] ""
@@ -1123,16 +1123,16 @@ msgstr "Vse prejšnje verzije bodo tudi izbrisane."
 msgid "Revert to this version?"
 msgstr ""
 
-#: views/document_version_views.py:110
+#: views/document_version_views.py:107
 msgid "Document version reverted successfully"
 msgstr "Povrnitev verzije dokumenta  je bila uspešna"
 
-#: views/document_version_views.py:115
+#: views/document_version_views.py:112
 #, python-format
 msgid "Error reverting document version; %s"
 msgstr "Napaka v povrnitvi dokumenta verzija: %s"
 
-#: views/document_version_views.py:143
+#: views/document_version_views.py:140
 #, python-format
 msgid "Preview of document version: %s"
 msgstr ""

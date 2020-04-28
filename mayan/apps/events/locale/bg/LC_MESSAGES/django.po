@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:43-0400\n"
-"PO-Revision-Date: 2019-10-17 07:18+0000\n"
+"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"PO-Revision-Date: 2020-04-25 15:39+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgstr "Моите събития"
 
 #: links.py:61 models.py:65 views.py:78
 msgid "Event subscriptions"
-msgstr "Абонаменти за събития"
+msgstr "Абонаменти за събитие"
 
 #: links.py:65
 msgid "Mark as seen"

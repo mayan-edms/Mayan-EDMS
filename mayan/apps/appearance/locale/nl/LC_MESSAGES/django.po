@@ -3,6 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Comprax <info@comprax.nl>, 2020
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Johan Braeken, 2017
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
 # Martin Horseling <martin.horseling@gmail.com>, 2018
@@ -10,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:42-0400\n"
-"PO-Revision-Date: 2020-04-08 04:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-27 23:33-0400\n"
+"PO-Revision-Date: 2020-04-27 15:32+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,17 +76,17 @@ msgstr ""
 
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr ""
+msgstr "Mamximum aantal tekens dat in de titel wordt weergegeven,"
 
 #: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
+msgstr "Positie waar systeemberichten worden weergegeven.\nOpties zijn: links-boven, rechts-boven, links-onder, midden-onder, rechts-onder."
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
-msgstr ""
+msgstr "Onvoldoende permissies"
 
 #: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
@@ -96,25 +98,25 @@ msgstr "Pagina niet gevonden"
 
 #: templates/404.html:32
 msgid "The requested page could not be found."
-msgstr ""
+msgstr "De gevraagde pagina is niet gevonden."
 
 #: templates/404.html:40
 msgid "Possible reasons"
-msgstr ""
+msgstr "Mogelijke oorzaken"
 
 #: templates/404.html:44
 msgid "The location of the item is incorrect."
-msgstr ""
+msgstr "De locatie van het onderdeel is onjuist."
 
 #: templates/404.html:45
 msgid "The location is correct, but the item no longer exists."
-msgstr ""
+msgstr "De locatie is juist, maar het onderdeel bestaat niet meer."
 
 #: templates/404.html:46
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr ""
+msgstr "De locatie is juist, maar uw account mist de benodigde permissies om het te benaderen."
 
 #: templates/500.html:5 templates/500.html:30
 #: templates/appearance/root.html:58
@@ -123,36 +125,36 @@ msgstr "Server fout"
 
 #: templates/500.html:32
 msgid "There's been an unexpected error."
-msgstr ""
+msgstr "Er is een onverwachte fout."
 
 #: templates/500.html:40
 msgid "What to do next?"
-msgstr ""
+msgstr "Wat nu?"
 
 #: templates/500.html:44
 msgid "Refresh the page."
-msgstr ""
+msgstr "Ververs de pagina."
 
 #: templates/500.html:45
 msgid "Wait a bit. The system might be overloaded."
-msgstr ""
+msgstr "Even wachten. Het systeem kan te druk bezig zijn."
 
 #: templates/500.html:46
 msgid "Contact your system administrator."
-msgstr ""
+msgstr "Neem contact op met uw systeembeheerder."
 
 #: templates/500.html:47
 msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
-msgstr ""
+msgstr "Bekijk de logs voor berichten met de labels \"ERROR\", \"CRITICAL\" of \"FATAL\"."
 
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
-msgstr ""
+msgstr "Open een ticket in de <a href=\"%(issue_url)s\">issue tracker</a>."
 
 #: templates/appearance/about.html:10
 msgid "About"
-msgstr "Informatie"
+msgstr "Over"
 
 #: templates/appearance/about.html:73
 #, python-format
@@ -160,7 +162,7 @@ msgid ""
 "\n"
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
-msgstr ""
+msgstr "\n%(setting_project_title)s is gebaseerd op %(project_title)s"
 
 #: templates/appearance/about.html:78
 msgid "Version"
@@ -237,13 +239,13 @@ msgstr "Waarschuwing"
 
 #: templates/appearance/base.html:52
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Klik hier om dit te herstellen."
 
 #: templates/appearance/base.html:62
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
+msgstr "Instellingen geüpdatet. Herstart uw installatie en ververs de browser om te activeren."
 
 #: templates/appearance/base.html:70
 #, python-format
@@ -251,11 +253,11 @@ msgid ""
 "\n"
 "                                        Impersonating user \"%(user)s\".\n"
 "                                    "
-msgstr ""
+msgstr "\nFunctioneer als gebruiker \"%(user)s\"."
 
 #: templates/appearance/base.html:73
 msgid "Click here when finished"
-msgstr ""
+msgstr "Klik hier indien voltooid"
 
 #: templates/appearance/base.html:87
 #: templates/appearance/generic_list_items_subtemplate.html:66
@@ -270,11 +272,11 @@ msgstr "Toggle Dropdown"
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
-msgstr ""
+msgstr "Open hoofdmenu"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
-msgstr ""
+msgstr "Weet u het zeker?"
 
 #: templates/appearance/generic_confirm.html:38
 msgid "Yes"
@@ -301,7 +303,7 @@ msgstr "Opslaan"
 #: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Submit"
-msgstr "Verstuur"
+msgstr "Indienen"
 
 #: templates/appearance/generic_form_subtemplate.html:87
 #: templates/appearance/generic_multiform_subtemplate.html:63
@@ -339,24 +341,24 @@ msgstr "Totaal: %(total)s"
 
 #: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
-msgstr ""
+msgstr "Alle selecteren/deselecteren"
 
 #: templates/appearance/list_toolbar.html:17
 msgid "Toggle list display mode"
-msgstr ""
+msgstr "Wissel lijst modus"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
+msgstr "Selecteer onderdelen voor bulk acties. Gebruik Shift + Klik om meerdere te selecteren."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr ""
+msgstr "Bulk acties"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
-msgstr "Toggle navigatie"
+msgstr "Wissel navigatie"
 
 #: templates/appearance/no_results.html:18
 msgid "No results"
@@ -372,7 +374,7 @@ msgstr "Server communicatie probleem"
 
 #: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
-msgstr "Controleer uw netwerkverbinding en probeer nog eens een beetje later."
+msgstr "Controleer uw netwerkverbinding en probeer het later nog eens."
 
 #: templatetags/appearance_tags.py:42
 msgid "None"

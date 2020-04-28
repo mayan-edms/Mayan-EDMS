@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:42-0400\n"
-"PO-Revision-Date: 2020-04-08 04:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-27 23:33-0400\n"
+"PO-Revision-Date: 2020-04-21 07:38+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,7 +83,7 @@ msgstr "Poziția în care va fi afișat mesajul de sistem. Opțiunile sunt: în 
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
-msgstr ""
+msgstr "Permisiune insuficientă"
 
 #: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
@@ -95,25 +95,25 @@ msgstr "Pagina nu a fost gasită"
 
 #: templates/404.html:32
 msgid "The requested page could not be found."
-msgstr ""
+msgstr "Pagina solicitată nu a putut fi găsită."
 
 #: templates/404.html:40
 msgid "Possible reasons"
-msgstr ""
+msgstr "Motive posibile"
 
 #: templates/404.html:44
 msgid "The location of the item is incorrect."
-msgstr ""
+msgstr "Locația articolului este incorectă."
 
 #: templates/404.html:45
 msgid "The location is correct, but the item no longer exists."
-msgstr ""
+msgstr "Locația este corectă, dar elementul nu mai există."
 
 #: templates/404.html:46
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr ""
+msgstr "Locația este corectă, dar contul dvs. nu are permisiunea necesară pentru accesarea acesteia."
 
 #: templates/500.html:5 templates/500.html:30
 #: templates/appearance/root.html:58
@@ -122,32 +122,32 @@ msgstr "Eroare la server"
 
 #: templates/500.html:32
 msgid "There's been an unexpected error."
-msgstr ""
+msgstr "A apărut o eroare neașteptată."
 
 #: templates/500.html:40
 msgid "What to do next?"
-msgstr ""
+msgstr "Ce e de făcut în continuare?"
 
 #: templates/500.html:44
 msgid "Refresh the page."
-msgstr ""
+msgstr "Reîncarcă pagina."
 
 #: templates/500.html:45
 msgid "Wait a bit. The system might be overloaded."
-msgstr ""
+msgstr "Așteptaţi o clipă. Este posibil ca sistemul să fie supraîncărcat."
 
 #: templates/500.html:46
 msgid "Contact your system administrator."
-msgstr ""
+msgstr "Contactați administratorul de sistem."
 
 #: templates/500.html:47
 msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
-msgstr ""
+msgstr "Verificați jurnalele pentru mesajele cu etichetele „EROARE”, „CRITIC” sau „FATAL”."
 
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
-msgstr ""
+msgstr "Deschideți un bilet folosind <a href=\"%(issue_url)s\">trackerul de probleme</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"

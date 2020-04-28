@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Johan Braeken, 2017
 # Lucas Weel <ljj.weel@gmail.com>, 2013
 # woei <root@ipaddr.nl>, 2014
@@ -11,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:42-0400\n"
-"PO-Revision-Date: 2020-02-14 04:18+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"PO-Revision-Date: 2020-04-26 16:54+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,7 +42,7 @@ msgstr ""
 
 #: classes.py:125
 msgid "LibreOffice not installed or not found."
-msgstr ""
+msgstr "LibreOffice niet geïnstalleerd of niet gevonden."
 
 #: classes.py:226
 msgid "Not an office file format."
@@ -59,13 +60,13 @@ msgstr "transformatie"
 
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr ""
+msgstr "Hulpmiddel uit het poppler-utils pakket dat gebruikt wordt om PDF-bestanden te inspecteren."
 
 #: dependencies.py:19
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr ""
+msgstr "Hulpmiddel uit het poppler-utils pakket dat gebruikt wordt om pagina's uit PDF-bestanden te halen in PPM-afbeeldingen."
 
 #: forms.py:22
 msgid "Available transformations for this layer."
@@ -74,11 +75,11 @@ msgstr ""
 #: forms.py:59
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr ""
+msgstr "\"%s\" is geen geldige invoer."
 
 #: layers.py:10
 msgid "Saved transformations"
-msgstr ""
+msgstr "Opgeslagen transformaties"
 
 #: links.py:17
 msgid "Delete"
@@ -94,7 +95,7 @@ msgstr "Transformaties"
 
 #: links.py:34
 msgid "Select new transformation"
-msgstr ""
+msgstr "Nieuwe transformatie selecteren"
 
 #: models.py:21 models.py:83
 msgid "Name"
@@ -178,7 +179,7 @@ msgstr "Bijsnijden"
 
 #: transformations.py:176
 msgid "Draw rectangle"
-msgstr ""
+msgstr "Rechthoek tekenen"
 
 #: transformations.py:278
 msgid "Draw rectangle (percents coordinates)"
@@ -198,7 +199,7 @@ msgstr ""
 
 #: transformations.py:407
 msgid "Mirror"
-msgstr ""
+msgstr "Spiegelen"
 
 #: transformations.py:418
 msgid "Resize"
@@ -210,15 +211,15 @@ msgstr "Roteren"
 
 #: transformations.py:471
 msgid "Rotate 90 degrees"
-msgstr ""
+msgstr "90 graden draaien"
 
 #: transformations.py:482
 msgid "Rotate 180 degrees"
-msgstr ""
+msgstr "180 graden draaien"
 
 #: transformations.py:493
 msgid "Rotate 270 degrees"
-msgstr ""
+msgstr "270 graden draaien"
 
 #: transformations.py:503
 msgid "Unsharp masking"
@@ -235,7 +236,7 @@ msgstr "Voer een geldige YAML-waarde in."
 #: views.py:51
 #, python-format
 msgid "Error creating transformation: %s."
-msgstr ""
+msgstr "Fout bij het aanmaken van transformatie: %s."
 
 #: views.py:68
 #, python-format
@@ -266,7 +267,7 @@ msgstr ""
 
 #: views.py:286
 msgid "Transformation created successfully."
-msgstr ""
+msgstr "Transformatie met succes aangemaakt."
 
 #: views.py:310
 msgid "Select"

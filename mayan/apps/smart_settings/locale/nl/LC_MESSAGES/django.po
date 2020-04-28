@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:45-0400\n"
-"PO-Revision-Date: 2020-04-19 04:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-04-27 23:37-0400\n"
+"PO-Revision-Date: 2020-04-25 23:11+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -44,12 +45,12 @@ msgstr ""
 
 #: forms.py:12
 msgid "Enter the new setting value."
-msgstr ""
+msgstr "De nieuwe instellingswaarde invoeren."
 
 #: forms.py:28
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr ""
+msgstr "\"%s\" is geen geldige invoer."
 
 #: links.py:12 links.py:16
 msgid "Settings"
@@ -65,15 +66,15 @@ msgstr "Bewerken"
 
 #: permissions.py:10
 msgid "Edit settings"
-msgstr ""
+msgstr "Instellingen bewerken"
 
 #: permissions.py:13
 msgid "View settings"
-msgstr "Bekijk instellingen"
+msgstr "Instellingen bekijken"
 
 #: settings.py:9
 msgid "Django"
-msgstr ""
+msgstr "Django"
 
 #: settings.py:14
 msgid ""
@@ -153,7 +154,7 @@ msgstr ""
 
 #: settings.py:113
 msgid "Default: 'localhost'. The host to use for sending email."
-msgstr ""
+msgstr "Standaard: 'localhost'. De host om te gebruiken voor versturen e-mail."
 
 #: settings.py:120
 msgid ""
@@ -171,7 +172,7 @@ msgstr ""
 
 #: settings.py:140
 msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
-msgstr ""
+msgstr "Standaard: 25. Poort om te gebruiken voor de SMTP server zoals vastgelegd in EMAIL_HOST."
 
 #: settings.py:147
 msgid ""
@@ -350,9 +351,9 @@ msgstr ""
 
 #: views.py:58
 msgid "Setting updated successfully."
-msgstr ""
+msgstr "Instelling met succes bijgewerkt. "
 
 #: views.py:67
 #, python-format
 msgid "Edit setting: %s"
-msgstr ""
+msgstr "Bewerk instelling: %s"

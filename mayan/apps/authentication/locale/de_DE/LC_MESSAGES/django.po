@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:42-0400\n"
-"PO-Revision-Date: 2020-03-28 14:36+0000\n"
-"Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
+"POT-Creation-Date: 2020-04-27 23:33-0400\n"
+"PO-Revision-Date: 2020-04-21 18:47+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,7 +64,7 @@ msgstr "Benutzer"
 
 #: forms.py:78
 msgid "User to be impersonated."
-msgstr "Zu imitierender Benutzer"
+msgstr "Benutzer dessen Identität angenommen werden soll"
 
 #: forms.py:82
 msgid "Permanent"
@@ -84,7 +84,7 @@ msgstr "Passwort ändern"
 
 #: links.py:32 views.py:68
 msgid "Impersonate user"
-msgstr "Benutzer imitieren"
+msgstr "Benutzeridentität annehmen"
 
 #: links.py:37 links.py:44
 msgid "Set password"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:43-0400\n"
-"PO-Revision-Date: 2020-04-04 11:33+0000\n"
+"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"PO-Revision-Date: 2020-04-25 15:20+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -134,7 +134,7 @@ msgstr "Тип на документа е създаден"
 
 #: events.py:35
 msgid "Document type edited"
-msgstr "Тип на документа редактиран"
+msgstr "Тип на документа е редактиран"
 
 #: events.py:38
 msgid "Document version reverted"
@@ -193,7 +193,7 @@ msgstr "Език"
 
 #: forms/document_forms.py:162
 msgid "File mimetype"
-msgstr "mimetype на файла"
+msgstr "MIME тип на файла"
 
 #: forms/document_forms.py:163 forms/document_forms.py:168
 msgid "None"
@@ -582,7 +582,7 @@ msgstr "Типове документи"
 
 #: models/document_type_models.py:163
 msgid "Quick label"
-msgstr "Бърз етикет"
+msgstr "Кратък етикет"
 
 #: models/document_version_models.py:73
 msgid "The server date and time when the document version was processed."
@@ -609,7 +609,7 @@ msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
 "describe the format of a file, in this case the file format of the document."
 " Some examples: \"text/plain\" or \"image/jpeg\". "
-msgstr "Mime тип на файла на версията на документа Типовете MIME са стандартен начин да се опише форматът на файл, в този случай форматът на файла на документа. Някои примери: „текст/обикновена“ или „изображение/jpeg“."
+msgstr "MIME тип на файла на версията на документа. Типовете MIME са стандартен начин да се опише форматът на файл, в този случай форматът на файла на документа. Някои примери: „текст/обикновен“ или „изображение/jpeg“."
 
 #: models/document_version_models.py:92 search.py:36 search.py:61
 msgid "MIME type"
@@ -619,7 +619,7 @@ msgstr "MIME тип"
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
-msgstr "Кодиране на файла на версията на документа. двоичен 7-битов, двоичен 8-битов, текст, base64 и т.н."
+msgstr "Кодиране на файла на версията на документа: двоичен 7-битов, двоичен 8-битов, текст, base64 и т.н."
 
 #: models/document_version_models.py:98
 msgid "Encoding"
@@ -647,7 +647,7 @@ msgstr "Ползван"
 
 #: models/misc_models.py:102
 msgid "Recent document"
-msgstr "Скорошен документ"
+msgstr "Последен документ"
 
 #: models/misc_models.py:103
 msgid "Recent documents"
@@ -827,7 +827,7 @@ msgstr "Списък на поддържаните езици на докуме�
 msgid ""
 "Time in seconds that the browser should cache the supplied document images. "
 "The default of 31559626 seconds corresponde to 1 year."
-msgstr "Време за секунди за което браузърът трябва да кешира предоставените изображения на документи. По подразбиране 31559626 секунди съответства на 1 година."
+msgstr "Време в секунди, за което браузърът трябва да кешира предоставените изображения на документи. По подразбиране 31559626 секунди съответства на 1 година."
 
 #: settings.py:118
 msgid ""
@@ -999,7 +999,7 @@ msgid ""
 " it is corrupted or that the upload process was interrupted. Use the "
 "document page recalculation action to attempt to introspect the page count "
 "again."
-msgstr "Това може да означава, че документът е във формат, който не се поддържа, че е повреден или че процесът на качване е прекъснат. Използвайте действието за преизчисляване на страниците на документ, за да се опитате отново да прегледате броя на страниците."
+msgstr "Това може да означава, че документът е във формат, който не се поддържа, че е повреден или че процесът на качване е прекъснат. Използвайте действието за преизчисляване на страниците на документ, за да се опитате отново да проверите броя на страниците."
 
 #: views/document_page_views.py:60
 msgid "No document pages available"
@@ -1010,26 +1010,26 @@ msgstr "Няма налични страници от документ"
 msgid "Pages for document: %s"
 msgstr "Страници за документ: %s"
 
-#: views/document_page_views.py:140
+#: views/document_page_views.py:131
 msgid "There are no more pages in this document"
 msgstr "Няма повече страници в този документ"
 
-#: views/document_page_views.py:158
+#: views/document_page_views.py:147
 msgid "You are already at the first page of this document"
 msgstr "Вече сте на първа страница на този документ"
 
-#: views/document_page_views.py:178
+#: views/document_page_views.py:167
 #, python-format
 msgid "Image of: %s"
 msgstr "Изображение на: %s"
 
-#: views/document_page_views.py:279
+#: views/document_page_views.py:265
 msgid "Disable the selected document page?"
 msgid_plural "Disable the selected document pages?"
 msgstr[0] "Деактивиране на избраната страница с документи?"
 msgstr[1] "Деактивиране на избраните страници с документи?"
 
-#: views/document_page_views.py:309
+#: views/document_page_views.py:295
 msgid "Enable the selected document page?"
 msgid_plural "Enable the selected document pages?"
 msgstr[0] "Да се активира ли избраната страница с документи?"
@@ -1074,34 +1074,34 @@ msgstr "Редактиране на тип документ: %s"
 #: views/document_type_views.py:165
 #, python-format
 msgid "Create quick label for document type: %s"
-msgstr "Създайте бърз етикет за типа документ: %s"
+msgstr "Създайте кратък етикет за типа документ: %s"
 
 #: views/document_type_views.py:184
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
-msgstr "Да се изтрие ли бързият етикет: %(label)s, от тип документ &quot;%(document_type)s&quot;?"
+msgstr "Да се изтрие ли краткият етикет: %(label)s, от тип документ &quot;%(document_type)s&quot;?"
 
 #: views/document_type_views.py:212
 #, python-format
 msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr "Редактиране на бърз етикет „%(filename)s“ от документ тип „%(document_type)s“"
+msgstr "Редактиране на кратък етикет „%(filename)s“ от документ тип „%(document_type)s“"
 
 #: views/document_type_views.py:248
 msgid ""
 "Quick labels are predetermined filenames that allow the quick renaming of "
 "documents as they are uploaded by selecting them from a list. Quick labels "
 "can also be used after the documents have been uploaded."
-msgstr "Бързите етикети са предварително определени имена на файлове, които позволяват бързото преименуване на документите при тяхното качване, като се избират от списък. Бързите етикети могат да се използват и след качването на документите."
+msgstr "Кратките етикети са предварително определени имена на файлове, които позволяват бързото преименуване на документите при тяхното качване, като се избират от списък. Кратките етикети могат да се използват и след качването на документите."
 
 #: views/document_type_views.py:254
 msgid "There are no quick labels for this document type"
-msgstr "Няма бързи етикети за този тип документи"
+msgstr "Няма кратки етикети за този тип документи"
 
 #: views/document_type_views.py:257
 #, python-format
 msgid "Quick labels for document type: %s"
-msgstr "Бързи етикети за типа документ: %s"
+msgstr "Кратки етикети за типа документ: %s"
 
 #: views/document_version_views.py:43
 msgid "Download document version"
@@ -1120,16 +1120,16 @@ msgstr "Всички версии, следващи тази, ще бъдат и
 msgid "Revert to this version?"
 msgstr "Да се върнете ли към тази версия?"
 
-#: views/document_version_views.py:110
+#: views/document_version_views.py:107
 msgid "Document version reverted successfully"
 msgstr "Документът е върнат успешно към предна версия"
 
-#: views/document_version_views.py:115
+#: views/document_version_views.py:112
 #, python-format
 msgid "Error reverting document version; %s"
 msgstr "Грешка при връщане на версията на документа; %s"
 
-#: views/document_version_views.py:143
+#: views/document_version_views.py:140
 #, python-format
 msgid "Preview of document version: %s"
 msgstr "Визуализация на версията на документа: %s"
@@ -1192,7 +1192,7 @@ msgstr "Визуализация на документа: %s"
 #: views/document_views.py:321
 #, python-format
 msgid "Edit properties of document: %s"
-msgstr "Редактиране на свойствата на документа: %s"
+msgstr "Редактиране на свойствата на документ: %s"
 
 #: views/document_views.py:352
 #, python-format

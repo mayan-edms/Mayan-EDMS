@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 00:42-0400\n"
-"PO-Revision-Date: 2020-02-14 04:17+0000\n"
+"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"PO-Revision-Date: 2020-04-28 03:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -23,33 +24,37 @@ msgstr ""
 msgid "Checkouts"
 msgstr "Checkouts"
 
-#: dashboard_widgets.py:14 views.py:173
+#: dashboard_widgets.py:14 views.py:181
 msgid "Checked out documents"
-msgstr ""
+msgstr "Uitgecheckte documenten"
 
 #: events.py:8
 msgid "Document automatically checked in"
-msgstr "Document automatisch in-gechecket"
+msgstr "Document automatisch in-gecheckt"
 
 #: events.py:12
 msgid "Document checked in"
-msgstr "Document in-gechecket"
+msgstr "Document ingecheckt"
 
 #: events.py:15
 msgid "Document checked out"
-msgstr "Document uit-gecheckt"
+msgstr "Document uitgecheckt"
 
 #: events.py:18
 msgid "Document forcefully checked in"
-msgstr "Document geforceerd in-gecheckt"
+msgstr "Document geforceerd ingecheckt"
+
+#: exceptions.py:16
+msgid "Document not checked out."
+msgstr ""
 
 #: exceptions.py:25
 msgid "Document already checked out."
-msgstr "Document reeds uit-gecheckt."
+msgstr "Document reeds uitgecheckt."
 
 #: forms.py:26
 msgid "Document status"
-msgstr ""
+msgstr "Documentstatus"
 
 #: forms.py:37 models.py:42 models.py:134
 msgid "User"
@@ -57,7 +62,7 @@ msgstr "Gebruiker"
 
 #: forms.py:41
 msgid "Check out time"
-msgstr ""
+msgstr "Uitcheck tijd"
 
 #: forms.py:46
 msgid "Check out expiration"
@@ -77,31 +82,31 @@ msgstr "Nee"
 
 #: links.py:39
 msgid "Check out document"
-msgstr "Document uit-checken"
+msgstr "Document uitchecken"
 
 #: links.py:43
 msgid "Check out"
-msgstr ""
+msgstr "Uitchecken"
 
 #: links.py:50
 msgid "Check in document"
-msgstr "Document in-checken"
+msgstr "Document inchecken"
 
 #: links.py:54
 msgid "Check in"
-msgstr ""
+msgstr "Inchecken"
 
 #: links.py:60
 msgid "Check in/out"
-msgstr "In/uit-checken"
+msgstr "In-/uitchecken"
 
 #: literals.py:10
 msgid "Checked out"
-msgstr "Uit-checken"
+msgstr "Uitgecheckt"
 
 #: literals.py:11
 msgid "Checked in/available"
-msgstr "In-gecheckt/beschikbaar"
+msgstr "Ingecheckt/beschikbaar"
 
 #: models.py:29 models.py:112
 msgid "Document"
@@ -109,7 +114,7 @@ msgstr "Document"
 
 #: models.py:32
 msgid "Check out date and time"
-msgstr "Uit-check datum en tijd"
+msgstr "Uitcheckdatum en tijd"
 
 #: models.py:36
 msgid "Amount of time to hold the document checked out in minutes."
@@ -117,7 +122,7 @@ msgstr "Hoelang in minuten uitgedrukt het document uit-gecheckt houden. "
 
 #: models.py:38
 msgid "Check out expiration date and time"
-msgstr "Verloop-tijd en -datum van checkout"
+msgstr "Check-out verloopdatum en tijd"
 
 #: models.py:47
 msgid "Do not allow new version of this document to be uploaded."
@@ -125,19 +130,19 @@ msgstr "Sta niet toe dat een nieuwe versie van dit document wordt geüpload."
 
 #: models.py:49
 msgid "Block new version upload"
-msgstr "Blokkeer uploaden van een nieuwe versie"
+msgstr "Nieuwe versie uploaden blokkeren"
 
 #: models.py:57 permissions.py:5
 msgid "Document checkout"
-msgstr ""
+msgstr "Document check-out"
 
 #: models.py:58
 msgid "Document checkouts"
-msgstr ""
+msgstr "Document check-outs"
 
 #: models.py:66
 msgid "Check out expiration date and time must be in the future."
-msgstr ""
+msgstr "Check-out verloopdatum en tijd moet in de toekomst liggen."
 
 #: models.py:118
 msgid "New version block"
@@ -149,7 +154,7 @@ msgstr ""
 
 #: models.py:139
 msgid "Checkout time and date"
-msgstr ""
+msgstr "Uitcheckdatum en tijd"
 
 #: models.py:144
 msgid "Checkout expiration"
@@ -157,7 +162,7 @@ msgstr ""
 
 #: permissions.py:8
 msgid "Check in documents"
-msgstr ""
+msgstr "Documenten inchecken"
 
 #: permissions.py:11
 msgid "Forcefully check in documents"
@@ -165,7 +170,7 @@ msgstr ""
 
 #: permissions.py:14
 msgid "Check out documents"
-msgstr ""
+msgstr "Documenten uitchecken"
 
 #: permissions.py:17
 msgid "Check out details view"
@@ -183,45 +188,45 @@ msgstr ""
 msgid "Primary key of the document to be checked out."
 msgstr ""
 
-#: views.py:33
+#: views.py:35
 #, python-format
 msgid "Check in %(count)d document"
 msgid_plural "Check in %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d document in-checken"
+msgstr[1] "%(count)d documenten in-checken"
 
-#: views.py:46
+#: views.py:48
 #, python-format
 msgid "Check in document: %s"
-msgstr ""
+msgstr "In-checken document: %s"
 
-#: views.py:101
+#: views.py:106
 #, python-format
 msgid "Checkout %(count)d document"
 msgid_plural "Checkout %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d document uit-checken"
+msgstr[1] "%(count)d documenten uit-checken"
 
-#: views.py:114
+#: views.py:119
 #, python-format
 msgid "Check out document: %s"
-msgstr ""
+msgstr "Uit-checken document: %s"
 
-#: views.py:150
+#: views.py:158
 #, python-format
 msgid "Check out details for document: %s"
-msgstr ""
+msgstr "Uit-check details voor document: %s"
 
-#: views.py:169
+#: views.py:177
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr ""
 
-#: views.py:172
+#: views.py:180
 msgid "No documents have been checked out"
-msgstr ""
+msgstr "Er zijn geen documenten uitgecheckt"
 
 #: widgets.py:25
 msgid "Amount"
-msgstr ""
+msgstr "Aantal"
