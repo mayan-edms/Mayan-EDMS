@@ -8,14 +8,39 @@ CONSOLE_LINES ?= `echo $$(tput lines)`
 IMAGE_VERSION ?= `cat docker/rootfs/version`
 PIP_INDEX_URL ?= http://$(HOST_IP):3141/root/pypi/+simple/
 PIP_TRUSTED_HOST ?= $(HOST_IP)
+DOCKER_HOST_REGISTRY_NAME ?= $(DOCKER_HOST_REGISTRY_NAME)
+DOCKER_HOST_REGISTRY_PORT ?= $(DOCKER_HOST_REGISTRY_PORT)
+DOCKER_IMAGE_MAYAN_NAME ?= $(DOCKER_IMAGE_MAYAN_NAME)
 
 docker-build: ## Build a new image locally.
-	docker build -t mayanedms/mayanedms:$(IMAGE_VERSION) -f docker/Dockerfile .
+	docker build -t $(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION) -f docker/Dockerfile .
 
 docker-build-with-proxy: ## Build a new image locally using an APT proxy as APT_PROXY.
 docker-build-with-proxy: devpi-start
-	docker build -t mayanedms/mayanedms:$(IMAGE_VERSION) -f docker/Dockerfile --build-arg APT_PROXY=$(APT_PROXY) --build-arg PIP_INDEX_URL=$(PIP_INDEX_URL) --build-arg PIP_TRUSTED_HOST=$(PIP_TRUSTED_HOST) --build-arg HTTP_PROXY=$(HTTP_PROXY) --build-arg HTTPS_PROXY=$(HTTPS_PROXY) .
+	docker build -t $(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION) -f docker/Dockerfile --build-arg APT_PROXY=$(APT_PROXY) --build-arg PIP_INDEX_URL=$(PIP_INDEX_URL) --build-arg PIP_TRUSTED_HOST=$(PIP_TRUSTED_HOST) --build-arg HTTP_PROXY=$(HTTP_PROXY) --build-arg HTTPS_PROXY=$(HTTPS_PROXY) .
 	$(MAKE) devpi-stop
+
+docker-build-with-proxy-push: ## Build an image with an APT proxy and push to the test registry.
+docker-build-with-proxy-push: docker-build-with-proxy docker-registry-push
+
+docker-registry-push: ## Push a built image to the test Docker registry.
+	docker tag $(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION) $(DOCKER_HOST_REGISTRY_NAME):$(DOCKER_HOST_REGISTRY_PORT)/$(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION)
+	docker push $(DOCKER_HOST_REGISTRY_NAME):$(DOCKER_HOST_REGISTRY_PORT)/$(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION)
+	# /etc/docker/daemon.json {"insecure-registries" : ["docker-registry.local:5000"]}
+	# /etc/hosts <ip address>  docker-registry.local
+
+docker-registry-pull: ## Pull an image from the test Docker registry.
+	docker pull $(DOCKER_HOST_REGISTRY_NAME):$(DOCKER_HOST_REGISTRY_PORT)/$(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION)
+	docker tag $(DOCKER_HOST_REGISTRY_NAME):$(DOCKER_HOST_REGISTRY_PORT)/$(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION) $(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION)
+
+docker-registry-catalog: ## Show the test Docker registry catalog.
+	curl http://$(DOCKER_HOST_REGISTRY_NAME):$(DOCKER_HOST_REGISTRY_PORT)/v2/_catalog
+
+docker-registry-tags: ## Show the tags for the image in the test Docker registry.
+	curl http://$(DOCKER_HOST_REGISTRY_NAME):$(DOCKER_HOST_REGISTRY_PORT)/v2/$(DOCKER_IMAGE_MAYAN_NAME)/tags/list
+
+docker-registry-run: # Launch a test Docker registry.
+	docker run -d -p 5000:5000 --name registry registry:2
 
 docker-shell: ## Launch a bash instance inside a running container. Pass the container name via DOCKER_CONTAINER.
 	docker exec -e TERM=$(TERM) -e "COLUMNS=$(CONSOLE_COLUMNS)" -e "LINES=$(CONSOLE_LINES)" -it $(DOCKER_CONTAINER) /bin/bash
@@ -27,14 +52,14 @@ docker-runtest-container: docker-test-cleanup
 	--name test-mayan-edms \
 	-p 80:8000 \
 	-v test-mayan_data:/var/lib/mayan \
-	mayanedms/mayanedms:$(IMAGE_VERSION)
+	$(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION)
 
 docker-runtest-cleanup: ## Delete the test container and the test volume.
 	@docker rm -f test-mayan-edms || true
 	@docker volume rm test-mayan_data || true
 
 docker-runtest-all: ## Executed the test suite in a test container.
-	docker run --rm mayanedms/mayanedms:$(IMAGE_VERSION) run_tests
+	docker run --rm $(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION) run_tests
 
 docker-compose-build:
 	docker-compose -f docker/docker-compose.yml -p mayan-edms build
@@ -99,7 +124,7 @@ docker-staging-container-mayan-start:
 	-e MAYAN_CELERY_BROKER_URL=$(MAYAN_CELERY_BROKER_URL) \
 	-e MAYAN_CELERY_RESULT_BACKEND="redis://:mayanredispassword@mayan-staging-redis:6379/1" \
 	-v mayan-staging-app:/var/lib/mayan \
-	mayanedms/mayanedms:$(IMAGE_VERSION)
+	$(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION)
 
 docker-staging-start-with-rabbitmq: MAYAN_CELERY_BROKER_URL="amqp://guest:guest@mayan-staging-rabbitmq:5672/"
 docker-staging-start-with-rabbitmq: docker-staging-start
