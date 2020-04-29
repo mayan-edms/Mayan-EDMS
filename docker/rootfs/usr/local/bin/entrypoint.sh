@@ -71,6 +71,11 @@ apt_get_install() {
 
 initialsetup() {
     echo "mayan: initialsetup()"
+
+    # Change the owner of the /var/lib/mayan always to allow adding the
+    # initial files. Top level only.
+    chown mayan:mayan ${MAYAN_MEDIA_ROOT}
+
     su mayan -c "${MAYAN_BIN} initialsetup --force --no-dependencies"
 }
 
