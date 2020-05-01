@@ -1,5 +1,5 @@
 __title__ = 'Mayan EDMS'
-__version__ = '3.4.7'
+__version__ = '3.5a1'
 __build__ = 0x030407
 __build_string__ = 'v3.4.7_Tue Apr 28 17:14:27 2020 -0400'
 __django_version__ = '2.2'
