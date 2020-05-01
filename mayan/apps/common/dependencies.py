@@ -219,7 +219,7 @@ PythonDependency(
     module=__name__, name='extract-msg', version_string='==0.23.3'
 )
 PythonDependency(
-    module=__name__, name='gevent', version_string='==1.4.0'
+    module=__name__, name='gevent', version_string='==20.4.0'
 )
 PythonDependency(
     module=__name__, name='gunicorn', version_string='==20.0.4'
@@ -254,7 +254,7 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
         FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
         DEALINGS IN THE SOFTWARE.
-    ''', module=__name__, name='pytz', version_string='==2019.1'
+    ''', module=__name__, name='pytz', version_string='==2020.1'
 )
 PythonDependency(
     module=__name__, name='requests', version_string='==2.23.0'
@@ -280,7 +280,7 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
         THE SOFTWARE.
-    ''', module=__name__, name='sh', version_string='==1.12.14'
+    ''', module=__name__, name='sh', version_string='==1.13.1'
 )
 PythonDependency(
     module=__name__, name='whitenoise', version_string='==5.0.1'
@@ -290,7 +290,7 @@ PythonDependency(
 
 PythonDependency(
     module=__name__, environment=environment_development, name='Werkzeug',
-    version_string='==1.0.0'
+    version_string='==1.0.1'
 )
 PythonDependency(
     module=__name__, environment=environment_development, name='devpi-server',
@@ -302,12 +302,12 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_development, module=__name__,
-    name='django-extensions', version_string='==2.2.8'
+    name='django-extensions', version_string='==2.2.9'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
         'Used to allow offline translation of the code text strings.'
-    ), module=__name__, name='django-rosetta', version_string='==0.9.3'
+    ), module=__name__, name='django-rosetta', version_string='==0.9.4'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
@@ -326,11 +326,11 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_development,
-    module=__name__, name='safety', version_string='==1.8.7'
+    module=__name__, name='safety', version_string='==1.9.0'
 )
 PythonDependency(
     environment=environment_development,
-    module=__name__, name='transifex-client', version_string='==0.13.8'
+    module=__name__, name='transifex-client', version_string='==0.13.9'
 )
 
 # Testing
@@ -342,11 +342,11 @@ BinaryDependency(
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='coverage',
-    version_string='==5.0.4'
+    version_string='==5.1'
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='coveralls',
-    version_string='==1.11.1'
+    version_string='==2.0.0'
 )
 PythonDependency(
     environment=environment_testing, module=__name__,
@@ -363,7 +363,7 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='tox',
-    version_string='==3.14.5'
+    version_string='==3.14.6'
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='psutil',
@@ -385,7 +385,7 @@ PythonDependency(
 
 PythonDependency(
     environment=environment_documentation, module=__name__, name='Sphinx',
-    version_string='==2.4.4'
+    version_string='==3.0.3'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
@@ -410,7 +410,7 @@ PythonDependency(
 PythonDependency(
     environment=environment_documentation, module=__name__,
     name='sphinxcontrib-spelling',
-    version_string='==4.3.0'
+    version_string='==5.0.0'
 )
 # sphinx-autobuild has a dependency on Tornado,
 # but Tornado 6.0 dropped support for Python 2.7

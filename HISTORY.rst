@@ -1,3 +1,34 @@
+3.5 (2020-XX-XX)
+================
+- Update dependencies versions:
+
+    - Pillow from 7.0.0 to 7.1.2
+    - celery from 4.3.0 to 4.4.2
+    - coverage from 5.0.4 to 5.1
+    - coveralls from 1.11.1 to 2.0.0
+    - drf-yasg from 1.6.0 to 1.17.1
+    - djangorestframework from 3.7.7 to 3.11.0
+    - django-celery-beat from 1.5.0 to 2.0.0
+    - django-cors-headers from 2.5.2 to 3.2.1
+    - django-extensions from 2.2.8 to 2.2.9
+    - django-rosetta from 0.9.3 to 0.9.4
+    - flex from 6.14.0 to 6.14.1
+    - gevent from 1.4.0 to 20.4.0
+    - graphviz from 0.13.2 to 0.14
+    - kombu from 4.6.7 to 4.6.8
+    - pyocr from 0.6 to 0.7.2
+    - python_gnupg from 0.4.5 to 0.4.6
+    - pytz from 2019.1 to 2020.1
+    - Sphinx from 2.4.4 to 3.0.3
+    - safety from 1.8.7 to 1.9.0
+    - sh from 1.12.14 to 1.13.1
+    - sphinxcontrib-spelling from 4.3.0 to 5.0.0
+    - swagger-spec-validator from 2.4.3 to 2.5.0
+    - transifex-client from 0.13.8 to 0.13.9
+    - tox from 3.14.5 to 3.14.6
+    - Werkzeug from 1.0.0 to 1.0.1
+
+
 3.4.7 (2020-04-28)
 ==================
 - Darken dropdown menu text to increase contrast and legibility.
