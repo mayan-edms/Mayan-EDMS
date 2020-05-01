@@ -426,8 +426,8 @@ check-missing-migrations: ## Make sure all models have proper migrations.
 	./manage.py makemigrations --dry-run --noinput --check
 
 setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
+	sudo apt-get install -y firefox-geckodriver gcc gettext gitlab-runner gnupg1 poppler-utils python3-dev tesseract-ocr-deu
 	pip install -r requirements.txt -r requirements/development.txt -r requirements/testing-base.txt -r requirements/documentation.txt -r requirements/build.txt
-	sudo apt-get install -y firefox-geckodriver gcc gettext gitlab-runner libreoffice poppler-utils python3-dev tesseract-ocr-deu
 	docker pull gitlab/gitlab-runner-helper:x86_64-974e52f1
 
 -include docker/Makefile
