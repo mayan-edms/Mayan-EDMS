@@ -1,6 +1,7 @@
 import json
 from importlib import import_module
 import logging
+from packaging import version
 from pathlib import Path
 import pkg_resources
 import shutil
@@ -649,6 +650,14 @@ class JavaScriptDependency(Dependency):
             )
 
 
+class PythonVersion(object):
+    def __init__(self, string):
+        self.version = version.parse(string)
+
+    def __lt__(self, other):
+        return self.version < other.version
+
+
 class PythonDependency(Dependency):
     class_name = 'python'
     class_name_help_text = _(
@@ -676,6 +685,16 @@ class PythonDependency(Dependency):
             return import_string(dotted_path=self.copyright_attribute)
         else:
             return super(PythonDependency, self).get_copyright()
+
+    def get_latest_version(self):
+        url = 'https://pypi.python.org/pypi/{}/json'.format(self.name)
+        response = requests.get(url=url)
+        versions = list(response.json()['releases'])
+        versions.sort(key=PythonVersion)
+        return versions[-1]
+
+    def is_latest_version(self):
+        return self.version_string == '=={}'.format(self.get_latest_version())
 
 
 class GoogleFontDependency(Dependency):
