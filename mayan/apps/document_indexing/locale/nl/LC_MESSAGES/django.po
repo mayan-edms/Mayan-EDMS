@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
@@ -12,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-11 00:41-0400\n"
-"PO-Revision-Date: 2020-04-27 14:54+0000\n"
+"PO-Revision-Date: 2020-05-02 20:08+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:22
@@ -93,7 +92,7 @@ msgstr "Alle documentindexeringen vanaf nul opbouwen"
 
 #: links.py:53 views.py:446
 msgid "Rebuild indexes"
-msgstr "Opnieuw indexeren"
+msgstr "Indexeringen opnieuw opbouwen"
 
 #: links.py:64 views.py:481
 msgid "Reset indexes"
@@ -129,16 +128,16 @@ msgstr "Label"
 
 #: models.py:39
 msgid "This value will be used by other apps to reference this index."
-msgstr ""
+msgstr "Deze waarde wordt gebruikt door andere apps om naar deze index te verwijzen."
 
 #: models.py:40
 msgid "Slug"
-msgstr ""
+msgstr "Slug"
 
 #: models.py:45
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Maakt deze index zichtbaar en 'up-to-date' wanneer documentgegevens wijzigen."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Maakt deze index zichtbaar en 'up-to-date' wanneer documentgegevens wijzigen."
 
 #: models.py:48 models.py:253
 msgid "Enabled"
@@ -154,7 +153,7 @@ msgstr "index instance"
 
 #: models.py:210
 msgid "Index instances"
-msgstr ""
+msgstr "Index instanties"
 
 #: models.py:241
 msgid ""
@@ -168,15 +167,13 @@ msgstr "Indexeringsexpressie"
 
 #: models.py:250
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Maakt deze node zichtbaar en 'up-to-date' wanneer document gegevens wijzigen"
+msgstr "Maakt deze node zichtbaar en 'up-to-date' wanneer document gegevens wijzigen"
 
 #: models.py:258
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Selecteer deze optie, wanneer deze node alleen documenten dient te bevatten. "
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Selecteer deze optie, wanneer deze node alleen documenten dient te bevatten. "
 
 #: models.py:261
 msgid "Link documents"
@@ -192,16 +189,14 @@ msgstr ""
 
 #: models.py:270
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 #: models.py:325
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
-"Fout bij het indexeren van document: %(document)s; uitdrukking: "
-"%(expression)s; %(exception)s"
+msgstr "Fout bij het indexeren van document: %(document)s; uitdrukking: %(expression)s; %(exception)s"
 
 #: models.py:371
 msgid "Index template node"
@@ -316,7 +311,7 @@ msgid ""
 "Documents of this type will appear in the indexes linked when these are "
 "updated. Events of the documents of this type will trigger updates in the "
 "linked indexes."
-msgstr ""
+msgstr "Documenten van dit type zullen verschijnen in de gekoppelde indexeringen wanneer deze worden bijgewerkt. Gebeurtenissen van dit documenttype initiëren het bijwerken van gekoppelde indexeringen"
 
 #: views.py:80
 #, python-format
@@ -336,9 +331,9 @@ msgstr "Bewerk index: %s"
 #: views.py:144
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
-msgstr ""
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
+msgstr "Indexeringen groeperen documenten automatisch in niveau's. Indexeringen worden vastgelegd m.b.v. een sjabloon waarbij variabelen worden vervangen door eigenschappen van documenten zoals label of beschrijving, of die van uitgebreide eigenschappen zoals metadata."
 
 #: views.py:149
 msgid "There are no indexes."
@@ -366,7 +361,7 @@ msgid ""
 "Only the documents of the types selected will be shown in the index when "
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
-msgstr ""
+msgstr "Alleen de document van de geselecteerde types worden getoond in de index.  Alleen gebeurtenissen van de documenten van de geselecteerde type initiëren het bijwerken van de index."
 
 #: views.py:209
 #, python-format
@@ -381,7 +376,7 @@ msgstr ""
 #: views.py:254
 #, python-format
 msgid "Create child node of: %s"
-msgstr ""
+msgstr "Onderliggende node aanmaken van: %s"
 
 #: views.py:280
 #, python-format

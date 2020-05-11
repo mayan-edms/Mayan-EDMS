@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
@@ -13,14 +13,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-11 00:41-0400\n"
-"PO-Revision-Date: 2020-04-26 16:54+0000\n"
+"PO-Revision-Date: 2020-05-02 18:54+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:20 permissions.py:5 settings.py:13
@@ -61,17 +60,13 @@ msgstr "transformatie"
 
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr ""
-"Hulpmiddel uit het poppler-utils pakket dat gebruikt wordt om PDF-bestanden "
-"te inspecteren."
+msgstr "Hulpmiddel uit het poppler-utils pakket dat gebruikt wordt om PDF-bestanden te inspecteren."
 
 #: dependencies.py:19
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr ""
-"Hulpmiddel uit het poppler-utils pakket dat gebruikt wordt om pagina's uit "
-"PDF-bestanden te halen in PPM-afbeeldingen."
+msgstr "Hulpmiddel uit het poppler-utils pakket dat gebruikt wordt om pagina's uit PDF-bestanden te halen in PPM-afbeeldingen."
 
 #: forms.py:22
 msgid "Available transformations for this layer."
@@ -88,11 +83,11 @@ msgstr "Opgeslagen transformaties"
 
 #: links.py:17
 msgid "Delete"
-msgstr "Verwijder"
+msgstr "Verwijderen"
 
 #: links.py:24
 msgid "Edit"
-msgstr "bewerken"
+msgstr "Bewerken"
 
 #: links.py:28
 msgid "Transformations"
@@ -134,17 +129,13 @@ msgstr ""
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Volgorde waarin de transformaties worden uitgevoerd. Indien ongewijzigd zal "
-"automatisch een volgorde toegekend worden."
+msgstr "Volgorde waarin de transformaties worden uitgevoerd. Indien ongewijzigd zal automatisch een volgorde toegekend worden."
 
 #: models.py:87
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Voer de argumenten voor de transformatie in als een YAML statement, "
-"bijvoorbeeld: {\"degrees\": 180}"
+msgstr "Voer de argumenten voor de transformatie in als een YAML statement, bijvoorbeeld: {\"degrees\": 180}"
 
 #: models.py:89
 msgid "Arguments"
@@ -160,7 +151,7 @@ msgstr ""
 
 #: permissions.py:8
 msgid "Create new transformations"
-msgstr "Maak nieuwe transformaties aan"
+msgstr "Nieuwe transformaties aanmaken"
 
 #: permissions.py:11
 msgid "Delete transformations"
@@ -168,11 +159,11 @@ msgstr "Transformaties verwijderen"
 
 #: permissions.py:14
 msgid "Edit transformations"
-msgstr "Wijzig transformaties"
+msgstr "Transformaties bewerken"
 
 #: permissions.py:17
 msgid "View existing transformations"
-msgstr "Bekijk bestaande transformaties"
+msgstr "Bestaande transformaties bekijken"
 
 #: settings.py:19
 msgid "Graphics conversion backend to use."
@@ -212,7 +203,7 @@ msgstr "Spiegelen"
 
 #: transformations.py:418
 msgid "Resize"
-msgstr "Afmeting wijzigen"
+msgstr "Herschalen"
 
 #: transformations.py:445
 msgid "Rotate"
@@ -257,8 +248,7 @@ msgstr ""
 #: views.py:123
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
-"Transformatie verwijderen \"%(transformation)s\" voor: %(content_object)s?"
+msgstr "Transformatie verwijderen \"%(transformation)s\" voor: %(content_object)s?"
 
 #: views.py:172
 #, python-format
@@ -281,7 +271,7 @@ msgstr "Transformatie met succes aangemaakt."
 
 #: views.py:310
 msgid "Select"
-msgstr "Selecteer"
+msgstr "Selecteren"
 
 #: views.py:312
 #, python-format

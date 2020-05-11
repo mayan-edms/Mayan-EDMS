@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
 msgid ""
@@ -11,14 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2020-05-11 00:42-0400\n"
 "PO-Revision-Date: 2020-04-02 06:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:130 apps.py:339 events.py:5 menus.py:8 models/document_models.py:94
 #: permissions.py:5 queues.py:25 settings.py:17 statistics.py:234
@@ -33,9 +31,7 @@ msgstr "Izveidojiet dokumenta veidu"
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
-msgstr ""
-"Katram augšupielādētajam dokumentam ir jāpiešķir dokumenta veids, tas ir "
-"galvenais veids, kā Mayan EDMS kategorizē dokumentus."
+msgstr "Katram augšupielādētajam dokumentam ir jāpiešķir dokumenta veids, tas ir galvenais veids, kā Mayan EDMS kategorizē dokumentus."
 
 #: apps.py:192
 msgid "Versions comment"
@@ -154,13 +150,10 @@ msgstr "Saspiest"
 
 #: forms/document_forms.py:27
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
-"Lejupielādējiet dokumentu oriģinālā formātā vai saspiestā veidā. Šī opcija "
-"ir pieejama tikai tad, ja lejupielādējat vienu dokumentu, vairākiem "
-"dokumentiem pakete vienmēr būs lejupielādēta kā saspiests fails."
+msgstr "Lejupielādējiet dokumentu oriģinālā formātā vai saspiestā veidā. Šī opcija ir pieejama tikai tad, ja lejupielādējat vienu dokumentu, vairākiem dokumentiem pakete vienmēr būs lejupielādēta kā saspiests fails."
 
 #: forms/document_forms.py:34
 msgid "Compressed filename"
@@ -170,9 +163,7 @@ msgstr "Saspiests faila nosaukums"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"Saspiestā faila nosaukums, kurā būs lejupielādējami dokumenti, ja ir "
-"izvēlēta iepriekšējā opcija."
+msgstr "Saspiestā faila nosaukums, kurā būs lejupielādējami dokumenti, ja ir izvēlēta iepriekšējā opcija."
 
 #: forms/document_forms.py:80
 msgid "Quick document rename"
@@ -186,10 +177,7 @@ msgstr "Saglabāt paplašinājumu"
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open document correctly."
-msgstr ""
-"Veic faila paplašinājumu un pārvieto to līdz faila nosaukuma beigām, ļaujot "
-"operētājsistēmām, kas balstās uz failu paplašinājumiem, pareizi atvērt "
-"dokumentu."
+msgstr "Veic faila paplašinājumu un pārvieto to līdz faila nosaukuma beigām, ļaujot operētājsistēmām, kas balstās uz failu paplašinājumiem, pareizi atvērt dokumentu."
 
 #: forms/document_forms.py:148
 msgid "Date added"
@@ -240,9 +228,7 @@ msgstr "Lapu diapazons"
 msgid ""
 "Page number from which all the transformations will be cloned. Existing "
 "transformations will be lost."
-msgstr ""
-"Lapas numurs, no kura tiks klonēti visi pārveidojumi. Esošās transformācijas "
-"tiks zaudētas."
+msgstr "Lapas numurs, no kura tiks klonēti visi pārveidojumi. Esošās transformācijas tiks zaudētas."
 
 #: forms/document_type_forms.py:40 models/document_models.py:46
 #: models/document_type_models.py:58 models/document_type_models.py:153
@@ -255,10 +241,7 @@ msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open the downloaded "
 "document version correctly."
-msgstr ""
-"Veic faila paplašinājumu un pārvieto to faila nosaukuma beigās, ļaujot "
-"operētājsistēmām, kas balstās uz failu paplašinājumiem, pareizi lejupielādēt "
-"lejupielādēto dokumentu versiju."
+msgstr "Veic faila paplašinājumu un pārvieto to faila nosaukuma beigās, ļaujot operētājsistēmām, kas balstās uz failu paplašinājumiem, pareizi lejupielādēt lejupielādēto dokumentu versiju."
 
 #: links/document_links.py:21 links/document_links.py:65
 msgid "Clear transformations"
@@ -465,9 +448,7 @@ msgstr "Visas lapas"
 msgid ""
 "UUID of a document, universally Unique ID. An unique identifier generated "
 "for each document."
-msgstr ""
-"Dokumenta UUID, universāli unikāls ID. Katram dokumentam izveidots unikāls "
-"identifikators."
+msgstr "Dokumenta UUID, universāli unikāls ID. Katram dokumentam izveidots unikāls identifikators."
 
 #: models/document_models.py:44
 msgid "The document type of the document."
@@ -495,9 +476,7 @@ msgstr "Apraksts"
 msgid ""
 "The server date and time when the document was finally processed and added "
 "to the system."
-msgstr ""
-"Servera datums un laiks, kad dokuments beidzot tika apstrādāts un pievienots "
-"sistēmai."
+msgstr "Servera datums un laiks, kad dokuments beidzot tika apstrādāts un pievienots sistēmai."
 
 #: models/document_models.py:61 models/misc_models.py:39
 msgid "Added"
@@ -528,10 +507,7 @@ msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
-msgstr ""
-"Dokumenta gabals ir dokuments ar ierakstu datubāzē, bet neviens fails nav "
-"augšupielādēts. Tas varētu būt pārtraukta augšupielāde vai atlikta "
-"augšupielāde, izmantojot API."
+msgstr "Dokumenta gabals ir dokuments ar ierakstu datubāzē, bet neviens fails nav augšupielādēts. Tas varētu būt pārtraukta augšupielāde vai atlikta augšupielāde, izmantojot API."
 
 #: models/document_models.py:84
 msgid "Is stub?"
@@ -574,7 +550,8 @@ msgstr "Dokumenta veida nosaukums."
 
 #: models/document_type_models.py:34
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
 msgstr "Laiks, pēc kura šāda veida dokumenti tiks pārvietoti uz miskasti."
 
 #: models/document_type_models.py:36
@@ -630,12 +607,9 @@ msgstr "Fails"
 #: models/document_version_models.py:88
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document. "
-"Some examples: \"text/plain\" or \"image/jpeg\". "
-msgstr ""
-"Dokumenta versijas fails ir mimetype. MIME veidi ir standarta veids, kā "
-"aprakstīt faila formātu, šajā gadījumā dokumenta faila formātu. Daži "
-"piemēri: \"text/plain\" vai \"image/jpeg\"."
+"describe the format of a file, in this case the file format of the document."
+" Some examples: \"text/plain\" or \"image/jpeg\". "
+msgstr "Dokumenta versijas fails ir mimetype. MIME veidi ir standarta veids, kā aprakstīt faila formātu, šajā gadījumā dokumenta faila formātu. Daži piemēri: \"text/plain\" vai \"image/jpeg\"."
 
 #: models/document_version_models.py:92 search.py:36 search.py:61
 msgid "MIME type"
@@ -645,9 +619,7 @@ msgstr "MIME tips"
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
-msgstr ""
-"Dokumenta versijas faila kodējums. binārā 7 bitu, binārā 8 bitu, teksta, "
-"bāzes64 utt."
+msgstr "Dokumenta versijas faila kodējums. binārā 7 bitu, binārā 8 bitu, teksta, bāzes64 utt."
 
 #: models/document_version_models.py:98
 msgid "Encoding"
@@ -807,9 +779,7 @@ msgstr ""
 msgid ""
 "Path to the Storage subclass to use when storing the cached document image "
 "files."
-msgstr ""
-"Ceļš uz glabāšanas apakšklasi, ko izmanto, saglabājot kešatmiņā saglabāto "
-"dokumentu attēlu failus."
+msgstr "Ceļš uz glabāšanas apakšklasi, ko izmanto, saglabājot kešatmiņā saglabāto dokumentu attēlu failus."
 
 #: settings.py:41
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
@@ -819,42 +789,31 @@ msgstr "Argumenti, kas jānodod DOCUMENT_CACHE_STORAGE_BACKEND."
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
-msgstr ""
-"Atspējo pirmo kešatmiņas pakāpi, kurā tiek glabātas augstas izšķirtspējas, "
-"pārveidotu dokumentu lapu versijas."
+msgstr "Atspējo pirmo kešatmiņas pakāpi, kurā tiek glabātas augstas izšķirtspējas, pārveidotu dokumentu lapu versijas."
 
 #: settings.py:54
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
-msgstr ""
-"Atspējo otro kešatmiņas pakāpi, kurā tiek saglabātas vidēja līdz zema "
-"izšķirtspēja, pārveidotas (pagrieztas, tālinātas utt.) Dokumentu lapu "
-"versijas."
+msgstr "Atspējo otro kešatmiņas pakāpi, kurā tiek saglabātas vidēja līdz zema izšķirtspēja, pārveidotas (pagrieztas, tālinātas utt.) Dokumentu lapu versijas."
 
 #: settings.py:68
 msgid "Maximum number of favorite documents to remember per user."
-msgstr ""
-"Maksimālais iecienīto dokumentu skaits, kas jāatceras katram lietotājam."
+msgstr "Maksimālais iecienīto dokumentu skaits, kas jāatceras katram lietotājam."
 
 #: settings.py:74
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
-msgstr ""
-"Atklājiet katra dokumenta lapas orientāciju un izveidojiet atbilstošu "
-"rotācijas transformāciju, lai parādītu to tiesības uz augšu. Šī ir "
-"eksperimentāla funkcija un pēc noklusējuma tā ir atspējota."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
+msgstr "Atklājiet katra dokumenta lapas orientāciju un izveidojiet atbilstošu rotācijas transformāciju, lai parādītu to tiesības uz augšu. Šī ir eksperimentāla funkcija un pēc noklusējuma tā ir atspējota."
 
 #: settings.py:83
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value "
-"of 0 disables the block calculation and the entire file will be loaded into "
-"memory."
-msgstr ""
-"Datu faila kontrolsummas aprēķināšanai izmantojamo bloku lielums. Vērtība 0 "
-"atspējo bloku aprēķinu un viss fails tiks ielādēts atmiņā."
+"Size of blocks to use when calculating the document file's checksum. A value"
+" of 0 disables the block calculation and the entire file will be loaded into"
+" memory."
+msgstr "Datu faila kontrolsummas aprēķināšanai izmantojamo bloku lielums. Vērtība 0 atspējo bloku aprēķinu un viss fails tiks ielādēts atmiņā."
 
 #: settings.py:90
 msgid "Default documents language (in ISO639-3 format)."
@@ -868,17 +827,13 @@ msgstr "Atbalstīto dokumentu valodu saraksts. ISO639-3 formātā."
 msgid ""
 "Time in seconds that the browser should cache the supplied document images. "
 "The default of 31559626 seconds corresponde to 1 year."
-msgstr ""
-"Laiks sekundēs, kad pārlūkam ir jāsniedz piegādāto dokumentu attēlu "
-"kešatmiņa. Noklusējuma vērtība 31559626 sekundes atbilst 1 gadam."
+msgstr "Laiks sekundēs, kad pārlūkam ir jāsniedz piegādāto dokumentu attēlu kešatmiņa. Noklusējuma vērtība 31559626 sekundes atbilst 1 gadam."
 
 #: settings.py:118
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
-msgstr ""
-"Maksimālais skaits nesen piekļūto (izveidoto, rediģēto, skatīto) dokumentu, "
-"kas jāatceras katram lietotājam."
+msgstr "Maksimālais skaits nesen piekļūto (izveidoto, rediģēto, skatīto) dokumentu, kas jāatceras katram lietotājam."
 
 #: settings.py:125
 msgid "Maximum number of recently created documents to show."
@@ -886,13 +841,11 @@ msgstr "Maksimālais nesen izveidoto dokumentu skaits."
 
 #: settings.py:131
 msgid "Amount in degrees to rotate a document page per user interaction."
-msgstr ""
-"Summa grādos, lai pagrieztu dokumenta lapu katrai lietotāja mijiedarbībai."
+msgstr "Summa grādos, lai pagrieztu dokumenta lapu katrai lietotāja mijiedarbībai."
 
 #: settings.py:137
 msgid "Path to the Storage subclass to use when storing document files."
-msgstr ""
-"Ceļš uz glabāšanas apakšklasi, ko var izmantot, glabājot dokumentu failus."
+msgstr "Ceļš uz glabāšanas apakšklasi, ko var izmantot, glabājot dokumentu failus."
 
 #: settings.py:144
 msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
@@ -911,23 +864,17 @@ msgstr "Dokumenta sīktēla attēla pikseļu augstums."
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Maksimālā summa procentos (%), lai ļautu lietotājam interaktīvi tuvināt "
-"dokumenta lapu."
+msgstr "Maksimālā summa procentos (%), lai ļautu lietotājam interaktīvi tuvināt dokumenta lapu."
 
 #: settings.py:180
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Minimālā summa procentos (%), lai ļautu lietotājam interaktīvi attālināt "
-"dokumentu lapu."
+msgstr "Minimālā summa procentos (%), lai ļautu lietotājam interaktīvi attālināt dokumentu lapu."
 
 #: settings.py:187
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr ""
-"Summa, kas procentos palielināta vai samazināta dokumenta lappusē katrai "
-"lietotāja mijiedarbībai."
+msgstr "Summa, kas procentos palielināta vai samazināta dokumenta lappusē katrai lietotāja mijiedarbībai."
 
 #: statistics.py:15
 msgid "January"
@@ -1013,8 +960,8 @@ msgstr ""
 
 #: storages.py:31
 msgid ""
-"Unable to initialize the document version storage. Check the settings {} and "
-"{} for formatting errors."
+"Unable to initialize the document version storage. Check the settings {} and"
+" {} for formatting errors."
 msgstr ""
 
 #: storages.py:37
@@ -1031,9 +978,7 @@ msgid ""
 "\n"
 "                    Page %(page_number)s of %(total_pages)s\n"
 "                "
-msgstr ""
-"\n"
-"Lapa %(page_number)s no %(total_pages)s"
+msgstr "\nLapa %(page_number)s no %(total_pages)s"
 
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
@@ -1050,14 +995,11 @@ msgstr "Nezināma valoda \"%s\""
 
 #: views/document_page_views.py:55
 msgid ""
-"This could mean that the document is of a format that is not supported, that "
-"it is corrupted or that the upload process was interrupted. Use the document "
-"page recalculation action to attempt to introspect the page count again."
-msgstr ""
-"Tas varētu nozīmēt, ka dokuments ir tādā formātā, kas netiek atbalstīts, vai "
-"tas ir bojāts vai augšupielādes process tika pārtraukts. Izmantojiet "
-"dokumenta lapas pārrēķināšanas darbību, lai mēģinātu atkārtoti apskatīt lapu "
-"skaitu."
+"This could mean that the document is of a format that is not supported, that"
+" it is corrupted or that the upload process was interrupted. Use the "
+"document page recalculation action to attempt to introspect the page count "
+"again."
+msgstr "Tas varētu nozīmēt, ka dokuments ir tādā formātā, kas netiek atbalstīts, vai tas ir bojāts vai augšupielādes process tika pārtraukts. Izmantojiet dokumenta lapas pārrēķināšanas darbību, lai mēģinātu atkārtoti apskatīt lapu skaitu."
 
 #: views/document_page_views.py:60
 msgid "No document pages available"
@@ -1103,14 +1045,10 @@ msgstr "Dokumenta dokumenti: %s"
 #: views/document_type_views.py:69
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
-msgstr ""
-"Dokumentu veidi ir visvienkāršākās konfigurācijas vienības. Viss sistēmā būs "
-"atkarīgs no tiem. Definējiet dokumenta veidu katram fiziskā dokumenta tipam, "
-"kuru plānojat augšupielādēt. Dokumentu tipu piemērs: rēķins, kvīts, "
-"rokasgrāmata, recepte, bilance."
+msgstr "Dokumentu veidi ir visvienkāršākās konfigurācijas vienības. Viss sistēmā būs atkarīgs no tiem. Definējiet dokumenta veidu katram fiziskā dokumenta tipam, kuru plānojat augšupielādēt. Dokumentu tipu piemērs: rēķins, kvīts, rokasgrāmata, recepte, bilance."
 
 #: views/document_type_views.py:75
 msgid "No document types available"
@@ -1144,26 +1082,19 @@ msgstr "Izveidojiet ātru uzlīmi dokumenta tipam: %s"
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
-msgstr ""
-"Izdzēsiet ātrās iezīmes: %(label)s, no dokumenta tipa \"%(document_type)s\"?"
+msgstr "Izdzēsiet ātrās iezīmes: %(label)s, no dokumenta tipa \"%(document_type)s\"?"
 
 #: views/document_type_views.py:212
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr ""
-"Ātra uzlīmes \"%(filename)s\" rediģēšana no dokumenta tipa "
-"\"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgstr "Ātra uzlīmes \"%(filename)s\" rediģēšana no dokumenta tipa \"%(document_type)s\""
 
 #: views/document_type_views.py:248
 msgid ""
 "Quick labels are predetermined filenames that allow the quick renaming of "
 "documents as they are uploaded by selecting them from a list. Quick labels "
 "can also be used after the documents have been uploaded."
-msgstr ""
-"Ātrās uzlīmes ir iepriekš noteikti failu nosaukumi, kas ļauj ātri pārdēvēt "
-"dokumentus, tos augšupielādējot, atlasot tos no saraksta. Ātrās uzlīmes var "
-"izmantot arī pēc tam, kad dokumenti ir augšupielādēti."
+msgstr "Ātrās uzlīmes ir iepriekš noteikti failu nosaukumi, kas ļauj ātri pārdēvēt dokumentus, tos augšupielādējot, atlasot tos no saraksta. Ātrās uzlīmes var izmantot arī pēc tam, kad dokumenti ir augšupielādēti."
 
 #: views/document_type_views.py:254
 msgid "There are no quick labels for this document type"
@@ -1215,10 +1146,7 @@ msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
 "document type."
-msgstr ""
-"Tas varētu nozīmēt, ka neviens dokuments nav augšupielādēts vai ka jūsu "
-"lietotāja kontam nav piešķirta neviena dokumenta vai dokumenta veida "
-"skatījuma atļauja."
+msgstr "Tas varētu nozīmēt, ka neviens dokuments nav augšupielādēts vai ka jūsu lietotāja kontam nav piešķirta neviena dokumenta vai dokumenta veida skatījuma atļauja."
 
 #: views/document_views.py:94
 msgid "No documents available"
@@ -1301,21 +1229,17 @@ msgstr "Pārrēķināt dokumenta lapu skaitu: %s?"
 msgid ""
 "Document \"%(document)s\" is empty. Upload at least one document version "
 "before attempting to detect the page count."
-msgstr ""
-"Dokuments \"%(document)s\" ir tukšs. Pirms mēģināt atklāt lapas skaitu, "
-"augšupielādējiet vismaz vienu dokumentu versiju."
+msgstr "Dokuments \"%(document)s\" ir tukšs. Pirms mēģināt atklāt lapas skaitu, augšupielādējiet vismaz vienu dokumentu versiju."
 
 #: views/document_views.py:413
 #, python-format
 msgid "Transformation clear request processed for %(count)d document"
-msgstr ""
-"Transformācijas skaidrs pieprasījums, kas apstrādāts dokumentā %(count)d"
+msgstr "Transformācijas skaidrs pieprasījums, kas apstrādāts dokumentā %(count)d"
 
 #: views/document_views.py:416
 #, python-format
 msgid "Transformation clear request processed for %(count)d documents"
-msgstr ""
-"Transformācijas skaidrais pieprasījums, kas apstrādāts dokumentiem %(count)d"
+msgstr "Transformācijas skaidrais pieprasījums, kas apstrādāts dokumentiem %(count)d"
 
 #: views/document_views.py:424
 msgid "Clear all the page transformations for the selected document?"
@@ -1334,13 +1258,13 @@ msgstr "Notīriet visas dokumenta lapas transformācijas: %s?"
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Kļūda, izdzēšot lapas pārveidojumus dokumentam: %(document)s; %(error)s."
+msgstr "Kļūda, izdzēšot lapas pārveidojumus dokumentam: %(document)s; %(error)s."
 
 #: views/document_views.py:482
 #, python-format
 msgid ""
-"Error cloning the page transformations for document: %(document)s; %(error)s."
+"Error cloning the page transformations for document: %(document)s; "
+"%(error)s."
 msgstr ""
 
 #: views/document_views.py:490
@@ -1363,11 +1287,9 @@ msgstr "Drukāt: %s"
 
 #: views/document_views.py:613
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
-msgstr ""
-"Šajā skatā tiks uzskaitīti jaunākie dokumenti, kurus šī lietotāja konts "
-"jebkādā veidā skatījis vai manipulē."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
+msgstr "Šajā skatā tiks uzskaitīti jaunākie dokumenti, kurus šī lietotāja konts jebkādā veidā skatījis vai manipulē."
 
 #: views/document_views.py:617
 msgid "There are no recently accessed document"
@@ -1397,12 +1319,9 @@ msgstr "Dokumenta dublikāti: %s"
 #: views/duplicated_document_views.py:67
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
-msgstr ""
-"Dublikāti ir dokumenti, kas sastāv no tā paša faila līdz pēdējam baitam. "
-"Faili, kuriem ir tāds pats teksts vai OCR, bet nav identiski vai tika "
-"saglabāti, izmantojot citu failu formātu, netiks parādīti kā dublikāti."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
+msgstr "Dublikāti ir dokumenti, kas sastāv no tā paša faila līdz pēdējam baitam. Faili, kuriem ir tāds pats teksts vai OCR, bet nav identiski vai tika saglabāti, izmantojot citu failu formātu, netiks parādīti kā dublikāti."
 
 #: views/duplicated_document_views.py:74
 msgid "There are no duplicated documents"
@@ -1421,9 +1340,7 @@ msgstr "Dublētais dokumenta skenēšana veiksmīgi tika rindā."
 msgid ""
 "Favorited documents will be listed in this view. Up to %(count)d documents "
 "can be favorited per user. "
-msgstr ""
-"Šajā skatā tiks iekļauti iecienītie dokumenti. Katram lietotājam var būt "
-"iecienīts līdz %(count)d dokumentiem."
+msgstr "Šajā skatā tiks iekļauti iecienītie dokumenti. Katram lietotājam var būt iecienīts līdz %(count)d dokumentiem."
 
 #: views/favorite_document_views.py:34
 msgid "There are no favorited documents."
@@ -1523,10 +1440,7 @@ msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
-msgstr ""
-"Lai izvairītos no datu zuduma, dokumenti netiek nekavējoties dzēsti. "
-"Pirmkārt, tie tiek ievietoti miskastē. No šejienes tos pēc tam var beidzot "
-"dzēst vai atjaunot."
+msgstr "Lai izvairītos no datu zuduma, dokumenti netiek nekavējoties dzēsti. Pirmkārt, tie tiek ievietoti miskastē. No šejienes tos pēc tam var beidzot dzēst vai atjaunot."
 
 #: views/trashed_document_views.py:132
 msgid "There are no documents in the trash can"

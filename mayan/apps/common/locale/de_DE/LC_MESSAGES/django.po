@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
@@ -21,12 +21,11 @@ msgstr ""
 "POT-Creation-Date: 2020-05-11 00:41-0400\n"
 "PO-Revision-Date: 2020-04-19 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:132 permissions_runtime.py:5 settings.py:13
@@ -78,22 +77,14 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
-"Wählen Sie Einträge aus, die entfernt werden sollen. Mit der Steuerungstaste "
-"können mehrere Einträge ausgewählt werden. Wenn die Auswahl vollständig ist, "
-"klicken Sie den folgenden Button oder doppelklicken Sie auf die Liste um die "
-"Aktion durchzuführen."
+msgstr "Wählen Sie Einträge aus, die entfernt werden sollen. Mit der Steuerungstaste können mehrere Einträge ausgewählt werden. Wenn die Auswahl vollständig ist, klicken Sie den folgenden Button oder doppelklicken Sie auf die Liste um die Aktion durchzuführen."
 
 #: generics.py:151
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
-"Wählen Sie Einträge aus, die hinzugefügt werden sollen. Mit der "
-"Steuerungstaste können mehrere Einträge ausgewählt werden. Wenn die Auswahl "
-"vollständig ist, klicken Sie den folgenden Button oder doppelklicken Sie auf "
-"die Liste um die Aktion durchzuführen."
+msgstr "Wählen Sie Einträge aus, die hinzugefügt werden sollen. Mit der Steuerungstaste können mehrere Einträge ausgewählt werden. Wenn die Auswahl vollständig ist, klicken Sie den folgenden Button oder doppelklicken Sie auf die Liste um die Aktion durchzuführen."
 
 #: generics.py:284
 msgid "Add all"
@@ -201,17 +192,13 @@ msgstr "Werkzeuge"
 #: literals.py:16
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
-"Diese Funktion ist veraltet und wird in einer zukünftigen Version entfernt."
+msgstr "Diese Funktion ist veraltet und wird in einer zukünftigen Version entfernt."
 
 #: literals.py:19
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
-"Sie benutzen SQLite als Datenbank-Backend. SQLite sollte nur für "
-"Entwicklungs- und Testzwecke verwendet werden, jedoch nicht in "
-"Produktivumgebungen."
+msgstr "Sie benutzen SQLite als Datenbank-Backend. SQLite sollte nur für Entwicklungs- und Testzwecke verwendet werden, jedoch nicht in Produktivumgebungen."
 
 #: literals.py:44
 msgid "Days"
@@ -328,44 +315,31 @@ msgstr "Protokollierung für alle Apps automatisch einschalten."
 
 #: settings.py:26
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Zeit für die Verzögerung von Hintergrundaufgaben, die für ihre Fortsetzung "
-"auf einen Datenbankcommit warten."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Zeit für die Verzögerung von Hintergrundaufgaben, die für ihre Fortsetzung auf einen Datenbankcommit warten."
 
 #: settings.py:34
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
-msgstr ""
-"Eine Liste mit Strings aller Applikationen, welche für diese Django-"
-"Installation aktiviert sind. Jede Zeichenfolge muss ein punktuierter "
-"Pythonpfad zu einer Anwendungskonfigurationsklasse (bevorzugt) oder einem "
-"Anwendungspaket sein."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "Eine Liste mit Strings aller Applikationen, welche für diese Django-Installation aktiviert sind. Jede Zeichenfolge muss ein punktuierter Pythonpfad zu einer Anwendungskonfigurationsklasse (bevorzugt) oder einem Anwendungspaket sein."
 
 #: settings.py:44
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
-msgstr ""
-"Eine Liste von Strings, die alle Anwendungen angeben, die über die "
-"normalerweise von Mayan EDMS installierten Anwendungen hinaus installiert "
-"wurden. Jede Zeichenfolge sollte ein punktuierter Python-Pfad sein zu: einer "
-"Anwendungskonfigurationsklasse (bevorzugt) oder einem Paket, das eine "
-"Anwendung enthält."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "Eine Liste von Strings, die alle Anwendungen angeben, die über die normalerweise von Mayan EDMS installierten Anwendungen hinaus installiert wurden. Jede Zeichenfolge sollte ein punktuierter Python-Pfad sein zu: einer Anwendungskonfigurationsklasse (bevorzugt) oder einem Paket, das eine Anwendung enthält."
 
 #: settings.py:53
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
-msgstr ""
-"Name des Formulars, das mit dem Markenanker im Hauptmenü verknüpft ist. Zu "
-"diesem Formular werden die Benutzer auch nach dem Anmeldevorgang "
-"weitergeleitet."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr "Name des Formulars, das mit dem Markenanker im Hauptmenü verknüpft ist. Zu diesem Formular werden die Benutzer auch nach dem Anmeldevorgang weitergeleitet."
 
 #: settings.py:62
 msgid "The number objects that will be displayed per page."
@@ -373,15 +347,11 @@ msgstr "Die Anzahl der Objekte, die pro Seite angezeigt werden."
 
 #: settings.py:69
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
-"Fehlerprotokollierung außerhalb des regulären Systemfehlerprotokolls "
-"aktivieren."
+msgstr "Fehlerprotokollierung außerhalb des regulären Systemfehlerprotokolls aktivieren."
 
 #: settings.py:76
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
-"Der Pfad zur Protokolldatei, in der Fehler im Produktivbetrieb aufgezeichnet "
-"werden."
+msgstr "Der Pfad zur Protokolldatei, in der Fehler im Produktivbetrieb aufgezeichnet werden."
 
 #: settings.py:83
 msgid "Name to be displayed in the main menu."
@@ -401,8 +371,8 @@ msgstr ""
 
 #: storages.py:13
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
 
 #: templatetags/common_tags.py:34
@@ -444,9 +414,7 @@ msgstr "Geben Sie einen gültigen YAML-Wert ein."
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
-"Bitte geben Sie einen gültigen 'Internen Namen' an, bestehend aus "
-"Buchstaben, Zahlen und einem Unterstrich."
+msgstr "Bitte geben Sie einen gültigen 'Internen Namen' an, bestehend aus Buchstaben, Zahlen und einem Unterstrich."
 
 #: views.py:26
 msgid "About"
@@ -481,9 +449,7 @@ msgstr "Datum und Uhrzeit"
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
-msgstr ""
-"Diese Ansicht zeigt das Fehlerprotokoll verschiedener Objekte an. Eine leere "
-"Liste ist eine gute Sache."
+msgstr "Diese Ansicht zeigt das Fehlerprotokoll verschiedener Objekte an. Eine leere Liste ist eine gute Sache."
 
 #: views.py:158
 msgid "There are no error log entries"
@@ -502,9 +468,7 @@ msgstr "Keine Einstellungsoptionen verfügbar."
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
-"Falls keine Ergebnisse angezeigt werden besitzen Sie nicht die "
-"erforderlichen Rechte für administrative Aufgaben."
+msgstr "Falls keine Ergebnisse angezeigt werden besitzen Sie nicht die erforderlichen Rechte für administrative Aufgaben."
 
 #: views.py:197
 msgid "Setup items"

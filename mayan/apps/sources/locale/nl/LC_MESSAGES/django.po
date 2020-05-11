@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-11 00:43-0400\n"
-"PO-Revision-Date: 2020-04-27 15:07+0000\n"
+"PO-Revision-Date: 2020-05-08 07:12+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
@@ -35,10 +34,7 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
-"Documentbronnen zijn de manier waarop nieuwe documenten aan Mayan EDMS "
-"worden aangeboden. Maak ten minste een webformulier aan om documenten te "
-"kunnen uploaden via een webbrowser."
+msgstr "Documentbronnen zijn de manier waarop nieuwe documenten aan Mayan EDMS worden aangeboden. Maak ten minste een webformulier aan om documenten te kunnen uploaden via een webbrowser."
 
 #: apps.py:76
 msgid "Type"
@@ -64,9 +60,7 @@ msgstr "Bericht"
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
-msgstr ""
-"Hulpmiddel van het SANE-pakket. Gebruikt om de scanner te beheren en de "
-"scanafbeelding te verkrijgen."
+msgstr "Hulpmiddel van het SANE-pakket. Gebruikt om de scanner te beheren en de scanafbeelding te verkrijgen."
 
 #: forms.py:25
 msgid "An optional comment to explain the upload."
@@ -166,7 +160,7 @@ msgstr "Dubbelzijdig"
 
 #: literals.py:33
 msgid "Lineart"
-msgstr ""
+msgstr "Zwart-wit"
 
 #: literals.py:34
 msgid "Monochrome"
@@ -198,7 +192,7 @@ msgstr "Webformulier"
 
 #: literals.py:63 models/staging_folder_sources.py:67
 msgid "Staging folder"
-msgstr "Tijdelijke folder"
+msgstr "Netwerkmap"
 
 #: literals.py:64 models/watch_folder_sources.py:45
 msgid "Watch folder"
@@ -250,9 +244,7 @@ msgstr "Interval"
 
 #: models/base.py:178
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
-"Een documentsoort toewijzen voor documenten die worden geüpload van deze "
-"bron."
+msgstr "Een documentsoort toewijzen voor documenten die worden geüpload van deze bron."
 
 #: models/base.py:180 serializers.py:17
 msgid "Document type"
@@ -295,9 +287,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Typische keuzes zijn 110 voor POP3, 995 voor POP3 over SSL, 143 voor IMAP, "
-"993 voor IMAP over SSL."
+msgstr "Typische keuzes zijn 110 voor POP3, 995 voor POP3 over SSL, 143 voor IMAP, 993 voor IMAP over SSL."
 
 #: models/email_sources.py:44
 msgid "Port"
@@ -315,31 +305,31 @@ msgstr "Wachtwoord"
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
-msgstr ""
+msgstr "Naam van de bijlage die de metadata naamtypes en -waarden bevat die aan de rest van de gedownloade documenten moet worden toegekend."
 
 #: models/email_sources.py:54
 msgid "Metadata attachment name"
-msgstr ""
+msgstr "Metadata bijlage naam"
 
 #: models/email_sources.py:58
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
+msgstr "Kies een metadatatype om het onderwerp van de e-mail in op te slaan. Moet een geldig metadatatype zijn voor het geselecteerde documenttype."
 
 #: models/email_sources.py:62
 msgid "Subject metadata type"
-msgstr ""
+msgstr "Onderwerp metatdatatype"
 
 #: models/email_sources.py:66
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
+msgstr "Kies een metadatatype om de \"Van\" waarde in op te slaan. Moet een geldig metadatatype zijn voor het geselecteerde documenttype."
 
 #: models/email_sources.py:70
 msgid "From metadata type"
-msgstr ""
+msgstr "Van metadatatype"
 
 #: models/email_sources.py:74
 msgid "Store the body of the email as a text document."
@@ -362,14 +352,14 @@ msgstr "E-mail bronnen"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
+msgstr "Onderwerp metadatatype \"%(metadata_type)s\" is niet geldig voor het documenttype: %(document_type)s"
 
 #: models/email_sources.py:201
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
+msgstr "\"Van\" metadattype \"%(metadata_type)s\" is niet geldig voor het documenttype: %(document_type)s"
 
 #: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
@@ -383,10 +373,7 @@ msgstr "Mailbox"
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
-msgstr ""
-"Criteria om te gebruiken wanneer gezocht wordt op berichten om te verwerken. "
-"Gebruik opmaak zoals vastgelegd in https://tools.ietf.org/html/rfc2060."
-"html#section-6.4.4"
+msgstr "Criteria om te gebruiken wanneer gezocht wordt op berichten om te verwerken. Gebruik opmaak zoals vastgelegd in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
@@ -395,8 +382,9 @@ msgstr "Zoekcriteria"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 
 #: models/email_sources.py:232
@@ -439,7 +427,7 @@ msgstr "Apparaatnaam"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr ""
+msgstr "Selecteert de scanmodus (b.v. zwart-wit, grijswaarden of kleur). Als deze optie niet wordt ondersteunt door uw scanner, laat dan leeg."
 
 #: models/scanner_sources.py:39
 msgid "Mode"
@@ -450,7 +438,7 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr ""
+msgstr "Stelt de resolutie van de gescande afbeeldingen in DPI (punten per inch) in. Gebruikelijke waarde is 200. Als deze optie niet wordt ondersteund door uw scanner, laat dan leeg."
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
@@ -460,7 +448,7 @@ msgstr "Resolutie"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
+msgstr "Selecteert de scanbron (zoals een ADF, of van glasplaat). Als deze optie niet wordt ondersteund door uw scanner, laat dan leeg."
 
 #: models/scanner_sources.py:52
 msgid "Paper source"
@@ -470,7 +458,7 @@ msgstr "Papierbron"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
+msgstr "Selecteert de document-feeder modus (enkel-/dubbelzijdig). Als deze optie niet wordt ondersteund door uw scanner, laat dan leeg."
 
 #: models/scanner_sources.py:59
 msgid "ADF mode"
@@ -489,9 +477,7 @@ msgstr "SANE Scanners"
 msgid ""
 "Error while executing scanning command \"%(command_line)s\"; "
 "%(error_message)s"
-msgstr ""
-"Fout tijdens het uitvoeren van de scanopdracht \"%(command_line)s\"; "
-"%(error_message)s"
+msgstr "Fout tijdens het uitvoeren van de scanopdracht \"%(command_line)s\"; %(error_message)s"
 
 #: models/staging_folder_sources.py:39
 msgid "Server side filesystem path."
@@ -531,19 +517,17 @@ msgstr "Na upload verwijderen"
 
 #: models/staging_folder_sources.py:68
 msgid "Staging folders"
-msgstr ""
+msgstr "Netwerkmappen"
 
 #: models/staging_folder_sources.py:80
 #, python-format
 msgid "Error deleting staging file; %s"
-msgstr ""
+msgstr "Fout bij verwijderen bestand in netwerkmap; %s"
 
 #: models/staging_folder_sources.py:96
 #, python-format
 msgid "Unable get list of staging files: %s"
-msgstr ""
-"Het is niet mogelijk om een lijst met tijdelijke bestanden aan te maken. "
-"Foutmelding: %s"
+msgstr "Het is niet mogelijk om een lijst van bestanden in netwerkmap aan te maken:%s"
 
 #: models/watch_folder_sources.py:31
 msgid "Server side filesystem path to scan for files."
@@ -553,9 +537,7 @@ msgstr "Bestandspad op server om te scannen op bestanden."
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
-msgstr ""
-"Indien aangevinkt, wordt niet alleen het mappad gescand op bestanden, maar "
-"ook de submappen."
+msgstr "Indien aangevinkt, wordt niet alleen het mappad gescand op bestanden, maar ook de submappen."
 
 #: models/watch_folder_sources.py:39
 msgid "Include subdirectories?"
@@ -591,7 +573,7 @@ msgstr "Bestaande documentbronnen bekijken"
 
 #: permissions.py:20
 msgid "Delete staging files"
-msgstr "Tijdelijke bestanden verwijderen"
+msgstr "Bestanden in netwerkmap verwijderen"
 
 #: queues.py:10
 msgid "Sources periodic"
@@ -603,7 +585,7 @@ msgstr ""
 
 #: queues.py:19
 msgid "Generate staging file image"
-msgstr ""
+msgstr "Afbeelding in netwerkmap genereren"
 
 #: queues.py:23
 msgid "Check interval source"
@@ -619,7 +601,7 @@ msgstr "Document uploaden"
 
 #: settings.py:18
 msgid "File path to the scanimage program used to control image scanners."
-msgstr ""
+msgstr "Bestandspad naar het scanprogramma dat wordt gebruikt om scanners te beheren."
 
 #: settings.py:25
 msgid ""
@@ -629,17 +611,17 @@ msgstr ""
 
 #: settings.py:34
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumenten om door te geven aan de SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 
 #: storages.py:16
 msgid ""
 "Unable to initialize the staging folder file image storage. Check the "
 "settings {} and {} for formatting errors."
-msgstr ""
+msgstr "Niet mogelijk om de netwerkmap afbeeldingsopslag te initialiseren. Controleer de settings {} en {} voor opmaakfouten."
 
 #: storages.py:23
 msgid "Staging folder files"
-msgstr ""
+msgstr "Bestanden in netwerkmap"
 
 #: tasks.py:46
 #, python-format
@@ -680,12 +662,12 @@ msgid ""
 "Sources that delete content after downloading will not do so while being "
 "tested. Check the source's error log for information during testing. A "
 "successful test will clear the error log."
-msgstr ""
+msgstr "Dit zal de broncontrole uitvoeren zelfs als de bron niet is ingeschakeld. Bronnen die inhoud verwijderen na downloaden doen dit NIET bij het testen. Controleer de foutenlog van de bron op informatie. Bij een succesvolle test is de foutenlog leeg."
 
 #: views.py:74
 #, python-format
 msgid "Trigger check for source \"%s\"?"
-msgstr ""
+msgstr "Initieer controle voor bron \"%s\"?"
 
 #: views.py:86
 msgid "Source check queued."
@@ -712,7 +694,7 @@ msgid ""
 "webform, are interactive and require user input to operate. Others like the "
 "email sources, are automatic and run on the background without user "
 "intervention."
-msgstr ""
+msgstr "Bronnen zijn manieren om documenten te uploaden. Bronnen zoals het webformulier zijn interactief en vereisen gebruikersinvoer bij verwerking. Andere, zoals de e-mailbronnen, zijn automatisch en worden op de achtergrond uitgevoerd zonder interactie met de gebruiker."
 
 #: views.py:190
 msgid "No sources available"
@@ -722,9 +704,7 @@ msgstr "Geen bronnen beschikbaar"
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
-msgstr ""
-"Elke opgetreden fout bij gebruik van een bron wordt hier opgesomd om te "
-"helpen bij debugging. "
+msgstr "Elke opgetreden fout bij gebruik van een bron wordt hier opgesomd om te helpen bij debugging. "
 
 #: views.py:208
 msgid "No log entries available"
@@ -742,9 +722,9 @@ msgstr "Verwijder tijdelijk bestand \"%s\"?"
 
 #: views.py:278 wizards.py:152
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Er zijn geen interactieve documentbronnen gedefinieerd of ze zijn niet ingeschakeld. Maak er een aan voordat u verdergaat."
 
 #: views.py:306 views.py:335 views.py:345
 msgid "Document properties"
@@ -753,17 +733,17 @@ msgstr "Document-eigenschappen"
 #: views.py:315
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
-msgstr ""
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
+msgstr "Dit kan betekenen dat de netwerkmap leeg is. Het is ook mogelijk dat het besturingssysteem van het gebruikersaccount dat voor Mayan EDMS gebruikt wordt, over onvoldoende gebruiksrechten voor de map beschikt."
 
 #: views.py:322
 msgid "No staging files available"
-msgstr "Geen tijdelijke bestanden beschikbaar"
+msgstr "Geen bestanden in netwerkmap beschikbaar"
 
 #: views.py:325
 msgid "Files in staging path"
-msgstr ""
+msgstr "Bestanden in netwerkmap"
 
 #: views.py:336
 msgid "Scan"
@@ -776,36 +756,26 @@ msgstr "Fout bij uitvoeren document upload taak; %(exception)s"
 
 #: views.py:476
 msgid "New document queued for upload and will be available shortly."
-msgstr ""
-"Nieuw document in wachtrij voor upload en zal spoedig beschikbaar zijn."
+msgstr "Nieuw document in wachtrij voor upload en zal spoedig beschikbaar zijn."
 
 #: views.py:493
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr ""
-"Een document upload van soort \"%(document_type)s\" van bron: %(source)s"
+msgstr "Een document upload van soort \"%(document_type)s\" van bron: %(source)s"
 
 #: views.py:555
 #, python-format
-msgid ""
-"Unable to upload new versions for document \"%(document)s\". %(exception)s"
-msgstr ""
-"Niet mogelijk om nieuwe versies te uploaden voor document \"%(document)s\". "
-"%(exception)s"
+msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+msgstr "Niet mogelijk om nieuwe versies te uploaden voor document \"%(document)s\". %(exception)s"
 
 #: views.py:606
 msgid "New document version queued for upload and will be available shortly."
-msgstr ""
-"Nieuwe versie document in wachtrij voor upload en zal spoedig beschikbaar "
-"zijn."
+msgstr "Nieuwe versie document in wachtrij voor upload en zal spoedig beschikbaar zijn."
 
 #: views.py:625
 #, python-format
-msgid ""
-"Upload a new version for document \"%(document)s\" from source: %(source)s"
-msgstr ""
-"Een nieuwe versie uploaden voor document \"%(document)s\" van bron: "
-"%(source)s"
+msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgstr "Een nieuwe versie uploaden voor document \"%(document)s\" van bron: %(source)s"
 
 #: views.py:628
 msgid "Submit"
