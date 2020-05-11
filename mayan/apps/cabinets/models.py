@@ -159,6 +159,11 @@ class Cabinet(MPTTModel):
 
 
 class CabinetSearchResult(Cabinet):
+    """
+    Represent a cabinet's search result. This model is a proxy model from
+    Cabinet and is used as an alias to map columns to it without having to
+    map them to the base Cabinet model.
+    """
     class Meta:
         proxy = True
         verbose_name = _('Cabinet')
