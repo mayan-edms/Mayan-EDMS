@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"POT-Creation-Date: 2020-05-11 00:42-0400\n"
 "PO-Revision-Date: 2020-04-25 17:04+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
+"nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:130 apps.py:339 events.py:5 menus.py:8 models/document_models.py:94
@@ -33,7 +34,9 @@ msgstr "Een documenttype aanmaken"
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
-msgstr "Ieder geüpload document krijgt een documenttype toegewezen, dit is de manier waarop MAYAN EDMS documenten indeelt."
+msgstr ""
+"Ieder geüpload document krijgt een documenttype toegewezen, dit is de manier "
+"waarop MAYAN EDMS documenten indeelt."
 
 #: apps.py:192
 msgid "Versions comment"
@@ -152,8 +155,8 @@ msgstr "Comprimeren"
 
 #: forms/document_forms.py:27
 msgid ""
-"Download the document in the original format or in a compressed manner. This"
-" option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This "
+"option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
@@ -165,7 +168,10 @@ msgstr "Bestandsnaam gecomprimeerd archiefbestand"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr "De bestandsnaam van het gecomprimeerde archiefbestand dat alle documenten bevat die dienen te worden gedownload, als de voorgaande optie is geselecteerd."
+msgstr ""
+"De bestandsnaam van het gecomprimeerde archiefbestand dat alle documenten "
+"bevat die dienen te worden gedownload, als de voorgaande optie is "
+"geselecteerd."
 
 #: forms/document_forms.py:80
 msgid "Quick document rename"
@@ -478,7 +484,9 @@ msgstr "Beschrijving"
 msgid ""
 "The server date and time when the document was finally processed and added "
 "to the system."
-msgstr "De datum en tijd van de server op het moment waarop het document werd verwerkt en toegevoegd aan het systeem."
+msgstr ""
+"De datum en tijd van de server op het moment waarop het document werd "
+"verwerkt en toegevoegd aan het systeem."
 
 #: models/document_models.py:61 models/misc_models.py:39
 msgid "Added"
@@ -498,7 +506,9 @@ msgstr "In prullenbak?"
 
 #: models/document_models.py:75
 msgid "The server date and time when the document was moved to the trash."
-msgstr "De datum en tijd van de server op het moment dat het document naar de prullenbak werd verplaatst."
+msgstr ""
+"De datum en tijd van de server op het moment dat het document naar de "
+"prullenbak werd verplaatst."
 
 #: models/document_models.py:77
 msgid "Date and time trashed"
@@ -552,9 +562,10 @@ msgstr "De naam van de documenttype."
 
 #: models/document_type_models.py:34
 msgid ""
-"Amount of time after which documents of this type will be moved to the "
-"trash."
-msgstr "Tijdsperiode waarna documenten van dit type naar de prullenbak worden verplaatst."
+"Amount of time after which documents of this type will be moved to the trash."
+msgstr ""
+"Tijdsperiode waarna documenten van dit type naar de prullenbak worden "
+"verplaatst."
 
 #: models/document_type_models.py:36
 msgid "Trash time period"
@@ -568,7 +579,9 @@ msgstr ""
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
-msgstr "Tijdsperiode waarna documenten van dit type uit de prullenbak worden verwijderd."
+msgstr ""
+"Tijdsperiode waarna documenten van dit type uit de prullenbak worden "
+"verwijderd."
 
 #: models/document_type_models.py:46
 msgid "Delete time period"
@@ -588,7 +601,9 @@ msgstr ""
 
 #: models/document_version_models.py:73
 msgid "The server date and time when the document version was processed."
-msgstr "De datum en tijd van de server op het moment waarop de documentversie is verwerkt."
+msgstr ""
+"De datum en tijd van de server op het moment waarop de documentversie is "
+"verwerkt."
 
 #: models/document_version_models.py:74
 msgid "Timestamp"
@@ -609,8 +624,8 @@ msgstr "Bestand"
 #: models/document_version_models.py:88
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document."
-" Some examples: \"text/plain\" or \"image/jpeg\". "
+"describe the format of a file, in this case the file format of the document. "
+"Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
 #: models/document_version_models.py:92 search.py:36 search.py:61
@@ -806,15 +821,15 @@ msgstr "Maximale aantal favoriete documenten om te onthouden per gebruiker."
 #: settings.py:74
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an"
-" experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an "
+"experimental feature and it is disabled by default."
 msgstr ""
 
 #: settings.py:83
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value"
-" of 0 disables the block calculation and the entire file will be loaded into"
-" memory."
+"Size of blocks to use when calculating the document file's checksum. A value "
+"of 0 disables the block calculation and the entire file will be loaded into "
+"memory."
 msgstr ""
 
 #: settings.py:90
@@ -835,7 +850,9 @@ msgstr ""
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
-msgstr "Maximale aantal recent bekeken (aangemaakte, bewerkte) documenten om te onthouden per gebruiker."
+msgstr ""
+"Maximale aantal recent bekeken (aangemaakte, bewerkte) documenten om te "
+"onthouden per gebruiker."
 
 #: settings.py:125
 msgid "Maximum number of recently created documents to show."
@@ -866,13 +883,15 @@ msgstr "Hoogte in pixels van de document thumbnail afbeelding."
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr "Maximaal toegestane documentpagina zoom percentage (%) per gebruikeractie."
+msgstr ""
+"Maximaal toegestane documentpagina zoom percentage (%) per gebruikeractie."
 
 #: settings.py:180
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr "Minimaal toegestane documentpagina zoom percentage (%) per gebruikeractie. "
+msgstr ""
+"Minimaal toegestane documentpagina zoom percentage (%) per gebruikeractie. "
 
 #: settings.py:187
 msgid "Amount in percent zoom in or out a document page per user interaction."
@@ -962,8 +981,8 @@ msgstr "Document afbeeldingen"
 
 #: storages.py:31
 msgid ""
-"Unable to initialize the document version storage. Check the settings {} and"
-" {} for formatting errors."
+"Unable to initialize the document version storage. Check the settings {} and "
+"{} for formatting errors."
 msgstr ""
 
 #: storages.py:37
@@ -997,10 +1016,9 @@ msgstr "Onbekende taal \"%s\""
 
 #: views/document_page_views.py:55
 msgid ""
-"This could mean that the document is of a format that is not supported, that"
-" it is corrupted or that the upload process was interrupted. Use the "
-"document page recalculation action to attempt to introspect the page count "
-"again."
+"This could mean that the document is of a format that is not supported, that "
+"it is corrupted or that the upload process was interrupted. Use the document "
+"page recalculation action to attempt to introspect the page count again."
 msgstr ""
 
 #: views/document_page_views.py:60
@@ -1045,10 +1063,15 @@ msgstr "Document van type: %s"
 #: views/document_type_views.py:69
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical"
-" document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical "
+"document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
-msgstr "Documenttypen zijn de basiseenheden voor een juiste instelling. Alle functies in het systeem zijn ervan afhankelijk. Definieer een documenttype voor elke soort fysiek document dat u wilt uploaden. Voorbeeld documenttypen: facturen, bonnetjes, handleidingen, bijsluiters, balansoverzichten etc."
+msgstr ""
+"Documenttypen zijn de basiseenheden voor een juiste instelling. Alle "
+"functies in het systeem zijn ervan afhankelijk. Definieer een documenttype "
+"voor elke soort fysiek document dat u wilt uploaden. Voorbeeld "
+"documenttypen: facturen, bonnetjes, handleidingen, bijsluiters, "
+"balansoverzichten etc."
 
 #: views/document_type_views.py:75
 msgid "No document types available"
@@ -1082,12 +1105,15 @@ msgstr ""
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
-msgstr "Verwijder het snel label: %(label)s, van documenttype \"%(document_type)s\"?"
+msgstr ""
+"Verwijder het snel label: %(label)s, van documenttype \"%(document_type)s\"?"
 
 #: views/document_type_views.py:212
 #, python-format
-msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr "Snel label \"%(filename)s\" voor documenttype \"%(document_type)s\" bewerken"
+msgid ""
+"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgstr ""
+"Snel label \"%(filename)s\" voor documenttype \"%(document_type)s\" bewerken"
 
 #: views/document_type_views.py:248
 msgid ""
@@ -1227,7 +1253,9 @@ msgstr "De paginatelling herberekenen van het document: %s?"
 msgid ""
 "Document \"%(document)s\" is empty. Upload at least one document version "
 "before attempting to detect the page count."
-msgstr "Document \"%(document)s\" is leeg. Upload tenminste een documentversie voordat u probeert de paginatelling uit te voeren."
+msgstr ""
+"Document \"%(document)s\" is leeg. Upload tenminste een documentversie "
+"voordat u probeert de paginatelling uit te voeren."
 
 #: views/document_views.py:413
 #, python-format
@@ -1255,13 +1283,14 @@ msgstr "Alle paginatransformaties wissen voor het document: %s? "
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr "Fout bij verwijderen van de paginatransformaties voor document: %(document)s ; %(error)s ."
+msgstr ""
+"Fout bij verwijderen van de paginatransformaties voor document: "
+"%(document)s ; %(error)s ."
 
 #: views/document_views.py:482
 #, python-format
 msgid ""
-"Error cloning the page transformations for document: %(document)s; "
-"%(error)s."
+"Error cloning the page transformations for document: %(document)s; %(error)s."
 msgstr ""
 
 #: views/document_views.py:490
@@ -1284,8 +1313,8 @@ msgstr "Afdrukken: %s"
 
 #: views/document_views.py:613
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by"
-" this user account."
+"This view will list the latest documents viewed or manipulated in any way by "
+"this user account."
 msgstr ""
 
 #: views/document_views.py:617
@@ -1294,7 +1323,8 @@ msgstr "Er zijn geen recent bekeken documenten"
 
 #: views/document_views.py:639
 msgid "This view will list the latest documents uploaded in the system."
-msgstr "Dit overzicht toont de lijst met laatst geüploade documenten in het systeem."
+msgstr ""
+"Dit overzicht toont de lijst met laatst geüploade documenten in het systeem."
 
 #: views/document_views.py:643
 msgid "There are no recently added document"
@@ -1316,8 +1346,8 @@ msgstr "Duplicaten voor document: %s"
 #: views/duplicated_document_views.py:67
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or"
-" were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or "
+"were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/duplicated_document_views.py:74
@@ -1337,7 +1367,9 @@ msgstr ""
 msgid ""
 "Favorited documents will be listed in this view. Up to %(count)d documents "
 "can be favorited per user. "
-msgstr "In dit overzicht worden favoriete documenten getoond. Maximaal %(count)d documenten per gebruiker."
+msgstr ""
+"In dit overzicht worden favoriete documenten getoond. Maximaal %(count)d "
+"documenten per gebruiker."
 
 #: views/favorite_document_views.py:34
 msgid "There are no favorited documents."
@@ -1433,7 +1465,10 @@ msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
-msgstr "Om gegevensverlies te voorkomen, worden documenten niet meteen verwijderd. In eerste instantie worden ze in de prullenbak geplaatst. Daarna kunnen ze hieruit definitief worden verwijderd of hersteld."
+msgstr ""
+"Om gegevensverlies te voorkomen, worden documenten niet meteen verwijderd. "
+"In eerste instantie worden ze in de prullenbak geplaatst. Daarna kunnen ze "
+"hieruit definitief worden verwijderd of hersteld."
 
 #: views/trashed_document_views.py:132
 msgid "There are no documents in the trash can"

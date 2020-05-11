@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Carlo Zanatto <>, 2012
 # Daniele Bortoluzzi <daniele@elkos.it>, 2019
@@ -14,14 +14,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"POT-Creation-Date: 2020-05-11 00:41-0400\n"
 "PO-Revision-Date: 2020-04-19 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:132 permissions_runtime.py:5 settings.py:13
@@ -46,7 +47,9 @@ msgstr "Modello campi inversi"
 
 #: dependencies.py:309
 msgid "Used to allow offline translation of the code text strings."
-msgstr "Usato per consentire la traduzione offline delle stringhe di testo nel codice."
+msgstr ""
+"Usato per consentire la traduzione offline delle stringhe di testo nel "
+"codice."
 
 #: dependencies.py:314
 msgid "Provides style checking."
@@ -73,14 +76,20 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr "Seleziona le voci da rimuovere. Tieni premuto Ctrl per selezionare più di una voce. Quando hai finito di selezionare, clicca il bottone sotto o fai doppio clic sulla lista per attivare l'azione."
+msgstr ""
+"Seleziona le voci da rimuovere. Tieni premuto Ctrl per selezionare più di "
+"una voce. Quando hai finito di selezionare, clicca il bottone sotto o fai "
+"doppio clic sulla lista per attivare l'azione."
 
 #: generics.py:151
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr "Seleziona le voci da aggiungere. Tieni premuto Ctrl per selezionare più di una voce. Quando hai finito di selezionare, clicca il bottone sotto o fai doppio clic sulla lista per attivare l'azione."
+msgstr ""
+"Seleziona le voci da aggiungere. Tieni premuto Ctrl per selezionare più di "
+"una voce. Quando hai finito di selezionare, clicca il bottone sotto o fai "
+"doppio clic sulla lista per attivare l'azione."
 
 #: generics.py:284
 msgid "Add all"
@@ -194,7 +203,9 @@ msgstr "Questa funzionalità è obsoleta e verrà rimossa nelle versioni future.
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr "Il tuo database attuale è impostato a SQLite, che dovrebbe essere usato solo per sviluppo e test, non in produzione."
+msgstr ""
+"Il tuo database attuale è impostato a SQLite, che dovrebbe essere usato solo "
+"per sviluppo e test, non in produzione."
 
 #: literals.py:44
 msgid "Days"
@@ -311,31 +322,34 @@ msgstr "Abilita automaticamente i log per tutte le app."
 
 #: settings.py:26
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "Il ritardo per i task in background dipende dalla propagazione del commit su database."
+"Time to delay background tasks that depend on a database commit to propagate."
+msgstr ""
+"Il ritardo per i task in background dipende dalla propagazione del commit su "
+"database."
 
 #: settings.py:34
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application."
 msgstr ""
 
 #: settings.py:44
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application."
 msgstr ""
 
 #: settings.py:53
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also"
-" the view to which users will be redirected after log in."
-msgstr "Nome della vista collegata all'ancora brand nel menù principale. Questa è anche la vista alla quale gli utenti verranno reindirizzati dopo il login."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
+msgstr ""
+"Nome della vista collegata all'ancora brand nel menù principale. Questa è "
+"anche la vista alla quale gli utenti verranno reindirizzati dopo il login."
 
 #: settings.py:62
 msgid "The number objects that will be displayed per page."
@@ -347,7 +361,8 @@ msgstr ""
 
 #: settings.py:76
 msgid "Path to the logfile that will track errors during production."
-msgstr "Percorso del file di log su cui verranno scritti gli errori in produzione."
+msgstr ""
+"Percorso del file di log su cui verranno scritti gli errori in produzione."
 
 #: settings.py:83
 msgid "Name to be displayed in the main menu."
@@ -359,7 +374,9 @@ msgstr "URL dell'installazione o pagina home del progetto."
 
 #: settings.py:95
 msgid "A storage backend that all workers can use to share files."
-msgstr "Un backend di memorizzazione che tutti i lavoratori possono utilizzare per condividere i file."
+msgstr ""
+"Un backend di memorizzazione che tutti i lavoratori possono utilizzare per "
+"condividere i file."
 
 #: settings.py:103
 msgid "Base URL path to use for all views."
@@ -367,8 +384,8 @@ msgstr ""
 
 #: storages.py:13
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {}"
-" and {} for formatting errors."
+"Unable to initialize the shared uploaded file storage. Check the settings {} "
+"and {} for formatting errors."
 msgstr ""
 
 #: templatetags/common_tags.py:34
@@ -410,7 +427,8 @@ msgstr "Inserisci un valore YAML valido."
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr "Inserisci un 'internal name' valido composto da lettere, numeri e underscore."
+msgstr ""
+"Inserisci un 'internal name' valido composto da lettere, numeri e underscore."
 
 #: views.py:26
 msgid "About"
@@ -464,7 +482,9 @@ msgstr "Nessuna opzione di configurazione disponibile."
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr "Nessun risultato qui significa che non dispongono delle autorizzazioni necessarie per eseguire l'attività amministrativa."
+msgstr ""
+"Nessun risultato qui significa che non dispongono delle autorizzazioni "
+"necessarie per eseguire l'attività amministrativa."
 
 #: views.py:197
 msgid "Setup items"

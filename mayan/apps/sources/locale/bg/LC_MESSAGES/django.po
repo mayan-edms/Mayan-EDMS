@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Iliya Georgiev <inactive+iliicho7@transifex.com>, 2012
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:37-0400\n"
+"POT-Creation-Date: 2020-05-11 00:43-0400\n"
 "PO-Revision-Date: 2020-03-28 14:09+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
@@ -33,7 +34,10 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "Източниците на документи са начинът, по който новите документи се подават към Mayan EDMS, създайте поне източник на уеб формуляр, за да можете да качвате документи от браузър."
+msgstr ""
+"Източниците на документи са начинът, по който новите документи се подават "
+"към Mayan EDMS, създайте поне източник на уеб формуляр, за да можете да "
+"качвате документи от браузър."
 
 #: apps.py:76
 msgid "Type"
@@ -59,7 +63,9 @@ msgstr "Съобщение"
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
-msgstr "Помощна програма, предоставена от пакета SANE. Използва се за управление на скенера и получаване на изображението на сканирания документ."
+msgstr ""
+"Помощна програма, предоставена от пакета SANE. Използва се за управление на "
+"скенера и получаване на изображението на сканирания документ."
 
 #: forms.py:25
 msgid "An optional comment to explain the upload."
@@ -286,7 +292,9 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Типичните възможности за избор са 110 за POP3, 995 за POP3 над SSL, 143 за IMAP, 993 за IMAP над SSL."
+msgstr ""
+"Типичните възможности за избор са 110 за POP3, 995 за POP3 над SSL, 143 за "
+"IMAP, 993 за IMAP над SSL."
 
 #: models/email_sources.py:44
 msgid "Port"
@@ -304,7 +312,10 @@ msgstr "Парола"
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
-msgstr "Име на прикачения файл, който ще съдържа имена на метаданни и двойки стойности, които ще бъдат присвоени на останалите изтеглени прикачени файлове."
+msgstr ""
+"Име на прикачения файл, който ще съдържа имена на метаданни и двойки "
+"стойности, които ще бъдат присвоени на останалите изтеглени прикачени "
+"файлове."
 
 #: models/email_sources.py:54
 msgid "Metadata attachment name"
@@ -314,7 +325,9 @@ msgstr "Име за прикачени метаданни"
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr "Изберете типа метаданни за запазване стойността на темата на имейла. Трябва да е валиден тип метаданни за избрания преди това тип документ."
+msgstr ""
+"Изберете типа метаданни за запазване стойността на темата на имейла. Трябва "
+"да е валиден тип метаданни за избрания преди това тип документ."
 
 #: models/email_sources.py:62
 msgid "Subject metadata type"
@@ -324,7 +337,9 @@ msgstr "Тип метаданните за темата"
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr "Изберете тип метаданни за съхраняване стойността „от“ на имейла. Трябва да е валиден тип метаданни за избрания преди това тип документ."
+msgstr ""
+"Изберете тип метаданни за съхраняване стойността „от“ на имейла. Трябва да е "
+"валиден тип метаданни за избрания преди това тип документ."
 
 #: models/email_sources.py:70
 msgid "From metadata type"
@@ -351,14 +366,18 @@ msgstr "Източници на имейл"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "Типът метаданни за темата &quot;%(metadata_type)s&quot; не е валиден за типа документ: %(document_type)s"
+msgstr ""
+"Типът метаданни за темата &quot;%(metadata_type)s&quot; не е валиден за типа "
+"документ: %(document_type)s"
 
 #: models/email_sources.py:201
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "„От„ тип метаданни “%(metadata_type)s“ не е валиден за типа документ: %(document_type)s"
+msgstr ""
+"„От„ тип метаданни “%(metadata_type)s“ не е валиден за типа документ: "
+"%(document_type)s"
 
 #: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
@@ -372,7 +391,10 @@ msgstr "Пощенска кутия"
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
-msgstr "Критерии, които се използват при търсене на съобщения за обработка. Използвайте формата, посочен в https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
+msgstr ""
+"Критерии, които се използват при търсене на съобщения за обработка. "
+"Използвайте формата, посочен в https://tools.ietf.org/html/rfc2060."
+"html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
@@ -381,10 +403,13 @@ msgstr "Критерии за търсене"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
-"commands for your IMAP server."
-msgstr "IMAP STORE команда за изпълнение на съобщения след тяхното обработване. По една команда на ред. Използвайте командите, посочени в https://tools.ietf.org/html/rfc2060.html#section-6.4.6 или персонализираните команди за вашия IMAP сървър."
+"command per line. Use the commands specified in https://tools.ietf.org/html/"
+"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+msgstr ""
+"IMAP STORE команда за изпълнение на съобщения след тяхното обработване. По "
+"една команда на ред. Използвайте командите, посочени в https://tools.ietf."
+"org/html/rfc2060.html#section-6.4.6 или персонализираните команди за вашия "
+"IMAP сървър."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -392,7 +417,8 @@ msgstr "Съхраняване на команди"
 
 #: models/email_sources.py:236
 msgid "Execute the IMAP expunge command after processing each email message."
-msgstr "Изпълнете командата IMAP expunge след обработка на всяко имейл съобщение."
+msgstr ""
+"Изпълнете командата IMAP expunge след обработка на всяко имейл съобщение."
 
 #: models/email_sources.py:238
 msgid "Execute expunge"
@@ -426,7 +452,9 @@ msgstr "Име на устройството"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr "Избира режима на сканиране (например, графика, монохромен или цвят). Ако тази опция не се поддържа от вашия скенер, оставете я празна."
+msgstr ""
+"Избира режима на сканиране (например, графика, монохромен или цвят). Ако "
+"тази опция не се поддържа от вашия скенер, оставете я празна."
 
 #: models/scanner_sources.py:39
 msgid "Mode"
@@ -437,7 +465,10 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr "Задава разделителната способност на сканираното изображение в DPI (точки на инч). Типичната стойност е 200. Ако тази опция не се поддържа от вашия скенер, оставете я празна."
+msgstr ""
+"Задава разделителната способност на сканираното изображение в DPI (точки на "
+"инч). Типичната стойност е 200. Ако тази опция не се поддържа от вашия "
+"скенер, оставете я празна."
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
@@ -447,7 +478,9 @@ msgstr "Разделителна способност"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr "Избира източника на сканиране (например устройство за подаване на документи). Ако тази опция не се поддържа от вашия скенер, оставете я празна."
+msgstr ""
+"Избира източника на сканиране (например устройство за подаване на "
+"документи). Ако тази опция не се поддържа от вашия скенер, оставете я празна."
 
 #: models/scanner_sources.py:52
 msgid "Paper source"
@@ -457,7 +490,9 @@ msgstr "Източник на хартия"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr "Избира режим на подаване на документи (симплекс / дуплекс). Ако тази опция не се поддържа от вашия скенер, оставете я празна."
+msgstr ""
+"Избира режим на подаване на документи (симплекс / дуплекс). Ако тази опция "
+"не се поддържа от вашия скенер, оставете я празна."
 
 #: models/scanner_sources.py:59
 msgid "ADF mode"
@@ -476,7 +511,9 @@ msgstr "SANE скенери"
 msgid ""
 "Error while executing scanning command \"%(command_line)s\"; "
 "%(error_message)s"
-msgstr "Грешка при изпълнение на команда за сканиране &quot;%(command_line)s&quot;; %(error_message)s"
+msgstr ""
+"Грешка при изпълнение на команда за сканиране &quot;%(command_line)s&quot;; "
+"%(error_message)s"
 
 #: models/staging_folder_sources.py:39
 msgid "Server side filesystem path."
@@ -488,7 +525,8 @@ msgstr "Пътека към папката"
 
 #: models/staging_folder_sources.py:43
 msgid "Width value to be passed to the converter backend."
-msgstr "Стойност на ширината, която трябва да бъде предадена на конверторния бекенд."
+msgstr ""
+"Стойност на ширината, която трябва да бъде предадена на конверторния бекенд."
 
 #: models/staging_folder_sources.py:44
 msgid "Preview width"
@@ -496,7 +534,9 @@ msgstr "Визуализиране на ширината"
 
 #: models/staging_folder_sources.py:48
 msgid "Height value to be passed to the converter backend."
-msgstr "Стойност на височината, която трябва да бъде предадена на конверторния бекенд."
+msgstr ""
+"Стойност на височината, която трябва да бъде предадена на конверторния "
+"бекенд."
 
 #: models/staging_folder_sources.py:49
 msgid "Preview height"
@@ -536,7 +576,9 @@ msgstr "Пътят на файловата система към сървъра 
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
-msgstr "Ако е отметнато, ще бъде сканиран не само пътят на папката за файлове, но и нейните поддиректории."
+msgstr ""
+"Ако е отметнато, ще бъде сканиран не само пътят на папката за файлове, но и "
+"нейните поддиректории."
 
 #: models/watch_folder_sources.py:39
 msgid "Include subdirectories?"
@@ -600,13 +642,17 @@ msgstr "Качване на документ"
 
 #: settings.py:18
 msgid "File path to the scanimage program used to control image scanners."
-msgstr "Пътека към файла на програмата за сканиране, използвана за управление на скенери за изображения."
+msgstr ""
+"Пътека към файла на програмата за сканиране, използвана за управление на "
+"скенери за изображения."
 
 #: settings.py:25
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
-msgstr "Път към подкласа за съхранение, който да се използва при съхранение на кешираните файлове с изображения staging_file."
+msgstr ""
+"Път към подкласа за съхранение, който да се използва при съхранение на "
+"кешираните файлове с изображения staging_file."
 
 #: settings.py:34
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
@@ -616,7 +662,9 @@ msgstr "Аргументи за подаване към SOURCES_STAGING_FILE_CAC
 msgid ""
 "Unable to initialize the staging folder file image storage. Check the "
 "settings {} and {} for formatting errors."
-msgstr "Невъзможно е да се инициализира съхранението на изображение на файл в папката. Проверете настройките {} и {} за грешки във форматирането."
+msgstr ""
+"Невъзможно е да се инициализира съхранението на изображение на файл в "
+"папката. Проверете настройките {} и {} за грешки във форматирането."
 
 #: storages.py:23
 msgid "Staging folder files"
@@ -645,7 +693,8 @@ msgstr "Вашият браузър не поддържа качване на ф
 
 #: templates/sources/dropzone.html:86
 msgid "Please use the fallback form below to upload your files."
-msgstr "Моля, използвайте резервния формуляр по-долу, за да качите вашите файлове."
+msgstr ""
+"Моля, използвайте резервния формуляр по-долу, за да качите вашите файлове."
 
 #: templates/sources/dropzone.html:87
 msgid "Clear"
@@ -661,7 +710,12 @@ msgid ""
 "Sources that delete content after downloading will not do so while being "
 "tested. Check the source's error log for information during testing. A "
 "successful test will clear the error log."
-msgstr "Това ще изпълни контролния код за източник, дори ако източникът не е активиран. Източниците, които изтриват съдържание след изтеглянето, няма да го правят, докато се тестват. Проверете дневника за грешки на източника за информация по време на тестване. Успешен тест ще изчисти дневника на грешките."
+msgstr ""
+"Това ще изпълни контролния код за източник, дори ако източникът не е "
+"активиран. Източниците, които изтриват съдържание след изтеглянето, няма да "
+"го правят, докато се тестват. Проверете дневника за грешки на източника за "
+"информация по време на тестване. Успешен тест ще изчисти дневника на "
+"грешките."
 
 #: views.py:74
 #, python-format
@@ -693,7 +747,11 @@ msgid ""
 "webform, are interactive and require user input to operate. Others like the "
 "email sources, are automatic and run on the background without user "
 "intervention."
-msgstr "Източниците осигуряват средства за качване на документи. Някои източници като уеб формуляра са интерактивни и изискват потребителско въвеждане за да работят. Други като източниците на имейл са автоматични и се изпълняват на заден план без намеса на потребителя."
+msgstr ""
+"Източниците осигуряват средства за качване на документи. Някои източници "
+"като уеб формуляра са интерактивни и изискват потребителско въвеждане за да "
+"работят. Други като източниците на имейл са автоматични и се изпълняват на "
+"заден план без намеса на потребителя."
 
 #: views.py:190
 msgid "No sources available"
@@ -703,7 +761,9 @@ msgstr "Няма налични източници"
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
-msgstr "Всяка грешка, възникнала по време на използването на източник, ще бъде посочена тук, за да помогне при отстраняване на грешки."
+msgstr ""
+"Всяка грешка, възникнала по време на използването на източник, ще бъде "
+"посочена тук, за да помогне при отстраняване на грешки."
 
 #: views.py:208
 msgid "No log entries available"
@@ -721,9 +781,11 @@ msgstr "Да се изтрие ли изходния файл &quot;%s&quot;?"
 
 #: views.py:278 wizards.py:152
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Не са дефинирани интерактивни източници на документи или никой не е активиран, създайте такъв преди да продължите."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"Не са дефинирани интерактивни източници на документи или никой не е "
+"активиран, създайте такъв преди да продължите."
 
 #: views.py:306 views.py:335 views.py:345
 msgid "Document properties"
@@ -732,9 +794,12 @@ msgstr "Свойства на документа"
 #: views.py:315
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
-msgstr "Това може да означава, че папката за поставяне е празна. Това също може да означава, че потребителският акаунт на операционната система, използвана за Mayan EDMS няма необходимите разрешения във файлова система за папката."
+"the operating system user account being used for Mayan EDMS doesn't have the "
+"necessary file system permissions for the folder."
+msgstr ""
+"Това може да означава, че папката за поставяне е празна. Това също може да "
+"означава, че потребителският акаунт на операционната система, използвана за "
+"Mayan EDMS няма необходимите разрешения във файлова система за папката."
 
 #: views.py:322
 msgid "No staging files available"
@@ -760,21 +825,29 @@ msgstr "Нов документ е на опашка за качване и ще
 #: views.py:493
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr "Качете документ от тип &quot;%(document_type)s&quot; от източник: %(source)s"
+msgstr ""
+"Качете документ от тип &quot;%(document_type)s&quot; от източник: %(source)s"
 
 #: views.py:555
 #, python-format
-msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
-msgstr "Не може да се качат нови версии за документ &quot;%(document)s&quot;. %(exception)s"
+msgid ""
+"Unable to upload new versions for document \"%(document)s\". %(exception)s"
+msgstr ""
+"Не може да се качат нови версии за документ &quot;%(document)s&quot;. "
+"%(exception)s"
 
 #: views.py:606
 msgid "New document version queued for upload and will be available shortly."
-msgstr "Нова версия на документа е на опашка за качване и ще бъде налична скоро."
+msgstr ""
+"Нова версия на документа е на опашка за качване и ще бъде налична скоро."
 
 #: views.py:625
 #, python-format
-msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
-msgstr "Качете нова версия за документ &quot;%(document)s&quot; от източник: %(source)s"
+msgid ""
+"Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgstr ""
+"Качете нова версия за документ &quot;%(document)s&quot; от източник: "
+"%(source)s"
 
 #: views.py:628
 msgid "Submit"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # mizhgan <i@mizhgan.ru>, 2018
 # lilo.panic, 2016
@@ -9,15 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"POT-Creation-Date: 2020-05-11 00:41-0400\n"
 "PO-Revision-Date: 2020-04-19 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:132 permissions_runtime.py:5 settings.py:13
 msgid "Common"
@@ -189,7 +192,9 @@ msgstr ""
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr "В качестве базы данных задан SQLite. SQLite не должен использоваться в рабочем окружении, только для разработки и тестирования!"
+msgstr ""
+"В качестве базы данных задан SQLite. SQLite не должен использоваться в "
+"рабочем окружении, только для разработки и тестирования!"
 
 #: literals.py:44
 msgid "Days"
@@ -302,34 +307,37 @@ msgstr ""
 
 #: settings.py:20
 msgid "Automatically enable logging to all apps."
-msgstr "Автоматически разрешать всем установленным приложениям делать записи в журнале."
+msgstr ""
+"Автоматически разрешать всем установленным приложениям делать записи в "
+"журнале."
 
 #: settings.py:26
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "Время задержки фоновых задач зависящих от процесса распространения записанных в БД данных."
+"Time to delay background tasks that depend on a database commit to propagate."
+msgstr ""
+"Время задержки фоновых задач зависящих от процесса распространения "
+"записанных в БД данных."
 
 #: settings.py:34
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application."
 msgstr ""
 
 #: settings.py:44
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application."
 msgstr ""
 
 #: settings.py:53
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also"
-" the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
 msgstr ""
 
 #: settings.py:62
@@ -354,7 +362,8 @@ msgstr ""
 
 #: settings.py:95
 msgid "A storage backend that all workers can use to share files."
-msgstr "Бекенд хранения, который каждый может использовать для хранения файлов."
+msgstr ""
+"Бекенд хранения, который каждый может использовать для хранения файлов."
 
 #: settings.py:103
 msgid "Base URL path to use for all views."
@@ -362,8 +371,8 @@ msgstr ""
 
 #: storages.py:13
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {}"
-" and {} for formatting errors."
+"Unable to initialize the shared uploaded file storage. Check the settings {} "
+"and {} for formatting errors."
 msgstr ""
 
 #: templatetags/common_tags.py:34

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # jmcainzos <jmcainzos@vodafone.es>, 2015
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"POT-Creation-Date: 2020-05-11 00:41-0400\n"
 "PO-Revision-Date: 2020-04-19 06:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:132 permissions_runtime.py:5 settings.py:13
@@ -43,7 +44,8 @@ msgstr "Campos inversos de modelo"
 
 #: dependencies.py:309
 msgid "Used to allow offline translation of the code text strings."
-msgstr "Se utiliza para permitir la traducción sin conexión de los textos del código."
+msgstr ""
+"Se utiliza para permitir la traducción sin conexión de los textos del código."
 
 #: dependencies.py:314
 msgid "Provides style checking."
@@ -70,14 +72,20 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr "Seleccione las entradas que desea eliminar. Mantén pulsado Control para seleccionar varias entradas. Una vez que se complete la selección, haga clic en el botón de abajo o haga doble clic en la lista para activar la acción."
+msgstr ""
+"Seleccione las entradas que desea eliminar. Mantén pulsado Control para "
+"seleccionar varias entradas. Una vez que se complete la selección, haga clic "
+"en el botón de abajo o haga doble clic en la lista para activar la acción."
 
 #: generics.py:151
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr "Seleccione las entradas que se añadirán. Mantén pulsado Control para seleccionar varias entradas. Una vez que se complete la selección, haga clic en el botón de abajo o haga doble clic en la lista para activar la acción."
+msgstr ""
+"Seleccione las entradas que se añadirán. Mantén pulsado Control para "
+"seleccionar varias entradas. Una vez que se complete la selección, haga clic "
+"en el botón de abajo o haga doble clic en la lista para activar la acción."
 
 #: generics.py:284
 msgid "Add all"
@@ -185,13 +193,16 @@ msgstr "Herramientas"
 #: literals.py:16
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr "Esta función ha quedado en desuso y se eliminará en una versión futura."
+msgstr ""
+"Esta función ha quedado en desuso y se eliminará en una versión futura."
 
 #: literals.py:19
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr "El backend de su base de datos está configurado para usar SQLite. SQLite solo debe usarse para desarrollo y pruebas, no para producción."
+msgstr ""
+"El backend de su base de datos está configurado para usar SQLite. SQLite "
+"solo debe usarse para desarrollo y pruebas, no para producción."
 
 #: literals.py:44
 msgid "Days"
@@ -308,31 +319,43 @@ msgstr "Activar bitácoras automáticamente a todas las aplicaciones."
 
 #: settings.py:26
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "Tiempo para retrasar las tareas de fondo que dependen de la propagación de información en la base de datos."
+"Time to delay background tasks that depend on a database commit to propagate."
+msgstr ""
+"Tiempo para retrasar las tareas de fondo que dependen de la propagación de "
+"información en la base de datos."
 
 #: settings.py:34
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
-msgstr "Una lista de nombres que designan todas las aplicaciones que se eliminarán de la lista que normalmente instala Mayan EDMS. Cada entrada debe ser una ruta de Python con puntos a: una clase de configuración de la aplicación (preferida) o un paquete que contenga una aplicación."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application."
+msgstr ""
+"Una lista de nombres que designan todas las aplicaciones que se eliminarán "
+"de la lista que normalmente instala Mayan EDMS. Cada entrada debe ser una "
+"ruta de Python con puntos a: una clase de configuración de la aplicación "
+"(preferida) o un paquete que contenga una aplicación."
 
 #: settings.py:44
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
-msgstr "Una lista de nombres que designan todas las aplicaciones que se instalan más allá de las instaladas normalmente por Mayan EDMS. Cada entrada debe ser una ruta de Python con puntos a: una clase de configuración de la aplicación (preferida) o un paquete que contenga una aplicación."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application."
+msgstr ""
+"Una lista de nombres que designan todas las aplicaciones que se instalan más "
+"allá de las instaladas normalmente por Mayan EDMS. Cada entrada debe ser una "
+"ruta de Python con puntos a: una clase de configuración de la aplicación "
+"(preferida) o un paquete que contenga una aplicación."
 
 #: settings.py:53
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also"
-" the view to which users will be redirected after log in."
-msgstr "Nombre de la vista adjunta al ancla de la marca en el menú principal. Esta es también la vista a la que los usuarios serán redirigidos después de iniciar sesión."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
+msgstr ""
+"Nombre de la vista adjunta al ancla de la marca en el menú principal. Esta "
+"es también la vista a la que los usuarios serán redirigidos después de "
+"iniciar sesión."
 
 #: settings.py:62
 msgid "The number objects that will be displayed per page."
@@ -340,11 +363,15 @@ msgstr "El número de objetos que se mostrarán por página."
 
 #: settings.py:69
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr "Habilite el registro de errores fuera de las capacidades de registro de errores del sistema."
+msgstr ""
+"Habilite el registro de errores fuera de las capacidades de registro de "
+"errores del sistema."
 
 #: settings.py:76
 msgid "Path to the logfile that will track errors during production."
-msgstr "Ruta de acceso al archivo de registro que rastreará errores durante la producción."
+msgstr ""
+"Ruta de acceso al archivo de registro que rastreará errores durante la "
+"producción."
 
 #: settings.py:83
 msgid "Name to be displayed in the main menu."
@@ -356,7 +383,9 @@ msgstr "URL de la instalación o página de inicio del proyecto."
 
 #: settings.py:95
 msgid "A storage backend that all workers can use to share files."
-msgstr "Un soporte de almacenamiento que todos los 'workers' puedan utilizar para compartir archivos."
+msgstr ""
+"Un soporte de almacenamiento que todos los 'workers' puedan utilizar para "
+"compartir archivos."
 
 #: settings.py:103
 msgid "Base URL path to use for all views."
@@ -364,9 +393,11 @@ msgstr "Ruta base de la URL para usar en todas las vistas."
 
 #: storages.py:13
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {}"
-" and {} for formatting errors."
-msgstr "No se puede inicializar el almacenamiento compartido de archivos cargados. Verifique las configuraciones {} y {} para errores de formato."
+"Unable to initialize the shared uploaded file storage. Check the settings {} "
+"and {} for formatting errors."
+msgstr ""
+"No se puede inicializar el almacenamiento compartido de archivos cargados. "
+"Verifique las configuraciones {} y {} para errores de formato."
 
 #: templatetags/common_tags.py:34
 msgid "Confirm delete"
@@ -407,7 +438,9 @@ msgstr "Ingrese un valor válido YAML."
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr "Introduzca un nombre interno válido que conste de letras, números y subrayados."
+msgstr ""
+"Introduzca un nombre interno válido que conste de letras, números y "
+"subrayados."
 
 #: views.py:26
 msgid "About"
@@ -442,7 +475,9 @@ msgstr "Fecha y hora"
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
-msgstr "Esta vista muestra el registro de errores de diferentes objetos. Una lista vacía es algo bueno."
+msgstr ""
+"Esta vista muestra el registro de errores de diferentes objetos. Una lista "
+"vacía es algo bueno."
 
 #: views.py:158
 msgid "There are no error log entries"
@@ -461,7 +496,9 @@ msgstr "No hay opciones de configuración disponibles."
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr "Ningún resultado aquí significa que no tiene los permisos necesarios para realizar tareas administrativas."
+msgstr ""
+"Ningún resultado aquí significa que no tiene los permisos necesarios para "
+"realizar tareas administrativas."
 
 #: views.py:197
 msgid "Setup items"
