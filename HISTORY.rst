@@ -1,3 +1,7 @@
+3.4.8 (2020-XX-XX)
+==================
+- Move templating to the templating app.
+
 3.4.7 (2020-04-28)
 ==================
 - Darken dropdown menu text to increase contrast and legibility.
