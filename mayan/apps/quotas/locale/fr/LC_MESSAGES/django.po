@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2020
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2020
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2020
 # Yves Dubois <ydubois@gmail.com>, 2020
 # Frédéric Sheedy <sheedf@gmail.com>, 2020
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -18,10 +18,10 @@ msgstr ""
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:36 events.py:6 links.py:33 models.py:32 permissions.py:5
@@ -121,8 +121,8 @@ msgid ""
 "selection."
 msgstr ""
 "Appliquez le quota à tous les utilisateurs du système, à l'exception des "
-"administrateurs et du personnel. En activant cette option, le quota ignorera "
-"la sélection individuelle des utilisateurs et des groupes."
+"administrateurs et du personnel. En activant cette option, le quota ignorera"
+" la sélection individuelle des utilisateurs et des groupes."
 
 #: mixins.py:115
 msgid "Users"

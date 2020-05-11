@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Harald Ersch, 2020
 # Stefaniu Criste <gupi@hangar.ro>, 2016
@@ -12,14 +12,12 @@ msgstr ""
 "POT-Creation-Date: 2020-05-11 00:43-0400\n"
 "PO-Revision-Date: 2020-03-28 21:24+0000\n"
 "Last-Translator: Harald Ersch\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:11 settings.py:7
 msgid "Storage"
@@ -30,9 +28,7 @@ msgstr "Stocare"
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
 "path and arguments."
-msgstr ""
-"Imposibil de inițializat stocarea: %(name)s. Verificați calea punctată și "
-"argumentele backend de stocare."
+msgstr "Imposibil de inițializat stocarea: %(name)s. Verificați calea punctată și argumentele backend de stocare."
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."
@@ -42,9 +38,7 @@ msgstr "Numele aplicației de procesat."
 msgid ""
 "Path of the database (.dbm) file that will be created/read to keep track of "
 "items processed."
-msgstr ""
-"Calea fișierului bazei de date (.dbm) care va fi creat / citit pentru a ține "
-"evidența elementelor procesate."
+msgstr "Calea fișierului bazei de date (.dbm) care va fi creat / citit pentru a ține evidența elementelor procesate."
 
 #: management/commands/storage_process.py:26
 msgid "Process a specific model."
@@ -53,9 +47,7 @@ msgstr "Procesați un model specific."
 #: management/commands/storage_process.py:32
 msgid ""
 "Process the files in reverse to undo the storage pipeline transformations."
-msgstr ""
-"Procesați fișierele invers pentru a anula transformările conductelor de "
-"stocare."
+msgstr "Procesați fișierele invers pentru a anula transformările conductelor de stocare."
 
 #: management/commands/storage_process.py:38
 msgid "Name of the storage to process."
@@ -65,6 +57,4 @@ msgstr "Denumirea stocării de procesat."
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
-"Directorul temporar a folosit în server pentru a stoca miniaturi, "
-"previzualizări și fișiere temporare."
+msgstr "Directorul temporar a folosit în server pentru a stoca miniaturi, previzualizări și fișiere temporare."

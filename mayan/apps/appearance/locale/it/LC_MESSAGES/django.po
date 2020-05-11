@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Andrea Evangelisti <Andrea.Evangelisti@gmail.com>, 2018
 # Daniele Bortoluzzi <daniele@elkos.it>, 2019
@@ -14,12 +14,11 @@ msgstr ""
 "POT-Creation-Date: 2020-05-11 00:40-0400\n"
 "PO-Revision-Date: 2020-04-08 05:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:11 settings.py:7
@@ -116,11 +115,10 @@ msgstr "La posizione è corretta, ma l'elemento non esiste più."
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr ""
-"La posizione è corretta, ma il tuo account non dispone dell'autorizzazione "
-"necessaria per accedervi."
+msgstr "La posizione è corretta, ma il tuo account non dispone dell'autorizzazione necessaria per accedervi."
 
-#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:58
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Errore del server"
 
@@ -145,19 +143,13 @@ msgid "Contact your system administrator."
 msgstr "Contatta l'amministratore di sistema."
 
 #: templates/500.html:47
-msgid ""
-"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL"
-"\"."
-msgstr ""
-"Controllare i registri per i messaggi con i tag \"ERRORE\", \"CRITICO\" o "
-"\"FATALE\"."
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr "Controllare i registri per i messaggi con i tag \"ERRORE\", \"CRITICO\" o \"FATALE\"."
 
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
-msgstr ""
-"Apri un ticket utilizzando il <a href=\"%(issue_url)s\">tracker dei "
-"problemi</a> ."
+msgstr "Apri un ticket utilizzando il <a href=\"%(issue_url)s\">tracker dei problemi</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -169,9 +161,7 @@ msgid ""
 "\n"
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
-msgstr ""
-"\n"
-"%(setting_project_title)s è basato su %(project_title)s"
+msgstr "\n%(setting_project_title)s è basato su %(project_title)s"
 
 #: templates/appearance/about.html:78
 msgid "Version"
@@ -190,101 +180,57 @@ msgstr "Rilasciato sotto la licenza:"
 #, python-format
 msgid ""
 "\n"
-"                %(project_title)s is a free and open-source software brought "
-"to you with <i class=\"fa fa-heart text-danger\" style=\"transform: "
-"rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr ""
-"\n"
-"%(project_title)s è un software libero e open-source fatto con <i class=\"fa "
-"fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> da Roberto "
-"Rosario e altri collaboratori."
+msgstr "\n%(project_title)s è un software libero e open-source fatto con <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> da Roberto Rosario e altri collaboratori."
 
 #: templates/appearance/about.html:105
 #, python-format
 msgid ""
 "\n"
-"                It takes great effort to make %(project_title)s as feature-"
-"rich as it is.\n"
+"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr ""
-"\n"
-"Ci vuole un grande sforzo per rendere %(project_title)s tanto ricco di "
-"funzionalità quanto lo è."
+msgstr "\nCi vuole un grande sforzo per rendere %(project_title)s tanto ricco di funzionalità quanto lo è."
 
 #: templates/appearance/about.html:111
 #, python-format
 msgid ""
 "\n"
-"                If you use %(project_title)s please <a class=\"new_window\" "
-"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
-"xclick&hosted_button_id=3PXN336XFXQNN\">make a donation "
-"%(icon_social_paypal)s</a>\n"
+"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
-"\n"
-"Se usi %(project_title)s, <a class=\"new_window\" href=\"https://www.paypal."
-"com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">fai una "
-"donazione %(icon_social_paypal)s</a>"
+msgstr "\nSe usi %(project_title)s, <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">fai una donazione %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:117
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a class="
-"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
-"\">Release notes %(icon_documentation)s</a> or the short version <a class="
-"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
-"HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
-"\n"
-"La lista completa dei cambiamenti è disponibile nelle <a class=\"new_window"
-"\" href=\"https://docs.mayan-edms.com/releases/index.html\">Note di rilascio "
-"%(icon_documentation)s</a> o in versione più breve nel <a class=\"new_window"
-"\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst"
-"\">Changelog %(icon_documentation)s</a>."
+msgstr "\nLa lista completa dei cambiamenti è disponibile nelle <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Note di rilascio %(icon_documentation)s</a> o in versione più breve nel <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:123
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href="
-"\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
-"\n"
-"Per domande, consultare la <a class=\"new_window\" href=\"https://docs.mayan-"
-"edms.com\">documentazione %(icon_documentation)s</a> ."
+msgstr "\nPer domande, consultare la <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">documentazione %(icon_documentation)s</a> ."
 
 #: templates/appearance/about.html:129
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
-"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href="
-"\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
-"%(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
-msgstr ""
-"\n"
-"Se trovi un bug o hai un'idea per una nuova funzionalità, visita il <a class="
-"\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</"
-"a> o apri un ticket nel <a class=\"new_window\" href=\"https://gitlab.com/"
-"mayan-edms/mayan-edms\">repository del codice %(icon_source_code)s</a>."
+msgstr "\nSe trovi un bug o hai un'idea per una nuova funzionalità, visita il <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> o apri un ticket nel <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">repository del codice %(icon_source_code)s</a>."
 
 #: templates/appearance/about.html:134
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about "
-"how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr ""
-"\n"
-"Diffondere la parola. Parla con i tuoi amici e colleghi di quanto"
-"%(project_title)s è fantastico!"
+msgstr "\nDiffondere la parola. Parla con i tuoi amici e colleghi di quanto%(project_title)s è fantastico!"
 
 #: templates/appearance/base.html:38 templates/appearance/base.html:62
 msgid "Warning"
@@ -298,9 +244,7 @@ msgstr "Clicca qui per risolvere questo problema."
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
-"Impostazioni aggiornate, riavvia l'installazione e aggiorna il browser per "
-"rendere effettive le modifiche."
+msgstr "Impostazioni aggiornate, riavvia l'installazione e aggiorna il browser per rendere effettive le modifiche."
 
 #: templates/appearance/base.html:70
 #, python-format
@@ -308,9 +252,7 @@ msgid ""
 "\n"
 "                                        Impersonating user \"%(user)s\".\n"
 "                                    "
-msgstr ""
-"\n"
-"Rappresenta l'utente \"%(user)s\"."
+msgstr "\nRappresenta l'utente \"%(user)s\"."
 
 #: templates/appearance/base.html:73
 msgid "Click here when finished"
@@ -388,9 +330,7 @@ msgstr "Prima di usare completamente Mayan EDMS hai bisogno di:"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"Totale (%(start)s - %(end)s di %(total)s) (Pagina %(page_number)s di "
-"%(total_pages)s)"
+msgstr "Totale (%(start)s - %(end)s di %(total)s) (Pagina %(page_number)s di %(total_pages)s)"
 
 #: templates/appearance/list_header.html:14
 #: templates/appearance/list_header.html:17
@@ -409,9 +349,7 @@ msgstr "Attiva / disattiva la modalità di visualizzazione dell'elenco"
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
-"Seleziona gli elementi per attivare azioni in blocco. Usa Maiusc + clic per "
-"selezionare molti."
+msgstr "Seleziona gli elementi per attivare azioni in blocco. Usa Maiusc + clic per selezionare molti."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"

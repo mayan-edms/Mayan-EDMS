@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2017
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2017
 # Iliya Georgiev <inactive+iliicho7@transifex.com>, 2017
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2020
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -16,12 +16,11 @@ msgstr ""
 "POT-Creation-Date: 2020-05-11 00:41-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
-"bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:48 apps.py:122 apps.py:129 apps.py:134 apps.py:137 events.py:5
@@ -186,11 +185,14 @@ msgstr "Брой документи на това ниво на шкафа."
 
 #: serializers.py:24
 msgid "The name of this cabinet level appended to the names of its ancestors."
-msgstr "Името на това ниво на шкафа се прибавя към имената на неговите предци."
+msgstr ""
+"Името на това ниво на шкафа се прибавя към имената на неговите предци."
 
 #: serializers.py:30
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
-msgstr "URL на крайната точка на API, показваща списъка документи в този шкаф."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
+msgstr ""
+"URL на крайната точка на API, показваща списъка документи в този шкаф."
 
 #: serializers.py:66 serializers.py:177
 msgid "Comma separated list of document primary keys to add to this cabinet."
@@ -203,8 +205,8 @@ msgid ""
 "API URL pointing to a document in relation to the cabinet storing it. This "
 "URL is different than the canonical document URL."
 msgstr ""
-"URL адрес на API, сочещ към документ във връзка с шкафа, който го съхранява. "
-"Този URL адрес е различен от основния URL адрес на документа."
+"URL адрес на API, сочещ към документ във връзка с шкафа, който го съхранява."
+" Този URL адрес е различен от основния URL адрес на документа."
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"

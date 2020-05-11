@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
@@ -10,14 +10,12 @@ msgstr ""
 "POT-Creation-Date: 2020-05-11 00:41-0400\n"
 "PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:68 events.py:6 links.py:18 links.py:54 links.py:196 links.py:220
 #: models.py:72 settings.py:11 views/workflow_proxy_views.py:66
@@ -436,8 +434,8 @@ msgstr ""
 #: models.py:713
 msgid ""
 "The condition that will determine if this transition is enabled or not. The "
-"condition is evaluated against the workflow instance. Conditions that return "
-"None or an empty string ('') are considered to be logical false, any other "
+"condition is evaluated against the workflow instance. Conditions that return"
+" None or an empty string ('') are considered to be logical false, any other "
 "value is considered to be the logical true."
 msgstr ""
 
@@ -640,8 +638,8 @@ msgstr ""
 
 #: storages.py:14
 msgid ""
-"Unable to initialize the workflow preview storage. Check the settings {} and "
-"{} for formatting errors."
+"Unable to initialize the workflow preview storage. Check the settings {} and"
+" {} for formatting errors."
 msgstr ""
 
 #: storages.py:21
@@ -654,8 +652,8 @@ msgstr ""
 
 #: views/workflow_instance_views.py:31
 msgid ""
-"Assign workflows to the document type of this document to have this document "
-"execute those workflows. "
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
 msgstr ""
 
 #: views/workflow_instance_views.py:35
@@ -669,7 +667,8 @@ msgstr ""
 
 #: views/workflow_instance_views.py:64
 msgid ""
-"This view will show the state changes as a workflow instance is transitioned."
+"This view will show the state changes as a workflow instance is "
+"transitioned."
 msgstr ""
 
 #: views/workflow_instance_views.py:68
@@ -742,7 +741,8 @@ msgstr ""
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr ""
 
-#: views/workflow_proxy_views.py:121 views/workflow_template_state_views.py:301
+#: views/workflow_proxy_views.py:121
+#: views/workflow_template_state_views.py:301
 msgid "Create states and link them using transitions."
 msgstr ""
 
@@ -750,7 +750,8 @@ msgstr ""
 msgid "This workflow doesn't have any state"
 msgstr ""
 
-#: views/workflow_proxy_views.py:127 views/workflow_template_state_views.py:307
+#: views/workflow_proxy_views.py:127
+#: views/workflow_template_state_views.py:307
 #, python-format
 msgid "States of workflow: %s"
 msgstr ""
@@ -772,8 +773,8 @@ msgstr ""
 
 #: views/workflow_template_state_views.py:159
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or "
-"leaves the state in which they reside."
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
 msgstr ""
 
 #: views/workflow_template_state_views.py:163
@@ -825,7 +826,8 @@ msgstr ""
 
 #: views/workflow_template_transition_views.py:133
 msgid ""
-"Create a transition and use it to move a workflow from  one state to another."
+"Create a transition and use it to move a workflow from  one state to "
+"another."
 msgstr ""
 
 #: views/workflow_template_transition_views.py:137
@@ -873,8 +875,8 @@ msgstr ""
 
 #: views/workflow_template_transition_views.py:338
 msgid ""
-"Workflow transition fields allow adding data to the workflow's context. This "
-"additional context data can then be used by other elements of the workflow "
+"Workflow transition fields allow adding data to the workflow's context. This"
+" additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr ""
 
@@ -1002,10 +1004,10 @@ msgstr ""
 
 #: workflow_actions.py:75
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow "
-"log entry instance as part of their context via the variable \"entry_log\". "
-"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", and \"comment\" attributes."
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:85
@@ -1014,7 +1016,8 @@ msgstr ""
 
 #: workflow_actions.py:88
 msgid ""
-"Time in seconds to wait for a response. Can be a static value or a template. "
+"Time in seconds to wait for a response. Can be a static value or a template."
+" "
 msgstr ""
 
 #: workflow_actions.py:94
@@ -1024,10 +1027,10 @@ msgstr ""
 #: workflow_actions.py:97
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:107
@@ -1036,11 +1039,11 @@ msgstr ""
 
 #: workflow_actions.py:110
 msgid ""
-"Username to use for making the request with HTTP Basic Auth. Can be a static "
-"value or a template. Templates receive the workflow log entry instance as "
+"Username to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:120
@@ -1049,11 +1052,11 @@ msgstr "كلمة المرور"
 
 #: workflow_actions.py:123
 msgid ""
-"Password to use for making the request with HTTP Basic Auth. Can be a static "
-"value or a template. Templates receive the workflow log entry instance as "
+"Password to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:133

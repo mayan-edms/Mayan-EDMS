@@ -2,28 +2,29 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2020
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
-#
+# Comprax <info@comprax.nl>, 2020
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-11 00:41-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020\n"
+"Last-Translator: Comprax <info@comprax.nl>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24 links.py:41 permissions.py:5
 msgid "Dependencies"
-msgstr ""
+msgstr "Afhankelijkheden"
 
 #: apps.py:32 apps.py:69 apps.py:78
 msgid "Label"
@@ -47,7 +48,7 @@ msgstr "Andere gegevens"
 
 #: apps.py:53
 msgid "Declared by"
-msgstr ""
+msgstr "Toegewezen door"
 
 #: apps.py:57 classes.py:153
 msgid "Version"
@@ -55,7 +56,7 @@ msgstr "Versie"
 
 #: apps.py:61 classes.py:154 classes.py:783
 msgid "Environment"
-msgstr ""
+msgstr "Omgeving"
 
 #: apps.py:64 classes.py:155
 msgid "Check"
@@ -71,12 +72,12 @@ msgstr "App"
 
 #: classes.py:269
 msgid "Need to specify at least one: app_label or module."
-msgstr ""
+msgstr "Minstens één specificatie nodig van: app_label of module."
 
 #: classes.py:274
 #, python-format
 msgid "Dependency \"%s\" already registered."
-msgstr ""
+msgstr "Afhankelijkheid \"%s\" al vastgelegd."
 
 #: classes.py:300
 #, python-format
@@ -109,21 +110,24 @@ msgstr "Niet opgegeven"
 
 #: classes.py:386
 msgid "Patching files... "
-msgstr ""
+msgstr "Bestanden aanpassen ..."
 
 #: classes.py:414
 msgid "Executables that are called directly by the code."
 msgstr ""
+"Uitvoerbare bestanden die rechtstreeks door de code worden aangeroepen."
 
 #: classes.py:416
 msgid "Binary"
-msgstr ""
+msgstr "Binair"
 
 #: classes.py:433
 msgid ""
-"JavaScript libraries downloaded the from NPM registry and used for front-end "
-"functionality."
+"JavaScript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
 msgstr ""
+"JavaScript bibliotheken gedownload van het NPM-register en gebruikt voor "
+"front-end functionaliteit."
 
 #: classes.py:436
 msgid "JavaScript"
@@ -159,11 +163,11 @@ msgstr "Google font"
 
 #: classes.py:765
 msgid "Declared in app"
-msgstr ""
+msgstr "Toegewezen in app"
 
 #: classes.py:766
 msgid "Show dependencies by the app that declared them."
-msgstr ""
+msgstr "Toon afhankelijkheden door de app die ze heeft toegewezen."
 
 #: classes.py:770
 msgid "Class"
@@ -174,6 +178,8 @@ msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
+"Toon de verschillende klassen van afhankelijkheden. Klassen worden meestal "
+"onderverdeeld per taal of de bestandstypen van de afhankelijkheid."
 
 #: classes.py:776
 msgid "State"
@@ -185,38 +191,52 @@ msgid ""
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
+"Toon de verschillende statussen van de afhankelijkheden. \"Waar\" betekent "
+"dat de afhankelijkheden zijn geïnstalleerd en een correcte versie hebben. "
+"\"Niet Waar\" betekent dat de afhankelijkheden ontbreken of dat er een "
+"onjuiste versie aanwezig is."
 
 #: classes.py:784
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
+"Afhankelijkheden die vereist zijn voor een omgeving, zijn mogelijk niet "
+"vereist voor een andere. Voorbeeldomgevingen: Productie, Ontwikkeling."
 
 #: environments.py:19
 msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing dependencies under this environment."
 msgstr ""
+"Omgeving die wordt gebruikt voor het bouwen van distributeerbare pakketten "
+"van de software. Eindgebruikers kunnen ontbrekende afhankelijkheden in deze "
+"omgeving negeren."
 
 #: environments.py:22
 msgid "Build"
-msgstr ""
+msgstr "Versie"
 
 #: environments.py:26
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Omgeving die door ontwikkelaars wordt gebruikt om codewijzigingen aan te "
+"brengen. Eindgebruikers kunnen ontbrekende afhankelijkheden in deze omgeving"
+" negeren."
 
 #: environments.py:28
 msgid "Development"
-msgstr ""
+msgstr "Ontwikkellevel"
 
 #: environments.py:32
 msgid ""
 "Environment used for building the documentation. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Omgeving gebruikt voor de bouw van de documentatie. Eindgebruikers kunnen "
+"ontbrekende afhankelijkheden in deze omgeving negeren."
 
 #: environments.py:34
 msgid "Documentation"
@@ -227,10 +247,12 @@ msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
 msgstr ""
+"Normale omgeving voor eindgebruikers. Een ontbrekende afhankelijkheid in "
+"deze omgeving leidt tot problemen en fouten bij normaal gebruik."
 
 #: environments.py:40
 msgid "Production"
-msgstr ""
+msgstr "Productielevel"
 
 #: environments.py:44
 msgid ""
@@ -238,10 +260,13 @@ msgid ""
 "code. Dependencies in this environment are not needed for normal production "
 "usage."
 msgstr ""
+"Omgeving gebruikt om het testlevel uit te voeren om de functionaliteit van "
+"de code te verifiëren. Afhankelijkheden in deze omgeving zijn niet nodig "
+"voor normaal productiegebruik."
 
 #: environments.py:47
 msgid "Testing"
-msgstr ""
+msgstr "Testlevel"
 
 #: links.py:9 views.py:17
 msgid "Check for updates"
@@ -253,7 +278,7 @@ msgstr "Groepen"
 
 #: links.py:23
 msgid "Entries"
-msgstr ""
+msgstr "Inzendingen"
 
 #: links.py:31
 msgid "Details"
@@ -261,26 +286,30 @@ msgstr "Gegevens"
 
 #: links.py:36
 msgid "Dependencies licenses"
-msgstr ""
+msgstr "Afhankelijkheden licenties"
 
 #: management/commands/checkdependencies.py:13
 msgid "Outputs the dependencies as a comma delimited values list."
-msgstr ""
+msgstr "Kommagescheiden uitvoer van afhankelijkheden."
 
 #: management/commands/generaterequirements.py:14
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
+"Door kommagescheiden namen van afhankelijkheden om uit te sluiten van de "
+"gegenereerde lijst."
 
 #: management/commands/generaterequirements.py:20
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
+"Door kommagescheiden namen van afhankelijkheden die in de lijst moeten "
+"worden weergegeven, terwijl alle andere worden uitgesloten."
 
 #: management/commands/installdependencies.py:13
 msgid "Process a specific app."
-msgstr ""
+msgstr "Verwerk een specifieke app."
 
 #: management/commands/installdependencies.py:17
 msgid "Force installation even if already installed."
@@ -288,12 +317,12 @@ msgstr "Installatie afdwingen zelfs als ze reeds geïnstalleerd zijn."
 
 #: permissions.py:8
 msgid "View dependencies"
-msgstr ""
+msgstr "Bekijk afhankelijkheden"
 
 #: views.py:31
 #, python-format
 msgid "Entries for dependency group: %s"
-msgstr ""
+msgstr "Invoer voor afhankelijkheidsgroep: %s"
 
 #: views.py:44 views.py:89
 #, python-format
@@ -302,17 +331,17 @@ msgstr "Groep %s niet gevonden."
 
 #: views.py:57
 msgid "Dependency groups"
-msgstr ""
+msgstr "Afhankelijkheidsgroepen"
 
 #: views.py:77
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
-msgstr ""
+msgstr "Afhankelijkheidsgroep en invoer: %(group)s, %(entry)s"
 
 #: views.py:101
 #, python-format
 msgid "Entry %s not found."
-msgstr ""
+msgstr "Vermelding %s niet gevonden."
 
 #: views.py:119
 msgid "Other packages licenses"

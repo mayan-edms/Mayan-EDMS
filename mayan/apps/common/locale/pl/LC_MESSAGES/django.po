@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2017
@@ -19,15 +19,12 @@ msgstr ""
 "POT-Creation-Date: 2020-05-11 00:41-0400\n"
 "PO-Revision-Date: 2020-04-19 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:132 permissions_runtime.py:5 settings.py:13
 msgid "Common"
@@ -51,8 +48,7 @@ msgstr ""
 
 #: dependencies.py:309
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
-"Służy do umożliwienia tłumaczenia ciągów tekstowych kodu w trybie offline."
+msgstr "Służy do umożliwienia tłumaczenia ciągów tekstowych kodu w trybie offline."
 
 #: dependencies.py:314
 msgid "Provides style checking."
@@ -79,20 +75,14 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
-"Wybierz wpisy do usunięcia. Przytrzymaj Control, aby wybrać wiele wpisów. Po "
-"zakończeniu wyboru kliknij przycisk poniżej lub kliknij dwukrotnie listę, "
-"aby aktywować akcję."
+msgstr "Wybierz wpisy do usunięcia. Przytrzymaj Control, aby wybrać wiele wpisów. Po zakończeniu wyboru kliknij przycisk poniżej lub kliknij dwukrotnie listę, aby aktywować akcję."
 
 #: generics.py:151
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
-"Wybierz wpisy do dodania. Przytrzymaj Control, aby wybrać wiele wpisów. Po "
-"zakończeniu wyboru kliknij przycisk poniżej lub kliknij dwukrotnie listę, "
-"aby aktywować akcję."
+msgstr "Wybierz wpisy do dodania. Przytrzymaj Control, aby wybrać wiele wpisów. Po zakończeniu wyboru kliknij przycisk poniżej lub kliknij dwukrotnie listę, aby aktywować akcję."
 
 #: generics.py:284
 msgid "Add all"
@@ -200,16 +190,13 @@ msgstr "Narzędzia"
 #: literals.py:16
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
-"Ta funkcja jest przestarzała i zostanie usunięta w przyszłych wersjach."
+msgstr "Ta funkcja jest przestarzała i zostanie usunięta w przyszłych wersjach."
 
 #: literals.py:19
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
-"Twój backend bazy danych jest skonfigurowany do używania SQLite. SQLite "
-"powinien być używany tylko do programowania i testowania, a nie na produkcji."
+msgstr "Twój backend bazy danych jest skonfigurowany do używania SQLite. SQLite powinien być używany tylko do programowania i testowania, a nie na produkcji."
 
 #: literals.py:44
 msgid "Days"
@@ -326,40 +313,31 @@ msgstr "Włącz dla wszystkich aplikacji automatyczny zapis zdarzeń."
 
 #: settings.py:26
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr "Czas opóźnienia wykonania zadań zależnych od operacji na bazie danych."
 
 #: settings.py:34
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
-msgstr ""
-"Lista ciągów znaków wskazujących wszystkie aplikacje, które mają zostać "
-"usunięte z listy normalnie instalowanej przez Mayan EDMS. Każdy ciąg "
-"powinien być kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji "
-"(preferowane) lub pakietu zawierającego aplikację."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "Lista ciągów znaków wskazujących wszystkie aplikacje, które mają zostać usunięte z listy normalnie instalowanej przez Mayan EDMS. Każdy ciąg powinien być kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji (preferowane) lub pakietu zawierającego aplikację."
 
 #: settings.py:44
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
-msgstr ""
-"Lista ciągów oznaczających wszystkie aplikacje, które są instalowane poza "
-"tymi, które normalnie instaluje Mayan EDMS. Każdy ciąg powinien być "
-"kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji (preferowane) "
-"lub pakietu zawierającego aplikację."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "Lista ciągów oznaczających wszystkie aplikacje, które są instalowane poza tymi, które normalnie instaluje Mayan EDMS. Każdy ciąg powinien być kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji (preferowane) lub pakietu zawierającego aplikację."
 
 #: settings.py:53
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
-msgstr ""
-"Nazwa widoku dołączonego do marki w menu głównym. Jest to również widok, do "
-"którego użytkownicy będą przekierowywani po zalogowaniu."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr "Nazwa widoku dołączonego do marki w menu głównym. Jest to również widok, do którego użytkownicy będą przekierowywani po zalogowaniu."
 
 #: settings.py:62
 msgid "The number objects that will be displayed per page."
@@ -383,9 +361,7 @@ msgstr "Adres URL instalacji lub strona główna projektu."
 
 #: settings.py:95
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie "
-"plików."
+msgstr "Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie plików."
 
 #: settings.py:103
 msgid "Base URL path to use for all views."
@@ -393,8 +369,8 @@ msgstr ""
 
 #: storages.py:13
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
 
 #: templatetags/common_tags.py:34
@@ -436,8 +412,7 @@ msgstr "Wprowadź poprawną wartość YAML."
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
-"Podaj prawidłową 'internal name' składającą się z liter, liczb i podkreśleń."
+msgstr "Podaj prawidłową 'internal name' składającą się z liter, liczb i podkreśleń."
 
 #: views.py:26
 msgid "About"
@@ -472,9 +447,7 @@ msgstr "Data i godzina"
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
-msgstr ""
-"Widok ten pokazuje dziennik błędów dla różnych obiektów. Czysta lista "
-"wskazuje na brak błędów."
+msgstr "Widok ten pokazuje dziennik błędów dla różnych obiektów. Czysta lista wskazuje na brak błędów."
 
 #: views.py:158
 msgid "There are no error log entries"
@@ -493,9 +466,7 @@ msgstr "Brak opcji konfiguracji."
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
-"Brak wyników oznacza, że nie masz wymaganych uprawnień administratora do "
-"wykonania zadania."
+msgstr "Brak wyników oznacza, że nie masz wymaganych uprawnień administratora do wykonania zadania."
 
 #: views.py:197
 msgid "Setup items"

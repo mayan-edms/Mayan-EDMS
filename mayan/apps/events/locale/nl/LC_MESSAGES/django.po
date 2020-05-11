@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-11 00:42-0400\n"
-"PO-Revision-Date: 2020-04-26 17:00+0000\n"
+"PO-Revision-Date: 2020-05-10 20:30+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:27 links.py:47 links.py:52 links.py:57 permissions.py:5 views.py:34
@@ -42,7 +41,7 @@ msgstr "Doel"
 
 #: apps.py:54
 msgid "Action object"
-msgstr ""
+msgstr "Actie object"
 
 #: apps.py:59 forms.py:10 forms.py:67
 msgid "Namespace"
@@ -63,7 +62,7 @@ msgstr "Onbekend of overbodig gebeurtenistype: %s"
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
-msgstr ""
+msgstr "Abonnement"
 
 #: forms.py:20 forms.py:77
 msgid "No"
@@ -71,7 +70,7 @@ msgstr "Nee"
 
 #: forms.py:21 forms.py:78
 msgid "Subscribed"
-msgstr ""
+msgstr "Geabonneerd"
 
 #: html_widgets.py:55
 msgid "System"
@@ -83,7 +82,7 @@ msgstr "Mijn gebeurtenissen"
 
 #: links.py:61 models.py:65 views.py:78
 msgid "Event subscriptions"
-msgstr ""
+msgstr "Gebeurtenis abonnement"
 
 #: links.py:65
 msgid "Mark as seen"
@@ -95,7 +94,7 @@ msgstr "Alle markeren als gezien"
 
 #: links.py:74
 msgid "Subscriptions"
-msgstr ""
+msgstr "Abonnementen"
 
 #: models.py:23
 msgid "Name"
@@ -119,7 +118,7 @@ msgstr "Evenementsoort"
 
 #: models.py:64
 msgid "Event subscription"
-msgstr ""
+msgstr "Gebeurtenis abonnement"
 
 #: models.py:85
 msgid "Action"
@@ -139,11 +138,11 @@ msgstr "Meldingen"
 
 #: models.py:123
 msgid "Object event subscription"
-msgstr ""
+msgstr "Object gebeurtenis abonnement"
 
 #: models.py:124
 msgid "Object event subscriptions"
-msgstr ""
+msgstr "Object gebeurtenis abonnementen"
 
 #: permissions.py:8
 msgid "Access the events of an object"
@@ -152,15 +151,15 @@ msgstr "Benader de evenementen van een object"
 #: views.py:57
 #, python-format
 msgid "Error updating event subscription; %s"
-msgstr ""
+msgstr "Fout bij bijwerken gebeurtenis abonnement; %s"
 
 #: views.py:62
 msgid "Event subscriptions updated successfully"
-msgstr ""
+msgstr "Gebeurtenis abonnementen met succes bijgewerkt"
 
 #: views.py:112
 msgid "Subscribe to global or object events to receive notifications."
-msgstr ""
+msgstr "Abonneren op algemene of objectgebeurtenissen om notificaties te ontvangen."
 
 #: views.py:115
 msgid "There are no notifications"
@@ -170,9 +169,7 @@ msgstr "Er zijn geen meldingen"
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr ""
-"Gebeurtenissen zijn acties die zijn uitgevoerd op dit object of door gebruik "
-"van dit object."
+msgstr "Gebeurtenissen zijn acties die zijn uitgevoerd op dit object of door gebruik van dit object."
 
 #: views.py:167
 msgid "There are no events for this object"
@@ -186,16 +183,16 @@ msgstr "Evenementen voor: %s"
 #: views.py:209
 #, python-format
 msgid "Error updating object event subscription; %s"
-msgstr ""
+msgstr "Fout bij bijwerken objectgebeurtenis abonnement; %s"
 
 #: views.py:215
 msgid "Object event subscriptions updated successfully"
-msgstr ""
+msgstr "Object gebeurtenis abonnementen met succes bijgewerkt"
 
 #: views.py:248
 #, python-format
 msgid "Event subscriptions for: %s"
-msgstr ""
+msgstr "Gebeurtenis abonnementen voor: %s"
 
 #: views.py:280
 #, python-format

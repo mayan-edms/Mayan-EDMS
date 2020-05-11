@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
@@ -12,12 +12,11 @@ msgstr ""
 "POT-Creation-Date: 2020-05-11 00:41-0400\n"
 "PO-Revision-Date: 2020-04-06 16:30+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:20 permissions.py:5 settings.py:13
@@ -36,8 +35,7 @@ msgstr "Изключение, определящо броя на PDF стран�
 #: backends/python.py:183
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
-msgstr ""
-"Изключение, определящо броя на страниците с използване на Възглавница; %s"
+msgstr "Изключение, определящо броя на страниците с използване на Възглавница; %s"
 
 #: classes.py:125
 msgid "LibreOffice not installed or not found."
@@ -51,9 +49,7 @@ msgstr "Не е във формат на офис файл"
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr ""
-"Трансформациите позволяват промяна на външния вид на документите, без да се "
-"правят постоянни промени в самия файл на документа."
+msgstr "Трансформациите позволяват промяна на външния вид на документите, без да се правят постоянни промени в самия файл на документа."
 
 #: classes.py:398
 msgid "transformation"
@@ -61,17 +57,13 @@ msgstr "трансформация"
 
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr ""
-"Помощна програма от пакета poppler-utils, използвана за проверка на PDF "
-"файлове."
+msgstr "Помощна програма от пакета poppler-utils, използвана за проверка на PDF файлове."
 
 #: dependencies.py:19
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr ""
-"Помощна програма от пакета popper-utils, използвана за извличане на страници "
-"от PDF файлове в изображения във формат PPM."
+msgstr "Помощна програма от пакета popper-utils, използвана за извличане на страници от PDF файлове в изображения във формат PPM."
 
 #: forms.py:22
 msgid "Available transformations for this layer."
@@ -134,17 +126,13 @@ msgstr "Обектни слоеве"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Ред, в който ще бъдат извършени трансформациите. Ако остане непроменено, ще "
-"бъде назначена автоматична стойност на поръчката."
+msgstr "Ред, в който ще бъдат извършени трансформациите. Ако остане непроменено, ще бъде назначена автоматична стойност на поръчката."
 
 #: models.py:87
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Въведете аргументите за преобразуването като YAML речник. т.е.: {&quot;"
-"градуси&quot;: 180}"
+msgstr "Въведете аргументите за преобразуването като YAML речник. т.е.: {&quot;градуси&quot;: 180}"
 
 #: models.py:89
 msgid "Arguments"
@@ -252,21 +240,17 @@ msgstr "Грешка при създаването на трансформаци
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr ""
-"Създайте слой &quot;%(layer)s&quot; трансформация &quot;"
-"%(transformation)s&quot; за: %(object)s"
+msgstr "Създайте слой &quot;%(layer)s&quot; трансформация &quot;%(transformation)s&quot; за: %(object)s"
 
 #: views.py:123
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
-"Да се изтрие трансформацията „%(transformation)s“ за: %(content_object)s?"
+msgstr "Да се изтрие трансформацията „%(transformation)s“ за: %(content_object)s?"
 
 #: views.py:172
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
-"Редактиране на трансформацията „%(transformation)s“ за: %(content_object)s"
+msgstr "Редактиране на трансформацията „%(transformation)s“ за: %(content_object)s"
 
 #: views.py:231
 #, python-format
@@ -289,5 +273,4 @@ msgstr "Изберете"
 #: views.py:312
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr ""
-"Изберете нова трансформация на слой &quot;%(layer)s&quot; за: %(object)s"
+msgstr "Изберете нова трансформация на слой &quot;%(layer)s&quot; за: %(object)s"

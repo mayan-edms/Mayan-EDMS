@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2020
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -14,12 +14,11 @@ msgstr ""
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
-"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:13 settings.py:7
 msgid "Auto administrator"
@@ -54,11 +53,11 @@ msgstr "Nastaví e-mail automaticky vytvořeného superuživatelského účtu."
 
 #: settings.py:18
 msgid ""
-"The password of the automatically created super user account. If it is equal "
-"to None, the password is randomly generated."
+"The password of the automatically created super user account. If it is equal"
+" to None, the password is randomly generated."
 msgstr ""
-"Heslo automaticky vytvořeného superuživatelského účtu. Pokud je rovno Žádné, "
-"heslo se vygeneruje náhodně."
+"Heslo automaticky vytvořeného superuživatelského účtu. Pokud je rovno Žádné,"
+" heslo se vygeneruje náhodně."
 
 #: settings.py:25
 msgid "The username of the automatically created super user account."

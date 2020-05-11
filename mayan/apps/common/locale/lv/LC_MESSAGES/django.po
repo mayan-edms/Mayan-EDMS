@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
 msgid ""
@@ -11,14 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2020-05-11 00:41-0400\n"
 "PO-Revision-Date: 2020-04-19 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:132 permissions_runtime.py:5 settings.py:13
 msgid "Common"
@@ -69,20 +67,14 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
-"Atlasiet noņemamos ierakstus. Lai atlasītu vairākus ierakstus, turiet "
-"Control taustiņu. Kad atlase ir pabeigta, noklikšķiniet uz zemāk redzamās "
-"pogas vai veiciet dubultklikšķi uz saraksta, lai aktivizētu darbību."
+msgstr "Atlasiet noņemamos ierakstus. Lai atlasītu vairākus ierakstus, turiet Control taustiņu. Kad atlase ir pabeigta, noklikšķiniet uz zemāk redzamās pogas vai veiciet dubultklikšķi uz saraksta, lai aktivizētu darbību."
 
 #: generics.py:151
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
-"Atlasiet pievienojamos ierakstus. Lai atlasītu vairākus ierakstus, turiet "
-"Control taustiņu. Kad atlase ir pabeigta, noklikšķiniet uz zemāk redzamās "
-"pogas vai veiciet dubultklikšķi uz saraksta, lai aktivizētu darbību."
+msgstr "Atlasiet pievienojamos ierakstus. Lai atlasītu vairākus ierakstus, turiet Control taustiņu. Kad atlase ir pabeigta, noklikšķiniet uz zemāk redzamās pogas vai veiciet dubultklikšķi uz saraksta, lai aktivizētu darbību."
 
 #: generics.py:284
 msgid "Add all"
@@ -196,9 +188,7 @@ msgstr "Šī funkcija ir novecojusi un tiks noņemta turpmākajā versijā."
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
-"Jūsu datubāzes backend ir iestatīts, lai izmantotu SQLite. SQLite jāizmanto "
-"tikai izstrādei un testēšanai, nevis ražošanai."
+msgstr "Jūsu datubāzes backend ir iestatīts, lai izmantotu SQLite. SQLite jāizmanto tikai izstrādei un testēšanai, nevis ražošanai."
 
 #: literals.py:44
 msgid "Days"
@@ -315,42 +305,31 @@ msgstr "Automātiski iespējojiet pierakstīšanos visās lietotnēs."
 
 #: settings.py:26
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Laiks uz kādu aizkavēt fona uzdevumus, kas ir atkarīgs no datu bāzes "
-"apņemšanās uz izplatīšanu."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Laiks uz kādu aizkavēt fona uzdevumus, kas ir atkarīgs no datu bāzes apņemšanās uz izplatīšanu."
 
 #: settings.py:34
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
-msgstr ""
-"Saraksts ar virknēm, kas apzīmē visas lietojumprogrammas, kuras jānoņem no "
-"saraksta, kuras parasti uzstāda Mayan EDMS. Katrai virknei vajadzētu būt "
-"punktveida Python ceļam uz: lietojumprogrammas konfigurācijas klasi (vēlams) "
-"vai paketi, kurā ir lietojumprogramma."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "Saraksts ar virknēm, kas apzīmē visas lietojumprogrammas, kuras jānoņem no saraksta, kuras parasti uzstāda Mayan EDMS. Katrai virknei vajadzētu būt punktveida Python ceļam uz: lietojumprogrammas konfigurācijas klasi (vēlams) vai paketi, kurā ir lietojumprogramma."
 
 #: settings.py:44
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
-msgstr ""
-"Saraksts ar virknēm, kas apzīmē visas lietojumprogrammas, kas ir uzstādītas "
-"ārpus tām, ko parasti uzstāda Mayan EDMS. Katrai virknei vajadzētu būt "
-"punktveida Python ceļam uz: lietojumprogrammas konfigurācijas klasi (vēlams) "
-"vai paketi, kurā ir lietojumprogramma."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "Saraksts ar virknēm, kas apzīmē visas lietojumprogrammas, kas ir uzstādītas ārpus tām, ko parasti uzstāda Mayan EDMS. Katrai virknei vajadzētu būt punktveida Python ceļam uz: lietojumprogrammas konfigurācijas klasi (vēlams) vai paketi, kurā ir lietojumprogramma."
 
 #: settings.py:53
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
-msgstr ""
-"Zīmola enkuram pievienotā skata nosaukums galvenajā izvēlnē. Tas ir arī "
-"skats, uz kuru pēc pierakstīšanās lietotāji tiks novirzīti."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr "Zīmola enkuram pievienotā skata nosaukums galvenajā izvēlnē. Tas ir arī skats, uz kuru pēc pierakstīšanās lietotāji tiks novirzīti."
 
 #: settings.py:62
 msgid "The number objects that will be displayed per page."
@@ -358,8 +337,7 @@ msgstr "Objektu skaits, kas tiks rādīti vienā lapā."
 
 #: settings.py:69
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
-"Iespējot kļūdu reģistrēšanu ārpus sistēmas kļūdu reģistrēšanas iespējām."
+msgstr "Iespējot kļūdu reģistrēšanu ārpus sistēmas kļūdu reģistrēšanas iespējām."
 
 #: settings.py:76
 msgid "Path to the logfile that will track errors during production."
@@ -375,8 +353,7 @@ msgstr "Projekta instalācijas vai mājas lapas URL."
 
 #: settings.py:95
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Uzglabāšanas backend, ko visi darbinieki var izmantot, lai koplietotu failus."
+msgstr "Uzglabāšanas backend, ko visi darbinieki var izmantot, lai koplietotu failus."
 
 #: settings.py:103
 msgid "Base URL path to use for all views."
@@ -384,8 +361,8 @@ msgstr ""
 
 #: storages.py:13
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
 
 #: templatetags/common_tags.py:34
@@ -427,9 +404,7 @@ msgstr "Ievadiet derīgu YAML vērtību."
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
-"Ievadiet derīgu “iekšējo nosaukumu”, kas sastāv no burtiem, cipariem un "
-"pasvītrojumiem."
+msgstr "Ievadiet derīgu “iekšējo nosaukumu”, kas sastāv no burtiem, cipariem un pasvītrojumiem."
 
 #: views.py:26
 msgid "About"
@@ -464,9 +439,7 @@ msgstr "Datums un laiks"
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
-msgstr ""
-"Šajā skatā tiek parādīts dažādu objektu kļūdu žurnāls. Tukšs saraksts ir "
-"laba lieta."
+msgstr "Šajā skatā tiek parādīts dažādu objektu kļūdu žurnāls. Tukšs saraksts ir laba lieta."
 
 #: views.py:158
 msgid "There are no error log entries"
@@ -485,9 +458,7 @@ msgstr "Nav pieejamas iestatīšanas opcijas."
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
-"Neviens no rezultātiem šeit nenozīmē, ka nav nepieciešamo atļauju "
-"administratīvā uzdevuma veikšanai."
+msgstr "Neviens no rezultātiem šeit nenozīmē, ka nav nepieciešamo atļauju administratīvā uzdevuma veikšanai."
 
 #: views.py:197
 msgid "Setup items"
