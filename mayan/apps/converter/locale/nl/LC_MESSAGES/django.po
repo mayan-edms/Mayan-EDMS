@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 00:41-0400\n"
-"PO-Revision-Date: 2020-05-02 18:54+0000\n"
+"POT-Creation-Date: 2020-05-20 02:45-0400\n"
+"PO-Revision-Date: 2020-05-17 19:10+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Exceptie bij het bepalen van aan aantal bladzijden van de PDF: %s"
 #: backends/python.py:183
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
-msgstr ""
+msgstr "Uitzondering bij paginatelling met Pillow; %s"
 
 #: classes.py:125
 msgid "LibreOffice not installed or not found."
@@ -52,7 +52,7 @@ msgstr "Geen office bestandsformaat."
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr ""
+msgstr "Transformaties staan het wijzigen van de visuele presentatie van documenten toe, zonder permanente wijzigingen te maken in het document zelf."
 
 #: classes.py:398
 msgid "transformation"
@@ -70,7 +70,7 @@ msgstr "Hulpmiddel uit het poppler-utils pakket dat gebruikt wordt om pagina's u
 
 #: forms.py:22
 msgid "Available transformations for this layer."
-msgstr ""
+msgstr "Beschikbare transformaties voor deze laag."
 
 #: forms.py:59
 #, python-format
@@ -107,11 +107,11 @@ msgstr "Volgorde"
 
 #: models.py:32 models.py:48
 msgid "Stored layer"
-msgstr ""
+msgstr "Opgeslagen laag"
 
 #: models.py:33
 msgid "Stored layers"
-msgstr ""
+msgstr "Opgeslagen lagen"
 
 #: models.py:45 models.py:91
 msgid "Enabled"
@@ -119,11 +119,11 @@ msgstr "Ingeschakeld"
 
 #: models.py:54 models.py:73
 msgid "Object layer"
-msgstr ""
+msgstr "Object laag"
 
 #: models.py:55
 msgid "Object layers"
-msgstr ""
+msgstr "Object lagen"
 
 #: models.py:77
 msgid ""
@@ -143,11 +143,11 @@ msgstr "Argumenten"
 
 #: models.py:98
 msgid "Layer transformation"
-msgstr ""
+msgstr "Laag transformatie"
 
 #: models.py:99
 msgid "Layer transformations"
-msgstr ""
+msgstr "Laag transformaties"
 
 #: permissions.py:8
 msgid "Create new transformations"
@@ -183,11 +183,11 @@ msgstr "Rechthoek tekenen"
 
 #: transformations.py:278
 msgid "Draw rectangle (percents coordinates)"
-msgstr ""
+msgstr "Vierkant tekenen (procentuele coördinaten)"
 
 #: transformations.py:375
 msgid "Flip"
-msgstr ""
+msgstr "Spiegelen"
 
 #: transformations.py:386
 msgid "Gaussian blur"
@@ -195,7 +195,7 @@ msgstr ""
 
 #: transformations.py:396
 msgid "Line art"
-msgstr ""
+msgstr "Zwart-wit"
 
 #: transformations.py:407
 msgid "Mirror"
@@ -243,7 +243,7 @@ msgstr "Fout bij het aanmaken van transformatie: %s."
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr ""
+msgstr "Aanmaken laag \"%(layer)s\" transformatie \"%(transformation)s\" voor: %(object)s"
 
 #: views.py:123
 #, python-format
@@ -258,12 +258,12 @@ msgstr "Wijzig transformatie \"%(transformation)s\" voor: %(content_object)s"
 #: views.py:231
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
-msgstr ""
+msgstr "Er is geen invoer voor laag \"%(layer_name)s\""
 
 #: views.py:234
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
-msgstr ""
+msgstr "Laag \"%(layer)s\" transformaties voor: %(object)s"
 
 #: views.py:286
 msgid "Transformation created successfully."
@@ -276,4 +276,4 @@ msgstr "Selecteren"
 #: views.py:312
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr ""
+msgstr "Kies nieuwe laag \"%(layer)s\" transformatie voor: %(object)s"

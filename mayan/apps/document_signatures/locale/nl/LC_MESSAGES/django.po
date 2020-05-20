@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 00:41-0400\n"
-"PO-Revision-Date: 2020-05-02 13:04+0000\n"
+"POT-Creation-Date: 2020-05-20 02:45-0400\n"
+"PO-Revision-Date: 2020-05-17 19:04+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -51,11 +51,11 @@ msgstr "Sleutel"
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
-msgstr ""
+msgstr "De wachtwoordzin waarmee de sleutel ontgrendeld wordt en gebruikt ka worden om de documentversie te tekenen."
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
-msgstr ""
+msgstr "Wachtwoordzin"
 
 #: forms.py:33
 msgid "Private key that will be used to sign this document version."
@@ -79,7 +79,7 @@ msgstr "Handtekening sleutel aanwezig?"
 
 #: forms.py:64
 msgid "Key fingerprint"
-msgstr ""
+msgstr "Sleutel vingerafdruk"
 
 #: forms.py:68
 msgid "Key creation date"
@@ -151,7 +151,7 @@ msgstr "ID van de sleutel die wordt gebruikt om document te tekenen."
 
 #: models.py:56
 msgid "Public key fingerprint"
-msgstr ""
+msgstr "Openbare sleutel vingerafdruk"
 
 #: models.py:63
 msgid "Document version signature"
@@ -179,7 +179,7 @@ msgstr "Documentversie ingesloten handtekeningen"
 
 #: models.py:134
 msgid "Signature file previously generated."
-msgstr ""
+msgstr "Voorheen gegenereerd handtekeningbestand."
 
 #: models.py:137
 msgid "Signature file"
@@ -243,7 +243,7 @@ msgstr "Ontbrekende ingesloten handtekening verifiëren"
 
 #: settings.py:19
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr ""
+msgstr "Pad naar de Storage subclass die gebruikt wordt om ontkoppelde handtekeningen op te slaan."
 
 #: settings.py:28
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
@@ -253,7 +253,7 @@ msgstr "Argumenten om door te geven aan de SIGNATURE_STORAGE_BACKEND."
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
-msgstr ""
+msgstr "Niet mogelijk de ontkoppelde handtekeningen opslag te initialiseren. Controleer de instellingen {} en {} op opmaakfouten."
 
 #: storages.py:21
 msgid "Detached signatures"

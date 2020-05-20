@@ -5,16 +5,16 @@
 # 
 # Translators:
 # Roberto Rosario, 2017
-# Tomasz Szymanowicz <alakdae@gmail.com>, 2019
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 00:41-0400\n"
+"POT-Creation-Date: 2020-05-20 02:44-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2020\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,7 +78,7 @@ msgstr "Szczegóły"
 
 #: methods.py:20
 msgid "Return a list of cabinets containing the document."
-msgstr ""
+msgstr "Zwróć listę szafek zawierających dokument."
 
 #: methods.py:22
 msgid "get_cabinets()"
@@ -103,11 +103,11 @@ msgstr "Szafka"
 
 #: models.py:110
 msgid "The path to the cabinet including all ancestors."
-msgstr ""
+msgstr "Ścieżka do szafki obejmująca wszystkich przodków."
 
 #: models.py:112
 msgid "Full path"
-msgstr ""
+msgstr "Pełna ścieżka"
 
 #: models.py:145 serializers.py:137
 msgid "Parent and Label"
@@ -156,7 +156,7 @@ msgstr "Typ dokumentu"
 
 #: search.py:29
 msgid "Document MIME type"
-msgstr ""
+msgstr "Typ MIME dokumentu"
 
 #: search.py:32
 msgid "Document label"
@@ -168,11 +168,11 @@ msgstr "Opis dokumentu"
 
 #: search.py:38
 msgid "Document UUID"
-msgstr ""
+msgstr "UUID dokumentu"
 
 #: search.py:42
 msgid "Document checksum"
-msgstr ""
+msgstr "Suma kontrolna dokumentu"
 
 #: serializers.py:17
 msgid "List of children cabinets."
@@ -272,12 +272,12 @@ msgstr "Szafki zawierające dokument: %s"
 #: views.py:223
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document."
-msgstr ""
+msgstr "Żądanie dodania do szafki wykonane na %(count)d dokumencie."
 
 #: views.py:226
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents."
-msgstr ""
+msgstr "Żądanie dodania do szafki wykonane na %(count)d dokumentach."
 
 #: views.py:233
 msgid "Add"
@@ -314,12 +314,12 @@ msgstr "Dokument %(document)s dodano pomyślnie do szafki %(cabinet)s."
 #: views.py:314
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document."
-msgstr ""
+msgstr "Żądanie usunięcia z szafki wykonane na %(count)d dokumencie."
 
 #: views.py:317
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents."
-msgstr ""
+msgstr "Żądanie usunięcia z szafki wykonane na %(count)d dokumentach."
 
 #: views.py:324
 msgid "Remove"

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 00:42-0400\n"
-"PO-Revision-Date: 2020-04-30 21:01+0000\n"
+"POT-Creation-Date: 2020-05-20 02:46-0400\n"
+"PO-Revision-Date: 2020-05-16 09:52+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "'Smartlink' bewerkt"
 
 #: forms.py:45
 msgid "Foreign document field"
-msgstr ""
+msgstr "Veld van het vreemde document"
 
 #: links.py:24
 msgid "Create condition"
@@ -178,17 +178,17 @@ msgstr "De berekening is genegeerd voor het eerste item"
 
 #: models.py:180
 msgid "This represents the metadata of all other documents."
-msgstr ""
+msgstr "Dit geeft de metadata van alle andere documenten weer."
 
 #: models.py:181
 msgid "Foreign document attribute"
-msgstr ""
+msgstr "Eigenschap van het vreemde document"
 
 #: models.py:186
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
-msgstr ""
+msgstr "De uitdrukking die m.b.v. documenteigenschappen vergeleken wordt met het veld van het vreemde document."
 
 #: models.py:188
 msgid "Expression"

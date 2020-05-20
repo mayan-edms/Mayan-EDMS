@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 00:42-0400\n"
-"PO-Revision-Date: 2020-05-04 15:01+0000\n"
+"POT-Creation-Date: 2020-05-20 02:46-0400\n"
+"PO-Revision-Date: 2020-05-16 09:29+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -178,7 +178,7 @@ msgstr "Gebruik TLS"
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr ""
+msgstr "Of een TLS (veilige) verbinding gebruikt wordt om te communiceren met de SMTP server. Dit wordt gebruikt voor expliciete TLS verbindingen, meestal op poort 587."
 
 #: mailers.py:48
 msgid "Use SSL"
@@ -192,7 +192,7 @@ msgid ""
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
 "and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
 " True."
-msgstr ""
+msgstr "Of een impliciete TLS (veilige) verbinding gebruikt wordt om te communiceren met de SMTP server. In de meeste e-mailconfiguratie staat dit type TLS bekend als SSL. Deze wordt meestal gebruikt op poort 465. Als u problemen ondervindt, bekijk dan de expliciete TLS-instelling \"TLS gebruiken\". Merk op dat \"TLS gebruiken\" en \"SSL gebruiken\" elkaar uitsluiten, dus u hoeft maar één van deze instellingen aan te zetten."
 
 #: mailers.py:60
 msgid "Username"
@@ -213,7 +213,7 @@ msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
 "with the username when authenticating to the SMTP server. If either of these"
 " settings is empty, authentication won't be attempted."
-msgstr ""
+msgstr "Wachtwoord voor de SMTP server. Deze instelling wordt gebruikt samen met de gebruikersnaam voor authenticatie op de SMTP server. Als een van deze instellingen leeg is, zal authenticatie niet worden geprobeerd."
 
 #: mailers.py:81
 msgid "Django SMTP backend"
@@ -251,7 +251,7 @@ msgstr "Label"
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr ""
+msgstr "Indien standaard ingesteld wordt dit mailprofiel voorgeselecteerd op het \"Document mailen\" formulier."
 
 #: models.py:53
 msgid "Default"
@@ -263,7 +263,7 @@ msgstr "Ingeschakeld"
 
 #: models.py:58
 msgid "The dotted Python path to the backend class."
-msgstr ""
+msgstr "Het Python-pad naar de backend class."
 
 #: models.py:59
 msgid "Backend path"
@@ -275,7 +275,7 @@ msgstr "Backend gegevens"
 
 #: models.py:84
 msgid "The backend class for this entry."
-msgstr ""
+msgstr "De backend class voor deze invoer."
 
 #: models.py:216
 msgid "Test email from Mayan EDMS"
@@ -331,19 +331,19 @@ msgstr "Document verzenden"
 
 #: settings.py:14
 msgid "Template for the document email form subject line."
-msgstr ""
+msgstr "Sjabloon voor de onderwerpregel van het \"Document mailen\" formulier."
 
 #: settings.py:19
 msgid "Template for the document email form body text. Can include HTML."
-msgstr ""
+msgstr "Sjabloon voor de inhoudstekst van het \"Document mailen\" formulier. Kan HTML bevatten."
 
 #: settings.py:24
 msgid "Template for the document link email form subject line."
-msgstr ""
+msgstr "Sjabloon voor de onderwerpregel van het \"Documentlink mailen\" formulier."
 
 #: settings.py:29
 msgid "Template for the document link email form body text. Can include HTML."
-msgstr ""
+msgstr "Sjabloon voor de inhoudstekst van het \"Documentlink mailen\" formulier. Kan HTML bevatten."
 
 #: validators.py:12
 #, python-format

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 00:42-0400\n"
-"PO-Revision-Date: 2020-05-10 20:44+0000\n"
+"POT-Creation-Date: 2020-05-20 02:46-0400\n"
+"PO-Revision-Date: 2020-05-16 09:39+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -118,7 +118,7 @@ msgstr "Verwijderen"
 
 #: forms.py:169
 msgid " Available template context variables: "
-msgstr ""
+msgstr "Beschikbare variabelen in sjablooncontext:"
 
 #: forms.py:183
 msgid "None"
@@ -186,7 +186,7 @@ msgstr "Korte beschrijving van dit metadata type."
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr ""
+msgstr "Een sjabloon invoeren om op te maken. Gebruik Django's standaard sjabloon taal (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
 #: models.py:64 search.py:20
 msgid "Default"
@@ -197,7 +197,7 @@ msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
 "Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
-msgstr ""
+msgstr "Een sjabloon invoeren om op te maken. Moet kommagescheiden tekenreeks opleveren. Gebruik Django's standaard sjabloon taal (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
 
 #: models.py:74 search.py:23
 msgid "Lookup"

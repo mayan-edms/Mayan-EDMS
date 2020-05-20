@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 00:41-0400\n"
+"POT-Creation-Date: 2020-05-20 02:45-0400\n"
 "PO-Revision-Date: 2020-04-19 04:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
@@ -40,19 +40,19 @@ msgstr ""
 msgid "Model reverse fields"
 msgstr ""
 
-#: dependencies.py:309
+#: dependencies.py:281
 msgid "Used to allow offline translation of the code text strings."
 msgstr ""
 
-#: dependencies.py:314
+#: dependencies.py:286
 msgid "Provides style checking."
 msgstr ""
 
-#: dependencies.py:319
+#: dependencies.py:291
 msgid "Command line environment with autocompletion."
 msgstr ""
 
-#: dependencies.py:324
+#: dependencies.py:296
 msgid "Checks proper formatting of the README file."
 msgstr ""
 

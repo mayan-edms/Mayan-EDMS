@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 00:41-0400\n"
+"POT-Creation-Date: 2020-05-20 02:45-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
@@ -36,11 +36,11 @@ msgstr ""
 msgid "Description"
 msgstr "Opis"
 
-#: apps.py:45 classes.py:153
+#: apps.py:45 classes.py:154
 msgid "Type"
 msgstr ""
 
-#: apps.py:49 classes.py:155
+#: apps.py:49 classes.py:156
 msgid "Other data"
 msgstr ""
 
@@ -48,144 +48,144 @@ msgstr ""
 msgid "Declared by"
 msgstr ""
 
-#: apps.py:57 classes.py:153
+#: apps.py:57 classes.py:154
 msgid "Version"
 msgstr "Različica"
 
-#: apps.py:61 classes.py:154 classes.py:783
+#: apps.py:61 classes.py:155 classes.py:802
 msgid "Environment"
 msgstr ""
 
-#: apps.py:64 classes.py:155
+#: apps.py:64 classes.py:156
 msgid "Check"
 msgstr ""
 
-#: classes.py:153
+#: classes.py:154
 msgid "Name"
 msgstr "Ime"
 
-#: classes.py:154
+#: classes.py:155
 msgid "App"
 msgstr ""
 
-#: classes.py:269
+#: classes.py:270
 msgid "Need to specify at least one: app_label or module."
 msgstr ""
 
-#: classes.py:274
+#: classes.py:275
 #, python-format
 msgid "Dependency \"%s\" already registered."
 msgstr ""
 
-#: classes.py:300
+#: classes.py:301
 #, python-format
 msgid "Installing package: %s... "
 msgstr ""
 
-#: classes.py:305
+#: classes.py:306
 msgid "Already installed."
 msgstr ""
 
-#: classes.py:308 classes.py:313 classes.py:317
+#: classes.py:309 classes.py:314 classes.py:318
 msgid "Complete."
 msgstr ""
 
-#: classes.py:343
+#: classes.py:344
 msgid "Installed and correct version"
 msgstr ""
 
-#: classes.py:345
+#: classes.py:346
 msgid "Missing or incorrect version"
 msgstr ""
 
-#: classes.py:374
+#: classes.py:375
 msgid "None"
 msgstr "Brez"
 
-#: classes.py:383
+#: classes.py:384
 msgid "Not specified"
 msgstr ""
 
-#: classes.py:386
+#: classes.py:387
 msgid "Patching files... "
 msgstr ""
 
-#: classes.py:414
+#: classes.py:415
 msgid "Executables that are called directly by the code."
 msgstr ""
 
-#: classes.py:416
+#: classes.py:417
 msgid "Binary"
 msgstr ""
 
-#: classes.py:433
+#: classes.py:434
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
 msgstr ""
 
-#: classes.py:436
+#: classes.py:437
 msgid "JavaScript"
 msgstr ""
 
-#: classes.py:470 classes.py:703
+#: classes.py:471 classes.py:722
 msgid "Downloading... "
 msgstr ""
 
-#: classes.py:473
+#: classes.py:474
 msgid "Verifying... "
 msgstr ""
 
-#: classes.py:476 classes.py:706
+#: classes.py:477 classes.py:725
 msgid "Extracting... "
 msgstr ""
 
-#: classes.py:655
+#: classes.py:664
 msgid "Python packages downloaded from PyPI."
 msgstr ""
 
-#: classes.py:657
+#: classes.py:666
 msgid "Python"
 msgstr ""
 
-#: classes.py:684
+#: classes.py:703
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr ""
 
-#: classes.py:686
+#: classes.py:705
 msgid "Google font"
 msgstr ""
 
-#: classes.py:765
+#: classes.py:784
 msgid "Declared in app"
 msgstr ""
 
-#: classes.py:766
+#: classes.py:785
 msgid "Show dependencies by the app that declared them."
 msgstr ""
 
-#: classes.py:770
+#: classes.py:789
 msgid "Class"
 msgstr "Razred"
 
-#: classes.py:771
+#: classes.py:790
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
 
-#: classes.py:776
+#: classes.py:795
 msgid "State"
 msgstr ""
 
-#: classes.py:777
+#: classes.py:796
 msgid ""
 "Show the different states of the dependencies. True means that the "
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
 
-#: classes.py:784
+#: classes.py:803
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
