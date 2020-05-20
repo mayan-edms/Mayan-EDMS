@@ -1,6 +1,7 @@
 3.4.8 (2020-XX-XX)
 ==================
 - Move django-qsstats-magic to the mayan_statistics app.
+- Expose Django's ``AUTHENTICATION_BACKENDS`` setting.
 
 3.4.7 (2020-04-28)
 ==================
