@@ -262,7 +262,7 @@ PythonDependency(
 
 PythonDependency(
     module=__name__, environment=environment_development, name='Werkzeug',
-    version_string='==1.0.0'
+    version_string='==1.0.1'
 )
 PythonDependency(
     module=__name__, environment=environment_development, name='devpi-server',
