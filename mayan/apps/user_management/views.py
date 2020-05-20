@@ -1,9 +1,6 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ungettext, ugettext_lazy as _
@@ -13,6 +10,7 @@ from mayan.apps.common.generics import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
     SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.common.mixins import ExternalObjectMixin
 
 from .forms import UserForm
 from .icons import icon_group_setup, icon_user_setup
@@ -68,14 +66,15 @@ class GroupCreateView(SingleObjectCreateView):
 class GroupDeleteView(SingleObjectDeleteView):
     model = Group
     object_permission = permission_group_delete
+    pk_url_kwarg = 'group_id'
     post_action_redirect = reverse_lazy(
         viewname='user_management:group_list'
     )
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Delete the group: %s?') % self.get_object(),
+            'object': self.object,
+            'title': _('Delete the group: %s?') % self.object,
         }
 
 
@@ -83,14 +82,15 @@ class GroupEditView(SingleObjectEditView):
     fields = ('name',)
     model = Group
     object_permission = permission_group_edit
+    pk_url_kwarg = 'group_id'
     post_action_redirect = reverse_lazy(
         viewname='user_management:group_list'
     )
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit group: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Edit group: %s') % self.object,
         }
 
     def get_save_extra_data(self):
@@ -126,7 +126,7 @@ class GroupUsersView(AddRemoveView):
     main_object_method_remove = 'users_remove'
     main_object_model = Group
     main_object_permission = permission_group_edit
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'group_id'
     secondary_object_permission = permission_user_edit
     secondary_object_source_queryset = get_user_queryset()
     list_available_title = _('Available users')
@@ -158,8 +158,9 @@ class UserCreateView(SingleObjectCreateView):
         super(UserCreateView, self).form_valid(form=form)
         return HttpResponseRedirect(
             reverse(
-                viewname='authentication:user_set_password',
-                kwargs={'pk': self.object.pk}
+                viewname='authentication:user_set_password', kwargs={
+                    'user_id': self.object.pk
+                }
             )
         )
 
@@ -169,6 +170,7 @@ class UserCreateView(SingleObjectCreateView):
 
 class UserDeleteView(MultipleObjectConfirmActionView):
     object_permission = permission_user_delete
+    pk_url_kwarg = 'user_id'
     source_queryset = get_user_queryset()
     success_message = _('User delete request performed on %(count)d user')
     success_message_plural = _(
@@ -227,19 +229,20 @@ class UserDetailsView(SingleObjectDetailView):
         'date_joined', 'groups',
     )
     object_permission = permission_user_view
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'user_id'
     source_queryset = get_user_queryset()
 
     def get_extra_context(self, **kwargs):
         return {
-            'object': self.get_object(),
-            'title': _('Details of user: %s') % self.get_object()
+            'object': self.object,
+            'title': _('Details of user: %s') % self.object
         }
 
 
 class UserEditView(SingleObjectEditView):
     fields = ('username', 'first_name', 'last_name', 'email', 'is_active',)
     object_permission = permission_user_edit
+    pk_url_kwarg = 'user_id'
     post_action_redirect = reverse_lazy(
         viewname='user_management:user_list'
     )
@@ -247,8 +250,8 @@ class UserEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit user: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Edit user: %s') % self.object,
         }
 
     def get_save_extra_data(self):
@@ -260,7 +263,7 @@ class UserGroupsView(AddRemoveView):
     main_object_method_remove = 'groups_remove'
     main_object_permission = permission_user_edit
     main_object_source_queryset = get_user_queryset()
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'user_id'
     secondary_object_model = Group
     secondary_object_permission = permission_group_edit
     list_available_title = _('Available groups')
@@ -306,25 +309,24 @@ class UserListView(SingleObjectListView):
         return get_user_queryset()
 
 
-class UserOptionsEditView(SingleObjectEditView):
+class UserOptionsEditView(ExternalObjectMixin, SingleObjectEditView):
+    external_object_permission = permission_user_edit
+    external_object_pk_url_kwarg = 'user_id'
     fields = ('block_password_change',)
-    object_permission = permission_user_edit
+
+    def get_external_object_queryset(self):
+        return get_user_queryset()
 
     def get_extra_context(self):
         return {
             'title': _(
                 'Edit options for user: %s'
-            ) % self.get_user(),
-            'object': self.get_user()
+            ) % self.external_object,
+            'object': self.external_object
         }
 
-    def get_object(self, queryset=None):
-        return self.get_user().user_options
+    def get_object(self):
+        return self.external_object.user_options
 
     def get_post_action_redirect(self):
         return reverse(viewname='user_management:user_list')
-
-    def get_user(self):
-        return get_object_or_404(
-            klass=get_user_queryset(), pk=self.kwargs['pk']
-        )

@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.contrib import messages
@@ -198,8 +196,8 @@ class TagEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit tag: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Edit tag: %s') % self.object,
         }
 
     def get_save_extra_data(self):
@@ -281,7 +279,7 @@ class DocumentTagListView(ExternalObjectMixin, TagListView):
     def get_source_queryset(self):
         return self.external_object.get_tags(
             permission=permission_tag_view, user=self.request.user
-        ).all()
+        )
 
 
 class TagRemoveActionView(MultipleObjectFormActionView):

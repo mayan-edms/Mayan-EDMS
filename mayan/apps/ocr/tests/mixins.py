@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 
 class DocumentOCRViewTestMixin(object):
     def _request_document_content_view(self):

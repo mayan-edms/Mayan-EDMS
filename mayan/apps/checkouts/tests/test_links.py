@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.documents.permissions import permission_document_new_version
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.sources.links import link_document_version_upload

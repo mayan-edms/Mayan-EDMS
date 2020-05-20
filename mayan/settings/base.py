@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import os
 import sys
 
@@ -238,7 +236,7 @@ STATIC_ROOT = os.environ.get(
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'mayan.apps.common.finders.MayanAppDirectoriesFinder',
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -291,7 +289,7 @@ TIMEZONE_SESSION_KEY = 'django_timezone'
 
 # ----- Stronghold -------
 
-STRONGHOLD_PUBLIC_URLS = (r'^/docs/.+$', r'^/favicon\.ico$')
+STRONGHOLD_PUBLIC_URLS = (r'^/favicon\.ico$',)
 
 # ----- Swagger --------
 
@@ -304,6 +302,8 @@ SWAGGER_SETTINGS = {
 # ----- AJAX REDIRECT -----
 
 AJAX_REDIRECT_CODE = 278
+
+# ------ End -----
 
 BASE_INSTALLED_APPS = INSTALLED_APPS
 

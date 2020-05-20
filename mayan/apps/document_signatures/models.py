@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 import uuid
 
@@ -13,9 +11,10 @@ from model_utils.managers import InheritanceManager
 from mayan.apps.django_gpg.exceptions import VerificationError
 from mayan.apps.django_gpg.models import Key
 from mayan.apps.documents.models import DocumentVersion
+from mayan.apps.storage.classes import DefinedStorageLazy
 
+from .literals import STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE
 from .managers import DetachedSignatureManager, EmbeddedSignatureManager
-from .storages import storage_detachedsignature
 
 logger = logging.getLogger(name=__name__)
 
@@ -69,8 +68,8 @@ class SignatureBaseModel(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='document_signatures:document_version_signature_detail',
-            kwargs={'pk': self.pk}
+            viewname='signatures:document_version_signature_details',
+            kwargs={'signature_id': self.pk}
         )
 
     def get_key_id(self):
@@ -133,8 +132,9 @@ class DetachedSignature(SignatureBaseModel):
     signature_file = models.FileField(
         blank=True, help_text=_(
             'Signature file previously generated.'
-        ), null=True, storage=storage_detachedsignature,
-        upload_to=upload_to, verbose_name=_('Signature file')
+        ), null=True, storage=DefinedStorageLazy(
+            name=STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE
+        ), upload_to=upload_to, verbose_name=_('Signature file')
     )
 
     objects = DetachedSignatureManager()

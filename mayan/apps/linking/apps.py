@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
@@ -66,6 +64,9 @@ class LinkingApp(MayanAppConfig):
                 permission_smart_link_delete, permission_smart_link_edit,
                 permission_smart_link_view
             )
+        )
+        ModelPermission.register_inheritance(
+            model=SmartLinkCondition, related='smart_link',
         )
 
         SourceColumn(

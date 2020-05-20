@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,6 +12,7 @@ from .permissions import permission_template_sandbox
 class TemplatingApp(MayanAppConfig):
     app_namespace = 'templating'
     app_url = 'templating'
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.templating'
     verbose_name = _('Templating')

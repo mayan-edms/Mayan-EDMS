@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.apps import apps
@@ -19,6 +17,7 @@ class RedactionsApp(MayanAppConfig):
     app_namespace = 'redactions'
     app_url = 'redactions'
     has_rest_api = False
+    has_static_media = True
     has_tests = False
     name = 'mayan.apps.redactions'
     verbose_name = _('Redactions')

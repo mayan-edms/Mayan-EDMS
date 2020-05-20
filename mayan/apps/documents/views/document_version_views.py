@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.contrib import messages
@@ -97,16 +95,13 @@ class DocumentVersionRevertView(ExternalObjectMixin, ConfirmView):
             'message': _(
                 'All later version after this one will be deleted too.'
             ),
-            'object': self.get_object().document,
+            'object': self.external_object.document,
             'title': _('Revert to this version?'),
         }
 
-    def get_object(self):
-        return self.external_object
-
     def view_action(self):
         try:
-            self.get_object().revert(_user=self.request.user)
+            self.external_object.revert(_user=self.request.user)
             messages.success(
                 message=_(
                     'Document version reverted successfully'
@@ -129,11 +124,11 @@ class DocumentVersionView(SingleObjectDetailView):
         result = super(
             DocumentVersionView, self
         ).dispatch(request, *args, **kwargs)
-        self.get_object().document.add_as_recent_document_for_user(
+        self.object.document.add_as_recent_document_for_user(
             request.user
         )
         event_document_view.commit(
-            actor=request.user, target=self.get_object().document
+            actor=request.user, target=self.object.document
         )
 
         return result
@@ -141,6 +136,6 @@ class DocumentVersionView(SingleObjectDetailView):
     def get_extra_context(self):
         return {
             'hide_labels': True,
-            'object': self.get_object(),
-            'title': _('Preview of document version: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Preview of document version: %s') % self.object,
         }

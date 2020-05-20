@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from mayan.apps.appearance.classes import Icon
 from mayan.apps.permissions.icons import icon_permission
 

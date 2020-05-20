@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.dependencies.classes import (
@@ -41,7 +39,7 @@ PythonDependency(
         ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django', version_string='==2.2.10'
+    ''', module=__name__, name='django', version_string='==2.2.12'
 )
 PythonDependency(
     copyright_text='''
@@ -64,7 +62,7 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
         SOFTWARE.
-    ''', module=__name__, name='PyYAML', version_string='==5.3'
+    ''', module=__name__, name='PyYAML', version_string='==5.3.1'
 )
 PythonDependency(
     module=__name__, name='django-formtools', version_string='==2.2'
@@ -184,7 +182,7 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
         THE SOFTWARE.
-    ''', module=__name__, name='django-widget-tweaks', version_string='==1.4.5'
+    ''', module=__name__, name='django-widget-tweaks', version_string='==1.4.8'
 )
 PythonDependency(
     module=__name__, name='furl', version_string='==2.1.0'
@@ -200,7 +198,7 @@ PythonDependency(
     module=__name__, name='gunicorn', version_string='==20.0.4'
 )
 PythonDependency(
-    module=__name__, name='mock', version_string='==4.0.1'
+    module=__name__, name='mock', version_string='==4.0.2'
 )
 PythonDependency(
     copyright_text='''
@@ -232,7 +230,7 @@ PythonDependency(
     ''', module=__name__, name='pytz', version_string='==2019.3'
 )
 PythonDependency(
-    module=__name__, name='requests', version_string='==2.22.0'
+    module=__name__, name='requests', version_string='==2.23.0'
 )
 PythonDependency(
     copyright_text='''
@@ -269,7 +267,7 @@ PythonDependency(
 )
 PythonDependency(
     module=__name__, environment=environment_development, name='devpi-server',
-    version_string='==5.4.0'
+    version_string='==5.4.1'
 )
 PythonDependency(
     environment=environment_development, module=__name__,
@@ -292,7 +290,7 @@ PythonDependency(
 PythonDependency(
     environment=environment_development, help_text=_(
         'Command line environment with autocompletion.'
-    ), module=__name__, name='ipython', version_string='==7.12.0'
+    ), module=__name__, name='ipython', version_string='==7.13.0'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
@@ -301,11 +299,11 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_development,
-    module=__name__, name='safety', version_string='==1.8.5'
+    module=__name__, name='safety', version_string='==1.8.7'
 )
 PythonDependency(
     environment=environment_development,
-    module=__name__, name='transifex-client', version_string='==0.13.7'
+    module=__name__, name='transifex-client', version_string='==0.13.8'
 )
 
 # Testing
@@ -317,7 +315,7 @@ BinaryDependency(
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='coverage',
-    version_string='==5.0.3'
+    version_string='==5.0.4'
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='coveralls',
@@ -325,7 +323,7 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_testing, module=__name__,
-    name='django-test-migrations', version_string='==0.1.0'
+    name='django-test-migrations', version_string='==0.2.0'
 )
 PythonDependency(
     environment=environment_testing,
@@ -342,7 +340,7 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='psutil',
-    version_string='==5.6.7'
+    version_string='==5.7.0'
 )
 
 # Build
@@ -360,7 +358,7 @@ PythonDependency(
 
 PythonDependency(
     environment=environment_documentation, module=__name__, name='Sphinx',
-    version_string='==2.4.1'
+    version_string='==2.4.4'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
@@ -370,7 +368,7 @@ PythonDependency(
 PythonDependency(
     environment=environment_documentation, module=__name__,
     name='sphinx-sitemap',
-    version_string='==1.1.0'
+    version_string='==2.1.0'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
@@ -391,5 +389,5 @@ PythonDependency(
 # but Tornado 6.0 dropped support for Python 2.7
 PythonDependency(
     environment=environment_documentation, module=__name__, name='tornado',
-    version_string='==6.0.3'
+    version_string='==6.0.4'
 )

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import uuid
 
 import django.core.files.storage
@@ -8,7 +6,6 @@ from django.utils.encoding import force_text
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0042_auto_20180403_0702'),
     ]

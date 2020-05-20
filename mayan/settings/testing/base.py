@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from .. import *  # NOQA
 
 CELERY_TASK_ALWAYS_EAGER = True
@@ -56,3 +54,5 @@ TEMPLATES[0]['OPTIONS']['loaders'] = (  # NOQA: F405
         )
     ),
 )
+
+TESTING = True  # Silence the error logger for non critical HTTP404 and PermissionDenied

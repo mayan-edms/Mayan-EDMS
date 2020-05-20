@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import requests
 
 from django.utils.six import BytesIO

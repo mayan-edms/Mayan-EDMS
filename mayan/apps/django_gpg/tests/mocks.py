@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from .literals import TEST_RECEIVE_KEY, TEST_SEARCH_FINGERPRINT
 
 MOCK_SEARCH_KEYS_RESPONSE = [

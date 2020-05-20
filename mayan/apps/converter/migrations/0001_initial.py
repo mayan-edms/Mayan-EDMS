@@ -1,12 +1,9 @@
-from __future__ import unicode_literals
-
 from django.db import models, migrations
 
 import mayan.apps.converter.models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('contenttypes', '0001_initial'),
     ]

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.conf import settings
@@ -57,7 +55,9 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='comments:comment_details', kwargs={'pk': self.pk}
+            viewname='comments:comment_details', kwargs={
+                'comment_id': self.pk
+            }
         )
 
     def get_user_label(self):

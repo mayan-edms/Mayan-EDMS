@@ -5,16 +5,18 @@
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
+# Florian Merges, 2020
+# Florian Merges, 2020
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # Jesaja Everling <jeverling@gmail.com>, 2017
 # Marvin Haschker <marvin@haschker.me>, 2019
-# Mathias Behrle <mathiasb@m9s.biz>, 2018
+# Mathias Behrle <mathiasb@m9s.biz>, 2018,2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:37-0400\n"
-"PO-Revision-Date: 2020-02-21 05:39+0000\n"
+"POT-Creation-Date: 2020-05-11 00:40-0400\n"
+"PO-Revision-Date: 2020-04-08 04:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -23,93 +25,135 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:11 settings.py:7
 msgid "Appearance"
 msgstr "Erscheinungsbild"
 
-#: dependencies.py:10
+#: dependencies.py:8
 msgid "Lato font"
 msgstr "Lato-Schriftart"
 
-#: dependencies.py:14
+#: dependencies.py:12
 msgid "Bootstrap"
 msgstr "Bootstrap"
 
-#: dependencies.py:18
+#: dependencies.py:16
 msgid "Bootswatch"
 msgstr "Bootswatch"
 
-#: dependencies.py:32
+#: dependencies.py:30
 msgid "Fancybox"
 msgstr "Fancybox"
 
-#: dependencies.py:36
+#: dependencies.py:34
 msgid "FontAwesome"
 msgstr "FontAwesome"
 
-#: dependencies.py:40
+#: dependencies.py:38
 msgid "jQuery"
 msgstr "jQuery"
 
-#: dependencies.py:43
+#: dependencies.py:41
 msgid "JQuery Form"
 msgstr "JQuery Form"
 
-#: dependencies.py:47
+#: dependencies.py:45
 msgid "jQuery Lazy Load"
 msgstr "jQuery Lazy Load"
 
-#: dependencies.py:51
+#: dependencies.py:49
 msgid "JQuery Match Height"
 msgstr "JQuery Match Height"
 
-#: dependencies.py:55
+#: dependencies.py:53
 msgid "Select 2"
 msgstr "Select 2"
 
-#: dependencies.py:59
+#: dependencies.py:57
 msgid "Toastr"
 msgstr "Toastr"
 
-#: dependencies.py:62
+#: dependencies.py:60
 msgid "URI.js"
 msgstr "URI.js"
 
-#: settings.py:14
+#: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Maximale Anzahl der Zeichen, die als Titel einer Ansicht angezeigt werden."
 
-#: settings.py:21
+#: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr "Position, an der die Systemmeldung angezeigt wird. Optionen sind: top-left, top-center, top-right, bottom-left, bottom-center, bottom-right."
+msgstr "Position, an der die Systemmeldung angezeigt wird. Optionen sind: top-left (oben links), top-center (oben mittig), top-right (oben rechts), bottom-left (unten links), bottom-center (unten mittig), bottom-right (unten rechts)."
 
-#: templates/403.html:5 templates/403.html:9
-msgid "Insufficient permissions"
-msgstr "Unzureichende Berechtigungen"
+#: templates/403.html:5 templates/403.html:30
+msgid "Insufficient permission"
+msgstr ""
 
-#: templates/403.html:11
+#: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
 msgstr "Sie haben unzureichende Berechtigungen für diesen Vorgang."
 
-#: templates/404.html:5 templates/404.html:9
+#: templates/404.html:5 templates/404.html:30
 msgid "Page not found"
 msgstr "Seite nicht gefunden"
 
-#: templates/404.html:11
-msgid "Sorry, but the requested page could not be found."
-msgstr "Die angeforderte Seite konnte leider nicht gefunden werden"
+#: templates/404.html:32
+msgid "The requested page could not be found."
+msgstr ""
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:56
+#: templates/404.html:40
+msgid "Possible reasons"
+msgstr ""
+
+#: templates/404.html:44
+msgid "The location of the item is incorrect."
+msgstr ""
+
+#: templates/404.html:45
+msgid "The location is correct, but the item no longer exists."
+msgstr ""
+
+#: templates/404.html:46
+msgid ""
+"The location is be correct, but your account does not have the required "
+"permission to access it."
+msgstr ""
+
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Serverfehler"
 
-#: templates/500.html:11
-msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Es kam zu einem Fehler. Der Fehler wurde per E-Mail and die Administratoren gemeldet und sollte bald behoben werden. Vielen Dank für Ihre Geduld."
+#: templates/500.html:32
+msgid "There's been an unexpected error."
+msgstr ""
+
+#: templates/500.html:40
+msgid "What to do next?"
+msgstr ""
+
+#: templates/500.html:44
+msgid "Refresh the page."
+msgstr ""
+
+#: templates/500.html:45
+msgid "Wait a bit. The system might be overloaded."
+msgstr ""
+
+#: templates/500.html:46
+msgid "Contact your system administrator."
+msgstr ""
+
+#: templates/500.html:47
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr ""
+
+#: templates/500.html:48
+#, python-format
+msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
+msgstr ""
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -150,7 +194,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr ""
+msgstr "\nEs macht viel Arbeit %(project_title)s mit so vielen Funktionen zu gestalten."
 
 #: templates/appearance/about.html:111
 #, python-format
@@ -158,7 +202,7 @@ msgid ""
 "\n"
 "                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\nWenn Sie %(project_title)s benutzen, machen Sie bitte eine <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">Spende %(icon_social_paypal)s </a>"
 
 #: templates/appearance/about.html:117
 #, python-format
@@ -174,7 +218,7 @@ msgid ""
 "\n"
 "                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nBei Fragen schauen Sie bitte zunächst in die <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Dokumentation %(icon_documentation)s</a>.\n "
 
 #: templates/appearance/about.html:129
 #, python-format
@@ -190,28 +234,40 @@ msgid ""
 "\n"
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr ""
+msgstr "\nGeben Sie den Tipp weiter. Erzählen Sie Ihren Freunden und Kollegen, wie toll %(project_title)s ist!"
 
-#: templates/appearance/base.html:35 templates/appearance/base.html:59
+#: templates/appearance/base.html:38 templates/appearance/base.html:62
 msgid "Warning"
 msgstr "Warnung"
 
-#: templates/appearance/base.html:49
+#: templates/appearance/base.html:52
 msgid "Click here to fix this."
 msgstr "Klicken Sie hier, um dies zu beheben."
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:62
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr "Einstellungen aktualisiert, starten Sie Ihre Installation neu und aktualisieren Sie Ihren Browser, damit die Änderungen wirksam werden."
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:70
+#, python-format
+msgid ""
+"\n"
+"                                        Impersonating user \"%(user)s\".\n"
+"                                    "
+msgstr ""
+
+#: templates/appearance/base.html:73
+msgid "Click here when finished"
+msgstr ""
+
+#: templates/appearance/base.html:87
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Aktionen"
 
-#: templates/appearance/base.html:74
+#: templates/appearance/base.html:89
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -286,14 +342,18 @@ msgstr "Gesamt (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von %(
 msgid "Total: %(total)s"
 msgstr "Gesamt: %(total)s"
 
-#: templates/appearance/list_toolbar.html:16
+#: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Alle auswählen/abwählen"
+
+#: templates/appearance/list_toolbar.html:17
+msgid "Toggle list display mode"
+msgstr ""
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr "Wählen Sie Elemente aus, um Massenaktionen zu aktivieren. Verwenden Sie die Umschalttaste + Klick, um viele auszuwählen."
+msgstr "Wählen Sie Elemente aus, um Massenaktionen zu aktivieren. Verwenden Sie die Umschalttaste + Klick, um mehrere auszuwählen."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
@@ -307,18 +367,18 @@ msgstr "Navigation ein-/ausschalten"
 msgid "No results"
 msgstr "Kein Ergebnis"
 
-#: templates/appearance/root.html:61
+#: templates/appearance/root.html:63
 msgid "Close"
 msgstr "Schließen"
 
-#: templates/appearance/root.html:71
+#: templates/appearance/root.html:73
 msgid "Server communication error"
 msgstr "Fehler bei der Verbindung zum Server"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
 msgstr "Prüfen Sie Ihre Netzwerkeinstellungen und versuchen Sie es nochmals."
 
-#: templatetags/appearance_tags.py:17
+#: templatetags/appearance_tags.py:42
 msgid "None"
 msgstr "Keine"

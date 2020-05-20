@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -48,16 +46,7 @@ class FileCachingConfig(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='label', is_identifier=True, is_sortable=True,
-            source=Cache
-        )
-        SourceColumn(
-            attribute='name', include_label=True, is_sortable=True,
-            source=Cache
-        )
-        SourceColumn(
-            attribute='storage_instance_path', include_label=True,
-            is_sortable=True, source=Cache
+            attribute='label', is_identifier=True, source=Cache
         )
         SourceColumn(
             attribute='get_maximum_size_display', include_label=True,

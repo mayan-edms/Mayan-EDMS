@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
@@ -45,7 +43,7 @@ def is_document_page_disabled(context):
 link_document_page_disable = Link(
     condition=is_document_page_enabled,
     icon_class_path='mayan.apps.documents.icons.icon_document_page_disable',
-    kwargs={'pk': 'resolved_object.id'},
+    kwargs={'document_page_id': 'resolved_object.id'},
     permissions=(permission_document_edit,), text=_('Disable page'),
     view='documents:document_page_disable'
 )
@@ -57,7 +55,7 @@ link_document_page_multiple_disable = Link(
 link_document_page_enable = Link(
     condition=is_document_page_disabled,
     icon_class_path='mayan.apps.documents.icons.icon_document_page_enable',
-    kwargs={'pk': 'resolved_object.id'},
+    kwargs={'document_page_id': 'resolved_object.id'},
     permissions=(permission_document_edit,), text=_('Enable page'),
     view='documents:document_page_enable'
 )

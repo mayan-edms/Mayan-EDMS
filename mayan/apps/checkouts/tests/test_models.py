@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import time
 
 from mayan.apps.common.tests.base import BaseTestCase
@@ -65,6 +63,11 @@ class DocumentCheckoutTestCase(
         DocumentCheckout.objects.check_in_expired_check_outs()
 
         self.assertFalse(self.test_document.is_checked_out())
+
+    def test_method_get_absolute_url(self):
+        self._check_out_test_document()
+
+        self.assertTrue(self.test_check_out.get_absolute_url())
 
 
 class NewVersionBlockTestCase(

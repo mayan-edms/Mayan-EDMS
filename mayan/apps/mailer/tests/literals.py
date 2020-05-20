@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 TEST_EMAIL_ADDRESS = 'test@example.com'
 TEST_EMAIL_BODY = 'test body'
 TEST_EMAIL_BODY_HTML = '<strong>test body</strong>'

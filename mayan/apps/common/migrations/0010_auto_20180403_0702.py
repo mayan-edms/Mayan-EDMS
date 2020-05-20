@@ -1,12 +1,9 @@
-from __future__ import unicode_literals
-
 import mayan.apps.common.models
 import django.core.files.storage
 from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('common', '0009_auto_20180402_0339'),
     ]

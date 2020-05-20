@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.apps import apps
 from django.db.models.signals import post_delete, post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
@@ -44,6 +42,7 @@ from .permissions import (
     permission_document_indexing_instance_view,
     permission_document_indexing_rebuild, permission_document_indexing_view
 )
+from .search import *  # NOQA
 
 
 class DocumentIndexingApp(MayanAppConfig):
@@ -73,6 +72,9 @@ class DocumentIndexingApp(MayanAppConfig):
         Index = self.get_model(model_name='Index')
         IndexInstance = self.get_model(model_name='IndexInstance')
         IndexInstanceNode = self.get_model(model_name='IndexInstanceNode')
+        IndexInstanceNodeSearchResult = self.get_model(
+            model_name='IndexInstanceNodeSearchResult'
+        )
         IndexTemplateNode = self.get_model(model_name='IndexTemplateNode')
 
         ModelEventType.register(
@@ -164,6 +166,22 @@ class DocumentIndexingApp(MayanAppConfig):
                 user=context['request'].user
             ), include_label=True, label=_('Documents'),
             source=IndexInstanceNode
+        )
+        SourceColumn(
+            func=lambda context: context[
+                'object'
+            ].get_descendants_document_count(
+                user=context['request'].user
+            ), include_label=True, label=_('Documents'),
+            source=IndexInstanceNode
+        )
+        SourceColumn(
+            func=lambda context: index_instance_item_link(context['object']),
+            is_identifier=True, is_sortable=True, label=_('Level'),
+            sort_field='value', source=IndexInstanceNodeSearchResult
+        )
+        SourceColumn(
+            attribute='get_full_path', source=IndexInstanceNodeSearchResult
         )
 
         SourceColumn(

@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.apps import apps
@@ -61,6 +59,7 @@ class MetadataApp(MayanAppConfig):
     app_namespace = 'metadata'
     app_url = 'metadata'
     has_rest_api = True
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.metadata'
     verbose_name = _('Metadata')

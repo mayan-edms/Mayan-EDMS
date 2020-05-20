@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations
 
 
@@ -18,7 +16,6 @@ def operation_move_from_content_type_user_to_foreign_key_field_user(apps, schema
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('checkouts', '0002_documentcheckout_user'),
     ]

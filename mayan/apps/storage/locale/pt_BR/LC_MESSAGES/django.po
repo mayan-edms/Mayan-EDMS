@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:42-0400\n"
-"PO-Revision-Date: 2019-12-26 17:53+0000\n"
+"POT-Creation-Date: 2020-05-11 00:43-0400\n"
+"PO-Revision-Date: 2020-03-28 12:41+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +19,41 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:10 settings.py:9
+#: apps.py:11 settings.py:7
 msgid "Storage"
 msgstr "Armazenamento"
 
-#: settings.py:14
+#: classes.py:81 classes.py:102
+#, python-format
+msgid ""
+"Unable to initialize storage: %(name)s. Check the storage backend dotted "
+"path and arguments."
+msgstr "Não foi possível iniciar o armazenamento: %(name)s. Verifique o caminho  e os argumentos do backend de armazenamento."
+
+#: management/commands/storage_process.py:13
+msgid "Name of the app to process."
+msgstr "Nome do aplicativo a ser processado."
+
+#: management/commands/storage_process.py:19
+msgid ""
+"Path of the database (.dbm) file that will be created/read to keep track of "
+"items processed."
+msgstr "Caminho do arquivo de banco de dados (.dbm) que será criado / lido para acompanhar os itens processados."
+
+#: management/commands/storage_process.py:26
+msgid "Process a specific model."
+msgstr "Processar um modelo específico."
+
+#: management/commands/storage_process.py:32
+msgid ""
+"Process the files in reverse to undo the storage pipeline transformations."
+msgstr "Processar os arquivos no sentido inverso para desfazer as transformações do pipeline de armazenamento."
+
+#: management/commands/storage_process.py:38
+msgid "Name of the storage to process."
+msgstr "Nome do armazenamento a processar."
+
+#: settings.py:12
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."

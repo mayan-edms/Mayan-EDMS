@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 QUERY_OPERATION_AND = 1
 QUERY_OPERATION_OR = 2
 

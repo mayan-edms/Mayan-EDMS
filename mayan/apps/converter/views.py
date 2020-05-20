@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.contrib import messages
@@ -14,31 +12,22 @@ from mayan.apps.common.generics import (
 )
 from mayan.apps.common.mixins import ExternalContentTypeObjectMixin
 
-from .classes import Layer
 from .forms import LayerTransformationForm, LayerTransformationSelectForm
 from .links import link_transformation_select
 from .models import LayerTransformation, ObjectLayer
 from .transformations import BaseTransformation
+from .view_mixins import LayerViewMixin
 
 logger = logging.getLogger(name=__name__)
-
-
-class LayerViewMixin(object):
-    def dispatch(self, request, *args, **kwargs):
-        self.layer = self.get_layer()
-        return super(LayerViewMixin, self).dispatch(
-            request=request, *args, **kwargs
-        )
-
-    def get_layer(self):
-        return Layer.get(
-            name=self.kwargs['layer_name']
-        )
 
 
 class TransformationCreateView(
     LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectCreateView
 ):
+    content_type_url_kw_args = {
+        'app_label': 'app_label',
+        'model_name': 'model_name'
+    }
     form_class = LayerTransformationForm
 
     def form_valid(self, form):
@@ -91,13 +80,13 @@ class TransformationCreateView(
         }
 
     def get_external_object_permission(self):
-        return self.layer.permissions.get('create', None)
+        return self.layer.get_permission(action='create')
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='converter:transformation_list', kwargs={
                 'app_label': self.kwargs['app_label'],
-                'model': self.kwargs['model'],
+                'model_name': self.kwargs['model_name'],
                 'object_id': self.kwargs['object_id'],
                 'layer_name': self.kwargs['layer_name']
             }
@@ -122,20 +111,14 @@ class TransformationCreateView(
 
 class TransformationDeleteView(LayerViewMixin, SingleObjectDeleteView):
     model = LayerTransformation
+    pk_url_kwarg = 'transformation_id'
 
     def get_extra_context(self):
         return {
             'content_object': self.object.object_layer.content_object,
             'layer_name': self.layer.name,
             'navigation_object_list': ('content_object', 'transformation'),
-            'previous': reverse(
-                viewname='converter:transformation_list', kwargs={
-                    'app_label': self.object.object_layer.content_type.app_label,
-                    'model': self.object.object_layer.content_type.model,
-                    'object_id': self.object.object_layer.object_id,
-                    'layer_name': self.object.object_layer.stored_layer.name
-                }
-            ),
+            'previous': self.get_post_action_redirect(),
             'title': _(
                 'Delete transformation "%(transformation)s" for: '
                 '%(content_object)s?'
@@ -147,13 +130,13 @@ class TransformationDeleteView(LayerViewMixin, SingleObjectDeleteView):
         }
 
     def get_object_permission(self):
-        return self.layer.permissions.get('delete', None)
+        return self.layer.get_permission(action='delete')
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='converter:transformation_list', kwargs={
                 'app_label': self.object.object_layer.content_type.app_label,
-                'model': self.object.object_layer.content_type.model,
+                'model_name': self.object.object_layer.content_type.model,
                 'object_id': self.object.object_layer.object_id,
                 'layer_name': self.object.object_layer.stored_layer.name
             }
@@ -163,6 +146,7 @@ class TransformationDeleteView(LayerViewMixin, SingleObjectDeleteView):
 class TransformationEditView(LayerViewMixin, SingleObjectEditView):
     form_class = LayerTransformationForm
     model = LayerTransformation
+    pk_url_kwarg = 'transformation_id'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -195,13 +179,13 @@ class TransformationEditView(LayerViewMixin, SingleObjectEditView):
         }
 
     def get_object_permission(self):
-        return self.layer.permissions.get('edit', None)
+        return self.layer.get_permission(action='edit')
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='converter:transformation_list', kwargs={
                 'app_label': self.object.object_layer.content_type.app_label,
-                'model': self.object.object_layer.content_type.model,
+                'model_name': self.object.object_layer.content_type.model,
                 'object_id': self.object.object_layer.object_id,
                 'layer_name': self.object.object_layer.stored_layer.name
             }
@@ -219,8 +203,13 @@ class TransformationEditView(LayerViewMixin, SingleObjectEditView):
 class TransformationListView(
     LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectListView
 ):
+    content_type_url_kw_args = {
+        'app_label': 'app_label',
+        'model_name': 'model_name'
+    }
+
     def get_external_object_permission(self):
-        return self.layer.permissions.get('view', None)
+        return self.layer.get_permission(action='view')
 
     def get_extra_context(self):
         return {
@@ -254,8 +243,12 @@ class TransformationListView(
 
 
 class TransformationSelectView(
-    ExternalContentTypeObjectMixin, LayerViewMixin, FormView
+    LayerViewMixin, ExternalContentTypeObjectMixin, FormView
 ):
+    content_type_url_kw_args = {
+        'app_label': 'app_label',
+        'model_name': 'model_name'
+    }
     form_class = LayerTransformationSelectForm
     template_name = 'appearance/generic_form.html'
 
@@ -269,7 +262,7 @@ class TransformationSelectView(
                     viewname='converter:transformation_create',
                     kwargs={
                         'app_label': self.kwargs['app_label'],
-                        'model': self.kwargs['model'],
+                        'model_name': self.kwargs['model_name'],
                         'object_id': self.kwargs['object_id'],
                         'layer_name': self.kwargs['layer_name'],
                         'transformation_name': form.cleaned_data[
@@ -298,12 +291,15 @@ class TransformationSelectView(
                 redirect_to=reverse(
                     viewname='converter:transformation_list', kwargs={
                         'app_label': self.kwargs['app_label'],
-                        'model': self.kwargs['model'],
+                        'model_name': self.kwargs['model_name'],
                         'object_id': self.kwargs['object_id'],
                         'layer_name': self.kwargs['layer_name']
                     }
                 )
             )
+
+    def get_external_object_permission(self):
+        return self.layer.get_permission(action='select')
 
     def get_extra_context(self):
         return {

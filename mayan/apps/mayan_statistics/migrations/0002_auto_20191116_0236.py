@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 
 
@@ -26,7 +24,6 @@ def operation_rename_duplicates(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('mayan_statistics', '0001_initial'),
     ]

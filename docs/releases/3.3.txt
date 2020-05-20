@@ -257,7 +257,7 @@ Sources
 ^^^^^^^
 
 The IMAP source was updated to work using message UIDs instead of message index.
-This makes the IMAP email source for resilient and its email processing order
+This makes the IMAP email source more resilient and its email processing order
 predictable.
 
 Support was also added for custom IMAP search criteria. By default ``NOT DELETED``

@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.core.exceptions import PermissionDenied
 from django.db import models
 
@@ -164,6 +162,12 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
             user=self._test_case_user,
         )
         self.assertTrue(self.test_object_child in result)
+
+    def test_method_get_absolute_url(self):
+        self._setup_test_object()
+        self._create_test_acl()
+
+        self.assertTrue(self.test_acl.get_absolute_url())
 
 
 class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):

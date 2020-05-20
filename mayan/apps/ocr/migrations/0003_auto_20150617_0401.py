@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations
 
 
@@ -19,7 +17,6 @@ def operation_move_content_from_documents_to_ocr_app(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('ocr', '0002_documentpagecontent'),
     ]

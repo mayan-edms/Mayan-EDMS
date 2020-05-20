@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
@@ -111,7 +109,7 @@ class DocumentPageOCRContentView(SingleObjectDetailView):
         result = super(DocumentPageOCRContentView, self).dispatch(
             request, *args, **kwargs
         )
-        self.get_object().document.add_as_recent_document_for_user(
+        self.object.document.add_as_recent_document_for_user(
             user=request.user
         )
         return result
@@ -119,8 +117,8 @@ class DocumentPageOCRContentView(SingleObjectDetailView):
     def get_extra_context(self):
         return {
             'hide_labels': True,
-            'object': self.get_object(),
-            'title': _('OCR result for document page: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('OCR result for document page: %s') % self.object,
         }
 
 

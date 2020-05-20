@@ -56,49 +56,49 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-django==1.11.28
-Pillow==6.2.2
+django==2.2.12
+Pillow==7.0.0
 PyPDF2==1.26.0
-PyYAML==5.1.2
+PyYAML==5.3.1
 celery==4.3.0
-django-activity-stream==0.7.0
+django-activity-stream==0.8.0
 django-celery-beat==1.5.0
 django-colorful==1.3
 django-cors-headers==2.5.2
-django-formtools==2.1
-django-mathfilters==0.4.0
-django-model-utils==3.1.2
-django-mptt==0.9.1
+django-formtools==2.2
+django-mathfilters==1.0.0
+django-model-utils==4.0.0
+django-mptt==0.11.0
 django-pure-pagination==0.3.0
-django-qsstats-magic==1.0.0
+django-qsstats-magic==1.1.0
 django-solo==1.1.3
-django-stronghold==0.3.0
-django-timezone-field==3.1
-django-widget-tweaks==1.4.5
+django-stronghold==0.4.0
+django-widget-tweaks==1.4.8
 djangorestframework==3.7.7
 djangorestframework-recursive==0.1.2
 drf-yasg==1.6.0
-flanker==0.9.0
+extract-msg==0.23.3
+flanker==0.9.11
 flex==6.14.0
-furl==2.0.0
+furl==2.1.0
 fusepy==3.0.1
 gevent==1.4.0
-graphviz==0.10.1
-gunicorn==19.9.0
+graphviz==0.13.2
+gunicorn==20.0.4
 kombu==4.6.7
-mock==2.0.0
-node-semver==0.6.1
-pathlib2==2.3.5
-pycountry==18.12.8
+mock==4.0.2
+node-semver==0.8.0
+pycountry==19.8.18
+pycryptodome==3.9.7
 pyocr==0.6
-python-dateutil==2.8.0
+python-dateutil==2.8.1
 python-magic==0.4.15
-python_gnupg==0.3.9
+python_gnupg==0.4.5
 pytz==2019.1
-requests==2.21.0
+requests==2.23.0
 sh==1.12.14
 swagger-spec-validator==2.4.3
-whitenoise==4.1.4
+whitenoise==5.0.1
 """.split()
 
 with open('README.rst') as f:
@@ -120,12 +120,11 @@ setup(
         'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: WSGI :: Application',
         'Topic :: Communications :: File Sharing',
@@ -138,7 +137,7 @@ setup(
     name=PACKAGE_NAME,
     packages=find_packages(PACKAGE_DIR),
     platforms=['any'],
-    python_requires = '>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
+    python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
     scripts=['mayan/bin/mayan-edms.py'],
     url='https://gitlab.com/mayan-edms/mayan-edms',
     version=mayan.__version__,

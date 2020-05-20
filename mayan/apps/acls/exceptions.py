@@ -1,6 +1,3 @@
-from __future__ import unicode_literals
-
-
 class ACLsBaseException(Exception):
     """
     Base exception for the acls app

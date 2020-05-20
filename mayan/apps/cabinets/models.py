@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
 from django.db import connection, models, transaction
 from django.urls import reverse
@@ -108,6 +106,10 @@ class Cabinet(MPTTModel):
             result.append(node.label)
 
         return ' / '.join(result)
+    get_full_path.help_text = _(
+        'The path to the cabinet including all ancestors.'
+    )
+    get_full_path.short_description = _('Full path')
 
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)
@@ -154,6 +156,18 @@ class Cabinet(MPTTModel):
                         ],
                     },
                 )
+
+
+class CabinetSearchResult(Cabinet):
+    """
+    Represent a cabinet's search result. This model is a proxy model from
+    Cabinet and is used as an alias to map columns to it without having to
+    map them to the base Cabinet model.
+    """
+    class Meta:
+        proxy = True
+        verbose_name = _('Cabinet')
+        verbose_name_plural = _('Cabinets')
 
 
 class DocumentCabinet(Cabinet):

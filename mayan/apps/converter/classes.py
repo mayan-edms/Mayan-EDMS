@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import copy
 from io import BytesIO
 import logging
@@ -273,10 +271,6 @@ class Layer(object):
         self, label, name, order, permissions, default=False,
         empty_results_text=None, symbol=None,
     ):
-        """
-        access_permission is the permission necessary to view the layer.
-        exclude_permission is the permission necessary to discard the layer.
-        """
         self.default = default
         self.empty_results_text = empty_results_text
         self.label = label
@@ -307,8 +301,8 @@ class Layer(object):
 
         self.__class__._registry[name] = self
 
-    def get_permission(self, name):
-        return self.permissions.get(name, None)
+    def get_permission(self, action):
+        return self.permissions.get(action, None)
 
     def __str__(self):
         return force_text(self.label)
@@ -403,7 +397,7 @@ class LayerLink(Link):
         self.layer = layer
         self.object_name = object_name or _('transformation')
 
-        permission = layer.permissions.get(action, None)
+        permission = layer.get_permission(action=action)
         if permission:
             self.permissions = (permission,)
 
@@ -454,7 +448,7 @@ class LayerLinkKwargsFactory(object):
             default_layer = Layer.get_by_value(key='default', value=True)
             return {
                 'app_label': '"{}"'.format(content_type.app_label),
-                'model': '"{}"'.format(content_type.model),
+                'model_name': '"{}"'.format(content_type.model),
                 'object_id': '{}.pk'.format(self.variable_name),
                 'layer_name': '"{}"'.format(
                     self.layer_name or context.get(

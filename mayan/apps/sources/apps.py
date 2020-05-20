@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.apps import apps
 from django.db.models.signals import pre_delete
 from django.utils.translation import ugettext_lazy as _
@@ -39,6 +37,7 @@ class SourcesApp(MayanAppConfig):
     app_namespace = 'sources'
     app_url = 'sources'
     has_rest_api = True
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.sources'
     verbose_name = _('Sources')

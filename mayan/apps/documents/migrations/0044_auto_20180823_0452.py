@@ -1,12 +1,9 @@
-from __future__ import unicode_literals
-
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('documents', '0043_auto_20180429_0759'),

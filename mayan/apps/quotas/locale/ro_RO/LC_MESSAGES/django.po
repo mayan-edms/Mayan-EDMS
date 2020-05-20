@@ -2,246 +2,257 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Roberto Rosario, 2020
+# Badea Gabriel <gcbadea@gmail.com>, 2020
+# Stefaniu Criste <gupi@hangar.ro>, 2020
+# Harald Ersch, 2020
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-15 04:36-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-05-11 00:43-0400\n"
+"PO-Revision-Date: 2020-03-28 07:24+0000\n"
+"Last-Translator: Harald Ersch, 2020\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:39 events.py:8 links.py:35 models.py:35 permissions.py:7
-#: views.py:136
+#: apps.py:36 events.py:6 links.py:33 models.py:32 permissions.py:5
+#: views.py:134
 msgid "Quotas"
-msgstr ""
+msgstr "Cote"
 
-#: classes.py:64
+#: classes.py:63
 msgid "none"
-msgstr ""
+msgstr "nici unul"
 
-#: classes.py:136
+#: classes.py:143
 msgid "Does not apply"
-msgstr ""
+msgstr "Nu se aplică"
 
-#: classes.py:140 classes.py:147
+#: classes.py:147 classes.py:154
 msgid "Null backend"
-msgstr ""
+msgstr "Backend vid"
 
-#: events.py:12
+#: events.py:10
 msgid "Quota created"
-msgstr ""
+msgstr "Cotă creată"
 
-#: events.py:15
+#: events.py:13
 msgid "Quota edited"
-msgstr ""
+msgstr "Cotă editată"
 
-#: forms.py:17 models.py:60
+#: forms.py:15 models.py:55
 msgid "Backend"
-msgstr ""
+msgstr "Backend"
 
-#: forms.py:18
+#: forms.py:16
 msgid "The quota driver for this entry."
-msgstr ""
+msgstr "Pilotul cotelor pentru această intrare."
 
-#: links.py:15
+#: links.py:13
 msgid "Create quota"
-msgstr ""
+msgstr "Creați cota"
 
-#: links.py:20
+#: links.py:18
 msgid "Delete"
-msgstr ""
+msgstr "Șterge"
 
-#: links.py:24
+#: links.py:22
 msgid "Edit"
-msgstr ""
+msgstr "Editați"
 
-#: links.py:30
+#: links.py:28
 msgid "Quotas list"
-msgstr ""
+msgstr "Lista cotelor"
 
-#: mixins.py:19
+#: mixins.py:17
 msgid "All document types"
-msgstr ""
+msgstr "Toate tipurile de documente"
 
-#: mixins.py:22
+#: mixins.py:20
 msgid ""
 "Apply to all document types. Enabling this, the quota will ignore the "
 "indiviual document type selection."
 msgstr ""
+"Aplicați la toate tipurile de documente. Activând acest lucru, cota va "
+"ignora selectarea tipului de document individual."
 
-#: mixins.py:28
+#: mixins.py:26
 msgid "Document types"
-msgstr ""
+msgstr "Tipuri de documente"
 
-#: mixins.py:35
+#: mixins.py:33
 msgid "Document types to which the quota will be applied."
-msgstr ""
+msgstr "Tipuri de documente cărora li se va aplica cota."
 
-#: mixins.py:69
+#: mixins.py:67
 msgid "all document types"
-msgstr ""
+msgstr "toate tipurile de documente"
 
-#: mixins.py:72
+#: mixins.py:70
 #, python-format
-msgid "document_types: %(document_types)s"
-msgstr ""
+msgid "document types: %(document_types)s"
+msgstr "tipuri de documente: %(document_types)s"
 
-#: mixins.py:96
+#: mixins.py:94
 msgid "Groups"
-msgstr ""
+msgstr "Grupuri"
 
-#: mixins.py:103
+#: mixins.py:101
 msgid "Groups to which the quota will be applied."
-msgstr ""
+msgstr "Grupuri cărora li se va aplica cota."
 
-#: mixins.py:107
+#: mixins.py:105
 msgid "All users"
-msgstr ""
+msgstr "Toți utilizatorii"
 
-#: mixins.py:110
+#: mixins.py:108
 msgid ""
-"Apply the quota to all users in the system, including admins and staff. "
+"Apply the quota to all users in the system, excluding admins and staff. "
 "Enabling this option, the quota will ignore the indiviual user and group "
 "selection."
 msgstr ""
+"Aplicați cota tuturor utilizatorilor din sistem, exclusiv administratorii și"
+" personalul. Activând această opțiune, cota va ignora selectarea "
+"utilizatorului și a grupului."
 
-#: mixins.py:117
+#: mixins.py:115
 msgid "Users"
-msgstr ""
+msgstr "Utilizatorii"
 
-#: mixins.py:124
+#: mixins.py:122
 msgid "Users to which the quota will be applied."
-msgstr ""
+msgstr "Utilizatori cărora li se va aplica cota."
+
+#: mixins.py:160
+msgid "all users"
+msgstr "toți utilizatorii"
 
 #: mixins.py:162
-msgid "all users"
-msgstr ""
-
-#: mixins.py:164
 #, python-format
 msgid "groups: %(groups)s, users: %(users)s"
-msgstr ""
+msgstr "grupuri: %(groups)s, utilizatori: %(users)s"
 
-#: models.py:21
+#: models.py:18
 msgid "The dotted Python path to the backend class."
-msgstr ""
+msgstr "Calea Python punctată la clasa backend."
+
+#: models.py:19
+msgid "Backend path"
+msgstr "Calea de backend"
 
 #: models.py:22
-msgid "Backend path"
-msgstr ""
-
-#: models.py:25
 msgid "Backend data"
-msgstr ""
+msgstr "Date backend"
 
-#: models.py:29
+#: models.py:26
 msgid "Allow quick disable or enable of the quota."
-msgstr ""
+msgstr "Permite dezactivarea rapidă sau activarea cotei."
 
-#: models.py:30
+#: models.py:27
 msgid "Enabled"
-msgstr ""
+msgstr "Activat"
 
-#: models.py:34
+#: models.py:31
 msgid "Quota"
-msgstr ""
+msgstr "Cotă"
+
+#: models.py:54
+msgid "Driver used for this quota entry."
+msgstr "Pilotul utilizat pentru această intrare de cotă."
 
 #: models.py:59
-msgid "Driver used for this quota entry."
-msgstr ""
-
-#: models.py:64
 msgid "Arguments"
-msgstr ""
+msgstr "Argumente"
 
-#: models.py:68
+#: models.py:63
 msgid "Usage"
-msgstr ""
+msgstr "utilizare"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "Create a quota"
-msgstr ""
+msgstr "Creați o cotă"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Delete a quota"
-msgstr ""
+msgstr "Ștergeți o cotă"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Edit a quota"
-msgstr ""
+msgstr "Editați o cotă"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "View a quota"
-msgstr ""
+msgstr "Vizualizați o cotă"
 
-#: quota_backends.py:21
+#: quota_backends.py:23
 msgid "Document count quota exceeded."
-msgstr ""
+msgstr "Cota numărului de documente a fost depășită."
 
-#: quota_backends.py:25
+#: quota_backends.py:27
 msgid "Documents limit"
-msgstr ""
+msgstr "Limita documentelor"
 
-#: quota_backends.py:28
+#: quota_backends.py:30
 msgid "Maximum number of documents."
-msgstr ""
+msgstr "Numărul maxim de documente."
 
-#: quota_backends.py:32
+#: quota_backends.py:34
 msgid "Document count limit"
-msgstr ""
+msgstr "Limita numărului de documente"
 
-#: quota_backends.py:51
+#: quota_backends.py:53
 #, python-format
 msgid "document count: %(document_count)s"
-msgstr ""
+msgstr "număr de documente: %(document_count)s"
 
-#: quota_backends.py:100 quota_backends.py:154
+#: quota_backends.py:117 quota_backends.py:171
 msgid "Document size quota exceeded."
-msgstr ""
+msgstr "Cota dimensiunii documentului a fost depășită."
 
-#: quota_backends.py:110 quota_backends.py:115
+#: quota_backends.py:127 quota_backends.py:132
 msgid "Document size limit"
-msgstr ""
+msgstr "Dimensiunea documentului limită"
 
-#: quota_backends.py:112
+#: quota_backends.py:129
 msgid "Maximum document size in megabytes (MB)."
-msgstr ""
+msgstr "Dimensiunea maximă a documentului în megabyte (MB)."
 
-#: quota_backends.py:134
+#: quota_backends.py:151
 #, python-format
 msgid "document size: %(formatted_file_size)s"
-msgstr ""
+msgstr "dimensiunea documentului: %(formatted_file_size)s"
 
-#: views.py:26
+#: views.py:24
 msgid "New quota backend selection"
-msgstr ""
+msgstr "Noua selecție de backend de cote"
 
-#: views.py:54
+#: views.py:52
 #, python-format
 msgid "Create a \"%s\" quota"
-msgstr ""
+msgstr "Creați o cotă \"%s\""
 
-#: views.py:86
+#: views.py:84
 #, python-format
 msgid "Delete quota: %s"
-msgstr ""
+msgstr "Ștergeți cota: %s"
 
-#: views.py:101
+#: views.py:99
 #, python-format
 msgid "Edit quota: %s"
-msgstr ""
+msgstr "Modifica cota: %s"
+
+#: views.py:131
+msgid "Quotas restrict usage of system resources. "
+msgstr "Cotele restricționează utilizarea resurselor de sistem."
 
 #: views.py:133
-msgid "Quotas restrict usage of system resources. "
-msgstr ""
-
-#: views.py:135
 msgid "No quotas available"
-msgstr ""
+msgstr "Nu există cote disponibile"

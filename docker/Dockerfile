@@ -4,7 +4,7 @@
 # base_image - Bare bones image with the base packages needed to run Mayan EDMS
 ####
 
-FROM debian:10.0-slim as base_image
+FROM debian:10.3-slim as base_image
 
 LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 
@@ -28,15 +28,17 @@ apt-get update \
     exiftool \
     fonts-arphic-uming \
     fonts-arphic-ukai \
+    fonts-unfonts-core \
     ghostscript \
+    git-core \
     gpgv \
     gnupg1 \
     graphviz \
     libfuse2 \
     libmagic1 \
     libmariadb3 \
-    libreoffice \
     libpq5 \
+    libreoffice \
     poppler-utils \
     python3-distutils \
     sane-utils \

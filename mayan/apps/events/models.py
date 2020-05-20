@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
@@ -11,7 +9,8 @@ from actstream.models import Action
 
 from .classes import EventType
 from .managers import (
-    EventSubscriptionManager, ObjectEventSubscriptionManager
+    EventSubscriptionManager, NotificationManager,
+    ObjectEventSubscriptionManager
 )
 
 
@@ -86,6 +85,8 @@ class Notification(models.Model):
         verbose_name=_('Action')
     )
     read = models.BooleanField(default=False, verbose_name=_('Read'))
+
+    objects = NotificationManager()
 
     class Meta:
         ordering = ('-action__timestamp',)

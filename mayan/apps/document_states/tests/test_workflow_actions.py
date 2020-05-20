@@ -1,14 +1,13 @@
-from __future__ import unicode_literals
-
 import json
 import mock
 
+from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.common.tests.mixins import TestServerTestCaseMixin
 from mayan.apps.common.tests.mocks import request_method_factory
-from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
 
+from ..literals import WORKFLOW_ACTION_ON_ENTRY
+from ..permissions import permission_workflow_edit
 from ..workflow_actions import DocumentPropertiesEditAction, HTTPAction
 
 from .literals import (
@@ -23,6 +22,7 @@ from .literals import (
     TEST_PAYLOAD_TEMPLATE_DOCUMENT_LABEL, TEST_SERVER_USERNAME,
     TEST_SERVER_PASSWORD
 )
+from .mixins import WorkflowStateActionViewTestMixin, WorkflowTestMixin
 
 
 class HTTPWorkflowActionTestCase(
@@ -191,12 +191,56 @@ class HTTPWorkflowActionTestCase(
         self.assertEqual(self.timeout, None)
 
 
+class HTTPWorkflowActionViewTestCase(
+    WorkflowTestMixin, WorkflowStateActionViewTestMixin, GenericViewTestCase
+):
+    def setUp(self):
+        super(HTTPWorkflowActionViewTestCase, self).setUp()
+        self._create_test_workflow()
+        self._create_test_workflow_state()
+
+    def test_http_workflow_state_action_create_post_view_no_permission(self):
+        action_count = self.test_workflow_state.actions.count()
+
+        response = self._request_test_workflow_template_state_action_create_post_view(
+            class_path='mayan.apps.document_states.workflow_actions.HTTPAction',
+            extra_data={
+                'method': 'POST', 'timeout': 0, 'url': '127.0.0.1'
+            }
+        )
+        self.assertEqual(response.status_code, 404)
+
+        self.test_workflow_state.refresh_from_db()
+        self.assertEqual(
+            self.test_workflow_state.actions.count(), action_count
+        )
+
+    def test_http_workflow_state_action_create_post_view_with_access(self):
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
+        action_count = self.test_workflow_state.actions.count()
+
+        response = self._request_test_workflow_template_state_action_create_post_view(
+            class_path='mayan.apps.document_states.workflow_actions.HTTPAction',
+            extra_data={
+                'method': 'POST', 'timeout': 0, 'url': '127.0.0.1'
+            }
+        )
+        self.assertEqual(response.status_code, 302)
+
+        self.test_workflow_state.refresh_from_db()
+        self.assertEqual(
+            self.test_workflow_state.actions.count(), action_count + 1
+        )
+
+
 class DocumentPropertiesEditActionTestCase(
     WorkflowTestMixin, GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 
-    def test_document_properties_edit_action_field_literas(self):
+    def test_document_properties_edit_action_field_literals(self):
         self._upload_test_document()
 
         action = DocumentPropertiesEditAction(

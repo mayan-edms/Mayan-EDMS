@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.test import tag
 
 from django_test_migrations.contrib.unittest_case import MigratorTestCase

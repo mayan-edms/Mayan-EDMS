@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.converter.utils import get_converter_class
 
 

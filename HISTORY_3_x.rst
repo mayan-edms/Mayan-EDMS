@@ -1,9 +1,277 @@
-3.3.14 (2020-XX-XX)
+3.4.7 (2020-04-28)
+==================
+- Darken dropdown menu text to increase contrast and legibility.
+- Capture and display double check in and non checked out document
+  checkout attempts. Closes GitLab issue #820. Thanks to Gerald Fuchs
+  (@geraldf) for the report and debug information.
+- The Docker volume change owner command is now only run if there is a change
+  in the UID or GID of the container's user. Merge request !81. Thanks to
+  Matthias Bilger (@m42e) for the patch.
+- The pip option ``--no-use-pep517`` has been removed from the installation
+  and version 3.4 upgrade documents. Closes GitLab issue #810. Thanks to
+  jhayn49 (@jhayn49) for the report.
+- Replace self.get_object() with self.object where applicable.
+- Fixed HTTP workflow action field_order. Merge request !82. Thanks to
+  Matthias Bilger (@m42e) for the report and the patch.
+- Add MERC 0007 defining the new repository branch layout.
+- Remove outdated development version deployment instructions. Closes GitLab
+  issue #821. Thanks to Gerald Fuchs (@geraldf) for the report.
+
+3.4.6 (2020-04-19)
+==================
+- Update Django to version 2.2.12.
+- Support custom URL base paths. Add the new setting
+  ``COMMON_URL_BASE_PATH``.
+- Expose Django's ``SESSION_COOKIE_NAME`` and ``SESSION_ENGINE`` settings.
+- The ``checkdependencies`` command will now mark missing production
+  dependencies with a symbol and an ANSI coloration.
+- Add ``--csv`` option to the  ``checkdependencies`` command to output the
+  result as comma delimited values.
+
+3.4.5 (2020-04-14)
+==================
+- Make sure FUSE's getattr.st_size always return a 0 and not None when the
+  document is invalid. Close GitLab issue #797. Thanks to telsch (@telsch)
+  for the report and debug information.
+- Add the Un series Korean TrueType fonts (fonts-unfonts-core) to the Docker
+  image.
+- Fix the document page disable and enable links. Close GitLab issue #809.
+  Thanks to Kalloritis (@Kalloritis) for the report and research.
+- Fix a specific scenario with the document count limit quota backend where
+  a user might still be able to upload a new document past the quota limit.
+- Fix typo in the document version upload URL pattern.
+- Standardize the icon for returning to the document from child views.
+- Move the links to return to the document from the page list, version detail
+  and page image, from the facet menu to the secondary menu for proper UX
+  flow.
+- Fix a typo in the resolved smart link URL parameter.
+- Improve resolved smart link access filtering.
+- Allow apps without an urlpatterns entry.
+- Update the Docker image to use Debian 10.3.
+- Update the quota app to work with more deployment types.
+- Add a dependency definition for the gpg binary used by the Django GPG app.
+- Fix document list mode on the cabinet detail view.
+- Fine tune extra small button appearance and space usage.
+- Move some of the extra small button presentation from the template to the
+  stylesheet.
+
+3.4.4 (2020-04-08)
+==================
+- Add a custom app static media finder to workaround Django's
+  AppDirectoriesFinder limitation that caused the missing
+  staticfiles manifest entry error.
+- Use tmpfs for gunicorn's heartbeat file under Docker. Closes GitLab issue
+  #754. References: https://pythonspeed.com/articles/gunicorn-in-docker/,
+  https://docs.gunicorn.org/en/latest/settings.html#worker-tmp-dir and
+  https://docs.gunicorn.org/en/latest/faq.html#how-do-i-avoid-gunicorn-excessively-blocking-in-os-fchmod
+
+3.4.3 (2020-04-04)
+==================
+- Fix document page interactive transformation pages.
+- Fix layer transformation selection view.
+- Improve permission checking of the layer transformation
+  selection view.
+- Make document tag widget clickable.
+- Make document cabinet widget clickable.
+- Apply the ``DOCUMENTS_LIST_THUMBNAIL_WIDTH`` setting value to
+  document pages and document version thumbnails too.
+- Send all exception to the log system and let the log system
+  perform the filtering.
+- Improve the design of the 404, 403 and 500 error pages.
+- Update production error log settings. Max bytes from 1024
+  to 65535 and backup from 3 to 5.
+
+3.4.2 (2020-04-02)
+==================
+- Fix search forms action URLs. Closes GitLab issue #802.
+  Thanks to holzhannes (@holzhannes) for the report and
+  debug information.
+- Update document deletion message to say the documents
+  were submitted for deletion and not actually deleted at
+  the moment of the request.
+- Detect if devpi-server is installed before building
+  the Docker image.
+- Re-add SQLite3 upgrade test now that the code upgrades
+  from two Django 2.2 versions.
+- Allow apps to inject their own head or foot templates
+  to the root template.
+- Added new document setting ``DOCUMENTS_LIST_THUMBNAIL_WIDTH`` to control
+  the size of the thumbnails on list view mode.
+- Added document head template to inject the DOCUMENTS_LIST_THUMBNAIL_WIDTH
+  as a CSS style.
+- Show the full path to the cabinet on cabinet search results.
+- Add support for index instance search.
+- Add support for search for cabinets by their document basic
+  attributes.
+- Add support for app passthru URL patterns.
+
+3.4.1 (2020-04-01)
+==================
+- Add development setting for Docker databases.
+- Add manage target against Docker databases.
+- Add git-core to the Docker image to allow installing
+  development Python libraries.
+- Fix pre upgrade cache cleanup in file caching migration 0005.
+
+3.4 (2020-03-30)
+================
+- Update Django to version 2.2.10.
+- Backport list display mode. Support switching between item and list mode.
+- Update app URLs to use explicit parameters.
+- Move dependencies environments to their own module called
+  ``dependencies.environments.py``.
+- Increase the size of the file cache maximum size field.
+- Add user impersonation support.
+- Add support for uncompressing Outlook .msg files. Adds dependency
+  ``extract-msg``.
+- Updated converter to show preview of the text part of .msg files.
+- Decouple the Checkouts and Sources apps. It is now possible to disable
+  the Checkouts app.
+- Add new document version pre save hooks.
+- Fix OCR model property.
+- Add workflow transition conditionals.
+- Add workflow state action conditionals.
+- Add document version pre save signal.
+- Update the document type and document models to avoid a double save
+  when creating a new document.
+- Add quotas app.
+- Add support for HTTP methods to the workflow HTTP request state action.
+- Add the trash document workflow state action.
+- Add support for GPG backends. Add two new settings ``SIGNATURES_BACKEND`` and
+  ``SIGNATURES_BACKEND_ARGUMENTS``. This change also removes two settings:
+  ``SIGNATURES_GPG_HOME`` and ``SIGNATURES_GPG_PATH``. ``SIGNATURES_GPG_HOME``
+  had already been deprecated and was innactive. ``SIGNATURES_GPG_PATH`` is now
+  component ``gpg_path`` of the setting ``SIGNATURES_BACKEND_ARGUMENTS``.
+- Add sane default paths for the GPG binary for Linux, FreeBSD, OpenBSD, and
+  MaCOS.
+- Refactor the search app to support backends. Adds two new settings:
+  ``SEARCH_BACKEND`` (which defaults to ``mayan.apps.dynamic_search.backends.django.DjangoSearchBackend``)
+  and ``SEARCH_BACKEND_ARGUMENTS``.
+- Update interface of the CompressedStorage backend.
+- Add defined storage class.
+- Convert the file caching app to used defined storage.
+- Show percentage of usage for file caches.
+- Add Passthrough storages.
+- Add encrypted storage backend.
+- Add compressed storage backend.
+- Add management command to process storage.
+- Automatic storage module loading.
+- Convert file caching app to use defined storage.
+- Removed a possible race condition when returning the signature of just
+  signed document using embedded signatures.
+- Updated version of the development and documentation dependencies.
+- Execute the ``preparestatic`` as part of the ``initialsetup`` and
+  ``performupgrade`` commands.
+- Detect redirect loops when attempting to escape the AJAX container.
+- Improve icons of the OCR, file metadata, and document parsing apps.
+- Detect is a SourceColumn can be made sortable.
+- Update python-gnupg from version 0.3.9 to 0.4.5.
+- Update Django stronghold to version 0.4.0.
+- Update Python libraries versions: Python Redis version from 3.3.11 to 3.4.1,
+  PyYAML from 5.1.2 to 5.3.1, django-formtools from 2.1 to 2.2,
+  django-mathfilters from 0.4.0 to 1.0.0, django-model-utils from 3.1.2 to
+  4.0.0, django-mptt from 0.9.1 to 0.11.0, django-qsstats-magic from
+  1.0.0 to 1.1.0, django-widget-tweaks from 1.4.5 to 1.4.8, furl from 2.0.0
+  to 2.1.0, gunicorn from 19.9.0 to 20.0.4, mock from 2.0.0 to 4.0.2,
+  pycountry from 18.12.8 to 19.8.18, requests from 2.21.0 to 2.23.0,
+  whitenoise from 4.1.4 to 5.0.1, devpi-server from 5.4.0 to 5.4.1,
+  Pillow from 6.2.2 to 7.0.0, node-semver from 0.6.1 to 0.8.0, graphviz from
+  0.10.1 to 0.13.2, python-dateutil from 2.8.0 to 2.8.1, flanker from 0.9.0
+  to 0.9.11, django-activity-stream from 0.7.0 to 0.8.0.
+- Removal of Python library django-timezone-field.
+- Remove codecov dependency.
+- Remove pathlib2 dependency, it is now part of the standard Python library.
+- Remove Django's admindocs app
+
+3.3.17 (2020-04-09)
 ===================
-- Add missing backslash in the deployment instructions.
+- Removed a possible race condition when returning the signature of just
+  signed document using embedded signatures.
+- Add development setting for Docker databases.
+- Add manage target against Docker databases.
+- Use tmpfs for gunicorn's heartbeat file under Docker. Closes GitLab issue
+  #754. References: https://pythonspeed.com/articles/gunicorn-in-docker/,
+  https://docs.gunicorn.org/en/latest/settings.html#worker-tmp-dir and
+  https://docs.gunicorn.org/en/latest/faq.html#how-do-i-avoid-gunicorn-excessively-blocking-in-os-fchmod
+- Update contributed LDAP setting file.
+- Improve the design of the 404, 403 and 500 error pages.
+- Update production error log settings. Max bytes from 1024
+  to 65535 and backup from 3 to 5.
+- Detect if devpi-server is installed before building
+  the Docker image.
+- Add git-core to the Docker image to allow installing
+  development Python libraries.
+- Send all exception to the log system and let the log system
+  perform the filtering.
+- Add development setting for Docker databases.
+- Add manage target against Docker databases.
+- Copy minor improvements to the default Docker Compose file.
+
+3.3.16 (2020-03-17)
+===================
+- Fix minor release notes typographical errors.
+- Update psutil from version 5.6.3 to 5.7.0. CVE-2019-18874
+  (https://nvd.nist.gov/vuln/detail/CVE-2019-18874)
+- Update python-gnupg from version 0.3.9 to 0.4.5. CVE-2019-6690
+  (https://nvd.nist.gov/vuln/detail/CVE-2019-6690)
+- Update django from version 1.11.28 to 1.11.29. CVE-2020-9402
+  (https://nvd.nist.gov/vuln/detail/CVE-2020-9402)
+- Decrease the code and data inside the transaction. Removes a file caching
+  creation from inside a database transaction. Attempted fix for
+  GitLab issues #782 and #735.
+- Fix OCR model property. It was listed as document.content instead of
+  document.ocr_content.
+- Revert an API permission change for the EventList API view.
+  Fixes GitLab issue #794. Thanks to Matthew Grady (@FlowerCoffeeCup)
+  for the report and investigation.
+
+3.3.15 (2020-03-05)
+===================
+- Add Docker environment setting ``MAYAN_SKIP_CHOWN_ON_STARTUP`` to skip
+  performing the initial chown on the media folder at `/var/lib/mayan`.
+  This command is slow on non native block storage backends.
+- Remove Wiki links from README files. GitLab Merge request !78.
+  Thanks Steffen Raisin (@zintor) for the merge request.
+- Add more API tests to the Tags app.
+- Expose Django settings: ``SECURE_PROXY_SSL_HEADER``,
+  ``USE_X_FORWARDED_HOST``, and ``USE_X_FORWARDED_PORT``.
+- Change the default of DATABASE_CONN_MAX_AGE to 0 which is the
+  safest value. https://docs.djangoproject.com/en/3.0/ref/settings/#conn-max-age
+- Update default Docker Compose file.
+- Correct the icon used for multi document cabinet add action.
+  GitLab merge !79. Thanks to  Giacomo Catenazzi (@cateee).
+- Add environment variable ``MAYAN_DOCKER_WAIT`` to have the Docker image
+  wait for a host and port to become available.
+- Turn hard-coded constant STUB_EXPIRATION_INTERVAL into a user setting named
+  ``DOCUMENTS_STUB_EXPIRATION_INTERVAL``. Defaults to previous value of 24
+  hours to preserve existing behavior.
+
+3.3.14 (2020-02-23)
+===================
+- Add missing backslash in deployment instructions.
   Closes GitLab issue #780. Thanks to Steve Palmer (@steverpalmer)
   for the report.
 - Update CI script to push multiple tags.
+- Remove Wiki link in the about view.
+- Remove social media links.
+- Add support link.
+- Add more expressive error message when an invalid storage argument
+  setting is encountered.
+- Make document language field a lazy field. This allows starting Mayan
+  even when there are invalid language codes in the DOCUMENTS_LANGUAGE_CODES
+  setting.
+- Warn about invalid document language codes in the DOCUMENTS_LANGUAGE_CODES
+  setting. Thanks to forum user @j_arquimbau for the report.
+- Add complete staging folder and staging folder file REST API. Closes GitLab
+  issue #778. Thanks to David Kowis (@dkowis) for the request.
+- Add the selenium Firefox geckodriver to the setup-dev-environment target.
+- Move the ``purgeperiodictasks`` command to the task manager app.
+- Remove left over ``interactive`` option usage for the ``purgeperiodictasks``
+  command. Closes GitLab issue #785. Thanks to Matthias Löblich (@startmat)
+  for the report.
+- Exclude ``/favicon.ico`` from the authenticated URL list. Closes GitLab
+  issue #786. Thanks to Matthias Löblich (@startmat) for the report.
+- Rename test document creation method for clarity.
 
 3.3.13 (2020-02-14)
 ===================

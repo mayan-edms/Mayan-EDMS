@@ -75,7 +75,7 @@ Testing
 ^^^^^^^
 
 The test method to create a test document type instance was renamed from
-``_create_documen_type`` to ``_create_test_document_type``. This method name
+``_create_document_type`` to ``_create_test_document_type``. This method name
 now follows the same naming pattern for all the methods that create test
 instances.
 

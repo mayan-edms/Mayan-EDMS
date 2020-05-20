@@ -18,6 +18,7 @@ that packages up code and all its dependencies.
 .. toctree::
     :hidden:
 
+    install_docker_compose
     install_simple
     install_docker_network
     start_stop

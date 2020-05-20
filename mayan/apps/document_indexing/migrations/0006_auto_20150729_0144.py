@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations
 from django.template.defaultfilters import slugify
 
@@ -13,7 +11,6 @@ def operation_assign_slugs(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('document_indexing', '0005_index_slug'),
     ]

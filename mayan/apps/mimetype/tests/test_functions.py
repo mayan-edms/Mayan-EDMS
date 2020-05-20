@@ -1,6 +1,5 @@
-from __future__ import unicode_literals
-
 import resource
+import unittest
 
 from django.test import override_settings, tag
 
@@ -17,6 +16,7 @@ from mayan.apps.documents.tests.literals import TEST_PDF_DOCUMENT_FILENAME
 MAXIMUM_HEAP_MEMORY = 140000000
 
 
+@unittest.skip('This test should be used only in development.')
 @tag('memory', EXCLUDE_TEST_TAG)
 class MIMETypeTestCase(DocumentTestMixin, BaseTestCase):
     auto_upload_test_document = False

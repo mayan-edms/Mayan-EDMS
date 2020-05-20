@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import os
 
 from django.conf import settings
@@ -161,6 +159,12 @@ setting_thumbnail_height = namespace.add_setting(
 setting_thumbnail_width = namespace.add_setting(
     global_name='DOCUMENTS_THUMBNAIL_WIDTH', default='800', help_text=(
         'Width in pixels of the document thumbnail image.'
+    )
+)
+setting_list_thumbnail_width = namespace.add_setting(
+    global_name='DOCUMENTS_LIST_THUMBNAIL_WIDTH', default='50', help_text=(
+        'Width in pixels of the document thumbnail image when shown in list '
+        'view mode.'
     )
 )
 setting_zoom_max_level = namespace.add_setting(

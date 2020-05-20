@@ -1,7 +1,4 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
@@ -27,9 +24,13 @@ from ..models import Workflow, WorkflowState, WorkflowStateAction
 from ..permissions import permission_workflow_edit, permission_workflow_view
 
 
-class WorkflowTemplateStateActionCreateView(SingleObjectDynamicFormCreateView):
+class WorkflowTemplateStateActionCreateView(
+    ExternalObjectMixin, SingleObjectDynamicFormCreateView
+):
+    external_object_class = WorkflowState
+    external_object_permission = permission_workflow_edit
+    external_object_pk_url_kwarg = 'workflow_template_state_id'
     form_class = WorkflowStateActionDynamicForm
-    object_permission = permission_workflow_edit
 
     def get_class(self):
         try:
@@ -42,11 +43,11 @@ class WorkflowTemplateStateActionCreateView(SingleObjectDynamicFormCreateView):
     def get_extra_context(self):
         return {
             'navigation_object_list': ('object', 'workflow'),
-            'object': self.get_object(),
+            'object': self.external_object,
             'title': _(
                 'Create a "%s" workflow action'
             ) % self.get_class().label,
-            'workflow': self.get_object().workflow
+            'workflow': self.external_object.workflow
         }
 
     def get_form_extra_kwargs(self):
@@ -61,38 +62,40 @@ class WorkflowTemplateStateActionCreateView(SingleObjectDynamicFormCreateView):
     def get_instance_extra_data(self):
         return {
             'action_path': self.kwargs['class_path'],
-            'state': self.get_object()
+            'state': self.external_object
         }
-
-    def get_object(self):
-        return get_object_or_404(klass=WorkflowState, pk=self.kwargs['pk'])
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='document_states:workflow_template_state_action_list',
-            kwargs={'pk': self.get_object().pk}
+            kwargs={
+                'workflow_template_state_id': self.external_object.pk
+            }
         )
 
 
 class WorkflowTemplateStateActionDeleteView(SingleObjectDeleteView):
     model = WorkflowStateAction
     object_permission = permission_workflow_edit
+    pk_url_kwarg = 'workflow_template_state_action_id'
 
     def get_extra_context(self):
         return {
             'navigation_object_list': (
                 'object', 'workflow_state', 'workflow'
             ),
-            'object': self.get_object(),
-            'title': _('Delete workflow state action: %s') % self.get_object(),
-            'workflow': self.get_object().state.workflow,
-            'workflow_state': self.get_object().state,
+            'object': self.object,
+            'title': _('Delete workflow state action: %s') % self.object,
+            'workflow': self.object.state.workflow,
+            'workflow_state': self.object.state,
         }
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='document_states:workflow_template_state_action_list',
-            kwargs={'pk': self.get_object().state.pk}
+            kwargs={
+                'workflow_template_state_id': self.object.state.pk
+            }
         )
 
 
@@ -100,38 +103,45 @@ class WorkflowTemplateStateActionEditView(SingleObjectDynamicFormEditView):
     form_class = WorkflowStateActionDynamicForm
     model = WorkflowStateAction
     object_permission = permission_workflow_edit
+    pk_url_kwarg = 'workflow_template_state_action_id'
 
     def get_extra_context(self):
         return {
             'navigation_object_list': (
                 'object', 'workflow_state', 'workflow'
             ),
-            'object': self.get_object(),
-            'title': _('Edit workflow state action: %s') % self.get_object(),
-            'workflow': self.get_object().state.workflow,
-            'workflow_state': self.get_object().state,
+            'object': self.object,
+            'title': _('Edit workflow state action: %s') % self.object,
+            'workflow': self.object.state.workflow,
+            'workflow_state': self.object.state,
         }
 
     def get_form_extra_kwargs(self):
         return {
             'request': self.request,
-            'action_path': self.get_object().action_path,
+            'action_path': self.object.action_path,
         }
 
     def get_form_schema(self):
-        return self.get_object().get_class_instance().get_form_schema(
+        return self.object.get_class_instance().get_form_schema(
             request=self.request
         )
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='document_states:workflow_template_state_action_list',
-            kwargs={'pk': self.get_object().state.pk}
+            kwargs={
+                'workflow_template_state_id': self.object.state.pk
+            }
         )
 
 
-class WorkflowTemplateStateActionListView(SingleObjectListView):
-    object_permission = permission_workflow_edit
+class WorkflowTemplateStateActionListView(
+    ExternalObjectMixin, SingleObjectListView
+):
+    external_object_class = WorkflowState
+    external_object_permission = permission_workflow_edit
+    external_object_pk_url_kwarg = 'workflow_template_state_id'
 
     def get_extra_context(self):
         return {
@@ -141,7 +151,7 @@ class WorkflowTemplateStateActionListView(SingleObjectListView):
             'no_results_main_link': link_workflow_template_state_action_selection.resolve(
                 context=RequestContext(
                     request=self.request, dict_={
-                        'object': self.get_workflow_state()
+                        'object': self.external_object
                     }
                 )
             ),
@@ -152,54 +162,53 @@ class WorkflowTemplateStateActionListView(SingleObjectListView):
             'no_results_title': _(
                 'There are no actions for this workflow state'
             ),
-            'object': self.get_workflow_state(),
+            'object': self.external_object,
             'title': _(
                 'Actions for workflow state: %s'
-            ) % self.get_workflow_state(),
-            'workflow': self.get_workflow_state().workflow,
+            ) % self.external_object,
+            'workflow': self.external_object.workflow,
         }
 
     def get_form_schema(self):
         return {'fields': self.get_class().fields}
 
     def get_source_queryset(self):
-        return self.get_workflow_state().actions.all()
-
-    def get_workflow_state(self):
-        return get_object_or_404(klass=WorkflowState, pk=self.kwargs['pk'])
+        return self.external_object.actions.all()
 
 
-class WorkflowTemplateStateActionSelectionView(FormView):
+class WorkflowTemplateStateActionSelectionView(ExternalObjectMixin, FormView):
+    external_object_class = WorkflowState
+    external_object_permission = permission_workflow_edit
+    external_object_pk_url_kwarg = 'workflow_template_state_id'
     form_class = WorkflowActionSelectionForm
-    view_permission = permission_workflow_edit
-
-    def form_valid(self, form):
-        klass = form.cleaned_data['klass']
-        return HttpResponseRedirect(
-            redirect_to=reverse(
-                viewname='document_states:workflow_template_state_action_create',
-                kwargs={'pk': self.get_object().pk, 'class_path': klass}
-            )
-        )
 
     def get_extra_context(self):
         return {
             'navigation_object_list': (
                 'object', 'workflow'
             ),
-            'object': self.get_object(),
+            'object': self.external_object,
             'title': _('New workflow state action selection'),
-            'workflow': self.get_object().workflow,
+            'workflow': self.external_object.workflow,
         }
 
-    def get_object(self):
-        return get_object_or_404(klass=WorkflowState, pk=self.kwargs['pk'])
+    def form_valid(self, form):
+        klass = form.cleaned_data['klass']
+        return HttpResponseRedirect(
+            redirect_to=reverse(
+                viewname='document_states:workflow_template_state_action_create',
+                kwargs={
+                    'workflow_template_state_id': self.external_object.pk,
+                    'class_path': klass
+                }
+            )
+        )
 
 
 class WorkflowTemplateStateCreateView(ExternalObjectMixin, SingleObjectCreateView):
     external_object_class = Workflow
     external_object_permission = permission_workflow_edit
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'workflow_template_id'
     form_class = WorkflowStateForm
 
     def get_extra_context(self):
@@ -220,29 +229,33 @@ class WorkflowTemplateStateCreateView(ExternalObjectMixin, SingleObjectCreateVie
     def get_success_url(self):
         return reverse(
             viewname='document_states:workflow_template_state_list',
-            kwargs={'pk': self.kwargs['pk']}
+            kwargs={
+                'workflow_template_id': self.kwargs['workflow_template_id']
+            }
         )
 
 
 class WorkflowTemplateStateDeleteView(SingleObjectDeleteView):
     model = WorkflowState
     object_permission = permission_workflow_edit
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'workflow_template_state_id'
 
     def get_extra_context(self):
         return {
             'navigation_object_list': ('object', 'workflow'),
-            'object': self.get_object(),
+            'object': self.object,
             'title': _(
                 'Delete workflow state: %s?'
             ) % self.object,
-            'workflow': self.get_object().workflow,
+            'workflow': self.object.workflow,
         }
 
     def get_success_url(self):
         return reverse(
             viewname='document_states:workflow_template_state_list',
-            kwargs={'pk': self.get_object().workflow.pk}
+            kwargs={
+                'workflow_template_id': self.object.workflow.pk
+            }
         )
 
 
@@ -250,29 +263,29 @@ class WorkflowTemplateStateEditView(SingleObjectEditView):
     form_class = WorkflowStateForm
     model = WorkflowState
     object_permission = permission_workflow_edit
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'workflow_template_state_id'
 
     def get_extra_context(self):
         return {
             'navigation_object_list': ('object', 'workflow'),
-            'object': self.get_object(),
+            'object': self.object,
             'title': _(
                 'Edit workflow state: %s'
             ) % self.object,
-            'workflow': self.get_object().workflow,
+            'workflow': self.object.workflow,
         }
 
     def get_success_url(self):
         return reverse(
             viewname='document_states:workflow_template_state_list',
-            kwargs={'pk': self.get_object().workflow.pk}
+            kwargs={'workflow_template_id': self.object.workflow.pk}
         )
 
 
 class WorkflowTemplateStateListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = Workflow
     external_object_permission = permission_workflow_view
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'workflow_template_id'
     object_permission = permission_workflow_view
 
     def get_extra_context(self):

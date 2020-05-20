@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.test import TestCase
 
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
@@ -105,7 +103,10 @@ class TransformationBaseTestCase(TestCase):
 
         self.assertEqual(
             BaseTransformation.combine(
-                (transformation_rotate, transformation_resize, transformation_zoom)
+                (
+                    transformation_rotate, transformation_resize,
+                    transformation_zoom
+                )
             ), TEST_TRANSFORMATION_COMBINED_CACHE_HASH
         )
 

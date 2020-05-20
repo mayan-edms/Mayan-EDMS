@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from datetime import timedelta
 
 from django.utils.translation import ugettext_lazy as _
@@ -17,7 +15,8 @@ queue_converter = CeleryQueue(
     name='converter', label=_('Converter'), transient=True, worker=worker_fast
 )
 queue_documents_periodic = CeleryQueue(
-    name='documents_periodic', label=_('Documents periodic'), transient=True, worker=worker_medium
+    name='documents_periodic', label=_('Documents periodic'), transient=True,
+    worker=worker_medium
 )
 queue_uploads = CeleryQueue(
     name='uploads', label=_('Uploads'), worker=worker_medium

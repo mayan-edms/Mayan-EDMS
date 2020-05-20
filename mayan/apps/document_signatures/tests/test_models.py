@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import hashlib
 import time
 
@@ -141,6 +139,12 @@ class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
             EmbeddedSignature.objects.unsigned_document_versions().count(),
             TEST_UNSIGNED_DOCUMENT_COUNT
         )
+
+    def test_method_get_absolute_url(self):
+        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
+        self._upload_test_document()
+
+        EmbeddedSignature.objects.first().get_absolute_url()
 
 
 class EmbeddedSignaturesTestCase(

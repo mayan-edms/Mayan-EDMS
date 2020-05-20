@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:37-0400\n"
-"PO-Revision-Date: 2020-02-29 06:01+0000\n"
+"POT-Creation-Date: 2020-05-11 00:40-0400\n"
+"PO-Revision-Date: 2020-04-21 07:38+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -19,93 +19,135 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:11 settings.py:7
 msgid "Appearance"
 msgstr "Aspect"
 
-#: dependencies.py:10
+#: dependencies.py:8
 msgid "Lato font"
 msgstr "Font Lato"
 
-#: dependencies.py:14
+#: dependencies.py:12
 msgid "Bootstrap"
 msgstr "Bootstrap"
 
-#: dependencies.py:18
+#: dependencies.py:16
 msgid "Bootswatch"
 msgstr "Bootswatch"
 
-#: dependencies.py:32
+#: dependencies.py:30
 msgid "Fancybox"
 msgstr "Fancybox"
 
-#: dependencies.py:36
+#: dependencies.py:34
 msgid "FontAwesome"
 msgstr "FontAwesome"
 
-#: dependencies.py:40
+#: dependencies.py:38
 msgid "jQuery"
 msgstr "jQuery"
 
-#: dependencies.py:43
+#: dependencies.py:41
 msgid "JQuery Form"
 msgstr "Formular JQuery"
 
-#: dependencies.py:47
+#: dependencies.py:45
 msgid "jQuery Lazy Load"
 msgstr "jQuery Lazy Load"
 
-#: dependencies.py:51
+#: dependencies.py:49
 msgid "JQuery Match Height"
 msgstr "Potrivire Înălțime JQuery "
 
-#: dependencies.py:55
+#: dependencies.py:53
 msgid "Select 2"
 msgstr "Select 2"
 
-#: dependencies.py:59
+#: dependencies.py:57
 msgid "Toastr"
 msgstr "Toastr"
 
-#: dependencies.py:62
+#: dependencies.py:60
 msgid "URI.js"
 msgstr "URI.js"
 
-#: settings.py:14
+#: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Numărul maxim de caractere care vor fi afișate ca titlu de vizualizare."
 
-#: settings.py:21
+#: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr "Poziția în care va fi afișat mesajul de sistem. Opțiunile sunt: în stânga sus, în centru-sus, în dreapta-sus, în stânga-jos, în jos-centru, în jos-dreapta."
 
-#: templates/403.html:5 templates/403.html:9
-msgid "Insufficient permissions"
-msgstr "permisiuni insuficiente"
+#: templates/403.html:5 templates/403.html:30
+msgid "Insufficient permission"
+msgstr "Permisiune insuficientă"
 
-#: templates/403.html:11
+#: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
 msgstr "Nu aveți permisiuni suficiente pentru această operație."
 
-#: templates/404.html:5 templates/404.html:9
+#: templates/404.html:5 templates/404.html:30
 msgid "Page not found"
 msgstr "Pagina nu a fost gasită"
 
-#: templates/404.html:11
-msgid "Sorry, but the requested page could not be found."
-msgstr "Ne pare rău, dar pagina solicitată nu a putut fi găsit."
+#: templates/404.html:32
+msgid "The requested page could not be found."
+msgstr "Pagina solicitată nu a putut fi găsită."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:56
+#: templates/404.html:40
+msgid "Possible reasons"
+msgstr "Motive posibile"
+
+#: templates/404.html:44
+msgid "The location of the item is incorrect."
+msgstr "Locația articolului este incorectă."
+
+#: templates/404.html:45
+msgid "The location is correct, but the item no longer exists."
+msgstr "Locația este corectă, dar elementul nu mai există."
+
+#: templates/404.html:46
+msgid ""
+"The location is be correct, but your account does not have the required "
+"permission to access it."
+msgstr "Locația este corectă, dar contul dvs. nu are permisiunea necesară pentru accesarea acesteia."
+
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Eroare la server"
 
-#: templates/500.html:11
-msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "A apărut o eroare. A fost raportată administratorilor site-ului prin e-mail și va fi reparatî în scurt timp. Mulțumim pentru răbdarea dvs."
+#: templates/500.html:32
+msgid "There's been an unexpected error."
+msgstr "A apărut o eroare neașteptată."
+
+#: templates/500.html:40
+msgid "What to do next?"
+msgstr "Ce e de făcut în continuare?"
+
+#: templates/500.html:44
+msgid "Refresh the page."
+msgstr "Reîncarcă pagina."
+
+#: templates/500.html:45
+msgid "Wait a bit. The system might be overloaded."
+msgstr "Așteptaţi o clipă. Este posibil ca sistemul să fie supraîncărcat."
+
+#: templates/500.html:46
+msgid "Contact your system administrator."
+msgstr "Contactați administratorul de sistem."
+
+#: templates/500.html:47
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr "Verificați jurnalele pentru mesajele cu etichetele „EROARE”, „CRITIC” sau „FATAL”."
+
+#: templates/500.html:48
+#, python-format
+msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
+msgstr "Deschideți un bilet folosind <a href=\"%(issue_url)s\">trackerul de probleme</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -188,26 +230,38 @@ msgid ""
 "            "
 msgstr "\nÎmprăștie vestea. Vorbețte cu prietenii și colegii tăi despre cât de minunat este %(project_title)s!"
 
-#: templates/appearance/base.html:35 templates/appearance/base.html:59
+#: templates/appearance/base.html:38 templates/appearance/base.html:62
 msgid "Warning"
 msgstr "Alertă"
 
-#: templates/appearance/base.html:49
+#: templates/appearance/base.html:52
 msgid "Click here to fix this."
 msgstr "Faceți clic aici pentru a remedia această problemă."
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:62
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr "Setările actualizate, reporniți instalarea și reîmprospătați browserul pentru ca modificările să intre în vigoare."
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:70
+#, python-format
+msgid ""
+"\n"
+"                                        Impersonating user \"%(user)s\".\n"
+"                                    "
+msgstr "\nIdentificare drept utilizatorul \"%(user)s\""
+
+#: templates/appearance/base.html:73
+msgid "Click here when finished"
+msgstr "Faceți clic aici când ați terminat"
+
+#: templates/appearance/base.html:87
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Acţiuni"
 
-#: templates/appearance/base.html:74
+#: templates/appearance/base.html:89
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -282,9 +336,13 @@ msgstr "Total (%(start)s- %(end)s din %(total)s) ( Pagina %(page_number)s din %(
 msgid "Total: %(total)s"
 msgstr "Total: %(total)s"
 
-#: templates/appearance/list_toolbar.html:16
+#: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Selectați / Deselectați toate"
+
+#: templates/appearance/list_toolbar.html:17
+msgid "Toggle list display mode"
+msgstr "Comutați modul afișare listă"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
@@ -303,18 +361,18 @@ msgstr "Comutare navigare"
 msgid "No results"
 msgstr "Fără rezultate"
 
-#: templates/appearance/root.html:61
+#: templates/appearance/root.html:63
 msgid "Close"
 msgstr "Închide"
 
-#: templates/appearance/root.html:71
+#: templates/appearance/root.html:73
 msgid "Server communication error"
 msgstr "Eroare de comunicare cu server-ul"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
 msgstr "Verificați conexiunea la rețea și încercați din nou în câteva momente."
 
-#: templatetags/appearance_tags.py:17
+#: templatetags/appearance_tags.py:42
 msgid "None"
 msgstr "Nici unul"

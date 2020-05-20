@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from .development import *  # NOQA
+from .base import *  # NOQA
 
 # Stop debug toolbar patching!
 # see https://github.com/django-debug-toolbar/django-debug-toolbar/issues/524

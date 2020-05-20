@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from rest_framework import status
 
 from mayan.apps.permissions.tests.literals import TEST_ROLE_LABEL

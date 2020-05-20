@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import os
 
 from django.conf import settings
@@ -45,6 +43,7 @@ class SmartSettingsTestCaseMixin(object):
 
     def tearDown(self):
         fs_cleanup(filename=self.test_setting_config_file_object.name)
+        Namespace.invalidate_cache_all()
         super(SmartSettingsTestCaseMixin, self).tearDown()
 
 

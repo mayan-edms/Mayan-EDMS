@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 import uuid
 
@@ -238,7 +236,7 @@ class Document(models.Model):
 
             if new_document:
                 if user:
-                    self.add_as_recent_document_for_user(user)
+                    self.add_as_recent_document_for_user(user=user)
                     event_document_create.commit(
                         actor=user, target=self, action_object=self.document_type
                     )
@@ -271,3 +269,10 @@ class Document(models.Model):
     @property
     def size(self):
         return self.latest_version.size
+
+
+class TrashedDocument(Document):
+    objects = TrashCanManager()
+
+    class Meta:
+        proxy = True

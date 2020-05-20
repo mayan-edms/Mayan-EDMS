@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import tarfile
 import zipfile
 
@@ -224,9 +222,6 @@ Archive.register(
     archive_classes=(MsgArchive,), mime_types=MSG_MIME_TYPES
 )
 Archive.register(
-    archive_classes=(ZipArchive,), mime_types=('application/zip',)
-)
-Archive.register(
     archive_classes=(TarArchive,), mime_types=('application/x-tar',)
 )
 Archive.register(
@@ -234,4 +229,7 @@ Archive.register(
 )
 Archive.register(
     archive_classes=(TarArchive,), mime_types=('application/x-bzip2',)
+)
+Archive.register(
+    archive_classes=(ZipArchive,), mime_types=('application/zip',)
 )

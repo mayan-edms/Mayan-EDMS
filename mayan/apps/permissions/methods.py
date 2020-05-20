@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import transaction
 
 from mayan.apps.user_management.events import event_group_edited

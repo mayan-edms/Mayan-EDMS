@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.db import transaction
@@ -73,7 +71,7 @@ def method_group_users_remove(self, queryset, _user):
 
 def method_user_get_absolute_url(self):
     return reverse(
-        viewname='user_management:user_details', kwargs={'pk': self.pk}
+        viewname='user_management:user_details', kwargs={'user_id': self.pk}
     )
 
 

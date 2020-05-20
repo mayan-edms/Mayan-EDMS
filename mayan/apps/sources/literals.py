@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 DEFAULT_IMAP_MAILBOX = 'INBOX'
@@ -68,3 +66,4 @@ SOURCE_CHOICES = (
     (SOURCE_CHOICE_EMAIL_IMAP, _('IMAP email')),
 )
 STAGING_FILE_IMAGE_TASK_TIMEOUT = 120
+STORAGE_NAME_SOURCE_STAGING_FOLDER_FILE = 'sources__staging_file_image_cache'

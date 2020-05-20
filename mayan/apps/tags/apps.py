@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.apps import apps
 from django.db.models.signals import m2m_changed, pre_delete
 from django.utils.translation import ugettext_lazy as _
@@ -46,6 +44,7 @@ class TagsApp(MayanAppConfig):
     app_namespace = 'tags'
     app_url = 'tags'
     has_rest_api = True
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.tags'
     verbose_name = _('Tags')

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 
 class WorkflowException(Exception):
     """Base exception for the document states app"""

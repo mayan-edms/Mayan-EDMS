@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from ..models import DeletedDocument, Document
 from ..permissions import (
     permission_document_delete, permission_document_restore,

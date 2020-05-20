@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import copy
 
 from ..models import MetadataType
@@ -14,21 +12,21 @@ class DocumentMetadataViewTestMixin(object):
     def _request_test_document_metadata_add_get_view(self):
         return self.get(
             viewname='metadata:metadata_add', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data={'metadata_type': self.test_metadata_type.pk}
         )
 
     def _request_test_document_metadata_add_post_view(self):
         return self.post(
             viewname='metadata:metadata_add', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data={'metadata_type': self.test_metadata_type.pk}
         )
 
     def _request_test_document_metadata_multiple_add_post_view(self):
         return self.post(
             viewname='metadata:metadata_add', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data={
                 'metadata_type': [
                     metadata_type.pk for metadata_type in self.test_metadata_types
@@ -39,7 +37,7 @@ class DocumentMetadataViewTestMixin(object):
     def _request_test_document_metadata_edit_post_view(self):
         return self.post(
             viewname='metadata:metadata_edit', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data={
                 'form-0-id': self.test_metadata_type.pk,
                 'form-0-update': True,
@@ -53,20 +51,21 @@ class DocumentMetadataViewTestMixin(object):
     def _request_test_document_metadata_list_view(self):
         return self.get(
             viewname='metadata:metadata_view', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
     def _request_test_document_metadata_remove_get_view(self):
         return self.get(
-            viewname='metadata:metadata_remove',
-            kwargs={'pk': self.test_document.pk}
+            viewname='metadata:metadata_remove', kwargs={
+                'document_id': self.test_document.pk
+            }
         )
 
     def _request_test_document_metadata_remove_post_view(self, index=0):
         return self.post(
             viewname='metadata:metadata_remove',
-            kwargs={'pk': self.test_document.pk}, data={
+            kwargs={'document_id': self.test_document.pk}, data={
                 'form-0-id': self.test_metadata_types[index].pk,
                 'form-0-update': True,
                 'form-TOTAL_FORMS': '1',
@@ -191,6 +190,19 @@ class MetadataTypeViewTestMixin(object):
             TEST_METADATA_TYPES_FIXTURES
         )
 
+    def _request_test_document_type_relationship_edit_view(self):
+        # This request assumes there is only one document type and
+        # blindly sets the first form of the formset.
+
+        return self.post(
+            viewname='metadata:setup_document_type_metadata_types',
+            kwargs={'document_type_id': self.test_document_type.pk}, data={
+                'form-TOTAL_FORMS': '1',
+                'form-INITIAL_FORMS': '0',
+                'form-0-relationship_type': 'required'
+            }
+        )
+
     def _request_test_metadata_type_create_view(self):
         return self.post(
             viewname='metadata:setup_metadata_type_create',
@@ -200,14 +212,14 @@ class MetadataTypeViewTestMixin(object):
     def _request_test_metadata_type_delete_view(self):
         return self.post(
             viewname='metadata:setup_metadata_type_delete', kwargs={
-                'pk': self.test_metadata_type.pk
+                'metadata_type_id': self.test_metadata_type.pk
             }
         )
 
     def _request_test_metadata_type_edit_view(self):
         return self.post(
             viewname='metadata:setup_metadata_type_edit', kwargs={
-                'pk': self.test_metadata_type.pk
+                'metadata_type_id': self.test_metadata_type.pk
             }, data={
                 'label': TEST_METADATA_TYPE_LABEL_EDITED,
                 'name': TEST_METADATA_TYPE_NAME_EDITED
@@ -225,7 +237,7 @@ class MetadataTypeViewTestMixin(object):
 
         return self.post(
             viewname='metadata:setup_metadata_type_document_types',
-            kwargs={'pk': self.test_metadata_type.pk}, data={
+            kwargs={'metadata_type_id': self.test_metadata_type.pk}, data={
                 'form-TOTAL_FORMS': '1',
                 'form-INITIAL_FORMS': '0',
                 'form-0-relationship_type': 'required'

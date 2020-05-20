@@ -1,10 +1,7 @@
-from __future__ import unicode_literals
-
 from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('common', '0004_delete_anonymoususersingleton'),
     ]

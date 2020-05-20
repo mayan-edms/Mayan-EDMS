@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import fcntl
 from multiprocessing import Process
 from pathlib import Path

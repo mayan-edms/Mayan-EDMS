@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.urls import reverse
 
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
@@ -57,7 +55,7 @@ class DocumentSignatureLinksTestCase(
             reverse(
                 viewname=link_document_version_signature_details.view,
                 kwargs={
-                    'pk': self.test_document.latest_version.signatures.first().pk,
+                    'signature_id': self.test_document.latest_version.signatures.first().pk,
                 }
             )
         )
@@ -101,7 +99,7 @@ class DocumentSignatureLinksTestCase(
             reverse(
                 viewname=link_document_version_signature_delete.view,
                 kwargs={
-                    'pk': self.test_document.latest_version.signatures.first().pk,
+                    'signature_id': self.test_document.latest_version.signatures.first().pk,
                 }
             )
         )

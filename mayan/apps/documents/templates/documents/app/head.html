@@ -1,0 +1,25 @@
+{% load smart_settings_tags %}
+
+{% smart_setting global_name='DOCUMENTS_LIST_THUMBNAIL_WIDTH' as thumbnail_width %}
+
+<style>
+    .document-thumbnail-list {
+        width: {{ thumbnail_width }}px;
+        margin: auto;
+    }
+
+    .document-thumbnail-list a.fancybox span.instance-image-widget span.spinner-container {
+        height: 100% !important;
+    }
+
+    .document-thumbnail-list div.text-center div.fa-4x {
+        font-size: 0px;
+    }
+
+    .document-thumbnail-list div.text-center div.fa-4x span.fa-layers {
+        font-size: {% if thumbnail_width < '50' %}{{ thumbnail_width }}{% else %}50{% endif %}px;
+        {#font-size: {{ thumbnail_width }}px;#}
+        margin: 0px;
+        margin-left: -5px;
+    }
+</style>

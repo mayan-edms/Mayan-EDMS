@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.contrib import messages
@@ -15,6 +13,7 @@ from mayan.apps.common.generics import (
     AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
@@ -40,7 +39,7 @@ class DocumentTypeSmartLinksView(AddRemoveView):
     main_object_method_remove = 'smart_link_remove'
     main_object_permission = permission_document_type_edit
     main_object_model = DocumentType
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'document_type_id'
     secondary_object_model = SmartLink
     secondary_object_permission = permission_smart_link_edit
     list_available_title = _('Available smart links')
@@ -81,24 +80,13 @@ class DocumentTypeSmartLinksView(AddRemoveView):
         }
 
 
-class ResolvedSmartLinkView(DocumentListView):
+class ResolvedSmartLinkView(ExternalObjectMixin, DocumentListView):
+    external_object_class = Document
+    external_object_permission = permission_document_view
+    external_object_pk_url_kwarg = 'document_id'
+
     def dispatch(self, request, *args, **kwargs):
-        self.document = get_object_or_404(
-            klass=Document, pk=self.kwargs['document_pk']
-        )
-        self.smart_link = get_object_or_404(
-            klass=SmartLink, pk=self.kwargs['smart_link_pk']
-        )
-
-        AccessControlList.objects.check_access(
-            obj=self.document, permissions=(permission_document_view,),
-            user=request.user
-        )
-
-        AccessControlList.objects.check_access(
-            obj=self.smart_link, permissions=(permission_smart_link_view,),
-            user=request.user
-        )
+        self.smart_link = self.get_smart_link()
 
         return super(
             ResolvedSmartLinkView, self
@@ -106,10 +94,14 @@ class ResolvedSmartLinkView(DocumentListView):
 
     def get_document_queryset(self):
         try:
-            queryset = self.smart_link.get_linked_document_for(self.document)
+            queryset = self.smart_link.get_linked_document_for(
+                document=self.external_object
+            )
         except Exception as exception:
             queryset = Document.objects.none()
 
+            # Check if the user has the smart link edit permission before
+            # showing the exception text.
             try:
                 AccessControlList.objects.check_access(
                     obj=self.smart_link,
@@ -117,7 +109,7 @@ class ResolvedSmartLinkView(DocumentListView):
                     user=self.request.user
                 )
             except PermissionDenied:
-                pass
+                """User doesn't have the required permission."""
             else:
                 messages.error(
                     message=_('Smart link query error: %s' % exception),
@@ -127,7 +119,9 @@ class ResolvedSmartLinkView(DocumentListView):
         return queryset
 
     def get_extra_context(self):
-        dynamic_label = self.smart_link.get_dynamic_label(self.document)
+        dynamic_label = self.smart_link.get_dynamic_label(
+            document=self.external_object
+        )
         if dynamic_label:
             title = _('Documents in smart link: %s') % dynamic_label
         else:
@@ -135,26 +129,37 @@ class ResolvedSmartLinkView(DocumentListView):
                 'Documents in smart link "%(smart_link)s" as related to '
                 '"%(document)s"'
             ) % {
-                'document': self.document,
+                'document': self.external_object,
                 'smart_link': self.smart_link.label,
             }
 
         context = super(ResolvedSmartLinkView, self).get_extra_context()
         context.update(
             {
-                'object': self.document,
+                'object': self.external_object,
                 'title': title,
             }
         )
         return context
 
+    def get_smart_link(self):
+        queryset = AccessControlList.objects.restrict_queryset(
+            permission=permission_smart_link_view,
+            queryset=SmartLink.objects.filter(enabled=True),
+            user=self.request.user
+        )
 
-class SetupSmartLinkDocumentTypesView(AddRemoveView):
+        return get_object_or_404(
+            klass=queryset, pk=self.kwargs['smart_link_id']
+        )
+
+
+class SmartLinkDocumentTypesView(AddRemoveView):
     main_object_method_add = 'document_types_add'
     main_object_method_remove = 'document_types_remove'
     main_object_permission = permission_smart_link_edit
     main_object_model = SmartLink
-    main_object_pk_url_kwarg = 'pk'
+    main_object_pk_url_kwarg = 'smart_link_id'
     secondary_object_model = DocumentType
     secondary_object_permission = permission_document_type_edit
     list_available_title = _('Available document types')
@@ -174,6 +179,7 @@ class SetupSmartLinkDocumentTypesView(AddRemoveView):
 
 
 class SmartLinkListView(SingleObjectListView):
+    model = SmartLink
     object_permission = permission_smart_link_view
 
     def get_extra_context(self):
@@ -197,29 +203,15 @@ class SmartLinkListView(SingleObjectListView):
             'title': _('Smart links'),
         }
 
-    def get_source_queryset(self):
-        return self.get_smart_link_queryset()
 
-    def get_smart_link_queryset(self):
-        return SmartLink.objects.all()
-
-
-class DocumentSmartLinkListView(SmartLinkListView):
-    def dispatch(self, request, *args, **kwargs):
-        self.document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
-
-        AccessControlList.objects.check_access(
-            obj=self.document, permissions=(permission_document_view,),
-            user=request.user
-        )
-
-        return super(
-            DocumentSmartLinkListView, self
-        ).dispatch(request, *args, **kwargs)
+class DocumentSmartLinkListView(ExternalObjectMixin, SmartLinkListView):
+    external_object_class = Document
+    external_object_permission = permission_document_view
+    external_object_pk_url_kwarg = 'document_id'
 
     def get_extra_context(self):
         return {
-            'document': self.document,
+            'document': self.external_object,
             'hide_link': True,
             'hide_object': True,
             'no_results_icon': icon_smart_link_setup,
@@ -231,12 +223,16 @@ class DocumentSmartLinkListView(SmartLinkListView):
             'no_results_title': _(
                 'There are no smart links for this document'
             ),
-            'object': self.document,
-            'title': _('Smart links for document: %s') % self.document,
+            'object': self.external_object,
+            'title': _('Smart links for document: %s') % self.external_object,
         }
 
-    def get_smart_link_queryset(self):
-        return ResolvedSmartLink.objects.get_for(document=self.document)
+    def get_source_queryset(self):
+        # Override SingleObjectListView source queryset from SmartLink to
+        # ResolvedSmartLink.
+        return ResolvedSmartLink.objects.get_for(
+            document=self.external_object
+        )
 
 
 class SmartLinkCreateView(SingleObjectCreateView):
@@ -254,14 +250,15 @@ class SmartLinkCreateView(SingleObjectCreateView):
 class SmartLinkDeleteView(SingleObjectDeleteView):
     model = SmartLink
     object_permission = permission_smart_link_delete
+    pk_url_kwarg = 'smart_link_id'
     post_action_redirect = reverse_lazy(
         viewname='linking:smart_link_list'
     )
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Delete smart link: %s') % self.get_object()
+            'object': self.object,
+            'title': _('Delete smart link: %s') % self.object
         }
 
 
@@ -269,22 +266,25 @@ class SmartLinkEditView(SingleObjectEditView):
     form_class = SmartLinkForm
     model = SmartLink
     object_permission = permission_smart_link_edit
+    pk_url_kwarg = 'smart_link_id'
     post_action_redirect = reverse_lazy(
         viewname='linking:smart_link_list'
     )
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit smart link: %s') % self.get_object()
+            'object': self.object,
+            'title': _('Edit smart link: %s') % self.object
         }
 
     def get_save_extra_data(self):
         return {'_user': self.request.user}
 
 
-class SmartLinkConditionListView(SingleObjectListView):
-    object_permission = permission_smart_link_edit
+class SmartLinkConditionListView(ExternalObjectMixin, SingleObjectListView):
+    external_object_class = SmartLink
+    external_object_permission = permission_smart_link_edit
+    external_object_pk_url_kwarg = 'smart_link_id'
 
     def get_extra_context(self):
         return {
@@ -294,7 +294,7 @@ class SmartLinkConditionListView(SingleObjectListView):
             'no_results_main_link': link_smart_link_condition_create.resolve(
                 context=RequestContext(
                     request=self.request, dict_={
-                        'object': self.get_smart_link()
+                        'object': self.external_object
                     }
                 )
             ),
@@ -305,114 +305,86 @@ class SmartLinkConditionListView(SingleObjectListView):
             'no_results_title': _(
                 'There are no conditions for this smart link'
             ),
-            'object': self.get_smart_link(),
+            'object': self.external_object,
             'title': _(
                 'Conditions for smart link: %s'
-            ) % self.get_smart_link(),
+            ) % self.external_object,
         }
 
     def get_source_queryset(self):
-        return self.get_smart_link().conditions.all()
-
-    def get_smart_link(self):
-        return get_object_or_404(klass=SmartLink, pk=self.kwargs['pk'])
+        return self.external_object.conditions.all()
 
 
-class SmartLinkConditionCreateView(SingleObjectCreateView):
+class SmartLinkConditionCreateView(
+    ExternalObjectMixin, SingleObjectCreateView
+):
+    external_object_class = SmartLink
+    external_object_permission = permission_smart_link_edit
+    external_object_pk_url_kwarg = 'smart_link_id'
     form_class = SmartLinkConditionForm
-
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_smart_link(),
-            permissions=(permission_smart_link_edit,),
-            user=request.user
-        )
-
-        return super(
-            SmartLinkConditionCreateView, self
-        ).dispatch(request, *args, **kwargs)
 
     def get_extra_context(self):
         return {
             'title': _(
                 'Add new conditions to smart link: "%s"'
-            ) % self.get_smart_link(),
-            'object': self.get_smart_link(),
+            ) % self.external_object,
+            'object': self.external_object,
         }
 
     def get_instance_extra_data(self):
-        return {'smart_link': self.get_smart_link()}
+        return {'smart_link': self.external_object}
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='linking:smart_link_condition_list', kwargs={
-                'pk': self.get_smart_link().pk
+                'smart_link_id': self.external_object.pk
             }
         )
 
     def get_queryset(self):
-        return self.get_smart_link().conditions.all()
+        return self.external_object.conditions.all()
 
-    def get_smart_link(self):
-        return get_object_or_404(klass=SmartLink, pk=self.kwargs['pk'])
+
+class SmartLinkConditionDeleteView(SingleObjectDeleteView):
+    model = SmartLinkCondition
+    object_permission = permission_smart_link_edit
+    pk_url_kwarg = 'smart_link_condition_id'
+
+    def get_extra_context(self):
+        return {
+            'condition': self.object,
+            'navigation_object_list': ('object', 'condition'),
+            'object': self.object.smart_link,
+            'title': _(
+                'Delete smart link condition: "%s"?'
+            ) % self.object,
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='linking:smart_link_condition_list', kwargs={
+                'smart_link_id': self.object.smart_link.pk
+            }
+        )
 
 
 class SmartLinkConditionEditView(SingleObjectEditView):
     form_class = SmartLinkConditionForm
     model = SmartLinkCondition
-
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_object().smart_link,
-            permissions=(permission_smart_link_edit,), user=request.user
-        )
-
-        return super(
-            SmartLinkConditionEditView, self
-        ).dispatch(request, *args, **kwargs)
+    object_permission = permission_smart_link_edit
+    pk_url_kwarg = 'smart_link_condition_id'
 
     def get_extra_context(self):
         return {
-            'condition': self.get_object(),
+            'condition': self.object,
             'navigation_object_list': ('object', 'condition'),
-            'object': self.get_object().smart_link,
+            'object': self.object.smart_link,
             'title': _('Edit smart link condition'),
         }
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='linking:smart_link_condition_list', kwargs={
-                'pk': self.get_object().smart_link.pk
-            }
-        )
-
-
-class SmartLinkConditionDeleteView(SingleObjectDeleteView):
-    model = SmartLinkCondition
-
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_object().smart_link,
-            permissions=(permission_smart_link_edit,), user=request.user
-        )
-
-        return super(
-            SmartLinkConditionDeleteView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_extra_context(self):
-        return {
-            'condition': self.get_object(),
-            'navigation_object_list': ('object', 'condition'),
-            'object': self.get_object().smart_link,
-            'title': _(
-                'Delete smart link condition: "%s"?'
-            ) % self.get_object(),
-        }
-
-    def get_post_action_redirect(self):
-        return reverse(
-            viewname='linking:smart_link_condition_list', kwargs={
-                'pk': self.get_object().smart_link.pk
+                'smart_link_id': self.object.smart_link.pk
             }
         )

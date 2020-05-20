@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from ..models import Key
 
 from .literals import TEST_KEY_PRIVATE_DATA, TEST_KEY_PUBLIC_FILE_PATH
@@ -45,7 +43,7 @@ class KeyViewTestMixin(object):
     def _request_test_key_download_view(self):
         return self.get(
             viewname='django_gpg:key_download', kwargs={
-                'pk': self.test_key_private.pk
+                'key_id': self.test_key_private.pk
             }
         )
 

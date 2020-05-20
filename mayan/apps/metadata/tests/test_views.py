@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from furl import furl
 
 from django.urls import reverse
@@ -127,7 +125,7 @@ class DocumentMetadataViewTestCase(
         self.assertRedirects(
             response=response, expected_url=reverse(
                 viewname='metadata:metadata_edit', kwargs={
-                    'pk': self.test_document.pk
+                    'document_id': self.test_document.pk
                 }
             ), status_code=302,
             target_status_code=404
@@ -290,13 +288,13 @@ class DocumentMetadataViewTestCase(
 
         response = self.get(
             viewname='metadata:metadata_edit', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, follow=True
         )
         self.assertContains(response=response, text='Edit', status_code=200)
 
         response = self.post(
-            'metadata:metadata_edit', kwargs={'pk': self.test_document.pk},
+            'metadata:metadata_edit', kwargs={'document_id': self.test_document.pk},
             data={
                 'form-0-id': document_metadata_2.metadata_type.pk,
                 'form-0-update': True,
@@ -330,7 +328,7 @@ class DocumentMetadataViewTestCase(
         self.assertRedirects(
             response=response, expected_url=reverse(
                 viewname='metadata:metadata_view', kwargs={
-                    'pk': self.test_document.pk
+                    'document_id': self.test_document.pk
                 }
             ), status_code=302,
             target_status_code=404
@@ -550,7 +548,7 @@ class DocumentMetadataViewTestCase(
         self.assertRedirects(
             response=response, expected_url=reverse(
                 viewname='metadata:metadata_view', kwargs={
-                    'pk': self.test_document.pk
+                    'document_id': self.test_document.pk
                 }
             ), status_code=302,
             target_status_code=404
@@ -763,6 +761,80 @@ class DocumentMetadataRequiredTestCase(
         )
 
 
+class DocumentTypeMetadataTypeViewTestCase(
+    MetadataTypeViewTestMixin, MetadataTypeTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def test_document_type_relationship_view_no_permission(self):
+        self._create_test_metadata_type()
+        self._upload_test_document()
+
+        response = self._request_test_document_type_relationship_edit_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.test_document_type.refresh_from_db()
+        self.assertEqual(self.test_document_type.metadata.count(), 0)
+
+    def test_document_type_relationship_view_with_metadata_type_access(self):
+        self._create_test_metadata_type()
+        self._upload_test_document()
+
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
+        )
+
+        response = self._request_test_document_type_relationship_edit_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.test_document_type.refresh_from_db()
+        self.assertEqual(self.test_document_type.metadata.count(), 0)
+
+    def test_document_type_relationship_view_with_document_type_access(self):
+        self._create_test_metadata_type()
+        self._upload_test_document()
+
+        self.grant_access(
+            obj=self.test_document_type, permission=permission_document_type_edit
+        )
+
+        response = self._request_test_document_type_relationship_edit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_document_type.refresh_from_db()
+        self.assertEqual(self.test_document_type.metadata.count(), 0)
+
+    def test_document_type_relationship_view_with_document_type_and_metadata_type_access(self):
+        self._create_test_metadata_type()
+        self._upload_test_document()
+
+        self.grant_access(
+            obj=self.test_document_type, permission=permission_document_type_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
+        )
+
+        response = self._request_test_document_type_relationship_edit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_document_type.refresh_from_db()
+        self.assertQuerysetEqual(
+            qs=self.test_document_type.metadata.values(
+                'metadata_type', 'required'
+            ),
+            values=[
+                {
+                    'metadata_type': self.test_metadata_type.pk,
+                    'required': True,
+                }
+            ], transform=dict
+        )
+
+
 class MetadataTypeViewTestCase(
     MetadataTypeViewTestMixin, MetadataTypeTestMixin, GenericViewTestCase
 ):
@@ -936,7 +1008,9 @@ class MetadataTypeDocumentTypeViewTestCase(
 
         self.test_document_type.refresh_from_db()
         self.assertQuerysetEqual(
-            qs=self.test_document_type.metadata.values('metadata_type', 'required'),
+            qs=self.test_document_type.metadata.values(
+                'metadata_type', 'required'
+            ),
             values=[
                 {
                     'metadata_type': self.test_metadata_type.pk,

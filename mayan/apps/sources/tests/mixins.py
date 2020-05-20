@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import shutil
 
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
@@ -14,6 +12,23 @@ from .literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_LABEL_EDITED, TEST_SOURCE_UNCOMPRESS_N,
     TEST_STAGING_PREVIEW_WIDTH
 )
+
+
+class DocumentVersionUploadViewTestMixin(object):
+    def _request_document_version_upload_view(self, source_file):
+        return self.post(
+            viewname='sources:document_version_upload', kwargs={
+                'document_id': self.test_document.pk,
+                'source_id': self.test_source.pk,
+            }, data={'source-file': source_file}
+        )
+
+    def _request_document_version_upload_no_source_view(self, source_file):
+        return self.post(
+            viewname='sources:document_version_upload', kwargs={
+                'document_id': self.test_document.pk,
+            }, data={'source-file': source_file}
+        )
 
 
 class DocumentUploadWizardViewTestMixin(object):

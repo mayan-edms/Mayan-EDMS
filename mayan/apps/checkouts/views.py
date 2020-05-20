@@ -1,9 +1,8 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.exceptions import ActionError
 from mayan.apps.common.generics import (
     MultipleObjectConfirmActionView, MultipleObjectFormActionView,
     SingleObjectDetailView
@@ -11,6 +10,7 @@ from mayan.apps.common.generics import (
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.views.document_views import DocumentListView
 
+from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from .forms import DocumentCheckOutForm, DocumentCheckOutDetailForm
 from .icons import icon_check_out_info
 from .models import DocumentCheckout
@@ -23,7 +23,7 @@ from .permissions import (
 class DocumentCheckInView(MultipleObjectConfirmActionView):
     error_message = 'Unable to check in document "%(instance)s". %(exception)s'
     model = Document
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'document_id'
     success_message_singular = '%(count)d document checked in.'
     success_message_plural = '%(count)d documents checked in.'
 
@@ -55,8 +55,9 @@ class DocumentCheckInView(MultipleObjectConfirmActionView):
     def get_post_object_action_url(self):
         if self.action_count == 1:
             return reverse(
-                viewname='checkouts:check_out_info',
-                kwargs={'pk': self.action_id_list[0]}
+                viewname='checkouts:check_out_info', kwargs={
+                    'document_id': self.action_id_list[0]
+                }
             )
         else:
             super(DocumentCheckInView, self).get_post_action_redirect()
@@ -80,9 +81,12 @@ class DocumentCheckInView(MultipleObjectConfirmActionView):
         return check_in_queryset | check_in_override_queryset
 
     def object_action(self, form, instance):
-        DocumentCheckout.business_logic.check_in_document(
-            document=instance, user=self.request.user
-        )
+        try:
+            DocumentCheckout.business_logic.check_in_document(
+                document=instance, user=self.request.user
+            )
+        except DocumentNotCheckedOut as exception:
+            raise ActionError(exception)
 
 
 class DocumentCheckOutView(MultipleObjectFormActionView):
@@ -90,7 +94,7 @@ class DocumentCheckOutView(MultipleObjectFormActionView):
     form_class = DocumentCheckOutForm
     model = Document
     object_permission = permission_document_check_out
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = 'document_id'
     success_message_singular = '%(count)d document checked out.'
     success_message_plural = '%(count)d documents checked out.'
 
@@ -122,25 +126,30 @@ class DocumentCheckOutView(MultipleObjectFormActionView):
     def get_post_object_action_url(self):
         if self.action_count == 1:
             return reverse(
-                viewname='checkouts:check_out_info',
-                kwargs={'pk': self.action_id_list[0]}
+                viewname='checkouts:check_out_info', kwargs={
+                    'document_id': self.action_id_list[0]
+                }
             )
         else:
             super(DocumentCheckOutView, self).get_post_action_redirect()
 
     def object_action(self, form, instance):
-        DocumentCheckout.objects.check_out_document(
-            block_new_version=form.cleaned_data['block_new_version'],
-            document=instance,
-            expiration_datetime=form.cleaned_data['expiration_datetime'],
-            user=self.request.user,
-        )
+        try:
+            DocumentCheckout.objects.check_out_document(
+                block_new_version=form.cleaned_data['block_new_version'],
+                document=instance,
+                expiration_datetime=form.cleaned_data['expiration_datetime'],
+                user=self.request.user,
+            )
+        except DocumentAlreadyCheckedOut as exception:
+            raise ActionError(exception)
 
 
 class DocumentCheckOutDetailView(SingleObjectDetailView):
     form_class = DocumentCheckOutDetailForm
     model = Document
     object_permission = permission_document_check_out_detail_view
+    pk_url_kwarg = 'document_id'
 
     def get_extra_context(self):
         return {

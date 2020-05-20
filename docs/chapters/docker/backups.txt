@@ -4,26 +4,29 @@
 Performing backups
 ==================
 
+To perform a backing up of a Mayan EDMS installation, two things need to be
+backed up:
+
 #. Document files
 
    To backup the existing data, stop the image and copy the content of the volume.
-   For the example::
+   For the example, if you launched the container in this way:
+
+   .. code-block:: console
 
        docker run -d --name mayan-edms --restart=always -p 80:8000 \
        -v /docker-volumes/mayan:/var/lib/mayan \
        -v /opt/scanned_files:/scanned_files mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
 
-   That would be the ``/docker-volumes/mayan folder``::
+   that would be the ``/docker-volumes/mayan`` folder:
+
+    .. code-block:: console
 
        sudo tar -zcvf backup.tar.gz /docker-volumes/mayan
-       sudo chown `whoami` backup.tar.gz
 
 #. Database
 
-   If using an external PostgreSQL or MySQL database or database containers, these
-   too need to be backed up using their respective procedures. A simple solution
-   is to copy the entire database container volume after the container has
-   been stopped.
+   Use the database vendor's respective backup procedures or utilities.
 
    - PostgreSQL: https://www.postgresql.org/docs/current/backup-dump.html
    - MySQL: https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html
@@ -36,12 +39,16 @@ Restoring from a backup
 
 #. Document files
 
-   Uncompress the backup archive in the original docker volume using::
+   Uncompress the backup archive in the original docker volume using:
+
+   .. code-block:: console
 
        sudo tar -xvzf backup.tar.gz -C /
 
 
 #. Database
+
+   Use the database vendor's respective restore procedures or utilities.
 
    - PostgreSQL: https://www.postgresql.org/docs/current/backup-dump.html
    - MySQL: https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html

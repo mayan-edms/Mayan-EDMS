@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
@@ -91,14 +89,6 @@ class FileMetadataApp(MayanAppConfig):
             value=method_document_version_submit
         )
 
-        ModelProperty(
-            model=Document,
-            name='file_metadata_value_of.< underscore separated driver name and property name >',
-            description=_(
-                'Return the value of a specific file metadata.'
-            ), label=_('File metadata value of')
-        )
-
         ModelEventType.register(
             model=Document, event_types=(
                 event_file_metadata_document_version_finish,
@@ -132,6 +122,14 @@ class FileMetadataApp(MayanAppConfig):
         )
         ModelPermission.register_inheritance(
             model=DocumentVersionDriverEntry, related='document_version',
+        )
+
+        ModelProperty(
+            model=Document,
+            name='file_metadata_value_of.< underscore separated driver name and property name >',
+            description=_(
+                'Return the value of a specific file metadata.'
+            ), label=_('File metadata value of')
         )
 
         SourceColumn(

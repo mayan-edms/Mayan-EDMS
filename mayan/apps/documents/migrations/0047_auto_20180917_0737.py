@@ -1,11 +1,8 @@
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 import django.utils.timezone
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0046_auto_20180917_0713'),
     ]

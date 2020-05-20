@@ -4,10 +4,21 @@ Mirroring
 
 Indexes can be exported as `FUSE <https://en.wikipedia.org/wiki/Filesystem_in_Userspace>`_
 filesystems. Using the management command ``mountindex`` we could export the
-previous example index as follows::
+previous example index as follows:
+
+.. code-block:: console
 
     mkdir -p ~/indexes/products
     mayan-edms.py mountindex product-sheets-per-year ~/indexes/products
+
+.. note::
+
+   The ``mountindex`` command works in a similar way to the operating system
+   ``mount`` command. That is, it will not produce output when used. However,
+   unlike the ``mount`` command, it will run in the foreground which might
+   give the impression of the command "freezing" and not working. It is also
+   possible to use the ``&`` operator to run ``mountindex`` in the background.
+
 
 The ``~/indexes/products`` directory will now have a directory and files structure
 identical to that of the index. Once indexes are mounted with this command, they

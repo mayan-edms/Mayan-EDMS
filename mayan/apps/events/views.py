@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.http import Http404, HttpResponseRedirect
@@ -125,7 +123,9 @@ class NotificationListView(SingleObjectListView):
 
 class NotificationMarkRead(SimpleView):
     def dispatch(self, *args, **kwargs):
-        self.get_queryset().filter(pk=self.kwargs['pk']).update(read=True)
+        self.get_queryset().filter(
+            pk=self.kwargs['notification_id']
+        ).update(read=True)
         return HttpResponseRedirect(
             redirect_to=reverse(viewname='events:user_notifications_list')
         )

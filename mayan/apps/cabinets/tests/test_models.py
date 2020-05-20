@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.core.exceptions import ValidationError
 
 from mayan.apps.common.tests.base import BaseTestCase
@@ -45,6 +43,11 @@ class CabinetTestCase(CabinetTestMixin, BaseTestCase):
             Cabinet.objects.all(),
             map(repr, (self.test_cabinet, inner_cabinet))
         )
+
+    def test_method_get_absolute_url(self):
+        self._create_test_cabinet()
+
+        self.assertTrue(self.test_cabinet.get_absolute_url())
 
 
 class CabinetDocumentTestCase(

@@ -10,7 +10,7 @@ Changes
 Converter
 ^^^^^^^^^
 
-A new was added to the ``CONVERTER_GRAPHICS_BACKEND_ARGUMENTS`` setting to
+A new option was added to the ``CONVERTER_GRAPHICS_BACKEND_ARGUMENTS`` setting to
 allow passing a maximum image pixel count to Pillow. The entry
 is called ``'pillow_maximum_image_pixels'`` and defaults to 89478485. This
 entry is used to increase the threshold upon which Pillow with trigger the

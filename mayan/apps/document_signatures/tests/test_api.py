@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from rest_framework import status
 
 from mayan.apps.django_gpg.permissions import permission_key_sign

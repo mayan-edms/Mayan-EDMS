@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.smart_settings.classes import NamespaceMigration
 from mayan.apps.smart_settings.utils import smart_yaml_load
 

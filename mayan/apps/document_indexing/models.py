@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.db import models, transaction
@@ -89,8 +87,9 @@ class Index(models.Model):
     def get_absolute_url(self):
         try:
             return reverse(
-                viewname='indexing:index_instance_node_view',
-                kwargs={'pk': self.instance_root.pk}
+                viewname='indexing:index_instance_node_view', kwargs={
+                    'index_instance_node_id': self.instance_root.pk
+                }
             )
         except IndexInstanceNode.DoesNotExist:
             return '#'
@@ -382,8 +381,8 @@ class IndexInstanceNode(MPTTModel):
     objects = IndexInstanceNodeManager()
 
     class Meta:
-        verbose_name = _('Index node instance')
-        verbose_name_plural = _('Indexes node instances')
+        verbose_name = _('Index instance node')
+        verbose_name_plural = _('Indexes instances node')
 
     def __str__(self):
         return self.value
@@ -415,7 +414,7 @@ class IndexInstanceNode(MPTTModel):
     def get_absolute_url(self):
         return reverse(
             viewname='indexing:index_instance_node_view', kwargs={
-                'pk': self.pk
+                'index_instance_node_id': self.pk
             }
         )
 
@@ -444,6 +443,10 @@ class IndexInstanceNode(MPTTModel):
                 result.append(force_text(node))
 
         return ' / '.join(result)
+    get_full_path.help_text = _(
+        'The path to the index including all ancestors.'
+    )
+    get_full_path.short_description = _('Full path')
 
     def get_item_count(self, user):
         if self.index_template_node.link_documents:
@@ -499,3 +502,10 @@ class DocumentIndexInstanceNode(IndexInstanceNode):
         proxy = True
         verbose_name = _('Document index node instance')
         verbose_name_plural = _('Document indexes node instances')
+
+
+class IndexInstanceNodeSearchResult(IndexInstanceNode):
+    class Meta:
+        proxy = True
+        verbose_name = _('Index instance node')
+        verbose_name_plural = _('Index instance nodes')

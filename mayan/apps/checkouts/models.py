@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.conf import settings
@@ -75,8 +73,8 @@ class DocumentCheckout(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='checkout:checkout_info', kwargs={
-                'pk': self.document.pk
+            viewname='checkouts:check_out_info', kwargs={
+                'document_id': self.document.pk
             }
         )
 

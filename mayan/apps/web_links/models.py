@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import models, transaction
 from django.template import Context, Template
 from django.urls import reverse
@@ -69,8 +67,8 @@ class WebLink(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='weblinks:web_link_edit', kwargs={
-                'pk': self.pk
+            viewname='web_links:web_link_edit', kwargs={
+                'web_link_id': self.pk
             }
         )
 

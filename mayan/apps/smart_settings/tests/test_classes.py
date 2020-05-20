@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from pathlib import Path
 
 from django.conf import settings

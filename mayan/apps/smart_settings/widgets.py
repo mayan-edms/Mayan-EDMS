@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.html import format_html
 
 

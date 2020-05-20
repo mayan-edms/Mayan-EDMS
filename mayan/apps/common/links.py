@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
@@ -25,7 +23,7 @@ def get_kwargs_factory(variable_name):
         )
         return {
             'app_label': '"{}"'.format(content_type.app_label),
-            'model': '"{}"'.format(content_type.model),
+            'model_name': '"{}"'.format(content_type.model),
             'object_id': '{}.pk'.format(variable_name)
         }
 

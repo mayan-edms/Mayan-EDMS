@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import inspect
 import logging
 
@@ -26,7 +24,7 @@ from mayan.apps.common.literals import (
     TEXT_SORT_ORDER_PARAMETER, TEXT_SORT_ORDER_VARIABLE_NAME
 )
 from mayan.apps.common.settings import setting_home_view
-from mayan.apps.common.utils import resolve_attribute
+from mayan.apps.common.utils import get_related_field, resolve_attribute
 from mayan.apps.permissions import Permission
 
 from .html_widgets import SourceColumnLinkWidget
@@ -553,7 +551,7 @@ class ResolvedLink(object):
 
     @property
     def html_extra_classes(self):
-        return self.link.html_extra_classes
+        return self.link.html_extra_classes or ''
 
     @property
     def icon_class(self):
@@ -738,6 +736,17 @@ class SourceColumn(object):
 
         self._calculate_label()
         self._calculate_help_text()
+        if self.is_sortable:
+            field_name = self.sort_field or self.attribute
+            try:
+                get_related_field(
+                    model=self.source, related_field_name=field_name
+                )
+            except FieldDoesNotExist as exception:
+                raise ImproperlyConfigured(
+                    '"{}" is not a field or "{}", cannot be used as a '
+                    'sortable column.'.format(field_name, self.source)
+                ) from exception
 
     def _calculate_help_text(self):
         if not self._help_text:
@@ -868,7 +877,7 @@ class Text(Link):
     Menu text. Renders to a plain <li> tag
     """
     def __init__(self, *args, **kwargs):
-        self.html_extra_classes = kwargs.get('html_extra_classes')
+        self.html_extra_classes = kwargs.get('html_extra_classes', '')
         self.icon = None
         self.text = kwargs.get('text')
         self.view = None

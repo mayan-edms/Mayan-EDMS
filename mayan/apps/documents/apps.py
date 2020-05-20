@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.db.models.signals import post_delete, post_migrate
 from django.utils.translation import ugettext_lazy as _
 
@@ -97,6 +95,7 @@ from .links.trashed_document_links import (
     link_document_multiple_trash, link_document_restore, link_document_trash,
     link_trash_can_empty
 )
+
 from .menus import menu_documents
 from .permissions import (
     permission_document_create, permission_document_delete,
@@ -302,7 +301,8 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
-            ), label=_('Thumbnail'), source=DocumentPage
+            ), html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), source=DocumentPage
         )
         SourceColumn(
             attribute='enabled', include_label=True, source=DocumentPage,
@@ -319,7 +319,8 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
-            ), label=_('Thumbnail'), source=DocumentPageResult
+            ), html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), source=DocumentPageResult
         )
         SourceColumn(
             attribute='document_version.document.document_type',
@@ -365,7 +366,8 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
-            ), label=_('Thumbnail'), source=DocumentVersion
+            ), html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), source=DocumentVersion
         )
         SourceColumn(
             func=lambda context: widget_document_version_page_number(
@@ -534,7 +536,7 @@ class DocumentsApp(MayanAppConfig):
             ), sources=('documents:document_page_view',)
         )
         menu_facet.bind_links(
-            links=(link_document_page_return, link_document_page_view),
+            links=(link_document_page_view,),
             sources=(DocumentPage,)
         )
         menu_facet.bind_links(
@@ -544,6 +546,9 @@ class DocumentsApp(MayanAppConfig):
                 link_document_page_navigation_next,
                 link_document_page_navigation_last
             ), sources=(DocumentPage,)
+        )
+        menu_list_facet.bind_links(
+            links=(link_transformation_list,), sources=(DocumentPage,)
         )
         menu_multi_item.bind_links(
             links=(
@@ -555,19 +560,20 @@ class DocumentsApp(MayanAppConfig):
             links=(link_document_page_disable, link_document_page_enable),
             sources=(DocumentPage,)
         )
-        menu_list_facet.bind_links(
-            links=(link_transformation_list,), sources=(DocumentPage,)
+        menu_secondary.bind_links(
+            links=(link_document_page_return,),
+            sources=(DocumentPage,)
         )
 
         # Document versions
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
+            links=(link_document_version_view,), sources=(DocumentVersion,)
+        )
+        menu_secondary.bind_links(
             links=(
                 link_document_version_return_document,
                 link_document_version_return_list
             ), sources=(DocumentVersion,)
-        )
-        menu_list_facet.bind_links(
-            links=(link_document_version_view,), sources=(DocumentVersion,)
         )
 
         post_delete.connect(

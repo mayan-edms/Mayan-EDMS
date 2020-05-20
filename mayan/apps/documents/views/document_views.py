@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from furl import furl
@@ -289,9 +287,9 @@ class DocumentPreviewView(SingleObjectDetailView):
         result = super(
             DocumentPreviewView, self
         ).dispatch(request, *args, **kwargs)
-        self.get_object().add_as_recent_document_for_user(request.user)
+        self.object.add_as_recent_document_for_user(request.user)
         event_document_view.commit(
-            actor=request.user, target=self.get_object()
+            actor=request.user, target=self.object
         )
 
         return result
@@ -299,8 +297,8 @@ class DocumentPreviewView(SingleObjectDetailView):
     def get_extra_context(self):
         return {
             'hide_labels': True,
-            'object': self.get_object(),
-            'title': _('Preview of document: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Preview of document: %s') % self.object,
         }
 
 
@@ -314,13 +312,13 @@ class DocumentPropertiesEditView(SingleObjectEditView):
         result = super(
             DocumentPropertiesEditView, self
         ).dispatch(request, *args, **kwargs)
-        self.get_object().add_as_recent_document_for_user(request.user)
+        self.object.add_as_recent_document_for_user(request.user)
         return result
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Edit properties of document: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Edit properties of document: %s') % self.object,
         }
 
     def get_save_extra_data(self):
@@ -331,7 +329,7 @@ class DocumentPropertiesEditView(SingleObjectEditView):
     def get_post_action_redirect(self):
         return reverse(
             viewname='documents:document_properties', kwargs={
-                'document_id': self.get_object().pk
+                'document_id': self.object.pk
             }
         )
 
@@ -344,14 +342,14 @@ class DocumentView(SingleObjectDetailView):
 
     def dispatch(self, request, *args, **kwargs):
         result = super(DocumentView, self).dispatch(request, *args, **kwargs)
-        self.get_object().add_as_recent_document_for_user(request.user)
+        self.object.add_as_recent_document_for_user(request.user)
         return result
 
     def get_extra_context(self):
         return {
-            'document': self.get_object(),
-            'object': self.get_object(),
-            'title': _('Properties for document: %s') % self.get_object(),
+            'document': self.object,
+            'object': self.object,
+            'title': _('Properties for document: %s') % self.object,
         }
 
 

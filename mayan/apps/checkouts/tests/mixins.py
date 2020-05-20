@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import datetime
 
 from django.utils.timezone import now
@@ -60,15 +58,15 @@ class DocumentCheckoutViewTestMixin(object):
     def _request_test_document_check_in_get_view(self):
         return self.get(
             viewname='checkouts:check_in_document', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
-    def _request_test_document_check_in_post_view(self):
+    def _request_test_document_check_in_post_view(self, follow=False):
         return self.post(
             viewname='checkouts:check_in_document', kwargs={
-                'pk': self.test_document.pk
-            }
+                'document_id': self.test_document.pk
+            }, follow=follow
         )
 
     def _request_test_document_multiple_check_in_post_view(self):
@@ -81,19 +79,19 @@ class DocumentCheckoutViewTestMixin(object):
     def _request_test_document_check_out_get_view(self):
         return self.get(
             viewname='checkouts:check_out_document', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             },
         )
 
-    def _request_test_document_check_out_post_view(self):
+    def _request_test_document_check_out_post_view(self, follow=False):
         return self.post(
             viewname='checkouts:check_out_document', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data={
                 'expiration_datetime_unit': TIME_DELTA_UNIT_DAYS,
                 'expiration_datetime_amount': 99,
                 'block_new_version': True
-            }
+            }, follow=follow
         )
 
     def _request_test_document_multiple_check_out_post_view(self):
@@ -109,7 +107,7 @@ class DocumentCheckoutViewTestMixin(object):
     def _request_test_document_check_out_detail_view(self):
         return self.get(
             viewname='checkouts:check_out_info', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 

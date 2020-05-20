@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import errno
 import os
 
@@ -341,6 +339,12 @@ SettingNamespaceSingleton.register_setting(
     name='LANGUAGE_CODE', klass=BaseSetting,
 )
 SettingNamespaceSingleton.register_setting(
+    name='SESSION_COOKIE_NAME', klass=BaseSetting,
+)
+SettingNamespaceSingleton.register_setting(
+    name='SESSION_ENGINE', klass=BaseSetting,
+)
+SettingNamespaceSingleton.register_setting(
     name='STATIC_URL', klass=BaseSetting,
 )
 SettingNamespaceSingleton.register_setting(
@@ -412,5 +416,10 @@ SettingNamespaceSingleton.register_setting(
 SettingNamespaceSingleton.register_setting(
     name='DATABASE_CONN_MAX_AGE', klass=BaseSetting, kwargs={
         'has_default': True, 'default_value': 0
+    }
+)
+SettingNamespaceSingleton.register_setting(
+    name='TESTING', klass=BaseSetting, kwargs={
+        'has_default': True, 'default_value': False
     }
 )

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import errno
 import hashlib
 from importlib import import_module

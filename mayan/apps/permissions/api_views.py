@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.rest_api import generics
 
 from .classes import Permission

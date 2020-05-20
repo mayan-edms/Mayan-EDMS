@@ -28,13 +28,17 @@
             // template.
             var currentHash = window.location.hash;
             if (currentHash.length) {
-                window.location.pathname = currentHash.substring(1);
+                if(document.cookie.replace(/(?:(?:^|.*;\s*)mayanAJAXescapeRedirect\s*\=\s*([^;]*).*$)|^.*$/, '$1') !== 'true') {
+                    document.cookie='mayanAJAXescapeRedirect=true; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+                    window.location.pathname = currentHash.substring(1);
+                } else {
+                    document.cookie='mayanAJAXescapeRedirect=';
+                }
             }
         </script>
     </head>
     <body id="body-plain">
         {% block content_plain %}{% endblock %}
-
         <script src="{% static 'appearance/node_modules/jquery/dist/jquery.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'appearance/node_modules/bootstrap/dist/js/bootstrap.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'appearance/node_modules/@fortawesome/fontawesome-free/js/all.min.js' %}" data-auto-replace-svg="nest" type="text/javascript"></script>

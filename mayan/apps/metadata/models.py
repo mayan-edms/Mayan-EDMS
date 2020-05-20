@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import shlex
 
 from django.core.exceptions import ValidationError
@@ -102,7 +100,7 @@ class MetadataType(models.Model):
     def get_absolute_url(self):
         return reverse(
             viewname='metadata:setup_metadata_type_edit', kwargs={
-                'pk': self.pk
+                'metadata_type_id': self.pk
             }
         )
 

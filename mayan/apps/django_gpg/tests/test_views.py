@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from mayan.apps.common.tests.base import GenericViewTestCase
 
 from ..models import Key

@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:40-0400\n"
-"PO-Revision-Date: 2020-02-14 04:18+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-05-11 00:42-0400\n"
+"PO-Revision-Date: 2020-05-10 20:30+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,161 +19,161 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:29 links.py:49 links.py:54 links.py:59 permissions.py:7 views.py:36
+#: apps.py:27 links.py:47 links.py:52 links.py:57 permissions.py:5 views.py:34
 msgid "Events"
 msgstr "Evenementen"
 
-#: apps.py:41 apps.py:67
+#: apps.py:39 apps.py:67
 msgid "Date and time"
 msgstr "Datum en tijd"
 
-#: apps.py:44 apps.py:70
+#: apps.py:42 apps.py:70
 msgid "Actor"
 msgstr "Acteur"
 
-#: apps.py:47 apps.py:74
+#: apps.py:46 apps.py:75
 msgid "Event"
-msgstr ""
+msgstr "Gebeurtenis"
 
-#: apps.py:50 apps.py:78
+#: apps.py:50 apps.py:80
 msgid "Target"
 msgstr "Doel"
 
 #: apps.py:54
 msgid "Action object"
-msgstr ""
+msgstr "Actie object"
 
-#: apps.py:59 forms.py:12 forms.py:69
+#: apps.py:59 forms.py:10 forms.py:67
 msgid "Namespace"
 msgstr "Namespace"
 
-#: apps.py:62 forms.py:16 forms.py:73
+#: apps.py:62 forms.py:14 forms.py:71
 msgid "Label"
 msgstr "Label"
 
-#: apps.py:83
+#: apps.py:86
 msgid "Seen"
-msgstr ""
+msgstr "Gezien"
 
-#: classes.py:71
+#: classes.py:69
 #, python-format
 msgid "Unknown or obsolete event type: %s"
-msgstr ""
+msgstr "Onbekend of overbodig gebeurtenistype: %s"
+
+#: forms.py:18 forms.py:75
+msgid "Subscription"
+msgstr "Abonnement"
 
 #: forms.py:20 forms.py:77
-msgid "Subscription"
-msgstr ""
-
-#: forms.py:22 forms.py:79
 msgid "No"
 msgstr "Nee"
 
-#: forms.py:23 forms.py:80
+#: forms.py:21 forms.py:78
 msgid "Subscribed"
-msgstr ""
+msgstr "Geabonneerd"
 
-#: html_widgets.py:57
+#: html_widgets.py:55
 msgid "System"
-msgstr ""
+msgstr "Systeem"
 
-#: links.py:45
+#: links.py:43
 msgid "My events"
-msgstr ""
+msgstr "Mijn gebeurtenissen"
 
-#: links.py:63 models.py:66 views.py:80
+#: links.py:61 models.py:65 views.py:78
 msgid "Event subscriptions"
-msgstr ""
+msgstr "Gebeurtenis abonnement"
 
-#: links.py:67
+#: links.py:65
 msgid "Mark as seen"
-msgstr ""
+msgstr "Markeren als gezien"
 
-#: links.py:71
+#: links.py:69
 msgid "Mark all as seen"
-msgstr ""
+msgstr "Alle markeren als gezien"
 
-#: links.py:76
+#: links.py:74
 msgid "Subscriptions"
-msgstr ""
+msgstr "Abonnementen"
 
-#: models.py:24
+#: models.py:23
 msgid "Name"
 msgstr "Naam"
 
-#: models.py:28
+#: models.py:27
 msgid "Stored event type"
-msgstr ""
+msgstr "Opgeslagen gebeurtenistype"
 
-#: models.py:29
+#: models.py:28
 msgid "Stored event types"
-msgstr ""
+msgstr "Opgeslagen gebeurtenistypes"
 
-#: models.py:55 models.py:82 models.py:112
+#: models.py:54 models.py:81 models.py:113
 msgid "User"
 msgstr "Gebruiker"
 
-#: models.py:59 models.py:116
+#: models.py:58 models.py:117
 msgid "Event type"
 msgstr "Evenementsoort"
 
-#: models.py:65
+#: models.py:64
 msgid "Event subscription"
-msgstr ""
+msgstr "Gebeurtenis abonnement"
 
-#: models.py:86
+#: models.py:85
 msgid "Action"
 msgstr "Actie"
 
-#: models.py:88
+#: models.py:87
 msgid "Read"
-msgstr ""
+msgstr "Lezen"
 
-#: models.py:92
+#: models.py:93
 msgid "Notification"
-msgstr ""
+msgstr "Melding"
 
-#: models.py:93 views.py:119
+#: models.py:94 views.py:117
 msgid "Notifications"
-msgstr ""
-
-#: models.py:122
-msgid "Object event subscription"
-msgstr ""
+msgstr "Meldingen"
 
 #: models.py:123
-msgid "Object event subscriptions"
-msgstr ""
+msgid "Object event subscription"
+msgstr "Object gebeurtenis abonnement"
 
-#: permissions.py:10
+#: models.py:124
+msgid "Object event subscriptions"
+msgstr "Object gebeurtenis abonnementen"
+
+#: permissions.py:8
 msgid "Access the events of an object"
 msgstr "Benader de evenementen van een object"
 
-#: views.py:59
+#: views.py:57
 #, python-format
 msgid "Error updating event subscription; %s"
-msgstr ""
+msgstr "Fout bij bijwerken gebeurtenis abonnement; %s"
 
-#: views.py:64
+#: views.py:62
 msgid "Event subscriptions updated successfully"
-msgstr ""
+msgstr "Gebeurtenis abonnementen met succes bijgewerkt"
 
-#: views.py:114
+#: views.py:112
 msgid "Subscribe to global or object events to receive notifications."
-msgstr ""
+msgstr "Abonneren op algemene of objectgebeurtenissen om notificaties te ontvangen."
 
-#: views.py:117
+#: views.py:115
 msgid "There are no notifications"
-msgstr ""
+msgstr "Er zijn geen meldingen"
 
 #: views.py:164
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr ""
+msgstr "Gebeurtenissen zijn acties die zijn uitgevoerd op dit object of door gebruik van dit object."
 
 #: views.py:167
 msgid "There are no events for this object"
-msgstr ""
+msgstr "Er zijn geen gebeurtenissen voor dit object"
 
 #: views.py:169
 #, python-format
@@ -182,16 +183,16 @@ msgstr "Evenementen voor: %s"
 #: views.py:209
 #, python-format
 msgid "Error updating object event subscription; %s"
-msgstr ""
+msgstr "Fout bij bijwerken objectgebeurtenis abonnement; %s"
 
 #: views.py:215
 msgid "Object event subscriptions updated successfully"
-msgstr ""
+msgstr "Object gebeurtenis abonnementen met succes bijgewerkt"
 
 #: views.py:248
 #, python-format
 msgid "Event subscriptions for: %s"
-msgstr ""
+msgstr "Gebeurtenis abonnementen voor: %s"
 
 #: views.py:280
 #, python-format

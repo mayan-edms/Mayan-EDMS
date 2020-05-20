@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 DEFAULT_COMMON_HOME_VIEW = 'common:home'
@@ -23,6 +21,8 @@ MESSAGE_SQLITE_WARNING = _(
 )
 
 PK_LIST_SEPARATOR = ','
+
+STORAGE_NAME_COMMON_SHARED_UPLOADED_FILE = 'common__shareduploadedfile'
 
 TEXT_LIST_AS_ITEMS_PARAMETER = '_list_mode'
 TEXT_LIST_AS_ITEMS_VARIABLE_NAME = 'list_as_items'

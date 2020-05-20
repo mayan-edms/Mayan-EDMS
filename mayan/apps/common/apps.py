@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 import os
 import sys
@@ -9,6 +7,7 @@ import warnings
 from django import apps
 from django.conf import settings
 from django.conf.urls import include, url
+from django.contrib import admin
 from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
 from django.utils.encoding import force_text
@@ -30,7 +29,7 @@ from .menus import menu_about, menu_secondary, menu_topbar, menu_user
 from .patches import patchDjangoTranslation
 from .settings import (
     setting_auto_logging, setting_production_error_log_path,
-    setting_production_error_logging
+    setting_production_error_logging, setting_url_base_path
 )
 from .signals import pre_initial_setup, pre_upgrade
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
@@ -48,19 +47,38 @@ class MayanAppConfig(apps.AppConfig):
         logger.debug('Initializing app: %s', self.name)
         from mayan.urls import urlpatterns as mayan_urlpatterns
 
-        if self.app_url:
-            top_url = '{}/'.format(self.app_url)
-        elif self.app_url is not None:
-            top_url = ''
+        installation_base_url = setting_url_base_path.value
+        if installation_base_url:
+            installation_base_url = '{}/'.format(installation_base_url)
         else:
-            top_url = '{}/'.format(self.name)
+            installation_base_url = ''
+
+        if self.app_url:
+            top_url = '{installation_base_url}{app_urls}/'.format(
+                installation_base_url=installation_base_url,
+                app_urls=self.app_url
+            )
+        elif self.app_url is not None:
+            # When using app_url as '' to register a top of URL view.
+            top_url = installation_base_url
+        else:
+            # If app_url is None, use the app's name for the URL base.
+            top_url = '{installation_base_url}{app_name}/'.format(
+                installation_base_url=installation_base_url,
+                app_name=self.name
+            )
 
         try:
             app_urlpatterns = import_string(
                 dotted_path='{}.urls.urlpatterns'.format(self.name)
             )
         except ImportError as exception:
-            if force_text(exception) not in ('No module named urls', 'No module named \'{}.urls\''.format(self.name)):
+            non_critical_error_list = (
+                'No module named urls',
+                'No module named \'{}.urls\''.format(self.name),
+                'Module "{}.urls" does not define a "urlpatterns" attribute/class'.format(self.name),
+            )
+            if force_text(exception) not in non_critical_error_list:
                 logger.exception(
                     'Import time error when running AppConfig.ready() of app '
                     '"%s".', self.name
@@ -77,6 +95,33 @@ class MayanAppConfig(apps.AppConfig):
                 ),
             )
 
+        try:
+            passthru_urlpatterns = import_string(
+                dotted_path='{}.urls.passthru_urlpatterns'.format(self.name)
+            )
+        except ImportError as exception:
+            non_critical_error_list = (
+                'No module named urls',
+                'No module named \'{}.urls\''.format(self.name),
+                'Module "{}.urls" does not define a "passthru_urlpatterns" attribute/class'.format(self.name),
+            )
+            if force_text(exception) not in non_critical_error_list:
+                logger.exception(
+                    'Import time error when running AppConfig.ready() of app '
+                    '"%s".', self.name
+                )
+                exc_info = sys.exc_info()
+                traceback.print_exception(*exc_info)
+                raise exception
+        else:
+            mayan_urlpatterns += (
+                url(
+                    regex=r'^{}'.format(top_url), view=include(
+                        (passthru_urlpatterns)
+                    )
+                ),
+            )
+
 
 class CommonApp(MayanAppConfig):
     app_namespace = 'common'
@@ -89,6 +134,8 @@ class CommonApp(MayanAppConfig):
     def ready(self):
         super(CommonApp, self).ready()
         patchDjangoTranslation()
+
+        admin.autodiscover()
 
         if check_for_sqlite():
             warnings.warn(
@@ -187,11 +234,11 @@ class CommonApp(MayanAppConfig):
 
             if os.path.exists(settings.MEDIA_ROOT) and setting_production_error_logging.value:
                 logging_configuration['handlers']['logfile'] = {
-                    'backupCount': 3,
+                    'backupCount': 5,
                     'class': 'logging.handlers.RotatingFileHandler',
                     'filename': setting_production_error_log_path.value,
                     'formatter': 'logfile',
-                    'maxBytes': 1024,
+                    'maxBytes': 65535,
                 }
 
             logging.config.dictConfig(logging_configuration)

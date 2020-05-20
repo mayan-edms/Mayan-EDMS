@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
@@ -25,6 +23,7 @@ from .utils import get_instance_content
 class DocumentContentDeleteView(MultipleObjectConfirmActionView):
     model = Document
     object_permission = permission_parse_document
+    pk_url_kwarg = 'document_id'
     success_message = 'Deleted parsed content of %(count)d document.'
     success_message_plural = 'Deleted parsed content of %(count)d documents.'
 
@@ -54,26 +53,28 @@ class DocumentContentView(SingleObjectDetailView):
     form_class = DocumentContentForm
     model = Document
     object_permission = permission_content_view
+    pk_url_kwarg = 'document_id'
 
     def dispatch(self, request, *args, **kwargs):
         result = super(DocumentContentView, self).dispatch(
             request, *args, **kwargs
         )
-        self.get_object().add_as_recent_document_for_user(request.user)
+        self.object.add_as_recent_document_for_user(request.user)
         return result
 
     def get_extra_context(self):
         return {
-            'document': self.get_object(),
+            'document': self.object,
             'hide_labels': True,
-            'object': self.get_object(),
-            'title': _('Content for document: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Content for document: %s') % self.object,
         }
 
 
 class DocumentContentDownloadView(SingleObjectDownloadView):
     model = Document
     object_permission = permission_content_view
+    pk_url_kwarg = 'document_id'
 
     def get_download_file_object(self):
         return get_instance_content(document=self.object)
@@ -86,12 +87,13 @@ class DocumentPageContentView(SingleObjectDetailView):
     form_class = DocumentPageContentForm
     model = DocumentPage
     object_permission = permission_content_view
+    pk_url_kwarg = 'document_page_id'
 
     def dispatch(self, request, *args, **kwargs):
         result = super(DocumentPageContentView, self).dispatch(
             request, *args, **kwargs
         )
-        self.get_object().document.add_as_recent_document_for_user(
+        self.object.document.add_as_recent_document_for_user(
             request.user
         )
         return result
@@ -99,8 +101,8 @@ class DocumentPageContentView(SingleObjectDetailView):
     def get_extra_context(self):
         return {
             'hide_labels': True,
-            'object': self.get_object(),
-            'title': _('Content for document page: %s') % self.get_object(),
+            'object': self.object,
+            'title': _('Content for document page: %s') % self.object,
         }
 
 
@@ -109,6 +111,7 @@ class DocumentParsingErrorsListView(
 ):
     external_object_class = Document
     external_object_permission = permission_parse_document
+    external_object_pk_url_kwarg = 'document_id'
 
     def get_extra_context(self):
         return {
@@ -126,6 +129,7 @@ class DocumentParsingErrorsListView(
 class DocumentSubmitView(MultipleObjectConfirmActionView):
     model = Document
     object_permission = permission_parse_document
+    pk_url_kwarg = 'document_id'
     success_message = _(
         '%(count)d document added to the parsing queue'
     )
@@ -165,9 +169,11 @@ class DocumentSubmitView(MultipleObjectConfirmActionView):
 class DocumentTypeSettingsEditView(ExternalObjectMixin, SingleObjectEditView):
     external_object_class = DocumentType
     external_object_permission = permission_document_type_parsing_setup
-    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwarg = 'document_type_id'
     fields = ('auto_parsing',)
-    post_action_redirect = reverse_lazy(viewname='documents:document_type_list')
+    post_action_redirect = reverse_lazy(
+        viewname='documents:document_type_list'
+    )
 
     def get_document_type(self):
         return self.external_object

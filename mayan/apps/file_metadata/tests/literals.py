@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 TEST_DRIVER_INTERNAL_NAME = 'exiftool'
 TEST_FILE_METADATA_KEY = 'FileType'
 TEST_FILE_METADATA_VALUE = 'PNG'

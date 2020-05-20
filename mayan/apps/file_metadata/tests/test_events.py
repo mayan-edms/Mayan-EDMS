@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from actstream.models import Action
 
 from mayan.apps.documents.tests.test_models import GenericDocumentTestCase

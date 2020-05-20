@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 
 
@@ -28,7 +26,6 @@ def operation_make_labels_unique_reverse(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('sources', '0018_auto_20180608_0057'),
     ]

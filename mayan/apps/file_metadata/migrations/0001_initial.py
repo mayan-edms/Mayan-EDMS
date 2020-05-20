@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 import django.db.models.deletion
 
@@ -26,7 +24,6 @@ def operation_initialize_file_metadata_settings_reverse(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -45,8 +42,8 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'auto_process', models.BooleanField(
-                        default=True, verbose_name='Automatically queue newly '
-                        'created documents for processing.'
+                        default=True, verbose_name='Automatically queue '
+                        'newly created documents for processing.'
                     )
                 ),
                 (

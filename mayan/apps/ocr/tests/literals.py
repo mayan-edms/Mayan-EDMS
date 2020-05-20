@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import unicode_literals
-
 TEST_DOCUMENT_CONTENT = 'Mayan EDMS Documentation'
 TEST_DOCUMENT_CONTENT_DEU_1 = 'Repository für elektronische Dokumente.'
 TEST_DOCUMENT_CONTENT_DEU_2 = 'Es bietet einen'

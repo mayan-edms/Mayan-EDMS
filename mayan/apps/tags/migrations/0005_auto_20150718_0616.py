@@ -1,12 +1,9 @@
-from __future__ import unicode_literals
-
 from django.db import migrations
 
 import colorful.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('tags', '0004_auto_20150717_2336'),
     ]

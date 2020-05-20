@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from mayan.apps.dependencies.classes import PythonDependency
 
 PythonDependency(
@@ -111,9 +109,6 @@ PythonDependency(
     ''', module=__name__, name='django-celery-beat', version_string='==1.6.0'
 )
 # django-celery-beat required django-timezone-field-3.1
-PythonDependency(
-    module=__name__, name='django-timezone-field', version_string='==3.1'
-)
 PythonDependency(
     module=__name__, name='kombu', version_string='==4.6.7'
 )

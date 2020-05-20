@@ -1,10 +1,7 @@
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('sources', '0019_auto_20180803_0440'),
     ]

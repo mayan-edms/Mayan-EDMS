@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from datetime import date
 import logging
 
@@ -79,7 +77,7 @@ class Key(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='django_gpg:key_detail', kwargs={'pk': self.pk}
+            viewname='django_gpg:key_detail', kwargs={'key_id': self.pk}
         )
 
     @property

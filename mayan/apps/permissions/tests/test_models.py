@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import PermissionDenied
 
@@ -53,6 +51,13 @@ class PermissionTestCase(
             Permission.check_user_permissions(
                 permissions=(self.test_permission,), user=test_anonymous_user
             )
+
+
+class RoleModelTestCase(RoleTestMixin, BaseTestCase):
+    def test_method_get_absolute_url(self):
+        self._create_test_role()
+
+        self.assertTrue(self.test_role.get_absolute_url())
 
 
 class StoredPermissionManagerTestCase(BaseTestCase):

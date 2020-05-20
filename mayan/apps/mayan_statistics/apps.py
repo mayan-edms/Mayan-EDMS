@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
@@ -17,6 +15,7 @@ from .tasks import task_execute_statistic  # NOQA - Force registration of task
 class StatisticsApp(MayanAppConfig):
     app_namespace = 'statistics'
     app_url = 'statistics'
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.mayan_statistics'
     verbose_name = _('Statistics')
