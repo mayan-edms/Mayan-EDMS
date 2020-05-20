@@ -3,6 +3,7 @@
 - Move django-qsstats-magic to the mayan_statistics app.
 - Update Pillow from version 7.0.0 to 7.1.2.
 - Update Werkzeug from version 1.0.0 to 1.0.1.
+- Update devpi-server from version 5.4.1 to 5.5.0.
 
 3.4.7 (2020-04-28)
 ==================
