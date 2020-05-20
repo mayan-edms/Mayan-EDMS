@@ -38,8 +38,8 @@ class Migration(migrations.Migration):
                 (
                     'permission', models.ForeignKey(
                         on_delete=models.CASCADE,
-                        verbose_name='Permission',
-                        to='permissions.StoredPermission'
+                        to='permissions.StoredPermission',
+                        verbose_name='Permission'
                     )
                 ),
             ],
@@ -92,8 +92,8 @@ class Migration(migrations.Migration):
                 (
                     'permission', models.ForeignKey(
                         on_delete=models.CASCADE,
-                        verbose_name='Permission',
-                        to='permissions.StoredPermission'
+                        to='permissions.StoredPermission',
+                        verbose_name='Permission'
                     )
                 ),
             ],
