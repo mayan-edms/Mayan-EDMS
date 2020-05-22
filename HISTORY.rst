@@ -7,6 +7,7 @@
 - Update django-celery-beat from version 1.5.0 to 2.0.0.
 - Update translation files.
 - Encapsulate actstream registry inside a EventModelRegistry.
+- Improve default binary path detections in OpenBSD 6.7.
 
 3.4.7 (2020-04-28)
 ==================
