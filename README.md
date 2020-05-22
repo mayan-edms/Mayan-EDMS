@@ -65,7 +65,7 @@ The easiest way to use Mayan EDMS is by using the official
 and working before attempting to install Mayan EDMS.
 
 For the complete set of installation instructions visit the Mayan EDMS documentation
-at: https://docs.mayan-edms.com/topics/installation.html
+at: https://docs.mayan-edms.com/parts/installation.html
 
 <h2 align="center">Hardware requirements</h2>
 
