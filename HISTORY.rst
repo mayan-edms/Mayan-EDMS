@@ -6,6 +6,7 @@
 - Update devpi-server from version 5.4.1 to 5.5.0.
 - Update django-celery-beat from version 1.5.0 to 2.0.0.
 - Update translation files.
+- Improve default binary path detections in OpenBSD 6.7.
 
 3.4.7 (2020-04-28)
 ==================
