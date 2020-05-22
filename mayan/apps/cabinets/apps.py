@@ -8,7 +8,7 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
     menu_secondary
 )
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
 )
@@ -49,7 +49,6 @@ class CabinetsApp(MayanAppConfig):
 
     def ready(self):
         super(CabinetsApp, self).ready()
-        from actstream import registry
         from .wizard_steps import WizardStepCabinets  # NOQA
 
         Cabinet = self.get_model(model_name='Cabinet')
@@ -67,6 +66,8 @@ class CabinetsApp(MayanAppConfig):
         Document.add_to_class(
             name='get_cabinets', value=method_document_get_cabinets
         )
+
+        EventModelRegistry.register(model=Cabinet)
 
         ModelEventType.register(
             model=Cabinet, event_types=(
@@ -186,5 +187,3 @@ class CabinetsApp(MayanAppConfig):
                 'cabinets:document_cabinet_remove'
             )
         )
-
-        registry.register(Cabinet)

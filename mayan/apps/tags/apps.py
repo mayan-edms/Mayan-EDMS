@@ -12,7 +12,7 @@ from mayan.apps.common.menus import (
     menu_secondary
 )
 from mayan.apps.documents.search import document_page_search, document_search
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
 )
@@ -51,8 +51,6 @@ class TagsApp(MayanAppConfig):
 
     def ready(self):
         super(TagsApp, self).ready()
-        from actstream import registry
-
         from .wizard_steps import WizardStepTags  # NOQA
 
         Document = apps.get_model(
@@ -67,6 +65,8 @@ class TagsApp(MayanAppConfig):
         Tag = self.get_model(model_name='Tag')
 
         Document.add_to_class(name='get_tags', value=method_document_get_tags)
+
+        EventModelRegistry.register(model=Tag)
 
         ModelEventType.register(
             model=Tag, event_types=(
@@ -172,7 +172,6 @@ class TagsApp(MayanAppConfig):
                 'tags:single_document_multiple_tag_remove'
             )
         )
-        registry.register(Tag)
 
         # Index update
 

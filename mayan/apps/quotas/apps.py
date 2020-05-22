@@ -10,7 +10,7 @@ from mayan.apps.acls.permissions import (
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import menu_object, menu_secondary, menu_setup
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
@@ -37,7 +37,6 @@ class QuotasApp(MayanAppConfig):
 
     def ready(self, *args, **kwargs):
         super(QuotasApp, self).ready(*args, **kwargs)
-        from actstream import registry
 
         Group = apps.get_model(app_label='auth', model_name='Group')
         DocumentType = apps.get_model(
@@ -45,6 +44,8 @@ class QuotasApp(MayanAppConfig):
         )
         Quota = self.get_model(model_name='Quota')
         User = get_user_model()
+
+        EventModelRegistry.register(model=Quota)
 
         QuotaBackend.initialize()
 
@@ -105,5 +106,3 @@ class QuotasApp(MayanAppConfig):
         )
 
         menu_setup.bind_links(links=(link_quota_setup,))
-
-        registry.register(Quota)

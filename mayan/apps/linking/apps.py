@@ -9,7 +9,7 @@ from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_object, menu_secondary, menu_setup
 )
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
@@ -41,7 +41,6 @@ class LinkingApp(MayanAppConfig):
 
     def ready(self):
         super(LinkingApp, self).ready()
-        from actstream import registry
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -53,6 +52,8 @@ class LinkingApp(MayanAppConfig):
         ResolvedSmartLink = self.get_model(model_name='ResolvedSmartLink')
         SmartLink = self.get_model(model_name='SmartLink')
         SmartLinkCondition = self.get_model(model_name='SmartLinkCondition')
+
+        EventModelRegistry.register(model=SmartLink)
 
         ModelEventType.register(
             event_types=(event_smart_link_edited,), model=SmartLink
@@ -151,5 +152,3 @@ class LinkingApp(MayanAppConfig):
             )
         )
         menu_setup.bind_links(links=(link_smart_link_setup,))
-
-        registry.register(SmartLink)

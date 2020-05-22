@@ -12,7 +12,7 @@ from mayan.apps.common.menus import (
     menu_setup, menu_tools
 )
 from mayan.apps.documents.signals import post_document_created, post_initial_document_type
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
@@ -55,7 +55,6 @@ class DocumentIndexingApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentIndexingApp, self).ready()
-        from actstream import registry
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -76,6 +75,8 @@ class DocumentIndexingApp(MayanAppConfig):
             model_name='IndexInstanceNodeSearchResult'
         )
         IndexTemplateNode = self.get_model(model_name='IndexTemplateNode')
+
+        EventModelRegistry.register(model=Index)
 
         ModelEventType.register(
             event_types=(
@@ -271,5 +272,3 @@ class DocumentIndexingApp(MayanAppConfig):
             receiver=handler_remove_document,
             sender=Document
         )
-
-        registry.register(Index)

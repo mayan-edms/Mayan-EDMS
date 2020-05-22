@@ -7,7 +7,7 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_tools
 )
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
@@ -29,9 +29,10 @@ class FileCachingConfig(MayanAppConfig):
 
     def ready(self):
         super(FileCachingConfig, self).ready()
-        from actstream import registry
 
         Cache = self.get_model(model_name='Cache')
+
+        EventModelRegistry.register(model=Cache)
 
         ModelEventType.register(
             event_types=(event_cache_edited, event_cache_purged,),
@@ -79,5 +80,3 @@ class FileCachingConfig(MayanAppConfig):
         )
 
         menu_tools.bind_links(links=(link_caches_list,))
-
-        registry.register(Cache)
