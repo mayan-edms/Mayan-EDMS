@@ -60,6 +60,7 @@ class DocumentVersion(models.Model):
     document is modified after upload it's checksum will not match, used for
     detecting file tampering among other things.
     """
+    _hooks_pre_create = []
     _pre_open_hooks = []
     _pre_save_hooks = []
     _post_save_hooks = []
@@ -129,9 +130,25 @@ class DocumentVersion(models.Model):
         hook_list.insert(order, func)
 
     @classmethod
+    def execute_pre_create_hooks(cls, kwargs=None):
+        """
+        Helper method to allow checking if it is possible to create
+        a new document version.
+        """
+        cls._execute_hooks(
+            hook_list=cls._hooks_pre_create, instance=None, kwargs=kwargs
+        )
+
+    @classmethod
     def register_post_save_hook(cls, func, order=None):
         cls._insert_hook_entry(
             hook_list=cls._post_save_hooks, func=func, order=order
+        )
+
+    @classmethod
+    def register_pre_create_hook(cls, func, order=None):
+        cls._insert_hook_entry(
+            hook_list=cls._hooks_pre_create, func=func, order=order
         )
 
     @classmethod

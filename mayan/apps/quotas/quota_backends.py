@@ -1,3 +1,5 @@
+import types
+
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import IntegerField
@@ -17,6 +19,49 @@ from .exceptions import QuotaExceeded
 from .mixins import DocumentTypesQuotaMixin, GroupsUsersQuotaMixin
 
 
+def hook_factory_document_check_quota(klass):
+    def hook_check_quota(**kwargs):
+        # Fake Document to be able to reuse the .process() method
+        # for pre check.
+        fake_document_instance = types.SimpleNamespace(pk=None)
+
+        final_kwargs = kwargs['kwargs'].copy()
+        final_kwargs['instance'] = fake_document_instance
+
+        for quota in klass.get_instances().filter(enabled=True):
+            backend_instance = quota.get_backend_instance()
+
+            backend_instance.process(**final_kwargs)
+    return hook_check_quota
+
+
+def hook_factory_document_version_check_quota(klass):
+    def hook_check_quota(**kwargs):
+        # Pass the real parent document or create a fake one
+        if 'document' in kwargs['kwargs']:
+            document = kwargs['kwargs']['document']
+        else:
+            document = types.SimpleNamespace(
+                document_type=kwargs['kwargs']['document_type']
+            )
+        # Fake DocumentVersion to be able to reuse the
+        # .process() method for pre check.
+        fake_document_instance = types.SimpleNamespace(
+            file=kwargs['kwargs']['shared_uploaded_file'].file,
+            document=document,
+            pk=None
+        )
+
+        final_kwargs = kwargs['kwargs'].copy()
+        final_kwargs['instance'] = fake_document_instance
+
+        for quota in klass.get_instances().filter(enabled=True):
+            backend_instance = quota.get_backend_instance()
+
+            backend_instance.process(**final_kwargs)
+    return hook_check_quota
+
+
 class DocumentCountQuota(
     GroupsUsersQuotaMixin, DocumentTypesQuotaMixin, QuotaBackend
 ):
@@ -34,6 +79,12 @@ class DocumentCountQuota(
     label = _('Document count limit')
     sender = Document
     signal = signal_mayan_pre_save
+
+    @classmethod
+    def _initialize(cls):
+        Document.register_pre_create_hook(
+            func=hook_factory_document_check_quota(klass=cls)
+        )
 
     def __init__(
         self, document_type_all, document_type_ids, documents_limit,
@@ -114,7 +165,7 @@ class DocumentCountQuota(
         if not kwargs['instance'].pk:
             if self._get_user_document_count(user=kwargs.get('user')) >= self._allowed():
                 raise QuotaExceeded(
-                    _('Document size quota exceeded.')
+                    _('Document count quota exceeded.')
                 )
 
 
@@ -132,6 +183,12 @@ class DocumentSizeQuota(
     label = _('Document size limit')
     sender = DocumentVersion
     signal = signal_mayan_pre_save
+
+    @classmethod
+    def _initialize(cls):
+        DocumentVersion.register_pre_create_hook(
+            func=hook_factory_document_version_check_quota(klass=cls)
+        )
 
     def __init__(
         self, document_size_limit, document_type_all, document_type_ids,
