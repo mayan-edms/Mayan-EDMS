@@ -77,6 +77,11 @@ class QuotaBackend(
         for backend in QuotaBackend.get_all():
             backend._initialize()
 
+        QuotaBackend.connect_signals()
+
+    @staticmethod
+    def connect_signals():
+        for backend in QuotaBackend.get_all():
             if backend.signal:
                 backend.signal.connect(
                     dispatch_uid='quotas_handler_process_signal',
