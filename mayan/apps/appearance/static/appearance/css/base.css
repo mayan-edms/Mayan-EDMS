@@ -190,6 +190,7 @@ a i {
 
 .panel-item > .panel-body {
     padding: 10px;
+    word-wrap: break-word;
 }
 
 .list-extra-column-label {
