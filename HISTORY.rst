@@ -14,7 +14,8 @@
 - Use pre creation hooks to check quotas before document or document
   version creation and block user early on before
   the task is submitted.
-- Wrap around long texts in the panel body's.
+- Wrap around long texts in the panel's body.
+- Wrap around long tags when showing them in a panel's body.
 
 3.4.7 (2020-04-28)
 ==================
