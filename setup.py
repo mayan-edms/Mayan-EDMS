@@ -57,12 +57,12 @@ def find_packages(directory):
 
 install_requires = """
 django==2.2.12
-Pillow==7.0.0
+Pillow==7.1.2
 PyPDF2==1.26.0
 PyYAML==5.3.1
 celery==4.3.0
 django-activity-stream==0.8.0
-django-celery-beat==1.5.0
+django-celery-beat==2.0.0
 django-colorful==1.3
 django-cors-headers==2.5.2
 django-formtools==2.2
