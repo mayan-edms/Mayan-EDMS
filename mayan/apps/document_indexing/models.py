@@ -1,7 +1,6 @@
 import logging
 
 from django.db import models, transaction
-from django.template import Context, Template
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext, ugettext_lazy as _
@@ -15,6 +14,7 @@ from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.apps.lock_manager.runtime import locking_backend
+from mayan.apps.templating.classes import Template
 
 from .events import event_index_template_created, event_index_template_edited
 from .managers import (
@@ -316,9 +316,12 @@ class IndexTemplateNode(MPTTModel):
                         )
 
                         try:
-                            context = Context({'document': document})
-                            template = Template(self.expression)
-                            result = template.render(context=context)
+                            template = Template(
+                                template_string=self.expression
+                            )
+                            result = template.render(
+                                context={'document': document}
+                            )
                         except Exception as exception:
                             logger.debug('Evaluating error: %s', exception)
                             error_message = _(

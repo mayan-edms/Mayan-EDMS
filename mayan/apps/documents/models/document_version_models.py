@@ -6,7 +6,6 @@ import uuid
 
 from django.apps import apps
 from django.db import models, transaction
-from django.template import Context, Template
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.functional import cached_property
@@ -19,6 +18,7 @@ from mayan.apps.converter.transformations import TransformationRotate
 from mayan.apps.converter.utils import get_converter_class
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.storage.classes import DefinedStorageLazy
+from mayan.apps.templating.classes import Template
 
 from ..events import event_document_version_new, event_document_version_revert
 from ..literals import (
@@ -270,12 +270,14 @@ class DocumentVersion(models.Model):
             )
         else:
             return Template(
-                '{{ instance.document }} - {{ instance.timestamp }}'
-            ).render(context=Context({'instance': self}))
+                template_string='{{ instance.document }} - {{ instance.timestamp }}'
+            ).render(context={'instance': self})
 
     def get_rendered_timestamp(self):
-        return Template('{{ instance.timestamp }}').render(
-            context=Context({'instance': self})
+        return Template(
+            template_string='{{ instance.timestamp }}'
+        ).render(
+            context={'instance': self}
         )
 
     def natural_key(self):

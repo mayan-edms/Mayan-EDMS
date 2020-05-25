@@ -1,11 +1,11 @@
 from django.db import models, transaction
 from django.db.models import Q
-from django.template import Context, Template
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.templating.classes import Template
 
 from .events import event_smart_link_created, event_smart_link_edited
 from .literals import (
@@ -75,10 +75,9 @@ class SmartLink(models.Model):
         static label, resolve the template and return the result.
         """
         if self.dynamic_label:
-            context = Context({'document': document})
             try:
-                template = Template(self.dynamic_label)
-                return template.render(context=context)
+                template = Template(template_string=self.dynamic_label)
+                return template.render(context={'document': document})
             except Exception as exception:
                 return _(
                     'Error generating dynamic label; %s' % force_text(
@@ -103,15 +102,13 @@ class SmartLink(models.Model):
 
         smart_link_query = Q()
 
-        context = Context({'document': document})
-
         for condition in self.conditions.filter(enabled=True):
-            template = Template(condition.expression)
+            template = Template(template_string=condition.expression)
 
             condition_query = Q(**{
                 '%s__%s' % (
                     condition.foreign_document_data, condition.operator
-                ): template.render(context=context)
+                ): template.render(context={'document': document})
             })
             if condition.negated:
                 condition_query = ~condition_query
