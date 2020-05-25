@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 02:47-0400\n"
+"POT-Creation-Date: 2020-05-25 02:17-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: xisafe <root@xisafe.com>, 2020\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -59,7 +59,7 @@ msgstr "沙箱"
 msgid "Use the template sandbox"
 msgstr "使用沙箱模板"
 
-#: views.py:36
+#: views.py:37
 #, python-format
 msgid "Template sandbox for: %s"
 msgstr "沙箱模板%s"

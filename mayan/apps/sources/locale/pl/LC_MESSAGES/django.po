@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 02:47-0400\n"
-"PO-Revision-Date: 2020-05-14 10:10+0000\n"
-"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
+"POT-Creation-Date: 2020-05-25 02:16-0400\n"
+"PO-Revision-Date: 2020-05-25 06:18+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
-#: views.py:191
+#: views.py:193
 msgid "Sources"
 msgstr "Źródła"
 
@@ -79,7 +79,7 @@ msgstr "Rozpakuj skompresowane pliki"
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr "Prześlij pliki zawarte w skompresowanym pliku jako indywidualne dokumenty."
 
-#: forms.py:63 views.py:225
+#: forms.py:63 views.py:227
 msgid "Staging file"
 msgstr "Plik przejściowy"
 
@@ -657,7 +657,7 @@ msgstr "Wyczyść"
 msgid "Server responded with {{statusCode}} code."
 msgstr "Serwer odpowiedział kodem {{statusCode}}."
 
-#: views.py:68
+#: views.py:70
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -665,31 +665,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr "Spowoduje to wykonanie kodu kontroli źródła, nawet jeśli źródło nie jest włączone. Źródła, które usuwają zawartość po pobraniu, nie zrobią tego podczas testowania. Sprawdź dziennik błędów źródła, aby uzyskać informacje podczas testowania. Pomyślny test usunie dziennik błędów."
 
-#: views.py:74
+#: views.py:76
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Kontrola wyzwalacza dla źródła „%s”?"
 
-#: views.py:86
+#: views.py:88
 msgid "Source check queued."
 msgstr "Kontrola źródła w kolejce."
 
-#: views.py:100
+#: views.py:102
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Utwórz nowe typ źródło:%s"
 
-#: views.py:123
+#: views.py:125
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Usunąć źródło: %s?"
 
-#: views.py:145
+#: views.py:147
 #, python-format
 msgid "Edit source: %s"
 msgstr "Edytuj źródło: %s"
 
-#: views.py:185
+#: views.py:187
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -697,88 +697,93 @@ msgid ""
 "intervention."
 msgstr "Źródła zapewniają środki do przesyłania dokumentów. Niektóre źródła, takie jak formularz internetowy, są interaktywne i wymagają działania użytkownika. Inne, takie jak źródła wiadomości e-mail, są automatyczne i działają w tle bez interwencji użytkownika."
 
-#: views.py:190
+#: views.py:192
 msgid "No sources available"
 msgstr "Brak dostępnych źródeł"
 
-#: views.py:205
+#: views.py:207
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr "Wszelkie błędy powstałe podczas korzystania ze źródła zostaną wymienione tutaj, aby pomóc w debugowaniu."
 
-#: views.py:208
+#: views.py:210
 msgid "No log entries available"
 msgstr "Brak dostępnych wpisów w dzienniku"
 
-#: views.py:210
+#: views.py:212
 #, python-format
 msgid "Log entries for source: %s"
 msgstr "Logi dla źródła: %s"
 
-#: views.py:226
+#: views.py:228
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Usunąć plik przejściowy „%s”?"
 
-#: views.py:278 wizards.py:152
+#: views.py:280 wizards.py:152
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr "Nie zdefiniowano żadnych interaktywnych źródeł dokumentów lub żadne nie zostało włączone, utwórz je przed kontynuowaniem."
 
-#: views.py:306 views.py:335 views.py:345
+#: views.py:308 views.py:337 views.py:347
 msgid "Document properties"
 msgstr "Właściwości dokumentu"
 
-#: views.py:315
+#: views.py:317
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
 " necessary file system permissions for the folder."
 msgstr "Może to oznaczać, że folder przejściowy jest pusty. Może to również oznaczać, że konto użytkownika systemu operacyjnego używane w Mayan EDMS nie ma niezbędnych uprawnień systemu plików dla tego folderu."
 
-#: views.py:322
+#: views.py:324
 msgid "No staging files available"
 msgstr "Brak dostępnych plików przejściowych"
 
-#: views.py:325
+#: views.py:327
 msgid "Files in staging path"
 msgstr "Pliki w ścieżce przejściowej"
 
-#: views.py:336
+#: views.py:338
 msgid "Scan"
 msgstr "Skan"
 
-#: views.py:466
+#: views.py:485
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
 msgstr "Błąd podczas wykonywania zadania przesyłania dokumentu; %(exception)s"
 
-#: views.py:476
+#: views.py:495
 msgid "New document queued for upload and will be available shortly."
 msgstr "Nowy dokument w kolejce do przesłania i wkrótce będzie dostępny."
 
-#: views.py:493
+#: views.py:512
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Prześlij dokument typu „%(document_type)s” ze źródła: %(source)s"
 
-#: views.py:555
+#: views.py:574
 #, python-format
 msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
 msgstr "Nie można załadować nowych wersji dokumentu „%(document)s”. %(exception)s"
 
-#: views.py:606
+#: views.py:635
+#, python-format
+msgid "Error executing document version upload task; %(exception)s"
+msgstr ""
+
+#: views.py:650
 msgid "New document version queued for upload and will be available shortly."
 msgstr "Nowa wersja dokumentu w kolejce do przesłania i wkrótce będzie dostępna."
 
-#: views.py:625
+#: views.py:669
 #, python-format
 msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr "Prześlij nową wersję dokumentu „%(document)s” ze źródła: %(source)s"
 
-#: views.py:628
+#: views.py:672
 msgid "Submit"
 msgstr "Wykonaj"
 

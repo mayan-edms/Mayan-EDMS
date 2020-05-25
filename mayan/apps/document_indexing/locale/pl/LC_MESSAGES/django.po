@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 02:45-0400\n"
+"POT-Creation-Date: 2020-05-25 02:14-0400\n"
 "PO-Revision-Date: 2020-05-18 09:47+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -33,23 +33,23 @@ msgstr "Typy dokumentów"
 msgid "Document indexing"
 msgstr "Indeksowanie dokumentu"
 
-#: apps.py:128
+#: apps.py:129
 msgid "Total levels"
 msgstr "Razem poziomy"
 
-#: apps.py:135
+#: apps.py:136
 msgid "Total documents"
 msgstr "Razem dokumenty"
 
-#: apps.py:141 apps.py:155 apps.py:180 apps.py:190
+#: apps.py:142 apps.py:156 apps.py:181 apps.py:191
 msgid "Level"
 msgstr "Poziom"
 
-#: apps.py:160 apps.py:195
+#: apps.py:161 apps.py:196
 msgid "Levels"
 msgstr "Poziomy"
 
-#: apps.py:167 apps.py:175 apps.py:203 models.py:378
+#: apps.py:168 apps.py:176 apps.py:204 models.py:381
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -191,46 +191,46 @@ msgstr "Szablon węzła indeksów"
 msgid "Root"
 msgstr "Korzeń"
 
-#: models.py:325
+#: models.py:328
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "Błąd indeksowania dokumentu: %(document)s; wyrażenie: %(expression)s; %(exception)s"
 
-#: models.py:371
+#: models.py:374
 msgid "Index template node"
 msgstr "Węzeł szablonu indeksu"
 
-#: models.py:374 search.py:23
+#: models.py:377 search.py:23
 msgid "Value"
 msgstr "Wartość"
 
-#: models.py:384 models.py:510
+#: models.py:387 models.py:513
 msgid "Index instance node"
 msgstr "Węzeł instancji indeksu"
 
-#: models.py:385
+#: models.py:388
 msgid "Indexes instances node"
 msgstr "Węzły instancji indeksu"
 
-#: models.py:447
+#: models.py:450
 msgid "The path to the index including all ancestors."
 msgstr "Ścieżka do indeksu obejmująca wszystkich przodków."
 
-#: models.py:449
+#: models.py:452
 msgid "Full path"
 msgstr "Pełna ścieżka"
 
-#: models.py:503
+#: models.py:506
 msgid "Document index node instance"
 msgstr "Instancja węzła indeksu dokumentu"
 
-#: models.py:504
+#: models.py:507
 msgid "Document indexes node instances"
 msgstr "Instancje węzła indeksów dokumentu"
 
-#: models.py:511
+#: models.py:514
 msgid "Index instance nodes"
 msgstr "Indeksuj węzły instancji"
 

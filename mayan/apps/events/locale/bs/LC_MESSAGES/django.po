@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 02:46-0400\n"
+"POT-Creation-Date: 2020-05-25 02:15-0400\n"
 "PO-Revision-Date: 2020-02-14 02:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
@@ -54,7 +54,7 @@ msgstr "Labela"
 msgid "Seen"
 msgstr "Viđen"
 
-#: classes.py:69
+#: classes.py:76
 #, python-format
 msgid "Unknown or obsolete event type: %s"
 msgstr "Nepoznati ili zastarjeli tip događaja:%s"
@@ -71,7 +71,7 @@ msgstr "Ne"
 msgid "Subscribed"
 msgstr "Pretplaćen"
 
-#: html_widgets.py:55
+#: html_widgets.py:57
 msgid "System"
 msgstr "Sistem"
 

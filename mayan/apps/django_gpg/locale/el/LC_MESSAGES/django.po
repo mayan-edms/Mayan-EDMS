@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 02:45-0400\n"
+"POT-Creation-Date: 2020-05-25 02:14-0400\n"
 "PO-Revision-Date: 2020-04-14 08:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
@@ -109,47 +109,47 @@ msgstr "Προσωπικά κλειδιά"
 msgid "Public keys"
 msgstr "Δημόσια κλειδιά"
 
-#: literals.py:12 literals.py:20
+#: literals.py:14 literals.py:22
 msgid "Public"
 msgstr "Δημόσια"
 
-#: literals.py:13 literals.py:21
+#: literals.py:15 literals.py:23
 msgid "Secret"
 msgstr "Μυστική φράση"
 
-#: literals.py:29 literals.py:34
+#: literals.py:31 literals.py:36
 msgid "RSA"
 msgstr ""
 
-#: literals.py:30
+#: literals.py:32
 msgid "DSA"
 msgstr ""
 
-#: literals.py:35
+#: literals.py:37
 msgid "Elgamal"
 msgstr ""
 
-#: literals.py:49
+#: literals.py:51
 msgid "Bad signature."
 msgstr "Άκυρη υπογραφή"
 
-#: literals.py:52
+#: literals.py:54
 msgid "Document not signed or invalid signature."
 msgstr "Ανυπόγραφο έγγραφο ή άκυρη υπογραφή"
 
-#: literals.py:55
+#: literals.py:57
 msgid "Signature error."
 msgstr "Σφάλμα υπογραφής."
 
-#: literals.py:59
+#: literals.py:61
 msgid "Document is signed but no public key is available for verification."
 msgstr "Το έγγραφο είναι ψηφιακά υπογεγραμμένο αλλά δεν υπάρχει διαθέσιμο δημόσιο κλειδί για επαλήθευση."
 
-#: literals.py:64
+#: literals.py:66
 msgid "Document is signed, and signature is good."
 msgstr "Το έγγρφο είναι υπογεγραμμένο ψηφιακά και η υπογραφή είναι έγκυρη."
 
-#: literals.py:67
+#: literals.py:69
 msgid "Document is signed with a valid signature."
 msgstr "Το έγγραφο είναι υπογεγραμμένο με έγκυρη ψηφιακή υπογραφή."
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 02:45-0400\n"
+"POT-Creation-Date: 2020-05-25 02:14-0400\n"
 "PO-Revision-Date: 2020-05-17 18:58+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -26,105 +26,105 @@ msgstr ""
 msgid "Workflows"
 msgstr "Workflows"
 
-#: apps.py:111 apps.py:118
+#: apps.py:112 apps.py:119
 msgid "Current state of a workflow"
 msgstr "Huidige status van een workflow"
 
-#: apps.py:112
+#: apps.py:113
 msgid "Return the current state of the selected workflow."
 msgstr "Geeft de huidige status van de geselecteerde workflow."
 
-#: apps.py:119
+#: apps.py:120
 msgid ""
 "Return the completion value of the current state of the selected workflow."
 msgstr ""
 
-#: apps.py:173
+#: apps.py:174
 msgid ""
 "Return the last workflow instance log entry. The log entry itself has the "
 "following fields: datetime, transition, user, and comment."
 msgstr ""
 
-#: apps.py:176
+#: apps.py:177
 msgid "Get last log entry"
 msgstr "Laatste loginvoer ophalen"
 
-#: apps.py:182
+#: apps.py:183
 msgid ""
 "Return the current context dictionary which includes runtime data from the "
 "workflow transition fields."
 msgstr ""
 
-#: apps.py:184
+#: apps.py:185
 msgid "Get the context"
 msgstr "De context ophalen"
 
-#: apps.py:190
+#: apps.py:191
 msgid "Return the transition of the workflow instance."
 msgstr "Geeft de transitie van de workflow instantie."
 
-#: apps.py:191
+#: apps.py:192
 msgid "Get last transition"
 msgstr "Laatste transitie ophalen"
 
-#: apps.py:205 apps.py:215 apps.py:224 apps.py:230
+#: apps.py:206 apps.py:216 apps.py:225 apps.py:231
 msgid "None"
 msgstr "Geen"
 
-#: apps.py:211
+#: apps.py:212
 msgid "Current state"
 msgstr "Huidige status"
 
-#: apps.py:216 apps.py:240 models.py:444
+#: apps.py:217 apps.py:241 models.py:444
 msgid "User"
 msgstr "Gebruiker"
 
-#: apps.py:220
+#: apps.py:221
 msgid "Last transition"
 msgstr "Laatste transitie"
 
-#: apps.py:225 apps.py:236
+#: apps.py:226 apps.py:237
 msgid "Date and time"
 msgstr "Datum en tijd"
 
-#: apps.py:231 models.py:538
+#: apps.py:232 models.py:538
 msgid "Completion"
 msgstr "Voltooiing"
 
-#: apps.py:261
+#: apps.py:262
 msgid "Additional details"
 msgstr "Aanvullende details"
 
-#: apps.py:288
+#: apps.py:289
 msgid "When?"
 msgstr "Wanneer?"
 
-#: apps.py:292
+#: apps.py:293
 msgid "Action type"
 msgstr "Actie type"
 
-#: apps.py:319
+#: apps.py:320
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
 msgstr "Triggers zijn systeemgebeurtenissen die initiëren dat transities worden toegepast."
 
-#: apps.py:321
+#: apps.py:322
 msgid "Triggers"
 msgstr "Triggers"
 
-#: apps.py:335 models.py:756
+#: apps.py:336 models.py:756
 msgid "Type"
 msgstr "Type"
 
-#: apps.py:343
+#: apps.py:344
 msgid "Widget"
 msgstr "Widget"
 
-#: apps.py:354 apps.py:360
+#: apps.py:355 apps.py:361
 msgid "Documents"
 msgstr "Documenten"
 
-#: classes.py:122
+#: classes.py:124
 #, python-format
 msgid "%(field_name)s template error: %(exception)s"
 msgstr "%(field_name)s sjabloon fout: %(exception)s"

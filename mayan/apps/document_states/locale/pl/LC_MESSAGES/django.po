@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 02:45-0400\n"
+"POT-Creation-Date: 2020-05-25 02:14-0400\n"
 "PO-Revision-Date: 2020-05-18 08:55+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -26,105 +26,105 @@ msgstr ""
 msgid "Workflows"
 msgstr "Przepływy pracy"
 
-#: apps.py:111 apps.py:118
+#: apps.py:112 apps.py:119
 msgid "Current state of a workflow"
 msgstr "Bieżący stan przepływu pracy"
 
-#: apps.py:112
+#: apps.py:113
 msgid "Return the current state of the selected workflow."
 msgstr "Zwraca bieżący stan wybranego przepływu pracy."
 
-#: apps.py:119
+#: apps.py:120
 msgid ""
 "Return the completion value of the current state of the selected workflow."
 msgstr "Zwraca wartość zakończenia bieżącego stanu wybranego przepływu pracy."
 
-#: apps.py:173
+#: apps.py:174
 msgid ""
 "Return the last workflow instance log entry. The log entry itself has the "
 "following fields: datetime, transition, user, and comment."
 msgstr "Zwraca ostatni wpis dziennika instancji przepływu pracy. Sam wpis dziennika zawiera następujące pola: data / godzina, przejście, użytkownik i komentarz."
 
-#: apps.py:176
+#: apps.py:177
 msgid "Get last log entry"
 msgstr "Uzyskaj ostatni wpis do dziennika"
 
-#: apps.py:182
+#: apps.py:183
 msgid ""
 "Return the current context dictionary which includes runtime data from the "
 "workflow transition fields."
 msgstr "Zwraca bieżący słownik kontekstowy, który zawiera dane środowiska wykonawczego z pól przejścia przepływu pracy."
 
-#: apps.py:184
+#: apps.py:185
 msgid "Get the context"
 msgstr "Pobierz kontekst"
 
-#: apps.py:190
+#: apps.py:191
 msgid "Return the transition of the workflow instance."
 msgstr "Zwróć przejście instancji przepływu pracy."
 
-#: apps.py:191
+#: apps.py:192
 msgid "Get last transition"
 msgstr "Uzyskaj ostatnie przejście"
 
-#: apps.py:205 apps.py:215 apps.py:224 apps.py:230
+#: apps.py:206 apps.py:216 apps.py:225 apps.py:231
 msgid "None"
 msgstr "Brak"
 
-#: apps.py:211
+#: apps.py:212
 msgid "Current state"
 msgstr "Aktualny stan"
 
-#: apps.py:216 apps.py:240 models.py:444
+#: apps.py:217 apps.py:241 models.py:444
 msgid "User"
 msgstr "Użytkownik"
 
-#: apps.py:220
+#: apps.py:221
 msgid "Last transition"
 msgstr "Ostatnie przejście"
 
-#: apps.py:225 apps.py:236
+#: apps.py:226 apps.py:237
 msgid "Date and time"
 msgstr "Data i godzina"
 
-#: apps.py:231 models.py:538
+#: apps.py:232 models.py:538
 msgid "Completion"
 msgstr "Ukończenie"
 
-#: apps.py:261
+#: apps.py:262
 msgid "Additional details"
 msgstr "Dodatkowe szczegóły"
 
-#: apps.py:288
+#: apps.py:289
 msgid "When?"
 msgstr "Kiedy?"
 
-#: apps.py:292
+#: apps.py:293
 msgid "Action type"
 msgstr "Rodzaj działania"
 
-#: apps.py:319
+#: apps.py:320
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
 msgstr "Wyzwalacze to zdarzenia systemowe, które spowodują zastosowanie przejścia."
 
-#: apps.py:321
+#: apps.py:322
 msgid "Triggers"
 msgstr "Wyzwalacze"
 
-#: apps.py:335 models.py:756
+#: apps.py:336 models.py:756
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:343
+#: apps.py:344
 msgid "Widget"
 msgstr "Widżet"
 
-#: apps.py:354 apps.py:360
+#: apps.py:355 apps.py:361
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: classes.py:122
+#: classes.py:124
 #, python-format
 msgid "%(field_name)s template error: %(exception)s"
 msgstr "Błąd szablonu %(field_name)s: %(exception)s"

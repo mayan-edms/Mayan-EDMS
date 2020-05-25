@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 02:46-0400\n"
+"POT-Creation-Date: 2020-05-25 02:15-0400\n"
 "PO-Revision-Date: 2020-05-10 20:30+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -55,7 +55,7 @@ msgstr "Label"
 msgid "Seen"
 msgstr "Gezien"
 
-#: classes.py:69
+#: classes.py:76
 #, python-format
 msgid "Unknown or obsolete event type: %s"
 msgstr "Onbekend of overbodig gebeurtenistype: %s"
@@ -72,7 +72,7 @@ msgstr "Nee"
 msgid "Subscribed"
 msgstr "Geabonneerd"
 
-#: html_widgets.py:55
+#: html_widgets.py:57
 msgid "System"
 msgstr "Systeem"
 

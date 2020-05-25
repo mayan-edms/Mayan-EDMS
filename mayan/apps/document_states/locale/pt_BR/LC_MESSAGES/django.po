@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 02:45-0400\n"
+"POT-Creation-Date: 2020-05-25 02:14-0400\n"
 "PO-Revision-Date: 2020-03-28 12:38+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -28,105 +28,105 @@ msgstr ""
 msgid "Workflows"
 msgstr "Workflows"
 
-#: apps.py:111 apps.py:118
+#: apps.py:112 apps.py:119
 msgid "Current state of a workflow"
 msgstr "Estado atual de um workflow"
 
-#: apps.py:112
+#: apps.py:113
 msgid "Return the current state of the selected workflow."
 msgstr "Retorna o estado atual do workflow selecionado."
 
-#: apps.py:119
+#: apps.py:120
 msgid ""
 "Return the completion value of the current state of the selected workflow."
 msgstr "Retorna o valor final do estado atual do workflow selecionado."
 
-#: apps.py:173
+#: apps.py:174
 msgid ""
 "Return the last workflow instance log entry. The log entry itself has the "
 "following fields: datetime, transition, user, and comment."
 msgstr "Retorna o último registro do log do workflow. O registro possui os seguintes campos: datetime, transição, usuário e comentário."
 
-#: apps.py:176
+#: apps.py:177
 msgid "Get last log entry"
 msgstr "Obter a última entrada do log"
 
-#: apps.py:182
+#: apps.py:183
 msgid ""
 "Return the current context dictionary which includes runtime data from the "
 "workflow transition fields."
 msgstr "Retorna o dicionário de contexto atual que inclui dados de execuçãos campos de transição do workflow."
 
-#: apps.py:184
+#: apps.py:185
 msgid "Get the context"
 msgstr "Obter contexto"
 
-#: apps.py:190
+#: apps.py:191
 msgid "Return the transition of the workflow instance."
 msgstr "Retorna a transição da instância do workflow."
 
-#: apps.py:191
+#: apps.py:192
 msgid "Get last transition"
 msgstr "Obter a última transição"
 
-#: apps.py:205 apps.py:215 apps.py:224 apps.py:230
+#: apps.py:206 apps.py:216 apps.py:225 apps.py:231
 msgid "None"
 msgstr "Nenhum"
 
-#: apps.py:211
+#: apps.py:212
 msgid "Current state"
 msgstr "Estado atual"
 
-#: apps.py:216 apps.py:240 models.py:444
+#: apps.py:217 apps.py:241 models.py:444
 msgid "User"
 msgstr "Usuário"
 
-#: apps.py:220
+#: apps.py:221
 msgid "Last transition"
 msgstr "Última transição"
 
-#: apps.py:225 apps.py:236
+#: apps.py:226 apps.py:237
 msgid "Date and time"
 msgstr "Data e hora"
 
-#: apps.py:231 models.py:538
+#: apps.py:232 models.py:538
 msgid "Completion"
 msgstr "Finalização"
 
-#: apps.py:261
+#: apps.py:262
 msgid "Additional details"
 msgstr "Detalhes adicionais"
 
-#: apps.py:288
+#: apps.py:289
 msgid "When?"
 msgstr "Quando?"
 
-#: apps.py:292
+#: apps.py:293
 msgid "Action type"
 msgstr "Tipo de ação"
 
-#: apps.py:319
+#: apps.py:320
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
 msgstr "Triggers são eventos do sistema que fazem com que essa transição seja aplicada."
 
-#: apps.py:321
+#: apps.py:322
 msgid "Triggers"
 msgstr "Triggers"
 
-#: apps.py:335 models.py:756
+#: apps.py:336 models.py:756
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:343
+#: apps.py:344
 msgid "Widget"
 msgstr "Widget"
 
-#: apps.py:354 apps.py:360
+#: apps.py:355 apps.py:361
 msgid "Documents"
 msgstr "Documentos"
 
-#: classes.py:122
+#: classes.py:124
 #, python-format
 msgid "%(field_name)s template error: %(exception)s"
 msgstr "%(field_name)serro de template %(exception)s"

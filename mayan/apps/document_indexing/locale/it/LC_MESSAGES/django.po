@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 02:45-0400\n"
+"POT-Creation-Date: 2020-05-25 02:14-0400\n"
 "PO-Revision-Date: 2020-04-02 07:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -34,23 +34,23 @@ msgstr "Tipi di documento"
 msgid "Document indexing"
 msgstr "Indicizzazione documento"
 
-#: apps.py:128
+#: apps.py:129
 msgid "Total levels"
 msgstr "Livelli totali"
 
-#: apps.py:135
+#: apps.py:136
 msgid "Total documents"
 msgstr "Totale documenti"
 
-#: apps.py:141 apps.py:155 apps.py:180 apps.py:190
+#: apps.py:142 apps.py:156 apps.py:181 apps.py:191
 msgid "Level"
 msgstr "Livello"
 
-#: apps.py:160 apps.py:195
+#: apps.py:161 apps.py:196
 msgid "Levels"
 msgstr "Livelli"
 
-#: apps.py:167 apps.py:175 apps.py:203 models.py:378
+#: apps.py:168 apps.py:176 apps.py:204 models.py:381
 msgid "Documents"
 msgstr "Documenti"
 
@@ -192,46 +192,46 @@ msgstr "Indici dei nodi Template"
 msgid "Root"
 msgstr "Principale"
 
-#: models.py:325
+#: models.py:328
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "Errore nell'ndicizzazione del documento: %(document)s; espressione: %(expression)s; %(exception)s"
 
-#: models.py:371
+#: models.py:374
 msgid "Index template node"
 msgstr "Indice del nodo Template"
 
-#: models.py:374 search.py:23
+#: models.py:377 search.py:23
 msgid "Value"
 msgstr "Valore"
 
-#: models.py:384 models.py:510
+#: models.py:387 models.py:513
 msgid "Index instance node"
 msgstr ""
 
-#: models.py:385
+#: models.py:388
 msgid "Indexes instances node"
 msgstr ""
 
-#: models.py:447
+#: models.py:450
 msgid "The path to the index including all ancestors."
 msgstr ""
 
-#: models.py:449
+#: models.py:452
 msgid "Full path"
 msgstr ""
 
-#: models.py:503
+#: models.py:506
 msgid "Document index node instance"
 msgstr "Istanza del nodo indice del documento"
 
-#: models.py:504
+#: models.py:507
 msgid "Document indexes node instances"
 msgstr "Istanze dei nodi indice del documento"
 
-#: models.py:511
+#: models.py:514
 msgid "Index instance nodes"
 msgstr ""
 

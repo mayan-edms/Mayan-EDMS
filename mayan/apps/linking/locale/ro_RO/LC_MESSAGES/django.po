@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 02:46-0400\n"
+"POT-Creation-Date: 2020-05-25 02:15-0400\n"
 "PO-Revision-Date: 2019-12-20 12:46+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Linking"
 msgstr "Legare"
 
-#: apps.py:75 models.py:26
+#: apps.py:76 models.py:26
 msgid "Label"
 msgstr "Etichetă"
 
@@ -154,66 +154,66 @@ msgstr "Utilizați acest câmp pentru a afișa o etichetă unică, în funcție 
 msgid "Dynamic label"
 msgstr "Etichetă dinamică"
 
-#: models.py:34 models.py:194
+#: models.py:34 models.py:191
 msgid "Enabled"
 msgstr "Activat"
 
-#: models.py:44 models.py:172
+#: models.py:44 models.py:169
 msgid "Smart link"
 msgstr "Legătură inteligentă"
 
-#: models.py:84
+#: models.py:83
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr "Eroare la generarea etichetei dinamice; %s"
 
-#: models.py:99
+#: models.py:98
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "Această legătură inteligentă nu este permisă pentru tipul de document selectat."
 
-#: models.py:176
+#: models.py:173
 msgid "The inclusion is ignored for the first item."
 msgstr "Includerea este ignorată pentru primul element."
 
-#: models.py:180
+#: models.py:177
 msgid "This represents the metadata of all other documents."
 msgstr "Aceasta reprezintă metadatele tuturor celorlalte documente."
 
-#: models.py:181
+#: models.py:178
 msgid "Foreign document attribute"
 msgstr "Atribut document străin"
 
-#: models.py:186
+#: models.py:183
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
 msgstr "Expresia care trebuie evaluată  folosind proprietățile documentului pe câmpul documentului străin."
 
-#: models.py:188
+#: models.py:185
 msgid "Expression"
 msgstr "Expresie"
 
-#: models.py:191
+#: models.py:188
 msgid "Inverts the logic of the operator."
 msgstr "Inversează logica operatorului."
 
-#: models.py:192
+#: models.py:189
 msgid "Negated"
 msgstr "Negat"
 
-#: models.py:197
+#: models.py:194
 msgid "Link condition"
 msgstr "Condiție de conectare"
 
-#: models.py:198
+#: models.py:195
 msgid "Link conditions"
 msgstr "Condiții de conectare"
 
-#: models.py:206
+#: models.py:203
 msgid "not"
 msgstr "nu"
 
-#: models.py:210
+#: models.py:207
 msgid "Full label"
 msgstr "Etichetă completă"
 
