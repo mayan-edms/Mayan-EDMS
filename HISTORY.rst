@@ -10,6 +10,10 @@
 - Improve default binary path detections in OpenBSD 6.7.
 - Fix README link to installation chapter. Closes GitLab issue #823.
   Thanks to Matthias Löblich (@startmat) for the report.
+- Add document and document version pre creation hooks.
+- Use pre creation hooks to check quotas before document or document
+  version creation and block user early on before
+  the task is submitted.
 
 3.4.7 (2020-04-28)
 ==================
