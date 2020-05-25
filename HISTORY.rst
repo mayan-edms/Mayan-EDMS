@@ -17,6 +17,7 @@
 - Wrap around long texts in the panel's body.
 - Wrap around long tags when showing them in a panel's body.
 - Move templating to the templating app.
+- Expose Django's ``AUTHENTICATION_BACKENDS`` setting.
 
 3.4.7 (2020-04-28)
 ==================
