@@ -1,4 +1,4 @@
-3.4.8 (2020-XX-XX)
+3.4.8 (2020-05-25)
 ==================
 - Move django-qsstats-magic to the mayan_statistics app.
 - Update Pillow from version 7.0.0 to 7.1.2.
