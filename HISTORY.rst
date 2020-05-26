@@ -1,3 +1,9 @@
+3.4.9 (2020-05-XX)
+==================
+- Add the packaging library explicitly as a dependency.
+  Closes GitLab issue #825. Thanks to Martin (@efelon) for the 
+  report and debug information.
+
 3.4.8 (2020-05-25)
 ==================
 - Move django-qsstats-magic to the mayan_statistics app.
