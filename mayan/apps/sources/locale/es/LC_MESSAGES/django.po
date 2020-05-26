@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-25 02:16-0400\n"
-"PO-Revision-Date: 2020-05-25 06:18+0000\n"
+"POT-Creation-Date: 2020-05-26 04:23-0400\n"
+"PO-Revision-Date: 2020-05-26 08:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -772,7 +772,7 @@ msgstr "No se pueden cargar nuevas versiones para el documento \"%(document)s\".
 #: views.py:635
 #, python-format
 msgid "Error executing document version upload task; %(exception)s"
-msgstr ""
+msgstr "Error al ejecutar la tarea de carga de la versión del documento; %(exception)s"
 
 #: views.py:650
 msgid "New document version queued for upload and will be available shortly."
