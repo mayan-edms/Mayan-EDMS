@@ -1,5 +1,6 @@
 import logging
 
+from django.apps import apps
 from django.contrib.auth.models import Group
 from django.db import models, transaction
 from django.urls import reverse
@@ -7,6 +8,7 @@ from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.user_management.events import event_group_edited
+from mayan.apps.user_management.permissions import permission_group_view
 
 from .classes import Permission
 from .events import event_role_created, event_role_edited
@@ -119,6 +121,35 @@ class Role(models.Model):
 
     def get_absolute_url(self):
         return reverse(viewname='permissions:role_list')
+
+    def get_group_count(self, user):
+        """
+        Return the numeric count of groups that have this role contains.
+        The count is filtered by access.
+        """
+        return self.get_groups(user=user).count()
+
+    def get_groups(self, user):
+        """
+        Return a filtered queryset groups that have this role contains.
+        """
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_group_view, queryset=self.groups.all(),
+            user=user
+        )
+    get_group_count.short_description = _('Group count')
+
+    def get_permission_count(self):
+        """
+        Return the numeric count of permissions that have this role
+        has granted. The count is filtered by access.
+        """
+        return self.permissions.count()
+    get_permission_count.short_description = _('Permission count')
 
     def grant(self, permission):
         self.permissions.add(permission.stored_permission)

@@ -72,7 +72,17 @@ class PermissionsApp(MayanAppConfig):
         Permission.initialize()
 
         SourceColumn(
-            attribute='label', is_identifier=True, is_sortable=True, source=Role
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=Role
+        )
+        SourceColumn(
+            attribute='get_permission_count', include_label=True,
+            source=Role
+        )
+        SourceColumn(
+            func=lambda context: context['object'].get_group_count(
+                user=context['request'].user
+            ), include_label=True, label=_('Group count'), source=Role
         )
 
         dashboard_main.add_widget(

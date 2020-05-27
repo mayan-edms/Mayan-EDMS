@@ -29,6 +29,7 @@
 - Remove conditional assignment of FileNotFoundErrorException.
   Use Python 3's FileNotFoundError.
 - Remove casting of dict_type and dictionary_type.
+- Add group and permission count column to the role object.
 
 3.4.9 (2020-05-26)
 ==================
