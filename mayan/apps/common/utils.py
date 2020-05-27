@@ -9,8 +9,6 @@ from django.urls.base import get_script_prefix
 from django.utils.encoding import force_text
 from django.utils.six.moves import reduce as reduce_function
 
-from mayan.apps.common.compat import dict_type, dictionary_type
-
 from .literals import DJANGO_SQLITE_BACKEND
 
 logger = logging.getLogger(name=__name__)
@@ -120,8 +118,8 @@ def return_attrib(obj, attrib, arguments=None):
     if isinstance(attrib, types.FunctionType):
         return attrib(obj)
     elif isinstance(
-        obj, dict_type
-    ) or isinstance(obj, dictionary_type):
+        obj, dict
+    ) or isinstance(obj, dict):
         return obj[attrib]
     else:
         result = reduce_function(getattr, attrib.split('.'), obj)

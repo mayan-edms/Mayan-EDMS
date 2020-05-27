@@ -28,6 +28,7 @@
 - Remove explicit Python 3 checks and conditional code.
 - Remove conditional assignment of FileNotFoundErrorException.
   Use Python 3's FileNotFoundError.
+- Remove casting of dict_type and dictionary_type.
 
 3.4.9 (2020-05-26)
 ==================

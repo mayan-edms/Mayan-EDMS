@@ -8,14 +8,6 @@ from django.utils.six.moves.urllib.parse import quote
 
 from mayan.apps.mimetype.api import get_mimetype
 
-dict_type = dict
-dictionary_type = dict
-
-try:
-    from email.Utils import collapse_rfc2231_value  # NOQA
-except ImportError:
-    from email.utils import collapse_rfc2231_value  # NOQA
-
 
 class FileResponse(StreamingHttpResponse):
     """
