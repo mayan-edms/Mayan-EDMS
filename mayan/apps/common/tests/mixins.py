@@ -18,9 +18,7 @@ from django.http import HttpResponse
 from django.template import Context, Template
 from django.test.utils import ContextList
 from django.urls import clear_url_caches, reverse
-from django.utils.encoding import (
-    DjangoUnicodeDecodeError, force_bytes, force_text
-)
+from django.utils.encoding import DjangoUnicodeDecodeError, force_text
 
 from stronghold.decorators import public
 

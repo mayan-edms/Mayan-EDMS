@@ -1,9 +1,7 @@
 import os
-import types
 
 from django.conf import settings
 from django.http.response import StreamingHttpResponse
-from django.utils import six
 from django.utils.six.moves.urllib.parse import quote
 
 from mayan.apps.mimetype.api import get_mimetype

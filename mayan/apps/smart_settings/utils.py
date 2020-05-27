@@ -3,7 +3,6 @@ import os
 
 import yaml
 
-from mayan.apps.common.compat import dict_type
 from mayan.apps.common.serialization import yaml_load
 
 from .literals import (
@@ -219,7 +218,7 @@ class MediaBootstrapSetting(FilesystemBootstrapSetting):
 
 
 def smart_yaml_load(value):
-    if isinstance(value, dict_type):
+    if isinstance(value, dict):
         return value
     else:
         return yaml_load(

@@ -13,9 +13,7 @@ import requests
 from semver import max_satisfying
 
 from django.apps import apps
-from django.utils.encoding import (
-    force_bytes, force_text, python_2_unicode_compatible
-)
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.termcolors import colorize

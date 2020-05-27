@@ -1,6 +1,5 @@
 from django.http import QueryDict
 from django.urls import reverse
-from django.utils.encoding import force_bytes
 
 
 class URL(object):
