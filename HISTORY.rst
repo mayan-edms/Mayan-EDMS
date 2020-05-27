@@ -26,6 +26,8 @@
     - tox from 3.14.5 to 3.14.6
 
 - Remove explicit Python 3 checks and conditional code.
+- Remove conditional assignment of FileNotFoundErrorException.
+  Use Python 3's FileNotFoundError.
 
 3.4.9 (2020-05-26)
 ==================

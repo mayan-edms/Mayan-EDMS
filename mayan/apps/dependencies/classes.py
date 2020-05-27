@@ -21,7 +21,6 @@ from django.utils.module_loading import import_string
 from django.utils.termcolors import colorize
 from django.utils.translation import ugettext_lazy as _, ugettext
 
-from mayan.apps.common.compat import FileNotFoundErrorException
 from mayan.apps.common.utils import resolve_attribute
 from mayan.apps.storage.utils import mkdtemp, patch_files as storage_patch_files
 
@@ -443,7 +442,7 @@ class JavaScriptDependency(Dependency):
     def _check(self):
         try:
             package_info = self._read_package_file()
-        except FileNotFoundErrorException:
+        except FileNotFoundError:
             return False
 
         versions = [package_info['version']]
@@ -540,7 +539,7 @@ class JavaScriptDependency(Dependency):
 
         try:
             package_info = self._read_package_file()
-        except FileNotFoundErrorException:
+        except FileNotFoundError:
             return super(JavaScriptDependency, self).get_copyright()
         else:
             copyright_text.append(
@@ -563,7 +562,7 @@ class JavaScriptDependency(Dependency):
 
         try:
             description = self._read_package_file().get('description')
-        except FileNotFoundErrorException:
+        except FileNotFoundError:
             return super(JavaScriptDependency, self).get_help_text()
         else:
             return description
