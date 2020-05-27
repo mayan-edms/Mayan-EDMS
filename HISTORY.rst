@@ -25,6 +25,8 @@
     - transifex-client from 0.13.8 to 0.13.9
     - tox from 3.14.5 to 3.14.6
 
+- Remove explicit Python 3 checks and conditional code.
+
 3.4.9 (2020-05-26)
 ==================
 - Add the packaging library explicitly as a dependency.

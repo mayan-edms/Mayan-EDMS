@@ -18,7 +18,6 @@ from django.utils.encoding import (
 )
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
-from django.utils.six import PY3
 from django.utils.termcolors import colorize
 from django.utils.translation import ugettext_lazy as _, ugettext
 
@@ -447,12 +446,8 @@ class JavaScriptDependency(Dependency):
         except FileNotFoundErrorException:
             return False
 
-        if PY3:
-            versions = [package_info['version']]
-            version_string = self.version_string
-        else:
-            versions = [force_bytes(package_info['version'])]
-            version_string = force_bytes(self.version_string)
+        versions = [package_info['version']]
+        version_string = self.version_string
 
         return max_satisfying(
             versions=versions, range_=version_string,
@@ -527,17 +522,8 @@ class JavaScriptDependency(Dependency):
                 shutil.copyfileobj(fsrc=response.raw, fdst=file_object)
 
     def get_best_version(self):
-        # PY3
-        # node-semver does a direct str() comparison which means
-        # different things on PY2 and PY3
-        # Typecast to str in PY3 which is unicode and
-        # bytes in PY2 which is str to fool node-semver
-        if PY3:
-            versions = self.versions
-            version_string = self.version_string
-        else:
-            versions = [force_bytes(version) for version in self.versions]
-            version_string = force_bytes(self.version_string)
+        versions = self.versions
+        version_string = self.version_string
 
         return max_satisfying(
             versions=versions, range_=version_string, loose=True

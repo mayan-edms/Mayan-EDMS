@@ -2,7 +2,6 @@ from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.db.models.signals import post_save
-from django.utils import six
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -114,14 +113,9 @@ class UserManagementApp(MayanAppConfig):
         User._meta.get_field('last_name').verbose_name = _('Last name')
         User._meta.get_field('email').verbose_name = _('Email')
         User._meta.get_field('is_active').verbose_name = _('Is active?')
-        if six.PY3:
-            User.has_usable_password.short_description = _(
-                'Has usable password?'
-            )
-        else:
-            User.has_usable_password.__func__.short_description = _(
-                'Has usable password?'
-            )
+        User.has_usable_password.short_description = _(
+            'Has usable password?'
+        )
 
         Group.add_to_class(
             name='get_users', value=method_group_get_users

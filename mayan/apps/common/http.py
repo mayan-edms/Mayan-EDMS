@@ -1,7 +1,6 @@
 from django.http import QueryDict
 from django.urls import reverse
 from django.utils.encoding import force_bytes
-from django.utils.six import PY3
 
 
 class URL(object):
@@ -40,7 +39,4 @@ class URL(object):
 
         result = '{}{}'.format(path, query)
 
-        if PY3:
-            return result
-        else:
-            return force_bytes(result)
+        return result

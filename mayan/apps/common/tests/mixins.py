@@ -21,7 +21,6 @@ from django.urls import clear_url_caches, reverse
 from django.utils.encoding import (
     DjangoUnicodeDecodeError, force_bytes, force_text
 )
-from django.utils.six import PY3
 
 from stronghold.decorators import public
 
@@ -503,14 +502,9 @@ class TestModelTestMixin(object):
         # but from another test module.
         apps.all_models[self.app_config.label].pop(self.model_name.lower(), None)
 
-        if PY3:
-            model = type(
-                self.model_name, (base_class,), attrs
-            )
-        else:
-            model = type(
-                force_bytes(self.model_name), (base_class,), attrs
-            )
+        model = type(
+            self.model_name, (base_class,), attrs
+        )
 
         if not model._meta.proxy:
             with connection.schema_editor() as schema_editor:

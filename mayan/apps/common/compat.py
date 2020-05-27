@@ -8,12 +8,8 @@ from django.utils.six.moves.urllib.parse import quote
 
 from mayan.apps.mimetype.api import get_mimetype
 
-if six.PY3:
-    dict_type = dict
-    dictionary_type = dict
-else:
-    dict_type = types.DictType
-    dictionary_type = types.DictionaryType
+dict_type = dict
+dictionary_type = dict
 
 try:
     from email.Utils import collapse_rfc2231_value  # NOQA
