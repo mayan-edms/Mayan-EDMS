@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"POT-Creation-Date: 2020-05-26 04:21-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:48 apps.py:122 apps.py:129 apps.py:134 apps.py:137 events.py:5
-#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:165
+#: apps.py:48 apps.py:123 apps.py:130 apps.py:135 apps.py:138 events.py:5
+#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:170
 #: permissions.py:5 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr ""
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Documents"
 msgstr ""
 
-#: models.py:47 models.py:144 models.py:164 serializers.py:136
+#: models.py:47 models.py:144 models.py:169 serializers.py:136
 #: workflow_actions.py:66
 msgid "Cabinet"
 msgstr ""
@@ -113,11 +113,11 @@ msgstr ""
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr ""
 
-#: models.py:176
+#: models.py:181
 msgid "Document cabinet"
 msgstr ""
 
-#: models.py:177
+#: models.py:182
 msgid "Document cabinets"
 msgstr ""
 

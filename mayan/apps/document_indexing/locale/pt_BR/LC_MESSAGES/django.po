@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"POT-Creation-Date: 2020-05-26 04:21-0400\n"
 "PO-Revision-Date: 2020-04-04 12:47+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -34,23 +34,23 @@ msgstr "Tipos de Documentos"
 msgid "Document indexing"
 msgstr "Indexação de documentos"
 
-#: apps.py:128
+#: apps.py:129
 msgid "Total levels"
 msgstr "Total de níveis"
 
-#: apps.py:135
+#: apps.py:136
 msgid "Total documents"
 msgstr "Total de documentos"
 
-#: apps.py:141 apps.py:155 apps.py:180 apps.py:190
+#: apps.py:142 apps.py:156 apps.py:181 apps.py:191
 msgid "Level"
 msgstr "Nível"
 
-#: apps.py:160 apps.py:195
+#: apps.py:161 apps.py:196
 msgid "Levels"
 msgstr "Níveis"
 
-#: apps.py:167 apps.py:175 apps.py:203 models.py:378
+#: apps.py:168 apps.py:176 apps.py:204 models.py:381
 msgid "Documents"
 msgstr "Documentos"
 
@@ -192,46 +192,46 @@ msgstr "Indices de template de nó"
 msgid "Root"
 msgstr "Raiz"
 
-#: models.py:325
+#: models.py:328
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "Erro indexando documento: %(document)s; expressão: %(expression)s; %(exception)s"
 
-#: models.py:371
+#: models.py:374
 msgid "Index template node"
 msgstr "Nó de template de índice"
 
-#: models.py:374 search.py:23
+#: models.py:377 search.py:23
 msgid "Value"
 msgstr "Valor"
 
-#: models.py:384 models.py:510
+#: models.py:387 models.py:513
 msgid "Index instance node"
 msgstr "Nó de instância de índice"
 
-#: models.py:385
+#: models.py:388
 msgid "Indexes instances node"
 msgstr "Nó de instâncias de índices"
 
-#: models.py:447
+#: models.py:450
 msgid "The path to the index including all ancestors."
 msgstr "O caminho para o índice incluindo todos os ancestrais."
 
-#: models.py:449
+#: models.py:452
 msgid "Full path"
 msgstr "Caminho completo"
 
-#: models.py:503
+#: models.py:506
 msgid "Document index node instance"
 msgstr "Instâncias do nó do índice de documentos"
 
-#: models.py:504
+#: models.py:507
 msgid "Document indexes node instances"
 msgstr "Instâncias de nós de lindice de instâncias"
 
-#: models.py:511
+#: models.py:514
 msgid "Index instance nodes"
 msgstr "Nós de instância de índice"
 

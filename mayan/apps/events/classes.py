@@ -13,6 +13,13 @@ from .permissions import permission_events_view
 logger = logging.getLogger(name=__name__)
 
 
+class EventModelRegistry(object):
+    @staticmethod
+    def register(model):
+        from actstream import registry
+        registry.register(model)
+
+
 @python_2_unicode_compatible
 class EventTypeNamespace(object):
     _registry = {}

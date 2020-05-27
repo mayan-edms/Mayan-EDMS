@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"POT-Creation-Date: 2020-05-26 04:21-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:54 events.py:6 permissions.py:6 settings.py:5
+#: apps.py:54 events.py:6 permissions.py:6 settings.py:7
 msgid "Document parsing"
 msgstr "Analyse de document"
 
@@ -174,13 +174,13 @@ msgstr "Analyse"
 msgid "Document version parsing"
 msgstr "Analyse de version de document"
 
-#: settings.py:10
+#: settings.py:12
 msgid "Set new document types to perform parsing automatically by default."
 msgstr ""
 "Les nouveaux types de documents, par défaut, réaliseront automatiquement une"
 " analyse."
 
-#: settings.py:17
+#: settings.py:19
 msgid ""
 "File path to poppler's pdftotext program used to extract text from PDF "
 "files."

@@ -16,7 +16,7 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.documents.signals import post_document_type_change
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
 )
@@ -66,7 +66,6 @@ class MetadataApp(MayanAppConfig):
 
     def ready(self):
         super(MetadataApp, self).ready()
-        from actstream import registry
 
         from .wizard_steps import WizardStepMetadata  # NOQA
 
@@ -90,6 +89,9 @@ class MetadataApp(MayanAppConfig):
         Document.add_to_class(
             name='metadata_value_of', value=DocumentMetadataHelper.constructor
         )
+
+        EventModelRegistry.register(model=MetadataType)
+        EventModelRegistry.register(model=DocumentTypeMetadataType)
 
         ModelProperty(
             model=Document, name='metadata_value_of.< metadata type name >',
@@ -274,6 +276,3 @@ class MetadataApp(MayanAppConfig):
             receiver=handler_index_document,
             sender=DocumentMetadata
         )
-
-        registry.register(MetadataType)
-        registry.register(DocumentTypeMetadataType)

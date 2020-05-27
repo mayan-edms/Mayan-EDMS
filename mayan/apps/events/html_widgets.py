@@ -1,9 +1,10 @@
 from django.apps import apps
-from django.template import Context, Template
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
+
+from mayan.apps.templating.classes import Template
 
 from .classes import EventType
 
@@ -35,9 +36,10 @@ class ObjectLinkWidget(object):
                 return '{}{}'.format(object_type, label)
 
         return self.template.render(
-            context=Context(
-                {'label': label, 'object_type': object_type, 'url': url or '#'}
-            )
+            context={
+                'label': label, 'object_type': object_type,
+                'url': url or '#'
+            }
         )
 
 
@@ -68,7 +70,7 @@ def widget_event_actor_link(context, attribute=None):
     if url:
         return Template(
             template_string='<a href="{{ url }}">{{ label }}</a>'
-        ).render(context=Context({'label': entry.actor, 'url': url}))
+        ).render(context={'label': entry.actor, 'url': url})
     else:
         return label
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"POT-Creation-Date: 2020-05-26 04:21-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -21,9 +21,9 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:54 events.py:6 permissions.py:6 settings.py:5
+#: apps.py:54 events.py:6 permissions.py:6 settings.py:7
 msgid "Document parsing"
-msgstr ""
+msgstr "Document aan het opmaken"
 
 #: apps.py:106
 msgid "A generator returning the document's pages parsed content."
@@ -48,11 +48,11 @@ msgstr ""
 
 #: events.py:14
 msgid "Document version submitted for parsing"
-msgstr ""
+msgstr "Documentversie ingediend voor opmaak"
 
 #: events.py:17
 msgid "Document version parsing finished"
-msgstr ""
+msgstr "Documentversie opmaken voltooid"
 
 #: forms.py:37
 #, python-format
@@ -69,7 +69,7 @@ msgstr ""
 
 #: links.py:42 links.py:80 views.py:228
 msgid "Parsing errors"
-msgstr ""
+msgstr "Opmaakfouten"
 
 #: links.py:48
 msgid "Download content"
@@ -77,15 +77,15 @@ msgstr "Inhoud downloaden"
 
 #: links.py:53 links.py:60
 msgid "Submit for parsing"
-msgstr ""
+msgstr "Indienen voor opmaak"
 
 #: links.py:66
 msgid "Setup parsing"
-msgstr ""
+msgstr "Opmaak instellen"
 
 #: links.py:75
 msgid "Parse documents per type"
-msgstr ""
+msgstr "Documenten per type opmaken"
 
 #: models.py:19
 msgid "Document page"
@@ -110,6 +110,7 @@ msgstr "Documenttype"
 #: models.py:48
 msgid "Automatically queue newly created documents for parsing."
 msgstr ""
+"Nieuw aangemaakte documenten automatisch in wachtrij voor opmaak plaatsen."
 
 #: models.py:59
 msgid "Document type settings"
@@ -129,16 +130,16 @@ msgstr "Indientijdstip"
 
 #: models.py:80
 msgid "Document version parse error"
-msgstr ""
+msgstr "Documentversie opmaakfout"
 
 #: models.py:81
 msgid "Document version parse errors"
-msgstr ""
+msgstr "Documentversie opmaakfouten"
 
 #: parsers.py:90
 #, python-format
 msgid "Exception parsing page; %s"
-msgstr ""
+msgstr "Uitzondering bij opmaak pagina; %s"
 
 #: parsers.py:116
 #, python-format
@@ -151,25 +152,25 @@ msgstr "De inhoud van een document bekijken"
 
 #: permissions.py:13
 msgid "Change document type parsing settings"
-msgstr ""
+msgstr "Opmaakinstellingen van documenttype wijzigen"
 
 #: permissions.py:17
 msgid "Parse the content of a document"
-msgstr ""
+msgstr "De inhoud van een document opmaken"
 
 #: queues.py:6
 msgid "Parsing"
-msgstr ""
+msgstr "Opmaken"
 
 #: queues.py:9
 msgid "Document version parsing"
-msgstr ""
+msgstr "Documentversie aan het opmaken"
 
-#: settings.py:10
+#: settings.py:12
 msgid "Set new document types to perform parsing automatically by default."
-msgstr ""
+msgstr "Instellen dat documenttypes standaard automatische opmaak uitvoeren. "
 
-#: settings.py:17
+#: settings.py:19
 msgid ""
 "File path to poppler's pdftotext program used to extract text from PDF "
 "files."
@@ -196,17 +197,17 @@ msgstr "Inhoud voor documentpagina: %s "
 #: views.py:121
 #, python-format
 msgid "Parsing errors for document: %s"
-msgstr ""
+msgstr "Opmaakfouten voor document: %s"
 
 #: views.py:134
 #, python-format
 msgid "%(count)d document added to the parsing queue"
-msgstr ""
+msgstr "%(count)d document toegevoegd aan de opmaak wachtrij"
 
 #: views.py:137
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
-msgstr ""
+msgstr "%(count)d documenten toegevoegd aan de opmaak wachtrij"
 
 #: views.py:145
 #, python-format
@@ -218,7 +219,7 @@ msgstr[1] ""
 #: views.py:158
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
-msgstr ""
+msgstr "Document \"%s\" indienen voor de opmaak wachtrij"
 
 #: views.py:185
 #, python-format

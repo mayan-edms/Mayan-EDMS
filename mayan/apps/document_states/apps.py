@@ -15,7 +15,7 @@ from mayan.apps.common.menus import (
     menu_setup, menu_tools
 )
 from mayan.apps.common.permissions_runtime import permission_error_log_view
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
@@ -69,7 +69,6 @@ class DocumentStatesApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentStatesApp, self).ready()
-        from actstream import registry
 
         Action = apps.get_model(
             app_label='actstream', model_name='Action'
@@ -102,6 +101,8 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         ErrorLogEntry.objects.register(model=WorkflowStateAction)
+
+        EventModelRegistry.register(model=Workflow)
 
         WorkflowAction.initialize()
 
@@ -515,5 +516,3 @@ class DocumentStatesApp(MayanAppConfig):
             receiver=handler_trigger_transition,
             sender=Action
         )
-
-        registry.register(Workflow)

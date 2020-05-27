@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:36-0400\n"
-"PO-Revision-Date: 2020-04-27 15:21+0000\n"
+"POT-Creation-Date: 2020-05-26 04:23-0400\n"
+"PO-Revision-Date: 2020-05-02 20:07+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr "OCR"
 
 #: apps.py:105
 msgid "A generator returning the document's pages OCR content."
-msgstr ""
+msgstr "Geeft de OCR-inhoud van de document-pagina."
 
 #: apps.py:106
 msgid "OCR content"
@@ -44,17 +44,17 @@ msgstr "Resultaat"
 
 #: backends/tesseract.py:88
 msgid "Tesseract OCR not found."
-msgstr ""
+msgstr "Tesseract OCR niet gevonden."
 
 #: dependencies.py:23
 msgid "Free Open Source OCR Engine"
-msgstr ""
+msgstr "Gratis open source OCR Engine"
 
 #: dependencies.py:34
 msgid ""
 "PyOCR is a Python library simplifying the use of OCR tools like Tesseract or"
 " Cuneiform."
-msgstr ""
+msgstr "PyOCR is een Python library die het gebruik van OCR tools als Tesseract en Cuneiform vereenvoudigt."
 
 #: events.py:8
 msgid "Document OCR content deleted"
@@ -62,7 +62,7 @@ msgstr "Document OCR inhoud verwijderd"
 
 #: events.py:12
 msgid "Document version submitted for OCR"
-msgstr ""
+msgstr "Documentversie ingediend voor OCR"
 
 #: events.py:16
 msgid "Document version OCR finished"
@@ -91,7 +91,7 @@ msgstr "OCR instellen"
 
 #: links.py:56
 msgid "OCR documents per type"
-msgstr ""
+msgstr "OCR documenten per type"
 
 #: links.py:61 links.py:67 views.py:214
 msgid "OCR errors"

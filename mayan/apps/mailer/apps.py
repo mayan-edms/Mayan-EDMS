@@ -10,7 +10,7 @@ from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
     menu_tools
 )
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
@@ -41,7 +41,6 @@ class MailerApp(MayanAppConfig):
 
     def ready(self):
         super(MailerApp, self).ready()
-        from actstream import registry
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -50,6 +49,8 @@ class MailerApp(MayanAppConfig):
         LogEntry = self.get_model(model_name='LogEntry')
         UserMailer = self.get_model(model_name='UserMailer')
         UserMailerLogEntry = self.get_model(model_name='UserMailerLogEntry')
+
+        EventModelRegistry.register(model=UserMailer)
 
         MailerBackend.initialize()
 
@@ -139,5 +140,3 @@ class MailerApp(MayanAppConfig):
         menu_tools.bind_links(links=(link_system_mailer_error_log,))
 
         menu_setup.bind_links(links=(link_user_mailer_setup,))
-
-        registry.register(UserMailer)

@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.template import Context, Template, TemplateSyntaxError
+from django.template import TemplateSyntaxError
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
@@ -9,6 +9,7 @@ from mayan.apps.common.http import URL
 from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.models import Document
 
+from .classes import Template
 from .forms import DocumentTemplateSandboxForm
 from .permissions import permission_template_sandbox
 
@@ -42,11 +43,10 @@ class DocumentTemplateSandboxView(ExternalObjectMixin, FormView):
     def get_initial(self):
         template_string = self.request.GET.get('template', '')
         try:
-            context = Context(
-                {'document': self.external_object}
-            )
             template = Template(template_string=template_string)
-            result = template.render(context=context)
+            result = template.render(
+                context={'document': self.external_object}
+            )
         except TemplateSyntaxError as exception:
             result = ''
             error_message = _(

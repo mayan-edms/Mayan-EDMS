@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"POT-Creation-Date: 2020-05-26 04:22-0400\n"
 "PO-Revision-Date: 2019-08-28 12:14+0000\n"
 "Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -54,7 +54,7 @@ msgstr "Etichetta"
 msgid "Seen"
 msgstr ""
 
-#: classes.py:69
+#: classes.py:76
 #, python-format
 msgid "Unknown or obsolete event type: %s"
 msgstr ""
@@ -71,7 +71,7 @@ msgstr "No"
 msgid "Subscribed"
 msgstr ""
 
-#: html_widgets.py:55
+#: html_widgets.py:57
 msgid "System"
 msgstr "Sistema"
 

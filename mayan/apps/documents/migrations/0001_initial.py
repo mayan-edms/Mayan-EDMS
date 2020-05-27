@@ -524,7 +524,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'filename', models.CharField(
-                        max_length=128, verbose_name='Filename', db_index=True
+                        db_index=True, max_length=128, verbose_name='Filename'
                     )
                 ),
                 (

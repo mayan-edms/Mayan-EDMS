@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"POT-Creation-Date: 2020-05-26 04:21-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:54 events.py:6 permissions.py:6 settings.py:5
+#: apps.py:54 events.py:6 permissions.py:6 settings.py:7
 msgid "Document parsing"
 msgstr "Dokumentu analīze"
 
@@ -165,12 +165,12 @@ msgstr "Parsēšana"
 msgid "Document version parsing"
 msgstr "Dokumenta versijas analīze"
 
-#: settings.py:10
+#: settings.py:12
 msgid "Set new document types to perform parsing automatically by default."
 msgstr ""
 "Iestatiet jaunus dokumentu veidus, lai pēc noklusējuma veiktu parsēšanu."
 
-#: settings.py:17
+#: settings.py:19
 msgid ""
 "File path to poppler's pdftotext program used to extract text from PDF "
 "files."

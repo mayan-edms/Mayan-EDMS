@@ -2,13 +2,11 @@
 ================
 - Update dependencies versions:
 
-    - Pillow from 7.0.0 to 7.1.2
     - celery from 4.3.0 to 4.4.2
     - coverage from 5.0.4 to 5.1
     - coveralls from 1.11.1 to 2.0.0
     - drf-yasg from 1.6.0 to 1.17.1
     - djangorestframework from 3.7.7 to 3.11.0
-    - django-celery-beat from 1.5.0 to 2.0.0
     - django-cors-headers from 2.5.2 to 3.2.1
     - django-extensions from 2.2.8 to 2.2.9
     - django-rosetta from 0.9.3 to 0.9.4
@@ -26,8 +24,33 @@
     - swagger-spec-validator from 2.4.3 to 2.5.0
     - transifex-client from 0.13.8 to 0.13.9
     - tox from 3.14.5 to 3.14.6
-    - Werkzeug from 1.0.0 to 1.0.1
 
+3.4.9 (2020-05-26)
+==================
+- Add the packaging library explicitly as a dependency.
+  Closes GitLab issue #825. Thanks to Martin (@efelon) for the
+  report and debug information.
+
+3.4.8 (2020-05-25)
+==================
+- Move django-qsstats-magic to the mayan_statistics app.
+- Update Pillow from version 7.0.0 to 7.1.2.
+- Update Werkzeug from version 1.0.0 to 1.0.1.
+- Update devpi-server from version 5.4.1 to 5.5.0.
+- Update django-celery-beat from version 1.5.0 to 2.0.0.
+- Update translation files.
+- Encapsulate actstream registry inside a EventModelRegistry.
+- Improve default binary path detections in OpenBSD 6.7.
+- Fix README link to installation chapter. Closes GitLab issue #823.
+  Thanks to Matthias Löblich (@startmat) for the report.
+- Add document and document version pre creation hooks.
+- Use pre creation hooks to check quotas before document or document
+  version creation and block user early on before
+  the task is submitted.
+- Wrap around long texts in the panel's body.
+- Wrap around long tags when showing them in a panel's body.
+- Move templating to the templating app.
+- Expose Django's ``AUTHENTICATION_BACKENDS`` setting.
 
 3.4.7 (2020-04-28)
 ==================

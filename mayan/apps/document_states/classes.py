@@ -3,12 +3,12 @@ import logging
 
 from django.apps import apps
 from django.db.utils import OperationalError, ProgrammingError
-from django.template import Context, Template
 from django.utils import six
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.classes import PropertyHelper
+from mayan.apps.templating.classes import Template
 
 from .exceptions import WorkflowStateActionError
 
@@ -114,8 +114,10 @@ class WorkflowAction(
 
     def render_field(self, field_name, context):
         try:
-            result = Template(self.form_data.get(field_name, '')).render(
-                context=Context(context)
+            result = Template(
+                template_string=self.form_data.get(field_name, '')
+            ).render(
+                context=context
             )
         except Exception as exception:
             raise WorkflowStateActionError(

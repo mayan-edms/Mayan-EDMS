@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"POT-Creation-Date: 2020-05-26 04:22-0400\n"
 "PO-Revision-Date: 2020-02-06 09:47+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Linking"
 msgstr "Propojení"
 
-#: apps.py:75 models.py:26
+#: apps.py:76 models.py:26
 msgid "Label"
 msgstr "Označení"
 
@@ -153,66 +153,66 @@ msgstr "Toto pole použijte k zobrazení jedinečného názvu v závislosti na d
 msgid "Dynamic label"
 msgstr "Dynamický štítek"
 
-#: models.py:34 models.py:194
+#: models.py:34 models.py:191
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: models.py:44 models.py:172
+#: models.py:44 models.py:169
 msgid "Smart link"
 msgstr "Chytrý odkaz"
 
-#: models.py:84
+#: models.py:83
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr "Chyba při generování dynamického štítku; %s"
 
-#: models.py:99
+#: models.py:98
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "Tento chytrý odkaz není povolen pro typ vybraného dokumentu."
 
-#: models.py:176
+#: models.py:173
 msgid "The inclusion is ignored for the first item."
 msgstr "Zahrnutí se u první položky ignoruje."
 
-#: models.py:180
+#: models.py:177
 msgid "This represents the metadata of all other documents."
 msgstr "To představuje metadata všech ostatních dokumentů."
 
-#: models.py:181
+#: models.py:178
 msgid "Foreign document attribute"
 msgstr "Atribut cizího dokumentu"
 
-#: models.py:186
+#: models.py:183
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
 msgstr "Výraz používající vlastnosti dokumentu, které má být vyhodnoceny proti poli cizího dokumentu."
 
-#: models.py:188
+#: models.py:185
 msgid "Expression"
 msgstr "Výraz"
 
-#: models.py:191
+#: models.py:188
 msgid "Inverts the logic of the operator."
 msgstr "Obrací logiku operátora."
 
-#: models.py:192
+#: models.py:189
 msgid "Negated"
 msgstr "Vyloučeno"
 
-#: models.py:197
+#: models.py:194
 msgid "Link condition"
 msgstr "Podmínka odkazu"
 
-#: models.py:198
+#: models.py:195
 msgid "Link conditions"
 msgstr "Podmínky odkazu"
 
-#: models.py:206
+#: models.py:203
 msgid "not"
 msgstr "ne"
 
-#: models.py:210
+#: models.py:207
 msgid "Full label"
 msgstr "Úplný štítek"
 

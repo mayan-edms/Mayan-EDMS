@@ -21,7 +21,7 @@ from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit,
     permission_transformation_view,
 )
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
 )
@@ -131,7 +131,6 @@ class DocumentsApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentsApp, self).ready()
-        from actstream import registry
 
         DeletedDocument = self.get_model(model_name='DeletedDocument')
         Document = self.get_model(model_name='Document')
@@ -146,6 +145,11 @@ class DocumentsApp(MayanAppConfig):
             klass=Document,
             serializer_class='mayan.apps.documents.serializers.DocumentSerializer'
         )
+
+        EventModelRegistry.register(model=DeletedDocument)
+        EventModelRegistry.register(model=Document)
+        EventModelRegistry.register(model=DocumentType)
+        EventModelRegistry.register(model=DocumentVersion)
 
         MissingItem(
             label=_('Create a document type'),
@@ -593,8 +597,3 @@ class DocumentsApp(MayanAppConfig):
             dispatch_uid='documents_handler_scan_duplicates_for',
             receiver=handler_scan_duplicates_for
         )
-
-        registry.register(DeletedDocument)
-        registry.register(Document)
-        registry.register(DocumentType)
-        registry.register(DocumentVersion)

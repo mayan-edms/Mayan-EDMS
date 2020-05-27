@@ -11,7 +11,6 @@ from django.core import serializers
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import IntegrityError, models, transaction
 from django.db.models import F, Max, Q
-from django.template import Context, Template
 from django.urls import reverse
 from django.utils.encoding import (
     force_bytes, force_text, python_2_unicode_compatible
@@ -26,6 +25,7 @@ from mayan.apps.common.validators import YAMLValidator, validate_internal_name
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.events.models import StoredEventType
+from mayan.apps.templating.classes import Template
 
 from .error_logs import error_log_state_actions
 from .events import event_workflow_created, event_workflow_edited
@@ -647,7 +647,7 @@ class WorkflowStateAction(models.Model):
     def evaluate_condition(self, workflow_instance):
         if self.has_condition():
             return Template(template_string=self.condition).render(
-                context=Context({'workflow_instance': workflow_instance})
+                context={'workflow_instance': workflow_instance}
             ).strip()
         else:
             return True
@@ -732,7 +732,7 @@ class WorkflowTransition(models.Model):
     def evaluate_condition(self, workflow_instance):
         if self.has_condition():
             return Template(template_string=self.condition).render(
-                context=Context({'workflow_instance': workflow_instance})
+                context={'workflow_instance': workflow_instance}
             ).strip()
         else:
             return True

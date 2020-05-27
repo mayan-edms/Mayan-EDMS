@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2015
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2015
 # Renata Oliveira <renatabels@gmail.com>, 2011
 # Roberto Rosario, 2012
 # Vítor Figueiró <vfigueiro@gmail.com>, 2012
@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:37-0400\n"
+"POT-Creation-Date: 2020-05-26 04:23-0400\n"
 "PO-Revision-Date: 2019-06-29 06:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
@@ -25,55 +25,55 @@ msgstr ""
 msgid "User management"
 msgstr "Gestão de utilizadores"
 
-#: apps.py:98 search.py:10
+#: apps.py:100 search.py:10
 msgid "Group"
 msgstr ""
 
-#: apps.py:99 links.py:39 links.py:50 links.py:73 search.py:34 views.py:120
+#: apps.py:101 links.py:39 links.py:50 links.py:73 search.py:34 views.py:120
 msgid "Groups"
 msgstr "Grupos"
 
-#: apps.py:100 search.py:16
+#: apps.py:102 search.py:16
 msgid "Name"
 msgstr "Nome"
 
-#: apps.py:106 models.py:16 search.py:22
+#: apps.py:108 models.py:16 search.py:22
 msgid "User"
 msgstr "Utilizador"
 
-#: apps.py:107 apps.py:172 links.py:45 links.py:78 links.py:94 views.py:305
+#: apps.py:109 apps.py:174 links.py:45 links.py:78 links.py:94 views.py:305
 msgid "Users"
 msgstr "Utilizadores"
 
-#: apps.py:110
+#: apps.py:112
 msgid "Username"
 msgstr ""
 
-#: apps.py:111 search.py:28
+#: apps.py:113 search.py:28
 msgid "First name"
 msgstr ""
 
-#: apps.py:112 search.py:37
+#: apps.py:114 search.py:37
 msgid "Last name"
 msgstr ""
 
-#: apps.py:113 search.py:31
+#: apps.py:115 search.py:31
 msgid "Email"
 msgstr "Correio eletrónico"
 
-#: apps.py:114
+#: apps.py:116
 msgid "Is active?"
 msgstr ""
 
-#: apps.py:117 apps.py:121
+#: apps.py:119 apps.py:123
 msgid "Has usable password?"
 msgstr ""
 
-#: apps.py:136
+#: apps.py:138
 msgid "All the groups."
 msgstr "Todos os grupos."
 
-#: apps.py:140
+#: apps.py:142
 msgid "All the users."
 msgstr "Todos os utilziadores."
 

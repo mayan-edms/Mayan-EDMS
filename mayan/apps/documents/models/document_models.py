@@ -25,8 +25,26 @@ __all__ = ('Document',)
 logger = logging.getLogger(name=__name__)
 
 
+class HooksMixin(object):
+    @classmethod
+    def _execute_hooks(cls, hook_list, **kwargs):
+        result = None
+
+        for hook in hook_list:
+            result = hook(**kwargs)
+            if result:
+                kwargs.update(result)
+
+        return result
+
+    @classmethod
+    def _insert_hook_entry(cls, hook_list, func, order=None):
+        order = order or len(hook_list)
+        hook_list.insert(order, func)
+
+
 @python_2_unicode_compatible
-class Document(models.Model):
+class Document(HooksMixin, models.Model):
     """
     Defines a single document with it's fields and properties
     Fields:
@@ -34,6 +52,8 @@ class Document(models.Model):
     generated for each document. No two documents can ever have the same UUID.
     This ID is generated automatically.
     """
+    _hooks_pre_create = []
+
     uuid = models.UUIDField(
         default=uuid.uuid4, editable=False, help_text=_(
             'UUID of a document, universally Unique ID. An unique identifier '
@@ -87,6 +107,22 @@ class Document(models.Model):
     objects = DocumentManager()
     passthrough = PassthroughManager()
     trash = TrashCanManager()
+
+    @classmethod
+    def execute_pre_create_hooks(cls, kwargs=None):
+        """
+        Helper method to allow checking if it is possible to create
+        a new document.
+        """
+        cls._execute_hooks(
+            hook_list=cls._hooks_pre_create, kwargs=kwargs
+        )
+
+    @classmethod
+    def register_pre_create_hook(cls, func, order=None):
+        cls._insert_hook_entry(
+            hook_list=cls._hooks_pre_create, func=func, order=order
+        )
 
     class Meta:
         ordering = ('label',)

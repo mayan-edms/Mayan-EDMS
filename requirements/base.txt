@@ -29,6 +29,7 @@ gunicorn==20.0.4
 kombu==4.6.8
 mock==4.0.2
 node-semver==0.8.0
+packaging==20.3
 pycountry==19.8.18
 pycryptodome==3.9.7
 pyocr==0.7.2

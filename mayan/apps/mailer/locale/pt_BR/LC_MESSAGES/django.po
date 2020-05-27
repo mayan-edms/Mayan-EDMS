@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"POT-Creation-Date: 2020-05-26 04:22-0400\n"
 "PO-Revision-Date: 2020-03-28 12:50+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -25,11 +25,11 @@ msgstr ""
 msgid "Mailer"
 msgstr "Envio de emails"
 
-#: apps.py:61 apps.py:82
+#: apps.py:62 apps.py:83
 msgid "Date and time"
 msgstr "Data e hora"
 
-#: apps.py:64 apps.py:86 models.py:28 models.py:228
+#: apps.py:65 apps.py:87 models.py:28 models.py:230
 msgid "Message"
 msgstr "Mensagem"
 
@@ -228,7 +228,7 @@ msgstr "Caminho do arquivo"
 msgid "Django file based backend"
 msgstr "Backend baseado em arquivo do Django"
 
-#: models.py:25 models.py:225
+#: models.py:25 models.py:227
 msgid "Date time"
 msgstr "Data e hora"
 
@@ -278,19 +278,19 @@ msgstr "Dados do backend"
 msgid "The backend class for this entry."
 msgstr "A classe de backend para esta entrada."
 
-#: models.py:216
+#: models.py:218
 msgid "Test email from Mayan EDMS"
 msgstr "E-mail de teste para o Mayan EDMS"
 
-#: models.py:222
+#: models.py:224
 msgid "User mailer"
 msgstr "Mailer do usuário"
 
-#: models.py:234
+#: models.py:236
 msgid "User mailer log entry"
 msgstr "Entrada de log de mailer do usuário"
 
-#: models.py:235
+#: models.py:237
 msgid "User mailer log entries"
 msgstr "Entradas de log de mailer de usário"
 

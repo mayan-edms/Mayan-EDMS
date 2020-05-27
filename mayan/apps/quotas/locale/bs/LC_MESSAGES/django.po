@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:36-0400\n"
+"POT-Creation-Date: 2020-05-26 04:23-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -29,11 +29,11 @@ msgstr ""
 msgid "none"
 msgstr ""
 
-#: classes.py:143
+#: classes.py:163
 msgid "Does not apply"
 msgstr ""
 
-#: classes.py:147 classes.py:154
+#: classes.py:167 classes.py:174
 msgid "Null backend"
 msgstr ""
 
@@ -184,42 +184,42 @@ msgstr ""
 msgid "View a quota"
 msgstr ""
 
-#: quota_backends.py:23
+#: quota_backends.py:68 quota_backends.py:168
 msgid "Document count quota exceeded."
 msgstr ""
 
-#: quota_backends.py:27
+#: quota_backends.py:72
 msgid "Documents limit"
 msgstr ""
 
-#: quota_backends.py:30
+#: quota_backends.py:75
 msgid "Maximum number of documents."
 msgstr ""
 
-#: quota_backends.py:34
+#: quota_backends.py:79
 msgid "Document count limit"
 msgstr ""
 
-#: quota_backends.py:53
+#: quota_backends.py:104
 #, python-format
 msgid "document count: %(document_count)s"
 msgstr ""
 
-#: quota_backends.py:117 quota_backends.py:171
-msgid "Document size quota exceeded."
-msgstr ""
-
-#: quota_backends.py:127 quota_backends.py:132
+#: quota_backends.py:178 quota_backends.py:183
 msgid "Document size limit"
 msgstr ""
 
-#: quota_backends.py:129
+#: quota_backends.py:180
 msgid "Maximum document size in megabytes (MB)."
 msgstr ""
 
-#: quota_backends.py:151
+#: quota_backends.py:208
 #, python-format
 msgid "document size: %(formatted_file_size)s"
+msgstr ""
+
+#: quota_backends.py:228
+msgid "Document size quota exceeded."
 msgstr ""
 
 #: views.py:24

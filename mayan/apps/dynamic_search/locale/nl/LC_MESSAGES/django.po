@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:35-0400\n"
-"PO-Revision-Date: 2020-04-25 22:24+0000\n"
+"POT-Creation-Date: 2020-05-26 04:22-0400\n"
+"PO-Revision-Date: 2020-05-10 20:11+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -27,17 +27,17 @@ msgstr "Dynamisch zoeken"
 
 #: classes.py:52
 msgid "No search model matching the query"
-msgstr ""
+msgstr "Geen resultaten gevonden bij deze zoekopdracht"
 
 #: forms.py:7
 msgid "Match all"
-msgstr ""
+msgstr "Alle koppelen"
 
 #: forms.py:8
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr ""
+msgstr "Indien aangevinkt worden alleen resultaten weergegeven die aan alle termen voldoen. Indien uitgevinkt worden alle resultaten getoond die aan minstens één veld voldoen."
 
 #: forms.py:27 templates/dynamic_search/search_box.html:39
 msgid "Search terms"
@@ -58,12 +58,12 @@ msgstr "Opnieuw zoeken"
 
 #: settings.py:11
 msgid "Full path to the backend to be used to handle the search."
-msgstr ""
+msgstr "Volledige pad naar de backend die gebruikt wordt om de zoekopdracht af te handelen."
 
 #: settings.py:21
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
-msgstr ""
+msgstr "Schakelt de zoekbalk voor één begrip uit, waardoor alleen de geavanceerd zoeken-knop overblijft."
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"

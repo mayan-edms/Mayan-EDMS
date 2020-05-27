@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"POT-Creation-Date: 2020-05-26 04:22-0400\n"
 "PO-Revision-Date: 2019-12-16 20:57+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Linking"
 msgstr "Свързване"
 
-#: apps.py:75 models.py:26
+#: apps.py:76 models.py:26
 msgid "Label"
 msgstr "Етикет"
 
@@ -154,66 +154,66 @@ msgstr "Използвайте това поле, за да покажете у�
 msgid "Dynamic label"
 msgstr "Динамичен етикет"
 
-#: models.py:34 models.py:194
+#: models.py:34 models.py:191
 msgid "Enabled"
 msgstr "Активиран"
 
-#: models.py:44 models.py:172
+#: models.py:44 models.py:169
 msgid "Smart link"
 msgstr "Умна връзка"
 
-#: models.py:84
+#: models.py:83
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr "Грешка при генериране на динамичен етикет; %s"
 
-#: models.py:99
+#: models.py:98
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "Тази умна връзка не е разрешена за типа на избрания документ."
 
-#: models.py:176
+#: models.py:173
 msgid "The inclusion is ignored for the first item."
 msgstr "Включването се игнорира за първия елемент."
 
-#: models.py:180
+#: models.py:177
 msgid "This represents the metadata of all other documents."
 msgstr "Това представлява метаданните на всички останали документи."
 
-#: models.py:181
+#: models.py:178
 msgid "Foreign document attribute"
 msgstr "Характеристика на чужд документ"
 
-#: models.py:186
+#: models.py:183
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
 msgstr "Изразът, използващ свойствата на документа, които трябва да бъдат оценени спрямо чуждото документно поле."
 
-#: models.py:188
+#: models.py:185
 msgid "Expression"
 msgstr "Израз"
 
-#: models.py:191
+#: models.py:188
 msgid "Inverts the logic of the operator."
 msgstr "Обръща логиката на оператора."
 
-#: models.py:192
+#: models.py:189
 msgid "Negated"
 msgstr "Отказано"
 
-#: models.py:197
+#: models.py:194
 msgid "Link condition"
 msgstr "Състояние на връзката"
 
-#: models.py:198
+#: models.py:195
 msgid "Link conditions"
 msgstr "Състояния на връзката"
 
-#: models.py:206
+#: models.py:203
 msgid "not"
 msgstr "не"
 
-#: models.py:210
+#: models.py:207
 msgid "Full label"
 msgstr "Пълен етикет"
 

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
-"PO-Revision-Date: 2020-04-27 14:54+0000\n"
+"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"PO-Revision-Date: 2020-05-16 09:37+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -33,23 +33,23 @@ msgstr "Documenttypen"
 msgid "Document indexing"
 msgstr "Documentindexering"
 
-#: apps.py:128
+#: apps.py:129
 msgid "Total levels"
 msgstr "Totaal aantal niveaus"
 
-#: apps.py:135
+#: apps.py:136
 msgid "Total documents"
 msgstr "Totaal aantal documenten"
 
-#: apps.py:141 apps.py:155 apps.py:180 apps.py:190
+#: apps.py:142 apps.py:156 apps.py:181 apps.py:191
 msgid "Level"
 msgstr "Niveau"
 
-#: apps.py:160 apps.py:195
+#: apps.py:161 apps.py:196
 msgid "Levels"
 msgstr "Niveaus"
 
-#: apps.py:167 apps.py:175 apps.py:203 models.py:378
+#: apps.py:168 apps.py:176 apps.py:204 models.py:381
 msgid "Documents"
 msgstr "Documenten"
 
@@ -92,7 +92,7 @@ msgstr "Alle documentindexeringen vanaf nul opbouwen"
 
 #: links.py:53 views.py:446
 msgid "Rebuild indexes"
-msgstr "Opnieuw indexeren"
+msgstr "Indexeringen opnieuw opbouwen"
 
 #: links.py:64 views.py:481
 msgid "Reset indexes"
@@ -128,11 +128,11 @@ msgstr "Label"
 
 #: models.py:39
 msgid "This value will be used by other apps to reference this index."
-msgstr ""
+msgstr "Deze waarde wordt gebruikt door andere apps om naar deze index te verwijzen."
 
 #: models.py:40
 msgid "Slug"
-msgstr ""
+msgstr "Slug"
 
 #: models.py:45
 msgid ""
@@ -153,13 +153,13 @@ msgstr "index instance"
 
 #: models.py:210
 msgid "Index instances"
-msgstr ""
+msgstr "Index instanties"
 
 #: models.py:241
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr ""
+msgstr "Een sjabloon invoeren om op te maken. Gebruik Django's standaard sjabloon taal (https://docs.djangoproject.com/en/1.11.ref/templates/builtins/)"
 
 #: models.py:245
 msgid "Indexing expression"
@@ -189,48 +189,48 @@ msgstr ""
 
 #: models.py:270
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
-#: models.py:325
+#: models.py:328
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "Fout bij het indexeren van document: %(document)s; uitdrukking: %(expression)s; %(exception)s"
 
-#: models.py:371
+#: models.py:374
 msgid "Index template node"
 msgstr ""
 
-#: models.py:374 search.py:23
+#: models.py:377 search.py:23
 msgid "Value"
 msgstr "Waarde"
 
-#: models.py:384 models.py:510
+#: models.py:387 models.py:513
 msgid "Index instance node"
 msgstr ""
 
-#: models.py:385
+#: models.py:388
 msgid "Indexes instances node"
 msgstr ""
 
-#: models.py:447
+#: models.py:450
 msgid "The path to the index including all ancestors."
 msgstr ""
 
-#: models.py:449
+#: models.py:452
 msgid "Full path"
 msgstr "Volledig pad"
 
-#: models.py:503
+#: models.py:506
 msgid "Document index node instance"
 msgstr ""
 
-#: models.py:504
+#: models.py:507
 msgid "Document indexes node instances"
 msgstr ""
 
-#: models.py:511
+#: models.py:514
 msgid "Index instance nodes"
 msgstr ""
 
@@ -311,7 +311,7 @@ msgid ""
 "Documents of this type will appear in the indexes linked when these are "
 "updated. Events of the documents of this type will trigger updates in the "
 "linked indexes."
-msgstr ""
+msgstr "Documenten van dit type zullen verschijnen in de gekoppelde indexeringen wanneer deze worden bijgewerkt. Gebeurtenissen van dit documenttype initiëren het bijwerken van gekoppelde indexeringen"
 
 #: views.py:80
 #, python-format
@@ -333,7 +333,7 @@ msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
-msgstr ""
+msgstr "Indexeringen groeperen documenten automatisch in niveau's. Indexeringen worden vastgelegd m.b.v. een sjabloon waarbij variabelen worden vervangen door eigenschappen van documenten zoals label of beschrijving, of die van uitgebreide eigenschappen zoals metadata."
 
 #: views.py:149
 msgid "There are no indexes."
@@ -361,7 +361,7 @@ msgid ""
 "Only the documents of the types selected will be shown in the index when "
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
-msgstr ""
+msgstr "Alleen de document van de geselecteerde types worden getoond in de index.  Alleen gebeurtenissen van de documenten van de geselecteerde type initiëren het bijwerken van de index."
 
 #: views.py:209
 #, python-format
@@ -376,7 +376,7 @@ msgstr ""
 #: views.py:254
 #, python-format
 msgid "Create child node of: %s"
-msgstr ""
+msgstr "Onderliggende node aanmaken van: %s"
 
 #: views.py:280
 #, python-format

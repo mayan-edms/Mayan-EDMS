@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"POT-Creation-Date: 2020-05-26 04:22-0400\n"
 "PO-Revision-Date: 2019-12-13 05:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Linking"
 msgstr "Collegamento"
 
-#: apps.py:75 models.py:26
+#: apps.py:76 models.py:26
 msgid "Label"
 msgstr "Etichetta"
 
@@ -154,66 +154,66 @@ msgstr ""
 msgid "Dynamic label"
 msgstr "Etichetta dinamica"
 
-#: models.py:34 models.py:194
+#: models.py:34 models.py:191
 msgid "Enabled"
 msgstr "Abilitato"
 
-#: models.py:44 models.py:172
+#: models.py:44 models.py:169
 msgid "Smart link"
 msgstr "Link intelligente"
 
-#: models.py:84
+#: models.py:83
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr "Errore generando l'etichetta dinamica; %s"
 
-#: models.py:99
+#: models.py:98
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "Questo link intelligente non è consentito per questo tipo di documento."
 
-#: models.py:176
+#: models.py:173
 msgid "The inclusion is ignored for the first item."
 msgstr "L'inserimento viene ignorato per la prima voce."
 
-#: models.py:180
+#: models.py:177
 msgid "This represents the metadata of all other documents."
 msgstr "Questo rappresenta i metadati degli altri documenti."
 
-#: models.py:181
+#: models.py:178
 msgid "Foreign document attribute"
 msgstr "Attributo documento esterno"
 
-#: models.py:186
+#: models.py:183
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
 msgstr ""
 
-#: models.py:188
+#: models.py:185
 msgid "Expression"
 msgstr "Espressione"
 
-#: models.py:191
+#: models.py:188
 msgid "Inverts the logic of the operator."
 msgstr "Inverti la logica dell'operazione"
 
-#: models.py:192
+#: models.py:189
 msgid "Negated"
 msgstr "Negato"
 
-#: models.py:197
+#: models.py:194
 msgid "Link condition"
 msgstr "Condizione link"
 
-#: models.py:198
+#: models.py:195
 msgid "Link conditions"
 msgstr "Condizioni link"
 
-#: models.py:206
+#: models.py:203
 msgid "not"
 msgstr "not"
 
-#: models.py:210
+#: models.py:207
 msgid "Full label"
 msgstr ""
 
