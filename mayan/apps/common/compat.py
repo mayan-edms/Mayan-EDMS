@@ -1,26 +1,18 @@
 import os
 
 from django.conf import settings
-from django.http.response import StreamingHttpResponse
+from django.http.response import FileResponse as DjangoFileResponse
 from django.utils.six.moves.urllib.parse import quote
 
 from mayan.apps.mimetype.api import get_mimetype
 
 
-class FileResponse(StreamingHttpResponse):
+class FileResponse(DjangoFileResponse):
     """
-    Port of Django's 2.2 FileResponse
+    Subclass of Django's 2.2 FileResponse
     Modified to allows downloading non file like content as attachment
     A streaming HTTP response class optimized for files.
-    TODO: To be remove when the code moves to Django 2.2
     """
-    block_size = 4096
-
-    def __init__(self, as_attachment=False, filename='', *args, **kwargs):
-        self.as_attachment = as_attachment
-        self.filename = filename
-        super(FileResponse, self).__init__(*args, **kwargs)
-
     def _set_as_attachment(self, filename):
         if self.as_attachment:
             filename = self.filename or os.path.basename(filename)
