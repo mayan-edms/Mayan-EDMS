@@ -16,7 +16,7 @@ def handler_index_document(sender, **kwargs):
 
 
 def handler_post_document_type_change_metadata(sender, instance, **kwargs):
-    logger.debug('received post_document_type_change')
+    logger.debug('received signal_post_document_type_change')
     logger.debug('instance: %s', instance)
 
     # Delete existing document metadata types not found in the new document

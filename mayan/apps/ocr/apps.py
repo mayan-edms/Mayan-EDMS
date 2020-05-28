@@ -11,7 +11,7 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
 from mayan.apps.documents.search import document_search, document_page_search
-from mayan.apps.documents.signals import post_version_upload
+from mayan.apps.documents.signals import signal_post_version_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
@@ -38,7 +38,7 @@ from .permissions import (
     permission_document_type_ocr_setup, permission_ocr_document,
     permission_ocr_content_view
 )
-from .signals import post_document_version_ocr
+from .signals import signal_post_document_version_ocr
 from .utils import get_instance_ocr_content
 
 logger = logging.getLogger(name=__name__)
@@ -182,17 +182,17 @@ class OCRApp(MayanAppConfig):
             )
         )
 
-        post_document_version_ocr.connect(
-            dispatch_uid='ocr_handler_index_document',
-            receiver=handler_index_document_version,
-            sender=DocumentVersion
-        )
         post_save.connect(
             dispatch_uid='ocr_handler_initialize_new_ocr_settings',
             receiver=handler_initialize_new_ocr_settings,
             sender=DocumentType
         )
-        post_version_upload.connect(
+        signal_post_document_version_ocr.connect(
+            dispatch_uid='ocr_handler_index_document',
+            receiver=handler_index_document_version,
+            sender=DocumentVersion
+        )
+        signal_post_version_upload.connect(
             dispatch_uid='ocr_handler_ocr_document_version',
             receiver=handler_ocr_document_version,
             sender=DocumentVersion

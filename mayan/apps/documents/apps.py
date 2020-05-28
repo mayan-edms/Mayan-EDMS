@@ -13,7 +13,7 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_multi_item, menu_tools
 )
-from mayan.apps.common.signals import post_initial_setup
+from mayan.apps.common.signals import signal_post_initial_setup
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.converter.permissions import (
@@ -109,7 +109,7 @@ from .permissions import (
 )
 # Just import to initialize the search models
 from .search import document_search, document_page_search  # NOQA
-from .signals import post_version_upload
+from .signals import signal_post_version_upload
 from .statistics import *  # NOQA
 from .widgets import (
     DocumentPageThumbnailWidget, widget_document_page_number,
@@ -585,15 +585,15 @@ class DocumentsApp(MayanAppConfig):
             receiver=handler_remove_empty_duplicates_lists,
             sender=Document
         )
-        post_initial_setup.connect(
-            dispatch_uid='documents_handler_create_default_document_type',
-            receiver=handler_create_default_document_type
-        )
         post_migrate.connect(
             dispatch_uid='documents_handler_create_document_cache',
             receiver=handler_create_document_cache,
         )
-        post_version_upload.connect(
+        signal_post_initial_setup.connect(
+            dispatch_uid='documents_handler_create_default_document_type',
+            receiver=handler_create_default_document_type
+        )
+        signal_post_version_upload.connect(
             dispatch_uid='documents_handler_scan_duplicates_for',
             receiver=handler_scan_duplicates_for
         )

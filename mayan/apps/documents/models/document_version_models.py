@@ -26,7 +26,7 @@ from ..literals import (
 )
 from ..managers import DocumentVersionManager
 from ..settings import setting_fix_orientation, setting_hash_block_size
-from ..signals import post_document_created, post_version_upload
+from ..signals import signal_post_document_created, signal_post_version_upload
 
 from .document_models import Document
 
@@ -395,10 +395,12 @@ class DocumentVersion(models.Model):
                 event_document_version_new.commit(
                     actor=user, target=self, action_object=self.document
                 )
-                post_version_upload.send(sender=DocumentVersion, instance=self)
+                signal_post_version_upload.send(
+                    sender=DocumentVersion, instance=self
+                )
 
                 if tuple(self.document.versions.all()) == (self,):
-                    post_document_created.send(
+                    signal_post_document_created.send(
                         instance=self.document, sender=Document
                     )
 

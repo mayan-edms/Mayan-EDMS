@@ -4,7 +4,7 @@ from .literals import (
     DEFAULT_DOCUMENT_TYPE_LABEL, STORAGE_NAME_DOCUMENT_IMAGE
 )
 from .settings import setting_document_cache_maximum_size
-from .signals import post_initial_document_type
+from .signals import signal_post_initial_document_type
 from .tasks import task_clean_empty_duplicate_lists, task_scan_duplicates_for
 
 
@@ -17,7 +17,7 @@ def handler_create_default_document_type(sender, **kwargs):
         document_type = DocumentType.objects.create(
             label=DEFAULT_DOCUMENT_TYPE_LABEL
         )
-        post_initial_document_type.send(
+        signal_post_initial_document_type.send(
             sender=DocumentType, instance=document_type
         )
 

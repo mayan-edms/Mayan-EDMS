@@ -7,7 +7,7 @@ from mayan.apps.common.classes import PropertyHelper
 
 from .events import event_file_metadata_document_version_finish
 from .exceptions import FileMetadataDriverError
-from .signals import post_document_version_file_metadata_processing
+from .signals import signal_post_document_version_file_metadata_processing
 
 logger = logging.getLogger(name=__name__)
 
@@ -48,7 +48,7 @@ class FileMetadataDriver(object):
                     )
 
                     transaction.on_commit(
-                        lambda: post_document_version_file_metadata_processing.send(
+                        lambda: signal_post_document_version_file_metadata_processing.send(
                             sender=document_version.__class__,
                             instance=document_version
                         )

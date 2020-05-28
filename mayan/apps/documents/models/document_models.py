@@ -17,7 +17,7 @@ from ..events import (
 )
 from ..literals import DEFAULT_LANGUAGE
 from ..managers import DocumentManager, PassthroughManager, TrashCanManager
-from ..signals import post_document_type_change
+from ..signals import signal_post_document_type_change
 
 from .document_type_models import DocumentType
 
@@ -294,7 +294,7 @@ class Document(HooksMixin, models.Model):
         with transaction.atomic():
             self.save()
             if has_changed or force:
-                post_document_type_change.send(
+                signal_post_document_type_change.send(
                     sender=self.__class__, instance=self
                 )
 

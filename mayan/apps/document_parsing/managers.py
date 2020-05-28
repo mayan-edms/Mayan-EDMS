@@ -11,7 +11,7 @@ from .events import (
     event_parsing_document_version_finish
 )
 from .parsers import Parser
-from .signals import post_document_version_parsing
+from .signals import signal_post_document_version_parsing
 
 logger = logging.getLogger(name=__name__)
 
@@ -47,7 +47,7 @@ class DocumentPageContentManager(models.Manager):
                 )
 
                 transaction.on_commit(
-                    lambda: post_document_version_parsing.send(
+                    lambda: signal_post_document_version_parsing.send(
                         sender=document_version.__class__,
                         instance=document_version
                     )

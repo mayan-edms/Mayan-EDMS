@@ -31,7 +31,7 @@ from .settings import (
     setting_auto_logging, setting_production_error_log_path,
     setting_production_error_logging, setting_url_base_path
 )
-from .signals import pre_initial_setup, pre_upgrade
+from .signals import signal_pre_initial_setup, signal_pre_upgrade
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
 from .utils import check_for_sqlite
 from .warnings import DatabaseWarning
@@ -170,18 +170,18 @@ class CommonApp(MayanAppConfig):
             )
         )
 
+        signal_pre_initial_setup.connect(
+            dispatch_uid='common_handler_pre_initial_setup',
+            receiver=handler_pre_initial_setup
+        )
+        signal_pre_upgrade.connect(
+            dispatch_uid='common_handler_pre_upgrade',
+            receiver=handler_pre_upgrade
+        )
         post_save.connect(
             dispatch_uid='common_handler_user_locale_profile_create',
             receiver=handler_user_locale_profile_create,
             sender=settings.AUTH_USER_MODEL
-        )
-        pre_initial_setup.connect(
-            dispatch_uid='common_handler_pre_initial_setup',
-            receiver=handler_pre_initial_setup
-        )
-        pre_upgrade.connect(
-            dispatch_uid='common_handler_pre_upgrade',
-            receiver=handler_pre_upgrade
         )
 
         user_logged_in.connect(

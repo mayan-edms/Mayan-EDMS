@@ -12,7 +12,7 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_list_facet, menu_object, menu_secondary, menu_setup
 )
-from mayan.apps.common.signals import perform_upgrade
+from mayan.apps.common.signals import signal_perform_upgrade
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
@@ -117,8 +117,7 @@ class PermissionsApp(MayanAppConfig):
             receiver=handler_permission_initialize,
             sender=self
         )
-
-        perform_upgrade.connect(
+        signal_perform_upgrade.connect(
             dispatch_uid='permissions_handler_purge_permissions',
             receiver=handler_purge_permissions
         )

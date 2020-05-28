@@ -13,7 +13,7 @@ from .events import (
     event_ocr_document_content_deleted, event_ocr_document_version_finish
 )
 from .runtime import ocr_backend
-from .signals import post_document_version_ocr
+from .signals import signal_post_document_version_ocr
 
 logger = logging.getLogger(name=__name__)
 
@@ -84,7 +84,7 @@ class DocumentPageOCRContentManager(models.Manager):
                 )
 
                 transaction.on_commit(
-                    lambda: post_document_version_ocr.send(
+                    lambda: signal_post_document_version_ocr.send(
                         sender=document_version.__class__,
                         instance=document_version
                     )

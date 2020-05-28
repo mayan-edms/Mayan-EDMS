@@ -10,7 +10,7 @@ from mayan.apps.common.menus import (
     menu_tools
 )
 from mayan.apps.documents.search import document_page_search, document_search
-from mayan.apps.documents.signals import post_version_upload
+from mayan.apps.documents.signals import signal_post_version_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
@@ -39,7 +39,7 @@ from .permissions import (
     permission_document_type_file_metadata_setup,
     permission_file_metadata_submit, permission_file_metadata_view
 )
-from .signals import post_document_version_file_metadata_processing
+from .signals import signal_post_document_version_file_metadata_processing
 
 
 class FileMetadataApp(MayanAppConfig):
@@ -192,17 +192,19 @@ class FileMetadataApp(MayanAppConfig):
         menu_tools.bind_links(
             links=(link_document_type_submit,),
         )
+
         post_save.connect(
             dispatch_uid='file_metadata_handler_initialize_new_document_type_settings',
             receiver=handler_initialize_new_document_type_settings,
             sender=DocumentType
         )
-        post_version_upload.connect(
-            dispatch_uid='file_metadata_handler_process_document_version',
-            receiver=handler_process_document_version, sender=DocumentVersion
-        )
-        post_document_version_file_metadata_processing.connect(
+        signal_post_document_version_file_metadata_processing.connect(
             dispatch_uid='file_metadata_handler_index_document',
             receiver=handler_index_document_version,
+            sender=DocumentVersion
+        )
+        signal_post_version_upload.connect(
+            dispatch_uid='file_metadata_handler_process_document_version',
+            receiver=handler_process_document_version,
             sender=DocumentVersion
         )

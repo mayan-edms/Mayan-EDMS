@@ -15,7 +15,7 @@ from mayan.apps.common.menus import (
     menu_setup
 )
 from mayan.apps.documents.search import document_page_search, document_search
-from mayan.apps.documents.signals import post_document_type_change
+from mayan.apps.documents.signals import signal_post_document_type_change
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
@@ -253,15 +253,15 @@ class MetadataApp(MayanAppConfig):
             receiver=handler_post_document_type_metadata_type_delete,
             sender=DocumentTypeMetadataType
         )
-        post_document_type_change.connect(
-            dispatch_uid='metadata_handler_post_document_type_change_metadata',
-            receiver=handler_post_document_type_change_metadata,
-            sender=Document
-        )
         post_save.connect(
             dispatch_uid='metadata_handler_post_document_type_metadata_type_add',
             receiver=handler_post_document_type_metadata_type_add,
             sender=DocumentTypeMetadataType
+        )
+        signal_post_document_type_change.connect(
+            dispatch_uid='metadata_handler_post_document_type_change_metadata',
+            receiver=handler_post_document_type_change_metadata,
+            sender=Document
         )
 
         # Index updating

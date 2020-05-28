@@ -11,7 +11,7 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_tools
 )
-from mayan.apps.documents.signals import post_document_created, post_initial_document_type
+from mayan.apps.documents.signals import signal_post_document_created, signal_post_initial_document_type
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
@@ -247,28 +247,28 @@ class DocumentIndexingApp(MayanAppConfig):
             links=(link_index_instances_rebuild, link_index_instances_reset)
         )
 
-        post_delete.connect(
-            dispatch_uid='document_indexing_handler_delete_empty',
-            receiver=handler_delete_empty,
-            sender=Document
-        )
-        post_document_created.connect(
-            dispatch_uid='document_indexing_handler_index_document',
-            receiver=handler_index_document,
-            sender=Document
-        )
-        post_initial_document_type.connect(
-            dispatch_uid='document_indexing_handler_create_default_document_index',
-            receiver=handler_create_default_document_index,
-            sender=DocumentType
-        )
         post_save.connect(
             dispatch_uid='document_indexing_handler_post_save_index_document',
             receiver=handler_post_save_index_document,
+            sender=Document
+        )
+        post_delete.connect(
+            dispatch_uid='document_indexing_handler_delete_empty',
+            receiver=handler_delete_empty,
             sender=Document
         )
         pre_delete.connect(
             dispatch_uid='document_indexing_handler_remove_document',
             receiver=handler_remove_document,
             sender=Document
+        )
+        signal_post_document_created.connect(
+            dispatch_uid='document_indexing_handler_index_document',
+            receiver=handler_index_document,
+            sender=Document
+        )
+        signal_post_initial_document_type.connect(
+            dispatch_uid='document_indexing_handler_create_default_document_index',
+            receiver=handler_create_default_document_index,
+            sender=DocumentType
         )

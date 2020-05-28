@@ -11,7 +11,7 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
 from mayan.apps.documents.search import document_search, document_page_search
-from mayan.apps.documents.signals import post_version_upload
+from mayan.apps.documents.signals import signal_post_version_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
@@ -39,7 +39,7 @@ from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
 )
-from .signals import post_document_version_parsing
+from .signals import signal_post_document_version_parsing
 from .utils import get_instance_content
 
 logger = logging.getLogger(name=__name__)
@@ -181,17 +181,17 @@ class DocumentParsingApp(MayanAppConfig):
             )
         )
 
-        post_document_version_parsing.connect(
-            dispatch_uid='document_parsing_handler_index_document',
-            receiver=handler_index_document,
-            sender=DocumentVersion
-        )
         post_save.connect(
             dispatch_uid='document_parsing_handler_initialize_new_parsing_settings',
             receiver=handler_initialize_new_parsing_settings,
             sender=DocumentType
         )
-        post_version_upload.connect(
+        signal_post_document_version_parsing.connect(
+            dispatch_uid='document_parsing_handler_index_document',
+            receiver=handler_index_document,
+            sender=DocumentVersion
+        )
+        signal_post_version_upload.connect(
             dispatch_uid='document_parsing_handler_parse_document_version',
             receiver=handler_parse_document_version,
             sender=DocumentVersion

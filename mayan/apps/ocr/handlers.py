@@ -27,7 +27,7 @@ def handler_initialize_new_ocr_settings(sender, instance, **kwargs):
 
 
 def handler_ocr_document_version(sender, instance, **kwargs):
-    logger.debug('received post_version_upload')
+    logger.debug('received signal_post_version_upload')
     logger.debug('instance pk: %s', instance.pk)
     if instance.document.document_type.ocr_settings.auto_ocr:
         instance.submit_for_ocr()

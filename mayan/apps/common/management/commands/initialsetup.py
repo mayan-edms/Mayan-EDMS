@@ -8,7 +8,7 @@ from django.core.management.utils import get_random_secret_key
 import mayan
 from mayan.settings.literals import SECRET_KEY_FILENAME, SYSTEM_DIR
 
-from ...signals import post_initial_setup, pre_initial_setup
+from ...signals import signal_post_initial_setup, signal_pre_initial_setup
 
 
 class Command(management.BaseCommand):
@@ -84,7 +84,7 @@ class Command(management.BaseCommand):
 
     def handle(self, *args, **options):
         self.initialize_system(force=options.get('force', False))
-        pre_initial_setup.send(sender=self)
+        signal_pre_initial_setup.send(sender=self)
 
         if not options.get('no_dependencies', False):
             management.call_command(command_name='installdependencies')
@@ -93,4 +93,4 @@ class Command(management.BaseCommand):
             )
 
         management.call_command(command_name='createautoadmin')
-        post_initial_setup.send(sender=self)
+        signal_post_initial_setup.send(sender=self)
