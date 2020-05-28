@@ -6,7 +6,6 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_object, menu_secondary
 )
-from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
@@ -26,6 +25,7 @@ from .permissions import (
     permission_document_comment_create, permission_document_comment_delete,
     permission_document_comment_edit, permission_document_comment_view
 )
+from .search import *  # NOQA
 
 
 class DocumentCommentsApp(MayanAppConfig):
@@ -81,15 +81,6 @@ class DocumentCommentsApp(MayanAppConfig):
             attribute='get_user_label', include_label=True, source=Comment
         )
         SourceColumn(attribute='comment', include_label=True, source=Comment)
-
-        document_page_search.add_model_field(
-            field='document_version__document__comments__comment',
-            label=_('Comments')
-        )
-        document_search.add_model_field(
-            field='comments__comment',
-            label=_('Comments')
-        )
 
         menu_facet.bind_links(
             links=(link_comments_for_document,), sources=(Document,)

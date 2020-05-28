@@ -1,5 +1,6 @@
 from django.db import connection
 from django.utils.translation import ugettext_lazy as _
+from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.dynamic_search.classes import SearchModel
 
 from .permissions import permission_cabinet_view
@@ -40,4 +41,12 @@ cabinet_search.add_model_field(
 )
 cabinet_search.add_model_field(
     field='documents__versions__checksum', label=_('Document checksum')
+)
+
+document_page_search.add_model_field(
+    field='document_version__document__cabinets__label',
+    label=_('Cabinets')
+)
+document_search.add_model_field(
+    field='cabinets__label', label=_('Cabinets')
 )

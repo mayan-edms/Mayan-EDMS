@@ -9,7 +9,6 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
     menu_tools
 )
-from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.documents.signals import signal_post_version_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
@@ -39,6 +38,7 @@ from .permissions import (
     permission_document_type_file_metadata_setup,
     permission_file_metadata_submit, permission_file_metadata_view
 )
+from .search import *  # NOQA
 from .signals import signal_post_document_version_file_metadata_processing
 
 
@@ -149,24 +149,6 @@ class FileMetadataApp(MayanAppConfig):
         SourceColumn(
             attribute='get_attribute_count', include_label=True,
             source=DocumentVersionDriverEntry
-        )
-
-        document_search.add_model_field(
-            field='versions__file_metadata_drivers__entries__key',
-            label=_('File metadata key')
-        )
-        document_search.add_model_field(
-            field='versions__file_metadata_drivers__entries__value',
-            label=_('File metadata value')
-        )
-
-        document_page_search.add_model_field(
-            field='document_version__file_metadata_drivers__entries__key',
-            label=_('File metadata key')
-        )
-        document_page_search.add_model_field(
-            field='document_version__file_metadata_drivers__entries__value',
-            label=_('File metadata value')
         )
 
         menu_facet.bind_links(

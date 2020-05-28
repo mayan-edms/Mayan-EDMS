@@ -11,7 +11,6 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
     menu_secondary
 )
-from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
@@ -123,11 +122,6 @@ class TagsApp(MayanAppConfig):
                 user=context['request'].user
             ), include_label=True, label=_('Documents'), source=Tag
         )
-
-        document_page_search.add_model_field(
-            field='document_version__document__tags__label', label=_('Tags')
-        )
-        document_search.add_model_field(field='tags__label', label=_('Tags'))
 
         menu_facet.bind_links(
             links=(link_document_tag_list,), sources=(Document,)

@@ -10,7 +10,6 @@ from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
-from mayan.apps.documents.search import document_search, document_page_search
 from mayan.apps.documents.signals import signal_post_version_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
@@ -39,6 +38,7 @@ from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
 )
+from .search import *  # NOQA
 from .signals import signal_post_document_version_parsing
 from .utils import get_instance_content
 
@@ -134,14 +134,6 @@ class DocumentParsingApp(MayanAppConfig):
         SourceColumn(
             source=DocumentVersionParseError, label=_('Result'),
             attribute='result'
-        )
-
-        document_search.add_model_field(
-            field='versions__version_pages__content__content', label=_('Content')
-        )
-
-        document_page_search.add_model_field(
-            field='content__content', label=_('Content')
         )
 
         menu_facet.bind_links(

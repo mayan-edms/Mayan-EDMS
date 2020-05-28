@@ -14,7 +14,6 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
     menu_setup
 )
-from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.documents.signals import signal_post_document_type_change
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
@@ -187,22 +186,6 @@ class MetadataApp(MayanAppConfig):
         SourceColumn(
             attribute='name', include_label=True, is_sortable=True,
             source=MetadataType
-        )
-
-        document_search.add_model_field(
-            field='metadata__metadata_type__name', label=_('Metadata type')
-        )
-        document_search.add_model_field(
-            field='metadata__value', label=_('Metadata value')
-        )
-
-        document_page_search.add_model_field(
-            field='document_version__document__metadata__metadata_type__name',
-            label=_('Metadata type')
-        )
-        document_page_search.add_model_field(
-            field='document_version__document__metadata__value',
-            label=_('Metadata value')
         )
 
         menu_facet.bind_links(links=(link_metadata_view,), sources=(Document,))

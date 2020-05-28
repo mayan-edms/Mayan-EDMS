@@ -13,7 +13,6 @@ from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
 )
 from mayan.apps.events.permissions import permission_events_view
-from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
@@ -128,14 +127,6 @@ class CabinetsApp(MayanAppConfig):
                 document=context['object'].document,
                 user=context['request'].user
             ), label=_('Cabinets'), order=1, source=DocumentPageResult
-        )
-
-        document_page_search.add_model_field(
-            field='document_version__document__cabinets__label',
-            label=_('Cabinets')
-        )
-        document_search.add_model_field(
-            field='cabinets__label', label=_('Cabinets')
         )
 
         menu_facet.bind_links(

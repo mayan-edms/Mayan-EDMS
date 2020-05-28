@@ -10,7 +10,6 @@ from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
-from mayan.apps.documents.search import document_search, document_page_search
 from mayan.apps.documents.signals import signal_post_version_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
@@ -38,6 +37,7 @@ from .permissions import (
     permission_document_type_ocr_setup, permission_ocr_document,
     permission_ocr_content_view
 )
+from .search import *  # NOQA
 from .signals import signal_post_document_version_ocr
 from .utils import get_instance_ocr_content
 
@@ -132,14 +132,6 @@ class OCRApp(MayanAppConfig):
         SourceColumn(
             source=DocumentVersionOCRError, label=_('Result'),
             attribute='result'
-        )
-
-        document_search.add_model_field(
-            field='versions__version_pages__ocr_content__content', label=_('OCR')
-        )
-
-        document_page_search.add_model_field(
-            field='ocr_content__content', label=_('OCR')
         )
 
         menu_facet.bind_links(
