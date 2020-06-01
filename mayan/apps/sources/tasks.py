@@ -64,12 +64,12 @@ def task_generate_staging_file_image(staging_folder_pk, encoded_filename, *args,
 
 @app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
 def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, source_id, description=None, expand=False, label=None, language=None, querystring=None, skip_list=None, user_id=None):
-    SharedUploadedFile = apps.get_model(
-        app_label='common', model_name='SharedUploadedFile'
-    )
-
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'
+    )
+
+    SharedUploadedFile = apps.get_model(
+        app_label='storage', model_name='SharedUploadedFile'
     )
 
     try:
@@ -162,12 +162,12 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
 
 @app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
 def task_upload_document(self, source_id, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, querystring=None, user_id=None):
-    SharedUploadedFile = apps.get_model(
-        app_label='common', model_name='SharedUploadedFile'
-    )
-
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'
+    )
+
+    SharedUploadedFile = apps.get_model(
+        app_label='storage', model_name='SharedUploadedFile'
     )
 
     Source = apps.get_model(
@@ -176,10 +176,10 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
 
     try:
         document_type = DocumentType.objects.get(pk=document_type_id)
-        source = Source.objects.get_subclass(pk=source_id)
         shared_upload = SharedUploadedFile.objects.get(
             pk=shared_uploaded_file_id
         )
+        source = Source.objects.get_subclass(pk=source_id)
 
         if user_id:
             user = get_user_model().objects.get(pk=user_id)

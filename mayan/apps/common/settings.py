@@ -7,11 +7,9 @@ import mayan
 from mayan.apps.smart_settings.classes import Namespace
 
 from .literals import DEFAULT_COMMON_HOME_VIEW
-from .setting_migrations import CommonSettingMigration
 
 namespace = Namespace(
-    label=_('Common'), migration_class=CommonSettingMigration,
-    name='common', version='0002'
+    label=_('Common'), name='common', version='0002'
 )
 
 setting_auto_logging = namespace.add_setting(
@@ -88,15 +86,6 @@ setting_project_url = namespace.add_setting(
     default=mayan.__website__, help_text=_(
         'URL of the installation or homepage of the project.'
     ),
-)
-setting_shared_storage = namespace.add_setting(
-    global_name='COMMON_SHARED_STORAGE',
-    default='django.core.files.storage.FileSystemStorage',
-    help_text=_('A storage backend that all workers can use to share files.')
-)
-setting_shared_storage_arguments = namespace.add_setting(
-    global_name='COMMON_SHARED_STORAGE_ARGUMENTS',
-    default={'location': os.path.join(settings.MEDIA_ROOT, 'shared_files')}
 )
 setting_url_base_path = namespace.add_setting(
     global_name='COMMON_URL_BASE_PATH', default='',

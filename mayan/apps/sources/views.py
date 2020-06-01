@@ -15,7 +15,6 @@ from mayan.apps.common.generics import (
 )
 from mayan.apps.common.menus import menu_facet
 from mayan.apps.common.mixins import ExternalObjectMixin
-from mayan.apps.common.models import SharedUploadedFile
 from mayan.apps.documents.models import (
     DocumentType, Document, DocumentVersion
 )
@@ -24,6 +23,7 @@ from mayan.apps.documents.permissions import (
 )
 from mayan.apps.documents.tasks import task_upload_new_version
 from mayan.apps.navigation.classes import Link
+from mayan.apps.storage.models import SharedUploadedFile
 
 from .exceptions import SourceException
 from .forms import (

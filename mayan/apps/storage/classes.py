@@ -2,6 +2,7 @@ import logging
 
 from django.core.files.base import File
 from django.core.files.storage import Storage
+from django.utils.deconstruct import deconstructible
 from django.utils.module_loading import import_string
 from django.utils.six import BytesIO, StringIO, raise_from
 from django.utils.translation import ugettext_lazy as _
@@ -134,6 +135,7 @@ def defined_storage_proxy_method(method_name):
     return inner_function
 
 
+@deconstructible
 class DefinedStorageLazy(object):
     def __init__(self, name):
         self.name = name

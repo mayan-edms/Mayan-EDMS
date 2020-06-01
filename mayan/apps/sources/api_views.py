@@ -6,12 +6,12 @@ from rest_framework.generics import get_object_or_404 as rest_get_object_or_404
 from rest_framework.response import Response
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.models import SharedUploadedFile
 from mayan.apps.documents.models.document_models import DocumentType
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.permissions.classes import Permission
 from mayan.apps.rest_api import generics
 from mayan.apps.storage.classes import DefinedStorage
+from mayan.apps.storage.models import SharedUploadedFile
 
 from .literals import STAGING_FILE_IMAGE_TASK_TIMEOUT, STORAGE_NAME_SOURCE_STAGING_FOLDER_FILE
 from .models import StagingFolderSource

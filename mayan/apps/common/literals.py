@@ -2,7 +2,6 @@ from django.utils.translation import ugettext_lazy as _
 
 DEFAULT_COMMON_HOME_VIEW = 'common:home'
 DEFAULT_FIREFOX_GECKODRIVER_PATH = '/usr/bin/geckodriver'
-DELETE_STALE_UPLOADS_INTERVAL = 60 * 10  # 10 minutes
 DJANGO_SQLITE_BACKEND = 'django.db.backends.sqlite3'
 
 MSG_MIME_TYPES = (
@@ -21,8 +20,6 @@ MESSAGE_SQLITE_WARNING = _(
 )
 
 PK_LIST_SEPARATOR = ','
-
-STORAGE_NAME_COMMON_SHARED_UPLOADED_FILE = 'common__shareduploadedfile'
 
 TEXT_LIST_AS_ITEMS_PARAMETER = '_list_mode'
 TEXT_LIST_AS_ITEMS_VARIABLE_NAME = 'list_as_items'
@@ -45,4 +42,3 @@ TIME_DELTA_UNIT_CHOICES = (
     (TIME_DELTA_UNIT_HOURS, _('Hours')),
     (TIME_DELTA_UNIT_MINUTES, _('Minutes')),
 )
-UPLOAD_EXPIRATION_INTERVAL = 60 * 60 * 24 * 7  # 7 days

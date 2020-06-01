@@ -31,7 +31,11 @@
 - Remove casting of dict_type and dictionary_type.
 - Add group and permission count column to the role object.
 - Prefix all signals with 'signal_'.
-- Move search app setup to its own module.
+- Move the apps search setup to their own module.
+- Move the SharedUpload model to the storage app.
+  The setting ``COMMON_SHARED_STORAGE`` is now ``STORAGE_SHARED_STORAGE``
+  and ``COMMON_SHARED_STORAGE_ARGUMENTS`` is now
+  ``STORAGE_SHARED_STORAGE_ARGUMENTS``.
 
 3.4.9 (2020-05-26)
 ==================

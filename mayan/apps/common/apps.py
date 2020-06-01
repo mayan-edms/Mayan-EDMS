@@ -32,7 +32,6 @@ from .settings import (
     setting_production_error_logging, setting_url_base_path
 )
 from .signals import signal_pre_initial_setup, signal_pre_upgrade
-from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
 from .utils import check_for_sqlite
 from .warnings import DatabaseWarning
 

@@ -121,16 +121,16 @@ def task_update_page_count(self, version_id):
 
 @app.task(bind=True, default_retry_delay=UPLOAD_NEW_VERSION_RETRY_DELAY, ignore_result=True)
 def task_upload_new_version(self, document_id, shared_uploaded_file_id, user_id, comment=None):
-    SharedUploadedFile = apps.get_model(
-        app_label='common', model_name='SharedUploadedFile'
-    )
-
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
 
     DocumentVersion = apps.get_model(
         app_label='documents', model_name='DocumentVersion'
+    )
+
+    SharedUploadedFile = apps.get_model(
+        app_label='storage', model_name='SharedUploadedFile'
     )
 
     try:

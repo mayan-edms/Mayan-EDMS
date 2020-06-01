@@ -1,8 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.storage.classes import DefinedStorage
-
-from .literals import STORAGE_NAME_COMMON_SHARED_UPLOADED_FILE
+from .classes import DefinedStorage
+from .literals import STORAGE_NAME_SHARED_UPLOADED_FILE
 from .settings import (
     setting_shared_storage, setting_shared_storage_arguments
 )
@@ -18,6 +17,6 @@ storage_shared_uploaded_files = DefinedStorage(
         )
     ),
     label=_('Shared uploaded files'),
-    name=STORAGE_NAME_COMMON_SHARED_UPLOADED_FILE,
+    name=STORAGE_NAME_SHARED_UPLOADED_FILE,
     kwargs=setting_shared_storage_arguments.value
 )
