@@ -21,8 +21,16 @@ RUN set -x \
     then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy \
 ; fi \
 # Install base OS packages to run Mayan EDMS
+&& echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list \
+&& echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list \
 && DEBIAN_FRONTEND=noninteractive \
 apt-get update \
+&& apt-get install -y --no-install-recommends -t buster-backports \
+    libreoffice-calc-nogui \
+    libreoffice-draw-nogui \
+    libreoffice-impress-nogui \
+    libreoffice-math-nogui \
+    libreoffice-writer-nogui \
 && apt-get install -y --no-install-recommends \
     ca-certificates \
     exiftool \
@@ -38,7 +46,6 @@ apt-get update \
     libmagic1 \
     libmariadb3 \
     libpq5 \
-    libreoffice \
     poppler-utils \
     python3-distutils \
     sane-utils \

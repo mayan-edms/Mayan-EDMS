@@ -40,6 +40,8 @@
 - Rename smart_settings.classes.Namespace to SettingNamespace.
 - Rename smart_settings.classes.NamespaceMigration to
   SettingNamespaceMigration.
+- Use headless version of Libre Office in the Docker images
+  to reduce the image size.
 
 3.4.9 (2020-05-26)
 ==================
