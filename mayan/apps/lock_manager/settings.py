@@ -1,10 +1,10 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import DEFAULT_BACKEND, DEFAULT_LOCK_TIMEOUT_VALUE
 
-namespace = Namespace(label=_('Lock manager'), name='lock_manager')
+namespace = SettingNamespace(label=_('Lock manager'), name='lock_manager')
 
 setting_backend = namespace.add_setting(
     default=DEFAULT_BACKEND,

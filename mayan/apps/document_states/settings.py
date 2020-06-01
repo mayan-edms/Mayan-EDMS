@@ -3,12 +3,12 @@ import os
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import DEFAULT_WORKFLOW_IMAGE_CACHE_MAXIMUM_SIZE
 from .setting_callbacks import callback_update_workflow_image_cache_size
 
-namespace = Namespace(label=_('Workflows'), name='document_states')
+namespace = SettingNamespace(label=_('Workflows'), name='document_states')
 
 setting_workflow_image_cache_maximum_size = namespace.add_setting(
     global_name='WORKFLOWS_IMAGE_CACHE_MAXIMUM_SIZE',

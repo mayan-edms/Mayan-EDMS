@@ -47,7 +47,7 @@ def read_configuration_file(filepath):
             raise
 
 
-class Namespace(object):
+class SettingNamespace(object):
     _registry = {}
 
     @staticmethod
@@ -105,7 +105,7 @@ class Namespace(object):
         return Setting(namespace=self, **kwargs)
 
     def get_config_version(self):
-        return Namespace.get_namespace_config(name=self.name).get(
+        return SettingNamespace.get_namespace_config(name=self.name).get(
             'version', NAMESPACE_VERSION_INITIAL
         )
 
@@ -122,7 +122,7 @@ class Namespace(object):
         return sorted(self._settings, key=lambda x: x.global_name)
 
 
-class NamespaceMigration(object):
+class SettingNamespaceMigration(object):
     @staticmethod
     def get_method_name(setting):
         return setting.global_name.lower()
@@ -138,7 +138,7 @@ class NamespaceMigration(object):
 
     def migrate(self, setting):
         if self.namespace.get_config_version() != self.namespace.version:
-            setting_method_name = NamespaceMigration.get_method_name(
+            setting_method_name = SettingNamespaceMigration.get_method_name(
                 setting=setting
             )
 
@@ -224,7 +224,7 @@ class Setting(object):
 
         if not namespace:
             namespace_dictionary = {}
-            for _namespace in Namespace.get_all():
+            for _namespace in SettingNamespace.get_all():
                 namespace_dictionary[_namespace.name] = {
                     'version': _namespace.version
                 }

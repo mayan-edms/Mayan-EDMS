@@ -1,13 +1,13 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import (
     DEFAULT_DOCUMENT_BODY_TEMPLATE, DEFAULT_DOCUMENT_SUBJECT_TEMPLATE,
     DEFAULT_LINK_BODY_TEMPLATE, DEFAULT_LINK_SUBJECT_TEMPLATE
 )
 
-namespace = Namespace(label=_('Mailing'), name='mailer')
+namespace = SettingNamespace(label=_('Mailing'), name='mailer')
 
 setting_document_subject_template = namespace.add_setting(
     default=DEFAULT_DOCUMENT_SUBJECT_TEMPLATE,

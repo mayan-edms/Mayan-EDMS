@@ -2,7 +2,7 @@ from rest_framework.test import APITestCase
 
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.permissions.classes import Permission
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 
 class BaseAPITestCase(APITestCase, GenericViewTestCase):
@@ -13,5 +13,5 @@ class BaseAPITestCase(APITestCase, GenericViewTestCase):
 
     def setUp(self):
         super(BaseAPITestCase, self).setUp()
-        Namespace.invalidate_cache_all()
+        SettingNamespace.invalidate_cache_all()
         Permission.invalidate_cache()

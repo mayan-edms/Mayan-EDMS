@@ -1,12 +1,12 @@
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 # Don't import anything on start import, we just want to make it easy
 # for apps.py to activate the settings in this module.
 __all__ = ()
-namespace = Namespace(label=_('Django'), name='django')
+namespace = SettingNamespace(label=_('Django'), name='django')
 
 setting_django_allowed_hosts = namespace.add_setting(
     global_name='ALLOWED_HOSTS', default=settings.ALLOWED_HOSTS,

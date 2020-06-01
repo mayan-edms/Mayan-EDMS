@@ -1,11 +1,11 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 # Don't import anything on star import, we just want to make it easy
 # for apps.py to activate the settings in this module.
 __all__ = ()
-namespace = Namespace(label=_('Celery'), name='celery')
+namespace = SettingNamespace(label=_('Celery'), name='celery')
 
 setting_celery_broker_url = namespace.add_setting(
     global_name='CELERY_BROKER_URL', default=None,

@@ -3,11 +3,11 @@ import os
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .setting_migrations import DocumentSignaturesSettingMigration
 
-namespace = Namespace(
+namespace = SettingNamespace(
     label=_('Document signatures'),
     migration_class=DocumentSignaturesSettingMigration, name='signatures',
     version='0002'

@@ -1,8 +1,8 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
-namespace = Namespace(
+namespace = SettingNamespace(
     label=_('REST API'), name='rest_api', version='0001'
 )
 

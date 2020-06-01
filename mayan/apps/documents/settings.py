@@ -3,7 +3,7 @@ import os
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import (
     DEFAULT_DOCUMENTS_CACHE_MAXIMUM_SIZE, DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE,
@@ -13,7 +13,7 @@ from .literals import (
 from .setting_callbacks import callback_update_cache_size
 from .setting_migrations import DocumentsSettingMigration
 
-namespace = Namespace(
+namespace = SettingNamespace(
     label=_('Documents'), migration_class=DocumentsSettingMigration,
     name='documents', version='0002'
 )

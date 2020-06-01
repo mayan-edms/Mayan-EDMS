@@ -4,9 +4,9 @@ import tempfile
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
-namespace = Namespace(label=_('Storage'), name='storage')
+namespace = SettingNamespace(label=_('Storage'), name='storage')
 
 setting_shared_storage = namespace.add_setting(
     global_name='STORAGE_SHARED_STORAGE',

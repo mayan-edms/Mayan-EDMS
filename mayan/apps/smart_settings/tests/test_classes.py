@@ -79,7 +79,7 @@ class ClassesTestCase(SmartSettingTestMixin, BaseTestCase):
         self.assertTrue(Setting.check_changed())
 
 
-class NamespaceMigrationTestCase(SmartSettingTestMixin, BaseTestCase):
+class SettingNamespaceMigrationTestCase(SmartSettingTestMixin, BaseTestCase):
     def test_environment_migration(self):
         self._set_environment_variable(
             name='MAYAN_{}'.format(TEST_SETTING_GLOBAL_NAME),

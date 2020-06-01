@@ -1,10 +1,10 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import DEFAULT_EMAIL, DEFAULT_PASSWORD, DEFAULT_USERNAME
 
-namespace = Namespace(label=_('Auto administrator'), name='autoadmin')
+namespace = SettingNamespace(label=_('Auto administrator'), name='autoadmin')
 
 setting_email = namespace.add_setting(
     global_name='AUTOADMIN_EMAIL', default=DEFAULT_EMAIL,

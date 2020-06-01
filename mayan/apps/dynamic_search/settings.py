@@ -1,8 +1,8 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
-namespace = Namespace(label=_('Search'), name='search')
+namespace = SettingNamespace(label=_('Search'), name='search')
 
 setting_search_backend = namespace.add_setting(
     global_name='SEARCH_BACKEND',

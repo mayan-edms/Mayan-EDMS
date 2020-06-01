@@ -3,11 +3,11 @@ import os
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .setting_migrations import SourcesSettingMigration
 
-namespace = Namespace(
+namespace = SettingNamespace(
     label=_('Sources'), migration_class=SourcesSettingMigration,
     name='sources', version='0002'
 )

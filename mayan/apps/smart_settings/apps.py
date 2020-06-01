@@ -5,7 +5,7 @@ from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import menu_secondary, menu_setup, menu_object
 from mayan.apps.navigation.classes import SourceColumn
 
-from .classes import Namespace, Setting
+from .classes import SettingNamespace, Setting
 from .links import (
     link_namespace_detail, link_namespace_list, link_namespace_root_list,
     link_setting_edit
@@ -23,11 +23,12 @@ class SmartSettingsApp(MayanAppConfig):
     def ready(self):
         super(SmartSettingsApp, self).ready()
 
-        Namespace.initialize()
+        SettingNamespace.initialize()
 
         SourceColumn(
             func=lambda context: len(context['object'].settings),
-            label=_('Setting count'), include_label=True, source=Namespace
+            label=_('Setting count'), include_label=True,
+            source=SettingNamespace
         )
         SourceColumn(
             func=lambda context: setting_widget(context['object']),
@@ -43,14 +44,14 @@ class SmartSettingsApp(MayanAppConfig):
         )
 
         menu_object.bind_links(
-            links=(link_namespace_detail,), sources=(Namespace,)
+            links=(link_namespace_detail,), sources=(SettingNamespace,)
         )
         menu_object.bind_links(
             links=(link_setting_edit,), sources=(Setting,)
         )
         menu_secondary.bind_links(
             links=(link_namespace_root_list,), sources=(
-                Namespace, Setting, 'settings:namespace_list',
+                SettingNamespace, Setting, 'settings:namespace_list',
             )
         )
         menu_setup.bind_links(links=(link_namespace_list,))

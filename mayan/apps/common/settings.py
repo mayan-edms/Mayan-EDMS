@@ -4,11 +4,11 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 import mayan
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import DEFAULT_COMMON_HOME_VIEW
 
-namespace = Namespace(
+namespace = SettingNamespace(
     label=_('Common'), name='common', version='0002'
 )
 

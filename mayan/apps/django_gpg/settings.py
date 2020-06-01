@@ -1,10 +1,10 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import DEFAULT_GPG_PATH
 
-namespace = Namespace(label=_('Signatures'), name='django_gpg')
+namespace = SettingNamespace(label=_('Signatures'), name='django_gpg')
 
 
 setting_gpg_backend = namespace.add_setting(

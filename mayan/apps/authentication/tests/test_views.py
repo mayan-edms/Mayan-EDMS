@@ -11,7 +11,7 @@ from django.utils.http import urlunquote_plus
 
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.common.settings import setting_home_view
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 from mayan.apps.user_management.permissions import permission_user_edit
 from mayan.apps.user_management.tests.literals import (
     TEST_USER_PASSWORD_EDITED
@@ -161,7 +161,7 @@ class UserLoginTestCase(GenericViewTestCase):
 
     def setUp(self):
         super(UserLoginTestCase, self).setUp()
-        Namespace.invalidate_cache_all()
+        SettingNamespace.invalidate_cache_all()
 
     def _request_authenticated_view(self):
         return self.get(path=self.authenticated_url)

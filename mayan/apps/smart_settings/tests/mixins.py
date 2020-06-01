@@ -6,7 +6,7 @@ from django.utils.encoding import force_bytes
 from mayan.apps.common.tests.mixins import EnvironmentTestCaseMixin
 from mayan.apps.storage.utils import fs_cleanup, NamedTemporaryFile
 
-from ..classes import Namespace, Setting
+from ..classes import SettingNamespace, Setting
 from ..utils import BaseSetting, SettingNamespaceSingleton
 
 from .literals import (
@@ -34,7 +34,7 @@ class BoostrapSettingTestMixin(object):
 class SmartSettingsTestCaseMixin(object):
     def setUp(self):
         super(SmartSettingsTestCaseMixin, self).setUp()
-        Namespace.invalidate_cache_all()
+        SettingNamespace.invalidate_cache_all()
 
         with NamedTemporaryFile(delete=False) as self.test_setting_config_file_object:
             settings.CONFIGURATION_FILEPATH = self.test_setting_config_file_object.name
@@ -43,7 +43,7 @@ class SmartSettingsTestCaseMixin(object):
 
     def tearDown(self):
         fs_cleanup(filename=self.test_setting_config_file_object.name)
-        Namespace.invalidate_cache_all()
+        SettingNamespace.invalidate_cache_all()
         super(SmartSettingsTestCaseMixin, self).tearDown()
 
 
@@ -86,14 +86,14 @@ class SmartSettingTestMixin(EnvironmentTestCaseMixin):
 
     def _create_test_settings_namespace(self, **kwargs):
         try:
-            self.test_settings_namespace = Namespace.get(
+            self.test_settings_namespace = SettingNamespace.get(
                 name=TEST_NAMESPACE_NAME
             )
             self.test_settings_namespace.migration_class = None
             self.test_settings_namespace.version = None
             self.test_settings_namespace.__dict__.update(kwargs)
         except KeyError:
-            self.test_settings_namespace = Namespace(
+            self.test_settings_namespace = SettingNamespace(
                 label=TEST_NAMESPACE_LABEL, name=TEST_NAMESPACE_NAME,
                 **kwargs
             )

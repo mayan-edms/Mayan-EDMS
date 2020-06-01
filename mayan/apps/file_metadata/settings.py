@@ -1,11 +1,11 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import DEFAULT_EXIF_PATH
 from .setting_migrations import FileMetadataSettingMigration
 
-namespace = Namespace(
+namespace = SettingNamespace(
     label=_('File metadata'), migration_class=FileMetadataSettingMigration,
     name='file_metadata', version='0002'
 )

@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import (
     DEFAULT_LIBREOFFICE_PATH, DEFAULT_PDFTOPPM_DPI, DEFAULT_PDFTOPPM_FORMAT,
@@ -9,7 +9,7 @@ from .literals import (
 )
 from .setting_migrations import ConvertSettingMigration
 
-namespace = Namespace(
+namespace = SettingNamespace(
     label=_('Converter'), migration_class=ConvertSettingMigration,
     name='converter', version='0002'
 )

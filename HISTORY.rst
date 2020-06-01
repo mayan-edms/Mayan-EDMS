@@ -37,6 +37,9 @@
   and ``COMMON_SHARED_STORAGE_ARGUMENTS`` is now
   ``STORAGE_SHARED_STORAGE_ARGUMENTS``.
 - Remove usage of the python_2_unicode_compatible wrapper.
+- Rename smart_settings.classes.Namespace to SettingNamespace.
+- Rename smart_settings.classes.NamespaceMigration to
+  SettingNamespaceMigration.
 
 3.4.9 (2020-05-26)
 ==================

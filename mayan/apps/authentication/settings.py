@@ -1,10 +1,10 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import DEFAULT_LOGIN_METHOD, DEFAULT_MAXIMUM_SESSION_LENGTH
 
-namespace = Namespace(label=_('Authentication'), name='authentication')
+namespace = SettingNamespace(label=_('Authentication'), name='authentication')
 setting_login_method = namespace.add_setting(
     global_name='AUTHENTICATION_LOGIN_METHOD', default=DEFAULT_LOGIN_METHOD,
     help_text=_(
