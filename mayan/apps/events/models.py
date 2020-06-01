@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from actstream.models import Action
@@ -14,7 +14,6 @@ from .managers import (
 )
 
 
-@python_2_unicode_compatible
 class StoredEventType(models.Model):
     """
     Model to mirror the real event classes as database objects.
@@ -42,7 +41,6 @@ class StoredEventType(models.Model):
         return self.get_class().namespace
 
 
-@python_2_unicode_compatible
 class EventSubscription(models.Model):
     """
     This model stores the event subscriptions of a user for the entire
@@ -68,7 +66,6 @@ class EventSubscription(models.Model):
         return force_text(self.stored_event_type)
 
 
-@python_2_unicode_compatible
 class Notification(models.Model):
     """
     This model keeps track of the notifications for a user. Notifications are
@@ -97,7 +94,6 @@ class Notification(models.Model):
         return force_text(self.action)
 
 
-@python_2_unicode_compatible
 class ObjectEventSubscription(models.Model):
     content_type = models.ForeignKey(
         on_delete=models.CASCADE, to=ContentType,

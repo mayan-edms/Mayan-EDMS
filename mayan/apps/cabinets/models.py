@@ -1,7 +1,6 @@
 from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
 from django.db import connection, models, transaction
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mptt.fields import TreeForeignKey
@@ -18,7 +17,6 @@ from .events import (
 from .search import cabinet_search  # NOQA
 
 
-@python_2_unicode_compatible
 class Cabinet(MPTTModel):
     """
     Model to store a hierarchical tree of document containers. Each container

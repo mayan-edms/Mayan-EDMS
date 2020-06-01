@@ -3,7 +3,6 @@ import logging
 from django.conf import settings
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import Document
@@ -16,7 +15,6 @@ from .events import (
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class Comment(models.Model):
     """
     Model to store one comment per document per user per date & time.

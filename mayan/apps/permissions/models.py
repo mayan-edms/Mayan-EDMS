@@ -4,7 +4,7 @@ from django.apps import apps
 from django.contrib.auth.models import Group
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.user_management.events import event_group_edited
@@ -17,7 +17,6 @@ from .managers import RoleManager, StoredPermissionManager
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class StoredPermission(models.Model):
     """
     This model is the counterpart of the permissions.classes.Permission
@@ -88,7 +87,6 @@ class StoredPermission(models.Model):
             return False
 
 
-@python_2_unicode_compatible
 class Role(models.Model):
     """
     This model represents a Role. Roles are permission units. They are the

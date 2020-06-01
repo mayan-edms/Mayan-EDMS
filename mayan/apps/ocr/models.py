@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import DocumentPage, DocumentType, DocumentVersion
@@ -33,7 +33,6 @@ class DocumentTypeSettings(models.Model):
     natural_key.dependencies = ['documents.DocumentType']
 
 
-@python_2_unicode_compatible
 class DocumentPageOCRContent(models.Model):
     """
     This model stores the OCR results for a document page.
@@ -58,7 +57,6 @@ class DocumentPageOCRContent(models.Model):
         return force_text(self.document_page)
 
 
-@python_2_unicode_compatible
 class DocumentVersionOCRError(models.Model):
     """
     This models keeps track of the errors captured during the OCR of a

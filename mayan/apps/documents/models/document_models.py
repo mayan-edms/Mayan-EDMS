@@ -5,7 +5,6 @@ from django.apps import apps
 from django.core.files import File
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
@@ -43,7 +42,6 @@ class HooksMixin(object):
         hook_list.insert(order, func)
 
 
-@python_2_unicode_compatible
 class Document(HooksMixin, models.Model):
     """
     Defines a single document with it's fields and properties

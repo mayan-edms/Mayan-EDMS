@@ -5,7 +5,7 @@ import logging
 from django.apps import apps
 from django.core.exceptions import PermissionDenied
 from django.db.utils import OperationalError, ProgrammingError
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from .exceptions import InvalidNamespace
@@ -13,7 +13,6 @@ from .exceptions import InvalidNamespace
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class PermissionNamespace(object):
     _registry = {}
 
@@ -47,7 +46,6 @@ class PermissionNamespace(object):
         return permission
 
 
-@python_2_unicode_compatible
 class Permission(object):
     _imported_app = []
     _permissions = {}

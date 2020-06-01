@@ -1,7 +1,7 @@
 import logging
 
 from django.apps import apps
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext as _
 
@@ -32,7 +32,6 @@ class SearchField(object):
         return self.search_model.model
 
 
-@python_2_unicode_compatible
 class SearchModel(object):
     _registry = {}
 

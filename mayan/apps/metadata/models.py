@@ -3,7 +3,7 @@ import shlex
 from django.core.exceptions import ValidationError
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 from django.utils.six import PY2
 from django.utils.translation import ugettext_lazy as _
@@ -35,7 +35,6 @@ def parser_choices():
     )
 
 
-@python_2_unicode_compatible
 class MetadataType(models.Model):
     """
     Model to store a type of metadata. Metadata are user defined properties
@@ -192,7 +191,6 @@ class MetadataType(models.Model):
         return value
 
 
-@python_2_unicode_compatible
 class DocumentMetadata(models.Model):
     """
     Model used to link an instance of a metadata type with a value to a
@@ -290,7 +288,6 @@ class DocumentMetadata(models.Model):
             return result
 
 
-@python_2_unicode_compatible
 class DocumentTypeMetadataType(models.Model):
     """
     Model used to store the relationship between a metadata type and a

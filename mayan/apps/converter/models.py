@@ -4,7 +4,6 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.db.models import Max
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import Layer
@@ -15,7 +14,6 @@ from .validators import YAMLValidator
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class StoredLayer(models.Model):
     name = models.CharField(
         max_length=64, unique=True, verbose_name=_('Name')
@@ -55,7 +53,6 @@ class ObjectLayer(models.Model):
         verbose_name_plural = _('Object layers')
 
 
-@python_2_unicode_compatible
 class LayerTransformation(models.Model):
     """
     Model that stores the transformation and transformation arguments

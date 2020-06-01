@@ -6,7 +6,7 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import ErrorLogEntryManager, UserLocaleProfileManager
@@ -45,7 +45,6 @@ class ErrorLogEntry(models.Model):
         verbose_name_plural = _('Error log entries')
 
 
-@python_2_unicode_compatible
 class UserLocaleProfile(models.Model):
     """
     Stores the locale preferences of a user. Stores timezone and language

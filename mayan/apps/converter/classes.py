@@ -11,7 +11,7 @@ import sh
 from django.apps import apps
 from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
@@ -239,7 +239,6 @@ class ConverterBase(object):
             self.image = transformation.execute_on(image=self.image)
 
 
-@python_2_unicode_compatible
 class Layer(object):
     _registry = {}
 

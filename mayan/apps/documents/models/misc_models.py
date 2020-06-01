@@ -2,7 +2,7 @@ import logging
 
 from django.conf import settings
 from django.db import models
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from ..managers import (
@@ -26,7 +26,6 @@ class DeletedDocument(Document):
         proxy = True
 
 
-@python_2_unicode_compatible
 class DuplicatedDocument(models.Model):
     document = models.ForeignKey(
         on_delete=models.CASCADE, related_name='duplicates', to=Document,
@@ -49,7 +48,6 @@ class DuplicatedDocument(models.Model):
         return force_text(self.document)
 
 
-@python_2_unicode_compatible
 class FavoriteDocument(models.Model):
     """
     Keeps a list of the favorited documents of a given user
@@ -77,7 +75,6 @@ class FavoriteDocument(models.Model):
     natural_key.dependencies = ['documents.Document', settings.AUTH_USER_MODEL]
 
 
-@python_2_unicode_compatible
 class RecentDocument(models.Model):
     """
     Keeps a list of the n most recent accessed or created document for

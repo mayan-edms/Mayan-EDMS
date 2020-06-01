@@ -3,7 +3,7 @@ import logging
 from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.core.exceptions import PermissionDenied
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from actstream import action
@@ -20,7 +20,6 @@ class EventModelRegistry(object):
         registry.register(model)
 
 
-@python_2_unicode_compatible
 class EventTypeNamespace(object):
     _registry = {}
 
@@ -53,7 +52,6 @@ class EventTypeNamespace(object):
         return EventType.sort(event_type_list=self.event_types)
 
 
-@python_2_unicode_compatible
 class EventType(object):
     _registry = {}
 

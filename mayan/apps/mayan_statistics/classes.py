@@ -1,5 +1,5 @@
 from django.apps import apps
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from celery.schedules import crontab
@@ -9,7 +9,6 @@ from mayan.celery import app
 from .renderers import ChartJSLine
 
 
-@python_2_unicode_compatible
 class StatisticNamespace(object):
     _registry = {}
 
@@ -40,7 +39,6 @@ class StatisticNamespace(object):
         return self._statistics
 
 
-@python_2_unicode_compatible
 class Statistic(object):
     _registry = {}
     renderer = None

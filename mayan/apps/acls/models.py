@@ -4,7 +4,6 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions.models import Role, StoredPermission
@@ -15,7 +14,6 @@ from .managers import AccessControlListManager
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class AccessControlList(models.Model):
     """
     ACL means Access Control List it is a more fine-grained method of

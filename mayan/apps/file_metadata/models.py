@@ -1,7 +1,7 @@
 import logging
 
 from django.db import models
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
@@ -13,7 +13,6 @@ from .managers import DocumentTypeSettingsManager
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class StoredDriver(models.Model):
     driver_path = models.CharField(
         max_length=255, unique=True, verbose_name=_('Driver path')
@@ -65,7 +64,6 @@ class DocumentTypeSettings(models.Model):
     natural_key.dependencies = ['documents.DocumentType']
 
 
-@python_2_unicode_compatible
 class DocumentVersionDriverEntry(models.Model):
     driver = models.ForeignKey(
         on_delete=models.CASCADE, related_name='driver_entries',
@@ -90,7 +88,6 @@ class DocumentVersionDriverEntry(models.Model):
     get_attribute_count.short_description = _('Attribute count')
 
 
-@python_2_unicode_compatible
 class FileMetadataEntry(models.Model):
     document_version_driver_entry = models.ForeignKey(
         on_delete=models.CASCADE, related_name='entries',

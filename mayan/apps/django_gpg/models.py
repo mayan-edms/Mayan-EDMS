@@ -4,7 +4,7 @@ import logging
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from .exceptions import NeedPassphrase, PassphraseError
@@ -20,7 +20,6 @@ from .runtime import gpg_backend
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class Key(models.Model):
     """
     Fields:

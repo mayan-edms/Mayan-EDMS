@@ -1,7 +1,7 @@
 import uuid
 
 from django.db import models
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import DefinedStorageLazy
@@ -12,7 +12,6 @@ def upload_to(instance, filename):
     return 'shared-file-{}'.format(uuid.uuid4().hex)
 
 
-@python_2_unicode_compatible
 class SharedUploadedFile(models.Model):
     """
     Keep a database link to a stored file. Used to share files between code

@@ -4,7 +4,7 @@ import logging
 from kombu import Exchange, Queue
 
 from django.apps import apps
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 
 from mayan.celery import app as celery_app
@@ -12,7 +12,6 @@ from mayan.celery import app as celery_app
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class TaskType(object):
     _registry = {}
 
@@ -46,7 +45,6 @@ class TaskType(object):
             raise
 
 
-@python_2_unicode_compatible
 class Task(object):
     def __init__(self, task_type, kwargs):
         self.task_type = task_type
@@ -56,7 +54,6 @@ class Task(object):
         return force_text(self.task_type)
 
 
-@python_2_unicode_compatible
 class CeleryQueue(object):
     _registry = {}
 

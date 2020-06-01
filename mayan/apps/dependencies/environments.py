@@ -1,8 +1,7 @@
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 
-@python_2_unicode_compatible
 class DependencyEnvironment(object):
     def __init__(self, label, name, help_text=None, mark_missing=False):
         self.label = label

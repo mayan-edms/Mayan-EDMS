@@ -2,7 +2,7 @@ import logging
 
 from django.apps import apps
 from django.db.models import Q
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 
 from ..classes import SearchBackend
 
@@ -42,7 +42,6 @@ class DjangoSearchBackend(SearchBackend):
         )
 
 
-@python_2_unicode_compatible
 class FieldQuery(object):
     def __init__(self, search_field, search_term_collection):
         query_operation = QUERY_OPERATION_AND
@@ -87,7 +86,6 @@ class FieldQuery(object):
         return ' '.join(self.parts)
 
 
-@python_2_unicode_compatible
 class SearchQuery(object):
     def __init__(self, query_string, search_model, global_and_search=False):
         self.query = None
@@ -127,7 +125,6 @@ class SearchQuery(object):
         return ' '.join(self.text[:-1])
 
 
-@python_2_unicode_compatible
 class SearchTerm(object):
     def __init__(self, negated, string, is_meta):
         self.negated = negated
@@ -143,7 +140,6 @@ class SearchTerm(object):
             )
 
 
-@python_2_unicode_compatible
 class SearchTermCollection(object):
     def __init__(self, text):
         """

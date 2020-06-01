@@ -1,6 +1,6 @@
 from django.db import models, transaction
 from django.db.models import Q
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.events import event_document_type_edited
@@ -14,7 +14,6 @@ from .literals import (
 from .managers import SmartLinkManager
 
 
-@python_2_unicode_compatible
 class SmartLink(models.Model):
     """
     This model stores the basic fields for a smart link. Smart links allow
@@ -158,7 +157,6 @@ class ResolvedSmartLink(SmartLink):
         return self.get_dynamic_label(document=document) or self.label
 
 
-@python_2_unicode_compatible
 class SmartLinkCondition(models.Model):
     """
     This model stores a single smart link condition. A smart link is a

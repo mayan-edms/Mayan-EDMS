@@ -1,6 +1,5 @@
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.events import event_document_type_edited
@@ -11,7 +10,6 @@ from .events import event_web_link_created, event_web_link_edited
 from .managers import WebLinkManager
 
 
-@python_2_unicode_compatible
 class WebLink(models.Model):
     """
     This model stores the basic fields for a web link. Web links allow

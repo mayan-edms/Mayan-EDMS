@@ -3,7 +3,7 @@ import uuid
 
 from django.db import models
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
@@ -23,7 +23,6 @@ def upload_to(*args, **kwargs):
     return force_text(uuid.uuid4())
 
 
-@python_2_unicode_compatible
 class SignatureBaseModel(models.Model):
     """
     Fields:
@@ -127,7 +126,6 @@ class EmbeddedSignature(SignatureBaseModel):
                 super(EmbeddedSignature, self).save(*args, **kwargs)
 
 
-@python_2_unicode_compatible
 class DetachedSignature(SignatureBaseModel):
     signature_file = models.FileField(
         blank=True, help_text=_(

@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from .literals import DEFAULT_LOCK_TIMEOUT_VALUE
@@ -7,7 +6,6 @@ from .managers import LockManager
 from .settings import setting_default_lock_timeout
 
 
-@python_2_unicode_compatible
 class Lock(models.Model):
     """
     Model to provide distributed resource locking using the database.

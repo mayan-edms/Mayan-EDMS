@@ -1,6 +1,5 @@
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from colorful.fields import RGBColorField
@@ -15,7 +14,6 @@ from .events import (
 from .html_widgets import widget_single_tag
 
 
-@python_2_unicode_compatible
 class Tag(models.Model):
     """
     This model represents a binary property that can be applied to a document.

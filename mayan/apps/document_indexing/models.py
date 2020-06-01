@@ -2,7 +2,7 @@ import logging
 
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from mptt.fields import TreeForeignKey
@@ -24,7 +24,6 @@ from .managers import (
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class Index(models.Model):
     """
     Parent model that defines an index and hold all the relationship for its
@@ -222,7 +221,6 @@ class IndexInstance(Index):
             return 0
 
 
-@python_2_unicode_compatible
 class IndexTemplateNode(MPTTModel):
     """
     The template to generate an index. Each entry represents a level in a
@@ -358,7 +356,6 @@ class IndexTemplateNode(MPTTModel):
         self.index_instance_nodes.get_or_create(parent=None)
 
 
-@python_2_unicode_compatible
 class IndexInstanceNode(MPTTModel):
     """
     This model represent one instance node from a index template node. That is

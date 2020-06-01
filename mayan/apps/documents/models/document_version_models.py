@@ -7,7 +7,7 @@ import uuid
 from django.apps import apps
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
@@ -43,7 +43,6 @@ def UUID_FUNCTION(*args, **kwargs):
     return force_text(uuid.uuid4())
 
 
-@python_2_unicode_compatible
 class DocumentVersion(models.Model):
     """
     Model that describes a document version and its properties

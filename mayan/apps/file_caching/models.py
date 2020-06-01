@@ -6,7 +6,7 @@ from django.core.files.base import ContentFile
 from django.db import models, transaction
 from django.db.models import Sum
 from django.template.defaultfilters import filesizeformat
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -22,7 +22,6 @@ from .events import (
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class Cache(models.Model):
     defined_storage_name = models.CharField(
         db_index=True, help_text=_(

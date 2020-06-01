@@ -12,7 +12,7 @@ from django.apps import apps
 from django.conf import settings
 from django.utils.functional import Promise
 from django.utils.encoding import (
-    force_bytes, force_text, python_2_unicode_compatible
+    force_bytes, force_text
 )
 from django.utils.translation import ugettext_lazy as _
 
@@ -47,7 +47,6 @@ def read_configuration_file(filepath):
             raise
 
 
-@python_2_unicode_compatible
 class Namespace(object):
     _registry = {}
 
@@ -178,7 +177,6 @@ class NamespaceMigration(object):
             setting.raw_value = value
 
 
-@python_2_unicode_compatible
 class Setting(object):
     _registry = {}
     _cache_hash = None

@@ -3,7 +3,7 @@ import os
 from django.template import loader
 from django.template.base import Template
 from django.template.context import Context
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
@@ -40,7 +40,6 @@ class YAMLVariable(Variable):
         ).replace('...\n', '').replace('\n', '')
 
 
-@python_2_unicode_compatible
 class PlatformTemplate(object):
     _registry = {}
     context = {}

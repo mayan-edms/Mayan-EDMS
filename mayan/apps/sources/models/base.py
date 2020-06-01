@@ -2,7 +2,7 @@ import json
 import logging
 
 from django.db import models, transaction
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from django_celery_beat.models import PeriodicTask, IntervalSchedule
@@ -22,7 +22,6 @@ from ..wizards import WizardStep
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class Source(models.Model):
     label = models.CharField(
         db_index=True, help_text=_('A short text to describe this source.'),

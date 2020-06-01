@@ -1,11 +1,9 @@
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import MessageManager
 
 
-@python_2_unicode_compatible
 class Message(models.Model):
     """
     Model to store an information message that will be displayed at the login

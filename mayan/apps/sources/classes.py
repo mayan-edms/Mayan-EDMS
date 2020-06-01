@@ -8,7 +8,7 @@ from furl import furl
 from django.core.files import File
 from django.core.files.base import ContentFile
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.six.moves.urllib.parse import quote_plus, unquote_plus
 
@@ -37,7 +37,6 @@ class SourceUploadedFile(File):
         self.extra_data = extra_data
 
 
-@python_2_unicode_compatible
 class StagingFile(object):
     """
     Simple class to extend the File class to add preview capabilities

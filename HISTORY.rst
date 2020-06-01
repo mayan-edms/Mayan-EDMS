@@ -36,6 +36,7 @@
   The setting ``COMMON_SHARED_STORAGE`` is now ``STORAGE_SHARED_STORAGE``
   and ``COMMON_SHARED_STORAGE_ARGUMENTS`` is now
   ``STORAGE_SHARED_STORAGE_ARGUMENTS``.
+- Remove usage of the python_2_unicode_compatible wrapper.
 
 3.4.9 (2020-05-26)
 ==================

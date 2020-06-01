@@ -3,7 +3,6 @@ import logging
 from django.apps import apps
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
@@ -19,7 +18,6 @@ __all__ = ('DocumentType', 'DocumentTypeFilename')
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class DocumentType(models.Model):
     """
     Define document types or classes to which a specific set of
@@ -142,7 +140,6 @@ class DocumentType(models.Model):
         return result
 
 
-@python_2_unicode_compatible
 class DocumentTypeFilename(models.Model):
     """
     List of labels available to a specific document type for the

@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import (
@@ -9,7 +9,6 @@ from mayan.apps.documents.models import (
 from .managers import DocumentPageContentManager, DocumentTypeSettingsManager
 
 
-@python_2_unicode_compatible
 class DocumentPageContent(models.Model):
     """
     This model store's the parsed content of a document page.
@@ -60,7 +59,6 @@ class DocumentTypeSettings(models.Model):
         verbose_name_plural = _('Document types settings')
 
 
-@python_2_unicode_compatible
 class DocumentVersionParseError(models.Model):
     """
     This module stores the errors captures when attempting to parse a

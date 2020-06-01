@@ -4,7 +4,7 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
@@ -20,7 +20,6 @@ from .managers import (
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class DocumentCheckout(models.Model):
     """
     Model to store the state and information of a document checkout.

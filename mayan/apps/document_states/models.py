@@ -13,7 +13,7 @@ from django.db import IntegrityError, models, transaction
 from django.db.models import F, Max, Q
 from django.urls import reverse
 from django.utils.encoding import (
-    force_bytes, force_text, python_2_unicode_compatible
+    force_bytes, force_text
 )
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
@@ -41,7 +41,6 @@ SYMBOL_MATH_CONDITIONAL = '&rarr;'
 logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class Workflow(models.Model):
     """
     Fields:
@@ -272,7 +271,6 @@ class Workflow(models.Model):
             return result
 
 
-@python_2_unicode_compatible
 class WorkflowInstance(models.Model):
     workflow = models.ForeignKey(
         on_delete=models.CASCADE, related_name='instances', to=Workflow,
@@ -419,7 +417,6 @@ class WorkflowInstance(models.Model):
         return json.loads(s=self.context or '{}')
 
 
-@python_2_unicode_compatible
 class WorkflowInstanceLogEntry(models.Model):
     """
     Fields:
@@ -504,7 +501,6 @@ class WorkflowInstanceLogEntry(models.Model):
             return result
 
 
-@python_2_unicode_compatible
 class WorkflowState(models.Model):
     """
     Fields:
@@ -596,7 +592,6 @@ class WorkflowState(models.Model):
         return super(WorkflowState, self).save(*args, **kwargs)
 
 
-@python_2_unicode_compatible
 class WorkflowStateAction(models.Model):
     state = models.ForeignKey(
         on_delete=models.CASCADE, related_name='actions', to=WorkflowState,
@@ -690,7 +685,6 @@ class WorkflowStateAction(models.Model):
         return json.loads(s=self.action_data or '{}')
 
 
-@python_2_unicode_compatible
 class WorkflowTransition(models.Model):
     workflow = models.ForeignKey(
         on_delete=models.CASCADE, related_name='transitions', to=Workflow,
@@ -746,7 +740,6 @@ class WorkflowTransition(models.Model):
     has_condition.short_description = _('Has a condition?')
 
 
-@python_2_unicode_compatible
 class WorkflowTransitionField(models.Model):
     transition = models.ForeignKey(
         on_delete=models.CASCADE, related_name='fields',
@@ -801,7 +794,6 @@ class WorkflowTransitionField(models.Model):
         return yaml_load(stream=self.widget_kwargs)
 
 
-@python_2_unicode_compatible
 class WorkflowTransitionTriggerEvent(models.Model):
     transition = models.ForeignKey(
         on_delete=models.CASCADE, related_name='trigger_events',

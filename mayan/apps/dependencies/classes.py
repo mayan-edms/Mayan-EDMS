@@ -13,7 +13,7 @@ import requests
 from semver import max_satisfying
 
 from django.apps import apps
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.termcolors import colorize
@@ -49,7 +49,6 @@ class OperatingSystemProvider(Provider):
     """Placeholder for the OS provider"""
 
 
-@python_2_unicode_compatible
 class DependencyGroup(object):
     _registry = {}
 
@@ -96,7 +95,6 @@ class DependencyGroup(object):
         raise KeyError('Entry not found.')
 
 
-@python_2_unicode_compatible
 class DependencyGroupEntry(object):
     def __init__(self, dependency_group, label, name, help_text=None):
         self.dependency_group = dependency_group
