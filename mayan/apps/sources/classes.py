@@ -60,7 +60,9 @@ class StagingFile:
 
     def as_file(self):
         return File(
-            file=open(self.get_full_path(), mode='rb'), name=self.filename
+            file=open(
+                file=self.get_full_path(), mode='rb'
+            ), name=self.filename
         )
 
     @property
@@ -86,7 +88,7 @@ class StagingFile:
                 'staging file cache file "%s" not found', self.cache_filename
             )
             image = self.get_image(transformations=transformation_list)
-            with self.storage.open(self.cache_filename, 'wb+') as file_object:
+            with self.storage.open(name=self.cache_filename, mode='wb+') as file_object:
                 file_object.write(image.getvalue())
 
         return self.cache_filename
@@ -142,7 +144,7 @@ class StagingFile:
         file_object = None
 
         try:
-            file_object = open(self.get_full_path(), mode='rb')
+            file_object = open(file=self.get_full_path(), mode='rb')
             converter = get_converter_class()(file_object=file_object)
 
             page_image = converter.get_page()
@@ -152,7 +154,7 @@ class StagingFile:
             if not self.storage.exists(cache_filename):
                 self.storage.save(name=cache_filename, content=ContentFile(content=''))
 
-            with self.storage.open(cache_filename, 'wb+') as file_object:
+            with self.storage.open(file=cache_filename, mode='wb+') as file_object:
                 file_object.write(page_image.getvalue())
         except Exception as exception:
             # Cleanup in case of error

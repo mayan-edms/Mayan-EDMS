@@ -61,7 +61,7 @@ class PassthroughStorageProcessor:
             )
             content_type = ContentType.objects.get_for_model(model=model)
 
-            self.database = dbm.open(self.log_file, flag='c')
+            self.database = dbm.open(file=self.log_file, flag='c')
 
             for instance in model.objects.all():
                 key = '{}.{}'.format(content_type.name, instance.pk)

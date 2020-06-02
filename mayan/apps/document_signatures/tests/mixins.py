@@ -9,7 +9,7 @@ from .literals import TEST_SIGNATURE_FILE_PATH
 
 class DetachedSignatureAPIViewTestMixin:
     def _request_test_document_signature_detached_create_view(self):
-        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
+        with open(file=TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='rest_api:document-version-signature-detached-list',
                 kwargs={
@@ -79,7 +79,7 @@ class DetachedSignatureViewTestMixin:
         )
 
     def _request_test_document_version_signature_upload_view(self):
-        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
+        with open(file=TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='signatures:document_version_signature_upload',
                 kwargs={
@@ -136,7 +136,7 @@ class EmbeddedSignatureViewTestMixin:
 
 class SignatureTestMixin:
     def _upload_test_detached_signature(self):
-        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
+        with open(file=TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             self.test_signature = DetachedSignature.objects.create(
                 document_version=self.test_document.latest_version,
                 signature_file=File(file_object)

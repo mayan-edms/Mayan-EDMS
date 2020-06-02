@@ -43,7 +43,7 @@ class CompressedUploadsTestCase(SourceTestMixin, GenericDocumentTestCase):
         self.test_source.uncompress = SOURCE_UNCOMPRESS_CHOICE_Y
         self.test_source.save()
 
-        with open(TEST_COMPRESSED_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_COMPRESSED_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_source.handle_upload(
                 document_type=self.test_document_type,
                 file_object=file_object,

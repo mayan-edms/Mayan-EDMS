@@ -204,7 +204,7 @@ class FileDisplayForm(forms.Form):
             file_path = os.path.join(
                 settings.BASE_DIR, os.sep.join(self.DIRECTORY), self.FILENAME
             )
-            with open(file_path) as file_object:
+            with open(file=file_path) as file_object:
                 self.fields['text'].initial = file_object.read()
 
 

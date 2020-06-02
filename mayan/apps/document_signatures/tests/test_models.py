@@ -296,7 +296,7 @@ class EmbeddedSignaturesTestCase(
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self._upload_test_document()
 
-        with open(TEST_SIGNED_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SIGNED_DOCUMENT_PATH, mode='rb') as file_object:
             signed_version = self.test_document.new_version(
                 file_object=file_object, comment=''
             )

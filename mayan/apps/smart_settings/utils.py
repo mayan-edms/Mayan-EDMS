@@ -24,7 +24,7 @@ class SettingNamespaceSingleton:
     @classmethod
     def load_config_file(cls, filepath):
         try:
-            with open(filepath) as file_object:
+            with open(file=filepath) as file_object:
                 file_object.seek(0, os.SEEK_END)
                 if file_object.tell():
                     file_object.seek(0)

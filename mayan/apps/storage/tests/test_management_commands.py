@@ -41,7 +41,7 @@ class StorageProcessManagementCommandTestCase(
     def test_storage_processor_command_forwards(self):
         self._upload_and_call()
 
-        with open(self.test_document.latest_version.file.path, mode='rb') as file_object:
+        with open(file=self.test_document.latest_version.file.path, mode='rb') as file_object:
             self.assertEqual(
                 get_mimetype(file_object=file_object),
                 ('application/zip', 'binary')
@@ -62,7 +62,7 @@ class StorageProcessManagementCommandTestCase(
             'location': self.document_storage_kwargs['location']
         }
 
-        with open(self.test_document.latest_version.file.path, mode='rb') as file_object:
+        with open(file=self.test_document.latest_version.file.path, mode='rb') as file_object:
             self.assertNotEqual(
                 get_mimetype(file_object=file_object),
                 ('application/zip', 'binary')

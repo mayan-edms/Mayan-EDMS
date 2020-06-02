@@ -100,7 +100,7 @@ class ConverterBase:
         self.file_object.seek(0)
 
         try:
-            self.image = Image.open(self.file_object)
+            self.image = Image.open(fp=self.file_object)
         except IOError:
             # Cannot identify image file
             self.image = self.convert(page_number=page_number)
@@ -193,7 +193,7 @@ class ConverterBase:
 
         # Copy the LibreOffice output file to a new named temporary file
         # and delete the converted file
-        with open(converted_file_path, mode='rb') as converted_file_object:
+        with open(file=converted_file_path, mode='rb') as converted_file_object:
             shutil.copyfileobj(
                 fsrc=converted_file_object, fdst=temporary_converted_file_object
             )

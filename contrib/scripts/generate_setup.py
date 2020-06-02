@@ -48,7 +48,7 @@ def generate_commit_timestamp():
 def get_requirements(base_directory, filename):
     result = []
 
-    with open(os.path.join(base_directory, filename)) as file_object:
+    with open(file=os.path.join(base_directory, filename)) as file_object:
         for line in file_object:
             if line.startswith('-r'):
                 line = line.split('\n')[0][3:]
@@ -72,16 +72,16 @@ if __name__ == '__main__':
         base_directory=BASE_DIR, filename=REQUIREMENTS_FILE
     )
 
-    with open(SETUP_TEMPLATE) as file_object:
+    with open(file=SETUP_TEMPLATE) as file_object:
         template = file_object.read()
         result = Template(template).render(
             context=Context({'requirements': requirements})
         )
 
-    with open('setup.py', 'w') as file_object:
+    with open(file='setup.py', mode='w') as file_object:
         file_object.write(result)
 
-    with open(MAYAN_TEMPLATE) as file_object:
+    with open(file=MAYAN_TEMPLATE) as file_object:
         template = file_object.read()
 
         # Ignore local version if any
@@ -102,5 +102,5 @@ if __name__ == '__main__':
             )
         )
 
-    with open(os.path.join(BASE_DIR, 'mayan', '__init__.py'), 'w') as file_object:
+    with open(file=os.path.join(BASE_DIR, 'mayan', '__init__.py'), mode='w') as file_object:
         file_object.write(result)

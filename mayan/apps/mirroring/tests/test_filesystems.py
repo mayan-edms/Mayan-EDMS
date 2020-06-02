@@ -95,8 +95,8 @@ class IndexFilesystemTestCase(
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         file_handle = index_filesystem.open(
-            '/{}/{}'.format(TEST_NODE_EXPRESSION, self.test_document.label),
-            'rb'
+            path='/{}/{}'.format(TEST_NODE_EXPRESSION, self.test_document.label),
+            flags='rb'
         )
 
         self.assertEqual(

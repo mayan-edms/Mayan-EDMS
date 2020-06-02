@@ -6,7 +6,7 @@ BASE_PATH = 'mayan/apps'
 
 
 def print_views_summary(module_filename):
-    with open(module_filename) as file_object:
+    with open(file=module_filename) as file_object:
         print('    module:', module_filename)
         count_class_based_views = 0
         count_function_based_views = 0
@@ -23,7 +23,7 @@ def print_views_summary(module_filename):
 
 
 def print_tests_summary(module_filename):
-    with open(module_filename) as file_object:
+    with open(file=module_filename) as file_object:
         print('    module:', module_filename)
         count_tests = 0
         for line in file_object:

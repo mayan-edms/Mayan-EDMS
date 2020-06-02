@@ -25,22 +25,22 @@ class ArchiveClassTestCaseMixin:
     def test_add_file(self):
         archive = self.cls()
         archive.create()
-        with open(self.file_path, mode='rb') as file_object:
+        with open(file=self.file_path, mode='rb') as file_object:
             archive.add_file(file_object=file_object, filename=self.filename)
             self.assertTrue(archive.members(), [self.filename])
 
     def test_open(self):
-        with open(self.archive_path, mode='rb') as file_object:
+        with open(file=self.archive_path, mode='rb') as file_object:
             archive = Archive.open(file_object=file_object)
             self.assertTrue(isinstance(archive, self.cls))
 
     def test_members(self):
-        with open(self.archive_path, mode='rb') as file_object:
+        with open(file=self.archive_path, mode='rb') as file_object:
             archive = Archive.open(file_object=file_object)
             self.assertEqual(archive.members(), self.members_list)
 
     def test_member_contents(self):
-        with open(self.archive_path, mode='rb') as file_object:
+        with open(file=self.archive_path, mode='rb') as file_object:
             archive = Archive.open(file_object=file_object)
             self.assertEqual(
                 archive.member_contents(filename=self.member_name),
@@ -48,7 +48,7 @@ class ArchiveClassTestCaseMixin:
             )
 
     def test_open_member(self):
-        with open(self.archive_path, mode='rb') as file_object:
+        with open(file=self.archive_path, mode='rb') as file_object:
             archive = Archive.open(file_object=file_object)
             file_object = archive.open_member(filename=self.member_name)
             self.assertEqual(
@@ -84,7 +84,7 @@ Zealand. '''.replace('\n', '\r\n')
         '''Skip this test for the class'''
 
     def test_member_contents(self):
-        with open(self.archive_path, mode='rb') as file_object:
+        with open(file=self.archive_path, mode='rb') as file_object:
             archive = Archive.open(file_object=file_object)
             self.assertTrue(
                 archive.member_contents(
@@ -95,7 +95,7 @@ Zealand. '''.replace('\n', '\r\n')
             )
 
     def test_open_member(self):
-        with open(self.archive_path, mode='rb') as file_object:
+        with open(file=self.archive_path, mode='rb') as file_object:
             archive = Archive.open(file_object=file_object)
             file_object = archive.open_member(filename=self.member_name)
             self.assertTrue(
@@ -115,12 +115,12 @@ class ZipArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
     cls = ZipArchive
 
     def test_open_member_with_special_characters_filename(self):
-        with open(TEST_ARCHIVE_ZIP_SPECIAL_CHARACTERS_FILENAME_MEMBER_PATH, mode='rb') as file_object:
+        with open(file=TEST_ARCHIVE_ZIP_SPECIAL_CHARACTERS_FILENAME_MEMBER_PATH, mode='rb') as file_object:
             archive = Archive.open(file_object=file_object)
             list(archive.get_members())
 
     def test_open_cp437_member(self):
-        with open(TEST_ARCHIVE_ZIP_CP437_MEMBER_PATH, mode='rb') as file_object:
+        with open(file=TEST_ARCHIVE_ZIP_CP437_MEMBER_PATH, mode='rb') as file_object:
             archive = Archive.open(file_object=file_object)
             list(archive.get_members())
 

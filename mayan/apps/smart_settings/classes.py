@@ -27,7 +27,7 @@ logger = logging.getLogger(name=__name__)
 
 def read_configuration_file(filepath):
     try:
-        with open(filepath) as file_object:
+        with open(file=filepath) as file_object:
             file_object.seek(0, os.SEEK_END)
             if file_object.tell():
                 file_object.seek(0)
@@ -271,7 +271,7 @@ class Setting:
             path = settings.CONFIGURATION_FILEPATH
 
         try:
-            with open(path, mode='w') as file_object:
+            with open(file=path, mode='w') as file_object:
                 file_object.write(cls.dump_data())
         except IOError as exception:
             if exception.errno == errno.ENOENT:

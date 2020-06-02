@@ -33,7 +33,7 @@ class KeyTestMixin:
         )
 
     def _create_test_key_public(self):
-        with open(TEST_KEY_PUBLIC_FILE_PATH, mode='rb') as file_object:
+        with open(file=TEST_KEY_PUBLIC_FILE_PATH, mode='rb') as file_object:
             self.test_key_public = Key.objects.create(
                 key_data=file_object.read()
             )

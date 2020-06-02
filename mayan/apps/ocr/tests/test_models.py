@@ -32,7 +32,7 @@ class GermanOCRSupportTestCase(DocumentTestMixin, BaseTestCase):
     def setUp(self):
         super(GermanOCRSupportTestCase, self).setUp()
 
-        with open(TEST_DEU_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_DEU_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_document = self.test_document_type.new_document(
                 file_object=file_object, language='deu'
             )

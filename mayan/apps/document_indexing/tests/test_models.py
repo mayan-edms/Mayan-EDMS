@@ -105,7 +105,7 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         values and two second levels with the same value but as separate
         children of each of the first levels. GitLab issue #391
         """
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_document_2 = self.test_document_type.new_document(
                 file_object=file_object
             )

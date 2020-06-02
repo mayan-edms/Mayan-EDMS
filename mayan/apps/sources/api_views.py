@@ -108,7 +108,7 @@ class APIStagingSourceFileImageView(generics.RetrieveAPIView):
             name=STORAGE_NAME_SOURCE_STAGING_FOLDER_FILE
         ).get_storage_instance()
 
-        with storage_staging_file_image_cache.open(cache_filename) as file_object:
+        with storage_staging_file_image_cache.open(name=cache_filename) as file_object:
             response = HttpResponse(file_object.read(), content_type='image')
             return response
 

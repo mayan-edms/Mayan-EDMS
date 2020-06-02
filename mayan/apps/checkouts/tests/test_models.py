@@ -88,7 +88,7 @@ class NewVersionBlockTestCase(
         NewVersionBlock.objects.block(document=self.test_document)
 
         with self.assertRaises(expected_exception=NewDocumentVersionNotAllowed):
-            with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
                 self.test_document.new_version(file_object=file_object)
 
     def test_unblocking(self):
@@ -120,5 +120,5 @@ class NewVersionBlockTestCase(
         self._check_out_test_document()
 
         with self.assertRaises(expected_exception=NewDocumentVersionNotAllowed):
-            with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
                 self.test_document.new_version(file_object=file_object)

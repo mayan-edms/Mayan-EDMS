@@ -43,10 +43,10 @@ class DocumentTestCase(GenericDocumentTestCase):
         self.assertEqual(self.test_document.page_count, 1)
 
     def test_version_creation(self):
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_document.new_version(file_object=file_object)
 
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_document.new_version(
                 file_object=file_object, comment='test comment 1'
             )
@@ -193,7 +193,7 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
     def test_add_new_version(self):
         self.assertEqual(self.test_document.versions.count(), 1)
 
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_document.new_version(
                 file_object=file_object
             )
@@ -212,7 +212,7 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
         # field
         time.sleep(1.01)
 
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_document.new_version(
                 file_object=file_object
             )

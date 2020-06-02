@@ -33,7 +33,7 @@ class DocumentVersionUploadViewTestMixin:
 
 class DocumentUploadWizardViewTestMixin:
     def _request_upload_wizard_view(self, document_path=TEST_SMALL_DOCUMENT_PATH):
-        with open(document_path, mode='rb') as file_object:
+        with open(file=document_path, mode='rb') as file_object:
             return self.post(
                 viewname='sources:document_upload_interactive', kwargs={
                     'source_id': self.test_source.pk

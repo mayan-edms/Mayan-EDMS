@@ -32,8 +32,9 @@ environment_secret_key = os.environ.get('MAYAN_SECRET_KEY')
 if environment_secret_key:
     SECRET_KEY = environment_secret_key
 else:
+    SECRET_KEY_PATH = os.path.join(MEDIA_ROOT, SYSTEM_DIR, SECRET_KEY_FILENAME)
     try:
-        with open(os.path.join(MEDIA_ROOT, SYSTEM_DIR, SECRET_KEY_FILENAME)) as file_object:  # NOQA: F821
+        with open(file=SECRET_KEY_PATH) as file_object:  # NOQA: F821
             SECRET_KEY = file_object.read().strip()
     except IOError:
         SECRET_KEY = DEFAULT_SECRET_KEY

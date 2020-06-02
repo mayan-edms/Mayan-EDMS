@@ -139,7 +139,7 @@ class DocumentTestMixin:
         if not label:
             label = self.test_document_filename
 
-        with open(self.test_document_path, mode='rb') as file_object:
+        with open(file=self.test_document_path, mode='rb') as file_object:
             document = self.test_document_type.new_document(
                 file_object=file_object, label=label, _user=_user
             )
@@ -224,7 +224,7 @@ class DocumentTypeQuickLabelTestMixin:
 
 class DocumentVersionTestMixin:
     def _upload_new_version(self):
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_document.new_version(
                 comment=TEST_VERSION_COMMENT, file_object=file_object
             )

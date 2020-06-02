@@ -42,7 +42,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         )
 
         # Upload the test document
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             response = self.post(
                 path=url.to_string(), data={
                     'document-language': 'eng', 'source-file': file_object,
@@ -69,7 +69,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         )
 
         # Upload the test document
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             response = self.post(
                 path=url.to_string(), data={
                     'document-language': 'eng', 'source-file': file_object,

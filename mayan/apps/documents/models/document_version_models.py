@@ -183,7 +183,7 @@ class DocumentVersion(models.Model):
         for page in self.pages.all():
             page.delete()
 
-        self.file.storage.delete(self.file.name)
+        self.file.storage.delete(name=self.file.name)
         self.cache_partition.delete()
 
         return super(DocumentVersion, self).delete(*args, **kwargs)

@@ -61,12 +61,12 @@ class EmbeddedSignatureManager(models.Manager):
         else:
             # The result of key.sign_file does not contain the signtarure ID.
             # Verify the signed file to obtain the signature ID.
-            with open(temporary_filename, mode='rb') as file_object:
+            with open(file=temporary_filename, mode='rb') as file_object:
                 result = Key.objects.verify_file(
                     file_object=file_object
                 )
 
-            with open(temporary_filename, mode='rb') as file_object:
+            with open(file=temporary_filename, mode='rb') as file_object:
                 document_version.document.new_version(
                     file_object=file_object, _user=user
                 )

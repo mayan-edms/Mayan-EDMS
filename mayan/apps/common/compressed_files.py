@@ -209,7 +209,7 @@ class ZipArchive(Archive):
         self.string_buffer.seek(0)
 
         if filename:
-            with open(filename, 'w') as file_object:
+            with open(file=filename, mode='w') as file_object:
                 file_object.write(self.string_buffer.read())
         else:
             return self.string_buffer

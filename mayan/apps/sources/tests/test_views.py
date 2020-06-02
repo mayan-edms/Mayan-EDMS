@@ -86,7 +86,7 @@ class DocumentUploadWizardViewTestCase(
             obj=self.test_document_type, permission=permission_document_create
         )
 
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             response = self.post(
                 viewname='sources:document_upload_interactive', kwargs={
                     'source_id': self.test_source.pk
@@ -159,7 +159,7 @@ class DocumentUploadIssueTestCase(GenericDocumentViewTestCase):
         self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.post(
                 viewname='sources:document_upload_interactive', data={
                     'document-language': 'eng',
@@ -193,7 +193,7 @@ class DocumentVersionUploadViewTestCase(
     def test_document_version_upload_view_no_permission(self):
         version_count = self.test_document.versions.count()
 
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             response = self._request_document_version_upload_view(
                 source_file=file_object
             )
@@ -211,7 +211,7 @@ class DocumentVersionUploadViewTestCase(
         )
         version_count = self.test_document.versions.count()
 
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             response = self._request_document_version_upload_view(
                 source_file=file_object
             )
@@ -225,7 +225,7 @@ class DocumentVersionUploadViewTestCase(
     def test_document_version_upload_no_source_view_no_permission(self):
         version_count = self.test_document.versions.count()
 
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             response = self._request_document_version_upload_no_source_view(
                 source_file=file_object
             )
@@ -243,7 +243,7 @@ class DocumentVersionUploadViewTestCase(
         )
         version_count = self.test_document.versions.count()
 
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             response = self._request_document_version_upload_no_source_view(
                 source_file=file_object
             )

@@ -159,7 +159,7 @@ class DocumentAPIViewTestMixin:
         )
 
     def _request_test_document_api_upload_view(self):
-        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='rest_api:document-list', data={
                     'document_type': self.test_document_type.pk,
@@ -381,7 +381,7 @@ class DocumentVersionAPIViewTestMixin:
         # is the latest.
         time.sleep(1)
 
-        with open(TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
+        with open(file=TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
             return self.post(
                 viewname='rest_api:document-version-list', kwargs={
                     'pk': self.test_document.pk,

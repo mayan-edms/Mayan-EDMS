@@ -50,7 +50,7 @@ class PyOCR(OCRBackendBase):
         """
         super(PyOCR, self).execute(*args, **kwargs)
 
-        image = Image.open(self.converter.get_page())
+        image = Image.open(fp=self.converter.get_page())
         try:
             with c_locale():
                 result = self.tool.image_to_string(

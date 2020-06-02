@@ -45,6 +45,8 @@
 - Remove the fragment "(object):" from all base class declarations.
 - Remove settings ``DOCUMENTS_DISABLE_BASE_IMAGE_CACHE`` and
   ``DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE``.
+- Add keyword arguments to all the ``open()`` and ``delete()`` methods
+  and functions.
 
 3.4.9 (2020-05-26)
 ==================

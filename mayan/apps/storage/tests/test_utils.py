@@ -117,7 +117,7 @@ class StorageProcessorTestCase(
     def test_processor_forwards(self):
         self._upload_and_process()
 
-        with open(self.test_document.latest_version.file.path, mode='rb') as file_object:
+        with open(file=self.test_document.latest_version.file.path, mode='rb') as file_object:
             self.assertEqual(
                 get_mimetype(file_object=file_object),
                 ('application/zip', 'binary')
@@ -138,7 +138,7 @@ class StorageProcessorTestCase(
             'location': self.document_storage_kwargs['location']
         }
 
-        with open(self.test_document.latest_version.file.path, mode='rb') as file_object:
+        with open(file=self.test_document.latest_version.file.path, mode='rb') as file_object:
             self.assertNotEqual(
                 get_mimetype(file_object=file_object),
                 ('application/zip', 'binary')

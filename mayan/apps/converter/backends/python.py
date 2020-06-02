@@ -80,7 +80,7 @@ class Python(ConverterBase):
                     l=self.page_number + 1, _out=image_buffer
                 )
                 image_buffer.seek(0)
-                return Image.open(image_buffer)
+                return Image.open(fp=image_buffer)
             finally:
                 new_file_object.close()
 
@@ -177,7 +177,7 @@ class Python(ConverterBase):
                 file_object.seek(0)
         else:
             try:
-                image = Image.open(self.file_object)
+                image = Image.open(fp=self.file_object)
             except IOError as exception:
                 error_message = _(
                     'Exception determining page count using Pillow; %s'

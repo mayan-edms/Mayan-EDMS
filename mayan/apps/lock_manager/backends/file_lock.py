@@ -25,7 +25,7 @@ lock_file = os.path.join(
         force_bytes(settings.SECRET_KEY)
     ).hexdigest()
 )
-open(lock_file, 'a').close()
+open(file=lock_file, mode='a').close()
 logger.debug('lock_file: %s', lock_file)
 
 
@@ -44,7 +44,7 @@ class FileLock(LockingBackend):
     def purge_locks(cls):
         super(FileLock, cls).purge_locks()
         lock.acquire()
-        with open(cls.lock_file, 'r+') as file_object:
+        with open(file=cls.lock_file, mode='r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)
             file_object.seek(0)
             file_object.truncate()
@@ -70,7 +70,7 @@ class FileLock(LockingBackend):
         self.uuid = force_text(uuid.uuid4())
 
         lock.acquire()
-        with open(self.__class__.lock_file, 'r+') as file_object:
+        with open(file=self.__class__.lock_file, mode='r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)
 
             data = file_object.read()
@@ -100,7 +100,7 @@ class FileLock(LockingBackend):
         super(FileLock, self).release()
 
         lock.acquire()
-        with open(self.__class__.lock_file, 'r+') as file_object:
+        with open(file=self.__class__.lock_file, mode='r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)
             try:
                 file_locks = json.loads(s=file_object.read())
