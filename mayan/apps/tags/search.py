@@ -23,4 +23,3 @@ tag_search.add_model_field(
 tag_search.add_model_field(
     field='color', label=_('Color')
 )
-
