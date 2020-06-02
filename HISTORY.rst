@@ -43,6 +43,8 @@
 - Use headless version of Libre Office in the Docker images
   to reduce the image size.
 - Remove the fragment "(object):" from all base class declarations.
+- Remove settings ``DOCUMENTS_DISABLE_BASE_IMAGE_CACHE`` and
+  ``DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE``.
 
 3.4.9 (2020-05-26)
 ==================

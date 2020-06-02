@@ -19,7 +19,6 @@ from mayan.apps.converter.utils import get_converter_class
 
 from ..managers import DocumentPageManager
 from ..settings import (
-    setting_disable_base_image_cache, setting_disable_transformed_image_cache,
     setting_display_width, setting_display_height, setting_zoom_max_level,
     setting_zoom_min_level
 )
@@ -87,7 +86,7 @@ class DocumentPage(models.Model):
         # Check is transformed image is available
         logger.debug('transformations cache filename: %s', combined_cache_filename)
 
-        if not setting_disable_transformed_image_cache.value and self.cache_partition.get_file(filename=combined_cache_filename):
+        if self.cache_partition.get_file(filename=combined_cache_filename):
             logger.debug(
                 'transformations cache file "%s" found', combined_cache_filename
             )
@@ -194,7 +193,7 @@ class DocumentPage(models.Model):
 
         cache_file = self.cache_partition.get_file(filename=cache_filename)
 
-        if not setting_disable_base_image_cache.value and cache_file:
+        if cache_file:
             logger.debug('Page cache file "%s" found', cache_filename)
 
             with cache_file.open() as file_object:

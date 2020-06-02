@@ -41,21 +41,6 @@ setting_documentimagecache_storage_arguments = namespace.add_setting(
         'Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND.'
     ),
 )
-setting_disable_base_image_cache = namespace.add_setting(
-    global_name='DOCUMENTS_DISABLE_BASE_IMAGE_CACHE', default=False,
-    help_text=_(
-        'Disables the first cache tier which stores high resolution, '
-        'non transformed versions of documents\'s pages.'
-    )
-)
-setting_disable_transformed_image_cache = namespace.add_setting(
-    global_name='DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE', default=False,
-    help_text=_(
-        'Disables the second cache tier which stores medium to low '
-        'resolution, transformed (rotated, zoomed, etc) versions '
-        'of documents\' pages.'
-    )
-)
 setting_display_height = namespace.add_setting(
     global_name='DOCUMENTS_DISPLAY_HEIGHT', default=''
 )
