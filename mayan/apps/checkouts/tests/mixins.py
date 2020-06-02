@@ -3,7 +3,7 @@ import datetime
 from django.utils.timezone import now
 
 from mayan.apps.common.literals import TIME_DELTA_UNIT_DAYS
-from mayan.apps.common.tests.utils import as_id_list
+from mayan.apps.tests.tests.utils import as_id_list
 
 from ..models import DocumentCheckout
 

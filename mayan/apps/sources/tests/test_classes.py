@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.documents.tests.literals import TEST_NON_ASCII_DOCUMENT_PATH
 from mayan.apps.storage.utils import mkdtemp
 

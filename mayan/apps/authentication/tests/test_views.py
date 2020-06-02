@@ -9,7 +9,7 @@ from django.test import override_settings
 from django.urls import reverse
 from django.utils.http import urlunquote_plus
 
-from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.smart_settings.classes import SettingNamespace
 from mayan.apps.user_management.permissions import permission_user_edit

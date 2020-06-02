@@ -1,14 +1,9 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.dependencies.classes import (
-    BinaryDependency, PythonDependency
-)
+from mayan.apps.dependencies.classes import PythonDependency
 from mayan.apps.dependencies.environments import (
     environment_build, environment_development, environment_documentation,
-    environment_testing
 )
-
-from .literals import DEFAULT_FIREFOX_GECKODRIVER_PATH
 
 PythonDependency(
     copyright_text='''
@@ -197,9 +192,6 @@ PythonDependency(
     module=__name__, name='gunicorn', version_string='==20.0.4'
 )
 PythonDependency(
-    module=__name__, name='mock', version_string='==4.0.2'
-)
-PythonDependency(
     copyright_text='''
         Author: Christian Theune
         License: LGPL 2.1
@@ -303,43 +295,6 @@ PythonDependency(
 PythonDependency(
     environment=environment_development,
     module=__name__, name='transifex-client', version_string='==0.13.9'
-)
-
-# Testing
-
-BinaryDependency(
-    environment=environment_testing, label='firefox-geckodriver',
-    module=__name__, name='geckodriver',
-    path=DEFAULT_FIREFOX_GECKODRIVER_PATH
-)
-PythonDependency(
-    environment=environment_testing, module=__name__, name='coverage',
-    version_string='==5.1'
-)
-PythonDependency(
-    environment=environment_testing, module=__name__, name='coveralls',
-    version_string='==2.0.0'
-)
-PythonDependency(
-    environment=environment_testing, module=__name__,
-    name='django-test-migrations', version_string='==0.2.0'
-)
-PythonDependency(
-    environment=environment_testing,
-    module=__name__, name='django-test-without-migrations',
-    version_string='==0.6'
-)
-PythonDependency(
-    environment=environment_testing, module=__name__, name='selenium',
-    version_string='==3.141.0'
-)
-PythonDependency(
-    environment=environment_testing, module=__name__, name='tox',
-    version_string='==3.14.6'
-)
-PythonDependency(
-    environment=environment_testing, module=__name__, name='psutil',
-    version_string='==5.7.0'
 )
 
 # Build

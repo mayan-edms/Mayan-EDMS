@@ -1,4 +1,4 @@
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.document_indexing.models import Index, IndexInstanceNode
 from mayan.apps.document_indexing.tests.literals import TEST_INDEX_LABEL

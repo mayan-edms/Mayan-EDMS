@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
 DEFAULT_COMMON_HOME_VIEW = 'common:home'
-DEFAULT_FIREFOX_GECKODRIVER_PATH = '/usr/bin/geckodriver'
 DJANGO_SQLITE_BACKEND = 'django.db.backends.sqlite3'
 
 MSG_MIME_TYPES = (

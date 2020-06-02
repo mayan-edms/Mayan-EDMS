@@ -1,6 +1,6 @@
-from ..http import URL
+from mayan.apps.tests.tests.base import BaseTestCase
 
-from .base import BaseTestCase
+from ..http import URL
 
 
 class URLTestCase(BaseTestCase):

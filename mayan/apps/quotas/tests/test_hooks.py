@@ -1,6 +1,6 @@
 import logging
 
-from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_new_version

@@ -4,8 +4,8 @@ from django.urls import reverse
 from furl import furl
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.common.tests.base import GenericViewTestCase
-from mayan.apps.common.tests.literals import TEST_VIEW_NAME
+from mayan.apps.tests.literals import TEST_VIEW_NAME
+from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.permissions import Permission, PermissionNamespace
 
 from ..classes import Link, Menu

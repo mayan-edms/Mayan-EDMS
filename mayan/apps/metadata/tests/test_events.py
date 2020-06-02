@@ -1,6 +1,6 @@
 from actstream.models import Action
 
-from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.tests.tests.base import GenericViewTestCase
 
 from ..events import (
     event_metadata_type_created, event_metadata_type_edited

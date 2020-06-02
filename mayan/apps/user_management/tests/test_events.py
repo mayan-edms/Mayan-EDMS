@@ -1,6 +1,6 @@
 from actstream.models import Action
 
-from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..permissions import (

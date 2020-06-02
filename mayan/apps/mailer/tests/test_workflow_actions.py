@@ -2,7 +2,7 @@ import json
 
 from django.core import mail
 
-from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
 from mayan.apps.document_states.permissions import permission_workflow_edit

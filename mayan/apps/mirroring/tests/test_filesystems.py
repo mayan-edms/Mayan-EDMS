@@ -5,7 +5,7 @@ from fuse import FuseOSError
 
 from django.db import connection
 
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.document_indexing.tests.mixins import IndexTestMixin

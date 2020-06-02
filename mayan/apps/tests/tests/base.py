@@ -4,8 +4,6 @@ from mayan.apps.acls.tests.mixins import ACLTestCaseMixin
 from mayan.apps.converter.tests.mixins import LayerTestCaseMixin
 from mayan.apps.permissions.tests.mixins import PermissionTestCaseMixin
 from mayan.apps.smart_settings.tests.mixins import SmartSettingsTestCaseMixin
-
-
 from mayan.apps.user_management.tests.mixins import UserTestMixin
 
 from .mixins import (

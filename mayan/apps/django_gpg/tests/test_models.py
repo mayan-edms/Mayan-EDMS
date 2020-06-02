@@ -5,7 +5,7 @@ import mock
 
 from django.utils.encoding import force_bytes
 
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.storage.utils import TemporaryFile
 
 from ..exceptions import (

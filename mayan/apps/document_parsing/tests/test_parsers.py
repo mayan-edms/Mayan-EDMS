@@ -1,4 +1,4 @@
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 

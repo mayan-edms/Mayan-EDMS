@@ -2,11 +2,7 @@ import os
 
 from django.conf import settings
 
-EXCLUDE_TEST_TAG = 'exclude'
-
 TEST_ERROR_LOG_ENTRY_RESULT = 'test_error_log_entry_result_text'
-TEST_VIEW_NAME = 'test view name'
-TEST_VIEW_URL = 'test-view-url'
 
 # Filenames
 TEST_ARCHIVE_MSG_STRANGE_DATE_FILENAME = 'strangeDate.msg'
@@ -51,6 +47,3 @@ TEST_TAR_GZ_FILE_PATH = os.path.join(
 TEST_ZIP_FILE_PATH = os.path.join(
     settings.BASE_DIR, 'apps', 'common', 'tests', 'contrib', TEST_ZIP_FILE
 )
-
-TEST_SERVER_HOST = 'testserver'
-TEST_SERVER_SCHEME = 'http'

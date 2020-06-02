@@ -1,6 +1,6 @@
 from django.utils.encoding import force_text
 
-from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.tests.tests.base import GenericViewTestCase
 
 from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view

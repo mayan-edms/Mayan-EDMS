@@ -1,7 +1,7 @@
 from django.core.exceptions import PermissionDenied
 from django.db import models
 
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.tests.tests.base import BaseTestCase
 
 from ..classes import ModelPermission
 from ..models import AccessControlList

@@ -5,8 +5,8 @@ from selenium.common.exceptions import NoAlertPresentException
 from django.conf import settings
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
-from mayan.apps.common.tests.base import GenericViewTestCase
-from mayan.apps.common.tests.mixins import SeleniumTestMixin
+from mayan.apps.tests.tests.base import GenericViewTestCase
+from mayan.apps.tests.tests.mixins import SeleniumTestMixin
 
 
 @skip('Skip until a synchronous live server class is added.')

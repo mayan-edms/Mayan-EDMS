@@ -1,6 +1,6 @@
 import time
 
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 from mayan.apps.documents.tests.mixins import DocumentTestMixin

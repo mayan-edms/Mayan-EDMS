@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 
-from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.metadata.permissions import permission_document_metadata_edit
 from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin

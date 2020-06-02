@@ -1,7 +1,7 @@
 import logging
 
-from mayan.apps.common.tests.base import BaseTestCase
-from mayan.apps.common.tests.utils import mute_stdout
+from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.tests.tests.utils import mute_stdout
 
 from ..models import AutoAdminSingleton
 from ..settings import setting_username

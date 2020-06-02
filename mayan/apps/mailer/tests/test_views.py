@@ -1,6 +1,6 @@
 from django.core import mail
 
-from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..models import UserMailer

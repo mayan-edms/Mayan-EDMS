@@ -1,8 +1,8 @@
 from django.apps import apps
 
-from ..finders import MayanAppDirectoriesFinder
+from mayan.apps.tests.tests.base import BaseTestCase
 
-from .base import BaseTestCase
+from ..finders import MayanAppDirectoriesFinder
 
 
 class MayanAppDirectoriesFinderTestCase(BaseTestCase):

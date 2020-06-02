@@ -3,7 +3,7 @@ from furl import furl
 from django.urls import reverse
 
 from mayan.apps.common.settings import setting_home_view
-from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_properties_edit, permission_document_type_edit,

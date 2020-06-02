@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.core import management
 
-from mayan.apps.common.tests.base import BaseTestCase
-from mayan.apps.common.tests.utils import mute_stdout
+from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.tests.tests.utils import mute_stdout
 
 from ..models import AutoAdminSingleton
 

@@ -1,6 +1,6 @@
 from django.utils.encoding import force_text
 
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
 from mayan.apps.documents.tests.mixins import DocumentTestMixin

@@ -1,7 +1,7 @@
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ImproperlyConfigured
 
-from mayan.apps.common.tests.mixins import TestModelTestMixin
+from mayan.apps.tests.tests.mixins import TestModelTestMixin
 from mayan.apps.permissions.tests.mixins import (
     PermissionTestMixin, RoleTestCaseMixin, RoleTestMixin
 )

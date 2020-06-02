@@ -1,4 +1,4 @@
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 
 from .mixins import WorkflowStateActionTestMixin, WorkflowTestMixin

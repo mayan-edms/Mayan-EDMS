@@ -1,6 +1,6 @@
 from django.test import override_settings
 
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.documents.tests.literals import TEST_DEU_DOCUMENT_PATH
 

@@ -2,11 +2,11 @@ from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 
 from mayan.apps.acls.classes import ModelPermission
+from mayan.apps.tests.tests.base import GenericViewTestCase
 
 from ..models import ErrorLogEntry
 from ..permissions_runtime import permission_error_log_view
 
-from .base import GenericViewTestCase
 from .literals import TEST_ERROR_LOG_ENTRY_RESULT
 
 

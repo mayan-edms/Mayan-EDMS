@@ -1,9 +1,9 @@
 import json
 import mock
 
-from mayan.apps.common.tests.base import GenericViewTestCase
-from mayan.apps.common.tests.mixins import TestServerTestCaseMixin
-from mayan.apps.common.tests.mocks import request_method_factory
+from mayan.apps.tests.tests.base import GenericViewTestCase
+from mayan.apps.tests.tests.mixins import TestServerTestCaseMixin
+from mayan.apps.tests.tests.mocks import request_method_factory
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..literals import WORKFLOW_ACTION_ON_ENTRY

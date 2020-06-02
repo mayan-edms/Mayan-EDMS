@@ -47,6 +47,9 @@
   ``DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE``.
 - Add keyword arguments to all the ``open()`` and ``delete()`` methods
   and functions.
+- Move test related code from the common app to a new tests app.
+  Test related imports from ``mayan.apps.common.tests``
+  need to be renamed to ``mayan.apps.tests.tests``.
 
 3.4.9 (2020-05-26)
 ==================

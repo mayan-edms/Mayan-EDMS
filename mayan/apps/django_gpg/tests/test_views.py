@@ -1,4 +1,4 @@
-from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.tests.tests.base import GenericViewTestCase
 
 from ..models import Key
 from ..permissions import permission_key_download, permission_key_upload

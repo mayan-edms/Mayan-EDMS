@@ -3,7 +3,7 @@ import os
 from django.conf import settings
 from django.utils.encoding import force_bytes
 
-from mayan.apps.common.tests.mixins import EnvironmentTestCaseMixin
+from mayan.apps.tests.tests.mixins import EnvironmentTestCaseMixin
 from mayan.apps.storage.utils import fs_cleanup, NamedTemporaryFile
 
 from ..classes import SettingNamespace, Setting

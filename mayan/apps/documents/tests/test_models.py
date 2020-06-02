@@ -3,7 +3,7 @@ import time
 
 from django.test import override_settings
 
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.converter.layers import layer_saved_transformations
 
 from ..models import (
