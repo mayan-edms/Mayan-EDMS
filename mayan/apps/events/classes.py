@@ -13,14 +13,14 @@ from .permissions import permission_events_view
 logger = logging.getLogger(name=__name__)
 
 
-class EventModelRegistry(object):
+class EventModelRegistry:
     @staticmethod
     def register(model):
         from actstream import registry
         registry.register(model)
 
 
-class EventTypeNamespace(object):
+class EventTypeNamespace:
     _registry = {}
 
     @classmethod
@@ -52,7 +52,7 @@ class EventTypeNamespace(object):
         return EventType.sort(event_type_list=self.event_types)
 
 
-class EventType(object):
+class EventType:
     _registry = {}
 
     @staticmethod
@@ -197,7 +197,7 @@ class EventType(object):
         return '%s.%s' % (self.namespace.name, self.name)
 
 
-class ModelEventType(object):
+class ModelEventType:
     """
     Class to allow matching a model to a specific set of events.
     """

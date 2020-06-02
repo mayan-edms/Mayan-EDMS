@@ -9,7 +9,7 @@ from mayan.apps.templating.classes import Template
 from .classes import EventType
 
 
-class ObjectLinkWidget(object):
+class ObjectLinkWidget:
     template_string = '<a href="{{ url }}">{{ object_type }}{{ label }}</a>'
 
     def __init__(self):

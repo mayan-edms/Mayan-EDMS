@@ -3,7 +3,7 @@ from ..permissions import permission_document_view
 from .base import GenericDocumentViewTestCase
 
 
-class DuplicatedDocumentsViewsTestMixin(object):
+class DuplicatedDocumentsViewsTestMixin:
     def _request_document_duplicates_list_view(self):
         return self.get(
             viewname='documents:document_duplicates_list', kwargs={

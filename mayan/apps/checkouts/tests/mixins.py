@@ -8,7 +8,7 @@ from mayan.apps.common.tests.utils import as_id_list
 from ..models import DocumentCheckout
 
 
-class DocumentCheckoutsAPIViewTestMixin(object):
+class DocumentCheckoutsAPIViewTestMixin:
     def _request_test_document_check_out_create_api_view(self):
         return self.post(
             viewname='rest_api:checkout-document-list', data={
@@ -33,7 +33,7 @@ class DocumentCheckoutsAPIViewTestMixin(object):
         return self.get(viewname='rest_api:checkout-document-list')
 
 
-class DocumentCheckoutTestMixin(object):
+class DocumentCheckoutTestMixin:
     _test_document_check_out_seconds = 0.1
 
     def _check_out_test_document(self, document=None, user=None):
@@ -54,7 +54,7 @@ class DocumentCheckoutTestMixin(object):
         )
 
 
-class DocumentCheckoutViewTestMixin(object):
+class DocumentCheckoutViewTestMixin:
     def _request_test_document_check_in_get_view(self):
         return self.get(
             viewname='checkouts:check_in_document', kwargs={

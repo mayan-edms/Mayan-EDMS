@@ -36,7 +36,7 @@ if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
     import psutil
 
 
-class ClientMethodsTestCaseMixin(object):
+class ClientMethodsTestCaseMixin:
     def _build_verb_kwargs(self, viewname=None, path=None, *args, **kwargs):
         data = kwargs.pop('data', None) or {}
         follow = kwargs.pop('follow', False)
@@ -96,7 +96,7 @@ class ClientMethodsTestCaseMixin(object):
         )
 
 
-class ConnectionsCheckTestCaseMixin(object):
+class ConnectionsCheckTestCaseMixin:
     _open_connections_check_enable = True
 
     def _get_open_connections_count(self):
@@ -119,7 +119,7 @@ class ConnectionsCheckTestCaseMixin(object):
         super(ConnectionsCheckTestCaseMixin, self).tearDown()
 
 
-class ContentTypeCheckTestCaseMixin(object):
+class ContentTypeCheckTestCaseMixin:
     expected_content_types = ('text/html', 'text/html; charset=utf-8')
 
     def _pre_setup(self):
@@ -144,7 +144,7 @@ class ContentTypeCheckTestCaseMixin(object):
         self.client = CustomClient()
 
 
-class DownloadTestCaseMixin(object):
+class DownloadTestCaseMixin:
     def assert_download_response(
         self, response, content=None, filename=None, is_attachment=None,
         mime_type=None
@@ -175,7 +175,7 @@ class DownloadTestCaseMixin(object):
             self.assertTrue(response['Content-Type'].startswith(mime_type))
 
 
-class EnvironmentTestCaseMixin(object):
+class EnvironmentTestCaseMixin:
     def setUp(self):
         super(EnvironmentTestCaseMixin, self).setUp()
         self._test_environment_variables = []
@@ -191,14 +191,14 @@ class EnvironmentTestCaseMixin(object):
         os.environ[name] = value
 
 
-class ModelTestCaseMixin(object):
+class ModelTestCaseMixin:
     def _model_instance_to_dictionary(self, instance):
         return instance._meta.model._default_manager.filter(
             pk=instance.pk
         ).values()[0]
 
 
-class OpenFileCheckTestCaseMixin(object):
+class OpenFileCheckTestCaseMixin:
     def _get_descriptor_count(self):
         process = psutil.Process()
         return process.num_fds()
@@ -226,7 +226,7 @@ class OpenFileCheckTestCaseMixin(object):
         super(OpenFileCheckTestCaseMixin, self).tearDown()
 
 
-class RandomPrimaryKeyModelMonkeyPatchMixin(object):
+class RandomPrimaryKeyModelMonkeyPatchMixin:
     random_primary_key_random_floor = 100
     random_primary_key_random_ceiling = 10000
     random_primary_key_maximum_attempts = 100
@@ -303,7 +303,7 @@ class RandomPrimaryKeyModelMonkeyPatchMixin(object):
         super(RandomPrimaryKeyModelMonkeyPatchMixin, self).tearDown()
 
 
-class SeleniumTestMixin(object):
+class SeleniumTestMixin:
     SKIP_VARIABLE_NAME = 'TESTS_SELENIUM_SKIP'
 
     @staticmethod
@@ -348,7 +348,7 @@ class SeleniumTestMixin(object):
         self.webdriver.get(url=url)
 
 
-class SilenceLoggerTestCaseMixin(object):
+class SilenceLoggerTestCaseMixin:
     """
     Changes the log level of a specific logger for the duration of a test.
     The default level for silenced loggers is CRITICAL.
@@ -373,7 +373,7 @@ class SilenceLoggerTestCaseMixin(object):
         )
 
 
-class TempfileCheckTestCasekMixin(object):
+class TempfileCheckTestCasekMixin:
     # Ignore the jvmstat instrumentation and GitLab's CI .config files
     # Ignore LibreOffice fontconfig cache dir
     ignore_globs = ('hsperfdata_*', '.config', '.cache')
@@ -416,7 +416,7 @@ class TempfileCheckTestCasekMixin(object):
         super(TempfileCheckTestCasekMixin, self).tearDown()
 
 
-class TestModelTestMixin(object):
+class TestModelTestMixin:
     _test_models = []
 
     @classmethod
@@ -444,7 +444,7 @@ class TestModelTestMixin(object):
             self.app_config.label, self.model_name.lower()
         )
 
-        class Meta(object):
+        class Meta:
             app_label = self.app_config.label
             db_table = self.db_table
             verbose_name = self.model_name
@@ -514,7 +514,7 @@ class TestModelTestMixin(object):
         return model
 
 
-class TestServerTestCaseMixin(object):
+class TestServerTestCaseMixin:
     def setUp(self):
         super(TestServerTestCaseMixin, self).setUp()
         self.testserver_prefix = self.get_testserver_prefix()
@@ -540,7 +540,7 @@ class TestServerTestCaseMixin(object):
         ).tostr()
 
 
-class TestViewTestCaseMixin(object):
+class TestViewTestCaseMixin:
     auto_add_test_view = False
     has_test_view = False
     test_view_is_public = False

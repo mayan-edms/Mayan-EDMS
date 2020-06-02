@@ -7,7 +7,7 @@ from django.utils.encoding import force_text
 logger = logging.getLogger(name=__name__)
 
 
-class ModuleLoaderMixin(object):
+class ModuleLoaderMixin:
     _loader_module_name = None
 
     @classmethod

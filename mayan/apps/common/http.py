@@ -2,7 +2,7 @@ from django.http import QueryDict
 from django.urls import reverse
 
 
-class URL(object):
+class URL:
     def __init__(
         self, path=None, query_string=None, query=None, viewname=None
     ):

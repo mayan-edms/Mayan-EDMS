@@ -31,7 +31,7 @@ def _lazy_re_compile(regex, flags=0):
 
 
 @deconstructible
-class JSONValidator(object):
+class JSONValidator:
     """
     Validates that the input is JSON compliant.
     """
@@ -55,7 +55,7 @@ class JSONValidator(object):
 
 
 @deconstructible
-class YAMLValidator(object):
+class YAMLValidator:
     """
     Validates that the input is YAML compliant.
     """

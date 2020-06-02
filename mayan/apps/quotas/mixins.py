@@ -8,7 +8,7 @@ from .classes import QuotaBackend
 from .permissions import permission_quota_edit
 
 
-class DocumentTypesQuotaMixin(object):
+class DocumentTypesQuotaMixin:
     @classmethod
     def get_fields(cls):
         cls.fields.update(
@@ -78,7 +78,7 @@ class DocumentTypesQuotaMixin(object):
         return result
 
 
-class GroupsUsersQuotaMixin(object):
+class GroupsUsersQuotaMixin:
     @staticmethod
     def _get_user_full_name(user):
         try:

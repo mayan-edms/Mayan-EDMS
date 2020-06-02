@@ -20,7 +20,7 @@ from .literals import (
 from .mixins import SmartLinkTestMixin
 
 
-class SmartLinkAPIViewTestMixin(object):
+class SmartLinkAPIViewTestMixin:
     def _request_test_smart_link_create_api_view(self):
         return self.post(
             viewname='rest_api:smartlink-list', data={
@@ -211,7 +211,7 @@ class SmartLinkAPIViewTestCase(
         )
 
 
-class SmartLinkConditionAPIViewTestMixin(object):
+class SmartLinkConditionAPIViewTestMixin:
     def _request_smart_link_condition_create_view(self):
         return self.post(
             viewname='rest_api:smartlinkcondition-list',
@@ -266,7 +266,7 @@ class SmartLinkConditionAPIViewTestMixin(object):
         )
 
 
-class ResolvedSmartLinkAPIViewTestMixin(object):
+class ResolvedSmartLinkAPIViewTestMixin:
     def _request_resolved_smart_link_detail_view(self):
         return self.get(
             viewname='rest_api:resolvedsmartlink-detail',

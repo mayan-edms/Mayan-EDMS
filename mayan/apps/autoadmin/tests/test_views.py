@@ -7,7 +7,7 @@ from ..models import AutoAdminSingleton
 from .literals import TEST_FIRST_TIME_LOGIN_TEXT, TEST_MOCK_VIEW_TEXT
 
 
-class AutoAdminViewMixing(object):
+class AutoAdminViewMixing:
     def _request_home_view(self):
         return self.get(viewname=setting_home_view.value, follow=True)
 

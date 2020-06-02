@@ -1,7 +1,7 @@
 from .literals import TEST_TEMPLATE
 
 
-class DocumentTemplateSandboxViewTestMixin(object):
+class DocumentTemplateSandboxViewTestMixin:
     def _request_document_template_sandbox_get_view(self):
         return self.get(
             viewname='templating:document_template_sandbox', kwargs={

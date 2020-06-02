@@ -9,7 +9,7 @@ VERSION_PART_MINOR = 1
 VERSION_PART_MICRO = 2
 
 
-class Version(object):
+class Version:
     """
     >>> Version('1')
     Version: 1

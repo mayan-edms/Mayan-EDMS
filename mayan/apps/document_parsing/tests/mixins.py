@@ -1,4 +1,4 @@
-class DocumentContentToolsViewsTestMixin(object):
+class DocumentContentToolsViewsTestMixin:
     def _request_document_parsing_error_list_view(self):
         return self.get(viewname='document_parsing:error_list')
 
@@ -10,7 +10,7 @@ class DocumentContentToolsViewsTestMixin(object):
         )
 
 
-class DocumentContentViewTestMixin(object):
+class DocumentContentViewTestMixin:
     def _request_test_document_content_delete_view(self):
         return self.post(
             viewname='document_parsing:document_content_delete', kwargs={
@@ -47,7 +47,7 @@ class DocumentContentViewTestMixin(object):
         )
 
 
-class DocumentTypeContentViewsTestMixin(object):
+class DocumentTypeContentViewsTestMixin:
     def _request_test_document_type_parsing_settings(self):
         return self.get(
             viewname='document_parsing:document_type_parsing_settings',

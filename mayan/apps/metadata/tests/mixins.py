@@ -8,7 +8,7 @@ from .literals import (
 )
 
 
-class DocumentMetadataViewTestMixin(object):
+class DocumentMetadataViewTestMixin:
     def _request_test_document_metadata_add_get_view(self):
         return self.get(
             viewname='metadata:metadata_add', kwargs={
@@ -114,7 +114,7 @@ class DocumentMetadataViewTestMixin(object):
         )
 
 
-class MetadataTypeAPIViewTestMixin(object):
+class MetadataTypeAPIViewTestMixin:
     def setUp(self):
         super(MetadataTypeAPIViewTestMixin, self).setUp()
         self.test_metadata_types_fixtures_api_views = copy.copy(
@@ -161,7 +161,7 @@ class MetadataTypeAPIViewTestMixin(object):
         return self.get(viewname='rest_api:metadatatype-list')
 
 
-class MetadataTypeTestMixin(object):
+class MetadataTypeTestMixin:
     def setUp(self):
         super(MetadataTypeTestMixin, self).setUp()
         self.test_metadata_types_fixtures_models = copy.copy(
@@ -183,7 +183,7 @@ class MetadataTypeTestMixin(object):
         self.test_metadata_types.append(self.test_metadata_type)
 
 
-class MetadataTypeViewTestMixin(object):
+class MetadataTypeViewTestMixin:
     def setUp(self):
         super(MetadataTypeViewTestMixin, self).setUp()
         self.test_metadata_types_fixtures_views = copy.copy(

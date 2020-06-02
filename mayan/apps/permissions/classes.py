@@ -13,7 +13,7 @@ from .exceptions import InvalidNamespace
 logger = logging.getLogger(name=__name__)
 
 
-class PermissionNamespace(object):
+class PermissionNamespace:
     _registry = {}
 
     @classmethod
@@ -46,7 +46,7 @@ class PermissionNamespace(object):
         return permission
 
 
-class Permission(object):
+class Permission:
     _imported_app = []
     _permissions = {}
     _stored_permissions_cache = {}

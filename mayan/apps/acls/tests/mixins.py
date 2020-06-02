@@ -12,7 +12,7 @@ from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view
 
 
-class ACLAPIViewTestMixin(object):
+class ACLAPIViewTestMixin:
     def _request_test_acl_create_api_view(self, extra_data=None):
         data = {'role_pk': self.test_role.pk}
 
@@ -178,7 +178,7 @@ class ACLTestMixin(PermissionTestMixin, RoleTestMixin, TestModelTestMixin):
         self.test_object_proxy = self.TestModelProxy.objects.create()
 
 
-class AccessControlListViewTestMixin(object):
+class AccessControlListViewTestMixin:
     def _request_test_acl_create_get_view(self):
         return self.get(
             viewname='acls:acl_create',

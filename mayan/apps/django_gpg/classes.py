@@ -1,12 +1,12 @@
 from datetime import date
 
 
-class GPGBackend(object):
+class GPGBackend:
     def __init__(self, **kwargs):
         self.kwargs = kwargs
 
 
-class KeyStub(object):
+class KeyStub:
     def __init__(self, raw):
         self.fingerprint = raw['keyid']
         self.key_type = raw['type']
@@ -23,7 +23,7 @@ class KeyStub(object):
         return self.fingerprint[-8:]
 
 
-class SignatureVerification(object):
+class SignatureVerification:
     def __init__(self, raw):
         self.user_id = raw['username']
         self.status = raw['status']

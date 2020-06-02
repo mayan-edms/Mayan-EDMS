@@ -9,12 +9,12 @@ from .literals import (
 )
 
 
-class EventListAPIViewTestMixin(object):
+class EventListAPIViewTestMixin:
     def _request_test_event_list_api_view(self):
         return self.get(viewname='rest_api:event-list')
 
 
-class EventTypeNamespaceAPITestMixin(object):
+class EventTypeNamespaceAPITestMixin:
     def _request_test_event_type_list_api_view(self):
         return self.get(viewname='rest_api:event-type-list')
 
@@ -30,7 +30,7 @@ class EventTypeNamespaceAPITestMixin(object):
         )
 
 
-class EventTypeTestMixin(object):
+class EventTypeTestMixin:
     def _create_test_event_type(self):
         self.test_event_type_namespace = EventTypeNamespace(
             label=TEST_EVENT_TYPE_NAMESPACE_LABEL,
@@ -42,7 +42,7 @@ class EventTypeTestMixin(object):
         )
 
 
-class NotificationTestMixin(object):
+class NotificationTestMixin:
     def _create_test_notification(self):
         self.test_notification = Notification.objects.create(
             user=self._test_case_user, action=Action.objects.first(),
@@ -50,7 +50,7 @@ class NotificationTestMixin(object):
         )
 
 
-class NotificationViewTestMixin(object):
+class NotificationViewTestMixin:
     def _request_test_notification_list_view(self):
         return self.get(viewname='events:user_notifications_list')
 
@@ -65,7 +65,7 @@ class NotificationViewTestMixin(object):
         )
 
 
-class ObjectEventAPITestMixin(object):
+class ObjectEventAPITestMixin:
     def _request_object_event_list_api_view(self):
         return self.get(
             viewname='rest_api:object-event-list',
@@ -73,6 +73,6 @@ class ObjectEventAPITestMixin(object):
         )
 
 
-class UserEventViewsTestMixin(object):
+class UserEventViewsTestMixin:
     def _request_test_user_event_type_subscription_list_view(self):
         return self.get(viewname='events:event_types_user_subcriptions_list')

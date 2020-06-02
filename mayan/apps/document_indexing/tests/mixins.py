@@ -8,7 +8,7 @@ from .literals import (
 )
 
 
-class IndexInstaceViewTestMixin(object):
+class IndexInstaceViewTestMixin:
     def _request_test_index_instance_node_view(self, index_instance_node):
         return self.get(
             viewname='indexing:index_instance_node_view', kwargs={
@@ -17,7 +17,7 @@ class IndexInstaceViewTestMixin(object):
         )
 
 
-class IndexTemplateNodeViewTestMixin(object):
+class IndexTemplateNodeViewTestMixin:
     def _request_test_index_node_create_view(self):
         return self.post(
             viewname='indexing:template_node_create', kwargs={
@@ -54,7 +54,7 @@ class IndexTemplateNodeViewTestMixin(object):
         )
 
 
-class IndexTestMixin(object):
+class IndexTestMixin:
     def _create_test_index(self, rebuild=False):
         # Create empty index
         self.test_index = Index.objects.create(label=TEST_INDEX_LABEL)
@@ -75,7 +75,7 @@ class IndexTestMixin(object):
         )
 
 
-class IndexToolsViewTestMixin(object):
+class IndexToolsViewTestMixin:
     def _request_indexes_rebuild_get_view(self):
         return self.get(
             viewname='indexing:rebuild_index_instances'
@@ -101,7 +101,7 @@ class IndexToolsViewTestMixin(object):
         )
 
 
-class IndexViewTestMixin(object):
+class IndexViewTestMixin:
     def _request_test_index_create_view(self):
         # Typecast to list to force queryset evaluation
         values = list(Index.objects.values_list('pk', flat=True))

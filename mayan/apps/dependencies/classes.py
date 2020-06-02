@@ -29,7 +29,7 @@ from .exceptions import DependenciesException
 logger = logging.getLogger(name=__name__)
 
 
-class Provider(object):
+class Provider:
     """Base provider class"""
 
 
@@ -49,7 +49,7 @@ class OperatingSystemProvider(Provider):
     """Placeholder for the OS provider"""
 
 
-class DependencyGroup(object):
+class DependencyGroup:
     _registry = {}
 
     @classmethod
@@ -95,7 +95,7 @@ class DependencyGroup(object):
         raise KeyError('Entry not found.')
 
 
-class DependencyGroupEntry(object):
+class DependencyGroupEntry:
     def __init__(self, dependency_group, label, name, help_text=None):
         self.dependency_group = dependency_group
         self.help_text = help_text or ''
@@ -114,7 +114,7 @@ class DependencyGroupEntry(object):
         return Dependency.return_sorted(dependencies=dependencies)
 
 
-class Dependency(object):
+class Dependency:
     _registry = {}
 
     @staticmethod
@@ -631,7 +631,7 @@ class JavaScriptDependency(Dependency):
             )
 
 
-class PythonVersion(object):
+class PythonVersion:
     def __init__(self, string):
         self.version = version.parse(string)
 

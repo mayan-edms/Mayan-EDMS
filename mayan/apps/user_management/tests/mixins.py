@@ -10,7 +10,7 @@ from .literals import (
 )
 
 
-class GroupAPIViewTestMixin(object):
+class GroupAPIViewTestMixin:
     def _request_test_group_create_api_view(self):
         result = self.post(
             viewname='rest_api:group-list', data={
@@ -48,7 +48,7 @@ class GroupAPIViewTestMixin(object):
         )
 
 
-class GroupTestMixin(object):
+class GroupTestMixin:
     def _create_test_group(self):
         self.test_group = Group.objects.create(name=TEST_GROUP_NAME)
 
@@ -57,7 +57,7 @@ class GroupTestMixin(object):
         self.test_group.save()
 
 
-class GroupViewTestMixin(object):
+class GroupViewTestMixin:
     def _request_test_group_create_view(self):
         reponse = self.post(
             viewname='user_management:group_create', data={
@@ -94,7 +94,7 @@ class GroupViewTestMixin(object):
         )
 
 
-class UserAPIViewTestMixin(object):
+class UserAPIViewTestMixin:
     def _request_test_user_create_api_view(self):
         result = self.post(
             viewname='rest_api:user-list', data={
@@ -176,7 +176,7 @@ class UserAPIViewTestMixin(object):
         return result
 
 
-class UserTestCaseMixin(object):
+class UserTestCaseMixin:
     """
     This TestCaseMixin is used to create a user and group to execute the
     test case, these are used to just create an identity which is required by
@@ -251,7 +251,7 @@ class UserTestCaseMixin(object):
         self.client.logout()
 
 
-class UserTestMixin(object):
+class UserTestMixin:
     def _create_test_superuser(self):
         self.test_superuser = get_user_model().objects.create_superuser(
             username=TEST_CASE_SUPERUSER_USERNAME,
@@ -276,7 +276,7 @@ class UserTestMixin(object):
         self.test_users = []
 
 
-class UserViewTestMixin(object):
+class UserViewTestMixin:
     def _request_current_user_details_view(self):
         return self.get(viewname='user_management:current_user_details')
 

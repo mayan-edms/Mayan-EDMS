@@ -42,6 +42,7 @@
   SettingNamespaceMigration.
 - Use headless version of Libre Office in the Docker images
   to reduce the image size.
+- Remove the fragment "(object):" from all base class declarations.
 
 3.4.9 (2020-05-26)
 ==================

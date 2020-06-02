@@ -16,7 +16,7 @@ the internet; %s'''
 MESSAGE_UP_TO_DATE = 'Your version is up-to-date.'
 
 
-class PyPIClient(object):
+class PyPIClient:
     class NotLatestVersion(DependenciesException):
         """
         The installed version is not the latest available version

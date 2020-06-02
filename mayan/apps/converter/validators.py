@@ -8,7 +8,7 @@ from mayan.apps.common.serialization import yaml_load
 
 
 @deconstructible
-class YAMLValidator(object):
+class YAMLValidator:
     """
     Validates that the input is YAML compliant.
     """

@@ -39,7 +39,7 @@ libreoffice_path = setting_graphics_backend_arguments.value.get(
 logger = logging.getLogger(name=__name__)
 
 
-class ConverterBase(object):
+class ConverterBase:
     def __init__(self, file_object, mime_type=None):
         self.file_object = file_object
         self.image = None
@@ -239,7 +239,7 @@ class ConverterBase(object):
             self.image = transformation.execute_on(image=self.image)
 
 
-class Layer(object):
+class Layer:
     _registry = {}
 
     @classmethod
@@ -430,7 +430,7 @@ class LayerLink(Link):
         )
 
 
-class LayerLinkKwargsFactory(object):
+class LayerLinkKwargsFactory:
     def __init__(self, layer_name=None, variable_name='resolved_object'):
         self.layer_name = layer_name
         self.variable_name = variable_name

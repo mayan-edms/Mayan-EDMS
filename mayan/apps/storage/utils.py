@@ -19,7 +19,7 @@ def NamedTemporaryFile(*args, **kwargs):
     return tempfile.NamedTemporaryFile(*args, **kwargs)
 
 
-class PassthroughStorageProcessor(object):
+class PassthroughStorageProcessor:
     def __init__(
         self, app_label, defined_storage_name, log_file, model_name,
         file_attribute='file'

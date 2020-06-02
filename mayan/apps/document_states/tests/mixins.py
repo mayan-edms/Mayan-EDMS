@@ -24,7 +24,7 @@ class TestWorkflowAction(WorkflowAction):
         context['workflow_instance']._workflow_state_action_executed = True
 
 
-class WorkflowRuntimeProxyStateViewTestMixin(object):
+class WorkflowRuntimeProxyStateViewTestMixin:
     def _request_test_workflow_runtime_proxy_state_list_view(self):
         return self.get(
             viewname='document_states:workflow_runtime_proxy_state_list',
@@ -40,7 +40,7 @@ class WorkflowRuntimeProxyStateViewTestMixin(object):
         )
 
 
-class WorkflowRuntimeProxyViewTestMixin(object):
+class WorkflowRuntimeProxyViewTestMixin:
     def _request_test_workflow_runtime_proxy_list_view(self):
         return self.get(
             viewname='document_states:workflow_runtime_proxy_list'
@@ -53,7 +53,7 @@ class WorkflowRuntimeProxyViewTestMixin(object):
         )
 
 
-class WorkflowStateActionTestMixin(object):
+class WorkflowStateActionTestMixin:
     TestWorkflowAction = TestWorkflowAction
     test_workflow_state_action_path = 'mayan.apps.document_states.tests.mixins.TestWorkflowAction'
 
@@ -66,7 +66,7 @@ class WorkflowStateActionTestMixin(object):
         )
 
 
-class WorkflowStateActionViewTestMixin(object):
+class WorkflowStateActionViewTestMixin:
     def _request_test_workflow_template_state_action_create_get_view(self, class_path):
         return self.get(
             viewname='document_states:workflow_template_state_action_create',
@@ -128,7 +128,7 @@ class WorkflowStateActionViewTestMixin(object):
         )
 
 
-class WorkflowStateViewTestMixin(object):
+class WorkflowStateViewTestMixin:
     def _request_test_workflow_state_create_view(self, extra_data=None):
         data = {
             'label': TEST_WORKFLOW_STATE_LABEL,
@@ -167,7 +167,7 @@ class WorkflowStateViewTestMixin(object):
         )
 
 
-class WorkflowTestMixin(object):
+class WorkflowTestMixin:
     def _create_test_workflow(self, add_document_type=False):
         self.test_workflow = Workflow.objects.create(
             label=TEST_WORKFLOW_LABEL,
@@ -238,14 +238,14 @@ class WorkflowTestMixin(object):
         )
 
 
-class WorkflowToolViewTestMixin(object):
+class WorkflowToolViewTestMixin:
     def _request_workflow_launch_view(self):
         return self.post(
             viewname='document_states:tool_launch_workflows',
         )
 
 
-class WorkflowTransitionEventViewTestMixin(object):
+class WorkflowTransitionEventViewTestMixin:
     def _request_test_workflow_transition_event_list_view(self):
         return self.get(
             viewname='document_states:workflow_template_transition_events',
@@ -255,7 +255,7 @@ class WorkflowTransitionEventViewTestMixin(object):
         )
 
 
-class WorkflowTransitionFieldViewTestMixin(object):
+class WorkflowTransitionFieldViewTestMixin:
     def _request_test_workflow_transition_field_list_view(self):
         return self.get(
             viewname='document_states:workflow_template_transition_field_list',
@@ -286,7 +286,7 @@ class WorkflowTransitionFieldViewTestMixin(object):
         )
 
 
-class WorkflowTransitionViewTestMixin(object):
+class WorkflowTransitionViewTestMixin:
     def _request_test_workflow_transition_create_view(self):
         return self.post(
             viewname='document_states:workflow_template_transition_create',
@@ -351,7 +351,7 @@ class WorkflowTransitionViewTestMixin(object):
         )
 
 
-class WorkflowViewTestMixin(object):
+class WorkflowViewTestMixin:
     def _request_test_workflow_create_view(self):
         return self.post(
             viewname='document_states:workflow_template_create', data={

@@ -1,7 +1,7 @@
 from mayan.apps.converter.utils import get_converter_class
 
 
-class OCRBackendBase(object):
+class OCRBackendBase:
     def execute(self, file_object, language=None, transformations=None):
         self.language = language
 

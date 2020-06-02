@@ -4,7 +4,7 @@ import sys
 from django.utils.encoding import force_text
 
 
-class NullFile(object):
+class NullFile:
     def write(self, string):
         """Writes here go nowhere"""
 

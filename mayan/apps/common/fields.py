@@ -4,7 +4,7 @@ from django.core.exceptions import ImproperlyConfigured
 from mayan.apps.acls.models import AccessControlList
 
 
-class FilteredModelFieldMixin(object):
+class FilteredModelFieldMixin:
     def __init__(self, *args, **kwargs):
         self.source_model = kwargs.pop('source_model', None)
         self.permission = kwargs.pop('permission', None)

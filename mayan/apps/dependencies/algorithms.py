@@ -4,7 +4,7 @@ import hashlib
 from django.utils.encoding import force_text
 
 
-class HashAlgorithm(object):
+class HashAlgorithm:
     DEFAULT_BLOCK_SIZE = 65535
     _registry = {}
     hash_factory = None

@@ -2,7 +2,7 @@ from django.contrib.humanize.templatetags.humanize import intcomma
 from django.template import loader
 
 
-class Dashboard(object):
+class Dashboard:
     _registry = {}
 
     @classmethod
@@ -48,7 +48,7 @@ class Dashboard(object):
         )
 
 
-class BaseDashboardWidget(object):
+class BaseDashboardWidget:
     _registry = {}
     context = {}
     template_name = None

@@ -15,7 +15,7 @@ from mayan.apps.documents.permissions import permission_document_create
 from .icons import icon_wizard_submit
 
 
-class WizardStep(object):
+class WizardStep:
     _deregistry = {}
     _registry = {}
 

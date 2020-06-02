@@ -3,7 +3,7 @@ from django.utils.encoding import force_bytes, force_text
 from .literals import TEST_EMAIL_BASE64_FILENAME
 
 
-class MockIMAPMessage(object):
+class MockIMAPMessage:
     def __init__(self, uid):
         self.flags = []
         self.mailbox = None
@@ -32,7 +32,7 @@ class MockIMAPMessage(object):
         return list(self.mailbox.messages.values()).index(self)
 
 
-class MockIMAPMailbox(object):
+class MockIMAPMailbox:
     messages = {}
 
     def __init__(self, name='INBOX'):
@@ -55,7 +55,7 @@ class MockIMAPMailbox(object):
         self.messages[uid].mailbox = self
 
 
-class MockIMAPServer(object):
+class MockIMAPServer:
     def __init__(self):
         self.mailboxes = {
             'INBOX': MockIMAPMailbox(name='INBOX')
@@ -216,7 +216,7 @@ class MockIMAPServer(object):
             return ('OK', [' '.join(message_sequences)])
 
 
-class MockPOP3Mailbox(object):
+class MockPOP3Mailbox:
     """RFC 1725"""
     messages = {
         1: [TEST_EMAIL_BASE64_FILENAME]
@@ -283,5 +283,5 @@ class MockPOP3Mailbox(object):
         return (None, self.messages[which], None)
 
 
-class MockStagingFolder(object):
+class MockStagingFolder:
     """Mock of a StagingFolder model"""

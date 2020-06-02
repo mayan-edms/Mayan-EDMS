@@ -10,7 +10,7 @@ from .literals import (
 )
 
 
-class SmartLinkConditionViewTestMixin(object):
+class SmartLinkConditionViewTestMixin:
     def _request_test_smart_link_condition_create_view(self):
         return self.post(
             viewname='linking:smart_link_condition_create', kwargs={
@@ -50,7 +50,7 @@ class SmartLinkConditionViewTestMixin(object):
         )
 
 
-class SmartLinkDocumentViewTestMixin(object):
+class SmartLinkDocumentViewTestMixin:
     def _request_test_document_resolved_smart_link_view(self):
         return self.get(
             viewname='linking:smart_link_instance_view', kwargs={
@@ -67,7 +67,7 @@ class SmartLinkDocumentViewTestMixin(object):
         )
 
 
-class SmartLinkTestMixin(object):
+class SmartLinkTestMixin:
     def _create_test_smart_link(self, add_test_document_type=False):
         self.test_smart_link = SmartLink.objects.create(
             label=TEST_SMART_LINK_LABEL,
@@ -108,7 +108,7 @@ class SmartLinkTestMixin(object):
         )
 
 
-class SmartLinkViewTestMixin(object):
+class SmartLinkViewTestMixin:
     def _request_test_smart_link_create_view(self):
         # Typecast to list to force queryset evaluation
         values = list(SmartLink.objects.values_list('pk', flat=True))

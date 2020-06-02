@@ -136,7 +136,7 @@ def defined_storage_proxy_method(method_name):
 
 
 @deconstructible
-class DefinedStorageLazy(object):
+class DefinedStorageLazy:
     def __init__(self, name):
         self.name = name
         super(DefinedStorageLazy, self).__init__()
@@ -152,7 +152,7 @@ class DefinedStorageLazy(object):
     size = defined_storage_proxy_method(method_name='size')
 
 
-class FakeStorageSubclass(object):
+class FakeStorageSubclass:
     """
     Placeholder class to allow serializing the real storage subclass to
     support migrations.

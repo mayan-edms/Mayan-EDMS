@@ -52,7 +52,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         return value
 
 
-class DocumentPageThumbnailWidget(object):
+class DocumentPageThumbnailWidget:
     def render(self, instance):
         return render_to_string(
             template_name='documents/widgets/document_thumbnail.html',

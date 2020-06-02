@@ -14,7 +14,7 @@ from .literals import (
 )
 
 
-class LayerTestCaseMixin(object):
+class LayerTestCaseMixin:
     def setUp(self):
         super(LayerTestCaseMixin, self).setUp()
         Layer.invalidate_cache()
@@ -79,7 +79,7 @@ class TransformationTestMixin(LayerTestMixin):
         self.TestTransformationClass = TestTransformation
 
 
-class TransformationViewsTestMixin(object):
+class TransformationViewsTestMixin:
     def _request_transformation_create_view(self):
         return self.post(
             viewname='converter:transformation_create', kwargs={

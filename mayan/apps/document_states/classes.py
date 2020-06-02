@@ -42,7 +42,7 @@ class WorkflowActionMetaclass(type):
         return new_class
 
 
-class WorkflowActionBase(object):
+class WorkflowActionBase:
     fields = ()
 
 

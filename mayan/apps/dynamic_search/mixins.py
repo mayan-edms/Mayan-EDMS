@@ -9,7 +9,7 @@ SEARCH_MODEL_NAME_KWARG = 'search_model_name'
 SEARCH_MODEL_NAME_API_KWARG = 'search_model'
 
 
-class SearchModelMixin(object):
+class SearchModelMixin:
     def get_search_model_name(self):
         return self.kwargs.get(
             SEARCH_MODEL_NAME_KWARG, self.request.GET.get(

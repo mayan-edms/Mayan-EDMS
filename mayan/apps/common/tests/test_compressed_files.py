@@ -13,7 +13,7 @@ from .literals import (
 )
 
 
-class ArchiveClassTestCaseMixin(object):
+class ArchiveClassTestCaseMixin:
     archive_path = None
     cls = None
     filename = TEST_FILENAME3

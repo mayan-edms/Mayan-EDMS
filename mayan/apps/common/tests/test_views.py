@@ -10,7 +10,7 @@ from .base import GenericViewTestCase
 from .literals import TEST_ERROR_LOG_ENTRY_RESULT
 
 
-class CommonViewTestMixin(object):
+class CommonViewTestMixin:
     def _request_about_view(self):
         return self.get(viewname='common:about_view')
 

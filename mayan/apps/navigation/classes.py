@@ -33,7 +33,7 @@ from .utils import get_current_view_name
 logger = logging.getLogger(name=__name__)
 
 
-class Link(object):
+class Link:
     _registry = {}
 
     @classmethod
@@ -224,7 +224,7 @@ class Link(object):
         return resolved_link
 
 
-class Menu(object):
+class Menu:
     _registry = {}
 
     @classmethod
@@ -514,7 +514,7 @@ class Menu(object):
             )
 
 
-class ResolvedLink(object):
+class ResolvedLink:
     def __init__(self, link, current_view_name):
         self.context = None
         self.current_view_name = current_view_name
@@ -584,7 +584,7 @@ class Separator(Link):
         return result
 
 
-class SourceColumn(object):
+class SourceColumn:
     _registry = {}
 
     @staticmethod

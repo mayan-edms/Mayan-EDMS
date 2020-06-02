@@ -10,7 +10,7 @@ from ..permissions import (
 from .literals import TEST_FILE_METADATA_KEY
 
 
-class FileMetadataViewsTestMixin(object):
+class FileMetadataViewsTestMixin:
     def _request_document_version_driver_list_view(self):
         return self.get(
             viewname='file_metadata:document_driver_list',
@@ -125,7 +125,7 @@ class FileMetadataViewsTestCase(
         )
 
 
-class DocumentTypeViewsTestMixin(object):
+class DocumentTypeViewsTestMixin:
     def _request_document_type_settings_view(self):
         return self.get(
             viewname='file_metadata:document_type_settings',

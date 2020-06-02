@@ -16,7 +16,7 @@ from mayan.settings import BASE_DIR
 ignore_ids_list = ('upgrading-process',)
 
 
-class ReleaseNoteExporter(object):
+class ReleaseNoteExporter:
     @staticmethod
     def filter_elements(tree):
         result = []

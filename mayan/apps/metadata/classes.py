@@ -11,7 +11,7 @@ class DocumentMetadataHelper(PropertyHelper):
         return self.instance.metadata.get(metadata_type__name=name).value
 
 
-class MetadataLookup(object):
+class MetadataLookup:
     _registry = []
 
     @classmethod

@@ -1,7 +1,7 @@
 from django.template import Context, Template as DjangoTemplate
 
 
-class Template(object):
+class Template:
     def __init__(self, template_string):
         self.template = DjangoTemplate(template_string=template_string)
 

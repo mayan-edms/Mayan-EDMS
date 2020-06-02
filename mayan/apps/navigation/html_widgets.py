@@ -1,7 +1,7 @@
 from django.template.loader import render_to_string
 
 
-class SourceColumnLinkWidget(object):
+class SourceColumnLinkWidget:
     template_name = 'navigation/source_column_link_widget.html'
 
     def render(self, name=None, value=None):

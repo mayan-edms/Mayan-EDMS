@@ -12,7 +12,7 @@ from mayan.celery import app as celery_app
 logger = logging.getLogger(name=__name__)
 
 
-class TaskType(object):
+class TaskType:
     _registry = {}
 
     @classmethod
@@ -45,7 +45,7 @@ class TaskType(object):
             raise
 
 
-class Task(object):
+class Task:
     def __init__(self, task_type, kwargs):
         self.task_type = task_type
         self.kwargs = kwargs
@@ -54,7 +54,7 @@ class Task(object):
         return force_text(self.task_type)
 
 
-class CeleryQueue(object):
+class CeleryQueue:
     _registry = {}
 
     @staticmethod
@@ -148,7 +148,7 @@ class CeleryQueue(object):
                 )
 
 
-class Worker(object):
+class Worker:
     _registry = {}
 
     @classmethod

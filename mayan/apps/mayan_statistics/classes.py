@@ -9,7 +9,7 @@ from mayan.celery import app
 from .renderers import ChartJSLine
 
 
-class StatisticNamespace(object):
+class StatisticNamespace:
     _registry = {}
 
     @classmethod
@@ -39,7 +39,7 @@ class StatisticNamespace(object):
         return self._statistics
 
 
-class Statistic(object):
+class Statistic:
     _registry = {}
     renderer = None
 

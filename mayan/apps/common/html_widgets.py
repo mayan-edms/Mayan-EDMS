@@ -4,7 +4,7 @@ from .icons import icon_fail as default_icon_fail
 from .icons import icon_ok as default_icon_ok
 
 
-class TwoStateWidget(object):
+class TwoStateWidget:
     template_name = 'common/two_state_widget.html'
 
     def __init__(self, center=False, icon_ok=None, icon_fail=None):

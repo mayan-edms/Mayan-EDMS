@@ -10,12 +10,12 @@ from mayan.apps.common.literals import LIST_MODE_CHOICE_LIST
 logger = logging.getLogger(name=__name__)
 
 
-class SearchBackend(object):
+class SearchBackend:
     def search(self, global_and_search, search_model, query_string, user):
         raise NotImplementedError
 
 
-class SearchField(object):
+class SearchField:
     """
     Search for terms in fields that directly belong to the parent SearchModel
     """
@@ -32,7 +32,7 @@ class SearchField(object):
         return self.search_model.model
 
 
-class SearchModel(object):
+class SearchModel:
     _registry = {}
 
     @classmethod

@@ -9,7 +9,7 @@ from .literals import (
 )
 
 
-class GroupRoleViewTestMixin(object):
+class GroupRoleViewTestMixin:
     def _request_test_group_roles_view(self):
         return self.get(
             viewname='permissions:group_roles', kwargs={
@@ -18,12 +18,12 @@ class GroupRoleViewTestMixin(object):
         )
 
 
-class PermissionAPIViewTestMixin(object):
+class PermissionAPIViewTestMixin:
     def _request_permissions_list_api_view(self):
         return self.get(viewname='rest_api:permission-list')
 
 
-class PermissionTestMixin(object):
+class PermissionTestMixin:
     def _create_test_permission(self):
         self.test_permission_namespace = PermissionNamespace(
             label=TEST_PERMISSION_NAMESPACE_LABEL,
@@ -45,13 +45,13 @@ class PermissionTestMixin(object):
         )
 
 
-class PermissionTestCaseMixin(object):
+class PermissionTestCaseMixin:
     def setUp(self):
         super(PermissionTestCaseMixin, self).setUp()
         Permission.invalidate_cache()
 
 
-class RoleAPIViewTestMixin(object):
+class RoleAPIViewTestMixin:
     def _request_test_role_create_api_view(self, extra_data=None):
         data = {
             'label': TEST_ROLE_LABEL
@@ -89,7 +89,7 @@ class RoleAPIViewTestMixin(object):
         return self.get(viewname='rest_api:role-list')
 
 
-class RoleTestCaseMixin(object):
+class RoleTestCaseMixin:
     def setUp(self):
         super(RoleTestCaseMixin, self).setUp()
         if hasattr(self, '_test_case_group'):
@@ -105,12 +105,12 @@ class RoleTestCaseMixin(object):
         self._test_case_role.revoke(permission=permission)
 
 
-class RoleTestMixin(object):
+class RoleTestMixin:
     def _create_test_role(self):
         self.test_role = Role.objects.create(label=TEST_ROLE_LABEL)
 
 
-class RoleViewTestMixin(object):
+class RoleViewTestMixin:
     def _request_test_role_create_view(self):
         # Typecast to list to force queryset evaluation
         values = list(Role.objects.values_list('pk', flat=True))

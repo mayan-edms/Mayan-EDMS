@@ -24,7 +24,7 @@ class FileMetadataHelper(PropertyHelper):
         return result
 
 
-class FileMetadataDriver(object):
+class FileMetadataDriver:
     _registry = {}
 
     @classmethod

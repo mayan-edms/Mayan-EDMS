@@ -12,7 +12,7 @@ def widget_transition_events(transition):
     )
 
 
-class WorkflowLogExtraDataWidget(object):
+class WorkflowLogExtraDataWidget:
     template_name = 'document_states/extra_data.html'
 
     def render(self, name=None, value=None):

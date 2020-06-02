@@ -13,7 +13,7 @@ from .literals import (
 STORAGE_NAME_FILE_CACHING_TEST_STORAGE = 'file_caching__test_storage'
 
 
-class CacheTestMixin(object):
+class CacheTestMixin:
     def setUp(self):
         super(CacheTestMixin, self).setUp()
         self.temporary_directory = mkdtemp()
@@ -50,7 +50,7 @@ class CacheTestMixin(object):
         )
 
 
-class CacheViewTestMixin(object):
+class CacheViewTestMixin:
     def _request_test_cache_list_view(self):
         return self.get(viewname='file_caching:cache_list')
 

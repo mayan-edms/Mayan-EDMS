@@ -13,7 +13,7 @@ from .literals import TEST_COMMENT_TEXT, TEST_COMMENT_TEXT_EDITED
 from .mixins import DocumentCommentTestMixin
 
 
-class CommentAPIViewTestMixin(object):
+class CommentAPIViewTestMixin:
     def _request_test_comment_create_api_view(self):
         return self.post(
             viewname='rest_api:comment-list', kwargs={

@@ -13,7 +13,7 @@ from .literals import TEST_INDEX_LABEL, TEST_INDEX_SLUG
 from .mixins import IndexTestMixin
 
 
-class DocumentIndexingAPIViewTestMixin(object):
+class DocumentIndexingAPIViewTestMixin:
     def _request_test_index_create_api_view(self):
         return self.post(
             viewname='rest_api:index-list', data={

@@ -11,7 +11,7 @@ from .mixins import (
 )
 
 
-class EventsViewTestMixin(object):
+class EventsViewTestMixin:
     def _request_events_for_object_view(self):
         return self.get(
             viewname='events:events_for_object', kwargs=self.view_arguments

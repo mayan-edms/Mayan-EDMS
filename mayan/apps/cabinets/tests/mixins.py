@@ -5,7 +5,7 @@ from .literals import (
 )
 
 
-class CabinetAPIViewTestMixin(object):
+class CabinetAPIViewTestMixin:
     def _request_test_cabinet_create_api_view(self, extra_data=None):
         data = {'label': TEST_CABINET_LABEL}
 
@@ -53,7 +53,7 @@ class CabinetAPIViewTestMixin(object):
         return self.get(viewname='rest_api:cabinet-list')
 
 
-class CabinetTestMixin(object):
+class CabinetTestMixin:
     def setUp(self):
         super(CabinetTestMixin, self).setUp()
         if not hasattr(self, 'test_cabinets'):
@@ -69,7 +69,7 @@ class CabinetTestMixin(object):
         )
 
 
-class CabinetViewTestMixin(object):
+class CabinetViewTestMixin:
     def setUp(self):
         super(CabinetViewTestMixin, self).setUp()
         if not hasattr(self, 'test_cabinets'):
@@ -165,7 +165,7 @@ class CabinetViewTestMixin(object):
         )
 
 
-class DocumentCabinetAPIViewTestMixin(object):
+class DocumentCabinetAPIViewTestMixin:
     def _request_test_document_cabinet_list_view(self):
         return self.get(
             viewname='rest_api:document-cabinet-list', kwargs={
@@ -174,7 +174,7 @@ class DocumentCabinetAPIViewTestMixin(object):
         )
 
 
-class DocumentCabinetViewTestMixin(object):
+class DocumentCabinetViewTestMixin:
     def _request_test_document_cabinet_list_view(self):
         return self.get(
             viewname='cabinets:document_cabinet_list', kwargs={

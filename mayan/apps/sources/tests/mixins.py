@@ -14,7 +14,7 @@ from .literals import (
 )
 
 
-class DocumentVersionUploadViewTestMixin(object):
+class DocumentVersionUploadViewTestMixin:
     def _request_document_version_upload_view(self, source_file):
         return self.post(
             viewname='sources:document_version_upload', kwargs={
@@ -31,7 +31,7 @@ class DocumentVersionUploadViewTestMixin(object):
         )
 
 
-class DocumentUploadWizardViewTestMixin(object):
+class DocumentUploadWizardViewTestMixin:
     def _request_upload_wizard_view(self, document_path=TEST_SMALL_DOCUMENT_PATH):
         with open(document_path, mode='rb') as file_object:
             return self.post(
@@ -51,7 +51,7 @@ class DocumentUploadWizardViewTestMixin(object):
         )
 
 
-class StagingFolderAPIViewTestMixin(object):
+class StagingFolderAPIViewTestMixin:
     def setUp(self):
         super(StagingFolderTestMixin, self).setUp()
         self.test_staging_folders = []
@@ -101,7 +101,7 @@ class StagingFolderAPIViewTestMixin(object):
         return self.get(viewname='rest_api:stagingfolder-list')
 
 
-class StagingFolderFileAPIViewTestMixin(object):
+class StagingFolderFileAPIViewTestMixin:
     def _request_test_staging_folder_file_delete_api_view(self):
         return self.delete(
             viewname='rest_api:stagingfolderfile-detail', kwargs={
@@ -127,7 +127,7 @@ class StagingFolderFileAPIViewTestMixin(object):
         )
 
 
-class StagingFolderTestMixin(object):
+class StagingFolderTestMixin:
     def setUp(self):
         super(StagingFolderTestMixin, self).setUp()
         self.test_staging_folders = []
@@ -158,7 +158,7 @@ class StagingFolderTestMixin(object):
         )[0]
 
 
-class StagingFolderViewTestMixin(object):
+class StagingFolderViewTestMixin:
     def _request_test_staging_file_delete_view(self, staging_folder, staging_file):
         return self.post(
             viewname='sources:staging_file_delete', kwargs={
@@ -168,7 +168,7 @@ class StagingFolderViewTestMixin(object):
         )
 
 
-class SourceTestMixin(object):
+class SourceTestMixin:
     auto_create_test_source = True
 
     def setUp(self):
@@ -183,7 +183,7 @@ class SourceTestMixin(object):
         )
 
 
-class SourceViewTestMixin(object):
+class SourceViewTestMixin:
     def _request_setup_source_list_view(self):
         return self.get(viewname='sources:setup_source_list')
 
@@ -222,7 +222,7 @@ class SourceViewTestMixin(object):
         )
 
 
-class WatchFolderTestMixin(object):
+class WatchFolderTestMixin:
     def _create_test_watchfolder(self):
         self.test_watch_folder = WatchFolderSource.objects.create(
             document_type=self.test_document_type,

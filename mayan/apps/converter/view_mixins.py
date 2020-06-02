@@ -1,7 +1,7 @@
 from .classes import Layer
 
 
-class LayerViewMixin(object):
+class LayerViewMixin:
     def dispatch(self, request, *args, **kwargs):
         self.layer = self.get_layer()
         return super(LayerViewMixin, self).dispatch(

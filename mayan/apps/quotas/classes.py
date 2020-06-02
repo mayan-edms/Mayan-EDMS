@@ -33,7 +33,7 @@ class QuotaBackendMetaclass(type):
         return new_class
 
 
-class QuotaBackendBase(object):
+class QuotaBackendBase:
     """
     Base class for the mailing backends. This class is mainly a wrapper
     for other Django backends that adds a few metadata to specify the

@@ -8,7 +8,7 @@ from .literals import (
 )
 
 
-class DocumentTagViewTestMixin(object):
+class DocumentTagViewTestMixin:
     def _request_test_document_tag_attach_view(self):
         return self.post(
             viewname='tags:tag_attach', kwargs={
@@ -52,7 +52,7 @@ class DocumentTagViewTestMixin(object):
         )
 
 
-class TagAPIViewTestMixin(object):
+class TagAPIViewTestMixin:
     def _request_test_document_attach_tag_api_view(self):
         return self.post(
             viewname='rest_api:document-tag-list', kwargs={
@@ -123,7 +123,7 @@ class TagAPIViewTestMixin(object):
         return self.get(viewname='rest_api:tag-list')
 
 
-class TagTestMixin(object):
+class TagTestMixin:
     def _create_test_tag(self):
         self.test_tag = Tag.objects.create(
             color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
@@ -135,7 +135,7 @@ class TagTestMixin(object):
         )
 
 
-class TagViewTestMixin(object):
+class TagViewTestMixin:
     def _request_test_tag_create_view(self):
         return self.post(
             viewname='tags:tag_create', data={
@@ -176,7 +176,7 @@ class TagViewTestMixin(object):
         return self.get(viewname='tags:tag_list')
 
 
-class TaggedDocumentUploadViewTestMixin(object):
+class TaggedDocumentUploadViewTestMixin:
     def _request_upload_interactive_document_create_view(self):
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(

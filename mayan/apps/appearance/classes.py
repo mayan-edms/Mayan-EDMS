@@ -1,7 +1,7 @@
 from django.template.loader import get_template
 
 
-class IconDriver(object):
+class IconDriver:
     context = {}
     _registry = {}
 
@@ -123,7 +123,7 @@ class FontAwesomeLayersDriver(IconDriver):
         }
 
 
-class Icon(object):
+class Icon:
     def __init__(self, driver_name, **kwargs):
         self.kwargs = kwargs
         self.driver = IconDriver.get(name=driver_name)(**kwargs)

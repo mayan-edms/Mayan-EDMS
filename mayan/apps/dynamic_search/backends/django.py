@@ -42,7 +42,7 @@ class DjangoSearchBackend(SearchBackend):
         )
 
 
-class FieldQuery(object):
+class FieldQuery:
     def __init__(self, search_field, search_term_collection):
         query_operation = QUERY_OPERATION_AND
         self.query = None
@@ -86,7 +86,7 @@ class FieldQuery(object):
         return ' '.join(self.parts)
 
 
-class SearchQuery(object):
+class SearchQuery:
     def __init__(self, query_string, search_model, global_and_search=False):
         self.query = None
         self.text = []
@@ -125,7 +125,7 @@ class SearchQuery(object):
         return ' '.join(self.text[:-1])
 
 
-class SearchTerm(object):
+class SearchTerm:
     def __init__(self, negated, string, is_meta):
         self.negated = negated
         self.string = string
@@ -140,7 +140,7 @@ class SearchTerm(object):
             )
 
 
-class SearchTermCollection(object):
+class SearchTermCollection:
     def __init__(self, text):
         """
         Takes a text string and returns a list of dictionaries.

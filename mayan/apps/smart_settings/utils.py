@@ -10,7 +10,7 @@ from .literals import (
 )
 
 
-class SettingNamespaceSingleton(object):
+class SettingNamespaceSingleton:
     """
     Self hosting bootstrap setting class.
     Allow managing setting in a compatible way before Mayan EDMS starts.
@@ -116,7 +116,7 @@ class SettingNamespaceSingleton(object):
         self.global_symbol_table.update(result)
 
 
-class BaseSetting(object):
+class BaseSetting:
     def __init__(
         self, name, critical=False, has_default=False, default_value=None
     ):

@@ -4,7 +4,7 @@ from django.urls.exceptions import Resolver404
 from mayan.apps.common.settings import setting_url_base_path
 
 
-class Endpoint(object):
+class Endpoint:
     def __init__(self, label):
         self.label = label
 

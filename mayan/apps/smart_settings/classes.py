@@ -47,7 +47,7 @@ def read_configuration_file(filepath):
             raise
 
 
-class SettingNamespace(object):
+class SettingNamespace:
     _registry = {}
 
     @staticmethod
@@ -122,7 +122,7 @@ class SettingNamespace(object):
         return sorted(self._settings, key=lambda x: x.global_name)
 
 
-class SettingNamespaceMigration(object):
+class SettingNamespaceMigration:
     @staticmethod
     def get_method_name(setting):
         return setting.global_name.lower()
@@ -177,7 +177,7 @@ class SettingNamespaceMigration(object):
             setting.raw_value = value
 
 
-class Setting(object):
+class Setting:
     _registry = {}
     _cache_hash = None
     _config_file_cache = None

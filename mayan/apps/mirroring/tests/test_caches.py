@@ -10,11 +10,11 @@ from .literals import (
 )
 
 
-class MockDocument(object):
+class MockDocument:
     pk = TEST_DOCUMENT_PK
 
 
-class MockNode(object):
+class MockNode:
     pk = TEST_NODE_PK
 
 

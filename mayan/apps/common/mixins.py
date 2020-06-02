@@ -21,7 +21,7 @@ from .literals import (
 from .settings import setting_home_view
 
 
-class ContentTypeViewMixin(object):
+class ContentTypeViewMixin:
     """
     This mixin makes it easier for views to retrieve a content type from
     the URL pattern.
@@ -43,7 +43,7 @@ class ContentTypeViewMixin(object):
         )
 
 
-class DeleteExtraDataMixin(object):
+class DeleteExtraDataMixin:
     """
     Mixin to populate the extra data needed for delete views
     """
@@ -58,7 +58,7 @@ class DeleteExtraDataMixin(object):
         return HttpResponseRedirect(redirect_to=success_url)
 
 
-class DownloadMixin(object):
+class DownloadMixin:
     as_attachment = True
 
     def get_as_attachment(self):
@@ -81,7 +81,7 @@ class DownloadMixin(object):
         )
 
 
-class DynamicFormViewMixin(object):
+class DynamicFormViewMixin:
     form_class = DynamicForm
 
     def get_form_kwargs(self):
@@ -90,7 +90,7 @@ class DynamicFormViewMixin(object):
         return data
 
 
-class ExtraContextMixin(object):
+class ExtraContextMixin:
     """
     Mixin that allows views to pass extra context to the template much easier
     than overloading .get_context_data().
@@ -106,7 +106,7 @@ class ExtraContextMixin(object):
         return self.extra_context
 
 
-class ExternalObjectMixin(object):
+class ExternalObjectMixin:
     """
     Mixin to allow views to load an object with minimal code but with all
     the filtering and configurability possible. This object is often use as
@@ -189,7 +189,7 @@ class ExternalContentTypeObjectMixin(ContentTypeViewMixin, ExternalObjectMixin):
         ).get_external_object_queryset()
 
 
-class FormExtraKwargsMixin(object):
+class FormExtraKwargsMixin:
     """
     Mixin that allows a view to pass extra keyword arguments to forms
     """
@@ -204,7 +204,7 @@ class FormExtraKwargsMixin(object):
         return result
 
 
-class ListModeMixin(object):
+class ListModeMixin:
     def get_context_data(self, **kwargs):
         context = super(ListModeMixin, self).get_context_data(**kwargs)
 
@@ -332,7 +332,7 @@ class MultipleObjectMixin(SingleObjectMixin):
             return None
 
 
-class ObjectActionMixin(object):
+class ObjectActionMixin:
     """
     Mixin that performs a user action to a queryset
     """
@@ -413,7 +413,7 @@ class ObjectActionMixin(object):
             self.success_url = success_url
 
 
-class ObjectNameMixin(object):
+class ObjectNameMixin:
     def get_object_name(self, context=None):
         if not context:
             context = self.get_context_data()
@@ -429,7 +429,7 @@ class ObjectNameMixin(object):
         return object_name
 
 
-class RedirectionMixin(object):
+class RedirectionMixin:
     action_cancel_redirect = None
     next_url = None
     previous_url = None
@@ -485,7 +485,7 @@ class RedirectionMixin(object):
         return self.success_url or self.get_next_url() or self.get_previous_url()
 
 
-class RestrictedQuerysetMixin(object):
+class RestrictedQuerysetMixin:
     """
     Restrict the view's queryset against a permission via ACL checking.
     Used to restrict the object list of a multiple object view or the source
@@ -526,7 +526,7 @@ class RestrictedQuerysetMixin(object):
         return self.source_queryset.all()
 
 
-class ViewPermissionCheckMixin(object):
+class ViewPermissionCheckMixin:
     """
     Restrict access to the view based on the user's direct permissions from
     roles. This mixing is used for views whose objects don't support ACLs or

@@ -41,7 +41,7 @@ class ChoiceForm(forms.Form):
     )
 
 
-class FormOptions(object):
+class FormOptions:
     def __init__(self, form, kwargs, options=None):
         """
         Option definitions will be iterated. The option value will be
@@ -141,7 +141,7 @@ class DetailForm(forms.ModelForm):
             )
 
 
-class DynamicFormMixin(object):
+class DynamicFormMixin:
     def __init__(self, *args, **kwargs):
         self.schema = kwargs.pop('schema')
         super(DynamicFormMixin, self).__init__(*args, **kwargs)

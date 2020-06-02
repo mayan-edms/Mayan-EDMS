@@ -20,7 +20,7 @@ from .literals import (
 __all__ = ('DocumentTestMixin',)
 
 
-class DocumentPageDisableViewTestMixin(object):
+class DocumentPageDisableViewTestMixin:
     def _disable_test_document_page(self):
         self.test_document_page.enabled = False
         self.test_document_page.save()
@@ -54,7 +54,7 @@ class DocumentPageDisableViewTestMixin(object):
         )
 
 
-class DocumentPageViewTestMixin(object):
+class DocumentPageViewTestMixin:
     def _request_test_document_page_list_view(self):
         return self.get(
             viewname='documents:document_pages', kwargs={
@@ -98,7 +98,7 @@ class DocumentPageViewTestMixin(object):
         )
 
 
-class DocumentTestMixin(object):
+class DocumentTestMixin:
     auto_create_test_document_type = True
     auto_upload_test_document = True
     test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
@@ -150,7 +150,7 @@ class DocumentTestMixin(object):
         self.test_document_version = document.latest_version
 
 
-class DocumentTypeViewTestMixin(object):
+class DocumentTypeViewTestMixin:
     def _request_test_document_type_create_view(self):
         return self.post(
             viewname='documents:document_type_create',
@@ -181,7 +181,7 @@ class DocumentTypeViewTestMixin(object):
         return self.get(viewname='documents:document_type_list')
 
 
-class DocumentTypeQuickLabelViewTestMixin(object):
+class DocumentTypeQuickLabelViewTestMixin:
     def _request_quick_label_create(self):
         return self.post(
             viewname='documents:document_type_filename_create', kwargs={
@@ -215,14 +215,14 @@ class DocumentTypeQuickLabelViewTestMixin(object):
         )
 
 
-class DocumentTypeQuickLabelTestMixin(object):
+class DocumentTypeQuickLabelTestMixin:
     def _create_test_quick_label(self):
         self.test_document_type_filename = self.test_document_type.filenames.create(
             filename=TEST_DOCUMENT_TYPE_QUICK_LABEL
         )
 
 
-class DocumentVersionTestMixin(object):
+class DocumentVersionTestMixin:
     def _upload_new_version(self):
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_document.new_version(
@@ -230,7 +230,7 @@ class DocumentVersionTestMixin(object):
             )
 
 
-class DocumentVersionViewTestMixin(object):
+class DocumentVersionViewTestMixin:
     def _request_document_version_download(self, data=None):
         data = data or {}
         return self.get(
@@ -254,7 +254,7 @@ class DocumentVersionViewTestMixin(object):
         )
 
 
-class DocumentViewTestMixin(object):
+class DocumentViewTestMixin:
     def _create_document_transformation(self):
         layer_saved_transformations.add_transformation_to(
             obj=self.test_document.pages.first(),
@@ -373,7 +373,7 @@ class DocumentViewTestMixin(object):
         return self.post(viewname='documents:trash_can_empty')
 
 
-class FavoriteDocumentsTestMixin(object):
+class FavoriteDocumentsTestMixin:
     def _request_document_add_to_favorites_view(self):
         return self.post(
             viewname='documents:document_add_to_favorites',
@@ -397,7 +397,7 @@ class FavoriteDocumentsTestMixin(object):
         )
 
 
-class TrashedDocumentViewTestMixin(object):
+class TrashedDocumentViewTestMixin:
     def _request_document_trash_get_view(self):
         return self.get(
             viewname='documents:document_trash', kwargs={

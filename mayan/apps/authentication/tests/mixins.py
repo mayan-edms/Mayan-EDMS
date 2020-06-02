@@ -1,4 +1,4 @@
-class UserPasswordViewTestMixin(object):
+class UserPasswordViewTestMixin:
     def _request_test_user_password_set_view(self, password):
         return self.post(
             viewname='authentication:user_set_password', kwargs={

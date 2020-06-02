@@ -201,7 +201,7 @@ class DocumentTypeQuickLabelViewsTestCase(
         )
 
 
-class DocumentsQuickLabelViewTestMixin(object):
+class DocumentsQuickLabelViewTestMixin:
     def _request_document_quick_label_edit_view(self, extra_data=None):
         data = {
             'document_type_available_filenames': self.test_document_type_filename.pk,

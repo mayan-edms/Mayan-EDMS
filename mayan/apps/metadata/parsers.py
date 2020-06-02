@@ -3,7 +3,7 @@ from dateutil.parser import parse
 from django.core.exceptions import ValidationError
 
 
-class MetadataParser(object):
+class MetadataParser:
     _registry = []
 
     @classmethod

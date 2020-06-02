@@ -1,5 +1,5 @@
 
-class DocumentOCRViewTestMixin(object):
+class DocumentOCRViewTestMixin:
     def _request_document_content_view(self):
         return self.get(
             viewname='ocr:document_ocr_content', kwargs={
@@ -43,7 +43,7 @@ class DocumentOCRViewTestMixin(object):
         )
 
 
-class DocumentTypeOCRViewTestMixin(object):
+class DocumentTypeOCRViewTestMixin:
     def _request_document_type_ocr_settings_view(self):
         return self.get(
             viewname='ocr:document_type_ocr_settings', kwargs={

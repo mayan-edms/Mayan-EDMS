@@ -21,7 +21,7 @@ from .literals import (
 from .mixins import WorkflowTestMixin
 
 
-class WorkflowAPIViewTestMixin(object):
+class WorkflowAPIViewTestMixin:
     def _request_test_document_type_workflow_list_api_view(self):
         return self.get(
             viewname='rest_api:documenttype-workflow-list',
@@ -445,7 +445,7 @@ class WorkflowAPIViewTestCase(
         )
 
 
-class WorkflowStateAPIViewTestMixin(object):
+class WorkflowStateAPIViewTestMixin:
     def _request_test_workflow_state_create_api_view(self):
         return self.post(
             viewname='rest_api:workflowstate-list',
@@ -653,7 +653,7 @@ class WorkflowStatesAPIViewTestCase(
         )
 
 
-class WorkflowTransitionAPIViewTestMixin(object):
+class WorkflowTransitionAPIViewTestMixin:
     def _request_test_workflow_transition_create_api_view(self):
         return self.post(
             viewname='rest_api:workflowtransition-list',
@@ -919,7 +919,7 @@ class WorkflowTransitionsAPIViewTestCase(
         )
 
 
-class DocumentWorkflowAPIViewTestMixin(object):
+class DocumentWorkflowAPIViewTestMixin:
     def _request_test_workflow_instance_detail_api_view(self):
         return self.get(
             viewname='rest_api:workflowinstance-detail', kwargs={

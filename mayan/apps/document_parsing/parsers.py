@@ -15,7 +15,7 @@ from .settings import setting_pdftotext_path
 logger = logging.getLogger(name=__name__)
 
 
-class Parser(object):
+class Parser:
     """
     Parser base class
     """

@@ -2,7 +2,7 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 
-class DependencyEnvironment(object):
+class DependencyEnvironment:
     def __init__(self, label, name, help_text=None, mark_missing=False):
         self.label = label
         self.help_text = help_text

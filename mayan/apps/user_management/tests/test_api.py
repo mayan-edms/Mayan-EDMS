@@ -245,7 +245,7 @@ class UserAPIViewTestCase(UserAPIViewTestMixin, BaseAPITestCase):
         )
 
 
-class UserGroupAPIViewTestMixin(object):
+class UserGroupAPIViewTestMixin:
     def _create_test_user_with_test_group(self):
         self._create_test_group()
         self._create_test_user()

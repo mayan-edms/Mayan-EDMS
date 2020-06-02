@@ -10,7 +10,7 @@ from mayan.apps.common.utils import get_related_field
 logger = logging.getLogger(name=__name__)
 
 
-class ModelPermission(object):
+class ModelPermission:
     _field_query_functions = {}
     _inheritances = {}
     _inheritances_reverse = {}

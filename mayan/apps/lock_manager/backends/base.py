@@ -3,7 +3,7 @@ import logging
 logger = logging.getLogger(name=__name__)
 
 
-class LockingBackend(object):
+class LockingBackend:
     """
     Base class for the lock backends. Defines the base methods that each
     subclass must define.

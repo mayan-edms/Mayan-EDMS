@@ -21,7 +21,7 @@ class SearchModelAPIViewTestCase(BaseAPITestCase):
         )
 
 
-class SearchAPIViewTestMixin(object):
+class SearchAPIViewTestMixin:
     def _request_search_view(self):
         query = {'q': self.test_document.label}
         return self.get(

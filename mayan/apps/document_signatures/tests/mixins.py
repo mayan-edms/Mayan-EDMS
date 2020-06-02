@@ -7,7 +7,7 @@ from ..models import DetachedSignature
 from .literals import TEST_SIGNATURE_FILE_PATH
 
 
-class DetachedSignatureAPIViewTestMixin(object):
+class DetachedSignatureAPIViewTestMixin:
     def _request_test_document_signature_detached_create_view(self):
         with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             return self.post(
@@ -60,7 +60,7 @@ class DetachedSignatureAPIViewTestMixin(object):
         )
 
 
-class DetachedSignatureViewTestMixin(object):
+class DetachedSignatureViewTestMixin:
     def _request_test_document_version_signature_create_view(self):
         return self.post(
             viewname='signatures:document_version_signature_detached_create',
@@ -88,7 +88,7 @@ class DetachedSignatureViewTestMixin(object):
             )
 
 
-class EmbeddedSignatureAPIViewTestMixin(object):
+class EmbeddedSignatureAPIViewTestMixin:
     def _request_test_document_signature_embedded_detail_view(self):
         return self.get(
             viewname='rest_api:embeddedsignature-detail',
@@ -121,7 +121,7 @@ class EmbeddedSignatureAPIViewTestMixin(object):
         )
 
 
-class EmbeddedSignatureViewTestMixin(object):
+class EmbeddedSignatureViewTestMixin:
     def _request_test_document_version_signature_create_view(self):
         return self.post(
             viewname='signatures:document_version_signature_embedded_create',
@@ -134,7 +134,7 @@ class EmbeddedSignatureViewTestMixin(object):
         )
 
 
-class SignatureTestMixin(object):
+class SignatureTestMixin:
     def _upload_test_detached_signature(self):
         with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             self.test_signature = DetachedSignature.objects.create(
@@ -143,7 +143,7 @@ class SignatureTestMixin(object):
             )
 
 
-class SignatureViewTestMixin(object):
+class SignatureViewTestMixin:
     def _request_test_document_version_signature_delete_view(self):
         return self.post(
             viewname='signatures:document_version_signature_delete', kwargs={

@@ -6,7 +6,7 @@ from ..search import document_search, document_page_search
 from .base import GenericDocumentViewTestCase
 
 
-class DocumentSearchTestMixin(object):
+class DocumentSearchTestMixin:
     search_backend = import_string(
         dotted_path='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
     )()

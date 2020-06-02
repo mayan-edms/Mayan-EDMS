@@ -10,7 +10,7 @@ from .literals import (
 )
 
 
-class MailerTestMixin(object):
+class MailerTestMixin:
     def _create_test_user_mailer(self):
         self.test_user_mailer = UserMailer.objects.create(
             default=True,
@@ -25,7 +25,7 @@ class MailerTestMixin(object):
         )
 
 
-class MailerViewTestMixin(object):
+class MailerViewTestMixin:
     def _request_test_document_link_send_view(self):
         return self.post(
             viewname='mailer:send_document_link', kwargs={

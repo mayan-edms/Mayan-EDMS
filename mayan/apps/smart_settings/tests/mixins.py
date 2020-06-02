@@ -15,7 +15,7 @@ from .literals import (
 )
 
 
-class BoostrapSettingTestMixin(object):
+class BoostrapSettingTestMixin:
     def _create_test_bootstrap_singleton(self):
         self.test_globals = {}
         self.test_globals['BASE_DIR'] = ''
@@ -31,7 +31,7 @@ class BoostrapSettingTestMixin(object):
         )
 
 
-class SmartSettingsTestCaseMixin(object):
+class SmartSettingsTestCaseMixin:
     def setUp(self):
         super(SmartSettingsTestCaseMixin, self).setUp()
         SettingNamespace.invalidate_cache_all()
@@ -105,7 +105,7 @@ class SmartSettingTestMixin(EnvironmentTestCaseMixin):
         )
 
 
-class SmartSettingViewTestMixin(object):
+class SmartSettingViewTestMixin:
     def _request_namespace_list_view(self):
         return self.get(viewname='settings:namespace_list')
 

@@ -7,7 +7,7 @@ from ..classes import DefinedStorage
 from ..utils import mkdtemp
 
 
-class StorageProcessorTestMixin(object):
+class StorageProcessorTestMixin:
     @classmethod
     def setUpClass(cls):
         super(StorageProcessorTestMixin, cls).setUpClass()

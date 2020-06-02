@@ -14,7 +14,7 @@ MOCK_SEARCH_KEYS_RESPONSE = [
 
 
 def mock_recv_keys(self, keyserver, *keyids):
-    class ImportResult(object):
+    class ImportResult:
         count = 1
         fingerprints = [TEST_SEARCH_FINGERPRINT]
 

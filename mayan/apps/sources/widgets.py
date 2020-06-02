@@ -6,7 +6,7 @@ from mayan.apps.documents.settings import (
 )
 
 
-class StagingFileThumbnailWidget(object):
+class StagingFileThumbnailWidget:
     def render(self, instance):
         return render_to_string(
             template_name='documents/widgets/document_thumbnail.html',

@@ -1,7 +1,7 @@
 import json
 
 
-class ChartRenderer(object):
+class ChartRenderer:
     def __init__(self, data):
         self.data = data
 

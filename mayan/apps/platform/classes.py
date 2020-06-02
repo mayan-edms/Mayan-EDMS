@@ -14,7 +14,7 @@ from mayan.apps.task_manager.settings import (
 )
 
 
-class Variable(object):
+class Variable:
     def __init__(self, name, default, environment_name):
         self.name = name
         self.default = default
@@ -40,7 +40,7 @@ class YAMLVariable(Variable):
         ).replace('...\n', '').replace('\n', '')
 
 
-class PlatformTemplate(object):
+class PlatformTemplate:
     _registry = {}
     context = {}
     context_defaults = {}

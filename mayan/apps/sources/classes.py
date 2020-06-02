@@ -37,7 +37,7 @@ class SourceUploadedFile(File):
         self.extra_data = extra_data
 
 
-class StagingFile(object):
+class StagingFile:
     """
     Simple class to extend the File class to add preview capabilities
     files in a directory on a storage

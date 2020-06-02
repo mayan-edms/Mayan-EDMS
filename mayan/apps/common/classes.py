@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 from .settings import setting_home_view
 
 
-class ErrorLogNamespace(object):
+class ErrorLogNamespace:
     def __init__(self, name, label=None):
         self.name = name
         self.label = label or name
@@ -29,7 +29,7 @@ class ErrorLogNamespace(object):
         obj.error_logs.create(namespace=self.name, result=result)
 
 
-class MissingItem(object):
+class MissingItem:
     _registry = []
 
     @classmethod
@@ -52,7 +52,7 @@ class MissingItem(object):
         self.__class__._registry.append(self)
 
 
-class PropertyHelper(object):
+class PropertyHelper:
     """
     Makes adding fields using __class__.add_to_class easier.
     Each subclass must implement the `constructor` and the `get_result`
@@ -77,7 +77,7 @@ class PropertyHelper(object):
         raise NotImplementedError
 
 
-class Template(object):
+class Template:
     _registry = {}
 
     @classmethod
@@ -121,7 +121,7 @@ class Template(object):
         return self
 
 
-class ModelAttribute(object):
+class ModelAttribute:
     _class_registry = []
     _model_registry = {}
 

@@ -24,7 +24,7 @@ __all__ = ('Document',)
 logger = logging.getLogger(name=__name__)
 
 
-class HooksMixin(object):
+class HooksMixin:
     @classmethod
     def _execute_hooks(cls, hook_list, **kwargs):
         result = None

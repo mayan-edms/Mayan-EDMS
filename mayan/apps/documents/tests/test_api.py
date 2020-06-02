@@ -26,7 +26,7 @@ from .literals import (
 from .mixins import DocumentTestMixin, DocumentVersionTestMixin
 
 
-class DocumentTypeAPIViewTestMixin(object):
+class DocumentTypeAPIViewTestMixin:
     def _request_test_document_type_api_create_view(self):
         return self.post(
             viewname='rest_api:documenttype-list', data={
@@ -150,7 +150,7 @@ class DocumentTypeAPIViewTestCase(
         )
 
 
-class DocumentAPIViewTestMixin(object):
+class DocumentAPIViewTestMixin:
     def _request_test_document_api_download_view(self):
         return self.get(
             viewname='rest_api:document-download', kwargs={
@@ -335,7 +335,7 @@ class DocumentAPIViewTestCase(
         )
 
 
-class DocumentVersionAPIViewTestMixin(object):
+class DocumentVersionAPIViewTestMixin:
     def _request_test_document_version_api_download_view(self):
         return self.get(
             viewname='rest_api:documentversion-download', kwargs={
@@ -556,7 +556,7 @@ class DocumentVersionAPIViewTestCase(
         self.assertEqual(self.test_document.page_count, 47)
 
 
-class DocumentPageAPIViewTestMixin(object):
+class DocumentPageAPIViewTestMixin:
     def _request_document_page_image(self):
         page = self.test_document.pages.first()
         return self.get(
@@ -583,7 +583,7 @@ class DocumentPageAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
-class TrashedDocumentAPIViewTestMixin(object):
+class TrashedDocumentAPIViewTestMixin:
     def _request_test_document_api_trash_view(self):
         return self.delete(
             viewname='rest_api:document-detail', kwargs={

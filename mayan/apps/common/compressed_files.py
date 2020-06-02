@@ -19,7 +19,7 @@ from .exceptions import NoMIMETypeMatch
 from .literals import MSG_MIME_TYPES
 
 
-class Archive(object):
+class Archive:
     _registry = {}
 
     @classmethod

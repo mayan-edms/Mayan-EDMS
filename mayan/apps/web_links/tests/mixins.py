@@ -5,14 +5,14 @@ from .literals import (
 )
 
 
-class WebLinkTestMixin(object):
+class WebLinkTestMixin:
     def _create_test_web_link(self):
         self.test_web_link = WebLink.objects.create(
             label=TEST_WEB_LINK_LABEL, template=TEST_WEB_LINK_TEMPLATE,
         )
 
 
-class WebLinkViewTestMixin(object):
+class WebLinkViewTestMixin:
     def _request_test_document_web_link_instance_view(self):
         return self.post(
             viewname='web_links:web_link_instance_view', kwargs={

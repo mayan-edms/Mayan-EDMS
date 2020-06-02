@@ -51,7 +51,7 @@ Example:
 
 .. code-block:: python
 
-    class ObjectPermissionCheckMixin(object):
+    class ObjectPermissionCheckMixin:
         """
         If object_permission_raise_404 is True an HTTP 404 error will be raised
         instead of the normal 403.

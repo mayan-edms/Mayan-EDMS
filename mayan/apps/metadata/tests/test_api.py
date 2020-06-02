@@ -334,7 +334,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         self.assertEqual(document_type_metadata_type.required, True)
 
 
-class DocumentMetadataAPITestMixin(object):
+class DocumentMetadataAPITestMixin:
     def _request_document_metadata_create_view(self):
         return self.post(
             viewname='rest_api:documentmetadata-list',

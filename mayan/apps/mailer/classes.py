@@ -27,7 +27,7 @@ class MailerBackendMetaclass(type):
         return new_class
 
 
-class MailerBackendBase(object):
+class MailerBackendBase:
     """
     Base class for the mailing backends. This class is mainly a wrapper
     for other Django backends that adds a few metadata to specify the
