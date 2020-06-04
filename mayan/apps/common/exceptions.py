@@ -13,20 +13,6 @@ class ActionError(BaseCommonException):
     """
 
 
-class CompressionFileError(BaseCommonException):
-    """
-    Base exception for file decompression class
-    """
-    pass
-
-
-class NoMIMETypeMatch(CompressionFileError):
-    """
-    There is no decompressor registered for the specified MIME type
-    """
-    pass
-
-
 class NPMException(BaseCommonException):
     """Base exception for the NPM registry client"""
 

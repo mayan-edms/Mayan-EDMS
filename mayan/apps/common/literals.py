@@ -3,10 +3,6 @@ from django.utils.translation import ugettext_lazy as _
 DEFAULT_COMMON_HOME_VIEW = 'common:home'
 DJANGO_SQLITE_BACKEND = 'django.db.backends.sqlite3'
 
-MSG_MIME_TYPES = (
-    'application/vnd.ms-outlook', 'application/vnd.ms-office'
-)
-
 LIST_MODE_CHOICE_LIST = 'list'
 LIST_MODE_CHOICE_ITEM = 'item'
 

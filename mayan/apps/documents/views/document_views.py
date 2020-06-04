@@ -12,7 +12,6 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.compressed_files import ZipArchive
 from mayan.apps.common.generics import (
     FormView, MultipleObjectConfirmActionView, MultipleObjectDownloadView,
     MultipleObjectFormActionView, SingleObjectDetailView,
@@ -22,6 +21,7 @@ from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
 )
+from mayan.apps.storage.compressed_files import ZipArchive
 
 from ..events import event_document_download, event_document_view
 from ..forms import (

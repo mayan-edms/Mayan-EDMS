@@ -16,10 +16,10 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.appearance.classes import Icon
-from mayan.apps.common.compressed_files import MsgArchive
-from mayan.apps.common.literals import MSG_MIME_TYPES
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.navigation.classes import Link
+from mayan.apps.storage.compressed_files import MsgArchive
+from mayan.apps.storage.literals import MSG_MIME_TYPES
 from mayan.apps.storage.settings import setting_temporary_directory
 from mayan.apps.storage.utils import (
     NamedTemporaryFile, fs_cleanup, mkdtemp

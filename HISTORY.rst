@@ -50,6 +50,7 @@
 - Move test related code from the common app to a new tests app.
   Test related imports from ``mayan.apps.common.tests``
   need to be renamed to ``mayan.apps.tests.tests``.
+- Move compressed file related code to the storage app.
 
 3.4.9 (2020-05-26)
 ==================
