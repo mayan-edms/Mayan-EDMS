@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
-"PO-Revision-Date: 2020-05-16 09:29+0000\n"
+"POT-Creation-Date: 2020-06-08 14:20-0400\n"
+"PO-Revision-Date: 2020-06-01 19:54+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Null backend"
 
 #: events.py:5 permissions.py:5 queues.py:6 settings.py:10
 msgid "Mailing"
-msgstr ""
+msgstr "Mailing"
 
 #: events.py:8
 msgid "Email sent"
@@ -72,7 +72,7 @@ msgstr "Mailprofiel"
 
 #: forms.py:75
 msgid "The driver to use when sending emails."
-msgstr ""
+msgstr "Het stuurprogramma dat moet worden gebruikt bij het verzenden van e-mails."
 
 #: forms.py:76 models.py:83
 msgid "Backend"
@@ -225,7 +225,7 @@ msgstr "Bestandspad"
 
 #: mailers.py:118
 msgid "Django file based backend"
-msgstr ""
+msgstr "Django bestandsgebaseerde backend"
 
 #: models.py:25 models.py:227
 msgid "Date time"
@@ -303,7 +303,7 @@ msgstr "Verzend document via e-mail"
 
 #: permissions.py:14
 msgid "View system mailing error log"
-msgstr ""
+msgstr "Systeem mailing foutenlog bekijken"
 
 #: permissions.py:17
 msgid "Create a mailing profile"
@@ -352,7 +352,7 @@ msgstr "%(email)s is geen geldig e-mailadres."
 
 #: views.py:36
 msgid "Document mailing error log"
-msgstr ""
+msgstr "Document mailing foutenlog"
 
 #: views.py:48
 #, python-format
@@ -380,7 +380,7 @@ msgstr "%(count)d documentlinks in wachtrij voor e-mailbezorging"
 
 #: views.py:118
 msgid "New mailing profile backend selection"
-msgstr ""
+msgstr "Nieuw mailprofiel backend selectie"
 
 #: views.py:150
 #, python-format

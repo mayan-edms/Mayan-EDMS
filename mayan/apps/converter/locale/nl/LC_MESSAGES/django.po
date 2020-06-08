@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
-"PO-Revision-Date: 2020-05-17 19:10+0000\n"
+"POT-Creation-Date: 2020-06-08 14:19-0400\n"
+"PO-Revision-Date: 2020-05-31 09:14+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -171,7 +171,7 @@ msgstr "Te gebruiken backend voor grafische conversie."
 
 #: settings.py:32
 msgid "Configuration options for the graphics conversion backend."
-msgstr ""
+msgstr "Configuratie-opties voor de afbeeldingsconversie backend."
 
 #: transformations.py:98
 msgid "Crop"
@@ -191,7 +191,7 @@ msgstr "Spiegelen"
 
 #: transformations.py:386
 msgid "Gaussian blur"
-msgstr ""
+msgstr "Gaussiaanse vervaging"
 
 #: transformations.py:396
 msgid "Line art"
@@ -223,7 +223,7 @@ msgstr "270 graden draaien"
 
 #: transformations.py:503
 msgid "Unsharp masking"
-msgstr ""
+msgstr "Onscherpe maskering"
 
 #: transformations.py:519
 msgid "Zoom"

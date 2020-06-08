@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
+"POT-Creation-Date: 2020-06-08 14:20-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -96,7 +96,7 @@ msgstr "Geeft de bestandsmetadata invoer van de opgegeven documentversie."
 
 #: models.py:19
 msgid "Driver path"
-msgstr ""
+msgstr "Stuurprogramma pad"
 
 #: models.py:23
 msgid "Internal name"
@@ -104,11 +104,11 @@ msgstr "Interne naam"
 
 #: models.py:28 models.py:72
 msgid "Driver"
-msgstr ""
+msgstr "Stuurprogramma"
 
 #: models.py:29
 msgid "Drivers"
-msgstr ""
+msgstr "Stuurprogramma's"
 
 #: models.py:49
 msgid "Document type"
@@ -132,15 +132,15 @@ msgstr "Documentversie"
 
 #: models.py:82 models.py:98
 msgid "Document version driver entry"
-msgstr ""
+msgstr "Documentversie stuurprogramma vermelding"
 
 #: models.py:83
 msgid "Document version driver entries"
-msgstr ""
+msgstr "Documentversie stuurprogramma vermeldingen"
 
 #: models.py:90
 msgid "Attribute count"
-msgstr ""
+msgstr "Aantal attributen"
 
 #: models.py:102
 msgid "Name of the file metadata entry."
@@ -192,7 +192,7 @@ msgstr ""
 
 #: settings.py:22
 msgid "Arguments to pass to the drivers."
-msgstr ""
+msgstr "Argumenten om door te geven aan de stuurprogramma's."
 
 #: views.py:33
 msgid ""
@@ -202,6 +202,13 @@ msgid ""
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
 msgstr ""
+"Bestandsmetadata zijn de kenmerken van het documentbestand. Ze kunnen "
+"variëren van camera-informatie die is gebruikt om een foto te maken, tot de "
+"auteur die een bestand heeft gemaakt. Metagegevens van bestanden worden "
+"ingesteld wanneer het documentbestand voor het eerst werd gemaakt. Kenmerken"
+" van metagegevens van bestanden bevinden zich in het bestand zelf. Ze zijn "
+"niet hetzelfde als de documentmetadata, die door de gebruiker zijn "
+"gedefinieerd en zich in de database bevinden."
 
 #: views.py:41 views.py:60
 msgid "No file metadata available."
@@ -210,12 +217,14 @@ msgstr "Geen bestandsmetadata beschikbaar."
 #: views.py:44
 #, python-format
 msgid "File metadata drivers for: %s"
-msgstr ""
+msgstr "Bestandsmetadata stuurprogramma voor: %s"
 
 #: views.py:63
 #, python-format
 msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
 msgstr ""
+"Bestandsmetadata kenmerken voor: %(document)s, voor stuurprogramma: "
+"%(driver)s"
 
 #: views.py:86
 msgid "Submit the selected document to the file metadata queue?"

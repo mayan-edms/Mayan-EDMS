@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
-"PO-Revision-Date: 2020-05-17 19:15+0000\n"
+"POT-Creation-Date: 2020-06-08 14:19-0400\n"
+"PO-Revision-Date: 2020-06-03 21:26+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -27,15 +27,15 @@ msgstr "Gemeenschappelijk"
 
 #: classes.py:187
 msgid "Model properties"
-msgstr ""
+msgstr "Model eigenschappen"
 
 #: classes.py:192
 msgid "Model fields"
-msgstr ""
+msgstr "Model velden"
 
 #: classes.py:235
 msgid "Model related fields"
-msgstr ""
+msgstr "Model gerelateerde velden"
 
 #: classes.py:240
 msgid "Model reverse fields"
@@ -43,19 +43,19 @@ msgstr ""
 
 #: dependencies.py:281
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Gebruikt om offline vertaling van de codetekststrings toe te staan."
 
 #: dependencies.py:286
 msgid "Provides style checking."
-msgstr ""
+msgstr "Biedt stijlcontrole."
 
 #: dependencies.py:291
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Opdrachtregelomgeving met automatisch aanvullen."
 
 #: dependencies.py:296
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Controleert de juiste opmaak van het README-bestand."
 
 #: forms.py:25
 msgid "Selection"
@@ -70,14 +70,14 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Items selecteren die moeten worden verwijderd. Houd Control ingedrukt om meerdere items te selecteren. Zodra de selectie is voltooid, klikt u op de onderstaande knop of dubbelklikt u op de lijst om de actie te activeren."
 
 #: generics.py:151
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Items selecteren die moeten worden toegevoegd. Houd Control ingedrukt om meerdere items te selecteren. Zodra de selectie is voltooid, klikt u op de onderstaande knop of dubbelklikt u op de lijst om de actie te activeren."
 
 #: generics.py:284
 msgid "Add all"
@@ -98,7 +98,7 @@ msgstr "Verwijderen"
 #: generics.py:522
 #, python-format
 msgid "Duplicate data error: %(error)s"
-msgstr ""
+msgstr "Dubbele gegevensfout: %(error)s"
 
 #: generics.py:543
 #, python-format
@@ -211,7 +211,7 @@ msgstr "Systeem"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
-msgstr ""
+msgstr "Facet"
 
 #: menus.py:14
 msgid "Actions"
@@ -219,7 +219,7 @@ msgstr "Acties"
 
 #: menus.py:15
 msgid "Secondary"
-msgstr ""
+msgstr "Secundair"
 
 #: menus.py:20 models.py:94
 msgid "User"
@@ -300,11 +300,11 @@ msgstr ""
 
 #: queues.py:20
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Afgebroken uploads verwijderen"
 
 #: settings.py:20
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Loggen naar alle apps automatisch inschakelen."
 
 #: settings.py:26
 msgid ""
@@ -318,7 +318,7 @@ msgid ""
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Een lijst met tekenreeksen die alle toepassingen aanduiden die moeten worden verwijderd uit de lijst die normaal door Mayan EDMS wordt geïnstalleerd. Elke string moet een Python-pad zijn naar: een toepassingsconfiguratieklasse (bij voorkeur) of een pakket met een toepassing."
 
 #: settings.py:44
 msgid ""
@@ -326,13 +326,13 @@ msgid ""
 "those normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Een lijst met tekenreeksen die alle applicaties aanduiden die zijn geïnstalleerd buiten de applicaties die normaal door Mayan EDMS zijn geïnstalleerd. Elke tekenreeks moet een Python-pad zijn naar: een toepassingsconfiguratieklasse (bij voorkeur) of een pakket met een toepassing."
 
 #: settings.py:53
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Naam van de overzicht gekoppeld aan het logo in het hoofdmenu. Dit is ook het overzicht waarnaar gebruikers worden doorgestuurd nadat ze zich hebben aangemeld."
 
 #: settings.py:62
 msgid "The number objects that will be displayed per page."
@@ -340,11 +340,11 @@ msgstr "Het aantal objecten dat per pagina wordt weergegeven."
 
 #: settings.py:69
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
+msgstr "Foutregistratie inschakelen buiten de mogelijkheden van systeemfoutregistratie."
 
 #: settings.py:76
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Pad naar het logbestand dat de fouten tijdens productie volgt."
 
 #: settings.py:83
 msgid "Name to be displayed in the main menu."
@@ -432,7 +432,7 @@ msgstr "Foutenlog invoer wissen voor: %s"
 
 #: views.py:129
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "Object foutenlog met succes gewist"
 
 #: views.py:148
 msgid "Date and time"

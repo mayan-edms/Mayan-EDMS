@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
-"PO-Revision-Date: 2020-05-17 18:56+0000\n"
+"POT-Creation-Date: 2020-06-08 14:20-0400\n"
+"PO-Revision-Date: 2020-05-31 09:42+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -730,7 +730,7 @@ msgstr "Converteren"
 
 #: queues.py:18
 msgid "Documents periodic"
-msgstr ""
+msgstr "Periodieke documenten"
 
 #: queues.py:22
 msgid "Uploads"
@@ -750,11 +750,11 @@ msgstr "Duplicatenlijsten opschonen"
 
 #: queues.py:44
 msgid "Check document type delete periods"
-msgstr ""
+msgstr "Verwijderingstermijn van documenttype controleren"
 
 #: queues.py:52
 msgid "Check document type trash periods"
-msgstr ""
+msgstr "Prullenbaktermijn van documenttype controleren"
 
 #: queues.py:58
 msgid "Delete document stubs"
@@ -782,7 +782,7 @@ msgstr "De drempelwaarde waarbij de DOCUMENT_CACHE_STORAGE_BACKEND begint met he
 msgid ""
 "Path to the Storage subclass to use when storing the cached document image "
 "files."
-msgstr ""
+msgstr "Pad naar de Storage subclass die gebruikt wordt bij opslag van de gecachede document afbeeldingsbestanden."
 
 #: settings.py:41
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
@@ -792,13 +792,13 @@ msgstr "Argumenten om door te geven aan DOCUMENT_CACHE_STORAGE_BACKEND."
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
-msgstr ""
+msgstr "Schakelt de eerstelijns cache uit die hoge resolutie, niet-getransformeerde versies van documentpagina's opslaat."
 
 #: settings.py:54
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
-msgstr ""
+msgstr "Schakelt de tweedelijns cache uit die lage tot gemiddelde resolutie, getransformeerde (geroteerd, ingezoomd, etc.) versies van documentpagina's opslaat."
 
 #: settings.py:68
 msgid "Maximum number of favorite documents to remember per user."
@@ -848,7 +848,7 @@ msgstr "Aantal graden waarmee documentpagina roteert per gebruikersactie."
 
 #: settings.py:137
 msgid "Path to the Storage subclass to use when storing document files."
-msgstr ""
+msgstr "Pad naar de Storage subclass die gebruikt wordt bij opslag van documentbestanden."
 
 #: settings.py:144
 msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:23-0400\n"
+"POT-Creation-Date: 2020-06-08 14:21-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -52,7 +52,7 @@ msgstr "Backend"
 
 #: forms.py:16
 msgid "The quota driver for this entry."
-msgstr ""
+msgstr "Het quota stuurprogramma voor deze vermelding."
 
 #: links.py:13
 msgid "Create quota"
@@ -164,7 +164,7 @@ msgstr "Quota"
 
 #: models.py:54
 msgid "Driver used for this quota entry."
-msgstr ""
+msgstr "Stuurprogramma gebruikt voor deze quotumvermelding."
 
 #: models.py:59
 msgid "Arguments"
@@ -230,7 +230,7 @@ msgstr "Quotum omvang documenten overschreden."
 
 #: views.py:24
 msgid "New quota backend selection"
-msgstr ""
+msgstr "Nieuw quota backend selectie"
 
 #: views.py:52
 #, python-format
