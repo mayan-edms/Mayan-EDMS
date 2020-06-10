@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 3.4.10 (2020-06-XX)
 ===================
 - Fix repeated columns in the document index node list view.
@@ -6,6 +7,7 @@
 - Switch direction of dropdowns when there is not enough area left at the
   bottom. Close GitLab issue #830. Thanks to Bw (@bwakkie) for the report.
 - Minor fixes to the optional services in the default Docker compose file.
+- Add support for selecting texts in cards.
 
 3.4.9 (2020-05-26)
 ==================
