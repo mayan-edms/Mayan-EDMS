@@ -112,14 +112,12 @@ class FontAwesomeLayersDriver(IconDriver):
     name = 'fontawesome-layers'
     template_name = 'appearance/icons/font_awesome_layers.html'
 
-    def __init__(self, data, shadow_class=None):
+    def __init__(self, data):
         self.data = data
-        self.shadow_class = shadow_class
 
     def get_context(self):
         return {
             'data': self.data,
-            'shadow_class': self.shadow_class,
         }
 
 

@@ -57,6 +57,8 @@
   This backend defaults to search result limit of 100 items. To increase
   the limit set ``search_limit`` in ``SEARCH_BACKEND_ARGUMENTS``.
   This backend will be the default one in a future release.
+- Improve and unify the way icon shadows is produced. Removed the
+  ``shadow_class`` and ``shadow_class_transformation_list`` arguments.
 
 3.4.9 (2020-05-26)
 ==================
