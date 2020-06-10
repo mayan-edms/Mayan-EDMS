@@ -1,39 +1,38 @@
 import logging
 
-from django.apps import apps
 from django.db.models import Q
 from django.utils.encoding import force_text
 
 from ..classes import SearchBackend
 
-from .literals import (
-    QUERY_OPERATION_AND, QUERY_OPERATION_OR, TERM_NEGATION_CHARACTER,
-    TERM_OPERATION_OR, TERM_OPERATIONS, TERM_QUOTES, TERM_SPACE_CHARACTER
-)
-
+QUERY_OPERATION_AND = 1
+QUERY_OPERATION_OR = 2
+TERM_OPERATION_AND = 'AND'
+TERM_OPERATION_OR = 'OR'
+TERM_OPERATIONS = [TERM_OPERATION_AND, TERM_OPERATION_OR]
+TERM_QUOTES = ['"', '\'']
+TERM_NEGATION_CHARACTER = '-'
+TERM_SPACE_CHARACTER = ' '
 logger = logging.getLogger(name=__name__)
 
 
 class DjangoSearchBackend(SearchBackend):
-    def search(self, query_string, search_model, user, global_and_search=False):
-        AccessControlList = apps.get_model(
-            app_label='acls', model_name='AccessControlList'
-        )
-
+    def _search(self, query_string, search_model, user, global_and_search=False):
         search_query = self.get_search_query(
             search_model=search_model, query_string=query_string,
             global_and_search=global_and_search
         )
 
-        queryset = search_model.get_queryset().filter(search_query.query).distinct()
+        return search_model.get_queryset().filter(search_query.query).distinct()
 
-        if search_model.permission:
-            queryset = AccessControlList.objects.restrict_queryset(
-                permission=search_model.permission, queryset=queryset,
-                user=user
-            )
+    def deindex_instance(self, instance):
+        """This backend doesn't remove instances."""
 
-        return queryset
+    def index_instance(self, instance):
+        """
+        This backend doesn't index instances. Searches query the
+        database directly.
+        """
 
     def get_search_query(self, search_model, query_string, global_and_search=False):
         return SearchQuery(

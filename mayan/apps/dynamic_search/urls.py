@@ -4,10 +4,11 @@ from .api_views import (
     APIAdvancedSearchView, APISearchModelList, APISearchView
 )
 from .views import (
-    AdvancedSearchView, ResultsView, SearchAgainView, SearchView
+    AdvancedSearchView, ResultsView, SearchAgainView,
+    SearchBackendReindexView, SearchView
 )
 
-urlpatterns = [
+urlpatterns_search = [
     url(
         regex=r'^again/(?P<search_model_name>[\.\w]+)/$', name='search_again',
         view=SearchAgainView.as_view()
@@ -32,6 +33,17 @@ urlpatterns = [
         view=SearchView.as_view()
     )
 ]
+
+urlpatterns_tools = [
+    url(
+        regex=r'^backend/reindex/$', name='search_backend_reindex',
+        view=SearchBackendReindexView.as_view()
+    )
+]
+
+urlpatterns = []
+urlpatterns.extend(urlpatterns_search)
+urlpatterns.extend(urlpatterns_tools)
 
 api_urls = [
     url(

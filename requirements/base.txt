@@ -1,6 +1,7 @@
 Pillow==7.1.2
 PyPDF2==1.26.0
 PyYAML==5.3.1
+Whoosh==2.7.4
 celery==4.4.2
 django-activity-stream==0.8.0
 django-celery-beat==2.0.0

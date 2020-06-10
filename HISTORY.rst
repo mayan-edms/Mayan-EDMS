@@ -51,6 +51,12 @@
   Test related imports from ``mayan.apps.common.tests``
   need to be renamed to ``mayan.apps.tests.tests``.
 - Move compressed file related code to the storage app.
+- Add new search backend based on Whoosh.
+  To use it, change ``SEARCH_BACKEND`` to
+  ``mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend``.
+  This backend defaults to search result limit of 100 items. To increase
+  the limit set ``search_limit`` in ``SEARCH_BACKEND_ARGUMENTS``.
+  This backend will be the default one in a future release.
 
 3.4.9 (2020-05-26)
 ==================

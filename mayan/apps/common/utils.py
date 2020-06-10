@@ -9,9 +9,127 @@ from django.urls.base import get_script_prefix
 from django.utils.encoding import force_text
 from django.utils.six.moves import reduce as reduce_function
 
+from .exceptions import ResolverError, ResolverPipelineError
 from .literals import DJANGO_SQLITE_BACKEND
 
 logger = logging.getLogger(name=__name__)
+
+
+class Resolver:
+    exceptions = ()
+
+    def __init__(self, attribute, obj, kwargs, klass):
+        self.attribute = attribute
+        self.obj = obj
+        self.kwargs = kwargs
+        self.klass = klass
+
+    def resolve(self):
+        try:
+            return self._resolve()
+        except self.exceptions:
+            raise ResolverError
+
+    def _resolve(self):
+        raise NotImplementedError
+
+
+class ResolverObjectAttribute(Resolver):
+    exceptions = (TypeError,)
+
+    def _resolve(self):
+        return self.attribute(self.obj, **self.kwargs)
+
+
+class ResolverGetattr(Resolver):
+    exceptions = (AttributeError, TypeError,)
+
+    def _resolve(self):
+        return getattr(self.obj, self.attribute)
+
+
+class ResolverFunction(Resolver):
+    exceptions = (AttributeError, TypeError,)
+
+    def _resolve(self):
+        return getattr(self.obj, self.attribute)(**self.kwargs)
+
+
+class ResolverDictionary(Resolver):
+    exceptions = (TypeError,)
+
+    def _resolve(self):
+        return self.obj[self.attribute]
+
+
+class ResolverList(Resolver):
+    exceptions = (TypeError,)
+
+    def _resolve(self):
+        result = []
+        for item in self.obj:
+            result.append(
+                self.klass.resolve(
+                    attribute=self.attribute, obj=item, kwargs=self.kwargs
+                )
+            )
+
+        return result
+
+
+class ResolverPipelineObjectAttribute:
+    resolver_list = (
+        ResolverDictionary, ResolverList, ResolverFunction,
+        ResolverObjectAttribute, ResolverGetattr
+    )
+
+    @classmethod
+    def resolve(cls, attribute, obj, kwargs=None):
+        if not kwargs:
+            kwargs = {}
+
+        if '.' in attribute:
+            attribute_list = attribute.split('.')
+        else:
+            attribute_list = (attribute,)
+
+        result = obj
+        for attribute in attribute_list:
+            for resolver in cls.resolver_list:
+                try:
+                    result = resolver(
+                        attribute=attribute, obj=result, kwargs=kwargs, klass=cls
+                    ).resolve()
+                except ResolverError:
+                    """Expected, try the next resolver in the list."""
+
+            if result == obj:
+                raise ResolverPipelineError(
+                    'Unable to resolve attribute "{attribute}" of object "{obj}"'.format(
+                        attribute=attribute, obj=obj
+                    )
+                )
+
+        return result
+
+
+class ResolverRelatedManager(Resolver):
+    exceptions = (AttributeError,)
+
+    def _resolve(self):
+        return getattr(self.obj, self.attribute).all()
+
+
+class ResolverPipelineModelAttribute(ResolverPipelineObjectAttribute):
+    resolver_list = (
+        ResolverDictionary, ResolverList, ResolverRelatedManager,
+        ResolverFunction, ResolverObjectAttribute, ResolverGetattr
+    )
+
+    @classmethod
+    def resolve(cls, attribute, obj, kwargs=None):
+        attribute = attribute.replace(LOOKUP_SEP, '.')
+        return super().resolve(attribute=attribute, obj=obj, kwargs=kwargs)
 
 
 def check_for_sqlite():
