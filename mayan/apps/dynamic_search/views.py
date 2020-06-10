@@ -66,9 +66,15 @@ class SearchAgainView(RedirectView):
 
 class SearchBackendReindexView(ConfirmView):
     extra_context = {
+        'message': _(
+            'This tool is required only for some search backends. '
+            'Search results will be affected while the backend is '
+            'being reindexed.'
+        ),
         'title': _('Reindex search backend'),
         'subtitle': _(
-            'This tool is required only for some search backends.'
+            'This tool erases and populates the search backend\'s '
+            'internal index.'
         ),
     }
     view_permission = permission_search_tools
