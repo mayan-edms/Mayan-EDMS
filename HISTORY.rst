@@ -59,6 +59,7 @@
   This backend will be the default one in a future release.
 - Improve and unify the way icon shadows is produced. Removed the
   ``shadow_class`` and ``shadow_class_transformation_list`` arguments.
+- Add support for selecting texts in cards.
 
 3.4.9 (2020-05-26)
 ==================
