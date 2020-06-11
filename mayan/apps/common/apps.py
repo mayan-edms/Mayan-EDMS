@@ -1,5 +1,5 @@
 import logging
-import os
+from pathlib import Path
 import sys
 import traceback
 import warnings
@@ -11,6 +11,7 @@ from django.contrib import admin
 from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
 from django.utils.encoding import force_text
+from django.utils.log import DEFAULT_LOGGING
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
@@ -28,9 +29,11 @@ from .literals import MESSAGE_SQLITE_WARNING
 from .menus import menu_about, menu_secondary, menu_topbar, menu_user
 from .patches import patchDjangoTranslation
 from .settings import (
-    setting_auto_logging, setting_production_error_log_path,
-    setting_production_error_logging, setting_url_base_path
+    setting_logging_enable, setting_logging_handlers,
+    setting_logging_level, setting_logging_log_file_path,
+    setting_url_base_path
 )
+
 from .signals import signal_pre_initial_setup, signal_pre_upgrade
 from .utils import check_for_sqlite
 from .warnings import DatabaseWarning
@@ -190,54 +193,66 @@ class CommonApp(MayanAppConfig):
         self.setup_auto_logging()
 
     def setup_auto_logging(self):
-        if setting_auto_logging.value:
-            if settings.DEBUG:
-                level = 'DEBUG'
-                handlers = ['console']
-            else:
-                level = 'ERROR'
-                handlers = ['console']
+        if setting_logging_enable.value:
+            logging_configuration = DEFAULT_LOGGING.copy()
 
-            if os.path.exists(settings.MEDIA_ROOT) and setting_production_error_logging.value:
-                handlers.append('logfile')
+            logging_configuration.update(
+                {
+                    'version': 1,
+                    'disable_existing_loggers': False,
+                    'formatters': {
+                        'mayan_intermediate': {
+                            '()': 'mayan.apps.common.formatters.ColorFormatter',
+                            'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"',
+                        },
+                        'mayan_logfile': {
+                            'format': '%(asctime)s %(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
+                        },
+                    },
+                    'handlers': {
+                        'console': {
+                            'class': 'logging.StreamHandler',
+                            'formatter': 'mayan_intermediate',
+                            'level': 'DEBUG',
+                        },
+                    }
+                }
+            )
+
+            # Convert to list so it is mutable
+            handlers = list(setting_logging_handlers.value)
+
+            if 'logfile' in handlers:
+                path = Path(setting_logging_log_file_path.value)
+                try:
+                    path.touch()
+                except (FileNotFoundError, PermissionError):
+                    # The path's folder do not exists or we lack
+                    # permission to write the log file.
+                    handlers.remove('logfile')
+                else:
+                    logging_configuration['handlers']['logfile'] = {
+                        'backupCount': 5,
+                        'class': 'logging.handlers.RotatingFileHandler',
+                        'filename': setting_logging_log_file_path.value,
+                        'formatter': 'mayan_logfile',
+                        'maxBytes': 65535,
+                    }
 
             loggers = {}
+
+            # Django loggers
+            for key, value in logging_configuration['loggers'].items():
+                value['level'] = setting_logging_level.value
+
+            # Mayan apps loggers
             for project_app in apps.apps.get_app_configs():
                 loggers[project_app.name] = {
                     'handlers': handlers,
                     'propagate': True,
-                    'level': level,
+                    'level': setting_logging_level.value,
                 }
 
-            logging_configuration = {
-                'version': 1,
-                'disable_existing_loggers': False,
-                'formatters': {
-                    'intermediate': {
-                        '()': 'mayan.apps.common.log.ColorFormatter',
-                        'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"',
-                    },
-                    'logfile': {
-                        'format': '%(asctime)s %(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
-                    },
-                },
-                'handlers': {
-                    'console': {
-                        'class': 'logging.StreamHandler',
-                        'formatter': 'intermediate',
-                        'level': 'DEBUG',
-                    },
-                },
-                'loggers': loggers
-            }
+            logging_configuration['loggers'] = loggers
 
-            if os.path.exists(settings.MEDIA_ROOT) and setting_production_error_logging.value:
-                logging_configuration['handlers']['logfile'] = {
-                    'backupCount': 5,
-                    'class': 'logging.handlers.RotatingFileHandler',
-                    'filename': setting_production_error_log_path.value,
-                    'formatter': 'logfile',
-                    'maxBytes': 65535,
-                }
-
-            logging.config.dictConfig(logging_configuration)
+            logging.config.dictConfig(config=logging_configuration)

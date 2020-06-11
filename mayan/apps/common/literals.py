@@ -6,6 +6,8 @@ DJANGO_SQLITE_BACKEND = 'django.db.backends.sqlite3'
 LIST_MODE_CHOICE_LIST = 'list'
 LIST_MODE_CHOICE_ITEM = 'item'
 
+LOGGING_HANDLER_OPTIONS = ('console', 'logfile')
+
 MESSAGE_DEPRECATION_WARNING = _(
     'This feature has been deprecated and will be removed in a future version.'
 )

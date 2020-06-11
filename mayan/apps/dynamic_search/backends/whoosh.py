@@ -135,7 +135,7 @@ class WhooshSearchBackend(SearchBackend):
                 if whoosh_field_type:
                     result[search_field.get_full_name()] = whoosh_field_type
                 else:
-                    logging.warning(
+                    logger.warning(
                         'unknown field type "%s" for model "%s"',
                         search_field.get_full_name(),
                         search_model.get_full_name()
