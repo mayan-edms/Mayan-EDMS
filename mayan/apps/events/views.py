@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from actstream.models import Action, any_stream
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.generics import (
+from mayan.apps.views.generics import (
     FormView, SimpleView, SingleObjectListView
 )
 

@@ -16,7 +16,7 @@ APP_LIST = (
     'mayan_statistics', 'metadata', 'mirroring', 'motd', 'navigation',
     'ocr', 'permissions', 'platform', 'quotas', 'rest_api', 'smart_settings',
     'sources', 'storage', 'tags', 'task_manager', 'templating',
-    'user_management', 'web_links'
+    'user_management', 'views', 'web_links'
 )
 
 LANGUAGE_LIST = (

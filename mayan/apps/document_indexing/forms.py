@@ -1,9 +1,9 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.forms import FilteredSelectionForm
 from mayan.apps.documents.models import Document
 from mayan.apps.templating.fields import TemplateField
+from mayan.apps.views.forms import FilteredSelectionForm
 
 from .models import Index, IndexTemplateNode
 from .permissions import permission_document_indexing_rebuild

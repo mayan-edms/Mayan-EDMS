@@ -2,13 +2,13 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.exceptions import ActionError
-from mayan.apps.common.generics import (
+from mayan.apps.documents.models import Document
+from mayan.apps.documents.views.document_views import DocumentListView
+from mayan.apps.views.exceptions import ActionError
+from mayan.apps.views.generics import (
     MultipleObjectConfirmActionView, MultipleObjectFormActionView,
     SingleObjectDetailView
 )
-from mayan.apps.documents.models import Document
-from mayan.apps.documents.views.document_views import DocumentListView
 
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from .forms import DocumentCheckOutForm, DocumentCheckOutDetailForm

@@ -6,17 +6,17 @@ from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.generics import (
-    AddRemoveView, ConfirmView, FormView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
-)
-from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_edit, permission_document_view
 )
 from mayan.apps.documents.views.document_views import DocumentListView
+from mayan.apps.views.generics import (
+    AddRemoveView, ConfirmView, FormView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
+)
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .events import event_index_template_edited
 from .forms import IndexTemplateFilteredForm, IndexTemplateNodeForm

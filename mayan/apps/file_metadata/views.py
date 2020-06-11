@@ -4,13 +4,13 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
 
-from mayan.apps.common.generics import (
+from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
+from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectEditView,
     SingleObjectListView
 )
-from mayan.apps.common.mixins import ExternalObjectMixin
-from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
-from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .icons import icon_file_metadata
 from .models import DocumentVersionDriverEntry

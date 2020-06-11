@@ -1,0 +1,401 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-11 02:28-0400\n"
+"PO-Revision-Date: 2020-04-19 04:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
+"cs/)\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: apps.py:27 settings.py:9
+msgid "Views"
+msgstr ""
+
+#: forms.py:24
+msgid "Selection"
+msgstr "Výběr"
+
+#: forms.py:100
+msgid "None"
+msgstr "žádný"
+
+#: generics.py:146
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+"Vyberte položky, které chcete odstranit. Podržte Control pro výběr více "
+"záznamů. Po dokončení výběru klepněte na tlačítko níže nebo poklepáním na "
+"seznam akci aktivujte."
+
+#: generics.py:151
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+"Vyberte položky, které chcete přidat. Podržte Control pro výběr více "
+"záznamů. Po dokončení výběru klepněte na tlačítko níže nebo poklepáním na "
+"seznam akci aktivujte."
+
+#: generics.py:284
+msgid "Add all"
+msgstr "Přidat vše"
+
+#: generics.py:293
+msgid "Add"
+msgstr "Přidat"
+
+#: generics.py:303
+msgid "Remove all"
+msgstr "Odebrat vše"
+
+#: generics.py:312
+msgid "Remove"
+msgstr "Odstranit"
+
+#: generics.py:522
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr "Chyba duplicitních dat: %(error)s"
+
+#: generics.py:543
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "%(object)s nebyl vytvořen, chyba: %(error)s"
+
+#: generics.py:556
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "%(object)s byl úspěšně vytvořen."
+
+#: generics.py:595
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "%(object)s nebyl smazán, chyba: %(error)s."
+
+#: generics.py:604
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "%(object)s byl úspěšně smazán."
+
+#: generics.py:740
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "%(object)s nebyl aktualizován, chyba: %(error)s."
+
+#: generics.py:751
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "%(object)s byl úspěšně aktualizován."
+
+#: mixins.py:314
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr "Nebyl nalezen žádný dotaz %(verbose_name)s"
+
+#: mixins.py:427
+msgid "Object"
+msgstr "Objekt"
+
+#: settings.py:15
+msgid "The number objects that will be displayed per page."
+msgstr "Počet objektů, které se zobrazí na stránce."
+
+#: templatetags/views_tags.py:31
+msgid "Confirm delete"
+msgstr "Potvrďte smazání"
+
+#: templatetags/views_tags.py:36
+#, python-format
+msgid "Edit %s"
+msgstr "Upravit %s"
+
+#: templatetags/views_tags.py:39
+msgid "Confirm"
+msgstr "Potvrdit"
+
+#: templatetags/views_tags.py:43
+#, python-format
+msgid "Details for: %s"
+msgstr "Podrobnosti pro: %s"
+
+#: templatetags/views_tags.py:47
+#, python-format
+msgid "Edit: %s"
+msgstr "Upravit: %s"
+
+#: templatetags/views_tags.py:51
+msgid "Create"
+msgstr "Vytvořit"
+
+#~ msgid "Common"
+#~ msgstr "Společný"
+
+#~ msgid "Used to allow offline translation of the code text strings."
+#~ msgstr "Slouží k povolení offline překladu textových řetězců."
+
+#~ msgid "Provides style checking."
+#~ msgstr "Poskytuje kontrolu stylu."
+
+#~ msgid "Command line environment with autocompletion."
+#~ msgstr "Prostředí příkazového řádku s automatickým dokončováním."
+
+#~ msgid "Checks proper formatting of the README file."
+#~ msgstr "Zkontroluje správné formátování souboru README."
+
+#~ msgid "About this"
+#~ msgstr "O Mayan EDMS"
+
+#~ msgid "Get the book"
+#~ msgstr "Získejte knihu"
+
+#~ msgid "Locale profile"
+#~ msgstr "Profil národního prostředí"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "Upravit místní nastavení"
+
+#~ msgid "Documentation"
+#~ msgstr "Dokumentace"
+
+#~ msgid "Errors"
+#~ msgstr "Chyby"
+
+#~ msgid "Clear all"
+#~ msgstr "Vymazat vše"
+
+#~ msgid "Forum"
+#~ msgstr "Forum"
+
+#~ msgid "License"
+#~ msgstr "Licence"
+
+#~ msgid "Setup"
+#~ msgstr "Nastavení"
+
+#~ msgid "Source code"
+#~ msgstr "Zdrojový kód"
+
+#~ msgid "Tools"
+#~ msgstr "Nástroje"
+
+#~ msgid ""
+#~ "This feature has been deprecated and will be removed in a future version."
+#~ msgstr "Tato funkce byla ukončena a v budoucí verzi bude odstraněna."
+
+#~ msgid ""
+#~ "Your database backend is set to use SQLite. SQLite should only be used "
+#~ "for development and testing, not for production."
+#~ msgstr ""
+#~ "Backend vaší databáze je nastaven na použití SQLite. SQLite by se měl "
+#~ "používat pouze pro vývoj a testování, nikoli pro produkční prostředí."
+
+#~ msgid "Days"
+#~ msgstr "Dny"
+
+#~ msgid "Hours"
+#~ msgstr "Hodiny"
+
+#~ msgid "Minutes"
+#~ msgstr "Minuty"
+
+#~ msgid "System"
+#~ msgstr "Systém"
+
+#~ msgid "Facet"
+#~ msgstr "Aspekt"
+
+#~ msgid "Actions"
+#~ msgstr "Akce"
+
+#~ msgid "Secondary"
+#~ msgstr "Sekundární"
+
+#~ msgid "User"
+#~ msgstr "Uživatel"
+
+#~ msgid "Namespace"
+#~ msgstr "Jmenný prostor"
+
+#~ msgid "Date time"
+#~ msgstr "Datum a čas"
+
+#~ msgid "Result"
+#~ msgstr "Výsledek"
+
+#~ msgid "Error log entry"
+#~ msgstr "Položka protokolu chyb"
+
+#~ msgid "Error log entries"
+#~ msgstr "Chybové položky protokolu"
+
+#~ msgid "File"
+#~ msgstr "Soubor"
+
+#~ msgid "Filename"
+#~ msgstr "Název souboru"
+
+#~ msgid "Shared uploaded file"
+#~ msgstr "Sdílený nahraný soubor"
+
+#~ msgid "Shared uploaded files"
+#~ msgstr "Sdílené nahrané soubory"
+
+#~ msgid "Timezone"
+#~ msgstr "Časové pásmo"
+
+#~ msgid "Language"
+#~ msgstr "Jazyk"
+
+#~ msgid "User locale profile"
+#~ msgstr "Profil místního uživatele"
+
+#~ msgid "User locale profiles"
+#~ msgstr "Profily národního prostředí uživatele"
+
+#~ msgid "View error log"
+#~ msgstr "Zobrazit protokol chyb"
+
+#~ msgid "Default"
+#~ msgstr "Výchozí"
+
+#~ msgid "Common periodic"
+#~ msgstr "Společné opakující se"
+
+#~ msgid "Delete stale uploads"
+#~ msgstr "Odstraňte zastaralá nahrávání"
+
+#~ msgid "Automatically enable logging to all apps."
+#~ msgstr "Automaticky povolit protokolování pro všechny aplikace."
+
+#~ msgid ""
+#~ "Time to delay background tasks that depend on a database commit to "
+#~ "propagate."
+#~ msgstr "Čas na čekání úkolů na pozadí, čekající na propagaci do databáze."
+
+#~ msgid ""
+#~ "A list of strings designating all applications that are to be removed "
+#~ "from the list normally installed by Mayan EDMS. Each string should be a "
+#~ "dotted Python path to: an application configuration class (preferred), or "
+#~ "a package containing an application."
+#~ msgstr ""
+#~ "Seznam řetězců označujících všechny aplikace, které mají být odstraněny "
+#~ "ze seznamu normálně nainstalovaného Mayan EDMS. Každý řetězec by měla být "
+#~ "tečkovaná cesta Pythonu k: třídě konfigurace aplikace (upřednostňováno) "
+#~ "nebo balíčku obsahující aplikaci."
+
+#~ msgid ""
+#~ "A list of strings designating all applications that are installed beyond "
+#~ "those normally installed by Mayan EDMS. Each string should be a dotted "
+#~ "Python path to: an application configuration class (preferred), or a "
+#~ "package containing an application."
+#~ msgstr ""
+#~ "Seznam řetězců označujících všechny aplikace, které jsou nainstalovány "
+#~ "nad rámec těch, které jsou obvykle nainstalovány Mayn EDMS. Každý řetězec "
+#~ "by měla být tečkovaná cesta Pythonu k: třídě konfigurace aplikace "
+#~ "(upřednostňováno) nebo balíčku obsahující aplikaci."
+
+#~ msgid ""
+#~ "Name of the view attached to the brand anchor in the main menu. This is "
+#~ "also the view to which users will be redirected after log in."
+#~ msgstr ""
+#~ "Název pohledu připojeného ke kotvě značky v hlavní nabídce. Toto je také "
+#~ "pohled, na který budou uživatelé přesměrováni po přihlášení."
+
+#~ msgid ""
+#~ "Enable error logging outside of the system error logging capabilities."
+#~ msgstr ""
+#~ "Povolit protokolování chyb mimo možnosti protokolování systémových chyb."
+
+#~ msgid "Path to the logfile that will track errors during production."
+#~ msgstr "Cesta k souboru protokolu, který bude sledovat chyby produkce."
+
+#~ msgid "Name to be displayed in the main menu."
+#~ msgstr "Název, který se zobrazí v hlavní nabídce."
+
+#~ msgid "URL of the installation or homepage of the project."
+#~ msgstr "URL instalace nebo domovská stránka projektu."
+
+#~ msgid "A storage backend that all workers can use to share files."
+#~ msgstr "Úložiště, které všichni pracovníci mohou použít ke sdílení souborů."
+
+#~ msgid "Enter a valid JSON value."
+#~ msgstr "Zadejte platnou hodnotu JSON."
+
+#~ msgid "Enter a valid YAML value."
+#~ msgstr "Zadejte platnou hodnotu YAML."
+
+#~ msgid ""
+#~ "Enter a valid 'internal name' consisting of letters, numbers, and "
+#~ "underscores."
+#~ msgstr ""
+#~ "Zadejte platný „interní název“ skládající se z písmen, číslic a "
+#~ "podtržítek."
+
+#~ msgid "About"
+#~ msgstr "O Mayan EDMS"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "Podrobnosti o aktuálním místním profilu uživatele"
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "Upravit podrobnosti o aktuálním místním profilu uživatele"
+
+#~ msgid "Dashboard"
+#~ msgstr "Řídící panel"
+
+#~ msgid "Clear error log entries for: %s"
+#~ msgstr "Vymažte položky protokolu chyb pro: %s"
+
+#~ msgid "Object error log cleared successfully"
+#~ msgstr "Protokol chyb objektu byl úspěšně vymazán"
+
+#~ msgid "Date and time"
+#~ msgstr "Datum a čas"
+
+#~ msgid ""
+#~ "This view displays the error log of different object. An empty list is a "
+#~ "good thing."
+#~ msgstr ""
+#~ "Toto zobrazení zobrazuje protokol chyb různých objektů. Prázdný seznam je "
+#~ "dobré znamení."
+
+#~ msgid "There are no error log entries"
+#~ msgstr "V protokolu chyb nejsou žádné záznamy"
+
+#~ msgid "Error log entries for: %s"
+#~ msgstr "Položky protokolu chyb pro: %s"
+
+#~ msgid "No setup options available."
+#~ msgstr "Nejsou k dispozici žádné možnosti nastavení."
+
+#~ msgid ""
+#~ "No results here means that don't have the required permissions to perform "
+#~ "administrative task."
+#~ msgstr ""
+#~ "Žádné výsledky zde znamenají, že nemáte potřebná oprávnění k provedení "
+#~ "administrativní úlohy."
+
+#~ msgid "Setup items"
+#~ msgstr "Položky nastavení"
+
+#~ msgid "Here you can configure all aspects of the system."
+#~ msgstr "Zde můžete nakonfigurovat všechny aspekty systému."
+
+#~ msgid "These modules are used to do system maintenance."
+#~ msgstr "Tyto moduly se používají k údržbě systému."

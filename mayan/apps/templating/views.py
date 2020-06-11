@@ -4,10 +4,10 @@ from django.template import TemplateSyntaxError
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import FormView
-from mayan.apps.common.http import URL
-from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.models import Document
+from mayan.apps.views.generics import FormView
+from mayan.apps.views.http import URL
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .classes import Template
 from .forms import DocumentTemplateSandboxForm

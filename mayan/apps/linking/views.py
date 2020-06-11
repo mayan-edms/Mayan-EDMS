@@ -9,17 +9,17 @@ from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.generics import (
-    AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
-)
-from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_edit, permission_document_view
 )
 from mayan.apps.documents.views.document_views import DocumentListView
+from mayan.apps.views.generics import (
+    AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
+)
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .events import event_smart_link_edited
 from .forms import SmartLinkConditionForm, SmartLinkForm

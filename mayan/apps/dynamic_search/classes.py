@@ -9,10 +9,10 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext as _
 
 from mayan.apps.common.exceptions import ResolverPipelineError
-from mayan.apps.common.literals import LIST_MODE_CHOICE_LIST
 from mayan.apps.common.utils import (
     ResolverPipelineModelAttribute, get_related_field
 )
+from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
 from .settings import (
     setting_search_backend, setting_search_backend_arguments

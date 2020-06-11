@@ -3,13 +3,13 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-from mayan.apps.common.generics import (
+from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
+from mayan.apps.documents.models import Document, DocumentPage, DocumentType
+from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectDetailView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.common.mixins import ExternalObjectMixin
-from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
-from mayan.apps.documents.models import Document, DocumentPage, DocumentType
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .forms import DocumentContentForm, DocumentPageContentForm
 from .models import DocumentPageContent, DocumentVersionParseError

@@ -2,11 +2,11 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_object, menu_secondary, menu_tools, menu_topbar, menu_user
 )
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .html_widgets import (
     ObjectLinkWidget, widget_event_actor_link, widget_event_type_link

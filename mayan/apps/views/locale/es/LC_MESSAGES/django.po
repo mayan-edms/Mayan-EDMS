@@ -1,0 +1,439 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# jmcainzos <jmcainzos@vodafone.es>, 2014
+# jmcainzos <jmcainzos@vodafone.es>, 2015
+# Lory977 <helga.carrero@gmail.com>, 2015
+# Roberto Rosario, 2016-2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-11 02:28-0400\n"
+"PO-Revision-Date: 2020-04-19 06:09+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:27 settings.py:9
+msgid "Views"
+msgstr ""
+
+#: forms.py:24
+msgid "Selection"
+msgstr "Selección"
+
+#: forms.py:100
+msgid "None"
+msgstr "Ninguno"
+
+#: generics.py:146
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+"Seleccione las entradas que desea eliminar. Mantén pulsado Control para "
+"seleccionar varias entradas. Una vez que se complete la selección, haga clic "
+"en el botón de abajo o haga doble clic en la lista para activar la acción."
+
+#: generics.py:151
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+"Seleccione las entradas que se añadirán. Mantén pulsado Control para "
+"seleccionar varias entradas. Una vez que se complete la selección, haga clic "
+"en el botón de abajo o haga doble clic en la lista para activar la acción."
+
+#: generics.py:284
+msgid "Add all"
+msgstr "Añadir todo"
+
+#: generics.py:293
+msgid "Add"
+msgstr "Agregar"
+
+#: generics.py:303
+msgid "Remove all"
+msgstr "Eliminar todo"
+
+#: generics.py:312
+msgid "Remove"
+msgstr "Eliminar"
+
+#: generics.py:522
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr "Error de datos duplicados: %(error)s"
+
+#: generics.py:543
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "%(object)s no se pudo crear, error: %(error)s"
+
+#: generics.py:556
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "%(object)s creado exitosamente."
+
+#: generics.py:595
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "%(object)s no se pudo borrar, error: %(error)s."
+
+#: generics.py:604
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "%(object)s borrado exitosamente."
+
+#: generics.py:740
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "%(object)s no se pudo actualizar, error: %(error)s."
+
+#: generics.py:751
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "%(object)s actualizado exitosamente."
+
+#: mixins.py:314
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr "No se encontró %(verbose_name)s que coincida con la consulta"
+
+#: mixins.py:427
+msgid "Object"
+msgstr "Objeto"
+
+#: settings.py:15
+msgid "The number objects that will be displayed per page."
+msgstr "El número de objetos que se mostrarán por página."
+
+#: templatetags/views_tags.py:31
+msgid "Confirm delete"
+msgstr "Confirmar eliminación"
+
+#: templatetags/views_tags.py:36
+#, python-format
+msgid "Edit %s"
+msgstr "Editar %s"
+
+#: templatetags/views_tags.py:39
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: templatetags/views_tags.py:43
+#, python-format
+msgid "Details for: %s"
+msgstr "Detalles para: %s"
+
+#: templatetags/views_tags.py:47
+#, python-format
+msgid "Edit: %s"
+msgstr "Editar: %s"
+
+#: templatetags/views_tags.py:51
+msgid "Create"
+msgstr "Crear"
+
+#~ msgid "Common"
+#~ msgstr "Común"
+
+#~ msgid "Model properties"
+#~ msgstr "Propiedades del modelo"
+
+#~ msgid "Model fields"
+#~ msgstr "Campos del modelo"
+
+#~ msgid "Model related fields"
+#~ msgstr "Campos relacionados del modelo"
+
+#~ msgid "Model reverse fields"
+#~ msgstr "Campos inversos de modelo"
+
+#~ msgid "Used to allow offline translation of the code text strings."
+#~ msgstr ""
+#~ "Se utiliza para permitir la traducción sin conexión de los textos del "
+#~ "código."
+
+#~ msgid "Provides style checking."
+#~ msgstr "Proporciona la comprobación de estilo."
+
+#~ msgid "Command line environment with autocompletion."
+#~ msgstr "Entorno de línea de comandos con autocompletado."
+
+#~ msgid "Checks proper formatting of the README file."
+#~ msgstr "Comprueba el formato correcto del archivo README."
+
+#~ msgid "About this"
+#~ msgstr "Sobre esto"
+
+#~ msgid "Get the book"
+#~ msgstr "Consigue el libro"
+
+#~ msgid "Locale profile"
+#~ msgstr "Perfil de localización"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "Editar perfil de localización"
+
+#~ msgid "Documentation"
+#~ msgstr "Documentación"
+
+#~ msgid "Errors"
+#~ msgstr "Errores"
+
+#~ msgid "Clear all"
+#~ msgstr "Limpiar todo"
+
+#~ msgid "Forum"
+#~ msgstr "Foro"
+
+#~ msgid "License"
+#~ msgstr "Licencia"
+
+#~ msgid "Setup"
+#~ msgstr "Configuración"
+
+#~ msgid "Source code"
+#~ msgstr "Código fuente"
+
+#~ msgid "Get support"
+#~ msgstr "Obtener apoyo"
+
+#~ msgid "Tools"
+#~ msgstr "Herramientas"
+
+#~ msgid ""
+#~ "This feature has been deprecated and will be removed in a future version."
+#~ msgstr ""
+#~ "Esta función ha quedado en desuso y se eliminará en una versión futura."
+
+#~ msgid ""
+#~ "Your database backend is set to use SQLite. SQLite should only be used "
+#~ "for development and testing, not for production."
+#~ msgstr ""
+#~ "El backend de su base de datos está configurado para usar SQLite. SQLite "
+#~ "solo debe usarse para desarrollo y pruebas, no para producción."
+
+#~ msgid "Days"
+#~ msgstr "Días"
+
+#~ msgid "Hours"
+#~ msgstr "Horas"
+
+#~ msgid "Minutes"
+#~ msgstr "Minutos"
+
+#~ msgid "System"
+#~ msgstr "Sistema"
+
+#~ msgid "Facet"
+#~ msgstr "Faceta"
+
+#~ msgid "Actions"
+#~ msgstr "Acciones"
+
+#~ msgid "Secondary"
+#~ msgstr "Secundario"
+
+#~ msgid "User"
+#~ msgstr "Usuario"
+
+#~ msgid "Namespace"
+#~ msgstr "Espacio nombrado"
+
+#~ msgid "Date time"
+#~ msgstr "Fecha y hora"
+
+#~ msgid "Result"
+#~ msgstr "Resultado"
+
+#~ msgid "Error log entry"
+#~ msgstr "Entrada del registro de errores"
+
+#~ msgid "Error log entries"
+#~ msgstr "Entradas del registro de errores"
+
+#~ msgid "File"
+#~ msgstr "Archivo"
+
+#~ msgid "Filename"
+#~ msgstr "Nombre del archivo"
+
+#~ msgid "Shared uploaded file"
+#~ msgstr "Archivo cargado compartido"
+
+#~ msgid "Shared uploaded files"
+#~ msgstr "Archivos cargados compartidos"
+
+#~ msgid "Timezone"
+#~ msgstr "Zona horaria"
+
+#~ msgid "Language"
+#~ msgstr "Lenguaje"
+
+#~ msgid "User locale profile"
+#~ msgstr "Perfil de localización de usuario"
+
+#~ msgid "User locale profiles"
+#~ msgstr "Perfiles de localización de usuario"
+
+#~ msgid "View error log"
+#~ msgstr "Ver registro de errores"
+
+#~ msgid "Default"
+#~ msgstr "Por defecto"
+
+#~ msgid "Common periodic"
+#~ msgstr "Común periódico"
+
+#~ msgid "Delete stale uploads"
+#~ msgstr "Eliminar subidas expiradas"
+
+#~ msgid "Automatically enable logging to all apps."
+#~ msgstr "Activar bitácoras automáticamente a todas las aplicaciones."
+
+#~ msgid ""
+#~ "Time to delay background tasks that depend on a database commit to "
+#~ "propagate."
+#~ msgstr ""
+#~ "Tiempo para retrasar las tareas de fondo que dependen de la propagación "
+#~ "de información en la base de datos."
+
+#~ msgid ""
+#~ "A list of strings designating all applications that are to be removed "
+#~ "from the list normally installed by Mayan EDMS. Each string should be a "
+#~ "dotted Python path to: an application configuration class (preferred), or "
+#~ "a package containing an application."
+#~ msgstr ""
+#~ "Una lista de nombres que designan todas las aplicaciones que se "
+#~ "eliminarán de la lista que normalmente instala Mayan EDMS. Cada entrada "
+#~ "debe ser una ruta de Python con puntos a: una clase de configuración de "
+#~ "la aplicación (preferida) o un paquete que contenga una aplicación."
+
+#~ msgid ""
+#~ "A list of strings designating all applications that are installed beyond "
+#~ "those normally installed by Mayan EDMS. Each string should be a dotted "
+#~ "Python path to: an application configuration class (preferred), or a "
+#~ "package containing an application."
+#~ msgstr ""
+#~ "Una lista de nombres que designan todas las aplicaciones que se instalan "
+#~ "más allá de las instaladas normalmente por Mayan EDMS. Cada entrada debe "
+#~ "ser una ruta de Python con puntos a: una clase de configuración de la "
+#~ "aplicación (preferida) o un paquete que contenga una aplicación."
+
+#~ msgid ""
+#~ "Name of the view attached to the brand anchor in the main menu. This is "
+#~ "also the view to which users will be redirected after log in."
+#~ msgstr ""
+#~ "Nombre de la vista adjunta al ancla de la marca en el menú principal. "
+#~ "Esta es también la vista a la que los usuarios serán redirigidos después "
+#~ "de iniciar sesión."
+
+#~ msgid ""
+#~ "Enable error logging outside of the system error logging capabilities."
+#~ msgstr ""
+#~ "Habilite el registro de errores fuera de las capacidades de registro de "
+#~ "errores del sistema."
+
+#~ msgid "Path to the logfile that will track errors during production."
+#~ msgstr ""
+#~ "Ruta de acceso al archivo de registro que rastreará errores durante la "
+#~ "producción."
+
+#~ msgid "Name to be displayed in the main menu."
+#~ msgstr "Nombre que se mostrará en el menú principal."
+
+#~ msgid "URL of the installation or homepage of the project."
+#~ msgstr "URL de la instalación o página de inicio del proyecto."
+
+#~ msgid "A storage backend that all workers can use to share files."
+#~ msgstr ""
+#~ "Un soporte de almacenamiento que todos los 'workers' puedan utilizar para "
+#~ "compartir archivos."
+
+#~ msgid "Base URL path to use for all views."
+#~ msgstr "Ruta base de la URL para usar en todas las vistas."
+
+#~ msgid ""
+#~ "Unable to initialize the shared uploaded file storage. Check the settings "
+#~ "{} and {} for formatting errors."
+#~ msgstr ""
+#~ "No se puede inicializar el almacenamiento compartido de archivos "
+#~ "cargados. Verifique las configuraciones {} y {} para errores de formato."
+
+#~ msgid "Enter a valid JSON value."
+#~ msgstr "Ingrese un valor JSON válido."
+
+#~ msgid "Enter a valid YAML value."
+#~ msgstr "Ingrese un valor válido YAML."
+
+#~ msgid ""
+#~ "Enter a valid 'internal name' consisting of letters, numbers, and "
+#~ "underscores."
+#~ msgstr ""
+#~ "Introduzca un nombre interno válido que conste de letras, números y "
+#~ "subrayados."
+
+#~ msgid "About"
+#~ msgstr "Sobre"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "Detalles del perfil de localización del usuario actual"
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "Editar los detalles del perfil del usuario local"
+
+#~ msgid "Dashboard"
+#~ msgstr "Tablero"
+
+#~ msgid "Clear error log entries for: %s"
+#~ msgstr "Borrar entradas de registro de errores para: %s"
+
+#~ msgid "Object error log cleared successfully"
+#~ msgstr "El registro de errores del objeto se borró correctamente"
+
+#~ msgid "Date and time"
+#~ msgstr "Fecha y hora"
+
+#~ msgid ""
+#~ "This view displays the error log of different object. An empty list is a "
+#~ "good thing."
+#~ msgstr ""
+#~ "Esta vista muestra el registro de errores de diferentes objetos. Una "
+#~ "lista vacía es algo bueno."
+
+#~ msgid "There are no error log entries"
+#~ msgstr "No hay entradas de registro de errores"
+
+#~ msgid "Error log entries for: %s"
+#~ msgstr "Entradas del registro de errores para: %s"
+
+#~ msgid "No setup options available."
+#~ msgstr "No hay opciones de configuración disponibles."
+
+#~ msgid ""
+#~ "No results here means that don't have the required permissions to perform "
+#~ "administrative task."
+#~ msgstr ""
+#~ "Ningún resultado aquí significa que no tiene los permisos necesarios para "
+#~ "realizar tareas administrativas."
+
+#~ msgid "Setup items"
+#~ msgstr "Elementos de configuración"
+
+#~ msgid "Here you can configure all aspects of the system."
+#~ msgstr "Aquí puede configurar todos los aspectos del sistema."
+
+#~ msgid "These modules are used to do system maintenance."
+#~ msgstr "Estos módulos se utilizan para hacer el mantenimiento del sistema."

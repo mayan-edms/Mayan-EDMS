@@ -5,10 +5,10 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
 
-from mayan.apps.common.generics import (
+from mayan.apps.views.generics import (
     ConfirmView, SimpleView, SingleObjectListView
 )
-from mayan.apps.common.literals import LIST_MODE_CHOICE_ITEM
+from mayan.apps.views.literals import LIST_MODE_CHOICE_ITEM
 
 from .classes import SearchBackend, SearchModel
 from .forms import SearchForm, AdvancedSearchForm

@@ -1,0 +1,405 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-11 02:28-0400\n"
+"PO-Revision-Date: 2020-04-19 04:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/lv/)\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#: apps.py:27 settings.py:9
+msgid "Views"
+msgstr ""
+
+#: forms.py:24
+msgid "Selection"
+msgstr "Selekcija"
+
+#: forms.py:100
+msgid "None"
+msgstr "Nav neviens"
+
+#: generics.py:146
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+"Atlasiet noņemamos ierakstus. Lai atlasītu vairākus ierakstus, turiet "
+"Control taustiņu. Kad atlase ir pabeigta, noklikšķiniet uz zemāk redzamās "
+"pogas vai veiciet dubultklikšķi uz saraksta, lai aktivizētu darbību."
+
+#: generics.py:151
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+"Atlasiet pievienojamos ierakstus. Lai atlasītu vairākus ierakstus, turiet "
+"Control taustiņu. Kad atlase ir pabeigta, noklikšķiniet uz zemāk redzamās "
+"pogas vai veiciet dubultklikšķi uz saraksta, lai aktivizētu darbību."
+
+#: generics.py:284
+msgid "Add all"
+msgstr "Pievienot visus"
+
+#: generics.py:293
+msgid "Add"
+msgstr "Pievienot"
+
+#: generics.py:303
+msgid "Remove all"
+msgstr "Noņemt visus"
+
+#: generics.py:312
+msgid "Remove"
+msgstr "Noņemt"
+
+#: generics.py:522
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr "Datu kopijas kļūda: %(error)s"
+
+#: generics.py:543
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "%(object)s nav izveidots, kļūda: %(error)s"
+
+#: generics.py:556
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "%(object)s izveidots veiksmīgi."
+
+#: generics.py:595
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "%(object)s nav dzēsts, kļūda: %(error)s."
+
+#: generics.py:604
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "%(object)s veiksmīgi izdzēsts."
+
+#: generics.py:740
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "%(object)s nav atjaunināts, kļūda: %(error)s."
+
+#: generics.py:751
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "%(object)s veiksmīgi atjaunināts."
+
+#: mixins.py:314
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr "%(verbose_name)s nav atrasts atbilstošs vaicājumam"
+
+#: mixins.py:427
+msgid "Object"
+msgstr "Objekts"
+
+#: settings.py:15
+msgid "The number objects that will be displayed per page."
+msgstr "Objektu skaits, kas tiks rādīti vienā lapā."
+
+#: templatetags/views_tags.py:31
+msgid "Confirm delete"
+msgstr "Apstipriniet dzēšanu"
+
+#: templatetags/views_tags.py:36
+#, python-format
+msgid "Edit %s"
+msgstr "Rediģēt %s"
+
+#: templatetags/views_tags.py:39
+msgid "Confirm"
+msgstr "Apstiprināt"
+
+#: templatetags/views_tags.py:43
+#, python-format
+msgid "Details for: %s"
+msgstr "Sīkāka informācija par: %s"
+
+#: templatetags/views_tags.py:47
+#, python-format
+msgid "Edit: %s"
+msgstr "Rediģēt: %s"
+
+#: templatetags/views_tags.py:51
+msgid "Create"
+msgstr "Izveidot"
+
+#~ msgid "Common"
+#~ msgstr "Kopīgs"
+
+#~ msgid "Used to allow offline translation of the code text strings."
+#~ msgstr "Izmantots, lai atļautu koda teksta virkņu bezsaistes tulkojumu."
+
+#~ msgid "Provides style checking."
+#~ msgstr "Nodrošina stila pārbaudi."
+
+#~ msgid "Command line environment with autocompletion."
+#~ msgstr "Komandrindas vide ar automātisko aizpildi."
+
+#~ msgid "Checks proper formatting of the README file."
+#~ msgstr "Pārbauda README faila pareizu formatēšanu."
+
+#~ msgid "About this"
+#~ msgstr "Par šo"
+
+#~ msgid "Get the book"
+#~ msgstr "Iegūstiet grāmatu"
+
+#~ msgid "Locale profile"
+#~ msgstr "Lokalizācijas profils"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "Rediģēt lokalizācijas profilu"
+
+#~ msgid "Documentation"
+#~ msgstr "Dokumentācija"
+
+#~ msgid "Errors"
+#~ msgstr "Kļūdas"
+
+#~ msgid "Clear all"
+#~ msgstr "Iztīrīt visu"
+
+#~ msgid "Forum"
+#~ msgstr "Forums"
+
+#~ msgid "License"
+#~ msgstr "Licence"
+
+#~ msgid "Setup"
+#~ msgstr "Setup"
+
+#~ msgid "Source code"
+#~ msgstr "Pirmkods"
+
+#~ msgid "Tools"
+#~ msgstr "Rīki"
+
+#~ msgid ""
+#~ "This feature has been deprecated and will be removed in a future version."
+#~ msgstr "Šī funkcija ir novecojusi un tiks noņemta turpmākajā versijā."
+
+#~ msgid ""
+#~ "Your database backend is set to use SQLite. SQLite should only be used "
+#~ "for development and testing, not for production."
+#~ msgstr ""
+#~ "Jūsu datubāzes backend ir iestatīts, lai izmantotu SQLite. SQLite "
+#~ "jāizmanto tikai izstrādei un testēšanai, nevis ražošanai."
+
+#~ msgid "Days"
+#~ msgstr "Dienas"
+
+#~ msgid "Hours"
+#~ msgstr "Stundas"
+
+#~ msgid "Minutes"
+#~ msgstr "Minūtes"
+
+#~ msgid "System"
+#~ msgstr "Sistēma"
+
+#~ msgid "Facet"
+#~ msgstr "Fasets"
+
+#~ msgid "Actions"
+#~ msgstr "Darbības"
+
+#~ msgid "Secondary"
+#~ msgstr "Sekundārā"
+
+#~ msgid "User"
+#~ msgstr "Lietotājs"
+
+#~ msgid "Namespace"
+#~ msgstr "Vārda vieta"
+
+#~ msgid "Date time"
+#~ msgstr "Datums Laiks"
+
+#~ msgid "Result"
+#~ msgstr "Rezultāts"
+
+#~ msgid "Error log entry"
+#~ msgstr "Kļūdu žurnāla ieraksts"
+
+#~ msgid "Error log entries"
+#~ msgstr "Kļūdu žurnāla ieraksti"
+
+#~ msgid "File"
+#~ msgstr "Fails"
+
+#~ msgid "Filename"
+#~ msgstr "Faila nosaukums"
+
+#~ msgid "Shared uploaded file"
+#~ msgstr "Koplietotais augšupielādētais fails"
+
+#~ msgid "Shared uploaded files"
+#~ msgstr "Koplietotie augšupielādētie faili"
+
+#~ msgid "Timezone"
+#~ msgstr "Laika zona"
+
+#~ msgid "Language"
+#~ msgstr "Valoda"
+
+#~ msgid "User locale profile"
+#~ msgstr "Lietotāja lokalizācijas profils"
+
+#~ msgid "User locale profiles"
+#~ msgstr "Lietotāja lokalizācijas profili"
+
+#~ msgid "View error log"
+#~ msgstr "Skatīt kļūdu žurnālu"
+
+#~ msgid "Default"
+#~ msgstr "Noklusējums"
+
+#~ msgid "Common periodic"
+#~ msgstr "Kopīgs periodiski"
+
+#~ msgid "Delete stale uploads"
+#~ msgstr "Dzēst nostāvējušās augšupielādes"
+
+#~ msgid "Automatically enable logging to all apps."
+#~ msgstr "Automātiski iespējojiet pierakstīšanos visās lietotnēs."
+
+#~ msgid ""
+#~ "Time to delay background tasks that depend on a database commit to "
+#~ "propagate."
+#~ msgstr ""
+#~ "Laiks uz kādu aizkavēt fona uzdevumus, kas ir atkarīgs no datu bāzes "
+#~ "apņemšanās uz izplatīšanu."
+
+#~ msgid ""
+#~ "A list of strings designating all applications that are to be removed "
+#~ "from the list normally installed by Mayan EDMS. Each string should be a "
+#~ "dotted Python path to: an application configuration class (preferred), or "
+#~ "a package containing an application."
+#~ msgstr ""
+#~ "Saraksts ar virknēm, kas apzīmē visas lietojumprogrammas, kuras jānoņem "
+#~ "no saraksta, kuras parasti uzstāda Mayan EDMS. Katrai virknei vajadzētu "
+#~ "būt punktveida Python ceļam uz: lietojumprogrammas konfigurācijas klasi "
+#~ "(vēlams) vai paketi, kurā ir lietojumprogramma."
+
+#~ msgid ""
+#~ "A list of strings designating all applications that are installed beyond "
+#~ "those normally installed by Mayan EDMS. Each string should be a dotted "
+#~ "Python path to: an application configuration class (preferred), or a "
+#~ "package containing an application."
+#~ msgstr ""
+#~ "Saraksts ar virknēm, kas apzīmē visas lietojumprogrammas, kas ir "
+#~ "uzstādītas ārpus tām, ko parasti uzstāda Mayan EDMS. Katrai virknei "
+#~ "vajadzētu būt punktveida Python ceļam uz: lietojumprogrammas "
+#~ "konfigurācijas klasi (vēlams) vai paketi, kurā ir lietojumprogramma."
+
+#~ msgid ""
+#~ "Name of the view attached to the brand anchor in the main menu. This is "
+#~ "also the view to which users will be redirected after log in."
+#~ msgstr ""
+#~ "Zīmola enkuram pievienotā skata nosaukums galvenajā izvēlnē. Tas ir arī "
+#~ "skats, uz kuru pēc pierakstīšanās lietotāji tiks novirzīti."
+
+#~ msgid ""
+#~ "Enable error logging outside of the system error logging capabilities."
+#~ msgstr ""
+#~ "Iespējot kļūdu reģistrēšanu ārpus sistēmas kļūdu reģistrēšanas iespējām."
+
+#~ msgid "Path to the logfile that will track errors during production."
+#~ msgstr "Ceļš uz žurnāla failu, kurā tiks novērotas kļūdas ražošanas laikā."
+
+#~ msgid "Name to be displayed in the main menu."
+#~ msgstr "Nosaukums, kas jārāda galvenajā izvēlnē."
+
+#~ msgid "URL of the installation or homepage of the project."
+#~ msgstr "Projekta instalācijas vai mājas lapas URL."
+
+#~ msgid "A storage backend that all workers can use to share files."
+#~ msgstr ""
+#~ "Uzglabāšanas backend, ko visi darbinieki var izmantot, lai koplietotu "
+#~ "failus."
+
+#~ msgid "Enter a valid JSON value."
+#~ msgstr "Ievadiet derīgu JSON vērtību."
+
+#~ msgid "Enter a valid YAML value."
+#~ msgstr "Ievadiet derīgu YAML vērtību."
+
+#~ msgid ""
+#~ "Enter a valid 'internal name' consisting of letters, numbers, and "
+#~ "underscores."
+#~ msgstr ""
+#~ "Ievadiet derīgu “iekšējo nosaukumu”, kas sastāv no burtiem, cipariem un "
+#~ "pasvītrojumiem."
+
+#~ msgid "About"
+#~ msgstr "Par"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "Pašreizējā lietotāja lokalizācijas profila informācija"
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "Rediģējiet pašreizējās lietotāja lokalizācijas profila informāciju"
+
+#~ msgid "Dashboard"
+#~ msgstr "Panelis"
+
+#~ msgid "Clear error log entries for: %s"
+#~ msgstr "Notīrīt kļūdas žurnāla ierakstus: %s"
+
+#~ msgid "Object error log cleared successfully"
+#~ msgstr "Objekta kļūdu žurnāls veiksmīgi notīrīts"
+
+#~ msgid "Date and time"
+#~ msgstr "Datums un laiks"
+
+#~ msgid ""
+#~ "This view displays the error log of different object. An empty list is a "
+#~ "good thing."
+#~ msgstr ""
+#~ "Šajā skatā tiek parādīts dažādu objektu kļūdu žurnāls. Tukšs saraksts ir "
+#~ "laba lieta."
+
+#~ msgid "There are no error log entries"
+#~ msgstr "Nav kļūdu žurnāla ierakstu"
+
+#~ msgid "Error log entries for: %s"
+#~ msgstr "Kļūdu žurnāla ieraksti: %s"
+
+#~ msgid "No setup options available."
+#~ msgstr "Nav pieejamas iestatīšanas opcijas."
+
+#~ msgid ""
+#~ "No results here means that don't have the required permissions to perform "
+#~ "administrative task."
+#~ msgstr ""
+#~ "Neviens no rezultātiem šeit nenozīmē, ka nav nepieciešamo atļauju "
+#~ "administratīvā uzdevuma veikšanai."
+
+#~ msgid "Setup items"
+#~ msgstr "Iestatīšanas vienumi"
+
+#~ msgid "Here you can configure all aspects of the system."
+#~ msgstr "Šeit jūs varat konfigurēt visus sistēmas aspektus."
+
+#~ msgid "These modules are used to do system maintenance."
+#~ msgstr "Šie moduļi tiek izmantoti sistēmas uzturēšanai."

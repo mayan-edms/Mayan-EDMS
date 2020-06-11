@@ -9,12 +9,7 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.generics import (
-    ConfirmView, MultiFormView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
-)
 from mayan.apps.common.menus import menu_facet
-from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.models import (
     DocumentType, Document, DocumentVersion
 )
@@ -24,6 +19,11 @@ from mayan.apps.documents.permissions import (
 from mayan.apps.documents.tasks import task_upload_new_version
 from mayan.apps.navigation.classes import Link
 from mayan.apps.storage.models import SharedUploadedFile
+from mayan.apps.views.generics import (
+    ConfirmView, MultiFormView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
+)
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .exceptions import SourceException
 from .forms import (

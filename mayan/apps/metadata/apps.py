@@ -9,7 +9,6 @@ from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
-from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
     menu_setup
@@ -21,6 +20,7 @@ from mayan.apps.events.links import (
 )
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .classes import DocumentMetadataHelper
 from .events import (

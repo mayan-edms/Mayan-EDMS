@@ -18,14 +18,14 @@ from django.utils.encoding import force_str, force_text
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.literals import (
+from mayan.apps.common.settings import setting_home_view
+from mayan.apps.common.utils import get_related_field, resolve_attribute
+from mayan.apps.permissions import Permission
+from mayan.apps.views.literals import (
     TEXT_SORT_FIELD_PARAMETER, TEXT_SORT_FIELD_VARIABLE_NAME,
     TEXT_SORT_ORDER_CHOICE_ASCENDING, TEXT_SORT_ORDER_CHOICE_DESCENDING,
     TEXT_SORT_ORDER_PARAMETER, TEXT_SORT_ORDER_VARIABLE_NAME
 )
-from mayan.apps.common.settings import setting_home_view
-from mayan.apps.common.utils import get_related_field, resolve_attribute
-from mayan.apps.permissions import Permission
 
 from .html_widgets import SourceColumnLinkWidget
 from .utils import get_current_view_name

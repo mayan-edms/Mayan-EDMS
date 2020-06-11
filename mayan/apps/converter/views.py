@@ -6,11 +6,11 @@ from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import (
+from mayan.apps.views.generics import (
     FormView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.common.mixins import ExternalContentTypeObjectMixin
+from mayan.apps.views.mixins import ExternalContentTypeObjectMixin
 
 from .forms import LayerTransformationForm, LayerTransformationSelectForm
 from .links import link_transformation_select

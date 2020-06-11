@@ -95,6 +95,7 @@ INSTALLED_APPS = (
     'mayan.apps.templating',
     'mayan.apps.tests',
     'mayan.apps.user_management',
+    'mayan.apps.views',
     # Project apps
     'mayan.apps.motd',
     # Document apps
@@ -238,7 +239,7 @@ STATIC_ROOT = os.environ.get(
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'mayan.apps.common.finders.MayanAppDirectoriesFinder',
+    'mayan.apps.views.finders.MayanAppDirectoriesFinder',
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

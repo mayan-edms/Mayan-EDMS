@@ -1,0 +1,441 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Annunnaky <doublemiu@gmail.com>, 2015
+# Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2017
+# Marcin Lozynski <mlozynski@wp.pl>, 2019
+# mic, 2012
+# mic <diveaway12@gmail.com>, 2012
+# mic <winterfall24@gmail.com>, 2012,2015
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2019-2020
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2020
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-11 02:28-0400\n"
+"PO-Revision-Date: 2020-05-13 14:21+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: apps.py:27 settings.py:9
+msgid "Views"
+msgstr ""
+
+#: forms.py:24
+msgid "Selection"
+msgstr "Zaznaczenie"
+
+#: forms.py:100
+msgid "None"
+msgstr "Brak"
+
+#: generics.py:146
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+"Wybierz wpisy do usunięcia. Przytrzymaj Control, aby wybrać wiele wpisów. Po "
+"zakończeniu wyboru kliknij przycisk poniżej lub kliknij dwukrotnie listę, "
+"aby aktywować akcję."
+
+#: generics.py:151
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+"Wybierz wpisy do dodania. Przytrzymaj Control, aby wybrać wiele wpisów. Po "
+"zakończeniu wyboru kliknij przycisk poniżej lub kliknij dwukrotnie listę, "
+"aby aktywować akcję."
+
+#: generics.py:284
+msgid "Add all"
+msgstr "Dodaj wszystko"
+
+#: generics.py:293
+msgid "Add"
+msgstr "Dodaj"
+
+#: generics.py:303
+msgid "Remove all"
+msgstr "Usuń wszystko"
+
+#: generics.py:312
+msgid "Remove"
+msgstr "Usuń"
+
+#: generics.py:522
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr "Błąd powielenia danych: %(error)s"
+
+#: generics.py:543
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "%(object)s nie utworzono, błąd: %(error)s"
+
+#: generics.py:556
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "%(object)s utworzono pomyślnie."
+
+#: generics.py:595
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "%(object)s nie usunięto, błąd: %(error)s."
+
+#: generics.py:604
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "%(object)s usunięto pomyślnie."
+
+#: generics.py:740
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "%(object)s nie zaktualizowano, błąd: %(error)s."
+
+#: generics.py:751
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "%(object)s zaktualizowano pomyślnie."
+
+#: mixins.py:314
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr "Nie znaleziono %(verbose_name)s pasującego do zapytania"
+
+#: mixins.py:427
+msgid "Object"
+msgstr "Obiekt"
+
+#: settings.py:15
+msgid "The number objects that will be displayed per page."
+msgstr "Liczba obiektów, które będą wyświetlane na stronie."
+
+#: templatetags/views_tags.py:31
+msgid "Confirm delete"
+msgstr "Potwierdź usunięcie"
+
+#: templatetags/views_tags.py:36
+#, python-format
+msgid "Edit %s"
+msgstr "Edytuj %s"
+
+#: templatetags/views_tags.py:39
+msgid "Confirm"
+msgstr "Potwierdź"
+
+#: templatetags/views_tags.py:43
+#, python-format
+msgid "Details for: %s"
+msgstr "Szczegóły dla: %s"
+
+#: templatetags/views_tags.py:47
+#, python-format
+msgid "Edit: %s"
+msgstr "Edytuj: %s"
+
+#: templatetags/views_tags.py:51
+msgid "Create"
+msgstr "Utwórz"
+
+#~ msgid "Common"
+#~ msgstr "Ustawienia wspólne"
+
+#~ msgid "Model properties"
+#~ msgstr "Właściwości modelu"
+
+#~ msgid "Model fields"
+#~ msgstr "Pola modelu"
+
+#~ msgid "Model related fields"
+#~ msgstr "Pola związane z modelem"
+
+#~ msgid "Model reverse fields"
+#~ msgstr "Modeluj pola odwrotne"
+
+#~ msgid "Used to allow offline translation of the code text strings."
+#~ msgstr ""
+#~ "Służy do umożliwienia tłumaczenia ciągów tekstowych kodu w trybie offline."
+
+#~ msgid "Provides style checking."
+#~ msgstr "Zapewnia kontrolę stylu."
+
+#~ msgid "Command line environment with autocompletion."
+#~ msgstr "Środowisko wiersza poleceń z funkcją autouzupełniania."
+
+#~ msgid "Checks proper formatting of the README file."
+#~ msgstr "Sprawdza poprawność formatowania pliku README."
+
+#~ msgid "About this"
+#~ msgstr "O programie"
+
+#~ msgid "Get the book"
+#~ msgstr "Pobierz książkę"
+
+#~ msgid "Locale profile"
+#~ msgstr "Profil regionalny"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "Edycja ustawień regionalnych"
+
+#~ msgid "Documentation"
+#~ msgstr "Dokumentacja"
+
+#~ msgid "Errors"
+#~ msgstr "Błędy"
+
+#~ msgid "Clear all"
+#~ msgstr "Wyczyść wszystko"
+
+#~ msgid "Forum"
+#~ msgstr "Forum"
+
+#~ msgid "License"
+#~ msgstr "Licencja"
+
+#~ msgid "Setup"
+#~ msgstr "Ustawienia"
+
+#~ msgid "Source code"
+#~ msgstr "Kod źródłowy"
+
+#~ msgid "Get support"
+#~ msgstr "Uzyskaj wsparcie"
+
+#~ msgid "Tools"
+#~ msgstr "Narzędzia"
+
+#~ msgid ""
+#~ "This feature has been deprecated and will be removed in a future version."
+#~ msgstr ""
+#~ "Ta funkcja jest przestarzała i zostanie usunięta w przyszłych wersjach."
+
+#~ msgid ""
+#~ "Your database backend is set to use SQLite. SQLite should only be used "
+#~ "for development and testing, not for production."
+#~ msgstr ""
+#~ "Twój backend bazy danych jest skonfigurowany do używania SQLite. SQLite "
+#~ "powinien być używany tylko do programowania i testowania, a nie na "
+#~ "produkcji."
+
+#~ msgid "Days"
+#~ msgstr "Dni"
+
+#~ msgid "Hours"
+#~ msgstr "Godziny"
+
+#~ msgid "Minutes"
+#~ msgstr "Minuty"
+
+#~ msgid "System"
+#~ msgstr "System"
+
+#~ msgid "Facet"
+#~ msgstr "Aspekt"
+
+#~ msgid "Actions"
+#~ msgstr "Akcje"
+
+#~ msgid "Secondary"
+#~ msgstr "Drugorzędny"
+
+#~ msgid "User"
+#~ msgstr "Użytkownik"
+
+#~ msgid "Namespace"
+#~ msgstr "Przestrzeń nazw"
+
+#~ msgid "Date time"
+#~ msgstr "Data i godzina"
+
+#~ msgid "Result"
+#~ msgstr "Wynik"
+
+#~ msgid "Error log entry"
+#~ msgstr "Wpis dziennika błędów"
+
+#~ msgid "Error log entries"
+#~ msgstr "Wpisy dziennika błędów"
+
+#~ msgid "File"
+#~ msgstr "Plik"
+
+#~ msgid "Filename"
+#~ msgstr "Nazwa"
+
+#~ msgid "Shared uploaded file"
+#~ msgstr "Udostępniony plik"
+
+#~ msgid "Shared uploaded files"
+#~ msgstr "Pliki udostępnione"
+
+#~ msgid "Timezone"
+#~ msgstr "Strefa czasowa"
+
+#~ msgid "Language"
+#~ msgstr "Język"
+
+#~ msgid "User locale profile"
+#~ msgstr "Profil regionalny użytkownika"
+
+#~ msgid "User locale profiles"
+#~ msgstr "Profile regionalne użytkownika"
+
+#~ msgid "View error log"
+#~ msgstr "Wyświetl dziennik błędów"
+
+#~ msgid "Default"
+#~ msgstr "Domyślny"
+
+#~ msgid "Common periodic"
+#~ msgstr "Wspólne okresy"
+
+#~ msgid "Delete stale uploads"
+#~ msgstr "Usuń nieaktualne pobrane pliki"
+
+#~ msgid "Automatically enable logging to all apps."
+#~ msgstr "Włącz dla wszystkich aplikacji automatyczny zapis zdarzeń."
+
+#~ msgid ""
+#~ "Time to delay background tasks that depend on a database commit to "
+#~ "propagate."
+#~ msgstr ""
+#~ "Czas opóźnienia wykonania zadań zależnych od operacji na bazie danych."
+
+#~ msgid ""
+#~ "A list of strings designating all applications that are to be removed "
+#~ "from the list normally installed by Mayan EDMS. Each string should be a "
+#~ "dotted Python path to: an application configuration class (preferred), or "
+#~ "a package containing an application."
+#~ msgstr ""
+#~ "Lista ciągów znaków wskazujących wszystkie aplikacje, które mają zostać "
+#~ "usunięte z listy normalnie instalowanej przez Mayan EDMS. Każdy ciąg "
+#~ "powinien być kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji "
+#~ "(preferowane) lub pakietu zawierającego aplikację."
+
+#~ msgid ""
+#~ "A list of strings designating all applications that are installed beyond "
+#~ "those normally installed by Mayan EDMS. Each string should be a dotted "
+#~ "Python path to: an application configuration class (preferred), or a "
+#~ "package containing an application."
+#~ msgstr ""
+#~ "Lista ciągów oznaczających wszystkie aplikacje, które są instalowane poza "
+#~ "tymi, które normalnie instaluje Mayan EDMS. Każdy ciąg powinien być "
+#~ "kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji (preferowane) "
+#~ "lub pakietu zawierającego aplikację."
+
+#~ msgid ""
+#~ "Name of the view attached to the brand anchor in the main menu. This is "
+#~ "also the view to which users will be redirected after log in."
+#~ msgstr ""
+#~ "Nazwa widoku dołączonego do marki w menu głównym. Jest to również widok, "
+#~ "do którego użytkownicy będą przekierowywani po zalogowaniu."
+
+#~ msgid ""
+#~ "Enable error logging outside of the system error logging capabilities."
+#~ msgstr "Włącz rejestrowanie błędów poza systemowym rejestrowaniem błędów."
+
+#~ msgid "Path to the logfile that will track errors during production."
+#~ msgstr ""
+#~ "Ścieżka do pliku dziennika śledzącego błędy w systemie produkcyjnym."
+
+#~ msgid "Name to be displayed in the main menu."
+#~ msgstr "Nazwa wyświetlana w menu głównym."
+
+#~ msgid "URL of the installation or homepage of the project."
+#~ msgstr "Adres URL instalacji lub strona główna projektu."
+
+#~ msgid "A storage backend that all workers can use to share files."
+#~ msgstr ""
+#~ "Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie "
+#~ "plików."
+
+#~ msgid "Base URL path to use for all views."
+#~ msgstr "Podstawowa ścieżka adresu URL do użycia we wszystkich widokach."
+
+#~ msgid ""
+#~ "Unable to initialize the shared uploaded file storage. Check the settings "
+#~ "{} and {} for formatting errors."
+#~ msgstr ""
+#~ "Nie można zainicjować udostępnionego miejsca na przesyłane pliki. Sprawdź "
+#~ "ustawienia {} i {} pod kątem błędów formatowania."
+
+#~ msgid "Enter a valid JSON value."
+#~ msgstr "Podaj prawidłową wartość JSON."
+
+#~ msgid "Enter a valid YAML value."
+#~ msgstr "Wprowadź poprawną wartość YAML."
+
+#~ msgid ""
+#~ "Enter a valid 'internal name' consisting of letters, numbers, and "
+#~ "underscores."
+#~ msgstr ""
+#~ "Podaj prawidłową 'internal name' składającą się z liter, liczb i "
+#~ "podkreśleń."
+
+#~ msgid "About"
+#~ msgstr "Informacje"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "Profil regionalny użytkownika"
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "Edycja ustawień regionalnych użytkownika"
+
+#~ msgid "Dashboard"
+#~ msgstr "Strona główna"
+
+#~ msgid "Clear error log entries for: %s"
+#~ msgstr "Wyczyść wpisy w dzienniku błędów dla: %s"
+
+#~ msgid "Object error log cleared successfully"
+#~ msgstr "Wpisy w dzienniku błędów dla obiektu zostały wyczyszczone"
+
+#~ msgid "Date and time"
+#~ msgstr "Data i godzina"
+
+#~ msgid ""
+#~ "This view displays the error log of different object. An empty list is a "
+#~ "good thing."
+#~ msgstr ""
+#~ "Widok ten pokazuje dziennik błędów dla różnych obiektów. Czysta lista "
+#~ "wskazuje na brak błędów."
+
+#~ msgid "There are no error log entries"
+#~ msgstr "Brak wpisów w dzienniku błędów"
+
+#~ msgid "Error log entries for: %s"
+#~ msgstr "Wpisy dziennika błędów dla: %s"
+
+#~ msgid "No setup options available."
+#~ msgstr "Brak opcji konfiguracji."
+
+#~ msgid ""
+#~ "No results here means that don't have the required permissions to perform "
+#~ "administrative task."
+#~ msgstr ""
+#~ "Brak wyników oznacza, że nie masz wymaganych uprawnień administratora do "
+#~ "wykonania zadania."
+
+#~ msgid "Setup items"
+#~ msgstr "Ustawienia"
+
+#~ msgid "Here you can configure all aspects of the system."
+#~ msgstr "Tutaj możesz skonfigurować wszystkie ustawienia systemu."
+
+#~ msgid "These modules are used to do system maintenance."
+#~ msgstr "Moduły związane z obsługą systemu."

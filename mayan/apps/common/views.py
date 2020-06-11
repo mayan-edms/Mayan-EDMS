@@ -9,12 +9,12 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.views.generics import (
+    ConfirmView, SingleObjectEditView, SingleObjectListView, SimpleView
+)
 
 from .forms import (
     LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
-)
-from .generics import (
-    ConfirmView, SingleObjectEditView, SingleObjectListView, SimpleView
 )
 from .icons import icon_object_errors, icon_setup
 from .menus import menu_tools, menu_setup

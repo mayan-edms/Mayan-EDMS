@@ -3,7 +3,7 @@ from collections import OrderedDict
 from django import forms
 
 from mayan.apps.common.classes import ModelAttribute
-from mayan.apps.common.widgets import NamedMultiWidget
+from mayan.apps.views.widgets import NamedMultiWidget
 
 from .literals import EMPTY_LABEL
 

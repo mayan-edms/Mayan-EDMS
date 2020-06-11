@@ -72,13 +72,6 @@ setting_logging_log_file_path = namespace.add_setting(
     ),
     is_path=True
 )
-setting_paginate_by = namespace.add_setting(
-    global_name='COMMON_PAGINATE_BY',
-    default=40,
-    help_text=_(
-        'The number objects that will be displayed per page.'
-    )
-)
 setting_project_title = namespace.add_setting(
     global_name='COMMON_PROJECT_TITLE',
     default=mayan.__title__, help_text=_(

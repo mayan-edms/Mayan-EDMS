@@ -4,9 +4,6 @@ import types
 from django.conf import settings
 from django.core.exceptions import FieldDoesNotExist
 from django.db.models.constants import LOOKUP_SEP
-from django.urls import resolve as django_resolve
-from django.urls.base import get_script_prefix
-from django.utils.encoding import force_text
 from django.utils.six.moves import reduce as reduce_function
 
 from .exceptions import ResolverError, ResolverPipelineError
@@ -136,10 +133,6 @@ def check_for_sqlite():
     return settings.DATABASES['default']['ENGINE'] == DJANGO_SQLITE_BACKEND and settings.DEBUG is False
 
 
-def convert_to_id_list(items):
-    return ','.join(map(force_text, items))
-
-
 def get_related_field(model, related_field_name):
     try:
         local_field_name, remaining_field_path = related_field_name.split(
@@ -187,11 +180,6 @@ def introspect_attribute(attribute_name, obj):
             )
     else:
         return attribute_name, obj
-
-
-def resolve(path, urlconf=None):
-    path = '/{}'.format(path.replace(get_script_prefix(), '', 1))
-    return django_resolve(path=path, urlconf=urlconf)
 
 
 def resolve_attribute(attribute, obj, kwargs=None):

@@ -1,0 +1,348 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+# Johan Braeken, 2017
+# woei <root@ipaddr.nl>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-11 02:28-0400\n"
+"PO-Revision-Date: 2020-05-17 19:15+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
+"nl/)\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:27 settings.py:9
+msgid "Views"
+msgstr ""
+
+#: forms.py:24
+msgid "Selection"
+msgstr "Selectie"
+
+#: forms.py:100
+msgid "None"
+msgstr "Geen"
+
+#: generics.py:146
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:151
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:284
+msgid "Add all"
+msgstr "Alle toevoegen"
+
+#: generics.py:293
+msgid "Add"
+msgstr "Toevoegen"
+
+#: generics.py:303
+msgid "Remove all"
+msgstr "Alle verwijderen"
+
+#: generics.py:312
+msgid "Remove"
+msgstr "Verwijderen"
+
+#: generics.py:522
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr ""
+
+#: generics.py:543
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "%(object)s niet aangemaakt, foutmelding: %(error)s."
+
+#: generics.py:556
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "%(object)s met succes aangemaakt."
+
+#: generics.py:595
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "%(object)s niet verwijderd, foutmelding: %(error)s."
+
+#: generics.py:604
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "%(object)s met succes verwijderd."
+
+#: generics.py:740
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "%(object)s niet bijgewerkt, foutmelding: %(error)s."
+
+#: generics.py:751
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "%(object)s werden met succes bijgewerkt."
+
+#: mixins.py:314
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr "Geen %(verbose_name)s gevonden die aan zoekopdracht voldoet"
+
+#: mixins.py:427
+msgid "Object"
+msgstr "Object"
+
+#: settings.py:15
+msgid "The number objects that will be displayed per page."
+msgstr "Het aantal objecten dat per pagina wordt weergegeven."
+
+#: templatetags/views_tags.py:31
+msgid "Confirm delete"
+msgstr "Verwijderen bevestigen"
+
+#: templatetags/views_tags.py:36
+#, python-format
+msgid "Edit %s"
+msgstr "Bewerken %s"
+
+#: templatetags/views_tags.py:39
+msgid "Confirm"
+msgstr "Bevestigen"
+
+#: templatetags/views_tags.py:43
+#, python-format
+msgid "Details for: %s"
+msgstr "Details voor: %s"
+
+#: templatetags/views_tags.py:47
+#, python-format
+msgid "Edit: %s"
+msgstr "Bewerken: %s"
+
+#: templatetags/views_tags.py:51
+msgid "Create"
+msgstr "Aanmaken"
+
+#~ msgid "Common"
+#~ msgstr "Gemeenschappelijk"
+
+#~ msgid "About this"
+#~ msgstr "Over Mayan EDMS"
+
+#~ msgid "Get the book"
+#~ msgstr "Koop het boek"
+
+#~ msgid "Locale profile"
+#~ msgstr "Landsinstellingen"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "Wijzig landsinstellingen"
+
+#~ msgid "Documentation"
+#~ msgstr "Documentatie"
+
+#~ msgid "Errors"
+#~ msgstr "Fouten"
+
+#~ msgid "Clear all"
+#~ msgstr "Alle wissen"
+
+#~ msgid "Forum"
+#~ msgstr "Forum"
+
+#~ msgid "License"
+#~ msgstr "Licentie"
+
+#~ msgid "Setup"
+#~ msgstr "Setup"
+
+#~ msgid "Source code"
+#~ msgstr "Broncode"
+
+#~ msgid "Get support"
+#~ msgstr "Ondersteuning"
+
+#~ msgid "Tools"
+#~ msgstr "Gereedschappen"
+
+#~ msgid ""
+#~ "This feature has been deprecated and will be removed in a future version."
+#~ msgstr ""
+#~ "Deze functie is achterhaald en zal worden verwijderd in een toekomstige "
+#~ "versie."
+
+#~ msgid ""
+#~ "Your database backend is set to use SQLite. SQLite should only be used "
+#~ "for development and testing, not for production."
+#~ msgstr ""
+#~ "Uw database backend is ingesteld op SQLite. SQLite dient alleen gebruikt "
+#~ "te worden voor ontwikkeling en testen, niet voor productie-omgevingen. "
+
+#~ msgid "Days"
+#~ msgstr "Dagen"
+
+#~ msgid "Hours"
+#~ msgstr "Uren"
+
+#~ msgid "Minutes"
+#~ msgstr "Minuten"
+
+#~ msgid "System"
+#~ msgstr "Systeem"
+
+#~ msgid "Actions"
+#~ msgstr "Acties"
+
+#~ msgid "User"
+#~ msgstr "Gebruiker"
+
+#~ msgid "Namespace"
+#~ msgstr "Namespace"
+
+#~ msgid "Date time"
+#~ msgstr "Datum en tijd"
+
+#~ msgid "Result"
+#~ msgstr "Resultaat"
+
+#~ msgid "Error log entry"
+#~ msgstr "Foutenlog invoer"
+
+#~ msgid "Error log entries"
+#~ msgstr "Foutenlog invoer"
+
+#~ msgid "File"
+#~ msgstr "Bestand"
+
+#~ msgid "Filename"
+#~ msgstr "Bestandsnaam"
+
+#~ msgid "Shared uploaded file"
+#~ msgstr "Gedeeld geüpload document"
+
+#~ msgid "Shared uploaded files"
+#~ msgstr "Gedeelde geüploade bestanden"
+
+#~ msgid "Timezone"
+#~ msgstr "Tijdzone"
+
+#~ msgid "Language"
+#~ msgstr "Taal"
+
+#~ msgid "User locale profile"
+#~ msgstr "Gebruikerslandsinstelling"
+
+#~ msgid "User locale profiles"
+#~ msgstr "Gebruikerslandinstellingen"
+
+#~ msgid "View error log"
+#~ msgstr "Foutenlog bekijken"
+
+#~ msgid "Default"
+#~ msgstr "Standaard"
+
+#~ msgid ""
+#~ "Time to delay background tasks that depend on a database commit to "
+#~ "propagate."
+#~ msgstr ""
+#~ "Wachttijd voor achtergrondtaken die afhankelijk zijn van het verbreiden "
+#~ "van een database commit."
+
+#~ msgid "Name to be displayed in the main menu."
+#~ msgstr "Naam die wordt weergegeven in het hoofdmenu."
+
+#~ msgid "URL of the installation or homepage of the project."
+#~ msgstr "URL van de installatie of homepage van het project."
+
+#~ msgid "A storage backend that all workers can use to share files."
+#~ msgstr ""
+#~ "Een opslagbackend die alle werkers kunnen gebruiken om bestanden te delen."
+
+#~ msgid "Base URL path to use for all views."
+#~ msgstr "Basis URL-pad voor alle overzichten."
+
+#~ msgid ""
+#~ "Unable to initialize the shared uploaded file storage. Check the settings "
+#~ "{} and {} for formatting errors."
+#~ msgstr ""
+#~ "Niet mogelijk om de geüploade bestandsopslag te initialiseren. Controleer "
+#~ "de instellingen {} en {} op opmaakfouten."
+
+#~ msgid "Enter a valid JSON value."
+#~ msgstr "Voer een geldige JSON-waarde in."
+
+#~ msgid "Enter a valid YAML value."
+#~ msgstr "Voer een geldige YAML-waarde in."
+
+#~ msgid ""
+#~ "Enter a valid 'internal name' consisting of letters, numbers, and "
+#~ "underscores."
+#~ msgstr ""
+#~ "Voer een geldige 'interne naam' in die bestaat uit letter, cijfers en "
+#~ "underscores."
+
+#~ msgid "About"
+#~ msgstr "Over"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "Details landinstellingen huidige gebruiker"
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "Details landinstellingen huidige gebruiker bewerken"
+
+#~ msgid "Dashboard"
+#~ msgstr "Dashboard"
+
+#~ msgid "Clear error log entries for: %s"
+#~ msgstr "Foutenlog invoer wissen voor: %s"
+
+#~ msgid "Date and time"
+#~ msgstr "Datum en tijd"
+
+#~ msgid ""
+#~ "This view displays the error log of different object. An empty list is a "
+#~ "good thing."
+#~ msgstr ""
+#~ "Dit overzicht geeft de foutenlog van verschillende objecten weer. Een "
+#~ "lege lijst is een goed teken."
+
+#~ msgid "There are no error log entries"
+#~ msgstr "Er is geen foutenlog invoer."
+
+#~ msgid "Error log entries for: %s"
+#~ msgstr "Foutenlog invoer voor: %s"
+
+#~ msgid "No setup options available."
+#~ msgstr "Geen instellingsopties beschikbaar."
+
+#~ msgid ""
+#~ "No results here means that don't have the required permissions to perform "
+#~ "administrative task."
+#~ msgstr ""
+#~ "Geen resultaten betekent dat u onvoldoende verplichte toegangsrechten "
+#~ "heeft om de beheertaak uit te voeren."
+
+#~ msgid "Setup items"
+#~ msgstr "Setup items"
+
+#~ msgid "Here you can configure all aspects of the system."
+#~ msgstr "Hier kunt u alle aspecten van het systeem instellen."
+
+#~ msgid "These modules are used to do system maintenance."
+#~ msgstr "Deze modules worden gebruikt voor systeemonderhoud."

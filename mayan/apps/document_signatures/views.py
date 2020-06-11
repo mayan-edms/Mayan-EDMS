@@ -9,14 +9,14 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.generics import (
-    ConfirmView, FormView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView
-)
-from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.django_gpg.exceptions import NeedPassphrase, PassphraseError
 from mayan.apps.django_gpg.permissions import permission_key_sign
 from mayan.apps.documents.models import DocumentVersion
+from mayan.apps.views.generics import (
+    ConfirmView, FormView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView
+)
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .forms import (
     DocumentVersionSignatureCreateForm,

@@ -79,6 +79,9 @@
   is the same one that previously enabled when setting the setting
   ``COMMON_PRODUCTION_ERROR_LOGGING`` to ``true``.
 - Remove the django-test-without-migrations package.
+- Split the common app into common and views. The new views app controls
+  generic views, view mixins, forms, and widgets.
+  The setting ``COMMON_PAGINATE_BY`` is now named ``VIEWS_PAGINATE_BY``.
 
 3.4.9 (2020-05-26)
 ==================

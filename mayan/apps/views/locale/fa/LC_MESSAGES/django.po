@@ -1,0 +1,285 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2017
+# Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-11 02:28-0400\n"
+"PO-Revision-Date: 2020-04-19 04:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:27 settings.py:9
+msgid "Views"
+msgstr ""
+
+#: forms.py:24
+msgid "Selection"
+msgstr "انتخاب"
+
+#: forms.py:100
+msgid "None"
+msgstr "هیچ یک"
+
+#: generics.py:146
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:151
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:284
+msgid "Add all"
+msgstr ""
+
+#: generics.py:293
+msgid "Add"
+msgstr "افزودن"
+
+#: generics.py:303
+msgid "Remove all"
+msgstr ""
+
+#: generics.py:312
+msgid "Remove"
+msgstr "حذف"
+
+#: generics.py:522
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr ""
+
+#: generics.py:543
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "%(object)s ایجاد نشد، خطا: %(error)s"
+
+#: generics.py:556
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "%(object)s با موفقیت ایجاد شد"
+
+#: generics.py:595
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "%(object)s حذف نشده است، خطا: %(error)s."
+
+#: generics.py:604
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "%(object)s با موفقیت حذف شد"
+
+#: generics.py:740
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "%(object)s به روز نشده، خطا: %(error)s."
+
+#: generics.py:751
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "%(object)s با موفقیت به روز شد"
+
+#: mixins.py:314
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: mixins.py:427
+msgid "Object"
+msgstr "شیئ"
+
+#: settings.py:15
+msgid "The number objects that will be displayed per page."
+msgstr ""
+
+#: templatetags/views_tags.py:31
+msgid "Confirm delete"
+msgstr "تائید حذف"
+
+#: templatetags/views_tags.py:36
+#, python-format
+msgid "Edit %s"
+msgstr ""
+
+#: templatetags/views_tags.py:39
+msgid "Confirm"
+msgstr "تائید"
+
+#: templatetags/views_tags.py:43
+#, python-format
+msgid "Details for: %s"
+msgstr "جزئیات برای : %s"
+
+#: templatetags/views_tags.py:47
+#, python-format
+msgid "Edit: %s"
+msgstr "ویرایش : %s"
+
+#: templatetags/views_tags.py:51
+msgid "Create"
+msgstr "ایجاد"
+
+#~ msgid "Common"
+#~ msgstr "مشترک"
+
+#~ msgid "About this"
+#~ msgstr "در مورد این"
+
+#~ msgid "Locale profile"
+#~ msgstr "پروفایل محلی"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "ویرایش پروفایل محلی"
+
+#~ msgid "Documentation"
+#~ msgstr "مستندات"
+
+#~ msgid "Errors"
+#~ msgstr "خطاها"
+
+#~ msgid "Forum"
+#~ msgstr "انجمن"
+
+#~ msgid "License"
+#~ msgstr "لیسانس"
+
+#~ msgid "Setup"
+#~ msgstr "نصب"
+
+#~ msgid "Source code"
+#~ msgstr "کد منبع"
+
+#~ msgid "Tools"
+#~ msgstr "ابزار"
+
+#~ msgid "Days"
+#~ msgstr "روزها"
+
+#~ msgid "Hours"
+#~ msgstr "ساعات"
+
+#~ msgid "Minutes"
+#~ msgstr "دقایق"
+
+#~ msgid "System"
+#~ msgstr "سیستم"
+
+#~ msgid "Actions"
+#~ msgstr "اقدامات"
+
+#~ msgid "User"
+#~ msgstr "کاربر"
+
+#~ msgid "Namespace"
+#~ msgstr "فضای نام"
+
+#~ msgid "Date time"
+#~ msgstr "تاریخ زمان"
+
+#~ msgid "Result"
+#~ msgstr "جواب"
+
+#~ msgid "Error log entry"
+#~ msgstr "ورود به سیستم خطا"
+
+#~ msgid "Error log entries"
+#~ msgstr "ورودی خطا ورودی"
+
+#~ msgid "File"
+#~ msgstr "فایل"
+
+#~ msgid "Filename"
+#~ msgstr "نام فایل"
+
+#~ msgid "Shared uploaded file"
+#~ msgstr "فایل آپلود شده اشتراکی"
+
+#~ msgid "Shared uploaded files"
+#~ msgstr "فایلهای آپلود شده اشتراکی"
+
+#~ msgid "Timezone"
+#~ msgstr "زمان محلی"
+
+#~ msgid "Language"
+#~ msgstr "زبان"
+
+#~ msgid "User locale profile"
+#~ msgstr "پروفایل محلی کاربر"
+
+#~ msgid "User locale profiles"
+#~ msgstr "پروفایل محلی کاربر"
+
+#~ msgid "View error log"
+#~ msgstr "مشاهده ورود به سیستم خطا"
+
+#~ msgid "Default"
+#~ msgstr "پیش فرض"
+
+#~ msgid "Common periodic"
+#~ msgstr "دوره ای متداول"
+
+#~ msgid "Delete stale uploads"
+#~ msgstr "حذف آپلود های قدیمی"
+
+#~ msgid "Automatically enable logging to all apps."
+#~ msgstr "به طور خودکار ورود به سیستم را به تمام برنامه ها فعال کنید"
+
+#~ msgid ""
+#~ "Time to delay background tasks that depend on a database commit to "
+#~ "propagate."
+#~ msgstr ""
+#~ "زمان برای به تاخیر انداختن وظایف پس زمینه که به پایگاه داده متعهد به "
+#~ "انتشار است."
+
+#~ msgid "Path to the logfile that will track errors during production."
+#~ msgstr "مسیر فایل logfile که خطاهای تولید را دنبال می کند."
+
+#~ msgid "A storage backend that all workers can use to share files."
+#~ msgstr "محلی که کلیه کاربران جهت به اشتراک گذاری فایل میتوانند استفاه کنند."
+
+#~ msgid "Enter a valid YAML value."
+#~ msgstr "یک مقدار معتبر YAML را وارد کنید"
+
+#~ msgid ""
+#~ "Enter a valid 'internal name' consisting of letters, numbers, and "
+#~ "underscores."
+#~ msgstr "یک نام داخلی معتبر وارد کنید که شامل حروف، اعداد و حروف زیر است."
+
+#~ msgid "About"
+#~ msgstr "درباره"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "شرح پروفایل محلی کاربر فعلی"
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "ویرایش شرح پروفایل محلی کاربر فعلی"
+
+#~ msgid "Dashboard"
+#~ msgstr "داشبورد"
+
+#~ msgid "Date and time"
+#~ msgstr "تاریخ و زمان"
+
+#~ msgid "Error log entries for: %s"
+#~ msgstr "ورودی های ورود به سیستم خطا برای: %s"
+
+#~ msgid "Setup items"
+#~ msgstr "اقلام نصب"

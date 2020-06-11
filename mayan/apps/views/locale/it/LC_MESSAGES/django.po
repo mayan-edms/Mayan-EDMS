@@ -1,0 +1,386 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Carlo Zanatto <>, 2012
+# Daniele Bortoluzzi <daniele@elkos.it>, 2019
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2014
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
+# Roberto Rosario, 2012
+# Roberto Rosario, 2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-11 02:28-0400\n"
+"PO-Revision-Date: 2020-04-19 04:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:27 settings.py:9
+msgid "Views"
+msgstr ""
+
+#: forms.py:24
+msgid "Selection"
+msgstr "Selezione"
+
+#: forms.py:100
+msgid "None"
+msgstr "Nessuno"
+
+#: generics.py:146
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+"Seleziona le voci da rimuovere. Tieni premuto Ctrl per selezionare più di "
+"una voce. Quando hai finito di selezionare, clicca il bottone sotto o fai "
+"doppio clic sulla lista per attivare l'azione."
+
+#: generics.py:151
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+"Seleziona le voci da aggiungere. Tieni premuto Ctrl per selezionare più di "
+"una voce. Quando hai finito di selezionare, clicca il bottone sotto o fai "
+"doppio clic sulla lista per attivare l'azione."
+
+#: generics.py:284
+msgid "Add all"
+msgstr "Aggiungi tutto"
+
+#: generics.py:293
+msgid "Add"
+msgstr "Aggiungi"
+
+#: generics.py:303
+msgid "Remove all"
+msgstr "Rimuovi tutto"
+
+#: generics.py:312
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: generics.py:522
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr "Errore dati duplicati: %(error)s"
+
+#: generics.py:543
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "%(object)s non creato, errore: %(error)s"
+
+#: generics.py:556
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "%(object)s creato con successo.."
+
+#: generics.py:595
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "%(object)s non cancellato, errore: %(error)s."
+
+#: generics.py:604
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "%(object)s cancellato con successo.."
+
+#: generics.py:740
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "%(object)s non aggiornato, errore: %(error)s."
+
+#: generics.py:751
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "%(object)s aggiornato con successo."
+
+#: mixins.py:314
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr "Nessun %(verbose_name)s trovato con questa query"
+
+#: mixins.py:427
+msgid "Object"
+msgstr "Oggetto"
+
+#: settings.py:15
+msgid "The number objects that will be displayed per page."
+msgstr ""
+
+#: templatetags/views_tags.py:31
+msgid "Confirm delete"
+msgstr "Conferma la cancellazione"
+
+#: templatetags/views_tags.py:36
+#, python-format
+msgid "Edit %s"
+msgstr "Modifica %s"
+
+#: templatetags/views_tags.py:39
+msgid "Confirm"
+msgstr "Conferma"
+
+#: templatetags/views_tags.py:43
+#, python-format
+msgid "Details for: %s"
+msgstr "Dettagli per: %s"
+
+#: templatetags/views_tags.py:47
+#, python-format
+msgid "Edit: %s"
+msgstr "Modifica: %s"
+
+#: templatetags/views_tags.py:51
+msgid "Create"
+msgstr "Crea"
+
+#~ msgid "Common"
+#~ msgstr "Comune"
+
+#~ msgid "Model fields"
+#~ msgstr "Campi del modello"
+
+#~ msgid "Model related fields"
+#~ msgstr "Campi relativi al modello"
+
+#~ msgid "Model reverse fields"
+#~ msgstr "Modello campi inversi"
+
+#~ msgid "Used to allow offline translation of the code text strings."
+#~ msgstr ""
+#~ "Usato per consentire la traduzione offline delle stringhe di testo nel "
+#~ "codice."
+
+#~ msgid "Provides style checking."
+#~ msgstr "Fornisce controllo dello stile."
+
+#~ msgid "Command line environment with autocompletion."
+#~ msgstr "Ambiente a riga di comando con autocompletamento."
+
+#~ msgid "Checks proper formatting of the README file."
+#~ msgstr "Controlla la corretta formattazione del file README."
+
+#~ msgid "About this"
+#~ msgstr "A questo proposito"
+
+#~ msgid "Get the book"
+#~ msgstr "Prendi il libro"
+
+#~ msgid "Locale profile"
+#~ msgstr "Profilo Locale"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "Modifica profilo locale"
+
+#~ msgid "Documentation"
+#~ msgstr "Documentazione"
+
+#~ msgid "Errors"
+#~ msgstr "Errori"
+
+#~ msgid "Clear all"
+#~ msgstr "Pulisci tutto"
+
+#~ msgid "Forum"
+#~ msgstr "Forum"
+
+#~ msgid "License"
+#~ msgstr "Licenza"
+
+#~ msgid "Setup"
+#~ msgstr "Configurazione"
+
+#~ msgid "Source code"
+#~ msgstr "Codice sorgente"
+
+#~ msgid "Get support"
+#~ msgstr "Ottieni supporto"
+
+#~ msgid "Tools"
+#~ msgstr "Strumenti"
+
+#~ msgid ""
+#~ "This feature has been deprecated and will be removed in a future version."
+#~ msgstr ""
+#~ "Questa funzionalità è obsoleta e verrà rimossa nelle versioni future."
+
+#~ msgid ""
+#~ "Your database backend is set to use SQLite. SQLite should only be used "
+#~ "for development and testing, not for production."
+#~ msgstr ""
+#~ "Il tuo database attuale è impostato a SQLite, che dovrebbe essere usato "
+#~ "solo per sviluppo e test, non in produzione."
+
+#~ msgid "Days"
+#~ msgstr "Giorni"
+
+#~ msgid "Hours"
+#~ msgstr "Orario"
+
+#~ msgid "Minutes"
+#~ msgstr "Minuti"
+
+#~ msgid "System"
+#~ msgstr "Sistema"
+
+#~ msgid "Facet"
+#~ msgstr "Sfaccettatura"
+
+#~ msgid "Actions"
+#~ msgstr "Azioni "
+
+#~ msgid "Secondary"
+#~ msgstr "Secondario"
+
+#~ msgid "User"
+#~ msgstr "Utente"
+
+#~ msgid "Namespace"
+#~ msgstr "Namespace"
+
+#~ msgid "Date time"
+#~ msgstr "Date time"
+
+#~ msgid "Result"
+#~ msgstr "Risultato"
+
+#~ msgid "Error log entry"
+#~ msgstr "Voce di errore dei log"
+
+#~ msgid "Error log entries"
+#~ msgstr "Voci di errore dei log"
+
+#~ msgid "File"
+#~ msgstr "File"
+
+#~ msgid "Filename"
+#~ msgstr "Filename"
+
+#~ msgid "Shared uploaded file"
+#~ msgstr "Condividi file caricato"
+
+#~ msgid "Shared uploaded files"
+#~ msgstr "Condividi files caricati"
+
+#~ msgid "Timezone"
+#~ msgstr "Fuso orario"
+
+#~ msgid "Language"
+#~ msgstr "Lingua"
+
+#~ msgid "User locale profile"
+#~ msgstr "Profilo utente locale"
+
+#~ msgid "User locale profiles"
+#~ msgstr "Profili dell'utente locale"
+
+#~ msgid "View error log"
+#~ msgstr "Vedi log errori"
+
+#~ msgid "Default"
+#~ msgstr "Default"
+
+#~ msgid "Common periodic"
+#~ msgstr "Comune periodici"
+
+#~ msgid "Delete stale uploads"
+#~ msgstr "Cancella upload in sospeso"
+
+#~ msgid "Automatically enable logging to all apps."
+#~ msgstr "Abilita automaticamente i log per tutte le app."
+
+#~ msgid ""
+#~ "Time to delay background tasks that depend on a database commit to "
+#~ "propagate."
+#~ msgstr ""
+#~ "Il ritardo per i task in background dipende dalla propagazione del commit "
+#~ "su database."
+
+#~ msgid ""
+#~ "Name of the view attached to the brand anchor in the main menu. This is "
+#~ "also the view to which users will be redirected after log in."
+#~ msgstr ""
+#~ "Nome della vista collegata all'ancora brand nel menù principale. Questa è "
+#~ "anche la vista alla quale gli utenti verranno reindirizzati dopo il login."
+
+#~ msgid "Path to the logfile that will track errors during production."
+#~ msgstr ""
+#~ "Percorso del file di log su cui verranno scritti gli errori in produzione."
+
+#~ msgid "Name to be displayed in the main menu."
+#~ msgstr "Nome da visualizzare nel menù principale."
+
+#~ msgid "URL of the installation or homepage of the project."
+#~ msgstr "URL dell'installazione o pagina home del progetto."
+
+#~ msgid "A storage backend that all workers can use to share files."
+#~ msgstr ""
+#~ "Un backend di memorizzazione che tutti i lavoratori possono utilizzare "
+#~ "per condividere i file."
+
+#~ msgid "Enter a valid JSON value."
+#~ msgstr "Immettere un valore JSON valido."
+
+#~ msgid "Enter a valid YAML value."
+#~ msgstr "Inserisci un valore YAML valido."
+
+#~ msgid ""
+#~ "Enter a valid 'internal name' consisting of letters, numbers, and "
+#~ "underscores."
+#~ msgstr ""
+#~ "Inserisci un 'internal name' valido composto da lettere, numeri e "
+#~ "underscore."
+
+#~ msgid "About"
+#~ msgstr "Informazioni"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "Dettagli del profilo dell'utente attuale"
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "Modificare i dettagli del profilo corrente dell'utente"
+
+#~ msgid "Dashboard"
+#~ msgstr "Dashboard"
+
+#~ msgid "Clear error log entries for: %s"
+#~ msgstr "Cancella le voci del registro errori per: %s"
+
+#~ msgid "Object error log cleared successfully"
+#~ msgstr "Registro errori oggetto cancellato correttamente"
+
+#~ msgid "Date and time"
+#~ msgstr "Data e ora"
+
+#~ msgid "There are no error log entries"
+#~ msgstr "Non ci sono voci nel registro degli errori"
+
+#~ msgid "Error log entries for: %s"
+#~ msgstr "Voci del registro errori per: %s"
+
+#~ msgid "No setup options available."
+#~ msgstr "Nessuna opzione di configurazione disponibile."
+
+#~ msgid ""
+#~ "No results here means that don't have the required permissions to perform "
+#~ "administrative task."
+#~ msgstr ""
+#~ "Nessun risultato qui significa che non dispongono delle autorizzazioni "
+#~ "necessarie per eseguire l'attività amministrativa."
+
+#~ msgid "Setup items"
+#~ msgstr "Impostazione elementi"

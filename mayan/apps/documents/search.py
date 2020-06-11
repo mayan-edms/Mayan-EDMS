@@ -2,8 +2,8 @@ from django.apps import apps
 from django.db import connection
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.literals import LIST_MODE_CHOICE_ITEM
 from mayan.apps.dynamic_search.classes import SearchModel
+from mayan.apps.views.literals import LIST_MODE_CHOICE_ITEM
 
 from .permissions import permission_document_view
 

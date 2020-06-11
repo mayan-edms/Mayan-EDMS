@@ -4,11 +4,11 @@ from django.urls import reverse_lazy
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import (
+from mayan.apps.user_management.permissions import permission_group_edit
+from mayan.apps.views.generics import (
     AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.user_management.permissions import permission_group_edit
 
 from .icons import icon_role_list
 from .links import link_role_create

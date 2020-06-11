@@ -2,8 +2,8 @@ import logging
 
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-from mayan.apps.common.exceptions import ActionError
-from mayan.apps.common.generics import MultipleObjectConfirmActionView
+from mayan.apps.views.exceptions import ActionError
+from mayan.apps.views.generics import MultipleObjectConfirmActionView
 
 from ..icons import icon_favorite_document_list
 from ..models import Document, FavoriteDocument

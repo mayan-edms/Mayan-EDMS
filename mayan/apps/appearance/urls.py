@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from mayan.apps.common.generics import SimpleView
+from mayan.apps.views.generics import SimpleView
 
 urlpatterns = [
     url(

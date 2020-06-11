@@ -4,15 +4,15 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import MissingItem
-from mayan.apps.common.html_widgets import TwoStateWidget
-from mayan.apps.common.menus import (
-    menu_list_facet, menu_object, menu_secondary, menu_setup
-)
 from mayan.apps.common.signals import signal_post_initial_setup, signal_post_upgrade
 from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.documents.menus import menu_documents
 from mayan.apps.documents.signals import signal_post_version_upload
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.views.html_widgets import TwoStateWidget
+from mayan.apps.common.menus import (
+    menu_list_facet, menu_object, menu_secondary, menu_setup
+)
 
 from .classes import StagingFile
 from .handlers import (

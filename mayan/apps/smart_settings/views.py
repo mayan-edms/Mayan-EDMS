@@ -3,7 +3,7 @@ from django.http import Http404
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import FormView, SingleObjectListView
+from mayan.apps.views.generics import FormView, SingleObjectListView
 
 from .classes import SettingNamespace, Setting
 from .forms import SettingForm

@@ -10,16 +10,16 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.generics import (
-    FormView, MultipleObjectFormActionView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
-)
-from mayan.apps.common.mixins import ExternalObjectMixin
-from mayan.apps.common.utils import convert_to_id_list
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_edit
 )
+from mayan.apps.views.generics import (
+    FormView, MultipleObjectFormActionView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
+)
+from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.utils import convert_to_id_list
 
 from .api import save_metadata_list
 from .forms import (

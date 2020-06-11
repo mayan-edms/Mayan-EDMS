@@ -8,7 +8,6 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
     MissingItem, ModelField, ModelFieldRelated, ModelProperty, Template
 )
-from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_multi_item, menu_tools
@@ -28,6 +27,7 @@ from mayan.apps.events.links import (
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.rest_api.fields import DynamicSerializerField
+from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .dashboard_widgets import (
     DashboardWidgetDocumentPagesTotal, DashboardWidgetDocumentsInTrash,

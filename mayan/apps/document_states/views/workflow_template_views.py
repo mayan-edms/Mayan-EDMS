@@ -4,14 +4,14 @@ from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import (
-    AddRemoveView, ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
-)
-from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_edit
+from mayan.apps.views.generics import (
+    AddRemoveView, ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
+)
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..events import event_workflow_edited
 from ..forms import WorkflowForm, WorkflowPreviewForm

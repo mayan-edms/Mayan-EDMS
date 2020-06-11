@@ -8,13 +8,13 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _, ungettext
 from django.views.generic import RedirectView
 
-from mayan.apps.common.generics import (
+from mayan.apps.common.settings import setting_home_view
+from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
+from mayan.apps.views.generics import (
     MultipleObjectConfirmActionView, SimpleView, SingleObjectListView
 )
-from mayan.apps.common.mixins import ExternalObjectMixin
-from mayan.apps.common.settings import setting_home_view
-from mayan.apps.common.utils import resolve
-from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
+from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.utils import resolve
 
 from ..forms import DocumentPageForm
 from ..icons import icon_document_pages

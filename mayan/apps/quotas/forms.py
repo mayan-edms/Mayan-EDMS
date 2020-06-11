@@ -4,7 +4,7 @@ from django import forms
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.forms import DynamicModelForm
+from mayan.apps.views.forms import DynamicModelForm
 
 from .classes import QuotaBackend
 from .models import Quota

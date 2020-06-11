@@ -1,0 +1,271 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# mizhgan <i@mizhgan.ru>, 2018
+# lilo.panic, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-11 02:28-0400\n"
+"PO-Revision-Date: 2020-04-19 04:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps.py:27 settings.py:9
+msgid "Views"
+msgstr ""
+
+#: forms.py:24
+msgid "Selection"
+msgstr "Выбор"
+
+#: forms.py:100
+msgid "None"
+msgstr "Ничего"
+
+#: generics.py:146
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:151
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:284
+msgid "Add all"
+msgstr ""
+
+#: generics.py:293
+msgid "Add"
+msgstr "Добавить"
+
+#: generics.py:303
+msgid "Remove all"
+msgstr ""
+
+#: generics.py:312
+msgid "Remove"
+msgstr "Удалить"
+
+#: generics.py:522
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr ""
+
+#: generics.py:543
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "%(object)s не создан, ошибка: %(error)s"
+
+#: generics.py:556
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "%(object)s успешно создан."
+
+#: generics.py:595
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "%(object)s не удалён, ошибка: %(error)s."
+
+#: generics.py:604
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "%(object)s успешно удалён."
+
+#: generics.py:740
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "%(object)s не обновлён, ошибка: %(error)s."
+
+#: generics.py:751
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "%(object)s успешно обновлён."
+
+#: mixins.py:314
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: mixins.py:427
+msgid "Object"
+msgstr "Объект"
+
+#: settings.py:15
+msgid "The number objects that will be displayed per page."
+msgstr ""
+
+#: templatetags/views_tags.py:31
+msgid "Confirm delete"
+msgstr "Подтвердить удаление"
+
+#: templatetags/views_tags.py:36
+#, python-format
+msgid "Edit %s"
+msgstr ""
+
+#: templatetags/views_tags.py:39
+msgid "Confirm"
+msgstr "Подтверждать"
+
+#: templatetags/views_tags.py:43
+#, python-format
+msgid "Details for: %s"
+msgstr ""
+
+#: templatetags/views_tags.py:47
+#, python-format
+msgid "Edit: %s"
+msgstr ""
+
+#: templatetags/views_tags.py:51
+msgid "Create"
+msgstr "Создать"
+
+#~ msgid "Common"
+#~ msgstr "Общий"
+
+#~ msgid "About this"
+#~ msgstr "Информация"
+
+#~ msgid "Locale profile"
+#~ msgstr "Профиль локали"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "Редактировать локаль"
+
+#~ msgid "Documentation"
+#~ msgstr "Документация"
+
+#~ msgid "Errors"
+#~ msgstr "Ошибки"
+
+#~ msgid "Clear all"
+#~ msgstr "Очистить все"
+
+#~ msgid "Forum"
+#~ msgstr "Форум"
+
+#~ msgid "License"
+#~ msgstr "Лицензия"
+
+#~ msgid "Setup"
+#~ msgstr "Настройки"
+
+#~ msgid "Source code"
+#~ msgstr "Исходные коды"
+
+#~ msgid "Tools"
+#~ msgstr "Инструменты"
+
+#~ msgid ""
+#~ "Your database backend is set to use SQLite. SQLite should only be used "
+#~ "for development and testing, not for production."
+#~ msgstr ""
+#~ "В качестве базы данных задан SQLite. SQLite не должен использоваться в "
+#~ "рабочем окружении, только для разработки и тестирования!"
+
+#~ msgid "Days"
+#~ msgstr "Дней"
+
+#~ msgid "Hours"
+#~ msgstr "Часов"
+
+#~ msgid "Minutes"
+#~ msgstr "Минут"
+
+#~ msgid "Actions"
+#~ msgstr "Действия"
+
+#~ msgid "User"
+#~ msgstr "Пользователь"
+
+#~ msgid "Namespace"
+#~ msgstr "Пространство имен"
+
+#~ msgid "Date time"
+#~ msgstr "Дата и время"
+
+#~ msgid "Result"
+#~ msgstr "Результат"
+
+#~ msgid "File"
+#~ msgstr "Файл"
+
+#~ msgid "Filename"
+#~ msgstr "Имя файла"
+
+#~ msgid "Shared uploaded file"
+#~ msgstr "Загруженный файл совместного пользования"
+
+#~ msgid "Shared uploaded files"
+#~ msgstr "Загруженные файлы совместного пользования"
+
+#~ msgid "Timezone"
+#~ msgstr "Часовой пояс"
+
+#~ msgid "Language"
+#~ msgstr "Язык"
+
+#~ msgid "User locale profile"
+#~ msgstr "Профиль локали пользователя"
+
+#~ msgid "User locale profiles"
+#~ msgstr "Профили локали пользователей"
+
+#~ msgid "Default"
+#~ msgstr "Умолчание"
+
+#~ msgid "Automatically enable logging to all apps."
+#~ msgstr ""
+#~ "Автоматически разрешать всем установленным приложениям делать записи в "
+#~ "журнале."
+
+#~ msgid ""
+#~ "Time to delay background tasks that depend on a database commit to "
+#~ "propagate."
+#~ msgstr ""
+#~ "Время задержки фоновых задач зависящих от процесса распространения "
+#~ "записанных в БД данных."
+
+#~ msgid "A storage backend that all workers can use to share files."
+#~ msgstr ""
+#~ "Бекенд хранения, который каждый может использовать для хранения файлов."
+
+#~ msgid "Enter a valid YAML value."
+#~ msgstr "Введите допустимое YAML-значение."
+
+#~ msgid "About"
+#~ msgstr "Инфо"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "Настройки локали текущего пользователя"
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "Редактировать настройки локали текущего пользователя"
+
+#~ msgid "Dashboard"
+#~ msgstr "Панель управления"
+
+#~ msgid "Date and time"
+#~ msgstr "Дата и время"
+
+#~ msgid "Setup items"
+#~ msgstr "Элементы настроек"

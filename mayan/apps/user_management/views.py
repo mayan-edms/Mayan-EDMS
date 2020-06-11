@@ -5,12 +5,12 @@ from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ungettext, ugettext_lazy as _
 
-from mayan.apps.common.generics import (
+from mayan.apps.views.generics import (
     AddRemoveView, MultipleObjectConfirmActionView,
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
     SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.common.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .forms import UserForm
 from .icons import icon_group_setup, icon_user_setup

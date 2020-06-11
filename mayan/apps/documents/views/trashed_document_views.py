@@ -5,10 +5,10 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.generics import (
+from mayan.apps.common.settings import setting_home_view
+from mayan.apps.views.generics import (
     ConfirmView, MultipleObjectConfirmActionView
 )
-from mayan.apps.common.settings import setting_home_view
 
 from ..icons import icon_document_list_deleted
 from ..models import DeletedDocument, Document

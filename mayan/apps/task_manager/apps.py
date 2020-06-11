@@ -1,9 +1,9 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import menu_tools
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .classes import CeleryQueue, Task
 from .links import link_task_manager

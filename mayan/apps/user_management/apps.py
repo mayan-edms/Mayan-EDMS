@@ -8,7 +8,6 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
     menu_user
@@ -22,6 +21,7 @@ from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.metadata.classes import MetadataLookup
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.rest_api.fields import DynamicSerializerField
+from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .dashboard_widgets import (
     DashboardWidgetGroupTotal, DashboardWidgetUserTotal

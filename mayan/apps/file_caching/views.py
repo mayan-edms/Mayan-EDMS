@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
 
-from mayan.apps.common.generics import (
+from mayan.apps.views.generics import (
     MultipleObjectConfirmActionView, SingleObjectListView
 )
 

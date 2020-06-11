@@ -16,13 +16,13 @@ from django.views.generic.base import View
 from stronghold.views import StrongholdPublicMixin
 
 import mayan
-from mayan.apps.common.http import URL
-from mayan.apps.common.generics import FormView, MultipleObjectFormActionView
-from mayan.apps.common.mixins import RedirectionMixin
 from mayan.apps.common.settings import (
     setting_home_view, setting_project_title, setting_project_url
 )
 from mayan.apps.user_management.permissions import permission_user_edit
+from mayan.apps.views.http import URL
+from mayan.apps.views.generics import FormView, MultipleObjectFormActionView
+from mayan.apps.views.mixins import RedirectionMixin
 
 from .forms import (
     EmailAuthenticationForm, UserListForm, UsernameAuthenticationForm

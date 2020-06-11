@@ -10,7 +10,7 @@ from rest_framework.response import Response
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.rest_api import generics
-from mayan.apps.common.generics import DownloadMixin
+from mayan.apps.views.generics import DownloadMixin
 
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (

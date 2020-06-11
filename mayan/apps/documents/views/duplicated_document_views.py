@@ -3,8 +3,8 @@ import logging
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import ConfirmView
-from mayan.apps.common.mixins import ExternalObjectMixin
+from mayan.apps.views.generics import ConfirmView
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..icons import icon_duplicated_document_list
 from ..models import Document, DuplicatedDocument

@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import SingleObjectListView
+from mayan.apps.views.generics import SingleObjectListView
 
 from .classes import CeleryQueue
 from .permissions import permission_task_view

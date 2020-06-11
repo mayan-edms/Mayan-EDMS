@@ -2,7 +2,9 @@ from django.contrib import messages
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import ConfirmView, SimpleView, SingleObjectListView
+from mayan.apps.views.generics import (
+    ConfirmView, SimpleView, SingleObjectListView
+)
 
 from .classes import Statistic, StatisticNamespace
 from .permissions import permission_statistics_view

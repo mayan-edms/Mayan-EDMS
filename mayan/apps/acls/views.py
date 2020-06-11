@@ -5,14 +5,14 @@ from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import (
+from mayan.apps.permissions.models import Role
+from mayan.apps.views.generics import (
     AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectListView
 )
-from mayan.apps.common.mixins import (
+from mayan.apps.views.mixins import (
     ContentTypeViewMixin, ExternalObjectMixin
 )
-from mayan.apps.permissions.models import Role
 
 from .classes import ModelPermission
 from .forms import ACLCreateForm

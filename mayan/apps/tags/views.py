@@ -7,13 +7,13 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.generics import (
+from mayan.apps.documents.models import Document
+from mayan.apps.documents.views.document_views import DocumentListView
+from mayan.apps.views.generics import (
     MultipleObjectFormActionView, MultipleObjectConfirmActionView,
     SingleObjectCreateView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.common.mixins import ExternalObjectMixin
-from mayan.apps.documents.models import Document
-from mayan.apps.documents.views.document_views import DocumentListView
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .forms import TagMultipleSelectionForm
 from .icons import (

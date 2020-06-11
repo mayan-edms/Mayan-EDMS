@@ -1,0 +1,268 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-11 02:28-0400\n"
+"PO-Revision-Date: 2020-04-19 04:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:27 settings.py:9
+msgid "Views"
+msgstr ""
+
+#: forms.py:24
+msgid "Selection"
+msgstr "Επιλογή"
+
+#: forms.py:100
+msgid "None"
+msgstr "Κανένα"
+
+#: generics.py:146
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:151
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:284
+msgid "Add all"
+msgstr ""
+
+#: generics.py:293
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: generics.py:303
+msgid "Remove all"
+msgstr ""
+
+#: generics.py:312
+msgid "Remove"
+msgstr "Αφαίρεση"
+
+#: generics.py:522
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr ""
+
+#: generics.py:543
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "%(object)s δεν δημιουργήθηκε, σφάλμα: %(error)s"
+
+#: generics.py:556
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "%(object)s δημιουργήθηκε επιτυχώς."
+
+#: generics.py:595
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "%(object)s δεν διαγράφηκε, σφάλμα: %(error)s"
+
+#: generics.py:604
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "%(object)s διαγράφηκε επιτυχώς."
+
+#: generics.py:740
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "%(object)s δεν ενημερώθηκε,σφάλμα: %(error)s"
+
+#: generics.py:751
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "%(object)s ενημερώθηκε επιτυχώς."
+
+#: mixins.py:314
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: mixins.py:427
+msgid "Object"
+msgstr "Αντικείμενο"
+
+#: settings.py:15
+msgid "The number objects that will be displayed per page."
+msgstr ""
+
+#: templatetags/views_tags.py:31
+msgid "Confirm delete"
+msgstr "Επιβεβαίωση διαγραφής"
+
+#: templatetags/views_tags.py:36
+#, python-format
+msgid "Edit %s"
+msgstr ""
+
+#: templatetags/views_tags.py:39
+msgid "Confirm"
+msgstr "Επιβεβαίωση"
+
+#: templatetags/views_tags.py:43
+#, python-format
+msgid "Details for: %s"
+msgstr ""
+
+#: templatetags/views_tags.py:47
+#, python-format
+msgid "Edit: %s"
+msgstr ""
+
+#: templatetags/views_tags.py:51
+msgid "Create"
+msgstr "Δημηουργία"
+
+#~ msgid "Common"
+#~ msgstr "Κοινό"
+
+#~ msgid "About this"
+#~ msgstr "Σχετικά με αυτό"
+
+#~ msgid "Locale profile"
+#~ msgstr "Προφίλ τοποθεσίας"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "Τοποποίηση του προφίλ τοποθεσίας"
+
+#~ msgid "Documentation"
+#~ msgstr "Τεκμηρίωση"
+
+#~ msgid "Errors"
+#~ msgstr "Σφάλματα"
+
+#~ msgid "Forum"
+#~ msgstr "Φόρουμ"
+
+#~ msgid "License"
+#~ msgstr "Άδεια χρήσης"
+
+#~ msgid "Setup"
+#~ msgstr "Ρυθμίσεις"
+
+#~ msgid "Source code"
+#~ msgstr "Πηγαιος κώδικας"
+
+#~ msgid "Tools"
+#~ msgstr "Εργαλεία"
+
+#~ msgid "Days"
+#~ msgstr "Ημέρες"
+
+#~ msgid "Hours"
+#~ msgstr "Ώρες"
+
+#~ msgid "Minutes"
+#~ msgstr "Λεπτά"
+
+#~ msgid "System"
+#~ msgstr "Σύστημα"
+
+#~ msgid "Actions"
+#~ msgstr "Ενέργειες"
+
+#~ msgid "User"
+#~ msgstr "Χρήστης"
+
+#~ msgid "Date time"
+#~ msgstr "Ηερομηνία ώρα"
+
+#~ msgid "Result"
+#~ msgstr "Αποτέλεσμα"
+
+#~ msgid "Error log entry"
+#~ msgstr "Καταχωρημένο σφάλμα στο ημερολόγιο"
+
+#~ msgid "Error log entries"
+#~ msgstr "Κταχωρήσεις σφαλμάτων στο ημερολόγιο"
+
+#~ msgid "File"
+#~ msgstr "Αρχείο"
+
+#~ msgid "Filename"
+#~ msgstr "Όνομα αρχείου"
+
+#~ msgid "Shared uploaded file"
+#~ msgstr "Διαμοιραζόμενο ανεβασμένο αρχείο"
+
+#~ msgid "Shared uploaded files"
+#~ msgstr "Διαμοιραζόμενα ανεβασμένα αρχεία"
+
+#~ msgid "Timezone"
+#~ msgstr "Ζώνη ώρας"
+
+#~ msgid "Language"
+#~ msgstr "Γλώσσα"
+
+#~ msgid "User locale profile"
+#~ msgstr "Προφίλ τοποθεσίας χρήστη"
+
+#~ msgid "User locale profiles"
+#~ msgstr "Προφίλ τοποθεσίας χρήστη"
+
+#~ msgid "View error log"
+#~ msgstr "Εμφάνηση ημερολογίου σφαλμάτων"
+
+#~ msgid "Default"
+#~ msgstr "Προκαθορισμένο"
+
+#~ msgid "Delete stale uploads"
+#~ msgstr "Διαγραφή μεταφορτώσεων που δεν ολοκληρώθηκαν"
+
+#~ msgid "Automatically enable logging to all apps."
+#~ msgstr "Αυτόματη ενεργοποίηση καταγραφής για όλες τις εφαρμογές."
+
+#~ msgid ""
+#~ "Time to delay background tasks that depend on a database commit to "
+#~ "propagate."
+#~ msgstr ""
+#~ "Χρόνος αναμονής για ενέργειες παρασκηνίου που εξαρτώνται από την "
+#~ "καταχώρηση στην βάση δεδομένων για να ολοκληρωθούν."
+
+#~ msgid "Path to the logfile that will track errors during production."
+#~ msgstr ""
+#~ "Διαδρομή όπου θα αποθηκευτεί το ημερολόγιο καταγραφής σφαλμάτων κατά την "
+#~ "λειτουργεία του συστήματος."
+
+#~ msgid "About"
+#~ msgstr "Σχετικά"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "Λεπτομέρειες προφίλ τοποθεσίας του τρέχοντος χρήστη"
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "Τροποποίηση προφίλ τοποθεσίας του τρέχοντος χρήστη"
+
+#~ msgid "Dashboard"
+#~ msgstr "Πίνακας ελέγχου"
+
+#~ msgid "Date and time"
+#~ msgstr "Ημερομηνία και ώρα"
+
+#~ msgid "Error log entries for: %s"
+#~ msgstr "Καταχωρήσεις σφαλμάτων για: %s"
+
+#~ msgid "Setup items"
+#~ msgstr "Ρυθμίσεις"

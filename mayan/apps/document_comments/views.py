@@ -2,12 +2,12 @@ from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import (
+from mayan.apps.documents.models import Document
+from mayan.apps.views.generics import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
     SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.common.mixins import ExternalObjectMixin
-from mayan.apps.documents.models import Document
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .forms import DocumentCommentDetailForm
 from .icons import icon_comments_for_document

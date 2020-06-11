@@ -23,8 +23,8 @@ from django.utils.encoding import DjangoUnicodeDecodeError, force_text
 from stronghold.decorators import public
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.common.compat import FileResponse
 from mayan.apps.storage.settings import setting_temporary_directory
+from mayan.apps.views.compat import FileResponse
 
 from ..literals import (
     TEST_SERVER_HOST, TEST_SERVER_SCHEME, TEST_VIEW_NAME, TEST_VIEW_URL

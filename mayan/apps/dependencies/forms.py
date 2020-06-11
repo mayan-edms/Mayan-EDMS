@@ -1,6 +1,6 @@
 from django import forms
 
-from mayan.apps.common.widgets import TextAreaDiv
+from mayan.apps.views.widgets import TextAreaDiv
 
 from .classes import Dependency
 

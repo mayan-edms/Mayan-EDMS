@@ -9,6 +9,7 @@ from django.views.generic.detail import SingleObjectMixin
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.settings import setting_home_view
 from mayan.apps.permissions import Permission
 
 from .compat import FileResponse
@@ -18,7 +19,6 @@ from .literals import (
     PK_LIST_SEPARATOR, TEXT_CHOICE_ITEMS, TEXT_CHOICE_LIST,
     TEXT_LIST_AS_ITEMS_PARAMETER, TEXT_LIST_AS_ITEMS_VARIABLE_NAME
 )
-from .settings import setting_home_view
 
 
 class ContentTypeViewMixin:

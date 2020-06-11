@@ -3,10 +3,10 @@ import logging
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import (
+from mayan.apps.views.generics import (
     ConfirmView, SingleObjectDetailView, SingleObjectListView
 )
-from mayan.apps.common.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..events import event_document_view
 from ..forms import DocumentVersionDownloadForm, DocumentVersionPreviewForm

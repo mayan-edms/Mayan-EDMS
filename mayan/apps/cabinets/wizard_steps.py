@@ -2,8 +2,8 @@ from django.apps import apps
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.http import URL
 from mayan.apps.sources.wizards import WizardStep
+from mayan.apps.views.http import URL
 
 from .forms import CabinetListForm
 from .models import Cabinet

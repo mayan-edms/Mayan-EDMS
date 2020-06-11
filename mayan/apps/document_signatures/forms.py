@@ -3,9 +3,9 @@ import logging
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.forms import DetailForm, FilteredSelectionForm
 from mayan.apps.django_gpg.models import Key
 from mayan.apps.django_gpg.permissions import permission_key_sign
+from mayan.apps.views.forms import DetailForm, FilteredSelectionForm
 
 from .models import SignatureBaseModel
 

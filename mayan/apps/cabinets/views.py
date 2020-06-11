@@ -6,14 +6,14 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.generics import (
-    MultipleObjectFormActionView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
-)
-from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.views.document_views import DocumentListView
+from mayan.apps.views.generics import (
+    MultipleObjectFormActionView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
+)
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .forms import CabinetListForm
 from .icons import icon_cabinet

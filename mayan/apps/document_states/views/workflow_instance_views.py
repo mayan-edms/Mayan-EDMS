@@ -5,10 +5,10 @@ from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.forms import DynamicForm
-from mayan.apps.common.generics import FormView, SingleObjectListView
-from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.models import Document
+from mayan.apps.views.forms import DynamicForm
+from mayan.apps.views.generics import FormView, SingleObjectListView
+from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..forms import WorkflowInstanceTransitionSelectForm
 from ..icons import icon_workflow_instance_detail, icon_workflow_template_list

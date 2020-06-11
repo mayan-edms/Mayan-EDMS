@@ -2,7 +2,7 @@ import logging
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.forms import FilteredSelectionForm
+from mayan.apps.views.forms import FilteredSelectionForm
 
 logger = logging.getLogger(name=__name__)
 

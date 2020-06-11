@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Mohammed ALDOUB <voulnet@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-11 02:28-0400\n"
+"PO-Revision-Date: 2020-04-19 04:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
+"ar/)\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: apps.py:27 settings.py:9
+msgid "Views"
+msgstr ""
+
+#: forms.py:24
+msgid "Selection"
+msgstr "الاختيار"
+
+#: forms.py:100
+msgid "None"
+msgstr "لا شيء"
+
+#: generics.py:146
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:151
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:284
+msgid "Add all"
+msgstr ""
+
+#: generics.py:293
+msgid "Add"
+msgstr "إضافة"
+
+#: generics.py:303
+msgid "Remove all"
+msgstr ""
+
+#: generics.py:312
+msgid "Remove"
+msgstr "إزالة"
+
+#: generics.py:522
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr ""
+
+#: generics.py:543
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr ""
+
+#: generics.py:556
+#, python-format
+msgid "%(object)s created successfully."
+msgstr ""
+
+#: generics.py:595
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr ""
+
+#: generics.py:604
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr ""
+
+#: generics.py:740
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr ""
+
+#: generics.py:751
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr ""
+
+#: mixins.py:314
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: mixins.py:427
+msgid "Object"
+msgstr "Object"
+
+#: settings.py:15
+msgid "The number objects that will be displayed per page."
+msgstr ""
+
+#: templatetags/views_tags.py:31
+msgid "Confirm delete"
+msgstr "تأكيد حذف"
+
+#: templatetags/views_tags.py:36
+#, python-format
+msgid "Edit %s"
+msgstr ""
+
+#: templatetags/views_tags.py:39
+msgid "Confirm"
+msgstr "تأكيد"
+
+#: templatetags/views_tags.py:43
+#, python-format
+msgid "Details for: %s"
+msgstr ""
+
+#: templatetags/views_tags.py:47
+#, python-format
+msgid "Edit: %s"
+msgstr ""
+
+#: templatetags/views_tags.py:51
+msgid "Create"
+msgstr "انشاء"
+
+#~ msgid "License"
+#~ msgstr "License"
+
+#~ msgid "Days"
+#~ msgstr "Days"
+
+#~ msgid "Hours"
+#~ msgstr "Hours"
+
+#~ msgid "Minutes"
+#~ msgstr "Minutes"
+
+#~ msgid "Actions"
+#~ msgstr "الإجراءات"
+
+#~ msgid "User"
+#~ msgstr "مستخدم"
+
+#~ msgid "File"
+#~ msgstr "ملف"
+
+#~ msgid "Filename"
+#~ msgstr "اسم الملف"
+
+#~ msgid "Default"
+#~ msgstr "Default"

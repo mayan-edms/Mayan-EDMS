@@ -1,0 +1,437 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Badea Gabriel <gcbadea@gmail.com>, 2013
+# Harald Ersch, 2019-2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-11 02:28-0400\n"
+"PO-Revision-Date: 2020-04-21 07:34+0000\n"
+"Last-Translator: Harald Ersch\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/ro_RO/)\n"
+"Language: ro_RO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
+
+#: apps.py:27 settings.py:9
+msgid "Views"
+msgstr ""
+
+#: forms.py:24
+msgid "Selection"
+msgstr "Selecţie"
+
+#: forms.py:100
+msgid "None"
+msgstr "Nici unul"
+
+#: generics.py:146
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+"Selectați intrările pentru a fi eliminate. Țineți Control pentru a selecta "
+"mai multe intrări. După finalizarea selecției, faceți clic pe butonul de mai "
+"jos sau faceți dublu clic pe listă pentru a activa acțiunea."
+
+#: generics.py:151
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+"Selectați intrările pentru a fi adăugate. Țineți Control pentru a selecta "
+"mai multe intrări. După finalizarea selecției, faceți clic pe butonul de mai "
+"jos sau faceți dublu clic pe listă pentru a activa acțiunea."
+
+#: generics.py:284
+msgid "Add all"
+msgstr "Adaugă tot setul"
+
+#: generics.py:293
+msgid "Add"
+msgstr "Adăugți"
+
+#: generics.py:303
+msgid "Remove all"
+msgstr "Elimină tot setul"
+
+#: generics.py:312
+msgid "Remove"
+msgstr "Eliminați"
+
+#: generics.py:522
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr "Eroare de date duplicat: %(error)s"
+
+#: generics.py:543
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "Obiectul tip %(object)s nu a fost creat, eroare: %(error)s"
+
+#: generics.py:556
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "Obiectul tip %(object)s a fost creat cu succes."
+
+#: generics.py:595
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "Obiectul tip %(object)s nu a fost șters, eroare: %(error)s."
+
+#: generics.py:604
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "Obiectul tip %(object)s a fost șters cu succes."
+
+#: generics.py:740
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "Obiectul tip %(object)s nu a fost actualizat, eroare: %(error)s."
+
+#: generics.py:751
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "Obiectul tip %(object)s a fost actualizat cu succes."
+
+#: mixins.py:314
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr "Nu am găsit %(verbose_name)s care să corespundă interogării"
+
+#: mixins.py:427
+msgid "Object"
+msgstr "Obiect"
+
+#: settings.py:15
+msgid "The number objects that will be displayed per page."
+msgstr "Obiectele numerice care vor fi afișate pe pagină."
+
+#: templatetags/views_tags.py:31
+msgid "Confirm delete"
+msgstr "Confirmă ștergerea"
+
+#: templatetags/views_tags.py:36
+#, python-format
+msgid "Edit %s"
+msgstr "Editați %s"
+
+#: templatetags/views_tags.py:39
+msgid "Confirm"
+msgstr "Confirmă"
+
+#: templatetags/views_tags.py:43
+#, python-format
+msgid "Details for: %s"
+msgstr "Detalii pentru: %s"
+
+#: templatetags/views_tags.py:47
+#, python-format
+msgid "Edit: %s"
+msgstr "Editare: %s"
+
+#: templatetags/views_tags.py:51
+msgid "Create"
+msgstr "Creează"
+
+#~ msgid "Common"
+#~ msgstr "Comune"
+
+#~ msgid "Model properties"
+#~ msgstr "Proprietățile modelului"
+
+#~ msgid "Model fields"
+#~ msgstr "Câmpurile modelului"
+
+#~ msgid "Model related fields"
+#~ msgstr "Câmpuri legate de model"
+
+#~ msgid "Model reverse fields"
+#~ msgstr "Model câmpuri invers"
+
+#~ msgid "Used to allow offline translation of the code text strings."
+#~ msgstr ""
+#~ "Folosit pentru a permite traducerea offline a șirurilor de text cod."
+
+#~ msgid "Provides style checking."
+#~ msgstr "Oferă verificarea stilului."
+
+#~ msgid "Command line environment with autocompletion."
+#~ msgstr "Mediul liniei de comandă cu autocompletare."
+
+#~ msgid "Checks proper formatting of the README file."
+#~ msgstr "Verifică formatarea corectă a fișierului README."
+
+#~ msgid "About this"
+#~ msgstr "Despre asta"
+
+#~ msgid "Get the book"
+#~ msgstr "Obțineți cartea"
+
+#~ msgid "Locale profile"
+#~ msgstr "Profilul localizării"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "Editați profilul localizării"
+
+#~ msgid "Documentation"
+#~ msgstr "Documentație"
+
+#~ msgid "Errors"
+#~ msgstr "Erori"
+
+#~ msgid "Clear all"
+#~ msgstr "Curăță tot"
+
+#~ msgid "Forum"
+#~ msgstr "Forum"
+
+#~ msgid "License"
+#~ msgstr "Licenţă"
+
+#~ msgid "Setup"
+#~ msgstr "Configurare"
+
+#~ msgid "Source code"
+#~ msgstr "Cod sursă"
+
+#~ msgid "Get support"
+#~ msgstr "Obțineți sprijin"
+
+#~ msgid "Tools"
+#~ msgstr "Unelte"
+
+#~ msgid ""
+#~ "This feature has been deprecated and will be removed in a future version."
+#~ msgstr ""
+#~ "Această caracteristică a fost depreciată și va fi eliminată într-o "
+#~ "versiune viitoare."
+
+#~ msgid ""
+#~ "Your database backend is set to use SQLite. SQLite should only be used "
+#~ "for development and testing, not for production."
+#~ msgstr ""
+#~ "Backendul bazei de date este setat să utilizeze SQLite. SQLite ar trebui "
+#~ "folosit numai pentru dezvoltare și testare, nu pentru producție."
+
+#~ msgid "Days"
+#~ msgstr "Zile"
+
+#~ msgid "Hours"
+#~ msgstr "Ore"
+
+#~ msgid "Minutes"
+#~ msgstr "Minute"
+
+#~ msgid "System"
+#~ msgstr "Sistem"
+
+#~ msgid "Facet"
+#~ msgstr "Faţetă"
+
+#~ msgid "Actions"
+#~ msgstr "Acţiuni"
+
+#~ msgid "Secondary"
+#~ msgstr "Secundar"
+
+#~ msgid "User"
+#~ msgstr "Utilizator"
+
+#~ msgid "Namespace"
+#~ msgstr "Spațiu de nume"
+
+#~ msgid "Date time"
+#~ msgstr "Data și ora"
+
+#~ msgid "Result"
+#~ msgstr "Rezultat"
+
+#~ msgid "Error log entry"
+#~ msgstr "Intrare jurnal eroare"
+
+#~ msgid "Error log entries"
+#~ msgstr "Înregistrări de eroare"
+
+#~ msgid "File"
+#~ msgstr "Fișier"
+
+#~ msgid "Filename"
+#~ msgstr "Nume fişier"
+
+#~ msgid "Shared uploaded file"
+#~ msgstr "Fișier încărcat în comun"
+
+#~ msgid "Shared uploaded files"
+#~ msgstr "Fișiere încărcate în comun"
+
+#~ msgid "Timezone"
+#~ msgstr "Fus orar"
+
+#~ msgid "Language"
+#~ msgstr "Limba"
+
+#~ msgid "User locale profile"
+#~ msgstr "Profilul de localizare utilizator"
+
+#~ msgid "User locale profiles"
+#~ msgstr "Profile de localizare pentru utilizatori"
+
+#~ msgid "View error log"
+#~ msgstr "Vizualizați jurnalul de erori"
+
+#~ msgid "Default"
+#~ msgstr "Implicit"
+
+#~ msgid "Common periodic"
+#~ msgstr "Obșnuite periodice"
+
+#~ msgid "Delete stale uploads"
+#~ msgstr "Ștergeți încărcările învechite"
+
+#~ msgid "Automatically enable logging to all apps."
+#~ msgstr "Activați juranlizarea automată la toate aplicațiile."
+
+#~ msgid ""
+#~ "Time to delay background tasks that depend on a database commit to "
+#~ "propagate."
+#~ msgstr ""
+#~ "Timpul de întârziere pentru sarcini de fundal care depind de propagarea "
+#~ "schimbărilor în  baza de date."
+
+#~ msgid ""
+#~ "A list of strings designating all applications that are to be removed "
+#~ "from the list normally installed by Mayan EDMS. Each string should be a "
+#~ "dotted Python path to: an application configuration class (preferred), or "
+#~ "a package containing an application."
+#~ msgstr ""
+#~ "O listă de șiruri care desemnează toate aplicațiile care urmează să fie "
+#~ "eliminate din lista instalată în mod normal de Mayan EDMS. Fiecare șir ar "
+#~ "trebui să fie o cale Python punctată către: o clasă de configurare a "
+#~ "aplicației (preferată) sau un pachet care conține o aplicație."
+
+#~ msgid ""
+#~ "A list of strings designating all applications that are installed beyond "
+#~ "those normally installed by Mayan EDMS. Each string should be a dotted "
+#~ "Python path to: an application configuration class (preferred), or a "
+#~ "package containing an application."
+#~ msgstr ""
+#~ "O listă de șiruri care desemnează toate aplicațiile instalate dincolo de "
+#~ "cele instalate în mod normal de Mayan EDMS. Fiecare șir ar trebui să fie "
+#~ "o cale Python punctată către: o clasă de configurare a aplicației "
+#~ "(preferată) sau un pachet care conține o aplicație."
+
+#~ msgid ""
+#~ "Name of the view attached to the brand anchor in the main menu. This is "
+#~ "also the view to which users will be redirected after log in."
+#~ msgstr ""
+#~ "Numele afișării atașate ancorei de marcă din meniul principal. Aceasta "
+#~ "este și perspectiva la care utilizatorii vor fi redirecționați după "
+#~ "conectare."
+
+#~ msgid ""
+#~ "Enable error logging outside of the system error logging capabilities."
+#~ msgstr ""
+#~ "Activați înregistrarea erorilor în afara capabilităților de înregistrare "
+#~ "a erorilor de sistem."
+
+#~ msgid "Path to the logfile that will track errors during production."
+#~ msgstr ""
+#~ "Calea către fișierul jurnal care va urmări erorile în timpul producției."
+
+#~ msgid "Name to be displayed in the main menu."
+#~ msgstr "Numele care urmează să fie afișat în meniul principal."
+
+#~ msgid "URL of the installation or homepage of the project."
+#~ msgstr "Adresa URL a instalării sau a paginii de pornire a proiectului."
+
+#~ msgid "A storage backend that all workers can use to share files."
+#~ msgstr ""
+#~ "Un backend de stocare pe care toți lucrătorii îl pot folosi pentru "
+#~ "partajarea fișierelor."
+
+#~ msgid "Base URL path to use for all views."
+#~ msgstr "Calea URL de bază pentru a fi utilizată pentru toate vizualizările."
+
+#~ msgid ""
+#~ "Unable to initialize the shared uploaded file storage. Check the settings "
+#~ "{} and {} for formatting errors."
+#~ msgstr ""
+#~ "Imposibil de inițializat stocarea fișierului încărcat partajat. "
+#~ "Verificați setările {} și {} pentru erori de formatare."
+
+#~ msgid "Enter a valid JSON value."
+#~ msgstr "Introduceți o valoare JSON validă."
+
+#~ msgid "Enter a valid YAML value."
+#~ msgstr "Introduceți o valoare validă YAML."
+
+#~ msgid ""
+#~ "Enter a valid 'internal name' consisting of letters, numbers, and "
+#~ "underscores."
+#~ msgstr ""
+#~ "Introduceți un \"nume intern\" valabil format din litere, numere și "
+#~ "subliniere."
+
+#~ msgid "About"
+#~ msgstr "Despre"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "Detaliile  profilului locației utilizatorului curent"
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "Editați detaliile profilului de localizare a utilizatorului actual"
+
+#~ msgid "Dashboard"
+#~ msgstr "Panou principal"
+
+#~ msgid "Clear error log entries for: %s"
+#~ msgstr "Eliminați intrările din jurnalul de erori pentru: %s"
+
+#~ msgid "Object error log cleared successfully"
+#~ msgstr "Jurnalului erorilor de obiecte a fost curățat cu succes"
+
+#~ msgid "Date and time"
+#~ msgstr "Data și ora"
+
+#~ msgid ""
+#~ "This view displays the error log of different object. An empty list is a "
+#~ "good thing."
+#~ msgstr ""
+#~ "Această vizualizare afișează jurnalul de erori al unui obiect diferit. O "
+#~ "listă goală este un lucru bun."
+
+#~ msgid "There are no error log entries"
+#~ msgstr "Nu există înregistrări de jurnal de erori"
+
+#~ msgid "Error log entries for: %s"
+#~ msgstr "Intrările de eroare pentru: %s"
+
+#~ msgid "No setup options available."
+#~ msgstr "Nu sunt disponibile opțiuni de configurare."
+
+#~ msgid ""
+#~ "No results here means that don't have the required permissions to perform "
+#~ "administrative task."
+#~ msgstr ""
+#~ "Niciun rezultat aici înseamnă că nu aveți permisiunile necesare pentru a "
+#~ "efectua o sarcină administrativă."
+
+#~ msgid "Setup items"
+#~ msgstr "Configurați elemente"
+
+#~ msgid "Here you can configure all aspects of the system."
+#~ msgstr "Aici puteți configura toate aspectele sistemului."
+
+#~ msgid "These modules are used to do system maintenance."
+#~ msgstr "Aceste module sunt folosite pentru întreținerea sistemului."
