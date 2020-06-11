@@ -44,18 +44,22 @@ def task_index_search_model(self, search_model_full_name):
 def task_index_instance(self, app_label, model_name, object_id):
     logger.info('Executing')
 
-    Model = apps.get_model(app_label=app_label, model_name=model_name)
     try:
-        instance = Model._meta.default_manager.get(pk=object_id)
-    except Model.DoesNotExist:
-        """
-        This is not fatal, the task is triggered on the post_save
-        signal and the instance might still not be ready to access.
-        """
+        Model = apps.get_model(app_label=app_label, model_name=model_name)
+    except LookupError:
+        """Non fatal, just exit the task."""
     else:
         try:
-            SearchBackend.get_instance().index_instance(instance=instance)
-        except LockError as exception:
-            raise self.retry(exc=exception)
+            instance = Model._meta.default_manager.get(pk=object_id)
+        except Model.DoesNotExist:
+            """
+            This is not fatal, the task is triggered on the post_save
+            signal and the instance might still not be ready to access.
+            """
+        else:
+            try:
+                SearchBackend.get_instance().index_instance(instance=instance)
+            except LockError as exception:
+                raise self.retry(exc=exception)
 
     logger.info('Finshed')
