@@ -10,8 +10,6 @@ DOCUMENT_PARSING_AUTO_PARSING = False
 
 FILE_METADATA_AUTO_PROCESS = False
 
-INSTALLED_APPS += ('test_without_migrations',)  # NOQA: F405
-
 INSTALLED_APPS = [
     cls for cls in INSTALLED_APPS if cls != 'whitenoise.runserver_nostatic'
 ]

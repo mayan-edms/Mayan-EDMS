@@ -9,6 +9,7 @@ django-environ
 django-filetransfers
 django-rest-swagger
 django-suit
+django-test-without-migrations
 django-timezone-field
 librabbitmq
 pathlib2

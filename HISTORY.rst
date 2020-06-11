@@ -78,6 +78,7 @@
   supports a second one named ``logfile``. The ``logfile`` handler
   is the same one that previously enabled when setting the setting
   ``COMMON_PRODUCTION_ERROR_LOGGING`` to ``true``.
+- Remove the django-test-without-migrations package.
 
 3.4.9 (2020-05-26)
 ==================

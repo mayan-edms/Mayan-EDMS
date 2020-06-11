@@ -1,7 +1,16 @@
 from django import apps
+from django.conf import settings
 from django.test.runner import DiscoverRunner
 
 from .literals import EXCLUDE_TEST_TAG
+
+
+class NullMigrationsClass():
+    def __contains__(self, item):
+        return True
+
+    def __getitem__(self, item):
+        return None
 
 
 class MayanTestRunner(DiscoverRunner):
@@ -18,11 +27,19 @@ class MayanTestRunner(DiscoverRunner):
             dest='no_exclude',
             help='Include excluded tests.'
         )
+        parser.add_argument(
+            '--skip-migrations', action='store_true', default=False,
+            dest='skip_migrations', help='Skip execution of '
+            'migrations after creating the database.'
+        )
 
     def __init__(self, *args, **kwargs):
         self.mayan_apps = kwargs.pop('mayan_apps')
         self.no_exclude = kwargs.pop('no_exclude')
-        super(MayanTestRunner, self).__init__(*args, **kwargs)
+        if kwargs.pop('skip_migrations'):
+            settings.MIGRATION_MODULES = NullMigrationsClass()
+
+        super().__init__(*args, **kwargs)
 
         # Test that should be excluded by default
         # To include then pass --tag=exclude to the test runner invocation
@@ -40,4 +57,4 @@ class MayanTestRunner(DiscoverRunner):
                 )
             ]
 
-        return super(MayanTestRunner, self).build_suite(*args, **kwargs)
+        return super().build_suite(*args, **kwargs)

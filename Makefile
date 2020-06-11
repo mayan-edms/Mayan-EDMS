@@ -5,8 +5,8 @@ ifndef MODULE
 override MODULE = --mayan-apps
 endif
 
-ifndef NOMIGRATIONS
-override NOMIGRATIONS = --nomigrations
+ifndef SKIPMIGRATIONS
+override SKIPMIGRATIONS = --skip-migrations
 endif
 
 ifndef SETTINGS
@@ -39,7 +39,7 @@ clean-pyc: ## Remove Python artifacts.
 # Testing
 
 _test-command:
-	./manage.py test $(MODULE) --settings=$(SETTINGS) $(NOMIGRATIONS) $(DEBUG) $(ARGUMENTS)
+	./manage.py test $(MODULE) --settings=$(SETTINGS) $(SKIPMIGRATIONS) $(DEBUG) $(ARGUMENTS)
 
 test: ## MODULE=<python module name> - Run tests for a single app, module or test class.
 test: clean-pyc _test-command
@@ -57,7 +57,7 @@ test-all-debug: clean-pyc _test-command
 
 test-all-migrations: ## Run all migration tests.
 test-all-migrations: ARGUMENTS=--no-exclude --tag=migration
-test-all-migrations: NOMIGRATIONS=
+test-all-migrations: SKIPMIGRATIONS=
 test-all-migrations: clean-pyc _test-command
 
 test-launch-postgres:
@@ -73,13 +73,13 @@ test-launch-postgres:
 
 test-with-postgres: ## MODULE=<python module name> - Run tests for a single app, module or test class against a PostgreSQL database container.
 test-with-postgres: test-launch-postgres
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_postgres --nomigrations
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_postgres --skip-migrations
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
 
 test-with-postgres-all: ## Run all tests against a PostgreSQL database container.
 test-with-postgres-all: test-launch-postgres
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --nomigrations
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --skip-migrations
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
 
@@ -104,13 +104,13 @@ test-launch-mysql:
 
 test-with-mysql: ## MODULE=<python module name> - Run tests for a single app, module or test class against a MySQL database container.
 test-with-mysql: test-launch-mysql
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_mysql --nomigrations
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_mysql --skip-migrations
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
 
 test-with-mysql-all: ## Run all tests against a MySQL database container.
 test-with-mysql-all: test-launch-mysql
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --nomigrations
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --skip-migrations
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
 
@@ -131,13 +131,13 @@ test-launch-oracle:
 
 test-with-oracle: ## MODULE=<python module name> - Run tests for a single app, module or test class against a Oracle database container.
 test-with-oracle: test-launch-oracle
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_oracle --nomigrations
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_oracle --skip-migrations
 	@docker rm -f test-oracle || true
 	@docker volume rm test-oracle || true
 
 test-with-oracle-all: ## Run all tests against a Oracle database container.
 test-with-oracle-all: test-launch-oracle
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_oracle --nomigrations
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_oracle --skip-migrations
 	@docker rm -f test-oracle || true
 	@docker volume rm test-oracle || true
 
