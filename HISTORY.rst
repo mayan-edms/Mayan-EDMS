@@ -82,6 +82,7 @@
 - Split the common app into common and views. The new views app controls
   generic views, view mixins, forms, and widgets.
   The setting ``COMMON_PAGINATE_BY`` is now named ``VIEWS_PAGINATE_BY``.
+- Allow access to document stubs.
 
 3.4.9 (2020-05-26)
 ==================
