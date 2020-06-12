@@ -86,6 +86,11 @@
 - Mirroring improvements. Allow running the mountindex in the background.
   Display a message when running on the foreground to avoid confusion.
   Add internat FUSE logging and allow control of the log level.
+- Move dependencies to their respective app:
+
+  - django-mathfilters from common to templating
+  - extract-msg from common to storage
+  - gevent, gunicorn, whitenoise from common to platform
 
 3.4.9 (2020-05-26)
 ==================
