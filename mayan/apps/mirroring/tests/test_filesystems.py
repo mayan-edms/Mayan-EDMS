@@ -170,7 +170,7 @@ class IndexFilesystemTestCase(
 
         self.assertEqual(len(list(index_filesystem.readdir('/', ''))), 4)
 
-    def test_ignore_stub_documents(self):
+    def test_stub_documents(self):
         self._create_test_index()
 
         self.test_index.node_templates.create(
@@ -178,16 +178,14 @@ class IndexFilesystemTestCase(
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
-        self.test_document = Document.objects.create(
-            document_type=self.test_document_type, label='document_stub'
-        )
+        self._create_test_document_stub()
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
         self.test_index.rebuild()
 
         self.assertEqual(
             list(
                 index_filesystem.readdir('/', '')
-            )[2:], []
+            )[2:], [TEST_NODE_EXPRESSION]
         )
 
     def test_duplicated_documents_readdir(self):

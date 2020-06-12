@@ -46,12 +46,9 @@ class DocumentDuplicatesListView(ExternalObjectMixin, DocumentListView):
         return context
 
     def get_source_queryset(self):
-        try:
-            return DuplicatedDocument.objects.get(
-                document=self.external_object
-            ).documents.all()
-        except DuplicatedDocument.DoesNotExist:
-            return Document.objects.none()
+        return DuplicatedDocument.objects.get_duplicates_of(
+            document=self.external_object
+        )
 
 
 class DuplicatedDocumentListView(DocumentListView):

@@ -14,13 +14,13 @@ class DocumentPageDisableViewTestCase(
     DocumentPageDisableViewTestMixin, GenericDocumentViewTestCase
 ):
     def test_document_page_disable_view_no_permission(self):
-        test_document_page_count = self.test_document.pages.count()
+        test_document_page_count = self.test_document.pages_valid.count()
 
         response = self._request_test_document_page_disable_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            test_document_page_count, self.test_document.pages.count()
+            test_document_page_count, self.test_document.pages_valid.count()
         )
 
     def test_document_page_disable_view_with_access(self):
@@ -28,23 +28,23 @@ class DocumentPageDisableViewTestCase(
             obj=self.test_document, permission=permission_document_edit
         )
 
-        test_document_page_count = self.test_document.pages.count()
+        test_document_page_count = self.test_document.pages_valid.count()
 
         response = self._request_test_document_page_disable_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertNotEqual(
-            test_document_page_count, self.test_document.pages.count()
+            test_document_page_count, self.test_document.pages_valid.count()
         )
 
     def test_document_page_multiple_disable_view_no_permission(self):
-        test_document_page_count = self.test_document.pages.count()
+        test_document_page_count = self.test_document.pages_valid.count()
 
         response = self._request_test_document_page_multiple_disable_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            test_document_page_count, self.test_document.pages.count()
+            test_document_page_count, self.test_document.pages_valid.count()
         )
 
     def test_document_page_multiple_disable_view_with_access(self):
@@ -52,25 +52,25 @@ class DocumentPageDisableViewTestCase(
             obj=self.test_document, permission=permission_document_edit
         )
 
-        test_document_page_count = self.test_document.pages.count()
+        test_document_page_count = self.test_document.pages_valid.count()
 
         response = self._request_test_document_page_multiple_disable_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertNotEqual(
-            test_document_page_count, self.test_document.pages.count()
+            test_document_page_count, self.test_document.pages_valid.count()
         )
 
     def test_document_page_enable_view_no_permission(self):
         self._disable_test_document_page()
 
-        test_document_page_count = self.test_document.pages.count()
+        test_document_page_count = self.test_document.pages_valid.count()
 
         response = self._request_test_document_page_enable_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            test_document_page_count, self.test_document.pages.count()
+            test_document_page_count, self.test_document.pages_valid.count()
         )
 
     def test_document_page_enable_view_with_access(self):
@@ -79,24 +79,24 @@ class DocumentPageDisableViewTestCase(
             obj=self.test_document, permission=permission_document_edit
         )
 
-        test_document_page_count = self.test_document.pages.count()
+        test_document_page_count = self.test_document.pages_valid.count()
 
         response = self._request_test_document_page_enable_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertNotEqual(
-            test_document_page_count, self.test_document.pages.count()
+            test_document_page_count, self.test_document.pages_valid.count()
         )
 
     def test_document_page_multiple_enable_view_no_permission(self):
         self._disable_test_document_page()
-        test_document_page_count = self.test_document.pages.count()
+        test_document_page_count = self.test_document.pages_valid.count()
 
         response = self._request_test_document_page_multiple_enable_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            test_document_page_count, self.test_document.pages.count()
+            test_document_page_count, self.test_document.pages_valid.count()
         )
 
     def test_document_page_multiple_enable_view_with_access(self):
@@ -105,13 +105,13 @@ class DocumentPageDisableViewTestCase(
             obj=self.test_document, permission=permission_document_edit
         )
 
-        test_document_page_count = self.test_document.pages.count()
+        test_document_page_count = self.test_document.pages_valid.count()
 
         response = self._request_test_document_page_multiple_enable_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertNotEqual(
-            test_document_page_count, self.test_document.pages.count()
+            test_document_page_count, self.test_document.pages_valid.count()
         )
 
 

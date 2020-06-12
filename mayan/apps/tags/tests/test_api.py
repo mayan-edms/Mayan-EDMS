@@ -152,19 +152,17 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
 class TagDocumentAPIViewTestCase(
     DocumentTestMixin, TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase
 ):
-    auto_upload_test_document = False
+    def setUp(self):
+        super().setUp()
+        self._create_test_tag()
 
     def test_tag_document_list_view_no_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         response = self._request_test_tag_document_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_tag_document_list_view_with_tag_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -175,8 +173,6 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(response.data['count'], 0)
 
     def test_tag_document_list_view_with_document_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -186,8 +182,6 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_tag_document_list_view_with_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -203,18 +197,12 @@ class TagDocumentAPIViewTestCase(
         )
 
     def test_document_attach_tag_view_no_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
-
         response = self._request_test_document_attach_tag_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
     def test_document_attach_tag_view_with_document_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
-
         self.grant_access(
             obj=self.test_document, permission=permission_tag_attach
         )
@@ -225,9 +213,6 @@ class TagDocumentAPIViewTestCase(
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
     def test_document_attach_tag_view_with_tag_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
-
         self.grant_access(
             obj=self.test_tag, permission=permission_tag_attach
         )
@@ -238,9 +223,6 @@ class TagDocumentAPIViewTestCase(
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
     def test_document_attach_tag_view_with_full_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
-
         self.grant_access(
             obj=self.test_document, permission=permission_tag_attach
         )
@@ -254,16 +236,12 @@ class TagDocumentAPIViewTestCase(
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
     def test_document_tag_detail_view_no_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         response = self._request_test_document_tag_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_tag_detail_view_with_document_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -274,8 +252,6 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_tag_detail_view_with_tag_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -284,8 +260,6 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_tag_detail_view_with_full_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -298,16 +272,12 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(response.data['label'], self.test_tag.label)
 
     def test_document_tag_list_view_no_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         response = self._request_test_document_tag_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_tag_list_view_with_document_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -319,8 +289,6 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(response.data['count'], 0)
 
     def test_document_tag_list_view_with_tag_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -329,8 +297,6 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_tag_list_view_with_full_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -343,8 +309,6 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(response.data['results'][0]['label'], self.test_tag.label)
 
     def test_document_tag_remove_view_no_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         response = self._request_test_document_tag_remove_api_view()
@@ -353,8 +317,6 @@ class TagDocumentAPIViewTestCase(
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
     def test_document_tag_remove_view_with_document_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -367,8 +329,6 @@ class TagDocumentAPIViewTestCase(
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
     def test_document_tag_remove_view_with_tag_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
@@ -379,8 +339,6 @@ class TagDocumentAPIViewTestCase(
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
     def test_document_tag_remove_view_with_full_access(self):
-        self._create_test_tag()
-        self._upload_test_document()
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -392,3 +350,12 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertFalse(self.test_tag in self.test_document.tags.all())
+
+
+class TagDocumentStubAPIViewTestCase(TagDocumentAPIViewTestCase):
+    auto_upload_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+        self.test_document = self.test_document_stub

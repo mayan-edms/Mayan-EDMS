@@ -75,7 +75,7 @@ class DocumentListView(SingleObjectListView):
             return super(DocumentListView, self).get_context_data(**kwargs)
 
     def get_document_queryset(self):
-        return Document.objects.defer(
+        return Document.valid.defer(
             'description', 'uuid', 'date_added', 'language', 'in_trash',
             'deleted_date_time'
         ).all()

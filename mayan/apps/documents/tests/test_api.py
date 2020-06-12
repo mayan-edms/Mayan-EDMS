@@ -649,7 +649,7 @@ class TrashedDocumentAPIViewTestCase(
         response = self._request_test_document_api_trash_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(Document.trash.count(), 1)
 
     def test_trashed_document_api_delete_view_no_access(self):
@@ -659,7 +659,7 @@ class TrashedDocumentAPIViewTestCase(
         response = self._request_test_trashed_document_api_delete_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(Document.trash.count(), 1)
 
     def test_trashed_document_api_delete_view_with_access(self):
@@ -672,7 +672,7 @@ class TrashedDocumentAPIViewTestCase(
         response = self._request_test_trashed_document_api_delete_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(Document.trash.count(), 0)
 
     def test_trashed_document_api_detail_view_no_access(self):
@@ -743,7 +743,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(Document.trash.count(), 1)
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.valid.count(), 0)
 
     def test_trashed_document_api_restore_view_with_access(self):
         self._upload_test_document()
@@ -756,4 +756,4 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(Document.trash.count(), 0)
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.valid.count(), 1)

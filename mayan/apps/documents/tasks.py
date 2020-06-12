@@ -58,7 +58,7 @@ def task_delete_stubs():
     )
 
     logger.info(msg='Executing')
-    Document.passthrough.delete_stubs()
+    Document.objects.delete_stubs()
     logger.info(msg='Finshed')
 
 
@@ -74,7 +74,7 @@ def task_generate_document_page_image(document_page_id, user_id=None, **kwargs):
     else:
         user = None
 
-    document_page = DocumentPage.passthrough.get(pk=document_page_id)
+    document_page = DocumentPage.objects.get(pk=document_page_id)
     return document_page.generate_image(user=user, **kwargs)
 
 
@@ -134,7 +134,7 @@ def task_upload_new_version(self, document_id, shared_uploaded_file_id, user_id,
     )
 
     try:
-        document = Document.passthrough.get(pk=document_id)
+        document = Document.objects.get(pk=document_id)
         shared_file = SharedUploadedFile.objects.get(
             pk=shared_uploaded_file_id
         )

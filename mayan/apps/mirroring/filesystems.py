@@ -155,7 +155,7 @@ class IndexFilesystem(Operations):
                     if access_only:
                         return True
                     else:
-                        return Document.objects.get(pk=document_pk)
+                        return Document.valid.get(pk=document_pk)
 
             for count, part in enumerate(parts[1:]):
                 try:
@@ -172,8 +172,12 @@ class IndexFilesystem(Operations):
                     else:
                         try:
                             if node.index_template_node.link_documents:
+                                queryset = Document.valid.filter(
+                                    pk__in=node.documents.values('pk')
+                                )
+
                                 document = IndexFilesystem._clean_queryset(
-                                    queryset=node.documents,
+                                    queryset=queryset,
                                     source_field_name='label',
                                     destination_field_name='label_clean'
                                 ).get(label_clean=part)
@@ -291,9 +295,12 @@ class IndexFilesystem(Operations):
 
         # Documents
         if node.index_template_node.link_documents:
+            queryset = Document.valid.filter(
+                pk__in=node.documents.values('pk')
+            )
 
             queryset = IndexFilesystem._clean_queryset(
-                queryset=node.documents, source_field_name='label',
+                queryset=queryset, source_field_name='label',
                 destination_field_name='label_clean'
             )
 

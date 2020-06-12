@@ -54,30 +54,30 @@ class DocumentTestCase(GenericDocumentTestCase):
         self.assertEqual(self.test_document.versions.count(), 3)
 
     def test_restoring_documents(self):
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.valid.count(), 1)
 
         # Trash the document
         self.test_document.delete()
         self.assertEqual(DeletedDocument.objects.count(), 1)
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.valid.count(), 0)
 
         # Restore the document
         self.test_document.restore()
         self.assertEqual(DeletedDocument.objects.count(), 0)
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.valid.count(), 1)
 
     def test_trashing_documents(self):
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.valid.count(), 1)
 
         # Trash the document
         self.test_document.delete()
         self.assertEqual(DeletedDocument.objects.count(), 1)
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.valid.count(), 0)
 
         # Delete the document
         self.test_document.delete()
         self.assertEqual(DeletedDocument.objects.count(), 0)
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.valid.count(), 0)
 
     def test_auto_trashing(self):
         """
@@ -93,12 +93,12 @@ class DocumentTestCase(GenericDocumentTestCase):
         # field
         time.sleep(1.01)
 
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.valid.count(), 1)
         self.assertEqual(DeletedDocument.objects.count(), 0)
 
         DocumentType.objects.check_trash_periods()
 
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 1)
 
     def test_auto_delete(self):
@@ -111,12 +111,12 @@ class DocumentTestCase(GenericDocumentTestCase):
         self.test_document_type.delete_time_unit = 'seconds'
         self.test_document_type.save()
 
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.valid.count(), 1)
         self.assertEqual(DeletedDocument.objects.count(), 0)
 
         self.test_document.delete()
 
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 1)
 
         # Needed by MySQL as milliseconds value is not stored in timestamp
@@ -125,7 +125,7 @@ class DocumentTestCase(GenericDocumentTestCase):
 
         DocumentType.objects.check_delete_periods()
 
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 0)
 
     def test_method_get_absolute_url(self):
@@ -140,7 +140,7 @@ class PDFAlternateRotationTestCase(GenericDocumentTestCase):
 
     def test_rotate(self):
         self.assertQuerysetEqual(
-            qs=Document.objects.all(), values=(repr(self.test_document),)
+            qs=Document.valid.all(), values=(repr(self.test_document),)
         )
         self.assertEqual(
             layer_saved_transformations.get_transformations_for(
@@ -155,7 +155,7 @@ class PDFIndirectRotationTestCase(GenericDocumentTestCase):
 
     def test_rotate(self):
         self.assertQuerysetEqual(
-            qs=Document.objects.all(), values=(repr(self.test_document),)
+            qs=Document.valid.all(), values=(repr(self.test_document),)
         )
 
 
@@ -245,18 +245,18 @@ class DocumentManagerTestCase(BaseTestCase):
             document_type=self.test_document_type
         )
 
-        Document.passthrough.delete_stubs()
+        Document.objects.delete_stubs()
 
-        self.assertEqual(Document.passthrough.count(), 1)
+        self.assertEqual(Document.objects.count(), 1)
 
         document_stub.date_added = document_stub.date_added - timedelta(
             seconds=setting_stub_expiration_interval.value + 1
         )
         document_stub.save()
 
-        Document.passthrough.delete_stubs()
+        Document.objects.delete_stubs()
 
-        self.assertEqual(Document.passthrough.count(), 0)
+        self.assertEqual(Document.objects.count(), 0)
 
 
 class DocumentTypeModelTestCase(GenericDocumentTestCase):
@@ -283,16 +283,16 @@ class DuplicatedDocumentsTestCase(GenericDocumentTestCase):
         self.test_documents[1].delete()
 
         self.assertFalse(
-            self.test_documents[1] in DuplicatedDocument.objects.get(
+            self.test_documents[1] in DuplicatedDocument.objects.get_duplicates_of(
                 document=self.test_documents[0]
-            ).documents.all()
+            )
         )
 
     def test_duplicate_scan(self):
         self._upload_test_document()
 
         self.assertTrue(
-            self.test_documents[1] in DuplicatedDocument.objects.get(
+            self.test_documents[1] in DuplicatedDocument.objects.get_duplicates_of(
                 document=self.test_documents[0]
-            ).documents.all()
+            )
         )

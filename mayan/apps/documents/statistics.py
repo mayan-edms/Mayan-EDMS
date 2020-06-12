@@ -25,7 +25,7 @@ def get_month_name(month_number):
 def new_documents_per_month():
     Document = apps.get_model(app_label='documents', model_name='Document')
 
-    qss = qsstats.QuerySetStats(Document.passthrough.all(), 'date_added')
+    qss = qsstats.QuerySetStats(Document.objects.all(), 'date_added')
 
     now = timezone.now().date()
     start = timezone.datetime(year=now.year, month=1, day=1).date()

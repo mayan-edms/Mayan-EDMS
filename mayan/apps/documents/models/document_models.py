@@ -15,7 +15,7 @@ from ..events import (
     event_document_trashed, event_document_type_changed,
 )
 from ..literals import DEFAULT_LANGUAGE
-from ..managers import DocumentManager, PassthroughManager, TrashCanManager
+from ..managers import DocumentManager, TrashCanManager, ValidDocumentManager
 from ..signals import signal_post_document_type_change
 
 from .document_type_models import DocumentType
@@ -103,8 +103,8 @@ class Document(HooksMixin, models.Model):
     )
 
     objects = DocumentManager()
-    passthrough = PassthroughManager()
     trash = TrashCanManager()
+    valid = ValidDocumentManager()
 
     @classmethod
     def execute_pre_create_hooks(cls, kwargs=None):
@@ -245,6 +245,18 @@ class Document(HooksMixin, models.Model):
     def pages_all(self):
         try:
             return self.latest_version.pages_all
+        except AttributeError:
+            # Document has no version yet
+            DocumentPage = apps.get_model(
+                app_label='documents', model_name='DocumentPage'
+            )
+
+            return DocumentPage.objects.none()
+
+    @property
+    def pages_valid(self):
+        try:
+            return self.latest_version.pages_valid
         except AttributeError:
             # Document has no version yet
             DocumentPage = apps.get_model(

@@ -224,7 +224,7 @@ class DocumentVersion(models.Model):
         )
 
     def get_api_image_url(self, *args, **kwargs):
-        first_page = self.pages.first()
+        first_page = self.pages_valid.first()
         if first_page:
             return first_page.get_api_image_url(*args, **kwargs)
 
@@ -305,13 +305,6 @@ class DocumentVersion(models.Model):
             return result['file_object']
 
     @property
-    def pages_all(self):
-        DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentPage'
-        )
-        return DocumentPage.passthrough.filter(document_version=self)
-
-    @property
     def page_count(self):
         """
         The number of pages that the document posses.
@@ -321,6 +314,17 @@ class DocumentVersion(models.Model):
     @property
     def pages(self):
         return self.version_pages.all()
+
+    @property
+    def pages_all(self):
+        return self.pages.all()
+
+    @property
+    def pages_valid(self):
+        DocumentPage = apps.get_model(
+            app_label='documents', model_name='DocumentPage'
+        )
+        return DocumentPage.valid.filter(document_version=self)
 
     def revert(self, _user=None):
         """

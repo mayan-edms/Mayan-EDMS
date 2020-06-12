@@ -17,7 +17,7 @@ from mayan.apps.converter.transformations import (
 )
 from mayan.apps.converter.utils import get_converter_class
 
-from ..managers import DocumentPageManager
+from ..managers import DocumentPageManager, ValidDocumentPageManager
 from ..settings import (
     setting_display_width, setting_display_height, setting_zoom_max_level,
     setting_zoom_min_level
@@ -44,7 +44,7 @@ class DocumentPage(models.Model):
     )
 
     objects = DocumentPageManager()
-    passthrough = models.Manager()
+    valid = ValidDocumentPageManager()
 
     class Meta:
         ordering = ('page_number',)
@@ -259,7 +259,7 @@ class DocumentPage(models.Model):
 
     @property
     def siblings(self):
-        return DocumentPage.objects.filter(
+        return DocumentPage.valid.filter(
             document_version=self.document_version
         )
 

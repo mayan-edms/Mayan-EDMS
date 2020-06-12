@@ -17,13 +17,12 @@ logger = logging.getLogger(name=__name__)
 
 
 class DocumentManager(models.Manager):
-    def get_by_natural_key(self, uuid):
-        return self.model.passthrough.get(uuid=force_text(uuid))
+    def delete_stubs(self):
+        for stale_stub_document in self.filter(is_stub=True, date_added__lt=now() - timedelta(seconds=setting_stub_expiration_interval.value)):
+            stale_stub_document.delete(to_trash=False)
 
-    def get_queryset(self):
-        return TrashCanQuerySet(
-            model=self.model, using=self._db
-        ).filter(in_trash=False).filter(is_stub=False)
+    def get_by_natural_key(self, uuid):
+        return self.get(uuid=force_text(uuid))
 
 
 class DocumentPageManager(models.Manager):
@@ -37,11 +36,6 @@ class DocumentPageManager(models.Manager):
             raise self.model.DoesNotExist
 
         return self.get(document_version__pk=document_version.pk, page_number=page_number)
-
-    def get_queryset(self):
-        return models.QuerySet(
-            model=self.model, using=self._db
-        ).filter(enabled=True)
 
 
 class DocumentTypeManager(models.Manager):
@@ -132,11 +126,27 @@ class DuplicatedDocumentManager(models.Manager):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
-        return Document.objects.filter(
-            pk__in=self.filter(documents__in_trash=False).values_list(
-                'document_id', flat=True
+        return Document.valid.filter(
+            pk__in=self.filter(documents__in_trash=False).values(
+                'document_id'
             )
         )
+
+    def get_duplicates_of(self, document):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        try:
+            queryset=self.get(
+                document=document
+            ).documents.all()
+
+            return Document.valid.filter(
+                pk__in=queryset
+            )
+        except self.model.DoesNotExist:
+            return Document.objects.none()
 
     def scan(self):
         """
@@ -147,7 +157,7 @@ class DuplicatedDocumentManager(models.Manager):
             app_label='documents', model_name='Document'
         )
 
-        for document in Document.objects.all():
+        for document in Document.valid.all():
             self.scan_for(document=document, scan_children=False)
 
     def scan_for(self, document, scan_children=True):
@@ -218,12 +228,6 @@ class FavoriteDocumentManager(models.Manager):
         self.get(user=user, document=document).delete()
 
 
-class PassthroughManager(models.Manager):
-    def delete_stubs(self):
-        for stale_stub_document in self.filter(is_stub=True, date_added__lt=now() - timedelta(seconds=setting_stub_expiration_interval.value)):
-            stale_stub_document.delete(to_trash=False)
-
-
 class RecentDocumentManager(models.Manager):
     def add_document_for_user(self, user, document):
         if user.is_authenticated:
@@ -283,3 +287,17 @@ class TrashCanQuerySet(models.QuerySet):
     def delete(self, to_trash=True):
         for instance in self:
             instance.delete(to_trash=to_trash)
+
+
+class ValidDocumentManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(
+            in_trash=False
+        )
+
+
+class ValidDocumentPageManager(models.Manager):
+    def get_queryset(self):
+        return models.QuerySet(
+            model=self.model, using=self._db
+        ).filter(enabled=True)

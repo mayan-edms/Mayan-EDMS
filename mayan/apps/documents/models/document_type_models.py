@@ -64,7 +64,7 @@ class DocumentType(models.Model):
             app_label='documents', model_name='Document'
         )
 
-        for document in Document.passthrough.filter(document_type=self):
+        for document in Document.objects.filter(document_type=self):
             document.delete(to_trash=False)
 
         return super(DocumentType, self).delete(*args, **kwargs)

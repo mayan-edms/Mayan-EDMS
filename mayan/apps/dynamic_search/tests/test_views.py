@@ -45,7 +45,7 @@ class AdvancedSearchViewTestCase(
         )
         self.assertEqual(queryset.count(), self.test_document_count)
 
-        with self.settings(COMMON_PAGINATE_BY=2):
+        with self.settings(VIEWS_PAGINATE_BY=2):
             # Functional test for the first page of advanced results
             response = self._request_search_results_view(
                 data={'label': test_document_label}, kwargs={

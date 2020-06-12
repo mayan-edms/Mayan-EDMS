@@ -6,7 +6,7 @@ from mayan.apps.converter.classes import Layer
 from mayan.apps.converter.layers import layer_saved_transformations
 
 from ..literals import PAGE_RANGE_ALL
-from ..models import DocumentType, FavoriteDocument
+from ..models import Document, DocumentType, FavoriteDocument
 
 from .literals import (
     TEST_DOCUMENT_TYPE_DELETE_PERIOD, TEST_DOCUMENT_TYPE_DELETE_TIME_UNIT,
@@ -120,6 +120,11 @@ class DocumentTestMixin:
         for document_type in DocumentType.objects.all():
             document_type.delete()
         super(DocumentTestMixin, self).tearDown()
+
+    def _create_test_document_stub(self):
+        self.test_document_stub = Document.objects.create(
+            document_type=self.test_document_type, label='document_stub'
+        )
 
     def _create_test_document_type(self):
         self.test_document_type = DocumentType.objects.create(

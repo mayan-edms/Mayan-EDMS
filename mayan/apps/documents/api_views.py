@@ -168,7 +168,7 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         else:
             permission_required = permission_document_edit
 
-        document = get_object_or_404(Document.passthrough, pk=self.kwargs['pk'])
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
             obj=document, permissions=(permission_required,),

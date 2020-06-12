@@ -111,19 +111,21 @@ class Index(models.Model):
         """
         logger.debug('Index; Indexing document: %s', document)
 
-        self.initialize_instance_root()
+        if Document.valid.filter(pk=document.pk).exists():
+            # Only index valid documents
+            self.initialize_instance_root()
 
-        with transaction.atomic():
-            # Remove the document from all instance nodes from
-            # this index
-            for index_instance_node in IndexInstanceNode.objects.filter(index_template_node__index=self, documents=document):
-                index_instance_node.remove_document(document=document)
+            with transaction.atomic():
+                # Remove the document from all instance nodes from
+                # this index
+                for index_instance_node in IndexInstanceNode.objects.filter(index_template_node__index=self, documents=document):
+                    index_instance_node.remove_document(document=document)
 
-            # Delete all empty nodes. Starting from the bottom up
-            for index_instance_node in self.instance_root.get_leafnodes():
-                index_instance_node.delete_empty()
+                # Delete all empty nodes. Starting from the bottom up
+                for index_instance_node in self.instance_root.get_leafnodes():
+                    index_instance_node.delete_empty()
 
-        self.template_root.index_document(document=document)
+            self.template_root.index_document(document=document)
 
     def initialize_instance_root(self):
         return self.template_root.initialize_index_instance_root_node()
@@ -400,7 +402,7 @@ class IndexInstanceNode(MPTTModel):
             raise
         else:
             try:
-                if self.documents.count() == 0 and self.get_children().count() == 0:
+                if self.get_documents().count() == 0 and self.get_children().count() == 0:
                     if not self.is_root_node():
                         # I'm not a root node, I can be deleted
                         self.delete()
@@ -434,6 +436,9 @@ class IndexInstanceNode(MPTTModel):
             ), user=user
         ).count()
 
+    def get_documents(self):
+        return Document.valid.filter(pk__in=self.documents.values('pk'))
+
     def get_full_path(self):
         result = []
         for node in self.get_ancestors(include_self=True):
@@ -451,8 +456,8 @@ class IndexInstanceNode(MPTTModel):
     def get_item_count(self, user):
         if self.index_template_node.link_documents:
             queryset = AccessControlList.objects.restrict_queryset(
-                permission=permission_document_view, queryset=self.documents,
-                user=user
+                permission=permission_document_view,
+                queryset=self.get_documents(), user=user
             )
 
             return queryset.count()

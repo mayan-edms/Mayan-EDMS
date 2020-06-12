@@ -672,3 +672,12 @@ class DocumentMetadataAPITestCase(
         self.assertEqual(
             self.test_document_metadata.value, TEST_METADATA_VALUE_EDITED
         )
+
+
+class DocumentStubMetadataAPITestCase(DocumentMetadataAPITestCase):
+    auto_upload_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+        self.test_document = self.test_document_stub

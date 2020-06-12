@@ -67,9 +67,9 @@ class DocumentPageListView(ExternalObjectMixin, SingleObjectListView):
 
 
 class DocumentPageNavigationBase(ExternalObjectMixin, RedirectView):
-    external_object_class = DocumentPage
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_page_id'
+    external_object_queryset = DocumentPage.valid
 
     def get_redirect_url(self, *args, **kwargs):
         """
@@ -151,9 +151,9 @@ class DocumentPageNavigationPrevious(DocumentPageNavigationBase):
 
 
 class DocumentPageView(ExternalObjectMixin, SimpleView):
-    external_object_class = DocumentPage
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_page_id'
+    external_object_queryset = DocumentPage.valid
     template_name = 'appearance/generic_form.html'
 
     def get_extra_context(self):
@@ -274,7 +274,7 @@ class DocumentPageDisable(MultipleObjectConfirmActionView):
         return result
 
     def get_source_queryset(self):
-        return DocumentPage.passthrough.all()
+        return DocumentPage.objects.all()
 
     def object_action(self, form, instance):
         instance.enabled = False
@@ -304,7 +304,7 @@ class DocumentPageEnable(MultipleObjectConfirmActionView):
         return result
 
     def get_source_queryset(self):
-        return DocumentPage.passthrough.all()
+        return DocumentPage.objects.all()
 
     def object_action(self, form, instance):
         instance.enabled = True
