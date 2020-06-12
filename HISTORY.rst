@@ -92,6 +92,13 @@
   - extract-msg from common to storage
   - gevent, gunicorn, whitenoise from common to platform
 
+- Templating improvements:
+
+  - Enable mathfilters by default.
+  - Add a 'set' tag to allow setting template variables.
+
+- Add a tags and filters selection to the template widget.
+
 3.4.9 (2020-05-26)
 ==================
 - Add the packaging library explicitly as a dependency.

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.template import TemplateSyntaxError
@@ -41,13 +42,18 @@ class DocumentTemplateSandboxView(ExternalObjectMixin, FormView):
         return {'model': Document, 'model_variable': 'document'}
 
     def get_initial(self):
+        if settings.DEBUG:
+            exception_list = (TemplateSyntaxError,)
+        else:
+            exception_list = (Exception, TemplateSyntaxError,)
+
         template_string = self.request.GET.get('template', '')
         try:
             template = Template(template_string=template_string)
             result = template.render(
                 context={'document': self.external_object}
             )
-        except TemplateSyntaxError as exception:
+        except exception_list as exception:
             result = ''
             error_message = _(
                 'Template error; %(exception)s'

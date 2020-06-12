@@ -4,6 +4,9 @@ register = Library()
 
 
 @register.simple_tag(takes_context=True)
-def templating_set(context, name, value):
+def set(context, name, value):
+    """
+    Set a context variable to a specific value.
+    """
     context[name] = value
     return ''
