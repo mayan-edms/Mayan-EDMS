@@ -5,14 +5,6 @@ class BaseCommonException(Exception):
     pass
 
 
-class NPMException(BaseCommonException):
-    """Base exception for the NPM registry client"""
-
-
-class NPMPackgeIntegrityError(NPMException):
-    """Hash mismatch exception"""
-
-
 class ResolverError(Exception):
     """
     The resolver class was not able to resolve the requested attribute.
