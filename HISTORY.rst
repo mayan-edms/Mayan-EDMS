@@ -83,6 +83,9 @@
   generic views, view mixins, forms, and widgets.
   The setting ``COMMON_PAGINATE_BY`` is now named ``VIEWS_PAGINATE_BY``.
 - Allow access to document stubs.
+- Mirroring improvements. Allow running the mountindex in the background.
+  Display a message when running on the foreground to avoid confusion.
+  Add internat FUSE logging and allow control of the log level.
 
 3.4.9 (2020-05-26)
 ==================

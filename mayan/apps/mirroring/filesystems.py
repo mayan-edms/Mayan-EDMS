@@ -4,7 +4,7 @@ import logging
 from stat import S_IFDIR, S_IFREG
 from time import time
 
-from fuse import FuseOSError, Operations
+from fuse import FuseOSError, LoggingMixIn, Operations
 
 from django.core.exceptions import MultipleObjectsReturned
 from django.db.models import (
@@ -20,7 +20,6 @@ from .literals import (
 )
 from .runtime import cache
 
-
 logger = logging.getLogger(name=__name__)
 
 
@@ -29,7 +28,7 @@ class Trim(Transform):
     lookup_name = 'trim'
 
 
-class IndexFilesystem(Operations):
+class IndexFilesystem(LoggingMixIn, Operations):
     @staticmethod
     def _clean_queryset(queryset, source_field_name, destination_field_name):
         queryset = IndexFilesystem._clean_queryset_end_of_lines(
