@@ -60,9 +60,6 @@ PythonDependency(
     ''', module=__name__, name='PyYAML', version_string='==5.3.1'
 )
 PythonDependency(
-    module=__name__, name='django-mathfilters', version_string='==1.0.0'
-)
-PythonDependency(
     copyright_text='''
         Copyright (c) 2009-2015, Carl Meyer and contributors
         All rights reserved.
@@ -120,15 +117,6 @@ PythonDependency(
     ''', module=__name__, name='django-mptt', version_string='==0.11.0'
 )
 PythonDependency(
-    module=__name__, name='extract-msg', version_string='==0.23.3'
-)
-PythonDependency(
-    module=__name__, name='gevent', version_string='==20.4.0'
-)
-PythonDependency(
-    module=__name__, name='gunicorn', version_string='==20.0.4'
-)
-PythonDependency(
     copyright_text='''
         Author: Christian Theune
         License: LGPL 2.1
@@ -182,9 +170,6 @@ PythonDependency(
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
         THE SOFTWARE.
     ''', module=__name__, name='sh', version_string='==1.13.1'
-)
-PythonDependency(
-    module=__name__, name='whitenoise', version_string='==5.0.1'
 )
 
 # Development

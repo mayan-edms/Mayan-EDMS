@@ -138,7 +138,7 @@ class DuplicatedDocumentManager(models.Manager):
         )
 
         try:
-            queryset=self.get(
+            queryset = self.get(
                 document=document
             ).documents.all()
 
