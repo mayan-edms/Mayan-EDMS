@@ -3,8 +3,8 @@ import logging
 from django.apps import apps
 from django.db import OperationalError
 
+from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
-from mayan.apps.lock_manager.runtime import locking_backend
 from mayan.celery import app
 
 from .literals import DO_OCR_RETRY_DELAY, LOCK_EXPIRE
@@ -26,7 +26,7 @@ def task_do_ocr(self, document_version_pk):
         logger.debug('trying to acquire lock: %s', lock_id)
         # Acquire lock to avoid doing OCR on the same document version more
         # than once concurrently
-        lock = locking_backend.acquire_lock(name=lock_id, timeout=LOCK_EXPIRE)
+        lock = LockingBackend.get_instance().acquire_lock(name=lock_id, timeout=LOCK_EXPIRE)
         logger.debug('acquired lock: %s', lock_id)
         document_version = None
         try:

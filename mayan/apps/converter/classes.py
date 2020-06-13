@@ -13,6 +13,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
+from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.appearance.classes import Icon
@@ -30,7 +31,12 @@ from .literals import (
     CONVERTER_OFFICE_FILE_MIMETYPES, DEFAULT_LIBREOFFICE_PATH,
     DEFAULT_PAGE_NUMBER, DEFAULT_PILLOW_FORMAT
 )
-from .settings import setting_graphics_backend_arguments
+from .settings import (
+    setting_graphics_backend, setting_graphics_backend_arguments
+)
+
+logger = logging.getLogger(name=__name__)
+
 
 libreoffice_path = setting_graphics_backend_arguments.value.get(
     'libreoffice_path', DEFAULT_LIBREOFFICE_PATH
@@ -40,6 +46,10 @@ logger = logging.getLogger(name=__name__)
 
 
 class ConverterBase:
+    @staticmethod
+    def get_converter_class():
+        return import_string(dotted_path=setting_graphics_backend.value)
+
     def __init__(self, file_object, mime_type=None):
         self.file_object = file_object
         self.image = None

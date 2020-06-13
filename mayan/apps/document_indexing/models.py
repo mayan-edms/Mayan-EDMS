@@ -12,8 +12,8 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
-from mayan.apps.lock_manager.runtime import locking_backend
 from mayan.apps.templating.classes import Template
 
 from .events import event_index_template_created, event_index_template_edited
@@ -282,7 +282,7 @@ class IndexTemplateNode(MPTTModel):
         # the database.
         try:
             if acquire_lock:
-                lock = locking_backend.acquire_lock(
+                lock = LockingBackend.get_instance().acquire_lock(
                     self.get_lock_string()
                 )
         except LockError:
@@ -395,7 +395,7 @@ class IndexInstanceNode(MPTTModel):
         """
         # Prevent another process to delete this node.
         try:
-            lock = locking_backend.acquire_lock(
+            lock = LockingBackend.get_instance().acquire_lock(
                 self.index_template_node.get_lock_string()
             )
         except LockError:
@@ -483,7 +483,7 @@ class IndexInstanceNode(MPTTModel):
         # Prevent another process to work on this node. We use the node's
         # parent template node for the lock
         try:
-            lock = locking_backend.acquire_lock(
+            lock = LockingBackend.get_instance().acquire_lock(
                 self.index_template_node.get_lock_string()
             )
         except LockError:

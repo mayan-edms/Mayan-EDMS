@@ -1,7 +1,19 @@
 from datetime import date
 
+from django.utils.module_loading import import_string
+
+from .settings import (
+    setting_gpg_backend, setting_gpg_backend_arguments
+)
+
 
 class GPGBackend:
+    @staticmethod
+    def get_instance():
+        return import_string(dotted_path=setting_gpg_backend.value)(
+            **setting_gpg_backend_arguments.value
+        )
+
     def __init__(self, **kwargs):
         self.kwargs = kwargs
 

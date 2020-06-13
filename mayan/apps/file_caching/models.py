@@ -11,8 +11,8 @@ from django.utils.functional import cached_property
 from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
-from mayan.apps.lock_manager.runtime import locking_backend
 from mayan.apps.storage.classes import DefinedStorage
 
 from .events import (
@@ -139,7 +139,7 @@ class CachePartition(models.Model):
         lock_id = 'cache_partition-create_file-{}-{}'.format(self.pk, filename)
         try:
             logger.debug('trying to acquire lock: %s', lock_id)
-            lock = locking_backend.acquire_lock(lock_id)
+            lock = LockingBackend.get_instance().acquire_lock(lock_id)
             logger.debug('acquired lock: %s', lock_id)
             try:
                 self.cache.prune()

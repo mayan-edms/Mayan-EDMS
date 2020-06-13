@@ -12,8 +12,8 @@ from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.six.moves.urllib.parse import quote_plus, unquote_plus
 
+from mayan.apps.converter.classes import ConverterBase
 from mayan.apps.converter.transformations import TransformationResize
-from mayan.apps.converter.utils import get_converter_class
 from mayan.apps.storage.classes import DefinedStorage
 
 from .literals import STORAGE_NAME_SOURCE_STAGING_FOLDER_FILE
@@ -145,7 +145,9 @@ class StagingFile:
 
         try:
             file_object = open(file=self.get_full_path(), mode='rb')
-            converter = get_converter_class()(file_object=file_object)
+            converter = ConverterBase.get_converter_class()(
+                file_object=file_object
+            )
 
             page_image = converter.get_page()
 

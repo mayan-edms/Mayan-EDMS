@@ -10,12 +10,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
 
+from mayan.apps.converter.classes import ConverterBase
 from mayan.apps.converter.models import LayerTransformation
 from mayan.apps.converter.transformations import (
     BaseTransformation, TransformationResize, TransformationRotate,
     TransformationZoom
 )
-from mayan.apps.converter.utils import get_converter_class
 
 from ..managers import DocumentPageManager, ValidDocumentPageManager
 from ..settings import (
@@ -67,7 +67,7 @@ class DocumentPage(models.Model):
 
     def detect_orientation(self):
         with self.document_version.open() as file_object:
-            converter = get_converter_class()(
+            converter = ConverterBase.get_converter_class()(
                 file_object=file_object,
                 mime_type=self.document_version.mimetype
             )
@@ -197,7 +197,7 @@ class DocumentPage(models.Model):
             logger.debug('Page cache file "%s" found', cache_filename)
 
             with cache_file.open() as file_object:
-                converter = get_converter_class()(
+                converter = ConverterBase.get_converter_class()(
                     file_object=file_object
                 )
 
@@ -215,7 +215,7 @@ class DocumentPage(models.Model):
 
             try:
                 with self.document_version.get_intermediate_file() as file_object:
-                    converter = get_converter_class()(
+                    converter = ConverterBase.get_converter_class()(
                         file_object=file_object
                     )
                     converter.seek_page(page_number=self.page_number - 1)

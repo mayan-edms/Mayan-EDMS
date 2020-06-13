@@ -9,10 +9,10 @@ from django.db import models, transaction
 from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from mayan.apps.documents.tasks import task_generate_document_page_image
 
+from .classes import OCRBackendBase
 from .events import (
     event_ocr_document_content_deleted, event_ocr_document_version_finish
 )
-from .runtime import ocr_backend
 from .signals import signal_post_document_version_ocr
 
 logger = logging.getLogger(name=__name__)
@@ -49,7 +49,7 @@ class DocumentPageOCRContentManager(models.Manager):
         )
 
         with document_page.cache_partition.get_file(filename=cache_filename).open() as file_object:
-            ocr_content = ocr_backend.execute(
+            ocr_content = OCRBackendBase.get_instance().execute(
                 file_object=file_object,
                 language=document_page.document.language
             )

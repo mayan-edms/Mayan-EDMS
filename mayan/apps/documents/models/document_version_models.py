@@ -12,10 +12,10 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.signals import signal_mayan_pre_save
+from mayan.apps.converter.classes import ConverterBase
 from mayan.apps.converter.exceptions import InvalidOfficeFormat, PageCountError
 from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.transformations import TransformationRotate
-from mayan.apps.converter.utils import get_converter_class
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.storage.classes import DefinedStorageLazy
 from mayan.apps.templating.classes import Template
@@ -239,7 +239,7 @@ class DocumentVersion(models.Model):
 
             try:
                 with self.open() as version_file_object:
-                    converter = get_converter_class()(
+                    converter = ConverterBase.get_converter_class()(
                         file_object=version_file_object
                     )
                     with converter.to_pdf() as pdf_file_object:
@@ -472,7 +472,7 @@ class DocumentVersion(models.Model):
     def update_page_count(self, save=True):
         try:
             with self.open() as file_object:
-                converter = get_converter_class()(
+                converter = ConverterBase.get_converter_class()(
                     file_object=file_object, mime_type=self.mimetype
                 )
                 detected_pages = converter.get_page_count()

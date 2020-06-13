@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from .classes import GPGBackend
 from .exceptions import NeedPassphrase, PassphraseError
 from .literals import (
     ERROR_MSG_BAD_PASSPHRASE, ERROR_MSG_GOOD_PASSPHRASE,
@@ -15,7 +16,6 @@ from .literals import (
 )
 
 from .managers import KeyManager
-from .runtime import gpg_backend
 
 logger = logging.getLogger(name=__name__)
 
@@ -66,7 +66,7 @@ class Key(models.Model):
         """
         Validate the key before saving.
         """
-        import_results = gpg_backend.import_key(key_data=self.key_data)
+        import_results = GPGBackend.get_instance().import_key(key_data=self.key_data)
 
         if not import_results.count:
             raise ValidationError(_('Invalid key data'))
@@ -89,7 +89,7 @@ class Key(models.Model):
     def save(self, *args, **kwargs):
         # Fix the encoding of the key data stream.
         self.key_data = force_text(self.key_data)
-        import_results, key_info = gpg_backend.import_and_list_keys(
+        import_results, key_info = GPGBackend.get_instance().import_and_list_keys(
             key_data=self.key_data
         )
         logger.debug('key_info: %s', key_info)
@@ -123,7 +123,7 @@ class Key(models.Model):
         file, and appear to be due to random data being inserted in the
         output data stream."
         """
-        file_sign_results = gpg_backend.sign_file(
+        file_sign_results = GPGBackend.get_instance().sign_file(
             file_object=file_object, key_data=self.key_data,
             passphrase=passphrase, clearsign=clearsign, detached=detached,
             binary=binary, output=output

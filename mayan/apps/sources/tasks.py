@@ -9,8 +9,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
 
+from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
-from mayan.apps.lock_manager.runtime import locking_backend
 from mayan.apps.storage.compressed_files import Archive
 from mayan.apps.storage.exceptions import NoMIMETypeMatch
 
@@ -30,7 +30,7 @@ def task_check_interval_source(source_id, test=False):
     lock_id = 'task_check_interval_source-%d' % source_id
     try:
         logger.debug('trying to acquire lock: %s', lock_id)
-        lock = locking_backend.acquire_lock(lock_id, DEFAULT_SOURCE_LOCK_EXPIRE)
+        lock = LockingBackend.get_instance().acquire_lock(lock_id, DEFAULT_SOURCE_LOCK_EXPIRE)
     except LockError:
         logger.debug('unable to obtain lock: %s' % lock_id)
     else:

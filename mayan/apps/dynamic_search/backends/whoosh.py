@@ -11,8 +11,8 @@ from django.db import models
 
 from colorful.fields import RGBColorField
 
+from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
-from mayan.apps.lock_manager.runtime import locking_backend
 
 from ..classes import SearchBackend, SearchField, SearchModel
 
@@ -96,7 +96,7 @@ class WhooshSearchBackend(SearchBackend):
 
     def deindex_instance(self, instance):
         try:
-            lock = locking_backend.acquire_lock(
+            lock = LockingBackend.get_instance().acquire_lock(
                 name='dynamic_search_whoosh_deindex_instance'
             )
         except LockError:
@@ -166,7 +166,7 @@ class WhooshSearchBackend(SearchBackend):
 
     def index_instance(self, instance, exclude_set=None):
         try:
-            lock = locking_backend.acquire_lock(
+            lock = LockingBackend.get_instance().acquire_lock(
                 name='dynamic_search_whoosh_index_instance'
             )
         except LockError:
