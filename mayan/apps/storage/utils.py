@@ -136,6 +136,11 @@ def mkdtemp(*args, **kwargs):
 
 
 def mkstemp(*args, **kwargs):
+    """
+    Creates a temporary file in the most secure manner possible.
+    There are no race conditions in the file’s creation, assuming that
+    the platform properly implements the os.O_EXCL flag for os.open().
+    """
     kwargs.update({'dir': setting_temporary_directory.value})
     return tempfile.mkstemp(*args, **kwargs)
 
