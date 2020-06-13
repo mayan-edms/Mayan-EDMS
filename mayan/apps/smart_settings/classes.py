@@ -364,6 +364,9 @@ class Setting:
 
         return self.yaml
 
+    def set(self, value):
+        self.value = Setting.serialize_value(value=value)
+
     @property
     def value(self):
         if not self.loaded:
