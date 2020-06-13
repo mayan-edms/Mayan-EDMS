@@ -1,3 +1,5 @@
+import copy
+from contextlib import contextmanager
 import os
 
 from django.conf import settings
@@ -45,6 +47,21 @@ class SmartSettingsTestCaseMixin:
         fs_cleanup(filename=self.test_setting_config_file_object.name)
         SettingNamespace.invalidate_cache_all()
         super(SmartSettingsTestCaseMixin, self).tearDown()
+
+    @contextmanager
+    def override_setting(self, global_name, method=None, value=None):
+        setting = Setting.get(global_name=global_name)
+        old_value = copy.copy(setting.value)
+        if method is None:
+            setting.set(value=value)
+        else:
+            current_value = setting.value
+            getattr(current_value, method)(value)
+            setting.set(value=current_value)
+        try:
+            yield
+        finally:
+            setting.set(value=old_value)
 
 
 class SmartSettingTestMixin(EnvironmentTestCaseMixin):
