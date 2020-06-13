@@ -1,4 +1,3 @@
-from importlib import import_module
 import itertools
 import logging
 
@@ -7,6 +6,8 @@ from django.core.exceptions import PermissionDenied
 from django.db.utils import OperationalError, ProgrammingError
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
+
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 
 from .exceptions import InvalidNamespace
 
@@ -46,8 +47,9 @@ class PermissionNamespace:
         return permission
 
 
-class Permission:
+class Permission(AppsModuleLoaderMixin):
     _imported_app = []
+    _loader_module_name = 'permissions'
     _permissions = {}
     _stored_permissions_cache = {}
 
@@ -90,31 +92,8 @@ class Permission:
             return cls._permissions[pk].stored_permission
 
     @classmethod
-    def initialize(cls):
-        module_name = 'permissions'
-
-        for app in apps.get_app_configs():
-            # Keep track of the apps that have already been imported to
-            # avoid importing them more than once. Does not causes a problem,
-            # it is an optimization to speed up statups.
-            if app not in cls._imported_app:
-                try:
-                    import_module('{}.{}'.format(app.name, module_name))
-                except ImportError as exception:
-                    non_fatal_messages = (
-                        'No module named {}'.format(module_name),
-                        'No module named \'{}.{}\''.format(app.name, module_name)
-                    )
-
-                    if force_text(exception) not in non_fatal_messages:
-                        logger.error(
-                            'Error importing %s %s.py file; %s', app.name,
-                            module_name, exception
-                        )
-                        raise
-                finally:
-                    cls._imported_app.append(app)
-
+    def load_modules(cls):
+        super().load_modules()
         # Invalidate cache always. This is for tests that build a new memory
         # only database and cause all cache references built in the .ready()
         # method to be invalid.

@@ -13,4 +13,4 @@ class StorageApp(MayanAppConfig):
 
     def ready(self):
         super(StorageApp, self).ready()
-        DefinedStorage.initialize()
+        DefinedStorage.load_modules()

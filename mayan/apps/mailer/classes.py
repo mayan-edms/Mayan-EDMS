@@ -1,10 +1,9 @@
-from importlib import import_module
 import logging
 
-from django.apps import apps
 from django.utils import six
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
+
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 
 logger = logging.getLogger(name=__name__)
 
@@ -27,7 +26,7 @@ class MailerBackendMetaclass(type):
         return new_class
 
 
-class MailerBackendBase:
+class MailerBackendBase(AppsModuleLoaderMixin):
     """
     Base class for the mailing backends. This class is mainly a wrapper
     for other Django backends that adds a few metadata to specify the
@@ -53,7 +52,11 @@ class MailerBackendBase:
         return getattr(cls, 'class_fields', backend_field_list)
 
 
-class MailerBackend(six.with_metaclass(MailerBackendMetaclass, MailerBackendBase)):
+class MailerBackend(
+    six.with_metaclass(MailerBackendMetaclass, MailerBackendBase)
+):
+    _loader_module_name = 'mailers'
+
     @classmethod
     def get(cls, name):
         return cls._registry[name]
@@ -61,18 +64,6 @@ class MailerBackend(six.with_metaclass(MailerBackendMetaclass, MailerBackendBase
     @classmethod
     def get_all(cls):
         return cls._registry
-
-    @staticmethod
-    def initialize():
-        for app in apps.get_app_configs():
-            try:
-                import_module('{}.mailers'.format(app.name))
-            except ImportError as exception:
-                if force_text(exception) not in ('No module named mailers', 'No module named \'{}.mailers\''.format(app.name)):
-                    logger.error(
-                        'Error importing %s mailers.py file; %s', app.name,
-                        exception
-                    )
 
 
 class NullBackend(MailerBackend):

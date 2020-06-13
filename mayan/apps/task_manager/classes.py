@@ -1,12 +1,11 @@
-from importlib import import_module
 import logging
 
 from kombu import Exchange, Queue
 
-from django.apps import apps
 from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.celery import app as celery_app
 
 logger = logging.getLogger(name=__name__)
@@ -54,23 +53,9 @@ class Task:
         return force_text(self.task_type)
 
 
-class CeleryQueue:
+class CeleryQueue(AppsModuleLoaderMixin):
+    _loader_module_name = 'queues'
     _registry = {}
-
-    @staticmethod
-    def initialize():
-        for app in apps.get_app_configs():
-            try:
-                import_module('{}.queues'.format(app.name))
-            except ImportError as exception:
-                if force_text(exception) not in ('No module named queues', 'No module named \'{}.queues\''.format(app.name)):
-                    logger.error(
-                        'Error importing %s queues.py file; %s', app.name,
-                        exception
-                    )
-                    raise
-
-        CeleryQueue.update_celery()
 
     @classmethod
     def all(cls):
@@ -81,6 +66,11 @@ class CeleryQueue:
     @classmethod
     def get(cls, queue_name):
         return cls._registry[queue_name]
+
+    @classmethod
+    def load_modules(cls):
+        super().load_modules()
+        CeleryQueue.update_celery()
 
     @classmethod
     def update_celery(cls):

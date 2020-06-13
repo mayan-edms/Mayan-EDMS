@@ -1,5 +1,4 @@
 import json
-from importlib import import_module
 import logging
 from packaging import version
 from pathlib import Path
@@ -19,6 +18,7 @@ from django.utils.module_loading import import_string
 from django.utils.termcolors import colorize
 from django.utils.translation import ugettext_lazy as _, ugettext
 
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.utils import resolve_attribute
 from mayan.apps.storage.utils import mkdtemp, patch_files as storage_patch_files
 
@@ -114,20 +114,9 @@ class DependencyGroupEntry:
         return Dependency.return_sorted(dependencies=dependencies)
 
 
-class Dependency:
+class Dependency(AppsModuleLoaderMixin):
+    _loader_module_name = 'dependencies'
     _registry = {}
-
-    @staticmethod
-    def initialize():
-        for app in apps.get_app_configs():
-            try:
-                import_module('{}.dependencies'.format(app.name))
-            except ImportError as exception:
-                if force_text(exception) not in ('No module named dependencies', 'No module named \'{}.dependencies\''.format(app.name)):
-                    logger.error(
-                        'Error importing %s dependencies.py file; %s', app.name,
-                        exception
-                    )
 
     @staticmethod
     def return_sorted(dependencies):

@@ -26,7 +26,7 @@ class DependenciesApp(MayanAppConfig):
     def ready(self):
         super(DependenciesApp, self).ready()
 
-        Dependency.initialize()
+        Dependency.load_modules()
 
         SourceColumn(
             attribute='get_label', is_identifier=True, label=_('Label'),

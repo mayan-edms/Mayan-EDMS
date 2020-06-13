@@ -4,7 +4,7 @@ from .classes import Permission
 
 
 def handler_permission_initialize(**kwargs):
-    Permission.initialize()
+    Permission.load_modules()
 
 
 def handler_purge_permissions(**kwargs):

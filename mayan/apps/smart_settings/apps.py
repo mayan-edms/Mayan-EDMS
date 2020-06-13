@@ -23,7 +23,7 @@ class SmartSettingsApp(MayanAppConfig):
     def ready(self):
         super(SmartSettingsApp, self).ready()
 
-        SettingNamespace.initialize()
+        SettingNamespace.load_modules()
 
         SourceColumn(
             func=lambda context: len(context['object'].settings),

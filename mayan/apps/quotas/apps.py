@@ -47,7 +47,7 @@ class QuotasApp(MayanAppConfig):
 
         EventModelRegistry.register(model=Quota)
 
-        QuotaBackend.initialize()
+        QuotaBackend.load_modules()
 
         ModelEventType.register(
             event_types=(event_quota_created, event_quota_edited),

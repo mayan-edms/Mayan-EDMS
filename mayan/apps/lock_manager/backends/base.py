@@ -15,7 +15,6 @@ class LockingBackend:
     @staticmethod
     def get_instance():
         return import_string(dotted_path=setting_backend.value)
-        #locking_backend =
 
     @classmethod
     def acquire_lock(cls, name, timeout=None):

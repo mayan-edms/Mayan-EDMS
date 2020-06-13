@@ -1,6 +1,5 @@
 import errno
 import hashlib
-from importlib import import_module
 import logging
 import os
 import re
@@ -8,7 +7,6 @@ import sys
 
 import yaml
 
-from django.apps import apps
 from django.conf import settings
 from django.utils.functional import Promise
 from django.utils.encoding import (
@@ -16,6 +14,7 @@ from django.utils.encoding import (
 )
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 
 from .literals import (
@@ -47,20 +46,9 @@ def read_configuration_file(filepath):
             raise
 
 
-class SettingNamespace:
+class SettingNamespace(AppsModuleLoaderMixin):
+    _loader_module_name = 'settings'
     _registry = {}
-
-    @staticmethod
-    def initialize():
-        for app in apps.get_app_configs():
-            try:
-                import_module('{}.settings'.format(app.name))
-            except ImportError as exception:
-                if force_text(exception) not in ('No module named settings', 'No module named \'{}.settings\''.format(app.name)):
-                    logger.error(
-                        'Error importing %s settings.py file; %s', app.name,
-                        exception
-                    )
 
     @classmethod
     def get(cls, name):

@@ -69,7 +69,7 @@ class PermissionsApp(MayanAppConfig):
 
         # Initialize the permissions at the ready method for subsequent
         # restarts.
-        Permission.initialize()
+        Permission.load_modules()
 
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,

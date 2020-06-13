@@ -1,12 +1,11 @@
-from importlib import import_module
 import logging
 
 from django.apps import apps
 from django.db.utils import OperationalError, ProgrammingError
 from django.utils import six
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.classes import PropertyHelper
 from mayan.apps.templating.classes import Template
 
@@ -42,26 +41,19 @@ class WorkflowActionMetaclass(type):
         return new_class
 
 
-class WorkflowActionBase:
+class WorkflowActionBase(AppsModuleLoaderMixin):
     fields = ()
 
 
 class WorkflowAction(
     six.with_metaclass(WorkflowActionMetaclass, WorkflowActionBase)
 ):
+    _loader_module_name = 'workflow_actions'
     previous_dotted_paths = ()
 
-    @staticmethod
-    def initialize():
-        for app in apps.get_app_configs():
-            try:
-                import_module('{}.workflow_actions'.format(app.name))
-            except ImportError as exception:
-                if force_text(exception) not in ('No module named workflow_actions', 'No module named \'{}.workflow_actions\''.format(app.name)):
-                    logger.error(
-                        'Error importing %s workflow_actions.py file; %s',
-                        app.name, exception
-                    )
+    @classmethod
+    def load_modules(cls):
+        super().load_modules()
 
         for action_class in WorkflowAction.get_all():
             action_class.migrate()

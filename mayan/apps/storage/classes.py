@@ -7,7 +7,7 @@ from django.utils.module_loading import import_string
 from django.utils.six import BytesIO, StringIO, raise_from
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.class_mixins import ModuleLoaderMixin
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 
 from .literals import DEFAULT_STORAGE_BACKEND
 
@@ -55,7 +55,7 @@ class BufferedFile(File):
         return self.stream.read(read_size)
 
 
-class DefinedStorage(ModuleLoaderMixin, object):
+class DefinedStorage(AppsModuleLoaderMixin):
     _loader_module_name = 'storages'
     _registry = {}
 

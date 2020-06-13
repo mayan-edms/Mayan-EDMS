@@ -52,7 +52,7 @@ class MailerApp(MayanAppConfig):
 
         EventModelRegistry.register(model=UserMailer)
 
-        MailerBackend.initialize()
+        MailerBackend.load_modules()
 
         ModelEventType.register(
             model=UserMailer, event_types=(event_email_sent,)

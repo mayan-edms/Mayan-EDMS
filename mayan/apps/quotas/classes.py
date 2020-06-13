@@ -1,15 +1,15 @@
-from importlib import import_module
 import json
 import logging
 
 from django.apps import apps
 from django.utils import six
-from django.utils.encoding import force_text
 from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from .exceptions import QuotaExceeded
 from .handlers import handler_process_quota_signal
+
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 
 logger = logging.getLogger(name=__name__)
 
@@ -33,7 +33,7 @@ class QuotaBackendMetaclass(type):
         return new_class
 
 
-class QuotaBackendBase:
+class QuotaBackendBase(AppsModuleLoaderMixin):
     """
     Base class for the mailing backends. This class is mainly a wrapper
     for other Django backends that adds a few metadata to specify the
@@ -58,26 +58,11 @@ class QuotaBackendBase:
 class QuotaBackend(
     six.with_metaclass(QuotaBackendMetaclass, QuotaBackendBase)
 ):
+    _loader_module_name = 'quota_backends'
+
     @staticmethod
     def _queryset_to_text_list(queryset):
         return ','.join(list(map(str, queryset))) or _('none')
-
-    @staticmethod
-    def initialize():
-        for app in apps.get_app_configs():
-            try:
-                import_module('{}.quota_backends'.format(app.name))
-            except ImportError as exception:
-                if force_text(exception) not in ('No module named quota_backends', 'No module named \'{}.quota_backends\''.format(app.name)):
-                    logger.error(
-                        'Error importing %s quota_backends.py file; %s',
-                        app.name, exception
-                    )
-
-        for backend in QuotaBackend.get_all():
-            backend._initialize()
-
-        QuotaBackend.connect_signals()
 
     @staticmethod
     def connect_signals():
@@ -90,26 +75,10 @@ class QuotaBackend(
                 )
 
     @classmethod
-    def get(cls, name):
-        return cls._registry[name]
-
-    @classmethod
-    def get_all(cls):
-        return sorted(
-            cls._registry.values(), key=lambda x: x.label
-        )
-
-    @classmethod
-    def get_fields(cls):
-        return cls.fields
-
-    @classmethod
-    def get_field_order(cls):
-        return cls.field_order
-
-    @classmethod
-    def get_widgets(cls):
-        return cls.widgets
+    def _initialize(cls):
+        """
+        Allow the quota backend to run code when the app initializes.
+        """
 
     @classmethod
     def as_choices(cls):
@@ -120,12 +89,6 @@ class QuotaBackend(
         ]
 
     @classmethod
-    def _initialize(cls):
-        """
-        Allow the quota backend to run code when the app initializes.
-        """
-
-    @classmethod
     def create(cls, **kwargs):
         Quota = apps.get_model(app_label='quotas', model_name='Quota')
         return Quota.objects.create(
@@ -134,13 +97,44 @@ class QuotaBackend(
         )
 
     @classmethod
+    def get(cls, name):
+        return cls._registry[name]
+
+    @classmethod
+    def get_all(cls):
+        return sorted(
+            cls._registry.values(), key=lambda x: x.label
+        )
+
+    @classmethod
     def get_dotted_path(cls):
         return '{}.{}'.format(cls.__module__, cls.__name__)
+
+    @classmethod
+    def get_fields(cls):
+        return cls.fields
+
+    @classmethod
+    def get_field_order(cls):
+        return cls.field_order
 
     @classmethod
     def get_instances(cls):
         Quota = apps.get_model(app_label='quotas', model_name='Quota')
         return Quota.objects.filter(backend_path=cls.get_dotted_path())
+
+    @classmethod
+    def get_widgets(cls):
+        return cls.widgets
+
+    @classmethod
+    def load_modules(cls):
+        super().load_modules()
+
+        for backend in QuotaBackend.get_all():
+            backend._initialize()
+
+        QuotaBackend.connect_signals()
 
     def _allowed_filter_display(self):
         return ''

@@ -104,7 +104,7 @@ class DocumentStatesApp(MayanAppConfig):
 
         EventModelRegistry.register(model=Workflow)
 
-        WorkflowAction.initialize()
+        WorkflowAction.load_modules()
 
         ModelProperty(
             model=Document,
