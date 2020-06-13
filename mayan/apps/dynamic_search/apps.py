@@ -8,7 +8,6 @@ from .links import (
     link_search, link_search_advanced, link_search_again,
     link_search_backend_reindex
 )
-from .tasks import task_index_instance  # NOQA - Force task registration
 
 
 class DynamicSearchApp(MayanAppConfig):

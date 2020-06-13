@@ -9,7 +9,6 @@ from .links import (
     link_execute, link_namespace_details, link_namespace_list,
     link_statistics, link_view
 )
-from .tasks import task_execute_statistic  # NOQA - Force registration of task
 
 
 class StatisticsApp(MayanAppConfig):
