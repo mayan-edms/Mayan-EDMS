@@ -99,7 +99,7 @@ services:
   # rabbitmq:
   #   container_name: mayan-edms-rabbitmq
   #   hostname: mayan-edms-rabbitmq
-  #   image: healthcheck/rabbitmq
+  #   image: rabbitmq:3.8-alpine
   #   environment:
   #     RABBITMQ_DEFAULT_USER: ${MAYAN_RABBITMQ_USER:-mayan}
   #     RABBITMQ_DEFAULT_PASS: ${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}
