@@ -35,7 +35,11 @@ class WhooshSearchBackend(SearchBackend):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.index_path = Path(settings.MEDIA_ROOT, INDEX_DIRECTORY_NAME)
+        self.index_path = Path(
+            self.kwargs.get(
+                'index_path', Path(settings.MEDIA_ROOT, INDEX_DIRECTORY_NAME)
+            )
+        )
         self.index_path.mkdir(exist_ok=True)
 
         self.search_limit = self.kwargs.get(

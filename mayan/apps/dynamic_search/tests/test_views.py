@@ -5,11 +5,11 @@ from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.tests.tests.base import GenericViewTestCase
+from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
-from ..backends.django import DjangoSearchBackend
-from ..backends.whoosh import WhooshSearchBackend
-from ..classes import SearchModel
+from ..classes import SearchBackend, SearchModel
 from ..permissions import permission_search_tools
+from ..settings import setting_search_backend_arguments
 
 from .mixins import SearchToolsViewTestMixin, SearchViewTestMixin
 
@@ -27,7 +27,7 @@ class AdvancedSearchViewTestCase(
         for i in range(self.test_document_count):
             self._upload_test_document()
 
-        self.search_backend = DjangoSearchBackend()
+        self.search_backend = SearchBackend.get_instance()
 
     def test_advanced_search_past_first_page(self):
         test_document_label = self.test_documents[0].label
@@ -110,11 +110,22 @@ class SearchToolsViewTestCase(
     DocumentTestMixin, SearchToolsViewTestMixin, GenericViewTestCase
 ):
     def setUp(self):
+        self.old_value = setting_search_backend_arguments.value
         super().setUp()
         self.document_search_model = SearchModel.get_for_model(
             instance=Document
         )
-        self.search_backend = WhooshSearchBackend()
+        setting_search_backend_arguments.set(
+            value={'index_path': mkdtemp()}
+        )
+        self.search_backend = SearchBackend.get_instance()
+
+    def tearDown(self):
+        fs_cleanup(
+            filename=setting_search_backend_arguments.value['index_path']
+        )
+        setting_search_backend_arguments.set(value=self.old_value)
+        super().tearDown()
 
     def test_search_backend_reindex_view_no_permission(self):
         self.search_backend.clear_search_model_index(
