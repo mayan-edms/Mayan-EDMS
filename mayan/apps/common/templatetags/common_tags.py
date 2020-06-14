@@ -2,7 +2,6 @@ import logging
 
 from django.template import Library
 from django.utils.encoding import force_text
-from django.utils.six import string_types
 
 import mayan
 
@@ -30,7 +29,7 @@ def common_get_object_verbose_name(obj):
     try:
         return obj._meta.verbose_name
     except AttributeError:
-        if isinstance(obj, string_types):
+        if isinstance(obj, str):
             return ''
         else:
             return type(obj)

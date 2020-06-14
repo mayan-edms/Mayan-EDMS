@@ -1,8 +1,8 @@
 import os
+from urllib.parse import quote
 
 from django.conf import settings
 from django.http.response import FileResponse as DjangoFileResponse
-from django.utils.six.moves.urllib.parse import quote
 
 from mayan.apps.mimetype.api import get_mimetype
 

@@ -101,6 +101,7 @@
 - Remove runtime.py modules and move instancing to base class.
   Avoids keeping long lived objects in memory.
 - Consolidate app module loading using AppsModuleLoaderMixin.
+- Remove usage of django.utils.six.
 
 3.4.9 (2020-05-26)
 ==================

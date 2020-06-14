@@ -1,5 +1,3 @@
-from django.utils.six import string_types
-
 from actstream.models import Action
 from rest_framework import serializers
 from rest_framework.reverse import reverse
@@ -52,7 +50,7 @@ class EventTypeSerializer(serializers.Serializer):
             return super(EventTypeSerializer, self).to_representation(
                 instance.get_class()
             )
-        elif isinstance(instance, string_types):
+        elif isinstance(instance, str):
             return super(EventTypeSerializer, self).to_representation(
                 EventType.get(name=instance)
             )

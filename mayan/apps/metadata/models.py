@@ -5,7 +5,6 @@ from django.db import models, transaction
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
-from django.utils.six import PY2
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import Document, DocumentType
@@ -96,31 +95,20 @@ class MetadataType(models.Model):
     def __str__(self):
         return self.label
 
+    @staticmethod
+    def comma_splitter(string):
+        splitter = shlex.shlex(string, posix=True)
+        splitter.whitespace = ','
+        splitter.whitespace_split = True
+        splitter.commenters = ''
+        return [force_text(e) for e in splitter]
+
     def get_absolute_url(self):
         return reverse(
             viewname='metadata:setup_metadata_type_edit', kwargs={
                 'metadata_type_id': self.pk
             }
         )
-
-    if PY2:
-        # Python 2 non unicode version
-        @staticmethod
-        def comma_splitter(string):
-            splitter = shlex.shlex(string.encode('utf-8'), posix=True)
-            splitter.whitespace = ','.encode('utf-8')
-            splitter.whitespace_split = True
-            splitter.commenters = ''.encode('utf-8')
-            return [force_text(e) for e in splitter]
-    else:
-        # Python 3 unicode version
-        @staticmethod
-        def comma_splitter(string):
-            splitter = shlex.shlex(string, posix=True)
-            splitter.whitespace = ','
-            splitter.whitespace_split = True
-            splitter.commenters = ''
-            return [force_text(e) for e in splitter]
 
     def get_default_value(self):
         template = Template(template_string=self.default)

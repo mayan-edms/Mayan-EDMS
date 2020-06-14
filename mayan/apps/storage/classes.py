@@ -1,10 +1,10 @@
 import logging
+from io import BytesIO, StringIO
 
 from django.core.files.base import File
 from django.core.files.storage import Storage
 from django.utils.deconstruct import deconstructible
 from django.utils.module_loading import import_string
-from django.utils.six import BytesIO, StringIO, raise_from
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
@@ -86,7 +86,7 @@ class DefinedStorage(AppsModuleLoaderMixin):
             }
 
             logger.fatal(message)
-            raise_from(value=TypeError(message), from_value=exception)
+            raise TypeError(message) from exception
 
     def get_storage_subclass(self):
         """
@@ -107,7 +107,7 @@ class DefinedStorage(AppsModuleLoaderMixin):
             }
 
             logger.fatal(message)
-            raise_from(value=TypeError(message), from_value=exception)
+            raise TypeError(message) from exception
 
         class DynamicStorageSubclass(imported_storage_class):
             def __init__(self, *args, **kwargs):

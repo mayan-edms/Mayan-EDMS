@@ -2,6 +2,7 @@ import base64
 import logging
 import os
 import time
+from urllib.parse import quote_plus, unquote_plus
 
 from furl import furl
 
@@ -10,7 +11,6 @@ from django.core.files.base import ContentFile
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
-from django.utils.six.moves.urllib.parse import quote_plus, unquote_plus
 
 from mayan.apps.converter.classes import ConverterBase
 from mayan.apps.converter.transformations import TransformationResize

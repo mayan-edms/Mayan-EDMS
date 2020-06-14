@@ -1,7 +1,6 @@
 import logging
 
 from django.db import migrations
-from django.utils.six import raise_from
 
 from mayan.apps.storage.utils import get_storage_subclass
 
@@ -28,7 +27,7 @@ def operation_clear_old_cache(apps, schema_editor):
         )
 
         logger.fatal(message)
-        raise_from(value=TypeError(message), from_value=exception)
+        raise TypeError(message) from exception
 
     DocumentPageCachedImage = apps.get_model(
         app_label='documents', model_name='DocumentPageCachedImage'

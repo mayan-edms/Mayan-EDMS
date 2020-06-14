@@ -1,6 +1,5 @@
+from io import BytesIO
 import requests
-
-from django.utils.six import BytesIO
 
 
 class TestClientAdapter(requests.adapters.BaseAdapter):

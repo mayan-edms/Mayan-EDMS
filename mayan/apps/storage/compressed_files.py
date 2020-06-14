@@ -1,3 +1,4 @@
+from io import BytesIO
 import tarfile
 import zipfile
 
@@ -11,7 +12,6 @@ except ImportError:
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.utils.encoding import force_bytes, force_text
-from django.utils.six import BytesIO
 
 from mayan.apps.mimetype.api import get_mimetype
 

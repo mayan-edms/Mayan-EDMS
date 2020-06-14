@@ -1,4 +1,4 @@
-from django.utils.six import StringIO
+from io import StringIO
 
 from django.core import management
 

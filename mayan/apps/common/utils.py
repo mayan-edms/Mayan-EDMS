@@ -1,10 +1,10 @@
+from functools import reduce
 import logging
 import types
 
 from django.conf import settings
 from django.core.exceptions import FieldDoesNotExist
 from django.db.models.constants import LOOKUP_SEP
-from django.utils.six.moves import reduce as reduce_function
 
 from .exceptions import ResolverError, ResolverPipelineError
 from .literals import DJANGO_SQLITE_BACKEND
@@ -202,7 +202,7 @@ def resolve_attribute(attribute, obj, kwargs=None):
             try:
                 # If there are dots in the attribute name, traverse them
                 # to the final attribute
-                result = reduce_function(getattr, attribute.split('.'), obj)
+                result = reduce(getattr, attribute.split('.'), obj)
                 try:
                     # Try it as a method
                     return result(**kwargs)
@@ -228,7 +228,7 @@ def return_attrib(obj, attrib, arguments=None):
     ) or isinstance(obj, dict):
         return obj[attrib]
     else:
-        result = reduce_function(getattr, attrib.split('.'), obj)
+        result = reduce(getattr, attrib.split('.'), obj)
         if isinstance(result, types.MethodType):
             if arguments:
                 return result(**arguments)
@@ -244,4 +244,4 @@ def return_related(instance, related_field):
     meant for related models. Support multiple levels of relationship
     using double underscore.
     """
-    return reduce_function(getattr, related_field.split('__'), instance)
+    return reduce(getattr, related_field.split('__'), instance)

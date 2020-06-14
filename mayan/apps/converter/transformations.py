@@ -4,7 +4,6 @@ import logging
 from PIL import Image, ImageColor, ImageDraw, ImageFilter
 
 from django.utils.encoding import force_bytes, force_text
-from django.utils.six import with_metaclass
 from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
@@ -18,7 +17,7 @@ class BaseTransformationType(type):
         return force_text(self.label)
 
 
-class BaseTransformation(with_metaclass(meta=BaseTransformationType)):
+class BaseTransformation(metaclass=BaseTransformationType):
     """
     Transformation can modify the appearance of the document's page preview.
     Some transformation available are: Rotate, zoom, resize and crop.

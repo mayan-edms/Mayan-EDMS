@@ -1,7 +1,7 @@
+from io import StringIO
 import mock
 
 from django.core import management
-from django.utils.six import StringIO
 
 import mayan
 

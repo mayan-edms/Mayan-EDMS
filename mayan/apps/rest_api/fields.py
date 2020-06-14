@@ -1,5 +1,4 @@
 from django.utils.module_loading import import_string
-from django.utils.six import string_types
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
@@ -10,10 +9,10 @@ class DynamicSerializerField(serializers.ReadOnlyField):
 
     @classmethod
     def add_serializer(cls, klass, serializer_class):
-        if isinstance(klass, string_types):
+        if isinstance(klass, str):
             klass = import_string(dotted_path=klass)
 
-        if isinstance(serializer_class, string_types):
+        if isinstance(serializer_class, str):
             serializer_class = import_string(dotted_path=serializer_class)
 
         cls.serializers[klass] = serializer_class
