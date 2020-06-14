@@ -95,7 +95,7 @@ class DocumentListView(SingleObjectListView):
 
     def get_source_queryset(self):
         queryset = ModelQueryFields.get(model=Document).get_queryset()
-        return queryset.filter(pk__in=self.get_document_queryset())
+        return self.get_document_queryset().filter(pk__in=queryset)
 
 
 class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
@@ -623,8 +623,10 @@ class RecentAccessDocumentListView(DocumentListView):
 
 class RecentAddedDocumentListView(DocumentListView):
     def get_document_queryset(self):
-        return Document.objects.filter(
-            pk__in=Document.objects.order_by('-date_added')[
+        queryset = ModelQueryFields.get(model=Document).get_queryset()
+
+        return queryset.filter(
+            pk__in=queryset.order_by('-date_added')[
                 :setting_recent_added_count.value
             ].values('pk')
         ).order_by('-date_added')
