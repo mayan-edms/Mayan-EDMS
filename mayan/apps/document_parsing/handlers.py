@@ -11,7 +11,7 @@ logger = logging.getLogger(name=__name__)
 
 def handler_index_document(sender, **kwargs):
     task_index_document.apply_async(
-        kwargs=dict(document_id=kwargs['instance'].document.pk)
+        kwargs=dict(document_id=kwargs['instance'].document_id)
     )
 
 

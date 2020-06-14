@@ -71,7 +71,7 @@ class DocumentCommentDeleteView(SingleObjectDeleteView):
     def get_post_action_redirect(self):
         return reverse(
             viewname='comments:comments_for_document', kwargs={
-                'document_id': self.object.document.pk
+                'document_id': self.object.document_id
             }
         )
 
@@ -111,7 +111,7 @@ class DocumentCommentEditView(SingleObjectEditView):
     def get_post_action_redirect(self):
         return reverse(
             viewname='comments:comments_for_document', kwargs={
-                'document_id': self.object.document.pk
+                'document_id': self.object.document_id
             }
         )
 

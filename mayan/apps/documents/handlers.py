@@ -33,7 +33,7 @@ def handler_create_document_cache(sender, **kwargs):
 
 def handler_scan_duplicates_for(sender, instance, **kwargs):
     task_scan_duplicates_for.apply_async(
-        kwargs={'document_id': instance.document.pk}
+        kwargs={'document_id': instance.document_id}
     )
 
 

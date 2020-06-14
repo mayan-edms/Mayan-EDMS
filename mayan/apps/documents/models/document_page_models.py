@@ -126,7 +126,7 @@ class DocumentPage(models.Model):
         final_url.args = kwargs
         final_url.path = reverse(
             viewname='rest_api:documentpage-image', kwargs={
-                'pk': self.document.pk, 'version_pk': self.document_version.pk,
+                'pk': self.document_version.document_id, 'version_pk': self.document_version_id,
                 'page_pk': self.pk
             }
         )

@@ -561,7 +561,7 @@ class DocumentPageAPIViewTestMixin:
         page = self.test_document.pages.first()
         return self.get(
             viewname='rest_api:documentpage-image', kwargs={
-                'pk': page.document.pk, 'version_pk': page.document_version.pk,
+                'pk': page.document_version.document_id, 'version_pk': page.document_version_id,
                 'page_pk': page.pk
             }
         )
@@ -610,7 +610,7 @@ class TrashedDocumentAPIViewTestMixin:
 
         return self.get(
             viewname='rest_api:documentpage-image', kwargs={
-                'pk': latest_version.document.pk,
+                'pk': latest_version.document_id,
                 'version_pk': latest_version.pk,
                 'page_pk': latest_version.pages.first().pk
             }

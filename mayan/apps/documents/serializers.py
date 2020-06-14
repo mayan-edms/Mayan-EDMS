@@ -25,14 +25,14 @@ class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
     def get_document_version_url(self, instance):
         return reverse(
             viewname='rest_api:documentversion-detail', args=(
-                instance.document.pk, instance.document_version.pk,
+                instance.document_version.document_id, instance.document_version_id,
             ), request=self.context['request'], format=self.context['format']
         )
 
     def get_image_url(self, instance):
         return reverse(
             viewname='rest_api:documentpage-image', args=(
-                instance.document.pk, instance.document_version.pk,
+                instance.document_version.document_id, instance.document_version_id,
                 instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
@@ -40,7 +40,7 @@ class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
     def get_url(self, instance):
         return reverse(
             viewname='rest_api:documentpage-detail', args=(
-                instance.document.pk, instance.document_version.pk,
+                instance.document_version.document_id, instance.document_version_id,
                 instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
@@ -120,28 +120,28 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
     def get_document_url(self, instance):
         return reverse(
             viewname='rest_api:document-detail', args=(
-                instance.document.pk,
+                instance.document_id,
             ), request=self.context['request'], format=self.context['format']
         )
 
     def get_download_url(self, instance):
         return reverse(
             viewname='rest_api:documentversion-download', args=(
-                instance.document.pk, instance.pk,
+                instance.document_id, instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
 
     def get_pages_url(self, instance):
         return reverse(
             viewname='rest_api:documentversion-page-list', args=(
-                instance.document.pk, instance.pk,
+                instance.document_id, instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
 
     def get_url(self, instance):
         return reverse(
             viewname='rest_api:documentversion-detail', args=(
-                instance.document.pk, instance.pk,
+                instance.document_id, instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
 
@@ -166,28 +166,28 @@ class WritableDocumentVersionSerializer(serializers.ModelSerializer):
     def get_document_url(self, instance):
         return reverse(
             viewname='rest_api:document-detail', args=(
-                instance.document.pk,
+                instance.document_id,
             ), request=self.context['request'], format=self.context['format']
         )
 
     def get_download_url(self, instance):
         return reverse(
             viewname='rest_api:documentversion-download', args=(
-                instance.document.pk, instance.pk,
+                instance.document_id, instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
 
     def get_pages_url(self, instance):
         return reverse(
             viewname='rest_api:documentversion-page-list', args=(
-                instance.document.pk, instance.pk,
+                instance.document_id, instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
 
     def get_url(self, instance):
         return reverse(
             viewname='rest_api:documentversion-detail', args=(
-                instance.document.pk, instance.pk,
+                instance.document_id, instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
 
