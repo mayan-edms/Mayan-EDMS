@@ -196,6 +196,10 @@ PythonDependency(
     ), module=__name__, name='django-rosetta', version_string='==0.9.4'
 )
 PythonDependency(
+    environment=environment_development, module=__name__,
+    name='django-silk', version_string='==4.0.1'
+)
+PythonDependency(
     environment=environment_development, help_text=_(
         'Provides style checking.'
     ), module=__name__, name='flake8', version_string='==3.7.9'

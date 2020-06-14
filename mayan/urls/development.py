@@ -22,3 +22,13 @@ if 'debug_toolbar' in settings.INSTALLED_APPS:
         urlpatterns += [  # NOQA
             url(regex=r'^__debug__/', view=include(debug_toolbar.urls))
         ]
+
+if 'silk' in settings.INSTALLED_APPS:
+    try:
+        import silk
+    except ImportError:
+        pass
+    else:
+        urlpatterns += [  # NOQA
+            url(regex=r'^silk/', view=include('silk.urls', namespace='silk'))
+        ]
