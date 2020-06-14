@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
+from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.signals import signal_mayan_pre_save
 
 from ..events import (
@@ -227,24 +228,12 @@ class Document(HooksMixin, models.Model):
 
     @property
     def page_count(self):
-        return self.latest_version.page_count
+        return self.pages.count()
 
     @property
     def pages(self):
         try:
             return self.latest_version.pages
-        except AttributeError:
-            # Document has no version yet
-            DocumentPage = apps.get_model(
-                app_label='documents', model_name='DocumentPage'
-            )
-
-            return DocumentPage.objects.none()
-
-    @property
-    def pages_all(self):
-        try:
-            return self.latest_version.pages_all
         except AttributeError:
             # Document has no version yet
             DocumentPage = apps.get_model(

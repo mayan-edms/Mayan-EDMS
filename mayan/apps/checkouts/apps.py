@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.menus import (
     menu_facet, menu_main, menu_multi_item, menu_secondary
 )
@@ -86,6 +87,9 @@ class CheckoutsApp(MayanAppConfig):
         ModelPermission.register_inheritance(
             model=DocumentCheckout, related='document'
         )
+
+        model_query_fields_document = ModelQueryFields(model=Document)
+        model_query_fields_document.add_select_related_field(field_name='documentcheckout')
 
         SourceColumn(
             attribute='get_user_display', include_label=True, order=99,

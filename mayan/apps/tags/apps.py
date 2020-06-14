@@ -6,7 +6,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelFieldRelated
+from mayan.apps.common.classes import ModelFieldRelated, ModelQueryFields
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
     menu_secondary
@@ -91,6 +91,12 @@ class TagsApp(MayanAppConfig):
                 permission_tag_remove, permission_tag_view,
             )
         )
+
+        model_query_fields_document = ModelQueryFields.get(model=Document)
+        model_query_fields_document.add_prefetch_related_field(field_name='tags')
+
+        model_query_fields_tag = ModelQueryFields.get(model=Tag)
+        model_query_fields_tag.add_prefetch_related_field(field_name='documents')
 
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,

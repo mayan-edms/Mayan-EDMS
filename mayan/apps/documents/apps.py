@@ -6,7 +6,8 @@ from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
-    MissingItem, ModelField, ModelFieldRelated, ModelProperty, Template
+    MissingItem, ModelField, ModelFieldRelated, ModelProperty,
+    ModelQueryFields, Template
 )
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
@@ -253,6 +254,18 @@ class DocumentsApp(MayanAppConfig):
         ModelPermission.register_inheritance(
             model=DocumentVersion, related='document',
         )
+
+        model_query_fields_document = ModelQueryFields(model=Document)
+        model_query_fields_document.add_prefetch_related_field(field_name='versions')
+        model_query_fields_document.add_prefetch_related_field(field_name='versions__version_pages')
+        model_query_fields_document.add_select_related_field(field_name='document_type')
+
+        model_query_fields_document_version = ModelQueryFields(model=DocumentVersion)
+        model_query_fields_document_version.add_prefetch_related_field(field_name='version_pages')
+        model_query_fields_document_version.add_select_related_field(field_name='document')
+
+        model_query_fields_document_page = ModelQueryFields(model=DocumentPage)
+        model_query_fields_document_page.add_select_related_field(field_name='document_version')
 
         # Document and document page thumbnail widget
         document_page_thumbnail_widget = DocumentPageThumbnailWidget()

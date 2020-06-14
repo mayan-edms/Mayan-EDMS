@@ -104,6 +104,9 @@
 - Remove usage of django.utils.six.
 - Add django-silk as a development dependency.
   Add a development setting for django-silk.
+- Add the ModelQueryFields class to allow programmatic setting
+  of a model's select_related and prefetch_related fields.
+  Optimize the most common queries and views to use ModelQueryFields.
 
 3.4.9 (2020-05-26)
 ==================

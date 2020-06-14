@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.views.document_views import DocumentListView
 from mayan.apps.views.generics import (
@@ -224,7 +225,8 @@ class TagListView(SingleObjectListView):
         }
 
     def get_source_queryset(self):
-        return self.get_tag_queryset()
+        queryset = ModelQueryFields.get(model=Tag).get_queryset()
+        return queryset.filter(pk__in=self.get_tag_queryset())
 
     def get_tag_queryset(self):
         return Tag.objects.all()
@@ -276,7 +278,7 @@ class DocumentTagListView(ExternalObjectMixin, TagListView):
         )
         return context
 
-    def get_source_queryset(self):
+    def get_tag_queryset(self):
         return self.external_object.get_tags(
             permission=permission_tag_view, user=self.request.user
         )

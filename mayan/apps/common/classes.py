@@ -1,6 +1,7 @@
 import hashlib
 
 from django.apps import apps
+from django.core.exceptions import ImproperlyConfigured
 from django.db import models
 from django.template.response import TemplateResponse
 from django.urls import reverse
@@ -260,6 +261,52 @@ class ModelReverseField(ModelField):
             attribute
         )
 
+
+class ModelQueryFields:
+    _registry = {}
+
+    @classmethod
+    def get(cls, model):
+        try:
+            return cls._registry[model]
+        except KeyError:
+            ModelQueryFields(model=model)
+            return cls.get(model=model)
+
+    def __init__(self, model):
+        self.model = model
+        self.select_related_fields = []
+        self.prefetch_related_fields = []
+        self.__class__._registry[model] = self
+
+    def add_select_related_field(self, field_name):
+        if field_name in self.select_related_fields:
+            raise ImproperlyConfigured(
+                '"{}" model already has a "{}" query select related field.'.format(
+                    self.model, field_name
+                )
+            )
+        self.select_related_fields.append(field_name)
+
+    def add_prefetch_related_field(self, field_name):
+        if field_name in self.prefetch_related_fields:
+            raise ImproperlyConfigured(
+                '"{}" model already has a "{}" query prefetch related field.'.format(
+                    self.model, field_name
+                )
+            )
+        self.prefetch_related_fields.append(field_name)
+
+    def get_queryset(self):
+        queryset = self.model._meta.default_manager.all()
+
+        if self.select_related_fields:
+            queryset = queryset.select_related(*self.select_related_fields)
+
+        if self.prefetch_related_fields:
+            queryset = queryset.prefetch_related(*self.prefetch_related_fields)
+
+        return queryset
 
 ModelAttribute.register(klass=ModelProperty)
 ModelAttribute.register(klass=ModelField)

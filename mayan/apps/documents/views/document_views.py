@@ -12,6 +12,7 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
@@ -75,10 +76,7 @@ class DocumentListView(SingleObjectListView):
             return super(DocumentListView, self).get_context_data(**kwargs)
 
     def get_document_queryset(self):
-        return Document.valid.defer(
-            'description', 'uuid', 'date_added', 'language', 'in_trash',
-            'deleted_date_time'
-        ).all()
+        return Document.objects.all()
 
     def get_extra_context(self):
         return {
@@ -96,7 +94,8 @@ class DocumentListView(SingleObjectListView):
         }
 
     def get_source_queryset(self):
-        return self.get_document_queryset()
+        queryset = ModelQueryFields.get(model=Document).get_queryset()
+        return queryset.filter(pk__in=self.get_document_queryset())
 
 
 class DocumentDocumentTypeEditView(MultipleObjectFormActionView):

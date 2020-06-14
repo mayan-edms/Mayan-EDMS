@@ -11,6 +11,7 @@ from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.converter.classes import ConverterBase
 from mayan.apps.converter.exceptions import InvalidOfficeFormat, PageCountError
@@ -313,18 +314,18 @@ class DocumentVersion(models.Model):
 
     @property
     def pages(self):
-        return self.version_pages.all()
-
-    @property
-    def pages_all(self):
-        return self.pages.all()
+        DocumentPage = apps.get_model(
+            app_label='documents', model_name='DocumentPage'
+        )
+        queryset = ModelQueryFields.get(model=DocumentPage).get_queryset()
+        return queryset.filter(pk__in=self.version_pages.all())
 
     @property
     def pages_valid(self):
         DocumentPage = apps.get_model(
             app_label='documents', model_name='DocumentPage'
         )
-        return DocumentPage.valid.filter(document_version=self)
+        return self.pages.filter(pk__in=DocumentPage.valid.filter(document_version=self))
 
     def revert(self, _user=None):
         """

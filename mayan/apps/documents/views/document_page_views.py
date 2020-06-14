@@ -63,7 +63,8 @@ class DocumentPageListView(ExternalObjectMixin, SingleObjectListView):
         }
 
     def get_source_queryset(self):
-        return self.external_object.pages_all
+        queryset = ModelQueryFields.get(model=DocumentPage).get_queryset()
+        return queryset.filter(pk__in=self.external_object.pages.all())
 
 
 class DocumentPageNavigationBase(ExternalObjectMixin, RedirectView):

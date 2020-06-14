@@ -249,7 +249,7 @@ class DocumentPage(models.Model):
         ) % {
             'document': force_text(self.document),
             'page_num': self.page_number,
-            'total_pages': self.document_version.pages_all.count()
+            'total_pages': self.document_version.pages.all().count()
         }
     get_label.short_description = _('Label')
 
