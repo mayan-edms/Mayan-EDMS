@@ -1,10 +1,12 @@
 from django.apps import apps
+from django.db.models.signals import pre_delete
 from django.utils.functional import cached_property
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.menus import menu_list_facet
 from mayan.apps.logging.links import link_object_error_list
 
+from .literals import DEFAULT_ERROR_LOG_PARTITION_ENTRY_LIMIT
 from .permissions import permission_error_log_view
 
 
@@ -15,8 +17,9 @@ class ErrorLog:
     def get(cls, name):
         return cls._registry[name]
 
-    def __init__(self, app_config):
+    def __init__(self, app_config, limit=DEFAULT_ERROR_LOG_PARTITION_ENTRY_LIMIT):
         self.app_config = app_config
+        self.limit = limit
 
         self.__class__._registry[app_config.name] = self
 
@@ -40,6 +43,11 @@ class ErrorLog:
             error_log_partition, created = error_log_instance.model.partitions.get_or_create(
                 name='{}.{}'.format(model._meta.label, self.pk)
             )
+
+            error_log_partition.entries.exclude(
+                pk__in=error_log_partition.entries.order_by('-datetime')[:error_log_instance.limit].values('pk')
+            ).delete()
+
             return error_log_partition.entries
 
         model.add_to_class(name='error_log', value=method_instance_logs)
@@ -52,3 +60,12 @@ class ErrorLog:
             ModelPermission.register(
                 model=model, permissions=(permission_error_log_view,)
             )
+
+        def handler_delete_model_entries(sender, instance, **kwargs):
+            instance.error_log.all().delete()
+
+        pre_delete.connect(
+            dispatch_uid='logging_handler_delete_model_entries',
+            receiver=handler_delete_model_entries,
+            sender=model, weak=False
+        )

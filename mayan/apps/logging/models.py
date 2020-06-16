@@ -1,3 +1,4 @@
+from django.apps import apps
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -44,6 +45,13 @@ class ErrorLogPartition(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_model_instance(self):
+        app_label, model_name, object_id = self.name.split('.')
+        Model = apps.get_model(
+            app_label=app_label, model_name=model_name
+        )
+        return Model._meta.default_manager.get(pk=object_id)
 
 
 class ErrorLogPartitionEntry(models.Model):

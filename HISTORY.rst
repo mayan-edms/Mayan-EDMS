@@ -113,6 +113,7 @@
   app.
 - Improve the logging in the sources app.
 - Raise error if the watch folder doesn't exists or is not a directory.
+- Support setting a limit of error log entries.
 
 3.4.9 (2020-05-26)
 ==================

@@ -33,5 +33,5 @@ class ErrorLogAdmin(ReadOnlyAdminMixin, admin.ModelAdmin):
 @admin.register(ErrorLogPartition)
 class ErrorLogPartitionAdmin(ReadOnlyAdminMixin, admin.ModelAdmin):
     inlines = (ErrorLogPartitionEntryInline,)
-    list_display = ('name', 'error_log')
+    list_display = ('name', 'error_log', 'get_model_instance')
     readonly_fields = list_display
