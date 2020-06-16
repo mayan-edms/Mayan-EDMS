@@ -3,6 +3,7 @@ import logging
 
 from furl import furl
 
+from django.conf import settings
 from django.core import mail
 from django.db import models, transaction
 from django.utils.html import strip_tags
@@ -18,21 +19,6 @@ from .managers import UserMailerManager
 from .utils import split_recipient_list
 
 logger = logging.getLogger(name=__name__)
-
-
-class LogEntry(models.Model):
-    datetime = models.DateTimeField(
-        auto_now_add=True, editable=False, verbose_name=_('Date time')
-    )
-    message = models.TextField(
-        blank=True, editable=False, verbose_name=_('Message')
-    )
-
-    class Meta:
-        get_latest_by = 'datetime'
-        ordering = ('-datetime',)
-        verbose_name = _('Log entry')
-        verbose_name_plural = _('Log entries')
 
 
 class UserMailer(models.Model):
@@ -164,7 +150,11 @@ class UserMailer(models.Model):
             try:
                 email_message.send()
             except Exception as exception:
-                self.error_log.create(message=exception)
+                self.error_log.create(
+                    text='{}; {}'.format(
+                        exception.__class__.__name__, exception
+                    )
+                )
             else:
                 self.error_log.all().delete()
                 event_email_sent.commit(
@@ -215,23 +205,15 @@ class UserMailer(models.Model):
         Send a test message to make sure the mailing profile settings are
         correct.
         """
-        self.send(subject=_('Test email from Mayan EDMS'), to=to)
-
-
-class UserMailerLogEntry(models.Model):
-    user_mailer = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='error_log', to=UserMailer,
-        verbose_name=_('User mailer')
-    )
-    datetime = models.DateTimeField(
-        auto_now_add=True, editable=False, verbose_name=_('Date time')
-    )
-    message = models.TextField(
-        blank=True, editable=False, verbose_name=_('Message')
-    )
-
-    class Meta:
-        get_latest_by = 'datetime'
-        ordering = ('-datetime',)
-        verbose_name = _('User mailer log entry')
-        verbose_name_plural = _('User mailer log entries')
+        try:
+            self.send(subject=_('Test email from Mayan EDMS'), to=to)
+        except Exception as exception:
+            self.error_log.create(
+                text='{}; {}'.format(
+                    exception.__class__.__name__, exception
+                )
+            )
+            if settings.DEBUG:
+                raise
+        else:
+            self.error_log.all().delete()

@@ -651,7 +651,7 @@ class WorkflowStateAction(models.Model):
             try:
                 self.get_class_instance().execute(context=context)
             except Exception as exception:
-                self.error_logs.create(
+                self.error_log.create(
                     text='{}; {}'.format(
                         exception.__class__.__name__, exception
                     )
@@ -659,6 +659,8 @@ class WorkflowStateAction(models.Model):
 
                 if settings.DEBUG:
                     raise
+            else:
+                self.error_log.all().delete()
 
     def get_class(self):
         return import_string(dotted_path=self.action_path)

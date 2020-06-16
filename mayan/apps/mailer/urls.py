@@ -1,9 +1,8 @@
 from django.conf.urls import url
 
 from .views import (
-    SystemMailerLogEntryListView, MailDocumentLinkView, MailDocumentView,
-    UserMailerBackendSelectionView, UserMailingCreateView,
-    UserMailingDeleteView, UserMailingEditView, UserMailerLogEntryListView,
+    MailDocumentLinkView, MailDocumentView, UserMailerBackendSelectionView,
+    UserMailingCreateView, UserMailingDeleteView, UserMailingEditView,
     UserMailerTestView, UserMailerListView
 )
 
@@ -26,10 +25,6 @@ urlpatterns = [
         name='send_multiple_document', view=MailDocumentView.as_view()
     ),
     url(
-        regex=r'^system_mailer/log/$', name='system_mailer_error_log',
-        view=SystemMailerLogEntryListView.as_view()
-    ),
-    url(
         regex=r'^user_mailers/backend/selection/$',
         name='user_mailer_backend_selection',
         view=UserMailerBackendSelectionView.as_view()
@@ -45,10 +40,6 @@ urlpatterns = [
     url(
         regex=r'^user_mailers/(?P<mailer_id>\d+)/edit/$',
         name='user_mailer_edit', view=UserMailingEditView.as_view()
-    ),
-    url(
-        regex=r'^user_mailers/(?P<mailer_id>\d+)/log/$',
-        name='user_mailer_log', view=UserMailerLogEntryListView.as_view()
     ),
     url(
         regex=r'^user_mailers/(?P<mailer_id>\d+)/test/$',

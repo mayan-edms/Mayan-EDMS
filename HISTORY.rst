@@ -109,6 +109,10 @@
   Optimize the most common queries and views to use ModelQueryFields.
 - Move model error logging from the common to the new logging app.
 - Generalize the model error logging code.
+- Convert the user mailer and sources app to use the new logging
+  app.
+- Improve the logging in the sources app.
+- Raise error if the watch folder doesn't exists or is not a directory.
 
 3.4.9 (2020-05-26)
 ==================

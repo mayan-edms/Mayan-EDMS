@@ -6,7 +6,7 @@ from .permissions import (
     permission_mailing_link, permission_mailing_send_document,
     permission_user_mailer_create, permission_user_mailer_delete,
     permission_user_mailer_edit, permission_user_mailer_use,
-    permission_user_mailer_view, permission_view_error_log
+    permission_user_mailer_view
 )
 
 link_send_document = Link(
@@ -29,11 +29,6 @@ link_send_multiple_document_link = Link(
     icon_class_path='mayan.apps.mailer.icons.icon_document_send_link',
     text=_('Email link'), view='mailer:send_multiple_document_link'
 )
-link_system_mailer_error_log = Link(
-    icon_class_path='mayan.apps.mailer.icons.icon_system_mailer_error_log',
-    permissions=(permission_view_error_log,),
-    text=_('System mailer error log'), view='mailer:system_mailer_error_log',
-)
 link_user_mailer_create = Link(
     icon_class_path='mayan.apps.mailer.icons.icon_user_mailer_create',
     permissions=(permission_user_mailer_create,),
@@ -50,10 +45,6 @@ link_user_mailer_edit = Link(
     icon_class_path='mayan.apps.mailer.icons.icon_user_mailer_edit',
     permissions=(permission_user_mailer_edit,),
     text=_('Edit'), view='mailer:user_mailer_edit',
-)
-link_user_mailer_log_list = Link(
-    args='object.pk', permissions=(permission_user_mailer_view,),
-    text=_('Log'), view='mailer:user_mailer_log',
 )
 link_user_mailer_list = Link(
     icon_class_path='mayan.apps.mailer.icons.icon_user_mailer_list',

@@ -122,11 +122,6 @@ link_document_version_upload = Link(
     permissions=(permission_document_new_version,),
     text=_('Upload new version'), view='sources:document_version_upload',
 )
-link_setup_source_logs = Link(
-    args=('resolved_object.pk',),
-    permissions=(permission_sources_setup_view,), text=_('Logs'),
-    view='sources:setup_source_logs',
-)
 link_setup_source_check_now = Link(
     args=('resolved_object.pk',),
     icon_class_path='mayan.apps.sources.icons.icon_setup_source_check_now',

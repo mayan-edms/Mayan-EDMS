@@ -249,8 +249,7 @@ class IMAPEmail(EmailBaseModel):
         verbose_name = _('IMAP email')
         verbose_name_plural = _('IMAP email')
 
-    # http://www.doughellmann.com/PyMOTW/imaplib/
-    def check_source(self, test=False):
+    def _check_source(self, test=False):
         logger.debug(msg='Starting IMAP email fetch')
         logger.debug('host: %s', self.host)
         logger.debug('ssl: %s', self.ssl)
@@ -356,7 +355,7 @@ class POP3Email(EmailBaseModel):
         verbose_name = _('POP email')
         verbose_name_plural = _('POP email')
 
-    def check_source(self, test=False):
+    def _check_source(self, test=False):
         logger.debug(msg='Starting POP3 email fetch')
         logger.debug('host: %s', self.host)
         logger.debug('ssl: %s', self.ssl)

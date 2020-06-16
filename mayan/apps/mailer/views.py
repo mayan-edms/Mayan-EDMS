@@ -20,23 +20,14 @@ from .forms import (
 )
 from .icons import icon_mail_document_submit, icon_user_mailer_setup
 from .links import link_user_mailer_create
-from .models import LogEntry, UserMailer
+from .models import UserMailer
 from .permissions import (
     permission_mailing_link, permission_mailing_send_document,
     permission_user_mailer_create, permission_user_mailer_delete,
     permission_user_mailer_edit, permission_user_mailer_use,
-    permission_user_mailer_view, permission_view_error_log
+    permission_user_mailer_view
 )
 from .tasks import task_send_document
-
-
-class SystemMailerLogEntryListView(SingleObjectListView):
-    extra_context = {
-        'hide_object': True,
-        'title': _('Document mailing error log'),
-    }
-    model = LogEntry
-    view_permission = permission_view_error_log
 
 
 class MailDocumentView(MultipleObjectFormActionView):
@@ -199,22 +190,6 @@ class UserMailingEditView(SingleObjectDynamicFormEditView):
             result['field_order'] = backend.field_order
 
         return result
-
-
-class UserMailerLogEntryListView(ExternalObjectMixin, SingleObjectListView):
-    external_object_class = UserMailer
-    external_object_permission = permission_user_mailer_view
-    external_object_pk_url_kwarg = 'mailer_id'
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'object': self.external_object,
-            'title': _('Error log for: %s') % self.external_object,
-        }
-
-    def get_source_queryset(self):
-        return self.external_object.error_log.all()
 
 
 class UserMailerListView(SingleObjectListView):

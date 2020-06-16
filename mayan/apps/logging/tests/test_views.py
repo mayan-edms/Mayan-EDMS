@@ -26,7 +26,7 @@ class LogingViewTestCase(LoggingViewTestMixin, GenericViewTestCase):
             model=self.test_model, register_permission=True
         )
 
-        self.error_log_entry = self.test_object.error_logs.create(
+        self.error_log_entry = self.test_object.error_log.create(
             text=TEST_ERROR_LOG_ENTRY_RESULT
         )
 
@@ -52,7 +52,7 @@ class LogingViewTestCase(LoggingViewTestMixin, GenericViewTestCase):
         response = self._request_object_error_log_list_clear_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertNotEqual(self.test_object.error_logs.count(), 0)
+        self.assertNotEqual(self.test_object.error_log.count(), 0)
 
     def test_object_error_list_clear_view_with_access(self):
         self.grant_access(
@@ -62,4 +62,4 @@ class LogingViewTestCase(LoggingViewTestMixin, GenericViewTestCase):
         response = self._request_object_error_log_list_clear_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.test_object.error_logs.count(), 0)
+        self.assertEqual(self.test_object.error_log.count(), 0)

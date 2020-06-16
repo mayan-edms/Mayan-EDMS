@@ -8,6 +8,7 @@ from mayan.apps.common.signals import signal_post_initial_setup, signal_post_upg
 from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.documents.menus import menu_documents
 from mayan.apps.documents.signals import signal_post_version_upload
+from mayan.apps.logging.classes import ErrorLog
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
@@ -27,7 +28,7 @@ from .links import (
     link_setup_source_create_pop3_email, link_setup_source_create_sane_scanner,
     link_setup_source_create_watch_folder, link_setup_source_create_webform,
     link_setup_source_create_staging_folder, link_setup_source_delete,
-    link_setup_source_edit, link_setup_source_logs, link_staging_file_delete,
+    link_setup_source_edit, link_staging_file_delete,
     link_document_version_upload
 )
 from .widgets import StagingFileThumbnailWidget
@@ -51,11 +52,16 @@ class SourcesApp(MayanAppConfig):
         IMAPEmail = self.get_model(model_name='IMAPEmail')
         POP3Email = self.get_model(model_name='POP3Email')
         Source = self.get_model(model_name='Source')
-        SourceLog = self.get_model(model_name='SourceLog')
         SaneScanner = self.get_model(model_name='SaneScanner')
         StagingFolderSource = self.get_model(model_name='StagingFolderSource')
         WatchFolderSource = self.get_model(model_name='WatchFolderSource')
         WebFormSource = self.get_model(model_name='WebFormSource')
+
+        error_log = ErrorLog(app_config=self)
+        error_log.register_model(model=IMAPEmail)
+        error_log.register_model(model=POP3Email)
+        error_log.register_model(model=SaneScanner)
+        error_log.register_model(model=WatchFolderSource)
 
         MissingItem(
             label=_('Create a document source'),
@@ -96,22 +102,11 @@ class SourcesApp(MayanAppConfig):
             )
         )
 
-        SourceColumn(
-            source=SourceLog,
-            label=_('Date time'),
-            func=lambda context: context['object'].datetime
-        )
-        SourceColumn(
-            source=SourceLog,
-            label=_('Message'),
-            func=lambda context: context['object'].message
-        )
-
         menu_documents.bind_links(links=(link_document_create_multiple,))
 
         menu_list_facet.bind_links(
             links=(
-                link_setup_source_logs, link_transformation_list,
+                link_transformation_list,
             ), sources=(
                 POP3Email, IMAPEmail, SaneScanner, StagingFolderSource,
                 WatchFolderSource, WebFormSource

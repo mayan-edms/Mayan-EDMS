@@ -7,12 +7,12 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
-    menu_tools
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
+from mayan.apps.logging.classes import ErrorLog
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
@@ -20,10 +20,9 @@ from .classes import MailerBackend
 from .events import event_email_sent
 from .links import (
     link_send_document_link, link_send_document, link_send_multiple_document,
-    link_send_multiple_document_link, link_system_mailer_error_log,
-    link_user_mailer_create, link_user_mailer_delete, link_user_mailer_edit,
-    link_user_mailer_list, link_user_mailer_log_list, link_user_mailer_setup,
-    link_user_mailer_test
+    link_send_multiple_document_link, link_user_mailer_create,
+    link_user_mailer_delete, link_user_mailer_edit, link_user_mailer_list,
+    link_user_mailer_setup, link_user_mailer_test
 )
 from .permissions import (
     permission_mailing_link, permission_mailing_send_document,
@@ -46,9 +45,10 @@ class MailerApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
 
-        LogEntry = self.get_model(model_name='LogEntry')
         UserMailer = self.get_model(model_name='UserMailer')
-        UserMailerLogEntry = self.get_model(model_name='UserMailerLogEntry')
+
+        error_log = ErrorLog(app_config=self)
+        error_log.register_model(model=UserMailer, register_permission=True)
 
         EventModelRegistry.register(model=UserMailer)
 
@@ -58,12 +58,6 @@ class MailerApp(MayanAppConfig):
             model=UserMailer, event_types=(event_email_sent,)
         )
 
-        SourceColumn(
-            source=LogEntry, label=_('Date and time'), attribute='datetime'
-        )
-        SourceColumn(
-            source=LogEntry, label=_('Message'), attribute='message'
-        )
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=UserMailer
@@ -78,13 +72,6 @@ class MailerApp(MayanAppConfig):
         )
         SourceColumn(
             attribute='backend_label', include_label=True, source=UserMailer
-        )
-        SourceColumn(
-            attribute='datetime', label=_('Date and time'),
-            source=UserMailerLogEntry
-        )
-        SourceColumn(
-            attribute='message', label=_('Message'), source=UserMailerLogEntry
         )
 
         ModelPermission.register(
@@ -105,7 +92,6 @@ class MailerApp(MayanAppConfig):
             links=(
                 link_acl_list, link_events_for_object,
                 link_object_event_types_user_subcriptions_list,
-                link_user_mailer_log_list
             ), sources=(UserMailer,)
         )
 
@@ -136,7 +122,5 @@ class MailerApp(MayanAppConfig):
                 'mailer:user_mailer_create'
             )
         )
-
-        menu_tools.bind_links(links=(link_system_mailer_error_log,))
 
         menu_setup.bind_links(links=(link_user_mailer_setup,))

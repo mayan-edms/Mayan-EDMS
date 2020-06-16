@@ -7,8 +7,8 @@ from .api_views import (
 )
 from .views import (
     SourceCheckView, SourceCreateView, SourceDeleteView,
-    SourceEditView, SourceListView, SourceLogListView,
-    StagingFileDeleteView, DocumentVersionUploadInteractiveView, UploadInteractiveView
+    SourceEditView, SourceListView, StagingFileDeleteView,
+    DocumentVersionUploadInteractiveView, UploadInteractiveView
 )
 from .wizards import DocumentCreateWizard
 
@@ -66,10 +66,6 @@ urlpatterns = [
     url(
         regex=r'^sources/(?P<source_id>\d+)/edit/$', name='setup_source_edit',
         view=SourceEditView.as_view()
-    ),
-    url(
-        regex=r'^sources/(?P<source_id>\d+)/logs/$', name='setup_source_logs',
-        view=SourceLogListView.as_view()
     ),
 ]
 

@@ -1,6 +1,7 @@
 import json
 import logging
 
+from django.conf import settings
 from django.db import models, transaction
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -212,6 +213,20 @@ class IntervalBaseModel(OutOfProcessSource):
     def _get_periodic_task_name(self, pk=None):
         return 'check_interval_source-%i' % (pk or self.pk)
 
+    def check_source(self, test=False):
+        try:
+            self._check_source(test=test)
+        except Exception as exception:
+            self.error_log.create(
+                text='{}; {}'.format(
+                    exception.__class__.__name__, exception
+                )
+            )
+            if settings.DEBUG:
+                raise
+        else:
+            self.error_log.all().delete()
+
     def delete(self, *args, **kwargs):
         pk = self.pk
         with transaction.atomic():
@@ -236,22 +251,3 @@ class IntervalBaseModel(OutOfProcessSource):
                 task='mayan.apps.sources.tasks.task_check_interval_source',
                 kwargs=json.dumps(obj={'source_id': self.pk})
             )
-
-
-class SourceLog(models.Model):
-    source = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='logs', to=Source,
-        verbose_name=_('Source')
-    )
-    datetime = models.DateTimeField(
-        auto_now_add=True, editable=False, verbose_name=_('Date time')
-    )
-    message = models.TextField(
-        blank=True, editable=False, verbose_name=_('Message')
-    )
-
-    class Meta:
-        get_latest_by = 'datetime'
-        ordering = ('-datetime',)
-        verbose_name = _('Log entry')
-        verbose_name_plural = _('Log entries')

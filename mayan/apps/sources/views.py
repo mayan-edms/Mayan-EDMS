@@ -30,8 +30,7 @@ from .forms import (
     NewDocumentForm, NewVersionForm, WebFormUploadForm, WebFormUploadFormHTML5
 )
 from .icons import (
-    icon_log, icon_setup_sources, icon_staging_folder_file,
-    icon_upload_view_link
+    icon_setup_sources, icon_staging_folder_file, icon_upload_view_link
 )
 from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK, SOURCE_UNCOMPRESS_CHOICE_Y
 from .links import (
@@ -192,28 +191,6 @@ class SourceListView(SingleObjectListView):
             'no_results_title': _('No sources available'),
             'title': _('Sources'),
         }
-
-
-class SourceLogListView(ExternalObjectMixin, SingleObjectListView):
-    external_object_queryset = Source.objects.select_subclasses()
-    external_object_permission = permission_sources_setup_view
-    external_object_pk_url_kwarg = 'source_id'
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'no_results_icon': icon_log,
-            'no_results_text': _(
-                'Any error produced during the usage of a source will be '
-                'listed here to assist in debugging.'
-            ),
-            'no_results_title': _('No log entries available'),
-            'object': self.external_object,
-            'title': _('Log entries for source: %s') % self.external_object,
-        }
-
-    def get_source_queryset(self):
-        return self.external_object.logs.all()
 
 
 class StagingFileDeleteView(ExternalObjectMixin, SingleObjectDeleteView):

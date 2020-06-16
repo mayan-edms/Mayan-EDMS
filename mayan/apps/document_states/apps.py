@@ -104,6 +104,10 @@ class DocumentStatesApp(MayanAppConfig):
 
         WorkflowAction.load_modules()
 
+        ModelEventType.register(
+            event_types=(event_workflow_edited,), model=Workflow
+        )
+
         ModelProperty(
             model=Document,
             name='workflow.< workflow internal name >.get_current_state',
@@ -118,10 +122,6 @@ class DocumentStatesApp(MayanAppConfig):
                 'Return the completion value of the current state of the '
                 'selected workflow.'
             )
-        )
-
-        ModelEventType.register(
-            event_types=(event_workflow_edited,), model=Workflow
         )
 
         ModelPermission.register(

@@ -2,7 +2,7 @@ from django.apps import apps
 from django.utils.functional import cached_property
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.common.menus import menu_object
+from mayan.apps.common.menus import menu_list_facet
 from mayan.apps.logging.links import link_object_error_list
 
 from .permissions import permission_error_log_view
@@ -42,9 +42,9 @@ class ErrorLog:
             )
             return error_log_partition.entries
 
-        model.add_to_class(name='error_logs', value=method_instance_logs)
+        model.add_to_class(name='error_log', value=method_instance_logs)
 
-        menu_object.bind_links(
+        menu_list_facet.bind_links(
             links=(link_object_error_list,), sources=(model,)
         )
 

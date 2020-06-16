@@ -18,7 +18,7 @@ class ObjectErrorLogEntryListClearView(ExternalContentTypeObjectMixin, ConfirmVi
         }
 
     def view_action(self):
-        self.external_object.error_logs.all().delete()
+        self.external_object.error_log.all().delete()
         messages.success(
             message=_('Object error log cleared successfully'),
             request=self.request
@@ -44,4 +44,4 @@ class ObjectErrorLogEntryListView(ExternalContentTypeObjectMixin, SingleObjectLi
         }
 
     def get_source_queryset(self):
-        return self.external_object.error_logs.all()
+        return self.external_object.error_log.all()
