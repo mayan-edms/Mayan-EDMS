@@ -2,42 +2,31 @@
 
 import os
 import optparse
+import sys
 
 import sh
 
+import django
+from django.apps import apps
 
-APP_LIST = (
-    'acls', 'appearance', 'authentication', 'autoadmin', 'cabinets',
-    'checkouts', 'common', 'converter', 'dashboards', 'dependencies',
-    'django_gpg', 'document_comments', 'document_indexing',
-    'document_parsing', 'document_signatures', 'document_states',
-    'documents', 'dynamic_search', 'events', 'file_caching',
-    'file_metadata', 'linking', 'lock_manager', 'logging', 'mailer',
-    'mayan_statistics', 'metadata', 'mirroring', 'motd', 'navigation',
-    'ocr', 'permissions', 'platform', 'quotas', 'rest_api', 'smart_settings',
-    'sources', 'storage', 'tags', 'task_manager', 'templating',
-    'user_management', 'views', 'web_links'
-)
-
-LANGUAGE_LIST = (
-    'ar', 'bg', 'bs', 'cs', 'da', 'de_DE', 'en', 'es', 'el', 'fa', 'fr',
-    'hu', 'id', 'it', 'lv', 'nl', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl',
-    'tr_TR', 'vi', 'zh_Hans',
-)
-
-makemessages = sh.Command('django-admin.py')
+makemessages = sh.Command('./manage.py')
 makemessages = makemessages.bake('makemessages')
 
-compilemessages = sh.Command('django-admin.py')
+compilemessages = sh.Command('./manage.py')
 compilemessages = compilemessages.bake('compilemessages')
 
 transifex_client = sh.Command('tx')
 pull_translations = transifex_client.bake('pull')
 push_translations = transifex_client.bake('push')
 
-BASE_DIR = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), '..', '..', 'mayan')
-)
+sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(1, os.path.abspath('.'))
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mayan.settings')
+django.setup()
+
+from mayan.apps.common.apps import MayanAppConfig
+from mayan.settings import BASE_DIR, LANGUAGES
 
 
 def process(command, app_list, language_list):
@@ -51,13 +40,18 @@ def process(command, app_list, language_list):
         print('Pushing translation files')
 
     if command in [compilemessages, makemessages]:
+        command_argument_locales = []
+        for language in language_list:
+            command_argument_locales.append('--locale')
+            command_argument_locales.append(language)
+
         for app in app_list:
             print('Processing app: %s...' % app)
             app_path = os.path.join(BASE_DIR, 'apps', app)
             os.chdir(app_path)
-            for lang in language_list:
-                print('Doing language: %s' % lang)
-                command(locale=lang)
+
+            print('Doing languages: {}'.format(', '.join(language_list)))
+            command(*command_argument_locales)
     elif command == pull_translations:
         for lang in language_list:
             print('Doing language: %s' % lang)
@@ -69,6 +63,28 @@ def process(command, app_list, language_list):
 
 
 if __name__ == '__main__':
+    APP_LIST = sorted(
+        [
+            name for name, app_config in apps.app_configs.items() if issubclass(type(app_config), MayanAppConfig)
+        ]
+    )
+
+    LANGUAGE_MAPPING = {
+        'de': 'de_DE',
+        'ro': 'ro_RO',
+        'tr': 'tr_TR',
+        'zh-hans': 'zh_Hans',
+    }
+    LANGUAGE_LIST = []
+
+    for language in dict(LANGUAGES).keys():
+        language = LANGUAGE_MAPPING.get(language, language)
+        if '-' in language:
+            elements = language.split('-')
+            language = '{}_{}' .format(elements[0], elements[1].upper())
+
+        LANGUAGE_LIST.append(language)
+
     parser = optparse.OptionParser()
     parser.add_option(
         '-m', '--make', help='create message sources file', dest='make',
