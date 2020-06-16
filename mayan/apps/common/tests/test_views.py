@@ -30,37 +30,3 @@ class CommonViewTestCase(CommonViewTestMixin, GenericViewTestCase):
     def test_about_view(self):
         response = self._request_about_view()
         self.assertContains(response=response, text='About', status_code=200)
-
-    def _create_error_log_entry(self):
-        ModelPermission.register(
-            model=get_user_model(), permissions=(permission_error_log_view,)
-        )
-        ErrorLogEntry.objects.register(model=get_user_model())
-
-        self.error_log_entry = self.test_user.error_logs.create(
-            result=TEST_ERROR_LOG_ENTRY_RESULT
-        )
-
-    def test_object_error_list_view_no_permissions(self):
-        self._create_test_user()
-        self._create_error_log_entry()
-
-        response = self._request_object_error_log_list()
-        self.assertNotContains(
-            response=response, text=TEST_ERROR_LOG_ENTRY_RESULT,
-            status_code=403
-        )
-
-    def test_object_error_list_view_with_access(self):
-        self._create_test_user()
-        self._create_error_log_entry()
-
-        self.grant_access(
-            obj=self.test_user, permission=permission_error_log_view
-        )
-
-        response = self._request_object_error_log_list()
-        self.assertContains(
-            response=response, text=TEST_ERROR_LOG_ENTRY_RESULT,
-            status_code=200
-        )

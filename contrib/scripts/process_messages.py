@@ -12,7 +12,7 @@ APP_LIST = (
     'django_gpg', 'document_comments', 'document_indexing',
     'document_parsing', 'document_signatures', 'document_states',
     'documents', 'dynamic_search', 'events', 'file_caching',
-    'file_metadata', 'linking', 'lock_manager', 'mailer',
+    'file_metadata', 'linking', 'lock_manager', 'logging', 'mailer',
     'mayan_statistics', 'metadata', 'mirroring', 'motd', 'navigation',
     'ocr', 'permissions', 'platform', 'quotas', 'rest_api', 'smart_settings',
     'sources', 'storage', 'tags', 'task_manager', 'templating',

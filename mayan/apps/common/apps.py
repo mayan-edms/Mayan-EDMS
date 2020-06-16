@@ -22,11 +22,11 @@ from .handlers import (
 )
 from .links import (
     link_about, link_book, link_current_user_locale_profile_edit, link_license,
-    link_object_error_list_clear, link_setup, link_support, link_tools
+    link_setup, link_support, link_tools
 )
 
 from .literals import MESSAGE_SQLITE_WARNING
-from .menus import menu_about, menu_secondary, menu_topbar, menu_user
+from .menus import menu_about, menu_topbar, menu_user
 from .patches import patchDjangoTranslation
 from .settings import (
     setting_logging_enable, setting_logging_handlers,
@@ -166,11 +166,6 @@ class CommonApp(MayanAppConfig):
         )
 
         menu_topbar.bind_links(links=(menu_about, menu_user,), position=99)
-        menu_secondary.bind_links(
-            links=(link_object_error_list_clear,), sources=(
-                'common:object_error_list',
-            )
-        )
 
         signal_pre_initial_setup.connect(
             dispatch_uid='common_handler_pre_initial_setup',

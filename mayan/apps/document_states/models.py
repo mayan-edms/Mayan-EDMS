@@ -27,7 +27,6 @@ from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.events.models import StoredEventType
 from mayan.apps.templating.classes import Template
 
-from .error_logs import error_log_state_actions
 from .events import event_workflow_created, event_workflow_edited
 from .literals import (
     FIELD_TYPE_CHOICES, STORAGE_NAME_WORKFLOW_CACHE, WIDGET_CLASS_CHOICES,
@@ -652,8 +651,8 @@ class WorkflowStateAction(models.Model):
             try:
                 self.get_class_instance().execute(context=context)
             except Exception as exception:
-                error_log_state_actions.create(
-                    obj=self, result='{}; {}'.format(
+                self.error_logs.create(
+                    text='{}; {}'.format(
                         exception.__class__.__name__, exception
                     )
                 )

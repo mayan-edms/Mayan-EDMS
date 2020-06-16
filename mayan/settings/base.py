@@ -84,6 +84,7 @@ INSTALLED_APPS = (
     'mayan.apps.events',
     'mayan.apps.file_caching',
     'mayan.apps.lock_manager',
+    'mayan.apps.logging',
     'mayan.apps.mimetype',
     'mayan.apps.navigation',
     'mayan.apps.permissions',

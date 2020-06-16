@@ -8,16 +8,16 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
     ModelField, ModelProperty, ModelReverseField
 )
-from mayan.apps.common.links import link_object_error_list
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_tools
 )
-from mayan.apps.common.permissions_runtime import permission_error_log_view
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
+from mayan.apps.logging.classes import ErrorLog
+from mayan.apps.logging.permissions import permission_error_log_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
@@ -79,9 +79,6 @@ class DocumentStatesApp(MayanAppConfig):
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
         )
-        ErrorLogEntry = apps.get_model(
-            app_label='common', model_name='ErrorLogEntry'
-        )
 
         Workflow = self.get_model('Workflow')
         WorkflowInstance = self.get_model('WorkflowInstance')
@@ -100,7 +97,8 @@ class DocumentStatesApp(MayanAppConfig):
             name='workflow', value=DocumentStateHelper.constructor
         )
 
-        ErrorLogEntry.objects.register(model=WorkflowStateAction)
+        error_log = ErrorLog(app_config=self)
+        error_log.register_model(model=WorkflowStateAction)
 
         EventModelRegistry.register(model=Workflow)
 
@@ -441,7 +439,6 @@ class DocumentStatesApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_workflow_template_state_action_edit,
-                link_object_error_list,
                 link_workflow_template_state_action_delete,
             ), sources=(WorkflowStateAction,)
         )

@@ -9,21 +9,8 @@ from .api_views import (
 from .views import (
     AboutView, CurrentUserLocaleProfileDetailsView,
     CurrentUserLocaleProfileEditView, FaviconRedirectView, HomeView,
-    LicenseView, ObjectErrorLogEntryListClearView, ObjectErrorLogEntryListView,
-    RootView, SetupListView, ToolsListView
+    LicenseView, RootView, SetupListView, ToolsListView
 )
-
-urlpatterns_error_logs = [
-    url(
-        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/errors/$',
-        name='object_error_list', view=ObjectErrorLogEntryListView.as_view()
-    ),
-    url(
-        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/errors/clear/$',
-        name='object_error_list_clear',
-        view=ObjectErrorLogEntryListClearView.as_view()
-    )
-]
 
 urlpatterns_user_locale = [
     url(
@@ -55,7 +42,6 @@ urlpatterns = [
     url(regex=r'^tools/$', name='tools_list', view=ToolsListView.as_view())
 ]
 
-urlpatterns.extend(urlpatterns_error_logs)
 urlpatterns.extend(urlpatterns_misc)
 urlpatterns.extend(urlpatterns_user_locale)
 

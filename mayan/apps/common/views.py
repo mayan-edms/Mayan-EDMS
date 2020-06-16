@@ -1,24 +1,17 @@
 from django.conf import settings
-from django.contrib import messages
-from django.contrib.contenttypes.models import ContentType
-from django.shortcuts import get_object_or_404
 from django.templatetags.static import static
 from django.urls import reverse_lazy
 from django.utils import timezone, translation
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
 
-from mayan.apps.acls.models import AccessControlList
-from mayan.apps.views.generics import (
-    ConfirmView, SingleObjectEditView, SingleObjectListView, SimpleView
-)
+from mayan.apps.views.generics import SingleObjectEditView, SimpleView
 
 from .forms import (
     LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
 )
-from .icons import icon_object_errors, icon_setup
+from .icons import icon_setup
 from .menus import menu_tools, menu_setup
-from .permissions_runtime import permission_error_log_view
 from .settings import setting_home_view
 
 
@@ -103,76 +96,6 @@ class LicenseView(SimpleView):
         'title': _('License'),
     }
     template_name = 'appearance/generic_form.html'
-
-
-class ObjectErrorLogEntryListClearView(ConfirmView):
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Clear error log entries for: %s' % self.get_object()),
-        }
-
-    def get_object(self):
-        content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model']
-        )
-
-        return get_object_or_404(
-            klass=content_type.model_class(),
-            pk=self.kwargs['object_id']
-        )
-
-    def view_action(self):
-        self.get_object().error_logs.all().delete()
-        messages.success(
-            message=_('Object error log cleared successfully'),
-            request=self.request
-        )
-
-
-class ObjectErrorLogEntryListView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_object(), permissions=(permission_error_log_view,),
-            user=request.user
-        )
-
-        return super(ObjectErrorLogEntryListView, self).dispatch(
-            request, *args, **kwargs
-        )
-
-    def get_extra_context(self):
-        return {
-            'extra_columns': (
-                {'name': _('Date and time'), 'attribute': 'datetime'},
-                {'name': _('Result'), 'attribute': 'result'},
-            ),
-            'hide_object': True,
-            'no_results_icon': icon_object_errors,
-            'no_results_text': _(
-                'This view displays the error log of different object. '
-                'An empty list is a good thing.'
-            ),
-            'no_results_title': _(
-                'There are no error log entries'
-            ),
-            'object': self.get_object(),
-            'title': _('Error log entries for: %s' % self.get_object()),
-        }
-
-    def get_object(self):
-        content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model_name']
-        )
-
-        return get_object_or_404(
-            klass=content_type.model_class(), pk=self.kwargs['object_id']
-        )
-
-    def get_source_queryset(self):
-        return self.get_object().error_logs.all()
 
 
 class RootView(SimpleView):

@@ -1,13 +1,6 @@
 from django.contrib import admin
 
-from .models import ErrorLogEntry, UserLocaleProfile
-
-
-@admin.register(ErrorLogEntry)
-class ErrorLogEntryAdmin(admin.ModelAdmin):
-    date_hierarchy = 'datetime'
-    list_display = ('namespace', 'content_object', 'datetime', 'result')
-    readonly_fields = list_display
+from .models import UserLocaleProfile
 
 
 @admin.register(UserLocaleProfile)

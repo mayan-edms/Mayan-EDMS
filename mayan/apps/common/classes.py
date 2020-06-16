@@ -1,6 +1,5 @@
 import hashlib
 
-from django.apps import apps
 from django.core.exceptions import ImproperlyConfigured
 from django.db import models
 from django.template.response import TemplateResponse
@@ -9,25 +8,6 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from .settings import setting_home_view
-
-
-class ErrorLogNamespace:
-    def __init__(self, name, label=None):
-        self.name = name
-        self.label = label or name
-
-    def __str__(self):
-        return force_text(self.label)
-
-    def all(self):
-        ErrorLogEntry = apps.get_model(
-            app_label='common', model_name='ErrorLogEntry'
-        )
-
-        return ErrorLogEntry.objects.filter(namespace=self.name)
-
-    def create(self, obj, result):
-        obj.error_logs.create(namespace=self.name, result=result)
 
 
 class MissingItem:
@@ -307,6 +287,7 @@ class ModelQueryFields:
             queryset = queryset.prefetch_related(*self.prefetch_related_fields)
 
         return queryset
+
 
 ModelAttribute.register(klass=ModelProperty)
 ModelAttribute.register(klass=ModelField)

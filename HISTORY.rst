@@ -107,6 +107,8 @@
 - Add the ModelQueryFields class to allow programmatic setting
   of a model's select_related and prefetch_related fields.
   Optimize the most common queries and views to use ModelQueryFields.
+- Move model error logging from the common to the new logging app.
+- Generalize the model error logging code.
 
 3.4.9 (2020-05-26)
 ==================
