@@ -104,12 +104,13 @@ apt-get install -y --no-install-recommends \
     libpng-dev \
     libpq-dev \
     libtiff-dev \
-    zlib1g-dev \
     libssl-dev \
     g++ \
     gcc \
+    make \
     python3-dev \
     python3-venv \
+    zlib1g-dev \
 && mkdir -p "${PROJECT_INSTALL_DIR}" \
 && chown -R mayan:mayan "${PROJECT_INSTALL_DIR}" \
 && chown -R mayan:mayan /src
@@ -136,8 +137,9 @@ RUN set -a \
 && pip install --no-cache-dir -r /src/requirements/build.txt \
 # Build Mayan EDMS
 && python3 setup.py sdist \
+&& pip wheel --no-index --no-deps --wheel-dir dist dist/mayan-edms-*.tar.gz \
 # Install the built Mayan EDMS package
-&& pip install --no-cache-dir dist/mayan* \
+&& pip install --no-cache-dir dist/mayan_edms-*.whl \
 # Install the static content
 && mayan-edms.py installdependencies \
 && MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}/static mayan-edms.py preparestatic --link --noinput
@@ -169,6 +171,6 @@ RUN ${PROJECT_INSTALL_DIR}/bin/mayan-edms.py platformtemplate supervisord_docker
 && rm -rf /var/lib/apt/lists/* \
 && rm -f /var/cache/apt/archives/*.deb \
 # Remove temporary files owned by root from the platformtemplate step
-&& rm /tmp/* \
+&& rm -f /tmp/* \
 # Keep displaying log messages to stdout
 && find /var/log -type f | while read f; do echo -ne '' > $f; done;
