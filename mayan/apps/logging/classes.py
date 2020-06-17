@@ -1,6 +1,5 @@
 from django.apps import apps
 from django.db.models.signals import pre_delete
-from django.utils.functional import cached_property
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.menus import menu_list_facet
@@ -26,7 +25,7 @@ class ErrorLog:
     def __str__(self):
         return str(self.app_config.verbose_name)
 
-    @cached_property
+    @property
     def model(self):
         ErrorLogModel = apps.get_model(
             app_label='logging', model_name='ErrorLog'
