@@ -2,29 +2,35 @@
 ================
 - Update dependencies versions:
 
-    - celery from 4.3.0 to 4.4.2
+    - celery from 4.3.0 to 4.4.5
+    - chart.js from 2.7.2 to 2.7.3
     - coverage from 5.0.4 to 5.1
     - coveralls from 1.11.1 to 2.0.0
     - drf-yasg from 1.6.0 to 1.17.1
+    - django from 2.2.12 to 2.2.13
     - djangorestframework from 3.7.7 to 3.11.0
     - django-cors-headers from 2.5.2 to 3.2.1
     - django-extensions from 2.2.8 to 2.2.9
     - django-rosetta from 0.9.3 to 0.9.4
+    - flake8 from 3.7.9 to 3.8.3
     - flex from 6.14.0 to 6.14.1
     - gevent from 1.4.0 to 20.4.0
     - graphviz from 0.13.2 to 0.14
+    - ipython from 7.13.0 to 7.15.0
     - kombu from 4.6.7 to 4.6.8
     - pyocr from 0.6 to 0.7.2
     - python_gnupg from 0.4.5 to 0.4.6
     - pytz from 2019.1 to 2020.1
     - Sphinx from 2.4.4 to 3.0.3
     - safety from 1.8.7 to 1.9.0
+    - select2 from 4.0.3 to 4.0.13
     - sh from 1.12.14 to 1.13.1
     - sphinxcontrib-spelling from 4.3.0 to 5.0.0
     - swagger-spec-validator from 2.4.3 to 2.5.0
-    - transifex-client from 0.13.8 to 0.13.9
+    - transifex-client from 0.13.8 to 0.13.10
     - tox from 3.14.5 to 3.14.6
 
+- Remove kombu dependency. This is automatically installed by Celery.
 - Remove explicit Python 3 checks and conditional code.
 - Remove conditional assignment of FileNotFoundErrorException.
   Use Python 3's FileNotFoundError.

@@ -51,7 +51,7 @@ JavaScriptDependency(
 )
 JavaScriptDependency(
     label=_('Select 2'), module=__name__, name='select2',
-    version_string='=4.0.3'
+    version_string='=4.0.13'
 )
 JavaScriptDependency(
     label=_('Toastr'), module=__name__, name='toastr', version_string='=2.1.4'

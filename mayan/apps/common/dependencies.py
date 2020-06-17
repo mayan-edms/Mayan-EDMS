@@ -34,7 +34,7 @@ PythonDependency(
         ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django', version_string='==2.2.12'
+    ''', module=__name__, name='django', version_string='==2.2.13'
 )
 PythonDependency(
     copyright_text='''
@@ -202,12 +202,12 @@ PythonDependency(
 PythonDependency(
     environment=environment_development, help_text=_(
         'Provides style checking.'
-    ), module=__name__, name='flake8', version_string='==3.7.9'
+    ), module=__name__, name='flake8', version_string='==3.8.3'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
         'Command line environment with autocompletion.'
-    ), module=__name__, name='ipython', version_string='==7.13.0'
+    ), module=__name__, name='ipython', version_string='==7.15.0'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
@@ -220,7 +220,7 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_development,
-    module=__name__, name='transifex-client', version_string='==0.13.9'
+    module=__name__, name='transifex-client', version_string='==0.13.10'
 )
 
 # Build

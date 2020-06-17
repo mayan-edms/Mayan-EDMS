@@ -2,7 +2,7 @@ Pillow==7.1.2
 PyPDF2==1.26.0
 PyYAML==5.3.1
 Whoosh==2.7.4
-celery==4.4.2
+celery==4.4.5
 django-activity-stream==0.8.0
 django-celery-beat==2.0.0
 django-colorful==1.3
@@ -27,7 +27,6 @@ fusepy==3.0.1
 gevent==20.4.0
 graphviz==0.14
 gunicorn==20.0.4
-kombu==4.6.8
 mock==4.0.2
 node-semver==0.8.0
 packaging==20.3
