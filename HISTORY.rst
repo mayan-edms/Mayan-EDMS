@@ -71,15 +71,15 @@
   and uniformity.
 
   The ``COMMON_AUTO_LOGGING`` and ``COMMON_PRODUCTION_ERROR_LOGGING``
-  have been merged into ``COMMON_LOGGING_ENABLE``.
+  have been merged into ``LOGGING_ENABLE``.
 
   ``COMMON_PRODUCTION_ERROR_LOG_PATH`` is now
-  ``COMMON_LOGGING_LOG_FILE_PATH`` and continues to default to the
+  ``LOGGING_LOG_FILE_PATH`` and continues to default to the
   ``MEDIA_ROOT/error.log`` path.
 
-  The new setting ``COMMON_LOGGING_LEVEL`` controls the log level.
+  The new setting ``LOGGING_LEVEL`` controls the log level.
 
-  A second new setting named ``COMMON_LOGGING_HANDLERS`` controls
+  A second new setting named ``LOGGING_HANDLERS`` controls
   the list of output log handlers. It defaults to ``console`` but also
   supports a second one named ``logfile``. The ``logfile`` handler
   is the same one that previously enabled when setting the setting

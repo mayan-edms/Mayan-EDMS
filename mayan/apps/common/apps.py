@@ -1,5 +1,4 @@
 import logging
-from pathlib import Path
 import sys
 import traceback
 import warnings
@@ -11,9 +10,10 @@ from django.contrib import admin
 from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
 from django.utils.encoding import force_text
-from django.utils.log import DEFAULT_LOGGING
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
+
+from mayan.apps.logging.mixins import AppConfigLoggingMixin
 
 from .classes import Template
 from .handlers import (
@@ -28,11 +28,7 @@ from .links import (
 from .literals import MESSAGE_SQLITE_WARNING
 from .menus import menu_about, menu_topbar, menu_user
 from .patches import patchDjangoTranslation
-from .settings import (
-    setting_logging_enable, setting_logging_handlers,
-    setting_logging_level, setting_logging_log_file_path,
-    setting_url_base_path
-)
+from .settings import setting_url_base_path
 
 from .signals import signal_pre_initial_setup, signal_pre_upgrade
 from .utils import check_for_sqlite
@@ -125,7 +121,7 @@ class MayanAppConfig(apps.AppConfig):
             )
 
 
-class CommonApp(MayanAppConfig):
+class CommonApp(AppConfigLoggingMixin, MayanAppConfig):
     app_namespace = 'common'
     app_url = ''
     has_rest_api = True
@@ -134,7 +130,7 @@ class CommonApp(MayanAppConfig):
     verbose_name = _('Common')
 
     def ready(self):
-        super(CommonApp, self).ready()
+        super().ready()
         patchDjangoTranslation()
 
         admin.autodiscover()
@@ -185,69 +181,3 @@ class CommonApp(MayanAppConfig):
             dispatch_uid='common_handler_user_locale_profile_session_config',
             receiver=handler_user_locale_profile_session_config
         )
-        self.setup_auto_logging()
-
-    def setup_auto_logging(self):
-        if setting_logging_enable.value:
-            logging_configuration = DEFAULT_LOGGING.copy()
-
-            logging_configuration.update(
-                {
-                    'version': 1,
-                    'disable_existing_loggers': False,
-                    'formatters': {
-                        'mayan_intermediate': {
-                            '()': 'mayan.apps.common.formatters.ColorFormatter',
-                            'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"',
-                        },
-                        'mayan_logfile': {
-                            'format': '%(asctime)s %(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
-                        },
-                    },
-                    'handlers': {
-                        'console': {
-                            'class': 'logging.StreamHandler',
-                            'formatter': 'mayan_intermediate',
-                            'level': 'DEBUG',
-                        },
-                    }
-                }
-            )
-
-            # Convert to list so it is mutable
-            handlers = list(setting_logging_handlers.value)
-
-            if 'logfile' in handlers:
-                path = Path(setting_logging_log_file_path.value)
-                try:
-                    path.touch()
-                except (FileNotFoundError, PermissionError):
-                    # The path's folder do not exists or we lack
-                    # permission to write the log file.
-                    handlers.remove('logfile')
-                else:
-                    logging_configuration['handlers']['logfile'] = {
-                        'backupCount': 5,
-                        'class': 'logging.handlers.RotatingFileHandler',
-                        'filename': setting_logging_log_file_path.value,
-                        'formatter': 'mayan_logfile',
-                        'maxBytes': 65535,
-                    }
-
-            loggers = {}
-
-            # Django loggers
-            for key, value in logging_configuration['loggers'].items():
-                value['level'] = setting_logging_level.value
-
-            # Mayan apps loggers
-            for project_app in apps.apps.get_app_configs():
-                loggers[project_app.name] = {
-                    'handlers': handlers,
-                    'propagate': True,
-                    'level': setting_logging_level.value,
-                }
-
-            logging_configuration['loggers'] = loggers
-
-            logging.config.dictConfig(config=logging_configuration)
