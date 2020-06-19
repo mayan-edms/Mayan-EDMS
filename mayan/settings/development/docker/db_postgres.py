@@ -2,11 +2,10 @@ from .base import *  # NOQA
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': '127.0.0.1',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'HOST': 'localhost',
-        'PASSWORD': 'mayanuserpass',
-        'PORT': '5432',
+        'PASSWORD': 'postgres',
     }
 }

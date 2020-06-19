@@ -146,6 +146,46 @@ docker-staging-cleanup: ## Delete the test container and the test volume.
 	@docker volume rm mayan-staging-redis || true
 	@docker network rm mayan-staging || true
 
+docker-development-container-redis-start:
+	docker run \
+	-d \
+	--name mayan-development-redis \
+	--publish 6379:6379 \
+	-v mayan-development-redis:/data \
+	$(DOCKER_REDIS_IMAGE_VERSION) \
+	redis-server \
+	--databases \
+	"2" \
+	--maxmemory-policy \
+	allkeys-lru \
+	--save \
+	"" \
+
+docker-development-container-rabbitmq-start:
+	docker run \
+	-d \
+	--name mayan-development-rabbitmq \
+	--publish 5672:5672 \
+	-v mayan-development-rabbitmq:/var/lib/rabbitmq \
+	$(DOCKER_RABBITMQ_IMAGE_VERSION) \
+
+docker-development-container-postgresql-start:
+	docker run \
+	-d \
+	--name mayan-development-postgres \
+	--publish 5432:5432 \
+	-e POSTGRES_PASSWORD=postgres \
+	-v mayan-development-postgres:/var/lib/postgresql/data \
+	$(DOCKER_POSTGRES_IMAGE_VERSION)
+
+docker-development-cleanup: ## Delete the test container and the test volume.
+	@docker rm -f mayan-development-postgres || true
+	@docker rm -f mayan-development-rabbitmq || true
+	@docker rm -f mayan-development-redis || true
+	@docker volume rm mayan-development-postgres || true
+	@docker volume rm mayan-development-rabbitmq || true
+	@docker volume rm mayan-development-redis || true
+
 devpi-init:
 	@if [ -z "$$(pip list | grep devpi-server)" ]; then echo "devpi-server not installed"; exit 1;fi
 	devpi-server --init || true
