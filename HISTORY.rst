@@ -120,6 +120,10 @@
 - Improve the logging in the sources app.
 - Raise error if the watch folder doesn't exists or is not a directory.
 - Support setting a limit of error log entries.
+- Refactor the OCR process to use Celery canvas.
+- Increase atomicity of the OCR process. GitLab issue #209.
+- Disable Tesseract multithreading to speed up processing when running
+  multiple instances at the same time.
 
 3.4.9 (2020-05-26)
 ==================

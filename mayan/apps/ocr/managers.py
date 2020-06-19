@@ -1,19 +1,10 @@
 import logging
-import sys
-import traceback
 
 from django.apps import apps
-from django.conf import settings
 from django.db import models, transaction
 
-from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
-from mayan.apps.documents.tasks import task_generate_document_page_image
-
 from .classes import OCRBackendBase
-from .events import (
-    event_ocr_document_content_deleted, event_ocr_document_version_finish
-)
-from .signals import signal_post_document_version_ocr
+from .events import event_ocr_document_content_deleted
 
 logger = logging.getLogger(name=__name__)
 
@@ -28,7 +19,7 @@ class DocumentPageOCRContentManager(models.Manager):
                 actor=user, target=document
             )
 
-    def process_document_page(self, document_page):
+    def process_document_page(self, cache_filename, document_page):
         logger.info(
             'Processing page: %d of document version: %s',
             document_page.page_number, document_page.document_version
@@ -38,73 +29,28 @@ class DocumentPageOCRContentManager(models.Manager):
             app_label='ocr', model_name='DocumentPageOCRContent'
         )
 
-        task = task_generate_document_page_image.apply_async(
-            kwargs=dict(
-                document_page_id=document_page.pk
-            )
-        )
-
-        cache_filename = task.get(
-            timeout=DOCUMENT_IMAGE_TASK_TIMEOUT, disable_sync_subtasks=False
-        )
-
-        with document_page.cache_partition.get_file(filename=cache_filename).open() as file_object:
-            ocr_content = OCRBackendBase.get_instance().execute(
-                file_object=file_object,
-                language=document_page.document.language
-            )
-            DocumentPageOCRContent.objects.update_or_create(
-                document_page=document_page, defaults={
-                    'content': ocr_content
-                }
-            )
-
-        logger.info(
-            'Finished processing page: %d of document version: %s',
-            document_page.page_number, document_page.document_version
-        )
-
-    def process_document_version(self, document_version):
-        logger.info('Starting OCR for document version: %s', document_version)
-        logger.debug('document version: %d', document_version.pk)
-
         try:
-            for document_page in document_version.pages.all():
-                self.process_document_page(document_page=document_page)
-
-            logger.info(
-                'OCR complete for document version: %s', document_version
-            )
-            document_version.ocr_errors.all().delete()
-
-            with transaction.atomic():
-                event_ocr_document_version_finish.commit(
-                    action_object=document_version.document,
-                    target=document_version
+            with document_page.cache_partition.get_file(filename=cache_filename).open() as file_object:
+                ocr_content = OCRBackendBase.get_instance().execute(
+                    file_object=file_object,
+                    language=document_page.document.language
                 )
-
-                transaction.on_commit(
-                    lambda: signal_post_document_version_ocr.send(
-                        sender=document_version.__class__,
-                        instance=document_version
-                    )
+                DocumentPageOCRContent.objects.update_or_create(
+                    document_page=document_page, defaults={
+                        'content': ocr_content
+                    }
                 )
         except Exception as exception:
             logger.error(
-                'OCR error for document version: %d; %s', document_version.pk,
+                'OCR error for document page: %d; %s', document_page.pk,
                 exception
             )
-
-            if settings.DEBUG:
-                result = []
-                type, value, tb = sys.exc_info()
-                result.append('%s: %s' % (type.__name__, value))
-                result.extend(traceback.format_tb(tb))
-                document_version.ocr_errors.create(
-                    result='\n'.join(result)
-                )
-            else:
-                document_version.ocr_errors.create(result=exception)
+            raise
+        else:
+            logger.info(
+                'Finished processing page: %d of document version: %s',
+                document_page.page_number, document_page.document_version
+            )
 
 
 class DocumentTypeSettingsManager(models.Manager):

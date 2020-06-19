@@ -49,6 +49,8 @@ class Tesseract(OCRBackendBase):
                 if self.language:
                     keyword_arguments['l'] = self.language
 
+                keyword_arguments['_env'] = {'OMP_THREAD_LIMIT': '1'}
+
                 try:
 
                     result = self.command_tesseract(
