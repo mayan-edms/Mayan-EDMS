@@ -1,4 +1,3 @@
-
 class DocumentOCRViewTestMixin:
     def _request_document_content_view(self):
         return self.get(
@@ -48,5 +47,30 @@ class DocumentTypeOCRViewTestMixin:
         return self.get(
             viewname='ocr:document_type_ocr_settings', kwargs={
                 'document_type_id': self.test_document_type.pk
+            }
+        )
+
+
+class OCRAPIViewTestMixin:
+    def _request_document_ocr_submit_view(self):
+        return self.post(
+            viewname='rest_api:document-ocr-submit-view',
+            kwargs={'pk': self.test_document.pk}
+        )
+
+    def _request_document_version_ocr_submit_view(self):
+        return self.post(
+            viewname='rest_api:document-version-ocr-submit-view', kwargs={
+                'document_pk': self.test_document.pk,
+                'version_pk': self.test_document.latest_version.pk
+            }
+        )
+
+    def _request_document_page_content_view(self):
+        return self.get(
+            viewname='rest_api:document-page-ocr-content-view', kwargs={
+                'document_pk': self.test_document.pk,
+                'version_pk': self.test_document.latest_version.pk,
+                'page_pk': self.test_document.latest_version.pages.first().pk,
             }
         )
