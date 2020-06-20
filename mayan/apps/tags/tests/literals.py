@@ -9,15 +9,14 @@ TEST_TAG_INDEX_HAS_TAG = 'HAS_TAG'
 TEST_TAG_INDEX_NO_TAG = 'NO_TAG'
 TEST_TAG_INDEX_NODE_TEMPLATE = '''
 {{% for tag in document.tags.all %}}
-{{% if tag.label == "{}" %}}
-{}
+{{% if tag.label == "{tag_label}" %}}
+{has_tag}
 {{% else %}}
-NO_TAG
+{no_tag}
 {{% endif %}}
 {{% empty %}}
-NO_TAG
+{no_tag}
 {{% endfor %}}
 '''.format(
-    TEST_TAG_LABEL, TEST_TAG_INDEX_HAS_TAG, TEST_TAG_INDEX_NO_TAG,
-    TEST_TAG_INDEX_NO_TAG
+    tag_label=TEST_TAG_LABEL, has_tag=TEST_TAG_INDEX_HAS_TAG, no_tag=TEST_TAG_INDEX_NO_TAG,
 ).replace('\n', '')
