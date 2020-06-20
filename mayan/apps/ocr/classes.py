@@ -12,6 +12,10 @@ class OCRBackendBase:
             dotted_path=setting_ocr_backend.value
         )(**setting_ocr_backend_arguments.value)
 
+    def __init__(self, *args, **kwargs):
+        self.args = args
+        self.kwargs = kwargs
+
     def execute(self, file_object, language=None, transformations=None):
         self.language = language
 

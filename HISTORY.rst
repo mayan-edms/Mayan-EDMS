@@ -134,6 +134,7 @@
 - Remove the noopocr.NoOpOCR OCR backend.
 - Remove the pyocr OCR backend.
 - Move the ErrorLoggingMiddleware from the common app to the logging app.
+- Allow passing environment entries to the Tesseract OCR backend.
 
 3.4.9 (2020-05-26)
 ==================
