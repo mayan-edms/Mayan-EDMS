@@ -125,7 +125,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE = (
-    'mayan.apps.common.middleware.error_logging.ErrorLoggingMiddleware',
+    'mayan.apps.logging.middleware.error_logging.ErrorLoggingMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
