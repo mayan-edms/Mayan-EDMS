@@ -1,6 +1,7 @@
 import logging
 
 from django.contrib import messages
+from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
@@ -13,6 +14,7 @@ from mayan.apps.views.literals import LIST_MODE_CHOICE_ITEM
 from .classes import SearchBackend, SearchModel
 from .forms import SearchForm, AdvancedSearchForm
 from .icons import icon_search_submit
+from .links import link_search_again
 from .mixins import SearchModelMixin
 from .permissions import permission_search_tools
 from .tasks import task_index_search_model
@@ -25,6 +27,13 @@ class ResultsView(SearchModelMixin, SingleObjectListView):
         context = {
             'hide_object': True,
             'no_results_icon': icon_search_submit,
+            'no_results_main_link': link_search_again.resolve(
+                context=RequestContext(
+                    request=self.request, dict_={
+                        'search_model': self.search_model
+                    }
+                )
+            ),
             'no_results_text': _(
                 'Try again using different terms. '
             ),
@@ -60,8 +69,15 @@ class ResultsView(SearchModelMixin, SingleObjectListView):
 
 
 class SearchAgainView(RedirectView):
-    pattern_name = 'search:search_advanced'
     query_string = True
+
+    def get_redirect_url(self, *args, **kwargs):
+        if ('q' in self.request.GET) and self.request.GET['q'].strip():
+            self.pattern_name = 'search:search'
+        else:
+            self.pattern_name = 'search:search_advanced'
+
+        return super().get_redirect_url(*args, **kwargs)
 
 
 class SearchBackendReindexView(ConfirmView):

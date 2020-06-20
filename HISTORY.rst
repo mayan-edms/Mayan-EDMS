@@ -124,6 +124,13 @@
 - Increase atomicity of the OCR process. GitLab issue #209.
 - Disable Tesseract multithreading to speed up processing when running
   multiple instances at the same time.
+- Search improvements:
+
+  - Icons for the search, advanced search and search again links.
+  - Display the search again links on empty results.
+  - The search again link redirects to the same search form used instead to
+    always redirect to the advanced form.
+
 
 3.4.9 (2020-05-26)
 ==================
