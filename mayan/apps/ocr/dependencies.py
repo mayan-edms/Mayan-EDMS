@@ -23,15 +23,3 @@ BinaryDependency(
     ''', help_text=_('Free Open Source OCR Engine'), label='Tesseract',
     module=__name__, name='tesseract', path=tesseract.tesseract_binary_path
 )
-
-PythonDependency(
-    copyright_text='''
-        PyOCR is released under the GPL v3+.
-        Copyright belongs to the authors of each piece of code
-        (see the file AUTHORS for the contributors list, and
-        git blame to know which lines belong to which author).
-    ''', help_text=_(
-        'PyOCR is a Python library simplifying the use of OCR tools like '
-        'Tesseract or Cuneiform.'
-    ), module=__name__, name='pyocr', version_string='==0.7.2'
-)

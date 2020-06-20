@@ -6,7 +6,7 @@ from .setting_migrations import OCRSettingMigration
 
 namespace = SettingNamespace(
     label=_('OCR'), migration_class=OCRSettingMigration, name='ocr',
-    version='0002'
+    version='0003'
 )
 
 setting_ocr_backend = namespace.add_setting(

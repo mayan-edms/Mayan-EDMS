@@ -14,4 +14,5 @@ django-timezone-field
 librabbitmq
 pathlib2
 pdfminer
+pyocr
 pytesseract

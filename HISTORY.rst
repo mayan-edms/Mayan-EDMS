@@ -132,6 +132,7 @@
     always redirect to the advanced form.
 
 - Remove the noopocr.NoOpOCR OCR backend.
+- Remove the pyocr OCR backend.
 
 3.4.9 (2020-05-26)
 ==================
