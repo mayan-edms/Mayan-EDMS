@@ -58,6 +58,31 @@ def get_cascade_condition(
     return condition
 
 
+def get_content_type_kwargs_factory(variable_name, result_map=None):
+    if not result_map:
+        result_map = {
+            'app_label': 'app_label',
+            'model_name': 'model_name',
+            'object_id': 'object_id'
+        }
+
+    def get_kwargs(context):
+        ContentType = apps.get_model(
+            app_label='contenttypes', model_name='ContentType'
+        )
+
+        content_type = ContentType.objects.get_for_model(
+            context[variable_name]
+        )
+        return {
+            result_map['app_label']: '"{}"'.format(content_type.app_label),
+            result_map['model_name']: '"{}"'.format(content_type.model),
+            result_map['object_id']: '{}.pk'.format(variable_name)
+        }
+
+    return get_kwargs
+
+
 def get_current_view_name(request):
     current_path = request.META['PATH_INFO']
 

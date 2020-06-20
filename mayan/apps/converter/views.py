@@ -24,10 +24,6 @@ logger = logging.getLogger(name=__name__)
 class TransformationCreateView(
     LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectCreateView
 ):
-    content_type_url_kw_args = {
-        'app_label': 'app_label',
-        'model_name': 'model_name'
-    }
     form_class = LayerTransformationForm
 
     def form_valid(self, form):
@@ -203,11 +199,6 @@ class TransformationEditView(LayerViewMixin, SingleObjectEditView):
 class TransformationListView(
     LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectListView
 ):
-    content_type_url_kw_args = {
-        'app_label': 'app_label',
-        'model_name': 'model_name'
-    }
-
     def get_external_object_permission(self):
         return self.layer.get_permission(action='view')
 
@@ -245,10 +236,6 @@ class TransformationListView(
 class TransformationSelectView(
     LayerViewMixin, ExternalContentTypeObjectMixin, FormView
 ):
-    content_type_url_kw_args = {
-        'app_label': 'app_label',
-        'model_name': 'model_name'
-    }
     form_class = LayerTransformationSelectForm
     template_name = 'appearance/generic_form.html'
 

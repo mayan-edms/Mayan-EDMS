@@ -28,7 +28,7 @@ class ContentTypeViewMixin:
     """
     content_type_url_kw_args = {
         'app_label': 'app_label',
-        'model_name': 'model'
+        'model_name': 'model_name'
     }
 
     def get_content_type(self):

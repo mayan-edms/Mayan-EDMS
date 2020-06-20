@@ -1,4 +1,3 @@
-from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
@@ -9,25 +8,6 @@ from .icons import (
     icon_forum, icon_license, icon_setup, icon_source_code, icon_support,
     icon_tools
 )
-
-
-def get_kwargs_factory(variable_name):
-    def get_kwargs(context):
-        ContentType = apps.get_model(
-            app_label='contenttypes', model_name='ContentType'
-        )
-
-        content_type = ContentType.objects.get_for_model(
-            model=context[variable_name]
-        )
-        return {
-            'app_label': '"{}"'.format(content_type.app_label),
-            'model_name': '"{}"'.format(content_type.model),
-            'object_id': '{}.pk'.format(variable_name)
-        }
-
-    return get_kwargs
-
 
 link_about = Link(
     icon_class=icon_about, text=_('About this'), view='common:about_view'

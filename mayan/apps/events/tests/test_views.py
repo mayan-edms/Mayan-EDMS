@@ -29,7 +29,7 @@ class EventsViewTestCase(EventsViewTestMixin, GenericDocumentViewTestCase):
 
         self.view_arguments = {
             'app_label': content_type.app_label,
-            'model': content_type.model,
+            'model_name': content_type.model,
             'object_id': self.test_object.pk
         }
 

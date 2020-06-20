@@ -15,7 +15,7 @@ from .views import (
 urlpatterns_events = [
     url(regex=r'^events/$', name='events_list', view=EventListView.as_view()),
     url(
-        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/events/$',
+        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/events/$',
         name='events_for_object', view=ObjectEventListView.as_view()
     ),
     url(
@@ -51,7 +51,7 @@ urlpatterns_subscriptions = [
         view=EventTypeSubscriptionListView.as_view()
     ),
     url(
-        regex=r'^user/object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/subscriptions/$',
+        regex=r'^user/object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/subscriptions/$',
         name='object_event_types_user_subcriptions_list',
         view=ObjectEventTypeSubscriptionListView.as_view()
     ),

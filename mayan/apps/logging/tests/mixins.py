@@ -34,7 +34,7 @@ class LoggingViewTestMixin:
         return self.get(
             viewname='logging:object_error_list', kwargs={
                 'app_label': content_type.app_label,
-                'model': content_type.model,
+                'model_name': content_type.model,
                 'object_id': self.test_object.pk
             }
         )
@@ -47,7 +47,7 @@ class LoggingViewTestMixin:
         return self.post(
             viewname='logging:object_error_list_clear', kwargs={
                 'app_label': content_type.app_label,
-                'model': content_type.model,
+                'model_name': content_type.model,
                 'object_id': self.test_object.pk
             }
         )
