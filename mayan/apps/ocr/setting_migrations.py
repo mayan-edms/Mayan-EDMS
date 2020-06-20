@@ -16,5 +16,3 @@ class OCRSettingMigration(SettingNamespaceMigration):
         but YAML valid too. Changed in version 3.3.
         """
         return smart_yaml_load(value=value)
-
-
