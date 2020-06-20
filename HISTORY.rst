@@ -131,6 +131,7 @@
   - The search again link redirects to the same search form used instead to
     always redirect to the advanced form.
 
+- Remove the noopocr.NoOpOCR OCR backend.
 
 3.4.9 (2020-05-26)
 ==================
