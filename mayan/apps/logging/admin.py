@@ -1,17 +1,8 @@
 from django.contrib import admin
 
+from mayan.apps.common.admin_mixins import ReadOnlyAdminMixin
+
 from .models import ErrorLog, ErrorLogPartition, ErrorLogPartitionEntry
-
-
-class ReadOnlyAdminMixin:
-    def has_add_permission(self, request, obj=None):
-        return False
-
-    def has_change_permission(self, request, obj=None):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
-        return False
 
 
 class ErrorLogPartitionEntryInline(admin.TabularInline):
