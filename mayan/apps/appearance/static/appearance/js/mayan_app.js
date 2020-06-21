@@ -48,24 +48,24 @@ class MayanApp {
     }
 
     static setupNavBarState () {
-        $('body').on('click', '.a-main-menu-accordion-link', function (event) {
-            $('.a-main-menu-accordion-link').each(function (index, value) {
-                $(this).parent().removeClass('active');
+        $('body').on('click', '#accordion-sidebar a', function (event) {
+            $('#accordion-sidebar a').each(function (index, value) {
+                $(this).parents('li').removeClass('active');
             });
 
-            $(this).parent().addClass('active');
+            $(this).parents('li').addClass('active');
         });
     }
 
     static updateNavbarState () {
         var uri = new URI(window.location.hash);
         var uriFragment = uri.fragment();
-        $('.a-main-menu-accordion-link').each(function (index, value) {
+        $('#accordion-sidebar a').each(function (index, value) {
             if (value.pathname === uriFragment) {
                 var $this = $(this);
 
                 $this.closest('.collapse').addClass('in').parent().find('.collapsed').removeClass('collapsed').attr('aria-expanded', 'true');
-                $this.parent().addClass('active');
+                $this.parents('li').addClass('active');
             }
         });
     }

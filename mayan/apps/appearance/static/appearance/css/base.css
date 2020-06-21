@@ -550,6 +550,11 @@ a i {
 }
 
 #accordion-sidebar a {
+    outline: none;
+}
+
+#accordion-sidebar > .panel > div > div > ul > li > a,
+#accordion-sidebar > .panel > div > h4 > a {
     text-decoration: none;
     outline: none;
     position: relative;
@@ -564,14 +569,16 @@ a i {
 
 #accordion-sidebar .panel-heading:hover {
     background-color: #517394;
-}
-
-#accordion-sidebar > .panel > div > .panel-body > ul > li > a:hover {
-    background-color: #517394;
+    transition: .1s ease;
 }
 
 #accordion-sidebar > .panel > div > .panel-body > ul > li.active {
    background: #1a242f;
+}
+
+#accordion-sidebar > .panel > div > .panel-body > ul > li:hover {
+    background-color: #517394;
+    transition: .1s ease;
 }
 
 #accordion-sidebar .panel-title {
@@ -582,20 +589,24 @@ a i {
     font-size: 13px;
     border: 0px;
     background-color: #2c3e50;
-    padding-top: 5px;
+    padding-top: 3px;
     padding-left: 20px;
     padding-right: 0px;
     padding-bottom: 0px;
 }
 
+#accordion-sidebar ul.list-unstyled {
+    margin-bottom: 0px;
+}
+
 #accordion-sidebar .panel-body li {
-    padding: 0px;
+    padding: 9px;
 }
 
 #accordion-sidebar .panel-body a {
     color: white;
     text-decoration: none;
-    padding: 9px;
+    padding: 0px;
 }
 
 .navbar-fixed-top {
