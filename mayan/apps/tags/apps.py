@@ -16,13 +16,14 @@ from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
 )
 from mayan.apps.events.permissions import permission_events_view
-from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.navigation.classes import Collection, SourceColumn
 
 from .events import (
     event_tag_attach, event_tag_edited, event_tag_remove
 )
 from .handlers import handler_index_document, handler_tag_pre_delete
-from .html_widgets import widget_document_tags
+from .html_widgets import widget_document_tags, widget_single_tag
+from .icons import icon_menu_tags
 from .links import (
     link_document_tag_list, link_document_multiple_attach_multiple_tag,
     link_document_multiple_tag_multiple_remove,
@@ -141,9 +142,14 @@ class TagsApp(MayanAppConfig):
             ), sources=(Tag,)
         )
 
+        collection_tags = Collection(
+            icon_class=icon_menu_tags, label=_('Tags'), model=Tag,
+            name='tag_list', widget=widget_single_tag
+        )
+
         menu_tags.bind_links(
             links=(
-                link_tag_list, link_tag_create
+                link_tag_list, link_tag_create, collection_tags
             )
         )
 

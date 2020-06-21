@@ -19,7 +19,9 @@
                 {% for link in link_group.links %}
                     {% with 'active' as li_class_active %}
                     {% with ' ' as link_classes %}
-                        {% if link|common_get_type == "<class 'mayan.apps.navigation.classes.Menu'>" %}
+
+
+                        {% if link.is_new_level %}
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
@@ -39,6 +41,8 @@
                                 <div id="accordion-body-{{ forloop.counter }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body">
                                         <ul class="list-unstyled">
+                        {% endif %}
+                        {% if link.is_container %}
                                             {% navigation_resolve_menu name=link.name as sub_menus_results %}
                                             {% for sub_menu_results in sub_menus_results %}
                                                 {% for link_group in sub_menu_results.link_groups %}
@@ -53,11 +57,18 @@
                                                     {% endwith %}
                                                 {% endfor %}
                                             {% endfor %}
+                        {% endif %}
+
+
+                        {% if link.is_new_level %}
+
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                        {% else %}
+                        {% endif %}
+
+                        {% if not link.is_new_level and not link.is_container %}
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
@@ -66,6 +77,9 @@
                                 </div>
                             </div>
                         {% endif %}
+
+
+
                     {% endwith %}
                     {% endwith %}
                 {% endfor %}

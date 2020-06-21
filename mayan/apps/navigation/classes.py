@@ -244,6 +244,8 @@ class Menu:
 
         self.condition = condition
         self.icon_class = icon_class
+        self.is_container = True
+        self.is_new_level = True
         self.name = name
         self.label = label
         self.bound_links = {}
@@ -512,6 +514,35 @@ class Menu:
             self._map_links_to_source(
                 links=links, source=sources, map_variable='unbound_links'
             )
+
+
+class Collection(Menu):
+    def __init__(self, *args, **kwargs):
+        self.queryset = kwargs.pop('queryset', None)
+        self.model = kwargs.pop('model', None)
+        self.widget = kwargs.pop('widget', None)
+        super().__init__(*args, **kwargs)
+
+        self.is_new_level = False
+
+    def resolve(self, *args, **kwargs):
+        if not self.queryset:
+            self.queryset = self.model.objects.all()
+
+        result = []
+
+        for entry in self.queryset.all():
+            link = Link(text=str(entry))
+            resolved_link = ResolvedLink(
+                link=link, current_view_name='invalid'
+            )
+            resolved_link.is_widget = True
+            resolved_link.url = entry.get_absolute_url()
+            resolved_link.widget = self.widget
+            resolved_link.instance = entry
+            result.append(resolved_link)
+
+        return [{'object': None, 'links': result}]
 
 
 class ResolvedLink:

@@ -1,6 +1,6 @@
 from django.template import Library
 
-from ..classes import Menu, SourceColumn
+from ..classes import Collection, Menu, SourceColumn
 
 register = Library()
 
@@ -34,6 +34,11 @@ def navigation_get_source_columns(context, source, exclude_identifier=False, onl
         context=context, source=source, exclude_identifier=exclude_identifier,
         only_identifier=only_identifier
     )
+
+
+@register.simple_tag()
+def navigation_link_widget_render(link):
+    return link.widget(link.instance)
 
 
 @register.simple_tag(takes_context=True)

@@ -137,6 +137,7 @@
 - Allow passing environment entries to the Tesseract OCR backend.
 - Improve main menu styling and JavaScript code. Improve hover highlighting
   and maximize space.
+- Reimplement the Collection class (a94745ab9e92b6fd4c7ea79aa6c299c6ac3cebe2).
 
 3.4.9 (2020-05-26)
 ==================
