@@ -115,7 +115,7 @@ class DocumentIndexingApp(MayanAppConfig):
             attribute='slug', include_label=True, is_sortable=True,
             source=Index
         )
-        column_index_slug.add_exclude(IndexInstance)
+        column_index_slug.add_exclude(source=IndexInstance)
         column_index_enabled = SourceColumn(
             attribute='enabled', include_label=True, is_sortable=True,
             source=Index, widget=TwoStateWidget
@@ -151,22 +151,17 @@ class DocumentIndexingApp(MayanAppConfig):
             source=IndexTemplateNode, widget=TwoStateWidget
         )
 
-        SourceColumn(
+        column_index_instance_node_level = SourceColumn(
             func=lambda context: index_instance_item_link(context['object']),
             is_identifier=True, is_sortable=True, label=_('Level'),
             sort_field='value', source=IndexInstanceNode
         )
+        column_index_instance_node_level.add_exclude(
+            source=DocumentIndexInstanceNode
+        )
         SourceColumn(
             func=lambda context: context['object'].get_descendants_count(),
             include_label=True, label=_('Levels'), source=IndexInstanceNode
-        )
-        SourceColumn(
-            func=lambda context: context[
-                'object'
-            ].get_descendants_document_count(
-                user=context['request'].user
-            ), include_label=True, label=_('Documents'),
-            source=IndexInstanceNode
         )
         SourceColumn(
             func=lambda context: context[
@@ -190,19 +185,6 @@ class DocumentIndexingApp(MayanAppConfig):
                 index_instance_node=context['object'],
             ), include_label=True, is_sortable=True, label=_('Level'),
             sort_field='value', source=DocumentIndexInstanceNode
-        )
-        SourceColumn(
-            func=lambda context: context['object'].get_descendants_count(),
-            include_label=True, label=_('Levels'),
-            source=DocumentIndexInstanceNode
-        )
-        SourceColumn(
-            func=lambda context: context[
-                'object'
-            ].get_descendants_document_count(
-                user=context['request'].user
-            ), include_label=True, label=_('Documents'),
-            source=DocumentIndexInstanceNode
         )
 
         menu_facet.bind_links(

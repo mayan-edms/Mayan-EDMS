@@ -1,3 +1,7 @@
+3.4.10 (2020-06-XX)
+===================
+- Fix repeated columns in the document index node list view.
+
 3.4.9 (2020-05-26)
 ==================
 - Add the packaging library explicitly as a dependency.
