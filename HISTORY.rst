@@ -8,6 +8,7 @@
   bottom. Close GitLab issue #830. Thanks to Bw (@bwakkie) for the report.
 - Minor fixes to the optional services in the default Docker compose file.
 - Add support for selecting texts in cards.
+- Allow passing environment entries to the Tesseract OCR backend.
 
 3.4.9 (2020-05-26)
 ==================
