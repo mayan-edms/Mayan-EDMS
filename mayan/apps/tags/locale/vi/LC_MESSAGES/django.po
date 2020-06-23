@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-08 14:22-0400\n"
-"PO-Revision-Date: 2020-03-18 05:34+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:21-0400\n"
+"PO-Revision-Date: 2020-06-16 09:55+0000\n"
+"Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +26,7 @@ msgstr ""
 
 #: apps.py:124 models.py:34
 msgid "Documents"
-msgstr ""
+msgstr "Tài liệu"
 
 #: events.py:8
 msgid "Tag attached to document"
@@ -61,11 +62,11 @@ msgstr ""
 
 #: links.py:48 links.py:65 views.py:156
 msgid "Delete"
-msgstr ""
+msgstr "Xóa"
 
 #: links.py:53
 msgid "Edit"
-msgstr ""
+msgstr "Sửa"
 
 #: links.py:61
 msgid "All"
@@ -85,7 +86,7 @@ msgstr ""
 
 #: models.py:27 search.py:14
 msgid "Label"
-msgstr ""
+msgstr "Nhãn"
 
 #: models.py:30
 msgid "The RGB color values for the tag."
@@ -101,7 +102,7 @@ msgstr ""
 
 #: models.py:82
 msgid "Preview"
-msgstr ""
+msgstr "Xem trước"
 
 #: models.py:111
 msgid "Document tag"
@@ -269,7 +270,7 @@ msgstr ""
 
 #: views.py:300
 msgid "Remove"
-msgstr ""
+msgstr "Xóa"
 
 #: views.py:302
 #, python-format

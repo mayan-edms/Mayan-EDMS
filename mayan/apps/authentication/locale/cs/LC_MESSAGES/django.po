@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-08 14:19-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"POT-Creation-Date: 2020-06-22 23:18-0400\n"
+"PO-Revision-Date: 2020-06-22 15:03+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -24,11 +24,11 @@ msgstr "Ověřování"
 
 #: events.py:10
 msgid "User impersonation ended"
-msgstr ""
+msgstr "Předstírání identity uživatele skončilo"
 
 #: events.py:13
 msgid "User impersonation started"
-msgstr ""
+msgstr "Předstírání identity uživatele začalo"
 
 #: forms.py:17
 msgid "Email"
@@ -58,15 +58,15 @@ msgstr "Uživatel"
 
 #: forms.py:78
 msgid "User to be impersonated."
-msgstr ""
+msgstr "Uživatel, který má být zosobněn."
 
 #: forms.py:82
 msgid "Permanent"
-msgstr ""
+msgstr "Trvale"
 
 #: forms.py:83
 msgid "If selected, disables ending impersonation."
-msgstr ""
+msgstr "Pokud je vybrána, zakáže ukončení předstírání identity."
 
 #: links.py:22
 msgid "Logout"
@@ -78,7 +78,7 @@ msgstr "Změnit heslo"
 
 #: links.py:32 views.py:68
 msgid "Impersonate user"
-msgstr ""
+msgstr "Zosobnit uživatele"
 
 #: links.py:37 links.py:44
 msgid "Set password"
@@ -86,7 +86,7 @@ msgstr "Nastavit heslo"
 
 #: permissions.py:10
 msgid "Impersonate users"
-msgstr ""
+msgstr "Předstírání identity uživatelů"
 
 #: settings.py:11
 msgid ""

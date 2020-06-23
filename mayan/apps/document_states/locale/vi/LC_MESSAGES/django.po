@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-08 14:20-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"PO-Revision-Date: 2020-06-16 09:55+0000\n"
+"Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +67,7 @@ msgstr ""
 
 #: apps.py:206 apps.py:216 apps.py:225 apps.py:231
 msgid "None"
-msgstr ""
+msgstr "None"
 
 #: apps.py:212
 msgid "Current state"
@@ -74,7 +75,7 @@ msgstr ""
 
 #: apps.py:217 apps.py:241 models.py:444
 msgid "User"
-msgstr ""
+msgstr "Người dùng"
 
 #: apps.py:221
 msgid "Last transition"
@@ -111,7 +112,7 @@ msgstr ""
 
 #: apps.py:336 models.py:756
 msgid "Type"
-msgstr ""
+msgstr "Kiểu"
 
 #: apps.py:344
 msgid "Widget"
@@ -119,7 +120,7 @@ msgstr ""
 
 #: apps.py:355 apps.py:361
 msgid "Documents"
-msgstr ""
+msgstr "Tài liệu"
 
 #: classes.py:124
 #, python-format
@@ -153,11 +154,11 @@ msgstr ""
 #: forms.py:134 models.py:59 models.py:525 models.py:607 models.py:701
 #: models.py:767
 msgid "Label"
-msgstr ""
+msgstr "Nhãn"
 
 #: forms.py:138 models.py:609
 msgid "Enabled"
-msgstr ""
+msgstr "Đã kích hoạt"
 
 #: forms.py:140
 msgid "No"
@@ -186,15 +187,15 @@ msgstr ""
 
 #: links.py:30 links.py:70 links.py:105 links.py:133 links.py:168
 msgid "Delete"
-msgstr ""
+msgstr "Xóa"
 
 #: links.py:36 models.py:63
 msgid "Document types"
-msgstr ""
+msgstr "Các kiểu tài liệu"
 
 #: links.py:43 links.py:77 links.py:112 links.py:140 links.py:175
 msgid "Edit"
-msgstr ""
+msgstr "Sửa"
 
 #: links.py:49
 msgid "Launch workflow"
@@ -202,7 +203,7 @@ msgstr ""
 
 #: links.py:61
 msgid "Preview"
-msgstr ""
+msgstr "Xem trước"
 
 #: links.py:83
 msgid "Actions"
@@ -300,7 +301,7 @@ msgstr ""
 
 #: models.py:283
 msgid "Document"
-msgstr ""
+msgstr "Tài liệu"
 
 #: models.py:286
 msgid "Context"
@@ -320,7 +321,7 @@ msgstr ""
 
 #: models.py:446 views/workflow_instance_views.py:118
 msgid "Comment"
-msgstr ""
+msgstr "Ghi chú"
 
 #: models.py:447
 msgid "Extra data"
@@ -687,7 +688,7 @@ msgstr ""
 
 #: views/workflow_instance_views.py:104
 msgid "Submit"
-msgstr ""
+msgstr "Gửi"
 
 #: views/workflow_instance_views.py:106
 #, python-format

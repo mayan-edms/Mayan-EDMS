@@ -5,15 +5,15 @@
 # 
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2019
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-08 14:22-0400\n"
+"POT-Creation-Date: 2020-06-22 23:21-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2019\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,7 +71,7 @@ msgstr "Zobrazit úkoly"
 
 #: settings.py:8
 msgid "Celery"
-msgstr ""
+msgstr "Celery"
 
 #: settings.py:13
 msgid ""
@@ -80,6 +80,10 @@ msgid ""
 " (transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
 msgstr ""
+"Výchozí: &quot;amqp: //&quot;. Výchozí adresa makléře. Musí to být URL ve "
+"tvaru: transport://userid:password@hostname:port/virtual_host Je vyžadována "
+"pouze část schématu (transport://), zbytek je volitelný a výchozí hodnoty "
+"jsou specifické pro přenos."
 
 #: settings.py:22
 msgid ""
@@ -88,6 +92,10 @@ msgid ""
 "http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
 "backend"
 msgstr ""
+"Výchozí: Ve výchozím nastavení není povoleno žádné backend výsledků. Backend"
+" použitý k ukládání výsledků úkolů (náhrobky). Viz "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
 
 #: tests/literals.py:3
 msgid "Test queue"

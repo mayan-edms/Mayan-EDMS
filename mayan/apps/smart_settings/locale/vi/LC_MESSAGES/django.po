@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-08 14:21-0400\n"
-"PO-Revision-Date: 2020-05-25 06:18+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:20-0400\n"
+"PO-Revision-Date: 2020-06-16 09:55+0000\n"
+"Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -60,7 +61,7 @@ msgstr ""
 
 #: links.py:26
 msgid "Edit"
-msgstr ""
+msgstr "Sửa"
 
 #: permissions.py:10
 msgid "Edit settings"

@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-08 14:18-0400\n"
-"PO-Revision-Date: 2020-04-08 04:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:18-0400\n"
+"PO-Revision-Date: 2020-06-16 09:55+0000\n"
+"Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -298,7 +298,7 @@ msgstr ""
 #: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Submit"
-msgstr ""
+msgstr "Gửi"
 
 #: templates/appearance/generic_form_subtemplate.html:87
 #: templates/appearance/generic_multiform_subtemplate.html:63
@@ -373,4 +373,4 @@ msgstr ""
 
 #: templatetags/appearance_tags.py:42
 msgid "None"
-msgstr ""
+msgstr "None"

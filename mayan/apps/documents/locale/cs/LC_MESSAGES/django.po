@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-08 14:20-0400\n"
-"PO-Revision-Date: 2020-04-02 06:56+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"PO-Revision-Date: 2020-06-22 15:15+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,7 +115,7 @@ msgstr "Nová verze byla nahrána"
 
 #: events.py:17
 msgid "New version created"
-msgstr ""
+msgstr "Byla vytvořena nová verze"
 
 #: events.py:20
 msgid "Document properties edited"
@@ -855,7 +855,7 @@ msgstr "Argumenty k předání do DOCUMENT_STORAGE_BACKEND."
 #: settings.py:150
 msgid ""
 "Time after which a document stub will be considered invalid and deleted."
-msgstr ""
+msgstr "Čas, po kterém bude útržek dokumentu považován za neplatný a odstraněný."
 
 #: settings.py:156
 msgid "Height in pixels of the document thumbnail image."
@@ -953,7 +953,7 @@ msgstr "Celkový počet stránek dokumentu v každém měsíci"
 msgid ""
 "Unable to initialize the document image storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
+msgstr "Nelze inicializovat úložiště obrázků dokumentu. Zkontrolujte v nastavení {} a {} chyby formátování."
 
 #: storages.py:23
 msgid "Document images"
@@ -963,11 +963,11 @@ msgstr "Obrázky dokumentů"
 msgid ""
 "Unable to initialize the document version storage. Check the settings {} and"
 " {} for formatting errors."
-msgstr ""
+msgstr "Nelze inicializovat úložiště verze dokumentu. Zkontrolujte v nastavení {} a {} chyby formátování."
 
 #: storages.py:37
 msgid "Document version files"
-msgstr ""
+msgstr "Soubory verze dokumentů"
 
 #: templates/documents/document_print.html:12
 msgid "Document page image preview"
@@ -1430,12 +1430,12 @@ msgstr "Koš se úspěšně vyprázdnil"
 #: views/trashed_document_views.py:85
 #, python-format
 msgid "%(count)d trashed document submitted for deletion."
-msgstr ""
+msgstr "%(count)d vyhozený dokument předložený k odstranění."
 
 #: views/trashed_document_views.py:88
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
-msgstr ""
+msgstr "%(count)d vyhozené dokumenty předložené k odstranění."
 
 #: views/trashed_document_views.py:96
 msgid "Delete the selected trashed document?"
@@ -1481,4 +1481,4 @@ msgstr "Strany: %d"
 
 #: workflow_actions.py:7
 msgid "Send document to trash"
-msgstr ""
+msgstr "Odeslat dokument do koše"

@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-08 14:21-0400\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:20-0400\n"
+"PO-Revision-Date: 2020-06-16 09:57+0000\n"
+"Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -111,7 +112,7 @@ msgstr ""
 
 #: forms.py:147 views.py:403
 msgid "Remove"
-msgstr ""
+msgstr "Xóa"
 
 #: forms.py:169
 msgid " Available template context variables: "
@@ -119,7 +120,7 @@ msgstr ""
 
 #: forms.py:183
 msgid "None"
-msgstr ""
+msgstr "None"
 
 #: forms.py:184
 msgid "Optional"
@@ -127,7 +128,7 @@ msgstr ""
 
 #: forms.py:189 models.py:55 search.py:17
 msgid "Label"
-msgstr ""
+msgstr "Nhãn"
 
 #: forms.py:193
 msgid "Relationship"
@@ -151,7 +152,7 @@ msgstr ""
 
 #: links.py:59
 msgid "Document types"
-msgstr ""
+msgstr "Các kiểu tài liệu"
 
 #: links.py:63
 msgid "Create new"
@@ -159,11 +160,11 @@ msgstr ""
 
 #: links.py:70
 msgid "Delete"
-msgstr ""
+msgstr "Xóa"
 
 #: links.py:76 views.py:237
 msgid "Edit"
-msgstr ""
+msgstr "Sửa"
 
 #: mixins.py:21
 msgid "Selected documents must be of the same type."
@@ -187,7 +188,7 @@ msgstr ""
 
 #: models.py:64 search.py:20
 msgid "Default"
-msgstr ""
+msgstr "Mặc định"
 
 #: models.py:69
 msgid ""
@@ -226,11 +227,11 @@ msgstr ""
 
 #: models.py:203
 msgid "Document"
-msgstr ""
+msgstr "Tài liệu"
 
 #: models.py:206
 msgid "Type"
-msgstr ""
+msgstr "Kiểu"
 
 #: models.py:210
 msgid "The actual value stored in the metadata type field for the document."
@@ -250,7 +251,7 @@ msgstr ""
 
 #: models.py:301
 msgid "Document type"
-msgstr ""
+msgstr "Kiểu tài liệu"
 
 #: models.py:314
 msgid "Document type metadata type options"
@@ -324,7 +325,7 @@ msgstr ""
 
 #: views.py:65
 msgid "Add"
-msgstr ""
+msgstr "Thêm"
 
 #: views.py:67
 msgid "Add metadata types to document"

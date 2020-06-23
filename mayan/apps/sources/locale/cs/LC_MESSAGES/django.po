@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-08 14:21-0400\n"
-"PO-Revision-Date: 2020-05-25 06:18+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:20-0400\n"
+"PO-Revision-Date: 2020-06-22 15:39+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,7 +62,7 @@ msgstr "Obslužný program poskytovaný balíčkem SANE. Slouží k ovládání 
 
 #: forms.py:25
 msgid "An optional comment to explain the upload."
-msgstr ""
+msgstr "Volitelný komentář vysvětlující nahrávání."
 
 #: forms.py:26
 msgid "Comment"
@@ -74,7 +74,7 @@ msgstr "Rozbal komprimované soubory"
 
 #: forms.py:42 serializers.py:22
 msgid "Upload a compressed file's contained files as individual documents."
-msgstr ""
+msgstr "Nahrajte komprimovaný soubor obsahující dokumenty jako jednotlivé dokumenty."
 
 #: forms.py:63 views.py:227
 msgid "Staging file"
@@ -206,7 +206,7 @@ msgstr "E-mail IMAP"
 
 #: models/base.py:28
 msgid "A short text to describe this source."
-msgstr ""
+msgstr "Krátký text popisující tento zdroj."
 
 #: models/base.py:29
 msgid "Label"
@@ -313,7 +313,7 @@ msgstr "Název přílohy metadat"
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
+msgstr "Vyberte typ metadat pro uložení hodnoty předmětu e-mailu. Musí to být platný typ metadat pro dříve vybraný typ dokumentu."
 
 #: models/email_sources.py:62
 msgid "Subject metadata type"
@@ -323,7 +323,7 @@ msgstr "Typ metadat předmětu"
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
+msgstr "Vyberte typ metadat, do kterého chcete uložit e-mailovou hodnotu „from“. Musí to být platný typ metadat pro dříve vybraný typ dokumentu."
 
 #: models/email_sources.py:70
 msgid "From metadata type"
@@ -371,11 +371,11 @@ msgstr "Poštovní schránka"
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
-msgstr ""
+msgstr "Kritéria, která se použijí při vyhledávání zpráv ke zpracování. Použijte formát uvedený na adrese https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
-msgstr ""
+msgstr "Kritéria vyhledávání"
 
 #: models/email_sources.py:228
 msgid ""
@@ -383,27 +383,27 @@ msgid ""
 "command per line. Use the commands specified in "
 "https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
 "commands for your IMAP server."
-msgstr ""
+msgstr "Příkaz IMAP STORE, který se má po zpracování zpracovat na zprávy. Jeden příkaz na řádek. Použijte příkazy uvedené v https://tools.ietf.org/html/rfc2060.html#section-6.4.6 nebo vlastní příkazy pro váš server IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
-msgstr ""
+msgstr "Uložte příkazy"
 
 #: models/email_sources.py:236
 msgid "Execute the IMAP expunge command after processing each email message."
-msgstr ""
+msgstr "Po zpracování každé e-mailové zprávy spusťte příkaz expunge IMAP."
 
 #: models/email_sources.py:238
 msgid "Execute expunge"
-msgstr ""
+msgstr "Provést expunge"
 
 #: models/email_sources.py:242
 msgid "IMAP Mailbox to which processed messages will be copied."
-msgstr ""
+msgstr "Schránka IMAP, do které budou zkopírovány zpracované zprávy."
 
 #: models/email_sources.py:243
 msgid "Destination mailbox"
-msgstr ""
+msgstr "Cílová poštovní schránka"
 
 #: models/email_sources.py:350
 msgid "Timeout"
@@ -475,7 +475,7 @@ msgstr "Skenery SANE"
 msgid ""
 "Error while executing scanning command \"%(command_line)s\"; "
 "%(error_message)s"
-msgstr ""
+msgstr "Chyba při provádění příkazu pro skenování „%(command_line)s“; %(error_message)s"
 
 #: models/staging_folder_sources.py:39
 msgid "Server side filesystem path."
@@ -583,7 +583,7 @@ msgstr "Rychlý zdroj"
 
 #: queues.py:19
 msgid "Generate staging file image"
-msgstr ""
+msgstr "Vygenerujte pracovní soubor"
 
 #: queues.py:23
 msgid "Check interval source"
@@ -615,11 +615,11 @@ msgstr "Argumenty k předání na SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgid ""
 "Unable to initialize the staging folder file image storage. Check the "
 "settings {} and {} for formatting errors."
-msgstr ""
+msgstr "Nelze inicializovat úložiště obrazu souboru pracovní složky. Zkontrolujte v nastavení {} a {} chyby formátování."
 
 #: storages.py:23
 msgid "Staging folder files"
-msgstr ""
+msgstr "Pracovní soubory složek"
 
 #: tasks.py:46
 #, python-format
@@ -733,11 +733,11 @@ msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
 " necessary file system permissions for the folder."
-msgstr ""
+msgstr "To by mohlo znamenat, že pracovní složka je prázdná. Může to také znamenat, že uživatelský účet operačního systému používaný pro Mayský EDMS nemá potřebná oprávnění systému souborů pro složku."
 
 #: views.py:324
 msgid "No staging files available"
-msgstr ""
+msgstr "Nejsou k dispozici žádné pracovní soubory"
 
 #: views.py:327
 msgid "Files in staging path"
@@ -750,7 +750,7 @@ msgstr "Skenovat"
 #: views.py:485
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
-msgstr ""
+msgstr "Při provádění úlohy nahrávání dokumentu došlo k chybě; %(exception)s"
 
 #: views.py:495
 msgid "New document queued for upload and will be available shortly."
@@ -764,12 +764,12 @@ msgstr "Nahrajte dokument typu \"%(document_type)s\" ze zdroje: %(source)s"
 #: views.py:574
 #, python-format
 msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
-msgstr ""
+msgstr "Nelze nahrát nové verze dokumentu „%(document)s“. %(exception)s"
 
 #: views.py:635
 #, python-format
 msgid "Error executing document version upload task; %(exception)s"
-msgstr ""
+msgstr "Při provádění úlohy nahrávání verze dokumentu došlo k chybě; %(exception)s"
 
 #: views.py:650
 msgid "New document version queued for upload and will be available shortly."
@@ -778,7 +778,7 @@ msgstr "Nová verze dokumentu zařazená do fronty k nahrání a brzy bude k dis
 #: views.py:669
 #, python-format
 msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
-msgstr ""
+msgstr "Nahrajte novou verzi dokumentu „%(document)s“ ze zdroje: %(source)s"
 
 #: views.py:672
 msgid "Submit"

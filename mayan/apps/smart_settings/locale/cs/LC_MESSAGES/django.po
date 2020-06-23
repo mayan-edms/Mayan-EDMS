@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-08 14:21-0400\n"
-"PO-Revision-Date: 2020-05-25 06:18+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:20-0400\n"
+"PO-Revision-Date: 2020-06-22 15:39+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,7 +110,7 @@ msgstr "Seznam ověřovatelů, kteří se používají ke kontrole síly uživat
 msgid ""
 "A list of authentication backend classes (as strings) to use when attempting"
 " to authenticate a user."
-msgstr ""
+msgstr "Seznam tříd backendu autentizace (jako řetězce), které se použijí při pokusu o autentizaci uživatele."
 
 #: settings.py:60
 msgid ""
@@ -272,13 +272,13 @@ msgid ""
 "Default: 'sessionid'. The name of the cookie to use for sessions.This can be"
 " whatever you want (as long as it's different from the other cookie names in"
 " your application)."
-msgstr ""
+msgstr "Výchozí: &#39;sessionid&#39;. Název souboru cookie, který se použije pro relace. Může to být cokoli chcete (pokud se liší od ostatních názvů souborů cookie v aplikaci)."
 
 #: settings.py:280
 msgid ""
 "Default: 'django.contrib.sessions.backends.db'. Controls where Django stores"
 " session data."
-msgstr ""
+msgstr "Výchozí: &#39;django.contrib.sessions.backends.db&#39;. Určuje, kde Django ukládá data relace."
 
 #: settings.py:288
 msgid ""
