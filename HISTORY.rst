@@ -3,6 +3,8 @@
 - Fix repeated columns in the document index node list view.
 - Rephrase the help text for the workflow state action and transition
   condition field.
+- Switch direction of dropdowns when there is not enough area left at the
+  bottom. Close GitLab issue #830. Thanks to Bw (@bwakkie) for the report.
 
 3.4.9 (2020-05-26)
 ==================
